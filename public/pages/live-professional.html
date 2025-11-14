@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elevate for Humanity - Professional Training Institute</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      /* Header */
+      .header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #4b5563;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+      }
+
+      .nav-links a:hover {
+        color: #667eea;
+        background: rgba(102, 126, 234, 0.1);
+      }
+
+      /* Rotating Banner Section */
+      .banner-container {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+        margin-top: 80px;
+      }
+
+      .banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .banner.active {
+        opacity: 1;
+      }
+
+      .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.8) 0%,
+          rgba(118, 75, 162, 0.8) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .banner-content {
+        text-align: center;
+        color: white;
+        max-width: 800px;
+        padding: 2rem;
+      }
+
+      .banner-content h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        animation: slideInUp 1s ease-out;
+      }
+
+      .banner-content p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+        animation: slideInUp 1s ease-out 0.3s both;
+      }
+
+      .banner-cta {
+        display: inline-flex;
+        gap: 1rem;
+        animation: slideInUp 1s ease-out 0.6s both;
+      }
+
+      .cta-button {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 1rem 2rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .cta-button:hover {
+        background: rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-button.primary {
+        background: #ef4444;
+        border-color: #ef4444;
+      }
+
+      .cta-button.primary:hover {
+        background: #dc2626;
+        border-color: #dc2626;
+      }
+
+      /* Banner Navigation Dots */
+      .banner-dots {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 1rem;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .dot.active {
+        background: white;
+        transform: scale(1.2);
+      }
+
+      /* Programs Section */
+      .programs {
+        padding: 6rem 0;
+        background: #f8fafc;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .section-title {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #6b7280;
+        margin-bottom: 4rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .program-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(102, 126, 234, 0.1);
+      }
+
+      .program-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .program-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+      }
+
+      .program-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #1f2937;
+        font-weight: 600;
+      }
+
+      .program-card p {
+        color: #6b7280;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+      }
+
+      .program-features {
+        list-style: none;
+      }
+
+      .program-features li {
+        padding: 0.5rem 0;
+        color: #374151;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .program-features li:before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #10b981;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      /* Stats Section */
+      .stats {
+        padding: 6rem 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 3rem;
+        text-align: center;
+      }
+
+      .stat-item {
+        padding: 2rem;
+      }
+
+      .stat-number {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .stat-label {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        font-weight: 500;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 6rem 0;
+        background: #1f2937;
+        color: white;
+        text-align: center;
+      }
+
+      .contact h2 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        font-weight: 700;
+      }
+
+      .contact-info {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+        opacity: 0.9;
+      }
+
+      .contact-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      /* Footer */
+      .footer {
+        background: #111827;
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+      }
+
+      /* Animations */
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .banner-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .banner-content p {
+          font-size: 1.2rem;
+        }
+
+        .banner-cta {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .programs-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .contact-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <nav role="navigation" class="nav">
+        <div class="logo">🚀 Elevate for Humanity</div>
+        <ul class="nav-links">
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#stats">Results</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#portal">Student Portal</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Rotating Banner Section -->
+    <section class="banner-container">
+      <!-- Banner 1: Healthcare Training -->
+      <div
+        class="banner active"
+        style="
+          background-image:
+            linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22><rect fill=%22%234f46e5%22 width=%221200%22 height=%22800%22/><circle fill=%22%236366f1%22 cx=%22300%22 cy=%22200%22 r=%22100%22 opacity=%220.3%22/><circle fill=%22%238b5cf6%22 cx=%22900%22 cy=%22600%22 r=%22150%22 opacity=%220.2%22/><rect fill=%22%22 width=%221200%22 height=%22800%22/></svg>');
+        "
+      >
+        <div class="banner-overlay">
+          <div class="banner-content">
+            <h1>Healthcare Professional Training</h1>
+            <p>
+              Industry-certified healthcare programs with hands-on training and
+              job placement assistance
+            </p>
+            <div class="banner-cta">
+              <a href="#programs" class="cta-button primary"
+                >View Healthcare Programs</a
+              >
+              <a href="#contact" class="cta-button">Get Information</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner 2: Technology Skills -->
+      <div
+        class="banner"
+        style="
+          background-image:
+            linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22><rect fill=%22%2306b6d4%22 width=%221200%22 height=%22800%22/><polygon fill=%22%2308a5c7%22 points=%22600,100 800,300 600,500 400,300%22 opacity=%220.3%22/><circle fill=%22%230891b2%22 cx=%22200%22 cy=%22600%22 r=%22120%22 opacity=%220.2%22/></svg>');
+        "
+      >
+        <div class="banner-overlay">
+          <div class="banner-content">
+            <h1>Technology &amp; Digital Skills</h1>
+            <p>
+              Master in-demand tech skills with Microsoft, Google, and industry
+              certifications
+            </p>
+            <div class="banner-cta">
+              <a href="#programs" class="cta-button primary"
+                >Explore Tech Programs</a
+              >
+              <a href="#contact" class="cta-button">Start Learning</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner 3: Professional Development -->
+      <div
+        class="banner"
+        style="
+          background-image:
+            linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22><rect fill=%22%2310b981%22 width=%221200%22 height=%22800%22/><rect fill=%22%2306a86b%22 x=%22200%22 y=%22150%22 width=%22300%22 height=%22200%22 rx=%2220%22 opacity=%220.3%22/><rect fill=%22%23059669%22 x=%22700%22 y=%22450%22 width=%22250%22 height=%22150%22 rx=%2215%22 opacity=%220.2%22/></svg>');
+        "
+      >
+        <div class="banner-overlay">
+          <div class="banner-content">
+            <h1>Professional Career Advancement</h1>
+            <p>
+              Build essential business skills for leadership, management, and
+              entrepreneurship
+            </p>
+            <div class="banner-cta">
+              <a href="#programs" class="cta-button primary">Career Programs</a>
+              <a href="#contact" class="cta-button">Advance Your Career</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner Navigation Dots -->
+      <div class="banner-dots">
+        <div class="dot active" onclick="currentSlide(1)"></div>
+        <div class="dot" onclick="currentSlide(2)"></div>
+        <div class="dot" onclick="currentSlide(3)"></div>
+      </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+      <div class="container">
+        <h2 class="section-title">Professional Training Programs</h2>
+        <p class="section-subtitle">
+          Industry-recognized certifications and hands-on training designed for
+          career success
+        </p>
+
+        <div class="programs-grid">
+          <div class="program-card">
+            <div class="program-icon">🏥</div>
+            <h3>Healthcare &amp; Safety</h3>
+            <p>
+              Comprehensive healthcare training programs with industry
+              certifications and job placement support.
+            </p>
+            <ul class="program-features">
+              <li>CPR &amp; First Aid Certification</li>
+              <li>Home Health Aide Training</li>
+              <li>OSHA Safety Certification</li>
+              <li>Healthcare Administration</li>
+              <li>Medical Office Skills</li>
+            </ul>
+          </div>
+
+          <div class="program-card">
+            <div class="program-icon">💻</div>
+            <h3>Technology &amp; Digital</h3>
+            <p>
+              Master essential digital skills and earn industry-recognized
+              technology certifications.
+            </p>
+            <ul class="program-features">
+              <li>Microsoft Office Specialist</li>
+              <li>Google Workspace Certification</li>
+              <li>Digital Marketing Fundamentals</li>
+              <li>Remote Work Proficiency</li>
+              <li>Data Analysis Basics</li>
+            </ul>
+          </div>
+
+          <div class="program-card">
+            <div class="program-icon">💼</div>
+            <h3>Business &amp; Professional</h3>
+            <p>
+              Develop essential business skills for career advancement and
+              entrepreneurial success.
+            </p>
+            <ul class="program-features">
+              <li>Customer Service Excellence</li>
+              <li>Project Management</li>
+              <li>Financial Literacy</li>
+              <li>Professional Communication</li>
+              <li>Leadership Development</li>
+            </ul>
+          </div>
+
+          <div class="program-card">
+            <div class="program-icon">🍽️</div>
+            <h3>Food Service &amp; Hospitality</h3>
+            <p>
+              Professional food service training with ServSafe certification and
+              industry connections.
+            </p>
+            <ul class="program-features">
+              <li>ServSafe Food Handler</li>
+              <li>ServSafe Manager</li>
+              <li>Restaurant Operations</li>
+              <li>Hospitality Management</li>
+              <li>Culinary Fundamentals</li>
+            </ul>
+          </div>
+
+          <div class="program-card">
+            <div class="program-icon">⚡</div>
+            <h3>Skilled Trades</h3>
+            <p>
+              Hands-on training in high-demand skilled trades with
+              apprenticeship opportunities.
+            </p>
+            <ul class="program-features">
+              <li>OSHA 10 &amp; 30 Hour</li>
+              <li>Basic Electrical</li>
+              <li>Plumbing Fundamentals</li>
+              <li>HVAC Basics</li>
+              <li>Construction Safety</li>
+            </ul>
+          </div>
+
+          <div class="program-card">
+            <div class="program-icon">🎓</div>
+            <h3>Youth &amp; Entrepreneurship</h3>
+            <p>
+              Specialized programs for young adults and aspiring entrepreneurs.
+            </p>
+            <ul class="program-features">
+              <li>Youth Career Exploration</li>
+              <li>Business Start-up Basics</li>
+              <li>Financial Planning</li>
+              <li>Marketing &amp; Sales</li>
+              <li>Mentorship Programs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">1,200+</div>
+            <div class="stat-label">Students Trained</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">87%</div>
+            <div class="stat-label">Job Placement Rate</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Employer Partners</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">95%</div>
+            <div class="stat-label">Student Satisfaction</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Certification Programs</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Ready to Start Your Career Journey?</h2>
+        <div class="contact-info">
+          <p><strong>Email:</strong> elevateforhumanity@gmail.com</p>
+          <p><strong>Phone:</strong> (555) 123-4567</p>
+          <p><strong>Location:</strong> Indianapolis, Indiana</p>
+        </div>
+        <div class="contact-buttons">
+          <a
+            href="mailto:elevateforhumanity@gmail.com"
+            class="cta-button primary"
+            >Get Started Today</a
+          >
+          <a href="#portal" class="cta-button">Student Portal</a>
+          <a href="tel:+15551234567" class="cta-button">Call Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &amp;copy; 2024 Elevate for Humanity. Professional Training &amp;
+          Career Development.
+        </p>
+        <p>
+          Creating pathways to prosperity through education and workforce
+          development.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Rotating Banner Functionality
+      let currentBannerIndex = 0;
+      const banners = document.querySelectorAll('.banner');
+      const dots = document.querySelectorAll('.dot');
+
+      function showBanner(index) {
+        // Hide all banners
+        banners.forEach((banner) => banner.classList.remove('active'));
+        dots.forEach((dot) => dot.classList.remove('active'));
+
+        // Show selected banner
+        banners[index].classList.add('active');
+        dots[index].classList.add('active');
+      }
+
+      function nextBanner() {
+        currentBannerIndex = (currentBannerIndex + 1) % banners.length;
+        showBanner(currentBannerIndex);
+      }
+
+      function currentSlide(index) {
+        currentBannerIndex = index - 1;
+        showBanner(currentBannerIndex);
+      }
+
+      // Auto-rotate banners every 5 seconds
+      setInterval(nextBanner, 5000);
+
+      // Smooth scrolling for navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        });
+      });
+
+      // Animate stats on scroll
+      function animateStats() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const target = entry.target;
+              const finalNumber = target.textContent;
+              const isPercentage = finalNumber.includes('%');
+              const numericValue = parseInt(finalNumber.replace(/[^\d]/g, ''));
+
+              let current = 0;
+              const increment = numericValue / 50;
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= numericValue) {
+                  current = numericValue;
+                  clearInterval(timer);
+                }
+                target.textContent =
+                  Math.floor(current) +
+                  (isPercentage ? '%' : finalNumber.includes('+') ? '+' : '');
+              }, 30);
+
+              observer.unobserve(target);
+            }
+          });
+        });
+
+        statNumbers.forEach((stat) => observer.observe(stat));
+      }
+
+      // Initialize animations
+      document.addEventListener('DOMContentLoaded', function () {
+        animateStats();
+        console.log(
+          'Elevate for Humanity - Professional Training Platform Loaded'
+        );
+      });
+    </script>
+  </body>
+</html>

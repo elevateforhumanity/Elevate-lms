@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partner Program Marketplace | Elevate for Humanity</title>
+    <meta
+      name="description"
+      content="Browse and enroll in certified programs from Google Cloud, Microsoft, CompTIA, IBEW, Milady, and NCCER. 50% revenue sharing with partners."
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        color: #1e293b;
+        line-height: 1.6;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #4c1d95 0%, #312e81 100%);
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .marketplace-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 24px;
+        margin: 40px 0;
+      }
+
+      .partner-section {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 2px solid #e2e8f0;
+        transition: all 0.3s ease;
+      }
+
+      .partner-section:hover {
+        border-color: #4c1d95;
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(76, 29, 149, 0.15);
+      }
+
+      .partner-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid #f1f5f9;
+      }
+
+      .partner-logo {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        font-weight: bold;
+      }
+
+      .google {
+        background: linear-gradient(135deg, #4285f4, #34a853);
+      }
+      .microsoft {
+        background: linear-gradient(135deg, #0078d4, #106ebe);
+      }
+      .comptia {
+        background: linear-gradient(135deg, #c8102e, #8b0000);
+      }
+      .ibew {
+        background: linear-gradient(135deg, #003366, #004080);
+      }
+      .milady {
+        background: linear-gradient(135deg, #8b1538, #a91b47);
+      }
+      .nccer {
+        background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      }
+
+      .partner-info h3 {
+        color: #1e293b;
+        font-size: 1.25rem;
+        margin-bottom: 4px;
+      }
+
+      .partner-meta {
+        color: #64748b;
+        font-size: 0.875rem;
+      }
+
+      .program-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .program-item {
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 16px;
+        transition: all 0.2s ease;
+      }
+
+      .program-item:hover {
+        border-color: #4c1d95;
+        background: #fafbfc;
+      }
+
+      .program-header {
+        display: flex;
+        justify-content: between;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .program-info {
+        flex: 1;
+      }
+
+      .program-name {
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 4px;
+      }
+
+      .program-details {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin-bottom: 8px;
+      }
+
+      .program-price {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #4c1d95;
+      }
+
+      .price-breakdown {
+        font-size: 0.75rem;
+        color: #64748b;
+        margin-top: 2px;
+      }
+
+      .level-badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      .beginner {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .intermediate {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .advanced {
+        background: #fecaca;
+        color: #991b1b;
+      }
+
+      .enroll-btn {
+        background: linear-gradient(135deg, #4c1d95, #312e81);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        width: 100%;
+        margin-top: 12px;
+      }
+
+      .enroll-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(76, 29, 149, 0.3);
+      }
+
+      .revenue-info {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        margin: 40px 0;
+        text-align: center;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin: 40px 0;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #4c1d95;
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        color: #64748b;
+        font-weight: 500;
+      }
+
+      .workflow-demo {
+        background: white;
+        border-radius: 16px;
+        padding: 32px;
+        margin: 40px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .workflow-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 24px;
+      }
+
+      .workflow-step {
+        text-align: center;
+        padding: 20px;
+        border: 2px dashed #e2e8f0;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .workflow-step:hover {
+        border-color: #4c1d95;
+        background: #fafbfc;
+      }
+
+      .step-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #4c1d95, #22c55e);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 12px;
+        font-size: 24px;
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .marketplace-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .workflow-steps {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <!-- Unified Navigation System -->
+    <script src="/unified-navigation.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1>🤝 Partner Program Marketplace</h1>
+        <p>Professional certifications with automated revenue sharing</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="revenue-info">
+        <h2>💰 50/50 Revenue Split Model</h2>
+        <p>
+          Every enrollment automatically splits revenue: 50% to Elevate for
+          Humanity, 50% to credentialing partner
+        </p>
+        <p>
+          <strong>Dual Certification:</strong> Students receive certificates
+          from both Elevate for Humanity AND the partner organization
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">20</div>
+          <div class="stat-label">Total Programs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Partner Organizations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$9,570</div>
+          <div class="stat-label">Total Revenue Potential</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$479</div>
+          <div class="stat-label">Average Program Price</div>
+        </div>
+      </div>
+
+      <div class="marketplace-grid">
+        <!-- Google Cloud Programs -->
+        <div class="partner-section">
+          <div class="partner-header">
+            <div class="partner-logo google">GCP</div>
+            <div class="partner-info">
+              <h3>Google Cloud</h3>
+              <div class="partner-meta">3 Programs • Cloud Computing</div>
+            </div>
+          </div>
+
+          <div class="program-list">
+            <div class="program-item">
+              <div class="program-header">
+                <div class="program-info">
+                  <div class="program-name">Cloud Digital Leader</div>
+                  <div class="program-details">
+                    4-6 weeks •
+                    <span class="level-badge beginner">Beginner</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="program-price">$149</div>
+                  <div class="price-breakdown">$74.50 each split</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="enroll-btn"
+                onclick="enrollInProgram('gcp-digital-leader', 149)"
+              >
+                Enroll Now
+              </button>
+            </div>
+
+            <div class="program-item">
+              <div class="program-header">
+                <div class="program-info">
+                  <div class="program-name">Associate Cloud Engineer</div>
+                  <div class="program-details">
+                    8-12 weeks •
+                    <span class="level-badge intermediate">Intermediate</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="program-price">$300</div>
+                  <div class="price-breakdown">$150 each split</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="enroll-btn"
+                onclick="enrollInProgram('gcp-associate', 300)"
+              >
+                Enroll Now
+              </button>
+            </div>
+
+            <div class="program-item">
+              <div class="program-header">
+                <div class="program-info">
+                  <div class="program-name">Professional Data Engineer</div>
+                  <div class="program-details">
+                    12-16 weeks •
+                    <span class="level-badge advanced">Advanced</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="program-price">$450</div>
+                  <div class="price-breakdown">$225 each split</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="enroll-btn"
+                onclick="enrollInProgram('gcp-data-engineer', 450)"
+              >
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Microsoft Programs -->
+        <div class="partner-section">
+          <div class="partner-header">
+            <div class="partner-logo microsoft">MS</div>
+            <div class="partner-info">
+              <h3>Microsoft</h3>
+              <div class="partner-meta">3 Programs • Azure Cloud</div>
+            </div>
+          </div>
+
+          <div class="program-list">
+            <div class="program-item">
+              <div class="program-header">
+                <div class="program-info">
+                  <div class="program-name">Azure Fundamentals (AZ-900)</div>
+                  <div class="program-details">
+                    4-6 weeks •
+                    <span class="level-badge beginner">Beginner</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="program-price">$149</div>
+                  <div class="price-breakdown">$74.50 each split</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="enroll-btn"
+                onclick="enrollInProgram('az-900', 149)"
+              >
+                Enroll Now
+              </button>
+            </div>
+
+            <div class="program-item">
+              <div class="program-header">
+                <div class="program-info">
+                  <div class="program-name">Azure Administrator (AZ-104)</div>
+                  <div class="program-details">
+                    8-12 weeks •
+                    <span class="level-badge intermediate">Intermediate</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="program-price">$300</div>
+                  <div class="price-breakdown">$150 each split</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="enroll-btn"
+                onclick="enrollInProgram('az-104', 300)"
+              >
+                Enroll Now
+              </button>
+            </div>
+
+            <div class="program-item">
+              <div class="program-header">
+                <div class="program-info">
+                  <div class="program-name">Azure Data Scientist (DP-100)</div>
+                  <div class="program-details">
+                    12-16 weeks •
+                    <span class="level-badge advanced">Advanced</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="program-price">$450</div>
+                  <div class="price-breakdown">$225 each split</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="enroll-btn"
+                onclick="enrollInProgram('dp-100', 450)"
+              >
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CompTIA Programs -->
+        <div class="partner-section">
+          <div class="partner-header">
+            <div class="partner-logo comptia">CT</div>
+            <div class="partner-info">
+              <h3>CompTIA</h3>
+              <div class="partner-meta">4 Programs • IT Certification</div>
+            </div>
+          </div>
+
+          <div class="program-list">
+            <div class="program-item">
+              <div class="program-header">
+                <div class="program-info">
+                  <div class="program-name">CompTIA A+</div>
+                  <div class="program-details">
+                    8-12 weeks •
+                    <span class="level-badge beginner">Beginner</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="program-price">$375</div>
+                  <div class="price-breakdown">$187.50 each split</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="enroll-btn"
+                onclick="enrollInProgram('comptia-a-plus', 375)"
+              >
+                Enroll Now
+              </button>
+            </div>
+
+            <div class="program-item">
+              <div class="program-header">
+                <div class="program-info">
+                  <div class="program-name">CompTIA Security+</div>
+                  <div class="program-details">
+                    12-16 weeks •
+                    <span class="level-badge intermediate">Intermediate</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="program-price">$525</div>
+                  <div class="price-breakdown">$262.50 each split</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="enroll-btn"
+                onclick="enrollInProgram('comptia-security-plus', 525)"
+              >
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- IBEW Programs -->
+        <div class="partner-section">
+          <div class="partner-header">
+            <div class="partner-logo ibew">IB</div>
+            <div class="partner-info">
+              <h3>IBEW</h3>
+              <div class="partner-meta">3 Programs • Electrical Trade</div>
+            </div>
+          </div>
+
+          <div class="program-list">
+            <div class="program-item">
+              <div class="program-header">
+                <div class="program-info">
+                  <div class="program-name">Electrical Fundamentals</div>
+                  <div class="program-details">
+                    6-8 weeks •
+                    <span class="level-badge beginner">Beginner</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="program-price">$300</div>
+                  <div class="price-breakdown">$150 each split</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="enroll-btn"
+                onclick="enrollInProgram('ibew-fundamentals', 300)"
+              >
+                Enroll Now
+              </button>
+            </div>
+
+            <div class="program-item">
+              <div class="program-header">
+                <div class="program-info">
+                  <div class="program-name">Industrial Electrical Systems</div>
+                  <div class="program-details">
+                    16-20 weeks •
+                    <span class="level-badge advanced">Advanced</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="program-price">$750</div>
+                  <div class="price-breakdown">$375 each split</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="enroll-btn"
+                onclick="enrollInProgram('ibew-industrial', 750)"
+              >
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="workflow-demo">
+        <h2>🔄 Automated Enrollment Workflow</h2>
+        <p>Complete end-to-end automation from payment to dual certification</p>
+
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="step-icon">💳</div>
+            <h4>Payment Processing</h4>
+            <p>Stripe handles payment with automatic 50/50 revenue split</p>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-icon">📝</div>
+            <h4>Enrollment Creation</h4>
+            <p>Student enrolled in both Elevate and partner systems</p>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-icon">🔗</div>
+            <h4>Course Access</h4>
+            <p>Automatic access links sent to partner platforms</p>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-icon">📊</div>
+            <h4>Progress Tracking</h4>
+            <p>Real-time progress monitoring and support</p>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-icon">🏆</div>
+            <h4>Dual Certification</h4>
+            <p>Certificates from both Elevate and partner delivered</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Partner Marketplace JavaScript
+      function enrollInProgram(programId, price) {
+        // Mock enrollment process
+        const confirmation = confirm(
+          `Enroll in this program for $${price}?\n\nThis will:\n• Process payment via Stripe\n• Split revenue 50/50 with partner\n• Provide access to partner platform\n• Issue dual certificates upon completion`
+        );
+
+        if (confirmation) {
+          // Simulate enrollment process
+          showEnrollmentProcess(programId, price);
+        }
+      }
+
+      function showEnrollmentProcess(programId, price) {
+        // Create modal overlay
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+            `;
+
+        const modalContent = document.createElement('div');
+        modalContent.style.cssText = `
+                background: white;
+                padding: 40px;
+                border-radius: 16px;
+                max-width: 500px;
+                text-align: center;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            `;
+
+        modalContent.innerHTML = `
+                <h2>🎓 Enrollment Process</h2>
+                <div id="enrollment-steps" style="margin: 20px 0;">
+                    <div class="step">💳 Processing payment of $${price}...</div>
+                </div>
+                <button type="button" onclick="this.parentElement.parentElement.remove()" style="
+                    background: #4c1d95;
+                    color: white;
+                    border: none;
+                    padding: 12px 24px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    margin-top: 20px;
+                ">Close</button>
+            `;
+
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
+
+        // Simulate enrollment steps
+        const steps = [
+          `💳 Processing payment of $${price}...`,
+          `🏦 Splitting revenue: $${price / 2} to Elevate, $${price / 2} to partner`,
+          `📝 Creating enrollment record...`,
+          `🔗 Generating partner platform access...`,
+          `📧 Sending welcome email with course links...`,
+          `✅ Enrollment complete! Check your email for access details.`,
+        ];
+
+        let currentStep = 0;
+        const stepElement = modalContent.querySelector(
+          '#enrollment-steps .step'
+        );
+
+        const interval = setInterval(() => {
+          currentStep++;
+          if (currentStep < steps.length) {
+            stepElement.textContent = steps[currentStep];
+          } else {
+            clearInterval(interval);
+          }
+        }, 1500);
+      }
+
+      // Calculate and display total revenue potential
+      const programs = [
+        149,
+        300,
+        450, // Google Cloud
+        149,
+        300,
+        450, // Microsoft
+        375,
+        450,
+        525,
+        600, // CompTIA
+        300,
+        600,
+        750, // IBEW
+        450,
+        525,
+        375, // Milady
+        300,
+        525,
+        600,
+        570, // NCCER
+      ];
+
+      const totalRevenue = programs.reduce((sum, price) => sum + price, 0);
+      const averagePrice = Math.round(totalRevenue / programs.length);
+
+      console.log('🎓 Partner Marketplace Loaded');
+      console.log(
+        `💰 Total Revenue Potential: $${totalRevenue.toLocaleString()}`
+      );
+      console.log(`📊 Average Program Price: $${averagePrice}`);
+      console.log(
+        `🤝 Revenue Split: 50% Elevate ($${Math.round(totalRevenue / 2).toLocaleString()}), 50% Partners ($${Math.round(totalRevenue / 2).toLocaleString()})`
+      );
+    </script>
+  </body>
+</html>

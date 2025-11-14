@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EFH System Monitor Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 8px;
+      }
+      .status-online {
+        background-color: #10b981;
+      }
+      .status-warning {
+        background-color: #f59e0b;
+      }
+      .status-error {
+        background-color: #ef4444;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-6">
+      <!-- Header -->
+      <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+        <div class="flex justify-between items-center">
+          <div>
+            <h1 class="text-3xl font-bold text-gray-900">
+              🎯 EFH System Monitor
+            </h1>
+            <p class="text-gray-600">
+              Real-time tracking and performance monitoring
+            </p>
+          </div>
+          <div class="text-right">
+            <div class="text-sm text-gray-500">Last Updated</div>
+            <div id="last-update" class="text-lg font-semibold">Just now</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Status -->
+      <div class="grid md:grid-cols-4 gap-6 mb-6">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">System Status</p>
+              <p id="system-status" class="text-2xl font-bold text-green-600">
+                Online
+              </p>
+            </div>
+            <div class="status-dot status-online" id="status-dot"></div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Active Users</p>
+              <p id="active-users" class="text-2xl font-bold text-blue-600">
+                --
+              </p>
+            </div>
+            <div class="text-blue-500">👥</div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Memory Usage</p>
+              <p id="memory-usage" class="text-2xl font-bold text-purple-600">
+                --MB
+              </p>
+            </div>
+            <div class="text-purple-500">💾</div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Uptime</p>
+              <p id="uptime" class="text-2xl font-bold text-green-600">--h</p>
+            </div>
+            <div class="text-green-500">⏱️</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="grid lg:grid-cols-2 gap-6 mb-6">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-semibold mb-4">📊 Page Views (Last 24h)</h3>
+          <canvas id="pageViewsChart" width="400" height="200"></canvas>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-semibold mb-4">💳 Payment Activity</h3>
+          <canvas id="paymentsChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+
+      <!-- Live Activity Feed -->
+      <div class="grid lg:grid-cols-2 gap-6 mb-6">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-semibold mb-4">🔴 Live Activity Feed</h3>
+          <div id="activity-feed" class="space-y-2 max-h-96 overflow-y-auto">
+            <!-- Activity items will be added here -->
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-lg font-semibold mb-4">⚠️ Recent Errors</h3>
+          <div id="error-log" class="space-y-2 max-h-96 overflow-y-auto">
+            <!-- Error items will be added here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Metrics Summary -->
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h3 class="text-lg font-semibold mb-4">📈 Today's Summary</h3>
+        <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div class="text-center p-4 bg-blue-50 rounded-lg">
+            <div id="total-views" class="text-2xl font-bold text-blue-600">
+              --
+            </div>
+            <div class="text-sm text-gray-600">Page Views</div>
+          </div>
+          <div class="text-center p-4 bg-green-50 rounded-lg">
+            <div
+              id="total-enrollments"
+              class="text-2xl font-bold text-green-600"
+            >
+              --
+            </div>
+            <div class="text-sm text-gray-600">Enrollments</div>
+          </div>
+          <div class="text-center p-4 bg-purple-50 rounded-lg">
+            <div id="total-revenue" class="text-2xl font-bold text-purple-600">
+              $--
+            </div>
+            <div class="text-sm text-gray-600">Revenue</div>
+          </div>
+          <div class="text-center p-4 bg-yellow-50 rounded-lg">
+            <div
+              id="successful-payments"
+              class="text-2xl font-bold text-yellow-600"
+            >
+              --
+            </div>
+            <div class="text-sm text-gray-600">Payments</div>
+          </div>
+          <div class="text-center p-4 bg-red-50 rounded-lg">
+            <div id="failed-payments" class="text-2xl font-bold text-red-600">
+              --
+            </div>
+            <div class="text-sm text-gray-600">Failed</div>
+          </div>
+          <div class="text-center p-4 bg-gray-50 rounded-lg">
+            <div id="total-errors" class="text-2xl font-bold text-gray-600">
+              --
+            </div>
+            <div class="text-sm text-gray-600">Errors</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email Notification Settings -->
+      <div class="mt-6 bg-white rounded-lg shadow-lg p-6">
+        <h3 class="text-lg font-semibold mb-4">
+          📧 Email Notification Settings
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2"
+              >Admin Email</label
+            >
+            <input
+              type="email"
+              id="admin-email"
+              class="w-full border border-gray-300 rounded-md px-3 py-2"
+              placeholder="elevateforhumanity@gmail.com"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2"
+              >Notification Frequency</label
+            >
+            <select
+              id="notification-frequency"
+              class="w-full border border-gray-300 rounded-md px-3 py-2"
+            >
+              <option value="instant">Instant (for critical alerts)</option>
+              <option value="hourly">Hourly Summary</option>
+              <option value="daily" selected>Daily Summary</option>
+              <option value="weekly">Weekly Summary</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <h4 class="font-medium text-gray-700 mb-2">Alert Types</h4>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                aria-label="checkbox input"
+                class="mr-2"
+                checked
+              />
+              New Enrollments
+            </label>
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                aria-label="checkbox input"
+                class="mr-2"
+                checked
+              />
+              Payment Failures
+            </label>
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                aria-label="checkbox input"
+                class="mr-2"
+                checked
+              />
+              System Errors
+            </label>
+            <label class="flex items-center">
+              <input
+                type="checkbox"
+                aria-label="checkbox input"
+                class="mr-2"
+                checked
+              />
+              Performance Issues
+            </label>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onclick="saveNotificationSettings()"
+          class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+        >
+          Save Settings
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let pageViewsChart, paymentsChart;
+
+      // Initialize charts
+      function initCharts() {
+        // Page Views Chart
+        const pageViewsCtx = document
+          .getElementById('pageViewsChart')
+          .getContext('2d');
+        pageViewsChart = new Chart(pageViewsCtx, {
+          type: 'line',
+          data: {
+            labels: [],
+            datasets: [
+              {
+                label: 'Page Views',
+                data: [],
+                borderColor: 'rgb(59, 130, 246)',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                tension: 0.4,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: { beginAtZero: true },
+            },
+          },
+        });
+
+        // Payments Chart
+        const paymentsCtx = document
+          .getElementById('paymentsChart')
+          .getContext('2d');
+        paymentsChart = new Chart(paymentsCtx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Successful', 'Failed', 'Pending'],
+            datasets: [
+              {
+                data: [0, 0, 0],
+                backgroundColor: ['#10b981', '#ef4444', '#f59e0b'],
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+          },
+        });
+      }
+
+      // Fetch and update metrics
+      async function updateMetrics() {
+        try {
+          const response = await fetch('/api/monitor/metrics');
+          const data = await response.json();
+
+          // Update system status
+          document.getElementById('active-users').textContent =
+            data.summary.activeUsers || '0';
+          document.getElementById('memory-usage').textContent =
+            data.systemHealth.memory + 'MB';
+          document.getElementById('uptime').textContent =
+            Math.round(data.systemHealth.uptime / 1000 / 60 / 60) + 'h';
+
+          // Update summary
+          document.getElementById('total-views').textContent =
+            data.summary.totalPageViews || '0';
+          document.getElementById('total-enrollments').textContent =
+            data.summary.totalEnrollments || '0';
+          document.getElementById('total-errors').textContent =
+            data.summary.totalErrors || '0';
+
+          // Update last update time
+          document.getElementById('last-update').textContent =
+            new Date().toLocaleTimeString();
+
+          // Update charts
+          updateCharts(data);
+        } catch (error) {
+          console.error('Failed to update metrics:', error);
+          updateSystemStatus('error');
+        }
+      }
+
+      // Update charts with new data
+      function updateCharts(data) {
+        // Update page views chart with hourly data
+        const hourlyViews = getHourlyPageViews(data.pageViews);
+        pageViewsChart.data.labels = hourlyViews.labels;
+        pageViewsChart.data.datasets[0].data = hourlyViews.data;
+        pageViewsChart.update();
+
+        // Update payments chart
+        const paymentStats = getPaymentStats(data.payments);
+        paymentsChart.data.datasets[0].data = [
+          paymentStats.successful,
+          paymentStats.failed,
+          paymentStats.pending,
+        ];
+        paymentsChart.update();
+
+        // Update payment summary
+        document.getElementById('successful-payments').textContent =
+          paymentStats.successful;
+        document.getElementById('failed-payments').textContent =
+          paymentStats.failed;
+        document.getElementById('total-revenue').textContent =
+          '$' + paymentStats.totalRevenue;
+      }
+
+      // Get hourly page views for chart
+      function getHourlyPageViews(pageViews) {
+        const hours = [];
+        const data = [];
+        const now = new Date();
+
+        for (let i = 23; i >= 0; i--) {
+          const hour = new Date(now.getTime() - i * 60 * 60 * 1000);
+          hours.push(hour.getHours() + ':00');
+
+          // Count views in this hour
+          let hourlyCount = 0;
+          Object.values(pageViews).forEach((views) => {
+            views.forEach((view) => {
+              const viewTime = new Date(view.timestamp);
+              if (
+                viewTime.getHours() === hour.getHours() &amp;&amp;
+                viewTime.toDateString() === hour.toDateString()
+              ) {
+                hourlyCount++;
+              }
+            });
+          });
+          data.push(hourlyCount);
+        }
+
+        return { labels: hours, data: data };
+      }
+
+      // Get payment statistics
+      function getPaymentStats(payments) {
+        let successful = 0,
+          failed = 0,
+          pending = 0,
+          totalRevenue = 0;
+
+        Object.entries(payments).forEach(([status, paymentList]) => {
+          if (status === 'succeeded') {
+            successful = paymentList.length;
+            totalRevenue = paymentList.reduce(
+              (sum, p) => sum + (p.amount || 0),
+              0
+            );
+          } else if (status === 'failed') {
+            failed = paymentList.length;
+          } else if (status === 'pending') {
+            pending = paymentList.length;
+          }
+        });
+
+        return { successful, failed, pending, totalRevenue };
+      }
+
+      // Update system status indicator
+      function updateSystemStatus(status) {
+        const statusEl = document.getElementById('system-status');
+        const dotEl = document.getElementById('status-dot');
+
+        switch (status) {
+          case 'online':
+            statusEl.textContent = 'Online';
+            statusEl.className = 'text-2xl font-bold text-green-600';
+            dotEl.className = 'status-dot status-online';
+            break;
+          case 'warning':
+            statusEl.textContent = 'Warning';
+            statusEl.className = 'text-2xl font-bold text-yellow-600';
+            dotEl.className = 'status-dot status-warning';
+            break;
+          case 'error':
+            statusEl.textContent = 'Error';
+            statusEl.className = 'text-2xl font-bold text-red-600';
+            dotEl.className = 'status-dot status-error';
+            break;
+        }
+      }
+
+      // Add activity to live feed
+      function addActivityItem(type, message, timestamp) {
+        const feed = document.getElementById('activity-feed');
+        const item = document.createElement('div');
+        item.className =
+          'flex items-center justify-between p-2 bg-gray-50 rounded';
+
+        const icon =
+          type === 'enrollment'
+            ? '🎓'
+            : type === 'payment'
+              ? '💳'
+              : type === 'view'
+                ? '👁️'
+                : '📊';
+
+        item.innerHTML = `
+                <div class="flex items-center">
+                    <span class="mr-2">${icon}</span>
+                    <span class="text-sm">${message}</span>
+                </div>
+                <span class="text-xs text-gray-500">${new Date(timestamp).toLocaleTimeString()}</span>
+            `;
+
+        feed.insertBefore(item, feed.firstChild);
+
+        // Keep only last 20 items
+        while (feed.children.length > 20) {
+          feed.removeChild(feed.lastChild);
+        }
+      }
+
+      // Save notification settings
+      function saveNotificationSettings() {
+        const email = document.getElementById('admin-email').value;
+        const frequency = document.getElementById(
+          'notification-frequency'
+        ).value;
+
+        // Save to localStorage for now (in production, save to database)
+        localStorage.setItem(
+          'monitorSettings',
+          JSON.stringify({
+            adminEmail: email,
+            frequency: frequency,
+            lastSaved: new Date().toISOString(),
+          })
+        );
+
+        alert('Notification settings saved!');
+      }
+
+      // Load saved settings
+      function loadSettings() {
+        const saved = localStorage.getItem('monitorSettings');
+        if (saved) {
+          const settings = JSON.parse(saved);
+          document.getElementById('admin-email').value =
+            settings.adminEmail || '';
+          document.getElementById('notification-frequency').value =
+            settings.frequency || 'daily';
+        }
+      }
+
+      // Initialize dashboard
+      document.addEventListener('DOMContentLoaded', function () {
+        initCharts();
+        loadSettings();
+        updateMetrics();
+        updateSystemStatus('online');
+
+        // Update metrics every 30 seconds
+        setInterval(updateMetrics, 30000);
+
+        // Simulate some live activity for demo
+        setTimeout(() => {
+          addActivityItem('view', 'New visitor on Programs page', new Date());
+        }, 2000);
+
+        setTimeout(() => {
+          addActivityItem(
+            'enrollment',
+            'User enrolled in Data Science course',
+            new Date()
+          );
+        }, 5000);
+      });
+    </script>
+  </body>
+</html>

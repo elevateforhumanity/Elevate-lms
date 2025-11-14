@@ -1,0 +1,162 @@
+{
+  "program": "Milady RISE Partner Program",
+  "partner_name": "Elevate for Humanity Career and Technical Institute",
+  "partner_code": "efhcti-rise295",
+  "redemptions_available": 1000,
+  "contact": {
+    "name": "Jessica Boyd",
+    "title": "Senior Community and Insights Specialist",
+    "email": "jessica.boyd@cengage.com",
+    "phone": "(919) 623-4623",
+    "timezone": "Eastern"
+  },
+  "certification": {
+    "name": "Client Well-Being & Safety Certification",
+    "topics": [
+      "Domestic Violence Awareness",
+      "Human Trafficking Awareness",
+      "Infection Control (2-hour course)"
+    ],
+    "enrollment_url": "https://www.miladytraining.com/bundles/client-well-being-safety-certification",
+    "benefits": [
+      "Certification in Client Well-Being & Safety",
+      "Eligibility for $500 RISE Scholarship",
+      "10 scholarships awarded twice yearly (Spring and Fall)"
+    ]
+  },
+  "enrollment_instructions": [
+    {
+      "step": 1,
+      "action": "Direct students to enrollment page",
+      "url": "https://www.miladytraining.com/bundles/client-well-being-safety-certification"
+    },
+    {
+      "step": 2,
+      "action": "Click 'Enroll Now' and register for account (or login)"
+    },
+    {
+      "step": 3,
+      "action": "At checkout, enter school's custom promo code",
+      "code": "efhcti-rise295",
+      "note": "Ensure no periods, commas, or spaces before or after the code"
+    },
+    {
+      "step": 4,
+      "action": "Complete enrollment"
+    }
+  ],
+  "best_practices": [
+    {
+      "title": "Lead by Example",
+      "description": "Take the course and get certified yourself. Show students and staff the importance by completing it yourself. Schools report higher completion rates when directors and leaders complete the certification first."
+    },
+    {
+      "title": "Make it Required",
+      "description": "Don't make it optional! Integrate courses into daily classroom lessons or assign as homework. Making it required emphasizes the importance of this content and certification."
+    },
+    {
+      "title": "Maximize Downtime",
+      "description": "Offer courses as a way to fill downtime. Post instructions in breakrooms or study areas so students have no excuses for not knowing how to take the courses."
+    }
+  ],
+  "marketing_resources": {
+    "logos": "Available for download",
+    "usage": "Add to website and social channels to promote RISE Partner participation"
+  },
+  "integration_points": {
+    "lms": {
+      "course_catalog": true,
+      "enrollment_tracking": true,
+      "certification_tracking": true,
+      "scholarship_application": true
+    },
+    "student_portal": {
+      "display_certification_status": true,
+      "show_scholarship_eligibility": true,
+      "track_completion": true
+    },
+    "admin_dashboard": {
+      "monitor_enrollments": true,
+      "track_code_redemptions": true,
+      "view_completion_rates": true,
+      "manage_scholarship_applications": true
+    }
+  },
+  "implementation_checklist": [
+    "Add Milady RISE certification to course catalog",
+    "Create enrollment page with promo code integration",
+    "Set up certification tracking system",
+    "Configure scholarship application workflow",
+    "Add RISE Partner logos to website",
+    "Create student communication materials",
+    "Train staff on enrollment process",
+    "Integrate with existing LMS",
+    "Set up completion notifications",
+    "Create reporting dashboard for tracking"
+  ],
+  "scholarship_details": {
+    "amount": 500,
+    "currency": "USD",
+    "frequency": "Twice yearly",
+    "periods": ["Spring", "Fall"],
+    "recipients_per_period": 10,
+    "eligibility": "Must complete Client Well-Being & Safety Certification",
+    "application_process": "Students become eligible upon course completion"
+  },
+  "technical_integration": {
+    "api_endpoints": {
+      "enrollment": "/api/milady-rise/enroll",
+      "verification": "/api/milady-rise/verify-code",
+      "completion": "/api/milady-rise/track-completion",
+      "scholarship": "/api/milady-rise/scholarship-application"
+    },
+    "database_tables": [
+      "milady_rise_enrollments",
+      "milady_rise_completions",
+      "milady_rise_certifications",
+      "milady_rise_scholarship_applications"
+    ],
+    "required_fields": [
+      "student_id",
+      "enrollment_date",
+      "promo_code_used",
+      "completion_status",
+      "certification_date",
+      "scholarship_eligible"
+    ]
+  },
+  "reporting_metrics": [
+    "Total enrollments using code",
+    "Completion rate",
+    "Certification rate",
+    "Scholarship applications submitted",
+    "Scholarship awards received",
+    "Code redemptions remaining",
+    "Student engagement metrics",
+    "Time to completion average"
+  ],
+  "communication_templates": {
+    "student_invitation": {
+      "subject": "Get Certified in Client Well-Being & Safety - $500 Scholarship Opportunity",
+      "body": "Complete the Milady RISE certification and become eligible for a $500 scholarship. Use code: efhcti-rise295"
+    },
+    "completion_notification": {
+      "subject": "Congratulations! You're Now Certified",
+      "body": "You've completed the Client Well-Being & Safety Certification. You're now eligible to apply for the $500 RISE Scholarship."
+    },
+    "scholarship_reminder": {
+      "subject": "Don't Forget - Apply for the $500 RISE Scholarship",
+      "body": "You're eligible! Applications for the [Spring/Fall] RISE Scholarship are now open."
+    }
+  },
+  "status": "active",
+  "activation_date": "2025-07-20",
+  "partner_benefits": [
+    "Free certification courses for all students and staff",
+    "Access to 1,000 course redemptions",
+    "Scholarship opportunities for students",
+    "Marketing materials and partner logos",
+    "Recognition as Milady RISE Partner",
+    "Community impact through education on critical topics"
+  ]
+}

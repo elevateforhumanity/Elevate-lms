@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "programs": "Programs",
+    "about": "About",
+    "contact": "Contact",
+    "studentPortal": "Student Portal",
+    "signIn": "Sign In",
+    "applyNow": "Apply Now"
+  },
+  "hero": {
+    "title": "Transform Your Career with Free Training",
+    "subtitle": "Build in-demand skills, earn industry certifications, and launch your dream career—100% funded through federal programs.",
+    "funded": "100% Funded",
+    "pathways": "8 Career Pathways",
+    "certifications": "Industry Certifications",
+    "browsePrograms": "Browse Programs"
+  },
+  "programs": {
+    "title": "Featured Programs",
+    "viewAll": "View All Programs",
+    "allPrograms": "All Programs",
+    "allProgramsDesc": "View all available training programs",
+    "barber": "Barber Apprenticeship",
+    "barberDesc": "State-approved barber training program",
+    "building": "Building Services Technician",
+    "buildingDesc": "Comprehensive building maintenance training",
+    "cna": "CNA Training",
+    "cnaDesc": "Certified Nursing Assistant certification",
+    "hvac": "HVAC & Welding",
+    "hvacDesc": "Heating, ventilation, and welding skills"
+  }
+}

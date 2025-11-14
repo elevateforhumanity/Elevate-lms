@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Digital Binder | Student Progress Tracking | Elevate for Humanity
+    </title>
+    <meta
+      name="description"
+      content="Track your learning progress, view milestones, and access certificates through your personalized digital binder."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen" x-data="digitalBinderApp()">
+    <!-- EFH Universal Header -->
+    <div id="efh-header"></div>
+
+    <div class="container mx-auto px-6 py-8">
+      <!-- Binder Header -->
+      <div
+        class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl p-8 mb-8"
+      >
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-3xl font-bold mb-2">Digital Learning Binder</h1>
+            <p
+              class="text-blue-100"
+              x-text="`Track your progress in: ${programName}`"
+            ></p>
+          </div>
+          <div class="text-right">
+            <div
+              class="text-4xl font-bold"
+              x-text="overallProgress + '%'"
+            ></div>
+            <div class="text-blue-100">Complete</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Overview -->
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">
+              Modules Completed
+            </h3>
+            <div class="bg-blue-100 p-2 rounded-full">
+              <svg
+                class="w-6 h-6 text-blue-600"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="text-3xl font-bold text-blue-600"
+            x-text="completedModules + ' / ' + totalModules"
+          ></div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">Hours Completed</h3>
+            <div class="bg-green-100 p-2 rounded-full">
+              <svg
+                class="w-6 h-6 text-green-600"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="text-3xl font-bold text-green-600"
+            x-text="completedHours + ' / ' + totalHours"
+          ></div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-gray-900">
+              Certificates Earned
+            </h3>
+            <div class="bg-purple-100 p-2 rounded-full">
+              <svg
+                class="w-6 h-6 text-purple-600"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm0 2h12v8H4V6z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="text-3xl font-bold text-purple-600"
+            x-text="certificates.length"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">
+          Overall Progress
+        </h3>
+        <div class="w-full bg-gray-200 rounded-full h-6">
+          <div
+            class="bg-gradient-to-r from-blue-600 to-purple-600 h-6 rounded-full transition-all duration-500"
+            :style="`width: ${overallProgress}%`"
+          ></div>
+        </div>
+        <div class="flex justify-between text-sm text-gray-600 mt-2">
+          <span>Started</span>
+          <span x-text="overallProgress + '% Complete'"></span>
+          <span>Graduated</span>
+        </div>
+      </div>
+
+      <!-- Module Progress -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h3 class="text-lg font-semibold text-gray-900 mb-6">
+          Module Progress
+        </h3>
+        <div class="space-y-4">
+          <template x-for="module in modules" :key="module.id">
+            <div class="border border-gray-200 rounded-lg p-4">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="font-medium text-gray-900" x-text="module.name"></h4>
+                <span
+                  :class="getModuleStatusClass(module.status)"
+                  class="px-2 py-1 rounded-full text-xs font-medium"
+                  x-text="module.status"
+                ></span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                <div
+                  class="bg-blue-600 h-2 rounded-full"
+                  :style="`width: ${module.progress}%`"
+                ></div>
+              </div>
+              <div class="flex justify-between text-sm text-gray-600">
+                <span x-text="module.progress + '% Complete'"></span>
+                <span x-text="module.hours + ' hours'"></span>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- Certificates Section -->
+      <div
+        class="bg-white rounded-lg shadow-md p-6 mb-8"
+        x-show="certificates.length > 0"
+      >
+        <h3 class="text-lg font-semibold text-gray-900 mb-6">
+          Your Certificates
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <template x-for="certificate in certificates" :key="certificate.id">
+            <div
+              class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
+            >
+              <div class="flex items-center mb-4">
+                <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                  <svg
+                    class="w-8 h-8 text-yellow-600"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm0 2h12v8H4V6z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4
+                    class="font-semibold text-gray-900"
+                    x-text="certificate.name"
+                  ></h4>
+                  <p
+                    class="text-sm text-gray-600"
+                    x-text="certificate.issuer"
+                  ></p>
+                </div>
+              </div>
+              <p
+                class="text-sm text-gray-600 mb-4"
+                x-text="`Earned on: ${certificate.date}`"
+              ></p>
+              <div class="flex gap-3">
+                <button
+                  type="button"
+                  @click="viewCertificate(certificate.id)"
+                  class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  View Certificate
+                </button>
+                <button
+                  type="button"
+                  @click="downloadCertificate(certificate.id)"
+                  class="border border-blue-600 text-blue-600 py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors"
+                >
+                  Download
+                </button>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- Learning Milestones -->
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-lg font-semibold text-gray-900 mb-6">
+          Learning Milestones
+        </h3>
+        <div class="space-y-4">
+          <template x-for="milestone in milestones" :key="milestone.id">
+            <div class="flex items-center">
+              <div
+                :class="milestone.completed ? 'bg-green-500' : 'bg-gray-300'"
+                class="w-4 h-4 rounded-full mr-4 flex-shrink-0"
+              >
+                <svg
+                  x-show="milestone.completed"
+                  class="w-4 h-4 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h4
+                  :class="milestone.completed ? 'text-gray-900' : 'text-gray-500'"
+                  class="font-medium"
+                  x-text="milestone.title"
+                ></h4>
+                <p
+                  :class="milestone.completed ? 'text-gray-600' : 'text-gray-400'"
+                  class="text-sm"
+                  x-text="milestone.description"
+                ></p>
+              </div>
+              <span
+                x-show="milestone.completed"
+                class="text-sm text-green-600 font-medium"
+                x-text="milestone.date"
+              ></span>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load Shared Components -->
+    <script src="shared/supabase.js"></script>
+    <script>
+      // Load shared navigation
+      fetch('shared/navigation.html')
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById('shared-nav').innerHTML = html;
+        });
+
+      function digitalBinderApp() {
+        return {
+          programName: 'AI Fundamentals Program',
+          overallProgress: 68,
+          completedModules: 7,
+          totalModules: 10,
+          completedHours: 82,
+          totalHours: 120,
+
+          modules: [
+            {
+              id: 1,
+              name: 'Introduction to AI &amp; Machine Learning',
+              progress: 100,
+              status: 'Completed',
+              hours: 12,
+            },
+            {
+              id: 2,
+              name: 'Python Programming Fundamentals',
+              progress: 100,
+              status: 'Completed',
+              hours: 16,
+            },
+            {
+              id: 3,
+              name: 'Data Analysis &amp; Visualization',
+              progress: 100,
+              status: 'Completed',
+              hours: 14,
+            },
+            {
+              id: 4,
+              name: 'Machine Learning Algorithms',
+              progress: 90,
+              status: 'In Progress',
+              hours: 18,
+            },
+            {
+              id: 5,
+              name: 'Deep Learning &amp; Neural Networks',
+              progress: 75,
+              status: 'In Progress',
+              hours: 20,
+            },
+            {
+              id: 6,
+              name: 'Natural Language Processing',
+              progress: 0,
+              status: 'Locked',
+              hours: 16,
+            },
+            {
+              id: 7,
+              name: 'Computer Vision',
+              progress: 0,
+              status: 'Locked',
+              hours: 14,
+            },
+            {
+              id: 8,
+              name: 'AI Ethics &amp; Responsible AI',
+              progress: 0,
+              status: 'Locked',
+              hours: 8,
+            },
+            {
+              id: 9,
+              name: 'Capstone Project',
+              progress: 0,
+              status: 'Locked',
+              hours: 16,
+            },
+            {
+              id: 10,
+              name: 'Career Preparation &amp; Portfolio',
+              progress: 0,
+              status: 'Locked',
+              hours: 6,
+            },
+          ],
+
+          certificates: [
+            {
+              id: 1,
+              name: 'Python Programming Certificate',
+              issuer: 'Elevate for Humanity',
+              date: '2024-08-15',
+              verificationId: 'EFH-PYTHON-2024-001',
+            },
+            {
+              id: 2,
+              name: 'Data Analysis Certificate',
+              issuer: 'Elevate for Humanity',
+              date: '2024-08-20',
+              verificationId: 'EFH-DATA-2024-002',
+            },
+          ],
+
+          milestones: [
+            {
+              id: 1,
+              title: 'Program Enrollment',
+              description: 'Successfully enrolled in AI Fundamentals',
+              completed: true,
+              date: '2024-07-01',
+            },
+            {
+              id: 2,
+              title: 'First Module Complete',
+              description:
+                'Completed Introduction to AI &amp; Machine Learning',
+              completed: true,
+              date: '2024-07-15',
+            },
+            {
+              id: 3,
+              title: 'Programming Proficiency',
+              description: 'Demonstrated Python programming skills',
+              completed: true,
+              date: '2024-08-01',
+            },
+            {
+              id: 4,
+              title: 'Mid-Program Assessment',
+              description: 'Passed comprehensive skills assessment',
+              completed: true,
+              date: '2024-08-20',
+            },
+            {
+              id: 5,
+              title: 'Capstone Project',
+              description: 'Complete final AI project',
+              completed: false,
+              date: '',
+            },
+            {
+              id: 6,
+              title: 'Program Graduation',
+              description: 'Earn final certificate and graduate',
+              completed: false,
+              date: '',
+            },
+          ],
+
+          getModuleStatusClass(status) {
+            switch (status) {
+              case 'Completed':
+                return 'bg-green-100 text-green-800';
+              case 'In Progress':
+                return 'bg-blue-100 text-blue-800';
+              case 'Locked':
+                return 'bg-gray-100 text-gray-500';
+              default:
+                return 'bg-gray-100 text-gray-800';
+            }
+          },
+
+          viewCertificate(id) {
+            // In a real implementation, this would open the certificate viewer
+            alert(`Opening certificate viewer for certificate ID: ${id}`);
+          },
+
+          downloadCertificate(id) {
+            // In a real implementation, this would download the certificate PDF
+            alert(`Downloading certificate with ID: ${id}`);
+          },
+        };
+      }
+    </script>
+
+    <!-- EFH Universal Footer -->
+    <div id="efh-footer"></div>
+
+    <!-- Load Header/Footer -->
+    <script>
+      (async () => {
+        try {
+          const [headerRes, footerRes] = await Promise.all([
+            fetch('/ui/header.html'),
+            fetch('/ui/footer.html'),
+          ]);
+
+          if (headerRes.ok) {
+            const headerHTML = await headerRes.text();
+            document.getElementById('efh-header').innerHTML = headerHTML;
+          }
+
+          if (footerRes.ok) {
+            const footerHTML = await footerRes.text();
+            document.getElementById('efh-footer').innerHTML = footerHTML;
+          }
+        } catch (error) {
+          console.log('Header/footer loading failed:', error);
+        }
+      })();
+    </script>
+  </body>
+</html>

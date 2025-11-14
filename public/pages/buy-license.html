@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Elevate License | Secure Checkout</title>
+    <meta
+      name="description"
+      content="Purchase your Elevate Platform license with secure Stripe checkout. Instant delivery of license keys and download links."
+    />
+    <link
+      rel="canonical"
+      href="https://portal.elevateforhumanity.org/buy-license.html"
+    />
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem;
+        margin: 0;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .form-box {
+        background: #fff;
+        padding: 2.5rem;
+        border-radius: 15px;
+        max-width: 600px;
+        margin: auto;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .product-card {
+        border: 2px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .product-card:hover {
+        border-color: #0070f3;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 112, 243, 0.1);
+      }
+
+      .product-card.selected {
+        border-color: #0070f3;
+        background: #f0f8ff;
+      }
+
+      .product-card .badge {
+        position: absolute;
+        top: -8px;
+        right: 15px;
+        background: #0070f3;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .product-card .popular {
+        background: #10b981;
+      }
+
+      .product-card .enterprise {
+        background: #f59e0b;
+      }
+
+      .price {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #0070f3;
+        margin: 0.5rem 0;
+      }
+
+      .features {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0;
+      }
+
+      .features li {
+        padding: 0.25rem 0;
+        color: #666;
+      }
+
+      .features li:before {
+        content: '✅ ';
+        margin-right: 0.5rem;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 12px 16px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        border: 2px solid #e5e7eb;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #0070f3;
+      }
+
+      .checkout-btn {
+        padding: 16px;
+        background: linear-gradient(135deg, #0070f3, #0051cc);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .checkout-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 112, 243, 0.3);
+      }
+
+      .checkout-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .loading {
+        display: none;
+      }
+
+      .loading.active {
+        display: inline-block;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      h2 {
+        margin-top: 0;
+        color: #1a202c;
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .security-badges {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1.5rem 0;
+        flex-wrap: wrap;
+      }
+
+      .security-badge {
+        background: #f8f9fa;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        color: #666;
+        border: 1px solid #e5e7eb;
+      }
+
+      .form-section {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: #f8f9fa;
+        border-radius: 10px;
+      }
+
+      .error-message {
+        background: #fee;
+        color: #c53030;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        display: none;
+      }
+
+      .success-message {
+        background: #f0fff4;
+        color: #22543d;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .form-box {
+          padding: 1.5rem;
+          margin: 1rem;
+        }
+        .product-grid {
+          grid-template-columns: 1fr;
+        }
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body x-data="licenseStore()">
+    <div class="container">
+      <div class="form-box">
+        <h2>🎯 Purchase Elevate License</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem">
+          Secure checkout powered by Stripe. Instant license delivery via email.
+        </p>
+
+        <div class="security-badges">
+          <div class="security-badge">🔒 SSL Encrypted</div>
+          <div class="security-badge">💳 Stripe Secure</div>
+          <div class="security-badge">📧 Instant Delivery</div>
+          <div class="security-badge">🛡️ Licensed Use</div>
+        </div>
+
+        <div
+          class="error-message"
+          x-show="errorMessage"
+          x-text="errorMessage"
+        ></div>
+        <div
+          class="success-message"
+          x-show="successMessage"
+          x-text="successMessage"
+        ></div>
+
+        <div class="form-section">
+          <label for="email"><strong>Your Email Address</strong></label>
+          <input
+            type="email"
+            id="email"
+            x-model="customerEmail"
+            placeholder="you@company.com"
+            required
+            :disabled="isProcessing"
+          />
+          <small style="color: #666"
+            >License keys and download links will be sent to this email</small
+          >
+        </div>
+
+        <div class="form-section">
+          <label><strong>Choose Your License Package</strong></label>
+          <div class="product-grid">
+            <div
+              class="product-card"
+              :class="{ selected: selectedProduct === 'price_1DemoTemplate' }"
+              @click="selectProduct('price_1DemoTemplate', 39, 'Landing Page Demo Template')"
+            >
+              <div class="badge">Quick Start</div>
+              <h3>Landing Page Demo</h3>
+              <div class="price">$39</div>
+              <ul class="features">
+                <li>Complete HTML template</li>
+                <li>Sister sites navigation</li>
+                <li>Setup documentation</li>
+                <li>Single use license</li>
+              </ul>
+            </div>
+
+            <div
+              class="product-card"
+              :class="{ selected: selectedProduct === 'price_1Workbooks' }"
+              @click="selectProduct('price_1Workbooks', 29, 'Workforce Workbooks Bundle')"
+            >
+              <h3>PDF Workbooks Bundle</h3>
+              <div class="price">$29</div>
+              <ul class="features">
+                <li>50+ professional PDFs</li>
+                <li>Career readiness guides</li>
+                <li>WIOA-aligned content</li>
+                <li>Commercial license</li>
+              </ul>
+            </div>
+
+            <div
+              class="product-card"
+              :class="{ selected: selectedProduct === 'price_1SiteClone' }"
+              @click="selectProduct('price_1SiteClone', 399, 'Site Clone Package')"
+            >
+              <h3>Site Clone Package</h3>
+              <div class="price">$399</div>
+              <ul class="features">
+                <li>Complete source code</li>
+                <li>Basic license protection</li>
+                <li>Documentation included</li>
+                <li>Commercial license</li>
+              </ul>
+            </div>
+
+            <div
+              class="product-card"
+              :class="{ selected: selectedProduct === 'price_1WhiteLabel' }"
+              @click="selectProduct('price_1WhiteLabel', 599, 'White-Label Platform')"
+            >
+              <div class="badge popular">Popular</div>
+              <h3>White-Label Platform</h3>
+              <div class="price">$599</div>
+              <ul class="features">
+                <li>Full platform access</li>
+                <li>Custom branding</li>
+                <li>PDF workbooks included</li>
+                <li>Reseller license</li>
+              </ul>
+            </div>
+
+            <div
+              class="product-card"
+              :class="{ selected: selectedProduct === 'price_1Enterprise' }"
+              @click="selectProduct('price_1Enterprise', 1299, 'Enterprise License System')"
+            >
+              <div class="badge enterprise">Enterprise</div>
+              <h3>Enterprise System</h3>
+              <div class="price">$1,299</div>
+              <ul class="features">
+                <li>Advanced license system</li>
+                <li>AI course creation</li>
+                <li>Docker deployment</li>
+                <li>Enterprise license</li>
+              </ul>
+            </div>
+
+            <div
+              class="product-card"
+              :class="{ selected: selectedProduct === 'price_1DFYSetup' }"
+              @click="selectProduct('price_1DFYSetup', 1999, 'Done-for-You Setup')"
+            >
+              <div class="badge enterprise">Premium</div>
+              <h3>Done-for-You Setup</h3>
+              <div class="price">$1,999</div>
+              <ul class="features">
+                <li>Complete setup service</li>
+                <li>Custom branding</li>
+                <li>30-day support</li>
+                <li>Training included</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div x-show="selectedProduct" class="form-section">
+          <h3>Order Summary</h3>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 1rem;
+              background: white;
+              border-radius: 8px;
+            "
+          >
+            <div>
+              <strong x-text="selectedProductName"></strong>
+              <br />
+              <small style="color: #666">Instant digital delivery</small>
+            </div>
+            <div style="font-size: 1.5rem; font-weight: bold; color: #0070f3">
+              $<span x-text="selectedPrice"></span>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="checkout-btn"
+          @click="checkout()"
+          :disabled="!selectedProduct || !customerEmail || isProcessing"
+        >
+          <span x-show="!isProcessing">🔐 Secure Checkout with Stripe</span>
+          <span x-show="isProcessing">
+            <span class="loading active">⏳</span> Processing...
+          </span>
+        </button>
+
+        <p
+          style="
+            text-align: center;
+            color: #666;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+          "
+        >
+          By purchasing, you agree to our
+          <a href="/policies/terms.html">Terms of Service</a> and
+          <a href="/policies/privacy.html">Privacy Policy</a>. All sales are
+          final. License keys are delivered instantly via email.
+        </p>
+
+        <div
+          style="
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e7eb;
+          "
+        >
+          <p style="color: #666; margin: 0">
+            Need help? Contact
+            <a href="mailto:elevateforhumanity@gmail.com"
+              >elevateforhumanity@gmail.com</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function licenseStore() {
+        return {
+          customerEmail: '',
+          selectedProduct: '',
+          selectedPrice: 0,
+          selectedProductName: '',
+          isProcessing: false,
+          errorMessage: '',
+          successMessage: '',
+
+          stripe: Stripe('pk_test_51234567890abcdef'), // Replace with your actual Stripe publishable key
+
+          selectProduct(priceId, price, name) {
+            this.selectedProduct = priceId;
+            this.selectedPrice = price;
+            this.selectedProductName = name;
+            this.errorMessage = '';
+          },
+
+          async checkout() {
+            if (!this.selectedProduct || !this.customerEmail) {
+              this.errorMessage =
+                'Please select a product and enter your email address.';
+              return;
+            }
+
+            if (!this.isValidEmail(this.customerEmail)) {
+              this.errorMessage = 'Please enter a valid email address.';
+              return;
+            }
+
+            this.isProcessing = true;
+            this.errorMessage = '';
+
+            try {
+              // Create checkout session
+              const response = await fetch('/api/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  email: this.customerEmail,
+                  priceId: this.selectedProduct,
+                  productName: this.selectedProductName,
+                  price: this.selectedPrice,
+                }),
+              });
+
+              if (!response.ok) {
+                throw new Error('Failed to create checkout session');
+              }
+
+              const data = await response.json();
+
+              // Redirect to Stripe Checkout
+              const result = await this.stripe.redirectToCheckout({
+                sessionId: data.sessionId,
+              });
+
+              if (result.error) {
+                throw new Error(result.error.message);
+              }
+            } catch (error) {
+              console.error('Checkout error:', error);
+              this.errorMessage =
+                'Checkout failed: ' +
+                error.message +
+                '. Please try again or contact support.';
+            } finally {
+              this.isProcessing = false;
+            }
+          },
+
+          isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

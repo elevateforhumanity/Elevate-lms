@@ -1,0 +1,1152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employer Partnership Dashboard - DOL/DWD Compliance</title>
+    <meta
+      name="description"
+      content="Employer partnership management system for federal workforce development compliance"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="scripts/efh-universal.v2.2.js"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Navigation Header -->
+    <nav
+      role="navigation"
+      class="bg-white border-b border-gray-200 sticky top-0 z-50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="compliance.html" class="flex items-center">
+              <i
+                data-lucide="arrow-left"
+                class="h-5 w-5 mr-2 text-gray-600"
+              ></i>
+              <span class="text-gray-600">Back to Compliance Portal</span>
+            </a>
+          </div>
+          <div class="flex items-center">
+            <h1 class="text-xl font-bold text-gray-900">
+              Employer Partnership Dashboard
+            </h1>
+          </div>
+          <div class="flex items-center">
+            <div
+              class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium"
+            >
+              🤝 Employer Integration
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <!-- Page Header -->
+      <div class="mb-8">
+        <div
+          class="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg p-6 text-white"
+        >
+          <h2 class="text-2xl font-bold mb-2">
+            Employer Partnership Management
+          </h2>
+          <p class="opacity-90">
+            Federal compliance tracking for employer partnerships and job
+            placements
+          </p>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="active-employers">67</div>
+              <div class="text-sm opacity-90">Active Employers</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="job-placements">234</div>
+              <div class="text-sm opacity-90">Job Placements</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="retention-rate">87%</div>
+              <div class="text-sm opacity-90">90-Day Retention</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="avg-wage">$18.50</div>
+              <div class="text-sm opacity-90">Average Wage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <button
+          type="button"
+          onclick="showAddEmployerForm()"
+          class="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow text-left"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="building" class="h-8 w-8 text-cyan-600"></i>
+            <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs"
+              >New</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Add Employer</h3>
+          <p class="text-gray-600 text-sm">Register new employer partner</p>
+        </button>
+
+        <button
+          type="button"
+          onclick="showJobPlacementForm()"
+          class="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow text-left"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="user-plus" class="h-8 w-8 text-green-600"></i>
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs"
+              >Placement</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Record Placement</h3>
+          <p class="text-gray-600 text-sm">Log new job placement</p>
+        </button>
+
+        <button
+          type="button"
+          onclick="showPartnershipReport()"
+          class="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow text-left"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="chart-bar" class="h-8 w-8 text-purple-600"></i>
+            <span
+              class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs"
+              >Report</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Partnership Report</h3>
+          <p class="text-gray-600 text-sm">Generate partnership analytics</p>
+        </button>
+
+        <button
+          type="button"
+          onclick="showRetentionTracking()"
+          class="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow text-left"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="clock" class="h-8 w-8 text-orange-600"></i>
+            <span
+              class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs"
+              >Retention</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Retention Tracking</h3>
+          <p class="text-gray-600 text-sm">Monitor job retention rates</p>
+        </button>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="bg-white rounded-lg border mb-6">
+        <div class="border-b border-gray-200">
+          <nav role="navigation" class="-mb-px flex">
+            <button
+              type="button"
+              onclick="showTab('employers')"
+              id="employers-tab"
+              class="w-1/3 py-2 px-1 text-center border-b-2 border-cyan-500 font-medium text-sm text-cyan-600"
+            >
+              Employer Partners
+            </button>
+            <button
+              type="button"
+              onclick="showTab('placements')"
+              id="placements-tab"
+              class="w-1/3 py-2 px-1 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300"
+            >
+              Job Placements
+            </button>
+            <button
+              type="button"
+              onclick="showTab('commitments')"
+              id="commitments-tab"
+              class="w-1/3 py-2 px-1 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300"
+            >
+              Hiring Commitments
+            </button>
+          </nav>
+        </div>
+
+        <!-- Employers Tab -->
+        <div id="employers-content" class="p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold">Employer Partners</h3>
+            <div class="flex space-x-2">
+              <select
+                id="industry-filter"
+                onchange="filterEmployers()"
+                class="border rounded px-3 py-2 text-sm"
+              >
+                <option value="">All Industries</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="manufacturing">Manufacturing</option>
+                <option value="technology">Technology</option>
+                <option value="construction">Construction</option>
+                <option value="retail">Retail</option>
+                <option value="logistics">Logistics</option>
+              </select>
+              <input
+                type="text"
+                id="search-employers"
+                placeholder="Search employers..."
+                class="border rounded px-3 py-2 text-sm"
+                onkeyup="searchEmployers()"
+              />
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Company
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Industry
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Contact
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Placements
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Status
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                id="employers-table-body"
+                class="bg-white divide-y divide-gray-200"
+              >
+                <!-- Employer records will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Job Placements Tab -->
+        <div id="placements-content" class="p-6 hidden">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold">Job Placements</h3>
+            <div class="flex space-x-2">
+              <select
+                id="placement-status-filter"
+                onchange="filterPlacements()"
+                class="border rounded px-3 py-2 text-sm"
+              >
+                <option value="">All Status</option>
+                <option value="placed">Placed</option>
+                <option value="retained">Retained</option>
+                <option value="terminated">Terminated</option>
+                <option value="completed">Completed</option>
+              </select>
+              <input
+                type="text"
+                id="search-placements"
+                placeholder="Search placements..."
+                class="border rounded px-3 py-2 text-sm"
+                onkeyup="searchPlacements()"
+              />
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Participant
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Employer
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Job Title
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Starting Wage
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Start Date
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Status
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                id="placements-table-body"
+                class="bg-white divide-y divide-gray-200"
+              >
+                <!-- Placement records will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Hiring Commitments Tab -->
+        <div id="commitments-content" class="p-6 hidden">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold">Hiring Commitments</h3>
+            <button
+              type="button"
+              onclick="showCommitmentForm()"
+              class="bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700 text-sm"
+            >
+              New Commitment
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id="commitments-grid">
+              <!-- Commitment cards will be loaded here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Employer Modal -->
+      <div
+        id="add-employer-modal"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50"
+      >
+        <div class="flex items-center justify-center min-h-screen p-4">
+          <div
+            class="bg-white rounded-lg max-w-2xl w-full max-h-screen overflow-y-auto"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Add Employer Partner</h3>
+                <button
+                  type="button"
+                  onclick="hideAddEmployerForm()"
+                  class="text-gray-400 hover:text-gray-600"
+                  aria-label="Action button"
+                >
+                  <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+              </div>
+
+              <form id="employer-form" onsubmit="addEmployer(event)">
+                <div class="space-y-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Company Name</label
+                      >
+                      <input
+                        type="text"
+                        aria-label="text input"
+                        name="company_name"
+                        required
+                        class="w-full border rounded px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Industry</label
+                      >
+                      <select
+                        name="industry"
+                        required
+                        class="w-full border rounded px-3 py-2"
+                      >
+                        <option value="">Select Industry</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="technology">Technology</option>
+                        <option value="construction">Construction</option>
+                        <option value="retail">Retail</option>
+                        <option value="logistics">Logistics</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Contact Name</label
+                      >
+                      <input
+                        type="text"
+                        aria-label="text input"
+                        name="contact_name"
+                        class="w-full border rounded px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Contact Email</label
+                      >
+                      <input
+                        type="email"
+                        aria-label="email input"
+                        name="contact_email"
+                        class="w-full border rounded px-3 py-2"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Contact Phone</label
+                      >
+                      <input
+                        type="tel"
+                        aria-label="tel input"
+                        name="contact_phone"
+                        class="w-full border rounded px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Company Size</label
+                      >
+                      <select
+                        name="company_size"
+                        class="w-full border rounded px-3 py-2"
+                      >
+                        <option value="">Select Size</option>
+                        <option value="1-10">1-10 employees</option>
+                        <option value="11-50">11-50 employees</option>
+                        <option value="51-200">51-200 employees</option>
+                        <option value="201-1000">201-1000 employees</option>
+                        <option value="1000+">1000+ employees</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Address</label
+                    >
+                    <textarea
+                      name="address"
+                      rows="3"
+                      class="w-full border rounded px-3 py-2"
+                      placeholder="Company address"
+                    ></textarea>
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Hiring Commitments</label
+                    >
+                    <textarea
+                      name="hiring_commitments"
+                      rows="3"
+                      class="w-full border rounded px-3 py-2"
+                      placeholder="Describe hiring commitments, number of positions, timeframe, etc."
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="flex justify-end space-x-3 mt-6">
+                  <button
+                    type="button"
+                    onclick="hideAddEmployerForm()"
+                    class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="bg-cyan-600 text-white px-4 py-2 rounded hover:bg-cyan-700"
+                  >
+                    Add Employer
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job Placement Modal -->
+      <div
+        id="job-placement-modal"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50"
+      >
+        <div class="flex items-center justify-center min-h-screen p-4">
+          <div
+            class="bg-white rounded-lg max-w-2xl w-full max-h-screen overflow-y-auto"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Record Job Placement</h3>
+                <button
+                  type="button"
+                  onclick="hideJobPlacementForm()"
+                  class="text-gray-400 hover:text-gray-600"
+                  aria-label="Action button"
+                >
+                  <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+              </div>
+
+              <form id="placement-form" onsubmit="recordPlacement(event)">
+                <div class="space-y-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Participant</label
+                      >
+                      <select
+                        name="user_id"
+                        required
+                        class="w-full border rounded px-3 py-2"
+                      >
+                        <option value="">Select Participant</option>
+                        <!-- Will be populated dynamically -->
+                      </select>
+                    </div>
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Employer</label
+                      >
+                      <select
+                        name="employer_id"
+                        required
+                        class="w-full border rounded px-3 py-2"
+                      >
+                        <option value="">Select Employer</option>
+                        <!-- Will be populated dynamically -->
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Job Title</label
+                      >
+                      <input
+                        type="text"
+                        aria-label="text input"
+                        name="job_title"
+                        required
+                        class="w-full border rounded px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Employment Type</label
+                      >
+                      <select
+                        name="employment_type"
+                        required
+                        class="w-full border rounded px-3 py-2"
+                      >
+                        <option value="">Select Type</option>
+                        <option value="full-time">Full-time</option>
+                        <option value="part-time">Part-time</option>
+                        <option value="temporary">Temporary</option>
+                        <option value="contract">Contract</option>
+                        <option value="apprenticeship">Apprenticeship</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Starting Wage (Hourly)</label
+                      >
+                      <input
+                        type="number"
+                        aria-label="number input"
+                        name="hourly_wage"
+                        step="0.01"
+                        class="w-full border rounded px-3 py-2"
+                        placeholder="0.00"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Annual Salary</label
+                      >
+                      <input
+                        type="number"
+                        aria-label="number input"
+                        name="annual_salary"
+                        step="1"
+                        class="w-full border rounded px-3 py-2"
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Start Date</label
+                      >
+                      <input
+                        type="date"
+                        aria-label="date input"
+                        name="start_date"
+                        required
+                        class="w-full border rounded px-3 py-2"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Expected End Date (if temporary)</label
+                      >
+                      <input
+                        type="date"
+                        aria-label="date input"
+                        name="end_date"
+                        class="w-full border rounded px-3 py-2"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Benefits Package</label
+                    >
+                    <div class="space-y-2">
+                      <label class="flex items-center">
+                        <input
+                          type="checkbox"
+                          aria-label="checkbox input"
+                          name="benefits"
+                          value="health_insurance"
+                          class="mr-2"
+                        />
+                        Health Insurance
+                      </label>
+                      <label class="flex items-center">
+                        <input
+                          type="checkbox"
+                          aria-label="checkbox input"
+                          name="benefits"
+                          value="dental_vision"
+                          class="mr-2"
+                        />
+                        Dental/Vision
+                      </label>
+                      <label class="flex items-center">
+                        <input
+                          type="checkbox"
+                          aria-label="checkbox input"
+                          name="benefits"
+                          value="retirement"
+                          class="mr-2"
+                        />
+                        Retirement Plan
+                      </label>
+                      <label class="flex items-center">
+                        <input
+                          type="checkbox"
+                          aria-label="checkbox input"
+                          name="benefits"
+                          value="paid_time_off"
+                          class="mr-2"
+                        />
+                        Paid Time Off
+                      </label>
+                      <label class="flex items-center">
+                        <input
+                          type="checkbox"
+                          aria-label="checkbox input"
+                          name="benefits"
+                          value="professional_development"
+                          class="mr-2"
+                        />
+                        Professional Development
+                      </label>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Notes</label
+                    >
+                    <textarea
+                      name="placement_notes"
+                      rows="3"
+                      class="w-full border rounded px-3 py-2"
+                      placeholder="Additional placement details..."
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="flex justify-end space-x-3 mt-6">
+                  <button
+                    type="button"
+                    onclick="hideJobPlacementForm()"
+                    class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+                  >
+                    Record Placement
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // Employer Dashboard Functions
+      let currentTab = 'employers';
+
+      async function loadEmployers() {
+        try {
+          const response = await fetch('/api/compliance/employers');
+          const data = await response.json();
+          displayEmployers(data.employers || []);
+        } catch (error) {
+          console.error('Error loading employers:', error);
+        }
+      }
+
+      async function loadPlacements() {
+        try {
+          const response = await fetch('/api/compliance/job-placements');
+          const data = await response.json();
+          displayPlacements(data.placements || []);
+        } catch (error) {
+          console.error('Error loading placements:', error);
+        }
+      }
+
+      function displayEmployers(employers) {
+        const tbody = document.getElementById('employers-table-body');
+        tbody.innerHTML = '';
+
+        employers.forEach((employer) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${employer.company_name}</div>
+                        <div class="text-sm text-gray-500">${employer.contact_name || 'No contact'}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${employer.industry}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${employer.contact_email || 'N/A'}</div>
+                        <div class="text-sm text-gray-500">${employer.contact_phone || 'N/A'}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">0 placements</div>
+                        <div class="text-sm text-gray-500">Active</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${getEmployerStatusColor(employer.partnership_status)}">
+                            ${employer.partnership_status}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button type="button" onclick="viewEmployer('${employer.id}')" class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                        <button type="button" onclick="editEmployer('${employer.id}')" class="text-green-600 hover:text-green-900">Edit</button>
+                    </td>
+                `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function displayPlacements(placements) {
+        const tbody = document.getElementById('placements-table-body');
+        tbody.innerHTML = '';
+
+        placements.forEach((placement) => {
+          const salary = placement.starting_salary || {};
+          const wage = salary.hourly_wage
+            ? `$${salary.hourly_wage}/hr`
+            : salary.annual_salary
+              ? `$${salary.annual_salary}/yr`
+              : 'N/A';
+
+          const row = document.createElement('tr');
+          row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${placement.email || 'Unknown'}</div>
+                        <div class="text-sm text-gray-500">${placement.user_id}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${placement.company_name || 'Unknown Company'}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${placement.job_title}</div>
+                        <div class="text-sm text-gray-500">${placement.employment_type}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        ${wage}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${placement.start_date ? new Date(placement.start_date).toLocaleDateString() : 'N/A'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${getPlacementStatusColor(placement.placement_status)}">
+                            ${placement.placement_status}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button type="button" onclick="viewPlacement('${placement.id}')" class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                        <button type="button" onclick="updateRetention('${placement.id}')" class="text-orange-600 hover:text-orange-900">Update</button>
+                    </td>
+                `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function getEmployerStatusColor(status) {
+        switch (status) {
+          case 'active':
+            return 'bg-green-100 text-green-800';
+          case 'inactive':
+            return 'bg-red-100 text-red-800';
+          case 'pending':
+            return 'bg-yellow-100 text-yellow-800';
+          default:
+            return 'bg-gray-100 text-gray-800';
+        }
+      }
+
+      function getPlacementStatusColor(status) {
+        switch (status) {
+          case 'placed':
+            return 'bg-green-100 text-green-800';
+          case 'retained':
+            return 'bg-blue-100 text-blue-800';
+          case 'terminated':
+            return 'bg-red-100 text-red-800';
+          case 'completed':
+            return 'bg-purple-100 text-purple-800';
+          default:
+            return 'bg-gray-100 text-gray-800';
+        }
+      }
+
+      function showTab(tabName) {
+        // Hide all tab contents
+        document.getElementById('employers-content').classList.add('hidden');
+        document.getElementById('placements-content').classList.add('hidden');
+        document.getElementById('commitments-content').classList.add('hidden');
+
+        // Remove active styles from all tabs
+        document.getElementById('employers-tab').className =
+          'w-1/3 py-2 px-1 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300';
+        document.getElementById('placements-tab').className =
+          'w-1/3 py-2 px-1 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300';
+        document.getElementById('commitments-tab').className =
+          'w-1/3 py-2 px-1 text-center border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300';
+
+        // Show selected tab content and mark as active
+        document
+          .getElementById(tabName + '-content')
+          .classList.remove('hidden');
+        document.getElementById(tabName + '-tab').className =
+          'w-1/3 py-2 px-1 text-center border-b-2 border-cyan-500 font-medium text-sm text-cyan-600';
+
+        currentTab = tabName;
+
+        // Load appropriate data
+        if (tabName === 'employers') {
+          loadEmployers();
+        } else if (tabName === 'placements') {
+          loadPlacements();
+        }
+      }
+
+      function showAddEmployerForm() {
+        document
+          .getElementById('add-employer-modal')
+          .classList.remove('hidden');
+      }
+
+      function hideAddEmployerForm() {
+        document.getElementById('add-employer-modal').classList.add('hidden');
+        document.getElementById('employer-form').reset();
+      }
+
+      function showJobPlacementForm() {
+        document
+          .getElementById('job-placement-modal')
+          .classList.remove('hidden');
+        loadParticipantsAndEmployers();
+      }
+
+      function hideJobPlacementForm() {
+        document.getElementById('job-placement-modal').classList.add('hidden');
+        document.getElementById('placement-form').reset();
+      }
+
+      async function loadParticipantsAndEmployers() {
+        try {
+          const [participantsResponse, employersResponse] = await Promise.all([
+            fetch('/api/compliance/eligibility?status=verified'),
+            fetch('/api/compliance/employers'),
+          ]);
+
+          const participantsData = await participantsResponse.json();
+          const employersData = await employersResponse.json();
+
+          // Populate participants dropdown
+          const participantSelect = document.querySelector(
+            'select[name="user_id"]'
+          );
+          participantSelect.innerHTML =
+            '<option value="">Select Participant</option>';
+          participantsData.verifications?.forEach((verification) => {
+            participantSelect.innerHTML += `<option value="${verification.user_id}">${verification.email}</option>`;
+          });
+
+          // Populate employers dropdown
+          const employerSelect = document.querySelector(
+            'select[name="employer_id"]'
+          );
+          employerSelect.innerHTML =
+            '<option value="">Select Employer</option>';
+          employersData.employers?.forEach((employer) => {
+            employerSelect.innerHTML += `<option value="${employer.id}">${employer.company_name}</option>`;
+          });
+        } catch (error) {
+          console.error('Error loading participants and employers:', error);
+        }
+      }
+
+      async function addEmployer(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        const employerData = {
+          company_name: formData.get('company_name'),
+          industry: formData.get('industry'),
+          contact_name: formData.get('contact_name'),
+          contact_email: formData.get('contact_email'),
+          contact_phone: formData.get('contact_phone'),
+          address: {
+            full_address: formData.get('address'),
+          },
+          hiring_commitments: {
+            description: formData.get('hiring_commitments'),
+            company_size: formData.get('company_size'),
+          },
+        };
+
+        try {
+          const response = await fetch('/api/compliance/employers', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(employerData),
+          });
+
+          if (response.ok) {
+            hideAddEmployerForm();
+            loadEmployers();
+            alert('Employer added successfully!');
+          } else {
+            alert('Error adding employer. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error adding employer:', error);
+          alert('Error adding employer. Please try again.');
+        }
+      }
+
+      async function recordPlacement(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        const benefits = Array.from(formData.getAll('benefits'));
+
+        const placementData = {
+          user_id: formData.get('user_id'),
+          employer_id: formData.get('employer_id'),
+          job_title: formData.get('job_title'),
+          employment_type: formData.get('employment_type'),
+          starting_salary: {
+            hourly_wage: parseFloat(formData.get('hourly_wage')) || null,
+            annual_salary: parseInt(formData.get('annual_salary')) || null,
+            benefits: benefits,
+          },
+          start_date: formData.get('start_date'),
+          end_date: formData.get('end_date') || null,
+          notes: formData.get('placement_notes'),
+        };
+
+        try {
+          const response = await fetch('/api/compliance/job-placements', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(placementData),
+          });
+
+          if (response.ok) {
+            hideJobPlacementForm();
+            if (currentTab === 'placements') {
+              loadPlacements();
+            }
+            alert('Job placement recorded successfully!');
+          } else {
+            alert('Error recording placement. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error recording placement:', error);
+          alert('Error recording placement. Please try again.');
+        }
+      }
+
+      function viewEmployer(employerId) {
+        alert(`Viewing employer: ${employerId}`);
+      }
+
+      function editEmployer(employerId) {
+        alert(`Editing employer: ${employerId}`);
+      }
+
+      function viewPlacement(placementId) {
+        alert(`Viewing placement: ${placementId}`);
+      }
+
+      function updateRetention(placementId) {
+        alert(`Updating retention for placement: ${placementId}`);
+      }
+
+      function showPartnershipReport() {
+        alert('Partnership report feature coming soon...');
+      }
+
+      function showRetentionTracking() {
+        alert('Retention tracking feature coming soon...');
+      }
+
+      function showCommitmentForm() {
+        alert('Hiring commitments feature coming soon...');
+      }
+
+      function filterEmployers() {
+        loadEmployers();
+      }
+
+      function searchEmployers() {
+        loadEmployers();
+      }
+
+      function filterPlacements() {
+        loadPlacements();
+      }
+
+      function searchPlacements() {
+        loadPlacements();
+      }
+
+      // Initialize page
+      document.addEventListener('DOMContentLoaded', function () {
+        showTab('employers');
+      });
+    </script>
+  </body>
+</html>

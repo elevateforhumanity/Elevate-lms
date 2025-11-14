@@ -1,0 +1,34 @@
+import { cookies } from 'next/headers';
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
+
+export async function GET() {
+  const supabase = createRouteHandlerClient({ cookies });
+  const { data: { user } } = await supabase.auth.getUser();
+  
+  if (!user) {
+    return new Response('Unauthorized', { status: 401 });
+  }
+
+  // Get user's program holder
+  const { data: prof } = await supabase
+    .from('user_profiles')
+    .select('program_holder_id')
+    .eq('user_id', user.id)
+    .single();
+
+  if (!prof?.program_holder_id) {
+    return Response.json({ status: null });
+  }
+
+  // Get program holder status
+  const { data: holder } = await supabase
+    .from('program_holders')
+    .select('status, mou_status')
+    .eq('id', prof.program_holder_id)
+    .single();
+
+  return Response.json({
+    status: holder?.status || null,
+    mou_status: holder?.mou_status || null
+  });
+}

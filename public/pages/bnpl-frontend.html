@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Now, Pay Later - EFH Programs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#2563eb',
+              secondary: '#059669',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50">
+    <div class="min-h-screen">
+      <!-- Header -->
+      <div class="bg-white shadow-sm border-b">
+        <div class="max-w-4xl mx-auto px-4 py-6">
+          <h1 class="text-3xl font-bold text-gray-900">Buy Now, Pay Later</h1>
+          <p class="text-gray-600 mt-2">
+            Flexible payment plans for your workforce development journey
+          </p>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="max-w-4xl mx-auto px-4 py-8">
+        <!-- Program Selection -->
+        <div class="bg-white rounded-lg shadow p-6 mb-8">
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">
+            Select Your Program
+          </h2>
+          <select
+            id="programSelect"
+            class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg"
+          >
+            <option value="">Choose a program...</option>
+          </select>
+        </div>
+
+        <!-- Payment Plans -->
+        <div id="paymentPlans" class="hidden">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-6">
+            Choose Your Payment Plan
+          </h2>
+          <div id="plansContainer" class="grid md:grid-cols-3 gap-6 mb-8">
+            <!-- Plans will be populated here -->
+          </div>
+        </div>
+
+        <!-- Customer Information -->
+        <div
+          id="customerInfo"
+          class="hidden bg-white rounded-lg shadow p-6 mb-8"
+        >
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">
+            Your Information
+          </h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="customerEmail"
+                required
+                class="w-full border border-gray-300 rounded-lg px-3 py-2"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                id="customerName"
+                required
+                class="w-full border border-gray-300 rounded-lg px-3 py-2"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Selected Plan Summary -->
+        <div
+          id="planSummary"
+          class="hidden bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8"
+        >
+          <h3 class="text-lg font-semibold text-blue-900 mb-3">
+            Payment Plan Summary
+          </h3>
+          <div id="summaryContent" class="space-y-2 text-sm">
+            <!-- Summary will be populated here -->
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <div class="text-center">
+          <button
+            type="button"
+            id="proceedButton"
+            class="hidden bg-primary text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors"
+          >
+            Start Payment Plan
+          </button>
+        </div>
+
+        <!-- Existing Subscriptions -->
+        <div id="existingSubscriptions" class="hidden mt-12">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-6">
+            Your Payment Plans
+          </h2>
+          <div id="subscriptionsContainer" class="space-y-4">
+            <!-- Existing subscriptions will be loaded here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const API_BASE = window.location.origin;
+      let selectedProgram = null;
+      let selectedPlan = null;
+      let availablePrograms = [];
+
+      // Load programs on page load
+      document.addEventListener('DOMContentLoaded', async () => {
+        await loadPrograms();
+        await loadExistingSubscriptions();
+      });
+
+      async function loadPrograms() {
+        try {
+          // Load from the existing programs config
+          const response = await fetch('/config/all-programs.json');
+          availablePrograms = await response.json();
+
+          const programSelect = document.getElementById('programSelect');
+          programSelect.innerHTML =
+            '<option value="">Choose a program...</option>';
+
+          availablePrograms.forEach((program) => {
+            const option = document.createElement('option');
+            option.value = program.slug;
+            option.textContent = `${program.name} - $${program.retail_price.toLocaleString()}`;
+            programSelect.appendChild(option);
+          });
+
+          programSelect.addEventListener('change', handleProgramSelection);
+        } catch (error) {
+          console.error('Failed to load programs:', error);
+        }
+      }
+
+      async function handleProgramSelection(event) {
+        const programSlug = event.target.value;
+        if (!programSlug) {
+          document.getElementById('paymentPlans').classList.add('hidden');
+          return;
+        }
+
+        selectedProgram = availablePrograms.find((p) => p.slug === programSlug);
+        await loadPaymentPlans(programSlug);
+      }
+
+      async function loadPaymentPlans(programSlug) {
+        try {
+          const response = await fetch(
+            `${API_BASE}/api/bnpl/plans/${programSlug}`
+          );
+          const data = await response.json();
+
+          displayPaymentPlans(data.plans);
+          document.getElementById('paymentPlans').classList.remove('hidden');
+        } catch (error) {
+          console.error('Failed to load payment plans:', error);
+        }
+      }
+
+      function displayPaymentPlans(plans) {
+        const container = document.getElementById('plansContainer');
+        container.innerHTML = '';
+
+        plans.forEach((plan) => {
+          const planCard = document.createElement('div');
+          planCard.className =
+            'bg-white rounded-lg shadow border hover:border-primary cursor-pointer transition-colors plan-card';
+          planCard.dataset.planId = plan.id;
+
+          planCard.innerHTML = `
+                    <div class="p-6">
+                        <div class="text-lg font-semibold text-gray-900 mb-2">${plan.name}</div>
+                        <div class="text-3xl font-bold text-primary mb-4">
+                            $${plan.installment_amount.toFixed(2)}
+                            <span class="text-sm font-normal text-gray-600">/month</span>
+                        </div>
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <div>✓ ${plan.installments} monthly payments</div>
+                            <div>✓ Total: $${plan.total_amount.toFixed(2)}</div>
+                            <div>✓ ${plan.interest_rate}% interest rate</div>
+                            <div>✓ No hidden fees</div>
+                        </div>
+                        <div class="mt-4 text-xs text-green-600">
+                            Save ~$${plan.savings_vs_credit_card} vs credit cards
+                        </div>
+                    </div>
+                `;
+
+          planCard.addEventListener('click', () => selectPlan(plan, planCard));
+          container.appendChild(planCard);
+        });
+      }
+
+      function selectPlan(plan, cardElement) {
+        // Remove previous selection
+        document.querySelectorAll('.plan-card').forEach((card) => {
+          card.classList.remove('border-primary', 'bg-blue-50');
+        });
+
+        // Select current plan
+        cardElement.classList.add('border-primary', 'bg-blue-50');
+        selectedPlan = plan;
+
+        // Show customer info and summary
+        document.getElementById('customerInfo').classList.remove('hidden');
+        showPlanSummary(plan);
+        document.getElementById('proceedButton').classList.remove('hidden');
+      }
+
+      function showPlanSummary(plan) {
+        const summaryContent = document.getElementById('summaryContent');
+        const today = new Date();
+        const nextPayment = new Date(
+          today.getTime() + 30 * 24 * 60 * 60 * 1000
+        );
+
+        summaryContent.innerHTML = `
+                <div class="flex justify-between">
+                    <span>Program:</span>
+                    <span class="font-medium">${selectedProgram.name}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Payment Plan:</span>
+                    <span class="font-medium">${plan.name}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>First Payment:</span>
+                    <span class="font-medium">$${plan.installment_amount.toFixed(2)} (Today)</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Next Payment:</span>
+                    <span class="font-medium">${nextPayment.toLocaleDateString()}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Total Cost:</span>
+                    <span class="font-medium">$${plan.total_amount.toFixed(2)}</span>
+                </div>
+                <div class="flex justify-between text-green-600">
+                    <span>Interest Rate:</span>
+                    <span class="font-medium">${plan.interest_rate}%</span>
+                </div>
+            `;
+
+        document.getElementById('planSummary').classList.remove('hidden');
+      }
+
+      // Handle payment plan creation
+      document
+        .getElementById('proceedButton')
+        .addEventListener('click', async () => {
+          const customerEmail = document.getElementById('customerEmail').value;
+          const customerName = document.getElementById('customerName').value;
+
+          if (!customerEmail || !customerName) {
+            alert('Please fill in your email and name');
+            return;
+          }
+
+          if (!selectedProgram || !selectedPlan) {
+            alert('Please select a program and payment plan');
+            return;
+          }
+
+          try {
+            const response = await fetch(`${API_BASE}/api/bnpl/checkout`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                programSlug: selectedProgram.slug,
+                planId: selectedPlan.id,
+                customerEmail: customerEmail,
+                metadata: {
+                  customer_name: customerName,
+                },
+              }),
+            });
+
+            const data = await response.json();
+
+            if (data.checkout_url) {
+              window.location.href = data.checkout_url;
+            } else {
+              alert(data.error || 'Failed to create payment plan');
+            }
+          } catch (error) {
+            console.error('Checkout error:', error);
+            alert('Failed to process payment plan');
+          }
+        });
+
+      async function loadExistingSubscriptions() {
+        // This would be called with actual user email from authentication
+        const userEmail = localStorage.getItem('userEmail');
+        if (!userEmail) return;
+
+        try {
+          const response = await fetch(
+            `${API_BASE}/api/bnpl/subscriptions/${userEmail}`
+          );
+          const data = await response.json();
+
+          if (data.subscriptions &amp;&amp; data.subscriptions.length > 0) {
+            displayExistingSubscriptions(data.subscriptions);
+          }
+        } catch (error) {
+          console.error('Failed to load existing subscriptions:', error);
+        }
+      }
+
+      function displayExistingSubscriptions(subscriptions) {
+        const container = document.getElementById('subscriptionsContainer');
+        container.innerHTML = '';
+
+        subscriptions.forEach((sub) => {
+          const subCard = document.createElement('div');
+          subCard.className = 'bg-white rounded-lg shadow p-6';
+
+          const statusColor =
+            sub.stripe_status === 'active'
+              ? 'green'
+              : sub.stripe_status === 'canceled'
+                ? 'red'
+                : 'yellow';
+
+          subCard.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-semibold text-gray-900">${sub.program_slug}</h3>
+                            <p class="text-sm text-gray-600">${sub.plan_id.replace('_', ' ')}</p>
+                            <div class="mt-2 text-sm">
+                                <span class="text-gray-600">$${(sub.installment_amount / 100).toFixed(2)}/month</span>
+                                <span class="mx-2">•</span>
+                                <span class="text-gray-600">${sub.installments_paid}/${sub.installments_total} paid</span>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 text-xs rounded-full bg-${statusColor}-100 text-${statusColor}-800">
+                            ${sub.stripe_status}
+                        </span>
+                    </div>
+                `;
+
+          container.appendChild(subCard);
+        });
+
+        document
+          .getElementById('existingSubscriptions')
+          .classList.remove('hidden');
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "programs": "Programas",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "studentPortal": "Portal del Estudiante",
+    "signIn": "Iniciar Sesión",
+    "applyNow": "Aplicar Ahora"
+  },
+  "hero": {
+    "title": "Transforma Tu Carrera con Capacitación Gratuita",
+    "subtitle": "Desarrolla habilidades demandadas, obtén certificaciones industriales y lanza la carrera de tus sueños—100% financiado a través de programas federales.",
+    "funded": "100% Financiado",
+    "pathways": "8 Caminos Profesionales",
+    "certifications": "Certificaciones Industriales",
+    "browsePrograms": "Explorar Programas"
+  },
+  "programs": {
+    "title": "Programas Destacados",
+    "viewAll": "Ver Todos los Programas",
+    "allPrograms": "Todos los Programas",
+    "allProgramsDesc": "Ver todos los programas de capacitación disponibles",
+    "barber": "Aprendizaje de Barbería",
+    "barberDesc": "Programa de capacitación de barbería aprobado por el estado",
+    "building": "Técnico de Servicios de Edificios",
+    "buildingDesc": "Capacitación integral en mantenimiento de edificios",
+    "cna": "Capacitación CNA",
+    "cnaDesc": "Certificación de Asistente de Enfermería Certificado",
+    "hvac": "HVAC y Soldadura",
+    "hvacDesc": "Habilidades de calefacción, ventilación y soldadura"
+  }
+}

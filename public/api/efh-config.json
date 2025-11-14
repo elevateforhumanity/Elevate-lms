@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "title": "Elevate for Humanity Empowerment Center",
+    "subtitle": "Transform Your Future Through Skills Training • Barber Apprenticeship • HVAC • Healthcare • Drug Testing Business",
+    "ctaLabel": "Apply Now",
+    "ctaUrl": "https://elevateforhumanityfix2.netlify.app/get-started"
+  },
+  "programs": [
+    {
+      "name": "Barber Apprenticeship",
+      "url": "/programs/barber",
+      "summary": "Earn while you learn. Master the art of barbering with hands-on training and mentorship from industry professionals."
+    },
+    {
+      "name": "HVAC & Welding",
+      "url": "/programs/hvac",
+      "summary": "High-demand skilled trades training. Get certified and start a rewarding career in heating, ventilation, air conditioning, or welding."
+    },
+    {
+      "name": "Healthcare (CNA/QMA)",
+      "url": "/programs/healthcare",
+      "summary": "Fast-track to healthcare careers. Become a Certified Nursing Assistant or Qualified Medication Aide in weeks, not years."
+    },
+    {
+      "name": "Drug Testing Business",
+      "url": "/programs/drug-testing",
+      "summary": "Start your own business. Learn to operate a mobile drug testing service with full training and certification."
+    },
+    {
+      "name": "Digital Skills",
+      "url": "/programs/digital",
+      "summary": "Master essential tech skills. From basic computer literacy to advanced digital tools for the modern workplace."
+    },
+    {
+      "name": "Leadership Development",
+      "url": "/programs/leadership",
+      "summary": "Build leadership capabilities. Develop the soft skills and management expertise employers value most."
+    },
+    {
+      "name": "Certified Peer Recovery Specialist (CPRS)",
+      "url": "/programs/cprs",
+      "summary": "Launch a rewarding career in mental health recovery. WIOA/WRG funded program combining clinical training with peer support skills. $5,000 per student funding available."
+    }
+  ],
+  "features": [
+    {
+      "icon": "💼",
+      "title": "Job Placement",
+      "description": "We don't just train you—we help you get hired. Our job placement program connects graduates with employers."
+    },
+    {
+      "icon": "🎓",
+      "title": "Industry Certifications",
+      "description": "Earn recognized credentials that open doors. All programs lead to industry-standard certifications."
+    },
+    {
+      "icon": "💰",
+      "title": "Financial Support",
+      "description": "Don't let cost hold you back. Scholarships, grants, and flexible payment options available."
+    },
+    {
+      "icon": "👥",
+      "title": "Mentorship",
+      "description": "Learn from the best. Every student gets paired with an experienced mentor in their field."
+    },
+    {
+      "icon": "⏰",
+      "title": "Flexible Scheduling",
+      "description": "Life doesn't stop for training. Choose from day, evening, and weekend classes that fit your schedule."
+    },
+    {
+      "icon": "🚀",
+      "title": "Fast Track",
+      "description": "Get to work faster. Most programs can be completed in 8-16 weeks with intensive training."
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "The barber apprenticeship changed my life. I went from unemployed to running my own shop in less than a year.",
+      "author": "Marcus J., Barber Shop Owner"
+    },
+    {
+      "quote": "The HVAC program gave me skills that are in demand everywhere. I had three job offers before I even graduated.",
+      "author": "Sarah M., HVAC Technician"
+    },
+    {
+      "quote": "As a single mom, I needed something fast and affordable. The CNA program was perfect—now I have a stable career in healthcare.",
+      "author": "Jennifer L., Certified Nursing Assistant"
+    },
+    {
+      "quote": "Starting my own drug testing business seemed impossible until I found this program. Now I'm my own boss.",
+      "author": "David R., Business Owner"
+    }
+  ],
+  "cta": {
+    "title": "Ready to Transform Your Future?",
+    "subtitle": "Join thousands of graduates who have changed their lives through skills training.",
+    "label": "Start Your Application",
+    "url": "https://elevateforhumanityfix2.netlify.app/get-started"
+  },
+  "stats": {
+    "graduates": "5,000+",
+    "jobPlacementRate": "92%",
+    "averageSalaryIncrease": "$15,000",
+    "programsOffered": "13+",
+    "newPrograms": ["CPRS - Certified Peer Recovery Specialist"],
+    "fundingAvailable": "WIOA, WRG, Apprenticeship Grants"
+  }
+}

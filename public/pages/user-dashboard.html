@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard - EFH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50">
+    <nav role="navigation" class="bg-blue-600 text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-xl font-bold">EFH User Dashboard</h1>
+        <div class="flex space-x-4">
+          <span id="userEmail" class="text-blue-200"></span>
+          <button
+            type="button"
+            onclick="logout()"
+            class="bg-blue-700 px-3 py-1 rounded"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main" class="container mx-auto p-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- My Profile -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h2 class="text-lg font-semibold mb-4">📋 My Profile</h2>
+          <div id="profileData" class="space-y-2">
+            <p>Loading...</p>
+          </div>
+        </div>
+
+        <!-- My Programs -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h2 class="text-lg font-semibold mb-4">🎓 My Programs</h2>
+          <div id="programsData" class="space-y-2">
+            <p>Loading...</p>
+          </div>
+        </div>
+
+        <!-- Progress Tracking -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h2 class="text-lg font-semibold mb-4">📈 Progress</h2>
+          <div id="progressData" class="space-y-2">
+            <p>Loading...</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="mt-8 bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded"
+      >
+        <p class="text-sm">
+          🔒 <strong>Privacy Protected:</strong> Your personal information (SSN,
+          DOB, etc.) is encrypted and only visible to authorized personnel.
+        </p>
+      </div>
+    </main>
+
+    <script>
+      const API_BASE = window.location.origin;
+      let authToken = localStorage.getItem('efh_auth_token');
+
+      // Check authentication
+      if (!authToken) {
+        window.location.href = '/auth-login.html';
+      }
+
+      // Set authorization header for all requests
+      function getAuthHeaders() {
+        return {
+          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+        };
+      }
+
+      // Load user data
+      async function loadUserData() {
+        try {
+          // Verify token first
+          const verifyResponse = await fetch(`${API_BASE}/api/auth/verify`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: authToken }),
+          });
+
+          if (!verifyResponse.ok) {
+            throw new Error('Token invalid');
+          }
+
+          const userData = await verifyResponse.json();
+          document.getElementById('userEmail').textContent =
+            userData.user.email;
+
+          // Load protected student data
+          const studentResponse = await fetch(
+            `${API_BASE}/api/protected/students/123`,
+            {
+              headers: getAuthHeaders(),
+            }
+          );
+
+          if (studentResponse.ok) {
+            const studentData = await studentResponse.json();
+            displayStudentData(studentData);
+          }
+        } catch (error) {
+          console.error('Authentication failed:', error);
+          logout();
+        }
+      }
+
+      function displayStudentData(data) {
+        document.getElementById('profileData').innerHTML = `
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>SSN:</strong> ${data.ssn}</p>
+                <p><strong>Status:</strong> ${data.enrollment_status}</p>
+            `;
+
+        document.getElementById('programsData').innerHTML = `
+                <p><strong>Current Program:</strong> ${data.program}</p>
+                <p><strong>Certifications:</strong> ${data.certifications.join(', ')}</p>
+            `;
+
+        document.getElementById('progressData').innerHTML = `
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${data.progress}%"></div>
+                </div>
+                <p class="text-sm text-gray-600">${data.progress}% Complete</p>
+            `;
+      }
+
+      function logout() {
+        localStorage.removeItem('efh_auth_token');
+        localStorage.removeItem('efh_user_role');
+        window.location.href = '/auth-login.html';
+      }
+
+      // Load data on page load
+      loadUserData();
+    </script>
+  </body>
+</html>

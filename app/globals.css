@@ -1,0 +1,524 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   ELEVATE CONNECTS BRAND THEME
+   Professional Light LMS Design System
+   ============================================ */
+
+:root {
+  /* Brand colors - Red, White, Orange, Blue */
+  --brand-red: #dc2626;          /* bright red */
+  --brand-red-dark: #b91c1c;
+  --brand-red-light: #ef4444;
+  --brand-red-soft: rgba(220, 38, 38, 0.08);
+  
+  --brand-orange: #f97316;       /* vibrant orange */
+  --brand-orange-dark: #ea580c;
+  --brand-orange-light: #fb923c;
+  --brand-orange-soft: rgba(249, 115, 22, 0.08);
+  
+  --brand-blue: #2563eb;         /* professional blue */
+  --brand-blue-dark: #1e40af;
+  --brand-blue-light: #3b82f6;
+  --brand-blue-soft: rgba(37, 99, 235, 0.08);
+  
+  --brand-white: #ffffff;        /* pure white */
+  
+  /* Primary = Red */
+  --brand-primary: #dc2626;
+  --brand-primary-dark: #b91c1c;
+  --brand-primary-light: #ef4444;
+  --brand-primary-soft: rgba(220, 38, 38, 0.08);
+  
+  /* Secondary = Orange */
+  --brand-secondary: #f97316;
+  --brand-secondary-dark: #ea580c;
+  --brand-secondary-light: #fb923c;
+  
+  /* Accent = Blue */
+  --brand-accent: #2563eb;
+  --brand-accent-dark: #1e40af;
+  --brand-accent-light: #3b82f6;
+
+  /* Backgrounds - Light Theme */
+  --brand-bg: #ffffff;           /* pure white */
+  --brand-bg-soft: #f9fafb;      /* off-white */
+  --brand-bg-gray: #f3f4f6;      /* light gray */
+  --brand-surface: #ffffff;      /* card surface */
+  --brand-surface-hover: #f9fafb;
+
+  /* Borders */
+  --brand-border: #e5e7eb;
+  --brand-border-medium: #d1d5db;
+  --brand-border-dark: #9ca3af;
+
+  /* Text - Dark on Light */
+  --brand-text: #111827;
+  --brand-text-secondary: #4b5563;
+  --brand-text-muted: #6b7280;
+  --brand-text-light: #9ca3af;
+
+  /* Shadows - Softer for light theme */
+  --brand-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --brand-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --brand-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --brand-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* Border Radius */
+  --brand-radius-sm: 0.375rem;
+  --brand-radius-md: 0.5rem;
+  --brand-radius-lg: 0.75rem;
+  --brand-radius-xl: 1rem;
+  --brand-radius-pill: 999px;
+
+  /* Spacing */
+  --brand-space-xs: 0.5rem;
+  --brand-space-sm: 0.75rem;
+  --brand-space-md: 1rem;
+  --brand-space-lg: 1.5rem;
+  --brand-space-xl: 2rem;
+  --brand-space-2xl: 3rem;
+
+  --brand-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Roboto", "Helvetica Neue", sans-serif;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--brand-bg-soft);
+  color: var(--brand-text);
+  font-family: var(--brand-font-sans);
+  line-height: 1.6;
+}
+
+/* ============================================
+   LAYOUT COMPONENTS
+   ============================================ */
+
+/* App shell */
+.elevate-shell {
+  min-height: 100vh;
+  background: var(--brand-bg-soft);
+}
+
+/* Top navigation */
+.elevate-nav {
+  background: var(--brand-surface);
+  border-bottom: 1px solid var(--brand-border);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: var(--brand-shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.elevate-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--brand-text);
+}
+
+.elevate-logo-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--brand-radius-md);
+  background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-orange) 50%, var(--brand-blue) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+/* Hero section */
+.elevate-hero {
+  background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-orange) 100%);
+  color: white;
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.elevate-hero-content {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.elevate-hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.elevate-hero-subtitle {
+  font-size: 1.125rem;
+  opacity: 0.95;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.elevate-hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--brand-radius-pill);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+/* Container */
+.elevate-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ============================================
+   BUTTON SYSTEM
+   ============================================ */
+
+/* Primary Button - Red */
+.elevate-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--brand-radius-md);
+  border: none;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
+  box-shadow: var(--brand-shadow-md);
+  transition: all 0.2s ease;
+}
+
+.elevate-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--brand-shadow-lg);
+  background: linear-gradient(135deg, var(--brand-red-light) 0%, var(--brand-red) 100%);
+}
+
+/* Secondary Button - Orange */
+.elevate-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--brand-radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border: 2px solid var(--brand-orange);
+  background: white;
+  color: var(--brand-orange);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.elevate-btn-secondary:hover {
+  background: var(--brand-orange);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--brand-shadow-md);
+}
+
+/* Accent Button - Blue */
+.elevate-btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--brand-radius-md);
+  border: none;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-blue-dark) 100%);
+  box-shadow: var(--brand-shadow-md);
+  transition: all 0.2s ease;
+}
+
+.elevate-btn-accent:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--brand-shadow-lg);
+}
+
+/* ============================================
+   CARD SYSTEM
+   ============================================ */
+
+.elevate-card {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: var(--brand-radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--brand-shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.elevate-card:hover {
+  box-shadow: var(--brand-shadow-md);
+  transform: translateY(-2px);
+}
+
+.elevate-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--brand-border);
+}
+
+.elevate-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--brand-text);
+  margin: 0;
+}
+
+.elevate-card-subtitle {
+  font-size: 0.875rem;
+  color: var(--brand-text-muted);
+  margin-top: 0.25rem;
+}
+
+.elevate-card-content {
+  color: var(--brand-text-secondary);
+  line-height: 1.6;
+}
+
+/* Card variants */
+.elevate-card-red {
+  border-left: 4px solid var(--brand-red);
+}
+
+.elevate-card-orange {
+  border-left: 4px solid var(--brand-orange);
+}
+
+.elevate-card-blue {
+  border-left: 4px solid var(--brand-blue);
+}
+
+/* ============================================
+   BADGE / PILL SYSTEM
+   ============================================ */
+
+.elevate-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--brand-radius-pill);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--brand-bg-gray);
+  color: var(--brand-text-secondary);
+}
+
+.elevate-pill--red {
+  background: var(--brand-red-soft);
+  color: var(--brand-red-dark);
+  border: 1px solid var(--brand-red-light);
+}
+
+.elevate-pill--orange {
+  background: var(--brand-orange-soft);
+  color: var(--brand-orange-dark);
+  border: 1px solid var(--brand-orange-light);
+}
+
+.elevate-pill--blue {
+  background: var(--brand-blue-soft);
+  color: var(--brand-blue-dark);
+  border: 1px solid var(--brand-blue-light);
+}
+
+.elevate-pill--success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  border: 1px solid #10b981;
+}
+
+.elevate-pill--warning {
+  background: var(--brand-orange-soft);
+  color: var(--brand-orange-dark);
+  border: 1px solid var(--brand-orange);
+}
+
+.elevate-pill--error {
+  background: var(--brand-red-soft);
+  color: var(--brand-red-dark);
+  border: 1px solid var(--brand-red);
+}
+
+.elevate-pill--info {
+  background: var(--brand-blue-soft);
+  color: var(--brand-blue-dark);
+  border: 1px solid var(--brand-blue);
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+/* Forms */
+.elevate-input,
+.elevate-textarea,
+.elevate-select {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: rgba(15,23,42,0.9);
+  color: var(--brand-text);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.82rem;
+}
+
+.elevate-input:focus,
+.elevate-textarea:focus,
+.elevate-select:focus {
+  outline: none;
+  border-color: var(--brand-secondary);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.5);
+}
+
+.elevate-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--brand-text-soft);
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   TABLE SYSTEM
+   ============================================ */
+
+/* Tables (for reports / caseload) */
+.elevate-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.elevate-table th,
+.elevate-table td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+}
+
+.elevate-table th {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-text-muted);
+}
+
+.elevate-table tr:hover td {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+/* ============================================
+   PAGE HEADINGS
+   ============================================ */
+
+/* Page headings */
+.elevate-page-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.elevate-page-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.elevate-page-subtitle {
+  font-size: 0.8rem;
+  color: var(--brand-text-muted);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.elevate-link {
+  color: var(--brand-secondary);
+  text-decoration: none;
+  transition: color 0.1s ease;
+}
+
+.elevate-link:hover {
+  color: var(--brand-primary);
+}
+
+.elevate-divider {
+  height: 1px;
+  background: var(--brand-border-subtle);
+  margin: 1rem 0;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .elevate-shell {
+    padding: 1rem;
+  }
+  
+  .elevate-nav {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .elevate-hero {
+    padding: 1.2rem;
+  }
+  
+  .elevate-hero-title {
+    font-size: 1.2rem;
+  }
+}

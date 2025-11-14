@@ -1,0 +1,185 @@
+{
+  "partnerships": [
+    {
+      "id": "employindy",
+      "name": "EmployIndy",
+      "type": "workforce_board",
+      "value": "$9M-$55M annually",
+      "status": "active",
+      "programs": ["WIOA", "WRG", "ETPL"],
+      "benefits": [
+        "ETPL approval pathway",
+        "Student funding access",
+        "Employer network",
+        "Job placement support"
+      ]
+    },
+    {
+      "id": "sol",
+      "name": "State of Indiana - Secretary of Labor",
+      "type": "government",
+      "value": "$10M-$20M potential",
+      "status": "active",
+      "programs": ["Apprenticeship", "Workforce Development"],
+      "benefits": [
+        "State-approved bidder status",
+        "Government contract access",
+        "Apprenticeship registration"
+      ]
+    },
+    {
+      "id": "doe",
+      "name": "Department of Education",
+      "type": "government",
+      "value": "$5M-$15M potential",
+      "status": "active",
+      "programs": ["Adult Education", "Career Pathways"],
+      "benefits": [
+        "Educational funding",
+        "Curriculum approval",
+        "Student support services"
+      ]
+    },
+    {
+      "id": "certiport",
+      "name": "Certiport",
+      "type": "credentialing",
+      "value": "$500K-$2M annually",
+      "status": "active",
+      "programs": ["IT Certifications", "Digital Skills"],
+      "certifications": [
+        "Microsoft Office Specialist",
+        "IC3 Digital Literacy",
+        "Adobe Certified Professional"
+      ]
+    },
+    {
+      "id": "vita",
+      "name": "IRS VITA Program",
+      "type": "credentialing",
+      "value": "$200K-$800K annually",
+      "status": "active",
+      "programs": ["Tax Preparation", "Financial Services"],
+      "certifications": ["IRS Certified Tax Preparer"]
+    },
+    {
+      "id": "milady",
+      "name": "Milady",
+      "type": "credentialing",
+      "value": "$300K-$1M annually",
+      "status": "active",
+      "programs": ["Barbering", "Cosmetology"],
+      "certifications": ["Barber License Prep"]
+    },
+    {
+      "id": "careersafe",
+      "name": "CareerSafe",
+      "type": "credentialing",
+      "value": "$100K-$500K annually",
+      "status": "active",
+      "programs": ["OSHA Training", "Safety Certifications"],
+      "certifications": ["OSHA-10", "OSHA-30"]
+    },
+    {
+      "id": "hiset",
+      "name": "HiSET",
+      "type": "credentialing",
+      "value": "$200K-$600K annually",
+      "status": "active",
+      "programs": ["High School Equivalency"],
+      "certifications": ["HiSET Diploma"]
+    },
+    {
+      "id": "drug-testing",
+      "name": "National Drug Testing",
+      "type": "credentialing",
+      "value": "$150K-$500K annually",
+      "status": "active",
+      "programs": ["Drug Testing Business"],
+      "certifications": ["Certified Drug Testing Specialist"]
+    },
+    {
+      "id": "indiana-cert-board",
+      "name": "Indiana Certification Board",
+      "type": "credentialing",
+      "value": "$600K-$2.7M annually (CPRS program)",
+      "status": "launching",
+      "programs": ["Certified Peer Recovery Specialist"],
+      "certifications": ["CPRS Certification"],
+      "launch_date": "2025-12-01"
+    }
+  ],
+  "program_holders": [
+    {
+      "name": "Program Holder 1",
+      "type": "training_provider",
+      "status": "active",
+      "programs": ["Various workforce programs"]
+    },
+    {
+      "name": "Program Holder 2",
+      "type": "training_provider",
+      "status": "active",
+      "programs": ["Various workforce programs"]
+    },
+    {
+      "name": "Program Holder 3",
+      "type": "training_provider",
+      "status": "active",
+      "programs": ["Various workforce programs"]
+    },
+    {
+      "name": "Program Holder 4",
+      "type": "training_provider",
+      "status": "active",
+      "programs": ["Various workforce programs"]
+    },
+    {
+      "name": "Program Holder 5",
+      "type": "training_provider",
+      "status": "active",
+      "programs": ["Various workforce programs"]
+    },
+    {
+      "name": "Program Holder 6",
+      "type": "training_provider",
+      "status": "active",
+      "programs": ["Various workforce programs"]
+    },
+    {
+      "name": "Program Holder 7",
+      "type": "training_provider",
+      "status": "active",
+      "programs": ["Various workforce programs"]
+    },
+    {
+      "name": "Program Holder 8",
+      "type": "training_provider",
+      "status": "active",
+      "programs": ["Various workforce programs"]
+    },
+    {
+      "name": "Program Holder 9",
+      "type": "training_provider",
+      "status": "active",
+      "programs": ["Various workforce programs"]
+    },
+    {
+      "name": "Program Holder 10",
+      "type": "training_provider",
+      "status": "active",
+      "programs": ["Various workforce programs"]
+    }
+  ],
+  "summary": {
+    "total_partnerships": 10,
+    "active_partnerships": 9,
+    "launching_partnerships": 1,
+    "total_value": "$9M-$55M annually",
+    "government_contracts": "active",
+    "state_bidder_status": true,
+    "credentialing_partners": 6,
+    "program_holders": 10
+  },
+  "last_updated": "2025-11-01T12:30:00Z"
+}

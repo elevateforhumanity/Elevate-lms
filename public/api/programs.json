@@ -1,0 +1,119 @@
+{
+  "programs": [
+    {
+      "id": "barber",
+      "name": "Barber Apprenticeship",
+      "category": "skilled_trades",
+      "duration": "2000 hours",
+      "funding": ["WRG", "WIOA", "Apprenticeship"],
+      "status": "active",
+      "enrollment": "open"
+    },
+    {
+      "id": "building-tech",
+      "name": "Building Services Technician",
+      "category": "skilled_trades",
+      "duration": "8-16 weeks",
+      "funding": ["WRG", "WIOA"],
+      "status": "active",
+      "enrollment": "open"
+    },
+    {
+      "id": "hvac",
+      "name": "HVAC & Welding",
+      "category": "skilled_trades",
+      "duration": "8-16 weeks",
+      "funding": ["WRG", "WIOA"],
+      "status": "active",
+      "enrollment": "open"
+    },
+    {
+      "id": "healthcare",
+      "name": "Healthcare (CNA/QMA)",
+      "category": "healthcare",
+      "duration": "4-8 weeks",
+      "funding": ["WRG", "WIOA"],
+      "status": "active",
+      "enrollment": "open"
+    },
+    {
+      "id": "drug-testing",
+      "name": "Drug Testing Business",
+      "category": "entrepreneurship",
+      "duration": "2-4 weeks",
+      "funding": ["WRG", "WIOA"],
+      "status": "active",
+      "enrollment": "open"
+    },
+    {
+      "id": "digital",
+      "name": "Digital Skills",
+      "category": "technology",
+      "duration": "4-8 weeks",
+      "funding": ["WRG", "WIOA"],
+      "status": "active",
+      "enrollment": "open"
+    },
+    {
+      "id": "leadership",
+      "name": "Leadership Development",
+      "category": "professional_development",
+      "duration": "6-12 weeks",
+      "funding": ["WRG", "WIOA"],
+      "status": "active",
+      "enrollment": "open"
+    },
+    {
+      "id": "cprs",
+      "name": "Certified Peer Recovery Specialist",
+      "category": "healthcare",
+      "duration": "80 hours (40 classroom + 40 practicum)",
+      "funding": ["WIOA", "WRG"],
+      "revenue_per_student": 5000,
+      "profit_per_student": 2000,
+      "status": "launching",
+      "enrollment": "coming_soon",
+      "launch_date": "2025-12-01",
+      "year1_target": {
+        "students": 120,
+        "revenue": 600000,
+        "profit": 240000
+      },
+      "year2_target": {
+        "students": 240,
+        "revenue": 1200000,
+        "profit": 480000
+      },
+      "year3_target": {
+        "students": 540,
+        "revenue": 2700000,
+        "profit": 1080000
+      },
+      "instructors": [
+        "Psychiatric RN (clinical content)",
+        "Life Coach (recovery/coaching skills)"
+      ],
+      "certifications": [
+        "Indiana Certification Board CPRS",
+        "Mental Health First Aid",
+        "Crisis Intervention"
+      ]
+    }
+  ],
+  "summary": {
+    "total_programs": 8,
+    "active_programs": 7,
+    "launching_programs": 1,
+    "categories": [
+      "skilled_trades",
+      "healthcare",
+      "entrepreneurship",
+      "technology",
+      "professional_development"
+    ],
+    "funding_sources": ["WIOA", "WRG", "Apprenticeship"],
+    "total_graduates": "5000+",
+    "job_placement_rate": "92%"
+  },
+  "last_updated": "2025-11-01T12:30:00Z"
+}

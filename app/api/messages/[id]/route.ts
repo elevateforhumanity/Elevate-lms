@@ -1,0 +1,74 @@
+import { NextResponse } from 'next/server';
+import { createServerSupabaseClient, getCurrentUser } from '@/lib/auth';
+
+// PATCH /api/messages/[id] - Mark message as read
+export async function PATCH(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+  try {
+    const user = await getCurrentUser();
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const supabase = await createServerSupabaseClient();
+
+    // Update message (RLS ensures user can only update their own received messages)
+    const { data: message, error } = await supabase
+      .from('messages')
+      .update({ read: true, updated_at: new Date().toISOString() })
+      .eq('id', id)
+      .eq('recipient_id', user.id)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error updating message:', error);
+      return NextResponse.json({ error: 'Failed to update message' }, { status: 500 });
+    }
+
+    if (!message) {
+      return NextResponse.json({ error: 'Message not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ message });
+  } catch (error) {
+    console.error('Error in PATCH /api/messages/[id]:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+// DELETE /api/messages/[id] - Delete message
+export async function DELETE(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+  try {
+    const user = await getCurrentUser();
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const supabase = await createServerSupabaseClient();
+
+    // Delete message (user can delete messages they sent or received)
+    const { error } = await supabase
+      .from('messages')
+      .delete()
+      .eq('id', id)
+      .or(`sender_id.eq.${user.id},recipient_id.eq.${user.id}`);
+
+    if (error) {
+      console.error('Error deleting message:', error);
+      return NextResponse.json({ error: 'Failed to delete message' }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Error in DELETE /api/messages/[id]:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}

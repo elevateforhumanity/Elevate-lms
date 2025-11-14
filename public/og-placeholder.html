@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>OG Image Generator</title>
+  </head>
+  <body style="margin: 0; padding: 0">
+    <canvas id="canvas" width="1200" height="630"></canvas>
+    <script>
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      // Gradient background
+      const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+      gradient.addColorStop(0, '#0ea5e9');
+      gradient.addColorStop(1, '#7c3aed');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 1200, 630);
+
+      // Overlay
+      ctx.fillStyle = 'rgba(0,0,0,0.1)';
+      ctx.fillRect(0, 0, 1200, 630);
+
+      // Main title
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 72px Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Elevate for Humanity', 600, 220);
+
+      // Subtitle
+      ctx.font = '36px Arial, sans-serif';
+      ctx.globalAlpha = 0.95;
+      ctx.fillText('Empowering Dreams Through Education', 600, 300);
+      ctx.globalAlpha = 1.0;
+
+      // Tagline
+      ctx.fillStyle = '#22c55e';
+      ctx.font = '600 32px Arial, sans-serif';
+      ctx.fillText('100% FREE Training • Marion County', 600, 380);
+
+      // Bottom bar
+      ctx.fillStyle = 'rgba(0,0,0,0.3)';
+      ctx.fillRect(0, 530, 1200, 100);
+
+      // URL
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '28px Arial, sans-serif';
+      ctx.fillText('www.elevateforhumanity.org', 600, 590);
+
+      // Download link
+      const link = document.createElement('a');
+      link.download = 'og.jpg';
+      link.href = canvas.toDataURL('image/jpeg', 0.9);
+      link.textContent = 'Download og.jpg';
+      link.style.cssText =
+        'position:absolute;top:650px;left:50%;transform:translateX(-50%);padding:10px 20px;background:#0ea5e9;color:white;text-decoration:none;border-radius:5px;';
+      document.body.appendChild(link);
+    </script>
+  </body>
+</html>

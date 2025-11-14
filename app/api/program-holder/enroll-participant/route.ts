@@ -1,0 +1,64 @@
+import { NextRequest } from 'next/server';
+import { cookies } from 'next/headers';
+import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
+import { checkMOUStatusServer } from '@/lib/mou-checks';
+
+/**
+ * Example API endpoint that requires a fully executed MOU
+ * This demonstrates how to gate functionality behind MOU completion
+ */
+export async function POST(req: NextRequest) {
+  const supabase = createRouteHandlerClient({ cookies });
+  const { data: { user } } = await supabase.auth.getUser();
+  
+  if (!user) {
+    return new Response('Unauthorized', { status: 401 });
+  }
+
+  // Get user's program holder ID
+  const { data: prof } = await supabase
+    .from('user_profiles')
+    .select('program_holder_id')
+    .eq('user_id', user.id)
+    .single();
+
+  if (!prof?.program_holder_id) {
+    return Response.json({ 
+      error: 'No program holder assigned' 
+    }, { status: 403 });
+  }
+
+  // CHECK: MOU must be fully executed
+  const mouStatus = await checkMOUStatusServer(supabase, prof.program_holder_id);
+  
+  if (!mouStatus.isValid) {
+    return Response.json({ 
+      error: 'MOU_NOT_EXECUTED',
+      message: 'A fully executed MOU is required before enrolling participants.',
+      currentStatus: mouStatus.status,
+      requiresAction: true
+    }, { status: 403 });
+  }
+
+  // MOU is valid, proceed with enrollment logic
+  const body = await req.json();
+  const { participantName, programId } = body;
+
+  // Your enrollment logic here...
+  // For example:
+  // const { data, error } = await supabase
+  //   .from('cases')
+  //   .insert({
+  //     program_holder_id: prof.program_holder_id,
+  //     participant_name: participantName,
+  //     program_id: programId,
+  //     status: 'enrolled'
+  //   })
+  //   .select()
+  //   .single();
+
+  return Response.json({ 
+    success: true,
+    message: 'Participant enrolled successfully'
+  });
+}

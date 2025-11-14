@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecosystem Status - Where Are We At Now | Elevate for Humanity</title>
+    <meta
+      name="description"
+      content="Real-time status dashboard showing the actual state of the Elevate for Humanity ecosystem components"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/Elevate_for_Humanity_logo_81bf0fab.png"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: #333;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .header h1 {
+        color: #2c3e50;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      .header .subtitle {
+        color: #7f8c8d;
+        font-size: 1.2em;
+        font-weight: 300;
+      }
+
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 25px;
+        margin-bottom: 30px;
+      }
+
+      .status-card {
+        background: white;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .status-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .status-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .status-working {
+        background: #2ecc71;
+        color: white;
+      }
+
+      .status-warning {
+        background: #f39c12;
+        color: white;
+      }
+
+      .status-error {
+        background: #e74c3c;
+        color: white;
+      }
+
+      .status-unknown {
+        background: #95a5a6;
+        color: white;
+      }
+
+      .card-title {
+        font-size: 1.4em;
+        font-weight: 600;
+        color: #2c3e50;
+      }
+
+      .status-details {
+        list-style: none;
+      }
+
+      .status-item {
+        display: flex;
+        align-items: center;
+        margin: 8px 0;
+        padding: 5px 0;
+      }
+
+      .item-status {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .item-working {
+        background: #2ecc71;
+      }
+      .item-warning {
+        background: #f39c12;
+      }
+      .item-error {
+        background: #e74c3c;
+      }
+      .item-unknown {
+        background: #95a5a6;
+      }
+
+      .summary-section {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        margin-top: 30px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 20px;
+        background: #ecf0f1;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 15px 0;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #e74c3c, #f39c12, #2ecc71);
+        transition: width 0.8s ease;
+      }
+
+      .refresh-btn {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s ease;
+        margin-top: 20px;
+      }
+
+      .refresh-btn:hover {
+        background: #2980b9;
+      }
+
+      .last-updated {
+        text-align: center;
+        color: #7f8c8d;
+        font-size: 0.9em;
+        margin-top: 20px;
+      }
+
+      .error-details {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 10px;
+        font-family: monospace;
+        font-size: 0.9em;
+        color: #6c757d;
+        max-height: 150px;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🚀 Ecosystem Status Dashboard</h1>
+        <p class="subtitle">Real-time assessment of "Where Are We At Now"</p>
+      </div>
+
+      <div class="status-grid" id="statusGrid">
+        <!-- Status cards will be populated by JavaScript -->
+      </div>
+
+      <div class="summary-section">
+        <h2>Overall System Health</h2>
+        <div class="progress-bar">
+          <div
+            class="progress-fill"
+            id="overallProgress"
+            style="width: 0%"
+          ></div>
+        </div>
+        <p id="healthSummary">Analyzing system status...</p>
+        <button type="button" class="refresh-btn" onclick="runStatusCheck()">
+          🔄 Refresh Status
+        </button>
+        <div class="last-updated" id="lastUpdated"></div>
+      </div>
+    </div>
+
+    <script>
+      const statusChecks = [
+        {
+          name: 'Core Infrastructure',
+          icon: '🏗️',
+          checks: [
+            { name: 'Package Dependencies', test: () => checkDependencies() },
+            { name: 'Environment Variables', test: () => checkEnvironment() },
+            { name: 'Database Connection', test: () => checkDatabase() },
+            { name: 'Build System', test: () => checkBuildSystem() },
+            { name: 'Static Assets', test: () => checkAssets() },
+          ],
+        },
+        {
+          name: 'Sister Sites',
+          icon: '🌐',
+          checks: [
+            {
+              name: 'Hub Site (index.html)',
+              test: () => checkFile('/index.html'),
+            },
+            { name: 'Programs Site', test: () => checkFile('/programs.html') },
+            { name: 'LMS Site', test: () => checkFile('/lms.html') },
+            { name: 'Connect Site', test: () => checkFile('/connect.html') },
+            {
+              name: 'Account Management',
+              test: () => checkFile('/account.html'),
+            },
+          ],
+        },
+        {
+          name: 'Payment System',
+          icon: '💳',
+          checks: [
+            { name: 'Stripe Integration', test: () => checkStripeConfig() },
+            {
+              name: 'Payment Routes',
+              test: () => checkFile('/pay-enhanced-checkout.js'),
+            },
+            {
+              name: 'Webhook Handler',
+              test: () => checkFile('/webhook-handler.js'),
+            },
+            { name: 'Revenue Splits', test: () => checkRevenueSplits() },
+            {
+              name: 'Product Configuration',
+              test: () => checkStripeProducts(),
+            },
+          ],
+        },
+        {
+          name: 'Learning Management',
+          icon: '📚',
+          checks: [
+            {
+              name: 'LMS Backend',
+              test: () => checkFile('/lms-api-advanced.js'),
+            },
+            {
+              name: 'Course Content',
+              test: () => checkDirectory('/curriculum'),
+            },
+            {
+              name: 'Assessment System',
+              test: () => checkFile('/skills-assessment.html'),
+            },
+            { name: 'Progress Tracking', test: () => checkLMSProgress() },
+            {
+              name: 'Digital Binders',
+              test: () => checkFile('/digital-binder.html'),
+            },
+          ],
+        },
+        {
+          name: 'Testing &amp; Quality',
+          icon: '🧪',
+          checks: [
+            { name: 'Test Suite', test: () => checkTestSuite() },
+            { name: 'Code Coverage', test: () => checkCoverage() },
+            { name: 'Linting', test: () => checkLinting() },
+            { name: 'Build Validation', test: () => checkBuildValidation() },
+            {
+              name: 'Environment Validation',
+              test: () => checkEnvValidation(),
+            },
+          ],
+        },
+        {
+          name: 'Deployment Readiness',
+          icon: '🚀',
+          checks: [
+            {
+              name: 'Docker Configuration',
+              test: () => checkFile('/Dockerfile'),
+            },
+            {
+              name: 'Vercel Configuration',
+              test: () => checkFile('/vercel.json'),
+            },
+            { name: 'CI/CD Pipeline', test: () => checkDirectory('/.github') },
+            { name: 'Security Headers', test: () => checkSecurityHeaders() },
+            { name: 'SEO Optimization', test: () => checkSEO() },
+          ],
+        },
+      ];
+
+      async function runStatusCheck() {
+        const statusGrid = document.getElementById('statusGrid');
+        statusGrid.innerHTML =
+          '<div style="text-align: center; padding: 40px; color: #666;">Loading ecosystem status...</div>';
+
+        try {
+          // First try to get comprehensive status from API
+          const response = await fetch('/api/ecosystem/status');
+          if (response.ok) {
+            const data = await response.json();
+            displayAPIStatus(data);
+            return;
+          }
+        } catch (error) {
+          console.warn(
+            'API status check failed, falling back to client-side checks:',
+            error
+          );
+        }
+
+        // Fallback to client-side checks
+        statusGrid.innerHTML = '';
+
+        let totalChecks = 0;
+        let passedChecks = 0;
+
+        for (const section of statusChecks) {
+          const card = createStatusCard(section);
+          statusGrid.appendChild(card);
+
+          const results = [];
+
+          for (const check of section.checks) {
+            totalChecks++;
+            try {
+              const result = await check.test();
+              results.push({
+                name: check.name,
+                status: result.status,
+                message: result.message,
+                details: result.details,
+              });
+              if (result.status === 'working') passedChecks++;
+            } catch (error) {
+              results.push({
+                name: check.name,
+                status: 'error',
+                message: error.message,
+                details: error.stack,
+              });
+            }
+          }
+
+          updateStatusCard(card, section, results);
+        }
+
+        updateOverallHealth(passedChecks, totalChecks);
+        document.getElementById('lastUpdated').textContent =
+          `Last updated: ${new Date().toLocaleString()}`;
+      }
+
+      function displayAPIStatus(data) {
+        const statusGrid = document.getElementById('statusGrid');
+        statusGrid.innerHTML = '';
+
+        let totalChecks = data.overallHealth.totalChecks;
+        let passedChecks = data.overallHealth.workingChecks;
+
+        // Display each section
+        data.sections.forEach((section) => {
+          const card = createStatusCard({
+            name: section.name,
+            icon: getSectionIcon(section.name),
+            checks: Object.keys(section.checks).map((key) => ({ name: key })),
+          });
+          statusGrid.appendChild(card);
+
+          const results = Object.entries(section.checks).map(
+            ([name, result]) => ({
+              name: name
+                .replace(/([A-Z])/g, ' $1')
+                .replace(/^./, (str) => str.toUpperCase()),
+              status: result.status,
+              message: result.message,
+              details: result.details,
+            })
+          );
+
+          updateStatusCard(
+            card,
+            { name: section.name, icon: getSectionIcon(section.name) },
+            results
+          );
+        });
+
+        updateOverallHealth(passedChecks, totalChecks);
+
+        // Add summary information
+        const summary = data.summary;
+        const healthSummary = document.getElementById('healthSummary');
+        const existingText = healthSummary.innerHTML;
+
+        let summaryText = '';
+        if (summary.readyForProduction) {
+          summaryText =
+            '<div style="margin-top: 15px; padding: 10px; background: #d4edda; border: 1px solid #c3e6cb; border-radius: 5px; color: #155724;"><strong>✅ Ready for Production</strong></div>';
+        } else {
+          summaryText =
+            '<div style="margin-top: 15px; padding: 10px; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 5px; color: #721c24;"><strong>❌ Not Ready for Production</strong></div>';
+        }
+
+        if (summary.majorIssues.length > 0) {
+          summaryText +=
+            '<div style="margin-top: 10px;"><strong>Major Issues:</strong><ul>';
+          summary.majorIssues.forEach((issue) => {
+            summaryText += `<li>${issue}</li>`;
+          });
+          summaryText += '</ul></div>';
+        }
+
+        if (summary.nextSteps.length > 0) {
+          summaryText +=
+            '<div style="margin-top: 10px;"><strong>Next Steps:</strong><ul>';
+          summary.nextSteps.forEach((step) => {
+            summaryText += `<li>${step}</li>`;
+          });
+          summaryText += '</ul></div>';
+        }
+
+        healthSummary.innerHTML = existingText + summaryText;
+
+        document.getElementById('lastUpdated').textContent =
+          `Last updated: ${new Date(data.timestamp).toLocaleString()}`;
+      }
+
+      function getSectionIcon(sectionName) {
+        const icons = {
+          'Core Infrastructure': '🏗️',
+          'Sister Sites': '🌐',
+          'Payment System': '💳',
+          'Learning Management': '📚',
+          'Testing &amp; Quality': '🧪',
+          'Deployment Readiness': '🚀',
+        };
+        return icons[sectionName] || '📊';
+      }
+
+      function createStatusCard(section) {
+        const card = document.createElement('div');
+        card.className = 'status-card';
+        card.innerHTML = `
+                <div class="card-header">
+                    <div class="status-icon status-unknown">${section.icon}</div>
+                    <div class="card-title">${section.name}</div>
+                </div>
+                <ul class="status-details" id="details-${section.name.replace(/\s+/g, '-').toLowerCase()}">
+                    ${section.checks
+                      .map(
+                        (check) => `
+                        <li class="status-item">
+                            <div class="item-status item-unknown"></div>
+                            <span>${check.name}</span>
+                        </li>
+                    `
+                      )
+                      .join('')}
+                </ul>
+            `;
+        return card;
+      }
+
+      function updateStatusCard(card, section, results) {
+        const statusIcon = card.querySelector('.status-icon');
+        const detailsList = card.querySelector('.status-details');
+
+        let workingCount = 0;
+        let errorCount = 0;
+        let warningCount = 0;
+
+        results.forEach((result, index) => {
+          const item = detailsList.children[index];
+          const statusDot = item.querySelector('.item-status');
+
+          statusDot.className = `item-status item-${result.status}`;
+
+          if (result.message) {
+            item.title = result.message;
+          }
+
+          if (result.details &amp;&amp; result.status === 'error') {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-details';
+            errorDiv.textContent = result.details;
+            item.appendChild(errorDiv);
+          }
+
+          switch (result.status) {
+            case 'working':
+              workingCount++;
+              break;
+            case 'error':
+              errorCount++;
+              break;
+            case 'warning':
+              warningCount++;
+              break;
+          }
+        });
+
+        // Determine overall section status
+        if (errorCount > 0) {
+          statusIcon.className = 'status-icon status-error';
+        } else if (warningCount > 0) {
+          statusIcon.className = 'status-icon status-warning';
+        } else if (workingCount > 0) {
+          statusIcon.className = 'status-icon status-working';
+        }
+      }
+
+      function updateOverallHealth(passed, total) {
+        const percentage = Math.round((passed / total) * 100);
+        const progressFill = document.getElementById('overallProgress');
+        const healthSummary = document.getElementById('healthSummary');
+
+        progressFill.style.width = `${percentage}%`;
+
+        let status = '';
+        if (percentage >= 90) {
+          status = '🟢 Excellent - System is production ready';
+        } else if (percentage >= 70) {
+          status = '🟡 Good - Minor issues to address';
+        } else if (percentage >= 50) {
+          status = '🟠 Fair - Several issues need attention';
+        } else {
+          status = '🔴 Critical - Major issues preventing deployment';
+        }
+
+        healthSummary.innerHTML = `
+                <strong>${status}</strong><br>
+                ${passed} of ${total} checks passed (${percentage}%)
+            `;
+      }
+
+      // Status check functions
+      async function checkDependencies() {
+        try {
+          const response = await fetch('/package.json');
+          if (response.ok) {
+            const packageData = await response.json();
+            const hasDevDeps =
+              packageData.devDependencies &amp;&amp;
+              Object.keys(packageData.devDependencies).length > 0;
+            const hasDeps =
+              packageData.dependencies &amp;&amp;
+              Object.keys(packageData.dependencies).length > 0;
+
+            if (hasDevDeps &amp;&amp; hasDeps) {
+              return {
+                status: 'working',
+                message: 'Dependencies properly configured',
+              };
+            } else {
+              return {
+                status: 'warning',
+                message: 'Some dependencies may be missing',
+              };
+            }
+          }
+          return { status: 'error', message: 'Cannot access package.json' };
+        } catch (error) {
+          return { status: 'error', message: error.message };
+        }
+      }
+
+      async function checkEnvironment() {
+        // Check for required environment variables
+        const requiredVars = [
+          'STRIPE_SECRET_KEY',
+          'SUPABASE_URL',
+          'SUPABASE_SERVICE_KEY',
+        ];
+        const missingVars = [];
+
+        try {
+          const response = await fetch('/api/health');
+          if (response.ok) {
+            return {
+              status: 'working',
+              message: 'Environment validation passed',
+            };
+          } else {
+            return {
+              status: 'error',
+              message:
+                'Environment validation failed - missing required variables',
+            };
+          }
+        } catch (error) {
+          return {
+            status: 'warning',
+            message: 'Cannot verify environment - may need configuration',
+          };
+        }
+      }
+
+      async function checkDatabase() {
+        try {
+          const response = await fetch('/api/healthz');
+          if (response.ok) {
+            const health = await response.json();
+            if (health.db &amp;&amp; health.db.status === 'ok') {
+              return {
+                status: 'working',
+                message: 'Database connected successfully',
+              };
+            } else {
+              return { status: 'error', message: 'Database connection failed' };
+            }
+          }
+          return {
+            status: 'warning',
+            message: 'Cannot verify database status',
+          };
+        } catch (error) {
+          return {
+            status: 'warning',
+            message: 'Database health check unavailable',
+          };
+        }
+      }
+
+      async function checkBuildSystem() {
+        try {
+          const response = await fetch('/vite.config.js');
+          if (response.ok) {
+            return {
+              status: 'working',
+              message: 'Vite build system configured',
+            };
+          }
+          return {
+            status: 'warning',
+            message: 'Build configuration may be missing',
+          };
+        } catch (error) {
+          return { status: 'error', message: 'Build system check failed' };
+        }
+      }
+
+      async function checkFile(path) {
+        try {
+          const response = await fetch(path, { method: 'HEAD' });
+          if (response.ok) {
+            return {
+              status: 'working',
+              message: `${path} exists and accessible`,
+            };
+          } else {
+            return {
+              status: 'error',
+              message: `${path} not found (${response.status})`,
+            };
+          }
+        } catch (error) {
+          return { status: 'error', message: `Cannot access ${path}` };
+        }
+      }
+
+      async function checkDirectory(path) {
+        try {
+          const response = await fetch(path);
+          if (response.ok) {
+            return {
+              status: 'working',
+              message: `${path} directory accessible`,
+            };
+          } else {
+            return {
+              status: 'warning',
+              message: `${path} may not exist or be accessible`,
+            };
+          }
+        } catch (error) {
+          return {
+            status: 'warning',
+            message: `Cannot verify ${path} directory`,
+          };
+        }
+      }
+
+      async function checkAssets() {
+        try {
+          const response = await fetch(
+            '/images/Elevate_for_Humanity_logo_81bf0fab.png',
+            { method: 'HEAD' }
+          );
+          if (response.ok) {
+            return { status: 'working', message: 'Core assets accessible' };
+          } else {
+            return { status: 'warning', message: 'Some assets may be missing' };
+          }
+        } catch (error) {
+          return {
+            status: 'warning',
+            message: 'Cannot verify asset availability',
+          };
+        }
+      }
+
+      async function checkStripeConfig() {
+        try {
+          const response = await fetch('/api/stripe/health');
+          if (response.ok) {
+            return {
+              status: 'working',
+              message: 'Stripe integration configured',
+            };
+          } else {
+            return {
+              status: 'warning',
+              message: 'Stripe configuration needs verification',
+            };
+          }
+        } catch (error) {
+          return {
+            status: 'warning',
+            message: 'Stripe health check unavailable',
+          };
+        }
+      }
+
+      async function checkRevenueSplits() {
+        try {
+          const response = await fetch('/payment-processing-with-splits.js', {
+            method: 'HEAD',
+          });
+          if (response.ok) {
+            return {
+              status: 'working',
+              message: 'Revenue splitting system configured',
+            };
+          } else {
+            return {
+              status: 'warning',
+              message: 'Revenue splits configuration unclear',
+            };
+          }
+        } catch (error) {
+          return { status: 'warning', message: 'Cannot verify revenue splits' };
+        }
+      }
+
+      async function checkStripeProducts() {
+        try {
+          const response = await fetch('/stripe-products-creator.js', {
+            method: 'HEAD',
+          });
+          if (response.ok) {
+            return {
+              status: 'working',
+              message: 'Product configuration system exists',
+            };
+          } else {
+            return {
+              status: 'warning',
+              message: 'Product configuration needs verification',
+            };
+          }
+        } catch (error) {
+          return {
+            status: 'warning',
+            message: 'Cannot verify product configuration',
+          };
+        }
+      }
+
+      async function checkLMSProgress() {
+        try {
+          const response = await fetch('/api/lms/courses');
+          if (response.ok) {
+            return { status: 'working', message: 'LMS API functional' };
+          } else {
+            return { status: 'warning', message: 'LMS API needs verification' };
+          }
+        } catch (error) {
+          return { status: 'warning', message: 'LMS API unavailable' };
+        }
+      }
+
+      async function checkTestSuite() {
+        try {
+          const response = await fetch('/package.json');
+          if (response.ok) {
+            const packageData = await response.json();
+            if (packageData.scripts &amp;&amp; packageData.scripts.test) {
+              return {
+                status: 'warning',
+                message: 'Test suite configured but has known failures',
+              };
+            }
+          }
+          return { status: 'error', message: 'No test suite found' };
+        } catch (error) {
+          return {
+            status: 'error',
+            message: 'Cannot verify test configuration',
+          };
+        }
+      }
+
+      async function checkCoverage() {
+        return {
+          status: 'warning',
+          message: 'Code coverage needs verification',
+        };
+      }
+
+      async function checkLinting() {
+        try {
+          const response = await fetch('/.eslintrc.cjs', { method: 'HEAD' });
+          if (response.ok) {
+            return {
+              status: 'working',
+              message: 'ESLint configuration exists',
+            };
+          } else {
+            return {
+              status: 'warning',
+              message: 'Linting configuration unclear',
+            };
+          }
+        } catch (error) {
+          return { status: 'warning', message: 'Cannot verify linting setup' };
+        }
+      }
+
+      async function checkBuildValidation() {
+        return {
+          status: 'warning',
+          message: 'Build validation needs environment variables',
+        };
+      }
+
+      async function checkEnvValidation() {
+        try {
+          const response = await fetch('/scripts/validate-env.js', {
+            method: 'HEAD',
+          });
+          if (response.ok) {
+            return {
+              status: 'warning',
+              message: 'Environment validation exists but requires setup',
+            };
+          } else {
+            return {
+              status: 'error',
+              message: 'Environment validation script missing',
+            };
+          }
+        } catch (error) {
+          return {
+            status: 'error',
+            message: 'Cannot verify environment validation',
+          };
+        }
+      }
+
+      async function checkSecurityHeaders() {
+        try {
+          const response = await fetch('/');
+          const hasCSP = response.headers.get('content-security-policy');
+          const hasXFrame = response.headers.get('x-frame-options');
+
+          if (hasCSP || hasXFrame) {
+            return {
+              status: 'working',
+              message: 'Security headers configured',
+            };
+          } else {
+            return {
+              status: 'warning',
+              message: 'Security headers need verification',
+            };
+          }
+        } catch (error) {
+          return {
+            status: 'warning',
+            message: 'Cannot verify security headers',
+          };
+        }
+      }
+
+      async function checkSEO() {
+        try {
+          const response = await fetch('/sitemap.xml', { method: 'HEAD' });
+          if (response.ok) {
+            return {
+              status: 'working',
+              message: 'SEO optimization configured',
+            };
+          } else {
+            return { status: 'warning', message: 'SEO needs verification' };
+          }
+        } catch (error) {
+          return {
+            status: 'warning',
+            message: 'Cannot verify SEO configuration',
+          };
+        }
+      }
+
+      // Run initial status check
+      runStatusCheck();
+    </script>
+  </body>
+</html>

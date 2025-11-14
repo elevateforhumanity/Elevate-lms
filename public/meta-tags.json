@@ -1,0 +1,812 @@
+[
+  {
+    "path": "/aitutor",
+    "title": "AITutor",
+    "description": "AITutor - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/about",
+    "title": "About",
+    "description": "About - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/about-old",
+    "title": "About old",
+    "description": "About old - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/accessibility",
+    "title": "Accessibility",
+    "description": "Accessibility - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/accessibilitysettings",
+    "title": "AccessibilitySettings",
+    "description": "AccessibilitySettings - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/account",
+    "title": "Account",
+    "description": "Account - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/adminconsole",
+    "title": "AdminConsole",
+    "description": "AdminConsole - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/admindashboard",
+    "title": "AdminDashboard",
+    "description": "AdminDashboard - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/analytics",
+    "title": "Analytics",
+    "description": "Analytics - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/analyticsdashboard",
+    "title": "AnalyticsDashboard",
+    "description": "AnalyticsDashboard - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/analyticsdashboardrum",
+    "title": "AnalyticsDashboardRUM",
+    "description": "AnalyticsDashboardRUM - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/assignment",
+    "title": "Assignment",
+    "description": "Assignment - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/autopilotadmin",
+    "title": "AutopilotAdmin",
+    "description": "AutopilotAdmin - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/bingsiteverification",
+    "title": "BingSiteVerification",
+    "description": "BingSiteVerification - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/branding",
+    "title": "Branding",
+    "description": "Branding - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/businesshub",
+    "title": "BusinessHub",
+    "description": "BusinessHub - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/calendar",
+    "title": "Calendar",
+    "description": "Calendar - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/certificatepage",
+    "title": "CertificatePage",
+    "description": "CertificatePage - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/certificates",
+    "title": "Certificates",
+    "description": "Certificates - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/clonelanding",
+    "title": "CloneLanding",
+    "description": "CloneLanding - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/community",
+    "title": "Community",
+    "description": "Community - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/communityhub",
+    "title": "CommunityHub",
+    "description": "CommunityHub - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/compliance",
+    "title": "Compliance",
+    "description": "Compliance - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/compliance",
+    "title": "Compliance",
+    "description": "Compliance - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/connect",
+    "title": "Connect",
+    "description": "Connect - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/connect",
+    "title": "Connect",
+    "description": "Connect - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/course",
+    "title": "Course",
+    "description": "Course - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/coursebuilder",
+    "title": "CourseBuilder",
+    "description": "CourseBuilder - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/coursecatalog",
+    "title": "CourseCatalog",
+    "description": "CourseCatalog - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/coursedetail",
+    "title": "CourseDetail",
+    "description": "CourseDetail - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/courselibrary",
+    "title": "CourseLibrary",
+    "description": "CourseLibrary - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/curriculumupload",
+    "title": "CurriculumUpload",
+    "description": "CurriculumUpload - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/docs",
+    "title": "Docs",
+    "description": "Docs - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/donate",
+    "title": "Donate",
+    "description": "Donate - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/donatepage",
+    "title": "DonatePage",
+    "description": "DonatePage - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/donatepage",
+    "title": "DonatePage",
+    "description": "DonatePage - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/durableai",
+    "title": "DurableAI",
+    "description": "DurableAI - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/durablefeatures",
+    "title": "DurableFeatures",
+    "description": "DurableFeatures - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/durablelanding",
+    "title": "DurableLanding",
+    "description": "DurableLanding - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/durablepricing",
+    "title": "DurablePricing",
+    "description": "DurablePricing - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/durabletemplates",
+    "title": "DurableTemplates",
+    "description": "DurableTemplates - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/",
+    "title": "EFHLanding",
+    "description": "EFHLanding - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/ecommerce",
+    "title": "Ecommerce",
+    "description": "Ecommerce - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/ecosystem",
+    "title": "Ecosystem",
+    "description": "Ecosystem - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/educatorhub",
+    "title": "EducatorHub",
+    "description": "EducatorHub - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/elevatebrain",
+    "title": "ElevateBrain",
+    "description": "ElevateBrain - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/email",
+    "title": "Email",
+    "description": "Email - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/filemanager",
+    "title": "FileManager",
+    "description": "FileManager - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/forgotpassword",
+    "title": "ForgotPassword",
+    "description": "ForgotPassword - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/forms",
+    "title": "Forms",
+    "description": "Forms - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/fullsaillanding",
+    "title": "FullSailLanding",
+    "description": "FullSailLanding - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/fundingimpact",
+    "title": "FundingImpact",
+    "description": "FundingImpact - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/getstarted",
+    "title": "GetStarted",
+    "description": "GetStarted - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/getstarted",
+    "title": "GetStarted",
+    "description": "GetStarted - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/googleanalyticssetup",
+    "title": "GoogleAnalyticsSetup",
+    "description": "GoogleAnalyticsSetup - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/googlesiteverification",
+    "title": "GoogleSiteVerification",
+    "description": "GoogleSiteVerification - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/government",
+    "title": "Government",
+    "description": "Government - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/gradebook",
+    "title": "GradeBook",
+    "description": "GradeBook - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/groups",
+    "title": "Groups",
+    "description": "Groups - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/home-alt",
+    "title": "Home",
+    "description": "Home - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/homepage-alt",
+    "title": "HomePage",
+    "description": "HomePage - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/homepage-alt",
+    "title": "HomePage",
+    "description": "HomePage - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/hub",
+    "title": "Hub",
+    "description": "Hub - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/hub",
+    "title": "Hub",
+    "description": "Hub - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/instructor",
+    "title": "Instructor",
+    "description": "Instructor - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/instructorcoursecreate",
+    "title": "InstructorCourseCreate",
+    "description": "InstructorCourseCreate - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/instructoredit",
+    "title": "InstructorEdit",
+    "description": "InstructorEdit - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/instructornew",
+    "title": "InstructorNew",
+    "description": "InstructorNew - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/integrations",
+    "title": "Integrations",
+    "description": "Integrations - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/kingdomkonnect",
+    "title": "KingdomKonnect",
+    "description": "KingdomKonnect - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/lms",
+    "title": "LMS",
+    "description": "LMS - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/lms",
+    "title": "LMS",
+    "description": "LMS - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/lmscourses",
+    "title": "LMSCourses",
+    "description": "LMSCourses - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/lmsdashboard",
+    "title": "LMSDashboard",
+    "description": "LMSDashboard - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/lmslanding",
+    "title": "LMSLanding",
+    "description": "LMSLanding - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/liveclassroom",
+    "title": "LiveClassRoom",
+    "description": "LiveClassRoom - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/liveclassschedule",
+    "title": "LiveClassSchedule",
+    "description": "LiveClassSchedule - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/login",
+    "title": "Login",
+    "description": "Login - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/login-old",
+    "title": "Login old",
+    "description": "Login old - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/mainlanding",
+    "title": "MainLanding",
+    "description": "MainLanding - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/mobileapp",
+    "title": "MobileApp",
+    "description": "MobileApp - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/mycertificates",
+    "title": "MyCertificates",
+    "description": "MyCertificates - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/notfound",
+    "title": "NotFound",
+    "description": "NotFound - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/notfound",
+    "title": "NotFound",
+    "description": "NotFound - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/notebooklm",
+    "title": "NotebookLM",
+    "description": "NotebookLM - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/notificationcenter",
+    "title": "NotificationCenter",
+    "description": "NotificationCenter - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/notificationsettings",
+    "title": "NotificationSettings",
+    "description": "NotificationSettings - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/notifications",
+    "title": "Notifications",
+    "description": "Notifications - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/partners",
+    "title": "Partners",
+    "description": "Partners - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/pay",
+    "title": "Pay",
+    "description": "Pay - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/pay",
+    "title": "Pay",
+    "description": "Pay - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/paymentcancelled",
+    "title": "PaymentCancelled",
+    "description": "PaymentCancelled - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/paymentsuccess",
+    "title": "PaymentSuccess",
+    "description": "PaymentSuccess - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/philanthropy",
+    "title": "Philanthropy",
+    "description": "Philanthropy - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/privacypolicy",
+    "title": "PrivacyPolicy",
+    "description": "PrivacyPolicy - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/professionalhome",
+    "title": "ProfessionalHome",
+    "description": "ProfessionalHome - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/professionalsite",
+    "title": "ProfessionalSite",
+    "description": "ProfessionalSite - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/profile",
+    "title": "Profile",
+    "description": "Profile - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/programdetail",
+    "title": "ProgramDetail",
+    "description": "ProgramDetail - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/programpage",
+    "title": "ProgramPage",
+    "description": "ProgramPage - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/programs",
+    "title": "Programs",
+    "description": "Programs - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/programsdurable",
+    "title": "ProgramsDurable",
+    "description": "ProgramsDurable - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/programsindex",
+    "title": "ProgramsIndex",
+    "description": "ProgramsIndex - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/programspage",
+    "title": "ProgramsPage",
+    "description": "ProgramsPage - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/programs-backup",
+    "title": "Programs backup",
+    "description": "Programs backup - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/programs-old",
+    "title": "Programs old",
+    "description": "Programs old - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/quiz",
+    "title": "Quiz",
+    "description": "Quiz - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/quizbuilder",
+    "title": "QuizBuilder",
+    "description": "QuizBuilder - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/quizresults",
+    "title": "QuizResults",
+    "description": "QuizResults - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/quiztake",
+    "title": "QuizTake",
+    "description": "QuizTake - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/refundpolicy",
+    "title": "RefundPolicy",
+    "description": "RefundPolicy - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/resetpassword",
+    "title": "ResetPassword",
+    "description": "ResetPassword - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/resetpassword",
+    "title": "ResetPassword",
+    "description": "ResetPassword - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/searchresults",
+    "title": "SearchResults",
+    "description": "SearchResults - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/serenecomfortcare",
+    "title": "SereneComfortCare",
+    "description": "SereneComfortCare - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/settings",
+    "title": "Settings",
+    "description": "Settings - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sheets",
+    "title": "Sheets",
+    "description": "Sheets - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/signup",
+    "title": "Signup",
+    "description": "Signup - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sitemap",
+    "title": "Sitemap",
+    "description": "Sitemap - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sitemap",
+    "title": "Sitemap",
+    "description": "Sitemap - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sites",
+    "title": "Sites",
+    "description": "Sites - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/slides",
+    "title": "Slides",
+    "description": "Slides - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/socialmediamanager",
+    "title": "SocialMediaManager",
+    "description": "SocialMediaManager - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/student",
+    "title": "Student",
+    "description": "Student - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/studentdashboard",
+    "title": "StudentDashboard",
+    "description": "StudentDashboard - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/studentgrades",
+    "title": "StudentGrades",
+    "description": "StudentGrades - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/studenthandbook",
+    "title": "StudentHandbook",
+    "description": "StudentHandbook - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/studenthub",
+    "title": "StudentHub",
+    "description": "StudentHub - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/studentportallms",
+    "title": "StudentPortalLMS",
+    "description": "StudentPortalLMS - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/support",
+    "title": "Support",
+    "description": "Support - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/termsofservice",
+    "title": "TermsOfService",
+    "description": "TermsOfService - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/testpage",
+    "title": "TestPage",
+    "description": "TestPage - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/thankyou",
+    "title": "ThankYou",
+    "description": "ThankYou - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/thankyou",
+    "title": "ThankYou",
+    "description": "ThankYou - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/urbanbuildcrew",
+    "title": "UrbanBuildCrew",
+    "description": "UrbanBuildCrew - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/usermanagement",
+    "title": "UserManagement",
+    "description": "UserManagement - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/verifycertificate",
+    "title": "VerifyCertificate",
+    "description": "VerifyCertificate - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/verifycertificate",
+    "title": "VerifyCertificate",
+    "description": "VerifyCertificate - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/verifyemail",
+    "title": "VerifyEmail",
+    "description": "VerifyEmail - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/videomeeting",
+    "title": "VideoMeeting",
+    "description": "VideoMeeting - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/vids",
+    "title": "Vids",
+    "description": "Vids - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/auth/account",
+    "title": "auth Account",
+    "description": "auth Account - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/auth/forgotpassword",
+    "title": "auth ForgotPassword",
+    "description": "auth ForgotPassword - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/auth/login",
+    "title": "auth Login",
+    "description": "auth Login - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/auth/signup",
+    "title": "auth Signup",
+    "description": "auth Signup - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/instructor/courseeditor",
+    "title": "instructor CourseEditor",
+    "description": "instructor CourseEditor - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/instructor/instructordashboard",
+    "title": "instructor InstructorDashboard",
+    "description": "instructor InstructorDashboard - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/instructor/lessonmanager",
+    "title": "instructor LessonManager",
+    "description": "instructor LessonManager - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/lms/coursepage",
+    "title": "lms CoursePage",
+    "description": "lms CoursePage - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/lms/coursesindex",
+    "title": "lms CoursesIndex",
+    "description": "lms CoursesIndex - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/lms/dashboard",
+    "title": "lms Dashboard",
+    "description": "lms Dashboard - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/lms/lessonpage",
+    "title": "lms LessonPage",
+    "description": "lms LessonPage - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/lms/quizblock",
+    "title": "lms QuizBlock",
+    "description": "lms QuizBlock - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sisters/mentordirectory",
+    "title": "sisters MentorDirectory",
+    "description": "sisters MentorDirectory - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sisters/mentorsignup",
+    "title": "sisters MentorSignup",
+    "description": "sisters MentorSignup - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sisters/mentorship",
+    "title": "sisters Mentorship",
+    "description": "sisters Mentorship - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sisters/peersupport",
+    "title": "sisters PeerSupport",
+    "description": "sisters PeerSupport - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sisters/volunteer",
+    "title": "sisters Volunteer",
+    "description": "sisters Volunteer - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sisters/volunteeropportunities",
+    "title": "sisters VolunteerOpportunities",
+    "description": "sisters VolunteerOpportunities - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sisters/volunteerstories",
+    "title": "sisters VolunteerStories",
+    "description": "sisters VolunteerStories - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sisters/wellness",
+    "title": "sisters Wellness",
+    "description": "sisters Wellness - Elevate for Humanity Career & Technical Institute"
+  },
+  {
+    "path": "/sisters/wellnessresources",
+    "title": "sisters WellnessResources",
+    "description": "sisters WellnessResources - Elevate for Humanity Career & Technical Institute"
+  }
+]

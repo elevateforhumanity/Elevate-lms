@@ -1,0 +1,1556 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eligibility Verification - DOL/DWD Compliance</title>
+    <meta
+      name="description"
+      content="Participant eligibility verification system for federal workforce development programs"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="scripts/efh-universal.v2.2.js"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Navigation Header -->
+    <nav
+      role="navigation"
+      class="bg-white border-b border-gray-200 sticky top-0 z-50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="compliance.html" class="flex items-center">
+              <i
+                data-lucide="arrow-left"
+                class="h-5 w-5 mr-2 text-gray-600"
+              ></i>
+              <span class="text-gray-600">Back to Compliance Portal</span>
+            </a>
+          </div>
+          <div class="flex items-center">
+            <h1 class="text-xl font-bold text-gray-900">
+              Eligibility Verification
+            </h1>
+          </div>
+          <div class="flex items-center">
+            <div
+              class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium"
+            >
+              🔍 Verification System
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <!-- Page Header -->
+      <div class="mb-8">
+        <div
+          class="bg-gradient-to-r from-orange-600 to-red-600 rounded-lg p-6 text-white"
+        >
+          <h2 class="text-2xl font-bold mb-2">
+            Participant Eligibility Verification
+          </h2>
+          <p class="opacity-90">
+            Federal compliance requirements for workforce development program
+            eligibility
+          </p>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="pending-verifications">42</div>
+              <div class="text-sm opacity-90">Pending Review</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="verified-participants">
+                324
+              </div>
+              <div class="text-sm opacity-90">Verified</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="rejected-applications">18</div>
+              <div class="text-sm opacity-90">Rejected</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="compliance-rate">94.7%</div>
+              <div class="text-sm opacity-90">Compliance Rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <button
+          type="button"
+          onclick="showNewVerificationForm()"
+          class="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow text-left"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="user-check" class="h-8 w-8 text-orange-600"></i>
+            <span
+              class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs"
+              >New</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">New Verification</h3>
+          <p class="text-gray-600 text-sm">
+            Start eligibility verification for new participant
+          </p>
+        </button>
+
+        <button
+          type="button"
+          onclick="showBulkImport()"
+          class="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow text-left"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="upload" class="h-8 w-8 text-blue-600"></i>
+            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs"
+              >Bulk</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Bulk Import</h3>
+          <p class="text-gray-600 text-sm">
+            Import multiple verification records from CSV
+          </p>
+        </button>
+
+        <button
+          type="button"
+          onclick="generateComplianceReport()"
+          class="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow text-left"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="file-text" class="h-8 w-8 text-green-600"></i>
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs"
+              >Report</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Compliance Report</h3>
+          <p class="text-gray-600 text-sm">
+            Generate eligibility compliance report
+          </p>
+        </button>
+      </div>
+
+      <!-- Filters and Search -->
+      <div class="bg-white rounded-lg border p-4 mb-6">
+        <div class="flex flex-wrap items-center gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Program Type</label
+            >
+            <select
+              id="program-filter"
+              onchange="filterVerifications()"
+              class="border rounded px-3 py-2"
+            >
+              <option value="">All Programs</option>
+              <option value="wio">WIO (Workforce Innovation)</option>
+              <option value="wex">WEX (Work Experience)</option>
+              <option value="wrg">WRG (Work Readiness Grant)</option>
+              <option value="ojt">OJT (On-Job Training)</option>
+              <option value="etpl">ETPL (Eligible Training Provider)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Status</label
+            >
+            <select
+              id="status-filter"
+              onchange="filterVerifications()"
+              class="border rounded px-3 py-2"
+            >
+              <option value="">All Status</option>
+              <option value="pending">Pending Review</option>
+              <option value="verified">Verified</option>
+              <option value="rejected">Rejected</option>
+              <option value="incomplete">Incomplete</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Search</label
+            >
+            <input
+              type="text"
+              id="search-verifications"
+              placeholder="Search by name, email, or ID..."
+              class="w-full border rounded px-3 py-2"
+              onkeyup="searchVerifications()"
+            />
+          </div>
+          <div class="self-end">
+            <button
+              type="button"
+              onclick="exportVerifications()"
+              class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 flex items-center"
+            >
+              <i data-lucide="download" class="h-4 w-4 mr-2"></i>
+              Export
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verification Records Table -->
+      <div class="bg-white rounded-lg border">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Participant
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Program Type
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Criteria Met
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Documentation
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Status
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Verified By
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              id="verification-table-body"
+              class="bg-white divide-y divide-gray-200"
+            >
+              <!-- Verification records will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- New Verification Modal -->
+      <div
+        id="new-verification-modal"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50"
+      >
+        <div class="flex items-center justify-center min-h-screen p-4">
+          <div
+            class="bg-white rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">
+                  New Eligibility Verification
+                </h3>
+                <button
+                  type="button"
+                  onclick="hideNewVerificationForm()"
+                  class="text-gray-400 hover:text-gray-600"
+                  aria-label="Action button"
+                >
+                  <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+              </div>
+
+              <form id="verification-form" onsubmit="createVerification(event)">
+                <div class="space-y-6">
+                  <!-- Participant Information -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Participant Information
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Participant Name</label
+                        >
+                        <input
+                          type="text"
+                          aria-label="text input"
+                          name="participant_name"
+                          required
+                          class="w-full border rounded px-3 py-2"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Email Address</label
+                        >
+                        <input
+                          type="email"
+                          aria-label="email input"
+                          name="email"
+                          required
+                          class="w-full border rounded px-3 py-2"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Program Type</label
+                        >
+                        <select
+                          name="program_type"
+                          required
+                          class="w-full border rounded px-3 py-2"
+                        >
+                          <option value="">Select Program</option>
+                          <option value="wio">
+                            WIO - Workforce Innovation Opportunity
+                          </option>
+                          <option value="wex">WEX - Work Experience</option>
+                          <option value="wrg">
+                            WRG - Work Readiness Grant
+                          </option>
+                          <option value="ojt">OJT - On-the-Job Training</option>
+                          <option value="etpl">
+                            ETPL - Eligible Training Provider
+                          </option>
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Social Security Number</label
+                        >
+                        <input
+                          type="text"
+                          aria-label="text input"
+                          name="ssn"
+                          class="w-full border rounded px-3 py-2"
+                          placeholder="XXX-XX-XXXX"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Eligibility Criteria -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Federal Eligibility Criteria
+                    </h4>
+                    <div class="space-y-4">
+                      <!-- Age Requirements -->
+                      <div>
+                        <h5 class="font-medium text-gray-800 mb-2">
+                          Age Requirements
+                        </h5>
+                        <div class="space-y-2">
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="age_18_24"
+                              class="mr-2"
+                            />
+                            Ages 18-24 (Youth Program)
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="age_25_plus"
+                              class="mr-2"
+                            />
+                            Ages 25+ (Adult Program)
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="age_55_plus"
+                              class="mr-2"
+                            />
+                            Ages 55+ (Dislocated Worker)
+                          </label>
+                        </div>
+                      </div>
+
+                      <!-- Income Requirements -->
+                      <div>
+                        <h5 class="font-medium text-gray-800 mb-2">
+                          Income Requirements
+                        </h5>
+                        <div class="space-y-2">
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="low_income"
+                              class="mr-2"
+                            />
+                            Low-Income Individual (≤70% Lower Living Standard)
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="public_assistance"
+                              class="mr-2"
+                            />
+                            Receives Public Assistance
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="food_stamps"
+                              class="mr-2"
+                            />
+                            Receives SNAP/Food Stamps
+                          </label>
+                        </div>
+                      </div>
+
+                      <!-- Barriers to Employment -->
+                      <div>
+                        <h5 class="font-medium text-gray-800 mb-2">
+                          Barriers to Employment
+                        </h5>
+                        <div class="space-y-2">
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="basic_skills_deficient"
+                              class="mr-2"
+                            />
+                            Basic Skills Deficient
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="english_learner"
+                              class="mr-2"
+                            />
+                            English Language Learner
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="offender"
+                              class="mr-2"
+                            />
+                            Ex-Offender
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="homeless"
+                              class="mr-2"
+                            />
+                            Homeless Individual/Runaway Youth
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="pregnant_parenting"
+                              class="mr-2"
+                            />
+                            Pregnant or Parenting Youth
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="disabled"
+                              class="mr-2"
+                            />
+                            Individual with Disability
+                          </label>
+                        </div>
+                      </div>
+
+                      <!-- Special Populations -->
+                      <div>
+                        <h5 class="font-medium text-gray-800 mb-2">
+                          Special Populations
+                        </h5>
+                        <div class="space-y-2">
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="veteran"
+                              class="mr-2"
+                            />
+                            Veteran
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="dislocated_worker"
+                              class="mr-2"
+                            />
+                            Dislocated Worker
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="displaced_homemaker"
+                              class="mr-2"
+                            />
+                            Displaced Homemaker
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="eligibility"
+                              value="seasonal_farmworker"
+                              class="mr-2"
+                            />
+                            Seasonal/Migrant Farmworker
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Documentation Required -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Documentation Provided
+                    </h4>
+                    <div class="space-y-3">
+                      <div>
+                        <h5 class="font-medium text-gray-800 mb-2">
+                          Identity Documents
+                        </h5>
+                        <div class="space-y-2">
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="documentation"
+                              value="drivers_license"
+                              class="mr-2"
+                            />
+                            Driver's License
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="documentation"
+                              value="passport"
+                              class="mr-2"
+                            />
+                            Passport
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="documentation"
+                              value="birth_certificate"
+                              class="mr-2"
+                            />
+                            Birth Certificate
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="documentation"
+                              value="ss_card"
+                              class="mr-2"
+                            />
+                            Social Security Card
+                          </label>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 class="font-medium text-gray-800 mb-2">
+                          Income Verification
+                        </h5>
+                        <div class="space-y-2">
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="documentation"
+                              value="tax_returns"
+                              class="mr-2"
+                            />
+                            Tax Returns (Previous Year)
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="documentation"
+                              value="pay_stubs"
+                              class="mr-2"
+                            />
+                            Recent Pay Stubs
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="documentation"
+                              value="unemployment_records"
+                              class="mr-2"
+                            />
+                            Unemployment Records
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="documentation"
+                              value="benefit_statements"
+                              class="mr-2"
+                            />
+                            Public Assistance Statements
+                          </label>
+                        </div>
+                      </div>
+
+                      <div>
+                        <h5 class="font-medium text-gray-800 mb-2">
+                          Education/Training Records
+                        </h5>
+                        <div class="space-y-2">
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="documentation"
+                              value="diploma"
+                              class="mr-2"
+                            />
+                            High School Diploma/GED
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="documentation"
+                              value="transcripts"
+                              class="mr-2"
+                            />
+                            College Transcripts
+                          </label>
+                          <label class="flex items-center">
+                            <input
+                              type="checkbox"
+                              aria-label="checkbox input"
+                              name="documentation"
+                              value="certifications"
+                              class="mr-2"
+                            />
+                            Professional Certifications
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Additional Notes -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Verification Notes
+                    </h4>
+                    <textarea
+                      name="verification_notes"
+                      rows="4"
+                      class="w-full border rounded px-3 py-2"
+                      placeholder="Additional notes about the verification process, missing documentation, or special circumstances..."
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="flex justify-end space-x-3 mt-6">
+                  <button
+                    type="button"
+                    onclick="hideNewVerificationForm()"
+                    class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700"
+                  >
+                    Create Verification Record
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // Eligibility Verification Functions
+      async function loadVerifications() {
+        try {
+          const response = await fetch('/api/compliance/eligibility');
+          const data = await response.json();
+          displayVerifications(data.verifications || []);
+        } catch (error) {
+          console.error('Error loading verifications:', error);
+        }
+      }
+
+      function displayVerifications(verifications) {
+        const tbody = document.getElementById('verification-table-body');
+        tbody.innerHTML = '';
+
+        verifications.forEach((verification) => {
+          const criteria = verification.eligibility_criteria || {};
+          const documentation = verification.documentation_provided || {};
+          const criteriaCount = Object.keys(criteria).filter(
+            (key) => criteria[key]
+          ).length;
+          const docCount = Object.keys(documentation).filter(
+            (key) => documentation[key]
+          ).length;
+
+          const row = document.createElement('tr');
+          row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${verification.email}</div>
+                        <div class="text-sm text-gray-500">${verification.auth_user_id || verification.user_id}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${verification.program_type.toUpperCase()}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${criteriaCount} criteria</div>
+                        <div class="text-xs text-gray-500">Federal requirements</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${docCount} documents</div>
+                        <div class="text-xs text-gray-500">Provided</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${getVerificationStatusColor(verification.verification_status)}">
+                            ${verification.verification_status}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${verification.verified_at ? new Date(verification.verified_at).toLocaleDateString() : 'Pending'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button type="button" onclick="viewVerification('${verification.id}')" class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                        ${
+                          verification.verification_status === 'pending'
+                            ? `
+                            <button type="button" onclick="approveVerification('${verification.id}')" class="text-green-600 hover:text-green-900 mr-2">Approve</button>
+                            <button type="button" onclick="rejectVerification('${verification.id}')" class="text-red-600 hover:text-red-900">Reject</button>
+                        `
+                            : ''
+                        }
+                    </td>
+                `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function getVerificationStatusColor(status) {
+        switch (status) {
+          case 'pending':
+            return 'bg-yellow-100 text-yellow-800';
+          case 'verified':
+            return 'bg-green-100 text-green-800';
+          case 'rejected':
+            return 'bg-red-100 text-red-800';
+          case 'incomplete':
+            return 'bg-gray-100 text-gray-800';
+          default:
+            return 'bg-gray-100 text-gray-800';
+        }
+      }
+
+      function showNewVerificationForm() {
+        document
+          .getElementById('new-verification-modal')
+          .classList.remove('hidden');
+      }
+
+      function hideNewVerificationForm() {
+        document
+          .getElementById('new-verification-modal')
+          .classList.add('hidden');
+        document.getElementById('verification-form').reset();
+      }
+
+      async function createVerification(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        const eligibility = Array.from(formData.getAll('eligibility'));
+        const documentation = Array.from(formData.getAll('documentation'));
+
+        const verificationData = {
+          user_id: 'system', // In real implementation, get participant ID
+          program_type: formData.get('program_type'),
+          eligibility_criteria: eligibility.reduce((acc, item) => {
+            acc[item] = true;
+            return acc;
+          }, {}),
+          documentation_provided: documentation.reduce((acc, item) => {
+            acc[item] = true;
+            return acc;
+          }, {}),
+          verification_notes: formData.get('verification_notes'),
+        };
+
+        try {
+          const response = await fetch('/api/compliance/eligibility', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(verificationData),
+          });
+
+          if (response.ok) {
+            hideNewVerificationForm();
+            loadVerifications();
+            alert('Verification record created successfully!');
+          } else {
+            alert('Error creating verification. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error creating verification:', error);
+          alert('Error creating verification. Please try again.');
+        }
+      }
+
+      async function approveVerification(verificationId) {
+        const notes = prompt('Approval notes (optional):');
+
+        try {
+          const response = await fetch(
+            `/api/compliance/eligibility/${verificationId}/verify`,
+            {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                verification_status: 'verified',
+                verified_by: 'current_user', // In real implementation, get from auth
+                notes: notes,
+              }),
+            }
+          );
+
+          if (response.ok) {
+            loadVerifications();
+            alert('Verification approved successfully!');
+          } else {
+            alert('Error approving verification. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error approving verification:', error);
+          alert('Error approving verification. Please try again.');
+        }
+      }
+
+      async function rejectVerification(verificationId) {
+        const reason = prompt('Reason for rejection:');
+        if (!reason) return;
+
+        try {
+          const response = await fetch(
+            `/api/compliance/eligibility/${verificationId}/verify`,
+            {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                verification_status: 'rejected',
+                verified_by: 'current_user', // In real implementation, get from auth
+                notes: reason,
+              }),
+            }
+          );
+
+          if (response.ok) {
+            loadVerifications();
+            alert('Verification rejected.');
+          } else {
+            alert('Error rejecting verification. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error rejecting verification:', error);
+          alert('Error rejecting verification. Please try again.');
+        }
+      }
+
+      function viewVerification(verificationId) {
+        // In real implementation, show detailed view modal
+        alert(`Viewing Verification: ${verificationId}`);
+      }
+
+      function showBulkImport() {
+        alert('Bulk import feature coming soon...');
+      }
+
+      function generateComplianceReport() {
+        alert('Generating compliance report...');
+      }
+
+      function filterVerifications() {
+        const program = document.getElementById('program-filter').value;
+        const status = document.getElementById('status-filter').value;
+        // Filter and reload verifications
+        loadVerifications();
+      }
+
+      function searchVerifications() {
+        const searchTerm = document.getElementById(
+          'search-verifications'
+        ).value;
+        // Search and filter verifications
+        loadVerifications();
+      }
+
+      function exportVerifications() {
+        alert('Exporting verification records...');
+      }
+
+      // Initialize page
+      document.addEventListener('DOMContentLoaded', function () {
+        loadVerifications();
+      });
+    </script>
+  </body>
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="WIOA Eligibility Verification - DOL approved workforce development programs through EFH and Indiana Connect"
+    />
+    <meta
+      name="keywords"
+      content="WIOA eligibility, DOL workforce development, Indiana Connect, DWD programs, workforce training eligibility"
+    />
+    <title>Eligibility Verification - EFH Workforce Development</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="ui/styles.css" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen bg-gray-50">
+    <!-- EFH Header will be injected here -->
+    <div id="efh-header"></div>
+
+    <main role="main" class="container mx-auto px-4 py-8">
+      <!-- WIOA Eligibility Header -->
+      <div
+        class="bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-xl p-8 mb-8"
+      >
+        <div class="text-center">
+          <h1 class="text-3xl font-bold mb-4">
+            🎯 WIOA Eligibility Verification
+          </h1>
+          <p class="text-blue-100 mb-4">
+            Department of Labor (DOL) approved workforce development programs
+          </p>
+          <p class="text-green-100">
+            Administered through Indiana Connect and local workforce development
+            boards
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-8">
+        <!-- Eligibility Checker -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">
+            📋 Check Your Eligibility
+          </h2>
+
+          <form id="eligibility-form" class="space-y-4">
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Employment Status</label
+              >
+              <select class="w-full p-3 border rounded-lg" name="employment">
+                <option value="">Select Status</option>
+                <option value="unemployed">Unemployed</option>
+                <option value="underemployed">Underemployed</option>
+                <option value="dislocated">Dislocated Worker</option>
+                <option value="youth">Youth (16-24)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Income Level</label
+              >
+              <select class="w-full p-3 border rounded-lg" name="income">
+                <option value="">Select Income Range</option>
+                <option value="low">Below 70% of lower living standard</option>
+                <option value="very-low">
+                  Below 50% of lower living standard
+                </option>
+                <option value="moderate">50-80% of area median income</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Barriers to Employment</label
+              >
+              <div class="space-y-2">
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    aria-label="checkbox input"
+                    name="barriers"
+                    value="basic-skills"
+                    class="mr-2"
+                  />
+                  <span>Basic skills deficiency</span>
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    aria-label="checkbox input"
+                    name="barriers"
+                    value="disability"
+                    class="mr-2"
+                  />
+                  <span>Individual with disability</span>
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    aria-label="checkbox input"
+                    name="barriers"
+                    value="offender"
+                    class="mr-2"
+                  />
+                  <span>Ex-offender</span>
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    aria-label="checkbox input"
+                    name="barriers"
+                    value="homeless"
+                    class="mr-2"
+                  />
+                  <span>Homeless individual</span>
+                </label>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition"
+            >
+              Check Eligibility
+            </button>
+          </form>
+
+          <!-- Google Form for Official Eligibility Application -->
+          <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <h3 class="font-bold text-blue-800 mb-2">
+              📋 Official Eligibility Application
+            </h3>
+            <p class="text-blue-700 text-sm mb-4">
+              If you appear eligible, complete the official application below:
+            </p>
+
+            <!-- Direct Eligibility Application Form -->
+            <form
+              action="https://docs.google.com/forms/d/e/1FAIpQLSd_ELIGIBILITY_FORM_ID/formResponse"
+              method="POST"
+              class="space-y-4"
+            >
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-blue-700 font-semibold mb-1 text-sm"
+                    >Full Name *</label
+                  >
+                  <input
+                    type="text"
+                    aria-label="text input"
+                    name="entry.1010101010"
+                    required
+                    class="w-full p-2 border rounded text-sm focus:ring-2 focus:ring-blue-500"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+                <div>
+                  <label class="block text-blue-700 font-semibold mb-1 text-sm"
+                    >Email Address *</label
+                  >
+                  <input
+                    type="email"
+                    aria-label="email input"
+                    name="entry.2020202020"
+                    required
+                    class="w-full p-2 border rounded text-sm focus:ring-2 focus:ring-blue-500"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+                <div>
+                  <label class="block text-blue-700 font-semibold mb-1 text-sm"
+                    >Phone Number *</label
+                  >
+                  <input
+                    type="tel"
+                    aria-label="tel input"
+                    name="entry.2020202021"
+                    required
+                    class="w-full p-2 border rounded text-sm focus:ring-2 focus:ring-blue-500"
+                    placeholder="(555) 123-4567"
+                  />
+                </div>
+                <div>
+                  <label class="block text-blue-700 font-semibold mb-1 text-sm"
+                    >Date of Birth *</label
+                  >
+                  <input
+                    type="date"
+                    aria-label="date input"
+                    name="entry.2020202022"
+                    required
+                    class="w-full p-2 border rounded text-sm focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+                <div class="md:col-span-2">
+                  <label class="block text-blue-700 font-semibold mb-1 text-sm"
+                    >Address *</label
+                  >
+                  <input
+                    type="text"
+                    aria-label="text input"
+                    name="entry.2020202023"
+                    required
+                    class="w-full p-2 border rounded text-sm focus:ring-2 focus:ring-blue-500"
+                    placeholder="Street Address, City, State, ZIP"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-blue-700 font-semibold mb-2 text-sm"
+                  >Employment Status *</label
+                >
+                <div class="grid md:grid-cols-2 gap-2">
+                  <label class="flex items-center text-sm">
+                    <input
+                      type="radio"
+                      aria-label="radio input"
+                      name="entry.2020202024"
+                      value="Unemployed"
+                      class="mr-2"
+                      required
+                    />
+                    Unemployed
+                  </label>
+                  <label class="flex items-center text-sm">
+                    <input
+                      type="radio"
+                      aria-label="radio input"
+                      name="entry.2020202024"
+                      value="Underemployed"
+                      class="mr-2"
+                      required
+                    />
+                    Underemployed
+                  </label>
+                  <label class="flex items-center text-sm">
+                    <input
+                      type="radio"
+                      aria-label="radio input"
+                      name="entry.2020202024"
+                      value="Dislocated Worker"
+                      class="mr-2"
+                      required
+                    />
+                    Dislocated Worker
+                  </label>
+                  <label class="flex items-center text-sm">
+                    <input
+                      type="radio"
+                      aria-label="radio input"
+                      name="entry.2020202024"
+                      value="Youth (16-24)"
+                      class="mr-2"
+                      required
+                    />
+                    Youth (16-24 years)
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-blue-700 font-semibold mb-2 text-sm"
+                  >Program Interest *</label
+                >
+                <select
+                  name="entry.2020202025"
+                  required
+                  class="w-full p-2 border rounded text-sm focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">Select Program</option>
+                  <option value="WIOA Adult Program">WIOA Adult Program</option>
+                  <option value="WIOA Youth Program">
+                    WIOA Youth Program (16-24)
+                  </option>
+                  <option value="Workforce Ready Grant">
+                    Workforce Ready Grant
+                  </option>
+                  <option value="OJT Program">On-the-Job Training (OJT)</option>
+                  <option value="Apprenticeship">
+                    Registered Apprenticeship
+                  </option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-blue-700 font-semibold mb-1 text-sm"
+                  >Employment Status *</label
+                >
+                <select
+                  name="entry.3030303030"
+                  required
+                  class="w-full p-2 border rounded text-sm"
+                >
+                  <option value="">Select Status</option>
+                  <option value="Unemployed">Unemployed</option>
+                  <option value="Underemployed">Underemployed</option>
+                  <option value="Dislocated Worker">Dislocated Worker</option>
+                  <option value="Youth (16-24)">Youth (16-24)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-blue-700 font-semibold mb-1 text-sm"
+                  >Barriers to Employment (check all that apply)</label
+                >
+                <div class="grid grid-cols-2 gap-2 text-sm">
+                  <label class="flex items-center">
+                    <input
+                      type="checkbox"
+                      aria-label="checkbox input"
+                      name="entry.4040404040"
+                      value="Basic Skills Deficient"
+                      class="mr-1"
+                    />
+                    Basic Skills Deficient
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="checkbox"
+                      aria-label="checkbox input"
+                      name="entry.4040404040"
+                      value="Individual with Disability"
+                      class="mr-1"
+                    />
+                    Individual with Disability
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="checkbox"
+                      aria-label="checkbox input"
+                      name="entry.4040404040"
+                      value="Ex-Offender"
+                      class="mr-1"
+                    />
+                    Ex-Offender
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="checkbox"
+                      aria-label="checkbox input"
+                      name="entry.4040404040"
+                      value="Homeless"
+                      class="mr-1"
+                    />
+                    Homeless Individual
+                  </label>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700 transition"
+                >
+                  Submit Official Application
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div id="eligibility-result" class="mt-6 p-4 rounded-lg hidden"></div>
+        </div>
+
+        <!-- WIOA Programs Available -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">
+            🎓 Available WIOA Programs
+          </h2>
+
+          <div class="space-y-4">
+            <div class="border-l-4 border-blue-500 pl-4">
+              <h3 class="font-bold text-gray-800">Adult Programs (18+)</h3>
+              <p class="text-gray-600">
+                Career services, training services, and supportive services
+              </p>
+              <ul class="text-sm text-gray-600 mt-2">
+                <li>• Occupational skills training</li>
+                <li>• On-the-job training (OJT)</li>
+                <li>• Apprenticeship programs</li>
+              </ul>
+            </div>
+
+            <div class="border-l-4 border-green-500 pl-4">
+              <h3 class="font-bold text-gray-800">
+                Dislocated Worker Programs
+              </h3>
+              <p class="text-gray-600">
+                For individuals who lost employment due to layoffs or closures
+              </p>
+              <ul class="text-sm text-gray-600 mt-2">
+                <li>• Career counseling and planning</li>
+                <li>• Skills assessments</li>
+                <li>• Training in high-demand occupations</li>
+              </ul>
+            </div>
+
+            <div class="border-l-4 border-purple-500 pl-4">
+              <h3 class="font-bold text-gray-800">Youth Programs (16-24)</h3>
+              <p class="text-gray-600">
+                Education and career development for young adults
+              </p>
+              <ul class="text-sm text-gray-600 mt-2">
+                <li>• Work experience opportunities</li>
+                <li>• Adult education and literacy</li>
+                <li>• Leadership development</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 bg-green-50 rounded-lg">
+            <p class="text-green-800 font-semibold">
+              ✅ All programs are FREE for eligible participants
+            </p>
+            <p class="text-green-700 text-sm mt-1">
+              Funded through the Department of Labor Workforce Innovation and
+              Opportunity Act
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Indiana Connect Integration -->
+      <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">
+          🤝 Indiana Connect Partnership
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">📝</span>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2">
+              Assessment &amp; Intake
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Complete eligibility assessment through Indiana Connect portal
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">🎯</span>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2">Career Planning</h3>
+            <p class="text-gray-600 text-sm">
+              Develop individualized employment plan with case manager
+            </p>
+          </div>
+
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-2xl">🚀</span>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2">
+              Training &amp; Placement
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Access training through ETPL providers and job placement services
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="text-center">
+        <a
+          href="/programs.html"
+          class="bg-blue-600 text-white py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition inline-block mr-4"
+        >
+          View Training Programs
+        </a>
+        <a
+          href="/connect.html"
+          class="bg-green-600 text-white py-4 px-8 rounded-lg text-lg hover:bg-green-700 transition inline-block"
+        >
+          Connect with Case Manager
+        </a>
+      </div>
+    </main>
+
+    <!-- EFH Footer will be injected here -->
+    <div id="efh-footer"></div>
+
+    <!-- Universal Script -->
+    <script src="scripts/efh-universal.v2.2.js"></script>
+
+    <script>
+      // Eligibility form handler
+      document
+        .getElementById('eligibility-form')
+        .addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(this);
+          const employment = formData.get('employment');
+          const income = formData.get('income');
+          const barriers = formData.getAll('barriers');
+
+          const resultDiv = document.getElementById('eligibility-result');
+
+          if (employment &amp;&amp; income) {
+            resultDiv.className =
+              'mt-6 p-4 rounded-lg bg-green-50 border border-green-200';
+            resultDiv.innerHTML = `
+                <h3 class="text-green-800 font-bold mb-2">✅ You appear to be eligible for WIOA services!</h3>
+                <p class="text-green-700 text-sm mb-3">Based on your responses, you meet the basic eligibility criteria for workforce development programs.</p>
+                <div class="text-sm text-green-600">
+                    <p><strong>Next Steps:</strong></p>
+                    <ol class="list-decimal ml-4 mt-1">
+                        <li>Contact your local workforce development board</li>
+                        <li>Complete formal assessment through Indiana Connect</li>
+                        <li>Meet with a case manager for career planning</li>
+                        <li>Select appropriate training program</li>
+                    </ol>
+                </div>
+                <a href="/connect.html" class="inline-block mt-3 bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700 transition">
+                    Start Application Process
+                </a>
+            `;
+          } else {
+            resultDiv.className =
+              'mt-6 p-4 rounded-lg bg-yellow-50 border border-yellow-200';
+            resultDiv.innerHTML = `
+                <h3 class="text-yellow-800 font-bold mb-2">⚠️ Please complete all required fields</h3>
+                <p class="text-yellow-700 text-sm">Employment status and income level are required to determine eligibility.</p>
+            `;
+          }
+
+          resultDiv.classList.remove('hidden');
+        });
+    </script>
+  </body>
+</html>

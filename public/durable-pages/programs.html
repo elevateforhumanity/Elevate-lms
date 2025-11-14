@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programs - Elevate for Humanity</title>
+    <meta
+      name="description"
+      content="Explore our career training programs including Construction, Healthcare, Transportation, and Technology certifications."
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f9fafb;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .header h1 {
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+      .header p {
+        font-size: 20px;
+        opacity: 0.9;
+      }
+      .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        margin-bottom: 40px;
+      }
+      .program-card {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .program-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+      .program-icon {
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+      .program-card h2 {
+        font-size: 24px;
+        margin-bottom: 12px;
+        color: #1f2937;
+      }
+      .program-card p {
+        color: #6b7280;
+        margin-bottom: 16px;
+      }
+      .program-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: #4b5563;
+      }
+      .meta-label {
+        font-weight: 600;
+      }
+      .credentials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      .credential-badge {
+        background: #e0e7ff;
+        color: #4338ca;
+        padding: 4px 12px;
+        border-radius: 16px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .cta-button {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+      .cta-button:hover {
+        background: #5568d3;
+      }
+      .funding-section {
+        background: white;
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 40px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .funding-section h2 {
+        font-size: 28px;
+        margin-bottom: 16px;
+        color: #1f2937;
+      }
+      .funding-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .funding-badge {
+        background: #dcfce7;
+        color: #166534;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 32px;
+        }
+        .programs-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>🎓 Career Training Programs</h1>
+      <p>
+        Industry-recognized certifications with funding assistance available
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="programs-grid">
+        <!-- Construction Pre-Apprenticeship -->
+        <div class="program-card">
+          <div class="program-icon">🏗️</div>
+          <h2>Construction Pre-Apprenticeship</h2>
+          <p>
+            Comprehensive training program preparing students for careers in
+            construction trades with industry-recognized certifications.
+          </p>
+          <div class="program-meta">
+            <div class="meta-item">
+              <span class="meta-label">Duration:</span>
+              <span>12-16 weeks</span>
+            </div>
+          </div>
+          <div class="credentials">
+            <span class="credential-badge">OSHA 10</span>
+            <span class="credential-badge">NCCER Core</span>
+            <span class="credential-badge">First Aid/CPR</span>
+            <span class="credential-badge">Forklift</span>
+          </div>
+          <a
+            href="https://forms.gle/your-form-id"
+            class="cta-button"
+            target="_blank"
+            >Apply Now →</a
+          >
+        </div>
+
+        <!-- Phlebotomy Technician -->
+        <div class="program-card">
+          <div class="program-icon">🩺</div>
+          <h2>Phlebotomy Technician</h2>
+          <p>
+            Medical training program for aspiring phlebotomists with hands-on
+            clinical experience and certification preparation.
+          </p>
+          <div class="program-meta">
+            <div class="meta-item">
+              <span class="meta-label">Duration:</span>
+              <span>8-10 weeks</span>
+            </div>
+          </div>
+          <div class="credentials">
+            <span class="credential-badge">Phlebotomy Cert</span>
+            <span class="credential-badge">Bloodborne Pathogens</span>
+            <span class="credential-badge">HIPAA</span>
+          </div>
+          <a
+            href="https://forms.gle/your-form-id"
+            class="cta-button"
+            target="_blank"
+            >Apply Now →</a
+          >
+        </div>
+
+        <!-- CPR Instructor -->
+        <div class="program-card">
+          <div class="program-icon">❤️</div>
+          <h2>CPR Instructor</h2>
+          <p>
+            Become a certified CPR instructor and teach life-saving skills in
+            your community.
+          </p>
+          <div class="program-meta">
+            <div class="meta-item">
+              <span class="meta-label">Duration:</span>
+              <span>4-6 weeks</span>
+            </div>
+          </div>
+          <div class="credentials">
+            <span class="credential-badge">CPR Instructor</span>
+            <span class="credential-badge">First Aid</span>
+            <span class="credential-badge">AED Training</span>
+          </div>
+          <a
+            href="https://forms.gle/your-form-id"
+            class="cta-button"
+            target="_blank"
+            >Apply Now →</a
+          >
+        </div>
+
+        <!-- OTR Truck Driving -->
+        <div class="program-card">
+          <div class="program-icon">🚛</div>
+          <h2>OTR Truck Driving</h2>
+          <p>
+            Professional truck driving program leading to CDL Class A
+            certification and career placement assistance.
+          </p>
+          <div class="program-meta">
+            <div class="meta-item">
+              <span class="meta-label">Duration:</span>
+              <span>4-8 weeks</span>
+            </div>
+          </div>
+          <div class="credentials">
+            <span class="credential-badge">CDL Class A</span>
+            <span class="credential-badge">DOT Safety</span>
+            <span class="credential-badge">Logistics</span>
+          </div>
+          <a
+            href="https://forms.gle/your-form-id"
+            class="cta-button"
+            target="_blank"
+            >Apply Now →</a
+          >
+        </div>
+
+        <!-- Drug Testing Collector -->
+        <div class="program-card">
+          <div class="program-icon">🧪</div>
+          <h2>Drug Testing Collector</h2>
+          <p>
+            Become a certified drug and alcohol testing collector for workplace
+            compliance programs.
+          </p>
+          <div class="program-meta">
+            <div class="meta-item">
+              <span class="meta-label">Duration:</span>
+              <span>2-4 weeks</span>
+            </div>
+          </div>
+          <div class="credentials">
+            <span class="credential-badge">DOT Certified</span>
+            <span class="credential-badge">SAMHSA</span>
+            <span class="credential-badge">Chain of Custody</span>
+          </div>
+          <a
+            href="https://forms.gle/your-form-id"
+            class="cta-button"
+            target="_blank"
+            >Apply Now →</a
+          >
+        </div>
+
+        <!-- IT Support Specialist -->
+        <div class="program-card">
+          <div class="program-icon">💻</div>
+          <h2>IT Support Specialist</h2>
+          <p>
+            Launch your tech career with CompTIA certifications and hands-on IT
+            support training.
+          </p>
+          <div class="program-meta">
+            <div class="meta-item">
+              <span class="meta-label">Duration:</span>
+              <span>12-16 weeks</span>
+            </div>
+          </div>
+          <div class="credentials">
+            <span class="credential-badge">CompTIA A+</span>
+            <span class="credential-badge">Network+</span>
+            <span class="credential-badge">Security+</span>
+          </div>
+          <a
+            href="https://forms.gle/your-form-id"
+            class="cta-button"
+            target="_blank"
+            >Apply Now →</a
+          >
+        </div>
+      </div>
+
+      <div class="funding-section">
+        <h2>💰 Funding Options Available</h2>
+        <p style="margin-bottom: 20px; color: #6b7280">
+          We accept multiple funding sources to help you access training at no
+          cost to you:
+        </p>
+        <div class="funding-badges">
+          <span class="funding-badge">WIOA</span>
+          <span class="funding-badge">WRG</span>
+          <span class="funding-badge">OJT</span>
+          <span class="funding-badge">WEX</span>
+          <span class="funding-badge">JRI</span>
+          <span class="funding-badge">IMPLY</span>
+          <span class="funding-badge">INDY</span>
+          <span class="funding-badge">DOL</span>
+        </div>
+      </div>
+
+      <div style="text-align: center; padding: 40px 20px">
+        <h2 style="font-size: 32px; margin-bottom: 16px">
+          Ready to Start Your Career?
+        </h2>
+        <p style="font-size: 18px; color: #6b7280; margin-bottom: 24px">
+          Contact us today to learn more about enrollment and funding options.
+        </p>
+        <a
+          href="https://portal.elevateforhumanity.org/contact"
+          class="cta-button"
+          style="font-size: 18px; padding: 16px 32px"
+          >Contact Us →</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

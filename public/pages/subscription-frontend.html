@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choose Your Learning Plan | EFH</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          Choose Your Learning Plan
+        </h1>
+        <p class="text-xl text-gray-600">
+          Access our complete library of workforce development programs
+        </p>
+      </div>
+
+      <!-- Billing Toggle -->
+      <div class="flex justify-center mb-8">
+        <div class="bg-white p-1 rounded-lg border">
+          <button
+            type="button"
+            id="monthly-btn"
+            class="px-4 py-2 rounded-md text-sm font-medium bg-blue-600 text-white"
+          >
+            Monthly
+          </button>
+          <button
+            type="button"
+            id="yearly-btn"
+            class="px-4 py-2 rounded-md text-sm font-medium text-gray-500"
+          >
+            Yearly (Save 17%)
+          </button>
+        </div>
+      </div>
+
+      <!-- Subscription Plans -->
+      <div id="plans-container" class="grid md:grid-cols-3 gap-8">
+        <!-- Plans will be loaded here -->
+      </div>
+
+      <!-- Features Comparison -->
+      <div class="mt-16 bg-white rounded-lg shadow p-8">
+        <h2 class="text-2xl font-bold text-center mb-8">What's Included</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b">
+                <th class="text-left py-3">Features</th>
+                <th class="text-center py-3">Basic</th>
+                <th class="text-center py-3">Professional</th>
+                <th class="text-center py-3">Enterprise</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr class="border-b">
+                <td class="py-3">Course Access</td>
+                <td class="text-center">5 courses</td>
+                <td class="text-center">All 33 programs</td>
+                <td class="text-center">All 33 programs</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-3">Progress Tracking</td>
+                <td class="text-center">✓</td>
+                <td class="text-center">✓</td>
+                <td class="text-center">✓</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-3">Certificates</td>
+                <td class="text-center">-</td>
+                <td class="text-center">✓</td>
+                <td class="text-center">✓</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-3">Federal Compliance</td>
+                <td class="text-center">-</td>
+                <td class="text-center">-</td>
+                <td class="text-center">✓</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-3">Support</td>
+                <td class="text-center">Email</td>
+                <td class="text-center">Priority</td>
+                <td class="text-center">Dedicated</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentBilling = 'monthly';
+      let plans = [];
+
+      async function loadPlans() {
+        try {
+          const response = await fetch('/api/subscription/plans');
+          const data = await response.json();
+          plans = data.plans;
+          renderPlans();
+        } catch (error) {
+          console.error('Failed to load plans:', error);
+        }
+      }
+
+      function renderPlans() {
+        const container = document.getElementById('plans-container');
+        container.innerHTML = plans
+          .map((plan) => {
+            const price =
+              currentBilling === 'monthly'
+                ? plan.price_monthly
+                : plan.price_yearly;
+            const period = currentBilling === 'monthly' ? 'month' : 'year';
+            const savings =
+              currentBilling === 'yearly' ? plan.savings_yearly : 0;
+
+            return `
+                    <div class="bg-white rounded-lg shadow-lg p-8 ${plan.id === 'professional' ? 'ring-2 ring-blue-500' : ''}">
+                        ${plan.id === 'professional' ? '<div class="bg-blue-500 text-white text-sm font-medium px-3 py-1 rounded-full inline-block mb-4">Most Popular</div>' : ''}
+                        <h3 class="text-2xl font-bold mb-2">${plan.name}</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">$${Math.floor(price / 100)}</span>
+                            <span class="text-gray-600">/${period}</span>
+                            ${savings > 0 ? `<div class="text-green-600 text-sm">Save $${savings}/year</div>` : ''}
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            ${plan.features
+                              .map(
+                                (feature) => `
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    ${feature}
+                                </li>
+                            `
+                              )
+                              .join('')}
+                        </ul>
+                        <button type="button" onclick="selectPlan('${plan.id}')" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                            Get Started
+                        </button>
+                    </div>
+                `;
+          })
+          .join('');
+      }
+
+      async function selectPlan(planId) {
+        const email = prompt('Enter your email address:');
+        if (!email) return;
+
+        try {
+          const response = await fetch('/api/subscription/checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email,
+              planId,
+              billingPeriod: currentBilling,
+            }),
+          });
+
+          const data = await response.json();
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            alert('Failed to create subscription. Please try again.');
+          }
+        } catch (error) {
+          console.error('Subscription error:', error);
+          alert('Something went wrong. Please try again.');
+        }
+      }
+
+      // Billing toggle functionality
+      document.getElementById('monthly-btn').addEventListener('click', () => {
+        currentBilling = 'monthly';
+        document.getElementById('monthly-btn').className =
+          'px-4 py-2 rounded-md text-sm font-medium bg-blue-600 text-white';
+        document.getElementById('yearly-btn').className =
+          'px-4 py-2 rounded-md text-sm font-medium text-gray-500';
+        renderPlans();
+      });
+
+      document.getElementById('yearly-btn').addEventListener('click', () => {
+        currentBilling = 'yearly';
+        document.getElementById('yearly-btn').className =
+          'px-4 py-2 rounded-md text-sm font-medium bg-blue-600 text-white';
+        document.getElementById('monthly-btn').className =
+          'px-4 py-2 rounded-md text-sm font-medium text-gray-500';
+        renderPlans();
+      });
+
+      // Load plans on page load
+      loadPlans();
+    </script>
+  </body>
+</html>

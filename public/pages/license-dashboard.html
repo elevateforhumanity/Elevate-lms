@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>License Dashboard - Elevate Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0070f3" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      .license-card {
+        transition: all 0.3s ease;
+      }
+      .license-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50" x-data="licenseDashboard()">
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+      <div class="max-w-6xl mx-auto px-4 py-6">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold">🔐 License Dashboard</h1>
+          <a
+            href="/elevate-store.html"
+            class="bg-white/20 px-4 py-2 rounded-lg hover:bg-white/30 transition-colors"
+          >
+            ← Back to Store
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main role="main" class="max-w-6xl mx-auto px-4 py-8">
+      <!-- License Lookup -->
+      <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+        <h2 class="text-xl font-bold mb-4">🔍 Check Your License</h2>
+        <div class="flex gap-4">
+          <input
+            type="text"
+            aria-label="text input"
+            x-model="licenseInput"
+            placeholder="Enter your license key..."
+            class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+          <button
+            type="button"
+            @click="checkLicense()"
+            class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Validate
+          </button>
+        </div>
+      </div>
+
+      <!-- License Information -->
+      <div
+        x-show="licenseInfo"
+        class="bg-white rounded-xl shadow-lg p-6 mb-8 license-card"
+      >
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-xl font-bold">📋 License Details</h3>
+          <span
+            :class="licenseInfo?.valid ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'"
+            class="px-3 py-1 rounded-full text-sm font-medium"
+            x-text="licenseInfo?.valid ? '✅ Valid' : '❌ Invalid'"
+          ></span>
+        </div>
+
+        <template x-if="licenseInfo?.valid">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold text-gray-700 mb-2">
+                License Information
+              </h4>
+              <div class="space-y-2 text-sm">
+                <div>
+                  <span class="font-medium">Email:</span>
+                  <span x-text="licenseInfo.email"></span>
+                </div>
+                <div>
+                  <span class="font-medium">Product:</span>
+                  <span x-text="licenseInfo.productId"></span>
+                </div>
+                <div>
+                  <span class="font-medium">Issued:</span>
+                  <span x-text="formatDate(licenseInfo.issuedAt)"></span>
+                </div>
+                <div>
+                  <span class="font-medium">Expires:</span>
+                  <span x-text="formatDate(licenseInfo.expiresAt)"></span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-700 mb-2">Status</h4>
+              <div class="space-y-2 text-sm">
+                <div>
+                  <span class="font-medium">Days Remaining:</span>
+                  <span x-text="licenseInfo.daysRemaining"></span>
+                </div>
+                <div class="mt-4">
+                  <button
+                    type="button"
+                    @click="renewLicense()"
+                    class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm"
+                  >
+                    🔄 Renew License
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <template x-if="!licenseInfo?.valid">
+          <div class="text-red-600">
+            <p>
+              <strong>Reason:</strong>
+              <span x-text="licenseInfo?.reason"></span>
+            </p>
+            <p class="mt-2 text-sm">
+              Please contact support if you believe this is an error.
+            </p>
+          </div>
+        </template>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center license-card">
+          <div class="text-3xl mb-3">🛒</div>
+          <h3 class="font-bold mb-2">Purchase License</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Get a new license for Elevate Platform
+          </p>
+          <a
+            href="/elevate-store.html"
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+          >
+            Visit Store
+          </a>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center license-card">
+          <div class="text-3xl mb-3">📧</div>
+          <h3 class="font-bold mb-2">Support</h3>
+          <p class="text-gray-600 text-sm mb-4">Need help with your license?</p>
+          <a
+            href="mailto:elevateforhumanity@gmail.com"
+            class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors text-sm"
+          >
+            Contact Us
+          </a>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center license-card">
+          <div class="text-3xl mb-3">📚</div>
+          <h3 class="font-bold mb-2">Documentation</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Learn how to use your license
+          </p>
+          <button
+            type="button"
+            class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm"
+          >
+            View Docs
+          </button>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="bg-white rounded-xl shadow-lg p-6">
+        <h3 class="text-xl font-bold mb-4">📊 License Activity</h3>
+        <div class="text-gray-600 text-center py-8">
+          <div class="text-4xl mb-3">📈</div>
+          <p>License usage analytics will appear here</p>
+          <p class="text-sm mt-2">
+            Track downloads, validations, and usage patterns
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Notification -->
+    <div
+      x-show="notification.show"
+      x-transition
+      :class="notification.type === 'success' ? 'bg-green-600' : 'bg-red-600'"
+      class="fixed top-4 right-4 text-white px-6 py-3 rounded-lg shadow-lg z-50"
+    >
+      <span x-text="notification.message"></span>
+    </div>
+
+    <script>
+      function licenseDashboard() {
+        return {
+          licenseInput: '',
+          licenseInfo: null,
+          notification: { show: false, message: '', type: 'success' },
+
+          async checkLicense() {
+            if (!this.licenseInput.trim()) {
+              this.showNotification('Please enter a license key', 'error');
+              return;
+            }
+
+            try {
+              // First get license info
+              const infoResponse = await fetch('/api/license-info', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ licenseKey: this.licenseInput }),
+              });
+
+              const info = await infoResponse.json();
+
+              // Then validate
+              const validateResponse = await fetch('/api/validate-license', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ licenseKey: this.licenseInput }),
+              });
+
+              const validation = await validateResponse.json();
+
+              this.licenseInfo = { ...info, ...validation };
+
+              if (validation.valid) {
+                this.showNotification(
+                  'License validated successfully!',
+                  'success'
+                );
+              } else {
+                this.showNotification(
+                  `License validation failed: ${validation.reason}`,
+                  'error'
+                );
+              }
+            } catch (error) {
+              this.showNotification(
+                'Error checking license. Please try again.',
+                'error'
+              );
+              console.error('License check error:', error);
+            }
+          },
+
+          async renewLicense() {
+            try {
+              const response = await fetch('/api/renew-license', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ licenseKey: this.licenseInput }),
+              });
+
+              const result = await response.json();
+
+              if (response.ok) {
+                this.showNotification(
+                  'License renewed successfully!',
+                  'success'
+                );
+                this.licenseInput = result.newLicense;
+                this.checkLicense(); // Refresh the display
+              } else {
+                this.showNotification(
+                  result.error || 'Renewal failed',
+                  'error'
+                );
+              }
+            } catch (error) {
+              this.showNotification(
+                'Error renewing license. Please try again.',
+                'error'
+              );
+              console.error('License renewal error:', error);
+            }
+          },
+
+          formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            });
+          },
+
+          showNotification(message, type = 'success') {
+            this.notification = { show: true, message, type };
+            setTimeout(() => {
+              this.notification.show = false;
+            }, 3000);
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

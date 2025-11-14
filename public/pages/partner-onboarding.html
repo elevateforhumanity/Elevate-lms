@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Partner Onboarding | Elevate for Humanity</title>
+    <meta
+      name="description"
+      content="Partner onboarding portal - Upload credentials, sign MOUs, and access partnership resources"
+    />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <!-- Universal Navigation System -->
+    <script src="/unified-navigation.js"></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        line-height: 1.6;
+        color: #1f2937;
+        background: #f9fafb;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
+      body {
+        padding-top: 0;
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #111827;
+      }
+      h2 {
+        font-size: 1.875rem;
+        margin: 2rem 0 1rem;
+        color: #111827;
+      }
+      h3 {
+        font-size: 1.5rem;
+        margin: 1.5rem 0 0.75rem;
+        color: #374151;
+      }
+      .card {
+        background: white;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: #2563eb;
+        color: white;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .btn:hover {
+        background: #1d4ed8;
+      }
+      .btn-secondary {
+        background: #6b7280;
+      }
+      .btn-secondary:hover {
+        background: #4b5563;
+      }
+      .upload-area {
+        border: 2px dashed #d1d5db;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        text-align: center;
+        cursor: pointer;
+        transition: border-color 0.3s;
+      }
+      .upload-area:hover {
+        border-color: #2563eb;
+      }
+      input[type='text'],
+      input[type='email'],
+      input[type='file'],
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #374151;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+      .doc-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: #f3f4f6;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        color: #1f2937;
+        transition: background 0.3s;
+      }
+      .doc-link:hover {
+        background: #e5e7eb;
+      }
+      .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .status-pending {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .status-approved {
+        background: #d1fae5;
+        color: #065f46;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🤝 Partner Onboarding Portal</h1>
+      <p style="color: #6b7280; margin-bottom: 2rem">
+        Welcome! Complete your partnership onboarding and access resources.
+      </p>
+
+      <!-- Quick Links -->
+      <div class="card">
+        <h2>Quick Access</h2>
+        <div class="grid">
+          <a href="#mou" class="doc-link"> 📄 <strong>Sign MOU</strong> </a>
+          <a href="#credentials" class="doc-link">
+            🎓 <strong>Upload Credentials</strong>
+          </a>
+          <a href="#program-holders" class="doc-link">
+            👥 <strong>Program Holders Portal</strong>
+          </a>
+          <a href="#employers" class="doc-link">
+            🏢 <strong>Employer Portal</strong>
+          </a>
+        </div>
+      </div>
+
+      <!-- MOU Section -->
+      <div class="card" id="mou">
+        <h2>📄 Memorandum of Understanding (MOU)</h2>
+        <p style="margin-bottom: 1.5rem; color: #6b7280">
+          Review and sign the partnership agreement to formalize our
+          collaboration.
+        </p>
+
+        <h3>Available MOUs</h3>
+        <div style="margin-bottom: 1.5rem">
+          <a
+            href="/docs/mou-workforce-board.pdf"
+            class="doc-link"
+            style="margin-bottom: 0.5rem"
+          >
+            📋 Workforce Board MOU Template
+          </a>
+          <a
+            href="/docs/mou-employer.pdf"
+            class="doc-link"
+            style="margin-bottom: 0.5rem"
+          >
+            🏢 Employer Partnership MOU
+          </a>
+          <a
+            href="/docs/mou-training-provider.pdf"
+            class="doc-link"
+            style="margin-bottom: 0.5rem"
+          >
+            🎓 Training Provider MOU
+          </a>
+          <a href="/docs/mou-certifying-body.pdf" class="doc-link">
+            ✅ Certifying Body MOU
+          </a>
+        </div>
+
+        <h3>Sign MOU Online</h3>
+        <form id="mouForm">
+          <label>Organization Name *</label>
+          <input
+            type="text"
+            aria-label="text input"
+            required
+            placeholder="Your Organization"
+          />
+
+          <label>Contact Person *</label>
+          <input
+            type="text"
+            aria-label="text input"
+            required
+            placeholder="Full Name"
+          />
+
+          <label>Email *</label>
+          <input
+            type="email"
+            aria-label="email input"
+            required
+            placeholder="email@organization.org"
+          />
+
+          <label>Partnership Type *</label>
+          <select required>
+            <option value="">Select Type</option>
+            <option value="workforce-board">Workforce Board</option>
+            <option value="employer">Employer</option>
+            <option value="training-provider">Training Provider</option>
+            <option value="certifying-body">Certifying Body</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label>Upload Signed MOU (PDF) *</label>
+          <input type="file" aria-label="file input" accept=".pdf" required />
+
+          <button type="submit" class="btn">Submit MOU</button>
+        </form>
+      </div>
+
+      <!-- Credentials Upload -->
+      <div class="card" id="credentials">
+        <h2>🎓 Upload Credentials</h2>
+        <p style="margin-bottom: 1.5rem; color: #6b7280">
+          Upload certifications, licenses, and accreditation documents.
+        </p>
+
+        <form id="credentialsForm">
+          <label>Organization Name *</label>
+          <input
+            type="text"
+            aria-label="text input"
+            required
+            placeholder="Your Organization"
+          />
+
+          <label>Credential Type *</label>
+          <select required>
+            <option value="">Select Type</option>
+            <option value="accreditation">Accreditation Certificate</option>
+            <option value="license">Business License</option>
+            <option value="certification">Industry Certification</option>
+            <option value="insurance">Insurance Documents</option>
+            <option value="tax-exempt">Tax-Exempt Status (501c3)</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label>Document Name *</label>
+          <input
+            type="text"
+            aria-label="text input"
+            required
+            placeholder="e.g., WIOA Certification 2025"
+          />
+
+          <label>Expiration Date (if applicable)</label>
+          <input type="date" aria-label="date input" />
+
+          <label>Upload Document (PDF, JPG, PNG) *</label>
+          <div
+            class="upload-area"
+            onclick="document.getElementById('credFile').click()"
+          >
+            <p>📁 Click to upload or drag and drop</p>
+            <p style="font-size: 0.875rem; color: #6b7280">
+              PDF, JPG, PNG up to 10MB
+            </p>
+          </div>
+          <input
+            type="file"
+            id="credFile"
+            accept=".pdf,.jpg,.jpeg,.png"
+            required
+            style="display: none"
+          />
+
+          <label>Additional Notes</label>
+          <textarea
+            rows="3"
+            placeholder="Any additional information..."
+          ></textarea>
+
+          <button type="submit" class="btn">Upload Credentials</button>
+        </form>
+      </div>
+
+      <!-- Program Holders Portal -->
+      <div class="card" id="program-holders">
+        <h2>👥 Program Holders Portal</h2>
+        <p style="margin-bottom: 1.5rem; color: #6b7280">
+          Access resources and tools for program administrators and
+          coordinators.
+        </p>
+
+        <div class="grid">
+          <div>
+            <h3>📊 Program Management</h3>
+            <ul style="list-style: none; padding: 0">
+              <li style="padding: 0.5rem 0">✓ Student enrollment tracking</li>
+              <li style="padding: 0.5rem 0">✓ Progress monitoring</li>
+              <li style="padding: 0.5rem 0">✓ Completion reports</li>
+              <li style="padding: 0.5rem 0">✓ Compliance documentation</li>
+            </ul>
+            <a href="/lms/instructor" class="btn" style="margin-top: 1rem"
+              >Access Portal</a
+            >
+          </div>
+
+          <div>
+            <h3>📚 Resources</h3>
+            <a
+              href="/docs/program-holder-guide.pdf"
+              class="doc-link"
+              style="margin-bottom: 0.5rem"
+            >
+              📖 Program Holder Guide
+            </a>
+            <a
+              href="/docs/reporting-templates.zip"
+              class="doc-link"
+              style="margin-bottom: 0.5rem"
+            >
+              📊 Reporting Templates
+            </a>
+            <a href="/docs/compliance-checklist.pdf" class="doc-link">
+              ✅ Compliance Checklist
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Employers Portal -->
+      <div class="card" id="employers">
+        <h2>🏢 Employer Portal</h2>
+        <p style="margin-bottom: 1.5rem; color: #6b7280">
+          Post jobs, access talent pool, and manage hiring partnerships.
+        </p>
+
+        <div class="grid">
+          <div>
+            <h3>💼 Hiring Tools</h3>
+            <ul style="list-style: none; padding: 0">
+              <li style="padding: 0.5rem 0">✓ Post job openings</li>
+              <li style="padding: 0.5rem 0">✓ Access qualified candidates</li>
+              <li style="padding: 0.5rem 0">✓ Schedule interviews</li>
+              <li style="padding: 0.5rem 0">✓ Track placements</li>
+            </ul>
+            <a href="/employers" class="btn" style="margin-top: 1rem"
+              >Employer Dashboard</a
+            >
+          </div>
+
+          <div>
+            <h3>📄 Employer Resources</h3>
+            <a
+              href="/docs/employer-guide.pdf"
+              class="doc-link"
+              style="margin-bottom: 0.5rem"
+            >
+              📖 Employer Partnership Guide
+            </a>
+            <a
+              href="/docs/tax-incentives.pdf"
+              class="doc-link"
+              style="margin-bottom: 0.5rem"
+            >
+              💰 Tax Incentives & Credits
+            </a>
+            <a href="/docs/onboarding-toolkit.pdf" class="doc-link">
+              🎯 Employee Onboarding Toolkit
+            </a>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 2rem">Post a Job Opening</h3>
+        <form id="jobForm">
+          <label>Company Name *</label>
+          <input
+            type="text"
+            aria-label="text input"
+            required
+            placeholder="Your Company"
+          />
+
+          <label>Job Title *</label>
+          <input
+            type="text"
+            aria-label="text input"
+            required
+            placeholder="e.g., Construction Apprentice"
+          />
+
+          <label>Job Description *</label>
+          <textarea
+            rows="4"
+            required
+            placeholder="Describe the position..."
+          ></textarea>
+
+          <label>Required Skills</label>
+          <input
+            type="text"
+            aria-label="text input"
+            placeholder="e.g., OSHA 10, Blueprint Reading"
+          />
+
+          <label>Salary Range</label>
+          <input
+            type="text"
+            aria-label="text input"
+            placeholder="e.g., $15-20/hour"
+          />
+
+          <label>Contact Email *</label>
+          <input
+            type="email"
+            aria-label="email input"
+            required
+            placeholder="hiring@company.com"
+          />
+
+          <button type="submit" class="btn">Post Job</button>
+        </form>
+      </div>
+
+      <!-- Contact Support -->
+      <div class="card">
+        <h2>💬 Need Help?</h2>
+        <p style="margin-bottom: 1rem; color: #6b7280">
+          Our partnership team is here to assist you.
+        </p>
+        <a href="mailto:elevateforhumanity@gmail.com" class="btn">
+          📧 Contact Support
+        </a>
+        <a
+          href="tel:+13173143757"
+          class="btn btn-secondary"
+          style="margin-left: 0.5rem"
+        >
+          📞 Call Us
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Form submission handlers
+      document
+        .getElementById('mouForm')
+        .addEventListener('submit', function (e) {
+          e.preventDefault();
+          alert(
+            'MOU submitted successfully! Our team will review and contact you within 2 business days.'
+          );
+          this.reset();
+        });
+
+      document
+        .getElementById('credentialsForm')
+        .addEventListener('submit', function (e) {
+          e.preventDefault();
+          alert(
+            'Credentials uploaded successfully! You will receive a confirmation email shortly.'
+          );
+          this.reset();
+        });
+
+      document
+        .getElementById('jobForm')
+        .addEventListener('submit', function (e) {
+          e.preventDefault();
+          alert(
+            'Job posting submitted! It will be reviewed and published within 24 hours.'
+          );
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
