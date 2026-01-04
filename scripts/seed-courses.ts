@@ -15,7 +15,6 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 if (!supabaseUrl || !supabaseServiceKey) {
-  console.error("❌ Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in .env");
   process.exit(1);
 }
 
@@ -813,12 +812,10 @@ async function main() {
     .select("id, title, slug");
 
   if (programsError) {
-    console.error("❌ Error loading programs:", programsError.message);
     process.exit(1);
   }
 
   if (!programs || programs.length === 0) {
-    console.error("❌ No programs found in 'programs' table.");
     process.exit(1);
   }
 
@@ -847,7 +844,6 @@ async function main() {
       .limit(1);
 
     if (modulesError) {
-      console.error(`❌ Error checking modules for ${program.title}:`, modulesError.message);
       continue;
     }
 
@@ -871,7 +867,6 @@ async function main() {
         .single();
 
       if (insertModuleError || !insertedModule) {
-        console.error(
           `❌ Error inserting module "${mod.title}" for ${program.title}:`,
           insertModuleError?.message
         );
@@ -892,7 +887,6 @@ async function main() {
         });
 
         if (insertLessonError) {
-          console.error(
             `      ❌ Error inserting lesson "${lesson.title}" for ${program.title}:`,
             insertLessonError.message
           );
@@ -905,6 +899,5 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error("Unexpected error:", err);
   process.exit(1);
 });

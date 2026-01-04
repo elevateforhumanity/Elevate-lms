@@ -117,7 +117,6 @@ export class LocalStorage {
 
       return true;
     } catch (error) {
-      console.error(`Error deleting video ${jobId}:`, error);
       return false;
     }
   }
@@ -146,7 +145,6 @@ export class LocalStorage {
 
       return videos;
     } catch (error) {
-      console.error('Error listing videos:', error);
       return [];
     }
   }
@@ -184,7 +182,6 @@ export class LocalStorage {
         availableSpace: 0, // Would need to check disk space
       };
     } catch (error) {
-      console.error('Error getting storage stats:', error);
       return {
         totalVideos: 0,
         totalSize: 0,
@@ -240,7 +237,6 @@ export async function getVideoFileSize(videoPath: string): Promise<number> {
     const stats = await fs.stat(videoPath);
     return stats.size;
   } catch (error) {
-    console.error('Error getting video file size:', error);
     return 0;
   }
 }
@@ -317,7 +313,6 @@ export async function cleanupOldVideos(
 
     return deletedCount;
   } catch (error) {
-    console.error('Error cleaning up old videos:', error);
     return 0;
   }
 }
@@ -400,7 +395,6 @@ export class CloudflareR2Storage {
 
       return url;
     } catch (error) {
-      console.error('Error uploading to R2:', error);
       throw error;
     }
   }
@@ -428,7 +422,6 @@ export class CloudflareR2Storage {
       });
       return url;
     } catch (error) {
-      console.error('Error getting video from R2:', error);
       return null;
     }
   }
@@ -451,7 +444,6 @@ export class CloudflareR2Storage {
       const bodyString = await response.Body.transformToString();
       return JSON.parse(bodyString);
     } catch (error) {
-      console.error('Error getting metadata from R2:', error);
       return null;
     }
   }
@@ -491,7 +483,6 @@ export class CloudflareR2Storage {
 
       return true;
     } catch (error) {
-      console.error(`Error deleting video from R2: ${jobId}`, error);
       return false;
     }
   }
@@ -537,7 +528,6 @@ export class CloudflareR2Storage {
             }
           }
         } catch (error) {
-          console.error(`Error reading metadata file ${file.Key}:`, error);
         }
       }
 
@@ -549,7 +539,6 @@ export class CloudflareR2Storage {
 
       return videos;
     } catch (error) {
-      console.error('Error listing videos from R2:', error);
       return [];
     }
   }
@@ -572,7 +561,6 @@ export class CloudflareR2Storage {
       // Convert AWS SDK stream to Node.js stream
       return response.Body as unknown as NodeJS.ReadableStream;
     } catch (error) {
-      console.error('Error getting video stream from R2:', error);
       return null;
     }
   }
@@ -610,7 +598,6 @@ export class CloudflareR2Storage {
         availableSpace: 0, // R2 has no practical limit
       };
     } catch (error) {
-      console.error('Error getting R2 storage stats:', error);
       return { totalVideos: 0, totalSize: 0, availableSpace: 0 };
     }
   }
@@ -643,7 +630,6 @@ export class CloudflareR2Storage {
       const url = await getSignedUrl(this.s3Client, command, { expiresIn });
       return url;
     } catch (error) {
-      console.error('Error generating presigned URL:', error);
       return null;
     }
   }
@@ -707,7 +693,6 @@ export class CloudflareStreamStorage {
 
       return streamVideo.uid;
     } catch (error) {
-      console.error('Error uploading to Cloudflare Stream:', error);
       throw error;
     }
   }
@@ -721,7 +706,6 @@ export class CloudflareStreamStorage {
 
       return this.streamService.getVideoUrl((metadata as any).streamUid);
     } catch (error) {
-      console.error('Error getting video from Cloudflare Stream:', error);
       return null;
     }
   }
@@ -740,7 +724,6 @@ export class CloudflareStreamStorage {
       await this.localCache.deleteVideo(jobId);
       return true;
     } catch (error) {
-      console.error('Error deleting video from Cloudflare Stream:', error);
       return false;
     }
   }

@@ -39,7 +39,6 @@ class StripePartnerProductsManager {
             `✅ Created: ${program.name} - $${program.student_price}`
           );
         } catch (error) {
-          console.error(`❌ Error creating ${program.name}:`, error.message);
           results.errors.push({
             program: program.name,
             error: error.message,
@@ -138,7 +137,6 @@ class StripePartnerProductsManager {
           `✅ Created Connect account for ${partnerData.partner_name}`
         );
       } catch (error) {
-        console.error(
           `❌ Error creating account for ${partnerData.partner_name}:`,
           error.message
         );

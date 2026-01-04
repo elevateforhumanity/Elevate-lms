@@ -39,6 +39,5 @@ Sitemap: ${DOMAIN}/sitemap-index.xml
 }
 
 main().catch((e) => {
-  console.error('Sitemap generation failed:', e);
   process.exit(1);
 });

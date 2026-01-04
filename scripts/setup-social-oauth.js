@@ -62,7 +62,6 @@ YOUTUBE_REFRESH_TOKEN=${response.data.refresh_token}
 
   } catch (error) {
     res.send(`<h1>❌ Error</h1><pre>${error.message}</pre>`);
-    console.error('YouTube OAuth error:', error.message);
   }
 });
 
@@ -118,7 +117,6 @@ LINKEDIN_ACCESS_TOKEN=${response.data.access_token}
     );
   } catch (error) {
     res.send(`<h1>❌ Error</h1><pre>${error.message}</pre>`);
-    console.error('LinkedIn OAuth error:', error.message);
   }
 });
 
@@ -171,7 +169,6 @@ FACEBOOK_PAGE_1_TOKEN=${response.data.access_token}
 
   } catch (error) {
     res.send(`<h1>❌ Error</h1><pre>${error.message}</pre>`);
-    console.error('Facebook token exchange error:', error.message);
   }
 });
 

@@ -22,7 +22,6 @@ async function getBlogPosts() {
     .limit(20);
 
   if (error) {
-    console.error('Error fetching blog posts:', error);
     return mockBlogPosts; // Fallback to mock data
   }
 

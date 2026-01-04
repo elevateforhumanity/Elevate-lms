@@ -73,7 +73,6 @@ router.post('/generate', async (req: Request, res: Response) => {
 
     res.json(result);
   } catch (error) {
-    console.error('Video generation error:', error);
     res.status(500).json({
       error: 'Video generation failed',
       message: error instanceof Error ? error.message : 'Unknown error',
@@ -103,7 +102,6 @@ router.post('/tts', async (req: Request, res: Response) => {
 
     res.send(audioBuffer);
   } catch (error) {
-    console.error('TTS generation error:', error);
     res.status(500).json({
       error: 'TTS generation failed',
       message: error instanceof Error ? error.message : 'Unknown error',
@@ -126,7 +124,6 @@ router.get('/status/:jobId', async (req: Request, res: Response) => {
       completedAt: new Date().toISOString(),
     });
   } catch (error) {
-    console.error('Status check error:', error);
     res.status(500).json({
       error: 'Status check failed',
       message: error instanceof Error ? error.message : 'Unknown error',
@@ -159,7 +156,6 @@ router.get('/download/:jobId', async (req: Request, res: Response) => {
 
     videoStream.pipe(res);
   } catch (error) {
-    console.error('Download error:', error);
     res.status(500).json({
       error: 'Download failed',
       message: error instanceof Error ? error.message : 'Unknown error',
@@ -187,7 +183,6 @@ router.get('/videos', async (req: Request, res: Response) => {
       totalPages: Math.ceil(allVideos.length / Number(pageSize)),
     });
   } catch (error) {
-    console.error('Video listing error:', error);
     res.status(500).json({
       error: 'Video listing failed',
       message: error instanceof Error ? error.message : 'Unknown error',
@@ -206,7 +201,6 @@ router.delete('/videos/:jobId', async (req: Request, res: Response) => {
       jobId,
     });
   } catch (error) {
-    console.error('Video deletion error:', error);
     res.status(500).json({
       error: 'Video deletion failed',
       message: error instanceof Error ? error.message : 'Unknown error',

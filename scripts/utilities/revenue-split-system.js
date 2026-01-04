@@ -94,7 +94,6 @@ class RevenueSplitSystem {
         },
       };
     } catch (error) {
-      console.error('Payment processing error:', error);
       return {
         success: false,
         error: error.message,
@@ -213,7 +212,6 @@ class RevenueSplitSystem {
       this.partnerAccounts.set(partnerId, account);
       return account;
     } catch (error) {
-      console.error(`Error managing account for ${partnerId}:`, error);
       throw error;
     }
   }
@@ -275,7 +273,6 @@ class RevenueSplitSystem {
       );
       return transfer;
     } catch (error) {
-      console.error('Partner transfer failed:', error);
       throw error;
     }
   }

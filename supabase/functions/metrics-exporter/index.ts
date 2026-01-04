@@ -64,7 +64,6 @@ serve(async (req) => {
       headers: corsHeaders,
     });
   } catch (e) {
-    console.error('Metrics export error:', e);
     return new Response(JSON.stringify({ error: String(e) }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

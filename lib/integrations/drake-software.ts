@@ -107,7 +107,6 @@ class DrakeIntegration {
     this.apiUrl = process.env.DRAKE_API_URL || 'https://api.drakesoftware.com';
 
     if (!this.accountNumber || !this.serialNumber) {
-      console.warn('Drake Software credentials not configured');
     }
   }
 
@@ -132,7 +131,6 @@ class DrakeIntegration {
         returnId: response.returnId || `DRAKE-${Date.now()}`,
       };
     } catch (error) {
-      console.error('Drake create return error:', error);
       throw new Error('Failed to create return in Drake Software');
     }
   }
@@ -148,7 +146,6 @@ class DrakeIntegration {
 
       return response.calculation;
     } catch (error) {
-      console.error('Drake calculation error:', error);
       throw new Error('Failed to calculate tax');
     }
   }
@@ -166,7 +163,6 @@ class DrakeIntegration {
         pdfUrl: response.pdfUrl,
       };
     } catch (error) {
-      console.error('Drake form generation error:', error);
       throw new Error('Failed to generate Form 1040');
     }
   }
@@ -191,7 +187,6 @@ class DrakeIntegration {
         submittedAt: new Date(),
       };
     } catch (error) {
-      console.error('Drake e-file error:', error);
       throw new Error('Failed to e-file return');
     }
   }
@@ -214,7 +209,6 @@ class DrakeIntegration {
         submittedAt: new Date(response.submittedAt),
       };
     } catch (error) {
-      console.error('Drake status check error:', error);
       throw new Error('Failed to check acknowledgment status');
     }
   }
@@ -243,7 +237,6 @@ class DrakeIntegration {
         ocrData: response.ocrData, // Drake's OCR extraction
       };
     } catch (error) {
-      console.error('Drake document upload error:', error);
       throw new Error('Failed to upload document');
     }
   }
@@ -263,7 +256,6 @@ class DrakeIntegration {
 
       return response;
     } catch (error) {
-      console.error('Drake status error:', error);
       throw new Error('Failed to get return status');
     }
   }
@@ -295,7 +287,6 @@ class DrakeIntegration {
 
       return await response.json();
     } catch (error) {
-      console.error('Drake API request failed:', error);
       throw error;
     }
   }

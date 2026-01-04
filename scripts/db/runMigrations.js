@@ -9,7 +9,6 @@ async function runMigrations() {
   const connectionString = process.env.SUPABASE_DB_URL;
 
   if (!connectionString) {
-    console.error('❌ SUPABASE_DB_URL is not set in .env.local');
     process.exit(1);
   }
 
@@ -21,7 +20,6 @@ async function runMigrations() {
     const migrationsDir = path.join(process.cwd(), 'supabase', 'migrations');
 
     if (!fs.existsSync(migrationsDir)) {
-      console.error(`❌ Migrations folder not found: ${migrationsDir}`);
       process.exit(1);
     }
 
@@ -68,14 +66,11 @@ async function runMigrations() {
         await client.query('COMMIT');
       } catch (err) {
         await client.query('ROLLBACK');
-        console.error(`❌ Migration failed: ${file}`);
-        console.error(err.message);
         process.exit(1);
       }
     }
 
   } catch (err) {
-    console.error('❌ Migration runner error:', err.message);
     process.exit(1);
   } finally {
     await client.end();

@@ -104,7 +104,6 @@ export async function POST(req: NextRequest) {
       .single();
 
     if (insertError) {
-      console.error('Insert error:', insertError);
       return NextResponse.json(
         { error: 'Failed to submit application. Please try again.' },
         { status: 500 }
@@ -116,7 +115,6 @@ export async function POST(req: NextRequest) {
       body.contactEmail,
       body.organizationName
     ).catch((err) =>
-      console.error('[Email] Program holder confirmation failed:', err)
     );
 
     // Send notification to admin (non-blocking)
@@ -131,7 +129,6 @@ export async function POST(req: NextRequest) {
       applicationId: application.id,
     });
   } catch (error: unknown) {
-    console.error('Application error:', error);
     return NextResponse.json(
       { error: 'An unexpected error occurred. Please try again.' },
       { status: 500 }

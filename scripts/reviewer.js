@@ -128,7 +128,6 @@ class BrandReviewer {
         });
       });
     } catch (error) {
-      console.error(`Error reading file ${filePath}:`, error.message);
     }
   }
 
@@ -148,7 +147,6 @@ class BrandReviewer {
         }
       }
     } catch (error) {
-      console.error(`Error scanning directory ${dir}:`, error.message);
     }
   }
 

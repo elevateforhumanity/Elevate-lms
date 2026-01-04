@@ -150,7 +150,6 @@ export async function submitStudentApplication(data: StudentApplicationData) {
       redirectTo: '/apply/success?role=student',
     };
   } catch (error) {
-    console.error('Student application error:', error);
     return {
       success: false,
       error:
@@ -231,7 +230,6 @@ export async function submitProgramHolderApplication(
       redirectTo: '/apply/success?role=program-holder',
     };
   } catch (error) {
-    console.error('Program holder application error:', error);
     return {
       success: false,
       error:
@@ -310,7 +308,6 @@ export async function submitEmployerApplication(data: EmployerApplicationData) {
       redirectTo: '/apply/success?role=employer',
     };
   } catch (error) {
-    console.error('Employer application error:', error);
     return {
       success: false,
       error:
@@ -390,7 +387,6 @@ export async function submitStaffApplication(data: StaffApplicationData) {
       redirectTo: '/apply/success?role=staff',
     };
   } catch (error) {
-    console.error('Staff application error:', error);
     return {
       success: false,
       error:

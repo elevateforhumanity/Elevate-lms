@@ -50,7 +50,6 @@ class VideoStorageManager {
 
       throw new Error('Upload failed');
     } catch (error) {
-      console.error('Video upload error:', error);
       return { success: false, error: error.message };
     }
   }
@@ -66,7 +65,6 @@ class VideoStorageManager {
       const response = await fetch(`${this.baseUrl}/videos/${courseId}/`);
       return await response.json();
     } catch (error) {
-      console.error('Error fetching course videos:', error);
       return [];
     }
   }

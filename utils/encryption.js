@@ -8,8 +8,6 @@ const crypto = require('crypto');
 
 // Require encryption key from environment
 if (!process.env.ENCRYPTION_KEY) {
-  console.error('FATAL: ENCRYPTION_KEY environment variable is required');
-  console.error(
   );
   process.exit(1);
 }
@@ -39,7 +37,6 @@ function encrypt(text) {
     // Return format: iv:authTag:encrypted
     return `${iv.toString('hex')}:${authTag.toString('hex')}:${encrypted}`;
   } catch (error) {
-    console.error('Encryption error:', error);
     throw new Error('Failed to encrypt data');
   }
 }
@@ -70,7 +67,6 @@ function decrypt(encryptedData) {
 
     return decrypted;
   } catch (error) {
-    console.error('Decryption error:', error);
     throw new Error('Failed to decrypt data');
   }
 }
@@ -118,7 +114,6 @@ function decryptFields(obj, fields) {
       try {
         decrypted[field] = decrypt(decrypted[field]);
       } catch (error) {
-        console.error(`Failed to decrypt field ${field}:`, error);
         decrypted[field] = null;
       }
     }

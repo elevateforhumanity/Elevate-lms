@@ -63,7 +63,6 @@ class SMSAlertHandler {
       this.logAlert(`SMS SENT: ${fullMessage} (SID: ${result.sid})`);
       return { success: true, sid: result.sid, mode: 'live' };
     } catch (error) {
-      console.error('📱 SMS Error:', error.message);
       this.logAlert(`SMS ERROR: ${error.message}`);
       return { success: false, error: error.message };
     }

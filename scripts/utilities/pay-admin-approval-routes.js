@@ -66,7 +66,6 @@ approvalsAdmin.get('/api/approvals/list', async (req, res) => {
 
     res.json(filtered || []);
   } catch (e) {
-    console.error('List approvals error:', e);
     res.status(500).json({ error: e.message });
   }
 });
@@ -146,7 +145,6 @@ approvalsAdmin.post('/api/approvals/admin_decide', async (req, res) => {
 
     res.json({ ok: true, decision });
   } catch (e) {
-    console.error('Admin decision error:', e);
     res.status(500).json({ error: e.message });
   }
 });
@@ -171,7 +169,6 @@ approvalsAdmin.get('/api/approvals/stats', async (req, res) => {
       total: data?.length || 0,
     });
   } catch (e) {
-    console.error('Stats error:', e);
     res.status(500).json({ error: e.message });
   }
 });

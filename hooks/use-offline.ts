@@ -75,7 +75,6 @@ export function useOffline(): UseOfflineReturn {
         const actions = await db.getAllOfflineActions();
         setPendingActionsCount(actions.length);
       } catch (error) {
-        console.error('Failed to get offline actions count:', error);
       }
     };
 
@@ -105,7 +104,6 @@ export function useOffline(): UseOfflineReturn {
     try {
       await syncOfflineActions();
     } catch (error) {
-      console.error('Failed to sync offline actions:', error);
       throw error;
     }
   }, []);
@@ -125,7 +123,6 @@ export function useOffline(): UseOfflineReturn {
         });
         setPendingActionsCount((count) => count + 1);
       } catch (error) {
-        console.error('Failed to add offline action:', error);
         throw error;
       }
     },
@@ -142,7 +139,6 @@ export function useOffline(): UseOfflineReturn {
       }
       setPendingActionsCount(0);
     } catch (error) {
-      console.error('Failed to clear offline actions:', error);
       throw error;
     }
   }, [db]);
@@ -175,7 +171,6 @@ export function useOfflineCache<T>(key: string, expiresIn?: number) {
         const cachedData = await db.getCachedData(key);
         setData(cachedData);
       } catch (error) {
-        console.error('Failed to load cached data:', error);
       } finally {
         setLoading(false);
       }
@@ -190,7 +185,6 @@ export function useOfflineCache<T>(key: string, expiresIn?: number) {
         await db.setCachedData(key, newData, expiresIn);
         setData(newData);
       } catch (error) {
-        console.error('Failed to save cached data:', error);
         throw error;
       }
     },
@@ -202,7 +196,6 @@ export function useOfflineCache<T>(key: string, expiresIn?: number) {
       await db.deleteCachedData(key);
       setData(null);
     } catch (error) {
-      console.error('Failed to clear cached data:', error);
       throw error;
     }
   }, [db, key]);

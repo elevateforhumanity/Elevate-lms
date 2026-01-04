@@ -12,7 +12,6 @@ export default function LMSError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error('LMS error:', error);
   }, [error]);
 
   return (

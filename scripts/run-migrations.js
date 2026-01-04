@@ -16,22 +16,11 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!supabaseUrl || !supabaseKey) {
-  console.error('❌ Error: Missing Supabase credentials');
-  console.error('');
-  console.error('Please set these environment variables in .env.local:');
-  console.error('  NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co');
-  console.error('  SUPABASE_SERVICE_ROLE_KEY=your-service-role-key');
-  console.error('');
-  console.error('See ACTIVATE_COURSES_NOW.md for detailed instructions.');
   process.exit(1);
 }
 
 // Check if using placeholder values
 if (supabaseUrl.includes('placeholder') || supabaseKey.includes('placeholder')) {
-  console.error('❌ Error: Using placeholder Supabase credentials');
-  console.error('');
-  console.error('Please update .env.local with your actual Supabase credentials.');
-  console.error('See ACTIVATE_COURSES_NOW.md for instructions.');
   process.exit(1);
 }
 
@@ -85,7 +74,6 @@ async function runMigration(filename) {
       return { success: true, skipped: true };
     }
 
-    console.error(`   ❌ Error: ${error.message}`);
     return { success: false, error: error.message };
   }
 }
@@ -157,6 +145,5 @@ async function main() {
 }
 
 main().catch(error => {
-  console.error('\n❌ Fatal error:', error);
   process.exit(1);
 });

@@ -59,7 +59,6 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('Access key validation error:', error);
     return NextResponse.json(
       { valid: false, error: 'Failed to validate access key' },
       { status: 500 }

@@ -309,7 +309,6 @@ class BrandColorFixer {
         }
       }
     } catch (error) {
-      console.error(`Error processing file ${filePath}:`, error.message);
     }
   }
 
@@ -329,7 +328,6 @@ class BrandColorFixer {
         }
       }
     } catch (error) {
-      console.error(`Error scanning directory ${dir}:`, error.message);
     }
   }
 

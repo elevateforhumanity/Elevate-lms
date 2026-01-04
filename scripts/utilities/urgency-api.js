@@ -14,7 +14,6 @@ app.get('/api/urgency/:packageId', (req, res) => {
     const urgencyData = urgencyManager.getUrgencyData(packageId, visitorId);
     res.json(urgencyData);
   } catch (error) {
-    console.error('Urgency data error:', error);
     res.status(500).json({ error: 'Failed to get urgency data' });
   }
 });
@@ -33,7 +32,6 @@ app.post('/api/reserve-inventory', (req, res) => {
     const result = urgencyManager.reserveInventory(packageId, sessionId);
     res.json(result);
   } catch (error) {
-    console.error('Inventory reservation error:', error);
     res.status(500).json({ error: 'Failed to reserve inventory' });
   }
 });
@@ -50,7 +48,6 @@ app.post('/api/complete-purchase', (req, res) => {
     const result = urgencyManager.completePurchase(sessionId);
     res.json(result);
   } catch (error) {
-    console.error('Purchase completion error:', error);
     res.status(500).json({ error: 'Failed to complete purchase' });
   }
 });
@@ -67,7 +64,6 @@ app.post('/api/cancel-reservation', (req, res) => {
     urgencyManager.cancelReservation(sessionId);
     res.json({ success: true });
   } catch (error) {
-    console.error('Reservation cancellation error:', error);
     res.status(500).json({ error: 'Failed to cancel reservation' });
   }
 });
@@ -79,7 +75,6 @@ app.get('/api/sales-dashboard', (req, res) => {
     const dashboard = urgencyManager.getSalesDashboard();
     res.json(dashboard);
   } catch (error) {
-    console.error('Sales dashboard error:', error);
     res.status(500).json({ error: 'Failed to get sales dashboard' });
   }
 });
@@ -97,7 +92,6 @@ app.get('/api/inventory-status', (req, res) => {
 
     res.json(status);
   } catch (error) {
-    console.error('Inventory status error:', error);
     res.status(500).json({ error: 'Failed to get inventory status' });
   }
 });
@@ -111,7 +105,6 @@ app.post('/api/track-action', (req, res) => {
     const result = urgencyManager.trackVisitor(visitorId, action, packageId);
     res.json(result);
   } catch (error) {
-    console.error('Action tracking error:', error);
     res.status(500).json({ error: 'Failed to track action' });
   }
 });
@@ -127,7 +120,6 @@ app.get('/api/social-proof', (req, res) => {
       ...result.socialProof,
     });
   } catch (error) {
-    console.error('Social proof error:', error);
     res.status(500).json({ error: 'Failed to get social proof' });
   }
 });

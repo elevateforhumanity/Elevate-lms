@@ -20,8 +20,6 @@ const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
-  console.error('❌ Missing Supabase credentials');
-  console.error('   Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env.local');
   process.exit(1);
 }
 
@@ -390,7 +388,6 @@ async function main() {
     const exitCode = printResults();
     process.exit(exitCode);
   } catch (error: any) {
-    console.error('❌ Test failed with error:', error.message);
     process.exit(1);
   }
 }

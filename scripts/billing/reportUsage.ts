@@ -48,7 +48,6 @@ export async function reportTenantUsage() {
         `Tenant ${t.name}: Reported ${activeCount} active learners`
       );
     } catch (error) {
-      console.error(`Failed to report usage for tenant ${t.name}:`, error);
     }
   }
 }
@@ -60,7 +59,6 @@ if (require.main === module) {
       process.exit(0);
     })
     .catch((error) => {
-      console.error("Usage reporting failed:", error);
       process.exit(1);
     });
 }

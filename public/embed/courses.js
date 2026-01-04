@@ -35,7 +35,6 @@
         const data = await response.json();
         return data.data || [];
       } catch (error) {
-        console.error('Failed to fetch courses:', error);
         return [];
       }
     },
@@ -43,7 +42,6 @@
     async render(config) {
       const container = document.querySelector(config.container);
       if (!container) {
-        console.error('Container not found:', config.container);
         return;
       }
 

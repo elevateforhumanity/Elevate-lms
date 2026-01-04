@@ -85,7 +85,6 @@ class SendGridProvider implements EmailProvider {
         messageId: response.headers.get('x-message-id') || undefined,
       };
     } catch (error: any) {
-      console.error('SendGrid send error:', error);
       return {
         success: false,
         error: error.message,
@@ -134,7 +133,6 @@ class ResendProvider implements EmailProvider {
         messageId: result.id,
       };
     } catch (error: any) {
-      console.error('Resend send error:', error);
       return {
         success: false,
         error: error.message,
@@ -165,7 +163,6 @@ async function logEmail(
       },
     });
   } catch (error) {
-    console.error('Failed to log email:', error);
   }
 }
 
@@ -250,7 +247,6 @@ async function processEmailQueue() {
 
     return { processed };
   } catch (error: any) {
-    console.error('Queue processing error:', error);
     throw error;
   }
 }
@@ -335,7 +331,6 @@ serve(async (req) => {
       }
     );
   } catch (error: any) {
-    console.error('Email dispatch error:', error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

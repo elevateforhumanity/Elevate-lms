@@ -24,7 +24,6 @@ try {
   const { registerApprovalRoutes } = require('./approval-integration');
   registerApprovalRoutes(app);
 } catch (e) {
-  console.error('❌ Failed to load approval routes:', e.message);
   process.exit(1);
 }
 
@@ -113,7 +112,6 @@ const server = app.listen(3000, 'localhost', async () => {
     }
 
   } catch (e) {
-    console.error('❌ Verification failed:', e.message);
   }
 
   server.close();

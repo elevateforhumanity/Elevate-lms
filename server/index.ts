@@ -60,7 +60,6 @@ app.use(
     res: express.Response,
     next: express.NextFunction
   ) => {
-    console.error('Server error:', err);
     res.status(500).json({
       error: 'Internal server error',
       message: err.message,

@@ -42,11 +42,9 @@ class DownloadTracker {
         this.showTrackingNotification('Download started - tracking enabled');
         return true;
       } else {
-        console.error('❌ Failed to track download:', response.statusText);
         return false;
       }
     } catch (error) {
-      console.error('❌ Download tracking error:', error);
       return false;
     }
   }
@@ -85,7 +83,6 @@ class DownloadTracker {
         this.showTrackingNotification('Download completed successfully');
       }
     } catch (error) {
-      console.error('❌ Download completion tracking failed:', error);
     }
   }
 
@@ -120,7 +117,6 @@ class DownloadTracker {
 
       this.showTrackingNotification('Download error reported', 'error');
     } catch (trackingError) {
-      console.error('❌ Error tracking failed:', trackingError);
     }
   }
 
@@ -144,7 +140,6 @@ class DownloadTracker {
         throw new Error('License validation failed');
       }
     } catch (error) {
-      console.error('❌ License validation error:', error);
       return { valid: false, error: error.message };
     }
   }

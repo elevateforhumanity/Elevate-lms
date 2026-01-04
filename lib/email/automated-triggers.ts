@@ -379,7 +379,6 @@ export async function queueEmail(
     });
 
   if (error) {
-    console.error('Error queueing email:', error);
     return false;
   }
 
@@ -402,7 +401,6 @@ export async function processPendingEmails(): Promise<number> {
     .limit(50);
 
   if (error || !emails) {
-    console.error('Error fetching pending emails:', error);
     return 0;
   }
 

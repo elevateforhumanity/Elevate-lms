@@ -133,7 +133,6 @@ async function storeLicense(license) {
     await fs.appendFile('./licenses/master-log.csv', logEntry);
 
   } catch (error) {
-    console.error('❌ License storage failed:', error);
   }
 }
 
@@ -151,7 +150,6 @@ async function trackAnalytics(event, data) {
       JSON.stringify(analyticsEntry) + '\n'
     );
   } catch (error) {
-    console.error('❌ Analytics tracking failed:', error);
   }
 }
 
@@ -265,7 +263,6 @@ async function sendLicenseEmail(
       totalAmount,
     });
   } catch (error) {
-    console.error('❌ Email sending failed:', error);
     throw error;
   }
 }
@@ -281,7 +278,6 @@ app.post(
     try {
       event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
     } catch (err) {
-      console.error('⚠️ Webhook signature verification failed:', err.message);
       return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
@@ -359,7 +355,6 @@ app.post(
         }
 
       } catch (error) {
-        console.error('❌ Payment processing failed:', error);
 
         // Track failed delivery for manual follow-up
         await trackAnalytics('delivery_failed', {

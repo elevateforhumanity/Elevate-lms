@@ -11,7 +11,6 @@ const destPath = './dist/cache-buster.js';
 try {
   fs.copyFileSync(sourcePath, destPath);
 } catch (error) {
-  console.error('❌ Failed to copy cache-buster.js:', error.message);
   process.exit(1);
 }
 
@@ -47,7 +46,6 @@ function addCacheVersionToHTML(filePath) {
     }
     return 'skipped';
   } catch (error) {
-    console.error(`❌ Error processing ${filePath}:`, error.message);
     return 'error';
   }
 }
@@ -71,7 +69,6 @@ function addCacheBusterScript(filePath) {
     fs.writeFileSync(filePath, content, 'utf8');
     return 'added';
   } catch (error) {
-    console.error(`❌ Error processing ${filePath}:`, error.message);
     return 'error';
   }
 }

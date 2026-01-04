@@ -154,7 +154,6 @@ class AssetCacheManager {
         type: asset.type,
       };
     } catch (error) {
-      console.error(`❌ Failed to cache ${asset.name}:`, error.message);
       return null;
     }
   }

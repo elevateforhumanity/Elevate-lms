@@ -43,7 +43,6 @@ app.use(express.json());
 
 // Connect to database
 db.connect().catch((err) => {
-  console.error('Database connection failed:', err);
   process.exit(1);
 });
 
@@ -79,7 +78,6 @@ app.post('/api/auth/login', async (req, res) => {
     const session = await auth.createSession({ email, auth_id });
     res.json(session);
   } catch (error) {
-    console.error('Login error:', error);
     res.status(500).json({
       error: 'Login failed',
       message: error.message,
@@ -187,7 +185,6 @@ app.get('/api/programs', (req, res) => {
 
 // Error handling middleware
 app.use((error, req, res, next) => {
-  console.error('API Error:', error);
   res.status(500).json({
     error: 'Internal server error',
     message: error.message,

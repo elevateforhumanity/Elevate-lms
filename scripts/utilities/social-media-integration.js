@@ -20,7 +20,6 @@ class SocialMediaIntegration {
       const postsPath = path.join(__dirname, 'content', 'social-posts.json');
       return JSON.parse(fs.readFileSync(postsPath, 'utf8'));
     } catch (error) {
-      console.warn('⚠️ Social posts not found, using defaults');
       return [];
     }
   }

@@ -26,7 +26,6 @@ async function runSupabaseSQL() {
 
   // Check if SQL file exists
   if (!fs.existsSync(SQL_FILE)) {
-    console.error(`❌ SQL file not found: ${SQL_FILE}`);
     process.exit(1);
   }
 
@@ -121,7 +120,6 @@ async function runSupabaseSQL() {
 
 
   } catch (error) {
-    console.error('❌ Error:', error.message);
 
     // Take error screenshot
     try {
@@ -138,6 +136,5 @@ async function runSupabaseSQL() {
 
 // Run the automation
 runSupabaseSQL().catch((error) => {
-  console.error('Fatal error:', error);
   process.exit(1);
 });

@@ -10,7 +10,6 @@ export const initSentry = () => {
 
 export const captureException = (error: Error, context?: any) => {
   if (typeof window !== 'undefined') {
-    console.error('Error captured:', error, context);
     // Send to Sentry if configured
     if (SENTRY_DSN && window.Sentry) {
       window.Sentry.captureException(error, { extra: context });

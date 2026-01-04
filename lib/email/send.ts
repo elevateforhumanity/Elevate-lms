@@ -20,13 +20,11 @@ export async function sendEmail(options: EmailOptions) {
     });
 
     if (error) {
-      console.error('Email send error:', error);
       return { success: false, error };
     }
 
     return { success: true, data };
   } catch (error) {
-    console.error('Email send exception:', error);
     return { success: false, error };
   }
 }

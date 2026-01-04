@@ -26,13 +26,11 @@ export async function sendEmail(options: EmailOptions) {
     });
 
     if (error) {
-      console.error('[Email] Send failed:', error);
       return { success: false, error: error.message };
     }
 
     return { success: true, data };
   } catch (data: unknown) {
-    console.error('[Email] Send error:', error);
     return { success: false, error: error.message };
   }
 }

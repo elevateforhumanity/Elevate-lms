@@ -166,7 +166,6 @@ export default function SmartUploadPage() {
         )
       );
     } catch (error) {
-      console.error('Processing error:', error);
       setFiles((prev) =>
         prev.map((f) =>
           f.id === uploadedFile.id

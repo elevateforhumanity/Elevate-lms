@@ -34,7 +34,6 @@ async function updateCloudflareToken() {
 
   // Validate credentials
   if (!CLOUDFLARE_EMAIL || !CLOUDFLARE_PASSWORD) {
-    console.error('❌ Missing Cloudflare credentials');
     process.exit(1);
   }
 
@@ -732,7 +731,6 @@ async function updateCloudflareToken() {
       await page.waitForTimeout(180000);
     }
   } catch (error) {
-    console.error('❌ Error:', error.message);
       '3. Check screenshots: cloudflare-token-config.png, cloudflare-token-result.png'
     );
 
@@ -759,7 +757,6 @@ if (require.main === module) {
       }
     })
     .catch((error) => {
-      console.error('Fatal error:', error);
       process.exit(1);
     });
 }

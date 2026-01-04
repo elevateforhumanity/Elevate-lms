@@ -344,8 +344,6 @@ async function extractAllCSS() {
     summary.files.forEach((file) => {
     });
   } catch (error) {
-    console.error('❌ Error:', error.message);
-    console.error(error.stack);
     process.exit(1);
   } finally {
     if (browser) {

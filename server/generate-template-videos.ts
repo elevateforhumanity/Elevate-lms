@@ -67,8 +67,6 @@ async function generateTemplateVideos() {
           videoPath: samplePath,
         });
       } else {
-        console.error('❌ Video generation failed');
-        console.error(`   Error: ${result.error}`);
 
         results.push({
           template: template.name,
@@ -77,7 +75,6 @@ async function generateTemplateVideos() {
         });
       }
     } catch (error) {
-      console.error('❌ Error generating video:', error);
 
       results.push({
         template: template.name,
@@ -166,8 +163,6 @@ setTimeout(() => {
       process.exit(0);
     })
     .catch((error) => {
-      console.error('');
-      console.error('❌ Template video generation failed:', error);
       process.exit(1);
     });
 }, 5000);

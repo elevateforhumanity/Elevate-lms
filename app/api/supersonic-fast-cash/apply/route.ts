@@ -44,7 +44,6 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (appError) {
-      console.error('Application save error:', appError);
       return NextResponse.json(
         { error: 'Failed to save application', details: appError.message },
         { status: 500 }
@@ -92,7 +91,6 @@ export async function POST(request: NextRequest) {
         `,
       });
     } catch (emailError) {
-      console.error('Email error:', emailError);
     }
 
     // Send notification to admin
@@ -131,7 +129,6 @@ export async function POST(request: NextRequest) {
         `,
       });
     } catch (emailError) {
-      console.error('Admin notification error:', emailError);
     }
 
     return NextResponse.json({
@@ -140,7 +137,6 @@ export async function POST(request: NextRequest) {
       message: 'Application submitted successfully! We will contact you within 24 hours.',
     });
   } catch (error) {
-    console.error('Server error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -191,7 +187,6 @@ export async function GET(request: NextRequest) {
       applications: data,
     });
   } catch (error) {
-    console.error('Server error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

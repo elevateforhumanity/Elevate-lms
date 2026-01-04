@@ -52,7 +52,6 @@ async function testStripeProducts() {
 
     return true;
   } catch (error) {
-    console.error('❌ Stripe test failed:', error.message);
     return false;
   }
 }
@@ -69,7 +68,6 @@ async function testSMSAlerts() {
 
     return true;
   } catch (error) {
-    console.error('❌ SMS test failed:', error.message);
     return false;
   }
 }

@@ -33,14 +33,12 @@ export async function getEntityByUEI(uei: string): Promise<SAMEntity | null> {
     );
 
     if (!response.ok) {
-      console.error('SAM.gov API error:', response.status);
       return null;
     }
 
     const data = await response.json();
     return data.entityData?.[0] || null;
   } catch (error: unknown) {
-    console.error('Error fetching SAM.gov entity:', error);
     return null;
   }
 }
@@ -72,7 +70,6 @@ export async function checkExclusions(uei: string): Promise<boolean> {
     const data = await response.json();
     return data.exclusionDetails && data.exclusionDetails.length > 0;
   } catch (error: unknown) {
-    console.error('Error checking SAM.gov exclusions:', error);
     return false;
   }
 }
@@ -104,7 +101,6 @@ export async function searchEntities(name: string): Promise<SAMEntity[]> {
     const data = await response.json();
     return data.entityData || [];
   } catch (error: unknown) {
-    console.error('Error searching SAM.gov entities:', error);
     return [];
   }
 }

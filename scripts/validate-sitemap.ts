@@ -13,7 +13,6 @@ async function validateSitemap() {
   // Check for duplicates
   const urlSet = new Set(urls.map((u) => u.url));
   if (urlSet.size !== urls.length) {
-    console.error('❌ Duplicate URLs found!');
     process.exit(1);
   }
 
@@ -22,7 +21,6 @@ async function validateSitemap() {
     (u) => !u.url || !u.lastModified || !u.changeFrequency || !u.priority
   );
   if (missingFields.length > 0) {
-    console.error('❌ URLs with missing fields:', missingFields.length);
     process.exit(1);
   }
 
@@ -31,7 +29,6 @@ async function validateSitemap() {
     (u) => u.priority < 0 || u.priority > 1
   );
   if (invalidPriorities.length > 0) {
-    console.error('❌ Invalid priorities found');
     process.exit(1);
   }
 

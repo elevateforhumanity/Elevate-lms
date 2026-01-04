@@ -547,7 +547,6 @@ class BlogSystem {
         timestamp: new Date().toISOString(),
       });
     } catch (error) {
-      console.error('[Blog Worker] Injection error:', error);
       res.status(500).json({
         success: false,
         error: error.message,
@@ -576,7 +575,6 @@ class BlogSystem {
         timestamp: new Date().toISOString(),
       });
     } catch (error) {
-      console.error('[Blog Worker] Status check error:', error);
       res.status(500).json({
         success: false,
         error: error.message,

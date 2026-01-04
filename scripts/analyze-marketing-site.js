@@ -545,7 +545,6 @@ async function analyzeSite() {
       `📸 Screenshot: ${path.join(OUTPUT_DIR, 'homepage-screenshot.png')}`
     );
   } catch (error) {
-    console.error('\n❌ Error during analysis:', error.message);
     analysis.error = error.message;
   } finally {
     await browser.close();

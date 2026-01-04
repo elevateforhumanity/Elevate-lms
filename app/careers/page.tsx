@@ -23,7 +23,6 @@ export default async function CareersPage() {
   try {
     openPositions = await getActivePositions();
   } catch (error: unknown) {
-    console.error('Error loading positions:', error);
     // Continue with empty positions array
   }
 

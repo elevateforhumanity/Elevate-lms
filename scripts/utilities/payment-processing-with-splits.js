@@ -75,7 +75,6 @@ class PaymentProcessor {
         partner_amount: partnerAmount,
       };
     } catch (error) {
-      console.error('Payment processing failed:', error);
       return { success: false, error: error.message };
     }
   }
@@ -115,7 +114,6 @@ class PaymentProcessor {
         customer_name: metadata.customer_name,
       });
     } catch (error) {
-      console.error('Post-payment processing failed:', error);
     }
   }
 
@@ -142,7 +140,6 @@ class PaymentProcessor {
       );
       return transfer;
     } catch (error) {
-      console.error('Partner transfer failed:', error);
       throw error;
     }
   }
@@ -162,7 +159,6 @@ class PaymentProcessor {
     const partner = partners.find((p) => p.slug === program?.partner);
 
     if (!program || !partner) {
-      console.error('Program or partner not found for notification');
       return;
     }
 
@@ -206,7 +202,6 @@ class PaymentProcessor {
       });
 
     } catch (error) {
-      console.error('Failed to send partner notification:', error);
     }
   }
 
@@ -223,7 +218,6 @@ class PaymentProcessor {
     const partner = partners.find((p) => p.slug === program?.partner);
 
     if (!program || !partner) {
-      console.error('Program or partner not found for student notification');
       return;
     }
 
@@ -276,7 +270,6 @@ class PaymentProcessor {
       });
 
     } catch (error) {
-      console.error('Failed to send student confirmation:', error);
     }
   }
 }

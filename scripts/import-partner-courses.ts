@@ -140,7 +140,6 @@ async function importCourses(
       .insert(batch);
 
     if (error) {
-      console.error(`Error importing batch ${i / batchSize + 1}:`, error);
       throw error;
     }
 
@@ -155,8 +154,6 @@ async function main() {
   const fileIndex = args.indexOf('--file');
 
   if (providerIndex === -1 || fileIndex === -1) {
-    console.error('Usage: npm run import:courses -- --provider <provider> --file <file>');
-    console.error('Example: npm run import:courses -- --provider certiport --file courses.json');
     process.exit(1);
   }
 
@@ -164,19 +161,16 @@ async function main() {
   const file = args[fileIndex + 1];
 
   if (!provider || !file) {
-    console.error('Provider and file are required');
     process.exit(1);
   }
 
   const validProviders = Object.keys(MARKUP_RATES);
   if (!validProviders.includes(provider)) {
-    console.error(`Invalid provider. Must be one of: ${validProviders.join(', ')}`);
     process.exit(1);
   }
 
   const filePath = path.resolve(file);
   if (!fs.existsSync(filePath)) {
-    console.error(`File not found: ${filePath}`);
     process.exit(1);
   }
 
@@ -188,12 +182,10 @@ async function main() {
     } else if (ext === '.csv') {
       await importCoursesFromCSV(provider, filePath);
     } else {
-      console.error('Unsupported file format. Use .json or .csv');
       process.exit(1);
     }
 
   } catch (error) {
-    console.error('❌ Import failed:', error);
     process.exit(1);
   }
 }

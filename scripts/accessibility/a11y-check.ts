@@ -203,6 +203,5 @@ function generateHTMLReport(summary: any, results: any): string {
 }
 
 run().catch((err) => {
-  console.error("Error running accessibility check:", err);
   process.exit(1);
 });

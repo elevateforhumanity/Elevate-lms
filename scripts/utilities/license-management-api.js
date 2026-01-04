@@ -59,7 +59,6 @@ app.post('/api/generate-tiered-license', async (req, res) => {
       certificatePath,
     });
   } catch (error) {
-    console.error('License generation error:', error);
     res.status(500).json({ error: 'Failed to generate license' });
   }
 });
@@ -76,7 +75,6 @@ app.post('/api/validate-tiered-license', (req, res) => {
     const validation = validateTieredLicense(licenseKey, requestedFeature);
     res.json(validation);
   } catch (error) {
-    console.error('License validation error:', error);
     res.status(500).json({ error: 'Failed to validate license' });
   }
 });
@@ -95,7 +93,6 @@ app.post('/api/check-feature-access', (req, res) => {
     const access = checkFeatureAccess(licenseKey, feature);
     res.json(access);
   } catch (error) {
-    console.error('Feature access check error:', error);
     res.status(500).json({ error: 'Failed to check feature access' });
   }
 });
@@ -119,7 +116,6 @@ app.post('/api/track-download', (req, res) => {
 
     res.json(result);
   } catch (error) {
-    console.error('Download tracking error:', error);
     res.status(500).json({ error: 'Failed to track download' });
   }
 });
@@ -138,7 +134,6 @@ app.post('/api/register-deployment', (req, res) => {
     const result = usageTracker.trackDeployment(licenseKey, domain);
     res.json(result);
   } catch (error) {
-    console.error('Deployment registration error:', error);
     res.status(500).json({ error: 'Failed to register deployment' });
   }
 });
@@ -155,7 +150,6 @@ app.post('/api/license-usage-stats', (req, res) => {
     const stats = usageTracker.getUsageStats(licenseKey);
     res.json(stats);
   } catch (error) {
-    console.error('Usage stats error:', error);
     res.status(500).json({ error: 'Failed to get usage statistics' });
   }
 });
@@ -220,7 +214,6 @@ app.post('/api/upgrade-license', async (req, res) => {
       certificatePath,
     });
   } catch (error) {
-    console.error('License upgrade error:', error);
     res.status(500).json({ error: 'Failed to upgrade license' });
   }
 });
@@ -293,7 +286,6 @@ app.post('/api/generate-bulk-licenses', async (req, res) => {
       errors,
     });
   } catch (error) {
-    console.error('Bulk license generation error:', error);
     res.status(500).json({ error: 'Failed to generate bulk licenses' });
   }
 });

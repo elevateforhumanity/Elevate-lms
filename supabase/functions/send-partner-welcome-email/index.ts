@@ -220,7 +220,6 @@ serve(async (req) => {
       { headers: { 'Content-Type': 'application/json' } }
     );
   } catch (error: any) {
-    console.error('Error sending welcome email:', error);
     return new Response(
       JSON.stringify({ error: error.message }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }

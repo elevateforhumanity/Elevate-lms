@@ -38,7 +38,6 @@ export async function getAllPrograms(supabase?: SupabaseClient) {
     .order('name');
 
   if (error) {
-    console.error('Error fetching programs:', error);
     return { programs: [], error };
   }
 
@@ -59,7 +58,6 @@ export async function getProgramBySlug(slug: string, supabase?: SupabaseClient) 
     .single();
 
   if (error) {
-    console.error('Error fetching program:', error);
     return { program: null, error };
   }
 
@@ -83,7 +81,6 @@ export async function getProgramsByFunding(
     .order('name');
 
   if (error) {
-    console.error('Error fetching programs by funding:', error);
     return { programs: [], error };
   }
 
@@ -104,7 +101,6 @@ export async function getETPLPrograms(supabase?: SupabaseClient) {
     .order('name');
 
   if (error) {
-    console.error('Error fetching ETPL programs:', error);
     return { programs: [], error };
   }
 
@@ -125,7 +121,6 @@ export async function searchPrograms(query: string, supabase?: SupabaseClient) {
     .order('name');
 
   if (error) {
-    console.error('Error searching programs:', error);
     return { programs: [], error };
   }
 
@@ -144,7 +139,6 @@ export async function getProgramCount(supabase?: SupabaseClient) {
     .eq('active', true);
 
   if (error) {
-    console.error('Error counting programs:', error);
     return { count: 0, error };
   }
 
@@ -173,7 +167,6 @@ export async function getProgramsWithCourses(supabase?: SupabaseClient) {
     .order('name');
 
   if (error) {
-    console.error('Error fetching programs with courses:', error);
     return { programs: [], error };
   }
 

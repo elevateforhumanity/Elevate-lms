@@ -144,7 +144,6 @@ class SubscriptionManager {
         SUBSCRIPTION_PLANS[planId].stripe_monthly_price_id = monthlyPrice.id;
         SUBSCRIPTION_PLANS[planId].stripe_yearly_price_id = yearlyPrice.id;
       } catch (error) {
-        console.error(`❌ Failed to create ${plan.name}:`, error.message);
       }
     }
   }
@@ -188,7 +187,6 @@ class SubscriptionManager {
 
       return { url: session.url, session_id: session.id };
     } catch (error) {
-      console.error('Subscription creation error:', error);
       throw error;
     }
   }

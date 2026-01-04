@@ -147,7 +147,6 @@ function updateRobotsTxt() {
 
     fs.writeFileSync('robots.txt', robots);
   } catch (error) {
-    console.error('⚠️  Could not update robots.txt:', error.message);
   }
 }
 

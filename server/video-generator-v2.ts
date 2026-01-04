@@ -165,7 +165,6 @@ export async function generateVideo(
       progress: 100,
     };
   } catch (error) {
-    console.error(`Video generation failed for job ${jobId}:`, error);
 
     // Clean up on error
     await cleanupTempFiles(tempDir).catch(() => {});

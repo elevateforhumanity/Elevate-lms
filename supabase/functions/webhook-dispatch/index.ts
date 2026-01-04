@@ -82,7 +82,6 @@ async function sendWebhook(
     };
   } catch (error: any) {
     const responseTime = Date.now() - startTime;
-    console.error(`Webhook send error (${webhook.url}):`, error);
     return {
       success: false,
       error: error.message,
@@ -112,7 +111,6 @@ async function logWebhookDelivery(
       response_time_ms: result.responseTime,
     });
   } catch (error) {
-    console.error('Failed to log webhook delivery:', error);
   }
 }
 
@@ -167,7 +165,6 @@ async function dispatchWebhook(event: string, data: any, orgId: string) {
       results,
     };
   } catch (error: any) {
-    console.error('Webhook dispatch error:', error);
     throw error;
   }
 }
@@ -230,7 +227,6 @@ async function processWebhookQueue() {
 
     return { processed };
   } catch (error: any) {
-    console.error('Queue processing error:', error);
     throw error;
   }
 }
@@ -285,7 +281,6 @@ async function retryFailedWebhooks() {
 
     return { retried };
   } catch (error: any) {
-    console.error('Retry processing error:', error);
     throw error;
   }
 }
@@ -341,7 +336,6 @@ serve(async (req) => {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error: any) {
-    console.error('Webhook dispatch error:', error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

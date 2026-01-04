@@ -70,7 +70,6 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (error) {
-      console.error('Error saving SSN verification:', error);
       return NextResponse.json(
         { error: 'Failed to save verification' },
         { status: 500 }
@@ -93,7 +92,6 @@ export async function POST(request: NextRequest) {
       verification_id: verification.id,
     });
   } catch (error) {
-    console.error('SSN verification error:', error);
     return NextResponse.json(
       { error: 'Verification failed. Please try again.' },
       { status: 500 }

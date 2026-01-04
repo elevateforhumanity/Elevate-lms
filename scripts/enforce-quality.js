@@ -42,8 +42,6 @@ FORBIDDEN_PHRASES.forEach((phrase) => {
       { encoding: 'utf-8' }
     );
     if (result.trim()) {
-      console.error(`   ❌ Found forbidden phrase: "${phrase}"`);
-      console.error(`      ${result.split('\n')[0]}`);
       errors++;
     }
   } catch (e) {
@@ -59,7 +57,6 @@ VAGUE_CTAS.forEach((cta) => {
       { encoding: 'utf-8' }
     );
     if (result.trim()) {
-      console.error(`   ❌ Found vague CTA: "${cta}"`);
       errors++;
     }
   } catch (e) {}
@@ -73,7 +70,6 @@ GENERIC_TITLES.forEach((title) => {
       { encoding: 'utf-8' }
     );
     if (result.trim()) {
-      console.error(`   ❌ Found generic title pattern: "${title}"`);
       errors++;
     }
   } catch (e) {}
@@ -87,7 +83,6 @@ try {
   );
   const count = parseInt(result.trim());
   if (count > 0) {
-    console.error(`   ❌ Found ${count} gradient overlays (forbidden)`);
     errors++;
   }
 } catch (e) {}
@@ -100,7 +95,6 @@ try {
   );
   const count = parseInt(result.trim());
   if (count > 50) {
-    console.error(
       `   ⚠️  Warning: ${count} images potentially missing alt text`
     );
   }
@@ -108,8 +102,6 @@ try {
 
 // Summary
 if (errors > 0) {
-  console.error(`\n❌ QUALITY CHECK FAILED: ${errors} violations found\n`);
-  console.error('Fix these issues before committing.\n');
   process.exit(1);
 } else {
   process.exit(0);

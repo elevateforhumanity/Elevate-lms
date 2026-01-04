@@ -92,7 +92,6 @@ function cleanLegacySitemaps(allowedBasenames) {
       try {
         fs.unlinkSync(path.join(dir, f));
       } catch (e) {
-        console.warn(`[sitemaps] Could not remove ${f}:`, e.message);
       }
     }
   });

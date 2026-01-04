@@ -87,7 +87,6 @@ export async function generateTextToSpeech(
 
     return buffer;
   } catch (error) {
-    console.error('TTS generation error:', error);
     throw new Error(
       `Failed to generate speech: ${error instanceof Error ? error.message : 'Unknown error'}`
     );
@@ -117,7 +116,6 @@ export async function generateAndSaveAudio(
 
     return outputPath;
   } catch (error) {
-    console.error('Error saving audio:', error);
     throw error;
   }
 }
@@ -150,7 +148,6 @@ export async function generateMultipleAudio(
 
     return audioPaths;
   } catch (error) {
-    console.error('Error generating multiple audio files:', error);
     throw error;
   }
 }
@@ -229,7 +226,6 @@ export async function testTTSService(): Promise<boolean> {
   try {
     const validation = validateTTSConfig();
     if (!validation.valid) {
-      console.error('TTS validation failed:', validation.error);
       return false;
     }
 
@@ -242,7 +238,6 @@ export async function testTTSService(): Promise<boolean> {
 
     return false;
   } catch (error) {
-    console.error('❌ espeak-ng TTS service test failed:', error);
     return false;
   }
 }

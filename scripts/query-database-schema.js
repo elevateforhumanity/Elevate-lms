@@ -6,8 +6,6 @@ const supabaseUrl = 'https://cuxzzpsyufcewtmicszk.supabase.co';
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!supabaseKey) {
-  console.error('❌ SUPABASE_SERVICE_ROLE_KEY environment variable required');
-  console.error('\nGet it from: https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/settings/api');
   process.exit(1);
 }
 
@@ -30,7 +28,6 @@ async function querySchema() {
     }
 
   } catch (error) {
-    console.error('❌ Error:', error.message);
   }
 }
 

@@ -51,8 +51,6 @@ const COMPLETE_FILE = path.join(OUTPUT_DIR, 'VERCEL_CLEANUP_COMPLETE.md');
 async function main() {
 
   if (!VERCEL_EMAIL || !VERCEL_PASSWORD) {
-    console.error('❌ Missing credentials!');
-    console.error(
       'Set: VERCEL_EMAIL and VERCEL_PASSWORD environment variables'
     );
     process.exit(1);
@@ -93,8 +91,6 @@ async function main() {
     await createSafeToDeleteFile(safeToDelete, projectEnvVars);
 
     if (!safeToDelete.safe) {
-      console.error('\n❌ NOT SAFE TO DELETE!');
-      console.error('Missing variables in fix2-1c7w:');
       safeToDelete.missing.forEach((v) => console.error(`  - ${v}`));
         '\n⚠️  Please add missing variables manually before deleting projects.'
       );
@@ -120,7 +116,6 @@ async function main() {
       '\nNext: Monitor deployment at https://vercel.com/gitpod/fix2-1c7w'
     );
   } catch (error) {
-    console.error('\n❌ Error:', error.message);
     await page.screenshot({ path: 'vercel-error.png' });
     throw error;
   } finally {
@@ -308,6 +303,5 @@ async function createCompletionReport(
 
 // Run the automation
 main().catch((error) => {
-  console.error('Fatal error:', error);
   process.exit(1);
 });

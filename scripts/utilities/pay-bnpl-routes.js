@@ -86,7 +86,6 @@ router.get('/api/bnpl/plans/:programSlug', async (req, res) => {
 
     res.json({ plans, program });
   } catch (error) {
-    console.error('BNPL plans error:', error);
     res.status(500).json({ error: 'Failed to load payment plans' });
   }
 });
@@ -221,7 +220,6 @@ router.post('/api/bnpl/checkout', async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('BNPL checkout error:', error);
     res.status(500).json({ error: 'Failed to create payment plan' });
   }
 });
@@ -257,7 +255,6 @@ router.get('/api/bnpl/subscriptions/:customerEmail', async (req, res) => {
 
     res.json({ subscriptions: enrichedSubscriptions });
   } catch (error) {
-    console.error('BNPL subscriptions error:', error);
     res.status(500).json({ error: 'Failed to load subscriptions' });
   }
 });
@@ -285,7 +282,6 @@ router.post('/api/bnpl/cancel/:subscriptionId', async (req, res) => {
 
     res.json({ success: true, message: 'Subscription canceled successfully' });
   } catch (error) {
-    console.error('BNPL cancel error:', error);
     res.status(500).json({ error: 'Failed to cancel subscription' });
   }
 });

@@ -125,7 +125,6 @@ export async function getStudentProgressList(
     .order('updated_at', { ascending: false });
 
   if (error) {
-    console.error('Error fetching student progress:', error);
     return [];
   }
 
@@ -171,7 +170,6 @@ export async function getProgramMetrics(
     .eq('organization_id', orgId);
 
   if (error) {
-    console.error('Error fetching program metrics:', error);
     return [];
   }
 
@@ -224,7 +222,6 @@ export async function getUserNotifications(userId: string, limit: number = 10) {
     .limit(limit);
 
   if (error) {
-    console.error('Error fetching notifications:', error);
     return [];
   }
 
@@ -246,7 +243,6 @@ export async function getUpcomingAppointments(studentId: string) {
     .limit(5);
 
   if (error) {
-    console.error('Error fetching appointments:', error);
     return [];
   }
 
@@ -270,7 +266,6 @@ export async function getStudentActivity(
     .limit(limit);
 
   if (error) {
-    console.error('Error fetching student activity:', error);
     return [];
   }
 
@@ -298,7 +293,6 @@ export async function getStudentFunding(enrollmentId: string) {
     .eq('enrollment_id', enrollmentId);
 
   if (error) {
-    console.error('Error fetching student funding:', error);
     return [];
   }
 
@@ -326,7 +320,6 @@ export async function getProgramCompletionStats(programId: string) {
     .eq('program_id', programId);
 
   if (error) {
-    console.error('Error fetching completion stats:', error);
     return {
       totalEnrolled: 0,
       completed: 0,

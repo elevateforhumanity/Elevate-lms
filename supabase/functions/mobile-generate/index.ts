@@ -101,7 +101,6 @@ serve(async (req) => {
       .single();
 
     if (appError) {
-      console.error('Failed to create mobile app:', appError);
       return new Response(appError.message, { status: 500 });
     }
 
@@ -121,7 +120,6 @@ serve(async (req) => {
       .upload(`templates/${org_id}/app.json`, templateBlob, { upsert: true });
 
     if (uploadError) {
-      console.error('Failed to upload template:', uploadError);
     }
 
     // Trigger EAS build webhook if configured
@@ -155,7 +153,6 @@ serve(async (req) => {
       }
     );
   } catch (error) {
-    console.error('Mobile generation error:', error);
     return new Response(`Error: ${error.message}`, { status: 500 });
   }
 });

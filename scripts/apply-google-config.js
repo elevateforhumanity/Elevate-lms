@@ -93,7 +93,6 @@ function processFile(filePath) {
       return false;
     }
   } catch (error) {
-    console.error(
       `❌ Error processing ${path.basename(filePath)}: ${error.message}`
     );
     return false;

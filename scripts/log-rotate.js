@@ -32,7 +32,6 @@ for (const f of fs.readdirSync(logDir)) {
     fs.writeFileSync(gz, zlib.gzipSync(buf));
     fs.unlinkSync(full);
   } catch (e) {
-    console.warn('[log-rotate] failed', f, e.message);
   }
 }
 

@@ -53,7 +53,6 @@ class VideoGenerator {
         duration: duration,
       };
     } catch (error) {
-      console.error('Script generation error:', error);
       return { success: false, error: error.message };
     }
   }
@@ -80,7 +79,6 @@ class VideoGenerator {
         thumbnailUrl: data.data[0].url,
       };
     } catch (error) {
-      console.error('Thumbnail generation error:', error);
       return { success: false, error: error.message };
     }
   }

@@ -42,7 +42,6 @@ serve(async (req) => {
       .limit(10);
 
     if (fetchError) {
-      console.error('Failed to fetch jobs:', fetchError);
       return new Response(JSON.stringify({ error: fetchError.message }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
@@ -74,7 +73,6 @@ serve(async (req) => {
       }
     );
   } catch (error) {
-    console.error('Orchestrator error:', error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
@@ -126,7 +124,6 @@ async function processJob(job: EnrollmentJob, supabase: any) {
 
     return { job_id: job.id, status: 'completed' };
   } catch (error) {
-    console.error(`Job ${job.id} failed:`, error);
 
     const shouldRetry = job.attempt_count + 1 < job.max_attempts;
 

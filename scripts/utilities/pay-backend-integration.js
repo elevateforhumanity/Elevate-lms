@@ -88,7 +88,6 @@ async function markPaidInSupabase({
     );
 
     if (enrollError) {
-      console.error('Failed to update enrollment:', enrollError);
       return false;
     }
 
@@ -101,7 +100,6 @@ async function markPaidInSupabase({
     });
 
     if (paymentError) {
-      console.error('Failed to record payment:', paymentError);
       // Don't return false here - enrollment is more important than payment record
     }
 
@@ -122,7 +120,6 @@ async function markPaidInSupabase({
 
     return true;
   } catch (error) {
-    console.error('Error marking paid in Supabase:', error);
     return false;
   }
 }

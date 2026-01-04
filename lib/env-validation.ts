@@ -108,7 +108,6 @@ if (typeof window === 'undefined') {
     validateRequiredEnv();
   } catch (error) {
     if (process.env.NODE_ENV !== 'test') {
-      console.error(error);
       // Don't throw during build - let it fail gracefully
       if (process.env.npm_lifecycle_event !== 'build') {
         throw error;

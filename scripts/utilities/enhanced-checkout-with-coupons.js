@@ -33,8 +33,6 @@ if (typeof window === 'undefined' && typeof require !== 'undefined') {
     // Start the actual server
     require('./server.js');
   } catch (error) {
-    console.error('❌ Failed to start server:', error.message);
-    console.error('Stack trace:', error.stack);
     process.exit(1);
   }
 

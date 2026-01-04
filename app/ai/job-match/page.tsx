@@ -21,7 +21,6 @@ export default function AIJobMatchPage() {
       const data = await response.json();
       setMatches(data.matches || []);
     } catch (error: unknown) {
-      console.error('Error matching jobs:', error);
     } finally {
       setLoading(false);
     }

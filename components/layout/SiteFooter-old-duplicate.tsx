@@ -344,7 +344,6 @@ export default function SiteFooter() {
       </footer>
     );
   } catch (error: unknown) {
-    console.error('SiteFooter render failed:', error);
     // Fallback minimal footer
     return (
       <footer className="bg-white text-black border-t border-gray-200 py-8">

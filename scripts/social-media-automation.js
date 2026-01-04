@@ -218,7 +218,6 @@ class SocialMediaAutomation {
         url: `https://facebook.com/${response.data.id}`,
       };
     } catch (error) {
-      console.error(`❌ Facebook ${pageConfig.name} error:`, error.message);
       return { status: 'error', error: error.message };
     }
   }
@@ -259,7 +258,6 @@ class SocialMediaAutomation {
         url: `${this.config.youtube.channelUrl}/community`,
       };
     } catch (error) {
-      console.error('❌ YouTube error:', error.message);
       return { status: 'error', error: error.message };
     }
   }
@@ -318,7 +316,6 @@ class SocialMediaAutomation {
         url: `${this.config.linkedin.companyUrl}/posts/${response.data.id}`,
       };
     } catch (error) {
-      console.error('❌ LinkedIn error:', error.message);
       return { status: 'error', error: error.message };
     }
   }
@@ -358,7 +355,6 @@ class SocialMediaAutomation {
         url: `${this.config.durable.blogUrl}/${response.data.slug}`,
       };
     } catch (error) {
-      console.error('❌ Durable Blog error:', error.message);
       return { status: 'error', error: error.message };
     }
   }
@@ -393,7 +389,6 @@ class SocialMediaAutomation {
 
       return { status: 'success', response: response.data };
     } catch (error) {
-      console.error('❌ Zapier webhook error:', error.message);
       return { status: 'error', error: error.message };
     }
   }

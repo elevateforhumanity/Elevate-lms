@@ -38,7 +38,6 @@ export const trackResourceTiming = () => {
     const slowResources = resources.filter((r: any) => r.duration > 1000);
 
     if (slowResources.length > 0) {
-      console.warn('Slow resources detected:', slowResources);
     }
 
     return {

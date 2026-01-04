@@ -97,7 +97,6 @@ export default function AIStudioPage() {
       setGeneratedAssets([newAsset, ...generatedAssets]);
       setPrompt('');
     } catch (error) {
-      console.error('Generation error:', error);
       alert(
         error instanceof Error ? error.message : 'Failed to generate asset'
       );

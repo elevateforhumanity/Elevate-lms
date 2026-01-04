@@ -52,7 +52,6 @@ serve(async (req) => {
     // Verify authentication
     const sig = req.headers.get('x-autopilot-sign') || '';
     if (sig !== AUTOPILOT_SECRET) {
-      console.error('Unauthorized request - invalid signature');
       return new Response(
         JSON.stringify({ ok: false, error: 'unauthorized' }),
         {
@@ -87,7 +86,6 @@ serve(async (req) => {
       });
 
       if (error) {
-        console.error('Database error:', error);
         throw error;
       }
 
@@ -116,7 +114,6 @@ serve(async (req) => {
         .limit(1);
 
       if (error) {
-        console.error('Database health check failed:', error);
         return new Response(
           JSON.stringify({
             ok: false,
@@ -152,7 +149,6 @@ serve(async (req) => {
       }
     );
   } catch (e) {
-    console.error('Unexpected error:', e);
     return new Response(
       JSON.stringify({
         ok: false,

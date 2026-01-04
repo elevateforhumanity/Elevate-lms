@@ -344,7 +344,6 @@
       if (WIDGETS[type]) {
         WIDGETS[type](container, options);
       } else {
-        console.error(`EFH Widget: Unknown widget type "${type}"`);
         container.innerHTML = `<p style="color: red;">Error: Unknown widget type "${type}"</p>`;
       }
     });

@@ -109,7 +109,6 @@ app.post('/api/create-checkout-session', async (req, res) => {
 
     res.json({ url: session.url });
   } catch (error) {
-    console.error('Checkout error:', error);
     res.status(500).json({ error: 'Failed to create checkout session' });
   }
 });
@@ -165,7 +164,6 @@ app.post(
         );
 
       } catch (error) {
-        console.error('License generation error:', error);
       }
     }
 

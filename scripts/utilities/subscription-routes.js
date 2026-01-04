@@ -92,7 +92,6 @@ router.post('/api/subscription/checkout', async (req, res) => {
     );
     res.json(result);
   } catch (error) {
-    console.error('Subscription checkout error:', error);
     res.status(500).json({ error: 'Failed to create subscription' });
   }
 });

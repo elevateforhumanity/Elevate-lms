@@ -115,7 +115,6 @@ approvals.post('/api/approvals/request', async (req, res) => {
 
     res.json({ ok: true, message: 'Approval request sent to case manager' });
   } catch (e) {
-    console.error('Approval request error:', e);
     res.status(500).json({ ok: false, error: e.message });
   }
 });
@@ -187,7 +186,6 @@ async function handleDecision(req, res, decision) {
       <p>The request for <strong>${payload.student_email}</strong> to join <strong>${payload.program_slug}</strong> has been declined.</p>
     `);
   } catch (e) {
-    console.error('Decision handling error:', e);
     return res.status(400).send('Invalid or expired approval link.');
   }
 }
@@ -219,7 +217,6 @@ async function markEnrollmentActive({ student_email, program_slug }) {
       `✅ Enrollment activated via approval: ${program_slug} for ${student_email}`
     );
   } catch (e) {
-    console.error('Failed to mark enrollment active:', e);
   }
 }
 
@@ -240,7 +237,6 @@ async function addFundingNote(student_email, noteData) {
       });
     }
   } catch (e) {
-    console.error('Failed to add funding note:', e);
   }
 }
 

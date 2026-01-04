@@ -78,7 +78,6 @@ function main() {
 
   // Validate required options
   if (!options.licensee || !options.domain) {
-    console.error(`
 Usage: node generate-license.js [options]
 
 Required:
@@ -182,7 +181,6 @@ LICENSE_FEATURES=${licenseData.features.join(',')}
     fs.writeFileSync(envPath, envTemplate);
 
   } catch (error) {
-    console.error('❌ Error generating license:', error.message);
     process.exit(1);
   }
 }

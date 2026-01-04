@@ -83,7 +83,6 @@ export default function ApplyFormClient() {
         }, 5000);
       }
     } catch (error: unknown) {
-      console.error('Inquiry submission error:', error);
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
     }

@@ -39,7 +39,6 @@ export function useOnboarding(userId: string, userRole: 'student' | 'instructor'
       if (!response.ok) throw new Error('Failed to start onboarding');
       return true;
     } catch (err) {
-      console.error('Error starting onboarding:', err);
       return false;
     }
   };
@@ -58,7 +57,6 @@ export function useOnboarding(userId: string, userRole: 'student' | 'instructor'
       setRecommendedFlows(flows => flows.filter(f => f.id !== flowId));
       return true;
     } catch (err) {
-      console.error('Error completing onboarding:', err);
       return false;
     }
   };
@@ -77,7 +75,6 @@ export function useOnboarding(userId: string, userRole: 'student' | 'instructor'
       setRecommendedFlows(flows => flows.filter(f => f.id !== flowId));
       return true;
     } catch (err) {
-      console.error('Error skipping onboarding:', err);
       return false;
     }
   };

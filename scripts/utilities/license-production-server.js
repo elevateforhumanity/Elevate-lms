@@ -97,7 +97,6 @@ app.post('/api/generate-license', async (req, res) => {
       ),
     });
   } catch (error) {
-    console.error('License generation error:', error);
     res.status(500).json({ error: 'Failed to generate license' });
   }
 });
@@ -113,7 +112,6 @@ app.post('/api/validate-license', (req, res) => {
     const validation = validateTieredLicense(licenseKey, requestedFeature);
     res.json(validation);
   } catch (error) {
-    console.error('License validation error:', error);
     res.status(500).json({ error: 'Failed to validate license' });
   }
 });
@@ -127,7 +125,6 @@ app.get('/api/urgency/:packageId', (req, res) => {
     const urgencyData = urgencyManager.getUrgencyData(packageId, visitorId);
     res.json(urgencyData);
   } catch (error) {
-    console.error('Urgency data error:', error);
     res.status(500).json({ error: 'Failed to get urgency data' });
   }
 });
@@ -138,7 +135,6 @@ app.get('/api/sales-dashboard', (req, res) => {
     const dashboard = urgencyManager.getSalesDashboard();
     res.json(dashboard);
   } catch (error) {
-    console.error('Sales dashboard error:', error);
     res.status(500).json({ error: 'Failed to get sales dashboard' });
   }
 });

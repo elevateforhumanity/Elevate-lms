@@ -15,7 +15,6 @@ async function runSqlFile(client: Client, filePath: string) {
 async function main() {
   const dbUrl = process.env.SUPABASE_DB_URL;
   if (!dbUrl) {
-    console.error('❌ SUPABASE_DB_URL is not set in .env.local');
     process.exit(1);
   }
 
@@ -65,8 +64,6 @@ async function main() {
           await client.query('COMMIT');
         } catch (err) {
           await client.query('ROLLBACK');
-          console.error(`❌ Failed on: ${file}`);
-          console.error(err);
           process.exit(1);
         }
       }
@@ -86,6 +83,5 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error('❌ db-setup failed', err);
   process.exit(1);
 });

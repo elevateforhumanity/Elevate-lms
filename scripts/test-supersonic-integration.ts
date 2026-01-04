@@ -11,7 +11,6 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 if (!supabaseUrl || !supabaseServiceKey) {
-  console.error('❌ Missing Supabase credentials');
   process.exit(1);
 }
 
@@ -26,13 +25,11 @@ async function testDatabaseConnection() {
       .limit(1);
 
     if (error) {
-      console.error('❌ Database connection failed:', error.message);
       return false;
     }
 
     return true;
   } catch (error) {
-    console.error('❌ Database connection error:', error);
     return false;
   }
 }
@@ -60,7 +57,6 @@ async function testAppointmentsTable() {
       .single();
 
     if (error) {
-      console.error('❌ Appointments table error:', error.message);
       return false;
     }
 
@@ -72,7 +68,6 @@ async function testAppointmentsTable() {
 
     return true;
   } catch (error) {
-    console.error('❌ Appointments table error:', error);
     return false;
   }
 }
@@ -97,7 +92,6 @@ async function testTaxDocumentsTable() {
       .single();
 
     if (error) {
-      console.error('❌ Tax documents table error:', error.message);
       return false;
     }
 
@@ -109,7 +103,6 @@ async function testTaxDocumentsTable() {
 
     return true;
   } catch (error) {
-    console.error('❌ Tax documents table error:', error);
     return false;
   }
 }
@@ -120,20 +113,17 @@ async function testStorageBucket() {
     const { data: buckets, error } = await supabase.storage.listBuckets();
 
     if (error) {
-      console.error('❌ Storage bucket error:', error.message);
       return false;
     }
 
     const documentsBucket = buckets?.find(b => b.id === 'documents');
 
     if (!documentsBucket) {
-      console.error('❌ Documents bucket not found');
       return false;
     }
 
     return true;
   } catch (error) {
-    console.error('❌ Storage bucket error:', error);
     return false;
   }
 }
@@ -143,12 +133,10 @@ async function testEmailConfiguration() {
   const resendKey = process.env.RESEND_API_KEY;
 
   if (!resendKey) {
-    console.error('❌ RESEND_API_KEY not configured');
     return false;
   }
 
   if (!resendKey.startsWith('re_')) {
-    console.error('❌ Invalid RESEND_API_KEY format');
     return false;
   }
 

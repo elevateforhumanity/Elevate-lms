@@ -42,7 +42,6 @@ async function notifySlack(text: string) {
       body: JSON.stringify({ text }),
     });
   } catch (e) {
-    console.error('Slack notification failed:', e);
   }
 }
 
@@ -99,7 +98,6 @@ async function scheduleChildren() {
       );
     }
   } catch (e: any) {
-    console.error('Error scheduling children:', e);
   }
 }
 

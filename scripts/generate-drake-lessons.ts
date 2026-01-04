@@ -231,7 +231,6 @@ Return as JSON array with this structure:
     const quizContent = quizCompletion.choices[0].message.content || '[]';
     quizQuestions = JSON.parse(quizContent);
   } catch (e) {
-    console.error('Failed to parse quiz questions:', e);
     quizQuestions = [];
   }
 
@@ -269,14 +268,12 @@ async function generateAllLessons() {
           .insert(lessonData);
 
         if (error) {
-          console.error(`Error inserting lesson ${lessonNumber}:`, error);
         } else {
         }
 
         // Rate limiting - wait 2 seconds between API calls
         await new Promise((resolve) => setTimeout(resolve, 2000));
       } catch (error) {
-        console.error(`Error generating lesson ${lessonNumber}:`, error);
       }
     }
   }

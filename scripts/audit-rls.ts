@@ -20,8 +20,6 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!supabaseUrl || !serviceRoleKey) {
-  console.error('❌ Missing Supabase credentials');
-  console.error('Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY');
   process.exit(1);
 }
 
@@ -240,6 +238,5 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error('Audit failed:', error);
   process.exit(1);
 });

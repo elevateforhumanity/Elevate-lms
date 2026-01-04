@@ -101,7 +101,6 @@ coupons.post('/api/coupons/validate', async (req, res) => {
       discounted_cents,
     });
   } catch (e) {
-    console.error('Coupon validation error:', e);
     res.status(500).json({ valid: false, reason: e.message });
   }
 });
@@ -127,7 +126,6 @@ export async function incrementCouponUsage(couponCode) {
         .eq('id', coupon.id);
     }
   } catch (e) {
-    console.error('Failed to increment coupon usage:', e);
   }
 }
 

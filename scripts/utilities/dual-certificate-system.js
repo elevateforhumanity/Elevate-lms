@@ -153,7 +153,6 @@ class DualCertificateSystem {
 
       return certificatePackage;
     } catch (error) {
-      console.error('Certificate generation error:', error);
       throw error;
     }
   }

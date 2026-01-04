@@ -35,7 +35,6 @@
     const container = document.getElementById('efh-embed');
 
     if (!container) {
-      console.warn('EFH Embed: Container #efh-embed not found');
       return;
     }
 
@@ -44,7 +43,6 @@
     const width = container.getAttribute('data-width') || '100%';
 
     if (!EMBEDDABLE_PAGES.includes(page)) {
-      console.error(
         `EFH Embed: Page "${page}" is not embeddable. Available: ${EMBEDDABLE_PAGES.join(', ')}`
       );
       container.innerHTML = `<p style="color: red;">Error: Page "${page}" not available for embedding.</p>`;
@@ -105,7 +103,6 @@
         loadExternalResources(wrapper);
       })
       .catch((error) => {
-        console.error('EFH Embed Error:', error);
         container.innerHTML =
           '<p style="color: red;">Failed to load content. Please try again later.</p>';
       });

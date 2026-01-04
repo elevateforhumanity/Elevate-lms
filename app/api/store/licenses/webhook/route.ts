@@ -87,7 +87,6 @@ export async function POST(request: NextRequest) {
                 validUntil: validUntil.toISOString(),
               });
             } catch (emailError) {
-              console.error('Failed to send welcome email:', emailError);
               // Don't fail the webhook - license is provisioned
             }
           }

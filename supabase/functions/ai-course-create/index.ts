@@ -212,7 +212,6 @@ Return ONLY valid JSON, no additional text.
 
     return JSON.parse(jsonText);
   } catch (error) {
-    console.error('Failed to parse AI response:', responseText);
     throw new Error('Failed to parse AI-generated course outline');
   }
 }
@@ -304,7 +303,6 @@ async function createCourseInDatabase(
 
     return course.id;
   } catch (error: any) {
-    console.error('Database creation error:', error);
     throw new Error(`Failed to create course in database: ${error.message}`);
   }
 }
@@ -360,7 +358,6 @@ serve(async (req) => {
       }
     );
   } catch (error: any) {
-    console.error('AI course creation error:', error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

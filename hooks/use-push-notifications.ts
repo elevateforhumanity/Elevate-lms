@@ -41,7 +41,6 @@ export function usePushNotifications(): UsePushNotificationsReturn {
           setState(permissionState);
         }
       } catch (error) {
-        console.error('[Push Hook] Init error:', error);
       } finally {
         setIsLoading(false);
       }
@@ -83,7 +82,6 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       const permissionState = await client.getPermissionState();
       setState(permissionState);
     } catch (error) {
-      console.error('[Push Hook] Subscribe error:', error);
       throw error;
     } finally {
       setIsLoading(false);
@@ -97,7 +95,6 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       const permissionState = await client.getPermissionState();
       setState(permissionState);
     } catch (error) {
-      console.error('[Push Hook] Unsubscribe error:', error);
       throw error;
     } finally {
       setIsLoading(false);
@@ -112,7 +109,6 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       setState(permissionState);
       return permission;
     } catch (error) {
-      console.error('[Push Hook] Request permission error:', error);
       throw error;
     } finally {
       setIsLoading(false);

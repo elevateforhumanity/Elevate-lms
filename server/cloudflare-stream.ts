@@ -146,7 +146,6 @@ export class CloudflareStreamService {
 
       return data.result;
     } catch (error) {
-      console.error('Error uploading to Cloudflare Stream:', error);
       throw error;
     }
   }
@@ -195,7 +194,6 @@ export class CloudflareStreamService {
 
       return data.result;
     } catch (error) {
-      console.error('Error uploading from URL to Cloudflare Stream:', error);
       throw error;
     }
   }
@@ -221,7 +219,6 @@ export class CloudflareStreamService {
 
       return data.result;
     } catch (error) {
-      console.error('Error getting video from Cloudflare Stream:', error);
       return null;
     }
   }
@@ -265,7 +262,6 @@ export class CloudflareStreamService {
         total: data.total,
       };
     } catch (error) {
-      console.error('Error listing videos from Cloudflare Stream:', error);
       return { videos: [], total: 0 };
     }
   }
@@ -286,13 +282,11 @@ export class CloudflareStreamService {
       const data = (await response.json()) as { success: boolean };
 
       if (!data.success) {
-        console.error(`Failed to delete video ${videoId}`);
         return false;
       }
 
       return true;
     } catch (error) {
-      console.error('Error deleting video from Cloudflare Stream:', error);
       return false;
     }
   }
@@ -330,7 +324,6 @@ export class CloudflareStreamService {
 
       return data.result;
     } catch (error) {
-      console.error('Error updating video metadata:', error);
       return null;
     }
   }
@@ -455,7 +448,6 @@ export class CloudflareStreamService {
       const data = (await response.json()) as { result?: any };
       return data.result;
     } catch (error) {
-      console.error('Error getting video analytics:', error);
       return null;
     }
   }
@@ -488,7 +480,6 @@ export class CloudflareStreamService {
       await new Promise((resolve) => setTimeout(resolve, pollInterval));
     }
 
-    console.error(`Video ${videoId} not ready after ${maxWaitTime}ms`);
     return false;
   }
 }

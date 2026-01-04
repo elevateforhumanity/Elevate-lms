@@ -94,7 +94,6 @@ class StripeProductsCreator {
         const created = await this.createProduct(product);
         createdProducts.push(created);
       } catch (error) {
-        console.error(`❌ Failed to create ${product.name}:`, error.message);
       }
     }
 

@@ -46,7 +46,6 @@ function wrapRouteWithErrorHandling(content: string): string {
     const wrappedBody = `
   try {${functionBody}
   } catch (error) {
-    console.error('API Error in ${method}:', error);
     return NextResponse.json(
       { error: 'An unexpected error occurred. Please try again.' },
       { status: 500 }

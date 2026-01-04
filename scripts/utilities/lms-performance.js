@@ -64,7 +64,6 @@ class LMSPerformanceMonitor {
 
     // Log slow requests
     if (duration > 1000) {
-      console.warn(`Slow LMS API call: ${entry.name} took ${duration}ms`);
     }
   }
 
@@ -102,7 +101,6 @@ class LMSPerformanceMonitor {
         });
       });
     } catch (error) {
-      console.error('Preload failed:', error);
     }
   }
 }

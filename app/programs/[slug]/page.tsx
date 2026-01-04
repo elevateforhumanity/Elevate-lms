@@ -19,7 +19,6 @@ async function loadProgram(slug: string): Promise<Program | null> {
       const data = JSON.parse(fileContent);
       return data as Program;
     } catch (error) {
-      console.error(`Error loading JSON for ${slug}:`, error);
     }
   }
 

@@ -80,6 +80,5 @@ async function walkAndCopy() {
 }
 
 walkAndCopy().catch((err) => {
-  console.error('[copy-static] Failed:', err);
   process.exit(1);
 });

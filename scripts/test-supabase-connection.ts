@@ -5,7 +5,6 @@ const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 if (!url || !anon) {
-  console.error('❌ Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY');
   process.exit(1);
 }
 
@@ -20,7 +19,6 @@ async function main() {
     .limit(5);
 
   if (error) {
-    console.error('❌ Error querying programs:', error.message);
   } else {
     console.table(programs);
   }
@@ -32,7 +30,6 @@ async function main() {
     .limit(5);
 
   if (courseErr) {
-    console.error('❌ Error querying courses:', courseErr.message);
   } else {
     console.table(courses);
   }
@@ -44,7 +41,6 @@ async function main() {
     .limit(5);
 
   if (productErr) {
-    console.error('❌ Error querying products:', productErr.message);
   } else {
     console.table(products);
   }
@@ -52,6 +48,5 @@ async function main() {
 }
 
 main().catch((e) => {
-  console.error('❌ Unexpected error:', e);
   process.exit(1);
 });

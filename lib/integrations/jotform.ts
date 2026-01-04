@@ -106,7 +106,6 @@ class JotFormIntegration {
       const data = await response.json();
       return data.content || [];
     } catch (error) {
-      console.error('JotForm get submissions error:', error);
       throw error;
     }
   }
@@ -133,7 +132,6 @@ class JotFormIntegration {
       const data = await response.json();
       return data.content;
     } catch (error) {
-      console.error('JotForm get submission error:', error);
       throw error;
     }
   }
@@ -273,7 +271,6 @@ class JotFormIntegration {
         throw new Error(`JotForm webhook creation error: ${response.statusText}`);
       }
     } catch (error) {
-      console.error('JotForm create webhook error:', error);
       throw error;
     }
   }

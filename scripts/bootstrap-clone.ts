@@ -26,7 +26,6 @@ function validateEnv() {
   const missing = requiredEnvVars.filter((key) => !process.env[key]);
 
   if (missing.length > 0) {
-    console.error('❌ Missing required environment variables:');
     missing.forEach((key) => console.error(`   - ${key}`));
     process.exit(1);
   }
@@ -60,7 +59,6 @@ async function bootstrap() {
 
     if (orgError) {
       if (orgError.code === '23505') {
-        console.error('❌ Organization slug already exists');
         process.exit(1);
       }
       throw orgError;
@@ -88,17 +86,6 @@ async function bootstrap() {
     if (existingUser) {
       userId = existingUser.id;
     } else {
-      console.error('❌ Admin user not found. Required user does not exist.');
-      console.error('');
-      console.error('Remediation steps:');
-      console.error(`  1. Create user account with email: ${adminEmail}`);
-      console.error('  2. Verify user can sign in');
-      console.error('  3. Re-run this bootstrap script');
-      console.error('');
-      console.error('To create user via Supabase Dashboard:');
-      console.error('  - Go to Authentication > Users');
-      console.error(`  - Add user with email: ${adminEmail}`);
-      console.error('  - Send invitation or set temporary password');
       process.exit(1);
     }
 
@@ -140,7 +127,6 @@ async function bootstrap() {
     if (subError) throw subError;
 
   } catch (error: any) {
-    console.error('\n❌ Bootstrap failed:', error.message);
     process.exit(1);
   }
 }

@@ -461,7 +461,6 @@ class EFHNotificationSystem {
         html,
       });
     } catch (error) {
-      console.error('❌ Email send failed:', error.message);
     }
   }
 
@@ -470,7 +469,6 @@ class EFHNotificationSystem {
       const dataPath = path.join(__dirname, 'revenue-data.json');
       fs.writeFileSync(dataPath, JSON.stringify(this.revenueData, null, 2));
     } catch (error) {
-      console.error('Error saving revenue data:', error.message);
     }
   }
 
@@ -500,7 +498,6 @@ class EFHNotificationSystem {
         `📱 SMS sent to ${this.notificationSettings.phone}: ${message.substring(0, 50)}...`
       );
     } catch (error) {
-      console.error('❌ SMS send failed:', error.message);
       // Fallback: log to console for debugging
     }
   }

@@ -236,7 +236,6 @@ class HealthCheckService {
         ],
       });
     } catch (error) {
-      console.error('Failed to send Slack alert:', error);
     }
   }
 
@@ -253,7 +252,6 @@ class HealthCheckService {
         timestamp: status.timestamp.toISOString(),
       });
     } catch (error) {
-      console.error('Failed to log health status:', error);
     }
   }
 
@@ -313,6 +311,5 @@ class HealthCheckService {
 // Run health checks
 const healthCheck = new HealthCheckService();
 healthCheck.runAllChecks().catch((error) => {
-  console.error('Health check failed:', error);
   process.exit(1);
 });

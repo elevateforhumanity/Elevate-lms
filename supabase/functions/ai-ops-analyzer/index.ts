@@ -91,7 +91,6 @@ serve(async (req) => {
       headers: corsHeaders,
     });
   } catch (e) {
-    console.error('AI Ops error:', e);
     return new Response(JSON.stringify({ ok: false, error: String(e) }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
@@ -406,7 +405,6 @@ async function generateInsights(): Promise<any> {
       );
       return enhancedInsights;
     } catch (e) {
-      console.error('OpenAI enhancement failed:', e);
     }
   }
 

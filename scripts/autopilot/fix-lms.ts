@@ -450,7 +450,6 @@ function isSkeleton(content: string): boolean {
 // Helpers
 function ensureAppDir() {
   if (!fs.existsSync(APP_DIR)) {
-    console.error('ERROR: app/ directory not found.');
     process.exit(1);
   }
 }

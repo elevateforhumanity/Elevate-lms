@@ -16,7 +16,6 @@ const DIST_DIR = path.join(__dirname, '..', 'dist');
 const OUT_DIR = path.join(DIST_DIR, 'prerender');
 
 if (!fs.existsSync(DIST_DIR)) {
-  console.error('Build output not found. Run `npm run build` first.');
   process.exit(1);
 }
 
@@ -82,7 +81,6 @@ const fetchHtml = (route) =>
       );
     }
   } catch (e) {
-    console.error('Prerender failed:', e);
     process.exitCode = 1;
   } finally {
     server.close();

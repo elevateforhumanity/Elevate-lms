@@ -52,7 +52,6 @@ class WorkflowTester {
       // Generate Test Report
       this.generateTestReport();
     } catch (error) {
-      console.error('❌ Workflow test failed:', error);
       this.recordTest('Complete Workflow', false, error.message);
     }
   }
@@ -104,7 +103,6 @@ class WorkflowTester {
 
       this.recordTest('Product Catalog Validation', true);
     } catch (error) {
-      console.error('❌ Product catalog validation failed:', error.message);
       this.recordTest('Product Catalog Validation', false, error.message);
     }
   }
@@ -139,7 +137,6 @@ class WorkflowTester {
 
       this.recordTest('Stripe Integration', true);
     } catch (error) {
-      console.error('❌ Stripe integration test failed:', error.message);
       this.recordTest('Stripe Integration', false, error.message);
     }
   }
@@ -167,7 +164,6 @@ class WorkflowTester {
 
       this.recordTest('Revenue Split Calculation', true);
     } catch (error) {
-      console.error('❌ Revenue split calculation test failed:', error.message);
       this.recordTest('Revenue Split Calculation', false, error.message);
     }
   }
@@ -220,7 +216,6 @@ class WorkflowTester {
 
       this.recordTest('Enrollment Process', true);
     } catch (error) {
-      console.error('❌ Enrollment process test failed:', error.message);
       this.recordTest('Enrollment Process', false, error.message);
     }
   }
@@ -269,7 +264,6 @@ class WorkflowTester {
 
       this.recordTest('Partner Integration', true);
     } catch (error) {
-      console.error('❌ Partner integration test failed:', error.message);
       this.recordTest('Partner Integration', false, error.message);
     }
   }
@@ -338,7 +332,6 @@ class WorkflowTester {
 
       this.recordTest('Certificate Generation', true);
     } catch (error) {
-      console.error('❌ Certificate generation test failed:', error.message);
       this.recordTest('Certificate Generation', false, error.message);
     }
   }
@@ -369,7 +362,6 @@ class WorkflowTester {
 
       this.recordTest('Complete End-to-End Flow', true);
     } catch (error) {
-      console.error('❌ Complete flow test failed:', error.message);
       this.recordTest('Complete End-to-End Flow', false, error.message);
     }
   }

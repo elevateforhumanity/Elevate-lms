@@ -141,7 +141,6 @@ export async function syncStudentMiladyProgress(
         }
       }
     } catch (error: unknown) {
-      console.error(
         `Failed to sync Milady enrollment ${miladyEnrollment.id}:`,
         error
       );

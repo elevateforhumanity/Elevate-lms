@@ -59,7 +59,6 @@ export default async function BookingPage() {
         setInstructors(data.instructors || []);
       }
     } catch (error: unknown) {
-      console.error('Failed to load instructors:', error);
       setInstructors([]);
     }
   };

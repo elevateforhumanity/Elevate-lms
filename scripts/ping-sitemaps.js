@@ -20,7 +20,6 @@ function ping(label, url) {
         });
       })
       .on('error', (e) => {
-        console.error(`[sitemap-ping] ${label} error:`, e.message);
         resolve({ label, error: e.message });
       });
   });
@@ -41,6 +40,5 @@ function ping(label, url) {
   const failed = results.filter((r) => r.status && r.status >= 400);
   if (failed.length) {
     process.exitCode = 1;
-    console.error('[sitemap-ping] Some pings returned non-200 status');
   }
 })();

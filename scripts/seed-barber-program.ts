@@ -19,8 +19,6 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY || SUPABASE_URL.includes('placeholder')) {
-  console.error('❌ Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
-  console.error('   Set these in .env.local or environment variables');
   process.exit(1);
 }
 
@@ -95,7 +93,6 @@ async function seedAIInstructors() {
       .upsert(instructor, { onConflict: 'id' });
 
     if (error) {
-      console.error(`   ❌ Failed to seed ${instructor.name}:`, error.message);
     } else {
     }
   }
@@ -119,7 +116,6 @@ async function seedProgram(programData: ProgramData) {
     .upsert(program, { onConflict: 'id' });
 
   if (error) {
-    console.error('   ❌ Failed to seed program:', error.message);
     throw error;
   }
 
@@ -140,7 +136,6 @@ async function seedModules(programData: ProgramData) {
     const moduleId = MODULE_IDS[module.short_code as keyof typeof MODULE_IDS];
 
     if (!moduleId) {
-      console.error(`   ❌ No UUID mapping for ${module.short_code}`);
       continue;
     }
 
@@ -170,7 +165,6 @@ async function seedModules(programData: ProgramData) {
       .insert(moduleRecord);
 
     if (error) {
-      console.error(`   ❌ Failed to seed ${module.short_code}:`, error.message);
     } else {
     }
   }
@@ -186,7 +180,6 @@ async function verifySeeding() {
     .single();
 
   if (programError || !program) {
-    console.error('   ❌ Program not found');
     return false;
   }
 
@@ -198,7 +191,6 @@ async function verifySeeding() {
     .order('order_index');
 
   if (modulesError || !modules) {
-    console.error('   ❌ Modules not found');
     return false;
   }
 
@@ -209,7 +201,6 @@ async function verifySeeding() {
     .in('id', [AI_INSTRUCTOR_ELIZABETH_ID, AI_INSTRUCTOR_BARBER_MENTOR_ID]);
 
   if (instructorsError || !instructors || instructors.length !== 2) {
-    console.error('   ❌ AI Instructors not found');
     return false;
   }
 
@@ -235,11 +226,9 @@ async function main() {
     if (success) {
       process.exit(0);
     } else {
-      console.error('\n❌ Verification failed. Check Supabase logs.');
       process.exit(1);
     }
   } catch (error) {
-    console.error('\n❌ Seed script failed:', error);
     process.exit(1);
   }
 }

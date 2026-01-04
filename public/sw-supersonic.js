@@ -132,7 +132,6 @@ async function syncTaxReturn() {
         });
       }
     } catch (error) {
-      console.error('Sync failed:', error);
     }
   }
 }
@@ -158,7 +157,6 @@ async function syncDocuments() {
         await db.delete('pending-documents', doc.id);
       }
     } catch (error) {
-      console.error('Document sync failed:', error);
     }
   }
 }

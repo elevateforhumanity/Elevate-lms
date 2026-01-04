@@ -9,7 +9,6 @@ async function runSeeds() {
   const connectionString = process.env.SUPABASE_DB_URL;
 
   if (!connectionString) {
-    console.error('❌ SUPABASE_DB_URL is not set in .env.local');
     process.exit(1);
   }
 
@@ -21,7 +20,6 @@ async function runSeeds() {
     const seedsDir = path.join(process.cwd(), 'supabase', 'seeds');
 
     if (!fs.existsSync(seedsDir)) {
-      console.error(`❌ Seeds folder not found: ${seedsDir}`);
       process.exit(1);
     }
 
@@ -46,14 +44,11 @@ async function runSeeds() {
         await client.query('COMMIT');
       } catch (err) {
         await client.query('ROLLBACK');
-        console.error(`❌ Seed failed: ${file}`);
-        console.error(err.message);
         process.exit(1);
       }
     }
 
   } catch (err) {
-    console.error('❌ Seed runner error:', err.message);
     process.exit(1);
   } finally {
     await client.end();

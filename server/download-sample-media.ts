@@ -18,7 +18,6 @@ async function downloadFile(url: string, outputPath: string): Promise<boolean> {
     const response = await fetch(url);
 
     if (!response.ok) {
-      console.error(`  ❌ Failed: ${response.statusText}`);
       return false;
     }
 
@@ -30,7 +29,6 @@ async function downloadFile(url: string, outputPath: string): Promise<boolean> {
 
     return true;
   } catch (error) {
-    console.error(
       `  ❌ Error: ${error instanceof Error ? error.message : 'Unknown error'}`
     );
     return false;
@@ -265,7 +263,6 @@ async function downloadSampleMedia() {
       '  import { localStockImages, localStockVideos } from "./stock-media-local"'
     );
   } catch (error) {
-    console.error('\n❌ Download failed:', error);
     throw error;
   }
 }
@@ -276,6 +273,5 @@ downloadSampleMedia()
     process.exit(0);
   })
   .catch((error) => {
-    console.error('Download failed:', error);
     process.exit(1);
   });

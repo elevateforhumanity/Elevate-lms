@@ -42,7 +42,6 @@ export async function createOrUpdateContact(
     );
 
     if (!searchResponse.ok) {
-      console.error('Salesforce search error:', searchResponse.status);
       return null;
     }
 
@@ -68,7 +67,6 @@ export async function createOrUpdateContact(
       );
 
       if (!updateResponse.ok) {
-        console.error('Salesforce update error:', updateResponse.status);
         return null;
       }
 
@@ -93,7 +91,6 @@ export async function createOrUpdateContact(
       );
 
       if (!createResponse.ok) {
-        console.error('Salesforce create error:', createResponse.status);
         return null;
       }
 
@@ -101,7 +98,6 @@ export async function createOrUpdateContact(
       return createData.id;
     }
   } catch (error: unknown) {
-    console.error('Error with Salesforce contact:', error);
     return null;
   }
 }
@@ -138,14 +134,12 @@ export async function createOpportunity(
     );
 
     if (!response.ok) {
-      console.error('Salesforce opportunity create error:', response.status);
       return null;
     }
 
     const responseData = await response.json();
     return responseData.id;
   } catch (error: unknown) {
-    console.error('Error creating Salesforce opportunity:', error);
     return null;
   }
 }

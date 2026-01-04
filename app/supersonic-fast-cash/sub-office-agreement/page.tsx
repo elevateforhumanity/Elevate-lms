@@ -68,7 +68,6 @@ export default function SubOfficeAgreementPage() {
         alert('Error signing agreement. Please try again.');
       }
     } catch (error) {
-      console.error('Error:', error);
       alert('Error signing agreement. Please try again.');
     }
   };

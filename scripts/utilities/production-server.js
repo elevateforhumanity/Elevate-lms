@@ -144,7 +144,6 @@ app.get('/*.html', (req, res) => {
 
 // Error handling
 app.use((error, req, res, next) => {
-  console.error('❌ Server error:', error);
   res.status(500).json({ error: 'Internal server error' });
 });
 

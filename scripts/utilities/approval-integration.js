@@ -17,7 +17,6 @@ function createSupabaseClient() {
   const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY;
 
   if (!supabaseUrl || !supabaseServiceKey) {
-    console.warn(
       'Supabase credentials not configured - approval system will be disabled'
     );
     return null;
@@ -102,7 +101,6 @@ async function handleDecision(req, res, decision) {
       <p>The request for <strong>${payload.student_email}</strong> to join <strong>${payload.program_slug}</strong> has been declined.</p>
     `);
   } catch (e) {
-    console.error('Decision handling error:', e);
     return res.status(400).send('Invalid or expired approval link.');
   }
 }
@@ -136,7 +134,6 @@ async function markEnrollmentActive({ student_email, program_slug }) {
       `✅ Enrollment activated via approval: ${program_slug} for ${student_email}`
     );
   } catch (e) {
-    console.error('Failed to mark enrollment active:', e);
   }
 }
 
@@ -159,7 +156,6 @@ async function addFundingNote(student_email, noteData) {
       });
     }
   } catch (e) {
-    console.error('Failed to add funding note:', e);
   }
 }
 
@@ -300,7 +296,6 @@ function registerApprovalRoutes(app) {
 
       res.json({ ok: true, message: 'Approval request sent to case manager' });
     } catch (e) {
-      console.error('Approval request error:', e);
       res.status(500).json({ ok: false, error: e.message });
     }
   });
@@ -354,7 +349,6 @@ function registerApprovalRoutes(app) {
 
       res.json(filtered || []);
     } catch (e) {
-      console.error('List approvals error:', e);
       res.status(500).json({ error: e.message });
     }
   });
@@ -442,7 +436,6 @@ function registerApprovalRoutes(app) {
 
       res.json({ ok: true, decision });
     } catch (e) {
-      console.error('Admin decision error:', e);
       res.status(500).json({ error: e.message });
     }
   });
@@ -475,7 +468,6 @@ function registerApprovalRoutes(app) {
         total: data?.length || 0,
       });
     } catch (e) {
-      console.error('Stats error:', e);
       res.status(500).json({ error: e.message });
     }
   });

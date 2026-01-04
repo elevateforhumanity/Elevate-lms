@@ -224,7 +224,6 @@ async function main() {
       .single();
 
     if (!provider) {
-      console.error(`Provider ${providerType} not found!`);
       continue;
     }
 
@@ -262,7 +261,6 @@ async function main() {
         .insert(batch);
 
       if (error) {
-        console.error(`Error importing batch:`, error);
       }
     }
 

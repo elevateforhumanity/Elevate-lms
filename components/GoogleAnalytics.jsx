@@ -21,7 +21,6 @@ export default function GoogleAnalytics() {
       try {
         setPathname(window.location.pathname);
       } catch (error) {
-        console.warn('Failed to get pathname:', error);
       }
     }
   }, [mounted]);
@@ -38,7 +37,6 @@ export default function GoogleAnalytics() {
         });
       }
     } catch (error) {
-      console.warn('GA tracking failed:', error);
     }
   }, [mounted, pathname]);
 
@@ -64,14 +62,12 @@ export default function GoogleAnalytics() {
                 page_path: window.location.pathname
               });
             } catch (e) {
-              console.warn('GA init failed:', e);
             }
           `}
         </Script>
       </>
     );
   } catch (error) {
-    console.warn('GoogleAnalytics render failed:', error);
     return null;
   }
 }

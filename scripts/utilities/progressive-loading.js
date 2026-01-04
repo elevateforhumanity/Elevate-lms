@@ -44,7 +44,6 @@ class ProgressiveLoader {
         // Small delay between loads to prevent blocking
         await this.delay(50);
       } catch (error) {
-        console.warn('Failed to load resource:', error);
       }
     }
   }

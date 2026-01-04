@@ -53,7 +53,6 @@ export async function verifyTableSchema(
     .order('ordinal_position');
 
   if (error) {
-    console.error('Schema verification error:', error);
     return {
       table: tableName,
       exists: true,

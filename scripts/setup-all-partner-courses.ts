@@ -6,7 +6,6 @@
 import Stripe from 'stripe';
 
 if (!process.env.STRIPE_SECRET_KEY) {
-  console.error('❌ STRIPE_SECRET_KEY not found in environment variables');
   process.exit(1);
 }
 
@@ -123,7 +122,6 @@ async function createProduct(item: any, providerKey: string) {
 
     return { product, price };
   } catch (error) {
-    console.error(`❌ Failed to create ${item.name}:`, error);
     return null;
   }
 }

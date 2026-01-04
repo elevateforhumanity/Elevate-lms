@@ -120,7 +120,6 @@ export class VideoGenerator {
         const img = await loadImage(scene.image);
         ctx.drawImage(img, 0, 0, dimensions.width, dimensions.height);
       } catch (error) {
-        console.error('Failed to load image:', error);
       }
     }
 

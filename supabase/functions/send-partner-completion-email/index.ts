@@ -168,7 +168,6 @@ async function sendEmail(body: RequestBody): Promise<Response> {
     }
 
     const errText = await sgRes.text();
-    console.error("SendGrid error:", sgRes.status, errText);
   }
 
   // Fall back to Resend
@@ -196,7 +195,6 @@ async function sendEmail(body: RequestBody): Promise<Response> {
     }
 
     const errText = await resendRes.text();
-    console.error("Resend error:", resendRes.status, errText);
   }
 
   return new Response("Email service not configured", { status: 500 });

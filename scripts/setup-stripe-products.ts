@@ -111,7 +111,6 @@ async function createStripeProducts() {
         amount: course.price / 100,
       });
     } catch (error: any) {
-      console.error(`❌ Error creating ${course.name}:`, error.message);
     }
   }
 
@@ -147,7 +146,6 @@ async function createStripeProducts() {
         amount: bundle.price / 100,
       });
     } catch (error: any) {
-      console.error(`❌ Error creating ${bundle.name}:`, error.message);
     }
   }
 
@@ -170,6 +168,5 @@ createStripeProducts()
     process.exit(0);
   })
   .catch((error) => {
-    console.error('❌ Setup failed:', error);
     process.exit(1);
   });

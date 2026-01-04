@@ -16,14 +16,12 @@ async function testVideoGeneration() {
   // Test 1: Validate TTS Configuration
   const ttsValidation = validateTTSConfig();
   if (!ttsValidation.valid) {
-    console.error('❌ TTS validation failed:', ttsValidation.error);
     return;
   }
 
   // Test 2: Test TTS Service
   const ttsTest = await testTTSService();
   if (!ttsTest) {
-    console.error('❌ TTS service test failed\n');
     return;
   }
 
@@ -53,7 +51,6 @@ async function testVideoGeneration() {
 
   const timelineValidation = processTimeline(testScenes);
   if (!timelineValidation.valid) {
-    console.error('❌ Timeline validation failed:', timelineValidation.errors);
     return;
   }
     `✅ Timeline valid (${timelineValidation.totalDuration}s total)\n`
@@ -63,7 +60,6 @@ async function testVideoGeneration() {
   try {
     await defaultStorage.initialize();
   } catch (error) {
-    console.error('❌ Storage initialization failed:', error);
     return;
   }
 
@@ -105,11 +101,8 @@ async function testVideoGeneration() {
       const videos = await defaultStorage.listVideos('test-user');
 
     } else {
-      console.error('❌ Video generation failed');
-      console.error(`   Error: ${result.error}`);
     }
   } catch (error) {
-    console.error('❌ Video generation error:', error);
   }
 }
 
@@ -120,7 +113,5 @@ testVideoGeneration()
     process.exit(0);
   })
   .catch((error) => {
-    console.error('');
-    console.error('Test failed with error:', error);
     process.exit(1);
   });

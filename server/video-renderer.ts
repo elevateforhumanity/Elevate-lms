@@ -306,7 +306,6 @@ export async function renderScene(
           resolve(outputPath);
         })
         .on('error', (err) => {
-          console.error(`Error rendering scene ${scene.id}:`, err);
           reject(err);
         })
         .run();
@@ -350,7 +349,6 @@ export async function concatenateVideos(
           resolve(outputPath);
         })
         .on('error', (err) => {
-          console.error('Error concatenating videos:', err);
           reject(err);
         })
         .run();
@@ -396,7 +394,6 @@ export async function addBackgroundMusic(
         resolve(outputPath);
       })
       .on('error', (err) => {
-        console.error('Error adding background music:', err);
         reject(err);
       })
       .run();
@@ -425,6 +422,5 @@ export async function cleanupTempFiles(tempDir: string): Promise<void> {
   try {
     await fs.rm(tempDir, { recursive: true, force: true });
   } catch (error) {
-    console.error('Error cleaning up temp files:', error);
   }
 }

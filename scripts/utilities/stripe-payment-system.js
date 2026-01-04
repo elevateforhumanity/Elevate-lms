@@ -132,7 +132,6 @@ class StripePaymentSystem {
         message: 'Emergency sale products created successfully!',
       });
     } catch (error) {
-      console.error('❌ Failed to create Stripe products:', error);
       res.status(500).json({
         success: false,
         error: error.message,
@@ -196,7 +195,6 @@ class StripePaymentSystem {
         expires_at: session.expires_at,
       });
     } catch (error) {
-      console.error('❌ Checkout creation failed:', error);
       res.status(500).json({
         success: false,
         error: error.message,
@@ -237,7 +235,6 @@ class StripePaymentSystem {
 
       res.json({ received: true });
     } catch (error) {
-      console.error('❌ Webhook error:', error);
       res.status(400).json({ error: error.message });
     }
   }
@@ -253,7 +250,6 @@ class StripePaymentSystem {
 
       return true;
     } catch (error) {
-      console.error('SMS alert failed:', error);
       return false;
     }
   }
@@ -285,7 +281,6 @@ class StripePaymentSystem {
 
       return true;
     } catch (error) {
-      console.error('Enrollment processing failed:', error);
       return false;
     }
   }

@@ -231,7 +231,6 @@ async function gradeSubjectiveQuestion(
       isCorrect: result.score >= question.points * 0.7, // 70% threshold
     };
   } catch (error: any) {
-    console.error('AI grading error:', error);
     // Return ungraded result
     return {
       questionId: question.id,
@@ -348,7 +347,6 @@ async function gradeSubmission(request: GradeRequest) {
       results: gradingResults,
     };
   } catch (error: any) {
-    console.error('Grading error:', error);
     throw error;
   }
 }
@@ -381,13 +379,11 @@ async function processGradingQueue() {
         });
         processed++;
       } catch (error) {
-        console.error(`Failed to grade submission ${submission.id}:`, error);
       }
     }
 
     return { processed };
   } catch (error: any) {
-    console.error('Queue processing error:', error);
     throw error;
   }
 }
@@ -450,7 +446,6 @@ serve(async (req) => {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error: any) {
-    console.error('AI grading error:', error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

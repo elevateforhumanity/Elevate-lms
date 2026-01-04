@@ -162,7 +162,6 @@ class EFHMonitor {
       this.metrics.errors = this.metrics.errors.slice(-500);
     }
 
-    console.error(`❌ Error Tracked: ${errorLog.message}`);
 
     // Alert on high error rate
     const recentErrors = this.metrics.errors.filter(
@@ -241,7 +240,6 @@ class EFHMonitor {
       });
 
     } catch (error) {
-      console.error('Failed to send notification:', error);
     }
   }
 
@@ -267,7 +265,6 @@ class EFHMonitor {
       });
 
     } catch (error) {
-      console.error('Failed to send alert:', error);
     }
   }
 

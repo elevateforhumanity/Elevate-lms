@@ -23,8 +23,6 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY || SUPABASE_URL.includes('placeholder')) {
-  console.error('❌ Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
-  console.error('   Set these in .env.local or environment variables');
   process.exit(1);
 }
 
@@ -81,7 +79,6 @@ async function seedProgram(fileName: string) {
         .upsert(instructor, { onConflict: 'id' });
 
       if (error) {
-        console.error(`   ❌ Failed to seed ${instructor.name}:`, error.message);
       } else {
       }
     }
@@ -92,7 +89,6 @@ async function seedProgram(fileName: string) {
       .upsert(programData.program, { onConflict: 'id' });
 
     if (programError) {
-      console.error('   ❌ Failed to seed program:', programError.message);
       throw programError;
     }
 
@@ -130,7 +126,6 @@ async function seedProgram(fileName: string) {
         .insert(moduleRecord);
 
       if (error) {
-        console.error(`   ❌ Failed to seed ${module.short_code}:`, error.message);
       } else {
       }
     }
@@ -144,7 +139,6 @@ async function seedProgram(fileName: string) {
       .single();
 
     if (verifyProgramError || !program) {
-      console.error('   ❌ Program not found');
       return false;
     }
 
@@ -155,7 +149,6 @@ async function seedProgram(fileName: string) {
       .order('order_index');
 
     if (verifyModulesError || !modules) {
-      console.error('   ❌ Modules not found');
       return false;
     }
 
@@ -165,14 +158,12 @@ async function seedProgram(fileName: string) {
       .in('id', programData.ai_instructors.map(i => i.id));
 
     if (verifyInstructorsError || !instructors || instructors.length !== programData.ai_instructors.length) {
-      console.error('   ❌ AI Instructors not found');
       return false;
     }
 
 
     return true;
   } catch (error) {
-    console.error('\n❌ Seed script failed:', error);
     return false;
   }
 }
@@ -181,21 +172,13 @@ async function main() {
   const args = process.argv.slice(2);
 
   if (args.length === 0) {
-    console.error('❌ ERROR: You must specify a program JSON file.');
-    console.error('\nUsage:');
-    console.error('  pnpm tsx scripts/seed-program.ts barber-apprenticeship-indiana.json');
-    console.error('  pnpm tsx scripts/seed-program.ts cna-certification.json');
-    console.error('  pnpm tsx scripts/seed-program.ts hvac-technician.json');
-    console.error('\nAvailable programs in data/programs/:');
 
     try {
       const fs = await import('fs');
       const files = fs.readdirSync(join(process.cwd(), 'data/programs'));
       files.filter(f => f.endsWith('.json')).forEach(f => {
-        console.error(`  - ${f}`);
       });
     } catch (e) {
-      console.error('  (Could not list files)');
     }
 
     process.exit(1);

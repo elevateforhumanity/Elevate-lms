@@ -94,7 +94,6 @@ serve(async (req) => {
     try {
       event = stripe.webhooks.constructEvent(body, signature, WEBHOOK_SECRET);
     } catch (err) {
-      console.error('Webhook signature verification failed:', err);
       return new Response(`Webhook Error: ${err.message}`, { status: 400 });
     }
 
@@ -129,7 +128,6 @@ serve(async (req) => {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {
-    console.error('Webhook handler error:', error);
     return new Response(`Error: ${error.message}`, { status: 500 });
   }
 });
@@ -147,7 +145,6 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
     .maybeSingle();
 
   if (findError || !billing) {
-    console.error('Org not found for customer:', customerId);
     return;
   }
 
@@ -176,7 +173,6 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
     });
 
   if (billingError) {
-    console.error('Failed to update billing:', billingError);
     throw billingError;
   }
 
@@ -191,7 +187,6 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
   });
 
   if (entError) {
-    console.error('Failed to update entitlements:', entError);
     throw entError;
   }
 
@@ -205,7 +200,6 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription) {
     .eq('id', orgId);
 
   if (orgError) {
-    console.error('Failed to update org tier:', orgError);
   }
 
 }

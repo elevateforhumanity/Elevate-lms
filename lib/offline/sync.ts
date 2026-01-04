@@ -80,7 +80,6 @@ export class SyncManager {
               //
             }
           } else {
-            console.error(
               `[Sync] Failed to sync progress:`,
               response.statusText
             );

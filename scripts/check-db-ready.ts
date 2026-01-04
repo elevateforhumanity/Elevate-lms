@@ -7,7 +7,6 @@ const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 if (!url || !key) {
-  console.error('❌ Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
   process.exit(1);
 }
 
@@ -22,7 +21,6 @@ async function main() {
     .limit(5);
 
   if (programsError) {
-    console.error('❌ Programs table not ready:', programsError.message);
   } else {
     console.table(programs);
   }
@@ -34,7 +32,6 @@ async function main() {
     .limit(5);
 
   if (coursesError) {
-    console.error('❌ Courses table not ready:', coursesError.message);
   } else {
     console.table(courses);
   }
@@ -46,7 +43,6 @@ async function main() {
     .limit(5);
 
   if (productsError) {
-    console.error('❌ Products table not ready:', productsError.message);
   } else {
     console.table(products);
   }
@@ -55,14 +51,11 @@ async function main() {
   const errors = [programsError, coursesError, productsError].filter(Boolean);
 
   if (errors.length > 0) {
-    console.error('\n❌ Database not fully ready. Run migrations and seeds:');
-    console.error('   npm run db:setup');
     process.exit(1);
   }
 
 }
 
 main().catch((err) => {
-  console.error('❌ Unexpected error:', err);
   process.exit(1);
 });

@@ -29,7 +29,6 @@ export async function POST(request: NextRequest) {
   try {
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
   } catch (err: any) {
-    console.error('Webhook signature verification failed:', err.message);
     return NextResponse.json(
       { error: `Webhook Error: ${err.message}` },
       { status: 400 }
@@ -67,7 +66,6 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     const courseName = session.metadata?.courseName;
 
     if (!customerEmail) {
-      console.error('No customer email in session');
       return;
     }
 
@@ -95,7 +93,6 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
         });
 
       if (keyError) {
-        console.error('Error generating access key:', keyError);
         return;
       }
 
@@ -127,7 +124,6 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     );
 
   } catch (error) {
-    console.error('Error handling checkout completed:', error);
   }
 }
 
@@ -233,6 +229,5 @@ async function sendPurchaseConfirmationEmail(
     });
 
   } catch (error) {
-    console.error('Error sending purchase confirmation email:', error);
   }
 }

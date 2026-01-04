@@ -77,7 +77,6 @@ export default function UploadDocumentsPage() {
           )
         );
       } catch (error) {
-        console.error('Upload error:', error);
         setFiles((prev) =>
           prev.map((f) =>
             f.name === file.name

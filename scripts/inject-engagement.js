@@ -92,7 +92,6 @@ function processFile(file) {
       `✅ Engagement injected: ${path.relative(process.cwd(), file)}`
     );
   } catch (e) {
-    console.error(`❌ Failed ${file}:`, e.message);
   }
 }
 

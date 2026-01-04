@@ -42,7 +42,6 @@ router.post(
         process.env.STRIPE_BNPL_WEBHOOK_SECRET
       );
     } catch (err) {
-      console.error('Webhook signature verification failed:', err.message);
       return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
@@ -70,7 +69,6 @@ router.post(
 
       res.json({ received: true });
     } catch (error) {
-      console.error('Error processing BNPL webhook:', error);
       res.status(500).json({ error: 'Webhook processing failed' });
     }
   }
@@ -90,7 +88,6 @@ async function handleBNPLPaymentSucceeded(invoice) {
       .single();
 
     if (!bnplSub) {
-      console.error('BNPL subscription not found:', subscriptionId);
       return;
     }
 
@@ -146,7 +143,6 @@ async function handleBNPLPaymentSucceeded(invoice) {
       `BNPL payment ${installmentNumber} recorded for subscription ${subscriptionId}`
     );
   } catch (error) {
-    console.error('Error processing BNPL payment success:', error);
     throw error;
   }
 }
@@ -184,7 +180,6 @@ async function handleBNPLPaymentFailed(invoice) {
       `BNPL payment failed for subscription ${subscriptionId}, attempt ${attemptCount}`
     );
   } catch (error) {
-    console.error('Error processing BNPL payment failure:', error);
   }
 }
 
@@ -200,7 +195,6 @@ async function handleBNPLSubscriptionCanceled(subscription) {
       .eq('subscription_id', subscription.id);
 
   } catch (error) {
-    console.error('Error processing BNPL subscription cancellation:', error);
   }
 }
 
@@ -219,7 +213,6 @@ async function handleBNPLSubscriptionUpdated(subscription) {
       .update(updateData)
       .eq('subscription_id', subscription.id);
   } catch (error) {
-    console.error('Error processing BNPL subscription update:', error);
   }
 }
 
@@ -236,7 +229,6 @@ async function grantProgramAccess(customerEmail, programSlug, paymentMethod) {
     });
 
   } catch (error) {
-    console.error('Error granting program access:', error);
   }
 }
 

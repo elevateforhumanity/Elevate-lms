@@ -75,14 +75,10 @@ totalMapped += utilityCount;
 
 // Check for unmapped pages
 if (unmapped.length > 0) {
-  console.error('❌ UNMAPPED PAGES FOUND:');
   unmapped.slice(0, 10).forEach((page) => {
-    console.error(`   ${page}`);
   });
   if (unmapped.length > 10) {
-    console.error(`   ... and ${unmapped.length - 10} more`);
   }
-  console.error('\nAll pages must map to an archetype.\n');
   process.exit(1);
 }
 
@@ -101,11 +97,8 @@ requiredArchetypes.forEach((archetype) => {
 });
 
 if (missingArchetypes.length > 0) {
-  console.error('\n❌ MISSING ARCHETYPE IMPLEMENTATIONS:');
   missingArchetypes.forEach((arch) => {
-    console.error(`   ${arch}Archetype.tsx`);
   });
-  console.error('\nCreate these archetype components.\n');
   process.exit(1);
 }
 

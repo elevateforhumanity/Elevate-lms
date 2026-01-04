@@ -145,7 +145,6 @@ export default function LicenseCheckoutPage() {
         alert('Failed to create payment intent');
       }
     } catch (error: unknown) {
-      console.error('Error creating payment intent:', error);
       alert('Failed to process request');
     }
   };

@@ -80,7 +80,6 @@ function fetchMetrics(path: string): Promise<{ ttfb: number; bytes: number }> {
         failed = true;
       }
     } catch (error: any) {
-      console.error(`❌ Failed to check ${key}: ${error.message}`);
       failed = true;
     }
   }
@@ -91,7 +90,6 @@ function fetchMetrics(path: string): Promise<{ ttfb: number; bytes: number }> {
 
 
   if (failed) {
-    console.error("❌ Performance budget check FAILED");
     process.exit(1);
   } else {
     process.exit(0);

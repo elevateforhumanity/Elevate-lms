@@ -9,8 +9,6 @@ try {
   const sharpModule = await import('sharp');
   sharp = sharpModule.default;
 } catch (error) {
-  console.error('❌ Sharp not found. Install with: npm install sharp');
-  console.error('   Or run: npm install -D sharp');
   process.exit(1);
 }
 
@@ -93,7 +91,6 @@ async function optimizeImage(inputPath, filename) {
       );
     }
   } catch (error) {
-    console.error(`❌ Error processing ${filename}:`, error.message);
   }
 }
 
@@ -133,6 +130,5 @@ if (args.includes('--config')) {
 
 // Run optimization
 optimizeAll().catch((error) => {
-  console.error('❌ Optimization failed:', error);
   process.exit(1);
 });

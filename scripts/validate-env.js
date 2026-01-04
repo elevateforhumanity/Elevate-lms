@@ -13,11 +13,8 @@ const schema = z.object({
 
 const result = schema.safeParse(process.env);
 if (!result.success) {
-  console.error('\n❌ Environment validation failed:\n');
   for (const issue of result.error.issues) {
-    console.error(`- ${issue.path.join('.')}: ${issue.message}`);
   }
-  console.error(
     '\nSet the missing variables in your environment (.env.local or project settings).'
   );
   process.exit(1);

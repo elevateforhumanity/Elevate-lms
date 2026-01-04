@@ -7,7 +7,6 @@ const SUPABASE_URL = 'https://cuxzzpsyufcewtmicszk.supabase.co';
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!SUPABASE_KEY) {
-  console.error('❌ SUPABASE_SERVICE_ROLE_KEY not set');
   process.exit(1);
 }
 
@@ -69,7 +68,6 @@ async function runMigrations() {
       successCount++;
     } catch (error) {
       if (!error.message.includes('already exists') && !error.message.includes('duplicate')) {
-        console.error(`\n❌ Error in statement ${i + 1}: ${error.message}`);
         errorCount++;
       }
     }
@@ -92,7 +90,6 @@ async function verifyConnection() {
       return true;
     }
   } catch (error) {
-    console.error('❌ Cannot connect to Supabase:', error.message);
     return false;
   }
 }

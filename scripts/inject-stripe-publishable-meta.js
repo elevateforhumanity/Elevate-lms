@@ -13,7 +13,6 @@ const PUBLISHABLE =
   '';
 
 if (!PUBLISHABLE) {
-  console.warn(
     '[stripe:inject-pk] No VITE_STRIPE_PUBLIC_KEY or STRIPE_PUBLISHABLE_KEY set. Skipping.'
   );
   process.exit(0);
@@ -60,7 +59,6 @@ function processHtml(filePath) {
     }
     fs.writeFileSync(filePath, html);
   } catch (e) {
-    console.warn(`[stripe:inject-pk] Skipped ${filePath}: ${e.message}`);
   }
 }
 

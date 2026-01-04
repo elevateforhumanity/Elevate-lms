@@ -34,7 +34,6 @@ export async function logEmailDelivery(log: EmailLog): Promise<void> {
     });
   } catch (error: unknown) {
     // Don't fail the email send if logging fails
-    console.error('[Email Monitor] Failed to log email:', error);
   }
 }
 

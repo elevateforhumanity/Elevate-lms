@@ -9,7 +9,6 @@ function verifyFullSite() {
 
 
   if (!fs.existsSync(indexPath)) {
-    console.error('❌ index.html not found in dist directory');
     return false;
   }
 

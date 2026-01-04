@@ -114,7 +114,6 @@ exports.handler = async (event, context) => {
       endpointSecret
     );
   } catch (err) {
-    console.error('⚠️ Webhook signature verification failed:', err.message);
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Invalid signature' }),
@@ -128,7 +127,6 @@ exports.handler = async (event, context) => {
     try {
       await processSuccessfulPayment(session);
     } catch (error) {
-      console.error('❌ Payment processing failed:', error);
       return {
         statusCode: 500,
         body: JSON.stringify({ error: 'Processing failed' }),
@@ -293,7 +291,6 @@ async function sendLicenseEmail(email, name, licenses, session) {
   try {
     await emailTransporter.sendMail(mailOptions);
   } catch (error) {
-    console.error('❌ Email sending failed:', error);
     throw error;
   }
 }

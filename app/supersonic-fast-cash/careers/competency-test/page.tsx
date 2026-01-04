@@ -394,11 +394,9 @@ export default function CompetencyTest() {
             }),
           });
         } catch (error) {
-          console.error('Failed to generate access key:', error);
         }
       }
     } catch (error) {
-      console.error('Failed to save test results:', error);
     }
   };
 

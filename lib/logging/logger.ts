@@ -21,7 +21,6 @@ function log(level: LogLevel, message: string, meta?: Record<string, unknown>) {
 
   switch (level) {
     case 'error':
-      console.error(output);
       break;
     case 'warn':
       break;

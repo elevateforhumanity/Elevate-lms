@@ -219,7 +219,6 @@ enhancedCheckout.post('/api/checkout', async (req, res, next) => {
       },
     });
   } catch (e) {
-    console.error('Enhanced checkout error:', e);
     next(e);
   }
 });

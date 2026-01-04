@@ -20,7 +20,6 @@ function walk(dir, list = []) {
 }
 
 if (!fs.existsSync(dist)) {
-  console.error('[size-check] dist not found:', dist);
   process.exit(1);
 }
 
@@ -43,7 +42,6 @@ for (const f of largest) {
 }
 
 if (totalKB > budgetKB) {
-  console.error(
     `[size-check] FAIL: bundle ${totalKB}KB exceeds total budget ${budgetKB}KB`
   );
   fail = true;
@@ -72,7 +70,6 @@ try {
     )
   );
 } catch (e) {
-  console.warn('[size-check] WARN could not write artifact:', e.message);
 }
 
 if (fail) process.exit(1);

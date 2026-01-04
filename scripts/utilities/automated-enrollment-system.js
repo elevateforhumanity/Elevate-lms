@@ -81,7 +81,6 @@ class AutomatedEnrollmentSystem {
         expected_completion: enrollment.expected_completion,
       };
     } catch (error) {
-      console.error('Enrollment error:', error);
       return {
         success: false,
         error: error.message,
@@ -174,7 +173,6 @@ class AutomatedEnrollmentSystem {
     const integration = this.partnerIntegrations[enrollment.partner.id];
 
     if (!integration) {
-      console.warn(
         `⚠️ No integration available for ${enrollment.partner.name}`
       );
       return { status: 'manual_enrollment_required' };
@@ -198,7 +196,6 @@ class AutomatedEnrollmentSystem {
       );
       return partnerResult;
     } catch (error) {
-      console.error(
         `❌ Partner enrollment failed for ${enrollment.partner.name}:`,
         error
       );

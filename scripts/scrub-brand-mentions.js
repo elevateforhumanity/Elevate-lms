@@ -18,7 +18,6 @@ function scrubInFile(file) {
       fs.writeFileSync(file, out);
     }
   } catch (e) {
-    console.error(`Failed to scrub ${file}:`, e.message);
   }
 }
 

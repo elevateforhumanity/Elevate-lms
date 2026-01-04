@@ -94,7 +94,6 @@ serve(async (req) => {
           results.enforcementActions++;
         }
       } catch (error) {
-        console.error(
           `[Indiana Compliance] Error processing holder ${holder.id}:`,
           error
         );
@@ -107,7 +106,6 @@ serve(async (req) => {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   } catch (error) {
-    console.error('[Indiana Compliance] Fatal error:', error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
