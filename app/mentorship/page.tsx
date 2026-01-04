@@ -63,69 +63,87 @@ export default function MentorshipPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white border-2 border-indigo-600 rounded-xl p-8">
-              <Lightbulb className="h-12 w-12 text-indigo-600 mb-4" />
-              <h3 className="text-2xl font-bold text-black mb-3">
+            <Link href="/mentorship/career-guidance" className="bg-white border-2 border-indigo-600 rounded-xl p-8 hover:shadow-xl hover:scale-105 transition-all group">
+              <Lightbulb className="h-12 w-12 text-indigo-600 mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-indigo-600 transition-colors">
                 Career Guidance
               </h3>
-              <p className="text-black">
+              <p className="text-black mb-4">
                 Get personalized advice on career decisions, job opportunities,
                 and professional development.
               </p>
-            </div>
+              <div className="flex items-center gap-2 text-indigo-600 font-semibold">
+                Learn More <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
 
-            <div className="bg-white border-2 border-purple-600 rounded-xl p-8">
-              <Target className="h-12 w-12 text-purple-600 mb-4" />
-              <h3 className="text-2xl font-bold text-black mb-3">
+            <Link href="/mentorship/goal-setting" className="bg-white border-2 border-purple-600 rounded-xl p-8 hover:shadow-xl hover:scale-105 transition-all group">
+              <Target className="h-12 w-12 text-purple-600 mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-purple-600 transition-colors">
                 Goal Setting
               </h3>
-              <p className="text-black">
+              <p className="text-black mb-4">
                 Work with your mentor to set realistic career goals and create
                 actionable plans to achieve them.
               </p>
-            </div>
+              <div className="flex items-center gap-2 text-purple-600 font-semibold">
+                Learn More <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
 
-            <div className="bg-white border-2 border-blue-600 rounded-xl p-8">
-              <TrendingUp className="h-12 w-12 text-blue-600 mb-4" />
-              <h3 className="text-2xl font-bold text-black mb-3">
+            <Link href="/mentorship/skill-development" className="bg-white border-2 border-blue-600 rounded-xl p-8 hover:shadow-xl hover:scale-105 transition-all group">
+              <TrendingUp className="h-12 w-12 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-blue-600 transition-colors">
                 Skill Development
               </h3>
-              <p className="text-black">
+              <p className="text-black mb-4">
                 Learn industry-specific skills and best practices from someone
                 who's been there.
               </p>
-            </div>
+              <div className="flex items-center gap-2 text-blue-600 font-semibold">
+                Learn More <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
 
-            <div className="bg-white border-2 border-green-600 rounded-xl p-8">
-              <MessageCircle className="h-12 w-12 text-green-600 mb-4" />
-              <h3 className="text-2xl font-bold text-black mb-3">Networking</h3>
-              <p className="text-black">
+            <Link href="/mentorship/networking" className="bg-white border-2 border-green-600 rounded-xl p-8 hover:shadow-xl hover:scale-105 transition-all group">
+              <MessageCircle className="h-12 w-12 text-green-600 mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-green-600 transition-colors">Networking</h3>
+              <p className="text-black mb-4">
                 Expand your professional network through your mentor's
                 connections and industry contacts.
               </p>
-            </div>
+              <div className="flex items-center gap-2 text-green-600 font-semibold">
+                Learn More <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
 
-            <div className="bg-white border-2 border-orange-600 rounded-xl p-8">
-              <Award className="h-12 w-12 text-orange-600 mb-4" />
-              <h3 className="text-2xl font-bold text-black mb-3">
+            <Link href="/mentorship/industry-insights" className="bg-white border-2 border-orange-600 rounded-xl p-8 hover:shadow-xl hover:scale-105 transition-all group">
+              <Award className="h-12 w-12 text-orange-600 mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-orange-600 transition-colors">
                 Industry Insights
               </h3>
-              <p className="text-black">
+              <p className="text-black mb-4">
                 Gain insider knowledge about your industry, trends, and
                 opportunities.
               </p>
-            </div>
+              <div className="flex items-center gap-2 text-orange-600 font-semibold">
+                Learn More <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
 
-            <div className="bg-white border-2 border-teal-600 rounded-xl p-8">
-              <Users className="h-12 w-12 text-teal-600 mb-4" />
-              <h3 className="text-2xl font-bold text-black mb-3">
+            <Link href="/mentorship/ongoing-support" className="bg-white border-2 border-teal-600 rounded-xl p-8 hover:shadow-xl hover:scale-105 transition-all group">
+              <Users className="h-12 w-12 text-teal-600 mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-teal-600 transition-colors">
                 Ongoing Support
               </h3>
-              <p className="text-black">
+              <p className="text-black mb-4">
                 Build a lasting professional relationship that extends beyond
                 your training.
               </p>
-            </div>
+              <div className="flex items-center gap-2 text-teal-600 font-semibold">
+                Learn More <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
           </div>
         </div>
       </section>
