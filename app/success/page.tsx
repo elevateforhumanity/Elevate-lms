@@ -1,0 +1,165 @@
+import { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+
+export const metadata: Metadata = {
+  title: 'Success Stories | Elevate for Humanity',
+  description:
+    'Real outcomes from students who transformed their lives through our training programs.',
+};
+
+export default function SuccessStoriesPage() {
+  return (
+    <div className="min-h-screen">
+      {/* Hero with Video */}
+      <section className="relative w-full -mt-[72px]">
+        <div className="relative min-h-[70vh] w-full overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src="/videos/getting-started-hero.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/90 to-orange-700/90" />
+          
+          <div className="relative z-10 flex items-center justify-center min-h-[70vh]">
+            <div className="container mx-auto px-4 text-center text-white">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                Success Stories
+              </h1>
+              <p className="text-xl md:text-2xl text-orange-100 max-w-3xl mx-auto">
+                Real outcomes from students who transformed their lives through
+                workforce training.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Real Training Images */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div className="relative w-full h-64">
+                <Image
+                  src="/media/programs/cpr-group-training-hd.jpg"
+                  alt="Healthcare Training"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">Healthcare Careers</h3>
+                <p className="text-gray-600 mb-4">
+                  CNA, Medical Assistant, and Home Health Aide graduates now
+                  working in hospitals and clinics across Indiana.
+                </p>
+                <Link href="/programs/healthcare" className="text-orange-600 font-semibold hover:underline">
+                  View Programs →
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div className="relative w-full h-64">
+                <Image
+                  src="/media/programs/efh-barber-hero.jpg"
+                  alt="Barber Training"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">Skilled Trades</h3>
+                <p className="text-gray-600 mb-4">
+                  Barber, HVAC, and Building Maintenance graduates earning
+                  $40K-$60K annually.
+                </p>
+                <Link href="/programs/skilled-trades" className="text-orange-600 font-semibold hover:underline">
+                  View Programs →
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div className="relative w-full h-64">
+                <Image
+                  src="/media/programs/efh-business-startup-marketing-hero.jpg"
+                  alt="Business Training"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">Business & Tech</h3>
+                <p className="text-gray-600 mb-4">
+                  Entrepreneurs and tech professionals building successful
+                  careers and businesses.
+                </p>
+                <Link href="/programs/business" className="text-orange-600 font-semibold hover:underline">
+                  View Programs →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Our Impact by the Numbers
+          </h2>
+          <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center">
+            <div>
+              <div className="text-4xl font-bold text-orange-600 mb-2">
+                5,000+
+              </div>
+              <p className="text-gray-600">Students Trained</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-orange-600 mb-2">85%</div>
+              <p className="text-gray-600">Job Placement Rate</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-orange-600 mb-2">
+                $45K
+              </div>
+              <p className="text-gray-600">Average Starting Salary</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-orange-600 mb-2">90%</div>
+              <p className="text-gray-600">Student Satisfaction</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-orange-600 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">
+            Ready to Write Your Success Story?
+          </h2>
+          <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+            Join thousands of students who have transformed their lives through
+            our training programs.
+          </p>
+          <Link href="/apply">
+            <Button size="lg" variant="secondary">
+              Apply Now
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}

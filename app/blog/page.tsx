@@ -1,33 +1,19 @@
+'use client';
+
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, Calendar, User, ArrowRight } from 'lucide-react';
-import { createClient } from '@/lib/supabase/server';
+import { Search, Calendar, User, ArrowRight, Facebook, Twitter, Linkedin, Instagram, Share2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { createClient } from '@/lib/supabase/client';
 
-export const metadata: Metadata = {
-  title: 'Blog | Success Stories & Updates | Elevate for Humanity',
-  description:
-    'Read success stories, program updates, and career insights from Elevate for Humanity students and partners.',
+// Social media share URLs
+const SOCIAL_LINKS = {
+  facebook: 'https://facebook.com/elevateforhumanity',
+  twitter: 'https://twitter.com/elevate4humanity',
+  linkedin: 'https://linkedin.com/company/elevate-for-humanity',
+  instagram: 'https://instagram.com/elevateforhumanity',
 };
-
-// Fetch blog posts from database
-async function getBlogPosts() {
-  const supabase = await createClient();
-
-  const { data: posts, error } = await supabase
-    .from('blog_posts')
-    .select('*')
-    .eq('status', 'published')
-    .order('published_at', { ascending: false })
-    .limit(20);
-
-  if (error) {
-    console.error('Error fetching blog posts:', error);
-    return mockBlogPosts; // Fallback to mock data
-  }
-
-  return posts || mockBlogPosts;
-}
 
 // Mock blog data - fallback if database is empty
 const mockBlogPosts = [
@@ -97,20 +83,96 @@ const categories = [
   'Employer Stories',
 ];
 
-export default async function BlogPage() {
-  const blogPosts = await getBlogPosts();
+export default function BlogPage() {
+  const [blogPosts, setBlogPosts] = useState(mockBlogPosts);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState('All Posts');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [visiblePosts, setVisiblePosts] = useState(6);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      const supabase = createClient();
+      const { data: posts, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('status', 'published')
+        .order('published_at', { ascending: false });
+
+      if (!error && posts && posts.length > 0) {
+        setBlogPosts(posts);
+      }
+      setLoading(false);
+    }
+    fetchPosts();
+  }, []);
+
+  const filteredPosts = blogPosts.filter((post) => {
+    const matchesCategory = selectedCategory === 'All Posts' || post.category === selectedCategory;
+    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const displayedPosts = filteredPosts.slice(0, visiblePosts);
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
-      <section className="bg-white text-white py-20 md:py-24">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
-            <p className="text-xl text-slate-600">
+      {/* Hero Section with Animation */}
+      <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white py-20 md:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="max-w-3xl animate-fade-in">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog & Success Stories</h1>
+            <p className="text-xl text-blue-100 mb-6">
               Success stories, program updates, and career insights from our
               students and partners.
             </p>
+            {/* Social Media Links */}
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-blue-200">Follow us:</span>
+              <div className="flex gap-3">
+                <a
+                  href={SOCIAL_LINKS.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="w-5 h-5" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a
+                  href={SOCIAL_LINKS.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -124,6 +186,8 @@ export default async function BlogPage() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
               <input
                 type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search articles..."
                 className="w-full min-h-[44px] pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               />
@@ -135,8 +199,9 @@ export default async function BlogPage() {
                 {categories.map((category) => (
                   <button
                     key={category}
+                    onClick={() => setSelectedCategory(category)}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition whitespace-nowrap flex-shrink-0 min-h-[44px] ${
-                      category === 'All Posts'
+                      category === selectedCategory
                         ? 'bg-brand-orange-600 text-white'
                         : 'bg-white text-slate-700 border border-slate-300 hover:border-brand-orange-600 hover:text-brand-orange-600'
                     }`}
@@ -153,12 +218,26 @@ export default async function BlogPage() {
       {/* Blog Grid */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          {loading && (
+            <div className="text-center py-12">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <p className="mt-4 text-gray-600">Loading articles...</p>
+            </div>
+          )}
+          
+          {!loading && displayedPosts.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-xl text-gray-600">No articles found matching your criteria.</p>
+            </div>
+          )}
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {blogPosts.map((post) => (
+            {displayedPosts.map((post, index) => (
               <Link
                 key={post.id}
                 href={`/blog/${post.slug}`}
-                className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="group bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Image */}
                 <div className="relative h-40 sm:h-48 md:h-52 bg-slate-200 overflow-hidden">
@@ -210,11 +289,16 @@ export default async function BlogPage() {
           </div>
 
           {/* Load More */}
-          <div className="text-center mt-12">
-            <button className="px-8 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition">
-              Load More Articles
-            </button>
-          </div>
+          {visiblePosts < filteredPosts.length && (
+            <div className="text-center mt-12">
+              <button 
+                onClick={() => setVisiblePosts(prev => prev + 6)}
+                className="px-8 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition"
+              >
+                Load More Articles ({filteredPosts.length - visiblePosts} remaining)
+              </button>
+            </div>
+          )}
         </div>
       </section>
 

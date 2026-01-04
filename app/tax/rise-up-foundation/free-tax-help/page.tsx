@@ -1,5 +1,12 @@
+'use client';
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { Calendar } from 'lucide-react';
+
+const CALENDLY_SCRIPT = 'https://assets.calendly.com/assets/external/widget.js';
+const CALENDLY_LINK = 'https://calendly.com/elevateforhumanity/free-tax-prep';
 
 export const metadata: Metadata = {
   title: 'Free Tax Help - VITA Services | Rise Up Foundation',
@@ -25,6 +32,22 @@ export const metadata: Metadata = {
 };
 
 export default function FreeTaxHelpPage() {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = CALENDLY_SCRIPT;
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const openCalendly = () => {
+    if (typeof window !== 'undefined' && (window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({ url: CALENDLY_LINK });
+    }
+  };
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <div className="mb-6">
@@ -37,10 +60,24 @@ export default function FreeTaxHelpPage() {
       </div>
 
       <h1 className="text-4xl font-bold">Free Tax Help</h1>
-      <p className="mt-3 text-lg text-gray-600">
+      <p className="mt-3 text-lg text-gray-600 mb-6">
         Get your taxes done for free by IRS-certified volunteers through the
         VITA program.
       </p>
+
+      {/* Calendly Booking Button */}
+      <div className="mb-8">
+        <button
+          onClick={openCalendly}
+          className="w-full bg-brand-green-600 hover:bg-brand-green-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors flex items-center justify-center gap-2"
+        >
+          <Calendar className="w-5 h-5" />
+          Schedule Free Tax Appointment (Video or Phone)
+        </button>
+        <p className="text-sm text-gray-600 text-center mt-2">
+          100% Free • IRS-Certified Volunteers • Video or Phone Available
+        </p>
+      </div>
 
       <section className="mt-8 rounded-2xl border bg-white p-8">
         <h2 className="text-2xl font-bold mb-4">Who Qualifies?</h2>

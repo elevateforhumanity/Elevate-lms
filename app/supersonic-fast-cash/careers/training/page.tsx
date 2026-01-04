@@ -1,5 +1,6 @@
 'use client';
 
+import { logger } from '@/lib/logger';
 import React, { useState } from 'react';
 import {
   Award,
@@ -281,7 +282,7 @@ export default function TrainingPage() {
         }
       } catch (error) {
         alert('Error processing payment. Please try again.');
-        console.error('Stripe checkout error:', error);
+        logger.error('Stripe checkout error:', error);
       }
       return;
     }

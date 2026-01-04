@@ -1,5 +1,6 @@
 'use client';
 
+import { logger } from '@/lib/logger';
 import React, { useState, useEffect } from 'react';
 import { Clock, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
@@ -394,11 +395,11 @@ export default function CompetencyTest() {
             }),
           });
         } catch (error) {
-          console.error('Failed to generate access key:', error);
+          logger.error('Failed to generate access key:', error);
         }
       }
     } catch (error) {
-      console.error('Failed to save test results:', error);
+      logger.error('Failed to save test results:', error);
     }
   };
 

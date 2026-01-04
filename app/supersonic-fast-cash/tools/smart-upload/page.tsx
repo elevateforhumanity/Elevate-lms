@@ -1,5 +1,6 @@
 'use client';
 
+import { logger } from '@/lib/logger';
 import { useState, useCallback, useRef } from 'react';
 import {
   Upload,
@@ -166,7 +167,7 @@ export default function SmartUploadPage() {
         )
       );
     } catch (error) {
-      console.error('Processing error:', error);
+      logger.error('Processing error:', error);
       setFiles((prev) =>
         prev.map((f) =>
           f.id === uploadedFile.id

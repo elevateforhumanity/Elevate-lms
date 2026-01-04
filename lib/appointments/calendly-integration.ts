@@ -3,6 +3,7 @@
  * Real appointment scheduling with automated tracking
  */
 
+import { logger } from '@/lib/logger';
 import { createClient } from '@/lib/supabase/server';
 import { sendAppointmentConfirmationEmail } from '@/lib/email/automated-triggers';
 
@@ -128,7 +129,7 @@ export async function createAppointment(data: {
     .single();
 
   if (error) {
-    console.error('Error creating appointment:', error);
+    logger.error('Error creating appointment:', error);
     return null;
   }
 
@@ -223,7 +224,7 @@ export async function handleCalendlyWebhook(
 
     return false;
   } catch (error: unknown) {
-    console.error('Error handling Calendly webhook:', error);
+    logger.error('Error handling Calendly webhook:', error);
     return false;
   }
 }
@@ -243,7 +244,7 @@ export async function getUpcomingAppointments(studentId: string) {
     .order('scheduled_time', { ascending: true });
 
   if (error) {
-    console.error('Error fetching appointments:', error);
+    logger.error('Error fetching appointments:', error);
     return [];
   }
 
@@ -265,7 +266,7 @@ export async function getPastAppointments(studentId: string, limit: number = 10)
     .limit(limit);
 
   if (error) {
-    console.error('Error fetching past appointments:', error);
+    logger.error('Error fetching past appointments:', error);
     return [];
   }
 
@@ -291,7 +292,7 @@ export async function cancelAppointment(
     .eq('id', appointmentId);
 
   if (error) {
-    console.error('Error canceling appointment:', error);
+    logger.error('Error canceling appointment:', error);
     return false;
   }
 
@@ -317,7 +318,7 @@ export async function completeAppointment(
     .eq('id', appointmentId);
 
   if (error) {
-    console.error('Error completing appointment:', error);
+    logger.error('Error completing appointment:', error);
     return false;
   }
 
@@ -339,7 +340,7 @@ export async function markNoShow(appointmentId: string): Promise<boolean> {
     .eq('id', appointmentId);
 
   if (error) {
-    console.error('Error marking no-show:', error);
+    logger.error('Error marking no-show:', error);
     return false;
   }
 
@@ -378,7 +379,7 @@ export async function getAppointmentsNeedingReminders(
     .lte('scheduled_time', windowEnd.toISOString());
 
   if (error) {
-    console.error('Error fetching appointments for reminders:', error);
+    logger.error('Error fetching appointments for reminders:', error);
     return [];
   }
 

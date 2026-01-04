@@ -25,7 +25,7 @@ export default function Page() {
   return (
     <>
       <VideoHero
-        videoSrc="/videos/hero-healthcare.mp4"
+        videoSrc="/videos/cna-hero.mp4"
         badge={{
           icon: Stethoscope,
           text: 'Healthcare Career',

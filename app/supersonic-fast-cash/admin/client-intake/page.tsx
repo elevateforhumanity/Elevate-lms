@@ -1,5 +1,6 @@
 'use client';
 
+import { logger } from '@/lib/logger';
 import { useState, useEffect } from 'react';
 import {
   Users,
@@ -44,7 +45,7 @@ export default function ClientIntakeDashboard() {
       const data = await response.json();
       setClients(data.clients || []);
     } catch (error) {
-      console.error('Failed to fetch clients:', error);
+      logger.error('Failed to fetch clients:', error);
     } finally {
       setLoading(false);
     }
@@ -60,7 +61,7 @@ export default function ClientIntakeDashboard() {
       alert(`Synced ${data.count} new submissions`);
       fetchClients();
     } catch (error) {
-      console.error('Sync failed:', error);
+      logger.error('Sync failed:', error);
       alert('Failed to sync JotForm submissions');
     } finally {
       setLoading(false);

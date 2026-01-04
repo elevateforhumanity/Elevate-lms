@@ -66,6 +66,119 @@ export default function HomePage() {
         voiceoverSrc="/videos/voiceover.mp3"
       />
 
+      {/* OUR OFFERINGS - Comprehensive Overview */}
+      <section className="w-full py-20 bg-gradient-to-br from-orange-50 to-orange-100">
+        <div className="mx-auto w-full max-w-7xl px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
+              What We Offer
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Free, funded workforce training programs that lead to real careers and measurable outcomes.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Healthcare Programs */}
+            <Link href="/programs/healthcare" className="group">
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border-2 border-transparent hover:border-orange-600">
+                <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
+                  <Image
+                    src="/media/programs/cna-hd.jpg"
+                    alt="Healthcare Training"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-black mb-2">Healthcare</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  CNA, Medical Assistant, Home Health Aide
+                </p>
+                <div className="flex items-center gap-2 text-orange-600 font-semibold">
+                  <span>View Programs</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Skilled Trades */}
+            <Link href="/programs/skilled-trades" className="group">
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border-2 border-transparent hover:border-orange-600">
+                <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
+                  <Image
+                    src="/media/programs/hvac-highlight-3.jpg"
+                    alt="Skilled Trades"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-black mb-2">Skilled Trades</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  HVAC, Building Maintenance, Construction
+                </p>
+                <div className="flex items-center gap-2 text-orange-600 font-semibold">
+                  <span>View Programs</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Barber Apprenticeship */}
+            <Link href="/programs/barber-apprenticeship" className="group">
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border-2 border-transparent hover:border-orange-600">
+                <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
+                  <Image
+                    src="/media/programs/efh-barber-hero.jpg"
+                    alt="Barber Apprenticeship"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-black mb-2">Barber</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  DOL-registered apprenticeship, earn while you learn
+                </p>
+                <div className="flex items-center gap-2 text-orange-600 font-semibold">
+                  <span>View Program</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </div>
+            </Link>
+
+            {/* CDL Training */}
+            <Link href="/programs/cdl-transportation" className="group">
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border-2 border-transparent hover:border-orange-600">
+                <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
+                  <Image
+                    src="/media/programs/cdl-hero.jpg"
+                    alt="CDL Training"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-black mb-2">CDL Training</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Commercial Driver License, truck driving careers
+                </p>
+                <div className="flex items-center gap-2 text-orange-600 font-semibold">
+                  <span>View Program</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/programs">
+              <button className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg">
+                View All Programs
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* WHO THIS IS FOR */}
       <section className="w-full py-20 bg-white">
         <div className="mx-auto w-full max-w-7xl px-6">

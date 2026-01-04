@@ -1,8 +1,9 @@
 'use client';
 
+import { logger } from '@/lib/logger';
 import React from 'react';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   AlertTriangle,
   Calendar,
@@ -17,6 +18,10 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || ''
 );
+
+// Calendly widget script
+const CALENDLY_SCRIPT = 'https://assets.calendly.com/assets/external/widget.js';
+const CALENDLY_LINK = 'https://calendly.com/elevateforhumanity/paid-tax-services';
 
 export default function BookAppointment() {
   const [step, setStep] = useState(1);
@@ -135,6 +140,33 @@ export default function BookAppointment() {
     },
   ];
 
+  // Load Calendly widget
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = CALENDLY_SCRIPT;
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const openCalendly = () => {
+    if (typeof window !== 'undefined' && (window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({
+        url: CALENDLY_LINK,
+        prefill: {
+          name: `${appointmentData.firstName} ${appointmentData.lastName}`,
+          email: appointmentData.email,
+          customAnswers: {
+            a1: appointmentData.phone,
+            a2: appointmentData.serviceType,
+          }
+        }
+      });
+    }
+  };
+
   const handlePayment = async () => {
     try {
       const selectedService = serviceTypes.find(
@@ -157,7 +189,7 @@ export default function BookAppointment() {
         await stripe.redirectToCheckout({ sessionId });
       }
     } catch (error: unknown) {
-      console.error('Booking error:', error);
+      logger.error('Booking error:', error);
       alert('Booking failed. Please call 317-314-3757 for assistance.');
     }
   };
@@ -168,10 +200,27 @@ export default function BookAppointment() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Book Your Tax Appointment</h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 mb-6">
             Schedule online, video, or phone consultation with IRS-certified tax
             pro
           </p>
+          
+          {/* Quick Calendly Button */}
+          <div className="flex justify-center gap-4">
+            <button
+              onClick={openCalendly}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors flex items-center gap-2"
+            >
+              <Calendar className="w-5 h-5" />
+              Schedule with Calendly (Recommended)
+            </button>
+            <button
+              onClick={() => setStep(1)}
+              className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 py-4 rounded-lg font-bold text-lg transition-colors"
+            >
+              Manual Booking
+            </button>
+          </div>
         </div>
 
         {/* Progress Bar */}

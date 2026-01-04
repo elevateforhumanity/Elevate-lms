@@ -1,5 +1,6 @@
 'use client';
 
+import { logger } from '@/lib/logger';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { AlertCircle, Home, RefreshCw, BookOpen } from 'lucide-react';
@@ -12,7 +13,7 @@ export default function LMSError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error('LMS error:', error);
+    logger.error('LMS error:', error);
   }, [error]);
 
   return (

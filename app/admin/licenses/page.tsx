@@ -1,0 +1,81 @@
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+
+export default async function AdminLicensesPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/login');
+  }
+
+  // TODO: Check admin role
+  // For now, allow access
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-12">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h1 className="text-3xl font-bold mb-2">License Management</h1>
+            <p className="text-gray-600">
+              Manage program licenses and certifications
+            </p>
+          </div>
+          <Link href="/admin/licenses/create">
+            <Button>Create License</Button>
+          </Link>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm p-6">
+          <div className="space-y-4">
+            <div className="border-b pb-4">
+              <h3 className="font-semibold text-lg mb-2">Active Licenses</h3>
+              <p className="text-gray-600 text-sm">
+                View and manage all active program licenses
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {/* TODO: Fetch from database */}
+              <div className="border rounded-lg p-4">
+                <h4 className="font-semibold mb-2">CNA License</h4>
+                <p className="text-sm text-gray-600 mb-4">
+                  Certified Nursing Assistant
+                </p>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="outline">Edit</Button>
+                  <Button size="sm" variant="outline">View</Button>
+                </div>
+              </div>
+
+              <div className="border rounded-lg p-4">
+                <h4 className="font-semibold mb-2">Barber License</h4>
+                <p className="text-sm text-gray-600 mb-4">
+                  Professional Barber Certification
+                </p>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="outline">Edit</Button>
+                  <Button size="sm" variant="outline">View</Button>
+                </div>
+              </div>
+
+              <div className="border rounded-lg p-4">
+                <h4 className="font-semibold mb-2">HVAC License</h4>
+                <p className="text-sm text-gray-600 mb-4">
+                  HVAC Technician Certification
+                </p>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="outline">Edit</Button>
+                  <Button size="sm" variant="outline">View</Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

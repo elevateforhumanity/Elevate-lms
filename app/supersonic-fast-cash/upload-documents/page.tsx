@@ -1,5 +1,6 @@
 'use client';
 
+import { logger } from '@/lib/logger';
 import { useState } from 'react';
 import { Upload, FileText, CheckCircle, AlertCircle, X } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
@@ -77,7 +78,7 @@ export default function UploadDocumentsPage() {
           )
         );
       } catch (error) {
-        console.error('Upload error:', error);
+        logger.error('Upload error:', error);
         setFiles((prev) =>
           prev.map((f) =>
             f.name === file.name

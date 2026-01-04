@@ -1,5 +1,6 @@
 'use client';
 
+import { logger } from '@/lib/logger';
 import { useState } from 'react';
 import { Shield, Download, FileText, CheckCircle } from 'lucide-react';
 import SignatureCanvas from 'react-signature-canvas';
@@ -68,7 +69,7 @@ export default function SubOfficeAgreementPage() {
         alert('Error signing agreement. Please try again.');
       }
     } catch (error) {
-      console.error('Error:', error);
+      logger.error('Error:', error);
       alert('Error signing agreement. Please try again.');
     }
   };

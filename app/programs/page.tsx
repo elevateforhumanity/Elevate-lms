@@ -169,48 +169,59 @@ export default function ProgramsBioSitePage() {
 
   return (
     <div className="pb-20 md:pb-0">
-      {/* Hero Section - Mobile Optimized */}
-      <section className="polish-solid pt-20 pb-8 md:pt-28 md:pb-12 bg-gradient-to-br from-brand-blue-600 to-brand-purple-600">
-        <div className="max-w-6xl mx-auto px-4 md:px-6">
-          <div className="max-w-2xl mx-auto text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full mb-4 text-white">
-              <GraduationCap className="w-5 h-5" />
-              <span className="text-sm font-bold uppercase tracking-wide">
-                WIOA-Funded Career Training
-              </span>
-            </div>
+      {/* Hero Banner with Image */}
+      <section className="relative w-full -mt-[72px]">
+        <div className="relative min-h-[70vh] w-full overflow-hidden">
+          <Image
+            src="/media/programs/workforce-readiness-hero.jpg"
+            alt="Free Career Training Programs"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/90 to-orange-700/90" />
+          
+          <div className="relative z-10 flex items-center justify-center min-h-[70vh]">
+            <div className="max-w-4xl mx-auto px-6 text-center text-white">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/30">
+                <GraduationCap className="w-5 h-5" />
+                <span className="text-sm font-bold uppercase tracking-wide">
+                  WIOA-Funded Career Training
+                </span>
+              </div>
 
-            {/* Headline */}
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4 break-words">
-              Free Career Training Programs
-            </h1>
+              {/* Headline */}
+              <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6">
+                Free Career Training Programs
+              </h1>
 
-            {/* Subheadline */}
-            <p className="text-lg md:text-xl text-white/90 mb-6">
-              100% Free • No Tuition • No Debt
-            </p>
+              {/* Subheadline */}
+              <p className="text-2xl md:text-3xl mb-4">
+                100% Free • No Tuition • No Debt
+              </p>
 
-            {/* Body */}
-            <p className="text-base md:text-lg text-white/80 mb-6">
-              Browse our complete catalog of training programs in healthcare,
-              skilled trades, and business
-            </p>
+              {/* Body */}
+              <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+                Browse our complete catalog of training programs in healthcare,
+                skilled trades, and business
+              </p>
 
-            {/* Buttons */}
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row justify-center">
-              <Link
-                href="/apply"
-                className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-base font-semibold bg-white text-brand-blue-600 hover:bg-gray-100 transition"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="#programs"
-                className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-base font-semibold border-2 border-white text-white hover:bg-white/10 transition"
-              >
-                Browse Programs
-              </Link>
+              {/* Buttons */}
+              <div className="flex flex-col gap-4 sm:flex-row justify-center">
+                <Link
+                  href="/apply"
+                  className="inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-bold bg-white text-orange-600 hover:bg-gray-100 transition shadow-lg"
+                >
+                  Apply Now
+                </Link>
+                <Link
+                  href="#programs"
+                  className="inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-bold border-2 border-white text-white hover:bg-white/10 transition"
+                >
+                  Browse Programs
+                </Link>
+              </div>
             </div>
           </div>
         </div>

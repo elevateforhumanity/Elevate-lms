@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   DollarSign,
   Award,
@@ -21,37 +22,50 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="bg-white text-white px-6 py-20">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-            <Award className="w-5 h-5" />
-            <span className="text-sm font-semibold">
-              IRS Certified Training
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Start Your Tax Preparation Business
-          </h1>
-          <p className="text-xl md:text-2xl text-green-100 mb-8">
-            100% free IRS-certified training. Earn $40k-$100k+ per year. Work
-            from home. Be your own boss.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-green-600 font-bold rounded-lg hover:bg-green-50 transition text-lg"
-            >
-              Start Free Training
-            </Link>
-            <a
-              href="https://www.indianacareerconnect.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 bg-green-700 text-white font-bold rounded-lg hover:bg-green-900 transition text-lg"
-            >
-              Schedule Appointment
-            </a>
+      {/* Hero with Picture */}
+      <section className="relative w-full -mt-[72px]">
+        <div className="relative min-h-[70vh] w-full overflow-hidden">
+          <Image
+            src="/media/programs/efh-tax-office-startup-hero.jpg"
+            alt="VITA Tax Preparation Training"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-green-600/90 to-green-700/90" />
+          
+          <div className="relative z-10 flex items-center justify-center min-h-[70vh]">
+            <div className="max-w-5xl mx-auto px-6 text-center text-white">
+              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/30">
+                <Award className="w-5 h-5" />
+                <span className="text-sm font-semibold">
+                  IRS Certified Training
+                </span>
+              </div>
+              <h1 className="text-5xl md:text-6xl font-black mb-6">
+                Start Your Tax Preparation Business
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                100% free IRS-certified training. Earn $40k-$100k+ per year. Work
+                from home. Be your own boss.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/apply"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-green-600 font-bold rounded-xl hover:bg-gray-100 transition text-lg shadow-lg"
+                >
+                  Start Free Training
+                </Link>
+                <a
+                  href="https://www.indianacareerconnect.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-xl hover:bg-white/10 transition text-lg border-2 border-white"
+                >
+                  Schedule Appointment
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

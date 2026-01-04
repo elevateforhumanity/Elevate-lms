@@ -35,12 +35,32 @@ export const headerNavigation: NavGroup[] = [
       {
         label: 'Healthcare',
         href: '/programs/healthcare',
-        description: 'Medical and healthcare careers',
+        description: 'CNA, Medical Assistant, Home Health',
+      },
+      {
+        label: 'CNA Training',
+        href: '/programs/cna',
+        description: 'Certified Nursing Assistant',
       },
       {
         label: 'Skilled Trades',
         href: '/programs/skilled-trades',
-        description: 'Construction, HVAC, electrical',
+        description: 'HVAC, Building Maintenance',
+      },
+      {
+        label: 'Barber Apprenticeship',
+        href: '/programs/barber-apprenticeship',
+        description: 'DOL-registered earn while you learn',
+      },
+      {
+        label: 'CDL Training',
+        href: '/programs/cdl-transportation',
+        description: 'Commercial Driver License',
+      },
+      {
+        label: 'Business Programs',
+        href: '/programs/business-financial',
+        description: 'Tax prep, entrepreneurship',
       },
       {
         label: 'Technology',
@@ -48,9 +68,9 @@ export const headerNavigation: NavGroup[] = [
         description: 'IT and tech careers',
       },
       {
-        label: 'Business',
-        href: '/programs/business',
-        description: 'Business and management',
+        label: 'Apprenticeships',
+        href: '/programs/apprenticeships',
+        description: 'Earn while you learn programs',
       },
       {
         label: 'Find Your Path',

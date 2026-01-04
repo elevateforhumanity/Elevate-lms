@@ -1,5 +1,6 @@
 'use client';
 
+import { logger } from '@/lib/logger';
 import { useState, useEffect } from 'react';
 import {
   calculateTax,
@@ -96,7 +97,7 @@ export default function TaxCalculatorPage() {
 
       alert('Calculation saved to your account! You can return to it anytime.');
     } catch (error) {
-      console.error('Save error:', error);
+      logger.error('Save error:', error);
       alert('Failed to save calculation. Please try again.');
     }
   };

@@ -188,6 +188,41 @@ export default function BarberApprenticeshipPage() {
                       />
                     </svg>
                   </Link>
+
+                  {/* Afterpay Payment */}
+                  <Link
+                    href="/checkout/barber-apprenticeship?method=afterpay"
+                    className="w-full flex items-center justify-between px-6 py-4 bg-teal-500 hover:bg-teal-600 text-white font-bold rounded-lg transition-all"
+                  >
+                    <div className="flex items-center gap-3">
+                      <svg
+                        className="w-6 h-6"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                      </svg>
+                      <div className="text-left">
+                        <div className="font-bold">Pay with Afterpay</div>
+                        <div className="text-sm text-teal-100">
+                          4 interest-free payments of $1,237.50
+                        </div>
+                      </div>
+                    </div>
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
                 </div>
 
                 <p className="text-xs text-slate-600 mt-3 text-center">
