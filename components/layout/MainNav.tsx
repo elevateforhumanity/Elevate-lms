@@ -54,9 +54,46 @@ const fundingLinks = [
 const mainLinks = [
   { href: '/programs', label: 'Programs' },
   { href: '/funding', label: 'Funding' },
-  { href: '/how-it-works', label: 'How It Works' },
-  { href: '/admin/partners', label: 'Partners' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/services', label: 'Services' },
+  { href: '/community', label: 'Community' },
   { href: '/about', label: 'About' },
+];
+
+// Resources & Tools dropdown
+const resourcesLinks = [
+  { href: '/ai-tutor', label: 'AI Tutor' },
+  { href: '/ai-chat', label: 'AI Chat' },
+  { href: '/ai-studio', label: 'AI Studio' },
+  { href: '/lessons', label: 'Lessons' },
+  { href: '/workbooks', label: 'Workbooks' },
+  { href: '/syllabi', label: 'Syllabi' },
+  { href: '/student-handbook', label: 'Student Handbook' },
+  { href: '/orientation', label: 'Orientation' },
+  { href: '/leaderboard', label: 'Leaderboard' },
+  { href: '/mentor', label: 'Find a Mentor' },
+  { href: '/groups', label: 'Study Groups' },
+];
+
+// Services dropdown
+const servicesLinks = [
+  { href: '/marketplace', label: 'Marketplace' },
+  { href: '/shop', label: 'Shop' },
+  { href: '/booking', label: 'Book Appointment' },
+  { href: '/calendar', label: 'Calendar' },
+  { href: '/advising', label: 'Advising' },
+  { href: '/banking', label: 'Banking Services' },
+  { href: '/payment', label: 'Make Payment' },
+  { href: '/donate', label: 'Donate' },
+];
+
+// Community dropdown
+const communityLinks = [
+  { href: '/news', label: 'News & Updates' },
+  { href: '/chat', label: 'Community Chat' },
+  { href: '/messages', label: 'Messages' },
+  { href: '/video', label: 'Videos' },
+  { href: '/events', label: 'Events' },
 ];
 
 // "More" dropdown - everything else
@@ -95,6 +132,10 @@ export function MainNav() {
   const [programsOpen, setProgramsOpen] = useState(false);
   const [microClassesOpen, setMicroClassesOpen] = useState(false);
   const [fundingOpen, setFundingOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [communityOpen, setCommunityOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false);
   const [mobileMicroClassesOpen, setMobileMicroClassesOpen] = useState(false);
   const [mobileFundingOpen, setMobileFundingOpen] = useState(false);
@@ -373,6 +414,175 @@ export function MainNav() {
                         )}
                       >
                         {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Resources Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setResourcesOpen(true)}
+              onMouseLeave={() => setResourcesOpen(false)}
+            >
+              <button
+                className={clsx(
+                  'flex items-center gap-1 min-h-[44px] py-3 px-2 transition hover:text-brand-orange-600',
+                  'text-slate-700'
+                )}
+                aria-expanded={resourcesOpen}
+                aria-haspopup="true"
+              >
+                Resources
+                <ChevronDown
+                  size={14}
+                  className={clsx(
+                    'transition-transform',
+                    resourcesOpen && 'rotate-180'
+                  )}
+                />
+              </button>
+
+              {resourcesOpen && (
+                <div className="absolute top-full left-0 pt-2 z-50">
+                  <div className="w-56 bg-white rounded-lg shadow-xl border border-slate-200 py-2">
+                    {resourcesLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="block px-4 py-2 text-xs transition hover:bg-red-50 hover:text-brand-orange-600 text-slate-700"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Services Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
+            >
+              <button
+                className={clsx(
+                  'flex items-center gap-1 min-h-[44px] py-3 px-2 transition hover:text-brand-orange-600',
+                  'text-slate-700'
+                )}
+                aria-expanded={servicesOpen}
+                aria-haspopup="true"
+              >
+                Services
+                <ChevronDown
+                  size={14}
+                  className={clsx(
+                    'transition-transform',
+                    servicesOpen && 'rotate-180'
+                  )}
+                />
+              </button>
+
+              {servicesOpen && (
+                <div className="absolute top-full left-0 pt-2 z-50">
+                  <div className="w-56 bg-white rounded-lg shadow-xl border border-slate-200 py-2">
+                    {servicesLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="block px-4 py-2 text-xs transition hover:bg-red-50 hover:text-brand-orange-600 text-slate-700"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Community Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setCommunityOpen(true)}
+              onMouseLeave={() => setCommunityOpen(false)}
+            >
+              <button
+                className={clsx(
+                  'flex items-center gap-1 min-h-[44px] py-3 px-2 transition hover:text-brand-orange-600',
+                  'text-slate-700'
+                )}
+                aria-expanded={communityOpen}
+                aria-haspopup="true"
+              >
+                Community
+                <ChevronDown
+                  size={14}
+                  className={clsx(
+                    'transition-transform',
+                    communityOpen && 'rotate-180'
+                  )}
+                />
+              </button>
+
+              {communityOpen && (
+                <div className="absolute top-full left-0 pt-2 z-50">
+                  <div className="w-56 bg-white rounded-lg shadow-xl border border-slate-200 py-2">
+                    {communityLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="block px-4 py-2 text-xs transition hover:bg-red-50 hover:text-brand-orange-600 text-slate-700"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* More Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setMoreOpen(true)}
+              onMouseLeave={() => setMoreOpen(false)}
+            >
+              <button
+                className={clsx(
+                  'flex items-center gap-1 min-h-[44px] py-3 px-2 transition hover:text-brand-orange-600',
+                  'text-slate-700'
+                )}
+                aria-expanded={moreOpen}
+                aria-haspopup="true"
+              >
+                More
+                <ChevronDown
+                  size={14}
+                  className={clsx(
+                    'transition-transform',
+                    moreOpen && 'rotate-180'
+                  )}
+                />
+              </button>
+
+              {moreOpen && (
+                <div className="absolute top-full left-0 pt-2 z-50">
+                  <div className="w-56 bg-white rounded-lg shadow-xl border border-slate-200 py-2">
+                    {moreLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="block px-4 py-2 text-xs transition hover:bg-red-50 hover:text-brand-orange-600 text-slate-700"
+                      >
+                        {link.label}
+                        {link.badge && (
+                          <span className="ml-2 text-[10px] bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full font-bold">
+                            {link.badge}
+                          </span>
+                        )}
                       </Link>
                     ))}
                   </div>
