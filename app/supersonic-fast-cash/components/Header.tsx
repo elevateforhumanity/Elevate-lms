@@ -1,9 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { Phone, Mail } from 'lucide-react';
+import { Phone, Mail, Menu, X } from 'lucide-react';
+import { useState } from 'react';
 
 export function SupersonicHeader() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <>
       {/* Top Bar */}
@@ -13,14 +16,14 @@ export function SupersonicHeader() {
             <div className="flex items-center gap-6">
               <a href="tel:+13173143757" className="flex items-center gap-2 hover:text-blue-200">
                 <Phone className="w-4 h-4" />
-                (317) 314-3757
+                <span className="hidden sm:inline">(317) 314-3757</span>
               </a>
-              <a href="mailto:Supersonicfadtcashllc@gmail.com" className="flex items-center gap-2 hover:text-blue-200">
+              <a href="mailto:Supersonicfadtcashllc@gmail.com" className="hidden sm:flex items-center gap-2 hover:text-blue-200">
                 <Mail className="w-4 h-4" />
                 Supersonicfadtcashllc@gmail.com
               </a>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-4">
               <a href="#" className="hover:text-blue-200">Facebook</a>
               <a href="#" className="hover:text-blue-200">YouTube</a>
               <a href="#" className="hover:text-blue-200">LinkedIn</a>
@@ -35,12 +38,12 @@ export function SupersonicHeader() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/supersonic-fast-cash" className="flex items-center">
-              <div className="text-2xl font-bold text-blue-900">
+              <div className="text-xl md:text-2xl font-bold text-blue-900">
                 Supersonic Fast Cash
               </div>
             </Link>
 
-            {/* Navigation */}
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
               <Link href="/supersonic-fast-cash" className="text-gray-700 hover:text-blue-600 font-semibold">
                 Home
@@ -64,8 +67,67 @@ export function SupersonicHeader() {
                 Get Started
               </Link>
             </nav>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-gray-700 hover:text-blue-600"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-200">
+            <nav className="px-4 py-4 space-y-3">
+              <Link 
+                href="/supersonic-fast-cash" 
+                className="block py-2 text-gray-700 hover:text-blue-600 font-semibold"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link 
+                href="/supersonic-fast-cash/services" 
+                className="block py-2 text-gray-700 hover:text-blue-600 font-semibold"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Services
+              </Link>
+              <Link 
+                href="/supersonic-fast-cash/tax-information" 
+                className="block py-2 text-gray-700 hover:text-blue-600 font-semibold"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Tax Information
+              </Link>
+              <Link 
+                href="/supersonic-fast-cash/tax-tools" 
+                className="block py-2 text-gray-700 hover:text-blue-600 font-semibold"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Tax Tools
+              </Link>
+              <Link 
+                href="/supersonic-fast-cash/contact" 
+                className="block py-2 text-gray-700 hover:text-blue-600 font-semibold"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+              <Link
+                href="/supersonic-fast-cash/apply"
+                className="block w-full text-center px-6 py-3 bg-orange-500 text-white font-bold rounded hover:bg-orange-600 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Get Started
+              </Link>
+            </nav>
+          </div>
+        )}
       </header>
     </>
   );
