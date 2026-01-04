@@ -1,6 +1,5 @@
 'use client';
 
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { Calendar } from 'lucide-react';
@@ -8,28 +7,6 @@ import { Calendar } from 'lucide-react';
 const CALENDLY_SCRIPT = 'https://assets.calendly.com/assets/external/widget.js';
 const CALENDLY_LINK = 'https://calendly.com/elevateforhumanity/free-tax-prep';
 
-export const metadata: Metadata = {
-  title: 'Free Tax Help - VITA Services | Rise Up Foundation',
-  description:
-    'Free tax preparation for individuals and families earning $64,000 or less. IRS-certified volunteers help you file for free.',
-  keywords: [
-    'free tax help',
-    'VITA eligibility',
-    'free tax preparation',
-    'IRS VITA program',
-  ],
-  alternates: {
-    canonical:
-      'https://elevateforhumanity.org/tax/rise-up-foundation/free-tax-help',
-  },
-  openGraph: {
-    title: 'Free Tax Help - VITA Services',
-    description:
-      'Free tax preparation for qualifying individuals. No cost, no hidden fees.',
-    url: 'https://elevateforhumanity.org/tax/rise-up-foundation/free-tax-help',
-    type: 'website',
-  },
-};
 
 export default function FreeTaxHelpPage() {
   useEffect(() => {

@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 
 export default async function AdminLicensesPage() {
   const supabase = await createClient();

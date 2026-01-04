@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Success Stories | Elevate for Humanity',

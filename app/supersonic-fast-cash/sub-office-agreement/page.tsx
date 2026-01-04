@@ -177,31 +177,60 @@ export default function SubOfficeAgreementPage() {
               <li>Compliance oversight, corrections, notices, and audits</li>
             </ul>
 
-            <h3 className="text-xl font-bold mt-6 mb-3">3. Compensation</h3>
+            <h3 className="text-xl font-bold mt-6 mb-3">3. Fees, Advances, and Compensation</h3>
+            
+            <h4 className="text-lg font-bold mt-4 mb-2">3.1 Tax Preparation Fees (Platform-Controlled)</h4>
+            <p className="mb-4">
+              All tax preparation fees associated with Supersonic Fast Cash are established, disclosed, and collected 
+              exclusively by the Program Owner through the official platform. Sub-Office Operators are prohibited from 
+              adding, modifying, bundling, or separately collecting any preparation fees.
+            </p>
+
+            <h4 className="text-lg font-bold mt-4 mb-2">3.2 Revenue Allocation (Preparation Fees Only)</h4>
+            <p className="mb-2">Net tax preparation fees collected through the platform shall be allocated as follows:</p>
             <ul className="list-disc ml-6 mb-4">
-              <li>
-                Sub-Office receives{' '}
-                <strong>45% of the base preparation fee</strong> per accepted
-                return
-              </li>
-              <li>
-                Main Office retains{' '}
-                <strong>55% of the base preparation fee</strong>
-              </li>
-              <li>
-                Compensation applies only to returns accepted by taxing
-                authorities
-              </li>
+              <li><strong>Sixty percent (60%)</strong> to the Program Owner</li>
+              <li><strong>Forty percent (40%)</strong> to the Sub-Office Operator</li>
+            </ul>
+            <p className="mb-4">
+              This allocation applies solely to tax preparation fees. No other fees are subject to revenue sharing.
+            </p>
+
+            <h4 className="text-lg font-bold mt-4 mb-2">3.3 Refund Advances (Third-Party Bank Product)</h4>
+            <p className="mb-2">Refund advances are optional financial products offered through third-party banking partners.</p>
+            <ul className="list-disc ml-6 mb-4">
+              <li>Advance eligibility, amounts, terms, and costs are determined solely by the bank</li>
+              <li>Any advance costs are deducted from the taxpayer's refund by the bank</li>
+              <li><strong>Sub-Office Operators receive no portion of advance fees, interest, or related costs</strong></li>
+              <li>Sub-Office Operators may not represent advance costs as compensation, commission, or income</li>
             </ul>
 
-            <div className="bg-red-50 border-l-4 border-red-600 p-4 my-6">
-              <p className="font-bold">Important:</p>
+            <h4 className="text-lg font-bold mt-4 mb-2">3.4 Prohibited Fees and Practices</h4>
+            <p className="mb-2">Sub-Office Operators may not impose, request, or collect any of the following:</p>
+            <ul className="list-disc ml-6 mb-4">
+              <li>Add-on fees of any kind</li>
+              <li>Rush, document, processing, or convenience fees</li>
+              <li>Advance "processing" or facilitation fees</li>
+              <li>Off-platform payments or side agreements with clients</li>
+            </ul>
+            <div className="bg-red-50 border-l-4 border-red-600 p-4 my-4">
+              <p className="font-bold">Critical:</p>
               <p>
-                All add-on fees, including additional forms, Schedule C,
-                multiple W-2s, dependents, complexity charges, and processing
-                fees are retained <strong>100% by the Main Office</strong>.
+                Any unauthorized fee activity constitutes a material breach and grounds for immediate termination.
               </p>
             </div>
+
+            <h4 className="text-lg font-bold mt-4 mb-2">3.5 Payment Flow and Submission Control</h4>
+            <p className="mb-4">
+              All client payments must be processed through the official Supersonic Fast Cash system prior to tax return submission. 
+              Off-platform collection or circumvention of platform controls is prohibited.
+            </p>
+
+            <h4 className="text-lg font-bold mt-4 mb-2">3.6 Compliance and Audit Rights</h4>
+            <p className="mb-4">
+              The Program Owner reserves the right to audit transactions, disclosures, and communications to ensure adherence 
+              to this fee structure and applicable laws. Sub-Office Operators agree to cooperate fully with any such review.
+            </p>
 
             <h3 className="text-xl font-bold mt-6 mb-3">4. Exclusions</h3>
             <p>No compensation is paid on:</p>

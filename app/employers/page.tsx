@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
   title: 'Hire Job-Ready Talent | Elevate for Humanity',

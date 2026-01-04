@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 
 export default function DocumentUploadPage() {

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/Button';
 import { Shield, FileText, BarChart3, ArrowLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
