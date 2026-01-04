@@ -15,15 +15,13 @@ const STUDENT_PORTAL_URL = '/portal';
 
 // Main Programs dropdown items (Elevate-run programs)
 const programsLinks = [
-  { href: '/programs/medical-assistant', label: 'Medical Assistant' },
+  { href: '/programs/cna', label: 'CNA Training' },
   { href: '/programs/barber-apprenticeship', label: 'Barber Apprenticeship' },
-  { href: '/programs/hvac-technician', label: 'HVAC Technician' },
-  {
-    href: '/programs/building-maintenance',
-    label: 'Building Maintenance Tech',
-  },
-  { href: '/programs/cdl', label: 'CDL / Transportation' },
-  { href: '/programs/workforce-readiness', label: 'Workforce Readiness' },
+  { href: '/programs/healthcare', label: 'Healthcare Programs' },
+  { href: '/programs/skilled-trades', label: 'Skilled Trades' },
+  { href: '/programs/cdl-transportation', label: 'CDL / Transportation' },
+  { href: '/programs/business-financial', label: 'Business & Financial' },
+  { href: '/programs/tax-preparation', label: 'Tax Preparation' },
   { href: '/programs', label: 'View All Programs →' },
 ];
 
