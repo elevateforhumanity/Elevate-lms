@@ -1,0 +1,16 @@
+name: Bug report
+description: Create a report to help us improve
+labels: [bug]
+body:
+  - type: textarea
+    id: describe
+    attributes:
+      label: Describe the bug
+      description: Clear steps to reproduce; paste stack traces.
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Affected URL (if any)
+      placeholder: https://elevateforhumanity.pages.dev/path

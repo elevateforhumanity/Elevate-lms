@@ -1,0 +1,28 @@
+name: Autopilot (Builder Mode)
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - "chore/**"
+      - "fix/**"
+      - "feat/**"
+
+jobs:
+  autopilot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install
+        run: npm ci || npm install
+
+      - name: Autopilot
+        run: ./scripts/autopilot.sh

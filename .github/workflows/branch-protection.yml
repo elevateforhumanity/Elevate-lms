@@ -1,0 +1,45 @@
+name: Branch Protection & Cleanup
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  cleanup-stale-branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Delete stale branches
+        run: |
+          echo "Checking for stale branches..."
+
+          # Get all remote branches
+          git fetch --all --prune
+
+          # Delete branches older than 30 days (except main and dependabot)
+          for branch in $(git branch -r | grep -v 'main\|HEAD\|dependabot'); do
+            branch_name=$(echo $branch | sed 's/origin\///')
+
+            # Get last commit date
+            last_commit=$(git log -1 --format=%ct origin/$branch_name)
+            current_time=$(date +%s)
+            days_old=$(( ($current_time - $last_commit) / 86400 ))
+
+            if [ $days_old -gt 30 ]; then
+              echo "Deleting stale branch: $branch_name (${days_old} days old)"
+              git push origin --delete $branch_name || echo "Failed to delete $branch_name"
+            fi
+          done
+
+      - name: Report cleanup
+        run: |
+          echo "Branch cleanup complete!"
+          git branch -r | grep -v 'main\|HEAD' | wc -l | xargs echo "Remaining branches:"

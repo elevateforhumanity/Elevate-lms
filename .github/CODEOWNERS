@@ -1,0 +1,21 @@
+# Code Owners - Require review before merging
+
+# Default owners for everything
+* @elevateforhumanity
+
+# Critical files require extra review
+/.github/ @elevateforhumanity
+/vercel.json @elevateforhumanity
+/package.json @elevateforhumanity
+/package-lock.json @elevateforhumanity
+
+# Environment and configuration
+/.env.example @elevateforhumanity
+/next.config.js @elevateforhumanity
+/tsconfig.json @elevateforhumanity
+
+# Database migrations
+/supabase/migrations/ @elevateforhumanity
+
+# Admin pages
+/app/admin/ @elevateforhumanity

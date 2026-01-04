@@ -1,0 +1,52 @@
+name: Supabase Migrations Autopilot
+
+on:
+  push:
+    paths:
+      - "supabase/migrations/**"
+      - "supabase/seeds/**"
+    branches:
+      - main
+
+jobs:
+  supabase-migrations:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install -D tsx pg
+
+      - name: Run Supabase Autopilot
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_SEED_FILE: WORKING_SEED.sql
+        run: |
+          chmod +x scripts/supabase-auto-setup.sh
+          scripts/supabase-auto-setup.sh
+
+      - name: Test connection
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+        run: npm run supabase:test
+
+      - name: Notify success
+        if: success()
+        run: echo "✅ Database migrations and seeds completed successfully"
+
+      - name: Notify failure
+        if: failure()
+        run: echo "❌ Database migrations failed"

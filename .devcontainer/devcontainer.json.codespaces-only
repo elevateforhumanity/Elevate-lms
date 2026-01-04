@@ -1,0 +1,67 @@
+{
+  "name": "Elevate for Humanity - Next.js LMS",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
+  "forwardPorts": [3000, 5432],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js Dev Server",
+      "onAutoForward": "openPreview"
+    },
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "ignore"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/postgres:1": {
+      "version": "16",
+      "postgresPassword": "postgres"
+    }
+  },
+  "postCreateCommand": "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && chmod +x setup-env.sh || true",
+  "postStartCommand": "if [ ! -f .env.local ] && [ -n \"$VERCEL_TOKEN\" ]; then ./setup-env.sh; fi || true",
+  "remoteEnv": {
+    "VERCEL_TOKEN": "${localEnv:VERCEL_TOKEN}"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "github.copilot",
+        "github.copilot-chat",
+        "eamodio.gitlens",
+        "ms-vscode.vscode-typescript-next",
+        "github.vscode-pull-request-github",
+        "redhat.vscode-yaml",
+        "ms-azuretools.vscode-docker",
+        "christian-kohler.path-intellisense",
+        "yzhang.markdown-all-in-one",
+        "bradlc.vscode-tailwindcss",
+        "prisma.prisma",
+        "cweijan.vscode-postgresql-client2"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true
+      }
+    },
+    "codespaces": {
+      "openFiles": [
+        "README.md"
+      ]
+    }
+  },
+  "mounts": [
+    "source=postgres-data,target=/var/lib/postgresql/data,type=volume"
+  ]
+}

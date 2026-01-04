@@ -1,0 +1,84 @@
+# Elevate for Humanity - Gitpod Development Environment
+# Simplified configuration for reliable Node.js + Next.js development
+
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  - port: 3000
+    onOpen: open-preview
+    visibility: public
+    name: Next.js Dev Server
+    description: "Marketing + LMS Platform"
+  - port: 5432
+    onOpen: ignore
+    visibility: private
+    name: PostgreSQL
+  - port: 54321
+    onOpen: ignore
+    visibility: private
+    name: Supabase Studio
+
+tasks:
+  - name: Setup & Dev Server
+    init: |
+      # Verify Node.js is available
+      echo "🔍 Checking Node.js..."
+      node -v
+      npm -v
+      
+      # Enable pnpm
+      echo "📦 Setting up pnpm..."
+      corepack enable
+      corepack prepare pnpm@latest --activate
+      
+      # Install dependencies
+      echo "📦 Installing dependencies..."
+      pnpm install
+      
+      # Make scripts executable
+      chmod +x setup-env.sh 2>/dev/null || true
+      
+      # Setup environment variables automatically
+      echo ""
+      echo "🔧 Setting up environment variables..."
+      bash .gitpod/setup-env.sh || echo "⚠️  Setup failed, continuing anyway..."
+      
+      echo ""
+      echo "✅ Setup complete!"
+      
+    command: |
+      # Wait a moment for init to complete
+      sleep 2
+      
+      echo "🚀 Starting development server..."
+      pnpm dev
+
+vscode:
+  extensions:
+    # Essential
+    - dbaeumer.vscode-eslint
+    - esbenp.prettier-vscode
+    - bradlc.vscode-tailwindcss
+    
+    # TypeScript
+    - ms-vscode.vscode-typescript-next
+    
+    # Git
+    - eamodio.gitlens
+    - github.vscode-pull-request-github
+    
+    # Utilities
+    - christian-kohler.path-intellisense
+    - yzhang.markdown-all-in-one
+    
+    # Database
+    - cweijan.vscode-postgresql-client2
+
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: false
+    addCheck: true

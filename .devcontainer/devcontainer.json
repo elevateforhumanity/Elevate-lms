@@ -1,0 +1,28 @@
+{
+	"name": "Elevate for Humanity - Next.js LMS",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bookworm",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "20"
+		}
+	},
+	"postCreateCommand": "corepack enable && corepack prepare pnpm@latest --activate && pnpm install",
+	"forwardPorts": [3000, 5432],
+	"portsAttributes": {
+		"3000": {
+			"label": "Next.js Dev Server",
+			"onAutoForward": "openPreview"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"bradlc.vscode-tailwindcss",
+				"github.copilot",
+				"github.copilot-chat"
+			]
+		}
+	}
+}
