@@ -33,10 +33,8 @@ const GENERIC_TITLES = [
 
 let errors = 0;
 
-console.log('🔍 Running quality enforcement checks...\n');
 
 // Check for forbidden phrases
-console.log('1. Checking for forbidden phrases...');
 FORBIDDEN_PHRASES.forEach((phrase) => {
   try {
     const result = execSync(
@@ -54,7 +52,6 @@ FORBIDDEN_PHRASES.forEach((phrase) => {
 });
 
 // Check for vague CTAs
-console.log('\n2. Checking for vague CTAs...');
 VAGUE_CTAS.forEach((cta) => {
   try {
     const result = execSync(
@@ -69,7 +66,6 @@ VAGUE_CTAS.forEach((cta) => {
 });
 
 // Check for generic titles
-console.log('\n3. Checking for generic titles...');
 GENERIC_TITLES.forEach((title) => {
   try {
     const result = execSync(
@@ -84,7 +80,6 @@ GENERIC_TITLES.forEach((title) => {
 });
 
 // Check for gradient overlays
-console.log('\n4. Checking for gradient overlays...');
 try {
   const result = execSync(
     `grep -r "from-.*-900/90\\|bg-gradient-to" app --include="*.tsx" | wc -l`,
@@ -98,7 +93,6 @@ try {
 } catch (e) {}
 
 // Check for missing alt text
-console.log('\n5. Checking for images without alt text...');
 try {
   const result = execSync(
     `grep -r "<Image\\|<img" app --include="*.tsx" | grep -v "alt=" | wc -l`,
@@ -113,12 +107,10 @@ try {
 } catch (e) {}
 
 // Summary
-console.log('\n' + '='.repeat(50));
 if (errors > 0) {
   console.error(`\n❌ QUALITY CHECK FAILED: ${errors} violations found\n`);
   console.error('Fix these issues before committing.\n');
   process.exit(1);
 } else {
-  console.log('\n✅ QUALITY CHECK PASSED\n');
   process.exit(0);
 }

@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * Seed Barber Apprenticeship (Indiana) Program to Supabase
- * 
+ *
  * Usage:
  *   pnpm tsx scripts/seed-barber-program.ts
- * 
+ *
  * Requirements:
  *   - SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env.local
  *   - data/programs/barber-apprenticeship-indiana.json exists
@@ -138,14 +138,14 @@ async function seedModules(programData: ProgramData) {
 
   for (const module of programData.modules) {
     const moduleId = MODULE_IDS[module.short_code as keyof typeof MODULE_IDS];
-    
+
     if (!moduleId) {
       console.error(`   ❌ No UUID mapping for ${module.short_code}`);
       continue;
     }
 
-    const aiInstructorId = module.ai_instructor === 'Elizabeth' 
-      ? AI_INSTRUCTOR_ELIZABETH_ID 
+    const aiInstructorId = module.ai_instructor === 'Elizabeth'
+      ? AI_INSTRUCTOR_ELIZABETH_ID
       : AI_INSTRUCTOR_BARBER_MENTOR_ID;
 
     const moduleRecord = {

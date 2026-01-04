@@ -2,7 +2,7 @@
 
 /**
  * Partner Course Import Script
- * 
+ *
  * Usage:
  *   npm run import:courses -- --provider certiport --file courses.json
  *   npm run import:courses -- --provider hsi --file courses.csv

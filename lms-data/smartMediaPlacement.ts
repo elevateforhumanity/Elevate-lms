@@ -1,6 +1,6 @@
 /**
  * SMART IMAGE PLACEMENT SYSTEM
- * 
+ *
  * This configuration maps images to slots based on:
  * 1. Filename analysis (keywords in name)
  * 2. Directory structure (where image is stored)
@@ -59,7 +59,7 @@ export const smartImageMappings: SmartImageMapping[] = [
     keywords: ["employer", "partnership", "handshake", "business", "workplace"],
     description: "Employer partnerships - professional handshake or workplace"
   },
-  
+
   // Program-Specific Images
   {
     slot: "program_cna_hero",
@@ -171,7 +171,7 @@ export const smartImageMappings: SmartImageMapping[] = [
     keywords: ["plumbing", "plumber", "pipe", "water"],
     description: "Plumbing program - plumber at work"
   },
-  
+
   // Training/Education Images
   {
     slot: "training_cpr",
@@ -198,7 +198,7 @@ export const smartImageMappings: SmartImageMapping[] = [
 export function getBestImageForSlot(slot: string): string | null {
   const mapping = smartImageMappings.find(m => m.slot === slot);
   if (!mapping) return null;
-  
+
   // Try primary first
   // In production, you'd check if file exists
   return mapping.primaryImage;
@@ -210,7 +210,7 @@ export function getBestImageForSlot(slot: string): string | null {
 export function getAllImagesForSlot(slot: string): string[] {
   const mapping = smartImageMappings.find(m => m.slot === slot);
   if (!mapping) return [];
-  
+
   return [mapping.primaryImage, ...mapping.fallbackImages];
 }
 
@@ -218,8 +218,8 @@ export function getAllImagesForSlot(slot: string): string[] {
  * Find slots that match keywords (for auto-discovery)
  */
 export function findSlotsByKeywords(keywords: string[]): SmartImageMapping[] {
-  return smartImageMappings.filter(mapping => 
-    keywords.some(keyword => 
+  return smartImageMappings.filter(mapping =>
+    keywords.some(keyword =>
       mapping.keywords.some(k => k.includes(keyword.toLowerCase()))
     )
   );

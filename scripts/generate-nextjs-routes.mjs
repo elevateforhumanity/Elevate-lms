@@ -79,11 +79,8 @@ export default function ${route.page.split('/').pop()}Page() {
 `;
 
   fs.writeFileSync(fullPath, content);
-  console.log(`✅ Created: ${appPath}`);
 }
 
-console.log('🚀 Generating Next.js routes...\n');
 
 routes.forEach(createNextRoute);
 
-console.log('\n✅ All routes generated!');

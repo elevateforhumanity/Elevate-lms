@@ -64,19 +64,17 @@ function checkImageMagick() {
 
 function upscaleImage(inputPath, targetWidth, targetHeight) {
   try {
-    console.log(`Upscaling: ${inputPath}`);
-    
+
     // Create backup
     const backupPath = inputPath.replace(/\.(jpg|png)$/, '.backup.$1');
     execSync(`cp "${inputPath}" "${backupPath}"`);
-    
+
     // Upscale with Lanczos filter (best quality)
     execSync(
       `convert "${inputPath}" -filter Lanczos -resize ${targetWidth}x${targetHeight}^ -gravity center -extent ${targetWidth}x${targetHeight} "${inputPath}"`,
       { stdio: 'inherit' }
     );
-    
-    console.log(`✅ Upscaled to ${targetWidth}x${targetHeight}`);
+
     return true;
   } catch (error) {
     console.error(`❌ Failed to upscale ${inputPath}:`, error.message);
@@ -86,21 +84,19 @@ function upscaleImage(inputPath, targetWidth, targetHeight) {
 
 function generatePlaceholder(outputPath, width, height, text) {
   try {
-    console.log(`Generating placeholder: ${outputPath}`);
-    
+
     // Create directory if needed
     const dir = dirname(outputPath);
     if (!existsSync(dir)) {
       mkdirSync(dir, { recursive: true });
     }
-    
+
     // Generate professional gradient placeholder
     execSync(
       `convert -size ${width}x${height} gradient:#1e3a8a-#3b82f6 -gravity center -pointsize 48 -fill white -annotate +0+0 "${text}" "${outputPath}"`,
       { stdio: 'inherit' }
     );
-    
-    console.log(`✅ Generated placeholder ${width}x${height}`);
+
     return true;
   } catch (error) {
     console.error(`❌ Failed to generate placeholder ${outputPath}:`, error.message);
@@ -115,7 +111,6 @@ function optimizeImage(inputPath) {
       `convert "${inputPath}" -strip -quality 85 -interlace Plane "${inputPath}"`,
       { stdio: 'inherit' }
     );
-    console.log(`✅ Optimized: ${inputPath}`);
     return true;
   } catch (error) {
     console.error(`❌ Failed to optimize ${inputPath}:`, error.message);
@@ -124,8 +119,7 @@ function optimizeImage(inputPath) {
 }
 
 async function main() {
-  console.log('🖼️  Image Optimization Script\n');
-  
+
   // Check ImageMagick
   if (!checkImageMagick()) {
     console.error('❌ ImageMagick not found. Installing...');
@@ -136,12 +130,11 @@ async function main() {
       process.exit(1);
     }
   }
-  
+
   let totalProcessed = 0;
   let totalFailed = 0;
-  
+
   // Process team photos
-  console.log('\n📸 Processing Team Photos (528x444 → 1200x800)...\n');
   for (const imgPath of LOW_RES_IMAGES.team) {
     if (existsSync(imgPath)) {
       const success = upscaleImage(imgPath, TARGETS.team.width, TARGETS.team.height);
@@ -151,12 +144,10 @@ async function main() {
         totalFailed++;
       }
     } else {
-      console.log(`⚠️  Not found: ${imgPath}`);
     }
   }
-  
+
   // Process portfolio pieces
-  console.log('\n🎨 Processing Portfolio Pieces (400x400 → 800x800)...\n');
   for (const imgPath of LOW_RES_IMAGES.portfolio) {
     if (existsSync(imgPath)) {
       const success = upscaleImage(imgPath, TARGETS.portfolio.width, TARGETS.portfolio.height);
@@ -166,12 +157,10 @@ async function main() {
         totalFailed++;
       }
     } else {
-      console.log(`⚠️  Not found: ${imgPath}`);
     }
   }
-  
+
   // Process hero images
-  console.log('\n🖼️  Processing Hero Images (→ 1920x1080)...\n');
   for (const imgPath of LOW_RES_IMAGES.hero) {
     if (existsSync(imgPath)) {
       const success = upscaleImage(imgPath, TARGETS.hero.width, TARGETS.hero.height);
@@ -181,22 +170,11 @@ async function main() {
         totalFailed++;
       }
     } else {
-      console.log(`⚠️  Not found: ${imgPath}`);
     }
   }
-  
+
   // Summary
-  console.log('\n' + '='.repeat(60));
-  console.log('📊 Summary:');
-  console.log(`✅ Successfully processed: ${totalProcessed}`);
-  console.log(`❌ Failed: ${totalFailed}`);
-  console.log('='.repeat(60));
-  
-  console.log('\n💡 Next Steps:');
-  console.log('1. Review upscaled images for quality');
-  console.log('2. Replace with professional photos if needed');
-  console.log('3. Backups saved as *.backup.jpg/png');
-  console.log('4. Run: git add public/images && git commit -m "Upscale images to professional resolution"');
+
 }
 
 main().catch(console.error);

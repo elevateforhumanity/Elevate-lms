@@ -87,7 +87,7 @@ function generateMetaTags(config, pageConfig) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Primary Meta Tags -->
     <title>${pageConfig.title}</title>
     <meta name="title" content="${pageConfig.title}">
@@ -96,10 +96,10 @@ function generateMetaTags(config, pageConfig) {
     <meta name="author" content="${config.siteName}">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <meta name="googlebot" content="index, follow">
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="${config.domain}${pageConfig.canonical || ''}">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="${config.domain}">
@@ -108,27 +108,27 @@ function generateMetaTags(config, pageConfig) {
     <meta property="og:image" content="${config.domain}${config.defaultImage}">
     <meta property="og:site_name" content="${config.siteName}">
     <meta property="og:locale" content="en_US">
-    
+
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="${config.domain}">
     <meta property="twitter:title" content="${pageConfig.title}">
     <meta property="twitter:description" content="${pageConfig.description}">
     <meta property="twitter:image" content="${config.domain}${config.defaultImage}">
-    
+
     <!-- Verification Tags -->
     <meta name="google-site-verification" content="${config.googleVerification}">
     <meta name="msvalidate.01" content="${config.bingVerification}">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/Elevate_for_Humanity_logo_81bf0fab.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/Elevate_for_Humanity_logo_81bf0fab.png">
-    
+
     <!-- Security Headers -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    
+
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=${config.gaId}"></script>
     <script>
@@ -140,17 +140,17 @@ function generateMetaTags(config, pageConfig) {
             page_location: window.location.href
         });
     </script>
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     ${JSON.stringify(pageConfig.structuredData, null, 2)}
     </script>
-    
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>`;
 }
 

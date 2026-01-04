@@ -13,7 +13,6 @@ import * as dotenv from 'dotenv';
 const envPath = path.join(process.cwd(), '.env.local');
 if (fs.existsSync(envPath)) {
   dotenv.config({ path: envPath });
-  console.log('✅ Loaded environment from .env.local\n');
 }
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
@@ -41,7 +40,6 @@ interface TestResult {
 const results: TestResult[] = [];
 
 async function testDatabaseConnection() {
-  console.log('📡 Testing database connection...');
   const category: TestResult = {
     category: 'Database Connection',
     tests: [],
@@ -49,7 +47,7 @@ async function testDatabaseConnection() {
 
   try {
     const { data, error } = await supabase.from('profiles').select('count').limit(1);
-    
+
     category.tests.push({
       name: 'Connection successful',
       passed: !error,
@@ -67,7 +65,6 @@ async function testDatabaseConnection() {
 }
 
 async function testCoreTables() {
-  console.log('📋 Testing core tables...');
   const category: TestResult = {
     category: 'Core Tables',
     tests: [],
@@ -88,7 +85,7 @@ async function testCoreTables() {
   for (const table of coreTables) {
     try {
       const { error } = await supabase.from(table).select('id').limit(1);
-      
+
       category.tests.push({
         name: `Table '${table}' exists`,
         passed: !error,
@@ -107,7 +104,6 @@ async function testCoreTables() {
 }
 
 async function testRLSPolicies() {
-  console.log('🔒 Testing RLS policies...');
   const category: TestResult = {
     category: 'RLS Policies',
     tests: [],
@@ -116,7 +112,7 @@ async function testRLSPolicies() {
   // Test public access to programs (should work without auth)
   try {
     const { data, error } = await supabase.from('programs').select('id').limit(1);
-    
+
     category.tests.push({
       name: 'Public can view programs',
       passed: !error,
@@ -134,7 +130,7 @@ async function testRLSPolicies() {
   // Test public access to courses (should work without auth)
   try {
     const { data, error } = await supabase.from('courses').select('id').limit(1);
-    
+
     category.tests.push({
       name: 'Public can view courses',
       passed: !error,
@@ -152,9 +148,9 @@ async function testRLSPolicies() {
   // Test that profiles require auth (should fail without auth)
   try {
     const anonClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    
+
     const { data, error } = await anonClient.from('profiles').select('*').limit(1);
-    
+
     category.tests.push({
       name: 'Profiles require authentication',
       passed: !!error || (data && data.length === 0),
@@ -172,7 +168,6 @@ async function testRLSPolicies() {
 }
 
 async function testDuplicatePolicies() {
-  console.log('🔍 Checking for duplicate policies...');
   const category: TestResult = {
     category: 'Policy Conflicts',
     tests: [],
@@ -181,11 +176,11 @@ async function testDuplicatePolicies() {
   // This would require direct database access via SQL
   // For now, we'll check if tables have RLS enabled
   const tables = ['profiles', 'enrollments', 'courses', 'programs'];
-  
+
   for (const table of tables) {
     try {
       const { error } = await supabase.from(table).select('id').limit(1);
-      
+
       category.tests.push({
         name: `RLS active on '${table}'`,
         passed: true,
@@ -204,7 +199,6 @@ async function testDuplicatePolicies() {
 }
 
 async function testSeedData() {
-  console.log('🌱 Testing seed data...');
   const category: TestResult = {
     category: 'Seed Data',
     tests: [],
@@ -213,7 +207,7 @@ async function testSeedData() {
   // Check if programs are seeded
   try {
     const { data, error } = await supabase.from('programs').select('id, name').limit(5);
-    
+
     category.tests.push({
       name: 'Programs seeded',
       passed: !error && data && data.length > 0,
@@ -231,7 +225,7 @@ async function testSeedData() {
   // Check if courses are seeded
   try {
     const { data, error } = await supabase.from('courses').select('id, title').limit(5);
-    
+
     category.tests.push({
       name: 'Courses seeded',
       passed: !error && data && data.length > 0,
@@ -250,18 +244,17 @@ async function testSeedData() {
 }
 
 async function testMigrationFiles() {
-  console.log('📁 Analyzing migration files...');
   const category: TestResult = {
     category: 'Migration Files',
     tests: [],
   };
 
   const migrationsDir = path.join(process.cwd(), 'supabase/migrations');
-  
+
   try {
     const files = fs.readdirSync(migrationsDir)
       .filter(f => f.endsWith('.sql') && !f.startsWith('.'));
-    
+
     category.tests.push({
       name: 'Migration files found',
       passed: files.length > 0,
@@ -275,7 +268,7 @@ async function testMigrationFiles() {
     for (const file of files) {
       const content = fs.readFileSync(path.join(migrationsDir, file), 'utf-8');
       const policyMatches = content.matchAll(/CREATE POLICY "([^"]+)"/g);
-      
+
       for (const match of policyMatches) {
         const policyName = match[1];
         if (!policyNames.has(policyName)) {
@@ -294,7 +287,7 @@ async function testMigrationFiles() {
     category.tests.push({
       name: 'No duplicate policy names',
       passed: duplicatePolicies === 0,
-      details: duplicatePolicies > 0 
+      details: duplicatePolicies > 0
         ? `Found ${duplicatePolicies} duplicate policy names`
         : 'All policy names unique',
     });
@@ -311,7 +304,6 @@ async function testMigrationFiles() {
 }
 
 async function testSeedFiles() {
-  console.log('🌾 Analyzing seed files...');
   const category: TestResult = {
     category: 'Seed Files',
     tests: [],
@@ -340,7 +332,7 @@ async function testSeedFiles() {
   category.tests.push({
     name: 'Single master seed file',
     passed: foundFiles === 1,
-    details: foundFiles > 1 
+    details: foundFiles > 1
       ? `⚠️ Multiple seed files found (${foundFiles}) - use 000_master_seed.sql`
       : 'Single seed file',
   });
@@ -349,9 +341,6 @@ async function testSeedFiles() {
 }
 
 function printResults() {
-  console.log('\n================================');
-  console.log('📊 TEST RESULTS');
-  console.log('================================\n');
 
   let totalTests = 0;
   let passedTests = 0;
@@ -367,43 +356,27 @@ function printResults() {
     failedTests += categoryFailed;
 
     const icon = categoryFailed === 0 ? '✅' : '⚠️';
-    console.log(`${icon} ${category.category} (${categoryPassed}/${categoryTotal})`);
 
     for (const test of category.tests) {
       const testIcon = test.passed ? '  ✅' : '  ❌';
-      console.log(`${testIcon} ${test.name}`);
-      
+
       if (test.details) {
-        console.log(`      ${test.details}`);
       }
-      
+
       if (test.error) {
-        console.log(`      Error: ${test.error}`);
       }
     }
-    console.log('');
   }
 
-  console.log('================================');
-  console.log('📈 SUMMARY');
-  console.log('================================\n');
-  console.log(`Total Tests: ${totalTests}`);
-  console.log(`Passed: ${passedTests} ✅`);
-  console.log(`Failed: ${failedTests} ❌`);
-  console.log(`Success Rate: ${((passedTests / totalTests) * 100).toFixed(1)}%\n`);
 
   if (failedTests === 0) {
-    console.log('✅ ALL TESTS PASSED - Database is production ready!\n');
     return 0;
   } else {
-    console.log('⚠️ SOME TESTS FAILED - Review issues before deploying\n');
     return 1;
   }
 }
 
 async function main() {
-  console.log('🗄️  Testing Database Setup');
-  console.log('================================\n');
 
   try {
     await testDatabaseConnection();

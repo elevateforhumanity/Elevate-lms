@@ -53,7 +53,7 @@ async function main() {
 
   // Summary
   const errors = [programsError, coursesError, productsError].filter(Boolean);
-  
+
   if (errors.length > 0) {
     console.error('\n❌ Database not fully ready. Run migrations and seeds:');
     console.error('   npm run db:setup');

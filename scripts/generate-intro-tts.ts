@@ -20,28 +20,28 @@ Because when you rise, we all rise.
 Elevate for Humanity. Your partner in career transformation.`;
 
 async function generateTTS() {
-  
+
   try {
     // Import edge-tts dynamically
     const edgeTTS = await import('edge-tts');
-    
+
     const outputPath = path.join(process.cwd(), 'public', 'videos', 'intro-voiceover.mp3');
-    
+
     // Ensure directory exists
     await fs.mkdir(path.dirname(outputPath), { recursive: true });
-    
+
     // Generate TTS
     // Using a professional, warm voice
     const voice = 'en-US-GuyNeural'; // Professional male voice
-    
-    
+
+
     // Create TTS instance
     const tts = new edgeTTS.default();
-    
+
     // Generate audio
     await tts.ttsToFile(outputPath, SCRIPT, voice);
-    
-    
+
+
   } catch (error) {
     console.error('❌ Error:', error);
     throw error;

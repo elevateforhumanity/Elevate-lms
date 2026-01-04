@@ -43,24 +43,16 @@ const ALL_IN_ONE_FILE = join(
   'ALL_IN_ONE__paste_into_dashboard.sql'
 );
 
-console.log('🤖 Autonomous Autopilot - Applying Migrations...\n');
-console.log(`📍 Project: ${SUPABASE_URL}\n`);
 
 // Read the all-in-one migration file
 let migrationSQL;
 try {
   migrationSQL = readFileSync(ALL_IN_ONE_FILE, 'utf-8');
-  console.log(`✅ Loaded migration file (${migrationSQL.length} characters)\n`);
 } catch (err) {
   console.error(`❌ Could not read migration file: ${err.message}`);
   process.exit(1);
 }
 
-console.log('📋 Instructions to apply migrations:\n');
-console.log('Since Supabase REST API cannot execute DDL statements directly,');
-console.log('you need to apply migrations via the Supabase Dashboard.\n');
-console.log('🚀 AUTOMATED APPROACH:\n');
-console.log('I will open the Supabase SQL Editor for you with instructions.\n');
 
 // Create a data URL with the SQL
 const sqlEncoded = encodeURIComponent(migrationSQL);
@@ -71,22 +63,8 @@ if (!projectRef) {
   process.exit(1);
 }
 
-console.log('='.repeat(70));
-console.log('🎯 COPY THIS SQL AND PASTE INTO SUPABASE SQL EDITOR:');
-console.log('='.repeat(70));
-console.log('\n1. Open this URL in your browser:');
-console.log(
   `   https://supabase.com/dashboard/project/${projectRef}/sql/new\n`
 );
-console.log('2. The SQL is ready in this file:');
-console.log(`   ${ALL_IN_ONE_FILE}\n`);
-console.log('3. Copy the ENTIRE file contents\n');
-console.log('4. Paste into the SQL Editor\n');
-console.log('5. Click the "Run" button\n');
-console.log('6. Wait for completion (5-10 seconds)\n');
-console.log('7. Run this to verify:');
-console.log('   pnpm autopilot:migrate\n');
-console.log('='.repeat(70));
 
 // Try to open the browser automatically
 try {
@@ -103,14 +81,11 @@ try {
 
   exec(`${command} "${url}"`, (error) => {
     if (!error) {
-      console.log('\n✅ Opened Supabase SQL Editor in your browser!\n');
     }
   });
 } catch (err) {
   // Silent fail - not critical
 }
 
-console.log('\n💡 TIP: The migration file is already open in your editor.');
-console.log('   Just copy all contents and paste into the SQL Editor.\n');
 
 process.exit(0);

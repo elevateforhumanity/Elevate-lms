@@ -184,21 +184,21 @@ async function sendLicenseEmail(
     <h1>🚀 Your Elevate Platform Purchase</h1>
     <p>Thank you for your order! Your licenses are ready for download.</p>
   </div>
-  
+
   <div class="content">
     <h2>Hello ${customerName}!</h2>
     <p>Your payment of <strong>$${totalAmount}</strong> has been processed successfully. Here are your license details and download links:</p>
-    
+
     ${licenses
       .map(
         (license) => `
       <div class="license-box">
         <h3>📦 ${license.productName}</h3>
         <div class="license-key">${license.key}</div>
-        
+
         <p><strong>License Type:</strong> ${license.licenseType.replace('_', ' ').toUpperCase()}</p>
         ${license.expiresAt ? `<p><strong>Expires:</strong> ${license.expiresAt.toDateString()}</p>` : '<p><strong>License:</strong> Lifetime</p>'}
-        
+
         <p><strong>Download Files:</strong></p>
         <div>
           ${license.files
@@ -212,7 +212,7 @@ async function sendLicenseEmail(
     `
       )
       .join('')}
-    
+
     <div class="important">
       <h4>🔐 Important License Information:</h4>
       <ul>
@@ -222,7 +222,7 @@ async function sendLicenseEmail(
         <li><strong>Support:</strong> email support@elevateforhumanity.com with your license key</li>
       </ul>
     </div>
-    
+
     <h3>🎯 Next Steps:</h3>
     <ol>
       <li>Download your files using the links above</li>
@@ -230,10 +230,10 @@ async function sendLicenseEmail(
       <li>Use your license key when prompted during installation</li>
       <li>Join our community: <a href="https://discord.gg/elevate">Discord Support</a></li>
     </ol>
-    
+
     <p>Questions? Reply to this email or contact <strong>support@elevateforhumanity.com</strong></p>
   </div>
-  
+
   <div class="footer">
     <p>© 2024 Selfish Inc. DBA Rise Foundation | Licensed Use Only</p>
     <p>Order ID: ${session.id} | Need help? support@elevateforhumanity.com</p>

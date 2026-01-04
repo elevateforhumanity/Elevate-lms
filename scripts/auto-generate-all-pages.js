@@ -44,7 +44,7 @@ const pageTemplate = (
       `
           : ''
       }
-      
+
       {/* Content Section */}
       <section className="relative">
         <div className="flex flex-none flex-shrink-0 relative break-word items-center" style={{zIndex: 38}}>

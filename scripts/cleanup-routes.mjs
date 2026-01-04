@@ -33,14 +33,12 @@ function cleanupDirectory(dir) {
 
     if (stat.isDirectory()) {
       if (shouldRemove(item)) {
-        console.log(`Removing directory: ${fullPath}`);
         fs.rmSync(fullPath, { recursive: true, force: true });
         removed++;
       } else {
         removed += cleanupDirectory(fullPath);
       }
     } else if (shouldRemove(item)) {
-      console.log(`Removing file: ${fullPath}`);
       fs.unlinkSync(fullPath);
       removed++;
     }
@@ -49,6 +47,4 @@ function cleanupDirectory(dir) {
   return removed;
 }
 
-console.log('Cleaning up unused routes...');
 const removed = cleanupDirectory(appDir);
-console.log(`✅ Removed ${removed} unused routes/files`);

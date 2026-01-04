@@ -13,14 +13,11 @@ try {
     }
   }
 } catch {
-  console.log('No dist assets yet.');
   process.exit(0);
 }
 
 if (overs.length) {
-  console.log('⚠ Large bundles detected (kb):');
   overs.forEach((o) => console.log(`  ${o.file} ~${o.kb}KB`));
   process.exit(0); // non-fatal, change to 1 to enforce hard limit
 } else {
-  console.log('Asset sizes OK (<= ' + LIMIT_KB + 'KB).');
 }

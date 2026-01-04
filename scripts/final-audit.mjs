@@ -4,11 +4,6 @@ import { join } from 'path';
 
 const projectRoot = process.cwd();
 
-console.log('='.repeat(80));
-console.log('FINAL COMPREHENSIVE AUDIT - LINE BY LINE');
-console.log('Date: December 18, 2025');
-console.log('='.repeat(80));
-console.log('');
 
 // 1. Count all pages
 async function countPages(dir, pattern) {
@@ -30,12 +25,6 @@ async function countPages(dir, pattern) {
 const totalPages = await countPages('./app', 'page.tsx') + await countPages('./app', 'page.js');
 const apiRoutes = await countPages('./app/api', 'route.ts') + await countPages('./app/api', 'route.js');
 
-console.log('📊 SITE STATISTICS');
-console.log('-'.repeat(80));
-console.log(`Total Pages: ${totalPages}`);
-console.log(`API Routes: ${apiRoutes}`);
-console.log(`Total Routes: ${totalPages + apiRoutes}`);
-console.log('');
 
 // 2. Check critical pages
 const criticalPages = [
@@ -58,8 +47,6 @@ const criticalPages = [
   { path: 'app/tax/supersonicfastcash/page.tsx', name: 'SupersonicFastCash', priority: 'HIGH' },
 ];
 
-console.log('🔍 CRITICAL PAGES AUDIT');
-console.log('-'.repeat(80));
 
 let allPassed = true;
 
@@ -69,21 +56,18 @@ for (const page of criticalPages) {
     const lines = content.split('\n').length;
     const hasMetadata = content.includes('export const metadata') || content.includes('generateMetadata');
     const hasExport = content.includes('export default');
-    
+
     const status = hasExport && lines > 20 ? '✅' : '⚠️';
     const metaStatus = hasMetadata ? '✅' : '❌';
-    
+
     if (!hasExport || lines <= 20 || !hasMetadata) {
       allPassed = false;
     }
-    
-    console.log(`${status} ${page.name.padEnd(30)} ${lines.toString().padStart(4)} lines  Meta: ${metaStatus}  [${page.priority}]`);
+
   } catch (err) {
-    console.log(`❌ ${page.name.padEnd(30)} NOT FOUND  [${page.priority}]`);
     allPassed = false;
   }
 }
-console.log('');
 
 // 3. Check layouts for metadata
 const layoutsToCheck = [
@@ -92,24 +76,17 @@ const layoutsToCheck = [
   { path: 'app/apprenticeships/layout.tsx', name: 'Apprenticeships Layout' },
 ];
 
-console.log('📐 LAYOUTS WITH METADATA');
-console.log('-'.repeat(80));
 
 for (const layout of layoutsToCheck) {
   try {
     const content = await readFile(layout.path, 'utf-8');
     const hasMetadata = content.includes('export const metadata');
     const status = hasMetadata ? '✅' : '❌';
-    console.log(`${status} ${layout.name}`);
   } catch (err) {
-    console.log(`⚠️  ${layout.name} - Not found`);
   }
 }
-console.log('');
 
 // 4. Check media assets
-console.log('🎨 MEDIA ASSETS');
-console.log('-'.repeat(80));
 
 const mediaFolders = [
   'public/images',
@@ -121,16 +98,11 @@ const mediaFolders = [
 for (const folder of mediaFolders) {
   try {
     const entries = await readdir(folder);
-    console.log(`✅ ${folder.padEnd(40)} ${entries.length} files`);
   } catch (err) {
-    console.log(`❌ ${folder.padEnd(40)} Not found`);
   }
 }
-console.log('');
 
 // 5. Check configuration files
-console.log('⚙️  CONFIGURATION FILES');
-console.log('-'.repeat(80));
 
 const configs = [
   'next.config.mjs',
@@ -145,16 +117,11 @@ const configs = [
 for (const config of configs) {
   try {
     await access(config);
-    console.log(`✅ ${config}`);
   } catch (err) {
-    console.log(`❌ ${config} - NOT FOUND`);
   }
 }
-console.log('');
 
 // 6. Check scripts
-console.log('🔧 AUTOMATION SCRIPTS');
-console.log('-'.repeat(80));
 
 const scripts = [
   'scripts/audit-routes.mjs',
@@ -166,18 +133,11 @@ const scripts = [
 for (const script of scripts) {
   try {
     await access(script);
-    console.log(`✅ ${script}`);
   } catch (err) {
-    console.log(`❌ ${script} - NOT FOUND`);
   }
 }
-console.log('');
 
 // 7. Final scores
-console.log('='.repeat(80));
-console.log('FINAL QUALITY SCORES');
-console.log('='.repeat(80));
-console.log('');
 
 const scores = {
   'Technical Infrastructure': 95,
@@ -191,21 +151,13 @@ const scores = {
 
 for (const [category, score] of Object.entries(scores)) {
   const grade = score >= 97 ? 'A+' : score >= 93 ? 'A' : score >= 90 ? 'A-' : 'B+';
-  console.log(`${category.padEnd(30)} ${score}/100  ${grade}`);
 }
 
 const avgScore = Math.round(Object.values(scores).reduce((a, b) => a + b, 0) / Object.keys(scores).length);
 const overallGrade = avgScore >= 97 ? 'A+' : avgScore >= 93 ? 'A' : avgScore >= 90 ? 'A-' : 'B+';
 
-console.log('-'.repeat(80));
-console.log(`${'OVERALL AVERAGE'.padEnd(30)} ${avgScore}/100  ${overallGrade}`);
-console.log('');
 
 // 8. Launch readiness
-console.log('='.repeat(80));
-console.log('LAUNCH READINESS CHECKLIST');
-console.log('='.repeat(80));
-console.log('');
 
 const checklist = [
   { item: 'Build succeeds without errors', status: '✅' },
@@ -221,24 +173,7 @@ const checklist = [
 ];
 
 checklist.forEach(({ item, status }) => {
-  console.log(`${status} ${item}`);
 });
 
-console.log('');
-console.log('='.repeat(80));
-console.log(`FINAL STATUS: ${allPassed ? '✅ 100% COMPLETE - READY FOR PRODUCTION' : '⚠️ MINOR ISSUES - REVIEW NEEDED'}`);
-console.log('='.repeat(80));
-console.log('');
-console.log(`Overall Score: ${avgScore}/100 (${overallGrade})`);
-console.log(`Total Pages: ${totalPages}`);
-console.log(`API Routes: ${apiRoutes}`);
-console.log('');
-console.log('Next Steps:');
-console.log('  1. Deploy to production: vercel --prod');
-console.log('  2. Monitor analytics and error rates');
-console.log('  3. Collect user feedback');
-console.log('  4. Schedule daily route audits');
-console.log('');
-console.log('='.repeat(80));
 
 process.exit(allPassed ? 0 : 1);

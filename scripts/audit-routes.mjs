@@ -49,12 +49,12 @@ const NAV = [
 
 async function pageExists(route) {
   const appDir = join(projectRoot, 'app');
-  
+
   // Remove leading slash and convert to path
   const routePath = route.slice(1) || '';
   const pagePath = join(appDir, routePath, 'page.tsx');
   const pagePathJs = join(appDir, routePath, 'page.js');
-  
+
   try {
     await access(pagePath);
     return { exists: true, path: pagePath };
@@ -69,10 +69,6 @@ async function pageExists(route) {
 }
 
 async function checkRoutes() {
-  console.log('='.repeat(80));
-  console.log('ROUTE AUDIT - Checking Navigation Registry');
-  console.log('='.repeat(80));
-  console.log('');
 
   const results = [];
   const missing = [];
@@ -90,24 +86,12 @@ async function checkRoutes() {
   }
 
   // Report
-  console.log(`Total Routes: ${NAV.length}`);
-  console.log(`Found: ${results.filter(r => r.exists).length}`);
-  console.log(`Missing: ${missing.length}`);
-  console.log('');
 
   if (missing.length > 0) {
-    console.log('❌ MISSING ROUTES:');
-    console.log('');
     missing.forEach(item => {
-      console.log(`  ${item.group.padEnd(15)} ${item.label.padEnd(30)} ${item.href}`);
     });
-    console.log('');
-    console.log('Action Required: Create these pages or update the navigation registry.');
-    console.log('');
     process.exit(1);
   } else {
-    console.log('✅ All routes have corresponding pages!');
-    console.log('');
     process.exit(0);
   }
 }

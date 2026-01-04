@@ -1,11 +1,11 @@
 /**
  * Import Partner Programs with Stripe Pricing
- * 
+ *
  * This script reads partner-programs-catalog.json and creates:
  * 1. Program pages for each partner program
  * 2. Stripe products with pricing
  * 3. Partner revenue split configuration (50% markup model)
- * 
+ *
  * Pricing Model:
  * - Partner Price: What partner charges
  * - Student Price: Partner Price * 1.5 (50% markup)
@@ -43,29 +43,13 @@ interface Partner {
 // Extract all partner programs
 const partners: Record<string, Partner> = catalog.credentialing_partners;
 
-console.log('=== PARTNER PROGRAMS IMPORT ===\n');
 
 Object.entries(partners).forEach(([partnerId, partner]) => {
-  console.log(`\n## ${partner.partner_full_name} (${partner.partner_name})`);
-  console.log(`Category: ${partner.category}`);
-  console.log(`Website: ${partner.website}`);
-  console.log(`WIOA Eligible: ${partner.funding_eligible ? 'YES' : 'NO'}`);
-  console.log(`Programs: ${partner.programs.length}`);
-  console.log(`\nPrograms:`);
-  
+
   partner.programs.forEach((program) => {
     const markup = program.student_price - program.partner_price;
     const markupPercent = ((markup / program.partner_price) * 100).toFixed(0);
-    
-    console.log(`\n  - ${program.name}`);
-    console.log(`    ID: ${program.program_id}`);
-    console.log(`    Partner Price: $${program.partner_price}`);
-    console.log(`    Student Price: $${program.student_price}`);
-    console.log(`    Markup: $${markup} (${markupPercent}%)`);
-    console.log(`    Duration: ${program.duration}`);
-    console.log(`    Level: ${program.level}`);
-    console.log(`    Type: ${program.certification_type}`);
-    console.log(`    WIOA: ${partner.funding_eligible ? 'FREE with funding' : 'Not eligible'}`);
+
   });
 });
 
@@ -79,12 +63,6 @@ const avgStudentPrice = Object.values(partners)
   .flatMap(p => p.programs)
   .reduce((sum, prog) => sum + prog.student_price, 0) / totalPrograms;
 
-console.log(`\n\n=== SUMMARY ===`);
-console.log(`Total Partners: ${totalPartners}`);
-console.log(`Total Programs: ${totalPrograms}`);
-console.log(`Average Partner Price: $${avgPartnerPrice.toFixed(2)}`);
-console.log(`Average Student Price: $${avgStudentPrice.toFixed(2)}`);
-console.log(`Average Markup: $${(avgStudentPrice - avgPartnerPrice).toFixed(2)}`);
 
 // Export for use in app
 const exportData = {
@@ -99,4 +77,3 @@ const exportData = {
 
 const exportPath = path.join(process.cwd(), 'app/data/partner-programs.json');
 fs.writeFileSync(exportPath, JSON.stringify(exportData, null, 2));
-console.log(`\n✅ Exported to: ${exportPath}`);

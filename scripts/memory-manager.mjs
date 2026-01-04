@@ -246,33 +246,26 @@ class MemoryManager {
     const currentUsage = this.getCurrentUsage();
     const memory = this.getMemoryUsage();
 
-    console.log(`📊 Current Usage: ${currentUsage}MB`);
     if (memory) {
-      console.log(
         `💾 Memory: ${memory.used}MB used, ${memory.available}MB available`
       );
     }
 
     if (currentUsage < THRESHOLDS.WARNING) {
-      console.log('✅ Memory usage is within acceptable limits');
       return false;
     }
 
-    console.log(
       `⚠️  Memory usage above ${THRESHOLDS.WARNING}MB threshold - starting cleanup...`
     );
 
     const targets = this.findCleanupTargets();
-    console.log(`🎯 Found ${targets.length} cleanup targets`);
 
     let cleaned = 0;
     for (const target of targets) {
       if (this.getCurrentUsage() < THRESHOLDS.TARGET) {
-        console.log(`✅ Reached target usage of ${THRESHOLDS.TARGET}MB`);
         break;
       }
 
-      console.log(
         `🧹 Cleaning: ${target.path} (${target.size}KB) - ${target.description}`
       );
       if (this.cleanupTarget(target)) {
@@ -281,20 +274,13 @@ class MemoryManager {
 
       // Check if we're in critical territory
       if (this.getCurrentUsage() > THRESHOLDS.CRITICAL) {
-        console.log('🚨 CRITICAL: Aggressive cleanup mode');
         // In critical mode, clean everything we can
       }
     }
 
     const finalUsage = this.getCurrentUsage();
-    console.log(`\n📈 Cleanup Summary:`);
-    console.log(`   Files cleaned: ${this.stats.cleaned}`);
-    console.log(`   Files archived: ${this.stats.archived}`);
-    console.log(`   Files moved to cloud: ${this.stats.cloudUploaded}`);
-    console.log(
       `   Space saved: ${Math.round(this.stats.spaceSaved / 1024)}MB`
     );
-    console.log(`   Usage: ${currentUsage}MB → ${finalUsage}MB`);
 
     return cleaned > 0;
   }
@@ -315,7 +301,6 @@ fi
 
     writeFileSync(join(ROOT, 'scripts/memory-monitor.sh'), monitorScript);
     execSync('chmod +x scripts/memory-monitor.sh');
-    console.log('✅ Created memory monitoring script');
   }
 
   // Set up automated cleanup
@@ -332,7 +317,6 @@ fi
     pkg.scripts['memory:monitor'] = './scripts/memory-monitor.sh';
 
     writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
-    console.log('✅ Added memory management scripts to package.json');
   }
 }
 
@@ -348,24 +332,12 @@ if (args.includes('--cleanup') || args.includes('--auto-cleanup')) {
   const usage = manager.getCurrentUsage();
   const memory = manager.getMemoryUsage();
 
-  console.log('📊 Memory Status:');
-  console.log(`   Disk usage: ${usage}MB`);
   if (memory) {
-    console.log(`   RAM usage: ${memory.used}MB / ${memory.total}MB`);
-    console.log(`   RAM available: ${memory.available}MB`);
   }
-  console.log(`   Warning threshold: ${THRESHOLDS.WARNING}MB`);
-  console.log(`   Critical threshold: ${THRESHOLDS.CRITICAL}MB`);
 
   if (usage > THRESHOLDS.WARNING) {
-    console.log('⚠️  Above warning threshold - cleanup recommended');
     process.exit(1);
   } else {
-    console.log('✅ Memory usage is healthy');
   }
 } else {
-  console.log('Memory Manager Usage:');
-  console.log('  --monitor    Check current memory status');
-  console.log('  --cleanup    Perform cleanup now');
-  console.log('  --setup      Set up automated monitoring');
 }

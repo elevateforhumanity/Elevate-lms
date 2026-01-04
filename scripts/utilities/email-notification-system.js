@@ -228,7 +228,7 @@ class EFHNotificationSystem {
         <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
           <h1 style="margin: 0; font-size: 24px;">🎉 New Sale Alert!</h1>
         </div>
-        
+
         <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
           <h2 style="color: #333; margin-bottom: 15px;">Sale Details</h2>
           <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
@@ -237,7 +237,7 @@ class EFHNotificationSystem {
             <p style="margin: 5px 0;"><strong>🏪 Platform:</strong> ${saleData.platform}</p>
             <p style="margin: 5px 0;"><strong>⏰ Time:</strong> ${new Date(saleData.timestamp).toLocaleString()}</p>
           </div>
-          
+
           <div style="background: #e8f5e8; padding: 15px; border-radius: 5px; border-left: 4px solid #28a745;">
             <h3 style="color: #28a745; margin-top: 0;">Today's Performance</h3>
             <p style="margin: 5px 0;">💵 Daily Revenue: $${this.revenueData.daily.revenue.toLocaleString()}</p>
@@ -245,7 +245,7 @@ class EFHNotificationSystem {
             <p style="margin: 5px 0;">👥 Daily Enrollments: ${this.revenueData.daily.enrollments}</p>
           </div>
         </div>
-        
+
         <div style="text-align: center; margin-top: 20px; padding: 15px; background: white; border-radius: 10px;">
           <p style="color: #666; margin: 0;">Revenue Tracking Dashboard: <a href="${process.env.DASHBOARD_URL || 'http://localhost:5000'}/revenue-tracking-dashboard.html" style="color: #667eea;">View Live Stats</a></p>
         </div>
@@ -264,7 +264,7 @@ class EFHNotificationSystem {
         <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
           <h1 style="margin: 0; font-size: 24px;">🚀 License Sale!</h1>
         </div>
-        
+
         <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
           <h2 style="color: #333; margin-bottom: 15px;">License Sale Details</h2>
           <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
@@ -273,7 +273,7 @@ class EFHNotificationSystem {
             <p style="margin: 5px 0;"><strong>🏪 Platform:</strong> ${licenseData.platform}</p>
             <p style="margin: 5px 0;"><strong>⏰ Time:</strong> ${new Date(licenseData.timestamp).toLocaleString()}</p>
           </div>
-          
+
           <div style="background: #fff3cd; padding: 15px; border-radius: 5px; border-left: 4px solid #ffc107;">
             <h3 style="color: #856404; margin-top: 0;">Next Steps</h3>
             <ul style="color: #856404; margin: 10px 0; padding-left: 20px;">
@@ -304,7 +304,7 @@ class EFHNotificationSystem {
           <h1 style="margin: 0; font-size: 24px;">📊 Daily Performance Summary</h1>
           <p style="margin: 10px 0 0 0; opacity: 0.9;">${new Date().toLocaleDateString()}</p>
         </div>
-        
+
         <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
           <h2 style="color: #333; margin-bottom: 15px;">Today's Performance</h2>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
@@ -318,7 +318,7 @@ class EFHNotificationSystem {
             </div>
           </div>
         </div>
-        
+
         <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
           <h2 style="color: #333; margin-bottom: 15px;">Marketplace Performance</h2>
           ${this.generateMarketplaceHtml()}
@@ -401,7 +401,7 @@ class EFHNotificationSystem {
         <div style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
           <h1 style="margin: 0; font-size: 24px;">🎉 Milestone Achievement!</h1>
         </div>
-        
+
         <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
           <h2 style="color: #333; text-align: center;">
             ${isViews ? '👁️' : '💰'} ${milestone.toLocaleString()} ${type.toUpperCase()} Reached!

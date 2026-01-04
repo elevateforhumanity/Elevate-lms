@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
  * IMAGE COMPRESSION SCRIPT
- * 
+ *
  * Compresses all images in public/images directory
  * - Converts PNG to WebP (70% smaller)
  * - Compresses JPG to quality 85
  * - Resizes images to max 1920x1080
  * - Preserves originals in .backup folder
- * 
+ *
  * Usage: node scripts/compress-images.mjs
  */
 
@@ -66,32 +66,28 @@ async function compressImage(filePath) {
     if (ext === '.png') {
       const webpPath = join(dir, `${name}.webp`);
       await pipeline.webp({ quality: QUALITY }).toFile(webpPath);
-      
+
       const newStats = await stat(webpPath);
       const saved = originalSize - newStats.size;
-      
+
       stats.processed++;
       stats.totalSaved += saved;
-      
-      console.log(`✓ ${filePath}`);
-      console.log(`  PNG → WebP: ${(originalSize / 1024).toFixed(0)}KB → ${(newStats.size / 1024).toFixed(0)}KB (saved ${(saved / 1024).toFixed(0)}KB)`);
-      
+
+
       return { success: true, path: filePath, saved };
     } else if (ext === '.jpg' || ext === '.jpeg') {
       await pipeline.jpeg({ quality: QUALITY, progressive: true }).toFile(filePath + '.tmp');
-      
+
       // Replace original
       await copyFile(filePath + '.tmp', filePath);
-      
+
       const newStats = await stat(filePath);
       const saved = originalSize - newStats.size;
-      
+
       stats.processed++;
       stats.totalSaved += saved;
-      
-      console.log(`✓ ${filePath}`);
-      console.log(`  Compressed: ${(originalSize / 1024).toFixed(0)}KB → ${(newStats.size / 1024).toFixed(0)}KB (saved ${(saved / 1024).toFixed(0)}KB)`);
-      
+
+
       return { success: true, path: filePath, saved };
     }
 
@@ -106,48 +102,32 @@ async function compressImage(filePath) {
 
 async function findImages(dir, images = []) {
   const files = await readdir(dir);
-  
+
   for (const file of files) {
     const filePath = join(dir, file);
     const fileStats = await stat(filePath);
-    
+
     if (fileStats.isDirectory() && !file.startsWith('.')) {
       await findImages(filePath, images);
     } else if (/\.(jpg|jpeg|png)$/i.test(file)) {
       images.push(filePath);
     }
   }
-  
+
   return images;
 }
 
 async function main() {
-  console.log('🖼️  IMAGE COMPRESSION SCRIPT\n');
-  console.log('Finding images...');
-  
+
   await ensureBackupDir();
-  
+
   const images = await findImages('public/images');
-  console.log(`Found ${images.length} images\n`);
-  
-  console.log('Compressing images (this may take a few minutes)...\n');
-  
+
+
   for (const img of images) {
     await compressImage(img);
   }
-  
-  console.log('\n' + '='.repeat(60));
-  console.log('COMPRESSION COMPLETE');
-  console.log('='.repeat(60));
-  console.log(`✓ Processed: ${stats.processed}`);
-  console.log(`⊘ Skipped: ${stats.skipped}`);
-  console.log(`✗ Errors: ${stats.errors}`);
-  console.log(`💾 Total saved: ${(stats.totalSaved / 1024 / 1024).toFixed(2)}MB`);
-  console.log('\nOriginals backed up to: public/images/.backup/');
-  console.log('\nNext steps:');
-  console.log('1. Test your site to ensure images look good');
-  console.log('2. If satisfied, delete the .backup folder');
-  console.log('3. Commit the optimized images');
+
 }
 
 main().catch(console.error);

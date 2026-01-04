@@ -104,7 +104,6 @@ const sitemapIndex = (files, base) =>
 async function writeSafe(p, c) {
   await mkdir(dirname(p), { recursive: true });
   await writeFile(p, c, 'utf8');
-  console.log('📝 wrote', p);
 }
 async function ensureRobots(path, siteUrl) {
   let content = '';
@@ -128,7 +127,6 @@ async function main() {
     if (!Array.isArray(routes)) routes = routes.paths || [];
     urls = routes.map((r) => normalize(r, BASE)).filter(Boolean);
   } else {
-    console.log(`🕷️ Crawling ${SEED} (limit=${MAX}, concurrency=${CONC})`);
     urls = await crawl(SEED, MAX, CONC);
   }
   const home = normalize('/', BASE);
@@ -151,13 +149,11 @@ async function main() {
       resolve(OUT_DIR, 'robots.txt'),
       new URL('/sitemap-index.xml', BASE).toString()
     );
-    console.log('✅ Multi-file sitemap ready');
   } else {
     await ensureRobots(
       resolve(OUT_DIR, 'robots.txt'),
       new URL('/sitemap.xml', BASE).toString()
     );
-    console.log('✅ Single-file sitemap ready');
   }
 }
 main().catch((e) => {

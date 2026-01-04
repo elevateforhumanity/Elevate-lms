@@ -50,9 +50,7 @@ function processFile(filePath) {
 
   if (updated !== original) {
     fs.writeFileSync(filePath, updated, 'utf8');
-    console.log(`✅ sanitized: ${path.relative(process.cwd(), filePath)}`);
   } else {
-    console.log(`— no changes: ${path.relative(process.cwd(), filePath)}`);
   }
 }
 

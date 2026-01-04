@@ -142,7 +142,6 @@ function validateEnv(): ValidationResult[] {
 }
 
 function printResults(results: ValidationResult[]): void {
-  console.log('\n=== Environment Validation Results ===\n');
 
   const ok = results.filter((r) => r.status === 'ok');
   const missing = results.filter((r) => r.status === 'missing');
@@ -150,66 +149,40 @@ function printResults(results: ValidationResult[]): void {
   const warnings = results.filter((r) => r.status === 'warning');
 
   if (ok.length > 0) {
-    console.log('✅ Valid:');
     ok.forEach((r) => console.log(`   ${r.name}`));
-    console.log('');
   }
 
   if (warnings.length > 0) {
-    console.log('⚠️  Optional (not set):');
     warnings.forEach((r) => console.log(`   ${r.name} - ${r.message}`));
-    console.log('');
   }
 
   if (invalid.length > 0) {
-    console.log('❌ Invalid:');
     invalid.forEach((r) => console.log(`   ${r.name} - ${r.message}`));
-    console.log('');
   }
 
   if (missing.length > 0) {
-    console.log('❌ Missing (required):');
     missing.forEach((r) => console.log(`   ${r.name} - ${r.message}`));
-    console.log('');
   }
 
-  console.log('=== Summary ===');
-  console.log(`Total: ${results.length}`);
-  console.log(`Valid: ${ok.length}`);
-  console.log(`Optional: ${warnings.length}`);
-  console.log(`Invalid: ${invalid.length}`);
-  console.log(`Missing: ${missing.length}`);
-  console.log('');
 
   if (missing.length > 0 || invalid.length > 0) {
-    console.log('❌ Validation FAILED');
-    console.log('\nRemediation:');
-    console.log('1. Copy .env.example to .env.local');
-    console.log('2. Fill in all required values');
-    console.log('3. Run this script again to verify');
-    console.log('');
     process.exit(1);
   } else {
-    console.log('✅ Validation PASSED');
-    console.log('');
     process.exit(0);
   }
 }
 
 // Additional checks
 function performAdditionalChecks(): void {
-  console.log('\n=== Additional Checks ===\n');
 
   // Check for common mistakes
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 
   if (supabaseUrl && supabaseUrl.endsWith('/')) {
-    console.log('⚠️  NEXT_PUBLIC_SUPABASE_URL should not end with /');
   }
 
   if (appUrl && appUrl.endsWith('/')) {
-    console.log('⚠️  NEXT_PUBLIC_APP_URL should not end with /');
   }
 
   // Check for test/development keys in production
@@ -221,21 +194,16 @@ function performAdditionalChecks(): void {
     stripeKey &&
     stripeKey.startsWith('sk_test_')
   ) {
-    console.log('❌ Using Stripe TEST key in production environment!');
   }
 
   // Check for localhost URLs in production
   if (nodeEnv === 'production' && appUrl && appUrl.includes('localhost')) {
-    console.log('❌ NEXT_PUBLIC_APP_URL contains localhost in production!');
   }
 
-  console.log('');
 }
 
 // Main execution
 function main(): void {
-  console.log('Environment Validation Script');
-  console.log('=============================');
 
   const results = validateEnv();
   performAdditionalChecks();

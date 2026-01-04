@@ -48,7 +48,6 @@ const BAD_PATTERNS = [
 
 async function checkRoute(route) {
   const url = `${BASE_URL}${route.path}`;
-  console.log(`\n🔎 Checking ${route.label}: ${url}`);
 
   try {
     const res = await fetch(url, {
@@ -58,7 +57,6 @@ async function checkRoute(route) {
       },
     });
 
-    console.log(`   Status: ${res.status}`);
 
     // Check status code
     if (res.status >= 500) {
@@ -71,7 +69,6 @@ async function checkRoute(route) {
       if (!json.status || json.status !== 'ok') {
         throw new Error(`API health check failed: ${JSON.stringify(json)}`);
       }
-      console.log(`   ✅ API health check passed`);
       return { route, ok: true, status: res.status };
     }
 
@@ -79,7 +76,6 @@ async function checkRoute(route) {
     if (res.status >= 400 && res.status < 500) {
       // 404 might be expected for some routes during development
       if (res.status === 404 && !route.critical) {
-        console.log(`   ⚠️  404 Not Found (non-critical route)`);
         return { route, ok: true, status: res.status, warning: '404' };
       }
       throw new Error(`Client error: status ${res.status}`);
@@ -88,7 +84,6 @@ async function checkRoute(route) {
     // For redirects, just note them
     if (res.status >= 300 && res.status < 400) {
       const location = res.headers.get('location');
-      console.log(`   ↪️  Redirects to: ${location}`);
       return { route, ok: true, status: res.status, redirect: location };
     }
 
@@ -112,7 +107,6 @@ async function checkRoute(route) {
     // Warning issues are noted but don't fail
     const warnings = foundIssues.filter((i) => i.severity === 'warning');
     if (warnings.length > 0) {
-      console.log(
         `   ⚠️  Found warning pattern(s): ${warnings
           .map((w) => w.pattern)
           .join(', ')}`
@@ -122,12 +116,10 @@ async function checkRoute(route) {
     // Info issues are just logged
     const infos = foundIssues.filter((i) => i.severity === 'info');
     if (infos.length > 0) {
-      console.log(
         `   ℹ️  Found info pattern(s): ${infos.map((i) => i.pattern).join(', ')}`
       );
     }
 
-    console.log(`   ✅ OK: page loads without critical errors`);
     return {
       route,
       ok: true,
@@ -142,10 +134,6 @@ async function checkRoute(route) {
 }
 
 async function main() {
-  console.log('🤖 Readiness Check – Student & Partner Flow Validation');
-  console.log(`BASE_URL: ${BASE_URL}`);
-  console.log(`Routes to check: ${routes.length}`);
-  console.log('');
 
   const results = [];
   for (const route of routes) {
@@ -156,47 +144,32 @@ async function main() {
     await new Promise((resolve) => setTimeout(resolve, 500));
   }
 
-  console.log('\n' + '='.repeat(60));
-  console.log('READINESS CHECK SUMMARY');
-  console.log('='.repeat(60));
 
   const passed = results.filter((r) => r.ok);
   const failed = results.filter((r) => !r.ok);
   const warnings = results.filter((r) => r.warnings && r.warnings.length > 0);
 
-  console.log(`\n✅ Passed: ${passed.length}/${routes.length}`);
-  console.log(`❌ Failed: ${failed.length}/${routes.length}`);
-  console.log(`⚠️  Warnings: ${warnings.length}/${routes.length}`);
 
-  console.log('\n' + '-'.repeat(60));
-  console.log('DETAILED RESULTS');
-  console.log('-'.repeat(60));
 
   for (const result of results) {
     const icon = result.ok ? '✅' : '❌';
     const status = result.status ? `[${result.status}]` : '';
-    console.log(
       `${icon} ${result.route.label} ${status} (${result.route.path})`
     );
 
     if (result.error) {
-      console.log(`   Error: ${result.error}`);
     }
 
     if (result.redirect) {
-      console.log(`   Redirects to: ${result.redirect}`);
     }
 
     if (result.warnings && result.warnings.length > 0) {
-      console.log(`   Warnings: ${result.warnings.join(', ')}`);
     }
 
     if (result.warning) {
-      console.log(`   Note: ${result.warning}`);
     }
   }
 
-  console.log('\n' + '='.repeat(60));
 
   if (failed.length > 0) {
     console.error(
@@ -215,18 +188,10 @@ async function main() {
   }
 
   if (warnings.length > 0) {
-    console.log(
       `\n⚠️  ${warnings.length} route(s) have warnings (non-critical)`
     );
-    console.log('Consider reviewing these pages for:');
-    console.log('  - Skeleton loaders that should be replaced with real data');
-    console.log("  - 'Loading...' text that persists");
-    console.log("  - 'Coming soon' placeholders");
   }
 
-  console.log('\n✅ READINESS CHECK PASSED');
-  console.log('All critical routes are functional and ready for users.');
-  console.log('\n🎓 Site is ready for student and partner onboarding!');
 }
 
 main().catch((err) => {

@@ -31,7 +31,6 @@ serve(async (req) => {
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    console.log('[Indiana Compliance] Starting daily compliance check...');
 
     // Get all active program holders with Indiana credentials
     const { data: programHolders, error: fetchError } = await supabase
@@ -44,7 +43,6 @@ serve(async (req) => {
       throw new Error(`Failed to fetch program holders: ${fetchError.message}`);
     }
 
-    console.log(
       `[Indiana Compliance] Found ${programHolders?.length || 0} program holders to check`
     );
 
@@ -104,11 +102,6 @@ serve(async (req) => {
       }
     }
 
-    console.log('[Indiana Compliance] Daily compliance check complete');
-    console.log(`  - Checked: ${results.totalChecked} program holders`);
-    console.log(`  - Alerts sent: ${results.alertsSent}`);
-    console.log(`  - Enforcement actions: ${results.enforcementActions}`);
-    console.log(`  - Errors: ${results.errors.length}`);
 
     return new Response(JSON.stringify(results), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -202,7 +195,7 @@ async function checkPerformanceCompliance(
 
 function generateAlerts(
   holder: any,
-  reportingChecks: any[],
+  reportingChecks: unknown[],
   performanceChecks: any
 ) {
   const alerts = [];
@@ -238,7 +231,7 @@ function generateAlerts(
 
 function generateEnforcementActions(
   holder: any,
-  reportingChecks: any[],
+  reportingChecks: unknown[],
   performanceChecks: any
 ) {
   const actions = [];
@@ -270,8 +263,6 @@ async function sendAlert(supabase: any, alert: any) {
     sent_at: new Date().toISOString(),
   });
 
-  // TODO: Send actual email/SMS via Resend/Twilio
-  console.log(
     `[Alert] Sent ${alert.level} alert to ${alert.programHolderId}: ${alert.subject}`
   );
 }
@@ -286,7 +277,6 @@ async function executeEnforcementAction(supabase: any, action: any) {
     notification_sent: false,
   });
 
-  console.log(
     `[Enforcement] Executed ${action.action} for ${action.programHolderId}: ${action.reason}`
   );
 }

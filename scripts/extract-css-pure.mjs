@@ -42,26 +42,15 @@ function httpsGet(url) {
 }
 
 async function extractCSS() {
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log('🤖 CSS Extraction Worker - Pure Node.js');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log('');
-  console.log(`Target: ${TARGET_URL}`);
-  console.log(`Output: ${OUTPUT_DIR}`);
-  console.log('');
 
   try {
     // Create output directory
     await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
     // Fetch homepage
-    console.log('[1/5] Fetching homepage...');
     const html = await httpsGet(TARGET_URL);
-    console.log(`✅ Fetched ${html.length} bytes`);
-    console.log('');
 
     // Extract inline styles
-    console.log('[2/5] Extracting inline styles...');
     const styleRegex = /<style[^>]*>([\s\S]*?)<\/style>/gi;
     const inlineStyles = [];
     let match;
@@ -75,11 +64,8 @@ async function extractCSS() {
       allInlineCSS,
       'utf-8'
     );
-    console.log(`✅ Extracted ${inlineStyles.length} inline style blocks`);
-    console.log('');
 
     // Extract external stylesheets
-    console.log('[3/5] Extracting external stylesheets...');
     const linkRegex = /<link[^>]+rel=["']stylesheet["'][^>]*>/gi;
     const stylesheetUrls = [];
     while ((match = linkRegex.exec(html)) !== null) {
@@ -98,11 +84,9 @@ async function extractCSS() {
             ? `https:${href}`
             : `${TARGET_URL}${href.startsWith('/') ? '' : '/'}${href}`;
 
-        console.log(`   Fetching: ${cssUrl}`);
         const css = await httpsGet(cssUrl);
         externalCSS += `/* Source: ${cssUrl} */\n${css}\n\n`;
       } catch (error) {
-        console.log(`   ⚠️  Failed to fetch ${href}: ${error.message}`);
       }
     }
 
@@ -111,8 +95,6 @@ async function extractCSS() {
       externalCSS,
       'utf-8'
     );
-    console.log(`✅ Extracted ${stylesheetUrls.length} external stylesheets`);
-    console.log('');
 
     // Combine all CSS
     const allCSS = allInlineCSS + '\n\n' + externalCSS;
@@ -123,7 +105,6 @@ async function extractCSS() {
     );
 
     // Extract design tokens from CSS
-    console.log('[4/5] Extracting design tokens...');
     const tokens = {
       colors: extractColors(allCSS),
       fonts: extractFonts(allCSS),
@@ -140,18 +121,10 @@ async function extractCSS() {
       'utf-8'
     );
 
-    console.log('✅ Extracted design tokens:');
-    console.log(`   - ${tokens.colors.length} colors`);
-    console.log(`   - ${tokens.fonts.length} font families`);
-    console.log(`   - ${tokens.fontSizes.length} font sizes`);
-    console.log(`   - ${tokens.spacing.length} spacing values`);
-    console.log(
       `   - ${Object.keys(tokens.cssVariables).length} CSS variables`
     );
-    console.log('');
 
     // Extract HTML structure
-    console.log('[5/5] Extracting HTML structure...');
     const structure = {
       title: extractTag(html, 'title'),
       metaDescription: extractMetaContent(html, 'description'),
@@ -167,8 +140,6 @@ async function extractCSS() {
       JSON.stringify(structure, null, 2),
       'utf-8'
     );
-    console.log('✅ Extracted HTML structure');
-    console.log('');
 
     // Generate Tailwind config
     const tailwindConfig = generateTailwindConfig(tokens);
@@ -219,45 +190,20 @@ async function extractCSS() {
       'utf-8'
     );
 
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('✅ CSS Extraction Complete!');
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('');
-    console.log('📊 Summary:');
-    console.log(
       `   - HTML size: ${(summary.stats.htmlSize / 1024).toFixed(2)} KB`
     );
-    console.log(`   - Inline styles: ${summary.stats.inlineStyles}`);
-    console.log(
       `   - External stylesheets: ${summary.stats.externalStylesheets}`
     );
-    console.log(
       `   - Total CSS size: ${(summary.stats.totalCSSSize / 1024).toFixed(2)} KB`
     );
-    console.log(`   - Colors: ${summary.stats.colors}`);
-    console.log(`   - Fonts: ${summary.stats.fonts}`);
-    console.log(`   - CSS Variables: ${summary.stats.cssVariables}`);
-    console.log('');
-    console.log('📁 Output directory:');
-    console.log(`   ${OUTPUT_DIR}`);
-    console.log('');
-    console.log('📄 Generated files:');
     summary.files.forEach((file) => {
-      console.log(`   - ${file}`);
     });
-    console.log('');
-    console.log('🎯 Next steps:');
-    console.log(
       '   1. Review extracted-styles/design-tokens.json for color palette'
     );
-    console.log('   2. Check extracted-styles/all-styles.css for complete CSS');
-    console.log(
       '   3. Use extracted-styles/tailwind.config.js as starting point'
     );
-    console.log(
       '   4. Review extracted-styles/html-structure.json for components'
     );
-    console.log('');
   } catch (error) {
     console.error('❌ Error:', error.message);
     console.error(error.stack);

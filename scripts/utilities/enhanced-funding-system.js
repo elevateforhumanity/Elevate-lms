@@ -257,7 +257,7 @@ class EnhancedFundingSystem {
                 <h3>${display.primaryMessage}</h3>
                 ${display.secondaryMessage ? `<p class="cost-secondary">${display.secondaryMessage}</p>` : ''}
             </div>
-            
+
             ${
               display.showTuition || display.showFees
                 ? `
@@ -272,7 +272,7 @@ class EnhancedFundingSystem {
                 `
                     : ''
                 }
-                
+
                 ${
                   display.showFees &&
                   Object.keys(program.additionalFees).length > 0
@@ -293,7 +293,7 @@ class EnhancedFundingSystem {
                 `
                     : ''
                 }
-                
+
                 <div class="total-cost">
                     <strong>Total Program Cost: $${this.calculateTotalCost(program).toLocaleString()}</strong>
                 </div>
@@ -301,7 +301,7 @@ class EnhancedFundingSystem {
             `
                 : ''
             }
-            
+
             <div class="funding-options">
                 <h4>Funding Options Available:</h4>
                 <ul class="funding-list">
@@ -321,13 +321,13 @@ class EnhancedFundingSystem {
                       .join('')}
                 </ul>
             </div>
-            
+
             <div class="program-status">
                 <div class="etpl-status status-${program.etplStatus.toLowerCase().replace(/_/g, '-')}">
                     <span class="status-label">ETPL Status:</span>
                     <span class="status-value">${this.formatETLPStatus(program.etplStatus)}</span>
                 </div>
-                
+
                 ${
                   program.intrainingListed
                     ? `
@@ -339,17 +339,17 @@ class EnhancedFundingSystem {
                     : ''
                 }
             </div>
-            
+
             <div class="call-to-action">
                 <button class="cta-button" onclick="contactEnrollment('${programId}')">
                     ${display.callToAction}
                 </button>
             </div>
-            
+
             <div class="compliance-footer">
                 <small>
-                    Last updated: ${new Date().toLocaleDateString()} | 
-                    Funding eligibility subject to verification | 
+                    Last updated: ${new Date().toLocaleDateString()} |
+                    Funding eligibility subject to verification |
                     <a href="/funding-policies">View funding policies</a>
                 </small>
             </div>
@@ -394,7 +394,7 @@ class EnhancedFundingSystem {
                         <option value="student">Student</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="age-group">Age Group:</label>
                     <select id="age-group" name="ageGroup">
@@ -405,7 +405,7 @@ class EnhancedFundingSystem {
                         <option value="55+">55+ years</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="income-level">Household Income Level:</label>
                     <select id="income-level" name="incomeLevel">
@@ -415,7 +415,7 @@ class EnhancedFundingSystem {
                         <option value="higher">Higher income</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="program-interest">Program of Interest:</label>
                     <select id="program-interest" name="programInterest">
@@ -428,12 +428,12 @@ class EnhancedFundingSystem {
                           .join('')}
                     </select>
                 </div>
-                
+
                 <button type="button" onclick="checkFundingEligibility()">
                     Check Eligibility
                 </button>
             </form>
-            
+
             <div id="eligibility-results" class="eligibility-results" style="display: none;">
                 <!-- Results will be populated by JavaScript -->
             </div>

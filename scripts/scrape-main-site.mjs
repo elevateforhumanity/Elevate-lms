@@ -123,7 +123,6 @@ function extractContent(html, pageName) {
  * Main scraper
  */
 async function scrapePages() {
-  console.log('🔍 Scraping pages from', BASE_URL);
 
   // Create output directory
   if (!fs.existsSync(OUTPUT_DIR)) {
@@ -134,7 +133,6 @@ async function scrapePages() {
 
   for (const page of PAGES) {
     try {
-      console.log(`\n📄 Scraping ${page.path}...`);
       const url = `${BASE_URL}${page.path}`;
       const html = await fetchHTML(url);
       const content = extractContent(html, page.name);
@@ -143,7 +141,6 @@ async function scrapePages() {
       const outputPath = path.join(OUTPUT_DIR, `${page.name}.json`);
       fs.writeFileSync(outputPath, JSON.stringify(content, null, 2));
 
-      console.log(`✅ Saved to ${outputPath}`);
       results.push(content);
 
       // Be nice to the server
@@ -156,8 +153,6 @@ async function scrapePages() {
   // Save index
   const indexPath = path.join(OUTPUT_DIR, 'index.json');
   fs.writeFileSync(indexPath, JSON.stringify(results, null, 2));
-  console.log(`\n✅ Saved index to ${indexPath}`);
-  console.log(`\n🎉 Scraped ${results.length} pages`);
 }
 
 // Run scraper

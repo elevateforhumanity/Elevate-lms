@@ -53,12 +53,12 @@ const server = http.createServer((req, res) => {
             <a href="/compliance">Compliance</a>
             <a href="/accessibility">Accessibility</a>
         </nav>
-        
+
         <div class="hero">
             <h1>🚀 Elevate for Humanity</h1>
             <p>Workforce Development • Government Contracting • Philanthropy</p>
         </div>
-        
+
         <div class="features">
             <div class="feature">
                 <h3>🏛️ Government Contracting</h3>
@@ -70,7 +70,7 @@ const server = http.createServer((req, res) => {
                     <li>98% contract performance rating</li>
                 </ul>
             </div>
-            
+
             <div class="feature">
                 <h3>💜 Philanthropy & Grants</h3>
                 <p><strong>Elizabeth L. Greene Foundation</strong> creating pathways to prosperity through strategic giving and community partnerships.</p>
@@ -81,7 +81,7 @@ const server = http.createServer((req, res) => {
                     <li>87% program graduation rate</li>
                 </ul>
             </div>
-            
+
             <div class="feature">
                 <h3>♿ Accessibility Leadership</h3>
                 <p><strong>WCAG 2.1 AA Compliance</strong> with comprehensive accessibility features and user customization options.</p>
@@ -93,7 +93,7 @@ const server = http.createServer((req, res) => {
                 </ul>
             </div>
         </div>
-        
+
         <div class="stats">
             <div class="stat">
                 <div class="stat-value">1,247</div>
@@ -112,7 +112,7 @@ const server = http.createServer((req, res) => {
                 <div class="stat-label">Contract Performance</div>
             </div>
         </div>
-        
+
         <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #eff6ff; border-radius: 8px;">
             <h2>✅ Implementation Complete</h2>
             <p>Government contracting capabilities, philanthropy system, and accessibility compliance are fully implemented and ready for deployment.</p>

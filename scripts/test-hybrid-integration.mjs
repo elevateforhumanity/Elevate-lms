@@ -4,7 +4,6 @@
 import { existsSync } from "fs";
 import { readFileSync } from "fs";
 
-console.log("🧪 Testing Hybrid Partner Integration\n");
 
 const tests = [];
 let passed = 0;
@@ -264,12 +263,10 @@ test("Hybrid enrollment handles both API and link modes", () => {
 });
 
 // Run all tests
-console.log("Running tests...\n");
 
 for (const { name, fn } of tests) {
   try {
     fn();
-    console.log(`✅ ${name}`);
     passed++;
   } catch (error) {
     console.error(`❌ ${name}`);
@@ -278,30 +275,9 @@ for (const { name, fn } of tests) {
   }
 }
 
-console.log("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-console.log(`Tests: ${passed} passed, ${failed} failed, ${tests.length} total`);
-console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
 if (failed === 0) {
-  console.log("\n✅ ALL TESTS PASSED\n");
-  console.log("📊 Summary:");
-  console.log("   • Database migration ready");
-  console.log("   • Student interface complete");
-  console.log("   • Admin interface complete");
-  console.log("   • Hybrid enrollment logic ready");
-  console.log("   • Course completion logic ready");
-  console.log("   • Documentation complete");
-  console.log("\n🚀 Status: Hybrid Integration Ready");
-  console.log("\n📝 Next Steps:");
-  console.log("   1. Run migration in Supabase");
-  console.log("   2. Create 'external-proof' storage bucket");
-  console.log("   3. Add external modules to courses");
-  console.log("   4. Test with real students");
-  console.log("   5. Configure partner API credentials");
-  console.log("\n💰 Revenue Impact: $35K/month potential");
-  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
   process.exit(0);
 } else {
-  console.log("\n❌ SOME TESTS FAILED\n");
   process.exit(1);
 }

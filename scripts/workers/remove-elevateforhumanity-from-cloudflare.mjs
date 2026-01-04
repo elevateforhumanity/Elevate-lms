@@ -2,10 +2,10 @@
 
 /**
  * Cloudflare Autopilot Worker: Remove www.elevateforhumanity.org from Cloudflare
- * 
+ *
  * This script removes the Cloudflare configuration for www.elevateforhumanity.org
  * so it can be properly hosted on Durable (durablesites.co).
- * 
+ *
  * What it does:
  * 1. Lists all zones in Cloudflare account
  * 2. Finds elevateforhumanity.org zone
@@ -34,7 +34,6 @@ const colors = {
 };
 
 function log(message, color = 'reset') {
-  console.log(`${colors[color]}${message}${colors.reset}`);
 }
 
 function makeRequest(options, data = null) {
@@ -57,18 +56,18 @@ function makeRequest(options, data = null) {
     });
 
     req.on('error', reject);
-    
+
     if (data) {
       req.write(JSON.stringify(data));
     }
-    
+
     req.end();
   });
 }
 
 async function findZone() {
   log('\n🔍 Finding Cloudflare zone for elevateforhumanity.org...', 'cyan');
-  
+
   const options = {
     hostname: 'api.cloudflare.com',
     path: '/client/v4/zones?name=' + DOMAIN,
@@ -80,7 +79,7 @@ async function findZone() {
   };
 
   const zones = await makeRequest(options);
-  
+
   if (zones.length === 0) {
     throw new Error(`Zone ${DOMAIN} not found in Cloudflare account`);
   }
@@ -92,7 +91,7 @@ async function findZone() {
 
 async function listDNSRecords(zoneId) {
   log('\n📋 Listing DNS records for www subdomain...', 'cyan');
-  
+
   const options = {
     hostname: 'api.cloudflare.com',
     path: `/client/v4/zones/${zoneId}/dns_records?name=${SUBDOMAIN}.${DOMAIN}`,
@@ -104,7 +103,7 @@ async function listDNSRecords(zoneId) {
   };
 
   const records = await makeRequest(options);
-  
+
   if (records.length === 0) {
     log('ℹ️  No DNS records found for www subdomain', 'yellow');
     return [];
@@ -120,7 +119,7 @@ async function listDNSRecords(zoneId) {
 
 async function updateDNSRecord(zoneId, recordId, recordData) {
   log(`\n🔧 Updating DNS record ${recordId}...`, 'cyan');
-  
+
   const options = {
     hostname: 'api.cloudflare.com',
     path: `/client/v4/zones/${zoneId}/dns_records/${recordId}`,
@@ -138,7 +137,7 @@ async function updateDNSRecord(zoneId, recordId, recordData) {
 
 async function deleteDNSRecord(zoneId, recordId) {
   log(`\n🗑️  Deleting DNS record ${recordId}...`, 'cyan');
-  
+
   const options = {
     hostname: 'api.cloudflare.com',
     path: `/client/v4/zones/${zoneId}/dns_records/${recordId}`,

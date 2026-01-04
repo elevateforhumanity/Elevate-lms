@@ -44,17 +44,17 @@ function hasPlaceholderText(source) {
     "changeme",
   ];
   const lower = source.toLowerCase();
-  
+
   // Allow "Mock Exam", "Mock Test", "Mock Skills" (legitimate practice tests)
   // Only flag if "mock" appears without "exam", "test", "skills", "board"
-  if (lower.includes("mock") && 
-      !lower.includes("mock exam") && 
-      !lower.includes("mock test") && 
-      !lower.includes("mock skills") && 
+  if (lower.includes("mock") &&
+      !lower.includes("mock exam") &&
+      !lower.includes("mock test") &&
+      !lower.includes("mock skills") &&
       !lower.includes("mock state board")) {
     return true;
   }
-  
+
   return bad.some((w) => lower.includes(w));
 }
 
@@ -134,29 +134,16 @@ for (const file of files) {
 }
 
 // Report
-console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-console.log("📌 LMS DEEP AUDIT RESULTS");
-console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-console.log(`Course files found: ${files.length}`);
-console.log(`Unique slugs:       ${slugSet.size}`);
-console.log(`Unique ids:         ${idSet.size}`);
-console.log("");
 
 if (errors.length) {
-  console.log("❌ ERRORS (must fix):");
   for (const e of errors) console.log(" - " + e);
-  console.log("");
 }
 
 if (warnings.length) {
-  console.log("⚠️ WARNINGS (should fix):");
   for (const w of warnings) console.log(" - " + w);
-  console.log("");
 }
 
 if (!errors.length) {
-  console.log("✅ LMS audit passed with 0 blocking errors.");
 } else {
-  console.log("❌ LMS audit failed — fix errors above, then re-run.");
   process.exit(1);
 }

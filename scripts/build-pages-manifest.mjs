@@ -154,11 +154,5 @@ const manifest = {
 const manifestPath = path.join(OUT_DIR, 'pages.json');
 fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 
-console.log(`✅ Generated pages manifest:`);
-console.log(`   Total pages: ${pages.length}`);
-console.log(`   Categories: ${Object.keys(byCategory).length}`);
-console.log(`   Output: ${manifestPath}`);
-console.log(`\nCategories breakdown:`);
 for (const [cat, items] of Object.entries(byCategory)) {
-  console.log(`   ${cat}: ${items.length} pages`);
 }

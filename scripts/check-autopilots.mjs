@@ -25,7 +25,6 @@ const colors = {
 };
 
 function log(msg, color = 'reset') {
-  console.log(`${colors[color]}${msg}${colors.reset}`);
 }
 
 function section(title) {
@@ -189,7 +188,6 @@ async function checkAutopilots() {
       log(`   Description: ${autopilot.description}`);
       log(`   Integration: ${autopilot.integration}`);
     }
-    console.log('');
   }
 
   return results;
@@ -215,7 +213,6 @@ async function checkPackageJsonIntegration() {
     log('⚠️  No autopilot scripts in package.json', 'yellow');
   }
 
-  console.log('');
 
   // Check postbuild integration
   const postbuild = packageJson.scripts?.postbuild;
@@ -255,7 +252,6 @@ async function checkEnvironmentVariables() {
     }
   }
 
-  console.log('');
   log('Optional Variables (for advanced autopilots):', 'cyan');
   for (const varName of optionalVars) {
     if (process.env[varName]) {
@@ -277,14 +273,12 @@ async function generateReport(results) {
   log(`⚠️  Not Executable: ${results.notExecutable.length}`, 'yellow');
   log(`❌ Missing: ${results.missing.length}`, 'red');
 
-  console.log('');
 
   if (results.active.length > 0) {
     log('Active Autopilots (run automatically):', 'green');
     results.active.forEach((ap) => {
       log(`  • ${ap.name} - ${ap.description}`);
     });
-    console.log('');
   }
 
   if (results.configured.length > 0) {
@@ -292,7 +286,6 @@ async function generateReport(results) {
     results.configured.forEach((ap) => {
       log(`  • ${ap.name} - ${ap.description}`);
     });
-    console.log('');
   }
 
   if (results.notExecutable.length > 0) {
@@ -301,7 +294,6 @@ async function generateReport(results) {
       log(`  • ${ap.file}`);
       log(`    Run: chmod +x ${ap.file}`);
     });
-    console.log('');
   }
 
   if (results.missing.length > 0) {
@@ -309,7 +301,6 @@ async function generateReport(results) {
     results.missing.forEach((ap) => {
       log(`  • ${ap.name} - ${ap.file}`);
     });
-    console.log('');
   }
 
   // Recommendations
@@ -318,23 +309,19 @@ async function generateReport(results) {
   if (results.notExecutable.length > 0) {
     log('1. Make shell scripts executable:', 'yellow');
     log('   chmod +x scripts/*.sh');
-    console.log('');
   }
 
   if (!process.env.ORCHESTRATOR_URL) {
     log('2. Optional: Set up orchestrator for advanced autopilots:', 'blue');
     log('   export ORCHESTRATOR_URL=https://your-orchestrator.workers.dev');
-    console.log('');
   }
 
   log('3. Active autopilots run automatically during build:', 'green');
   log('   pnpm build');
-  console.log('');
 
   log('4. Manual autopilots can be run as needed:', 'blue');
   log('   node scripts/routes-autopilot.mjs');
   log('   bash scripts/advanced-autopilot.sh');
-  console.log('');
 }
 
 async function main() {

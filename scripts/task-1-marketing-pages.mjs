@@ -76,8 +76,6 @@ const issues = {
   errors: []
 };
 
-console.log('🚀 TASK 1: Marketing Pages Hero Banner Audit\n');
-console.log(`Auditing ${MARKETING_PAGES.length} marketing pages...\n`);
 
 function getPagePath(route) {
   const appDir = join(__dirname, '..', 'app');
@@ -87,10 +85,10 @@ function getPagePath(route) {
 
 function auditPage(route) {
   const filePath = getPagePath(route);
-  
+
   try {
     const content = readFileSync(filePath, 'utf-8');
-    
+
     const checks = {
       hasHero: /hero|Hero|banner|Banner/.test(content),
       hasImage: /<Image/.test(content),
@@ -102,10 +100,10 @@ function auditPage(route) {
       hasAltText: /alt=["'][^"']+["']/.test(content),
       hasPlaceholder: /TODO|FIXME|placeholder|coming soon/i.test(content)
     };
-    
-    const needsFix = !checks.hasHero || !checks.hasCTA || !checks.hasMetadata || 
+
+    const needsFix = !checks.hasHero || !checks.hasCTA || !checks.hasMetadata ||
                      (checks.hasImage && !checks.hasAltText) || checks.hasPlaceholder;
-    
+
     if (needsFix) {
       issues.needsManualReview.push({
         route,
@@ -115,7 +113,7 @@ function auditPage(route) {
     } else {
       issues.fixed.push(route);
     }
-    
+
     return { route, ...checks };
   } catch (error) {
     issues.errors.push({ route, error: error.message });
@@ -125,7 +123,7 @@ function auditPage(route) {
 
 function getRecommendations(checks) {
   const recs = [];
-  
+
   if (!checks.hasHero) {
     recs.push('Add hero banner section with 1920x800px image');
   }
@@ -150,7 +148,7 @@ function getRecommendations(checks) {
   if (checks.hasPlaceholder) {
     recs.push('Remove placeholder content (TODO, FIXME, etc.)');
   }
-  
+
   return recs;
 }
 
@@ -164,37 +162,17 @@ for (const route of MARKETING_PAGES) {
 }
 
 // Print summary
-console.log('📊 AUDIT RESULTS\n');
-console.log('═'.repeat(70));
-console.log(`\n✅ Pages already compliant: ${issues.fixed.length}`);
-console.log(`⚠️  Pages needing fixes: ${issues.needsManualReview.length}`);
-console.log(`❌ Pages with errors: ${issues.errors.length}\n`);
 
 if (issues.needsManualReview.length > 0) {
-  console.log('\n⚠️  PAGES NEEDING MANUAL REVIEW:\n');
-  
+
   for (const issue of issues.needsManualReview) {
-    console.log(`\n${issue.route}`);
-    console.log('─'.repeat(70));
-    console.log('Status:');
-    console.log(`  Hero: ${issue.checks.hasHero ? '✓' : '✗'}`);
-    console.log(`  CTA: ${issue.checks.hasCTA ? '✓' : '✗'}`);
-    console.log(`  Metadata: ${issue.checks.hasMetadata ? '✓' : '✗'}`);
-    console.log(`  Alt Text: ${issue.checks.hasAltText ? '✓' : '✗'}`);
-    console.log(`  Phone: ${issue.checks.hasPhone ? '✓' : '✗'}`);
-    console.log(`  Email: ${issue.checks.hasEmail ? '✓' : '✗'}`);
-    console.log(`  Quality: ${issue.checks.hasQuality ? '✓' : '✗'}`);
-    console.log(`  Placeholder: ${issue.checks.hasPlaceholder ? '✗' : '✓'}`);
-    
-    console.log('\nRecommendations:');
+
     issue.recommendations.forEach(rec => console.log(`  • ${rec}`));
   }
 }
 
 if (issues.errors.length > 0) {
-  console.log('\n❌ ERRORS:\n');
   issues.errors.forEach(err => {
-    console.log(`  ${err.route}: ${err.error}`);
   });
 }
 
@@ -219,15 +197,5 @@ writeFileSync(
   JSON.stringify(report, null, 2)
 );
 
-console.log('\n✅ Task 1 audit complete!');
-console.log('📄 Detailed report saved to: task-1-marketing-audit-report.json\n');
 
 // Print next steps
-console.log('📋 NEXT STEPS:\n');
-console.log('1. Review pages needing fixes above');
-console.log('2. Add hero banners to pages missing them');
-console.log('3. Add CTAs with contact information');
-console.log('4. Add/update metadata');
-console.log('5. Add alt text to images');
-console.log('6. Remove placeholder content');
-console.log('7. Run this script again to verify fixes\n');

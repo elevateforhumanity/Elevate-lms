@@ -21,13 +21,10 @@ const colors = {
 };
 
 function log(message, color = 'reset') {
-  console.log(`${colors[color]}${message}${colors.reset}`);
 }
 
 function section(title) {
-  console.log('\n' + '━'.repeat(60));
   log(`▶  ${title}`, 'cyan');
-  console.log('━'.repeat(60) + '\n');
 }
 
 async function apiRequest(endpoint, token, method = 'GET', body = null) {
@@ -120,7 +117,7 @@ function analyzeProject(project) {
 
   // Has custom domain
   if (project.alias && project.alias.length > 0) {
-    const hasCustomDomain = project.alias.some(a => 
+    const hasCustomDomain = project.alias.some(a =>
       !a.domain.includes('vercel.app')
     );
     if (hasCustomDomain) {
@@ -133,7 +130,7 @@ function analyzeProject(project) {
   if (project.latestDeployments && project.latestDeployments.length > 0) {
     const latest = project.latestDeployments[0];
     const daysSinceDeployment = (Date.now() - latest.createdAt) / (1000 * 60 * 60 * 24);
-    
+
     if (daysSinceDeployment < 7) {
       score.total += 30;
       score.reasons.push(`✅ Deployed ${Math.floor(daysSinceDeployment)} days ago`);
@@ -189,10 +186,10 @@ async function main() {
   // List all projects
   section('Step 2: Fetching Projects');
   const projects = await listProjects(token);
-  
+
   // Filter for fix2/elevate related projects
-  const relevantProjects = projects.filter(p => 
-    p.name.includes('fix2') || 
+  const relevantProjects = projects.filter(p =>
+    p.name.includes('fix2') ||
     p.name.includes('elevate') ||
     (p.link && p.link.repo === 'elevateforhumanity/fix2')
   );
@@ -219,7 +216,7 @@ async function main() {
     log(`\nAnalyzing: ${project.name}`, 'cyan');
     const details = await getProjectDetails(token, project.id);
     const score = analyzeProject(details || project);
-    
+
     analyzed.push({
       ...project,
       score: score.total,
@@ -255,7 +252,7 @@ async function main() {
   // Confirm deletion
   log('\n⚠️  WARNING: This will PERMANENTLY delete these projects!', 'yellow');
   log('Press Ctrl+C to cancel, or wait 5 seconds to continue...', 'yellow');
-  
+
   await new Promise(resolve => setTimeout(resolve, 5000));
 
   // Delete duplicates
@@ -266,7 +263,7 @@ async function main() {
   for (const project of toDelete) {
     log(`\nDeleting: ${project.name}...`, 'yellow');
     const success = await deleteProject(token, project.id);
-    
+
     if (success) {
       log(`✅ Deleted: ${project.name}`, 'green');
       deletedCount++;
@@ -314,12 +311,12 @@ async function main() {
   log(`  • Kept project: ${toKeep.name}`, 'green');
   log(`  • Deleted projects: ${deletedCount}`, deletedCount > 0 ? 'green' : 'yellow');
   log(`  • Production URL: https://www.elevateconnectsdirectory.org`, 'blue');
-  
+
   log('\n🎯 Next Steps:', 'cyan');
   log('  1. Verify production site works', 'blue');
   log('  2. Check environment variables in kept project', 'blue');
   log('  3. Test deployment', 'blue');
-  
+
   log('\n✅ Your Vercel setup is now clean!', 'green');
 }
 

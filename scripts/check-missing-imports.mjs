@@ -46,11 +46,8 @@ function scanFile(file) {
 walk(root);
 
 if (missing.length) {
-  console.log('Missing imports detected:');
   for (const m of missing) {
-    console.log(`  ${m.file} -> ${m.import}`);
   }
   process.exitCode = 1;
 } else {
-  console.log('No missing relative imports.');
 }

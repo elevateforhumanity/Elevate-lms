@@ -18,4 +18,3 @@ ${routes
 `;
 
 writeFileSync('dist/client/sitemap.xml', xml);
-console.log('✅ sitemap.xml generated');

@@ -3,7 +3,6 @@
 
 import { existsSync } from "fs";
 
-console.log("🧪 Testing Complete Partner Integration\n");
 
 const tests = [];
 let passed = 0;
@@ -143,12 +142,10 @@ test("Configuration files exist", () => {
 });
 
 // Run all tests
-console.log("Running tests...\n");
 
 for (const { name, fn } of tests) {
   try {
     fn();
-    console.log(`✅ ${name}`);
     passed++;
   } catch (error) {
     console.error(`❌ ${name}`);
@@ -157,62 +154,9 @@ for (const { name, fn } of tests) {
   }
 }
 
-console.log("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-console.log(`Tests: ${passed} passed, ${failed} failed, ${tests.length} total`);
-console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
 if (failed === 0) {
-  console.log("\n✅ ALL TESTS PASSED\n");
-  console.log("📊 Complete Partner Integration Summary:");
-  console.log("\n🗄️  Database:");
-  console.log("   • External partner modules table");
-  console.log("   • External partner progress table");
-  console.log("   • Course completion functions");
-  console.log("   • Auto-completion triggers");
-  console.log("\n👨‍🎓 Student Experience:");
-  console.log("   • Launch partner courses from Elevate");
-  console.log("   • Upload proof of completion");
-  console.log("   • Track progress across all modules");
-  console.log("   • Check course completion");
-  console.log("   • Receive stacked credential certificate");
-  console.log("\n👨‍💼 Admin Experience:");
-  console.log("   • Review submitted proofs");
-  console.log("   • Approve or reset submissions");
-  console.log("   • Track completion rates");
-  console.log("   • Monitor all partner modules");
-  console.log("\n🔌 API Integration:");
-  console.log("   • 7 partner implementations ready");
-  console.log("   • Hybrid mode (API + Link fallback)");
-  console.log("   • Webhook handlers for progress updates");
-  console.log("   • Automatic progress sync");
-  console.log("   • Monitoring and alerting");
-  console.log("\n📚 Documentation:");
-  console.log("   • Admin guide for managing modules");
-  console.log("   • Student guide for completing modules");
-  console.log("   • API credential setup checklist");
-  console.log("   • Course configuration examples");
-  console.log("   • Integration guides");
-  console.log("\n💰 Revenue Impact:");
-  console.log("   • $35,000/month potential");
-  console.log("   • 7 partners integrated");
-  console.log("   • 20+ partner modules configured");
-  console.log("   • Stacked credentials for all programs");
-  console.log("\n🚀 Status: 100% Complete - Production Ready");
-  console.log("\n📝 Next Steps:");
-  console.log("   1. Run database migrations in Supabase");
-  console.log("   2. Create 'external-proof' storage bucket");
-  console.log("   3. Add partner modules to courses (SQL provided)");
-  console.log("   4. Test with pilot students");
-  console.log("   5. Contact partners for API credentials");
-  console.log("   6. Train admins on approval process");
-  console.log("   7. Roll out to all programs");
-  console.log("\n⏱️  Timeline:");
-  console.log("   • Link mode: Ready immediately");
-  console.log("   • API mode: 2-4 weeks per partner");
-  console.log("   • Full deployment: 5-7 weeks");
-  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
   process.exit(0);
 } else {
-  console.log("\n❌ SOME TESTS FAILED\n");
   process.exit(1);
 }

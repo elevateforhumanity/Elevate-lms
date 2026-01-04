@@ -67,19 +67,19 @@ function generateSVGCover(course) {
       <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
     </filter>
   </defs>
-  
+
   <!-- Background gradient -->
   <rect width="1200" height="800" fill="url(#${course.slug}-bg)"/>
-  
+
   <!-- Overlay for better text contrast -->
   <rect width="1200" height="800" fill="rgba(0,0,0,0.4)"/>
-  
+
   <!-- Top branding bar -->
   <rect y="0" width="1200" height="100" fill="rgba(255,255,255,0.1)"/>
   <text x="60" y="65" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="white" letter-spacing="2">
     ELEVATE FOR HUMANITY
   </text>
-  
+
   <!-- Main content area -->
   <g transform="translate(600, 400)">
     <!-- Course title -->
@@ -89,13 +89,13 @@ function generateSVGCover(course) {
     <text x="0" y="0" font-family="Arial, sans-serif" font-size="64" font-weight="800" fill="white" text-anchor="middle" filter="url(#shadow)">
       ${course.title.toUpperCase().split(' ').slice(2).join(' ')}
     </text>
-    
+
     <!-- Subtitle -->
     <text x="0" y="60" font-family="Arial, sans-serif" font-size="28" fill="white" text-anchor="middle" opacity="0.95">
       WIOA-Funded Workforce Training
     </text>
   </g>
-  
+
   <!-- Bottom info bar -->
   <rect y="700" width="1200" height="100" fill="rgba(0,0,0,0.5)"/>
   <text x="60" y="755" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="white">
@@ -105,8 +105,6 @@ function generateSVGCover(course) {
 }
 
 function main() {
-  console.log('🎨 Elevate Course Cover Generator');
-  console.log('━'.repeat(50));
 
   ensureDirExists(coversDir);
 
@@ -123,18 +121,11 @@ function main() {
     const svgContent = generateSVGCover(course);
     fs.writeFileSync(svgPath, svgContent);
 
-    console.log(`✅ ${course.slug.padEnd(25)} → cover.svg`);
     generated++;
   });
 
-  console.log('━'.repeat(50));
-  console.log(`✅ Generated ${generated} course covers`);
-  console.log(`📁 Location: public/course-covers/`);
-  console.log('');
-  console.log(
     '💡 To customize a cover, replace the SVG file with your own image'
   );
-  console.log(
     '   Example: public/course-covers/barber-apprenticeship/cover.jpg'
   );
 }

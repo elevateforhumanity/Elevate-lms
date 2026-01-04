@@ -18,20 +18,12 @@ const TARGET_URL = 'https://elevateforhumanity.org';
 const OUTPUT_DIR = path.join(process.cwd(), 'extracted-styles');
 
 async function extractCSS() {
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log('🤖 CSS Extraction Worker - Simple Mode');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log('');
-  console.log(`Target: ${TARGET_URL}`);
-  console.log(`Output: ${OUTPUT_DIR}`);
-  console.log('');
 
   try {
     // Create output directory
     await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
     // Fetch homepage
-    console.log('[1/6] Fetching homepage...');
     const response = await fetch(TARGET_URL, {
       headers: {
         'User-Agent':
@@ -44,17 +36,11 @@ async function extractCSS() {
     }
 
     const html = await response.text();
-    console.log(`✅ Fetched ${html.length} bytes`);
-    console.log('');
 
     // Parse HTML
-    console.log('[2/6] Parsing HTML...');
     const $ = cheerio.load(html);
-    console.log('✅ HTML parsed');
-    console.log('');
 
     // Extract inline styles
-    console.log('[3/6] Extracting inline styles...');
     const inlineStyles = [];
     $('style').each((i, el) => {
       const css = $(el).html();
@@ -69,11 +55,8 @@ async function extractCSS() {
       allInlineCSS,
       'utf-8'
     );
-    console.log(`✅ Extracted ${inlineStyles.length} inline style blocks`);
-    console.log('');
 
     // Extract external stylesheets
-    console.log('[4/6] Extracting external stylesheets...');
     const stylesheetUrls = [];
     $('link[rel="stylesheet"]').each((i, el) => {
       const href = $(el).attr('href');
@@ -88,7 +71,6 @@ async function extractCSS() {
         const cssUrl = href.startsWith('http')
           ? href
           : new URL(href, TARGET_URL).toString();
-        console.log(`   Fetching: ${cssUrl}`);
 
         const cssResponse = await fetch(cssUrl, {
           headers: {
@@ -102,7 +84,6 @@ async function extractCSS() {
           externalCSS += `/* Source: ${cssUrl} */\n${css}\n\n`;
         }
       } catch (error) {
-        console.log(`   ⚠️  Failed to fetch ${href}: ${error.message}`);
       }
     }
 
@@ -111,8 +92,6 @@ async function extractCSS() {
       externalCSS,
       'utf-8'
     );
-    console.log(`✅ Extracted ${stylesheetUrls.length} external stylesheets`);
-    console.log('');
 
     // Combine all CSS
     const allCSS = allInlineCSS + '\n\n' + externalCSS;
@@ -123,7 +102,6 @@ async function extractCSS() {
     );
 
     // Extract design tokens from CSS
-    console.log('[5/6] Extracting design tokens...');
     const tokens = {
       colors: extractColors(allCSS),
       fonts: extractFonts(allCSS),
@@ -140,18 +118,10 @@ async function extractCSS() {
       'utf-8'
     );
 
-    console.log('✅ Extracted design tokens:');
-    console.log(`   - ${tokens.colors.length} colors`);
-    console.log(`   - ${tokens.fonts.length} font families`);
-    console.log(`   - ${tokens.fontSizes.length} font sizes`);
-    console.log(`   - ${tokens.spacing.length} spacing values`);
-    console.log(
       `   - ${Object.keys(tokens.cssVariables).length} CSS variables`
     );
-    console.log('');
 
     // Extract HTML structure
-    console.log('[6/6] Extracting HTML structure...');
     const structure = {
       title: $('title').text(),
       metaDescription: $('meta[name="description"]').attr('content') || '',
@@ -219,8 +189,6 @@ async function extractCSS() {
       JSON.stringify(structure, null, 2),
       'utf-8'
     );
-    console.log('✅ Extracted HTML structure');
-    console.log('');
 
     // Generate Tailwind config
     const tailwindConfig = generateTailwindConfig(tokens);
@@ -266,30 +234,12 @@ async function extractCSS() {
       'utf-8'
     );
 
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('✅ CSS Extraction Complete!');
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('');
-    console.log('📊 Summary:');
-    console.log(`   - Inline styles: ${summary.stats.inlineStyles}`);
-    console.log(
       `   - External stylesheets: ${summary.stats.externalStylesheets}`
     );
-    console.log(
       `   - Total CSS size: ${(summary.stats.totalCSSSize / 1024).toFixed(2)} KB`
     );
-    console.log(`   - Colors: ${summary.stats.colors}`);
-    console.log(`   - Fonts: ${summary.stats.fonts}`);
-    console.log(`   - CSS Variables: ${summary.stats.cssVariables}`);
-    console.log('');
-    console.log('📁 Output directory:');
-    console.log(`   ${OUTPUT_DIR}`);
-    console.log('');
-    console.log('📄 Generated files:');
     summary.files.forEach((file) => {
-      console.log(`   - ${file}`);
     });
-    console.log('');
   } catch (error) {
     console.error('❌ Error:', error.message);
     console.error(error.stack);

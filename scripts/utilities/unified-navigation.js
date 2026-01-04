@@ -136,7 +136,7 @@ class UnifiedNavigation {
                 align-items: center;
                 gap: 24px;
             }
-            
+
             .nav-link {
                 color: white;
                 text-decoration: none;
@@ -145,7 +145,7 @@ class UnifiedNavigation {
                 font-weight: 500;
                 transition: all 0.2s ease;
             }
-            
+
             .nav-link:hover {
                 background: rgba(255,255,255,0.1);
             }
@@ -232,7 +232,7 @@ class UnifiedNavigation {
                 .nav-links {
                     gap: 16px;
                 }
-                
+
                 .nav-link {
                     font-size: 0.9rem;
                     padding: 6px 10px;
@@ -273,13 +273,13 @@ class UnifiedNavigation {
                     <span class="brand-icon">🌟</span>
                     <span class="brand-text">${currentSiteData.name}</span>
                 </a>
-                
+
                 <div class="nav-links">
                     <a href="/" class="nav-link">Home</a>
                     <a href="/programs/" class="nav-link">Programs</a>
                     <a href="/funding-options.html" class="nav-link">Funding</a>
                     <a href="/contact/" class="nav-link">Contact</a>
-                    
+
                     <button class="brain-integration" onclick="window.unifiedNav.openBrainChat()">
                         🧠 AI Assistant
                     </button>
@@ -307,7 +307,7 @@ class UnifiedNavigation {
                         <a href="/urban-build-crew.html">Urban Build Crew</a>
                     </div>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>🎓 Training Programs</h4>
                     <div class="footer-links">
@@ -318,7 +318,7 @@ class UnifiedNavigation {
                         <a href="/student-outcomes.html">Student Outcomes</a>
                     </div>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>🤝 Community</h4>
                     <div class="footer-links">
@@ -329,7 +329,7 @@ class UnifiedNavigation {
                         <a href="/sister-sites.html">All Sister Sites</a>
                     </div>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>🧠 AI Integration</h4>
                     <div class="footer-links">
@@ -340,7 +340,7 @@ class UnifiedNavigation {
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2024 Selfish Inc. DBA Rise Foundation Ecosystem. All rights reserved.</p>
                 <p>Unified navigation system connecting all sister sites with integrated AI assistance.</p>
@@ -391,7 +391,7 @@ class UnifiedNavigation {
                     cursor: pointer;
                 ">×</button>
             </div>
-            
+
             <div style="
                 flex: 1;
                 padding: 20px;
@@ -409,7 +409,7 @@ class UnifiedNavigation {
                     👋 Hi! I'm your AI assistant, connected across all Rise Foundation sites. I can help with:
                     <br><br>
                     • Program information and enrollment
-                    • Career guidance and planning  
+                    • Career guidance and planning
                     • Course recommendations
                     • Site navigation
                     • General questions
@@ -417,7 +417,7 @@ class UnifiedNavigation {
                     What would you like to know?
                 </div>
             </div>
-            
+
             <div style="
                 padding: 16px;
                 border-top: 1px solid #e2e8f0;

@@ -1,7 +1,6 @@
 import { readdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-console.log('📊 Analyzing 253 archived migration files...\n');
 
 const archiveDir = 'supabase/migrations/archive-legacy';
 const files = readdirSync(archiveDir).filter(f => f.endsWith('.sql')).sort();
@@ -29,7 +28,7 @@ for (const file of files) {
   const content = readFileSync(path, 'utf8');
   const size = content.length;
   analysis.totalSize += size;
-  
+
   // Categorize by filename patterns
   if (file.includes('complete_schema') || file.includes('complete_lms')) {
     analysis.categories.complete_schema.push({ file, size });
@@ -48,13 +47,13 @@ for (const file of files) {
   } else {
     analysis.categories.other.push({ file, size });
   }
-  
+
   // Find CREATE TABLE statements
   const createMatches = content.matchAll(/CREATE TABLE (?:IF NOT EXISTS )?([a-z_]+)/gi);
   for (const match of createMatches) {
     const tableName = match[1].toLowerCase();
     analysis.uniqueTables.add(tableName);
-    
+
     if (!analysis.duplicateTables[tableName]) {
       analysis.duplicateTables[tableName] = [];
     }
@@ -68,7 +67,7 @@ const report = {
     totalFiles: analysis.totalFiles,
     totalSizeMB: (analysis.totalSize / 1024 / 1024).toFixed(2),
     uniqueTables: analysis.uniqueTables.size,
-    tablesWithDuplicates: Object.keys(analysis.duplicateTables).filter(t => 
+    tablesWithDuplicates: Object.keys(analysis.duplicateTables).filter(t =>
       analysis.duplicateTables[t].length > 1
     ).length
   },
@@ -123,26 +122,13 @@ if (report.categories.lms_courses && report.categories.lms_courses.count > 10) {
 writeFileSync('migration-archive-analysis.json', JSON.stringify(report, null, 2));
 
 // Print summary
-console.log('📋 Summary:');
-console.log(`   Total files: ${report.summary.totalFiles}`);
-console.log(`   Total size: ${report.summary.totalSizeMB} MB`);
-console.log(`   Unique tables: ${report.summary.uniqueTables}`);
-console.log(`   Tables with duplicates: ${report.summary.tablesWithDuplicates}\n`);
 
-console.log('📁 Categories:');
 for (const [category, data] of Object.entries(report.categories)) {
-  console.log(`   ${category}: ${data.count} files (${data.sizeMB} MB)`);
 }
 
-console.log('\n🔄 Top Duplicate Tables:');
 report.topDuplicates.slice(0, 10).forEach(({ table, count }) => {
-  console.log(`   ${table}: created in ${count} files`);
 });
 
-console.log('\n💡 Recommendations:');
 report.recommendations.forEach((rec, i) => {
-  console.log(`   ${i + 1}. ${rec.action} ${rec.category}`);
-  console.log(`      ${rec.reason}`);
 });
 
-console.log('\n✅ Full report saved to migration-archive-analysis.json');

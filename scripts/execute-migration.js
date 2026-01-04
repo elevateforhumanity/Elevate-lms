@@ -49,13 +49,13 @@ async function runMigrations() {
 
   for (let i = 0; i < statements.length; i++) {
     const statement = statements[i];
-    
+
     // Skip echo statements
     if (statement.includes('echo')) continue;
-    
+
     try {
       process.stdout.write(`\r⏳ Progress: ${i + 1}/${statements.length} statements...`);
-      
+
       // For INSERT statements, execute directly via REST API
       if (statement.toUpperCase().includes('INSERT INTO')) {
         // Use direct REST API for inserts
@@ -65,7 +65,7 @@ async function runMigrations() {
           // This is complex, let's use a simpler approach
         }
       }
-      
+
       successCount++;
     } catch (error) {
       if (!error.message.includes('already exists') && !error.message.includes('duplicate')) {
@@ -99,12 +99,12 @@ async function verifyConnection() {
 
 async function main() {
   const connected = await verifyConnection();
-  
+
   if (!connected) {
     process.exit(1);
   }
 
-  
+
 }
 
 main();

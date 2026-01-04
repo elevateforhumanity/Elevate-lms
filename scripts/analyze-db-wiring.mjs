@@ -105,7 +105,7 @@ function analyzeFile(filePath) {
 function buildDataContractMap() {
   const files = getAllFiles(appDir);
   const pageFiles = files.filter(f => f.endsWith('page.tsx') || f.endsWith('page.ts'));
-  
+
   const contractMap = {
     generated: new Date().toISOString(),
     totalRoutes: pageFiles.length,
@@ -123,7 +123,7 @@ function buildDataContractMap() {
       .replace(/\/page\.tsx?$/, '')
       .replace(/\([\w-]+\)\//g, '')
       .replace(/\[(\w+)\]/g, ':$1');
-    
+
     const category = categorizeRoute(route);
     const analysis = analyzeFile(filePath);
 
@@ -135,11 +135,11 @@ function buildDataContractMap() {
 
     // Update summary
     contractMap.summary.byCategory[category] = (contractMap.summary.byCategory[category] || 0) + 1;
-    
+
     analysis.tables.forEach(table => {
       contractMap.summary.tablesUsed[table] = (contractMap.summary.tablesUsed[table] || 0) + 1;
     });
-    
+
     analysis.rpcs.forEach(rpc => {
       contractMap.summary.rpcsUsed[rpc] = (contractMap.summary.rpcsUsed[rpc] || 0) + 1;
     });
@@ -148,7 +148,7 @@ function buildDataContractMap() {
     if (category !== 'public' && category !== 'auth' && analysis.tables.length > 0) {
       const needsOrgScope = ['programHolder', 'admin', 'instructor', 'employer'].includes(category);
       const needsUserScope = ['student', 'lms'].includes(category);
-      
+
       if (needsOrgScope && !analysis.hasOrgFilter && analysis.tables.length > 0) {
         contractMap.summary.missingFilters.push({
           route,
@@ -157,7 +157,7 @@ function buildDataContractMap() {
           tables: analysis.tables,
         });
       }
-      
+
       if (needsUserScope && !analysis.hasUserFilter && !analysis.hasProfileFilter && analysis.tables.length > 0) {
         contractMap.summary.missingFilters.push({
           route,
@@ -172,7 +172,6 @@ function buildDataContractMap() {
   return contractMap;
 }
 
-console.log('Building data contract map...');
 const contractMap = buildDataContractMap();
 
 writeFileSync(
@@ -180,10 +179,3 @@ writeFileSync(
   JSON.stringify(contractMap, null, 2)
 );
 
-console.log(`✅ Generated data contract map`);
-console.log(`   Total routes: ${contractMap.totalRoutes}`);
-console.log(`   Categories: ${Object.keys(contractMap.summary.byCategory).join(', ')}`);
-console.log(`   Tables used: ${Object.keys(contractMap.summary.tablesUsed).length}`);
-console.log(`   RPCs used: ${Object.keys(contractMap.summary.rpcsUsed).length}`);
-console.log(`   Missing filters: ${contractMap.summary.missingFilters.length}`);
-console.log(`\nSaved to: ${join(reportsDir, 'data-contract-map.json')}`);

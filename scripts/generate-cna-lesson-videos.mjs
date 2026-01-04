@@ -8,8 +8,6 @@
 import fs from 'fs';
 import path from 'path';
 
-console.log('🎬 Generating CNA Lesson Videos');
-console.log('================================\n');
 
 // Map CNA lessons to existing videos
 const videoMappings = [
@@ -47,24 +45,22 @@ const videoMappings = [
 
 // Check which videos exist
 const videosDir = './public/videos';
-const availableVideos = fs.existsSync(videosDir) 
+const availableVideos = fs.existsSync(videosDir)
   ? fs.readdirSync(videosDir).filter(f => f.endsWith('.mp4'))
   : [];
 
-console.log(`📁 Found ${availableVideos.length} videos in /public/videos/\n`);
 
 // Generate video URLs
 const videoUrls = videoMappings.map(mapping => {
   // Try to find exact match
   let videoUrl = `/videos/${mapping.videoFile}`;
-  
+
   // If exact file doesn't exist, use first available video as fallback
   if (!availableVideos.includes(mapping.videoFile) && availableVideos.length > 0) {
     const fallbackVideo = availableVideos[0];
     videoUrl = `/videos/${fallbackVideo}`;
-    console.log(`⚠️  ${mapping.videoFile} not found, using ${fallbackVideo} as fallback`);
   }
-  
+
   return {
     ...mapping,
     videoUrl,
@@ -114,7 +110,6 @@ SELECT id, title, video_url, duration FROM lessons WHERE course_id = 'cna-module
 `;
 
 fs.writeFileSync('./scripts/cna-lesson-videos.sql', sqlContent);
-console.log('\n✅ Generated: scripts/cna-lesson-videos.sql');
 
 // Write JSON file
 const jsonContent = {
@@ -124,19 +119,7 @@ const jsonContent = {
 };
 
 fs.writeFileSync('./scripts/cna-lesson-videos.json', JSON.stringify(jsonContent, null, 2));
-console.log('✅ Generated: scripts/cna-lesson-videos.json');
 
 // Summary
-console.log('\n📊 Summary:');
-console.log(`   Lessons: ${videoUrls.length}`);
-console.log(`   Total Duration: ${videoUrls.reduce((sum, v) => sum + v.duration, 0) / 60} minutes`);
-console.log(`   Videos Mapped: ${videoUrls.length}`);
 
-console.log('\n🚀 Next Steps:');
-console.log('   1. Review generated SQL: scripts/cna-lesson-videos.sql');
-console.log('   2. Run SQL in Supabase dashboard or via psql');
-console.log('   3. Or use the JSON file for programmatic seeding');
-console.log('   4. Test video playback in course player\n');
 
-console.log('💡 To run SQL:');
-console.log('   psql $DATABASE_URL -f scripts/cna-lesson-videos.sql\n');

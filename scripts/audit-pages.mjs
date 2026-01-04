@@ -30,11 +30,11 @@ const PLACEHOLDER_PATTERNS = [
 // Find all page files
 function findAllPages(dir, pages = []) {
   const files = readdirSync(dir);
-  
+
   for (const file of files) {
     const fullPath = join(dir, file);
     const stat = statSync(fullPath);
-    
+
     if (stat.isDirectory()) {
       if (!file.startsWith('.') && file !== 'node_modules') {
         findAllPages(fullPath, pages);
@@ -43,7 +43,7 @@ function findAllPages(dir, pages = []) {
       pages.push(fullPath);
     }
   }
-  
+
   return pages;
 }
 
@@ -57,7 +57,7 @@ function filePathToRoute(filePath) {
     .replace(/\(app\)/g, '')
     .replace(/\(dashboard\)/g, '')
     .replace(/\(partner\)/g, '');
-  
+
   if (!route) route = '/';
   return route;
 }
@@ -85,7 +85,7 @@ function determinePageType(route, content) {
 // Detect issues in page
 function detectIssues(filePath, content, route) {
   const issues = [];
-  
+
   // Check for placeholder text
   for (const pattern of PLACEHOLDER_PATTERNS) {
     if (pattern.test(content)) {
@@ -96,14 +96,14 @@ function detectIssues(filePath, content, route) {
       });
     }
   }
-  
+
   // Check for missing hero on marketing/program pages
   const pageType = determinePageType(route, content);
   if (['marketing', 'program'].includes(pageType)) {
     const hasHeroImage = /hero.*image|Image.*hero|<Image/i.test(content);
     const hasHeroVideo = /hero.*video|<video/i.test(content);
     const hasHeroSection = /hero|Hero/i.test(content);
-    
+
     if (!hasHeroImage && !hasHeroVideo && hasHeroSection) {
       issues.push({
         type: 'missing_hero_media',
@@ -112,7 +112,7 @@ function detectIssues(filePath, content, route) {
       });
     }
   }
-  
+
   // Check for gradient-only hero
   if (content.includes('gradient') && content.includes('hero') && !content.includes('<Image')) {
     issues.push({
@@ -120,7 +120,7 @@ function detectIssues(filePath, content, route) {
       severity: 'medium'
     });
   }
-  
+
   // Check for missing CTA
   const hasCTA = /apply|enroll|contact|get started|sign up|book|schedule/i.test(content);
   if (['marketing', 'program'].includes(pageType) && !hasCTA) {
@@ -129,7 +129,7 @@ function detectIssues(filePath, content, route) {
       severity: 'medium'
     });
   }
-  
+
   // Check for missing H1
   const hasH1 = /<h1|className.*text-[45]xl|className.*text-6xl/i.test(content);
   if (!hasH1 && pageType !== 'redirect') {
@@ -138,7 +138,7 @@ function detectIssues(filePath, content, route) {
       severity: 'medium'
     });
   }
-  
+
   // Check for empty sections
   if (content.includes('TODO') || content.includes('FIXME')) {
     issues.push({
@@ -146,7 +146,7 @@ function detectIssues(filePath, content, route) {
       severity: 'low'
     });
   }
-  
+
   return issues;
 }
 
@@ -154,7 +154,7 @@ function detectIssues(filePath, content, route) {
 function scanMediaReferences(content, filePath) {
   const references = [];
   const lines = content.split('\n');
-  
+
   lines.forEach((line, index) => {
     // Check for image references in comments
     if (line.includes('//') || line.includes('/*') || line.includes('*')) {
@@ -167,7 +167,7 @@ function scanMediaReferences(content, filePath) {
           context: line.trim()
         });
       }
-      
+
       // Look for "use this image" or similar
       if (/use.*image|hero.*image|replace.*image|image.*asset/i.test(line)) {
         references.push({
@@ -178,29 +178,27 @@ function scanMediaReferences(content, filePath) {
       }
     }
   });
-  
+
   return references;
 }
 
 // Main audit function
 async function auditAllPages() {
-  console.log('🔍 Starting page audit...\n');
-  
+
   const appDir = join(rootDir, 'app');
   const allPages = findAllPages(appDir);
-  
-  console.log(`Found ${allPages.length} pages\n`);
-  
+
+
   const auditResults = [];
   const mediaMapping = [];
-  
+
   for (const filePath of allPages) {
     const content = readFileSync(filePath, 'utf-8');
     const route = filePathToRoute(filePath);
     const pageType = determinePageType(route, content);
     const issues = detectIssues(filePath, content, route);
     const mediaRefs = scanMediaReferences(content, filePath);
-    
+
     auditResults.push({
       route,
       filePath: filePath.replace(rootDir + '/', ''),
@@ -211,7 +209,7 @@ async function auditAllPages() {
       missingHero: issues.some(i => i.type === 'missing_hero_media'),
       missingCTA: issues.some(i => i.type === 'missing_cta'),
     });
-    
+
     if (mediaRefs.length > 0) {
       mediaMapping.push({
         route,
@@ -220,14 +218,14 @@ async function auditAllPages() {
       });
     }
   }
-  
+
   // Generate summary
   const totalIssues = auditResults.reduce((sum, page) => sum + page.issueCount, 0);
   const pagesWithIssues = auditResults.filter(p => p.issueCount > 0).length;
   const pagesWithPlaceholders = auditResults.filter(p => p.hasPlaceholder).length;
   const pagesWithMissingHero = auditResults.filter(p => p.missingHero).length;
   const pagesWithMissingCTA = auditResults.filter(p => p.missingCTA).length;
-  
+
   const summary = {
     totalPages: allPages.length,
     pagesScanned: auditResults.length,
@@ -239,18 +237,18 @@ async function auditAllPages() {
     mediaReferencesFound: mediaMapping.length,
     timestamp: new Date().toISOString()
   };
-  
+
   // Write JSON report
   const jsonReport = {
     summary,
     pages: auditResults
   };
-  
+
   writeFileSync(
     join(rootDir, 'reports/page-audit.json'),
     JSON.stringify(jsonReport, null, 2)
   );
-  
+
   // Write markdown report
   let mdReport = `# Page Audit Report\n\n`;
   mdReport += `**Generated:** ${summary.timestamp}\n\n`;
@@ -262,7 +260,7 @@ async function auditAllPages() {
   mdReport += `- **Pages with Placeholders:** ${summary.pagesWithPlaceholders}\n`;
   mdReport += `- **Pages Missing Hero:** ${summary.pagesWithMissingHero}\n`;
   mdReport += `- **Pages Missing CTA:** ${summary.pagesWithMissingCTA}\n\n`;
-  
+
   mdReport += `## Issues by Page Type\n\n`;
   const byType = {};
   auditResults.forEach(page => {
@@ -270,11 +268,11 @@ async function auditAllPages() {
     byType[page.pageType].count++;
     byType[page.pageType].issues += page.issueCount;
   });
-  
+
   for (const [type, data] of Object.entries(byType)) {
     mdReport += `- **${type}:** ${data.count} pages, ${data.issues} issues\n`;
   }
-  
+
   mdReport += `\n## Pages with Issues\n\n`;
   const pagesWithIssuesList = auditResults.filter(p => p.issueCount > 0);
   for (const page of pagesWithIssuesList.slice(0, 50)) {
@@ -287,21 +285,21 @@ async function auditAllPages() {
     });
     mdReport += `\n`;
   }
-  
+
   if (pagesWithIssuesList.length > 50) {
     mdReport += `\n_... and ${pagesWithIssuesList.length - 50} more pages with issues_\n`;
   }
-  
+
   writeFileSync(
     join(rootDir, 'reports/page-audit.md'),
     mdReport
   );
-  
+
   // Write media mapping
   let mediaReport = `# Media Reference Mapping\n\n`;
   mediaReport += `**Generated:** ${summary.timestamp}\n\n`;
   mediaReport += `Found ${mediaMapping.length} pages with media references in comments.\n\n`;
-  
+
   for (const item of mediaMapping) {
     mediaReport += `## ${item.route}\n`;
     mediaReport += `**File:** ${item.filePath}\n\n`;
@@ -311,25 +309,13 @@ async function auditAllPages() {
     });
     mediaReport += `\n`;
   }
-  
+
   writeFileSync(
     join(rootDir, 'reports/media-mapping.md'),
     mediaReport
   );
-  
+
   // Print summary
-  console.log('✅ Audit complete!\n');
-  console.log(`📊 Summary:`);
-  console.log(`   Total pages: ${summary.totalPages}`);
-  console.log(`   Total issues: ${summary.totalIssues}`);
-  console.log(`   Pages with issues: ${summary.pagesWithIssues}`);
-  console.log(`   Pages with placeholders: ${summary.pagesWithPlaceholders}`);
-  console.log(`   Pages missing hero: ${summary.pagesWithMissingHero}`);
-  console.log(`   Pages missing CTA: ${summary.pagesWithMissingCTA}`);
-  console.log(`\n📁 Reports generated:`);
-  console.log(`   - reports/page-audit.json`);
-  console.log(`   - reports/page-audit.md`);
-  console.log(`   - reports/media-mapping.md`);
 }
 
 auditAllPages().catch(console.error);

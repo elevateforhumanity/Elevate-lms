@@ -6,7 +6,6 @@ import path from 'node:path';
 const DEPLOY_DIR = 'deploy';
 const BASE_URL = 'https://elevateforhumanity.org';
 
-console.log('🔍 Verifying SEO files in deployment...');
 
 const seoChecks = {
   passed: 0,
@@ -19,16 +18,13 @@ function check(name, condition, message, isWarning = false) {
   if (condition) {
     seoChecks.passed++;
     seoChecks.details.push(`✅ ${name}: ${message}`);
-    console.log(`✅ ${name}: ${message}`);
   } else {
     if (isWarning) {
       seoChecks.warnings++;
       seoChecks.details.push(`⚠️  ${name}: ${message}`);
-      console.log(`⚠️  ${name}: ${message}`);
     } else {
       seoChecks.failed++;
       seoChecks.details.push(`❌ ${name}: ${message}`);
-      console.log(`❌ ${name}: ${message}`);
     }
   }
 }
@@ -238,18 +234,11 @@ fs.writeFileSync(
 );
 
 // Summary
-console.log('\n📊 SEO Verification Summary:');
-console.log(`   ✅ Passed: ${seoChecks.passed}`);
-console.log(`   ❌ Failed: ${seoChecks.failed}`);
-console.log(`   ⚠️  Warnings: ${seoChecks.warnings}`);
-console.log(`   📋 Status: ${report.status}`);
 
 if (report.recommendations.length > 0) {
-  console.log('\n💡 Recommendations:');
   report.recommendations.forEach((rec) => console.log(`   • ${rec}`));
 }
 
-console.log(`\n📄 Full report saved to: seo-verification-report.json`);
 
 // Exit with appropriate code
 process.exit(seoChecks.failed > 0 ? 1 : 0);

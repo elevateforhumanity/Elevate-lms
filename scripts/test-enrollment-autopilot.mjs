@@ -14,8 +14,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, '..');
 
-console.log('🤖 Enrollment Flow Autopilot Test');
-console.log('=====================================\n');
 
 // Check environment variables
 const requiredEnvVars = [
@@ -43,11 +41,6 @@ const config = {
   skipPayment: true,
 };
 
-console.log('📋 Test Configuration:');
-console.log(`   Student Email: ${config.studentEmail}`);
-console.log(`   Program: ${config.programSlug}`);
-console.log(`   Skip Payment: ${config.skipPayment}`);
-console.log('');
 
 // Set environment variables for the test
 process.env.TEST_STUDENT_EMAIL = config.studentEmail;
@@ -56,14 +49,12 @@ process.env.TEST_PROGRAM_SLUG = config.programSlug;
 
 try {
   // Compile TypeScript file
-  console.log('🔨 Compiling test script...');
   execSync('npx tsx lib/autopilot/test-enrollment-flow.ts', {
     cwd: rootDir,
     stdio: 'inherit',
     env: process.env,
   });
-  
-  console.log('\n✅ Autopilot test completed successfully!');
+
   process.exit(0);
 } catch (error) {
   console.error('\n❌ Autopilot test failed!');

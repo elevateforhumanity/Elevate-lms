@@ -23,7 +23,7 @@ class PerformanceOptimizer {
     <link rel="preload" href="/videos/ai-lab-action.mp4" as="video" type="video/mp4">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
     <!-- Critical CSS inline -->
     <style>
       /* Critical above-the-fold styles */
@@ -57,7 +57,7 @@ class PerformanceOptimizer {
           }
         });
       }, { threshold: 0.1 });
-      
+
       // Observe all videos
       document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('video[data-src]').forEach(video => {
@@ -84,7 +84,7 @@ class PerformanceOptimizer {
           this.maxConcurrentLoads = 2;
           this.currentLoads = 0;
         }
-        
+
         // Progressive video loading
         loadVideo(videoElement) {
           return new Promise((resolve, reject) => {
@@ -92,14 +92,14 @@ class PerformanceOptimizer {
               resolve();
               return;
             }
-            
+
             if (this.currentLoads >= this.maxConcurrentLoads) {
               this.videoQueue.push(() => this.loadVideo(videoElement));
               return;
             }
-            
+
             this.currentLoads++;
-            
+
             const tempVideo = document.createElement('video');
             tempVideo.onloadeddata = () => {
               videoElement.src = tempVideo.src;
@@ -108,24 +108,24 @@ class PerformanceOptimizer {
               this.processQueue();
               resolve();
             };
-            
+
             tempVideo.onerror = () => {
               this.currentLoads--;
               this.processQueue();
               reject();
             };
-            
+
             tempVideo.src = videoElement.dataset.src;
           });
         }
-        
+
         processQueue() {
           if (this.videoQueue.length > 0 && this.currentLoads < this.maxConcurrentLoads) {
             const nextLoad = this.videoQueue.shift();
             nextLoad();
           }
         }
-        
+
         // Initialize on page load
         init() {
           const videos = document.querySelectorAll('video[data-src]');
@@ -137,11 +137,11 @@ class PerformanceOptimizer {
               }
             });
           }, { threshold: 0.1, rootMargin: '50px' });
-          
+
           videos.forEach(video => observer.observe(video));
         }
       }
-      
+
       // Initialize video manager
       document.addEventListener('DOMContentLoaded', () => {
         new VideoManager().init();
@@ -231,7 +231,7 @@ class PerformanceOptimizer {
         new PerformanceObserver((entryList) => {
           const entries = entryList.getEntries();
           const lastEntry = entries[entries.length - 1];
-          
+
           // Send to analytics
           if (typeof gtag !== 'undefined') {
             gtag('event', 'web_vitals', {
@@ -241,11 +241,11 @@ class PerformanceOptimizer {
             });
           }
         }).observe({entryTypes: ['largest-contentful-paint']});
-        
+
         // First Input Delay
         new PerformanceObserver((entryList) => {
           const firstInput = entryList.getEntries()[0];
-          
+
           if (typeof gtag !== 'undefined') {
             gtag('event', 'web_vitals', {
               event_category: 'Performance',
@@ -254,7 +254,7 @@ class PerformanceOptimizer {
             });
           }
         }).observe({entryTypes: ['first-input']});
-        
+
         // Cumulative Layout Shift
         let clsValue = 0;
         new PerformanceObserver((entryList) => {
@@ -263,7 +263,7 @@ class PerformanceOptimizer {
               clsValue += entry.value;
             }
           }
-          
+
           if (typeof gtag !== 'undefined') {
             gtag('event', 'web_vitals', {
               event_category: 'Performance',
@@ -273,7 +273,7 @@ class PerformanceOptimizer {
           }
         }).observe({entryTypes: ['layout-shift']});
       }
-      
+
       // Initialize monitoring
       if (document.readyState === 'complete') {
         measureCoreWebVitals();

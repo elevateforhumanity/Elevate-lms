@@ -143,29 +143,22 @@ function fixFile(filePath) {
 }
 
 // Main execution
-console.log('🔧 Starting automated TypeScript error fixes...\n');
 
 const srcDir = join(process.cwd(), 'src');
 const files = getAllTsxFiles(srcDir);
 
-console.log(`📁 Found ${files.length} TypeScript files\n`);
 
 let fixedCount = 0;
 files.forEach((file) => {
   if (fixFile(file)) {
     fixedCount++;
-    console.log(`✅ Fixed: ${file.replace(process.cwd(), '.')}`);
   }
 });
 
-console.log(`\n✨ Fixed ${fixedCount} files`);
-console.log('\n🔍 Running typecheck to verify...\n');
 
 // Run typecheck
 import { execSync } from 'child_process';
 try {
   execSync('pnpm typecheck', { stdio: 'inherit' });
-  console.log('\n✅ All TypeScript errors fixed!');
 } catch (error) {
-  console.log('\n⚠️  Some errors remain. Running manual fixes...');
 }

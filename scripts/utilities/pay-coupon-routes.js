@@ -136,7 +136,7 @@ export const couponClientCode = `
 // Frontend helper - preview coupon discount
 async function previewCoupon(code, slug, listCents) {
   const r = await fetch('https://pay.elevateforhumanity.org/api/coupons/validate', {
-    method: 'POST', 
+    method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({ code, program_slug: slug, list_price_cents: listCents })
   });

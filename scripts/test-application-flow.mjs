@@ -18,11 +18,8 @@ if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-console.log('🧪 Testing Application Submission Flow');
-console.log('=====================================\n');
 
 // Test 1: Verify anon can insert applications
-console.log('Test 1: Anonymous user can submit application');
 const testApplication = {
   first_name: 'Test',
   last_name: 'User',
@@ -44,19 +41,15 @@ if (insertError) {
   console.error('   Error:', insertError.message);
   process.exit(1);
 } else {
-  console.log('✅ PASSED: Application inserted successfully');
-  console.log(`   ID: ${insertData.id}`);
 }
 
 // Test 2: Verify anon cannot read applications (security)
-console.log('\nTest 2: Anonymous user cannot read applications (security check)');
 const { data: readData, error: readError } = await supabase
   .from('applications')
   .select('*')
   .limit(1);
 
 if (readError || !readData || readData.length === 0) {
-  console.log('✅ PASSED: Anonymous users cannot read applications (secure)');
 } else {
   console.error('❌ FAILED: Anonymous users can read applications (SECURITY ISSUE)');
   console.error('   This is a security vulnerability!');
@@ -64,7 +57,6 @@ if (readError || !readData || readData.length === 0) {
 }
 
 // Test 3: Verify public can read programs catalog
-console.log('\nTest 3: Public can read programs catalog');
 const { data: programsData, error: programsError } = await supabase
   .from('programs')
   .select('id, title, slug')
@@ -75,14 +67,10 @@ if (programsError) {
   console.error('   Error:', programsError.message);
   process.exit(1);
 } else if (!programsData || programsData.length === 0) {
-  console.log('⚠️  WARNING: Programs table is empty');
 } else {
-  console.log('✅ PASSED: Programs catalog is publicly readable');
-  console.log(`   Found ${programsData.length} programs`);
 }
 
 // Test 4: Verify public can read credentials catalog
-console.log('\nTest 4: Public can read credentials catalog');
 const { data: credentialsData, error: credentialsError } = await supabase
   .from('credentials')
   .select('id, name')
@@ -93,17 +81,6 @@ if (credentialsError) {
   console.error('   Error:', credentialsError.message);
   process.exit(1);
 } else {
-  console.log('✅ PASSED: Credentials catalog is publicly readable');
-  console.log(`   Found ${credentialsData?.length || 0} credentials`);
 }
 
 // Summary
-console.log('\n=====================================');
-console.log('✅ All tests passed!');
-console.log('');
-console.log('Security Status:');
-console.log('  ✅ Applications can be submitted');
-console.log('  ✅ Applications are protected (not readable by public)');
-console.log('  ✅ Public catalog data is accessible');
-console.log('');
-console.log('🚀 Application flow is launch-ready');

@@ -17,8 +17,6 @@ function question(query) {
 }
 
 async function createAdmin() {
-  console.log('\n🔐 Create Admin User for Elevate for Humanity\n');
-  console.log('This script will create an admin user in your Supabase database.\n');
 
   // Get Supabase credentials
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -49,7 +47,6 @@ async function createAdmin() {
   }
 
   try {
-    console.log('\n⏳ Creating admin user...');
 
     // Create user in Supabase Auth
     const { data: authData, error: authError } = await supabase.auth.admin.createUser({
@@ -67,12 +64,11 @@ async function createAdmin() {
       process.exit(1);
     }
 
-    console.log('✅ User created in auth');
 
     // Update profile to admin role
     const { error: profileError } = await supabase
       .from('profiles')
-      .update({ 
+      .update({
         role: 'admin',
         full_name: fullName
       })
@@ -80,16 +76,9 @@ async function createAdmin() {
 
     if (profileError) {
       console.error('❌ Error updating profile:', profileError.message);
-      console.log('⚠️  User created but role not set. Manually update in Supabase dashboard.');
     } else {
-      console.log('✅ Profile updated to admin role');
     }
 
-    console.log('\n🎉 Success! Admin user created:\n');
-    console.log(`   Email: ${email}`);
-    console.log(`   Role: admin`);
-    console.log(`   User ID: ${authData.user.id}`);
-    console.log('\n📝 You can now login at: /admin-login\n');
 
   } catch (error) {
     console.error('❌ Unexpected error:', error);

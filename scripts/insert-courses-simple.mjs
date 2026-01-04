@@ -5,8 +5,6 @@ import { createClient } from '@supabase/supabase-js';
 const SUPABASE_URL = 'https://cuxzzpsyufcewtmicszk.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1eHp6cHN5dWZjZXd0bWljc3prIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODE2MTA0NywiZXhwIjoyMDczNzM3MDQ3fQ.5JRYvJPzFzsVaZQkbZDLcohP7dq8LWQEFeFdVByyihE';
 
-console.log('🚀 Inserting Courses into Database');
-console.log('===================================\n');
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -147,58 +145,47 @@ const courses = [
 ];
 
 async function insertCourses() {
-  console.log(`📚 Inserting ${courses.length} courses...\n`);
-  
+
   for (const course of courses) {
-    console.log(`  → ${course.title}`);
-    
+
     const { data, error } = await supabase
       .from('courses')
       .upsert(course, { onConflict: 'slug' });
-    
+
     if (error) {
       console.error(`    ❌ Error: ${error.message}`);
     } else {
-      console.log(`    ✅ Inserted`);
     }
   }
 }
 
 async function verify() {
-  console.log('\n🔍 Verifying...\n');
-  
+
   const { data, count, error } = await supabase
     .from('courses')
     .select('slug, title, status', { count: 'exact' })
     .eq('status', 'published');
-  
+
   if (error) {
     console.error('❌ Error verifying:', error.message);
     return false;
   }
-  
-  console.log(`✅ Published courses in database: ${count}\n`);
-  
+
+
   if (data && data.length > 0) {
-    console.log('📋 Courses:');
     data.forEach(course => {
-      console.log(`   • ${course.title}`);
     });
   }
-  
+
   return count >= 12;
 }
 
 async function main() {
   await insertCourses();
   const verified = await verify();
-  
+
   if (verified) {
-    console.log('\n🎉 SUCCESS! All courses activated!');
-    console.log('\n📋 Next: Check website');
-    console.log('   https://elevateforhumanity.org/courses');
   } else {
-    console.log('\n⚠️  Verification failed. Check errors above.');
   }
 }
 

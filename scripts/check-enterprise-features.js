@@ -149,7 +149,7 @@ function main() {
 
   const missingEnv = [];
   const missingOptionalEnv = [];
-  
+
   if (!envFile) {
     missingEnv.push(...requiredEnv);
     missingOptionalEnv.push(...optionalEnv);
@@ -178,7 +178,7 @@ function main() {
   };
 
   // Human-readable log
-  
+
   let allOk = true;
   for (const r of results) {
     if (r.status === "OK") {
@@ -187,7 +187,7 @@ function main() {
     }
   }
 
-  
+
   if (summary.env.status === "OK") {
   } else {
     allOk = false;
@@ -196,11 +196,11 @@ function main() {
   if (summary.env.optional_missing.length > 0) {
   }
 
-  
+
   if (allOk) {
   } else {
   }
-  
+
 
   // JSON output for AI agents
 

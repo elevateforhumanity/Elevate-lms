@@ -8,13 +8,12 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
 });
 
 async function getColumns() {
-  console.log('🔍 Querying table structures via RPC...\n');
-  
+
   try {
     // Use raw SQL via RPC
     const { data, error } = await supabase.rpc('exec_sql', {
       sql: `
-        SELECT 
+        SELECT
           table_name,
           column_name,
           data_type,
@@ -31,30 +30,27 @@ async function getColumns() {
         ORDER BY table_name, ordinal_position
       `
     });
-    
+
     if (error) {
       console.error('RPC not available, trying direct query...');
-      
+
       // Try getting sample data to infer structure
       const tables = ['program_holder_documents', 'program_holder_verification', 'marketplace_sales'];
-      
+
       for (const table of tables) {
         const { data: sample, error: err } = await supabase
           .from(table)
           .select('*')
           .limit(1);
-        
+
         if (!err && sample && sample[0]) {
-          console.log(`\n✅ ${table} columns:`);
           Object.keys(sample[0]).forEach(col => console.log(`  - ${col}`));
         } else {
-          console.log(`\n⚠️  ${table}: No data to infer structure`);
         }
       }
     } else {
-      console.log(data);
     }
-    
+
   } catch (error) {
     console.error('❌ Error:', error.message);
   }

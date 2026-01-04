@@ -122,7 +122,7 @@ class BlogSystem {
       'ai-careers-2025': `
         <h2>The AI Revolution is Here</h2>
         <p>Artificial Intelligence is no longer a futuristic concept—it's reshaping industries today. From healthcare to finance, companies are desperately seeking AI talent to stay competitive.</p>
-        
+
         <h3>Top AI Career Paths for 2025</h3>
         <ul>
           <li><strong>Machine Learning Engineer</strong> - $120K-$200K average salary</li>
@@ -131,7 +131,7 @@ class BlogSystem {
           <li><strong>AI Ethics Specialist</strong> - $85K-$140K average salary</li>
           <li><strong>Computer Vision Engineer</strong> - $110K-$180K average salary</li>
         </ul>
-        
+
         <h3>Required Skills</h3>
         <p>Success in AI careers requires a combination of technical and soft skills:</p>
         <ul>
@@ -141,14 +141,14 @@ class BlogSystem {
           <li>Data visualization tools</li>
           <li>Communication and problem-solving skills</li>
         </ul>
-        
+
         <h3>Getting Started</h3>
         <p>Our AI Fundamentals program provides hands-on training in these essential skills. With federal funding available through WIOA, you can start your AI career journey today.</p>
       `,
       'federal-funding-guide': `
         <h2>Unlock Your Career Potential with Federal Funding</h2>
         <p>Don't let financial barriers stop you from advancing your career. Federal funding programs can cover 100% of your training costs.</p>
-        
+
         <h3>Workforce Innovation and Opportunity Act (WIOA)</h3>
         <p>WIOA provides funding for eligible individuals to receive training for in-demand occupations. Benefits include:</p>
         <ul>
@@ -157,10 +157,10 @@ class BlogSystem {
           <li>Career counseling and job placement assistance</li>
           <li>Income support during training (in some cases)</li>
         </ul>
-        
+
         <h3>Workforce Ready Grants (WRG)</h3>
         <p>State-specific grants that support rapid workforce development in high-demand sectors like technology and healthcare.</p>
-        
+
         <h3>How to Apply</h3>
         <ol>
           <li>Contact your local American Job Center</li>
@@ -169,20 +169,20 @@ class BlogSystem {
           <li>Submit application with required documentation</li>
           <li>Begin training once approved</li>
         </ol>
-        
+
         <p>Our team can help guide you through the entire process. Contact us at 317-760-7908 to get started.</p>
       `,
       'data-science-bootcamp-success': `
         <h2>Real Success Stories</h2>
         <p>Meet some of our graduates who transformed their careers through our intensive data science bootcamp.</p>
-        
+
         <h3>Maria's Journey: From Retail to Tech</h3>
         <p>Maria worked in retail management for 8 years before deciding to make a career change. Through our data science bootcamp and WIOA funding, she landed a role as a Data Analyst at a Fortune 500 company.</p>
         <blockquote>"The bootcamp gave me practical skills I could use immediately. Within 3 months of graduating, I had multiple job offers."</blockquote>
-        
+
         <h3>James's Transformation: Military to Data Science</h3>
         <p>After serving in the military, James used his GI Bill benefits combined with our program to transition into civilian tech work as a Machine Learning Engineer.</p>
-        
+
         <h3>Success Metrics</h3>
         <ul>
           <li>94% job placement rate within 6 months</li>
@@ -194,7 +194,7 @@ class BlogSystem {
       'apprenticeship-programs-2025': `
         <h2>The Modern Apprenticeship Advantage</h2>
         <p>Apprenticeships aren't just for traditional trades anymore. Tech companies are embracing apprenticeships as a way to build diverse, skilled teams.</p>
-        
+
         <h3>What Makes Tech Apprenticeships Different</h3>
         <ul>
           <li>Earn a salary while learning (typically $40K-$60K starting)</li>
@@ -203,7 +203,7 @@ class BlogSystem {
           <li>No student debt</li>
           <li>Clear career progression path</li>
         </ul>
-        
+
         <h3>Available Apprenticeship Tracks</h3>
         <ul>
           <li>Software Development</li>
@@ -212,14 +212,14 @@ class BlogSystem {
           <li>Cloud Computing</li>
           <li>AI/Machine Learning</li>
         </ul>
-        
+
         <h3>How to Get Started</h3>
         <p>Our apprenticeship programs partner with leading employers to provide structured learning experiences. Applications are accepted quarterly.</p>
       `,
       'healthcare-ai-careers': `
         <h2>Where Healthcare Meets AI</h2>
         <p>The healthcare industry is experiencing an AI revolution, creating unprecedented career opportunities for those with the right skills.</p>
-        
+
         <h3>Emerging Roles</h3>
         <ul>
           <li><strong>Medical AI Specialist</strong> - Develop AI solutions for clinical applications</li>
@@ -227,10 +227,10 @@ class BlogSystem {
           <li><strong>Clinical Informatics Specialist</strong> - Bridge technology and patient care</li>
           <li><strong>AI Ethics in Healthcare</strong> - Ensure responsible AI deployment</li>
         </ul>
-        
+
         <h3>Industry Growth</h3>
         <p>The healthcare AI market is projected to reach $102 billion by 2028, creating thousands of new jobs across the sector.</p>
-        
+
         <h3>Required Background</h3>
         <p>While a healthcare background is helpful, it's not required. Our programs teach both the technical AI skills and healthcare domain knowledge needed for success.</p>
       `,

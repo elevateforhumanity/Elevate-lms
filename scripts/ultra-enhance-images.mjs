@@ -11,7 +11,7 @@ const imagesToEnhance = [
   'media/programs/cdl-hd.jpg',
   'media/programs/barber-hd.jpg',
   'media/programs/healthcare-professional-1-hd.jpg',
-  
+
   // Location images
   'images/location-4.jpg',
   'images/location-5.jpg',
@@ -22,9 +22,8 @@ async function ultraEnhanceImage(inputPath) {
   try {
     const fullInputPath = join(publicDir, inputPath);
     const tempPath = fullInputPath + '.tmp';
-    
-    console.log(`🎨 Ultra-enhancing: ${inputPath}`);
-    
+
+
     // Ultra enhancement - Avon-style crystal clear
     await sharp(fullInputPath)
       .resize(2560, 1440, {
@@ -60,33 +59,22 @@ async function ultraEnhanceImage(inputPath) {
         density: 300
       })
       .toFile(tempPath);
-    
+
     // Replace original
     const { rename } = await import('fs/promises');
     await rename(tempPath, fullInputPath);
-    
-    console.log(`✅ Ultra-enhanced: ${inputPath}`);
+
   } catch (error) {
     console.error(`❌ Failed: ${inputPath}:`, error.message);
   }
 }
 
 async function enhanceAll() {
-  console.log('🌟 ULTRA IMAGE ENHANCEMENT - AVON QUALITY\n');
-  console.log('Target: Crystal clear, bright, vibrant images\n');
-  
+
   for (const imagePath of imagesToEnhance) {
     await ultraEnhanceImage(imagePath);
   }
-  
-  console.log('\n✅ All images ultra-enhanced!');
-  console.log('Resolution: 2560x1440 (2K)');
-  console.log('DPI: 300');
-  console.log('Quality: 100% (Maximum)');
-  console.log('Brightness: +15%');
-  console.log('Saturation: +25%');
-  console.log('Contrast: Enhanced');
-  console.log('Sharpness: Crystal clear');
+
 }
 
 enhanceAll();

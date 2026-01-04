@@ -3,10 +3,6 @@
  * Analysis: What's needed to reach 100/100 in each category
  */
 
-console.log('='.repeat(80));
-console.log('PATH TO 100/100 - GAP ANALYSIS');
-console.log('='.repeat(80));
-console.log('');
 
 const categories = [
   {
@@ -116,27 +112,12 @@ const categories = [
 
 for (const category of categories) {
   const gap = category.target - category.current;
-  console.log(`${category.name}`);
-  console.log(`Current: ${category.current}/100 | Target: ${category.target}/100 | Gap: ${gap} points`);
-  console.log('');
-  console.log('Gaps:');
   category.gaps.forEach((gap, i) => {
-    console.log(`  ${i + 1}. ${gap}`);
   });
-  console.log('');
-  console.log('Actions:');
   category.actions.forEach((action, i) => {
-    console.log(`  ${i + 1}. ${action}`);
   });
-  console.log('');
-  console.log('-'.repeat(80));
-  console.log('');
 }
 
-console.log('='.repeat(80));
-console.log('PRIORITY ACTIONS FOR 100/100');
-console.log('='.repeat(80));
-console.log('');
 
 const priorities = [
   { priority: 'HIGH', action: 'Fix build warnings (Technical Infrastructure)', impact: '+5' },
@@ -150,27 +131,5 @@ const priorities = [
 
 priorities.forEach(({ priority, action, impact }) => {
   const icon = priority === 'HIGH' ? '🔴' : priority === 'MEDIUM' ? '🟡' : '🟢';
-  console.log(`${icon} [${priority.padEnd(6)}] ${action.padEnd(50)} ${impact} points`);
 });
 
-console.log('');
-console.log('='.repeat(80));
-console.log('ESTIMATED TIME TO 100/100');
-console.log('='.repeat(80));
-console.log('');
-console.log('High Priority (1-2 hours):');
-console.log('  • Fix build warnings');
-console.log('  • Optimize images');
-console.log('');
-console.log('Medium Priority (2-3 hours):');
-console.log('  • Add structured data');
-console.log('  • Expand pages');
-console.log('  • Improve UX');
-console.log('');
-console.log('Low Priority (1 hour):');
-console.log('  • Documentation');
-console.log('  • Security files');
-console.log('');
-console.log('Total Estimated Time: 4-6 hours');
-console.log('');
-console.log('='.repeat(80));

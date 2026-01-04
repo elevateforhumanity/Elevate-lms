@@ -369,7 +369,7 @@ class DualCertificateSystem {
             <title>${certificateData.title} - ${certificateData.recipient.name}</title>
             <style>
                 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
-                
+
                 body {
                     margin: 0;
                     padding: 40px;
@@ -380,7 +380,7 @@ class DualCertificateSystem {
                     align-items: center;
                     justify-content: center;
                 }
-                
+
                 .certificate {
                     width: 800px;
                     height: 600px;
@@ -392,7 +392,7 @@ class DualCertificateSystem {
                     position: relative;
                     overflow: hidden;
                 }
-                
+
                 .certificate::before {
                     content: '';
                     position: absolute;
@@ -402,18 +402,18 @@ class DualCertificateSystem {
                     height: 8px;
                     background: linear-gradient(90deg, ${template.colors.primary}, ${template.colors.secondary}, ${template.colors.accent});
                 }
-                
+
                 .header {
                     text-align: center;
                     margin-bottom: 40px;
                 }
-                
+
                 .logo {
                     width: 80px;
                     height: 80px;
                     margin: 0 auto 20px;
                 }
-                
+
                 .title {
                     font-family: 'Playfair Display', serif;
                     font-size: 36px;
@@ -421,18 +421,18 @@ class DualCertificateSystem {
                     color: ${template.colors.primary};
                     margin: 0 0 10px 0;
                 }
-                
+
                 .subtitle {
                     font-size: 18px;
                     color: #666;
                     margin: 0;
                 }
-                
+
                 .recipient {
                     text-align: center;
                     margin: 40px 0;
                 }
-                
+
                 .recipient-name {
                     font-family: 'Playfair Display', serif;
                     font-size: 42px;
@@ -442,19 +442,19 @@ class DualCertificateSystem {
                     text-decoration: underline;
                     text-decoration-color: ${template.colors.accent};
                 }
-                
+
                 .program-info {
                     text-align: center;
                     margin: 30px 0;
                 }
-                
+
                 .program-name {
                     font-size: 24px;
                     font-weight: 600;
                     color: #333;
                     margin: 0 0 10px 0;
                 }
-                
+
                 .completion-info {
                     display: flex;
                     justify-content: space-between;
@@ -462,14 +462,14 @@ class DualCertificateSystem {
                     font-size: 14px;
                     color: #666;
                 }
-                
+
                 .verification {
                     text-align: center;
                     margin-top: 30px;
                     font-size: 12px;
                     color: #888;
                 }
-                
+
                 .qr-code {
                     width: 60px;
                     height: 60px;
@@ -484,17 +484,17 @@ class DualCertificateSystem {
                     <h1 class="title">${certificateData.title}</h1>
                     <p class="subtitle">${certificateData.subtitle}</p>
                 </div>
-                
+
                 <div class="recipient">
                     <div class="recipient-name">${certificateData.recipient.name}</div>
                     <p>has successfully completed</p>
                 </div>
-                
+
                 <div class="program-info">
                     <div class="program-name">${certificateData.program.name}</div>
                     <p>${certificateData.program.description}</p>
                 </div>
-                
+
                 <div class="completion-info">
                     <div>
                         <strong>Completed:</strong><br>
@@ -509,7 +509,7 @@ class DualCertificateSystem {
                         ${certificateData.program.duration_completed}
                     </div>
                 </div>
-                
+
                 <div class="verification">
                     <div class="qr-code">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=${certificateData.verification.url}" alt="QR Code">
@@ -683,13 +683,13 @@ class DualCertificateSystem {
   }
 
   generateLinkedInPost(elevateCert, partnerCert) {
-    return `🎓 Excited to share that I've completed ${elevateCert.program.name}! 
+    return `🎓 Excited to share that I've completed ${elevateCert.program.name}!
 
 Earned dual certifications:
 ✅ ${elevateCert.title} from Elevate for Humanity
 ✅ ${partnerCert.title} from ${partnerCert.issuer.name}
 
-Ready to apply these new skills in my career! 
+Ready to apply these new skills in my career!
 
 #ProfessionalDevelopment #Certification #CareerGrowth #ElevateForHumanity`;
   }

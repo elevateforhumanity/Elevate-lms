@@ -14,24 +14,21 @@ if (!supabaseKey) {
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function querySchema() {
-  console.log('🔍 Querying database schema...\n');
-  
+
   try {
     // Query marketplace tables to verify they exist
     const tables = ['marketplace_creators', 'marketplace_products', 'marketplace_sales'];
-    
+
     for (const table of tables) {
       const { data, error, count } = await supabase
         .from(table)
         .select('*', { count: 'exact', head: true });
-      
+
       if (error) {
-        console.log(`❌ ${table}: ${error.message}`);
       } else {
-        console.log(`✅ ${table}: ${count} rows`);
       }
     }
-    
+
   } catch (error) {
     console.error('❌ Error:', error.message);
   }

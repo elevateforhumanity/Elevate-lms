@@ -33,7 +33,6 @@ function validateEnv() {
 }
 
 async function bootstrap() {
-  console.log('🚀 Starting clone bootstrap...\n');
 
   validateEnv();
 
@@ -48,7 +47,6 @@ async function bootstrap() {
 
   try {
     // 1. Create organization
-    console.log('📦 Creating organization...');
     const { data: org, error: orgError } = await supabase
       .from('organizations')
       .insert({
@@ -68,10 +66,8 @@ async function bootstrap() {
       throw orgError;
     }
 
-    console.log(`✅ Organization created: ${org.name} (${org.slug})`);
 
     // 2. Seed default config
-    console.log('⚙️  Seeding configuration...');
     const { error: configError } = await supabase
       .from('organization_settings')
       .insert({
@@ -79,10 +75,8 @@ async function bootstrap() {
       });
 
     if (configError) throw configError;
-    console.log('✅ Configuration seeded');
 
     // 3. Find or create admin user
-    console.log('👤 Setting up admin user...');
     let userId: string;
 
     const { data: existingUser } = await supabase
@@ -93,7 +87,6 @@ async function bootstrap() {
 
     if (existingUser) {
       userId = existingUser.id;
-      console.log('✅ Found existing user');
     } else {
       console.error('❌ Admin user not found. Required user does not exist.');
       console.error('');
@@ -110,7 +103,6 @@ async function bootstrap() {
     }
 
     // 4. Assign admin role
-    console.log('🔐 Assigning admin role...');
     const { error: memberError } = await supabase
       .from('organization_users')
       .insert({
@@ -121,26 +113,21 @@ async function bootstrap() {
 
     if (memberError) {
       if (memberError.code === '23505') {
-        console.log('✅ User already assigned to organization');
       } else {
         throw memberError;
       }
     } else {
-      console.log('✅ Admin role assigned');
     }
 
     // 5. Bind user profile to org
-    console.log('🔗 Binding user to organization...');
     const { error: bindError } = await supabase
       .from('profiles')
       .update({ organization_id: org.id })
       .eq('id', userId);
 
     if (bindError) throw bindError;
-    console.log('✅ User bound to organization');
 
     // 6. Create default subscription (trial)
-    console.log('💳 Creating trial subscription...');
     const { error: subError } = await supabase
       .from('organization_subscriptions')
       .insert({
@@ -151,19 +138,7 @@ async function bootstrap() {
       });
 
     if (subError) throw subError;
-    console.log('✅ Trial subscription created');
 
-    console.log('\n🎉 Clone bootstrap complete!\n');
-    console.log('Organization Details:');
-    console.log(`  Name: ${org.name}`);
-    console.log(`  Slug: ${org.slug}`);
-    console.log(`  ID: ${org.id}`);
-    console.log(`  Admin: ${adminEmail}`);
-    console.log('\nNext steps:');
-    console.log('  1. Admin user should log in');
-    console.log('  2. Configure organization settings');
-    console.log('  3. Set up billing (if required)');
-    console.log('  4. Start creating programs\n');
   } catch (error: any) {
     console.error('\n❌ Bootstrap failed:', error.message);
     process.exit(1);

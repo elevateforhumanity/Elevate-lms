@@ -29,7 +29,7 @@ const partnerCourses = {
     { name: 'Lockout/Tagout (LOTO)', basePrice: 35, price: 49, provider: 'CareerSafe', category: 'OSHA Safety', description: 'Annual recommended' },
     { name: 'Fall Protection', basePrice: 35, price: 49, provider: 'CareerSafe', category: 'OSHA Safety', description: 'Annual recommended' },
   ],
-  
+
   // HSI Safety Training
   hsi: [
     { name: 'CPR/AED (Adult, Child, Infant)', basePrice: 60, price: 84, provider: 'HSI', category: 'Healthcare Safety', description: '2-year certification' },
@@ -40,7 +40,7 @@ const partnerCourses = {
     { name: 'Bloodborne Pathogens', basePrice: 40, price: 56, provider: 'HSI', category: 'Healthcare Safety', description: '1-year certification' },
     { name: 'CPR/AED + First Aid Combo', basePrice: 95, price: 133, provider: 'HSI', category: 'Healthcare Safety', description: '2-year certification' },
   ],
-  
+
   // Certiport Technology Certifications
   certiport: [
     { name: 'Microsoft Office Specialist (MOS) - Word', basePrice: 100, price: 140, provider: 'Certiport', category: 'Technology', description: 'Lifetime certification' },
@@ -57,14 +57,14 @@ const partnerCourses = {
     { name: 'IT Specialist - HTML/CSS', basePrice: 100, price: 140, provider: 'Certiport', category: 'Technology', description: 'Lifetime certification' },
     { name: 'Entrepreneurship & Small Business (ESB)', basePrice: 100, price: 140, provider: 'Certiport', category: 'Technology', description: 'Lifetime certification' },
   ],
-  
+
   // NRF RISE Up
   nrf: [
     { name: 'Customer Service & Sales', basePrice: 50, price: 70, provider: 'NRF Foundation', category: 'Retail', description: 'Lifetime certification' },
     { name: 'Business of Retail', basePrice: 50, price: 70, provider: 'NRF Foundation', category: 'Retail', description: 'Lifetime certification' },
     { name: 'NRF RISE Up Bundle (Both Courses)', basePrice: 85, price: 119, provider: 'NRF Foundation', category: 'Retail', description: 'Lifetime certification' },
   ],
-  
+
   // Milady RISE
   milady: [
     { name: 'Barber Safety Program - Domestic Violence Awareness', basePrice: 30, price: 42, provider: 'Milady/Cengage', category: 'Barber Training', description: 'Lifetime certification' },
@@ -72,7 +72,7 @@ const partnerCourses = {
     { name: 'Barber Safety Program - Infection Control & Safety', basePrice: 30, price: 42, provider: 'Milady/Cengage', category: 'Barber Training', description: 'Lifetime certification' },
     { name: 'Milady RISE Complete Bundle', basePrice: 75, price: 105, provider: 'Milady/Cengage', category: 'Barber Training', description: 'All 3 certifications' },
   ],
-  
+
   // JRI (Job Readiness Initiative)
   jri: [
     { name: 'Communication Skills Badge', basePrice: 25, price: 35, provider: 'EmployIndy', category: 'Job Readiness', description: 'Lifetime badge' },
@@ -83,7 +83,7 @@ const partnerCourses = {
     { name: 'Digital Literacy Badge', basePrice: 25, price: 35, provider: 'EmployIndy', category: 'Job Readiness', description: 'Lifetime badge' },
     { name: 'JRI Complete Bundle (All 6 Badges)', basePrice: 120, price: 168, provider: 'EmployIndy', category: 'Job Readiness', description: 'All 6 badges' },
   ],
-  
+
   // VITA Tax Training
   vita: [
     { name: 'IRS Link & Learn Taxes - Basic', basePrice: 0, price: 0, provider: 'IRS', category: 'Tax Preparation', description: 'FREE IRS training' },
@@ -96,7 +96,6 @@ async function createProduct(item: any, providerKey: string) {
   try {
     // Skip free courses
     if (item.price === 0) {
-      console.log(`⏭️  Skipped (FREE): ${item.name}`);
       return null;
     }
 
@@ -121,8 +120,7 @@ async function createProduct(item: any, providerKey: string) {
       currency: 'usd',
     });
 
-    console.log(`✅ Created: ${item.name} - $${item.price} (${item.provider})`);
-    
+
     return { product, price };
   } catch (error) {
     console.error(`❌ Failed to create ${item.name}:`, error);
@@ -131,17 +129,15 @@ async function createProduct(item: any, providerKey: string) {
 }
 
 async function main() {
-  console.log('🚀 Setting up ALL Partner Courses in Stripe...\n');
-  
+
   let totalCreated = 0;
   let totalSkipped = 0;
   let totalFailed = 0;
-  
+
   // Process each partner
   for (const [providerKey, courses] of Object.entries(partnerCourses)) {
     const providerName = courses[0]?.provider || providerKey;
-    console.log(`\n📦 ${providerName.toUpperCase()} (${courses.length} courses)...\n`);
-    
+
     for (const course of courses) {
       const result = await createProduct(course, providerKey);
       if (result) {
@@ -155,23 +151,9 @@ async function main() {
       await new Promise(resolve => setTimeout(resolve, 100));
     }
   }
-  
+
   // Summary
-  console.log('\n' + '='.repeat(60));
-  console.log('📊 FINAL SUMMARY:');
-  console.log('='.repeat(60));
-  console.log(`✅ Successfully Created: ${totalCreated}`);
-  console.log(`⏭️  Skipped (FREE): ${totalSkipped}`);
-  console.log(`❌ Failed: ${totalFailed}`);
-  console.log(`📦 Total Processed: ${totalCreated + totalSkipped + totalFailed}`);
-  console.log('='.repeat(60));
-  
-  console.log('\n📝 Next steps:');
-  console.log('   1. Verify products in Stripe dashboard');
-  console.log('   2. Create course catalog page with all courses');
-  console.log('   3. Test checkout flow');
-  console.log('   4. Configure webhook endpoint: /api/webhooks/stripe');
-  console.log('\n✅ Setup complete!');
+
 }
 
 main().catch(console.error);

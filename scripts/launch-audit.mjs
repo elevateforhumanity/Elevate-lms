@@ -41,7 +41,6 @@ const isError = (t) =>
   page.setDefaultNavigationTimeout(45000);
   page.setDefaultTimeout(45000);
 
-  console.log("🔎 Visiting:", URL);
   await page.goto(URL, { waitUntil: "domcontentloaded" });
 
   // Let client JS run a moment
@@ -57,21 +56,12 @@ const isError = (t) =>
   // Pull key runtime clues
   const firstRed = consoleLogs.find((l) => l.type === "error" || isError(l.text));
 
-  console.log("\n=== BOOT CHECK ===");
-  console.log(bootCheck);
 
-  console.log("\n=== FIRST CRITICAL CONSOLE LINE ===");
-  console.log(firstRed || "✅ None detected");
 
-  console.log("\n=== PAGEERROR (uncaught exceptions) ===");
-  console.log(pageErrors.length ? pageErrors.slice(0, 10) : "✅ None");
 
-  console.log("\n=== FAILED NETWORK REQUESTS ===");
-  console.log(failedRequests.length ? failedRequests.slice(0, 15) : "✅ None");
 
   // Screenshot
   await page.screenshot({ path: "launch-audit.png", fullPage: true });
-  console.log("\n📸 Saved screenshot: launch-audit.png");
 
   await browser.close();
 

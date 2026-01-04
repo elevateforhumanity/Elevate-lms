@@ -13,11 +13,11 @@ const appDir = join(__dirname, '..', 'app');
 function findAllPages(dir, baseDir = dir) {
   let pages = [];
   const items = readdirSync(dir);
-  
+
   for (const item of items) {
     const fullPath = join(dir, item);
     const stat = statSync(fullPath);
-    
+
     if (stat.isDirectory()) {
       // Skip certain directories
       if (!item.startsWith('.') && item !== 'node_modules' && item !== 'api') {
@@ -31,7 +31,7 @@ function findAllPages(dir, baseDir = dir) {
       });
     }
   }
-  
+
   return pages;
 }
 
@@ -39,7 +39,7 @@ function findAllPages(dir, baseDir = dir) {
 function analyzePage(filePath) {
   try {
     const content = readFileSync(filePath, 'utf-8');
-    
+
     return {
       hasHeroImage: /Hero|hero.*[Ii]mage|<Image[^>]*hero|banner.*[Ii]mage/.test(content),
       hasImage: /<Image/.test(content),
@@ -70,10 +70,8 @@ function categorizePage(path) {
   return 'marketing';
 }
 
-console.log('🔍 Scanning all pages...\n');
 
 const pages = findAllPages(appDir);
-console.log(`Found ${pages.length} pages\n`);
 
 const categories = {
   marketing: [],
@@ -100,13 +98,13 @@ const issues = {
 for (const page of pages) {
   const category = categorizePage(page.path);
   const analysis = analyzePage(page.file);
-  
+
   if (analysis) {
     categories[category].push({
       path: page.path,
       ...analysis
     });
-    
+
     // Track issues
     if (!analysis.hasHeroImage && category === 'marketing') {
       issues.noHeroImage.push(page.path);
@@ -127,34 +125,19 @@ for (const page of pages) {
 }
 
 // Print summary
-console.log('📊 CATEGORY BREAKDOWN:\n');
 for (const [category, pageList] of Object.entries(categories)) {
-  console.log(`${category.toUpperCase()}: ${pageList.length} pages`);
 }
 
-console.log('\n\n⚠️  ISSUES FOUND:\n');
-console.log(`Pages without hero images (marketing): ${issues.noHeroImage.length}`);
-console.log(`Pages without CTAs: ${issues.noCTA.length}`);
-console.log(`Pages with placeholders: ${issues.hasPlaceholder.length}`);
-console.log(`Pages without metadata: ${issues.noMetadata.length}`);
-console.log(`Pages with images but no alt text: ${issues.noAltText.length}`);
 
-console.log('\n\n📋 DETAILED BREAKDOWN BY CATEGORY:\n');
 
 for (const [category, pageList] of Object.entries(categories)) {
   if (pageList.length > 0) {
-    console.log(`\n${category.toUpperCase()} (${pageList.length} pages):`);
-    console.log('─'.repeat(60));
-    
+
     const withHero = pageList.filter(p => p.hasHeroImage).length;
     const withCTA = pageList.filter(p => p.hasCTA).length;
     const withPlaceholder = pageList.filter(p => p.hasPlaceholder).length;
     const withMetadata = pageList.filter(p => p.hasMetadata).length;
-    
-    console.log(`  Hero Images: ${withHero}/${pageList.length}`);
-    console.log(`  CTAs: ${withCTA}/${pageList.length}`);
-    console.log(`  Metadata: ${withMetadata}/${pageList.length}`);
-    console.log(`  Placeholders: ${withPlaceholder}`);
+
   }
 }
 
@@ -165,4 +148,3 @@ writeFileSync(
   JSON.stringify({ categories, issues, total: pages.length }, null, 2)
 );
 
-console.log('\n\n✅ Audit complete! Results saved to page-audit-results.json');

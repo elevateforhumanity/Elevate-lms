@@ -1,7 +1,6 @@
 import { readdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-console.log('🔍 Assessing what features are missing UI/code...\n');
 
 // Get unused tables from previous analysis
 const unusedTables = [
@@ -119,8 +118,6 @@ const features = {
   }
 };
 
-console.log('📊 MISSING FEATURES ASSESSMENT\n');
-console.log('=' .repeat(80) + '\n');
 
 let totalEffortWeeks = 0;
 const highPriority = [];
@@ -130,47 +127,23 @@ const lowPriority = [];
 for (const [name, data] of Object.entries(features)) {
   const effort = parseInt(data.effort.match(/\d+/)[0]);
   totalEffortWeeks += effort;
-  
+
   const item = { name, ...data };
   if (data.priority === 'HIGH') highPriority.push(item);
   else if (data.priority === 'MEDIUM') mediumPriority.push(item);
   else lowPriority.push(item);
 }
 
-console.log('🔴 HIGH PRIORITY (Must Have)\n');
 highPriority.forEach(f => {
-  console.log(`   ${f.name}`);
-  console.log(`   Tables: ${f.tables.length}`);
-  console.log(`   Effort: ${f.effort}`);
-  console.log(`   Value: ${f.value}\n`);
 });
 
-console.log('🟡 MEDIUM PRIORITY (Should Have)\n');
 mediumPriority.forEach(f => {
-  console.log(`   ${f.name}`);
-  console.log(`   Tables: ${f.tables.length}`);
-  console.log(`   Effort: ${f.effort}`);
-  console.log(`   Value: ${f.value}\n`);
 });
 
-console.log('🟢 LOW PRIORITY (Nice to Have)\n');
 lowPriority.forEach(f => {
-  console.log(`   ${f.name}`);
-  console.log(`   Tables: ${f.tables.length}`);
-  console.log(`   Effort: ${f.effort}`);
-  console.log(`   Value: ${f.value}\n`);
 });
 
-console.log('=' .repeat(80));
-console.log(`\n📈 TOTAL EFFORT ESTIMATE: ${totalEffortWeeks} weeks minimum`);
-console.log(`   With 1 developer: ~${Math.ceil(totalEffortWeeks / 4)} months`);
-console.log(`   With 2 developers: ~${Math.ceil(totalEffortWeeks / 8)} months`);
-console.log(`   With 3 developers: ~${Math.ceil(totalEffortWeeks / 12)} months\n`);
 
-console.log('💡 RECOMMENDATION:\n');
-console.log('   Start with HIGH PRIORITY features first');
-console.log('   These provide the most value for your users');
-console.log('   Build incrementally, test with users, iterate\n');
 
 // Save detailed report
 writeFileSync('missing-features-assessment.json', JSON.stringify({
@@ -188,4 +161,3 @@ writeFileSync('missing-features-assessment.json', JSON.stringify({
   lowPriority
 }, null, 2));
 
-console.log('✅ Full assessment saved to missing-features-assessment.json');

@@ -13,8 +13,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-console.log('♿ Accessibility Enhancement Script');
-console.log('===================================\n');
 
 const fixes = [];
 
@@ -77,7 +75,6 @@ function processFile(filePath) {
 
   if (modified) {
     fs.writeFileSync(filePath, content, 'utf8');
-    console.log(
       `✅ Fixed ${fileFixCount} issues in ${path.relative(rootDir, filePath)}`
     );
   }
@@ -107,32 +104,19 @@ function scanDirectory(dir) {
 }
 
 // Scan src directory
-console.log('📂 Scanning src directory...\n');
 scanDirectory(path.join(rootDir, 'src'));
 
 // Scan public directory
-console.log('\n📂 Scanning public directory...\n');
 scanDirectory(path.join(rootDir, 'public'));
 
 // Summary
-console.log('\n📊 Summary');
-console.log('==========');
-console.log(`Total fixes applied: ${fixes.length}`);
 
 if (fixes.length > 0) {
-  console.log('\nFixes by type:');
   const fixTypes = {};
   fixes.forEach((fix) => {
     fixTypes[fix.fix] = (fixTypes[fix.fix] || 0) + fix.count;
   });
   Object.entries(fixTypes).forEach(([type, count]) => {
-    console.log(`  - ${type}: ${count}`);
   });
 }
 
-console.log('\n✅ Accessibility enhancement complete!');
-console.log('\nNext steps:');
-console.log('1. Review changes with git diff');
-console.log('2. Test with screen readers');
-console.log('3. Run accessibility audit tools');
-console.log('4. Add keyboard navigation support');

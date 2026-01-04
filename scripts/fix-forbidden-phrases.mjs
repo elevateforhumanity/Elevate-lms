@@ -38,7 +38,7 @@ const REPLACEMENTS = {
   'Not Yet Available': 'Unavailable',
   'stay tuned': 'check back',
   'Stay Tuned': 'Check Back',
-  
+
   // B. Vague Marketing Language
   'learn more': 'view details',
   'Learn More': 'View Details',
@@ -66,7 +66,7 @@ const REPLACEMENTS = {
   'Seamless Experience': 'Experience',
   'next-generation': 'modern',
   'Next-Generation': 'Modern',
-  
+
   // C. Dishonest Future-Tense
   'will be added': 'is planned',
   'Will Be Added': 'Is Planned',
@@ -82,7 +82,7 @@ const REPLACEMENTS = {
   'Is Planned To': 'Is Scheduled To',
   'is expected to': 'is scheduled to',
   'Is Expected To': 'Is Scheduled To',
-  
+
   // E. Dashboard-Specific
   'no data yet': 'no data available',
   'No Data Yet': 'No Data Available',
@@ -111,7 +111,6 @@ const files = fs.readFileSync(filesPath, 'utf8')
   .split('\n')
   .filter(Boolean);
 
-console.log(`Processing ${files.length} files with forbidden phrases...\n`);
 
 let totalReplacements = 0;
 
@@ -137,9 +136,7 @@ for (const file of files) {
 
   if (modified) {
     fs.writeFileSync(file, content, 'utf8');
-    console.log(`✓ ${path.relative(process.cwd(), file)} (${fileReplacements} replacements)`);
     totalReplacements += fileReplacements;
   }
 }
 
-console.log(`\n✅ Fixed ${totalReplacements} forbidden phrases across ${files.length} files`);

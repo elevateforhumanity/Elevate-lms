@@ -44,10 +44,6 @@ const prettierLog = safeRead(prettierLogPath);
 const envReport = safeRead(envReportPath);
 
 function printSection(title) {
-  console.log('');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log(`📌 ${title}`);
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 }
 
 function parseTsErrors(log) {
@@ -114,15 +110,10 @@ function hasContent(str) {
 }
 
 // START REPORT
-console.log('');
-console.log('======================================================');
-console.log('ELEVATE LMS – AUTOPILOT ERROR REPORT (REAL TASKS)');
-console.log('======================================================');
 
 // ENV
 if (hasContent(envReport)) {
   printSection('Environment status');
-  console.log(envReport.trim());
 }
 
 // TYPESCRIPT
@@ -131,10 +122,8 @@ if (tsStatus !== 0) {
   printSection('TypeScript errors (must fix line-by-line)');
 
   if (tsErrors.length === 0) {
-    console.log(
       'TypeScript returned an error code but no standard TS lines were parsed.'
     );
-    console.log('Raw log path:', tsLogPath || '(none)');
   } else {
     const grouped = new Map();
     for (const err of tsErrors) {
@@ -143,23 +132,17 @@ if (tsStatus !== 0) {
     }
 
     for (const [file, errs] of grouped.entries()) {
-      console.log('');
-      console.log(`File: ${file}`);
       for (const e of errs) {
-        console.log(
           `  • line ${e.line}, column ${e.column} – ${e.code} – ${e.message}`
         );
       }
     }
 
-    console.log('');
-    console.log(
       '➡ ACTION: Open each file above and fix the listed lines and TypeScript codes.'
     );
   }
 } else {
   printSection('TypeScript');
-  console.log('✅ No TypeScript errors detected.');
 }
 
 // BUILD
@@ -168,24 +151,17 @@ if (buildStatus !== 0) {
   printSection('Next.js build failures');
 
   if (buildErrors.length === 0) {
-    console.log('Build failed but no specific error lines were detected.');
-    console.log('Raw build log path:', buildLogPath || '(none)');
   } else {
     for (const line of buildErrors) {
-      console.log(`  • ${line}`);
     }
 
-    console.log('');
-    console.log(
       '➡ ACTION: Most of these map to import issues, invalid props, or server/client misuse.'
     );
-    console.log(
       '   Fix from top to bottom. Once done, re-run the autopilot script.'
     );
   }
 } else {
   printSection('Next.js build');
-  console.log('✅ Production build completed successfully.');
 }
 
 // SUPABASE
@@ -194,21 +170,16 @@ if (migrationStatus !== 0) {
     printSection('Supabase migration issues');
     const lines = migrationsLog.split('\n').filter((l) => l.trim());
     for (const line of lines) {
-      console.log(`  • ${line.trim()}`);
     }
-    console.log('');
-    console.log(
       '➡ ACTION: Fix SQL errors or missing database objects, then re-run migrations.'
     );
   } else {
     printSection('Supabase migration issues');
-    console.log(
       'Supabase returned a non-zero exit code but no log was captured.'
     );
   }
 } else {
   printSection('Supabase migrations');
-  console.log('✅ Migrations applied successfully.');
 }
 
 // ESLINT
@@ -217,19 +188,14 @@ if (eslintStatus !== 0) {
   printSection('ESLint warnings/errors');
 
   if (eslintSummary.length === 0) {
-    console.log('ESLint reported issues but log is empty or unparseable.');
   } else {
     for (const line of eslintSummary) {
-      console.log(`  • ${line}`);
     }
-    console.log('');
-    console.log(
       '➡ ACTION: Fix style and logic issues flagged above to keep the codebase clean.'
     );
   }
 } else {
   printSection('ESLint');
-  console.log('✅ ESLint completed without blocking issues.');
 }
 
 // PRETTIER
@@ -238,18 +204,13 @@ if (prettierStatus !== 0) {
   if (hasContent(prettierLog)) {
     const lines = prettierLog.split('\n').filter((l) => l.trim());
     for (const line of lines.slice(0, 50)) {
-      console.log(`  • ${line.trim()}`);
     }
   } else {
-    console.log('Prettier returned non-zero but no log lines were captured.');
   }
-  console.log('');
-  console.log(
     '➡ ACTION: Fix the files Prettier could not format (likely syntax errors).'
   );
 } else {
   printSection('Prettier');
-  console.log('✅ Formatting pass completed.');
 }
 
 // FINAL SUMMARY
@@ -262,19 +223,10 @@ if (buildStatus !== 0) blockers.push('Next.js build failures');
 if (migrationStatus !== 0) blockers.push('Supabase migration problems');
 
 if (blockers.length === 0) {
-  console.log('✅ No hard blockers detected. App should be ready to run.');
-  console.log('You can now run: npm run dev   or   npm start');
 } else {
-  console.log('❌ Hard blockers that MUST be fixed:');
   for (const b of blockers) {
-    console.log(`  • ${b}`);
   }
-  console.log('');
-  console.log(
     '➡ Fix the issues above file-by-file and re-run scripts/elevate-autopilot.sh'
   );
 }
 
-console.log('');
-console.log('End of Elevate LMS Autopilot report.');
-console.log('No errors were hidden. No steps were skipped.');

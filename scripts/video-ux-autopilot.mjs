@@ -24,10 +24,6 @@ const raw = fs.readFileSync(jsonPath, "utf8");
 const data = JSON.parse(raw);
 
 function printSection(title) {
-  console.log("");
-  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-  console.log(`🎥 ${title}`);
-  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 }
 
 function normalizePriority(p) {
@@ -66,35 +62,23 @@ workItems.sort((a, b) => {
   return a.name.localeCompare(b.name);
 });
 
-console.log("");
-console.log("======================================================");
-console.log("ELEVATE LMS – VIDEO UX AUTOPILOT (TIKTOK-LEVEL ROADMAP)");
-console.log("======================================================");
 
 printSection("P0 – Highest Priority (launch-critical experience)");
 
 for (const item of workItems.filter((w) => w.priority === "P0")) {
-  console.log(`• [${item.area}] ${item.name}`);
   if (item.gap) console.log(`  Gap: ${item.gap}`);
   if (item.target) console.log(`  Target: ${item.target}`);
   if (item.tiktok || item.elevate) {
-    console.log(`  TikTok: ${item.tiktok}`);
-    console.log(`  Elevate: ${item.elevate}`);
   }
-  console.log("");
 }
 
 printSection("P1 – High Priority (strong differentiation)");
 
 for (const item of workItems.filter((w) => w.priority === "P1")) {
-  console.log(`• [${item.area}] ${item.name}`);
   if (item.gap) console.log(`  Gap: ${item.gap}`);
   if (item.target) console.log(`  Target: ${item.target}`);
   if (item.tiktok || item.elevate) {
-    console.log(`  TikTok: ${item.tiktok}`);
-    console.log(`  Elevate: ${item.elevate}`);
   }
-  console.log("");
 }
 
 printSection("P2 – Nice to Have (post-MVP)");
@@ -102,19 +86,11 @@ printSection("P2 – Nice to Have (post-MVP)");
 const p2Items = workItems.filter((w) => w.priority === "P2");
 if (p2Items.length) {
   for (const item of p2Items) {
-    console.log(`• [${item.area}] ${item.name}`);
     if (item.gap) console.log(`  Gap: ${item.gap}`);
     if (item.target) console.log(`  Target: ${item.target}`);
     if (item.tiktok || item.elevate) {
-      console.log(`  TikTok: ${item.tiktok}`);
-      console.log(`  Elevate: ${item.elevate}`);
     }
-    console.log("");
   }
 } else {
-  console.log("No P2 items defined.");
 }
 
-console.log("");
-console.log("End of Video UX Autopilot roadmap.");
-console.log("Use this as the dev task list to move Elevate toward TikTok-level experience.");

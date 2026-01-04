@@ -3,8 +3,6 @@
 import { readFileSync, existsSync, statSync, readdirSync } from 'fs';
 import { join } from 'path';
 
-console.log('🔍 Checking Integration Status\n');
-console.log('============================================================\n');
 
 // Helper to count files in directory
 function countFiles(dir, extension) {
@@ -33,57 +31,43 @@ function countDirs(dir) {
 }
 
 // Check Build System
-console.log('🏗️  Build System:');
 try {
   const packageJson = JSON.parse(readFileSync('package.json', 'utf-8'));
   const viteConfig =
     existsSync('vite.config.ts') || existsSync('vite.config.js');
 
-  console.log(viteConfig ? '  ✅ Vite configured' : '  ❌ Vite not configured');
-  console.log(
     packageJson.scripts?.build
       ? '  ✅ Build script present'
       : '  ❌ Build script missing'
   );
-  console.log(
     `  Status: ${viteConfig && packageJson.scripts?.build ? 'CONFIGURED' : 'INCOMPLETE'}\n`
   );
 } catch (error) {
-  console.log('  ❌ Error:', error.message, '\n');
 }
 
 // Check Supabase
-console.log('🗄️  Supabase:');
 try {
   const envContent = existsSync('.env') ? readFileSync('.env', 'utf-8') : '';
   const hasUrl = envContent.includes('VITE_SUPABASE_URL=');
   const hasKey = envContent.includes('VITE_SUPABASE_ANON_KEY=');
 
-  console.log(hasUrl ? '  ✅ URL configured' : '  ❌ URL not configured');
-  console.log(
     hasKey ? '  ✅ Anon key configured' : '  ❌ Anon key not configured'
   );
 
   const migrations = countFiles('supabase/migrations', '.sql');
-  console.log(`  ✅ ${migrations} migrations found`);
 
   const functions = countDirs('supabase/functions');
-  console.log(`  ✅ ${functions} edge functions found`);
 
-  console.log(`  Status: ${hasUrl && hasKey ? 'CONFIGURED' : 'INCOMPLETE'}\n`);
 } catch (error) {
-  console.log('  ❌ Error:', error.message, '\n');
 }
 
 // Check Netlify
-console.log('🌐 Netlify:');
 try {
   const netlifyToml = existsSync('netlify.toml')
     ? readFileSync('netlify.toml', 'utf-8')
     : '';
   const hasBuildCommand = netlifyToml.includes('run build');
 
-  console.log(
     hasBuildCommand
       ? '  ✅ Build command configured'
       : '  ❌ Build command not configured'
@@ -92,18 +76,13 @@ try {
   const functions =
     countFiles('netlify/functions', '.js') +
     countFiles('netlify/functions', '.ts');
-  console.log(`  ✅ ${functions} serverless functions found`);
 
   const redirects = (netlifyToml.match(/\[\[redirects\]\]/g) || []).length;
-  console.log(`  ✅ ${redirects} redirect rules configured`);
 
-  console.log(`  Status: ${hasBuildCommand ? 'CONFIGURED' : 'INCOMPLETE'}\n`);
 } catch (error) {
-  console.log('  ❌ Error:', error.message, '\n');
 }
 
 // Check Cloudflare Workers
-console.log('☁️  Cloudflare Workers:');
 try {
   const wranglerToml = existsSync('wrangler.toml')
     ? readFileSync('wrangler.toml', 'utf-8')
@@ -117,25 +96,19 @@ try {
     existsSync('workers/autopilot-deploy-worker.ts') ||
     wranglerToml.includes('main = ');
 
-  console.log(
     hasWorker ? '  ✅ Worker configured' : '  ❌ Worker not configured'
   );
-  console.log(
     hasAccountId ? '  ✅ Account ID present' : '  ❌ Account ID missing'
   );
-  console.log(
     workerFile ? '  ✅ Worker file exists' : '  ❌ Worker file missing'
   );
 
-  console.log(
     `  Status: ${hasWorker && hasAccountId && workerFile ? 'CONFIGURED' : 'INCOMPLETE'}\n`
   );
 } catch (error) {
-  console.log('  ❌ Error:', error.message, '\n');
 }
 
 // Check Environment Variables
-console.log('🔑 Environment Variables:');
 try {
   const envContent = existsSync('.env') ? readFileSync('.env', 'utf-8') : '';
 
@@ -152,27 +125,19 @@ try {
     'CLOUDFLARE_API_TOKEN',
   ];
 
-  console.log('  Required:');
   requiredVars.forEach((varName) => {
     const hasVar = envContent.includes(`${varName}=`);
-    console.log(`    ${hasVar ? '✅' : '❌'} ${varName}`);
   });
 
-  console.log('\n  Optional:');
   optionalVars.forEach((varName) => {
     const hasVar = envContent.includes(`${varName}=`);
-    console.log(`    ${hasVar ? '✅' : '⚪'} ${varName}`);
   });
 
   const allRequired = requiredVars.every((v) => envContent.includes(`${v}=`));
-  console.log(`\n  Status: ${allRequired ? 'CONFIGURED' : 'INCOMPLETE'}\n`);
 } catch (error) {
-  console.log('  ❌ Error:', error.message, '\n');
 }
 
 // Final Summary
-console.log('============================================================');
-console.log('📊 Integration Summary:\n');
 
 try {
   const packageJson = JSON.parse(readFileSync('package.json', 'utf-8'));
@@ -209,19 +174,14 @@ try {
   ];
   const envConfigured = requiredVars.every((v) => envContent.includes(`${v}=`));
 
-  console.log(
     `${buildConfigured ? '✅' : '❌'} Build System: ${buildConfigured ? 'CONFIGURED' : 'INCOMPLETE'}`
   );
-  console.log(
     `${supabaseConfigured ? '✅' : '❌'} Supabase: ${supabaseConfigured ? 'CONFIGURED' : 'INCOMPLETE'}`
   );
-  console.log(
     `${netlifyConfigured ? '✅' : '❌'} Netlify: ${netlifyConfigured ? 'CONFIGURED' : 'INCOMPLETE'}`
   );
-  console.log(
     `${cloudflareConfigured ? '✅' : '❌'} Cloudflare Workers: ${cloudflareConfigured ? 'CONFIGURED' : 'INCOMPLETE'}`
   );
-  console.log(
     `${envConfigured ? '✅' : '❌'} Environment Variables: ${envConfigured ? 'CONFIGURED' : 'INCOMPLETE'}`
   );
 
@@ -232,16 +192,11 @@ try {
     cloudflareConfigured &&
     envConfigured;
 
-  console.log('\n============================================================');
   if (allConfigured) {
-    console.log('✅ All integrations are properly configured!');
-    console.log('\nFor detailed information, see: INTEGRATION_STATUS.md');
     process.exit(0);
   } else {
-    console.log('⚠️  Some integrations need attention. Please review above.');
     process.exit(1);
   }
 } catch (error) {
-  console.log('❌ Error generating summary:', error.message);
   process.exit(1);
 }

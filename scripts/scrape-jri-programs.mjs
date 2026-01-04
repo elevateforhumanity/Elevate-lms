@@ -86,7 +86,6 @@ async function downloadImage(url, filename) {
 }
 
 async function scrapeJRIPrograms() {
-  console.log('🔍 Scraping Job Ready Indy programs...\n');
 
   const urls = [
     'https://learning.employindy.org',
@@ -97,7 +96,6 @@ async function scrapeJRIPrograms() {
 
   for (const url of urls) {
     try {
-      console.log(`Fetching: ${url}`);
       const html = await fetchHTML(url);
 
       // Extract program titles
@@ -129,9 +127,7 @@ async function scrapeJRIPrograms() {
         logos: logos.slice(0, 3),
       });
 
-      console.log(`✅ Found ${titles.length} titles from ${url}`);
     } catch (error) {
-      console.log(`❌ Error scraping ${url}:`, error.message);
     }
   }
 
@@ -139,7 +135,6 @@ async function scrapeJRIPrograms() {
 }
 
 async function generateJRICoursesData() {
-  console.log('📚 Generating Job Ready Indy course data...\n');
   // Default JRI badge courses based on standard JRI curriculum
   const jriCourses = {
     id: 'job-ready-indy',
@@ -280,12 +275,10 @@ export default jobReadyIndyCourses;
 `;
 
   await fs.writeFile(filePath, fileContent, 'utf-8');
-  console.log(`\n✅ Saved JRI course data to: ${filePath}`);
 }
 
 async function main() {
   try {
-    console.log('🚀 Starting Job Ready Indy program scraper\n');
 
     // Ensure images directory exists
     const imagesDir = path.join(process.cwd(), 'public', 'images', 'partners');
@@ -299,13 +292,6 @@ async function main() {
 
     await saveJRIData(jriData);
 
-    console.log('\n✅ Job Ready Indy programs successfully scraped and saved!');
-    console.log('\n📊 Summary:');
-    console.log(`   - Total badges: ${jriData.badges.length}`);
-    console.log(`   - Registration link: ${jriData.registrationLink}`);
-    console.log(`   - Portal: ${jriData.portalLink}`);
-    console.log(`   - Facilitator: ${jriData.facilitator}`);
-    console.log(`   - Scraped sources: ${scrapedPrograms.length}`);
   } catch (error) {
     console.error('❌ Error:', error);
     process.exit(1);

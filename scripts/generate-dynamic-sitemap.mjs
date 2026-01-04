@@ -24,7 +24,6 @@ for (const match of slugMatches) {
   programSlugs.push(match[1]);
 }
 
-console.log(`Found ${programSlugs.length} programs:`, programSlugs);
 
 // Base URL
 const baseUrl = 'https://elevateforhumanity.org';
@@ -102,10 +101,6 @@ const sitemapPath = join(projectRoot, 'dist/sitemap.xml');
 const sitemapContent = generateSitemap(allRoutes);
 writeFileSync(sitemapPath, sitemapContent, 'utf-8');
 
-console.log(`✅ Generated sitemap with ${allRoutes.length} URLs`);
-console.log(`   - ${staticRoutes.length} static routes`);
-console.log(`   - ${programRoutes.length} dynamic program routes`);
-console.log(`   - Written to: dist/sitemap.xml`);
 
 // Generate robots.txt
 const robotsContent = `# Elevate for Humanity - Robots.txt
@@ -132,16 +127,8 @@ Allow: /lms/courses
 const robotsPath = join(projectRoot, 'dist/robots.txt');
 writeFileSync(robotsPath, robotsContent, 'utf-8');
 
-console.log(`✅ Generated robots.txt`);
-console.log(`   - Written to: dist/robots.txt`);
 
 // Summary report
-console.log('\n📊 Dynamic Routes Summary:');
-console.log('==========================');
-console.log('\nProgram Routes:');
 programSlugs.forEach((slug) => {
-  console.log(`  ✓ /programs/${slug}`);
-  console.log(`  ✓ /program/${slug}`);
 });
 
-console.log('\n✅ All dynamic routes are now in sitemap!');

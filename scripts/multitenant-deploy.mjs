@@ -16,13 +16,10 @@ const ISO = NOW.toISOString().slice(0, 10);
 // Load tenants configuration
 const tenants = JSON.parse(fs.readFileSync('tenants.json', 'utf8'));
 
-console.log('🚀 Multi-Tenant Enterprise Deploy Starting...');
-console.log(`📊 Processing ${tenants.length} tenants`);
 
 const results = [];
 
 for (const tenant of tenants) {
-  console.log(`\n=== Processing tenant: ${tenant.slug} ===`);
 
   const BASE = tenant.base;
   const OUT = tenant.out;
@@ -31,9 +28,6 @@ for (const tenant of tenants) {
   // Ensure directories exist
   fs.mkdirSync(SM_DIR, { recursive: true });
 
-  console.log(`   Base URL: ${BASE}`);
-  console.log(`   Output: ${OUT}`);
-  console.log(`   Chunk size: ${tenant.chunk} URLs`);
 
   // Generate sample URLs for this tenant
   const sampleUrls = [
@@ -204,9 +198,6 @@ Crawl-delay: 1
 
   results.push(result);
 
-  console.log(`   ✅ Generated ${masterSitemaps.length} ultra-tiny sitemaps`);
-  console.log(`   📊 ${sampleUrls.length} pages processed`);
-  console.log(
     `   🗂️  Files: sitemap_index.xml, robots.txt, schema.json, _redirects`
   );
 }
@@ -231,8 +222,6 @@ const manifest = {
 
 fs.writeFileSync('tenant-manifest.json', JSON.stringify(manifest, null, 2));
 
-console.log('\n🎯 Multi-Tenant Enterprise Deploy Complete!');
-console.log('📊 Summary:');
 console.table(
   results.map((r) => ({
     tenant: r.slug,
@@ -242,13 +231,4 @@ console.table(
   }))
 );
 
-console.log('\n💰 Multi-Tenant Revenue Features:');
-console.log('   • Ultra-tiny sitemaps (1k chunks) per tenant');
-console.log('   • Tenant isolation and configuration');
-console.log('   • Enterprise JSON-LD schema per tenant');
-console.log('   • Automated redirects per tenant');
-console.log('   • SaaS-ready architecture');
-console.log('   • Clone-ready for licensing');
 
-console.log('\n🚀 Market Value: $5k-$100k per deployment');
-console.log('✅ Multi-tenant system ready for enterprise licensing!');

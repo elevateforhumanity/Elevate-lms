@@ -119,7 +119,7 @@ class MarketplaceAutomation {
 
         **Key Revenue Streams:**
         💰 **Program Enrollments:** $89-$22,500 per student across 33+ programs
-        💰 **Partner Commissions:** 50% automatic revenue splits on all referrals  
+        💰 **Partner Commissions:** 50% automatic revenue splits on all referrals
         💰 **License Sales:** $2,500-7,500 per sister site deployment
         💰 **Consulting Services:** $150/hour workforce development consulting
         💰 **Federal Funding Access:** WIOA vouchers up to $8,000 per student
@@ -169,7 +169,7 @@ class MarketplaceAutomation {
         **Turn-Key Workforce Development Business - Federal Partnerships & Automated Revenue**
 
         **Business Type:** Educational Technology / Online Training Platform
-        **Industry:** Workforce Development & Professional Training  
+        **Industry:** Workforce Development & Professional Training
         **Revenue:** $0-50K (New Platform, High Growth Potential)
         **Employees:** 0-1 (Automated Systems)
         **Location:** 100% Remote/Online Business
@@ -208,7 +208,7 @@ class MarketplaceAutomation {
 
         **Growth Potential:**
         - **Conservative:** 10-50 students/month = $10,000-30,000 monthly revenue
-        - **Moderate:** 50-200 students/month = $30,000-100,000 monthly revenue  
+        - **Moderate:** 50-200 students/month = $30,000-100,000 monthly revenue
         - **Aggressive:** 200+ students/month = $100,000+ monthly revenue
         - Additional licensing revenue: $2,500-7,500 per new site deployment
 
@@ -233,7 +233,7 @@ class MarketplaceAutomation {
         - Has $10-25K marketing budget for immediate growth
         - Wants established business vs. startup risk
 
-        **Financing Available:** 
+        **Financing Available:**
         Seller willing to discuss financing options for qualified buyers.
 
         This is a rare opportunity to acquire a complete workforce development business with federal backing, proven systems, and unlimited growth potential.
@@ -264,7 +264,7 @@ class MarketplaceAutomation {
         ## 🎯 Perfect For
 
         - Community colleges expanding online offerings
-        - Training companies entering workforce development  
+        - Training companies entering workforce development
         - Entrepreneurs wanting proven education business model
         - Economic development organizations
         - Anyone monetizing federal education partnerships
@@ -429,7 +429,7 @@ class MarketplaceAutomation {
 
         Perfect for [Company Name] to enter the high-growth workforce development market with:
         - 33+ monetized training programs
-        - Federal compliance (WIOA/ETPL) 
+        - Federal compliance (WIOA/ETPL)
         - Automated payment processing
         - Immediate market access
 
@@ -542,7 +542,7 @@ class MarketplaceAutomation {
 
         **The Build:**
         - Started with federal partnership research
-        - Built React/Node.js platform 
+        - Built React/Node.js platform
         - Got WIOA and ETPL approvals (12+ months process)
         - Created 33+ training programs
         - Automated revenue processing

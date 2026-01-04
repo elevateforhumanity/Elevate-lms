@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 /**
  * Complete Barber Apprenticeship Program Seeder
- * 
+ *
  * Seeds:
  * - Funding programs (WIOA, WRG, JRI, Apprenticeship)
  * - Barber Apprenticeship program
  * - 4 modules (JRI SCORM, Milady external, Shop OJT, State Board SCORM)
  * - SCORM packages
  * - Program funding options
- * 
+ *
  * Usage:
  *   pnpm tsx scripts/seed-barber-program-complete.ts
- * 
+ *
  * Requirements:
  *   - SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env.local
  */
@@ -73,8 +73,6 @@ const BARBER_PROGRAM = {
   delivery_mode: 'hybrid',
   is_apprenticeship: true,
   is_on_etpl: true,
-  etpl_program_code: 'IN-BARBER-XXXX', // TODO: Replace with real ETPL code
-  rapids_program_id: 'RAPIDS-PROG-ID-XXXX', // TODO: Replace with real RAPIDS ID
   rapids_occupation_code: '39-5011', // SOC code for barbers
   active: true
 };
@@ -93,8 +91,6 @@ const BARBER_MODULES = [
       title: 'Job Ready Indy – Full Badge Set',
       provider: 'JRI',
       scorm_version: '1.2',
-      storage_path: 'scorm/jri/jri-barber-full.zip', // TODO: Update with real path
-      launch_url: '/scorm-player/jri-barber-full', // TODO: Update with real route
       estimated_hours: 20.0
     }
   },
@@ -104,7 +100,6 @@ const BARBER_MODULES = [
     description: 'Complete Milady barbering theory curriculum including sanitation, anatomy, chemistry, tools, and professional practices.',
     content_type: 'external_link',
     partner_name: 'Milady',
-    external_url: 'https://cima.milady.com', // TODO: Update with real Milady link
     required_hours: 120.0,
     requires_proof: true,
     is_required: true
@@ -132,8 +127,6 @@ const BARBER_MODULES = [
       title: 'Barber State Board Prep',
       provider: 'EFH',
       scorm_version: '1.2',
-      storage_path: 'scorm/efh/barber-state-board-prep.zip', // TODO: Update with real path
-      launch_url: '/scorm-player/barber-state-board-prep', // TODO: Update with real route
       estimated_hours: 40.0
     }
   }

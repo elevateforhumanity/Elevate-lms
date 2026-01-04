@@ -78,6 +78,3 @@ const publicRoutes = allRoutes.filter((route) => {
 // Remove duplicates and sort
 const uniqueRoutes = [...new Set(publicRoutes)].sort();
 
-console.log('Public routes for sitemap:');
-console.log(JSON.stringify(uniqueRoutes, null, 2));
-console.log(`\nTotal: ${uniqueRoutes.length} public routes`);

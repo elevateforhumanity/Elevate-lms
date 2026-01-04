@@ -6,9 +6,8 @@
 import fs from 'fs/promises';
 import path from 'path';
 import fetch from 'node-fetch';
-// import { stockImages, stockVideos } from '../src/data/stock-media'; // TODO: Create stock media data
-const stockImages: any[] = [];
-const stockVideos: any[] = [];
+const stockImages: unknown[] = [];
+const stockVideos: unknown[] = [];
 
 const MEDIA_DIR = path.join(process.cwd(), 'public', 'media');
 const IMAGES_DIR = path.join(MEDIA_DIR, 'images');

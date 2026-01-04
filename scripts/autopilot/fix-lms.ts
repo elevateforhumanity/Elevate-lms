@@ -43,7 +43,7 @@ export default function HVACProgramPage() {
           </p>
           <h1 className="text-4xl font-bold">HVAC Technician Career Pathway</h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
-            Hands-on, workforce-focused HVAC training built for working adults, career changers, 
+            Hands-on, workforce-focused HVAC training built for working adults, career changers,
             and young people who want a skilled trade with real demand.
           </p>
         </header>
@@ -167,7 +167,7 @@ export default function BarberProgramPage() {
           </p>
           <h1 className="text-4xl font-bold">Barber Apprenticeship Program</h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
-            Master the craft of barbering through a state-approved apprenticeship. 
+            Master the craft of barbering through a state-approved apprenticeship.
             Learn cutting, styling, and business skills in a real barbershop environment.
           </p>
         </header>
@@ -309,7 +309,7 @@ export default function CNAProgramPage() {
           </p>
           <h1 className="text-4xl font-bold">Certified Nursing Assistant (CNA)</h1>
           <p className="text-lg text-muted-foreground max-w-3xl">
-            Start your healthcare career with CNA certification. Gain the skills and credentials 
+            Start your healthcare career with CNA certification. Gain the skills and credentials
             needed to provide essential patient care in hospitals, nursing homes, and home health settings.
           </p>
         </header>

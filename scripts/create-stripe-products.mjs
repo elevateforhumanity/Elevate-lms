@@ -7,8 +7,6 @@
 
 import Stripe from 'stripe';
 
-console.log('🎯 Creating Stripe Products for All Programs');
-console.log('=============================================\n');
 
 // Check for Stripe key
 const stripeKey = process.env.STRIPE_SECRET_KEY;
@@ -136,8 +134,6 @@ const PROGRAMS = [
 const results = [];
 
 async function createProduct(program) {
-  console.log(`\n📦 Creating: ${program.name}`);
-  console.log(`   Price: $${program.price}`);
 
   try {
     // Create Product
@@ -150,7 +146,6 @@ async function createProduct(program) {
       },
     });
 
-    console.log(`   ✅ Product created: ${product.id}`);
 
     // Create Price
     const price = await stripe.prices.create({
@@ -162,7 +157,6 @@ async function createProduct(program) {
       },
     });
 
-    console.log(`   ✅ Price created: ${price.id}`);
 
     results.push({
       program: program.name,
@@ -185,7 +179,6 @@ async function createProduct(program) {
 }
 
 async function main() {
-  console.log(`Creating ${PROGRAMS.length} products...\n`);
 
   for (const program of PROGRAMS) {
     await createProduct(program);
@@ -194,62 +187,28 @@ async function main() {
   }
 
   // Summary
-  console.log('\n');
-  console.log('=============================================');
-  console.log('📊 Summary');
-  console.log('=============================================\n');
 
   const successful = results.filter(r => r.price_id);
   const failed = results.filter(r => r.error);
 
-  console.log(`✅ Successful: ${successful.length}`);
-  console.log(`❌ Failed: ${failed.length}`);
-  console.log('');
 
   if (successful.length > 0) {
-    console.log('=============================================');
-    console.log('📋 Environment Variables');
-    console.log('=============================================\n');
-    console.log('Add these to your .env.local:\n');
 
     successful.forEach(r => {
       const envVar = `STRIPE_PRICE_${r.program_id.toUpperCase()}`;
-      console.log(`${envVar}=${r.price_id}`);
     });
 
-    console.log('\n');
-    console.log('=============================================');
-    console.log('📋 Price IDs by Program');
-    console.log('=============================================\n');
 
     successful.forEach(r => {
-      console.log(`${r.program}:`);
-      console.log(`  Product ID: ${r.product_id}`);
-      console.log(`  Price ID: ${r.price_id}`);
-      console.log(`  Amount: $${r.price}`);
-      console.log('');
     });
   }
 
   if (failed.length > 0) {
-    console.log('=============================================');
-    console.log('❌ Failed Products');
-    console.log('=============================================\n');
 
     failed.forEach(r => {
-      console.log(`${r.program}: ${r.error}`);
     });
   }
 
-  console.log('=============================================');
-  console.log('🎯 Next Steps');
-  console.log('=============================================\n');
-  console.log('1. Copy the environment variables above');
-  console.log('2. Add them to .env.local');
-  console.log('3. Add them to Vercel: vercel env add STRIPE_PRICE_XXX');
-  console.log('4. Enable payment methods in Stripe Dashboard');
-  console.log('5. Update code to use Price IDs');
-  console.log('');
 }
 
 main().catch(error => {

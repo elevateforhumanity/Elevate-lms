@@ -7,7 +7,6 @@ const tag = 'v' + ver;
 try {
   execSync(`git tag ${tag}`);
   execSync(`git push origin ${tag}`);
-  console.log('Created and pushed tag', tag);
 } catch (e) {
   console.error('Tagging failed:', e.message);
   process.exit(1);

@@ -199,7 +199,7 @@ app.get('/', (req, res) => {
       <body>
         <h1>🔐 Social Media OAuth Setup</h1>
         <p>This tool helps you get access tokens for social media platforms.</p>
-        
+
         <div class="platform">
           <h2>📘 Facebook</h2>
           <p>Get long-lived page access token (expires in ~60 days)</p>
@@ -210,7 +210,7 @@ app.get('/', (req, res) => {
           }
           <a href="/oauth/facebook">Setup Facebook Token</a>
         </div>
-        
+
         <div class="platform">
           <h2>🎥 YouTube</h2>
           <p>Get OAuth tokens for YouTube Data API</p>
@@ -221,7 +221,7 @@ app.get('/', (req, res) => {
           }
           <a href="/oauth/youtube">Setup YouTube OAuth</a>
         </div>
-        
+
         <div class="platform">
           <h2>💼 LinkedIn</h2>
           <p>Get access token for LinkedIn Marketing API</p>
@@ -232,9 +232,9 @@ app.get('/', (req, res) => {
           }
           <a href="/oauth/linkedin">Setup LinkedIn OAuth</a>
         </div>
-        
+
         <hr style="margin: 40px 0;" />
-        
+
         <h3>📝 Instructions</h3>
         <ol>
           <li>Make sure you've set up the required environment variables in .env</li>
@@ -243,7 +243,7 @@ app.get('/', (req, res) => {
           <li>Copy the generated tokens to your .env file</li>
           <li>Restart your application</li>
         </ol>
-        
+
         <h3>🔗 Required Environment Variables</h3>
         <pre style="background: #f3f4f6; padding: 15px; border-radius: 6px;">
 # Facebook

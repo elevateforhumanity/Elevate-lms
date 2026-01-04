@@ -20,14 +20,14 @@ const defaultDurations = [
   { key: "employers", seconds: 45 },
   { key: "program-holder", seconds: 40 },
   { key: "delegate", seconds: 40 },
-  
+
   // Course-specific videos
   { key: "hvac-program", seconds: 45 },
   { key: "barber-program", seconds: 45 },
   { key: "healthcare-cna-program", seconds: 45 },
   { key: "cdl-program", seconds: 45 },
   { key: "building-tech-program", seconds: 45 },
-  
+
   // Other
   { key: "apply-now", seconds: 30 },
   { key: "contact-support", seconds: 25 },
@@ -65,7 +65,6 @@ async function processDirectory(dir, subdirectory = null) {
   try {
     files = (await fs.readdir(dir)).filter((f) => f.endsWith(".md"));
   } catch (err) {
-    console.log(`Skipping directory ${dir}: ${err.message}`);
     return [];
   }
 
@@ -81,7 +80,7 @@ async function processDirectory(dir, subdirectory = null) {
     const category = determineCategory(slug, subdirectory);
     const provider = determineProvider(category);
 
-    const relativePath = subdirectory 
+    const relativePath = subdirectory
       ? `content/video-scripts/${subdirectory}/${file}`
       : `content/video-scripts/${file}`;
 
@@ -91,29 +90,29 @@ async function processDirectory(dir, subdirectory = null) {
       category,
       sourceFile: relativePath,
       script: text,
-      
+
       // Video generation settings
       targetProvider: provider,
       targetModel: provider === 'heygen' ? 'heygen-v2' : provider === 'synthesia' ? 'synthesia-standard' : 'd-id-basic',
       durationSeconds,
       aspectRatio: "16:9",
-      
+
       // Voice and avatar settings
       voice: "professional-neutral",
       avatar: category === 'course' ? 'instructor-diverse' : 'default',
-      
+
       // Output settings
-      outputPath: subdirectory 
+      outputPath: subdirectory
         ? `public/videos/${subdirectory}/${slug}.mp4`
         : `public/videos/${slug}.mp4`,
       captionsPath: subdirectory
         ? `public/videos/${subdirectory}/${slug}.vtt`
         : `public/videos/${slug}.vtt`,
-      
+
       // Status tracking
       status: "pending",
       priority: category === 'homepage' ? 'high' : category === 'course' ? 'medium' : 'low',
-      
+
       // Metadata
       createdAt: new Date().toISOString(),
       estimatedCost: provider === 'heygen' ? 1.5 : provider === 'synthesia' ? 1.2 : 0.5,
@@ -124,27 +123,20 @@ async function processDirectory(dir, subdirectory = null) {
 }
 
 async function main() {
-  console.log("=== Elevate for Humanity - Video Job Preparation ===\n");
 
   const allJobs = [];
 
   // Process root video-scripts directory
-  console.log("📁 Processing root video scripts...");
   const rootJobs = await processDirectory(scriptsDir);
   allJobs.push(...rootJobs);
-  console.log(`   Found ${rootJobs.length} scripts`);
 
   // Process courses subdirectory
-  console.log("📁 Processing course video scripts...");
   const courseJobs = await processDirectory(coursesDir, 'courses');
   allJobs.push(...courseJobs);
-  console.log(`   Found ${courseJobs.length} course scripts`);
 
   // Process ECD courses subdirectory
-  console.log("📁 Processing ECD course video scripts...");
   const ecdCourseJobs = await processDirectory(ecdCoursesDir, 'ecd-courses');
   allJobs.push(...ecdCourseJobs);
-  console.log(`   Found ${ecdCourseJobs.length} ECD course scripts`);
 
   // Sort by priority
   allJobs.sort((a, b) => {
@@ -154,45 +146,29 @@ async function main() {
 
   // Write jobs file
   await fs.writeFile(jobsOutPath, JSON.stringify(allJobs, null, 2));
-  
-  console.log("\n" + "=".repeat(60));
-  console.log("✅ Video job queue prepared!");
-  console.log("=".repeat(60));
-  console.log(`\n📄 Jobs file: ${jobsOutPath}`);
-  console.log(`📊 Total jobs: ${allJobs.length}`);
-  
+
+
   // Summary by category
   const byCategory = allJobs.reduce((acc, job) => {
     acc[job.category] = (acc[job.category] || 0) + 1;
     return acc;
   }, {});
-  
-  console.log("\n📋 Jobs by category:");
+
   Object.entries(byCategory).forEach(([cat, count]) => {
-    console.log(`   ${cat}: ${count}`);
   });
-  
+
   // Summary by provider
   const byProvider = allJobs.reduce((acc, job) => {
     acc[job.targetProvider] = (acc[job.targetProvider] || 0) + 1;
     return acc;
   }, {});
-  
-  console.log("\n🎬 Recommended providers:");
+
   Object.entries(byProvider).forEach(([provider, count]) => {
-    console.log(`   ${provider}: ${count} videos`);
   });
-  
+
   // Estimated costs
   const totalCost = allJobs.reduce((sum, job) => sum + job.estimatedCost, 0);
-  console.log(`\n💰 Estimated total cost: $${totalCost.toFixed(2)}`);
-  
-  console.log("\n🚀 Next steps:");
-  console.log("   1. Review video-jobs.json");
-  console.log("   2. Sign up for video generation service (HeyGen, Synthesia, or D-ID)");
-  console.log("   3. Use scripts from content/video-scripts/ to generate videos");
-  console.log("   4. Save generated videos to paths specified in outputPath");
-  console.log("   5. Generate captions and save to captionsPath");
+
 }
 
 main().catch((err) => {

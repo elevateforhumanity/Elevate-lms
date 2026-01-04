@@ -12,11 +12,8 @@ import { join } from 'path';
 const DRY_RUN = process.argv.includes('--dry-run');
 const VERBOSE = process.argv.includes('--verbose');
 
-console.log('🧹 Console Statement Cleanup');
-console.log('============================\n');
 
 if (DRY_RUN) {
-  console.log('⚠️  DRY RUN MODE - No files will be modified\n');
 }
 
 // Find all files with console statements
@@ -129,7 +126,6 @@ function processFile(filePath) {
 
 // Main execution
 const files = findFilesWithConsole();
-console.log(`📊 Found ${files.length} files with console statements\n`);
 
 let totalModified = 0;
 let totalRemoved = 0;
@@ -144,10 +140,8 @@ for (const file of files) {
       totalModified++;
       totalRemoved += result.removed;
       results.push({ file, ...result });
-      
+
       if (VERBOSE) {
-        console.log(`✓ ${file}`);
-        console.log(`  Removed: ${result.removed}, Kept: ${result.kept}`);
       }
     }
     totalKept += result.kept;
@@ -156,31 +150,15 @@ for (const file of files) {
   }
 }
 
-console.log('\n📈 Summary');
-console.log('==========');
-console.log(`Files processed: ${files.length}`);
-console.log(`Files modified: ${totalModified}`);
-console.log(`Console statements removed: ${totalRemoved}`);
-console.log(`Console statements kept: ${totalKept}`);
 
 if (results.length > 0 && !VERBOSE) {
-  console.log('\n📝 Modified files:');
   results.slice(0, 20).forEach(({ file, removed }) => {
-    console.log(`  - ${file} (${removed} removed)`);
   });
   if (results.length > 20) {
-    console.log(`  ... and ${results.length - 20} more`);
   }
 }
 
 if (DRY_RUN) {
-  console.log('\n⚠️  This was a dry run. Run without --dry-run to apply changes.');
 } else {
-  console.log('\n✅ Cleanup complete!');
 }
 
-console.log('\n💡 Next steps:');
-console.log('  1. Review changes: git diff');
-console.log('  2. Test application: npm run dev');
-console.log('  3. Run build: npm run build');
-console.log('  4. Commit changes: git add . && git commit -m "Remove console statements"');

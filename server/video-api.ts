@@ -116,7 +116,6 @@ router.get('/status/:jobId', async (req: Request, res: Response) => {
   try {
     const { jobId } = req.params;
 
-    // TODO: Implement job status tracking
     // For now, return mock status
     res.json({
       jobId,
@@ -201,7 +200,6 @@ router.delete('/videos/:jobId', async (req: Request, res: Response) => {
   try {
     const { jobId } = req.params;
 
-    // TODO: Implement video deletion
     res.json({
       success: true,
       message: 'Video deleted successfully',

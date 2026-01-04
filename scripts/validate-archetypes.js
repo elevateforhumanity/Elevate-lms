@@ -26,7 +26,6 @@ const ARCHETYPES = {
   UTILITY: /.*/, // Catch-all
 };
 
-console.log('🔍 Validating archetype coverage...\n');
 
 // Get all page files
 const pages = execSync(
@@ -37,7 +36,6 @@ const pages = execSync(
   .split('\n')
   .filter(Boolean);
 
-console.log(`Total pages found: ${pages.length}\n`);
 
 // Map pages to archetypes
 const mapping = {};
@@ -63,23 +61,17 @@ pages.forEach((page) => {
 });
 
 // Report results
-console.log('Archetype Coverage:');
-console.log('='.repeat(50));
 
 let totalMapped = 0;
 Object.entries(mapping).forEach(([archetype, pages]) => {
   if (archetype !== 'UTILITY') {
-    console.log(`${archetype.padEnd(15)} ${pages.length} pages`);
     totalMapped += pages.length;
   }
 });
 
 const utilityCount = mapping.UTILITY ? mapping.UTILITY.length : 0;
-console.log(`${'UTILITY'.padEnd(15)} ${utilityCount} pages`);
 totalMapped += utilityCount;
 
-console.log('='.repeat(50));
-console.log(`Total mapped: ${totalMapped}/${pages.length}\n`);
 
 // Check for unmapped pages
 if (unmapped.length > 0) {
@@ -95,7 +87,6 @@ if (unmapped.length > 0) {
 }
 
 // Validate archetype implementations exist
-console.log('Checking archetype implementations...');
 
 const requiredArchetypes = Object.keys(ARCHETYPES).filter(
   (a) => a !== 'UTILITY'
@@ -118,11 +109,7 @@ if (missingArchetypes.length > 0) {
   process.exit(1);
 }
 
-console.log('✅ All archetypes have implementations\n');
 
 // Success
-console.log('✅ ARCHETYPE VALIDATION PASSED\n');
-console.log(`All ${pages.length} pages are mapped to archetypes.`);
-console.log('Build may proceed.\n');
 
 process.exit(0);

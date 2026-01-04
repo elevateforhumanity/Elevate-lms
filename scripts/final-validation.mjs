@@ -3,7 +3,6 @@
 import { readFileSync, readdirSync, statSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-console.log('=== FINAL VALIDATION SUITE ===\n');
 
 const results = {
   totalPages: 0,
@@ -15,9 +14,9 @@ const results = {
 
 function checkFile(filePath, content) {
   results.pagesChecked++;
-  
+
   const issues = [];
-  
+
   // Check for actual placeholder content (not form placeholders)
   const placeholderPatterns = [
     /coming soon/i,
@@ -27,7 +26,7 @@ function checkFile(filePath, content) {
     /TODO:.*content/i,
     /FIXME:.*content/i
   ];
-  
+
   placeholderPatterns.forEach(pattern => {
     if (pattern.test(content)) {
       issues.push({
@@ -37,12 +36,12 @@ function checkFile(filePath, content) {
       });
     }
   });
-  
+
   // Check for h1 (but allow component-based or redirect pages)
   const hasH1 = content.includes('<h1');
   const isRedirect = content.includes('redirect(');
   const isComponentBased = content.includes('Dashboard') || content.includes('Portal');
-  
+
   if (!hasH1 && !isRedirect && !isComponentBased && filePath.includes('page.tsx')) {
     // Only flag if it's a substantial page
     if (content.length > 500) {
@@ -53,7 +52,7 @@ function checkFile(filePath, content) {
       });
     }
   }
-  
+
   // Check for broken example.com references (not in forms)
   if (content.includes('example.com') && !content.includes('placeholder=')) {
     issues.push({
@@ -61,7 +60,7 @@ function checkFile(filePath, content) {
       issue: 'example.com in actual content'
     });
   }
-  
+
   if (issues.length > 0) {
     const critical = issues.filter(i => i.type === 'CRITICAL');
     if (critical.length > 0) {
@@ -72,18 +71,18 @@ function checkFile(filePath, content) {
       results.passed = false;
     }
   }
-  
+
   return issues;
 }
 
 function scanDirectory(dir) {
   try {
     const items = readdirSync(dir);
-    
+
     for (const item of items) {
       const fullPath = join(dir, item);
       const stat = statSync(fullPath);
-      
+
       if (stat.isDirectory()) {
         if (!item.startsWith('.') && item !== 'node_modules') {
           scanDirectory(fullPath);
@@ -99,26 +98,17 @@ function scanDirectory(dir) {
   }
 }
 
-console.log('Scanning all pages for critical issues...\n');
 scanDirectory('app');
 
-console.log(`Pages scanned: ${results.pagesChecked}`);
-console.log(`Critical issues: ${results.criticalIssues.length}\n`);
 
 if (results.criticalIssues.length > 0) {
-  console.log('=== CRITICAL ISSUES FOUND ===');
   results.criticalIssues.forEach((item, i) => {
-    console.log(`\n${i + 1}. ${item.file}`);
     item.issues.forEach(issue => {
-      console.log(`   - ${issue.issue}`);
     });
   });
-  console.log('\n');
 }
 
 writeFileSync('reports/final-validation-results.json', JSON.stringify(results, null, 2));
 
-console.log(`\nValidation ${results.passed ? 'PASSED' : 'FAILED'}`);
-console.log(`Results saved to: reports/final-validation-results.json\n`);
 
 process.exit(results.passed ? 0 : 1);

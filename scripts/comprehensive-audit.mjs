@@ -14,11 +14,11 @@ const publicDir = join(__dirname, '..', 'public');
 function findAllPages(dir, baseDir = dir) {
   let pages = [];
   const items = readdirSync(dir);
-  
+
   for (const item of items) {
     const fullPath = join(dir, item);
     const stat = statSync(fullPath);
-    
+
     if (stat.isDirectory()) {
       if (!item.startsWith('.') && item !== 'node_modules' && item !== 'api') {
         pages = pages.concat(findAllPages(fullPath, baseDir));
@@ -31,7 +31,7 @@ function findAllPages(dir, baseDir = dir) {
       });
     }
   }
-  
+
   return pages;
 }
 
@@ -51,13 +51,13 @@ function extractImages(content) {
   const images = [];
   const imageRegex = /src=["']([^"']+)["']/g;
   let match;
-  
+
   while ((match = imageRegex.exec(content)) !== null) {
     if (match[1].startsWith('/images/') || match[1].startsWith('/')) {
       images.push(match[1]);
     }
   }
-  
+
   return images;
 }
 
@@ -66,13 +66,13 @@ function extractLinks(content) {
   const links = [];
   const linkRegex = /(?:href|to)=["']([^"']+)["']/g;
   let match;
-  
+
   while ((match = linkRegex.exec(content)) !== null) {
     if (match[1].startsWith('/') && !match[1].startsWith('//')) {
       links.push(match[1]);
     }
   }
-  
+
   return links;
 }
 
@@ -82,21 +82,21 @@ function analyzePageDetailed(filePath, allPagePaths) {
     const content = readFileSync(filePath, 'utf-8');
     const images = extractImages(content);
     const links = extractLinks(content);
-    
+
     // Check for hero image (1920x800-1000px recommendation)
     const hasHeroSection = /hero|Hero|banner|Banner/.test(content);
-    const heroImages = images.filter(img => 
+    const heroImages = images.filter(img =>
       /hero|banner|large|header/i.test(img)
     );
-    
+
     // Check image quality indicators
     const hasQualitySettings = /quality=\{?\d+\}?/.test(content);
-    
+
     // Check for alt text on all images
     const imageMatches = content.match(/<Image[^>]*>/g) || [];
     const imagesWithAlt = imageMatches.filter(img => /alt=["'][^"']+["']/.test(img));
     const imagesWithoutAlt = imageMatches.length - imagesWithAlt.length;
-    
+
     // Check for CTAs
     const ctaPatterns = [
       /Apply Now/i,
@@ -110,7 +110,7 @@ function analyzePageDetailed(filePath, allPagePaths) {
       /Book/i
     ];
     const ctaCount = ctaPatterns.filter(pattern => pattern.test(content)).length;
-    
+
     // Check for placeholders
     const placeholderPatterns = [
       /TODO/,
@@ -123,62 +123,62 @@ function analyzePageDetailed(filePath, allPagePaths) {
       /\{.+?\}/
     ];
     const placeholders = placeholderPatterns.filter(pattern => pattern.test(content));
-    
+
     // Check metadata
     const hasMetadata = /export const metadata/.test(content);
     const hasTitle = /title:\s*["']/.test(content);
     const hasDescription = /description:\s*["']/.test(content);
-    
+
     // Check for broken internal links
     const brokenLinks = links.filter(link => {
       const cleanLink = link.split('?')[0].split('#')[0];
-      return !allPagePaths.includes(cleanLink) && 
+      return !allPagePaths.includes(cleanLink) &&
              !cleanLink.startsWith('/api/') &&
              !cleanLink.startsWith('/images/');
     });
-    
+
     // Check for missing images
     const missingImages = images.filter(img => !checkImageExists(img));
-    
+
     // Content quality checks
     const wordCount = content.split(/\s+/).length;
     const hasRichContent = wordCount > 200;
-    
+
     return {
       // Hero banner audit
       hasHeroSection,
       heroImages: heroImages.length,
       hasQualitySettings,
-      
+
       // CTA buttons
       ctaCount,
       hasCTA: ctaCount > 0,
-      
+
       // Content
       wordCount,
       hasRichContent,
       hasPlaceholders: placeholders.length > 0,
       placeholderCount: placeholders.length,
-      
+
       // Images
       totalImages: images.length,
       imagesWithoutAlt,
       missingImages: missingImages.length,
       missingImagePaths: missingImages,
-      
+
       // Links
       totalLinks: links.length,
       brokenLinks: brokenLinks.length,
       brokenLinkPaths: brokenLinks,
-      
+
       // Metadata
       hasMetadata,
       hasTitle,
       hasDescription,
-      
+
       // Auth
       isAuthRequired: /redirect\(['"]\/login['"]\)|createClient|getUser/.test(content),
-      
+
       lineCount: content.split('\n').length
     };
   } catch (error) {
@@ -201,12 +201,10 @@ function categorizePage(path) {
   return 'marketing';
 }
 
-console.log('🔍 Starting comprehensive audit of all 537 pages...\n');
 
 const pages = findAllPages(appDir);
 const allPagePaths = pages.map(p => p.path);
 
-console.log(`Found ${pages.length} pages\n`);
 
 const auditResults = {
   totalPages: pages.length,
@@ -228,19 +226,19 @@ const auditResults = {
 for (const page of pages) {
   const category = categorizePage(page.path);
   const analysis = analyzePageDetailed(page.file, allPagePaths);
-  
+
   if (!auditResults.categories[category]) {
     auditResults.categories[category] = [];
   }
-  
+
   if (analysis) {
     const pageData = {
       path: page.path,
       ...analysis
     };
-    
+
     auditResults.categories[category].push(pageData);
-    
+
     // Track issues
     if (!analysis.hasHeroSection && ['marketing', 'programs'].includes(category)) {
       auditResults.issues.noHeroImage.push(page.path);
@@ -299,31 +297,10 @@ for (const [category, pageList] of Object.entries(auditResults.categories)) {
 }
 
 // Print summary
-console.log('📊 COMPREHENSIVE AUDIT RESULTS\n');
-console.log('═'.repeat(70));
 
-console.log('\n📈 CATEGORY BREAKDOWN:\n');
 for (const [category, stats] of Object.entries(auditResults.summary)) {
-  console.log(`${category.toUpperCase()}: ${stats.total} pages`);
-  console.log(`  ✓ Hero sections: ${stats.withHero}/${stats.total}`);
-  console.log(`  ✓ CTAs: ${stats.withCTA}/${stats.total}`);
-  console.log(`  ✓ Complete metadata: ${stats.withMetadata}/${stats.total}`);
-  console.log(`  ⚠ Placeholders: ${stats.withPlaceholders}`);
-  console.log(`  ⚠ Broken links: ${stats.withBrokenLinks}`);
-  console.log(`  ⚠ Missing images: ${stats.withMissingImages}`);
-  console.log(`  ⚠ Images without alt: ${stats.withImagesNoAlt}`);
-  console.log('');
 }
 
-console.log('\n⚠️  CRITICAL ISSUES:\n');
-console.log(`❌ Pages without hero images: ${auditResults.issues.noHeroImage.length}`);
-console.log(`❌ Pages without CTAs: ${auditResults.issues.noCTA.length}`);
-console.log(`❌ Pages with placeholders: ${auditResults.issues.hasPlaceholders.length}`);
-console.log(`❌ Pages with incomplete metadata: ${auditResults.issues.noMetadata.length}`);
-console.log(`❌ Pages with images missing alt text: ${auditResults.issues.imagesWithoutAlt.length}`);
-console.log(`❌ Pages with broken links: ${auditResults.issues.brokenLinks.length}`);
-console.log(`❌ Pages with missing images: ${auditResults.issues.missingImages.length}`);
-console.log(`❌ Pages with thin content: ${auditResults.issues.thinContent.length}`);
 
 // Save results
 writeFileSync(
@@ -331,5 +308,3 @@ writeFileSync(
   JSON.stringify(auditResults, null, 2)
 );
 
-console.log('\n✅ Comprehensive audit complete!');
-console.log('📄 Results saved to comprehensive-audit-results.json\n');

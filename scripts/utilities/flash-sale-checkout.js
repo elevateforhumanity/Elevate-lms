@@ -185,25 +185,25 @@ async function sendFlashSaleLicense(
   // Email template for flash sale
   const emailTemplate = `
     🔥 FLASH SALE LICENSE DELIVERED!
-    
+
     Thank you for your emergency purchase of ${package.name}!
-    
+
     Your License Key: ${licenseKey}
-    
+
     IMMEDIATE ACCESS:
     • Download your files: https://elevateforhumanity.org/download/${licenseKey}
     • License Dashboard: https://elevateforhumanity.org/license-dashboard.html
     • Certificate: Attached PDF
-    
+
     WHAT'S INCLUDED:
     ${package.features.map((f) => `✅ ${f}`).join('\n    ')}
-    
+
     URGENT SUPPORT:
     Due to the emergency nature of this sale, priority support is available at:
     emergency-support@elevateforhumanity.com
-    
+
     Your purchase helps during a difficult time - thank you!
-    
+
     Best regards,
     Elevate Team
   `;

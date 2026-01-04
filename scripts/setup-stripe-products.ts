@@ -76,12 +76,10 @@ const TRAINING_BUNDLES = [
 ];
 
 async function createStripeProducts() {
-  console.log('🚀 Creating Stripe products for SupersonicFastCash Training...\n');
 
-  const results: any[] = [];
+  const results: unknown[] = [];
 
   // Create individual courses
-  console.log('📚 Creating individual courses...\n');
   for (const course of TRAINING_PRODUCTS) {
     try {
       // Create product
@@ -104,10 +102,6 @@ async function createStripeProducts() {
         },
       });
 
-      console.log(`✅ Created: ${course.name}`);
-      console.log(`   Product ID: ${product.id}`);
-      console.log(`   Price ID: ${price.id}`);
-      console.log(`   Amount: $${(course.price / 100).toFixed(2)}\n`);
 
       results.push({
         courseId: course.courseId,
@@ -122,7 +116,6 @@ async function createStripeProducts() {
   }
 
   // Create bundles
-  console.log('\n📦 Creating training bundles...\n');
   for (const bundle of TRAINING_BUNDLES) {
     try {
       // Create product
@@ -145,10 +138,6 @@ async function createStripeProducts() {
         },
       });
 
-      console.log(`✅ Created: ${bundle.name}`);
-      console.log(`   Product ID: ${product.id}`);
-      console.log(`   Price ID: ${price.id}`);
-      console.log(`   Amount: $${(bundle.price / 100).toFixed(2)}\n`);
 
       results.push({
         courseId: bundle.courseId,
@@ -163,32 +152,21 @@ async function createStripeProducts() {
   }
 
   // Print summary
-  console.log('\n' + '='.repeat(80));
-  console.log('📋 SUMMARY - Copy these Price IDs to your code:');
-  console.log('='.repeat(80) + '\n');
 
-  console.log('Update app/supersonic-fast-cash/careers/training/page.tsx:\n');
-  
+
   results.forEach((result) => {
-    console.log(`  ${result.courseId}:`);
-    console.log(`    stripePriceId: '${result.priceId}',\n`);
   });
 
-  console.log('\n' + '='.repeat(80));
-  console.log('✅ All products created successfully!');
-  console.log('='.repeat(80) + '\n');
 
   // Save to file for reference
   const fs = require('fs');
   const outputPath = './stripe-products-output.json';
   fs.writeFileSync(outputPath, JSON.stringify(results, null, 2));
-  console.log(`📄 Full details saved to: ${outputPath}\n`);
 }
 
 // Run the script
 createStripeProducts()
   .then(() => {
-    console.log('✅ Setup complete!');
     process.exit(0);
   })
   .catch((error) => {

@@ -173,7 +173,6 @@ async function main() {
 
   fs.writeFileSync(outFile, lines.join('\n'), 'utf8');
 
-  console.log(
     `[routes] Generated ${finalRoutes.length} routes -> ${relUnix(path.relative(projectRoot, outFile))}`
   );
 }

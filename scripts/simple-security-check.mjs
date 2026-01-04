@@ -3,7 +3,6 @@
 // Simple production readiness check
 import fs from 'fs';
 
-console.log('🔒 Production Security Assessment\n');
 
 // Test all the actual security features
 const serverContent = fs.readFileSync('./simple-server.cjs', 'utf8');
@@ -67,7 +66,6 @@ let critical = 0;
 
 checks.forEach((check) => {
   const icon = check.passed ? '✅' : check.critical ? '🚨' : '⚠️';
-  console.log(`${icon} ${check.name}`);
   if (check.passed) passed++;
   if (!check.passed && check.critical) critical++;
 });
@@ -75,11 +73,8 @@ checks.forEach((check) => {
 const score = Math.round((passed / checks.length) * 100);
 const ready = critical === 0;
 
-console.log(`\n📊 Score: ${passed}/${checks.length} (${score}%)`);
-console.log(`🎯 Production Ready: ${ready ? '✅ YES' : '❌ NO'}`);
 
 if (critical > 0) {
-  console.log(`🚨 Critical issues: ${critical}`);
 }
 
 process.exit(ready ? 0 : 1);

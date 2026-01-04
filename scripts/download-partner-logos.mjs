@@ -159,7 +159,6 @@ async function downloadImage(url, filepath) {
 }
 
 async function downloadPartnerLogos() {
-  console.log('🎨 Downloading partner logos...\n');
 
   const logosDir = path.join(process.cwd(), 'public', 'images', 'partners');
   await fs.mkdir(logosDir, { recursive: true });
@@ -170,7 +169,6 @@ async function downloadPartnerLogos() {
   };
 
   for (const partner of partners) {
-    console.log(`📥 Downloading ${partner.name} logo...`);
 
     let downloaded = false;
 
@@ -180,22 +178,18 @@ async function downloadPartnerLogos() {
       try {
         const filepath = path.join(logosDir, partner.filename);
         await downloadImage(url, filepath);
-        console.log(`   ✅ Downloaded from: ${url}`);
         results.success.push(partner.name);
         downloaded = true;
       } catch (error) {
-        console.log(`   ⚠️  Failed: ${url.substring(0, 60)}...`);
       }
     }
 
     if (!downloaded) {
-      console.log(
         `   ❌ Could not download ${partner.name} logo from any source`
       );
       results.failed.push(partner.name);
     }
 
-    console.log('');
   }
 
   return results;
@@ -232,11 +226,9 @@ export default partnerLogos;
 `;
 
   await fs.writeFile(filePath, fileContent, 'utf-8');
-  console.log(`✅ Saved partner logos data to: ${filePath}\n`);
 }
 
 async function createFallbackLogos() {
-  console.log('🎨 Creating fallback SVG logos for missing partners...\n');
 
   const logosDir = path.join(process.cwd(), 'public', 'images', 'partners');
 
@@ -302,7 +294,6 @@ async function createFallbackLogos() {
 </svg>`;
 
     await fs.writeFile(filepath, svg, 'utf-8');
-    console.log(
       `   ✅ Created fallback SVG: ${logo.filename.replace('.png', '.svg')}`
     );
   }
@@ -310,26 +301,18 @@ async function createFallbackLogos() {
 
 async function main() {
   try {
-    console.log('🚀 Starting partner logo download\n');
 
     const results = await downloadPartnerLogos();
     await createFallbackLogos();
     await createPartnerLogosData(results);
 
-    console.log('📊 Summary:');
-    console.log(`   ✅ Successfully downloaded: ${results.success.length}`);
-    console.log(`   ❌ Failed to download: ${results.failed.length}`);
 
     if (results.success.length > 0) {
-      console.log(`\n   Downloaded: ${results.success.join(', ')}`);
     }
 
     if (results.failed.length > 0) {
-      console.log(`\n   Failed: ${results.failed.join(', ')}`);
-      console.log(`   (Fallback SVG logos created for missing partners)`);
     }
 
-    console.log('\n✅ Partner logos setup complete!');
   } catch (error) {
     console.error('❌ Error:', error);
     process.exit(1);

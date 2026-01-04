@@ -144,6 +144,4 @@ fs.writeFileSync(path.join(path.dirname(OUT), 'sitemap_index.xml'), masterXML);
 const count = Object.fromEntries(
   Object.entries(sections).map(([k, v]) => [k, v.length])
 );
-console.log('Sitemap partition complete.');
 console.table(count);
-console.log(`Chunk size: ${CHUNK}, output: ${OUT}`);

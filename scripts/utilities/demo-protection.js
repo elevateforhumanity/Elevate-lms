@@ -38,7 +38,7 @@ class DemoProtection {
     if (!this.isDemoMode()) return html;
 
     const watermark = `
-      <div style="position: fixed; top: 10px; right: 10px; background: rgba(255,0,0,0.8); 
+      <div style="position: fixed; top: 10px; right: 10px; background: rgba(255,0,0,0.8);
                   color: white; padding: 8px; border-radius: 4px; z-index: 9999; font-size: 12px;">
         ${DEMO_CONFIG.watermark}
       </div>

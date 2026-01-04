@@ -126,7 +126,6 @@ const contacts = [
 ];
 
 async function insertContacts() {
-  console.log("🚀 Inserting contacts into Supabase...\n");
 
   for (const contact of contacts) {
     try {
@@ -142,13 +141,10 @@ async function insertContacts() {
       });
 
       if (response.ok) {
-        console.log(`✅ Added: ${contact.full_name} (${contact.email})`);
       } else {
         const error = await response.text();
         if (error.includes("duplicate") || error.includes("23505")) {
-          console.log(`⚠️  Already exists: ${contact.email}`);
         } else {
-          console.log(`❌ Failed: ${contact.email} - ${error}`);
         }
       }
     } catch (err) {
@@ -156,8 +152,7 @@ async function insertContacts() {
     }
   }
 
-  console.log("\n✅ Contact insertion complete!");
-  
+
   // Verify count
   try {
     const response = await fetch(`${SUPABASE_URL}/rest/v1/marketing_contacts?select=count`, {
@@ -166,9 +161,8 @@ async function insertContacts() {
         "Prefer": "count=exact"
       }
     });
-    
+
     const data = await response.json();
-    console.log(`\n📊 Total contacts in database: ${data[0]?.count || 0}`);
   } catch (err) {
     console.error("Error getting count:", err.message);
   }

@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * Sync Static Course Files to Supabase
- * 
+ *
  * Migrates the 32 static course files from lms-data/courses/ into the Supabase courses table.
  * This makes the LMS fully SaaS-ready with database-driven courses.
- * 
+ *
  * Usage: node scripts/sync-static-courses-to-supabase.mjs
  */
 
@@ -78,13 +78,8 @@ async function upsertCourse(courseData) {
 }
 
 async function main() {
-  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-  console.log("📚 SYNCING STATIC COURSES TO SUPABASE");
-  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-  console.log("");
 
   const files = listCourseFiles();
-  console.log(`Found ${files.length} course files to sync\n`);
 
   let synced = 0;
   let skipped = 0;
@@ -100,18 +95,17 @@ async function main() {
       const description = extractField(src, "description");
       const shortDescription = extractField(src, "shortDescription") || extractField(src, "short_description");
       const category = extractField(src, "category");
-      
+
       // Extract partner fields
       const partnerUrl = extractField(src, "partnerUrl");
       const launchMode = extractField(src, "launchMode");
       const allowIframe = extractBool(src, "allowIframe");
-      
+
       // Extract metadata
       const isPublished = extractBool(src, "isPublished");
       const hoursTotal = extractNumber(src, "hoursTotal") || extractNumber(src, "hours");
 
       if (!slug || !title) {
-        console.log(`⚠️  Skipping ${f.file} (missing slug or title)`);
         skipped++;
         continue;
       }
@@ -133,7 +127,6 @@ async function main() {
       };
 
       await upsertCourse(courseData);
-      console.log(`✅ ${slug}`);
       synced++;
 
     } catch (error) {
@@ -142,26 +135,12 @@ async function main() {
     }
   }
 
-  console.log("");
-  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-  console.log("📊 SYNC COMPLETE");
-  console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-  console.log(`✅ Synced: ${synced}`);
-  console.log(`⚠️  Skipped: ${skipped}`);
-  console.log(`❌ Errors: ${errors}`);
-  console.log("");
 
   if (errors > 0) {
     console.error("⚠️  Some courses failed to sync. Review errors above.");
     process.exit(1);
   }
 
-  console.log("🎉 All courses successfully synced to Supabase!");
-  console.log("");
-  console.log("Next steps:");
-  console.log("  1. Verify courses in Supabase dashboard");
-  console.log("  2. Test course pages: /lms/courses/[courseId]");
-  console.log("  3. Run: pnpm typecheck && pnpm build");
 }
 
 main().catch((error) => {

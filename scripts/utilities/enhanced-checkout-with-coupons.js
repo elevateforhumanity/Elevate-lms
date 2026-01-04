@@ -161,9 +161,9 @@ function efhAddCouponFields(containerId = 'programs') {
       <div class="coupon-field" style="margin-top:12px;padding:12px;border:1px solid #ddd;border-radius:8px;background:#f9f9f9">
         <label style="display:block;font-weight:600;margin-bottom:6px">Have a coupon?</label>
         <div style="display:flex;gap:8px">
-          <input id="cp_${slug}" type="text" placeholder="Enter code" 
+          <input id="cp_${slug}" type="text" placeholder="Enter code"
                  style="flex:1;padding:8px;border:1px solid #ccc;border-radius:4px"/>
-          <button onclick="efhApplyCoupon('${slug}')" 
+          <button onclick="efhApplyCoupon('${slug}')"
                   style="padding:8px 12px;background:#007bff;color:white;border:none;border-radius:4px;cursor:pointer">
             Apply
           </button>

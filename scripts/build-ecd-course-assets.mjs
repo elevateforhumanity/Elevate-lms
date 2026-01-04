@@ -120,8 +120,6 @@ async function main() {
   const raw = await fs.readFile(coursesPath, "utf8");
   const courses = JSON.parse(raw);
 
-  console.log(`\n=== Building ECD Course Assets ===`);
-  console.log(`Found ${courses.length} courses\n`);
 
   for (const course of courses) {
     const imgPrompt = imagePromptFor(course);
@@ -139,20 +137,8 @@ async function main() {
     await fs.writeFile(imgFile, imgPrompt, "utf8");
     await fs.writeFile(vidFile, videoScript, "utf8");
 
-    console.log(`✓ ${course.slug}`);
-    console.log(`  - Image prompt: ${course.slug}-cover.md`);
-    console.log(`  - Video script: ${course.slug}-video.md`);
   }
 
-  console.log("\n" + "=".repeat(60));
-  console.log("✅ All ECD course assets generated!");
-  console.log("=".repeat(60));
-  console.log(`\n📸 Image prompts: ${imgDir}`);
-  console.log(`🎬 Video scripts: ${videoDir}`);
-  console.log(`\n🚀 Next steps:`);
-  console.log(`   1. Review generated content`);
-  console.log(`   2. Run: node scripts/generate-images.mjs`);
-  console.log(`   3. Generate videos using scripts`);
 }
 
 main().catch((err) => {

@@ -71,7 +71,7 @@
             gap: 24px;
             margin: 24px 0;
           }
-          
+
           .efh-course-card {
             background: white;
             border-radius: 12px;
@@ -79,49 +79,49 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: transform 0.2s, box-shadow 0.2s;
           }
-          
+
           .efh-course-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 16px rgba(0,0,0,0.15);
           }
-          
+
           .efh-course-image {
             width: 100%;
             height: 180px;
             object-fit: cover;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           }
-          
+
           .efh-course-content {
             padding: 20px;
           }
-          
+
           .efh-course-title {
             font-size: 18px;
             font-weight: 600;
             margin: 0 0 8px 0;
             color: #1a202c;
           }
-          
+
           .efh-course-description {
             font-size: 14px;
             color: #718096;
             margin: 0 0 16px 0;
             line-height: 1.5;
           }
-          
+
           .efh-course-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 16px;
           }
-          
+
           .efh-course-duration {
             font-size: 13px;
             color: #a0aec0;
           }
-          
+
           .efh-course-btn {
             display: inline-block;
             width: 100%;
@@ -135,11 +135,11 @@
             font-size: 14px;
             transition: opacity 0.2s;
           }
-          
+
           .efh-course-btn:hover {
             opacity: 0.9;
           }
-          
+
           .efh-loading, .efh-empty {
             text-align: center;
             padding: 40px;

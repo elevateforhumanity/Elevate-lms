@@ -24,12 +24,10 @@ if (!fs.existsSync(programs)) {
   );
 }
 
-console.log(
   '[fix-site] polishing base=%s out=%s programs=%s canonical=%s',
   base,
   out,
   programs,
   canonical
 );
-// TODO: integrate full SEO polishing logic (HTML mutation, JSON-LD, sitemap regeneration) using provided script.
 process.exit(0);

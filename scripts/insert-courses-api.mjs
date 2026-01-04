@@ -5,8 +5,6 @@ import { createClient } from '@supabase/supabase-js';
 const SUPABASE_URL = 'https://cuxzzpsyufcewtmicszk.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1eHp6cHN5dWZjZXd0bWljc3prIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODE2MTA0NywiZXhwIjoyMDczNzM3MDQ3fQ.5JRYvJPzFzsVaZQkbZDLcohP7dq8LWQEFeFdVByyihE';
 
-console.log('🚀 Inserting Courses via API');
-console.log('============================\n');
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -50,70 +48,58 @@ const courses = [
 ];
 
 async function insertPrograms() {
-  console.log('📋 Inserting 16 programs...');
-  
+
   const { data, error } = await supabase
     .from('programs')
     .upsert(programs, { onConflict: 'slug' });
-  
+
   if (error) {
     console.error('❌ Error inserting programs:', error.message);
     return false;
   }
-  
-  console.log('✅ Programs inserted successfully!');
+
   return true;
 }
 
 async function insertCourses() {
-  console.log('📚 Inserting 17 courses...');
-  
+
   const { data, error } = await supabase
     .from('courses')
     .upsert(courses, { onConflict: 'slug' });
-  
+
   if (error) {
     console.error('❌ Error inserting courses:', error.message);
     return false;
   }
-  
-  console.log('✅ Courses inserted successfully!');
+
   return true;
 }
 
 async function verify() {
-  console.log('\n🔍 Verifying...');
-  
+
   const { count: progCount } = await supabase
     .from('programs')
     .select('*', { count: 'exact', head: true });
-  
+
   const { count: courseCount } = await supabase
     .from('courses')
     .select('*', { count: 'exact', head: true });
-  
-  console.log(`✅ Programs in database: ${progCount}`);
-  console.log(`✅ Courses in database: ${courseCount}`);
-  
+
+
   return progCount >= 16 && courseCount >= 17;
 }
 
 async function main() {
   const progSuccess = await insertPrograms();
   if (!progSuccess) process.exit(1);
-  
+
   const courseSuccess = await insertCourses();
   if (!courseSuccess) process.exit(1);
-  
+
   const verified = await verify();
-  
+
   if (verified) {
-    console.log('\n🎉 SUCCESS! All courses activated!');
-    console.log('\n📋 Next: Check website');
-    console.log('   https://fix2-gpql-r0x49ne29-elevate-48e460c9.vercel.app/admin/courses');
-    console.log('   Blue banner should disappear!');
   } else {
-    console.log('\n⚠️  Verification failed. Check counts above.');
   }
 }
 

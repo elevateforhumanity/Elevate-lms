@@ -38,13 +38,13 @@ function getPartnerWelcomeEmail(data: {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  
+
   <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px; text-align: center; border-radius: 10px 10px 0 0;">
     <h1 style="color: white; margin: 0; font-size: 28px;">🎉 Welcome to ${data.providerName}!</h1>
   </div>
 
   <div style="background: white; padding: 40px 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 10px 10px;">
-    
+
     <p style="font-size: 18px; margin-bottom: 20px;">Hi ${data.studentName},</p>
 
     <p style="font-size: 16px; margin-bottom: 20px;">

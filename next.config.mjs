@@ -12,14 +12,14 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   productionBrowserSourceMaps: false,
-  
+
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? {
       exclude: ['error', 'warn'],
     } : false,
   },
-  
+
   // Experimental features for better performance
   experimental: {
     optimizePackageImports: [
@@ -103,7 +103,7 @@ const nextConfig = {
   outputFileTracingExcludes: {
     '/api/accreditation/report': ['**/*'],
   },
-  
+
   // Redirects for consolidated routes
   async redirects() {
     return [
@@ -115,51 +115,51 @@ const nextConfig = {
       { source: '/program-holder-portal/:path*', destination: '/program-holder/:path*', permanent: true },
       { source: '/admin-portal/:path*', destination: '/admin/:path*', permanent: true },
       // /dashboard redirect removed - handled by middleware with auth check
-      
+
       // Tax consolidation
       { source: '/tax-filing/:path*', destination: '/tax/:path*', permanent: true },
       { source: '/tax-services/:path*', destination: '/tax/:path*', permanent: true },
       { source: '/tax-software/:path*', destination: '/tax/:path*', permanent: true },
       { source: '/vita/:path*', destination: '/tax/:path*', permanent: true },
-      
+
       // Program consolidation
       { source: '/programs-catalog/:path*', destination: '/programs/:path*', permanent: true },
       { source: '/program-finder/:path*', destination: '/programs/:path*', permanent: true },
       { source: '/compare-programs/:path*', destination: '/programs/:path*', permanent: true },
-      
+
       // Career consolidation
       { source: '/career-center/:path*', destination: '/career-services/:path*', permanent: true },
       { source: '/career-fair/:path*', destination: '/career-services/:path*', permanent: true },
-      
+
       // Partner consolidation
       { source: '/partner-with-us/:path*', destination: '/partners/:path*', permanent: true },
       { source: '/partner-application/:path*', destination: '/partners/:path*', permanent: true },
       { source: '/partner-courses/:path*', destination: '/partners/:path*', permanent: true },
       { source: '/partner-playbook/:path*', destination: '/partners/:path*', permanent: true },
-      
+
       // Auth consolidation
       { source: '/forgotpassword', destination: '/auth/forgot-password', permanent: true },
       { source: '/resetpassword', destination: '/auth/reset-password', permanent: true },
       { source: '/verifyemail', destination: '/auth/verify-email', permanent: true },
-      
+
       // Legal consolidation
       { source: '/privacy', destination: '/privacy-policy', permanent: true },
       { source: '/terms', destination: '/terms-of-service', permanent: true },
-      
+
       // Verify consolidation
       { source: '/verifycertificate/:path*', destination: '/verify/:path*', permanent: true },
-      
+
       // Misc redirects
       { source: '/for-students', destination: '/lms', permanent: true },
       { source: '/dashboards/:path*', destination: '/lms/:path*', permanent: true },
       { source: '/portals/:path*', destination: '/lms/:path*', permanent: true },
-      
+
       // Removed businesses
       { source: '/serene-comfort-care/:path*', destination: '/programs', permanent: true },
       { source: '/kingdom-konnect/:path*', destination: '/programs', permanent: true },
       { source: '/urban-build-crew/:path*', destination: '/programs', permanent: true },
       { source: '/selfish-inc/:path*', destination: '/rise-foundation/:path*', permanent: true },
-      
+
       // Removed routes
       { source: '/financial-aid/:path*', destination: '/funding/:path*', permanent: true },
       { source: '/forums/:path*', destination: '/community/:path*', permanent: true },

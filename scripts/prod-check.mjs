@@ -14,9 +14,7 @@ for (const [name, cmd] of steps) {
   process.stdout.write(`→ ${name}... `);
   try {
     execSync(cmd, { stdio: 'ignore' });
-    console.log('OK');
   } catch {
-    console.log('FAIL');
     failed = true;
   }
 }
@@ -24,5 +22,4 @@ if (failed) {
   console.error('✗ Production check failed');
   process.exit(1);
 } else {
-  console.log('✓ Production check passed');
 }

@@ -43,7 +43,7 @@ const expectedAccess = {
 // Check each route
 Object.entries(contractMap.routes).forEach(([route, data]) => {
   const { category, tables, hasOrgFilter, hasUserFilter, hasProfileFilter, file } = data;
-  
+
   if (category === 'public' || category === 'auth' || category === 'other') {
     return; // Skip public/auth routes
   }
@@ -168,13 +168,5 @@ md += `- **MEDIUM:** ${report.bySeverity.MEDIUM}\n\n`;
 
 writeFileSync('reports/cross-wiring-findings.md', md);
 
-console.log(`\n=== CROSS-WIRING DETECTION COMPLETE ===`);
-console.log(`Total findings: ${report.totalFindings}`);
-console.log(`  CRITICAL: ${report.bySeverity.CRITICAL}`);
-console.log(`  HIGH: ${report.bySeverity.HIGH}`);
-console.log(`  MEDIUM: ${report.bySeverity.MEDIUM}`);
-console.log(`\nReports saved:`);
-console.log(`  - reports/cross-wiring-findings.json`);
-console.log(`  - reports/cross-wiring-findings.md`);
 
 process.exit(report.bySeverity.CRITICAL > 0 ? 1 : 0);

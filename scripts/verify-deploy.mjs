@@ -112,7 +112,6 @@ async function main() {
   const failures = results.filter((r) => !r.ok);
   for (const r of results) {
     const status = r.ok ? r.status : r.error || r.status;
-    console.log(`${r.ok ? 'OK   ' : 'FAIL '} ${status} ${r.url}`);
   }
   if (failures.length) {
     console.error(`\n${failures.length} failing URLs`);

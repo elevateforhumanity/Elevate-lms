@@ -60,13 +60,12 @@ interface AuditResult {
   category: string;
   status: 'pass' | 'fail' | 'warning';
   message: string;
-  details?: any[];
+  details?: unknown[];
 }
 
 const results: AuditResult[] = [];
 
 async function checkTablesWithoutRLS() {
-  console.log('\n🔍 Checking tables without RLS...');
 
   const { data, error } = await supabase.rpc('exec_sql', {
     sql: `
@@ -88,8 +87,6 @@ async function checkTablesWithoutRLS() {
         AND rowsecurity = false
     `;
 
-    console.log('Query:', query);
-    console.log('Note: Run this query in Supabase SQL editor');
 
     results.push({
       category: 'RLS Enabled',
@@ -122,7 +119,6 @@ async function checkTablesWithoutRLS() {
 }
 
 async function checkPermissivePolicies() {
-  console.log('\n🔍 Checking for permissive policies...');
 
   const query = `
     SELECT tablename, policyname, qual
@@ -133,8 +129,6 @@ async function checkPermissivePolicies() {
     ORDER BY tablename, policyname;
   `;
 
-  console.log('Query:', query);
-  console.log('Note: Run this query in Supabase SQL editor');
 
   results.push({
     category: 'Permissive Policies',
@@ -149,7 +143,6 @@ async function checkPermissivePolicies() {
 }
 
 async function checkTablesWithRLSButNoPolicies() {
-  console.log('\n🔍 Checking tables with RLS but no policies...');
 
   const query = `
     SELECT t.tablename
@@ -164,8 +157,6 @@ async function checkTablesWithRLSButNoPolicies() {
     ORDER BY t.tablename;
   `;
 
-  console.log('Query:', query);
-  console.log('Note: Run this query in Supabase SQL editor');
 
   results.push({
     category: 'Missing Policies',
@@ -180,7 +171,6 @@ async function checkTablesWithRLSButNoPolicies() {
 }
 
 async function checkOrgIsolationHelpers() {
-  console.log('\n🔍 Checking org isolation helper functions...');
 
   const functions = [
     '_is_org_member',
@@ -197,8 +187,6 @@ async function checkOrgIsolationHelpers() {
     ORDER BY routine_name;
   `;
 
-  console.log('Query:', query);
-  console.log('Note: Run this query in Supabase SQL editor');
 
   results.push({
     category: 'Helper Functions',
@@ -213,9 +201,6 @@ async function checkOrgIsolationHelpers() {
 }
 
 function printResults() {
-  console.log('\n' + '='.repeat(60));
-  console.log('RLS AUDIT RESULTS');
-  console.log('='.repeat(60));
 
   const passed = results.filter((r) => r.status === 'pass').length;
   const failed = results.filter((r) => r.status === 'fail').length;
@@ -225,53 +210,26 @@ function printResults() {
     const icon =
       result.status === 'pass' ? '✅' : result.status === 'fail' ? '❌' : '⚠️';
 
-    console.log(`\n${icon} ${result.category}: ${result.message}`);
 
     if (result.details && result.details.length > 0) {
       result.details.forEach((detail) => {
-        console.log(`   ${detail}`);
       });
     }
   });
 
-  console.log('\n' + '='.repeat(60));
-  console.log('SUMMARY');
-  console.log('='.repeat(60));
-  console.log(`✅ Passed: ${passed}`);
-  console.log(`❌ Failed: ${failed}`);
-  console.log(`⚠️  Warnings: ${warnings}`);
-  console.log('');
 
   if (failed > 0) {
-    console.log('❌ RLS AUDIT FAILED');
-    console.log('\nRemediation:');
-    console.log(
       '1. Run migration: supabase/migrations/009_rls_hardening_pack.sql'
     );
-    console.log('2. Verify policies in Supabase SQL editor');
-    console.log('3. Run this script again');
-    console.log('');
     process.exit(1);
   } else if (warnings > 0) {
-    console.log('⚠️  RLS AUDIT REQUIRES MANUAL VERIFICATION');
-    console.log('\nNext steps:');
-    console.log('1. Run the SQL queries listed above in Supabase SQL editor');
-    console.log('2. Verify results match expected values');
-    console.log('3. Update this script with actual results');
-    console.log('');
     process.exit(0);
   } else {
-    console.log('✅ RLS AUDIT PASSED');
-    console.log('');
     process.exit(0);
   }
 }
 
 async function main() {
-  console.log('RLS Audit Script');
-  console.log('================');
-  console.log(`Supabase URL: ${supabaseUrl}`);
-  console.log('');
 
   await checkTablesWithoutRLS();
   await checkPermissivePolicies();

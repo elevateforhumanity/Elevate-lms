@@ -118,10 +118,8 @@ function generateRpcStub(rpcName) {
 }
 
 function main() {
-  console.log('🤖 Supabase Schema Guardian – scanning codebase...');
   const files = walk(ROOT);
 
-  console.log(`Found ${files.length} files to scan`);
 
   const allTables = new Set();
   const allRpcs = new Set();
@@ -142,11 +140,8 @@ function main() {
     rpcs.forEach((r) => allRpcs.add(r));
   }
 
-  console.log(`Detected ${allTables.size} unique tables`);
-  console.log(`Detected ${allRpcs.size} unique RPC functions`);
 
   if (allTables.size === 0 && allRpcs.size === 0) {
-    console.log('No Supabase usage detected – nothing to do.');
     return;
   }
 
@@ -173,7 +168,7 @@ function main() {
   lines.push('');
 
   const sortedTables = Array.from(allTables).sort();
-  
+
   if (allTables.size > 0) {
     lines.push('-- ============================================');
     lines.push('-- TABLE DEFINITIONS');
@@ -208,7 +203,6 @@ function main() {
   lines.push('-- ============================================');
 
   fs.writeFileSync(outFile, lines.join('\n'), 'utf8');
-  console.log(`✅ Generated schema stub file: ${outFile}`);
 
   // Create a summary file
   const summaryFile = path.join(OUTPUT_DIR, 'README.md');
@@ -270,7 +264,6 @@ function main() {
   ].join('\n');
 
   fs.writeFileSync(summaryFile, summary, 'utf8');
-  console.log(`✅ Generated summary: ${summaryFile}`);
 }
 
 main();

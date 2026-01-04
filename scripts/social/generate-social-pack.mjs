@@ -44,10 +44,6 @@ Format the output in markdown with clear sections.
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, text);
 
-  console.log("\n📦 SOCIAL PACK GENERATED:", outPath);
-  console.log("\n" + "=".repeat(60));
-  console.log("✅ Ready to use for all platforms!");
-  console.log("=".repeat(60));
 }
 
 generate().catch(err => {

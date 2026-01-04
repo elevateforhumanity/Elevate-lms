@@ -24,7 +24,7 @@ interface EnrollmentJob {
   status: string;
   attempt_count: number;
   max_attempts: number;
-  metadata: Record<string, any>;
+  metadata: Record<string, unknown>;
 }
 
 serve(async (req) => {
@@ -184,7 +184,6 @@ async function processPartnerLMSEnrollment(job: EnrollmentJob, supabase: any) {
 
   if (!partnerConfig) {
     // No partner LMS configured - skip
-    console.log(`No partner LMS for program ${enrollment.program_id}`);
     return;
   }
 
@@ -263,7 +262,6 @@ async function processPartnerLMSEnrollment(job: EnrollmentJob, supabase: any) {
     }
   }
 
-  console.log(`Partner enrollment created: ${partnerEnrollment.id}`);
 }
 
 async function processSendConfirmationEmail(job: EnrollmentJob, supabase: any) {
@@ -300,7 +298,6 @@ async function processSendConfirmationEmail(job: EnrollmentJob, supabase: any) {
     metadata: emailPayload,
   });
 
-  console.log(`Confirmation email queued for ${enrollment.profiles.email}`);
 }
 
 async function processAssignAIPolicy(job: EnrollmentJob, supabase: any) {
@@ -325,7 +322,6 @@ async function processAssignAIPolicy(job: EnrollmentJob, supabase: any) {
     .single();
 
   if (!policy) {
-    console.log(`No default AI policy for program ${enrollment.program_id}`);
     return;
   }
 
@@ -337,7 +333,6 @@ async function processAssignAIPolicy(job: EnrollmentJob, supabase: any) {
     assigned_at: new Date().toISOString(),
   });
 
-  console.log(
     `AI policy ${policy.id} assigned to learner ${enrollment.student_id}`
   );
 }
@@ -362,7 +357,6 @@ async function processInitializeMilestones(job: EnrollmentJob, supabase: any) {
     .order('sequence', { ascending: true });
 
   if (!milestones || milestones.length === 0) {
-    console.log(`No milestones defined for program ${enrollment.program_id}`);
     return;
   }
 
@@ -378,7 +372,6 @@ async function processInitializeMilestones(job: EnrollmentJob, supabase: any) {
 
   await supabase.from('learner_milestones').insert(learnerMilestones);
 
-  console.log(
     `Initialized ${learnerMilestones.length} milestones for enrollment ${enrollment.id}`
   );
 }
@@ -403,7 +396,6 @@ async function surfaceFailureToStaff(
     created_at: new Date().toISOString(),
   });
 
-  console.log(`Failure surfaced to staff for job ${job.id}`);
 }
 
 function getRetryDelay(attemptCount: number): number {

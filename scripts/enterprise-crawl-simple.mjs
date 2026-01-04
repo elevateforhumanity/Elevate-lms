@@ -148,9 +148,5 @@ fs.writeFileSync(
   `User-agent: *\nAllow: /\nSitemap: ${BASE}/sitemap_index.xml\n`
 );
 
-console.log(
   `Enterprise sitemaps created: ${urlObjects.length} URLs in ${masterEntries.length} files.`
 );
-console.log(`Month-based partitioning: ${CURRENT_MONTH}`);
-console.log(`Chunk size: ${CHUNK} URLs per file`);
-console.log(`Output: ${OUTROOT}/sitemap_index.xml + ${OUT}/`);

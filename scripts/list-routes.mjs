@@ -35,4 +35,3 @@ function walk(dir, prefix = "") {
 walk(appDir);
 
 const unique = Array.from(new Set(routes)).sort();
-console.log(JSON.stringify(unique, null, 2));

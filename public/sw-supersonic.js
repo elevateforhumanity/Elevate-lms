@@ -17,7 +17,6 @@ const PRECACHE_ASSETS = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[SW] Precaching assets');
       return cache.addAll(PRECACHE_ASSETS);
     })
   );
@@ -114,7 +113,7 @@ async function syncTaxReturn() {
   // Get pending tax returns from IndexedDB
   const db = await openDB();
   const pending = await db.getAll('pending-returns');
-  
+
   for (const taxReturn of pending) {
     try {
       const response = await fetch('/api/supersonic-fast-cash/diy/tax-return', {
@@ -122,7 +121,7 @@ async function syncTaxReturn() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(taxReturn.data),
       });
-      
+
       if (response.ok) {
         await db.delete('pending-returns', taxReturn.id);
         // Notify user of success
@@ -142,19 +141,19 @@ async function syncDocuments() {
   // Sync uploaded documents
   const db = await openDB();
   const pending = await db.getAll('pending-documents');
-  
+
   for (const doc of pending) {
     try {
       const formData = new FormData();
       formData.append('file', doc.file);
       formData.append('email', doc.email);
       formData.append('phone', doc.phone);
-      
+
       const response = await fetch('/api/tax/upload', {
         method: 'POST',
         body: formData,
       });
-      
+
       if (response.ok) {
         await db.delete('pending-documents', doc.id);
       }
@@ -167,7 +166,7 @@ async function syncDocuments() {
 // Push notifications
 self.addEventListener('push', (event) => {
   const data = event.data ? event.data.json() : {};
-  
+
   const options = {
     body: data.body || 'You have a new notification',
     icon: '/icon-192.png',
@@ -187,7 +186,7 @@ self.addEventListener('push', (event) => {
       },
     ],
   };
-  
+
   event.waitUntil(
     self.registration.showNotification(data.title || 'SupersonicFastCash', options)
   );
@@ -196,7 +195,7 @@ self.addEventListener('push', (event) => {
 // Notification click
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  
+
   if (event.action === 'open' || !event.action) {
     const url = event.notification.data.url;
     event.waitUntil(
@@ -209,10 +208,10 @@ self.addEventListener('notificationclick', (event) => {
 function openDB() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open('supersonic-db', 1);
-    
+
     request.onerror = () => reject(request.error);
     request.onsuccess = () => resolve(request.result);
-    
+
     request.onupgradeneeded = (event) => {
       const db = event.target.result;
       if (!db.objectStoreNames.contains('pending-returns')) {

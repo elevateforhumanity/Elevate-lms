@@ -249,7 +249,6 @@ async function sendBNPLPaymentConfirmation(
     `Payment confirmation: ${subscription.customer_email}, installment ${installmentNumber}, $${amount}`
   );
 
-  // TODO: Integrate with your email service
   // Example: SendGrid, Mailgun, or custom email system
 }
 
@@ -258,7 +257,6 @@ async function sendBNPLPaymentFailure(subscription, attemptCount) {
     `Payment failure: ${subscription.customer_email}, attempt ${attemptCount}`
   );
 
-  // TODO: Integrate with your email service for dunning management
 }
 
 module.exports = router;

@@ -228,11 +228,11 @@ async function sendLicenseEmail(email, name, licenses, session) {
     <h1>🚀 Your Elevate Platform Purchase</h1>
     <p>Thank you for your order! Your licenses are ready.</p>
   </div>
-  
+
   <div class="content">
     <h2>Hello ${name}!</h2>
     <p>Your payment of <strong>$${totalAmount}</strong> has been processed successfully. Here are your license details and download links:</p>
-    
+
     ${licenses
       .map(
         (license) => `
@@ -240,10 +240,10 @@ async function sendLicenseEmail(email, name, licenses, session) {
         <h3>📦 ${license.product}</h3>
         <p><strong>License Key:</strong></p>
         <div class="license-key">${license.key}</div>
-        
+
         <p><strong>License Type:</strong> ${license.licenseType.replace('_', ' ').toUpperCase()}</p>
         ${license.expiresAt ? `<p><strong>Expires:</strong> ${license.expiresAt.toDateString()}</p>` : '<p><strong>License:</strong> Lifetime</p>'}
-        
+
         <p><strong>Download Files:</strong></p>
         ${license.files
           .map((file) => {
@@ -255,7 +255,7 @@ async function sendLicenseEmail(email, name, licenses, session) {
     `
       )
       .join('')}
-    
+
     <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 1rem; border-radius: 5px; margin: 2rem 0;">
       <h4>🔐 Important License Information:</h4>
       <ul>
@@ -265,7 +265,7 @@ async function sendLicenseEmail(email, name, licenses, session) {
         <li>Include your license key in any support requests</li>
       </ul>
     </div>
-    
+
     <h3>🎯 Next Steps:</h3>
     <ol>
       <li>Download your files using the links above</li>
@@ -274,7 +274,7 @@ async function sendLicenseEmail(email, name, licenses, session) {
       <li>Join our community: <a href="https://discord.gg/elevate">Discord Support</a></li>
     </ol>
   </div>
-  
+
   <div class="footer">
     <p>© 2024 Selfish Inc. DBA Rise Foundation | Licensed Use Only</p>
     <p>Need help? Reply to this email or contact support@elevateforhumanity.com</p>

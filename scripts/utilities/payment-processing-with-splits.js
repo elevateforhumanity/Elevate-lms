@@ -168,7 +168,7 @@ class PaymentProcessor {
 
     const emailContent = `
       <h2>New Student Enrollment - Payment Processed</h2>
-      
+
       <h3>Program Details:</h3>
       <ul>
         <li><strong>Program:</strong> ${program.name}</li>
@@ -176,13 +176,13 @@ class PaymentProcessor {
         <li><strong>Email:</strong> ${customer_email}</li>
         <li><strong>Payment ID:</strong> ${payment_intent_id}</li>
       </ul>
-      
+
       <h3>Revenue Information:</h3>
       <ul>
         <li><strong>Your Share (50%):</strong> $${partner_amount / 100}</li>
         <li><strong>Status:</strong> Funds transferred to your account</li>
       </ul>
-      
+
       <h3>Next Steps:</h3>
       <p>Please provide course access to the student within 24 hours:</p>
       <ol>
@@ -190,9 +190,9 @@ class PaymentProcessor {
         <li>Send welcome email with login credentials</li>
         <li>Provide course materials and schedule</li>
       </ol>
-      
+
       <p><strong>Student Contact:</strong> ${customer_email}</p>
-      
+
       <hr>
       <p><small>This notification was sent automatically by the Elevate for Humanity partner system.</small></p>
     `;
@@ -229,11 +229,11 @@ class PaymentProcessor {
 
     const emailContent = `
       <h2>Welcome to ${program.name}!</h2>
-      
+
       <p>Dear ${customer_name},</p>
-      
+
       <p>Thank you for enrolling in <strong>${program.name}</strong>. Your payment has been processed successfully.</p>
-      
+
       <h3>Program Information:</h3>
       <ul>
         <li><strong>Program:</strong> ${program.name}</li>
@@ -241,7 +241,7 @@ class PaymentProcessor {
         <li><strong>Duration:</strong> ${program.hours} hours</li>
         ${program.certification ? '<li><strong>Certification:</strong> Yes</li>' : ''}
       </ul>
-      
+
       <h3>Next Steps:</h3>
       <p>Our training partner will contact you within 24 hours with:</p>
       <ol>
@@ -250,19 +250,19 @@ class PaymentProcessor {
         <li>Technical requirements</li>
         <li>Support contact information</li>
       </ol>
-      
+
       <h3>Support:</h3>
       <p>If you have any questions, please contact:</p>
       <ul>
         <li><strong>Training Partner:</strong> ${partner.supportEmail}</li>
         <li><strong>Platform Support:</strong> support@elevateforhumanity.org</li>
       </ul>
-      
+
       <p>We're excited to support your professional development journey!</p>
-      
+
       <p>Best regards,<br>
       The Elevate for Humanity Team</p>
-      
+
       <hr>
       <p><small>This is an automated confirmation. Please save this email for your records.</small></p>
     `;

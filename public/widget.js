@@ -120,7 +120,7 @@
       };
 
       container.innerHTML = `
-        <a href="${CONFIG.baseUrl}/${page}" 
+        <a href="${CONFIG.baseUrl}/${page}"
            target="_blank"
            rel="noopener noreferrer"
            class="efh-cta-button"
@@ -152,7 +152,7 @@
       const width = options.width || '100%';
 
       container.innerHTML = `
-        <iframe 
+        <iframe
           src="${CONFIG.baseUrl}/${page}"
           style="
             width: ${width};
@@ -208,7 +208,7 @@
       const linksHtml = links
         .map(
           (link) => `
-        <a href="${CONFIG.baseUrl}/${link.url}" 
+        <a href="${CONFIG.baseUrl}/${link.url}"
            target="_blank"
            rel="noopener noreferrer"
            style="

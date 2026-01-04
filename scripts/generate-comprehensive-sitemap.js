@@ -79,7 +79,7 @@ function generateSitemap() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Generated automatically for www.elevateforhumanity.org -->
   <!-- Last updated: ${currentDate} -->
-  
+
 `;
 
   // Add each page
@@ -94,7 +94,7 @@ function generateSitemap() {
     <changefreq>${config.changefreq}</changefreq>
     <priority>${config.priority}</priority>
   </url>
-  
+
 `;
   });
 
@@ -106,14 +106,14 @@ function generateSitemap() {
     <changefreq>hourly</changefreq>
     <priority>0.3</priority>
   </url>
-  
+
   <url>
     <loc>${CANONICAL_DOMAIN}/api/metrics</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.3</priority>
   </url>
-  
+
 `;
 
   sitemap += `</urlset>`;

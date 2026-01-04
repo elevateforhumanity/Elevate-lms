@@ -38,21 +38,20 @@ ${blogText}
 
 async function main() {
   const blogDir = path.join(process.cwd(), "content", "blog");
-  
+
   if (!fs.existsSync(blogDir)) {
     console.error("❌ Blog directory not found. Create a blog post first.");
     process.exit(1);
   }
 
   const files = fs.readdirSync(blogDir).filter(f => f.endsWith(".md")).sort().reverse();
-  
+
   if (files.length === 0) {
     console.error("❌ No blog posts found. Create a blog post first.");
     process.exit(1);
   }
 
   const latest = files[0];
-  console.log(`\n🎬 Converting blog to reel: ${latest}`);
 
   const blogText = fs.readFileSync(path.join(blogDir, latest), "utf8");
   const reelScript = await generateReel(blogText);
@@ -63,10 +62,6 @@ async function main() {
   const outPath = path.join(outputDir, latest.replace(".md", "-reel.md"));
   fs.writeFileSync(outPath, reelScript);
 
-  console.log("✅ Viral reel script created:", outPath);
-  console.log("\n" + "=".repeat(60));
-  console.log("🎥 Ready for HeyGen, Synthesia, or D-ID!");
-  console.log("=".repeat(60));
 }
 
 main().catch(err => {

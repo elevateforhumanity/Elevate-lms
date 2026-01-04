@@ -23,10 +23,6 @@ export const heroVideos = {
   trainingProviders: '/videos/training-providers-video-with-narration.mp4',
 
   // Fallback for missing videos - use homepage hero
-  business: '/videos/hero-home.mp4', // TODO: Add business-hero-final.mp4
-  cpr: '/videos/hero-home.mp4', // TODO: Add cpr-hero.mp4
-  medicalAssistant: '/videos/hero-home.mp4', // TODO: Add medical-assistant-hero.mp4
-  buildingTech: '/videos/hero-home.mp4', // TODO: Add building-technician-hero.mp4
 };
 
 // Current homepage hero video

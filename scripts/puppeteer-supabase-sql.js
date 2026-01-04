@@ -2,7 +2,7 @@
 
 /**
  * Puppeteer Automation: Supabase SQL Execution
- * 
+ *
  * Logs into Supabase and executes SQL from a file
  */
 
@@ -51,26 +51,26 @@ async function runSupabaseSQL() {
     const currentUrl = page.url();
     if (currentUrl.includes('/projects')) {
     } else {
-      
+
       // Click "Sign in with GitHub" button
       await page.waitForSelector('button:has-text("GitHub"), a:has-text("GitHub")', { timeout: 10000 });
       await page.click('button:has-text("GitHub"), a:has-text("GitHub")');
-      
+
       // Wait for GitHub login page
       await page.waitForNavigation({ waitUntil: 'networkidle2' });
-      
+
       if (page.url().includes('github.com')) {
-        
+
         // Fill in GitHub username
         await page.waitForSelector('input[name="login"]', { timeout: 10000 });
         await page.type('input[name="login"]', GITHUB_USERNAME);
-        
+
         // Fill in GitHub password
         await page.type('input[name="password"]', GITHUB_PASSWORD);
-        
+
         // Click sign in
         await page.click('input[type="submit"]');
-        
+
         // Wait for redirect back to Supabase
         await page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 });
       } else {
@@ -86,19 +86,19 @@ async function runSupabaseSQL() {
     await page.waitForTimeout(2000); // Give Monaco editor time to initialize
 
     // Clear existing content and paste SQL
-    
+
     // Click in the editor
     await page.click('.monaco-editor');
-    
+
     // Select all and delete
     await page.keyboard.down('Control');
     await page.keyboard.press('A');
     await page.keyboard.up('Control');
     await page.keyboard.press('Backspace');
-    
+
     // Type the SQL (Monaco editor requires typing, not paste)
     await page.keyboard.type(sqlContent, { delay: 0 });
-    
+
 
     // Find and click Run button
     await page.waitForSelector('button:has-text("Run")', { timeout: 10000 });
@@ -109,7 +109,7 @@ async function runSupabaseSQL() {
 
     // Check for success or error
     const pageContent = await page.content();
-    
+
     if (pageContent.includes('Success') || pageContent.includes('completed')) {
     } else if (pageContent.includes('error') || pageContent.includes('Error')) {
     } else {
@@ -122,14 +122,14 @@ async function runSupabaseSQL() {
 
   } catch (error) {
     console.error('❌ Error:', error.message);
-    
+
     // Take error screenshot
     try {
       const errorScreenshot = path.join(process.cwd(), 'supabase-error.png');
       // eslint-disable-next-line no-undef
       await page.screenshot({ path: errorScreenshot, fullPage: true });
     } catch (e) {}
-    
+
     throw error;
   } finally {
     await browser.close();

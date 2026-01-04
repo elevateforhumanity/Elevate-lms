@@ -5,7 +5,6 @@
 
 import fs from 'fs';
 
-console.log('🔍 Production Readiness Verification\n');
 
 const allChecks = [];
 let passedChecks = 0;
@@ -13,10 +12,8 @@ let passedChecks = 0;
 function check(name, condition, message = '') {
   allChecks.push({ name, passed: condition, message });
   if (condition) {
-    console.log(`✅ ${name}`);
     passedChecks++;
   } else {
-    console.log(`❌ ${name}${message ? ': ' + message : ''}`);
   }
 }
 
@@ -112,20 +109,15 @@ async function runChecks() {
   }
 
   // Summary
-  console.log(
     `\n📊 Summary: ${passedChecks}/${allChecks.length} checks passed`
   );
 
   if (passedChecks === allChecks.length) {
-    console.log('🎉 System is production-ready!');
     process.exit(0);
   } else {
-    console.log('⚠️  Some checks failed. Review the items above.');
-    console.log('\nFailed checks:');
     allChecks
       .filter((c) => !c.passed)
       .forEach((c) => {
-        console.log(`  - ${c.name}${c.message ? ': ' + c.message : ''}`);
       });
     process.exit(1);
   }

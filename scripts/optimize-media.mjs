@@ -2,7 +2,7 @@
 
 /**
  * Media Optimization Script
- * 
+ *
  * Scans and optimizes all images and videos before deployment
  * Enforces quality standards and prevents low-quality media
  */
@@ -40,11 +40,11 @@ async function checkImageQuality(filePath) {
     // Use ImageMagick identify command
     const output = execSync(`identify -format "%w %h %b" "${filePath}"`, { encoding: 'utf-8' });
     const [width, height, sizeStr] = output.trim().split(' ');
-    
+
     const w = parseInt(width);
     const h = parseInt(height);
     const size = parseSizeString(sizeStr);
-    
+
     // Determine image type by path
     let standard;
     if (filePath.includes('/heroes/')) {
@@ -54,7 +54,7 @@ async function checkImageQuality(filePath) {
     } else {
       standard = STANDARDS.images.thumbnail;
     }
-    
+
     // Check resolution
     if (w < standard.minWidth || h < standard.minHeight) {
       issues.lowResolution.push({
@@ -64,7 +64,7 @@ async function checkImageQuality(filePath) {
         size: formatSize(size)
       });
     }
-    
+
     // Check file size
     if (size > standard.maxSize) {
       issues.oversized.push({
@@ -74,7 +74,7 @@ async function checkImageQuality(filePath) {
         needsCompression: true
       });
     }
-    
+
     return { width: w, height: h, size };
   } catch (error) {
     console.error(`Error checking ${filePath}:`, error.message);
@@ -89,11 +89,11 @@ async function checkVideoQuality(filePath) {
       `ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of csv=p=0 "${filePath}"`,
       { encoding: 'utf-8' }
     );
-    
+
     const [width, height] = output.trim().split(',').map(Number);
     const stats = await stat(filePath);
     const size = stats.size;
-    
+
     if (width < STANDARDS.videos.minWidth || height < STANDARDS.videos.minHeight) {
       issues.lowResolution.push({
         file: filePath,
@@ -102,7 +102,7 @@ async function checkVideoQuality(filePath) {
         size: formatSize(size)
       });
     }
-    
+
     if (size > STANDARDS.videos.maxSize) {
       issues.oversized.push({
         file: filePath,
@@ -111,7 +111,7 @@ async function checkVideoQuality(filePath) {
         needsCompression: true
       });
     }
-    
+
     return { width, height, size };
   } catch (error) {
     console.error(`Error checking ${filePath}:`, error.message);
@@ -123,7 +123,7 @@ async function checkAudioQuality(filePath) {
   try {
     const stats = await stat(filePath);
     const size = stats.size;
-    
+
     // Check if it's a robotic TTS file (usually very small)
     if (filePath.includes('robot') || filePath.includes('tts')) {
       issues.wrongFormat.push({
@@ -131,7 +131,7 @@ async function checkAudioQuality(filePath) {
         reason: 'Robotic TTS file detected - only professional voiceovers allowed'
       });
     }
-    
+
     if (size > STANDARDS.audio.maxSize) {
       issues.oversized.push({
         file: filePath,
@@ -140,7 +140,7 @@ async function checkAudioQuality(filePath) {
         needsCompression: true
       });
     }
-    
+
     return { size };
   } catch (error) {
     console.error(`Error checking ${filePath}:`, error.message);
@@ -151,10 +151,10 @@ async function checkAudioQuality(filePath) {
 async function scanDirectory(dir, fileHandler) {
   try {
     const entries = await readdir(dir, { withFileTypes: true });
-    
+
     for (const entry of entries) {
       const fullPath = join(dir, entry.name);
-      
+
       if (entry.isDirectory()) {
         await scanDirectory(fullPath, fileHandler);
       } else {
@@ -169,17 +169,17 @@ async function scanDirectory(dir, fileHandler) {
 function parseSizeString(sizeStr) {
   const match = sizeStr.match(/^([\d.]+)([KMGT]?B?)$/i);
   if (!match) return 0;
-  
+
   const value = parseFloat(match[1]);
   const unit = match[2].toUpperCase();
-  
+
   const multipliers = {
     'B': 1,
     'KB': 1024,
     'MB': 1024 * 1024,
     'GB': 1024 * 1024 * 1024,
   };
-  
+
   return value * (multipliers[unit] || 1);
 }
 
@@ -191,78 +191,54 @@ function formatSize(bytes) {
 }
 
 async function main() {
-  console.log('🔍 Scanning media files for quality issues...\n');
-  
+
   // Check images
-  console.log('📸 Checking images...');
   await scanDirectory('public/images', async (filePath, fileName) => {
     if (fileName.match(/\.(jpg|jpeg|png|webp)$/i)) {
       await checkImageQuality(filePath);
     }
   });
-  
+
   // Check videos
-  console.log('🎥 Checking videos...');
   await scanDirectory('public/videos', async (filePath, fileName) => {
     if (fileName.match(/\.(mp4|webm|mov)$/i)) {
       await checkVideoQuality(filePath);
     }
   });
-  
+
   // Check audio
-  console.log('🎵 Checking audio...');
   await scanDirectory('public/videos', async (filePath, fileName) => {
     if (fileName.match(/\.(mp3|wav|ogg)$/i)) {
       await checkAudioQuality(filePath);
     }
   });
-  
+
   // Report results
-  console.log('\n📊 QUALITY REPORT\n');
-  console.log('='.repeat(70));
-  
+
   if (issues.lowResolution.length > 0) {
-    console.log(`\n❌ LOW RESOLUTION (${issues.lowResolution.length} files):`);
     issues.lowResolution.forEach(item => {
-      console.log(`  ${item.file}`);
-      console.log(`    Current: ${item.current} | Required: ${item.required}`);
     });
   }
-  
+
   if (issues.oversized.length > 0) {
-    console.log(`\n⚠️  OVERSIZED (${issues.oversized.length} files):`);
     issues.oversized.forEach(item => {
-      console.log(`  ${item.file}`);
-      console.log(`    Size: ${item.size} | Max: ${item.maxSize}`);
-      console.log(`    Action: Compress before deployment`);
     });
   }
-  
+
   if (issues.wrongFormat.length > 0) {
-    console.log(`\n🚫 WRONG FORMAT (${issues.wrongFormat.length} files):`);
     issues.wrongFormat.forEach(item => {
-      console.log(`  ${item.file}`);
-      console.log(`    Reason: ${item.reason}`);
     });
   }
-  
-  const totalIssues = 
-    issues.lowResolution.length + 
-    issues.oversized.length + 
+
+  const totalIssues =
+    issues.lowResolution.length +
+    issues.oversized.length +
     issues.wrongFormat.length;
-  
-  console.log('\n' + '='.repeat(70));
-  
+
+
   if (totalIssues === 0) {
-    console.log('\n✅ All media files meet quality standards!');
     process.exit(0);
   } else {
-    console.log(`\n❌ Found ${totalIssues} quality issues`);
-    console.log('\n🔧 ACTIONS REQUIRED:');
-    console.log('  1. Replace low-resolution images with higher quality versions');
-    console.log('  2. Compress oversized files using ImageOptim or similar');
-    console.log('  3. Remove robotic TTS files - use professional voiceovers only');
-    console.log('\nSee MEDIA_QUALITY_STANDARDS.md for detailed requirements.');
     process.exit(1);
   }
 }

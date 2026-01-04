@@ -65,7 +65,7 @@ export const mediaConfig: MediaConfigItem[] = [
     alt: "Employer and Elevate staff shaking hands, symbolizing partnership",
     category: "homepage"
   },
-  
+
   // Healthcare Programs
   {
     slot: "program_cna_hero",
@@ -79,7 +79,7 @@ export const mediaConfig: MediaConfigItem[] = [
     alt: "Medical assistant in clinical setting with patient",
     category: "healthcare"
   },
-  
+
   // Beauty & Personal Care
   {
     slot: "program_barber_hero",
@@ -87,7 +87,7 @@ export const mediaConfig: MediaConfigItem[] = [
     alt: "Barber apprentice cutting hair in modern barbershop",
     category: "beauty"
   },
-  
+
   // Skilled Trades
   {
     slot: "program_hvac_hero",
@@ -113,7 +113,7 @@ export const mediaConfig: MediaConfigItem[] = [
     alt: "Building maintenance technician at work",
     category: "trades"
   },
-  
+
   // Transportation
   {
     slot: "program_cdl_hero",
@@ -121,7 +121,7 @@ export const mediaConfig: MediaConfigItem[] = [
     alt: "CDL student standing proudly in front of commercial truck",
     category: "transportation"
   },
-  
+
   // Business & Tax
   {
     slot: "program_tax_hero",
@@ -135,7 +135,7 @@ export const mediaConfig: MediaConfigItem[] = [
     alt: "IT professional working at computer workstation",
     category: "business"
   },
-  
+
   // Culinary
   {
     slot: "program_culinary_hero",
@@ -143,7 +143,7 @@ export const mediaConfig: MediaConfigItem[] = [
     alt: "Chef preparing food in professional kitchen",
     category: "culinary"
   },
-  
+
   // Training Modules
   {
     slot: "training_cpr",

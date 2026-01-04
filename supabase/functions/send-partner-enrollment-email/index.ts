@@ -153,7 +153,7 @@ async function sendEmail(body: RequestBody): Promise<Response> {
         { status: 200, headers: { "Content-Type": "application/json" } },
       );
     }
-    
+
     const errText = await sgRes.text();
     console.error("SendGrid error:", sgRes.status, errText);
   }

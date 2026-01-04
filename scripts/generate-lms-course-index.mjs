@@ -87,4 +87,3 @@ lines.push(`}`);
 lines.push(``);
 
 fs.writeFileSync(OUT_FILE, lines.join("\n"), "utf8");
-console.log(`✅ Generated ${path.relative(ROOT, OUT_FILE)} with ${exports.length} courses.`);

@@ -268,9 +268,9 @@ async function sendCaseManagerEmail({
     <p><strong>Program:</strong> ${program_slug}</p>
     ${voucher_id ? `<p><strong>Voucher ID:</strong> ${voucher_id}</p>` : ''}
     ${funding_source ? `<p><strong>Funding Source:</strong> ${funding_source}</p>` : ''}
-    
+
     <p>Please review and approve or decline this enrollment request:</p>
-    
+
     <p>
       <a href="${approveUrl}" style="background:#28a745;color:white;padding:10px 20px;text-decoration:none;border-radius:5px">
         ✅ APPROVE ENROLLMENT
@@ -280,11 +280,10 @@ async function sendCaseManagerEmail({
         ❌ DECLINE
       </a>
     </p>
-    
+
     <p><small>This link expires in 72 hours.</small></p>
   `;
 
-  // TODO: Replace with your email provider
 
   // Example with fetch to email service:
   /*

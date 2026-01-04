@@ -206,7 +206,6 @@ for (const ping of [
 ]) {
   try {
     const r = await fetch(ping);
-    console.log('Ping', ping, r.status);
   } catch (e) {
     console.warn('Ping failed', ping, e.message);
   }
@@ -227,12 +226,10 @@ if (INDEXNOW) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-    console.log('IndexNow', r.status);
   } catch (e) {
     console.warn('IndexNow failed:', e.message);
   }
 }
 
-console.log(
   `Crawled ${all.length} good pages. Wrote ${masterEntries.length} sitemap files + master index.`
 );

@@ -4,7 +4,6 @@
  * Runs every 5 minutes via cron
  */
 
-// import { OpenLMSService } from '../src/services/openLmsService'; // TODO: Fix path or create service
 import { createClient } from '@supabase/supabase-js';
 import axios from 'axios';
 

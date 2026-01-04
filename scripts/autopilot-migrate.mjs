@@ -91,7 +91,6 @@ async function tableExists(tableName) {
  * Verify all tables exist
  */
 async function verifyTables() {
-  console.log('\n🔍 Verifying tables...');
 
   const results = await Promise.all(
     EXPECTED_TABLES.map(async (table) => {
@@ -103,7 +102,6 @@ async function verifyTables() {
   const missing = results.filter((r) => !r.exists);
 
   if (missing.length === 0) {
-    console.log(`✅ All ${EXPECTED_TABLES.length} tables verified`);
     return true;
   } else {
     console.error(`❌ Missing ${missing.length} tables:`);
@@ -116,7 +114,6 @@ async function verifyTables() {
  * Check RLS status
  */
 async function checkRLS() {
-  console.log('\n🔒 Checking RLS status...');
 
   try {
     // Try to query a protected table without auth
@@ -132,14 +129,11 @@ async function checkRLS() {
     );
 
     if (response.ok) {
-      console.log('✅ RLS policies active');
       return true;
     } else {
-      console.log('⚠️  RLS status unclear');
       return true; // Don't fail on this
     }
   } catch (err) {
-    console.log('⚠️  Could not verify RLS');
     return true; // Don't fail on this
   }
 }
@@ -148,23 +142,11 @@ async function checkRLS() {
  * Main autopilot function
  */
 async function runAutopilot() {
-  console.log('🤖 Supabase Autopilot Starting...\n');
-  console.log(`📍 Project: ${SUPABASE_URL}`);
 
   // Check if migrations already applied
-  console.log('🔍 Checking database status...\n');
   const tablesOk = await verifyTables();
 
   if (tablesOk) {
-    console.log('\n' + '='.repeat(70));
-    console.log('✅ DATABASE ALREADY CONFIGURED!');
-    console.log('   All 16 tables exist');
-    console.log('   Your LMS database is ready to use!');
-    console.log('='.repeat(70));
-    console.log('\n📚 Next steps:');
-    console.log('   1. Add your first course: see QUICK_START_ADD_COURSE.md');
-    console.log('   2. Test enrollment: go to /programs on your site');
-    console.log(
       '   3. View dashboard: https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk'
     );
     process.exit(0);
@@ -175,37 +157,14 @@ async function runAutopilot() {
     SUPABASE_URL.match(/https:\/\/([^.]+)\.supabase\.co/)?.[1] ||
     'cuxzzpsyufcewtmicszk';
 
-  console.log('\n' + '='.repeat(70));
-  console.log('📋 MIGRATIONS NEED TO BE APPLIED');
-  console.log('='.repeat(70));
-  console.log('\n🤖 AUTOPILOT CAN HELP!');
-  console.log('\n🚀 Quick Setup (2 minutes):');
-  console.log('\n1. Open Supabase SQL Editor:');
-  console.log(
     `   https://supabase.com/dashboard/project/${projectRef}/sql/new`
   );
-  console.log('\n2. Copy the migration file:');
-  console.log(`   ${ALL_IN_ONE_FILE}`);
-  console.log('\n3. Paste into Supabase SQL Editor');
-  console.log('\n4. Click "Run" button');
-  console.log('\n5. Wait for completion (5-10 seconds)');
-  console.log('\n6. Run this command again to verify:');
-  console.log('   pnpm autopilot:migrate');
-  console.log('\n' + '='.repeat(70));
-  console.log('\n💡 AUTOMATED HELPER:');
-  console.log('   Run: node scripts/autopilot-apply-now.mjs');
-  console.log('   (Opens SQL Editor + shows instructions)');
-  console.log('\n💡 ADVANCED (requires psql):');
-  console.log('   bash scripts/autopilot_migrate.sh "YOUR_DB_URL"');
-  console.log('\n📚 Full guide: see AUTOPILOT_SETUP_GUIDE.md');
-  console.log('='.repeat(70));
 
   // Try to open browser automatically
   try {
     const { exec } = await import('child_process');
     const url = `https://supabase.com/dashboard/project/${projectRef}/sql/new`;
 
-    console.log('\n🌐 Opening Supabase SQL Editor in your browser...');
 
     const command =
       process.platform === 'darwin'
@@ -216,10 +175,7 @@ async function runAutopilot() {
 
     exec(`${command} "${url}"`, (error) => {
       if (!error) {
-        console.log('✅ Browser opened! Follow the instructions above.\n');
       } else {
-        console.log('⚠️  Could not open browser automatically.');
-        console.log(`   Please open this URL manually: ${url}\n`);
       }
     });
   } catch (err) {

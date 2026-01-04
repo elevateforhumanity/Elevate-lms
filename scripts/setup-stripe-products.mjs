@@ -156,8 +156,7 @@ const PROGRAMS = [
 ];
 
 async function createProduct(programData) {
-  console.log(`\n📦 Creating product: ${programData.name}`);
-  
+
   try {
     // Create Stripe product
     const product = await stripe.products.create({
@@ -170,8 +169,6 @@ async function createProduct(programData) {
       },
     });
 
-    console.log(`✅ Product created: ${product.id}`);
-    console.log(`   Default price: ${product.default_price}`);
 
     // Create additional payment plan prices
     const prices = [];
@@ -209,7 +206,6 @@ async function createProduct(programData) {
         installments: plan.installments,
       });
 
-      console.log(`   💳 Payment plan created: ${plan.name} - ${price.id}`);
     }
 
     return {
@@ -224,8 +220,6 @@ async function createProduct(programData) {
 }
 
 async function main() {
-  console.log('🚀 Setting up Stripe products for Elevate for Humanity\n');
-  console.log('=' .repeat(70));
 
   if (!process.env.STRIPE_SECRET_KEY) {
     console.error('❌ STRIPE_SECRET_KEY not found in environment variables');
@@ -248,17 +242,7 @@ async function main() {
     }
   }
 
-  console.log('\n' + '='.repeat(70));
-  console.log('\n✅ Setup complete!\n');
-  console.log('📋 Product Summary:');
-  console.log(JSON.stringify(results, null, 2));
 
-  console.log('\n💡 Next steps:');
-  console.log('1. Save these product IDs in your database');
-  console.log('2. Update your .env.local with product IDs if needed');
-  console.log('3. Test checkout flow with test card: 4242 4242 4242 4242');
-  console.log('\n🔗 View products in Stripe Dashboard:');
-  console.log('   https://dashboard.stripe.com/products\n');
 }
 
 main().catch(console.error);

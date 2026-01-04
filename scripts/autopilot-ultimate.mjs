@@ -40,7 +40,6 @@ try {
 
 const projectRef = SUPABASE_URL?.match(/https:\/\/([^.]+)\.supabase\.co/)?.[1];
 
-console.log('🤖 ULTIMATE AUTOPILOT - Full Automation Mode\n');
 
 // Check if tables exist
 async function checkTables() {
@@ -76,24 +75,13 @@ async function checkTables() {
 }
 
 async function main() {
-  console.log('📊 Checking database status...\n');
 
   const tablesExist = await checkTables();
 
   if (tablesExist) {
-    console.log('✅ DATABASE ALREADY CONFIGURED!\n');
-    console.log('All tables exist. Your LMS is ready!\n');
-    console.log('🎓 Next: Visit /programs to see your courses\n');
     process.exit(0);
   }
 
-  console.log('⚠️  Database needs setup\n');
-  console.log('🤖 AUTOPILOT SOLUTION:\n');
-  console.log("I've created a ONE-FILE setup that includes:");
-  console.log('  ✅ All database tables');
-  console.log('  ✅ All security policies');
-  console.log('  ✅ IRS VITA course (8 lessons)');
-  console.log('  ✅ Everything ready to go\n');
 
   // Create combined setup file
   const migrationsFile = join(
@@ -130,8 +118,6 @@ ${vita}
 
     writeFileSync(outputFile, combined);
 
-    console.log('✅ Created: COMPLETE_SETUP.sql\n');
-    console.log('📏 File size:', combined.split('\n').length, 'lines\n');
   } catch (err) {
     console.error('❌ Error creating setup file:', err.message);
     process.exit(1);
@@ -140,9 +126,6 @@ ${vita}
   // Try to open in browser
   const dashboardUrl = `https://supabase.com/dashboard/project/${projectRef}/sql/new`;
 
-  console.log('🌐 AUTOPILOT ACTIONS:\n');
-  console.log('1. ✅ Created complete setup file');
-  console.log('2. 🌐 Opening Supabase SQL Editor...\n');
 
   try {
     const command =
@@ -153,33 +136,16 @@ ${vita}
           : 'xdg-open';
 
     await execAsync(`${command} "${dashboardUrl}"`);
-    console.log('✅ Browser opened!\n');
   } catch {
-    console.log('⚠️  Could not open browser automatically\n');
-    console.log('📋 Manual step: Open this URL:');
-    console.log(`   ${dashboardUrl}\n`);
   }
 
   // Try to open file in editor
-  console.log('3. 📝 Opening setup file in editor...\n');
 
   try {
     await execAsync(`code "${outputFile}"`);
-    console.log('✅ File opened in VS Code!\n');
   } catch {
-    console.log('⚠️  Could not open in VS Code\n');
-    console.log('📋 File location: COMPLETE_SETUP.sql\n');
   }
 
-  console.log('='.repeat(70));
-  console.log('🎯 FINAL STEP (One-time only):');
-  console.log('='.repeat(70));
-  console.log('\n1. Copy ALL contents from: COMPLETE_SETUP.sql');
-  console.log('2. Paste into Supabase SQL Editor (already open)');
-  console.log('3. Click "Run" button');
-  console.log('4. Wait 10 seconds');
-  console.log('\n✅ After this ONE-TIME step, autopilot handles everything!\n');
-  console.log('Verify with: pnpm autopilot:migrate\n');
 
   // Create a reminder file
   const reminderFile = join(__dirname, '..', 'AUTOPILOT_REMINDER.txt');
@@ -216,7 +182,6 @@ Should show: ✅ DATABASE ALREADY CONFIGURED!
 `
   );
 
-  console.log('📄 Created reminder: AUTOPILOT_REMINDER.txt\n');
 }
 
 main().catch((err) => {

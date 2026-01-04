@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
  * Universal Program Seeder for Elevate For Humanity
- * 
+ *
  * Seeds ANY program from JSON config files into Supabase
- * 
+ *
  * Usage:
  *   pnpm tsx scripts/seed-program.ts barber-apprenticeship-indiana.json
  *   pnpm tsx scripts/seed-program.ts cna-certification.json
  *   pnpm tsx scripts/seed-program.ts hvac-technician.json
- * 
+ *
  * Requirements:
  *   - SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in .env.local
  *   - JSON file exists in data/programs/
@@ -187,7 +187,7 @@ async function main() {
     console.error('  pnpm tsx scripts/seed-program.ts cna-certification.json');
     console.error('  pnpm tsx scripts/seed-program.ts hvac-technician.json');
     console.error('\nAvailable programs in data/programs/:');
-    
+
     try {
       const fs = await import('fs');
       const files = fs.readdirSync(join(process.cwd(), 'data/programs'));
@@ -197,7 +197,7 @@ async function main() {
     } catch (e) {
       console.error('  (Could not list files)');
     }
-    
+
     process.exit(1);
   }
 

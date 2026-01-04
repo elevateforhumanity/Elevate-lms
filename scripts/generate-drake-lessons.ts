@@ -23,7 +23,7 @@ interface LessonData {
   content: string;
   duration_minutes: number;
   topics: string[];
-  quiz_questions: any[];
+  quiz_questions: unknown[];
 }
 
 const COURSE_TOPICS = {
@@ -147,7 +147,6 @@ async function generateLessonContent(
   lessonNumber: number,
   topic: string
 ): Promise<LessonData> {
-  console.log(`Generating lesson ${lessonNumber} for ${courseId}: ${topic}`);
 
   const prompt = `You are a professional tax preparation instructor creating comprehensive lesson content for tax preparers.
 
@@ -248,10 +247,8 @@ Return as JSON array with this structure:
 }
 
 async function generateAllLessons() {
-  console.log('Starting Drake Training lesson generation...\n');
 
   for (const [courseId, topics] of Object.entries(COURSE_TOPICS)) {
-    console.log(
       `\n=== Generating lessons for ${courseId} (${topics.length} lessons) ===\n`
     );
 
@@ -274,7 +271,6 @@ async function generateAllLessons() {
         if (error) {
           console.error(`Error inserting lesson ${lessonNumber}:`, error);
         } else {
-          console.log(`✅ Lesson ${lessonNumber} inserted successfully`);
         }
 
         // Rate limiting - wait 2 seconds between API calls
@@ -285,7 +281,6 @@ async function generateAllLessons() {
     }
   }
 
-  console.log('\n✅ All lessons generated successfully!');
 }
 
 // Run the script

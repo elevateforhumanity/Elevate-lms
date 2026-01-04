@@ -12,7 +12,6 @@ const filesToUpdate = fs.readFileSync('/tmp/pages_to_update.txt', 'utf-8')
   .split('\n')
   .filter(f => f.trim());
 
-console.log(`Processing ${filesToUpdate.length} files...`);
 
 let updatedCount = 0;
 let skippedCount = 0;
@@ -21,9 +20,8 @@ let errorCount = 0;
 filesToUpdate.forEach((filePath, index) => {
   try {
     const fullPath = path.join('/workspaces/workspaces', filePath);
-    
+
     if (!fs.existsSync(fullPath)) {
-      console.log(`Skipping ${filePath} - file not found`);
       skippedCount++;
       return;
     }
@@ -46,7 +44,7 @@ filesToUpdate.forEach((filePath, index) => {
     }
 
     // Skip if already has proper filters
-    if (content.includes('.eq(\'user_id\'') || 
+    if (content.includes('.eq(\'user_id\'') ||
         content.includes('.eq(\'student_id\'') ||
         content.includes('.eq(\'role\'')) {
       skippedCount++;
@@ -55,22 +53,19 @@ filesToUpdate.forEach((filePath, index) => {
 
     // Only update simple template queries
     const simpleProfileQuery = /\.from\('profiles'\)\s*\.select\('\*'/g;
-    
+
     if (!simpleProfileQuery.test(content)) {
       skippedCount++;
       return;
     }
 
     // This is a template page - mark it for manual review
-    console.log(`[${index + 1}/${filesToUpdate.length}] TEMPLATE: ${filePath}`);
-    
+
     // Add a comment to mark it needs review
-    if (!content.includes('// TODO: Connect to correct database table')) {
       content = content.replace(
         /\.from\('profiles'\)/,
-        `// TODO: Connect to correct database table\n  .from('profiles')`
       );
-      
+
       fs.writeFileSync(fullPath, content, 'utf-8');
       updatedCount++;
     } else {
@@ -83,9 +78,3 @@ filesToUpdate.forEach((filePath, index) => {
   }
 });
 
-console.log('\n=== Summary ===');
-console.log(`Total files: ${filesToUpdate.length}`);
-console.log(`Marked for review: ${updatedCount}`);
-console.log(`Skipped (already good): ${skippedCount}`);
-console.log(`Errors: ${errorCount}`);
-console.log('\nFiles marked with TODO comments for manual review.');

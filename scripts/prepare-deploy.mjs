@@ -8,7 +8,6 @@ const outDir = 'deploy';
 const startTime = Date.now();
 
 // Clean and create deploy directory
-console.log('🧹 Preparing incremental deployment...');
 fs.rmSync(outDir, { recursive: true, force: true });
 fs.mkdirSync(outDir, { recursive: true });
 
@@ -29,7 +28,6 @@ function getChangeInfo() {
     }).toString();
     return JSON.parse(output);
   } catch (error) {
-    console.log('⚠️  Could not determine changes, doing full copy');
     if (error instanceof Error) {
       console.debug('change detection error:', error.message);
     }
@@ -44,8 +42,6 @@ function getChangeInfo() {
 
 const { appRelevant, buildType, categories } = getChangeInfo();
 
-console.log(`📦 Build type: ${buildType}`);
-console.log(`📊 Processing ${appRelevant.length} changed files`);
 
 let copiedFiles = 0;
 
@@ -73,7 +69,6 @@ if (cp('sitemaps', path.join(outDir, 'sitemaps'))) {
 // 3. Handle different build types
 switch (buildType) {
   case 'full': {
-    console.log('🔄 Full deployment - copying all files');
 
     // Copy all HTML files
     const htmlFiles = fs.readdirSync('.').filter((f) => f.endsWith('.html'));
@@ -107,13 +102,11 @@ switch (buildType) {
   }
 
   case 'pages': {
-    console.log('📄 Page-focused deployment');
 
     // Copy changed HTML files
     categories.html.forEach((file) => {
       if (cp(file, path.join(outDir, file))) {
         copiedFiles++;
-        console.log(`   📄 ${file}`);
       }
     });
 
@@ -121,7 +114,6 @@ switch (buildType) {
     categories.pages.forEach((dir) => {
       if (cp(dir, path.join(outDir, dir))) {
         copiedFiles++;
-        console.log(`   📁 ${dir}/`);
       }
     });
 
@@ -135,13 +127,11 @@ switch (buildType) {
   }
 
   case 'assets': {
-    console.log('🎨 Asset-focused deployment');
 
     // Copy changed assets
     categories.assets.forEach((file) => {
       if (cp(file, path.join(outDir, file))) {
         copiedFiles++;
-        console.log(`   🎨 ${file}`);
       }
     });
 
@@ -159,13 +149,11 @@ switch (buildType) {
   }
 
   case 'seo': {
-    console.log('🔍 SEO-focused deployment');
 
     // Copy changed SEO files
     categories.seo.forEach((file) => {
       if (cp(file, path.join(outDir, file))) {
         copiedFiles++;
-        console.log(`   🔍 ${file}`);
       }
     });
     break;
@@ -176,7 +164,6 @@ switch (buildType) {
     appRelevant.forEach((file) => {
       if (cp(file, path.join(outDir, file))) {
         copiedFiles++;
-        console.log(`   📝 ${file}`);
       }
     });
 }
@@ -204,7 +191,6 @@ pageDirectories.forEach((dir) => {
 try {
   execSync('node scripts/optimize-static-site.mjs', { stdio: 'inherit' });
 } catch (error) {
-  console.log('⚠️  Static site optimization failed, continuing...');
   if (error instanceof Error) {
     console.debug('optimize-static-site error:', error.message);
   }
@@ -214,7 +200,6 @@ try {
 try {
   execSync('node scripts/verify-seo.mjs', { stdio: 'inherit' });
 } catch (error) {
-  console.log('⚠️  SEO verification completed with warnings');
   if (error instanceof Error) {
     console.debug('verify-seo warning:', error.message);
   }
@@ -237,9 +222,6 @@ fs.writeFileSync(
 );
 
 const duration = Date.now() - startTime;
-console.log(`✅ Incremental deployment prepared in ${duration}ms`);
-console.log(`📊 Copied ${copiedFiles} files/directories`);
-console.log(`💾 Deploy size: ${(manifest.deploySize / 1024).toFixed(1)}KB`);
 
 // Helper function to calculate directory size
 function getDirSize(dirPath) {

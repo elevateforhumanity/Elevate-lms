@@ -16,7 +16,7 @@ let skipped = 0;
 
 filesToUpdate.forEach((filePath) => {
   const fullPath = path.join('/workspaces/workspaces', filePath);
-  
+
   if (!fs.existsSync(fullPath)) {
     skipped++;
     return;
@@ -26,7 +26,7 @@ filesToUpdate.forEach((filePath) => {
   const original = content;
 
   // Skip if already has proper user filtering
-  if (content.includes('.eq(\'user_id\'') || 
+  if (content.includes('.eq(\'user_id\'') ||
       content.includes('.eq(\'student_id\'') ||
       content.includes('.eq(\'id\', user.id)')) {
     skipped++;
@@ -34,7 +34,7 @@ filesToUpdate.forEach((filePath) => {
   }
 
   // Skip admin user management pages (they should use profiles)
-  if ((filePath.includes('/admin/users') || 
+  if ((filePath.includes('/admin/users') ||
        filePath.includes('/admin/students') ||
        filePath.includes('/admin/staff')) &&
       content.includes('.eq(\'role\'')) {
@@ -89,10 +89,8 @@ filesToUpdate.forEach((filePath) => {
   if (changed && content !== original) {
     fs.writeFileSync(fullPath, content, 'utf-8');
     updated++;
-    console.log(`Updated: ${filePath}`);
   } else {
     skipped++;
   }
 });
 
-console.log(`\nUpdated: ${updated}, Skipped: ${skipped}`);

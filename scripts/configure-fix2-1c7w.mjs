@@ -28,7 +28,6 @@ async function setVercelEnv(
           headers: { Authorization: `Bearer ${VERCEL_TOKEN}` },
         }
       );
-      console.log(`🗑️  Removed existing ${envName}`);
     }
   } catch (e) {
     // Ignore errors
@@ -61,7 +60,6 @@ async function setVercelEnv(
 }
 
 async function main() {
-  console.log('🤖 Configuring Vercel Project: fix2-1c7w\n');
 
   // Get team info
   const teams = await fetch('https://api.vercel.com/v2/teams', {
@@ -69,7 +67,6 @@ async function main() {
   }).then((r) => r.json());
 
   const teamId = teams.teams[0].id;
-  console.log(`Team: ${teams.teams[0].name} (${teamId})\n`);
 
   // Find the correct project
   const projects = await fetch(
@@ -83,13 +80,10 @@ async function main() {
 
   if (!project) {
     console.error(`❌ Project ${PROJECT_NAME} not found!`);
-    console.log('\nAvailable projects:');
     projects.projects.forEach((p) => console.log(`  - ${p.name} (${p.id})`));
     process.exit(1);
   }
 
-  console.log(`✅ Found project: ${project.name}`);
-  console.log(`✅ Project ID: ${project.id}\n`);
 
   // Environment variables to set
   const envVars = {
@@ -104,7 +98,6 @@ async function main() {
     NODE_ENV: 'production',
   };
 
-  console.log('📋 Setting environment variables...\n');
 
   for (const [key, value] of Object.entries(envVars)) {
     try {
@@ -113,13 +106,11 @@ async function main() {
           ? ['production']
           : ['production', 'preview', 'development'];
       await setVercelEnv(project.id, key, value, target);
-      console.log(`✅ Set ${key}`);
     } catch (error) {
       console.error(`❌ Failed to set ${key}:`, error.message);
     }
   }
 
-  console.log('\n📋 Triggering deployment...\n');
 
   // Trigger deployment
   const deployment = await fetch(
@@ -144,30 +135,11 @@ async function main() {
   ).then((r) => r.json());
 
   if (deployment.error) {
-    console.log('⚠️  Could not trigger deployment automatically');
-    console.log('   Go to Vercel dashboard and click "Redeploy"');
-    console.log(`   https://vercel.com/gitpod/fix2-1c7w`);
   } else {
-    console.log(`✅ Deployment triggered!`);
-    console.log(`   URL: https://${deployment.url}`);
   }
 
-  console.log('\n' + '═'.repeat(60));
-  console.log('🎉 CONFIGURATION COMPLETE');
-  console.log('═'.repeat(60));
-  console.log('\n📊 Summary:');
-  console.log(`   Project: ${project.name}`);
-  console.log(`   Project ID: ${project.id}`);
-  console.log(`   Team ID: ${teamId}`);
-  console.log(
     `   Environment Variables: ${Object.keys(envVars).length} configured`
   );
-  console.log('\n🔗 Links:');
-  console.log(`   Dashboard: https://vercel.com/gitpod/fix2-1c7w`);
-  console.log(`   Production: https://elevateconnectsdirectory.org`);
-  console.log(`   Preview: https://fix2-1c7w.vercel.app`);
-  console.log('\n⏱️  Deployment will take 2-3 minutes');
-  console.log(
     '   Check status at: https://vercel.com/gitpod/fix2-1c7w/deployments\n'
   );
 }

@@ -14,24 +14,24 @@ const svg = `
       <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
     </linearGradient>
   </defs>
-  
+
   <rect width="${width}" height="${height}" fill="url(#bgGradient)"/>
   <rect width="${width}" height="${height}" fill="rgba(0,0,0,0.1)"/>
-  
+
   <text x="600" y="220" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="bold" fill="#ffffff" text-anchor="middle">
     Elevate for Humanity
   </text>
-  
+
   <text x="600" y="300" font-family="Arial, Helvetica, sans-serif" font-size="36" fill="#ffffff" text-anchor="middle" opacity="0.95">
     Empowering Dreams Through Education
   </text>
-  
+
   <text x="600" y="380" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="600" fill="#22c55e" text-anchor="middle">
     100% FREE Training • Marion County
   </text>
-  
+
   <rect x="0" y="530" width="${width}" height="100" fill="rgba(0,0,0,0.3)"/>
-  
+
   <text x="600" y="590" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#ffffff" text-anchor="middle">
     www.elevateforhumanity.org
   </text>
@@ -41,21 +41,15 @@ const svg = `
 try {
   await sharp(Buffer.from(svg)).jpeg({ quality: 90 }).toFile('public/og.jpg');
 
-  console.log('✅ Generated public/og.jpg (1200×630)');
 
   // Also create a PNG version for better quality
   await sharp(Buffer.from(svg)).png().toFile('public/og.png');
 
-  console.log('✅ Generated public/og.png (1200×630)');
 
   // Get file sizes
   const jpgSize = fs.statSync('public/og.jpg').size;
   const pngSize = fs.statSync('public/og.png').size;
 
-  console.log(`\nFile sizes:`);
-  console.log(`  og.jpg: ${(jpgSize / 1024).toFixed(1)} KB`);
-  console.log(`  og.png: ${(pngSize / 1024).toFixed(1)} KB`);
-  console.log(`\nRecommendation: Use og.jpg for faster loading`);
 } catch (error) {
   console.error('❌ Error generating image:', error.message);
   process.exit(1);

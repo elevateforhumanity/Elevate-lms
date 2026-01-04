@@ -6,7 +6,6 @@ import { execSync } from 'node:child_process';
 
 const ROOT = 'deploy';
 
-console.log('🎯 Optimizing multi-page static site deployment...');
 
 // 1. Ensure all page directories have proper structure
 const pageDirectories = [
@@ -80,7 +79,6 @@ pageDirectories.forEach(({ dir, title, description }) => {
 </html>`;
 
     fs.writeFileSync(indexPath, basicHTML);
-    console.log(`   📄 Created ${dir}/index.html`);
   }
 });
 
@@ -117,7 +115,6 @@ function optimizeHTML(filePath) {
     fs.writeFileSync(filePath, content);
     return true;
   } catch (error) {
-    console.log(`   ⚠️  Could not optimize ${filePath}`);
     return false;
   }
 }
@@ -149,7 +146,6 @@ htmlFiles.forEach((file) => {
   }
 });
 
-console.log(`   🎨 Optimized ${optimizedCount} HTML files`);
 
 // 4. Create .htaccess for Apache servers (if needed)
 const htaccess = `# Elevate for Humanity - Apache Configuration
@@ -214,8 +210,3 @@ fs.writeFileSync(
   JSON.stringify(deploymentSummary, null, 2)
 );
 
-console.log(`✅ Multi-page static site optimization complete`);
-console.log(`   📊 ${pageDirectories.length} page directories ensured`);
-console.log(`   🎨 ${optimizedCount} HTML files optimized`);
-console.log(`   ⚙️  Apache .htaccess configuration created`);
-console.log(`   📋 Deployment summary generated`);

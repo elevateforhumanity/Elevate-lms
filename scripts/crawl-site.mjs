@@ -64,9 +64,6 @@ class SiteCrawler {
   }
 
   async init() {
-    console.log(`🚀 Starting crawl of ${this.baseUrl}`);
-    console.log(`📊 Max pages: ${this.options.maxPages}`);
-    console.log(`⏱️  Delay: ${this.options.delay}ms`);
 
     // Load robots.txt
     try {
@@ -78,10 +75,8 @@ class SiteCrawler {
       if (robotsResponse.ok) {
         const robotsText = await robotsResponse.text();
         this.robots = robotsParser(`${this.baseUrl}/robots.txt`, robotsText);
-        console.log('✅ Loaded robots.txt');
       }
     } catch (error) {
-      console.log('⚠️  No robots.txt found');
     }
   }
 
@@ -151,7 +146,6 @@ class SiteCrawler {
     this.visited.add(url);
 
     try {
-      console.log(`📄 Crawling: ${url}`);
 
       const response = await fetch(url, {
         timeout: this.options.timeout,
@@ -260,10 +254,6 @@ class SiteCrawler {
     }
 
     const duration = Date.now() - this.startTime;
-    console.log(`\n✅ Crawl complete!`);
-    console.log(`📊 Pages crawled: ${this.pages.length}`);
-    console.log(`❌ Errors: ${this.errors.length}`);
-    console.log(`⏱️  Duration: ${(duration / 1000).toFixed(2)}s`);
 
     return {
       pages: this.pages,
@@ -278,7 +268,6 @@ class SiteCrawler {
   }
 
   generateSitemaps() {
-    console.log('\n🗺️  Generating sitemaps...');
 
     // Filter successful pages only
     const validPages = this.pages.filter(
@@ -369,7 +358,6 @@ class SiteCrawler {
       fs.writeFileSync(filepath, xmlContent);
       sitemapFiles.push(filename);
 
-      console.log(`📄 Generated ${filename} with ${chunk.length} URLs`);
     }
 
     // Generate sitemap index
@@ -395,7 +383,6 @@ class SiteCrawler {
     const indexXmlContent = builder.build(sitemapIndexXml);
     fs.writeFileSync('sitemap_index.xml', indexXmlContent);
 
-    console.log(
       `📋 Generated sitemap_index.xml with ${sitemapFiles.length} sitemap files`
     );
 
@@ -406,7 +393,6 @@ class SiteCrawler {
   }
 
   async pingSearchEngines() {
-    console.log('\n🔔 Pinging search engines...');
 
     const sitemapUrl = `${this.baseUrl}/sitemap_index.xml`;
     const pingUrls = [
@@ -424,19 +410,15 @@ class SiteCrawler {
 
         const engine = pingUrl.includes('google') ? 'Google' : 'Bing';
         if (response.ok) {
-          console.log(`✅ Pinged ${engine} successfully`);
         } else {
-          console.log(`⚠️  ${engine} ping returned ${response.status}`);
         }
       } catch (error) {
         const engine = pingUrl.includes('google') ? 'Google' : 'Bing';
-        console.log(`❌ Failed to ping ${engine}:`, error.message);
       }
     }
   }
 
   generateReports(crawlData) {
-    console.log('\n📊 Generating reports...');
 
     // Write all URLs to text file
     const allUrls = crawlData.pages
@@ -445,16 +427,13 @@ class SiteCrawler {
       .sort();
 
     fs.writeFileSync('all-urls.txt', allUrls.join('\n'));
-    console.log(`📄 Generated all-urls.txt with ${allUrls.length} URLs`);
 
     // Write JSON report
     fs.writeFileSync('crawl-report.json', JSON.stringify(crawlData, null, 2));
-    console.log(`📄 Generated crawl-report.json`);
 
     // Generate HTML report
     const htmlReport = this.generateHtmlReport(crawlData);
     fs.writeFileSync('crawl-report.html', htmlReport);
-    console.log(`📄 Generated crawl-report.html`);
   }
 
   generateHtmlReport(crawlData) {
@@ -481,7 +460,7 @@ class SiteCrawler {
 <body class="bg-gray-50">
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold text-gray-800 mb-8">Site Crawl Report</h1>
-        
+
         <div class="grid md:grid-cols-4 gap-6 mb-8">
             <div class="bg-white p-6 rounded-lg shadow">
                 <h3 class="text-lg font-semibold text-green-600">Total Pages</h3>
@@ -500,7 +479,7 @@ class SiteCrawler {
                 <p class="text-3xl font-bold">${orphanPages.length}</p>
             </div>
         </div>
-        
+
         ${
           errors.length > 0
             ? `
@@ -538,7 +517,7 @@ class SiteCrawler {
         `
             : ''
         }
-        
+
         ${
           orphanPages.length > 0
             ? `
@@ -565,7 +544,7 @@ class SiteCrawler {
         `
             : ''
         }
-        
+
         <div class="bg-white rounded-lg shadow">
             <div class="p-6 border-b">
                 <h2 class="text-2xl font-bold text-green-600">All Pages</h2>
@@ -599,7 +578,7 @@ class SiteCrawler {
                 </div>
             </div>
         </div>
-        
+
         <div class="mt-8 text-center text-gray-500">
             <p>Generated on ${new Date(stats.crawledAt).toLocaleString()}</p>
             <p>Duration: ${(stats.duration / 1000).toFixed(2)} seconds</p>
@@ -625,9 +604,6 @@ async function main() {
       await crawler.pingSearchEngines();
     }
 
-    console.log('\n🎉 All done!');
-    console.log(`📋 Sitemap index: ${baseUrl}/sitemap_index.xml`);
-    console.log(`📊 View report: crawl-report.html`);
   } catch (error) {
     console.error('❌ Crawl failed:', error);
     process.exit(1);

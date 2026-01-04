@@ -96,10 +96,6 @@ async function processTenant(t) {
   const LATEST = Number(t.latest || 1000);
   fs.mkdirSync(SM_DIR, { recursive: true });
 
-  console.log(`🚀 Processing tenant: ${t.slug}`);
-  console.log(`   Base URL: ${BASE}`);
-  console.log(`   Output: ${OUTROOT}`);
-  console.log(`   Chunk size: ${CHUNK} URLs`);
 
   // --- robots.txt fetch for allow rules ---
   const robotsUrl = `${BASE}/robots.txt`;
@@ -108,7 +104,6 @@ async function processTenant(t) {
     const txt = await fetch(robotsUrl).then((r) => r.text());
     robots = robotsParser(robotsUrl, txt);
   } catch {
-    console.log(`   ⚠️  Could not fetch robots.txt from ${robotsUrl}`);
   }
 
   // --- Crawl (BFS) same-origin HTML pages ---
@@ -167,14 +162,12 @@ async function processTenant(t) {
     }
   }
 
-  console.log(`   📊 Crawled ${crawled} pages, found ${seen.size} total URLs`);
 
   // --- Keep good pages only ---
   const all = [...seen.entries()]
     .filter(([, m]) => m.status && m.status < 400)
     .map(([url, m]) => ({ url, last: m.lastmod ? new Date(m.lastmod) : NOW }));
 
-  console.log(`   ✅ ${all.length} valid pages for sitemaps`);
 
   // --- Section buckets ---
   const buckets = {
@@ -189,7 +182,6 @@ async function processTenant(t) {
     buckets[classifySection(p)].push(it);
   }
 
-  console.log(
     `   📂 Section distribution:`,
     Object.fromEntries(Object.entries(buckets).map(([k, v]) => [k, v.length]))
   );
@@ -252,7 +244,6 @@ async function processTenant(t) {
   addMaster('sitemap-latest.xml');
   sitemapCount++;
 
-  console.log(`   🗺️  Generated ${sitemapCount} ultra-tiny sitemaps`);
 
   // --- Master index & robots ---
   const idx = {
@@ -318,14 +309,12 @@ async function processTenant(t) {
   fs.writeFileSync(path.join(OUTROOT, '_redirects'), redirects);
 
   // --- Pings (Google + Bing) ---
-  console.log(`   📡 Pinging search engines...`);
   for (const ping of [
     `https://www.google.com/ping?sitemap=${encodeURIComponent(`${BASE}/sitemap_index.xml`)}`,
     `https://www.bing.com/ping?sitemap=${encodeURIComponent(`${BASE}/sitemap_index.xml`)}`,
   ]) {
     try {
       const r = await fetch(ping);
-      console.log(
         `   ✅ Ping ${ping.includes('google') ? 'Google' : 'Bing'}: ${r.status}`
       );
     } catch (e) {
@@ -335,7 +324,6 @@ async function processTenant(t) {
 
   // --- IndexNow (optional) ---
   if (t.indexnowKey) {
-    console.log(`   📡 Sending IndexNow notification...`);
     try {
       const payload = {
         host: new URL(BASE).host,
@@ -351,7 +339,6 @@ async function processTenant(t) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      console.log(`   ✅ IndexNow: ${r.status}`);
 
       // Create IndexNow key file
       fs.writeFileSync(
@@ -376,17 +363,13 @@ async function processTenant(t) {
 }
 
 // Run all tenants
-console.log('🚀 Multi-Tenant Enterprise Engine Starting...');
-console.log(`📊 Processing ${tenants.length} tenants from ${TENANTS_PATH}`);
 
 const results = [];
 for (const t of tenants) {
-  console.log(`\n=== Processing tenant: ${t.slug} (${t.base}) ===`);
   // Ensure publish dir exists
   fs.mkdirSync(t.out, { recursive: true });
   const res = await processTenant(t);
   results.push(res);
-  console.log(
     `✅ Tenant ${t.slug} complete: ${res.total} pages, ${res.files} sitemaps`
   );
 }
@@ -394,8 +377,6 @@ for (const t of tenants) {
 // Write manifest
 fs.writeFileSync('tenant-manifest.json', JSON.stringify(results, null, 2));
 
-console.log('\n🎯 Multi-tenant build complete!');
-console.log('📊 Summary:');
 console.table(
   results.map((r) => ({
     slug: r.slug,
@@ -408,12 +389,3 @@ console.table(
   }))
 );
 
-console.log('\n💰 Revenue Features Deployed:');
-console.log('   • Ultra-tiny sitemaps (1k chunks vs 50k industry standard)');
-console.log('   • Multi-tenant architecture ready for SaaS licensing');
-console.log('   • Enterprise JSON-LD schema per tenant');
-console.log('   • Automated redirects and SEO optimization');
-console.log('   • Search engine notifications (Google + Bing + IndexNow)');
-console.log('   • Clone-ready for workforce orgs, schools, nonprofits');
-console.log('\n🚀 Market Value: $5k-$50k per tenant license');
-console.log('✅ System ready for enterprise deployment!');

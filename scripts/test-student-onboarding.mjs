@@ -7,8 +7,6 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-console.log('🎓 Student Onboarding Test');
-console.log('=====================================\n');
 
 // Check environment
 const requiredVars = [
@@ -51,19 +49,15 @@ const results = {
 
 function logStep(step, status, message, data = null) {
   const icon = status === 'pass' ? '✅' : status === 'fail' ? '❌' : 'ℹ️';
-  console.log(`${icon} ${step}: ${message}`);
   if (data) {
-    console.log(`   Data:`, JSON.stringify(data, null, 2));
   }
-  
+
   results.steps.push({ step, status, message, data });
   if (status === 'pass') results.passed++;
   if (status === 'fail') results.failed++;
 }
 
 async function testStep1_CreateAccount() {
-  console.log('\n📝 Step 1: Create Student Account');
-  console.log('─'.repeat(50));
 
   try {
     // Create user account
@@ -118,8 +112,6 @@ async function testStep1_CreateAccount() {
 }
 
 async function testStep2_GetProgram() {
-  console.log('\n📚 Step 2: Get Program Details');
-  console.log('─'.repeat(50));
 
   try {
     const { data: program, error } = await supabase
@@ -148,8 +140,6 @@ async function testStep2_GetProgram() {
 }
 
 async function testStep3_CreateEnrollment(userId, programId) {
-  console.log('\n🎓 Step 3: Create Enrollment');
-  console.log('─'.repeat(50));
 
   try {
     const { data: enrollment, error } = await supabase
@@ -184,8 +174,6 @@ async function testStep3_CreateEnrollment(userId, programId) {
 }
 
 async function testStep4_AssignAIInstructor(userId, programSlug) {
-  console.log('\n🤖 Step 4: Assign AI Instructor');
-  console.log('─'.repeat(50));
 
   try {
     // Check if AI instructor exists
@@ -250,8 +238,6 @@ async function testStep4_AssignAIInstructor(userId, programSlug) {
 }
 
 async function testStep5_VerifyDashboardAccess(userId) {
-  console.log('\n🏠 Step 5: Verify Dashboard Access');
-  console.log('─'.repeat(50));
 
   try {
     // Check enrollment visibility
@@ -305,8 +291,6 @@ async function testStep5_VerifyDashboardAccess(userId) {
 }
 
 async function testStep6_TestDashboardRoute() {
-  console.log('\n🌐 Step 6: Test Dashboard Route');
-  console.log('─'.repeat(50));
 
   try {
     const response = await fetch(`${siteUrl}/student/dashboard`, {
@@ -337,8 +321,6 @@ async function testStep6_TestDashboardRoute() {
 }
 
 async function testStep7_CleanupTestData(userId) {
-  console.log('\n🧹 Step 7: Cleanup Test Data');
-  console.log('─'.repeat(50));
 
   try {
     // Delete user (cascade will remove enrollments, assignments, etc.)
@@ -359,9 +341,6 @@ async function testStep7_CleanupTestData(userId) {
 }
 
 async function runOnboardingTest() {
-  console.log('🚀 Starting Student Onboarding Test\n');
-  console.log(`Test Student: ${testStudent.email}`);
-  console.log(`Program: ${testStudent.programSlug}\n`);
 
   let userId = null;
   let program = null;
@@ -369,14 +348,12 @@ async function runOnboardingTest() {
   // Step 1: Create account
   userId = await testStep1_CreateAccount();
   if (!userId) {
-    console.log('\n❌ Test failed at Step 1');
     return;
   }
 
   // Step 2: Get program
   program = await testStep2_GetProgram();
   if (!program) {
-    console.log('\n❌ Test failed at Step 2');
     await testStep7_CleanupTestData(userId);
     return;
   }
@@ -384,7 +361,6 @@ async function runOnboardingTest() {
   // Step 3: Create enrollment
   const enrollment = await testStep3_CreateEnrollment(userId, program.id);
   if (!enrollment) {
-    console.log('\n❌ Test failed at Step 3');
     await testStep7_CleanupTestData(userId);
     return;
   }
@@ -402,46 +378,15 @@ async function runOnboardingTest() {
   await testStep7_CleanupTestData(userId);
 
   // Summary
-  console.log('\n');
-  console.log('═'.repeat(50));
-  console.log('📊 TEST SUMMARY');
-  console.log('═'.repeat(50));
-  console.log('');
-  console.log(`Total Steps: ${results.steps.length}`);
-  console.log(`✅ Passed: ${results.passed}`);
-  console.log(`❌ Failed: ${results.failed}`);
-  console.log('');
 
   // Detailed results
-  console.log('Detailed Results:');
   results.steps.forEach((step, i) => {
     const icon = step.status === 'pass' ? '✅' : step.status === 'fail' ? '❌' : 'ℹ️';
-    console.log(`${i + 1}. ${icon} ${step.step}: ${step.message}`);
   });
-  console.log('');
 
   // Recommendations
   if (results.failed > 0) {
-    console.log('═'.repeat(50));
-    console.log('💡 RECOMMENDATIONS');
-    console.log('═'.repeat(50));
-    console.log('');
-    console.log('Failed steps detected. Check:');
-    console.log('1. Database migrations applied');
-    console.log('2. AI instructor seeded for program');
-    console.log('3. RLS policies configured');
-    console.log('4. Server running (npm run dev)');
-    console.log('');
   } else {
-    console.log('🎉 All tests passed! Student onboarding is working correctly.');
-    console.log('');
-    console.log('✅ Verified:');
-    console.log('   - Account creation');
-    console.log('   - Profile setup');
-    console.log('   - Enrollment activation');
-    console.log('   - AI instructor assignment');
-    console.log('   - Dashboard access');
-    console.log('');
   }
 
   const allPassed = results.failed === 0;

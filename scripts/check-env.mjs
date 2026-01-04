@@ -31,7 +31,6 @@ function validateEnvironment() {
   const errors = [];
   const warnings = [];
 
-  console.log('🔍 Validating environment variables...\n');
 
   for (const [varName, config] of Object.entries(requiredEnvVars)) {
     const value = process.env[varName];
@@ -69,27 +68,21 @@ function validateEnvironment() {
       continue;
     }
 
-    console.log(`✅ ${varName}: configured`);
   }
 
   // Show warnings
   if (warnings.length > 0) {
-    console.log('\n' + warnings.join('\n'));
   }
 
   // Show errors
   if (errors.length > 0) {
-    console.log('\n💥 Environment validation failed:\n');
-    console.log(errors.join('\n'));
     process.exit(1);
   }
 
-  console.log('\n🎉 Environment validation passed!');
 }
 
 // Set defaults for missing optional variables
 if (!process.env.JWT_SECRET) {
-  console.log('⚠️  Setting temporary JWT_SECRET for development...');
   process.env.JWT_SECRET =
     'dev-secret-key-not-for-production-use-16-chars-minimum';
 }

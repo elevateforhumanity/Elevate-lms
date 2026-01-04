@@ -3,7 +3,6 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-console.log('🧪 Testing Dynamic Pages - Function Completeness\n');
 
 const PAGES_DIR = 'src/pages';
 
@@ -12,7 +11,6 @@ const pageFiles = readdirSync(PAGES_DIR)
   .filter((f) => f.endsWith('.jsx') || f.endsWith('.tsx'))
   .map((f) => join(PAGES_DIR, f));
 
-console.log(`📄 Found ${pageFiles.length} page files\n`);
 
 // Test patterns
 const patterns = {
@@ -157,72 +155,45 @@ pageFiles.forEach((filePath) => {
 });
 
 // Display results
-console.log('📊 Summary Statistics:\n');
-console.log(`   Buttons with onClick:     ${results.totalButtons}`);
-console.log(`   Navigation Links:         ${results.totalLinks}`);
-console.log(`   Forms with onSubmit:      ${results.totalForms}`);
-console.log(`   State Hooks (useState/useEffect): ${results.totalStateHooks}`);
-console.log(`   API Calls:                ${results.totalApiCalls}`);
 
-console.log('\n🔘 Top Pages with Buttons:\n');
 results.pagesWithButtons
   .sort((a, b) => b.count - a.count)
   .slice(0, 10)
   .forEach(({ file, count }) => {
-    console.log(`   ${file.padEnd(40)} ${count} buttons`);
   });
 
-console.log('\n🔗 Top Pages with Links:\n');
 results.pagesWithLinks
   .sort((a, b) => b.count - a.count)
   .slice(0, 10)
   .forEach(({ file, count }) => {
-    console.log(`   ${file.padEnd(40)} ${count} links`);
   });
 
-console.log('\n📝 Pages with Forms:\n');
 results.pagesWithForms.forEach(({ file, count }) => {
-  console.log(`   ${file.padEnd(40)} ${count} forms`);
 });
 
-console.log('\n🔌 Top Pages with API Calls:\n');
 results.pagesWithApi
   .sort((a, b) => b.count - a.count)
   .slice(0, 10)
   .forEach(({ file, count }) => {
-    console.log(`   ${file.padEnd(40)} ${count} API calls`);
   });
 
 // Display issues
 if (results.issues.length > 0) {
-  console.log('\n⚠️  Potential Issues Found:\n');
 
   const errors = results.issues.filter((i) => i.severity === 'error');
   const warnings = results.issues.filter((i) => i.severity === 'warning');
 
   if (errors.length > 0) {
-    console.log('   ❌ Errors:');
     errors.forEach(({ file, type }) => {
-      console.log(`      ${file}: ${type}`);
     });
   }
 
   if (warnings.length > 0) {
-    console.log('\n   ⚠️  Warnings:');
     warnings.forEach(({ file, type }) => {
-      console.log(`      ${file}: ${type}`);
     });
   }
 } else {
-  console.log('\n✅ No issues found!');
 }
 
 // Recommendations
-console.log('\n💡 Recommendations:\n');
-console.log('   1. All buttons should have meaningful onClick handlers');
-console.log('   2. All Links should have valid "to" props');
-console.log('   3. All forms should have onSubmit handlers');
-console.log('   4. All async functions should have error handling');
-console.log('   5. Navigation should use React Router Link component');
 
-console.log('\n✨ Dynamic pages test complete!\n');

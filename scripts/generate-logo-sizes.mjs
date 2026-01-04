@@ -18,12 +18,11 @@ const sizes = [
 
 async function generateLogos() {
   const inputPath = join(publicDir, 'logo-original.png');
-  
-  console.log('Generating logo sizes...');
-  
+
+
   for (const { name, size } of sizes) {
     const outputPath = join(publicDir, name);
-    
+
     try {
       await sharp(inputPath)
         .resize(size, size, {
@@ -32,13 +31,12 @@ async function generateLogos() {
         })
         .png()
         .toFile(outputPath);
-      
-      console.log(`✅ Created ${name} (${size}x${size})`);
+
     } catch (error) {
       console.error(`❌ Failed to create ${name}:`, error.message);
     }
   }
-  
+
   // Create ICO file (just copy the 32x32 PNG as .ico)
   try {
     await sharp(inputPath)
@@ -48,8 +46,7 @@ async function generateLogos() {
       })
       .png()
       .toFile(join(publicDir, 'favicon-temp.png'));
-    
-    console.log('✅ Logo generation complete!');
+
   } catch (error) {
     console.error('❌ Error:', error.message);
   }

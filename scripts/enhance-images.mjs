@@ -22,9 +22,8 @@ async function enhanceImage(inputPath) {
   try {
     const fullInputPath = join(publicDir, inputPath);
     const tempPath = fullInputPath + '.tmp';
-    
-    console.log(`Enhancing: ${inputPath}`);
-    
+
+
     // Process to temp file - Professional portrait enhancement
     await sharp(fullInputPath)
       .resize(2048, 2048, {
@@ -55,30 +54,22 @@ async function enhanceImage(inputPath) {
         density: 300 // 300 DPI
       })
       .toFile(tempPath);
-    
+
     // Replace original with enhanced version
     const { rename } = await import('fs/promises');
     await rename(tempPath, fullInputPath);
-    
-    console.log(`✅ Enhanced: ${inputPath}`);
+
   } catch (error) {
     console.error(`❌ Failed to enhance ${inputPath}:`, error.message);
   }
 }
 
 async function enhanceAllImages() {
-  console.log('Starting image enhancement...\n');
-  
+
   for (const imagePath of imagesToEnhance) {
     await enhanceImage(imagePath);
   }
-  
-  console.log('\n✅ All images enhanced!');
-  console.log('Resolution: 1920x1280');
-  console.log('DPI: 300');
-  console.log('Quality: 95%');
-  console.log('Sharpening: Applied');
-  console.log('Color enhancement: Applied');
+
 }
 
 enhanceAllImages();

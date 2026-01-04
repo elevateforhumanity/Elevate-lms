@@ -11,12 +11,11 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
-console.log('🔍 Running TypeScript compiler to find errors...\n');
 
 let tscOutput = '';
 try {
   // Run tsc and capture output (will throw because of errors)
-  execSync('npx tsc --noEmit --pretty false', { 
+  execSync('npx tsc --noEmit --pretty false', {
     encoding: 'utf-8',
     stdio: 'pipe'
   });
@@ -25,7 +24,6 @@ try {
 }
 
 if (!tscOutput) {
-  console.log('✅ No TypeScript errors found!');
   process.exit(0);
 }
 
@@ -45,10 +43,8 @@ while ((match = errorPattern.exec(tscOutput)) !== null) {
   });
 }
 
-console.log(`📝 Found ${errors.length} TypeScript errors\n`);
 
 if (errors.length === 0) {
-  console.log('✅ No errors to fix!');
   process.exit(0);
 }
 
@@ -61,7 +57,6 @@ for (const error of errors) {
   errorsByFile.get(error.file).push(error);
 }
 
-console.log(`📁 Errors in ${errorsByFile.size} files\n`);
 
 let filesFixed = 0;
 let errorsFixed = 0;
@@ -75,7 +70,6 @@ for (const [filePath, fileErrors] of errorsByFile.entries()) {
 
   // Check if file exists
   if (!fs.existsSync(filePath)) {
-    console.log(`⚠️  File not found: ${filePath}`);
     continue;
   }
 
@@ -90,7 +84,7 @@ for (const [filePath, fileErrors] of errorsByFile.entries()) {
     // Add @ts-expect-error comments
     for (const error of fileErrors) {
       const lineIndex = error.line - 1;
-      
+
       if (lineIndex < 0 || lineIndex >= lines.length) {
         continue;
       }
@@ -100,7 +94,6 @@ for (const [filePath, fileErrors] of errorsByFile.entries()) {
       const indent = errorLine.match(/^(\s*)/)?.[1] || '';
 
       // Create descriptive comment
-      const comment = `${indent}// @ts-expect-error TS${error.code}: ${truncateMessage(error.message)}`;
 
       // Check if comment already exists
       if (lineIndex > 0 && lines[lineIndex - 1].includes('@ts-expect-error')) {
@@ -115,20 +108,12 @@ for (const [filePath, fileErrors] of errorsByFile.entries()) {
     // Write file back
     fs.writeFileSync(filePath, lines.join('\n'), 'utf-8');
     filesFixed++;
-    console.log(`  ✓ Fixed ${fileErrors.length} errors in ${path.relative(process.cwd(), filePath)}`);
 
   } catch (err) {
     console.error(`  ✗ Error processing ${filePath}:`, err.message);
   }
 }
 
-console.log('\n✅ Complete!');
-console.log(`   Files fixed: ${filesFixed}`);
-console.log(`   Errors fixed: ${errorsFixed}`);
-console.log('\n💡 Next steps:');
-console.log('   1. Review the added @ts-expect-error comments');
-console.log('   2. Fix the underlying issues where possible');
-console.log('   3. Run: npm run typecheck to verify');
 
 /**
  * Truncate error message to fit on one line

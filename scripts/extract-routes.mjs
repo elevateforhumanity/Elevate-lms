@@ -46,4 +46,3 @@ if (!paths.includes('/')) paths.unshift('/');
 paths.sort((a, b) => a.length - b.length || a.localeCompare(b));
 await fs.mkdir(path.dirname(OUT), { recursive: true });
 await fs.writeFile(OUT, JSON.stringify(paths, null, 2));
-console.log(`✅ Wrote ${OUT} with ${paths.length} route(s).`);

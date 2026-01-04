@@ -31,7 +31,7 @@ interface HealthLogRequest {
   http_code?: number | null;
   response_time_ms?: number | null;
   detail?: string | null;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 serve(async (req) => {

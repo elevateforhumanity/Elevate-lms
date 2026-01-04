@@ -32,7 +32,7 @@ if (!fs.existsSync(subtitlesDir)) {
 videos.forEach(video => {
   const vttFilename = video.file.replace('.mp4', '.vtt');
   const vttPath = path.join(subtitlesDir, vttFilename);
-  
+
   const vttContent = `WEBVTT
 
 NOTE

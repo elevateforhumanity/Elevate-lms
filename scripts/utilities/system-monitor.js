@@ -320,26 +320,26 @@ class EFHMonitor {
 
     const summary = `
         <h2>📊 EFH Daily Summary - ${today}</h2>
-        
+
         <h3>📈 Traffic</h3>
         <ul>
             <li>Total Page Views: ${todayViews.length}</li>
             <li>Unique Pages Visited: ${Object.keys(this.metrics.pageViews).length}</li>
         </ul>
-        
+
         <h3>🎓 Enrollments</h3>
         <ul>
             <li>New Enrollments: ${todayEnrollments.length}</li>
             <li>Total Revenue: $${todayEnrollments.reduce((sum, e) => sum + (e.amount || 0), 0)}</li>
         </ul>
-        
+
         <h3>💳 Payments</h3>
         <ul>
             <li>Successful Payments: ${todayPayments.filter((p) => p.status === 'succeeded').length}</li>
             <li>Failed Payments: ${todayPayments.filter((p) => p.status === 'failed').length}</li>
             <li>Total Payment Volume: $${todayPayments.reduce((sum, p) => sum + (p.amount || 0), 0)}</li>
         </ul>
-        
+
         <h3>⚠️ System Health</h3>
         <ul>
             <li>Errors Today: ${todayErrors.length}</li>

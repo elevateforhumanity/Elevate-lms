@@ -416,8 +416,8 @@ async function generateInsights(): Promise<any> {
 // Enhance insights with OpenAI (optional)
 async function enhanceWithAI(
   insights: any,
-  events: any[],
-  migrations: any[]
+  events: unknown[],
+  migrations: unknown[]
 ): Promise<any> {
   if (!OPENAI_API_KEY) return insights;
 
