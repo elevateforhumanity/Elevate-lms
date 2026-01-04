@@ -1,0 +1,14 @@
+PLACEHOLDER IMAGE NEEDED
+
+Program: cdl
+Type: Card Image
+Dimensions: 1600x900px (16:9)
+Format: JPG
+File Size: <200KB
+Content: Students in cdl training
+
+Download from:
+- Pexels: https://www.pexels.com/search/cdl%20training/
+- Unsplash: https://unsplash.com/s/photos/cdl-training
+
+Save as: efh-cdl-card.jpg

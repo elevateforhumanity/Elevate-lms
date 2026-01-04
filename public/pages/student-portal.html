@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Portal - Elevate for Humanity</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8fafc;
+        color: #333;
+      }
+
+      .portal-header {
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .portal-nav {
+        background: white;
+        padding: 1rem 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+
+      .nav-tabs {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .nav-tab {
+        padding: 0.75rem 1.5rem;
+        background: #f1f5f9;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 600;
+      }
+
+      .nav-tab.active {
+        background: #1e40af;
+        color: white;
+      }
+
+      .nav-tab:hover {
+        background: #3b82f6;
+        color: white;
+      }
+
+      .tab-content {
+        display: none;
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 2rem;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #374151;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+      }
+
+      .btn-primary {
+        background: #1e40af;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #1d4ed8;
+      }
+
+      .btn-success {
+        background: #059669;
+        color: white;
+      }
+
+      .btn-success:hover {
+        background: #047857;
+      }
+
+      .progress-bar {
+        background: #e5e7eb;
+        border-radius: 10px;
+        height: 20px;
+        margin: 1rem 0;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        background: linear-gradient(90deg, #059669, #10b981);
+        height: 100%;
+        transition: width 0.3s;
+        border-radius: 10px;
+      }
+
+      .course-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        background: #f8fafc;
+      }
+
+      .course-card h3 {
+        color: #1e40af;
+        margin-bottom: 0.5rem;
+      }
+
+      .course-status {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      .status-enrolled {
+        background: #dbeafe;
+        color: #1e40af;
+      }
+
+      .status-in-progress {
+        background: #fef3c7;
+        color: #d97706;
+      }
+
+      .status-completed {
+        background: #d1fae5;
+        color: #059669;
+      }
+
+      .certificate {
+        border: 2px solid #059669;
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 1rem 0;
+        background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+        text-align: center;
+      }
+
+      .certificate h3 {
+        color: #059669;
+        margin-bottom: 1rem;
+      }
+
+      .alert {
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .alert-success {
+        background: #d1fae5;
+        color: #065f46;
+        border: 1px solid #a7f3d0;
+      }
+
+      .alert-info {
+        background: #dbeafe;
+        color: #1e3a8a;
+        border: 1px solid #93c5fd;
+      }
+
+      @media (max-width: 768px) {
+        .nav-tabs {
+          flex-direction: column;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <!-- Unified Navigation System -->
+    <script src="/unified-navigation.js"></script>
+  </head>
+  <body>
+    <div class="portal-header">
+      <div class="container">
+        <h1>🎓 Student Portal</h1>
+        <p>Elevate for Humanity Career &amp; Training Institute</p>
+      </div>
+    </div>
+
+    <div class="portal-nav">
+      <div class="container">
+        <div class="nav-tabs">
+          <button
+            type="button"
+            class="nav-tab active"
+            onclick="showTab('enrollment')"
+          >
+            📝 Enrollment
+          </button>
+          <button type="button" class="nav-tab" onclick="showTab('dashboard')">
+            📊 Dashboard
+          </button>
+          <button type="button" class="nav-tab" onclick="showTab('courses')">
+            📚 My Courses
+          </button>
+          <button
+            type="button"
+            class="nav-tab"
+            onclick="showTab('certificates')"
+          >
+            🏆 Certificates
+          </button>
+          <button type="button" class="nav-tab" onclick="showTab('profile')">
+            👤 Profile
+          </button>
+          <button type="button" class="nav-tab" onclick="showTab('support')">
+            💬 Support
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Enrollment Tab -->
+      <div id="enrollment" class="tab-content active">
+        <h2>📝 Course Enrollment</h2>
+        <p>
+          Select and enroll in professional certification programs. All courses
+          include hybrid learning with online modules and hands-on skills
+          validation.
+        </p>
+
+        <form id="enrollmentForm">
+          <div class="form-group">
+            <label for="program">Select Training Program *</label>
+            <select id="program" name="program" required>
+              <option value="">Choose a program...</option>
+              <optgroup label="Healthcare &amp; Public Safety">
+                <option value="hha">
+                  Home Health Aide (HHA) Training - $299
+                </option>
+                <option value="cpr">
+                  CPR &amp; OSHA Safety Technician - $89
+                </option>
+                <option value="dsp">
+                  Direct Support Professional (DSP) - $199
+                </option>
+                <option value="first-aid">
+                  First Aid &amp; Workplace Safety - $79
+                </option>
+              </optgroup>
+              <optgroup label="Technology &amp; Digital Tools">
+                <option value="microsoft">
+                  Microsoft Office Specialist - $149
+                </option>
+                <option value="google">
+                  Google Workspace Productivity - $99
+                </option>
+                <option value="digital-literacy">
+                  Digital Literacy &amp; IC3 - $129
+                </option>
+                <option value="remote-work">
+                  Remote Work &amp; Help Desk - $179
+                </option>
+              </optgroup>
+              <optgroup label="Food Service &amp; Business">
+                <option value="servsafe">ServSafe Food Handler - $69</option>
+                <option value="servsafe-manager">
+                  ServSafe Manager - $149
+                </option>
+                <option value="entrepreneurship">
+                  Youth Entrepreneurship - $199
+                </option>
+                <option value="business-admin">
+                  Business Administration - $249
+                </option>
+              </optgroup>
+              <optgroup label="Skilled Trades">
+                <option value="osha-10">
+                  OSHA 10 Hour Certification - $89
+                </option>
+                <option value="osha-30">
+                  OSHA 30 Hour Certification - $199
+                </option>
+                <option value="janitorial">Janitorial Services - $149</option>
+                <option value="barbering">
+                  Barbering Youth Bootcamp - $399
+                </option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dateOfBirth">Date of Birth *</label>
+              <input type="date" id="dateOfBirth" name="dateOfBirth" required />
+            </div>
+            <div class="form-group">
+              <label for="veteranStatus">Veteran Status</label>
+              <select id="veteranStatus" name="veteranStatus">
+                <option value="">Select status...</option>
+                <option value="veteran">Veteran</option>
+                <option value="active-duty">Active Duty</option>
+                <option value="military-spouse">Military Spouse</option>
+                <option value="not-applicable">Not Applicable</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address *</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Street Address"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City *</label>
+              <input type="text" id="city" name="city" required />
+            </div>
+            <div class="form-group">
+              <label for="state">State *</label>
+              <select id="state" name="state" required>
+                <option value="">Select state...</option>
+                <option value="IN">Indiana</option>
+                <option value="IL">Illinois</option>
+                <option value="OH">Ohio</option>
+                <option value="KY">Kentucky</option>
+                <option value="MI">Michigan</option>
+                <!-- Add more states as needed -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="zipCode">ZIP Code *</label>
+              <input type="text" id="zipCode" name="zipCode" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="fundingSource">Funding Source</label>
+            <select id="fundingSource" name="fundingSource">
+              <option value="">Select funding source...</option>
+              <option value="self-pay">Self Pay</option>
+              <option value="wioa">WIOA (Workforce Innovation)</option>
+              <option value="employer">Employer Sponsored</option>
+              <option value="grant">Grant/Scholarship</option>
+              <option value="va-benefits">VA Benefits</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="accommodations"
+              >Accessibility Accommodations Needed</label
+            >
+            <textarea
+              id="accommodations"
+              name="accommodations"
+              rows="3"
+              placeholder="Please describe any accommodations you need for successful participation in the program..."
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <input type="checkbox" aria-label="checkbox input" required />
+              I agree to the <a href="#terms">Terms and Conditions</a> and
+              <a href="#privacy">Privacy Policy</a> *
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <input type="checkbox" aria-label="checkbox input" />
+              I consent to receive program updates and communications via email
+              and SMS
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            Submit Enrollment Application
+          </button>
+        </form>
+      </div>
+
+      <!-- Dashboard Tab -->
+      <div id="dashboard" class="tab-content">
+        <h2>📊 Student Dashboard</h2>
+
+        <div class="alert alert-success">
+          <strong>Welcome back, Student!</strong> You have 2 active courses and
+          1 completed certification.
+        </div>
+
+        <div class="form-row">
+          <div class="course-card">
+            <h3>Overall Progress</h3>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 68%"></div>
+            </div>
+            <p>68% Complete - 2 of 3 courses finished</p>
+          </div>
+
+          <div class="course-card">
+            <h3>Quick Stats</h3>
+            <p><strong>Enrolled Courses:</strong> 3</p>
+            <p><strong>Completed:</strong> 1</p>
+            <p><strong>Certificates Earned:</strong> 1</p>
+            <p><strong>Next Deadline:</strong> March 15, 2024</p>
+          </div>
+        </div>
+
+        <h3>Recent Activity</h3>
+        <div class="course-card">
+          <p><strong>March 10:</strong> Completed CPR Skills Assessment</p>
+          <p>
+            <strong>March 8:</strong> Submitted Module 3 Assignment - Microsoft
+            Excel
+          </p>
+          <p><strong>March 5:</strong> Started OSHA 10 Hour Training</p>
+          <p>
+            <strong>March 1:</strong> Earned ServSafe Food Handler Certificate
+          </p>
+        </div>
+      </div>
+
+      <!-- Courses Tab -->
+      <div id="courses" class="tab-content">
+        <h2>📚 My Courses</h2>
+
+        <div class="course-card">
+          <h3>CPR &amp; OSHA Safety Technician</h3>
+          <span class="course-status status-completed">Completed</span>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 100%"></div>
+          </div>
+          <p><strong>Completion Date:</strong> February 28, 2024</p>
+          <p><strong>Grade:</strong> 94% (Pass)</p>
+          <button type="button" class="btn btn-success">
+            View Certificate
+          </button>
+        </div>
+
+        <div class="course-card">
+          <h3>Microsoft Office Specialist</h3>
+          <span class="course-status status-in-progress">In Progress</span>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 75%"></div>
+          </div>
+          <p><strong>Progress:</strong> 75% Complete</p>
+          <p><strong>Next Module:</strong> PowerPoint Advanced Features</p>
+          <p><strong>Due Date:</strong> March 15, 2024</p>
+          <button type="button" class="btn btn-primary">Continue Course</button>
+        </div>
+
+        <div class="course-card">
+          <h3>OSHA 10 Hour Certification</h3>
+          <span class="course-status status-in-progress">In Progress</span>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 30%"></div>
+          </div>
+          <p><strong>Progress:</strong> 30% Complete</p>
+          <p><strong>Next Module:</strong> Hazard Recognition</p>
+          <p><strong>Due Date:</strong> March 30, 2024</p>
+          <button type="button" class="btn btn-primary">Continue Course</button>
+        </div>
+      </div>
+
+      <!-- Certificates Tab -->
+      <div id="certificates" class="tab-content">
+        <h2>🏆 My Certificates</h2>
+
+        <div class="certificate">
+          <h3>🏥 CPR &amp; OSHA Safety Technician</h3>
+          <p><strong>Issued:</strong> February 28, 2024</p>
+          <p><strong>Expires:</strong> February 28, 2026</p>
+          <p><strong>Certificate ID:</strong> EFH-CPR-2024-001247</p>
+          <p><strong>Verification Code:</strong> ABC123XYZ789</p>
+          <div style="margin-top: 1rem">
+            <button type="button" class="btn btn-primary">Download PDF</button>
+            <button type="button" class="btn btn-success">
+              Share on LinkedIn
+            </button>
+            <button type="button" class="btn btn-primary">
+              Verify Certificate
+            </button>
+          </div>
+        </div>
+
+        <div class="alert alert-info">
+          <strong>Upcoming Certificates:</strong> You will earn 2 additional
+          certificates upon completion of your current courses.
+        </div>
+      </div>
+
+      <!-- Profile Tab -->
+      <div id="profile" class="tab-content">
+        <h2>👤 Student Profile</h2>
+
+        <form id="profileForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="profileFirstName">First Name</label>
+              <input
+                type="text"
+                id="profileFirstName"
+                name="profileFirstName"
+                value="John"
+              />
+            </div>
+            <div class="form-group">
+              <label for="profileLastName">Last Name</label>
+              <input
+                type="text"
+                id="profileLastName"
+                name="profileLastName"
+                value="Doe"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="profileEmail">Email Address</label>
+              <input
+                type="email"
+                id="profileEmail"
+                name="profileEmail"
+                value="john.doe@email.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="profilePhone">Phone Number</label>
+              <input
+                type="tel"
+                id="profilePhone"
+                name="profilePhone"
+                value="(555) 123-4567"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="profileAddress">Address</label>
+            <input
+              type="text"
+              id="profileAddress"
+              name="profileAddress"
+              value="123 Main Street"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="profileCity">City</label>
+              <input
+                type="text"
+                id="profileCity"
+                name="profileCity"
+                value="Indianapolis"
+              />
+            </div>
+            <div class="form-group">
+              <label for="profileState">State</label>
+              <input
+                type="text"
+                id="profileState"
+                name="profileState"
+                value="Indiana"
+              />
+            </div>
+            <div class="form-group">
+              <label for="profileZip">ZIP Code</label>
+              <input
+                type="text"
+                id="profileZip"
+                name="profileZip"
+                value="46201"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="emergencyContact">Emergency Contact</label>
+            <input
+              type="text"
+              id="emergencyContact"
+              name="emergencyContact"
+              placeholder="Name and phone number"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Update Profile</button>
+        </form>
+      </div>
+
+      <!-- Support Tab -->
+      <div id="support" class="tab-content">
+        <h2>💬 Student Support</h2>
+
+        <div class="form-row">
+          <div class="course-card">
+            <h3>📞 Contact Support</h3>
+            <p>
+              <strong>Student Support:</strong> elevateforhumanity@gmail.com
+            </p>
+            <p><strong>Phone:</strong> (555) 123-4568</p>
+            <p><strong>Hours:</strong> Monday-Friday, 8 AM - 6 PM EST</p>
+            <p><strong>TTY:</strong> (555) 123-4571</p>
+          </div>
+
+          <div class="course-card">
+            <h3>🔧 Technical Support</h3>
+            <p><strong>IT Help Desk:</strong> elevateforhumanity@gmail.com</p>
+            <p><strong>Phone:</strong> (555) 123-4572</p>
+            <p><strong>Live Chat:</strong> Available 24/7</p>
+            <button type="button" class="btn btn-primary">
+              Start Live Chat
+            </button>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <h3>📝 Submit Support Ticket</h3>
+          <form id="supportForm">
+            <div class="form-group">
+              <label for="supportCategory">Category</label>
+              <select id="supportCategory" name="supportCategory">
+                <option value="">Select category...</option>
+                <option value="technical">Technical Issue</option>
+                <option value="course">Course Content</option>
+                <option value="enrollment">Enrollment</option>
+                <option value="certificates">Certificates</option>
+                <option value="accessibility">Accessibility</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="supportSubject">Subject</label>
+              <input
+                type="text"
+                id="supportSubject"
+                name="supportSubject"
+                placeholder="Brief description of your issue"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="supportMessage">Message</label>
+              <textarea
+                id="supportMessage"
+                name="supportMessage"
+                rows="5"
+                placeholder="Please provide detailed information about your issue..."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Ticket</button>
+          </form>
+        </div>
+
+        <div class="course-card">
+          <h3>📚 Resources</h3>
+          <ul style="list-style: none; padding: 0">
+            <li style="margin: 0.5rem 0">
+              📖 <a href="#student-handbook">Student Handbook</a>
+            </li>
+            <li style="margin: 0.5rem 0">
+              💻 <a href="#tech-requirements">Technical Requirements</a>
+            </li>
+            <li style="margin: 0.5rem 0">
+              ♿ <a href="#accessibility-guide">Accessibility Guide</a>
+            </li>
+            <li style="margin: 0.5rem 0">
+              ❓ <a href="#faq">Frequently Asked Questions</a>
+            </li>
+            <li style="margin: 0.5rem 0">
+              📋 <a href="#policies">Policies &amp; Procedures</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showTab(tabName) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach((tab) => tab.classList.remove('active'));
+
+        // Remove active class from all nav tabs
+        const navTabs = document.querySelectorAll('.nav-tab');
+        navTabs.forEach((tab) => tab.classList.remove('active'));
+
+        // Show selected tab content
+        document.getElementById(tabName).classList.add('active');
+
+        // Add active class to clicked nav tab
+        event.target.classList.add('active');
+      }
+
+      // Form submission handlers
+      document
+        .getElementById('enrollmentForm')
+        .addEventListener('submit', function (e) {
+          e.preventDefault();
+          alert(
+            'Enrollment application submitted successfully! You will receive a confirmation email within 24 hours.'
+          );
+        });
+
+      document
+        .getElementById('profileForm')
+        .addEventListener('submit', function (e) {
+          e.preventDefault();
+          alert('Profile updated successfully!');
+        });
+
+      document
+        .getElementById('supportForm')
+        .addEventListener('submit', function (e) {
+          e.preventDefault();
+          alert(
+            'Support ticket submitted successfully! Ticket #EFH-2024-001234 has been created.'
+          );
+        });
+
+      // Accessibility enhancements
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Tab') {
+          document.body.classList.add('keyboard-nav');
+        }
+      });
+
+      // Simple form validation
+      function validateForm(form) {
+        const requiredFields = form.querySelectorAll('[required]');
+        let isValid = true;
+
+        requiredFields.forEach((field) => {
+          if (!field.value.trim()) {
+            field.style.borderColor = '#ef4444';
+            isValid = false;
+          } else {
+            field.style.borderColor = '#d1d5db';
+          }
+        });
+
+        return isValid;
+      }
+
+      console.log('Student Portal loaded successfully');
+    </script>
+  </body>
+</html>

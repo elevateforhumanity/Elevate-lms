@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete Enrollment - Elevate for Humanity</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Complete your enrollment in 4 easy steps: Application, Schedule Interview, Video Interview, Confirmation"
+    />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <!-- Calendly CSS -->
+    <link
+      href="https://assets.calendly.com/assets/external/widget.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .step-card {
+        transition: all 0.3s ease;
+      }
+      .step-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .step-number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header
+      class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-8"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <h1 class="text-4xl font-bold mb-2">Complete Your Enrollment</h1>
+        <p class="text-xl opacity-90">
+          4 Simple Steps to Start Your Career Training
+        </p>
+      </div>
+    </header>
+
+    <main role="main" class="max-w-6xl mx-auto px-4 py-12">
+      <!-- Progress Overview -->
+      <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-2xl font-bold mb-4">Enrollment Process</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="text-center">
+            <div class="step-number bg-blue-600 text-white mx-auto mb-2">1</div>
+            <p class="font-medium">Application</p>
+            <p class="text-sm text-gray-600">5 minutes</p>
+          </div>
+          <div class="text-center">
+            <div class="step-number bg-blue-600 text-white mx-auto mb-2">2</div>
+            <p class="font-medium">Schedule</p>
+            <p class="text-sm text-gray-600">2 minutes</p>
+          </div>
+          <div class="text-center">
+            <div class="step-number bg-blue-600 text-white mx-auto mb-2">3</div>
+            <p class="font-medium">Video Interview</p>
+            <p class="text-sm text-gray-600">10 minutes</p>
+          </div>
+          <div class="text-center">
+            <div class="step-number bg-green-600 text-white mx-auto mb-2">
+              ✓
+            </div>
+            <p class="font-medium">Confirmation</p>
+            <p class="text-sm text-gray-600">2-3 days</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 1: Application -->
+      <div class="step-card bg-white rounded-lg shadow-lg p-8 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="step-number bg-blue-600 text-white flex-shrink-0">1</div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold mb-4">Submit Your Application</h2>
+            <p class="text-lg text-gray-700 mb-4">
+              Complete our enrollment form with your basic information,
+              education history, and program interests.
+            </p>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+              <p class="text-sm text-blue-800">
+                <strong>What you'll need:</strong> Contact information,
+                education history, employment goals, and WIOA eligibility
+                information (if applicable)
+              </p>
+            </div>
+
+            <!-- Google Form Embed (NO IFRAME) -->
+            <div class="mb-4">
+              <a
+                href="https://forms.gle/YOUR_ENROLLMENT_FORM_ID"
+                target="_blank"
+                class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors"
+              >
+                Start Application →
+              </a>
+            </div>
+
+            <p class="text-sm text-gray-600">
+              ⏱️ Takes about 5 minutes | 💾 Save your progress | 📱 Mobile
+              friendly
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Schedule Interview -->
+      <div class="step-card bg-white rounded-lg shadow-lg p-8 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="step-number bg-blue-600 text-white flex-shrink-0">2</div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold mb-4">Schedule Your Interview</h2>
+            <p class="text-lg text-gray-700 mb-6">
+              After submitting your application, schedule a 30-minute enrollment
+              interview with our team.
+            </p>
+
+            <!-- Calendly Inline Widget (NO IFRAME - Direct Embed) -->
+            <div
+              class="calendly-inline-widget"
+              data-url="https://calendly.com/elevateforhumanity/enrollment-interview?hide_gdpr_banner=1"
+              style="min-width: 320px; height: 700px"
+            ></div>
+
+            <div class="mt-4 bg-green-50 border-l-4 border-green-500 p-4">
+              <p class="text-sm text-green-800">
+                <strong>✅ What to expect:</strong> We'll discuss your goals,
+                answer questions about the program, and review next steps.
+                You'll receive a calendar invite and email confirmation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Video Interview -->
+      <div class="step-card bg-white rounded-lg shadow-lg p-8 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="step-number bg-blue-600 text-white flex-shrink-0">3</div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold mb-4">Complete Video Interview</h2>
+            <p class="text-lg text-gray-700 mb-4">
+              Record brief video responses to 4 questions (2 minutes each). This
+              helps us understand your goals and motivation.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h3 class="font-bold mb-2">📹 Questions Include:</h3>
+                <ul class="space-y-1 text-sm">
+                  <li>• Why join this program?</li>
+                  <li>• Your relevant experience</li>
+                  <li>• Career goals</li>
+                  <li>• Challenges you've overcome</li>
+                </ul>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <h3 class="font-bold mb-2">✅ Before You Start:</h3>
+                <ul class="space-y-1 text-sm">
+                  <li>• Find a quiet location</li>
+                  <li>• Good lighting</li>
+                  <li>• Test your camera/mic</li>
+                  <li>• You can retake answers</li>
+                </ul>
+              </div>
+            </div>
+
+            <a
+              href="/video-interview"
+              class="inline-block bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors"
+            >
+              Start Video Interview →
+            </a>
+
+            <p class="text-sm text-gray-600 mt-4">
+              ⏱️ Takes about 10 minutes | 🔄 Retake any answer | 💾 Auto-saves
+              progress
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Confirmation -->
+      <div class="step-card bg-white rounded-lg shadow-lg p-8">
+        <div class="flex items-start space-x-4">
+          <div class="step-number bg-green-600 text-white flex-shrink-0">✓</div>
+          <div class="flex-1">
+            <h2 class="text-3xl font-bold mb-4">Receive Confirmation</h2>
+            <p class="text-lg text-gray-700 mb-6">
+              Our team will review your application and video interview within
+              2-3 business days.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-blue-50 p-4 rounded-lg text-center">
+                <div class="text-3xl mb-2">📧</div>
+                <h3 class="font-bold mb-1">Email Notification</h3>
+                <p class="text-sm text-gray-600">
+                  You'll receive an email with your enrollment decision
+                </p>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg text-center">
+                <div class="text-3xl mb-2">📞</div>
+                <h3 class="font-bold mb-1">Follow-up Call</h3>
+                <p class="text-sm text-gray-600">
+                  We may call to discuss next steps or answer questions
+                </p>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg text-center">
+                <div class="text-3xl mb-2">🎓</div>
+                <h3 class="font-bold mb-1">Welcome Packet</h3>
+                <p class="text-sm text-gray-600">
+                  Approved students receive orientation materials
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Help Section -->
+      <div class="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-6 mt-8">
+        <h3 class="text-xl font-bold mb-3">Need Help?</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <p class="font-medium mb-2">📞 Call Us:</p>
+            <p class="text-lg font-bold text-blue-600">317-314-3757</p>
+            <p class="text-sm text-gray-600">Monday-Friday, 8am-6pm EST</p>
+          </div>
+          <div>
+            <p class="font-medium mb-2">📧 Email Us:</p>
+            <p class="text-lg font-bold text-blue-600">
+              elevateforhumanity@gmail.com
+            </p>
+            <p class="text-sm text-gray-600">We respond within 24 hours</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <p class="mb-2"><strong>Elevate for Humanity</strong></p>
+        <p class="text-sm opacity-75">
+          Indianapolis, IN | WIOA Approved | DOL Compliant
+        </p>
+        <p class="text-sm opacity-75 mt-2">
+          © 2025 Elevate for Humanity. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Calendly Script -->
+    <script
+      type="text/javascript"
+      src="https://assets.calendly.com/assets/external/widget.js"
+      async
+    ></script>
+  </body>
+</html>

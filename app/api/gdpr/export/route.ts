@@ -1,0 +1,46 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+import { NextRequest, NextResponse } from 'next/server';
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import { exportUserData, requestDataPortability } from '@/lib/gdpr';
+import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/logger';
+
+export async function POST(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { format = 'json' } = await request.json();
+    const result = await requestDataPortability(user.id, format);
+
+    if (result.success === false) {
+      return NextResponse.json(
+        { error: 'error' in result ? result.error : 'Export failed' },
+        { status: 500 }
+      );
+    }
+
+    // Use 'in' operator to safely narrow the union
+    return new NextResponse('data' in result ? result.data : '', {
+      headers: {
+        'Content-Type':
+          'contentType' in result ? result.contentType : 'application/json',
+        'Content-Disposition': `attachment; filename="${'filename' in result ? result.filename : 'export.json'}"`,
+      },
+    });
+  } catch (error: unknown) {
+    logger.error('Error exporting user data:', error);
+    return NextResponse.json(
+      { error: 'Failed to export data' },
+      { status: 500 }
+    );
+  }
+}

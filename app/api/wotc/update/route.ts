@@ -1,0 +1,78 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+import { NextResponse } from 'next/server';
+import { createAdminClient } from '@/lib/supabase/admin';
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const { employer_id, apprentice_id, hire_date, submitted, eligible } = body;
+
+    const supabase = createAdminClient();
+
+    const { data, error }: any = await supabase
+      .from('wotc_tracking')
+      .upsert(
+        {
+          employer_id,
+          apprentice_id,
+          hire_date,
+          submitted,
+          eligible,
+        },
+        { onConflict: 'apprentice_id' }
+      )
+      .select()
+      .single();
+
+    if (error) {
+      return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 400 });
+    }
+
+    return NextResponse.json({ success: true, wotc: data });
+  } catch (error: unknown) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET() {
+  try {
+    const supabase = createAdminClient();
+
+    const { data, error }: any = await supabase
+      .from('wotc_tracking')
+      .select('*')
+      .order('hire_date', { ascending: false });
+
+    if (error) {
+      return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 400 });
+    }
+
+    // Calculate urgency for each record
+    const enrichedData = data?.map((item: any) => {
+      const deadline = new Date(record.hire_date);
+      deadline.setDate(deadline.getDate() + 28);
+      const daysRemaining = Math.ceil(
+        (deadline.getTime() - Date.now()) / (1000 * 60 * 60 * 24)
+      );
+      return {
+        ...record,
+        deadline: deadline.toISOString().split('T')[0],
+        days_remaining: daysRemaining,
+        is_urgent: daysRemaining <= 5 && daysRemaining >= 0,
+        is_overdue: daysRemaining < 0,
+      };
+    });
+
+    return NextResponse.json({ wotc_tracking: enrichedData });
+  } catch (error: unknown) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
+  }
+}

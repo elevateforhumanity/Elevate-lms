@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Check Your Eligibility | Free Training Programs | Elevate for Humanity
+    </title>
+    <meta
+      name="description"
+      content="Find out if you qualify for free job training in Indiana. WIOA funding, Workforce Ready Grants, and employer sponsorship available."
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        color: #1e293b;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #4c1d95 0%, #22c55e 100%);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        border-radius: 16px;
+        margin-bottom: 30px;
+      }
+
+      .eligibility-form {
+        background: white;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+
+      .form-section {
+        margin-bottom: 32px;
+      }
+
+      .form-section h3 {
+        color: #4c1d95;
+        margin-bottom: 16px;
+        font-size: 1.2rem;
+      }
+
+      .checkbox-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+      }
+
+      .checkbox-item:hover {
+        border-color: #4c1d95;
+        background: #fafbfc;
+      }
+
+      .checkbox-item input[type='checkbox'] {
+        width: 20px;
+        height: 20px;
+        accent-color: #4c1d95;
+      }
+
+      .checkbox-item label {
+        flex: 1;
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      .result-box {
+        background: #f0fdf4;
+        border: 2px solid #22c55e;
+        border-radius: 12px;
+        padding: 24px;
+        text-align: center;
+        display: none;
+      }
+
+      .result-box.show {
+        display: block;
+      }
+
+      .result-box.eligible {
+        background: #f0fdf4;
+        border-color: #22c55e;
+      }
+
+      .result-box.not-eligible {
+        background: #fef2f2;
+        border-color: #ef4444;
+      }
+
+      .result-icon {
+        font-size: 3rem;
+        margin-bottom: 16px;
+      }
+
+      .result-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .eligible .result-title {
+        color: #166534;
+      }
+
+      .not-eligible .result-title {
+        color: #dc2626;
+      }
+
+      .next-steps {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        margin-top: 20px;
+      }
+
+      .next-steps h4 {
+        color: #4c1d95;
+        margin-bottom: 16px;
+      }
+
+      .next-steps ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .next-steps li {
+        padding: 8px 0;
+        border-bottom: 1px solid #f1f5f9;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .next-steps li:last-child {
+        border-bottom: none;
+      }
+
+      .step-number {
+        background: #4c1d95;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+
+      .check-btn {
+        background: linear-gradient(135deg, #4c1d95, #22c55e);
+        color: white;
+        border: none;
+        padding: 16px 32px;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        width: 100%;
+        margin-top: 24px;
+      }
+
+      .check-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(76, 29, 149, 0.3);
+      }
+
+      .apply-btn {
+        background: #22c55e;
+        color: white;
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        display: inline-block;
+        margin-top: 16px;
+        transition: all 0.2s ease;
+      }
+
+      .apply-btn:hover {
+        background: #16a34a;
+        transform: translateY(-1px);
+      }
+
+      .funding-info {
+        background: #fef3c7;
+        border: 1px solid #f59e0b;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+
+      .funding-info h3 {
+        color: #92400e;
+        margin-bottom: 12px;
+      }
+
+      .funding-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .funding-option {
+        background: white;
+        padding: 16px;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #f3f4f6;
+      }
+
+      .funding-option h4 {
+        color: #4c1d95;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+
+      .funding-option p {
+        font-size: 0.8rem;
+        color: #64748b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🎯 Check Your Eligibility</h1>
+        <p>Find out if you qualify for free job training in Indiana</p>
+      </div>
+
+      <div class="funding-info">
+        <h3>💰 Available Funding Options</h3>
+        <p>Multiple funding sources available to cover your training costs:</p>
+        <div class="funding-options">
+          <div class="funding-option">
+            <h4>WIOA Funding</h4>
+            <p>
+              Federal workforce development funding for eligible individuals
+            </p>
+          </div>
+          <div class="funding-option">
+            <h4>Workforce Ready Grants</h4>
+            <p>Indiana state grants for high-demand career training</p>
+          </div>
+          <div class="funding-option">
+            <h4>Employer Sponsorship</h4>
+            <p>
+              Partner employers sponsor training for guaranteed job placement
+            </p>
+          </div>
+          <div class="funding-option">
+            <h4>Apprenticeship Programs</h4>
+            <p>Earn while you learn with union and trade partnerships</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="eligibility-form" id="eligibility-form">
+        <div class="form-section">
+          <h3>📍 Residency Requirements</h3>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="indiana-resident" name="residency" />
+              <label for="indiana-resident">I am an Indiana resident</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="work-authorization" name="residency" />
+              <label for="work-authorization"
+                >I am authorized to work in the United States</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>👤 Age &amp; Education</h3>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="age-18" name="age" />
+              <label for="age-18">I am 18 years of age or older</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="high-school" name="education" />
+              <label for="high-school"
+                >I have a high school diploma or equivalent</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>💼 Employment Status</h3>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="unemployed" name="employment" />
+              <label for="unemployed"
+                >I am currently unemployed or underemployed</label
+              >
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="low-income" name="employment" />
+              <label for="low-income"
+                >My household income qualifies as low-income</label
+              >
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="career-change" name="employment" />
+              <label for="career-change"
+                >I am seeking to change careers or upgrade skills</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>🎯 Program Interest</h3>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="tech-interest" name="interest" />
+              <label for="tech-interest"
+                >I am interested in technology careers (IT, cybersecurity, cloud
+                computing)</label
+              >
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="healthcare-interest" name="interest" />
+              <label for="healthcare-interest"
+                >I am interested in healthcare careers (CNA, medical
+                assistant)</label
+              >
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="trades-interest" name="interest" />
+              <label for="trades-interest"
+                >I am interested in skilled trades (electrical, construction,
+                HVAC)</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="check-btn" onclick="checkEligibility()">
+          🔍 Check My Eligibility
+        </button>
+      </form>
+
+      <div id="result-box" class="result-box">
+        <!-- Results will be populated by JavaScript -->
+      </div>
+    </div>
+
+    <script>
+      function checkEligibility() {
+        const form = document.getElementById('eligibility-form');
+        const resultBox = document.getElementById('result-box');
+
+        // Get all checked boxes
+        const checkedBoxes = form.querySelectorAll(
+          'input[type="checkbox"]:checked'
+        );
+        const totalChecked = checkedBoxes.length;
+
+        // Check required criteria
+        const indianaResident =
+          document.getElementById('indiana-resident').checked;
+        const workAuth = document.getElementById('work-authorization').checked;
+        const age18 = document.getElementById('age-18').checked;
+        const highSchool = document.getElementById('high-school').checked;
+
+        const hasEmploymentCriteria =
+          document.getElementById('unemployed').checked ||
+          document.getElementById('low-income').checked ||
+          document.getElementById('career-change').checked;
+
+        const hasInterest =
+          document.getElementById('tech-interest').checked ||
+          document.getElementById('healthcare-interest').checked ||
+          document.getElementById('trades-interest').checked;
+
+        // Determine eligibility
+        const isEligible =
+          indianaResident &amp;&amp;
+          workAuth &amp;&amp;
+          age18 &amp;&amp;
+          highSchool &amp;&amp;
+          hasEmploymentCriteria &amp;&amp;
+          hasInterest;
+
+        // Show results
+        resultBox.className =
+          'result-box show ' + (isEligible ? 'eligible' : 'not-eligible');
+
+        if (isEligible) {
+          resultBox.innerHTML = `
+                    <div class="result-icon">🎉</div>
+                    <div class="result-title">Congratulations! You Qualify!</div>
+                    <p>Based on your responses, you appear to be eligible for free training programs through WIOA funding and other assistance programs.</p>
+
+                    <div class="next-steps">
+                        <h4>🚀 Your Next Steps:</h4>
+                        <ul>
+                            <li><span class="step-number">1</span> Complete the full application</li>
+                            <li><span class="step-number">2</span> Schedule an intake appointment</li>
+                            <li><span class="step-number">3</span> Meet with a career counselor</li>
+                            <li><span class="step-number">4</span> Choose your training program</li>
+                            <li><span class="step-number">5</span> Start your new career path!</li>
+                        </ul>
+                        <a href="/programs/" class="apply-btn">🎓 View Available Programs</a>
+                        <a href="/contact/" class="apply-btn">📞 Schedule Appointment</a>
+                    </div>
+                `;
+        } else {
+          let missingCriteria = [];
+          if (!indianaResident) missingCriteria.push('Indiana residency');
+          if (!workAuth) missingCriteria.push('Work authorization');
+          if (!age18) missingCriteria.push('Age requirement (18+)');
+          if (!highSchool)
+            missingCriteria.push('High school diploma/equivalent');
+          if (!hasEmploymentCriteria)
+            missingCriteria.push('Employment status criteria');
+          if (!hasInterest) missingCriteria.push('Program interest selection');
+
+          resultBox.innerHTML = `
+                    <div class="result-icon">⚠️</div>
+                    <div class="result-title">Additional Information Needed</div>
+                    <p>Based on your responses, you may need to meet additional criteria or explore alternative funding options.</p>
+
+                    <div class="next-steps">
+                        <h4>📞 Let's Talk About Your Options:</h4>
+                        <p>Our enrollment specialists can help you:</p>
+                        <ul>
+                            <li><span class="step-number">1</span> Explore alternative funding sources</li>
+                            <li><span class="step-number">2</span> Find programs that match your situation</li>
+                            <li><span class="step-number">3</span> Connect with employer sponsors</li>
+                            <li><span class="step-number">4</span> Plan your path to eligibility</li>
+                        </ul>
+                        <a href="/contact/" class="apply-btn">📞 Speak with a Counselor</a>
+                        <a href="/funding-options.html" class="apply-btn">💰 View All Funding Options</a>
+                    </div>
+                `;
+        }
+
+        // Scroll to results
+        resultBox.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // Track form interactions
+      document.addEventListener('DOMContentLoaded', () => {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener('change', () => {
+            const checkedCount = document.querySelectorAll(
+              'input[type="checkbox"]:checked'
+            ).length;
+            console.log(`Eligibility check: ${checkedCount} criteria selected`);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

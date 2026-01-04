@@ -1,0 +1,35 @@
+import { NextResponse } from 'next/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { createAdminClient } from '@/lib/supabase/admin';
+
+type Params = Promise<{ id: string }>;
+
+export async function PATCH(req: Request, { params }: { params: Params }) {
+  try {
+    const { id } = await params;
+    const body = await req.json();
+    const { status, notes } = body;
+
+    const supabase = createAdminClient();
+
+    const { data, error }: any = await supabase
+      .from('employer_onboarding')
+      .update({ status, notes })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) {
+      return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 400 });
+    }
+
+    return NextResponse.json({ success: true, onboarding: data });
+  } catch (error: unknown) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
+  }
+}

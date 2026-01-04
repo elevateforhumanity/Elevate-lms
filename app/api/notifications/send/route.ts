@@ -1,0 +1,45 @@
+export const runtime = 'nodejs';
+export const maxDuration = 60;
+
+import { NextRequest, NextResponse } from 'next/server';
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import webpush from 'web-push';
+import { logger } from '@/lib/logger';
+
+// Configure web-push with VAPID keys
+// In production, these should be in environment variables
+const vapidPublicKey = process.env.VAPID_PUBLIC_KEY || '';
+const vapidPrivateKey = process.env.VAPID_PRIVATE_KEY || '';
+const vapidSubject =
+  process.env.VAPID_SUBJECT || 'mailto:admin@elevateforhumanity.org';
+
+if (vapidPublicKey && vapidPrivateKey) {
+  webpush.setVapidDetails(vapidSubject, vapidPublicKey, vapidPrivateKey);
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const { subscription, notification } = await request.json();
+
+    if (!subscription || !notification) {
+      return NextResponse.json(
+        { success: false, error: 'Missing subscription or notification data' },
+        { status: 400 }
+      );
+    }
+
+    // Send push notification
+    await webpush.sendNotification(subscription, JSON.stringify(notification));
+
+    return NextResponse.json({
+      success: true,
+      message: 'Notification sent',
+    });
+  } catch (error: unknown) {
+    logger.error('[Notifications] Send error:', error);
+    return NextResponse.json(
+      { success: false, error: 'Failed to send notification' },
+      { status: 500 }
+    );
+  }
+}

@@ -1,0 +1,91 @@
+import { NextResponse } from 'next/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { createAdminClient } from '@/lib/supabase/admin';
+import { createClient } from '@/lib/supabase/server';
+
+type Payload = {
+  id: string;
+  patch: Record<string, unknown>;
+};
+
+export async function POST(req: Request) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const adminClient = createAdminClient();
+  const body = (await req.json()) as Payload;
+
+  if (!body?.id || !body?.patch) {
+    return NextResponse.json({ error: 'Missing id or patch' }, { status: 400 });
+  }
+
+  // Safety: only allow these fields to be updated
+  const allowed = new Set([
+    'inquiry_submitted',
+    'inquiry_submitted_at',
+    'icc_account_created',
+    'icc_account_created_at',
+    'workone_appointment_scheduled',
+    'workone_appointment_date',
+    'workone_appointment_time',
+    'workone_location',
+    'told_advisor_efh',
+    'told_advisor_efh_at',
+    'advisor_docs_uploaded',
+    'advisor_docs_uploaded_at',
+    'funding_status',
+    'funding_type',
+    'funding_status_updated_at',
+    'efh_onboarding_call_completed',
+    'efh_onboarding_call_date',
+    'efh_onboarding_call_completed_at',
+    'program_start_confirmed',
+    'program_start_date',
+    'program_start_confirmed_at',
+    'staff_notes',
+    'updated_at',
+  ]);
+
+  const patch: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(body.patch)) {
+    if (allowed.has(k)) patch[k] = v;
+  }
+
+  patch.updated_at = new Date().toISOString();
+
+  // Resolve org scope from admin profile
+  const { data: prof, error: profErr } = await adminClient
+    .from('profiles')
+    .select('organization_id')
+    .eq('id', user.id)
+    .maybeSingle();
+
+  if (profErr)
+    return NextResponse.json({ error: profErr.message }, { status: 500 });
+  if (!prof?.organization_id)
+    return NextResponse.json(
+      { error: 'No active organization found' },
+      { status: 400 }
+    );
+
+  const { data, error } = await adminClient
+    .from('student_next_steps')
+    .update(patch)
+    .eq('id', body.id)
+    .eq('organization_id', prof.organization_id)
+    .select('*')
+    .maybeSingle();
+
+  if (error)
+    return NextResponse.json({ error: error.message }, { status: 500 });
+
+  return NextResponse.json({ ok: true, row: data });
+}

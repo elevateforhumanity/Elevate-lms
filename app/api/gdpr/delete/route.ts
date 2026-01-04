@@ -1,0 +1,48 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+import { NextRequest, NextResponse } from 'next/server';
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import { deleteUserData } from '@/lib/gdpr';
+import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/logger';
+
+export async function POST(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { confirmation } = await request.json();
+
+    if (confirmation !== 'DELETE_MY_DATA') {
+      return NextResponse.json(
+        { error: 'Invalid confirmation' },
+        { status: 400 }
+      );
+    }
+
+    const result = await deleteUserData(user.id);
+
+    if (!result.success) {
+      return NextResponse.json({ error: result.error }, { status: 500 });
+    }
+
+    // Sign out the user
+    await supabase.auth.signOut();
+
+    return NextResponse.json({
+      success: true,
+      message: 'Your data has been deleted',
+    });
+  } catch (error: unknown) {
+    logger.error('Error deleting user data:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete data' },
+      { status: 500 }
+    );
+  }
+}

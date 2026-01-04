@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!-- Primary Meta Tags -->
+    <title>
+      Student Account Dashboard | Manage Profile &amp; Enrollments | Elevate for
+      Humanity
+    </title>
+    <meta
+      name="title"
+      content="Student Account Dashboard | Manage Profile &amp; Enrollments | Elevate for Humanity"
+    />
+    <meta
+      name="description"
+      content="Manage your AI and data science course enrollments, update profile information, track learning progress, and access exclusive student resources. Secure student dashboard."
+    />
+    <meta
+      name="keywords"
+      content="student account, course management, profile dashboard, enrollment status, learning progress, AI student portal, data science student account, course dashboard"
+    />
+
+    <!-- Canonical URL -->
+    <link
+      rel="canonical"
+      href="https://portal.elevateforhumanity.org/account.html"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://portal.elevateforhumanity.org/account.html"
+    />
+    <meta
+      property="og:title"
+      content="Student Account Dashboard | Manage Profile &amp; Enrollments"
+    />
+    <meta
+      property="og:description"
+      content="Manage your AI and data science course enrollments, update profile information, and track learning progress."
+    />
+    <meta
+      property="og:image"
+      content="https://portal.elevateforhumanity.org/assets/account-og.jpg"
+    />
+    <meta property="og:site_name" content="Elevate for Humanity" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://portal.elevateforhumanity.org/account.html"
+    />
+    <meta
+      property="twitter:title"
+      content="Student Account Dashboard | Manage Profile &amp; Enrollments"
+    />
+    <meta
+      property="twitter:description"
+      content="Manage your AI and data science course enrollments, update profile information, and track learning progress."
+    />
+    <meta
+      property="twitter:image"
+      content="https://portal.elevateforhumanity.org/assets/account-twitter.jpg"
+    />
+
+    <!-- Security &amp; Performance -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <meta name="bingbot" content="noindex, nofollow" />
+
+    <!-- Structured Data for User Dashboard -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Student Account Dashboard",
+        "description": "Secure student account management for AI and data science courses",
+        "url": "https://portal.elevateforhumanity.org/account.html",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Elevate for Humanity"
+        },
+        "potentialAction": {
+          "@type": "UpdateAction",
+          "target": "https://portal.elevateforhumanity.org/account.html",
+          "description": "Update student profile and preferences"
+        }
+      }
+    </script>
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+      gtag('event', 'page_view', {
+        page_title: 'Student Account',
+        page_location: window.location.href,
+      });
+    </script>
+    <style>
+      :root {
+        --max: 960px;
+        --pad: 20px;
+        --r: 12px;
+        --ink: #111;
+        --muted: #666;
+        --line: #e3f2fd;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, Arial, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(135deg, #f8f9ff 0%, #e8f4fd 100%);
+        min-height: 100vh;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 24px var(--pad);
+      }
+      header {
+        border-bottom: 2px solid var(--line);
+        position: sticky;
+        top: 0;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      header .bar {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px var(--pad);
+      }
+      .brand {
+        font-weight: 900;
+        color: #1976d2;
+        font-size: 1.2em;
+      }
+      .btn {
+        padding: 10px 16px;
+        border: 2px solid #1976d2;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+        color: white;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+        box-shadow: 0 2px 4px rgba(25, 118, 210, 0.3);
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
+      }
+      .btn[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .card {
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        padding: 20px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr;
+      }
+      .row {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr;
+      }
+      label {
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid var(--line);
+        border-radius: 10px;
+        background: white;
+        transition: border-color 0.2s;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #1976d2;
+        box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .hint {
+        font-size: 12px;
+        color: #777;
+        background: #f5f5f5;
+        padding: 8px 12px;
+        border-radius: 6px;
+        margin-top: 8px;
+      }
+      .section {
+        margin-top: 30px;
+      }
+      ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+      .ok {
+        color: #0a7b3e;
+        background: #e8f5e8;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-weight: 600;
+      }
+      .err {
+        color: #b00020;
+        background: #ffebee;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-weight: 600;
+      }
+      .hero {
+        background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .hero h1 {
+        margin: 0 0 10px 0;
+        font-size: 2.2em;
+        font-weight: 700;
+      }
+      .hero p {
+        margin: 0;
+        font-size: 1.1em;
+        opacity: 0.9;
+      }
+      @media (min-width: 800px) {
+        .grid-2 {
+          grid-template-columns: 1fr 1fr;
+        }
+        .row-2 {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- EFH Universal Header -->
+    <div id="efh-header"></div>
+
+    <header>
+      <div class="bar wrap">
+        <div class="brand"><a href="hub.html">Elevate for Humanity</a></div>
+        <nav
+          role="navigation"
+          style="display: flex; gap: 8px; align-items: center"
+        >
+          <a class="btn" href="programs.html">Programs</a>
+          <a class="btn" href="lms.html">LMS</a>
+          <a class="btn" href="connect.html">Connect</a>
+          <a class="btn" href="hub.html">Hub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main" class="wrap">
+      <!-- Hero Section -->
+      <div class="hero">
+        <h1>👤 Your Account Dashboard</h1>
+        <p>
+          Manage your profile, preferences, and track your learning journey with
+          Elevate for Humanity
+        </p>
+      </div>
+
+      <!-- AUTH PANEL -->
+      <section id="authPanel" class="card section">
+        <h2 style="color: #1976d2; margin-top: 0">
+          🔐 Sign in to Your Account
+        </h2>
+        <p class="muted">
+          Enter your email below and we'll send you a secure magic link to
+          access your dashboard instantly.
+        </p>
+        <div class="row row-2">
+          <div>
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              aria-label="email input"
+              placeholder="you@example.com"
+              autocomplete="email"
+            />
+          </div>
+          <div style="align-self: end">
+            <button type="button" id="sendLink" class="btn">
+              Send Magic Link
+            </button>
+          </div>
+        </div>
+        <p id="authMsg" class="hint"></p>
+      </section>
+
+      <!-- ACCOUNT PANEL -->
+      <section id="acctPanel" class="section" style="display: none">
+        <div class="grid grid-2">
+          <!-- PROFILE -->
+          <div class="card">
+            <h2 style="color: #1976d2; margin-top: 0">👤 Personal Profile</h2>
+            <div class="row row-2">
+              <div>
+                <label>First name</label
+                ><input id="firstName" placeholder="First name" />
+              </div>
+              <div>
+                <label>Last name</label
+                ><input id="lastName" placeholder="Last name" />
+              </div>
+            </div>
+            <div class="row row-2">
+              <div>
+                <label>Phone</label
+                ><input id="phone" placeholder="(###) ###-####" />
+              </div>
+              <div>
+                <label>Locale</label>
+                <select id="locale">
+                  <option value="en-US">English (US)</option>
+                  <option value="en-GB">English (UK)</option>
+                  <option value="es-ES">Español</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label>Address (optional)</label>
+                <textarea
+                  id="address"
+                  rows="3"
+                  placeholder='{"street":"...", "city":"...", "state":"IN", "zip":"..."}'
+                ></textarea>
+              </div>
+            </div>
+            <div class="row" style="margin-top: 8px">
+              <button type="button" id="saveProfile" class="btn">
+                Save Profile
+              </button>
+              <span id="profileMsg" class="hint"></span>
+            </div>
+          </div>
+
+          <!-- PREFERENCES -->
+          <div class="card">
+            <h2 style="color: #1976d2; margin-top: 0">
+              ⚙️ Account Preferences
+            </h2>
+            <div class="row">
+              <label
+                ><input type="checkbox" id="optIn" checked /> Email updates and
+                reminders</label
+              >
+              <label>Accessibility JSON (optional)</label>
+              <textarea
+                id="accessibility"
+                rows="3"
+                placeholder='{"fontScale":1,"highContrast":false}'
+              ></textarea>
+            </div>
+            <div class="row" style="margin-top: 8px">
+              <button type="button" id="savePrefs" class="btn">
+                Save Preferences
+              </button>
+              <span id="prefsMsg" class="hint"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENROLLMENTS -->
+        <div class="card section">
+          <h2>My Enrollments</h2>
+          <p class="muted">
+            These are synced from your shared EFH memory after payment.
+          </p>
+          <ul id="enrollList" class="muted">
+            <li>Loading…</li>
+          </ul>
+        </div>
+
+        <!-- Support Section -->
+        <!-- Direct Support Request Form Embed -->
+        <form
+          action="https://docs.google.com/forms/d/e/1FAIpQLSd_SUPPORT_FORM_ID/formResponse"
+          method="POST"
+          class="space-y-6"
+        >
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Full Name *</label
+              >
+              <input
+                type="text"
+                aria-label="text input"
+                name="entry.7777777777"
+                required
+                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your full name"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Email Address *</label
+              >
+              <input
+                type="email"
+                aria-label="email input"
+                name="entry.8888888888"
+                required
+                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                placeholder="your.email@example.com"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Phone Number</label
+              >
+              <input
+                type="tel"
+                aria-label="tel input"
+                name="entry.8888888889"
+                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                placeholder="(555) 123-4567"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Issue Category *</label
+              >
+              <select
+                name="entry.8888888890"
+                required
+                class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">Select Category</option>
+                <option value="Account Access">Account Access Issues</option>
+                <option value="Course Content">Course Content Questions</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Billing">Billing &amp; Payment</option>
+                <option value="Enrollment">Enrollment Questions</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2"
+              >Priority Level *</label
+            >
+            <div class="grid md:grid-cols-3 gap-4">
+              <label class="flex items-center">
+                <input
+                  type="radio"
+                  aria-label="radio input"
+                  name="entry.8888888891"
+                  value="Low"
+                  class="mr-2"
+                  required
+                />
+                Low - General question
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="radio"
+                  aria-label="radio input"
+                  name="entry.8888888891"
+                  value="Medium"
+                  class="mr-2"
+                  required
+                />
+                Medium - Need help soon
+              </label>
+              <label class="flex items-center">
+                <input
+                  type="radio"
+                  aria-label="radio input"
+                  name="entry.8888888891"
+                  value="High"
+                  class="mr-2"
+                  required
+                />
+                High - Urgent issue
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2"
+              >Issue Description *</label
+            >
+            <textarea
+              name="entry.9999999999"
+              required
+              rows="6"
+              class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+              placeholder="Please describe your issue in detail. Include any error messages, steps you've tried, and when the problem started..."
+            ></textarea>
+          </div>
+
+          <div class="text-center">
+            <button
+              type="submit"
+              class="bg-blue-600 text-white py-4 px-8 rounded-lg text-lg hover:bg-blue-700 transition"
+            >
+              📧 Submit Support Request
+            </button>
+          </div>
+        </form>
+
+        <div class="mt-6 text-center text-gray-600">
+          <p>📧 We'll respond within 24 hours during business days</p>
+          <p>
+            🚨 For urgent issues, call our support line: (317) 555-HELP (4357)
+          </p>
+        </div>
+
+        <!-- SESSION -->
+        <div
+          class="section"
+          style="display: flex; gap: 8px; align-items: center"
+        >
+          <button type="button" id="signOut" class="btn">Sign out</button>
+          <span id="whoami" class="hint"></span>
+        </div>
+      </section>
+    </main>
+
+    <!-- EFH Universal Footer -->
+    <div id="efh-footer"></div>
+
+    <!-- Supabase SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script>
+      // Use Supabase from global scope
+
+      // TODO: replace with your project values
+      const SUPABASE_URL = 'https://YOUR-PROJECT.supabase.co';
+      const SUPABASE_ANON_KEY = 'YOUR_PUBLIC_ANON_KEY';
+
+      const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        auth: { persistSession: true, storage: localStorage },
+      });
+
+      // Elements
+      const authPanel = document.getElementById('authPanel');
+      const acctPanel = document.getElementById('acctPanel');
+      const emailEl = document.getElementById('email');
+      const sendLink = document.getElementById('sendLink');
+      const authMsg = document.getElementById('authMsg');
+
+      const firstName = document.getElementById('firstName');
+      const lastName = document.getElementById('lastName');
+      const phone = document.getElementById('phone');
+      const locale = document.getElementById('locale');
+      const address = document.getElementById('address');
+      const saveProfile = document.getElementById('saveProfile');
+      const profileMsg = document.getElementById('profileMsg');
+
+      const optIn = document.getElementById('optIn');
+      const accessibility = document.getElementById('accessibility');
+      const savePrefs = document.getElementById('savePrefs');
+      const prefsMsg = document.getElementById('prefsMsg');
+
+      const enrollList = document.getElementById('enrollList');
+      const signOutBtn = document.getElementById('signOut');
+      const whoami = document.getElementById('whoami');
+
+      // Helpers
+      const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+      async function requireUser() {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        if (!user) {
+          acctPanel.style.display = 'none';
+          authPanel.style.display = 'block';
+          return null;
+        }
+        acctPanel.style.display = 'block';
+        authPanel.style.display = 'none';
+        whoami.textContent = `Signed in as ${user.email}`;
+        return user;
+      }
+
+      async function bootstrapAppUser(user) {
+        // Upsert into app_users and fetch the surrogate user_id
+        await supabase.from('app_users').upsert(
+          {
+            auth_user_id: user.id,
+            email: user.email,
+          },
+          { onConflict: 'auth_user_id' }
+        );
+
+        const row = await supabase
+          .from('app_users')
+          .select('id')
+          .eq('auth_user_id', user.id)
+          .single();
+        return row.data?.id || null;
+      }
+
+      async function loadProfile(user_id) {
+        const { data: prof } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('user_id', user_id)
+          .maybeSingle();
+        const { data: prefs } = await supabase
+          .from('preferences')
+          .select('*')
+          .eq('user_id', user_id)
+          .maybeSingle();
+
+        // Fill fields
+        if (prof) {
+          firstName.value = prof.first_name || '';
+          lastName.value = prof.last_name || '';
+          phone.value = prof.phone || '';
+          address.value = prof.address ? JSON.stringify(prof.address) : '';
+        }
+        if (prefs) {
+          optIn.checked = prefs.email_opt_in ?? true;
+          locale.value = prefs.locale || 'en-US';
+          accessibility.value = prefs.accessibility
+            ? JSON.stringify(prefs.accessibility)
+            : '';
+        }
+      }
+
+      async function loadEnrollments() {
+        const { data, error } = await supabase
+          .from('enrollments')
+          .select('program_slug,status,started_at,completed_at')
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          enrollList.innerHTML = `<li class="err">${error.message}</li>`;
+          return;
+        }
+        if (!data || !data.length) {
+          enrollList.innerHTML = `<li class="muted">No enrollments yet.</li>`;
+          return;
+        }
+        enrollList.innerHTML = data
+          .map((e) => {
+            const started = e.started_at
+              ? new Date(e.started_at).toLocaleDateString()
+              : '—';
+            const done = e.completed_at
+              ? new Date(e.completed_at).toLocaleDateString()
+              : '';
+            return `<li><strong>${e.program_slug}</strong> — ${e.status}${done ? ' (completed ' + done + ')' : ''} <span class="hint">started ${started}</span></li>`;
+          })
+          .join('');
+      }
+
+      // Auth: send magic link
+      sendLink?.addEventListener('click', async () => {
+        const email = emailEl.value.trim();
+        if (!email) {
+          authMsg.textContent = 'Enter your email.';
+          return;
+        }
+        sendLink.disabled = true;
+        authMsg.textContent = 'Sending magic link…';
+        const { error } = await supabase.auth.signInWithOtp({ email });
+        await sleep(300);
+        if (error) {
+          authMsg.textContent = error.message;
+          sendLink.disabled = false;
+          return;
+        }
+        authMsg.innerHTML = 'Check your email for a sign-in link.';
+        sendLink.disabled = false;
+      });
+
+      // Save profile
+      saveProfile?.addEventListener('click', async () => {
+        profileMsg.textContent = 'Saving…';
+        try {
+          const me = await requireUser();
+          if (!me) return;
+          const { data: appUser } = await supabase
+            .from('app_users')
+            .select('id')
+            .eq('auth_user_id', me.id)
+            .single();
+          const user_id = appUser?.id;
+          let addr = null;
+          if (address.value.trim()) {
+            try {
+              addr = JSON.parse(address.value);
+            } catch {
+              profileMsg.textContent = 'Address must be JSON.';
+              return;
+            }
+          }
+          const { error } = await supabase.from('profiles').upsert({
+            user_id,
+            first_name: firstName.value.trim(),
+            last_name: lastName.value.trim(),
+            phone: phone.value.trim(),
+            address: addr,
+            updated_at: new Date().toISOString(),
+          });
+          if (error) profileMsg.textContent = error.message;
+          else profileMsg.innerHTML = '<span class="ok">Saved.</span>';
+        } catch (e) {
+          profileMsg.textContent = e.message;
+        }
+      });
+
+      // Save preferences
+      savePrefs?.addEventListener('click', async () => {
+        prefsMsg.textContent = 'Saving…';
+        try {
+          const me = await requireUser();
+          if (!me) return;
+          const { data: appUser } = await supabase
+            .from('app_users')
+            .select('id')
+            .eq('auth_user_id', me.id)
+            .single();
+          const user_id = appUser?.id;
+          let a11y = null;
+          if (accessibility.value.trim()) {
+            try {
+              a11y = JSON.parse(accessibility.value);
+            } catch {
+              prefsMsg.textContent = 'Accessibility must be JSON.';
+              return;
+            }
+          }
+          const { error } = await supabase.from('preferences').upsert({
+            user_id,
+            email_opt_in: !!optIn.checked,
+            locale: locale.value,
+            accessibility: a11y,
+            updated_at: new Date().toISOString(),
+          });
+          if (error) prefsMsg.textContent = error.message;
+          else prefsMsg.innerHTML = '<span class="ok">Saved.</span>';
+        } catch (e) {
+          prefsMsg.textContent = e.message;
+        }
+      });
+
+      // Sign out
+      signOutBtn?.addEventListener('click', async () => {
+        await supabase.auth.signOut();
+        acctPanel.style.display = 'none';
+        authPanel.style.display = 'block';
+        emailEl.focus();
+      });
+
+      // Init page
+      (async () => {
+        const user = await requireUser();
+        if (!user) return;
+        const user_id = await bootstrapAppUser(user);
+        await loadProfile(user_id);
+        await loadEnrollments();
+      })();
+    </script>
+
+    <!-- Load Header/Footer Components -->
+    <script>
+      // Load EFH header, footer and account drawer
+      Promise.all([
+        fetch('ui/header.html').then((r) => r.text()),
+        fetch('ui/footer.html').then((r) => r.text()),
+        fetch('shared/account-drawer.html').then((r) => r.text()),
+      ])
+        .then(([headerHtml, footerHtml, drawerHtml]) => {
+          document.getElementById('efh-header').innerHTML = headerHtml;
+          document.getElementById('efh-footer').innerHTML = footerHtml;
+          document.body.insertAdjacentHTML('beforeend', drawerHtml);
+        })
+        .catch((error) => {
+          console.log('Component loading failed:', error);
+        });
+    </script>
+  </body>
+</html>

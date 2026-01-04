@@ -1,0 +1,42 @@
+# Security headers for Elevate for Humanity
+
+# Apply to all pages
+/*
+  # Prevent AI training on your content
+  X-Robots-Tag: noai, noimageai
+  
+  # Prevent clickjacking
+  X-Frame-Options: SAMEORIGIN
+  
+  # Prevent MIME type sniffing
+  X-Content-Type-Options: nosniff
+  
+  # Enable XSS protection
+  X-XSS-Protection: 1; mode=block
+  
+  # Referrer policy
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Permissions policy
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Admin pages - extra protection
+/admin/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex, noai
+  Cache-Control: no-store, no-cache, must-revalidate
+
+# API routes - no indexing
+/api/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex, noai
+  Cache-Control: no-store, no-cache, must-revalidate
+
+# Checkout pages - no indexing
+/checkout/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex, noai
+
+# Application forms - no indexing
+/apply
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex, noai
+
+/employers/intake
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex, noai

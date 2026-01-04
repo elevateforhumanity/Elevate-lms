@@ -1,0 +1,96 @@
+import { NextResponse } from 'next/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { createAdminClient } from '@/lib/supabase/admin';
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const {
+      apprentice_id,
+      employer_id,
+      wage_rate,
+      reimbursement_rate,
+      hours_worked,
+      status,
+    } = body;
+
+    const supabase = createAdminClient();
+
+    const { data, error }: any = await supabase
+      .from('ojt_reimbursements')
+      .insert([
+        {
+          apprentice_id,
+          employer_id,
+          wage_rate,
+          reimbursement_rate: reimbursement_rate || 0.5, // Default 50%
+          hours_worked,
+          status: status || 'pending',
+        },
+      ])
+      .select()
+      .single();
+
+    if (error) {
+      return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 400 });
+    }
+
+    return NextResponse.json({ success: true, ojt: data });
+  } catch (error: unknown) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET() {
+  try {
+    const supabase = createAdminClient();
+
+    const { data, error }: any = await supabase
+      .from('ojt_reimbursements')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 400 });
+    }
+
+    return NextResponse.json({ ojt_reimbursements: data });
+  } catch (error: unknown) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PATCH(req: Request) {
+  try {
+    const body = await req.json();
+    const { id, status } = body;
+
+    const supabase = createAdminClient();
+
+    const { data, error }: any = await supabase
+      .from('ojt_reimbursements')
+      .update({ status })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) {
+      return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 400 });
+    }
+
+    return NextResponse.json({ success: true, ojt: data });
+  } catch (error: unknown) {
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
+  }
+}

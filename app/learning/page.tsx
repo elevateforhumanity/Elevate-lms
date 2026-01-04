@@ -1,0 +1,135 @@
+import Link from 'next/link';
+import { BookOpen, FileText, NotebookPen, Compass, BookMarked, GraduationCap, ArrowRight } from 'lucide-react';
+
+export const metadata = {
+  title: 'Learning Hub - Resources & Tools | Elevate Hub',
+  description: 'Access lessons, syllabi, workbooks, orientation, and student resources',
+};
+
+export default function LearningHubPage() {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="bg-gradient-to-r from-green-600 to-blue-600 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <GraduationCap className="w-20 h-20 mx-auto mb-6" />
+          <h1 className="text-5xl font-bold mb-6">Learning Hub</h1>
+          <p className="text-xl max-w-3xl mx-auto mb-8">
+            Everything you need to succeed in your learning journey. Access lessons, resources, and tools.
+          </p>
+          <Link
+            href="/lms/dashboard"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-green-600 rounded-lg font-bold hover:bg-gray-100"
+          >
+            Go to Dashboard
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
+      </section>
+
+      {/* Learning Resources */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Learning Resources</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <ResourceCard
+              icon={<BookOpen className="w-12 h-12 text-green-600" />}
+              title="Lessons"
+              description="Browse and access all course lessons"
+              href="/lessons"
+              count="500+ lessons"
+            />
+            <ResourceCard
+              icon={<FileText className="w-12 h-12 text-blue-600" />}
+              title="Syllabi"
+              description="View course syllabi and requirements"
+              href="/syllabi"
+              count="100+ courses"
+            />
+            <ResourceCard
+              icon={<NotebookPen className="w-12 h-12 text-purple-600" />}
+              title="Workbooks"
+              description="Interactive digital workbooks"
+              href="/workbooks"
+              count="200+ workbooks"
+            />
+            <ResourceCard
+              icon={<Compass className="w-12 h-12 text-orange-600" />}
+              title="Orientation"
+              description="New student orientation and onboarding"
+              href="/orientation"
+              count="Get started"
+            />
+            <ResourceCard
+              icon={<BookMarked className="w-12 h-12 text-red-600" />}
+              title="Student Handbook"
+              description="Policies, procedures, and resources"
+              href="/student-handbook"
+              count="Essential guide"
+            />
+            <ResourceCard
+              icon={<GraduationCap className="w-12 h-12 text-indigo-600" />}
+              title="Courses"
+              description="Browse all available courses"
+              href="/courses"
+              count="100+ courses"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Links */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Quick Access</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <QuickLink title="My Courses" href="/lms/courses" />
+            <QuickLink title="Assignments" href="/lms/assignments" />
+            <QuickLink title="Grades" href="/lms/grades" />
+            <QuickLink title="Calendar" href="/lms/calendar" />
+            <QuickLink title="Messages" href="/lms/messages" />
+            <QuickLink title="Resources" href="/lms/resources" />
+            <QuickLink title="Support" href="/support" />
+            <QuickLink title="Help Center" href="/help" />
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-green-600 text-white text-center">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
+          <p className="text-xl mb-8">Access all your courses and resources in one place</p>
+          <Link
+            href="/lms/dashboard"
+            className="inline-block px-8 py-4 bg-white text-green-600 rounded-lg font-bold hover:bg-gray-100"
+          >
+            Go to My Dashboard
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ResourceCard({ icon, title, description, href, count }: any) {
+  return (
+    <Link href={href} className="p-6 border rounded-lg hover:shadow-xl transition-shadow bg-white group">
+      <div className="mb-4 group-hover:scale-110 transition-transform">{icon}</div>
+      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <p className="text-gray-600 mb-3">{description}</p>
+      <p className="text-sm font-semibold text-blue-600">{count}</p>
+    </Link>
+  );
+}
+
+function QuickLink({ title, href }: any) {
+  return (
+    <Link
+      href={href}
+      className="p-4 border rounded-lg hover:shadow-lg transition-shadow bg-white text-center font-semibold hover:bg-blue-50"
+    >
+      {title}
+    </Link>
+  );
+}

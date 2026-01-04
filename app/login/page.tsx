@@ -1,0 +1,221 @@
+'use client';
+
+import React from 'react';
+
+import { useState, Suspense } from 'react';
+import { createClient } from '@/lib/supabase/client';
+import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
+
+function LoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get('next') || '';
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const supabase = createClient();
+      const { data, error }: any = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) throw error;
+
+      // Check user role
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', data.user.id)
+        .single();
+
+      // Redirect to next parameter if provided, otherwise based on role
+      if (next) {
+        router.push(next);
+      } else if (
+        profile?.role === 'admin' ||
+        profile?.role === 'super_admin' ||
+        profile?.role === 'org_admin'
+      ) {
+        router.push('/admin/dashboard');
+      } else if (profile?.role === 'program_holder') {
+        router.push('/program-holder/dashboard');
+      } else if (profile?.role === 'partner') {
+        router.push('/partner');
+      } else if (profile?.role === 'employer') {
+        router.push('/employer/dashboard');
+      } else if (profile?.role === 'workforce_board') {
+        router.push('/workforce-board');
+      } else if (profile?.role === 'student') {
+        router.push('/lms/dashboard');
+      } else {
+        router.push('/lms/dashboard');
+      }
+    } catch (err: unknown) {
+      setError(err?.message || 'Invalid email or password');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50">
+      {/* Hero Banner */}
+      <section className="relative h-[200px] w-full overflow-hidden">
+        <Image
+          src="/images/facilities-new/facility-2.jpg"
+          alt="Login"
+          fill
+          className="object-cover"
+          priority
+          quality={100}
+          sizes="100vw"
+        />
+      </section>
+
+      {/* Login Form */}
+      <section className="py-12">
+        <div className="max-w-md mx-auto px-4">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <h1 className="text-3xl font-bold text-center mb-2">Login</h1>
+            <p className="text-center text-slate-600 mb-8">
+              Access your dashboard
+            </p>
+
+            {error && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 text-sm">
+                {error}
+              </div>
+            )}
+
+            <form onSubmit={handleLogin} className="space-y-5">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-semibold text-slate-900 mb-2"
+                >
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="you@example.com"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-semibold text-slate-900 mb-2"
+                >
+                  Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="••••••••"
+                />
+              </div>
+
+              <div className="flex items-center justify-between text-sm">
+                <label className="flex items-center">
+                  <input type="checkbox" className="mr-2" />
+                  <span className="text-slate-600">Remember me</span>
+                </label>
+                <Link
+                  href="/auth/forgot-password"
+                  className="text-brand-blue-600 hover:text-brand-blue-700"
+                >
+                  Forgot password?
+                </Link>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full px-8 py-4 bg-brand-blue-600 text-white font-bold rounded-lg hover:bg-brand-blue-700 transition-all disabled:bg-slate-400 disabled:cursor-not-allowed text-lg"
+              >
+                {loading ? 'Logging in...' : 'Login'}
+              </button>
+            </form>
+
+            <div className="mt-6 text-center text-sm text-slate-600">
+              Don't have an account?{' '}
+              <Link
+                href={`/signup${next ? `?next=${encodeURIComponent(next)}` : ''}`}
+                className="text-brand-blue-600 font-semibold hover:text-brand-blue-700"
+              >
+                Sign up
+              </Link>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-slate-200">
+              <p className="text-center text-sm text-slate-600 mb-4">
+                Quick Access:
+              </p>
+              <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
+                <Link
+                  href="/lms/dashboard"
+                  className="text-center px-4 py-3 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-all text-sm font-semibold min-h-[44px] inline-flex items-center justify-center"
+                >
+                  Student Portal
+                </Link>
+                <Link
+                  href="/admin"
+                  className="text-center px-4 py-3 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-all text-sm font-semibold min-h-[44px] inline-flex items-center justify-center"
+                >
+                  Admin Portal
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 text-center text-sm text-slate-600">
+            <p>
+              Need help? Call{' '}
+              <a
+                href="tel:3173143757"
+                className="text-brand-blue-600 font-semibold"
+              >
+                317-314-3757
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+          Loading...
+        </div>
+      }
+    >
+      <LoginForm />
+    </Suspense>
+  );
+}

@@ -1,0 +1,120 @@
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+  title: 'Tax Filing Reports | Admin | Elevate For Humanity',
+  description: 'View tax filing reports and analytics.',
+};
+
+export default async function TaxFilingReportsPage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) redirect('/login');
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+
+  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
+    redirect('/unauthorized');
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <Link
+            href="/admin/tax-filing"
+            className="text-brand-blue-600 hover:text-blue-800 mb-4 inline-block"
+          >
+            ← Back to Tax Filing
+          </Link>
+          <h1 className="text-3xl font-bold text-gray-900">
+            Tax Filing Reports
+          </h1>
+          <p className="mt-2 text-gray-600">
+            View analytics and generate reports for tax filing operations.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white p-6 rounded-lg shadow">
+            <div className="text-3xl font-bold text-brand-blue-600">0</div>
+            <div className="text-gray-600 text-sm">Returns Filed</div>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow">
+            <div className="text-3xl font-bold text-brand-green-600">$0</div>
+            <div className="text-gray-600 text-sm">Total Refunds</div>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow">
+            <div className="text-3xl font-bold text-purple-600">0</div>
+            <div className="text-gray-600 text-sm">Clients Served</div>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow">
+            <div className="text-3xl font-bold text-brand-orange-600">$0</div>
+            <div className="text-gray-600 text-sm">Avg Refund</div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+              Report Types
+            </h2>
+            <div className="space-y-3">
+              <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500">
+                <div className="font-semibold text-gray-900">
+                  Monthly Summary
+                </div>
+                <div className="text-sm text-gray-500">
+                  Returns filed and refunds processed
+                </div>
+              </button>
+              <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500">
+                <div className="font-semibold text-gray-900">
+                  Preparer Performance
+                </div>
+                <div className="text-sm text-gray-500">
+                  Individual preparer statistics
+                </div>
+              </button>
+              <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500">
+                <div className="font-semibold text-gray-900">
+                  Client Demographics
+                </div>
+                <div className="text-sm text-gray-500">
+                  Client breakdown and trends
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+              Export Options
+            </h2>
+            <div className="space-y-4">
+              <button className="w-full px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700">
+                Export to CSV
+              </button>
+              <button className="w-full px-4 py-2 bg-brand-green-600 text-white rounded-md hover:bg-green-700">
+                Export to PDF
+              </button>
+              <button className="w-full px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700">
+                Export to Excel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,49 @@
+import { redirect } from 'next/navigation';
+import { createClient } from '@/lib/supabase/server';
+
+
+interface Params {
+  courseId: string;
+}
+
+export default async function LaunchCourse({ params }: { params: Params }) {
+  const { courseId } = await params;
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) redirect('/login');
+
+  const { data: course, error } = await supabase
+    .from('courses')
+    .select(
+      'id, slug, title, delivery_mode, partner_url, launch_mode, allow_iframe'
+    )
+    .eq('id', courseId)
+    .single();
+
+  if (error || !course) redirect('/lms/courses');
+
+  // Track "started"
+  await supabase.from('lms_progress').upsert(
+    {
+      user_id: user.id,
+      course_id: course.id,
+      course_slug: course.slug,
+      status: 'in_progress',
+      started_at: new Date().toISOString(),
+      last_activity_at: new Date().toISOString(),
+    },
+    { onConflict: 'user_id,course_id' }
+  );
+
+  // If not a partner link course, redirect to normal course page
+  if (course.delivery_mode !== 'partner_link' || !course.partner_url) {
+    redirect(`/lms/courses/${course.id}`);
+  }
+
+  // For partner link courses, redirect to partner platform
+  // Best practice: external redirect (iframe often blocked by partners)
+  redirect(course.partner_url);
+}

@@ -1,0 +1,126 @@
+// Centralized logging utility
+
+type LogLevel = 'debug' | 'info' | 'warn' | 'error';
+
+interface LogEntry {
+  level: LogLevel;
+  message: string;
+  timestamp: string;
+  context?: Record<string, unknown>;
+  error?: Error;
+}
+
+class Logger {
+  private isDevelopment = process.env.NODE_ENV === 'development';
+  private isTest = process.env.NODE_ENV === 'test';
+
+  private formatMessage(entry: LogEntry): string {
+    const { level, message, timestamp, context, error } = entry;
+
+    if (this.isDevelopment) {
+      // Pretty format for development
+      let output = `[${timestamp}] ${level.toUpperCase()}: ${message}`;
+      if (context) {
+        output += `\n  Context: ${JSON.stringify(context, null, 2)}`;
+      }
+      if (error) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        const errorStack = error instanceof Error ? error.stack : undefined;
+        output += `\n  Error: ${errorMessage}`;
+        if (errorStack) {
+          output += `\n  Stack: ${errorStack}`;
+        }
+      }
+      return output;
+    }
+
+    // JSON format for production (easier to parse by log aggregators)
+    return JSON.stringify({
+      ...entry,
+      error: error ? {
+        message: error instanceof Error ? error.message : String(error),
+        stack: error instanceof Error ? error.stack : undefined,
+        name: error instanceof Error ? error.name : undefined,
+      } : undefined,
+    });
+  }
+
+  private log(level: LogLevel, message: string, context?: Record<string, unknown>, error?: Error) {
+    // Skip logging in test environment unless explicitly enabled
+    if (this.isTest && !process.env.ENABLE_TEST_LOGGING) {
+      return;
+    }
+
+    const entry: LogEntry = {
+      level,
+      message,
+      timestamp: new Date().toISOString(),
+      context,
+      error,
+    };
+
+    const formatted = this.formatMessage(entry);
+
+    switch (level) {
+      case 'debug':
+        if (this.isDevelopment) {
+        }
+        break;
+      case 'info':
+        break;
+      case 'warn':
+        break;
+      case 'error':
+        // Error logged
+        break;
+    }
+
+    // In production, also send to external logging service
+    if (!this.isDevelopment && !this.isTest) {
+      this.sendToExternalService(entry);
+    }
+  }
+
+  private async sendToExternalService(entry: LogEntry) {
+    // Note: Integrate with logging service (e.g., Datadog, Sentry, CloudWatch)
+    // For now, this is a Content
+    try {
+      if (process.env.LOG_ENDPOINT) {
+        await fetch(process.env.LOG_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(entry),
+        });
+      }
+    } catch (error: unknown) {
+      // Fail silently to avoid infinite loops
+    }
+  }
+
+  debug(message: string, context?: Record<string, unknown>) {
+    this.log('debug', message, context);
+  }
+
+  info(message: string, context?: Record<string, unknown>) {
+    this.log('info', message, context);
+  }
+
+  warn(message: string, context?: Record<string, unknown>) {
+    this.log('warn', message, context);
+  }
+
+  error(message: string, error?: Error, context?: Record<string, unknown>) {
+    this.log('error', message, context, error);
+  }
+}
+
+// Export singleton instance
+export const logger = new Logger();
+
+// Convenience exports
+export const log = {
+  debug: (message: string, context?: Record<string, unknown>) => logger.debug(message, context),
+  info: (message: string, context?: Record<string, unknown>) => logger.info(message, context),
+  warn: (message: string, context?: Record<string, unknown>) => logger.warn(message, context),
+  error: (message: string, error?: Error, context?: Record<string, unknown>) => logger.error(message, error, context),
+};

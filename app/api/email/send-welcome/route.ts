@@ -1,0 +1,127 @@
+export const runtime = 'nodejs';
+export const maxDuration = 60;
+
+import { NextRequest, NextResponse } from 'next/server';
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import { logger } from '@/lib/logger';
+import { toError, toErrorMessage } from '@/lib/safe';
+
+export async function POST(request: NextRequest) {
+  try {
+    const { to, name, userId } = await request.json();
+
+    // Email content
+    const emailHTML = `
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+    .content { background: #f9fafb; padding: 30px; border-radius: 0 0 10px 10px; }
+    .button { display: inline-block; background: #dc2626; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; }
+    .info-box { background: white; border-left: 4px solid #dc2626; padding: 15px; margin: 20px 0; }
+    .footer { text-align: center; color: #6b7280; font-size: 12px; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎉 Welcome to Elevate for Humanity!</h1>
+    </div>
+    <div class="content">
+      <h2>Hi ${name},</h2>
+
+      <p><strong>Congratulations!</strong> You've completed onboarding and your LMS access is now active.</p>
+
+      <div class="info-box">
+        <h3>📚 Your LMS Access:</h3>
+        <p><strong>Login URL:</strong> <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.org'}/login">${process.env.NEXT_PUBLIC_SITE_URL?.replace('https://', '').replace('http://', '') || 'www.elevateforhumanity.org'}/login</a></p>
+        <p><strong>Email:</strong> ${to}</p>
+        <p><strong>Password:</strong> The password you created during registration</p>
+      </div>
+
+      <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.org'}/login" class="button">Access Your LMS Dashboard →</a>
+
+      <h3>What's Next?</h3>
+      <ul>
+        <li>✅ Log in to your student dashboard</li>
+        <li>✅ Review your course schedule</li>
+        <li>✅ Complete your student profile</li>
+        <li>✅ Download course materials</li>
+        <li>✅ Connect with your instructor</li>
+      </ul>
+
+      <div class="info-box">
+        <h3>📞 Need Help?</h3>
+        <p><strong>Phone:</strong> (317) 314-3757</p>
+        <p><strong>Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</p>
+      </div>
+
+      <p><strong>Important:</strong> This is a WIOA/WRG/JRI-funded program. Your training is 100% free. There is no cost to you.</p>
+
+      <p>We're excited to have you in our program!</p>
+
+      <p>Best regards,<br>
+      <strong>Elevate for Humanity Team</strong></p>
+    </div>
+    <div class="footer">
+      <p>Elevate for Humanity | Indianapolis, IN 46240</p>
+      <p>An Equal Opportunity Employer/Program</p>
+      <p>Funded by WIOA, WRG, and JRI programs</p>
+    </div>
+  </div>
+</body>
+</html>
+    `;
+
+    // Send email using Resend (if configured) or log it
+    if (process.env.RESEND_API_KEY) {
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'Elevate for Humanity <onboarding@elevateforhumanity.org>',
+          to: [to],
+          subject: '🎉 Welcome! Your LMS Access is Ready',
+          html: emailHTML,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email via Resend');
+      }
+
+      return NextResponse.json({
+        success: true,
+        message: 'Welcome email sent',
+      });
+    } else {
+      // Log email for development
+      logger.info('=== WELCOME EMAIL ===');
+      logger.info('To:', to);
+      logger.info('Subject: Welcome! Your LMS Access is Ready');
+      logger.info('Content:', emailHTML);
+      logger.info('====================');
+
+      return NextResponse.json({
+        success: true,
+        message: 'Email logged (Resend not configured)',
+        dev: true,
+      });
+    }
+  } catch (error: unknown) {
+    logger.error(
+      'Send welcome email error:',
+      error instanceof Error ? error : new Error(String(error))
+    );
+    return NextResponse.json(
+      { error: toErrorMessage(error) || 'Failed to send email' },
+      { status: 500 }
+    );
+  }
+}

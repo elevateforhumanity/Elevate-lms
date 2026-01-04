@@ -1,0 +1,96 @@
+import { NextResponse } from 'next/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { createClient } from '@/lib/supabase/server';
+import { toError, toErrorMessage } from '@/lib/safe';
+
+export async function POST(req: Request) {
+  try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const body = await req.json();
+    const {
+      placementId,
+      weekStart,
+      weekEnd,
+      hoursTotal,
+      hoursOjt,
+      hoursRelated,
+      attendanceNotes,
+      competenciesNotes,
+    } = body || {};
+
+    if (!placementId || !weekStart || !weekEnd) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    // Verify user has access to this placement
+    const { data: placement } = await supabase
+      .from('apprentice_placements')
+      .select('shop_id, shops!inner(id)')
+      .eq('id', placementId)
+      .single();
+
+    if (!placement) {
+      return NextResponse.json(
+        { error: 'Placement not found' },
+        { status: 404 }
+      );
+    }
+
+    // Verify user is staff at this shop
+    const { data: staff } = await supabase
+      .from('shop_staff')
+      .select('id')
+      .eq('shop_id', placement.shop_id)
+      .eq('user_id', user.id)
+      .single();
+
+    if (!staff) {
+      return NextResponse.json(
+        { error: 'Not authorized for this shop' },
+        { status: 403 }
+      );
+    }
+
+    // Insert report
+    const { error } = await supabase.from('apprentice_weekly_reports').insert({
+      placement_id: placementId,
+      week_start: weekStart,
+      week_end: weekEnd,
+      hours_total: hoursTotal || 0,
+      hours_ojt: hoursOjt || 0,
+      hours_related: hoursRelated || 0,
+      attendance_notes: attendanceNotes || null,
+      competencies_notes: competenciesNotes || null,
+      submitted_by_user_id: user.id,
+    });
+
+    if (error) {
+      // Error: $1
+      return NextResponse.json(
+        { error: toErrorMessage(error) },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (err: unknown) {
+    // Error: $1
+    return NextResponse.json(
+      { err: toErrorMessage(err) || 'Failed to submit report' },
+      { status: 500 }
+    );
+  }
+}

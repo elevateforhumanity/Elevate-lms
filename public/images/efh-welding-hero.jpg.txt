@@ -1,0 +1,14 @@
+PLACEHOLDER IMAGE NEEDED
+
+Program: welding
+Type: Hero Image
+Dimensions: 1600x900px (16:9)
+Format: JPG
+File Size: <200KB
+Content: welding training facility or equipment
+
+Download from:
+- Pexels: https://www.pexels.com/search/welding/
+- Unsplash: https://unsplash.com/s/photos/welding
+
+Save as: efh-welding-hero.jpg

@@ -1,0 +1,251 @@
+import { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ChevronRight } from 'lucide-react';
+import { programs } from '@/app/data/programs';
+
+export const metadata: Metadata = {
+  title: 'Healthcare Programs | Elevate for Humanity',
+  description:
+    'Free healthcare training programs - CNA, Medical Assistant, Home Health Aide, and more',
+};
+
+export default function HealthcarePage() {
+  // Filter healthcare programs
+  const healthcarePrograms = programs.filter((p) =>
+    [
+      'cna-certification',
+      'medical-assistant',
+      'home-health-aide',
+      'phlebotomy-technician',
+      'cpr-first-aid-hsi',
+      'emergency-health-safety-tech',
+      'certified-peer-recovery-coach',
+    ].includes(p.slug)
+  );
+
+  return (
+    <div className="bg-white">
+      {/* Hero Section */}
+      <section className="relative h-[450px] md:h-[500px] w-full overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/cna-hero.mp4" type="video/mp4" />
+        </video>
+
+        <div className="absolute inset-0 flex items-center justify-center text-center px-4">
+          <div className="max-w-4xl w-full">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white uppercase tracking-wide">
+              HEALTHCARE PROGRAMS
+            </h1>
+            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-8">
+              Start Your Career in Healthcare - 100% Free Training
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto">
+              <Link
+                href="/apply"
+                className="w-full sm:w-auto inline-flex items-center justify-center rounded-md bg-orange-500 px-8 py-4 text-lg font-bold text-white shadow-lg hover:bg-orange-600 transition-all transform hover:scale-105 uppercase"
+              >
+                Apply Now
+              </Link>
+              <Link
+                href="/contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center rounded-md border-2 border-white bg-transparent px-8 py-4 text-lg font-bold text-white hover:bg-white hover:text-red-900 transition-all transform hover:scale-105 uppercase"
+              >
+                Learn More
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Programs Grid */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 uppercase">
+              Healthcare Training Programs
+            </h2>
+            <p className="text-lg text-gray-700">
+              Choose from {healthcarePrograms.length} healthcare programs
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {healthcarePrograms.map((program: any) => {
+              return (
+                <Link
+                  key={program.slug}
+                  href={`/programs/${program.slug}`}
+                  className="group block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                >
+                  <div className="aspect-video relative overflow-hidden bg-gray-900">
+                    {program.heroImage && (
+                      <Image
+                        src={program.heroImage}
+                        alt={program.name}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-all duration-500"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-black/40"></div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-xl font-bold text-white mb-1">
+                        {program.name}
+                      </h3>
+                      <div className="flex items-center gap-2 text-sm text-white/90">
+                        <span>{program.duration}</span>
+                        {program.format && (
+                          <>
+                            <span>•</span>
+                            <span>{program.format}</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-6 bg-white">
+                    <p className="text-orange-500 font-bold text-lg group-hover:text-orange-600 transition-colors flex items-center gap-2">
+                      Learn More
+                      <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Healthcare Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Why Choose Healthcare?
+              </h2>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">
+                      High Demand
+                    </h3>
+                    <p className="text-gray-600">
+                      Healthcare jobs are always in demand with excellent job
+                      security
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">Good Pay</h3>
+                    <p className="text-gray-600">
+                      Competitive wages with opportunities for advancement
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">
+                      Make a Difference
+                    </h3>
+                    <p className="text-gray-600">
+                      Help people every day and make a real impact in your
+                      community
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">
+                      Fast Training
+                    </h3>
+                    <p className="text-gray-600">
+                      Get certified and start working in weeks, not years
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="relative h-96 rounded-xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/heroes/hero-homepage.jpg"
+                alt="Healthcare Career"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

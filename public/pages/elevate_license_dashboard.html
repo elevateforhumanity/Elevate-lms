@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <title>Elevate License Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        padding: 2rem;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+      }
+      input,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      button {
+        background: #0070f3;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+      }
+      pre {
+        background: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+      .actions {
+        margin-top: 1rem;
+        display: flex;
+        gap: 1rem;
+      }
+      .actions button {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎫 Elevate License Portal</h1>
+
+      <label for="licenseInput">Enter Your License Key</label>
+      <input id="licenseInput" placeholder="Paste your license key..." />
+
+      <button type="button" onclick="validateLicense()">
+        🔍 Validate License
+      </button>
+
+      <div id="output" style="margin-top: 1.5rem"></div>
+    </div>
+
+    <script>
+      async function validateLicense() {
+        const licenseKey = document.getElementById('licenseInput').value;
+        const output = document.getElementById('output');
+
+        const res = await fetch('/api/check-license', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ licenseKey }),
+        });
+
+        const data = await res.json();
+        if (!data.valid) {
+          output.innerHTML =
+            '<p style="color:red;">❌ Invalid or expired license: ' +
+            data.reason +
+            '</p>';
+          return;
+        }
+
+        output.innerHTML = `
+      <p style="color:green;">✅ License is valid</p>
+      <pre>${JSON.stringify(data, null, 2)}</pre>
+      <div class="actions">
+        <button type="button" onclick="renewLicense('${licenseKey}')">♻️ Renew License</button>
+        <button type="button" onclick="downloadPDF('${data.email}')">📄 Download PDF</button>
+      </div>
+    `;
+      }
+
+      async function renewLicense(oldKey) {
+        const res = await fetch('/api/renew-license', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ licenseKey: oldKey }),
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          alert('🎉 License renewed! Your new key is:\\n' + data.newLicense);
+        } else {
+          alert('❌ Renewal failed: ' + data.reason);
+        }
+      }
+
+      function downloadPDF(email) {
+        const file = email.replace(/[@.]/g, '_') + '.pdf';
+        window.open('/certificates/' + file, '_blank');
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+# Hero voiceover audio
+# Replace with: hero-voiceover.mp3
+# 
+# This is a separate audio track that syncs with the hero video.
+# The video plays muted, and the voiceover attempts to autoplay.
+# If browser blocks audio autoplay, user sees "Tap to enable voiceover" button.
+#
+# Audio should match video duration (8-10 seconds).

@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elevate Platform Store - Buy License &amp; Digital Products</title>
+    <meta
+      name="description"
+      content="Purchase the complete Elevate for Humanity platform. Includes full source code, commercial license, digital workbooks, and lifetime updates."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+      .pricing-card {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+      .feature-check {
+        color: #10b981;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 min-h-screen text-white"
+  >
+    <!-- Header -->
+    <header class="container mx-auto px-4 py-8">
+      <nav role="navigation" class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold">Elevate Platform Store</h1>
+        <div class="space-x-4">
+          <a href="/pages/demo.html" class="hover:text-purple-300 transition"
+            >Live Demo</a
+          >
+          <a href="/" class="hover:text-purple-300 transition">Home</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="container mx-auto px-4 py-16 text-center animate-fade-in-up"
+    >
+      <h2 class="text-5xl md:text-6xl font-bold mb-6">
+        Own the Complete Platform
+      </h2>
+      <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+        Get the full Elevate for Humanity enrollment and credentialing system.
+        Deploy unlimited instances, customize everything, keep 100% of revenue.
+      </p>
+      <div class="flex justify-center gap-4 mb-12">
+        <span
+          class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
+          >✓ Full Source Code</span
+        >
+        <span
+          class="bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
+          >✓ Commercial License</span
+        >
+        <span
+          class="bg-purple-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
+          >✓ Lifetime Updates</span
+        >
+      </div>
+    </section>
+
+    <!-- Pricing Tiers -->
+    <section class="container mx-auto px-4 py-16">
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Starter License -->
+        <div
+          class="pricing-card bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20"
+        >
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold mb-2">Starter License</h3>
+            <p class="text-gray-300 text-sm">
+              Perfect for single organizations
+            </p>
+          </div>
+          <div class="text-center mb-8">
+            <div class="text-5xl font-bold mb-2">$2,997</div>
+            <div class="text-gray-400">one-time payment</div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Full source code access</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Deploy 1 production instance</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Commercial use license</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>6 months of updates</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Email support</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Digital workbooks (3)</span>
+            </li>
+          </ul>
+          <button
+            type="button"
+            onclick="checkout('starter')"
+            class="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-4 px-6 rounded-lg transition transform hover:scale-105"
+          >
+            Buy Starter License
+          </button>
+        </div>
+
+        <!-- Professional License (Most Popular) -->
+        <div
+          class="pricing-card bg-gradient-to-br from-purple-500/20 to-blue-500/20 backdrop-blur-lg rounded-2xl p-8 border-2 border-purple-400 relative"
+        >
+          <div
+            class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-2 rounded-full text-sm font-bold"
+          >
+            MOST POPULAR
+          </div>
+          <div class="text-center mb-6 mt-4">
+            <h3 class="text-2xl font-bold mb-2">Professional License</h3>
+            <p class="text-gray-300 text-sm">For growing organizations</p>
+          </div>
+          <div class="text-center mb-8">
+            <div class="text-5xl font-bold mb-2">$7,997</div>
+            <div class="text-gray-400">one-time payment</div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span><strong>Everything in Starter, plus:</strong></span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Deploy 5 production instances</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Lifetime updates</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Priority support (24h response)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>White-label rights</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>All digital products (10+)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Custom branding assistance</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Stripe integration setup</span>
+            </li>
+          </ul>
+          <button
+            type="button"
+            onclick="checkout('professional')"
+            class="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-lg transition transform hover:scale-105 shadow-lg"
+          >
+            Buy Professional License
+          </button>
+        </div>
+
+        <!-- Enterprise License -->
+        <div
+          class="pricing-card bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20"
+        >
+          <div class="text-center mb-6">
+            <h3 class="text-2xl font-bold mb-2">Enterprise License</h3>
+            <p class="text-gray-300 text-sm">Unlimited scale &amp; support</p>
+          </div>
+          <div class="text-center mb-8">
+            <div class="text-5xl font-bold mb-2">$19,997</div>
+            <div class="text-gray-400">one-time payment</div>
+          </div>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span><strong>Everything in Professional, plus:</strong></span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Unlimited production domains</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Multi-location deployment</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Dedicated support (4h response)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Custom feature development (20h)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Full deployment assistance</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Training for your team (4h)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="feature-check mr-2">✓</span>
+              <span>Priority feature requests</span>
+            </li>
+          </ul>
+          <button
+            type="button"
+            onclick="checkout('enterprise')"
+            class="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-4 px-6 rounded-lg transition transform hover:scale-105"
+          >
+            Buy Enterprise License
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Digital Products -->
+    <section class="container mx-auto px-4 py-16">
+      <h2 class="text-4xl font-bold text-center mb-12">
+        Digital Products Included
+      </h2>
+      <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <div class="text-4xl mb-4">📚</div>
+          <h3 class="text-xl font-bold mb-2">Enrollment Workbook</h3>
+          <p class="text-gray-300 text-sm">
+            Step-by-step guide for student enrollment process
+          </p>
+        </div>
+        <div
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <div class="text-4xl mb-4">🎯</div>
+          <h3 class="text-xl font-bold mb-2">Compliance Checklist</h3>
+          <p class="text-gray-300 text-sm">
+            FERPA, WIOA, and government compliance templates
+          </p>
+        </div>
+        <div
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <div class="text-4xl mb-4">💼</div>
+          <h3 class="text-xl font-bold mb-2">Business Templates</h3>
+          <p class="text-gray-300 text-sm">
+            Contracts, agreements, and legal documents
+          </p>
+        </div>
+        <div
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <div class="text-4xl mb-4">🎨</div>
+          <h3 class="text-xl font-bold mb-2">Branding Kit</h3>
+          <p class="text-gray-300 text-sm">
+            Logos, colors, fonts, and design assets
+          </p>
+        </div>
+        <div
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <div class="text-4xl mb-4">📊</div>
+          <h3 class="text-xl font-bold mb-2">Marketing Materials</h3>
+          <p class="text-gray-300 text-sm">
+            Social media templates and ad copy
+          </p>
+        </div>
+        <div
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <div class="text-4xl mb-4">🎓</div>
+          <h3 class="text-xl font-bold mb-2">Training Videos</h3>
+          <p class="text-gray-300 text-sm">
+            Platform setup and usage tutorials
+          </p>
+        </div>
+        <div
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <div class="text-4xl mb-4">🔧</div>
+          <h3 class="text-xl font-bold mb-2">Setup Scripts</h3>
+          <p class="text-gray-300 text-sm">
+            Automated deployment and configuration
+          </p>
+        </div>
+        <div
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <div class="text-4xl mb-4">📈</div>
+          <h3 class="text-xl font-bold mb-2">Analytics Dashboard</h3>
+          <p class="text-gray-300 text-sm">
+            Pre-built reports and KPI tracking
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="container mx-auto px-4 py-16 bg-white/5 rounded-3xl my-16">
+      <h2 class="text-4xl font-bold text-center mb-12">What You Get</h2>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="flex items-start space-x-4">
+          <div class="text-3xl">💻</div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Complete Source Code</h3>
+            <p class="text-gray-300">
+              Full React + TypeScript frontend, Node.js backend, Supabase
+              database schema, all utilities and scripts
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="text-3xl">🚀</div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Deployment Ready</h3>
+            <p class="text-gray-300">
+              Pre-configured for Cloudflare Pages, Render.com, and Supabase.
+              Deploy in minutes.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="text-3xl">🎨</div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Fully Customizable</h3>
+            <p class="text-gray-300">
+              Change colors, branding, features. Add your own integrations. No
+              restrictions.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="text-3xl">📱</div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Mobile Responsive</h3>
+            <p class="text-gray-300">
+              Works perfectly on all devices. Tested on iOS, Android, tablets,
+              and desktops.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="text-3xl">🔒</div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Security Built-In</h3>
+            <p class="text-gray-300">
+              FERPA compliant, encrypted data, security headers, authentication,
+              and audit logs.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-4">
+          <div class="text-3xl">📊</div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Analytics &amp; Tracking</h3>
+            <p class="text-gray-300">
+              Google Analytics, conversion tracking, enrollment metrics, and
+              custom reports.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container mx-auto px-4 py-16">
+      <h2 class="text-4xl font-bold text-center mb-12">
+        Frequently Asked Questions
+      </h2>
+      <div class="max-w-3xl mx-auto space-y-6">
+        <details
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <summary class="font-bold text-lg cursor-pointer">
+            Can I resell this platform?
+          </summary>
+          <p class="mt-4 text-gray-300">
+            No. All licenses are for your own use only. You cannot resell,
+            redistribute, or sublicense the software. Contact us if you're
+            interested in becoming an authorized reseller.
+          </p>
+        </details>
+        <details
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <summary class="font-bold text-lg cursor-pointer">
+            Do I get lifetime updates?
+          </summary>
+          <p class="mt-4 text-gray-300">
+            Professional and Enterprise licenses include lifetime updates.
+            Starter license includes 6 months of updates.
+          </p>
+        </details>
+        <details
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <summary class="font-bold text-lg cursor-pointer">
+            What payment methods do you accept?
+          </summary>
+          <p class="mt-4 text-gray-300">
+            We accept all major credit cards, debit cards, and ACH transfers via
+            Stripe. Payment plans available for Enterprise licenses.
+          </p>
+        </details>
+        <details
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <summary class="font-bold text-lg cursor-pointer">
+            Is there a refund policy?
+          </summary>
+          <p class="mt-4 text-gray-300">
+            30-day money-back guarantee. If you're not satisfied, we'll refund
+            your purchase in full.
+          </p>
+        </details>
+        <details
+          class="bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20"
+        >
+          <summary class="font-bold text-lg cursor-pointer">
+            Do you provide support?
+          </summary>
+          <p class="mt-4 text-gray-300">
+            Yes! Email support for Starter, priority support for Professional,
+            and dedicated support for Enterprise.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container mx-auto px-4 py-16 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Get Started?</h2>
+      <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+        Join organizations already using Elevate to transform workforce
+        development.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a
+          href="/pages/demo.html"
+          class="bg-white text-purple-900 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition"
+        >
+          Try Live Demo
+        </a>
+        <a
+          href="#pricing"
+          class="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-4 px-8 rounded-lg transition"
+        >
+          Buy Now
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="container mx-auto px-4 py-8 border-t border-white/20 text-center text-gray-400"
+    >
+      <p>&amp;copy; 2024 Elevate for Humanity. All rights reserved.</p>
+      <p class="mt-2">
+        <a href="/pages/privacy-policy.html" class="hover:text-white"
+          >Privacy Policy</a
+        >
+        |
+        <a href="/pages/refund-policy.html" class="hover:text-white"
+          >Refund Policy</a
+        >
+        |
+        <a href="/LICENSE" class="hover:text-white">License Terms</a>
+      </p>
+    </footer>
+
+    <script>
+      // Stripe Configuration
+      const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY'); // Replace with your Stripe key
+
+      const products = {
+        starter: {
+          priceId: 'price_starter_license', // Replace with actual Stripe Price ID
+          name: 'Starter License',
+          amount: 299700,
+        },
+        professional: {
+          priceId: 'price_professional_license', // Replace with actual Stripe Price ID
+          name: 'Professional License',
+          amount: 799700,
+        },
+        enterprise: {
+          priceId: 'price_enterprise_license', // Replace with actual Stripe Price ID
+          name: 'Enterprise License',
+          amount: 1999700,
+        },
+      };
+
+      async function checkout(tier) {
+        const product = products[tier];
+
+        try {
+          const response = await fetch('/api/create-checkout-session', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              priceId: product.priceId,
+              productName: product.name,
+              amount: product.amount,
+            }),
+          });
+
+          const session = await response.json();
+
+          // Redirect to Stripe Checkout
+          const result = await stripe.redirectToCheckout({
+            sessionId: session.id,
+          });
+
+          if (result.error) {
+            alert(result.error.message);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('Something went wrong. Please try again or contact support.');
+        }
+      }
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // Google Analytics
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX'); // Replace with your GA4 ID
+    </script>
+  </body>
+</html>

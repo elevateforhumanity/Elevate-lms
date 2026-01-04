@@ -1,0 +1,195 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+import { NextResponse } from 'next/server';
+import { logger } from '@/lib/logger';
+import { createClient } from '@/lib/supabase/server';
+import { orchestrateEnrollment } from '@/lib/enrollment/orchestrate-enrollment';
+import {
+  sendApplicationConfirmation,
+  sendAdminApplicationNotification,
+} from '@/lib/email/service';
+import { checkRateLimit, verifyTurnstileToken } from '@/lib/turnstile';
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json().catch(() => ({}));
+
+    // Rate limiting by email
+    if (body.email) {
+      const rateLimit = checkRateLimit(`enroll:${body.email}`, 3, 60000); // 3 per minute
+      if (!rateLimit.allowed) {
+        return NextResponse.json(
+          {
+            message: 'Too many requests. Please try again in a minute.',
+          },
+          { status: 429 }
+        );
+      }
+    }
+
+    // Verify Turnstile token (if provided)
+    if (body.turnstileToken) {
+      const verification = await verifyTurnstileToken(body.turnstileToken);
+      if (!verification.success) {
+        return NextResponse.json(
+          {
+            message: verification.error || 'Verification failed',
+          },
+          { status: 400 }
+        );
+      }
+    }
+
+    const required = ['firstName', 'lastName', 'email', 'preferredProgramId'];
+    const missing = required.filter((key) => !body[key]);
+
+    if (missing.length) {
+      return NextResponse.json(
+        {
+          message: `Missing required fields: ${missing.join(', ')}`,
+        },
+        { status: 400 }
+      );
+    }
+
+    const supabase = await createClient();
+
+    // Get or create user profile
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    const studentId = user?.id;
+
+    // If no authenticated user, create a lead record
+    if (!studentId) {
+      // Store as partner inquiry for now (can be migrated to dedicated applications table)
+      const { data: inquiry, error: inquiryError } = await supabase
+        .from('partner_inquiries')
+        .insert({
+          name: `${body.firstName} ${body.lastName}`,
+          email: body.email,
+          phone: body.phone || null,
+          message: `Application for program: ${body.preferredProgramId}`,
+          inquiry_type: 'student_application',
+          status: 'new',
+        })
+        .select()
+        .single();
+
+      if (inquiryError) {
+        logger.error('[Enroll Apply] Failed to create inquiry:', inquiryError);
+        throw inquiryError;
+      }
+
+      logger.info('[New Application - Lead Created]', {
+        inquiryId: inquiry.id,
+        firstName: body.firstName,
+        lastName: body.lastName,
+        email: body.email,
+        phone: body.phone,
+        preferredProgramId: body.preferredProgramId,
+        submittedAt: new Date().toISOString(),
+      });
+    } else {
+      // Authenticated user - check enrollment approval status
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('enrollment_status, program_holder_id')
+        .eq('id', studentId)
+        .single();
+
+      // Enrollment gate: must be approved or active
+      if (
+        !profile?.enrollment_status ||
+        !['approved', 'active'].includes(profile.enrollment_status)
+      ) {
+        return NextResponse.json(
+          {
+            message:
+              'You must be approved for enrollment before you can enroll. Please contact your program coordinator.',
+          },
+          { status: 403 }
+        );
+      }
+
+      // Program holder must be assigned
+      if (!profile.program_holder_id) {
+        return NextResponse.json(
+          {
+            message: 'No program holder assigned. Please contact support.',
+          },
+          { status: 403 }
+        );
+      }
+
+      // Orchestrate enrollment (idempotent)
+      const orchestrationResult = await orchestrateEnrollment({
+        studentId,
+        programId: body.preferredProgramId,
+        programHolderId: profile.program_holder_id,
+        fundingSource: body.fundingSource || 'WIOA',
+        idempotencyKey: `enrollment-${studentId}-${body.preferredProgramId}`,
+      });
+
+      if (!orchestrationResult.success) {
+        logger.error(
+          '[Enroll Apply] Orchestration failed:',
+          orchestrationResult.error
+        );
+        return NextResponse.json(
+          {
+            message:
+              orchestrationResult.error ||
+              'Enrollment failed. Please try again.',
+          },
+          { status: 500 }
+        );
+      }
+
+      logger.info('[New Application - Enrollment Orchestrated]', {
+        enrollmentId: orchestrationResult.enrollmentId,
+        studentId,
+        programId: body.preferredProgramId,
+        programHolderId: profile.program_holder_id,
+        stepsCreated: orchestrationResult.stepsCreated,
+        submittedAt: new Date().toISOString(),
+      });
+    }
+
+    // Send confirmation email to applicant (non-blocking)
+    sendApplicationConfirmation(
+      body.email,
+      `${body.firstName} ${body.lastName}`,
+      body.preferredProgramId
+    ).catch((err) =>
+      logger.error('[Email] Application confirmation failed:', err)
+    );
+
+    // Send notification to admin team (non-blocking)
+    sendAdminApplicationNotification(
+      `${body.firstName} ${body.lastName}`,
+      body.email,
+      body.preferredProgramId,
+      studentId || 'pending'
+    ).catch((err) => logger.error('[Email] Admin notification failed:', err));
+
+    return NextResponse.json(
+      {
+        message:
+          'Application received. A member of the Elevate team will follow up within 24 hours.',
+      },
+      { status: 200 }
+    );
+  } catch (err: unknown) {
+    logger.error('[Enroll Apply] Error:', err as Error);
+    return NextResponse.json(
+      {
+        message:
+          'Something went wrong submitting your application. Please try again or call (317) 314-3757.',
+      },
+      { status: 500 }
+    );
+  }
+}

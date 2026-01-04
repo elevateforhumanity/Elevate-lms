@@ -1,0 +1,202 @@
+"use client";
+
+import React from 'react';
+
+import { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
+import { Star, ThumbsUp, MessageSquare, Award } from 'lucide-react';
+
+interface Review {
+  id: string;
+  reviewer: string;
+  reviewerAvatar: string;
+  rating: number;
+  comment: string;
+  helpful: number;
+  timestamp: string;
+}
+
+interface PeerReviewProps {
+  assignmentId: string;
+  studentName: string;
+}
+
+export function PeerReview({ assignmentId, studentName }: PeerReviewProps) {
+  const [reviews, setReviews] = useState<Review[]>([
+    {
+      id: '1',
+      reviewer: 'Sarah Johnson',
+      reviewerAvatar: '/media/avatars/avatar-1.jpg',
+      rating: 5,
+      comment: 'Excellent work! Your analysis was thorough and well-structured. The examples you provided really helped illustrate your points.',
+      helpful: 12,
+      timestamp: '2 days ago',
+    },
+    {
+      id: '2',
+      reviewer: 'Michael Chen',
+      reviewerAvatar: '/media/avatars/avatar-2.jpg',
+      rating: 4,
+      comment: 'Good effort overall. Consider adding more detail to your conclusion section. The research was solid.',
+      helpful: 8,
+      timestamp: '3 days ago',
+    },
+  ]);
+
+  const [newReview, setNewReview] = useState({
+    rating: 0,
+    comment: '',
+  });
+
+  const handleSubmitReview = () => {
+    if (newReview.rating === 0 || !newReview.comment.trim()) {
+      alert('Please provide both a rating and comment');
+      return;
+    }
+
+    const review: Review = {
+      id: Date.now().toString(),
+      reviewer: 'You',
+      reviewerAvatar: '/media/avatars/avatar-default.jpg',
+      rating: newReview.rating,
+      comment: newReview.comment,
+      helpful: 0,
+      timestamp: 'Just now',
+    };
+
+    setReviews([review, ...reviews]);
+    setNewReview({ rating: 0, comment: '' });
+  };
+
+  const averageRating = reviews.length > 0
+    ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
+    : 0;
+
+  return (
+    <div className="space-y-6">
+      {/* Summary */}
+      <Card className="  ">
+        <CardContent className="p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="text-3xl font-bold text-brand-orange-600 mb-1">
+                {averageRating.toFixed(1)}
+              </div>
+              <div className="flex items-center gap-1 mb-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star
+                    key={star}
+                    size={20}
+                    className={star <= averageRating ? 'fill-orange-500 text-orange-500' : 'text-gray-300'}
+                  />
+                ))}
+              </div>
+              <div className="text-sm text-gray-600">{reviews.length} peer reviews</div>
+            </div>
+            <div className="text-center">
+              <Award className="text-orange-600 mx-auto mb-2" size={48} />
+              <div className="text-sm font-semibold">Peer Review Badge</div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Write Review */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Write a Peer Review</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <label className="block text-sm font-semibold mb-2">Rating</label>
+            <div className="flex gap-2">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  key={star}
+                  onClick={() => setNewReview({ ...newReview, rating: star })}
+                  className="transition hover:scale-110"
+                >
+                  <Star
+                    size={32}
+                    className={star <= newReview.rating ? 'fill-orange-500 text-orange-500' : 'text-gray-300'}
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold mb-2">Your Review</label>
+            <textarea
+              value={newReview.comment}
+              onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNewReview({ ...newReview, comment: e.target.value })}
+              Content="Provide constructive feedback..."
+              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+              rows={4}
+            />
+            <div className="text-xs text-gray-500 mt-2">
+              Be specific, constructive, and respectful in your feedback
+            </div>
+          </div>
+
+          <Button
+            onClick={handleSubmitReview}
+            className="w-full bg-brand-orange-600 hover:bg-brand-orange-700"
+          >
+            Submit Review
+          </Button>
+        </CardContent>
+      </Card>
+
+      {/* Reviews List */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">Peer Reviews ({reviews.length})</h3>
+
+        {reviews.map((review) => (
+          <Card key={review.id}>
+            <CardContent className="p-6">
+              <div className="flex gap-4">
+                <img
+                  src={review.reviewerAvatar}
+                  alt={review.reviewer}
+                  className="w-12 h-12 rounded-full"
+                />
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-2">
+                    <div>
+                      <div className="font-semibold">{review.reviewer}</div>
+                      <div className="text-xs text-gray-500">{review.timestamp}</div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star
+                          key={star}
+                          size={16}
+                          className={star <= review.rating ? 'fill-orange-500 text-orange-500' : 'text-gray-300'}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="text-gray-700 mb-3">{review.comment}</p>
+
+                  <div className="flex items-center gap-4">
+                    <button className="flex items-center gap-2 text-sm text-gray-600 hover:text-brand-orange-600 transition">
+                      <ThumbsUp size={16} />
+                      <span>Helpful ({review.helpful})</span>
+                    </button>
+                    <button className="flex items-center gap-2 text-sm text-gray-600 hover:text-brand-orange-600 transition">
+                      <MessageSquare size={16} />
+                      <span>Reply</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}

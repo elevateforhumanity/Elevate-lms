@@ -1,0 +1,115 @@
+import { NextResponse } from 'next/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { createClient } from '@/lib/supabase/server';
+import { toError, toErrorMessage } from '@/lib/safe';
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const supabase = await createClient();
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { date_worked, hours, category, notes, program_slug } = body;
+
+    if (!date_worked || !hours || !category || !program_slug) {
+      return NextResponse.json(
+        { error: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
+
+    const { error } = await supabase.from('apprenticeship_hours').insert({
+      student_id: user.id,
+      program_slug,
+      date_worked,
+      hours: parseFloat(hours),
+      category,
+      notes: notes || null,
+    });
+
+    if (error) {
+      // Error: $1
+      return NextResponse.json(
+        { error: 'Failed to log hours' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (err: unknown) {
+    // Error: $1
+    return NextResponse.json(
+      { err: toErrorMessage(err) || 'Failed to log hours' },
+      { status: 500 }
+    );
+  }
+}
+
+// Get student's hours
+export async function GET(req: Request) {
+  try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { data: hours, error } = await supabase
+      .from('apprenticeship_hours')
+      .select('*')
+      .eq('student_id', user.id)
+      .order('date_worked', { ascending: false });
+
+    if (error) {
+      // Error: $1
+      return NextResponse.json(
+        { error: 'Failed to load hours' },
+        { status: 500 }
+      );
+    }
+
+    // Calculate totals
+    const totalHours =
+      hours?.reduce((sum, h) => sum + parseFloat(h.hours || 0), 0) || 0;
+    const approvedHours =
+      hours
+        ?.filter((h) => h.approved)
+        .reduce((sum, h) => sum + parseFloat(h.hours || 0), 0) || 0;
+    const classroomHours =
+      hours
+        ?.filter((h) => h.category === 'classroom')
+        .reduce((sum, h) => sum + parseFloat(h.hours || 0), 0) || 0;
+    const onTheJobHours =
+      hours
+        ?.filter((h) => h.category === 'on-the-job')
+        .reduce((sum, h) => sum + parseFloat(h.hours || 0), 0) || 0;
+
+    return NextResponse.json({
+      hours: hours || [],
+      totals: {
+        total: totalHours,
+        approved: approvedHours,
+        classroom: classroomHours,
+        onTheJob: onTheJobHours,
+      },
+    });
+  } catch (err: unknown) {
+    // Error: $1
+    return NextResponse.json(
+      { error: 'Failed to load hours' },
+      { status: 500 }
+    );
+  }
+}

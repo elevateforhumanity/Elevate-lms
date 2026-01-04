@@ -1,0 +1,99 @@
+{
+  "overview": {
+    "graduates": "5000+",
+    "job_placement_rate": "92%",
+    "average_salary_increase": "$15,000",
+    "programs_offered": 13,
+    "active_partnerships": 10,
+    "state_bidder_status": true,
+    "government_contracts": "active"
+  },
+  "programs": {
+    "total": 8,
+    "active": 7,
+    "launching": 1,
+    "categories": {
+      "skilled_trades": 3,
+      "healthcare": 2,
+      "entrepreneurship": 1,
+      "technology": 1,
+      "professional_development": 1
+    }
+  },
+  "funding": {
+    "sources": ["WIOA", "WRG", "Apprenticeship", "Employer Partners"],
+    "total_available": "$9M-$55M annually",
+    "per_student_average": "$3,000-$5,000",
+    "government_contract_potential": "$10M-$20M"
+  },
+  "cprs_program": {
+    "name": "Certified Peer Recovery Specialist",
+    "status": "launching",
+    "launch_date": "2025-12-01",
+    "funding_per_student": 5000,
+    "profit_per_student": 2000,
+    "projections": {
+      "year1": {
+        "students": 120,
+        "revenue": 600000,
+        "profit": 240000
+      },
+      "year2": {
+        "students": 240,
+        "revenue": 1200000,
+        "profit": 480000
+      },
+      "year3": {
+        "students": 540,
+        "revenue": 2700000,
+        "profit": 1080000
+      }
+    },
+    "total_3year_revenue": 4500000,
+    "total_3year_profit": 1800000
+  },
+  "partnerships": {
+    "total": 10,
+    "government": 3,
+    "credentialing": 6,
+    "program_holders": 10,
+    "value": "$9M-$55M annually"
+  },
+  "certifications": {
+    "offered": [
+      "Barber License",
+      "HVAC Certification",
+      "CNA/QMA",
+      "OSHA-10/30",
+      "Microsoft Office Specialist",
+      "IRS VITA Certified",
+      "Drug Testing Specialist",
+      "CPRS Certification",
+      "HiSET Diploma",
+      "EPA 608"
+    ],
+    "total": 10
+  },
+  "business_metrics": {
+    "platform_valuation": "$2.5M-$8M",
+    "annual_revenue_potential": "$9M-$55M",
+    "new_cprs_revenue": "$600K-$2.7M annually",
+    "total_addressable_market": "$50M-$200M (government contracts)",
+    "competitive_advantages": [
+      "State-approved bidder status",
+      "15+ active partnerships",
+      "ETPL approval pathway",
+      "92% job placement rate",
+      "Multiple funding sources"
+    ]
+  },
+  "enrollment": {
+    "current_capacity": "500+ students/year",
+    "cprs_capacity": "120-540 students/year",
+    "total_capacity": "620-1040 students/year",
+    "average_cohort_size": 20,
+    "cohorts_per_year": 12
+  },
+  "last_updated": "2025-11-01T12:30:00Z",
+  "next_update": "2025-11-08T12:30:00Z"
+}

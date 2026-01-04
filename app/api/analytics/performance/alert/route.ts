@@ -1,0 +1,88 @@
+export const runtime = 'nodejs';
+export const maxDuration = 60;
+
+import { NextRequest, NextResponse } from 'next/server';
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/logger';
+import { toError, toErrorMessage } from '@/lib/safe';
+
+export async function POST(request: NextRequest) {
+  try {
+    const data = await parseBody<Record<string, unknown>>(request);
+    const supabase = await createClient();
+
+    // Store performance alert for analysis
+    const { error } = await supabase.from('performance_alerts').insert({
+      type: data.type,
+      value: data.value,
+      message: data.message,
+      url: data.url,
+      user_agent: request.headers.get('user-agent'),
+      created_at: new Date().toISOString(),
+    });
+
+    if (error) {
+      logger.error('Error storing performance alert:', error);
+    }
+
+    // Send Slack alert if configured
+    if (process.env.SLACK_WEBHOOK_URL && data.value > 10 * 1024 * 1024) {
+      // 10MB+
+      try {
+        await fetch(process.env.SLACK_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text: `⚠️ Performance Alert: ${data.message}`,
+            blocks: [
+              {
+                type: 'header',
+                text: {
+                  type: 'plain_text',
+                  text: '⚠️ Performance Alert',
+                },
+              },
+              {
+                type: 'section',
+                fields: [
+                  {
+                    type: 'mrkdwn',
+                    text: `*Type:*\n${data.type}`,
+                  },
+                  {
+                    type: 'mrkdwn',
+                    text: `*Value:*\n${(data.value / 1024 / 1024).toFixed(2)} MB`,
+                  },
+                ],
+              },
+              {
+                type: 'section',
+                text: {
+                  type: 'mrkdwn',
+                  text: `*URL:*\n${data.url}`,
+                },
+              },
+            ],
+          }),
+        });
+      } catch (slackError) {
+        logger.error('Slack notification error:', slackError);
+      }
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error: unknown) {
+    logger.error(
+      'Performance alert API error:',
+      error instanceof Error ? error : new Error(String(error))
+    );
+    return NextResponse.json(
+      {
+        success: false,
+        error: toErrorMessage(error) || 'Internal server error',
+      },
+      { status: 500 }
+    );
+  }
+}

@@ -1,0 +1,319 @@
+import { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ExternalLink, CheckCircle, Clock, Award } from 'lucide-react';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://elevateforhumanity.org/courses/careersafe',
+  },
+  title: 'CareerSafe OSHA Training Courses | Elevate For Humanity',
+  description:
+    'Access OSHA-authorized safety training courses through our CareerSafe partnership. OSHA 10, OSHA 30, and specialized safety certifications.',
+};
+
+export default function CareerSafePage() {
+  const courseCategories = [
+    {
+      name: 'OSHA 10-Hour',
+      courses: [
+        {
+          id: 'osha10-general',
+          title: 'OSHA 10-Hour General Industry',
+          duration: '10 hours',
+          price: 'Included',
+          description:
+            'OSHA-authorized 10-hour general industry safety training',
+          certificate: 'OSHA 10-Hour Card',
+          enrollUrl:
+            'https://www.careersafeonline.com/osha-10-hour-general-industry',
+        },
+        {
+          id: 'osha10-construction',
+          title: 'OSHA 10-Hour Construction',
+          duration: '10 hours',
+          price: 'Included',
+          description: 'OSHA-authorized 10-hour construction safety training',
+          certificate: 'OSHA 10-Hour Card',
+          enrollUrl:
+            'https://www.careersafeonline.com/osha-10-hour-construction',
+        },
+      ],
+    },
+    {
+      name: 'OSHA 30-Hour',
+      courses: [
+        {
+          id: 'osha30-general',
+          title: 'OSHA 30-Hour General Industry',
+          duration: '30 hours',
+          price: 'Included',
+          description:
+            'Advanced OSHA safety training for supervisors and managers',
+          certificate: 'OSHA 30-Hour Card',
+          enrollUrl:
+            'https://www.careersafeonline.com/osha-30-hour-general-industry',
+        },
+        {
+          id: 'osha30-construction',
+          title: 'OSHA 30-Hour Construction',
+          duration: '30 hours',
+          price: 'Included',
+          description: 'Advanced construction safety training for supervisors',
+          certificate: 'OSHA 30-Hour Card',
+          enrollUrl:
+            'https://www.careersafeonline.com/osha-30-hour-construction',
+        },
+      ],
+    },
+    {
+      name: 'Healthcare Safety',
+      courses: [
+        {
+          id: 'bloodborne-pathogens',
+          title: 'Bloodborne Pathogens Training',
+          duration: '1 hour',
+          price: 'Included',
+          description:
+            'OSHA-compliant bloodborne pathogens training for healthcare workers',
+          certificate: 'Bloodborne Pathogens Certificate',
+          enrollUrl: 'https://www.careersafeonline.com/bloodborne-pathogens',
+        },
+        {
+          id: 'infection-control',
+          title: 'Infection Control & Prevention',
+          duration: '2 hours',
+          price: 'Included',
+          description: 'Healthcare infection control and prevention training',
+          certificate: 'Infection Control Certificate',
+          enrollUrl: 'https://www.careersafeonline.com/infection-control',
+        },
+        {
+          id: 'patient-safety',
+          title: 'Patient Safety & Care',
+          duration: '2 hours',
+          price: 'Included',
+          description:
+            'Essential patient safety training for healthcare workers',
+          certificate: 'Patient Safety Certificate',
+          enrollUrl: 'https://www.careersafeonline.com/patient-safety',
+        },
+      ],
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/artlist/hero-training-1.jpg"
+          alt="CareerSafe OSHA Training"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-2xl">
+            CareerSafe OSHA Training
+          </h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100 drop-shadow-lg">
+            OSHA-authorized safety training for workplace compliance
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-2xl"
+            >
+              Get Started Free
+            </Link>
+            <Link
+              href="https://www.careersafeonline.com/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white hover:bg-gray-100 text-blue-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-2xl flex items-center gap-2 justify-center"
+            >
+              Login to CareerSafe
+              <ExternalLink className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+            Why CareerSafe Training?
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="w-8 h-8 text-brand-blue-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">OSHA-Authorized</h3>
+              <p className="text-gray-600">
+                Official OSHA training provider with nationally recognized
+                certifications
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-brand-green-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">100% Free</h3>
+              <p className="text-gray-600">
+                Included with your program enrollment through WIOA or WRG
+                funding
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Self-Paced</h3>
+              <p className="text-gray-600">
+                Complete training on your schedule with 24/7 online access
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Courses Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+            Available Courses
+          </h2>
+
+          {courseCategories.map((category) => (
+            <div key={category.name} className="mb-12">
+              <h3 className="text-lg md:text-lg font-bold mb-6 text-blue-900">
+                {category.name}
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {category.courses.map((course: any) => (
+                  <div
+                    key={course.id}
+                    className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
+                  >
+                    <h4 className="text-xl font-semibold mb-2">
+                      {course.title}
+                    </h4>
+                    <p className="text-gray-600 mb-4">{course.description}</p>
+
+                    <div className="space-y-2 mb-4">
+                      <div className="flex items-center gap-2 text-sm text-gray-700">
+                        <Clock className="w-4 h-4" />
+                        <span>Duration: {course.duration}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-gray-700">
+                        <Award className="w-4 h-4" />
+                        <span>Certificate: {course.certificate}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm font-semibold text-brand-green-600">
+                        <CheckCircle className="w-4 h-4" />
+                        <span>{course.price}</span>
+                      </div>
+                    </div>
+
+                    <Link
+                      href={course.enrollUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-brand-blue-600 hover:bg-brand-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                    >
+                      Enroll Now
+                      <ExternalLink className="w-4 h-4" />
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Programs Using CareerSafe */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+            Programs Including CareerSafe Training
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link
+              href="/programs/hvac-technician"
+              className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow"
+            >
+              <h3 className="text-lg font-semibold mb-2">HVAC Technician</h3>
+              <p className="text-gray-600 mb-4">
+                Includes OSHA 10 and EPA 608 certification
+              </p>
+              <span className="text-brand-blue-600 font-semibold">
+                Learn More →
+              </span>
+            </Link>
+
+            <Link
+              href="/programs/building-maintenance"
+              className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow"
+            >
+              <h3 className="text-lg font-semibold mb-2">
+                Building Maintenance
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Includes OSHA 10/30 safety certifications
+              </p>
+              <span className="text-brand-blue-600 font-semibold">
+                Learn More →
+              </span>
+            </Link>
+
+            <Link
+              href="/programs/home-health-aide"
+              className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow"
+            >
+              <h3 className="text-lg font-semibold mb-2">Home Health Aide</h3>
+              <p className="text-gray-600 mb-4">
+                Includes bloodborne pathogens and infection control
+              </p>
+              <span className="text-brand-blue-600 font-semibold">
+                Learn More →
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">
+            Ready to Get Started?
+          </h2>
+          <p className="text-base md:text-lg mb-8">
+            Enroll in a program today and get free access to CareerSafe OSHA
+            training
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/apply"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all"
+            >
+              Apply Now
+            </Link>
+            <Link
+              href="/contact"
+              className="bg-white hover:bg-gray-100 text-blue-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -1,0 +1,188 @@
+import { createClient } from '@/lib/supabase/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { NextRequest, NextResponse } from 'next/server';
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import { logger } from '@/lib/logger';
+import { toError, toErrorMessage } from '@/lib/safe';
+
+// GET /api/hr/employees - List all employees
+export async function GET(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const searchParams = request.nextUrl.searchParams;
+
+    // Pagination
+    const page = parseInt(searchParams.get('page') || '1');
+    const limit = parseInt(searchParams.get('limit') || '50');
+    const offset = (page - 1) * limit;
+
+    // Filters
+    const department = searchParams.get('department');
+    const status = searchParams.get('status') || 'active';
+    const search = searchParams.get('search');
+
+    let query = supabase
+      .from('employees')
+      .select(
+        `
+        *,
+        profile:profiles(*),
+        department:departments(*),
+        position:positions(*),
+        manager:employees!manager_id(id, profile:profiles(full_name, email))
+      `,
+        { count: 'exact' }
+      )
+      .eq('employment_status', status)
+      .order('created_at', { ascending: false })
+      .range(offset, offset + limit - 1);
+
+    if (department) {
+      query = query.eq('department_id', department);
+    }
+
+    if (search) {
+      query = query.or(`
+        employee_number.ilike.%${search}%,
+        work_email.ilike.%${search}%,
+        personal_email.ilike.%${search}%
+      `);
+    }
+
+    const { data, error, count } = await query;
+
+    if (error) throw error;
+
+    return NextResponse.json({
+      employees: data,
+      pagination: {
+        page,
+        limit,
+        total: count,
+        totalPages: Math.ceil((count || 0) / limit),
+      },
+    });
+  } catch (error: unknown) {
+    logger.error(
+      'Error fetching employees:',
+      error instanceof Error ? error : new Error(String(error))
+    );
+    return NextResponse.json(
+      { error: toErrorMessage(error) || 'Failed to fetch employees' },
+      { status: 500 }
+    );
+  }
+}
+
+// POST /api/hr/employees - Create new employee
+export async function POST(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const body = await parseBody<Record<string, unknown>>(request);
+
+    const {
+      profile_id,
+      employee_number,
+      department_id,
+      position_id,
+      manager_id,
+      hire_date,
+      employment_type,
+      work_location,
+      salary,
+      pay_frequency,
+      pay_type,
+      hourly_rate,
+      ...otherFields
+    } = body;
+
+    // Validate required fields
+    if (!profile_id || !employee_number || !hire_date) {
+      return NextResponse.json(
+        {
+          error:
+            'Missing required fields: profile_id, employee_number, hire_date',
+        },
+        { status: 400 }
+      );
+    }
+
+    // Check if employee number already exists
+    const { data: existing } = await supabase
+      .from('employees')
+      .select('id')
+      .eq('employee_number', employee_number)
+      .single();
+
+    if (existing) {
+      return NextResponse.json(
+        { error: 'Employee number already exists' },
+        { status: 409 }
+      );
+    }
+
+    // Create employee
+    const { data: employee, error } = await supabase
+      .from('employees')
+      .insert({
+        profile_id,
+        employee_number,
+        department_id,
+        position_id,
+        manager_id,
+        hire_date,
+        employment_type,
+        work_location,
+        salary,
+        pay_frequency,
+        pay_type,
+        hourly_rate,
+        ...otherFields,
+      })
+      .select(
+        `
+        *,
+        profile:profiles(*),
+        department:departments(*),
+        position:positions(*)
+      `
+      )
+      .single();
+
+    if (error) throw error;
+
+    // Create initial leave balances
+    const { data: policies } = await supabase
+      .from('leave_policies')
+      .select('id')
+      .eq('is_active', true);
+
+    if (policies && policies.length > 0) {
+      const currentYear = new Date().getFullYear();
+      const leaveBalances = policies.map((policy) => ({
+        employee_id: employee.id,
+        policy_id: policy.id,
+        balance_year: currentYear,
+        accrued_hours: 0,
+        used_hours: 0,
+        pending_hours: 0,
+        available_hours: 0,
+      }));
+
+      await supabase.from('leave_balances').insert(leaveBalances);
+    }
+
+    return NextResponse.json({ employee }, { status: 201 });
+  } catch (error: unknown) {
+    logger.error(
+      'Error creating employee:',
+      error instanceof Error ? error : new Error(String(error))
+    );
+    return NextResponse.json(
+      { error: toErrorMessage(error) || 'Failed to create employee' },
+      { status: 500 }
+    );
+  }
+}

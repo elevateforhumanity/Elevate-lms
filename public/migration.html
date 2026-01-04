@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enterprise Features Migration SQL</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        .instructions {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+        }
+        .sql-container {
+            position: relative;
+            margin: 20px 0;
+        }
+        .sql-code {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            max-height: 600px;
+            overflow-y: auto;
+            white-space: pre;
+        }
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 10;
+        }
+        .copy-button:hover {
+            background: #1d4ed8;
+        }
+        .copy-button.copied {
+            background: #10b981;
+        }
+        .warning {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .download-button {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        .download-button:hover {
+            background: #059669;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🗄️ Enterprise Features Database Migration</h1>
+        <p>Copy this SQL and run it in your Supabase SQL Editor to create all required tables.</p>
+
+        <div class="instructions">
+            <strong>📋 Quick Instructions:</strong>
+            <ol>
+                <li><strong>Click "Copy SQL" button below</strong></li>
+                <li>Go to Supabase Dashboard → SQL Editor → New Query</li>
+                <li>Paste and click "Run"</li>
+            </ol>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <button class="download-button" onclick="downloadSql()">⬇️ Download SQL File</button>
+            <button class="copy-button" style="position: relative; top: 0; right: 0;" onclick="copySql()">📋 Copy All SQL</button>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ Important:</strong> This SQL is about 400 lines. Make sure you copy/paste the ENTIRE script.
+        </div>
+
+        <div class="sql-container">
+            <pre class="sql-code" id="sqlCode">-- Loading SQL...</pre>
+        </div>
+
+        <div class="success">
+            <strong>✅ What this creates:</strong>
+            <ul>
+                <li><strong>video_chapters</strong> - Video chapter markers</li>
+                <li><strong>video_transcripts</strong> - Video transcripts</li>
+                <li><strong>funding_applications</strong> - WIOA/WRG/JRI applications</li>
+                <li><strong>user_streaks</strong> - Learning streaks</li>
+                <li><strong>xapi_statements</strong> - xAPI learning records</li>
+                <li><strong>certificates</strong> - Certificates with verification</li>
+                <li><strong>program_holder_notes</strong> - Case management notes</li>
+                <li><strong>ai_generated_courses</strong> - AI course outlines</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Load SQL from file
+        fetch('/MIGRATION_CLEAN.sql')
+            .then(response => response.text())
+            .then(sql => {
+                document.getElementById('sqlCode').textContent = sql;
+            })
+            .catch(error => {
+                document.getElementById('sqlCode').textContent = 'Error loading SQL. Please check the console.';
+                console.error('Error:', error);
+            });
+
+        function copySql() {
+            const sqlCode = document.getElementById('sqlCode');
+            const button = event.target;
+            
+            navigator.clipboard.writeText(sqlCode.textContent).then(() => {
+                button.textContent = '✅ Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = '📋 Copy All SQL';
+                    button.classList.remove('copied');
+                }, 3000);
+            }).catch(err => {
+                alert('Failed to copy. Please select and copy manually.');
+            });
+        }
+
+        function downloadSql() {
+            const sqlCode = document.getElementById('sqlCode');
+            const blob = new Blob([sqlCode.textContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'enterprise_features_migration.sql';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

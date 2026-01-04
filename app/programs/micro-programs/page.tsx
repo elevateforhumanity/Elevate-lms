@@ -1,0 +1,248 @@
+import Link from 'next/link';
+import Image from 'next/image';
+import { Metadata } from 'next';
+import { programs } from '@/app/data/programs';
+import { Zap, Clock, Target, TrendingUp } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title:
+    'Micro-Credentials & Short Programs | Quick Certifications | Elevate for Humanity',
+  description:
+    'Fast-track certifications in 2-8 weeks. CPR, Workforce Readiness, Peer Recovery Coach, and more. Get certified, get hired.',
+  alternates: {
+    canonical: 'https://elevateforhumanity.org/programs/micro-programs',
+  },
+};
+
+const microProgramSlugs = [
+  'cpr-certification',
+  'workforce-readiness',
+  'peer-recovery-coach',
+  'drug-collector',
+  'emergency-health-safety-tech',
+];
+
+export default function MicroProgramsPage() {
+  const microPrograms = programs.filter((p) =>
+    microProgramSlugs.includes(p.slug)
+  );
+
+  return (
+    <div className="bg-white">
+      {/* Hero */}
+      <section className="bg-white text-white px-6 sm:px-10 lg:px-12 py-20 lg:py-28">
+        <div className="mx-auto max-w-5xl text-center">
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+            <Zap className="w-5 h-5" />
+            <span className="text-sm font-semibold">Micro Programs</span>
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
+            Get Certified Fast
+          </h1>
+
+          <p className="text-xl sm:text-2xl text-purple-100 leading-relaxed max-w-3xl mx-auto">
+            Short-term certifications you can complete in days or weeks. Perfect
+            for adding credentials, meeting job requirements, or starting a new
+            career path quickly.
+          </p>
+        </div>
+      </section>
+
+      {/* Story Section */}
+      <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20 bg-gray-50">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-3xl sm:text-4xl font-bold text-black text-center leading-tight mb-12">
+            Why Micro Programs Matter
+          </h2>
+
+          <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+            <p>
+              Not every career path requires years of training. Sometimes you
+              just need a specific certification to qualify for a job, meet a
+              requirement, or add a valuable skill to your resume.
+            </p>
+
+            <p>
+              <span className="font-bold text-black">
+                Micro programs get you there fast.
+              </span>{' '}
+              These short-term certifications are designed to be completed in
+              days or weeks, not months or years. You learn exactly what you
+              need, get certified, and move forward.
+            </p>
+
+            <p>
+              Many employers require certifications like CPR, workforce
+              readiness, or specialized safety training. These micro programs
+              check those boxes quickly and affordably—often at no cost to you.
+            </p>
+
+            <p className="text-xl font-bold text-black">
+              Small credentials can open big doors. Start here.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="text-3xl font-bold text-black text-center mb-12">
+            Micro Program Benefits
+          </h2>
+
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 text-purple-600 mb-4">
+                <Clock className="w-8 h-8" />
+              </div>
+              <h3 className="font-bold text-black mb-2">Fast Completion</h3>
+              <p className="text-gray-600">
+                Finish in days or weeks, not months
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-brand-blue-600 mb-4">
+                <Target className="w-8 h-8" />
+              </div>
+              <h3 className="font-bold text-black mb-2">Focused Training</h3>
+              <p className="text-gray-600">
+                Learn exactly what you need, nothing extra
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-green-100 text-brand-green-600 mb-4">
+                <TrendingUp className="w-8 h-8" />
+              </div>
+              <h3 className="font-bold text-black mb-2">Career Boost</h3>
+              <p className="text-gray-600">
+                Add credentials to your resume quickly
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 text-brand-orange-600 mb-4">
+                <Zap className="w-8 h-8" />
+              </div>
+              <h3 className="font-bold text-black mb-2">Low Cost</h3>
+              <p className="text-gray-600">Affordable or free with funding</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Programs */}
+      <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20 bg-gray-50">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="text-3xl font-bold text-black text-center mb-12">
+            Available Micro Programs
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {microPrograms.map((program: any) => (
+              <Link
+                key={program.slug}
+                href={`/programs/${program.slug}`}
+                className="group block bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all"
+              >
+                <div className="relative h-48 w-full overflow-hidden bg-white">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Zap className="w-16 h-16 text-purple-600" />
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-black mb-2">
+                    {program.name}
+                  </h3>
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
+                      {program.duration}
+                    </span>
+                    <span className="px-3 py-1 bg-brand-green-100 text-green-700 text-xs font-semibold rounded-full">
+                      Quick Start
+                    </span>
+                  </div>
+                  <span className="inline-flex items-center font-semibold text-purple-600 group-hover:underline text-sm">
+                    Learn More →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases */}
+      <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-3xl font-bold text-black text-center mb-12">
+            When to Choose a Micro Program
+          </h2>
+
+          <div className="space-y-6">
+            <div className="bg-white rounded-xl border-2 border-purple-200 p-6">
+              <h3 className="font-bold text-black mb-2">
+                You need a specific certification
+              </h3>
+              <p className="text-gray-700">
+                Many jobs require CPR, safety training, or other specific
+                credentials. Get certified quickly.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl border-2 border-purple-200 p-6">
+              <h3 className="font-bold text-black mb-2">
+                You're exploring career options
+              </h3>
+              <p className="text-gray-700">
+                Try a short program to see if a field interests you before
+                committing to longer training.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl border-2 border-purple-200 p-6">
+              <h3 className="font-bold text-black mb-2">
+                You want to add skills fast
+              </h3>
+              <p className="text-gray-700">
+                Boost your resume with additional certifications that make you
+                more competitive.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl border-2 border-purple-200 p-6">
+              <h3 className="font-bold text-black mb-2">
+                You need workforce readiness
+              </h3>
+              <p className="text-gray-700">
+                Prepare for employment with essential workplace skills and
+                professional development.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20 bg-gray-50">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6">
+            Get Certified This Month
+          </h2>
+          <p className="text-xl text-gray-700 mb-8">
+            Start a micro program and earn your certification in weeks.
+          </p>
+          <Link
+            href="/apply"
+            className="inline-flex px-8 py-4 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition text-lg"
+          >
+            Apply Now
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}

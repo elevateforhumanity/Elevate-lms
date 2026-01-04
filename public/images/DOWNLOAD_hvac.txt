@@ -1,0 +1,5 @@
+DOWNLOAD hvac IMAGES:
+Visit: https://www.pexels.com/search/hvac/
+Download 2 images and save as:
+- efh-hvac-card.jpg
+- efh-hvac-hero.jpg

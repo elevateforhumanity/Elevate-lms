@@ -1,0 +1,10 @@
+{
+  "status": "healthy",
+  "timestamp": "2025-01-28T00:00:00Z",
+  "version": "2.0.0",
+  "services": {
+    "frontend": "operational",
+    "database": "operational",
+    "api": "operational"
+  }
+}

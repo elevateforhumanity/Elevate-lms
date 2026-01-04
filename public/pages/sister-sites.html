@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sister Sites | Selfish Inc. DBA Rise Foundation Ecosystem</title>
+    <meta
+      name="description"
+      content="Explore the comprehensive ecosystem of organizations under Selfish Inc. DBA Rise Foundation, including Elevate for Humanity, healthcare partnerships, and philanthropic initiatives."
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background: #fafafa;
+      }
+
+      /* Custom Brand Colors */
+      :root {
+        --primary-purple: #7c3aed;
+        --primary-blue: #1e40af;
+        --accent-green: #059669;
+        --warm-orange: #ea580c;
+        --soft-gray: #6b7280;
+        --light-bg: #f8fafc;
+        --rise-gold: #f59e0b;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-purple),
+          var(--primary-blue)
+        );
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+      }
+      .header h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+      .header .subtitle {
+        font-size: 1.3rem;
+        opacity: 0.9;
+        margin-bottom: 2rem;
+      }
+      .header .umbrella-org {
+        font-size: 1.1rem;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        display: inline-block;
+        margin-top: 1rem;
+      }
+
+      /* Ecosystem Overview */
+      .ecosystem-overview {
+        background: white;
+        padding: 80px 0;
+      }
+      .ecosystem-overview h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--primary-purple);
+        margin-bottom: 3rem;
+        font-weight: 700;
+      }
+      .ecosystem-description {
+        max-width: 800px;
+        margin: 0 auto 4rem;
+        text-align: center;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: var(--soft-gray);
+      }
+
+      /* Sister Sites Grid */
+      .sites-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+      }
+      .site-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #e5e7eb;
+        position: relative;
+        overflow: hidden;
+      }
+      .site-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-purple),
+          var(--accent-green)
+        );
+      }
+      .site-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+      .site-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+      .site-card h3 {
+        font-size: 1.8rem;
+        color: var(--primary-blue);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      .site-tagline {
+        font-size: 1rem;
+        color: var(--accent-green);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+      .site-description {
+        color: var(--soft-gray);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+      .site-features {
+        list-style: none;
+        margin-bottom: 2rem;
+      }
+      .site-features li {
+        padding: 0.3rem 0;
+        color: var(--soft-gray);
+        font-size: 0.95rem;
+      }
+      .site-link {
+        display: inline-flex;
+        align-items: center;
+        background: var(--primary-purple);
+        color: white;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      .site-link:hover {
+        background: var(--accent-green);
+        transform: translateX(5px);
+      }
+
+      /* Special Cards */
+      .flagship-card {
+        border: 2px solid var(--primary-purple);
+      }
+      .flagship-card::before {
+        background: linear-gradient(
+          90deg,
+          var(--primary-purple),
+          var(--rise-gold)
+        );
+      }
+      .healthcare-card {
+        border: 2px solid var(--accent-green);
+      }
+      .healthcare-card::before {
+        background: linear-gradient(
+          90deg,
+          var(--accent-green),
+          var(--primary-blue)
+        );
+      }
+
+      /* Umbrella Organization Section */
+      .umbrella-section {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        padding: 80px 0;
+      }
+      .umbrella-content {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .umbrella-section h2 {
+        font-size: 2.5rem;
+        color: var(--primary-purple);
+        margin-bottom: 2rem;
+        font-weight: 700;
+      }
+      .umbrella-description {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: var(--soft-gray);
+        margin-bottom: 3rem;
+      }
+      .umbrella-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+      .umbrella-feature {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      }
+      .umbrella-feature h4 {
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      /* Footer */
+      footer {
+        background: #1a1a1a;
+        color: white;
+        padding: 60px 0 30px;
+        text-align: center;
+      }
+      .footer-content {
+        margin-bottom: 2rem;
+      }
+      .footer-brand {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--primary-purple);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 2.5rem;
+        }
+        .sites-grid {
+          grid-template-columns: 1fr;
+        }
+        .umbrella-features {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <h1>Sister Sites Ecosystem</h1>
+        <p class="subtitle">
+          A Comprehensive Network of Social Impact Organizations
+        </p>
+        <div class="umbrella-org">Selfish Inc. DBA Rise Foundation</div>
+      </div>
+    </header>
+
+    <!-- Ecosystem Overview -->
+    <section class="ecosystem-overview">
+      <div class="container">
+        <h2>Unified Mission, Diverse Impact</h2>
+        <div class="ecosystem-description">
+          <p>
+            Under the strategic leadership of
+            <strong>Selfish Inc. DBA Rise Foundation</strong>, our ecosystem of
+            organizations works together to create sustainable pathways from
+            poverty to prosperity. Each entity serves a unique role in our
+            comprehensive approach to community transformation through
+            education, healthcare, and philanthropic innovation.
+          </p>
+        </div>
+
+        <!-- Sister Sites Grid -->
+        <div class="sites-grid">
+          <!-- Elevate for Humanity - Flagship -->
+          <div class="site-card flagship-card">
+            <span class="site-icon">🚀</span>
+            <h3>Elevate for Humanity</h3>
+            <p class="site-tagline">
+              Workforce Development &amp; Technology Training
+            </p>
+            <p class="site-description">
+              Our flagship organization transforming lives through AI/Data
+              Science education, WIOA workforce development, and professional
+              certifications. Creating pathways to high-paying technology
+              careers.
+            </p>
+            <ul class="site-features">
+              <li>• AI &amp; Data Science Bootcamps</li>
+              <li>• WIOA Federally-Funded Training</li>
+              <li>• Professional Certifications</li>
+              <li>• 89% Job Placement Rate</li>
+              <li>• $85K Average Starting Salary</li>
+            </ul>
+            <a href="/" class="site-link">Visit Elevate for Humanity →</a>
+          </div>
+
+          <!-- Curvature Body Sculpting / Serene Comfort Care -->
+          <div class="site-card healthcare-card">
+            <span class="site-icon">🏥</span>
+            <h3>Serene Comfort Care</h3>
+            <p class="site-tagline">
+              Healthcare Billing &amp; Provider Services
+            </p>
+            <p class="site-description">
+              Operating as Curvature Body Sculpting LLC DBA Serene Comfort Care,
+              providing comprehensive healthcare billing services and Medicaid
+              provider operations with integrated CNA training programs.
+            </p>
+            <ul class="site-features">
+              <li>• Healthcare Billing &amp; Revenue Cycle</li>
+              <li>• Medicaid Provider Services</li>
+              <li>• CNA School Code Holder</li>
+              <li>• Psych RN Partnerships</li>
+              <li>• HIPAA-Compliant Operations</li>
+            </ul>
+            <a href="/healthcare-services" class="site-link"
+              >Healthcare Services →</a
+            >
+          </div>
+
+          <!-- Rise Foundation Platform -->
+          <div class="site-card">
+            <span class="site-icon">🌟</span>
+            <h3>Rise Foundation Platform</h3>
+            <p class="site-tagline">
+              Philanthropic Technology &amp; Automation
+            </p>
+            <p class="site-description">
+              Advanced SaaS platform powering our entire ecosystem with
+              AI-driven automation, secure multi-tenant architecture, and
+              comprehensive compliance management for all sister organizations.
+            </p>
+            <ul class="site-features">
+              <li>• Multi-Tenant SaaS Architecture</li>
+              <li>• AI Copilot &amp; Automation Engine</li>
+              <li>• HIPAA &amp; Compliance Management</li>
+              <li>• Grant &amp; RFP Automation</li>
+              <li>• Integrated Payment Processing</li>
+            </ul>
+            <a href="/operational-agreements" class="site-link"
+              >Access Platform →</a
+            >
+          </div>
+
+          <!-- Community Connect -->
+          <div class="site-card">
+            <span class="site-icon">🤝</span>
+            <h3>Community Connect</h3>
+            <p class="site-tagline">Integrated Support Network</p>
+            <p class="site-description">
+              Comprehensive community support system connecting all our services
+              with mentorship, peer learning, career development, and seamless
+              integration with Indiana Connect services.
+            </p>
+            <ul class="site-features">
+              <li>• Mentorship Programs</li>
+              <li>• Peer Learning Networks</li>
+              <li>• Career Development Support</li>
+              <li>• Indiana Connect Integration</li>
+              <li>• Community Resource Hub</li>
+            </ul>
+            <a href="/connect" class="site-link">Join Community →</a>
+          </div>
+
+          <!-- Learning Management System -->
+          <div class="site-card">
+            <span class="site-icon">📚</span>
+            <h3>EFH Learning Portal</h3>
+            <p class="site-tagline">Advanced Learning Management System</p>
+            <p class="site-description">
+              State-of-the-art LMS powering all educational initiatives across
+              our ecosystem, from AI bootcamps to healthcare training, with
+              integrated assessment and certification tracking.
+            </p>
+            <ul class="site-features">
+              <li>• Interactive Course Delivery</li>
+              <li>• Real-time Progress Tracking</li>
+              <li>• Certification Management</li>
+              <li>• Multi-Program Support</li>
+              <li>• Industry Integration</li>
+            </ul>
+            <a href="/lms" class="site-link">Enter Learning Portal →</a>
+          </div>
+
+          <!-- Government Services -->
+          <div class="site-card">
+            <span class="site-icon">🏛️</span>
+            <h3>Government Services Hub</h3>
+            <p class="site-tagline">Public Sector Partnerships</p>
+            <p class="site-description">
+              Specialized portal for government partnerships, WIOA
+              administration, compliance reporting, and public sector workforce
+              development initiatives across our ecosystem.
+            </p>
+            <ul class="site-features">
+              <li>• WIOA Program Administration</li>
+              <li>• Compliance Reporting</li>
+              <li>• Government Partnership Portal</li>
+              <li>• Public Sector Training</li>
+              <li>• Grant Management</li>
+            </ul>
+            <a href="/government-services" class="site-link"
+              >Government Portal →</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Umbrella Organization -->
+    <section class="umbrella-section">
+      <div class="container">
+        <div class="umbrella-content">
+          <h2>Selfish Inc. DBA Rise Foundation</h2>
+          <p class="umbrella-description">
+            As the philanthropic umbrella organization, Selfish Inc. DBA Rise
+            Foundation serves as the fiscal intermediary and strategic
+            coordinator for our entire ecosystem. We provide unified leadership,
+            shared resources, and coordinated impact measurement across all
+            sister organizations.
+          </p>
+
+          <div class="umbrella-features">
+            <div class="umbrella-feature">
+              <h4>🎯 Strategic Coordination</h4>
+              <p>
+                Unified mission and coordinated impact across all organizations
+              </p>
+            </div>
+            <div class="umbrella-feature">
+              <h4>💰 Fiscal Intermediary</h4>
+              <p>Centralized financial management and grant administration</p>
+            </div>
+            <div class="umbrella-feature">
+              <h4>📊 Impact Measurement</h4>
+              <p>
+                Comprehensive tracking and reporting of community transformation
+              </p>
+            </div>
+            <div class="umbrella-feature">
+              <h4>🔒 Compliance Management</h4>
+              <p>
+                Unified approach to regulatory compliance and risk management
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">Selfish Inc. DBA Rise Foundation</div>
+          <p>
+            Philanthropic Umbrella Organization • Veteran-Owned Small Business
+          </p>
+          <p>📞 (555) 123-4567 • 📧 info@risefoundation.org</p>
+        </div>
+        <p>
+          &amp;copy; 2025 Selfish Inc. DBA Rise Foundation. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

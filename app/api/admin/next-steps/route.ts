@@ -1,0 +1,123 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+import { NextResponse } from 'next/server';
+import { createAdminClient } from '@/lib/supabase/admin';
+import { createClient } from '@/lib/supabase/server';
+
+function progressFromRow(r: unknown) {
+  const checks = [
+    !!r.inquiry_submitted,
+    !!r.icc_account_created,
+    !!r.workone_appointment_scheduled,
+    !!r.told_advisor_efh,
+    !!r.advisor_docs_uploaded,
+    r.funding_status === 'approved' || r.funding_status === 'denied',
+    !!r.efh_onboarding_call_completed,
+    !!r.program_start_confirmed,
+  ];
+  const done = checks.filter(Boolean).length;
+  const total = checks.length;
+  const percent = Math.round((done / total) * 100);
+  return { done, total, percent };
+}
+
+export async function GET(req: Request) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const adminClient = createAdminClient();
+
+  const url = new URL(req.url);
+  const q = (url.searchParams.get('q') || '').trim();
+  const status = (url.searchParams.get('status') || '').trim();
+  const needs = (url.searchParams.get('needs') || '').trim();
+
+  // Get user's organization
+  const { data: prof, error: profErr } = await adminClient
+    .from('profiles')
+    .select('organization_id')
+    .eq('id', user.id)
+    .maybeSingle();
+
+  if (profErr)
+    return NextResponse.json({ error: profErr.message }, { status: 500 });
+
+  const orgId = prof?.organization_id;
+  if (!orgId)
+    return NextResponse.json(
+      { error: 'No active organization found' },
+      { status: 400 }
+    );
+
+  let query = adminClient
+    .from('student_next_steps')
+    .select(
+      `
+      *,
+      profiles!student_next_steps_user_id_fkey ( id, full_name, email ),
+      programs!student_next_steps_program_id_fkey ( id, name, slug )
+      `
+    )
+    .eq('organization_id', orgId)
+    .order('updated_at', { ascending: false });
+
+  if (status) query = query.eq('funding_status', status);
+
+  const { data, error } = await query;
+  if (error)
+    return NextResponse.json({ error: error.message }, { status: 500 });
+
+  let rows = (data || []).map((r: unknown) => ({
+    ...r,
+    progress: progressFromRow(r),
+    student_name: r.profiles?.full_name || 'Student',
+    student_email: r.profiles?.email || '',
+    program_name: r.programs?.name || '',
+    program_slug: r.programs?.slug || '',
+  }));
+
+  if (q) {
+    const ql = q.toLowerCase();
+    rows = rows.filter((r: unknown) =>
+      `${r.student_name} ${r.student_email} ${r.program_name}`
+        .toLowerCase()
+        .includes(ql)
+    );
+  }
+
+  if (needs) {
+    rows = rows.filter((r: unknown) => {
+      if (needs === 'appt') return !r.workone_appointment_scheduled;
+      if (needs === 'docs') return !r.advisor_docs_uploaded;
+      if (needs === 'onboarding') return !r.efh_onboarding_call_completed;
+      if (needs === 'start') return !r.program_start_confirmed;
+      return true;
+    });
+  }
+
+  // Summary counts
+  const summary = {
+    total: rows.length,
+    funding_pending: rows.filter((r: unknown) => r.funding_status === 'pending')
+      .length,
+    funding_approved: rows.filter((r: unknown) => r.funding_status === 'approved')
+      .length,
+    funding_denied: rows.filter((r: unknown) => r.funding_status === 'denied')
+      .length,
+    appt_missing: rows.filter((r: unknown) => !r.workone_appointment_scheduled)
+      .length,
+    onboarding_missing: rows.filter(
+      (r: unknown) => !r.efh_onboarding_call_completed
+    ).length,
+    start_missing: rows.filter((r: unknown) => !r.program_start_confirmed).length,
+  };
+
+  return NextResponse.json({ org_id: orgId, summary, rows });
+}

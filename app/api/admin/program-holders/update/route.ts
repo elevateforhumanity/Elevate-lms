@@ -1,0 +1,45 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+import { NextRequest } from 'next/server';
+import { cookies } from 'next/headers';
+import { createRouteHandlerClient } from '@/lib/auth';
+import { withAuth } from '@/lib/with-auth';
+import { toError, toErrorMessage } from '@/lib/safe';
+
+export const POST = withAuth(
+  async (req, context) => {
+    const { user } = context;
+    const supabase = await createRouteHandlerClient({ cookies });
+    const { id, status, mou_status } = await req.json();
+
+    if (!id) {
+      return new Response('Missing id', { status: 400 });
+    }
+
+    const updates: unknown = {};
+
+    if (status) {
+      updates.status = status;
+    }
+
+    if (mou_status) {
+      updates.mou_status = mou_status;
+      if (mou_status === 'signed') {
+        updates.mou_signed_at = new Date().toISOString();
+      }
+    }
+
+    const { error } = await supabase
+      .from('program_holders')
+      .update(updates)
+      .eq('id', id);
+
+    if (error) {
+      return new Response(toErrorMessage(error), { status: 500 });
+    }
+
+    return Response.json({ ok: true });
+  },
+  { roles: ['admin', 'super_admin'] }
+);

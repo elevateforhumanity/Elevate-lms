@@ -1,0 +1,49 @@
+import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Meet the Founder | Selfish Inc.',
+  description: 'Learn about the founder of Selfish Inc. and Rise Forward Foundation',
+};
+
+export default function MeetTheFounderPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      <div className="max-w-4xl mx-auto px-4 py-16">
+        <Link href="/nonprofit" className="text-purple-600 hover:text-purple-700 mb-8 inline-block">
+          ← Back to Selfish Inc.
+        </Link>
+
+        <h1 className="text-4xl font-bold text-gray-900 mb-6">Meet the Founder</h1>
+
+        <div className="prose prose-lg max-w-none">
+          <p className="text-xl text-gray-600 mb-8">
+            Learn about the vision and mission behind Selfish Inc. and Rise Forward Foundation.
+          </p>
+
+          <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Our Mission</h2>
+          <p className="text-gray-700 mb-4">
+            Selfish Inc., doing business as Rise Forward Foundation, is dedicated to providing
+            mental wellness and holistic healing support to individuals and communities.
+          </p>
+
+          <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Our Vision</h2>
+          <p className="text-gray-700 mb-4">
+            We envision a world where everyone has access to the mental health and wellness
+            resources they need to thrive.
+          </p>
+
+          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mt-8">
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Get Involved</h3>
+            <p className="text-gray-700 mb-4">
+              Join us in our mission to support mental wellness and holistic healing.
+            </p>
+            <Link href="/rise-foundation/get-involved" className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
+              Learn More
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

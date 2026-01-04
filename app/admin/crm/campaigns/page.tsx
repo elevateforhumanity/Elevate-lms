@@ -1,0 +1,207 @@
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { Mail, Plus, TrendingUp, Users, Eye } from 'lucide-react';
+
+export const metadata = {
+  title: 'Email Campaigns | CRM',
+  description: 'Manage and send bulk email campaigns',
+};
+
+export default async function CampaignsPage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) redirect('/login');
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+
+  if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
+    redirect('/dashboard');
+  }
+
+  // Get all campaigns
+  const { data: campaigns } = await supabase
+    .from('email_campaigns')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  // Calculate totals
+  const totalSent =
+    campaigns?.reduce((sum, c) => sum + (c.sent_count || 0), 0) || 0;
+  const totalOpened =
+    campaigns?.reduce((sum, c) => sum + (c.opened_count || 0), 0) || 0;
+  const totalClicked =
+    campaigns?.reduce((sum, c) => sum + (c.clicked_count || 0), 0) || 0;
+  const openRate =
+    totalSent > 0 ? ((totalOpened / totalSent) * 100).toFixed(1) : 0;
+  const clickRate =
+    totalSent > 0 ? ((totalClicked / totalSent) * 100).toFixed(1) : 0;
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">
+              Email Campaigns
+            </h1>
+            <p className="text-gray-600 mt-2">
+              Send and track bulk email campaigns
+            </p>
+          </div>
+          <Link
+            href="/admin/crm/campaigns/new"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            <Plus className="w-5 h-5" />
+            New Campaign
+          </Link>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-semibold text-gray-600">
+                Total Sent
+              </span>
+              <Mail className="w-5 h-5 text-blue-600" />
+            </div>
+            <p className="text-3xl font-bold text-gray-900">
+              {totalSent.toLocaleString()}
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-semibold text-gray-600">
+                Open Rate
+              </span>
+              <Eye className="w-5 h-5 text-green-600" />
+            </div>
+            <p className="text-3xl font-bold text-gray-900">{openRate}%</p>
+            <p className="text-sm text-gray-600 mt-1">
+              {totalOpened.toLocaleString()} opened
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-semibold text-gray-600">
+                Click Rate
+              </span>
+              <TrendingUp className="w-5 h-5 text-purple-600" />
+            </div>
+            <p className="text-3xl font-bold text-gray-900">{clickRate}%</p>
+            <p className="text-sm text-gray-600 mt-1">
+              {totalClicked.toLocaleString()} clicked
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-semibold text-gray-600">
+                Campaigns
+              </span>
+              <Users className="w-5 h-5 text-orange-600" />
+            </div>
+            <p className="text-3xl font-bold text-gray-900">
+              {campaigns?.length || 0}
+            </p>
+          </div>
+        </div>
+
+        {/* Campaigns List */}
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+          <div className="px-6 py-4 border-b border-gray-200">
+            <h2 className="text-xl font-bold text-gray-900">All Campaigns</h2>
+          </div>
+
+          {campaigns && campaigns.length > 0 ? (
+            <div className="divide-y divide-gray-200">
+              {campaigns.map((campaign) => (
+                <Link
+                  key={campaign.id}
+                  href={`/admin/crm/campaigns/${campaign.id}`}
+                  className="block px-6 py-4 hover:bg-gray-50 transition-colors"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-gray-900">
+                        {campaign.name}
+                      </h3>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {campaign.subject}
+                      </p>
+                      <div className="flex items-center gap-6 mt-3 text-sm">
+                        <span className="text-gray-600">
+                          Sent:{' '}
+                          <span className="font-semibold text-gray-900">
+                            {campaign.sent_count || 0}
+                          </span>
+                        </span>
+                        <span className="text-gray-600">
+                          Opened:{' '}
+                          <span className="font-semibold text-green-600">
+                            {campaign.opened_count || 0}
+                          </span>
+                        </span>
+                        <span className="text-gray-600">
+                          Clicked:{' '}
+                          <span className="font-semibold text-blue-600">
+                            {campaign.clicked_count || 0}
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span
+                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                          campaign.status === 'sent'
+                            ? 'bg-green-100 text-green-700'
+                            : campaign.status === 'draft'
+                              ? 'bg-gray-100 text-gray-700'
+                              : 'bg-blue-100 text-blue-700'
+                        }`}
+                      >
+                        {campaign.status}
+                      </span>
+                      <p className="text-xs text-gray-500 mt-2">
+                        {new Date(campaign.created_at).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="px-6 py-12 text-center">
+              <Mail className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                No campaigns yet
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Create your first email campaign to get started
+              </p>
+              <Link
+                href="/admin/crm/campaigns/new"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                <Plus className="w-5 h-5" />
+                Create Campaign
+              </Link>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

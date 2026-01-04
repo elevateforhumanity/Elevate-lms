@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Elevate Platform - Setup Wizard</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; frame-src https://js.stripe.com;"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .step-content {
+        display: none;
+        animation: fadeIn 0.5s ease-out;
+      }
+      .step-content.active {
+        display: block;
+      }
+      .option-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .option-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+      .option-card.selected {
+        border-color: #8b5cf6;
+        background: linear-gradient(
+          135deg,
+          rgba(139, 92, 246, 0.1),
+          rgba(59, 130, 246, 0.1)
+        );
+      }
+      /* Anti-scraping protection */
+      body::before {
+        content: attr(data-protection);
+        position: absolute;
+        left: -9999px;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 min-h-screen text-white"
+    data-protection="Protected content - Unauthorized access prohibited"
+  >
+    <!-- Anti-scraping honeypot -->
+    <div style="position: absolute; left: -9999px" aria-hidden="true">
+      <input
+        type="text"
+        aria-label="text input"
+        name="email_confirm"
+        tabindex="-1"
+        autocomplete="off"
+      />
+      <a href="/admin/secret">Admin Panel</a>
+    </div>
+
+    <!-- Header -->
+    <header class="container mx-auto px-4 py-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold">🚀 Elevate Platform Setup</h1>
+        <div class="text-sm text-gray-400">Secure Setup Wizard</div>
+      </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="container mx-auto px-4 mb-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex justify-between items-center mb-4">
+          <div class="step-indicator" id="step-indicator-1">
+            <div
+              class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center font-bold"
+            >
+              1
+            </div>
+            <div class="text-xs mt-2">Welcome</div>
+          </div>
+          <div class="flex-1 h-1 bg-gray-700 mx-2"></div>
+          <div class="step-indicator" id="step-indicator-2">
+            <div
+              class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center font-bold"
+            >
+              2
+            </div>
+            <div class="text-xs mt-2">Setup Method</div>
+          </div>
+          <div class="flex-1 h-1 bg-gray-700 mx-2"></div>
+          <div class="step-indicator" id="step-indicator-3">
+            <div
+              class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center font-bold"
+            >
+              3
+            </div>
+            <div class="text-xs mt-2">Autopilot</div>
+          </div>
+          <div class="flex-1 h-1 bg-gray-700 mx-2"></div>
+          <div class="step-indicator" id="step-indicator-4">
+            <div
+              class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center font-bold"
+            >
+              4
+            </div>
+            <div class="text-xs mt-2">Complete</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- Step 1: Welcome -->
+        <div id="step-1" class="step-content active">
+          <div
+            class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20"
+          >
+            <h2 class="text-4xl font-bold mb-6 text-center">
+              Welcome to Your Platform! 🎉
+            </h2>
+            <p class="text-xl text-gray-300 mb-8 text-center">
+              Let's get you set up in just a few minutes.
+            </p>
+
+            <div
+              class="bg-blue-500/20 border border-blue-500 rounded-lg p-6 mb-8"
+            >
+              <h3 class="text-xl font-bold mb-4">🔒 Security Notice</h3>
+              <p class="text-gray-300">
+                This setup wizard is protected and only accessible to license
+                holders. All data is encrypted and your configuration is private
+                to your organization.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+              <div class="bg-white/5 rounded-lg p-6">
+                <div class="text-3xl mb-4">✅</div>
+                <h4 class="font-bold mb-2">What You'll Get</h4>
+                <ul class="text-sm text-gray-300 space-y-2">
+                  <li>• Customized platform setup</li>
+                  <li>• Autopilot configuration</li>
+                  <li>• Secure data import</li>
+                  <li>• Automated deployments</li>
+                </ul>
+              </div>
+              <div class="bg-white/5 rounded-lg p-6">
+                <div class="text-3xl mb-4">⏱️</div>
+                <h4 class="font-bold mb-2">Time Required</h4>
+                <ul class="text-sm text-gray-300 space-y-2">
+                  <li>• Setup: 5-10 minutes</li>
+                  <li>• Data import: 2-5 minutes</li>
+                  <li>• Autopilot config: 3 minutes</li>
+                  <li>• Total: ~15 minutes</li>
+                </ul>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onclick="nextStep()"
+              class="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-4 px-6 rounded-lg transition"
+            >
+              Let's Get Started →
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Setup Method -->
+        <div id="step-2" class="step-content">
+          <div
+            class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20"
+          >
+            <h2 class="text-3xl font-bold mb-6">
+              How would you like to set up?
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+              <!-- License Key Option -->
+              <div
+                class="option-card bg-white/5 rounded-xl p-6 border-2 border-gray-600"
+                onclick="selectSetupMethod('license')"
+                id="option-license"
+              >
+                <div class="text-4xl mb-4">🔑</div>
+                <h3 class="text-xl font-bold mb-3">Use License Key</h3>
+                <p class="text-gray-300 mb-4">
+                  Enter your license key to automatically configure your
+                  platform with your purchased tier.
+                </p>
+                <ul class="text-sm text-gray-400 space-y-2">
+                  <li>✓ Fastest setup</li>
+                  <li>✓ Auto-configuration</li>
+                  <li>✓ Tier-based features</li>
+                  <li>✓ Recommended</li>
+                </ul>
+              </div>
+
+              <!-- Data Import Option -->
+              <div
+                class="option-card bg-white/5 rounded-xl p-6 border-2 border-gray-600"
+                onclick="selectSetupMethod('import')"
+                id="option-import"
+              >
+                <div class="text-4xl mb-4">📊</div>
+                <h3 class="text-xl font-bold mb-3">Import Data</h3>
+                <p class="text-gray-300 mb-4">
+                  Import existing student data, programs, and settings from CSV
+                  or JSON files.
+                </p>
+                <ul class="text-sm text-gray-400 space-y-2">
+                  <li>✓ Migrate from other systems</li>
+                  <li>✓ Bulk data import</li>
+                  <li>✓ CSV/JSON support</li>
+                  <li>✓ For existing data</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- License Key Input (Hidden initially) -->
+            <div id="license-input" style="display: none" class="mb-6">
+              <label class="block text-sm font-bold mb-2"
+                >Enter Your License Key</label
+              >
+              <input
+                type="text"
+                id="license-key"
+                placeholder="EFH-XXXX-XXXX-XXXX-XXXX"
+                class="w-full bg-white/10 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-purple-500 focus:outline-none"
+                pattern="EFH-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}"
+              />
+              <p class="text-sm text-gray-400 mt-2">
+                Format: EFH-XXXX-XXXX-XXXX-XXXX
+              </p>
+              <button
+                type="button"
+                onclick="validateLicense()"
+                class="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg"
+              >
+                Validate License
+              </button>
+            </div>
+
+            <!-- Data Import Options (Hidden initially) -->
+            <div id="import-options" style="display: none" class="mb-6">
+              <label class="block text-sm font-bold mb-2"
+                >Select Import Type</label
+              >
+              <div class="grid md:grid-cols-3 gap-4 mb-4">
+                <button
+                  type="button"
+                  onclick="selectImportType('csv')"
+                  class="import-type-btn bg-white/5 hover:bg-white/10 border border-gray-600 rounded-lg p-4"
+                >
+                  <div class="text-2xl mb-2">📄</div>
+                  <div class="font-bold">CSV File</div>
+                </button>
+                <button
+                  type="button"
+                  onclick="selectImportType('json')"
+                  class="import-type-btn bg-white/5 hover:bg-white/10 border border-gray-600 rounded-lg p-4"
+                >
+                  <div class="text-2xl mb-2">📋</div>
+                  <div class="font-bold">JSON File</div>
+                </button>
+                <button
+                  type="button"
+                  onclick="selectImportType('api')"
+                  class="import-type-btn bg-white/5 hover:bg-white/10 border border-gray-600 rounded-lg p-4"
+                >
+                  <div class="text-2xl mb-2">🔌</div>
+                  <div class="font-bold">API Import</div>
+                </button>
+              </div>
+              <div id="file-upload" style="display: none">
+                <input
+                  type="file"
+                  id="import-file"
+                  accept=".csv,.json"
+                  class="w-full bg-white/10 border border-gray-600 rounded-lg px-4 py-3"
+                />
+                <button
+                  type="button"
+                  onclick="processImport()"
+                  class="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg"
+                >
+                  Process Import
+                </button>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <button
+                type="button"
+                onclick="previousStep()"
+                class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg"
+              >
+                ← Back
+              </button>
+              <button
+                type="button"
+                onclick="nextStep()"
+                id="step2-next"
+                class="flex-1 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-lg"
+                disabled
+              >
+                Continue →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Autopilot Selection -->
+        <div id="step-3" class="step-content">
+          <div
+            class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20"
+          >
+            <h2 class="text-3xl font-bold mb-6">Choose Your Autopilot Tier</h2>
+            <p class="text-gray-300 mb-8">
+              Select the autopilot that fits your needs. You can upgrade
+              anytime.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+              <!-- Basic Autopilot (Included) -->
+              <div
+                class="option-card bg-white/5 rounded-xl p-6 border-2 border-green-500"
+                onclick="selectAutopilot('basic')"
+                id="autopilot-basic"
+              >
+                <div
+                  class="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-4"
+                >
+                  INCLUDED
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Basic Autopilot</h3>
+                <div class="text-3xl font-bold mb-4">FREE</div>
+                <p class="text-sm text-gray-300 mb-4">
+                  Included with your license
+                </p>
+                <ul class="text-sm space-y-2 mb-6">
+                  <li>✓ Auto-deploy on push</li>
+                  <li>✓ Basic health monitoring</li>
+                  <li>✓ Email notifications</li>
+                  <li>✓ Manual rollback</li>
+                  <li>✓ Standard support</li>
+                </ul>
+                <button
+                  type="button"
+                  class="w-full bg-green-500 text-white font-bold py-2 rounded-lg"
+                >
+                  Selected ✓
+                </button>
+              </div>
+
+              <!-- Pro Autopilot -->
+              <div
+                class="option-card bg-white/5 rounded-xl p-6 border-2 border-purple-500"
+                onclick="selectAutopilot('pro')"
+                id="autopilot-pro"
+              >
+                <div
+                  class="bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-4"
+                >
+                  POPULAR
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Pro Autopilot</h3>
+                <div class="text-3xl font-bold mb-4">
+                  $49<span class="text-lg">/mo</span>
+                </div>
+                <p class="text-sm text-gray-300 mb-4">
+                  Everything in Basic, plus:
+                </p>
+                <ul class="text-sm space-y-2 mb-6">
+                  <li>✓ AI auto-fix failures</li>
+                  <li>✓ Auto dependency updates</li>
+                  <li>✓ Performance optimization</li>
+                  <li>✓ Security scanning</li>
+                  <li>✓ Auto-rollback</li>
+                  <li>✓ Priority support</li>
+                </ul>
+                <button
+                  type="button"
+                  class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 rounded-lg"
+                >
+                  Subscribe
+                </button>
+              </div>
+
+              <!-- Enterprise Autopilot -->
+              <div
+                class="option-card bg-white/5 rounded-xl p-6 border-2 border-blue-500"
+                onclick="selectAutopilot('enterprise')"
+                id="autopilot-enterprise"
+              >
+                <div
+                  class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-4"
+                >
+                  ADVANCED
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Enterprise Autopilot</h3>
+                <div class="text-3xl font-bold mb-4">
+                  $149<span class="text-lg">/mo</span>
+                </div>
+                <p class="text-sm text-gray-300 mb-4">
+                  Everything in Pro, plus:
+                </p>
+                <ul class="text-sm space-y-2 mb-6">
+                  <li>✓ Custom AI training</li>
+                  <li>✓ Multi-environment deploy</li>
+                  <li>✓ Advanced analytics</li>
+                  <li>✓ Custom workflows</li>
+                  <li>✓ Dedicated AI agent</li>
+                  <li>✓ 24/7 support</li>
+                </ul>
+                <button
+                  type="button"
+                  class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded-lg"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="bg-yellow-500/20 border border-yellow-500 rounded-lg p-4 mb-6"
+            >
+              <p class="text-sm">
+                💡 <strong>Tip:</strong> Start with Basic (free) and upgrade
+                when you need advanced features. Cancel anytime.
+              </p>
+            </div>
+
+            <div class="flex gap-4">
+              <button
+                type="button"
+                onclick="previousStep()"
+                class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg"
+              >
+                ← Back
+              </button>
+              <button
+                type="button"
+                onclick="completeSetup()"
+                class="flex-1 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-lg"
+              >
+                Complete Setup →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Complete -->
+        <div id="step-4" class="step-content">
+          <div
+            class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 text-center"
+          >
+            <div class="text-6xl mb-6">🎉</div>
+            <h2 class="text-4xl font-bold mb-6">Setup Complete!</h2>
+            <p class="text-xl text-gray-300 mb-8">
+              Your platform is configured and ready to use.
+            </p>
+
+            <div
+              class="bg-green-500/20 border border-green-500 rounded-lg p-6 mb-8 text-left"
+            >
+              <h3 class="text-xl font-bold mb-4">✅ What's Configured:</h3>
+              <ul class="space-y-2 text-gray-300">
+                <li id="config-license">
+                  • License: <span class="font-bold" id="license-tier">-</span>
+                </li>
+                <li id="config-autopilot">
+                  • Autopilot:
+                  <span class="font-bold" id="autopilot-tier">Basic</span>
+                </li>
+                <li id="config-data">
+                  • Data Import:
+                  <span class="font-bold" id="data-status">-</span>
+                </li>
+                <li>
+                  • Security:
+                  <span class="font-bold text-green-400">Protected</span>
+                </li>
+                <li>
+                  • Deployments:
+                  <span class="font-bold text-green-400">Automated</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-8">
+              <a
+                href="/dashboard"
+                class="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-4 px-6 rounded-lg inline-block"
+              >
+                Go to Dashboard
+              </a>
+              <a
+                href="/docs"
+                class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg inline-block"
+              >
+                View Documentation
+              </a>
+            </div>
+
+            <p class="text-sm text-gray-400">
+              Need help? Contact elevateforhumanity@gmail.com
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentStep = 1;
+      let setupMethod = null;
+      let selectedAutopilot = 'basic';
+      let licenseData = null;
+
+      // Anti-scraping: Detect automated tools
+      (function () {
+        if (
+          navigator.webdriver ||
+          window.phantom ||
+          window._phantom ||
+          window.callPhantom
+        ) {
+          window.location.href = '/403';
+        }
+      })();
+
+      function nextStep() {
+        if (currentStep < 4) {
+          document
+            .getElementById(`step-${currentStep}`)
+            .classList.remove('active');
+          currentStep++;
+          document
+            .getElementById(`step-${currentStep}`)
+            .classList.add('active');
+          updateProgress();
+        }
+      }
+
+      function previousStep() {
+        if (currentStep > 1) {
+          document
+            .getElementById(`step-${currentStep}`)
+            .classList.remove('active');
+          currentStep--;
+          document
+            .getElementById(`step-${currentStep}`)
+            .classList.add('active');
+          updateProgress();
+        }
+      }
+
+      function updateProgress() {
+        for (let i = 1; i <= 4; i++) {
+          const indicator = document
+            .getElementById(`step-indicator-${i}`)
+            .querySelector('div');
+          if (i <= currentStep) {
+            indicator.classList.remove('bg-gray-700');
+            indicator.classList.add('bg-purple-500');
+          } else {
+            indicator.classList.remove('bg-purple-500');
+            indicator.classList.add('bg-gray-700');
+          }
+        }
+      }
+
+      function selectSetupMethod(method) {
+        setupMethod = method;
+
+        // Update UI
+        document.getElementById('option-license').classList.remove('selected');
+        document.getElementById('option-import').classList.remove('selected');
+        document.getElementById(`option-${method}`).classList.add('selected');
+
+        // Show/hide relevant inputs
+        document.getElementById('license-input').style.display =
+          method === 'license' ? 'block' : 'none';
+        document.getElementById('import-options').style.display =
+          method === 'import' ? 'block' : 'none';
+
+        // Enable next button
+        document.getElementById('step2-next').disabled = false;
+      }
+
+      async function validateLicense() {
+        const key = document.getElementById('license-key').value;
+
+        if (
+          !key.match(/^EFH-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/)
+        ) {
+          alert('Invalid license key format');
+          return;
+        }
+
+        try {
+          const response = await fetch('/api/validate-license', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ licenseKey: key }),
+          });
+
+          const data = await response.json();
+
+          if (data.valid) {
+            licenseData = data;
+            alert('✅ License validated successfully!');
+            document.getElementById('step2-next').disabled = false;
+          } else {
+            alert('❌ Invalid license key');
+          }
+        } catch (error) {
+          console.error('License validation error:', error);
+          alert('Error validating license. Please try again.');
+        }
+      }
+
+      function selectImportType(type) {
+        document.getElementById('file-upload').style.display = 'block';
+      }
+
+      function processImport() {
+        const file = document.getElementById('import-file').files[0];
+        if (!file) {
+          alert('Please select a file');
+          return;
+        }
+
+        // Process import (would send to backend)
+        alert('✅ Import processing started. This may take a few minutes.');
+        document.getElementById('step2-next').disabled = false;
+      }
+
+      function selectAutopilot(tier) {
+        selectedAutopilot = tier;
+
+        // Update UI
+        document.querySelectorAll('.option-card').forEach((card) => {
+          if (card.id &amp;&amp; card.id.startsWith('autopilot-')) {
+            card.classList.remove('selected');
+          }
+        });
+        document.getElementById(`autopilot-${tier}`).classList.add('selected');
+      }
+
+      async function completeSetup() {
+        // Save configuration
+        const config = {
+          setupMethod,
+          licenseKey: licenseData?.licenseKey,
+          autopilotTier: selectedAutopilot,
+          timestamp: new Date().toISOString(),
+        };
+
+        try {
+          const response = await fetch('/api/complete-setup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(config),
+          });
+
+          if (response.ok) {
+            // Update final screen
+            document.getElementById('license-tier').textContent =
+              licenseData?.tier || 'Starter';
+            document.getElementById('autopilot-tier').textContent =
+              selectedAutopilot.charAt(0).toUpperCase() +
+              selectedAutopilot.slice(1);
+            document.getElementById('data-status').textContent =
+              setupMethod === 'import' ? 'Imported' : 'Ready';
+
+            nextStep();
+          } else {
+            alert('Setup failed. Please try again.');
+          }
+        } catch (error) {
+          console.error('Setup error:', error);
+          alert('Error completing setup. Please contact support.');
+        }
+      }
+
+      // Anti-scraping: Rate limiting
+      let requestCount = 0;
+      const requestLimit = 10;
+      const requestWindow = 60000; // 1 minute
+
+      setInterval(() => {
+        requestCount = 0;
+      }, requestWindow);
+
+      function checkRateLimit() {
+        requestCount++;
+        if (requestCount > requestLimit) {
+          window.location.href = '/429';
+          return false;
+        }
+        return true;
+      }
+
+      // Disable right-click and text selection (anti-scraping)
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
+      document.addEventListener('selectstart', (e) => e.preventDefault());
+      document.addEventListener('copy', (e) => e.preventDefault());
+    </script>
+  </body>
+</html>

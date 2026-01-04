@@ -1,0 +1,149 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+/**
+ * Grant Notifications API
+ * Manage grant notifications and alerts
+ */
+
+import { NextRequest, NextResponse } from 'next/server';
+import {
+  sendGrantNotification,
+  notifyDraftGenerated,
+  notifyPackageReady,
+  notifyGrantSubmitted,
+  notifyDeadlineApproaching,
+} from '@/lib/grants/notification-system';
+import { supabaseAdmin } from '@/lib/supabaseAdmin';
+import { logger } from '@/lib/logger';
+
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { action, applicationId, grantId, submittedBy, confirmationNumber, daysRemaining } = body;
+
+    switch (action) {
+      case 'notify_draft':
+        if (!applicationId) {
+          return NextResponse.json(
+            { error: 'applicationId required' },
+            { status: 400 }
+          );
+        }
+        await notifyDraftGenerated(applicationId);
+        return NextResponse.json({ success: true, message: 'Draft notification sent' });
+
+      case 'notify_package':
+        if (!applicationId) {
+          return NextResponse.json(
+            { error: 'applicationId required' },
+            { status: 400 }
+          );
+        }
+        await notifyPackageReady(applicationId);
+        return NextResponse.json({ success: true, message: 'Package notification sent' });
+
+      case 'notify_submitted':
+        if (!applicationId || !submittedBy) {
+          return NextResponse.json(
+            { error: 'applicationId and submittedBy required' },
+            { status: 400 }
+          );
+        }
+        await notifyGrantSubmitted(applicationId, submittedBy, confirmationNumber);
+        return NextResponse.json({ success: true, message: 'Submission notification sent' });
+
+      case 'notify_deadline':
+        if (!grantId || daysRemaining === undefined) {
+          return NextResponse.json(
+            { error: 'grantId and daysRemaining required' },
+            { status: 400 }
+          );
+        }
+        await notifyDeadlineApproaching(grantId, daysRemaining);
+        return NextResponse.json({ success: true, message: 'Deadline notification sent' });
+
+      case 'check_deadlines':
+        const { checkDeadlinesAndNotify } = await import('@/lib/grants/submission-tracker');
+        await checkDeadlinesAndNotify();
+        return NextResponse.json({ success: true, message: 'Deadline check completed' });
+
+      default:
+        return NextResponse.json(
+          {
+            error:
+              'Invalid action. Use: notify_draft, notify_package, notify_submitted, notify_deadline, or check_deadlines',
+          },
+          { status: 400 }
+        );
+    }
+  } catch (error: unknown) {
+    logger.error('Notification error:', error);
+    return NextResponse.json(
+      { error: (error as Error).message },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const userId = searchParams.get('userId');
+    const unreadOnly = searchParams.get('unreadOnly') === 'true';
+
+    let query = supabaseAdmin
+      .from('grant_notifications')
+      .select('*, grant:grant_opportunities(title), entity:entities(name)')
+      .order('created_at', { ascending: false });
+
+    if (unreadOnly) {
+      query = query.eq('read', false);
+    }
+
+    const { data: notifications, error } = await query.limit(50);
+
+    if (error) {
+      throw error;
+    }
+
+    return NextResponse.json({ notifications });
+  } catch (error: unknown) {
+    logger.error('Error fetching notifications:', error);
+    return NextResponse.json(
+      { error: (error as Error).message },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PATCH(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { notificationId, read } = body;
+
+    if (!notificationId) {
+      return NextResponse.json(
+        { error: 'notificationId required' },
+        { status: 400 }
+      );
+    }
+
+    const { error } = await supabaseAdmin
+      .from('grant_notifications')
+      .update({ read: read !== false })
+      .eq('id', notificationId);
+
+    if (error) {
+      throw error;
+    }
+
+    return NextResponse.json({ success: true, message: 'Notification updated' });
+  } catch (error: unknown) {
+    logger.error('Error updating notification:', error);
+    return NextResponse.json(
+      { error: (error as Error).message },
+      { status: 500 }
+    );
+  }
+}

@@ -1,0 +1,227 @@
+export const runtime = 'nodejs';
+export const maxDuration = 60;
+
+import { NextRequest, NextResponse } from 'next/server';
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import { apiAuthGuard } from '@/lib/authGuards';
+import { logger } from '@/lib/logger';
+import { toError, toErrorMessage } from '@/lib/safe';
+import {
+  createCoursePaymentIntent,
+  createSubscriptionPaymentIntent,
+  confirmPayment,
+  processRefund,
+  getPaymentHistory,
+  getPaymentMethods,
+  attachPaymentMethod,
+  detachPaymentMethod,
+  setDefaultPaymentMethod,
+  createSubscription,
+  cancelSubscription,
+  verifyWebhookSignature,
+  handleStripeWebhook,
+} from '@/lib/payments';
+
+export async function GET(request: NextRequest) {
+  try {
+    const authResult = await apiAuthGuard({ requireAuth: true });
+    if (!authResult.authorized) {
+      return NextResponse.json({ error: authResult.error }, { status: 401 });
+    }
+
+    const { user } = authResult;
+    const { searchParams } = new URL(request.url);
+    const action = searchParams.get('action');
+
+    switch (action) {
+      case 'history':
+        const limit = parseInt(searchParams.get('limit') || '50');
+        const history = await getPaymentHistory(user.id, limit);
+        return NextResponse.json({ payments: history });
+
+      case 'methods':
+        const customerId = searchParams.get('customerId');
+        if (!customerId) {
+          return NextResponse.json(
+            { error: 'customerId required' },
+            { status: 400 }
+          );
+        }
+        const methods = await getPaymentMethods(customerId);
+        return NextResponse.json({ methods });
+
+      default:
+        return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
+    }
+  } catch (error: unknown) {
+    logger.error('Payments GET error:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch payment data' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await parseBody<Record<string, unknown>>(request);
+    const { action } = body;
+
+    // Webhook handling (no auth required)
+    if (action === 'webhook') {
+      const signature = request.headers.get('stripe-signature');
+      if (!signature) {
+        return NextResponse.json(
+          { error: 'Missing signature' },
+          { status: 400 }
+        );
+      }
+
+      const payload = await request.text();
+      const event = verifyWebhookSignature(
+        payload,
+        signature,
+        process.env.STRIPE_WEBHOOK_SECRET!
+      );
+
+      await handleStripeWebhook(event);
+      return NextResponse.json({ received: true });
+    }
+
+    // All other actions require auth
+    const authResult = await apiAuthGuard({ requireAuth: true });
+    if (!authResult.authorized) {
+      return NextResponse.json({ error: authResult.error }, { status: 401 });
+    }
+
+    const { user } = authResult;
+
+    switch (action) {
+      case 'create-intent':
+        const { courseId, amount, currency, referralCode } = body;
+        if (!courseId || !amount) {
+          return NextResponse.json(
+            { error: 'courseId and amount required' },
+            { status: 400 }
+          );
+        }
+        const intent = await createCoursePaymentIntent(
+          user.id,
+          courseId,
+          amount,
+          currency,
+          referralCode
+        );
+        return NextResponse.json({ intent });
+
+      case 'create-subscription-intent':
+        const { planId, subscriptionAmount, subscriptionCurrency } = body;
+        if (!planId || !subscriptionAmount) {
+          return NextResponse.json(
+            { error: 'planId and amount required' },
+            { status: 400 }
+          );
+        }
+        const subIntent = await createSubscriptionPaymentIntent(
+          user.id,
+          planId,
+          subscriptionAmount,
+          subscriptionCurrency
+        );
+        return NextResponse.json({ intent: subIntent });
+
+      case 'confirm':
+        const { paymentIntentId } = body;
+        if (!paymentIntentId) {
+          return NextResponse.json(
+            { error: 'paymentIntentId required' },
+            { status: 400 }
+          );
+        }
+        const result = await confirmPayment(paymentIntentId);
+        return NextResponse.json({ result });
+
+      case 'refund':
+        const { paymentId, refundAmount, reason } = body;
+        if (!paymentId) {
+          return NextResponse.json(
+            { error: 'paymentId required' },
+            { status: 400 }
+          );
+        }
+        const refund = await processRefund(paymentId, refundAmount, reason);
+        return NextResponse.json({ refund });
+
+      case 'attach-method':
+        const { paymentMethodId, customerId } = body;
+        if (!paymentMethodId || !customerId) {
+          return NextResponse.json(
+            { error: 'paymentMethodId and customerId required' },
+            { status: 400 }
+          );
+        }
+        await attachPaymentMethod(paymentMethodId, customerId);
+        return NextResponse.json({ success: true });
+
+      case 'detach-method':
+        const { methodId } = body;
+        if (!methodId) {
+          return NextResponse.json(
+            { error: 'methodId required' },
+            { status: 400 }
+          );
+        }
+        await detachPaymentMethod(methodId);
+        return NextResponse.json({ success: true });
+
+      case 'set-default':
+        const { defaultCustomerId, defaultMethodId } = body;
+        if (!defaultCustomerId || !defaultMethodId) {
+          return NextResponse.json(
+            { error: 'customerId and methodId required' },
+            { status: 400 }
+          );
+        }
+        await setDefaultPaymentMethod(defaultCustomerId, defaultMethodId);
+        return NextResponse.json({ success: true });
+
+      case 'create-subscription':
+        const { priceId, paymentMethod } = body;
+        if (!priceId) {
+          return NextResponse.json(
+            { error: 'priceId required' },
+            { status: 400 }
+          );
+        }
+        const subscription = await createSubscription(
+          user.id,
+          priceId,
+          paymentMethod
+        );
+        return NextResponse.json({ subscription });
+
+      case 'cancel-subscription':
+        const { subscriptionId, immediately } = body;
+        if (!subscriptionId) {
+          return NextResponse.json(
+            { error: 'subscriptionId required' },
+            { status: 400 }
+          );
+        }
+        await cancelSubscription(subscriptionId, immediately);
+        return NextResponse.json({ success: true });
+
+      default:
+        return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
+    }
+  } catch (error: unknown) {
+    logger.error('Payments POST error:', error);
+    return NextResponse.json(
+      {
+        error:
+          error instanceof Error ? error.message : 'Failed to process payment',
+      },
+      { status: 500 }
+    );
+  }
+}

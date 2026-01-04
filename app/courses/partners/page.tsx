@@ -1,0 +1,345 @@
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import Link from 'next/link';
+import Image from 'next/image';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://elevateforhumanity.org/courses/partners',
+  },
+  title: 'Partner Course Catalog | Elevate For Humanity',
+  description:
+    '1200+ professional courses from industry-standard-leading partners',
+};
+
+export default async function PartnerCoursesPage() {
+  const supabase = await createClient();
+
+  // Fetch all partner providers
+  const { data: providers } = await supabase
+    .from('partner_lms_providers')
+    .select('*')
+    .eq('is_active', true)
+    .order('provider_name');
+
+  // Fetch all partner courses
+  const { data: courses, count } = await supabase
+    .from('partner_courses')
+    .select('*, partner_lms_providers(provider_name, provider_type)', {
+      count: 'exact',
+    })
+    .eq('is_active', true)
+    .order('course_name');
+
+  // Group courses by partner
+  const coursesByPartner =
+    courses?.reduce(
+      (acc: Record<string, unknown>, course: Record<string, unknown>) => {
+        const partnerName =
+          course.partner_lms_providers?.provider_name || 'Other';
+        if (!acc[partnerName]) {
+          acc[partnerName] = [];
+        }
+        acc[partnerName].push(course);
+        return acc;
+      },
+      {}
+    ) || {};
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative h-[500px] md:h-[600px] lg:h-[700px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/artlist/hero-training-1.jpg"
+          alt="Partners"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-2xl">
+            Partners
+          </h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100 drop-shadow-lg">
+            Transform your career with free training and industry certifications
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-2xl"
+            >
+              Get Started Free
+            </Link>
+            <Link
+              href="/programs"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-all shadow-2xl"
+            >
+              View Programs
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-blue-700 text-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto text-center">
+            <h1 className="text-5xl font-bold mb-6 text-3xl md:text-4xl lg:text-5xl">
+              Partner Course Catalog
+            </h1>
+            <p className="text-base md:text-lg mb-8 text-blue-100">
+              Access 1200+ professional courses from industry-standard-leading
+              partners
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <div className="bg-brand-blue-700 px-6 py-3 rounded-lg">
+                <span className="text-3xl font-bold">{count || 0}</span>
+                <span className="text-sm ml-2">Courses Available</span>
+              </div>
+              <div className="bg-brand-blue-700 px-6 py-3 rounded-lg">
+                <span className="text-3xl font-bold">
+                  {providers?.length || 0}
+                </span>
+                <span className="text-sm ml-2">Partner Providers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container mx-auto py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* Partner Providers */}
+          <div className="mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">
+              Our Partners
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+              {providers?.map((provider: Record<string, unknown>) => (
+                <div
+                  key={provider.id}
+                  className="bg-white rounded-lg shadow-sm border p-4 text-center hover:shadow-md transition-shadow"
+                >
+                  <div className="font-semibold text-sm">
+                    {provider.provider_name}
+                  </div>
+                  <div className="text-xs text-gray-600 mt-1">
+                    {coursesByPartner[provider.provider_name]?.length || 0}{' '}
+                    courses
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Courses by Partner */}
+          {Object.entries(coursesByPartner).map(
+            ([partnerName, partnerCourses]: [string, any]) => (
+              <div key={partnerName} className="mb-12">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold">{partnerName}</h2>
+                  <span className="text-sm text-gray-600">
+                    {partnerCourses.length} courses
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {partnerCourses
+                    .slice(0, 6)
+                    .map((course: Record<string, unknown>) => (
+                      <div
+                        key={course.id}
+                        className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-md transition-shadow"
+                      >
+                        <div className="p-6">
+                          <h3 className="text-lg font-semibold mb-2 line-clamp-2">
+                            {course.course_name}
+                          </h3>
+                          {course.description && (
+                            <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                              {course.description}
+                            </p>
+                          )}
+
+                          <div className="flex items-center justify-between text-sm mb-4">
+                            {course.duration_hours && (
+                              <span className="text-gray-600">
+                                {course.duration_hours} hours
+                              </span>
+                            )}
+                            {course.retail_price && (
+                              <span className="font-semibold text-brand-green-600">
+                                ${course.retail_price}
+                              </span>
+                            )}
+                          </div>
+
+                          {course.category && (
+                            <div className="mb-4">
+                              <span className="px-2 py-1 bg-blue-100 text-purple-700 rounded text-xs">
+                                {course.category}
+                              </span>
+                            </div>
+                          )}
+
+                          <Link
+                            href={`/courses/partners/${course.id}/enroll`}
+                            className="block w-full text-center px-4 py-2 bg-brand-blue-600 text-white rounded-lg hover:bg-brand-blue-700 transition-colors"
+                          >
+                            Enroll Now
+                          </Link>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+
+                {partnerCourses.length > 6 && (
+                  <div className="mt-6 text-center">
+                    <button className="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">
+                      View All {partnerCourses.length} {partnerName} Courses
+                    </button>
+                  </div>
+                )}
+              </div>
+            )
+          )}
+
+          {/* Empty State */}
+          {(!courses || courses.length === 0) && (
+            <div className="bg-white rounded-lg shadow-sm border p-12 text-center">
+              <svg
+                className="w-16 h-16 text-gray-400 mx-auto mb-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
+              </svg>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                No Partner Courses Available
+              </h3>
+              <p className="text-gray-600">
+                Partner courses will appear here once they are loaded into the
+                system.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Storytelling Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                    Your Journey Starts Here
+                  </h2>
+                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                    Every great career begins with a single step. Whether you're
+                    looking to change careers, upgrade your skills, or enter the
+                    workforce for the first time, we're here to help you
+                    succeed. Our programs are 100% free, government-funded, and
+                    designed to get you hired fast.
+                  </p>
+                  <ul className="space-y-4">
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-brand-green-600 mr-3 flex-shrink-0 mt-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className="text-gray-700">
+                        100% free training - no tuition, no hidden costs
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-brand-green-600 mr-3 flex-shrink-0 mt-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className="text-gray-700">
+                        Industry-recognized certifications that employers value
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-brand-green-600 mr-3 flex-shrink-0 mt-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className="text-gray-700">
+                        Job placement assistance and career support
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <svg
+                        className="w-6 h-6 text-brand-green-600 mr-3 flex-shrink-0 mt-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className="text-gray-700">
+                        Flexible scheduling for working adults
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/images/artlist/hero-training-2.jpg"
+                    alt="Students learning"
+                    fill
+                    className="object-cover"
+                    quality={100}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}

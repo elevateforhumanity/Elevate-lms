@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Elevate for Humanity | Elizabeth L. Greene Foundation | Workforce
+      Development &amp; Philanthropy
+    </title>
+    <meta
+      name="description"
+      content="Elevate for Humanity transforms lives through workforce development, AI/Data Science training, and philanthropic initiatives. Elizabeth L. Greene Foundation creating pathways to prosperity."
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background: #fafafa;
+      }
+
+      /* Custom Brand Colors */
+      :root {
+        --primary-purple: #7c3aed;
+        --primary-blue: #1e40af;
+        --accent-green: #059669;
+        --warm-orange: #ea580c;
+        --soft-gray: #6b7280;
+        --light-bg: #f8fafc;
+      }
+
+      /* Hero Section - Authentic Elevate for Humanity */
+      .hero {
+        background:
+          linear-gradient(
+            135deg,
+            rgba(124, 58, 237, 0.95) 0%,
+            rgba(30, 64, 175, 0.9) 50%,
+            rgba(5, 150, 105, 0.85) 100%
+          ),
+          url('/images/AI_Data_Science_Team_1c1aed48.png') center/cover
+            no-repeat;
+        color: white;
+        padding: 100px 20px;
+        text-align: center;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at center,
+          transparent 0%,
+          rgba(0, 0, 0, 0.3) 100%
+        );
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+      }
+      .hero h1 {
+        font-size: 4.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        background: linear-gradient(45deg, #ffffff, #e0e7ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero .tagline {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        font-weight: 300;
+        opacity: 0.95;
+      }
+      .hero .foundation {
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+        font-style: italic;
+        opacity: 0.9;
+        color: #e0e7ff;
+      }
+      .hero-cta {
+        display: inline-flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .cta-btn {
+        padding: 15px 35px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      .cta-primary {
+        background: var(--accent-green);
+        color: white;
+      }
+      .cta-primary:hover {
+        background: #047857;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(5, 150, 105, 0.4);
+      }
+      .cta-secondary {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+      }
+      .cta-secondary:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px);
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Impact Stats */
+      .impact-stats {
+        background: white;
+        padding: 80px 0;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 3rem;
+        text-align: center;
+      }
+      .stat {
+        padding: 2rem;
+      }
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--primary-purple);
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+      .stat-label {
+        font-size: 1.1rem;
+        color: var(--soft-gray);
+        font-weight: 500;
+      }
+
+      /* Mission Section */
+      .mission {
+        background: var(--light-bg);
+        padding: 100px 0;
+        text-align: center;
+      }
+      .mission h2 {
+        font-size: 3rem;
+        color: var(--primary-blue);
+        margin-bottom: 2rem;
+        font-weight: 700;
+      }
+      .mission-content {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.3rem;
+        color: var(--soft-gray);
+        line-height: 1.8;
+      }
+      .mission-highlight {
+        color: var(--primary-purple);
+        font-weight: 600;
+      }
+
+      /* Programs Grid */
+      .programs {
+        background: white;
+        padding: 100px 0;
+      }
+      .programs h2 {
+        text-align: center;
+        font-size: 3rem;
+        color: var(--primary-blue);
+        margin-bottom: 3rem;
+        font-weight: 700;
+      }
+      .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+      }
+      .program-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border: 1px solid #e5e7eb;
+        position: relative;
+        overflow: hidden;
+      }
+      .program-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-purple),
+          var(--accent-green)
+        );
+      }
+      .program-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+      .program-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+      .program-card h3 {
+        font-size: 1.5rem;
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+      .program-card p {
+        color: var(--soft-gray);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+      .program-link {
+        display: inline-flex;
+        align-items: center;
+        color: var(--primary-purple);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      .program-link:hover {
+        color: var(--accent-green);
+        transform: translateX(5px);
+      }
+
+      /* Foundation Section */
+      .foundation-section {
+        background: linear-gradient(
+          135deg,
+          var(--primary-purple),
+          var(--primary-blue)
+        );
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+      }
+      .foundation-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .foundation-section h2 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        font-weight: 700;
+      }
+      .foundation-section p {
+        font-size: 1.3rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+      }
+
+      /* Contact Section */
+      .contact {
+        background: white;
+        padding: 80px 0;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        text-align: center;
+      }
+      .contact-card {
+        padding: 2.5rem;
+        border-radius: 15px;
+        background: var(--light-bg);
+        border: 1px solid #e5e7eb;
+      }
+      .contact-card h3 {
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+      .contact-card a {
+        color: var(--primary-purple);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .contact-card a:hover {
+        color: var(--accent-green);
+      }
+
+      /* Footer */
+      footer {
+        background: #1a1a1a;
+        color: white;
+        padding: 60px 0 30px;
+        text-align: center;
+      }
+      .footer-content {
+        margin-bottom: 2rem;
+      }
+      .footer-brand {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--primary-purple);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+        .hero .tagline {
+          font-size: 1.4rem;
+        }
+        .hero .foundation {
+          font-size: 1.1rem;
+        }
+        .programs-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-cta {
+          flex-direction: column;
+          align-items: center;
+        }
+        .cta-btn {
+          width: 100%;
+          max-width: 300px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-content">
+        <h1>Elevate for Humanity</h1>
+        <p class="tagline">
+          Transforming Lives Through Technology &amp; Opportunity
+        </p>
+        <p class="foundation">Elizabeth L. Greene Foundation</p>
+        <div class="hero-cta">
+          <a href="/programs" class="cta-btn cta-primary">Explore Programs</a>
+          <a href="/connect" class="cta-btn cta-secondary">Get Started Today</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Impact Stats -->
+    <section class="impact-stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat">
+            <span class="stat-number">2,500+</span>
+            <span class="stat-label">Lives Transformed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">89%</span>
+            <span class="stat-label">Job Placement Rate</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">$85K</span>
+            <span class="stat-label">Average Starting Salary</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">33+</span>
+            <span class="stat-label">Training Programs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="mission">
+      <div class="container">
+        <h2>Our Mission</h2>
+        <div class="mission-content">
+          <p>
+            We believe in the power of
+            <span class="mission-highlight">technology and education</span> to
+            transform lives and communities. Through innovative workforce
+            development programs, cutting-edge AI and Data Science training, and
+            strategic philanthropic initiatives, we create
+            <span class="mission-highlight">pathways to prosperity</span> for
+            individuals and families across America.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Programs -->
+    <section class="programs">
+      <div class="container">
+        <h2>Transform Your Future</h2>
+        <div class="programs-grid">
+          <div class="program-card">
+            <span class="program-icon">🤖</span>
+            <h3>AI &amp; Data Science Bootcamp</h3>
+            <p>
+              Master Python, machine learning, and AI fundamentals.
+              Industry-leading curriculum with hands-on projects and guaranteed
+              job placement support.
+            </p>
+            <a href="/programs" class="program-link">Explore AI Programs →</a>
+          </div>
+
+          <div class="program-card">
+            <span class="program-icon">🏛️</span>
+            <h3>WIOA Workforce Development</h3>
+            <p>
+              Federally-funded training programs in high-demand industries. Free
+              tuition, career counseling, and direct pathways to employment.
+            </p>
+            <a href="/hub" class="program-link">Access Workforce Hub →</a>
+          </div>
+
+          <div class="program-card">
+            <span class="program-icon">🎓</span>
+            <h3>Professional Certifications</h3>
+            <p>
+              Industry-recognized certifications in technology, healthcare,
+              manufacturing, and skilled trades. Accelerated learning with
+              real-world application.
+            </p>
+            <a href="/lms" class="program-link">Enter Learning Portal →</a>
+          </div>
+
+          <div class="program-card">
+            <span class="program-icon">🤝</span>
+            <h3>Community Connect</h3>
+            <p>
+              Comprehensive support network including mentorship, peer learning,
+              and ongoing career development. Indiana Connect integration for
+              seamless services.
+            </p>
+            <a href="/connect" class="program-link">Join Community →</a>
+          </div>
+
+          <div class="program-card">
+            <span class="program-icon">✅</span>
+            <h3>Compliance &amp; Certification</h3>
+            <p>
+              DOL-approved programs with full compliance tracking, audit
+              support, and federal reporting capabilities for organizations and
+              individuals.
+            </p>
+            <a href="/compliance" class="program-link">View Compliance →</a>
+          </div>
+
+          <div class="program-card">
+            <span class="program-icon">💳</span>
+            <h3>Flexible Funding Options</h3>
+            <p>
+              Multiple payment options including WIOA funding, scholarships,
+              payment plans, and employer sponsorship programs.
+            </p>
+            <a href="/pay" class="program-link">Explore Funding →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Foundation Section -->
+    <section class="foundation-section">
+      <div class="container">
+        <div class="foundation-content">
+          <h2>Elizabeth L. Greene Foundation</h2>
+          <p>
+            Named in honor of a visionary leader who believed in the
+            transformative power of education and opportunity, our foundation
+            continues her legacy by creating sustainable pathways to economic
+            empowerment and community development.
+          </p>
+          <p>
+            Through strategic partnerships, innovative programs, and unwavering
+            commitment to equity, we're building a future where everyone has the
+            opportunity to thrive.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>🏛️ Government Partnerships</h3>
+            <p>
+              <a href="mailto:elevateforhumanity@gmail.com"
+                >elevateforhumanity@gmail.com</a
+              >
+            </p>
+            <p>CAGE: 9ABC1 | DUNS: 123456789</p>
+          </div>
+          <div class="contact-card">
+            <h3>💜 Philanthropic Initiatives</h3>
+            <p>
+              <a href="mailto:elevateforhumanity@gmail.com"
+                >elevateforhumanity@gmail.com</a
+              >
+            </p>
+            <p>Strategic giving and community impact</p>
+          </div>
+          <div class="contact-card">
+            <h3>♿ Accessibility Services</h3>
+            <p>
+              <a href="mailto:elevateforhumanity@gmail.com"
+                >elevateforhumanity@gmail.com</a
+              >
+            </p>
+            <p>WCAG 2.1 AA Compliance</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">Elevate for Humanity</div>
+          <p>Elizabeth L. Greene Foundation • Veteran-Owned Small Business</p>
+          <p>📞 (555) 123-4567</p>
+        </div>
+        <p>&amp;copy; 2025 Elevate for Humanity. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

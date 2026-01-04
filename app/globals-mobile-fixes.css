@@ -1,0 +1,228 @@
+/**
+ * Mobile UI Contrast and Layout Fixes
+ * Ensures WCAG AA compliance on mobile devices
+ * NUCLEAR OPTION: Forces readability across entire site
+ */
+
+/* GLOBAL FIXES - Apply to all devices */
+* {
+  /* Kill all backdrop blur */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* FORCE PURE BLACK TEXT ON ALL DEVICES */
+body, body * {
+  color: #000000 !important;
+}
+
+/* Override ALL Tailwind gray text classes */
+[class*="text-gray"],
+[class*="text-slate"] {
+  color: #000000 !important;
+}
+
+/* Force minimum contrast on mobile */
+@media (max-width: 768px) {
+  /* Text contrast fixes */
+  .text-gray-300,
+  .text-gray-400,
+  .text-gray-500 {
+    @apply text-gray-700 !important;
+  }
+
+  .text-white\/90,
+  .text-white\/80,
+  .text-white\/70,
+  .text-white\/60,
+  .text-white\/50 {
+    @apply text-white !important;
+  }
+
+  .text-blue-100,
+  .text-blue-200,
+  .text-blue-300 {
+    @apply text-gray-900 !important;
+  }
+
+  .text-slate-100,
+  .text-slate-200,
+  .text-slate-300 {
+    @apply text-slate-900 !important;
+  }
+
+  /* Remove ALL opacity on mobile */
+  .opacity-10,
+  .opacity-20,
+  .opacity-30,
+  .opacity-40,
+  .opacity-50,
+  .opacity-60,
+  .opacity-70,
+  .opacity-80,
+  .opacity-90 {
+    @apply opacity-100 !important;
+  }
+
+  /* Force solid backgrounds - ALL translucent whites */
+  [class*='bg-white/'] {
+    background-color: #ffffff !important;
+  }
+
+  [class*='bg-black/'] {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  [class*='bg-gray/'] {
+    background-color: #f3f4f6 !important;
+  }
+
+  /* Fix navigation overlaps */
+  nav {
+    z-index: 50;
+  }
+
+  /* Ensure buttons are tappable (min 44x44px) */
+  button,
+  a[role='button'],
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Fix card text visibility */
+  .card,
+  .rich-card {
+    @apply bg-white !important;
+  }
+
+  .card p,
+  .rich-card p {
+    @apply text-gray-700 !important;
+  }
+
+  /* Fix hero text on mobile */
+  .hero-text {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Ensure form inputs are visible */
+  input,
+  textarea,
+  select {
+    @apply border-2 border-gray-300 !important;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    @apply border-blue-600 !important;
+  }
+
+  /* Fix modal/dialog contrast */
+  .modal,
+  .dialog {
+    @apply bg-white text-gray-900 !important;
+  }
+
+  /* Ensure links are distinguishable */
+  a:not(.btn):not(.button) {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 2px;
+  }
+
+  /* Fix dropdown menus */
+  .dropdown-menu {
+    @apply bg-white border-2 border-gray-200 shadow-xl !important;
+  }
+
+  .dropdown-item {
+    @apply text-gray-900 hover:bg-gray-100 !important;
+  }
+}
+
+/* Tablet fixes */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Ensure readable text on tablets */
+  .text-sm {
+    @apply text-base !important;
+  }
+
+  .text-xs {
+    @apply text-sm !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  * {
+    border-width: 2px !important;
+  }
+
+  .text-gray-300,
+  .text-gray-400,
+  .text-gray-500 {
+    @apply text-gray-900 !important;
+  }
+
+  button,
+  .btn {
+    @apply border-2 border-current !important;
+  }
+}
+
+/* Dark mode mobile fixes */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+  body {
+    @apply bg-gray-900 text-white !important;
+  }
+
+  .card,
+  .rich-card {
+    @apply bg-gray-800 !important;
+  }
+
+  .text-gray-700,
+  .text-gray-900 {
+    @apply text-gray-100 !important;
+  }
+}
+
+/* Mobile menu fixes - ensure always clickable and visible */
+@media (max-width: 1024px) {
+  /* Mobile menu button always on top */
+  header button[aria-controls="mobile-menu"] {
+    position: relative !important;
+    z-index: 10001 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Mobile menu panel */
+  #mobile-menu {
+    position: fixed !important;
+    z-index: 10000 !important;
+    pointer-events: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Mobile menu backdrop */
+  #mobile-menu + div[aria-hidden="true"] {
+    z-index: 9998 !important;
+  }
+
+  /* Ensure mobile nav items are tappable */
+  #mobile-menu a,
+  #mobile-menu button {
+    min-height: 44px !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Prevent body scroll when mobile menu open */
+  body.mobile-menu-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+  }
+}

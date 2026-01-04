@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Protected Site - Elevate for Humanity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="icon"
+      href="/images/Elevate_for_Humanity_logo_81bf0fab.png"
+      type="image/png"
+    />
+
+    <!-- Security Headers -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' cdn.tailwindcss.com; img-src 'self' data:;"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Protected Content Loading State -->
+    <div
+      id="loadingState"
+      class="fixed inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center z-50"
+    >
+      <div class="text-center">
+        <div
+          class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"
+        ></div>
+        <p class="text-gray-600">Verifying access...</p>
+      </div>
+    </div>
+
+    <!-- Authentication Required -->
+    <div
+      id="authRequired"
+      class="hidden fixed inset-0 bg-red-50 flex items-center justify-center"
+    >
+      <div class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full mx-4">
+        <div class="text-center">
+          <div
+            class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4"
+          >
+            <svg
+              class="h-6 w-6 text-red-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
+            </svg>
+          </div>
+          <h3 class="text-lg font-medium text-gray-900 mb-2">
+            Access Restricted
+          </h3>
+          <p class="text-sm text-gray-500 mb-6">
+            This is a protected area. Please authenticate to continue.
+          </p>
+          <button
+            type="button"
+            onclick="redirectToAuth()"
+            class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+          >
+            Login to Continue
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Protected Content -->
+    <div id="protectedContent" class="hidden">
+      <!-- Header -->
+      <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center py-4">
+            <div class="flex items-center">
+              <img
+                src="/images/Elevate_for_Humanity_logo_81bf0fab.png"
+                alt="EFH Logo"
+                class="h-10 w-10 mr-3"
+              />
+              <h1 class="text-2xl font-bold text-gray-900">
+                Protected Dashboard
+              </h1>
+            </div>
+            <div class="flex items-center space-x-4">
+              <span id="userEmail" class="text-sm text-gray-600"></span>
+              <button
+                type="button"
+                onclick="logout()"
+                class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main role="main" class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Admin Tools -->
+        <div class="bg-white overflow-hidden shadow rounded-lg mb-6">
+          <div class="px-4 py-5 sm:p-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
+              🔒 Protected Administrative Tools
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <!-- Financial Dashboard -->
+              <div
+                class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors"
+              >
+                <div class="flex items-center mb-2">
+                  <div class="bg-green-100 p-2 rounded-full mr-3">
+                    <svg
+                      class="w-5 h-5 text-green-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-gray-900">Financial Records</h4>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">
+                  Revenue tracking and partner splits
+                </p>
+                <button
+                  type="button"
+                  onclick="loadFinancialData()"
+                  class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700"
+                >
+                  View Financials
+                </button>
+              </div>
+
+              <!-- Student Records -->
+              <div
+                class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors"
+              >
+                <div class="flex items-center mb-2">
+                  <div class="bg-blue-100 p-2 rounded-full mr-3">
+                    <svg
+                      class="w-5 h-5 text-blue-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-gray-900">Student Data</h4>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">
+                  PII-protected student records
+                </p>
+                <button
+                  type="button"
+                  onclick="loadStudentData()"
+                  class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700"
+                >
+                  View Students
+                </button>
+              </div>
+
+              <!-- Compliance Reports -->
+              <div
+                class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors"
+              >
+                <div class="flex items-center mb-2">
+                  <div class="bg-purple-100 p-2 rounded-full mr-3">
+                    <svg
+                      class="w-5 h-5 text-purple-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <h4 class="font-semibold text-gray-900">DOL Compliance</h4>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">
+                  Federal reporting and audit trails
+                </p>
+                <button
+                  type="button"
+                  onclick="loadComplianceData()"
+                  class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700"
+                >
+                  View Reports
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Display Area -->
+        <div id="dataDisplay" class="bg-white shadow rounded-lg p-6 hidden">
+          <div class="flex justify-between items-center mb-4">
+            <h3 id="dataTitle" class="text-lg font-medium text-gray-900"></h3>
+            <button
+              type="button"
+              onclick="closeDataDisplay()"
+              class="text-gray-400 hover:text-gray-600"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div id="dataContent" class="space-y-4"></div>
+        </div>
+
+        <!-- Security Notice -->
+        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg
+                class="h-5 w-5 text-yellow-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-yellow-800">
+                Security Notice
+              </h3>
+              <div class="mt-2 text-sm text-yellow-700">
+                <p>
+                  🔒 All data is encrypted and access is logged. PII data is
+                  automatically filtered based on your role permissions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const API_BASE = window.location.origin;
+      let authToken = localStorage.getItem('efh_auth_token');
+      let currentUser = null;
+
+      // Initialize protected site
+      async function initializeProtectedSite() {
+        try {
+          if (!authToken) {
+            showAuthRequired();
+            return;
+          }
+
+          // Verify token with backend
+          const response = await fetch(`${API_BASE}/api/auth/verify`, {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ token: authToken }),
+          });
+
+          if (!response.ok) {
+            throw new Error('Authentication failed');
+          }
+
+          const userData = await response.json();
+          currentUser = userData.user;
+
+          showProtectedContent();
+          displayUserInfo();
+        } catch (error) {
+          console.error('Authentication error:', error);
+          showAuthRequired();
+        }
+      }
+
+      function showAuthRequired() {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('authRequired').classList.remove('hidden');
+        document.getElementById('protectedContent').classList.add('hidden');
+      }
+
+      function showProtectedContent() {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('authRequired').classList.add('hidden');
+        document.getElementById('protectedContent').classList.remove('hidden');
+      }
+
+      function displayUserInfo() {
+        if (currentUser) {
+          document.getElementById('userEmail').textContent = currentUser.email;
+        }
+      }
+
+      function redirectToAuth() {
+        window.location.href = '/auth-login.html';
+      }
+
+      function logout() {
+        localStorage.removeItem('efh_auth_token');
+        window.location.href = '/auth-login.html';
+      }
+
+      // Protected data loading functions
+      async function loadFinancialData() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/api/protected/financial/revenue`,
+            {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+                'Content-Type': 'application/json',
+              },
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error('Access denied to financial data');
+          }
+
+          const data = await response.json();
+          displayData('Financial Dashboard', formatFinancialData(data));
+        } catch (error) {
+          alert('Error loading financial data: ' + error.message);
+        }
+      }
+
+      async function loadStudentData() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/api/protected/students/123`,
+            {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+                'Content-Type': 'application/json',
+              },
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error('Access denied to student data');
+          }
+
+          const data = await response.json();
+          displayData('Student Records', formatStudentData(data));
+        } catch (error) {
+          alert('Error loading student data: ' + error.message);
+        }
+      }
+
+      async function loadComplianceData() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/api/protected/compliance/reports`,
+            {
+              headers: {
+                Authorization: `Bearer ${authToken}`,
+                'Content-Type': 'application/json',
+              },
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error('Access denied to compliance data');
+          }
+
+          const data = await response.json();
+          displayData('DOL Compliance Reports', formatComplianceData(data));
+        } catch (error) {
+          alert('Error loading compliance data: ' + error.message);
+        }
+      }
+
+      function displayData(title, content) {
+        document.getElementById('dataTitle').textContent = title;
+        document.getElementById('dataContent').innerHTML = content;
+        document.getElementById('dataDisplay').classList.remove('hidden');
+      }
+
+      function closeDataDisplay() {
+        document.getElementById('dataDisplay').classList.add('hidden');
+      }
+
+      function formatFinancialData(data) {
+        return `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-4 rounded">
+                        <h4 class="font-semibold text-gray-900">Total Revenue</h4>
+                        <p class="text-2xl font-bold text-green-600">$${data.total_revenue?.toLocaleString() || 'N/A'}</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded">
+                        <h4 class="font-semibold text-gray-900">Monthly Revenue</h4>
+                        <p class="text-2xl font-bold text-blue-600">$${data.monthly_revenue?.toLocaleString() || 'N/A'}</p>
+                    </div>
+                    <div class="md:col-span-2 bg-gray-50 p-4 rounded">
+                        <h4 class="font-semibold text-gray-900 mb-2">Partner Splits</h4>
+                        ${
+                          data.partner_splits
+                            ? Object.entries(data.partner_splits)
+                                .map(
+                                  ([partner, amount]) =>
+                                    `<div class="flex justify-between"><span>${partner}:</span><span>$${amount.toLocaleString()}</span></div>`
+                                )
+                                .join('')
+                            : '<p>No partner data available</p>'
+                        }
+                    </div>
+                </div>
+            `;
+      }
+
+      function formatStudentData(data) {
+        return `
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div><strong>Name:</strong> ${data.name || 'N/A'}</div>
+                        <div><strong>Email:</strong> ${data.email || 'N/A'}</div>
+                        <div><strong>Program:</strong> ${data.program || 'N/A'}</div>
+                        <div><strong>Progress:</strong> ${data.progress || 0}%</div>
+                        <div><strong>Status:</strong> ${data.enrollment_status || 'N/A'}</div>
+                        <div><strong>SSN:</strong> ${data.ssn || '***PROTECTED***'}</div>
+                    </div>
+                    ${
+                      data.certifications
+                        ? `
+                        <div>
+                            <strong>Certifications:</strong>
+                            <ul class="list-disc list-inside mt-1">
+                                ${data.certifications.map((cert) => `<li>${cert}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `
+                        : ''
+                    }
+                </div>
+            `;
+      }
+
+      function formatComplianceData(data) {
+        return `
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 p-4 rounded">
+                            <h4 class="font-semibold">WIOA Participants</h4>
+                            <p class="text-xl font-bold">${data.wioa_participants || 0}</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded">
+                            <h4 class="font-semibold">DOL Status</h4>
+                            <p class="text-xl font-bold text-green-600">${data.dol_reporting_status || 'Unknown'}</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded">
+                            <h4 class="font-semibold">Funding Remaining</h4>
+                            <p class="text-xl font-bold">$${data.federal_funding?.remaining?.toLocaleString() || '0'}</p>
+                        </div>
+                    </div>
+                    ${
+                      data.audit_trail
+                        ? `
+                        <div>
+                            <h4 class="font-semibold mb-2">Recent Audit Trail</h4>
+                            <div class="space-y-2">
+                                ${data.audit_trail
+                                  .map(
+                                    (entry) => `
+                                    <div class="border-l-4 border-blue-500 pl-4 py-2 bg-gray-50">
+                                        <div class="text-sm text-gray-600">${entry.date}</div>
+                                        <div class="font-medium">${entry.action}</div>
+                                        <div class="text-sm text-gray-500">by ${entry.officer}</div>
+                                    </div>
+                                `
+                                  )
+                                  .join('')}
+                            </div>
+                        </div>
+                    `
+                        : ''
+                    }
+                </div>
+            `;
+      }
+
+      // Initialize on page load
+      document.addEventListener('DOMContentLoaded', initializeProtectedSite);
+    </script>
+  </body>
+</html>

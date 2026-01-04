@@ -1,0 +1,124 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+// app/api/admin/export/enrollments/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { supabaseAdmin } from '@/lib/supabaseClients';
+import { withAuth } from '@/lib/with-auth';
+import { logger } from '@/lib/logger';
+
+export const GET = withAuth(
+  async (req: NextRequest, user) => {
+    if (!supabaseAdmin) {
+      return NextResponse.json(
+        { error: 'Database not configured' },
+        { status: 503 }
+      );
+    }
+
+    try {
+      const { searchParams } = new URL(req.url);
+      const format = searchParams.get('format') || 'csv';
+      const fundingType = searchParams.get('funding_type');
+      const status = searchParams.get('status');
+
+      // Build query
+      let query = supabaseAdmin.from('enrollments').select(
+        `
+        id,
+        user_id,
+        program_id,
+        status,
+        funding_type,
+        source,
+        started_at,
+        completed_at,
+        created_at,
+        programs ( title, slug )
+      `
+      );
+
+      // Apply filters
+      if (fundingType) {
+        query = query.eq('funding_type', fundingType);
+      }
+      if (status) {
+        query = query.eq('status', status);
+      }
+
+      const { data, error } = await query.order('created_at', {
+        ascending: false,
+      });
+
+      if (error) {
+        logger.error('Export enrollments error:', error);
+        throw error;
+      }
+
+      const enrollments = data ?? [];
+
+      if (format === 'csv') {
+        const header = [
+          'enrollment_id',
+          'program_title',
+          'program_slug',
+          'user_id',
+          'status',
+          'funding_type',
+          'source',
+          'started_at',
+          'completed_at',
+          'created_at',
+        ];
+
+        const rows = enrollments.map((item: any) => [
+          e.id,
+          e.programs?.title || '',
+          e.programs?.slug || '',
+          e.user_id,
+          e.status,
+          e.funding_type || '',
+          e.source || '',
+          e.started_at || '',
+          e.completed_at || '',
+          e.created_at || '',
+        ]);
+
+        const csv =
+          header.join(',') +
+          '\n' +
+          rows.map((r) => r.map(escapeCsvField).join(',')).join('\n');
+
+        const timestamp = new Date().toISOString().split('T')[0];
+        const filename = `enrollments_report_${timestamp}.csv`;
+
+        return new NextResponse(csv, {
+          status: 200,
+          headers: {
+            'Content-Type': 'text/csv; charset=utf-8',
+            'Content-Disposition': `attachment; filename="${filename}"`,
+          },
+        });
+      }
+
+      // Default JSON format
+      return NextResponse.json({ enrollments, count: enrollments.length });
+    } catch (err) {
+      logger.error('Export enrollments error:', err);
+      return NextResponse.json(
+        { error: 'Failed to export enrollments' },
+        { status: 500 }
+      );
+    }
+  },
+  { roles: ['admin', 'super_admin'] }
+);
+
+function escapeCsvField(field: unknown): string {
+  if (field == null) return '';
+  const str = String(field);
+  if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+    return `"${str.replace(/"/g, '""')}"`;
+  }
+  return str;
+}

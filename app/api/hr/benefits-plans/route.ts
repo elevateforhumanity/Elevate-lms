@@ -1,0 +1,73 @@
+import { createClient } from '@/lib/supabase/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { NextRequest, NextResponse } from 'next/server';
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import { logger } from '@/lib/logger';
+import { toError, toErrorMessage } from '@/lib/safe';
+
+export async function GET(_request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const { data, error }: any = await supabase
+      .from('benefits_plans')
+      .select('*')
+      .eq('is_active', true)
+      .order('plan_name');
+
+    if (error) throw error;
+
+    return NextResponse.json({ plans: data });
+  } catch (error: unknown) {
+    logger.error(
+      'Error fetching benefits plans:',
+      error instanceof Error ? error : new Error(String(error))
+    );
+    return NextResponse.json(
+      { error: toErrorMessage(error) || 'Failed to fetch benefits plans' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const body = await parseBody<Record<string, unknown>>(request);
+
+    const { plan_name, plan_type, carrier_name, plan_code, description } = body;
+
+    if (!plan_name || !plan_type) {
+      return NextResponse.json(
+        { error: 'plan_name and plan_type are required' },
+        { status: 400 }
+      );
+    }
+
+    const { data, error }: any = await supabase
+      .from('benefits_plans')
+      .insert({
+        plan_name,
+        plan_type,
+        carrier_name,
+        plan_code,
+        description,
+      })
+      .select('*')
+      .single();
+
+    if (error) throw error;
+
+    return NextResponse.json({ plan: data }, { status: 201 });
+  } catch (error: unknown) {
+    logger.error(
+      'Error creating benefits plan:',
+      error instanceof Error ? error : new Error(String(error))
+    );
+    return NextResponse.json(
+      { error: toErrorMessage(error) || 'Failed to create benefits plan' },
+      { status: 500 }
+    );
+  }
+}

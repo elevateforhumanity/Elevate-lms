@@ -1,0 +1,82 @@
+import { NextResponse } from 'next/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/logger';
+
+export async function POST(req: Request) {
+  try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const body = await req.json();
+    const { fullName, title } = body;
+
+    if (!fullName || !title) {
+      return NextResponse.json(
+        { error: 'Full name and title are required' },
+        { status: 400 }
+      );
+    }
+
+    // Get user profile
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('email, full_name')
+      .eq('id', user.id)
+      .single();
+
+    // Insert acknowledgement
+    const { data, error }: any = await supabase
+      .from('program_holder_acknowledgements')
+      .insert({
+        user_id: user.id,
+        document_type: 'handbook',
+        full_name: fullName,
+        title,
+        organization_name: profile?.full_name || fullName,
+        contact_name: fullName,
+        email: profile?.email || user.email,
+        agreed: true,
+        acknowledged_at: new Date().toISOString(),
+      })
+      .select()
+      .single();
+
+    if (error) {
+      logger.error('[Acknowledge Handbook] Error:', error);
+      return NextResponse.json(
+        { error: 'Failed to record acknowledgement' },
+        { status: 500 }
+      );
+    }
+
+    logger.info('[Acknowledge Handbook] Success:', {
+      userId: user.id,
+      fullName,
+      title,
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: 'Handbook acknowledgement recorded',
+      data,
+    });
+  } catch (err: unknown) {
+    logger.error(
+      '[Acknowledge Handbook] Error:',
+      err instanceof Error ? err : new Error(String(err))
+    );
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}

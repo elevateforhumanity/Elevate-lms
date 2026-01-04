@@ -1,0 +1,528 @@
+"use client";
+
+import React from 'react';
+
+import { useState, useRef, useEffect } from 'react';
+import {
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  Maximize,
+  Settings,
+  MessageSquare,
+  FileText,
+  Bookmark,
+  SkipBack,
+  SkipForward,
+} from 'lucide-react';
+
+interface VideoQuiz {
+  id: string;
+  timestamp: number; // seconds
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation?: string;
+}
+
+interface VideoNote {
+  id: string;
+  timestamp: number;
+  content: string;
+  createdAt: Date;
+}
+
+interface TranscriptSegment {
+  start: number;
+  end: number;
+  text: string;
+}
+
+interface InteractiveVideoPlayerProps {
+  videoUrl: string;
+  title: string;
+  quizzes?: VideoQuiz[];
+  transcript?: TranscriptSegment[];
+  onProgress?: (progress: number) => void;
+  onComplete?: () => void;
+}
+
+export default function InteractiveVideoPlayer({
+  videoUrl,
+  title,
+  quizzes = [],
+  transcript = [],
+  onProgress,
+  onComplete,
+}: InteractiveVideoPlayerProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(1);
+  const [isMuted, setIsMuted] = useState(false);
+  const [playbackRate, setPlaybackRate] = useState(1);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [currentQuiz, setCurrentQuiz] = useState<VideoQuiz | null>(null);
+  const [quizAnswer, setQuizAnswer] = useState<number | null>(null);
+  const [showQuizResult, setShowQuizResult] = useState(false);
+  const [notes, setNotes] = useState<VideoNote[]>([]);
+  const [newNote, setNewNote] = useState('');
+  const [activeTab, setActiveTab] = useState<
+    'transcript' | 'notes' | 'resources'
+  >('transcript');
+  const [showCaptions, setShowCaptions] = useState(false);
+  const [currentCaption, setCurrentCaption] = useState('');
+
+  // Check for quizzes at current timestamp
+  useEffect(() => {
+    const quiz = quizzes.find(
+      (q) => Math.abs(q.timestamp - currentTime) < 0.5 && !showQuiz
+    );
+
+    if (quiz && isPlaying) {
+      setCurrentQuiz(quiz);
+      setShowQuiz(true);
+      setIsPlaying(false);
+      if (videoRef.current) {
+        videoRef.current.pause();
+      }
+    }
+  }, [currentTime, quizzes, showQuiz, isPlaying]);
+
+  // Update caption based on current time
+  useEffect(() => {
+    if (showCaptions && transcript.length > 0) {
+      const segment = transcript.find(
+        (s) => currentTime >= s.start && currentTime <= s.end
+      );
+      setCurrentCaption(segment?.text || '');
+    }
+  }, [currentTime, transcript, showCaptions]);
+
+  // Report progress
+  useEffect(() => {
+    if (duration > 0 && onProgress) {
+      const progress = (currentTime / duration) * 100;
+      onProgress(progress);
+
+      // Check if video is complete (watched 95%)
+      if (progress >= 95 && onComplete) {
+        onComplete();
+      }
+    }
+  }, [currentTime, duration, onProgress, onComplete]);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play().catch(() => {});
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      setCurrentTime(videoRef.current.currentTime);
+    }
+  };
+
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      setDuration(videoRef.current.duration);
+    }
+  };
+
+  const handleSeek = (time: number) => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = time;
+      setCurrentTime(time);
+    }
+  };
+
+  const handleVolumeChange = (newVolume: number) => {
+    if (videoRef.current) {
+      videoRef.current.volume = newVolume;
+      setVolume(newVolume);
+      setIsMuted(newVolume === 0);
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const changePlaybackRate = (rate: number) => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = rate;
+      setPlaybackRate(rate);
+    }
+  };
+
+  const skip = (seconds: number) => {
+    if (videoRef.current) {
+      videoRef.current.currentTime += seconds;
+    }
+  };
+
+  const toggleFullscreen = () => {
+    if (videoRef.current) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        videoRef.current.requestFullscreen();
+      }
+    }
+  };
+
+  const addNote = () => {
+    if (newNote.trim()) {
+      const note: VideoNote = {
+        id: `note-${Date.now()}`,
+        timestamp: currentTime,
+        content: newNote,
+        createdAt: new Date(),
+      };
+      setNotes([...notes, note]);
+      setNewNote('');
+    }
+  };
+
+  const submitQuizAnswer = () => {
+    if (quizAnswer !== null && currentQuiz) {
+      setShowQuizResult(true);
+
+      // Au after showing result
+      setTimeout(() => {
+        setShowQuiz(false);
+        setShowQuizResult(false);
+        setQuizAnswer(null);
+        setCurrentQuiz(null);
+        setIsPlaying(true);
+        if (videoRef.current) {
+          videoRef.current.play().catch(() => {});
+        }
+      }, 3000);
+    }
+  };
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  return (
+    <div className="bg-black rounded-lg overflow-hidden shadow-2xl">
+      <div className="relative">
+        {/* Video Element */}
+        <video
+          ref={videoRef}
+          src={videoUrl}
+          className="w-full aspect-video"
+          onTimeUpdate={handleTimeUpdate}
+          onLoadedMetadata={handleLoadedMetadata}
+          onEnded={() => {
+            setIsPlaying(false);
+            if (onComplete) onComplete();
+          }}
+        />
+
+        {/* Captions Overlay */}
+        {showCaptions && currentCaption && (
+          <div className="absolute bottom-20 left-0 right-0 flex justify-center px-4">
+            <div className="bg-black bg-opacity-80 text-white px-4 py-2 rounded text-center max-w-3xl">
+              {currentCaption}
+            </div>
+          </div>
+        )}
+
+        {/* Quiz Overlay */}
+        {showQuiz && currentQuiz && (
+          <div className="absolute inset-0 bg-black bg-opacity-90 flex items-center justify-center p-8">
+            <div className="bg-white rounded-lg p-8 max-w-2xl w-full">
+              <h3 className="text-2xl font-bold mb-4">Quick Quiz</h3>
+              <p className="text-lg mb-6">{currentQuiz.question}</p>
+
+              <div className="space-y-3 mb-6">
+                {currentQuiz.options.map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setQuizAnswer(index)}
+                    disabled={showQuizResult}
+                    className={`w-full p-4 text-left rounded-lg border-2 transition-colors ${
+                      showQuizResult
+                        ? index === currentQuiz.correctAnswer
+                          ? 'border-green-500 bg-green-50'
+                          : index === quizAnswer
+                            ? 'border-red-500 bg-red-50'
+                            : 'border-gray-200'
+                        : quizAnswer === index
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-gray-200 hover:border-blue-300'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                          quizAnswer === index
+                            ? 'border-blue-500 bg-blue-500'
+                            : 'border-gray-300'
+                        }`}
+                      >
+                        {quizAnswer === index && (
+                          <div className="w-3 h-3 bg-white rounded-full" />
+                        )}
+                      </div>
+                      <span>{option}</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {showQuizResult && (
+                <div
+                  className={`p-4 rounded-lg mb-4 ${
+                    quizAnswer === currentQuiz.correctAnswer
+                      ? 'bg-green-50 text-green-900'
+                      : 'bg-red-50 text-red-900'
+                  }`}
+                >
+                  <p className="font-semibold mb-2">
+                    {quizAnswer === currentQuiz.correctAnswer
+                      ? '✓ Correct!'
+                      : '✗ Incorrect'}
+                  </p>
+                  {currentQuiz.explanation && (
+                    <p className="text-sm">{currentQuiz.explanation}</p>
+                  )}
+                </div>
+              )}
+
+              {!showQuizResult && (
+                <button
+                  onClick={submitQuizAnswer}
+                  disabled={quizAnswer === null}
+                  className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+                >
+                  Submit Answer
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Video Controls */}
+        <div className="absolute bottom-0 left-0 right-0    p-4">
+          {/* Progress Bar */}
+          <div className="mb-4">
+            <input
+              type="range"
+              min="0"
+              max={duration}
+              value={currentTime}
+              onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => handleSeek(parseFloat(e.target.value))}
+              className="w-full h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer"
+              style={{
+                background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${(currentTime / duration) * 100}%, #4b5563 ${(currentTime / duration) * 100}%, #4b5563 100%)`,
+              }}
+            />
+            {/* Quiz markers */}
+            <div className="relative h-2">
+              {quizzes.map((quiz) => (
+                <div
+                  key={quiz.id}
+                  className="absolute w-2 h-2 bg-yellow-400 rounded-full -mt-1"
+                  style={{ left: `${(quiz.timestamp / duration) * 100}%` }}
+                  title={`Quiz at ${formatTime(quiz.timestamp)}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Control Buttons */}
+          <div className="flex items-center justify-between text-white">
+            <div className="flex items-center gap-4">
+              <button onClick={togglePlay} className="hover:text-blue-400">
+                {isPlaying ? (
+                  <Pause className="w-6 h-6" />
+                ) : (
+                  <Play className="w-6 h-6" />
+                )}
+              </button>
+
+              <button onClick={() => skip(-10)} className="hover:text-blue-400">
+                <SkipBack className="w-5 h-5" />
+              </button>
+
+              <button onClick={() => skip(10)} className="hover:text-blue-400">
+                <SkipForward className="w-5 h-5" />
+              </button>
+
+              <div className="flex items-center gap-2">
+                <button onClick={toggleMute} className="hover:text-blue-400">
+                  {isMuted ? (
+                    <VolumeX className="w-5 h-5" />
+                  ) : (
+                    <Volume2 className="w-5 h-5" />
+                  )}
+                </button>
+                <input
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value={volume}
+                  onChange={(e) =>
+                    handleVolumeChange(parseFloat(e.target.value))
+                  }
+                  className="w-20 h-1"
+                />
+              </div>
+
+              <span className="text-sm">
+                {formatTime(currentTime)} / {formatTime(duration)}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <select
+                value={playbackRate}
+                onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => changePlaybackRate(parseFloat(e.target.value))}
+                className="bg-transparent border border-gray-600 rounded px-2 py-1 text-sm"
+              >
+                <option value="0.5">0.5x</option>
+                <option value="0.75">0.75x</option>
+                <option value="1">1x</option>
+                <option value="1.25">1.25x</option>
+                <option value="1.5">1.5x</option>
+                <option value="2">2x</option>
+              </select>
+
+              <button
+                onClick={() => setShowCaptions(!showCaptions)}
+                className={`hover:text-blue-400 ${showCaptions ? 'text-blue-400' : ''}`}
+              >
+                <MessageSquare className="w-5 h-5" />
+              </button>
+
+              <button
+                onClick={toggleFullscreen}
+                className="hover:text-blue-400"
+              >
+                <Maximize className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Tabs Section */}
+      <div className="bg-gray-900 text-white">
+        <div className="flex border-b border-gray-700">
+          <button
+            onClick={() => setActiveTab('transcript')}
+            className={`flex items-center gap-2 px-6 py-3 ${
+              activeTab === 'transcript'
+                ? 'border-b-2 border-blue-500 text-blue-400'
+                : 'text-gray-400'
+            }`}
+          >
+            <FileText className="w-4 h-4" />
+            Transcript
+          </button>
+          <button
+            onClick={() => setActiveTab('notes')}
+            className={`flex items-center gap-2 px-6 py-3 ${
+              activeTab === 'notes'
+                ? 'border-b-2 border-blue-500 text-blue-400'
+                : 'text-gray-400'
+            }`}
+          >
+            <Bookmark className="w-4 h-4" />
+            My Notes ({notes.length})
+          </button>
+        </div>
+
+        <div className="p-6 max-h-96 overflow-y-auto">
+          {activeTab === 'transcript' && (
+            <div className="space-y-2">
+              {transcript.length > 0 ? (
+                transcript.map((segment, index) => (
+                  <div
+                    key={index}
+                    className={`p-3 rounded cursor-pointer hover:bg-gray-800 ${
+                      currentTime >= segment.start && currentTime <= segment.end
+                        ? 'bg-gray-800'
+                        : ''
+                    }`}
+                    onClick={() => handleSeek(segment.start)}
+                  >
+                    <span className="text-blue-400 text-sm mr-3">
+                      {formatTime(segment.start)}
+                    </span>
+                    <span className="text-gray-300">{segment.text}</span>
+                  </div>
+                ))
+              ) : (
+                <p className="text-gray-500">No transcript available</p>
+              )}
+            </div>
+          )}
+
+          {activeTab === 'notes' && (
+            <div className="space-y-4">
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={newNote}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNewNote(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && addNote()}
+                  Content="Add a note at current timestamp..."
+                  className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded text-white"
+                />
+                <button
+                  onClick={addNote}
+                  className="px-4 py-2 bg-blue-600 rounded hover:bg-blue-700"
+                >
+                  Add Note
+                </button>
+              </div>
+
+              <div className="space-y-3">
+                {notes.map((note) => (
+                  <div key={note.id} className="p-4 bg-gray-800 rounded">
+                    <div className="flex items-center justify-between mb-2">
+                      <button
+                        onClick={() => handleSeek(note.timestamp)}
+                        className="text-blue-400 text-sm hover:underline"
+                      >
+                        {formatTime(note.timestamp)}
+                      </button>
+                      <span className="text-gray-500 text-xs">
+                        {note.createdAt.toLocaleDateString()}
+                      </span>
+                    </div>
+                    <p className="text-gray-300">{note.content}</p>
+                  </div>
+                ))}
+                {notes.length === 0 && (
+                  <p className="text-gray-500 text-center py-8">
+                    No notes yet. Add your first note!
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

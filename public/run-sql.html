@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auto-Run SQL in Supabase</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1 { color: #333; margin-top: 0; }
+    .step {
+      background: #f0f9ff;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 4px solid #0ea5e9;
+      border-radius: 4px;
+    }
+    button {
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button:hover { background: #059669; }
+    .sql-box {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      max-height: 400px;
+      overflow-y: auto;
+      margin: 20px 0;
+      white-space: pre-wrap;
+    }
+    .success { color: #10b981; font-weight: bold; }
+    .link { color: #0ea5e9; text-decoration: none; font-weight: 600; }
+    .link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🤖 Autopilot: Run SQL in Supabase</h1>
+    
+    <p>This page will help you run the credential system SQL automatically.</p>
+
+    <div class="step">
+      <strong>Step 1:</strong> Click the button below to copy the SQL
+    </div>
+
+    <button onclick="copySQLAndOpen()">📋 Copy SQL & Open Supabase</button>
+
+    <div class="step" style="margin-top: 20px;">
+      <strong>Step 2:</strong> When Supabase opens:
+      <ol>
+        <li>Click in the SQL editor</li>
+        <li>Press <kbd>Ctrl+A</kbd> (select all)</li>
+        <li>Press <kbd>Ctrl+V</kbd> (paste)</li>
+        <li>Click the green "Run" button</li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <strong>Step 3:</strong> Come back here and click "Done"
+    </div>
+
+    <button onclick="checkComplete()" style="background: #3b82f6;">✅ I Ran the SQL - Check if it Worked</button>
+
+    <div id="result" style="margin-top: 20px;"></div>
+
+    <details style="margin-top: 30px;">
+      <summary style="cursor: pointer; font-weight: 600;">📄 View SQL (click to expand)</summary>
+      <div class="sql-box" id="sqlContent"></div>
+    </details>
+  </div>
+
+  <script>
+    const SQL = `-- Simple Certification System:
+-- 1. Elevate issues ONE Certificate of Completion per course (at end)
+-- 2. Partners issue Certifications when their course/module is completed
+
+-- Elevate certificates (one per completed course)
+CREATE TABLE IF NOT EXISTS elevate_certificates (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  course_id UUID REFERENCES courses(id),
+  enrollment_id UUID REFERENCES enrollments(id),
+  certificate_number TEXT UNIQUE NOT NULL,
+  title TEXT NOT NULL,
+  issued_at TIMESTAMPTZ DEFAULT NOW(),
+  pdf_url TEXT,
+  verification_url TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_elevate_certificates_user_id ON elevate_certificates(user_id);
+CREATE INDEX IF NOT EXISTS idx_elevate_certificates_course_id ON elevate_certificates(course_id);
+
+-- Partner certifications (issued when partner course completed)
+ALTER TABLE student_credentials ADD COLUMN IF NOT EXISTS issued_by_partner BOOLEAN DEFAULT true;
+ALTER TABLE student_credentials ADD COLUMN IF NOT EXISTS partner_course_id UUID;
+ALTER TABLE student_credentials ADD COLUMN IF NOT EXISTS requires_exam BOOLEAN DEFAULT true;
+ALTER TABLE student_credentials ADD COLUMN IF NOT EXISTS exam_passed BOOLEAN DEFAULT false;
+ALTER TABLE student_credentials ADD COLUMN IF NOT EXISTS exam_score INTEGER;
+
+-- Track which courses are partner courses
+ALTER TABLE courses ADD COLUMN IF NOT EXISTS is_partner_course BOOLEAN DEFAULT false;
+ALTER TABLE courses ADD COLUMN IF NOT EXISTS partner_id UUID REFERENCES credentialing_partners(id);
+ALTER TABLE courses ADD COLUMN IF NOT EXISTS issues_partner_certification BOOLEAN DEFAULT false;
+
+-- Mark partner courses
+UPDATE courses SET 
+  is_partner_course = true,
+  partner_id = (SELECT id FROM credentialing_partners WHERE name = 'Milady'),
+  issues_partner_certification = true
+WHERE title ILIKE '%milady%' OR slug ILIKE '%milady%';
+
+UPDATE courses SET 
+  is_partner_course = true,
+  partner_id = (SELECT id FROM credentialing_partners WHERE name = 'Red Cross'),
+  issues_partner_certification = true
+WHERE title ILIKE '%cpr%' OR title ILIKE '%first aid%';
+
+UPDATE courses SET 
+  is_partner_course = true,
+  partner_id = (SELECT id FROM credentialing_partners WHERE name = 'OSHA'),
+  issues_partner_certification = true
+WHERE title ILIKE '%osha%';
+
+UPDATE courses SET 
+  is_partner_course = true,
+  partner_id = (SELECT id FROM credentialing_partners WHERE name = 'EPA'),
+  issues_partner_certification = true
+WHERE title ILIKE '%epa%' OR title ILIKE '%hvac%';
+
+-- Function: Auto-issue Elevate certificate when course completed
+CREATE OR REPLACE FUNCTION issue_elevate_certificate()
+RETURNS TRIGGER AS $$
+DECLARE
+  cert_number TEXT;
+  course_title TEXT;
+BEGIN
+  IF NEW.status = 'completed' OR NEW.progress = 100 THEN
+    cert_number := 'EFH-' || TO_CHAR(NOW(), 'YYYYMMDD') || '-' || UPPER(SUBSTRING(MD5(RANDOM()::TEXT) FROM 1 FOR 8));
+    SELECT title INTO course_title FROM courses WHERE id = NEW.course_id;
+    INSERT INTO elevate_certificates (user_id, course_id, enrollment_id, certificate_number, title, verification_url)
+    VALUES (NEW.user_id, NEW.course_id, NEW.id, cert_number, 'Certificate of Completion - ' || course_title, 'https://www.elevateforhumanity.org/verify/' || cert_number)
+    ON CONFLICT (certificate_number) DO NOTHING;
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trigger_issue_elevate_certificate ON enrollments;
+CREATE TRIGGER trigger_issue_elevate_certificate
+  AFTER UPDATE ON enrollments
+  FOR EACH ROW
+  WHEN (NEW.status = 'completed' OR NEW.progress = 100)
+  EXECUTE FUNCTION issue_elevate_certificate();
+
+-- Function: Auto-issue Partner certification when partner course completed
+CREATE OR REPLACE FUNCTION issue_partner_certification()
+RETURNS TRIGGER AS $$
+DECLARE
+  cert_number TEXT;
+  partner_name TEXT;
+  credential_name TEXT;
+  cred_id UUID;
+  partner_id_val UUID;
+  is_partner BOOLEAN;
+  issues_cert BOOLEAN;
+BEGIN
+  IF (NEW.status = 'completed' OR NEW.progress = 100) THEN
+    SELECT is_partner_course, partner_id, issues_partner_certification
+    INTO is_partner, partner_id_val, issues_cert
+    FROM courses WHERE id = NEW.course_id;
+    
+    IF issues_cert = true THEN
+      SELECT name INTO partner_name FROM credentialing_partners WHERE id = partner_id_val;
+      SELECT id, name INTO cred_id, credential_name FROM credentials WHERE partner_id = partner_id_val LIMIT 1;
+      
+      IF cred_id IS NOT NULL THEN
+        cert_number := UPPER(SUBSTRING(partner_name FROM 1 FOR 3)) || '-' || TO_CHAR(NOW(), 'YYYYMMDD') || '-' || UPPER(SUBSTRING(MD5(RANDOM()::TEXT) FROM 1 FOR 6));
+        INSERT INTO student_credentials (user_id, credential_id, course_id, enrollment_id, credential_number, issued_date, verification_url, status, issued_by_partner)
+        VALUES (NEW.user_id, cred_id, NEW.course_id, NEW.id, cert_number, NOW(), 'https://www.elevateforhumanity.org/verify/' || cert_number, 'active', true)
+        ON CONFLICT DO NOTHING;
+      END IF;
+    END IF;
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trigger_issue_partner_certification ON enrollments;
+CREATE TRIGGER trigger_issue_partner_certification
+  AFTER UPDATE ON enrollments
+  FOR EACH ROW
+  WHEN (NEW.status = 'completed' OR NEW.progress = 100)
+  EXECUTE FUNCTION issue_partner_certification();
+
+-- View: All certificates for dashboard
+CREATE OR REPLACE VIEW student_certificates_view AS
+SELECT 'elevate' as issuer_type, ec.id, ec.user_id, ec.certificate_number, ec.title, 'Elevate for Humanity' as issued_by, ec.issued_at, ec.verification_url, c.title as course_title
+FROM elevate_certificates ec LEFT JOIN courses c ON ec.course_id = c.id
+UNION ALL
+SELECT 'partner' as issuer_type, sc.id, sc.user_id, sc.credential_number as certificate_number, cr.name as title, cp.name as issued_by, sc.issued_date as issued_at, sc.verification_url, c.title as course_title
+FROM student_credentials sc LEFT JOIN credentials cr ON sc.credential_id = cr.id LEFT JOIN credentialing_partners cp ON cr.partner_id = cp.id LEFT JOIN courses c ON sc.course_id = c.id
+ORDER BY issued_at DESC;
+
+-- Simple credential system setup
+-- Copy this ENTIRE file and paste into Supabase SQL Editor
+
+CREATE TABLE IF NOT EXISTS credentialing_partners (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name TEXT NOT NULL UNIQUE,
+  type TEXT NOT NULL,
+  description TEXT,
+  website TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS credentials (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  partner_id UUID REFERENCES credentialing_partners(id),
+  name TEXT NOT NULL,
+  type TEXT NOT NULL,
+  description TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS course_credentials (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  course_id UUID REFERENCES courses(id) ON DELETE CASCADE,
+  credential_id UUID REFERENCES credentials(id) ON DELETE CASCADE,
+  is_primary BOOLEAN DEFAULT false,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(course_id, credential_id)
+);
+
+CREATE TABLE IF NOT EXISTS student_credentials (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  credential_id UUID REFERENCES credentials(id),
+  issued_date TIMESTAMPTZ DEFAULT NOW(),
+  credential_number TEXT,
+  status TEXT DEFAULT 'active',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+INSERT INTO credentialing_partners (name, type, description, website) VALUES
+('Indiana State Board', 'state_board', 'State licensing', 'https://www.in.gov'),
+('Milady', 'industry', 'Beauty education', 'https://www.milady.com'),
+('NRF Rise Up', 'industry', 'Retail certification', 'https://nrf.com/riseup'),
+('Red Cross', 'national', 'CPR/First Aid', 'https://www.redcross.org'),
+('OSHA', 'federal', 'Safety training', 'https://www.osha.gov'),
+('EPA', 'federal', 'HVAC certification', 'https://www.epa.gov'),
+('Elevate for Humanity', 'internal', 'Completion certificates', 'https://www.elevateforhumanity.org');
+
+INSERT INTO credentials (partner_id, name, type, description) VALUES
+((SELECT id FROM credentialing_partners WHERE name = 'Indiana State Board'), 'Barber License', 'license', 'State barber license'),
+((SELECT id FROM credentialing_partners WHERE name = 'Milady'), 'Milady Barber Certification', 'certification', 'Industry certification'),
+((SELECT id FROM credentialing_partners WHERE name = 'NRF Rise Up'), 'Rise Up Credential', 'credential', 'Workforce readiness'),
+((SELECT id FROM credentialing_partners WHERE name = 'Red Cross'), 'CPR/AED Certification', 'certification', 'CPR and AED'),
+((SELECT id FROM credentialing_partners WHERE name = 'OSHA'), 'OSHA 10', 'certification', 'Safety training'),
+((SELECT id FROM credentialing_partners WHERE name = 'EPA'), 'EPA 608', 'certification', 'Refrigerant handling'),
+((SELECT id FROM credentialing_partners WHERE name = 'Elevate for Humanity'), 'Certificate of Completion', 'certificate', 'Program completion');`;
+
+    // Display SQL
+    document.getElementById('sqlContent').textContent = SQL;
+
+    function copySQLAndOpen() {
+      // Copy to clipboard
+      navigator.clipboard.writeText(SQL).then(() => {
+        alert('✅ SQL copied to clipboard!\n\nOpening Supabase SQL Editor...');
+        // Open Supabase SQL Editor
+        window.open('https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/sql/new', '_blank');
+      }).catch(err => {
+        alert('❌ Could not copy. Please copy manually from the box below.');
+      });
+    }
+
+    async function checkComplete() {
+      const result = document.getElementById('result');
+      result.innerHTML = '<p>🔍 Checking if tables were created...</p>';
+      
+      try {
+        // Check if API can see the tables now
+        const response = await fetch('/api/check-credentials');
+        const data = await response.json();
+        
+        if (data.success) {
+          result.innerHTML = `
+            <div class="step" style="border-color: #10b981; background: #f0fdf4;">
+              <p class="success">✅ SUCCESS! Credential system is set up!</p>
+              <p>Tables created: ${data.tables.join(', ')}</p>
+              <p>You can close this page now.</p>
+            </div>
+          `;
+        } else {
+          result.innerHTML = `
+            <div class="step" style="border-color: #ef4444; background: #fef2f2;">
+              <p style="color: #ef4444; font-weight: bold;">⚠️ Tables not found yet</p>
+              <p>Make sure you clicked "Run" in Supabase SQL Editor</p>
+            </div>
+          `;
+        }
+      } catch (error) {
+        result.innerHTML = `<p style="color: #ef4444;">Error checking: ${error.message}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>

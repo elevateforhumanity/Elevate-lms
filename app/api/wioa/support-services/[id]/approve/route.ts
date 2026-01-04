@@ -1,0 +1,49 @@
+import { NextRequest, NextResponse } from 'next/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import { createSupabaseClient } from '@/lib/supabase-api';
+import { toError, toErrorMessage } from '@/lib/safe';
+
+// POST /api/wioa/support-services/[id]/approve - Approve/deny support service
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const supabase = createSupabaseClient();
+  try {
+    const { id } = await params;
+    const body = await parseBody<Record<string, unknown>>(request);
+    const { approved, approvedAmount, approvedBy, notes, denialReason } = body;
+
+    const updateData = {
+      status: approved ? 'approved' : 'denied',
+      approved_amount: approvedAmount,
+      approved_by: approvedBy,
+      approval_date: new Date().toISOString(),
+      approval_notes: notes,
+      denial_reason: denialReason,
+      updated_at: new Date().toISOString(),
+    };
+
+    const { data, error }: any = await supabase
+      .from('support_services')
+      .update(updateData)
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    return NextResponse.json({ success: true, data });
+  } catch (error: unknown) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: { code: 'SERVER_ERROR', message: toErrorMessage(error) },
+      },
+      { status: 500 }
+    );
+  }
+}

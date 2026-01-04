@@ -1,0 +1,139 @@
+import Image from 'next/image';
+
+interface Highlight {
+  title: string;
+  description: string;
+  image: string;
+}
+
+interface ProgramHighlightsProps {
+  highlights?: Highlight[];
+}
+
+const defaultHighlights: Highlight[] = [
+  {
+    title: "100% Free Training",
+    description: "No tuition, no fees, no debt. Fully funded through WIOA, WRG, and JRI programs.",
+    image: "/images/programs/program-placeholder.jpg"
+  },
+  {
+    title: "Earn While You Learn",
+    description: "Get paid during training through work-study programs and apprenticeships.",
+    image: "/images/programs/program-placeholder.jpg"
+  },
+  {
+    title: "Industry Certification",
+    description: "Earn recognized certifications that employers value and actively seek.",
+    image: "/images/programs/program-placeholder.jpg"
+  },
+  {
+    title: "Job Placement Support",
+    description: "We connect you with employers hiring in your field. Resume and interview prep included.",
+    image: "/images/programs/program-placeholder.jpg"
+  },
+  {
+    title: "Hands-On Experience",
+    description: "Real-world training with actual equipment and industry-standard tools.",
+    image: "/images/programs/program-placeholder.jpg"
+  },
+  {
+    title: "Flexible Scheduling",
+    description: "Day, evening, and weekend classes available to fit your life.",
+    image: "/images/programs/program-placeholder.jpg"
+  }
+];
+
+export default function ProgramHighlights({ highlights = defaultHighlights }: ProgramHighlightsProps) {
+  return (
+    <section className="py-16 sm:py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            Why Choose This Program
+          </h2>
+          <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+            Everything you need to launch your career, completely free
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {highlights.map((highlight, index) => (
+            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={highlight.image}
+                  alt={highlight.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0   " />
+                <h3 className="absolute bottom-4 left-4 right-4 text-xl font-bold text-white">
+                  {highlight.title}
+                </h3>
+              </div>
+              <div className="p-6">
+                <p className="text-slate-600 leading-relaxed">
+                  {highlight.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Additional Benefits Bar */}
+        <div className="mt-12 bg-orange-50 rounded-lg p-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <div className="relative w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden">
+                <Image
+                  src="/images/programs/program-placeholder.jpg"
+                  alt="Small class sizes"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1">Small Classes</h4>
+              <p className="text-sm text-slate-600">8-12 students per class</p>
+            </div>
+            <div>
+              <div className="relative w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden">
+                <Image
+                  src="/images/programs/program-placeholder.jpg"
+                  alt="Expert instructors"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1">Expert Instructors</h4>
+              <p className="text-sm text-slate-600">10+ years experience</p>
+            </div>
+            <div>
+              <div className="relative w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden">
+                <Image
+                  src="/images/programs/program-placeholder.jpg"
+                  alt="Modern equipment"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1">Modern Equipment</h4>
+              <p className="text-sm text-slate-600">Industry-standard tools</p>
+            </div>
+            <div>
+              <div className="relative w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden">
+                <Image
+                  src="/images/programs/program-placeholder.jpg"
+                  alt="Job placement"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1">Job Placement</h4>
+              <p className="text-sm text-slate-600">Employer connections</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PIRL Reporting - DOL/DWD Federal Compliance</title>
+    <meta
+      name="description"
+      content="Participant Individual Record Layout (PIRL) reporting for federal workforce development compliance"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="scripts/efh-universal.v2.2.js"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Navigation Header -->
+    <nav
+      role="navigation"
+      class="bg-white border-b border-gray-200 sticky top-0 z-50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="compliance.html" class="flex items-center">
+              <i
+                data-lucide="arrow-left"
+                class="h-5 w-5 mr-2 text-gray-600"
+              ></i>
+              <span class="text-gray-600">Back to Compliance Portal</span>
+            </a>
+          </div>
+          <div class="flex items-center">
+            <h1 class="text-xl font-bold text-gray-900">
+              PIRL Reporting System
+            </h1>
+          </div>
+          <div class="flex items-center">
+            <div
+              class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium"
+            >
+              🏛️ Federal Reporting
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <!-- Page Header -->
+      <div class="mb-8">
+        <div
+          class="bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg p-6 text-white"
+        >
+          <h2 class="text-2xl font-bold mb-2">
+            PIRL (Participant Individual Record Layout)
+          </h2>
+          <p class="opacity-90">
+            Federal participant data reporting system for DOL/DWD compliance
+          </p>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="total-reports">156</div>
+              <div class="text-sm opacity-90">Total Reports</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="pending-submission">3</div>
+              <div class="text-sm opacity-90">Pending Submission</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="submitted-reports">153</div>
+              <div class="text-sm opacity-90">Submitted to DOL</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="current-quarter">Q4 2024</div>
+              <div class="text-sm opacity-90">Current Quarter</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <button
+          type="button"
+          onclick="showGeneratePIRLForm()"
+          class="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow text-left"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="file-plus" class="h-8 w-8 text-green-600"></i>
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs"
+              >New</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Generate PIRL Report</h3>
+          <p class="text-gray-600 text-sm">
+            Create new participant data report for federal submission
+          </p>
+        </button>
+
+        <button
+          type="button"
+          onclick="showBulkSubmission()"
+          class="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow text-left"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="upload" class="h-8 w-8 text-blue-600"></i>
+            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs"
+              >Submit</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Bulk Submission</h3>
+          <p class="text-gray-600 text-sm">
+            Submit multiple reports to DOL/DWD systems
+          </p>
+        </button>
+
+        <button
+          type="button"
+          onclick="showReportHistory()"
+          class="bg-white p-6 rounded-lg border hover:shadow-md transition-shadow text-left"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="archive" class="h-8 w-8 text-purple-600"></i>
+            <span
+              class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs"
+              >History</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Report History</h3>
+          <p class="text-gray-600 text-sm">
+            View submitted reports and federal responses
+          </p>
+        </button>
+      </div>
+
+      <!-- Filters and Search -->
+      <div class="bg-white rounded-lg border p-4 mb-6">
+        <div class="flex flex-wrap items-center gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Reporting Period</label
+            >
+            <select
+              id="period-filter"
+              onchange="filterReports()"
+              class="border rounded px-3 py-2"
+            >
+              <option value="">All Periods</option>
+              <option value="Q4-2024">Q4 2024</option>
+              <option value="Q3-2024">Q3 2024</option>
+              <option value="Q2-2024">Q2 2024</option>
+              <option value="Q1-2024">Q1 2024</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Status</label
+            >
+            <select
+              id="status-filter"
+              onchange="filterReports()"
+              class="border rounded px-3 py-2"
+            >
+              <option value="">All Status</option>
+              <option value="draft">Draft</option>
+              <option value="pending">Pending Review</option>
+              <option value="submitted">Submitted</option>
+              <option value="approved">Approved by DOL</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Search</label
+            >
+            <input
+              type="text"
+              id="search-reports"
+              placeholder="Search participants or Federal IDs..."
+              class="w-full border rounded px-3 py-2"
+              onkeyup="searchReports()"
+            />
+          </div>
+          <div class="self-end">
+            <button
+              type="button"
+              onclick="exportReports()"
+              class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 flex items-center"
+            >
+              <i data-lucide="download" class="h-4 w-4 mr-2"></i>
+              Export
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PIRL Reports Table -->
+      <div class="bg-white rounded-lg border">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Participant
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Reporting Period
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Federal ID
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Status
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Submitted
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              id="pirl-table-body"
+              class="bg-white divide-y divide-gray-200"
+            >
+              <!-- PIRL records will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Generate PIRL Modal -->
+      <div
+        id="generate-pirl-modal"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50"
+      >
+        <div class="flex items-center justify-center min-h-screen p-4">
+          <div
+            class="bg-white rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Generate PIRL Report</h3>
+                <button
+                  type="button"
+                  onclick="hideGeneratePIRLForm()"
+                  class="text-gray-400 hover:text-gray-600"
+                  aria-label="Action button"
+                >
+                  <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+              </div>
+
+              <form id="pirl-form" onsubmit="generatePIRL(event)">
+                <div class="space-y-6">
+                  <!-- Report Information -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Report Information
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Reporting Period</label
+                        >
+                        <select
+                          name="reporting_period"
+                          required
+                          class="w-full border rounded px-3 py-2"
+                        >
+                          <option value="">Select Period</option>
+                          <option value="Q4-2024">Q4 2024</option>
+                          <option value="Q3-2024">Q3 2024</option>
+                          <option value="Q2-2024">Q2 2024</option>
+                          <option value="Q1-2024">Q1 2024</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Participant</label
+                        >
+                        <select
+                          name="user_id"
+                          required
+                          class="w-full border rounded px-3 py-2"
+                          onchange="loadParticipantData()"
+                        >
+                          <option value="">Select Participant</option>
+                          <!-- Will be populated dynamically -->
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Participant Data -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Participant Data (WIOA Elements)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Social Security Number</label
+                        >
+                        <input
+                          type="text"
+                          aria-label="text input"
+                          name="ssn"
+                          class="w-full border rounded px-3 py-2"
+                          placeholder="XXX-XX-XXXX"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Date of Birth</label
+                        >
+                        <input
+                          type="date"
+                          aria-label="date input"
+                          name="date_of_birth"
+                          class="w-full border rounded px-3 py-2"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Gender</label
+                        >
+                        <select
+                          name="gender"
+                          class="w-full border rounded px-3 py-2"
+                        >
+                          <option value="">Select Gender</option>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Race/Ethnicity</label
+                        >
+                        <select
+                          name="race_ethnicity"
+                          class="w-full border rounded px-3 py-2"
+                        >
+                          <option value="">Select Race/Ethnicity</option>
+                          <option value="hispanic">Hispanic or Latino</option>
+                          <option value="white">White</option>
+                          <option value="black">
+                            Black or African American
+                          </option>
+                          <option value="asian">Asian</option>
+                          <option value="native_american">
+                            American Indian or Alaska Native
+                          </option>
+                          <option value="pacific_islander">
+                            Native Hawaiian or Pacific Islander
+                          </option>
+                          <option value="multiple">Multiple Races</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Employment Data -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Employment Data
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Employment Status at Entry</label
+                        >
+                        <select
+                          name="employment_status_entry"
+                          class="w-full border rounded px-3 py-2"
+                        >
+                          <option value="">Select Status</option>
+                          <option value="employed">Employed</option>
+                          <option value="unemployed">Unemployed</option>
+                          <option value="not_in_labor_force">
+                            Not in Labor Force
+                          </option>
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Employment Status at Exit</label
+                        >
+                        <select
+                          name="employment_status_exit"
+                          class="w-full border rounded px-3 py-2"
+                        >
+                          <option value="">Select Status</option>
+                          <option value="employed">Employed</option>
+                          <option value="unemployed">Unemployed</option>
+                          <option value="not_in_labor_force">
+                            Not in Labor Force
+                          </option>
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Wages at Entry (Quarterly)</label
+                        >
+                        <input
+                          type="number"
+                          aria-label="number input"
+                          name="wages_entry"
+                          class="w-full border rounded px-3 py-2"
+                          placeholder="0.00"
+                          step="0.01"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Wages at Exit (Quarterly)</label
+                        >
+                        <input
+                          type="number"
+                          aria-label="number input"
+                          name="wages_exit"
+                          class="w-full border rounded px-3 py-2"
+                          placeholder="0.00"
+                          step="0.01"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Education Data -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Education Data
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Highest Education Level</label
+                        >
+                        <select
+                          name="education_level"
+                          class="w-full border rounded px-3 py-2"
+                        >
+                          <option value="">Select Level</option>
+                          <option value="less_than_high_school">
+                            Less than High School
+                          </option>
+                          <option value="high_school">
+                            High School Diploma/GED
+                          </option>
+                          <option value="some_college">Some College</option>
+                          <option value="associates">Associate's Degree</option>
+                          <option value="bachelors">Bachelor's Degree</option>
+                          <option value="masters">Master's Degree</option>
+                          <option value="doctoral">Doctoral Degree</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >School Status</label
+                        >
+                        <select
+                          name="school_status"
+                          class="w-full border rounded px-3 py-2"
+                        >
+                          <option value="">Select Status</option>
+                          <option value="in_school">In School</option>
+                          <option value="not_in_school">Not in School</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Demographic Data -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Demographic Data
+                    </h4>
+                    <div class="space-y-3">
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="demographics"
+                            value="veteran"
+                            class="mr-2"
+                          />
+                          Veteran
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="demographics"
+                            value="disabled"
+                            class="mr-2"
+                          />
+                          Individual with Disability
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="demographics"
+                            value="homeless"
+                            class="mr-2"
+                          />
+                          Homeless Individual
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="demographics"
+                            value="ex_offender"
+                            class="mr-2"
+                          />
+                          Ex-Offender
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="demographics"
+                            value="low_income"
+                            class="mr-2"
+                          />
+                          Low-Income Individual
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex justify-end space-x-3 mt-6">
+                  <button
+                    type="button"
+                    onclick="hideGeneratePIRLForm()"
+                    class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+                  >
+                    Generate PIRL Report
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // PIRL Reporting Functions
+      async function loadPIRLReports() {
+        try {
+          const response = await fetch('/api/compliance/pirl');
+          const data = await response.json();
+          displayPIRLReports(data.pirl_reports || []);
+        } catch (error) {
+          console.error('Error loading PIRL reports:', error);
+        }
+      }
+
+      function displayPIRLReports(reports) {
+        const tbody = document.getElementById('pirl-table-body');
+        tbody.innerHTML = '';
+
+        reports.forEach((report) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${report.participant_data?.name || 'N/A'}</div>
+                        <div class="text-sm text-gray-500">${report.user_id}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        ${report.reporting_period}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-900">
+                        ${report.federal_id || 'Pending'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${getPIRLStatusColor(report.report_status)}">
+                            ${report.report_status}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${report.submitted_at ? new Date(report.submitted_at).toLocaleDateString() : 'Not submitted'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button type="button" onclick="viewPIRL('${report.id}')" class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                        ${report.report_status === 'draft' ? `<button type="button" onclick="submitPIRL('${report.id}')" class="text-green-600 hover:text-green-900">Submit</button>` : ''}
+                    </td>
+                `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function getPIRLStatusColor(status) {
+        switch (status) {
+          case 'draft':
+            return 'bg-gray-100 text-gray-800';
+          case 'pending':
+            return 'bg-yellow-100 text-yellow-800';
+          case 'submitted':
+            return 'bg-blue-100 text-blue-800';
+          case 'approved':
+            return 'bg-green-100 text-green-800';
+          default:
+            return 'bg-gray-100 text-gray-800';
+        }
+      }
+
+      function showGeneratePIRLForm() {
+        document
+          .getElementById('generate-pirl-modal')
+          .classList.remove('hidden');
+        loadParticipants();
+      }
+
+      function hideGeneratePIRLForm() {
+        document.getElementById('generate-pirl-modal').classList.add('hidden');
+        document.getElementById('pirl-form').reset();
+      }
+
+      async function loadParticipants() {
+        try {
+          const response = await fetch(
+            '/api/compliance/eligibility?status=verified'
+          );
+          const data = await response.json();
+          const select = document.querySelector('select[name="user_id"]');
+
+          select.innerHTML = '<option value="">Select Participant</option>';
+          data.verifications?.forEach((verification) => {
+            select.innerHTML += `<option value="${verification.user_id}">${verification.email}</option>`;
+          });
+        } catch (error) {
+          console.error('Error loading participants:', error);
+        }
+      }
+
+      async function generatePIRL(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        const demographics = Array.from(formData.getAll('demographics'));
+
+        const pirlData = {
+          user_id: formData.get('user_id'),
+          reporting_period: formData.get('reporting_period'),
+          participant_data: {
+            ssn: formData.get('ssn'),
+            date_of_birth: formData.get('date_of_birth'),
+            gender: formData.get('gender'),
+            race_ethnicity: formData.get('race_ethnicity'),
+          },
+          employment_data: {
+            employment_status_entry: formData.get('employment_status_entry'),
+            employment_status_exit: formData.get('employment_status_exit'),
+            wages_entry: parseFloat(formData.get('wages_entry')) || 0,
+            wages_exit: parseFloat(formData.get('wages_exit')) || 0,
+          },
+          education_data: {
+            education_level: formData.get('education_level'),
+            school_status: formData.get('school_status'),
+          },
+          demographic_data: {
+            demographics: demographics,
+          },
+        };
+
+        try {
+          const response = await fetch('/api/compliance/pirl', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(pirlData),
+          });
+
+          if (response.ok) {
+            hideGeneratePIRLForm();
+            loadPIRLReports();
+            alert('PIRL report generated successfully!');
+          } else {
+            alert('Error generating PIRL report. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error generating PIRL:', error);
+          alert('Error generating PIRL report. Please try again.');
+        }
+      }
+
+      async function submitPIRL(pirlId) {
+        if (
+          !confirm(
+            'Are you sure you want to submit this PIRL report to DOL/DWD?'
+          )
+        )
+          return;
+
+        try {
+          const response = await fetch(
+            `/api/compliance/pirl/${pirlId}/submit`,
+            {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                submitted_by: 'current_user', // In real implementation, get from auth
+              }),
+            }
+          );
+
+          if (response.ok) {
+            loadPIRLReports();
+            alert('PIRL report submitted successfully to federal systems!');
+          } else {
+            alert('Error submitting PIRL report. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error submitting PIRL:', error);
+          alert('Error submitting PIRL report. Please try again.');
+        }
+      }
+
+      function viewPIRL(pirlId) {
+        // In real implementation, show detailed view modal
+        alert(`Viewing PIRL Report: ${pirlId}`);
+      }
+
+      function showBulkSubmission() {
+        alert('Bulk submission feature coming soon...');
+      }
+
+      function showReportHistory() {
+        alert('Report history view coming soon...');
+      }
+
+      function filterReports() {
+        // Filter reports based on period and status
+        loadPIRLReports();
+      }
+
+      function searchReports() {
+        // Search functionality
+        loadPIRLReports();
+      }
+
+      function exportReports() {
+        // Export to CSV/PDF
+        alert('Exporting PIRL reports...');
+      }
+
+      function loadParticipantData() {
+        // Auto-populate participant data when selected
+        const userId = document.querySelector('select[name="user_id"]').value;
+        if (userId) {
+          // In real implementation, load existing participant data
+          console.log('Loading data for participant:', userId);
+        }
+      }
+
+      // Initialize page
+      document.addEventListener('DOMContentLoaded', function () {
+        loadPIRLReports();
+      });
+    </script>
+  </body>
+</html>

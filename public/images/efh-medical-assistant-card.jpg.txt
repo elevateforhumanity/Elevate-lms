@@ -1,0 +1,14 @@
+PLACEHOLDER IMAGE NEEDED
+
+Program: medical-assistant
+Type: Card Image
+Dimensions: 1600x900px (16:9)
+Format: JPG
+File Size: <200KB
+Content: Students in medical-assistant training
+
+Download from:
+- Pexels: https://www.pexels.com/search/medical-assistant%20training/
+- Unsplash: https://unsplash.com/s/photos/medical-assistant-training
+
+Save as: efh-medical-assistant-card.jpg

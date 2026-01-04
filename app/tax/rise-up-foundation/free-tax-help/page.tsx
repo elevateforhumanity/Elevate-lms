@@ -1,0 +1,227 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Free Tax Help - VITA Services | Rise Up Foundation',
+  description:
+    'Free tax preparation for individuals and families earning $64,000 or less. IRS-certified volunteers help you file for free.',
+  keywords: [
+    'free tax help',
+    'VITA eligibility',
+    'free tax preparation',
+    'IRS VITA program',
+  ],
+  alternates: {
+    canonical:
+      'https://elevateforhumanity.org/tax/rise-up-foundation/free-tax-help',
+  },
+  openGraph: {
+    title: 'Free Tax Help - VITA Services',
+    description:
+      'Free tax preparation for qualifying individuals. No cost, no hidden fees.',
+    url: 'https://elevateforhumanity.org/tax/rise-up-foundation/free-tax-help',
+    type: 'website',
+  },
+};
+
+export default function FreeTaxHelpPage() {
+  return (
+    <div className="mx-auto max-w-4xl px-4 py-10">
+      <div className="mb-6">
+        <Link
+          href="/tax/rise-up-foundation"
+          className="text-sm text-gray-600 hover:text-gray-900"
+        >
+          ← Back to Rise Up Foundation
+        </Link>
+      </div>
+
+      <h1 className="text-4xl font-bold">Free Tax Help</h1>
+      <p className="mt-3 text-lg text-gray-600">
+        Get your taxes done for free by IRS-certified volunteers through the
+        VITA program.
+      </p>
+
+      <section className="mt-8 rounded-2xl border bg-white p-8">
+        <h2 className="text-2xl font-bold mb-4">Who Qualifies?</h2>
+        <p className="text-gray-600 mb-4">
+          The VITA program provides free tax help to people who generally make
+          $64,000 or less, persons with disabilities, and limited
+          English-speaking taxpayers who need assistance in preparing their own
+          tax returns.
+        </p>
+
+        <div className="space-y-3">
+          <div className="flex items-start gap-3">
+            <span className="text-brand-green-600 font-bold text-xl">✓</span>
+            <div>
+              <div className="font-semibold">Income Limit</div>
+              <div className="text-sm text-gray-600">
+                Generally $64,000 or less per year
+              </div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-brand-green-600 font-bold text-xl">✓</span>
+            <div>
+              <div className="font-semibold">Persons with Disabilities</div>
+              <div className="text-sm text-gray-600">
+                Regardless of income level
+              </div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-brand-green-600 font-bold text-xl">✓</span>
+            <div>
+              <div className="font-semibold">Limited English Speakers</div>
+              <div className="text-sm text-gray-600">
+                We provide assistance in multiple languages
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-2xl border bg-white p-8">
+        <h2 className="text-2xl font-bold mb-4">What to Bring</h2>
+        <p className="text-gray-600 mb-6">
+          To prepare your tax return, please bring the following documents:
+        </p>
+
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-semibold text-lg mb-2">Identification</h3>
+            <ul className="list-disc pl-5 space-y-1 text-gray-700">
+              <li>
+                Government-issued photo ID (driver's license, state ID,
+                passport)
+              </li>
+              <li>
+                Social Security cards or ITIN letters for everyone on the return
+              </li>
+              <li>Birth dates for everyone on the return</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-2">Income Documents</h3>
+            <ul className="list-disc pl-5 space-y-1 text-gray-700">
+              <li>W-2 forms from all employers</li>
+              <li>
+                1099 forms (interest, dividends, retirement, unemployment, etc.)
+              </li>
+              <li>Other income statements</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-2">
+              Deduction Documents (if applicable)
+            </h3>
+            <ul className="list-disc pl-5 space-y-1 text-gray-700">
+              <li>Childcare provider information (name, address, tax ID)</li>
+              <li>Form 1098-T for education expenses</li>
+              <li>Form 1098 for mortgage interest</li>
+              <li>Receipts for charitable donations</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-2">Other</h3>
+            <ul className="list-disc pl-5 space-y-1 text-gray-700">
+              <li>Copy of last year's tax return (if available)</li>
+              <li>Bank account and routing numbers for direct deposit</li>
+              <li>Health insurance information (Form 1095-A, B, or C)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-2xl border bg-white p-8">
+        <h2 className="text-2xl font-bold mb-4">How to Schedule</h2>
+        <p className="text-gray-600 mb-6">
+          Schedule your VITA tax preparation appointment to ensure we can give
+          you the time and attention you deserve.
+        </p>
+
+        <div className="space-y-4">
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-green-600 text-white flex items-center justify-center font-bold">
+              1
+            </div>
+            <div>
+              <div className="font-semibold">Call to Schedule</div>
+              <div className="text-sm text-gray-600">
+                Call 317-314-3757 to book your appointment
+              </div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-green-600 text-white flex items-center justify-center font-bold">
+              2
+            </div>
+            <div>
+              <div className="font-semibold">Gather Documents</div>
+              <div className="text-sm text-gray-600">
+                Collect all required documents listed above
+              </div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-green-600 text-white flex items-center justify-center font-bold">
+              3
+            </div>
+            <div>
+              <div className="font-semibold">Attend Appointment</div>
+              <div className="text-sm text-gray-600">
+                Meet with our volunteer at your scheduled time
+              </div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-green-600 text-white flex items-center justify-center font-bold">
+              4
+            </div>
+            <div>
+              <div className="font-semibold">File for Free</div>
+              <div className="text-sm text-gray-600">
+                We'll prepare and e-file your return at no cost
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-4">
+          <a
+            href="tel:3173143757"
+            className="px-6 py-3 rounded-lg bg-brand-green-600 text-white font-semibold hover:bg-green-700 transition"
+          >
+            Call 317-314-3757
+          </a>
+          <Link
+            href="/tax/rise-up-foundation/documents"
+            className="px-6 py-3 rounded-lg border-2 border-brand-green-600 text-brand-green-600 font-semibold hover:bg-green-50 transition"
+          >
+            View Document Checklist
+          </Link>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-2xl bg-blue-50 border-l-4 border-blue-400 p-6">
+        <h3 className="font-semibold text-gray-900">Reference</h3>
+        <p className="mt-2 text-sm text-gray-700">
+          For more information about the VITA program, visit the{' '}
+          <a
+            href="https://www.irs.gov/individuals/free-tax-return-preparation-for-qualifying-taxpayers"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-blue-600 hover:underline"
+          >
+            IRS VITA overview page
+          </a>
+          .
+        </p>
+      </section>
+    </div>
+  );
+}

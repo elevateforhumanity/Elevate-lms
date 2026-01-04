@@ -1,0 +1,14 @@
+PLACEHOLDER IMAGE NEEDED
+
+Program: medical-assistant
+Type: Hero Image
+Dimensions: 1600x900px (16:9)
+Format: JPG
+File Size: <200KB
+Content: medical-assistant training facility or equipment
+
+Download from:
+- Pexels: https://www.pexels.com/search/medical-assistant/
+- Unsplash: https://unsplash.com/s/photos/medical-assistant
+
+Save as: efh-medical-assistant-hero.jpg

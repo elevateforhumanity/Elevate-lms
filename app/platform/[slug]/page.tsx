@@ -1,0 +1,282 @@
+import { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { getProductBySlug, getAppsForProduct } from '@/app/data/store-products';
+import { Check, ArrowLeft, Shield, Download, Zap } from 'lucide-react';
+
+
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const product = getProductBySlug(params.slug);
+
+  if (!product) {
+    return {
+      title: 'Product Not Found',
+    };
+  }
+
+  return {
+    title: `${product.name} | Elevate For Humanity`,
+    description: product.longDescription,
+    alternates: {
+      canonical: `https://elevateforhumanity.org/platform/${product.slug}`,
+    },
+  };
+}
+
+export default function ProductDetailPage({ params }: Props) {
+  const product = getProductBySlug(params.slug);
+
+  if (!product) {
+    notFound();
+  }
+
+  const apps = getAppsForProduct(product);
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative h-[300px] md:h-[400px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/artlist/hero-training-5.jpg"
+          alt={product.name}
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <Link
+            href="/platform"
+            className="inline-flex items-center text-white hover:text-gray-200 mb-4"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Platform
+          </Link>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            {product.name}
+          </h1>
+          <p className="text-base md:text-lg text-gray-100">
+            {product.description}
+          </p>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-3 gap-12">
+            {/* Left Column - Details */}
+            <div className="lg:col-span-2">
+              <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4 text-gray-900">
+                  What's Included
+                </h2>
+                <p className="text-gray-700 mb-6">{product.longDescription}</p>
+
+                <h3 className="text-lg font-semibold mb-4 text-gray-900">
+                  Features
+                </h3>
+                <ul className="space-y-3 mb-8">
+                  {product.features.map((feature, index) => (
+                    <li key={index} className="flex items-start">
+                      <Check className="w-5 h-5 text-brand-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <h3 className="text-lg font-semibold mb-4 text-gray-900">
+                  Apps & Modules ({apps.length})
+                </h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {apps.map((app) => (
+                    <div
+                      key={app.id}
+                      className="border border-gray-200 rounded-lg p-4"
+                    >
+                      <div className="flex items-start">
+                        <span className="text-2xl mr-3">{app.icon}</span>
+                        <div>
+                          <h4 className="font-semibold text-gray-900">
+                            {app.name}
+                          </h4>
+                          <p className="text-sm text-gray-600 mt-1">
+                            {app.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm p-8">
+                <h2 className="text-2xl font-bold mb-4 text-gray-900">
+                  Ideal For
+                </h2>
+                <ul className="space-y-3">
+                  {product.idealFor.map((item, index) => (
+                    <li key={index} className="flex items-start">
+                      <Check className="w-5 h-5 text-brand-blue-600 mr-3 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Right Column - Purchase Card */}
+            <div className="lg:col-span-1">
+              <div className="bg-white rounded-lg shadow-lg p-8 sticky top-4">
+                <div className="mb-6">
+                  <div className="text-4xl font-bold text-gray-900 mb-2">
+                    ${product.price.toLocaleString()}
+                  </div>
+                  <div className="text-gray-600">
+                    {product.billingType === 'one_time'
+                      ? 'One-time payment'
+                      : 'Per month'}
+                  </div>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-start">
+                    <Shield className="w-5 h-5 text-brand-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-semibold text-gray-900">
+                        License Type
+                      </div>
+                      <div className="text-sm text-gray-600 capitalize">
+                        {product.licenseType}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <Download className="w-5 h-5 text-brand-blue-600 mr-3 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-semibold text-gray-900">
+                        Deployment
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        Full source code access
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <Zap className="w-5 h-5 text-brand-orange-600 mr-3 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-semibold text-gray-900">Support</div>
+                      <div className="text-sm text-gray-600">
+                        Onboarding + updates
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {product.requiresApproval ? (
+                  <div>
+                    <Link
+                      href="/contact"
+                      className="block w-full text-center bg-brand-blue-600 hover:bg-brand-blue-700 text-white px-6 py-4 rounded-lg font-semibold transition-colors mb-4"
+                    >
+                      Request Access
+                    </Link>
+                    <p className="text-sm text-gray-600 text-center">
+                      This license requires approval. We'll review your
+                      application and contact you within 1-2 business days.
+                    </p>
+                  </div>
+                ) : (
+                  <form action="/api/stripe/checkout" method="POST">
+                    <input type="hidden" name="productId" value={product.id} />
+                    <button
+                      type="submit"
+                      className="w-full bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-6 py-4 rounded-lg font-semibold transition-colors mb-4"
+                    >
+                      Purchase License
+                    </button>
+                    <p className="text-sm text-gray-600 text-center">
+                      Secure checkout powered by Stripe. Instant access after
+                      payment.
+                    </p>
+                  </form>
+                )}
+
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <Link
+                    href="/platform/licensing"
+                    className="text-brand-blue-600 hover:text-brand-blue-700 text-sm font-semibold"
+                  >
+                    View License Terms →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-900">
+            Frequently Asked Questions
+          </h2>
+
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold mb-2 text-gray-900">
+                What happens after I purchase?
+              </h3>
+              <p className="text-gray-600">
+                You'll be redirected to a post-purchase onboarding page with
+                setup instructions, access to the codebase, and a checklist to
+                get your platform live.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-2 text-gray-900">
+                Can I deploy on multiple domains?
+              </h3>
+              <p className="text-gray-600">
+                {product.licenseType === 'single'
+                  ? 'Single licenses are for one domain. Upgrade to School or Enterprise for multi-domain deployment.'
+                  : 'Yes, your license includes multi-domain deployment rights.'}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-2 text-gray-900">
+                Do I get updates?
+              </h3>
+              <p className="text-gray-600">
+                Yes, all licenses include updates. Core and Monthly
+                subscriptions get 1 year of updates. School and Enterprise
+                licenses get lifetime updates.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-2 text-gray-900">
+                What if I need custom features?
+              </h3>
+              <p className="text-gray-600">
+                Enterprise licenses include custom development support. For
+                other licenses, contact us for custom development quotes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

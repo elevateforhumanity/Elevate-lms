@@ -1,0 +1,5 @@
+DOWNLOAD HERO IMAGE:
+1. Visit: https://www.pexels.com/search/diverse%20students%20training/
+2. Download any high-quality image (1600px+ wide)
+3. Save as: efh-hero.jpg, efh-hero@2x.jpg, efh-hero@3x.jpg
+4. Or run: bash scripts/download-stock-images.sh

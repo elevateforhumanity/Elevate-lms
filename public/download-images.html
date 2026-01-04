@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download Stock Images - Elevate for Humanity</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f3f4f6;
+      }
+      h1 {
+        color: #1e40af;
+      }
+      .image-card {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      .image-card h3 {
+        margin-top: 0;
+        color: #1f2937;
+      }
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 15px;
+        margin: 15px 0;
+      }
+      .image-item {
+        border: 2px solid #e5e7eb;
+        border-radius: 4px;
+        padding: 10px;
+      }
+      .image-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+      .btn {
+        display: inline-block;
+        background: #2563eb;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        margin: 5px;
+      }
+      .btn:hover {
+        background: #1d4ed8;
+      }
+      .filename {
+        font-family: monospace;
+        background: #f3f4f6;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .priority {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .priority-high {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      .instructions {
+        background: #dbeafe;
+        border-left: 4px solid #2563eb;
+        padding: 15px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📸 Download Stock Images for Elevate</h1>
+
+    <div class="instructions">
+      <h3>Quick Instructions:</h3>
+      <ol>
+        <li>Click "View on Pexels" for each image</li>
+        <li>Click the green "Free Download" button</li>
+        <li>Choose "Original" or "Large" size</li>
+        <li>Save with the exact filename shown below</li>
+        <li>Place in the correct folder</li>
+      </ol>
+    </div>
+
+    <!-- Hero Banner -->
+    <div class="image-card">
+      <h3>
+        🎓 Hero Banner <span class="priority priority-high">HIGH PRIORITY</span>
+      </h3>
+      <p>Homepage hero image - diverse students in training</p>
+      <div class="image-grid">
+        <div class="image-item">
+          <p>
+            <strong>Filename:</strong>
+            <span class="filename">efh-hero.jpg</span>
+          </p>
+          <p><strong>Location:</strong> public/hero/</p>
+          <p><strong>Size:</strong> 1600px wide</p>
+          <a
+            href="https://www.pexels.com/search/diverse%20students%20training/"
+            class="btn"
+            target="_blank"
+            >View on Pexels</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- HVAC -->
+    <div class="image-card">
+      <h3>
+        ❄️ HVAC Tech <span class="priority priority-high">HIGH PRIORITY</span>
+      </h3>
+      <div class="image-grid">
+        <div class="image-item">
+          <p><strong>Card Image</strong></p>
+          <p><span class="filename">efh-hvac-card.jpg</span></p>
+          <p>Location: public/images/</p>
+          <a
+            href="https://www.pexels.com/search/hvac%20technician/"
+            class="btn"
+            target="_blank"
+            >View on Pexels</a
+          >
+        </div>
+        <div class="image-item">
+          <p><strong>Hero Image</strong></p>
+          <p><span class="filename">efh-hvac-hero.jpg</span></p>
+          <p>Location: public/images/</p>
+          <a
+            href="https://www.pexels.com/search/air%20conditioning/"
+            class="btn"
+            target="_blank"
+            >View on Pexels</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Welding -->
+    <div class="image-card">
+      <h3>
+        🔥 Welding <span class="priority priority-high">HIGH PRIORITY</span>
+      </h3>
+      <div class="image-grid">
+        <div class="image-item">
+          <p><strong>Card Image</strong></p>
+          <p><span class="filename">efh-welding-card.jpg</span></p>
+          <p>Location: public/images/</p>
+          <a
+            href="https://www.pexels.com/search/welding/"
+            class="btn"
+            target="_blank"
+            >View on Pexels</a
+          >
+        </div>
+        <div class="image-item">
+          <p><strong>Hero Image</strong></p>
+          <p><span class="filename">efh-welding-hero.jpg</span></p>
+          <p>Location: public/images/</p>
+          <a
+            href="https://www.pexels.com/search/welder/"
+            class="btn"
+            target="_blank"
+            >View on Pexels</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- CDL -->
+    <div class="image-card">
+      <h3>
+        🚛 CDL/Truck Driving
+        <span class="priority priority-high">HIGH PRIORITY</span>
+      </h3>
+      <div class="image-grid">
+        <div class="image-item">
+          <p><strong>Card Image</strong></p>
+          <p><span class="filename">efh-cdl-card.jpg</span></p>
+          <p>Location: public/images/</p>
+          <a
+            href="https://www.pexels.com/search/truck%20driver/"
+            class="btn"
+            target="_blank"
+            >View on Pexels</a
+          >
+        </div>
+        <div class="image-item">
+          <p><strong>Hero Image</strong></p>
+          <p><span class="filename">efh-cdl-hero.jpg</span></p>
+          <p>Location: public/images/</p>
+          <a
+            href="https://www.pexels.com/search/semi%20truck/"
+            class="btn"
+            target="_blank"
+            >View on Pexels</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Medical Assistant -->
+    <div class="image-card">
+      <h3>💉 Medical Assistant</h3>
+      <div class="image-grid">
+        <div class="image-item">
+          <p><strong>Card Image</strong></p>
+          <p><span class="filename">efh-medical-assistant-card.jpg</span></p>
+          <p>Location: public/images/</p>
+          <a
+            href="https://www.pexels.com/search/medical%20assistant/"
+            class="btn"
+            target="_blank"
+            >View on Pexels</a
+          >
+        </div>
+        <div class="image-item">
+          <p><strong>Hero Image</strong></p>
+          <p><span class="filename">efh-medical-assistant-hero.jpg</span></p>
+          <p>Location: public/images/</p>
+          <a
+            href="https://www.pexels.com/search/healthcare%20worker/"
+            class="btn"
+            target="_blank"
+            >View on Pexels</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Nail Tech -->
+    <div class="image-card">
+      <h3>💅 Nail Technology</h3>
+      <div class="image-grid">
+        <div class="image-item">
+          <p><strong>Card Image</strong></p>
+          <p><span class="filename">efh-nail-tech-card.jpg</span></p>
+          <p>Location: public/images/</p>
+          <a
+            href="https://www.pexels.com/search/nail%20technician/"
+            class="btn"
+            target="_blank"
+            >View on Pexels</a
+          >
+        </div>
+        <div class="image-item">
+          <p><strong>Hero Image</strong></p>
+          <p><span class="filename">efh-nail-tech-hero.jpg</span></p>
+          <p>Location: public/images/</p>
+          <a
+            href="https://www.pexels.com/search/manicure/"
+            class="btn"
+            target="_blank"
+            >View on Pexels</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <h3>✅ After Downloading:</h3>
+      <ol>
+        <li>
+          Compress images at
+          <a href="https://tinypng.com" target="_blank">TinyPNG.com</a>
+        </li>
+        <li>Verify filenames match exactly</li>
+        <li>Place in correct folders</li>
+        <li>Test on site</li>
+      </ol>
+      <p><strong>Estimated Time:</strong> 30-45 minutes for all images</p>
+    </div>
+
+    <div
+      style="
+        text-align: center;
+        margin: 40px 0;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+      "
+    >
+      <h3>Need Help?</h3>
+      <p>Check the guides in each folder:</p>
+      <ul style="list-style: none; padding: 0">
+        <li>📁 public/hero/HERO_IMAGES.md</li>
+        <li>📁 public/images/DOWNLOAD_IMAGES.md</li>
+        <li>📁 MEDIA_ASSETS_FIX_SUMMARY.md</li>
+      </ul>
+    </div>
+  </body>
+</html>

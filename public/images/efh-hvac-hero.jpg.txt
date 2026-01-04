@@ -1,0 +1,14 @@
+PLACEHOLDER IMAGE NEEDED
+
+Program: hvac
+Type: Hero Image
+Dimensions: 1600x900px (16:9)
+Format: JPG
+File Size: <200KB
+Content: hvac training facility or equipment
+
+Download from:
+- Pexels: https://www.pexels.com/search/hvac/
+- Unsplash: https://unsplash.com/s/photos/hvac
+
+Save as: efh-hvac-hero.jpg

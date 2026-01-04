@@ -1,0 +1,31 @@
+import { NextResponse } from 'next/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { sendProductRejectionEmail } from '@/lib/email/resend';
+import { createClient } from '@/lib/supabase/server';
+import { requireAdmin } from '@/lib/auth';
+import { toError, toErrorMessage } from '@/lib/safe';
+
+export async function POST(req: Request) {
+  try {
+    await requireAdmin();
+
+    const supabase = await createClient();
+    const { productId, reason } = await req.json();
+
+    const { error } = await supabase
+      .from('marketplace_products')
+      .update({
+        status: 'rejected',
+        rejection_reason: reason || 'Does not meet marketplace standards',
+      })
+      .eq('id', productId);
+
+    if (error) throw error;
+
+    return NextResponse.json({ success: true });
+  } catch (err: unknown) {
+    return NextResponse.json({ err: toErrorMessage(err) }, { status: 500 });
+  }
+}

@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Individual Employment Plans (IEP) - DOL/DWD Compliance</title>
+    <meta
+      name="description"
+      content="Create and manage Individual Employment Plans for federal workforce development compliance"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="scripts/efh-universal.v2.2.js"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Navigation Header -->
+    <nav
+      role="navigation"
+      class="bg-white border-b border-gray-200 sticky top-0 z-50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="compliance.html" class="flex items-center">
+              <i
+                data-lucide="arrow-left"
+                class="h-5 w-5 mr-2 text-gray-600"
+              ></i>
+              <span class="text-gray-600">Back to Compliance Portal</span>
+            </a>
+          </div>
+          <div class="flex items-center">
+            <h1 class="text-xl font-bold text-gray-900">
+              Individual Employment Plans
+            </h1>
+          </div>
+          <div class="flex items-center">
+            <div id="account-widget"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <!-- Page Header -->
+      <div class="mb-8">
+        <div
+          class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-6 text-white"
+        >
+          <h2 class="text-2xl font-bold mb-2">
+            Individual Employment Plans (IEP)
+          </h2>
+          <p class="opacity-90">
+            Federal requirement for workforce development program participants
+          </p>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="total-ieps">247</div>
+              <div class="text-sm opacity-90">Total IEPs</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="pending-approval">18</div>
+              <div class="text-sm opacity-90">Pending Approval</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="approved-ieps">229</div>
+              <div class="text-sm opacity-90">Approved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex justify-between items-center mb-6">
+        <div class="flex space-x-4">
+          <button
+            type="button"
+            onclick="showCreateIEPForm()"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 flex items-center"
+          >
+            <i data-lucide="plus" class="h-4 w-4 mr-2"></i>
+            Create New IEP
+          </button>
+          <button
+            type="button"
+            onclick="exportIEPs()"
+            class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 flex items-center"
+          >
+            <i data-lucide="download" class="h-4 w-4 mr-2"></i>
+            Export Report
+          </button>
+        </div>
+        <div class="flex space-x-2">
+          <select
+            id="status-filter"
+            onchange="filterIEPs()"
+            class="border rounded px-3 py-2"
+          >
+            <option value="">All Status</option>
+            <option value="draft">Draft</option>
+            <option value="pending">Pending Approval</option>
+            <option value="approved">Approved</option>
+            <option value="active">Active</option>
+          </select>
+          <input
+            type="text"
+            id="search-ieps"
+            placeholder="Search participants..."
+            class="border rounded px-3 py-2"
+            onkeyup="searchIEPs()"
+          />
+        </div>
+      </div>
+
+      <!-- IEP List -->
+      <div class="bg-white rounded-lg border">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Participant
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Program
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Employment Goal
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Status
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Created
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              id="iep-table-body"
+              class="bg-white divide-y divide-gray-200"
+            >
+              <!-- IEP records will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Create IEP Modal -->
+      <div
+        id="create-iep-modal"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50"
+      >
+        <div class="flex items-center justify-center min-h-screen p-4">
+          <div
+            class="bg-white rounded-lg max-w-2xl w-full max-h-screen overflow-y-auto"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">
+                  Create Individual Employment Plan
+                </h3>
+                <button
+                  type="button"
+                  onclick="hideCreateIEPForm()"
+                  class="text-gray-400 hover:text-gray-600"
+                  aria-label="Action button"
+                >
+                  <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+              </div>
+
+              <form id="iep-form" onsubmit="createIEP(event)">
+                <div class="space-y-4">
+                  <!-- Participant Information -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Participant Information
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Participant Name</label
+                        >
+                        <input
+                          type="text"
+                          aria-label="text input"
+                          name="participant_name"
+                          required
+                          class="w-full border rounded px-3 py-2"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Program</label
+                        >
+                        <select
+                          name="program_slug"
+                          required
+                          class="w-full border rounded px-3 py-2"
+                        >
+                          <option value="">Select Program</option>
+                          <option value="wio-it-support">WIO IT Support</option>
+                          <option value="wex-manufacturing">
+                            WEX Manufacturing
+                          </option>
+                          <option value="wrg-healthcare">WRG Healthcare</option>
+                          <option value="ojt-construction">
+                            OJT Construction
+                          </option>
+                          <option value="etpl-data-science">
+                            ETPL Data Science
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Employment Goal -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Employment Goal
+                    </h4>
+                    <textarea
+                      name="employment_goal"
+                      rows="3"
+                      class="w-full border rounded px-3 py-2"
+                      placeholder="Describe the participant's employment goal..."
+                    ></textarea>
+                  </div>
+
+                  <!-- Barrier Assessment -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Barrier Assessment
+                    </h4>
+                    <div class="space-y-3">
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="barriers"
+                            value="transportation"
+                            class="mr-2"
+                          />
+                          Transportation barriers
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="barriers"
+                            value="childcare"
+                            class="mr-2"
+                          />
+                          Childcare needs
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="barriers"
+                            value="education"
+                            class="mr-2"
+                          />
+                          Educational gaps
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="barriers"
+                            value="skills"
+                            class="mr-2"
+                          />
+                          Skills deficits
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="barriers"
+                            value="other"
+                            class="mr-2"
+                          />
+                          Other barriers
+                        </label>
+                      </div>
+                      <textarea
+                        name="barrier_details"
+                        rows="2"
+                        class="w-full border rounded px-3 py-2"
+                        placeholder="Additional barrier details..."
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Services Needed -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Services Needed
+                    </h4>
+                    <div class="space-y-3">
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="services"
+                            value="career_counseling"
+                            class="mr-2"
+                          />
+                          Career counseling
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="services"
+                            value="skills_training"
+                            class="mr-2"
+                          />
+                          Skills training
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="services"
+                            value="job_placement"
+                            class="mr-2"
+                          />
+                          Job placement assistance
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="services"
+                            value="support_services"
+                            class="mr-2"
+                          />
+                          Support services
+                        </label>
+                      </div>
+                      <div>
+                        <label class="flex items-center">
+                          <input
+                            type="checkbox"
+                            aria-label="checkbox input"
+                            name="services"
+                            value="follow_up"
+                            class="mr-2"
+                          />
+                          Follow-up services
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Timeline -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">Timeline</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Start Date</label
+                        >
+                        <input
+                          type="date"
+                          aria-label="date input"
+                          name="start_date"
+                          class="w-full border rounded px-3 py-2"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Target Completion</label
+                        >
+                        <input
+                          type="date"
+                          aria-label="date input"
+                          name="target_completion"
+                          class="w-full border rounded px-3 py-2"
+                        />
+                      </div>
+                    </div>
+                    <div class="mt-3">
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        >Milestones</label
+                      >
+                      <textarea
+                        name="milestones"
+                        rows="2"
+                        class="w-full border rounded px-3 py-2"
+                        placeholder="Key milestones and checkpoints..."
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex justify-end space-x-3 mt-6">
+                  <button
+                    type="button"
+                    onclick="hideCreateIEPForm()"
+                    class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                  >
+                    Create IEP
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // IEP Management Functions
+      async function loadIEPs() {
+        try {
+          const response = await fetch('/api/compliance/iep');
+          const data = await response.json();
+          displayIEPs(data.ieps || []);
+        } catch (error) {
+          console.error('Error loading IEPs:', error);
+        }
+      }
+
+      function displayIEPs(ieps) {
+        const tbody = document.getElementById('iep-table-body');
+        tbody.innerHTML = '';
+
+        ieps.forEach((iep) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${iep.participant_name}</div>
+                        <div class="text-sm text-gray-500">${iep.user_id}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${iep.program_slug}</div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="text-sm text-gray-900">${iep.employment_goal || 'Not specified'}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(iep.status)}">
+                            ${iep.status}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${new Date(iep.created_at).toLocaleDateString()}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button type="button" onclick="viewIEP('${iep.id}')" class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                        <button type="button" onclick="editIEP('${iep.id}')" class="text-green-600 hover:text-green-900 mr-3">Edit</button>
+                        ${iep.status === 'draft' ? `<button type="button" onclick="approveIEP('${iep.id}')" class="text-purple-600 hover:text-purple-900">Approve</button>` : ''}
+                    </td>
+                `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function getStatusColor(status) {
+        switch (status) {
+          case 'draft':
+            return 'bg-gray-100 text-gray-800';
+          case 'pending':
+            return 'bg-yellow-100 text-yellow-800';
+          case 'approved':
+            return 'bg-green-100 text-green-800';
+          case 'active':
+            return 'bg-blue-100 text-blue-800';
+          default:
+            return 'bg-gray-100 text-gray-800';
+        }
+      }
+
+      function showCreateIEPForm() {
+        document.getElementById('create-iep-modal').classList.remove('hidden');
+      }
+
+      function hideCreateIEPForm() {
+        document.getElementById('create-iep-modal').classList.add('hidden');
+        document.getElementById('iep-form').reset();
+      }
+
+      async function createIEP(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        // Collect barriers and services
+        const barriers = Array.from(formData.getAll('barriers'));
+        const services = Array.from(formData.getAll('services'));
+
+        const iepData = {
+          user_id: 'system', // In real implementation, get from authenticated user
+          participant_name: formData.get('participant_name'),
+          program_slug: formData.get('program_slug'),
+          employment_goal: formData.get('employment_goal'),
+          barrier_assessment: {
+            barriers: barriers,
+            details: formData.get('barrier_details'),
+          },
+          services_needed: services,
+          timeline: {
+            start_date: formData.get('start_date'),
+            target_completion: formData.get('target_completion'),
+            milestones: formData.get('milestones'),
+          },
+        };
+
+        try {
+          const response = await fetch('/api/compliance/iep', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(iepData),
+          });
+
+          if (response.ok) {
+            hideCreateIEPForm();
+            loadIEPs();
+            alert('IEP created successfully!');
+          } else {
+            alert('Error creating IEP. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error creating IEP:', error);
+          alert('Error creating IEP. Please try again.');
+        }
+      }
+
+      async function approveIEP(iepId) {
+        if (!confirm('Are you sure you want to approve this IEP?')) return;
+
+        try {
+          const response = await fetch(`/api/compliance/iep/${iepId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              status: 'approved',
+              approved_by: 'current_user', // In real implementation, get from auth
+            }),
+          });
+
+          if (response.ok) {
+            loadIEPs();
+            alert('IEP approved successfully!');
+          } else {
+            alert('Error approving IEP. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error approving IEP:', error);
+          alert('Error approving IEP. Please try again.');
+        }
+      }
+
+      function viewIEP(iepId) {
+        // In real implementation, show detailed view modal
+        alert(`Viewing IEP: ${iepId}`);
+      }
+
+      function editIEP(iepId) {
+        // In real implementation, open edit form
+        alert(`Editing IEP: ${iepId}`);
+      }
+
+      function filterIEPs() {
+        const status = document.getElementById('status-filter').value;
+        // Filter and reload IEPs based on status
+        loadIEPs();
+      }
+
+      function searchIEPs() {
+        const searchTerm = document.getElementById('search-ieps').value;
+        // Search and filter IEPs
+        loadIEPs();
+      }
+
+      function exportIEPs() {
+        // Export IEPs to CSV or PDF
+        alert('Exporting IEPs...');
+      }
+
+      // Initialize page
+      document.addEventListener('DOMContentLoaded', function () {
+        loadIEPs();
+      });
+    </script>
+  </body>
+</html>

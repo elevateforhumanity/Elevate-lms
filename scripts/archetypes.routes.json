@@ -1,0 +1,61 @@
+{
+  "archetypes": {
+    "program_training_detail": {
+      "routeMatchers": ["^/programs(/.*)?$", "^/courses(/.*)?$", "^/lms(/.*)?$", "^/apprenticeships(/.*)?$"],
+      "requiresServerAuth": false,
+      "requiresRoleGate": false,
+      "mustIncludeTokens": []
+    },
+    "application_enrollment_flow": {
+      "routeMatchers": ["^/apply(/.*)?$", "^/enroll(/.*)?$", "^/onboarding(/.*)?$", "^/application-success$", "^/checkout(/.*)?$", "^/payment(/.*)?$", "^/pay$", "^/test-enrollment$", "^/test-stripe-iframe$"],
+      "requiresServerAuth": false,
+      "requiresRoleGate": false,
+      "mustIncludeTokens": []
+    },
+    "dashboard_portal": {
+      "routeMatchers": ["^/dashboard(s)?(/.*)?$", "^/portal(s)?(/.*)?$", "^/student(/.*)?$", "^/student-portal$", "^/instructor(/.*)?$", "^/program-holder(/.*)?$", "^/apprentice(/.*)?$", "^/delegate(/.*)?$", "^/workforce-board(/.*)?$", "^/staff-portal(/.*)?$", "^/org(/.*)?$", "^/board(/.*)?$", "^/creator(/.*)?$", "^/cm(/.*)?$", "^/employee(/.*)?$", "^/educatorhub$", "^/calendar$", "^/chat$", "^/approvals$", "^/partner(/.*)?$", "^/parent-portal$", "^/orientation(/.*)?$", "^/usermanagement$", "^/file-manager$", "^/forms$", "^/forums$", "^/groups$", "^/leaderboard$", "^/learners$", "^/lessons(/.*)?$", "^/mentor(/.*)?$", "^/messages$", "^/metrics$"],
+      "requiresServerAuth": true,
+      "requiresRoleGate": true,
+      "mustIncludeTokens": []
+    },
+    "directory_listing_search": {
+      "routeMatchers": ["^/directory(/.*)?$", "^/search(/.*)?$", "^/all-pages$", "^/opportunities(/.*)?$"],
+      "requiresServerAuth": false,
+      "requiresRoleGate": false,
+      "mustIncludeTokens": []
+    },
+    "policy_compliance_legal": {
+      "routeMatchers": ["^/policies(/.*)?$", "^/legal(/.*)?$", "^/privacy(-policy)?$", "^/terms(-of-service)?$", "^/accessibility$", "^/academic-integrity$", "^/accreditation$", "^/ferpa(/.*)?$", "^/cookies$", "^/copyright$", "^/dmca$", "^/consumer-education$", "^/refund(-policy|policy|s)?$", "^/security$", "^/grievance$"],
+      "requiresServerAuth": false,
+      "requiresRoleGate": false,
+      "mustIncludeTokens": []
+    },
+    "partner_employer_agency": {
+      "routeMatchers": ["^/partners(/.*)?$", "^/employers?(/.*)?$", "^/agencies(/.*)?$", "^/shop(/.*)?$", "^/platform(/.*)?$"],
+      "requiresServerAuth": false,
+      "requiresRoleGate": false,
+      "mustIncludeTokens": []
+    },
+    "auth_account_profile": {
+      "routeMatchers": ["^/login$", "^/signup$", "^/register$", "^/account(/.*)?$", "^/profile(/.*)?$", "^/auth(/.*)?$", "^/invite(/.*)?$", "^/admin-login$"],
+      "requiresServerAuth": false,
+      "requiresRoleGate": false
+    },
+    "reporting_admin_ops": {
+      "routeMatchers": ["^/admin(/.*)?$", "^/ops(/.*)?$", "^/reports?(/.*)?$"],
+      "requiresServerAuth": true,
+      "requiresRoleGate": true,
+      "mustIncludeTokens": []
+    },
+    "marketing_informational": {
+      "routeMatchers": ["^/$", "^/enhanced-home$", "^/about(/.*)?$", "^/contact$", "^/impact$", "^/donate$", "^/funding(/.*)?$", "^/fundingimpact$", "^/tax(/.*)?$", "^/tax-filing(/.*)?$", "^/tax-(self-prep|services)$", "^/alumni$", "^/annual-report$", "^/community(/.*)?$", "^/docs(/.*)?$", "^/advising$", "^/solutions(/.*)?$", "^/videos?(/.*)?$", "^/demo(s)?(/.*)?$", "^/supersonic(-fast-cash|-cash|fastcash)?(/.*)?$", "^/urban-build-crew(/.*)?$", "^/urbanbuildcrew$", "^/serene-comfort-care(/.*)?$", "^/serenecomfortcare$", "^/rise(-foundation)?(/.*)?$", "^/blog(/.*)?$", "^/careers?(-.*)?$", "^/career-(center|fair|services)$", "^/booking$", "^/call-now$", "^/compare(-programs)?$", "^/ecosystem$", "^/elevatelearn2earn$", "^/drug-testing(-training)?(/.*)?$", "^/downloads$", "^/email$", "^/news$", "^/next-steps$", "^/notebooklm$", "^/ojt-and-funding$", "^/partner-(application|courses|playbook|with-us)$", "^/pathways$", "^/philanthropy$", "^/pitch-deck$", "^/pricing(/.*)?$", "^/program-finder$", "^/programs-(full|lms)$", "^/receptionist$", "^/reels$", "^/resources$", "^/schedule$", "^/selfish-inc$", "^/share$", "^/sheets$", "^/sites$", "^/slides$", "^/snap-et-partner$", "^/staff$", "^/student-handbook$", "^/students$", "^/study-groups$", "^/success-stories$", "^/support(/.*)?$", "^/syllabi$", "^/team$", "^/thankyou$", "^/training(/.*)?$", "^/training-providers$", "^/transparency$", "^/vita(/.*)?$", "^/volunteer$", "^/webinars$", "^/what-we-(do|offer)$", "^/wioa-eligibility$", "^/workbooks$", "^/workforce-partners$", "^/workone-partner-packet$", "^/equal-opportunity$", "^/events$", "^/faq$", "^/features$", "^/financial-aid(/.*)?$", "^/for(/.*)?$", "^/for-(employers|students)$", "^/founder$", "^/franchise$", "^/getstarted$", "^/government$", "^/grants$", "^/help(/.*)?$", "^/hire-graduates$", "^/how-it-works$", "^/jri$", "^/kingdom-konnect(/.*)?$", "^/kingdomkonnect$", "^/licensing$", "^/marketplace(/.*)?$", "^/media-showcase$", "^/mentorship$", "^/micro-classes$", "^/mobile(-app)?$"],
+      "requiresServerAuth": false,
+      "requiresRoleGate": false
+    },
+    "system_utility_error": {
+      "routeMatchers": ["^/app$", "^/sitemap\\.xml$", "^/sitemap-page$", "^/robots\\.txt$", "^/404$", "^/500$", "^/notfound$", "^/offline$", "^/unauthorized$", "^/status$", "^/app-hub$", "^/ai-chat$", "^/ai-tutor$", "^/aitutor$", "^/cert(/.*)?$", "^/certificates(/.*)?$", "^/credentials$", "^/card$", "^/contracts$", "^/curriculumupload$", "^/create-course$", "^/dev-admin$", "^/pwa-test$", "^/resetpassword$", "^/forgotpassword$", "^/sign(/.*)?$", "^/store(/.*)?$", "^/verify(/.*)?$", "^/verify-credential$", "^/verifycertificate$", "^/verifyemail$"],
+      "requiresServerAuth": false,
+      "requiresRoleGate": false
+    }
+  }
+}

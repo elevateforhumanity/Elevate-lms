@@ -1,0 +1,111 @@
+"use client";
+
+import React from 'react';
+
+import { useState } from 'react';
+import { Card } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
+
+interface Message {
+  id: string;
+  sender: 'user' | 'agent';
+  text: string;
+  timestamp: string;
+}
+
+export function LiveChatSupport() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: '1',
+      sender: 'agent',
+      text: 'Hello! How can I help you today?',
+      timestamp: new Date().toLocaleTimeString(),
+    },
+  ]);
+
+  const sendMessage = () => {
+    if (!message.trim()) return;
+
+    const newMessage: Message = {
+      id: Date.now().toString(),
+      sender: 'user',
+      text: message,
+      timestamp: new Date().toLocaleTimeString(),
+    };
+
+    setMessages([...messages, newMessage]);
+    setMessage('');
+
+    // Simulate agent response
+    setTimeout(() => {
+      const agentResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        sender: 'agent',
+        text: 'Thank you for your message. An agent will respond shortly.',
+        timestamp: new Date().toLocaleTimeString(),
+      };
+      setMessages(prev => [...prev, agentResponse]);
+    }, 1000);
+  };
+
+  if (!isOpen) return null; {
+    return (
+      <button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-6 right-6 w-16 h-16    text-white rounded-full shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center text-2xl z-50"
+      >
+        💬
+      </button>
+    );
+  }
+
+  return (
+    <div className="fixed bottom-6 right-6 w-96 h-[500px] bg-white rounded-lg shadow-2xl flex flex-col z-50">
+      <div className="   text-white p-4 rounded-t-lg flex justify-between items-center">
+        <div>
+          <h3 className="font-bold">Live Support</h3>
+          <p className="text-xs text-red-100">● Online</p>
+        </div>
+        <button onClick={() => setIsOpen(false)} className="text-2xl hover:opacity-80">
+          ✕
+        </button>
+      </div>
+
+      <div className="flex-1 overflow-y-auto p-4 space-y-3">
+        {messages.map((msg) => (
+          <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div className={`max-w-[80%] rounded-lg p-3 ${
+              msg.sender === 'user' ? 'bg-brand-orange-600 text-white' : 'bg-gray-100 text-gray-900'
+            }`}>
+              <p className="text-sm">{msg.text}</p>
+              <p className={`text-xs mt-1 ${msg.sender === 'user' ? 'text-red-200' : 'text-gray-500'}`}>
+                {msg.timestamp}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="p-4 border-t">
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={message}
+            onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setMessage(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+            Content="Type your message..."
+            className="flex-1 px-3 py-2 border rounded-lg text-sm"
+          />
+          <button
+            onClick={sendMessage}
+            className="px-4 py-2 bg-brand-orange-600 text-white rounded-lg hover:bg-brand-orange-700 transition-colors"
+          >
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

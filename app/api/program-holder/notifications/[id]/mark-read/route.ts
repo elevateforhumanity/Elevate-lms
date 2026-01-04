@@ -1,0 +1,38 @@
+import { NextResponse } from 'next/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { createClient } from '@/lib/supabase/server';
+
+export async function POST(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const { error } = await supabase
+    .from('notifications')
+    .update({ read: true, read_at: new Date().toISOString() })
+    .eq('id', id)
+    .eq('user_id', user.id);
+
+  if (error) {
+    return NextResponse.json(
+      { error: 'Failed to mark as read' },
+      { status: 500 }
+    );
+  }
+
+  return NextResponse.redirect(
+    new URL('/program-holder/notifications', req.url)
+  );
+}

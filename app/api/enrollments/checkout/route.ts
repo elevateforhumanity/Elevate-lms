@@ -1,0 +1,204 @@
+export const runtime = 'nodejs';
+export const maxDuration = 60;
+
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import Stripe from 'stripe';
+import { createClient } from '@supabase/supabase-js';
+import { logger } from '@/lib/logger';
+
+const stripeKey = process.env.STRIPE_SECRET_KEY;
+const stripe = stripeKey
+  ? new Stripe(stripeKey, {
+      apiVersion: '2025-10-29.clover',
+    })
+  : null;
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabase =
+  supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
+
+export async function POST(request: NextRequest) {
+  if (!stripe || !supabase) {
+    return NextResponse.json(
+      { error: 'Stripe or Supabase not configured' },
+      { status: 503 }
+    );
+  }
+
+  try {
+    const body = await parseBody<Record<string, unknown>>(request);
+    const { enrollmentId, userId, userEmail, userName } = body;
+
+    if (!enrollmentId || !userId || !userEmail) {
+      return NextResponse.json(
+        { error: 'Missing required fields: enrollmentId, userId, userEmail' },
+        { status: 400 }
+      );
+    }
+
+    // 1. Load enrollment with lock
+    const { data: enrollment, error: enrollmentError } = await supabase
+      .from('enrollments')
+      .select(
+        'id, partner_course_id, payment_status, payment_mode, billing_lock'
+      )
+      .eq('id', enrollmentId)
+      .single();
+
+    if (enrollmentError || !enrollment) {
+      logger.error('Enrollment not found:', enrollmentError);
+      return NextResponse.json(
+        { error: 'Enrollment not found' },
+        { status: 404 }
+      );
+    }
+
+    // 2. Guard rails - must be self-pay partner course
+    if (!enrollment.partner_course_id) {
+      return NextResponse.json(
+        { error: 'This enrollment is not a self-pay partner course' },
+        { status: 400 }
+      );
+    }
+
+    if (enrollment.payment_mode !== 'self_pay') {
+      return NextResponse.json(
+        { error: 'This enrollment is not self-pay' },
+        { status: 400 }
+      );
+    }
+
+    if (enrollment.payment_status === 'paid') {
+      return NextResponse.json(
+        { error: 'This enrollment is already paid' },
+        { status: 400 }
+      );
+    }
+
+    if (enrollment.billing_lock) {
+      return NextResponse.json(
+        { error: 'Payment already in progress' },
+        { status: 400 }
+      );
+    }
+
+    // 3. Load partner course pricing
+    const { data: partnerCourse, error: courseError } = await supabase
+      .from('partner_courses')
+      .select('id, course_name, retail_price_cents, stripe_price_id')
+      .eq('id', enrollment.partner_course_id)
+      .single();
+
+    if (courseError || !partnerCourse) {
+      logger.error('Partner course not found:', courseError);
+      return NextResponse.json(
+        { error: 'Partner course not found' },
+        { status: 404 }
+      );
+    }
+
+    if (
+      !partnerCourse.retail_price_cents ||
+      partnerCourse.retail_price_cents <= 0
+    ) {
+      return NextResponse.json(
+        { error: 'Invalid course pricing' },
+        { status: 400 }
+      );
+    }
+
+    // 4. Initiate billing lock (call existing RPC)
+    const { data: lockResult, error: lockError } = await supabase.rpc(
+      'initiate_enrollment_payment',
+      {
+        p_enrollment_id: enrollmentId,
+        p_payment_mode: 'self_pay',
+        p_amount_cents: partnerCourse.retail_price_cents,
+      }
+    );
+
+    if (lockError) {
+      logger.error('Failed to initiate payment:', lockError);
+      return NextResponse.json(
+        { error: 'Failed to initiate payment' },
+        { status: 500 }
+      );
+    }
+
+    // 5. Create Stripe Checkout Session
+    const sessionParams: Stripe.Checkout.SessionCreateParams = {
+      mode: 'payment',
+      payment_method_types: ['card'],
+      customer_email: userEmail,
+      client_reference_id: enrollmentId,
+      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/enrollment/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/enrollment/canceled`,
+      metadata: {
+        enrollment_id: enrollmentId,
+        user_id: userId,
+        partner_course_id: partnerCourse.id,
+        payment_type: 'enrollment',
+      },
+      line_items: [],
+    };
+
+    // Use stripe_price_id if available, otherwise create price on the fly
+    if (partnerCourse.stripe_price_id) {
+      sessionParams.line_items = [
+        {
+          price: partnerCourse.stripe_price_id,
+          quantity: 1,
+        },
+      ];
+    } else {
+      sessionParams.line_items = [
+        {
+          price_data: {
+            currency: 'usd',
+            unit_amount: partnerCourse.retail_price_cents,
+            product_data: {
+              name: partnerCourse.course_name,
+              description: 'Partner course enrollment',
+            },
+          },
+          quantity: 1,
+        },
+      ];
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionParams);
+
+    // 6. Update enrollment with session ID
+    await supabase
+      .from('enrollments')
+      .update({
+        stripe_checkout_session_id: session.id,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', enrollmentId);
+
+    logger.info(`Created checkout session for enrollment: ${enrollmentId}`);
+
+    return NextResponse.json({
+      sessionId: session.id,
+      url: session.url,
+    });
+  } catch (error: unknown) {
+    logger.error(
+      'Error creating enrollment checkout:',
+      error instanceof Error ? error : new Error(String(error))
+    );
+    return NextResponse.json(
+      {
+        error:
+          error instanceof Error
+            ? error.message
+            : 'Failed to create checkout session',
+      },
+      { status: 500 }
+    );
+  }
+}

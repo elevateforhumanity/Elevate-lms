@@ -1,0 +1,373 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Documents to Bring - VITA Tax Help | Rise Up Foundation',
+  description:
+    'Complete checklist of documents needed for free VITA tax preparation. Bring these items to your appointment.',
+  keywords: [
+    'VITA documents',
+    'tax documents checklist',
+    'what to bring tax appointment',
+    'VITA requirements',
+  ],
+  alternates: {
+    canonical:
+      'https://elevateforhumanity.org/tax/rise-up-foundation/documents',
+  },
+  openGraph: {
+    title: 'Documents to Bring - VITA Tax Help',
+    description:
+      'Complete checklist of documents needed for your free tax appointment.',
+    url: 'https://elevateforhumanity.org/tax/rise-up-foundation/documents',
+    type: 'website',
+  },
+};
+
+export default function DocumentsPage() {
+  return (
+    <div className="mx-auto max-w-4xl px-4 py-10">
+      <div className="mb-6">
+        <Link
+          href="/tax/rise-up-foundation"
+          className="text-sm text-gray-600 hover:text-gray-900"
+        >
+          ← Back to Rise Up Foundation
+        </Link>
+      </div>
+
+      <h1 className="text-4xl font-bold">Documents to Bring</h1>
+      <p className="mt-3 text-lg text-gray-600">
+        Complete checklist of everything you need for your free VITA tax
+        appointment.
+      </p>
+
+      <section className="mt-8 rounded-2xl bg-yellow-50 border-l-4 border-yellow-400 p-6">
+        <h2 className="font-semibold text-lg mb-2">Important</h2>
+        <p className="text-gray-700">
+          Please bring ALL required documents to your appointment. Missing
+          documents may delay your tax preparation or require you to reschedule.
+        </p>
+      </section>
+
+      <section className="mt-8 rounded-2xl border bg-white p-8">
+        <h2 className="text-2xl font-bold mb-6">
+          Required Documents (Everyone)
+        </h2>
+
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+              <span className="text-brand-green-600">✓</span>
+              Identification
+            </h3>
+            <ul className="space-y-2 pl-6">
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Government-issued photo ID for you (and spouse if filing
+                  jointly)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Social Security cards or ITIN letters for everyone on the
+                  return
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Birth dates for everyone on the return
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+              <span className="text-brand-green-600">✓</span>
+              Income Documents
+            </h3>
+            <ul className="space-y-2 pl-6">
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  W-2 forms from ALL employers
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  1099-INT (interest income)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  1099-DIV (dividend income)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  1099-G (unemployment compensation, state tax refund)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  1099-R (retirement/pension income)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  SSA-1099 (Social Security benefits)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Any other income statements
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+              <span className="text-brand-green-600">✓</span>
+              Bank Information
+            </h3>
+            <ul className="space-y-2 pl-6">
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Bank account number and routing number for direct deposit
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Voided check or bank letter (optional but helpful)
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+              <span className="text-brand-green-600">✓</span>
+              Prior Year Return
+            </h3>
+            <ul className="space-y-2 pl-6">
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Copy of last year's federal and state tax returns (if
+                  available)
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-2xl border bg-white p-8">
+        <h2 className="text-2xl font-bold mb-6">
+          Additional Documents (If Applicable)
+        </h2>
+
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-semibold text-lg mb-3">
+              If You Have Children or Dependents
+            </h3>
+            <ul className="space-y-2 pl-6">
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Childcare provider information (name, address, tax ID or SSN)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">Childcare expenses paid</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Form 2441 (if you received dependent care benefits from
+                  employer)
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-3">
+              If You Paid for Education
+            </h3>
+            <ul className="space-y-2 pl-6">
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Form 1098-T (tuition statement)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Form 1098-E (student loan interest)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Education expense receipts
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-3">If You Own a Home</h3>
+            <ul className="space-y-2 pl-6">
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Form 1098 (mortgage interest statement)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">Property tax receipts</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-3">
+              If You Had Health Insurance
+            </h3>
+            <ul className="space-y-2 pl-6">
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Form 1095-A (Health Insurance Marketplace statement)
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Form 1095-B or 1095-C (employer or government health coverage)
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-3">
+              If You Made Charitable Donations
+            </h3>
+            <ul className="space-y-2 pl-6">
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Receipts for cash donations
+                </span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-gray-400">•</span>
+                <span className="text-gray-700">
+                  Written acknowledgment for donations over $250
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-2xl border bg-white p-8">
+        <h2 className="text-2xl font-bold mb-4">Preparation Tips</h2>
+        <div className="space-y-3">
+          <div className="flex items-start gap-3">
+            <span className="text-brand-green-600 font-bold">✓</span>
+            <p className="text-gray-700">
+              Organize documents by category before your appointment
+            </p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-brand-green-600 font-bold">✓</span>
+            <p className="text-gray-700">
+              Make copies of important documents for your records
+            </p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-brand-green-600 font-bold">✓</span>
+            <p className="text-gray-700">
+              Bring a folder or envelope to keep everything together
+            </p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-brand-green-600 font-bold">✓</span>
+            <p className="text-gray-700">
+              Double-check that all Social Security numbers are correct
+            </p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-brand-green-600 font-bold">✓</span>
+            <p className="text-gray-700">
+              Call ahead if you're missing any documents - we can advise
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-2xl bg-green-50 border-l-4 border-brand-green-600 p-6">
+        <h2 className="text-xl font-bold mb-3">Questions About Documents?</h2>
+        <p className="text-gray-700 mb-6">
+          Not sure if you have everything? Call us and we'll help you prepare
+          for your appointment.
+        </p>
+        <div className="flex flex-wrap gap-4">
+          <a
+            href="tel:3173143757"
+            className="px-6 py-3 rounded-lg bg-brand-green-600 text-white font-semibold hover:bg-green-700 transition"
+          >
+            Call 317-314-3757
+          </a>
+          <Link
+            href="/tax/rise-up-foundation/free-tax-help"
+            className="px-6 py-3 rounded-lg border-2 border-brand-green-600 text-brand-green-600 font-semibold hover:bg-green-50 transition"
+          >
+            Schedule Appointment
+          </Link>
+          <Link
+            href="/tax/rise-up-foundation/faq"
+            className="px-6 py-3 rounded-lg border font-semibold hover:bg-gray-50 transition"
+          >
+            View FAQ
+          </Link>
+        </div>
+      </section>
+
+      <section className="mt-8 rounded-2xl bg-blue-50 border-l-4 border-blue-400 p-6">
+        <h3 className="font-semibold text-gray-900">Printable Checklist</h3>
+        <p className="mt-2 text-sm text-gray-700">
+          Download and print the IRS VITA intake checklist:{' '}
+          <a
+            href="https://www.irs.gov/pub/irs-pdf/f13614c.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-brand-blue-600 hover:underline"
+          >
+            Form 13614-C (PDF)
+          </a>
+        </p>
+      </section>
+    </div>
+  );
+}

@@ -1,0 +1,110 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+// app/api/exams/start/route.ts
+import { NextResponse } from 'next/server';
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import { requireAuth } from '@/lib/auth/getSession';
+import { createSupabaseClient } from '@/lib/supabase-api';
+import { selectQuestionsForExamAttempt } from '@/lib/assessments/selectQuestions';
+import { getProctoringLaunchUrl } from '@/lib/integrations/proctoring';
+
+export async function POST(request: Request) {
+  const supabase = createSupabaseClient();
+  const session = await requireAuth();
+  const { examId } = await request.json();
+
+  if (!examId) {
+    return NextResponse.json({ error: 'examId is required' }, { status: 400 });
+  }
+
+  const { data: exam, error: examError } = await supabase
+    .from('exams')
+    .select('*')
+    .eq('id', examId)
+    .single();
+
+  if (examError || !exam) {
+    return NextResponse.json({ error: 'Exam not found' }, { status: 404 });
+  }
+
+  const studentId = (session as string).userId;
+
+  // Check attempts
+  const { count } = await supabase
+    .from('exam_attempts')
+    .select('*', { count: 'exact', head: true })
+    .eq('exam_id', examId)
+    .eq('student_id', studentId);
+
+  const previousAttempts = count || 0;
+
+  if (previousAttempts >= exam.max_attempts) {
+    return NextResponse.json(
+      { error: 'Maximum attempts reached for this exam' },
+      { status: 403 }
+    );
+  }
+
+  const ip = request.headers.get('x-forwarded-for') || 'unknown';
+  const ua = request.headers.get('user-agent') || 'unknown';
+
+  const questions = await selectQuestionsForExamAttempt(examId, exam.adaptive);
+
+  // Create attempt
+  const { data: attempt, error: attemptError } = await supabase
+    .from('exam_attempts')
+    .insert({
+      exam_id: examId,
+      student_id: studentId,
+      status: 'in_progress',
+      attempt_number: previousAttempts + 1,
+      ip_address: ip,
+      user_agent: ua,
+    })
+    .select()
+    .single();
+
+  if (attemptError || !attempt) {
+    return NextResponse.json(
+      { error: 'Failed to create attempt' },
+      { status: 500 }
+    );
+  }
+
+  // Create question rows
+  const questionRows = questions.map((q, index) => ({
+    attempt_id: attempt.id,
+    question_id: q.id,
+    position: index + 1,
+    shown_difficulty: q.difficulty,
+  }));
+
+  await supabase.from('exam_attempt_questions').insert(questionRows);
+
+  // Return questions without correct answers to the client
+  const payload = questions.map((q, index) => ({
+    id: questionRows[index].question_id,
+    position: index + 1,
+    type: q.type,
+    prompt: q.prompt,
+    choices: q.choices,
+  }));
+
+  const proctoringUrl =
+    exam.proctoring_required && exam.proctoring_provider
+      ? getProctoringLaunchUrl({
+          provider: exam.proctoring_provider as string,
+          examId: exam.id,
+          attemptId: attempt.id,
+          studentId,
+        })
+      : null;
+
+  return NextResponse.json({
+    attemptId: attempt.id,
+    timeLimitMinutes: exam.time_limit_minutes,
+    questions: payload,
+    proctoringUrl,
+  });
+}

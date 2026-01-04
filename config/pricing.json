@@ -1,0 +1,152 @@
+{
+  "currency": "USD",
+  "tiers": [
+    {
+      "key": "single-org",
+      "label": "Single Organization License",
+      "price": 50000,
+      "summary": "Full multi-app Elevate workforce platform for one workforce board, college, or training provider.",
+      "highlights": [
+        "Learner, Provider, Board & Admin apps included",
+        "Branding & configuration for your organization",
+        "WIOA/ETPL/apprenticeship-aligned program flows",
+        "Deploy on your cloud or ours"
+      ],
+      "cta": { "label": "Talk about single-org license", "href": "/contact?topic=license-single" },
+      "badge": "Most Popular",
+      "perLearnerAt": 250
+    },
+    {
+      "key": "white-label",
+      "label": "White-Label Partner Suite",
+      "price": 100000,
+      "summary": "Launch your own branded workforce ecosystem to serve multiple schools, providers, or regions.",
+      "highlights": [
+        "Multi-instance or multi-tenant ready",
+        "Separate Learner / Provider / Board apps",
+        "Territory & partner controls by contract",
+        "Designed for grant-funded ecosystems"
+      ],
+      "cta": { "label": "Explore white-label options", "href": "/contact?topic=license-whitelabel" },
+      "accent": true,
+      "perLearnerAt": 700
+    },
+    {
+      "key": "acquisition",
+      "label": "Full Multi-App Codebase Acquisition",
+      "price": 500000,
+      "summary": "Acquire the entire Elevate multi-app codebase and operate your own version at scale.",
+      "highlights": [
+        "Complete monorepo & app suite",
+        "Grant Autopilot + VITA modules included",
+        "Roadmap freedom for your internal team",
+        "Ideal for large institutions and state-level buyers"
+      ],
+      "cta": { "label": "Discuss acquisition", "href": "/contact?topic=license-acquisition" },
+      "perLearnerAt": 1000
+    }
+  ],
+  "apps": [
+    {
+      "key": "learner-app",
+      "label": "Learner & Student App",
+      "basePrice": 15000,
+      "summary": "Program catalog, onboarding, progress tracking, certificates, and messaging for youth and adult learners.",
+      "exampleLearners": 200,
+      "highlights": [
+        "Program discovery & stacked credentials",
+        "Applications, forms, and checklists",
+        "Notifications and reminders"
+      ]
+    },
+    {
+      "key": "provider-app",
+      "label": "Training Provider / School App",
+      "basePrice": 15000,
+      "summary": "Cohort, attendance, and outcome tracking for CNA schools, barber academies, HVAC/CDL partners, and more.",
+      "exampleLearners": 150,
+      "highlights": [
+        "Program & cohort management",
+        "Rosters, progress, completions",
+        "Documents and credential tracking"
+      ]
+    },
+    {
+      "key": "board-dashboard",
+      "label": "Workforce Board & Funder Dashboard",
+      "basePrice": 20000,
+      "summary": "Organization-wide outcomes, enrollments, and grant-aligned reporting in one place for boards and funders.",
+      "exampleLearners": 400,
+      "highlights": [
+        "Program & ETPL-style views",
+        "Enrollment & completion metrics",
+        "Exportable grant/outcome reports"
+      ]
+    },
+    {
+      "key": "admin-console",
+      "label": "Admin & Operations Console",
+      "basePrice": 12000,
+      "summary": "Internal operations layer for managing users, organizations, approvals, and platform configuration.",
+      "exampleLearners": 200,
+      "highlights": [
+        "User, org, and role management",
+        "Program approvals & publishing",
+        "Settings, automations, and logs"
+      ]
+    },
+    {
+      "key": "grant-autopilot",
+      "label": "Grant Autopilot Workspace",
+      "basePrice": 10000,
+      "summary": "Workspace for grants, deadlines, and AI-assisted drafting and reporting.",
+      "exampleLearners": 200,
+      "highlights": [
+        "Grant intake & tracking",
+        "Deadline & requirement management",
+        "Autopilot hooks for AI drafting"
+      ]
+    },
+    {
+      "key": "vita-module",
+      "label": "Tax & VITA Support Module",
+      "basePrice": 8000,
+      "summary": "Components for VITA-style intake, client workflows, and document handling.",
+      "exampleLearners": 150,
+      "highlights": [
+        "Client intake & document flows",
+        "Client tracking & follow-up",
+        "Configurable to align with VITA processes"
+      ]
+    }
+  ],
+  "addOns": [
+    {
+      "key": "implementation",
+      "label": "Implementation Package",
+      "price": 15000,
+      "summary": "Hands-on deployment, DNS, environment setup, and initial data/branding configuration.",
+      "details": [
+        "Cloud deployment & DNS configuration",
+        "Branding & theme setup",
+        "Admin onboarding & training sessions"
+      ]
+    },
+    {
+      "key": "support",
+      "label": "Support & Updates (Annual)",
+      "price": 10000,
+      "summary": "Priority support, security updates, and guided upgrade windows.",
+      "details": [
+        "Email/Slack support",
+        "Security & maintenance releases",
+        "Guided upgrade assistance"
+      ]
+    }
+  ],
+  "notes": [
+    "Per-learner figures are illustrations based on the sample learner counts shown for year one usage.",
+    "Most partners fund licenses via workforce grants, philanthropy, or innovation/technology budgets.",
+    "Prices shown are one-time license fees unless marked 'Annual'. Taxes and payment terms may apply."
+  ]
+}

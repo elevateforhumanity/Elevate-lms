@@ -1,0 +1,26 @@
+{
+  "name": "Elevate LMS",
+  "short_name": "LMS",
+  "description": "Learning Management System - Access courses, assignments, and study materials",
+  "start_url": "/lms/dashboard?source=pwa",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#7c3aed",
+  "orientation": "portrait-primary",
+  "scope": "/lms/",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["education", "productivity"]
+}

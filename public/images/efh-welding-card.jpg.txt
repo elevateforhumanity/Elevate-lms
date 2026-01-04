@@ -1,0 +1,14 @@
+PLACEHOLDER IMAGE NEEDED
+
+Program: welding
+Type: Card Image
+Dimensions: 1600x900px (16:9)
+Format: JPG
+File Size: <200KB
+Content: Students in welding training
+
+Download from:
+- Pexels: https://www.pexels.com/search/welding%20training/
+- Unsplash: https://unsplash.com/s/photos/welding-training
+
+Save as: efh-welding-card.jpg

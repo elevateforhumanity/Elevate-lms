@@ -1,0 +1,278 @@
+"use client";
+
+import React from 'react';
+
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import Split from 'react-split';
+import FileTree from '@/components/editor/FileTree';
+import CodeEditor from '@/components/editor/CodeEditor';
+import Terminal from '@/components/editor/Terminal';
+import { createClient } from '@/lib/supabase/server';
+
+
+export const dynamic = 'force-dynamic';
+
+// Mock file structure
+const mockFiles = [
+  {
+    name: 'app',
+    path: '/app',
+    type: 'directory' as const,
+    children: [
+      { name: 'page.tsx', path: '/app/page.tsx', type: 'file' as const },
+      { name: 'layout.tsx', path: '/app/layout.tsx', type: 'file' as const },
+    ],
+  },
+  {
+    name: 'components',
+    path: '/components',
+    type: 'directory' as const,
+    children: [
+      {
+        name: 'Header.tsx',
+        path: '/components/Header.tsx',
+        type: 'file' as const,
+      },
+      {
+        name: 'Footer.tsx',
+        path: '/components/Footer.tsx',
+        type: 'file' as const,
+      },
+    ],
+  },
+  {
+    name: 'lib',
+    path: '/lib',
+    type: 'directory' as const,
+    children: [
+      { name: 'utils.ts', path: '/lib/utils.ts', type: 'file' as const },
+    ],
+  },
+  { name: 'package.json', path: '/package.json', type: 'file' as const },
+  { name: 'README.md', path: '/README.md', type: 'file' as const },
+];
+// Mock file contents
+const mockFileContents: Record<string, string> = {
+  '/app/page.tsx': `export default async function HomePage() {
+  const supabase: any = createClient();
+
+  const router = useRouter();
+  useEffect(() => {
+    // Check admin auth
+    fetch('/api/auth/check-admin')
+      .then(res => res.json())
+      .then(data => {
+        if (!data.isAdmin) {
+          router.push('/login?redirect=/admin');
+        }
+      })
+      .catch(() => router.push('/login'));
+  }, [router]);
+  return (
+    <div>
+      {/* Hero Section */}
+      <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/artlist/hero-training-1.jpg"
+          alt="Hero"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Welcome</h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100">Transform your career with free training</p>
+        </div>
+      </section>
+      <h1>Welcome to EFH</h1>
+      <p>Edit this file to see changes</p>
+    </div>
+  );
+}`,
+  '/app/layout.tsx': `export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}`,
+  '/components/Header.tsx': `export default function Header() {
+  return <header>Header Component</header>;
+}`,
+  '/components/Footer.tsx': `export default function Footer() {
+  return <footer>Footer Component</footer>;
+}`,
+  '/lib/utils.ts': `export function cn(...classes: string[]) {
+  return classes.filter(Boolean).join(' ');
+}`,
+  '/package.json': `{
+  "name": "efh-project",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build"
+  }
+}`,
+  '/README.md': `# EFH Project
+This is your cloned codebase from Elevate For Humanity.
+## Getting Started
+\`\`\`bash
+npm install
+npm run dev
+\`\`\`
+`,
+};
+export default function EditorPage() {
+  const [selectedFile, setSelectedFile] = useState<string>('/app/page.tsx');
+  const [fileContent, setFileContent] = useState<string>(
+    mockFileContents['/app/page.tsx'] || ''
+  );
+  const [unsavedChanges, setUnsavedChanges] = useState(false);
+  const handleFileSelect = (path: string) => {
+    if (unsavedChanges) {
+      if (!confirm('You have unsaved changes. Discard them?')) {
+        return;
+      }
+    }
+    setSelectedFile(path);
+    setFileContent(mockFileContents[path] || '// File content not available');
+    setUnsavedChanges(false);
+  };
+  const handleContentChange = (value: string | undefined) => {
+    setFileContent(value || '');
+    setUnsavedChanges(true);
+  };
+  const handleSave = () => {
+    // Save file locally (GitHub integration can be added later)
+    mockFileContents[selectedFile] = fileContent;
+    setUnsavedChanges(false);
+    alert('File saved successfully!');
+  };
+  const handleCommand = async (command: string): Promise<string> => {
+    // Command execution simulation
+    if (command.startsWith('npm ')) {
+      return `Running: ${command}\n✓ Command completed successfully`;
+    }
+    if (command.startsWith('git ')) {
+      return `Running: ${command}\n✓ Git command executed`;
+    }
+    if (command === 'ls' || command === 'dir') {
+      return 'app/\ncomponents/\nlib/\npackage.json\npublic/';
+    }
+    if (command === 'pwd') {
+      return '/workspace/project';
+    }
+    return `$ ${command}\n✓ Command executed`;
+  };
+  const getLanguage = (path: string): string => {
+    if (path.endsWith('.tsx') || path.endsWith('.ts')) return 'typescript';
+    if (path.endsWith('.jsx') || path.endsWith('.js')) return 'javascript';
+    if (path.endsWith('.json')) return 'json';
+    if (path.endsWith('.md')) return 'markdown';
+    if (path.endsWith('.css')) return 'css';
+    return 'plaintext';
+  };
+  return (
+    <div className="h-screen flex flex-col">
+      {/* Header */}
+      <div className="h-12 bg-slate-800 text-white flex items-center justify-between px-4">
+        <div className="flex items-center gap-4">
+          <h1 className="font-semibold">EFH Code Editor</h1>
+          <span className="text-sm text-gray-400">{selectedFile}</span>
+          {unsavedChanges && (
+            <span className="text-xs bg-yellow-600 px-2 py-1 rounded">
+              Unsaved
+            </span>
+          )}
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleSave}
+            disabled={!unsavedChanges}
+            className="bg-brand-blue-600 hover:bg-brand-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed px-4 py-1 rounded text-sm"
+          >
+            Save
+          </button>
+          <button className="bg-gray-700 hover:bg-gray-600 px-4 py-1 rounded text-sm">
+            Run
+          </button>
+        </div>
+      </div>
+      {/* Main Editor Area */}
+      <div className="flex-1 overflow-hidden">
+        <Split
+          className="flex h-full"
+          sizes={[20, 80]}
+          minSize={150}
+          gutterSize={4}
+        >
+          {/* File Tree */}
+          <div className="h-full overflow-hidden">
+            <FileTree
+              files={mockFiles}
+              onFileSelect={handleFileSelect}
+              selectedFile={selectedFile}
+            />
+          </div>
+          {/* Editor and Terminal */}
+          <div className="h-full">
+            <Split
+              className="flex flex-col h-full"
+              direction="vertical"
+              sizes={[70, 30]}
+              minSize={100}
+              gutterSize={4}
+            >
+              {/* Code Editor */}
+              <div className="h-full overflow-hidden">
+                <CodeEditor
+                  value={fileContent}
+                  onChange={handleContentChange}
+                  language={getLanguage(selectedFile)}
+                />
+              </div>
+              {/* Terminal */}
+              <div className="h-full overflow-hidden">
+                <Terminal onCommand={handleCommand} />
+              </div>
+            </Split>
+          </div>
+        </Split>
+        {/* CTA Section */}
+        <section className="py-16    text-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                Ready to Transform Your Career?
+              </h2>
+              <p className="text-base md:text-lg mb-8 text-blue-100">
+                Join thousands who have launched successful careers through our
+                free training programs.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/contact"
+                  className="bg-white text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-blue-50 text-lg shadow-2xl transition-all"
+                >
+                  Apply Now - It's Free
+                </Link>
+                <Link
+                  href="/programs"
+                  className="bg-blue-800 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-600 border-2 border-white text-lg shadow-2xl transition-all"
+                >
+                  Browse All Programs
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}

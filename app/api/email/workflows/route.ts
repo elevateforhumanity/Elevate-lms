@@ -1,0 +1,63 @@
+import { NextResponse } from 'next/server';
+
+export const runtime = 'edge';
+export const maxDuration = 60;
+import { createClient } from '@/lib/supabase/server';
+import { logger } from '@/lib/logger';
+import { toError, toErrorMessage } from '@/lib/safe';
+
+export async function GET(req: Request) {
+  try {
+    const supabase = await createClient();
+
+    const { data: workflows, error } = await supabase
+      .from('email_workflows')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    return NextResponse.json({ success: true, workflows });
+  } catch (error: unknown) {
+    logger.error(
+      'Error fetching workflows:',
+      error instanceof Error ? error : new Error(String(error))
+    );
+    return NextResponse.json(
+      { success: false, error: toErrorMessage(error) },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    const supabase = await createClient();
+    const body = await req.json();
+
+    const { data: workflow, error } = await supabase
+      .from('email_workflows')
+      .insert({
+        name: body.name,
+        trigger_event: body.trigger,
+        target_audience: body.targetAudience,
+        steps: body.steps,
+        status: body.status || 'draft',
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    return NextResponse.json({ success: true, workflow });
+  } catch (error: unknown) {
+    logger.error(
+      'Error creating workflow:',
+      error instanceof Error ? error : new Error(String(error))
+    );
+    return NextResponse.json(
+      { success: false, error: toErrorMessage(error) },
+      { status: 500 }
+    );
+  }
+}

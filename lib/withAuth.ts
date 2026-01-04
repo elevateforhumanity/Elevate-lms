@@ -1,0 +1,64 @@
+// lib/withAuth.ts - Centralized authentication wrapper
+import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import { createClient } from '@/lib/supabase/server';
+import type { Database } from '@/types/database';
+
+type Role = 'student' | 'staff' | 'admin' | 'super_admin' | 'partner';
+
+interface AuthedContext {
+  params?: unknown;
+  user: {
+    id: string;
+    email: string | null;
+    role: Role;
+  };
+}
+
+type Handler = (
+  req: NextRequest,
+  ctx: AuthedContext
+) => Promise<NextResponse> | NextResponse;
+
+export function withAuth(handler: Handler, options?: { roles?: Role[] }) {
+  return async (req: NextRequest, context: { params?: any }) => {
+    const supabase = await createClient();
+
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.getSession();
+
+    if (error || !session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { user } = session;
+
+    // Look up role from profiles
+    const { data: profile, error: profileError } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+
+    if (profileError) {
+      // Error: $1
+    }
+
+    const role = (profile?.role as Role) ?? 'student';
+
+    if (options?.roles && !options.roles.includes(role)) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
+    return handler(req, {
+      ...context,
+      user: {
+        id: user.id,
+        email: user.email,
+        role,
+      },
+    });
+  };
+}

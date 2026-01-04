@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EFH Secure Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full space-y-8 p-8">
+      <div class="text-center">
+        <h1 class="text-3xl font-bold text-gray-900">🔐 Secure Access</h1>
+        <p class="mt-2 text-gray-600">Elevate for Humanity Protected Area</p>
+      </div>
+
+      <form id="loginForm" class="space-y-6">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Email Address</label
+          >
+          <input
+            type="email"
+            id="email"
+            required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700"
+            >Password</label
+          >
+          <input
+            type="password"
+            id="password"
+            required
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
+        <div>
+          <label for="role" class="block text-sm font-medium text-gray-700"
+            >Access Level</label
+          >
+          <select
+            id="role"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="user">Standard User</option>
+            <option value="partner">Partner Access</option>
+            <option value="admin">Administrator</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          Secure Login
+        </button>
+      </form>
+
+      <div id="message" class="hidden p-4 rounded-md"></div>
+
+      <div class="text-center text-sm text-gray-500">
+        <p>🔒 All data is encrypted and protected</p>
+        <p>🏛️ DOL/DWD compliant access controls</p>
+      </div>
+    </div>
+
+    <script>
+      const API_BASE = window.location.origin;
+
+      document
+        .getElementById('loginForm')
+        .addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('password').value;
+          const role = document.getElementById('role').value;
+          const messageEl = document.getElementById('message');
+
+          try {
+            const response = await fetch(`${API_BASE}/api/auth/login`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, password, role }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+              // Store secure token
+              localStorage.setItem('efh_auth_token', data.token);
+              localStorage.setItem('efh_user_role', data.user.role);
+
+              messageEl.className =
+                'block p-4 rounded-md bg-green-100 text-green-800';
+              messageEl.textContent = 'Login successful! Redirecting...';
+
+              // Redirect based on role
+              setTimeout(() => {
+                if (data.user.role === 'admin') {
+                  window.location.href = '/admin-dashboard.html';
+                } else if (data.user.role === 'partner') {
+                  window.location.href = '/partner-dashboard.html';
+                } else {
+                  window.location.href = '/user-dashboard.html';
+                }
+              }, 1500);
+            } else {
+              messageEl.className =
+                'block p-4 rounded-md bg-red-100 text-red-800';
+              messageEl.textContent = data.error || 'Login failed';
+            }
+          } catch (error) {
+            messageEl.className =
+              'block p-4 rounded-md bg-red-100 text-red-800';
+            messageEl.textContent = 'Network error. Please try again.';
+          }
+        });
+
+      // Check if already logged in
+      const token = localStorage.getItem('efh_auth_token');
+      if (token) {
+        const role = localStorage.getItem('efh_user_role');
+        if (role === 'admin') {
+          window.location.href = '/admin-dashboard.html';
+        } else if (role === 'partner') {
+          window.location.href = '/partner-dashboard.html';
+        } else {
+          window.location.href = '/user-dashboard.html';
+        }
+      }
+    </script>
+  </body>
+</html>

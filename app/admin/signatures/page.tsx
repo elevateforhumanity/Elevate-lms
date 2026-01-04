@@ -1,0 +1,230 @@
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+import { FileSignature, CheckCircle, Clock, XCircle } from 'lucide-react';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://elevateforhumanity.org/admin/signatures',
+  },
+  title: 'Signatures Management | Elevate For Humanity',
+  description:
+    'Manage digital signatures, document approvals, and electronic consent forms.',
+};
+
+export default async function SignaturesPage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/login');
+  }
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+
+  if (profile?.role !== 'admin' && profile?.role !== 'super_admin') {
+    redirect('/unauthorized');
+  }
+
+  // Fetch signatures data
+  const { data: signatures, count: totalSignatures } = await supabase
+    .from('signatures')
+    .select(
+      `
+      *,
+      signer:profiles(full_name, email)
+    `,
+      { count: 'exact' }
+    )
+    .order('created_at', { ascending: false })
+    .limit(50);
+
+  const { count: pendingSignatures } = await supabase
+    .from('signatures')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'pending');
+
+  const { count: completedSignatures } = await supabase
+    .from('signatures')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'completed');
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/hero/admin-hero.jpg"
+          alt="Signatures Management"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Signatures Management
+          </h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100">
+            Manage digital signatures, document approvals, and electronic
+            consent forms
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/admin/signatures/new"
+              className="bg-brand-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Request New Signature
+            </Link>
+            <Link
+              href="/admin/dashboard"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Back to Dashboard
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <FileSignature className="h-8 w-8 text-brand-blue-600" />
+                  <h3 className="text-sm font-medium text-gray-600">
+                    Total Signatures
+                  </h3>
+                </div>
+                <p className="text-3xl font-bold text-brand-blue-600">
+                  {totalSignatures || 0}
+                </p>
+              </div>
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <Clock className="h-8 w-8 text-brand-orange-600" />
+                  <h3 className="text-sm font-medium text-gray-600">Pending</h3>
+                </div>
+                <p className="text-3xl font-bold text-brand-orange-600">
+                  {pendingSignatures || 0}
+                </p>
+              </div>
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <CheckCircle className="h-8 w-8 text-brand-green-600" />
+                  <h3 className="text-sm font-medium text-gray-600">
+                    Completed
+                  </h3>
+                </div>
+                <p className="text-3xl font-bold text-brand-green-600">
+                  {completedSignatures || 0}
+                </p>
+              </div>
+            </div>
+
+            {/* Signatures List */}
+            <div className="bg-white rounded-lg shadow-sm border p-6">
+              <h2 className="text-2xl font-bold mb-4">Recent Signatures</h2>
+              {signatures && signatures.length > 0 ? (
+                <div className="space-y-4">
+                  {signatures.map((signature) => (
+                    <div
+                      key={signature.id}
+                      className="p-4 border rounded-lg hover:bg-gray-50"
+                    >
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="font-semibold">
+                            {signature.document_name || 'Untitled Document'}
+                          </h3>
+                          <p className="text-sm text-gray-600 mt-1">
+                            Signer:{' '}
+                            {signature.signer?.full_name ||
+                              signature.signer?.email ||
+                              'Unknown'}
+                          </p>
+                          <p className="text-sm text-gray-600">
+                            Requested:{' '}
+                            {new Date(
+                              signature.created_at
+                            ).toLocaleDateString()}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          {signature.status === 'completed' && (
+                            <span className="flex items-center gap-1 text-brand-green-600 text-sm font-medium bg-brand-green-100 px-3 py-1 rounded-full">
+                              <CheckCircle className="h-4 w-4" />
+                              Completed
+                            </span>
+                          )}
+                          {signature.status === 'pending' && (
+                            <span className="flex items-center gap-1 text-brand-orange-600 text-sm font-medium bg-orange-100 px-3 py-1 rounded-full">
+                              <Clock className="h-4 w-4" />
+                              Pending
+                            </span>
+                          )}
+                          {signature.status === 'declined' && (
+                            <span className="flex items-center gap-1 text-brand-orange-600 text-sm font-medium bg-red-100 px-3 py-1 rounded-full">
+                              <XCircle className="h-4 w-4" />
+                              Declined
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-gray-500 text-center py-8">
+                  No signatures found
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-brand-blue-700 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Ready to Get Started?
+            </h2>
+            <p className="text-base md:text-lg text-blue-100 mb-8">
+              Join thousands who have launched successful careers through our
+              programs.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 text-lg"
+              >
+                Apply Now
+              </Link>
+              <Link
+                href="/programs"
+                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
+              >
+                Browse Programs
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

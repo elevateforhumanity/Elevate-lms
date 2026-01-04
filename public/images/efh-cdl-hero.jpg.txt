@@ -1,0 +1,14 @@
+PLACEHOLDER IMAGE NEEDED
+
+Program: cdl
+Type: Hero Image
+Dimensions: 1600x900px (16:9)
+Format: JPG
+File Size: <200KB
+Content: cdl training facility or equipment
+
+Download from:
+- Pexels: https://www.pexels.com/search/cdl/
+- Unsplash: https://unsplash.com/s/photos/cdl
+
+Save as: efh-cdl-hero.jpg

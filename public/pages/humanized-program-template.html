@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {{PROGRAM_NAME}} - Transform Your Career | Elevate for Humanity
+    </title>
+    <meta name="description" content="{{PROGRAM_DESCRIPTION}}" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/program-humanized.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header role="banner">
+      <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="/" aria-label="Elevate for Humanity Homepage">
+              <img
+                src="/assets/images/logo.svg"
+                alt="Elevate for Humanity"
+                width="200"
+                height="60"
+              />
+            </a>
+          </div>
+          <ul class="nav-menu">
+            <li><a href="/programs/">Programs</a></li>
+            <li><a href="/funding-eligibility/">Funding</a></li>
+            <li><a href="/student-outcomes/">Success Stories</a></li>
+            <li>
+              <a href="/enroll/" class="cta-button">Start Your Journey</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main role="main" class="program-page">
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="hero-text">
+            <div class="program-badges">
+              <span class="badge funding-badge">💰 Fully Funded Available</span>
+              <span class="badge placement-badge"
+                >📈 {{EMPLOYMENT_RATE}}% Job Placement</span
+              >
+            </div>
+
+            <h1 class="hero-title">
+              Ready to become a <span class="highlight">{{JOB_TITLE}}</span>?
+            </h1>
+
+            <p class="hero-subtitle">
+              In just {{DURATION}}, you could be earning {{AVERAGE_SALARY}} and
+              working in one of Indiana's fastest-growing industries.
+              <strong>No experience required.</strong> Funding available for
+              those who qualify.
+            </p>
+
+            <div class="hero-stats">
+              <div class="stat">
+                <span class="stat-number">{{DURATION}}</span>
+                <span class="stat-label">Training</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">{{EMPLOYMENT_RATE}}%</span>
+                <span class="stat-label">Get Jobs</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">{{AVERAGE_SALARY}}</span>
+                <span class="stat-label">Starting Pay</span>
+              </div>
+            </div>
+
+            <div class="hero-cta">
+              <a href="#apply-now" class="btn-primary">Check If You Qualify</a>
+              <a href="#learn-more" class="btn-secondary">Learn More</a>
+            </div>
+
+            <p class="hero-note">
+              <small
+                >💡 Most students pay $0 thanks to WIOA and Workforce Ready
+                Grants</small
+              >
+            </p>
+          </div>
+
+          <div class="hero-visual">
+            <div class="student-showcase">
+              <img
+                src="{{HERO_IMAGE}}"
+                alt="{{PROGRAM_NAME}} graduate at work"
+                class="hero-image"
+              />
+              <div class="success-popup">
+                <div class="popup-content">
+                  <img
+                    src="{{STUDENT_PHOTO}}"
+                    alt="{{STUDENT_NAME}}"
+                    class="student-photo"
+                  />
+                  <div class="popup-text">
+                    <strong>{{STUDENT_NAME}}</strong>
+                    <p>"From unemployed to {{JOB_TITLE}} in {{DURATION}}!"</p>
+                    <span class="salary-increase"
+                      >+{{SALARY_INCREASE}}% salary increase</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- What You'll Do Section -->
+      <section class="what-youll-do" id="learn-more">
+        <div class="container">
+          <h2>What You'll Actually Do as a {{JOB_TITLE}}</h2>
+          <p class="section-intro">
+            Forget boring job descriptions. Here's what your typical day will
+            look like:
+          </p>
+
+          <div class="day-in-life">
+            {{#each DAILY_TASKS}}
+            <div class="task-card">
+              <div class="task-icon">{{icon}}</div>
+              <div class="task-content">
+                <h3>{{title}}</h3>
+                <p>{{description}}</p>
+                <span class="task-time">{{timeSpent}}</span>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+
+          <div class="reality-check">
+            <h3>The Real Talk</h3>
+            <div class="reality-grid">
+              <div class="reality-item good">
+                <h4>What's Great:</h4>
+                <ul>
+                  {{#each PROS}}
+                  <li>{{this}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+              <div class="reality-item challenging">
+                <h4>What's Challenging:</h4>
+                <ul>
+                  {{#each CHALLENGES}}
+                  <li>{{this}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Student Stories Section -->
+      <section class="student-stories">
+        <div class="container">
+          <h2>Real People, Real Results</h2>
+          <p class="section-intro">
+            These aren't actors or stock photos. These are actual graduates who
+            transformed their lives:
+          </p>
+
+          <div class="stories-grid">
+            {{#each STUDENT_STORIES}}
+            <div class="story-card">
+              <div class="story-header">
+                <img src="{{photo}}" alt="{{name}}" class="story-photo" />
+                <div class="story-info">
+                  <h3>{{name}}</h3>
+                  <p class="story-location">{{location}}</p>
+                  <p class="story-age">Age {{age}}</p>
+                </div>
+              </div>
+
+              <div class="story-transformation">
+                <div class="before">
+                  <span class="label">Before</span>
+                  <p>{{beforeSituation}}</p>
+                  <span class="salary">{{beforeSalary}}</span>
+                </div>
+                <div class="arrow">→</div>
+                <div class="after">
+                  <span class="label">After</span>
+                  <p>{{afterJob}}</p>
+                  <span class="salary">{{afterSalary}}</span>
+                </div>
+              </div>
+
+              <blockquote class="story-quote">"{{quote}}"</blockquote>
+
+              <div class="story-timeline">
+                <span>Graduated: {{graduationDate}}</span>
+                <span>Got job in: {{jobSearchTime}}</span>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </section>
+
+      <!-- Training Experience Section -->
+      <section class="training-experience">
+        <div class="container">
+          <h2>What Training is Actually Like</h2>
+          <p class="section-intro">
+            No boring lectures or outdated textbooks. Here's how we actually
+            teach:
+          </p>
+
+          <div class="training-approach">
+            <div class="approach-item">
+              <div class="approach-visual">
+                <img
+                  src="/assets/images/hands-on-learning.jpg"
+                  alt="Students working on real projects"
+                />
+              </div>
+              <div class="approach-content">
+                <h3>Learn by Doing</h3>
+                <p>
+                  From day one, you're working on real projects that employers
+                  actually need. No theory-only classes.
+                </p>
+                <ul>
+                  <li>{{HANDS_ON_PERCENTAGE}}% hands-on practice</li>
+                  <li>Real equipment, not simulations</li>
+                  <li>Projects you can show employers</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="approach-item reverse">
+              <div class="approach-visual">
+                <img
+                  src="/assets/images/small-classes.jpg"
+                  alt="Small class with instructor helping student"
+                />
+              </div>
+              <div class="approach-content">
+                <h3>Small Classes, Personal Attention</h3>
+                <p>
+                  Maximum {{CLASS_SIZE}} students per class. Your instructor
+                  knows your name and your goals.
+                </p>
+                <ul>
+                  <li>1-on-1 help when you need it</li>
+                  <li>Go at your own pace</li>
+                  <li>No one gets left behind</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="approach-item">
+              <div class="approach-visual">
+                <img
+                  src="/assets/images/job-ready.jpg"
+                  alt="Graduate shaking hands with employer"
+                />
+              </div>
+              <div class="approach-content">
+                <h3>Job-Ready from Day One</h3>
+                <p>
+                  We don't just teach skills - we prepare you for the workplace
+                  culture and expectations.
+                </p>
+                <ul>
+                  <li>Interview practice</li>
+                  <li>Resume building</li>
+                  <li>Professional communication</li>
+                  <li>Workplace etiquette</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Instructor Section -->
+      <section class="meet-instructor">
+        <div class="container">
+          <h2>Meet Your Instructor</h2>
+
+          <div class="instructor-profile">
+            <div class="instructor-photo">
+              <img src="{{INSTRUCTOR_PHOTO}}" alt="{{INSTRUCTOR_NAME}}" />
+            </div>
+            <div class="instructor-info">
+              <h3>{{INSTRUCTOR_NAME}}</h3>
+              <p class="instructor-title">{{INSTRUCTOR_TITLE}}</p>
+
+              <div class="instructor-story">
+                <p>{{INSTRUCTOR_BIO}}</p>
+              </div>
+
+              <div class="instructor-credentials">
+                <h4>Experience &amp; Credentials:</h4>
+                <ul>
+                  {{#each INSTRUCTOR_CREDENTIALS}}
+                  <li>{{this}}</li>
+                  {{/each}}
+                </ul>
+              </div>
+
+              <blockquote class="instructor-quote">
+                "{{INSTRUCTOR_QUOTE}}"
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Funding Made Simple -->
+      <section class="funding-simple">
+        <div class="container">
+          <h2>The Money Part (Made Simple)</h2>
+          <p class="section-intro">
+            Most people think they can't afford training. Here's the truth:
+          </p>
+
+          <div class="funding-reality">
+            <div class="cost-breakdown">
+              <h3>What This Training Usually Costs:</h3>
+              <div class="cost-item">
+                <span>Tuition</span>
+                <span>${{BASE_TUITION}}</span>
+              </div>
+              {{#each ADDITIONAL_FEES}}
+              <div class="cost-item">
+                <span>{{name}}</span>
+                <span>${{amount}}</span>
+              </div>
+              {{/each}}
+              <div class="cost-total">
+                <span><strong>Total Program Cost</strong></span>
+                <span><strong>${{TOTAL_COST}}</strong></span>
+              </div>
+            </div>
+
+            <div class="funding-options">
+              <h3>What You Might Actually Pay:</h3>
+
+              <div class="funding-scenario">
+                <div class="scenario-header">
+                  <span class="scenario-icon">🎯</span>
+                  <h4>If you qualify for WIOA or Workforce Ready Grant:</h4>
+                </div>
+                <div class="scenario-cost">
+                  <span class="big-number">$0</span>
+                  <p>That's right. Zero dollars. Completely covered.</p>
+                </div>
+              </div>
+
+              <div class="funding-scenario">
+                <div class="scenario-header">
+                  <span class="scenario-icon">🏢</span>
+                  <h4>If your employer sponsors you:</h4>
+                </div>
+                <div class="scenario-cost">
+                  <span class="big-number">$0</span>
+                  <p>Many employers pay for training. We help you ask.</p>
+                </div>
+              </div>
+
+              <div class="funding-scenario">
+                <div class="scenario-header">
+                  <span class="scenario-icon">💳</span>
+                  <h4>If you pay out of pocket:</h4>
+                </div>
+                <div class="scenario-cost">
+                  <span class="big-number">${{PAYMENT_PLAN_AMOUNT}}/month</span>
+                  <p>Payment plans available. No interest.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="funding-cta">
+            <h3>Find Out What You'll Pay (Takes 2 Minutes)</h3>
+            <a href="#funding-check" class="btn-primary"
+              >Check My Funding Options</a
+            >
+            <p><small>No commitment. No credit check. Just answers.</small></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Application Section -->
+      <section class="application-section" id="apply-now">
+        <div class="container">
+          <h2>Ready to Start?</h2>
+          <p class="section-intro">Here's exactly what happens next:</p>
+
+          <div class="process-steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <h3>Apply Today</h3>
+              <p>Quick application. No essays or complicated forms.</p>
+              <span class="step-time">Takes 5 minutes</span>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <h3>Talk to Our Team</h3>
+              <p>We'll call you to discuss your goals and funding options.</p>
+              <span class="step-time">15-minute call</span>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <h3>Start Training</h3>
+              <p>Begin your program and start building your new career.</p>
+              <span class="step-time">Next cohort: {{NEXT_START_DATE}}</span>
+            </div>
+          </div>
+
+          <div class="application-form">
+            <h3>Start Your Application</h3>
+            <form class="simple-application" action="/apply" method="POST">
+              <div class="form-row">
+                <input
+                  type="text"
+                  aria-label="text input"
+                  name="firstName"
+                  placeholder="First Name"
+                  required
+                />
+                <input
+                  type="text"
+                  aria-label="text input"
+                  name="lastName"
+                  placeholder="Last Name"
+                  required
+                />
+              </div>
+
+              <div class="form-row">
+                <input
+                  type="email"
+                  aria-label="email input"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                />
+                <input
+                  type="tel"
+                  aria-label="tel input"
+                  name="phone"
+                  placeholder="Phone Number"
+                  required
+                />
+              </div>
+
+              <div class="form-row">
+                <select name="currentSituation" required>
+                  <option value="">Current Situation</option>
+                  <option value="unemployed">Unemployed</option>
+                  <option value="underemployed">
+                    Working but want better job
+                  </option>
+                  <option value="career-change">Want to change careers</option>
+                  <option value="recent-graduate">
+                    Recent high school graduate
+                  </option>
+                  <option value="returning-workforce">
+                    Returning to workforce
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <label class="checkbox-label">
+                  <input
+                    type="checkbox"
+                    aria-label="checkbox input"
+                    name="fundingInterest"
+                    value="yes"
+                  />
+                  <span class="checkmark"></span>
+                  I'm interested in learning about funding options
+                </label>
+              </div>
+
+              <input
+                type="hidden"
+                aria-label="hidden input"
+                name="program"
+                value="{{PROGRAM_ID}}"
+              />
+
+              <button type="submit" class="btn-primary btn-large">
+                Start My Application
+              </button>
+
+              <p class="form-note">
+                <small
+                  >By applying, you agree to receive calls and texts about this
+                  program. You can opt out anytime.</small
+                >
+              </p>
+            </form>
+          </div>
+
+          <div class="urgency-note">
+            <p><strong>⏰ Next cohort starts {{NEXT_START_DATE}}</strong></p>
+            <p>Limited seats available. Apply today to secure your spot.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="faq-section">
+        <div class="container">
+          <h2>Questions People Actually Ask</h2>
+
+          <div class="faq-grid">
+            <div class="faq-item">
+              <h3>Do I need experience?</h3>
+              <p>
+                Nope! We start from the beginning. If you can use a smartphone,
+                you can learn this.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>What if I'm not good with technology?</h3>
+              <p>
+                Most of our students felt the same way. Our instructors are
+                patient and will help you every step of the way.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How do I know if I'll actually get a job?</h3>
+              <p>
+                {{EMPLOYMENT_RATE}}% of our graduates get jobs within 6 months.
+                We have partnerships with local employers who hire our students.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>What if I can't afford it?</h3>
+              <p>
+                Most students pay nothing thanks to grants and funding programs.
+                We'll help you figure out your options.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Is this a real job or just gig work?</h3>
+              <p>
+                These are full-time, permanent positions with benefits. Average
+                starting salary is {{AVERAGE_SALARY}}.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>What if I don't finish?</h3>
+              <p>
+                We have a {{COMPLETION_RATE}}% completion rate because we
+                support you throughout the program. But if life happens, we'll
+                work with you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Ready to Transform Your Career?</h3>
+          <p>
+            Don't wait for the "perfect" time. It doesn't exist. Start today.
+          </p>
+          <a href="#apply-now" class="btn-primary">Apply Now</a>
+        </div>
+
+        <div class="footer-section">
+          <h3>Questions?</h3>
+          <p>Call us: <a href="tel:+1-317-999-9999">(317) 999-9999</a></p>
+          <p>Text us: <a href="sms:+1-317-999-9999">(317) 999-9999</a></p>
+          <p>
+            Email:
+            <a href="mailto:elevateforhumanity@gmail.com"
+              >elevateforhumanity@gmail.com</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&amp;copy; 2024 Elevate for Humanity. All rights reserved.</p>
+        <p>
+          <a href="/privacy-policy/">Privacy</a> |
+          <a href="/accessibility/">Accessibility</a> |
+          <a href="/complaints/">Complaints</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/program-interactions.js"></script>
+  </body>
+</html>

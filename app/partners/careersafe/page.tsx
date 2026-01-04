@@ -1,0 +1,273 @@
+export const dynamic = 'force-dynamic';
+
+import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import {
+  ExternalLink,
+  CheckCircle,
+  Clock,
+  Award,
+  Users,
+  Phone,
+  Mail,
+} from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'CareerSafe OSHA Training | Partner Courses | Elevate For Humanity',
+  description: 'OSHA 10 & OSHA 30 Safety Certification',
+  alternates: {
+    canonical: 'https://elevateforhumanity.org/partners/careersafe',
+  },
+};
+
+export default function CAREERSAFEPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative h-[400px] w-full overflow-hidden   ">
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-7xl mx-auto px-6 w-full">
+            <div className="max-w-4xl">
+              <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-semibold mb-4">
+                Partner Course
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
+                CareerSafe OSHA Training
+              </h1>
+              <p className="text-base md:text-lg text-white mb-8 drop-shadow-lg">
+                OSHA 10 & OSHA 30 Safety Certification
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://www.careersafeonline.com/campus/signin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-blue-600 font-bold rounded-full hover:bg-slate-100 transition-all hover:scale-105 shadow-2xl gap-2"
+                >
+                  Student Login
+                  <ExternalLink className="w-5 h-5" />
+                </a>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-bold rounded-full hover:bg-white/30 transition-all hover:scale-105 border-2 border-white/50 shadow-2xl"
+                >
+                  Questions? Contact Us
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
+            What You Get
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
+              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <div className="text-slate-700">
+                Official OSHA certification cards
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
+              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <div className="text-slate-700">
+                Required for many construction jobs
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
+              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <div className="text-slate-700">Self-paced online training</div>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
+              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <div className="text-slate-700">Lifetime access to materials</div>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
+              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              <div className="text-slate-700">24/7 customer support</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Available Courses */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-2xl md:text-2xl md:text-3xl font-bold text-slate-900 mb-12 text-center text-2xl md:text-3xl lg:text-2xl md:text-3xl">
+            Available Courses
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-blue-500 transition-colors">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-lg font-bold text-slate-900">
+                  OSHA 10-Hour Construction
+                </h3>
+              </div>
+
+              <div className="flex items-center gap-2 text-slate-600 mb-2">
+                <Clock className="w-4 h-4" />
+                <span>10 hours</span>
+              </div>
+
+              <div className="flex items-center gap-2 text-slate-600 mb-2">
+                <Award className="w-4 h-4" />
+                <span>OSHA 10 Card</span>
+              </div>
+            </div>
+
+            <div className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-blue-500 transition-colors">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-lg font-bold text-slate-900">
+                  OSHA 30-Hour Construction
+                </h3>
+              </div>
+
+              <div className="flex items-center gap-2 text-slate-600 mb-2">
+                <Clock className="w-4 h-4" />
+                <span>30 hours</span>
+              </div>
+
+              <div className="flex items-center gap-2 text-slate-600 mb-2">
+                <Award className="w-4 h-4" />
+                <span>OSHA 30 Card</span>
+              </div>
+            </div>
+
+            <div className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-blue-500 transition-colors">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-lg font-bold text-slate-900">
+                  OSHA 10-Hour General Industry
+                </h3>
+              </div>
+
+              <div className="flex items-center gap-2 text-slate-600 mb-2">
+                <Clock className="w-4 h-4" />
+                <span>10 hours</span>
+              </div>
+
+              <div className="flex items-center gap-2 text-slate-600 mb-2">
+                <Award className="w-4 h-4" />
+                <span>OSHA 10 Card</span>
+              </div>
+            </div>
+
+            <div className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-blue-500 transition-colors">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-lg font-bold text-slate-900">
+                  OSHA 30-Hour General Industry
+                </h3>
+              </div>
+
+              <div className="flex items-center gap-2 text-slate-600 mb-2">
+                <Clock className="w-4 h-4" />
+                <span>30 hours</span>
+              </div>
+
+              <div className="flex items-center gap-2 text-slate-600 mb-2">
+                <Award className="w-4 h-4" />
+                <span>OSHA 30 Card</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Information */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
+            Need Help?
+          </h2>
+          <div className="bg-white rounded-xl p-8 shadow-lg">
+            <div className="mb-6 pb-6 border-b border-slate-200">
+              <div className="font-bold text-slate-900 mb-2">Mark Sattele</div>
+              <div className="text-slate-600 mb-3">
+                Postsecondary Account Executive
+              </div>
+              <div className="space-y-2">
+                <a
+                  href="mailto:Mark.Sattele@careersafeonline.com"
+                  className="flex items-center gap-2 text-brand-blue-600 hover:text-brand-blue-700"
+                >
+                  <Mail className="w-4 h-4" />
+                  Mark.Sattele@careersafeonline.com
+                </a>
+                <a
+                  href="tel:(216) 926-6536"
+                  className="flex items-center gap-2 text-brand-blue-600 hover:text-brand-blue-700"
+                >
+                  <Phone className="w-4 h-4" />
+                  (216) 926-6536
+                </a>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <div className="text-slate-600 mb-2">Customer Care</div>
+              <a
+                href="tel:(888) 614-7233"
+                className="text-2xl font-bold text-brand-blue-600 hover:text-brand-blue-700"
+              >
+                (888) 614-7233
+              </a>
+            </div>
+
+            <div className="mt-6 text-center">
+              <a
+                href="https://www.careersafeonline.com/support"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-brand-blue-600 hover:text-brand-blue-700"
+              >
+                Visit Support Center
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20   ">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-2xl md:text-2xl md:text-3xl font-bold text-white mb-6 text-2xl md:text-3xl lg:text-2xl md:text-3xl">
+            Ready to Get Started?
+          </h2>
+          <p className="text-base md:text-lg text-white mb-8">
+            Enroll in CareerSafe OSHA Training courses through Elevate for
+            Humanity
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://www.careersafeonline.com/campus/signin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-10 py-5 bg-white text-brand-blue-600 text-xl font-bold rounded-full hover:bg-slate-100 transition-all hover:scale-105 shadow-2xl gap-2"
+            >
+              Get Started
+              <ExternalLink className="w-6 h-6" />
+            </a>
+
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-10 py-5 bg-white/20 backdrop-blur-sm text-white text-xl font-bold rounded-full hover:bg-white/30 transition-all hover:scale-105 border-2 border-white/50 shadow-2xl"
+            >
+              Apply to Elevate
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

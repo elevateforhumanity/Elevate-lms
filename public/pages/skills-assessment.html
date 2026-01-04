@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skills Assessment - DOL/DWD Compliance</title>
+    <meta
+      name="description"
+      content="Participant skills assessment and tracking system for federal workforce development compliance"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="scripts/efh-universal.v2.2.js"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Navigation Header -->
+    <nav
+      role="navigation"
+      class="bg-white border-b border-gray-200 sticky top-0 z-50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="compliance.html" class="flex items-center">
+              <i
+                data-lucide="arrow-left"
+                class="h-5 w-5 mr-2 text-gray-600"
+              ></i>
+              <span class="text-gray-600">Back to Compliance Portal</span>
+            </a>
+          </div>
+          <div class="flex items-center">
+            <h1 class="text-xl font-bold text-gray-900">
+              Skills Assessment System
+            </h1>
+          </div>
+          <div class="flex items-center">
+            <div
+              class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium"
+            >
+              📊 Assessment Tracking
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main role="main" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <!-- Page Header -->
+      <div class="mb-8">
+        <div
+          class="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg p-6 text-white"
+        >
+          <h2 class="text-2xl font-bold mb-2">
+            Skills Assessment &amp; Tracking
+          </h2>
+          <p class="opacity-90">
+            Comprehensive skills evaluation system for federal workforce
+            development programs
+          </p>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="total-assessments">189</div>
+              <div class="text-sm opacity-90">Total Assessments</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="pending-assessments">24</div>
+              <div class="text-sm opacity-90">Pending Review</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="average-score">78.5</div>
+              <div class="text-sm opacity-90">Average Score</div>
+            </div>
+            <div class="bg-white/20 rounded p-3">
+              <div class="text-lg font-bold" id="skills-gaps">12</div>
+              <div class="text-sm opacity-90">Skills Gaps Identified</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Assessment Types Overview -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-lg border">
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="brain" class="h-8 w-8 text-purple-600"></i>
+            <span
+              class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs"
+              >Basic Skills</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Basic Skills Assessment</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Reading, writing, math, and digital literacy evaluation
+          </p>
+          <button
+            type="button"
+            onclick="startAssessment('basic-skills')"
+            class="w-full bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+          >
+            Start Assessment
+          </button>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg border">
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="briefcase" class="h-8 w-8 text-blue-600"></i>
+            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs"
+              >Job Skills</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Job-Specific Skills</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Industry and occupation-specific competency evaluation
+          </p>
+          <button
+            type="button"
+            onclick="startAssessment('job-skills')"
+            class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            Start Assessment
+          </button>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg border">
+          <div class="flex items-center justify-between mb-4">
+            <i data-lucide="users" class="h-8 w-8 text-green-600"></i>
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs"
+              >Soft Skills</span
+            >
+          </div>
+          <h3 class="text-lg font-semibold mb-2">
+            Soft Skills &amp; Work Readiness
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Communication, teamwork, and workplace behavior assessment
+          </p>
+          <button
+            type="button"
+            onclick="startAssessment('soft-skills')"
+            class="w-full bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+          >
+            Start Assessment
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters and Search -->
+      <div class="bg-white rounded-lg border p-4 mb-6">
+        <div class="flex flex-wrap items-center gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Assessment Type</label
+            >
+            <select
+              id="type-filter"
+              onchange="filterAssessments()"
+              class="border rounded px-3 py-2"
+            >
+              <option value="">All Types</option>
+              <option value="basic-skills">Basic Skills</option>
+              <option value="job-skills">Job-Specific Skills</option>
+              <option value="soft-skills">Soft Skills</option>
+              <option value="industry-specific">Industry-Specific</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Program</label
+            >
+            <select
+              id="program-filter"
+              onchange="filterAssessments()"
+              class="border rounded px-3 py-2"
+            >
+              <option value="">All Programs</option>
+              <option value="wio-it-support">WIO IT Support</option>
+              <option value="wex-manufacturing">WEX Manufacturing</option>
+              <option value="wrg-healthcare">WRG Healthcare</option>
+              <option value="ojt-construction">OJT Construction</option>
+              <option value="etpl-data-science">ETPL Data Science</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Score Range</label
+            >
+            <select
+              id="score-filter"
+              onchange="filterAssessments()"
+              class="border rounded px-3 py-2"
+            >
+              <option value="">All Scores</option>
+              <option value="90-100">90-100 (Excellent)</option>
+              <option value="80-89">80-89 (Good)</option>
+              <option value="70-79">70-79 (Average)</option>
+              <option value="60-69">60-69 (Below Average)</option>
+              <option value="0-59">0-59 (Needs Improvement)</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label class="block text-sm font-medium text-gray-700 mb-1"
+              >Search</label
+            >
+            <input
+              type="text"
+              id="search-assessments"
+              placeholder="Search participants..."
+              class="w-full border rounded px-3 py-2"
+              onkeyup="searchAssessments()"
+            />
+          </div>
+          <div class="self-end">
+            <button
+              type="button"
+              onclick="exportAssessments()"
+              class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 flex items-center"
+            >
+              <i data-lucide="download" class="h-4 w-4 mr-2"></i>
+              Export
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Assessment Records Table -->
+      <div class="bg-white rounded-lg border">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Participant
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Assessment Type
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Program
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Skills Areas
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Overall Score
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Date
+                </th>
+                <th
+                  class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              id="assessment-table-body"
+              class="bg-white divide-y divide-gray-200"
+            >
+              <!-- Assessment records will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- New Assessment Modal -->
+      <div
+        id="new-assessment-modal"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50"
+      >
+        <div class="flex items-center justify-center min-h-screen p-4">
+          <div
+            class="bg-white rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">New Skills Assessment</h3>
+                <button
+                  type="button"
+                  onclick="hideNewAssessmentForm()"
+                  class="text-gray-400 hover:text-gray-600"
+                  aria-label="Action button"
+                >
+                  <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+              </div>
+
+              <form id="assessment-form" onsubmit="createAssessment(event)">
+                <div class="space-y-6">
+                  <!-- Assessment Details -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Assessment Information
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Participant</label
+                        >
+                        <select
+                          name="user_id"
+                          required
+                          class="w-full border rounded px-3 py-2"
+                        >
+                          <option value="">Select Participant</option>
+                          <!-- Will be populated dynamically -->
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Assessment Type</label
+                        >
+                        <select
+                          name="assessment_type"
+                          required
+                          class="w-full border rounded px-3 py-2"
+                          onchange="updateSkillAreas()"
+                        >
+                          <option value="">Select Type</option>
+                          <option value="basic-skills">
+                            Basic Skills Assessment
+                          </option>
+                          <option value="job-skills">
+                            Job-Specific Skills
+                          </option>
+                          <option value="soft-skills">
+                            Soft Skills &amp; Work Readiness
+                          </option>
+                          <option value="industry-specific">
+                            Industry-Specific Assessment
+                          </option>
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Program</label
+                        >
+                        <select
+                          name="program_slug"
+                          required
+                          class="w-full border rounded px-3 py-2"
+                        >
+                          <option value="">Select Program</option>
+                          <option value="wio-it-support">WIO IT Support</option>
+                          <option value="wex-manufacturing">
+                            WEX Manufacturing
+                          </option>
+                          <option value="wrg-healthcare">WRG Healthcare</option>
+                          <option value="ojt-construction">
+                            OJT Construction
+                          </option>
+                          <option value="etpl-data-science">
+                            ETPL Data Science
+                          </option>
+                        </select>
+                      </div>
+                      <div>
+                        <label
+                          class="block text-sm font-medium text-gray-700 mb-1"
+                          >Assessor</label
+                        >
+                        <input
+                          type="text"
+                          aria-label="text input"
+                          name="assessor_name"
+                          class="w-full border rounded px-3 py-2"
+                          placeholder="Assessor name"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Skill Areas (Dynamic based on assessment type) -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Skill Areas &amp; Scores
+                    </h4>
+                    <div id="skill-areas-container">
+                      <!-- Will be populated based on assessment type -->
+                    </div>
+                  </div>
+
+                  <!-- Assessment Notes -->
+                  <div class="bg-gray-50 p-4 rounded">
+                    <h4 class="font-medium text-gray-900 mb-3">
+                      Assessment Notes
+                    </h4>
+                    <textarea
+                      name="assessment_notes"
+                      rows="4"
+                      class="w-full border rounded px-3 py-2"
+                      placeholder="Additional notes about the assessment, observed behaviors, recommendations for improvement..."
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="flex justify-end space-x-3 mt-6">
+                  <button
+                    type="button"
+                    onclick="hideNewAssessmentForm()"
+                    class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700"
+                  >
+                    Save Assessment
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // Skills Assessment System
+      const skillAreas = {
+        'basic-skills': [
+          { name: 'Reading Comprehension', key: 'reading' },
+          { name: 'Mathematical Reasoning', key: 'math' },
+          { name: 'Written Communication', key: 'writing' },
+          { name: 'Digital Literacy', key: 'digital' },
+          { name: 'Critical Thinking', key: 'critical_thinking' },
+        ],
+        'job-skills': [
+          { name: 'Technical Proficiency', key: 'technical' },
+          { name: 'Industry Knowledge', key: 'industry' },
+          { name: 'Tool/Equipment Usage', key: 'tools' },
+          { name: 'Safety Protocols', key: 'safety' },
+          { name: 'Quality Standards', key: 'quality' },
+        ],
+        'soft-skills': [
+          { name: 'Communication Skills', key: 'communication' },
+          { name: 'Teamwork &amp; Collaboration', key: 'teamwork' },
+          { name: 'Problem Solving', key: 'problem_solving' },
+          { name: 'Time Management', key: 'time_management' },
+          { name: 'Adaptability', key: 'adaptability' },
+          { name: 'Work Ethic', key: 'work_ethic' },
+        ],
+        'industry-specific': [
+          { name: 'Industry Standards', key: 'standards' },
+          { name: 'Regulatory Compliance', key: 'compliance' },
+          { name: 'Best Practices', key: 'best_practices' },
+          { name: 'Professional Development', key: 'professional' },
+        ],
+      };
+
+      async function loadAssessments() {
+        try {
+          const response = await fetch('/api/compliance/skills-assessment');
+          const data = await response.json();
+          displayAssessments(data.assessments || []);
+        } catch (error) {
+          console.error('Error loading assessments:', error);
+        }
+      }
+
+      function displayAssessments(assessments) {
+        const tbody = document.getElementById('assessment-table-body');
+        tbody.innerHTML = '';
+
+        assessments.forEach((assessment) => {
+          const skillAreas = assessment.skill_areas || {};
+          const scores = assessment.scores || {};
+          const skillCount = Object.keys(skillAreas).length;
+          const avgScore = calculateAverageScore(scores);
+
+          const row = document.createElement('tr');
+          row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">${assessment.email || 'Unknown'}</div>
+                        <div class="text-sm text-gray-500">${assessment.user_id}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${formatAssessmentType(assessment.assessment_type)}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${assessment.program_slug}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">${skillCount} areas assessed</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="text-sm font-medium text-gray-900">${avgScore}%</div>
+                            <div class="ml-2 w-16 bg-gray-200 rounded-full h-2">
+                                <div class="bg-${getScoreColor(avgScore)}-600 h-2 rounded-full" style="width: ${avgScore}%"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${assessment.assessment_date ? new Date(assessment.assessment_date).toLocaleDateString() : 'N/A'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button type="button" onclick="viewAssessment('${assessment.id}')" class="text-blue-600 hover:text-blue-900 mr-3">View</button>
+                        <button type="button" onclick="editAssessment('${assessment.id}')" class="text-green-600 hover:text-green-900">Edit</button>
+                    </td>
+                `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function calculateAverageScore(scores) {
+        const values = Object.values(scores).filter(
+          (score) => typeof score === 'number'
+        );
+        if (values.length === 0) return 0;
+        const sum = values.reduce((a, b) => a + b, 0);
+        return Math.round(sum / values.length);
+      }
+
+      function getScoreColor(score) {
+        if (score >= 90) return 'green';
+        if (score >= 80) return 'blue';
+        if (score >= 70) return 'yellow';
+        if (score >= 60) return 'orange';
+        return 'red';
+      }
+
+      function formatAssessmentType(type) {
+        return type
+          .split('-')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+      }
+
+      function startAssessment(type) {
+        document
+          .getElementById('new-assessment-modal')
+          .classList.remove('hidden');
+        document.querySelector('select[name="assessment_type"]').value = type;
+        updateSkillAreas();
+        loadParticipants();
+      }
+
+      function hideNewAssessmentForm() {
+        document.getElementById('new-assessment-modal').classList.add('hidden');
+        document.getElementById('assessment-form').reset();
+      }
+
+      function updateSkillAreas() {
+        const assessmentType = document.querySelector(
+          'select[name="assessment_type"]'
+        ).value;
+        const container = document.getElementById('skill-areas-container');
+
+        if (!assessmentType || !skillAreas[assessmentType]) {
+          container.innerHTML =
+            '<p class="text-gray-500">Select an assessment type to see skill areas</p>';
+          return;
+        }
+
+        const skills = skillAreas[assessmentType];
+        container.innerHTML = skills
+          .map(
+            (skill) => `
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">${skill.name}</label>
+                        <input type="hidden" aria-label="hidden input" name="skill_area" value="${skill.key}">
+                    </div>
+                    <div>
+                        <input type="number" aria-label="number input" 
+                               name="score_${skill.key}" 
+                               min="0" 
+                               max="100" 
+                               class="w-full border rounded px-3 py-2" 
+                               placeholder="Score (0-100)">
+                    </div>
+                </div>
+            `
+          )
+          .join('');
+      }
+
+      async function loadParticipants() {
+        try {
+          const response = await fetch(
+            '/api/compliance/eligibility?status=verified'
+          );
+          const data = await response.json();
+          const select = document.querySelector('select[name="user_id"]');
+
+          select.innerHTML = '<option value="">Select Participant</option>';
+          data.verifications?.forEach((verification) => {
+            select.innerHTML += `<option value="${verification.user_id}">${verification.email}</option>`;
+          });
+        } catch (error) {
+          console.error('Error loading participants:', error);
+        }
+      }
+
+      async function createAssessment(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+
+        const skillAreas = Array.from(formData.getAll('skill_area'));
+        const scores = {};
+        skillAreas.forEach((skill) => {
+          const score = formData.get(`score_${skill}`);
+          if (score) {
+            scores[skill] = parseInt(score);
+          }
+        });
+
+        const assessmentData = {
+          user_id: formData.get('user_id'),
+          assessment_type: formData.get('assessment_type'),
+          program_slug: formData.get('program_slug'),
+          skill_areas: skillAreas.reduce((acc, skill) => {
+            acc[skill] = true;
+            return acc;
+          }, {}),
+          scores: scores,
+          assessor_id: 'current_user', // In real implementation, get from auth
+          notes: formData.get('assessment_notes'),
+        };
+
+        try {
+          const response = await fetch('/api/compliance/skills-assessment', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(assessmentData),
+          });
+
+          if (response.ok) {
+            hideNewAssessmentForm();
+            loadAssessments();
+            alert('Skills assessment saved successfully!');
+          } else {
+            alert('Error saving assessment. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error creating assessment:', error);
+          alert('Error saving assessment. Please try again.');
+        }
+      }
+
+      function viewAssessment(assessmentId) {
+        // In real implementation, show detailed view modal
+        alert(`Viewing Assessment: ${assessmentId}`);
+      }
+
+      function editAssessment(assessmentId) {
+        // In real implementation, open edit form
+        alert(`Editing Assessment: ${assessmentId}`);
+      }
+
+      function filterAssessments() {
+        // Filter assessments based on selected criteria
+        loadAssessments();
+      }
+
+      function searchAssessments() {
+        // Search functionality
+        loadAssessments();
+      }
+
+      function exportAssessments() {
+        alert('Exporting assessment data...');
+      }
+
+      // Initialize page
+      document.addEventListener('DOMContentLoaded', function () {
+        loadAssessments();
+      });
+    </script>
+  </body>
+</html>

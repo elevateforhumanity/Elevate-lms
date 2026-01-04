@@ -1,0 +1,19 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+import { NextResponse } from 'next/server';
+import { calculateProgramMetrics } from '@/lib/reporting/enterprise-dashboard';
+import { logger } from '@/lib/logger';
+
+export async function GET() {
+  try {
+    const metrics = await calculateProgramMetrics();
+    return NextResponse.json(metrics);
+  } catch (error: unknown) {
+    logger.error('Error fetching program metrics:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch program metrics' },
+      { status: 500 }
+    );
+  }
+}

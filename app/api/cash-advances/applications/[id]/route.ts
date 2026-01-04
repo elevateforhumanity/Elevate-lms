@@ -1,0 +1,58 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+// app/api/cash-advances/applications/[id]/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { parseBody, getErrorMessage } from '@/lib/api-helpers';
+import { supabaseServer } from '@/lib/supabase-server';
+import { toError, toErrorMessage } from '@/lib/safe';
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const supabase = supabaseServer();
+    const { id } = await params;
+
+    const { data, error }: any = await supabase
+      .from('cash_advance_applications')
+      .select('*')
+      .eq('id', id)
+      .single();
+
+    if (error) {
+      return NextResponse.json({ error: toErrorMessage(error) }, { status: 404 });
+    }
+
+    return NextResponse.json(data);
+  } catch (error: unknown) {
+    return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
+  }
+}
+
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const supabase = supabaseServer();
+    const { id } = await params;
+    const body = await parseBody<Record<string, unknown>>(request);
+
+    const { data, error }: any = await supabase
+      .from('cash_advance_applications')
+      .update(body)
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) {
+      return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
+    }
+
+    return NextResponse.json(data);
+  } catch (error: unknown) {
+    return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
+  }
+}

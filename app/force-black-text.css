@@ -1,0 +1,90 @@
+/**
+ * NUCLEAR OPTION: Force pure black text across entire site
+ * This file loads LAST to override everything
+ */
+
+/* Force black text on EVERYTHING */
+* {
+  color: #000000 !important;
+}
+
+/* Force black text with maximum specificity */
+html *,
+body *,
+main *,
+section *,
+article *,
+div *,
+header *,
+footer *,
+nav * {
+  color: #000000 !important;
+}
+
+/* Override ALL Tailwind text utilities */
+[class*='text-gray'],
+[class*='text-slate'],
+[class*='text-zinc'],
+[class*='text-neutral'],
+[class*='text-stone'],
+.text-gray-50,
+.text-gray-100,
+.text-gray-200,
+.text-gray-300,
+.text-gray-400,
+.text-gray-500,
+.text-gray-600,
+.text-gray-700,
+.text-gray-800,
+.text-gray-900,
+.text-slate-50,
+.text-slate-100,
+.text-slate-200,
+.text-slate-300,
+.text-slate-400,
+.text-slate-500,
+.text-slate-600,
+.text-slate-700,
+.text-slate-800,
+.text-slate-900 {
+  color: #000000 !important;
+}
+
+/* Force black on all text elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+a,
+li,
+td,
+th,
+label,
+button {
+  color: #000000 !important;
+}
+
+/* Exception: Keep white text on dark backgrounds */
+.bg-black *,
+.bg-gray-900 *,
+.bg-slate-900 *,
+[class*='bg-black'] *,
+[class*='bg-gray-9'] *,
+[class*='bg-slate-9'] * {
+  color: #ffffff !important;
+}
+
+/* Exception: Keep white text on buttons */
+button.bg-orange-500 *,
+button.bg-blue-600 *,
+button.bg-green-600 *,
+a.bg-orange-500 *,
+a.bg-blue-600 *,
+a.bg-green-600 * {
+  color: #ffffff !important;
+}

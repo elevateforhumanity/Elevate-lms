@@ -1,0 +1,34 @@
+{
+  "kingdom-konnect": {
+    "display_name": "Kingdom Konnect",
+    "landing_title": "Welcome to Kingdom Konnect",
+    "landing_url": "/kingdom-konnect",
+    "drop_down_pages": ["mission", "programs", "events"],
+    "private": false,
+    "description": "Faith-based community development and spiritual workforce empowerment"
+  },
+  "urban-build-crew": {
+    "display_name": "Urban Build Crew",
+    "landing_title": "Urban Workforce Training",
+    "landing_url": "/urban-build-crew",
+    "drop_down_pages": ["about", "courses", "contact"],
+    "private": false,
+    "description": "Construction, trades, and urban workforce development programs"
+  },
+  "serene-comfort-care": {
+    "display_name": "Serene Comfort Care",
+    "landing_title": "Care with Compassion",
+    "landing_url": "/serene-comfort-care",
+    "drop_down_pages": ["services", "care-team", "apply"],
+    "private": false,
+    "description": "Healthcare services and professional training programs"
+  },
+  "elevate-brain": {
+    "display_name": "Elevate Brain (Private)",
+    "landing_title": "Internal Operations Intelligence Hub",
+    "landing_url": "/elevate-brain",
+    "drop_down_pages": ["admin-dashboard", "analytics", "internal-notes"],
+    "private": true,
+    "description": "Internal operations and analytics dashboard"
+  }
+}

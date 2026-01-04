@@ -1,0 +1,35 @@
+export const runtime = 'edge';
+export const maxDuration = 60;
+
+import { NextRequest, NextResponse } from 'next/server';
+import { createServerSupabaseClient } from '@/lib/auth';
+import { logger } from '@/lib/logger';
+
+export async function GET(req: NextRequest) {
+  try {
+    const supabase = await createServerSupabaseClient();
+    const { searchParams } = new URL(req.url);
+    const limit = parseInt(searchParams.get('limit') || '10');
+
+    const { data, error }: any = await supabase
+      .from('leaderboard')
+      .select(
+        `
+        *,
+        user:profiles!user_id(full_name, email)
+      `
+      )
+      .order('total_points', { ascending: false })
+      .limit(limit);
+
+    if (error) throw error;
+
+    return NextResponse.json({ leaderboard: data });
+  } catch (error: unknown) {
+    logger.error('Error fetching leaderboard:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch leaderboard' },
+      { status: 500 }
+    );
+  }
+}

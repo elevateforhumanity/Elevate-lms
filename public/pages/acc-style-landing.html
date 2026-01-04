@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Elevate for Humanity - Government-approved workforce development. WIOA, DOL, DOE compliant. 70% less than LearnWorlds."
+    />
+    <meta
+      name="keywords"
+      content="workforce development, career training, WIOA, DOL, Indianapolis jobs, online learning, LMS, government training"
+    />
+    <meta name="author" content="Elevate for Humanity" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Elevate for Humanity - Workforce Development"
+    />
+    <meta
+      property="og:description"
+      content="Government-approved career training platform"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-EFHWORKFORCE01"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-EFHWORKFORCE01');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Train for Your Career in Tech &amp; Trades | Elevate for Humanity
+    </title>
+    <meta
+      name="description"
+      content="Train for in-demand careers in technology, healthcare, and skilled trades. WIOA approved programs with job placement assistance."
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      /* Top Banner */
+      .top-banner {
+        background: #003366;
+        color: white;
+        padding: 8px 0;
+        text-align: center;
+        font-size: 13px;
+      }
+
+      .top-banner a {
+        color: #ffd700;
+        text-decoration: none;
+      }
+
+      /* Header */
+      .header {
+        background: white;
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #003366;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .request-info-btn {
+        background: #ff6600;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s;
+      }
+
+      .request-info-btn:hover {
+        background: #e55a00;
+      }
+
+      .phone-number {
+        color: #003366;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 1.1rem;
+      }
+
+      /* Hero Carousel */
+      .hero-carousel {
+        position: relative;
+        height: 500px;
+        overflow: hidden;
+      }
+
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)),
+          url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%23f0f8ff" width="1200" height="500"/><circle fill="%23003366" cx="200" cy="150" r="50" opacity="0.1"/><circle fill="%23ff6600" cx="800" cy="300" r="80" opacity="0.1"/><circle fill="%23003366" cx="1000" cy="100" r="60" opacity="0.1"/></svg>');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 0 20px;
+      }
+
+      .hero-badge {
+        background: #ff6600;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        display: inline-block;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+
+      .hero-cta {
+        background: #ff6600;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 4px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        transition: background 0.3s;
+      }
+
+      .hero-cta:hover {
+        background: #e55a00;
+      }
+
+      /* Info Form Sidebar */
+      .info-form-container {
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        width: 320px;
+        z-index: 200;
+      }
+
+      .form-title {
+        color: #003366;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .form-control,
+      .form-select {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      .form-control:focus,
+      .form-select:focus {
+        border-color: #ff6600;
+        outline: none;
+      }
+
+      .submit-btn {
+        width: 100%;
+        background: #ff6600;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .submit-btn:hover {
+        background: #e55a00;
+      }
+
+      .form-disclaimer {
+        font-size: 11px;
+        color: #666;
+        margin-top: 10px;
+        line-height: 1.3;
+      }
+
+      /* Main Content */
+      .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #003366;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 50px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Programs Grid */
+      .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+      }
+
+      .program-card {
+        background: white;
+        border-radius: 8px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        border-left: 4px solid #ff6600;
+      }
+
+      .program-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .program-title {
+        font-size: 1.4rem;
+        color: #003366;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .program-duration {
+        color: #ff6600;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .program-description {
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .program-features {
+        list-style: none;
+        margin-bottom: 20px;
+      }
+
+      .program-features li {
+        padding: 5px 0;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .program-features li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #ff6600;
+        font-weight: bold;
+      }
+
+      .program-cta {
+        background: #003366;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        transition: background 0.3s;
+      }
+
+      .program-cta:hover {
+        background: #004080;
+      }
+
+      /* Why Choose Section */
+      .why-choose {
+        background: #f8f9fa;
+        padding: 60px 20px;
+        margin: 60px 0;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .feature-item {
+        text-align: center;
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        color: #ff6600;
+        margin-bottom: 20px;
+      }
+
+      .feature-title {
+        font-size: 1.3rem;
+        color: #003366;
+        margin-bottom: 15px;
+        font-weight: bold;
+      }
+
+      .feature-description {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Testimonials */
+      .testimonials {
+        background: #003366;
+        color: white;
+        padding: 60px 20px;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+      }
+
+      .testimonial-author {
+        font-weight: bold;
+        color: #ffd700;
+      }
+
+      .testimonial-program {
+        color: #ccc;
+        font-size: 0.9rem;
+      }
+
+      /* Footer */
+      .footer {
+        background: #1a1a1a;
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .header-container {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .info-form-container {
+          position: static;
+          transform: none;
+          margin: 20px auto;
+          width: 90%;
+          max-width: 400px;
+        }
+
+        .programs-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 1400px) {
+        .info-form-container {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+      <strong>WIOA Approved Programs</strong> • Financial Aid Available •
+      <a href="tel:317-555-0123">Call (317) 555-0123</a>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-container">
+        <div class="logo">Elevate for Humanity</div>
+        <div class="header-actions">
+          <a href="tel:317-555-0123" class="phone-number">(317) 555-0123</a>
+          <a href="#info-form" class="request-info-btn">Request Info</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Carousel -->
+    <section class="hero-carousel">
+      <div class="hero-slide">
+        <div class="hero-content">
+          <div class="hero-badge">Voted Best Training Provider</div>
+          <h1 class="hero-title">
+            Train to be a Cybersecurity Specialist in as little as 12 months!
+          </h1>
+          <p class="hero-subtitle">
+            Explore our WIOA-approved programs and see why our students love
+            Elevate for Humanity.
+          </p>
+          <a href="#programs" class="hero-cta">View Our Programs</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Form Sidebar -->
+    <div class="info-form-container" id="info-form">
+      <h3 class="form-title">Want to learn more? Please fill out the form:</h3>
+      <form onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="fullName">Full Name*</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number*</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email*</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="program">Program of Interest*</label>
+          <select id="program" name="program" class="form-select" required>
+            <option value="">Select Program</option>
+            <option value="cybersecurity">Cybersecurity</option>
+            <option value="cloud-computing">Cloud Computing</option>
+            <option value="healthcare">Healthcare (CNA)</option>
+            <option value="electrical">Electrical Trades</option>
+            <option value="construction">Construction</option>
+            <option value="beauty">Beauty &amp; Wellness</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="howFound">How did you find us?*</label>
+          <select id="howFound" name="howFound" class="form-select" required>
+            <option value="">Select Option</option>
+            <option value="internet">Internet</option>
+            <option value="social-media">Social Media</option>
+            <option value="friend">Friend/Family</option>
+            <option value="advertisement">Advertisement</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Get Program Info</button>
+
+        <p class="form-disclaimer">
+          By submitting this form, I provide my signature, expressly consenting
+          to calls, emails and/or texts regarding my educational options from
+          Elevate for Humanity. I understand my consent is not required to
+          enroll and that I can withdraw my consent at any time.
+        </p>
+      </form>
+    </div>
+
+    <!-- Main Content -->
+    <main role="main" class="main-content">
+      <section id="programs">
+        <h2 class="section-title">
+          Training the next generation of skilled workers
+        </h2>
+        <p class="section-subtitle">
+          Welcome to Elevate for Humanity! For over 5 years, we've provided
+          quality workforce training to hundreds of graduates across Indiana. At
+          Elevate, you can gain real-world experience through hands-on training,
+          so you can learn the skills you need for a successful career.
+          Financial aid and WIOA funding are available for those who qualify,
+          supporting your path to success.
+        </p>
+
+        <div class="programs-grid">
+          <div class="program-card">
+            <h3 class="program-title">Cybersecurity</h3>
+            <div class="program-duration">Learn in as little as 12 months</div>
+            <p class="program-description">
+              Protect organizations from cyber threats with CompTIA Security+
+              certification and hands-on training.
+            </p>
+            <ul class="program-features">
+              <li>CompTIA Security+ Certification</li>
+              <li>Ethical Hacking Training</li>
+              <li>Network Security</li>
+              <li>Real-world lab experience</li>
+            </ul>
+            <a href="#info-form" class="program-cta">Learn More</a>
+          </div>
+
+          <div class="program-card">
+            <h3 class="program-title">Cloud Computing</h3>
+            <div class="program-duration">Learn in as little as 14 months</div>
+            <p class="program-description">
+              Master cloud platforms with Google Cloud and Microsoft Azure
+              certifications.
+            </p>
+            <ul class="program-features">
+              <li>Google Cloud Certification</li>
+              <li>Microsoft Azure Training</li>
+              <li>AWS Fundamentals</li>
+              <li>Hands-on cloud projects</li>
+            </ul>
+            <a href="#info-form" class="program-cta">Learn More</a>
+          </div>
+
+          <div class="program-card">
+            <h3 class="program-title">Healthcare (CNA)</h3>
+            <div class="program-duration">Learn in as little as 8 months</div>
+            <p class="program-description">
+              Start your healthcare career as a Certified Nursing Assistant with
+              clinical training.
+            </p>
+            <ul class="program-features">
+              <li>CNA Certification</li>
+              <li>Clinical Training</li>
+              <li>Patient Care Skills</li>
+              <li>Job placement assistance</li>
+            </ul>
+            <a href="#info-form" class="program-cta">Learn More</a>
+          </div>
+
+          <div class="program-card">
+            <h3 class="program-title">Electrical Trades</h3>
+            <div class="program-duration">Learn in as little as 16 months</div>
+            <p class="program-description">
+              Learn electrical installation, maintenance, and safety procedures
+              for residential and commercial work.
+            </p>
+            <ul class="program-features">
+              <li>Electrical Fundamentals</li>
+              <li>Safety Procedures</li>
+              <li>Code Compliance</li>
+              <li>Hands-on training</li>
+            </ul>
+            <a href="#info-form" class="program-cta">Learn More</a>
+          </div>
+
+          <div class="program-card">
+            <h3 class="program-title">Construction</h3>
+            <div class="program-duration">Learn in as little as 12 months</div>
+            <p class="program-description">
+              Build your future in the construction industry with hands-on
+              training and safety certification.
+            </p>
+            <ul class="program-features">
+              <li>Construction Fundamentals</li>
+              <li>Safety Certification</li>
+              <li>Tool Operation</li>
+              <li>Blueprint Reading</li>
+            </ul>
+            <a href="#info-form" class="program-cta">Learn More</a>
+          </div>
+
+          <div class="program-card">
+            <h3 class="program-title">Beauty &amp; Wellness</h3>
+            <div class="program-duration">Learn in as little as 20 months</div>
+            <p class="program-description">
+              Launch your career in cosmetology and beauty services with state
+              licensing preparation.
+            </p>
+            <ul class="program-features">
+              <li>Cosmetology License Prep</li>
+              <li>Hair &amp; Nail Techniques</li>
+              <li>Customer Service</li>
+              <li>Salon management</li>
+            </ul>
+            <a href="#info-form" class="program-cta">Learn More</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Section -->
+      <section class="why-choose">
+        <h2 class="section-title">Why choose Elevate for Humanity?</h2>
+        <p class="section-subtitle">
+          Here are just a few of the reasons we're the right choice.
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <h3 class="feature-title">Accelerated Programs</h3>
+            <p class="feature-description">
+              We offer programs that can be completed in as little as 8 months.
+            </p>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">📅</div>
+            <h3 class="feature-title">Flexible Class Schedules</h3>
+            <p class="feature-description">
+              Combining online and in-person instruction, our programs are made
+              to fit in your busy life.
+            </p>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🤝</div>
+            <h3 class="feature-title">1:1 Support</h3>
+            <p class="feature-description">
+              From admissions, to classes, to working in your new career, we'll
+              be by your side to help you succeed.
+            </p>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🔬</div>
+            <h3 class="feature-title">Real World Labs &amp; Training</h3>
+            <p class="feature-description">
+              We give you hands-on experience in fully equipped labs to help
+              prepare you for the real world.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials">
+        <h2 class="section-title">What Our Students Say</h2>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "I always wanted to be in a career where I can help other people
+              and make a real difference in their lives."
+            </p>
+            <div class="testimonial-author">Sarah M.</div>
+            <div class="testimonial-program">Healthcare (CNA) Graduate</div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "I'm excited because I'm the first member of my family to complete
+              a technical program and work in cybersecurity."
+            </p>
+            <div class="testimonial-author">Marcus J.</div>
+            <div class="testimonial-program">Cybersecurity Graduate</div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "Elevate taught me everything I need to know to get out there in
+              the field and be successful from day one."
+            </p>
+            <div class="testimonial-author">Jennifer L.</div>
+            <div class="testimonial-program">Cloud Computing Graduate</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&amp;copy; 2024 Elevate for Humanity. All rights reserved.</p>
+        <p>WIOA Approved Training Provider • Financial Aid Available</p>
+      </div>
+    </footer>
+
+    <script>
+      function handleFormSubmit(event) {
+        event.preventDefault();
+
+        // Get form data
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData);
+
+        // Show success message
+        alert(
+          `Thank you ${data.fullName}! We'll contact you within 24 hours about the ${data.program} program.`
+        );
+
+        // In real implementation, send to your CRM/email system
+        console.log('Lead captured:', data);
+
+        // Redirect to thank you page
+        window.location.href = '/thank-you.html';
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

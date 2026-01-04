@@ -1,0 +1,442 @@
+'use server';
+
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
+import { sendWelcomeEmail } from '@/lib/email/send';
+
+/**
+ * UNIFIED APPLICATION ACTIONS
+ *
+ * Server-side role assignment and application processing.
+ * Each role gets ONE submission path with deterministic outcomes.
+ */
+
+export type ApplicationRole =
+  | 'student'
+  | 'program_holder'
+  | 'employer'
+  | 'staff'
+  | 'instructor';
+
+export interface BaseApplicationData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  role: ApplicationRole;
+}
+
+export interface StudentApplicationData extends BaseApplicationData {
+  role: 'student';
+  dateOfBirth?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  zipCode?: string;
+  programInterest?: string;
+  employmentStatus?: string;
+  educationLevel?: string;
+  goals?: string;
+}
+
+export interface ProgramHolderApplicationData extends BaseApplicationData {
+  role: 'program_holder';
+  organizationName: string;
+  organizationType?: string;
+  website?: string;
+  numberOfStudents?: string;
+  programsOffered?: string;
+  partnershipGoals?: string;
+}
+
+export interface EmployerApplicationData extends BaseApplicationData {
+  role: 'employer';
+  companyName: string;
+  industry?: string;
+  companySize?: string;
+  website?: string;
+  hiringNeeds?: string;
+  positionsAvailable?: string;
+}
+
+export interface StaffApplicationData extends BaseApplicationData {
+  role: 'staff' | 'instructor';
+  position: string;
+  experience?: string;
+  education?: string;
+  certifications?: string;
+  availability?: string;
+  coverLetter?: string;
+}
+
+export type ApplicationData =
+  | StudentApplicationData
+  | ProgramHolderApplicationData
+  | EmployerApplicationData
+  | StaffApplicationData;
+
+/**
+ * Submit Student Application
+ * Creates user account with 'student' role and redirects to LMS dashboard
+ */
+export async function submitStudentApplication(data: StudentApplicationData) {
+  const supabase = await createClient();
+
+  try {
+    // 1. Create auth user
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email: data.email,
+      password: generateTemporaryPassword(),
+      options: {
+        data: {
+          first_name: data.firstName,
+          last_name: data.lastName,
+          phone: data.phone,
+          role: 'student',
+        },
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+      },
+    });
+
+    if (authError) throw authError;
+    if (!authData.user) throw new Error('Failed to create user');
+
+    // 2. Create profile with student role
+    const { error: profileError } = await supabase.from('profiles').insert({
+      id: authData.user.id,
+      email: data.email,
+      first_name: data.firstName,
+      last_name: data.lastName,
+      phone: data.phone,
+      role: 'student',
+      tenant_id: process.env.NEXT_PUBLIC_DEFAULT_TENANT_ID || null,
+    });
+
+    if (profileError) throw profileError;
+
+    // 3. Store application details
+    const { error: appError } = await supabase
+      .from('student_applications')
+      .insert({
+        user_id: authData.user.id,
+        email: data.email,
+        first_name: data.firstName,
+        last_name: data.lastName,
+        phone: data.phone,
+        date_of_birth: data.dateOfBirth,
+        address: data.address,
+        city: data.city,
+        state: data.state,
+        zip_code: data.zipCode,
+        program_interest: data.programInterest,
+        employment_status: data.employmentStatus,
+        education_level: data.educationLevel,
+        goals: data.goals,
+        status: 'pending',
+        submitted_at: new Date().toISOString(),
+      });
+
+    if (appError) throw appError;
+
+    // Send welcome email
+    await sendWelcomeEmail(data.email, data.firstName, 'student');
+
+    revalidatePath('/admin/applications');
+
+    return {
+      success: true,
+      userId: authData.user.id,
+      redirectTo: '/apply/success?role=student',
+    };
+  } catch (error) {
+    console.error('Student application error:', error);
+    return {
+      success: false,
+      error:
+        error instanceof Error ? error.message : 'Failed to submit application',
+    };
+  }
+}
+
+/**
+ * Submit Program Holder Application
+ * Creates user account with 'program_holder' role and sets onboarding flag
+ */
+export async function submitProgramHolderApplication(
+  data: ProgramHolderApplicationData
+) {
+  const supabase = await createClient();
+
+  try {
+    // 1. Create auth user
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email: data.email,
+      password: generateTemporaryPassword(),
+      options: {
+        data: {
+          first_name: data.firstName,
+          last_name: data.lastName,
+          phone: data.phone,
+          role: 'program_holder',
+          organization_name: data.organizationName,
+        },
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+      },
+    });
+
+    if (authError) throw authError;
+    if (!authData.user) throw new Error('Failed to create user');
+
+    // 2. Create profile with program_holder role
+    const { error: profileError } = await supabase.from('profiles').insert({
+      id: authData.user.id,
+      email: data.email,
+      first_name: data.firstName,
+      last_name: data.lastName,
+      phone: data.phone,
+      role: 'program_holder',
+      tenant_id: process.env.NEXT_PUBLIC_DEFAULT_TENANT_ID || null,
+      onboarding_completed: false,
+    });
+
+    if (profileError) throw profileError;
+
+    // 3. Store application details
+    const { error: appError } = await supabase
+      .from('program_holder_applications')
+      .insert({
+        user_id: authData.user.id,
+        email: data.email,
+        first_name: data.firstName,
+        last_name: data.lastName,
+        phone: data.phone,
+        organization_name: data.organizationName,
+        organization_type: data.organizationType,
+        website: data.website,
+        number_of_students: data.numberOfStudents,
+        programs_offered: data.programsOffered,
+        partnership_goals: data.partnershipGoals,
+        status: 'pending_verification',
+        submitted_at: new Date().toISOString(),
+      });
+
+    if (appError) throw appError;
+
+    revalidatePath('/admin/applications');
+
+    return {
+      success: true,
+      userId: authData.user.id,
+      redirectTo: '/apply/success?role=program-holder',
+    };
+  } catch (error) {
+    console.error('Program holder application error:', error);
+    return {
+      success: false,
+      error:
+        error instanceof Error ? error.message : 'Failed to submit application',
+    };
+  }
+}
+
+/**
+ * Submit Employer Application
+ * Creates user account with 'employer' role and sets verification flag
+ */
+export async function submitEmployerApplication(data: EmployerApplicationData) {
+  const supabase = await createClient();
+
+  try {
+    // 1. Create auth user
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email: data.email,
+      password: generateTemporaryPassword(),
+      options: {
+        data: {
+          first_name: data.firstName,
+          last_name: data.lastName,
+          phone: data.phone,
+          role: 'employer',
+          company_name: data.companyName,
+        },
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+      },
+    });
+
+    if (authError) throw authError;
+    if (!authData.user) throw new Error('Failed to create user');
+
+    // 2. Create profile with employer role
+    const { error: profileError } = await supabase.from('profiles').insert({
+      id: authData.user.id,
+      email: data.email,
+      first_name: data.firstName,
+      last_name: data.lastName,
+      phone: data.phone,
+      role: 'employer',
+      tenant_id: process.env.NEXT_PUBLIC_DEFAULT_TENANT_ID || null,
+      verified: false,
+    });
+
+    if (profileError) throw profileError;
+
+    // 3. Store application details
+    const { error: appError } = await supabase
+      .from('employer_applications')
+      .insert({
+        user_id: authData.user.id,
+        email: data.email,
+        first_name: data.firstName,
+        last_name: data.lastName,
+        phone: data.phone,
+        company_name: data.companyName,
+        industry: data.industry,
+        company_size: data.companySize,
+        website: data.website,
+        hiring_needs: data.hiringNeeds,
+        positions_available: data.positionsAvailable,
+        status: 'pending_verification',
+        submitted_at: new Date().toISOString(),
+      });
+
+    if (appError) throw appError;
+
+    revalidatePath('/admin/applications');
+
+    return {
+      success: true,
+      userId: authData.user.id,
+      redirectTo: '/apply/success?role=employer',
+    };
+  } catch (error) {
+    console.error('Employer application error:', error);
+    return {
+      success: false,
+      error:
+        error instanceof Error ? error.message : 'Failed to submit application',
+    };
+  }
+}
+
+/**
+ * Submit Staff/Instructor Application
+ * Creates user account with 'staff' or 'instructor' role and requires admin approval
+ */
+export async function submitStaffApplication(data: StaffApplicationData) {
+  const supabase = await createClient();
+
+  try {
+    // 1. Create auth user
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email: data.email,
+      password: generateTemporaryPassword(),
+      options: {
+        data: {
+          first_name: data.firstName,
+          last_name: data.lastName,
+          phone: data.phone,
+          role: data.role,
+          position: data.position,
+        },
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+      },
+    });
+
+    if (authError) throw authError;
+    if (!authData.user) throw new Error('Failed to create user');
+
+    // 2. Create profile with staff/instructor role (inactive until approved)
+    const { error: profileError } = await supabase.from('profiles').insert({
+      id: authData.user.id,
+      email: data.email,
+      first_name: data.firstName,
+      last_name: data.lastName,
+      phone: data.phone,
+      role: data.role,
+      tenant_id: process.env.NEXT_PUBLIC_DEFAULT_TENANT_ID || null,
+      active: false, // Requires admin approval
+    });
+
+    if (profileError) throw profileError;
+
+    // 3. Store application details
+    const { error: appError } = await supabase
+      .from('staff_applications')
+      .insert({
+        user_id: authData.user.id,
+        email: data.email,
+        first_name: data.firstName,
+        last_name: data.lastName,
+        phone: data.phone,
+        role: data.role,
+        position: data.position,
+        experience: data.experience,
+        education: data.education,
+        certifications: data.certifications,
+        availability: data.availability,
+        cover_letter: data.coverLetter,
+        status: 'pending_approval',
+        submitted_at: new Date().toISOString(),
+      });
+
+    if (appError) throw appError;
+
+    revalidatePath('/admin/applications');
+
+    return {
+      success: true,
+      userId: authData.user.id,
+      redirectTo: '/apply/success?role=staff',
+    };
+  } catch (error) {
+    console.error('Staff application error:', error);
+    return {
+      success: false,
+      error:
+        error instanceof Error ? error.message : 'Failed to submit application',
+    };
+  }
+}
+
+/**
+ * Generate temporary password for new users
+ * Users will be prompted to set their own password on first login
+ */
+function generateTemporaryPassword(): string {
+  const length = 16;
+  const charset =
+    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
+  let password = '';
+  for (let i = 0; i < length; i++) {
+    password += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+  return password;
+}
+
+/**
+ * Get application status for a user
+ */
+export async function getApplicationStatus(userId: string) {
+  const supabase = await createClient();
+
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', userId)
+    .single();
+
+  if (!profile) return null;
+
+  const tableName = `${profile.role}_applications`;
+
+  const { data, error }: any = await supabase
+    .from(tableName)
+    .select('*')
+    .eq('user_id', userId)
+    .single();
+
+  if (error) return null;
+
+  return data;
+}

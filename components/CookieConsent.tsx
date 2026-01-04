@@ -1,0 +1,147 @@
+"use client";
+
+import React from 'react';
+
+import { useState, useEffect } from 'react';
+import { X } from 'lucide-react';
+
+export default function CookieConsent() {
+  const [showBanner, setShowBanner] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Check if user has already made a choice
+    const consent = localStorage.getItem('cookie-consent');
+    if (!consent) {
+      // Delay showing banner slightly for better UX
+      setTimeout(() => {
+        setShowBanner(true);
+        setTimeout(() => setIsVisible(true), 100);
+      }, 1000);
+    }
+  }, []);
+
+  const handleAccept = () => {
+    localStorage.setItem('cookie-consent', 'accepted');
+    localStorage.setItem('cookie-consent-date', new Date().toISOString());
+    setIsVisible(false);
+    setTimeout(() => setShowBanner(false), 300);
+
+    // Enable analytics if they were waiting for consent
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('consent', 'update', {
+        analytics_storage: 'granted',
+      });
+    }
+  };
+
+  const handleReject = () => {
+    localStorage.setItem('cookie-consent', 'rejected');
+    localStorage.setItem('cookie-consent-date', new Date().toISOString());
+    setIsVisible(false);
+    setTimeout(() => setShowBanner(false), 300);
+
+    // Disable analytics
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('consent', 'update', {
+        analytics_storage: 'denied',
+      });
+    }
+  };
+
+  const handleClose = () => {
+    setIsVisible(false);
+    setTimeout(() => setShowBanner(false), 300);
+  };
+
+  if (!showBanner) return null;
+
+  return (
+    <div
+      className={`fixed bottom-0 left-0 right-0 z-[9999] transition-transform duration-300 ${
+        isVisible ? 'translate-y-0' : 'translate-y-full'
+      }`}
+    >
+      <div className="bg-white border-t-2 border-gray-200 shadow-2xl">
+        <div className="container mx-auto px-4 py-6 max-w-7xl">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            {/* Content */}
+            <div className="flex-1 pr-4">
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 mt-1">
+                  <svg
+                    className="w-6 h-6 text-brand-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-1">
+                    We Value Your Privacy
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    We use cookies to enhance your experience, analyze site
+                    traffic, and provide personalized content. By clicking
+                    "Accept All", you consent to our use of cookies.{' '}
+                    <a
+                      href="/privacy-policy"
+                      className="text-brand-orange-600 hover:text-blue-700 underline"
+                    >
+                      Learn more
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* Actions */}
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <button
+                onClick={handleReject}
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                aria-label="Reject all cookies"
+              >
+                Reject All
+              </button>
+              <button
+                onClick={handleAccept}
+                className="px-6 py-2 text-sm font-medium text-white bg-brand-orange-600 hover:bg-brand-orange-700 rounded-lg transition-colors shadow-sm"
+                aria-label="Accept all cookies"
+              >
+                Accept All
+              </button>
+              <button
+                onClick={handleClose}
+                className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                aria-label="Close cookie consent banner"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Helper function to check if user has consented
+export function hasUserConsented(): boolean | null {
+  if (typeof window === 'undefined') return null;
+  const consent = localStorage.getItem('cookie-consent');
+  if (!consent) return null;
+  return consent === 'accepted';
+}
+
+// Helper function to check if analytics should be enabled
+export function shouldEnableAnalytics(): boolean {
+  const consent = hasUserConsented();
+  return consent === true;
+}
