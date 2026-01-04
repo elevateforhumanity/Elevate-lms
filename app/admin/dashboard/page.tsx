@@ -42,7 +42,9 @@ export default async function AdminDashboardOrchestrated() {
   } = await supabase.auth.getUser();
 
   if (userError || !user) {
-    throw new Error(`[ADMIN AUTH] getUser failed: user=${user?.id || 'null'}, error=${userError?.message || 'no user returned'}`);
+    throw new Error(
+      `[ADMIN AUTH] getUser failed: user=${user?.id || 'null'}, error=${userError?.message || 'no user returned'}`
+    );
   }
 
   // Get admin profile - THROW ERROR INSTEAD OF REDIRECT
@@ -53,15 +55,21 @@ export default async function AdminDashboardOrchestrated() {
     .single();
 
   if (profileError) {
-    throw new Error(`[ADMIN PROFILE] Query failed: user_id=${user.id}, error="${profileError.message}", code=${profileError.code}, hint=${profileError.hint || 'none'}`);
+    throw new Error(
+      `[ADMIN PROFILE] Query failed: user_id=${user.id}, error="${profileError.message}", code=${profileError.code}, hint=${profileError.hint || 'none'}`
+    );
   }
 
   if (!profile) {
-    throw new Error(`[ADMIN PROFILE] Null result: user_id=${user.id}, no error but no data returned`);
+    throw new Error(
+      `[ADMIN PROFILE] Null result: user_id=${user.id}, no error but no data returned`
+    );
   }
 
   if (!['admin', 'super_admin', 'org_admin'].includes(profile.role)) {
-    throw new Error(`[ADMIN ROLE] Unauthorized: user_id=${user.id}, email=${profile.email}, role="${profile.role}"`);
+    throw new Error(
+      `[ADMIN ROLE] Unauthorized: user_id=${user.id}, email=${profile.email}, role="${profile.role}"`
+    );
   }
 
   // SNAPSHOT METRICS
@@ -153,47 +161,47 @@ export default async function AdminDashboardOrchestrated() {
       {((atRiskStudents || 0) > 0 ||
         (overdueReports || 0) > 0 ||
         (lowComplianceHolders?.length || 0) > 0) && (
-        <section className="max-w-7xl mx-auto px-4 py-6">
-          <div className="bg-red-50 border-2 border-red-600 rounded-lg p-6">
-            <div className="flex items-start gap-4">
-              <AlertTriangle className="h-8 w-8 text-red-600 flex-shrink-0" />
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <div className="bg-red-50 border-2 border-red-600 rounded-lg p-4 sm:p-6">
+            <div className="flex items-start gap-3 sm:gap-4">
+              <AlertTriangle className="h-6 w-6 sm:h-8 sm:w-8 text-red-600 flex-shrink-0" />
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-red-900 mb-3">
+                <h2 className="text-lg sm:text-xl font-bold text-red-900 mb-2 sm:mb-3">
                   Critical Issues Requiring Attention
                 </h2>
                 <div className="space-y-2">
                   {(atRiskStudents || 0) > 0 && (
-                    <div className="flex items-center justify-between p-3 bg-white rounded-lg">
-                      <span className="text-red-900 font-semibold">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 p-3 bg-white rounded-lg">
+                      <span className="text-sm sm:text-base text-red-900 font-semibold">
                         {atRiskStudents} student
                         {(atRiskStudents || 0) > 1 ? 's' : ''} at risk of
                         dropping out
                       </span>
                       <Link
                         href="/admin/students?filter=at-risk"
-                        className="px-4 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition"
+                        className="px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition text-center"
                       >
                         Review
                       </Link>
                     </div>
                   )}
                   {(overdueReports || 0) > 0 && (
-                    <div className="flex items-center justify-between p-3 bg-white rounded-lg">
-                      <span className="text-red-900 font-semibold">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 p-3 bg-white rounded-lg">
+                      <span className="text-sm sm:text-base text-red-900 font-semibold">
                         {overdueReports} overdue compliance report
                         {(overdueReports || 0) > 1 ? 's' : ''}
                       </span>
                       <Link
                         href="/admin/compliance?filter=overdue"
-                        className="px-4 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition"
+                        className="px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition text-center"
                       >
                         Review
                       </Link>
                     </div>
                   )}
                   {(lowComplianceHolders?.length || 0) > 0 && (
-                    <div className="flex items-center justify-between p-3 bg-white rounded-lg">
-                      <span className="text-red-900 font-semibold">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 p-3 bg-white rounded-lg">
+                      <span className="text-sm sm:text-base text-red-900 font-semibold">
                         {lowComplianceHolders?.length} program holder
                         {(lowComplianceHolders?.length || 0) > 1
                           ? 's'
@@ -202,7 +210,7 @@ export default async function AdminDashboardOrchestrated() {
                       </span>
                       <Link
                         href="/admin/program-holders?filter=low-compliance"
-                        className="px-4 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition"
+                        className="px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition text-center"
                       >
                         Review
                       </Link>
@@ -216,39 +224,41 @@ export default async function AdminDashboardOrchestrated() {
       )}
 
       {/* Snapshot Metrics */}
-      <section className="max-w-7xl mx-auto px-4 py-8">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">
           System Snapshot
         </h2>
 
         {/* Students */}
-        <div className="mb-8">
-          <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-            <Users className="h-5 w-5 text-blue-600" />
+        <div className="mb-6 sm:mb-8">
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
+            <Users className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
             Students
           </h3>
-          <div className="grid md:grid-cols-4 gap-4">
-            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-              <div className="text-3xl font-bold text-slate-900 mb-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">
                 {totalStudents || 0}
               </div>
-              <div className="text-sm text-slate-600">Total Enrolled</div>
+              <div className="text-xs sm:text-sm text-slate-600">
+                Total Enrolled
+              </div>
             </div>
-            <div className="bg-green-50 rounded-lg shadow-sm border border-green-600 p-6">
-              <div className="text-3xl font-bold text-green-900 mb-2">
+            <div className="bg-green-50 rounded-lg shadow-sm border border-green-600 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-green-900 mb-1 sm:mb-2">
                 {activeStudents || 0}
               </div>
-              <div className="text-sm text-green-900">Active</div>
+              <div className="text-xs sm:text-sm text-green-900">Active</div>
             </div>
             <div
-              className={`rounded-lg shadow-sm border p-6 ${
+              className={`rounded-lg shadow-sm border p-4 sm:p-6 ${
                 (atRiskStudents || 0) > 0
                   ? 'bg-yellow-50 border-yellow-600'
                   : 'bg-white border-slate-200'
               }`}
             >
               <div
-                className={`text-3xl font-bold mb-2 ${
+                className={`text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 ${
                   (atRiskStudents || 0) > 0
                     ? 'text-yellow-900'
                     : 'text-slate-900'
@@ -257,7 +267,7 @@ export default async function AdminDashboardOrchestrated() {
                 {atRiskStudents || 0}
               </div>
               <div
-                className={`text-sm ${
+                className={`text-xs sm:text-sm ${
                   (atRiskStudents || 0) > 0
                     ? 'text-yellow-900'
                     : 'text-slate-600'
@@ -266,50 +276,52 @@ export default async function AdminDashboardOrchestrated() {
                 At Risk
               </div>
             </div>
-            <div className="bg-blue-50 rounded-lg shadow-sm border border-blue-600 p-6">
-              <div className="text-3xl font-bold text-blue-900 mb-2">
+            <div className="bg-blue-50 rounded-lg shadow-sm border border-blue-600 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-blue-900 mb-1 sm:mb-2">
                 {completedStudents || 0}
               </div>
-              <div className="text-sm text-blue-900">Completed</div>
+              <div className="text-xs sm:text-sm text-blue-900">Completed</div>
             </div>
           </div>
         </div>
 
         {/* Program Holders */}
-        <div className="mb-8">
-          <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-            <Building2 className="h-5 w-5 text-purple-600" />
+        <div className="mb-6 sm:mb-8">
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
+            <Building2 className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
             Program Holders
           </h3>
-          <div className="grid md:grid-cols-4 gap-4">
-            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-              <div className="text-3xl font-bold text-slate-900 mb-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">
                 {totalProgramHolders || 0}
               </div>
-              <div className="text-sm text-slate-600">Total Registered</div>
+              <div className="text-xs sm:text-sm text-slate-600">
+                Total Registered
+              </div>
             </div>
-            <div className="bg-green-50 rounded-lg shadow-sm border border-green-600 p-6">
-              <div className="text-3xl font-bold text-green-900 mb-2">
+            <div className="bg-green-50 rounded-lg shadow-sm border border-green-600 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-green-900 mb-1 sm:mb-2">
                 {verifiedProgramHolders || 0}
               </div>
-              <div className="text-sm text-green-900">Verified</div>
+              <div className="text-xs sm:text-sm text-green-900">Verified</div>
             </div>
             <div
-              className={`rounded-lg shadow-sm border p-6 ${
+              className={`rounded-lg shadow-sm border p-4 sm:p-6 ${
                 (overdueReports || 0) > 0
                   ? 'bg-red-50 border-red-600'
                   : 'bg-white border-slate-200'
               }`}
             >
               <div
-                className={`text-3xl font-bold mb-2 ${
+                className={`text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 ${
                   (overdueReports || 0) > 0 ? 'text-red-900' : 'text-slate-900'
                 }`}
               >
                 {overdueReports || 0}
               </div>
               <div
-                className={`text-sm ${
+                className={`text-xs sm:text-sm ${
                   (overdueReports || 0) > 0 ? 'text-red-900' : 'text-slate-600'
                 }`}
               >
@@ -317,14 +329,14 @@ export default async function AdminDashboardOrchestrated() {
               </div>
             </div>
             <div
-              className={`rounded-lg shadow-sm border p-6 ${
+              className={`rounded-lg shadow-sm border p-4 sm:p-6 ${
                 (lowComplianceHolders?.length || 0) > 0
                   ? 'bg-yellow-50 border-yellow-600'
                   : 'bg-white border-slate-200'
               }`}
             >
               <div
-                className={`text-3xl font-bold mb-2 ${
+                className={`text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 ${
                   (lowComplianceHolders?.length || 0) > 0
                     ? 'text-yellow-900'
                     : 'text-slate-900'
@@ -333,7 +345,7 @@ export default async function AdminDashboardOrchestrated() {
                 {lowComplianceHolders?.length || 0}
               </div>
               <div
-                className={`text-sm ${
+                className={`text-xs sm:text-sm ${
                   (lowComplianceHolders?.length || 0) > 0
                     ? 'text-yellow-900'
                     : 'text-slate-600'
@@ -346,108 +358,132 @@ export default async function AdminDashboardOrchestrated() {
         </div>
 
         {/* Employers & Placements */}
-        <div className="mb-8">
-          <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-            <Briefcase className="h-5 w-5 text-green-600" />
+        <div className="mb-6 sm:mb-8">
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
+            <Briefcase className="h-4 w-4 sm:h-5 sm:w-5 text-green-600" />
             Employers & Placements
           </h3>
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-              <div className="text-3xl font-bold text-slate-900 mb-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">
                 {totalEmployers || 0}
               </div>
-              <div className="text-sm text-slate-600">Total Employers</div>
+              <div className="text-xs sm:text-sm text-slate-600">
+                Total Employers
+              </div>
             </div>
-            <div className="bg-blue-50 rounded-lg shadow-sm border border-blue-600 p-6">
-              <div className="text-3xl font-bold text-blue-900 mb-2">
+            <div className="bg-blue-50 rounded-lg shadow-sm border border-blue-600 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-blue-900 mb-1 sm:mb-2">
                 {activeJobPostings || 0}
               </div>
-              <div className="text-sm text-blue-900">Active Job Postings</div>
+              <div className="text-xs sm:text-sm text-blue-900">
+                Active Job Postings
+              </div>
             </div>
-            <div className="bg-green-50 rounded-lg shadow-sm border border-green-600 p-6">
-              <div className="text-3xl font-bold text-green-900 mb-2">
+            <div className="bg-green-50 rounded-lg shadow-sm border border-green-600 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-green-900 mb-1 sm:mb-2">
                 {jobPlacements || 0}
               </div>
-              <div className="text-sm text-green-900">Total Placements</div>
+              <div className="text-xs sm:text-sm text-green-900">
+                Total Placements
+              </div>
             </div>
           </div>
         </div>
 
         {/* Programs */}
-        <div className="mb-8">
-          <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-            <TrendingUp className="h-5 w-5 text-orange-600" />
+        <div className="mb-6 sm:mb-8">
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
+            <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-orange-600" />
             Programs
           </h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-              <div className="text-3xl font-bold text-slate-900 mb-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">
                 {totalPrograms || 0}
               </div>
-              <div className="text-sm text-slate-600">Total Programs</div>
+              <div className="text-xs sm:text-sm text-slate-600">
+                Total Programs
+              </div>
             </div>
-            <div className="bg-green-50 rounded-lg shadow-sm border border-green-600 p-6">
-              <div className="text-3xl font-bold text-green-900 mb-2">
+            <div className="bg-green-50 rounded-lg shadow-sm border border-green-600 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-green-900 mb-1 sm:mb-2">
                 {activePrograms || 0}
               </div>
-              <div className="text-sm text-green-900">Active Programs</div>
+              <div className="text-xs sm:text-sm text-green-900">
+                Active Programs
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Quick Actions */}
-      <section className="max-w-7xl mx-auto px-4 py-8">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">
           Quick Actions
         </h2>
-        <div className="grid md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           <Link
             href="/admin/students"
-            className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 hover:border-blue-600 hover:shadow-lg transition"
+            className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-blue-600 hover:shadow-lg transition"
           >
-            <Users className="h-8 w-8 text-blue-600 mb-3" />
-            <h3 className="font-bold text-slate-900 mb-2">Manage Students</h3>
-            <p className="text-sm text-slate-600">View all enrollments</p>
+            <Users className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 mb-2 sm:mb-3" />
+            <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">
+              Manage Students
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600">
+              View all enrollments
+            </p>
           </Link>
 
           <Link
             href="/admin/program-holders"
-            className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 hover:border-purple-600 hover:shadow-lg transition"
+            className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-purple-600 hover:shadow-lg transition"
           >
-            <Building2 className="h-8 w-8 text-purple-600 mb-3" />
-            <h3 className="font-bold text-slate-900 mb-2">Program Holders</h3>
-            <p className="text-sm text-slate-600">Monitor compliance</p>
+            <Building2 className="h-6 w-6 sm:h-8 sm:w-8 text-purple-600 mb-2 sm:mb-3" />
+            <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">
+              Program Holders
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600">
+              Monitor compliance
+            </p>
           </Link>
 
           <Link
             href="/admin/employers"
-            className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 hover:border-green-600 hover:shadow-lg transition"
+            className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-green-600 hover:shadow-lg transition"
           >
-            <Briefcase className="h-8 w-8 text-green-600 mb-3" />
-            <h3 className="font-bold text-slate-900 mb-2">Employers</h3>
-            <p className="text-sm text-slate-600">Track placements</p>
+            <Briefcase className="h-6 w-6 sm:h-8 sm:w-8 text-green-600 mb-2 sm:mb-3" />
+            <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">
+              Employers
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600">
+              Track placements
+            </p>
           </Link>
 
           <Link
             href="/admin/reports"
-            className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 hover:border-orange-600 hover:shadow-lg transition"
+            className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-orange-600 hover:shadow-lg transition"
           >
-            <FileText className="h-8 w-8 text-orange-600 mb-3" />
-            <h3 className="font-bold text-slate-900 mb-2">Generate Reports</h3>
-            <p className="text-sm text-slate-600">Export data</p>
+            <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600 mb-2 sm:mb-3" />
+            <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">
+              Generate Reports
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600">Export data</p>
           </Link>
         </div>
       </section>
 
       {/* ALL ADMIN FEATURES - Gitpod-style Control Panel */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">
           Platform Management
         </h2>
 
         {/* Content & Courses */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <h3 className="text-lg font-semibold text-slate-900 mb-4">
             Content & Courses
           </h3>
