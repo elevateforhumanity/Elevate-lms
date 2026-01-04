@@ -100,7 +100,7 @@ export default function ProgramsBioSitePage() {
       description: "Industry-recognized certifications you'll earn",
       href: '/credentials',
       icon: Award,
-      image: '/images/certificates-hero.jpg',
+      image: '/media/programs/efh-cna-hero.jpg',
       color: 'red',
     },
     {
@@ -108,7 +108,7 @@ export default function ProgramsBioSitePage() {
       description: 'Completion certificates and digital badges',
       href: '/certificates',
       icon: FileCheck,
-      image: '/images/certificates-hero.jpg',
+      image: '/media/programs/efh-beauty-career-educator-hero.jpg',
       color: 'teal',
     },
     {

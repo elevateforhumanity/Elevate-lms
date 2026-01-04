@@ -42,7 +42,7 @@ export default function AboutPage() {
       title: 'Our Founder',
       description: 'Meet Elizabeth Greene, founder and CEO of Elevate for Humanity.',
       href: '/founder',
-      image: '/media/programs/medical-esthetics-training-hd.jpg',
+      image: '/media/programs/efh-business-startup-marketing-hero.jpg',
     },
     {
       title: 'Our Team',
@@ -54,13 +54,13 @@ export default function AboutPage() {
       title: 'Philanthropy',
       description: 'Our charitable giving and community impact initiatives.',
       href: '/philanthropy',
-      image: '/media/programs/cpr-group-training-hd.jpg',
+      image: '/media/programs/efh-public-safety-reentry-hero.jpg',
     },
     {
       title: 'Blog',
       description: 'Stories, updates, and insights from our team.',
       href: '/blog',
-      image: '/media/programs/beauty.jpg',
+      image: '/media/programs/workforce-readiness-hero.jpg',
     },
   ];
 
