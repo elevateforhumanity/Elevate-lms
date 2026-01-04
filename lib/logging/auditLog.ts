@@ -35,6 +35,7 @@ export async function auditLog(entry: AuditLogEntry): Promise<void> {
     const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
     if (!supabaseUrl || !serviceRoleKey) {
+      console.error('[auditLog] Missing Supabase credentials');
       return;
     }
 
@@ -52,9 +53,11 @@ export async function auditLog(entry: AuditLogEntry): Promise<void> {
     });
 
     if (error) {
+      console.error('[auditLog] Failed to insert audit log:', error);
     }
   } catch (error: unknown) {
     // Don't throw - audit logging should never break the app
+    console.error('[auditLog] Exception:', error);
   }
 }
 

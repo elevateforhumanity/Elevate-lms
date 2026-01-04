@@ -157,6 +157,7 @@ export default function BookAppointment() {
         await stripe.redirectToCheckout({ sessionId });
       }
     } catch (error: unknown) {
+      console.error('Booking error:', error);
       alert('Booking failed. Please call 317-314-3757 for assistance.');
     }
   };

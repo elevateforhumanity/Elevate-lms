@@ -65,6 +65,7 @@ export default function AcceptInvitePage({
       });
       setLoading(false);
     } catch (err) {
+      console.error('Failed to load invite:', err);
       setError('Failed to load invitation');
       setLoading(false);
     }
@@ -101,6 +102,7 @@ export default function AcceptInvitePage({
       // Success - redirect to organization dashboard
       router.push('/dashboard');
     } catch (err) {
+      console.error('Failed to accept invite:', err);
       setError(
         err instanceof Error ? err.message : 'Failed to accept invitation'
       );

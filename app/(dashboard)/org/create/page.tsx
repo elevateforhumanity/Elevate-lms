@@ -49,6 +49,7 @@ export default function CreateOrgPage() {
       const data = await response.json();
       router.push('/dashboard');
     } catch (err) {
+      console.error('Failed to create organization:', err);
       setError(
         err instanceof Error ? err.message : 'Failed to create organization'
       );

@@ -54,6 +54,7 @@ export async function createShop(formData: FormData) {
     .single();
 
   if (shopError || !shop) {
+    console.error('Failed to create shop:', shopError);
     throw new Error('Failed to create shop');
   }
 
@@ -67,6 +68,7 @@ export async function createShop(formData: FormData) {
     });
 
   if (staffError) {
+    console.error('Failed to create shop_staff:', staffError);
     // Shop was created but staff link failed - this is a problem
     throw new Error('Shop created but failed to assign ownership');
   }

@@ -77,10 +77,12 @@ export default function AdminProgramHolderDocuments() {
       const { data, error } = await query;
 
       if (error) {
+        console.error('Error loading documents:', error);
       } else if (data) {
         setDocuments(data);
       }
     } catch (err) {
+      console.error('Error:', err);
     } finally {
       setLoading(false);
     }
@@ -105,6 +107,7 @@ export default function AdminProgramHolderDocuments() {
         .eq('id', docId);
 
       if (error) {
+        console.error('Error updating document:', error);
         alert('Failed to update document');
       } else {
         setSelectedDoc(null);
@@ -112,6 +115,7 @@ export default function AdminProgramHolderDocuments() {
         loadDocuments();
       }
     } catch (err) {
+      console.error('Error:', err);
       alert('Failed to update document');
     } finally {
       setProcessing(false);

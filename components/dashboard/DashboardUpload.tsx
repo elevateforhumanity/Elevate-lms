@@ -72,6 +72,7 @@ export function DashboardUpload({
       }
     } catch (err) {
       setError('Upload failed. Please try again.');
+      console.error('Upload error:', err);
     } finally {
       setUploading(false);
     }
@@ -91,6 +92,7 @@ export function DashboardUpload({
         }),
       });
     } catch (err) {
+      console.error('Failed to save to database:', err);
     }
   };
 

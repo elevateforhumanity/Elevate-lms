@@ -60,6 +60,7 @@ export async function createNotification(data: {
     .single();
 
   if (error) {
+    console.error('Error creating notification:', error);
     return null;
   }
 
@@ -80,6 +81,7 @@ export async function getUnreadNotifications(userId: string): Promise<Notificati
     .order('created_at', { ascending: false });
 
   if (error) {
+    console.error('Error fetching unread notifications:', error);
     return [];
   }
 
@@ -103,6 +105,7 @@ export async function getUserNotifications(
     .limit(limit);
 
   if (error) {
+    console.error('Error fetching user notifications:', error);
     return [];
   }
 
@@ -124,6 +127,7 @@ export async function markNotificationAsRead(notificationId: string): Promise<bo
     .eq('id', notificationId);
 
   if (error) {
+    console.error('Error marking notification as read:', error);
     return false;
   }
 
@@ -146,6 +150,7 @@ export async function markAllNotificationsAsRead(userId: string): Promise<boolea
     .eq('read', false);
 
   if (error) {
+    console.error('Error marking all notifications as read:', error);
     return false;
   }
 
@@ -164,6 +169,7 @@ export async function deleteNotification(notificationId: string): Promise<boolea
     .eq('id', notificationId);
 
   if (error) {
+    console.error('Error deleting notification:', error);
     return false;
   }
 
@@ -183,6 +189,7 @@ export async function getUnreadNotificationCount(userId: string): Promise<number
     .eq('read', false);
 
   if (error) {
+    console.error('Error getting unread count:', error);
     return 0;
   }
 
@@ -461,6 +468,7 @@ export async function cleanupOldNotifications(retentionDays: number = 90): Promi
     .select('id');
 
   if (error) {
+    console.error('Error cleaning up old notifications:', error);
     return 0;
   }
 

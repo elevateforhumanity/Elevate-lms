@@ -135,6 +135,7 @@ Preferred Contact: ${form.preferredContact}`,
         );
       }
     } catch (err: unknown) {
+      console.error('Application submission error:', err);
       setErrorMessage(
         (err instanceof Error ? err.message : String(err)) ||
           "We're having a temporary issue submitting this form. Please call 317-314-3757 or use the Quick Inquiry form while we fix this."

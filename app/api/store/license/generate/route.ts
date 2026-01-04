@@ -122,6 +122,9 @@ export async function POST(req: Request) {
       );
     }
 
+    // TODO: Send license key via email
+    // await sendLicenseEmail(email, licenseKey, config);
+
     return Response.json({
       success: true,
       licenseKey, // Only return once, should be emailed to customer

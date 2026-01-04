@@ -44,6 +44,7 @@ export default function VideoHeroBanner({
     };
 
     const handleError = () => {
+      console.error('Video failed to load:', videoSrc);
       setHasError(true);
       setIsLoaded(true); // Show fallback
     };

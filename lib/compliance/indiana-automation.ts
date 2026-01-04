@@ -189,6 +189,7 @@ export async function runDailyIndianaComplianceCheck(): Promise<{
       }
     }
   } catch (error: unknown) {
+    console.error(
       '[Indiana Compliance] Fatal error during compliance check:',
       error
     );

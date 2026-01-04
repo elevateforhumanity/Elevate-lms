@@ -14,6 +14,7 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
+    console.error('Program Holder Portal Error:', error);
   }, [error]);
 
   return (

@@ -45,6 +45,7 @@ export async function createDrugTest(order: DrugTestOrder): Promise<string | nul
     .single();
 
   if (error) {
+    console.error('Error creating drug test:', error);
     return null;
   }
 
@@ -64,6 +65,7 @@ export async function getStudentDrugTests(studentId: string): Promise<DrugTest[]
     .order('scheduled_date', { ascending: false });
 
   if (error) {
+    console.error('Error fetching drug tests:', error);
     return [];
   }
 
@@ -83,6 +85,7 @@ export async function getEnrollmentDrugTests(enrollmentId: string): Promise<Drug
     .order('scheduled_date', { ascending: false });
 
   if (error) {
+    console.error('Error fetching enrollment drug tests:', error);
     return [];
   }
 
@@ -103,6 +106,7 @@ export async function getPendingDrugTests(studentId: string): Promise<DrugTest[]
     .order('scheduled_date', { ascending: true });
 
   if (error) {
+    console.error('Error fetching pending drug tests:', error);
     return [];
   }
 
@@ -129,6 +133,7 @@ export async function updateDrugTestStatus(
     .eq('id', testId);
 
   if (error) {
+    console.error('Error updating drug test status:', error);
     return false;
   }
 
@@ -159,6 +164,7 @@ export async function recordDrugTestResult(result: DrugTestResult): Promise<bool
     .eq('id', result.test_id);
 
   if (error) {
+    console.error('Error recording drug test result:', error);
     return false;
   }
 
@@ -179,6 +185,7 @@ export async function getCollectionSites(state: string): Promise<CollectionSite[
     .order('city');
 
   if (error) {
+    console.error('Error fetching collection sites:', error);
     return [];
   }
 
@@ -202,6 +209,7 @@ export async function getCollectionSitesByCity(
     .eq('active', true);
 
   if (error) {
+    console.error('Error fetching collection sites:', error);
     return [];
   }
 
@@ -229,6 +237,7 @@ export async function getNearestCollectionSites(
     .limit(limit);
 
   if (error) {
+    console.error('Error fetching nearest collection sites:', error);
     return [];
   }
 
@@ -251,6 +260,7 @@ export async function cancelDrugTest(testId: string, reason: string): Promise<bo
     .eq('id', testId);
 
   if (error) {
+    console.error('Error cancelling drug test:', error);
     return false;
   }
 
@@ -272,6 +282,7 @@ export async function markDrugTestNoShow(testId: string): Promise<boolean> {
     .eq('id', testId);
 
   if (error) {
+    console.error('Error marking drug test as no-show:', error);
     return false;
   }
 
@@ -294,6 +305,7 @@ export async function getDrugTestHistory(testId: string) {
     .order('performed_at', { ascending: false });
 
   if (error) {
+    console.error('Error fetching drug test history:', error);
     return [];
   }
 
@@ -314,6 +326,7 @@ export async function getProgramDrugTestingPolicy(programId: string) {
     .single();
 
   if (error) {
+    console.error('Error fetching drug testing policy:', error);
     return null;
   }
 

@@ -56,6 +56,7 @@ export async function logAuditEvent(entry: AuditLogEntry): Promise<void> {
       !process.env.NEXT_PUBLIC_SUPABASE_URL ||
       !process.env.SUPABASE_SERVICE_ROLE_KEY
     ) {
+      console.warn('Audit logging disabled: Supabase not configured');
       return;
     }
 
@@ -70,8 +71,10 @@ export async function logAuditEvent(entry: AuditLogEntry): Promise<void> {
     });
 
     if (error) {
+      console.error('Failed to log audit event:', error);
     }
   } catch (error) {
+    console.error('Audit logging error:', error);
   }
 }
 

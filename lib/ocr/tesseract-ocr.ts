@@ -48,6 +48,7 @@ export async function extractTextFromImage(
       })),
     };
   } catch (error) {
+    console.error('OCR Error:', error);
     throw new Error(`Failed to extract text: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
@@ -69,6 +70,7 @@ export async function extractTextFromMultipleImages(
       const result = await extractTextFromImage(file, language);
       results.push(result);
     } catch (error) {
+      console.error('Failed to process file:', error);
       results.push({
         text: '',
         confidence: 0,

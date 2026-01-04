@@ -23,6 +23,7 @@ export default async function ClientPortalPage() {
     .order('created_at', { ascending: false });
 
   if (documentsError) {
+    console.error('Error fetching documents:', documentsError);
   }
 
   // Fetch user's appointments
@@ -33,6 +34,7 @@ export default async function ClientPortalPage() {
     .order('appointment_date', { ascending: false });
 
   if (appointmentsError) {
+    console.error('Error fetching appointments:', appointmentsError);
   }
 
   return (

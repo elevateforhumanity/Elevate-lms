@@ -279,6 +279,7 @@ export async function syncAllExternalModules(): Promise<void> {
         // Small delay to avoid rate limiting
         await new Promise((resolve) => setTimeout(resolve, 100));
       } catch (error) {
+        console.error(
           `[HybridEnrollment] Sync failed for ${progress.id}:`,
           error
         );

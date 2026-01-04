@@ -96,6 +96,7 @@ export default function TaxCalculatorPage() {
 
       alert('Calculation saved to your account! You can return to it anytime.');
     } catch (error) {
+      console.error('Save error:', error);
       alert('Failed to save calculation. Please try again.');
     }
   };

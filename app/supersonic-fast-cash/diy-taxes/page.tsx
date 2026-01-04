@@ -165,6 +165,7 @@ export default function DIYTaxesPage() {
       const result = await response.json();
       setEstimatedRefund(result.estimatedRefund || 0);
     } catch (error) {
+      console.error('Calculation error:', error);
     } finally {
       setCalculating(false);
     }
@@ -179,6 +180,7 @@ export default function DIYTaxesPage() {
       });
       alert('Progress saved!');
     } catch (error) {
+      console.error('Save error:', error);
     }
   };
 

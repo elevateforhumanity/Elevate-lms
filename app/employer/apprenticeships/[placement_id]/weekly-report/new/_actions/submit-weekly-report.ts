@@ -75,6 +75,7 @@ export async function submitWeeklyReport(formData: FormData) {
     });
 
   if (reportError) {
+    console.error('Failed to create weekly report:', reportError);
     throw new Error('Failed to submit weekly report');
   }
 

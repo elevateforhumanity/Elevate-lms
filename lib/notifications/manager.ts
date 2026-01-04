@@ -122,6 +122,7 @@ export class NotificationManager {
         body: JSON.stringify(subscription),
       });
     } catch (error: unknown) {
+      console.error(
         '[Notifications] Failed to send subscription to server:',
         error
       );
@@ -137,6 +138,7 @@ export class NotificationManager {
         body: JSON.stringify(subscription),
       });
     } catch (error: unknown) {
+      console.error(
         '[Notifications] Failed to remove subscription from server:',
         error
       );

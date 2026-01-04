@@ -91,6 +91,7 @@ function SubscriptionsContent() {
       .order('amount_cents', { ascending: true });
 
     if (error) {
+      console.error('Error loading plans:', error);
       toast.error('Failed to load subscription plans');
     } else {
       setPlans(data || []);
@@ -145,6 +146,7 @@ function SubscriptionsContent() {
         window.location.href = data.url;
       }
     } catch (err: unknown) {
+      console.error('Subscription err:', err);
       toast.error(
         (err instanceof Error ? err.message : String(err)) ||
           'Failed to start subscription'
@@ -174,6 +176,7 @@ function SubscriptionsContent() {
         window.location.href = data.url;
       }
     } catch (err: unknown) {
+      console.error('Portal err:', err);
       toast.error(
         (err instanceof Error ? err.message : String(err)) ||
           'Failed to open billing portal'

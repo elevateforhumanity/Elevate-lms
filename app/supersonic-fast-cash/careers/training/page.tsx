@@ -281,6 +281,7 @@ export default function TrainingPage() {
         }
       } catch (error) {
         alert('Error processing payment. Please try again.');
+        console.error('Stripe checkout error:', error);
       }
       return;
     }

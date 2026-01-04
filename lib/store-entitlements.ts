@@ -24,6 +24,7 @@ export async function hasEntitlement(
   });
 
   if (error) {
+    console.error('Error checking entitlement:', error);
     return false;
   }
 
@@ -42,6 +43,7 @@ export async function getUserEntitlements(userId: string): Promise<string[]> {
     .or(`expires_at.is.null,expires_at.gt.${new Date().toISOString()}`);
 
   if (error) {
+    console.error('Error fetching entitlements:', error);
     return [];
   }
 

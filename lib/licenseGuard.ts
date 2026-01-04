@@ -24,6 +24,7 @@ export async function getTenantLicense(
     .single();
 
   if (error) {
+    console.error('Failed to fetch tenant license:', error);
     return null;
   }
 
@@ -191,6 +192,7 @@ export async function updateTenantLicense(
     .single();
 
   if (error) {
+    console.error('Failed to update tenant license:', error);
     return null;
   }
 

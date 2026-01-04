@@ -139,6 +139,7 @@ export async function downloadEnvFile(autopilotSecret: string): Promise<string |
     return result.envContent || null;
 
   } catch (error: unknown) {
+    console.error('Failed to download env file:', error);
     return null;
   }
 }

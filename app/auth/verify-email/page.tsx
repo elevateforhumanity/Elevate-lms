@@ -31,6 +31,7 @@ export default function VerifyEmailPage() {
       if (error) throw error;
       setStatus('sent');
     } catch (error: unknown) {
+      console.error('Resend error:', error);
       setStatus('error');
     }
   };
