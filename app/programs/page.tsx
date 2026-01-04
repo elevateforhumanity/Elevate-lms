@@ -197,8 +197,6 @@ export default function ProgramsBioSitePage() {
                   Browse Programs
                 </Link>
               </div>
-            </div>
-          </div>
         </div>
       </section>
 
