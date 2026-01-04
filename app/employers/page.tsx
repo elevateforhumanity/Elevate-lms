@@ -53,57 +53,48 @@ export default function EmployersPage() {
         </div>
       </section>
 
-      {/* Benefits Section with Real Images */}
+      {/* What Employers Get */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Why Partner With Us
+          <h2 className="text-3xl font-bold text-center mb-4">
+            What You Get as an Employer Partner
           </h2>
+          <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            Access to trained, certified candidates ready to work. No recruiting fees. No placement costs.
+          </p>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
-                <Image
-                  src="/media/programs/cpr-group-training-hd.jpg"
-                  alt="Pre-Screened Candidates"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Pre-Screened Candidates</h3>
-              <p className="text-gray-600">
-                All candidates have completed rigorous training and passed
-                industry certifications.
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-3">Free Job Postings</h3>
+              <p className="text-gray-700 mb-4">
+                Post unlimited job openings at no cost. Your listings go directly to students completing relevant training programs.
               </p>
+              <ul className="space-y-2 text-gray-600">
+                <li>• No posting fees</li>
+                <li>• Direct access to candidates</li>
+                <li>• Targeted by program/skill</li>
+              </ul>
             </div>
-            <div className="text-center">
-              <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
-                <Image
-                  src="/media/programs/cpr-certification-group-hd.jpg"
-                  alt="Industry Certifications"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Industry Certifications</h3>
-              <p className="text-gray-600">
-                Candidates hold recognized credentials in healthcare, skilled
-                trades, technology, and more.
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-3">Pre-Trained Candidates</h3>
+              <p className="text-gray-700 mb-4">
+                Candidates have completed industry-recognized training and hold certifications required for the role.
               </p>
+              <ul className="space-y-2 text-gray-600">
+                <li>• Industry certifications</li>
+                <li>• Hands-on training completed</li>
+                <li>• Background checks available</li>
+              </ul>
             </div>
-            <div className="text-center">
-              <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
-                <Image
-                  src="/media/programs/cpr-individual-practice-hd.jpg"
-                  alt="Ongoing Support"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Ongoing Support</h3>
-              <p className="text-gray-600">
-                We provide continued support to ensure successful placements and
-                long-term retention.
+            <div className="bg-gray-50 rounded-lg p-6">
+              <h3 className="text-xl font-semibold mb-3">Apprenticeship Support</h3>
+              <p className="text-gray-700 mb-4">
+                We help you set up DOL-registered apprenticeship programs with administrative support and funding guidance.
               </p>
+              <ul className="space-y-2 text-gray-600">
+                <li>• DOL registration assistance</li>
+                <li>• Curriculum development</li>
+                <li>• Compliance support</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -173,11 +164,10 @@ export default function EmployersPage() {
         </div>
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Build Your Team?
+            Ready to Hire Trained Talent?
           </h2>
           <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
-            Join hundreds of employers who have found qualified talent through
-            our platform.
+            Post your job openings for free and connect with certified candidates.
           </p>
           <Link href="/employers/post-job">
             <Button size="lg" variant="secondary">
