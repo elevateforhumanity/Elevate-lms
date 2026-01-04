@@ -29,19 +29,6 @@ export const metadata: Metadata = {
 };
 
 export default function ProgramsBioSitePage() {
-  // Internal navigation for Programs subpages
-  const navLinks = [
-    { label: 'Programs Catalog', href: '/programs-catalog' },
-    { label: 'Program Finder', href: '/program-finder' },
-    { label: 'Compare Programs', href: '/compare-programs' },
-    { label: 'Apprenticeships', href: '/apprenticeships' },
-    { label: 'Courses', href: '/courses' },
-    { label: 'Pathways', href: '/pathways' },
-    { label: 'Credentials', href: '/credentials' },
-    { label: 'Certificates', href: '/certificates' },
-    { label: 'Accreditation', href: '/accreditation' },
-    { label: 'Features', href: '/features' },
-  ];
 
   const links = [
     {
@@ -215,64 +202,7 @@ export default function ProgramsBioSitePage() {
         </div>
       </section>
 
-      {/* Internal Navigation */}
-      <nav className="bg-white border-b border-gray-200 sticky top-[72px] z-40 shadow-sm">
-        <div className="max-w-7xl mx-auto px-3 md:px-4">
-          <div className="flex overflow-x-auto gap-1 py-2 md:py-3 scrollbar-hide">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="rich-nav-link px-4 py-2 text-sm font-semibold text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition whitespace-nowrap"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </nav>
 
-      {/* Profile Section */}
-      <section id="programs" className="pt-16 pb-8 px-4">
-        <div className="max-w-2xl mx-auto text-center">
-          {/* Logo/Icon */}
-          <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-            <GraduationCap className="w-12 h-12 text-gray-900" />
-          </div>
-
-          {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            Free Career Training Programs
-          </h1>
-
-          {/* Tagline */}
-          <p className="text-xl text-gray-600 mb-8">
-            Programs in Healthcare, Skilled Trades & Business
-          </p>
-
-          {/* Stats */}
-          <div className="flex justify-center gap-8 mb-8">
-            <div>
-              <div className="text-3xl font-black text-brand-orange-600">
-                100%
-              </div>
-              <div className="text-sm text-gray-600">Free</div>
-            </div>
-            <div>
-              <div className="text-3xl font-black text-brand-green-600">
-                WIOA
-              </div>
-              <div className="text-sm text-gray-600">Funded</div>
-            </div>
-            <div>
-              <div className="text-3xl font-black text-brand-blue-600">
-                ETPL
-              </div>
-              <div className="text-sm text-gray-600">Approved</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Program Cards Grid - Square Cards */}
       <section className="pb-16 px-4 sm:px-6 lg:px-8">
