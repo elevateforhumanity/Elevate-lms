@@ -82,13 +82,13 @@ const studentFeatureLinks = [
 
 // Portal/Dashboard links (role-based, not in public nav)
 const portalLinks = [
-  { href: '/student/dashboard', label: 'Student Portal' },
-  { href: '/admin', label: 'Admin Dashboard' },
-  {
-    href: 'https://elevateforhumanitylearning.com',
-    label: 'LMS',
-    external: true,
-  },
+  { href: '/admin', label: 'Admin Portal' },
+  { href: '/staff-portal', label: 'Staff Portal' },
+  { href: '/employer', label: 'Employer Portal' },
+  { href: '/partner', label: 'Partner Portal' },
+  { href: '/program-holder', label: 'Program Holder Portal' },
+  { href: '/lms', label: 'LMS Portal' },
+  { href: '/parent-portal', label: 'Parent Portal' },
 ];
 
 export function MainNav() {
