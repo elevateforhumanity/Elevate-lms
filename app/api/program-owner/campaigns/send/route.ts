@@ -1,4 +1,4 @@
-export const runtime = 'edge';
+// Using Node.js runtime for email compatibility
 export const maxDuration = 60;
 
 import { NextRequest, NextResponse } from 'next/server';

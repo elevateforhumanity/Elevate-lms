@@ -7,7 +7,14 @@
 
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy-load Resend to avoid build-time initialization
+let resend: Resend | null = null;
+function getResend() {
+  if (!resend && process.env.RESEND_API_KEY) {
+    resend = new Resend(process.env.RESEND_API_KEY);
+  }
+  return resend;
+}
 
 const FROM_EMAIL = 'Elevate for Humanity <noreply@elevateforhumanity.org>';
 const ADMIN_EMAIL = 'elevate4humanityedu@gmail.com';
@@ -28,7 +35,7 @@ export async function sendEmail(options: EmailOptions): Promise<boolean> {
       return false;
     }
 
-    await resend.emails.send({
+    await getResend()?.emails.send({
       from: FROM_EMAIL,
       to: options.to,
       subject: options.subject,

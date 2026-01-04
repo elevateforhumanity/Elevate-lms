@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export const runtime = 'edge';
+// Using Node.js runtime for email compatibility
 export const maxDuration = 60;
 import { sendProductRejectionEmail } from '@/lib/email/resend';
 import { createClient } from '@/lib/supabase/server';
