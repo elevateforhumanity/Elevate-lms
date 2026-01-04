@@ -194,7 +194,7 @@ export default function HomePage() {
               <div className="bg-white border-2 border-gray-200 hover:border-brand-blue-600 rounded-2xl p-8 transition-all hover:shadow-xl">
                 <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
                   <Image
-                    src="/images/homepage/students.jpg"
+                    src="/images/artlist/hero-training-1.jpg"
                     alt="Students in training"
                     fill
                     className="object-cover"
@@ -246,7 +246,7 @@ export default function HomePage() {
               <div className="bg-white border-2 border-gray-200 hover:border-brand-purple-600 rounded-2xl p-8 transition-all hover:shadow-xl">
                 <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
                   <Image
-                    src="/images/homepage/schools-nonprofits.jpg"
+                    src="/images/artlist/hero-training-3.jpg"
                     alt="Schools and nonprofit organizations"
                     fill
                     className="object-cover"
@@ -273,7 +273,7 @@ export default function HomePage() {
               <div className="bg-white border-2 border-gray-200 hover:border-brand-green-600 rounded-2xl p-8 transition-all hover:shadow-xl">
                 <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
                   <Image
-                    src="/images/homepage/government-agencies.jpg"
+                    src="/images/artlist/hero-training-4.jpg"
                     alt="Government agencies and workforce boards"
                     fill
                     className="object-cover"
@@ -298,7 +298,7 @@ export default function HomePage() {
               <div className="bg-white border-2 border-gray-200 hover:border-pink-600 rounded-2xl p-8 transition-all hover:shadow-xl">
                 <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
                   <Image
-                    src="/images/homepage/funders-philanthropy.jpg"
+                    src="/images/artlist/hero-training-5.jpg"
                     alt="Funders and philanthropic organizations"
                     fill
                     className="object-cover"
@@ -338,7 +338,7 @@ export default function HomePage() {
             <div className="text-center">
               <div className="w-full h-48 relative mx-auto mb-6 rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/homepage/funded-programs-optimized.jpg"
+                  src="/images/artlist/hero-training-6.jpg"
                   alt="Funded workforce training programs"
                   fill
                   className="object-cover"
@@ -357,7 +357,7 @@ export default function HomePage() {
             <div className="text-center">
               <div className="w-full h-48 relative mx-auto mb-6 rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/homepage/licensable-platform.jpg"
+                  src="/images/artlist/hero-training-7.jpg"
                   alt="Licensable workforce platform"
                   fill
                   className="object-cover"
@@ -376,7 +376,7 @@ export default function HomePage() {
             <div className="text-center">
               <div className="w-full h-48 relative mx-auto mb-6 rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/homepage/wraparound-support-optimized.jpg"
+                  src="/images/artlist/hero-training-8.jpg"
                   alt="Wraparound student support services"
                   fill
                   className="object-cover"
