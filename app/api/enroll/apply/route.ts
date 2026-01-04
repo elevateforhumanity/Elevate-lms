@@ -1,4 +1,4 @@
-export const runtime = 'edge';
+// Using Node.js runtime for Resend compatibility
 export const maxDuration = 60;
 
 import { NextResponse } from 'next/server';
