@@ -130,7 +130,7 @@ export default function VideoHeroBanner({
     >
       {/* Video Container - Mobile Optimized with viewport units */}
       <div
-        className="relative w-full min-h-[500px]"
+        className="relative w-full min-h-[500px] md:min-h-[600px] lg:min-h-[700px]"
         style={{
           height: '100vh',
           height: '100svh',
