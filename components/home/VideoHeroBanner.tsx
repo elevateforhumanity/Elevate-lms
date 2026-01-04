@@ -24,12 +24,19 @@ export default function VideoHeroBanner({
   secondaryCTA = { text: 'Learn More', href: '/programs' },
 }: VideoHeroBannerProps) {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(!withAudio);
+  const [isMuted, setIsMuted] = useState(true); // Always start muted for mobile compatibility
   const [showControls, setShowControls] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(true); // Start true - hero visible by default
+  const [isLoaded, setIsLoaded] = useState(false); // Start false to prevent hydration mismatch
   const [hasError, setHasError] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setIsMounted(true);
+    setIsLoaded(true);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;

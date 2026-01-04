@@ -75,7 +75,7 @@ export default function SupersonicFastCashPage() {
 
       {/* Hero Video */}
       <section className="relative w-full -mt-[72px]">
-        <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
+        <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800">
           <video
             autoPlay
             loop
@@ -83,12 +83,38 @@ export default function SupersonicFastCashPage() {
             playsInline
             preload="metadata"
             className="absolute inset-0 h-full w-full object-cover"
+            poster="/images/homepage/og-image.png"
           >
             <source
-              src="/videos/hero-video-segment-with-narration.mp4"
+              src="/videos/hero-home.mp4"
               type="video/mp4"
             />
           </video>
+          {/* Hero Content Overlay */}
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div className="text-center text-white px-6 max-w-4xl">
+              <h1 className="text-4xl md:text-6xl font-black mb-6">
+                Supersonic Fast Cash
+              </h1>
+              <p className="text-xl md:text-2xl mb-8">
+                Get your refund faster with professional tax preparation
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/supersonic-fast-cash/book-appointment"
+                  className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors"
+                >
+                  Book Appointment
+                </Link>
+                <Link
+                  href="/supersonic-fast-cash/pricing"
+                  className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-lg font-bold text-lg transition-colors"
+                >
+                  View Pricing
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
