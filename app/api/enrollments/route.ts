@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs'; // Changed from 'edge' to support email sending
 export const maxDuration = 60;
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
 import { createServerSupabaseClient, getCurrentUser } from '@/lib/auth';
 import { toError, toErrorMessage } from '@/lib/safe';
+import { sendCourseEnrollmentEmail } from '@/lib/email-course-notifications';
 
 export async function GET(request: Request) {
   try {
