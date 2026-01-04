@@ -45,8 +45,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Send email with signed agreement PDF
-
     return NextResponse.json({ success: true, agreement });
   } catch (error) {
     console.error('Error:', error);
