@@ -47,6 +47,7 @@ export async function GET(request: NextRequest) {
 
     if (!tokenResponse.ok) {
       const errorData = await tokenResponse.json();
+      console.error('LinkedIn token exchange failed:', errorData);
       return NextResponse.redirect(
         new URL(
           `/admin/settings/social-media?error=token_exchange_failed`,
@@ -107,6 +108,7 @@ export async function GET(request: NextRequest) {
       });
 
     if (saveError) {
+      console.error('Failed to save LinkedIn credentials:', saveError);
       return NextResponse.redirect(
         new URL(`/admin/settings/social-media?error=save_failed`, request.url)
       );
@@ -119,6 +121,7 @@ export async function GET(request: NextRequest) {
       )
     );
   } catch (error) {
+    console.error('LinkedIn OAuth error:', error);
     return NextResponse.redirect(
       new URL(
         `/admin/settings/social-media?error=unexpected_error`,

@@ -57,6 +57,7 @@ export async function POST(request: NextRequest) {
       });
 
     if (keyError) {
+      console.error('Error generating access key:', keyError);
       return NextResponse.json(
         { error: 'Failed to generate access key' },
         { status: 500 }
@@ -153,6 +154,7 @@ export async function POST(request: NextRequest) {
         `
       });
     } catch (emailError) {
+      console.error('Error sending email:', emailError);
       // Don't fail the request if email fails
     }
 
@@ -163,6 +165,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
+    console.error('Generate access key error:', error);
     return NextResponse.json(
       { error: 'Failed to generate access key' },
       { status: 500 }

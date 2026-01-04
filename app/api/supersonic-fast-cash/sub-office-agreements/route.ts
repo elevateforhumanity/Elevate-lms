@@ -38,15 +38,18 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (error) {
+      console.error('Error saving agreement:', error);
       return NextResponse.json(
         { error: 'Failed to save agreement' },
         { status: 500 }
       );
     }
 
+    // TODO: Send email with signed agreement PDF
 
     return NextResponse.json({ success: true, agreement });
   } catch (error) {
+    console.error('Error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -72,6 +75,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ agreements });
   } catch (error) {
+    console.error('Error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

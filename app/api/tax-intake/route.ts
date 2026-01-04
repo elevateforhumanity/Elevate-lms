@@ -28,11 +28,13 @@ export async function POST(req: Request) {
       .single();
 
     if (error) {
+      console.error("Tax intake insert error:", error);
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
     return NextResponse.json({ ok: true, intake_id: data.id });
   } catch (error: any) {
+    console.error("Tax intake API error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

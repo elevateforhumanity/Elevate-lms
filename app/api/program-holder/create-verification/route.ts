@@ -79,6 +79,7 @@ export async function POST(request: NextRequest) {
       url: session.url,
     });
   } catch (err: unknown) {
+    console.error('Verification session creation error:', err);
     return NextResponse.json(
       {
         error:

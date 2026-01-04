@@ -77,6 +77,7 @@ export async function POST(request: NextRequest) {
       });
 
     if (idFrontError) {
+      console.error('Error uploading ID front:', idFrontError);
       return NextResponse.json(
         { error: 'Failed to upload ID front' },
         { status: 500 }
@@ -92,6 +93,7 @@ export async function POST(request: NextRequest) {
       });
 
     if (selfieError) {
+      console.error('Error uploading selfie:', selfieError);
       return NextResponse.json(
         { error: 'Failed to upload selfie' },
         { status: 500 }
@@ -110,6 +112,7 @@ export async function POST(request: NextRequest) {
         });
 
       if (idBackError) {
+        console.error('Error uploading ID back:', idBackError);
         // Continue anyway - ID back is optional
       }
     }
@@ -143,6 +146,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (verificationError) {
+      console.error('Error saving verification:', verificationError);
       return NextResponse.json(
         { error: 'Failed to save verification record' },
         { status: 500 }
@@ -189,6 +193,7 @@ export async function POST(request: NextRequest) {
         'Documents uploaded successfully. Review within 1-2 business days.',
     });
   } catch (error) {
+    console.error('Manual ID upload error:', error);
     return NextResponse.json(
       { error: 'Upload failed. Please try again.' },
       { status: 500 }

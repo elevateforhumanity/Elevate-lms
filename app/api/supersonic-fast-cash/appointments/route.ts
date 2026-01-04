@@ -75,6 +75,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (error) {
+      console.error('Database error:', error);
       return NextResponse.json(
         { error: 'Failed to create appointment' },
         { status: 500 }
@@ -109,6 +110,7 @@ export async function POST(request: NextRequest) {
         .update({ confirmation_sent: true })
         .eq('id', appointment.id);
     } catch (emailError) {
+      console.error('Email error:', emailError);
       // Don't fail the request if email fails
     }
 
@@ -131,6 +133,7 @@ export async function POST(request: NextRequest) {
         `,
       });
     } catch (emailError) {
+      console.error('Admin email error:', emailError);
     }
 
     return NextResponse.json({
@@ -138,6 +141,7 @@ export async function POST(request: NextRequest) {
       appointment,
     });
   } catch (error) {
+    console.error('Appointment booking error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -172,6 +176,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ appointments });
   } catch (error) {
+    console.error('Fetch appointments error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

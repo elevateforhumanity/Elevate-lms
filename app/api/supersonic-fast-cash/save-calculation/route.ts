@@ -38,6 +38,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (error) {
+      console.error('Save calculation error:', error);
       return NextResponse.json(
         { error: 'Failed to save calculation', details: error.message },
         { status: 500 }
@@ -50,6 +51,7 @@ export async function POST(request: NextRequest) {
       message: 'Calculation saved successfully',
     });
   } catch (error) {
+    console.error('Server error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -90,6 +92,7 @@ export async function GET(request: NextRequest) {
       calculations: data,
     });
   } catch (error) {
+    console.error('Server error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

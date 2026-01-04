@@ -88,6 +88,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (updateError) {
+      console.error('Student decline error:', updateError);
       return NextResponse.json(
         { error: 'Failed to decline student', details: updateError.message },
         { status: 500 }
@@ -127,7 +128,9 @@ export async function POST(request: NextRequest) {
         studentProfile.full_name || 'Student',
         phProfile?.full_name || 'Program Holder',
         reason
-      ).catch((err) => console.error('[Email] Decline notification failed:', err));
+      ).catch((err) =>
+        console.error('[Email] Student decline notification failed:', err)
+      );
     }
 
     return NextResponse.json(
@@ -139,6 +142,7 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error: unknown) {
+    console.error('Unexpected error in student decline:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

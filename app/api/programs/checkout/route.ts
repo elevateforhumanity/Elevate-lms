@@ -200,6 +200,7 @@ export async function POST(request: NextRequest) {
       sessionId: session.id,
     });
   } catch (err: unknown) {
+    console.error('Program checkout error:', err);
     return NextResponse.json(
       {
         error: 'Failed to create checkout session',

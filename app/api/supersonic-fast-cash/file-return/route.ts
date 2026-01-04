@@ -35,6 +35,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (clientError) {
+      console.error('Client creation error:', clientError);
       return NextResponse.json(
         { error: 'Failed to create client record' },
         { status: 500 }
@@ -104,6 +105,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (returnError) {
+      console.error('Tax return creation error:', returnError);
     }
 
     // E-file the return
@@ -171,6 +173,7 @@ export async function POST(request: NextRequest) {
         `
       });
     } catch (emailError) {
+      console.error('Email error:', emailError);
     }
 
     return NextResponse.json({
@@ -181,6 +184,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
+    console.error('File return error:', error);
     return NextResponse.json(
       { error: 'Failed to file tax return' },
       { status: 500 }

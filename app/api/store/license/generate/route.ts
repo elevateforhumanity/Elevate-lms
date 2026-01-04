@@ -122,6 +122,7 @@ export async function POST(req: Request) {
       );
     }
 
+    // TODO: Send license key via email
     // await sendLicenseEmail(email, licenseKey, config);
 
     return Response.json({

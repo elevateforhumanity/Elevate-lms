@@ -89,6 +89,7 @@ export async function POST(request: NextRequest) {
       paymentIntentId: paymentIntent.id,
     });
   } catch (err: unknown) {
+    console.error('License payment intent creation error:', err);
     return NextResponse.json(
       {
         error:

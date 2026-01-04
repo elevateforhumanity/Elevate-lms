@@ -84,12 +84,12 @@ export async function POST(req: Request) {
       .single();
 
     if (error) {
-      console.error('Inquiry save error:', {
+      console.error('Supabase insert error:', {
         error,
-        code: error instanceof Error && "code" in error ? (error as any).code : "UNKNOWN",
+        code: error instanceof Error && "code" in error ? (error as unknown).code : "UNKNOWN",
         message: error instanceof Error ? error.message : String(error),
-        details: (error as any).details,
-        hint: (error as any).hint,
+        details: error.details,
+        hint: error.hint,
       });
       return NextResponse.json(
         {
@@ -158,6 +158,7 @@ export async function POST(req: Request) {
         }
       );
     } catch (emailError) {
+      console.error('Email notification error:', emailError);
       // Don't fail the inquiry if email fails
     }
 
@@ -171,6 +172,7 @@ export async function POST(req: Request) {
       { status: 200 }
     );
   } catch (error: unknown) {
+    console.error('Inquiry submission error:', err);
     return NextResponse.json(
       { error: 'Unexpected error processing inquiry' },
       { status: 500 }

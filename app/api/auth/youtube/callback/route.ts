@@ -46,6 +46,7 @@ export async function GET(request: NextRequest) {
     const tokenData = await tokenResponse.json();
 
     if (!tokenResponse.ok || tokenData.error) {
+      console.error('YouTube token exchange failed:', tokenData);
       return NextResponse.redirect(
         new URL('/admin/settings/social-media?error=token_failed', request.url)
       );
@@ -86,6 +87,7 @@ export async function GET(request: NextRequest) {
       });
 
     if (saveError) {
+      console.error('Failed to save YouTube credentials:', saveError);
       return NextResponse.redirect(
         new URL('/admin/settings/social-media?error=save_failed', request.url)
       );
@@ -95,6 +97,7 @@ export async function GET(request: NextRequest) {
       new URL('/admin/settings/social-media?success=youtube_connected', request.url)
     );
   } catch (error) {
+    console.error('YouTube OAuth error:', error);
     return NextResponse.redirect(
       new URL('/admin/settings/social-media?error=unexpected', request.url)
     );

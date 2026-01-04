@@ -37,6 +37,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ sessionId: session.id });
   } catch (err: unknown) {
     const error = toError(err);
+    console.error('Product checkout error:', error);
     return NextResponse.json(
       { error: toErrorMessage(err) },
       { status: 500 }

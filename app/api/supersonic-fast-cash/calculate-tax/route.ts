@@ -107,6 +107,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
+    console.error('Tax calculation error:', error);
     return NextResponse.json(
       { error: 'Failed to calculate tax' },
       { status: 500 }

@@ -72,6 +72,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (trackingError) {
+      console.error('Tracking save error:', trackingError);
     }
 
     return NextResponse.json({
@@ -84,6 +85,7 @@ export async function POST(request: NextRequest) {
       lastUpdated: new Date().toISOString(),
     });
   } catch (error) {
+    console.error('Refund tracking error:', error);
     return NextResponse.json(
       { error: 'Failed to track refund' },
       { status: 500 }
@@ -141,6 +143,7 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (error) {
+    console.error('Get tracking error:', error);
     return NextResponse.json(
       { error: 'Failed to get tracking history' },
       { status: 500 }

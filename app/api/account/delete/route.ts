@@ -31,6 +31,7 @@ export async function POST() {
   });
 
   if (insertError) {
+    console.error('Error creating deletion request:', insertError);
     return NextResponse.json(
       { error: 'Failed to create deletion request. Please try again.' },
       { status: 500 }

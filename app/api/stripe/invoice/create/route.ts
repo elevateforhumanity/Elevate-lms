@@ -82,6 +82,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ invoice: data, stripeInvoice: invoice });
   } catch (error: unknown) {
+    console.error('Invoice creation error:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
@@ -106,6 +107,7 @@ export async function GET() {
 
     return NextResponse.json({ invoices: data });
   } catch (error: unknown) {
+    console.error('Invoice fetch error:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
