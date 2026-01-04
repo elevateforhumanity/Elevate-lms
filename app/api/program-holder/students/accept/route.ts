@@ -124,8 +124,7 @@ export async function POST(request: NextRequest) {
         studentProfile.email,
         studentProfile.full_name || 'Student',
         phProfile?.full_name || 'Program Holder'
-      ).catch((err) =>
-      );
+      ).catch((err) => console.error('[Email] Acceptance notification failed:', err));
     }
 
     return NextResponse.json(

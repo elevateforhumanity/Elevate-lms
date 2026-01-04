@@ -84,11 +84,12 @@ export async function POST(req: Request) {
       .single();
 
     if (error) {
+      console.error('Inquiry save error:', {
         error,
-        code: error instanceof Error && "code" in error ? (error as unknown).code : "UNKNOWN",
+        code: error instanceof Error && "code" in error ? (error as any).code : "UNKNOWN",
         message: error instanceof Error ? error.message : String(error),
-        details: error.details,
-        hint: error.hint,
+        details: (error as any).details,
+        hint: (error as any).hint,
       });
       return NextResponse.json(
         {

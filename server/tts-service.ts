@@ -52,8 +52,6 @@ export async function generateTextToSpeech(
     // Normal speed is 175 WPM, adjust based on speed multiplier
     const wpm = Math.round(175 * speed);
 
-    );
-
     // Create temp file for output
     const tempWav = path.join('/tmp', `tts-${Date.now()}.wav`);
     const tempMp3 = path.join('/tmp', `tts-${Date.now()}.mp3`);

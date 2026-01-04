@@ -124,8 +124,10 @@ function main() {
     generated++;
   });
 
+  console.log(
     '💡 To customize a cover, replace the SVG file with your own image'
   );
+  console.log(
     '   Example: public/course-covers/barber-apprenticeship/cover.jpg'
   );
 }

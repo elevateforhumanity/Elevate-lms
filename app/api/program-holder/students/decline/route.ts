@@ -127,8 +127,7 @@ export async function POST(request: NextRequest) {
         studentProfile.full_name || 'Student',
         phProfile?.full_name || 'Program Holder',
         reason
-      ).catch((err) =>
-      );
+      ).catch((err) => console.error('[Email] Decline notification failed:', err));
     }
 
     return NextResponse.json(

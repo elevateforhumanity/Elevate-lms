@@ -114,8 +114,7 @@ export async function POST(req: NextRequest) {
     sendProgramHolderApplicationConfirmation(
       body.contactEmail,
       body.organizationName
-    ).catch((err) =>
-    );
+    ).catch((err) => console.error('[Email] Confirmation failed:', err));
 
     // Send notification to admin (non-blocking)
     sendAdminProgramHolderNotification(
