@@ -5,6 +5,7 @@
       "main": true
     }
   },
+  "ignoreCommand": "bash scripts/should-deploy.sh",
   "github": {
     "silent": true,
     "autoJobCancelation": true
