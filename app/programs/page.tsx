@@ -162,42 +162,30 @@ export default function ProgramsBioSitePage() {
       href: '/calendar',
       icon: CalendarDays,
       image: '/images/calendar-card.jpg',
-      image: null,
       color: 'lime',
     },
   ];
 
   return (
     <div className="pb-20 md:pb-0">
-      {/* Hero Banner with Image */}
-      <section className="relative w-full -mt-[72px]">
-        <div className="relative min-h-[70vh] w-full overflow-hidden">
-          <Image
-            src="/media/programs/workforce-readiness-hero.jpg"
-            alt="Free Career Training Programs"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/90 to-orange-700/90" />
-          
-          <div className="relative z-10 flex items-center justify-center min-h-[70vh]">
-            <div className="max-w-4xl mx-auto px-6 text-center text-white">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/30">
-                <GraduationCap className="w-5 h-5" />
-                <span className="text-sm font-bold uppercase tracking-wide">
-                  WIOA-Funded Career Training
-                </span>
-              </div>
+      {/* Header Section - No Hero Banner */}
+      <section className="bg-gradient-to-br from-orange-50 to-orange-100 py-12 sm:py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full mb-6">
+            <GraduationCap className="w-5 h-5" />
+            <span className="text-sm font-bold uppercase tracking-wide">
+              WIOA-Funded Career Training
+            </span>
+          </div>
 
-              {/* Headline */}
-              <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6">
-                Free Career Training Programs
-              </h1>
+          {/* Headline */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6 text-gray-900">
+            Free Career Training Programs
+          </h1>
 
-              {/* Subheadline */}
-              <p className="text-2xl md:text-3xl mb-4">
+          {/* Subheadline */}
+          <p className="text-xl sm:text-2xl md:text-3xl mb-4 text-gray-800">
                 100% Free • No Tuition • No Debt
               </p>
 
@@ -286,62 +274,66 @@ export default function ProgramsBioSitePage() {
         </div>
       </section>
 
-      {/* Links Section */}
-      <section className="pb-16 px-4">
-        <div className="max-w-2xl mx-auto space-y-4">
-          {links.map((link) => {
-            const Icon = link.icon;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="group block bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all border-2 border-gray-100 hover:border-brand-orange-500 hover:scale-105 transform"
-              >
-                <div className="flex items-center gap-4">
-                  {link.image ? (
-                    <div className="w-16 h-16 relative rounded-xl overflow-hidden flex-shrink-0 group-hover:scale-110 transition-transform">
+      {/* Program Cards Grid - Square Cards */}
+      <section className="pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            {links.map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="group block bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all border-2 border-gray-100 hover:border-brand-orange-500 hover:scale-105 transform overflow-hidden aspect-square"
+                >
+                  {/* Image/Icon Section */}
+                  <div className="relative h-2/3 w-full overflow-hidden">
+                    {link.image ? (
                       <Image
                         src={link.image}
                         alt={link.title}
                         fill
-                        className="object-cover"
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
                       />
-                    </div>
-                  ) : (
-                    <div
-                      className={`w-12 h-12 bg-${link.color}-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}
-                    >
-                      <Icon className={`w-6 h-6 text-${link.color}-600`} />
-                    </div>
-                  )}
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-brand-orange-600 transition-colors">
+                    ) : (
+                      <div className={`w-full h-full bg-${link.color}-100 flex items-center justify-center`}>
+                        <Icon className={`w-16 h-16 text-${link.color}-600`} />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  </div>
+                  
+                  {/* Text Section */}
+                  <div className="p-4 h-1/3 flex flex-col justify-center">
+                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 group-hover:text-brand-orange-600 transition-colors line-clamp-2">
                       {link.title}
                     </h3>
-                    <p className="text-sm text-gray-600">{link.description}</p>
+                    <p className="text-xs sm:text-sm text-gray-600 line-clamp-2">{link.description}</p>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-brand-orange-600 group-hover:translate-x-1 transition-all flex-shrink-0" />
-                </div>
-              </Link>
-            );
-          })}
+                </Link>
+              );
+            })}
 
+          </div>
+          
           {/* Apply CTA */}
-          <Link
-            href="/apply"
-            className="block bg-gradient-to-br from-brand-blue-600 to-brand-purple-600 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105 transform text-center"
-          >
-            <h3 className="text-2xl font-black text-white mb-2">
-              Ready to Get Started?
-            </h3>
-            <p className="text-white/90 mb-4">
-              Apply now - takes just 5 minutes
-            </p>
-            <div className="inline-flex items-center gap-2 text-white font-bold">
-              <span>Apply Now</span>
-              <ArrowRight className="w-5 h-5" />
-            </div>
-          </Link>
+          <div className="mt-12 text-center">
+            <Link
+              href="/apply"
+              className="inline-block bg-gradient-to-br from-brand-blue-600 to-brand-purple-600 rounded-2xl px-8 py-6 shadow-xl hover:shadow-2xl transition-all hover:scale-105 transform"
+            >
+              <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
+                Ready to Get Started?
+              </h3>
+              <p className="text-white/90 mb-4">
+                Apply now - takes just 5 minutes
+              </p>
+              <div className="inline-flex items-center gap-2 text-white font-bold">
+                <span>Apply Now</span>
+                <ArrowRight className="w-5 h-5" />
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
 
