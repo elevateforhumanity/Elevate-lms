@@ -11,9 +11,11 @@ export const scormPackages: ScormPackage[] = [
     id: "jri-core",
     title: "Job Ready Indy – Core Work Readiness (SCORM 2004)",
     partner: "JRI / EmployIndy",
-    launchUrl: "/scorm/jri-core/index.html",
+    launchUrl: process.env.NEXT_PUBLIC_SCORM_CDN_URL 
+      ? `${process.env.NEXT_PUBLIC_SCORM_CDN_URL}/jri-core/index.html`
+      : "/scorm/jri-core/index.html",
     notes:
-      "Upload and unzip the JRI SCORM 2004 package into public/scorm/jri-core so index.html is the launch file.",
+      "Served from Cloudflare R2 via worker (scorm.elevateforhumanity.org) or fallback to local public/scorm/",
   },
 ];
 
