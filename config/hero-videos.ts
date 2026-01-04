@@ -29,6 +29,6 @@ export const heroVideos = {
 export const currentHomeHero = heroVideos.home;
 
 // Enable audio narration (set to true to unmute by default)
-export const enableAudioNarration = false;
+export const enableAudioNarration = true;
 
 export default heroVideos;
