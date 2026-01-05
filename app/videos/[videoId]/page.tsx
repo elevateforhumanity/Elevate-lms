@@ -4,6 +4,10 @@ import Link from 'next/link';
 import { videos, getVideoById } from '@/lms-data/videos';
 import { ArrowLeft } from 'lucide-react';
 
+// Force static generation at build time
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return videos.map((video) => ({
     videoId: video.id,
