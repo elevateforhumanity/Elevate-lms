@@ -205,48 +205,7 @@ const nextConfig = {
           },
         ],
       },
-      {
-        source: '/images/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-          {
-            key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=31536000, immutable',
-          },
-          {
-            key: 'Vercel-CDN-Cache-Control',
-            value: 'public, s-maxage=31536000, immutable',
-          },
-          {
-            key: 'X-Robots-Tag',
-            value: 'all',
-          },
-        ],
-      },
-      {
-        source: '/videos/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-          {
-            key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=31536000, immutable',
-          },
-          {
-            key: 'Vercel-CDN-Cache-Control',
-            value: 'public, s-maxage=31536000, immutable',
-          },
-          {
-            key: 'X-Robots-Tag',
-            value: 'all',
-          },
-        ],
-      },
+
       {
         source: '/_next/image',
         headers: [
@@ -321,6 +280,49 @@ const nextConfig = {
               "media-src * data: blob:",
               "worker-src 'self' blob:",
             ].join('; '),
+          },
+        ],
+      },
+      // Override X-Robots-Tag for images and videos (must come AFTER /:path*)
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, s-maxage=31536000, immutable',
+          },
+          {
+            key: 'Vercel-CDN-Cache-Control',
+            value: 'public, s-maxage=31536000, immutable',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'all',
+          },
+        ],
+      },
+      {
+        source: '/videos/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, s-maxage=31536000, immutable',
+          },
+          {
+            key: 'Vercel-CDN-Cache-Control',
+            value: 'public, s-maxage=31536000, immutable',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'all',
           },
         ],
       },
