@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'About Us | Elevate for Humanity',
   description:
     'A workforce development ecosystem helping individuals access training, funding, and employment pathways.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/about',
+  },
 };
 
 export default function AboutPage() {
