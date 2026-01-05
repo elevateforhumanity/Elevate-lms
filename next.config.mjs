@@ -2,9 +2,9 @@ import { withSentryConfig } from '@sentry/nextjs';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Force cache bust - build timestamp
+  // Force cache bust - build timestamp + deployment marker
   generateBuildId: async () => {
-    return `build-${Date.now()}`;
+    return `build-${Date.now()}-production`;
   },
   output: 'standalone',
   reactStrictMode: true,
