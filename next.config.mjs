@@ -183,6 +183,7 @@ const nextConfig = {
       { source: '/resources/:path*', destination: '/blog', permanent: true },
       { source: '/career-uplift-services/:path*', destination: '/career-services', permanent: true },
       { source: '/community', destination: '/blog', permanent: true },
+      { source: '/video', destination: '/videos', permanent: true },
     ];
   },
   async headers() {
