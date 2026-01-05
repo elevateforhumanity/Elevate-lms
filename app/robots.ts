@@ -15,6 +15,8 @@ export default function robots(): MetadataRoute.Robots {
           '/staff-portal/',
           '/program-holder/dashboard/',
           '/employer/dashboard/',
+          '/_not-found',
+          '/_next/',
         ],
       },
     ],
