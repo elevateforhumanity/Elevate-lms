@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { videos } from '@/lms-data/videos';
+import { videos } from '../lms-data/videos';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.elevateforhumanity.org';

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { videos } from '@/lms-data/videos';
+import { videos } from '../../lms-data/videos';
 import { Play } from 'lucide-react';
 
 export const metadata: Metadata = {
