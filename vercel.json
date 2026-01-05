@@ -19,10 +19,35 @@
       "source": "/:path+/",
       "destination": "/:path+",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.elevateforhumanity.org"
+        }
+      ],
+      "destination": "https://elevateforhumanity.org/:path*",
+      "permanent": true,
+      "statusCode": 301
     }
   ],
 
   "headers": [
+    {
+      "source": "/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, s-maxage=0, must-revalidate"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    },
     {
       "source": "/:path*",
       "has": [
