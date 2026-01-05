@@ -35,6 +35,21 @@
 
   "headers": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?!www\\.elevateforhumanity\\.org$|elevateforhumanity\\.org$).*"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    {
       "source": "/admin/:path*",
       "headers": [
         {

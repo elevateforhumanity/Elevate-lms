@@ -43,6 +43,8 @@ export const viewport: Viewport = {
 };
 
 // Cache bust: 2026-01-05T00:30:00Z - WWW canonical migration
+const isProduction = process.env.VERCEL_ENV === 'production';
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'
@@ -77,12 +79,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Elevate for Humanity' }],
   robots: {
-    index: true,
-    follow: true,
-    nocache: false,
+    index: isProduction,
+    follow: isProduction,
+    nocache: !isProduction,
     googleBot: {
-      index: true,
-      follow: true,
+      index: isProduction,
+      follow: isProduction,
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
