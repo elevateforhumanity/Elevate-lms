@@ -1,23 +1,6 @@
 import { Metadata } from 'next';
 import { generateMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Platform [Slug]',
-  description: 'Platform [Slug] - Elevate for Humanity workforce training and career development programs in Indianapolis.',
-  path: '/platform/[slug]',
-});
-
-import { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { getProductBySlug, getAppsForProduct } from '@/app/data/store-products';
-import { Check, ArrowLeft, Shield, Download, Zap } from 'lucide-react';
-
-
-type Props = {
-  params: { slug: string };
-};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = getProductBySlug(params.slug);
