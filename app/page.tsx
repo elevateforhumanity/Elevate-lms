@@ -11,16 +11,16 @@ export const revalidate = 3600; // 1 hour
 export const fetchCache = 'force-no-store';
 
 export const metadata: Metadata = {
-  title: 'Elevate for Humanity | Free, Funded Workforce Training',
+  title: 'Elevate for Humanity | Workforce and Education Hub',
   description:
-    'Career training programs aligned with WIOA, WRG, DOL, and employer-led apprenticeships, delivered through a compliant, scalable platform.',
+    'A workforce and education hub that connects systems, not just programs. Coordinating learners, schools, training providers, employers, and government funding into structured pathways.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org',
   },
   openGraph: {
-    title: 'Elevate for Humanity | Free, Funded Workforce Training',
+    title: 'Elevate for Humanity | Workforce and Education Hub',
     description:
-      'Career training programs aligned with WIOA, WRG, DOL, and employer-led apprenticeships, delivered through a compliant, scalable platform.',
+      'Coordinating learners, schools, training providers, employers, and government funding into one structured pathway — from eligibility and enrollment to credentials and workforce outcomes.',
     url: 'https://www.elevateforhumanity.org',
     siteName: 'Elevate for Humanity',
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
         url: '/images/homepage/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Elevate for Humanity - Free Funded Workforce Training',
+        alt: 'Elevate for Humanity - Workforce and Education Hub',
       },
     ],
     locale: 'en_US',
@@ -66,15 +66,32 @@ export default function HomePage() {
         voiceoverSrc="/videos/voiceover.mp3"
       />
 
-      {/* OUR OFFERINGS - Comprehensive Overview */}
+      {/* WHY THE HUB EXISTS */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            A Workforce and Education Hub That Connects Systems
+          </h2>
+          <div className="prose prose-lg text-gray-700 leading-relaxed">
+            <p className="mb-4">
+              Workforce and education systems are fragmented. Learners struggle to understand what opportunities they qualify for. Schools face increasing pressure to meet career-connected learning and graduation requirements. Training providers navigate complex funding rules. Employers need prepared talent. Government programs require compliance, documentation, and measurable outcomes.
+            </p>
+            <p>
+              Elevate for Humanity coordinates these systems into a single, navigable hub — so opportunity is accessible, funded, and accountable.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* PROGRAM AREAS */}
       <section className="w-full py-20 bg-gradient-to-br from-orange-50 to-orange-100">
         <div className="mx-auto w-full max-w-7xl px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
-              What We Offer
+              Program Areas
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Free, funded workforce training programs that lead to real careers and measurable outcomes.
+              Training programs aligned with industry demand and government funding requirements.
             </p>
           </div>
 
@@ -180,11 +197,66 @@ export default function HomePage() {
       </section>
 
       {/* WHO THIS IS FOR */}
+      {/* HOW THE HUB WORKS */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+            How the Hub Works
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center font-bold text-xl mb-4">
+                1
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Intake and Eligibility
+              </h3>
+              <p className="text-gray-700 text-sm">
+                Learners complete a single intake form. The system determines eligibility for WIOA, SNAP E&T, WRG, and other funding sources.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center font-bold text-xl mb-4">
+                2
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Coordination and Enrollment
+              </h3>
+              <p className="text-gray-700 text-sm">
+                Schools, training providers, and employers access a shared dashboard to coordinate enrollment, schedules, and support services.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center font-bold text-xl mb-4">
+                3
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Tracking and Compliance
+              </h3>
+              <p className="text-gray-700 text-sm">
+                Attendance, progress, and outcomes are tracked in real time. Documentation meets federal and state compliance requirements.
+              </p>
+            </div>
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center font-bold text-xl mb-4">
+                4
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Credentials and Outcomes
+              </h3>
+              <p className="text-gray-700 text-sm">
+                Learners earn verifiable credentials. Employers access a talent pipeline. Government funders receive outcome reports.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="w-full py-20 bg-white">
         <div className="mx-auto w-full max-w-7xl px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
-              Built for the entire workforce ecosystem. Choose your path.
+              Who We Serve
             </h2>
           </div>
 
@@ -324,6 +396,9 @@ export default function HomePage() {
       {/* CREDIBILITY STRIP */}
       <section className="w-full py-12 bg-gray-50 border-y border-gray-200">
         <div className="mx-auto w-full max-w-6xl px-6">
+          <h3 className="text-center text-gray-900 text-2xl font-bold mb-3">
+            Built for Compliance. Designed for Access.
+          </h3>
           <p className="text-center text-gray-700 text-lg">
             Aligned with state and federal workforce systems, including WIOA,
             WRG, DOL, and registered apprenticeship pathways.
@@ -331,9 +406,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHAT WE OFFER */}
+      {/* WHAT WE PROVIDE */}
       <section className="w-full py-20 bg-white">
         <div className="mx-auto w-full max-w-6xl px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+            What We Provide
+          </h2>
           <div className="grid md:grid-cols-3 gap-10">
             <div className="text-center">
               <div className="w-full h-48 relative mx-auto mb-6 rounded-2xl overflow-hidden">
@@ -346,12 +424,14 @@ export default function HomePage() {
                 />
               </div>
               <h3 className="text-2xl font-bold text-black mb-4">
-                Funded Workforce Training Programs
+                Funded Training Programs
               </h3>
-              <p className="text-gray-700">
-                Industry-aligned programs designed to remove financial barriers
-                for learners.
-              </p>
+              <ul className="text-gray-700 text-left space-y-2">
+                <li>• Healthcare (CNA, Medical Assistant, Home Health Aide)</li>
+                <li>• Skilled Trades (HVAC, Building Maintenance, Construction)</li>
+                <li>• Transportation (CDL, Logistics)</li>
+                <li>• Registered Apprenticeships (Barber, others)</li>
+              </ul>
             </div>
 
             <div className="text-center">
@@ -365,12 +445,14 @@ export default function HomePage() {
                 />
               </div>
               <h3 className="text-2xl font-bold text-black mb-4">
-                Licensable Workforce Platform
+                Licensable Platform
               </h3>
-              <p className="text-gray-700">
-                A ready-to-deploy system for schools, nonprofits, and agencies
-                to run compliant training programs.
-              </p>
+              <ul className="text-gray-700 text-left space-y-2">
+                <li>• Intake and eligibility screening</li>
+                <li>• Enrollment and case management</li>
+                <li>• Attendance and progress tracking</li>
+                <li>• Compliance documentation and reporting</li>
+              </ul>
             </div>
 
             <div className="text-center">
@@ -384,12 +466,14 @@ export default function HomePage() {
                 />
               </div>
               <h3 className="text-2xl font-bold text-black mb-4">
-                Wraparound Student Support
+                Support Services
               </h3>
-              <p className="text-gray-700">
-                Tools and services that help learners persist, complete, and
-                transition into employment.
-              </p>
+              <ul className="text-gray-700 text-left space-y-2">
+                <li>• Career advising and job placement</li>
+                <li>• Wraparound support coordination</li>
+                <li>• Credential verification</li>
+                <li>• Employer engagement and hiring pipelines</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -399,7 +483,7 @@ export default function HomePage() {
       <section className="w-full py-20 bg-gradient-to-br from-brand-blue-700 to-brand-purple-700 text-white">
         <div className="mx-auto w-full max-w-4xl text-center px-6">
           <h2 className="text-4xl md:text-5xl font-black mb-10">
-            Ready to get started?
+            Start Where You Belong
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
