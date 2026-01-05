@@ -18,6 +18,7 @@ import { PerformanceMonitor } from '@/components/PerformanceMonitor';
 import { ScraperDetection } from '@/components/ScraperDetection';
 import { CopyrightProtection } from '@/components/CopyrightProtection';
 import { SecurityMonitor, SecurityBadge } from '@/components/SecurityMonitor';
+import { UnregisterServiceWorker } from '@/components/UnregisterServiceWorker';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({
@@ -178,6 +179,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <UnregisterServiceWorker />
         <GoogleAnalytics />
         <FacebookPixel />
         <ConditionalLayout>{children}</ConditionalLayout>
