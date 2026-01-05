@@ -2,22 +2,25 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+import VideoHeroBanner from '@/components/home/VideoHeroBanner';
+import { currentHomeHero, enableAudioNarration } from '@/config/hero-videos';
 
 // Enable static generation with revalidation
 export const dynamic = 'force-static';
 export const revalidate = 3600; // 1 hour
+export const fetchCache = 'force-no-store';
 
 export const metadata: Metadata = {
-  title: 'Elevate for Humanity | Workforce and Education Hub',
+  title: 'Elevate for Humanity | Free, Funded Workforce Training',
   description:
-    'A workforce and education hub that connects systems, not just programs. Coordinating learners, schools, training providers, employers, and government funding into structured pathways.',
+    'Career training programs aligned with WIOA, WRG, DOL, and employer-led apprenticeships, delivered through a compliant, scalable platform.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org',
   },
   openGraph: {
-    title: 'Elevate for Humanity | Workforce and Education Hub',
+    title: 'Elevate for Humanity | Free, Funded Workforce Training',
     description:
-      'Coordinating learners, schools, training providers, employers, and government funding into one structured pathway — from eligibility and enrollment to credentials and workforce outcomes.',
+      'Career training programs aligned with WIOA, WRG, DOL, and employer-led apprenticeships, delivered through a compliant, scalable platform.',
     url: 'https://www.elevateforhumanity.org',
     siteName: 'Elevate for Humanity',
     images: [
@@ -25,7 +28,7 @@ export const metadata: Metadata = {
         url: '/images/homepage/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Elevate for Humanity - Workforce and Education Hub',
+        alt: 'Elevate for Humanity - Free Funded Workforce Training',
       },
     ],
     locale: 'en_US',
@@ -34,247 +37,385 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    name: 'Elevate for Humanity',
+    url: 'https://elevateforhumanity.org',
+    description:
+      'Free, funded workforce training programs aligned with WIOA, WRG, DOL, and employer-led apprenticeships.',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Indianapolis',
+      addressRegion: 'IN',
+      addressCountry: 'US',
+    },
+  };
+
   return (
     <>
-      {/* HERO SECTION */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
-        <div className="absolute inset-0 bg-[url('/images/artlist/hero-training-1.jpg')] bg-cover bg-center opacity-10" />
-        <div className="relative max-w-7xl mx-auto px-6 py-32 md:py-40">
-          <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              A Workforce and Education Hub That Connects Systems, Not Just Programs
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed">
-              Elevate for Humanity coordinates learners, schools, training providers, employers, and government funding into one structured pathway — from eligibility and enrollment to credentials and workforce outcomes.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/programs"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg transition text-lg"
-              >
-                Explore the Hub
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="#who-we-serve"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-lg border border-white/30 transition text-lg"
-              >
-                Who We Serve
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
 
-      {/* WHY THE HUB EXISTS */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-            Why Elevate for Humanity Exists
-          </h2>
-          <div className="prose prose-lg text-gray-700 leading-relaxed">
-            <p className="mb-6">
-              Workforce and education systems are fragmented. Learners struggle to understand what opportunities they qualify for. Schools face increasing pressure to meet career-connected learning and graduation requirements. Training providers navigate complex funding rules. Employers need prepared talent. Government programs require compliance, documentation, and measurable outcomes.
-            </p>
-            <p>
-              Elevate for Humanity exists to coordinate these systems into a single, navigable hub — so opportunity is accessible, funded, and accountable.
+      {/* Hero Banner - Video */}
+      <VideoHeroBanner
+        videoSrc={currentHomeHero}
+        withAudio={enableAudioNarration}
+        voiceoverSrc="/videos/voiceover.mp3"
+      />
+
+      {/* OUR OFFERINGS - Comprehensive Overview */}
+      <section className="w-full py-20 bg-gradient-to-br from-orange-50 to-orange-100">
+        <div className="mx-auto w-full max-w-7xl px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
+              What We Offer
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              Free, funded workforce training programs that lead to real careers and measurable outcomes.
             </p>
           </div>
-        </div>
-      </section>
 
-      {/* HOW THE HUB WORKS */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-16 text-center">
-            How the Hub Works
-          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Step 1 */}
-            <div className="bg-white rounded-lg p-8 shadow-sm">
-              <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center font-bold text-xl mb-6">
-                1
+            {/* Healthcare Programs */}
+            <Link href="/programs/healthcare" className="group">
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border-2 border-transparent hover:border-orange-600">
+                <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
+                  <Image
+                    src="/media/programs/cna-hd.jpg"
+                    alt="Healthcare Training"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-black mb-2">Healthcare</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  CNA, Medical Assistant, Home Health Aide
+                </p>
+                <div className="flex items-center gap-2 text-orange-600 font-semibold">
+                  <span>View Programs</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Intake and Eligibility
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Participants enter the hub through a guided intake process that identifies eligibility for training programs, credentials, and available funding sources.
-              </p>
-            </div>
+            </Link>
 
-            {/* Step 2 */}
-            <div className="bg-white rounded-lg p-8 shadow-sm">
-              <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center font-bold text-xl mb-6">
-                2
+            {/* Skilled Trades */}
+            <Link href="/programs/skilled-trades" className="group">
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border-2 border-transparent hover:border-orange-600">
+                <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
+                  <Image
+                    src="/media/programs/hvac-highlight-3.jpg"
+                    alt="Skilled Trades"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-black mb-2">Skilled Trades</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  HVAC, Building Maintenance, Construction
+                </p>
+                <div className="flex items-center gap-2 text-orange-600 font-semibold">
+                  <span>View Programs</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Program and Funding Coordination
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                The hub matches learners and partners to approved programs and applicable funding pathways, including state and federal workforce initiatives.
-              </p>
-            </div>
+            </Link>
 
-            {/* Step 3 */}
-            <div className="bg-white rounded-lg p-8 shadow-sm">
-              <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center font-bold text-xl mb-6">
-                3
+            {/* Barber Apprenticeship */}
+            <Link href="/programs/barber-apprenticeship" className="group">
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border-2 border-transparent hover:border-orange-600">
+                <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
+                  <Image
+                    src="/media/programs/efh-barber-hero.jpg"
+                    alt="Barber Apprenticeship"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-black mb-2">Barber</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  DOL-registered apprenticeship, earn while you learn
+                </p>
+                <div className="flex items-center gap-2 text-orange-600 font-semibold">
+                  <span>View Program</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Training, Credentials, and Tracking
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Participants complete structured training while progress, participation, and outcomes are documented for compliance and reporting.
-              </p>
-            </div>
+            </Link>
 
-            {/* Step 4 */}
-            <div className="bg-white rounded-lg p-8 shadow-sm">
-              <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center font-bold text-xl mb-6">
-                4
+            {/* CDL Training */}
+            <Link href="/programs/cdl-transportation" className="group">
+              <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border-2 border-transparent hover:border-orange-600">
+                <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
+                  <Image
+                    src="/media/programs/cdl-hero.jpg"
+                    alt="CDL Training"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-black mb-2">CDL Training</h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  Commercial Driver License, truck driving careers
+                </p>
+                <div className="flex items-center gap-2 text-orange-600 font-semibold">
+                  <span>View Program</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Workforce Outcomes
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Credentials earned, completion data, and placement outcomes are tracked and shared with schools, partners, and funders as appropriate.
-              </p>
-            </div>
+            </Link>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/programs">
+              <button className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg">
+                View All Programs
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* WHO THE HUB SERVES */}
-      <section id="who-we-serve" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-16 text-center">
-            Who the Hub Serves
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Learners */}
-            <div className="bg-gray-50 rounded-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Learners
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                Access funded training, credential pathways, and workforce opportunities you qualify for — with guidance and support throughout the process.
-              </p>
-            </div>
+      {/* WHO THIS IS FOR */}
+      <section className="w-full py-20 bg-white">
+        <div className="mx-auto w-full max-w-7xl px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
+              Built for the entire workforce ecosystem. Choose your path.
+            </h2>
+          </div>
 
-            {/* Schools */}
-            <div className="bg-gray-50 rounded-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Schools
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                Meet career-connected learning and graduation requirements through verified external programs with documented outcomes.
-              </p>
-            </div>
-
-            {/* Training Providers */}
-            <div className="bg-gray-50 rounded-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Training Providers
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                Expand reach, connect to funding pathways, and deliver programs within a coordinated, compliance-aware system.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Students */}
+            <Link href="/apply" className="group">
+              <div className="bg-white border-2 border-gray-200 hover:border-brand-blue-600 rounded-2xl p-8 transition-all hover:shadow-xl">
+                <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/artlist/hero-training-1.jpg"
+                    alt="Students in training"
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-3">Students</h3>
+                <p className="text-gray-700 mb-4">
+                  Access free or funded training programs that lead to real
+                  credentials and jobs.
+                </p>
+                <div className="flex items-center gap-2 text-brand-blue-600 font-bold">
+                  <span>Apply for Free Training</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </div>
+            </Link>
 
             {/* Employers */}
-            <div className="bg-gray-50 rounded-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Employers
+            <Link href="/employers" className="group">
+              <div className="bg-white border-2 border-gray-200 hover:border-brand-orange-600 rounded-2xl p-8 transition-all hover:shadow-xl">
+                <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/homepage/employers.jpg"
+                    alt="Employers and workforce partners"
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-3">
+                  Employers
+                </h3>
+                <p className="text-gray-700 mb-4">
+                  Build reliable talent pipelines through apprenticeships and
+                  work-based learning.
+                </p>
+                <div className="flex items-center gap-2 text-brand-orange-600 font-bold">
+                  <span>Partner With Us</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Schools & Nonprofits */}
+            <Link href="/licensing" className="group">
+              <div className="bg-white border-2 border-gray-200 hover:border-brand-purple-600 rounded-2xl p-8 transition-all hover:shadow-xl">
+                <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/artlist/hero-training-3.jpg"
+                    alt="Schools and nonprofit organizations"
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-3">
+                  Schools & Nonprofits
+                </h3>
+                <p className="text-gray-700 mb-4">
+                  License proven workforce programs and technology to expand
+                  your impact.
+                </p>
+                <div className="flex items-center gap-2 text-brand-purple-600 font-bold">
+                  <span>Licensing & Partnerships</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Government Agencies */}
+            <Link href="/about" className="group">
+              <div className="bg-white border-2 border-gray-200 hover:border-brand-green-600 rounded-2xl p-8 transition-all hover:shadow-xl">
+                <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/artlist/hero-training-4.jpg"
+                    alt="Government agencies and workforce boards"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-3">
+                  Government Agencies
+                </h3>
+                <p className="text-gray-700 mb-4">
+                  Deploy compliant, fundable training infrastructure at scale.
+                </p>
+                <div className="flex items-center gap-2 text-brand-green-600 font-bold">
+                  <span>About / Credentials</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Funders & Philanthropy */}
+            <Link href="/impact" className="group">
+              <div className="bg-white border-2 border-gray-200 hover:border-pink-600 rounded-2xl p-8 transition-all hover:shadow-xl">
+                <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
+                  <Image
+                    src="/images/artlist/hero-training-5.jpg"
+                    alt="Funders and philanthropic organizations"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-3">
+                  Funders & Philanthropy
+                </h3>
+                <p className="text-gray-700 mb-4">
+                  Support sustainable systems with measurable outcomes.
+                </p>
+                <div className="flex items-center gap-2 text-pink-600 font-bold">
+                  <span>Impact</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CREDIBILITY STRIP */}
+      <section className="w-full py-12 bg-gray-50 border-y border-gray-200">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <p className="text-center text-gray-700 text-lg">
+            Aligned with state and federal workforce systems, including WIOA,
+            WRG, DOL, and registered apprenticeship pathways.
+          </p>
+        </div>
+      </section>
+
+      {/* WHAT WE OFFER */}
+      <section className="w-full py-20 bg-white">
+        <div className="mx-auto w-full max-w-6xl px-6">
+          <div className="grid md:grid-cols-3 gap-10">
+            <div className="text-center">
+              <div className="w-full h-48 relative mx-auto mb-6 rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/artlist/hero-training-6.jpg"
+                  alt="Funded workforce training programs"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">
+                Funded Workforce Training Programs
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                Build reliable talent pipelines aligned to real credentials, readiness, and workforce demand.
+              <p className="text-gray-700">
+                Industry-aligned programs designed to remove financial barriers
+                for learners.
               </p>
             </div>
 
-            {/* Government and Funders */}
-            <div className="bg-gray-50 rounded-lg p-8 md:col-span-2 lg:col-span-1">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Government and Funders
+            <div className="text-center">
+              <div className="w-full h-48 relative mx-auto mb-6 rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/artlist/hero-training-7.jpg"
+                  alt="Licensable workforce platform"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">
+                Licensable Workforce Platform
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                Support outcomes-driven programs with centralized coordination, documentation, and accountability.
+              <p className="text-gray-700">
+                A ready-to-deploy system for schools, nonprofits, and agencies
+                to run compliant training programs.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-full h-48 relative mx-auto mb-6 rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/artlist/hero-training-8.jpg"
+                  alt="Wraparound student support services"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">
+                Wraparound Student Support
+              </h3>
+              <p className="text-gray-700">
+                Tools and services that help learners persist, complete, and
+                transition into employment.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* PROGRAM AREAS */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-            Program and Pathway Areas
+      {/* FINAL CTA */}
+      <section className="w-full py-20 bg-gradient-to-br from-brand-blue-700 to-brand-purple-700 text-white">
+        <div className="mx-auto w-full max-w-4xl text-center px-6">
+          <h2 className="text-4xl md:text-5xl font-black mb-10">
+            Ready to get started?
           </h2>
-          <p className="text-lg text-gray-700 leading-relaxed mb-8">
-            The hub supports a range of workforce-aligned programs and pathways, including but not limited to:
-          </p>
-          <ul className="space-y-3 text-lg text-gray-700">
-            <li className="flex items-start">
-              <span className="text-orange-600 mr-3">•</span>
-              <span>STEM and systems-based learning</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-orange-600 mr-3">•</span>
-              <span>Skilled trades and technical training</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-orange-600 mr-3">•</span>
-              <span>Healthcare and allied health pathways</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-orange-600 mr-3">•</span>
-              <span>Information technology and digital skills</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-orange-600 mr-3">•</span>
-              <span>Apprenticeships and work-based learning</span>
-            </li>
-          </ul>
-          <p className="text-gray-600 mt-8 leading-relaxed">
-            Programs are delivered through approved partners and aligned with applicable funding and compliance standards.
-          </p>
-        </div>
-      </section>
-
-      {/* CREDIBILITY AND POSITIONING */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-            Built for Compliance. Designed for Access.
-          </h2>
-          <div className="prose prose-lg text-gray-700 leading-relaxed">
-            <p className="mb-6">
-              Elevate for Humanity operates as a coordination hub — not a standalone training provider. The platform works with accredited programs, workforce systems, and partner organizations to ensure alignment with funding requirements, reporting standards, and outcome expectations.
-            </p>
-            <p>
-              The model is advisor-led, compliance-aware, and designed to scale responsibly.
-            </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/apply"
+              className="inline-flex items-center justify-center gap-2 bg-white text-brand-blue-700 hover:bg-blue-50 px-10 py-5 rounded-xl font-bold text-lg transition shadow-lg"
+            >
+              Apply for Free Training
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/licensing"
+              className="inline-flex items-center justify-center gap-2 bg-transparent hover:bg-white/10 border-2 border-white text-white px-10 py-5 rounded-xl font-bold text-lg transition"
+            >
+              Licensing & Partnerships
+            </Link>
           </div>
-        </div>
-      </section>
-
-      {/* FINAL INVITATION */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Start Where You Belong
-          </h2>
-          <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-            Whether you are seeking opportunity, supporting students, delivering training, building a workforce pipeline, or funding outcomes, the hub is designed to meet you where you are.
-          </p>
-          <Link
-            href="/apply"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg transition text-lg"
-          >
-            Enter the Hub
-            <ArrowRight className="w-5 h-5" />
-          </Link>
         </div>
       </section>
     </>
