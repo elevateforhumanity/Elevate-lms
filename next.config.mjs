@@ -193,15 +193,15 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, s-maxage=60, stale-while-revalidate=300',
+            value: 'public, s-maxage=0, must-revalidate',
           },
           {
             key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=60, stale-while-revalidate=300',
+            value: 'public, s-maxage=0, must-revalidate',
           },
           {
             key: 'Vercel-CDN-Cache-Control',
-            value: 'public, s-maxage=60, stale-while-revalidate=300',
+            value: 'public, s-maxage=0, must-revalidate',
           },
         ],
       },
