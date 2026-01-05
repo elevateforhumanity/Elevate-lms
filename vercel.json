@@ -25,10 +25,10 @@
       "has": [
         {
           "type": "host",
-          "value": "elevateforhumanity.org"
+          "value": "www.elevateforhumanity.org"
         }
       ],
-      "destination": "https://www.elevateforhumanity.org/:path*",
+      "destination": "https://elevateforhumanity.org/:path*",
       "permanent": true
     }
   ],
