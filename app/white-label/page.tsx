@@ -5,6 +5,9 @@ export const metadata = {
   title: 'White-Label Platform | Clone & License Our Workforce Training System',
   description:
     'License our complete workforce training platform. Multi-tenant SaaS with your branding, WIOA compliance, apprenticeship tracking, and mobile apps included.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/white-label',
+  },
 };
 
 export default function WhiteLabelPage() {

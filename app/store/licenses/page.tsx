@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Platform Licenses | Elevate for Humanity Store',
   description:
     'License the complete Elevate for Humanity workforce training platform. White-label solutions for schools, training providers, and workforce agencies.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/store/licenses',
+  },
 };
 
 export default function LicensesPage() {

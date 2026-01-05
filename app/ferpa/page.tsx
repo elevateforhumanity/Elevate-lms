@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: 'FERPA Portal | Student Privacy & Records Management',
   description:
     'Manage student education records, privacy compliance, and data protection under FERPA',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/ferpa',
+  },
 };
 
 export default async function FERPAPortal() {

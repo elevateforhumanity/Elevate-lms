@@ -5,6 +5,9 @@ import { CheckCircle } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Payment Successful | Elevate for Humanity',
   description: 'Your payment was successful. Welcome to Elevate for Humanity!',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/payment/success',
+  },
 };
 
 export default function PaymentSuccessPage() {

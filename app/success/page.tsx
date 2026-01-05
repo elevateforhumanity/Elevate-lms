@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'Success Stories | Elevate for Humanity',
   description:
     'Real outcomes from students who transformed their lives through our training programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/success',
+  },
 };
 
 export default function SuccessStoriesPage() {
