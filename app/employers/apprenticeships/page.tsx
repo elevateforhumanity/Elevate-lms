@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Apprenticeship Programs | Elevate for Humanity',
   description:
     'Build your workforce through DOL-registered apprenticeship programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/employers/apprenticeships',
+  },
 };
 
 export default function ApprenticeshipPage() {

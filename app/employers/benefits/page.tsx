@@ -6,6 +6,9 @@ import { ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Employer Benefits | Elevate for Humanity',
   description: 'Discover the benefits of partnering with Elevate for Humanity.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/employers/benefits',
+  },
 };
 
 export default function EmployerBenefitsPage() {
