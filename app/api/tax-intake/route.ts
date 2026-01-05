@@ -1,16 +1,12 @@
-import { createClient } from "@supabase/supabase-js";
+import { supabaseServer } from "@/lib/supabaseServer";
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 import { NextResponse } from "next/server";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
 export async function POST(req: Request) {
   try {
+    const supabase = supabaseServer();
     const body = await req.json();
 
     const { data, error }: any = await supabase

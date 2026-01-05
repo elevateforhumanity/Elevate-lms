@@ -4,12 +4,8 @@ export const runtime = 'nodejs';
 export const maxDuration = 60;
 import { jotFormIntegration } from '@/lib/integrations/jotform';
 import { drakeIntegration } from '@/lib/integrations/drake-software';
-import { createClient } from '@supabase/supabase-js';
+import { supabaseServer } from '@/lib/supabaseServer';
 import { Resend } from 'resend';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
@@ -19,8 +15,8 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
  */
 export async function POST(request: NextRequest) {
   try {
+    const supabase = supabaseServer();
     const body = await request.json();
-
 
     // Get submission ID from webhook
     const submissionId = body.submissionID || body.submission_id;
