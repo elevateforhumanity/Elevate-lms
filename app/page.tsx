@@ -5,9 +5,9 @@ import { ArrowRight } from 'lucide-react';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import { currentHomeHero, enableAudioNarration } from '@/config/hero-videos';
 
-// Enable static generation with immediate revalidation
-export const dynamic = 'force-static';
-export const revalidate = 0; // Always fresh
+// Force dynamic rendering to prevent CDN caching issues
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 export const fetchCache = 'force-no-store';
 
 export const metadata: Metadata = {
