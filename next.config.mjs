@@ -170,6 +170,7 @@ const nextConfig = {
       { source: '/study-groups/:path*', destination: '/lms', permanent: true },
       { source: '/forum/:path*', destination: '/blog', permanent: true },
       { source: '/volunteer/:path*', destination: '/about', permanent: true },
+      { source: '/volunteer', destination: '/about', permanent: true },
       { source: '/news/:path*', destination: '/blog/:path*', permanent: true },
       
       // Old 404 URLs from Google - redirect to relevant pages
@@ -181,6 +182,7 @@ const nextConfig = {
       { source: '/donate', destination: '/rise-foundation', permanent: true },
       { source: '/resources/:path*', destination: '/blog', permanent: true },
       { source: '/career-uplift-services/:path*', destination: '/career-services', permanent: true },
+      { source: '/community', destination: '/blog', permanent: true },
     ];
   },
   async headers() {
