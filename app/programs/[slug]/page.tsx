@@ -10,8 +10,6 @@ type Params = Promise<{ slug: string }>;
 
 const SITE_URL = 'https://elevateforhumanity.org';
 
-  };
-}
 
 // Load program from JSON file or TypeScript data
 async function loadProgram(slug: string): Promise<Program | null> {
