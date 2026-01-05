@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://elevateforhumanity.org';
+  const baseUrl = 'https://www.elevateforhumanity.org';
   const currentDate = new Date();
 
   // Static pages - deduplicated
