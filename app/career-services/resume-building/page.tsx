@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'Resume Building Services | Elevate For Humanity',
   description:
     'Professional resume writing and review services. Get expert help creating a resume that showcases your skills and gets you hired.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/career-services/resume-building',
+  },
 };
 
 export default function ResumeBuildingPage() {

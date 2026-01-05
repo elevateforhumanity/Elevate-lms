@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     'Indiana FSSA partner',
     'WorkOne partner',
   ],
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/snap-et-partner',
+  },
 };
 
 export default function SNAPETPartnerPage() {

@@ -7,6 +7,9 @@ import { Shield, CheckCircle } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Rights & Responsibilities | Elevate For Humanity',
   description: 'Program Holder Rights & Responsibilities - Required Reading',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/rights-responsibilities',
+  },
 };
 
 export default async function ProgramHolderRightsPage() {

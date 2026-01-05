@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'Staff / Instructor Application | Elevate for Humanity',
   description:
     'Join our team to support student success and workforce development.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/apply/staff',
+  },
 };
 
 export default function StaffApplicationPage() {

@@ -15,6 +15,9 @@ export const metadata = {
   title: 'Become a Partner | Elevate for Humanity',
   description:
     'Partner with Elevate for Humanity to provide workforce training, apprenticeships, and career pathways. Join our network of employers, training providers, and community organizations.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/partner',
+  },
 };
 
 export default function PartnerPage() {

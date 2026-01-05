@@ -8,6 +8,9 @@ import { Mail, Phone, MessageCircle, Clock, HelpCircle } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Support | Program Holder Portal',
   description: 'Get help and support',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/support',
+  },
 };
 
 export default async function SupportPage() {

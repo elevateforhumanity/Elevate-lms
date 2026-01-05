@@ -8,6 +8,9 @@ import { AlertTriangle, Mail, Phone, TrendingDown, Clock } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'At-Risk Students | Program Holder Portal',
   description: 'Manage students who need additional support',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/students/at-risk',
+  },
 };
 
 export default async function AtRiskStudentsPage() {

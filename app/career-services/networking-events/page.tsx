@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Networking Events | Career Services | Elevate for Humanity',
   description:
     'Connect with employers and industry professionals at our networking events.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/career-services/networking-events',
+  },
 };
 
 export default function NetworkingEventsPage() {

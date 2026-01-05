@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     'CDL & Transportation Training | Free Commercial Driver License Program',
   description:
     'Commercial Driver License training for truck driving careers. 100% funded through WIOA and state grants. Start earning $50K+ annually.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/programs/cdl-transportation',
+  },
 };
 
 export default function CdlTransportationPage() {

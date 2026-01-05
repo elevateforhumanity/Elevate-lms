@@ -8,6 +8,9 @@ import { FileText, Calendar, Clock, Save } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'New Report | Program Holder Portal',
   description: 'Submit a new compliance report',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/reports/new',
+  },
 };
 
 export default async function NewReportPage() {

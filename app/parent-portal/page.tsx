@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: 'Parent Portal | Elevate For Humanity',
   description:
     'Monitor your student progress, attendance, grades, and communicate with instructors.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/parent-portal',
+  },
 };
 
 export default function ParentPortalPage() {

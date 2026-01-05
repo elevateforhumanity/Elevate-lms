@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: 'Skilled Trades Programs | Free HVAC, Building Maintenance Training',
   description:
     'HVAC, Building Maintenance, and Building Technician training programs. 100% funded through WIOA and state grants. Build a career in the trades.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/programs/skilled-trades',
+  },
 };
 
 export default function SkilledTradesPage() {

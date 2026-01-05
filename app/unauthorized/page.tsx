@@ -4,6 +4,9 @@ import { ShieldAlert, Home } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Unauthorized Access | Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/unauthorized',
+  },
 };
 
 export default function UnauthorizedPage() {

@@ -7,6 +7,9 @@ export const metadata = {
   title: 'Community Marketplace | Elevate for Humanity',
   description:
     'Discover courses, programs, and products from our community of creators and program owners.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/community/marketplace',
+  },
 };
 
 export default async function CommunityMarketplacePage() {

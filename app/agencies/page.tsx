@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: 'For Agencies | Government-Aligned Workforce Infrastructure',
   description:
     'DOL registered. ETPL approved. WIOA compliant. License our workforce development platform.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/agencies',
+  },
 };
 
 export default function AgenciesPage() {

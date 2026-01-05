@@ -14,6 +14,9 @@ import {
 export const metadata: Metadata = {
   title: 'Compliance | Program Holder Portal',
   description: 'Monitor your compliance status',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/compliance',
+  },
 };
 
 export default async function CompliancePage() {

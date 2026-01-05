@@ -5,6 +5,9 @@ import { Briefcase, Building2, TrendingUp, ArrowRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Job Placement Services | Elevate for Humanity',
   description: 'Direct connections to employers actively hiring our graduates.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/career-services/job-placement',
+  },
 };
 
 export default function JobPlacementPage() {

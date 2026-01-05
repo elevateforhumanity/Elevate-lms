@@ -7,6 +7,9 @@ import { AlertTriangle, BookOpen, CheckCircle } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Employee Handbook | Elevate For Humanity',
   description: 'Program Holder Employee Handbook - Required Reading',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/handbook',
+  },
 };
 
 export default async function ProgramHolderHandbookPage() {

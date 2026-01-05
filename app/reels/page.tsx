@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Reels | Elevate For Humanity',
   description:
     'Watch short-form videos about career training and success stories',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/reels',
+  },
 };
 
 async function getReels() {

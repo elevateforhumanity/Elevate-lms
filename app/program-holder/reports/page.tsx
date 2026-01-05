@@ -16,6 +16,9 @@ import {
 export const metadata: Metadata = {
   title: 'Reports | Program Holder Portal',
   description: 'Submit and manage compliance reports',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/reports',
+  },
 };
 
 export default async function ReportsPage() {

@@ -22,6 +22,9 @@ export const metadata: Metadata = {
     'View our financial reports, program outcomes, and organizational transparency. See how donations are used and the impact we create.',
   keywords:
     'transparency, accountability, financial reports, nonprofit, 501c3, impact metrics',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/transparency',
+  },
 };
 
 export default function TransparencyPage() {

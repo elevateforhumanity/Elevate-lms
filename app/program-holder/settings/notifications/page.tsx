@@ -5,6 +5,9 @@ import NotificationPreferencesForm from './NotificationPreferencesForm';
 export const metadata = {
   title: 'Notification Settings | Program Holder',
   robots: { index: false, follow: false },
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/settings/notifications',
+  },
 };
 
 export default async function ProgramHolderNotificationSettingsPage() {

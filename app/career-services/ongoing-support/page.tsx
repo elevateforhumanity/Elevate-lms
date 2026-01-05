@@ -5,6 +5,9 @@ import { Heart, MessageCircle, TrendingUp, ArrowRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Ongoing Career Support | Elevate for Humanity',
   description: 'Lifetime career support for all graduates.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/career-services/ongoing-support',
+  },
 };
 
 export default function OngoingSupportPage() {

@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: 'Client Portal | Elevate for Humanity',
   description:
     'Secure client portal for document sharing, e-signatures, payments, and communication. Mobile-friendly and encrypted.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/(dashboard)/client-portal',
+  },
 };
 
 export default function ClientPortalPage() {

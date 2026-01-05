@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   title: 'My Documents | Program Holder Portal',
   description: 'View and manage your documents',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/documents',
+  },
 };
 
 export default async function ProgramHolderDocumentsPage() {

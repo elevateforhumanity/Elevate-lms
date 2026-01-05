@@ -6,6 +6,9 @@ import IdentityVerificationFlow from './IdentityVerificationFlow';
 export const metadata: Metadata = {
   title: 'Identity Verification | Program Holder',
   description: 'Complete identity verification to activate your account',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/verify-identity',
+  },
 };
 
 export default async function IdentityVerificationPage() {

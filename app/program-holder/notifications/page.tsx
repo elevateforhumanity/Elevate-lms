@@ -6,6 +6,9 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Notifications | Program Holder',
   robots: { index: false, follow: false },
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/notifications',
+  },
 };
 
 export default async function ProgramHolderNotificationsPage() {

@@ -4,6 +4,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Divorce Support | Rise Forward Foundation',
   description: 'Support and resources for individuals and families navigating divorce',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/rise-foundation/divorce-support',
+  },
 };
 
 export default function DivorceSupportPage() {

@@ -4,6 +4,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Meet the Founder | Selfish Inc.',
   description: 'Learn about the founder of Selfish Inc. and Rise Forward Foundation',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/nonprofit/meet-the-founder',
+  },
 };
 
 export default function MeetTheFounderPage() {

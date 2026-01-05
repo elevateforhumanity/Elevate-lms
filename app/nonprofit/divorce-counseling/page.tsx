@@ -4,6 +4,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Divorce Counseling | Selfish Inc.',
   description: 'Professional counseling support for individuals navigating divorce',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/nonprofit/divorce-counseling',
+  },
 };
 
 export default function DivorceCounselingPage() {

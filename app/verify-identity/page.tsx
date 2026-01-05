@@ -7,6 +7,9 @@ import { Shield, CheckCircle } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Verify Your Identity | Elevate for Humanity',
   description: 'Complete identity verification to access platform features',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/verify-identity',
+  },
 };
 
 export default async function VerifyIdentityPage() {

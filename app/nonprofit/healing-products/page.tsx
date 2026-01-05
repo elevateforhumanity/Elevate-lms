@@ -4,6 +4,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Healing Products | Selfish Inc.',
   description: 'Products designed to support your healing journey',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/nonprofit/healing-products',
+  },
 };
 
 export default function HealingProductsPage() {

@@ -5,6 +5,9 @@ import { CheckCircle, ArrowRight, Mail, Phone } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Application Submitted | Elevate for Humanity',
   description: 'Your application has been successfully submitted.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/apply/success',
+  },
 };
 
 export default function ApplicationSuccessPage({

@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: 'Sign MOU | Elevate For Humanity',
   description:
     'Review and digitally sign your Program Partner Memorandum of Understanding.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/program-holder/sign-mou',
+  },
 };
 
 export default async function SignMOUPage() {

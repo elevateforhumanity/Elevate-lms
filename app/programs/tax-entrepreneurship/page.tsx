@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'Tax Preparation & Entrepreneurship',
   description:
     'Tax preparation certification and small business development training. Free with funding when eligible.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/programs/tax-entrepreneurship',
+  },
 };
 
 export default function TaxEntrepreneurshipPage() {

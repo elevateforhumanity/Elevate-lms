@@ -4,6 +4,9 @@ import { CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Application Submitted',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/apply/staff/success',
+  },
 };
 
 export default function StaffApplicationSuccess() {

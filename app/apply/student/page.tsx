@@ -4,6 +4,9 @@ import StudentApplicationForm from './StudentApplicationForm';
 export const metadata: Metadata = {
   title: 'Student Application | Elevate for Humanity',
   description: 'Apply for workforce training and career development programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/apply/student',
+  },
 };
 
 export default function StudentApplicationPage() {

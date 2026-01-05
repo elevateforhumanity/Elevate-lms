@@ -88,9 +88,6 @@ export const metadata: Metadata = {
     },
   },
   manifest: '/manifest.json',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org',
-  },
   openGraph: {
     type: 'website',
     url: 'https://www.elevateforhumanity.org',

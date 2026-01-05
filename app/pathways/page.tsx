@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'Career Pathways | Elevate for Humanity',
   description:
     'Explore career pathways and course progressions for all programs',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/pathways',
+  },
 };
 
 const pathways = [

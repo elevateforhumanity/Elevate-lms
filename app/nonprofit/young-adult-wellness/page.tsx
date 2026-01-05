@@ -4,6 +4,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Young Adult Wellness | Selfish Inc.',
   description: 'Wellness programs specifically designed for young adults',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/nonprofit/young-adult-wellness',
+  },
 };
 
 export default function YoungAdultWellnessPage() {
