@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     'home based franchise',
     'online franchise opportunity',
   ],
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/franchise',
+  },
 };
 
 export default function FranchisePage() {

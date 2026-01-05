@@ -2,6 +2,9 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Funding Verification Policy | Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/policies/funding-verification',
+  },
 };
 
 export default function FundingVerificationPage() {

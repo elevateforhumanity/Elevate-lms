@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: 'Certificates & Credentials | Elevate for Humanity',
   description:
     'Earn industry-recognized certificates and credentials. Verify certificates through government partners including SSA, IRS, DOL, and state licensing boards.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/certificates',
+  },
 };
 
 export default function CertificatesPage() {

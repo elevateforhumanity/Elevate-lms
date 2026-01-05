@@ -5,6 +5,9 @@ import { CheckCircle, Phone, Mail } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Order Confirmed | Drug Testing Services',
   description: 'Your drug testing order has been confirmed.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/drug-testing/success',
+  },
 };
 
 export default function DrugTestingSuccessPage() {

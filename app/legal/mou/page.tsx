@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'Memorandum of Understanding | Elevate For Humanity',
   description:
     'Memorandum of Understanding for Elevate for Humanity partnerships.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/legal/mou',
+  },
 };
 
 export default function MOUPage() {

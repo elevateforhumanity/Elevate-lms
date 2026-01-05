@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Drug Testing Training Courses | Elevate for Humanity',
   description:
     'Professional drug testing training courses. DOT and non-DOT collector training, supervisor training, DER training, and more.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/drug-testing-training',
+  },
 };
 
 // NDS Training Courses with 40% markup

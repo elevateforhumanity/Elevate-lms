@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'Course Syllabi | Elevate for Humanity',
   description:
     'View detailed course syllabi with learning outcomes, assessments, and requirements',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/syllabi',
+  },
 };
 
 const syllabi = [

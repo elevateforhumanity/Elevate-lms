@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Pricing - SupersonicFastCash | Elevate for Humanity',
   description:
     'Transparent pricing for tax preparation services. No hidden fees. See all costs upfront.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/tax/supersonicfastcash/pricing',
+  },
 };
 
 export default function PricingPage() {

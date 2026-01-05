@@ -6,6 +6,9 @@ import { Button } from '@/components/ui/Button';
 export const metadata: Metadata = {
   title: 'News & Press | Elevate for Humanity',
   description: 'Latest news, updates, and press releases from Elevate for Humanity.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/news',
+  },
 };
 
 export default function NewsPage() {

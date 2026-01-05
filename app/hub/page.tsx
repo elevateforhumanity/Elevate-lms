@@ -22,6 +22,9 @@ export const metadata = {
   title: 'Hub - All Services | Elevate for Humanity',
   description:
     'Explore all businesses, training programs, and services in the Elevate Hub',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/hub',
+  },
 };
 
 export default function HubPage() {

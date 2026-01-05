@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Drug Testing Services | Elevate for Humanity',
   description:
     'Professional drug testing services for workforce programs. DOT and non-DOT testing, nationwide collection sites, MRO review included.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/drug-testing',
+  },
 };
 
 // NDS Prices with 40% markup

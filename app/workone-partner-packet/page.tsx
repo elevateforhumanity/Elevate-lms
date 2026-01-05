@@ -15,6 +15,9 @@ export const metadata = {
   title: 'WorkOne Partner Packet | Elevate for Humanity',
   description:
     'Registered Apprenticeship Sponsor | ETPL | WIOA | WRG Eligible. Complete partner packet for WorkOne regions.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/workone-partner-packet',
+  },
 };
 
 export default function WorkOnePartnerPacketPage() {

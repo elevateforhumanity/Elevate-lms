@@ -3,6 +3,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'WIOA Eligibility Policy | Elevate for Humanity',
   description: 'Workforce Innovation and Opportunity Act eligibility requirements',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/policies/wioa',
+  },
 };
 
 export default function WIOAPage() {

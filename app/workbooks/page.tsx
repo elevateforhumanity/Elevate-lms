@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Program Workbooks | Elevate for Humanity',
   description:
     'Access workbooks, study guides, and course materials for all programs',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/workbooks',
+  },
 };
 
 const workbooks = [

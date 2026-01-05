@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Locations | Elevate for Humanity',
   description:
     'Visit Elevate for Humanity at our Indianapolis location. Find directions, hours, and contact information.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/locations',
+  },
 };
 
 export default function LocationsPage() {

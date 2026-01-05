@@ -12,6 +12,9 @@ export const metadata = {
   title: 'AI-Powered Learning Tools | Elevate for Humanity',
   description:
     'Get 24/7 help with AI tutoring, course building, job matching, and more. Powered by advanced AI to accelerate your learning.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/ai',
+  },
 };
 
 export default function AIHubPage() {

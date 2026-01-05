@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     'Support free career training for underserved communities. Your donation helps provide job skills, certifications, and employment opportunities. 501(c)(3) tax-deductible.',
   keywords:
     'donate, give, support, charity, nonprofit, career training, job training, tax deductible, 501c3',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/donate',
+  },
 };
 
 export default function DonatePage() {

@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Get Started | Elevate For Humanity',
   description:
     'Start your free career training today. Apply for WIOA, WRG, or apprenticeship programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/getstarted',
+  },
 };
 
 export default function Page() {

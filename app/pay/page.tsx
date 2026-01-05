@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Payment Options | Elevate for Humanity',
   description:
     'See tuition payment options in one place: monthly payments with Affirm or pay-in-full with Stripe.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/pay',
+  },
 };
 
 export default function PayPage() {

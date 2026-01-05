@@ -6,6 +6,9 @@ import { Shield, FileText, BarChart3, ArrowLeft } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Partner Compliance Tools | Elevate for Humanity',
   description: 'Compliance tools and resources for training partners.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/partners/compliance',
+  },
 };
 
 export default function PartnerCompliancePage() {

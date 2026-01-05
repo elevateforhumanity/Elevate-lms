@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'Non-Compete Agreement | Elevate For Humanity',
   description:
     'Non-Compete Agreement for Elevate for Humanity partners and stakeholders.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/legal/non-compete',
+  },
 };
 
 export default function NonCompetePage() {

@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'Search Blog | Elevate For Humanity',
   description:
     'Search our blog for workforce development insights, success stories, and career tips.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/blog/search',
+  },
 };
 
 async function searchBlogPosts(query: string) {
