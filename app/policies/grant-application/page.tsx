@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Grant Application Policy | Elevate for Humanity' };
+export const metadata: Metadata = {
+  title: 'Grant Application Policy | Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/policies/grant-application',
+  },
+};
 export default function GrantApplicationPage() {
   return (
     <article className="prose prose-lg max-w-none">

@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Moderation Policy | Elevate for Humanity' };
+export const metadata: Metadata = {
+  title: 'Moderation Policy | Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/policies/moderation',
+  },
+};
 export default function ModerationPage() {
   return (
     <article className="prose prose-lg max-w-none">

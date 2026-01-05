@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Credential Revocation Policy | Elevate for Humanity' };
+export const metadata: Metadata = {
+  title: 'Credential Revocation Policy | Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/policies/revocation',
+  },
+};
 export default function RevocationPage() {
   return (
     <article className="prose prose-lg max-w-none">

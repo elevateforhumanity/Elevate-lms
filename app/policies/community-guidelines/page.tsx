@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Community Guidelines | Elevate for Humanity' };
+export const metadata: Metadata = {
+  title: 'Community Guidelines | Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/policies/community-guidelines',
+  },
+};
 export default function CommunityGuidelinesPage() {
   return (
     <article className="prose prose-lg max-w-none">

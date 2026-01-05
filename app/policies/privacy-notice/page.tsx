@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Privacy Notice | Elevate for Humanity' };
+export const metadata: Metadata = {
+  title: 'Privacy Notice | Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/policies/privacy-notice',
+  },
+};
 export default function PrivacyNoticePage() {
   return (
     <article className="prose prose-lg max-w-none">

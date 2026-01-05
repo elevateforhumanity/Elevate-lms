@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Acceptable Use Policy | Elevate for Humanity' };
+export const metadata: Metadata = {
+  title: 'Acceptable Use Policy | Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/policies/acceptable-use',
+  },
+};
 export default function AcceptableUsePage() {
   return (
     <article className="prose prose-lg max-w-none">

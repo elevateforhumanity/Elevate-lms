@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Terms of Service | Elevate for Humanity' };
+export const metadata: Metadata = {
+  title: 'Terms of Service | Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/policies/terms',
+  },
+};
 export default function TermsPage() {
   return (
     <article className="prose prose-lg max-w-none">

@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Credential Verification Policy | Elevate for Humanity' };
+export const metadata: Metadata = {
+  title: 'Credential Verification Policy | Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/policies/verification',
+  },
+};
 export default function VerificationPage() {
   return (
     <article className="prose prose-lg max-w-none">

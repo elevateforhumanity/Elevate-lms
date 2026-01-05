@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
-export const metadata: Metadata = { title: 'Academic Progress Policy | Elevate for Humanity' };
+export const metadata: Metadata = {
+  title: 'Academic Progress Policy | Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/policies/progress',
+  },
+};
 export default function ProgressPage() {
   return (
     <article className="prose prose-lg max-w-none">
