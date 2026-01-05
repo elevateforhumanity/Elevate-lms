@@ -4,6 +4,9 @@ import { FileText, Calendar, FolderOpen, TrendingUp, CheckCircle } from 'lucide-
 export const metadata = {
   title: 'Tax Information | Supersonic Fast Cash',
   description: 'Tax tips, rates, and document retention guide',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/tax-information',
+  },
 };
 
 export default function TaxInformationPage() {

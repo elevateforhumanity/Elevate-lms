@@ -14,6 +14,9 @@ export const metadata = {
   title: 'Tax Services | Supersonic Fast Cash',
   description:
     'Professional tax preparation, refund advances, business returns, and more. IRS-certified preparers serving Indianapolis and all 50 states.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/services',
+  },
 };
 
 export default function ServicesPage() {

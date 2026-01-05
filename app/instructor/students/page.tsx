@@ -4,6 +4,9 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'My Students | Elevate for Humanity',
   description: 'View and manage your students',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/instructor/students',
+  },
 };
 
 export default function Page() {

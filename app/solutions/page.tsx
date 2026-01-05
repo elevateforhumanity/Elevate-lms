@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: 'Solutions | Elevate For Humanity LMS',
   description:
     'Workforce training solutions for organizations, government agencies, and training providers. White-label LMS with integrated content partners.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/solutions',
+  },
 };
 
 const solutions = [

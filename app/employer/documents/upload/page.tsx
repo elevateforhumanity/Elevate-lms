@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   title: 'Upload Document | Employer Portal',
   description: 'Upload a new document',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/employer/documents/upload',
+  },
 };
 
 export default async function UploadDocumentPage() {

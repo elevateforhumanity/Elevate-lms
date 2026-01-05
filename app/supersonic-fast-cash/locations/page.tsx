@@ -5,6 +5,9 @@ export const metadata = {
   title: 'Locations & Hours | Supersonic Fast Cash',
   description:
     'Visit our Indianapolis office or schedule a virtual appointment. Serving all 50 states.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/locations',
+  },
 };
 
 export default function LocationsPage() {

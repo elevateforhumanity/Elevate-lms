@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'Healthcare Programs | Elevate for Humanity',
   description:
     'Free healthcare training programs - CNA, Medical Assistant, Home Health Aide, and more',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/industries/healthcare',
+  },
 };
 
 export default function HealthcarePage() {

@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: 'Instructor Dashboard | Elevate For Humanity',
   description:
     'Manage your students, track progress, and oversee training programs.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/instructor/dashboard',
+  },
 };
 
 export default async function ProgramHolderDashboard() {

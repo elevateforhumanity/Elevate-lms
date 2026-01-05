@@ -16,6 +16,9 @@ export const metadata = {
     'Program Holder Network | Join Our MOU-Based Licensing | Elevate for Humanity',
   description:
     'Bring your training programs under our umbrella. Use our ETPL, RAPIDS, WIOA credentials via MOU. Launch in 30 days. Indiana only. Application required.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/pricing/program-holder',
+  },
 };
 
 export default function ProgramHolderLicensePage() {

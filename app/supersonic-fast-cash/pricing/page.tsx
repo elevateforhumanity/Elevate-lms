@@ -5,6 +5,9 @@ export const metadata = {
   title: 'Refund Advance Options | Supersonic Fast Cash',
   description:
     'Optional refund advances through third-party banking partners. Get $250-$7,500 same day.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/pricing',
+  },
 };
 
 export default function PricingPage() {

@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     'DOL-registered barber apprenticeship in Indianapolis. Earn $12-15/hour while training. Get matched to licensed barber shop, receive hands-on training, earn Indiana barber license. State Board approved. RAPIDS ID: 2025-IN-132301.',
   keywords:
     'barber apprenticeship Indiana, earn while you learn barber, DOL registered apprenticeship, Indiana barber license, barber training Indianapolis, paid barber training, State Board approved barber, barber school Indianapolis, apprenticeship barber program Indiana',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/programs/barber-apprenticeship',
+  },
 };
 
 export default function BarberApprenticeshipPage() {

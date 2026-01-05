@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: 'Events & Workshops | Elevate for Humanity',
   description:
     'Join us for information sessions, hiring events, workshops, and open houses. Free career training events in Indianapolis.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/events',
+  },
 };
 
 const eventTypeColors = {

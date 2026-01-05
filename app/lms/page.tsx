@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Learning Management System | Elevate for Humanity',
   description:
     'Access interactive courses, video lessons, quizzes, and collaboration tools. Learn at your own pace with our modern LMS platform.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/lms',
+  },
 };
 
 export default function LMSLandingPage() {

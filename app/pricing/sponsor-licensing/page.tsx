@@ -14,6 +14,9 @@ export const metadata = {
   title: 'Sponsor-in-a-Box Licensing | Elevate for Humanity',
   description:
     'License our apprenticeship sponsorship infrastructure. WIOA/WRG-safe, audit-defensible, and ready to deploy.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/pricing/sponsor-licensing',
+  },
 };
 
 export default function SponsorLicensingPage() {

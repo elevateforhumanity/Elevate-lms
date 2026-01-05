@@ -28,6 +28,9 @@ export const metadata = {
     'DOL RAPIDS integration',
     'ETPL approved platform',
   ],
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/pricing/platform',
+  },
 };
 
 export default function PlatformLicensingPage() {

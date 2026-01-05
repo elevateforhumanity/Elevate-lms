@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     '100% free CNA training in Indianapolis. State approved, DOL approved. Get your Certified Nursing Assistant certification through WRG, WIOA, or JRI funding. 6-8 weeks, job placement included. Start earning $16-$20/hour.',
   keywords:
     'free CNA training Indiana, CNA classes Indianapolis, certified nursing assistant Indiana, WRG CNA training, WIOA CNA program, JRI CNA training, free nursing assistant school Indiana, CNA certification Indianapolis, CNA job placement, state approved CNA training Indiana',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/programs/cna',
+  },
 };
 
 export default function Page() {

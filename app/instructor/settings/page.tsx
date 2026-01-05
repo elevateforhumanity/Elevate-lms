@@ -4,6 +4,9 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Instructor Settings | Elevate for Humanity',
   description: 'Manage your instructor account',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/instructor/settings',
+  },
 };
 
 export default function Page() {

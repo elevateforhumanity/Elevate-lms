@@ -4,6 +4,9 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Candidates | Elevate for Humanity',
   description: 'View and manage candidates',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/employer/candidates',
+  },
 };
 
 export default function Page() {

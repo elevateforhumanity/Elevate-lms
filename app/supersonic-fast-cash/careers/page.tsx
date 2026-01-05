@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     'tax preparer wanted Indianapolis',
     'hiring tax professionals Indiana',
   ],
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/careers',
+  },
 };
 
 export default function TaxCareersPage() {

@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: 'Healthcare Fundamentals Course | LMS | Elevate For Humanity',
   description:
     'Learn healthcare fundamentals with our comprehensive online course. 4-6 weeks, beginner-friendly, earn your certificate.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/lms/courses/healthcare-fundamentals',
+  },
 };
 
 export default function HealthcareFundamentalsCoursePage() {

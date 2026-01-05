@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     '100% free IRS-certified tax preparation training in Indianapolis. Become a VITA volunteer or start your own tax business. IRS Link & Learn certified. Earn $40k-$100k+ per year. H&R Block alternative. TurboTax Pro alternative.',
   keywords:
     'free tax preparation training, IRS certified tax preparer, VITA volunteer training, start tax business, tax preparer course Indianapolis, IRS Link and Learn, become tax preparer, tax business training, H&R Block alternative, TurboTax Pro alternative, tax franchise alternative, PTIN certification, tax season business',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/programs/tax-preparation',
+  },
 };
 
 export default function Page() {
