@@ -220,6 +220,10 @@ const nextConfig = {
             key: 'Vercel-CDN-Cache-Control',
             value: 'public, s-maxage=31536000, immutable',
           },
+          {
+            key: 'X-Robots-Tag',
+            value: 'all',
+          },
         ],
       },
       {
@@ -236,6 +240,10 @@ const nextConfig = {
           {
             key: 'Vercel-CDN-Cache-Control',
             value: 'public, s-maxage=31536000, immutable',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'all',
           },
         ],
       },
