@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { videos, getVideoById } from '@/lms-data/videos';
+import { videos, getVideoById } from '../../../lms-data/videos';
 import { ArrowLeft } from 'lucide-react';
 
 // Force static generation at build time
