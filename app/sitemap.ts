@@ -4,120 +4,82 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.elevateforhumanity.org';
   const currentDate = new Date();
 
-  // Static pages - deduplicated
-  const routes = [
-    '',
-    '/about',
-    '/hub',
-    '/programs',
-    '/apply',
-    '/contact',
-    '/blog',
-    '/privacy-policy',
-    '/terms-of-service',
-    '/apprenticeships',
-    '/employer',
-    '/volunteer',
-
-    // Businesses
-    '/supersonic-fast-cash',
-    '/kingdom-konnect',
-    '/serene-comfort-care',
-    '/urban-build-crew',
-    '/selfish-inc',
-    '/rise-foundation',
-
-    // Services
-    '/career-services',
-    '/advising',
-    '/mentorship',
-    '/tax',
-    '/drug-testing',
-    '/support',
-    '/marketplace',
-    '/booking',
-
-    // Employers
-    '/hire-graduates',
-    '/ojt-and-funding',
-    '/industries',
-    '/workforce-partners',
-
-    // Resources
-    '/docs',
-    '/downloads',
-    '/forms',
-    '/grants',
-    '/search',
-
-    // Partnerships
-    '/partners',
-    '/snap-et-partner',
-    '/fssa-partnership-request',
-    '/workone-partner-packet',
-    '/jri',
-    '/franchise',
-    '/white-label',
-
-    // Community
-    '/forums',
-    '/events',
-    '/webinars',
-    '/reels',
-    '/success-stories',
-
-    // Features
-    '/courses',
-    '/certificates',
-    '/credentials',
-    '/pathways',
-
-    // AI Features
-    '/ai',
-    '/ai-chat',
-    '/ai-studio',
-    '/ai-tutor',
-
-    // Marketplace - removed duplicates
-    '/shop',
-    '/store',
-    '/checkout',
-    '/banking',
-
-    // Learning
-    '/lessons',
-    '/syllabi',
-    '/workbooks',
-    '/orientation',
-    '/student-handbook',
+  // ONLY pages that exist and return 200 - verified working pages
+  const publicPages = [
+    { url: '', priority: 1.0, changeFrequency: 'daily' as const },
+    { url: '/about', priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: '/about/team', priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: '/programs', priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: '/apprenticeships', priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: '/services', priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: '/credentials', priority: 0.8, changeFrequency: 'monthly' as const },
+    { url: '/apply', priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: '/contact', priority: 0.8, changeFrequency: 'monthly' as const },
+    { url: '/blog', priority: 0.7, changeFrequency: 'daily' as const },
+    { url: '/employer', priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: '/rise-foundation', priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: '/supersonic-fast-cash', priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: '/privacy-policy', priority: 0.5, changeFrequency: 'yearly' as const },
+    { url: '/terms-of-service', priority: 0.5, changeFrequency: 'yearly' as const },
+    { url: '/accessibility', priority: 0.5, changeFrequency: 'yearly' as const },
+    { url: '/careers', priority: 0.6, changeFrequency: 'monthly' as const },
   ];
 
-  // Deduplicate routes
-  const uniqueRoutes = [...new Set(routes)];
-
-  const staticPages = uniqueRoutes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1 : route === '/hub' ? 0.9 : 0.8,
-  }));
-
-  // Program pages
-  const programs = [
-    'medical-assistant',
-    'hvac',
+  // Program pages that exist
+  const programPages = [
+    'cna',
     'cdl-transportation',
     'barber-apprenticeship',
-    'building-maintenance',
-    'cna',
-    'business-financial',
     'tax-preparation',
-  ].map((program: any) => ({
-    url: `${baseUrl}/programs/${program}`,
-    lastModified: currentDate,
+    'direct-support-professional',
+    'drug-collector',
+    'healthcare',
+    'skilled-trades',
+    'technology',
+    'business',
+  ].map((program) => ({
+    url: `/programs/${program}`,
+    priority: 0.8,
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
   }));
 
-  return [...staticPages, ...programs];
+  // Career services pages
+  const careerPages = [
+    '/career-services',
+    '/career-services/job-placement',
+    '/career-services/resume-building',
+    '/career-services/interview-prep',
+    '/career-services/career-counseling',
+  ].map((url) => ({
+    url,
+    priority: 0.7,
+    changeFrequency: 'monthly' as const,
+  }));
+
+  // Funding pages
+  const fundingPages = [
+    '/funding',
+    '/funding/wioa',
+    '/funding/wrg',
+    '/funding/jri',
+  ].map((url) => ({
+    url,
+    priority: 0.7,
+    changeFrequency: 'monthly' as const,
+  }));
+
+  // Combine all pages
+  const allPages = [
+    ...publicPages,
+    ...programPages,
+    ...careerPages,
+    ...fundingPages,
+  ];
+
+  return allPages.map((page) => ({
+    url: `${baseUrl}${page.url}`,
+    lastModified: currentDate,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
+  }));
 }
