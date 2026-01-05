@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateInternalMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateInternalMetadata({
+  title: 'Payroll Setup',
+  description: 'Payroll setup for new employees.',
+  path: '/onboarding/payroll-setup',
+});
+
 import { redirect } from 'next/navigation';
 import { createClient } from '@/utils/supabase/server';
 import PayrollSetupForm from './PayrollSetupForm';

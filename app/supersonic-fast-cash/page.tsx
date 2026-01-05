@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Supersonic-Fast-Cash',
+  description: 'Supersonic-Fast-Cash - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/supersonic-fast-cash',
+});
+
 'use client';
 
 import Link from 'next/link';

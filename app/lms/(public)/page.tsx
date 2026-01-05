@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateInternalMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateInternalMetadata({
+  title: 'Lms (Public)',
+  description: 'Internal page for Lms (Public)',
+  path: '/lms/(public)',
+});
+
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';

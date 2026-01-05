@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Platform Architecture',
+  description: 'Platform Architecture - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/platform/architecture',
+});
+
 import { ComplianceBar } from '@/components/ComplianceBar';
 
 export const revalidate = 3600; // 1 hour ISR cache

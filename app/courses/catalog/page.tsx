@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Courses Catalog',
+  description: 'Courses Catalog - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/courses/catalog',
+});
+
 'use client';
 
 import React from 'react';

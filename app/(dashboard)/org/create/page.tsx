@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: '(Dashboard) Org Create',
+  description: '(Dashboard) Org Create - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/(dashboard)/org/create',
+});
+
 "use client";
 
 import React from 'react';

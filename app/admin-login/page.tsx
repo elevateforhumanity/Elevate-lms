@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateInternalMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateInternalMetadata({
+  title: 'Admin-Login',
+  description: 'Internal page for Admin-Login',
+  path: '/admin-login',
+});
+
 'use client';
 
 import React from 'react';

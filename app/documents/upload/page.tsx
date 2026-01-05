@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Documents Upload',
+  description: 'Documents Upload - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/documents/upload',
+});
+
 'use client';
 
 import { useState } from 'react';

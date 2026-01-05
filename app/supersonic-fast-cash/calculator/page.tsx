@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Supersonic-Fast-Cash Calculator',
+  description: 'Supersonic-Fast-Cash Calculator - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/supersonic-fast-cash/calculator',
+});
+
 'use client';
 
 import { logger } from '@/lib/logger';

@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateInternalMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateInternalMetadata({
+  title: 'Cache Diagnostic',
+  description: 'Cache diagnostic tool.',
+  path: '/cache-diagnostic',
+});
+
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 

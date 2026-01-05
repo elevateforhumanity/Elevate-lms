@@ -107,6 +107,14 @@ const nextConfig = {
   // Redirects for consolidated routes
   async redirects() {
     return [
+      // WWW to non-WWW redirect (canonical domain)
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.elevateforhumanity.org' }],
+        destination: 'https://elevateforhumanity.org/:path*',
+        permanent: true,
+      },
+      
       // Dashboard consolidation
       { source: '/portal/:path*', destination: '/lms/:path*', permanent: true },
       { source: '/student/:path*', destination: '/lms/:path*', permanent: true },

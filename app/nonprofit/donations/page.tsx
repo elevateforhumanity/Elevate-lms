@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Donate',
+  description: 'Support workforce development in Indianapolis. Your donation helps provide free career training to those in need.',
+  path: '/nonprofit/donations',
+});
+
 import Link from 'next/link';
 import { Heart, DollarSign, Users, TrendingUp } from 'lucide-react';
 

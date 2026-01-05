@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateInternalMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateInternalMetadata({
+  title: 'Start Onboarding',
+  description: 'Begin your onboarding process.',
+  path: '/onboarding/start',
+});
+
 import { redirect } from 'next/navigation';
 import { createClient } from '@/utils/supabase/server';
 import OnboardingFlow from './OnboardingFlow';

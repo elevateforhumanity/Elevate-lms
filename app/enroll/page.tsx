@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Enroll Now',
+  description: 'Start your career training journey. Enroll in free workforce development programs with WIOA funding in Indianapolis.',
+  path: '/enroll',
+});
+
 import Link from 'next/link';
 import ProgramHowItWorks from '@/components/program/ProgramHowItWorks';
 import ProgramFAQ from '@/components/program/ProgramFAQ';

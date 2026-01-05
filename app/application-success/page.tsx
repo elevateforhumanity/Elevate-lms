@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Application-Success',
+  description: 'Application-Success - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/application-success',
+});
+
 import Link from 'next/link';
 import { PartyPopper } from 'lucide-react';
 

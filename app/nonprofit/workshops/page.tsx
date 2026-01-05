@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Workshops',
+  description: 'Free workshops on career development, job readiness, and professional skills training.',
+  path: '/nonprofit/workshops',
+});
+
 import Link from 'next/link';
 import { Calendar, Clock, Users, MapPin } from 'lucide-react';
 

@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'License Information',
+  description: 'Professional licensing information and requirements for career training programs.',
+  path: '/license',
+});
+
 import { redirect } from 'next/navigation';
 
 /**

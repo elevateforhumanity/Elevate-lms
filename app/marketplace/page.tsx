@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Marketplace',
+  description: 'Marketplace - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/marketplace',
+});
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { createClient } from '@/utils/supabase/server';

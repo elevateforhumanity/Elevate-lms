@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateInternalMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateInternalMetadata({
+  title: 'Shop Onboarding Documents',
+  description: 'Internal page for Shop Onboarding Documents',
+  path: '/shop/onboarding/documents',
+});
+
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { ShopDocumentUpload } from '@/components/shop/ShopDocumentUpload';

@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateInternalMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateInternalMetadata({
+  title: 'Program-Holder Campaigns',
+  description: 'Internal page for Program-Holder Campaigns',
+  path: '/program-holder/campaigns',
+});
+
 'use client';
 
 import React from 'react';

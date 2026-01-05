@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Sign Up',
+  description: 'Sign up for Elevate for Humanity programs, workshops, and career training opportunities.',
+  path: '/nonprofit/sign-up',
+});
+
 'use client';
 
 import { useState } from 'react';

@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Licenses Purchase',
+  description: 'Licenses Purchase - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/licenses/purchase',
+});
+
 'use client';
 
 import { useState } from 'react';

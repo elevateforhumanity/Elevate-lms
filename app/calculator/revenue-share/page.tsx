@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateInternalMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateInternalMetadata({
+  title: 'Revenue Share Calculator',
+  description: 'Calculate revenue sharing for partners.',
+  path: '/calculator/revenue-share',
+});
+
 'use client';
 
 import { useState } from 'react';

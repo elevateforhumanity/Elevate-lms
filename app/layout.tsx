@@ -42,19 +42,21 @@ export const viewport: Viewport = {
   userScalable: true,
 };
 
-// Cache bust: 2026-01-05T00:30:00Z - WWW canonical migration
+// Global SEO configuration - fixes canonical, OpenGraph, and meta descriptions
+const SITE_URL = 'https://elevateforhumanity.org';
 const isProduction = process.env.VERCEL_ENV === 'production';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'
-  ),
+  metadataBase: new URL(SITE_URL),
+
   title: {
-    default: 'Elevate for Humanity | Workforce Training + Apprenticeships',
+    default: 'Elevate for Humanity',
     template: '%s | Elevate for Humanity',
   },
+
   description:
-    'A workforce hub connecting students to training, funding, apprenticeships, and barrier support—so people can move into real careers.',
+    'Workforce training, credentials, and community programs connecting learners to funded pathways and employer-aligned opportunities.',
+
   keywords: [
     'free career training Indianapolis',
     'WIOA programs Indiana',
@@ -77,7 +79,38 @@ export const metadata: Metadata = {
     'free vocational training Indiana',
     'paid training programs Indianapolis',
   ],
+
   authors: [{ name: 'Elevate for Humanity' }],
+
+  alternates: {
+    canonical: '/',
+  },
+
+  openGraph: {
+    type: 'website',
+    url: SITE_URL,
+    siteName: 'Elevate for Humanity',
+    title: 'Elevate for Humanity',
+    description:
+      'Workforce training, credentials, and community programs connecting learners to funded pathways and employer-aligned opportunities.',
+    images: [
+      {
+        url: '/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Elevate for Humanity',
+      },
+    ],
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Elevate for Humanity',
+    description:
+      'Workforce training, credentials, and community programs connecting learners to funded pathways and employer-aligned opportunities.',
+    images: ['/og-default.jpg'],
+  },
+
   robots: {
     index: isProduction,
     follow: isProduction,

@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateInternalMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateInternalMetadata({
+  title: 'Shop Reports New',
+  description: 'Internal page for Shop Reports New',
+  path: '/shop/reports/new',
+});
+
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { ShopReportForm } from '@/components/shop/ShopReportForm';

@@ -1,4 +1,13 @@
 import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Videos [VideoId]',
+  description: 'Videos [VideoId] - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/videos/[videoId]',
+});
+
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { videos, getVideoById } from '../../../lms-data/videos';

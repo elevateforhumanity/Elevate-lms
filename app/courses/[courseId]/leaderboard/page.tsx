@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Courses [CourseId] Leaderboard',
+  description: 'Courses [CourseId] Leaderboard - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/courses/[courseId]/leaderboard',
+});
+
 'use client';
 
 import React from 'react';

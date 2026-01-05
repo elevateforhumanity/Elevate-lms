@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Supersonic-Fast-Cash Tools Refund-Tracker',
+  description: 'Supersonic-Fast-Cash Tools Refund-Tracker - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/supersonic-fast-cash/tools/refund-tracker',
+});
+
 'use client';
 
 import { useState } from 'react';

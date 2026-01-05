@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Mentor Approvals',
+  description: 'Mentor Approvals - Elevate for Humanity workforce training and career development programs in Indianapolis.',
+  path: '/mentor/approvals',
+});
+
 export const dynamic = 'force-dynamic';
 
 import { redirect } from 'next/navigation';

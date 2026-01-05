@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateInternalMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateInternalMetadata({
+  title: 'Lms (App) Courses [CourseId]',
+  description: 'Internal page for Lms (App) Courses [CourseId]',
+  path: '/lms/(app)/courses/[courseId]',
+});
+
 export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';

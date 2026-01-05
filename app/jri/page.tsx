@@ -1,3 +1,12 @@
+import { Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'JRI Program',
+  description: 'Justice Reinvestment Initiative program providing career training and support for justice-involved individuals.',
+  path: '/jri',
+});
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
