@@ -10,29 +10,6 @@ type Params = Promise<{ slug: string }>;
 
 const SITE_URL = 'https://elevateforhumanity.org';
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const { slug } = await params;
-  const canonicalPath = `/programs/${slug}`;
-  
-  const title = slug.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
-  const description = `Explore ${title} program details, eligibility, and enrollment options through Elevate for Humanity.`;
-
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: canonicalPath,
-    },
-    openGraph: {
-      title,
-      description,
-      url: new URL(canonicalPath, SITE_URL).toString(),
-      type: 'website',
-    },
-    twitter: {
-      title,
-      description,
-    },
   };
 }
 
