@@ -162,15 +162,25 @@ const nextConfig = {
 
       // Removed routes
       { source: '/financial-aid/:path*', destination: '/funding/:path*', permanent: true },
-      { source: '/forums/:path*', destination: '/community/:path*', permanent: true },
-      { source: '/alumni/:path*', destination: '/community/:path*', permanent: true },
+      { source: '/forums/:path*', destination: '/blog', permanent: true },
+      { source: '/alumni/:path*', destination: '/about', permanent: true },
       { source: '/board/:path*', destination: '/admin/:path*', permanent: true },
       { source: '/receptionist/:path*', destination: '/staff-portal/:path*', permanent: true },
       { source: '/delegate/:path*', destination: '/admin/:path*', permanent: true },
-      { source: '/study-groups/:path*', destination: '/community/:path*', permanent: true },
-      { source: '/forum/:path*', destination: '/community/:path*', permanent: true },
-      { source: '/volunteer/:path*', destination: '/community/:path*', permanent: true },
+      { source: '/study-groups/:path*', destination: '/lms', permanent: true },
+      { source: '/forum/:path*', destination: '/blog', permanent: true },
+      { source: '/volunteer/:path*', destination: '/about', permanent: true },
       { source: '/news/:path*', destination: '/blog/:path*', permanent: true },
+      
+      // Old 404 URLs from Google - redirect to relevant pages
+      { source: '/about/founder', destination: '/about/team', permanent: true },
+      { source: '/etpl-programs', destination: '/programs', permanent: true },
+      { source: '/intake', destination: '/apply', permanent: true },
+      { source: '/scholarships', destination: '/funding', permanent: true },
+      { source: '/health-services', destination: '/programs/healthcare', permanent: true },
+      { source: '/donate', destination: '/rise-foundation', permanent: true },
+      { source: '/resources/:path*', destination: '/blog', permanent: true },
+      { source: '/career-uplift-services/:path*', destination: '/career-services', permanent: true },
     ];
   },
   async headers() {
