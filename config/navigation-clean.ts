@@ -33,32 +33,12 @@ export const publicNav: NavSection[] = [
     href: '/services',
   },
   {
-    label: 'Dashboard',
-    href: '/dashboard',
-  },
-  {
-    label: 'LMS',
-    href: '/lms',
-  },
-  {
-    label: 'Resources',
-    href: '/blog',
-  },
-  {
     label: 'Employers',
     href: '/employer',
   },
   {
-    label: 'RISE Foundation',
-    href: '/rise-foundation',
-  },
-  {
     label: 'About',
     href: '/about',
-  },
-  {
-    label: 'Blog',
-    href: '/blog',
   },
   {
     label: 'Contact',
