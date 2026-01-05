@@ -41,6 +41,11 @@ export function CopyrightProtection() {
     };
     // 4. Detect developer tools opening
     const detectDevTools = () => {
+      // Guard against undefined window properties on mobile
+      if (typeof window === 'undefined' || !window.outerWidth || !window.outerHeight) {
+        return;
+      }
+      
       const threshold = 160;
       const widthThreshold = window.outerWidth - window.innerWidth > threshold;
       const heightThreshold =

@@ -90,6 +90,11 @@ export function ScraperDetection() {
     }, 5000);
     // Check for DevTools opening
     const detectDevTools = () => {
+      // Guard against undefined window properties on mobile
+      if (typeof window === 'undefined' || !window.outerWidth || !window.outerHeight) {
+        return;
+      }
+      
       const threshold = 160;
       const widthThreshold = window.outerWidth - window.innerWidth > threshold;
       const heightThreshold = window.outerHeight - window.innerHeight > threshold;
