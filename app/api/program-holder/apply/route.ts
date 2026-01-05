@@ -2,18 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
-import { createClient } from '@supabase/supabase-js';
+import { supabaseServer } from '@/lib/supabaseServer';
 import {
   sendProgramHolderApplicationConfirmation,
   sendAdminProgramHolderNotification,
 } from '@/lib/email/service';
 import { checkRateLimit, verifyTurnstileToken } from '@/lib/turnstile';
-
-// Use service role for anonymous submissions
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
 
 export async function POST(req: NextRequest) {
   try {
@@ -61,6 +55,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Check for duplicate by email
+    const supabase = supabaseServer();
     const { data: existing } = await supabase
       .from('program_holder_applications')
       .select('id, status')
