@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: 'Student Handbook | Elevate for Humanity',
   description:
     'Complete guide to policies, procedures, and student rights at Elevate for Humanity',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/student-handbook',
+  },
 };
 
 export default function StudentHandbook() {

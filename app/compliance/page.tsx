@@ -5,6 +5,9 @@ import { Shield, CheckCircle } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Compliance | Elevate for Humanity',
   description: 'Our commitment to WIOA, DOL, and workforce compliance standards.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/compliance',
+  },
 };
 
 export default function CompliancePage() {

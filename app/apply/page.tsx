@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'Apply | Start Your Journey',
   description:
     'Choose your path: Student programs, Program holder partnership, Employer hiring, or Staff/Instructor roles.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/apply',
+  },
 };
 
 /**

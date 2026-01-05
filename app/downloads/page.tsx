@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: 'Download Center | Elevate For Humanity',
   description:
     'Access handbooks, workbooks, forms, and resources for students and staff',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/downloads',
+  },
 };
 
 const resources = {
