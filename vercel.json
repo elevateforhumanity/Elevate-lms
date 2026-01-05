@@ -5,7 +5,7 @@
       "main": true
     }
   },
-  "ignoreCommand": "exit 0",
+  "ignoreCommand": "echo 'Deploying' && exit 0",
   "github": {
     "silent": true,
     "autoJobCancelation": true
