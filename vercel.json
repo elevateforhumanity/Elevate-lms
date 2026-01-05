@@ -19,17 +19,6 @@
       "source": "/:path+/",
       "destination": "/:path+",
       "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.elevateforhumanity.org"
-        }
-      ],
-      "destination": "https://elevateforhumanity.org/:path*",
-      "permanent": true
     }
   ],
 
