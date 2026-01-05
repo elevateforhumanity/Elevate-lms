@@ -12,7 +12,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/employer',
+    canonical: 'https://www.elevateforhumanity.org/employer',
   },
   title: 'For Employers | Hire Trained Workers | No Fees',
   description:

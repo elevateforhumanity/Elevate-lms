@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/offline',
+    canonical: 'https://www.elevateforhumanity.org/offline',
   },
   title: 'Offline | Elevate For Humanity',
   description:

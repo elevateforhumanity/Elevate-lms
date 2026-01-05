@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://elevateforhumanity.org/admin/students',
+    canonical: 'https://www.elevateforhumanity.org/admin/students',
   },
   title: 'Students Management | Elevate For Humanity',
   description:

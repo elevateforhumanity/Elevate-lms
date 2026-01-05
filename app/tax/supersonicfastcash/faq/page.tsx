@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     'SupersonicFastCash',
   ],
   alternates: {
-    canonical: 'https://elevateforhumanity.org/tax/supersonicfastcash/faq',
+    canonical: 'https://www.elevateforhumanity.org/tax/supersonicfastcash/faq',
   },
   openGraph: {
     title: 'FAQ - SupersonicFastCash',

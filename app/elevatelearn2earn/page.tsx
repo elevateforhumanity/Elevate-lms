@@ -9,7 +9,7 @@ export const revalidate = 86400; // 24 hours
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/elevatelearn2earn',
+    canonical: 'https://www.elevateforhumanity.org/elevatelearn2earn',
   },
   title: 'Elevatelearn2earn | Elevate For Humanity',
   description:

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Support sustainable workforce systems with measurable outcomes. See how Elevate for Humanity creates lasting impact for learners, employers, and communities.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/impact',
+    canonical: 'https://www.elevateforhumanity.org/impact',
   },
 };
 

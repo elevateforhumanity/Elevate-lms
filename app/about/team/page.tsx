@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/about/team',
+    canonical: 'https://www.elevateforhumanity.org/about/team',
   },
   title: 'Our Team | Elevate For Humanity',
   description:

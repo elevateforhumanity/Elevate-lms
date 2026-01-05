@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     'DOL-registered apprenticeship programs in Indiana. Get paid while you learn. Barber, HVAC, Building Maintenance, and more. No debt, real wages.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/programs/apprenticeships',
+    canonical: 'https://www.elevateforhumanity.org/programs/apprenticeships',
   },
 };
 

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: 'Job Ready Indy (JRI) | Partner Courses | Elevate For Humanity',
   description: 'Employability Skills and Workforce Readiness Training',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/partners/jri',
+    canonical: 'https://www.elevateforhumanity.org/partners/jri',
   },
 };
 

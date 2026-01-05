@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'IRS VITA program',
   ],
   alternates: {
-    canonical: 'https://elevateforhumanity.org/tax/rise-up-foundation',
+    canonical: 'https://www.elevateforhumanity.org/tax/rise-up-foundation',
   },
   openGraph: {
     title: 'Rise Up Foundation - Free VITA Tax Help',

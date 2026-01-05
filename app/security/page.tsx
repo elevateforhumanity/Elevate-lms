@@ -11,7 +11,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/security',
+    canonical: 'https://www.elevateforhumanity.org/security',
   },
   title: 'Security & Data Protection | Elevate For Humanity',
   description:

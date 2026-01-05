@@ -16,7 +16,7 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `https://elevateforhumanity.org/blog/${slug}`,
+      canonical: `https://www.elevateforhumanity.org/blog/${slug}`,
     },
     title: `${slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())} | Elevate For Humanity`,
     description: `Explore ${slug.replace(/-/g, ' ')} and discover opportunities for career growth and development.`,

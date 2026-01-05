@@ -3,7 +3,7 @@ import { CheckCircle, XCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/status',
+    canonical: 'https://www.elevateforhumanity.org/status',
   },
   title: 'Production Status | Elevate For Humanity',
   description:

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     'Fast-track certifications in 2-8 weeks. CPR, Workforce Readiness, Peer Recovery Coach, and more. Get certified, get hired.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/programs/micro-programs',
+    canonical: 'https://www.elevateforhumanity.org/programs/micro-programs',
   },
 };
 

@@ -5,7 +5,7 @@ import { Users, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/team',
+    canonical: 'https://www.elevateforhumanity.org/team',
   },
   title: 'Our Team | Elevate For Humanity',
   description:

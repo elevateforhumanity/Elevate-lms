@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     'Career training programs aligned with WIOA, WRG, DOL, and employer-led apprenticeships, delivered through a compliant, scalable platform.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org',
+    canonical: 'https://www.elevateforhumanity.org',
   },
   openGraph: {
     title: 'Elevate for Humanity | Free, Funded Workforce Training',

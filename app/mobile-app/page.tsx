@@ -5,7 +5,7 @@ import { Smartphone, Zap, Download, Wifi, Bell, Lock } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/mobile-app',
+    canonical: 'https://www.elevateforhumanity.org/mobile-app',
   },
   title: 'Mobile App | Elevate For Humanity',
   description:

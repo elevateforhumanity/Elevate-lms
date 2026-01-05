@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     'Open a tax preparation suboffice. Complete onboarding, upload PTIN/EFIN, pass compliance test, and start earning revenue share.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/suboffice-onboarding',
+    canonical: 'https://www.elevateforhumanity.org/suboffice-onboarding',
   },
 };
 

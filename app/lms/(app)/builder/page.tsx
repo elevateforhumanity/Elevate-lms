@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/lms/builder',
+    canonical: 'https://www.elevateforhumanity.org/lms/builder',
   },
   title: 'Builder | Elevate For Humanity',
   description:

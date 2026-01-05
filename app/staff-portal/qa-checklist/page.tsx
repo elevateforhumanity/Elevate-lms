@@ -6,7 +6,7 @@ import { CheckSquare, Square, Calendar, User } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/staff-portal/qa-checklist',
+    canonical: 'https://www.elevateforhumanity.org/staff-portal/qa-checklist',
   },
   title: 'QA Checklist | Elevate For Humanity',
   description: 'Daily and weekly quality assurance checklists for staff.',

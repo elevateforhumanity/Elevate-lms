@@ -5,7 +5,7 @@ import { Heart, Target, Users, TrendingUp } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/rise-foundation/donate',
+    canonical: 'https://www.elevateforhumanity.org/rise-foundation/donate',
   },
   title: 'Donate | Rise Foundation',
   description: 'Support our mission to elevate individuals and communities.',

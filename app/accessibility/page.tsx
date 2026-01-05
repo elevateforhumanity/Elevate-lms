@@ -5,7 +5,7 @@ import { Accessibility, Mail, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/accessibility',
+    canonical: 'https://www.elevateforhumanity.org/accessibility',
   },
   title: 'Accessibility Statement | Elevate For Humanity',
   description:
