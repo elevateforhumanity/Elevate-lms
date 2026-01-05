@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { videos } from '@/lms-data/videos';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.elevateforhumanity.org';
@@ -68,12 +69,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
   }));
 
+  // Video pages
+  const videoPages = [
+    { url: '/videos', priority: 0.7, changeFrequency: 'weekly' as const },
+    ...videos.map((video) => ({
+      url: `/videos/${video.id}`,
+      priority: 0.6,
+      changeFrequency: 'monthly' as const,
+    })),
+  ];
+
   // Combine all pages
   const allPages = [
     ...publicPages,
     ...programPages,
     ...careerPages,
     ...fundingPages,
+    ...videoPages,
   ];
 
   return allPages.map((page) => ({
