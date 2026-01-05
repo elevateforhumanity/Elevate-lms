@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Verify Email',
-  description: 'Verify your email address to complete your Elevate for Humanity account setup.',
-  path: '/verify-email',
-});
 
 'use client';
 

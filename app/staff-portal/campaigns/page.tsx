@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateInternalMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateInternalMetadata({
-  title: 'Campaigns',
-  description: 'Manage marketing campaigns and outreach initiatives.',
-  path: '/staff-portal/campaigns',
-});
 
 'use client';
 

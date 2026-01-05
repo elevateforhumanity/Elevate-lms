@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Marketplace Thank-You',
-  description: 'Marketplace Thank-You - Elevate for Humanity workforce training and career development programs in Indianapolis.',
-  path: '/marketplace/thank-you',
-});
 
 'use client';
 

@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Apprentice Hours',
-  description: 'Apprentice Hours - Elevate for Humanity workforce training and career development programs in Indianapolis.',
-  path: '/apprentice/hours',
-});
 
 "use client";
 

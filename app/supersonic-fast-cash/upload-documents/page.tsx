@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Supersonic-Fast-Cash Upload-Documents',
-  description: 'Supersonic-Fast-Cash Upload-Documents - Elevate for Humanity workforce training and career development programs in Indianapolis.',
-  path: '/supersonic-fast-cash/upload-documents',
-});
 
 'use client';
 

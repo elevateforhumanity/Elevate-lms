@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Apply Track',
-  description: 'Apply Track - Elevate for Humanity workforce training and career development programs in Indianapolis.',
-  path: '/apply/track',
-});
 
 'use client';
 

@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateMetadata({
-  title: '(Dashboard) Org Invites',
-  description: '(Dashboard) Org Invites - Elevate for Humanity workforce training and career development programs in Indianapolis.',
-  path: '/(dashboard)/org/invites',
-});
 
 'use client';
 

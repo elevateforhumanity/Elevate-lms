@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Courses Partners [CourseId] Enroll',
-  description: 'Courses Partners [CourseId] Enroll - Elevate for Humanity workforce training and career development programs in Indianapolis.',
-  path: '/courses/partners/[courseId]/enroll',
-});
 
 'use client';
 

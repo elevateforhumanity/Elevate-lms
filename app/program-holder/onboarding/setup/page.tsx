@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateInternalMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateInternalMetadata({
-  title: 'Program-Holder Onboarding Setup',
-  description: 'Internal page for Program-Holder Onboarding Setup',
-  path: '/program-holder/onboarding/setup',
-});
 
 'use client';
 

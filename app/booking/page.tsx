@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Book an Appointment',
-  description: 'Schedule your appointment for career training, program enrollment, or consultation with Elevate for Humanity.',
-  path: '/booking',
-});
 
 'use client';
 

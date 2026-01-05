@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Next Steps',
-  description: 'Your next steps after applying to Elevate for Humanity workforce training programs.',
-  path: '/next-steps',
-});
 
 'use client';
 

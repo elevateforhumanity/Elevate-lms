@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateInternalMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateInternalMetadata({
-  title: 'Lms (App) Courses [CourseId] Lessons [LessonId]',
-  description: 'Internal page for Lms (App) Courses [CourseId] Lessons [LessonId]',
-  path: '/lms/(app)/courses/[courseId]/lessons/[lessonId]',
-});
 
 'use client';
 

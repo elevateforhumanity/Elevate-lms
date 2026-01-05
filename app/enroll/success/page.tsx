@@ -1,11 +1,5 @@
 import { Metadata } from 'next';
-import { generateMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Enrollment Successful',
-  description: 'Thank you for enrolling! Check your email for next steps and program information.',
-  path: '/enroll/success',
-});
 
 'use client';
 
