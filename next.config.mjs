@@ -187,6 +187,68 @@ const nextConfig = {
     ];
   },
   async headers() {
+    const isProduction = process.env.VERCEL_ENV === 'production';
+    const isPreview = process.env.VERCEL_ENV === 'preview';
+    
+    // Base security headers for all environments
+    const securityHeaders = [
+      {
+        key: 'X-DNS-Prefetch-Control',
+        value: 'on',
+      },
+      {
+        key: 'Strict-Transport-Security',
+        value: 'max-age=63072000; includeSubDomains; preload',
+      },
+      {
+        key: 'X-Frame-Options',
+        value: 'SAMEORIGIN',
+      },
+      {
+        key: 'X-Content-Type-Options',
+        value: 'nosniff',
+      },
+      {
+        key: 'X-XSS-Protection',
+        value: '1; mode=block',
+      },
+      {
+        key: 'Referrer-Policy',
+        value: 'origin-when-cross-origin',
+      },
+      {
+        key: 'Permissions-Policy',
+        value: 'camera=(), microphone=(), geolocation=()',
+      },
+      {
+        key: 'Content-Security-Policy',
+        value: [
+          "default-src 'self'",
+          "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://js.stripe.com",
+          "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+          "img-src * data: blob: 'unsafe-inline'",
+          "font-src 'self' data: https://fonts.gstatic.com",
+          "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://api.stripe.com wss://*.supabase.co",
+          "frame-src 'self' https://www.youtube.com https://player.vimeo.com https://js.stripe.com",
+          "media-src * data: blob:",
+          "worker-src 'self' blob:",
+        ].join('; '),
+      },
+    ];
+
+    // Environment-specific robots tag
+    if (isPreview) {
+      securityHeaders.push({
+        key: 'X-Robots-Tag',
+        value: 'noindex, nofollow, noarchive',
+      });
+    } else {
+      securityHeaders.push({
+        key: 'X-Robots-Tag',
+        value: 'noai, noimageai',
+      });
+    }
+
     return [
       {
         source: '/',
@@ -234,54 +296,7 @@ const nextConfig = {
       },
       {
         source: '/:path*',
-        headers: [
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-          {
-            key: 'X-Robots-Tag',
-            value: 'noai, noimageai',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
-          },
-          {
-            key: 'Content-Security-Policy',
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://js.stripe.com",
-              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "img-src * data: blob: 'unsafe-inline'",
-              "font-src 'self' data: https://fonts.gstatic.com",
-              "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://api.stripe.com wss://*.supabase.co",
-              "frame-src 'self' https://www.youtube.com https://player.vimeo.com https://js.stripe.com",
-              "media-src * data: blob:",
-              "worker-src 'self' blob:",
-            ].join('; '),
-          },
-        ],
+        headers: securityHeaders,
       },
       // Override X-Robots-Tag for images and videos (must come AFTER /:path*)
       {
