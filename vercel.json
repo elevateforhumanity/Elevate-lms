@@ -31,6 +31,18 @@
       "destination": "https://elevateforhumanity.org/:path*",
       "permanent": true,
       "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(.*)\\.vercel\\.app"
+        }
+      ],
+      "destination": "https://elevateforhumanity.org/:path*",
+      "permanent": false,
+      "statusCode": 302
     }
   ],
 
