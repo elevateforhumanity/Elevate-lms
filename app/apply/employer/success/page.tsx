@@ -5,7 +5,7 @@ import { CheckCircle } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Application Submitted',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/apply/employer/success',
+    canonical: 'https://elevateforhumanity.org/apply/employer/success',
   },
 };
 

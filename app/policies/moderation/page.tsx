@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Moderation Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/moderation',
+    canonical: 'https://elevateforhumanity.org/policies/moderation',
   },
 };
 export default function ModerationPage() {

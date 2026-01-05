@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { videos } from '../lms-data/videos';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.elevateforhumanity.org';
+  const baseUrl = 'https://elevateforhumanity.org';
   const currentDate = new Date();
 
   // ONLY pages that exist and return 200 - verified working pages

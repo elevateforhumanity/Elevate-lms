@@ -8,7 +8,7 @@ export const metadata = {
   description:
     'Discover courses, programs, and products from our community of creators and program owners.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/community/marketplace',
+    canonical: 'https://elevateforhumanity.org/community/marketplace',
   },
 };
 

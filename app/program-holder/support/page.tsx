@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Support | Program Holder Portal',
   description: 'Get help and support',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/program-holder/support',
+    canonical: 'https://elevateforhumanity.org/program-holder/support',
   },
 };
 

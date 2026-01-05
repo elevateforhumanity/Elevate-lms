@@ -73,13 +73,13 @@ export async function generateMetadata({
     title: `${program.name} | Free Training | Elevate for Humanity`,
     description: program.shortDescription,
     alternates: {
-      canonical: `https://www.elevateforhumanity.org/programs/${slug}`,
+      canonical: `https://elevateforhumanity.org/programs/${slug}`,
     },
     openGraph: {
       title: program.name,
       description: program.shortDescription,
       type: 'website',
-      url: `https://www.elevateforhumanity.org/programs/${slug}`,
+      url: `https://elevateforhumanity.org/programs/${slug}`,
     },
   };
 }

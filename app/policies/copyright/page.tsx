@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Copyright Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/copyright',
+    canonical: 'https://elevateforhumanity.org/policies/copyright',
   },
 };
 export default function CopyrightPage() {

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     'DOL registered. ETPL approved. WIOA compliant. License our workforce development platform.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/agencies',
+    canonical: 'https://elevateforhumanity.org/agencies',
   },
 };
 

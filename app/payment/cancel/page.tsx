@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Payment Cancelled | Elevate for Humanity',
   description: 'Your payment was cancelled. You can try again anytime.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/payment/cancel',
+    canonical: 'https://elevateforhumanity.org/payment/cancel',
   },
 };
 

@@ -9,7 +9,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/admin/tax-filing',
+    canonical: 'https://elevateforhumanity.org/admin/tax-filing',
   },
   title: 'Tax Filing Management | Admin',
   description: 'Manage tax filing applications and preparers',

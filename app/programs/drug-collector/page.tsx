@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'DOT certification',
   ],
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/drug-collector',
+    canonical: 'https://elevateforhumanity.org/programs/drug-collector',
   },
 };
 

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Complete FERPA Training | Elevate For Humanity',
   description: 'Complete your required FERPA training and certification',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/ferpa/training/complete',
+    canonical: 'https://elevateforhumanity.org/ferpa/training/complete',
   },
 };
 

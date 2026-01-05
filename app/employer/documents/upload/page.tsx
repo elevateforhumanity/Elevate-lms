@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Upload Document | Employer Portal',
   description: 'Upload a new document',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/employer/documents/upload',
+    canonical: 'https://elevateforhumanity.org/employer/documents/upload',
   },
 };
 

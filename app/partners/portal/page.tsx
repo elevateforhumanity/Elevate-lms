@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/partners/portal',
+    canonical: 'https://elevateforhumanity.org/partners/portal',
   },
   title: 'Portal | Elevate For Humanity',
   description:

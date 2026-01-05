@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Credential Verification Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/verification',
+    canonical: 'https://elevateforhumanity.org/policies/verification',
   },
 };
 export default function VerificationPage() {

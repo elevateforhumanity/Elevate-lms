@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Content Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/content',
+    canonical: 'https://elevateforhumanity.org/policies/content',
   },
 };
 export default function ContentPage() {

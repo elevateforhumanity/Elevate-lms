@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Student Code of Conduct | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/student-code',
+    canonical: 'https://elevateforhumanity.org/policies/student-code',
   },
 };
 export default function StudentCodePage() {

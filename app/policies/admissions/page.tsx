@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Admissions Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/admissions',
+    canonical: 'https://elevateforhumanity.org/policies/admissions',
   },
 };
 export default function AdmissionsPage() {

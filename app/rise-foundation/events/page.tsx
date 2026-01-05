@@ -5,7 +5,7 @@ import { Calendar, MapPin, Users, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/rise-foundation/events',
+    canonical: 'https://elevateforhumanity.org/rise-foundation/events',
   },
   title: 'Events | Rise Foundation',
   description: 'Join us for upcoming community events and programs.',

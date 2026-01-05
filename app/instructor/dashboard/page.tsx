@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     'Manage your students, track progress, and oversee training programs.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/instructor/dashboard',
+    canonical: 'https://elevateforhumanity.org/instructor/dashboard',
   },
 };
 

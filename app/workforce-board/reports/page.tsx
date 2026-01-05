@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/workforce-board/reports',
+    canonical: 'https://elevateforhumanity.org/workforce-board/reports',
   },
   title: 'Reports | Elevate For Humanity',
   description:

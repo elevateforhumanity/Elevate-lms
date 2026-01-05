@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'My Documents | Employer Portal',
   description: 'View and manage your documents',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/employer/documents',
+    canonical: 'https://elevateforhumanity.org/employer/documents',
   },
 };
 

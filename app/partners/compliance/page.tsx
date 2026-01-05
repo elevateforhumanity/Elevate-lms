@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Partner Compliance Tools | Elevate for Humanity',
   description: 'Compliance tools and resources for training partners.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/partners/compliance',
+    canonical: 'https://elevateforhumanity.org/partners/compliance',
   },
 };
 

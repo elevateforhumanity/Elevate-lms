@@ -5,7 +5,7 @@ import UniversalNav from '@/components/UniversalNav';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/rise-foundation/about',
+    canonical: 'https://elevateforhumanity.org/rise-foundation/about',
   },
   title: 'About | Elevate For Humanity',
   description:

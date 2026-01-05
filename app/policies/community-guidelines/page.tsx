@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Community Guidelines | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/community-guidelines',
+    canonical: 'https://elevateforhumanity.org/policies/community-guidelines',
   },
 };
 export default function CommunityGuidelinesPage() {

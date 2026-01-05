@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Federal Compliance Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/federal-compliance',
+    canonical: 'https://elevateforhumanity.org/policies/federal-compliance',
   },
 };
 export default function FederalCompliancePage() {

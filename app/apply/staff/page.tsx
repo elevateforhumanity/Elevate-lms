@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Join our team to support student success and workforce development.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/apply/staff',
+    canonical: 'https://elevateforhumanity.org/apply/staff',
   },
 };
 

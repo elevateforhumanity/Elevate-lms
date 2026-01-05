@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     'CNA, Medical Assistant, Phlebotomy, and Home Health Aide training programs. 100% funded through WIOA and state grants. Start your healthcare career today.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/healthcare',
+    canonical: 'https://elevateforhumanity.org/programs/healthcare',
   },
 };
 

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Attendance Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/attendance',
+    canonical: 'https://elevateforhumanity.org/policies/attendance',
   },
 };
 export default function AttendancePage() {

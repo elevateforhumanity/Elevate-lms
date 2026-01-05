@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'SAM.gov Eligibility Criteria | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/sam-gov-eligibility',
+    canonical: 'https://elevateforhumanity.org/policies/sam-gov-eligibility',
   },
 };
 export default function SAMGovEligibilityPage() {

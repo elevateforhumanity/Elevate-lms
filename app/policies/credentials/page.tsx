@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Credential Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/credentials',
+    canonical: 'https://elevateforhumanity.org/policies/credentials',
   },
 };
 export default function CredentialsPage() {

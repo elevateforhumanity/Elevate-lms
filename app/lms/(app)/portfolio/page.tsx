@@ -7,7 +7,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/portal/student/portfolio',
+    canonical: 'https://elevateforhumanity.org/portal/student/portfolio',
   },
   title: 'Portfolio | Elevate For Humanity',
   description:

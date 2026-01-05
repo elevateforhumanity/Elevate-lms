@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Application Submitted | Elevate for Humanity',
   description: 'Your application has been successfully submitted.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/apply/success',
+    canonical: 'https://elevateforhumanity.org/apply/success',
   },
 };
 

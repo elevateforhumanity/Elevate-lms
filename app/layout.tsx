@@ -125,7 +125,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   openGraph: {
     type: 'website',
-    url: 'https://www.elevateforhumanity.org',
+    url: 'https://elevateforhumanity.org',
     siteName: 'Elevate for Humanity',
     locale: 'en_US',
     images: [

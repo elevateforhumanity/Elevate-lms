@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'My Programs | Elevate for Humanity',
   description: 'Manage your teaching programs',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/instructor/programs',
+    canonical: 'https://elevateforhumanity.org/instructor/programs',
   },
 };
 

@@ -5,7 +5,7 @@ import { ExternalLink, CheckCircle, Clock, Award, Truck } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/courses/nds',
+    canonical: 'https://elevateforhumanity.org/courses/nds',
   },
   title: 'DOT Compliance Training | Elevate For Humanity',
   description:

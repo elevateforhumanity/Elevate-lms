@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Long-term career planning and guidance for your professional journey.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/career-services/career-counseling',
+    canonical: 'https://elevateforhumanity.org/career-services/career-counseling',
   },
 };
 

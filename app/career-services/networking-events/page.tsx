@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Connect with employers and industry professionals at our networking events.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/career-services/networking-events',
+    canonical: 'https://elevateforhumanity.org/career-services/networking-events',
   },
 };
 

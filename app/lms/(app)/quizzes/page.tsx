@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/quizzes',
+    canonical: 'https://elevateforhumanity.org/lms/quizzes',
   },
   title: 'Quizzes | Elevate For Humanity',
   description:

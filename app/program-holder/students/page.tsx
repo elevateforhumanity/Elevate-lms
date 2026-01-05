@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: 'Students | Program Holder Portal',
   description: 'Manage your enrolled students',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/program-holder/students',
+    canonical: 'https://elevateforhumanity.org/program-holder/students',
   },
 };
 

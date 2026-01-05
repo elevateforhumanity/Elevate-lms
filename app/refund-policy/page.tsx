@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/refund-policy',
+    canonical: 'https://elevateforhumanity.org/refund-policy',
   },
   title: 'Refund Policy | Elevate For Humanity',
   description:

@@ -18,7 +18,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/licensing-partnerships',
+    canonical: 'https://elevateforhumanity.org/licensing-partnerships',
   },
   title: 'Licensing & Partnerships | Elevate For Humanity',
   description:

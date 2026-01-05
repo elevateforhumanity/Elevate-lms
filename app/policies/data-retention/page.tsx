@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Data Retention Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/data-retention',
+    canonical: 'https://elevateforhumanity.org/policies/data-retention',
   },
 };
 export default function DataRetentionPage() {

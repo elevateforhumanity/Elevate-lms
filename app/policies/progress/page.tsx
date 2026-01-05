@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Academic Progress Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/progress',
+    canonical: 'https://elevateforhumanity.org/policies/progress',
   },
 };
 export default function ProgressPage() {

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     'Review and digitally sign your Program Partner Memorandum of Understanding.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/program-holder/sign-mou',
+    canonical: 'https://elevateforhumanity.org/program-holder/sign-mou',
   },
 };
 

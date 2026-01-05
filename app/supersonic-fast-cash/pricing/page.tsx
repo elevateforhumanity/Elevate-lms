@@ -6,7 +6,7 @@ export const metadata = {
   description:
     'Optional refund advances through third-party banking partners. Get $250-$7,500 same day.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/pricing',
+    canonical: 'https://elevateforhumanity.org/supersonic-fast-cash/pricing',
   },
 };
 

@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Justice Reinvestment Initiative Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/jri',
+    canonical: 'https://elevateforhumanity.org/policies/jri',
   },
 };
 

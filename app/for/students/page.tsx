@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     '100% free training programs. No student debt. Get certified and hired.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/for/students',
+    canonical: 'https://elevateforhumanity.org/for/students',
   },
 };
 

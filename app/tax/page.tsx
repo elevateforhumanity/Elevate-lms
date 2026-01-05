@@ -12,7 +12,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/tax',
+    canonical: 'https://elevateforhumanity.org/tax',
   },
   title: 'Tax Preparation Services | Elevate For Humanity',
   description:

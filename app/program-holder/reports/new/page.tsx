@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'New Report | Program Holder Portal',
   description: 'Submit a new compliance report',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/program-holder/reports/new',
+    canonical: 'https://elevateforhumanity.org/program-holder/reports/new',
   },
 };
 

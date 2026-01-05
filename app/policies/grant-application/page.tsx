@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Grant Application Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/grant-application',
+    canonical: 'https://elevateforhumanity.org/policies/grant-application',
   },
 };
 export default function GrantApplicationPage() {

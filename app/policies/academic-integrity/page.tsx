@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Academic Integrity Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/academic-integrity',
+    canonical: 'https://elevateforhumanity.org/policies/academic-integrity',
   },
 };
 export default function AcademicIntegrityPage() {

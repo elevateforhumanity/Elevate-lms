@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/rise',
+    canonical: 'https://elevateforhumanity.org/rise',
   },
   title:
     'RISE Foundation | Free Tax Preparation Training | IRS VITA Volunteer | Indianapolis',

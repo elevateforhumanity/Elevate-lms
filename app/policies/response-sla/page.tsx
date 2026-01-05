@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Response Time Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/response-sla',
+    canonical: 'https://elevateforhumanity.org/policies/response-sla',
   },
 };
 export default function ResponseSLAPage() {

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Acceptable Use Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/acceptable-use',
+    canonical: 'https://elevateforhumanity.org/policies/acceptable-use',
   },
 };
 export default function AcceptableUsePage() {

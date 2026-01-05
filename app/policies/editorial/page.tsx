@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Editorial Guidelines | Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/editorial',
+    canonical: 'https://elevateforhumanity.org/policies/editorial',
   },
 };
 export default function EditorialPage() {

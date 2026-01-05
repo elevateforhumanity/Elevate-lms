@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     'Choose your path: Student programs, Program holder partnership, Employer hiring, or Staff/Instructor roles.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/apply',
+    canonical: 'https://elevateforhumanity.org/apply',
   },
 };
 

@@ -15,7 +15,7 @@ export const metadata = {
   description:
     'License our apprenticeship sponsorship infrastructure. WIOA/WRG-safe, audit-defensible, and ready to deploy.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/pricing/sponsor-licensing',
+    canonical: 'https://elevateforhumanity.org/pricing/sponsor-licensing',
   },
 };
 

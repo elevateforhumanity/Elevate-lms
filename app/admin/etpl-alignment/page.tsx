@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/admin/etpl-alignment',
+    canonical: 'https://elevateforhumanity.org/admin/etpl-alignment',
   },
   title: 'Etpl Alignment | Elevate For Humanity',
   description:

@@ -14,7 +14,7 @@ export async function generateMetadata({
     title: `${category} | Blog | Elevate For Humanity`,
     description: `Browse ${category} articles from Elevate For Humanity`,
     alternates: {
-      canonical: `https://www.elevateforhumanity.org/blog/category/${params.category}`,
+      canonical: `https://elevateforhumanity.org/blog/category/${params.category}`,
     },
   };
 }

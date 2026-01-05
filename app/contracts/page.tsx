@@ -14,7 +14,7 @@ export const metadata = {
   description:
     'Grant-safe, audit-ready contract templates for workforce partnerships, employer agreements, and platform licensing.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/contracts',
+    canonical: 'https://elevateforhumanity.org/contracts',
   },
 };
 

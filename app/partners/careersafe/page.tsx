@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: 'CareerSafe OSHA Training | Partner Courses | Elevate For Humanity',
   description: 'OSHA 10 & OSHA 30 Safety Certification',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/partners/careersafe',
+    canonical: 'https://elevateforhumanity.org/partners/careersafe',
   },
 };
 

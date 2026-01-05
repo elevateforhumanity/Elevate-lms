@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   keywords:
     'barber apprenticeship Indiana, earn while you learn barber, DOL registered apprenticeship, Indiana barber license, barber training Indianapolis, paid barber training, State Board approved barber, barber school Indianapolis, apprenticeship barber program Indiana',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/barber-apprenticeship',
+    canonical: 'https://elevateforhumanity.org/programs/barber-apprenticeship',
   },
 };
 

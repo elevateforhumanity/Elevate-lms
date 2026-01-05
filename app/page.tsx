@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   description:
     'A workforce and education hub that connects systems, not just programs. Coordinating learners, schools, training providers, employers, and government funding into structured pathways.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org',
+    canonical: 'https://elevateforhumanity.org',
   },
   openGraph: {
     title: 'Elevate for Humanity | Workforce and Education Hub',
     description:
       'Coordinating learners, schools, training providers, employers, and government funding into one structured pathway — from eligibility and enrollment to credentials and workforce outcomes.',
-    url: 'https://www.elevateforhumanity.org',
+    url: 'https://elevateforhumanity.org',
     siteName: 'Elevate for Humanity',
     images: [
       {
