@@ -1,0 +1,567 @@
+# Complete Cache Purge Guide - Global Cache Clear
+
+**Goal:** Clear ALL caches globally for fresh start with new domain  
+**Domain:** elevateforhumanity.institute  
+**Status:** Independent from old domain (handled separately)
+
+---
+
+## 🗑️ Cache Layers to Clear
+
+### 1. Vercel Edge Cache (CDN)
+### 2. Browser Cache (Users)
+### 3. DNS Cache (Global)
+### 4. Google Cache (Search)
+### 5. Cloudflare Cache (if using)
+### 6. Next.js Build Cache
+
+---
+
+## 1️⃣ Vercel Edge Cache - CRITICAL
+
+### Method A: Vercel Dashboard (Recommended)
+
+1. **Go to:** https://vercel.com/dashboard
+2. **Select:** Your project (Elevate-lms)
+3. **Go to:** Settings → Data Cache
+4. **Click:** "Purge Everything"
+5. **Confirm:** Purge
+
+**OR via Deployments:**
+1. Go to: Deployments tab
+2. Find: Latest production deployment
+3. Click: Three dots (...)
+4. Select: "Redeploy"
+5. Check: "Use existing Build Cache" = OFF
+6. Click: "Redeploy"
+
+### Method B: Vercel CLI
+
+```bash
+# Install Vercel CLI if not installed
+npm i -g vercel
+
+# Login
+vercel login
+
+# Link project
+vercel link
+
+# Purge cache
+vercel env pull
+vercel --prod --force
+
+# Or redeploy without cache
+vercel --prod --no-cache
+```
+
+### Method C: API (Nuclear Option)
+
+```bash
+# Get your Vercel token from: https://vercel.com/account/tokens
+
+# Purge all cache
+curl -X DELETE \
+  "https://api.vercel.com/v1/edge-config/YOUR_PROJECT_ID/cache" \
+  -H "Authorization: Bearer YOUR_VERCEL_TOKEN"
+
+# Trigger revalidation
+curl -X POST \
+  "https://elevateforhumanity.institute/api/revalidate?secret=YOUR_SECRET"
+```
+
+---
+
+## 2️⃣ Browser Cache - User Side
+
+### Force Cache Bust in Code
+
+**Update `next.config.mjs`:**
+
+```javascript
+generateBuildId: async () => {
+  // Force new build ID to bust all caches
+  return `build-${Date.now()}-fresh-start`;
+},
+```
+
+**Already configured!** ✅ (Line 5-7 in next.config.mjs)
+
+### Cache Headers (Already Configured)
+
+**In `next.config.mjs` headers:**
+```javascript
+{
+  source: '/',
+  headers: [
+    {
+      key: 'Cache-Control',
+      value: 'public, s-maxage=0, must-revalidate',
+    },
+  ],
+}
+```
+
+**Already configured!** ✅
+
+### User Instructions (Post-Launch)
+
+**For users experiencing issues:**
+
+**Chrome/Edge:**
+```
+1. Press: Ctrl+Shift+Delete (Windows) or Cmd+Shift+Delete (Mac)
+2. Select: "All time"
+3. Check: "Cached images and files"
+4. Click: "Clear data"
+
+OR Hard Refresh:
+- Windows: Ctrl+F5 or Ctrl+Shift+R
+- Mac: Cmd+Shift+R
+```
+
+**Firefox:**
+```
+1. Press: Ctrl+Shift+Delete (Windows) or Cmd+Shift+Delete (Mac)
+2. Select: "Everything"
+3. Check: "Cache"
+4. Click: "Clear Now"
+
+OR Hard Refresh:
+- Windows: Ctrl+F5 or Ctrl+Shift+R
+- Mac: Cmd+Shift+R
+```
+
+**Safari:**
+```
+1. Safari → Preferences → Advanced
+2. Check: "Show Develop menu"
+3. Develop → Empty Caches
+4. Or: Cmd+Option+E
+
+Hard Refresh:
+- Cmd+Shift+R
+```
+
+---
+
+## 3️⃣ DNS Cache - Global Propagation
+
+### Check DNS Propagation
+
+**Online Tools:**
+- https://dnschecker.org
+- https://www.whatsmydns.net
+- https://dnspropagation.net
+
+**Enter:** `elevateforhumanity.institute`
+
+**Should show:**
+- A record pointing to Vercel IP
+- CNAME record (if using)
+- Propagated globally (green checkmarks)
+
+### Clear Local DNS Cache
+
+**Windows:**
+```cmd
+ipconfig /flushdns
+```
+
+**Mac:**
+```bash
+sudo dscacheutil -flushcache
+sudo killall -HUP mDNSResponder
+```
+
+**Linux:**
+```bash
+sudo systemd-resolve --flush-caches
+# OR
+sudo /etc/init.d/nscd restart
+```
+
+### Wait for Global Propagation
+
+**Timeline:**
+- Local ISP: 5-30 minutes
+- Regional: 1-4 hours
+- Global: 24-48 hours
+
+**Force faster propagation:**
+- Use low TTL (300 seconds = 5 minutes)
+- Update DNS records early
+- Use Cloudflare (faster propagation)
+
+---
+
+## 4️⃣ Google Cache - Search Results
+
+### Remove Old URLs from Google
+
+**Method A: Google Search Console**
+
+1. **Go to:** https://search.google.com/search-console
+2. **Select:** Old property (if exists)
+3. **Go to:** Removals
+4. **Click:** "New Request"
+5. **Select:** "Remove all URLs with this prefix"
+6. **Enter:** `https://www.elevateforhumanity.org/`
+7. **Submit**
+
+**Repeat for:**
+- `https://elevateforhumanity.org/`
+- `http://www.elevateforhumanity.org/`
+- `http://elevateforhumanity.org/`
+
+### Request Fresh Crawl
+
+**For new domain:**
+
+1. **Go to:** https://search.google.com/search-console
+2. **Select:** New property (elevateforhumanity.institute)
+3. **Go to:** URL Inspection
+4. **Enter:** `https://elevateforhumanity.institute/`
+5. **Click:** "Request Indexing"
+
+**Repeat for priority pages:**
+- `/programs`
+- `/apply`
+- `/about`
+- `/contact`
+
+### Force Google to Recrawl
+
+**Submit fresh sitemap:**
+```
+https://elevateforhumanity.institute/sitemap.xml
+```
+
+**In Google Search Console:**
+1. Sitemaps → Add new sitemap
+2. Enter: `sitemap.xml`
+3. Submit
+
+### Check Google Cache
+
+**See what Google has cached:**
+```
+cache:elevateforhumanity.institute
+```
+
+**If showing old content:**
+- Wait 24-48 hours
+- Request indexing again
+- Check robots.txt not blocking
+
+---
+
+## 5️⃣ Cloudflare Cache (If Using)
+
+### Purge Cloudflare Cache
+
+**Method A: Dashboard**
+
+1. **Go to:** https://dash.cloudflare.com
+2. **Select:** Your domain
+3. **Go to:** Caching → Configuration
+4. **Click:** "Purge Everything"
+5. **Confirm**
+
+**Method B: API**
+
+```bash
+# Get your Cloudflare API token
+# From: https://dash.cloudflare.com/profile/api-tokens
+
+# Purge everything
+curl -X POST "https://api.cloudflare.com/client/v4/zones/ZONE_ID/purge_cache" \
+  -H "Authorization: Bearer YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{"purge_everything":true}'
+
+# Purge specific URLs
+curl -X POST "https://api.cloudflare.com/client/v4/zones/ZONE_ID/purge_cache" \
+  -H "Authorization: Bearer YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "files": [
+      "https://elevateforhumanity.institute/",
+      "https://elevateforhumanity.institute/sitemap.xml",
+      "https://elevateforhumanity.institute/robots.txt"
+    ]
+  }'
+```
+
+### Development Mode (Bypass Cache)
+
+**Enable for testing:**
+1. Cloudflare Dashboard
+2. Quick Actions → Development Mode
+3. Toggle ON
+4. Lasts 3 hours
+5. Bypasses all caching
+
+---
+
+## 6️⃣ Next.js Build Cache
+
+### Clear Local Build Cache
+
+```bash
+cd /workspaces/Elevate-lms
+
+# Remove all cache directories
+rm -rf .next
+rm -rf node_modules/.cache
+rm -rf .vercel
+rm -rf out
+rm -rf dist
+
+# Clear pnpm cache
+pnpm store prune
+
+# Reinstall and rebuild
+pnpm install
+pnpm build
+```
+
+### Clear Vercel Build Cache
+
+**Method A: Redeploy without cache**
+
+```bash
+vercel --prod --force --no-cache
+```
+
+**Method B: Dashboard**
+
+1. Vercel Dashboard → Project
+2. Settings → General
+3. Scroll to: Build & Development Settings
+4. Click: "Clear Build Cache"
+
+---
+
+## 🚀 Complete Cache Purge Checklist
+
+### Pre-Deployment:
+- [ ] Clear local `.next` directory
+- [ ] Clear `node_modules/.cache`
+- [ ] Fresh `pnpm install`
+- [ ] Fresh `pnpm build`
+
+### During Deployment:
+- [ ] Deploy with `--force` flag
+- [ ] Deploy with `--no-cache` flag
+- [ ] Verify new build ID generated
+
+### Post-Deployment:
+- [ ] Purge Vercel edge cache
+- [ ] Purge Cloudflare cache (if using)
+- [ ] Submit new sitemap to Google
+- [ ] Request indexing for key pages
+- [ ] Check DNS propagation
+
+### User-Facing:
+- [ ] Add cache-busting to static assets
+- [ ] Set proper cache headers
+- [ ] Add version query params if needed
+- [ ] Communicate to users about hard refresh
+
+### Verification:
+- [ ] Check `curl -I https://elevateforhumanity.institute/`
+- [ ] Verify `X-Vercel-Cache` header
+- [ ] Check sitemap loads fresh
+- [ ] Verify robots.txt loads fresh
+- [ ] Test in incognito/private mode
+
+---
+
+## 🔍 Verification Commands
+
+### Check Cache Status
+
+```bash
+# Check Vercel cache headers
+curl -I https://elevateforhumanity.institute/
+
+# Look for:
+# X-Vercel-Cache: MISS (good - not cached)
+# X-Vercel-Cache: HIT (bad - still cached)
+# Cache-Control: public, s-maxage=0, must-revalidate
+
+# Check specific pages
+curl -I https://elevateforhumanity.institute/programs
+curl -I https://elevateforhumanity.institute/sitemap.xml
+curl -I https://elevateforhumanity.institute/robots.txt
+```
+
+### Check DNS
+
+```bash
+# Check A record
+dig elevateforhumanity.institute A
+
+# Check CNAME
+dig elevateforhumanity.institute CNAME
+
+# Check from different DNS servers
+dig @8.8.8.8 elevateforhumanity.institute
+dig @1.1.1.1 elevateforhumanity.institute
+```
+
+### Check Google Cache
+
+```bash
+# See what Google has cached
+# In browser, search:
+cache:elevateforhumanity.institute
+
+# Check indexing status
+site:elevateforhumanity.institute
+```
+
+---
+
+## ⚡ Nuclear Option - Complete Reset
+
+**If nothing else works:**
+
+```bash
+# 1. Delete everything locally
+rm -rf .next node_modules .vercel out dist
+rm -rf node_modules/.cache
+rm -rf .pnpm-store
+
+# 2. Fresh install
+pnpm install --force
+
+# 3. Fresh build
+pnpm build
+
+# 4. Deploy fresh
+vercel --prod --force --no-cache
+
+# 5. Purge Vercel cache via API
+curl -X DELETE \
+  "https://api.vercel.com/v1/deployments/DEPLOYMENT_ID/cache" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+
+# 6. Wait 5 minutes
+
+# 7. Test
+curl -I https://elevateforhumanity.institute/
+```
+
+---
+
+## 📊 Cache Monitoring
+
+### Check Cache Hit Rate
+
+**Vercel Analytics:**
+1. Dashboard → Analytics
+2. Check: Cache Hit Rate
+3. Goal: Low hit rate initially (means fresh content)
+
+**Headers to monitor:**
+```
+X-Vercel-Cache: MISS  ← Good (fresh)
+X-Vercel-Cache: HIT   ← After cache warms up
+X-Vercel-Cache: STALE ← Needs revalidation
+```
+
+### Set Up Monitoring
+
+**Add to your monitoring:**
+```javascript
+// In your analytics
+if (typeof window !== 'undefined') {
+  const cacheStatus = performance.getEntriesByType('navigation')[0]?.transferSize;
+  console.log('Cache status:', cacheStatus === 0 ? 'CACHED' : 'FRESH');
+}
+```
+
+---
+
+## 🎯 Expected Timeline
+
+### Immediate (0-5 minutes):
+- ✅ Vercel cache purged
+- ✅ New build deployed
+- ✅ Fresh content served
+
+### Short-term (5-30 minutes):
+- 🔄 DNS propagates locally
+- 🔄 Browser caches expire
+- 🔄 CDN caches refresh
+
+### Medium-term (1-4 hours):
+- 🔄 DNS propagates regionally
+- 🔄 Google starts crawling
+- 🔄 Search cache updates
+
+### Long-term (24-48 hours):
+- 🚀 DNS propagated globally
+- 🚀 All caches cleared
+- 🚀 Fresh content everywhere
+
+---
+
+## 🆘 Troubleshooting
+
+### Still Seeing Old Content?
+
+**Check:**
+1. Hard refresh browser (Ctrl+Shift+R)
+2. Try incognito/private mode
+3. Try different browser
+4. Try different device
+5. Check from different location (VPN)
+
+**If still cached:**
+```bash
+# Check cache headers
+curl -I https://elevateforhumanity.institute/ | grep -i cache
+
+# Should show:
+# Cache-Control: public, s-maxage=0, must-revalidate
+# X-Vercel-Cache: MISS
+```
+
+### DNS Not Propagating?
+
+**Check:**
+1. Verify DNS records in Vercel
+2. Check TTL (should be low, like 300)
+3. Wait 24-48 hours
+4. Use https://dnschecker.org
+
+### Google Showing Old Results?
+
+**Solutions:**
+1. Request removal in Search Console
+2. Submit new sitemap
+3. Request indexing for key pages
+4. Wait 1-2 weeks for full refresh
+
+---
+
+## 📞 Support
+
+**If caches won't clear:**
+1. Contact Vercel support
+2. Check Vercel status page
+3. Verify deployment succeeded
+4. Check error logs
+
+**Vercel Support:**
+- Dashboard → Help
+- https://vercel.com/support
+
+---
+
+**Last Updated:** January 6, 2026  
+**Status:** Ready for Global Cache Purge  
+**Domain:** elevateforhumanity.institute (independent)

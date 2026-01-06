@@ -104,7 +104,7 @@ const nextConfig = {
     '/api/accreditation/report': ['**/*'],
   },
 
-  // Redirects for consolidated routes and domain canonicalization
+  // Redirects for consolidated routes
   async redirects() {
     return [
       // Redirect any vercel.app host to canonical domain
@@ -114,29 +114,6 @@ const nextConfig = {
           {
             type: 'host',
             value: '.*\\.vercel\\.app',
-          },
-        ],
-        destination: 'https://elevateforhumanity.institute/:path*',
-        permanent: true,
-      },
-      // Redirect old domain to new domain
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www\\.elevateforhumanity\\.org',
-          },
-        ],
-        destination: 'https://elevateforhumanity.institute/:path*',
-        permanent: true,
-      },
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'elevateforhumanity\\.org',
           },
         ],
         destination: 'https://elevateforhumanity.institute/:path*',
