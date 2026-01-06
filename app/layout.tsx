@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata, Viewport } from 'next';
+import { headers } from 'next/headers';
 import './globals.css';
 import './globals-mobile-fixes.css';
 import './globals-mobile-complete.css';
@@ -166,9 +167,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = headers();
+  const host = headersList.get('host') || '';
+  const canonicalHost = 'elevateforhumanity.org';
+  const isCanonical = host === canonicalHost;
+
   return (
     <html lang="en" className={`light ${inter.variable}`}>
       <head>
+        {!isCanonical && <meta name="robots" content="noindex,nofollow" />}
+        {isCanonical && (
+          <link rel="canonical" href="https://elevateforhumanity.org" />
+        )}
         {/* Preload critical assets to prevent FOUC */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

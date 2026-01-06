@@ -13,6 +13,36 @@ const nextConfig = {
   compress: true,
   productionBrowserSourceMaps: false,
 
+  // Redirect all non-canonical hosts to canonical domain
+  async redirects() {
+    return [
+      // Redirect any vercel.app host to canonical domain
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: '.*\\.vercel\\.app',
+          },
+        ],
+        destination: 'https://elevateforhumanity.org/:path*',
+        permanent: true,
+      },
+      // Redirect www to non-www (canonical)
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www\\.elevateforhumanity\\.org',
+          },
+        ],
+        destination: 'https://elevateforhumanity.org/:path*',
+        permanent: true,
+      },
+    ];
+  },
+
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? {
