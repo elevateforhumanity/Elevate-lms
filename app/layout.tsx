@@ -1,7 +1,6 @@
 import React from 'react';
 import UnregisterSW from "./components/UnregisterSW";
 import type { Metadata, Viewport } from 'next';
-import { headers } from 'next/headers';
 import './globals.css';
 import './globals-mobile-fixes.css';
 import './globals-mobile-complete.css';
@@ -163,31 +162,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const headersList = await headers();
-  const host = headersList.get('host') || '';
-  const canonicalHost = 'elevateforhumanity.institute';
-  
-  // Check if this is the canonical domain OR if it's a Vercel production deployment
-  // This prevents blocking the site if headers are unexpected
-  const isCanonical = host === canonicalHost || 
-                      host.includes('elevateforhumanity.institute') ||
-                      process.env.VERCEL_ENV === 'production';
-  
-  // Only block preview/development domains
-  const shouldBlock = host.endsWith('.vercel.app') && process.env.VERCEL_ENV !== 'production';
+  // Simplified: Always allow indexing on production, always set canonical
+  // No async header checks that could cause SSR issues
+  const isProduction = process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production';
 
   return (
     <html lang="en" className={`light ${inter.variable}`}>
       <head>
-        {shouldBlock && <meta name="robots" content="noindex,nofollow" />}
-        {isCanonical && (
-          <link rel="canonical" href="https://elevateforhumanity.institute" />
-        )}
+        {!isProduction && <meta name="robots" content="noindex,nofollow" />}
+        <link rel="canonical" href="https://elevateforhumanity.institute" />
         {/* Preload critical assets to prevent FOUC */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
