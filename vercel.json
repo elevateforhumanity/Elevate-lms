@@ -36,7 +36,29 @@
       "has": [
         {
           "type": "host",
-          "value": "(.*)\\.vercel\\.app"
+          "value": "elevate-lms-selfish2.vercel.app"
+        }
+      ],
+      "destination": "https://elevateforhumanity.org/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "elevate-lms-git-main-selfish2.vercel.app"
+        }
+      ],
+      "destination": "https://elevateforhumanity.org/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "elevate-.*-selfish2.vercel.app"
         }
       ],
       "destination": "https://elevateforhumanity.org/:path*",
