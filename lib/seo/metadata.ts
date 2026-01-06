@@ -10,7 +10,7 @@ interface SEOParams {
 }
 
 export function generateMetadata(params: SEOParams): Metadata {
-  const baseUrl = 'https://www.elevateforhumanity.org';
+  const baseUrl = 'https://elevateforhumanity.org';
   const url = `${baseUrl}${params.path}`;
   const image = params.image || '/images/og-default.jpg';
   const fullTitle = params.title.includes('|') 
