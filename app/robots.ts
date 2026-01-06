@@ -4,8 +4,9 @@ export default function robots(): MetadataRoute.Robots {
   const baseUrl = 'https://elevateforhumanity.institute';
   
   // Check if we're on a vercel.app preview domain
-  const isVercelPreview = typeof window === 'undefined' && 
-    (process.env.VERCEL_URL?.includes('.vercel.app') || false);
+  // VERCEL_URL is set on all Vercel deployments, so check if it contains .vercel.app
+  const vercelUrl = process.env.VERCEL_URL || '';
+  const isVercelPreview = vercelUrl.includes('.vercel.app');
 
   // Block all crawling ONLY on preview/development environments
   if (isVercelPreview) {
@@ -19,7 +20,7 @@ export default function robots(): MetadataRoute.Robots {
     };
   }
 
-  // Production robots.txt
+  // Production robots.txt - allow all crawling
   return {
     rules: [
       {
