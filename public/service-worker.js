@@ -1,8 +1,12 @@
-// Service Worker - UNREGISTER MODE
+// Service Worker - FORCE UNREGISTER AND CLEAR ALL CACHES
+// Version: 2026-01-06-FORCE-CLEAR
 // This service worker immediately unregisters itself and clears all caches
 // to prevent stale content issues
 
+const CACHE_VERSION = 'v2026-01-06-clear-all';
+
 self.addEventListener('install', (event) => {
+  console.log('[SW] Force clearing all caches and unregistering');
   // Skip waiting to activate immediately
   self.skipWaiting();
 });
