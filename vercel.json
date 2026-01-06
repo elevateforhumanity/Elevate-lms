@@ -29,8 +29,7 @@
         }
       ],
       "destination": "https://elevateforhumanity.org/:path*",
-      "permanent": true,
-      "statusCode": 301
+      "permanent": true
     },
     {
       "source": "/:path*",
@@ -41,8 +40,7 @@
         }
       ],
       "destination": "https://elevateforhumanity.org/:path*",
-      "permanent": false,
-      "statusCode": 302
+      "permanent": false
     }
   ],
 

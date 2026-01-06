@@ -118,7 +118,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  manifest: '/manifest.json',
   openGraph: {
     type: 'website',
     url: 'https://elevateforhumanity.org',
