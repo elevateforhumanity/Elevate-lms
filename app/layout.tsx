@@ -1,4 +1,5 @@
 import React from 'react';
+import UnregisterSW from "./components/UnregisterSW";
 import type { Metadata, Viewport } from 'next';
 import { headers } from 'next/headers';
 import './globals.css';
@@ -210,6 +211,8 @@ export default async function RootLayout({
           backgroundColor: '#ffffff',
         }}
       >
+        <UnregisterSW />
+
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brandPrimary focus:text-white focus:rounded-md focus:shadow-lg"
