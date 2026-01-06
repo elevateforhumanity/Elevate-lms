@@ -20,9 +20,9 @@ class DualCertificateSystem {
     return {
       elevate_for_humanity: {
         template_path: './certificates/templates/elevate-template.html',
-        logo_url: 'https://elevateforhumanity.org/assets/logo-certificate.png',
+        logo_url: 'https://elevateforhumanity.institute/assets/logo-certificate.png',
         signature_image:
-          'https://elevateforhumanity.org/assets/signature-ceo.png',
+          'https://elevateforhumanity.institute/assets/signature-ceo.png',
         authority_name: 'Rise Forward Foundation',
         authority_title: 'Chief Executive Officer',
         colors: {
@@ -204,8 +204,8 @@ class DualCertificateSystem {
 
       // Verification
       verification: {
-        url: `https://elevateforhumanity.org/verify/${certificateId}`,
-        qr_code: `https://elevateforhumanity.org/qr/${certificateId}`,
+        url: `https://elevateforhumanity.institute/verify/${certificateId}`,
+        qr_code: `https://elevateforhumanity.institute/qr/${certificateId}`,
         verification_code: this.generateVerificationCode(certificateId),
       },
 
@@ -338,16 +338,16 @@ class DualCertificateSystem {
     const files = {
       html: {
         content: htmlContent,
-        url: `https://elevateforhumanity.org/certificates/${certificateData.id}/certificate.html`,
+        url: `https://elevateforhumanity.institute/certificates/${certificateData.id}/certificate.html`,
         filename: `${certificateData.id}_certificate.html`,
       },
       pdf: {
         buffer: pdfBuffer,
-        url: `https://elevateforhumanity.org/certificates/${certificateData.id}/certificate.pdf`,
+        url: `https://elevateforhumanity.institute/certificates/${certificateData.id}/certificate.pdf`,
         filename: `${certificateData.id}_certificate.pdf`,
       },
       thumbnail: {
-        url: `https://elevateforhumanity.org/certificates/${certificateData.id}/thumbnail.jpg`,
+        url: `https://elevateforhumanity.institute/certificates/${certificateData.id}/thumbnail.jpg`,
         filename: `${certificateData.id}_thumbnail.jpg`,
       },
     };
@@ -704,14 +704,14 @@ Ready to apply these new skills in my career!
   generateAppleWalletPass(certificate) {
     // Would generate Apple Wallet pass
     return {
-      url: `https://elevateforhumanity.org/wallet/apple/${certificate.id}`,
+      url: `https://elevateforhumanity.institute/wallet/apple/${certificate.id}`,
     };
   }
 
   generateGoogleWalletPass(certificate) {
     // Would generate Google Wallet pass
     return {
-      url: `https://elevateforhumanity.org/wallet/google/${certificate.id}`,
+      url: `https://elevateforhumanity.institute/wallet/google/${certificate.id}`,
     };
   }
 }

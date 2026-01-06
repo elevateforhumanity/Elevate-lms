@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   description:
     'Tax services, career counseling, job placement, and comprehensive support. We help you succeed every step of the way.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/services',
+    canonical: 'https://elevateforhumanity.institute/services',
   },
 };
 

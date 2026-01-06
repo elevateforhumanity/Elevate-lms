@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: 'Verification | Program Holder Portal',
   description: 'Complete your program holder verification',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/program-holder/verification',
+    canonical: 'https://elevateforhumanity.institute/program-holder/verification',
   },
 };
 
@@ -243,7 +243,7 @@ export default async function VerificationPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="mailto:program-holders@elevateforhumanity.org"
+                  href="mailto:program-holders@elevateforhumanity.institute"
                   className="inline-flex items-center text-blue-900 hover:text-blue-700 font-medium"
                 >
                   <Mail className="h-4 w-4 mr-2" />

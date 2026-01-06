@@ -47,8 +47,8 @@ class SocialMediaAutomation {
       // Durable Blog
       durable: {
         apiKey: process.env.DURABLE_API_KEY || '',
-        blogUrl: 'https://elevateforhumanity.org/blog',
-        apiUrl: 'https://elevateforhumanity.org/api/blog',
+        blogUrl: 'https://elevateforhumanity.institute/blog',
+        apiUrl: 'https://elevateforhumanity.institute/api/blog',
       },
 
       // Zapier Webhooks
@@ -413,7 +413,7 @@ class SocialMediaAutomation {
     }
 
     // Add CTA
-    formatted += `\n\n${template.cta} 👉 https://elevateforhumanity.org`;
+    formatted += `\n\n${template.cta} 👉 https://elevateforhumanity.institute`;
 
     return formatted;
   }

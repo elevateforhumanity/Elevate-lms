@@ -7,7 +7,7 @@ import { POLICIES } from '@/lib/policies';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/grants',
+    canonical: 'https://elevateforhumanity.institute/grants',
   },
   title: 'Grants | Elevate For Humanity',
   description:

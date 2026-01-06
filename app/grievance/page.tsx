@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/grievance',
+    canonical: 'https://elevateforhumanity.institute/grievance',
   },
   title: 'Grievance Procedure | Elevate For Humanity',
   description:
@@ -157,10 +157,10 @@ export default function GrievancePage() {
                 <p className="font-semibold text-gray-900 mb-2">Email:</p>
                 <p className="text-gray-700">
                   <a
-                    href="mailto:grievance@elevateforhumanity.org"
+                    href="mailto:grievance@elevateforhumanity.institute"
                     className="text-brand-blue-600 hover:underline"
                   >
-                    grievance@elevateforhumanity.org
+                    grievance@elevateforhumanity.institute
                   </a>
                 </p>
               </div>
@@ -219,10 +219,10 @@ export default function GrievancePage() {
               <br />
               Email:{' '}
               <a
-                href="mailto:support@elevateforhumanity.org"
+                href="mailto:support@elevateforhumanity.institute"
                 className="text-brand-blue-600 hover:underline"
               >
-                support@elevateforhumanity.org
+                support@elevateforhumanity.institute
               </a>
             </p>
           </div>

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Professional drug testing services for workforce programs. DOT and non-DOT testing, nationwide collection sites, MRO review included.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/drug-testing',
+    canonical: 'https://elevateforhumanity.institute/drug-testing',
   },
 };
 

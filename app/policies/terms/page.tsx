@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Terms of Service | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/terms',
+    canonical: 'https://elevateforhumanity.institute/policies/terms',
   },
 };
 export default function TermsPage() {
@@ -20,7 +20,7 @@ export default function TermsPage() {
       <p>We may suspend or terminate accounts for violations.</p>
       <h2>Disclaimer</h2>
       <p>Platform provided "as is" without warranties.</p>
-      <p>Contact: legal@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: legal@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

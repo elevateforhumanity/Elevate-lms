@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
     // Send confirmation email to applicant
     try {
       await resend.emails.send({
-        from: 'SupersonicFastCash <noreply@elevateforhumanity.org>',
+        from: 'SupersonicFastCash <noreply@elevateforhumanity.institute>',
         to: body.email,
         subject: 'Refund Advance Application Received',
         html: `
@@ -98,7 +98,7 @@ export async function POST(request: NextRequest) {
     // Send notification to admin
     try {
       await resend.emails.send({
-        from: 'SupersonicFastCash <noreply@elevateforhumanity.org>',
+        from: 'SupersonicFastCash <noreply@elevateforhumanity.institute>',
         to: 'Supersonicfadtcashllc@gmail.com',
         subject: `New Refund Advance Application: ${body.firstName} ${body.lastName}`,
         html: `
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
           <p>${application.id}</p>
 
           <p>
-            <a href="https://elevateforhumanity.org/admin/refund-advances"
+            <a href="https://elevateforhumanity.institute/admin/refund-advances"
                style="display: inline-block; padding: 12px 24px; background: #16a34a; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
               Review Application
             </a>

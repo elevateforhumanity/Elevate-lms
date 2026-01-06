@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Documentation | Program Holder Portal',
   description: 'Access forms, templates, and resources',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/program-holder/documentation',
+    canonical: 'https://elevateforhumanity.institute/program-holder/documentation',
   },
 };
 

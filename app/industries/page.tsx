@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     'Explore career training programs across multiple industries including healthcare, skilled trades, transportation, and more.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/industries',
+    canonical: 'https://elevateforhumanity.institute/industries',
   },
 };
 

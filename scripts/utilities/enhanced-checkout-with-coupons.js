@@ -56,7 +56,7 @@ const EFH_PRICES = {
  * @returns {Promise} - {valid, discounted_cents, type, value, reason}
  */
 async function efhPreviewCoupon(slug, code) {
-  const PAY_API = window.PAY_API || 'https://pay.elevateforhumanity.org';
+  const PAY_API = window.PAY_API || 'https://pay.elevateforhumanity.institute';
 
   try {
     const r = await fetch(`${PAY_API}/api/coupons/validate`, {
@@ -208,7 +208,7 @@ async function efhEnrollWithCoupon({
   };
 
   const PAY_API =
-    window.PAY_API || 'https://pay.elevateforhumanity.org/api/checkout';
+    window.PAY_API || 'https://pay.elevateforhumanity.institute/api/checkout';
 
   const body = priceId
     ? { priceId, quantity: 1, metadata: mergedMeta }

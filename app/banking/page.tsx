@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     'Fast refund advances, direct deposit, and prepaid card services. FDIC-insured banking powered by EPS Financial.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/banking',
+    canonical: 'https://elevateforhumanity.institute/banking',
   },
 };
 

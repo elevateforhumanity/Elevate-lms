@@ -5,8 +5,8 @@ export const organizationSchema = {
   '@type': 'EducationalOrganization',
   name: 'Elevate for Humanity',
   alternateName: 'Elevate For Humanity Career & Technical Institute',
-  url: 'https://elevateforhumanity.org',
-  logo: 'https://elevateforhumanity.org/images/logo.png',
+  url: 'https://elevateforhumanity.institute',
+  logo: 'https://elevateforhumanity.institute/images/logo.png',
   description:
     'Free career training in healthcare, skilled trades, and business. Get trained, get hired, get paid. No cost, no debt.',
   address: {
@@ -19,7 +19,7 @@ export const organizationSchema = {
     '@type': 'ContactPoint',
     telephone: '+1-317-314-3757',
     contactType: 'Admissions',
-    email: 'info@elevateforhumanity.org',
+    email: 'info@elevateforhumanity.institute',
   },
   sameAs: [
     'https://www.facebook.com/elevateforhumanity',
@@ -32,10 +32,10 @@ export const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Elevate for Humanity',
-  url: 'https://elevateforhumanity.org',
+  url: 'https://elevateforhumanity.institute',
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://elevateforhumanity.org/search?q={search_term_string}',
+    target: 'https://elevateforhumanity.institute/search?q={search_term_string}',
     'query-input': 'required name=search_term_string',
   },
 };
@@ -53,7 +53,7 @@ export const courseSchema = (course: {
   provider: {
     '@type': 'Organization',
     name: course.provider,
-    sameAs: 'https://elevateforhumanity.org',
+    sameAs: 'https://elevateforhumanity.institute',
   },
   url: course.url,
   hasCourseInstance: {
@@ -113,6 +113,6 @@ export const eventSchema = (event: {
   organizer: {
     '@type': 'Organization',
     name: 'Elevate for Humanity',
-    url: 'https://elevateforhumanity.org',
+    url: 'https://elevateforhumanity.institute',
   },
 });

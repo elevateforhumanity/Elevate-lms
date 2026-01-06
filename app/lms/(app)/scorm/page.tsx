@@ -7,7 +7,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://elevateforhumanity.org/portal/student/scorm',
+    canonical: 'https://elevateforhumanity.institute/portal/student/scorm',
   },
   title: 'Scorm | Elevate For Humanity',
   description:

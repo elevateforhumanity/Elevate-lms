@@ -239,7 +239,7 @@ export const contactInfo = {
   email: {
     general: 'elevate4humanityedu@gmail.com',
     support: 'elevate4humanityedu@gmail.com',
-    security: 'security@elevateforhumanity.org',
+    security: 'security@elevateforhumanity.institute',
   },
   address: {
     street: '8888 Keystone Crossing Suite 1300',

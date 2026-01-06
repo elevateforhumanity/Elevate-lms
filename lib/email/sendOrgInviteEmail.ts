@@ -23,7 +23,7 @@ export async function sendOrgInviteEmail({
 
   try {
     await resend.emails.send({
-      from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.org',
+      from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.institute',
       to,
       subject: `Invitation to join ${organizationName}`,
       html: `

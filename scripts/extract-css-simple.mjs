@@ -2,7 +2,7 @@
 
 /**
  * Simple CSS Extractor - No Puppeteer Required
- * Extracts CSS, design tokens, and styling from elevateforhumanity.org
+ * Extracts CSS, design tokens, and styling from elevateforhumanity.institute
  */
 
 import fs from 'fs/promises';
@@ -14,7 +14,7 @@ import * as cheerio from 'cheerio';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const TARGET_URL = 'https://elevateforhumanity.org';
+const TARGET_URL = 'https://elevateforhumanity.institute';
 const OUTPUT_DIR = path.join(process.cwd(), 'extracted-styles');
 
 async function extractCSS() {
@@ -330,14 +330,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Extracted colors from elevateforhumanity.org
+        // Extracted colors from elevateforhumanity.institute
         ${tokens.colors
           .slice(0, 20)
           .map((color, idx) => `'extracted-${idx + 1}': '${color}',`)
           .join('\n        ')}
       },
       fontFamily: {
-        // Extracted fonts from elevateforhumanity.org
+        // Extracted fonts from elevateforhumanity.institute
         ${tokens.fonts
           .slice(0, 5)
           .map((font, idx) => `'extracted-${idx + 1}': [${font}],`)

@@ -438,7 +438,7 @@ NEXT STEPS:
 This is a serious violation that jeopardizes our master credentials and all program holders in our network.
 
 If you believe this is an error, contact us immediately at:
-Email: compliance@elevateforhumanity.org
+Email: compliance@elevateforhumanity.institute
 Phone: (317) 314-3757
 
 Elevate for Humanity Compliance Team
@@ -473,7 +473,7 @@ CONSEQUENCES IF NOT RESOLVED:
 - Possible legal action
 
 Contact compliance team immediately:
-Email: compliance@elevateforhumanity.org
+Email: compliance@elevateforhumanity.institute
 Phone: (317) 314-3757
 
 Elevate for Humanity Compliance Team
@@ -507,7 +507,7 @@ Continued use of our credentials after termination may result in legal action.
 This decision is FINAL and NOT APPEALABLE per MOU Section 8.2(b).
 
 For data transfer procedures, contact:
-Email: compliance@elevateforhumanity.org
+Email: compliance@elevateforhumanity.institute
 Phone: (317) 314-3757
 
 Elevate for Humanity Legal & Compliance Team
@@ -548,7 +548,7 @@ REINSTATEMENT POSSIBLE:
 - Pass compliance review
 
 To appeal, contact:
-Email: appeals@elevateforhumanity.org
+Email: appeals@elevateforhumanity.institute
 Phone: (317) 314-3757
 
 Elevate for Humanity Compliance Team
@@ -590,7 +590,7 @@ HOW TO IMPROVE:
 Access will be automatically restored when quality score reaches 70+.
 
 Questions? Contact:
-Email: support@elevateforhumanity.org
+Email: support@elevateforhumanity.institute
 Phone: (317) 314-3757
 
 Elevate for Humanity Compliance Team
@@ -631,7 +631,7 @@ CONSEQUENCES IF NOT SUBMITTED:
 Submit now at: {{dashboard_link}}
 
 Questions? Contact:
-Email: support@elevateforhumanity.org
+Email: support@elevateforhumanity.institute
 Phone: (317) 314-3757
 
 Elevate for Humanity Compliance Team

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     'Read inspiring success stories from graduates who transformed their lives through our workforce training programs. Real careers, real impact.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/success-stories',
+    canonical: 'https://elevateforhumanity.institute/success-stories',
   },
 };
 

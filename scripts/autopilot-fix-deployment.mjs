@@ -62,10 +62,10 @@ async function main() {
   }
 
 
-  // 1. Add www.elevateforhumanity.org
+  // 1. Add www.elevateforhumanity.institute
   if (VERCEL_TOKEN) {
     const wwwRes = await makeRequest('POST', `/v9/projects/${PROJECT_ID}/domains`, {
-      name: 'www.elevateforhumanity.org'
+      name: 'www.elevateforhumanity.institute'
     });
     if (wwwRes.status === 200 || wwwRes.status === 201) {
     } else if (wwwRes.status === 409) {
@@ -74,11 +74,11 @@ async function main() {
   } else {
   }
 
-  // 2. Add elevateforhumanity.org with redirect
+  // 2. Add elevateforhumanity.institute with redirect
   if (VERCEL_TOKEN) {
     const rootRes = await makeRequest('POST', `/v9/projects/${PROJECT_ID}/domains`, {
-      name: 'elevateforhumanity.org',
-      redirect: 'www.elevateforhumanity.org'
+      name: 'elevateforhumanity.institute',
+      redirect: 'www.elevateforhumanity.institute'
     });
     if (rootRes.status === 200 || rootRes.status === 201) {
     } else if (rootRes.status === 409) {

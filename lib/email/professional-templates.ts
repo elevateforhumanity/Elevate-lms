@@ -40,7 +40,7 @@ function emailLayout(content: string): string {
     ${content}
     <div class="footer">
       <p><strong>Elevate for Humanity</strong></p>
-      <p>Phone: <a href="tel:3173143757">317-314-3757</a> | Email: support@elevateforhumanity.org</p>
+      <p>Phone: <a href="tel:3173143757">317-314-3757</a> | Email: support@elevateforhumanity.institute</p>
       <p>© ${new Date().getFullYear()} Elevate for Humanity. All rights reserved.</p>
     </div>
   </div>

@@ -11,7 +11,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/courses/nrf',
+    canonical: 'https://elevateforhumanity.institute/courses/nrf',
   },
   title: 'NRF RISE Up Credentials | Elevate For Humanity',
   description:

@@ -139,7 +139,7 @@ function SuccessContent() {
             </li>
             <li className="flex gap-2">
               <span className="font-bold">3.</span>
-              <span>Need help? Contact support@elevateforhumanity.org</span>
+              <span>Need help? Contact support@elevateforhumanity.institute</span>
             </li>
           </ol>
         </div>
@@ -166,10 +166,10 @@ function SuccessContent() {
           <p>
             Email us at{' '}
             <a
-              href="mailto:support@elevateforhumanity.org"
+              href="mailto:support@elevateforhumanity.institute"
               className="text-brand-orange-600 hover:underline"
             >
-              support@elevateforhumanity.org
+              support@elevateforhumanity.institute
             </a>{' '}
             or call{' '}
             <a

@@ -15,7 +15,7 @@ export type SiteMapSection = {
 
 // Base URL used only by scripts (optional)
 export const SITE_BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://elevateforhumanity.org";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://elevateforhumanity.institute";
 
 export const siteMapSections: SiteMapSection[] = [
   {

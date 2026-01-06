@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'Health & Safety Institute (HSI) | Partner Courses | Elevate For Humanity',
   description: 'CPR, AED, First Aid, and Emergency Medical Responder Training',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/partners/hsi',
+    canonical: 'https://elevateforhumanity.institute/partners/hsi',
   },
 };
 

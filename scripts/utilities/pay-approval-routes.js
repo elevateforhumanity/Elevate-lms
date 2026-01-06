@@ -29,7 +29,7 @@ const supa = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 const SECRET = process.env.APPROVAL_SECRET;
-const BASE = process.env.APPROVAL_BASE_URL; // e.g., https://pay.elevateforhumanity.org/approvals
+const BASE = process.env.APPROVAL_BASE_URL; // e.g., https://pay.elevateforhumanity.institute/approvals
 
 export const approvals = Router();
 

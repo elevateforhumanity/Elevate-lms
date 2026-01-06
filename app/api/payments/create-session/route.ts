@@ -163,7 +163,7 @@ export async function POST(request: NextRequest) {
 
     // Base URL for redirects
     const baseUrl =
-      process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.org';
+      process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute';
 
     // Common session configuration
     const commonConfig: Partial<Stripe.Checkout.SessionCreateParams> = {

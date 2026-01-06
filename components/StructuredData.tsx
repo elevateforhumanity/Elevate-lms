@@ -2,18 +2,18 @@ export default function StructuredData() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': ['EducationalOrganization', 'LocalBusiness', 'Organization'],
-    '@id': 'https://elevateforhumanity.org/#organization',
+    '@id': 'https://elevateforhumanity.institute/#organization',
     name: 'Elevate for Humanity',
     legalName: '2EXCLUSIVE LLC-S',
     alternateName: 'Elevate 4 Humanity',
-    url: 'https://elevateforhumanity.org',
+    url: 'https://elevateforhumanity.institute',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://elevateforhumanity.org/assets/logo-efh.svg',
+      url: 'https://elevateforhumanity.institute/assets/logo-efh.svg',
       width: 250,
       height: 60,
     },
-    image: 'https://elevateforhumanity.org/images/heroes/hero-homepage.jpg',
+    image: 'https://elevateforhumanity.institute/images/heroes/hero-homepage.jpg',
     description:
       '100% FREE career training in Indianapolis. WIOA-funded programs in HVAC, healthcare, barbering, and trades. No tuition, no debt. Job placement assistance.',
     slogan: 'This Is Not Graduation. This Is Elevation.',
@@ -123,9 +123,9 @@ export default function StructuredData() {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    '@id': 'https://elevateforhumanity.org/#localbusiness',
+    '@id': 'https://elevateforhumanity.institute/#localbusiness',
     name: 'Elevate for Humanity',
-    image: 'https://elevateforhumanity.org/images/heroes/hero-homepage.jpg',
+    image: 'https://elevateforhumanity.institute/images/heroes/hero-homepage.jpg',
     telephone: '+1-317-314-3757',
     address: {
       '@type': 'PostalAddress',
@@ -140,7 +140,7 @@ export default function StructuredData() {
       latitude: 39.8386,
       longitude: -86.0586,
     },
-    url: 'https://elevateforhumanity.org',
+    url: 'https://elevateforhumanity.institute',
     priceRange: 'FREE',
     openingHoursSpecification: [
       {
@@ -155,19 +155,19 @@ export default function StructuredData() {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': 'https://elevateforhumanity.org/#website',
-    url: 'https://elevateforhumanity.org',
+    '@id': 'https://elevateforhumanity.institute/#website',
+    url: 'https://elevateforhumanity.institute',
     name: 'Elevate for Humanity',
     description: 'Free career training in Indianapolis',
     publisher: {
-      '@id': 'https://elevateforhumanity.org/#organization',
+      '@id': 'https://elevateforhumanity.institute/#organization',
     },
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
         urlTemplate:
-          'https://elevateforhumanity.org/search?q={search_term_string}',
+          'https://elevateforhumanity.institute/search?q={search_term_string}',
       },
       'query-input': 'required name=search_term_string',
     },
@@ -181,7 +181,7 @@ export default function StructuredData() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://elevateforhumanity.org',
+        item: 'https://elevateforhumanity.institute',
       },
     ],
   };

@@ -368,6 +368,6 @@ Date: ${data.date}
 ---
 
 This MOU was generated on ${data.date} via the Elevate for Humanity Training Provider Portal.
-For questions or to request modifications, contact: admin@elevateforhumanity.org
+For questions or to request modifications, contact: admin@elevateforhumanity.institute
 `;
 }

@@ -27,8 +27,8 @@ export async function POST(request: NextRequest) {
     // Send notification to admin
     try {
       await resend.emails.send({
-        from: 'FSSA Partnership <noreply@elevateforhumanity.org>',
-        to: 'partnerships@elevateforhumanity.org',
+        from: 'FSSA Partnership <noreply@elevateforhumanity.institute>',
+        to: 'partnerships@elevateforhumanity.institute',
         subject: `🎯 FSSA Partnership Request: ${data.organization}`,
         html: `
           <h2>New FSSA/WorkOne Partnership Request</h2>
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
 
       // Send auto-reply to requester
       await resend.emails.send({
-        from: 'Elevate for Humanity <partnerships@elevateforhumanity.org>',
+        from: 'Elevate for Humanity <partnerships@elevateforhumanity.institute>',
         to: data.email,
         subject: 'Thank you for your FSSA/SNAP E&T partnership inquiry',
         html: `
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
 
           <p><strong>Contact Information:</strong><br>
           Phone: 317-314-3757<br>
-          Email: partnerships@elevateforhumanity.org<br>
+          Email: partnerships@elevateforhumanity.institute<br>
           Address: 8888 Keystone Xing, Suite 1300, Indianapolis, IN 46240</p>
 
           <p>We look forward to discussing how we can partner to serve SNAP recipients in Indiana.</p>

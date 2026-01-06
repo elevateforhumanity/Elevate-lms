@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://elevateforhumanity.org';
+  const baseUrl = 'https://elevateforhumanity.institute';
   const isProduction = process.env.VERCEL_ENV === 'production';
 
   // Block all crawling on preview/development environments

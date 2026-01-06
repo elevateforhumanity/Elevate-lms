@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Upload Document | Program Holder Portal',
   description: 'Upload a new document',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/program-holder/documents/upload',
+    canonical: 'https://elevateforhumanity.institute/program-holder/documents/upload',
   },
 };
 

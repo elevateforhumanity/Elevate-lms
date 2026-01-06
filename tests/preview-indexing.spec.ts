@@ -76,7 +76,7 @@ test.describe('Preview Deployment Indexing Protection', () => {
     
     // If we're on production domain, should not have noindex
     const host = new URL(page.url()).hostname;
-    if (host === 'www.elevateforhumanity.org' || host === 'elevateforhumanity.org') {
+    if (host === 'www.elevateforhumanity.institute' || host === 'elevateforhumanity.institute') {
       expect(robotsTag).not.toContain('noindex');
     }
   });

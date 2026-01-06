@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: 'NRF Foundation RISE Up | Partner Courses | Elevate For Humanity',
   description: 'Retail Industry Skills and Employability Training',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/partners/nrf',
+    canonical: 'https://elevateforhumanity.institute/partners/nrf',
   },
 };
 

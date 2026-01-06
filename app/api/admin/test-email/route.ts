@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     switch (email_type) {
       case 'welcome':
         result = await resend.emails.send({
-          from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.org',
+          from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.institute',
           to: profile.email,
           subject: 'Test: Welcome Email - Elevate for Humanity',
           text: `
@@ -52,7 +52,7 @@ If you're receiving this, the email system is working correctly!
 
       case 'reminder':
         result = await resend.emails.send({
-          from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.org',
+          from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.institute',
           to: profile.email,
           subject: 'Test: Reminder Email - Elevate for Humanity',
           text: `
@@ -72,7 +72,7 @@ Action Required:
 
       case 'notification':
         result = await resend.emails.send({
-          from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.org',
+          from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.institute',
           to: profile.email,
           subject: 'Test: Notification Email - Elevate for Humanity',
           text: `

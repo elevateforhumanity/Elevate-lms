@@ -7,7 +7,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://elevateforhumanity.org/admin/applicants',
+    canonical: 'https://elevateforhumanity.institute/admin/applicants',
   },
   title: 'Applicants | Elevate For Humanity',
   description: 'Manage student applications and review submissions',

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'A workforce development ecosystem helping individuals access training, funding, and employment pathways.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/about',
+    canonical: 'https://elevateforhumanity.institute/about',
   },
 };
 

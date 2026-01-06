@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 /**
- * Cloudflare Autopilot Worker: Remove www.elevateforhumanity.org from Cloudflare
+ * Cloudflare Autopilot Worker: Remove www.elevateforhumanity.institute from Cloudflare
  *
- * This script removes the Cloudflare configuration for www.elevateforhumanity.org
+ * This script removes the Cloudflare configuration for www.elevateforhumanity.institute
  * so it can be properly hosted on Durable (durablesites.co).
  *
  * What it does:
  * 1. Lists all zones in Cloudflare account
- * 2. Finds elevateforhumanity.org zone
+ * 2. Finds elevateforhumanity.institute zone
  * 3. Lists DNS records for www subdomain
  * 4. Removes/updates DNS records to point to Durable
  * 5. Disables Cloudflare proxy if enabled
@@ -19,7 +19,7 @@ import https from 'https';
 // Configuration
 const CLOUDFLARE_API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
 const CLOUDFLARE_ZONE_ID = process.env.CLOUDFLARE_ZONE_ID; // Optional: if you know it
-const DOMAIN = 'elevateforhumanity.org';
+const DOMAIN = 'elevateforhumanity.institute';
 const SUBDOMAIN = 'www';
 const DURABLE_TARGET = 'sites.durablesites.co'; // Update this with actual Durable CNAME
 
@@ -66,7 +66,7 @@ function makeRequest(options, data = null) {
 }
 
 async function findZone() {
-  log('\n🔍 Finding Cloudflare zone for elevateforhumanity.org...', 'cyan');
+  log('\n🔍 Finding Cloudflare zone for elevateforhumanity.institute...', 'cyan');
 
   const options = {
     hostname: 'api.cloudflare.com',
@@ -154,7 +154,7 @@ async function deleteDNSRecord(zoneId, recordId) {
 
 async function main() {
   log('═══════════════════════════════════════════════════════════', 'cyan');
-  log('  Cloudflare Autopilot: Remove www.elevateforhumanity.org', 'cyan');
+  log('  Cloudflare Autopilot: Remove www.elevateforhumanity.institute', 'cyan');
   log('═══════════════════════════════════════════════════════════', 'cyan');
 
   // Check for API token
@@ -221,20 +221,20 @@ async function main() {
 
     log('\n🚀 Next Steps:', 'cyan');
     log('1. Go to Durable dashboard: https://durablesites.co', 'yellow');
-    log('2. Add custom domain: www.elevateforhumanity.org', 'yellow');
+    log('2. Add custom domain: www.elevateforhumanity.institute', 'yellow');
     log('3. Verify DNS settings', 'yellow');
     log('4. Wait for SSL certificate (5-10 minutes)', 'yellow');
-    log('5. Test: https://elevateforhumanity.org', 'yellow');
+    log('5. Test: https://elevateforhumanity.institute', 'yellow');
 
     log('\n⏱️  DNS propagation may take 5-15 minutes', 'blue');
-    log('Check status: https://dnschecker.org/#CNAME/www.elevateforhumanity.org', 'blue');
+    log('Check status: https://dnschecker.org/#CNAME/www.elevateforhumanity.institute', 'blue');
 
   } catch (error) {
     log('\n❌ ERROR: ' + error.message, 'red');
     log('\nTroubleshooting:', 'yellow');
     log('1. Verify CLOUDFLARE_API_TOKEN is correct', 'yellow');
     log('2. Ensure token has "Zone.DNS" edit permissions', 'yellow');
-    log('3. Check that elevateforhumanity.org is in your Cloudflare account', 'yellow');
+    log('3. Check that elevateforhumanity.institute is in your Cloudflare account', 'yellow');
     process.exit(1);
   }
 }

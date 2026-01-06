@@ -6,7 +6,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   alternates: {
     canonical:
-      'https://elevateforhumanity.org/supersonic-fast-cash/how-it-works',
+      'https://elevateforhumanity.institute/supersonic-fast-cash/how-it-works',
   },
   title: 'How It Works | Elevate For Humanity',
   description:

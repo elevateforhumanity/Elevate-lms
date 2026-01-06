@@ -129,7 +129,7 @@ ${data.contactEmail || data.contactPhone ? `NEED HELP?\n${data.contactEmail ? `E
 
 ---
 Elevate for Humanity
-https://elevateforhumanity.org
+https://elevateforhumanity.institute
   `;
 
   return { subject, html, text };
@@ -195,7 +195,7 @@ serve(async (req) => {
         subject,
         html,
         text,
-        from_email: 'noreply@elevateforhumanity.org',
+        from_email: 'noreply@elevateforhumanity.institute',
         user_id: student_id,
         status: 'pending',
         metadata: {

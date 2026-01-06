@@ -600,7 +600,7 @@ async function main() {
     crawler.generateReports(crawlData);
 
     // Ping search engines if this is a production URL
-    if (baseUrl.includes('elevateforhumanity.org')) {
+    if (baseUrl.includes('elevateforhumanity.institute')) {
       await crawler.pingSearchEngines();
     }
 

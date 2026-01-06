@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${product.name} | Elevate For Humanity`,
     description: product.longDescription,
     alternates: {
-      canonical: `https://elevateforhumanity.org/platform/${product.slug}`,
+      canonical: `https://elevateforhumanity.institute/platform/${product.slug}`,
     },
   };
 }

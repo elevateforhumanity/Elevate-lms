@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     'tax preparation questions',
   ],
   alternates: {
-    canonical: 'https://elevateforhumanity.org/tax/rise-up-foundation/faq',
+    canonical: 'https://elevateforhumanity.institute/tax/rise-up-foundation/faq',
   },
   openGraph: {
     title: 'VITA FAQ - Common Questions',
     description:
       'Get answers to common questions about free VITA tax services.',
-    url: 'https://elevateforhumanity.org/tax/rise-up-foundation/faq',
+    url: 'https://elevateforhumanity.institute/tax/rise-up-foundation/faq',
     type: 'website',
   },
 };

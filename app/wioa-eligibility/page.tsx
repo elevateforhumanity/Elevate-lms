@@ -5,7 +5,7 @@ import { DollarSign, GraduationCap, Home } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/wioa-eligibility',
+    canonical: 'https://elevateforhumanity.institute/wioa-eligibility',
   },
   title: 'WIOA Eligibility Requirements | Elevate For Humanity',
   description:

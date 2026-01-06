@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
     canonical:
-      'https://elevateforhumanity.org/admin/external-modules/approvals',
+      'https://elevateforhumanity.institute/admin/external-modules/approvals',
   },
   title: 'Approvals | Elevate For Humanity',
   description:

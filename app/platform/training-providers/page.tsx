@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/platform/training-providers',
+    canonical: 'https://elevateforhumanity.institute/platform/training-providers',
   },
   title: 'Training Providers | Elevate For Humanity',
   description:

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Federal Compliance | Elevate For Humanity',
   description: 'Our commitment to federal compliance including WIOA, FERPA, ADA, and equal opportunity standards.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/federal-compliance',
+    canonical: 'https://elevateforhumanity.institute/federal-compliance',
   },
 };
 
@@ -247,7 +247,7 @@ export default function FederalCompliancePage() {
               If you have questions about our compliance policies or wish to file a complaint, please contact us:
             </p>
             <div className="space-y-2 text-blue-900">
-              <p><strong>Email:</strong> compliance@elevateforhumanity.org</p>
+              <p><strong>Email:</strong> compliance@elevateforhumanity.institute</p>
               <p><strong>Phone:</strong> (317) 314-3757</p>
               <p><strong>Address:</strong> Indianapolis, IN</p>
             </div>

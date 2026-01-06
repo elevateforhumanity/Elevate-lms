@@ -54,7 +54,7 @@ pageDirectories.forEach(({ dir, title, description }) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${title}</title>
     <meta name="description" content="${description}">
-    <link rel="canonical" href="https://elevateforhumanity.org/${dir}/">
+    <link rel="canonical" href="https://elevateforhumanity.institute/${dir}/">
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; }
         .container { max-width: 800px; margin: 0 auto; }

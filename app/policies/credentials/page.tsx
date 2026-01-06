@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Credential Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/credentials',
+    canonical: 'https://elevateforhumanity.institute/policies/credentials',
   },
 };
 export default function CredentialsPage() {
@@ -14,7 +14,7 @@ export default function CredentialsPage() {
       <ul><li>Complete all program requirements</li><li>Pass all assessments</li><li>Meet attendance standards</li><li>Clear financial obligations</li></ul>
       <h2>Certificate Types</h2>
       <ul><li>Program completion certificates</li><li>Industry certifications</li><li>Continuing education units</li></ul>
-      <p>Contact: registrar@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: registrar@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

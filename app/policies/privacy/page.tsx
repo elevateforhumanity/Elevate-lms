@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Privacy Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/privacy',
+    canonical: 'https://elevateforhumanity.institute/policies/privacy',
   },
 };
 export default function PrivacyPage() {
@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       <ul><li>Provide services</li><li>Improve platform</li><li>Communicate with you</li><li>Comply with regulations</li></ul>
       <h2>Your Rights</h2>
       <ul><li>Access your data</li><li>Request corrections</li><li>Request deletion</li><li>Opt out of communications</li></ul>
-      <p>Contact: privacy@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: privacy@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

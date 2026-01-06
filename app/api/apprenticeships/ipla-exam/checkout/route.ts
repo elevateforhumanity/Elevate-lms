@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
             product_data: {
               name: 'IPLA Apprenticeship Exam',
               description: `Exam scheduled for ${new Date(examDate).toLocaleDateString()} at ${examTime}`,
-              images: ['https://elevateforhumanity.org/images/logo.png'],
+              images: ['https://elevateforhumanity.institute/images/logo.png'],
             },
             unit_amount: 15000, // $150.00
           },

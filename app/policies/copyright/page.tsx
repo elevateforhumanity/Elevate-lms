@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Copyright Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/copyright',
+    canonical: 'https://elevateforhumanity.institute/policies/copyright',
   },
 };
 export default function CopyrightPage() {
@@ -15,7 +15,7 @@ export default function CopyrightPage() {
       <h2>User Content</h2>
       <p>You retain copyright but grant us license to use, display, and distribute your content.</p>
       <h2>DMCA</h2>
-      <p>Report copyright infringement to: dmca@elevateforhumanity.org</p>
+      <p>Report copyright infringement to: dmca@elevateforhumanity.institute</p>
     </article>
   );
 }

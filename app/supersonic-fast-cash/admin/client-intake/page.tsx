@@ -337,7 +337,7 @@ export default function ClientIntakeDashboard() {
                 Add this webhook URL to your JotForm:
               </p>
               <code className="block bg-white px-4 py-2 rounded border">
-                https://elevateforhumanity.org/api/supersonic-fast-cash/jotform-webhook
+                https://elevateforhumanity.institute/api/supersonic-fast-cash/jotform-webhook
               </code>
             </div>
 

@@ -336,7 +336,7 @@ export const socialLinks = {
  */
 export const contactInfo = {
   phone: '1-800-ELEVATE (353-8283)',
-  email: 'info@elevateforhumanity.org',
+  email: 'info@elevateforhumanity.institute',
   address: {
     street: '123 Main Street',
     city: 'Indianapolis',

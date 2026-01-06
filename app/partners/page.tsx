@@ -8,7 +8,7 @@ export const revalidate = 86400; // 24 hours
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/partners',
+    canonical: 'https://elevateforhumanity.institute/partners',
   },
   title: 'Partners | Elevate For Humanity',
   description:

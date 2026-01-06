@@ -33,7 +33,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Test configuration
 const testStudent = {
-  email: `test-student-${Date.now()}@elevateforhumanity.org`,
+  email: `test-student-${Date.now()}@elevateforhumanity.institute`,
   password: 'TestPassword123!',
   firstName: 'Test',
   lastName: 'Student',

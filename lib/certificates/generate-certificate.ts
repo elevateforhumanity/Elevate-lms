@@ -170,7 +170,7 @@ export async function generateCertificate(data: CertificateData): Promise<Buffer
     { align: 'center' }
   );
   doc.text(
-    'Verify authenticity at elevateforhumanity.org/certificates/verify or scan QR code above',
+    'Verify authenticity at elevateforhumanity.institute/certificates/verify or scan QR code above',
     pageWidth / 2,
     pageHeight - 0.3,
     { align: 'center' }

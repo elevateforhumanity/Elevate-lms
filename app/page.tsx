@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   description:
     'A workforce and education hub that connects systems, not just programs. Coordinating learners, schools, training providers, employers, and government funding into structured pathways.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org',
+    canonical: 'https://elevateforhumanity.institute',
   },
   openGraph: {
     title: 'Elevate for Humanity | Workforce and Education Hub',
     description:
       'Coordinating learners, schools, training providers, employers, and government funding into one structured pathway — from eligibility and enrollment to credentials and workforce outcomes.',
-    url: 'https://elevateforhumanity.org',
+    url: 'https://elevateforhumanity.institute',
     siteName: 'Elevate for Humanity',
     images: [
       {
@@ -41,7 +41,7 @@ export default function HomePage() {
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
     name: 'Elevate for Humanity',
-    url: 'https://elevateforhumanity.org',
+    url: 'https://elevateforhumanity.institute',
     description:
       'Free, funded workforce training programs aligned with WIOA, WRG, DOL, and employer-led apprenticeships.',
     address: {

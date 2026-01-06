@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Academic Integrity Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/academic-integrity',
+    canonical: 'https://elevateforhumanity.institute/policies/academic-integrity',
   },
 };
 export default function AcademicIntegrityPage() {
@@ -14,7 +14,7 @@ export default function AcademicIntegrityPage() {
       <p>All work must be your own. Prohibited: cheating, plagiarism, unauthorized collaboration.</p>
       <h2>Violations</h2>
       <ul><li>First offense: Warning and grade penalty</li><li>Second offense: Course failure</li><li>Third offense: Dismissal</li></ul>
-      <p>Contact: academicintegrity@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: academicintegrity@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

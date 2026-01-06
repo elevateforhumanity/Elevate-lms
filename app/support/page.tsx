@@ -13,7 +13,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/support',
+    canonical: 'https://elevateforhumanity.institute/support',
   },
   title: 'Support Bundle - Barrier Removal Services | Elevate For Humanity',
   description:

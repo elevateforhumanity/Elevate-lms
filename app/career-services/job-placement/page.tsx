@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Job Placement Services | Elevate for Humanity',
   description: 'Direct connections to employers actively hiring our graduates.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/career-services/job-placement',
+    canonical: 'https://elevateforhumanity.institute/career-services/job-placement',
   },
 };
 

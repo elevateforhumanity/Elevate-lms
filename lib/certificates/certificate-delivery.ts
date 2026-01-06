@@ -117,7 +117,7 @@ export async function deliverModuleCertificate(
               <p>Keep up the great work!</p>
               <p>Best regards,<br>The Elevate for Humanity Team</p>
               <div class="footer">
-                <p>Verify this certificate at: elevateforhumanity.org/certificates/verify</p>
+                <p>Verify this certificate at: elevateforhumanity.institute/certificates/verify</p>
                 <p>Certificate Number: ${certificateNumber}</p>
               </div>
             </div>
@@ -226,7 +226,7 @@ export async function deliverProgramCertificate(
               <p>Congratulations once again on this remarkable achievement!</p>
               <p>With pride and best wishes,<br><strong>The Elevate for Humanity Team</strong></p>
               <div class="footer">
-                <p>Verify this certificate at: elevateforhumanity.org/certificates/verify</p>
+                <p>Verify this certificate at: elevateforhumanity.institute/certificates/verify</p>
                 <p>Certificate Number: ${certificateNumber}</p>
                 <p>This certificate is digitally verified and tamper-proof</p>
               </div>

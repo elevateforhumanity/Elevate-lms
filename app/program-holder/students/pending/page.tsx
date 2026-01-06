@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Pending Applications | Program Holder Portal',
   description: 'Review pending student applications',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/program-holder/students/pending',
+    canonical: 'https://elevateforhumanity.institute/program-holder/students/pending',
   },
 };
 

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Ongoing Career Support | Elevate for Humanity',
   description: 'Lifetime career support for all graduates.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/career-services/ongoing-support',
+    canonical: 'https://elevateforhumanity.institute/career-services/ongoing-support',
   },
 };
 

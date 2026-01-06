@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const DEPLOY_DIR = 'deploy';
-const BASE_URL = 'https://elevateforhumanity.org';
+const BASE_URL = 'https://elevateforhumanity.institute';
 
 
 const seoChecks = {

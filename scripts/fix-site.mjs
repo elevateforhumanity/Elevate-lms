@@ -8,7 +8,7 @@ import fs from 'fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const base = process.env.SEO_BASE || 'https://elevateforhumanity.org';
+const base = process.env.SEO_BASE || 'https://elevateforhumanity.institute';
 const out = process.env.SEO_OUT || path.join(process.cwd(), 'client', 'dist');
 const programs =
   process.env.SEO_PROGRAMS || path.join(process.cwd(), 'data', 'programs.json');

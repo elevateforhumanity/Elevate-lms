@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Student Code of Conduct | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/student-code',
+    canonical: 'https://elevateforhumanity.institute/policies/student-code',
   },
 };
 export default function StudentCodePage() {
@@ -16,7 +16,7 @@ export default function StudentCodePage() {
       <ul><li>Harassment or discrimination</li><li>Violence or threats</li><li>Substance abuse</li><li>Theft or vandalism</li></ul>
       <h2>Disciplinary Process</h2>
       <p>Violations investigated and may result in warning, probation, suspension, or dismissal.</p>
-      <p>Contact: studentconduct@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: studentconduct@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

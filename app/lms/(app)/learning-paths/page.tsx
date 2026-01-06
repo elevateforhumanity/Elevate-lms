@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/lms/learning-paths',
+    canonical: 'https://elevateforhumanity.institute/lms/learning-paths',
   },
   title: 'Learning Paths | Elevate For Humanity',
   description:

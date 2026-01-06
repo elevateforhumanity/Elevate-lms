@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Professional interview coaching and preparation services to help you land your dream job.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/career-services/interview-prep',
+    canonical: 'https://elevateforhumanity.institute/career-services/interview-prep',
   },
 };
 

@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/admin/mobile-sync',
+    canonical: 'https://elevateforhumanity.institute/admin/mobile-sync',
   },
   title: 'Mobile Sync | Elevate For Humanity',
   description:

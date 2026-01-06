@@ -42,7 +42,7 @@ export default async function OnboardingStartPage() {
             Elevate for Humanity to complete your account setup.
           </p>
           <a
-            href="mailto:partnerships@elevateforhumanity.org"
+            href="mailto:partnerships@elevateforhumanity.institute"
             className="inline-block px-6 py-3 bg-brand-blue-600 text-white font-semibold rounded-lg hover:bg-brand-blue-700"
           >
             Contact Support
@@ -91,7 +91,7 @@ export default async function OnboardingStartPage() {
             Elevate for Humanity.
           </p>
           <a
-            href="mailto:partnerships@elevateforhumanity.org"
+            href="mailto:partnerships@elevateforhumanity.institute"
             className="inline-block px-6 py-3 bg-brand-blue-600 text-white font-semibold rounded-lg hover:bg-brand-blue-700"
           >
             Contact Support

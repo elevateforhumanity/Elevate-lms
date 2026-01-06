@@ -8,14 +8,14 @@ import { rateLimitNew as rateLimit, getClientIdentifier, RATE_LIMITS } from '@/l
 // Advisor assignment logic
 function assignAdvisor(program: string): string {
   const advisorMap: Record<string, string> = {
-    barber: 'barber@elevateforhumanity.org',
-    cna: 'healthcare@elevateforhumanity.org',
-    hvac: 'trades@elevateforhumanity.org',
-    'direct-support-professional': 'healthcare@elevateforhumanity.org',
+    barber: 'barber@elevateforhumanity.institute',
+    cna: 'healthcare@elevateforhumanity.institute',
+    hvac: 'trades@elevateforhumanity.institute',
+    'direct-support-professional': 'healthcare@elevateforhumanity.institute',
   };
 
   return (
-    advisorMap[program.toLowerCase()] || 'admissions@elevateforhumanity.org'
+    advisorMap[program.toLowerCase()] || 'admissions@elevateforhumanity.institute'
   );
 }
 
@@ -36,7 +36,7 @@ async function sendConfirmationEmail(
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Elevate for Humanity <no-reply@elevateforhumanity.org>',
+        from: 'Elevate for Humanity <no-reply@elevateforhumanity.institute>',
         to: email,
         subject: 'We received your application – Elevate for Humanity',
         html: `
@@ -81,7 +81,7 @@ async function sendStaffNotification(
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Elevate for Humanity <no-reply@elevateforhumanity.org>',
+        from: 'Elevate for Humanity <no-reply@elevateforhumanity.institute>',
         to: advisorEmail,
         subject: `New Application: ${applicationData.first_name} ${applicationData.last_name}`,
         html: `

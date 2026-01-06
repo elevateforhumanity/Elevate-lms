@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Federal Compliance Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/federal-compliance',
+    canonical: 'https://elevateforhumanity.institute/policies/federal-compliance',
   },
 };
 export default function FederalCompliancePage() {
@@ -13,7 +13,7 @@ export default function FederalCompliancePage() {
       <h2>Compliance Areas</h2>
       <ul><li>FERPA (student privacy)</li><li>Title IX (non-discrimination)</li><li>ADA (accessibility)</li><li>WIOA (workforce development)</li></ul>
       <h2>Reporting</h2>
-      <p>Report compliance concerns to: compliance@elevateforhumanity.org</p>
+      <p>Report compliance concerns to: compliance@elevateforhumanity.institute</p>
     </article>
   );
 }

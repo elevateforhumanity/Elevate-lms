@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/terms-of-service',
+    canonical: 'https://elevateforhumanity.institute/terms-of-service',
   },
   title: 'Terms of Service | Elevate For Humanity',
   description: 'Terms of Service and user agreement for Elevate For Humanity.',
@@ -210,10 +210,10 @@ export default function TermsOfServicePage() {
               <p className="text-slate-700">
                 Email:{' '}
                 <a
-                  href="mailto:legal@elevateforhumanity.org"
+                  href="mailto:legal@elevateforhumanity.institute"
                   className="text-brand-blue-600 hover:underline"
                 >
-                  legal@elevateforhumanity.org
+                  legal@elevateforhumanity.institute
                 </a>
               </p>
             </div>

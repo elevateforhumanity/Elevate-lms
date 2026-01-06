@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Academic Progress Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/progress',
+    canonical: 'https://elevateforhumanity.institute/policies/progress',
   },
 };
 export default function ProgressPage() {
@@ -14,7 +14,7 @@ export default function ProgressPage() {
       <ul><li>Maintain 2.0 GPA minimum</li><li>Complete 67% of attempted coursework</li><li>Finish program within maximum timeframe</li></ul>
       <h2>Academic Probation</h2>
       <p>Students below standards placed on probation. Must improve within one term or face dismissal.</p>
-      <p>Contact: registrar@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: registrar@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

@@ -115,7 +115,7 @@ export default function FSSAPartnershipRequestPage() {
               </p>
               <p className="text-gray-700">
                 <Mail className="inline w-4 h-4 mr-2" />
-                partnerships@elevateforhumanity.org
+                partnerships@elevateforhumanity.institute
               </p>
             </div>
             <div className="mt-8 space-x-4">
@@ -373,7 +373,7 @@ export default function FSSAPartnershipRequestPage() {
             <strong>Prefer to call?</strong> Contact us directly:
           </p>
           <p className="text-lg font-semibold text-gray-900">
-            317-314-3757 | partnerships@elevateforhumanity.org
+            317-314-3757 | partnerships@elevateforhumanity.institute
           </p>
         </div>
       </div>

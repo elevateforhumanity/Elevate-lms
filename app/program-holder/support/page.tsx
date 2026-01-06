@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Support | Program Holder Portal',
   description: 'Get help and support',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/program-holder/support',
+    canonical: 'https://elevateforhumanity.institute/program-holder/support',
   },
 };
 
@@ -33,9 +33,9 @@ export default async function SupportPage() {
     {
       type: 'Email',
       icon: Mail,
-      value: 'program-holders@elevateforhumanity.org',
+      value: 'program-holders@elevateforhumanity.institute',
       description: 'Response within 24 hours',
-      href: 'mailto:program-holders@elevateforhumanity.org',
+      href: 'mailto:program-holders@elevateforhumanity.institute',
       color: 'blue',
     },
     {

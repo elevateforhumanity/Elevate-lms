@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'Real outcomes from students who transformed their lives through our training programs.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/success',
+    canonical: 'https://elevateforhumanity.institute/success',
   },
 };
 

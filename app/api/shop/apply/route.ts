@@ -102,7 +102,7 @@ export async function POST(req: Request) {
     // Send welcome email
     try {
       await resend.emails.send({
-        from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.org',
+        from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.institute',
         to: email,
         subject: 'Shop Partner Application Received - Elevate for Humanity',
         text: `

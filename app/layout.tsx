@@ -45,7 +45,7 @@ export const viewport: Viewport = {
 };
 
 // Global SEO configuration - fixes canonical, OpenGraph, and meta descriptions
-const SITE_URL = 'https://elevateforhumanity.org';
+const SITE_URL = 'https://elevateforhumanity.institute';
 const isProduction = process.env.VERCEL_ENV === 'production';
 
 export const metadata: Metadata = {
@@ -122,7 +122,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    url: 'https://elevateforhumanity.org',
+    url: 'https://elevateforhumanity.institute',
     siteName: 'Elevate for Humanity',
     locale: 'en_US',
     images: [
@@ -170,7 +170,7 @@ export default async function RootLayout({
 }) {
   const headersList = await headers();
   const host = headersList.get('host') || '';
-  const canonicalHost = 'elevateforhumanity.org';
+  const canonicalHost = 'elevateforhumanity.institute';
   const isCanonical = host === canonicalHost;
 
   return (
@@ -178,7 +178,7 @@ export default async function RootLayout({
       <head>
         {!isCanonical && <meta name="robots" content="noindex,nofollow" />}
         {isCanonical && (
-          <link rel="canonical" href="https://elevateforhumanity.org" />
+          <link rel="canonical" href="https://elevateforhumanity.institute" />
         )}
         {/* Preload critical assets to prevent FOUC */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

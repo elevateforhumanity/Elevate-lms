@@ -49,7 +49,7 @@ class RevenueSplitSystem {
         payment_method: paymentMethodId,
         confirmation_method: 'manual',
         confirm: true,
-        return_url: 'https://elevateforhumanity.org/enrollment/complete',
+        return_url: 'https://elevateforhumanity.institute/enrollment/complete',
         // Note: Partner transfer happens separately after EFH receives payment
         // application_fee_amount: partnerRevenue,
         // transfer_data: {
@@ -126,7 +126,7 @@ class RevenueSplitSystem {
               name: program.name,
               description: `${program.description} - Dual certification from ${partnerData.partner_name} and Elevate for Humanity`,
               images: [
-                `https://elevateforhumanity.org/assets/certifications/${programId}.jpg`,
+                `https://elevateforhumanity.institute/assets/certifications/${programId}.jpg`,
               ],
             },
             unit_amount: program.student_price * 100,
@@ -188,7 +188,7 @@ class RevenueSplitSystem {
         account = await this.stripe.accounts.create({
           type: 'express',
           country: 'US',
-          email: `partnerships+${partnerId}@elevateforhumanity.org`,
+          email: `partnerships+${partnerId}@elevateforhumanity.institute`,
           capabilities: {
             card_payments: { requested: true },
             transfers: { requested: true },
@@ -329,7 +329,7 @@ class RevenueSplitSystem {
     };
 
     const baseUrl =
-      baseUrls[partnerId] || 'https://elevateforhumanity.org/courses';
+      baseUrls[partnerId] || 'https://elevateforhumanity.institute/courses';
     return `${baseUrl}/${programId}?ref=elevate_for_humanity`;
   }
 
@@ -368,7 +368,7 @@ class RevenueSplitSystem {
           metadata.partner_id,
           metadata.program_id
         ),
-        support_email: 'support@elevateforhumanity.org',
+        support_email: 'support@elevateforhumanity.institute',
       },
     };
 

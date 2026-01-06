@@ -2,7 +2,7 @@
  * Puppeteer Script: Analyze Marketing Site & Generate Durable Setup Instructions
  *
  * This script:
- * 1. Crawls www.elevateforhumanity.org
+ * 1. Crawls www.elevateforhumanity.institute
  * 2. Analyzes current SEO setup
  * 3. Checks for social media integrations
  * 4. Generates step-by-step Durable configuration instructions
@@ -13,7 +13,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
 const path = require('path');
 
-const MARKETING_SITE = 'https://elevateforhumanity.org';
+const MARKETING_SITE = 'https://elevateforhumanity.institute';
 const OUTPUT_DIR = './analysis';
 
 async function analyzeSite() {
@@ -266,7 +266,7 @@ async function analyzeSite() {
         title: 'Access Durable Dashboard',
         instructions: [
           'Log in to Durable Technologies at https://durable.co/',
-          'Navigate to your site: www.elevateforhumanity.org',
+          'Navigate to your site: www.elevateforhumanity.institute',
           'Go to Settings or Site Configuration',
         ],
       },
@@ -365,9 +365,9 @@ async function analyzeSite() {
         instructions: [
           'Go to Pages → Homepage',
           'Add CTA button: "Enroll Now"',
-          'Link to: https://elevateforhumanity.org/signup',
+          'Link to: https://elevateforhumanity.institute/signup',
           'Add "Student Login" button',
-          'Link to: https://elevateforhumanity.org/login',
+          'Link to: https://elevateforhumanity.institute/login',
           'Add to navigation menu: "Student Portal"',
         ],
       },

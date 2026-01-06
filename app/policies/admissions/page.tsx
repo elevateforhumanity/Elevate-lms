@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Admissions Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/admissions',
+    canonical: 'https://elevateforhumanity.institute/policies/admissions',
   },
 };
 export default function AdmissionsPage() {
@@ -14,7 +14,7 @@ export default function AdmissionsPage() {
       <ul><li>18+ years old</li><li>High school diploma or equivalent</li><li>Valid ID</li><li>Funding verification</li></ul>
       <h2>Process</h2>
       <ol><li>Submit application</li><li>Interview with advisor</li><li>Funding verification</li><li>Enrollment</li></ol>
-      <p>Contact: admissions@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: admissions@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

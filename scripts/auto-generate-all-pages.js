@@ -2,7 +2,7 @@
 /**
  * AUTOMATIC PAGE GENERATOR
  * Generates ALL 67 Next.js pages from React source
- * Uses scraped design from www.elevateforhumanity.org
+ * Uses scraped design from www.elevateforhumanity.institute
  */
 
 const fs = require('fs');

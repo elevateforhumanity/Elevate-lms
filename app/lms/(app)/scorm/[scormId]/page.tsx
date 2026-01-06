@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
     canonical:
-      'https://elevateforhumanity.org/portal/student/scorm/[scormId]',
+      'https://elevateforhumanity.institute/portal/student/scorm/[scormId]',
   },
   title: '[scormId] | Elevate For Humanity',
   description:

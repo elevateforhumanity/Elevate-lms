@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     // Send confirmation email to applicant
     try {
       await resend.emails.send({
-        from: 'SupersonicFastCash <noreply@elevateforhumanity.org>',
+        from: 'SupersonicFastCash <noreply@elevateforhumanity.institute>',
         to: body.email,
         subject: 'Career Application Received - SupersonicFastCash',
         html: `
@@ -103,8 +103,8 @@ export async function POST(request: NextRequest) {
     // Send notification to admin
     try {
       await resend.emails.send({
-        from: 'SupersonicFastCash <noreply@elevateforhumanity.org>',
-        to: 'careers@elevateforhumanity.org',
+        from: 'SupersonicFastCash <noreply@elevateforhumanity.institute>',
+        to: 'careers@elevateforhumanity.institute',
         subject: `New Career Application: ${body.firstName} ${body.lastName} - ${body.position || 'Tax Preparer'}`,
         html: `
           <h2>New Career Application</h2>
@@ -134,7 +134,7 @@ export async function POST(request: NextRequest) {
           <p>${application.id}</p>
 
           <p>
-            <a href="https://elevateforhumanity.org/admin/careers"
+            <a href="https://elevateforhumanity.institute/admin/careers"
                style="display: inline-block; padding: 12px 24px; background: #16a34a; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
               Review Application
             </a>

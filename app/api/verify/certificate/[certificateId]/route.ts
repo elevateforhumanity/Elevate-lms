@@ -68,7 +68,7 @@ export async function GET(_req: NextRequest, { params }: Params) {
         courseName: course?.title || "Unknown Course",
         courseDescription: course?.description || null,
         issuer: "Elevate For Humanity",
-        issuerWebsite: process.env.NEXT_PUBLIC_SITE_URL || "https://elevateforhumanity.org",
+        issuerWebsite: process.env.NEXT_PUBLIC_SITE_URL || "https://elevateforhumanity.institute",
       },
     };
 

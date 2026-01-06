@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.org';
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute';
 
 /**
  * Generate metadata with canonical URL for any page

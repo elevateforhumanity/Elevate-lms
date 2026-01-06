@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords:
     'free CNA training Indiana, CNA classes Indianapolis, certified nursing assistant Indiana, WRG CNA training, WIOA CNA program, JRI CNA training, free nursing assistant school Indiana, CNA certification Indianapolis, CNA job placement, state approved CNA training Indiana',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/programs/cna',
+    canonical: 'https://elevateforhumanity.institute/programs/cna',
   },
 };
 

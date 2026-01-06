@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical:
-      'https://elevateforhumanity.org/tax/rise-up-foundation/site-locator',
+      'https://elevateforhumanity.institute/tax/rise-up-foundation/site-locator',
   },
   openGraph: {
     title: 'Find a VITA Site Near You',
     description: 'Locate free tax preparation sites in your area.',
-    url: 'https://elevateforhumanity.org/tax/rise-up-foundation/site-locator',
+    url: 'https://elevateforhumanity.institute/tax/rise-up-foundation/site-locator',
     type: 'website',
   },
 };

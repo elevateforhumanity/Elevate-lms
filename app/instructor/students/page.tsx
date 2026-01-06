@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'My Students | Elevate for Humanity',
   description: 'View and manage your students',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/instructor/students',
+    canonical: 'https://elevateforhumanity.institute/instructor/students',
   },
 };
 

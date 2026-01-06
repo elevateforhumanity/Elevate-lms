@@ -80,7 +80,7 @@ export function CertificateTemplate({
             Certificate Number: {certificateNumber}
           </p>
           <p className="text-xs text-slate-500">
-            Verify at: elevateforhumanity.org/verify/{certificateNumber}
+            Verify at: elevateforhumanity.institute/verify/{certificateNumber}
           </p>
         </div>
       </div>
@@ -122,12 +122,12 @@ export function CertificatePreview({
   };
 
   const shareOnLinkedIn = () => {
-    const url = `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent(courseName)}&organizationId=elevate-for-humanity&issueYear=${new Date(completionDate).getFullYear()}&issueMonth=${new Date(completionDate).getMonth() + 1}&certUrl=${encodeURIComponent(`https://elevateforhumanity.org/verify/${certificateNumber}`)}`;
+    const url = `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent(courseName)}&organizationId=elevate-for-humanity&issueYear=${new Date(completionDate).getFullYear()}&issueMonth=${new Date(completionDate).getMonth() + 1}&certUrl=${encodeURIComponent(`https://elevateforhumanity.institute/verify/${certificateNumber}`)}`;
     window.open(url, '_blank');
   };
 
   const copyVerificationLink = () => {
-    const link = `https://elevateforhumanity.org/verify/${certificateNumber}`;
+    const link = `https://elevateforhumanity.institute/verify/${certificateNumber}`;
     navigator.clipboard.writeText(link);
     alert('Verification link copied to clipboard!');
   };

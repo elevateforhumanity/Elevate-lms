@@ -8,7 +8,7 @@ const arg = (k, d = null) => {
   return m ? m.split('=')[1] : d;
 };
 
-const BASE = (arg('base') || 'https://elevateforhumanity.org').replace(
+const BASE = (arg('base') || 'https://elevateforhumanity.institute').replace(
   /\/$/,
   ''
 );

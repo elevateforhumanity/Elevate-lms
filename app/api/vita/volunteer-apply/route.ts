@@ -76,7 +76,7 @@ export async function POST(request: Request) {
     // Send confirmation email with IRS signup link
     await supabase.from('email_queue').insert({
       to_email: email,
-      from_email: 'noreply@elevateforhumanity.org',
+      from_email: 'noreply@elevateforhumanity.institute',
       subject: 'VITA Volunteer Interest - Next Steps',
       template_name: 'volunteer_application_received',
       template_data: {

@@ -17,7 +17,7 @@ export const metadata = {
   description:
     'Bring your training programs under our umbrella. Use our ETPL, RAPIDS, WIOA credentials via MOU. Launch in 30 days. Indiana only. Application required.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/pricing/program-holder',
+    canonical: 'https://elevateforhumanity.institute/pricing/program-holder',
   },
 };
 

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: 'Program Holder Dashboard | Elevate For Humanity',
   description: 'Manage students, submit reports, track compliance',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/program-holder/dashboard',
+    canonical: 'https://elevateforhumanity.institute/program-holder/dashboard',
   },
 };
 

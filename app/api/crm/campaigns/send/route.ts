@@ -166,9 +166,9 @@ export async function POST(request: NextRequest) {
           .replace(/\{\{organization_name\}\}/g, 'Elevate for Humanity')
           .replace(
             /\{\{dashboard_link\}\}/g,
-            'https://elevateforhumanity.org/dashboard'
+            'https://elevateforhumanity.institute/dashboard'
           )
-          .replace(/\{\{support_email\}\}/g, 'support@elevateforhumanity.org')
+          .replace(/\{\{support_email\}\}/g, 'support@elevateforhumanity.institute')
           .replace(/\{\{support_phone\}\}/g, '(555) 123-4567');
 
         try {

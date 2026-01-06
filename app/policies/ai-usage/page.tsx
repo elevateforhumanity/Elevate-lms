@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'AI Usage Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/ai-usage',
+    canonical: 'https://elevateforhumanity.institute/policies/ai-usage',
   },
 };
 export default function AIUsagePage() {
@@ -16,7 +16,7 @@ export default function AIUsagePage() {
       <ul><li>Learning assistance</li><li>Study support</li><li>Concept clarification</li></ul>
       <h2>Prohibited Use</h2>
       <ul><li>Cheating on assessments</li><li>Generating assignment submissions</li><li>Harassment or abuse</li></ul>
-      <p>Contact: ai@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: ai@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

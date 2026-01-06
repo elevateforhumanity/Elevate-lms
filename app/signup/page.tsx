@@ -4,7 +4,7 @@ import SignupForm from './SignupForm';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/signup',
+    canonical: 'https://elevateforhumanity.institute/signup',
   },
   title: 'Create Account',
   description:

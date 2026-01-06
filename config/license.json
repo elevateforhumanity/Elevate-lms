@@ -3,7 +3,7 @@
   "licenseId": "EFH-2025-MASTER-000",
   "licenseType": "master",
   "issuedAt": "2025-01-01",
-  "validDomains": ["localhost", "elevateforhumanity.org", "*.elevateforhumanity.org"],
+  "validDomains": ["localhost", "elevateforhumanity.institute", "*.elevateforhumanity.institute"],
   "status": "active",
   "notes": "This is the master license. Client licenses will have unique IDs."
 }

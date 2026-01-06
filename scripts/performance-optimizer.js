@@ -158,8 +158,8 @@ class PerformanceOptimizer {
       alternateName: 'Rise Forward Foundation',
       description:
         'Transforming lives through technology education, AI training, and workforce development programs.',
-      url: 'https://elevateforhumanity.org',
-      logo: 'https://elevateforhumanity.org/images/logo.png',
+      url: 'https://elevateforhumanity.institute',
+      logo: 'https://elevateforhumanity.institute/images/logo.png',
       sameAs: [
         'https://www.linkedin.com/company/elevate-for-humanity',
         'https://www.facebook.com/elevateforhumanity',
@@ -204,7 +204,7 @@ class PerformanceOptimizer {
           description:
             'Real student success stories and career transformations',
           thumbnailUrl:
-            'https://elevateforhumanity.org/images/video-thumbnails/transformation-stories.jpg',
+            'https://elevateforhumanity.institute/images/video-thumbnails/transformation-stories.jpg',
           uploadDate: '2025-09-16',
           duration: 'PT2M30S',
         },
@@ -213,7 +213,7 @@ class PerformanceOptimizer {
           name: 'AI Lab in Action - Laboratory of Dreams',
           description: 'Tour of our state-of-the-art AI development facilities',
           thumbnailUrl:
-            'https://elevateforhumanity.org/images/video-thumbnails/ai-lab-tour.jpg',
+            'https://elevateforhumanity.institute/images/video-thumbnails/ai-lab-tour.jpg',
           uploadDate: '2025-09-16',
           duration: 'PT1M30S',
         },

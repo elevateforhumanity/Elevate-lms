@@ -138,7 +138,7 @@ export function InvisibleWatermark({
             COPYRIGHT © 2024 ELEVATE FOR HUMANITY - ELIZABETH L. GREENE - ORIGINAL
             SITE ID: {siteId} - TIMESTAMP: {clientTimestamp} - UNAUTHORIZED
             COPYING PROHIBITED - LEGAL ACTION WILL BE TAKEN - CONTACT:
-            legal@elevateforhumanity.org
+            legal@elevateforhumanity.institute
           </div>
         )}
       </>

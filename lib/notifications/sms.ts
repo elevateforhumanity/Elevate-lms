@@ -35,7 +35,7 @@ export class SMSService {
   ): Promise<boolean> {
     return this.send({
       to: phoneNumber,
-      message: `Reminder: ${assignmentName} is due on ${dueDate}. Submit at elevateforhumanity.org/lms/assignments`,
+      message: `Reminder: ${assignmentName} is due on ${dueDate}. Submit at elevateforhumanity.institute/lms/assignments`,
     });
   }
   // Class starting soon
@@ -46,7 +46,7 @@ export class SMSService {
   ): Promise<boolean> {
     return this.send({
       to: phoneNumber,
-      message: `Your ${className} class starts at ${startTime}. Join at elevateforhumanity.org/lms/live`,
+      message: `Your ${className} class starts at ${startTime}. Join at elevateforhumanity.institute/lms/live`,
     });
   }
   // Achievement unlocked
@@ -56,7 +56,7 @@ export class SMSService {
   ): Promise<boolean> {
     return this.send({
       to: phoneNumber,
-      message: `🏆 Achievement unlocked: ${achievementName}! View at elevateforhumanity.org/achievements`,
+      message: `🏆 Achievement unlocked: ${achievementName}! View at elevateforhumanity.institute/achievements`,
     });
   }
   // Certificate ready
@@ -66,7 +66,7 @@ export class SMSService {
   ): Promise<boolean> {
     return this.send({
       to: phoneNumber,
-      message: `🎉 Your ${courseName} certificate is ready! Download at elevateforhumanity.org/certificates`,
+      message: `🎉 Your ${courseName} certificate is ready! Download at elevateforhumanity.institute/certificates`,
     });
   }
   // Enrollment confirmation
@@ -76,7 +76,7 @@ export class SMSService {
   ): Promise<boolean> {
     return this.send({
       to: phoneNumber,
-      message: `You're enrolled in ${courseName}! Start learning at elevateforhumanity.org/lms/courses`,
+      message: `You're enrolled in ${courseName}! Start learning at elevateforhumanity.institute/lms/courses`,
     });
   }
 }

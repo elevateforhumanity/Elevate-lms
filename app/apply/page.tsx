@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     'Choose your path: Student programs, Program holder partnership, Employer hiring, or Staff/Instructor roles.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/apply',
+    canonical: 'https://elevateforhumanity.institute/apply',
   },
 };
 
@@ -137,7 +137,7 @@ export default function ApplyLandingPage() {
               Call Us: 317-314-3757
             </a>
             <a
-              href="mailto:info@elevateforhumanity.org"
+              href="mailto:info@elevateforhumanity.institute"
               className="inline-flex items-center justify-center px-6 py-3 bg-white border-2 border-slate-300 text-black font-semibold rounded-lg hover:border-slate-400 transition-colors"
             >
               Email Us

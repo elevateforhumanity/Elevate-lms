@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     'Access handbooks, workbooks, forms, and resources for students and staff',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/downloads',
+    canonical: 'https://elevateforhumanity.institute/downloads',
   },
 };
 
@@ -401,10 +401,10 @@ export default function DownloadsPage() {
               All documents are provided in PDF format. If you need documents in
               an alternative format for accessibility purposes, please contact{' '}
               <a
-                href="mailto:accessibility@elevateforhumanity.org"
+                href="mailto:accessibility@elevateforhumanity.institute"
                 className="text-brand-blue-600 hover:underline"
               >
-                accessibility@elevateforhumanity.org
+                accessibility@elevateforhumanity.institute
               </a>
             </p>
           </div>

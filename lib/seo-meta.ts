@@ -5,7 +5,7 @@
 
 import { Metadata } from 'next';
 
-const baseUrl = 'https://elevateforhumanity.org';
+const baseUrl = 'https://elevateforhumanity.institute';
 const siteName = 'Elevate for Humanity';
 const defaultImage = `${baseUrl}/images/og-default.jpg`;
 

@@ -8,7 +8,7 @@ export const appointmentEmailTemplates = {
    * Student Appointment Confirmation
    */
   studentAppointment: {
-    from: 'noreply@elevateforhumanity.org',
+    from: 'noreply@elevateforhumanity.institute',
     subject: 'Your appointment with Elevate for Humanity',
     getHtml: (data: {
       firstName: string;
@@ -91,7 +91,7 @@ Phone: (317) 314-3757
    * Appointment Reminder (24 hours before)
    */
   appointmentReminder24h: {
-    from: 'noreply@elevateforhumanity.org',
+    from: 'noreply@elevateforhumanity.institute',
     subject: 'Reminder: Your appointment tomorrow',
     getHtml: (data: {
       firstName: string;
@@ -160,7 +160,7 @@ Phone: (317) 314-3757
    * Appointment Reminder (1 hour before)
    */
   appointmentReminder1h: {
-    from: 'noreply@elevateforhumanity.org',
+    from: 'noreply@elevateforhumanity.institute',
     subject: 'Starting soon: Your appointment in 1 hour',
     getHtml: (data: {
       firstName: string;

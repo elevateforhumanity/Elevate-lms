@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Grant Application Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/grant-application',
+    canonical: 'https://elevateforhumanity.institute/policies/grant-application',
   },
 };
 export default function GrantApplicationPage() {
@@ -14,7 +14,7 @@ export default function GrantApplicationPage() {
       <ol><li>Review grant opportunities</li><li>Assess eligibility</li><li>Prepare application materials</li><li>Submit by deadline</li></ol>
       <h2>Requirements</h2>
       <ul><li>Complete application</li><li>Supporting documentation</li><li>Budget justification</li><li>Compliance certifications</li></ul>
-      <p>Contact: grants@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: grants@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

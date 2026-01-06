@@ -2,7 +2,7 @@
 
 /**
  * Pure Node.js CSS Extractor - Zero Dependencies
- * Extracts CSS and styling from elevateforhumanity.org
+ * Extracts CSS and styling from elevateforhumanity.institute
  */
 
 import fs from 'fs/promises';
@@ -13,7 +13,7 @@ import https from 'https';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const TARGET_URL = 'https://elevateforhumanity.org';
+const TARGET_URL = 'https://elevateforhumanity.institute';
 const OUTPUT_DIR = path.join(process.cwd(), 'extracted-styles');
 
 function httpsGet(url) {
@@ -331,7 +331,7 @@ function generateTailwindConfig(tokens) {
 
   return `/** @type {import('tailwindcss').Config} */
 /**
- * Tailwind Config - Extracted from elevateforhumanity.org
+ * Tailwind Config - Extracted from elevateforhumanity.institute
  * Generated: ${new Date().toISOString()}
  */
 module.exports = {

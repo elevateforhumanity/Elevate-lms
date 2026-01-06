@@ -15,7 +15,7 @@ type RequestBody = {
 const SENDGRID_API_KEY = Deno.env.get("SENDGRID_API_KEY") ?? "";
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") ?? "";
 const EMAIL_FROM =
-  Deno.env.get("EMAIL_FROM") ?? "no-reply@elevateforhumanity.org";
+  Deno.env.get("EMAIL_FROM") ?? "no-reply@elevateforhumanity.institute";
 const APP_NAME = "Elevate For Humanity";
 
 function buildSubject(data: RequestBody): string {

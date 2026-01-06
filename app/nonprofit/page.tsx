@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Welcome to Selfish Inc. Your Partner in Mental Wellness and Holistic Healing',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/nonprofit',
+    canonical: 'https://elevateforhumanity.institute/nonprofit',
   },
 };
 

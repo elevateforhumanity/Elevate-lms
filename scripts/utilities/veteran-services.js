@@ -102,7 +102,7 @@ class VeteranServicesSystem {
           ],
           contact: {
             phone: '317-760-7908 ext. 101',
-            email: 'veterans@elevateforhumanity.org',
+            email: 'veterans@elevateforhumanity.institute',
             hours: 'Monday-Friday 8AM-6PM EST',
           },
         },
@@ -375,12 +375,12 @@ class VeteranServicesSystem {
         contact: {
           veteranServices: {
             phone: '317-760-7908 ext. 101',
-            email: 'veterans@elevateforhumanity.org',
+            email: 'veterans@elevateforhumanity.institute',
             hours: 'Monday-Friday 8AM-6PM EST',
           },
           accessibility: {
             phone: '317-760-7908 ext. 102',
-            email: 'accessibility@elevateforhumanity.org',
+            email: 'accessibility@elevateforhumanity.institute',
             hours: 'Monday-Friday 8AM-5PM EST',
           },
         },

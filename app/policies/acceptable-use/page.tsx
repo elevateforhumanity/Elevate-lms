@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Acceptable Use Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/acceptable-use',
+    canonical: 'https://elevateforhumanity.institute/policies/acceptable-use',
   },
 };
 export default function AcceptableUsePage() {
@@ -14,7 +14,7 @@ export default function AcceptableUsePage() {
       <ul><li>Educational purposes</li><li>Professional development</li><li>Authorized activities</li></ul>
       <h2>Prohibited Use</h2>
       <ul><li>Illegal activities</li><li>Unauthorized access</li><li>System disruption</li><li>Malicious software</li></ul>
-      <p>Contact: security@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: security@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

@@ -2,7 +2,7 @@
 
 // Usage:
 //   node scripts/verify-redirects.mjs --base=http://localhost:8080
-//   node scripts/verify-redirects.mjs --base=https://elevateforhumanity.org
+//   node scripts/verify-redirects.mjs --base=https://elevateforhumanity.institute
 
 import fs from 'fs';
 import http from 'http';

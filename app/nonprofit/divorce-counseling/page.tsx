@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Divorce Counseling | Selfish Inc.',
   description: 'Professional counseling support for individuals navigating divorce',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/nonprofit/divorce-counseling',
+    canonical: 'https://elevateforhumanity.institute/nonprofit/divorce-counseling',
   },
 };
 

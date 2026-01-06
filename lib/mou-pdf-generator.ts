@@ -344,7 +344,7 @@ export async function generateMOUPDF(data: MOUPDFData): Promise<Uint8Array> {
   // Footer
   y -= 30;
   y = addWrappedText(
-    `This MOU was generated on ${data.date} via the Elevate for Humanity Training Provider Portal. For questions or to request modifications, contact: admin@elevateforhumanity.org`,
+    `This MOU was generated on ${data.date} via the Elevate for Humanity Training Provider Portal. For questions or to request modifications, contact: admin@elevateforhumanity.institute`,
     8,
     timesRomanFont,
     y,

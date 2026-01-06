@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Privacy Notice | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/privacy-notice',
+    canonical: 'https://elevateforhumanity.institute/policies/privacy-notice',
   },
 };
 export default function PrivacyNoticePage() {
@@ -16,7 +16,7 @@ export default function PrivacyNoticePage() {
       <p>Data used for: enrollment, instruction, compliance, and communication.</p>
       <h2>Sharing</h2>
       <p>Shared only as required by law or with your consent.</p>
-      <p>Contact: privacy@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: privacy@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

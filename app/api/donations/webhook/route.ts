@@ -64,7 +64,7 @@ export async function POST(request: Request) {
             // Send receipt email
             await supabase.from('email_queue').insert({
               to_email: donation.donor_email,
-              from_email: 'noreply@elevateforhumanity.org',
+              from_email: 'noreply@elevateforhumanity.institute',
               subject: 'Thank you for your donation - Receipt',
               template_name: 'donation_receipt',
               template_data: {

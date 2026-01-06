@@ -279,7 +279,7 @@ Please acknowledge this email and confirm you're working on it.
 ⚠️ IMPORTANT: This report affects our master credentials. Late submission could impact all program holders in our network.
 
 Need help? Contact us immediately:
-Email: support@elevateforhumanity.org
+Email: support@elevateforhumanity.institute
 Phone: (317) 314-3757
 
 Elevate for Humanity Compliance Team
@@ -416,7 +416,7 @@ This is your FINAL opportunity to submit before formal enforcement.
 
 Emergency Contact:
 Phone: (317) 314-3757
-Email: compliance@elevateforhumanity.org
+Email: compliance@elevateforhumanity.institute
 
 Elevate for Humanity Compliance Team
     `,
@@ -574,7 +574,7 @@ This is your final opportunity before formal probation.
 
 Emergency Contact:
 Phone: (317) 314-3757
-Email: compliance@elevateforhumanity.org
+Email: compliance@elevateforhumanity.institute
 
 Elevate for Humanity Compliance Team
     `,

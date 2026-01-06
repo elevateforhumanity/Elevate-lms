@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Scrape Main Site Content
- * Pulls pages from www.elevateforhumanity.org and creates dynamic pages
+ * Pulls pages from www.elevateforhumanity.institute and creates dynamic pages
  */
 
 import https from 'https';
@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const BASE_URL = 'https://elevateforhumanity.org';
+const BASE_URL = 'https://elevateforhumanity.institute';
 const OUTPUT_DIR = path.join(__dirname, '../src/data/scraped-pages');
 
 // Pages to scrape

@@ -13,7 +13,7 @@ export async function sendEmail(options: EmailOptions) {
   try {
     const { data, error } = await resend.emails.send({
       from:
-        options.from || 'Elevate for Humanity <noreply@elevateforhumanity.org>',
+        options.from || 'Elevate for Humanity <noreply@elevateforhumanity.institute>',
       to: options.to,
       subject: options.subject,
       html: options.html,
@@ -91,7 +91,7 @@ export async function sendWelcomeEmail(
           </div>
 
           <div style="text-align: center; margin: 30px 0;">
-            <a href="https://elevateforhumanity.org/dashboard"
+            <a href="https://elevateforhumanity.institute/dashboard"
                style="display: inline-block; background: #f97316; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
               Go to Dashboard
             </a>
@@ -100,7 +100,7 @@ export async function sendWelcomeEmail(
           <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;">
 
           <p style="font-size: 14px; color: #6b7280;">
-            Need help? Contact us at <a href="mailto:info@elevateforhumanity.org" style="color: #f97316;">info@elevateforhumanity.org</a> or call 317-314-3757.
+            Need help? Contact us at <a href="mailto:info@elevateforhumanity.institute" style="color: #f97316;">info@elevateforhumanity.institute</a> or call 317-314-3757.
           </p>
 
           <p style="font-size: 12px; color: #9ca3af; margin-top: 20px;">
@@ -163,7 +163,7 @@ export async function sendStatusUpdateEmail(
           </div>
 
           <div style="text-align: center; margin: 30px 0;">
-            <a href="https://elevateforhumanity.org/dashboard"
+            <a href="https://elevateforhumanity.institute/dashboard"
                style="display: inline-block; background: #f97316; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
               View Dashboard
             </a>
@@ -172,7 +172,7 @@ export async function sendStatusUpdateEmail(
           <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;">
 
           <p style="font-size: 14px; color: #6b7280;">
-            Questions? Contact us at <a href="mailto:info@elevateforhumanity.org" style="color: #f97316;">info@elevateforhumanity.org</a>
+            Questions? Contact us at <a href="mailto:info@elevateforhumanity.institute" style="color: #f97316;">info@elevateforhumanity.institute</a>
           </p>
         </div>
       </body>

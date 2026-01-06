@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Access interactive courses, video lessons, quizzes, and collaboration tools. Learn at your own pace with our modern LMS platform.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/lms',
+    canonical: 'https://elevateforhumanity.institute/lms',
   },
 };
 

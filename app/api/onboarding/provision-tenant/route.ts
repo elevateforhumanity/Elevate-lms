@@ -102,11 +102,11 @@ export async function POST(request: NextRequest) {
     });
 
     // 6. Send welcome email
-    const loginUrl = `https://${slug}.elevateforhumanity.org/login`;
-    const adminUrl = `https://${slug}.elevateforhumanity.org/admin`;
+    const loginUrl = `https://${slug}.elevateforhumanity.institute/login`;
+    const adminUrl = `https://${slug}.elevateforhumanity.institute/admin`;
 
     await resend.emails.send({
-      from: 'Elevate for Humanity <onboarding@elevateforhumanity.org>',
+      from: 'Elevate for Humanity <onboarding@elevateforhumanity.institute>',
       to: contactEmail,
       subject: '🎉 Your Platform is Ready!',
       html: generateWelcomeEmail({
@@ -125,7 +125,7 @@ export async function POST(request: NextRequest) {
     setTimeout(
       async () => {
         await resend.emails.send({
-          from: 'Elevate for Humanity <onboarding@elevateforhumanity.org>',
+          from: 'Elevate for Humanity <onboarding@elevateforhumanity.institute>',
           to: contactEmail,
           subject: '📚 Quick Start Guide - Set Up Your Platform',
           html: generateSetupGuideEmail({
@@ -299,8 +299,8 @@ function generateWelcomeEmail(data: unknown): string {
 
       <h3>📞 Need Help?</h3>
       <p>
-        • <strong>Documentation:</strong> <a href="https://elevateforhumanity.org/docs">docs.elevateforhumanity.org</a><br>
-        • <strong>Support:</strong> support@elevateforhumanity.org<br>
+        • <strong>Documentation:</strong> <a href="https://elevateforhumanity.institute/docs">docs.elevateforhumanity.institute</a><br>
+        • <strong>Support:</strong> support@elevateforhumanity.institute<br>
         • <strong>Live Chat:</strong> Available in your admin dashboard
       </p>
 
@@ -314,7 +314,7 @@ function generateWelcomeEmail(data: unknown): string {
 
     <div class="footer">
       <p>Elevate for Humanity | Workforce Training Platform</p>
-      <p>Questions? Reply to this email or visit our <a href="https://elevateforhumanity.org/support">support center</a></p>
+      <p>Questions? Reply to this email or visit our <a href="https://elevateforhumanity.institute/support">support center</a></p>
     </div>
   </div>
 </body>
@@ -395,18 +395,18 @@ function generateSetupGuideEmail(data: unknown): string {
       <h3>🎥 Video Tutorials</h3>
       <p>Watch our quick video guides:</p>
       <ul>
-        <li><a href="https://elevateforhumanity.org/tutorials/branding">Platform Setup (5 min)</a></li>
-        <li><a href="https://elevateforhumanity.org/tutorials/programs">Creating Programs (8 min)</a></li>
-        <li><a href="https://elevateforhumanity.org/tutorials/enrollment">Student Enrollment (6 min)</a></li>
+        <li><a href="https://elevateforhumanity.institute/tutorials/branding">Platform Setup (5 min)</a></li>
+        <li><a href="https://elevateforhumanity.institute/tutorials/programs">Creating Programs (8 min)</a></li>
+        <li><a href="https://elevateforhumanity.institute/tutorials/enrollment">Student Enrollment (6 min)</a></li>
       </ul>
 
       <h3>📞 Need Help?</h3>
       <p>We're here for you:</p>
       <ul>
         <li><strong>Live Chat:</strong> Click the chat icon in your dashboard</li>
-        <li><strong>Email:</strong> support@elevateforhumanity.org</li>
+        <li><strong>Email:</strong> support@elevateforhumanity.institute</li>
         <li><strong>Phone:</strong> (555) 123-4567</li>
-        <li><strong>Schedule Call:</strong> <a href="https://elevateforhumanity.org/book">Book a setup call</a></li>
+        <li><strong>Schedule Call:</strong> <a href="https://elevateforhumanity.institute/book">Book a setup call</a></li>
       </ul>
 
       <p>You've got this! 💪</p>

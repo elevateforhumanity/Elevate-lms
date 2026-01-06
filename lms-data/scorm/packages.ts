@@ -15,7 +15,7 @@ export const scormPackages: ScormPackage[] = [
       ? `${process.env.NEXT_PUBLIC_SCORM_CDN_URL}/jri-core/index.html`
       : "/scorm/jri-core/index.html",
     notes:
-      "Served from Cloudflare R2 via worker (scorm.elevateforhumanity.org) or fallback to local public/scorm/",
+      "Served from Cloudflare R2 via worker (scorm.elevateforhumanity.institute) or fallback to local public/scorm/",
   },
 ];
 

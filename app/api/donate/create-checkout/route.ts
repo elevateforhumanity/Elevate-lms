@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
               name: 'Donation to Elevate for Humanity',
               description:
                 'Support free career training for underserved communities',
-              images: ['https://elevateforhumanity.org/images/logo.png'],
+              images: ['https://elevateforhumanity.institute/images/logo.png'],
             },
             unit_amount: Math.round(amount * 100), // Convert to cents
           },

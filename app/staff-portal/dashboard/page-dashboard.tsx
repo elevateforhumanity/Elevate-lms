@@ -6,7 +6,7 @@ import { BarChart, BookOpen, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/staff-portal',
+    canonical: 'https://elevateforhumanity.institute/staff-portal',
   },
   title: 'Staff Portal | Elevate For Humanity',
   description: 'Staff portal for managing students, courses, and operations.',

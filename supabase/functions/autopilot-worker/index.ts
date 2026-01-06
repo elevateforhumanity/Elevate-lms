@@ -203,7 +203,7 @@ async function runTask(task: any) {
 
       // ==================== ACCESSIBILITY & MEDIA ====================
       case 'axe_a11y_scan': {
-        const url = task.payload?.url || 'https://elevateforhumanity.org';
+        const url = task.payload?.url || 'https://elevateforhumanity.institute';
         await log(
           'worker',
           'site',

@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Workforce Ready Grant Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/wrg',
+    canonical: 'https://elevateforhumanity.institute/policies/wrg',
   },
 };
 
@@ -24,7 +24,7 @@ export default function WRGPage() {
       <h2>Award Amount</h2>
       <p>Up to $7,500 per year for tuition and fees.</p>
       <h2>Contact</h2>
-      <p>Email: financialaid@elevateforhumanity.org | Phone: (317) 314-3757</p>
+      <p>Email: financialaid@elevateforhumanity.institute | Phone: (317) 314-3757</p>
     </article>
   );
 }

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Credential Verification Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/verification',
+    canonical: 'https://elevateforhumanity.institute/policies/verification',
   },
 };
 export default function VerificationPage() {
@@ -14,7 +14,7 @@ export default function VerificationPage() {
       <p>Employers and institutions may verify credentials by contacting our registrar with certificate number.</p>
       <h2>Information Provided</h2>
       <ul><li>Student name</li><li>Program completed</li><li>Completion date</li><li>Certificate number</li></ul>
-      <p>Contact: registrar@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: registrar@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

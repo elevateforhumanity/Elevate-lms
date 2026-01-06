@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Fix Vercel Deployment - Force deployment to www.elevateforhumanity.org
+ * Fix Vercel Deployment - Force deployment to www.elevateforhumanity.institute
  * Uses Vercel API to configure production domain
  */
 
@@ -63,8 +63,8 @@ async function main() {
     });
   }
 
-  // 2. Add www.elevateforhumanity.org if not exists
-  const wwwDomain = 'www.elevateforhumanity.org';
+  // 2. Add www.elevateforhumanity.institute if not exists
+  const wwwDomain = 'www.elevateforhumanity.institute';
   const hasWWW = domainsRes.data.domains?.some(d => d.name === wwwDomain);
 
   if (!hasWWW) {
@@ -78,7 +78,7 @@ async function main() {
   }
 
   // 3. Add root domain with redirect
-  const rootDomain = 'elevateforhumanity.org';
+  const rootDomain = 'elevateforhumanity.institute';
   const hasRoot = domainsRes.data.domains?.some(d => d.name === rootDomain);
 
   if (!hasRoot) {

@@ -25,7 +25,7 @@ const nextConfig = {
             value: '.*\\.vercel\\.app',
           },
         ],
-        destination: 'https://elevateforhumanity.org/:path*',
+        destination: 'https://elevateforhumanity.institute/:path*',
         permanent: true,
       },
       // Redirect www to non-www (canonical)
@@ -37,7 +37,7 @@ const nextConfig = {
             value: 'www\\.elevateforhumanity\\.org',
           },
         ],
-        destination: 'https://elevateforhumanity.org/:path*',
+        destination: 'https://elevateforhumanity.institute/:path*',
         permanent: true,
       },
     ];
@@ -140,8 +140,8 @@ const nextConfig = {
       // WWW to non-WWW redirect (canonical domain)
       {
         source: '/:path*',
-        has: [{ type: 'host', value: 'www.elevateforhumanity.org' }],
-        destination: 'https://elevateforhumanity.org/:path*',
+        has: [{ type: 'host', value: 'www.elevateforhumanity.institute' }],
+        destination: 'https://elevateforhumanity.institute/:path*',
         permanent: true,
       },
       

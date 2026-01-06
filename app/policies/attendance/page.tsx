@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Attendance Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/attendance',
+    canonical: 'https://elevateforhumanity.institute/policies/attendance',
   },
 };
 export default function AttendancePage() {
@@ -16,7 +16,7 @@ export default function AttendancePage() {
       <ul><li>Notify instructor before class</li><li>Provide documentation for extended absences</li><li>Make up missed work within 1 week</li></ul>
       <h2>Consequences</h2>
       <p>Excessive absences may result in dismissal and loss of funding.</p>
-      <p>Contact: attendance@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: attendance@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

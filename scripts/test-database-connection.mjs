@@ -7,7 +7,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-const PRODUCTION_URL = 'https://elevateforhumanity.org';
+const PRODUCTION_URL = 'https://elevateforhumanity.institute';
 
 
 // Test 1: Environment Variables

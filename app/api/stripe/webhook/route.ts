@@ -278,7 +278,7 @@ export async function POST(req: Request) {
             .single();
 
           await fetch(
-            `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.org'}/api/email/send`,
+            `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/api/email/send`,
             {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -291,7 +291,7 @@ export async function POST(req: Request) {
                 <p>Congratulations! Your enrollment in <strong>${programDetails?.name || 'your program'}</strong> is now active.</p>
                 <h3>Next Steps:</h3>
                 <ol>
-                  <li>Log in to your student portal: <a href="https://elevateforhumanity.org/login">Login Here</a></li>
+                  <li>Log in to your student portal: <a href="https://elevateforhumanity.institute/login">Login Here</a></li>
                   <li>Complete your student profile</li>
                   <li>Access your course materials</li>
                   <li>Meet your instructor</li>

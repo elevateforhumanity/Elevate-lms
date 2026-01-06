@@ -5,7 +5,7 @@ export const maxDuration = 60;
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const toolUrl = process.env.LTI_TOOL_URL || 'https://elevateforhumanity.org';
+  const toolUrl = process.env.LTI_TOOL_URL || 'https://elevateforhumanity.institute';
 
   const config = {
     title: 'Elevate for Humanity LMS',

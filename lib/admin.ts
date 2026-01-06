@@ -15,7 +15,7 @@ export async function requireAdmin() {
   const isAdmin =
     user.email?.includes('admin') ||
     user.email?.includes('elevate') ||
-    user.email?.endsWith('@elevateforhumanity.org');
+    user.email?.endsWith('@elevateforhumanity.institute');
 
   if (!isAdmin) {
     throw new Error('Not authorized - admin access required');
@@ -36,7 +36,7 @@ export async function isAdmin(): Promise<boolean> {
     return (
       user.email?.includes('admin') ||
       user.email?.includes('elevate') ||
-      user.email?.endsWith('@elevateforhumanity.org') ||
+      user.email?.endsWith('@elevateforhumanity.institute') ||
       false
     );
   } catch {

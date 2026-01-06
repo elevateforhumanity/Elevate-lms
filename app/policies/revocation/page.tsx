@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Credential Revocation Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/revocation',
+    canonical: 'https://elevateforhumanity.institute/policies/revocation',
   },
 };
 export default function RevocationPage() {
@@ -14,7 +14,7 @@ export default function RevocationPage() {
       <ul><li>Fraud or misrepresentation</li><li>Academic dishonesty discovered post-graduation</li><li>Violation of professional standards</li></ul>
       <h2>Process</h2>
       <ol><li>Investigation of allegations</li><li>Notice to credential holder</li><li>Opportunity to respond</li><li>Final decision</li></ol>
-      <p>Contact: registrar@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: registrar@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

@@ -60,7 +60,7 @@ class SendGridProvider implements EmailProvider {
             dynamic_template_data: request.templateData || {},
           })),
           from: {
-            email: request.from || 'noreply@elevateforhumanity.org',
+            email: request.from || 'noreply@elevateforhumanity.institute',
             name: 'Elevate for Humanity',
           },
           reply_to: request.replyTo ? { email: request.replyTo } : undefined,
@@ -113,7 +113,7 @@ class ResendProvider implements EmailProvider {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: request.from || 'noreply@elevateforhumanity.org',
+          from: request.from || 'noreply@elevateforhumanity.institute',
           to: recipients,
           subject: request.subject,
           html: request.html,

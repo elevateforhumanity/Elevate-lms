@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     'hiring tax professionals Indiana',
   ],
   alternates: {
-    canonical: 'https://elevateforhumanity.org/supersonic-fast-cash/careers',
+    canonical: 'https://elevateforhumanity.institute/supersonic-fast-cash/careers',
   },
 };
 
@@ -268,7 +268,7 @@ export default function TaxCareersPage() {
           <div className="mt-8 text-center">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:careers@elevateforhumanity.org?subject=Employee Referral"
+                href="mailto:careers@elevateforhumanity.institute?subject=Employee Referral"
                 className="inline-block px-8 py-4 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition"
               >
                 Submit a Referral
@@ -747,10 +747,10 @@ export default function TaxCareersPage() {
               </a>{' '}
               or email{' '}
               <a
-                href="mailto:careers@elevateforhumanity.org"
+                href="mailto:careers@elevateforhumanity.institute"
                 className="text-green-600 font-bold underline"
               >
-                careers@elevateforhumanity.org
+                careers@elevateforhumanity.institute
               </a>
             </p>
           </div>

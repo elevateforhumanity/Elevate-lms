@@ -6,7 +6,7 @@ import { Users, BookOpen, AlertCircle, CheckCircle, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/staff-portal/dashboard',
+    canonical: 'https://elevateforhumanity.institute/staff-portal/dashboard',
   },
   title: 'Staff Dashboard | Elevate For Humanity',
   description:

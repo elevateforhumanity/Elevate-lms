@@ -9,8 +9,8 @@
   const EFH = window.EFH || {};
 
   EFH.Courses = {
-    apiBase: 'https://api.elevateforhumanity.org',
-    lmsBase: 'https://lms.elevateforhumanity.org',
+    apiBase: 'https://api.elevateforhumanity.institute',
+    lmsBase: 'https://lms.elevateforhumanity.institute',
 
     init: function (options) {
       const config = {

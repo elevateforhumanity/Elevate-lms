@@ -31,7 +31,7 @@ export async function sendVideoStatement(input: VideoStatementInput) {
         display: { 'en-US': input.verb },
       },
       object: {
-        id: `https://elevateforhumanity.org/video/${input.videoId}`,
+        id: `https://elevateforhumanity.institute/video/${input.videoId}`,
         objectType: 'Activity' as const,
         definition: {
           name: { 'en-US': input.title },
@@ -43,14 +43,14 @@ export async function sendVideoStatement(input: VideoStatementInput) {
         contextActivities: {
           parent: [
             {
-              id: `https://elevateforhumanity.org/course/${input.courseId}`,
+              id: `https://elevateforhumanity.institute/course/${input.courseId}`,
               objectType: 'Activity' as const,
             },
           ],
           ...(input.lessonId && {
             grouping: [
               {
-                id: `https://elevateforhumanity.org/lesson/${input.lessonId}`,
+                id: `https://elevateforhumanity.institute/lesson/${input.lessonId}`,
                 objectType: 'Activity' as const,
               },
             ],

@@ -72,9 +72,9 @@ class StripePartnerProductsManager {
         level: program.level,
       },
       images: [
-        `https://elevateforhumanity.org/assets/certifications/${program.id}.jpg`,
+        `https://elevateforhumanity.institute/assets/certifications/${program.id}.jpg`,
       ],
-      url: `https://elevateforhumanity.org/programs/${program.id}`,
+      url: `https://elevateforhumanity.institute/programs/${program.id}`,
     });
 
     // Create the price
@@ -152,8 +152,8 @@ class StripePartnerProductsManager {
   async createAccountLink(accountId) {
     const accountLink = await this.stripe.accountLinks.create({
       account: accountId,
-      refresh_url: 'https://elevateforhumanity.org/partner-onboarding/refresh',
-      return_url: 'https://elevateforhumanity.org/partner-onboarding/complete',
+      refresh_url: 'https://elevateforhumanity.institute/partner-onboarding/refresh',
+      return_url: 'https://elevateforhumanity.institute/partner-onboarding/complete',
       type: 'account_onboarding',
     });
 
@@ -174,8 +174,8 @@ class StripePartnerProductsManager {
       ],
       mode: 'payment',
       success_url:
-        'https://elevateforhumanity.org/enrollment/success?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'https://elevateforhumanity.org/programs',
+        'https://elevateforhumanity.institute/enrollment/success?session_id={CHECKOUT_SESSION_ID}',
+      cancel_url: 'https://elevateforhumanity.institute/programs',
       customer_email: customerEmail,
       metadata: {
         program_id: programMetadata.program_id,

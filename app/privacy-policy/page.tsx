@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/privacy-policy',
+    canonical: 'https://elevateforhumanity.institute/privacy-policy',
   },
   title: 'Privacy Policy | Elevate For Humanity',
   description:
@@ -56,7 +56,7 @@ export default async function PrivacyPolicyPage() {
                   Elevate for Humanity ("we," "us," or "our") is committed to
                   protecting your privacy. This Privacy Policy explains how we
                   collect, use, disclose, and safeguard your information when
-                  you visit our website elevateforhumanity.org and use our
+                  you visit our website elevateforhumanity.institute and use our
                   services.
                 </p>
 

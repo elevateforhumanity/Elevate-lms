@@ -58,6 +58,6 @@ export function generateMetaDescription(pageType: keyof typeof SEO_KEYWORDS, cus
 
 // Generate canonical URL
 export function generateCanonicalUrl(path: string): string {
-  const baseUrl = 'https://elevateforhumanity.org';
+  const baseUrl = 'https://elevateforhumanity.institute';
   return `${baseUrl}${path}`;
 }

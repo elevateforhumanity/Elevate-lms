@@ -1,7 +1,7 @@
 import fs from "fs";
 import https from "https";
 
-const domain = "https://elevateforhumanity.org";
+const domain = "https://elevateforhumanity.institute";
 
 const routes = JSON.parse(fs.readFileSync("routes.json", "utf8"));
 

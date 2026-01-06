@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Community Guidelines | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/community-guidelines',
+    canonical: 'https://elevateforhumanity.institute/policies/community-guidelines',
   },
 };
 export default function CommunityGuidelinesPage() {
@@ -16,7 +16,7 @@ export default function CommunityGuidelinesPage() {
       <ul><li>Harassment or hate speech</li><li>Spam or advertising</li><li>Personal attacks</li><li>Misinformation</li></ul>
       <h2>Moderation</h2>
       <p>Violations may result in content removal, warnings, or account suspension.</p>
-      <p>Contact: community@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: community@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

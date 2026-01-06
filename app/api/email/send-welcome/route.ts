@@ -37,12 +37,12 @@ export async function POST(request: NextRequest) {
 
       <div class="info-box">
         <h3>📚 Your LMS Access:</h3>
-        <p><strong>Login URL:</strong> <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.org'}/login">${process.env.NEXT_PUBLIC_SITE_URL?.replace('https://', '').replace('http://', '') || 'www.elevateforhumanity.org'}/login</a></p>
+        <p><strong>Login URL:</strong> <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/login">${process.env.NEXT_PUBLIC_SITE_URL?.replace('https://', '').replace('http://', '') || 'www.elevateforhumanity.institute'}/login</a></p>
         <p><strong>Email:</strong> ${to}</p>
         <p><strong>Password:</strong> The password you created during registration</p>
       </div>
 
-      <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.org'}/login" class="button">Access Your LMS Dashboard →</a>
+      <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/login" class="button">Access Your LMS Dashboard →</a>
 
       <h3>What's Next?</h3>
       <ul>
@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Elevate for Humanity <onboarding@elevateforhumanity.org>',
+          from: 'Elevate for Humanity <onboarding@elevateforhumanity.institute>',
           to: [to],
           subject: '🎉 Welcome! Your LMS Access is Ready',
           html: emailHTML,

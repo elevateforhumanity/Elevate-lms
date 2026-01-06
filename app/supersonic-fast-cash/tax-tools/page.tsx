@@ -12,7 +12,7 @@ export const metadata = {
   title: 'Tax Tools & Calculators | Supersonic Fast Cash',
   description: 'IRS forms, tax due dates, and financial calculators',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/supersonic-fast-cash/tax-tools',
+    canonical: 'https://elevateforhumanity.institute/supersonic-fast-cash/tax-tools',
   },
 };
 

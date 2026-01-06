@@ -242,7 +242,7 @@ async function processPendingEmails(supabase: unknown, workflow: unknown, now: D
 
       // Send email
       await resend.emails.send({
-        from: 'Elevate for Humanity <noreply@elevateforhumanity.org>',
+        from: 'Elevate for Humanity <noreply@elevateforhumanity.institute>',
         to: enrollment.user_email,
         subject,
         html,

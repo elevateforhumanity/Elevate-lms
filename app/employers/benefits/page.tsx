@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Employer Benefits | Elevate for Humanity',
   description: 'Discover the benefits of partnering with Elevate for Humanity.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/employers/benefits',
+    canonical: 'https://elevateforhumanity.institute/employers/benefits',
   },
 };
 

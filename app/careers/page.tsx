@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     'Join our mission to provide free career training and workforce development. Explore career opportunities at Elevate For Humanity.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/careers',
+    canonical: 'https://elevateforhumanity.institute/careers',
   },
 };
 

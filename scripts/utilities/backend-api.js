@@ -31,7 +31,7 @@ app.use(
   cors({
     origin: [
       'http://localhost:3000',
-      'https://elevateforhumanity.org',
+      'https://elevateforhumanity.institute',
       'https://elevateforhumanity.pages.dev',
       'https://elevateforhumanity.netlify.app',
     ],

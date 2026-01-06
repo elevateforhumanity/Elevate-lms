@@ -7,7 +7,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://elevateforhumanity.org/admin/data-processor',
+    canonical: 'https://elevateforhumanity.institute/admin/data-processor',
   },
   title: 'Data Processor | Elevate For Humanity',
   description:

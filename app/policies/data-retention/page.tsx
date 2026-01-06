@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Data Retention Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/data-retention',
+    canonical: 'https://elevateforhumanity.institute/policies/data-retention',
   },
 };
 export default function DataRetentionPage() {
@@ -14,7 +14,7 @@ export default function DataRetentionPage() {
       <ul><li>Student records: 7 years after last enrollment</li><li>Transcripts: Permanent</li><li>Financial records: 7 years</li><li>Application data: 3 years</li></ul>
       <h2>Deletion</h2>
       <p>Data securely deleted after retention period unless legally required to maintain.</p>
-      <p>Contact: privacy@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: privacy@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

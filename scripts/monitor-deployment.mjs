@@ -105,14 +105,14 @@ async function monitor() {
 
   // Check production domain
   const prodOk = await checkSite(
-    'https://elevateforhumanity.org/',
-    'Production (www.elevateforhumanity.org)'
+    'https://elevateforhumanity.institute/',
+    'Production (www.elevateforhumanity.institute)'
   );
 
   // Check root domain
   const rootOk = await checkSite(
-    'https://elevateforhumanity.org/',
-    'Root Domain (elevateforhumanity.org)'
+    'https://elevateforhumanity.institute/',
+    'Root Domain (elevateforhumanity.institute)'
   );
 
   // Check GitHub Actions

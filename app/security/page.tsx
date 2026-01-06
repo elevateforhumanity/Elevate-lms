@@ -11,7 +11,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/security',
+    canonical: 'https://elevateforhumanity.institute/security',
   },
   title: 'Security & Data Protection | Elevate For Humanity',
   description:
@@ -182,10 +182,10 @@ export default function SecurityPage() {
               <div className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-brand-orange-600" />
                 <a
-                  href="mailto:security@elevateforhumanity.org"
+                  href="mailto:security@elevateforhumanity.institute"
                   className="text-brand-orange-600 hover:underline font-semibold"
                 >
-                  security@elevateforhumanity.org
+                  security@elevateforhumanity.institute
                 </a>
               </div>
             </div>

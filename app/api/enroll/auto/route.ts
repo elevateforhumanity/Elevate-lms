@@ -206,7 +206,7 @@ export async function POST(req: Request) {
 
       const session = await stripe.checkout.sessions.create({
         mode: 'payment',
-        customer_email: 'accounting@elevateforhumanity.org', // Elevate pays, not student
+        customer_email: 'accounting@elevateforhumanity.institute', // Elevate pays, not student
         line_items: [
           {
             price_data: {

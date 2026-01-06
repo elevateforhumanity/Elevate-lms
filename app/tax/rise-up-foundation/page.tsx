@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     'IRS VITA program',
   ],
   alternates: {
-    canonical: 'https://elevateforhumanity.org/tax/rise-up-foundation',
+    canonical: 'https://elevateforhumanity.institute/tax/rise-up-foundation',
   },
   openGraph: {
     title: 'Rise Up Foundation - Free VITA Tax Help',
     description:
       'Free tax preparation for qualifying individuals. IRS-certified volunteers.',
-    url: 'https://elevateforhumanity.org/tax/rise-up-foundation',
+    url: 'https://elevateforhumanity.institute/tax/rise-up-foundation',
     type: 'website',
   },
 };

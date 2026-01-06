@@ -7,7 +7,7 @@ import { FileSignature, CheckCircle, Clock, XCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.org/admin/signatures',
+    canonical: 'https://elevateforhumanity.institute/admin/signatures',
   },
   title: 'Signatures Management | Elevate For Humanity',
   description:

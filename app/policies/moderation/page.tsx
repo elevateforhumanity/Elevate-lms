@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Moderation Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/moderation',
+    canonical: 'https://elevateforhumanity.institute/policies/moderation',
   },
 };
 export default function ModerationPage() {
@@ -14,7 +14,7 @@ export default function ModerationPage() {
       <ul><li>Content reviewed by moderators</li><li>Violations removed or flagged</li><li>Users notified of actions</li><li>Appeals process available</li></ul>
       <h2>Enforcement Actions</h2>
       <ul><li>Content removal</li><li>Warning</li><li>Temporary suspension</li><li>Permanent ban</li></ul>
-      <p>Contact: moderation@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: moderation@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

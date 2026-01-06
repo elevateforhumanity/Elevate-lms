@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Application Submitted | Elevate for Humanity',
   description: 'Your application has been successfully submitted.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/apply/success',
+    canonical: 'https://elevateforhumanity.institute/apply/success',
   },
 };
 
@@ -134,12 +134,12 @@ export default function ApplicationSuccessPage({
                 <span className="font-semibold">317-314-3757</span>
               </a>
               <a
-                href="mailto:info@elevateforhumanity.org"
+                href="mailto:info@elevateforhumanity.institute"
                 className="inline-flex items-center justify-center text-slate-700 hover:text-emerald-600 transition-colors"
               >
                 <Mail className="w-5 h-5 mr-2" />
                 <span className="font-semibold">
-                  info@elevateforhumanity.org
+                  info@elevateforhumanity.institute
                 </span>
               </a>
             </div>

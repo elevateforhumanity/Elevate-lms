@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Editorial Guidelines | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/policies/editorial',
+    canonical: 'https://elevateforhumanity.institute/policies/editorial',
   },
 };
 export default function EditorialPage() {
@@ -12,7 +12,7 @@ export default function EditorialPage() {
       <p className="text-gray-600">Last Updated: December 22, 2024</p>
       <h2>Standards</h2>
       <ul><li>Accuracy and fact-checking</li><li>Clear and accessible writing</li><li>Proper attribution</li><li>Editorial review before publication</li></ul>
-      <p>Contact: editorial@elevateforhumanity.org | (317) 314-3757</p>
+      <p>Contact: editorial@elevateforhumanity.institute | (317) 314-3757</p>
     </article>
   );
 }

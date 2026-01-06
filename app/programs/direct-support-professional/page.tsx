@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical:
-      'https://elevateforhumanity.org/programs/direct-support-professional',
+      'https://elevateforhumanity.institute/programs/direct-support-professional',
   },
 };
 

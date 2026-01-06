@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'At-Risk Students | Program Holder Portal',
   description: 'Manage students who need additional support',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/program-holder/students/at-risk',
+    canonical: 'https://elevateforhumanity.institute/program-holder/students/at-risk',
   },
 };
 
