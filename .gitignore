@@ -110,3 +110,7 @@ core
 .env-branches/
 
 core
+
+# PNPM store
+.pnpm-store/
+core
