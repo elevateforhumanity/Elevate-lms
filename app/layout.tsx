@@ -82,10 +82,6 @@ export const metadata: Metadata = {
 
   authors: [{ name: 'Elevate for Humanity' }],
 
-  alternates: {
-    canonical: SITE_URL,
-  },
-
   openGraph: {
     type: 'website',
     url: SITE_URL,
