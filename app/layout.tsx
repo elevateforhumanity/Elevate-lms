@@ -171,12 +171,20 @@ export default async function RootLayout({
   const headersList = await headers();
   const host = headersList.get('host') || '';
   const canonicalHost = 'elevateforhumanity.institute';
-  const isCanonical = host === canonicalHost;
+  
+  // Check if this is the canonical domain OR if it's a Vercel production deployment
+  // This prevents blocking the site if headers are unexpected
+  const isCanonical = host === canonicalHost || 
+                      host.includes('elevateforhumanity.institute') ||
+                      process.env.VERCEL_ENV === 'production';
+  
+  // Only block preview/development domains
+  const shouldBlock = host.endsWith('.vercel.app') && process.env.VERCEL_ENV !== 'production';
 
   return (
     <html lang="en" className={`light ${inter.variable}`}>
       <head>
-        {!isCanonical && <meta name="robots" content="noindex,nofollow" />}
+        {shouldBlock && <meta name="robots" content="noindex,nofollow" />}
         {isCanonical && (
           <link rel="canonical" href="https://elevateforhumanity.institute" />
         )}
