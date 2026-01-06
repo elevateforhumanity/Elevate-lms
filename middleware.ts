@@ -7,12 +7,11 @@ export function middleware(req: NextRequest) {
   // Your canonical host
   const CANONICAL = "elevateforhumanity.institute";
 
-  // If request is coming from www, old domain, or any *.vercel.app, redirect to canonical
+  // If request is coming from www or any *.vercel.app, redirect to canonical
   const isWww = host === "www.elevateforhumanity.institute";
-  const isOldDomain = host === "elevateforhumanity.org" || host === "www.elevateforhumanity.org";
   const isVercel = host.endsWith(".vercel.app");
 
-  if ((isWww || isOldDomain || isVercel) && host !== CANONICAL) {
+  if ((isWww || isVercel) && host !== CANONICAL) {
     const redirectUrl = new URL(url.toString());
     redirectUrl.host = CANONICAL;
     redirectUrl.protocol = "https:";

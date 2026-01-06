@@ -1,6 +1,6 @@
 # Elevate for Humanity - Workforce Marketplace Platform
 
-**Production URL:** https://www.elevateforhumanity.org  
+**Production URL:** https://elevateforhumanity.institute  
 **Status:** ✅ Live and Operational  
 **Version:** 2.0.0
 
@@ -357,11 +357,11 @@ pnpm deploy:vercel
 
 ### Health Checks
 
-Production health endpoint: https://www.elevateforhumanity.org/api/health
+Production health endpoint: https://elevateforhumanity.institute/api/health
 
 ```bash
 # Check production health
-curl https://www.elevateforhumanity.org/api/health
+curl https://elevateforhumanity.institute/api/health
 ```
 
 ---
@@ -409,7 +409,7 @@ pnpm db:seed
 
 ### API Structure
 
-**Base URL:** `https://www.elevateforhumanity.org/api`
+**Base URL:** `https://elevateforhumanity.institute/api`
 
 **Total Endpoints:** 200+
 
@@ -487,7 +487,7 @@ pnpm test:coverage
 
 ```bash
 # Check system health
-curl https://www.elevateforhumanity.org/api/health
+curl https://elevateforhumanity.institute/api/health
 
 # Response
 {
@@ -534,8 +534,8 @@ curl https://www.elevateforhumanity.org/api/health
 
 ### Getting Help
 - **Issues:** https://github.com/elevateforhumanity/Elevate-lms/issues
-- **Email:** support@elevateforhumanity.org
-- **Website:** https://www.elevateforhumanity.org/support
+- **Email:** support@elevateforhumanity.institute
+- **Website:** https://elevateforhumanity.institute/support
 
 ---
 

@@ -108,12 +108,15 @@ export async function getTableColumns(
 export function logSchemaVerification(verification: SchemaVerification): void {
   if (process.env.NODE_ENV === 'development') {
     if (verification.missingColumns.length > 0) {
+      console.log(
         `   ⚠️  Missing columns: ${verification.missingColumns.join(', ')}`
       );
     }
 
     if (verification.columns.length > 0) {
-      verification.columns.forEach((col) => {});
+      verification.columns.forEach((col) => {
+        console.log(`   ✓ ${col.name}: ${col.type}`);
+      });
     }
   }
 }

@@ -13,36 +13,6 @@ const nextConfig = {
   compress: true,
   productionBrowserSourceMaps: false,
 
-  // Redirect all non-canonical hosts to canonical domain
-  async redirects() {
-    return [
-      // Redirect any vercel.app host to canonical domain
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: '.*\\.vercel\\.app',
-          },
-        ],
-        destination: 'https://elevateforhumanity.institute/:path*',
-        permanent: true,
-      },
-      // Redirect www to non-www (canonical)
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www\\.elevateforhumanity\\.org',
-          },
-        ],
-        destination: 'https://elevateforhumanity.institute/:path*',
-        permanent: true,
-      },
-    ];
-  },
-
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? {
@@ -134,9 +104,44 @@ const nextConfig = {
     '/api/accreditation/report': ['**/*'],
   },
 
-  // Redirects for consolidated routes
+  // Redirects for consolidated routes and domain canonicalization
   async redirects() {
     return [
+      // Redirect any vercel.app host to canonical domain
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: '.*\\.vercel\\.app',
+          },
+        ],
+        destination: 'https://elevateforhumanity.institute/:path*',
+        permanent: true,
+      },
+      // Redirect old domain to new domain
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www\\.elevateforhumanity\\.org',
+          },
+        ],
+        destination: 'https://elevateforhumanity.institute/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'elevateforhumanity\\.org',
+          },
+        ],
+        destination: 'https://elevateforhumanity.institute/:path*',
+        permanent: true,
+      },
       // WWW to non-WWW redirect (canonical domain)
       {
         source: '/:path*',
