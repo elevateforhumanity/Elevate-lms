@@ -205,7 +205,7 @@ All programs include:
 
 **Elevate for Humanity**  
 📞 317-314-3757  
-🌐 elevateforhumanity.org  
+🌐 elevateforhumanity.institute  
 📍 Indianapolis, IN
 
 _For partnership inquiries, please use the contact form on our website._

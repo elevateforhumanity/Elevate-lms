@@ -427,7 +427,7 @@ export async function POST(request: Request) {
 
 For questions about JRI setup:
 - **EmployIndy:** learning@employindy.org
-- **Elevate Tech Support:** dev@elevateforhumanity.org
+- **Elevate Tech Support:** dev@elevateforhumanity.institute
 
 ---
 

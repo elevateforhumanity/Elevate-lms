@@ -43,8 +43,8 @@ const html = template
   .replace('{{timestamp}}', new Date().toLocaleString());
 
 await resend.emails.send({
-  from: 'noreply@elevateforhumanity.org',
-  to: 'admin@elevateforhumanity.org',
+  from: 'noreply@elevateforhumanity.institute',
+  to: 'admin@elevateforhumanity.institute',
   subject: 'New Contact Form Submission',
   html: html,
 });
@@ -57,8 +57,8 @@ import sgMail from '@sendgrid/mail';
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const msg = {
-  to: 'admin@elevateforhumanity.org',
-  from: 'noreply@elevateforhumanity.org',
+  to: 'admin@elevateforhumanity.institute',
+  from: 'noreply@elevateforhumanity.institute',
   subject: 'New Contact Form Submission',
   html: processedTemplate,
 };
@@ -103,8 +103,8 @@ await sgMail.send(msg);
      });
      
      await resend.emails.send({
-       from: 'noreply@elevateforhumanity.org',
-       to: 'admin@elevateforhumanity.org',
+       from: 'noreply@elevateforhumanity.institute',
+       to: 'admin@elevateforhumanity.institute',
        subject: 'New Contact Form Submission',
        html: template,
      });

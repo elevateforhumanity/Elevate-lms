@@ -2,7 +2,7 @@
 
 **Platform:** Elevate for Humanity Workforce Marketplace  
 **Version:** 2.0.0  
-**Base URL:** `https://www.elevateforhumanity.org/api`  
+**Base URL:** `https://elevateforhumanity.institute/api`  
 **Last Updated:** January 4, 2026
 
 ---
@@ -30,14 +30,14 @@
 
 ### Base URLs
 
-- **Production:** `https://www.elevateforhumanity.org/api`
+- **Production:** `https://elevateforhumanity.institute/api`
 - **Development:** `http://localhost:3000/api`
 
 ### Request Format
 
 ```http
 POST /api/endpoint HTTP/1.1
-Host: www.elevateforhumanity.org
+Host: elevateforhumanity.institute
 Content-Type: application/json
 Authorization: Bearer <token>
 
@@ -684,7 +684,7 @@ const isValid = verifyWebhookSignature(body, signature, timestamp);
 ```typescript
 // Initialize client
 const client = {
-  baseUrl: 'https://www.elevateforhumanity.org/api',
+  baseUrl: 'https://elevateforhumanity.institute/api',
   token: 'your_jwt_token'
 };
 
@@ -720,7 +720,7 @@ import requests
 
 class ElevateClient:
     def __init__(self, token):
-        self.base_url = 'https://www.elevateforhumanity.org/api'
+        self.base_url = 'https://elevateforhumanity.institute/api'
         self.token = token
         self.headers = {
             'Authorization': f'Bearer {token}',
@@ -747,12 +747,12 @@ class ElevateClient:
 
 ```bash
 # Get courses
-curl -X GET https://www.elevateforhumanity.org/api/courses \
+curl -X GET https://elevateforhumanity.institute/api/courses \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json"
 
 # Create enrollment
-curl -X POST https://www.elevateforhumanity.org/api/enrollments \
+curl -X POST https://elevateforhumanity.institute/api/enrollments \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"courseId": "uuid"}'
@@ -786,7 +786,7 @@ Admin:
 
 Import the Postman collection:
 ```
-https://www.elevateforhumanity.org/api/postman-collection.json
+https://elevateforhumanity.institute/api/postman-collection.json
 ```
 
 ---

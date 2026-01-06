@@ -11,7 +11,7 @@
    - **Main Text:** "Elevate for Humanity" (72px, bold, white, centered)
    - **Subtitle:** "Empowering Dreams Through Education" (36px, white)
    - **Tagline:** "100% FREE Training • Marion County" (32px, green `#22c55e`)
-   - **Footer:** "www.elevateforhumanity.org" (28px, white, bottom)
+   - **Footer:** "elevateforhumanity.institute" (28px, white, bottom)
 4. Download as JPG
 5. Save as `public/og.jpg`
 

@@ -218,7 +218,7 @@ Program prepares students for:
 ## Contact Information
 
 **Elevate for Humanity**  
-Website: www.elevateforhumanity.org  
+Website: elevateforhumanity.institute  
 Phone: (317) 314-3757
 
 ---

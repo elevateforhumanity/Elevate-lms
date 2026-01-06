@@ -5,7 +5,7 @@
 **Organization:** Elevate for Humanity Training Center
 **Address:** 8888 Keystone Crossing, Indianapolis, IN 46240
 **Phone:** (317) 314-3757
-**Website:** www.elevateforhumanity.org
+**Website:** elevateforhumanity.institute
 
 **Certification:** ✅ ByBlack Certified Business
 **Issued By:** U.S. Black Chambers, Inc. (USBC)
@@ -191,7 +191,7 @@ Elizabeth Greene
 CEO, Elevate for Humanity Training Center
 8888 Keystone Crossing, Indianapolis, IN 46240
 (317) 314-3757
-www.elevateforhumanity.org
+elevateforhumanity.institute
 
 [ByBlack Badge]
 ByBlack Certified Business
@@ -418,7 +418,7 @@ Certified by U.S. Black Chambers, Inc.
 - **Organization:** Elevate for Humanity Training Center
 - **Address:** 8888 Keystone Crossing, Indianapolis, IN 46240
 - **Phone:** (317) 314-3757
-- **Website:** www.elevateforhumanity.org
+- **Website:** elevateforhumanity.institute
 
 ---
 

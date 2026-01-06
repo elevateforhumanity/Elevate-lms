@@ -648,7 +648,7 @@ vercel logs
 1. **Check Documentation:** Review docs in `/docs` directory
 2. **Search Issues:** https://github.com/elevateforhumanity/Elevate-lms/issues
 3. **Create Issue:** If problem persists, create new issue
-4. **Contact Support:** support@elevateforhumanity.org
+4. **Contact Support:** support@elevateforhumanity.institute
 
 ---
 
@@ -697,8 +697,8 @@ After setup is complete:
 
 ### Community
 - GitHub Issues: https://github.com/elevateforhumanity/Elevate-lms/issues
-- Website: https://www.elevateforhumanity.org
-- Email: support@elevateforhumanity.org
+- Website: https://elevateforhumanity.institute
+- Email: support@elevateforhumanity.institute
 
 ---
 

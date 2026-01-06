@@ -64,7 +64,7 @@
 **Visual**: Outro with logo + URL  
 **Text on screen**:
 > "Barber Apprenticeship"  
-> "Apply at elevateforhumanity.org"
+> "Apply at elevateforhumanity.institute"
 
 **Voiceover**:
 > "Tap the link or message us 'BARBER' to start your apprenticeship journey with Elevate For Humanity."
@@ -72,7 +72,7 @@
 **Caption CTA**:
 > ✂️ Ready to get paid while you train?  
 > We're a state-approved barber apprenticeship pathway.  
-> Comment 'BARBER' or apply at elevateforhumanity.org
+> Comment 'BARBER' or apply at elevateforhumanity.institute
 
 ---
 
@@ -114,7 +114,7 @@
 - Barbershop-appropriate tone
 - Not overly corporate
 - Emphasize "state-approved"
-- Clear on "elevateforhumanity.org"
+- Clear on "elevateforhumanity.institute"
 
 ---
 

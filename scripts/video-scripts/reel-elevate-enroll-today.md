@@ -66,13 +66,13 @@
 **Visual**: Strong branded outro – Elevate logo / brand colors  
 **Text on screen** (big, centered):
 > "Ready to Elevate Your Future?"  
-> "Apply at elevateforhumanity.org"
+> "Apply at elevateforhumanity.institute"
 
 **Voiceover**:
 > "Ready to elevate your future? Tap the link and apply today."
 
 **Caption CTA**:
-> 💻 Apply now at elevateforhumanity.org  
+> 💻 Apply now at elevateforhumanity.institute  
 > 📲 DM 'ELEVATE' and we'll message you back with next steps.
 
 ---
@@ -116,7 +116,7 @@
 - Conversational tone
 - Emphasize "FREE or FUNDED"
 - Warm and encouraging
-- Clear pronunciation of "elevateforhumanity.org"
+- Clear pronunciation of "elevateforhumanity.institute"
 
 ---
 

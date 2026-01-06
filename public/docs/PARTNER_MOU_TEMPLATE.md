@@ -353,7 +353,7 @@ All notices shall be sent to:
 **Elevate for Humanity:**
 Elizabeth Greene, Founder
 [Address]
-Email: elizabeth@elevateforhumanity.org
+Email: elizabeth@elevateforhumanity.institute
 
 **Program Holder:**
 [Contact Name, Title]
@@ -397,5 +397,5 @@ Date: _______________________
 **For questions about this MOU, contact:**
 Elizabeth Greene
 Founder, Elevate for Humanity
-elizabeth@elevateforhumanity.org
+elizabeth@elevateforhumanity.institute
 (317) 555-0100

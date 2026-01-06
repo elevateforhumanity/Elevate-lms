@@ -131,7 +131,7 @@
 **Resources:**
 - Partner dashboard: `/partner/dashboard`
 - Help center: `/partner/help`
-- Support: partners@elevateforhumanity.org
+- Support: partners@elevateforhumanity.institute
 
 ### For Administrators
 
@@ -193,8 +193,8 @@
 ## External Resources
 
 ### Platform
-- **Website:** https://www.elevateforhumanity.org
-- **Support:** support@elevateforhumanity.org
+- **Website:** https://elevateforhumanity.institute
+- **Support:** support@elevateforhumanity.institute
 - **Phone:** 317-314-3757
 
 ### Technology Documentation

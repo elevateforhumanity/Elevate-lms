@@ -15,7 +15,7 @@ This Cloudflare Worker serves SCORM training courses from Cloudflare R2 storage 
 ### 2. Cloudflare R2 + Worker (Optional)
 - **Purpose:** SCORM course delivery
 - **Used for:** JRI training modules
-- **Domain:** `scorm.elevateforhumanity.org`
+- **Domain:** `scorm.elevateforhumanity.institute`
 - **Status:** Configured but not deployed
 
 ## Deployment
@@ -25,7 +25,7 @@ This Cloudflare Worker serves SCORM training courses from Cloudflare R2 storage 
 1. **Cloudflare Account** with:
    - R2 storage enabled
    - Workers enabled
-   - Domain `elevateforhumanity.org` added
+   - Domain `elevateforhumanity.institute` added
 
 2. **Install Wrangler CLI:**
    ```bash
@@ -74,7 +74,7 @@ wrangler deploy
 ### Step 5: Configure DNS
 
 In Cloudflare Dashboard:
-1. Go to DNS settings for `elevateforhumanity.org`
+1. Go to DNS settings for `elevateforhumanity.institute`
 2. Add CNAME record:
    - **Name:** `scorm`
    - **Target:** `elevate-scorm-worker.workers.dev`
@@ -84,14 +84,14 @@ In Cloudflare Dashboard:
 
 In Vercel (or your deployment platform):
 ```bash
-NEXT_PUBLIC_SCORM_CDN_URL=https://scorm.elevateforhumanity.org
+NEXT_PUBLIC_SCORM_CDN_URL=https://scorm.elevateforhumanity.institute
 ```
 
 ## How It Works
 
 ### With Cloudflare Worker (Deployed):
 ```
-Student → scorm.elevateforhumanity.org → Cloudflare Worker → R2 Storage
+Student → scorm.elevateforhumanity.institute → Cloudflare Worker → R2 Storage
 ```
 
 ### Without Worker (Fallback):
@@ -120,7 +120,7 @@ wrangler dev
 
 ### Test SCORM Delivery:
 ```bash
-curl https://scorm.elevateforhumanity.org/jri-badge-1/index.html
+curl https://scorm.elevateforhumanity.institute/jri-badge-1/index.html
 ```
 
 ## Monitoring

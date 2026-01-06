@@ -212,7 +212,7 @@ To obtain Indiana beauty instructor license, candidates must:
 ## Contact Information
 
 **Elevate for Humanity**  
-Website: www.elevateforhumanity.org  
+Website: elevateforhumanity.institute  
 Email: elevate4humanityedu@gmail.com  
 Phone: (317) 314-3757
 

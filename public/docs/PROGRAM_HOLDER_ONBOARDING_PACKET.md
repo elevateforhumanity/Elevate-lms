@@ -167,20 +167,20 @@ As a Program Holder, you agree to:
 ### Primary Contact
 **Elizabeth Greene**
 Founder, Elevate for Humanity
-Email: elizabeth@elevateforhumanity.org
+Email: elizabeth@elevateforhumanity.institute
 Phone: (317) 555-0100
 
 ### Student Services
-Email: students@elevateforhumanity.org
+Email: students@elevateforhumanity.institute
 Phone: (317) 555-0101
 
 ### Compliance & Reporting
-Email: compliance@elevateforhumanity.org
+Email: compliance@elevateforhumanity.institute
 Phone: (317) 555-0102
 
 ### Technical Support
 Email: Elevate4humanityedu@gmail.com
-Portal: elevateforhumanity.org/support
+Portal: elevateforhumanity.institute/support
 
 ---
 
@@ -282,4 +282,4 @@ Together, we're elevating communities through quality workforce training!
 
 **Elevate for Humanity**
 Career & Technical Training that Elevates Communities
-elevateforhumanity.org
+elevateforhumanity.institute

@@ -7,7 +7,7 @@
 **Elizabeth L. Greene, Founder**  
 **Email:** elevateforhumanity@gmail.com  
 **Phone:** 317-314-3757  
-**Website:** elevateforhumanity.org
+**Website:** elevateforhumanity.institute
 
 ---
 
@@ -340,7 +340,7 @@ Phone: 317-314-3757
 Indianapolis, IN 46226
 
 **Website:**  
-elevateforhumanity.org
+elevateforhumanity.institute
 
 **Social Media:**
 

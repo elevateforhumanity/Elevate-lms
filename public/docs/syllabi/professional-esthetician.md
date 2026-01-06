@@ -112,7 +112,7 @@ DOL Federally Registered Apprenticeship! Master skincare, facial treatments, hai
 ## Contact Information
 
 **Elevate for Humanity**  
-Website: www.elevateforhumanity.org  
+Website: elevateforhumanity.institute  
 Phone: (317) 314-3757
 
 ---

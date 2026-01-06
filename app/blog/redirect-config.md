@@ -3,7 +3,7 @@
 ## Option 1: DNS CNAME (Recommended)
 Set up a CNAME record in your DNS:
 ```
-blog.elevateforhumanity.org CNAME your-durable-blog.durable.co
+blog.elevateforhumanity.institute CNAME your-durable-blog.durable.co
 ```
 
 ## Option 2: Next.js Redirect

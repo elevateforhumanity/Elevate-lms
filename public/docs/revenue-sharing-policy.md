@@ -278,7 +278,7 @@ First of each month:
 
 ### Real-Time Dashboard
 
-Access 24/7 at: elevateforhumanity.org/suboffice-portal
+Access 24/7 at: elevateforhumanity.institute/suboffice-portal
 
 View:
 
@@ -338,7 +338,7 @@ We may terminate for:
 
 ### Step 1: Contact Support
 
-Email: suboffice-support@elevateforhumanity.org  
+Email: suboffice-support@elevateforhumanity.institute  
 Phone: 317-314-3757  
 Response time: 24-48 hours
 
@@ -346,7 +346,7 @@ Response time: 24-48 hours
 
 If not resolved, escalate to:  
 Director of Partner Relations  
-Email: partnerships@elevateforhumanity.org
+Email: partnerships@elevateforhumanity.institute
 
 ### Step 3: Mediation
 
@@ -397,16 +397,16 @@ If still unresolved:
 ## Contact Information
 
 **Suboffice Support:**  
-Email: suboffice-support@elevateforhumanity.org  
+Email: suboffice-support@elevateforhumanity.institute  
 Phone: 317-314-3757  
 Hours: Monday-Friday, 9 AM - 6 PM EST
 
 **Billing Questions:**  
-Email: billing@elevateforhumanity.org  
+Email: billing@elevateforhumanity.institute  
 Phone: 317-314-3757 ext. 2
 
 **Technical Support:**  
-Email: tech@elevateforhumanity.org  
+Email: tech@elevateforhumanity.institute  
 Phone: 317-314-3757 ext. 3  
 Hours: 24/7 during tax season
 

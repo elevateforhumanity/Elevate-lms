@@ -326,7 +326,7 @@ Our barber apprentices will receive comprehensive training in:
 
 This partnership reinforces our commitment to developing well-rounded professionals who lead with both skill and purpose.
 
-Learn more about our programs: elevateforhumanity.org
+Learn more about our programs: elevateforhumanity.institute
 ```
 
 ---

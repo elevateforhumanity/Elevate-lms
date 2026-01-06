@@ -105,7 +105,7 @@ DOL Federally Registered Apprenticeship! Earn OSHA 10, CPR, and Emergency Medica
 ## Contact Information
 
 **Elevate for Humanity**  
-Website: www.elevateforhumanity.org  
+Website: elevateforhumanity.institute  
 Phone: (317) 314-3757
 
 ---
