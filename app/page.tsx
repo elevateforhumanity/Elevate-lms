@@ -266,7 +266,7 @@ export default function HomePage() {
               <div className="bg-white border-2 border-gray-200 hover:border-brand-blue-600 rounded-2xl p-8 transition-all hover:shadow-xl">
                 <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
                   <Image
-                    src="/images/homepage/hero-students.jpg"
+                    src="/images/homepage/students.jpg"
                     alt="Students in training"
                     fill
                     className="object-cover"
