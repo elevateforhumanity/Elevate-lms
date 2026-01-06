@@ -1,20 +1,18 @@
-// Client-side only sanitization to avoid jsdom SSR issues
+// Simple sanitization without external dependencies
+// Avoids jsdom/DOMPurify SSR issues
 export function sanitizeHtml(dirty: string): string {
-  // On server, return as-is (assuming content is already sanitized in DB)
-  // On client, use DOMPurify
-  if (typeof window === 'undefined') {
-    // Server-side: basic sanitization without DOMPurify
-    return dirty
-      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-      .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '')
-      .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '');
-  }
+  if (!dirty) return '';
   
-  // Client-side: use DOMPurify dynamically
-  // This will be tree-shaken on server builds
-  const DOMPurify = require('isomorphic-dompurify');
-  return DOMPurify.sanitize(dirty, {
-    ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-    ALLOWED_ATTR: ['href', 'target', 'rel']
-  });
+  // Basic HTML sanitization - remove dangerous tags and attributes
+  return dirty
+    // Remove script tags
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    // Remove iframe tags
+    .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '')
+    // Remove event handlers
+    .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '')
+    // Remove javascript: protocol
+    .replace(/href\s*=\s*["']javascript:[^"']*["']/gi, '')
+    // Remove data: protocol (except images)
+    .replace(/href\s*=\s*["']data:[^"']*["']/gi, '');
 }
