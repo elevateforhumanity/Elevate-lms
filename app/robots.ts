@@ -3,13 +3,11 @@ import { MetadataRoute } from 'next';
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = 'https://elevateforhumanity.institute';
   
-  // Check if we're on a vercel.app preview domain
-  // VERCEL_URL is set on all Vercel deployments, so check if it contains .vercel.app
-  const vercelUrl = process.env.VERCEL_URL || '';
-  const isVercelPreview = vercelUrl.includes('.vercel.app');
+  // Only block on Vercel preview deployments (.vercel.app domains)
+  // VERCEL_ENV is 'production' on custom domains, 'preview' on .vercel.app
+  const isPreview = process.env.VERCEL_ENV === 'preview';
 
-  // Block all crawling ONLY on preview/development environments
-  if (isVercelPreview) {
+  if (isPreview) {
     return {
       rules: [
         {
