@@ -2,12 +2,30 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const isProduction = process.env.VERCEL_ENV === 'production';
   const host = request.headers.get('host') || '';
-  const isProductionDomain = host === 'www.elevateforhumanity.org' || host === 'elevateforhumanity.org';
+  const canonicalHost = 'elevateforhumanity.org';
+
+  // Redirect www to non-www (canonical)
+  if (host === 'www.elevateforhumanity.org') {
+    const url = request.nextUrl.clone();
+    url.host = canonicalHost;
+    url.protocol = 'https:';
+    return NextResponse.redirect(url, 308);
+  }
+
+  // Redirect any vercel.app domain to canonical
+  if (host.endsWith('.vercel.app')) {
+    const url = request.nextUrl.clone();
+    url.host = canonicalHost;
+    url.protocol = 'https:';
+    return NextResponse.redirect(url, 308);
+  }
+
+  const isProduction = process.env.VERCEL_ENV === 'production';
+  const isCanonical = host === canonicalHost;
   
-  // Block indexing on non-production environments or non-production domains
-  if (!isProduction || !isProductionDomain) {
+  // Block indexing on non-canonical hosts
+  if (!isCanonical) {
     const response = NextResponse.next();
     response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
     return response;
