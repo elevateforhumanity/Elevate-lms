@@ -40,7 +40,7 @@
         }
       ],
       "destination": "https://elevateforhumanity.org/:path*",
-      "permanent": false
+      "permanent": true
     }
   ],
 
