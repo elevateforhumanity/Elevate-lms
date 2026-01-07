@@ -318,7 +318,7 @@ export default function HomePage() {
               <div className="bg-white border-2 border-gray-200 hover:border-brand-purple-600 rounded-2xl p-8 transition-all hover:shadow-xl">
                 <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
                   <Image
-                    src="/images/homepage/training-provider-1.jpg"
+                    src="/images/homepage/schools-nonprofits.jpg"
                     alt="Schools and nonprofit organizations"
                     fill
                     className="object-cover"
@@ -345,7 +345,7 @@ export default function HomePage() {
               <div className="bg-white border-2 border-gray-200 hover:border-brand-green-600 rounded-2xl p-8 transition-all hover:shadow-xl">
                 <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
                   <Image
-                    src="/images/homepage/workforce-partner-1.jpg"
+                    src="/images/homepage/government-agencies.jpg"
                     alt="Government agencies and workforce boards"
                     fill
                     className="object-cover"
@@ -370,7 +370,7 @@ export default function HomePage() {
               <div className="bg-white border-2 border-gray-200 hover:border-pink-600 rounded-2xl p-8 transition-all hover:shadow-xl">
                 <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden">
                   <Image
-                    src="/images/homepage/hero-federal-funding.jpg"
+                    src="/images/homepage/funders-philanthropy.jpg"
                     alt="Funders and philanthropic organizations"
                     fill
                     className="object-cover"
