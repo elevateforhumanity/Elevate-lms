@@ -416,7 +416,7 @@ export default function HomePage() {
             <div className="text-center">
               <div className="w-full h-48 relative mx-auto mb-6 rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/homepage/programs-overview.jpg"
+                  src="/images/homepage/funded-programs-optimized.jpg"
                   alt="Funded workforce training programs"
                   fill
                   className="object-cover"
@@ -437,7 +437,7 @@ export default function HomePage() {
             <div className="text-center">
               <div className="w-full h-48 relative mx-auto mb-6 rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/homepage/lms-dashboard.jpg"
+                  src="/images/homepage/licensable-platform.jpg"
                   alt="Licensable workforce platform"
                   fill
                   className="object-cover"
@@ -458,7 +458,7 @@ export default function HomePage() {
             <div className="text-center">
               <div className="w-full h-48 relative mx-auto mb-6 rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/homepage/career-services.jpg"
+                  src="/images/homepage/wraparound-support-optimized.jpg"
                   alt="Wraparound student support services"
                   fill
                   className="object-cover"
