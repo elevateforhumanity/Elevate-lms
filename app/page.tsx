@@ -111,6 +111,24 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Video Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-8">See Our Impact</h2>
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src={currentHomeHero} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </section>
+
       {/* 3 Featured Images Row */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
@@ -140,24 +158,6 @@ export default function HomePage() {
                 className="object-cover"
               />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Video Section */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-8">See Our Impact</h2>
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src={currentHomeHero} type="video/mp4" />
-            </video>
           </div>
         </div>
       </section>
