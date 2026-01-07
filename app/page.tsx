@@ -201,6 +201,7 @@ export default function HomePage() {
                     alt="Healthcare Training"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform"
+                    priority
                   />
                 </div>
                 <h3 className="text-xl font-bold text-black mb-2">Healthcare</h3>
@@ -223,6 +224,7 @@ export default function HomePage() {
                     alt="Skilled Trades"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform"
+                    priority
                   />
                 </div>
                 <h3 className="text-xl font-bold text-black mb-2">Skilled Trades</h3>
@@ -245,6 +247,7 @@ export default function HomePage() {
                     alt="Barber Apprenticeship"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform"
+                    priority
                   />
                 </div>
                 <h3 className="text-xl font-bold text-black mb-2">Barber</h3>
@@ -267,6 +270,7 @@ export default function HomePage() {
                     alt="CDL Training"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform"
+                    priority
                   />
                 </div>
                 <h3 className="text-xl font-bold text-black mb-2">CDL Training</h3>
@@ -366,7 +370,6 @@ export default function HomePage() {
                     alt="Students in training"
                     fill
                     className="object-cover"
-                    priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
@@ -391,7 +394,6 @@ export default function HomePage() {
                     alt="Employers and workforce partners"
                     fill
                     className="object-cover"
-                    priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
@@ -418,7 +420,6 @@ export default function HomePage() {
                     alt="Schools and nonprofit organizations"
                     fill
                     className="object-cover"
-                    priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
