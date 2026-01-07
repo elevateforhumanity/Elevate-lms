@@ -5,10 +5,8 @@ import { ArrowRight } from 'lucide-react';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import { currentHomeHero, enableAudioNarration } from '@/config/hero-videos';
 
-// Force dynamic rendering to prevent CDN caching issues
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-export const fetchCache = 'force-no-store';
+// Use ISR for optimal performance with fresh content
+export const revalidate = 3600; // Revalidate every hour
 
 export const metadata: Metadata = {
   title: 'Elevate for Humanity | Workforce and Education Hub',
@@ -34,6 +32,13 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Elevate for Humanity | Workforce and Education Hub',
+    description:
+      'Free, funded workforce training programs. Coordinating learners, schools, training providers, employers, and government funding into structured pathways.',
+    images: ['/images/homepage/og-image.png'],
+  },
 };
 
 export default function HomePage() {
@@ -42,14 +47,20 @@ export default function HomePage() {
     '@type': 'EducationalOrganization',
     name: 'Elevate for Humanity',
     url: 'https://elevateforhumanity.institute',
+    logo: 'https://elevateforhumanity.institute/logo.png',
     description:
       'Free, funded workforce training programs aligned with WIOA, WRG, DOL, and employer-led apprenticeships.',
+    email: 'info@elevateforhumanity.institute',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Indianapolis',
       addressRegion: 'IN',
       addressCountry: 'US',
     },
+    sameAs: [
+      'https://www.linkedin.com/company/elevate-for-humanity',
+      'https://www.facebook.com/elevateforhumanity',
+    ],
   };
 
   return (
@@ -59,28 +70,25 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
 
-      {/* Hero Banner - Static Image */}
-      <section className="relative w-full bg-gradient-to-br from-blue-900 to-purple-900">
-        <div
-          className="relative w-full min-h-[500px] md:min-h-[600px] lg:min-h-[700px]"
-          style={{
-            height: '100vh',
-            maxHeight: '900px',
-          }}
-        >
-          {/* Hero Background Image */}
-          <div
-            className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
-            style={{
-              backgroundImage: "url('/images/homepage/students.jpg')",
-            }}
+      {/* Hero Banner */}
+      <section aria-label="Hero banner" className="relative w-full bg-gradient-to-br from-blue-900 to-purple-900">
+        <div className="relative w-full min-h-[500px] md:min-h-[600px] lg:min-h-[700px] h-screen max-h-[900px]">
+          {/* Hero Background Image - Optimized */}
+          <Image
+            src="/images/homepage/students.jpg"
+            alt="Students in training at Elevate for Humanity"
+            fill
+            priority
+            quality={85}
+            sizes="100vw"
+            className="object-cover object-center"
           />
 
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent z-5" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent z-10" />
 
           {/* Text Content */}
-          <div className="absolute inset-0 flex items-center z-10 pt-16 md:pt-0">
+          <div className="absolute inset-0 flex items-center z-20 pt-16 md:pt-0">
             <div className="max-w-7xl mx-auto px-4 md:px-6 w-full">
               <div className="max-w-2xl">
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight break-words drop-shadow-2xl">
@@ -180,7 +188,7 @@ export default function HomePage() {
       </section>
 
       {/* PROGRAM AREAS */}
-      <section className="w-full py-20 bg-gradient-to-br from-orange-50 to-orange-100">
+      <section aria-label="Program offerings" className="w-full py-20 bg-gradient-to-br from-orange-50 to-orange-100">
         <div className="mx-auto w-full max-w-7xl px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
@@ -352,7 +360,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="w-full py-20 bg-white">
+      <section aria-label="Who we serve" className="w-full py-20 bg-white">
         <div className="mx-auto w-full max-w-7xl px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
@@ -504,7 +512,7 @@ export default function HomePage() {
       </section>
 
       {/* WHAT WE PROVIDE */}
-      <section className="w-full py-20 bg-white">
+      <section aria-label="Services provided" className="w-full py-20 bg-white">
         <div className="mx-auto w-full max-w-6xl px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
             What We Provide
@@ -577,7 +585,7 @@ export default function HomePage() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="w-full py-20 bg-gradient-to-br from-brand-blue-700 to-brand-purple-700 text-white">
+      <section aria-label="Call to action" className="w-full py-20 bg-gradient-to-br from-brand-blue-700 to-brand-purple-700 text-white">
         <div className="mx-auto w-full max-w-4xl text-center px-6">
           <h2 className="text-4xl md:text-5xl font-black mb-10">
             Start Where You Belong
