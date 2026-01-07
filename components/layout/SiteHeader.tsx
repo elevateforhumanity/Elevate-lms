@@ -51,27 +51,34 @@ export default function SiteHeader() {
 
   // Get user and update navigation
   useEffect(() => {
-    const supabase = createClient();
+    // Skip auth initialization if Supabase is not configured
+    try {
+      const supabase = createClient();
 
-    const getUser = async () => {
+      const getUser = async () => {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        setUser(user);
+        setNavigation(getNavigation(user));
+      };
+
+      getUser();
+
+      // Listen for auth changes
       const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      setUser(user);
-      setNavigation(getNavigation(user));
-    };
+        data: { subscription },
+      } = supabase.auth.onAuthStateChange((_event, session) => {
+        setUser(session?.user ?? null);
+        setNavigation(getNavigation(session?.user ?? null));
+      });
 
-    getUser();
-
-    // Listen for auth changes
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-      setNavigation(getNavigation(session?.user ?? null));
-    });
-
-    return () => subscription.unsubscribe();
+      return () => subscription.unsubscribe();
+    } catch (error) {
+      // Supabase not configured - continue without auth
+      console.warn('Auth disabled: Supabase credentials not configured');
+      setNavigation(getNavigation(null));
+    }
   }, []);
 
   // Debug: Check if navigation is loaded

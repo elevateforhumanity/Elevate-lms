@@ -59,12 +59,108 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
 
-      {/* Hero Banner - Video */}
-      <VideoHeroBanner
-        videoSrc={currentHomeHero}
-        withAudio={enableAudioNarration}
-        voiceoverSrc="/videos/voiceover.mp3"
-      />
+      {/* Hero Banner - Static Image */}
+      <section className="relative w-full bg-gradient-to-br from-blue-900 to-purple-900">
+        <div
+          className="relative w-full min-h-[500px] md:min-h-[600px] lg:min-h-[700px]"
+          style={{
+            height: '100vh',
+            maxHeight: '900px',
+          }}
+        >
+          {/* Hero Background Image */}
+          <div
+            className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
+            style={{
+              backgroundImage: "url('/images/homepage/students.jpg')",
+            }}
+          />
+
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent z-5" />
+
+          {/* Text Content */}
+          <div className="absolute inset-0 flex items-center z-10 pt-16 md:pt-0">
+            <div className="max-w-7xl mx-auto px-4 md:px-6 w-full">
+              <div className="max-w-2xl">
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight break-words drop-shadow-2xl">
+                  Elevate for Humanity
+                </h1>
+                <p className="text-base md:text-lg text-white/90 mb-6 max-w-xl drop-shadow-lg">
+                  Free, Funded Workforce Training
+                </p>
+
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/apply"
+                    className="inline-flex items-center justify-center px-6 py-3 bg-white text-brand-blue-600 text-base font-bold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
+                  >
+                    Apply Now
+                  </Link>
+                  <Link
+                    href="/programs"
+                    className="inline-flex items-center justify-center px-6 py-3 bg-transparent text-white text-base font-bold rounded-xl hover:bg-white/10 transition-colors border-2 border-white"
+                  >
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3 Featured Images Row */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-8">Our Programs in Action</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="relative h-64 rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src="/media/programs/efh-cna-hero.jpg"
+                alt="Healthcare Training"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="relative h-64 rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src="/media/programs/efh-building-tech-hero.jpg"
+                alt="Skilled Trades Training"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="relative h-64 rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src="/media/programs/efh-barber-hero.jpg"
+                alt="Barber Training"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-8">See Our Impact</h2>
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src={currentHomeHero} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </section>
 
       {/* WHY THE HUB EXISTS */}
       <section className="py-16 bg-white">
@@ -101,7 +197,7 @@ export default function HomePage() {
               <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border-2 border-transparent hover:border-orange-600">
                 <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
                   <Image
-                    src="/media/programs/cna-hd.jpg"
+                    src="/media/programs/efh-cna-hero.jpg"
                     alt="Healthcare Training"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform"
@@ -123,7 +219,7 @@ export default function HomePage() {
               <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all border-2 border-transparent hover:border-orange-600">
                 <div className="relative w-full h-48 mb-4 rounded-xl overflow-hidden">
                   <Image
-                    src="/media/programs/hvac-highlight-3.jpg"
+                    src="/media/programs/efh-building-tech-hero.jpg"
                     alt="Skilled Trades"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform"

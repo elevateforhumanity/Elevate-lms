@@ -114,3 +114,5 @@ core
 # PNPM store
 .pnpm-store/
 core
+.env.local
+.env.local.backup
