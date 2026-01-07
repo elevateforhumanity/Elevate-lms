@@ -1,4 +1,6 @@
 {
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install --frozen-lockfile",
   "redirects": [
     {
       "source": "/index.html",
