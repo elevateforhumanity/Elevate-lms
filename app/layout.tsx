@@ -8,17 +8,10 @@ import '@/branding/brand.css';
 import '@/styles/tiktok-animations.css';
 import '@/styles/rich-design-system.css';
 import './force-black-text.css';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
-import FacebookPixel from '@/components/FacebookPixel';
 import StructuredData from '@/components/StructuredData';
 import { ConditionalLayout } from '@/components/layout/ConditionalLayout';
-import AILiveChat from '@/components/chat/AILiveChat';
-import { CookieBanner } from '@/components/CookieBanner';
 import { Toaster } from 'react-hot-toast';
-import { PerformanceMonitor } from '@/components/PerformanceMonitor';
-import { ScraperDetection } from '@/components/ScraperDetection';
-import { CopyrightProtection } from '@/components/CopyrightProtection';
-import { SecurityMonitor, SecurityBadge } from '@/components/SecurityMonitor';
+import { ClientProviders } from '@/components/ClientProviders';
 import { UnregisterServiceWorker } from '@/components/UnregisterServiceWorker';
 import { Inter } from 'next/font/google';
 
@@ -231,11 +224,8 @@ export default function RootLayout({
           Skip to main content
         </a>
         <UnregisterSW />
-        <GoogleAnalytics />
-        <FacebookPixel />
         <ConditionalLayout>{children}</ConditionalLayout>
-        <AILiveChat />
-        <CookieBanner />
+        <ClientProviders />
         <Toaster
           position="top-right"
           toastOptions={{
