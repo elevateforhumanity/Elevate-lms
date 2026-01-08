@@ -1,7 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 
-export const runtime = 'nodejs';
-export const maxDuration = 60;
+export const runtime = 'edge';
 import { NextResponse } from 'next/server';
 
 /**
@@ -126,10 +125,10 @@ export async function GET() {
     });
 
     devContainer.tests.push({
-      test: 'Node.js version correct',
+      test: 'Runtime environment',
       passed: true,
-      value: process.version,
-      note: 'Node.js 20+ required',
+      value: 'Edge Runtime',
+      note: 'Running on Vercel Edge',
     });
 
     devContainer.tests.push({
