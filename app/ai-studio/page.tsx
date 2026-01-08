@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import {
   Video,
   Image as ImageIcon,
@@ -393,11 +394,15 @@ export default function AIStudioPage() {
                       </div>
 
                       {asset.type === 'image' && (
-                        <img
-                          src={asset.url}
-                          alt={asset.prompt}
-                          className="w-full h-32 object-cover rounded-lg mb-2"
-                        />
+                        <div className="relative w-full h-32 mb-2">
+                          <Image
+                            src={asset.url}
+                            alt={asset.prompt}
+                            fill
+                            className="object-cover rounded-lg"
+                            sizes="(max-width: 768px) 100vw, 300px"
+                          />
+                        </div>
                       )}
 
                       {(asset.type === 'video' || asset.type === 'avatar') && (

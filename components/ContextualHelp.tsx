@@ -298,11 +298,15 @@ export function FeatureAnnouncement({
       </div>
 
       {imageUrl && (
-        <img
-          src={imageUrl}
-          alt={title}
-          className="w-full h-48 object-cover rounded-lg mb-4"
-        />
+        <div className="relative w-full h-48 mb-4">
+          <Image
+            src={imageUrl}
+            alt={title}
+            fill
+            className="object-cover rounded-lg"
+            sizes="(max-width: 768px) 100vw, 400px"
+          />
+        </div>
       )}
 
       <h4 className="text-lg font-semibold mb-2">{title}</h4>

@@ -19,10 +19,13 @@ export default function CourseraStyleHeader() {
           {/* Logo */}
           <div className="flex items-center gap-8">
             <Link href="/" aria-label="Link" className="flex items-center gap-2">
-              <img
+              <Image
                 src="/images/Elevate_for_Humanity_logo_81bf0fab.jpg"
                 alt="Elevate for Humanity"
+                width={180}
+                height={48}
                 className="h-12 w-auto"
+                priority
               />
             </Link>
 

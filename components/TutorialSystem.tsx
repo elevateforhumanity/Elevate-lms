@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { X, ChevronRight, ChevronLeft, Check, Play, BookOpen } from 'lucide-react';
 import {
@@ -188,11 +188,13 @@ export function TutorialSystem({
           )}
 
           {currentStep.media && currentStep.type === 'text' && (
-            <div className="mt-6">
-              <img
+            <div className="relative mt-6 w-full h-64">
+              <Image
                 src={currentStep.media}
                 alt={currentStep.title}
-                className="w-full rounded-lg shadow-md"
+                fill
+                className="object-contain rounded-lg shadow-md"
+                sizes="(max-width: 768px) 100vw, 600px"
               />
             </div>
           )}
