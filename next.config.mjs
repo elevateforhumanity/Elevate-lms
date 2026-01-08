@@ -232,9 +232,19 @@ const nextConfig = {
   async headers() {
     const isProduction = process.env.VERCEL_ENV === 'production';
     const isPreview = process.env.VERCEL_ENV === 'preview';
+    const host = process.env.VERCEL_URL || '';
+    
+    // Noindex for .institute domain
+    const robotsHeaders = host.includes('elevateforhumanity.institute') ? [
+      {
+        key: 'X-Robots-Tag',
+        value: 'noindex, nofollow',
+      },
+    ] : [];
     
     // Base security headers for all environments
     const securityHeaders = [
+      ...robotsHeaders,
       {
         key: 'X-DNS-Prefetch-Control',
         value: 'on',

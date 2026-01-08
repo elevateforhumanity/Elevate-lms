@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title:
     'Free CNA Training Indiana | Certified Nursing Assistant | WRG, WIOA, JRI Funded | Indianapolis',
   description:
-    '100% free CNA training in Indianapolis. State approved, DOL approved. Get your Certified Nursing Assistant certification through WRG, WIOA, or JRI funding. 6-8 weeks, job placement included. Start earning $16-$20/hour.',
+    '100% free CNA training in Indianapolis. Industry-aligned preparation for CNA certification through WRG, WIOA, or JRI funding. 6-8 weeks, job placement support included. Start earning $16-$20/hour.',
   keywords:
-    'free CNA training Indiana, CNA classes Indianapolis, certified nursing assistant Indiana, WRG CNA training, WIOA CNA program, JRI CNA training, free nursing assistant school Indiana, CNA certification Indianapolis, CNA job placement, state approved CNA training Indiana',
+    'free CNA training Indiana, CNA classes Indianapolis, certified nursing assistant Indiana, WRG CNA training, WIOA CNA program, JRI CNA training, free nursing assistant school Indiana, CNA certification Indianapolis, CNA job placement, CNA training Indiana',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/programs/cna',
+    canonical: 'https://www.elevateforhumanity.org/programs/cna',
   },
 };
 
@@ -34,7 +34,7 @@ export default function Page() {
           text: 'Healthcare Career',
         }}
         headline="Become a Certified Nursing Assistant"
-        description="100% free CNA training through WRG, WIOA, or JRI funding. State approved, DOL approved. Job placement included. Start earning $16-$20/hour."
+        description="100% free CNA training through WRG, WIOA, or JRI funding. Industry-aligned preparation for state certification. Job placement support included. Start earning $16-$20/hour."
         primaryCTA={{ text: 'Apply Now', href: '/apply' }}
         secondaryCTA={{ text: 'Talk to an Advisor', href: '/contact' }}
       />

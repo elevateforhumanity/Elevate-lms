@@ -1,11 +1,27 @@
 import { MetadataRoute } from 'next';
-import { videos } from '../lms-data/videos';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://elevateforhumanity.institute';
-  const currentDate = new Date();
+  return [
+    { url: 'https://www.elevateforhumanity.org/', priority: 1 },
+    { url: 'https://www.elevateforhumanity.org/apply', priority: 0.9 },
+    { url: 'https://www.elevateforhumanity.org/programs', priority: 0.9 },
+    { url: 'https://www.elevateforhumanity.org/programs/cna', priority: 0.8 },
+    { url: 'https://www.elevateforhumanity.org/programs/cdl-transportation', priority: 0.8 },
+    { url: 'https://www.elevateforhumanity.org/programs/barber-apprenticeship', priority: 0.8 },
+    { url: 'https://www.elevateforhumanity.org/programs/healthcare', priority: 0.8 },
+    { url: 'https://www.elevateforhumanity.org/programs/skilled-trades', priority: 0.8 },
+    { url: 'https://www.elevateforhumanity.org/programs/technology', priority: 0.8 },
+    { url: 'https://www.elevateforhumanity.org/updates', priority: 0.6 },
+    { url: 'https://www.elevateforhumanity.org/updates/2026/01/program-calendar', priority: 0.6 },
+    { url: 'https://www.elevateforhumanity.org/about', priority: 0.7 },
+    { url: 'https://www.elevateforhumanity.org/contact', priority: 0.7 },
+    { url: 'https://www.elevateforhumanity.org/funding', priority: 0.7 },
+    { url: 'https://www.elevateforhumanity.org/employer', priority: 0.7 },
+  ];
+}
 
-  // ONLY pages that exist and return 200 - verified working pages
+// Legacy sitemap code removed - keeping only .org URLs
+const legacySitemap = `
   const publicPages = [
     { url: '', priority: 1.0, changeFrequency: 'daily' as const },
     { url: '/about', priority: 0.9, changeFrequency: 'weekly' as const },
@@ -26,72 +42,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/careers', priority: 0.6, changeFrequency: 'monthly' as const },
   ];
 
-  // Program pages that exist
-  const programPages = [
-    'cna',
-    'cdl-transportation',
-    'barber-apprenticeship',
-    'tax-preparation',
-    'direct-support-professional',
-    'drug-collector',
-    'healthcare',
-    'skilled-trades',
-    'technology',
-    'business',
-  ].map((program) => ({
-    url: `/programs/${program}`,
-    priority: 0.8,
-    changeFrequency: 'monthly' as const,
-  }));
-
-  // Career services pages
-  const careerPages = [
-    '/career-services',
-    '/career-services/job-placement',
-    '/career-services/resume-building',
-    '/career-services/interview-prep',
-    '/career-services/career-counseling',
-  ].map((url) => ({
-    url,
-    priority: 0.7,
-    changeFrequency: 'monthly' as const,
-  }));
-
-  // Funding pages
-  const fundingPages = [
-    '/funding',
-    '/funding/wioa',
-    '/funding/wrg',
-    '/funding/jri',
-  ].map((url) => ({
-    url,
-    priority: 0.7,
-    changeFrequency: 'monthly' as const,
-  }));
-
-  // Video pages
-  const videoPages = [
-    { url: '/videos', priority: 0.7, changeFrequency: 'weekly' as const },
-    ...videos.map((video) => ({
-      url: `/videos/${video.id}`,
-      priority: 0.6,
-      changeFrequency: 'monthly' as const,
-    })),
-  ];
-
-  // Combine all pages
-  const allPages = [
-    ...publicPages,
-    ...programPages,
-    ...careerPages,
-    ...fundingPages,
-    ...videoPages,
-  ];
-
-  return allPages.map((page) => ({
-    url: `${baseUrl}${page.url}`,
-    lastModified: currentDate,
-    changeFrequency: page.changeFrequency,
-    priority: page.priority,
-  }));
-}
+`;

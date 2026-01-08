@@ -44,11 +44,14 @@ export const viewport: Viewport = {
 };
 
 // Global SEO configuration - fixes canonical, OpenGraph, and meta descriptions
-const SITE_URL = 'https://elevateforhumanity.institute';
+const SITE_URL = 'https://www.elevateforhumanity.org';
 const isProduction = process.env.VERCEL_ENV === 'production';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org',
+  },
 
   title: {
     default: 'Elevate for Humanity',
