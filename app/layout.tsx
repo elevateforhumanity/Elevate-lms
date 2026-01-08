@@ -1,7 +1,5 @@
 import React from 'react';
 import UnregisterSW from "./components/UnregisterSW";
-import RegisterPWA from "@/components/RegisterPWA";
-import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import './globals-mobile-fixes.css';
@@ -235,7 +233,6 @@ export default function RootLayout({
         <ConditionalLayout>{children}</ConditionalLayout>
         <AILiveChat />
         <CookieBanner />
-        <PWAInstallPrompt />
         <Toaster
           position="top-right"
           toastOptions={{
