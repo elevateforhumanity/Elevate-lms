@@ -1,6 +1,7 @@
 import React from 'react';
 import UnregisterSW from "./components/UnregisterSW";
 import RegisterPWA from "@/components/RegisterPWA";
+import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import './globals-mobile-fixes.css';
@@ -250,7 +251,7 @@ a
         <ConditionalLayout>{children}</ConditionalLayout>
         <AILiveChat />
         <CookieBanner />
-        {/* <PWAInstallPrompt /> */}
+        <PWAInstallPrompt />
         <Toaster
           position="top-right"
           toastOptions={{
