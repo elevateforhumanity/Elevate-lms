@@ -3,9 +3,6 @@ export const dynamic = 'force-dynamic';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 
-import Link from 'next/link';
-import { Plus } from 'lucide-react';
-
 export const metadata: Metadata = {
   title: 'Job Postings | Elevate for Humanity',
   description: 'Manage your job postings',
@@ -45,15 +42,6 @@ export default async function EmployerPostingsPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Job Postings</h1>
-        {user && (
-          <Link
-            href="/employer/postings/new"
-            className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
-          >
-            <Plus className="w-4 h-4" />
-            New Posting
-          </Link>
-        )}
       </div>
 
       {!user ? (
