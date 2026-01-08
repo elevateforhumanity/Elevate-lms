@@ -116,3 +116,4 @@ core
 core
 .env.local
 .env.local.backup
+public/build.json
