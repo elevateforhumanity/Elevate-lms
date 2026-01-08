@@ -2,24 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
   const host = req.headers.get("host") || "";
-  
-  // Allow all elevateforhumanity domains without redirect
-  // No redirects between .org and .institute to prevent loops
-  if (
-    host === "elevateforhumanity.org" ||
-    host === "www.elevateforhumanity.org" ||
-    host === "elevateforhumanity.institute" ||
-    host === "www.elevateforhumanity.institute"
-  ) {
-    return NextResponse.next();
-  }
+  const url = req.nextUrl.clone();
 
-  // Only redirect Vercel preview URLs
-  if (host.endsWith(".vercel.app")) {
-    const url = req.nextUrl.clone();
+  // Force canonical .org for public pages
+  if (
+    host.includes("elevateforhumanity.institute") &&
+    !url.pathname.startsWith("/apply") &&
+    !url.pathname.startsWith("/login") &&
+    !url.pathname.startsWith("/lms") &&
+    !url.pathname.startsWith("/admin") &&
+    !url.pathname.startsWith("/dashboard")
+  ) {
     url.hostname = "www.elevateforhumanity.org";
     url.protocol = "https:";
-    return NextResponse.redirect(url, 308);
+    return NextResponse.redirect(url, 301);
   }
 
   return NextResponse.next();
