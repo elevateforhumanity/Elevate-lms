@@ -35,124 +35,46 @@ export default function ProgramsBioSitePage() {
 
   const links = [
     {
-      title: 'Programs Catalog',
-      description: 'Browse our complete catalog of training programs',
-      href: '/programs-catalog',
-      icon: BookOpen,
-      image: '/images/programs-catalog-hero.jpg',
-      color: 'orange',
-    },
-    {
-      title: 'Program Finder',
-      description: 'Take our quiz to find your perfect program match',
-      href: '/program-finder',
-      icon: Search,
-      image: '/media/programs/cpr-group-training-hd.jpg',
-      color: 'blue',
-    },
-    {
-      title: 'Compare Programs',
-      description: 'Side-by-side comparison of programs',
-      href: '/compare-programs',
-      icon: GitCompare,
-      image: '/images/compare-programs-hero.jpg',
-      color: 'green',
-    },
-    {
-      title: 'Apprenticeships',
-      description: 'Earn while you learn with paid apprenticeships',
-      href: '/apprenticeships',
-      icon: Briefcase,
-      image: '/images/apprenticeships-card.jpg',
-      color: 'purple',
-    },
-    {
-      title: 'Individual Courses',
-      description: 'Take single courses to build specific skills',
-      href: '/courses',
-      icon: BookOpen,
-      image: '/images/homepage/funded-programs.jpg',
-      color: 'pink',
-    },
-    {
-      title: 'Micro Classes',
-      description: 'Short 1-4 hour classes for quick skills',
-      href: '/micro-classes',
-      icon: Zap,
-      image: '/images/micro-classes-hero.jpg',
-      color: 'yellow',
-    },
-    {
-      title: 'Career Pathways',
-      description: 'Clear paths from training to employment',
-      href: '/pathways',
-      icon: TrendingUp,
-      image: '/media/programs/workforce-readiness-hero.jpg',
-      color: 'indigo',
-    },
-    {
-      title: 'Industries',
-      description: 'Explore programs by industry sector',
-      href: '/industries',
-      icon: Building2,
-      image: '/images/industries-card.jpg',
-      color: 'cyan',
-    },
-    {
-      title: 'Credentials',
-      description: "Industry-recognized certifications you'll earn",
-      href: '/credentials',
-      icon: Award,
+      title: 'Healthcare',
+      description: 'CNA, Medical Assistant, Home Health Aide',
+      href: '/programs/healthcare',
+      icon: GraduationCap,
       image: '/media/programs/efh-cna-hero.jpg',
-      color: 'red',
     },
     {
-      title: 'Certificates',
-      description: 'Completion certificates and digital badges',
-      href: '/certificates',
-      icon: FileCheck,
-      image: '/media/programs/efh-beauty-career-educator-hero.jpg',
-      color: 'teal',
+      title: 'Skilled Trades',
+      description: 'HVAC, Electrical, Plumbing, Construction',
+      href: '/programs/skilled-trades',
+      icon: Briefcase,
+      image: '/media/programs/efh-building-tech-hero.jpg',
     },
     {
-      title: 'Accreditation',
-      description: 'Our accreditations and quality standards',
-      href: '/accreditation',
-      icon: CheckCircle,
-      image: '/media/programs/cpr-certification-group-hd.jpg',
-      color: 'emerald',
+      title: 'Barber & Beauty',
+      description: 'Barbering, Cosmetology, Esthetics',
+      href: '/programs/barber-apprenticeship',
+      icon: Award,
+      image: '/media/programs/efh-barber-hero.jpg',
     },
     {
-      title: 'Platform Features',
-      description: 'LMS, mobile app, AI tutoring, and more',
-      href: '/features',
-      icon: Zap,
-      image: '/media/programs/hvac-highlight-3.jpg',
-      color: 'violet',
+      title: 'Technology',
+      description: 'IT Support, Cybersecurity, Web Development',
+      href: '/programs/technology',
+      icon: BookOpen,
+      image: '/media/programs/efh-building-tech-card.jpg',
     },
     {
-      title: 'Locations',
-      description: 'Find training locations near you',
-      href: '/locations',
-      icon: MapPin,
-      image: '/images/locations-card.jpg',
-      color: 'rose',
+      title: 'Business',
+      description: 'Accounting, Management, Entrepreneurship',
+      href: '/programs/business',
+      icon: Building2,
+      image: '/media/programs/workforce-readiness-hero.jpg',
     },
     {
-      title: 'Class Schedule',
-      description: 'View upcoming class start dates',
-      href: '/schedule',
-      icon: Calendar,
-      image: '/images/schedule-card.jpg',
-      color: 'amber',
-    },
-    {
-      title: 'Calendar',
-      description: 'Book a virtual team meeting',
-      href: '/calendar',
-      icon: CalendarDays,
-      image: '/images/calendar-card.jpg',
-      color: 'lime',
+      title: 'CDL & Transportation',
+      description: 'Commercial Driving License training',
+      href: '/programs/cdl-transportation',
+      icon: TrendingUp,
+      image: '/media/programs/cdl-hero.jpg',
     },
   ];
 
@@ -205,41 +127,34 @@ export default function ProgramsBioSitePage() {
 
 
 
-      {/* Program Cards Grid - Square Cards */}
+      {/* Program Cards Grid - Uniform Layout */}
       <section className="pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {links.map((link) => {
               const Icon = link.icon;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="group block bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all border-2 border-gray-100 hover:border-brand-orange-500 hover:scale-105 transform overflow-hidden aspect-square"
+                  className="group block bg-white rounded-lg shadow hover:shadow-lg transition-all border border-gray-200 hover:border-gray-900 overflow-hidden"
                 >
-                  {/* Image/Icon Section */}
-                  <div className="relative h-2/3 w-full overflow-hidden">
-                    {link.image ? (
-                      <Image
-                        src={link.image}
-                        alt={link.title}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className={`w-full h-full bg-${link.color}-100 flex items-center justify-center`}>
-                        <Icon className={`w-16 h-16 text-${link.color}-600`} />
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  {/* Image Section */}
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <Image
+                      src={link.image}
+                      alt={link.title}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   
                   {/* Text Section */}
-                  <div className="p-4 h-1/3 flex flex-col justify-center">
-                    <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 group-hover:text-brand-orange-600 transition-colors line-clamp-2">
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {link.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-gray-600 line-clamp-2">{link.description}</p>
+                    <p className="text-gray-600">{link.description}</p>
                   </div>
                 </Link>
               );
