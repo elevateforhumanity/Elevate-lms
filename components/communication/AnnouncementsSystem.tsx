@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-
+import Image from 'next/image';
 import { useState } from 'react';
 import { Megaphone, Pin, Mail, Bell, Eye, Calendar } from 'lucide-react';
 
@@ -201,10 +201,12 @@ function AnnouncementCard({ announcement }: { announcement: Announcement }) {
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
           {announcement.authorAvatar ? (
-            <img
+            <Image
               src={announcement.authorAvatar}
               alt={announcement.authorName}
-              className="w-10 h-10 rounded-full"
+              width={40}
+              height={40}
+              className="rounded-full"
             />
           ) : (
             <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-700 font-semibold">

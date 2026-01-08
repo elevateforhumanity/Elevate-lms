@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Trophy, Medal, Award } from 'lucide-react';
@@ -58,10 +59,12 @@ export function Leaderboard({ entries, timeframe = 'week' }: LeaderboardProps) {
                 )}
               </div>
 
-              <img
+              <Image
                 src={entry.avatar}
                 alt={entry.name}
-                className="w-12 h-12 rounded-full"
+                width={48}
+                height={48}
+                className="rounded-full"
               />
 
               <div className="flex-1">

@@ -220,10 +220,12 @@ export default async function AdminCoursesPage() {
                         <td className="px-6 py-4">
                           <div className="flex items-center">
                             {course.thumbnail_url ? (
-                              <img
-                                src={course.thumbnail_url}
-                                alt={course.title}
-                                className="w-12 h-12 rounded object-cover"
+                              <Image
+                                src={course.thumbnail_url as string}
+                                alt={course.title as string}
+                                width={48}
+                                height={48}
+                                className="rounded object-cover"
                               />
                             ) : (
                               <div className="w-12 h-12 rounded bg-blue-100 flex items-center justify-center">

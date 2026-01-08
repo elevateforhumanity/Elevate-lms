@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import {
   CheckCircle,
@@ -198,11 +199,14 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
               href={verification.id_front_url}
               target="_blank"
               rel="noopener noreferrer"
+              className="relative block w-full h-48"
             >
-              <img
+              <Image
                 src={verification.id_front_url}
                 alt="ID Front"
-                className="w-full h-48 object-cover rounded-lg border hover:opacity-80 transition"
+                fill
+                className="object-cover rounded-lg border hover:opacity-80 transition"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </a>
           </div>
@@ -215,11 +219,14 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
                 href={verification.id_back_url}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="relative block w-full h-48"
               >
-                <img
+                <Image
                   src={verification.id_back_url}
                   alt="ID Back"
-                  className="w-full h-48 object-cover rounded-lg border hover:opacity-80 transition"
+                  fill
+                  className="object-cover rounded-lg border hover:opacity-80 transition"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </a>
             </div>
@@ -230,11 +237,14 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
               href={verification.selfie_url}
               target="_blank"
               rel="noopener noreferrer"
+              className="relative block w-full h-48"
             >
-              <img
+              <Image
                 src={verification.selfie_url}
                 alt="Selfie"
-                className="w-full h-48 object-cover rounded-lg border hover:opacity-80 transition"
+                fill
+                className="object-cover rounded-lg border hover:opacity-80 transition"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </a>
           </div>

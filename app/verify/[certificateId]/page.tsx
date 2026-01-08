@@ -231,12 +231,14 @@ export default async function VerifyCertificatePage({
                   Scan to verify on mobile
                 </p>
                 <div className="inline-block p-4 bg-white border-2 border-gray-200 rounded-lg">
-                  <img
+                  <Image
                     src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(
                       `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.com'}/verify/${params.certificateId}`
                     )}`}
                     alt="QR Code"
-                    className="w-48 h-48"
+                    width={192}
+                    height={192}
+                    unoptimized
                   />
                 </div>
               </div>
