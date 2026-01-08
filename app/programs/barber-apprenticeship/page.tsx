@@ -1,23 +1,16 @@
 import { OptimizedVideo } from '@/components/OptimizedVideo';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { programs } from '@/app/data/programs';
 import ReactMarkdown from 'react-markdown';
 import {
-  GraduationCap,
-  Clock,
-  DollarSign,
-  MapPin,
-  CheckCircle,
-  Users,
   ExternalLink,
   FileText,
-  Award,
   Lightbulb,
   Sparkles,
   Rocket,
   Target,
-  TrendingUp,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -97,7 +90,7 @@ export default function BarberApprenticeshipPage() {
           {/* Payment Options for Self-Pay */}
           <div className="mt-8 p-6 bg-amber-50 border-2 border-amber-300 rounded-lg max-w-2xl">
             <div className="flex items-start gap-3 mb-4">
-              <DollarSign className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div className="w-full">
                 <h3 className="text-lg font-bold text-slate-900 mb-2">
                   Can't Get Funded? No Problem!
@@ -330,7 +323,7 @@ export default function BarberApprenticeshipPage() {
             {/* Transfer Hours Explanation */}
             <div className="mt-6 p-6 bg-blue-50 border-2 border-blue-300 rounded-lg">
               <h4 className="text-lg font-bold text-black mb-3 flex items-center gap-2">
-                <Award className="w-5 h-5 text-blue-600" />
+                <Image src="/images/icons/award.png" alt="Award" width={24} height={24} className="flex-shrink-0" />
                 How Transfer Hours Work
               </h4>
               <p className="text-black mb-3">
@@ -339,35 +332,35 @@ export default function BarberApprenticeshipPage() {
               </p>
               <ul className="space-y-2 text-black">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                   <span>
                     <strong>Previous barber school hours count</strong> toward
                     your 1,500-hour requirement
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                   <span>
                     <strong>Bring your transcript</strong> from your previous
                     barber school or program
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                   <span>
                     <strong>We verify with the Indiana State Board</strong> to
                     confirm your hours
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                   <span>
                     <strong>Complete remaining hours</strong> through our
                     apprenticeship program
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                   <span>
                     <strong>Earn while you finish</strong> - get paid
                     $12-15/hour for your remaining hours
@@ -404,28 +397,28 @@ export default function BarberApprenticeshipPage() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="flex items-start gap-4">
-              <Clock className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+              <Image src="/images/icons/clock.png" alt="Duration" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Duration</h3>
                 <p className="text-gray-700">12-18 months</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <DollarSign className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+              <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Cost</h3>
                 <p className="text-gray-700">Free with funding when eligible</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <MapPin className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+              <Image src="/images/icons/shield.png" alt="Format" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Format</h3>
                 <p className="text-gray-700">In-person at licensed shop</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <GraduationCap className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+              <Image src="/images/icons/award.png" alt="Outcome" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Outcome</h3>
                 <p className="text-gray-700">Barber License + Job</p>
@@ -444,25 +437,25 @@ export default function BarberApprenticeshipPage() {
           <div className="bg-white rounded-xl p-8 shadow-sm">
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">
                   Individuals interested in barbering as a career
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">
                   No prior experience required
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">
                   Justice-impacted individuals welcome
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">
                   Must be able to work in-person at a barber shop
                 </span>
@@ -518,25 +511,25 @@ export default function BarberApprenticeshipPage() {
           <div className="bg-white rounded-xl p-8 shadow-sm">
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <Users className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Case management</span>
               </li>
               <li className="flex items-start gap-3">
-                <Users className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">
                   Justice navigation for returning citizens
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Users className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Transportation resources</span>
               </li>
               <li className="flex items-start gap-3">
-                <Users className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Childcare referrals</span>
               </li>
               <li className="flex items-start gap-3">
-                <Users className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Documentation support</span>
               </li>
             </ul>
