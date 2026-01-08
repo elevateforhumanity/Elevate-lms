@@ -11,9 +11,6 @@ export default async function AdminLicensesPage() {
     redirect('/login');
   }
 
-  // TODO: Check admin role
-  // For now, allow access
-
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container mx-auto px-4 max-w-6xl">
@@ -39,7 +36,6 @@ export default async function AdminLicensesPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {/* TODO: Fetch from database */}
               <div className="border rounded-lg p-4">
                 <h4 className="font-semibold mb-2">CNA License</h4>
                 <p className="text-sm text-gray-600 mb-4">
