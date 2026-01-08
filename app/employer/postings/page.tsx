@@ -71,13 +71,7 @@ export default async function EmployerPostingsPage() {
       ) : !postings || postings.length === 0 ? (
         <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
           <p className="text-slate-600 mb-4">No job postings yet.</p>
-          <Link
-            href="/employer/postings/new"
-            className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
-          >
-            <Plus className="w-4 h-4" />
-            Create Your First Posting
-          </Link>
+          <p className="text-slate-500 text-sm">Job posting feature coming soon.</p>
         </div>
       ) : (
         <div className="grid gap-4">
