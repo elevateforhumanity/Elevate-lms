@@ -1,57 +1,85 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Highlights() {
   return (
-    <section className="bg-gray-50 py-12 md:py-24">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-12">
-          {/* Highlight 1 */}
-          <div className="text-center">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6">
-              Free Training
-            </h3>
-            <p className="text-base md:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
-              100% funded programs in healthcare, skilled trades, and technology. 
-              No tuition. No debt.
-            </p>
-            <Link
-              href="/programs"
-              className="inline-block px-8 py-4 bg-brand-red-600 text-white text-lg font-semibold rounded hover:bg-brand-red-700 transition"
-            >
-              View Programs
-            </Link>
+    <section className="bg-white py-16">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
+          How It Works
+        </h2>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="relative overflow-hidden rounded-lg shadow-lg group">
+            <div className="relative h-64">
+              <Image
+                src="/images/artlist/cropped/hero-training-1-wide.jpg"
+                alt="Students in training"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-2xl font-bold mb-2">1. Check Eligibility</h3>
+                <p className="text-sm mb-4">
+                  See if you qualify for WIOA, WRG, or DOL-funded training programs
+                </p>
+                <Link
+                  href="/eligibility"
+                  className="inline-block px-6 py-2 bg-white text-blue-900 font-semibold rounded hover:bg-gray-100 transition"
+                >
+                  Check Now
+                </Link>
+              </div>
+            </div>
           </div>
 
-          {/* Highlight 2 */}
-          <div className="text-center">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6">
-              Real Credentials
-            </h3>
-            <p className="text-base md:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
-              Earn industry-recognized certifications that employers trust and value.
-            </p>
-            <Link
-              href="/eligibility"
-              className="inline-block px-8 py-4 bg-brand-red-600 text-white text-lg font-semibold rounded hover:bg-brand-red-700 transition"
-            >
-              Check Eligibility
-            </Link>
+          <div className="relative overflow-hidden rounded-lg shadow-lg group">
+            <div className="relative h-64">
+              <Image
+                src="/media/programs/cpr-group-training-hd.jpg"
+                alt="Training programs"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-2xl font-bold mb-2">2. Choose Training</h3>
+                <p className="text-sm mb-4">
+                  Select from healthcare, trades, tech, or business programs
+                </p>
+                <Link
+                  href="/programs"
+                  className="inline-block px-6 py-2 bg-white text-blue-900 font-semibold rounded hover:bg-gray-100 transition"
+                >
+                  View Programs
+                </Link>
+              </div>
+            </div>
           </div>
 
-          {/* Highlight 3 */}
-          <div className="text-center">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 md:mb-6">
-              Clear Pathways
-            </h3>
-            <p className="text-base md:text-xl text-gray-700 mb-6 md:mb-8 leading-relaxed">
-              Structured steps from training to employment. No guesswork.
-            </p>
-            <Link
-              href="/apply"
-              className="inline-block px-8 py-4 bg-brand-red-600 text-white text-lg font-semibold rounded hover:bg-brand-red-700 transition"
-            >
-              Apply Now
-            </Link>
+          <div className="relative overflow-hidden rounded-lg shadow-lg group">
+            <div className="relative h-64">
+              <Image
+                src="/images/artlist/cropped/hero-training-5-wide.jpg"
+                alt="Career success"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                <h3 className="text-2xl font-bold mb-2">3. Get Certified</h3>
+                <p className="text-sm mb-4">
+                  Earn credentials and connect to employment opportunities
+                </p>
+                <Link
+                  href="/apply"
+                  className="inline-block px-6 py-2 bg-white text-blue-900 font-semibold rounded hover:bg-gray-100 transition"
+                >
+                  Apply Now
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

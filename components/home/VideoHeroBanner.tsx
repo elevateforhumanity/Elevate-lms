@@ -123,7 +123,7 @@ export default function VideoHeroBanner({
 
   return (
     <section
-      className="relative w-full bg-gradient-to-br from-blue-900 to-purple-900"
+      className="relative w-full bg-gradient-to-br from-blue-900 to-purple-900 -mb-1"
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
       onClick={handleUserInteraction}

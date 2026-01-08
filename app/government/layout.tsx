@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Government & Workforce Boards Portal | Elevate for Humanity",
     description: "Access compliance data, contracts, and reporting for workforce boards and government partners.",
-    images: ["/images/hero-banner-new.png"],
+    images: ["/images/artlist/cropped/hero-training-1-wide.jpg"],
     type: "website",
   },
 };
