@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -9,22 +8,24 @@ export const metadata: Metadata = {
 };
 
 export default async function InstructorCoursesPage() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
+  let user = null;
   let courses = null;
   
-  if (user) {
-    try {
+  try {
+    const supabase = await createClient();
+    const { data: { user: authUser } } = await supabase.auth.getUser();
+    user = authUser;
+    
+    if (user) {
       const { data } = await supabase
         .from('courses')
         .select('*, enrollments(count)')
         .eq('instructor_id', user.id)
         .order('created_at', { ascending: false });
       courses = data;
-    } catch (error) {
-      console.error('Error fetching courses:', error);
     }
+  } catch (error) {
+    console.error('Error in InstructorCoursesPage:', error);
   }
 
   return (
