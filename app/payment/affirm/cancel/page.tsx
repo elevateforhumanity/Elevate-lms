@@ -1,8 +1,15 @@
-'use client';
+import { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Payment Cancelled | Elevate for Humanity',
+  description: 'Payment was cancelled',
+  alternates: {
+    canonical: 'https://elevateforhumanity.institute/payment/affirm/cancel',
+  },
+};
 
 export const dynamic = 'force-dynamic';
-
-import Link from 'next/link';
 import { XCircle } from 'lucide-react';
 
 export default function AffirmCancelPage() {

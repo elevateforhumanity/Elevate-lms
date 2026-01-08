@@ -1,8 +1,15 @@
-'use client';
+import { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Funding Approved | Elevate for Humanity',
+  description: 'Your funding has been approved and processed',
+  alternates: {
+    canonical: 'https://elevateforhumanity.institute/funding/success',
+  },
+};
 
 export const dynamic = 'force-dynamic';
-
-import Link from 'next/link';
 import { CheckCircle } from 'lucide-react';
 
 export default function FundingSuccessPage() {

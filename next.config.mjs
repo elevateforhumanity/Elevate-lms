@@ -32,6 +32,13 @@ const nextConfig = {
     webpackBuildWorker: true,
     // optimizeCss: true, // Disabled - requires critters package
   },
+  
+  // Suppress middleware deprecation warning (middleware.ts is still correct for our use case)
+  logging: {
+    fetches: {
+      fullUrl: false,
+    },
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

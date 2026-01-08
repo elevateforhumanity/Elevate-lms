@@ -1,10 +1,15 @@
+import { Metadata } from 'next';
+import Link from 'next/link';
 
-
-'use client';
+export const metadata: Metadata = {
+  title: 'Enrollment Successful | Elevate for Humanity',
+  description: 'Your enrollment in the Barber Apprenticeship Program was successful',
+  alternates: {
+    canonical: 'https://elevateforhumanity.institute/enroll/success',
+  },
+};
 
 export const dynamic = 'force-dynamic';
-
-import Link from 'next/link';
 import {
   AlertTriangle,
   CheckCircle,
