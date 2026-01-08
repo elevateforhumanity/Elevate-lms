@@ -46,6 +46,8 @@ const nextConfig = {
       moduleIds: 'deterministic',
       splitChunks: {
         chunks: 'all',
+        maxInitialRequests: 25,
+        minSize: 20000,
         cacheGroups: {
           default: false,
           vendors: false,
@@ -64,6 +66,20 @@ const nextConfig = {
             },
             priority: 30,
             minChunks: 1,
+            reuseExistingChunk: true,
+          },
+          // Split large UI libraries
+          ui: {
+            test: /[\\/]node_modules[\\/](@radix-ui|lucide-react)[\\/]/,
+            name: 'ui-libs',
+            priority: 35,
+            reuseExistingChunk: true,
+          },
+          // Split Supabase
+          supabase: {
+            test: /[\\/]node_modules[\\/](@supabase)[\\/]/,
+            name: 'supabase',
+            priority: 35,
             reuseExistingChunk: true,
           },
           commons: {
