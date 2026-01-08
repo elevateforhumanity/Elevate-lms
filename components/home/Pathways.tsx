@@ -1,12 +1,12 @@
 export default function Pathways() {
   return (
-    <section className="bg-white py-24">
+    <section className="bg-white py-12 md:py-24">
       <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
+        <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-8 md:mb-12 text-center">
           What You Can Do Here
         </h2>
 
-        <div className="space-y-6 text-xl text-gray-700">
+        <div className="space-y-4 md:space-y-6 text-base md:text-xl text-gray-700">
           <p className="flex items-start">
             <span className="mr-4 text-2xl">•</span>
             <span>Explore training programs tied to real careers.</span>
