@@ -12,11 +12,20 @@ export default async function InstructorCoursesPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const { data: courses } = await supabase
-    .from('courses')
-    .select('*, enrollments(count)')
-    .eq('instructor_id', user.id)
-    .order('created_at', { ascending: false });
+  let courses = null;
+  
+  if (user) {
+    try {
+      const { data } = await supabase
+        .from('courses')
+        .select('*, enrollments(count)')
+        .eq('instructor_id', user.id)
+        .order('created_at', { ascending: false });
+      courses = data;
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+    }
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -24,7 +33,19 @@ export default async function InstructorCoursesPage() {
         <h1 className="text-3xl font-bold">My Courses</h1>
       </div>
 
-      {!courses || courses.length === 0 ? (
+      {!user ? (
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <p className="text-blue-900 mb-4">
+            Please log in to view your courses.
+          </p>
+          <a
+            href="/login"
+            className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Log In
+          </a>
+        </div>
+      ) : !courses || courses.length === 0 ? (
         <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
           <p className="text-slate-600 mb-4">No courses assigned yet.</p>
           <p className="text-slate-500 text-sm">
