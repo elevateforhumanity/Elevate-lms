@@ -82,6 +82,11 @@ export async function POST(req: Request) {
       process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err: unknown) {
+    logger.error('Stripe webhook signature verification failed', err);
+    return NextResponse.json(
+      { error: 'Invalid signature' },
+      { status: 400 }
+    );
   }
 
   try {
