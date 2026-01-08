@@ -1,13 +1,13 @@
 import { Metadata } from 'next';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import Intro from '@/components/home/Intro';
-import FrameworkDiagram from '@/components/home/FrameworkDiagram';
 import Orientation from '@/components/home/Orientation';
-import Programs from '@/components/home/Programs';
+import Highlights from '@/components/home/Highlights';
 import Pathways from '@/components/home/Pathways';
+import Testimonials from '@/components/home/Testimonials';
 import Assurance from '@/components/home/Assurance';
 import Start from '@/components/home/Start';
-import { currentHomeHero, enableAudioNarration } from '@/config/hero-videos';
+import { currentHomeHero } from '@/config/hero-videos';
 
 export const metadata: Metadata = {
   title: 'Elevate for Humanity | Workforce and Education Hub',
@@ -26,18 +26,17 @@ export default function HomePage() {
     <>
       <VideoHeroBanner
         videoSrc={currentHomeHero}
-        withAudio={enableAudioNarration}
-        voiceoverSrc="/videos/voiceover.mp3"
+        withAudio={false}
         headline="Elevate for Humanity"
         subheadline="A regulated workforce development and credentialing institute"
         primaryCTA={{ text: 'Explore Programs', href: '/programs' }}
         secondaryCTA={{ text: 'Check Eligibility', href: '/eligibility' }}
       />
       <Intro />
-      <FrameworkDiagram />
       <Orientation />
-      <Programs />
+      <Highlights />
       <Pathways />
+      <Testimonials />
       <Assurance />
       <Start />
     </>

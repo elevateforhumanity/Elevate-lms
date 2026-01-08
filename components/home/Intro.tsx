@@ -1,28 +1,19 @@
-import Image from 'next/image';
-
 export default function Intro() {
   return (
-    <section className="bg-white py-20">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Elevate for Humanity
-            </h1>
-            <p className="text-xl text-gray-700 leading-relaxed">
-              A regulated workforce development and credentialing institute connecting 
-              students to approved training, recognized credentials, and real career pathways.
-            </p>
-          </div>
-          <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
-            <Image
-              src="/images/homepage/students.jpg"
-              alt="Students in training"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
+    <section className="bg-white py-24">
+      <div className="max-w-5xl mx-auto px-6 text-center">
+        <h2 className="text-5xl font-bold text-gray-900 mb-8">
+          What is Elevate for Humanity?
+        </h2>
+        <p className="text-2xl text-gray-700 leading-relaxed mb-6">
+          A regulated workforce development and credentialing institute connecting 
+          students to approved training, recognized credentials, and real career pathways.
+        </p>
+        <p className="text-xl text-gray-600 leading-relaxed">
+          We provide access to free, funded training programs in healthcare, skilled trades, 
+          technology, and business. Our programs meet industry standards, lead to recognized 
+          certifications, and connect directly to employment opportunities.
+        </p>
       </div>
     </section>
   );
