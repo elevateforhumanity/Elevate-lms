@@ -1,0 +1,14 @@
+#!/bin/sh
+# Prevent committing .env.local
+if git diff --cached --name-only | grep -q "\.env\.local"; then
+  echo "❌ ERROR: Attempting to commit .env.local"
+  echo "This file contains sensitive credentials."
+  exit 1
+fi
+
+# Check for API keys in staged files
+if git diff --cached | grep -E "(sk-|eyJ|AKIA|whsec_)" > /dev/null; then
+  echo "⚠️  WARNING: Possible API key detected"
+  echo "Please review your changes."
+  exit 1
+fi

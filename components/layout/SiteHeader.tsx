@@ -3,7 +3,6 @@
 import React from 'react';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import {
   Menu,
@@ -52,34 +51,38 @@ export default function SiteHeader() {
 
   // Get user and update navigation
   useEffect(() => {
-    // Skip auth initialization if Supabase is not configured
-    try {
-      const supabase = createClient();
+    const supabase = createClient();
+    
+    // If Supabase is not configured, skip auth
+    if (!supabase) {
+      setNavigation(getNavigation(null));
+      return;
+    }
 
-      const getUser = async () => {
+    const getUser = async () => {
+      try {
         const {
           data: { user },
         } = await supabase.auth.getUser();
         setUser(user);
         setNavigation(getNavigation(user));
-      };
+      } catch (error) {
+        console.warn('Failed to get user:', error);
+        setNavigation(getNavigation(null));
+      }
+    };
 
-      getUser();
+    getUser();
 
-      // Listen for auth changes
-      const {
-        data: { subscription },
-      } = supabase.auth.onAuthStateChange((_event, session) => {
-        setUser(session?.user ?? null);
-        setNavigation(getNavigation(session?.user ?? null));
-      });
+    // Listen for auth changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      setNavigation(getNavigation(session?.user ?? null));
+    });
 
-      return () => subscription.unsubscribe();
-    } catch (error) {
-      // Supabase not configured - continue without auth
-      console.warn('Auth disabled: Supabase credentials not configured');
-      setNavigation(getNavigation(null));
-    }
+    return () => subscription.unsubscribe();
   }, []);
 
   // Debug: Check if navigation is loaded
@@ -117,7 +120,7 @@ export default function SiteHeader() {
 
   return (
     <>
-      <div className="w-full h-full bg-brand-red-600 shadow-sm">
+      <div className="w-full h-full bg-white border-b border-gray-200 shadow-sm">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4 relative">
           {/* Logo */}
           <Link
@@ -126,12 +129,9 @@ export default function SiteHeader() {
             aria-label="Go to homepage"
           >
             <div className="relative h-10 w-10 sm:h-12 sm:w-12 shrink-0 overflow-hidden">
-              <Image
+              <img
                 src="/logo.png"
                 alt="Elevate for Humanity"
-                width={48}
-                height={48}
-                priority
                 className="h-full w-full object-contain transition-opacity hover:opacity-80"
               />
             </div>
