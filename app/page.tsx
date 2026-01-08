@@ -3,6 +3,7 @@ import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import Intro from '@/components/home/Intro';
 import FrameworkDiagram from '@/components/home/FrameworkDiagram';
 import Orientation from '@/components/home/Orientation';
+import Programs from '@/components/home/Programs';
 import Pathways from '@/components/home/Pathways';
 import Assurance from '@/components/home/Assurance';
 import Start from '@/components/home/Start';
@@ -35,6 +36,7 @@ export default function HomePage() {
       <Intro />
       <FrameworkDiagram />
       <Orientation />
+      <Programs />
       <Pathways />
       <Assurance />
       <Start />
