@@ -4,7 +4,7 @@ export const maxDuration = 60;
 // app/api/partners/lead/route.ts
 import { NextResponse } from 'next/server';
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
-import { createOrUpdateContact, createOpportunity } from '@/lib/integrations/salesforce';
+import { createOrUpdateContact, createOpportunity, createOrUpdateAccount, createLead } from '@/lib/integrations/salesforce';
 
 export async function POST(request: Request) {
   const { name, email, phone, company, programInterest } = await request.json();
@@ -19,6 +19,27 @@ export async function POST(request: Request) {
   const [firstName, ...rest] = name.split(' ');
   const lastName = rest.join(' ') || 'Partner';
 
+  // Create Account if company provided
+  let accountId = null;
+  if (company) {
+    accountId = await createOrUpdateAccount({
+      name: company,
+      phone,
+    });
+  }
+
+  // Create Lead (potential customer)
+  const leadId = await createLead({
+    firstName,
+    lastName,
+    email,
+    company: company || 'Unknown',
+    phone,
+    leadSource: 'Web',
+    status: 'Open - Not Contacted',
+  });
+
+  // Create Contact
   const contactId = await createOrUpdateContact({
     email,
     firstName,
@@ -26,16 +47,23 @@ export async function POST(request: Request) {
     phone,
   });
 
+  // Create Opportunity
   const oppName = `Elevate LMS - ${company || email}`;
   const closeDate = new Date();
   closeDate.setDate(closeDate.getDate() + 30);
 
-  await createOpportunity({
+  const opportunityId = await createOpportunity({
     name: oppName,
     closeDate: closeDate.toISOString().slice(0, 10),
     stageName: 'Qualification',
     amount: 5000,
   });
 
-  return NextResponse.json({ ok: true, contactId });
+  return NextResponse.json({ 
+    ok: true, 
+    accountId,
+    leadId,
+    contactId,
+    opportunityId
+  });
 }
