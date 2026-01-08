@@ -16,7 +16,7 @@ export default function Highlights() {
             </p>
             <Link
               href="/programs"
-              className="inline-block px-8 py-4 bg-gray-900 text-white text-lg font-semibold rounded hover:bg-gray-800 transition"
+              className="inline-block px-8 py-4 bg-brand-red-600 text-white text-lg font-semibold rounded hover:bg-brand-red-700 transition"
             >
               View Programs
             </Link>
@@ -32,7 +32,7 @@ export default function Highlights() {
             </p>
             <Link
               href="/eligibility"
-              className="inline-block px-8 py-4 bg-gray-900 text-white text-lg font-semibold rounded hover:bg-gray-800 transition"
+              className="inline-block px-8 py-4 bg-brand-red-600 text-white text-lg font-semibold rounded hover:bg-brand-red-700 transition"
             >
               Check Eligibility
             </Link>
@@ -48,7 +48,7 @@ export default function Highlights() {
             </p>
             <Link
               href="/apply"
-              className="inline-block px-8 py-4 bg-gray-900 text-white text-lg font-semibold rounded hover:bg-gray-800 transition"
+              className="inline-block px-8 py-4 bg-brand-red-600 text-white text-lg font-semibold rounded hover:bg-brand-red-700 transition"
             >
               Apply Now
             </Link>

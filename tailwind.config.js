@@ -102,19 +102,19 @@ export default {
         soft: '0 10px 30px rgba(0,0,0,0.08)',
       },
       colors: {
-        // Primary Brand Colors
+        // Primary Brand Colors - Red, Blue, White, Black
         brand: {
-          orange: {
-            50: '#fff7ed',
-            100: '#ffedd5',
-            200: '#fed7aa',
-            300: '#fdba74',
-            400: '#fb923c',
-            500: '#f97316', // Main orange
-            600: '#ea580c', // Primary CTA
-            700: '#c2410c',
-            800: '#9a3412',
-            900: '#7c2d12',
+          red: {
+            50: '#fef2f2',
+            100: '#fee2e2',
+            200: '#fecaca',
+            300: '#fca5a5',
+            400: '#f87171',
+            500: '#ef4444', // Main red
+            600: '#dc2626', // Primary red (nav)
+            700: '#b91c1c',
+            800: '#991b1b',
+            900: '#7f1d1d',
           },
           blue: {
             50: '#eff6ff',
@@ -128,23 +128,11 @@ export default {
             800: '#1e40af',
             900: '#1e3a8a',
           },
-          green: {
-            50: '#f0fdf4',
-            100: '#dcfce7',
-            200: '#bbf7d0',
-            300: '#86efac',
-            400: '#4ade80',
-            500: '#22c55e', // Success green
-            600: '#16a34a',
-            700: '#15803d',
-            800: '#166534',
-            900: '#14532d',
-          },
         },
-        // Legacy brand colors (keep for backwards compatibility)
-        brandPrimary: '#ea580c', // Orange
+        // Legacy brand colors (updated to red/blue)
+        brandPrimary: '#dc2626', // Red
         brandSecondary: '#2563eb', // Blue
-        brandSuccess: '#16a34a', // Green
+        brandSuccess: '#16a34a', // Green (keep for success states)
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

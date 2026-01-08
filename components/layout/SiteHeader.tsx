@@ -117,7 +117,7 @@ export default function SiteHeader() {
 
   return (
     <>
-      <div className="w-full h-full bg-white border-b border-gray-200 shadow-sm">
+      <div className="w-full h-full bg-brand-red-600 shadow-sm">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4 relative">
           {/* Logo */}
           <Link
@@ -155,7 +155,7 @@ export default function SiteHeader() {
                     <>
                       <button
                         type="button"
-                        className="font-bold text-gray-700 hover:text-purple-600 transition flex items-center gap-1 py-2 text-base uppercase tracking-wide"
+                        className="font-bold text-white hover:text-gray-200 transition flex items-center gap-1 py-2 text-base uppercase tracking-wide"
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
