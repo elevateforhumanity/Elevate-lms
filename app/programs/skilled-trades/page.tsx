@@ -152,25 +152,25 @@ export default function SkilledTradesPage() {
           <div className="bg-white rounded-xl p-8 shadow-sm">
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <Users className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Case management</span>
               </li>
               <li className="flex items-start gap-3">
-                <Users className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">
                   Justice navigation for returning citizens
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Users className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Transportation resources</span>
               </li>
               <li className="flex items-start gap-3">
-                <Users className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Childcare referrals</span>
               </li>
               <li className="flex items-start gap-3">
-                <Users className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">Documentation support</span>
               </li>
             </ul>
