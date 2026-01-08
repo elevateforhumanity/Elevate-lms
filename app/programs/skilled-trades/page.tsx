@@ -1,14 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import {
-  GraduationCap,
-  Clock,
-  DollarSign,
-  MapPin,
-  CheckCircle,
-  Users,
-  Wrench,
-} from 'lucide-react';
+import Image from 'next/image';
 import { CompactHero } from '@/components/heroes/CompactHero';
 
 export const metadata: Metadata = {
@@ -44,28 +36,28 @@ export default function SkilledTradesPage() {
           <h2 className="text-3xl font-bold text-black mb-8">At-a-Glance</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="flex items-start gap-4">
-              <Clock className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+              <Image src="/images/icons/clock.png" alt="Duration" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Duration</h3>
                 <p className="text-gray-700">8-24 weeks</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <DollarSign className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+              <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Cost</h3>
                 <p className="text-gray-700">Free with funding when eligible</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <MapPin className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+              <Image src="/images/icons/shield.png" alt="Format" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Format</h3>
                 <p className="text-gray-700">In-person</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <GraduationCap className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+              <Image src="/images/icons/award.png" alt="Outcome" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Outcome</h3>
                 <p className="text-gray-700">
@@ -86,25 +78,25 @@ export default function SkilledTradesPage() {
           <div className="bg-white rounded-xl p-8 shadow-sm">
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">
                   Individuals seeking career change or advancement
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">
                   No prior experience required for most programs
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">
                   Justice-impacted individuals welcome
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">
                   Barriers support available
                 </span>
