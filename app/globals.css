@@ -8,18 +8,9 @@
    PREVENT FLASH OF UNSTYLED CONTENT ON FIRST LOAD
    ============================================================================ */
 
-/* Show content immediately on subsequent loads (fonts cached) */
+/* Show content immediately - no FOUC prevention needed */
+/* Fonts load fast enough with preconnect, no need to hide content */
 body {
-  opacity: 1;
-  transition: opacity 0.2s ease-in;
-}
-
-/* On first load, fade in once fonts are ready */
-.fonts-loading body {
-  opacity: 0;
-}
-
-.fonts-loaded body {
   opacity: 1;
 }
 
