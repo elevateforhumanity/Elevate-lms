@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 
@@ -7,8 +9,15 @@ export const metadata: Metadata = {
 };
 
 export default async function InstructorAddStudentPage() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  let user = null;
+
+  try {
+    const supabase = await createClient();
+    const { data: authData } = await supabase.auth.getUser();
+    user = authData.user;
+  } catch (error) {
+    console.error('Error in InstructorAddStudentPage:', error);
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">

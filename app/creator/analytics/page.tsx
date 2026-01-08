@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 
@@ -7,49 +9,59 @@ export const metadata: Metadata = {
 };
 
 export default async function CreatorAnalyticsPage() {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
+  let user = null;
   let totalEnrollments = 0;
   let activeEnrollments = 0;
   let completionRate = 0;
 
-  if (user) {
+  try {
+    const supabase = await createClient();
+    
     try {
-      const { data: courses } = await supabase
-        .from('courses')
-        .select('id')
-        .eq('creator_id', user.id);
-
-      const courseIds = courses?.map(c => c.id) || [];
-
-      if (courseIds.length > 0) {
-        const { count: total } = await supabase
-          .from('enrollments')
-          .select('*', { count: 'exact', head: true })
-          .in('course_id', courseIds);
-        totalEnrollments = total || 0;
-
-        const { count: active } = await supabase
-          .from('enrollments')
-          .select('*', { count: 'exact', head: true })
-          .in('course_id', courseIds)
-          .eq('status', 'active');
-        activeEnrollments = active || 0;
-
-        const { count: completed } = await supabase
-          .from('enrollments')
-          .select('*', { count: 'exact', head: true })
-          .in('course_id', courseIds)
-          .eq('status', 'completed');
+      const { data: authData, error: authError } = await supabase.auth.getUser();
+      
+      if (!authError && authData.user) {
+        user = authData.user;
         
-        if (totalEnrollments > 0) {
-          completionRate = Math.round(((completed || 0) / totalEnrollments) * 100);
+        const { data: courses, error: coursesError } = await supabase
+          .from('courses')
+          .select('id')
+          .eq('creator_id', user.id);
+
+        if (!coursesError && courses) {
+          const courseIds = courses.map(c => c.id);
+
+          if (courseIds.length > 0) {
+            const { count: total } = await supabase
+              .from('enrollments')
+              .select('*', { count: 'exact', head: true })
+              .in('course_id', courseIds);
+            totalEnrollments = total || 0;
+
+            const { count: active } = await supabase
+              .from('enrollments')
+              .select('*', { count: 'exact', head: true })
+              .in('course_id', courseIds)
+              .eq('status', 'active');
+            activeEnrollments = active || 0;
+
+            const { count: completed } = await supabase
+              .from('enrollments')
+              .select('*', { count: 'exact', head: true })
+              .in('course_id', courseIds)
+              .eq('status', 'completed');
+            
+            if (totalEnrollments > 0) {
+              completionRate = Math.round(((completed || 0) / totalEnrollments) * 100);
+            }
+          }
         }
       }
-    } catch (error) {
-      console.error('Error fetching analytics:', error);
+    } catch (innerError) {
+      console.error('Inner error in CreatorAnalyticsPage:', innerError);
     }
+  } catch (outerError) {
+    console.error('Outer error in CreatorAnalyticsPage:', outerError);
   }
 
   return (
