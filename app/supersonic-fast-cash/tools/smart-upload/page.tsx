@@ -3,6 +3,7 @@
 'use client';
 
 import { logger } from '@/lib/logger';
+import Image from 'next/image';
 import { useState, useCallback, useRef } from 'react';
 import {
   Upload,
@@ -313,12 +314,14 @@ export default function SmartUploadPage() {
               >
                 <div className="flex items-start gap-6">
                   {/* Preview */}
-                  <div className="w-32 h-32 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                  <div className="relative w-32 h-32 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
                     {file.file.type.startsWith('image/') ? (
-                      <img
+                      <Image
                         src={file.preview}
                         alt={file.file.name}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        sizes="128px"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">

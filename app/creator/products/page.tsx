@@ -90,12 +90,14 @@ export default async function CreatorProductsPage() {
                   key={product.id}
                   className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
                 >
-                  <div className="aspect-video bg-white flex items-center justify-center">
+                  <div className="relative aspect-video bg-white flex items-center justify-center">
                     {product.thumbnail_url ? (
-                      <img
+                      <Image
                         src={product.thumbnail_url}
                         alt={product.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     ) : (
                       <svg

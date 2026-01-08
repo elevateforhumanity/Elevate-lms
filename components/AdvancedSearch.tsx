@@ -273,10 +273,12 @@ export function AdvancedSearch({ onSearch }: AdvancedSearchProps) {
             {results.map((result) => (
               <Card key={result.id} className="hover:shadow-lg transition">
                 <div className="relative h-48 bg-gray-200">
-                  <img
+                  <Image
                     src={result.image}
                     alt={result.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-brand-orange-600 text-white text-xs font-semibold rounded-full">

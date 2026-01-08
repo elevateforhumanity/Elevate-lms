@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-
+import Image from 'next/image';
 import { useState, useRef, useCallback } from 'react';
 import {
   Upload,
@@ -290,10 +290,12 @@ export function AdvancedFileUpload({
                 {/* Preview or Icon */}
                 <div className="flex-shrink-0">
                   {uploadFile.preview ? (
-                    <img
+                    <Image
                       src={uploadFile.preview}
                       alt={uploadFile.file.name}
-                      className="w-12 h-12 object-cover rounded"
+                      width={48}
+                      height={48}
+                      className="object-cover rounded"
                     />
                   ) : (
                     <div className="w-12 h-12 flex items-center justify-center bg-slate-100 rounded">

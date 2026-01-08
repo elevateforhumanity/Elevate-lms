@@ -183,10 +183,12 @@ export function StudentPortfolio() {
       <div className="   text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <img
+            <Image
               src={student.avatar}
               alt={student.name}
-              className="w-32 h-32 rounded-full border-4 border-white shadow-lg"
+              width={128}
+              height={128}
+              className="rounded-full border-4 border-white shadow-lg"
             />
             <div className="flex-1 text-center md:text-left">
               <h1 className="text-4xl font-bold mb-2 text-2xl md:text-3xl lg:text-4xl">{student.name}</h1>
@@ -276,11 +278,15 @@ className="text-white hover:text-red-100 transition-colors">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects.map((project) => (
                 <Card key={project.id} className="overflow-hidden hover:shadow-xl transition-shadow">
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="w-full h-48 object-cover"
-                  />
+                  <div className="relative w-full h-48">
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-3">
                       <h3 className="text-xl font-bold text-gray-900">{project.title}</h3>
