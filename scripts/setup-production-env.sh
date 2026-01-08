@@ -72,7 +72,7 @@ STRIPE_PRICE_CAREER=
 # -----------------------------------------------------------------------------
 # EMAIL - Resend
 # -----------------------------------------------------------------------------
-RESEND_API_KEY=re_gBrK59nn_CAeQ8tyU7pihrvj6Y3Q3T8kJ
+RESEND_API_KEY=GET_FROM_RESEND_DASHBOARD
 EMAIL_FROM=noreply@elevateforhumanity.org
 NOTIFY_EMAIL_TO=admin@elevateforhumanity.org
 NOTIFY_EMAIL_FROM=noreply@elevateforhumanity.org
