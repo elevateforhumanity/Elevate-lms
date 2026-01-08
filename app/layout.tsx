@@ -221,6 +221,22 @@ export default function RootLayout({
           backgroundColor: '#ffffff',
         }}
       >
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Prevent FOUC on first load
+              (function() {
+                if (document.fonts && document.fonts.ready) {
+                  document.documentElement.classList.add('fonts-loading');
+                  document.fonts.ready.then(function() {
+                    document.documentElement.classList.remove('fonts-loading');
+                    document.documentElement.classList.add('fonts-loaded');
+                  });
+                }
+              })();
+            `,
+          }}
+        />
         <UnregisterSW />
 
         <a

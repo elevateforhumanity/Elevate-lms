@@ -5,6 +5,25 @@
 @tailwind utilities;
 
 /* ============================================================================
+   PREVENT FLASH OF UNSTYLED CONTENT ON FIRST LOAD
+   ============================================================================ */
+
+/* Show content immediately on subsequent loads (fonts cached) */
+body {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+
+/* On first load, fade in once fonts are ready */
+.fonts-loading body {
+  opacity: 0;
+}
+
+.fonts-loaded body {
+  opacity: 1;
+}
+
+/* ============================================================================
    BASE STYLES - Reset, Typography, Layout
    ============================================================================ */
 
