@@ -39,7 +39,7 @@ export default function Pathways() {
               <div className="p-6 text-white">
                 <h3 className="text-2xl font-bold mb-2">Get Funded</h3>
                 <p className="mb-4">See if you qualify for WIOA, WRG, or DOL funding to cover 100% of costs</p>
-                <Link href="/eligibility" className="text-white underline font-semibold">
+                <Link href="/wioa-eligibility" className="text-white underline font-semibold">
                   Check Eligibility →
                 </Link>
               </div>

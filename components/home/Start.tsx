@@ -16,7 +16,7 @@ export default function Start() {
             Explore Programs
           </Link>
           <Link
-            href="/eligibility"
+            href="/wioa-eligibility"
             className="px-8 py-4 bg-white text-brand-red-600 text-lg font-semibold rounded border-2 border-brand-red-600 hover:bg-gray-50 transition"
           >
             Check Eligibility

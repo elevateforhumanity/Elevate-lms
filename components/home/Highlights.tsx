@@ -25,7 +25,7 @@ export default function Highlights() {
                   See if you qualify for WIOA, WRG, or DOL-funded training programs
                 </p>
                 <Link
-                  href="/eligibility"
+                  href="/wioa-eligibility"
                   className="inline-block px-6 py-2 bg-white text-blue-900 font-semibold rounded hover:bg-gray-100 transition"
                 >
                   Check Now
