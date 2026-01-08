@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic';
 
-export default function LoginLayout({
+export default function InviteLayout({
   children,
 }: {
   children: React.ReactNode;

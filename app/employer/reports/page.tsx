@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
-import { requireRole } from '@/lib/auth/require-role';
+import { createClient } from '@/lib/supabase/server';
+
 
 export const metadata: Metadata = {
   title: 'Reports | Elevate for Humanity',
@@ -7,7 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default async function EmployerReportsPage() {
-  await requireRole(['employer']);
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
   return (
     <div className="container mx-auto px-4 py-8">

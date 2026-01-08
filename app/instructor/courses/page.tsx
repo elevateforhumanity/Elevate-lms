@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { requireRole } from '@/lib/auth/require-role';
+
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default async function InstructorCoursesPage() {
-  const { user } = await requireRole(['instructor']);
   const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
   const { data: courses } = await supabase
     .from('courses')

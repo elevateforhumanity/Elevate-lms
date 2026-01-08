@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { requireRole } from '@/lib/auth/require-role';
+
 import Link from 'next/link';
 import { Plus } from 'lucide-react';
 
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default async function EmployerPostingsPage() {
-  const { user } = await requireRole(['employer']);
   const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
   const { data: postings } = await supabase
     .from('job_postings')

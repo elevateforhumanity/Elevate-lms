@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { requireRole } from '@/lib/auth/require-role';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Employer Verification | Elevate for Humanity',
@@ -8,11 +8,22 @@ export const metadata: Metadata = {
 };
 
 export default async function EmployerVerificationPage() {
-  await requireRole(['employer']);
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Employer Verification</h1>
+      
+      {!user && (
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+          <p className="text-blue-900">
+            <Link href="/login" className="font-semibold hover:underline">Login</Link> or{' '}
+            <Link href="/signup" className="font-semibold hover:underline">create an account</Link> to get verified as an employer.
+          </p>
+        </div>
+      )}
+      
       <div className="bg-white rounded-lg shadow-sm border p-6">
         <p className="text-slate-600 mb-4">
           Complete your employer verification to access all features.

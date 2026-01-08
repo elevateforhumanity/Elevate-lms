@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { requireRole } from '@/lib/auth/require-role';
+
 
 export const metadata: Metadata = {
   title: 'Analytics | Elevate for Humanity',
@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default async function CreatorAnalyticsPage() {
-  const { user } = await requireRole(['creator', 'admin']);
   const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
   // Get creator's courses
   const { data: courses } = await supabase
