@@ -3,6 +3,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 
 export function Navbar() {
@@ -49,10 +50,13 @@ export function Navbar() {
             className="flex items-center cursor-pointer"
             aria-label="Go to homepage"
           >
-            <img
+            <Image
               src="/logo.png"
               alt="Elevate for Humanity"
+              width={180}
+              height={48}
               className="h-10 sm:h-12 w-auto transition-opacity hover:opacity-80"
+              priority
             />
           </Link>
 

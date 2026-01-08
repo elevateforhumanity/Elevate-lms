@@ -1,5 +1,6 @@
 // components/dashboard/CourseCardGrid.tsx
 import Link from "next/link";
+import Image from "next/image";
 
 type Course = {
   id: string;
@@ -42,12 +43,14 @@ function CourseCard({ course }: { course: Course }) {
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm">
       {/* Thumbnail */}
-      <div className="h-32 w-full bg-slate-200">
+      <div className="relative h-32 w-full bg-slate-200">
         {course.thumbnail_url ? (
-          <img
+          <Image
             src={course.thumbnail_url}
             alt={course.title}
-            className="h-full w-full object-cover"
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, 50vw"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-xs text-slate-500">

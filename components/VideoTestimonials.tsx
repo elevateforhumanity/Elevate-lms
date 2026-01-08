@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-
+import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX, Maximize, X, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
@@ -173,10 +173,12 @@ export default function VideoTestimonials() {
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
                     {/* Video Thumbnail */}
                     <div className="relative aspect-video bg-gray-900 overflow-hidden">
-                      <img
+                      <Image
                         src={testimonial.thumbnail}
                         alt={testimonial.name}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
 
                       {/* Play Overlay */}

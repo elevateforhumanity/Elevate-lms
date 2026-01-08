@@ -19,7 +19,7 @@ import {
   Download,
   ClipboardList,
 } from 'lucide-react';
-import { DiscussionForum } from '@/components/lms/DiscussionForum';
+import { LazyLMSDiscussionForum as DiscussionForum } from '@/components/LazyComponents';
 import { QuizSystem } from '@/components/lms/QuizSystem';
 
 export default function LessonPage() {
