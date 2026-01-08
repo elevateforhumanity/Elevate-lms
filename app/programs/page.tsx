@@ -80,24 +80,38 @@ export default function ProgramsBioSitePage() {
 
   return (
     <div className="pb-20 md:pb-0">
-      {/* Header Section - No Hero Banner */}
-      <section className="bg-gradient-to-br from-orange-50 to-orange-100 py-12 sm:py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full mb-6">
-            <GraduationCap className="w-5 h-5" />
-            <span className="text-sm font-bold uppercase tracking-wide">
-              WIOA-Funded Career Training
-            </span>
-          </div>
+      {/* Video Hero Section */}
+      <section className="relative w-full -mt-[72px]">
+        <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src="/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Overlay Content */}
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full mb-6">
+                <GraduationCap className="w-5 h-5" />
+                <span className="text-sm font-bold uppercase tracking-wide">
+                  WIOA-Funded Career Training
+                </span>
+              </div>
 
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6 text-gray-900">
-            Free Career Training Programs
-          </h1>
+              {/* Headline */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6">
+                Free Career Training Programs
+              </h1>
 
-          {/* Subheadline */}
-          <p className="text-xl sm:text-2xl md:text-3xl mb-4 text-gray-800">
+              {/* Subheadline */}
+              <p className="text-xl sm:text-2xl md:text-3xl mb-4">
                 100% Free • No Tuition • No Debt
               </p>
 
@@ -122,6 +136,8 @@ export default function ProgramsBioSitePage() {
                   Browse Programs
                 </Link>
               </div>
+            </div>
+          </div>
         </div>
       </section>
 

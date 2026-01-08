@@ -23,18 +23,56 @@ export const metadata: Metadata = {
 export default function BusinessFinancialPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <CompactHero
-        variant="default"
-        badge={{
-          icon: Briefcase,
-          text: 'Business & Finance',
-          href: '/programs',
-        }}
-        headline="Launch your business career with professional training"
-        description="Business administration, financial services, and professional skills programs. 100% funded options available through WIOA and state grants."
-        primaryCTA={{ text: 'View Programs', href: '#programs' }}
-        secondaryCTA={{ text: 'Check Eligibility', href: '/intake' }}
-      />
+      {/* Video Hero Section */}
+      <section className="relative w-full -mt-[72px]">
+        <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src="/videos/getting-started-hero.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Overlay Content */}
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+              <div className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full mb-6">
+                <Briefcase className="w-5 h-5" />
+                <span className="text-sm font-bold uppercase tracking-wide">
+                  Business & Finance
+                </span>
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6">
+                Launch your business career with professional training
+              </h1>
+              
+              <p className="text-lg md:text-xl mb-8">
+                Business administration, financial services, and professional skills programs. 100% funded options available through WIOA and state grants.
+              </p>
+              
+              <div className="flex flex-col gap-4 sm:flex-row justify-center">
+                <Link
+                  href="#programs"
+                  className="inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-bold bg-white text-orange-600 hover:bg-gray-100 transition shadow-lg"
+                >
+                  View Programs
+                </Link>
+                <Link
+                  href="/intake"
+                  className="inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-bold border-2 border-white text-white hover:bg-white/10 transition"
+                >
+                  Check Eligibility
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* At-a-Glance */}
       <section className="bg-white py-16">
