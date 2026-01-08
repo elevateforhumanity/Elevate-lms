@@ -29,7 +29,7 @@ export default async function MegaAdminDashboard() {
     redirect('/admin/login?redirect=/admin&error=unauthorized');
   }
 
-  // Fetch key metrics
+  // Fetch key metrics (with null safety)
   const { count: totalStudents } = await supabase
     .from('profiles')
     .select('*', { count: 'exact', head: true })
@@ -53,6 +53,14 @@ export default async function MegaAdminDashboard() {
     .from('applications')
     .select('*', { count: 'exact', head: true })
     .eq('status', 'pending');
+
+  // Ensure counts are numbers (not null/undefined)
+  const safeStudents = totalStudents ?? 0;
+  const safeEnrollments = totalEnrollments ?? 0;
+  const safeActiveEnrollments = activeEnrollments ?? 0;
+  const safePrograms = totalPrograms ?? 0;
+  const safeCourses = totalCourses ?? 0;
+  const safePendingApps = pendingApplications ?? 0;
 
   const allFeatures = [
     // STUDENT MANAGEMENT (15 features)
