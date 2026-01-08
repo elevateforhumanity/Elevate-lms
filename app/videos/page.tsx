@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { videos } from '../../lms-data/videos';
 import { Play } from 'lucide-react';
 
@@ -51,10 +52,12 @@ export default function VideosPage() {
                       className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition"
                     >
                       <div className="relative aspect-video bg-gray-200">
-                        <img
+                        <Image
                           src={video.thumbnailUrl}
                           alt={video.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover group-hover:scale-105 transition"
                         />
                         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition flex items-center justify-center">
                           <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition">

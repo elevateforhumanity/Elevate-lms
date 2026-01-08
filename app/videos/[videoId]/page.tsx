@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { videos, getVideoById } from '../../../lms-data/videos';
 import { ArrowLeft } from 'lucide-react';
 
@@ -171,10 +172,12 @@ export default function VideoWatchPage({
                     className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition"
                   >
                     <div className="relative aspect-video bg-gray-200">
-                      <img
+                      <Image
                         src={relatedVideo.thumbnailUrl}
                         alt={relatedVideo.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition"
                       />
                     </div>
                     <div className="p-4">
