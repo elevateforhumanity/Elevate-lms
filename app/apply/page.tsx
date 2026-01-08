@@ -1,30 +1,153 @@
+'use client';
+
+import { useEffect } from 'react';
 import { Metadata } from 'next';
-import Link from 'next/link';
-import {
-  GraduationCap,
-  Building2,
-  Briefcase,
-  Users,
-  ArrowRight,
-} from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Apply | Start Your Journey',
-  description:
-    'Choose your path: Student programs, Program holder partnership, Employer hiring, or Staff/Instructor roles.',
-  alternates: {
-    canonical: 'https://elevateforhumanity.institute/apply',
-  },
-};
+declare global {
+  interface Window {
+    gtag?: (
+      command: string,
+      eventName: string,
+      params?: Record<string, unknown>
+    ) => void;
+  }
+}
 
-/**
- * UNIFIED APPLY LANDING PAGE
- *
- * Single entry point for all application types.
- * White-label neutral - no hardcoded branding.
- * Routes to role-specific forms.
- */
-export default function ApplyLandingPage() {
+export default function Apply() {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'apply_view');
+    }
+  }, []);
+
+  return (
+    <main className="max-w-3xl mx-auto px-6 py-12">
+      <h1 className="text-3xl font-bold text-slate-900 mb-4">
+        Start Your Application
+      </h1>
+      <p className="my-4 text-slate-700">
+        10–15 minutes. Response within 2–3 business days.
+      </p>
+
+      <form
+        method="POST"
+        action="/api/apply"
+        className="space-y-4 bg-white border border-slate-200 rounded-lg p-6"
+      >
+        <div>
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-slate-700 mb-2"
+          >
+            Full Name <span className="text-red-600">*</span>
+          </label>
+          <input
+            required
+            id="name"
+            name="name"
+            placeholder="Full name"
+            className="w-full min-h-[44px] px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-slate-700 mb-2"
+          >
+            Email <span className="text-red-600">*</span>
+          </label>
+          <input
+            required
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="w-full min-h-[44px] px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="phone"
+            className="block text-sm font-medium text-slate-700 mb-2"
+          >
+            Phone <span className="text-red-600">*</span>
+          </label>
+          <input
+            required
+            id="phone"
+            name="phone"
+            placeholder="Phone"
+            className="w-full min-h-[44px] px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="program"
+            className="block text-sm font-medium text-slate-700 mb-2"
+          >
+            Program <span className="text-red-600">*</span>
+          </label>
+          <select
+            required
+            id="program"
+            name="program"
+            className="w-full min-h-[44px] px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          >
+            <option value="">Select program...</option>
+            <option>CNA</option>
+            <option>Barber Apprenticeship</option>
+            <option>HVAC</option>
+            <option>IT Support</option>
+            <option>Not Sure</option>
+          </select>
+        </div>
+
+        <div>
+          <label
+            htmlFor="funding"
+            className="block text-sm font-medium text-slate-700 mb-2"
+          >
+            Funding <span className="text-red-600">*</span>
+          </label>
+          <select
+            required
+            id="funding"
+            name="funding"
+            className="w-full min-h-[44px] px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+          >
+            <option value="">Select funding...</option>
+            <option>WIOA / Next Level Jobs</option>
+            <option>Employer Sponsored</option>
+            <option>Self Pay</option>
+            <option>Not Sure</option>
+          </select>
+        </div>
+
+        <label className="text-sm flex gap-2 items-center">
+          <input type="checkbox" required className="w-4 h-4" />
+          <span>Consent to contact</span>
+        </label>
+
+        <button
+          type="submit"
+          onClick={() => {
+            if (typeof window !== 'undefined' && window.gtag) {
+              window.gtag('event', 'apply_submit');
+            }
+          }}
+          className="w-full min-h-[44px] bg-slate-900 text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition-colors font-semibold"
+        >
+          Submit
+        </button>
+      </form>
+    </main>
+  );
+}
+
+function ApplyLandingPageOld() {
   const paths = [
     {
       role: 'student',

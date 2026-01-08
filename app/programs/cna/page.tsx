@@ -6,11 +6,11 @@ import { ProgramNav } from '@/components/programs/ProgramNav';
 
 export const metadata: Metadata = {
   title:
-    'Free CNA Training Indiana | Certified Nursing Assistant | WRG, WIOA, JRI Funded | Indianapolis',
+    'CNA Training Indiana | Certified Nursing Assistant | Indianapolis',
   description:
-    '100% free CNA training in Indianapolis. Industry-aligned preparation for CNA certification through WRG, WIOA, or JRI funding. 6-8 weeks, job placement support included. Start earning $16-$20/hour.',
+    'CNA training in Indianapolis. Industry-aligned preparation for CNA certification. 6-8 weeks, job placement support included. Start earning $16-$20/hour.',
   keywords:
-    'free CNA training Indiana, CNA classes Indianapolis, certified nursing assistant Indiana, WRG CNA training, WIOA CNA program, JRI CNA training, free nursing assistant school Indiana, CNA certification Indianapolis, CNA job placement, CNA training Indiana',
+    'CNA training Indiana, CNA classes Indianapolis, certified nursing assistant Indiana, CNA certification Indianapolis, CNA job placement, CNA training Indiana',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/cna',
   },
@@ -34,7 +34,7 @@ export default function Page() {
           text: 'Healthcare Career',
         }}
         headline="Become a Certified Nursing Assistant"
-        description="100% free CNA training through WRG, WIOA, or JRI funding. Industry-aligned preparation for state certification. Job placement support included. Start earning $16-$20/hour."
+        description="CNA training with industry-aligned preparation for state certification. Job placement support included. Start earning $16-$20/hour."
         primaryCTA={{ text: 'Apply Now', href: '/apply' }}
         secondaryCTA={{ text: 'Talk to an Advisor', href: '/contact' }}
       />
@@ -55,8 +55,8 @@ export default function Page() {
 
           <div className="bg-blue-50 rounded-xl p-6 border-2 border-blue-200">
             <h3 className="text-xl font-bold text-gray-900 mb-4">Cost</h3>
-            <p className="text-3xl font-black text-blue-600 mb-2">$0</p>
-            <p className="text-gray-600">100% Free with WIOA/WRG/JRI</p>
+            <p className="text-3xl font-black text-blue-600 mb-2">Varies</p>
+            <p className="text-gray-600">Funding options available</p>
           </div>
 
           <div className="bg-orange-50 rounded-xl p-6 border-2 border-orange-200">
