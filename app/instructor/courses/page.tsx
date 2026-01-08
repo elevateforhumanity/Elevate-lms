@@ -9,23 +9,43 @@ export const metadata: Metadata = {
 
 export default async function InstructorCoursesPage() {
   let user = null;
-  let courses = null;
+  let courses: any[] | null = null;
+  let error: string | null = null;
   
   try {
     const supabase = await createClient();
-    const { data: { user: authUser } } = await supabase.auth.getUser();
-    user = authUser;
     
-    if (user) {
-      const { data } = await supabase
-        .from('courses')
-        .select('*, enrollments(count)')
-        .eq('instructor_id', user.id)
-        .order('created_at', { ascending: false });
-      courses = data;
+    try {
+      const { data: authData, error: authError } = await supabase.auth.getUser();
+      
+      if (authError) {
+        console.error('Auth error:', authError);
+        error = 'Authentication error';
+      } else {
+        user = authData.user;
+        
+        if (user) {
+          const { data, error: queryError } = await supabase
+            .from('courses')
+            .select('*, enrollments(count)')
+            .eq('instructor_id', user.id)
+            .order('created_at', { ascending: false });
+          
+          if (queryError) {
+            console.error('Query error:', queryError);
+            error = 'Database error';
+          } else {
+            courses = data;
+          }
+        }
+      }
+    } catch (innerError) {
+      console.error('Inner error:', innerError);
+      error = 'Unexpected error';
     }
-  } catch (error) {
-    console.error('Error in InstructorCoursesPage:', error);
+  } catch (outerError) {
+    console.error('Outer error:', outerError);
+    error = 'System error';
   }
 
   return (
