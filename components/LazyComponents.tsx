@@ -103,3 +103,43 @@ export const LazyComprehensiveEnrollmentWizard = dynamic(
     loading: () => <LoadingPlaceholder height="h-screen" />,
   }
 );
+
+export const LazyVideoTestimonials = dynamic(
+  () => import('@/components/VideoTestimonials'),
+  {
+    ssr: false,
+    loading: () => <LoadingPlaceholder height="h-96" />,
+  }
+);
+
+export const LazyLeaderboard = dynamic(
+  () => import('@/components/Leaderboard'),
+  {
+    ssr: false,
+    loading: () => <LoadingPlaceholder height="h-96" />,
+  }
+);
+
+export const LazyDiscussionForum = dynamic(
+  () => import('@/components/DiscussionForum'),
+  {
+    ssr: false,
+    loading: () => <LoadingPlaceholder height="h-screen" />,
+  }
+);
+
+export const LazyLMSDiscussionForum = dynamic(
+  () => import('@/components/lms/DiscussionForum').then(mod => ({ default: mod.DiscussionForum })),
+  {
+    ssr: false,
+    loading: () => <LoadingPlaceholder height="h-screen" />,
+  }
+);
+
+export const LazyRealTimeCollaboration = dynamic(
+  () => import('@/components/RealTimeCollaboration'),
+  {
+    ssr: false,
+    loading: () => <LoadingPlaceholder height="h-screen" />,
+  }
+);

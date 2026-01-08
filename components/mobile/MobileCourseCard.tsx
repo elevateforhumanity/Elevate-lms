@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Clock, BookOpen, Award, ChevronRight } from 'lucide-react';
 
 interface MobileCourseCardProps {
@@ -29,11 +30,13 @@ export default function MobileCourseCard({
     >
       {/* Thumbnail */}
       {thumbnail && (
-        <div className="relative h-40   ">
-          <img
+        <div className="relative h-40">
+          <Image
             src={thumbnail}
             alt={title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
           {progress > 0 && (
             <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold text-brand-orange-600">
