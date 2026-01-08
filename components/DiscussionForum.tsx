@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-
+import Image from 'next/image';
 import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
@@ -80,10 +80,12 @@ export function DiscussionForum({
           <Card key={post.id}>
             <CardContent className="p-6">
               <div className="flex gap-4">
-                <img
+                <Image
                   src={post.avatar}
                   alt={post.author}
-                  className="w-12 h-12 rounded-full"
+                  width={48}
+                  height={48}
+                  className="rounded-full"
                 />
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-2">

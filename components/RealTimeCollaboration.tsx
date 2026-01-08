@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -104,10 +104,12 @@ export function RealTimeCollaboration({
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition"
               >
                 <div className="relative">
-                  <img
+                  <Image
                     src={user.avatar}
                     alt={user.name}
-                    className="w-10 h-10 rounded-full"
+                    width={40}
+                    height={40}
+                    className="rounded-full"
                   />
                   <div
                     className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-white ${getStatusColor(user.status)}`}

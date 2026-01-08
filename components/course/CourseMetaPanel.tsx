@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 type CourseMetaPanelProps = {
   course: {
     id: string;
@@ -92,10 +94,12 @@ export function CourseMetaPanel({
       {instructor && (
         <div className="flex items-start gap-3 border-t pt-4">
           {instructor.avatar_url ? (
-            <img
+            <Image
               src={instructor.avatar_url}
               alt={instructor.full_name || "Instructor"}
-              className="h-10 w-10 rounded-full object-cover"
+              width={40}
+              height={40}
+              className="rounded-full object-cover"
             />
           ) : (
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-xs font-semibold">

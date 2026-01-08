@@ -348,10 +348,12 @@ export default function NotificationsPage() {
               {/* Notification Preview */}
               <div className="border-2 border-gray-200 rounded-lg p-4 mb-6">
                 <div className="flex items-start space-x-3">
-                  <img
+                  <Image
                     src={notification.icon}
                     alt="Icon"
-                    className="w-10 h-10 rounded"
+                    width={40}
+                    height={40}
+                    className="rounded"
                   />
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold text-gray-900 text-sm">

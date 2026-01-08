@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import {
   CheckCircle,
@@ -129,7 +130,7 @@ export function DocumentReviewForm({ document, adminId }: Props) {
       {/* Document Preview */}
       <div className="bg-white rounded-lg shadow-sm border p-6">
         <h2 className="text-2xl font-bold mb-4">Document Preview</h2>
-        <div className="border rounded-lg overflow-hidden">
+        <div className="relative border rounded-lg overflow-hidden">
           {document.mime_type === 'application/pdf' ? (
             <iframe
               src={document.file_url}
@@ -137,11 +138,15 @@ export function DocumentReviewForm({ document, adminId }: Props) {
               title="Document Preview"
             />
           ) : (
-            <img
-              src={document.file_url}
-              alt="Document"
-              className="w-full h-auto"
-            />
+            <div className="relative w-full min-h-[400px]">
+              <Image
+                src={document.file_url}
+                alt="Document"
+                fill
+                className="object-contain"
+                sizes="100vw"
+              />
+            </div>
           )}
         </div>
         <div className="mt-4">

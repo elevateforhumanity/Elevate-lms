@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import {
   Search,
@@ -288,12 +288,14 @@ export default function ContentLibrary() {
                   onClick={() => toggleSelection(item.id)}
                 >
                   {/* Thumbnail */}
-                  <div className="aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                  <div className="relative aspect-video bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
                     {item.content_type === 'image' ? (
-                      <img
+                      <Image
                         src={item.file_url}
                         alt={item.title}
-                        className="w-full h-full object-cover rounded-lg"
+                        fill
+                        className="object-cover rounded-lg"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     ) : item.content_type === 'video' ? (
                       <video

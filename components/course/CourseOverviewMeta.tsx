@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 type CourseOverviewMetaProps = {
   course: {
     id: string;
@@ -88,10 +90,12 @@ export function CourseOverviewMeta({
       {instructor && (
         <div className="flex items-start gap-3 border-t pt-4">
           {instructor.avatar_url ? (
-            <img
+            <Image
               src={instructor.avatar_url}
               alt={instructor.full_name || "Instructor"}
-              className="mt-1 h-10 w-10 rounded-full object-cover"
+              width={40}
+              height={40}
+              className="mt-1 rounded-full object-cover"
             />
           ) : (
             <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-xs font-semibold text-slate-700">
