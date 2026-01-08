@@ -27,9 +27,9 @@ export default function HomePage() {
       <VideoHeroBanner
         videoSrc={currentHomeHero}
         withAudio={false}
-        headline="Free Career Training. Real Credentials. Clear Pathways."
-        subheadline="100% funded workforce training through WIOA, WRG, and DOL programs. No tuition. No debt. Earn industry certifications in healthcare, skilled trades, technology, and business."
-        primaryCTA={{ text: 'View Programs', href: '/programs' }}
+        headline="Elevate for Humanity"
+        subheadline="A regulated workforce development and credentialing institute"
+        primaryCTA={{ text: 'Explore Programs', href: '/programs' }}
         secondaryCTA={{ text: 'Check Eligibility', href: '/eligibility' }}
       />
       <Intro />

@@ -2,7 +2,6 @@ export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { SupabaseRequired } from '@/components/system/SupabaseRequired';
 
 export const metadata: Metadata = {
   title: 'Analytics | Elevate for Humanity',
@@ -10,21 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default async function CreatorAnalyticsPage() {
-<<<<<<< HEAD
   let user = null;
   let totalEnrollments = 0;
   let activeEnrollments = 0;
   let completionRate = 0;
-=======
-  const supabase = await createClient();
-  
-  // Handle missing Supabase configuration
-  if (!supabase) {
-    return <SupabaseRequired />;
-  }
-  
-  const { data: { user } } = await supabase.auth.getUser();
->>>>>>> ac589be (Fix redirect loop and replace all generic images)
 
   try {
     const supabase = await createClient();

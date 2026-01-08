@@ -1,43 +1,19 @@
 export default function Intro() {
   return (
-    <section className="bg-white py-16">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center">
-          What We Do
+    <section className="bg-white py-12 md:py-24">
+      <div className="max-w-5xl mx-auto px-6 text-center">
+        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 md:mb-8">
+          What is Elevate for Humanity?
         </h2>
-        
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-blue-50 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold text-blue-900 mb-4">Free Workforce Training</h3>
-            <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              We connect eligible students to 100% funded training programs through WIOA (Workforce Innovation and Opportunity Act), 
-              WRG (Workforce Readiness Grant), and DOL (Department of Labor) initiatives.
-            </p>
-            <p className="text-base text-gray-600">
-              <strong>No tuition. No debt. No barriers.</strong> If you qualify, your training is completely free.
-            </p>
-          </div>
-
-          <div className="bg-green-50 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold text-green-900 mb-4">Industry Credentials</h3>
-            <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              Earn nationally recognized certifications from trusted partners like Certiport (Microsoft, Adobe), 
-              HSI (OSHA Safety), CareerSafe, NRF (Retail), and Milady (Cosmetology).
-            </p>
-            <p className="text-base text-gray-600">
-              <strong>Real credentials employers recognize.</strong> Not just certificates - actual industry certifications.
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-gradient-to-r from-red-50 to-orange-50 p-8 rounded-lg text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Who We Serve</h3>
-          <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
-            Students seeking career training, displaced workers needing new skills, veterans transitioning to civilian careers, 
-            and anyone eligible for workforce development funding. We help you access the training you qualify for and guide you 
-            from enrollment through certification to employment.
-          </p>
-        </div>
+        <p className="text-lg md:text-2xl text-gray-700 leading-relaxed mb-4 md:mb-6">
+          A regulated workforce development and credentialing institute connecting 
+          students to approved training, recognized credentials, and real career pathways.
+        </p>
+        <p className="text-base md:text-xl text-gray-600 leading-relaxed">
+          We provide access to free, funded training programs in healthcare, skilled trades, 
+          technology, and business. Our programs meet industry standards, lead to recognized 
+          certifications, and connect directly to employment opportunities.
+        </p>
       </div>
     </section>
   );

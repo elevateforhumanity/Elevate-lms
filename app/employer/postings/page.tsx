@@ -3,32 +3,14 @@ export const dynamic = 'force-dynamic';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 
-<<<<<<< HEAD
-=======
-import Link from 'next/link';
-import { Plus } from 'lucide-react';
-import { SupabaseRequired } from '@/components/system/SupabaseRequired';
-
->>>>>>> ac589be (Fix redirect loop and replace all generic images)
 export const metadata: Metadata = {
   title: 'Job Postings | Elevate for Humanity',
   description: 'Manage your job postings',
 };
 
 export default async function EmployerPostingsPage() {
-<<<<<<< HEAD
   let user = null;
   let postings: any[] | null = null;
-=======
-  const supabase = await createClient();
-  
-  // Handle missing Supabase configuration
-  if (!supabase) {
-    return <SupabaseRequired />;
-  }
-  
-  const { data: { user } } = await supabase.auth.getUser();
->>>>>>> ac589be (Fix redirect loop and replace all generic images)
 
   try {
     const supabase = await createClient();

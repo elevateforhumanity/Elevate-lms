@@ -123,7 +123,7 @@ export default function VideoHeroBanner({
 
   return (
     <section
-      className="relative w-full bg-gradient-to-br from-blue-900 to-purple-900 -mb-1"
+      className="relative w-full bg-gradient-to-br from-blue-900 to-purple-900"
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
       onClick={handleUserInteraction}
@@ -141,7 +141,7 @@ export default function VideoHeroBanner({
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
           style={{
-            backgroundImage: "url('/images/artlist/cropped/hero-training-1-wide.jpg')",
+            backgroundImage: "url('/images/homepage/students.jpg')",
           }}
         />
 
@@ -155,7 +155,7 @@ export default function VideoHeroBanner({
             playsInline
             preload="metadata"
             autoPlay
-            poster="/images/artlist/cropped/hero-training-1-wide.jpg"
+            poster="/images/homepage/students.jpg"
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
@@ -208,7 +208,46 @@ export default function VideoHeroBanner({
           </audio>
         )}
 
+        {/* Video Controls - Only show when video loaded */}
+        {isLoaded && (
+          <div
+            className={`absolute bottom-4 right-4 flex items-center gap-2 transition-opacity duration-300 ${
+              showControls ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <button
+              onClick={togglePlay}
+              className="p-2 bg-black/70 backdrop-blur-sm text-white rounded-full hover:bg-black/90 transition-colors"
+              aria-label={isPlaying ? 'Pause video' : 'Play video'}
+            >
+              {isPlaying ? (
+                <Pause className="w-4 h-4" />
+              ) : (
+                <Play className="w-4 h-4" />
+              )}
+            </button>
 
+            <button
+              onClick={toggleMute}
+              className="p-2 bg-black/70 backdrop-blur-sm text-white rounded-full hover:bg-black/90 transition-colors"
+              aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+            >
+              {isMuted ? (
+                <VolumeX className="w-4 h-4" />
+              ) : (
+                <Volume2 className="w-4 h-4" />
+              )}
+            </button>
+
+            <button
+              onClick={toggleFullscreen}
+              className="p-2 bg-black/70 backdrop-blur-sm text-white rounded-full hover:bg-black/90 transition-colors"
+              aria-label="Fullscreen"
+            >
+              <Maximize className="w-4 h-4" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

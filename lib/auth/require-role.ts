@@ -24,12 +24,6 @@ export interface AuthResult {
  */
 export async function requireRole(allowedRoles: string[]): Promise<AuthResult> {
   const supabase = await createClient();
-  
-  // Handle missing Supabase configuration
-  if (!supabase) {
-    redirect('/login?error=config');
-  }
-  
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -62,10 +56,6 @@ export async function requireRole(allowedRoles: string[]): Promise<AuthResult> {
  */
 export async function hasRole(requiredRole: string): Promise<boolean> {
   const supabase = await createClient();
-  
-  // Handle missing Supabase configuration
-  if (!supabase) return false;
-  
   const {
     data: { user },
   } = await supabase.auth.getUser();
