@@ -22,7 +22,7 @@ export interface Course {
  * Get all active courses
  */
 export async function getAllCourses(supabase?: SupabaseClient) {
-  const client = supabase || createClient();
+  const client = supabase || await createClient();
 
   const { data, error } = await client
     .from('courses')
@@ -45,7 +45,7 @@ export async function getCoursesByProgram(
   programId: string,
   supabase?: SupabaseClient
 ) {
-  const client = supabase || createClient();
+  const client = supabase || await createClient();
 
   const { data, error } = await client
     .from('courses')

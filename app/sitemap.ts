@@ -1,22 +1,32 @@
 import { MetadataRoute } from 'next';
 
+const BASE_URL = 'https://elevateforhumanity.institute';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    { url: 'https://www.elevateforhumanity.org/', priority: 1 },
-    { url: 'https://www.elevateforhumanity.org/apply', priority: 0.9 },
-    { url: 'https://www.elevateforhumanity.org/programs', priority: 0.9 },
-    { url: 'https://www.elevateforhumanity.org/programs/cna', priority: 0.8 },
-    { url: 'https://www.elevateforhumanity.org/programs/cdl-transportation', priority: 0.8 },
-    { url: 'https://www.elevateforhumanity.org/programs/barber-apprenticeship', priority: 0.8 },
-    { url: 'https://www.elevateforhumanity.org/programs/healthcare', priority: 0.8 },
-    { url: 'https://www.elevateforhumanity.org/programs/skilled-trades', priority: 0.8 },
-    { url: 'https://www.elevateforhumanity.org/programs/technology', priority: 0.8 },
-    { url: 'https://www.elevateforhumanity.org/updates', priority: 0.6 },
-    { url: 'https://www.elevateforhumanity.org/updates/2026/01/program-calendar', priority: 0.6 },
-    { url: 'https://www.elevateforhumanity.org/about', priority: 0.7 },
-    { url: 'https://www.elevateforhumanity.org/contact', priority: 0.7 },
-    { url: 'https://www.elevateforhumanity.org/funding', priority: 0.7 },
-    { url: 'https://www.elevateforhumanity.org/employer', priority: 0.7 },
+    { url: `${BASE_URL}/`, priority: 1, changeFrequency: 'daily' },
+    { url: `${BASE_URL}/apply`, priority: 0.9, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/programs`, priority: 0.9, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/programs/cna`, priority: 0.8, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/programs/cdl-transportation`, priority: 0.8, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/programs/barber-apprenticeship`, priority: 0.8, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/programs/healthcare`, priority: 0.8, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/programs/skilled-trades`, priority: 0.8, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/programs/business-financial`, priority: 0.8, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/programs/tax-preparation`, priority: 0.8, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/about`, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/contact`, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/funding`, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/employer`, priority: 0.7, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/wioa-eligibility`, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/success-stories`, priority: 0.7, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/faq`, priority: 0.6, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/careers`, priority: 0.6, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/apprenticeships`, priority: 0.8, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/support`, priority: 0.6, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/privacy-policy`, priority: 0.5, changeFrequency: 'yearly' },
+    { url: `${BASE_URL}/terms`, priority: 0.5, changeFrequency: 'yearly' },
+    { url: `${BASE_URL}/accessibility`, priority: 0.5, changeFrequency: 'yearly' },
   ];
 }
 
