@@ -55,12 +55,24 @@ export default async function StudentDashboardOrchestrated() {
 
   const supabase = await createClient();
 
-  // Get enrollment data
-  const { data: enrollments } = await supabase
+  // Get enrollment data - check partner enrollments first
+  const { data: partnerEnrollments } = await supabase
+    .from('partner_lms_enrollments')
+    .select('*, partner_lms_courses(*), partner_lms_providers(*)')
+    .eq('student_id', user.id)
+    .order('created_at', { ascending: false });
+
+  // Fallback to regular enrollments if no partner enrollments
+  const { data: regularEnrollments } = await supabase
     .from('enrollments')
     .select('*, programs(*)')
     .eq('user_id', user.id)
     .order('created_at', { ascending: false });
+
+  // Use partner enrollments if they exist, otherwise regular enrollments
+  const enrollments = partnerEnrollments && partnerEnrollments.length > 0 
+    ? partnerEnrollments 
+    : regularEnrollments;
 
   const activeEnrollment = enrollments?.find(
     (e) => e.status === 'active' || e.status === 'pending'
