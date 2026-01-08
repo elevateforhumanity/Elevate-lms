@@ -291,7 +291,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, s-maxage=60, stale-while-revalidate=3600',
+            value: 'public, max-age=0, must-revalidate, s-maxage=60',
           },
           {
             key: 'CDN-Cache-Control',
@@ -324,6 +324,20 @@ const nextConfig = {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
           },
+        ],
+      },
+      {
+        source: '/:path((?!_next|api|images|videos|media).*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, must-revalidate, s-maxage=60',
+          },
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, s-maxage=60, stale-while-revalidate=3600',
+          },
+          ...securityHeaders,
         ],
       },
       {
