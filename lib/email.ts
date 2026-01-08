@@ -12,9 +12,9 @@ interface EmailOptions {
   replyTo?: string;
 }
 
-const FROM_EMAIL = process.env.EMAIL_FROM || 'noreply@elevateforhumanity.institute';
+const FROM_EMAIL = process.env.EMAIL_FROM || 'elevate4humanityedu@gmail.com';
 const REPLY_TO_EMAIL =
-  process.env.REPLY_TO_EMAIL || 'info@elevateforhumanity.institute';
+  process.env.REPLY_TO_EMAIL || 'elevate4humanityedu@gmail.com';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
 export async function sendEmail({
