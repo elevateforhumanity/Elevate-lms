@@ -128,11 +128,15 @@ export default function SiteHeader() {
             className="flex items-center gap-3 shrink-0 group cursor-pointer"
             aria-label="Go to homepage"
           >
-            <div className="relative h-10 w-10 sm:h-12 sm:w-12 shrink-0 overflow-hidden">
+            <div className="relative h-10 w-10 sm:h-12 sm:w-12 shrink-0 overflow-hidden bg-white">
               <img
-                src="/logo.png"
+                src="/logo-small.png"
                 alt="Elevate for Humanity"
+                width="48"
+                height="48"
+                fetchpriority="high"
                 className="h-full w-full object-contain transition-opacity hover:opacity-80"
+                style={{ maxWidth: '100%', height: 'auto' }}
               />
             </div>
           </Link>

@@ -9,10 +9,10 @@ export function SiteLogo({ className }: SiteLogoProps) {
   return (
     <Link href="/" aria-label="Link" className={className ?? ''}>
       <Image
-        src="/logo.png"
+        src="/logo-small.png"
         alt="Elevate for Humanity – Building Success Stories"
-        width={120}
-        height={60}
+        width={96}
+        height={96}
         priority
         className="h-10 w-auto"
       />
