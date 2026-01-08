@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { requireRole } from '@/lib/auth/require-role';
 import Link from 'next/link';
+import { safeFormatDate } from '@/lib/format-utils';
 export const dynamic = 'force-dynamic';
 
 import {
@@ -186,9 +187,7 @@ export default async function ProgramHolderDashboard() {
                           </span>
                           <p className="text-xs text-slate-500 mt-2">
                             Started{' '}
-                            {new Date(
-                              student.started_at || student.created_at
-                            ).toLocaleDateString()}
+                            {safeFormatDate(student.started_at || student.created_at)}
                           </p>
                         </div>
                       </div>

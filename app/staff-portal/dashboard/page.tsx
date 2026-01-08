@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { requireRole } from '@/lib/auth/require-role';
 import Link from 'next/link';
 import { Users, BookOpen, AlertCircle, CheckCircle, Clock } from 'lucide-react';
+import { safeFormatDate } from '@/lib/format-utils';
 
 export const metadata: Metadata = {
   alternates: {
@@ -279,7 +280,7 @@ export default async function StaffDashboard() {
                         </span>
                       </td>
                       <td className="px-6 py-4 text-sm text-slate-500">
-                        {new Date(enrollment.created_at).toLocaleDateString()}
+                        {safeFormatDate(enrollment.created_at)}
                       </td>
                     </tr>
                   ))}

@@ -8,6 +8,7 @@ export const metadata: Metadata = generateInternalMetadata({
 });
 
 import { createClient } from '@/lib/supabase/server';
+import { safeFormatDate } from '@/lib/format-utils';
 import { requireRole } from '@/lib/auth/require-role';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
@@ -385,9 +386,7 @@ export default async function StudentDashboardOrchestrated() {
                       </div>
                       <div>
                         <span className="font-semibold">Enrolled:</span>{' '}
-                        {new Date(
-                          activeEnrollment.created_at
-                        ).toLocaleDateString()}
+                        {safeFormatDate(activeEnrollment?.created_at || activeEnrollment?.enrolled_at)}
                       </div>
                     </div>
                   </div>

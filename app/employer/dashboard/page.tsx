@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import { requireRole } from '@/lib/auth/require-role';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import { safeFormatDate } from '@/lib/format-utils';
 import { getEmployerState } from '@/lib/orchestration/state-machine';
 import {
   StateAwareDashboard,
@@ -261,7 +262,7 @@ export default async function EmployerDashboardOrchestrated() {
                       </div>
                       <div className="text-sm text-slate-600">
                         Posted:{' '}
-                        {new Date(posting.created_at).toLocaleDateString()}
+                        {safeFormatDate(posting.created_at)}
                       </div>
                     </div>
                     <a
