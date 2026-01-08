@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import Intro from '@/components/home/Intro';
+import FrameworkDiagram from '@/components/home/FrameworkDiagram';
 import Orientation from '@/components/home/Orientation';
 import Pathways from '@/components/home/Pathways';
 import Assurance from '@/components/home/Assurance';
@@ -32,6 +33,7 @@ export default function HomePage() {
         secondaryCTA={{ text: 'Check Eligibility', href: '/eligibility' }}
       />
       <Intro />
+      <FrameworkDiagram />
       <Orientation />
       <Pathways />
       <Assurance />
