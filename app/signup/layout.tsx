@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sign Up - Create Your Account | Elevate for Humanity",
     description: "Create your free account to access career training programs and track your progress.",
-    images: ["/images/hero-banner-new.png"],
+    images: ["/images/artlist/cropped/hero-training-1-wide.jpg"],
     type: "website",
   },
 };

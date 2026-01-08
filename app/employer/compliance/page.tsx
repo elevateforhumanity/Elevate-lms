@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
+import { SupabaseRequired } from '@/components/system/SupabaseRequired';
 
 export const metadata: Metadata = {
   title: 'Compliance | Elevate for Humanity',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function EmployerCompliancePage() {
+<<<<<<< HEAD
   let user = null;
 
   try {
@@ -18,6 +20,16 @@ export default async function EmployerCompliancePage() {
   } catch (error) {
     console.error('Error in EmployerCompliancePage:', error);
   }
+=======
+  const supabase = await createClient();
+  
+  // Handle missing Supabase configuration
+  if (!supabase) {
+    return <SupabaseRequired />;
+  }
+  
+  const { data: { user } } = await supabase.auth.getUser();
+>>>>>>> ac589be (Fix redirect loop and replace all generic images)
 
   return (
     <div className="container mx-auto px-4 py-8">

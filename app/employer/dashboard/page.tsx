@@ -16,6 +16,7 @@ import {
   Building2,
   TrendingUp,
 } from 'lucide-react';
+import { SupabaseRequired } from '@/components/system/SupabaseRequired';
 
 /**
  * EMPLOYER PORTAL - PROGRESSION LOGIC
@@ -31,6 +32,11 @@ import {
 
 export default async function EmployerDashboardOrchestrated() {
   const supabase = await createClient();
+
+  // Handle missing Supabase configuration
+  if (!supabase) {
+    return <SupabaseRequired />;
+  }
 
   // Require authentication
   const {

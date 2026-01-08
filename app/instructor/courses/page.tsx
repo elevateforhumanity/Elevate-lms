@@ -2,6 +2,11 @@ export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
+<<<<<<< HEAD
+=======
+import { SupabaseRequired } from '@/components/system/SupabaseRequired';
+
+>>>>>>> ac589be (Fix redirect loop and replace all generic images)
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -10,6 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function InstructorCoursesPage() {
+<<<<<<< HEAD
   let user = null;
   let courses: any[] | null = null;
   let error: string | null = null;
@@ -49,6 +55,22 @@ export default async function InstructorCoursesPage() {
     console.error('Outer error:', outerError);
     error = 'System error';
   }
+=======
+  const supabase = await createClient();
+  
+  // Handle missing Supabase configuration
+  if (!supabase) {
+    return <SupabaseRequired />;
+  }
+  
+  const { data: { user } } = await supabase.auth.getUser();
+
+  const { data: courses } = await supabase
+    .from('courses')
+    .select('*, enrollments(count)')
+    .eq('instructor_id', user.id)
+    .order('created_at', { ascending: false });
+>>>>>>> ac589be (Fix redirect loop and replace all generic images)
 
   return (
     <div className="container mx-auto px-4 py-8">

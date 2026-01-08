@@ -9,6 +9,7 @@ import {
   Video,
   FileText,
 } from 'lucide-react';
+import { SupabaseRequired } from '@/components/system/SupabaseRequired';
 
 /**
  * CREATOR DASHBOARD
@@ -18,6 +19,12 @@ import {
  */
 export default async function CreatorDashboard() {
   const supabase = await createClient();
+  
+  // Handle missing Supabase configuration
+  if (!supabase) {
+    return <SupabaseRequired />;
+  }
+  
   const {
     data: { user },
   } = await supabase.auth.getUser();

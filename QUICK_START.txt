@@ -1,0 +1,42 @@
+╔══════════════════════════════════════════════════════════════╗
+║          PARTNER COURSES - QUICK START GUIDE                 ║
+╚══════════════════════════════════════════════════════════════╝
+
+📋 STEP 1: Go to Supabase Dashboard
+   → https://supabase.com/dashboard
+   → Select your project
+   → Go to SQL Editor
+
+📋 STEP 2: Run Schema Migration
+   → Open: COPY_PASTE_SQL.md
+   → Copy STEP 1 (entire SQL block)
+   → Paste in SQL Editor
+   → Click "Run"
+   → Wait for "Success"
+
+📋 STEP 3: Run Data Migration
+   → Copy STEP 2 from COPY_PASTE_SQL.md
+   → Paste in SQL Editor
+   → Click "Run"
+   → Should see "Loaded 18 courses"
+
+📋 STEP 4: Verify
+   → Run: SELECT COUNT(*) FROM partner_lms_providers;
+   → Should return: 7
+   → Run: SELECT COUNT(*) FROM partner_courses_catalog;
+   → Should return: 18+
+
+✅ DONE! Partner courses activated.
+
+📚 Full Documentation:
+   - COPY_PASTE_SQL.md - SQL to copy/paste
+   - START_HERE.md - Complete guide
+   - ACTIVATION_PLAN.md - Detailed steps
+   - MIGRATION_VALIDATION.md - Syntax verification
+
+🧪 Test Portals:
+   - See: TEST_PORTALS_COMPLETE_GUIDE.md
+   - Configure .env.local
+   - Create test users
+   - Test authentication
+

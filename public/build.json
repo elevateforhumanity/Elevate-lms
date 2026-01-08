@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "builtAt": "2026-01-08T20:13:26.452Z",
+=======
+  "builtAt": "2026-01-08T20:07:14.557Z",
+>>>>>>> ac589be (Fix redirect loop and replace all generic images)
   "vercelEnv": null,
   "vercelGitCommit": null
 }
