@@ -2,11 +2,17 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import VideoHeroBanner from '@/components/home/VideoHeroBanner';
+import dynamic from 'next/dynamic';
 import { currentHomeHero, enableAudioNarration } from '@/config/hero-videos';
 
+// Lazy load video component to reduce initial bundle size
+const VideoHeroBanner = dynamic(
+  () => import('@/components/home/VideoHeroBanner'),
+  { ssr: false }
+);
+
 // Use ISR for optimal performance with fresh content
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export const metadata: Metadata = {
   title: 'Elevate for Humanity | Workforce and Education Hub',
