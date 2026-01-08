@@ -1,21 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(req: NextRequest) {
-  const host = req.headers.get("host") || "";
-  const url = req.nextUrl.clone();
+const CANONICAL_HOST = "elevateforhumanity.institute";
 
-  // Force canonical .org for public pages
-  if (
-    host.includes("elevateforhumanity.institute") &&
-    !url.pathname.startsWith("/apply") &&
-    !url.pathname.startsWith("/login") &&
-    !url.pathname.startsWith("/lms") &&
-    !url.pathname.startsWith("/admin") &&
-    !url.pathname.startsWith("/dashboard")
-  ) {
-    url.hostname = "www.elevateforhumanity.org";
-    url.protocol = "https:";
-    return NextResponse.redirect(url, 301);
+export function middleware(req: NextRequest) {
+  const host = req.headers.get("host");
+  
+  // Fast path: if no host header or already canonical, skip
+  if (!host || host === CANONICAL_HOST) {
+    return NextResponse.next();
+  }
+
+  // Check if redirect is needed (www or vercel preview)
+  const needsRedirect = 
+    host === `www.${CANONICAL_HOST}` || 
+    host.endsWith(".vercel.app");
+
+  if (needsRedirect) {
+    // Clone URL and update host
+    const redirectUrl = req.nextUrl.clone();
+    redirectUrl.host = CANONICAL_HOST;
+    redirectUrl.protocol = "https:";
+    return NextResponse.redirect(redirectUrl, 308);
   }
 
   return NextResponse.next();
