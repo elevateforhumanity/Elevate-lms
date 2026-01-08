@@ -55,6 +55,20 @@ export const metadata: Metadata = {
     template: '%s | Elevate for Humanity',
   },
 
+  // Resource hints for performance
+  other: {
+    'link': [
+      // DNS prefetch for external domains
+      { rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' },
+      { rel: 'dns-prefetch', href: 'https://www.google-analytics.com' },
+      { rel: 'dns-prefetch', href: 'https://fonts.googleapis.com' },
+      { rel: 'dns-prefetch', href: 'https://connect.facebook.net' },
+      // Preconnect for critical resources
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
+      { rel: 'preconnect', href: 'https://www.googletagmanager.com' },
+    ],
+  },
+
   description:
     'Workforce training, credentials, and community programs connecting learners to funded pathways and employer-aligned opportunities.',
 

@@ -3,6 +3,7 @@
 import React from 'react';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import {
   Menu,
@@ -125,9 +126,12 @@ export default function SiteHeader() {
             aria-label="Go to homepage"
           >
             <div className="relative h-10 w-10 sm:h-12 sm:w-12 shrink-0 overflow-hidden">
-              <img
+              <Image
                 src="/logo.png"
                 alt="Elevate for Humanity"
+                width={48}
+                height={48}
+                priority
                 className="h-full w-full object-contain transition-opacity hover:opacity-80"
               />
             </div>
