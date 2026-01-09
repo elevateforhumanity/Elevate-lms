@@ -2,12 +2,11 @@ import React from 'react';
 import UnregisterSW from "./components/UnregisterSW";
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import './globals-mobile-fixes.css';
 import './globals-mobile-complete.css';
 import '@/branding/brand.css';
 import '@/styles/tiktok-animations.css';
 import '@/styles/rich-design-system.css';
-import './force-black-text.css';
+// Removed: force-black-text.css and globals-mobile-fixes.css - they broke all text colors
 import StructuredData from '@/components/StructuredData';
 import { ConditionalLayout } from '@/components/layout/ConditionalLayout';
 import { Toaster } from 'react-hot-toast';
@@ -17,7 +16,7 @@ import { Inter } from 'next/font/google';
 
 const inter = Inter({
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional', // Changed from 'swap' to 'optional' for better mobile performance
   variable: '--font-inter',
   fallback: [
     'system-ui',
@@ -26,6 +25,8 @@ const inter = Inter({
     'Segoe UI',
     'sans-serif',
   ],
+  preload: true, // Ensure font is preloaded
+  adjustFontFallback: true, // Reduce layout shift
 });
 
 // Viewport configuration (separate from metadata in Next.js 14+)
@@ -207,13 +208,44 @@ export default function RootLayout({
         />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
+        {/* Critical CSS to prevent FOUC on mobile - FIXED: removed forced black text */}
+        <style dangerouslySetInnerHTML={{__html: `
+          *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+          html{-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif}
+          body{margin:0;line-height:1.6;background:#fff;font-size:16px;min-height:100vh}
+          img{max-width:100%;height:auto;display:block}
+          button,input,select,textarea{font-family:inherit;font-size:100%}
+          .hidden{display:none}
+          .flex{display:flex}
+          .items-center{align-items:center}
+          .justify-between{justify-content:space-between}
+          .gap-4{gap:1rem}
+          .px-4{padding-left:1rem;padding-right:1rem}
+          .py-2{padding-top:0.5rem;padding-bottom:0.5rem}
+          .text-white{color:#fff}
+          .text-gray-900{color:#111827}
+          .bg-white{background-color:#fff}
+          .bg-blue-600{background-color:#2563eb}
+          .bg-orange-500{background-color:#f97316}
+          .rounded-md{border-radius:0.375rem}
+          .font-bold{font-weight:700}
+          .text-xl{font-size:1.25rem;line-height:1.75rem}
+          .text-3xl{font-size:1.875rem;line-height:2.25rem}
+          .mb-4{margin-bottom:1rem}
+          .mb-6{margin-bottom:1.5rem}
+          .max-w-7xl{max-width:80rem}
+          .mx-auto{margin-left:auto;margin-right:auto}
+          .grid{display:grid}
+          .grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}
+          @media(min-width:640px){.sm\\:px-6{padding-left:1.5rem;padding-right:1.5rem}}
+          @media(min-width:1024px){.lg\\:px-8{padding-left:2rem;padding-right:2rem}.lg\\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+        `}} />
         <StructuredData />
       </head>
       <body
         className={`${inter.className} min-h-dvh bg-white antialiased`}
         style={{
           fontSize: '16px',
-          color: '#000000',
           backgroundColor: '#ffffff',
         }}
       >
@@ -252,6 +284,6 @@ export default function RootLayout({
     </html>
   );
 }
-// Cache bust: 2026-01-01T05:30:00Z
-// Force rebuild: MOBILE TEXT FIX + CLEAN VIDEO HERO
-// Force deployment: 2026-01-01T05:30:00Z
+// Cache bust: 2026-01-09T11:40:00Z
+// Force rebuild: FIXED BLACK TEXT ENFORCEMENT - Removed all aggressive color overrides
+// Force deployment: 2026-01-09T11:40:00Z - Restore proper colors on all devices

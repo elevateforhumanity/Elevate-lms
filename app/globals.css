@@ -34,47 +34,15 @@ body {
       'Segoe UI',
       system-ui,
       sans-serif !important;
-    color: #000000 !important;
+    /* Removed: color: #000000 !important; - let Tailwind handle colors */
   }
 
-  /* FORCE PURE BLACK TEXT EVERYWHERE - MAXIMUM SPECIFICITY */
-  body h1,
-  body h2,
-  body h3,
-  body h4,
-  body h5,
-  body h6,
-  body p,
-  body span,
-  body div,
-  body a,
-  body li,
-  body td,
-  body th,
-  body label,
-  body input,
-  body textarea,
-  body select,
-  main *,
-  section *,
-  article *,
-  header * {
-    color: #000000 !important;
-  }
+  /* REMOVED: Aggressive black text enforcement that broke the design */
+  /* Let Tailwind and component styles handle text colors properly */
 
-  /* Footer needs light text on dark background */
-  footer,
-  footer * {
-    color: #d1d5db !important; /* gray-300 */
-  }
-
-  footer a:hover {
-    color: #ffffff !important;
-  }
-
-  /* Override ALL Tailwind text color utilities (except footer) */
-  [class*='text-']:not(footer *):not(footer) {
-    color: #000000 !important;
+  /* Footer styling - allow proper dark background with light text */
+  footer {
+    /* Footer colors handled by Tailwind classes */
   }
 
   html {
@@ -96,50 +64,16 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background: #fff !important;
+    /* Removed: background: #fff !important; - let components control their backgrounds */
   }
 
-  section {
-    background: #fff !important;
-  }
+  /* Removed: section background override - let Tailwind classes work */
 
-  /* NUCLEAR: Force white backgrounds everywhere */
-  div[class*='bg-white/'],
-  section[class*='bg-white/'],
-  article[class*='bg-white/'] {
-    background-color: #ffffff !important;
-  }
+  /* Removed: NUCLEAR white background enforcement - broke gradient sections */
 
-  /* NUCLEAR: Kill all backdrop blur */
-  * {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
+  /* Removed: backdrop-filter override - let design system work */
 
-  /* NUCLEAR: Block ALL gradient overlays */
-  .absolute.inset-0[class*='bg-gradient'],
-  .absolute.inset-0[class*='from-'],
-  .absolute.inset-0[class*='to-'],
-  .fixed.inset-0[class*='bg-gradient'],
-  .fixed.inset-0[class*='from-'],
-  .fixed.inset-0[class*='to-'] {
-    display: none !important;
-  }
-
-  /* NUCLEAR: Block gradient overlays with black/white */
-  .absolute.inset-0[class*='from-black'],
-  .absolute.inset-0[class*='to-black'],
-  .absolute.inset-0[class*='from-white'],
-  .absolute.inset-0[class*='to-white'],
-  .absolute.inset-0[class*='via-black'],
-  .absolute.inset-0[class*='via-white'] {
-    display: none !important;
-  }
-
-  /* NUCLEAR: Block any overlay divs */
-  div[class*='absolute'][class*='inset-0']:empty {
-    display: none !important;
-  }
+  /* Removed: All gradient and overlay blocking - these broke hero sections and design elements */
 
   h1,
   h2,

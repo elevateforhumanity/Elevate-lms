@@ -1,25 +1,23 @@
 /**
  * Mobile UI Contrast and Layout Fixes
  * Ensures WCAG AA compliance on mobile devices
- * NUCLEAR OPTION: Forces readability across entire site
+ * FIXED: Removed aggressive black text enforcement that broke the design
  */
 
 /* GLOBAL FIXES - Apply to all devices */
 * {
-  /* Kill all backdrop blur */
+  /* Disable backdrop blur for better mobile performance */
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
 
-/* FORCE PURE BLACK TEXT ON ALL DEVICES */
-body, body * {
-  color: #000000 !important;
-}
-
-/* Override ALL Tailwind gray text classes */
-[class*="text-gray"],
-[class*="text-slate"] {
-  color: #000000 !important;
+/* Improve text contrast on mobile - but don't force black everywhere */
+@media (max-width: 768px) {
+  /* Only fix low-contrast gray text, not ALL text */
+  .text-gray-300,
+  .text-gray-400 {
+    color: #4b5563 !important; /* gray-600 for better contrast */
+  }
 }
 
 /* Force minimum contrast on mobile */
