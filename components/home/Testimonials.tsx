@@ -38,7 +38,7 @@ export default function Testimonials() {
                     src={testimonial.image}
                     alt={testimonial.name}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                   />
                 </div>
                 <div>
