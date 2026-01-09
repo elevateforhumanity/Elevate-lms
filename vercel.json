@@ -1,6 +1,11 @@
 {
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install --frozen-lockfile",
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  },
   "redirects": [
     {
       "source": "/index.html",
