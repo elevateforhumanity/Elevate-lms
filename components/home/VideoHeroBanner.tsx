@@ -112,8 +112,7 @@ export default function VideoHeroBanner({
           </video>
         )}
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent z-5" />
+        {/* Gradient Overlay - Removed per user request */}
 
         {/* Text Content - Mobile First */}
         <div className="absolute inset-0 flex items-center z-10 pt-16 md:pt-0">

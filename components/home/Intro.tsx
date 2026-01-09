@@ -9,7 +9,7 @@ export default function Intro() {
         </h2>
         
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="rounded-lg overflow-hidden shadow-lg">
+          <div className="rounded-lg overflow-hidden shadow-lg bg-white">
             <div className="relative h-64">
               <Image
                 src="/free-training-hero.jpg"
@@ -18,12 +18,9 @@ export default function Intro() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 to-blue-900/40" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="text-2xl font-bold text-white mb-2">Free Workforce Training</h3>
-              </div>
             </div>
-            <div className="bg-blue-50 p-6">
+            <div className="p-6">
+              <h3 className="text-2xl font-bold text-blue-900 mb-4">Free Workforce Training</h3>
               <p className="text-base text-gray-700 leading-relaxed mb-3">
                 We connect eligible students to 100% funded training programs through WIOA (Workforce Innovation and Opportunity Act), 
                 WRG (Workforce Readiness Grant), and DOL (Department of Labor) initiatives.
@@ -34,7 +31,7 @@ export default function Intro() {
             </div>
           </div>
 
-          <div className="rounded-lg overflow-hidden shadow-lg">
+          <div className="rounded-lg overflow-hidden shadow-lg bg-white">
             <div className="relative h-64">
               <Image
                 src="/industry-credentials-hero.jpg"
@@ -43,12 +40,9 @@ export default function Intro() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-green-900/90 to-green-900/40" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="text-2xl font-bold text-white mb-2">Industry Credentials</h3>
-              </div>
             </div>
-            <div className="bg-green-50 p-6">
+            <div className="p-6">
+              <h3 className="text-2xl font-bold text-green-900 mb-4">Industry Credentials</h3>
               <p className="text-base text-gray-700 leading-relaxed mb-3">
                 Earn nationally recognized certifications from trusted partners like Certiport (Microsoft, Adobe), 
                 HSI (OSHA Safety), CareerSafe, NRF (Retail), and Milady (Cosmetology).
