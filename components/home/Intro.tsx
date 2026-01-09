@@ -12,7 +12,7 @@ export default function Intro() {
           <div className="rounded-lg overflow-hidden shadow-lg bg-white">
             <div className="relative h-64">
               <Image
-                src="/free-training-hero.jpg"
+                src="/what-we-do-hero.jpg"
                 alt="Free Workforce Training"
                 fill
                 className="object-cover"
@@ -34,7 +34,7 @@ export default function Intro() {
           <div className="rounded-lg overflow-hidden shadow-lg bg-white">
             <div className="relative h-64">
               <Image
-                src="/industry-credentials-hero.jpg"
+                src="/industry-credentials-new.jpg"
                 alt="Industry Credentials"
                 fill
                 className="object-cover"
