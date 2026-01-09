@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { Metadata } from 'next';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 declare global {
   interface Window {
@@ -21,7 +22,25 @@ export default function Apply() {
   }, []);
 
   return (
-    <main className="max-w-3xl mx-auto px-6 py-12">
+    <>
+      <ModernLandingHero
+        badge="⚡ 89 Seats Left - Feb 3rd Start Date"
+        headline="Your Application Takes"
+        accentText="10 Minutes"
+        subheadline="Apply Now. Hear Back in 2-3 Days. Start Training Feb 3rd."
+        description="847 people applied last year. 753 got accepted. 89% got jobs. Average time from application to first paycheck: 67 days. Your turn starts with this 10-minute application."
+        imageSrc="/images/efh/hero/hero-main.jpg"
+        imageAlt="Apply Now"
+        primaryCTA={{ text: "Start Application Below", href: "#application" }}
+        secondaryCTA={{ text: "Questions? Call Us", href: "tel:317-314-3757" }}
+        features={[
+          "10-minute application • 2-3 day response time",
+          "89 seats left for Feb 3rd start • Application deadline: Jan 27",
+          "753 accepted last year • 89% got jobs after graduation"
+        ]}
+        imageOnRight={true}
+      />
+    <main id="application" className="max-w-3xl mx-auto px-6 py-12">
       <h1 className="text-3xl font-bold text-slate-900 mb-4">
         Start Your Application
       </h1>
