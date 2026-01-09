@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { DollarSign, GraduationCap, Home } from 'lucide-react';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
   alternates: {
@@ -15,44 +16,38 @@ export const metadata: Metadata = {
 export default function WIOAEligibilityPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Banner */}
-      <section className="relative h-[400px] sm:h-[500px] w-full overflow-hidden">
-        <Image
-          src="/images/heroes/hero-state-funding.jpg"
-          alt="WIOA Eligibility"
-          fill
-          className="object-cover"
-          priority
-          quality={95}
-          sizes="100vw"
-        />
-
-        <div className="absolute inset-0 flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
-              WIOA Eligibility Requirements
-            </h1>
-            <p className="text-base md:text-lg sm:text-base md:text-lg text-white max-w-3xl">
-              Find out if you qualify for 100% free career training
-            </p>
-          </div>
-        </div>
-      </section>
+      <ModernLandingHero
+        badge="⚡ Most People Qualify"
+        headline="Check Your"
+        accentText="WIOA Eligibility"
+        subheadline="Find out if you qualify for 100% free career training"
+        description="WIOA (Workforce Innovation and Opportunity Act) provides funding for job training programs. Most Indiana residents qualify if they're unemployed, underemployed, or seeking better employment."
+        imageSrc="/images/heroes/hero-state-funding.jpg"
+        imageAlt="WIOA Eligibility"
+        primaryCTA={{ text: "Check Eligibility", href: "#eligibility" }}
+        secondaryCTA={{ text: "Apply Now", href: "/apply" }}
+        features={[
+          "100% free training for eligible Indiana residents",
+          "No student debt - all costs covered by WIOA funding",
+          "Most people qualify - we help with the application"
+        ]}
+        imageOnRight={true}
+      />
 
       {/* Main Content */}
-      <section className="py-16 px-4 sm:px-6">
+      <section id="eligibility" className="py-20 px-4 sm:px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-green-50 border-l-4 border-brand-green-600 p-6 mb-12 rounded-r-lg">
-            <h2 className="text-2xl font-bold text-green-900 mb-2">
+          <div className="bg-green-50 border-l-4 border-green-600 p-8 mb-12 rounded-r-xl shadow-sm">
+            <h2 className="text-2xl font-black text-green-900 mb-2">
               Good News!
             </h2>
-            <p className="text-lg text-green-800">
+            <p className="text-lg text-black">
               Most people qualify for WIOA funding. If you're looking to start a
               new career or upgrade your skills, you likely qualify.
             </p>
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-black text-black mb-8">
             Who Qualifies for WIOA?
           </h2>
 

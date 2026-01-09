@@ -9,6 +9,7 @@ import {
   TrendingUp,
   Heart,
 } from 'lucide-react';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
   title: 'Success Stories - Real People, Real Results | Elevate for Humanity',
@@ -175,55 +176,51 @@ const successStories = [
 export default function SuccessStoriesPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-white text-white py-20">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <Heart className="w-5 h-5" />
-              <span className="text-sm font-semibold">
-                Real People, Real Results
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Success Stories
-            </h1>
-            <p className="text-base md:text-lg text-blue-100 leading-relaxed">
-              These aren&apos;t just statistics—they&apos;re real people who
-              transformed their lives through education, determination, and the
-              right support at the right time.
-            </p>
-          </div>
-        </div>
-      </section>
+      <ModernLandingHero
+        badge="⚡ Real People, Real Results"
+        headline="Success"
+        accentText="Stories"
+        subheadline="Lives transformed through training and opportunity"
+        description="These aren't just statistics—they're real people who transformed their lives through education, determination, and the right support at the right time. 1,200+ lives changed with 87% employment rate."
+        imageSrc="/images/learners/reentry-coaching.jpg"
+        imageAlt="Success Stories"
+        primaryCTA={{ text: "Read Stories", href: "#stories" }}
+        secondaryCTA={{ text: "Start Your Journey", href: "/apply" }}
+        features={[
+          "1,200+ lives changed • 87% employment rate",
+          "$42K average starting salary for graduates",
+          "92% program completion rate"
+        ]}
+        imageOnRight={false}
+      />
 
       {/* Impact Stats */}
-      <section className="py-12 bg-slate-50 border-b">
+      <section id="stories" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-brand-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
+            <div className="text-center bg-white rounded-xl p-6 shadow-sm">
+              <div className="text-4xl font-black text-blue-600 mb-2">
                 1,200+
               </div>
-              <div className="text-sm text-slate-600">Lives Changed</div>
+              <div className="text-sm text-black">Lives Changed</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-brand-green-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
+            <div className="text-center bg-white rounded-xl p-6 shadow-sm">
+              <div className="text-4xl font-black text-green-600 mb-2">
                 87%
               </div>
-              <div className="text-sm text-slate-600">Employment Rate</div>
+              <div className="text-sm text-black">Employment Rate</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-brand-orange-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
+            <div className="text-center bg-white rounded-xl p-6 shadow-sm">
+              <div className="text-4xl font-black text-orange-600 mb-2">
                 $42K
               </div>
-              <div className="text-sm text-slate-600">Avg Starting Salary</div>
+              <div className="text-sm text-black">Avg Starting Salary</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-purple-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
+            <div className="text-center bg-white rounded-xl p-6 shadow-sm">
+              <div className="text-4xl font-black text-purple-600 mb-2">
                 92%
               </div>
-              <div className="text-sm text-slate-600">Program Completion</div>
+              <div className="text-sm text-black">Program Completion</div>
             </div>
           </div>
         </div>

@@ -9,6 +9,7 @@ import {
   Phone,
   ArrowRight,
 } from 'lucide-react';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
   alternates: {
@@ -22,30 +23,23 @@ export const metadata: Metadata = {
 export default function EmployerPage() {
   return (
     <div className="bg-white">
-      {/* HERO */}
-      <section className="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
-        <img
-          src="/hero-images/employer-new-hero.jpg"
-          alt="Employer Partners"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-
-        <div className="absolute inset-0 flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div className="max-w-2xl text-white">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                Hire Trained Workers.
-                <br />
-                No Recruiting Fees.
-              </h1>
-              <p className="text-xl md:text-2xl mb-8">
-                Access job-ready candidates with industry credentials in
-                healthcare, skilled trades, and technology.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ModernLandingHero
+        badge="⚡ 200+ Employer Partners"
+        headline="Hire Trained Workers"
+        accentText="No Recruiting Fees"
+        subheadline="Access job-ready candidates with industry credentials"
+        description="Pre-screened workers trained in healthcare, skilled trades, and technology. Average time-to-hire: 14 days. Direct hire, zero fees, no contracts."
+        imageSrc="/hero-images/employer-new-hero.jpg"
+        imageAlt="Employer Partners"
+        primaryCTA={{ text: "Call (317) 314-3757", href: "tel:+13173143757" }}
+        secondaryCTA={{ text: "Learn More", href: "#how-it-works" }}
+        features={[
+          "Pre-screened candidates with industry credentials",
+          "Average time-to-hire: 14 days vs. 42 days industry average",
+          "Optional apprenticeship programs with wage reimbursement"
+        ]}
+        imageOnRight={false}
+      />
 
       {/* THREE PROBLEMS WE SOLVE */}
       <section className="py-16 bg-white">
@@ -152,7 +146,7 @@ export default function EmployerPage() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-16 bg-white">
+      <section id="how-it-works" className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
             How It Works

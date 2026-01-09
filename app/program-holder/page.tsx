@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 
 import Link from 'next/link';
 import Image from 'next/image';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
   alternates: {
@@ -14,40 +15,24 @@ export const metadata: Metadata = {
 
 export default async function ProgramHolderPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <img
-          src="/images/efh/hero/hero-main.jpg"
-          alt="Program Holder Portal"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50" />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Program Holder Portal
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage training programs, track student progress, and access partner
-            resources.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/program-holder/apply"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Apply to Become a Program Holder
-            </Link>
-            <Link
-              href="/login"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Program Holder Login
-            </Link>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-white">
+      <ModernLandingHero
+        badge="⚡ Partner Portal"
+        headline="Program Holder"
+        accentText="Portal"
+        subheadline="Manage training programs and track student progress"
+        description="Join our network of approved training providers. Manage programs, track student progress, submit reports, and receive funding for training services."
+        imageSrc="/images/efh/hero/hero-main.jpg"
+        imageAlt="Program Holder Portal"
+        primaryCTA={{ text: "Apply to Become a Program Holder", href: "/program-holder/apply" }}
+        secondaryCTA={{ text: "Program Holder Login", href: "/login" }}
+        features={[
+          "Manage students • Track enrollment, attendance, and progress",
+          "Submit reports • Generate compliance documentation",
+          "Receive funding • Get paid for training services"
+        ]}
+        imageOnRight={true}
+      />
 
       {/* Content Section */}
       <section className="py-16">

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 
 import Link from 'next/link';
 import Image from 'next/image';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
   alternates: {
@@ -14,42 +15,24 @@ export const metadata: Metadata = {
 
 export default async function TrainingProvidersPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <video
-          autoPlay
-          loop
-          playsInline
-          muted
-          className="absolute inset-0 w-full h-full object-cover"
-
-        >
-          <source src="/videos/training-providers-video-with-narration.mp4" type="video/mp4" />
-        </video>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Training Providers
-          </h1>
-          <p className="text-base md:text-lg mb-8">
-            Partner with us to deliver training and expand your reach.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-slate-900 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-white">
+      <ModernLandingHero
+        badge="⚡ Partner With Us"
+        headline="Training"
+        accentText="Providers"
+        subheadline="Partner with us to deliver training and expand your reach"
+        description="Join our network of approved training providers and help students access free career training through WIOA funding. We provide support, resources, and a streamlined partnership process."
+        imageSrc="/images/artlist/hero-training-2.jpg"
+        imageAlt="Training Providers"
+        primaryCTA={{ text: "Get Started", href: "/contact" }}
+        secondaryCTA={{ text: "View Programs", href: "/programs" }}
+        features={[
+          "100% free training programs for eligible students",
+          "Industry-standard certifications and credentials",
+          "Career support and job placement assistance"
+        ]}
+        imageOnRight={false}
+      />
 
       {/* Content Section */}
       <section className="py-16">

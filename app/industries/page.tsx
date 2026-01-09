@@ -11,6 +11,7 @@ import {
   GraduationCap,
   ArrowRight,
 } from 'lucide-react';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
   title: 'Industries We Serve | Elevate for Humanity',
@@ -108,23 +109,26 @@ const industries = [
 export default function IndustriesPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
-              Industries We Serve
-            </h1>
-            <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto">
-              Explore career training programs across multiple high-demand
-              industries. All programs are 100% funded for eligible students.
-            </p>
-          </div>
-        </div>
-      </section>
+      <ModernLandingHero
+        badge="⚡ 8 High-Demand Industries"
+        headline="Industries"
+        accentText="We Serve"
+        subheadline="Career training across multiple high-demand industries"
+        description="Explore programs in healthcare, skilled trades, transportation, technology, and more. All programs are 100% funded for eligible students with industry-recognized credentials."
+        imageSrc="/images/efh/hero/hero-main.jpg"
+        imageAlt="Industries We Serve"
+        primaryCTA={{ text: "Explore Programs", href: "#industries" }}
+        secondaryCTA={{ text: "Apply Now", href: "/apply" }}
+        features={[
+          "8 high-demand industries • 20+ career programs",
+          "100% funded training for eligible students",
+          "Industry-recognized credentials and certifications"
+        ]}
+        imageOnRight={true}
+      />
 
       {/* Industries Grid */}
-      <section className="py-20">
+      <section id="industries" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {industries.map((industry) => {

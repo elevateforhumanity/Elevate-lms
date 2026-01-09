@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { CheckCircle, ArrowRight, Users, Target, Heart, Award } from 'lucide-react';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 
 export const metadata: Metadata = {
@@ -70,34 +71,43 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 to-purple-600 py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-4xl">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6">
-              About Elevate for Humanity
-            </h1>
-            <p className="text-xl sm:text-2xl text-white/90 mb-8">
-              A workforce development ecosystem helping individuals access training, funding, and employment pathways.
-            </p>
-            
-            {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20">
-                <div className="text-3xl sm:text-4xl font-black text-white mb-2">85%</div>
-                <div className="text-sm sm:text-base text-white/80">Job Placement</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20">
-                <div className="text-3xl sm:text-4xl font-black text-white mb-2">100%</div>
-                <div className="text-sm sm:text-base text-white/80">Free Training</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20">
-                <div className="text-3xl sm:text-4xl font-black text-white mb-2">20+</div>
-                <div className="text-sm sm:text-base text-white/80">Programs</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-white/20">
-                <div className="text-3xl sm:text-4xl font-black text-white mb-2">1000+</div>
-                <div className="text-sm sm:text-base text-white/80">Students</div>
+      <ModernLandingHero
+        badge="⚡ 85% Job Placement Rate"
+        headline="About"
+        accentText="Elevate for Humanity"
+        subheadline="Workforce development ecosystem connecting people to careers"
+        description="We help individuals access free training, funding, and employment pathways. Since 2020, we've helped 1000+ students launch new careers with 85% job placement rate."
+        imageSrc="/images/efh/hero/hero-main.jpg"
+        imageAlt="About Elevate for Humanity"
+        primaryCTA={{ text: "Our Programs", href: "/programs" }}
+        secondaryCTA={{ text: "Apply Now", href: "/apply" }}
+        features={[
+          "85% job placement rate • 100% free training",
+          "20+ career training programs across multiple industries",
+          "1000+ students trained since 2020"
+        ]}
+        imageOnRight={true}
+      />
+
+      {/* Stats Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 text-center">
+              <div className="text-4xl font-black text-blue-600 mb-2">85%</div>
+              <div className="text-sm text-black">Job Placement</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 text-center">
+              <div className="text-4xl font-black text-green-600 mb-2">100%</div>
+              <div className="text-sm text-black">Free Training</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 text-center">
+              <div className="text-4xl font-black text-purple-600 mb-2">20+</div>
+              <div className="text-sm text-black">Programs</div>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 text-center">
+              <div className="text-4xl font-black text-orange-600 mb-2">1000+</div>
+              <div className="text-sm text-black">Students</div>
               </div>
             </div>
           </div>
@@ -105,9 +115,9 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-black text-gray-900 mb-6">Our Mission</h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-black mb-6">Our Mission</h2>
           <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
             We connect individuals to free career training, remove barriers to success, and create pathways to sustainable employment. 
             Through partnerships with workforce boards, employers, and community organizations, we're building a more inclusive economy.
