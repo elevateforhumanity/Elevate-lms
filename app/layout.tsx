@@ -3,10 +3,11 @@ import UnregisterSW from "./components/UnregisterSW";
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import './globals-mobile-complete.css';
+import './globals-mobile-pro.css';
+import './globals-modern-design.css';
 import '@/branding/brand.css';
 import '@/styles/tiktok-animations.css';
 import '@/styles/rich-design-system.css';
-// Removed: force-black-text.css and globals-mobile-fixes.css - they broke all text colors
 import StructuredData from '@/components/StructuredData';
 import { ConditionalLayout } from '@/components/layout/ConditionalLayout';
 import { Toaster } from 'react-hot-toast';

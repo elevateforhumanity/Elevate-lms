@@ -23,17 +23,17 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="bg-white py-12 md:py-24">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-8 md:mb-16 text-center">
+    <section className="bg-white py-8 md:py-24">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
+        <h2 className="text-xl md:text-4xl font-bold text-gray-900 mb-6 md:mb-16 text-center">
           What Students Say
         </h2>
         
-        <div className="grid md:grid-cols-3 gap-6 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-12">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-gray-50 p-6 md:p-8 rounded-lg">
-              <div className="flex items-center mb-4 md:mb-6">
-                <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden mr-4">
+              <div className="flex flex-col items-center text-center mb-6">
+                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden mb-4 border-4 border-white shadow-lg">
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -42,15 +42,15 @@ export default function Testimonials() {
                   />
                 </div>
                 <div>
-                  <p className="text-base md:text-lg font-semibold text-gray-900">
+                  <p className="text-lg md:text-xl font-bold text-gray-900">
                     {testimonial.name}
                   </p>
-                  <p className="text-sm md:text-base text-gray-600">
+                  <p className="text-base md:text-lg text-gray-600">
                     {testimonial.role}
                   </p>
                 </div>
               </div>
-              <p className="text-base md:text-xl text-gray-700 leading-relaxed">
+              <p className="text-base md:text-xl text-gray-700 leading-relaxed text-center">
                 "{testimonial.quote}"
               </p>
             </div>

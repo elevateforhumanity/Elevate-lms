@@ -92,12 +92,9 @@ export default function VideoHeroBanner({
           maxHeight: '900px',
         }}
       >
-        {/* Fallback Background Image - Always visible */}
+        {/* Fallback Background - Solid color instead of image */}
         <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
-          style={{
-            backgroundImage: "url('/images/efh/hero/hero-main.jpg')",
-          }}
+          className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-900 to-purple-900 z-0"
         />
 
         {/* Video Background - Always rendered, enhanced progressively */}
@@ -110,7 +107,6 @@ export default function VideoHeroBanner({
             playsInline
             preload="metadata"
             autoPlay
-            poster="/images/homepage/students.jpg"
           >
             <source src={videoSrc} type="video/mp4" />
           </video>

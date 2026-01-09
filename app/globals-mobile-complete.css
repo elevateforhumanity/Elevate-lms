@@ -8,13 +8,31 @@ html, body {
   max-width: 100vw;
 }
 
-/* Fix all hero sections on mobile */
+/* Fix all hero sections on mobile - more compact */
 section[class*="hero"],
 section[class*="Hero"],
 .hero-section {
   min-height: auto !important;
-  padding-top: 5rem !important;
-  padding-bottom: 2rem !important;
+  padding-top: 3rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+/* Reduce section spacing on mobile */
+@media (max-width: 640px) {
+  section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Reduce grid gaps */
+  .grid {
+    gap: 1rem !important;
+  }
+  
+  /* Compact cards */
+  [class*="rounded"] {
+    padding: 1rem !important;
+  }
 }
 
 @media (min-width: 768px) {
@@ -34,20 +52,22 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 100%;
 }
 
-/* Mobile-safe text sizing */
+/* Mobile-safe text sizing - more compact */
 @media (max-width: 640px) {
   h1 {
-    font-size: 1.875rem !important; /* 30px */
-    line-height: 2.25rem !important;
+    font-size: 1.75rem !important; /* 28px - smaller */
+    line-height: 2rem !important;
+    margin-bottom: 0.75rem !important;
   }
   
   h2 {
-    font-size: 1.5rem !important; /* 24px */
-    line-height: 2rem !important;
+    font-size: 1.375rem !important; /* 22px - smaller */
+    line-height: 1.75rem !important;
+    margin-bottom: 0.5rem !important;
   }
   
   h3 {
-    font-size: 1.25rem !important; /* 20px */
+    font-size: 1.125rem !important; /* 18px - smaller */
     line-height: 1.75rem !important;
   }
 }
