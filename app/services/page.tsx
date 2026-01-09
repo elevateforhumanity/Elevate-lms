@@ -136,6 +136,7 @@ export default function ServicesPage() {
           alt="Our Services"
           className="absolute inset-0 w-full h-full object-cover"
         />
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute inset-0 flex items-center justify-center text-center px-4">
           <div className="max-w-6xl w-full rich-animate">
             {/* Logo */}
@@ -156,7 +157,7 @@ export default function ServicesPage() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-6 leading-tight">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight">
               WE SUPPORT YOUR SUCCESS
             </h1>
 
