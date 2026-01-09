@@ -204,10 +204,47 @@ export default function RootLayout({
         <meta name="theme-color" content="#10b981" />
         <meta
           httpEquiv="Cache-Control"
-          content="no-cache, no-store, must-revalidate"
+          content="no-cache, no-store, must-revalidate, max-age=0, post-check=0, pre-check=0"
         />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="cache-control" content="no-cache" />
+        <meta name="cache-control" content="no-store" />
+        <meta name="cache-control" content="must-revalidate" />
+        <meta name="expires" content="0" />
+        <meta name="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+        <meta name="pragma" content="no-cache" />
+        {/* NUCLEAR: Force browser to clear cache and reload if old CSS detected */}
+        <script dangerouslySetInnerHTML={{__html: `
+          (function() {
+            var CURRENT_CSS_HASH = '8ddda5b54d9ee18b';
+            var OLD_CSS_HASH = '51bbb73b05b55df2';
+            var hasOldCSS = false;
+            
+            // Check if old CSS is loaded
+            var links = document.getElementsByTagName('link');
+            for (var i = 0; i < links.length; i++) {
+              if (links[i].href && links[i].href.indexOf(OLD_CSS_HASH) > -1) {
+                hasOldCSS = true;
+                break;
+              }
+            }
+            
+            // If old CSS detected, clear cache and force reload
+            if (hasOldCSS) {
+              if ('caches' in window) {
+                caches.keys().then(function(names) {
+                  for (var i = 0; i < names.length; i++) {
+                    caches.delete(names[i]);
+                  }
+                });
+              }
+              // Force hard reload
+              window.location.reload(true);
+            }
+          })();
+        `}} />
         {/* Critical CSS to prevent FOUC on mobile - FIXED: removed forced black text */}
         <style dangerouslySetInnerHTML={{__html: `
           *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -256,6 +293,16 @@ export default function RootLayout({
           Skip to main content
         </a>
         <UnregisterSW />
+        {/* NUCLEAR: Kill service worker immediately */}
+        <script dangerouslySetInnerHTML={{__html: `
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+              for (var i = 0; i < registrations.length; i++) {
+                registrations[i].unregister();
+              }
+            });
+          }
+        `}} />
         <ConditionalLayout>{children}</ConditionalLayout>
         <ClientProviders />
         <Toaster
