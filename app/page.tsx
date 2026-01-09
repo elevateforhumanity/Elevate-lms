@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import Intro from '@/components/home/Intro';
 import Orientation from '@/components/home/Orientation';
 import Testimonials from '@/components/home/Testimonials';
@@ -22,22 +22,13 @@ export const revalidate = 60;
 export default function HomePage() {
   return (
     <>
-      {/* Hero with Video on Side */}
-      <ModernLandingHero
-        badge="Enrollment Open - Start Your Career Training"
-        headline="Free Career Training"
-        accentText="Real Credentials"
-        subheadline="Healthcare • Skilled Trades • Technology • Business"
-        description="100% funded workforce training through WIOA, WRG, and DOL programs. No tuition. No debt. Earn industry certifications and connect with employers hiring our graduates."
+      {/* Video Hero Banner */}
+      <VideoHeroBanner
         videoSrc="/videos/hero-home.mp4"
-        imageAlt="Career Training Success"
+        headline="Free Career Training"
+        subheadline="Healthcare • Skilled Trades • Technology • Business"
         primaryCTA={{ text: "Apply Now", href: "/apply" }}
         secondaryCTA={{ text: "View Programs", href: "/programs" }}
-        features={[
-          "100% free training with WIOA, WRG, or DOL funding",
-          "Industry-recognized credentials employers trust",
-          "Job placement assistance after completion"
-        ]}
       />
 
       {/* Features with Your Icon Images */}

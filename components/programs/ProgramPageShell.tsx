@@ -108,6 +108,7 @@ export function ProgramPageShell({
               <Card className="p-0 overflow-hidden">
                 <video
                   controls
+                  playsInline
                   className="w-full aspect-video"
                   poster={videoUrl.replace('.mp4', '-poster.jpg')}
                 >

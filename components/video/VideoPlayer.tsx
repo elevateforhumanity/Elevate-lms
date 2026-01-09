@@ -187,6 +187,7 @@ export default function VideoPlayer({
         ref={videoRef}
         src={src}
         className="w-full h-auto"
+        playsInline
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onPlay={() => setIsPlaying(true)}

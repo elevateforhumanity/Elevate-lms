@@ -221,6 +221,7 @@ export default function AdvancedVideoPlayer({
         src={src}
         poster={thumbnail}
         className="w-full aspect-video"
+        playsInline
         onClick={togglePlay}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}

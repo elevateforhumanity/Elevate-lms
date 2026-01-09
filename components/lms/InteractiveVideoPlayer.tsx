@@ -227,6 +227,7 @@ export default function InteractiveVideoPlayer({
           ref={videoRef}
           src={videoUrl}
           className="w-full aspect-video"
+          playsInline
           onTimeUpdate={handleTimeUpdate}
           onLoadedMetadata={handleLoadedMetadata}
           onEnded={() => {

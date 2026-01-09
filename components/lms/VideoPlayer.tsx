@@ -102,6 +102,7 @@ export default function VideoPlayer({
           src={url}
           controls
           autoPlay={autoplay}
+          playsInline
           className="w-full h-full"
           onPlay={handlePlay}
           onEnded={onComplete}

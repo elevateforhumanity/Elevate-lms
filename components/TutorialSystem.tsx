@@ -179,6 +179,7 @@ export function TutorialSystem({
               <video
                 src={currentStep.media}
                 controls
+                playsInline
                 className="w-full"
                 poster="/images/video-Content.jpg"
               >

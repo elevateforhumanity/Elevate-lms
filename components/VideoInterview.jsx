@@ -185,6 +185,7 @@ export default function VideoInterview() {
           ref={videoRef}
           autoPlay
           muted={recording}
+          playsInline
           className="w-full aspect-video"
           style={{ transform: 'scaleX(-1)' }} // Mirror effect
         />

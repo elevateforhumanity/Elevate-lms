@@ -189,6 +189,7 @@ export default function InteractiveVideoPlayer({
               ref={videoRef}
               src={videoUrl}
               className="w-full aspect-video"
+              playsInline
               onClick={togglePlay}
             />
             {/* Video Controls */}

@@ -300,6 +300,7 @@ export default function ContentLibrary() {
                     ) : item.content_type === 'video' ? (
                       <video
                         src={item.file_url}
+                        playsInline
                         className="w-full h-full object-cover rounded-lg"
                       />
                     ) : (

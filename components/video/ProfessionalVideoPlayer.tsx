@@ -160,6 +160,7 @@ export function ProfessionalVideoPlayer({
           src={src}
           poster={poster}
           className="h-full w-full"
+          playsInline
           onCanPlay={() => {
             setLoading(false);
             setIsReady(true);

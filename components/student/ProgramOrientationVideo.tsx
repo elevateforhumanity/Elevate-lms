@@ -87,6 +87,7 @@ export default function ProgramOrientationVideo({
                 className="w-full h-full"
                 controls
                 autoPlay
+                playsInline
                 onEnded={handleVideoEnd}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
