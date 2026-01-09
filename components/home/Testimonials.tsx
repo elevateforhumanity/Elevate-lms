@@ -33,12 +33,13 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-gray-50 p-6 md:p-8 rounded-lg">
               <div className="flex flex-col items-center text-center mb-6">
-                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-lg overflow-hidden mb-4 shadow-lg mx-auto">
+                <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-lg overflow-hidden mb-4 shadow-lg mx-auto">
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 192px, 224px"
                   />
                 </div>
                 <div>
