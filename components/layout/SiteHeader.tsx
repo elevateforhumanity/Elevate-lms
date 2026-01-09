@@ -145,7 +145,7 @@ export default function SiteHeader() {
           <nav
             role="navigation"
             aria-label="Main navigation"
-            className="hidden lg:flex items-center justify-center flex-1 gap-8"
+            className="hidden md:flex items-center justify-center flex-1 gap-4 lg:gap-6"
           >
             {navigation && navigation.length > 0 ? (
               navigation.map((section) => (
@@ -231,7 +231,7 @@ export default function SiteHeader() {
           </nav>
 
           {/* Desktop CTAs & Social */}
-          <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
+          <div className="hidden md:flex items-center gap-2 lg:gap-4 flex-shrink-0">
             {/* Search Button */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
