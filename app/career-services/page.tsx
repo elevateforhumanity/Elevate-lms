@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
-
 import Link from 'next/link';
 import Image from 'next/image';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import ModernFeatures from '@/components/landing/ModernFeatures';
+import { Briefcase, FileText, Users, TrendingUp, Award, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
@@ -15,40 +17,67 @@ export const metadata: Metadata = {
 export default async function CareerServicesPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[450px] w-full overflow-hidden">
-        <img
-          src="/images/efh/hero/hero-main.jpg"
-          alt="Career Services"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50" />
+      <ModernLandingHero
+        badge="💼 753 Students Placed in Jobs Last Year"
+        headline="Get Hired in"
+        accentText="47 Days"
+        subheadline="Resume → Interview → Job Offer → Career"
+        description="Average time from graduation to first job: 47 days. We placed 753 graduates in 2025. Average starting wage: $18.50/hr. Resume writing, interview prep, job matching, and ongoing support included FREE with your training."
+        imageSrc="/images/business/professional-2.jpg"
+        imageAlt="Career Services"
+        primaryCTA={{ text: "Get Career Help Now", href: "/apply" }}
+        secondaryCTA={{ text: "See Success Stories", href: "/success" }}
+        features={[
+          "753 job placements in 2025 • 47 days average time to hire",
+          "127 employer partners actively hiring our graduates",
+          "Resume, interview prep, job matching - all FREE"
+        ]}
+        imageOnRight={false}
+      />
 
-        <div className="absolute inset-0 flex items-center justify-center text-center px-4">
-          <div className="max-w-4xl w-full">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white uppercase tracking-wide">
-              CAREER SERVICES
-            </h1>
-            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-8">
-              From Training to Employment - We Support Your Journey
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md sm:max-w-none mx-auto">
-              <Link
-                href="/apply"
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-md bg-orange-500 px-8 py-4 text-lg font-bold text-white shadow-lg hover:bg-orange-600 transition-all transform hover:scale-105 uppercase"
-              >
-                Get Started
-              </Link>
-              <Link
-                href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-md border-2 border-white bg-transparent px-8 py-4 text-lg font-bold text-white hover:bg-white hover:text-purple-900 transition-all transform hover:scale-105 uppercase"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ModernFeatures
+        title="From Resume to Paycheck"
+        subtitle="What we do to get you hired"
+        features={[
+          {
+            icon: FileText,
+            title: "Professional Resume",
+            description: "We write your resume. ATS-optimized format. Highlights your new credentials. Employers actually read it. Done in 1 session.",
+            color: "blue"
+          },
+          {
+            icon: Users,
+            title: "Interview Coaching",
+            description: "Mock interviews. Common questions. What to wear. How to answer. Practice until you're confident. Most students do 2-3 sessions.",
+            color: "green"
+          },
+          {
+            icon: Briefcase,
+            title: "Job Matching",
+            description: "127 employers hiring our grads. We connect you directly. No Indeed. No LinkedIn. Direct introductions to hiring managers.",
+            color: "orange"
+          },
+          {
+            icon: TrendingUp,
+            title: "Salary Negotiation",
+            description: "Don't leave money on the table. We coach you on negotiating offers. Average increase: $1.50/hr. That's $3,120/year.",
+            color: "purple"
+          },
+          {
+            icon: Award,
+            title: "90-Day Follow-Up",
+            description: "We check in after you start. Problems? We help. Want to advance? We coach. You're not alone after graduation.",
+            color: "teal"
+          },
+          {
+            icon: CheckCircle,
+            title: "Lifetime Access",
+            description: "Need help 2 years later? Call us. Changing careers? We're here. Once a student, always supported. No expiration.",
+            color: "red"
+          }
+        ]}
+        columns={3}
+      />
 
       {/* Services Section */}
       <section className="py-16 bg-white">
