@@ -96,7 +96,7 @@ export default function VideoHeroBanner({
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center z-0"
           style={{
-            backgroundImage: "url('/images/homepage/students.jpg')",
+            backgroundImage: "url('/images/efh/hero/hero-main.jpg')",
           }}
         />
 

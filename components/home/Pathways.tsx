@@ -12,7 +12,7 @@ export default function Pathways() {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
             <Image
-              src="/images/artlist/cropped/hero-training-3-wide.jpg"
+              src="/images/pathways/trades-hero.jpg"
               alt="Students learning"
               fill
               className="object-cover"
@@ -30,7 +30,7 @@ export default function Pathways() {
 
           <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
             <Image
-              src="/media/programs/workforce-readiness-hero.jpg"
+              src="/images/efh/hero/hero-support.jpg"
               alt="Career pathways"
               fill
               className="object-cover"
