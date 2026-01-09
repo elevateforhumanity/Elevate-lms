@@ -2,7 +2,7 @@
 
 import { logger } from '@/lib/logger';
 import { useState } from 'react';
-import { Shield, Download, FileText, CheckCircle } from 'lucide-react';
+
 import SignatureCanvas from 'react-signature-canvas';
 import { useRef } from 'react';
 
@@ -83,7 +83,7 @@ export default function SubOfficeAgreementPage() {
       <div className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-white rounded-lg shadow-xl p-8 text-center">
-            <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+            
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
               Agreement Signed Successfully!
             </h1>

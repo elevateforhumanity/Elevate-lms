@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FileSignature, CheckCircle, Clock, XCircle } from 'lucide-react';
+
 
 export const metadata: Metadata = {
   alternates: {
@@ -124,7 +124,7 @@ export default async function SignaturesPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <CheckCircle className="h-8 w-8 text-brand-green-600" />
+                  
                   <h3 className="text-sm font-medium text-gray-600">
                     Completed
                   </h3>
@@ -166,7 +166,7 @@ export default async function SignaturesPage() {
                         <div className="flex items-center gap-2">
                           {signature.status === 'completed' && (
                             <span className="flex items-center gap-1 text-brand-green-600 text-sm font-medium bg-brand-green-100 px-3 py-1 rounded-full">
-                              <CheckCircle className="h-4 w-4" />
+                              
                               Completed
                             </span>
                           )}

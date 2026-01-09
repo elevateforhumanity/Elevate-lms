@@ -270,7 +270,7 @@ export default function DocumentUpload({
                       'bg-blue-100'
                     }`}>
                       {file.status === 'success' ? (
-                        <Check className="w-6 h-6 text-green-600" />
+                        
                       ) : file.status === 'error' ? (
                         <AlertCircle className="w-6 h-6 text-brand-orange-600" />
                       ) : (
@@ -311,7 +311,7 @@ export default function DocumentUpload({
 
                       {file.status === 'success' && (
                         <div className="flex items-center gap-2 text-sm text-green-600">
-                          <Check className="w-4 h-4" />
+                          
                           <span>Upload complete</span>
                         </div>
                       )}
@@ -376,7 +376,7 @@ export default function DocumentUpload({
           className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3"
         >
           <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
-            <Check className="w-6 h-6 text-white" />
+            
           </div>
           <div>
             <h4 className="font-semibold text-green-900">All files uploaded successfully!</h4>

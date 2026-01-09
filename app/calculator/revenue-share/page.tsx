@@ -104,23 +104,23 @@ export default function RevenueShareCalculator() {
                 </h3>
                 <ul className="text-sm text-blue-800 space-y-1">
                   <li>
-                    <CheckCircle className="w-5 h-5 inline-block" /> Drake
+                     Drake
                     Software (unlimited)
                   </li>
                   <li>
-                    <CheckCircle className="w-5 h-5 inline-block" /> All
+                     All
                     training and support
                   </li>
                   <li>
-                    <CheckCircle className="w-5 h-5 inline-block" /> Marketing
+                     Marketing
                     materials
                   </li>
                   <li>
-                    <CheckCircle className="w-5 h-5 inline-block" /> No
+                     No
                     per-return fees
                   </li>
                   <li>
-                    <CheckCircle className="w-5 h-5 inline-block" /> No monthly
+                     No monthly
                     software costs
                   </li>
                 </ul>

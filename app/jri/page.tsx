@@ -385,19 +385,19 @@ export default function JRIPage() {
                 <CardContent>
                   <ul className="space-y-2 mb-6">
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-sm">
                         National certification included
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-sm">
                         $45,000+ average starting salary
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-sm">
                         High demand in corrections and social services
                       </span>
@@ -429,17 +429,17 @@ export default function JRIPage() {
                 <CardContent>
                   <ul className="space-y-2 mb-6">
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-sm">Class A CDL certification</span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-sm">
                         $50,000-$70,000 first-year earnings
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-sm">
                         Nationwide job opportunities
                       </span>
@@ -471,19 +471,19 @@ export default function JRIPage() {
                 <CardContent>
                   <ul className="space-y-2 mb-6">
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-sm">
                         Industry-recognized certifications
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-sm">
                         $40,000-$55,000 starting salary
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-sm">
                         Clear advancement pathways
                       </span>
@@ -514,7 +514,7 @@ export default function JRIPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+                  
                   <div>
                     <p className="font-semibold">Justice System Involvement</p>
                     <p className="text-slate-700">
@@ -524,7 +524,7 @@ export default function JRIPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+                  
                   <div>
                     <p className="font-semibold">Indiana Resident</p>
                     <p className="text-slate-700">
@@ -533,7 +533,7 @@ export default function JRIPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+                  
                   <div>
                     <p className="font-semibold">Commitment to Success</p>
                     <p className="text-slate-700">
@@ -542,7 +542,7 @@ export default function JRIPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
+                  
                   <div>
                     <p className="font-semibold">Referral or Self-Enrollment</p>
                     <p className="text-slate-700">

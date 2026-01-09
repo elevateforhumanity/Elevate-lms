@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { loadStripe } from '@stripe/stripe-js';
-import { Calendar, CheckCircle, CreditCard, Lightbulb } from 'lucide-react';
+
 
 // Initialize Stripe
 const stripePromise = loadStripe(
@@ -287,19 +287,19 @@ export default function CheckoutPage() {
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-gray-700">
                         Secure one-time payment
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-gray-700">
                         All major credit and debit cards accepted
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-gray-700">
                         Instant enrollment confirmation
                       </span>
@@ -338,19 +338,19 @@ export default function CheckoutPage() {
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-gray-700">
                         Monthly payment plans available
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-gray-700">
                         0% APR options for qualified buyers
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-gray-700">
                         As low as ${Math.ceil(programData.price / 24)}/month
                       </span>

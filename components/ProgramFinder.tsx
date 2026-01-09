@@ -239,7 +239,7 @@ export default function ProgramFinder() {
             className="text-center mb-12"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold mb-4">
-              <CheckCircle className="w-4 h-4" />
+              
               Your Personalized Results
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -436,7 +436,7 @@ export default function ProgramFinder() {
                       {option.text}
                     </span>
                     {isSelected && (
-                      <CheckCircle className="w-6 h-6 text-blue-600" />
+                      
                     )}
                   </motion.button>
                 );

@@ -266,7 +266,7 @@ export default function LiveChatPage() {
             </div>
             <div>
               • <strong>Tawk.to</strong>: FREE - Recommended for most use cases
-              <CheckCircle className="w-5 h-5 inline-block" />
+              
             </div>
           </div>
         </div>
@@ -338,7 +338,7 @@ interface FeatureItemProps {
 function FeatureItem({ title, description }: FeatureItemProps) {
   return (
     <div className="flex items-start space-x-3">
-      <CheckCircle className="w-5 h-5 text-brand-green-600 mt-0.5 flex-shrink-0" />
+      
       <div>
         <div className="font-medium text-gray-900">{title}</div>
         <div className="text-sm text-gray-600">{description}</div>

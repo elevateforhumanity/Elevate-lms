@@ -97,7 +97,7 @@ export default function SSNVerificationForm({
         <div className="mt-4 p-4 bg-blue-50 border-l-4 border-blue-400">
           <p className="text-sm text-blue-900">
             <strong>
-              <CheckCircle className="w-5 h-5 inline-block" /> FREE Service
+               FREE Service
             </strong>{' '}
             - No cost to verify your SSN
             <br />
@@ -124,7 +124,7 @@ export default function SSNVerificationForm({
         >
           <div className="flex items-start gap-3">
             {result.verified ? (
-              <CheckCircle className="text-green-600 flex-shrink-0 mt-0.5" />
+              
             ) : (
               <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5" />
             )}
@@ -135,7 +135,7 @@ export default function SSNVerificationForm({
                 }`}
               >
                 {result.verified
-                  ? '<CheckCircle className="w-5 h-5 inline-block" /> SSN Verified Successfully'
+                  ? ' SSN Verified Successfully'
                   : '<XCircle className="w-5 h-5 inline-block" /> Verification Failed'}
               </p>
               <p

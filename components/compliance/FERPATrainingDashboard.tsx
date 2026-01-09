@@ -137,7 +137,7 @@ export default function FERPATrainingDashboard({
           <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-green-100 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-green-600" />
+                
               </div>
             </div>
             <div className="text-3xl font-bold text-green-600">{completedCount}</div>

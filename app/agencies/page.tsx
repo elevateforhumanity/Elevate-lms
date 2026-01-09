@@ -112,7 +112,7 @@ export default function AgenciesPage() {
           </h2>
           <div className="space-y-4">
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
                   Real-Time Compliance Dashboards
@@ -125,7 +125,7 @@ export default function AgenciesPage() {
             </div>
 
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
                   Automated Reporting
@@ -138,7 +138,7 @@ export default function AgenciesPage() {
             </div>
 
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
                   Multi-Tenant Architecture
@@ -170,15 +170,15 @@ export default function AgenciesPage() {
               </p>
               <ul className="space-y-3 text-slate-700">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Real-time dashboards</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Automated RAPIDS reporting</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Outcome tracking</span>
                 </li>
               </ul>
@@ -194,15 +194,15 @@ export default function AgenciesPage() {
               </p>
               <ul className="space-y-3 text-slate-700">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>White-label LMS</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Mobile app included</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Certificate generation</span>
                 </li>
               </ul>
@@ -218,15 +218,15 @@ export default function AgenciesPage() {
               </p>
               <ul className="space-y-3 text-slate-700">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Multi-provider oversight</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Performance analytics</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Custom reporting</span>
                 </li>
               </ul>
@@ -242,15 +242,15 @@ export default function AgenciesPage() {
               </p>
               <ul className="space-y-3 text-slate-700">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Grant-ready programs</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Employer partnerships</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Outcome tracking</span>
                 </li>
               </ul>
@@ -313,7 +313,7 @@ export default function AgenciesPage() {
                 key={capability}
                 className="bg-slate-50 rounded-lg p-4 flex items-center gap-3"
               >
-                <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                
                 <span className="text-slate-700 font-medium">{capability}</span>
               </div>
             ))}

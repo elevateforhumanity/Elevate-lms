@@ -169,7 +169,7 @@ export function LiveMetrics() {
     <div className="space-y-8">
       {/* Verification Badge */}
       <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">
-        <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
+        
         <div>
           <p className="text-sm font-semibold text-green-900">
             ✓ Live Data Verified

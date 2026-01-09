@@ -149,21 +149,21 @@ export default function TaxServicesPage() {
 
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">No cost</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     IRS-aligned volunteer program
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Appointment-based</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     Secure document handling
                   </span>
@@ -199,21 +199,21 @@ export default function TaxServicesPage() {
 
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Experienced preparers</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Fast turnaround</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     Business & self-employed support
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     Secure upload & appointments
                   </span>

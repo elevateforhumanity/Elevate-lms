@@ -536,7 +536,7 @@ export default function AccreditationPage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-2xl">
-                    <CheckCircle className="w-5 h-5 inline-block" />
+                    
                   </span>
                   <div>
                     <p className="font-bold">Full Compliance</p>

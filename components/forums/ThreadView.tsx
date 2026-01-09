@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState } from "react";
-import { ThumbsUp, MessageSquare, CheckCircle } from "lucide-react";
+
 
 interface Reply {
   id: string;
@@ -87,7 +87,7 @@ export function ThreadView({
                   <span className="font-semibold text-white">{reply.author_name}</span>
                   {reply.is_solution && (
                     <span className="flex items-center gap-1 text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">
-                      <CheckCircle className="w-3 h-3" />
+                      
                       Solution
                     </span>
                   )}

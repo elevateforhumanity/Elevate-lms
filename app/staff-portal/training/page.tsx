@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { requireRole } from '@/lib/auth/require-role';
 import Link from 'next/link';
-import { PlayCircle, CheckCircle, Clock, Award, BookOpen } from 'lucide-react';
+
 
 export const metadata: Metadata = {
   alternates: {
@@ -103,7 +103,7 @@ export default async function StaffTrainingPage() {
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
-              <CheckCircle className="h-8 w-8 text-green-600" />
+              
               <span className="text-3xl font-bold text-slate-900">
                 {completedModules}
               </span>
@@ -205,7 +205,7 @@ export default async function StaffTrainingPage() {
                       )}
                     </div>
                     {module.isCompleted && (
-                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
+                      
                     )}
                   </div>
 

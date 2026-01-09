@@ -326,7 +326,7 @@ export default function PathwaysPage() {
                                     credits
                                   </p>
                                 </div>
-                                <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0" />
+                                
                               </div>
                             </div>
                           ))}

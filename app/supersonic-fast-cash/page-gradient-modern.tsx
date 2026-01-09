@@ -143,16 +143,16 @@ export default function SupersonicMarketingPage() {
               </div>
               <div className="flex flex-wrap justify-center gap-6 text-base">
                 <span className="px-4 py-2 bg-green-50 text-green-700 rounded-lg font-bold border border-green-200">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Audit Defense
+                   Audit Defense
                 </span>
                 <span className="px-4 py-2 bg-green-50 text-green-700 rounded-lg font-bold border border-green-200">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Appeals
+                   Appeals
                 </span>
                 <span className="px-4 py-2 bg-green-50 text-green-700 rounded-lg font-bold border border-green-200">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Collections
+                   Collections
                 </span>
                 <span className="px-4 py-2 bg-green-50 text-green-700 rounded-lg font-bold border border-green-200">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Tax Court
+                   Tax Court
                 </span>
               </div>
             </div>
@@ -190,25 +190,25 @@ export default function SupersonicMarketingPage() {
               <div className="p-8">
                 <ul className="space-y-4 mb-6">
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       Up to $7,500 cash today
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       15-minute approval
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       No credit check needed
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       Free tax preparation included
                     </span>
@@ -263,25 +263,25 @@ export default function SupersonicMarketingPage() {
               <div className="p-8">
                 <ul className="space-y-4 mb-6">
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-blue-900 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       IRS-certified preparers
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-blue-900 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       Maximum refund guaranteed
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-blue-900 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       Online or in-person
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-blue-900 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       All 50 states
                     </span>
@@ -336,25 +336,25 @@ export default function SupersonicMarketingPage() {
               <div className="p-8">
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       File your own taxes online
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       Easy step-by-step wizard
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       Free for simple returns
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    
                     <span className="text-lg font-semibold text-gray-700">
                       E-file directly to IRS
                     </span>
@@ -619,25 +619,25 @@ export default function SupersonicMarketingPage() {
                   </p>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      
                       <span className="text-sm font-semibold">
                         IRS Licensed
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      
                       <span className="text-sm font-semibold">
                         Audit Defense
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      
                       <span className="text-sm font-semibold">
                         Tax Court Rep
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      
                       <span className="text-sm font-semibold">
                         All 50 States
                       </span>
@@ -673,23 +673,23 @@ export default function SupersonicMarketingPage() {
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     Corporate returns (1120, 1120S)
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     Partnership returns (1065)
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Multi-state filing</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Quarterly estimates</span>
                 </li>
               </ul>
@@ -705,19 +705,19 @@ export default function SupersonicMarketingPage() {
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Full-service payroll</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Quarterly payroll taxes</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">W-2 & 1099 preparation</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Monthly bookkeeping</span>
                 </li>
               </ul>
@@ -733,19 +733,19 @@ export default function SupersonicMarketingPage() {
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Audit defense & appeals</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Tax debt resolution</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Offer in compromise</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Payment plans</span>
                 </li>
               </ul>
@@ -761,17 +761,17 @@ export default function SupersonicMarketingPage() {
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Year-round tax strategy</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     Entity structure optimization
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Retirement planning</span>
                 </li>
               </ul>
@@ -784,17 +784,17 @@ export default function SupersonicMarketingPage() {
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     Non-profit tax returns (990)
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">Estate & trust returns</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     International tax compliance
                   </span>

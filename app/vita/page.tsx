@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import ModernFeatures from '@/components/landing/ModernFeatures';
-import { Heart, DollarSign, FileText, CheckCircle, Users, Clock, Shield } from 'lucide-react';
+
 
 export const metadata: Metadata = {
   title: 'VITA Tax Prep - Free Tax Preparation | Elevate for Humanity',
@@ -86,7 +86,7 @@ export default function VITAPage() {
               </p>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-md">
-              <CheckCircle className="w-12 h-12 text-green-600 mb-4" />
+              
               <h3 className="text-2xl font-bold mb-4">IRS Certified</h3>
               <p className="text-gray-700">
                 All VITA volunteers are IRS-certified and trained to help you prepare your taxes accurately and get the maximum refund you deserve.
@@ -102,19 +102,19 @@ export default function VITAPage() {
           <div className="bg-blue-50 p-8 rounded-lg">
             <ul className="space-y-4 text-lg">
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                
                 <span>Individuals and families earning $64,000 or less per year</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                
                 <span>Persons with disabilities</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                
                 <span>Limited English-speaking taxpayers</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                
                 <span>Seniors needing assistance with tax preparation</span>
               </li>
             </ul>

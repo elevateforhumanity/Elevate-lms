@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState, useEffect } from 'react';
-import { Cookie, X, Settings, Shield, CheckCircle } from 'lucide-react';
+
 import Link from 'next/link';
 
 interface CookiePreferences {
@@ -194,7 +194,7 @@ export default function CookieConsentBanner() {
                       </p>
                     </div>
                     <div className="ml-4">
-                      <CheckCircle className="w-6 h-6 text-green-600" />
+                      
                     </div>
                   </div>
                 </div>

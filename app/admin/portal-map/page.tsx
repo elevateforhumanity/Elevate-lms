@@ -686,7 +686,7 @@ export default function AdminPortalMapPage() {
       case 'active':
         return (
           <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-green-700 bg-brand-green-100 rounded-full">
-            <CheckCircle2 className="w-3 h-3" />
+            
             Active
           </span>
         );

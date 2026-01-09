@@ -161,7 +161,7 @@ export default function NotificationBell() {
                             className="p-1 hover:bg-slate-200 rounded flex-shrink-0"
                             title="Mark as read"
                           >
-                            <Check className="w-4 h-4 text-slate-600" />
+                            
                           </button>
                         )}
                       </div>

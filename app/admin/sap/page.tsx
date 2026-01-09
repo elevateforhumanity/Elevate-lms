@@ -180,7 +180,7 @@ export default async function SAPMonitoringPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'good':
-        return <CheckCircle className="w-5 h-5 text-brand-green-600" />;
+        return ;
       case 'warning':
         return <AlertTriangle className="w-5 h-5 text-yellow-600" />;
       case 'probation':
@@ -237,7 +237,7 @@ export default async function SAPMonitoringPage() {
 
           <div className="bg-white rounded-xl shadow-sm border p-6">
             <div className="flex items-center justify-between mb-2">
-              <CheckCircle className="w-8 h-8 text-brand-green-600" />
+              
               <span className="text-3xl font-bold text-brand-green-600">
                 {goodStanding}
               </span>

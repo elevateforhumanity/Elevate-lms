@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FileText, Calendar, FolderOpen, TrendingUp, CheckCircle } from 'lucide-react';
+
 
 export const metadata = {
   title: 'Tax Information | Supersonic Fast Cash',
@@ -37,19 +37,19 @@ export default function TaxInformationPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximize Your Deductions</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Keep detailed records of all business expenses</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Track mileage for business travel</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Save receipts for charitable donations</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Consider home office deduction if eligible</span>
                 </li>
               </ul>
@@ -59,19 +59,19 @@ export default function TaxInformationPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Avoid Common Mistakes</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Double-check Social Security numbers</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Report all income, including side gigs</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>File on time to avoid penalties</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Choose the right filing status</span>
                 </li>
               </ul>
@@ -81,19 +81,19 @@ export default function TaxInformationPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Tax Credits to Claim</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Earned Income Tax Credit (EITC)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Child Tax Credit</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Education credits (American Opportunity, Lifetime Learning)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Retirement savings contributions credit</span>
                 </li>
               </ul>
@@ -103,19 +103,19 @@ export default function TaxInformationPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Year-Round Planning</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Adjust withholding if needed</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Make quarterly estimated payments</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Contribute to retirement accounts</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Review tax situation after major life changes</span>
                 </li>
               </ul>
@@ -236,19 +236,19 @@ export default function TaxInformationPage() {
             <h3 className="text-2xl font-black text-gray-900 mb-4">Important Notes</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                
                 <span>The IRS generally has 3 years to audit your return</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                
                 <span>If you underreport income by 25%+, the IRS has 6 years</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                
                 <span>No statute of limitations if you don't file or file fraudulently</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                
                 <span>Keep records longer if you have ongoing tax issues</span>
               </li>
             </ul>

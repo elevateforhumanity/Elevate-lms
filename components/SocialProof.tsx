@@ -195,7 +195,7 @@ export default function SocialProof() {
 
               <div className="space-y-3 mb-8">
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  
                   <span className="text-slate-700 font-semibold">
                     {currentTestimonial.outcome}
                   </span>

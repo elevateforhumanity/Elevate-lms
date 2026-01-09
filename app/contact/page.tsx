@@ -263,7 +263,7 @@ export default function ContactPage() {
           ) : (
             <div className="bg-gradient-to-br from-green-50 to-white rounded-2xl p-12 shadow-xl border-2 border-green-200 text-center">
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-10 h-10 text-green-600" />
+                
               </div>
               <h3 className="text-3xl font-black text-gray-900 mb-4">
                 Message Sent!
@@ -313,15 +313,15 @@ export default function ContactPage() {
               </h3>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-500" />
+                  
                   <span>Students & Job Seekers</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-500" />
+                  
                   <span>Employers & Partners</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-500" />
+                  
                   <span>Community Organizations</span>
                 </li>
               </ul>

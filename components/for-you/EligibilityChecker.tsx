@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState } from 'react';
-import { CheckCircle, XCircle, Phone } from 'lucide-react';
+
 
 interface Question {
   id: string;
@@ -126,7 +126,7 @@ export function EligibilityChecker() {
             {fullyEligible ? (
               <>
                 <div className="flex items-center gap-3 mb-4">
-                  <CheckCircle className="h-8 w-8 text-green-600" />
+                  
                   <h4 className="text-2xl font-bold text-green-900">
                     You Qualify!
                   </h4>

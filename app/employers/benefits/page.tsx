@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
-import { ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react';
+
 
 export const metadata: Metadata = {
   title: 'Employer Benefits | Elevate for Humanity',
@@ -69,7 +69,7 @@ export default function EmployerBenefitsPage() {
                 },
               ].map((benefit, index) => (
                 <div key={index} className="flex gap-4">
-                  <CheckCircle className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
+                  
                   <div>
                     <h3 className="font-semibold text-lg mb-1">
                       {benefit.title}

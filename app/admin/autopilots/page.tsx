@@ -162,7 +162,7 @@ export default function AutopilotsPage() {
 
         addLog(
           task.id,
-          `<CheckCircle className="w-5 h-5 inline-block" /> ${task.name} completed successfully`
+          ` ${task.name} completed successfully`
         );
         setCompletedTasks((prev) => new Set(prev).add(task.id));
       } else {
@@ -303,7 +303,7 @@ export default function AutopilotsPage() {
                             <Loader2 className="w-5 h-5 text-brand-blue-600 animate-spin" />
                           )}
                           {status === 'completed' && (
-                            <CheckCircle className="w-5 h-5 text-brand-green-600" />
+                            
                           )}
                           {status === 'failed' && (
                             <XCircle className="w-5 h-5 text-brand-orange-600" />

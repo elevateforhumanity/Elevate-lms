@@ -329,7 +329,7 @@ export default function WIOAApplicationForm() {
                   }`}
                 >
                   {currentStep > step.number ? (
-                    <Check className="w-5 h-5" />
+                    
                   ) : (
                     step.number
                   )}
@@ -437,7 +437,7 @@ export default function WIOAApplicationForm() {
             ) : (
               <>
                 Submit Application
-                <Check className="w-5 h-5" />
+                
               </>
             )}
           </button>

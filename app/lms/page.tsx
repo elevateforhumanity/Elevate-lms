@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { CheckCircle, ArrowRight, Play, Star, BookOpen } from 'lucide-react';
+
 
 export const metadata: Metadata = {
   title: 'Learning Management System | Elevate for Humanity',
@@ -280,7 +280,7 @@ export default function LMSLandingPage() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Learn at Your Own Pace
@@ -293,7 +293,7 @@ export default function LMSLandingPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Expert Instructors
@@ -305,7 +305,7 @@ export default function LMSLandingPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Interactive Learning
@@ -318,7 +318,7 @@ export default function LMSLandingPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Mobile Friendly
@@ -330,7 +330,7 @@ export default function LMSLandingPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Track Your Progress
@@ -342,7 +342,7 @@ export default function LMSLandingPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Earn Certificates

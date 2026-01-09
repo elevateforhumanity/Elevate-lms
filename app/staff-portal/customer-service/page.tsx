@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { requireRole } from '@/lib/auth/require-role';
 import Link from 'next/link';
-import { Ticket, AlertCircle, CheckCircle, Clock } from 'lucide-react';
+
 
 export const metadata: Metadata = {
   alternates: {
@@ -92,7 +92,7 @@ export default async function CustomerServicePage() {
             </h2>
             {!tickets || tickets.length === 0 ? (
               <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-8 text-center">
-                <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-3" />
+                
                 <p className="text-slate-600">No active tickets</p>
               </div>
             ) : (

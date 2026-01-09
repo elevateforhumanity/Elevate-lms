@@ -5,7 +5,7 @@
 import React from 'react';
 
 import { useState, useEffect } from 'react';
-import { Search, CheckCircle, Clock, XCircle, Phone, Mail } from 'lucide-react';
+
 import Link from 'next/link';
 
 type ApplicationStatus = 'pending' | 'approved' | 'rejected' | 'contacted';

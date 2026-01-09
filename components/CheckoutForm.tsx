@@ -102,7 +102,7 @@ function PaymentForm({
     return (
       <div className="text-center py-12">
         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <Check className="w-10 h-10 text-green-600" />
+          
         </div>
         <h3 className="text-2xl font-bold text-gray-900 mb-2">
           Payment Successful!

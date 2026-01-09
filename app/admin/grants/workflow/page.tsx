@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Image from 'next/image';
-import { CheckCircle } from 'lucide-react';
+
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -139,7 +139,7 @@ export default async function GrantWorkflowPage() {
                   {statusCounts.submitted}
                 </div>
                 <p className="text-sm font-medium text-slate-900">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Submitted
+                   Submitted
                 </p>
                 <p className="text-xs text-slate-500">Complete</p>
               </div>

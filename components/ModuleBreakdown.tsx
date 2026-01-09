@@ -52,7 +52,7 @@ export function ModuleBreakdown({ modules, className = '' }: ModuleBreakdownProp
       case 'reading':
         return <FileText className="w-4 h-4" />;
       case 'quiz':
-        return <CheckSquare className="w-4 h-4" />;
+        return ;
       default:
         return <FileText className="w-4 h-4" />;
     }
@@ -101,7 +101,7 @@ export function ModuleBreakdown({ modules, className = '' }: ModuleBreakdownProp
                     )}
                     {module.quizCount > 0 && (
                       <span className="flex items-center gap-1">
-                        <CheckSquare className="w-3 h-3" />
+                        
                         {module.quizCount} quizzes
                       </span>
                     )}

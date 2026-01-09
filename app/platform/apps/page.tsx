@@ -125,7 +125,7 @@ export default function PlatformAppsPage() {
                       {app.name}
                     </h3>
                     <div className="inline-flex items-center px-2 py-1 bg-brand-green-100 text-green-800 text-xs font-semibold rounded">
-                      <Check className="w-3 h-3 mr-1" />
+                      
                       Core App
                     </div>
                   </div>
@@ -218,16 +218,16 @@ export default function PlatformAppsPage() {
                       </td>
                       <td className="px-6 py-4 text-center">
                         {app.enabledByDefault ? (
-                          <Check className="w-5 h-5 text-brand-green-600 mx-auto" />
+                          
                         ) : (
                           <span className="text-gray-400">—</span>
                         )}
                       </td>
                       <td className="px-6 py-4 text-center">
-                        <Check className="w-5 h-5 text-brand-green-600 mx-auto" />
+                        
                       </td>
                       <td className="px-6 py-4 text-center">
-                        <Check className="w-5 h-5 text-brand-green-600 mx-auto" />
+                        
                       </td>
                     </tr>
                   ))}

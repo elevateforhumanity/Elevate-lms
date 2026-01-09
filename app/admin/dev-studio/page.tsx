@@ -108,7 +108,7 @@ export default function DevStudioPage() {
       localStorage.setItem('gh_token', newToken);
       setToken(newToken);
       addTerminalOutput(
-        '<CheckCircle className="w-5 h-5 inline-block" /> GitHub connected successfully'
+        ' GitHub connected successfully'
       );
       loadRepos(newToken);
     }
@@ -125,7 +125,7 @@ export default function DevStudioPage() {
         const data = await res.json();
         setRepos(data);
         addTerminalOutput(
-          `<CheckCircle className="w-5 h-5 inline-block" /> Loaded ${data.length} repositories`
+          ` Loaded ${data.length} repositories`
         );
       } else {
         addTerminalOutput(
@@ -159,7 +159,7 @@ export default function DevStudioPage() {
         const filePaths = data.files.map((f: Record<string, unknown>) => f.path);
         setFiles(filePaths);
         addTerminalOutput(
-          `<CheckCircle className="w-5 h-5 inline-block" /> Loaded ${filePaths.length} files`
+          ` Loaded ${filePaths.length} files`
         );
       } else {
         addTerminalOutput(
@@ -196,7 +196,7 @@ export default function DevStudioPage() {
         setFileSha(data.sha);
         setHasChanges(false);
         addTerminalOutput(
-          `<CheckCircle className="w-5 h-5 inline-block" /> Opened ${path}`
+          ` Opened ${path}`
         );
       } else {
         addTerminalOutput(
@@ -237,7 +237,7 @@ export default function DevStudioPage() {
         setFileSha(data.content.sha);
         setHasChanges(false);
         addTerminalOutput(
-          `<CheckCircle className="w-5 h-5 inline-block" /> Saved ${selectedFile}`
+          ` Saved ${selectedFile}`
         );
         addTerminalOutput(`   Commit: ${data.commit.substring(0, 7)}`);
       } else {

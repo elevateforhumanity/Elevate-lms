@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { IDVerificationForm } from '@/components/verification/IDVerificationForm';
-import { Shield, CheckCircle } from 'lucide-react';
+
 
 export const metadata: Metadata = {
   title: 'Verify Your Identity | Elevate for Humanity',
@@ -44,7 +44,7 @@ export default async function VerifyIdentityPage() {
         <div className="max-w-4xl mx-auto px-6 py-12">
           <div className="bg-green-50 border-2 border-green-600 rounded-lg p-8">
             <div className="flex items-center gap-4 mb-4">
-              <CheckCircle className="w-16 h-16 text-green-600" />
+              
               <div>
                 <h2 className="text-3xl font-bold text-green-900">
                   Verification Complete!
@@ -181,19 +181,19 @@ export default async function VerifyIdentityPage() {
           </h2>
           <ul className="space-y-2 text-blue-800">
             <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              
               <span>Comply with federal workforce development regulations</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              
               <span>Protect your account and personal information</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              
               <span>Enable access to training programs and certifications</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              
               <span>Verify eligibility for funded programs</span>
             </li>
           </ul>

@@ -286,7 +286,7 @@ export default async function CompliancePage() {
             {/* No Issues */}
             {issues.length === 0 && (
               <div className="bg-green-50 border-2 border-green-200 rounded-lg p-8 mb-8 text-center">
-                <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
+                
                 <h3 className="text-2xl font-bold text-green-900 mb-2">
                   All Clear!
                 </h3>

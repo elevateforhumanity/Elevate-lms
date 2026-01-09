@@ -268,7 +268,7 @@ export function TutorialSystem({
           >
             {isLastStep ? (
               <>
-                <Check className="w-4 h-4" />
+                
                 Complete
               </>
             ) : (
@@ -342,7 +342,7 @@ export function TutorialLibrary({ userId, userRole }: { userId: string; userRole
                       </p>
                     </div>
                     {isCompleted && (
-                      <Check className="w-5 h-5 text-green-600 flex-shrink-0 ml-2" />
+                      
                     )}
                   </div>
 

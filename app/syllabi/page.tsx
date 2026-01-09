@@ -561,7 +561,7 @@ export default function SyllabiPage() {
                       <ul className="space-y-2">
                         {course.learningOutcomes.map((outcome, idx) => (
                           <li key={idx} className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                            
                             <span className="text-slate-700">{outcome}</span>
                           </li>
                         ))}
@@ -654,19 +654,19 @@ export default function SyllabiPage() {
           </p>
           <ul className="space-y-2 text-slate-700">
             <li className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+              
               <span>Council on Occupational Education (COE) standards</span>
             </li>
             <li className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+              
               <span>Industry certification requirements</span>
             </li>
             <li className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+              
               <span>State licensing board requirements</span>
             </li>
             <li className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+              
               <span>Employer and workforce development needs</span>
             </li>
           </ul>

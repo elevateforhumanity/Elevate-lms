@@ -198,7 +198,7 @@ export default function TransparencyPage() {
 
               <div className="mt-8 p-6 bg-green-50 rounded-lg border border-green-200">
                 <div className="flex items-center gap-3 mb-2">
-                  <CheckCircle2 className="w-6 h-6 text-brand-green-600" />
+                  
                   <span className="font-bold text-green-900">
                     Industry Leading Efficiency
                   </span>
@@ -338,15 +338,15 @@ export default function TransparencyPage() {
               </div>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>497 of 523 students completed training</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Industry-leading retention rate</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Comprehensive support services</span>
                 </li>
               </ul>
@@ -366,15 +366,15 @@ export default function TransparencyPage() {
               </div>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>432 graduates employed within 90 days</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Average starting salary: $45,000</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Full-time positions with benefits</span>
                 </li>
               </ul>
@@ -394,15 +394,15 @@ export default function TransparencyPage() {
               </div>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Average income increase from $14K to $45K</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Breaking the cycle of poverty</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Long-term economic mobility</span>
                 </li>
               </ul>
@@ -556,7 +556,7 @@ export default function TransparencyPage() {
 
             <div className="bg-white rounded-xl p-8 text-center border-2 border-purple-200">
               <div className="inline-flex items-center justify-center w-20 h-20 bg-purple-600 rounded-full mb-4">
-                <CheckCircle2 className="w-10 h-10 text-white" />
+                
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">
                 BBB Accredited

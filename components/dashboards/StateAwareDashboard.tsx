@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { AlertCircle, Lock, CheckCircle, ArrowRight } from 'lucide-react';
+
 
 /**
  * STATE-AWARE DASHBOARD COMPONENT
@@ -252,7 +252,7 @@ export function ProgressIndicator({ steps }: ProgressIndicatorProps) {
               }`}
             >
               {step.status === 'completed' ? (
-                <CheckCircle className="h-6 w-6" />
+                
               ) : step.status === 'locked' ? (
                 <Lock className="h-5 w-5" />
               ) : (

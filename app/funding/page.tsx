@@ -151,7 +151,7 @@ export default function FundingPage() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Success Icon */}
           <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-            <CheckCircle className="w-12 h-12 text-green-600" />
+            
           </div>
 
           {/* Headline */}

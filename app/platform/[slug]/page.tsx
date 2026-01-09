@@ -76,7 +76,7 @@ export default function ProductDetailPage({ params }: Props) {
                 <ul className="space-y-3 mb-8">
                   {product.features.map((feature, index) => (
                     <li key={index} className="flex items-start">
-                      <Check className="w-5 h-5 text-brand-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-gray-700">{feature}</span>
                     </li>
                   ))}
@@ -114,7 +114,7 @@ export default function ProductDetailPage({ params }: Props) {
                 <ul className="space-y-3">
                   {product.idealFor.map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <Check className="w-5 h-5 text-brand-blue-600 mr-3 flex-shrink-0 mt-0.5" />
+                      
                       <span className="text-gray-700">{item}</span>
                     </li>
                   ))}

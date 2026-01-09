@@ -95,25 +95,25 @@ export default function PartnerPage() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Pre-screened, trained candidates
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Apprenticeship program hosting
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Tax credits (WOTC) available
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Ongoing support and coordination
                   </span>
@@ -142,25 +142,25 @@ export default function PartnerPage() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Access to funded students
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Platform integration support
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Marketing and enrollment support
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Revenue sharing opportunities
                   </span>
@@ -189,25 +189,25 @@ export default function PartnerPage() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Referral partnerships
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Coordinated support services
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Shared impact measurement
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-slate-700">
                     Joint funding opportunities
                   </span>

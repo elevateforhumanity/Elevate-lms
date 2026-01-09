@@ -272,7 +272,7 @@ export default function ExternalModulesPage() {
                     <div className="flex items-center gap-2">
                       {module.status === 'active' && (
                         <span className="flex items-center gap-1 text-brand-green-600 text-sm font-medium">
-                          <CheckCircle className="h-4 w-4" />
+                          
                           Active
                         </span>
                       )}

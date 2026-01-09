@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { CheckCircle, Loader2 } from 'lucide-react';
+
 
 function AffirmConfirmContent() {
   const searchParams = useSearchParams();
@@ -82,7 +82,7 @@ function AffirmConfirmContent() {
 
         {status === 'success' && (
           <div className="text-center">
-            <CheckCircle className="w-16 h-16 text-brand-green-600 mx-auto mb-4" />
+            
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
               Payment Successful!
             </h1>

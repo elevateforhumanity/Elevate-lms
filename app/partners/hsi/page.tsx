@@ -71,33 +71,33 @@ export default function HSIPage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              
               <div className="text-slate-700">
                 Industry-recognized certifications
               </div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              
               <div className="text-slate-700">
                 Hands-on training with real equipment
               </div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              
               <div className="text-slate-700">Experienced instructors</div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              
               <div className="text-slate-700">
                 Small class sizes (max 12 students)
               </div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+              
               <div className="text-slate-700">
                 Traditional and blended learning options
               </div>

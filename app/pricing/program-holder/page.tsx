@@ -81,7 +81,7 @@ export default function ProgramHolderLicensePage() {
               <h3 className="text-xl font-bold mb-3">Federal Approvals</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">
                       DOL Registered Apprenticeship Sponsor
@@ -100,7 +100,7 @@ export default function ProgramHolderLicensePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">
                       WIOA Eligible Training Provider
@@ -120,14 +120,14 @@ export default function ProgramHolderLicensePage() {
               </h3>
               <div className="space-y-2 text-sm">
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">ETPL Listed Provider</div>
                     <div className="text-slate-600">Provider ID: 10000949</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">Indiana DWD Approved</div>
                     <div className="text-slate-600">
@@ -136,7 +136,7 @@ export default function ProgramHolderLicensePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">
                       Workforce Ready Grant (WRG) Approved
@@ -154,19 +154,19 @@ export default function ProgramHolderLicensePage() {
               <h3 className="text-xl font-bold mb-3">Official Partnerships</h3>
               <div className="space-y-2 text-sm">
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div className="font-semibold">
                     Justice Reinvestment Initiative (JRI) Partner
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div className="font-semibold">
                     WorkOne Centers Approved Provider
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div className="font-semibold">SNAP E&T Partner</div>
                 </div>
               </div>
@@ -359,32 +359,32 @@ export default function ProgramHolderLicensePage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-green-50 rounded-xl p-6 border-2 border-green-200">
               <h3 className="text-lg font-bold text-green-900 mb-4 flex items-center gap-2">
-                <Check className="w-5 h-5" />
+                
                 Must Have
               </h3>
               <ul className="space-y-2 text-sm text-green-800">
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Located in
+                   Located in
                   Indiana (for now - expanding soon)
                 </li>
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Clean
+                   Clean
                   compliance history
                 </li>
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Quality
+                   Quality
                   training programs
                 </li>
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Professional
+                   Professional
                   references
                 </li>
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Financial
+                   Financial
                   stability
                 </li>
                 <li>
-                  <CheckCircle className="w-5 h-5 inline-block" /> Programs
+                   Programs
                   align with our approvals
                 </li>
               </ul>

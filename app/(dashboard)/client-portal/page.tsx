@@ -169,7 +169,7 @@ export default function ClientPortalPage() {
             {/* Feature 9 */}
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <CheckCircle className="w-6 h-6 text-blue-600" />
+                
               </div>
               <h3 className="text-xl font-bold mb-2">Custom Branding</h3>
               <p className="text-gray-600">
@@ -202,19 +202,19 @@ export default function ClientPortalPage() {
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>Full features</span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>5 GB storage</span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>Unlimited clients</span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>No credit card required</span>
                 </li>
               </ul>
@@ -240,23 +240,23 @@ export default function ClientPortalPage() {
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>5 GB storage included</span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>Unlimited clients</span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>E-signatures included</span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>Drake Tax integration</span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>+$9.95/month per 25 GB</span>
                 </li>
               </ul>
@@ -279,23 +279,23 @@ export default function ClientPortalPage() {
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>Everything in Monthly</span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>Priority support</span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>Advanced analytics</span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>API access</span>
                 </li>
                 <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+                  
                   <span>+$99.95/year per 25 GB</span>
                 </li>
               </ul>
@@ -365,7 +365,7 @@ export default function ClientPortalPage() {
                 <tr className="bg-gray-50">
                   <td className="px-6 py-4">E-Signatures</td>
                   <td className="px-6 py-4 text-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                    
                   </td>
                   <td className="px-6 py-4 text-center text-gray-400">
                     Additional Fee
@@ -374,25 +374,25 @@ export default function ClientPortalPage() {
                 <tr>
                   <td className="px-6 py-4">Mobile App</td>
                   <td className="px-6 py-4 text-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                    
                   </td>
                   <td className="px-6 py-4 text-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                    
                   </td>
                 </tr>
                 <tr className="bg-gray-50">
                   <td className="px-6 py-4">Drake Integration</td>
                   <td className="px-6 py-4 text-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                    
                   </td>
                   <td className="px-6 py-4 text-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                    
                   </td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4">Online Payments</td>
                   <td className="px-6 py-4 text-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                    
                   </td>
                   <td className="px-6 py-4 text-center text-gray-400">
                     Drake Pay Required
@@ -401,7 +401,7 @@ export default function ClientPortalPage() {
                 <tr className="bg-gray-50">
                   <td className="px-6 py-4">API Access</td>
                   <td className="px-6 py-4 text-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                    
                   </td>
                   <td className="px-6 py-4 text-center text-gray-400">
                     Not Available
@@ -410,10 +410,10 @@ export default function ClientPortalPage() {
                 <tr>
                   <td className="px-6 py-4">Custom Branding</td>
                   <td className="px-6 py-4 text-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                    
                   </td>
                   <td className="px-6 py-4 text-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
+                    
                   </td>
                 </tr>
               </tbody>

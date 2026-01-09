@@ -93,19 +93,19 @@ export default function NotificationSettings() {
         <p>Receive notifications about:</p>
         <ul className="space-y-2 ml-4">
           <li className="flex items-center gap-2">
-            <Check size={16} className="text-green-500" />
+            
             New course releases
           </li>
           <li className="flex items-center gap-2">
-            <Check size={16} className="text-green-500" />
+            
             Achievement unlocks
           </li>
           <li className="flex items-center gap-2">
-            <Check size={16} className="text-green-500" />
+            
             Course reminders
           </li>
           <li className="flex items-center gap-2">
-            <Check size={16} className="text-green-500" />
+            
             Important updates
           </li>
         </ul>
@@ -123,7 +123,7 @@ export default function NotificationSettings() {
           >
             {testSent ? (
               <span className="flex items-center justify-center gap-2">
-                <Check size={16} />
+                
                 Test Sent!
               </span>
             ) : (

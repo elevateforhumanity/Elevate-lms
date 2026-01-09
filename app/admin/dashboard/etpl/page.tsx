@@ -89,7 +89,7 @@ export default async function EtplDashboard() {
             <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-purple-200">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-                  <CheckCircle className="w-6 h-6 text-purple-600" />
+                  
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-slate-900">

@@ -4,7 +4,7 @@ import React from 'react';
 // app/pay/PayPageClient.tsx
 
 import { useEffect, useState } from 'react';
-import { CheckCircle } from 'lucide-react';
+
 
 declare global {
   interface Window {
@@ -29,7 +29,7 @@ export default function PayPageClient() {
   const [affirmLoaded, setAffirmLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // <CheckCircle className="w-5 h-5 inline-block" /> Load Stripe Buy Button script
+  //  Load Stripe Buy Button script
   useEffect(() => {
     try {
       const existing = document.querySelector<HTMLScriptElement>(
@@ -52,7 +52,7 @@ export default function PayPageClient() {
     }
   }, []);
 
-  // <CheckCircle className="w-5 h-5 inline-block" /> Load Affirm SDK script
+  //  Load Affirm SDK script
   useEffect(() => {
     try {
       const existing = document.querySelector<HTMLScriptElement>(

@@ -174,7 +174,7 @@ export const Select: React.FC<SelectProps> = ({
                     >
                       <div className="flex items-center justify-between">
                         <span>{option.label}</span>
-                        {isSelected && <Check className="h-4 w-4" />}
+                        {isSelected && }
                       </div>
                     </button>
                   );

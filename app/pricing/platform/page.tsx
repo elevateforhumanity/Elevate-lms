@@ -107,14 +107,14 @@ export default function PlatformLicensingPage() {
               <h3 className="text-xl font-bold mb-4">Federal Approvals</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">DOL Registered Sponsor</div>
                     <div className="text-slate-600">RAPIDS: 2025-IN-132301</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">WIOA Eligible Provider</div>
                     <div className="text-slate-600">
@@ -138,21 +138,21 @@ export default function PlatformLicensingPage() {
               <h3 className="text-xl font-bold mb-4">State Approvals</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">ETPL Listed</div>
                     <div className="text-slate-600">Provider ID: 10000949</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">Indiana DWD Approved</div>
                     <div className="text-slate-600">INTraining: 10004621</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">WRG Approved</div>
                     <div className="text-slate-600">State funding eligible</div>
@@ -174,7 +174,7 @@ export default function PlatformLicensingPage() {
               <h3 className="text-xl font-bold mb-4">Official Partnerships</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">JRI Partner</div>
                     <div className="text-slate-600">
@@ -183,14 +183,14 @@ export default function PlatformLicensingPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">WorkOne Approved</div>
                     <div className="text-slate-600">WIOA referrals</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <div>
                     <div className="font-semibold">SNAP E&T Partner</div>
                     <div className="text-slate-600">SNAP recipients</div>
@@ -265,19 +265,19 @@ export default function PlatformLicensingPage() {
                 <div className="font-bold mb-2">Use OUR Credentials:</div>
                 <div className="space-y-1 text-sm">
                   <div>
-                    <CheckCircle className="w-5 h-5 inline-block" /> ETPL
+                     ETPL
                     Provider: 10000949
                   </div>
                   <div>
-                    <CheckCircle className="w-5 h-5 inline-block" /> DOL RAPIDS:
+                     DOL RAPIDS:
                     2025-IN-132301
                   </div>
                   <div>
-                    <CheckCircle className="w-5 h-5 inline-block" /> INTraining:
+                     INTraining:
                     10004621
                   </div>
                   <div>
-                    <CheckCircle className="w-5 h-5 inline-block" /> WIOA, WRG,
+                     WIOA, WRG,
                     JRI, WorkOne, SNAP E&T
                   </div>
                 </div>
@@ -285,19 +285,19 @@ export default function PlatformLicensingPage() {
 
               <div className="space-y-3 mb-6 text-sm">
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-300 flex-shrink-0 mt-0.5" />
+                  
                   <span>Bring your programs under our umbrella</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-300 flex-shrink-0 mt-0.5" />
+                  
                   <span>Skip 4-8 years of approval waiting</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-300 flex-shrink-0 mt-0.5" />
+                  
                   <span>We handle compliance oversight</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-300 flex-shrink-0 mt-0.5" />
+                  
                   <span>Launch in 30 days (Indiana only for now)</span>
                 </div>
               </div>
@@ -357,26 +357,26 @@ export default function PlatformLicensingPage() {
 
               <div className="space-y-3 mb-6 text-sm text-slate-700">
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>White-label platform</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Full LMS & mobile app</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Student management</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Instant access (no approval needed)</span>
                 </div>
               </div>
 
               <div className="bg-green-50 rounded-lg p-4 mb-6 text-sm">
                 <div className="font-bold text-green-900 mb-1">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Best For:
+                   Best For:
                 </div>
                 <div className="text-green-800">
                   Organizations with existing credentials or willing to get
@@ -427,26 +427,26 @@ export default function PlatformLicensingPage() {
 
               <div className="space-y-3 mb-6 text-sm text-slate-700">
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Apprenticeship management</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>OJT tracking</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>MOU workflows</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Instant access</span>
                 </div>
               </div>
 
               <div className="bg-blue-50 rounded-lg p-4 mb-6 text-sm">
                 <div className="font-bold text-blue-900 mb-1">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Best For:
+                   Best For:
                 </div>
                 <div className="text-blue-800">
                   Organizations focused only on apprenticeships.
@@ -497,26 +497,26 @@ export default function PlatformLicensingPage() {
 
               <div className="space-y-3 mb-6 text-sm text-slate-700">
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Maximum flexibility</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Scale as you grow</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Add modules anytime</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Per-student option available</span>
                 </div>
               </div>
 
               <div className="bg-slate-50 rounded-lg p-4 mb-6 text-sm">
                 <div className="font-bold text-slate-900 mb-1">
-                  <CheckCircle className="w-5 h-5 inline-block" /> Best For:
+                   Best For:
                 </div>
                 <div className="text-slate-700">
                   Organizations with specific needs or smaller budgets.
@@ -570,19 +570,19 @@ export default function PlatformLicensingPage() {
 
               <div className="space-y-2 mb-6 text-sm">
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>White-label platform</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Student management</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>LMS & mobile app</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Basic reporting</span>
                 </div>
               </div>
@@ -634,19 +634,19 @@ export default function PlatformLicensingPage() {
 
               <div className="space-y-2 mb-6 text-sm text-white">
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-300 flex-shrink-0 mt-0.5" />
+                  
                   <span>Everything in Basic</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-300 flex-shrink-0 mt-0.5" />
+                  
                   <span>ETPL Provider ID: 10000949</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-300 flex-shrink-0 mt-0.5" />
+                  
                   <span>WIOA compliance</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-300 flex-shrink-0 mt-0.5" />
+                  
                   <span>State reporting</span>
                 </div>
               </div>
@@ -691,19 +691,19 @@ export default function PlatformLicensingPage() {
 
               <div className="space-y-2 mb-6 text-sm">
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Everything in Gov Approved</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>DOL RAPIDS: 2025-IN-132301</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Apprenticeship management</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Multi-state operations</span>
                 </div>
               </div>
@@ -748,19 +748,19 @@ export default function PlatformLicensingPage() {
 
               <div className="space-y-2 mb-6 text-sm">
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Everything in Federal</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Multi-tenant architecture</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Custom development</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Dedicated success team</span>
                 </div>
               </div>

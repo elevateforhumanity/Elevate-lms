@@ -128,7 +128,7 @@ export default async function AdminShopsPage() {
 
           <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6">
             <div className="flex items-center gap-3">
-              <CheckCircle className="w-8 h-8 text-brand-green-600" />
+              
               <div>
                 <div className="text-2xl font-bold text-slate-900">
                   {shopsWithDocs.filter((s) => s.docsComplete).length}

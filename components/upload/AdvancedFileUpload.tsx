@@ -342,7 +342,7 @@ export function AdvancedFileUpload({
                     <Loader2 className="h-5 w-5 text-blue-500 animate-spin" />
                   )}
                   {uploadFile.status === 'success' && (
-                    <CheckCircle className="h-5 w-5 text-green-500" />
+                    
                   )}
                   {uploadFile.status === 'error' && (
                     <button

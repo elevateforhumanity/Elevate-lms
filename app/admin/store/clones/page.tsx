@@ -428,7 +428,7 @@ export default function StoreBuilderPage() {
                     <div className="text-xs text-gray-500 mb-1">Demo</div>
                     <div className="text-xs text-gray-600">
                       {product.demo.enabled
-                        ? '<CheckCircle className="w-5 h-5 inline-block" /> Enabled'
+                        ? ' Enabled'
                         : '<XCircle className="w-5 h-5 inline-block" /> Disabled'}
                     </div>
                   </div>

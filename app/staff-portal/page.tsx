@@ -217,7 +217,7 @@ export default function StaffPortalLandingPage() {
 
           <div className="max-w-4xl mx-auto space-y-6">
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Enroll & Track Students
@@ -230,7 +230,7 @@ export default function StaffPortalLandingPage() {
             </div>
 
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Manage Courses & Schedules
@@ -243,7 +243,7 @@ export default function StaffPortalLandingPage() {
             </div>
 
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Generate Reports Instantly
@@ -256,7 +256,7 @@ export default function StaffPortalLandingPage() {
             </div>
 
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Communicate Effectively
@@ -269,7 +269,7 @@ export default function StaffPortalLandingPage() {
             </div>
 
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Stay Compliant
@@ -282,7 +282,7 @@ export default function StaffPortalLandingPage() {
             </div>
 
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+              
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Identify At-Risk Students

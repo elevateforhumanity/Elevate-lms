@@ -36,7 +36,7 @@ const STEPS: Step[] = [
     title: 'Check Eligibility',
     duration: '1 week',
     description: 'We handle all funding paperwork and eligibility verification',
-    icon: <CheckCircle className="h-6 w-6" />,
+    icon: ,
   },
   {
     number: 4,

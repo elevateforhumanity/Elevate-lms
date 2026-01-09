@@ -69,7 +69,7 @@ export default function NotificationPreferencesForm({
             Always enabled. You'll see notifications in your dashboard.
           </p>
           <div className="flex items-center gap-2 text-sm text-green-600">
-            <Check className="w-4 h-4" />
+            
             <span>Enabled (cannot be disabled)</span>
           </div>
         </div>

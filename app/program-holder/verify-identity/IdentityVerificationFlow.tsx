@@ -243,15 +243,15 @@ export default function IdentityVerificationFlow({
               </p>
               <ul className="text-sm text-gray-700 space-y-2 mb-6">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  
                   Instant results
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  
                   Secure \u0026 encrypted
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  
                   No document upload needed
                 </li>
               </ul>
@@ -412,7 +412,7 @@ export default function IdentityVerificationFlow({
                 </label>
                 {uploadedDocs.id && (
                   <div className="mt-3 flex items-center justify-center gap-2 text-green-600">
-                    <CheckCircle size={20} />
+                    
                     <span className="text-sm">{uploadedDocs.id.name}</span>
                   </div>
                 )}
@@ -446,7 +446,7 @@ export default function IdentityVerificationFlow({
                 </label>
                 {uploadedDocs.ssn && (
                   <div className="mt-3 flex items-center justify-center gap-2 text-green-600">
-                    <CheckCircle size={20} />
+                    
                     <span className="text-sm">{uploadedDocs.ssn.name}</span>
                   </div>
                 )}

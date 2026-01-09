@@ -87,23 +87,23 @@ export default function SNAPETPartnerPage() {
               <h3 className="text-xl font-bold mb-3">Already Approved</h3>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>ETPL programs (WIOA eligible)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>DOL Registered Apprenticeship Sponsor</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>DWD INTraining Location ID: 10004621</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>WRG approved programs</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>JRI partner (justice-involved)</span>
                 </li>
               </ul>
@@ -118,23 +118,23 @@ export default function SNAPETPartnerPage() {
               </h3>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Real-time attendance tracking</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Hour verification system</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Monthly compliance reports</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>SNAP E&T hour code tagging</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Automated export for FSSA</span>
                 </li>
               </ul>
@@ -147,23 +147,23 @@ export default function SNAPETPartnerPage() {
               <h3 className="text-xl font-bold mb-3">Verified Outcomes</h3>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Credential tracking system</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Job placement verification</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Wage gain documentation</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Employer partnerships</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span>Performance reporting dashboard</span>
                 </li>
               </ul>
@@ -203,7 +203,7 @@ export default function SNAPETPartnerPage() {
                     Aide, Peer Recovery Coach, Direct Support Professional, CDL
                   </td>
                   <td className="px-6 py-4 text-center text-green-600 font-bold">
-                    <CheckCircle className="w-5 h-5 inline-block" />
+                    
                   </td>
                 </tr>
                 <tr className="bg-gray-50">
@@ -213,7 +213,7 @@ export default function SNAPETPartnerPage() {
                     Maintenance), On-the-Job Training, Work-Based Learning
                   </td>
                   <td className="px-6 py-4 text-center text-green-600 font-bold">
-                    <CheckCircle className="w-5 h-5 inline-block" />
+                    
                   </td>
                 </tr>
                 <tr>
@@ -223,7 +223,7 @@ export default function SNAPETPartnerPage() {
                     Resume Writing, Interview Prep
                   </td>
                   <td className="px-6 py-4 text-center text-green-600 font-bold">
-                    <CheckCircle className="w-5 h-5 inline-block" />
+                    
                   </td>
                 </tr>
                 <tr className="bg-gray-50">
@@ -235,7 +235,7 @@ export default function SNAPETPartnerPage() {
                     Employer Connections
                   </td>
                   <td className="px-6 py-4 text-center text-green-600 font-bold">
-                    <CheckCircle className="w-5 h-5 inline-block" />
+                    
                   </td>
                 </tr>
                 <tr>
@@ -245,7 +245,7 @@ export default function SNAPETPartnerPage() {
                     Emergency Support Services
                   </td>
                   <td className="px-6 py-4 text-center text-green-600 font-bold">
-                    <CheckCircle className="w-5 h-5 inline-block" />
+                    
                   </td>
                 </tr>
               </tbody>
@@ -273,27 +273,27 @@ export default function SNAPETPartnerPage() {
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>Immediate absorption of SNAP E&T participants</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>80-hour monthly compliance tracking</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>Automated reporting to FSSA/WorkOne</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>Verified credential attainment</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>Job placement with wage verification</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>Braided funding coordination (WIOA + SNAP E&T)</span>
                 </li>
               </ul>
@@ -303,27 +303,27 @@ export default function SNAPETPartnerPage() {
               <h3 className="text-2xl font-bold mb-6">For Participants</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>Industry-recognized credentials</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>Stackable credential pathways</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>Earn-while-you-learn apprenticeships</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>Case management and support services</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>Direct employer connections</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  
                   <span>Barrier removal (transportation, childcare)</span>
                 </li>
               </ul>

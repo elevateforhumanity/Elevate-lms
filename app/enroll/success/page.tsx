@@ -27,7 +27,7 @@ export default function EnrollSuccessPage() {
         {/* Success Icon */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-green-600 rounded-full mb-6">
-            <CheckCircle className="w-12 h-12 text-white" />
+            
           </div>
           <h1 className="text-4xl font-bold text-slate-900 mb-4">
             <PartyPopper className="w-5 h-5 inline-block" /> Enrollment
@@ -159,23 +159,23 @@ export default function EnrollSuccessPage() {
           </h3>
           <ul className="space-y-2 text-blue-800 text-sm">
             <li>
-              <CheckCircle className="w-5 h-5 inline-block" /> Your enrollment
+               Your enrollment
               is <strong>100% FREE</strong>
             </li>
             <li>
-              <CheckCircle className="w-5 h-5 inline-block" /> Milady RISE
+               Milady RISE
               certification is <strong>FREE</strong> with promo code
             </li>
             <li>
-              <CheckCircle className="w-5 h-5 inline-block" /> Elevate pays the
+               Elevate pays the
               $295 Milady fee on your behalf
             </li>
             <li>
-              <CheckCircle className="w-5 h-5 inline-block" /> You'll receive
+               You'll receive
               login instructions via email within 5 minutes
             </li>
             <li>
-              <CheckCircle className="w-5 h-5 inline-block" /> Check spam folder
+               Check spam folder
               if you don't see the email
             </li>
           </ul>

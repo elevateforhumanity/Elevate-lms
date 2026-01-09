@@ -267,7 +267,7 @@ export default function SmartUploadPage() {
                 <span>PDF</span>
               </div>
               <div className="flex items-center gap-1">
-                <CheckCircle className="w-4 h-4" />
+                
                 <span>Max 10MB</span>
               </div>
             </div>
@@ -286,7 +286,7 @@ export default function SmartUploadPage() {
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6">
-            <CheckCircle className="w-10 h-10 text-green-600 mb-4" />
+            
             <h3 className="font-bold text-lg mb-2">95%+ Accuracy</h3>
             <p className="text-sm text-gray-600">
               Industry-leading OCR technology ensures accurate data extraction
@@ -358,7 +358,7 @@ export default function SmartUploadPage() {
                         )}
                         {file.status === 'completed' && (
                           <span className="flex items-center gap-2 px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
-                            <CheckCircle className="w-4 h-4" />
+                            
                             Completed
                           </span>
                         )}

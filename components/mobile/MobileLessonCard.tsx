@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Circle, Lock, PlayCircle } from 'lucide-react';
+
 
 interface MobileLessonCardProps {
   id: string;
@@ -23,7 +23,7 @@ export default function MobileLessonCard({
 }: MobileLessonCardProps) {
   const getIcon = () => {
     if (locked) return <Lock size={20} className="text-gray-400" />;
-    if (completed) return <CheckCircle2 size={20} className="text-green-500" />;
+    if (completed) return ;
     if (type === 'video')
       return <PlayCircle size={20} className="text-blue-500" />;
     return <Circle size={20} className="text-gray-400" />;

@@ -76,15 +76,15 @@ export default function StudentsPage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-gray-700">Free training</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-gray-700">Free materials</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-gray-700">Free certification</span>
                 </li>
               </ul>
@@ -100,15 +100,15 @@ export default function StudentsPage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-gray-700">4-16 week programs</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-gray-700">Flexible schedules</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-gray-700">Online & in-person</span>
                 </li>
               </ul>
@@ -124,15 +124,15 @@ export default function StudentsPage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-gray-700">Resume building</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-gray-700">Interview prep</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-sm text-gray-700">Employer connections</span>
                 </li>
               </ul>

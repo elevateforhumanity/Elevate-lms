@@ -301,7 +301,7 @@ fill="#0066B2"/>
 export default function CheckoutFlow(props: CheckoutFlowProps) {
   return (
     <Elements stripe={stripePromise}>
-      <CheckoutForm {...props} />
+      
     </Elements>
   );
 }

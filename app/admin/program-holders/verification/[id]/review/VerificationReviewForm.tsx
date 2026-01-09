@@ -366,7 +366,7 @@ export default function VerificationReviewForm({
                         : 'bg-green-50 text-green-700 hover:bg-green-100'
                     }`}
                   >
-                    <CheckCircle className="w-5 h-5" />
+                    
                     Approve & Verify
                   </button>
 

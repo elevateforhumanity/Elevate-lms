@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { requireRole } from '@/lib/auth/require-role';
 import Link from 'next/link';
-import { Users, BookOpen, AlertCircle, CheckCircle, Clock } from 'lucide-react';
+
 import { safeFormatDate } from '@/lib/format-utils';
 
 export const metadata: Metadata = {
@@ -217,7 +217,7 @@ export default async function StaffDashboard() {
               {(atRiskCount || 0) === 0 && (pendingEnrollments || 0) === 0 && (
                 <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
                   <div className="flex items-center gap-2 text-green-900 font-semibold">
-                    <CheckCircle className="h-5 w-5" />
+                    
                     All Caught Up!
                   </div>
                   <div className="text-sm text-green-800 mt-1">

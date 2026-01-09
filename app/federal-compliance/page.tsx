@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, Shield, Scale, Users, FileText } from 'lucide-react';
+
 
 export const metadata: Metadata = {
   title: 'Federal Compliance | Elevate For Humanity',
@@ -51,25 +51,25 @@ export default function FederalCompliancePage() {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Eligible Training Provider:</strong> Programs listed on state Eligible Training Provider Lists (ETPL)
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Performance Reporting:</strong> Track and report participant outcomes as required
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Equal Opportunity:</strong> Non-discrimination in all programs and activities
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Data Privacy:</strong> Protect participant personally identifiable information (PII)
                   </span>
@@ -99,25 +99,25 @@ export default function FederalCompliancePage() {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Student Consent:</strong> Obtain written consent before disclosing education records
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Access Rights:</strong> Students can review and request amendments to their records
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Secure Storage:</strong> Education records stored securely with access controls
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Limited Disclosure:</strong> Share information only as permitted by law
                   </span>
@@ -147,25 +147,25 @@ export default function FederalCompliancePage() {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Web Accessibility:</strong> WCAG 2.1 Level AA compliance for digital content
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Reasonable Accommodations:</strong> Provide accommodations for participants with disabilities
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Accessible Facilities:</strong> Physical locations meet ADA accessibility standards
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  
                   <span className="text-gray-700">
                     <strong>Assistive Technology:</strong> Compatible with screen readers and other assistive devices
                   </span>
@@ -195,43 +195,43 @@ export default function FederalCompliancePage() {
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  
                   <span className="text-gray-700">Race</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  
                   <span className="text-gray-700">Color</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  
                   <span className="text-gray-700">Religion</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  
                   <span className="text-gray-700">Sex</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  
                   <span className="text-gray-700">National Origin</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  
                   <span className="text-gray-700">Age</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  
                   <span className="text-gray-700">Disability</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  
                   <span className="text-gray-700">Veteran Status</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  
                   <span className="text-gray-700">Genetic Information</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  
                   <span className="text-gray-700">Citizenship Status</span>
                 </div>
               </div>

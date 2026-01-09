@@ -65,7 +65,7 @@ export function AppPricingScreen() {
               <ul className="space-y-2 mb-4">
                 {product.features.slice(0, 4).map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-sm">
-                    <Check className="text-green-600 flex-shrink-0 mt-0.5" size={16} />
+                    
                     <span className="text-slate-700">{feature}</span>
                   </li>
                 ))}

@@ -368,7 +368,7 @@ export default function AdvancedQuizBuilder() {
           ) : (
             <div className="h-full flex items-center justify-center text-gray-500">
               <div className="text-center">
-                <CheckCircle className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+                
                 <p className="text-lg">Select a question to edit</p>
                 <p className="text-sm">or add a new question to get started</p>
               </div>

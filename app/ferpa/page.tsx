@@ -178,15 +178,15 @@ export default async function FERPAPortal() {
               </div>
               <ul className="space-y-2 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   View student records
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Update information
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Access history
                 </li>
               </ul>
@@ -211,15 +211,15 @@ export default async function FERPAPortal() {
               </div>
               <ul className="space-y-2 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Student access requests
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Parent/guardian requests
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Third-party disclosures
                 </li>
               </ul>
@@ -248,15 +248,15 @@ export default async function FERPAPortal() {
               </div>
               <ul className="space-y-2 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Compliance monitoring
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Privacy audits
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Training & policies
                 </li>
               </ul>
@@ -283,15 +283,15 @@ export default async function FERPAPortal() {
               </div>
               <ul className="space-y-2 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Access logs
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Disclosure tracking
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Compliance metrics
                 </li>
               </ul>
@@ -318,15 +318,15 @@ export default async function FERPAPortal() {
               </div>
               <ul className="space-y-2 text-sm text-slate-600">
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Consent forms
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Release forms
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-brand-green-600" />
+                  
                   Policy templates
                 </li>
               </ul>

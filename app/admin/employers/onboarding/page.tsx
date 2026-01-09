@@ -1,6 +1,6 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import Link from 'next/link';
-import { CheckCircle, Clock, XCircle, Eye } from 'lucide-react';
+
 
 export const metadata = {
   title: 'Employer Onboarding Review | Admin',
