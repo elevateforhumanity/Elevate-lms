@@ -284,7 +284,7 @@ export default function RootLayout({
     </html>
   );
 }
-// Cache bust: 2026-01-09T11:50:00Z
-// NUCLEAR CACHE DELETION: Disabled all caching - max-age=0 on everything
-// Force deployment: 2026-01-09T11:50:00Z - No more 1-year CSS cache
-// All assets now fetch fresh on every request
+// Cache bust: 2026-01-09T13:15:00Z
+// FORCE DEPLOYMENT: Trigger new build to replace stale production
+// All fixes applied: no black text, proper headers, hashed CSS only
+// Build timestamp: 2026-01-09T13:15:00Z
