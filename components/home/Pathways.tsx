@@ -9,40 +9,38 @@ export default function Pathways() {
           Your Path to Success
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <Image
-              src="/images/pathways/trades-hero.jpg"
-              alt="Students learning"
-              width={800}
-              height={450}
-              className="w-full h-auto"
-            />
-            <div className="p-6">
-              <h3 className="text-2xl font-bold mb-2 text-gray-900">Explore Programs</h3>
-              <p className="mb-4 text-base text-gray-700">Browse training in healthcare, skilled trades, technology, and business</p>
-              <Link href="/programs" className="text-blue-600 underline font-semibold hover:text-blue-700">
-                View All Programs →
-              </Link>
+        <div className="flex flex-col md:flex-row gap-4 mb-12 overflow-x-auto">
+          <Link href="/programs" className="flex-1 min-w-[300px] bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition group">
+            <div className="relative h-48">
+              <Image
+                src="/images/pathways/trades-hero.jpg"
+                alt="Students learning"
+                fill
+                className="object-cover group-hover:scale-105 transition"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h3 className="text-xl font-bold mb-1">Explore Programs</h3>
+                <p className="text-sm">Healthcare, Trades, Tech & More →</p>
+              </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <Image
-              src="/images/efh/hero/hero-support.jpg"
-              alt="Career pathways"
-              width={800}
-              height={450}
-              className="w-full h-auto"
-            />
-            <div className="p-6">
-              <h3 className="text-2xl font-bold mb-2 text-gray-900">Get Funded</h3>
-              <p className="mb-4 text-base text-gray-700">See if you qualify for WIOA, WRG, or DOL funding to cover 100% of costs</p>
-              <Link href="/wioa-eligibility" className="text-blue-600 underline font-semibold hover:text-blue-700">
-                Check Eligibility →
-              </Link>
+          <Link href="/wioa-eligibility" className="flex-1 min-w-[300px] bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition group">
+            <div className="relative h-48">
+              <Image
+                src="/images/efh/hero/hero-support.jpg"
+                alt="Career pathways"
+                fill
+                className="object-cover group-hover:scale-105 transition"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h3 className="text-xl font-bold mb-1">Get Funded</h3>
+                <p className="text-sm">100% Free Training Available →</p>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
 
         <div className="bg-white p-8 rounded-lg shadow-md">

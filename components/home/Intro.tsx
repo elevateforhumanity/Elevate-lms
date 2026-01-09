@@ -8,45 +8,45 @@ export default function Intro() {
           What We Do
         </h2>
         
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <Image
-              src="/free-career-training.jpg"
-              alt="Free Workforce Training"
-              width={800}
-              height={450}
-              className="w-full h-auto"
-              priority
-            />
+        <div className="flex flex-col md:flex-row gap-4 mb-12 overflow-x-auto">
+          <div className="flex-1 min-w-[300px] bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="relative h-64">
+              <Image
+                src="/free-career-training.jpg"
+                alt="Free Workforce Training"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
             <div className="p-6">
-              <h3 className="text-2xl font-bold text-blue-900 mb-4">Free Workforce Training</h3>
-              <p className="text-base text-gray-700 leading-relaxed mb-3">
-                We connect eligible students to 100% funded training programs through WIOA (Workforce Innovation and Opportunity Act), 
-                WRG (Workforce Readiness Grant), and DOL (Department of Labor) initiatives.
+              <h3 className="text-xl font-bold text-blue-900 mb-3">Free Workforce Training</h3>
+              <p className="text-sm text-gray-700 leading-relaxed mb-2">
+                100% funded training through WIOA, WRG, and DOL programs.
               </p>
-              <p className="text-sm text-gray-600">
-                <strong>No tuition. No debt. No barriers.</strong> If you qualify, your training is completely free.
+              <p className="text-xs text-gray-600">
+                <strong>No tuition. No debt. No barriers.</strong>
               </p>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <Image
-              src="/industry-credentials-new.jpg"
-              alt="Industry Credentials"
-              width={800}
-              height={450}
-              className="w-full h-auto"
-              priority
-            />
+          <div className="flex-1 min-w-[300px] bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="relative h-64">
+              <Image
+                src="/industry-credentials-new.jpg"
+                alt="Industry Credentials"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
             <div className="p-6">
-              <h3 className="text-2xl font-bold text-green-900 mb-4">Industry Credentials</h3>
-              <p className="text-base text-gray-700 leading-relaxed mb-3">
-                Earn nationally recognized certifications from trusted partners like Certiport (Microsoft, Adobe), 
-                HSI (OSHA Safety), CareerSafe, NRF (Retail), and Milady (Cosmetology).
+              <h3 className="text-xl font-bold text-green-900 mb-3">Industry Credentials</h3>
+              <p className="text-sm text-gray-700 leading-relaxed mb-2">
+                Nationally recognized certifications from Certiport, HSI, CareerSafe, NRF, and Milady.
               </p>
-              <p className="text-sm text-gray-600">
-                <strong>Real credentials employers recognize.</strong> Not just certificates - actual industry certifications.
+              <p className="text-xs text-gray-600">
+                <strong>Real credentials employers recognize.</strong>
               </p>
             </div>
           </div>
