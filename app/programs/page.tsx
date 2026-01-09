@@ -4,8 +4,6 @@ import { Metadata } from 'next';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import ModernFeatures from '@/components/landing/ModernFeatures';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
 import {
   GraduationCap,
   Search,
