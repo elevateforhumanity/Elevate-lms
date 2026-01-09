@@ -16,7 +16,7 @@ export default function Assurance() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden shadow-xl">
             <Image
-              src="/clear-pathways-hero.jpg"
+              src="/clear-path-main-image.jpg"
               alt="Clear Career Pathways"
               fill
               className="object-cover"

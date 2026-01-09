@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Truck } from 'lucide-react';
-import { VideoHero } from '@/components/heroes/VideoHero';
+import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 
 export const metadata: Metadata = {
   title:
@@ -17,16 +17,13 @@ export const metadata: Metadata = {
 export default function CdlTransportationPage() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="relative w-full -mt-[72px]">
-        <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
-          <img
-            src="/images/efh/hero/hero-main.jpg"
-            alt="CDL & Transportation Programs"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-      </section>
+      <VideoHeroBanner
+        videoSrc="/videos/cdl-hero.mp4"
+        headline="CDL & Transportation"
+        subheadline="Start Your Trucking Career - Earn $50K+ Annually"
+        primaryCTA={{ text: 'Apply Now', href: '/apply' }}
+        secondaryCTA={{ text: 'View All Programs', href: '/programs' }}
+      />
 
       {/* At-a-Glance */}
       <section className="bg-white py-16">
