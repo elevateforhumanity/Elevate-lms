@@ -11,7 +11,7 @@ export default function PayrollPage() {
       {/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <img
-          src="/images/pathways/business-hero.jpg"
+          src="/images/heroes/cash-bills.jpg"
           alt="Payroll"
           className="absolute inset-0 w-full h-full object-cover"
         />

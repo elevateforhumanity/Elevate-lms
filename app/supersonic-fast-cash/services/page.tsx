@@ -114,7 +114,7 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
         <img
-          src="/images/pathways/business-hero.jpg"
+          src="/images/heroes/cash-bills.jpg"
           alt="Tax Services"
           className="absolute inset-0 w-full h-full object-cover"
         />

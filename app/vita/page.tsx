@@ -12,7 +12,7 @@ export default function VITAPage() {
     <div className="min-h-screen bg-white">
       <section className="relative h-[500px] w-full overflow-hidden">
         <img
-          src="/images/business/handshake-1.jpg"
+          src="/images/heroes/cash-bills.jpg"
           alt="VITA Tax Preparation"
           className="absolute inset-0 w-full h-full object-cover"
         />

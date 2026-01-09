@@ -49,7 +49,7 @@ export default function ServicesPage() {
         'Professional tax preparation, refund advances, IRS representation, and maximum refund guarantee',
       href: '/tax-services',
       icon: DollarSign,
-      image: '/images/business/professional-2.jpg',
+      image: '/images/heroes/cash-bills.jpg',
     },
     {
       title: 'VITA Tax Prep',
@@ -57,7 +57,7 @@ export default function ServicesPage() {
         'Free IRS-certified tax preparation for qualifying individuals',
       href: '/vita',
       icon: Heart,
-      image: '/images/business/handshake-1.jpg',
+      image: '/images/heroes/cash-bills.jpg',
     },
     {
       title: 'Career Services',

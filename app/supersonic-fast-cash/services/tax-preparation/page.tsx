@@ -12,7 +12,7 @@ export default function TaxPreparationPage() {
       {/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <img
-          src="/images/pathways/business-hero.jpg"
+          src="/images/heroes/cash-bills.jpg"
           alt="Tax Preparation"
           className="absolute inset-0 w-full h-full object-cover"
         />

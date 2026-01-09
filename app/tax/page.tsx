@@ -25,7 +25,7 @@ export default function TaxServicesPage() {
       {/* Hero Section */}
       <section className="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/business/handshake-1.jpg"
+          src="/images/heroes/cash-bills.jpg"
           alt="Tax Preparation Services"
           fill
           className="object-cover brightness-50"
