@@ -217,8 +217,8 @@ export default function ProgramsBioSitePage() {
                   href={link.href}
                   className="group block bg-white rounded-lg shadow hover:shadow-lg transition-all border border-gray-200 hover:border-gray-900 overflow-hidden"
                 >
-                  {/* Image Section */}
-                  <div className="relative h-48 w-full overflow-hidden">
+                  {/* Image Section - Square */}
+                  <div className="relative w-full aspect-square overflow-hidden">
                     <Image
                       src={link.image}
                       alt={link.title}
