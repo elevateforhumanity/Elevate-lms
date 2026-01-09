@@ -85,62 +85,62 @@ export default function ProgramsBioSitePage() {
     <div className="pb-20 md:pb-0">
       {/* Modern Landing Hero */}
       <ModernLandingHero
-        badge="🔥 Spring 2026 Enrollment Open - Classes Start Feb 3rd"
-        headline="Your Next Job Starts"
-        accentText="In 8-16 Weeks"
-        subheadline="From Unemployed to Certified Professional in Under 4 Months"
-        description="Last year, 847 Indiana residents went from no job to certified careers. Average starting wage: $18.50/hour. This year, it's your turn. Programs start February 3rd, March 10th, and April 14th. Seats fill fast."
+        badge="Spring 2026 Enrollment Open"
+        headline="Free Career Training"
+        accentText="Real Credentials"
+        subheadline="Healthcare • Skilled Trades • Technology • Business"
+        description="100% funded career training through WIOA, WRG, and DOL programs. No tuition. No debt. Earn industry-recognized credentials and connect with employers hiring our graduates."
         imageSrc="/images/heroes/programs.jpg"
         imageAlt="Career Training Programs"
-        primaryCTA={{ text: "Apply Now - Feb 3rd Start", href: "/apply" }}
-        secondaryCTA={{ text: "See Your Income Potential", href: "#programs" }}
+        primaryCTA={{ text: "View All Programs", href: "#programs" }}
+        secondaryCTA={{ text: "Check Eligibility", href: "/wioa-eligibility" }}
         features={[
-          "847 graduates in 2025 • 89% employed within 90 days",
-          "Average starting wage: $18.50/hr → $24/hr after 1 year",
-          "Next cohort: Feb 3, 2026 • Application deadline: Jan 27"
+          "100% free training with WIOA, WRG, or DOL funding",
+          "Industry-recognized credentials employers trust",
+          "Job placement assistance after completion"
         ]}
         imageOnRight={true}
       />
 
-      {/* Features Section - WITH DEPTH */}
+      {/* Features Section */}
       <ModernFeatures
-        title="Real Numbers. Real Results. Real Fast."
-        subtitle="What happened to last year's graduates (Class of 2025)"
+        title="Why Choose Our Programs"
+        subtitle="Real training, real credentials, real careers"
         features={[
           {
             icon: DollarSign,
-            title: "$0 Tuition Cost",
-            description: "847 students trained in 2025. Total tuition paid by students: $0. Average program value: $4,200. 100% covered by WIOA/WRG/DOL.",
+            title: "100% Free Training",
+            description: "No tuition costs with WIOA, WRG, or DOL funding. Training is completely free for eligible students.",
             color: "green"
           },
           {
             icon: Award,
-            title: "89% Employment Rate",
-            description: "753 of 847 graduates employed within 90 days. Average time to first job: 47 days. Starting wage: $18.50/hr.",
+            title: "Industry Credentials",
+            description: "Earn certifications and licenses that employers recognize and value in the job market.",
             color: "blue"
           },
           {
             icon: Briefcase,
-            title: "127 Employer Partners",
-            description: "Direct hiring relationships with hospitals, construction firms, salons, and tech companies actively recruiting our graduates.",
+            title: "Job Placement Support",
+            description: "Connect with employers hiring our graduates. We help you find work after program completion.",
             color: "orange"
           },
           {
             icon: Clock,
-            title: "8-16 Week Programs",
-            description: "CNA: 8 weeks. HVAC: 12 weeks. CDL: 4 weeks. Barbering: 16 weeks. Start earning in under 4 months.",
+            title: "Fast-Track Programs",
+            description: "Complete programs in weeks or months, not years. Get certified and start earning sooner.",
             color: "purple"
           },
           {
             icon: Users,
-            title: "1,247 Active Students",
-            description: "Right now, 1,247 people are in training. Next cohort starts Feb 3rd. 89 seats left across all programs.",
+            title: "Career Support Services",
+            description: "Resume building, interview prep, job search assistance, and ongoing career counseling.",
             color: "teal"
           },
           {
             icon: CheckCircle,
-            title: "3 Start Dates Left",
-            description: "Feb 3 (89 seats) • Mar 10 (120 seats) • Apr 14 (95 seats). After April, next opening is July. Don't wait.",
+            title: "Multiple Start Dates",
+            description: "Rolling enrollment throughout the year. Apply now to secure your spot in the next cohort.",
             color: "red"
           }
         ]}
