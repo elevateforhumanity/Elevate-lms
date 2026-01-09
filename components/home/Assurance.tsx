@@ -14,13 +14,14 @@ export default function Assurance() {
       </div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-xl">
+          <div className="relative w-full aspect-video md:aspect-[4/3] rounded-lg overflow-hidden shadow-xl bg-gray-100">
             <Image
               src="/clear-path-main-image.jpg"
               alt="Clear Career Pathways"
               fill
-              className="object-contain bg-gray-100"
+              className="object-contain"
               priority
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
           <div className="space-y-4 md:space-y-6">

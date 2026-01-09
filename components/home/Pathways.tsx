@@ -10,37 +10,39 @@ export default function Pathways() {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="rounded-lg overflow-hidden shadow-lg bg-white">
-            <div className="relative h-64">
+          <div className="rounded-lg overflow-hidden shadow-lg bg-white flex flex-col">
+            <div className="relative w-full h-48 md:h-56 flex-shrink-0">
               <Image
                 src="/images/pathways/trades-hero.jpg"
                 alt="Students learning"
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
-            <div className="p-6">
-              <h3 className="text-2xl font-bold mb-2 text-gray-900">Explore Programs</h3>
-              <p className="mb-4 text-gray-700">Browse training in healthcare, skilled trades, technology, and business</p>
-              <Link href="/programs" className="text-blue-600 underline font-semibold hover:text-blue-700">
+            <div className="p-4 md:p-6 flex-grow">
+              <h3 className="text-xl md:text-2xl font-bold mb-2 text-gray-900">Explore Programs</h3>
+              <p className="mb-4 text-sm md:text-base text-gray-700">Browse training in healthcare, skilled trades, technology, and business</p>
+              <Link href="/programs" className="text-blue-600 underline font-semibold hover:text-blue-700 text-sm md:text-base">
                 View All Programs →
               </Link>
             </div>
           </div>
 
-          <div className="rounded-lg overflow-hidden shadow-lg bg-white">
-            <div className="relative h-64">
+          <div className="rounded-lg overflow-hidden shadow-lg bg-white flex flex-col">
+            <div className="relative w-full h-48 md:h-56 flex-shrink-0">
               <Image
                 src="/images/efh/hero/hero-support.jpg"
                 alt="Career pathways"
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
-            <div className="p-6">
-              <h3 className="text-2xl font-bold mb-2 text-gray-900">Get Funded</h3>
-              <p className="mb-4 text-gray-700">See if you qualify for WIOA, WRG, or DOL funding to cover 100% of costs</p>
-              <Link href="/wioa-eligibility" className="text-blue-600 underline font-semibold hover:text-blue-700">
+            <div className="p-4 md:p-6 flex-grow">
+              <h3 className="text-xl md:text-2xl font-bold mb-2 text-gray-900">Get Funded</h3>
+              <p className="mb-4 text-sm md:text-base text-gray-700">See if you qualify for WIOA, WRG, or DOL funding to cover 100% of costs</p>
+              <Link href="/wioa-eligibility" className="text-blue-600 underline font-semibold hover:text-blue-700 text-sm md:text-base">
                 Check Eligibility →
               </Link>
             </div>
