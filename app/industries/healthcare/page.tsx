@@ -31,15 +31,12 @@ export default function HealthcarePage() {
     <div className="bg-white">
       {/* Hero Section */}
       <section className="relative h-[450px] md:h-[500px] w-full overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+          alt="Healthcare Programs"
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/cna-hero.mp4" type="video/mp4" />
-        </video>
+        />
+        <div className="absolute inset-0 bg-black/50" />
 
         <div className="absolute inset-0 flex items-center justify-center text-center px-4">
           <div className="max-w-4xl w-full">

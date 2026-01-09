@@ -22,17 +22,14 @@ export const metadata: Metadata = {
 export default function EmployerPage() {
   return (
     <div className="bg-white">
-      {/* HERO - Video Background */}
+      {/* HERO */}
       <section className="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
-        <video
-          autoPlay
-          loop
-          playsInline
-          muted
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/007/108/099/non_2x/business-people-unity-concept-free-photo.jpg"
+          alt="Employer Partners"
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/employer-partner-hero.mp4" type="video/mp4" />
-        </video>
+        />
+        <div className="absolute inset-0 bg-black/50" />
 
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">

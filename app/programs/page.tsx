@@ -83,19 +83,14 @@ export default function ProgramsBioSitePage() {
       {/* Video Hero Section */}
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+            alt="Programs Overview"
             className="absolute inset-0 h-full w-full object-cover"
-          >
-            <source src="/videos/programs-overview-video-with-narration.mp4" type="video/mp4" />
-          </video>
+          />
           
           {/* Overlay Content */}
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full mb-6">

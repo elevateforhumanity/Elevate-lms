@@ -15,21 +15,14 @@ export const metadata: Metadata = {
 export default async function ProgramHolderPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section - Video */}
+      {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+          alt="Program Holder Portal"
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source
-            src="/videos/training-providers-video-with-narration.mp4"
-            type="video/mp4"
-          />
-        </video>
+        />
+        <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">

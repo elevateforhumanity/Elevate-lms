@@ -1,0 +1,136 @@
+import Link from 'next/link';
+import { CheckCircle, Users, MapPin, Calendar } from 'lucide-react';
+
+export const metadata = {
+  title: 'Free Tax Preparation | VITA Program',
+  description: 'Free tax preparation for individuals and families earning $64,000 or less through the VITA program.',
+};
+
+export default function FreeTaxPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <section className="relative h-[400px] w-full overflow-hidden">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+          alt="Free Tax Preparation"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="max-w-4xl mx-auto px-6 text-center text-white">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Free Tax Preparation
+            </h1>
+            <p className="text-xl">
+              VITA Program - 100% Free for Qualifying Individuals
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Who Qualifies?</h2>
+              <p className="text-gray-700 mb-6">
+                The Volunteer Income Tax Assistance (VITA) program offers free tax preparation to individuals and families who:
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold mb-1">Income Limit</h3>
+                    <p className="text-gray-600">Earn $64,000 or less per year</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold mb-1">Disabilities</h3>
+                    <p className="text-gray-600">Persons with disabilities</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold mb-1">Limited English</h3>
+                    <p className="text-gray-600">Limited English-speaking taxpayers</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-blue-50 rounded-lg p-8 border border-blue-200">
+              <h3 className="text-2xl font-bold mb-4">What's Included</h3>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-600 font-bold">✓</span>
+                  <span>100% free tax preparation</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-600 font-bold">✓</span>
+                  <span>IRS-certified volunteers</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-600 font-bold">✓</span>
+                  <span>Electronic filing (e-file)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-600 font-bold">✓</span>
+                  <span>Direct deposit setup</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-600 font-bold">✓</span>
+                  <span>All federal and state forms</span>
+                </li>
+              </ul>
+              <Link
+                href="/tax/rise-up-foundation/site-locator"
+                className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center px-8 py-3 rounded-lg font-semibold transition-colors mt-6"
+              >
+                Find a VITA Site
+              </Link>
+            </div>
+          </div>
+
+          {/* How It Works */}
+          <div className="bg-gray-50 rounded-lg p-8">
+            <h3 className="text-2xl font-bold mb-6 text-center">How It Works</h3>
+            <div className="grid md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="w-8 h-8 text-blue-600" />
+                </div>
+                <h4 className="font-semibold mb-2">1. Find a Site</h4>
+                <p className="text-sm text-gray-600">Locate a VITA site near you</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Calendar className="w-8 h-8 text-blue-600" />
+                </div>
+                <h4 className="font-semibold mb-2">2. Schedule</h4>
+                <p className="text-sm text-gray-600">Book your appointment</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-blue-600" />
+                </div>
+                <h4 className="font-semibold mb-2">3. Meet Volunteer</h4>
+                <p className="text-sm text-gray-600">Work with certified preparer</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-blue-600" />
+                </div>
+                <h4 className="font-semibold mb-2">4. File Free</h4>
+                <p className="text-sm text-gray-600">E-file at no cost</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

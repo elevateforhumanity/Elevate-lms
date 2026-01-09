@@ -16,22 +16,17 @@ export const metadata: Metadata = {
 export default function BusinessFinancialPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Video Hero Section */}
+      {/* Hero Section */}
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/007/108/099/non_2x/business-people-unity-concept-free-photo.jpg"
+            alt="Business & Financial Programs"
             className="absolute inset-0 h-full w-full object-cover"
-          >
-            <source src="/videos/getting-started-hero.mp4" type="video/mp4" />
-          </video>
+          />
           
           {/* Overlay Content */}
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
               <div className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full mb-6">
                 <Briefcase className="w-5 h-5" />

@@ -113,12 +113,10 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-2.jpg"
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/007/108/099/non_2x/business-people-unity-concept-free-photo.jpg"
           alt="Tax Services"
-          fill
-          className="object-cover"
-          priority
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 to-blue-900/65"></div>
         <div className="absolute inset-0 flex items-center">

@@ -16,19 +16,14 @@ export const metadata: Metadata = {
 export default function SuccessStoriesPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero with Video */}
+      {/* Hero */}
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[70vh] w-full overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+            alt="Success Stories"
             className="absolute inset-0 h-full w-full object-cover"
-          >
-            <source src="/videos/getting-started-hero.mp4" type="video/mp4" />
-          </video>
+          />
           <div className="absolute inset-0 bg-gradient-to-br from-orange-600/90 to-orange-700/90" />
           
           <div className="relative z-10 flex items-center justify-center min-h-[70vh]">

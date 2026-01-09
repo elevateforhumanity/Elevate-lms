@@ -18,16 +18,12 @@ export default function HealthcarePage() {
     <div className="min-h-screen bg-gray-50">
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+            alt="Healthcare Programs"
             className="absolute inset-0 h-full w-full object-cover"
-          >
-            <source src="/videos/cna-hero.mp4" type="video/mp4" />
-          </video>
+          />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
       </section>
 

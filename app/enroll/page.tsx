@@ -14,18 +14,14 @@ import ProgramFAQ from '@/components/program/ProgramFAQ';
 export default function EnrollPage() {
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Video Hero - Preload video before page starts */}
+      {/* Hero */}
       <section className="relative h-[300px] w-full overflow-hidden bg-slate-900">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+          alt="Enroll"
           className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/barber-hero.mp4" type="video/mp4" />
-        </video>
+        />
+        <div className="absolute inset-0 bg-black/50" />
       </section>
 
       {/* Enrollment Form */}
