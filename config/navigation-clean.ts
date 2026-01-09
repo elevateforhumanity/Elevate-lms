@@ -22,15 +22,34 @@ export type NavSection = {
 export const publicNav: NavSection[] = [
   {
     label: 'Programs',
-    href: '/programs',
-  },
-  {
-    label: 'Apprenticeships',
-    href: '/apprenticeships',
+    items: [
+      { label: 'All Programs', href: '/programs' },
+      { label: 'Healthcare', href: '/programs/healthcare' },
+      { label: 'Skilled Trades', href: '/programs/skilled-trades' },
+      { label: 'Technology', href: '/programs/technology' },
+      { label: 'Business', href: '/programs/business' },
+      { label: 'CDL & Transportation', href: '/programs/cdl-transportation' },
+      { label: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
+    ],
   },
   {
     label: 'Services',
-    href: '/services',
+    items: [
+      { label: 'Career Services', href: '/career-services' },
+      { label: 'Job Placement', href: '/career-services/job-placement' },
+      { label: 'Resume Building', href: '/career-services/resume-building' },
+      { label: 'Interview Prep', href: '/career-services/interview-prep' },
+      { label: 'Career Counseling', href: '/career-services/career-counseling' },
+    ],
+  },
+  {
+    label: 'Apply',
+    items: [
+      { label: 'Student Application', href: '/apply' },
+      { label: 'Check WIOA Eligibility', href: '/wioa-eligibility' },
+      { label: 'How It Works', href: '/how-it-works' },
+      { label: 'Pathways', href: '/pathways' },
+    ],
   },
   {
     label: 'Employers',
