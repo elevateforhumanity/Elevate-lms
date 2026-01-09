@@ -30,6 +30,17 @@ export const publicNav: NavSection[] = [
       { label: 'Business', href: '/programs/business' },
       { label: 'CDL & Transportation', href: '/programs/cdl-transportation' },
       { label: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
+      { label: 'Apprenticeships', href: '/apprenticeships' },
+    ],
+  },
+  {
+    label: 'Get Started',
+    items: [
+      { label: 'Apply Now', href: '/apply' },
+      { label: 'Check WIOA Eligibility', href: '/wioa-eligibility' },
+      { label: 'How It Works', href: '/how-it-works' },
+      { label: 'Pathways', href: '/pathways' },
+      { label: 'Funding Options', href: '/funding' },
     ],
   },
   {
@@ -40,24 +51,29 @@ export const publicNav: NavSection[] = [
       { label: 'Resume Building', href: '/career-services/resume-building' },
       { label: 'Interview Prep', href: '/career-services/interview-prep' },
       { label: 'Career Counseling', href: '/career-services/career-counseling' },
+      { label: 'Advising', href: '/advising' },
     ],
   },
   {
-    label: 'Apply',
+    label: 'Partners',
     items: [
-      { label: 'Student Application', href: '/apply' },
-      { label: 'Check WIOA Eligibility', href: '/wioa-eligibility' },
-      { label: 'How It Works', href: '/how-it-works' },
-      { label: 'Pathways', href: '/pathways' },
+      { label: 'Employers', href: '/employer' },
+      { label: 'Hire Graduates', href: '/hire-graduates' },
+      { label: 'Workforce Partners', href: '/workforce-partners' },
+      { label: 'Training Providers', href: '/training-providers' },
+      { label: 'Government Agencies', href: '/agencies' },
     ],
-  },
-  {
-    label: 'Employers',
-    href: '/employer',
   },
   {
     label: 'About',
-    href: '/about',
+    items: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Success Stories', href: '/success-stories' },
+      { label: 'Impact', href: '/impact' },
+      { label: 'Team', href: '/team' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'Blog', href: '/blog' },
+    ],
   },
   {
     label: 'Contact',
