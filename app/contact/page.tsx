@@ -72,12 +72,12 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-green-600 to-green-800 text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
+          <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full border border-white/30 mb-6">
             <MessageSquare className="w-5 h-5" />
             <span className="text-sm font-semibold">Get In Touch</span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight" style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}>
             We're Here to Help
           </h1>
 
@@ -88,15 +88,15 @@ export default function ContactPage() {
 
           {/* Quick Stats */}
           <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+            <div className="bg-white/10  rounded-lg p-4 border border-white/20">
               <div className="text-3xl font-black mb-1">24hr</div>
               <div className="text-xs text-green-100">Response Time</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+            <div className="bg-white/10  rounded-lg p-4 border border-white/20">
               <div className="text-3xl font-black mb-1">Free</div>
               <div className="text-xs text-green-100">Consultation</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+            <div className="bg-white/10  rounded-lg p-4 border border-white/20">
               <div className="text-3xl font-black mb-1">5min</div>
               <div className="text-xs text-green-100">To Apply</div>
             </div>
