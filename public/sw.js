@@ -1,23 +1,24 @@
-// Service Worker - Loads AFTER page is ready
-// This ensures the page loads first, then PWA features activate
+// Service Worker - DISABLED TO PREVENT STALE CACHE
+// Unregister old service worker and clear all caches
 
-const CACHE_NAME = 'elevate-v1';
-const OFFLINE_URL = '/offline.html';
-
-// Install event - cache essential resources AFTER first load
 self.addEventListener('install', (event) => {
+  // Skip waiting and activate immediately
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      // Only cache after install, don't block initial load
-      return cache.addAll([
-        '/',
-        '/logo.png',
-        '/icon-192.png',
-        '/icon-512.png',
-      ]);
+    // Delete ALL caches
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => caches.delete(cacheName))
+      );
+    }).then(() => {
+      // Unregister this service worker
+      return self.registration.unregister();
     })
   );
-  // Activate immediately
+});
   self.skipWaiting();
 });
 
