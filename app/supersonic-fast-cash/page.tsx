@@ -167,15 +167,7 @@ export default function SupersonicFastCashPage() {
               className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg text-lg font-bold hover:bg-white hover:text-orange-600 transition-colors"
             >
               Call Now: (317) 555-0100
-                </Link>
-                <Link
-                  href="/supersonic-fast-cash/pricing"
-                  className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-lg font-bold text-lg transition-colors"
-                >
-                  View Pricing
-                </Link>
-              </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
