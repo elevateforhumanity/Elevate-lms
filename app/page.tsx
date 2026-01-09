@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import ModernFeatures from '@/components/landing/ModernFeatures';
 import Intro from '@/components/home/Intro';
 import Orientation from '@/components/home/Orientation';
@@ -7,14 +7,12 @@ import Testimonials from '@/components/home/Testimonials';
 import Assurance from '@/components/home/Assurance';
 import Start from '@/components/home/Start';
 import { 
-  GraduationCap, 
   DollarSign, 
   Briefcase, 
   Clock, 
   Award, 
-  TrendingUp,
-  Users,
-  CheckCircle 
+  Users, 
+  TrendingUp 
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -32,22 +30,13 @@ export const revalidate = 60;
 export default function HomePage() {
   return (
     <>
-      {/* Modern Hero with Urgency & Depth */}
-      <ModernLandingHero
-        badge="Enrollment Open - Start Your Career Training"
+      {/* Video Hero Banner */}
+      <VideoHeroBanner
+        videoSrc="/videos/hero-home.mp4"
         headline="Free Career Training"
-        accentText="Real Credentials"
-        subheadline="Healthcare • Skilled Trades • Technology • Business"
-        description="100% funded workforce training through WIOA, WRG, and DOL programs. No tuition. No debt. Earn industry certifications and connect with employers hiring our graduates."
-        imageSrc="/images/efh/hero/hero-main.jpg"
-        imageAlt="Career Training Success"
+        subheadline="100% funded workforce training. No tuition. No debt. Real credentials."
         primaryCTA={{ text: "Apply Now", href: "/apply" }}
         secondaryCTA={{ text: "View Programs", href: "/programs" }}
-        features={[
-          "100% free training with WIOA, WRG, or DOL funding",
-          "Industry-recognized credentials employers trust",
-          "Job placement assistance after completion"
-        ]}
         imageOnRight={true}
       />
 
