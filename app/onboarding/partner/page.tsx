@@ -20,7 +20,7 @@ export default async function PartnerPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
+          src="/images/business/team-2.jpg"
           alt="Partner"
           fill
           className="object-cover"
@@ -119,7 +119,7 @@ export default async function PartnerPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
+                  src="/images/business/collaboration-1.jpg"
                   alt="Partner"
                   fill
                   className="object-cover"
