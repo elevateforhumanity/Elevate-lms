@@ -29,7 +29,7 @@ export default function Apply() {
         accentText="10 Minutes"
         subheadline="Apply Now. Hear Back in 2-3 Days. Start Training Feb 3rd."
         description="847 people applied last year. 753 got accepted. 89% got jobs. Average time from application to first paycheck: 67 days. Your turn starts with this 10-minute application."
-        imageSrc="/images/efh/hero/hero-main.jpg"
+        imageSrc="/hero-images/apply-hero.jpg"
         imageAlt="Apply Now"
         primaryCTA={{ text: "Start Application Below", href: "#application" }}
         secondaryCTA={{ text: "Questions? Call Us", href: "tel:317-314-3757" }}

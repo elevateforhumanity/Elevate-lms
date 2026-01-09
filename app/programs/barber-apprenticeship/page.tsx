@@ -35,11 +35,10 @@ export default function BarberApprenticeshipPage() {
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
           <img
-            src="/images/efh/hero/hero-main.jpg"
+            src="/hero-images/barber-hero.jpg"
             alt="Barber Apprenticeship"
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/50" />
         </div>
       </section>
 
