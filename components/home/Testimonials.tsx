@@ -18,7 +18,7 @@ export default function Testimonials() {
       quote: "No cost, no debt, and a real career path. This changed everything for me.",
       name: "David Chen",
       role: "Technology Graduate",
-      image: "/images/testimonials/testimonial-success-story-3.png"
+      image: "/testimonial-david-chen.jpg"
     }
   ];
 
