@@ -17,12 +17,14 @@ export async function GET() {
       .order('created_at', { ascending: false });
 
     if (error) {
-      return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
+      console.error('Courses API error:', error);
+      return NextResponse.json({ error: toErrorMessage(error), courses: [] }, { status: 200 });
     }
 
-    return NextResponse.json({ courses, total: courses?.length || 0 });
+    return NextResponse.json({ courses: courses || [], total: courses?.length || 0 });
   } catch (error: unknown) {
-    return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
+    console.error('Courses API exception:', error);
+    return NextResponse.json({ error: toErrorMessage(error), courses: [] }, { status: 200 });
   }
 }
 
