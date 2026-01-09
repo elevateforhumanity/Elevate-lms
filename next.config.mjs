@@ -303,71 +303,55 @@ const nextConfig = {
     }
 
     return [
+      // 1) Never allow HTML / app routes to be cached for a year
       {
-        source: '/',
+        source: '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, s-maxage=60, stale-while-revalidate=86400',
-          },
-        ],
-      },
-
-      {
-        source: '/_next/image',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-          {
-            key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=31536000, immutable',
-          },
-          {
-            key: 'Vercel-CDN-Cache-Control',
-            value: 'public, s-maxage=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/_next/static/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/:path((?!_next|api|images|videos|media).*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, s-maxage=60, stale-while-revalidate=86400',
-          },
+          { key: 'Cache-Control', value: 'no-store, max-age=0' },
+          { key: 'Pragma', value: 'no-cache' },
+          { key: 'Expires', value: '0' },
+          { key: 'Surrogate-Control', value: 'no-store' },
           ...securityHeaders,
         ],
       },
+
+      // 2) Allow hashed Next static assets to be cached long-term (safe)
       {
-        source: '/:path*',
-        headers: securityHeaders,
+        source: '/_next/static/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
       },
-      // Override X-Robots-Tag for images and videos (must come AFTER /:path*)
+
+      // 3) Next image optimizer should not be cached forever
+      {
+        source: '/_next/image',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' },
+        ],
+      },
+
+      // 4) Safety: prevent accidental long-caching of direct CSS/JS files at root
+      {
+        source: '/:path*.css',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' },
+        ],
+      },
+      {
+        source: '/:path*.js',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' },
+        ],
+      },
+
+      // Override X-Robots-Tag for images and videos
       {
         source: '/images/:path*',
         headers: [
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
-          },
-          {
-            key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=31536000, immutable',
-          },
-          {
-            key: 'Vercel-CDN-Cache-Control',
-            value: 'public, s-maxage=31536000, immutable',
           },
           {
             key: 'X-Robots-Tag',
@@ -381,14 +365,6 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
-          },
-          {
-            key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=31536000, immutable',
-          },
-          {
-            key: 'Vercel-CDN-Cache-Control',
-            value: 'public, s-maxage=31536000, immutable',
           },
           {
             key: 'X-Robots-Tag',
