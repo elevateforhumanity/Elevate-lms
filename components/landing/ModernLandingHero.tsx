@@ -86,7 +86,7 @@ export default function ModernLandingHero({
   );
 
   const imageSection = (
-    <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+    <div className="relative h-[300px] md:h-[350px] lg:h-[400px] rounded-2xl overflow-hidden shadow-2xl">
       <Image
         src={imageSrc}
         alt={imageAlt}
