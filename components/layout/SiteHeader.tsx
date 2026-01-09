@@ -159,7 +159,7 @@ export default function SiteHeader() {
                     <>
                       <button
                         type="button"
-                        className="font-bold text-white hover:text-gray-200 transition flex items-center gap-1 py-2 text-base uppercase tracking-wide"
+                        className="font-bold text-gray-900 hover:text-blue-600 transition flex items-center gap-1 py-2 text-base uppercase tracking-wide"
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
