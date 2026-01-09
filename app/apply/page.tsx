@@ -116,11 +116,38 @@ export default function Apply() {
             className="w-full min-h-[44px] px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
           >
             <option value="">Select program...</option>
-            <option>CNA</option>
-            <option>Barber Apprenticeship</option>
-            <option>HVAC</option>
-            <option>IT Support</option>
-            <option>Not Sure</option>
+            <optgroup label="Healthcare">
+              <option>CNA (Certified Nursing Assistant)</option>
+              <option>Medical Assistant</option>
+              <option>Home Health Aide</option>
+              <option>Phlebotomy</option>
+            </optgroup>
+            <optgroup label="Skilled Trades">
+              <option>HVAC Technician</option>
+              <option>Electrical</option>
+              <option>Plumbing</option>
+              <option>Building Maintenance</option>
+              <option>Construction</option>
+            </optgroup>
+            <optgroup label="Barber & Beauty">
+              <option>Barber Apprenticeship</option>
+              <option>Cosmetology</option>
+              <option>Esthetics</option>
+            </optgroup>
+            <optgroup label="Technology">
+              <option>IT Support</option>
+              <option>Cybersecurity</option>
+              <option>Web Development</option>
+            </optgroup>
+            <optgroup label="Business">
+              <option>Accounting</option>
+              <option>Business Management</option>
+              <option>Entrepreneurship</option>
+            </optgroup>
+            <optgroup label="Transportation">
+              <option>CDL (Commercial Driver License)</option>
+            </optgroup>
+            <option>Not Sure - Help Me Choose</option>
           </select>
         </div>
 
