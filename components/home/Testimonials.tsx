@@ -10,9 +10,9 @@ export default function Testimonials() {
     },
     {
       quote: "The training was real. The credentials matter. I got hired two weeks after finishing the program.",
-      name: "Marcus Williams",
+      name: "Maria Rodriguez",
       role: "Skilled Trades Graduate",
-      image: "/images/testimonials/testimonial-success-story-2.png"
+      image: "/testimonial-female-trades.jpg"
     },
     {
       quote: "No cost, no debt, and a real career path. This changed everything for me.",
