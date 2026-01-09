@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   ArrowRight,
   CheckCircle,
@@ -24,14 +23,10 @@ export default function TaxServicesPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
-        <Image
+        <img
           src="/images/heroes/cash-bills.jpg"
           alt="Tax Preparation Services"
-          fill
-          className="object-cover brightness-50"
-          quality={100}
-          priority
-          sizes="100vw"
+          className="absolute inset-0 w-full h-full object-cover brightness-50"
         />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
