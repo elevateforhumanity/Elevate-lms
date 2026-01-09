@@ -12,6 +12,7 @@ import { ConditionalLayout } from '@/components/layout/ConditionalLayout';
 import { Toaster } from 'react-hot-toast';
 import { ClientProviders } from '@/components/ClientProviders';
 import { UnregisterServiceWorker } from '@/components/UnregisterServiceWorker';
+import { VersionGuard } from '@/components/VersionGuard';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({
@@ -293,6 +294,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <UnregisterSW />
+        <VersionGuard />
         {/* NUCLEAR: Kill service worker immediately */}
         <script dangerouslySetInnerHTML={{__html: `
           if ('serviceWorker' in navigator) {

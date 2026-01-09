@@ -311,6 +311,8 @@ const nextConfig = {
           { key: 'Pragma', value: 'no-cache' },
           { key: 'Expires', value: '0' },
           { key: 'Surrogate-Control', value: 'no-store' },
+          { key: 'X-Build-ID', value: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || 'dev' },
+          { key: 'X-Deployment-ID', value: process.env.VERCEL_DEPLOYMENT_ID || 'local' },
           ...securityHeaders,
         ],
       },
