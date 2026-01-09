@@ -129,107 +129,112 @@ export default function ServicesPage() {
         </div>
       </nav>
 
-      {/* Hero Banner */}
-      <section className="relative h-[600px] w-full overflow-hidden">
+      {/* Hero Banner - LEFT ALIGNED, ASYMMETRIC */}
+      <section className="relative min-h-[70vh] w-full overflow-hidden bg-black">
         <img
           src="/images/pathways/business-hero.jpg"
           alt="Our Services"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="absolute inset-0 flex items-center justify-center text-center px-4">
-          <div className="max-w-6xl w-full rich-animate">
-            {/* Logo */}
-            <div className="mb-8">
-              <Image
-                src="/logo.png"
-                alt="Elevate for Humanity"
-                width={200}
-                height={80}
-                className="mx-auto brightness-0 invert"
-              />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
+          <div className="max-w-2xl">
+            {/* Administrative Header */}
+            <div className="mb-6 text-xs uppercase tracking-wider text-gray-400 font-mono">
+              STUDENT SUPPORT SERVICES / UPDATED JAN 2026
             </div>
 
-            {/* Badge */}
-            <div className="rich-badge mb-8 bg-teal-500/20 border-teal-500/30 text-teal-100">
-              <Heart className="w-5 h-5" />
-              <span>Comprehensive Support Services</span>
-            </div>
-
-            {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight">
-              WE SUPPORT YOUR SUCCESS
+            {/* Headline - LEFT ALIGNED, AGGRESSIVE */}
+            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-[0.9] tracking-tight">
+              Support<br/>Services
             </h1>
 
-            {/* Subheadline */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8">
-              More Than Just Training
-            </h2>
-
-            {/* Body */}
-            <p className="text-xl sm:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Tax services, career counseling, job placement, and comprehensive
-              support to help you succeed
+            {/* Body - TIGHTER, MORE DIRECT */}
+            <p className="text-lg text-gray-300 mb-8 leading-relaxed max-w-xl">
+              Tax preparation, career counseling, job placement assistance, and barrier removal services for enrolled students.
             </p>
 
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            {/* Buttons - SHARP, NO ROUNDED */}
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/apply"
-                className="rich-button-primary uppercase inline-flex items-center gap-3"
+                className="bg-white text-black px-8 py-4 font-bold uppercase text-sm tracking-wide hover:bg-gray-200 transition-colors inline-flex items-center gap-3"
               >
-                <span>Get Started</span>
-                <ArrowRight className="w-5 h-5" />
+                <span>Apply Now</span>
+                <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="#services"
-                className="rich-button-secondary text-white border-white hover:bg-white hover:text-teal-600 uppercase inline-flex items-center gap-3"
+                className="border-2 border-white text-white px-8 py-4 font-bold uppercase text-sm tracking-wide hover:bg-white hover:text-black transition-colors inline-flex items-center gap-3"
               >
-                <span>View Services</span>
-                <Zap className="w-5 h-5" />
+                <span>View All</span>
+                <Zap className="w-4 h-4" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* All Services Grid - Wix Style with Large Images */}
-      <section id="services" className="rich-section bg-white">
-        <div className="rich-container">
-          <div className="text-center mb-16">
-            <h2 className="rich-headline text-gray-900 mb-6">
-              All Services & Support
+      {/* DOCUMENT-STYLE LEGITIMACY BLOCK */}
+      <section className="bg-white border-y-4 border-black py-12">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="bg-gray-50 border-l-4 border-black p-8">
+            <div className="text-xs uppercase tracking-wider text-gray-500 mb-4 font-mono">
+              ELIGIBILITY NOTICE / EFFECTIVE JANUARY 2026
+            </div>
+            <h3 className="text-2xl font-bold text-black mb-4 leading-tight">
+              Services Available to Enrolled Students Only
+            </h3>
+            <div className="prose prose-sm max-w-none text-gray-800 leading-relaxed">
+              <p className="mb-3">
+                Support services including tax preparation, career counseling, and job placement assistance are provided at no cost to students enrolled in approved training programs through WIOA, WRG, or DOL funding.
+              </p>
+              <p className="mb-3">
+                <strong>Eligibility Requirements:</strong> Active enrollment in a credentialed program, compliance with attendance policies, and completion of intake documentation.
+              </p>
+              <p className="text-sm text-gray-600 mb-0">
+                For questions regarding eligibility or service access, contact Student Services at (317) 314-3757 or visit the Help Center.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* All Services Grid - ASYMMETRIC */}
+      <section id="services" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-12">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-4 leading-tight">
+              Available Services
             </h2>
-            <p className="rich-body max-w-3xl mx-auto">
-              Click any service to learn more and get started
+            <p className="text-lg text-gray-600 max-w-2xl">
+              Click any service for details and access requirements
             </p>
           </div>
 
-          <div className="rich-grid">
+          <div className="grid md:grid-cols-3 gap-6">
             {services.map((service) => {
               const Icon = service.icon;
               return (
-                <Link key={service.href} href={service.href} className="group">
-                  <div className="rich-card">
-                    <div className="rich-image-container relative h-64 mb-6 overflow-hidden rounded-lg">
+                <Link key={service.href} href={service.href} className="group block">
+                  <div className="bg-white border-2 border-gray-200 hover:border-black transition-colors overflow-hidden">
+                    <div className="relative h-48 overflow-hidden">
                       <img
                         src={service.image}
                         alt={service.title}
-                        className="absolute inset-0 w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="rich-overlay">
-                        <div className="rich-icon-container">
-                          <Icon className="w-8 h-8 text-gray-900" />
-                        </div>
-                      </div>
                     </div>
-                    <h3 className="rich-subheadline text-gray-900 group-hover:text-teal-600 transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="rich-body mb-4">{service.description}</p>
-                    <div className="flex items-center gap-2 text-teal-600 font-bold">
-                      <span>Learn More</span>
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                    <div className="p-6">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Icon className="w-5 h-5 text-black" />
+                        <h3 className="text-xl font-bold text-black">{service.title}</h3>
+                      </div>
+                      <p className="text-sm text-gray-700 mb-4 leading-relaxed">{service.description}</p>
+                      <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-black">
+                        View Details
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
                     </div>
                   </div>
                 </Link>
