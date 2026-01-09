@@ -1,7 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
-  // Middleware disabled - no redirects
+  const hostname = req.headers.get("host") || "";
+  
+  // Redirect elevateforhumanity.org to elevateforhumanity.institute
+  if (hostname === "elevateforhumanity.org" || hostname === "www.elevateforhumanity.org") {
+    const url = req.nextUrl.clone();
+    url.host = "elevateforhumanity.institute";
+    url.protocol = "https:";
+    return NextResponse.redirect(url, 301);
+  }
+  
   return NextResponse.next();
 }
 
