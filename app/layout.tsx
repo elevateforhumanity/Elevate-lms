@@ -284,7 +284,7 @@ export default function RootLayout({
     </html>
   );
 }
-// Cache bust: 2026-01-09T11:48:00Z
-// Force rebuild: CACHE INVALIDATION - Force Vercel to serve new deployment
-// Force deployment: 2026-01-09T11:48:00Z - Clear CDN cache and serve fixed CSS
-// Build ID change to invalidate all cached assets
+// Cache bust: 2026-01-09T11:50:00Z
+// NUCLEAR CACHE DELETION: Disabled all caching - max-age=0 on everything
+// Force deployment: 2026-01-09T11:50:00Z - No more 1-year CSS cache
+// All assets now fetch fresh on every request

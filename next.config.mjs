@@ -308,11 +308,19 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate, s-maxage=60',
+            value: 'no-cache, no-store, must-revalidate',
           },
           {
             key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=60, stale-while-revalidate=3600',
+            value: 'no-cache, no-store, must-revalidate',
+          },
+          {
+            key: 'Pragma',
+            value: 'no-cache',
+          },
+          {
+            key: 'Expires',
+            value: '0',
           },
         ],
       },
@@ -339,7 +347,15 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=0, must-revalidate',
+          },
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, max-age=0, must-revalidate',
+          },
+          {
+            key: 'Vercel-CDN-Cache-Control',
+            value: 'public, max-age=0, must-revalidate',
           },
         ],
       },
@@ -348,11 +364,19 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate, s-maxage=60',
+            value: 'no-cache, no-store, must-revalidate',
           },
           {
             key: 'CDN-Cache-Control',
-            value: 'public, s-maxage=60, stale-while-revalidate=3600',
+            value: 'no-cache, no-store, must-revalidate',
+          },
+          {
+            key: 'Pragma',
+            value: 'no-cache',
+          },
+          {
+            key: 'Expires',
+            value: '0',
           },
           ...securityHeaders,
         ],
