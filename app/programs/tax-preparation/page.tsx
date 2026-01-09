@@ -1,14 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  DollarSign,
-  Award,
-  Clock,
-  Users,
-  CheckCircle,
-  ExternalLink,
-} from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 export const metadata: Metadata = {
   title:
@@ -40,7 +33,7 @@ export default function Page() {
           <div className="relative z-10 flex items-center justify-center min-h-[70vh]">
             <div className="max-w-5xl mx-auto px-6 text-center text-white">
               <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/30">
-                <Award className="w-5 h-5" />
+                <Image src="/images/icons/award.png" alt="Award" width={24} height={24} className="flex-shrink-0" />
                 <span className="text-sm font-semibold">
                   IRS Certified Training
                 </span>
@@ -82,14 +75,14 @@ export default function Page() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="w-8 h-8 text-green-600" />
+                <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0" />
               </div>
               <h3 className="font-bold text-lg mb-2">High Income</h3>
               <p className="text-gray-600">$40k-$100k+ per year</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-green-600" />
+                <Image src="/images/icons/clock.png" alt="Duration" width={24} height={24} className="flex-shrink-0" />
               </div>
               <h3 className="font-bold text-lg mb-2">Flexible Schedule</h3>
               <p className="text-gray-600">
@@ -98,14 +91,14 @@ export default function Page() {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-green-600" />
+                <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0" />
               </div>
               <h3 className="font-bold text-lg mb-2">Be Your Own Boss</h3>
               <p className="text-gray-600">Start your own tax business</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-green-600" />
+                <Image src="/images/icons/award.png" alt="Award" width={24} height={24} className="flex-shrink-0" />
               </div>
               <h3 className="font-bold text-lg mb-2">IRS Certified</h3>
               <p className="text-gray-600">Nationally recognized credential</p>
@@ -212,19 +205,19 @@ export default function Page() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                   <span>Gain experience helping real clients</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                   <span>IRS-certified training and support</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                   <span>Flexible volunteer hours</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                   <span>Make a difference in your community</span>
                 </li>
               </ul>
@@ -248,19 +241,19 @@ export default function Page() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                   <span>Be your own boss</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                   <span>Work from home or open an office</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                   <span>Set your own rates and schedule</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                   <span>Build recurring client base</span>
                 </li>
               </ul>
@@ -292,19 +285,19 @@ export default function Page() {
                 <h4 className="font-bold mb-3">What You Get:</h4>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                     <span>IRS-certified training</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                     <span>Business setup guidance</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                     <span>Marketing strategies</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                     <span>Tax software recommendations</span>
                   </li>
                 </ul>
@@ -313,19 +306,19 @@ export default function Page() {
                 <h4 className="font-bold mb-3">What You Save:</h4>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                     <span>$0 franchise fees</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                     <span>$0 royalty payments</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                     <span>$0 training costs</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0" />
                     <span>Keep 100% of your profits</span>
                   </li>
                 </ul>
