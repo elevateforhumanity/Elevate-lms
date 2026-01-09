@@ -20,7 +20,7 @@ export default function SuccessStoriesPage() {
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[70vh] w-full overflow-hidden">
           <img
-            src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+            src="/images/efh/hero/hero-main.jpg"
             alt="Success Stories"
             className="absolute inset-0 h-full w-full object-cover"
           />

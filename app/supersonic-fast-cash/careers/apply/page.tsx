@@ -23,7 +23,7 @@ export default function CareersApplyPage() {
       {/* Hero */}
       <section className="relative h-[300px] w-full overflow-hidden">
         <img
-          src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+          src="/images/efh/hero/hero-main.jpg"
           alt="Apply for Career"
           className="absolute inset-0 w-full h-full object-cover"
         />

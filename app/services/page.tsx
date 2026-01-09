@@ -49,7 +49,7 @@ export default function ServicesPage() {
         'Professional tax preparation, refund advances, IRS representation, and maximum refund guarantee',
       href: '/tax-services',
       icon: DollarSign,
-      image: 'https://static.vecteezy.com/system/resources/previews/028/287/555/non_2x/an-indian-young-female-employee-working-with-clients-in-office-business-working-concept-free-photo.jpg',
+      image: '/images/business/professional-2.jpg',
     },
     {
       title: 'VITA Tax Prep',
@@ -57,56 +57,56 @@ export default function ServicesPage() {
         'Free IRS-certified tax preparation for qualifying individuals',
       href: '/vita',
       icon: Heart,
-      image: 'https://static.vecteezy.com/system/resources/previews/032/006/156/non_2x/business-people-shaking-hands-together-free-photo.jpg',
+      image: '/images/business/handshake-1.jpg',
     },
     {
       title: 'Career Services',
       description: 'Resume building, interview prep, and job search support',
       href: '/career-services',
       icon: Briefcase,
-      image: 'https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg',
+      image: '/images/efh/hero/hero-main.jpg',
     },
     {
       title: 'Career Center',
       description: 'Job boards, employer connections, and placement assistance',
       href: '/career-center',
       icon: TrendingUp,
-      image: 'https://static.vecteezy.com/system/resources/previews/023/514/434/non_2x/business-people-working-together-on-project-and-brainstorming-in-office-free-photo.jpg',
+      image: '/images/business/collaboration-1.jpg',
     },
     {
       title: 'Career Fairs',
       description: 'Meet employers hiring our graduates at regular events',
       href: '/career-fair',
       icon: Users,
-      image: 'https://static.vecteezy.com/system/resources/previews/007/108/099/non_2x/business-people-unity-concept-free-photo.jpg',
+      image: '/images/pathways/business-hero.jpg',
     },
     {
       title: 'Academic Advising',
       description: 'One-on-one guidance to help you succeed in your program',
       href: '/advising',
       icon: GraduationCap,
-      image: 'https://static.vecteezy.com/system/resources/previews/028/287/384/non_2x/ai-generated-a-professional-business-woman-manager-or-secretary-in-the-office-business-concept-photo.jpg',
+      image: '/images/business/professional-1.jpg',
     },
     {
       title: 'Mentorship Program',
       description: 'Connect with industry professionals for guidance',
       href: '/mentorship',
       icon: Lightbulb,
-      image: 'https://static.vecteezy.com/system/resources/previews/029/870/595/non_2x/business-people-working-together-on-a-project-free-photo.jpg',
+      image: '/images/business/team-1.jpg',
     },
     {
       title: 'Support Services',
       description: 'Transportation, childcare, and barrier removal services',
       href: '/support',
       icon: Shield,
-      image: 'https://static.vecteezy.com/system/resources/previews/026/494/514/non_2x/business-people-discussing-ideas-at-meeting-free-photo.jpg',
+      image: '/images/business/team-2.jpg',
     },
     {
       title: 'Help Center',
       description: 'FAQs, guides, and support resources',
       href: '/help',
       icon: Phone,
-      image: 'https://static.vecteezy.com/system/resources/previews/023/514/454/non_2x/business-people-working-together-on-project-and-brainstorming-in-office-free-photo.jpg',
+      image: '/images/business/team-3.jpg',
     },
   ];
 
@@ -132,7 +132,7 @@ export default function ServicesPage() {
       {/* Hero Banner */}
       <section className="relative h-[600px] w-full overflow-hidden">
         <img
-          src="https://static.vecteezy.com/system/resources/previews/007/108/099/non_2x/business-people-unity-concept-free-photo.jpg"
+          src="/images/pathways/business-hero.jpg"
           alt="Our Services"
           className="absolute inset-0 w-full h-full object-cover"
         />

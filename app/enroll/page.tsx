@@ -17,7 +17,7 @@ export default function EnrollPage() {
       {/* Hero */}
       <section className="relative h-[300px] w-full overflow-hidden bg-slate-900">
         <img
-          src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+          src="/images/efh/hero/hero-main.jpg"
           alt="Enroll"
           className="absolute inset-0 w-full h-full object-cover"
         />

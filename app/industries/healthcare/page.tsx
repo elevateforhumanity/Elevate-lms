@@ -32,7 +32,7 @@ export default function HealthcarePage() {
       {/* Hero Section */}
       <section className="relative h-[450px] md:h-[500px] w-full overflow-hidden">
         <img
-          src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+          src="/images/efh/hero/hero-main.jpg"
           alt="Healthcare Programs"
           className="absolute inset-0 w-full h-full object-cover"
         />

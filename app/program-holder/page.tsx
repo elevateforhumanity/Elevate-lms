@@ -18,7 +18,7 @@ export default async function ProgramHolderPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <img
-          src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+          src="/images/efh/hero/hero-main.jpg"
           alt="Program Holder Portal"
           className="absolute inset-0 w-full h-full object-cover"
         />

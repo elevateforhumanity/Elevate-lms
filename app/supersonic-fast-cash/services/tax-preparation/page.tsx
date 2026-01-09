@@ -12,7 +12,7 @@ export default function TaxPreparationPage() {
       {/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <img
-          src="https://static.vecteezy.com/system/resources/previews/007/108/099/non_2x/business-people-unity-concept-free-photo.jpg"
+          src="/images/pathways/business-hero.jpg"
           alt="Tax Preparation"
           className="absolute inset-0 w-full h-full object-cover"
         />

@@ -20,7 +20,7 @@ export default function BusinessFinancialPage() {
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
           <img
-            src="https://static.vecteezy.com/system/resources/previews/007/108/099/non_2x/business-people-unity-concept-free-photo.jpg"
+            src="/images/pathways/business-hero.jpg"
             alt="Business & Financial Programs"
             className="absolute inset-0 h-full w-full object-cover"
           />

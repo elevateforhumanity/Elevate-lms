@@ -20,7 +20,7 @@ export default function CdlTransportationPage() {
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
           <img
-            src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+            src="/images/efh/hero/hero-main.jpg"
             alt="CDL & Transportation Programs"
             className="absolute inset-0 h-full w-full object-cover"
           />

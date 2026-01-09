@@ -19,7 +19,7 @@ export default async function HowItWorksPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <img
-          src="https://static.vecteezy.com/system/resources/previews/026/829/465/non_2x/business-professional-discussing-ideas-in-office-meeting-room-free-photo.jpg"
+          src="/images/efh/hero/hero-main.jpg"
           alt="How It Works"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -117,7 +117,7 @@ export default async function HowItWorksPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <img
-                  src="https://static.vecteezy.com/system/resources/previews/007/108/099/non_2x/business-people-unity-concept-free-photo.jpg"
+                  src="/images/pathways/business-hero.jpg"
                   alt="How It Works"
                   className="w-full h-full object-cover"
                 />

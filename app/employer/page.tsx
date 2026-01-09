@@ -25,7 +25,7 @@ export default function EmployerPage() {
       {/* HERO */}
       <section className="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
         <img
-          src="https://static.vecteezy.com/system/resources/previews/007/108/099/non_2x/business-people-unity-concept-free-photo.jpg"
+          src="/images/pathways/business-hero.jpg"
           alt="Employer Partners"
           className="absolute inset-0 w-full h-full object-cover"
         />

@@ -114,7 +114,7 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
         <img
-          src="https://static.vecteezy.com/system/resources/previews/007/108/099/non_2x/business-people-unity-concept-free-photo.jpg"
+          src="/images/pathways/business-hero.jpg"
           alt="Tax Services"
           className="absolute inset-0 w-full h-full object-cover"
         />
