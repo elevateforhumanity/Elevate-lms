@@ -220,7 +220,7 @@ export default function DataExportDialog({
               </>
             ) : exportComplete ? (
               <>
-                
+                <Check className="w-4 h-4" />
                 Complete!
               </>
             ) : (

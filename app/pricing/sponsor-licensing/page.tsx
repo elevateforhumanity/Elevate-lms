@@ -87,31 +87,31 @@ export default function SponsorLicensingPage() {
 
               <div className="space-y-3 mb-8">
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">
                     Sponsor dashboard (referrals, employers, apprentices)
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">
                     RAPIDS lifecycle tracking
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">
                     WIOA/WRG compatibility
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">
                     Employer onboarding + MOU workflow
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">
                     Audit logs + exports
                   </span>
@@ -172,37 +172,37 @@ export default function SponsorLicensingPage() {
 
               <div className="space-y-3 mb-8">
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-white">
                     Everything in Starter
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-white">
                     White-label branding (logo, domain, email)
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-white">
                     Multi-trade programs
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-white">
                     WOTC + OJT tracking
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-white">
                     ETPL performance dashboards
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-white">
                     WorkOne read-only oversight views
                   </span>
@@ -260,37 +260,37 @@ export default function SponsorLicensingPage() {
 
               <div className="space-y-3 mb-8">
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">
                     Everything in Professional
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">
                     Multi-state rules engine
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">
                     Tenant licensing enforcement
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">
                     SOC-style audit controls
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">
                     Monitoring response bundles
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">
                     Dedicated onboarding + training
                   </span>

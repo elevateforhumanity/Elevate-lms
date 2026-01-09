@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-
+import { CheckCircle, ArrowRight, Users, Target, Heart, Award } from 'lucide-react';
 
 
 export const metadata: Metadata = {

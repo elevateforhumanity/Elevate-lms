@@ -70,31 +70,31 @@ export default function CAREERSAFEPage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              
+              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div className="text-slate-700">
                 Official OSHA certification cards
               </div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              
+              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div className="text-slate-700">
                 Required for many construction jobs
               </div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              
+              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div className="text-slate-700">Self-paced online training</div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              
+              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div className="text-slate-700">Lifetime access to materials</div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
-              
+              <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
               <div className="text-slate-700">24/7 customer support</div>
             </div>
           </div>

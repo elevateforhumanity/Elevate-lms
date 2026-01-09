@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState, useRef, useEffect } from 'react';
-
+import { Bell, CheckCircle, Award, BookOpen, AlertCircle } from 'lucide-react';
 
 const notifications = [
   {

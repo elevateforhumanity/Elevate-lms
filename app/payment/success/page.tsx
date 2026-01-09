@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-
+import { CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Payment Successful | Elevate for Humanity',
@@ -16,7 +16,7 @@ export default function PaymentSuccessPage() {
       <div className="container mx-auto px-4 max-w-2xl text-center">
         <div className="bg-white rounded-2xl shadow-xl p-12">
           <div className="w-20 h-20 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            
+            <CheckCircle className="w-12 h-12 text-brand-green-600" />
           </div>
 
           <h1 className="text-4xl font-bold text-gray-900 mb-4 text-2xl md:text-3xl lg:text-4xl">
@@ -32,19 +32,19 @@ export default function PaymentSuccessPage() {
             <h2 className="font-bold text-green-900 mb-2">What's Next?</h2>
             <ul className="text-left text-green-800 space-y-2">
               <li>
-                 Check your
+                <CheckCircle className="w-5 h-5 inline-block" /> Check your
                 email for enrollment confirmation
               </li>
               <li>
-                 You'll receive
+                <CheckCircle className="w-5 h-5 inline-block" /> You'll receive
                 your welcome packet within 24 hours
               </li>
               <li>
-                 Access your
+                <CheckCircle className="w-5 h-5 inline-block" /> Access your
                 student portal to get started
               </li>
               <li>
-                 Our team will
+                <CheckCircle className="w-5 h-5 inline-block" /> Our team will
                 contact you to schedule orientation
               </li>
             </ul>

@@ -5,7 +5,7 @@ import React from 'react';
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-
+import { CheckCircle, Download, Mail, ArrowRight } from 'lucide-react';
 import { getDigitalProduct } from '@/lib/store/digital-products';
 
 function SuccessContent() {
@@ -26,7 +26,7 @@ function SuccessContent() {
         {/* Success Icon */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
-            
+            <CheckCircle className="text-green-600" size={48} />
           </div>
           <h1 className="text-4xl font-bold text-slate-900 mb-2">
             Payment Successful!

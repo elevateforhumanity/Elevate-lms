@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
+import { Camera, Upload, CheckCircle, AlertCircle } from 'lucide-react';
 
 export function IDVerificationForm() {
   const router = useRouter();
@@ -110,7 +110,7 @@ export function IDVerificationForm() {
     return (
       <div className="max-w-2xl mx-auto p-8 bg-green-50 border-2 border-green-600 rounded-lg">
         <div className="flex items-center gap-4 mb-4">
-          
+          <CheckCircle className="w-12 h-12 text-green-600" />
           <div>
             <h2 className="text-2xl font-bold text-green-900">
               Verification Submitted!

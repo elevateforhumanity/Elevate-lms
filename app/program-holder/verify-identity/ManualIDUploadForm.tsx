@@ -100,7 +100,7 @@ export default function ManualIDUploadForm({
       <div className="bg-white rounded-lg shadow-lg p-8">
         <div className="text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-            
+            <CheckCircle className="text-green-600" size={32} />
           </div>
           <h2 className="text-2xl font-bold text-green-900 mb-2">
             Documents Uploaded Successfully!
@@ -136,7 +136,7 @@ export default function ManualIDUploadForm({
         <div className="mt-4 p-4 bg-green-50 border-l-4 border-green-400">
           <p className="text-sm text-green-900">
             <strong>
-               FREE
+              <CheckCircle className="w-5 h-5 inline-block" /> FREE
             </strong>{' '}
             - No cost for manual verification
             <br />
@@ -180,7 +180,7 @@ export default function ManualIDUploadForm({
             >
               {idFrontFile ? (
                 <>
-                  
+                  <CheckCircle className="text-green-600 mb-2" size={32} />
                   <p className="text-sm font-medium text-gray-900">
                     {idFrontFile.name}
                   </p>
@@ -220,7 +220,7 @@ export default function ManualIDUploadForm({
             >
               {idBackFile ? (
                 <>
-                  
+                  <CheckCircle className="text-green-600 mb-2" size={32} />
                   <p className="text-sm font-medium text-gray-900">
                     {idBackFile.name}
                   </p>
@@ -262,7 +262,7 @@ export default function ManualIDUploadForm({
             >
               {selfieFile ? (
                 <>
-                  
+                  <CheckCircle className="text-green-600 mb-2" size={32} />
                   <p className="text-sm font-medium text-gray-900">
                     {selfieFile.name}
                   </p>

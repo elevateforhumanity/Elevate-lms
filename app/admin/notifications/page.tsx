@@ -5,7 +5,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { Bell, Send, Users, CheckCircle, AlertCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 
@@ -251,7 +251,7 @@ export default function NotificationsPage() {
                 >
                   <div className="flex items-start space-x-3">
                     {result.success ? (
-                      
+                      <CheckCircle className="w-5 h-5 text-brand-green-600 mt-0.5" />
                     ) : (
                       <AlertCircle className="w-5 h-5 text-brand-orange-600 mt-0.5" />
                     )}

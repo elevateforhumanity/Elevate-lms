@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import ModernFeatures from '@/components/landing/ModernFeatures';
-
+import { Briefcase, FileText, Users, TrendingUp, Award, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {

@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState } from 'react';
-
+import { Play, CheckCircle, X } from 'lucide-react';
 
 interface ProgramOrientationVideoProps {
   onComplete?: () => void;
@@ -41,7 +41,7 @@ export default function ProgramOrientationVideo({
           <div className="flex-shrink-0">
             <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center">
               {hasWatched ? (
-                
+                <CheckCircle className="w-8 h-8 text-green-600" />
               ) : (
                 <Play className="w-8 h-8 text-blue-600" />
               )}
@@ -104,7 +104,7 @@ export default function ProgramOrientationVideo({
               </p>
               {hasWatched && (
                 <div className="flex items-center gap-2 text-green-600">
-                  
+                  <CheckCircle className="w-5 h-5" />
                   <span className="font-medium">
                     Orientation completed! You can close this window.
                   </span>

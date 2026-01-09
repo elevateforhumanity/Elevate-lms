@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-
+import { CheckCircle, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Interview Preparation | Career Services | Elevate for Humanity',
@@ -32,37 +32,37 @@ export default function InterviewPrepPage() {
             </h2>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                
+                <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
                 <span className="text-gray-700">
                   Common interview questions and how to answer them
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                
+                <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
                 <span className="text-gray-700">
                   Body language and professional presentation
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                
+                <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
                 <span className="text-gray-700">
                   Mock interviews with feedback
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                
+                <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
                 <span className="text-gray-700">
                   Industry-specific interview strategies
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                
+                <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
                 <span className="text-gray-700">
                   Salary negotiation techniques
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                
+                <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
                 <span className="text-gray-700">Follow-up strategies</span>
               </li>
             </ul>

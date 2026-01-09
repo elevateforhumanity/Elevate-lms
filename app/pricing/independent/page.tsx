@@ -81,15 +81,15 @@ export default function IndependentLicensePage() {
               </h3>
               <ul className="space-y-2 text-sm text-slate-700">
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Your branding, colors, logo</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Custom domain</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Branded emails & certificates</span>
                 </li>
               </ul>
@@ -104,15 +104,15 @@ export default function IndependentLicensePage() {
               </h3>
               <ul className="space-y-2 text-sm text-slate-700">
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Course creation & management</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Student enrollment & tracking</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Progress tracking & certificates</span>
                 </li>
               </ul>
@@ -127,15 +127,15 @@ export default function IndependentLicensePage() {
               </h3>
               <ul className="space-y-2 text-sm text-slate-700">
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>iOS & Android apps</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Student portal access</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Push notifications</span>
                 </li>
               </ul>
@@ -220,7 +220,7 @@ export default function IndependentLicensePage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-green-50 rounded-xl p-6 border-2 border-green-200">
               <h3 className="text-lg font-bold text-green-900 mb-4">
-                 Choose This If:
+                <CheckCircle className="w-5 h-5 inline-block" /> Choose This If:
               </h3>
               <ul className="space-y-2 text-sm text-green-800">
                 <li>• You already have ETPL/WIOA/RAPIDS credentials</li>

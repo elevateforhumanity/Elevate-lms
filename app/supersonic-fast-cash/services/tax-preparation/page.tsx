@@ -1,5 +1,5 @@
 import Link from 'next/link';
-
+import { FileText, DollarSign, Clock, CheckCircle } from 'lucide-react';
 
 export const metadata = {
   title: 'Tax Preparation Services | Supersonic Fast Cash',
@@ -40,21 +40,21 @@ export default function TaxPreparationPage() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  
+                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">W-2 and 1099 Income</h3>
                     <p className="text-gray-600">Employment and contract income</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Itemized Deductions</h3>
                     <p className="text-gray-600">Maximize your tax savings</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  
+                  <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Tax Credits</h3>
                     <p className="text-gray-600">EITC, Child Tax Credit, and more</p>

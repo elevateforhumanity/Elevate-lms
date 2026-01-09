@@ -15,7 +15,7 @@ function formatPct(p?: number) {
 }
 
 export default function NextStepsPage() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<Checklist | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const progress = useMemo(

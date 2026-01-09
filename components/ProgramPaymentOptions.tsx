@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState } from 'react';
-
+import { CreditCard, DollarSign, CheckCircle } from 'lucide-react';
 
 interface ProgramPaymentOptionsProps {
   programName: string;
@@ -116,7 +116,7 @@ export default function ProgramPaymentOptions({
               </div>
             </div>
             {paymentMethod === 'full' && (
-              
+              <CheckCircle className="w-6 h-6 text-green-600" />
             )}
           </div>
         </button>
@@ -147,7 +147,7 @@ export default function ProgramPaymentOptions({
               </div>
             </div>
             {paymentMethod === 'stripe' && (
-              
+              <CheckCircle className="w-6 h-6 text-blue-600" />
             )}
           </div>
         </button>
@@ -178,7 +178,7 @@ export default function ProgramPaymentOptions({
               </div>
             </div>
             {paymentMethod === 'affirm' && (
-              
+              <CheckCircle className="w-6 h-6 text-purple-600" />
             )}
           </div>
         </button>
@@ -199,19 +199,19 @@ export default function ProgramPaymentOptions({
       {/* Additional Info */}
       <div className="mt-6 space-y-3 text-sm text-gray-600">
         <p className="flex items-start gap-2">
-          
+          <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
           <span>Secure payment processing via Stripe</span>
         </p>
         <p className="flex items-start gap-2">
-          
+          <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
           <span>Start training immediately after payment</span>
         </p>
         <p className="flex items-start gap-2">
-          
+          <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
           <span>All materials and certifications included</span>
         </p>
         <p className="flex items-start gap-2">
-          
+          <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
           <span>Job placement assistance included</span>
         </p>
       </div>

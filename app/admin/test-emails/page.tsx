@@ -4,7 +4,7 @@ import React from 'react';
 
 import { useState } from 'react';
 import Link from 'next/link';
-
+import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -80,7 +80,7 @@ export default function TestEmailsPage() {
           >
             <div className="flex items-center gap-2">
               {result.success ? (
-                
+                <CheckCircle className="w-5 h-5" />
               ) : (
                 <AlertCircle className="w-5 h-5" />
               )}
@@ -184,7 +184,7 @@ export default function TestEmailsPage() {
           </h2>
           <div className="space-y-3 text-sm">
             <div className="flex items-start gap-3 p-3 bg-gray-50 rounded">
-              
+              <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <div>
                 <div className="font-medium text-gray-900">
                   Student Application
@@ -195,7 +195,7 @@ export default function TestEmailsPage() {
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-gray-50 rounded">
-              
+              <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <div>
                 <div className="font-medium text-gray-900">
                   Shop Partner Application
@@ -206,7 +206,7 @@ export default function TestEmailsPage() {
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-gray-50 rounded">
-              
+              <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <div>
                 <div className="font-medium text-gray-900">Contact Form</div>
                 <div className="text-gray-600">
@@ -215,7 +215,7 @@ export default function TestEmailsPage() {
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-gray-50 rounded">
-              
+              <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <div>
                 <div className="font-medium text-gray-900">License Request</div>
                 <div className="text-gray-600">
@@ -224,7 +224,7 @@ export default function TestEmailsPage() {
               </div>
             </div>
             <div className="flex items-start gap-3 p-3 bg-gray-50 rounded">
-              
+              <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <div>
                 <div className="font-medium text-gray-900">Partner Inquiry</div>
                 <div className="text-gray-600">

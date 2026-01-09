@@ -4,7 +4,7 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { AtAGlanceSection } from '@/components/sections/AtAGlanceSection';
 import { WhoThisIsForSection } from '@/components/sections/WhoThisIsForSection';
 import { CTASection } from '@/components/sections/CTASection';
-
+import { CheckCircle, Award, Briefcase } from 'lucide-react';
 
 export interface ProgramDetailData {
   // Basic info
@@ -91,7 +91,7 @@ export function ProgramDetailTemplate({ data }: ProgramDetailTemplateProps) {
               <ul className="space-y-4">
                 {data.highlights.map((highlight, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{highlight}</span>
                   </li>
                 ))}
@@ -115,7 +115,7 @@ export function ProgramDetailTemplate({ data }: ProgramDetailTemplateProps) {
               <ul className="space-y-4">
                 {data.whatYouLearn.map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    
+                    <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{item}</span>
                   </li>
                 ))}
@@ -137,7 +137,7 @@ export function ProgramDetailTemplate({ data }: ProgramDetailTemplateProps) {
               <ul className="space-y-4">
                 {data.outcomes.map((outcome, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    
+                    <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{outcome}</span>
                   </li>
                 ))}
@@ -163,7 +163,7 @@ export function ProgramDetailTemplate({ data }: ProgramDetailTemplateProps) {
               <ul className="space-y-4">
                 {data.fundingOptions.map((option, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    
+                    <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{option}</span>
                   </li>
                 ))}

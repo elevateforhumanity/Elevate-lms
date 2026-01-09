@@ -81,7 +81,7 @@ export function OnboardingFlow({ steps, onComplete }: OnboardingFlowProps) {
                   }`}
                 >
                   {completedSteps.has(index) ? (
-                    
+                    <Check className="w-4 h-4" />
                   ) : (
                     <span className="w-4 h-4 rounded-full border-2 flex items-center justify-center">
                       {index + 1}
@@ -182,19 +182,19 @@ export function StudentOnboarding({ onComplete }: { onComplete: () => void }) {
           </p>
           <ul className="space-y-3">
             <li className="flex items-start gap-3">
-              
+              <Check className="w-5 h-5 text-brand-orange-600 flex-shrink-0 mt-0.5" />
               <span>View your enrolled courses and progress</span>
             </li>
             <li className="flex items-start gap-3">
-              
+              <Check className="w-5 h-5 text-brand-orange-600 flex-shrink-0 mt-0.5" />
               <span>Access upcoming assignments and deadlines</span>
             </li>
             <li className="flex items-start gap-3">
-              
+              <Check className="w-5 h-5 text-brand-orange-600 flex-shrink-0 mt-0.5" />
               <span>Track your achievements and certificates</span>
             </li>
             <li className="flex items-start gap-3">
-              
+              <Check className="w-5 h-5 text-brand-orange-600 flex-shrink-0 mt-0.5" />
               <span>Message instructors and classmates</span>
             </li>
           </ul>
@@ -291,15 +291,15 @@ export function InstructorOnboarding({ onComplete }: { onComplete: () => void })
           <p className="text-slate-700">As an instructor, you can:</p>
           <ul className="space-y-3">
             <li className="flex items-start gap-3">
-              
+              <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
               <span>Create and manage course content</span>
             </li>
             <li className="flex items-start gap-3">
-              
+              <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
               <span>Upload videos, documents, and assignments</span>
             </li>
             <li className="flex items-start gap-3">
-              
+              <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
               <span>Track student progress and engagement</span>
             </li>
           </ul>

@@ -127,7 +127,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
               >
                 <div className="w-8 h-8 bg-brand-orange-600 rounded-lg flex items-center justify-center">
                   {copied ? (
-                    
+                    <Check className="w-4 h-4 text-white" />
                   ) : (
                     <LinkIcon className="w-4 h-4 text-white" />
                   )}

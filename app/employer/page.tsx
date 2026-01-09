@@ -111,7 +111,7 @@ export default function EmployerPage() {
           </h2>
           <div className="space-y-4">
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              
+              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
                   Pre-Screened Candidates with Industry Credentials
@@ -124,7 +124,7 @@ export default function EmployerPage() {
             </div>
 
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              
+              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
                   Average Time-to-Hire: 14 Days
@@ -137,7 +137,7 @@ export default function EmployerPage() {
             </div>
 
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              
+              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
                   Optional Apprenticeship Programs with Wage Reimbursement
@@ -237,31 +237,31 @@ export default function EmployerPage() {
                 </h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
-                    
+                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">
                       One simple MOU (agreement)
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    
+                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">
                       One transparent wage schedule
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    
+                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">
                       One point of contact (no runaround)
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    
+                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">
                       Potential wage reimbursement
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
-                    
+                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">
                       Federal tax credit eligibility
                     </span>

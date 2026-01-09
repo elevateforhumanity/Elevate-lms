@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import { requireRole } from '@/lib/auth/require-role';
 import { redirect } from 'next/navigation';
 import ProgramOrientationVideo from '@/components/student/ProgramOrientationVideo';
-
+import { CheckCircle, Book, Users, Award, Briefcase } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata = {
@@ -43,7 +43,7 @@ export default async function OrientationPage() {
         {isCompleted && (
           <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-8">
             <div className="flex items-center gap-3">
-              
+              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
               <div>
                 <h3 className="font-bold text-green-900 mb-1">
                   Orientation Completed
@@ -82,38 +82,38 @@ export default async function OrientationPage() {
               </h2>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">
                     How our 100% free training programs work
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">
                     Available programs in healthcare, skilled trades, and
                     business
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">
                     Funding options (WIOA, WRG, employer-sponsored)
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">
                     Support services (childcare, transportation, tools)
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">
                     Job placement assistance and career services
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-700">
                     How to succeed in your training program
                   </span>

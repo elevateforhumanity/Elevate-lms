@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
-
+import { CheckCircle, XCircle, Download, Share2 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -292,7 +292,7 @@ export default async function VerifyCertificatePage({
         >
           <div className="flex items-center gap-4 mb-4">
             {isValid ? (
-              
+              <CheckCircle className="w-12 h-12 text-brand-green-600" />
             ) : (
               <XCircle className="w-12 h-12 text-brand-orange-600" />
             )}

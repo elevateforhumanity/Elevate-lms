@@ -254,7 +254,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
             <div className="text-center">
-              
+              <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
               <h1 className="text-3xl font-bold text-slate-900 mb-4">
                 Training Already Completed
               </h1>
@@ -399,7 +399,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
         {step === 2 && (
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
             <div className="flex items-center gap-3 mb-6">
-              
+              <CheckCircle className="w-8 h-8 text-green-600" />
               <h1 className="text-3xl font-bold text-slate-900">
                 FERPA Assessment Quiz
               </h1>
@@ -489,7 +489,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
             {/* Score Display */}
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
               <div className="text-center">
-                
+                <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
                 <h2 className="text-2xl font-bold text-slate-900 mb-2">
                   Assessment Passed!
                 </h2>
@@ -700,7 +700,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
         {step === 4 && (
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
             <div className="text-center">
-              
+              <CheckCircle className="w-20 h-20 text-green-600 mx-auto mb-6" />
               <h1 className="text-3xl font-bold text-slate-900 mb-4">
                 Training Complete!
               </h1>

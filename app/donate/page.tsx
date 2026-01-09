@@ -131,15 +131,15 @@ export default function DonatePage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  
+                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                   <span>Textbooks and workbooks</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  
+                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                   <span>Safety equipment</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  
+                  <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                   <span>Digital learning resources</span>
                 </li>
               </ul>
@@ -160,15 +160,15 @@ export default function DonatePage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  
+                  <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                   <span>Industry certification exam</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  
+                  <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                   <span>Study materials and prep courses</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  
+                  <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                   <span>Professional resume building</span>
                 </li>
               </ul>
@@ -186,15 +186,15 @@ export default function DonatePage() {
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  
+                  <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
                   <span>Full 8-12 week training program</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  
+                  <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
                   <span>All certifications and materials</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-slate-700">
-                  
+                  <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
                   <span>Job placement assistance</span>
                 </li>
               </ul>

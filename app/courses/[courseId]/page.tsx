@@ -11,7 +11,7 @@ import { createClient } from '@/lib/supabase/server';
 import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import { Clock, Users, Award, BookOpen, Play, CheckCircle } from 'lucide-react';
 
 export default async function CourseDetailPage({
   params,
@@ -156,7 +156,7 @@ export default async function CourseDetailPage({
                         )}
                       </div>
                       {enrollment && (
-                        
+                        <CheckCircle className="h-6 w-6 text-green-600" />
                       )}
                     </div>
                   </div>

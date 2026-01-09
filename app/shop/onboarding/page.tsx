@@ -10,7 +10,7 @@ export const metadata: Metadata = generateInternalMetadata({
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-
+import { CheckCircle, Clock, Upload, FileText } from 'lucide-react';
 
 
 export default async function ShopOnboardingPage() {
@@ -116,7 +116,7 @@ export default async function ShopOnboardingPage() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-start gap-3 flex-1">
                     {doc.approved ? (
-                      
+                      <CheckCircle className="w-5 h-5 text-brand-green-600 mt-0.5 flex-shrink-0" />
                     ) : (
                       <Clock className="w-5 h-5 text-slate-400 mt-0.5 flex-shrink-0" />
                     )}
@@ -187,7 +187,7 @@ export default async function ShopOnboardingPage() {
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               {onboarding?.handbook_ack ? (
-                
+                <CheckCircle className="w-5 h-5 text-brand-green-600" />
               ) : (
                 <Clock className="w-5 h-5 text-slate-400" />
               )}
@@ -204,7 +204,7 @@ export default async function ShopOnboardingPage() {
 
             <div className="flex items-center gap-3">
               {onboarding?.reporting_trained ? (
-                
+                <CheckCircle className="w-5 h-5 text-brand-green-600" />
               ) : (
                 <Clock className="w-5 h-5 text-slate-400" />
               )}
@@ -221,7 +221,7 @@ export default async function ShopOnboardingPage() {
 
             <div className="flex items-center gap-3">
               {onboarding?.apprentice_supervisor_assigned ? (
-                
+                <CheckCircle className="w-5 h-5 text-brand-green-600" />
               ) : (
                 <Clock className="w-5 h-5 text-slate-400" />
               )}
@@ -238,7 +238,7 @@ export default async function ShopOnboardingPage() {
 
             <div className="flex items-center gap-3">
               {onboarding?.rapids_reporting_ready ? (
-                
+                <CheckCircle className="w-5 h-5 text-brand-green-600" />
               ) : (
                 <Clock className="w-5 h-5 text-slate-400" />
               )}

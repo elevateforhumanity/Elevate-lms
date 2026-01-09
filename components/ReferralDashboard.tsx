@@ -120,7 +120,7 @@ export default function ReferralDashboard({ userId }: ReferralDashboardProps) {
                 {stats?.completedReferrals || 0}
               </p>
             </div>
-            
+            <Check className="w-12 h-12 text-green-600 opacity-20" />
           </div>
         </div>
 
@@ -171,7 +171,7 @@ export default function ReferralDashboard({ userId }: ReferralDashboardProps) {
                 >
                   {copied ? (
                     <>
-                      
+                      <Check className="w-5 h-5" />
                       Copied!
                     </>
                   ) : (
@@ -243,7 +243,7 @@ export default function ReferralDashboard({ userId }: ReferralDashboardProps) {
                   ${stats.paidEarnings?.toFixed(2) || '0.00'}
                 </p>
               </div>
-              
+              <Check className="w-8 h-8 text-green-600" />
             </div>
 
             <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg">

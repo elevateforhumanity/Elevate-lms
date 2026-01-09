@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { AcknowledgeHandbookForm } from './AcknowledgeHandbookForm';
-
+import { AlertTriangle, BookOpen, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Employee Handbook | Elevate For Humanity',
@@ -310,7 +310,7 @@ export default async function ProgramHolderHandbookPage() {
           </p>
           <div className="mt-4 p-4 bg-green-50 border-l-4 border-green-400">
             <p className="font-semibold text-green-900">
-               Approval Process:
+              <CheckCircle className="w-5 h-5 inline-block" /> Approval Process:
             </p>
             <p className="text-sm mt-2 text-green-800">
               Once you acknowledge this handbook AND sign the MOU (Memorandum of
@@ -334,7 +334,7 @@ export default async function ProgramHolderHandbookPage() {
         {/* Acknowledgement Form */}
         <div className="bg-slate-50 rounded-xl p-8 border-2 border-slate-200">
           <div className="flex items-start gap-4 mb-6">
-            
+            <CheckCircle className="text-green-600 flex-shrink-0" size={32} />
             <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">
                 Acknowledgement Required

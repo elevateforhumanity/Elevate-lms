@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { programs } from '@/app/data/programs';
-
+import { Shield, CheckCircle, Users, Award } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Federal Funded Programs | WIOA & WRG | Elevate for Humanity',
@@ -152,7 +152,7 @@ export default function FederalFundedProgramsPage() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-green-100 text-brand-green-600 mb-4">
-                
+                <CheckCircle className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Tuition</h3>
               <p className="text-gray-600">100% of training costs covered</p>

@@ -12,7 +12,7 @@ import {
   useElements,
 } from '@stripe/react-stripe-js';
 import { getDigitalProduct } from '@/lib/store/digital-products';
-
+import { ArrowLeft, Lock, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
 const stripePromise = loadStripe(
@@ -223,7 +223,7 @@ export default function CheckoutPage() {
                   },
                 }}
               >
-                
+                <CheckoutForm product={product} />
               </Elements>
             </div>
 

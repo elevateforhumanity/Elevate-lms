@@ -400,7 +400,7 @@ export default function ComprehensiveEnrollmentWizard({
                       'bg-gray-200 text-gray-500'
                     }`}>
                       {currentStep > step.id ? (
-                        
+                        <CheckCircle className="w-6 h-6" />
                       ) : (
                         <StepIcon className="w-6 h-6" />
                       )}
@@ -708,7 +708,7 @@ export default function ComprehensiveEnrollmentWizard({
                 </>
               ) : (
                 <>
-                  
+                  <CheckCircle className="w-5 h-5" />
                   Complete Enrollment
                 </>
               )}

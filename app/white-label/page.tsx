@@ -103,19 +103,19 @@ export default function WhiteLabelPage() {
               </h3>
               <ul className="space-y-2 text-zinc-700">
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Full LMS with course management</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Student enrollment & tracking</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Instructor dashboards</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Admin management tools</span>
                 </li>
               </ul>
@@ -131,19 +131,19 @@ export default function WhiteLabelPage() {
               </h3>
               <ul className="space-y-2 text-zinc-700">
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Serve multiple organizations</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Data isolation per tenant</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Custom branding per tenant</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>License management system</span>
                 </li>
               </ul>
@@ -159,19 +159,19 @@ export default function WhiteLabelPage() {
               </h3>
               <ul className="space-y-2 text-zinc-700">
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>WIOA reporting ready</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>ETPL compliance tracking</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>RAPIDS apprenticeship sync</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Automated reporting</span>
                 </li>
               </ul>
@@ -187,19 +187,19 @@ export default function WhiteLabelPage() {
               </h3>
               <ul className="space-y-2 text-zinc-700">
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>React Native mobile app</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>iOS & Android ready</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Offline learning support</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Push notifications</span>
                 </li>
               </ul>
@@ -215,19 +215,19 @@ export default function WhiteLabelPage() {
               </h3>
               <ul className="space-y-2 text-zinc-700">
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>AI tutor for students</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Automated grading</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Content generation</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Smart recommendations</span>
                 </li>
               </ul>
@@ -243,19 +243,19 @@ export default function WhiteLabelPage() {
               </h3>
               <ul className="space-y-2 text-zinc-700">
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>6 LMS partner integrations</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Stripe payment processing</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Email automation</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Analytics & reporting</span>
                 </li>
               </ul>

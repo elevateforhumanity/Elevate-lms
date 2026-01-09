@@ -62,7 +62,7 @@ export default function BankingPage() {
               <span className="font-semibold">FDIC Insured</span>
             </div>
             <div className="flex items-center">
-              
+              <CheckCircle className="w-8 h-8 text-green-600 mr-2" />
               <span className="font-semibold">IRS Approved</span>
             </div>
             <div className="flex items-center">
@@ -95,19 +95,19 @@ export default function BankingPage() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>Up to $6,000 advance</span>
                 </li>
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>No credit check</span>
                 </li>
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>Same-day funding available</span>
                 </li>
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>Repaid from IRS refund</span>
                 </li>
               </ul>
@@ -132,19 +132,19 @@ export default function BankingPage() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>Fastest refund method</span>
                 </li>
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>Secure and reliable</span>
                 </li>
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>No check cashing fees</span>
                 </li>
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>Track your refund status</span>
                 </li>
               </ul>
@@ -170,19 +170,19 @@ export default function BankingPage() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>No bank account required</span>
                 </li>
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>Use anywhere Visa is accepted</span>
                 </li>
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>ATM access nationwide</span>
                 </li>
                 <li className="flex items-start">
-                  
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-1" />
                   <span>FDIC insured</span>
                 </li>
               </ul>
@@ -276,7 +276,7 @@ export default function BankingPage() {
                 </p>
               </div>
               <div>
-                
+                <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-2" />
                 <p className="font-semibold">IRS Approved</p>
                 <p className="text-sm text-gray-600">
                   Authorized e-file provider

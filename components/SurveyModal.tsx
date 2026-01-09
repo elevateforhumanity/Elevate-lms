@@ -306,7 +306,7 @@ export default function SurveyModal({
               </>
             ) : isLastQuestion ? (
               <>
-                
+                <Check className="w-4 h-4" />
                 Submit
               </>
             ) : (

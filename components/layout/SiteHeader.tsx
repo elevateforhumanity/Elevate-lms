@@ -145,7 +145,7 @@ export default function SiteHeader() {
           <nav
             role="navigation"
             aria-label="Main navigation"
-            className="hidden lg:flex items-center justify-center flex-1 gap-6"
+            className="hidden lg:flex items-center justify-center flex-1 gap-8"
           >
             {navigation && navigation.length > 0 ? (
               navigation.map((section) => (
@@ -159,14 +159,14 @@ export default function SiteHeader() {
                     <>
                       <button
                         type="button"
-                        className="font-bold text-gray-900 hover:text-blue-600 transition flex items-center gap-1 py-2 text-lg tracking-wide"
+                        className="font-bold text-gray-900 hover:text-blue-600 transition flex items-center gap-1 py-2 text-base uppercase tracking-wide"
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
                         }}
                       >
                         {section.label}
-                        <ChevronDown className="w-5 h-5 group-hover:rotate-180 transition-transform" />
+                        <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform" />
                       </button>
                       {openDropdown === section.label && (
                         <div className="absolute left-0 top-full mt-2 w-72 bg-white border-2 border-gray-100 rounded-xl shadow-2xl py-2 z-[100] max-h-[80vh] overflow-y-auto">
@@ -218,7 +218,7 @@ export default function SiteHeader() {
                   ) : (
                     <Link
                       href={section.href || '/'}
-                      className="font-bold text-gray-900 hover:text-blue-600 transition py-2 text-lg"
+                      className="font-bold text-zinc-800 hover:text-zinc-950 transition py-2"
                     >
                       {section.label}
                     </Link>

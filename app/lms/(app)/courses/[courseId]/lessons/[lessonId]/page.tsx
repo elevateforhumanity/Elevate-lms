@@ -252,7 +252,7 @@ export default function LessonPage() {
                 }`}
               >
                 {l.completed ? (
-                  
+                  <CheckCircle className="w-5 h-5" />
                 ) : (
                   <span className="text-sm font-bold">{idx + 1}</span>
                 )}

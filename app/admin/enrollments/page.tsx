@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-
+import { Users, CheckCircle, Clock, XCircle, TrendingUp } from 'lucide-react';
 import { ComplianceNotice } from '@/components/compliance/ComplianceNotice';
 import { getPoliciesForFeature } from '@/lib/policies';
 
@@ -111,7 +111,7 @@ export default async function AdminEnrollmentsPage() {
 
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
-              
+              <CheckCircle className="w-8 h-8 text-brand-green-600" />
               <span className="text-3xl font-bold text-brand-green-600">
                 {activeCount}
               </span>

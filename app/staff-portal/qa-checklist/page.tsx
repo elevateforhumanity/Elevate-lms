@@ -74,7 +74,7 @@ export default async function QAChecklistPage() {
             <p className="text-slate-600 text-sm">Total Checklists</p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            
+            <CheckSquare className="h-8 w-8 text-green-600 mb-2" />
             <p className="text-3xl font-bold text-slate-900">
               {completions?.length || 0}
             </p>
@@ -124,7 +124,7 @@ export default async function QAChecklistPage() {
                         </div>
                         {checklist.completed ? (
                           <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full flex items-center gap-1">
-                            
+                            <CheckSquare className="h-4 w-4" />
                             Completed
                           </span>
                         ) : (

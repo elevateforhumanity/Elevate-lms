@@ -2,7 +2,7 @@
 
 import { logger } from '@/lib/logger';
 import React, { useState, useEffect } from 'react';
-
+import { Clock, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
 interface Question {
   id: number;
@@ -485,7 +485,7 @@ export default function CompetencyTest() {
           <div className="bg-white rounded-xl shadow-lg p-8">
             <div className="text-center mb-8">
               {passed ? (
-                
+                <CheckCircle className="w-20 h-20 text-green-600 mx-auto mb-4" />
               ) : (
                 <XCircle className="w-20 h-20 text-red-600 mx-auto mb-4" />
               )}
@@ -644,7 +644,7 @@ export default function CompetencyTest() {
                     }`}
                   >
                     {answers[currentQuestion] === index && (
-                      
+                      <CheckCircle className="w-4 h-4 text-white" />
                     )}
                   </div>
                   <span>{option}</span>

@@ -116,7 +116,7 @@ export function ProgramPageLocked({
                 key={index}
                 className="flex items-start gap-4 bg-white p-6 rounded-lg border border-slate-200"
               >
-                
+                <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
                 <p className="text-lg text-slate-900 font-semibold">
                   {outcome}
                 </p>

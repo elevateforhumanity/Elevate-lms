@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-
+import { FileText, CheckCircle, XCircle, Clock, Eye } from 'lucide-react';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -54,7 +54,7 @@ export default async function AdminDocumentReviewPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'approved':
-        return ;
+        return <CheckCircle className="w-5 h-5 text-green-600" />;
       case 'pending':
         return <Clock className="w-5 h-5 text-yellow-600" />;
       case 'rejected':
@@ -127,7 +127,7 @@ export default async function AdminDocumentReviewPage() {
 
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center justify-between mb-2">
-              
+              <CheckCircle className="w-8 h-8 text-green-600" />
               <span className="text-3xl font-bold text-slate-900">
                 {approvedDocs.length}
               </span>

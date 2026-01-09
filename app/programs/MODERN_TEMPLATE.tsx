@@ -182,7 +182,7 @@ export default function ProgramPage() {
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    
+                    <CheckCircle className="w-5 h-5 text-green-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900 mb-1">
@@ -197,7 +197,7 @@ export default function ProgramPage() {
 
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    
+                    <CheckCircle className="w-5 h-5 text-green-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900 mb-1">
@@ -212,7 +212,7 @@ export default function ProgramPage() {
 
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    
+                    <CheckCircle className="w-5 h-5 text-green-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900 mb-1">
@@ -227,7 +227,7 @@ export default function ProgramPage() {
 
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    
+                    <CheckCircle className="w-5 h-5 text-green-600" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-slate-900 mb-1">

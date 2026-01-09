@@ -226,7 +226,7 @@ export default function WorkforceBoardPage() {
 
           <div className="max-w-4xl mx-auto space-y-6">
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              
+              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Program Performance Metrics
@@ -239,7 +239,7 @@ export default function WorkforceBoardPage() {
             </div>
 
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              
+              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Participant Demographics & Services
@@ -252,7 +252,7 @@ export default function WorkforceBoardPage() {
             </div>
 
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              
+              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Financial Performance
@@ -265,7 +265,7 @@ export default function WorkforceBoardPage() {
             </div>
 
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              
+              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Compliance Status
@@ -278,7 +278,7 @@ export default function WorkforceBoardPage() {
             </div>
 
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              
+              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Provider Performance
@@ -291,7 +291,7 @@ export default function WorkforceBoardPage() {
             </div>
 
             <div className="flex items-start gap-4 bg-white border-2 border-gray-200 rounded-xl p-6">
-              
+              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Labor Market Alignment

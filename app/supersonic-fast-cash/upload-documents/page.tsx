@@ -4,7 +4,7 @@
 
 import { logger } from '@/lib/logger';
 import { useState } from 'react';
-
+import { Upload, FileText, CheckCircle, AlertCircle, X } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
 interface UploadedFile {
@@ -237,7 +237,7 @@ export default function UploadDocumentsPage() {
                       <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
                     )}
                     {file.status === 'success' && (
-                      
+                      <CheckCircle className="w-6 h-6 text-green-600" />
                     )}
                     {file.status === 'error' && (
                       <AlertCircle className="w-6 h-6 text-red-600" />

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import { ChevronRight, Award, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
@@ -91,28 +91,28 @@ export default async function CredentialsPage() {
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start">
-                    
+                    <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
                       <strong className="text-gray-900">National Certifications</strong>
                       <p className="text-gray-600">Recognized across all 50 states</p>
                     </div>
                   </li>
                   <li className="flex items-start">
-                    
+                    <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
                       <strong className="text-gray-900">State Licenses</strong>
                       <p className="text-gray-600">Required credentials for regulated professions</p>
                     </div>
                   </li>
                   <li className="flex items-start">
-                    
+                    <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
                       <strong className="text-gray-900">Exam Preparation</strong>
                       <p className="text-gray-600">We prepare you to pass certification exams</p>
                     </div>
                   </li>
                   <li className="flex items-start">
-                    
+                    <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
                       <strong className="text-gray-900">100% Free</strong>
                       <p className="text-gray-600">Training and exam costs covered</p>

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-
+import { Shield, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Compliance | Elevate for Humanity',
@@ -36,7 +36,7 @@ export default function CompliancePage() {
                 'Equal Opportunity Employment',
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
-                  
+                  <CheckCircle className="h-6 w-6 text-orange-600 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700">{item}</span>
                 </div>
               ))}

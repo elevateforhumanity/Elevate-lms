@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { AcknowledgeRightsForm } from './AcknowledgeRightsForm';
-
+import { Shield, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Rights & Responsibilities | Elevate For Humanity',
@@ -265,7 +265,7 @@ export default async function ProgramHolderRightsPage() {
         {/* Acknowledgement Form */}
         <div className="bg-blue-50 rounded-xl p-8 border-2 border-blue-200">
           <div className="flex items-start gap-4 mb-6">
-            
+            <CheckCircle className="text-blue-600 flex-shrink-0" size={32} />
             <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">
                 Acknowledgement Required

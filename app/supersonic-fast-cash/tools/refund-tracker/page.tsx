@@ -109,7 +109,7 @@ export default function RefundTrackerPage() {
       case 'received':
         return <Clock className="w-12 h-12 text-blue-600" />;
       case 'approved':
-        return ;
+        return <CheckCircle className="w-12 h-12 text-green-600" />;
       case 'sent':
         return <TrendingUp className="w-12 h-12 text-purple-600" />;
       default:
@@ -247,20 +247,20 @@ export default function RefundTrackerPage() {
               <h3 className="font-semibold mb-3">When to Check:</h3>
               <ul className="space-y-2 text-sm text-gray-700">
                 <li className="flex items-start gap-2">
-                  
+                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span>
                     <strong>E-filed:</strong> 24 hours after IRS accepts your
                     return
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span>
                     <strong>Paper filed:</strong> 4 weeks after mailing
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  
+                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span>
                     <strong>Amended return:</strong> 3 weeks after filing
                   </span>
@@ -329,7 +329,7 @@ export default function RefundTrackerPage() {
                 <div className="flex gap-4">
                   <div className="flex flex-col items-center">
                     <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
-                      
+                      <CheckCircle className="w-6 h-6 text-white" />
                     </div>
                     <div className="w-0.5 h-full bg-green-600 mt-2"></div>
                   </div>
@@ -352,7 +352,7 @@ export default function RefundTrackerPage() {
                           : 'bg-gray-300'
                       }`}
                     >
-                      
+                      <CheckCircle className="w-6 h-6 text-white" />
                     </div>
                     <div
                       className={`w-0.5 h-full mt-2 ${
@@ -442,15 +442,15 @@ export default function RefundTrackerPage() {
 
                   <div className="flex items-center gap-4 mb-6 text-sm">
                     <div className="flex items-center gap-2">
-                      
+                      <CheckCircle className="w-5 h-5" />
                       <span>Same-day funding</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      
+                      <CheckCircle className="w-5 h-5" />
                       <span>3.5% + $35 fee</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      
+                      <CheckCircle className="w-5 h-5" />
                       <span>No credit check</span>
                     </div>
                   </div>

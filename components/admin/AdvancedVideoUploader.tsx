@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { useState } from 'react';
-
+import { Upload, CheckCircle, AlertCircle, Loader2, Music, Mic, FileVideo } from 'lucide-react';
 
 export default function AdvancedVideoUploader() {
   const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -275,7 +275,7 @@ Apply today and start your journey.`;
           {result && !error && (
             <div className="   border-2 border-green-200 rounded-lg p-6">
               <div className="flex items-start gap-4">
-                
+                <CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" />
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-green-900 mb-2">
                     🎉 Video Enhanced Successfully!

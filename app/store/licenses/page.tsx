@@ -99,7 +99,7 @@ export default function LicensesPage() {
                   </p>
                   {product.features.slice(0, 6).map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-2">
-                      
+                      <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                       <span className="text-sm text-gray-700">{feature}</span>
                     </div>
                   ))}

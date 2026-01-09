@@ -378,7 +378,7 @@ export default function TaxCareersPage() {
 
                 <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                   <p className="font-bold text-green-900 mb-2">
-                     Good News!
+                    <CheckCircle className="w-5 h-5 inline-block" /> Good News!
                   </p>
                   <p className="text-green-800">
                     You DON'T need your own EFIN to work with us. We provide
@@ -574,7 +574,7 @@ export default function TaxCareersPage() {
                   <ul className="space-y-2">
                     {position.requirements.map((req, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        
+                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                         <span className="text-gray-700">{req}</span>
                       </li>
                     ))}
@@ -630,7 +630,7 @@ export default function TaxCareersPage() {
                 <tr className="bg-gray-50">
                   <td className="px-6 py-4 font-semibold">Work From Home</td>
                   <td className="px-6 py-4 text-center text-green-600 font-bold">
-                     Yes
+                    <CheckCircle className="w-5 h-5 inline-block" /> Yes
                   </td>
                   <td className="px-6 py-4 text-center">
                     <AlertTriangle className="w-5 h-5 inline-block" /> Limited
@@ -645,7 +645,7 @@ export default function TaxCareersPage() {
                 <tr>
                   <td className="px-6 py-4 font-semibold">Flexible Schedule</td>
                   <td className="px-6 py-4 text-center text-green-600 font-bold">
-                     Yes
+                    <CheckCircle className="w-5 h-5 inline-block" /> Yes
                   </td>
                   <td className="px-6 py-4 text-center">
                     <AlertTriangle className="w-5 h-5 inline-block" /> Limited
@@ -662,7 +662,7 @@ export default function TaxCareersPage() {
                     Performance Bonuses
                   </td>
                   <td className="px-6 py-4 text-center text-green-600 font-bold">
-                     Yes
+                    <CheckCircle className="w-5 h-5 inline-block" /> Yes
                   </td>
                   <td className="px-6 py-4 text-center">
                     <AlertTriangle className="w-5 h-5 inline-block" /> Sometimes
@@ -677,7 +677,7 @@ export default function TaxCareersPage() {
                 <tr>
                   <td className="px-6 py-4 font-semibold">Year-Round Work</td>
                   <td className="px-6 py-4 text-center text-green-600 font-bold">
-                     Available
+                    <CheckCircle className="w-5 h-5 inline-block" /> Available
                   </td>
                   <td className="px-6 py-4 text-center">
                     <AlertTriangle className="w-5 h-5 inline-block" /> Limited
@@ -692,16 +692,16 @@ export default function TaxCareersPage() {
                 <tr className="bg-gray-50">
                   <td className="px-6 py-4 font-semibold">Training Provided</td>
                   <td className="px-6 py-4 text-center text-green-600 font-bold">
-                     Free
+                    <CheckCircle className="w-5 h-5 inline-block" /> Free
                   </td>
                   <td className="px-6 py-4 text-center">
-                     Yes
+                    <CheckCircle className="w-5 h-5 inline-block" /> Yes
                   </td>
                   <td className="px-6 py-4 text-center">
-                     Yes
+                    <CheckCircle className="w-5 h-5 inline-block" /> Yes
                   </td>
                   <td className="px-6 py-4 text-center">
-                     Yes
+                    <CheckCircle className="w-5 h-5 inline-block" /> Yes
                   </td>
                 </tr>
               </tbody>

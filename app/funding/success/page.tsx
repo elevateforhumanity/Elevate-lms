@@ -10,18 +10,18 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = 'force-dynamic';
-
+import { CheckCircle } from 'lucide-react';
 
 export default function FundingSuccessPage() {
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4 py-12">
       <div className="max-w-2xl w-full text-center">
         <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-green-600 rounded-full mb-6">
-          
+          <CheckCircle className="w-12 h-12 text-white" />
         </div>
 
         <h1 className="text-4xl font-bold text-slate-900 mb-4">
-           Funding Approved &
+          <CheckCircle className="w-5 h-5 inline-block" /> Funding Approved &
           Processed!
         </h1>
 

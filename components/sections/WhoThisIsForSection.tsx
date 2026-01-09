@@ -1,4 +1,4 @@
-
+import { CheckCircle } from 'lucide-react';
 
 interface WhoThisIsForSectionProps {
   items: string[];
@@ -19,7 +19,7 @@ export function WhoThisIsForSection({
           <ul className="space-y-4">
             {items.map((item, index) => (
               <li key={index} className="flex items-start gap-3">
-                
+                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">{item}</span>
               </li>
             ))}

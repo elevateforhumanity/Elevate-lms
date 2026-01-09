@@ -177,7 +177,7 @@ export default function ModerationDashboard() {
                 <p className="text-sm text-gray-600">Approved</p>
                 <p className="text-2xl font-bold text-green-600">{stats.approvedReports}</p>
               </div>
-              
+              <CheckCircle className="w-8 h-8 text-green-400" />
             </div>
           </div>
 
@@ -284,7 +284,7 @@ export default function ModerationDashboard() {
                         className="text-green-600 hover:text-green-800"
                         title="Approve"
                       >
-                        
+                        <CheckCircle className="w-5 h-5" />
                       </button>
                       <button
                         onClick={() => handleReview(report.id, 'remove')}

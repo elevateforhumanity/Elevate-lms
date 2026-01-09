@@ -78,7 +78,7 @@ export default function ResumeBuildingPage() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="bg-white border-2 border-blue-600 rounded-xl p-8">
-              
+              <CheckCircle className="h-12 w-12 text-blue-600 mb-4" />
               <h3 className="text-2xl font-bold text-black mb-3">
                 Resume Writing
               </h3>
@@ -95,7 +95,7 @@ export default function ResumeBuildingPage() {
             </div>
 
             <div className="bg-white border-2 border-green-600 rounded-xl p-8">
-              
+              <CheckCircle className="h-12 w-12 text-green-600 mb-4" />
               <h3 className="text-2xl font-bold text-black mb-3">
                 Resume Review
               </h3>
@@ -112,7 +112,7 @@ export default function ResumeBuildingPage() {
             </div>
 
             <div className="bg-white border-2 border-purple-600 rounded-xl p-8">
-              
+              <CheckCircle className="h-12 w-12 text-purple-600 mb-4" />
               <h3 className="text-2xl font-bold text-black mb-3">
                 Cover Letters
               </h3>
@@ -129,7 +129,7 @@ export default function ResumeBuildingPage() {
             </div>
 
             <div className="bg-white border-2 border-orange-600 rounded-xl p-8">
-              
+              <CheckCircle className="h-12 w-12 text-orange-600 mb-4" />
               <h3 className="text-2xl font-bold text-black mb-3">
                 LinkedIn Profiles
               </h3>

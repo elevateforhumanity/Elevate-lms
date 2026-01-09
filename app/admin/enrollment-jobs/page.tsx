@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-
+import { AlertCircle, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Enrollment Jobs | Admin',
@@ -114,7 +114,7 @@ export default async function EnrollmentJobsPage() {
 
           {!jobs || jobs.length === 0 ? (
             <div className="p-8 text-center">
-              
+              <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
               <p className="text-lg font-medium text-gray-900 mb-2">
                 All Clear!
               </p>

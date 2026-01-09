@@ -71,7 +71,7 @@ export default function StudentsPage() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-green-600 px-4 py-2 rounded-full mb-6">
-            
+            <CheckCircle className="h-5 w-5" />
             <span className="font-semibold">100% Free Training</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -110,7 +110,7 @@ export default function StudentsPage() {
                 key={benefit}
                 className="flex items-center gap-3 bg-white p-6 rounded-lg border border-slate-200"
               >
-                
+                <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
                 <span className="font-semibold text-slate-900">{benefit}</span>
               </div>
             ))}

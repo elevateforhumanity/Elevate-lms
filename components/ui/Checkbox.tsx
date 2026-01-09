@@ -40,7 +40,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
               ${className}
             `}
           >
-            
+            <Check className="w-3 h-3 text-white opacity-0 peer-checked:opacity-100 transition-opacity" />
           </label>
         </div>
         {(label || helperText || error) && (

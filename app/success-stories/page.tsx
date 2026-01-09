@@ -377,7 +377,7 @@ export default function SuccessStoriesPage() {
                 >
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      
+                      <CheckCircle className="w-6 h-6 text-brand-blue-600" />
                     </div>
                     <div>
                       <div className="font-bold text-slate-900">

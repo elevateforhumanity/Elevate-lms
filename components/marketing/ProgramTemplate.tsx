@@ -172,7 +172,7 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
                 className="flex items-start gap-4 p-6 bg-slate-50 rounded-xl border border-slate-200"
               >
                 <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-red-100 flex items-center justify-center">
-                  
+                  <CheckCircle size={20} className="text-brand-orange-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 mb-1">
@@ -314,7 +314,7 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
               <ul className="space-y-2 text-sm text-slate-600">
                 {program.schedule.map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    
+                    <CheckCircle size={16} className="text-brand-orange-600" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -332,7 +332,7 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
               <ul className="space-y-2 text-sm text-slate-600">
                 {program.requirements.map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    
+                    <CheckCircle size={16} className="text-blue-600" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -352,7 +352,7 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
               <ul className="space-y-2 text-sm text-slate-600">
                 {program.support.map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    
+                    <CheckCircle size={16} className="text-purple-600" />
                     <span>{item}</span>
                   </li>
                 ))}

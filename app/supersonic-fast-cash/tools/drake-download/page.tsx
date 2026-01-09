@@ -222,7 +222,7 @@ export default function DrakeDownloadPage() {
                   <ul className="space-y-2">
                     {product.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm">
-                        
+                        <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -348,7 +348,7 @@ export default function DrakeDownloadPage() {
             href="/supersonic-fast-cash/training"
             className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition"
           >
-            
+            <CheckCircle className="w-10 h-10 text-purple-600 mb-4" />
             <h3 className="font-bold text-lg mb-2">Our Training</h3>
             <p className="text-sm text-gray-600 mb-4">
               SupersonicFastCash tax preparation courses

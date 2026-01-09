@@ -85,7 +85,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           {success && (
             <div className="absolute right-3 top-1/2 -translate-y-1/2 text-green-500">
-              
+              <Check className="h-5 w-5" />
             </div>
           )}
         </div>
@@ -99,7 +99,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
         {success && (
           <p className="mt-2 text-sm text-green-600 flex items-center gap-1">
-            
+            <Check className="h-4 w-4" />
             {success}
           </p>
         )}

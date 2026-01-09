@@ -256,7 +256,7 @@ export default function DIYTaxesPage() {
                     }`}
                   >
                     {currentStep > step.id ? (
-                      
+                      <CheckCircle className="w-6 h-6" />
                     ) : (
                       step.id
                     )}
@@ -502,7 +502,7 @@ export default function DIYTaxesPage() {
                         }`}
                       >
                         {taxReturn.filingStatus === status.value && (
-                          
+                          <CheckCircle className="w-4 h-4 text-white" />
                         )}
                       </div>
                       <div>
@@ -839,7 +839,7 @@ export default function DIYTaxesPage() {
                       }`}
                     >
                       {taxReturn.deductionType === 'standard' && (
-                        
+                        <CheckCircle className="w-4 h-4 text-white" />
                       )}
                     </div>
                     <div>
@@ -873,7 +873,7 @@ export default function DIYTaxesPage() {
                       }`}
                     >
                       {taxReturn.deductionType === 'itemized' && (
-                        
+                        <CheckCircle className="w-4 h-4 text-white" />
                       )}
                     </div>
                     <div>

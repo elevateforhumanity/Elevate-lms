@@ -305,7 +305,7 @@ function SubscriptionsContent() {
                   <ul className="space-y-3 mb-6">
                     {plan.features.map((feature: string, idx: number) => (
                       <li key={idx} className="flex items-start">
-                        
+                        <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                         <span className="text-gray-700">{feature}</span>
                       </li>
                     ))}

@@ -1,5 +1,5 @@
 import { APPRENTICESHIP } from '@/lib/compliance/apprenticeship';
-
+import { Award, CheckCircle } from 'lucide-react';
 
 export function ApprenticeshipBadge() {
   const cfg = APPRENTICESHIP.IN;
@@ -23,28 +23,28 @@ export function ApprenticeshipBadge() {
 
       <div className="space-y-2">
         <div className="flex items-start gap-2">
-          
+          <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
           <div className="text-sm text-slate-700">
             <strong>State:</strong> {cfg.state}
           </div>
         </div>
 
         <div className="flex items-start gap-2">
-          
+          <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
           <div className="text-sm text-slate-700">
             <strong>Sponsor:</strong> {cfg.sponsorName}
           </div>
         </div>
 
         <div className="flex items-start gap-2">
-          
+          <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
           <div className="text-sm text-slate-700">
             <strong>Program:</strong> {cfg.programName}
           </div>
         </div>
 
         <div className="flex items-start gap-2">
-          
+          <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
           <div className="text-sm text-slate-700">
             <strong>Pathway:</strong> Earn & Learn (Paid On-the-Job Training)
           </div>
@@ -52,14 +52,14 @@ export function ApprenticeshipBadge() {
 
         {cfg.registrationNumber ? (
           <div className="flex items-start gap-2">
-            
+            <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
             <div className="text-sm text-slate-700">
               <strong>USDOL Program #:</strong> {cfg.registrationNumber}
             </div>
           </div>
         ) : (
           <div className="flex items-start gap-2">
-            
+            <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
             <div className="text-sm text-slate-700">
               Registered with the U.S. Department of Labor (RAPIDS)
             </div>
