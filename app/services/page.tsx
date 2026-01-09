@@ -210,12 +210,11 @@ export default function ServicesPage() {
               return (
                 <Link key={service.href} href={service.href} className="group">
                   <div className="rich-card">
-                    <div className="rich-image-container h-64 mb-6">
-                      <Image
+                    <div className="rich-image-container relative h-64 mb-6 overflow-hidden rounded-lg">
+                      <img
                         src={service.image}
                         alt={service.title}
-                        fill
-                        className="rich-image object-cover"
+                        className="absolute inset-0 w-full h-full object-cover"
                       />
                       <div className="rich-overlay">
                         <div className="rich-icon-container">
