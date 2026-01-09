@@ -284,6 +284,7 @@ export default function RootLayout({
     </html>
   );
 }
-// Cache bust: 2026-01-09T11:40:00Z
-// Force rebuild: FIXED BLACK TEXT ENFORCEMENT - Removed all aggressive color overrides
-// Force deployment: 2026-01-09T11:40:00Z - Restore proper colors on all devices
+// Cache bust: 2026-01-09T11:48:00Z
+// Force rebuild: CACHE INVALIDATION - Force Vercel to serve new deployment
+// Force deployment: 2026-01-09T11:48:00Z - Clear CDN cache and serve fixed CSS
+// Build ID change to invalidate all cached assets
