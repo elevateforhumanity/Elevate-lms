@@ -10,13 +10,14 @@ export default function Intro() {
         
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div className="rounded-lg overflow-hidden shadow-lg bg-white">
-            <div className="relative h-64">
+            <div className="relative h-56 md:h-64">
               <Image
                 src="/what-we-do-hero.jpg"
                 alt="Free Workforce Training"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 priority
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             <div className="p-6">

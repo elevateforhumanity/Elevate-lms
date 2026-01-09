@@ -10,39 +10,39 @@ export default function Pathways() {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
-            <Image
-              src="/images/pathways/trades-hero.jpg"
-              alt="Students learning"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-              <div className="p-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">Explore Programs</h3>
-                <p className="mb-4">Browse training in healthcare, skilled trades, technology, and business</p>
-                <Link href="/programs" className="text-white underline font-semibold">
-                  View All Programs →
-                </Link>
-              </div>
+          <div className="rounded-lg overflow-hidden shadow-lg bg-white">
+            <div className="relative h-64">
+              <Image
+                src="/images/pathways/trades-hero.jpg"
+                alt="Students learning"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6">
+              <h3 className="text-2xl font-bold mb-2 text-gray-900">Explore Programs</h3>
+              <p className="mb-4 text-gray-700">Browse training in healthcare, skilled trades, technology, and business</p>
+              <Link href="/programs" className="text-blue-600 underline font-semibold hover:text-blue-700">
+                View All Programs →
+              </Link>
             </div>
           </div>
 
-          <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
-            <Image
-              src="/images/efh/hero/hero-support.jpg"
-              alt="Career pathways"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-              <div className="p-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">Get Funded</h3>
-                <p className="mb-4">See if you qualify for WIOA, WRG, or DOL funding to cover 100% of costs</p>
-                <Link href="/wioa-eligibility" className="text-white underline font-semibold">
-                  Check Eligibility →
-                </Link>
-              </div>
+          <div className="rounded-lg overflow-hidden shadow-lg bg-white">
+            <div className="relative h-64">
+              <Image
+                src="/images/efh/hero/hero-support.jpg"
+                alt="Career pathways"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6">
+              <h3 className="text-2xl font-bold mb-2 text-gray-900">Get Funded</h3>
+              <p className="mb-4 text-gray-700">See if you qualify for WIOA, WRG, or DOL funding to cover 100% of costs</p>
+              <Link href="/wioa-eligibility" className="text-blue-600 underline font-semibold hover:text-blue-700">
+                Check Eligibility →
+              </Link>
             </div>
           </div>
         </div>
