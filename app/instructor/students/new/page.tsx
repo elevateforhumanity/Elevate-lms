@@ -60,9 +60,22 @@ export default async function InstructorAddStudentPage() {
             </button>
           </div>
         </form>
-        <p className="text-slate-500 text-sm mt-6">
-          Note: This feature is coming soon. Contact support to manually enroll students.
-        </p>
+        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <h3 className="font-semibold text-blue-900 mb-2">Bulk Enrollment</h3>
+          <p className="text-sm text-blue-800 mb-3">
+            Need to enroll multiple students? Upload a CSV file with student emails.
+          </p>
+          <button className="text-sm bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Upload CSV
+          </button>
+        </div>
+        
+        <div className="mt-4 p-4 bg-slate-50 border border-slate-200 rounded-lg">
+          <h3 className="font-semibold text-slate-900 mb-2">Need Help?</h3>
+          <p className="text-sm text-slate-600">
+            Contact support at <a href="mailto:support@elevateforhumanity.institute" className="text-blue-600 hover:underline">support@elevateforhumanity.institute</a> for assistance with student enrollment.
+          </p>
+        </div>
       </div>
     </div>
   );

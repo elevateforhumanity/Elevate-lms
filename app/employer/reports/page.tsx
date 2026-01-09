@@ -41,9 +41,105 @@ export default async function EmployerReportsPage() {
             <div className="text-sm text-slate-600">Hires</div>
           </div>
         </div>
-        <p className="text-slate-500 text-sm mt-6">
-          Detailed analytics coming soon.
-        </p>
+        
+        <div className="mt-8 grid md:grid-cols-2 gap-6">
+          <div className="border rounded-lg p-6">
+            <h3 className="text-lg font-semibold mb-4">Hiring Pipeline</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">New Applications</span>
+                <span className="font-semibold">0</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Under Review</span>
+                <span className="font-semibold">0</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Interviews Scheduled</span>
+                <span className="font-semibold">0</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Offers Extended</span>
+                <span className="font-semibold">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="border rounded-lg p-6">
+            <h3 className="text-lg font-semibold mb-4">Time to Hire</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Average Days</span>
+                <span className="font-semibold">-</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Fastest Hire</span>
+                <span className="font-semibold">-</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Application Response Rate</span>
+                <span className="font-semibold">-</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Interview Show Rate</span>
+                <span className="font-semibold">-</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="border rounded-lg p-6">
+            <h3 className="text-lg font-semibold mb-4">Candidate Sources</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Direct Applications</span>
+                <span className="font-semibold">0</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Referrals</span>
+                <span className="font-semibold">0</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Training Programs</span>
+                <span className="font-semibold">0</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Job Boards</span>
+                <span className="font-semibold">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="border rounded-lg p-6">
+            <h3 className="text-lg font-semibold mb-4">Retention Metrics</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">30-Day Retention</span>
+                <span className="font-semibold">-</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">90-Day Retention</span>
+                <span className="font-semibold">-</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">1-Year Retention</span>
+                <span className="font-semibold">-</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600">Avg. Tenure</span>
+                <span className="font-semibold">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 flex gap-4">
+          <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+            Export Report
+          </button>
+          <button className="border border-slate-300 px-6 py-2 rounded-lg hover:bg-slate-50">
+            Schedule Report
+          </button>
+        </div>
       </div>
     </div>
   );

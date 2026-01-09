@@ -58,8 +58,33 @@ export default async function EmployerPostingsPage() {
         </div>
       ) : !postings || postings.length === 0 ? (
         <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
-          <p className="text-slate-600 mb-4">No job postings yet.</p>
-          <p className="text-slate-500 text-sm">Job posting feature coming soon.</p>
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">Create Your First Job Posting</h2>
+          <p className="text-slate-600 mb-6">
+            Post jobs and connect with qualified candidates from our training programs.
+          </p>
+          <div className="grid md:grid-cols-3 gap-4 mb-8 text-left">
+            <div className="border rounded-lg p-4">
+              <div className="text-blue-600 font-semibold mb-2">1. Create Posting</div>
+              <p className="text-sm text-slate-600">Add job details, requirements, and compensation</p>
+            </div>
+            <div className="border rounded-lg p-4">
+              <div className="text-blue-600 font-semibold mb-2">2. Review Applications</div>
+              <p className="text-sm text-slate-600">Get matched with qualified candidates</p>
+            </div>
+            <div className="border rounded-lg p-4">
+              <div className="text-blue-600 font-semibold mb-2">3. Hire Talent</div>
+              <p className="text-sm text-slate-600">Schedule interviews and make offers</p>
+            </div>
+          </div>
+          <a
+            href="/employer/post-job"
+            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+          >
+            Post a Job
+          </a>
+          <p className="text-slate-500 text-sm mt-4">
+            Or contact us at <a href="tel:317-314-3757" className="text-blue-600 hover:underline">317-314-3757</a> for assistance
+          </p>
         </div>
       ) : (
         <div className="grid gap-4">
