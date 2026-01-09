@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Intro() {
   return (
     <section className="bg-white py-16">
@@ -7,26 +9,48 @@ export default function Intro() {
         </h2>
         
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-blue-50 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold text-blue-900 mb-4">Free Workforce Training</h3>
-            <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              We connect eligible students to 100% funded training programs through WIOA (Workforce Innovation and Opportunity Act), 
-              WRG (Workforce Readiness Grant), and DOL (Department of Labor) initiatives.
-            </p>
-            <p className="text-base text-gray-600">
-              <strong>No tuition. No debt. No barriers.</strong> If you qualify, your training is completely free.
-            </p>
+          <div className="bg-blue-50 p-8 rounded-lg relative overflow-hidden">
+            <div className="absolute inset-0 opacity-20">
+              <Image
+                src="/free-training-hero.jpg"
+                alt="Free Workforce Training"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold text-blue-900 mb-4">Free Workforce Training</h3>
+              <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                We connect eligible students to 100% funded training programs through WIOA (Workforce Innovation and Opportunity Act), 
+                WRG (Workforce Readiness Grant), and DOL (Department of Labor) initiatives.
+              </p>
+              <p className="text-base text-gray-600">
+                <strong>No tuition. No debt. No barriers.</strong> If you qualify, your training is completely free.
+              </p>
+            </div>
           </div>
 
-          <div className="bg-green-50 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold text-green-900 mb-4">Industry Credentials</h3>
-            <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              Earn nationally recognized certifications from trusted partners like Certiport (Microsoft, Adobe), 
-              HSI (OSHA Safety), CareerSafe, NRF (Retail), and Milady (Cosmetology).
-            </p>
-            <p className="text-base text-gray-600">
-              <strong>Real credentials employers recognize.</strong> Not just certificates - actual industry certifications.
-            </p>
+          <div className="bg-green-50 p-8 rounded-lg relative overflow-hidden">
+            <div className="absolute inset-0 opacity-20">
+              <Image
+                src="/industry-credentials-hero.jpg"
+                alt="Industry Credentials"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold text-green-900 mb-4">Industry Credentials</h3>
+              <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                Earn nationally recognized certifications from trusted partners like Certiport (Microsoft, Adobe), 
+                HSI (OSHA Safety), CareerSafe, NRF (Retail), and Milady (Cosmetology).
+              </p>
+              <p className="text-base text-gray-600">
+                <strong>Real credentials employers recognize.</strong> Not just certificates - actual industry certifications.
+              </p>
+            </div>
           </div>
         </div>
 

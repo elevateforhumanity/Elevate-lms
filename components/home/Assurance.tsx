@@ -2,8 +2,17 @@ import Image from 'next/image';
 
 export default function Assurance() {
   return (
-    <section className="bg-gray-50 py-12 md:py-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-gray-50 py-12 md:py-24 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-5">
+        <Image
+          src="/clear-pathways-hero.jpg"
+          alt="Clear Pathways Background"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden">
             <Image
