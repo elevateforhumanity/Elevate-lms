@@ -70,30 +70,18 @@ export default function HealthcarePage() {
             Who This Program Is For
           </h2>
           <div className="bg-white rounded-xl p-8 shadow-sm">
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">
-                  Individuals seeking career change or advancement
-                </span>
+            <ul className="space-y-4 list-disc list-inside">
+              <li className="text-gray-700">
+                Individuals seeking career change or advancement
               </li>
-              <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">
-                  No prior experience required for most programs
-                </span>
+              <li className="text-gray-700">
+                No prior experience required for most programs
               </li>
-              <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">
-                  Justice-impacted individuals welcome
-                </span>
+              <li className="text-gray-700">
+                Justice-impacted individuals welcome
               </li>
-              <li className="flex items-start gap-3">
-                <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">
-                  Barriers support available
-                </span>
+              <li className="text-gray-700">
+                Barriers support available
               </li>
             </ul>
           </div>
