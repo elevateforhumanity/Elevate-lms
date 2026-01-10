@@ -144,7 +144,7 @@ export default function HomePage() {
               <div className="h-20 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-2xl font-black text-gray-800">WorkOne</div>
-                  <div className="text-xs text-gray-500">Indiana</div>
+                  <div className="text-xs text-gray-600">Indiana</div>
                 </div>
               </div>
             </div>

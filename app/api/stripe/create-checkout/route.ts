@@ -2,12 +2,26 @@ import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe/client';
 import { createServerSupabaseClient } from '@/lib/auth';
 import { toErrorMessage } from '@/lib/safe';
+import { paymentRateLimit } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
 export async function POST(req: Request) {
   try {
+    // Rate limiting
+    if (paymentRateLimit) {
+      const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+      const { success } = await paymentRateLimit.limit(ip);
+      
+      if (!success) {
+        return NextResponse.json(
+          { error: 'Too many payment requests. Please try again later.' },
+          { status: 429 }
+        );
+      }
+    }
+
     if (!process.env.STRIPE_SECRET_KEY) {
       return NextResponse.json(
         { error: 'Payment system not configured' },
