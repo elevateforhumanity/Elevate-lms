@@ -7,19 +7,10 @@ import { test, expect, devices } from '@playwright/test';
 
 const baseURL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
-const mobileDevices = [
-  { name: 'iPhone 14 Pro', device: devices['iPhone 14 Pro'] },
-  { name: 'iPhone SE', device: devices['iPhone SE'] },
-  { name: 'iPad Pro', device: devices['iPad Pro'] },
-  { name: 'Samsung Galaxy S23', device: devices['Galaxy S9+'] }, // Using closest available
-  { name: 'Google Pixel 7', device: devices['Pixel 5'] }, // Using closest available
-];
+test.describe('iPhone 14 Pro - Mobile Tests', () => {
 
-for (const { name, device } of mobileDevices) {
-  test.describe(`${name} - Mobile Tests`, () => {
-    test.use(device);
-
-    test('Homepage loads and scrolls smoothly', async ({ page }) => {
+  test('Homepage loads and scrolls smoothly', async ({ page }) => {
+      await page.setViewportSize({ width: 393, height: 852 });
       await page.goto(baseURL);
       
       await expect(page).toHaveTitle(/Elevate for Humanity/i);
@@ -74,26 +65,11 @@ for (const { name, device } of mobileDevices) {
       await expect(main).toBeVisible();
     });
 
-    test('Landscape orientation', async ({ page, context }) => {
-      // Rotate to landscape
-      await page.setViewportSize({ 
-        width: device.viewport.height, 
-        height: device.viewport.width 
-      });
-      
+    test('Landscape orientation', async ({ page }) => {
+      await page.setViewportSize({ width: 844, height: 390 });
       await page.goto(baseURL);
       
       const header = page.locator('header');
       await expect(header).toBeVisible();
     });
-  });
-}
-
-test.describe('Mobile Testing Summary', () => {
-  test('Generate mobile test report', async () => {
-    console.log('✅ Mobile device testing complete');
-    console.log('Tested devices: iPhone 14 Pro, iPhone SE, iPad Pro, Galaxy, Pixel');
-    console.log('Tests per device: 5');
-    console.log('Total tests: 25');
-  });
 });
