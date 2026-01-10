@@ -24,7 +24,7 @@ export default function WIOAEligibilityPage() {
         description="WIOA (Workforce Innovation and Opportunity Act) provides funding for job training programs. Most Indiana residents qualify if they're unemployed, underemployed, or seeking better employment."
         imageSrc="/images/heroes/hero-state-funding.jpg"
         imageAlt="WIOA Eligibility"
-        primaryCTA={{ text: "Check Eligibility", href: "#eligibility" }}
+        primaryCTA={{ text: "Check Eligibility", href: "#form" }}
         secondaryCTA={{ text: "Apply Now", href: "/apply" }}
         features={[
           "100% free training for eligible Indiana residents",
@@ -180,22 +180,53 @@ export default function WIOAEligibilityPage() {
             </ul>
           </div>
 
-          <div className="bg-slate-900 text-white p-8 rounded-lg text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
+          <div id="form" className="bg-white border-2 border-gray-900 p-8 rounded-lg">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+              Check Your Eligibility
             </h2>
-            <p className="text-base md:text-lg mb-6">
-              Visit Indiana Career Connect to check your eligibility and apply
+            <p className="text-base md:text-lg mb-6 text-gray-700">
+              Fill out this quick form and we'll help you determine if you qualify for WIOA funding
             </p>
+            <form className="space-y-4">
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-2">Full Name *</label>
+                <input type="text" required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-2">Email *</label>
+                <input type="email" required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-2">Phone *</label>
+                <input type="tel" required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-2">Employment Status *</label>
+                <select required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none">
+                  <option value="">Select...</option>
+                  <option>Unemployed</option>
+                  <option>Underemployed</option>
+                  <option>Employed - Seeking Better Job</option>
+                  <option>Receiving Public Assistance</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-gray-900 mb-2">Indiana Resident? *</label>
+                <select required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none">
+                  <option value="">Select...</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <button type="submit" className="w-full px-8 py-4 bg-gray-900 text-white font-bold rounded-lg hover:bg-gray-800 transition-all shadow-lg">
+                Check My Eligibility
+              </button>
+            </form>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-gray-600 mb-4">Or contact us directly:</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://www.indianacareerconnect.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 bg-brand-orange-600 text-white font-bold rounded-full hover:bg-brand-orange-700 transition-all shadow-xl"
-              >
-                Check Eligibility Now
-              </a>
               <Link
                 href="/contact"
                 className="px-8 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-gray-100 transition-all shadow-xl"
