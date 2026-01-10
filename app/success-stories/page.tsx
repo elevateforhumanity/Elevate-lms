@@ -239,7 +239,7 @@ export default function SuccessStoriesPage() {
               >
                 {/* Image/Video */}
                 <div className={`${index % 2 === 1 ? 'md:order-2' : ''}`}>
-                  <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl group">
+                  <div className="relative h-[400px] rounded-2xl overflow-hidden border-4 border-gray-200 group">
                     <Image
                       priority
                       src={story.image}
@@ -247,6 +247,7 @@ export default function SuccessStoriesPage() {
                       fill
                       sizes="100vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      quality={90}
                     />
                     {story.videoContent && (
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">

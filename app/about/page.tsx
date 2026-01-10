@@ -139,13 +139,14 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Leadership</h2>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[500px] rounded-lg overflow-hidden">
+            <div className="relative h-[500px] rounded-lg overflow-hidden border-4 border-gray-200">
               <Image
                 src="/images/team/founder/elizabeth-greene-founder-hero-01.jpg"
                 alt="Elizabeth Greene - Founder & CEO"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                quality={90}
               />
             </div>
 
