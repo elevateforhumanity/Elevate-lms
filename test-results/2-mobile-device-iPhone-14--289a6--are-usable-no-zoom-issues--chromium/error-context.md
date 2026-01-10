@@ -300,18 +300,16 @@
             - link "Site Map" [ref=e234] [cursor=pointer]:
               - /url: /sitemap-page
           - paragraph [ref=e235]: © 2026 Elevate For Humanity. All Rights Reserved.
-  - button "Open chat" [ref=e236] [cursor=pointer]:
-    - img [ref=e237]
-  - generic [ref=e244] [cursor=pointer]:
-    - button "Open Next.js Dev Tools" [ref=e245]:
-      - img [ref=e246]
-    - generic [ref=e249]:
-      - button "Open issues overlay" [ref=e250]:
-        - generic [ref=e251]:
-          - generic [ref=e252]: "0"
-          - generic [ref=e253]: "1"
-        - generic [ref=e254]: Issue
-      - button "Collapse issues badge" [ref=e255]:
-        - img [ref=e256]
-  - alert [ref=e258]
+  - generic [ref=e240] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e241]:
+      - img [ref=e242]
+    - generic [ref=e245]:
+      - button "Open issues overlay" [ref=e246]:
+        - generic [ref=e247]:
+          - generic [ref=e248]: "0"
+          - generic [ref=e249]: "1"
+        - generic [ref=e250]: Issue
+      - button "Collapse issues badge" [ref=e251]:
+        - img [ref=e252]
+  - alert [ref=e254]
 ```

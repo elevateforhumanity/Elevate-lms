@@ -319,53 +319,16 @@
           - paragraph [ref=e282]: © 2026 Elevate For Humanity. All Rights Reserved.
   - button "Open chat" [ref=e283] [cursor=pointer]:
     - img [ref=e284]
-  - generic [ref=e288]:
-    - generic [ref=e289]:
-      - img [ref=e291]
-      - generic [ref=e293]:
-        - paragraph [ref=e294]:
-          - strong [ref=e295]: We use cookies
-        - paragraph [ref=e296]:
-          - text: We use cookies to operate the Elevate for Humanity platform, secure your session, and improve your experience. Essential cookies are required for the platform to function. By clicking "Accept All", you consent to our use of cookies.
-          - link "Learn more" [ref=e297] [cursor=pointer]:
-            - /url: /cookies
-      - generic [ref=e298]:
-        - button "Essential Only" [ref=e299] [cursor=pointer]
-        - button "Accept All" [ref=e300] [cursor=pointer]
-    - generic [ref=e301]:
-      - link "Link" [ref=e302] [cursor=pointer]:
-        - /url: /privacy
-        - text: Privacy Policy
-      - link "Link" [ref=e303] [cursor=pointer]:
-        - /url: /terms
-        - text: Terms of Service
-      - link "Link" [ref=e304] [cursor=pointer]:
-        - /url: /cookies
-        - text: Cookie Policy
-  - generic [ref=e308]:
-    - generic [ref=e310]:
-      - img [ref=e312]
-      - generic [ref=e314]:
-        - heading "We Value Your Privacy" [level=3] [ref=e315]
-        - paragraph [ref=e316]:
-          - text: We use cookies to enhance your experience, analyze site traffic, and provide personalized content. By clicking "Accept All", you consent to our use of cookies.
-          - link "Learn more" [ref=e317] [cursor=pointer]:
-            - /url: /privacy-policy
-    - generic [ref=e318]:
-      - button "Reject all cookies" [ref=e319] [cursor=pointer]: Reject All
-      - button "Accept all cookies" [ref=e320] [cursor=pointer]: Accept All
-      - button "Close cookie consent banner" [ref=e321] [cursor=pointer]:
-        - img [ref=e322]
-  - generic [ref=e329] [cursor=pointer]:
-    - button "Open Next.js Dev Tools" [ref=e330]:
-      - img [ref=e331]
-    - generic [ref=e334]:
-      - button "Open issues overlay" [ref=e335]:
-        - generic [ref=e336]:
-          - generic [ref=e337]: "0"
-          - generic [ref=e338]: "1"
-        - generic [ref=e339]: Issue
-      - button "Collapse issues badge" [ref=e340]:
-        - img [ref=e341]
-  - alert [ref=e343]
+  - generic [ref=e291] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e292]:
+      - img [ref=e293]
+    - generic [ref=e296]:
+      - button "Open issues overlay" [ref=e297]:
+        - generic [ref=e298]:
+          - generic [ref=e299]: "0"
+          - generic [ref=e300]: "1"
+        - generic [ref=e301]: Issue
+      - button "Collapse issues badge" [ref=e302]:
+        - img [ref=e303]
+  - alert [ref=e305]
 ```

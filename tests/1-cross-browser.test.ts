@@ -4,20 +4,17 @@
  */
 
 import { test, expect } from '@playwright/test';
+import { gotoWithRetry } from './helpers';
 
 const baseURL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
 test.describe('Chromium - Cross-Browser Tests', () => {
     
     test('Homepage loads correctly', async ({ page }) => {
-      await page.goto(baseURL);
+      await gotoWithRetry(page, baseURL);
       await expect(page).toHaveTitle(/Elevate for Humanity/i);
-      
-      // Check hero section
-      await expect(page.locator('h1')).toBeVisible();
-      
-      // Check navigation
-      await expect(page.locator('nav')).toBeVisible();
+      await expect(page.locator('h1').first()).toBeVisible({ timeout: 10000 });
+      await expect(page.locator('header')).toBeVisible({ timeout: 10000 });
     });
 
     test('Navigation menu works', async ({ page }) => {

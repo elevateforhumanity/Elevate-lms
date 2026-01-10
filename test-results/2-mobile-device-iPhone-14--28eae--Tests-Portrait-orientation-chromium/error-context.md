@@ -319,30 +319,16 @@
           - paragraph [ref=e282]: © 2026 Elevate For Humanity. All Rights Reserved.
   - button "Open chat" [ref=e283] [cursor=pointer]:
     - img [ref=e284]
-  - generic [ref=e290]:
-    - generic [ref=e292]:
-      - img [ref=e294]
-      - generic [ref=e296]:
-        - heading "We Value Your Privacy" [level=3] [ref=e297]
-        - paragraph [ref=e298]:
-          - text: We use cookies to enhance your experience, analyze site traffic, and provide personalized content. By clicking "Accept All", you consent to our use of cookies.
-          - link "Learn more" [ref=e299] [cursor=pointer]:
-            - /url: /privacy-policy
-    - generic [ref=e300]:
-      - button "Reject all cookies" [ref=e301] [cursor=pointer]: Reject All
-      - button "Accept all cookies" [ref=e302] [cursor=pointer]: Accept All
-      - button "Close cookie consent banner" [ref=e303] [cursor=pointer]:
-        - img [ref=e304]
-  - generic [ref=e311] [cursor=pointer]:
-    - button "Open Next.js Dev Tools" [ref=e312]:
-      - img [ref=e313]
-    - generic [ref=e316]:
-      - button "Open issues overlay" [ref=e317]:
-        - generic [ref=e318]:
-          - generic [ref=e319]: "0"
-          - generic [ref=e320]: "1"
-        - generic [ref=e321]: Issue
-      - button "Collapse issues badge" [ref=e322]:
-        - img [ref=e323]
-  - alert [ref=e325]
+  - generic [ref=e291] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e292]:
+      - img [ref=e293]
+    - generic [ref=e296]:
+      - button "Open issues overlay" [ref=e297]:
+        - generic [ref=e298]:
+          - generic [ref=e299]: "0"
+          - generic [ref=e300]: "1"
+        - generic [ref=e301]: Issue
+      - button "Collapse issues badge" [ref=e302]:
+        - img [ref=e303]
+  - alert [ref=e305]
 ```

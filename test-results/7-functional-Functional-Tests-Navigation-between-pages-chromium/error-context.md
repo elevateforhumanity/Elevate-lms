@@ -358,5 +358,5 @@
         - generic [ref=e296]: Issue
       - button "Collapse issues badge" [ref=e297]:
         - img [ref=e298]
-  - alert [ref=e300]: Free Career Training Real Credentials
+  - alert [ref=e300]
 ```

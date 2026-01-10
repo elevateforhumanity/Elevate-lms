@@ -1,0 +1,269 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link "Skip to main content" [ref=e5] [cursor=pointer]:
+        - /url: "#main-content"
+      - link "Go to homepage" [ref=e8] [cursor=pointer]:
+        - /url: /
+        - img "Elevate for Humanity" [ref=e10]
+    - main [ref=e11]:
+      - navigation "Breadcrumb" [ref=e12]:
+        - list [ref=e14]:
+          - listitem [ref=e15]:
+            - link [ref=e16] [cursor=pointer]:
+              - /url: /
+              - img
+          - listitem [ref=e17]:
+            - img
+            - generic [ref=e18]: Apply
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: ⚡ Limited Seats Available
+          - heading "Start Your Career In 10 Minutes" [level=1] [ref=e25]:
+            - text: Start Your Career
+            - generic [ref=e26]: In 10 Minutes
+          - heading "Quick application. Fast response. Real results." [level=2] [ref=e27]
+          - paragraph [ref=e28]: "Last year, 753 students were accepted and 89% got jobs after graduation. Average time from application to first paycheck: 67 days."
+          - generic [ref=e29]:
+            - generic [ref=e30]:
+              - img
+              - generic [ref=e31]: 10-minute application with 2-3 day response
+            - generic [ref=e32]:
+              - img
+              - generic [ref=e33]: 100% free training through WIOA and state grants
+            - generic [ref=e34]:
+              - img
+              - generic [ref=e35]: Job placement support and career counseling included
+          - generic [ref=e36]:
+            - link "Start Application" [ref=e37] [cursor=pointer]:
+              - /url: "#application"
+              - text: Start Application
+              - img
+            - link "Questions? Call Us" [ref=e38] [cursor=pointer]:
+              - /url: tel:317-314-3757
+        - generic [ref=e39]:
+          - generic:
+            - img "Apply Now"
+      - main [ref=e40]:
+        - heading "Start Your Application" [level=1] [ref=e41]
+        - paragraph [ref=e42]: 10–15 minutes. Response within 2–3 business days.
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]: Full Name *
+            - textbox "Full Name *" [ref=e46]:
+              - /placeholder: Full name
+          - generic [ref=e47]:
+            - generic [ref=e48]: Email *
+            - textbox "Email *" [ref=e49]:
+              - /placeholder: Email
+          - generic [ref=e50]:
+            - generic [ref=e51]: Phone *
+            - textbox "Phone *" [ref=e52]:
+              - /placeholder: Phone
+          - generic [ref=e53]:
+            - generic [ref=e54]: Program *
+            - combobox "Program *" [ref=e55]:
+              - option "Select program..." [selected]
+              - option "CNA (Certified Nursing Assistant)"
+              - option "Medical Assistant"
+              - option "Home Health Aide"
+              - option "Phlebotomy"
+              - option "HVAC Technician"
+              - option "Electrical"
+              - option "Plumbing"
+              - option "Building Maintenance"
+              - option "Construction"
+              - option "Barber Apprenticeship"
+              - option "Cosmetology"
+              - option "Esthetics"
+              - option "IT Support"
+              - option "Cybersecurity"
+              - option "Web Development"
+              - option "Accounting"
+              - option "Business Management"
+              - option "Entrepreneurship"
+              - option "CDL (Commercial Driver License)"
+              - option "Not Sure - Help Me Choose"
+          - generic [ref=e56]:
+            - generic [ref=e57]: Funding *
+            - combobox "Funding *" [ref=e58]:
+              - option "Select funding..." [selected]
+              - option "WIOA / Next Level Jobs"
+              - option "Employer Sponsored"
+              - option "Self Pay"
+              - option "Not Sure"
+          - generic [ref=e59]:
+            - checkbox "Consent to contact" [ref=e60]
+            - generic [ref=e61]: Consent to contact
+          - button "Submit" [ref=e62] [cursor=pointer]
+    - contentinfo [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - link "Elevate for Humanity" [ref=e66] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e67]: Elevate for Humanity
+          - paragraph [ref=e68]: 100% free career training in healthcare, skilled trades, and technology. Get trained, get hired, get paid.
+          - generic [ref=e69]:
+            - link "Follow us on LinkedIn" [ref=e70] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/elevate-for-humanity
+              - img [ref=e71]
+            - link "Subscribe on YouTube" [ref=e73] [cursor=pointer]:
+              - /url: https://www.youtube.com/@elevateforhumanity
+              - img [ref=e74]
+            - link "Follow us on Facebook" [ref=e76] [cursor=pointer]:
+              - /url: https://www.facebook.com/profile.php?id=61571046346179
+              - img [ref=e77]
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - heading "Programs" [level=3] [ref=e81]
+            - list [ref=e82]:
+              - listitem [ref=e83]:
+                - link "All Programs" [ref=e84] [cursor=pointer]:
+                  - /url: /programs
+              - listitem [ref=e85]:
+                - link "Healthcare" [ref=e86] [cursor=pointer]:
+                  - /url: /programs/healthcare
+              - listitem [ref=e87]:
+                - link "Skilled Trades" [ref=e88] [cursor=pointer]:
+                  - /url: /programs/skilled-trades
+              - listitem [ref=e89]:
+                - link "Technology" [ref=e90] [cursor=pointer]:
+                  - /url: /programs/technology
+              - listitem [ref=e91]:
+                - link "Business" [ref=e92] [cursor=pointer]:
+                  - /url: /programs/business
+              - listitem [ref=e93]:
+                - link "Apprenticeships" [ref=e94] [cursor=pointer]:
+                  - /url: /apprenticeships
+              - listitem [ref=e95]:
+                - link "Courses" [ref=e96] [cursor=pointer]:
+                  - /url: /courses
+          - generic [ref=e97]:
+            - heading "Get Started" [level=3] [ref=e98]
+            - list [ref=e99]:
+              - listitem [ref=e100]:
+                - link "Apply Now" [ref=e101] [cursor=pointer]:
+                  - /url: /apply
+              - listitem [ref=e102]:
+                - link "Check Eligibility" [ref=e103] [cursor=pointer]:
+                  - /url: /wioa-eligibility
+              - listitem [ref=e104]:
+                - link "How It Works" [ref=e105] [cursor=pointer]:
+                  - /url: /how-it-works
+              - listitem [ref=e106]:
+                - link "Pathways" [ref=e107] [cursor=pointer]:
+                  - /url: /pathways
+              - listitem [ref=e108]:
+                - link "Funding" [ref=e109] [cursor=pointer]:
+                  - /url: /funding
+              - listitem [ref=e110]:
+                - link "Orientation" [ref=e111] [cursor=pointer]:
+                  - /url: /orientation
+          - generic [ref=e112]:
+            - heading "Services" [level=3] [ref=e113]
+            - list [ref=e114]:
+              - listitem [ref=e115]:
+                - link "Career Services" [ref=e116] [cursor=pointer]:
+                  - /url: /career-services
+              - listitem [ref=e117]:
+                - link "Advising" [ref=e118] [cursor=pointer]:
+                  - /url: /advising
+              - listitem [ref=e119]:
+                - link "Mentorship" [ref=e120] [cursor=pointer]:
+                  - /url: /mentorship
+              - listitem [ref=e121]:
+                - link "AI Tutor" [ref=e122] [cursor=pointer]:
+                  - /url: /ai-tutor
+              - listitem [ref=e123]:
+                - link "Tax Services" [ref=e124] [cursor=pointer]:
+                  - /url: /supersonic-fast-cash
+              - listitem [ref=e125]:
+                - link "Free VITA" [ref=e126] [cursor=pointer]:
+                  - /url: /vita
+          - generic [ref=e127]:
+            - heading "Partners" [level=3] [ref=e128]
+            - list [ref=e129]:
+              - listitem [ref=e130]:
+                - link "Employers" [ref=e131] [cursor=pointer]:
+                  - /url: /employer
+              - listitem [ref=e132]:
+                - link "Hire Graduates" [ref=e133] [cursor=pointer]:
+                  - /url: /hire-graduates
+              - listitem [ref=e134]:
+                - link "Workforce Partners" [ref=e135] [cursor=pointer]:
+                  - /url: /workforce-partners
+              - listitem [ref=e136]:
+                - link "Training Providers" [ref=e137] [cursor=pointer]:
+                  - /url: /training-providers
+              - listitem [ref=e138]:
+                - link "Agencies" [ref=e139] [cursor=pointer]:
+                  - /url: /agencies
+              - listitem [ref=e140]:
+                - link "White Label" [ref=e141] [cursor=pointer]:
+                  - /url: /white-label
+          - generic [ref=e142]:
+            - heading "Portals" [level=3] [ref=e143]
+            - list [ref=e144]:
+              - listitem [ref=e145]:
+                - link "Student Portal" [ref=e146] [cursor=pointer]:
+                  - /url: /client-portal
+              - listitem [ref=e147]:
+                - link "Admin" [ref=e148] [cursor=pointer]:
+                  - /url: /admin
+              - listitem [ref=e149]:
+                - link "Staff" [ref=e150] [cursor=pointer]:
+                  - /url: /staff-portal
+              - listitem [ref=e151]:
+                - link "LMS" [ref=e152] [cursor=pointer]:
+                  - /url: /lms
+              - listitem [ref=e153]:
+                - link "Login" [ref=e154] [cursor=pointer]:
+                  - /url: /login
+              - listitem [ref=e155]:
+                - link "Sign Up" [ref=e156] [cursor=pointer]:
+                  - /url: /signup
+            - heading "Resources" [level=3] [ref=e157]
+            - list [ref=e158]:
+              - listitem [ref=e159]:
+                - link "Blog" [ref=e160] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e161]:
+                - link "Success Stories" [ref=e162] [cursor=pointer]:
+                  - /url: /success-stories
+              - listitem [ref=e163]:
+                - link "Help" [ref=e164] [cursor=pointer]:
+                  - /url: /help
+              - listitem [ref=e165]:
+                - link "FAQ" [ref=e166] [cursor=pointer]:
+                  - /url: /faq
+        - generic [ref=e168]:
+          - generic [ref=e169]:
+            - link "Privacy Policy" [ref=e170] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Terms of Service" [ref=e171] [cursor=pointer]:
+              - /url: /terms-of-service
+            - link "Accessibility" [ref=e172] [cursor=pointer]:
+              - /url: /accessibility
+            - link "Site Map" [ref=e173] [cursor=pointer]:
+              - /url: /sitemap-page
+          - paragraph [ref=e174]: © 2026 Elevate For Humanity. All Rights Reserved.
+  - button "Open chat" [ref=e175] [cursor=pointer]:
+    - img [ref=e176]
+  - generic [ref=e183] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e184]:
+      - img [ref=e185]
+    - generic [ref=e188]:
+      - button "Open issues overlay" [ref=e189]:
+        - generic [ref=e190]:
+          - generic [ref=e191]: "0"
+          - generic [ref=e192]: "1"
+        - generic [ref=e193]: Issue
+      - button "Collapse issues badge" [ref=e194]:
+        - img [ref=e195]
+  - alert [ref=e197]
+```

@@ -1,0 +1,6 @@
+en=web_vitals&_ee=1&ep.event_category=Web%20Vitals&ep.event_label=FID&epn.value=2&_et=5&dl=http%3A%2F%2Flocalhost%2F&dt=Elevate%20for%20Humanity%20%7C%20Workforce%20and%20Education%20Hub
+en=web_vitals&_ee=1&ep.event_category=Web%20Vitals&ep.event_label=FID&epn.value=2&_et=1&dl=http%3A%2F%2Flocalhost%2F&dt=Elevate%20for%20Humanity%20%7C%20Workforce%20and%20Education%20Hub
+en=security_event&_ee=1&ep.event_category=Security&ep.event_label=RESOURCE_LOAD_FAILED&epn.value=1&_et=253
+en=security_event&_ee=1&ep.event_category=Security&ep.event_label=RESOURCE_LOAD_FAILED&epn.value=1&_et=1
+en=security_event&_ee=1&ep.event_category=Security&ep.event_label=RESOURCE_LOAD_FAILED&epn.value=1&_et=9
+en=security_event&_ee=1&ep.event_category=Security&ep.event_label=RESOURCE_LOAD_FAILED&epn.value=1&_et=1
