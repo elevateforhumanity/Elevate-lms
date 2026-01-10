@@ -90,7 +90,7 @@ export default function ProgramsBioSitePage() {
         accentText="Real Credentials"
         subheadline="Healthcare • Skilled Trades • Technology • Business"
         description="100% funded career training through WIOA, WRG, and DOL programs. No tuition. No debt. Earn industry-recognized credentials and connect with employers hiring our graduates."
-        imageSrc="/programs-hero-banner.jpg"
+        imageSrc="/images/efh/hero/hero-main.jpg"
         imageAlt="Career Training Programs"
         primaryCTA={{ text: "View All Programs", href: "#programs" }}
         secondaryCTA={{ text: "Check Eligibility", href: "/wioa-eligibility" }}
