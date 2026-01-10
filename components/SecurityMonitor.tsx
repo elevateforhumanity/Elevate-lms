@@ -56,14 +56,7 @@ export function SecurityMonitor() {
       }
     };
 
-    // 3. Monitor console access
-    const monitorConsole = () => {
-      const originalLog = console.log;
-      console.log = (...args: unknown[]) => {
-        logSecurityEvent('CONSOLE_ACCESS', { args });
-        originalLog.apply(console, args);
-      };
-    };
+    // 3. Monitor console access - disabled for performance
 
     // 4. Detect DevTools opening
     const detectDevTools = () => {

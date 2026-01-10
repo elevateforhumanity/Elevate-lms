@@ -34,7 +34,6 @@ export default function CreatorNewCoursePage() {
         setTimeout(() => router.push(`/creator/courses/${courseId}`), 2000);
       }
     } catch (error) {
-      console.error('Error creating course:', error);
     } finally {
       setSubmitting(false);
     }

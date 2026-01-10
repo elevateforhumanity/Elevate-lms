@@ -32,10 +32,8 @@ export default async function EmployerPostingsPage() {
         }
       }
     } catch (innerError) {
-      console.error('Inner error in EmployerPostingsPage:', innerError);
     }
   } catch (outerError) {
-    console.error('Outer error in EmployerPostingsPage:', outerError);
   }
 
   return (

@@ -21,7 +21,6 @@ export default async function InstructorCoursesPage() {
       const { data: authData, error: authError } = await supabase.auth.getUser();
       
       if (authError) {
-        console.error('Auth error:', authError);
         error = 'Authentication error';
       } else {
         user = authData.user;
@@ -34,7 +33,6 @@ export default async function InstructorCoursesPage() {
             .order('created_at', { ascending: false });
           
           if (queryError) {
-            console.error('Query error:', queryError);
             error = 'Database error';
           } else {
             courses = data;
@@ -42,11 +40,9 @@ export default async function InstructorCoursesPage() {
         }
       }
     } catch (innerError) {
-      console.error('Inner error:', innerError);
       error = 'Unexpected error';
     }
   } catch (outerError) {
-    console.error('Outer error:', outerError);
     error = 'System error';
   }
 

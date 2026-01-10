@@ -23,7 +23,6 @@ export default function PostJobPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // console.log('Job posting:', formData);
     setSubmitted(true);
   };
 

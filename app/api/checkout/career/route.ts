@@ -48,7 +48,6 @@ export async function POST() {
     return NextResponse.json({ sessionId: session.id });
   } catch (err: unknown) {
     const error = toError(err);
-    console.error('Stripe checkout error:', error);
     return NextResponse.json(
       { error: toErrorMessage(err) },
       { status: 500 }

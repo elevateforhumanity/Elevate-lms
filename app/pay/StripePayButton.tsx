@@ -5,19 +5,6 @@ import React from 'react';
 
 import { useEffect, useState } from 'react';
 
-declare global {
-  interface Window {
-    StripeBuyButton?: unknown;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      'stripe-buy-button': {
-        'buy-button-id': string;
-        'publishable-key': string;
-      };
-    }
-  }
-}
 
 export default function StripePayButton() {
   const [loaded, setLoaded] = useState(false);

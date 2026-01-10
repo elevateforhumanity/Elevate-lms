@@ -59,7 +59,6 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (clientError) {
-      console.error('Database error:', clientError);
       throw new Error('Failed to save client data');
     }
 
@@ -115,7 +114,6 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (returnError) {
-      console.error('Tax return save error:', returnError);
       throw new Error('Failed to save tax return');
     }
 
@@ -190,7 +188,6 @@ export async function POST(request: NextRequest) {
         `,
       });
     } catch (emailError) {
-      console.error('Email error:', emailError);
       // Don't fail the webhook if email fails
     }
 
@@ -242,7 +239,6 @@ export async function POST(request: NextRequest) {
         `,
       });
     } catch (emailError) {
-      console.error('Staff notification error:', emailError);
     }
 
     // Return success
@@ -254,7 +250,6 @@ export async function POST(request: NextRequest) {
       drakeReturnId: drakeReturn.returnId,
     });
   } catch (error) {
-    console.error('JotForm webhook error:', error);
     return NextResponse.json(
       {
         error: 'Failed to process submission',

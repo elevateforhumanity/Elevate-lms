@@ -2,15 +2,6 @@
 
 import { useState } from 'react';
 
-declare global {
-  interface Window {
-    gtag?: (
-      command: string,
-      eventName: string,
-      params?: Record<string, unknown>
-    ) => void;
-  }
-}
 
 export default function QuickApplyForm() {
   const [loading, setLoading] = useState(false);
@@ -20,14 +11,6 @@ export default function QuickApplyForm() {
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
-
-    // Track form submission start
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'apply_start', {
-        program: formData.get('program'),
-        funding: formData.get('funding'),
-      });
-    }
 
     try {
       const response = await fetch('/api/apply/simple', {
@@ -43,7 +26,6 @@ export default function QuickApplyForm() {
         throw new Error('Application submission failed');
       }
     } catch (error) {
-      console.error('Application error:', error);
       alert('Failed to submit application. Please try again.');
       setLoading(false);
     }

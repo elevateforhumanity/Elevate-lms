@@ -71,7 +71,6 @@ export async function createPlacement(formData: FormData) {
     .single();
 
   if (placementError || !placement) {
-    console.error('Failed to create placement:', placementError);
     throw new Error('Failed to create placement');
   }
 

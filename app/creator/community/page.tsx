@@ -17,7 +17,6 @@ export default async function CreatorCommunityPage() {
     const { data: authData } = await supabase.auth.getUser();
     user = authData.user;
   } catch (error) {
-    console.error('Error in CreatorCommunityPage:', error);
   }
 
   return (

@@ -32,7 +32,6 @@ export default async function StaffPortalUsersPage() {
       .limit(100);
 
     if (error) {
-      console.error('Error fetching users:', error);
       return (
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
@@ -130,7 +129,6 @@ export default async function StaffPortalUsersPage() {
       </div>
     );
   } catch (error) {
-    console.error('Unexpected error:', error);
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">

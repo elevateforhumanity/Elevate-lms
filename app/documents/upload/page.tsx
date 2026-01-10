@@ -55,7 +55,6 @@ export default function DocumentUploadPage() {
 
       setUploaded(true);
     } catch (error) {
-      console.error('Upload error:', error);
       alert('Failed to upload document');
     } finally {
       setUploading(false);

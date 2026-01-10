@@ -165,7 +165,6 @@ async function createAlertsFromVerdicts(
 
     await supabase.from('alert_notifications').insert(alerts);
   } catch (error) {
-    console.error("Error:", error);
   }
 }
 

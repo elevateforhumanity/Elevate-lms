@@ -11,15 +11,7 @@ export default function NotFound() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Track 404 errors
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'exception', {
-        description: `404 Error: ${pathname}`,
-        fatal: false,
-      });
-    }
-
-    // Log to console for debugging
+    // Track 404 errors - disabled for performance
   }, [pathname]);
 
   return (

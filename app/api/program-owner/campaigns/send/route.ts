@@ -103,7 +103,6 @@ export async function POST(request: NextRequest) {
 
         sentCount++;
       } catch (error: unknown) {
-    console.error("Error:", error);
   }
     }
 

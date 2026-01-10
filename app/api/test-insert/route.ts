@@ -41,7 +41,7 @@ export async function POST(req: Request) {
       return NextResponse.json({
         success: false,
         error: {
-          code: error instanceof Error && "code" in error ? (error as unknown).code : "UNKNOWN",
+          code: (error as any)?.code || "UNKNOWN",
           message: error instanceof Error ? error.message : String(error),
           details: error.details,
           hint: error.hint,

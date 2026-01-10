@@ -109,15 +109,12 @@ const nextConfig = {
     minimumCacheTTL: 31536000,
     dangerouslyAllowSVG: true,
     contentDispositionType: 'inline',
-    // Allow all external images - no restrictions
     remotePatterns: [
       { protocol: 'https', hostname: '**' },
       { protocol: 'http', hostname: '**' },
-      // Explicitly allow Wix CDN
       { protocol: 'https', hostname: 'static.wixstatic.com' },
       { protocol: 'https', hostname: '*.wixstatic.com' },
     ],
-    // Increase timeout for large images
     loader: 'default',
     loaderFile: undefined,
   },
@@ -315,11 +312,11 @@ const nextConfig = {
         key: 'Content-Security-Policy',
         value: [
           "default-src 'self'",
-          "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://js.stripe.com",
+          "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://connect.facebook.net https://js.stripe.com",
           "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
           "img-src * data: blob: 'unsafe-inline'",
           "font-src 'self' data: https://fonts.gstatic.com",
-          "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://api.stripe.com wss://*.supabase.co",
+          "connect-src 'self' https://*.supabase.co https://api.stripe.com wss://*.supabase.co",
           "frame-src 'self' https://www.youtube.com https://player.vimeo.com https://js.stripe.com",
           "media-src * data: blob:",
           "worker-src 'self' blob:",

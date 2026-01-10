@@ -17,7 +17,6 @@ export default async function EmployerApprenticeshipPage() {
     const { data: authData } = await supabase.auth.getUser();
     user = authData.user;
   } catch (error) {
-    console.error('Error in EmployerApprenticeshipPage:', error);
   }
 
   return (

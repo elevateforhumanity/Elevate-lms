@@ -27,7 +27,6 @@ export default function StudentPrivacyPage() {
       const data = await response.json();
       setConsents(data.consents || []);
     } catch (error) {
-      console.error('Error fetching consents:', error);
     } finally {
       setLoading(false);
     }
@@ -46,7 +45,6 @@ export default function StudentPrivacyPage() {
         await fetchConsents();
       }
     } catch (error) {
-      console.error('Error updating consent:', error);
     } finally {
       setUpdating(null);
     }

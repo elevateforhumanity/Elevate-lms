@@ -2,13 +2,6 @@ import React from 'react';
 import UnregisterSW from "./components/UnregisterSW";
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import './font-consistency.css';
-import './globals-mobile-complete.css';
-import './globals-mobile-pro.css';
-import './globals-modern-design.css';
-import '@/branding/brand.css';
-import '@/styles/tiktok-animations.css';
-import '@/styles/rich-design-system.css';
 import StructuredData from '@/components/StructuredData';
 import { ConditionalLayout } from '@/components/layout/ConditionalLayout';
 import { Toaster } from 'react-hot-toast';
@@ -17,6 +10,8 @@ import { UnregisterServiceWorker } from '@/components/UnregisterServiceWorker';
 import { VersionGuard } from '@/components/VersionGuard';
 import CookieConsent from '@/components/CookieConsent';
 import { Inter } from 'next/font/google';
+import { DeferredStyles } from './deferred-styles';
+import { AIAssistantBubble } from '@/components/AIAssistantBubble';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -57,19 +52,7 @@ export const metadata: Metadata = {
     template: '%s | Elevate for Humanity',
   },
 
-  // Resource hints for performance
-  other: {
-    'link': [
-      // DNS prefetch for external domains
-      { rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' },
-      { rel: 'dns-prefetch', href: 'https://www.google-analytics.com' },
-      { rel: 'dns-prefetch', href: 'https://fonts.googleapis.com' },
-      { rel: 'dns-prefetch', href: 'https://connect.facebook.net' },
-      // Preconnect for critical resources
-      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
-      { rel: 'preconnect', href: 'https://www.googletagmanager.com' },
-    ],
-  },
+  // Resource hints removed for performance
 
   description:
     'Workforce training, credentials, and community programs connecting learners to funded pathways and employer-aligned opportunities.',
@@ -192,13 +175,7 @@ export default function RootLayout({
       <head>
         {!isProduction && <meta name="robots" content="noindex,nofollow" />}
         <link rel="canonical" href="https://elevateforhumanity.institute" />
-        {/* Preload critical assets to prevent FOUC */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192" />
         <link
@@ -220,36 +197,7 @@ export default function RootLayout({
         <meta name="expires" content="0" />
         <meta name="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
         <meta name="pragma" content="no-cache" />
-        {/* NUCLEAR: Force browser to clear cache and reload if old CSS detected */}
-        <script dangerouslySetInnerHTML={{__html: `
-          (function() {
-            var CURRENT_CSS_HASH = '8ddda5b54d9ee18b';
-            var OLD_CSS_HASH = '51bbb73b05b55df2';
-            var hasOldCSS = false;
-            
-            // Check if old CSS is loaded
-            var links = document.getElementsByTagName('link');
-            for (var i = 0; i < links.length; i++) {
-              if (links[i].href && links[i].href.indexOf(OLD_CSS_HASH) > -1) {
-                hasOldCSS = true;
-                break;
-              }
-            }
-            
-            // If old CSS detected, clear cache and force reload
-            if (hasOldCSS) {
-              if ('caches' in window) {
-                caches.keys().then(function(names) {
-                  for (var i = 0; i < names.length; i++) {
-                    caches.delete(names[i]);
-                  }
-                });
-              }
-              // Force hard reload
-              window.location.reload(true);
-            }
-          })();
-        `}} />
+
         {/* Critical CSS to prevent FOUC on mobile - FIXED: removed forced black text */}
         <style dangerouslySetInnerHTML={{__html: `
           *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -299,19 +247,11 @@ export default function RootLayout({
         </a>
         <UnregisterSW />
         <VersionGuard />
-        {/* NUCLEAR: Kill service worker immediately */}
-        <script dangerouslySetInnerHTML={{__html: `
-          if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-              for (var i = 0; i < registrations.length; i++) {
-                registrations[i].unregister();
-              }
-            });
-          }
-        `}} />
         <ConditionalLayout>{children}</ConditionalLayout>
         <ClientProviders />
         <CookieConsent />
+        <DeferredStyles />
+        <AIAssistantBubble />
         <Toaster
           position="top-right"
           toastOptions={{

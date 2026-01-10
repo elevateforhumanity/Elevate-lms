@@ -56,7 +56,6 @@ export function LiveMetrics() {
         setError(null);
       } catch (err) {
         setError('Unable to load metrics');
-        console.error('Metrics error:', err);
       } finally {
         setLoading(false);
       }

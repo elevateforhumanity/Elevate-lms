@@ -1,27 +1,9 @@
 'use client';
 
-import { useEffect } from 'react';
-import { Metadata } from 'next';
 import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
-declare global {
-  interface Window {
-    gtag?: (
-      command: string,
-      eventName: string,
-      params?: Record<string, unknown>
-    ) => void;
-  }
-}
-
 export default function Apply() {
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'apply_view');
-    }
-  }, []);
-
   return (
     <>
       <ModernLandingHero
@@ -180,11 +162,6 @@ export default function Apply() {
 
         <button
           type="submit"
-          onClick={() => {
-            if (typeof window !== 'undefined' && window.gtag) {
-              window.gtag('event', 'apply_submit');
-            }
-          }}
           className="w-full min-h-[44px] bg-slate-900 text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition-colors font-semibold"
         >
           Submit

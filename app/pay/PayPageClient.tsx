@@ -6,20 +6,6 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { CheckCircle } from 'lucide-react';
 
-declare global {
-  interface Window {
-    StripeBuyButton?: unknown;
-    affirm?: unknown;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      'stripe-buy-button': {
-        'buy-button-id': string;
-        'publishable-key': string;
-      };
-    }
-  }
-}
 
 const TUITION_AMOUNT = 4890; // total in dollars for display
 const TUITION_AMOUNT_CENTS = TUITION_AMOUNT * 100; // for Affirm

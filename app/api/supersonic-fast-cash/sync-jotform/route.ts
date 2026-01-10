@@ -116,7 +116,6 @@ export async function POST(request: NextRequest) {
 
         syncedCount++;
       } catch (error) {
-        console.error('Error processing submission:', error);
         errors.push(`Error processing submission ${submission.id}`);
       }
     }
@@ -128,7 +127,6 @@ export async function POST(request: NextRequest) {
       errors: errors.length > 0 ? errors : undefined,
     });
   } catch (error) {
-    console.error('Sync error:', error);
     return NextResponse.json(
       { error: 'Failed to sync submissions' },
       { status: 500 }

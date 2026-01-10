@@ -67,7 +67,6 @@ export default function PurchaseLicensePage() {
         await stripe.redirectToCheckout({ sessionId });
       }
     } catch (error) {
-      console.error('Purchase error:', error);
       alert('Failed to process purchase');
     } finally {
       setProcessing(false);

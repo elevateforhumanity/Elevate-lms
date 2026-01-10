@@ -2,13 +2,13 @@ import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-// Lazy load ALL components including hero
-const VideoHeroBanner = dynamic(() => import('@/components/home/VideoHeroBanner'), { loading: () => <div className="h-screen bg-gray-900" /> });
-const Intro = dynamic(() => import('@/components/home/Intro'), { loading: () => <div className="h-96" /> });
-const Orientation = dynamic(() => import('@/components/home/Orientation'), { loading: () => <div className="h-96" /> });
-const Testimonials = dynamic(() => import('@/components/home/Testimonials'), { loading: () => <div className="h-96" /> });
-const Assurance = dynamic(() => import('@/components/home/Assurance'), { loading: () => <div className="h-96" /> });
-const Start = dynamic(() => import('@/components/home/Start'), { loading: () => <div className="h-96" /> });
+// Lazy load ALL components including hero with SSR disabled
+const VideoHeroBanner = dynamic(() => import('@/components/home/VideoHeroBanner'), { ssr: false, loading: () => <div className="h-screen bg-gray-900" /> });
+const Intro = dynamic(() => import('@/components/home/Intro'), { ssr: false, loading: () => <div className="h-96" /> });
+const Orientation = dynamic(() => import('@/components/home/Orientation'), { ssr: false, loading: () => <div className="h-96" /> });
+const Testimonials = dynamic(() => import('@/components/home/Testimonials'), { ssr: false, loading: () => <div className="h-96" /> });
+const Assurance = dynamic(() => import('@/components/home/Assurance'), { ssr: false, loading: () => <div className="h-96" /> });
+const Start = dynamic(() => import('@/components/home/Start'), { ssr: false, loading: () => <div className="h-96" /> });
 
 export const metadata: Metadata = {
   title: 'Elevate for Humanity | Workforce and Education Hub',

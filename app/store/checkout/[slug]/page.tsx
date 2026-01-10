@@ -118,7 +118,6 @@ export default function CheckoutPage() {
         setLoading(false);
       })
       .catch((err) => {
-        console.error('Error creating payment intent:', err);
         setLoading(false);
       });
   }, [params.slug, router]);

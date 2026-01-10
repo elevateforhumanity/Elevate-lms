@@ -5,11 +5,6 @@ import React from 'react';
 
 import { useEffect, useState } from 'react';
 
-declare global {
-  interface Window {
-    affirm?: unknown;
-  }
-}
 
 const TUITION_AMOUNT = 4890; // in dollars
 const TUITION_AMOUNT_CENTS = TUITION_AMOUNT * 100; // Affirm needs cents

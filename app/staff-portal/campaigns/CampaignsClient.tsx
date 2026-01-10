@@ -76,7 +76,6 @@ export default function CampaignsClient({
         alert('Failed to send campaign');
       }
     } catch (error) {
-      console.error(error);
       alert('Error sending campaign');
     } finally {
       setLoading(false);

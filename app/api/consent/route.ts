@@ -16,7 +16,6 @@ export async function GET() {
     const consents = await getUserConsents(user.id);
     return NextResponse.json({ consents });
   } catch (error) {
-    console.error('Error fetching consents:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
@@ -54,7 +53,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true, consentId });
   } catch (error) {
-    console.error('Error recording consent:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

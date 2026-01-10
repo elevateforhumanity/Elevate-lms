@@ -25,21 +25,11 @@ export async function POST(req: Request) {
 
     if (error) throw error;
 
-    // Track conversion
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag("event", "apply_complete", {
-        program,
-        funding,
-        eligible,
-      });
-    }
-
     return NextResponse.redirect(
       new URL("/apply/confirmation", req.url),
       { status: 303 }
     );
   } catch (err) {
-    console.error("Apply error:", err);
     return NextResponse.json(
       { error: "Submission failed" },
       { status: 500 }

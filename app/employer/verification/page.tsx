@@ -17,7 +17,6 @@ export default async function EmployerVerificationPage() {
     const { data: authData } = await supabase.auth.getUser();
     user = authData.user;
   } catch (error) {
-    console.error('Error in EmployerVerificationPage:', error);
   }
 
   return (

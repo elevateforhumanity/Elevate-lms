@@ -50,7 +50,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ accountId: account.id });
   } catch (error: unknown) {
-    console.error('Stripe Connect account creation error:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }

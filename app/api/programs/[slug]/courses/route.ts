@@ -44,7 +44,6 @@ export async function GET(
       .order('created_at', { ascending: false });
 
     if (error) {
-      console.error('Program courses API error:', error);
       return NextResponse.json({ 
         error: toErrorMessage(error), 
         courses: [] 
@@ -71,7 +70,6 @@ export async function GET(
       total: transformedCourses.length 
     });
   } catch (error: unknown) {
-    console.error('Program courses API exception:', error);
     return NextResponse.json({ 
       error: toErrorMessage(error), 
       courses: [] 

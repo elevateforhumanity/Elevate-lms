@@ -68,7 +68,6 @@ export default function SiteHeader() {
         setUser(user);
         setNavigation(getNavigation(user));
       } catch (error) {
-        console.warn('Failed to get user:', error);
         setNavigation(getNavigation(null));
       }
     };

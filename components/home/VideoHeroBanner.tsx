@@ -51,7 +51,6 @@ export default function VideoHeroBanner({
     if (voiceoverSrc && audioRef.current) {
       audioRef.current.muted = false;
       audioRef.current.play().catch((error) => {
-        console.log('Autoplay prevented by browser:', error);
       });
     }
     
@@ -67,11 +66,9 @@ export default function VideoHeroBanner({
 
     const handleCanPlay = () => {
       setIsLoaded(true);
-      video.play().catch(console.error);
     };
 
     const handleError = () => {
-      console.error('Video failed to load:', videoSrc);
       setHasError(true);
       setIsLoaded(true);
     };
@@ -87,7 +84,6 @@ export default function VideoHeroBanner({
 
   const handleUserInteraction = () => {
     if (audioRef.current && voiceoverSrc && audioRef.current.paused) {
-      audioRef.current.play().catch(console.error);
     }
   };
 

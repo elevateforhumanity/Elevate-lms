@@ -62,7 +62,6 @@ export async function POST(req: Request) {
       .single();
 
     if (error) {
-      console.error('Database error:', error);
 
       // If table doesn't exist, still return success (we'll handle via email)
       if (error.code === '42P01') {
@@ -100,7 +99,6 @@ export async function POST(req: Request) {
         `,
       });
     } catch (emailError) {
-      console.error('Email error:', emailError);
       // Don't fail the request if email fails
     }
 
@@ -125,7 +123,6 @@ export async function POST(req: Request) {
         `,
       });
     } catch (emailError) {
-      console.error('Staff notification error:', emailError);
     }
 
     return NextResponse.json({
@@ -134,7 +131,6 @@ export async function POST(req: Request) {
       message: 'Appointment booked successfully! Check your email for confirmation.',
     });
   } catch (error: unknown) {
-    console.error('Server error:', error);
     return NextResponse.json(
       { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }

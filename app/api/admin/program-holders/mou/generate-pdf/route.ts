@@ -54,7 +54,6 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error: any) {
-    console.error('Admin MOU generation error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

@@ -58,10 +58,8 @@ export default async function CreatorAnalyticsPage() {
         }
       }
     } catch (innerError) {
-      console.error('Inner error in CreatorAnalyticsPage:', innerError);
     }
   } catch (outerError) {
-    console.error('Outer error in CreatorAnalyticsPage:', outerError);
   }
 
   return (

@@ -60,7 +60,6 @@ export default function IPLAExamSignup() {
         await stripe.redirectToCheckout({ sessionId });
       }
     } catch (error: unknown) {
-      console.error('Payment error:', error);
       alert('Payment failed. Please try again.');
     } finally {
       setLoading(false);

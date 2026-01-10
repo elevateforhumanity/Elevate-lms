@@ -16,7 +16,6 @@ export default async function EmployerCompliancePage() {
     const { data: authData } = await supabase.auth.getUser();
     user = authData.user;
   } catch (error) {
-    console.error('Error in EmployerCompliancePage:', error);
   }
 
   return (

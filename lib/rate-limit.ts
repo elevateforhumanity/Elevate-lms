@@ -1,13 +1,4 @@
-import { Ratelimit } from '@upstash/ratelimit';
-import { Redis } from '@upstash/redis';
-
-const redis =
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-    ? new Redis({
-        url: process.env.UPSTASH_REDIS_REST_URL,
-        token: process.env.UPSTASH_REDIS_REST_TOKEN,
-      })
-    : null;
+const redis = null;
 
 interface RateLimitConfig {
   key: string;
@@ -40,38 +31,7 @@ export async function checkRateLimit(config: RateLimitConfig) {
   };
 }
 
-export const authRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(5, '15 m'),
-      analytics: true,
-      prefix: 'ratelimit:auth',
-    })
-  : null;
-
-export const paymentRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(10, '1 m'),
-      analytics: true,
-      prefix: 'ratelimit:payment',
-    })
-  : null;
-
-export const contactRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(5, '1 h'),
-      analytics: true,
-      prefix: 'ratelimit:contact',
-    })
-  : null;
-
-export const apiRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(100, '1 m'),
-      analytics: true,
-      prefix: 'ratelimit:api',
-    })
-  : null;
+export const authRateLimit = null;
+export const paymentRateLimit = null;
+export const contactRateLimit = null;
+export const apiRateLimit = null;

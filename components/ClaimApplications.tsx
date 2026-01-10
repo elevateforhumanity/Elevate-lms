@@ -28,11 +28,9 @@ export function ClaimApplications() {
         );
 
         if (error) {
-          console.error('Error claiming applications:', error);
         } else if (data > 0) {
         }
       } catch (err) {
-        console.error('Unexpected error claiming applications:', err);
       }
     };
 

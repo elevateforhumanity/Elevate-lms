@@ -20,7 +20,6 @@ async function getTemplates() {
     const data = await res.json();
     return data.templates || [];
   } catch (error) {
-    console.error('Error fetching templates:', error);
     return [];
   }
 }
@@ -33,7 +32,6 @@ async function getMyStudents() {
     const data = await res.json();
     return data.students || [];
   } catch (error) {
-    console.error('Error fetching students:', error);
     return [];
   }
 }

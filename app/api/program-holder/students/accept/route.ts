@@ -87,7 +87,6 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (updateError) {
-      console.error('Student acceptance error:', updateError);
       return NextResponse.json(
         { error: 'Failed to accept student', details: updateError.message },
         { status: 500 }
@@ -125,9 +124,7 @@ export async function POST(request: NextRequest) {
         studentProfile.email,
         studentProfile.full_name || 'Student',
         phProfile?.full_name || 'Program Holder'
-      ).catch((err) =>
-        console.error('[Email] Student acceptance notification failed:', err)
-      );
+      ).catch(() => {});
     }
 
     return NextResponse.json(
@@ -139,7 +136,6 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error: unknown) {
-    console.error('Unexpected error in student acceptance:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
