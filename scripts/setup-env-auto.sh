@@ -4,9 +4,15 @@
 
 set -e
 
-echo "🔧 Automated Environment Setup"
-echo "================================"
-echo ""
+# Silent mode for faster startup (set VERBOSE=1 to see output)
+if [ -z "$VERBOSE" ]; then
+    exec 3>&1
+    exec 1>/dev/null 2>&1
+else
+    echo "🔧 Automated Environment Setup"
+    echo "================================"
+    echo ""
+fi
 
 # Function to check if env var is set
 check_env_var() {
@@ -22,10 +28,7 @@ check_env_var() {
 
 # Check if Supabase is already configured
 if check_env_var "NEXT_PUBLIC_SUPABASE_URL" && check_env_var "SUPABASE_SERVICE_ROLE_KEY"; then
-    echo "✅ Supabase credentials already configured"
-    echo ""
-    echo "Testing connection..."
-    node check-database.mjs
+    [ ! -z "$VERBOSE" ] && echo "✅ Supabase credentials already configured"
     exit 0
 fi
 
@@ -47,9 +50,6 @@ if command -v vercel &> /dev/null; then
             # Verify Supabase vars are present
             if check_env_var "NEXT_PUBLIC_SUPABASE_URL"; then
                 echo "✅ Supabase credentials found"
-                echo ""
-                echo "Testing connection..."
-                node check-database.mjs
                 exit 0
             else
                 echo "⚠️  Pulled env vars but Supabase credentials not found"
@@ -101,8 +101,6 @@ echo "     - NEXT_PUBLIC_SUPABASE_URL"
 echo "     - NEXT_PUBLIC_SUPABASE_ANON_KEY"
 echo "     - SUPABASE_SERVICE_ROLE_KEY"
 echo "  5. Create .env.local with those values"
-echo ""
-echo "Then run: node check-database.mjs"
 echo ""
 
 exit 1

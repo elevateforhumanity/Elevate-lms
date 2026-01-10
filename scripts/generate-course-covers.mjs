@@ -105,11 +105,24 @@ function generateSVGCover(course) {
 }
 
 function main() {
+  // Skip if covers already exist (for faster dev startup)
+  if (fs.existsSync(coversDir)) {
+    const existingCovers = courses.filter((course) => {
+      const courseDir = path.join(coversDir, course.slug);
+      const svgPath = path.join(courseDir, 'cover.svg');
+      return fs.existsSync(svgPath);
+    });
+
+    if (existingCovers.length === courses.length) {
+      console.log('✅ Course covers already exist, skipping generation');
+      return;
+    }
+  }
 
   ensureDirExists(coversDir);
 
   let generated = 0;
-  const skipped = 0;
+  let skipped = 0;
 
   courses.forEach((course) => {
     const courseDir = path.join(coversDir, course.slug);
@@ -117,12 +130,25 @@ function main() {
 
     const svgPath = path.join(courseDir, 'cover.svg');
 
+    // Skip if already exists
+    if (fs.existsSync(svgPath)) {
+      skipped++;
+      return;
+    }
+
     // Generate SVG cover
     const svgContent = generateSVGCover(course);
     fs.writeFileSync(svgPath, svgContent);
 
     generated++;
   });
+
+  if (generated > 0) {
+    console.log(`✅ Generated ${generated} course covers`);
+  }
+  if (skipped > 0) {
+    console.log(`⏭️  Skipped ${skipped} existing covers`);
+  }
 
   console.log(
     '💡 To customize a cover, replace the SVG file with your own image'
