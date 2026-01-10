@@ -58,47 +58,60 @@ export default function FounderPage() {
                 Founder & CEO
               </p>
 
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">The Story</h3>
+              
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                Elizabeth Greene is the founder of{' '}
-                <strong>2EXCLUSIVE LLC-S</strong>, operating as{' '}
-                <strong>Elevate for Humanity</strong>. She established the
-                organization to address disconnected workforce systems that
-                prevent motivated individuals from accessing training, funding,
-                and employment pathways.
+                Elizabeth Greene founded Elevate for Humanity after witnessing firsthand how disconnected workforce systems prevent motivated individuals from accessing the training, funding, and employment pathways they need to succeed.
               </p>
 
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                Under her leadership, Elevate for Humanity has grown into a
-                comprehensive workforce development ecosystem serving thousands
-                of individuals across Indiana. The organization operates with
-                active SAM.gov registration (UEI: VX2GK5S8SZH8, CAGE Code:
-                0QH19), positioning it for federal contracts and grants.
+                Working in workforce development, she saw talented people fall through the cracks—not because they lacked ability or drive, but because the system was fragmented. Training providers didn't talk to funding agencies. Funding agencies didn't coordinate with employers. And individuals were left navigating a maze of requirements, applications, and dead ends.
               </p>
 
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                Elizabeth also founded <strong>SELFISH INC</strong> (operating
-                as <strong>RISE Foundation</strong>), a 501(c)(3) tax-exempt
-                nonprofit organization (EIN: 99-3483511) that provides
-                philanthropic support for workforce development initiatives. The
-                foundation received its IRS determination letter in July 2024.
+                In 2020, Elizabeth decided to build something different: a coordination hub that would connect all the pieces. She founded <strong>2EXCLUSIVE LLC-S</strong> (operating as <strong>Elevate for Humanity</strong>) to serve as the bridge between individuals, training providers, funding sources, and employers.
               </p>
 
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                Additionally, she leads{' '}
-                <strong>Curvature Body Sculpting LLC</strong>, which operates as
-                a Certiport Authorized Testing Center (CATC), offering
-                industry-recognized certification exams including Microsoft
-                Office Specialist, IC3 Digital Literacy, and Adobe Certified
-                Professional credentials.
+                What started as a solo operation has grown into a workforce ecosystem serving 1,000+ individuals across Indiana with an 85% job placement rate. The organization now holds active SAM.gov registration (UEI: VX2GK5S8SZH8, CAGE Code: 0QH19), positioning it for federal contracts and grants.
+              </p>
+
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Elizabeth also founded <strong>SELFISH INC</strong> (operating as <strong>RISE Foundation</strong>), a 501(c)(3) tax-exempt nonprofit organization (EIN: 99-3483511) that provides philanthropic support for workforce development initiatives. The foundation received its IRS determination letter in July 2024.
+              </p>
+
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Additionally, she leads <strong>Curvature Body Sculpting LLC</strong>, which operates as a Certiport Authorized Testing Center (CATC), offering industry-recognized certification exams including Microsoft Office Specialist, IC3 Digital Literacy, and Adobe Certified Professional credentials.
               </p>
 
               <div className="bg-blue-50 border-l-4 border-brand-blue-600 p-6 my-8">
                 <p className="text-lg font-semibold text-gray-900">
-                  "Elevate for Humanity exists to ensure opportunity is not
-                  theoretical — it's accessible, supported, and measurable."
+                  "Elevate for Humanity exists to ensure opportunity is not theoretical — it's accessible, supported, and measurable."
                 </p>
                 <p className="text-sm text-gray-600 mt-2">— Elizabeth Greene</p>
               </div>
+
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 mt-8">The Mission</h3>
+              
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Elizabeth's mission is simple: make workforce systems work for people, not the other way around. Every decision at Elevate for Humanity starts with one question: "Does this help someone get trained, funded, and employed?"
+              </p>
+
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                She believes that opportunity should be accessible to everyone—regardless of their background, criminal record, income level, or education. That's why Elevate for Humanity works with WIOA, WRG, JRI, and apprenticeship programs to remove financial barriers and create pathways to sustainable careers.
+              </p>
+
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
+                Why This Matters
+              </h3>
+              
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Every person who completes training and gets hired doesn't just change their own life—they change their family's trajectory. Children see a parent going to work with purpose. Neighborhoods become more stable. Communities grow stronger.
+              </p>
+
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Elizabeth built Elevate for Humanity because she believes that workforce development isn't just about filling jobs—it's about building futures. And when systems work the way they should, everyone benefits.
+              </p>
 
               <h3 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
                 Leadership Focus
