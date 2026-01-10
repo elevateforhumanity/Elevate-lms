@@ -43,7 +43,7 @@ export default function ApprenticeshipPage() {
           </video>
 
           {/* Overlay Content */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end">
+          <div className="absolute inset-0 flex items-end">
             <div className="max-w-7xl mx-auto px-6 pb-20 w-full">
               <div className="max-w-3xl">
                 <div className="flex flex-wrap gap-3 mb-6">
