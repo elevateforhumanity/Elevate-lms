@@ -42,28 +42,28 @@ export default function ProgramsBioSitePage() {
       description: 'CNA, Medical Assistant, Home Health Aide',
       href: '/programs/healthcare',
       icon: GraduationCap,
-      image: '/hero-images/healthcare-category.jpg',
+      image: '/hero-images/healthcare-cat-new.jpg',
     },
     {
       title: 'Skilled Trades',
       description: 'HVAC, Electrical, Plumbing, Construction',
       href: '/programs/skilled-trades',
       icon: Briefcase,
-      image: '/hero-images/skilled-trades-category.jpg',
+      image: '/hero-images/skilled-trades-cat-new.jpg',
     },
     {
       title: 'Barber & Beauty',
       description: 'Barbering, Cosmetology, Esthetics',
       href: '/programs/barber-apprenticeship',
       icon: Award,
-      image: '/hero-images/barber-beauty-category.jpg',
+      image: '/hero-images/barber-beauty-cat-new.jpg',
     },
     {
       title: 'Technology',
       description: 'IT Support, Cybersecurity, Web Development',
       href: '/programs/technology',
       icon: BookOpen,
-      image: '/hero-images/technology-category.jpg',
+      image: '/hero-images/technology-cat-new.jpg',
     },
     {
       title: 'Business',
@@ -77,7 +77,7 @@ export default function ProgramsBioSitePage() {
       description: 'Commercial Driving License training',
       href: '/programs/cdl-transportation',
       icon: TrendingUp,
-      image: '/hero-images/cdl-transportation-category.jpg',
+      image: '/hero-images/cdl-cat-new.jpg',
     },
   ];
 
@@ -207,15 +207,15 @@ export default function ProgramsBioSitePage() {
 
       {/* Program Cards Grid - Uniform Layout */}
       <section className="pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {links.map((link) => {
               const Icon = link.icon;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="group block bg-white rounded-lg shadow hover:shadow-lg transition-all border border-gray-200 hover:border-gray-900 overflow-hidden"
+                  className="group block bg-white rounded-lg shadow hover:shadow-xl transition-all border border-gray-200 hover:border-blue-600 overflow-hidden"
                 >
                   {/* Image Section - Square */}
                   <div className="relative w-full aspect-square overflow-hidden">
@@ -223,16 +223,17 @@ export default function ProgramsBioSitePage() {
                       src={link.image}
                       alt={link.title}
                       fill
-                      className="object-cover"
+                      className="object-cover group-hover:scale-105 transition"
+                      sizes="(max-width: 768px) 50vw, 33vw"
                     />
                   </div>
                   
                   {/* Text Section */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <div className="p-3 md:p-4">
+                    <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1">
                       {link.title}
                     </h3>
-                    <p className="text-gray-600">{link.description}</p>
+                    <p className="text-xs md:text-sm text-gray-600 line-clamp-2">{link.description}</p>
                   </div>
                 </Link>
               );
