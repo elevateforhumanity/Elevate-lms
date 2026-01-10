@@ -388,11 +388,7 @@ export default function AIStudioPage() {
                         <span className="text-xs font-medium text-purple-600 uppercase">
                           {asset.type}
                         </span>
-<<<<<<< HEAD
-                        <button className="text-gray-400 hover:text-purple-600" aria-label="Action button">
-=======
-                        <button className="text-gray-600 hover:text-purple-600">
->>>>>>> 9f446d58c71ca2f0f5aefb5d2867d52a1f9775c8
+                        <button className="text-gray-600 hover:text-purple-600" aria-label="Download">
                           <Download className="w-4 h-4" />
                         </button>
                       </div>

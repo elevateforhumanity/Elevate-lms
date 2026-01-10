@@ -30,12 +30,8 @@ export default function ContactPage() {
   };
 
   return (
-<<<<<<< HEAD
     <div className="min-h-screen bg-gray-50">
-=======
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white">
       <main id="main-content">
->>>>>>> 9f446d58c71ca2f0f5aefb5d2867d52a1f9775c8
       {/* Hero Section */}
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">

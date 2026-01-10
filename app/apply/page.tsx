@@ -240,21 +240,14 @@ function ApplyLandingPageOld() {
       <main id="main-content">
       {/* Hero Banner */}
       <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
-<<<<<<< HEAD
         <Image
           src="/images/efh/hero/hero-main-clean.jpg"
-          alt="Apply"
+          alt="Apply to training programs"
           fill
           priority
           sizes="100vw"
           className="object-cover"
           quality={85}
-=======
-        <img
-          src="/images/efh/hero/hero-main.jpg"
-          alt="Students learning in training program"
-          className="absolute inset-0 w-full h-full object-cover"
->>>>>>> 9f446d58c71ca2f0f5aefb5d2867d52a1f9775c8
         />
         <div className="absolute inset-0 bg-black/50" />
 
