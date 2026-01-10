@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Quick Apply | Elevate for Humanity',
   description: 'Fast-track your application for workforce training programs.',
   alternates: {
-    canonical: 'https://elevateforhumanity.org/apply/quick',
+    canonical: 'https://elevateforhumanity.institute/apply/quick',
   },
 };
 
