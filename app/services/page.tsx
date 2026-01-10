@@ -64,7 +64,7 @@ export default function ServicesPage() {
       description: 'Resume building, interview prep, and job search support',
       href: '/career-services',
       icon: Briefcase,
-      image: '/images/efh/hero/hero-main.jpg',
+      image: '/images/efh/hero/hero-main-clean.jpg',
     },
     {
       title: 'Career Center',

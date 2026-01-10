@@ -16,7 +16,7 @@ export default function TestImagesPage() {
         <div>
           <h2 className="text-2xl font-bold mb-4">Hero Main Image</h2>
           <img 
-            src="/images/efh/hero/hero-main.jpg" 
+            src="/images/efh/hero/hero-main-clean.jpg" 
             alt="Hero Main"
             className="w-full max-w-2xl h-64 object-cover rounded-lg shadow-lg"
           />

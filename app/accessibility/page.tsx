@@ -18,7 +18,7 @@ export default function AccessibilityPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/facilities-new/facility-exterior.jpg"
+          src="/images/facilities-new/facility-1.jpg"
           alt="Accessibility Commitment"
           fill
           className="object-cover brightness-50"

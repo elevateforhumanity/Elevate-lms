@@ -32,7 +32,7 @@ export default function RevenueShareCalculator() {
       {/* Hero */}
       <section className="relative h-[300px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/programs/business.jpg"
+          src="/images/programs/efh-business-startup-marketing-hero.jpg"
           alt="Revenue Share Calculator"
           fill
           className="object-cover"

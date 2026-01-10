@@ -151,7 +151,7 @@ export default function ProgramsBioSitePage() {
       <section id="programs" className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
           <Image
-            src="/images/efh/hero/hero-main.jpg"
+            src="/images/efh/hero/hero-main-clean.jpg"
             alt="Programs Overview"
             fill
             priority

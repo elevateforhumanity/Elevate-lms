@@ -23,7 +23,7 @@ export default function CareersApplyPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
       <section className="relative h-[300px] w-full overflow-hidden">
-        <Image src="/images/efh/hero/hero-main.jpg" alt="Apply for Career" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} />
+        <Image src="/images/efh/hero/hero-main-clean.jpg" alt="Apply for Career" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="max-w-4xl mx-auto px-6 text-center text-white">

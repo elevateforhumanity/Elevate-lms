@@ -25,7 +25,7 @@ export default function BankingPage() {
       {/* Hero */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/programs/business.jpg"
+          src="/images/programs/efh-business-startup-marketing-hero.jpg"
           alt="Banking Services"
           fill
           className="object-cover"

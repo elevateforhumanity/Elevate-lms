@@ -22,7 +22,7 @@ export default async function ProgramHolderPage() {
         accentText="Portal"
         subheadline="Manage training programs and track student progress"
         description="Join our network of approved training providers. Manage programs, track student progress, submit reports, and receive funding for training services."
-        imageSrc="/images/efh/hero/hero-main.jpg"
+        imageSrc="/images/efh/hero/hero-main-clean.jpg"
         imageAlt="Program Holder Portal"
         primaryCTA={{ text: "Apply to Become a Program Holder", href: "/program-holder/apply" }}
         secondaryCTA={{ text: "Program Holder Login", href: "/login" }}

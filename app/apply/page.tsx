@@ -240,7 +240,7 @@ function ApplyLandingPageOld() {
       {/* Hero Banner */}
       <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
         <Image
-          src="/images/efh/hero/hero-main.jpg"
+          src="/images/efh/hero/hero-main-clean.jpg"
           alt="Apply"
           fill
           priority
