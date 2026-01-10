@@ -26,12 +26,25 @@ export default function VideoHeroBanner({
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Prevent hydration mismatch and autoplay voiceover
+  // Prevent hydration mismatch and lazy load video
   useEffect(() => {
     setIsMounted(true);
+    
+    // Delay video loading by 500ms to prioritize critical content
+    const timer = setTimeout(() => {
+      setShouldLoadVideo(true);
+    }, 500);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoadVideo) return;
+    
     setIsLoaded(true);
     
     // Autoplay voiceover on page load
@@ -46,7 +59,7 @@ export default function VideoHeroBanner({
     if (withAudio && videoRef.current) {
       videoRef.current.muted = false;
     }
-  }, [withAudio, voiceoverSrc]);
+  }, [shouldLoadVideo, withAudio, voiceoverSrc]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -97,15 +110,15 @@ export default function VideoHeroBanner({
           className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-900 to-purple-900 z-0"
         />
 
-        {/* Video Background - Always rendered, enhanced progressively */}
-        {!hasError && (
+        {/* Video Background - Lazy loaded after 500ms */}
+        {!hasError && shouldLoadVideo && (
           <video
             ref={videoRef}
             className="absolute inset-0 w-full h-full object-cover z-1"
             loop
             muted={!withAudio}
             playsInline
-            preload="metadata"
+            preload="none"
             autoPlay
           >
             <source src={videoSrc} type="video/mp4" />
