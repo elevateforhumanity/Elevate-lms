@@ -175,6 +175,12 @@ const nextConfig = {
         destination: 'https://elevateforhumanity.institute/:path*',
         permanent: true,
       },
+      // Redirect sitemap-page to sitemap.xml
+      {
+        source: '/sitemap-page',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
       
       // Dashboard consolidation
       { source: '/portal/:path*', destination: '/lms/:path*', permanent: true },
