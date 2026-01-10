@@ -454,7 +454,7 @@ export default function SNAPETPartnerPage() {
             </a>
             <a
               href="tel:3173143757"
-              className="inline-block px-10 py-5 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition text-lg"
+              className="inline-block px-10 py-5 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-50 transition text-lg"
             >
               Call: 317-314-3757
             </a>

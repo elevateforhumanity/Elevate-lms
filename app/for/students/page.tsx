@@ -215,7 +215,7 @@ export default function StudentsPage() {
           </p>
           <Link
             href="/apply"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition text-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-50 transition text-lg"
           >
             Apply Now
             <ArrowRight className="h-5 w-5" />

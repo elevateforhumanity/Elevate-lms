@@ -86,7 +86,7 @@ export default function FundingSuccessPage() {
           </Link>
           <Link
             href="/admin/dashboard"
-            className="px-6 py-3 bg-white text-brand-blue-600 border-2 border-brand-blue-600 rounded-lg hover:bg-blue-50 font-bold transition-all"
+            className="px-6 py-3 bg-white text-brand-blue-600 border-2 border-brand-blue-600 rounded-lg hover:bg-gray-50 font-bold transition-all"
           >
             Back to Dashboard
           </Link>

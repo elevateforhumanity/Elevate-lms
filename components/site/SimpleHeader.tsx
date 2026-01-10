@@ -68,7 +68,7 @@ export default function SimpleHeader() {
                           <Link
                             key={item.href}
                             href={item.href}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition"
                           >
                             {item.label}
                           </Link>
@@ -161,7 +161,7 @@ export default function SimpleHeader() {
                               <Link
                                 key={item.href}
                                 href={item.href}
-                                className="block px-6 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition"
+                                className="block px-6 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition"
                                 onClick={() => {
                                   setMobileMenuOpen(false);
                                   setExpandedMobileSection(null);

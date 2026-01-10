@@ -386,7 +386,7 @@ export default function DocumentUploadPage() {
           </a>
           <Link
             href="/tax/book-appointment"
-            className="px-6 py-3 rounded-lg border-2 border-brand-blue-600 text-brand-blue-600 font-semibold hover:bg-blue-50 transition"
+            className="px-6 py-3 rounded-lg border-2 border-brand-blue-600 text-brand-blue-600 font-semibold hover:bg-gray-50 transition"
           >
             Book Appointment Online
           </Link>

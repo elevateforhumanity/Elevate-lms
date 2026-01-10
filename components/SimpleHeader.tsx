@@ -25,7 +25,7 @@ export default function SimpleHeader() {
             </nav>
           </div>
           <div className="flex items-center gap-3">
-            <Link href="/login" aria-label="Link" className="px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50 rounded-lg transition">
+            <Link href="/login" aria-label="Link" className="px-4 py-2 text-sm font-medium text-blue-600 hover:bg-gray-50 rounded-lg transition">
               Log In
             </Link>
             <Link href="/apply" aria-label="Link" className="px-6 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition shadow-sm">

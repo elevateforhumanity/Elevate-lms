@@ -71,7 +71,7 @@ export default function CoursesCatalog({
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"
-                className="bg-white text-brand-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                className="bg-white text-brand-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
               >
                 Apply Now
               </Link>
@@ -363,7 +363,7 @@ export default function CoursesCatalog({
             </p>
             <Link
               href="/contact"
-              className="inline-block bg-white text-brand-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors"
+              className="inline-block bg-white text-brand-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-50 transition-colors"
             >
               Apply for Free Training
             </Link>

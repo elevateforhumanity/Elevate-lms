@@ -167,7 +167,7 @@ export default function ReferralDashboard({ userId }: ReferralDashboardProps) {
               <div className="flex gap-2">
                 <button
                   onClick={handleCopyCode}
-                  className="flex items-center gap-2 px-6 py-3 bg-white text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-semibold"
+                  className="flex items-center gap-2 px-6 py-3 bg-white text-blue-600 rounded-lg hover:bg-gray-50 transition-colors font-semibold"
                 >
                   {copied ? (
                     <>

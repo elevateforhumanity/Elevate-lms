@@ -495,7 +495,7 @@ export default function PathwaysPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/advising"
-              className="px-8 py-4 bg-white text-brand-blue-600 rounded-lg hover:bg-blue-50 transition font-bold text-lg"
+              className="px-8 py-4 bg-white text-brand-blue-600 rounded-lg hover:bg-gray-50 transition font-bold text-lg"
             >
               Talk to an Advisor
             </Link>

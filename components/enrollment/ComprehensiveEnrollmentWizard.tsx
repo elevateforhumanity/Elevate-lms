@@ -681,7 +681,7 @@ export default function ComprehensiveEnrollmentWizard({
 
           <button
             onClick={saveProgress}
-            className="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 flex items-center gap-2"
+            className="px-6 py-3 border border-blue-600 text-blue-600 rounded-lg hover:bg-gray-50 flex items-center gap-2"
           >
             <Save className="w-5 h-5" />
             Save Progress

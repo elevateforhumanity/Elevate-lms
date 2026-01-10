@@ -114,7 +114,7 @@ export default function SolutionsPage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/demo/admin"
-                  className="inline-flex items-center justify-center bg-white text-blue-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition shadow-xl"
+                  className="inline-flex items-center justify-center bg-white text-blue-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-50 transition shadow-xl"
                 >
                   Get Interactive Demo
                   <ArrowRight className="ml-2 w-5 h-5" />

@@ -216,7 +216,7 @@ export default function DigitalBinder({
                   </div>
                   <div className="flex gap-2">
                     {doc.status === 'complete' && (
-                      <button className="px-3 py-1 text-sm text-blue-600 hover:bg-blue-50 rounded">
+                      <button className="px-3 py-1 text-sm text-blue-600 hover:bg-gray-50 rounded">
                         View
                       </button>
                     )}

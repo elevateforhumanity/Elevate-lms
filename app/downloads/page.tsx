@@ -176,7 +176,7 @@ export default function DownloadsPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <a
               href="#handbooks"
-              className="flex items-center gap-2 px-6 py-3 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-blue-50 text-blue-700 rounded-lg hover:bg-gray-100 transition-colors"
             >
               <BookOpen className="w-5 h-5" />
               <span className="font-semibold">Handbooks</span>

@@ -257,13 +257,13 @@ export default function AILiveChat({
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsMinimized(!isMinimized)}
-            className="hover:bg-blue-500 p-2 rounded-lg transition"
+            className="hover:bg-gray-500 p-2 rounded-lg transition"
           >
             <Minimize2 className="w-4 h-4" />
           </button>
           <button
             onClick={() => setIsOpen(false)}
-            className="hover:bg-blue-500 p-2 rounded-lg transition"
+            className="hover:bg-gray-500 p-2 rounded-lg transition"
           >
             <X className="w-4 h-4" />
           </button>

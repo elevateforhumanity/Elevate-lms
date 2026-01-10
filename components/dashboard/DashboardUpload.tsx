@@ -184,7 +184,7 @@ export function DashboardUpload({
                     href={file.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 text-blue-600 hover:bg-blue-50 rounded transition"
+                    className="p-2 text-blue-600 hover:bg-gray-50 rounded transition"
                     title="Download"
                   >
                     <Download className="h-4 w-4" />

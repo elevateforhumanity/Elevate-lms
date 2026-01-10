@@ -318,7 +318,7 @@ export default async function CareerServicesPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <Link
               href="/features"
-              className="bg-white border-2 border-blue-600 rounded-xl p-6 hover:bg-blue-50 transition-all group"
+              className="bg-white border-2 border-blue-600 rounded-xl p-6 hover:bg-gray-50 transition-all group"
             >
               <h3 className="text-xl font-bold text-black mb-3 group-hover:text-blue-600">
                 Platform Features →
@@ -370,7 +370,7 @@ export default async function CareerServicesPage() {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/apply"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 text-lg"
+                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
               >
                 Apply Now - It's Free
               </Link>

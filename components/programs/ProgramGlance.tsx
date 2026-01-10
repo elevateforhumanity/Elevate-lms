@@ -89,7 +89,7 @@ export function ProgramGlance({
             </a>
             <a
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-blue-600 border-2 border-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-blue-600 border-2 border-blue-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
             >
               Talk to an Advisor
             </a>

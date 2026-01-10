@@ -81,7 +81,7 @@ export function OfflineIndicator() {
           <button
             onClick={handleSync}
             disabled={syncing}
-            className="flex-shrink-0 px-3 py-1 bg-white text-blue-600 rounded font-medium text-sm hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-shrink-0 px-3 py-1 bg-white text-blue-600 rounded font-medium text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {syncing ? 'Syncing...' : 'Sync Now'}
           </button>

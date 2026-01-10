@@ -130,7 +130,7 @@ function QuickLink({ title, href }: any) {
   return (
     <Link
       href={href}
-      className="p-4 border rounded-lg hover:shadow-lg transition-shadow bg-white text-center font-semibold hover:bg-blue-50"
+      className="p-4 border rounded-lg hover:shadow-lg transition-shadow bg-white text-center font-semibold hover:bg-gray-50"
     >
       {title}
     </Link>

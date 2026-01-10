@@ -51,7 +51,7 @@ export default function PartnerPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/partner-with-us"
-                className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-bold text-lg transition shadow-2xl hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-bold text-lg transition shadow-2xl hover:scale-105"
               >
                 Become a Partner
                 <ArrowRight className="w-5 h-5" />

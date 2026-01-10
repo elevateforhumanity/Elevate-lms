@@ -70,7 +70,7 @@ export function LmsSidebar() {
                 'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all',
                 active
                   ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-700 hover:bg-blue-50 hover:text-blue-700'
+                  : 'text-slate-700 hover:bg-gray-50 hover:text-blue-700'
               )}
             >
               <Icon className="w-4 h-4" />

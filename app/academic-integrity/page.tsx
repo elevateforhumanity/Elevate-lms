@@ -43,10 +43,10 @@ export default function AcademicIntegrityPage() {
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-4 py-6 sm:py-8 sm:px-6 sm:py-12">
         {/* Introduction */}
-        <div className="bg-white rounded-xl shadow-sm border p-8 mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+        <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
             Our Commitment to Academic Honesty
           </h2>
           <p className="text-slate-700 mb-4">
@@ -69,15 +69,15 @@ export default function AcademicIntegrityPage() {
         </div>
 
         {/* What is Academic Dishonesty */}
-        <div className="bg-white rounded-xl shadow-sm border p-8 mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+        <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
             What Constitutes Academic Dishonesty?
           </h2>
 
           <div className="space-y-6">
             {/* Plagiarism */}
             <div className="border-l-4 border-red-500 pl-6">
-              <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <AlertTriangle className="w-6 h-6 text-brand-orange-600" />
                 Plagiarism
               </h3>
@@ -110,7 +110,7 @@ export default function AcademicIntegrityPage() {
 
             {/* Cheating */}
             <div className="border-l-4 border-orange-500 pl-6">
-              <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <AlertTriangle className="w-6 h-6 text-brand-orange-600" />
                 Cheating
               </h3>
@@ -138,7 +138,7 @@ export default function AcademicIntegrityPage() {
 
             {/* Unauthorized Collaboration */}
             <div className="border-l-4 border-yellow-500 pl-6">
-              <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <Users className="w-6 h-6 text-yellow-600" />
                 Unauthorized Collaboration
               </h3>
@@ -163,7 +163,7 @@ export default function AcademicIntegrityPage() {
 
             {/* Falsification */}
             <div className="border-l-4 border-purple-500 pl-6">
-              <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <FileText className="w-6 h-6 text-purple-600" />
                 Falsification of Records
               </h3>
@@ -185,7 +185,7 @@ export default function AcademicIntegrityPage() {
 
             {/* Multiple Submissions */}
             <div className="border-l-4 border-blue-500 pl-6">
-              <h3 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <BookOpen className="w-6 h-6 text-brand-blue-600" />
                 Multiple Submissions
               </h3>
@@ -205,8 +205,8 @@ export default function AcademicIntegrityPage() {
         </div>
 
         {/* Consequences */}
-        <div className="bg-white rounded-xl shadow-sm border p-8 mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+        <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
             Consequences of Academic Dishonesty
           </h2>
           <p className="text-slate-700 mb-6">
@@ -216,7 +216,7 @@ export default function AcademicIntegrityPage() {
           </p>
 
           <div className="space-y-4">
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 sm:p-6">
               <h3 className="font-bold text-yellow-900 mb-2 flex items-center gap-2">
                 <span className="bg-yellow-200 text-yellow-900 px-3 py-1 rounded-full text-sm">
                   1st Offense
@@ -232,7 +232,7 @@ export default function AcademicIntegrityPage() {
               </ul>
             </div>
 
-            <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
+            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 sm:p-6">
               <h3 className="font-bold text-orange-900 mb-2 flex items-center gap-2">
                 <span className="bg-orange-200 text-orange-900 px-3 py-1 rounded-full text-sm">
                   2nd Offense
@@ -251,7 +251,7 @@ export default function AcademicIntegrityPage() {
               </ul>
             </div>
 
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 sm:p-6">
               <h3 className="font-bold text-red-900 mb-2 flex items-center gap-2">
                 <span className="bg-red-200 text-red-900 px-3 py-1 rounded-full text-sm">
                   3rd Offense
@@ -279,13 +279,13 @@ export default function AcademicIntegrityPage() {
         </div>
 
         {/* How to Avoid Violations */}
-        <div className="bg-white rounded-xl shadow-sm border p-8 mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+        <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
             How to Maintain Academic Integrity
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-green-50 rounded-lg p-6">
+          <div className="grid md:grid-cols-2 gap-4 sm:p-6">
+            <div className="bg-green-50 rounded-lg p-4 sm:p-6">
               <h3 className="font-bold text-green-900 mb-4 flex items-center gap-2">
                 <CheckCircle className="w-6 h-6 text-brand-green-600" />
                 Do's
@@ -304,7 +304,7 @@ export default function AcademicIntegrityPage() {
               </ul>
             </div>
 
-            <div className="bg-red-50 rounded-lg p-6">
+            <div className="bg-red-50 rounded-lg p-4 sm:p-6">
               <h3 className="font-bold text-red-900 mb-4 flex items-center gap-2">
                 <AlertTriangle className="w-6 h-6 text-brand-orange-600" />
                 Don'ts
@@ -326,8 +326,8 @@ export default function AcademicIntegrityPage() {
         </div>
 
         {/* Proper Citation */}
-        <div className="bg-white rounded-xl shadow-sm border p-8 mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+        <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
             Proper Citation Guidelines
           </h2>
           <p className="text-slate-700 mb-4">
@@ -368,8 +368,8 @@ export default function AcademicIntegrityPage() {
         </div>
 
         {/* Reporting Violations */}
-        <div className="bg-white rounded-xl shadow-sm border p-8 mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+        <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
             Reporting Academic Dishonesty
           </h2>
           <p className="text-slate-700 mb-4">
@@ -378,7 +378,7 @@ export default function AcademicIntegrityPage() {
             handled confidentially.
           </p>
 
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 sm:p-6">
             <h3 className="font-semibold text-blue-900 mb-3">How to Report:</h3>
             <ul className="space-y-2 text-blue-800 text-sm">
               <li>• Speak directly with the course instructor</li>
@@ -397,9 +397,9 @@ export default function AcademicIntegrityPage() {
         </div>
 
         {/* Student Pledge */}
-        <div className="bg-white rounded-xl p-8 text-white mb-8">
-          <h2 className="text-2xl font-bold mb-4">Academic Integrity Pledge</h2>
-          <div className="bg-white/10 rounded-lg p-6">
+        <div className="bg-white rounded-xl p-4 sm:p-4 sm:p-6 md:p-8 text-white mb-8">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4">Academic Integrity Pledge</h2>
+          <div className="bg-white/10 rounded-lg p-4 sm:p-6">
             <p className="text-blue-100 italic mb-4">
               "I pledge to uphold the highest standards of academic integrity. I
               will do my own work, give credit where credit is due, and be
@@ -416,11 +416,11 @@ export default function AcademicIntegrityPage() {
         </div>
 
         {/* Resources */}
-        <div className="bg-white rounded-xl shadow-sm border p-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+        <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
             Resources & Support
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-4 sm:p-6">
             <div>
               <h3 className="font-semibold text-slate-900 mb-2">
                 Academic Support

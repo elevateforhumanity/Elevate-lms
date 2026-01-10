@@ -94,7 +94,7 @@ function SortableModule(data: unknown) {
         </div>
         <button
           onClick={() => onEdit(module)}
-          className="p-2 text-blue-600 hover:bg-blue-50 rounded"
+          className="p-2 text-blue-600 hover:bg-gray-50 rounded"
         >
           <Edit className="w-4 h-4" />
         </button>
@@ -141,7 +141,7 @@ function SortableLesson(data: unknown) {
         </div>
         <button
           onClick={() => onEdit(lesson)}
-          className="p-1 text-blue-600 hover:bg-blue-50 rounded"
+          className="p-1 text-blue-600 hover:bg-gray-50 rounded"
         >
           <Edit className="w-3 h-3" />
         </button>
@@ -417,7 +417,7 @@ export default function CourseAuthoringTool() {
 
                         <button
                           onClick={() => addLesson(module.id)}
-                          className="ml-8 mt-2 flex items-center gap-2 px-3 py-1 text-sm text-blue-600 hover:bg-blue-50 rounded"
+                          className="ml-8 mt-2 flex items-center gap-2 px-3 py-1 text-sm text-blue-600 hover:bg-gray-50 rounded"
                         >
                           <Plus className="w-3 h-3" />
                           Add Lesson

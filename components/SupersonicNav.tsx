@@ -67,31 +67,31 @@ export function SupersonicNav() {
               <div className="absolute top-full left-0 bg-white text-gray-900 shadow-xl rounded-lg p-4 hidden group-hover:block w-64 mt-2">
                 <Link
                   href="/supersonic-fast-cash/calculator"
-                  className="block py-2 px-3 hover:bg-blue-50 hover:text-blue-900 rounded transition-colors"
+                  className="block py-2 px-3 hover:bg-gray-50 hover:text-blue-900 rounded transition-colors"
                 >
                   🧮 Refund Calculator
                 </Link>
                 <Link
                   href="/supersonic-fast-cash/tools/refund-tracker"
-                  className="block py-2 px-3 hover:bg-blue-50 hover:text-blue-900 rounded transition-colors"
+                  className="block py-2 px-3 hover:bg-gray-50 hover:text-blue-900 rounded transition-colors"
                 >
                   📍 Track Refund
                 </Link>
                 <Link
                   href="/supersonic-fast-cash/upload-documents"
-                  className="block py-2 px-3 hover:bg-blue-50 hover:text-blue-900 rounded transition-colors"
+                  className="block py-2 px-3 hover:bg-gray-50 hover:text-blue-900 rounded transition-colors"
                 >
                   📄 Upload Documents
                 </Link>
                 <Link
                   href="/supersonic-fast-cash/portal"
-                  className="block py-2 px-3 hover:bg-blue-50 hover:text-blue-900 rounded transition-colors"
+                  className="block py-2 px-3 hover:bg-gray-50 hover:text-blue-900 rounded transition-colors"
                 >
                   👤 Customer Portal
                 </Link>
                 <Link
                   href="/supersonic-fast-cash/tools/smart-upload"
-                  className="block py-2 px-3 hover:bg-blue-50 hover:text-blue-900 rounded transition-colors"
+                  className="block py-2 px-3 hover:bg-gray-50 hover:text-blue-900 rounded transition-colors"
                 >
                   📤 Smart Upload
                 </Link>
@@ -133,19 +133,19 @@ export function SupersonicNav() {
               <div className="absolute top-full left-0 bg-white text-gray-900 shadow-xl rounded-lg p-4 hidden group-hover:block w-64 mt-2">
                 <Link
                   href="/supersonic-fast-cash/careers"
-                  className="block py-2 px-3 hover:bg-blue-50 hover:text-blue-900 rounded transition-colors"
+                  className="block py-2 px-3 hover:bg-gray-50 hover:text-blue-900 rounded transition-colors"
                 >
                   💼 Careers
                 </Link>
                 <Link
                   href="/supersonic-fast-cash/careers/training"
-                  className="block py-2 px-3 hover:bg-blue-50 hover:text-blue-900 rounded transition-colors"
+                  className="block py-2 px-3 hover:bg-gray-50 hover:text-blue-900 rounded transition-colors"
                 >
                   📚 Training
                 </Link>
                 <a
                   href="tel:+13173143757"
-                  className="block py-2 px-3 hover:bg-blue-50 hover:text-blue-900 rounded transition-colors"
+                  className="block py-2 px-3 hover:bg-gray-50 hover:text-blue-900 rounded transition-colors"
                 >
                   📞 Contact Us
                 </a>

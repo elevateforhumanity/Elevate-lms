@@ -42,7 +42,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={program.ctaPrimary.href}
-                  className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg"
+                  className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg"
                 >
                   {program.ctaPrimary.label}
                 </Link>
@@ -294,7 +294,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <Link
               href={program.ctaPrimary.href}
-              className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-10 py-5 rounded-xl font-bold text-lg transition shadow-2xl"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-gray-50 px-10 py-5 rounded-xl font-bold text-lg transition shadow-2xl"
             >
               {program.ctaPrimary.label}
             </Link>

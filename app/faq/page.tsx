@@ -381,7 +381,7 @@ export default function FAQPage() {
             <div className="grid md:grid-cols-3 gap-4">
               <Link
                 href="/programs"
-                className="bg-blue-50 hover:bg-blue-100 rounded-lg p-6 text-center transition"
+                className="bg-blue-50 hover:bg-gray-100 rounded-lg p-6 text-center transition"
               >
                 <div className="text-3xl mb-2">
                   <BookOpen className="w-5 h-5 inline-block" />

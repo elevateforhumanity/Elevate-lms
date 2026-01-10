@@ -325,7 +325,7 @@ export default function MediaStudioPage() {
                   <div className="flex gap-2 mt-3">
                     <button
                       onClick={() => window.open(file.url, '_blank')}
-                      className="flex-1 text-xs py-1 px-2 bg-blue-50 text-brand-blue-600 rounded hover:bg-blue-100"
+                      className="flex-1 text-xs py-1 px-2 bg-blue-50 text-brand-blue-600 rounded hover:bg-gray-100"
                     >
                       View
                     </button>
@@ -400,7 +400,7 @@ export default function MediaStudioPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/contact"
-                  className="bg-white text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-blue-50 text-lg shadow-2xl transition-all"
+                  className="bg-white text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-gray-50 text-lg shadow-2xl transition-all"
                 >
                   Apply Now - It's Free
                 </Link>

@@ -497,7 +497,7 @@ function WorkflowTemplate({
   onClick,
 }: WorkflowTemplateProps) {
   const colorClasses = {
-    blue: 'bg-blue-50 text-brand-blue-600 hover:bg-blue-100',
+    blue: 'bg-blue-50 text-brand-blue-600 hover:bg-gray-100',
     orange: 'bg-orange-50 text-brand-orange-600 hover:bg-orange-100',
     purple: 'bg-purple-50 text-purple-600 hover:bg-purple-100',
   };

@@ -191,7 +191,7 @@ export default function EnrollSuccessPage() {
           </Link>
           <Link
             href="/contact"
-            className="flex-1 px-6 py-4 bg-white text-brand-blue-600 border-2 border-brand-blue-600 rounded-lg hover:bg-blue-50 font-bold text-center transition-all"
+            className="flex-1 px-6 py-4 bg-white text-brand-blue-600 border-2 border-brand-blue-600 rounded-lg hover:bg-gray-50 font-bold text-center transition-all"
           >
             Contact Support
           </Link>

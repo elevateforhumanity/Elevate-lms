@@ -71,7 +71,7 @@ export default function PaymentButton({
     const variantClasses = {
       primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
       secondary:
-        'bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50 focus:ring-blue-500',
+        'bg-white text-blue-600 border-2 border-blue-600 hover:bg-gray-50 focus:ring-blue-500',
     };
 
     const sizeClasses = {

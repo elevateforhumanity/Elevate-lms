@@ -53,7 +53,7 @@ export function StickyMobileCTA({
         </a>
         <a
           href={secondaryHref}
-          className="flex-1 inline-flex items-center justify-center px-4 py-3 bg-white text-blue-600 border-2 border-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors"
+          className="flex-1 inline-flex items-center justify-center px-4 py-3 bg-white text-blue-600 border-2 border-blue-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
         >
           {secondaryText}
         </a>

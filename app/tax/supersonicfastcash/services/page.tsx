@@ -72,7 +72,7 @@ export default function ServicesPage() {
           </Link>
           <Link
             href="/tax/supersonicfastcash/documents"
-            className="px-6 py-3 rounded-lg border-2 border-brand-blue-600 text-brand-blue-600 font-semibold hover:bg-blue-50 transition"
+            className="px-6 py-3 rounded-lg border-2 border-brand-blue-600 text-brand-blue-600 font-semibold hover:bg-gray-50 transition"
           >
             Upload Documents
           </Link>
@@ -356,7 +356,7 @@ export default function ServicesPage() {
           </Link>
           <a
             href="tel:3173143757"
-            className="px-6 py-3 rounded-lg border-2 border-brand-blue-600 text-brand-blue-600 font-semibold hover:bg-blue-50 transition"
+            className="px-6 py-3 rounded-lg border-2 border-brand-blue-600 text-brand-blue-600 font-semibold hover:bg-gray-50 transition"
           >
             Call 317-314-3757
           </a>

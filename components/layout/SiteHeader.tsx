@@ -124,7 +124,7 @@ export default function SiteHeader() {
       {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100000] focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100000] focus:bg-orange-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold"
       >
         Skip to main content
       </a>
@@ -168,7 +168,7 @@ export default function SiteHeader() {
                     <>
                       <button
                         type="button"
-                        className="font-bold text-gray-900 hover:text-blue-600 transition flex items-center gap-1 py-2 text-base uppercase tracking-wide"
+                        className="font-bold text-gray-900 hover:text-orange-600 transition flex items-center gap-1 py-2 text-base uppercase tracking-wide"
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
@@ -199,14 +199,14 @@ export default function SiteHeader() {
                               <Link
                                 key={item.href}
                                 href={item.href}
-                                className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition group"
+                                className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition group"
                                 onClick={() => setOpenDropdown(null)}
                               >
                                 <span className="font-medium">
                                   {item.label}
                                 </span>
                                 <svg
-                                  className="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-transform group-hover:translate-x-1"
+                                  className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-transform group-hover:translate-x-1"
                                   fill="none"
                                   stroke="currentColor"
                                   viewBox="0 0 24 24"
@@ -244,7 +244,7 @@ export default function SiteHeader() {
             {/* Search Button */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="text-gray-600 hover:text-blue-600 transition"
+              className="text-gray-600 hover:text-gray-900 transition"
               aria-label="Search"
             >
               <Search className="w-5 h-5" />
@@ -256,7 +256,7 @@ export default function SiteHeader() {
                 href="https://www.facebook.com/profile.php?id=61571046346179"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 transition"
+                className="text-gray-600 hover:text-gray-900 transition"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
@@ -265,7 +265,7 @@ export default function SiteHeader() {
                 href="https://www.instagram.com/elevateforhumanity"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-pink-600 transition"
+                className="text-gray-600 hover:text-gray-900 transition"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
@@ -274,7 +274,7 @@ export default function SiteHeader() {
                 href="https://www.linkedin.com/company/elevate-for-humanity"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-700 transition"
+                className="text-gray-600 hover:text-gray-900 transition"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
@@ -379,7 +379,7 @@ export default function SiteHeader() {
                               <Link
                                 key={item.href}
                                 href={item.href}
-                                className="block px-6 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition active:bg-blue-100 touch-manipulation"
+                                className="block px-6 py-2.5 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition active:bg-gray-200 touch-manipulation"
                                 onClick={() => {
                                   setMobileMenuOpen(false);
                                   setExpandedMobileSection(null);

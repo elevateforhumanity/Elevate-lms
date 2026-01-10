@@ -41,7 +41,7 @@ export default function HowItWorksPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/apply"
-              className="inline-block px-8 py-4 bg-white text-brand-blue-600 rounded-lg font-bold hover:bg-blue-50 transition-colors"
+              className="inline-block px-8 py-4 bg-white text-brand-blue-600 rounded-lg font-bold hover:bg-gray-50 transition-colors"
             >
               Apply Now
             </Link>
@@ -403,7 +403,7 @@ export default function HowItWorksPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link
               href="/apply"
-              className="inline-block px-8 py-4 bg-white text-brand-blue-600 rounded-lg font-bold hover:bg-blue-50 transition-colors"
+              className="inline-block px-8 py-4 bg-white text-brand-blue-600 rounded-lg font-bold hover:bg-gray-50 transition-colors"
             >
               Apply Now
             </Link>

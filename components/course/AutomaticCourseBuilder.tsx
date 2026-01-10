@@ -219,7 +219,7 @@ export default function AutomaticCourseBuilder() {
               <button
                 key={index}
                 onClick={() => setPrompt(example)}
-                className="w-full text-left p-4 bg-white rounded-lg hover:bg-blue-50 hover:border-blue-300 border-2 border-slate-200 transition-all"
+                className="w-full text-left p-4 bg-white rounded-lg hover:bg-gray-50 hover:border-blue-300 border-2 border-slate-200 transition-all"
               >
                 <div className="flex items-start gap-3">
                   <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">

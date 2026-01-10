@@ -42,7 +42,7 @@ export default async function PrivacyPolicyPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
+            <div className="bg-white rounded-lg shadow-lg p-4 sm:p-4 sm:p-6 md:p-8 md:p-12">
               <div className="prose prose-lg max-w-none">
                 <h2 className="text-3xl font-bold mb-6">Privacy Policy</h2>
 
@@ -60,7 +60,7 @@ export default async function PrivacyPolicyPage() {
                   services.
                 </p>
 
-                <h3 className="text-2xl font-bold mt-8 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mt-8 mb-4">
                   1. Information We Collect
                 </h3>
 
@@ -109,7 +109,7 @@ export default async function PrivacyPolicyPage() {
                   <li>Device identifiers</li>
                 </ul>
 
-                <h3 className="text-2xl font-bold mt-8 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mt-8 mb-4">
                   2. How We Use Your Information
                 </h3>
                 <p className="mb-4">We use the information we collect to:</p>
@@ -126,7 +126,7 @@ export default async function PrivacyPolicyPage() {
                   <li>Send marketing communications (with your consent)</li>
                 </ul>
 
-                <h3 className="text-2xl font-bold mt-8 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mt-8 mb-4">
                   3. Information Sharing and Disclosure
                 </h3>
                 <p className="mb-4">We may share your information with:</p>
@@ -165,7 +165,7 @@ export default async function PrivacyPolicyPage() {
                   or to protect our rights, property, or safety.
                 </p>
 
-                <h3 className="text-2xl font-bold mt-8 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mt-8 mb-4">
                   4. Cookies and Tracking Technologies
                 </h3>
                 <p className="mb-4">
@@ -193,7 +193,7 @@ export default async function PrivacyPolicyPage() {
                   different websites.
                 </p>
 
-                <h3 className="text-2xl font-bold mt-8 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mt-8 mb-4">
                   5. Data Security
                 </h3>
                 <p className="mb-6">
@@ -204,7 +204,7 @@ export default async function PrivacyPolicyPage() {
                   is 100% secure.
                 </p>
 
-                <h3 className="text-2xl font-bold mt-8 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mt-8 mb-4">
                   6. Your Rights and Choices
                 </h3>
                 <p className="mb-4">You have the right to:</p>
@@ -235,7 +235,7 @@ export default async function PrivacyPolicyPage() {
                   elevate4humanityedu@gmail.com
                 </p>
 
-                <h3 className="text-2xl font-bold mt-8 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mt-8 mb-4">
                   7. FERPA Compliance (Student Education Records)
                 </h3>
                 <p className="mb-4">
@@ -343,7 +343,7 @@ export default async function PrivacyPolicyPage() {
                   Washington, DC 20202-8520
                 </p>
 
-                <h3 className="text-2xl font-bold mt-8 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mt-8 mb-4">
                   8. Children's Privacy (COPPA)
                 </h3>
                 <p className="mb-6">
@@ -355,7 +355,7 @@ export default async function PrivacyPolicyPage() {
                   as required by applicable law.
                 </p>
 
-                <h3 className="text-2xl font-bold mt-8 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mt-8 mb-4">
                   9. California Privacy Rights
                 </h3>
                 <p className="mb-6">
@@ -367,7 +367,7 @@ export default async function PrivacyPolicyPage() {
                   information.
                 </p>
 
-                <h3 className="text-2xl font-bold mt-8 mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold mt-8 mb-4">
                   9. Changes to This Privacy Policy
                 </h3>
                 <p className="mb-6">
@@ -376,12 +376,12 @@ export default async function PrivacyPolicyPage() {
                   this page and updating the "Last Updated" date.
                 </p>
 
-                <h3 className="text-2xl font-bold mt-8 mb-4">10. Contact Us</h3>
+                <h3 className="text-xl sm:text-2xl font-bold mt-8 mb-4">10. Contact Us</h3>
                 <p className="mb-4">
                   If you have questions or concerns about this Privacy Policy,
                   please contact us:
                 </p>
-                <div className="bg-gray-50 p-6 rounded-lg mb-6">
+                <div className="bg-gray-50 p-4 sm:p-6 rounded-lg mb-6">
                   <p className="mb-2">
                     <strong>Elevate for Humanity</strong>
                   </p>
@@ -402,7 +402,7 @@ export default async function PrivacyPolicyPage() {
 
             {/* CTA Section */}
             <div className="mt-12 text-center">
-              <h3 className="text-2xl font-bold mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4">
                 Questions About Your Privacy?
               </h3>
               <p className="text-gray-600 mb-6">
@@ -411,7 +411,7 @@ export default async function PrivacyPolicyPage() {
               </p>
               <Link
                 href="/contact"
-                className="inline-block bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+                className="inline-block bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-4 sm:px-6 md:px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
               >
                 Contact Us
               </Link>

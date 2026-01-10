@@ -289,7 +289,7 @@ export default function AdvancedQuizBuilder() {
                 <button
                   key={type}
                   onClick={() => addQuestion(type)}
-                  className="flex flex-col items-center gap-2 p-3 border rounded-lg hover:bg-blue-50 hover:border-blue-500 text-sm"
+                  className="flex flex-col items-center gap-2 p-3 border rounded-lg hover:bg-gray-50 hover:border-blue-500 text-sm"
                 >
                   <Icon className="w-5 h-5" />
                   <span className="text-center">{label}</span>

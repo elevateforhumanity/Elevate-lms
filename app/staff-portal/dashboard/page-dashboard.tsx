@@ -150,7 +150,7 @@ export default async function StaffPortalPage() {
           <div className="grid md:grid-cols-4 gap-4">
             <Link
               href="/staff-portal/students"
-              className="p-4 border-2 border-slate-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition text-center"
+              className="p-4 border-2 border-slate-200 rounded-lg hover:border-blue-500 hover:bg-gray-50 transition text-center"
             >
               <div className="text-3xl mb-2">
                 <Users className="w-5 h-5 inline-block" />

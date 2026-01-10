@@ -165,7 +165,7 @@ export default function DocumentUpload({
             ? 'border-blue-500 bg-blue-50'
             : error
             ? 'border-red-300 bg-red-50'
-            : 'border-gray-300 bg-gray-50 hover:border-blue-400 hover:bg-blue-50'
+            : 'border-gray-300 bg-gray-50 hover:border-blue-400 hover:bg-gray-50'
         }`}
       >
         <input
@@ -330,7 +330,7 @@ export default function DocumentUpload({
                         <>
                           <button
                             onClick={() => window.open(file.url, '_blank')}
-                            className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                            className="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors"
                             title="Preview"
                           >
                             <Eye className="w-5 h-5" />

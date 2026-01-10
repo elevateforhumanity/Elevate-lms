@@ -44,7 +44,7 @@ export default function CourseraStyleHeader() {
                   <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2">
                     <Link
                       href="/programs"
-                      className="block px-4 py-3 text-sm font-semibold text-blue-600 hover:bg-blue-50 border-b border-gray-100"
+                      className="block px-4 py-3 text-sm font-semibold text-blue-600 hover:bg-gray-50 border-b border-gray-100"
                       onClick={() => setExploreOpen(false)}
                     >
                       View All Programs
@@ -141,7 +141,7 @@ d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 
             <div className="hidden lg:flex items-center gap-3">
               <Link
                 href="/contact"
-                className="px-4 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50 rounded-lg transition border border-blue-600"
+                className="px-4 py-2 text-sm font-medium text-blue-600 hover:bg-gray-50 rounded-lg transition border border-blue-600"
               >
                 Talk to Advisor
               </Link>
@@ -210,7 +210,7 @@ d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 
             <div className="pt-3 border-t border-gray-200 space-y-2">
               <Link
                 href="/login"
-                className="block px-4 py-2 text-sm font-medium text-center text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50"
+                className="block px-4 py-2 text-sm font-medium text-center text-blue-600 border border-blue-600 rounded-lg hover:bg-gray-50"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Log In

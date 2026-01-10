@@ -310,7 +310,7 @@ export default function SupersonicMarketingPage() {
                   </Link>
                   <Link
                     href="/supersonic-fast-cash/upload-documents"
-                    className="px-4 py-4 bg-white border-2 border-blue-900 text-blue-900 font-black rounded-xl hover:bg-blue-50 transition-all"
+                    className="px-4 py-4 bg-white border-2 border-blue-900 text-blue-900 font-black rounded-xl hover:bg-gray-50 transition-all"
                     title="Upload Documents"
                   >
                     📤

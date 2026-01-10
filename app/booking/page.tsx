@@ -345,7 +345,7 @@ export default async function BookingPage() {
                           slot.available
                             ? selectedSlot?.id === slot.id
                               ? 'bg-brand-blue-600 text-white'
-                              : 'bg-slate-100 text-slate-900 hover:bg-blue-100'
+                              : 'bg-slate-100 text-slate-900 hover:bg-gray-100'
                             : 'bg-slate-50 text-slate-400 cursor-not-allowed'
                         }`}
                       >

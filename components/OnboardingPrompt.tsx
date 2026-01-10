@@ -74,7 +74,7 @@ export default function OnboardingPrompt({ userId, userRole }: OnboardingPromptP
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={handleStart}
-                className="flex items-center gap-2 px-6 py-2 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors"
+                className="flex items-center gap-2 px-6 py-2 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
               >
                 Start Tour
                 <ChevronRight className="w-4 h-4" />

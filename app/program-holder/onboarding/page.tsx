@@ -488,7 +488,7 @@ export default function ProgramHolderOnboarding() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/program-holder/apply"
-              className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 text-lg transition-all"
+              className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg transition-all"
             >
               Apply Now
             </Link>

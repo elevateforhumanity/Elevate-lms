@@ -225,7 +225,7 @@ export default function PricingPage() {
           </p>
           <a
             href="tel:3173143757"
-            className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-lg font-bold text-lg transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 hover:bg-gray-50 px-8 py-4 rounded-lg font-bold text-lg transition-colors"
           >
             <Phone className="w-5 h-5" />
             (317) 314-3757

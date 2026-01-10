@@ -37,7 +37,7 @@ export default function RefundPolicyPage() {
               to our training programs.
             </p>
 
-            <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-4 mt-8">
+            <h3 className="text-lg md:text-base sm:text-lg font-bold text-slate-900 mb-4 mt-8">
               Program Withdrawal
             </h3>
             <p className="text-slate-700 mb-4">
@@ -59,7 +59,7 @@ export default function RefundPolicyPage() {
               policy:
             </p>
 
-            <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-4 mt-8">
+            <h3 className="text-lg md:text-base sm:text-lg font-bold text-slate-900 mb-4 mt-8">
               100% Satisfaction Guarantee
             </h3>
             <p className="text-slate-700 mb-4">
@@ -77,7 +77,7 @@ export default function RefundPolicyPage() {
               </li>
             </ul>
 
-            <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-4 mt-8">
+            <h3 className="text-lg md:text-base sm:text-lg font-bold text-slate-900 mb-4 mt-8">
               Refund Request Timeline
             </h3>
             <p className="text-slate-700 mb-4">
@@ -164,7 +164,7 @@ export default function RefundPolicyPage() {
             <p className="text-slate-700 mb-4">
               For refund requests or questions about this policy:
             </p>
-            <div className="bg-slate-50 p-6 rounded-lg mb-8">
+            <div className="bg-slate-50 p-4 sm:p-6 rounded-lg mb-8">
               <p className="text-slate-700 mb-2">
                 <strong>Elevate For Humanity</strong>
               </p>

@@ -162,7 +162,7 @@ export default function DrugTestingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="tel:+13173143757"
-                className="inline-block px-8 py-4 bg-white text-brand-blue-600 rounded-lg font-bold hover:bg-blue-50"
+                className="inline-block px-8 py-4 bg-white text-brand-blue-600 rounded-lg font-bold hover:bg-gray-50"
               >
                 Call (317) 314-3757
               </a>
@@ -436,7 +436,7 @@ export default function DrugTestingPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="tel:+13173143757"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand-blue-600 rounded-lg font-bold hover:bg-blue-50"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand-blue-600 rounded-lg font-bold hover:bg-gray-50"
             >
               <Phone className="w-5 h-5" />
               Call (317) 314-3757
