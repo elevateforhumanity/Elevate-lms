@@ -2,63 +2,175 @@
 export const maxDuration = 60;
 
 import { NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createAdminClient } from '@/lib/supabase/server';
 import { sendCreatorRejectionEmail } from '@/lib/email/resend';
 import { toError, toErrorMessage } from '@/lib/safe';
+import { z } from 'zod';
+
+// Input validation schema
+const rejectCreatorSchema = z.object({
+  creatorId: z.string().uuid('Invalid creator ID'),
+  reason: z.string()
+    .min(10, 'Rejection reason must be at least 10 characters')
+    .max(500, 'Rejection reason must be less than 500 characters'),
+});
 
 export async function POST(req: Request) {
   try {
+    // 1. Authentication
     const supabase = await createClient();
     const {
       data: { user },
     } = await supabase.auth.getUser();
 
     if (!user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized', code: 'AUTH_REQUIRED' }, { status: 401 });
     }
 
-    // Check admin role
+    // 2. Authorization - check for admin or super_admin
     const { data: profile } = await supabase
       .from('profiles')
       .select('role')
       .eq('id', user.id)
       .single();
 
-    if (profile?.role !== 'admin') {
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    if (!profile || (profile.role !== 'admin' && profile.role !== 'super_admin')) {
+      console.warn('[Creator Rejection] Unauthorized attempt', { userId: user.id, role: profile?.role });
+      return NextResponse.json({ error: 'Forbidden', code: 'INSUFFICIENT_PERMISSIONS' }, { status: 403 });
     }
 
-    const { creatorId, reason } = await req.json();
+    // 3. Input validation
+    const body = await req.json();
+    const validation = rejectCreatorSchema.safeParse(body);
 
-    // Get creator details before deletion
-    const { data: creator } = await supabase
+    if (!validation.success) {
+      return NextResponse.json(
+        { 
+          error: 'Invalid input', 
+          code: 'VALIDATION_ERROR',
+          details: validation.error.errors 
+        },
+        { status: 400 }
+      );
+    }
+
+    const { creatorId, reason } = validation.data;
+
+    // 4. Use admin client to bypass RLS
+    const adminSupabase = createAdminClient();
+
+    // 5. Check if creator exists and get details
+    const { data: creator, error: fetchError } = await adminSupabase
       .from('marketplace_creators')
-      .select('user_id, profiles(email, full_name)')
+      .select('id, status, user_id, profiles(email, full_name)')
       .eq('id', creatorId)
       .single();
 
-    // Delete the creator application (or mark as rejected)
-    const { error } = await supabase
-      .from('marketplace_creators')
-      .delete()
-      .eq('id', creatorId);
-
-    if (error) throw error;
-
-    // Send rejection email
-    const creatorProfile = creator?.profiles as unknown;
-    if (creatorProfile?.email) {
-      try {
-        await sendCreatorRejectionEmail({
-          email: creatorProfile.email,
-          name: creatorProfile.full_name || 'Applicant',
-          reason: reason || 'Application does not meet requirements',
-        });
-      } catch (emailError) {}
+    if (fetchError || !creator) {
+      console.warn('[Creator Rejection] Creator not found', { creatorId });
+      return NextResponse.json(
+        { error: 'Creator not found', code: 'CREATOR_NOT_FOUND' },
+        { status: 404 }
+      );
     }
 
-    return NextResponse.json({ success: true });
+    // 6. Check if already rejected
+    if (creator.status === 'rejected') {
+      return NextResponse.json(
+        { error: 'Creator already rejected', code: 'ALREADY_REJECTED' },
+        { status: 400 }
+      );
+    }
+
+    // 7. Update status (don't delete!)
+    const { error: updateError } = await adminSupabase
+      .from('marketplace_creators')
+      .update({
+        status: 'rejected',
+        rejection_reason: reason,
+        rejected_at: new Date().toISOString(),
+        rejected_by: user.id,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', creatorId);
+
+    if (updateError) {
+      console.error('[Creator Rejection] Update failed', updateError, { creatorId });
+      throw updateError;
+    }
+
+    // 8. Send rejection email
+    const creatorProfile = creator.profiles as any;
+    let emailSent = false;
+    
+    if (creatorProfile?.email) {
+      try {
+        const result = await sendCreatorRejectionEmail({
+          email: creatorProfile.email,
+          name: creatorProfile.full_name || 'Applicant',
+          reason,
+        });
+        
+        emailSent = result.success;
+        
+        if (!result.success) {
+          console.error('[Creator Rejection] Email failed', {
+            creatorId,
+            email: creatorProfile.email,
+            error: result.error,
+          });
+        }
+      } catch (emailError) {
+        console.error('[Creator Rejection] Email error', emailError, {
+          creatorId,
+          email: creatorProfile.email,
+        });
+      }
+    }
+
+    // 9. Audit log
+    try {
+      await adminSupabase.from('audit_logs').insert({
+        action: 'creator_rejected',
+        actor_id: user.id,
+        target_id: creatorId,
+        metadata: {
+          reason,
+          creator_email: creatorProfile?.email,
+          email_sent: emailSent,
+          timestamp: new Date().toISOString(),
+        },
+      });
+    } catch (auditError) {
+      // Log but don't fail the request
+      console.error('[Creator Rejection] Audit log failed', auditError);
+    }
+
+    // 10. Success response
+    console.log('[Creator Rejection] Success', {
+      creatorId,
+      rejectedBy: user.id,
+      emailSent,
+    });
+
+    return NextResponse.json({
+      success: true,
+      emailSent,
+      message: emailSent
+        ? 'Creator rejected and notified via email'
+        : 'Creator rejected but email notification failed',
+    });
+
   } catch (err: unknown) {
-    return NextResponse.json({ err: toErrorMessage(err) }, { status: 500 });
+    console.error('[Creator Rejection] Failed', err);
+    
+    return NextResponse.json(
+      {
+        error: 'Failed to reject creator',
+        code: 'REJECTION_FAILED',
+        message: err instanceof Error ? err.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
   }
 }
