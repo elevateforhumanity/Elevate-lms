@@ -28,9 +28,11 @@ const nextConfig = {
       '@radix-ui/react-dropdown-menu',
       '@radix-ui/react-select',
       'recharts',
+      'react-hot-toast',
+      'date-fns',
     ],
     webpackBuildWorker: true,
-    // optimizeCss: true, // Disabled - requires critters package
+    optimizeCss: true,
   },
   
   // Suppress middleware deprecation warning (middleware.ts is still correct for our use case)
@@ -100,11 +102,11 @@ const nextConfig = {
     return config;
   },
   images: {
-    unoptimized: false, // Enable Next.js image optimization
-    formats: ['image/webp', 'image/avif'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    unoptimized: false,
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 31536000, // 1 year cache
+    minimumCacheTTL: 31536000,
     dangerouslyAllowSVG: true,
     contentDispositionType: 'inline',
     // Allow all external images - no restrictions

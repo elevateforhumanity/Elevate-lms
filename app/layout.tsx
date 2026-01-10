@@ -19,8 +19,9 @@ import { Inter } from 'next/font/google';
 
 const inter = Inter({
   subsets: ['latin'],
-  display: 'optional', // Changed from 'swap' to 'optional' for better mobile performance
+  display: 'swap',
   variable: '--font-inter',
+  preload: true,
   fallback: [
     'system-ui',
     '-apple-system',
