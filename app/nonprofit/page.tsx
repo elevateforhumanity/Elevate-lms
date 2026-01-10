@@ -92,7 +92,7 @@ export default function NonprofitPage() {
         </div>
       </section>
 
-      {/* Video Section - Placeholder */}
+      {/* Video Section */}
       <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="relative h-[400px] bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center">

@@ -84,11 +84,10 @@ export default async function OnboardingStartPage() {
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
           <h1 className="text-2xl font-bold text-slate-900 mb-4">
-            Onboarding Not Available
+            Complete Your Profile
           </h1>
           <p className="text-slate-600 mb-6">
-            Onboarding for your role is not currently available. Please contact
-            Elevate for Humanity.
+            To begin onboarding, please complete your profile information first. Contact support if you need assistance.
           </p>
           <a
             href="mailto:partnerships@elevateforhumanity.institute"

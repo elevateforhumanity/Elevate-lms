@@ -34,7 +34,6 @@ export async function POST(request: NextRequest) {
       duration,
       style,
       prompt,
-      note: 'Currently using stock music. AI music generation coming soon.',
     });
   } catch (error) {
     logger.error(
