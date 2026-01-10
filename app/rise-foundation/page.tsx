@@ -75,7 +75,7 @@ export default function RiseFoundationPage() {
       <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="relative h-[400px] rounded-lg overflow-hidden">
+            <div className="relative h-[400px] rounded-lg overflow-hidden border-4 border-gray-200">
               <Image
                 src="https://static.wixstatic.com/media/a9980c_542c794668484ecc911de7f139dad437~mv2.jpg"
                 alt="Mind, Body and spirit words engraved on zen stones"
@@ -85,7 +85,7 @@ export default function RiseFoundationPage() {
                 loading="lazy"
               />
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden">
+            <div className="relative h-[400px] rounded-lg overflow-hidden border-4 border-gray-200">
               <Image
                 src="https://static.wixstatic.com/media/a9980c_50880ae14adb46c09fb5244b2fa65c84~mv2.webp"
                 alt="Rocks of strength and resilience"

@@ -325,7 +325,7 @@ export default async function PartnerCoursesPage() {
                     </li>
                   </ul>
                 </div>
-                <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden border-4 border-gray-200">
                   <Image
                     src="/images/artlist/hero-training-2.jpg"
                     alt="Students learning"
