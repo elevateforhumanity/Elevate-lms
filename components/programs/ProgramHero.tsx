@@ -82,7 +82,7 @@ export function ProgramHero({ program }: { program: Program }) {
                 autoPlay
                 loop
                 playsInline
-                preload="auto"
+                preload="none"
                 className="absolute inset-0 w-full h-full object-cover"
               >
                 <source

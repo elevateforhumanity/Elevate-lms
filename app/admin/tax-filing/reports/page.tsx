@@ -70,7 +70,7 @@ export default async function TaxFilingReportsPage() {
               Report Types
             </h2>
             <div className="space-y-3">
-              <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500">
+              <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500" aria-label="Action button">
                 <div className="font-semibold text-gray-900">
                   Monthly Summary
                 </div>
@@ -78,7 +78,7 @@ export default async function TaxFilingReportsPage() {
                   Returns filed and refunds processed
                 </div>
               </button>
-              <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500">
+              <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500" aria-label="Action button">
                 <div className="font-semibold text-gray-900">
                   Preparer Performance
                 </div>
@@ -86,7 +86,7 @@ export default async function TaxFilingReportsPage() {
                   Individual preparer statistics
                 </div>
               </button>
-              <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500">
+              <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500" aria-label="Action button">
                 <div className="font-semibold text-gray-900">
                   Client Demographics
                 </div>
@@ -102,13 +102,13 @@ export default async function TaxFilingReportsPage() {
               Export Options
             </h2>
             <div className="space-y-4">
-              <button className="w-full px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700">
+              <button className="w-full px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700" aria-label="Action button">
                 Export to CSV
               </button>
-              <button className="w-full px-4 py-2 bg-brand-green-600 text-white rounded-md hover:bg-green-700">
+              <button className="w-full px-4 py-2 bg-brand-green-600 text-white rounded-md hover:bg-green-700" aria-label="Action button">
                 Export to PDF
               </button>
-              <button className="w-full px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700">
+              <button className="w-full px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700" aria-label="Action button">
                 Export to Excel
               </button>
             </div>

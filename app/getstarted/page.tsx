@@ -22,7 +22,7 @@ export default function Page() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="none"
             className="w-full h-full object-cover"
           >
             <source src="/videos/getting-started-hero.mp4" type="video/mp4" />

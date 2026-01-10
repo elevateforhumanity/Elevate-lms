@@ -36,7 +36,7 @@ export default function BlogAdminPage() {
         </div>
 
         <div className="mt-6">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" aria-label="Action button">
             Create New Post
           </button>
         </div>

@@ -136,7 +136,7 @@ export default async function CustomerServicePage() {
                       >
                         {ticket.status === 'open' ? 'Open' : 'In Progress'}
                       </span>
-                      <button className="text-sm text-blue-600 hover:text-blue-700 font-medium">
+                      <button className="text-sm text-blue-600 hover:text-blue-700 font-medium" aria-label="Action button">
                         View Details →
                       </button>
                     </div>

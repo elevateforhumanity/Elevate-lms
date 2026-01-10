@@ -62,7 +62,7 @@ export function WelcomeAudio() {
       <audio
         ref={audioRef}
         src="/videos/voiceover.mp3?v=4"
-        preload="auto"
+        preload="none"
         onEnded={() => setIsPlaying(false)}
         onError={(e) => {
           // Error: $1

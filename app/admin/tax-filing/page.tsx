@@ -255,7 +255,7 @@ export default async function TaxFilingAdminPage() {
                         View
                       </Link>
                       {app.status === 'pending' && (
-                        <button className="text-brand-green-600 hover:text-green-900">
+                        <button className="text-brand-green-600 hover:text-green-900" aria-label="Action button">
                           Assign
                         </button>
                       )}

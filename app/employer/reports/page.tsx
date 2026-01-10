@@ -133,10 +133,10 @@ export default async function EmployerReportsPage() {
         </div>
 
         <div className="mt-6 flex gap-4">
-          <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+          <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700" aria-label="Action button">
             Export Report
           </button>
-          <button className="border border-slate-300 px-6 py-2 rounded-lg hover:bg-slate-50">
+          <button className="border border-slate-300 px-6 py-2 rounded-lg hover:bg-slate-50" aria-label="Action button">
             Schedule Report
           </button>
         </div>

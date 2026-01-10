@@ -317,13 +317,13 @@ export default async function GrantSubmissionsPage() {
               Export Options
             </h2>
             <div className="flex gap-4">
-              <button className="bg-brand-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 font-semibold">
+              <button className="bg-brand-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 font-semibold" aria-label="Action button">
                 <BarChart className="w-5 h-5 inline-block" /> Export to Excel
               </button>
-              <button className="bg-brand-orange-600 text-white px-6 py-3 rounded-lg hover:bg-brand-orange-700 font-semibold">
+              <button className="bg-brand-orange-600 text-white px-6 py-3 rounded-lg hover:bg-brand-orange-700 font-semibold" aria-label="Action button">
                 📄 Export to PDF
               </button>
-              <button className="bg-brand-blue-600 text-white px-6 py-3 rounded-lg hover:bg-brand-blue-700 font-semibold">
+              <button className="bg-brand-blue-600 text-white px-6 py-3 rounded-lg hover:bg-brand-blue-700 font-semibold" aria-label="Action button">
                 <Mail className="w-5 h-5 inline-block" /> Email Report
               </button>
             </div>

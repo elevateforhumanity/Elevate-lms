@@ -221,7 +221,7 @@ export default async function NewUserPage() {
               >
                 Cancel
               </Link>
-              <button className="px-6 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700 font-semibold">
+              <button className="px-6 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700 font-semibold" aria-label="Action button">
                 Create User
               </button>
             </div>

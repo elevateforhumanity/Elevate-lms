@@ -65,7 +65,7 @@ export default async function InstructorAddStudentPage() {
           <p className="text-sm text-blue-800 mb-3">
             Need to enroll multiple students? Upload a CSV file with student emails.
           </p>
-          <button className="text-sm bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          <button className="text-sm bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" aria-label="Action button">
             Upload CSV
           </button>
         </div>

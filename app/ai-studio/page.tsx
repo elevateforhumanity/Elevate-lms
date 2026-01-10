@@ -388,7 +388,7 @@ export default function AIStudioPage() {
                         <span className="text-xs font-medium text-purple-600 uppercase">
                           {asset.type}
                         </span>
-                        <button className="text-gray-400 hover:text-purple-600">
+                        <button className="text-gray-400 hover:text-purple-600" aria-label="Action button">
                           <Download className="w-4 h-4" />
                         </button>
                       </div>
@@ -414,7 +414,7 @@ export default function AIStudioPage() {
                       {(asset.type === 'voiceover' ||
                         asset.type === 'music') && (
                         <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg mb-2">
-                          <button className="text-purple-600 hover:text-purple-700">
+                          <button className="text-purple-600 hover:text-purple-700" aria-label="Action button">
                             <Play className="w-5 h-5" />
                           </button>
                           <div className="flex-1 h-1 bg-gray-200 rounded-full">

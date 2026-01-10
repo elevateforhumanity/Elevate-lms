@@ -351,7 +351,7 @@ export default function DevStudioPage() {
             Save
           </button>
 
-          <button className="flex items-center gap-2 px-4 py-2 bg-brand-blue-600 hover:bg-brand-blue-700 rounded">
+          <button className="flex items-center gap-2 px-4 py-2 bg-brand-blue-600 hover:bg-brand-blue-700 rounded" aria-label="Action button">
             <Play className="w-4 h-4" />
             Run
           </button>

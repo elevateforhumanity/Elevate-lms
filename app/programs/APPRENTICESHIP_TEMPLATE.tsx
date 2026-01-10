@@ -36,7 +36,7 @@ export default function ApprenticeshipPage() {
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="none"
             className="absolute inset-0 h-full w-full object-cover"
           >
             <source src="/videos/barber-hero-final.mp4" type="video/mp4" />

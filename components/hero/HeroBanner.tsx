@@ -164,11 +164,11 @@ export default function HeroBanner({
               autoPlay
               muted
               playsInline
-              preload="auto"
+              preload="none"
             />
 
             {voiceoverSrc && (
-              <audio ref={audioRef} src={voiceoverSrc} preload="auto" />
+              <audio ref={audioRef} src={voiceoverSrc} preload="none" />
             )}
 
             {overlay && (

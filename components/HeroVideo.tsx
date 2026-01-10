@@ -7,7 +7,7 @@ export function HeroVideo() {
       muted
       loop
       playsInline
-      preload="auto"
+      preload="none"
       className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       style={{
         objectFit: 'cover',

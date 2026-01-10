@@ -116,7 +116,7 @@ export default function VideoWatchPage({
           <div className="bg-black rounded-lg overflow-hidden shadow-2xl">
             <video
               controls
-              preload="metadata"
+              preload="none"
               poster={video.thumbnailUrl}
               className="w-full aspect-video"
             >

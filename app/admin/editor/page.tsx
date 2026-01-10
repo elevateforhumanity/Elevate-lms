@@ -199,7 +199,7 @@ export default function EditorPage() {
           >
             Save
           </button>
-          <button className="bg-gray-700 hover:bg-gray-600 px-4 py-1 rounded text-sm">
+          <button className="bg-gray-700 hover:bg-gray-600 px-4 py-1 rounded text-sm" aria-label="Action button">
             Run
           </button>
         </div>

@@ -197,16 +197,16 @@ export default async function AdminDocumentReviewPage() {
 
           {/* Filter Tabs */}
           <div className="flex gap-2 mb-6 border-b">
-            <button className="px-4 py-2 font-semibold text-blue-600 border-b-2 border-blue-600">
+            <button className="px-4 py-2 font-semibold text-blue-600 border-b-2 border-blue-600" aria-label="Action button">
               All ({documents?.length || 0})
             </button>
-            <button className="px-4 py-2 font-semibold text-slate-600 hover:text-slate-900">
+            <button className="px-4 py-2 font-semibold text-slate-600 hover:text-slate-900" aria-label="Action button">
               Pending ({pendingDocs.length})
             </button>
-            <button className="px-4 py-2 font-semibold text-slate-600 hover:text-slate-900">
+            <button className="px-4 py-2 font-semibold text-slate-600 hover:text-slate-900" aria-label="Action button">
               Approved ({approvedDocs.length})
             </button>
-            <button className="px-4 py-2 font-semibold text-slate-600 hover:text-slate-900">
+            <button className="px-4 py-2 font-semibold text-slate-600 hover:text-slate-900" aria-label="Action button">
               Rejected ({rejectedDocs.length})
             </button>
           </div>

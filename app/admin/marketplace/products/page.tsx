@@ -120,10 +120,10 @@ export default async function AdminProductsPage() {
                   ${(product.price_cents / 100).toFixed(2)}
                 </p>
                 <div className="mt-3 flex gap-2">
-                  <button className="text-sm text-brand-blue-600 hover:underline">
+                  <button className="text-sm text-brand-blue-600 hover:underline" aria-label="Action button">
                     Edit
                   </button>
-                  <button className="text-sm text-brand-orange-600 hover:underline">
+                  <button className="text-sm text-brand-orange-600 hover:underline" aria-label="Action button">
                     Archive
                   </button>
                 </div>

@@ -259,7 +259,7 @@ export default function EmailMarketingPage() {
                         </div>
                       </div>
                     </div>
-                    <button className="ml-4 text-sm font-semibold text-brand-orange-600 hover:text-brand-orange-700">
+                    <button className="ml-4 text-sm font-semibold text-brand-orange-600 hover:text-brand-orange-700" aria-label="Action button">
                       View →
                     </button>
                   </div>
@@ -275,7 +275,7 @@ export default function EmailMarketingPage() {
               <h2 className="text-xl font-semibold text-slate-900">
                 Email Templates
               </h2>
-              <button className="inline-flex items-center gap-2 rounded-xl bg-brand-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orange-700 transition">
+              <button className="inline-flex items-center gap-2 rounded-xl bg-brand-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orange-700 transition" aria-label="Action button">
                 <Plus className="h-4 w-4" />
                 New Template
               </button>
@@ -303,10 +303,10 @@ export default function EmailMarketingPage() {
                     Professional email template for {template.toLowerCase()}
                   </p>
                   <div className="flex gap-2">
-                    <button className="flex-1 text-sm font-semibold text-brand-orange-600 hover:text-brand-orange-700">
+                    <button className="flex-1 text-sm font-semibold text-brand-orange-600 hover:text-brand-orange-700" aria-label="Action button">
                       Edit
                     </button>
-                    <button className="flex-1 text-sm font-semibold text-slate-600 hover:text-slate-900">
+                    <button className="flex-1 text-sm font-semibold text-slate-600 hover:text-slate-900" aria-label="Action button">
                       Preview
                     </button>
                   </div>

@@ -137,10 +137,10 @@ export default async function CashAdvanceSettingsPage() {
 
             {/* Save Button */}
             <div className="flex justify-end gap-4 pt-4 border-t border-gray-200">
-              <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+              <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50" aria-label="Action button">
                 Cancel
               </button>
-              <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700">
+              <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700" aria-label="Action button">
                 Save Settings
               </button>
             </div>

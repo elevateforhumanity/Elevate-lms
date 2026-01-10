@@ -227,10 +227,10 @@ export default async function GrantIntakePage() {
               >
                 Cancel
               </Link>
-              <button className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700">
+              <button className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700" aria-label="Action button">
                 Save as Draft
               </button>
-              <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700">
+              <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700" aria-label="Action button">
                 Submit Application
               </button>
             </div>

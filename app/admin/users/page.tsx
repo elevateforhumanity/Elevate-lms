@@ -267,7 +267,7 @@ export default async function Page() {
                           >
                             Edit
                           </Link>
-                          <button className="text-brand-orange-600 hover:text-red-700">
+                          <button className="text-brand-orange-600 hover:text-red-700" aria-label="Action button">
                             Delete
                           </button>
                         </td>
@@ -298,7 +298,7 @@ export default async function Page() {
                   >
                     Previous
                   </button>
-                  <button className="px-3 py-1 border rounded text-sm hover:bg-white">
+                  <button className="px-3 py-1 border rounded text-sm hover:bg-white" aria-label="Action button">
                     Next
                   </button>
                 </div>

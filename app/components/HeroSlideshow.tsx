@@ -40,7 +40,7 @@ export default function HeroSlideshow() {
         ref={videoRef}
         autoPlay
         playsInline
-        preload="auto"
+        preload="none"
         className="absolute inset-0 w-full h-full object-cover"
         style={{
           objectFit: 'cover',

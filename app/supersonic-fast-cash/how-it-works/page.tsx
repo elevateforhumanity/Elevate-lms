@@ -18,7 +18,7 @@ export default async function HowItWorksPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image src="/images/efh/hero/hero-main-clean.jpg" alt="How It Works" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} />
+        <Image src="/images/efh/hero/hero-main-clean.jpg" alt="How It Works" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} / loading="lazy">
         <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -112,7 +112,7 @@ export default async function HowItWorksPage() {
                 </ul>
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image src="/images/pathways/business-hero.jpg" alt="How It Works" width={800} height={600} className="w-full h-full object-cover" quality={85} />
+                <Image src="/images/pathways/business-hero.jpg" alt="How It Works" width={800} height={600} className="w-full h-full object-cover" quality={85} / loading="lazy">
               </div>
             </div>
 

@@ -51,7 +51,7 @@ export default function PartnerLoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="w-full rounded-xl p-3 border bg-black text-white">
+          <button className="w-full rounded-xl p-3 border bg-black text-white" aria-label="Action button">
             Sign in
           </button>
           {msg && <div className="text-sm text-brand-orange-600">{msg}</div>}

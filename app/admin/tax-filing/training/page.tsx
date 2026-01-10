@@ -76,10 +76,10 @@ export default async function TaxPreparerTrainingPage() {
                   Complete IRS VITA training and pass certification test
                 </p>
                 <div className="flex gap-3">
-                  <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700 text-sm">
+                  <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700 text-sm" aria-label="Action button">
                     Start Training
                   </button>
-                  <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 text-sm">
+                  <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 text-sm" aria-label="Action button">
                     View Materials
                   </button>
                 </div>
@@ -93,10 +93,10 @@ export default async function TaxPreparerTrainingPage() {
                   Advanced tax scenarios and complex returns
                 </p>
                 <div className="flex gap-3">
-                  <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700 text-sm">
+                  <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700 text-sm" aria-label="Action button">
                     Start Training
                   </button>
-                  <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 text-sm">
+                  <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 text-sm" aria-label="Action button">
                     View Materials
                   </button>
                 </div>
@@ -110,10 +110,10 @@ export default async function TaxPreparerTrainingPage() {
                   Learn to review and approve tax returns
                 </p>
                 <div className="flex gap-3">
-                  <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700 text-sm">
+                  <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700 text-sm" aria-label="Action button">
                     Start Training
                   </button>
-                  <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 text-sm">
+                  <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 text-sm" aria-label="Action button">
                     View Materials
                   </button>
                 </div>

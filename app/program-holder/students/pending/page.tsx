@@ -216,10 +216,10 @@ export default async function PendingStudentsPage() {
                           </td>
                           <td className="py-3 px-4">
                             <div className="flex gap-2">
-                              <button className="px-3 py-1 bg-brand-green-600 hover:bg-brand-green-700 text-white text-sm font-medium rounded transition-colors">
+                              <button className="px-3 py-1 bg-brand-green-600 hover:bg-brand-green-700 text-white text-sm font-medium rounded transition-colors" aria-label="Action button">
                                 Accept
                               </button>
-                              <button className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded transition-colors">
+                              <button className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded transition-colors" aria-label="Action button">
                                 Decline
                               </button>
                             </div>

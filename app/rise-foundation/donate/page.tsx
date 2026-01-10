@@ -69,7 +69,7 @@ export default async function DonatePage() {
                 <p className="text-slate-600 mb-6">
                   Support our mission with a general donation
                 </p>
-                <button className="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium">
+                <button className="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium" aria-label="Action button">
                   Donate Now
                 </button>
               </div>
@@ -112,7 +112,7 @@ export default async function DonatePage() {
                         </div>
                       </div>
 
-                      <button className="w-full px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium">
+                      <button className="w-full px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium" aria-label="Action button">
                         Donate to This Campaign
                       </button>
                     </div>
@@ -142,7 +142,7 @@ export default async function DonatePage() {
                 placeholder="Custom amount"
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg mb-4"
               />
-              <button className="w-full px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium">
+              <button className="w-full px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium" aria-label="Action button">
                 Continue to Payment
               </button>
             </div>

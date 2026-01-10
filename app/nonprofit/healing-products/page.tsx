@@ -35,7 +35,7 @@ export default function HealingProductsPage() {
                 Guided journals for self-reflection, gratitude, and healing. Track your journey and celebrate progress.
               </p>
               <div className="text-2xl font-bold text-purple-600 mb-4">$24.99</div>
-              <button className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
+              <button className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition" aria-label="Action button">
                 Add to Cart
               </button>
             </div>
@@ -46,7 +46,7 @@ export default function HealingProductsPage() {
                 Organic herbal teas designed to calm, restore, and support your body's natural healing.
               </p>
               <div className="text-2xl font-bold text-purple-600 mb-4">$18.99</div>
-              <button className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
+              <button className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition" aria-label="Action button">
                 Add to Cart
               </button>
             </div>
@@ -57,7 +57,7 @@ export default function HealingProductsPage() {
                 Essential oils and diffuser to create a calming environment for meditation and relaxation.
               </p>
               <div className="text-2xl font-bold text-purple-600 mb-4">$39.99</div>
-              <button className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
+              <button className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition" aria-label="Action button">
                 Add to Cart
               </button>
             </div>
@@ -68,7 +68,7 @@ export default function HealingProductsPage() {
                 Complete kit with bath salts, candles, and mindfulness cards for your healing journey.
               </p>
               <div className="text-2xl font-bold text-purple-600 mb-4">$49.99</div>
-              <button className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">
+              <button className="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition" aria-label="Action button">
                 Add to Cart
               </button>
             </div>

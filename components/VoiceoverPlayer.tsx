@@ -146,7 +146,7 @@ export default function VoiceoverPlayer({
           // Only use custom professional voiceover - no robotic fallback
           useBrowserSpeech();
         }}
-        preload="metadata"
+        preload="none"
         className="hidden"
       />
     </>

@@ -212,7 +212,7 @@ export default async function ReportsPage() {
                             {new Date(report.created_at).toLocaleDateString()}
                           </td>
                           <td className="py-3 px-4">
-                            <button className="text-brand-blue-600 hover:text-brand-blue-700 font-medium text-sm">
+                            <button className="text-brand-blue-600 hover:text-brand-blue-700 font-medium text-sm" aria-label="Action button">
                               View
                             </button>
                           </td>

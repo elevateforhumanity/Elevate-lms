@@ -131,7 +131,7 @@ export default function ServicesPage() {
 
       {/* Hero Banner - LEFT ALIGNED, ASYMMETRIC */}
       <section className="relative min-h-[70vh] w-full overflow-hidden bg-black">
-        <Image src="/images/pathways/business-hero.jpg" alt="Our Services" width={800} height={600} className="absolute inset-0 w-full h-full object-cover opacity-40" quality={85} />
+        <Image src="/images/pathways/business-hero.jpg" alt="Our Services" width={800} height={600} className="absolute inset-0 w-full h-full object-cover opacity-40" quality={85} / loading="lazy">
         <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
           <div className="max-w-2xl">
             {/* Administrative Header */}

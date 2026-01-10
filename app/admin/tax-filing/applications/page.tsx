@@ -115,7 +115,7 @@ export default async function TaxFilingApplicationsPage() {
               <option value="2023">2023</option>
               <option value="2022">2022</option>
             </select>
-            <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700">
+            <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700" aria-label="Action button">
               Apply Filters
             </button>
           </div>

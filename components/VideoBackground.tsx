@@ -40,7 +40,7 @@ export function VideoBackground({
         muted
         loop
         playsInline
-        preload="auto"
+        preload="none"
       >
         <source src={videoUrl} type="video/mp4" />
       </video>

@@ -67,7 +67,7 @@ export default function CertificatesPage() {
                 placeholder="Enter Certificate ID (e.g., EFH-2024-12345)"
                 className="flex-1 px-6 py-4 border-2 border-gray-300 rounded-xl text-black focus:border-blue-600 focus:outline-none"
               />
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold transition-colors flex items-center justify-center gap-2">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold transition-colors flex items-center justify-center gap-2" aria-label="Action button">
                 <Search className="h-5 w-5" />
                 Verify
               </button>

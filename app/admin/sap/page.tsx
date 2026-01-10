@@ -207,7 +207,7 @@ export default async function SAPMonitoringPage() {
               </p>
             </div>
             <div className="flex items-center gap-4">
-              <button className="flex items-center gap-2 px-4 py-2 text-slate-700 hover:text-slate-900 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors">
+              <button className="flex items-center gap-2 px-4 py-2 text-slate-700 hover:text-slate-900 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors" aria-label="Action button">
                 <Download className="w-4 h-4" />
                 <span>Export Report</span>
               </button>
@@ -358,7 +358,7 @@ export default async function SAPMonitoringPage() {
                     className="pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
-                <button className="flex items-center gap-2 px-4 py-2 text-slate-700 hover:text-slate-900 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors text-sm">
+                <button className="flex items-center gap-2 px-4 py-2 text-slate-700 hover:text-slate-900 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors text-sm" aria-label="Action button">
                   <Filter className="w-4 h-4" />
                   <span>Filter</span>
                 </button>

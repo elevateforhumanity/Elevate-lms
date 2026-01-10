@@ -234,10 +234,10 @@ export default async function CashAdvancesAdminPage() {
                       </Link>
                       {app.status === 'pending' && (
                         <>
-                          <button className="text-brand-green-600 hover:text-green-900 mr-4">
+                          <button className="text-brand-green-600 hover:text-green-900 mr-4" aria-label="Action button">
                             Approve
                           </button>
-                          <button className="text-brand-orange-600 hover:text-red-900">
+                          <button className="text-brand-orange-600 hover:text-red-900" aria-label="Action button">
                             Deny
                           </button>
                         </>

@@ -249,10 +249,10 @@ export default function DonatePage() {
                 DONATION TYPE
               </label>
               <div className="grid md:grid-cols-2 gap-4">
-                <button className="px-6 py-4 border-2 border-teal-500 bg-teal-50 rounded-lg font-bold text-teal-700 transition">
+                <button className="px-6 py-4 border-2 border-teal-500 bg-teal-50 rounded-lg font-bold text-teal-700 transition" aria-label="Action button">
                   One-Time Gift
                 </button>
-                <button className="px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-slate-900 hover:border-teal-500 hover:bg-teal-50 transition">
+                <button className="px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-slate-900 hover:border-teal-500 hover:bg-teal-50 transition" aria-label="Action button">
                   Monthly Giving
                 </button>
               </div>
@@ -264,15 +264,15 @@ export default function DonatePage() {
                 PAYMENT METHOD
               </label>
               <div className="grid md:grid-cols-3 gap-4">
-                <button className="flex items-center justify-center gap-2 px-6 py-4 border-2 border-teal-500 bg-teal-50 rounded-lg font-bold text-teal-700 transition">
+                <button className="flex items-center justify-center gap-2 px-6 py-4 border-2 border-teal-500 bg-teal-50 rounded-lg font-bold text-teal-700 transition" aria-label="Action button">
                   <CreditCard className="w-5 h-5" />
                   Card
                 </button>
-                <button className="flex items-center justify-center gap-2 px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-slate-900 hover:border-teal-500 hover:bg-teal-50 transition">
+                <button className="flex items-center justify-center gap-2 px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-slate-900 hover:border-teal-500 hover:bg-teal-50 transition" aria-label="Action button">
                   <Building2 className="w-5 h-5" />
                   Bank
                 </button>
-                <button className="flex items-center justify-center gap-2 px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-slate-900 hover:border-teal-500 hover:bg-teal-50 transition">
+                <button className="flex items-center justify-center gap-2 px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-slate-900 hover:border-teal-500 hover:bg-teal-50 transition" aria-label="Action button">
                   <Gift className="w-5 h-5" />
                   Other
                 </button>
@@ -338,7 +338,7 @@ export default function DonatePage() {
             </div>
 
             {/* Submit Button */}
-            <button className="w-full bg-white text-white px-8 py-5 rounded-lg font-bold text-lg hover: hover: transition shadow-lg hover:shadow-xl flex items-center justify-center gap-3">
+            <button className="w-full bg-white text-white px-8 py-5 rounded-lg font-bold text-lg hover: hover: transition shadow-lg hover:shadow-xl flex items-center justify-center gap-3" aria-label="Action button">
               <Heart className="w-6 h-6" />
               Complete Donation
             </button>

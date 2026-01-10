@@ -114,7 +114,7 @@ export default function HeroVideo({
       <video
         ref={videoRef}
         src={src}
-        preload="auto"
+        preload="none"
         playsInline
         loop
         controls={started}
@@ -124,7 +124,7 @@ export default function HeroVideo({
         <audio
           ref={audioRef}
           src={audioTrack}
-          preload="auto"
+          preload="none"
           loop
           className="hidden"
         />

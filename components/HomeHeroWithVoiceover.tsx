@@ -40,14 +40,14 @@ export function HomeHeroWithVoiceover({
         loop
         muted
         playsInline
-        preload="auto"
+        preload="none"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       >
         <source src={videoSrc} type="video/mp4" />
       </video>
 
       {/* Voiceover Audio */}
-      <audio ref={audioRef} src={audioSrc} preload="auto" />
+      <audio ref={audioRef} src={audioSrc} preload="none" />
 
       <div className="absolute inset-0 flex items-center justify-center text-center px-4 pointer-events-none">
         <div className="max-w-4xl w-full">

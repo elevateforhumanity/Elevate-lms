@@ -135,13 +135,13 @@ export default async function CashAdvanceReportsPage() {
             Export Reports
           </h2>
           <div className="flex gap-4">
-            <button className="px-4 py-2 bg-brand-blue-600 text-white rounded hover:bg-brand-blue-700">
+            <button className="px-4 py-2 bg-brand-blue-600 text-white rounded hover:bg-brand-blue-700" aria-label="Action button">
               Export to CSV
             </button>
-            <button className="px-4 py-2 bg-brand-green-600 text-white rounded hover:bg-green-700">
+            <button className="px-4 py-2 bg-brand-green-600 text-white rounded hover:bg-green-700" aria-label="Action button">
               Export to PDF
             </button>
-            <button className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">
+            <button className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700" aria-label="Action button">
               Export to Excel
             </button>
           </div>

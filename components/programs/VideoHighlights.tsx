@@ -63,7 +63,7 @@ function VideoCard({
               poster={poster}
               muted
               playsInline
-              preload="metadata"
+              preload="none"
               controls={started}
               className="w-full h-full object-cover"
             />

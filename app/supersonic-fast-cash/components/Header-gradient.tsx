@@ -30,7 +30,7 @@ export function SupersonicHeader() {
 
           <nav className="hidden md:flex items-center gap-8">
             <div className="relative group">
-              <button className="flex items-center gap-1 font-bold hover:text-red-400 transition-colors text-sm uppercase tracking-wide">
+              <button className="flex items-center gap-1 font-bold hover:text-red-400 transition-colors text-sm uppercase tracking-wide" aria-label="Action button">
                 Services{' '}
                 <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform" />
               </button>
@@ -65,7 +65,7 @@ export function SupersonicHeader() {
             </div>
 
             <div className="relative group">
-              <button className="flex items-center gap-1 font-bold hover:text-red-400 transition-colors text-sm uppercase tracking-wide">
+              <button className="flex items-center gap-1 font-bold hover:text-red-400 transition-colors text-sm uppercase tracking-wide" aria-label="Action button">
                 Tools{' '}
                 <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform" />
               </button>

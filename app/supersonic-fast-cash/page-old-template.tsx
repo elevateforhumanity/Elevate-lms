@@ -81,7 +81,7 @@ export default function SupersonicFastCashPage() {
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="none"
             className="absolute inset-0 h-full w-full object-cover"
           >
             <source

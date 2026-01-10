@@ -37,7 +37,7 @@ export function VideoHero({
         loop
         muted
         playsInline
-        preload="auto"
+        preload="none"
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src={videoSrc} type="video/mp4" />

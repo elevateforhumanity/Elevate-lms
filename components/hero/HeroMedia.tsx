@@ -105,7 +105,7 @@ export default function HeroMedia({
           muted
           playsInline
           autoPlay
-          preload="auto"
+          preload="none"
         >
           <source src={videoSrc} />
         </video>
@@ -130,7 +130,7 @@ export default function HeroMedia({
         <audio
           ref={audioRef}
           src={voiceoverSrc}
-          preload="auto"
+          preload="none"
           onEnded={onAudioEnded}
         />
       )}
