@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 import Image from 'next/image';
 
-// Lazy load below-fold components
+// Lazy load ALL components including hero
+const VideoHeroBanner = dynamic(() => import('@/components/home/VideoHeroBanner'), { loading: () => <div className="h-screen bg-gray-900" /> });
 const Intro = dynamic(() => import('@/components/home/Intro'), { loading: () => <div className="h-96" /> });
 const Orientation = dynamic(() => import('@/components/home/Orientation'), { loading: () => <div className="h-96" /> });
 const Testimonials = dynamic(() => import('@/components/home/Testimonials'), { loading: () => <div className="h-96" /> });
