@@ -97,6 +97,99 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Geographic Coverage */}
+      <section className="py-12 bg-gradient-to-br from-blue-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+            Serving Indiana Residents Statewide
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            With training locations across Indiana and online options, we make career training accessible to all Hoosiers
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="text-3xl font-black text-blue-600 mb-2">Indianapolis</div>
+              <div className="text-sm text-gray-600">Main Campus</div>
+            </div>
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="text-3xl font-black text-blue-600 mb-2">Fort Wayne</div>
+              <div className="text-sm text-gray-600">Training Center</div>
+            </div>
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="text-3xl font-black text-blue-600 mb-2">Evansville</div>
+              <div className="text-sm text-gray-600">Partner Site</div>
+            </div>
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="text-3xl font-black text-blue-600 mb-2">Online</div>
+              <div className="text-sm text-gray-600">Statewide Access</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners & Credentials */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+              Trusted Partners & Recognized Credentials
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We partner with leading organizations to provide industry-recognized training and certifications
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center mb-12">
+            <div className="flex flex-col items-center gap-2">
+              <div className="h-20 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-2xl font-black text-gray-800">WorkOne</div>
+                  <div className="text-xs text-gray-500">Indiana</div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="h-20 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-2xl font-black text-gray-800">Certiport</div>
+                  <div className="text-xs text-gray-500">Testing Center</div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="h-20 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-2xl font-black text-gray-800">WIOA</div>
+                  <div className="text-xs text-gray-500">Approved Provider</div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="h-20 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-2xl font-black text-gray-800">ETPL</div>
+                  <div className="text-xs text-gray-500">Listed Programs</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 text-center">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Industry-Recognized Certifications
+            </h3>
+            <div className="flex flex-wrap justify-center gap-4 text-sm font-semibold text-gray-700">
+              <span className="bg-white px-4 py-2 rounded-full shadow-sm">CompTIA A+</span>
+              <span className="bg-white px-4 py-2 rounded-full shadow-sm">CNA Certification</span>
+              <span className="bg-white px-4 py-2 rounded-full shadow-sm">HVAC EPA 608</span>
+              <span className="bg-white px-4 py-2 rounded-full shadow-sm">CDL Class A</span>
+              <span className="bg-white px-4 py-2 rounded-full shadow-sm">QuickBooks Certified</span>
+              <span className="bg-white px-4 py-2 rounded-full shadow-sm">Microsoft Office Specialist</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Keep existing sections */}
       <Intro />
       <Orientation />
