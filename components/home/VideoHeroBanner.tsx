@@ -30,16 +30,12 @@ export default function VideoHeroBanner({
   const videoRef = useRef<HTMLVideoElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Prevent hydration mismatch and lazy load video
+  // Prevent hydration mismatch and load video immediately
   useEffect(() => {
     setIsMounted(true);
     
-    // Delay video loading by 500ms to prioritize critical content
-    const timer = setTimeout(() => {
-      setShouldLoadVideo(true);
-    }, 500);
-    
-    return () => clearTimeout(timer);
+    // Load video immediately for instant page display
+    setShouldLoadVideo(true);
   }, []);
 
   useEffect(() => {
