@@ -25,6 +25,21 @@ body {
     box-sizing: border-box;
   }
 
+  /* Accessibility: Focus visible styles */
+  *:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+  }
+
   html,
   body {
     font-family:

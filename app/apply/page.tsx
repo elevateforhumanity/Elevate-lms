@@ -240,7 +240,7 @@ function ApplyLandingPageOld() {
       <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
         <img
           src="/images/efh/hero/hero-main.jpg"
-          alt="Apply"
+          alt="Students learning in training program"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50" />

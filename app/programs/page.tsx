@@ -152,7 +152,7 @@ export default function ProgramsBioSitePage() {
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
           <img
             src="/images/efh/hero/hero-main.jpg"
-            alt="Programs Overview"
+            alt="Career training programs overview - students in classroom"
             className="absolute inset-0 h-full w-full object-cover"
           />
           

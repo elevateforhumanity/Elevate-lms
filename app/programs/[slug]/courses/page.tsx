@@ -65,7 +65,7 @@ export default function ProgramCoursesPage() {
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <img
           src="/images/efh/hero/hero-main.jpg"
-          alt="Course Training"
+          alt="Professional training courses and certification programs"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90"></div>
