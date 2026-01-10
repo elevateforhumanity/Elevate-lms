@@ -53,14 +53,52 @@ export default function ProgramCoursesPage() {
     );
   }
 
+  // Format program name from slug
+  const programName = slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl font-bold mb-4">Available Courses</h1>
-          <p className="text-xl">Choose a course to start your learning journey</p>
+      {/* Hero Banner */}
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+        <img
+          src="/images/efh/hero/hero-main.jpg"
+          alt="Course Training"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90"></div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center text-white">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
+            <BookOpen className="w-5 h-5" />
+            <span className="text-sm font-bold uppercase tracking-wide">
+              {programName} Program
+            </span>
+          </div>
+          
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6">
+            Available Courses
+          </h1>
+          
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+            Choose a course to start your learning journey. Get certified and advance your career.
+          </p>
+          
+          <div className="flex flex-wrap gap-4 justify-center">
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full">
+              <span className="font-semibold">Industry-Recognized Credentials</span>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full">
+              <span className="font-semibold">Expert Instructors</span>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-3 rounded-full">
+              <span className="font-semibold">Job Placement Support</span>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         {courses.length === 0 ? (
@@ -74,13 +112,78 @@ export default function ProgramCoursesPage() {
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {courses.map((course) => (
-              <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
-                <img 
-                  src={course.image || '/images/courses/default-course.jpg'} 
-                  alt={course.title}
-                  className="w-full h-48 object-cover"
-                />
+            {courses.map((course, index) => {
+              // Cycle through category images based on program
+              const categoryImages: Record<string, string[]> = {
+                'healthcare': [
+                  '/hero-images/healthcare-category.jpg',
+                  '/images/programs/cna-hero.jpg',
+                  '/media/programs/efh-cna-hero.jpg'
+                ],
+                'skilled-trades': [
+                  '/hero-images/skilled-trades-category.jpg',
+                  '/images/programs/hvac-hero.jpg',
+                  '/images/programs/building-technician-hero.jpg'
+                ],
+                'technology': [
+                  '/hero-images/technology-category.jpg',
+                  '/hero-images/technology-hero.jpg',
+                  '/images/programs/web-development.jpg'
+                ],
+                'business': [
+                  '/hero-images/business-category.jpg',
+                  '/media/programs/efh-business-startup-marketing-hero.jpg',
+                  '/media/programs/efh-tax-office-startup-hero.jpg'
+                ],
+                'transportation': [
+                  '/hero-images/cdl-transportation-category.jpg',
+                  '/images/programs/cdl-hero.jpg',
+                  '/media/programs/cdl-hero.jpg'
+                ],
+                'barber': [
+                  '/hero-images/barber-beauty-category.jpg',
+                  '/images/programs/barber-hero.jpg',
+                  '/media/programs/efh-barber-hero.jpg'
+                ]
+              };
+              
+              // Determine category from slug
+              let category = 'healthcare';
+              if (slug.includes('skilled') || slug.includes('hvac') || slug.includes('electrical') || slug.includes('building')) {
+                category = 'skilled-trades';
+              } else if (slug.includes('tech') || slug.includes('web') || slug.includes('cyber')) {
+                category = 'technology';
+              } else if (slug.includes('business') || slug.includes('tax') || slug.includes('accounting') || slug.includes('financial')) {
+                category = 'business';
+              } else if (slug.includes('cdl') || slug.includes('transport')) {
+                category = 'transportation';
+              } else if (slug.includes('barber') || slug.includes('beauty') || slug.includes('cosmetology')) {
+                category = 'barber';
+              }
+              
+              const images = categoryImages[category] || categoryImages['healthcare'];
+              const courseImage = course.image || images[index % images.length];
+              
+              return (
+                <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                  <div className="relative aspect-video overflow-hidden bg-gray-100">
+                    <img 
+                      src={courseImage} 
+                      alt={course.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/images/efh/hero/hero-main.jpg';
+                      }}
+                    />
+                    <div className="absolute top-4 right-4">
+                      {course.price === 0 && (
+                        <span className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                          FREE
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-3">{course.title}</h3>
                   <p className="text-gray-600 mb-4 line-clamp-3">{course.description}</p>
@@ -153,7 +256,8 @@ export default function ProgramCoursesPage() {
                   </Link>
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
         )}
       </div>
