@@ -1534,26 +1534,24 @@ footer a:hover {
 
 /* ============================================================================
    FIXED HEADER / NAVBAR STYLING
-   Dark translucent header with scroll transition effect
+   Dark navy header with blue border
    ============================================================================ */
 
 header, .navbar, .site-header {
   position: fixed !important;
   top: 0 !important;
   width: 100% !important;
-  background-color: rgba(16, 24, 32, 0.95) !important; /* dark translucent backdrop */
-  backdrop-filter: blur(10px) !important; /* modern blur effect */
-  -webkit-backdrop-filter: blur(10px) !important; /* Safari support */
+  background-color: #101820 !important; /* dark navy */
   z-index: 1000 !important;
   transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
-  border-bottom: 1px solid rgba(0, 102, 204, 0.3) !important; /* subtle blue accent */
+  border-bottom: 2px solid #004a99 !important; /* blue border */
 }
 
-/* Scrolled state - solid background with shadow */
+/* Scrolled state - add shadow */
 header.scrolled, .navbar.scrolled, .site-header.scrolled {
-  background-color: rgba(16, 24, 32, 1) !important; /* fully opaque when scrolled */
+  background-color: #101820 !important; /* keep dark navy */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-  border-bottom: 2px solid #0066cc !important; /* stronger accent when scrolled */
+  border-bottom: 2px solid #004a99 !important;
 }
 
 /* Header links styling */
@@ -1575,6 +1573,7 @@ header img, .navbar img, .site-header img {
 /* Body padding to prevent content from hiding under fixed header */
 body {
   padding-top: 80px !important; /* Adjust based on your header height */
+  background-color: #ffffff !important; /* white background for all pages */
 }
 
 /* Mobile adjustments */
