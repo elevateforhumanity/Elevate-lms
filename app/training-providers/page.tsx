@@ -24,7 +24,7 @@ export default async function TrainingProvidersPage() {
         description="Join our network of approved training providers and help students access free career training through WIOA funding. We provide support, resources, and a streamlined partnership process."
         imageSrc="/images/artlist/hero-training-2.jpg"
         imageAlt="Training Providers"
-        primaryCTA={{ text: "Get Started", href: "/contact" }}
+        primaryCTA={{ text: "Get Started", href: "/partners/training-provider" }}
         secondaryCTA={{ text: "View Programs", href: "/programs" }}
         features={[
           "100% free training programs for eligible students",

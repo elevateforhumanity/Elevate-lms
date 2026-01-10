@@ -18,7 +18,7 @@ export default function Pathways() {
                 fill
                 className="object-cover group-hover:scale-105 transition"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 " />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                 <h3 className="text-xl font-bold mb-1">Explore Programs</h3>
                 <p className="text-sm">Healthcare, Trades, Tech & More →</p>
@@ -34,7 +34,7 @@ export default function Pathways() {
                 fill
                 className="object-cover group-hover:scale-105 transition"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 " />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                 <h3 className="text-xl font-bold mb-1">Get Funded</h3>
                 <p className="text-sm">100% Free Training Available →</p>
