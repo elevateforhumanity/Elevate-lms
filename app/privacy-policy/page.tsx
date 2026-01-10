@@ -236,18 +236,127 @@ export default async function PrivacyPolicyPage() {
                 </p>
 
                 <h3 className="text-2xl font-bold mt-8 mb-4">
-                  7. Children's Privacy
+                  7. FERPA Compliance (Student Education Records)
+                </h3>
+                <p className="mb-4">
+                  Elevate for Humanity complies with the Family Educational Rights and Privacy Act (FERPA), 
+                  20 U.S.C. § 1232g, which protects the privacy of student education records.
+                </p>
+
+                <h4 className="text-xl font-semibold mt-6 mb-3">
+                  Student Rights Under FERPA
+                </h4>
+                <ul className="list-disc pl-6 mb-6 space-y-2">
+                  <li>
+                    <strong>Right to Inspect:</strong> Students have the right to inspect and review their 
+                    education records within 45 days of request
+                  </li>
+                  <li>
+                    <strong>Right to Request Amendment:</strong> Students may request correction of records 
+                    believed to be inaccurate or misleading
+                  </li>
+                  <li>
+                    <strong>Right to Consent:</strong> Students must provide written consent before we disclose 
+                    personally identifiable information from education records, except as permitted by FERPA
+                  </li>
+                  <li>
+                    <strong>Right to File Complaint:</strong> Students may file complaints with the U.S. Department 
+                    of Education concerning alleged failures to comply with FERPA
+                  </li>
+                </ul>
+
+                <h4 className="text-xl font-semibold mt-6 mb-3">
+                  Education Records We Maintain
+                </h4>
+                <ul className="list-disc pl-6 mb-6 space-y-2">
+                  <li>Enrollment and registration information</li>
+                  <li>Academic transcripts and grades</li>
+                  <li>Attendance records</li>
+                  <li>Course completion certificates</li>
+                  <li>Financial aid and funding documentation</li>
+                  <li>Disciplinary records</li>
+                  <li>Accommodation and support service records</li>
+                </ul>
+
+                <h4 className="text-xl font-semibold mt-6 mb-3">
+                  Disclosure Without Consent
+                </h4>
+                <p className="mb-4">
+                  We may disclose education records without student consent to:
+                </p>
+                <ul className="list-disc pl-6 mb-6 space-y-2">
+                  <li>School officials with legitimate educational interest</li>
+                  <li>Other schools to which a student is transferring</li>
+                  <li>Authorized representatives for audit or evaluation purposes</li>
+                  <li>Financial aid organizations</li>
+                  <li>Organizations conducting studies for or on behalf of the school</li>
+                  <li>Accrediting organizations</li>
+                  <li>Comply with judicial orders or lawfully issued subpoenas</li>
+                  <li>Appropriate officials in health or safety emergencies</li>
+                  <li>State and local authorities within the juvenile justice system</li>
+                </ul>
+
+                <h4 className="text-xl font-semibold mt-6 mb-3">
+                  Directory Information
+                </h4>
+                <p className="mb-4">
+                  We may disclose the following "directory information" without consent unless you opt out:
+                </p>
+                <ul className="list-disc pl-6 mb-6 space-y-2">
+                  <li>Student name</li>
+                  <li>Program of study</li>
+                  <li>Dates of attendance</li>
+                  <li>Degrees, certificates, and awards received</li>
+                  <li>Participation in officially recognized activities</li>
+                </ul>
+                <p className="mb-6">
+                  To opt out of directory information disclosure, submit a written request to: 
+                  elevate4humanityedu@gmail.com
+                </p>
+
+                <h4 className="text-xl font-semibold mt-6 mb-3">
+                  Data Retention
+                </h4>
+                <p className="mb-6">
+                  Student education records are retained for a minimum of 5 years after program completion 
+                  or last date of attendance, in compliance with federal and state requirements. Transcripts 
+                  are maintained permanently.
+                </p>
+
+                <h4 className="text-xl font-semibold mt-6 mb-3">
+                  Annual Notification
+                </h4>
+                <p className="mb-6">
+                  We provide annual notification to students of their FERPA rights through email, student 
+                  portal announcements, and this privacy policy. Students are notified of their right to 
+                  inspect records, request amendments, consent to disclosures, and file complaints.
+                </p>
+
+                <h4 className="text-xl font-semibold mt-6 mb-3">
+                  FERPA Complaints
+                </h4>
+                <p className="mb-6">
+                  File complaints concerning alleged FERPA violations with:<br />
+                  Family Policy Compliance Office<br />
+                  U.S. Department of Education<br />
+                  400 Maryland Avenue, SW<br />
+                  Washington, DC 20202-8520
+                </p>
+
+                <h3 className="text-2xl font-bold mt-8 mb-4">
+                  8. Children's Privacy (COPPA)
                 </h3>
                 <p className="mb-6">
                   Our services are not directed to individuals under 16 years of
                   age. We do not knowingly collect personal information from
                   children under 16. If you believe we have collected
                   information from a child under 16, please contact us
-                  immediately.
+                  immediately. For students under 18, we obtain parental consent 
+                  as required by applicable law.
                 </p>
 
                 <h3 className="text-2xl font-bold mt-8 mb-4">
-                  8. California Privacy Rights
+                  9. California Privacy Rights
                 </h3>
                 <p className="mb-6">
                   California residents have additional rights under the

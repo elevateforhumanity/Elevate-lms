@@ -1,0 +1,60 @@
+import { NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
+import { recordConsent, getUserConsents, ConsentType } from '@/lib/consent';
+
+export const runtime = 'nodejs';
+
+export async function GET() {
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const consents = await getUserConsents(user.id);
+    return NextResponse.json({ consents });
+  } catch (error) {
+    console.error('Error fetching consents:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const body = await request.json();
+    const { consentType, granted, thirdPartyName } = body;
+
+    if (!consentType || typeof granted !== 'boolean') {
+      return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
+    }
+
+    const ipAddress = request.headers.get('x-forwarded-for') || 
+                      request.headers.get('x-real-ip') || 
+                      'unknown';
+    const userAgent = request.headers.get('user-agent') || 'unknown';
+
+    const consentId = await recordConsent(user.id, consentType as ConsentType, granted, {
+      ipAddress,
+      userAgent,
+      thirdPartyName,
+    });
+
+    if (!consentId) {
+      return NextResponse.json({ error: 'Failed to record consent' }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true, consentId });
+  } catch (error) {
+    console.error('Error recording consent:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
