@@ -76,7 +76,7 @@ export function AIAssistantBubble() {
     <>
       {/* Welcome Tooltip */}
       {showWelcome && !isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 animate-fade-in">
+        <div className="fixed bottom-24 right-6 z-50 animate-in fade-in slide-in-from-bottom-2 duration-300">
           <div className="bg-white rounded-lg shadow-2xl p-4 max-w-xs border border-gray-200 relative">
             <button
               onClick={() => setShowWelcome(false)}
@@ -114,7 +114,7 @@ export function AIAssistantBubble() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-96 h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col border border-gray-200 animate-slide-up">
+        <div className="fixed bottom-6 right-6 z-50 w-96 h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col border border-gray-200 animate-in slide-in-from-bottom-4 duration-300">
           {/* Header */}
           <div className="bg-brand-orange-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -193,37 +193,6 @@ export function AIAssistantBubble() {
         </div>
       )}
 
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes slide-up {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-fade-in {
-          animation: fade-in 0.3s ease-out;
-        }
-
-        .animate-slide-up {
-          animation: slide-up 0.3s ease-out;
-        }
-      `}</style>
     </>
   );
 }
