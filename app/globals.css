@@ -1531,3 +1531,59 @@ footer a:hover {
   color: #ffffff;
   text-decoration: underline;
 }
+
+/* ============================================================================
+   FIXED HEADER / NAVBAR STYLING
+   Dark translucent header with scroll transition effect
+   ============================================================================ */
+
+header, .navbar, .site-header {
+  position: fixed !important;
+  top: 0 !important;
+  width: 100% !important;
+  background-color: rgba(16, 24, 32, 0.95) !important; /* dark translucent backdrop */
+  backdrop-filter: blur(10px) !important; /* modern blur effect */
+  -webkit-backdrop-filter: blur(10px) !important; /* Safari support */
+  z-index: 1000 !important;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
+  border-bottom: 1px solid rgba(0, 102, 204, 0.3) !important; /* subtle blue accent */
+}
+
+/* Scrolled state - solid background with shadow */
+header.scrolled, .navbar.scrolled, .site-header.scrolled {
+  background-color: rgba(16, 24, 32, 1) !important; /* fully opaque when scrolled */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  border-bottom: 2px solid #0066cc !important; /* stronger accent when scrolled */
+}
+
+/* Header links styling */
+header a, .navbar a, .site-header a {
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
+}
+
+header a:hover, .navbar a:hover, .site-header a:hover {
+  color: #80bfff !important; /* light blue highlight on hover */
+}
+
+/* Ensure logo is visible on dark background */
+header img, .navbar img, .site-header img {
+  filter: brightness(0) invert(1) !important; /* Make dark logos white */
+}
+
+/* Body padding to prevent content from hiding under fixed header */
+body {
+  padding-top: 80px !important; /* Adjust based on your header height */
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  body {
+    padding-top: 64px !important; /* Smaller padding for mobile */
+  }
+  
+  header, .navbar, .site-header {
+    background-color: rgba(16, 24, 32, 0.98) !important; /* More opaque on mobile */
+  }
+}

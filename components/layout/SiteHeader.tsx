@@ -118,6 +118,23 @@ export default function SiteHeader() {
     };
   }, [mobileMenuOpen]);
 
+  // Add scroll effect for header
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector('header');
+      if (header) {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       {/* Skip to main content link for accessibility */}
@@ -128,7 +145,7 @@ export default function SiteHeader() {
         Skip to main content
       </a>
       
-      <div className="w-full h-full bg-white border-b border-gray-200 shadow-sm">
+      <div className="w-full h-full bg-white border-b border-gray-200 shadow-sm site-header">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4 relative">
           {/* Logo */}
           <Link
