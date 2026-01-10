@@ -1574,6 +1574,7 @@ header img, .navbar img, .site-header img {
 body {
   padding-top: 80px !important; /* Adjust based on your header height */
   background-color: #ffffff !important; /* white background for all pages */
+  color: #111827 !important; /* dark gray text for readability */
 }
 
 /* Mobile adjustments */
