@@ -8,6 +8,28 @@
   },
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "elevateforhumanity.org"
+        }
+      ],
+      "destination": "https://elevateforhumanity.institute/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.elevateforhumanity.org"
+        }
+      ],
+      "destination": "https://elevateforhumanity.institute/:path*",
+      "permanent": true
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "permanent": true
