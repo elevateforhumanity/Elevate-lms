@@ -85,15 +85,22 @@ export default function ModernLandingHero({
     </div>
   );
 
+  const webpSrc = imageSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+  
   const imageSection = (
     <div className="relative h-[300px] md:h-[350px] lg:h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        fill
-        className="object-cover"
-        priority
-      />
+      <picture>
+        <source srcSet={webpSrc} type="image/webp" />
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          className="object-cover"
+          priority
+          quality={85}
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </picture>
     </div>
   );
 
