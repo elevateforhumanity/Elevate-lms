@@ -108,7 +108,6 @@ export default function AboutPage() {
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 text-center">
               <div className="text-4xl font-black text-orange-600 mb-2">1000+</div>
               <div className="text-sm text-black">Students</div>
-              </div>
             </div>
           </div>
         </div>

@@ -46,6 +46,12 @@ export function ProgramTemplate({ program }: { program: Program }) {
                 >
                   {program.ctaPrimary.label}
                 </Link>
+                <Link
+                  href={`/programs/${program.slug}/courses`}
+                  className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg"
+                >
+                  View Courses
+                </Link>
                 {program.ctaSecondary && (
                   <Link
                     href={program.ctaSecondary.href}

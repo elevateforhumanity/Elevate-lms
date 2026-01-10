@@ -119,6 +119,34 @@ export async function POST(req: Request) {
         }
 
       }
+
+      // Check if this is a course enrollment payment
+      const courseId = session.metadata?.courseId;
+      const userId = session.metadata?.userId;
+      if (courseId && userId) {
+        const { createClient } = await import('@/lib/supabase/server');
+        const supabaseAdmin = createClient(
+          process.env.NEXT_PUBLIC_SUPABASE_URL!,
+          process.env.SUPABASE_SERVICE_ROLE_KEY!
+        );
+
+        // Create enrollment
+        const { error: enrollError } = await supabaseAdmin
+          .from('enrollments')
+          .insert({
+            user_id: userId,
+            course_id: courseId,
+            status: 'active',
+            progress: 0,
+            started_at: new Date().toISOString(),
+          });
+
+        if (enrollError) {
+          logger.error('Failed to create course enrollment', enrollError);
+        } else {
+          logger.info(`✅ Created course enrollment for user ${userId} in course ${courseId}`);
+        }
+      }
     }
 
     // Handle funding payment completion - AUTOMATIC ENROLLMENT

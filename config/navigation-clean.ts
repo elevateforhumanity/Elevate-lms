@@ -31,6 +31,8 @@ export const publicNav: NavSection[] = [
       { label: 'CDL & Transportation', href: '/programs/cdl-transportation' },
       { label: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
       { label: 'Apprenticeships', href: '/apprenticeships' },
+      { label: 'Courses', href: '/courses' },
+      { label: 'Credentials', href: '/credentials' },
     ],
   },
   {
@@ -41,6 +43,8 @@ export const publicNav: NavSection[] = [
       { label: 'How It Works', href: '/how-it-works' },
       { label: 'Pathways', href: '/pathways' },
       { label: 'Funding Options', href: '/funding' },
+      { label: 'Orientation', href: '/orientation' },
+      { label: 'Onboarding', href: '/onboarding' },
     ],
   },
   {
@@ -52,6 +56,11 @@ export const publicNav: NavSection[] = [
       { label: 'Interview Prep', href: '/career-services/interview-prep' },
       { label: 'Career Counseling', href: '/career-services/career-counseling' },
       { label: 'Advising', href: '/advising' },
+      { label: 'Mentorship', href: '/mentorship' },
+      { label: 'AI Tutor', href: '/ai-tutor' },
+      { label: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
+      { label: 'Free VITA Tax Prep', href: '/vita' },
+      { label: 'Tax Self Prep', href: '/tax-self-prep' },
     ],
   },
   {
@@ -62,22 +71,53 @@ export const publicNav: NavSection[] = [
       { label: 'Workforce Partners', href: '/workforce-partners' },
       { label: 'Training Providers', href: '/training-providers' },
       { label: 'Government Agencies', href: '/agencies' },
+      { label: 'Licensing Partnerships', href: '/licensing-partnerships' },
+      { label: 'White Label', href: '/white-label' },
     ],
   },
+  {
+    label: 'Resources',
+    items: [
+      { label: 'Blog', href: '/blog' },
+      { label: 'Success Stories', href: '/success-stories' },
+      { label: 'Webinars', href: '/webinars' },
+      { label: 'Events', href: '/events' },
+      { label: 'Help Center', href: '/help' },
+      { label: 'FAQ', href: '/faq' },
+      { label: 'Student Handbook', href: '/student-handbook' },
+    ],
+  },
+
   {
     label: 'About',
     items: [
       { label: 'About Us', href: '/about' },
-      { label: 'Success Stories', href: '/success-stories' },
+      { label: 'Founder', href: '/founder' },
       { label: 'Impact', href: '/impact' },
       { label: 'Team', href: '/team' },
       { label: 'Careers', href: '/careers' },
-      { label: 'Blog', href: '/blog' },
+      { label: 'Contact', href: '/contact' },
+      { label: 'Locations', href: '/locations' },
     ],
   },
   {
-    label: 'Contact',
-    href: '/contact',
+    label: 'Store',
+    href: '/store',
+  },
+  {
+    label: 'Portals',
+    items: [
+      { label: 'Student Portal', href: '/client-portal' },
+      { label: 'Admin Dashboard', href: '/admin' },
+      { label: 'Staff Portal', href: '/staff-portal' },
+      { label: 'Employer Portal', href: '/employer' },
+      { label: 'Program Holder', href: '/program-holder' },
+      { label: 'Partner Portal', href: '/partner' },
+      { label: 'Workforce Board', href: '/workforce-board' },
+      { label: 'LMS', href: '/lms' },
+      { label: 'Login', href: '/login' },
+      { label: 'Sign Up', href: '/signup' },
+    ],
   },
 ];
 
