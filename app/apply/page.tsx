@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 declare global {
@@ -238,10 +239,14 @@ function ApplyLandingPageOld() {
     <div className="min-h-screen bg-white">
       {/* Hero Banner */}
       <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
-        <img
+        <Image
           src="/images/efh/hero/hero-main.jpg"
           alt="Apply"
-          className="absolute inset-0 w-full h-full object-cover"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          quality={85}
         />
         <div className="absolute inset-0 bg-black/50" />
 

@@ -150,10 +150,14 @@ export default function ProgramsBioSitePage() {
       {/* Programs Grid - Keep existing */}
       <section id="programs" className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
-          <img
+          <Image
             src="/images/efh/hero/hero-main.jpg"
             alt="Programs Overview"
-            className="absolute inset-0 h-full w-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            quality={85}
           />
           
           {/* Overlay Content */}

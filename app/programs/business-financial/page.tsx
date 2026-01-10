@@ -19,10 +19,14 @@ export default function BusinessFinancialPage() {
       {/* Hero Section */}
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
-          <img
+          <Image
             src="/images/pathways/business-hero.jpg"
             alt="Business & Financial Programs"
-            className="absolute inset-0 h-full w-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            quality={85}
           />
           
           {/* Overlay Content */}

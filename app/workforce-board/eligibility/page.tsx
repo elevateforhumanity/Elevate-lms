@@ -20,10 +20,14 @@ export default async function EligibilityPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <img
+        <Image
           src="/images/efh/hero/hero-main.jpg"
           alt="Eligibility"
-          className="absolute inset-0 w-full h-full object-cover"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          quality={85}
         />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -117,10 +121,13 @@ export default async function EligibilityPage() {
                 </ul>
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <img
+                <Image
                   src="/images/pathways/business-hero.jpg"
                   alt="Eligibility"
-                  className="absolute inset-0 w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                  quality={85}
                 />
               </div>
             </div>

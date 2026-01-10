@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata = {
   title: 'Apply | Supersonic Fast Cash',
@@ -10,11 +11,7 @@ export default function ApplyPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
-        <img
-          src="/images/efh/hero/hero-main.jpg"
-          alt="Apply"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <Image src="/images/efh/hero/hero-main.jpg" alt="Apply" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="max-w-4xl mx-auto px-6 text-center text-white">
