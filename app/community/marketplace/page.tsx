@@ -146,7 +146,7 @@ export default async function CommunityMarketplacePage() {
             </div>
           ) : (
             <div className="text-center py-12 bg-gray-50 rounded-xl">
-              <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <BookOpen className="w-12 h-12 text-gray-600 mx-auto mb-4" />
               <p className="text-gray-600">
                 No courses available yet. Check back soon!
               </p>
@@ -207,7 +207,7 @@ export default async function CommunityMarketplacePage() {
                         ${(product.price / 100).toFixed(2)}
                       </div>
                       {product.compare_at_price && (
-                        <div className="text-sm text-gray-500 line-through">
+                        <div className="text-sm text-gray-700 line-through">
                           ${(product.compare_at_price / 100).toFixed(2)}
                         </div>
                       )}
@@ -226,7 +226,7 @@ export default async function CommunityMarketplacePage() {
             </div>
           ) : (
             <div className="text-center py-12 bg-white rounded-xl">
-              <ShoppingBag className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <ShoppingBag className="w-12 h-12 text-gray-600 mx-auto mb-4" />
               <p className="text-gray-600">
                 No products available yet. Check back soon!
               </p>

@@ -81,7 +81,7 @@ export default async function PendingCashAdvancesPage() {
                       <p className="text-sm text-gray-600">
                         {advance.profiles?.email}
                       </p>
-                      <p className="text-sm text-gray-500 mt-1">
+                      <p className="text-sm text-gray-700 mt-1">
                         Requested:{' '}
                         {new Date(advance.created_at).toLocaleDateString()}
                       </p>
@@ -102,7 +102,7 @@ export default async function PendingCashAdvancesPage() {
               ))}
             </div>
           ) : (
-            <div className="px-6 py-12 text-center text-gray-500">
+            <div className="px-6 py-12 text-center text-gray-700">
               No pending cash advance requests
             </div>
           )}

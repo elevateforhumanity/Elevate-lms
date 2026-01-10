@@ -245,11 +245,11 @@ export default function AdminProgramHolderDocuments() {
                         {doc.document_type.replace(/_/g, ' ')}
                       </p>
                       {doc.description && (
-                        <p className="text-sm text-gray-500 mb-2">
+                        <p className="text-sm text-gray-700 mb-2">
                           {doc.description}
                         </p>
                       )}
-                      <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <div className="flex items-center gap-4 text-sm text-gray-700">
                         <span className="flex items-center gap-1">
                           <User size={14} />
                           {doc.profiles?.full_name || 'Unknown User'}

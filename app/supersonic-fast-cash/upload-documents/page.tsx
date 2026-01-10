@@ -166,7 +166,7 @@ export default function UploadDocumentsPage() {
           </h2>
 
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-blue-500 transition-colors">
-            <Upload className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+            <Upload className="w-16 h-16 text-gray-600 mx-auto mb-4" />
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Drop files here or click to browse
             </h3>
@@ -186,7 +186,7 @@ export default function UploadDocumentsPage() {
               htmlFor="file-upload"
               className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-colors cursor-pointer ${
                 !email || !phone || uploading
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  ? 'bg-gray-300 text-gray-700 cursor-not-allowed'
                   : 'bg-blue-600 text-white hover:bg-blue-700'
               }`}
             >
@@ -222,7 +222,7 @@ export default function UploadDocumentsPage() {
                       <p className="font-medium text-gray-900 truncate">
                         {file.name}
                       </p>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-gray-700">
                         {formatFileSize(file.size)}
                       </p>
                       {file.error && (
@@ -247,7 +247,7 @@ export default function UploadDocumentsPage() {
                       className="p-1 hover:bg-gray-100 rounded"
                       disabled={file.status === 'uploading'}
                     >
-                      <X className="w-5 h-5 text-gray-400" />
+                      <X className="w-5 h-5 text-gray-600" />
                     </button>
                   </div>
                 </div>

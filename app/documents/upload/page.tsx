@@ -138,7 +138,7 @@ export default function DocumentUploadPage() {
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                 accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
               />
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="text-sm text-gray-700 mt-2">
                 Accepted formats: PDF, JPG, PNG, DOC, DOCX (Max 10MB)
               </p>
             </div>

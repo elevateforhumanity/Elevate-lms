@@ -67,7 +67,7 @@ export default function RevenueShareCalculator() {
                   Average Client Payment
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-2 text-gray-500">$</span>
+                  <span className="absolute left-3 top-2 text-gray-700">$</span>
                   <input
                     type="number"
                     value={clientPayment}
@@ -75,7 +75,7 @@ export default function RevenueShareCalculator() {
                     className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-700 mt-1">
                   Typical range: $150-$500
                 </p>
               </div>
@@ -85,7 +85,7 @@ export default function RevenueShareCalculator() {
                   Add-On Fees per Return (Main Office Keeps)
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-2 text-gray-500">$</span>
+                  <span className="absolute left-3 top-2 text-gray-700">$</span>
                   <input
                     type="number"
                     value={addOnFees}
@@ -93,7 +93,7 @@ export default function RevenueShareCalculator() {
                     className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-700 mt-1">
                   Refund advance, prepaid cards, etc. (for reference only)
                 </p>
               </div>
@@ -136,7 +136,7 @@ export default function RevenueShareCalculator() {
                   onChange={(e) => setNumberOfReturns(Number(e.target.value))}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-700 mt-1">
                   Average: 50-200 per month
                 </p>
               </div>
@@ -174,7 +174,7 @@ export default function RevenueShareCalculator() {
                   <span className="font-semibold text-gray-600">
                     Add-On Fees (Main Office)
                   </span>
-                  <span className="text-lg text-gray-500">
+                  <span className="text-lg text-gray-700">
                     ${addOnFees.toFixed(2)}
                   </span>
                 </div>
@@ -200,11 +200,11 @@ export default function RevenueShareCalculator() {
                       ${mainOfficeTotal.toFixed(2)}
                     </span>
                   </div>
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-gray-700">
                     40% base (${mainOfficeBaseShare.toFixed(2)}) + 100% add-ons
                     (${addOnFees.toFixed(2)})
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className="text-xs text-gray-700 mt-1">
                     (Includes software, training, support, add-on processing)
                   </div>
                 </div>

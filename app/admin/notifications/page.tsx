@@ -223,7 +223,7 @@ export default function NotificationsPage() {
                     placeholder="/student/courses"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="text-sm text-gray-700 mt-1">
                     Where users go when they click the notification
                   </p>
                 </div>
@@ -363,7 +363,7 @@ export default function NotificationsPage() {
                       {notification.body ||
                         'Notification message will appear here'}
                     </div>
-                    <div className="text-xs text-gray-400 mt-2">
+                    <div className="text-xs text-gray-600 mt-2">
                       Elevate for Humanity • now
                     </div>
                   </div>
@@ -373,7 +373,7 @@ export default function NotificationsPage() {
               {/* Stats */}
               <div className="space-y-4">
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">
+                  <div className="text-xs text-gray-700 mb-1">
                     Target Audience
                   </div>
                   <div className="text-sm font-medium text-gray-900">
@@ -385,7 +385,7 @@ export default function NotificationsPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">
+                  <div className="text-xs text-gray-700 mb-1">
                     Estimated Recipients
                   </div>
                   <div className="text-sm font-medium text-gray-900">
@@ -400,7 +400,7 @@ export default function NotificationsPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">Click Action</div>
+                  <div className="text-xs text-gray-700 mb-1">Click Action</div>
                   <div className="text-sm text-gray-900 truncate">
                     {notification.url}
                   </div>

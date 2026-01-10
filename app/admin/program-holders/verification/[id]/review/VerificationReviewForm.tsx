@@ -208,7 +208,7 @@ export default function VerificationReviewForm({
                 Uploaded Documents
               </h2>
               {documents.length === 0 ? (
-                <p className="text-gray-500">No documents uploaded</p>
+                <p className="text-gray-700">No documents uploaded</p>
               ) : (
                 <div className="space-y-3">
                   {documents.map((doc) => (
@@ -224,10 +224,10 @@ export default function VerificationReviewForm({
                               .replace(/_/g, ' ')
                               .replace(/\b\w/g, (l: string) => l.toUpperCase())}
                           </p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-gray-700">
                             {doc.file_name}
                           </p>
-                          <p className="text-xs text-gray-400">
+                          <p className="text-xs text-gray-600">
                             Uploaded:{' '}
                             {new Date(doc.uploaded_at).toLocaleDateString()}
                           </p>
@@ -317,7 +317,7 @@ export default function VerificationReviewForm({
                         >
                           {record.status}
                         </span>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-700">
                           {new Date(record.created_at).toLocaleDateString()}
                         </p>
                       </div>
@@ -330,7 +330,7 @@ export default function VerificationReviewForm({
                         </p>
                       )}
                       {record.verified_by_user && (
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-gray-700 mt-1">
                           By: {record.verified_by_user.first_name}{' '}
                           {record.verified_by_user.last_name}
                         </p>

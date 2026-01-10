@@ -184,15 +184,15 @@ export default function ManualIDUploadForm({
                   <p className="text-sm font-medium text-gray-900">
                     {idFrontFile.name}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">Click to change</p>
+                  <p className="text-xs text-gray-700 mt-1">Click to change</p>
                 </>
               ) : (
                 <>
-                  <Upload className="text-gray-400 mb-2" size={32} />
+                  <Upload className="text-gray-600 mb-2" size={32} />
                   <p className="text-sm font-medium text-gray-900">
                     Upload front of ID
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-700 mt-1">
                     Driver's license, passport, or state ID
                   </p>
                 </>
@@ -204,7 +204,7 @@ export default function ManualIDUploadForm({
         {/* ID Back */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            ID Back <span className="text-gray-500">(Optional)</span>
+            ID Back <span className="text-gray-700">(Optional)</span>
           </label>
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition">
             <input
@@ -224,15 +224,15 @@ export default function ManualIDUploadForm({
                   <p className="text-sm font-medium text-gray-900">
                     {idBackFile.name}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">Click to change</p>
+                  <p className="text-xs text-gray-700 mt-1">Click to change</p>
                 </>
               ) : (
                 <>
-                  <Upload className="text-gray-400 mb-2" size={32} />
+                  <Upload className="text-gray-600 mb-2" size={32} />
                   <p className="text-sm font-medium text-gray-900">
                     Upload back of ID
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-700 mt-1">
                     Optional but recommended
                   </p>
                 </>
@@ -266,15 +266,15 @@ export default function ManualIDUploadForm({
                   <p className="text-sm font-medium text-gray-900">
                     {selfieFile.name}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">Click to change</p>
+                  <p className="text-xs text-gray-700 mt-1">Click to change</p>
                 </>
               ) : (
                 <>
-                  <Camera className="text-gray-400 mb-2" size={32} />
+                  <Camera className="text-gray-600 mb-2" size={32} />
                   <p className="text-sm font-medium text-gray-900">
                     Take selfie holding ID
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-700 mt-1">
                     Hold your ID next to your face
                   </p>
                 </>

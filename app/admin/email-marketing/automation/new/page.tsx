@@ -170,7 +170,7 @@ export default function NewWorkflowPage() {
                 <h1 className="text-2xl font-bold text-gray-900">
                   Create Drip Campaign
                 </h1>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-700">
                   Build automated email sequences
                 </p>
               </div>
@@ -330,7 +330,7 @@ export default function NewWorkflowPage() {
 
                     {index > 0 && (
                       <div className="mb-4 flex items-center space-x-3">
-                        <Clock className="w-5 h-5 text-gray-400" />
+                        <Clock className="w-5 h-5 text-gray-600" />
                         <span className="text-sm text-gray-600">Wait</span>
                         <input
                           type="number"
@@ -442,7 +442,7 @@ export default function NewWorkflowPage() {
                               }}
                             />
                           ) : (
-                            <p className="text-sm text-gray-400 italic">
+                            <p className="text-sm text-gray-600 italic">
                               Select a template to preview
                             </p>
                           )}
@@ -464,14 +464,14 @@ export default function NewWorkflowPage() {
 
               <div className="space-y-4">
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">Name</div>
+                  <div className="text-xs text-gray-700 mb-1">Name</div>
                   <div className="text-sm font-medium text-gray-900">
                     {workflow.name || 'Untitled Workflow'}
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">Trigger</div>
+                  <div className="text-xs text-gray-700 mb-1">Trigger</div>
                   <div className="text-sm text-gray-900">
                     {workflow.trigger === 'enrollment'
                       ? 'New Student Enrollment'
@@ -484,7 +484,7 @@ export default function NewWorkflowPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">
+                  <div className="text-xs text-gray-700 mb-1">
                     Target Audience
                   </div>
                   <div className="text-sm text-gray-900">
@@ -496,14 +496,14 @@ export default function NewWorkflowPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">Total Emails</div>
+                  <div className="text-xs text-gray-700 mb-1">Total Emails</div>
                   <div className="text-sm font-medium text-gray-900">
                     {steps.length}
                   </div>
                 </div>
 
                 <div className="pt-4 border-t border-gray-200">
-                  <div className="text-xs text-gray-500 mb-2">Timeline</div>
+                  <div className="text-xs text-gray-700 mb-2">Timeline</div>
                   <div className="space-y-2">
                     {steps.map((step, index) => (
                       <div
@@ -515,7 +515,7 @@ export default function NewWorkflowPage() {
                           <div className="font-medium text-gray-900">
                             Email {index + 1}
                           </div>
-                          <div className="text-gray-500">
+                          <div className="text-gray-700">
                             {index === 0
                               ? 'Immediate'
                               : `${step.delay} ${step.delayUnit} after Email ${index}`}
@@ -527,7 +527,7 @@ export default function NewWorkflowPage() {
                 </div>
 
                 <div className="pt-4 border-t border-gray-200">
-                  <div className="text-xs text-gray-500 mb-2">
+                  <div className="text-xs text-gray-700 mb-2">
                     Total Duration
                   </div>
                   <div className="text-sm font-medium text-gray-900">

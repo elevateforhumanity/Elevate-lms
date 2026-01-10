@@ -109,7 +109,7 @@ export default async function TaxPreparersPage() {
               ))}
             </div>
           ) : (
-            <div className="px-6 py-12 text-center text-gray-500">
+            <div className="px-6 py-12 text-center text-gray-700">
               No tax preparers found. Add your first preparer above.
             </div>
           )}

@@ -574,17 +574,17 @@ export default function BarberApprenticeshipPage() {
               <div className="text-center p-4 bg-green-50 rounded-lg">
                 <p className="text-sm text-gray-600 mb-1">Starting Wage</p>
                 <p className="text-2xl font-bold text-black">$12-15/hr</p>
-                <p className="text-xs text-gray-500">Months 1-6</p>
+                <p className="text-xs text-gray-700">Months 1-6</p>
               </div>
               <div className="text-center p-4 bg-green-50 rounded-lg">
                 <p className="text-sm text-gray-600 mb-1">Mid-Program</p>
                 <p className="text-2xl font-bold text-black">$15-18/hr</p>
-                <p className="text-xs text-gray-500">Months 7-12</p>
+                <p className="text-xs text-gray-700">Months 7-12</p>
               </div>
               <div className="text-center p-4 bg-green-50 rounded-lg">
                 <p className="text-sm text-gray-600 mb-1">Licensed Barber</p>
                 <p className="text-2xl font-bold text-black">$25-40/hr+</p>
-                <p className="text-xs text-gray-500">After licensure</p>
+                <p className="text-xs text-gray-700">After licensure</p>
               </div>
             </div>
             <p className="text-sm text-gray-600 mt-4">
@@ -639,7 +639,7 @@ export default function BarberApprenticeshipPage() {
                   </h3>
                   <p className="text-sm text-gray-600">{resource.org}</p>
                 </div>
-                <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-brand-orange-600" />
+                <ExternalLink className="w-5 h-5 text-gray-600 group-hover:text-brand-orange-600" />
               </a>
             ))}
           </div>

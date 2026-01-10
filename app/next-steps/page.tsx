@@ -99,7 +99,7 @@ export default function NextStepsPage() {
           />
         </div>
 
-        {saving && <p className="mt-3 text-xs text-gray-500">Saving…</p>}
+        {saving && <p className="mt-3 text-xs text-gray-700">Saving…</p>}
       </div>
 
       <div className="mt-6 space-y-4">

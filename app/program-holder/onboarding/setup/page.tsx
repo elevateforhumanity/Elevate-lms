@@ -244,7 +244,7 @@ export default function ProgramHolderSetup() {
             <h2 className="text-3xl font-bold mb-6">Upload Your Syllabus</h2>
             <div className="space-y-6">
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                <Upload className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+                <Upload className="w-16 h-16 mx-auto mb-4 text-gray-600" />
                 <p className="text-lg font-semibold mb-2">
                   Upload Course Syllabus
                 </p>
@@ -400,7 +400,7 @@ export default function ProgramHolderSetup() {
                   placeholder="9-digit routing number"
                   maxLength={9}
                 />
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-700 mt-1">
                   Found on the bottom left of your check
                 </p>
               </div>
@@ -418,7 +418,7 @@ export default function ProgramHolderSetup() {
                   className="w-full px-4 py-3 border rounded-lg"
                   placeholder="Account number"
                 />
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-700 mt-1">
                   Found on the bottom of your check, after the routing number
                 </p>
               </div>
@@ -428,7 +428,7 @@ export default function ProgramHolderSetup() {
                   Upload Voided Check or Bank Letter (Optional)
                 </label>
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                  <FileText className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+                  <FileText className="w-12 h-12 mx-auto mb-3 text-gray-600" />
                   <input
                     type="file"
                     accept="image/*,.pdf"

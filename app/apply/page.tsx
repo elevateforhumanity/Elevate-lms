@@ -236,6 +236,7 @@ function ApplyLandingPageOld() {
 
   return (
     <div className="min-h-screen bg-white">
+      <main id="main-content">
       {/* Hero Banner */}
       <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
         <img
@@ -312,6 +313,7 @@ function ApplyLandingPageOld() {
           </div>
         </div>
       </section>
+      </main>
     </div>
   );
 }

@@ -70,7 +70,7 @@ export default function VITAFAQPage() {
                 {openIndex === index ? (
                   <ChevronUp className="w-5 h-5 text-green-600 flex-shrink-0" />
                 ) : (
-                  <ChevronDown className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                  <ChevronDown className="w-5 h-5 text-gray-600 flex-shrink-0" />
                 )}
               </button>
               {openIndex === index && (

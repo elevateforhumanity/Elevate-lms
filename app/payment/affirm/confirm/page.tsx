@@ -90,7 +90,7 @@ function AffirmConfirmContent() {
               Your payment has been processed successfully.
             </p>
             {transactionId && (
-              <p className="text-sm text-gray-500 mb-6">
+              <p className="text-sm text-gray-700 mb-6">
                 Transaction ID: {transactionId}
               </p>
             )}

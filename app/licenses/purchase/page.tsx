@@ -121,7 +121,7 @@ export default function PurchaseLicensePage() {
                           <span className="text-orange-600 font-semibold">
                             ${license.price.toLocaleString()}
                           </span>
-                          <span className="text-gray-500">
+                          <span className="text-gray-700">
                             Duration: {license.duration}
                           </span>
                         </div>
@@ -195,12 +195,12 @@ export default function PurchaseLicensePage() {
                   </Button>
                 </>
               ) : (
-                <p className="text-gray-500 text-center py-8">
+                <p className="text-gray-700 text-center py-8">
                   Select a license to continue
                 </p>
               )}
 
-              <p className="text-xs text-gray-500 text-center mt-4">
+              <p className="text-xs text-gray-700 text-center mt-4">
                 Secure payment powered by Stripe
               </p>
             </div>

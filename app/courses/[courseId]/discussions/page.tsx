@@ -386,7 +386,7 @@ export default function CourseDiscussionsPage() {
                       <p className="text-gray-600 text-sm mb-3 line-clamp-2">
                         {discussion.content}
                       </p>
-                      <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <div className="flex items-center gap-4 text-sm text-gray-700">
                         <span>
                           {discussion.profiles?.full_name || 'Anonymous'}
                         </span>
@@ -405,7 +405,7 @@ export default function CourseDiscussionsPage() {
           ) : (
             <div className="bg-white rounded-lg shadow-sm border p-12 text-center">
               <svg
-                className="w-16 h-16 text-gray-400 mx-auto mb-4"
+                className="w-16 h-16 text-gray-600 mx-auto mb-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

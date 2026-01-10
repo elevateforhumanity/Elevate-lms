@@ -168,7 +168,7 @@ export default async function VideosPage() {
                         </div>
                       ) : (
                         <div className="h-48 bg-gray-200 flex items-center justify-center">
-                          <Video className="h-12 w-12 text-gray-400" />
+                          <Video className="h-12 w-12 text-gray-600" />
                         </div>
                       )}
                       <div className="p-4">
@@ -176,7 +176,7 @@ export default async function VideosPage() {
                         <p className="text-sm text-gray-600 mb-2">
                           {video.course?.name || 'No course assigned'}
                         </p>
-                        <div className="flex justify-between items-center text-xs text-gray-500">
+                        <div className="flex justify-between items-center text-xs text-gray-700">
                           <span>{video.duration || '0:00'}</span>
                           <span>{video.view_count || 0} views</span>
                         </div>
@@ -201,8 +201,8 @@ export default async function VideosPage() {
               ) : (
                 <div className="text-center py-12">
                   <Video className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-500 text-lg">No videos found</p>
-                  <p className="text-gray-400 text-sm mt-2">
+                  <p className="text-gray-700 text-lg">No videos found</p>
+                  <p className="text-gray-600 text-sm mt-2">
                     Upload your first video to get started
                   </p>
                 </div>

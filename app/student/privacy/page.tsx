@@ -125,7 +125,7 @@ export default function StudentPrivacyPage() {
                         {isGranted ? (
                           <CheckCircle className="w-5 h-5 text-green-600" />
                         ) : (
-                          <XCircle className="w-5 h-5 text-gray-400" />
+                          <XCircle className="w-5 h-5 text-gray-600" />
                         )}
                         <span className="text-sm font-medium text-gray-700">
                           {isGranted ? 'Granted' : 'Not granted'}

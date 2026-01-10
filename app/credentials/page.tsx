@@ -22,11 +22,11 @@ export default async function CredentialsPage() {
             <Link href="/" className="text-gray-600 hover:text-teal-600 transition">
               Home
             </Link>
-            <ChevronRight className="w-4 h-4 text-gray-400" />
+            <ChevronRight className="w-4 h-4 text-gray-600" />
             <Link href="/programs" className="text-gray-600 hover:text-teal-600 transition">
               Programs
             </Link>
-            <ChevronRight className="w-4 h-4 text-gray-400" />
+            <ChevronRight className="w-4 h-4 text-gray-600" />
             <span className="text-teal-600 font-semibold">Credentials</span>
           </div>
         </div>

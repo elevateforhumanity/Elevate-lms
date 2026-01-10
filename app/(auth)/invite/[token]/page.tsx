@@ -215,7 +215,7 @@ export default function AcceptInvitePage({
             {accepting ? 'Accepting...' : 'Accept Invitation'}
           </button>
 
-          <p className="mt-4 text-xs text-gray-500">
+          <p className="mt-4 text-xs text-gray-700">
             By accepting, you will become a member of this organization
           </p>
         </div>

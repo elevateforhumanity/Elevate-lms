@@ -103,7 +103,7 @@ export default function ProgramCoursesPage() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         {courses.length === 0 ? (
           <div className="bg-white rounded-lg shadow-md p-12 text-center">
-            <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+            <BookOpen className="w-16 h-16 text-gray-600 mx-auto mb-4" />
             <h2 className="text-2xl font-bold mb-2">No Courses Available Yet</h2>
             <p className="text-gray-600 mb-6">Courses for this program are coming soon.</p>
             <Link href="/programs" className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition">
@@ -218,7 +218,7 @@ export default function ProgramCoursesPage() {
                           <>
                             <div className="text-2xl font-bold text-gray-900">${course.price}</div>
                             {course.originalPrice && (
-                              <div className="text-sm text-gray-500 line-through">${course.originalPrice}</div>
+                              <div className="text-sm text-gray-700 line-through">${course.originalPrice}</div>
                             )}
                           </>
                         )}

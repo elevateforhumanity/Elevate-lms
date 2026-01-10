@@ -226,7 +226,7 @@ export default async function CRMHubPage() {
                       <p className="text-sm text-gray-600 mt-1">
                         {campaign.subject}
                       </p>
-                      <div className="flex items-center gap-4 mt-2 text-xs text-gray-500">
+                      <div className="flex items-center gap-4 mt-2 text-xs text-gray-700">
                         <span>Sent: {campaign.sent_count || 0}</span>
                         <span>Opened: {campaign.opened_count || 0}</span>
                         <span>Clicked: {campaign.clicked_count || 0}</span>
@@ -236,8 +236,8 @@ export default async function CRMHubPage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-gray-500">
-                <Mail className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+              <div className="text-center py-8 text-gray-700">
+                <Mail className="w-12 h-12 mx-auto mb-4 text-gray-600" />
                 <p>No campaigns yet</p>
                 <Link
                   href="/admin/crm/campaigns/new"
@@ -293,7 +293,7 @@ export default async function CRMHubPage() {
                         </span>
                       </div>
                       {deal.expected_close_date && (
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-gray-700 mt-1">
                           Expected close:{' '}
                           {new Date(
                             deal.expected_close_date
@@ -305,8 +305,8 @@ export default async function CRMHubPage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-gray-500">
-                <DollarSign className="w-12 h-12 mx-auto mb-4 text-gray-400" />
+              <div className="text-center py-8 text-gray-700">
+                <DollarSign className="w-12 h-12 mx-auto mb-4 text-gray-600" />
                 <p>No open deals</p>
                 <Link
                   href="/admin/crm/deals/new"

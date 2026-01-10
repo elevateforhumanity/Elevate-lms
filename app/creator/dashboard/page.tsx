@@ -197,7 +197,7 @@ export default async function CreatorDashboard() {
                       <p className="text-sm text-gray-600 mt-1">
                         {course.description}
                       </p>
-                      <p className="text-sm text-gray-500 mt-2">
+                      <p className="text-sm text-gray-700 mt-2">
                         {course.enrollments?.[0]?.count || 0} students enrolled
                       </p>
                     </div>
@@ -212,7 +212,7 @@ export default async function CreatorDashboard() {
               </div>
             ) : (
               <div className="text-center py-12">
-                <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                <FileText className="w-12 h-12 text-gray-600 mx-auto mb-4" />
                 <p className="text-gray-600 mb-4">No courses yet</p>
                 <Link
                   href="/creator/courses/new"

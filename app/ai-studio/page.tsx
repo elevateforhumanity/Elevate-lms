@@ -373,7 +373,7 @@ export default function AIStudioPage() {
               {generatedAssets.length === 0 ? (
                 <div className="text-center py-12">
                   <Palette className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-500">
+                  <p className="text-gray-700">
                     Your generated assets will appear here
                   </p>
                 </div>
@@ -388,7 +388,7 @@ export default function AIStudioPage() {
                         <span className="text-xs font-medium text-purple-600 uppercase">
                           {asset.type}
                         </span>
-                        <button className="text-gray-400 hover:text-purple-600">
+                        <button className="text-gray-600 hover:text-purple-600">
                           <Download className="w-4 h-4" />
                         </button>
                       </div>
@@ -407,7 +407,7 @@ export default function AIStudioPage() {
 
                       {(asset.type === 'video' || asset.type === 'avatar') && (
                         <div className="relative w-full h-32 bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                          <Play className="w-8 h-8 text-gray-400" />
+                          <Play className="w-8 h-8 text-gray-600" />
                         </div>
                       )}
 
@@ -426,7 +426,7 @@ export default function AIStudioPage() {
                       <p className="text-xs text-gray-600 line-clamp-2">
                         {asset.prompt}
                       </p>
-                      <p className="text-xs text-gray-400 mt-1">
+                      <p className="text-xs text-gray-600 mt-1">
                         {asset.createdAt.toLocaleTimeString()}
                       </p>
                     </div>

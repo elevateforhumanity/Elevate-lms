@@ -32,6 +32,7 @@ export default function HomePage() {
       />
 
       {/* Features with Your Icon Images */}
+      <main id="main-content">
       <section className="py-8 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="text-center mb-8 md:mb-16">
@@ -152,7 +153,7 @@ export default function HomePage() {
               <div className="h-20 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-2xl font-black text-gray-800">Certiport</div>
-                  <div className="text-xs text-gray-500">Testing Center</div>
+                  <div className="text-xs text-gray-700">Testing Center</div>
                 </div>
               </div>
             </div>
@@ -160,7 +161,7 @@ export default function HomePage() {
               <div className="h-20 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-2xl font-black text-gray-800">WIOA</div>
-                  <div className="text-xs text-gray-500">Approved Provider</div>
+                  <div className="text-xs text-gray-700">Approved Provider</div>
                 </div>
               </div>
             </div>
@@ -168,7 +169,7 @@ export default function HomePage() {
               <div className="h-20 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-2xl font-black text-gray-800">ETPL</div>
-                  <div className="text-xs text-gray-500">Listed Programs</div>
+                  <div className="text-xs text-gray-700">Listed Programs</div>
                 </div>
               </div>
             </div>
@@ -196,6 +197,7 @@ export default function HomePage() {
       <Testimonials />
       <Assurance />
       <Start />
+      </main>
     </>
   );
 }

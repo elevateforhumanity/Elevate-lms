@@ -200,7 +200,7 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
       {/* Course Grid */}
       {filteredCourses.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-xl shadow-sm border border-gray-200">
-          <p className="text-gray-500 text-lg">
+          <p className="text-gray-700 text-lg">
             No courses found matching your criteria
           </p>
           <button
@@ -241,7 +241,7 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
                       : `$${course.retail_price}`}
                   </div>
                   {course.duration_hours && (
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-gray-700">
                       {course.duration_hours} hours
                     </div>
                   )}

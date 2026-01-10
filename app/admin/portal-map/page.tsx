@@ -727,7 +727,7 @@ export default function AdminPortalMapPage() {
         {/* Search */}
         <div className="mb-8">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
             <input
               type="text"
               placeholder="Search features, routes, or descriptions..."
@@ -906,13 +906,13 @@ export default function AdminPortalMapPage() {
             Code Reference
           </h3>
           <div className="space-y-2 text-sm font-mono">
-            <div className="text-gray-400">// Admin Layout</div>
+            <div className="text-gray-600">// Admin Layout</div>
             <div>app/admin/layout.tsx</div>
-            <div className="text-gray-400 mt-4">// Admin Navigation</div>
+            <div className="text-gray-600 mt-4">// Admin Navigation</div>
             <div>components/AdminNav.tsx</div>
-            <div className="text-gray-400 mt-4">// Admin Header</div>
+            <div className="text-gray-600 mt-4">// Admin Header</div>
             <div>components/AdminHeader.tsx</div>
-            <div className="text-gray-400 mt-4">// Footer Component</div>
+            <div className="text-gray-600 mt-4">// Footer Component</div>
             <div>components/layout/Footer.tsx</div>
           </div>
         </div>

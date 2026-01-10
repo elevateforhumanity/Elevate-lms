@@ -148,6 +148,7 @@ export default function ProgramsBioSitePage() {
       />
 
       {/* Programs Grid - Keep existing */}
+      <main id="main-content">
       <section id="programs" className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
           <img
@@ -278,6 +279,7 @@ export default function ProgramsBioSitePage() {
           </p>
         </div>
       </section>
+      </main>
     </div>
   );
 }

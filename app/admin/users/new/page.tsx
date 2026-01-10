@@ -87,7 +87,7 @@ export default async function NewUserPage() {
                 placeholder="user@organization.org"
                 className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-700">
                 User will receive a verification email at this address
               </p>
             </div>
@@ -131,7 +131,7 @@ export default async function NewUserPage() {
                 <option value="program_holder">Program Holder</option>
                 <option value="employer">Employer</option>
               </select>
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-700">
                 Role determines user permissions and access level
               </p>
             </div>
@@ -147,7 +147,7 @@ export default async function NewUserPage() {
                 placeholder="Enter temporary password"
                 className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-700">
                 User will be required to change password on first login
               </p>
             </div>

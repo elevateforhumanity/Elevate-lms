@@ -137,7 +137,7 @@ export default function TestEmailsPage() {
               <Send className="w-8 h-8 text-brand-blue-600" />
               <div className="text-center">
                 <div className="font-semibold text-gray-900">Welcome Email</div>
-                <div className="text-xs text-gray-500 mt-1">
+                <div className="text-xs text-gray-700 mt-1">
                   New user onboarding
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default function TestEmailsPage() {
                 <div className="font-semibold text-gray-900">
                   Reminder Email
                 </div>
-                <div className="text-xs text-gray-500 mt-1">
+                <div className="text-xs text-gray-700 mt-1">
                   Action required alerts
                 </div>
               </div>
@@ -169,7 +169,7 @@ export default function TestEmailsPage() {
                 <div className="font-semibold text-gray-900">
                   Notification Email
                 </div>
-                <div className="text-xs text-gray-500 mt-1">
+                <div className="text-xs text-gray-700 mt-1">
                   Activity updates
                 </div>
               </div>

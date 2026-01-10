@@ -168,7 +168,7 @@ export default function AdminApprenticeships() {
                     <p className="text-sm text-gray-600">
                       {log.apprenticeship?.employer_name}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-700">
                       {new Date(log.work_date).toLocaleDateString()} -{' '}
                       {log.total_hours?.toFixed(1)} hours
                     </p>
@@ -218,25 +218,25 @@ export default function AdminApprenticeships() {
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Student
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Program
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Employer
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Hours
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Progress
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Actions
                   </th>
                 </tr>

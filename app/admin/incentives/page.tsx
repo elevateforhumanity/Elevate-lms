@@ -113,7 +113,7 @@ export default function IncentivesPage() {
             <p className="text-3xl font-bold text-brand-blue-600">
               {stats.total}
             </p>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-gray-700 mt-1">
               {stats.wex} WEX • {stats.ojt} OJT
             </p>
           </div>
@@ -128,7 +128,7 @@ export default function IncentivesPage() {
             <p className="text-3xl font-bold text-brand-green-600">
               ${stats.totalAmount.toLocaleString()}
             </p>
-            <p className="text-xs text-gray-500 mt-1">Across all programs</p>
+            <p className="text-xs text-gray-700 mt-1">Across all programs</p>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
@@ -139,7 +139,7 @@ export default function IncentivesPage() {
             <p className="text-3xl font-bold text-brand-orange-600">
               {stats.pending}
             </p>
-            <p className="text-xs text-gray-500 mt-1">Awaiting approval</p>
+            <p className="text-xs text-gray-700 mt-1">Awaiting approval</p>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
@@ -148,7 +148,7 @@ export default function IncentivesPage() {
               <h3 className="text-sm font-medium text-gray-600">Paid Out</h3>
             </div>
             <p className="text-3xl font-bold text-purple-600">{stats.paid}</p>
-            <p className="text-xs text-gray-500 mt-1">Completed programs</p>
+            <p className="text-xs text-gray-700 mt-1">Completed programs</p>
           </div>
         </div>
 
@@ -199,10 +199,10 @@ export default function IncentivesPage() {
           {filteredIncentives.length === 0 ? (
             <div className="text-center py-12">
               <DollarSign className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-500 text-lg">
+              <p className="text-gray-700 text-lg">
                 No incentive programs found
               </p>
-              <p className="text-gray-400 text-sm mt-2">
+              <p className="text-gray-600 text-sm mt-2">
                 Create a new incentive program to get started
               </p>
             </div>
@@ -210,25 +210,25 @@ export default function IncentivesPage() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Employer
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Student
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Type
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Amount
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Progress
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Actions
                   </th>
                 </tr>

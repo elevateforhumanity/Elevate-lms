@@ -123,7 +123,7 @@ export default function CreateOrgPage() {
                 URL Slug
               </label>
               <div className="mt-1 flex rounded-md shadow-sm">
-                <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-700 text-sm">
                   yourapp.com/org/
                 </span>
                 <input
@@ -140,7 +140,7 @@ export default function CreateOrgPage() {
                   placeholder="acme-training"
                 />
               </div>
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs text-gray-700">
                 Lowercase letters, numbers, and hyphens only
               </p>
             </div>

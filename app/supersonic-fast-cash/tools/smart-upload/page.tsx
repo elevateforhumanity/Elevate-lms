@@ -257,7 +257,7 @@ export default function SmartUploadPage() {
               Drag & drop or click to browse. We support W-2s, 1099s, receipts,
               and more.
             </p>
-            <div className="flex items-center gap-4 text-sm text-gray-500">
+            <div className="flex items-center gap-4 text-sm text-gray-700">
               <div className="flex items-center gap-1">
                 <ImageIcon className="w-4 h-4" />
                 <span>JPG, PNG, HEIC</span>
@@ -325,7 +325,7 @@ export default function SmartUploadPage() {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <FileText className="w-12 h-12 text-gray-400" />
+                        <FileText className="w-12 h-12 text-gray-600" />
                       </div>
                     )}
                   </div>
@@ -337,7 +337,7 @@ export default function SmartUploadPage() {
                         <h3 className="font-bold text-lg mb-1">
                           {file.file.name}
                         </h3>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-700">
                           {(file.file.size / 1024 / 1024).toFixed(2)} MB
                         </p>
                       </div>
@@ -372,7 +372,7 @@ export default function SmartUploadPage() {
                           onClick={() => removeFile(file.id)}
                           className="p-2 hover:bg-gray-100 rounded-lg transition"
                         >
-                          <Trash2 className="w-4 h-4 text-gray-400" />
+                          <Trash2 className="w-4 h-4 text-gray-600" />
                         </button>
                       </div>
                     </div>

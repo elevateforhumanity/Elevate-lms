@@ -498,7 +498,7 @@ export default function CompetencyTest() {
                   {score}%
                 </strong>
               </p>
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="text-sm text-gray-700 mt-2">
                 ({Math.round((score / 100) * COMPETENCY_QUESTIONS.length)}/
                 {COMPETENCY_QUESTIONS.length} correct)
               </p>
@@ -621,7 +621,7 @@ export default function CompetencyTest() {
 
         {/* Question */}
         <div className="bg-white rounded-xl shadow-lg p-8">
-          <div className="mb-2 text-sm text-gray-500">{question.category}</div>
+          <div className="mb-2 text-sm text-gray-700">{question.category}</div>
           <h2 className="text-xl font-bold mb-6">{question.question}</h2>
 
           <div className="space-y-3 mb-8">
@@ -704,7 +704,7 @@ export default function CompetencyTest() {
                 </button>
               ))}
             </div>
-            <div className="mt-3 text-xs text-gray-500">
+            <div className="mt-3 text-xs text-gray-700">
               Answered: {answers.filter((a) => a !== -1).length}/
               {COMPETENCY_QUESTIONS.length}
             </div>

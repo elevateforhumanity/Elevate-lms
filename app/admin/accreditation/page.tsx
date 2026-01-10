@@ -275,7 +275,7 @@ export default async function AccreditationPage() {
             <h3 className="text-sm font-medium text-gray-600">
               Active Programs
             </h3>
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-gray-700 mt-1">
               All with documented outcomes
             </p>
           </div>
@@ -290,7 +290,7 @@ export default async function AccreditationPage() {
             <h3 className="text-sm font-medium text-gray-600">
               Annual Enrollments
             </h3>
-            <p className="text-xs text-gray-500 mt-1">Last 12 months</p>
+            <p className="text-xs text-gray-700 mt-1">Last 12 months</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border p-6">
@@ -303,7 +303,7 @@ export default async function AccreditationPage() {
             <h3 className="text-sm font-medium text-gray-600">
               Completion Rate
             </h3>
-            <p className="text-xs text-gray-500 mt-1">Target: 75%+</p>
+            <p className="text-xs text-gray-700 mt-1">Target: 75%+</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border p-6">
@@ -316,7 +316,7 @@ export default async function AccreditationPage() {
             <h3 className="text-sm font-medium text-gray-600">
               Placement Rate
             </h3>
-            <p className="text-xs text-gray-500 mt-1">Target: 80%+</p>
+            <p className="text-xs text-gray-700 mt-1">Target: 80%+</p>
           </div>
         </div>
 

@@ -169,7 +169,7 @@ export default function SSNVerificationForm({
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-gray-700 mt-1">
             <Lock className="w-5 h-5 inline-block" /> We only store the last 4
             digits for security
           </p>

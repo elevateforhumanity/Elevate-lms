@@ -188,7 +188,7 @@ export default async function SignaturesPage() {
                   ))}
                 </div>
               ) : (
-                <p className="text-gray-500 text-center py-8">
+                <p className="text-gray-700 text-center py-8">
                   No signatures found
                 </p>
               )}

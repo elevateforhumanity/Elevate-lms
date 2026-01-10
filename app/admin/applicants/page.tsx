@@ -168,7 +168,7 @@ export default async function ApplicantsPage() {
                   ))}
                 </div>
               ) : (
-                <p className="text-gray-500 text-center py-8">No items found</p>
+                <p className="text-gray-700 text-center py-8">No items found</p>
               )}
             </div>
           </div>

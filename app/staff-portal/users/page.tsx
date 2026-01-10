@@ -64,16 +64,16 @@ export default async function StaffPortalUsersPage() {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                       Email
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                       Role
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                       Created
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                       Last Updated
                     </th>
                   </tr>
@@ -100,12 +100,12 @@ export default async function StaffPortalUsersPage() {
                             {user.role || 'user'}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                           {user.created_at
                             ? new Date(user.created_at).toLocaleDateString()
                             : 'N/A'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                           {user.updated_at
                             ? new Date(user.updated_at).toLocaleDateString()
                             : 'N/A'}
@@ -116,7 +116,7 @@ export default async function StaffPortalUsersPage() {
                     <tr>
                       <td
                         colSpan={4}
-                        className="px-6 py-8 text-center text-gray-500"
+                        className="px-6 py-8 text-center text-gray-700"
                       >
                         No users found
                       </td>

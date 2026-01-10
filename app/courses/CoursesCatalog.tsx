@@ -140,7 +140,7 @@ export default function CoursesCatalog({
                     className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                   <svg
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -281,7 +281,7 @@ export default function CoursesCatalog({
                         </p>
                       )}
 
-                      <div className="flex items-center justify-between text-sm text-gray-500">
+                      <div className="flex items-center justify-between text-sm text-gray-700">
                         {course.duration_hours && (
                           <span className="flex items-center">
                             <svg
@@ -317,7 +317,7 @@ export default function CoursesCatalog({
             ) : (
               <div className="text-center py-16">
                 <svg
-                  className="w-16 h-16 text-gray-400 mx-auto mb-4"
+                  className="w-16 h-16 text-gray-600 mx-auto mb-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

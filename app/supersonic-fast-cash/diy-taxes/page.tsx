@@ -609,7 +609,7 @@ export default function DIYTaxesPage() {
                 </div>
 
                 {taxReturn.dependents.length === 0 ? (
-                  <div className="text-center py-8 text-gray-500">
+                  <div className="text-center py-8 text-gray-700">
                     No dependents added yet. Click "Add Dependent" to add one.
                   </div>
                 ) : (
@@ -718,7 +718,7 @@ export default function DIYTaxesPage() {
                 </div>
 
                 {taxReturn.w2Income.length === 0 ? (
-                  <div className="text-center py-8 bg-gray-50 rounded-lg text-gray-500">
+                  <div className="text-center py-8 bg-gray-50 rounded-lg text-gray-700">
                     No W-2s added yet. Click "Add W-2" or upload your W-2 to
                     auto-fill.
                   </div>
@@ -1368,7 +1368,7 @@ export default function DIYTaxesPage() {
                   File My Tax Return Now
                 </button>
 
-                <p className="text-center text-sm text-gray-500">
+                <p className="text-center text-sm text-gray-700">
                   By filing, you agree to our terms and authorize e-filing with
                   the IRS.
                 </p>

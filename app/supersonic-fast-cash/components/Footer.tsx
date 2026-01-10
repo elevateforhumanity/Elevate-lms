@@ -9,13 +9,13 @@ export function SupersonicFooter() {
           {/* About */}
           <div>
             <h3 className="text-xl font-bold mb-4">About Us</h3>
-            <p className="text-gray-400 mb-4">
+            <p className="text-gray-600 mb-4">
               Professional tax preparation and financial services. Licensed Enrolled Agent with full IRS representation rights.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-gray-400 hover:text-white">Facebook</a>
-              <a href="#" className="text-gray-400 hover:text-white">YouTube</a>
-              <a href="#" className="text-gray-400 hover:text-white">LinkedIn</a>
+              <a href="#" className="text-gray-600 hover:text-white">Facebook</a>
+              <a href="#" className="text-gray-600 hover:text-white">YouTube</a>
+              <a href="#" className="text-gray-600 hover:text-white">LinkedIn</a>
             </div>
           </div>
 
@@ -24,27 +24,27 @@ export function SupersonicFooter() {
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/supersonic-fast-cash" className="text-gray-400 hover:text-white">
+                <Link href="/supersonic-fast-cash" className="text-gray-600 hover:text-white">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/supersonic-fast-cash/services" className="text-gray-400 hover:text-white">
+                <Link href="/supersonic-fast-cash/services" className="text-gray-600 hover:text-white">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/supersonic-fast-cash/tax-information" className="text-gray-400 hover:text-white">
+                <Link href="/supersonic-fast-cash/tax-information" className="text-gray-600 hover:text-white">
                   Tax Information
                 </Link>
               </li>
               <li>
-                <Link href="/supersonic-fast-cash/tax-tools" className="text-gray-400 hover:text-white">
+                <Link href="/supersonic-fast-cash/tax-tools" className="text-gray-600 hover:text-white">
                   Tax Tools
                 </Link>
               </li>
               <li>
-                <Link href="/supersonic-fast-cash/contact" className="text-gray-400 hover:text-white">
+                <Link href="/supersonic-fast-cash/contact" className="text-gray-600 hover:text-white">
                   Contact
                 </Link>
               </li>
@@ -58,20 +58,20 @@ export function SupersonicFooter() {
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <a href="tel:+13173143757" className="text-gray-400 hover:text-white">
+                  <a href="tel:+13173143757" className="text-gray-600 hover:text-white">
                     (317) 314-3757
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                <a href="mailto:Supersonicfadtcashllc@gmail.com" className="text-gray-400 hover:text-white">
+                <a href="mailto:Supersonicfadtcashllc@gmail.com" className="text-gray-600 hover:text-white">
                   Supersonicfadtcashllc@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-                <div className="text-gray-400">
+                <div className="text-gray-600">
                   Indianapolis, IN
                 </div>
               </li>
@@ -81,7 +81,7 @@ export function SupersonicFooter() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-600 text-sm">
             © {new Date().getFullYear()} Supersonic Fast Cash. All rights reserved.
           </p>
         </div>

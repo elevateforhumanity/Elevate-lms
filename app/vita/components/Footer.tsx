@@ -11,7 +11,7 @@ export function VITAFooter() {
               <Heart className="w-6 h-6 text-green-600" />
               <span className="text-white font-bold text-lg">VITA Tax Prep</span>
             </div>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-600">
               Free IRS-certified tax preparation for qualifying individuals
             </p>
           </div>
@@ -57,12 +57,12 @@ export function VITAFooter() {
 
         <div className="pt-6 border-t border-gray-800">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-400">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-600">
               <Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
               <Link href="/terms-of-service" className="hover:text-white transition">Terms of Service</Link>
               <Link href="/accessibility" className="hover:text-white transition">Accessibility</Link>
             </div>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-600">
               © {new Date().getFullYear()} Elevate For Humanity. All Rights Reserved.
             </p>
           </div>

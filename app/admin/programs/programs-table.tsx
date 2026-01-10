@@ -70,25 +70,25 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
         <table className="w-full">
           <thead className="bg-gray-50 border-b">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                 Program
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                 Modules
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                 Duration
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                 Price
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                 Created
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium text-gray-700 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -98,7 +98,7 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
               <tr>
                 <td
                   colSpan={7}
-                  className="px-6 py-12 text-center text-gray-500"
+                  className="px-6 py-12 text-center text-gray-700"
                 >
                   No programs found
                 </td>
@@ -111,7 +111,7 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
                       <div className="font-medium text-gray-900">
                         {program.name}
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-gray-700">
                         {program.slug}
                       </div>
                     </div>
@@ -147,7 +147,7 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
                       ? `$${program.price.toLocaleString()}`
                       : 'Free'}
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500">
+                  <td className="px-6 py-4 text-sm text-gray-700">
                     {new Date(program.created_at).toLocaleDateString()}
                   </td>
                   <td className="px-6 py-4 text-right text-sm font-medium">

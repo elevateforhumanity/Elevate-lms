@@ -619,7 +619,7 @@ export default function TrainingPage() {
                             <span className="text-3xl font-bold text-green-600">
                               ${module.price}
                             </span>
-                            <div className="text-sm text-gray-500">
+                            <div className="text-sm text-gray-700">
                               FREE for employees
                             </div>
                           </>
@@ -706,7 +706,7 @@ export default function TrainingPage() {
                     placeholder="XXXX-XXXX-XXXX-XXXX"
                     maxLength={19}
                   />
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-700 mt-1">
                     Format: XXXX-XXXX-XXXX-XXXX (check your email)
                   </p>
                 </div>

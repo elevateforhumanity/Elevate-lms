@@ -99,7 +99,7 @@ export default function BookAppointmentPage() {
                 We'll contact you within 24 hours to confirm your appointment
                 time.
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-700">
                 Check your email for confirmation details.
               </p>
             </div>
@@ -324,7 +324,7 @@ export default function BookAppointmentPage() {
                 {status === 'loading' ? 'Submitting...' : 'Request Appointment'}
               </button>
 
-              <p className="text-xs text-gray-500 text-center">
+              <p className="text-xs text-gray-700 text-center">
                 By submitting, you agree to be contacted about your appointment.
                 We'll confirm your appointment within 24 hours.
               </p>
@@ -393,7 +393,7 @@ export default function BookAppointmentPage() {
                 <span className="font-semibold">Closed</span>
               </div>
             </div>
-            <p className="text-xs text-gray-500 mt-4">
+            <p className="text-xs text-gray-700 mt-4">
               Extended hours available during tax season (Jan - Apr)
             </p>
           </div>

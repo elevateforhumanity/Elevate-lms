@@ -1,0 +1,317 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link "Skip to main content" [ref=e5] [cursor=pointer]:
+        - /url: "#main-content"
+      - link "Go to homepage" [ref=e8] [cursor=pointer]:
+        - /url: /
+        - img "Elevate for Humanity" [ref=e10]
+    - main [ref=e11]:
+      - navigation "Breadcrumb" [ref=e12]:
+        - list [ref=e14]:
+          - listitem [ref=e15]:
+            - link [ref=e16] [cursor=pointer]:
+              - /url: /
+              - img
+          - listitem [ref=e17]:
+            - img
+            - generic [ref=e18]: Contact
+      - main [ref=e20]:
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - img
+            - generic [ref=e24]: Get In Touch
+          - heading "We're Here to Help" [level=1] [ref=e25]
+          - paragraph [ref=e26]: Questions about programs, funding, or enrollment? Our team is ready to guide you every step of the way.
+          - generic [ref=e27]:
+            - generic [ref=e28]:
+              - generic [ref=e29]: 24hr
+              - generic [ref=e30]: Response Time
+            - generic [ref=e31]:
+              - generic [ref=e32]: Free
+              - generic [ref=e33]: Consultation
+            - generic [ref=e34]:
+              - generic [ref=e35]: 5min
+              - generic [ref=e36]: To Apply
+        - generic [ref=e38]:
+          - generic [ref=e39]:
+            - heading "Choose How to Connect" [level=2] [ref=e40]
+            - paragraph [ref=e41]: Pick the method that works best for you
+          - generic [ref=e42]:
+            - link "Call Us (317) 314-3757 Mon-Fri, 8am-6pm EST" [ref=e43] [cursor=pointer]:
+              - /url: tel:+13173143757
+              - generic [ref=e44]:
+                - img
+              - heading "Call Us" [level=3] [ref=e45]
+              - paragraph [ref=e46]: (317) 314-3757
+              - paragraph [ref=e47]: Mon-Fri, 8am-6pm EST
+            - link "Email Us elevate4humanityedu@gmail.com We respond within 24 hours" [ref=e48] [cursor=pointer]:
+              - /url: mailto:elevate4humanityedu@gmail.com
+              - generic [ref=e49]:
+                - img
+              - heading "Email Us" [level=3] [ref=e50]
+              - paragraph [ref=e51]: elevate4humanityedu@gmail.com
+              - paragraph [ref=e52]: We respond within 24 hours
+            - link "Visit Us Indianapolis, IN Multiple locations across Indiana" [ref=e53] [cursor=pointer]:
+              - /url: /locations
+              - generic [ref=e54]:
+                - img
+              - heading "Visit Us" [level=3] [ref=e55]
+              - paragraph [ref=e56]: Indianapolis, IN
+              - paragraph [ref=e57]: Multiple locations across Indiana
+            - link "Schedule Call Book a consultation Free 15-minute career consultation" [ref=e58] [cursor=pointer]:
+              - /url: /booking
+              - generic [ref=e59]:
+                - img
+              - heading "Schedule Call" [level=3] [ref=e60]
+              - paragraph [ref=e61]: Book a consultation
+              - paragraph [ref=e62]: Free 15-minute career consultation
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - heading "Send Us a Message" [level=2] [ref=e66]
+            - paragraph [ref=e67]: Fill out the form below and we'll get back to you within 24 hours
+          - generic [ref=e68]:
+            - generic [ref=e69]:
+              - generic [ref=e70]:
+                - generic [ref=e71]: Full Name *
+                - textbox "John Doe" [ref=e72]
+              - generic [ref=e73]:
+                - generic [ref=e74]: Email Address *
+                - textbox "john@example.com" [ref=e75]
+            - generic [ref=e76]:
+              - generic [ref=e77]:
+                - generic [ref=e78]: Phone Number
+                - textbox "(317) 555-0123" [ref=e79]
+              - generic [ref=e80]:
+                - generic [ref=e81]: I'm Interested In *
+                - combobox [ref=e82]:
+                  - option "General Information" [selected]
+                  - option "Programs & Training"
+                  - option "Funding & Eligibility"
+                  - option "Employer Partnerships"
+                  - option "Support Services"
+            - generic [ref=e83]:
+              - generic [ref=e84]: Message *
+              - textbox "Tell us how we can help you..." [ref=e85]
+            - button "Send Message" [ref=e86] [cursor=pointer]:
+              - img
+              - generic [ref=e87]: Send Message
+            - paragraph [ref=e88]: We'll respond within 24 hours
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - img
+            - heading "Office Hours" [level=3] [ref=e93]
+            - generic [ref=e94]:
+              - paragraph [ref=e95]:
+                - strong [ref=e96]: "Monday - Friday:"
+                - text: 8:00 AM - 6:00 PM
+              - paragraph [ref=e97]:
+                - strong [ref=e98]: "Saturday:"
+                - text: 9:00 AM - 2:00 PM
+              - paragraph [ref=e99]:
+                - strong [ref=e100]: "Sunday:"
+                - text: Closed
+          - generic [ref=e101]:
+            - img
+            - heading "Who We Help" [level=3] [ref=e102]
+            - list [ref=e103]:
+              - listitem [ref=e104]:
+                - img
+                - generic [ref=e105]: Students & Job Seekers
+              - listitem [ref=e106]:
+                - img
+                - generic [ref=e107]: Employers & Partners
+              - listitem [ref=e108]:
+                - img
+                - generic [ref=e109]: Community Organizations
+          - generic [ref=e110]:
+            - img
+            - heading "Quick Links" [level=3] [ref=e111]
+            - generic [ref=e112]:
+              - link "Apply Now →" [ref=e113] [cursor=pointer]:
+                - /url: /apply
+              - link "Browse Programs →" [ref=e114] [cursor=pointer]:
+                - /url: /programs
+              - link "FAQs →" [ref=e115] [cursor=pointer]:
+                - /url: /faq
+              - link "Help Center →" [ref=e116] [cursor=pointer]:
+                - /url: /help
+        - generic [ref=e118]:
+          - heading "Ready to Get Started?" [level=2] [ref=e119]
+          - paragraph [ref=e120]: Don't wait—apply now and start your journey to a better career
+          - link "Apply Now" [ref=e121] [cursor=pointer]:
+            - /url: /apply
+            - generic [ref=e122]: Apply Now
+            - img
+          - paragraph [ref=e123]: Takes 5 minutes • 100% free • No commitment
+    - contentinfo [ref=e124]:
+      - generic [ref=e125]:
+        - generic [ref=e126]:
+          - link "Elevate for Humanity" [ref=e127] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e128]: Elevate for Humanity
+          - paragraph [ref=e129]: 100% free career training in healthcare, skilled trades, and technology. Get trained, get hired, get paid.
+          - generic [ref=e130]:
+            - link "Follow us on LinkedIn" [ref=e131] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/elevate-for-humanity
+              - img [ref=e132]
+            - link "Subscribe on YouTube" [ref=e134] [cursor=pointer]:
+              - /url: https://www.youtube.com/@elevateforhumanity
+              - img [ref=e135]
+            - link "Follow us on Facebook" [ref=e137] [cursor=pointer]:
+              - /url: https://www.facebook.com/profile.php?id=61571046346179
+              - img [ref=e138]
+        - generic [ref=e140]:
+          - generic [ref=e141]:
+            - heading "Programs" [level=3] [ref=e142]
+            - list [ref=e143]:
+              - listitem [ref=e144]:
+                - link "All Programs" [ref=e145] [cursor=pointer]:
+                  - /url: /programs
+              - listitem [ref=e146]:
+                - link "Healthcare" [ref=e147] [cursor=pointer]:
+                  - /url: /programs/healthcare
+              - listitem [ref=e148]:
+                - link "Skilled Trades" [ref=e149] [cursor=pointer]:
+                  - /url: /programs/skilled-trades
+              - listitem [ref=e150]:
+                - link "Technology" [ref=e151] [cursor=pointer]:
+                  - /url: /programs/technology
+              - listitem [ref=e152]:
+                - link "Business" [ref=e153] [cursor=pointer]:
+                  - /url: /programs/business
+              - listitem [ref=e154]:
+                - link "Apprenticeships" [ref=e155] [cursor=pointer]:
+                  - /url: /apprenticeships
+              - listitem [ref=e156]:
+                - link "Courses" [ref=e157] [cursor=pointer]:
+                  - /url: /courses
+          - generic [ref=e158]:
+            - heading "Get Started" [level=3] [ref=e159]
+            - list [ref=e160]:
+              - listitem [ref=e161]:
+                - link "Apply Now" [ref=e162] [cursor=pointer]:
+                  - /url: /apply
+              - listitem [ref=e163]:
+                - link "Check Eligibility" [ref=e164] [cursor=pointer]:
+                  - /url: /wioa-eligibility
+              - listitem [ref=e165]:
+                - link "How It Works" [ref=e166] [cursor=pointer]:
+                  - /url: /how-it-works
+              - listitem [ref=e167]:
+                - link "Pathways" [ref=e168] [cursor=pointer]:
+                  - /url: /pathways
+              - listitem [ref=e169]:
+                - link "Funding" [ref=e170] [cursor=pointer]:
+                  - /url: /funding
+              - listitem [ref=e171]:
+                - link "Orientation" [ref=e172] [cursor=pointer]:
+                  - /url: /orientation
+          - generic [ref=e173]:
+            - heading "Services" [level=3] [ref=e174]
+            - list [ref=e175]:
+              - listitem [ref=e176]:
+                - link "Career Services" [ref=e177] [cursor=pointer]:
+                  - /url: /career-services
+              - listitem [ref=e178]:
+                - link "Advising" [ref=e179] [cursor=pointer]:
+                  - /url: /advising
+              - listitem [ref=e180]:
+                - link "Mentorship" [ref=e181] [cursor=pointer]:
+                  - /url: /mentorship
+              - listitem [ref=e182]:
+                - link "AI Tutor" [ref=e183] [cursor=pointer]:
+                  - /url: /ai-tutor
+              - listitem [ref=e184]:
+                - link "Tax Services" [ref=e185] [cursor=pointer]:
+                  - /url: /supersonic-fast-cash
+              - listitem [ref=e186]:
+                - link "Free VITA" [ref=e187] [cursor=pointer]:
+                  - /url: /vita
+          - generic [ref=e188]:
+            - heading "Partners" [level=3] [ref=e189]
+            - list [ref=e190]:
+              - listitem [ref=e191]:
+                - link "Employers" [ref=e192] [cursor=pointer]:
+                  - /url: /employer
+              - listitem [ref=e193]:
+                - link "Hire Graduates" [ref=e194] [cursor=pointer]:
+                  - /url: /hire-graduates
+              - listitem [ref=e195]:
+                - link "Workforce Partners" [ref=e196] [cursor=pointer]:
+                  - /url: /workforce-partners
+              - listitem [ref=e197]:
+                - link "Training Providers" [ref=e198] [cursor=pointer]:
+                  - /url: /training-providers
+              - listitem [ref=e199]:
+                - link "Agencies" [ref=e200] [cursor=pointer]:
+                  - /url: /agencies
+              - listitem [ref=e201]:
+                - link "White Label" [ref=e202] [cursor=pointer]:
+                  - /url: /white-label
+          - generic [ref=e203]:
+            - heading "Portals" [level=3] [ref=e204]
+            - list [ref=e205]:
+              - listitem [ref=e206]:
+                - link "Student Portal" [ref=e207] [cursor=pointer]:
+                  - /url: /client-portal
+              - listitem [ref=e208]:
+                - link "Admin" [ref=e209] [cursor=pointer]:
+                  - /url: /admin
+              - listitem [ref=e210]:
+                - link "Staff" [ref=e211] [cursor=pointer]:
+                  - /url: /staff-portal
+              - listitem [ref=e212]:
+                - link "LMS" [ref=e213] [cursor=pointer]:
+                  - /url: /lms
+              - listitem [ref=e214]:
+                - link "Login" [ref=e215] [cursor=pointer]:
+                  - /url: /login
+              - listitem [ref=e216]:
+                - link "Sign Up" [ref=e217] [cursor=pointer]:
+                  - /url: /signup
+            - heading "Resources" [level=3] [ref=e218]
+            - list [ref=e219]:
+              - listitem [ref=e220]:
+                - link "Blog" [ref=e221] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e222]:
+                - link "Success Stories" [ref=e223] [cursor=pointer]:
+                  - /url: /success-stories
+              - listitem [ref=e224]:
+                - link "Help" [ref=e225] [cursor=pointer]:
+                  - /url: /help
+              - listitem [ref=e226]:
+                - link "FAQ" [ref=e227] [cursor=pointer]:
+                  - /url: /faq
+        - generic [ref=e229]:
+          - generic [ref=e230]:
+            - link "Privacy Policy" [ref=e231] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Terms of Service" [ref=e232] [cursor=pointer]:
+              - /url: /terms-of-service
+            - link "Accessibility" [ref=e233] [cursor=pointer]:
+              - /url: /accessibility
+            - link "Site Map" [ref=e234] [cursor=pointer]:
+              - /url: /sitemap-page
+          - paragraph [ref=e235]: © 2026 Elevate For Humanity. All Rights Reserved.
+  - button "Open chat" [ref=e236] [cursor=pointer]:
+    - img [ref=e237]
+  - generic [ref=e244] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e245]:
+      - img [ref=e246]
+    - generic [ref=e249]:
+      - button "Open issues overlay" [ref=e250]:
+        - generic [ref=e251]:
+          - generic [ref=e252]: "0"
+          - generic [ref=e253]: "1"
+        - generic [ref=e254]: Issue
+      - button "Collapse issues badge" [ref=e255]:
+        - img [ref=e256]
+  - alert [ref=e258]
+```

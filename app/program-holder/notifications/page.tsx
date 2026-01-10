@@ -89,7 +89,7 @@ export default async function ProgramHolderNotificationsPage() {
                     <p className="text-sm text-gray-600 mb-2">
                       {notification.message}
                     </p>
-                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                    <div className="flex items-center gap-4 text-xs text-gray-700">
                       <span>
                         {new Date(notification.created_at).toLocaleDateString(
                           'en-US',

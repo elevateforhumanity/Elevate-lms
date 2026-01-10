@@ -199,7 +199,7 @@ export default function DrakeDownloadPage() {
                 <div>
                   <h3 className="text-2xl font-bold mb-2">{product.name}</h3>
                   <p className="text-gray-600">{product.description}</p>
-                  <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
+                  <div className="flex items-center gap-4 mt-2 text-sm text-gray-700">
                     <span>Version: {product.version}</span>
                     <span>•</span>
                     <span>Size: {product.size}</span>

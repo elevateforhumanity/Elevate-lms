@@ -302,7 +302,7 @@ export default function OrgInvitesPage() {
                     <tr>
                       <td
                         colSpan={6}
-                        className="px-3 py-8 text-center text-sm text-gray-500"
+                        className="px-3 py-8 text-center text-sm text-gray-700"
                       >
                         No invitations found
                       </td>
@@ -313,7 +313,7 @@ export default function OrgInvitesPage() {
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-900">
                           {invite.email}
                         </td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-700">
                           {invite.role}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm">
@@ -329,10 +329,10 @@ export default function OrgInvitesPage() {
                             {invite.status}
                           </span>
                         </td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-700">
                           {invite.inviterName || 'Unknown'}
                         </td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-700">
                           {new Date(invite.expiresAt).toLocaleDateString()}
                         </td>
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">

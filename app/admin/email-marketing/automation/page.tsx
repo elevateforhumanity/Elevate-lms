@@ -253,7 +253,7 @@ export default function AutomationPage() {
 
           {workflows.length === 0 ? (
             <div className="p-12 text-center">
-              <Zap className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+              <Zap className="w-12 h-12 text-gray-600 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">
                 No workflows yet
               </h3>

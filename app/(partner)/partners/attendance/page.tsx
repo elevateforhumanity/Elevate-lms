@@ -115,7 +115,7 @@ export default function PartnerAttendancePage() {
 
       <div className="flex flex-wrap gap-3 items-end">
         <div>
-          <div className="text-xs text-gray-500 mb-1">Shop ID</div>
+          <div className="text-xs text-gray-700 mb-1">Shop ID</div>
           <input
             className="border rounded-xl p-2 w-[360px]"
             value={shopId}
@@ -123,7 +123,7 @@ export default function PartnerAttendancePage() {
           />
         </div>
         <div>
-          <div className="text-xs text-gray-500 mb-1">Week Start (Mon)</div>
+          <div className="text-xs text-gray-700 mb-1">Week Start (Mon)</div>
           <input
             type="date"
             className="border rounded-xl p-2"

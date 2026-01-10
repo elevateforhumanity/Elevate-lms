@@ -141,7 +141,7 @@ export default async function StatusPage() {
           </section>
 
           {/* Timestamp */}
-          <div className="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-500">
+          <div className="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-700">
             Last updated: {new Date().toLocaleString()}
           </div>
         </div>

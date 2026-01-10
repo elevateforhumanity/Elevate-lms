@@ -528,7 +528,7 @@ export default function ApprenticeshipsPage() {
                 </div>
                 {index < 3 && (
                   <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <ArrowRight className="h-6 w-6 text-gray-400" />
+                    <ArrowRight className="h-6 w-6 text-gray-600" />
                   </div>
                 )}
               </div>
@@ -621,7 +621,7 @@ export default function ApprenticeshipsPage() {
               <h3 className="text-lg md:text-xl font-bold mb-4">
                 Elevate For Humanity
               </h3>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-600 text-sm">
                 Empowering individuals through workforce development and
                 apprenticeship programs.
               </p>
@@ -632,7 +632,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/programs"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-600 hover:text-white transition-colors"
                   >
                     All Programs
                   </Link>
@@ -640,7 +640,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/apprenticeships"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-600 hover:text-white transition-colors"
                   >
                     Apprenticeships
                   </Link>
@@ -648,7 +648,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/apply"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-600 hover:text-white transition-colors"
                   >
                     Apply Now
                   </Link>
@@ -661,7 +661,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/about"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-600 hover:text-white transition-colors"
                   >
                     About Us
                   </Link>
@@ -669,7 +669,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/team"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-600 hover:text-white transition-colors"
                   >
                     Our Team
                   </Link>
@@ -677,7 +677,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/founder"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-600 hover:text-white transition-colors"
                   >
                     Our Founder
                   </Link>
@@ -686,14 +686,14 @@ export default function ApprenticeshipsPage() {
             </div>
             <div>
               <h4 className="font-bold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>(317) 314-3757</li>
                 <li className="break-all">elevate4humanityedu@gmail.com</li>
                 <li>Indianapolis, IN</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+          <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-600">
             <p>
               &copy; {new Date().getFullYear()} Elevate For Humanity. All rights
               reserved.

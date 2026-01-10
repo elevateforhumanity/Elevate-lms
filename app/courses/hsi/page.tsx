@@ -178,7 +178,7 @@ export default function HsiPage() {
                     {category.description}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-gray-700">
                       {category.count} courses
                     </span>
                     <span className="text-brand-orange-600 font-semibold group-hover:translate-x-1 transition-transform">

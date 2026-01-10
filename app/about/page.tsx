@@ -89,6 +89,7 @@ export default function AboutPage() {
         imageOnRight={true}
       />
 
+      <main id="main-content">
       {/* Stats Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -194,6 +195,7 @@ export default function AboutPage() {
           </Link>
         </div>
       </section>
+      </main>
     </div>
   );
 }

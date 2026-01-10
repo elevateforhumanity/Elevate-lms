@@ -74,7 +74,7 @@ export default async function TaxFilingReportsPage() {
                 <div className="font-semibold text-gray-900">
                   Monthly Summary
                 </div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-gray-700">
                   Returns filed and refunds processed
                 </div>
               </button>
@@ -82,7 +82,7 @@ export default async function TaxFilingReportsPage() {
                 <div className="font-semibold text-gray-900">
                   Preparer Performance
                 </div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-gray-700">
                   Individual preparer statistics
                 </div>
               </button>
@@ -90,7 +90,7 @@ export default async function TaxFilingReportsPage() {
                 <div className="font-semibold text-gray-900">
                   Client Demographics
                 </div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-gray-700">
                   Client breakdown and trends
                 </div>
               </button>

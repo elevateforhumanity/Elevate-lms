@@ -69,6 +69,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-white">
+      <main id="main-content">
       {/* Hero Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-green-600 to-green-800 text-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -390,6 +391,7 @@ export default function ContactPage() {
           </p>
         </div>
       </section>
+      </main>
     </div>
   );
 }

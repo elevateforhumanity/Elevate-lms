@@ -53,7 +53,7 @@ export default function ServicesPage() {
         <h1 className="text-4xl font-bold tracking-tight">
           SupersonicFastCash Services
         </h1>
-        <p className="text-lg text-gray-500 mt-2">
+        <p className="text-lg text-gray-700 mt-2">
           Professional Tax Preparation & Financial Services
         </p>
 
@@ -112,7 +112,7 @@ export default function ServicesPage() {
             </li>
           </ul>
           <div className="mt-4 pt-4 border-t">
-            <div className="text-sm text-gray-500">Starting at</div>
+            <div className="text-sm text-gray-700">Starting at</div>
             <div className="text-2xl font-bold text-brand-blue-600">$89</div>
           </div>
         </div>
@@ -143,7 +143,7 @@ export default function ServicesPage() {
             </li>
           </ul>
           <div className="mt-4 pt-4 border-t">
-            <div className="text-sm text-gray-500">Loan amounts</div>
+            <div className="text-sm text-gray-700">Loan amounts</div>
             <div className="text-2xl font-bold text-brand-green-600">
               $250-$7,500
             </div>
@@ -176,7 +176,7 @@ export default function ServicesPage() {
             </li>
           </ul>
           <div className="mt-4 pt-4 border-t">
-            <div className="text-sm text-gray-500">Starting at</div>
+            <div className="text-sm text-gray-700">Starting at</div>
             <div className="text-2xl font-bold text-purple-600">$299</div>
           </div>
         </div>
@@ -207,7 +207,7 @@ export default function ServicesPage() {
             </li>
           </ul>
           <div className="mt-4 pt-4 border-t">
-            <div className="text-sm text-gray-500">Starting at</div>
+            <div className="text-sm text-gray-700">Starting at</div>
             <div className="text-2xl font-bold text-brand-orange-600">
               $199/mo
             </div>
@@ -240,7 +240,7 @@ export default function ServicesPage() {
             </li>
           </ul>
           <div className="mt-4 pt-4 border-t">
-            <div className="text-sm text-gray-500">Starting at</div>
+            <div className="text-sm text-gray-700">Starting at</div>
             <div className="text-2xl font-bold text-brand-orange-600">$149</div>
           </div>
         </div>
@@ -269,7 +269,7 @@ export default function ServicesPage() {
             </li>
           </ul>
           <div className="mt-4 pt-4 border-t">
-            <div className="text-sm text-gray-500">Starting at</div>
+            <div className="text-sm text-gray-700">Starting at</div>
             <div className="text-2xl font-bold text-teal-600">$399/yr</div>
           </div>
         </div>

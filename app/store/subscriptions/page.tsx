@@ -315,7 +315,7 @@ function SubscriptionsContent() {
                   {isCurrentPlan ? (
                     <button
                       disabled
-                      className="w-full py-3 px-4 bg-gray-100 text-gray-500 rounded-lg font-semibold cursor-not-allowed"
+                      className="w-full py-3 px-4 bg-gray-100 text-gray-700 rounded-lg font-semibold cursor-not-allowed"
                     >
                       Current Plan
                     </button>

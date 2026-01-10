@@ -220,7 +220,7 @@ export default function MediaStudioPage() {
 
               {/* Search */}
               <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
                 <input
                   type="text"
                   placeholder="Search files..."
@@ -311,7 +311,7 @@ export default function MediaStudioPage() {
                     />
                   ) : (
                     <div className="flex items-center justify-center h-full">
-                      <ImageIcon className="w-12 h-12 text-gray-400" />
+                      <ImageIcon className="w-12 h-12 text-gray-600" />
                     </div>
                   )}
                 </div>
@@ -319,7 +319,7 @@ export default function MediaStudioPage() {
                   <p className="text-sm font-medium text-gray-900 truncate">
                     {file.name}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-700 mt-1">
                     {(file.size / 1024).toFixed(1)} KB
                   </p>
                   <div className="flex gap-2 mt-3">

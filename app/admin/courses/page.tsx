@@ -193,22 +193,22 @@ export default async function AdminCoursesPage() {
               <table className="w-full">
                 <thead className="bg-gray-50 border-b">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Course
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Status
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Enrollments
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Duration
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Level
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-700 uppercase">
                       Actions
                     </th>
                   </tr>
@@ -248,7 +248,7 @@ export default async function AdminCoursesPage() {
                               <p className="text-sm font-medium text-gray-900">
                                 {course.title}
                               </p>
-                              <p className="text-xs text-gray-500">
+                              <p className="text-xs text-gray-700">
                                 {course.id.slice(0, 8)}
                               </p>
                             </div>
@@ -311,10 +311,10 @@ export default async function AdminCoursesPage() {
                     <tr>
                       <td
                         colSpan={6}
-                        className="px-6 py-12 text-center text-gray-500"
+                        className="px-6 py-12 text-center text-gray-700"
                       >
                         <svg
-                          className="w-12 h-12 text-gray-400 mx-auto mb-4"
+                          className="w-12 h-12 text-gray-600 mx-auto mb-4"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"

@@ -174,7 +174,7 @@ export default function DocumentUploadPage() {
 
       {/* Upload Area */}
       <section className="rounded-2xl border-2 border-dashed border-gray-300 bg-white p-8 text-center mb-6">
-        <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+        <Upload className="w-12 h-12 text-gray-600 mx-auto mb-4" />
         <h2 className="text-xl font-bold mb-2">Upload Your Documents</h2>
         <p className="text-gray-600 mb-6">
           Drag and drop files here, or click to browse
@@ -192,7 +192,7 @@ export default function DocumentUploadPage() {
             }
           />
         </label>
-        <p className="text-xs text-gray-500 mt-4">
+        <p className="text-xs text-gray-700 mt-4">
           Accepted formats: PDF, JPG, PNG, DOC, DOCX (Max 10MB per file)
         </p>
         {(!contactInfo.name || !contactInfo.email || !contactInfo.phone) && (
@@ -215,12 +215,12 @@ export default function DocumentUploadPage() {
                 className="flex items-center justify-between p-4 rounded-lg border"
               >
                 <div className="flex items-center gap-3 flex-1">
-                  <FileText className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                  <FileText className="w-5 h-5 text-gray-600 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <div className="font-medium text-sm truncate">
                       {file.name}
                     </div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-gray-700">
                       {formatFileSize(file.size)}
                     </div>
                   </div>
@@ -240,7 +240,7 @@ export default function DocumentUploadPage() {
                     className="p-1 hover:bg-gray-100 rounded"
                     disabled={file.status === 'uploading'}
                   >
-                    <X className="w-4 h-4 text-gray-400" />
+                    <X className="w-4 h-4 text-gray-600" />
                   </button>
                 </div>
               </div>
@@ -287,23 +287,23 @@ export default function DocumentUploadPage() {
             </h3>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span>Form 1098 (mortgage interest)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span>Form 1098-T (education expenses)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span>Childcare provider information</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span>Business income/expense records</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span>Last year's tax return</span>
               </li>
             </ul>

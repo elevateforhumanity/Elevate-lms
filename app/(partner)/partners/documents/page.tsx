@@ -90,7 +90,7 @@ export default function PartnerDocumentsPage() {
 
       <div className="flex flex-wrap gap-3 items-end">
         <div>
-          <div className="text-xs text-gray-500 mb-1">Shop ID</div>
+          <div className="text-xs text-gray-700 mb-1">Shop ID</div>
           <input
             className="border rounded-xl p-2 w-[360px]"
             value={shopId}
@@ -99,7 +99,7 @@ export default function PartnerDocumentsPage() {
         </div>
 
         <div>
-          <div className="text-xs text-gray-500 mb-1">Type</div>
+          <div className="text-xs text-gray-700 mb-1">Type</div>
           <select
             className="border rounded-xl p-2"
             value={type}
@@ -114,7 +114,7 @@ export default function PartnerDocumentsPage() {
         </div>
 
         <div>
-          <div className="text-xs text-gray-500 mb-1">File</div>
+          <div className="text-xs text-gray-700 mb-1">File</div>
           <input
             type="file"
             onChange={(e) => setFile(e.target.files?.[0] ?? null)}
@@ -145,7 +145,7 @@ export default function PartnerDocumentsPage() {
                 <div>{d.document_type}</div>
                 <div className="text-xs text-gray-600">{d.status}</div>
               </div>
-              <div className="text-xs text-gray-500 mt-1">{d.file_path}</div>
+              <div className="text-xs text-gray-700 mt-1">{d.file_path}</div>
             </div>
           ))}
           {docs.length === 0 && (

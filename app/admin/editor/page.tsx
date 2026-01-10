@@ -184,7 +184,7 @@ export default function EditorPage() {
       <div className="h-12 bg-slate-800 text-white flex items-center justify-between px-4">
         <div className="flex items-center gap-4">
           <h1 className="font-semibold">EFH Code Editor</h1>
-          <span className="text-sm text-gray-400">{selectedFile}</span>
+          <span className="text-sm text-gray-600">{selectedFile}</span>
           {unsavedChanges && (
             <span className="text-xs bg-yellow-600 px-2 py-1 rounded">
               Unsaved

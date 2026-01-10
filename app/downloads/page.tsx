@@ -230,7 +230,7 @@ export default function DownloadsPage() {
                         <p className="text-sm text-gray-600 mb-3">
                           {item.description}
                         </p>
-                        <div className="flex items-center gap-4 text-sm text-gray-500">
+                        <div className="flex items-center gap-4 text-sm text-gray-700">
                           <span>{item.size}</span>
                           <span>•</span>
                           <span>Updated {item.updated}</span>
@@ -272,7 +272,7 @@ export default function DownloadsPage() {
                         <p className="text-sm text-gray-600 mb-3">
                           {item.description}
                         </p>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-gray-700">
                           <span>{item.size}</span>
                         </div>
                       </div>
@@ -306,7 +306,7 @@ export default function DownloadsPage() {
                   >
                     <FileText className="w-8 h-8 text-purple-600 mb-3" />
                     <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                    <div className="text-sm text-gray-500 mb-4">
+                    <div className="text-sm text-gray-700 mb-4">
                       <span>{item.size}</span>
                     </div>
                     <button
@@ -343,7 +343,7 @@ export default function DownloadsPage() {
                         <p className="text-sm text-gray-600 mb-3">
                           {item.description}
                         </p>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-gray-700">
                           <span>{item.size}</span>
                         </div>
                       </div>

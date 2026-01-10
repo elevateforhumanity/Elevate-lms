@@ -149,7 +149,7 @@ export default async function AtRiskStudentsPage() {
             <div className="flex items-center gap-3 mb-2">
               <AlertCircle className="w-8 h-8 text-red-600" />
               <div>
-                <div className="text-sm text-gray-500">At-Risk Students</div>
+                <div className="text-sm text-gray-700">At-Risk Students</div>
                 <div className="text-3xl font-bold text-red-600">
                   {atRiskStudents?.length || 0}
                 </div>
@@ -164,7 +164,7 @@ export default async function AtRiskStudentsPage() {
             <div className="flex items-center gap-3 mb-2">
               <FileWarning className="w-8 h-8 text-yellow-600" />
               <div>
-                <div className="text-sm text-gray-500">Needs Action</div>
+                <div className="text-sm text-gray-700">Needs Action</div>
                 <div className="text-3xl font-bold text-yellow-600">
                   {needsActionStudents?.length || 0}
                 </div>
@@ -179,7 +179,7 @@ export default async function AtRiskStudentsPage() {
             <div className="flex items-center gap-3 mb-2">
               <TrendingDown className="w-8 h-8 text-purple-600" />
               <div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-gray-700">
                   Low Completion Programs
                 </div>
                 <div className="text-3xl font-bold text-purple-600">
@@ -226,31 +226,31 @@ export default async function AtRiskStudentsPage() {
                         </div>
                         <div className="grid grid-cols-2 gap-4 text-sm">
                           <div>
-                            <span className="text-gray-500">Program:</span>
+                            <span className="text-gray-700">Program:</span>
                             <span className="ml-2 font-medium text-gray-900">
                               {program?.name}
                             </span>
                           </div>
                           <div>
-                            <span className="text-gray-500">Progress:</span>
+                            <span className="text-gray-700">Progress:</span>
                             <span className="ml-2 font-medium text-gray-900">
                               {risk.progress_percentage}%
                             </span>
                           </div>
                           <div>
-                            <span className="text-gray-500">Email:</span>
+                            <span className="text-gray-700">Email:</span>
                             <span className="ml-2 text-gray-900">
                               {student?.email}
                             </span>
                           </div>
                           <div>
-                            <span className="text-gray-500">Funding:</span>
+                            <span className="text-gray-700">Funding:</span>
                             <span className="ml-2 font-medium text-gray-900">
                               {funding?.code || 'N/A'}
                             </span>
                           </div>
                           <div>
-                            <span className="text-gray-500">
+                            <span className="text-gray-700">
                               Last Activity:
                             </span>
                             <span className="ml-2 text-gray-900">
@@ -262,7 +262,7 @@ export default async function AtRiskStudentsPage() {
                             </span>
                           </div>
                           <div>
-                            <span className="text-gray-500">
+                            <span className="text-gray-700">
                               Days Inactive:
                             </span>
                             <span className="ml-2 font-medium text-red-600">
@@ -293,7 +293,7 @@ export default async function AtRiskStudentsPage() {
               })}
             </div>
           ) : (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-8 text-gray-700">
               <p>No at-risk students. Great job!</p>
             </div>
           )}

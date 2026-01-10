@@ -1,0 +1,334 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link "Skip to main content" [ref=e5] [cursor=pointer]:
+        - /url: "#main-content"
+      - link "Go to homepage" [ref=e8] [cursor=pointer]:
+        - /url: /
+        - img "Elevate for Humanity" [ref=e10]
+    - main [ref=e11]:
+      - generic [ref=e18]:
+        - heading "Free Career Training" [level=1] [ref=e19]
+        - paragraph [ref=e20]: Healthcare • Skilled Trades • Technology • Business
+        - generic [ref=e21]:
+          - link "Apply Now" [ref=e22] [cursor=pointer]:
+            - /url: /apply
+          - link "View Programs" [ref=e23] [cursor=pointer]:
+            - /url: /programs
+      - main [ref=e24]:
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - heading "Why Choose Our Programs" [level=2] [ref=e28]
+            - paragraph [ref=e29]: Real training, real credentials, real careers
+          - generic [ref=e30]:
+            - generic [ref=e31]:
+              - generic [ref=e32]:
+                - img "100% Free Training"
+              - heading "100% Free Training" [level=3] [ref=e33]
+            - generic [ref=e34]:
+              - generic [ref=e35]:
+                - img "Job Placement Support"
+              - heading "Job Placement Support" [level=3] [ref=e36]
+            - generic [ref=e37]:
+              - generic [ref=e38]:
+                - img "Fast-Track Programs"
+              - heading "Fast-Track Programs" [level=3] [ref=e39]
+            - generic [ref=e40]:
+              - generic [ref=e41]:
+                - img "Industry Credentials"
+              - heading "Industry Credentials" [level=3] [ref=e42]
+            - generic [ref=e43]:
+              - generic [ref=e44]:
+                - img "Career Support"
+              - heading "Career Support" [level=3] [ref=e45]
+            - generic [ref=e46]:
+              - generic [ref=e47]:
+                - img "Multiple Start Dates"
+              - heading "Multiple Start Dates" [level=3] [ref=e48]
+        - generic [ref=e50]:
+          - heading "Serving Indiana Residents Statewide" [level=2] [ref=e51]
+          - paragraph [ref=e52]: With training locations across Indiana and online options, we make career training accessible to all Hoosiers
+          - generic [ref=e53]:
+            - generic [ref=e54]:
+              - generic [ref=e55]: Indianapolis
+              - generic [ref=e56]: Main Campus
+            - generic [ref=e57]:
+              - generic [ref=e58]: Fort Wayne
+              - generic [ref=e59]: Training Center
+            - generic [ref=e60]:
+              - generic [ref=e61]: Evansville
+              - generic [ref=e62]: Partner Site
+            - generic [ref=e63]:
+              - generic [ref=e64]: Online
+              - generic [ref=e65]: Statewide Access
+        - generic [ref=e67]:
+          - generic [ref=e68]:
+            - heading "Trusted Partners & Recognized Credentials" [level=2] [ref=e69]
+            - paragraph [ref=e70]: We partner with leading organizations to provide industry-recognized training and certifications
+          - generic [ref=e71]:
+            - generic [ref=e74]:
+              - generic [ref=e75]: WorkOne
+              - generic [ref=e76]: Indiana
+            - generic [ref=e79]:
+              - generic [ref=e80]: Certiport
+              - generic [ref=e81]: Testing Center
+            - generic [ref=e84]:
+              - generic [ref=e85]: WIOA
+              - generic [ref=e86]: Approved Provider
+            - generic [ref=e89]:
+              - generic [ref=e90]: ETPL
+              - generic [ref=e91]: Listed Programs
+          - generic [ref=e92]:
+            - heading "Industry-Recognized Certifications" [level=3] [ref=e93]
+            - generic [ref=e94]:
+              - generic [ref=e95]: CompTIA A+
+              - generic [ref=e96]: CNA Certification
+              - generic [ref=e97]: HVAC EPA 608
+              - generic [ref=e98]: CDL Class A
+              - generic [ref=e99]: QuickBooks Certified
+              - generic [ref=e100]: Microsoft Office Specialist
+        - generic [ref=e102]:
+          - heading "What We Do" [level=2] [ref=e103]
+          - generic [ref=e104]:
+            - generic [ref=e105]:
+              - generic [ref=e106]:
+                - img "Free Workforce Training"
+              - generic [ref=e107]:
+                - heading "Free Workforce Training" [level=3] [ref=e108]
+                - paragraph [ref=e109]: 100% funded training through WIOA, WRG, and DOL programs.
+                - paragraph [ref=e110]:
+                  - strong [ref=e111]: No tuition. No debt. No barriers.
+            - generic [ref=e112]:
+              - generic [ref=e113]:
+                - img "Industry Credentials"
+              - generic [ref=e114]:
+                - heading "Industry Credentials" [level=3] [ref=e115]
+                - paragraph [ref=e116]: Nationally recognized certifications from Certiport, HSI, CareerSafe, NRF, and Milady.
+                - paragraph [ref=e117]:
+                  - strong [ref=e118]: Real credentials employers recognize.
+          - generic [ref=e119]:
+            - heading "Who We Serve" [level=3] [ref=e120]
+            - paragraph [ref=e121]: Students seeking career training, displaced workers needing new skills, veterans transitioning to civilian careers, and anyone eligible for workforce development funding. We help you access the training you qualify for and guide you from enrollment through certification to employment.
+        - generic [ref=e123]:
+          - heading "This is a place to move forward." [level=2] [ref=e124]
+          - generic [ref=e125]:
+            - paragraph [ref=e126]: If you have been unsure where to start, who to trust, or what actually leads to a job, this institute is built to make the next step clear.
+            - paragraph [ref=e127]: You do not need to understand the system before you begin. You just need a real pathway and a place that will not waste your time.
+        - generic [ref=e129]:
+          - heading "What Students Say" [level=2] [ref=e130]
+          - generic [ref=e131]:
+            - generic [ref=e132]:
+              - generic [ref=e133]:
+                - generic [ref=e134]:
+                  - img "Sarah Johnson"
+                - generic [ref=e135]:
+                  - paragraph [ref=e136]: Sarah Johnson
+                  - paragraph [ref=e137]: Healthcare Graduate
+              - paragraph [ref=e138]: "\"I didn't know where to start. This program showed me exactly what to do, step by step. Now I'm certified and working.\""
+            - generic [ref=e139]:
+              - generic [ref=e140]:
+                - generic [ref=e141]:
+                  - img "Maria Rodriguez"
+                - generic [ref=e142]:
+                  - paragraph [ref=e143]: Maria Rodriguez
+                  - paragraph [ref=e144]: Skilled Trades Graduate
+              - paragraph [ref=e145]: "\"The training was real. The credentials matter. I got hired two weeks after finishing the program.\""
+            - generic [ref=e146]:
+              - generic [ref=e147]:
+                - generic [ref=e148]:
+                  - img "David Chen"
+                - generic [ref=e149]:
+                  - paragraph [ref=e150]: David Chen
+                  - paragraph [ref=e151]: Technology Graduate
+              - paragraph [ref=e152]: "\"No cost, no debt, and a real career path. This changed everything for me.\""
+        - generic [ref=e153]:
+          - generic [ref=e154]:
+            - img "Clear Pathways Background"
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - img "Clear Career Pathways"
+            - generic [ref=e158]:
+              - heading "A Clear Path, Not a Guess" [level=2] [ref=e159]
+              - generic [ref=e160]:
+                - paragraph [ref=e161]: Too many people are told to "go get a skill" without being shown how it works. Here, programs are structured, requirements are visible, and the process is designed to be navigated.
+                - paragraph [ref=e162]: No hype. No shortcuts. Just a legitimate pathway.
+                - paragraph [ref=e163]: "This site is organized around approved pathways and credentialing frameworks so you can make decisions with confidence. The goal is simple: fewer dead ends, more forward motion."
+        - generic [ref=e165]:
+          - heading "Start with clarity" [level=2] [ref=e166]
+          - generic [ref=e167]:
+            - link "Explore Programs" [ref=e168] [cursor=pointer]:
+              - /url: /programs
+            - link "Check Eligibility" [ref=e169] [cursor=pointer]:
+              - /url: /wioa-eligibility
+          - paragraph [ref=e170]: You are not signing up for a promise. You are entering a framework designed to work.
+    - contentinfo [ref=e171]:
+      - generic [ref=e172]:
+        - generic [ref=e173]:
+          - link "Elevate for Humanity" [ref=e174] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e175]: Elevate for Humanity
+          - paragraph [ref=e176]: 100% free career training in healthcare, skilled trades, and technology. Get trained, get hired, get paid.
+          - generic [ref=e177]:
+            - link "Follow us on LinkedIn" [ref=e178] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/elevate-for-humanity
+              - img [ref=e179]
+            - link "Subscribe on YouTube" [ref=e181] [cursor=pointer]:
+              - /url: https://www.youtube.com/@elevateforhumanity
+              - img [ref=e182]
+            - link "Follow us on Facebook" [ref=e184] [cursor=pointer]:
+              - /url: https://www.facebook.com/profile.php?id=61571046346179
+              - img [ref=e185]
+        - generic [ref=e187]:
+          - generic [ref=e188]:
+            - heading "Programs" [level=3] [ref=e189]
+            - list [ref=e190]:
+              - listitem [ref=e191]:
+                - link "All Programs" [ref=e192] [cursor=pointer]:
+                  - /url: /programs
+              - listitem [ref=e193]:
+                - link "Healthcare" [ref=e194] [cursor=pointer]:
+                  - /url: /programs/healthcare
+              - listitem [ref=e195]:
+                - link "Skilled Trades" [ref=e196] [cursor=pointer]:
+                  - /url: /programs/skilled-trades
+              - listitem [ref=e197]:
+                - link "Technology" [ref=e198] [cursor=pointer]:
+                  - /url: /programs/technology
+              - listitem [ref=e199]:
+                - link "Business" [ref=e200] [cursor=pointer]:
+                  - /url: /programs/business
+              - listitem [ref=e201]:
+                - link "Apprenticeships" [ref=e202] [cursor=pointer]:
+                  - /url: /apprenticeships
+              - listitem [ref=e203]:
+                - link "Courses" [ref=e204] [cursor=pointer]:
+                  - /url: /courses
+          - generic [ref=e205]:
+            - heading "Get Started" [level=3] [ref=e206]
+            - list [ref=e207]:
+              - listitem [ref=e208]:
+                - link "Apply Now" [ref=e209] [cursor=pointer]:
+                  - /url: /apply
+              - listitem [ref=e210]:
+                - link "Check Eligibility" [ref=e211] [cursor=pointer]:
+                  - /url: /wioa-eligibility
+              - listitem [ref=e212]:
+                - link "How It Works" [ref=e213] [cursor=pointer]:
+                  - /url: /how-it-works
+              - listitem [ref=e214]:
+                - link "Pathways" [ref=e215] [cursor=pointer]:
+                  - /url: /pathways
+              - listitem [ref=e216]:
+                - link "Funding" [ref=e217] [cursor=pointer]:
+                  - /url: /funding
+              - listitem [ref=e218]:
+                - link "Orientation" [ref=e219] [cursor=pointer]:
+                  - /url: /orientation
+          - generic [ref=e220]:
+            - heading "Services" [level=3] [ref=e221]
+            - list [ref=e222]:
+              - listitem [ref=e223]:
+                - link "Career Services" [ref=e224] [cursor=pointer]:
+                  - /url: /career-services
+              - listitem [ref=e225]:
+                - link "Advising" [ref=e226] [cursor=pointer]:
+                  - /url: /advising
+              - listitem [ref=e227]:
+                - link "Mentorship" [ref=e228] [cursor=pointer]:
+                  - /url: /mentorship
+              - listitem [ref=e229]:
+                - link "AI Tutor" [ref=e230] [cursor=pointer]:
+                  - /url: /ai-tutor
+              - listitem [ref=e231]:
+                - link "Tax Services" [ref=e232] [cursor=pointer]:
+                  - /url: /supersonic-fast-cash
+              - listitem [ref=e233]:
+                - link "Free VITA" [ref=e234] [cursor=pointer]:
+                  - /url: /vita
+          - generic [ref=e235]:
+            - heading "Partners" [level=3] [ref=e236]
+            - list [ref=e237]:
+              - listitem [ref=e238]:
+                - link "Employers" [ref=e239] [cursor=pointer]:
+                  - /url: /employer
+              - listitem [ref=e240]:
+                - link "Hire Graduates" [ref=e241] [cursor=pointer]:
+                  - /url: /hire-graduates
+              - listitem [ref=e242]:
+                - link "Workforce Partners" [ref=e243] [cursor=pointer]:
+                  - /url: /workforce-partners
+              - listitem [ref=e244]:
+                - link "Training Providers" [ref=e245] [cursor=pointer]:
+                  - /url: /training-providers
+              - listitem [ref=e246]:
+                - link "Agencies" [ref=e247] [cursor=pointer]:
+                  - /url: /agencies
+              - listitem [ref=e248]:
+                - link "White Label" [ref=e249] [cursor=pointer]:
+                  - /url: /white-label
+          - generic [ref=e250]:
+            - heading "Portals" [level=3] [ref=e251]
+            - list [ref=e252]:
+              - listitem [ref=e253]:
+                - link "Student Portal" [ref=e254] [cursor=pointer]:
+                  - /url: /client-portal
+              - listitem [ref=e255]:
+                - link "Admin" [ref=e256] [cursor=pointer]:
+                  - /url: /admin
+              - listitem [ref=e257]:
+                - link "Staff" [ref=e258] [cursor=pointer]:
+                  - /url: /staff-portal
+              - listitem [ref=e259]:
+                - link "LMS" [ref=e260] [cursor=pointer]:
+                  - /url: /lms
+              - listitem [ref=e261]:
+                - link "Login" [ref=e262] [cursor=pointer]:
+                  - /url: /login
+              - listitem [ref=e263]:
+                - link "Sign Up" [ref=e264] [cursor=pointer]:
+                  - /url: /signup
+            - heading "Resources" [level=3] [ref=e265]
+            - list [ref=e266]:
+              - listitem [ref=e267]:
+                - link "Blog" [ref=e268] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e269]:
+                - link "Success Stories" [ref=e270] [cursor=pointer]:
+                  - /url: /success-stories
+              - listitem [ref=e271]:
+                - link "Help" [ref=e272] [cursor=pointer]:
+                  - /url: /help
+              - listitem [ref=e273]:
+                - link "FAQ" [ref=e274] [cursor=pointer]:
+                  - /url: /faq
+        - generic [ref=e276]:
+          - generic [ref=e277]:
+            - link "Privacy Policy" [ref=e278] [cursor=pointer]:
+              - /url: /privacy-policy
+            - link "Terms of Service" [ref=e279] [cursor=pointer]:
+              - /url: /terms-of-service
+            - link "Accessibility" [ref=e280] [cursor=pointer]:
+              - /url: /accessibility
+            - link "Site Map" [ref=e281] [cursor=pointer]:
+              - /url: /sitemap-page
+          - paragraph [ref=e282]: © 2026 Elevate For Humanity. All Rights Reserved.
+  - button "Open chat" [ref=e283] [cursor=pointer]:
+    - img [ref=e284]
+  - generic [ref=e291] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e292]:
+      - img [ref=e293]
+    - generic [ref=e296]:
+      - button "Open issues overlay" [ref=e297]:
+        - generic [ref=e298]:
+          - generic [ref=e299]: "0"
+          - generic [ref=e300]: "1"
+        - generic [ref=e301]: Issue
+      - button "Collapse issues badge" [ref=e302]:
+        - img [ref=e303]
+  - alert [ref=e305]
+```

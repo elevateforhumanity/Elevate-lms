@@ -285,7 +285,7 @@ export default function BookAppointment() {
                     </span>
                   </div>
                   <p className="text-gray-600 mb-2">{service.description}</p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-700">
                     <Clock className="w-4 h-4 inline mr-1" />
                     {service.duration}
                   </p>
@@ -433,7 +433,7 @@ export default function BookAppointment() {
               <div>
                 <h3 className="font-bold mb-4">Available Times</h3>
                 {!appointmentData.date && (
-                  <p className="text-gray-500 italic">Select a date first</p>
+                  <p className="text-gray-700 italic">Select a date first</p>
                 )}
                 {appointmentData.date && (
                   <div className="grid grid-cols-2 gap-2 max-h-96 overflow-y-auto">

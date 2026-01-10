@@ -246,14 +246,14 @@ export default function JRIProgramsPage() {
                 <p className="text-sm text-gray-600 mb-2">
                   1,500 hours | $12-15/hr starting
                 </p>
-                <p className="text-xs text-gray-500">State Board approved</p>
+                <p className="text-xs text-gray-700">State Board approved</p>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <p className="font-bold text-lg mb-2">HVAC Technician</p>
                 <p className="text-sm text-gray-600 mb-2">
                   2,000 hours | $15-18/hr starting
                 </p>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-700">
                   EPA certification included
                 </p>
               </div>
@@ -262,7 +262,7 @@ export default function JRIProgramsPage() {
                 <p className="text-sm text-gray-600 mb-2">
                   1,000 hours | $14-17/hr starting
                 </p>
-                <p className="text-xs text-gray-500">Multi-trade skills</p>
+                <p className="text-xs text-gray-700">Multi-trade skills</p>
               </div>
             </div>
             <p className="text-center mt-6 text-sm text-gray-600">

@@ -188,7 +188,7 @@ export default async function EnrollmentJobsPage() {
                     )}
                   </div>
 
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-gray-700">
                     Created: {new Date(job.created_at).toLocaleString()}
                     {job.scheduled_for && (
                       <>

@@ -63,21 +63,21 @@ export default function DocumentsPage() {
             </h3>
             <ul className="space-y-2 pl-6">
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Government-issued photo ID for you (and spouse if filing
                   jointly)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Social Security cards or ITIN letters for everyone on the
                   return
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Birth dates for everyone on the return
                 </span>
@@ -92,43 +92,43 @@ export default function DocumentsPage() {
             </h3>
             <ul className="space-y-2 pl-6">
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   W-2 forms from ALL employers
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   1099-INT (interest income)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   1099-DIV (dividend income)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   1099-G (unemployment compensation, state tax refund)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   1099-R (retirement/pension income)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   SSA-1099 (Social Security benefits)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Any other income statements
                 </span>
@@ -143,13 +143,13 @@ export default function DocumentsPage() {
             </h3>
             <ul className="space-y-2 pl-6">
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Bank account number and routing number for direct deposit
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Voided check or bank letter (optional but helpful)
                 </span>
@@ -164,7 +164,7 @@ export default function DocumentsPage() {
             </h3>
             <ul className="space-y-2 pl-6">
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Copy of last year's federal and state tax returns (if
                   available)
@@ -187,17 +187,17 @@ export default function DocumentsPage() {
             </h3>
             <ul className="space-y-2 pl-6">
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Childcare provider information (name, address, tax ID or SSN)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">Childcare expenses paid</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Form 2441 (if you received dependent care benefits from
                   employer)
@@ -212,19 +212,19 @@ export default function DocumentsPage() {
             </h3>
             <ul className="space-y-2 pl-6">
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Form 1098-T (tuition statement)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Form 1098-E (student loan interest)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Education expense receipts
                 </span>
@@ -236,13 +236,13 @@ export default function DocumentsPage() {
             <h3 className="font-semibold text-lg mb-3">If You Own a Home</h3>
             <ul className="space-y-2 pl-6">
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Form 1098 (mortgage interest statement)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">Property tax receipts</span>
               </li>
             </ul>
@@ -254,13 +254,13 @@ export default function DocumentsPage() {
             </h3>
             <ul className="space-y-2 pl-6">
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Form 1095-A (Health Insurance Marketplace statement)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Form 1095-B or 1095-C (employer or government health coverage)
                 </span>
@@ -274,13 +274,13 @@ export default function DocumentsPage() {
             </h3>
             <ul className="space-y-2 pl-6">
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Receipts for cash donations
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-400">•</span>
+                <span className="text-gray-600">•</span>
                 <span className="text-gray-700">
                   Written acknowledgment for donations over $250
                 </span>
