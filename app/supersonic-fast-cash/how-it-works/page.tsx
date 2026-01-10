@@ -18,7 +18,14 @@ export default async function HowItWorksPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image src="/images/efh/hero/hero-main-clean.jpg" alt="How It Works" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} / loading="lazy">
+        <Image 
+          src="/images/business/professional-1.jpg" 
+          alt="How It Works - Professional Tax Services" 
+          fill
+          className="object-cover" 
+          quality={85} 
+          priority
+        />
         <div className="absolute inset-0 bg-black/50" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -75,7 +82,7 @@ export default async function HowItWorksPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>100% free training programs</span>
+                    <span>Professional training programs</span>
                   </li>
                   <li className="flex items-start">
                     <svg
@@ -112,7 +119,13 @@ export default async function HowItWorksPage() {
                 </ul>
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image src="/images/pathways/business-hero.jpg" alt="How It Works" width={800} height={600} className="w-full h-full object-cover" quality={85} / loading="lazy">
+                <Image 
+                  src="/images/business/team-1.jpg" 
+                  alt="Professional Tax Team" 
+                  fill
+                  className="object-cover" 
+                  quality={85}
+                />
               </div>
             </div>
 

@@ -11,7 +11,14 @@ export default function ApplyPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
-        <Image src="/images/efh/hero/hero-main-clean.jpg" alt="Apply" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} / loading="lazy">
+        <Image 
+          src="/images/business/team-2.jpg" 
+          alt="Apply to Join Our Team" 
+          fill
+          className="object-cover" 
+          quality={85}
+          priority
+        />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="max-w-4xl mx-auto px-6 text-center text-white">

@@ -122,7 +122,7 @@ export default function SupersonicFastCashPage() {
           {
             icon: Shield,
             title: "Audit Protection",
-            description: "If IRS audits you, we handle it FREE. Zero additional cost. We stand behind every return. 15+ years experience.",
+            description: "If IRS audits you, we handle it with our audit protection service. We stand behind every return. 15+ years experience.",
             color: "purple"
           },
           {
@@ -134,7 +134,7 @@ export default function SupersonicFastCashPage() {
           {
             icon: TrendingUp,
             title: "Maximum Refund Guarantee",
-            description: "If you find a bigger refund elsewhere, we'll match it + $100. We're that confident. Accuracy guaranteed or it's free.",
+            description: "If you find a bigger refund elsewhere, we'll match it + $100. We're that confident. Accuracy guaranteed.",
             color: "red"
           }
         ]}
@@ -148,11 +148,11 @@ export default function SupersonicFastCashPage() {
             ⚡ LIMITED TIME OFFER
           </div>
           <h2 className="text-3xl md:text-4xl font-black mb-4">
-            File This Week, Get $50 Off + Free Refund Advance
+            File This Week, Get $50 Off
           </h2>
           <p className="text-xl mb-8 text-white/90">
-            Book by January 31st: $50 off tax prep + FREE refund advance application (normally $25). 
-            That's $75 in savings. Only 47 appointments left this week.
+            Book by January 31st and save $50 on tax preparation. 
+            Limited appointments available this week.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

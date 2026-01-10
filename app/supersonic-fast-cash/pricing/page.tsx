@@ -48,16 +48,16 @@ export default function PricingPage() {
             <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-green-500">
               <div className="text-center mb-6">
                 <div className="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full font-bold text-sm mb-4">
-                  NO COST TO YOU
+                  SMALL ADVANCE
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   $250 – $1,000 Advance
                 </h3>
-                <div className="text-5xl font-black text-green-600 mb-2">
-                  $0
+                <div className="text-3xl font-black text-green-600 mb-2">
+                  Bank Fees Apply
                 </div>
                 <p className="text-gray-600">
-                  No client fee. No interest. Cost to the taxpayer is $0.
+                  Fees determined by banking partner. Subject to approval.
                 </p>
               </div>
               <ul className="space-y-3">

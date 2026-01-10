@@ -1,4 +1,6 @@
 import { LiveChatWidget } from '@/components/LiveChatWidget';
+import { SupersonicHeader } from './components/Header';
+import { SupersonicFooter } from './components/Footer';
 
 export default function SupersonicFastCashLayout({
   children,
@@ -7,7 +9,9 @@ export default function SupersonicFastCashLayout({
 }) {
   return (
     <>
-      {children}
+      <SupersonicHeader />
+      <main>{children}</main>
+      <SupersonicFooter />
       <LiveChatWidget />
     </>
   );
