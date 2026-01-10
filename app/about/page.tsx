@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Elevate for Humanity | Workforce Training School | Indianapolis',
@@ -333,7 +334,7 @@ export default function AboutPage() {
             <Link href="/success-stories" className="group bg-white rounded-lg overflow-hidden border-2 border-gray-200 hover:border-blue-500 hover:shadow-xl transition-all">
               <div className="relative h-64 overflow-hidden">
                 <Image
-                  src="/images/stories/success-1.jpg"
+                  src="/images/stories/success-banner.jpg"
                   alt="Success Stories"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-300"
