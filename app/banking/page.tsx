@@ -265,7 +265,7 @@ export default function BankingPage() {
             </h2>
             <p className="text-gray-700 mb-6 text-center">
               All banking products are provided by EPS Financial, Member FDIC,
-              in partnership with Drake Software.
+              with professional tax software integration.
             </p>
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div>

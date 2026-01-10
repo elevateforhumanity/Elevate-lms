@@ -84,7 +84,7 @@ export default function SubofficeOnboardingPage() {
               <div className="flex items-start">
                 <CheckCircle className="w-6 h-6 mr-3 flex-shrink-0 mt-1" />
                 <div>
-                  <strong>Software Included:</strong> Drake Software, training,
+                  <strong>Software Included:</strong> Professional tax software, training,
                   and support included - NO extra costs to you
                 </div>
               </div>

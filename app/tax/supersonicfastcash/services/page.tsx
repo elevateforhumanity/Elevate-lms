@@ -292,7 +292,7 @@ export default function ServicesPage() {
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-700">
-                  Drake Tax Software - industry-leading accuracy
+                  Professional tax software - industry-leading accuracy
                 </span>
               </li>
               <li className="flex items-start gap-3">

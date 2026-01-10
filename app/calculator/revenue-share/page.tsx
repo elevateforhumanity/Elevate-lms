@@ -104,7 +104,7 @@ export default function RevenueShareCalculator() {
                 </h3>
                 <ul className="text-sm text-blue-800 space-y-1">
                   <li>
-                    <CheckCircle className="w-5 h-5 inline-block" /> Drake
+                    <CheckCircle className="w-5 h-5 inline-block" /> Professional Tax Software
                     Software (unlimited)
                   </li>
                   <li>
@@ -365,7 +365,7 @@ export default function RevenueShareCalculator() {
               and high satisfaction
             </li>
             <li>
-              • <strong>Software Included:</strong> Drake Software, training,
+              • <strong>Software Included:</strong> Professional tax software, training,
               and support included - no monthly fees
             </li>
             <li>

@@ -1,4 +1,4 @@
-// app/(dashboard)/client-portal/page.tsx - Elevate Client Portal (Drake Portals Alternative)
+// app/(dashboard)/client-portal/page.tsx - Elevate Client Portal
 import { Metadata } from 'next';
 import Link from 'next/link';
 import {
@@ -64,7 +64,7 @@ export default function ClientPortalPage() {
               Everything You Need
             </h2>
             <p className="text-xl text-gray-600">
-              Professional client portal with all the features of Drake Portals
+              Professional client portal with advanced features
               and more
             </p>
           </div>
@@ -159,9 +159,9 @@ export default function ClientPortalPage() {
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
                 <Download className="w-6 h-6 text-orange-600" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Drake Tax Integration</h3>
+              <h3 className="text-xl font-bold mb-2">Tax Software Integration</h3>
               <p className="text-gray-600">
-                Seamlessly integrates with Drake Tax software. Import client
+                Seamlessly integrates with professional tax software. Import client
                 data directly into returns.
               </p>
             </div>
@@ -189,7 +189,7 @@ export default function ClientPortalPage() {
               Simple, Transparent Pricing
             </h2>
             <p className="text-xl text-gray-600">
-              Better features, better price than Drake Portals
+              Better features, better price
             </p>
           </div>
 
@@ -236,7 +236,7 @@ export default function ClientPortalPage() {
                 $19.95<span className="text-lg text-gray-600">/month</span>
               </div>
               <p className="text-sm text-gray-600 mb-4">
-                Save $10/month vs Drake Portals
+                Affordable pricing
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
@@ -253,7 +253,7 @@ export default function ClientPortalPage() {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Drake Tax integration</span>
+                  <span>Tax software integration</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
@@ -322,7 +322,7 @@ export default function ClientPortalPage() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Elevate vs Drake Portals
+              Elevate Client Portal Features
             </h2>
             <p className="text-xl text-gray-600">
               Better features at a better price
@@ -338,7 +338,7 @@ export default function ClientPortalPage() {
                     Elevate Portal
                   </th>
                   <th className="px-6 py-4 text-center font-semibold">
-                    Drake Portals
+                    Other Portals
                   </th>
                 </tr>
               </thead>
@@ -381,7 +381,7 @@ export default function ClientPortalPage() {
                   </td>
                 </tr>
                 <tr className="bg-gray-50">
-                  <td className="px-6 py-4">Drake Integration</td>
+                  <td className="px-6 py-4">Tax Software Integration</td>
                   <td className="px-6 py-4 text-center">
                     <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                   </td>
@@ -395,7 +395,7 @@ export default function ClientPortalPage() {
                     <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                   </td>
                   <td className="px-6 py-4 text-center text-gray-600">
-                    Drake Pay Required
+                    Additional Payment Required
                   </td>
                 </tr>
                 <tr className="bg-gray-50">

@@ -93,7 +93,7 @@ export default function FAQPage() {
         },
         {
           q: 'What training is included?',
-          a: 'Complete tax preparation training, Drake Tax Software training, business operations, and marketing support.',
+          a: 'Complete tax preparation training, professional tax software training, business operations, and marketing support.',
         },
         {
           q: 'Do I need to be IRS-certified?',

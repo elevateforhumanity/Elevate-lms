@@ -84,7 +84,7 @@ export default async function TaxFilingAdminPage() {
           Tax Filing Management
         </h1>
         <p className="text-slate-600">
-          Manage tax return applications, preparers, and Drake Software
+          Manage tax return applications, preparers, and tax software
           integration
         </p>
       </div>
@@ -268,20 +268,20 @@ export default async function TaxFilingAdminPage() {
         )}
       </div>
 
-      {/* Drake Software Integration Status */}
+      {/* Tax Software Integration Status */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
         <h3 className="text-lg font-semibold text-blue-900 mb-2">
-          📋 Drake Software Integration
+          📋 Tax Software Integration
         </h3>
         <p className="text-blue-800 mb-4">
-          Professional tax preparation powered by Drake Software.
+          Professional tax preparation powered by professional tax software.
           Industry-leading tax software with IRS e-file integration.
         </p>
         <div className="grid md:grid-cols-2 gap-4 mt-4">
           <div>
             <h4 className="font-semibold text-blue-900 mb-2">Features:</h4>
             <ul className="list-disc list-inside text-sm text-blue-700">
-              <li>Drake Tax Software integration</li>
+              <li>professional tax software integration</li>
               <li>All IRS forms supported</li>
               <li>Automatic calculations</li>
               <li>Direct IRS e-file</li>
@@ -294,12 +294,12 @@ export default async function TaxFilingAdminPage() {
               Setup Required:
             </h4>
             <ul className="list-disc list-inside text-sm text-blue-700">
-              <li>Drake Software license</li>
-              <li>Drake API credentials</li>
+              <li>professional tax software license</li>
+              <li>tax software API credentials</li>
               <li>IRS EFIN (E-File ID Number)</li>
               <li>IRS ETIN (Transmitter ID)</li>
-              <li>Drake Office ID</li>
-              <li>Drake Preparer ID</li>
+              <li>Tax Office ID</li>
+              <li>Tax Preparer ID</li>
             </ul>
           </div>
         </div>
