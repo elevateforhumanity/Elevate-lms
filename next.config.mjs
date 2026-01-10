@@ -181,6 +181,12 @@ const nextConfig = {
         destination: '/sitemap.xml',
         permanent: true,
       },
+      // Redirect /home to homepage
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
       
       // Dashboard consolidation
       { source: '/portal/:path*', destination: '/lms/:path*', permanent: true },
