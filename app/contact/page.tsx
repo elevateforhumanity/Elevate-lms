@@ -30,7 +30,12 @@ export default function ContactPage() {
   };
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-gray-50">
+=======
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white">
+      <main id="main-content">
+>>>>>>> 9f446d58c71ca2f0f5aefb5d2867d52a1f9775c8
       {/* Hero Section */}
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
@@ -157,6 +162,8 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    id="name"
                     required
                     value={formData.name}
                     onChange={(e) =>
@@ -173,12 +180,14 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    id="email"
                     required
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-500 focus:border-outline-none transition-colors"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -226,6 +235,8 @@ export default function ContactPage() {
                   Message *
                 </label>
                 <textarea
+                  name="message"
+                  id="message"
                   required
                   value={formData.message}
                   onChange={(e) =>
@@ -370,6 +381,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      </main>
     </div>
   );
 }

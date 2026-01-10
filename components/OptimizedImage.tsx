@@ -26,39 +26,22 @@ export function OptimizedImage({ src, alt, ...props }: OptimizedImageProps) {
   };
 
   const { dir, name } = getImagePath(src);
+  const webpPath = `${dir}/${name}.webp`;
 
   return (
     <picture>
       {/* WebP for modern browsers - best compression */}
       <source
         type="image/webp"
-        srcSet={`${dir}/webp/${name}.webp`}
-        media="(min-resolution: 2dppx)"
-      />
-      <source
-        type="image/webp"
-        srcSet={`${dir}/webp/${name}.webp`}
+        srcSet={webpPath}
       />
 
-      {/* HD JPEG for retina displays */}
-      <source
-        type="image/jpeg"
-        srcSet={`${dir}/${name}-hd.jpg`}
-        media="(min-resolution: 2dppx)"
-      />
-
-      {/* Standard JPEG for regular displays */}
-      <source
-        type="image/jpeg"
-        srcSet={`${dir}/${name}.jpg`}
-      />
-
-      {/* Fallback to Next.js Image component */}
+      {/* Fallback to Next.js Image component with original format */}
       <Image
         src={src}
         alt={alt}
         {...props}
-        quality={95}
+        quality={85}
         priority={props.priority}
       />
     </picture>

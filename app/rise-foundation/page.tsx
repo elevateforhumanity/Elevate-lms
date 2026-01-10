@@ -119,7 +119,7 @@ export default function RiseFoundationPage() {
       {/* Video Section - Will be added */}
       <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center text-gray-500">
+          <div className="text-center text-gray-700">
             <p>Video section - to be added</p>
           </div>
         </div>

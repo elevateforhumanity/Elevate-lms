@@ -168,7 +168,7 @@ export default function RefundTrackerPage() {
                   maxLength={11}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none"
                 />
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-700 mt-1">
                   Your SSN is encrypted and secure
                 </p>
               </div>
@@ -198,7 +198,7 @@ export default function RefundTrackerPage() {
                   Expected Refund Amount
                 </label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
                     $
                   </span>
                   <input
@@ -209,7 +209,7 @@ export default function RefundTrackerPage() {
                     className="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none"
                   />
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-700 mt-1">
                   Enter the exact amount from your tax return
                 </p>
               </div>
@@ -338,7 +338,7 @@ export default function RefundTrackerPage() {
                     <p className="text-sm text-gray-600">
                       Your tax return has been received and is being processed
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">Completed</p>
+                    <p className="text-xs text-gray-700 mt-1">Completed</p>
                   </div>
                 </div>
 
@@ -367,7 +367,7 @@ export default function RefundTrackerPage() {
                     <p className="text-sm text-gray-600">
                       Your refund has been approved and will be sent soon
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-gray-700 mt-1">
                       {refundStatus.status === 'approved' ||
                       refundStatus.status === 'sent'
                         ? 'Completed'
@@ -396,7 +396,7 @@ export default function RefundTrackerPage() {
                         ? 'direct deposit'
                         : 'check'}
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-gray-700 mt-1">
                       {refundStatus.status === 'sent' ? 'Completed' : 'Pending'}
                     </p>
                   </div>

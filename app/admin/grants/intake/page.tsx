@@ -81,7 +81,7 @@ export default async function GrantIntakePage() {
                   Grant Amount
                 </label>
                 <div className="flex items-center gap-2">
-                  <span className="text-gray-500">$</span>
+                  <span className="text-gray-700">$</span>
                   <input
                     type="number"
                     placeholder="0.00"
@@ -211,7 +211,7 @@ export default async function GrantIntakePage() {
                 <label htmlFor="file-upload" className="cursor-pointer">
                   <div className="text-gray-600">
                     <p className="text-sm">Click to upload or drag and drop</p>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-gray-700 mt-1">
                       PDF, DOC, DOCX up to 10MB
                     </p>
                   </div>

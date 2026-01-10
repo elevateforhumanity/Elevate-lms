@@ -367,7 +367,7 @@ export default function ClientPortalPage() {
                   <td className="px-6 py-4 text-center">
                     <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                   </td>
-                  <td className="px-6 py-4 text-center text-gray-400">
+                  <td className="px-6 py-4 text-center text-gray-600">
                     Additional Fee
                   </td>
                 </tr>
@@ -394,7 +394,7 @@ export default function ClientPortalPage() {
                   <td className="px-6 py-4 text-center">
                     <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                   </td>
-                  <td className="px-6 py-4 text-center text-gray-400">
+                  <td className="px-6 py-4 text-center text-gray-600">
                     Drake Pay Required
                   </td>
                 </tr>
@@ -403,7 +403,7 @@ export default function ClientPortalPage() {
                   <td className="px-6 py-4 text-center">
                     <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                   </td>
-                  <td className="px-6 py-4 text-center text-gray-400">
+                  <td className="px-6 py-4 text-center text-gray-600">
                     Not Available
                   </td>
                 </tr>

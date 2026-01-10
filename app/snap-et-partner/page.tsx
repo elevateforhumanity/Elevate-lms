@@ -399,7 +399,7 @@ export default function SNAPETPartnerPage() {
               <p className="text-gray-600">
                 Meet with FSSA/WorkOne to present capabilities
               </p>
-              <p className="text-sm text-gray-500 mt-2">2-4 weeks</p>
+              <p className="text-sm text-gray-700 mt-2">2-4 weeks</p>
             </div>
 
             <div className="text-center">
@@ -410,7 +410,7 @@ export default function SNAPETPartnerPage() {
               <p className="text-gray-600">
                 Map programs to SNAP E&T categories and get approval
               </p>
-              <p className="text-sm text-gray-500 mt-2">30-60 days</p>
+              <p className="text-sm text-gray-700 mt-2">30-60 days</p>
             </div>
 
             <div className="text-center">
@@ -421,7 +421,7 @@ export default function SNAPETPartnerPage() {
               <p className="text-gray-600">
                 Execute partnership agreement and set up reporting
               </p>
-              <p className="text-sm text-gray-500 mt-2">30-90 days</p>
+              <p className="text-sm text-gray-700 mt-2">30-90 days</p>
             </div>
 
             <div className="text-center">
@@ -432,7 +432,7 @@ export default function SNAPETPartnerPage() {
               <p className="text-gray-600">
                 Begin receiving and serving SNAP E&T participants
               </p>
-              <p className="text-sm text-gray-500 mt-2">Same quarter</p>
+              <p className="text-sm text-gray-700 mt-2">Same quarter</p>
             </div>
           </div>
         </div>

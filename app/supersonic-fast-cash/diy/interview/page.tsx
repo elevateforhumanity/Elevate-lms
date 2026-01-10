@@ -9,7 +9,7 @@ export default function DIYInterviewPage() {
           <div className="mb-8">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold">Tax Filing Interview</h2>
-              <span className="text-sm text-gray-500">Step 1 of 5</span>
+              <span className="text-sm text-gray-700">Step 1 of 5</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
               <div className="bg-orange-600 h-2 rounded-full" style={{width: '20%'}}></div>

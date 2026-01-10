@@ -207,7 +207,7 @@ export default function TaxCalculatorPage() {
                     W-2 Wages (Box 1)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
                       $
                     </span>
                     <input
@@ -231,7 +231,7 @@ export default function TaxCalculatorPage() {
                     Self-Employment Income (1099-NEC)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
                       $
                     </span>
                     <input
@@ -255,7 +255,7 @@ export default function TaxCalculatorPage() {
                     Interest Income (1099-INT)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
                       $
                     </span>
                     <input
@@ -279,7 +279,7 @@ export default function TaxCalculatorPage() {
                     Dividend Income (1099-DIV)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
                       $
                     </span>
                     <input
@@ -303,7 +303,7 @@ export default function TaxCalculatorPage() {
                     Other Income
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
                       $
                     </span>
                     <input
@@ -363,7 +363,7 @@ export default function TaxCalculatorPage() {
                       Total Itemized Deductions
                     </label>
                     <div className="relative">
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
                         $
                       </span>
                       <input
@@ -388,7 +388,7 @@ export default function TaxCalculatorPage() {
                     Student Loan Interest Paid
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
                       $
                     </span>
                     <input
@@ -406,7 +406,7 @@ export default function TaxCalculatorPage() {
                       className="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none"
                     />
                   </div>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-700 mt-1">
                     Max deduction: $2,500
                   </p>
                 </div>
@@ -428,7 +428,7 @@ export default function TaxCalculatorPage() {
                     Federal Tax Withheld (W-2 Box 2)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
                       $
                     </span>
                     <input
@@ -449,7 +449,7 @@ export default function TaxCalculatorPage() {
                     Estimated Tax Payments
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
                       $
                     </span>
                     <input
@@ -584,7 +584,7 @@ export default function TaxCalculatorPage() {
                       </span>
                     </div>
 
-                    <div className="flex justify-between text-xs text-gray-500 mt-4">
+                    <div className="flex justify-between text-xs text-gray-700 mt-4">
                       <span>Effective Tax Rate</span>
                       <span>{calculation.effective_tax_rate.toFixed(2)}%</span>
                     </div>

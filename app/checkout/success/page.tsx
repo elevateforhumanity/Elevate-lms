@@ -60,7 +60,7 @@ function SuccessContent({
                   {sessionId}
                 </code>
               </p>
-              <p className="text-xs text-gray-500 mt-2">
+              <p className="text-xs text-gray-700 mt-2">
                 Save this for your records
               </p>
             </div>

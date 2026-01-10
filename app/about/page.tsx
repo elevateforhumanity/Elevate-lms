@@ -71,6 +71,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <main id="main-content">
       {/* Stats Section */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6">
@@ -91,6 +92,7 @@ export default function AboutPage() {
               <div className="text-4xl font-bold text-purple-600 mb-2">20+</div>
               <div className="text-sm text-gray-900 font-medium">Career Programs</div>
             </div>
+<<<<<<< HEAD
             <div className="bg-white rounded-lg p-6 border-2 border-orange-200 text-center">
               <Image src="/images/icons/clock.png" alt="Since 2020" width={48} height={48} className="mx-auto mb-3" loading="lazy" / loading="lazy">
               <div className="text-4xl font-bold text-orange-600 mb-2">2020</div>
@@ -208,6 +210,11 @@ export default function AboutPage() {
                 <p><strong>EIN:</strong> 99-3483511</p>
                 <p><strong>IRS Determination:</strong> July 2024</p>
               </div>
+=======
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 text-center">
+              <div className="text-4xl font-black text-orange-600 mb-2">1000+</div>
+              <div className="text-sm text-black">Students</div>
+>>>>>>> 9f446d58c71ca2f0f5aefb5d2867d52a1f9775c8
             </div>
           </div>
         </div>
@@ -378,6 +385,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </main>
     </div>
   );
 }

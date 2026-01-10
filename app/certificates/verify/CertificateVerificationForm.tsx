@@ -93,7 +93,7 @@ export default function CertificateVerificationForm() {
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center text-lg font-mono"
             maxLength={20}
           />
-          <p className="mt-2 text-xs text-gray-500 text-center">
+          <p className="mt-2 text-xs text-gray-700 text-center">
             Format: EFH-YYYY-XXXXXXXX (e.g., EFH-2024-A1B2C3D4)
           </p>
         </div>

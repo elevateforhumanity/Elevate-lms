@@ -290,7 +290,7 @@ export default async function VerifyCertificatePage({
                   })}
                 </strong>
               </p>
-              <p className="text-xs text-gray-500 mt-2">
+              <p className="text-xs text-gray-700 mt-2">
                 Certificate verification is logged for security purposes
               </p>
             </div>

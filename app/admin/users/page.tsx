@@ -186,22 +186,22 @@ export default async function Page() {
               <table className="w-full">
                 <thead className="bg-gray-50 border-b">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Name
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Email
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Role
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Phone
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Joined
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-700 uppercase">
                       Actions
                     </th>
                   </tr>
@@ -221,7 +221,7 @@ export default async function Page() {
                               <p className="text-sm font-medium text-gray-900">
                                 {user.full_name || 'No name'}
                               </p>
-                              <p className="text-xs text-gray-500">
+                              <p className="text-xs text-gray-700">
                                 {user.id.slice(0, 8)}
                               </p>
                             </div>
@@ -277,7 +277,7 @@ export default async function Page() {
                     <tr>
                       <td
                         colSpan={6}
-                        className="px-6 py-12 text-center text-gray-500"
+                        className="px-6 py-12 text-center text-gray-700"
                       >
                         No users found
                       </td>

@@ -211,7 +211,7 @@ export default async function PartnerCoursesPage() {
           {(!courses || courses.length === 0) && (
             <div className="bg-white rounded-lg shadow-sm border p-12 text-center">
               <svg
-                className="w-16 h-16 text-gray-400 mx-auto mb-4"
+                className="w-16 h-16 text-gray-600 mx-auto mb-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

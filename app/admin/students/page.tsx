@@ -219,7 +219,7 @@ export default async function StudentsPage() {
                           {student.enrollments &&
                             student.enrollments.length > 0 && (
                               <div className="mt-3">
-                                <p className="text-xs text-gray-500 mb-1">
+                                <p className="text-xs text-gray-700 mb-1">
                                   Enrollments:
                                 </p>
                                 <div className="flex flex-wrap gap-2">
@@ -260,8 +260,8 @@ export default async function StudentsPage() {
               ) : (
                 <div className="text-center py-12">
                   <Users className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-500 text-lg">No students found</p>
-                  <p className="text-gray-400 text-sm mt-2">
+                  <p className="text-gray-700 text-lg">No students found</p>
+                  <p className="text-gray-600 text-sm mt-2">
                     Students will appear here once they register
                   </p>
                 </div>

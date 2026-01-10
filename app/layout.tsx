@@ -15,6 +15,7 @@ import { Toaster } from 'react-hot-toast';
 import { ClientProviders } from '@/components/ClientProviders';
 import { UnregisterServiceWorker } from '@/components/UnregisterServiceWorker';
 import { VersionGuard } from '@/components/VersionGuard';
+import CookieConsent from '@/components/CookieConsent';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({
@@ -42,13 +43,13 @@ export const viewport: Viewport = {
 };
 
 // Global SEO configuration - fixes canonical, OpenGraph, and meta descriptions
-const SITE_URL = 'https://www.elevateforhumanity.org';
+const SITE_URL = 'https://elevateforhumanity.institute';
 const isProduction = process.env.VERCEL_ENV === 'production';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org',
+    canonical: 'https://elevateforhumanity.institute',
   },
 
   title: {
@@ -310,6 +311,7 @@ export default function RootLayout({
         `}} />
         <ConditionalLayout>{children}</ConditionalLayout>
         <ClientProviders />
+        <CookieConsent />
         <Toaster
           position="top-right"
           toastOptions={{

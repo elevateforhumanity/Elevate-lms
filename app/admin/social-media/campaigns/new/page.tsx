@@ -167,7 +167,7 @@ export default function NewSocialCampaignPage() {
                 <h1 className="text-2xl font-bold text-gray-900">
                   Create Social Media Campaign
                 </h1>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-700">
                   Au to social media 3x daily
                 </p>
               </div>
@@ -240,7 +240,7 @@ export default function NewSocialCampaignPage() {
                       <div className="font-medium text-gray-900">
                         Blog Posts
                       </div>
-                      <div className="text-sm text-gray-500 mt-1">
+                      <div className="text-sm text-gray-700 mt-1">
                         From your blog
                       </div>
                     </button>
@@ -258,7 +258,7 @@ export default function NewSocialCampaignPage() {
                         <Sparkles className="w-4 h-4 mr-1" />
                         AI Generated
                       </div>
-                      <div className="text-sm text-gray-500 mt-1">
+                      <div className="text-sm text-gray-700 mt-1">
                         GPT-4 powered
                       </div>
                     </button>
@@ -273,7 +273,7 @@ export default function NewSocialCampaignPage() {
                       }`}
                     >
                       <div className="font-medium text-gray-900">Manual</div>
-                      <div className="text-sm text-gray-500 mt-1">
+                      <div className="text-sm text-gray-700 mt-1">
                         Write your own
                       </div>
                     </button>
@@ -400,7 +400,7 @@ export default function NewSocialCampaignPage() {
                     max="365"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="text-sm text-gray-700 mt-1">
                     Total posts:{' '}
                     {parseInt(campaign.duration) *
                       (campaign.frequency === '3x-daily' ? 3 : 1)}
@@ -435,10 +435,10 @@ export default function NewSocialCampaignPage() {
                       className="p-4 border border-gray-200 rounded-lg"
                     >
                       <div className="flex items-start justify-between mb-2">
-                        <span className="text-xs font-medium text-gray-500">
+                        <span className="text-xs font-medium text-gray-700">
                           Post {index + 1}
                         </span>
-                        <span className="text-xs text-gray-400">
+                        <span className="text-xs text-gray-600">
                           Day {Math.floor(index / 3) + 1} -{' '}
                           {['Morning', 'Afternoon', 'Evening'][index % 3]}
                         </span>
@@ -448,8 +448,8 @@ export default function NewSocialCampaignPage() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-12 text-gray-500">
-                  <Sparkles className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+                <div className="text-center py-12 text-gray-700">
+                  <Sparkles className="w-12 h-12 mx-auto mb-3 text-gray-600" />
                   <p>Click "Generate Posts" to create content</p>
                 </div>
               )}
@@ -465,7 +465,7 @@ export default function NewSocialCampaignPage() {
 
               <div className="space-y-4">
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">
+                  <div className="text-xs text-gray-700 mb-1">
                     Campaign Name
                   </div>
                   <div className="text-sm font-medium text-gray-900">
@@ -474,7 +474,7 @@ export default function NewSocialCampaignPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">Platforms</div>
+                  <div className="text-xs text-gray-700 mb-1">Platforms</div>
                   <div className="flex flex-wrap gap-2">
                     {campaign.platforms.length > 0 ? (
                       campaign.platforms.map((platform) => (
@@ -486,7 +486,7 @@ export default function NewSocialCampaignPage() {
                         </span>
                       ))
                     ) : (
-                      <span className="text-sm text-gray-400">
+                      <span className="text-sm text-gray-600">
                         No platforms selected
                       </span>
                     )}
@@ -494,7 +494,7 @@ export default function NewSocialCampaignPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">Frequency</div>
+                  <div className="text-xs text-gray-700 mb-1">Frequency</div>
                   <div className="text-sm text-gray-900">
                     {campaign.frequency === '3x-daily'
                       ? '3x Daily'
@@ -503,14 +503,14 @@ export default function NewSocialCampaignPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">Duration</div>
+                  <div className="text-xs text-gray-700 mb-1">Duration</div>
                   <div className="text-sm text-gray-900">
                     {campaign.duration} days
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">Total Posts</div>
+                  <div className="text-xs text-gray-700 mb-1">Total Posts</div>
                   <div className="text-sm font-medium text-gray-900">
                     {parseInt(campaign.duration) *
                       (campaign.frequency === '3x-daily' ? 3 : 1)}{' '}
@@ -519,7 +519,7 @@ export default function NewSocialCampaignPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-500 mb-1">
+                  <div className="text-xs text-gray-700 mb-1">
                     Content Source
                   </div>
                   <div className="text-sm text-gray-900">
@@ -533,7 +533,7 @@ export default function NewSocialCampaignPage() {
 
                 {generatedPosts.length > 0 && (
                   <div className="pt-4 border-t border-gray-200">
-                    <div className="text-xs text-gray-500 mb-1">Status</div>
+                    <div className="text-xs text-gray-700 mb-1">Status</div>
                     <div className="text-sm font-medium text-brand-green-600">
                       ✓ {generatedPosts.length} posts ready
                     </div>
@@ -600,7 +600,7 @@ function PlatformButton({
       }`}
     >
       <Icon
-        className={`w-8 h-8 mb-2 ${selected ? 'text-brand-blue-600' : 'text-gray-400'}`}
+        className={`w-8 h-8 mb-2 ${selected ? 'text-brand-blue-600' : 'text-gray-600'}`}
       />
       <div className="font-medium text-gray-900">{name}</div>
     </button>

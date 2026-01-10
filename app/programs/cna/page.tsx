@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords:
     'CNA training Indiana, CNA classes Indianapolis, certified nursing assistant Indiana, CNA certification Indianapolis, CNA job placement, CNA training Indiana',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/cna',
+    canonical: 'https://elevateforhumanity.institute/programs/cna',
   },
 };
 
@@ -193,7 +193,7 @@ export default function Page() {
                 Nursing Homes
               </h3>
               <p className="text-gray-600 mb-2">$16-$18/hour</p>
-              <p className="text-sm text-gray-500">Long-term patient care</p>
+              <p className="text-sm text-gray-700">Long-term patient care</p>
             </div>
 
             <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
@@ -201,7 +201,7 @@ export default function Page() {
                 Hospitals
               </h3>
               <p className="text-gray-600 mb-2">$17-$20/hour</p>
-              <p className="text-sm text-gray-500">Acute care settings</p>
+              <p className="text-sm text-gray-700">Acute care settings</p>
             </div>
 
             <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
@@ -209,7 +209,7 @@ export default function Page() {
                 Home Health
               </h3>
               <p className="text-gray-600 mb-2">$18-$22/hour</p>
-              <p className="text-sm text-gray-500">In-home patient care</p>
+              <p className="text-sm text-gray-700">In-home patient care</p>
             </div>
           </div>
         </div>

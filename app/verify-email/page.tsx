@@ -122,7 +122,7 @@ export default function VerifyEmailPage() {
           <p className="text-sm text-gray-600 mb-2">
             Didn't receive the email?
           </p>
-          <ul className="text-xs text-gray-500 space-y-1">
+          <ul className="text-xs text-gray-700 space-y-1">
             <li>• Check your spam/junk folder</li>
             <li>• Make sure {email} is correct</li>
             <li>• Wait a few minutes and try again</li>

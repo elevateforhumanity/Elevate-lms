@@ -130,7 +130,7 @@ export default function ReportsDashboard({
           <p className="text-3xl font-bold text-gray-900">
             {stats.totalStudents}
           </p>
-          <p className="text-sm text-gray-500 mt-1">Registered users</p>
+          <p className="text-sm text-gray-700 mt-1">Registered users</p>
         </div>
 
         <div className="bg-white rounded-lg shadow-sm border p-6">
@@ -182,7 +182,7 @@ export default function ReportsDashboard({
           <p className="text-3xl font-bold text-gray-900">
             {stats.completionRate}%
           </p>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-gray-700 mt-1">
             {stats.completedCourses} completed
           </p>
         </div>
@@ -209,7 +209,7 @@ export default function ReportsDashboard({
           <p className="text-3xl font-bold text-gray-900">
             {stats.totalCertificates}
           </p>
-          <p className="text-sm text-gray-500 mt-1">Total awarded</p>
+          <p className="text-sm text-gray-700 mt-1">Total awarded</p>
         </div>
       </div>
 
@@ -300,16 +300,16 @@ export default function ReportsDashboard({
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Student
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Course
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Date
                 </th>
               </tr>
@@ -321,7 +321,7 @@ export default function ReportsDashboard({
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                       {enrollment.profiles?.full_name || 'Unknown'}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                       {enrollment.courses?.title || 'Unknown Course'}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -337,7 +337,7 @@ export default function ReportsDashboard({
                         {enrollment.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                       {new Date(enrollment.created_at).toLocaleDateString()}
                     </td>
                   </tr>
@@ -346,7 +346,7 @@ export default function ReportsDashboard({
                 <tr>
                   <td
                     colSpan={4}
-                    className="px-6 py-8 text-center text-gray-500"
+                    className="px-6 py-8 text-center text-gray-700"
                   >
                     No recent enrollments
                   </td>

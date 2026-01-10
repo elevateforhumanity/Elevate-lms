@@ -174,7 +174,7 @@ export default async function CampaignsPage() {
                       >
                         {campaign.status}
                       </span>
-                      <p className="text-xs text-gray-500 mt-2">
+                      <p className="text-xs text-gray-700 mt-2">
                         {new Date(campaign.created_at).toLocaleDateString()}
                       </p>
                     </div>
@@ -184,7 +184,7 @@ export default async function CampaignsPage() {
             </div>
           ) : (
             <div className="px-6 py-12 text-center">
-              <Mail className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+              <Mail className="w-16 h-16 text-gray-600 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 No campaigns yet
               </h3>

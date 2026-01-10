@@ -341,7 +341,7 @@ export default function AutopilotsPage() {
                     onClick={() =>
                       setLogs((prev) => ({ ...prev, [selectedTask]: [] }))
                     }
-                    className="text-gray-400 hover:text-white text-xs"
+                    className="text-gray-600 hover:text-white text-xs"
                   >
                     Clear
                   </button>
@@ -357,7 +357,7 @@ export default function AutopilotsPage() {
                   ))}
                 </div>
               ) : (
-                <div className="text-gray-500">
+                <div className="text-gray-700">
                   $ Select an autopilot to see output...
                 </div>
               )}

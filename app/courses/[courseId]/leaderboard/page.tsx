@@ -440,7 +440,7 @@ export default function CourseLeaderboardPage() {
                             enstart.rank === 1
                               ? 'text-yellow-500'
                               : enstart.rank === 2
-                                ? 'text-gray-400'
+                                ? 'text-gray-600'
                                 : enstart.rank === 3
                                   ? 'text-brand-orange-600'
                                   : 'text-gray-600'
@@ -478,7 +478,7 @@ export default function CourseLeaderboardPage() {
                         <p className="text-lg font-bold text-purple-600">
                           {enstart.points}
                         </p>
-                        <p className="text-xs text-gray-500">points</p>
+                        <p className="text-xs text-gray-700">points</p>
                       </div>
                     </div>
                   </div>
@@ -487,7 +487,7 @@ export default function CourseLeaderboardPage() {
             ) : (
               <div className="p-12 text-center">
                 <svg
-                  className="w-16 h-16 text-gray-400 mx-auto mb-4"
+                  className="w-16 h-16 text-gray-600 mx-auto mb-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

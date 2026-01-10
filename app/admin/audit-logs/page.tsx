@@ -235,26 +235,26 @@ export default function AuditLogsPage() {
           {filteredLogs.length === 0 ? (
             <div className="text-center py-12">
               <Shield className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-500 text-lg">No audit logs found</p>
+              <p className="text-gray-700 text-lg">No audit logs found</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Timestamp
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       User
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Action
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Resource
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                       Details
                     </th>
                   </tr>
@@ -269,7 +269,7 @@ export default function AuditLogsPage() {
                         <div className="text-sm font-medium text-gray-900">
                           {log.user?.full_name || 'Unknown'}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-gray-700">
                           {log.user?.email || ''}
                         </div>
                       </td>
@@ -283,12 +283,12 @@ export default function AuditLogsPage() {
                           {log.resource_type}
                         </div>
                         {log.resource_id && (
-                          <div className="text-xs text-gray-500">
+                          <div className="text-xs text-gray-700">
                             ID: {log.resource_id.substring(0, 8)}...
                           </div>
                         )}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-500">
+                      <td className="px-6 py-4 text-sm text-gray-700">
                         {log.metadata &&
                           Object.keys(log.metadata).length > 0 && (
                             <details className="cursor-pointer">

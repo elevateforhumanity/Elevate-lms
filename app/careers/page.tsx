@@ -217,7 +217,7 @@ export default async function CareersPage() {
                 <p className="text-xl text-gray-600 mb-4">
                   No open positions at the moment.
                 </p>
-                <p className="text-gray-500">
+                <p className="text-gray-700">
                   Check back soon or send us your resume for future
                   opportunities.
                 </p>

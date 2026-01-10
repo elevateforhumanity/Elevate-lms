@@ -240,7 +240,7 @@ function SignupFormContent() {
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="••••••••"
           />
-          <p className="mt-1 text-xs text-gray-500">
+          <p className="mt-1 text-xs text-gray-700">
             Must be at least 8 characters
           </p>
         </div>
@@ -307,7 +307,7 @@ function SignupFormContent() {
             <div className="w-full border-t border-gray-300" />
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">
+            <span className="px-2 bg-white text-gray-700">
               Or continue with
             </span>
           </div>

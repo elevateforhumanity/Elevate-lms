@@ -105,7 +105,7 @@ export default function LicensingPage() {
                     <span
                       key={key}
                       className={`px-2 py-1 rounded text-xs ${
-                        enabled ? 'bg-green-50 text-green-700' : 'bg-gray-50 text-gray-500'
+                        enabled ? 'bg-green-50 text-green-700' : 'bg-gray-50 text-gray-700'
                       }`}
                     >
                       {key.replace(/_/g, ' ')}
@@ -146,7 +146,7 @@ export default function LicensingPage() {
       </div>
 
       {licenses.length === 0 && (
-        <div className="text-center py-12 text-gray-500">
+        <div className="text-center py-12 text-gray-700">
           No licenses found
         </div>
       )}

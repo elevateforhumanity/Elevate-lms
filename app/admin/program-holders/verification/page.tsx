@@ -153,8 +153,8 @@ export default async function ProgramHolderVerificationPage() {
           </div>
 
           {holdersWithDocs.length === 0 ? (
-            <div className="px-6 py-12 text-center text-gray-500">
-              <Clock className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <div className="px-6 py-12 text-center text-gray-700">
+              <Clock className="w-16 h-16 mx-auto mb-4 text-gray-600" />
               <p>No pending verifications</p>
             </div>
           ) : (
@@ -169,10 +169,10 @@ export default async function ProgramHolderVerificationPage() {
                       <p className="text-sm text-gray-600">
                         {holder.user?.email}
                       </p>
-                      <p className="text-sm text-gray-500 mt-1">
+                      <p className="text-sm text-gray-700 mt-1">
                         Organization: {holder.organization_name || 'N/A'}
                       </p>
-                      <p className="text-xs text-gray-400 mt-1">
+                      <p className="text-xs text-gray-600 mt-1">
                         Applied:{' '}
                         {new Date(holder.created_at).toLocaleDateString()}
                       </p>
@@ -201,7 +201,7 @@ export default async function ProgramHolderVerificationPage() {
                                   .replace(/_/g, ' ')
                                   .replace(/\b\w/g, (l) => l.toUpperCase())}
                               </p>
-                              <p className="text-xs text-gray-500">
+                              <p className="text-xs text-gray-700">
                                 {doc.file_name}
                               </p>
                             </div>
@@ -331,7 +331,7 @@ export default async function ProgramHolderVerificationPage() {
               ))}
             </div>
           ) : (
-            <div className="px-6 py-8 text-center text-gray-500">
+            <div className="px-6 py-8 text-center text-gray-700">
               <p>No recent verifications</p>
             </div>
           )}

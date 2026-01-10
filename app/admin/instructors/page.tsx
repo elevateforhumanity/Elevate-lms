@@ -226,7 +226,7 @@ export default function InstructorsPage() {
                       {instructor.instructor_courses &&
                         instructor.instructor_courses.length > 0 && (
                           <div className="mt-2">
-                            <p className="text-xs text-gray-500 mb-1">
+                            <p className="text-xs text-gray-700 mb-1">
                               Teaching:
                             </p>
                             <div className="flex flex-wrap gap-2">
@@ -266,7 +266,7 @@ export default function InstructorsPage() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center py-8">
+            <p className="text-gray-700 text-center py-8">
               No instructors found
             </p>
           )}

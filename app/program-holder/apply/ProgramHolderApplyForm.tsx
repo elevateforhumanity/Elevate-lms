@@ -434,7 +434,7 @@ export default function ProgramHolderApplyForm() {
             'Submit Application'
           )}
         </button>
-        <p className="text-xs text-gray-500 mt-2 text-center">
+        <p className="text-xs text-gray-700 mt-2 text-center">
           By submitting, you agree to our terms and privacy policy
         </p>
       </div>

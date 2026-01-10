@@ -42,28 +42,28 @@ export default function ProgramsBioSitePage() {
       description: 'CNA, Medical Assistant, Home Health Aide',
       href: '/programs/healthcare',
       icon: GraduationCap,
-      image: '/hero-images/healthcare-cat-new.jpg',
+      image: '/hero-images/healthcare-category.jpg',
     },
     {
       title: 'Skilled Trades',
       description: 'HVAC, Electrical, Plumbing, Construction',
       href: '/programs/skilled-trades',
       icon: Briefcase,
-      image: '/hero-images/skilled-trades-cat-new.jpg',
+      image: '/hero-images/skilled-trades-category.jpg',
     },
     {
       title: 'Barber & Beauty',
       description: 'Barbering, Cosmetology, Esthetics',
       href: '/programs/barber-apprenticeship',
       icon: Award,
-      image: '/hero-images/barber-beauty-cat-new.jpg',
+      image: '/hero-images/barber-beauty-category.jpg',
     },
     {
       title: 'Technology',
       description: 'IT Support, Cybersecurity, Web Development',
       href: '/programs/technology',
       icon: BookOpen,
-      image: '/hero-images/technology-cat-new.jpg',
+      image: '/hero-images/technology-category.jpg',
     },
     {
       title: 'Business',
@@ -77,7 +77,7 @@ export default function ProgramsBioSitePage() {
       description: 'Commercial Driving License training',
       href: '/programs/cdl-transportation',
       icon: TrendingUp,
-      image: '/hero-images/cdl-cat-new.jpg',
+      image: '/hero-images/cdl-transportation-category.jpg',
     },
   ];
 
@@ -90,7 +90,7 @@ export default function ProgramsBioSitePage() {
         accentText="Real Credentials"
         subheadline="Healthcare • Skilled Trades • Technology • Business"
         description="100% funded career training through WIOA, WRG, and DOL programs. No tuition. No debt. Earn industry-recognized credentials and connect with employers hiring our graduates."
-        imageSrc="/programs-hero-banner.jpg"
+        imageSrc="/images/efh/hero/hero-main.jpg"
         imageAlt="Career Training Programs"
         primaryCTA={{ text: "View All Programs", href: "#programs" }}
         secondaryCTA={{ text: "Check Eligibility", href: "/wioa-eligibility" }}
@@ -148,16 +148,13 @@ export default function ProgramsBioSitePage() {
       />
 
       {/* Programs Grid - Keep existing */}
+      <main id="main-content">
       <section id="programs" className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
-          <Image
-            src="/images/efh/hero/hero-main-clean.jpg"
-            alt="Programs Overview"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-            quality={85}
+          <img
+            src="/images/efh/hero/hero-main.jpg"
+            alt="Career training programs overview - students in classroom"
+            className="absolute inset-0 h-full w-full object-cover"
           />
           
           {/* Overlay Content */}
@@ -211,15 +208,15 @@ export default function ProgramsBioSitePage() {
 
       {/* Program Cards Grid - Uniform Layout */}
       <section className="pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {links.map((link) => {
               const Icon = link.icon;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="group block bg-white rounded-lg shadow hover:shadow-xl transition-all border border-gray-200 hover:border-blue-600 overflow-hidden"
+                  className="group block bg-white rounded-lg shadow hover:shadow-lg transition-all border border-gray-200 hover:border-gray-900 overflow-hidden"
                 >
                   {/* Image Section - Square */}
                   <div className="relative w-full aspect-square overflow-hidden">
@@ -227,17 +224,16 @@ export default function ProgramsBioSitePage() {
                       src={link.image}
                       alt={link.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition"
-                      sizes="(max-width: 768px) 50vw, 33vw"
+                      className="object-cover"
                     />
                   </div>
                   
                   {/* Text Section */}
-                  <div className="p-3 md:p-4">
-                    <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1">
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {link.title}
                     </h3>
-                    <p className="text-xs md:text-sm text-gray-600 line-clamp-2">{link.description}</p>
+                    <p className="text-gray-600">{link.description}</p>
                   </div>
                 </Link>
               );
@@ -283,6 +279,7 @@ export default function ProgramsBioSitePage() {
           </p>
         </div>
       </section>
+      </main>
     </div>
   );
 }

@@ -58,12 +58,12 @@ export default function ProductCard() {
   }
 
   if (loading) {
-    return <div className="text-gray-500">Loading products...</div>;
+    return <div className="text-gray-700">Loading products...</div>;
   }
 
   if (products.length === 0) {
     return (
-      <div className="col-span-full text-center py-12 text-gray-500">
+      <div className="col-span-full text-center py-12 text-gray-700">
         No products yet. Create your first product above!
       </div>
     );
@@ -86,10 +86,10 @@ export default function ProductCard() {
             <span className="text-2xl font-bold text-gray-900">
               ${(p.price / 100).toLocaleString()}
             </span>
-            <span className="text-sm text-gray-500">USD</span>
+            <span className="text-sm text-gray-700">USD</span>
           </div>
 
-          <div className="text-xs text-gray-500">
+          <div className="text-xs text-gray-700">
             <span className="font-medium">Repo:</span> {p.repo}
           </div>
 

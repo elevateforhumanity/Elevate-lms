@@ -135,7 +135,7 @@ export default function ServicesPage() {
         <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
           <div className="max-w-2xl">
             {/* Administrative Header */}
-            <div className="mb-6 text-xs uppercase tracking-wider text-gray-400 font-mono">
+            <div className="mb-6 text-xs uppercase tracking-wider text-gray-600 font-mono">
               STUDENT SUPPORT SERVICES / UPDATED JAN 2026
             </div>
 
@@ -174,7 +174,7 @@ export default function ServicesPage() {
       <section className="bg-white border-y-4 border-black py-12">
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-gray-50 border-l-4 border-black p-8">
-            <div className="text-xs uppercase tracking-wider text-gray-500 mb-4 font-mono">
+            <div className="text-xs uppercase tracking-wider text-gray-700 mb-4 font-mono">
               ELIGIBILITY NOTICE / EFFECTIVE JANUARY 2026
             </div>
             <h3 className="text-2xl font-bold text-black mb-4 leading-tight">

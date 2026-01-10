@@ -83,19 +83,19 @@ export default async function HSIEnrollmentsPage() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Student
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Course
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Progress
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Enrolled
                   </th>
                 </tr>
@@ -107,7 +107,7 @@ export default async function HSIEnrollmentsPage() {
                       <div className="text-sm font-medium text-gray-900">
                         {enrollment.student?.full_name || 'N/A'}
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-gray-700">
                         {enrollment.student?.email}
                       </div>
                     </td>
@@ -134,7 +134,7 @@ export default async function HSIEnrollmentsPage() {
                         {enrollment.progress_percentage || 0}%
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                       {new Date(enrollment.created_at).toLocaleDateString()}
                     </td>
                   </tr>
@@ -145,7 +145,7 @@ export default async function HSIEnrollmentsPage() {
 
           {(!hsiEnrollments || hsiEnrollments.length === 0) && (
             <div className="text-center py-12">
-              <p className="text-gray-500">No HSI enrollments found</p>
+              <p className="text-gray-700">No HSI enrollments found</p>
             </div>
           )}
         </div>

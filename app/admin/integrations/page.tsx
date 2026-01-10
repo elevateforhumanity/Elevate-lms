@@ -135,7 +135,7 @@ export default function IntegrationsPage() {
                   {integration.is_active ? (
                     <CheckCircle className="h-6 w-6 text-brand-green-600" />
                   ) : (
-                    <XCircle className="h-6 w-6 text-gray-400" />
+                    <XCircle className="h-6 w-6 text-gray-600" />
                   )}
                 </div>
                 <div className="flex gap-2">

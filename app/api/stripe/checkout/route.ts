@@ -7,10 +7,24 @@ import { getProductBySlug } from '@/app/data/store-products';
 import { STRIPE_PRICE_IDS, isPriceConfigured } from '@/lib/stripe/price-map';
 import { toError, toErrorMessage } from '@/lib/safe';
 import { createClient } from '@/lib/supabase/server';
+import { paymentRateLimit } from '@/lib/rate-limit';
 
 
 export async function POST(req: Request) {
   try {
+    // Rate limiting
+    if (paymentRateLimit) {
+      const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+      const { success } = await paymentRateLimit.limit(ip);
+      
+      if (!success) {
+        return NextResponse.json(
+          { error: 'Too many payment requests. Please try again later.' },
+          { status: 429 }
+        );
+      }
+    }
+
     // Check if Stripe is configured
     if (!process.env.STRIPE_SECRET_KEY) {
       return NextResponse.json(

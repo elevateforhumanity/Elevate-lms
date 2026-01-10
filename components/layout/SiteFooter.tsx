@@ -54,47 +54,113 @@ export default function SiteFooter() {
           </div>
         </div>
 
+        {/* Footer Navigation Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
+          {/* Programs */}
+          <div>
+            <h3 className="text-white font-bold text-sm mb-4">Programs</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/programs" className="hover:text-white transition">All Programs</Link></li>
+              <li><Link href="/programs/healthcare" className="hover:text-white transition">Healthcare</Link></li>
+              <li><Link href="/programs/skilled-trades" className="hover:text-white transition">Skilled Trades</Link></li>
+              <li><Link href="/programs/technology" className="hover:text-white transition">Technology</Link></li>
+              <li><Link href="/programs/business" className="hover:text-white transition">Business</Link></li>
+              <li><Link href="/apprenticeships" className="hover:text-white transition">Apprenticeships</Link></li>
+              <li><Link href="/courses" className="hover:text-white transition">Courses</Link></li>
+            </ul>
+          </div>
+
+          {/* Get Started */}
+          <div>
+            <h3 className="text-white font-bold text-sm mb-4">Get Started</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/apply" className="hover:text-white transition">Apply Now</Link></li>
+              <li><Link href="/wioa-eligibility" className="hover:text-white transition">Check Eligibility</Link></li>
+              <li><Link href="/how-it-works" className="hover:text-white transition">How It Works</Link></li>
+              <li><Link href="/pathways" className="hover:text-white transition">Pathways</Link></li>
+              <li><Link href="/funding" className="hover:text-white transition">Funding</Link></li>
+              <li><Link href="/orientation" className="hover:text-white transition">Orientation</Link></li>
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-white font-bold text-sm mb-4">Services</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/career-services" className="hover:text-white transition">Career Services</Link></li>
+              <li><Link href="/advising" className="hover:text-white transition">Advising</Link></li>
+              <li><Link href="/mentorship" className="hover:text-white transition">Mentorship</Link></li>
+              <li><Link href="/ai-tutor" className="hover:text-white transition">AI Tutor</Link></li>
+              <li><Link href="/supersonic-fast-cash" className="hover:text-white transition">Tax Services</Link></li>
+              <li><Link href="/vita" className="hover:text-white transition">Free VITA</Link></li>
+            </ul>
+          </div>
+
+          {/* Partners */}
+          <div>
+            <h3 className="text-white font-bold text-sm mb-4">Partners</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/employer" className="hover:text-white transition">Employers</Link></li>
+              <li><Link href="/hire-graduates" className="hover:text-white transition">Hire Graduates</Link></li>
+              <li><Link href="/workforce-partners" className="hover:text-white transition">Workforce Partners</Link></li>
+              <li><Link href="/training-providers" className="hover:text-white transition">Training Providers</Link></li>
+              <li><Link href="/agencies" className="hover:text-white transition">Agencies</Link></li>
+              <li><Link href="/white-label" className="hover:text-white transition">White Label</Link></li>
+            </ul>
+          </div>
+
+          {/* Portals & Resources */}
+          <div>
+            <h3 className="text-white font-bold text-sm mb-4">Portals</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/client-portal" className="hover:text-white transition">Student Portal</Link></li>
+              <li><Link href="/admin" className="hover:text-white transition">Admin</Link></li>
+              <li><Link href="/staff-portal" className="hover:text-white transition">Staff</Link></li>
+              <li><Link href="/lms" className="hover:text-white transition">LMS</Link></li>
+              <li><Link href="/login" className="hover:text-white transition">Login</Link></li>
+              <li><Link href="/signup" className="hover:text-white transition">Sign Up</Link></li>
+            </ul>
+            <h3 className="text-white font-bold text-sm mb-4 mt-6">Resources</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
+              <li><Link href="/success-stories" className="hover:text-white transition">Success Stories</Link></li>
+              <li><Link href="/help" className="hover:text-white transition">Help</Link></li>
+              <li><Link href="/faq" className="hover:text-white transition">FAQ</Link></li>
+            </ul>
+          </div>
+        </div>
+
         {/* Legal Links and Copyright */}
         <div className="pt-6 border-t border-gray-800">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-500">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-400">
               <Link
                 href="/privacy-policy"
-                className="hover:text-gray-300 transition"
+                className="hover:text-white transition"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms-of-service"
-                className="hover:text-gray-300 transition"
+                className="hover:text-white transition"
               >
                 Terms of Service
               </Link>
               <Link
                 href="/accessibility"
-                className="hover:text-gray-300 transition"
+                className="hover:text-white transition"
               >
                 Accessibility
               </Link>
-              <Link href="/careers" className="hover:text-gray-300 transition">
-                Careers
-              </Link>
               <Link
                 href="/sitemap-page"
-                className="hover:text-gray-300 transition"
+                className="hover:text-white transition"
               >
                 Site Map
               </Link>
-              <Link href="/contact" className="hover:text-gray-300 transition">
-                Contact
-              </Link>
-              <Link href="/admin" className="hover:text-gray-300 transition">
-                Admin
-              </Link>
             </div>
-            <p className="text-xs text-gray-500">
-              © {new Date().getFullYear()} Elevate For Humanity. All Rights
-              Reserved.
+            <p className="text-xs text-gray-400">
+              © {new Date().getFullYear()} Elevate For Humanity. All Rights Reserved.
               {process.env.VERCEL_GIT_COMMIT_SHA && (
                 <span className="ml-2 opacity-50">
                   v{process.env.VERCEL_GIT_COMMIT_SHA.slice(0, 7)}

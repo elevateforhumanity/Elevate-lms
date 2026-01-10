@@ -259,7 +259,7 @@ export default function ExternalModulesPage() {
                     <div>
                       <h3 className="font-semibold text-lg flex items-center gap-2">
                         {module.name}
-                        <ExternalLink className="h-4 w-4 text-gray-400" />
+                        <ExternalLink className="h-4 w-4 text-gray-600" />
                       </h3>
                       <p className="text-sm text-gray-600">
                         Provider: {module.provider?.name || 'Unknown'}
@@ -294,7 +294,7 @@ export default function ExternalModulesPage() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center py-8">
+            <p className="text-gray-700 text-center py-8">
               No external modules found
             </p>
           )}

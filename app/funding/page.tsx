@@ -271,7 +271,7 @@ export default function FundingPage() {
           <p className="text-gray-600 mb-2">
             Questions about funding eligibility?
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-700">
             Contact us at{' '}
             <a
               href="mailto:elevate4humanityedu@gmail.com"

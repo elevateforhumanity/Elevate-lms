@@ -55,7 +55,7 @@ export default async function AdminCreatorsPage() {
                     {creator.display_name}
                   </h3>
                   <p className="text-sm text-gray-600 mb-2">{creator.bio}</p>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-gray-700">
                     <p>Payout: {creator.payout_email}</p>
                     <p>Method: {creator.payout_method}</p>
                     <p>

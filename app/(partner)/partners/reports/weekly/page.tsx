@@ -72,7 +72,7 @@ export default function PartnerWeeklyReportsPage() {
 
       <div className="flex flex-wrap gap-3 items-end">
         <div>
-          <div className="text-xs text-gray-500 mb-1">Shop ID</div>
+          <div className="text-xs text-gray-700 mb-1">Shop ID</div>
           <input
             className="border rounded-xl p-2 w-[360px]"
             value={shopId}
@@ -81,7 +81,7 @@ export default function PartnerWeeklyReportsPage() {
         </div>
 
         <div>
-          <div className="text-xs text-gray-500 mb-1">Placement</div>
+          <div className="text-xs text-gray-700 mb-1">Placement</div>
           <select
             className="border rounded-xl p-2 w-[360px]"
             value={placementId}
@@ -99,7 +99,7 @@ export default function PartnerWeeklyReportsPage() {
 
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <div className="text-xs text-gray-500 mb-1">Week Start</div>
+          <div className="text-xs text-gray-700 mb-1">Week Start</div>
           <input
             type="date"
             className="border rounded-xl p-2 w-full"
@@ -108,7 +108,7 @@ export default function PartnerWeeklyReportsPage() {
           />
         </div>
         <div>
-          <div className="text-xs text-gray-500 mb-1">Week End</div>
+          <div className="text-xs text-gray-700 mb-1">Week End</div>
           <input
             type="date"
             className="border rounded-xl p-2 w-full"
@@ -120,7 +120,7 @@ export default function PartnerWeeklyReportsPage() {
 
       <div className="grid grid-cols-3 gap-3">
         <div>
-          <div className="text-xs text-gray-500 mb-1">Total Hours</div>
+          <div className="text-xs text-gray-700 mb-1">Total Hours</div>
           <input
             className="border rounded-xl p-2 w-full"
             type="number"
@@ -129,7 +129,7 @@ export default function PartnerWeeklyReportsPage() {
           />
         </div>
         <div>
-          <div className="text-xs text-gray-500 mb-1">OJT Hours</div>
+          <div className="text-xs text-gray-700 mb-1">OJT Hours</div>
           <input
             className="border rounded-xl p-2 w-full"
             type="number"
@@ -138,7 +138,7 @@ export default function PartnerWeeklyReportsPage() {
           />
         </div>
         <div>
-          <div className="text-xs text-gray-500 mb-1">Related Hours</div>
+          <div className="text-xs text-gray-700 mb-1">Related Hours</div>
           <input
             className="border rounded-xl p-2 w-full"
             type="number"
@@ -149,7 +149,7 @@ export default function PartnerWeeklyReportsPage() {
       </div>
 
       <div>
-        <div className="text-xs text-gray-500 mb-1">Notes</div>
+        <div className="text-xs text-gray-700 mb-1">Notes</div>
         <textarea
           className="border rounded-xl p-3 w-full min-h-[120px]"
           value={notes}

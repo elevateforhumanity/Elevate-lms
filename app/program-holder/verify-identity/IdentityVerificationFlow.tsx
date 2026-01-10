@@ -271,7 +271,7 @@ export default function IdentityVerificationFlow({
                   <h3 className="text-lg font-bold text-gray-900">
                     Manual Upload
                   </h3>
-                  <span className="text-xs text-gray-500 font-medium">
+                  <span className="text-xs text-gray-700 font-medium">
                     24-48 HOURS
                   </span>
                 </div>
@@ -304,7 +304,7 @@ export default function IdentityVerificationFlow({
           </div>
 
           <div className="mt-8 text-center">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-700">
               Your information is encrypted and secure. We comply with all
               privacy regulations.
             </p>
@@ -391,7 +391,7 @@ export default function IdentityVerificationFlow({
                 Photo ID (Driver's License, Passport, State ID) *
               </label>
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                <FileText className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+                <FileText className="w-12 h-12 mx-auto mb-3 text-gray-600" />
                 <input
                   type="file"
                   accept="image/*,.pdf"
@@ -425,7 +425,7 @@ export default function IdentityVerificationFlow({
                 Social Security Card *
               </label>
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                <FileText className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+                <FileText className="w-12 h-12 mx-auto mb-3 text-gray-600" />
                 <input
                   type="file"
                   accept="image/*,.pdf"

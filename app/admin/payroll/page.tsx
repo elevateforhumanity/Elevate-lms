@@ -173,7 +173,7 @@ export default function AdminPayroll() {
                   <p className="text-sm text-gray-600">
                     {apprenticeship.employer_name}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-700">
                     Rate: ${apprenticeship.wage_current}/hr | Total Hours:{' '}
                     {apprenticeship.total_hours_completed.toFixed(1)}
                   </p>
@@ -199,28 +199,28 @@ export default function AdminPayroll() {
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Student
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Employer
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Period
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Hours
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Rate
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Gross Pay
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
                     Actions
                   </th>
                 </tr>
@@ -268,7 +268,7 @@ export default function AdminPayroll() {
                         </button>
                       )}
                       {payroll.status === 'paid' && (
-                        <span className="text-gray-400">
+                        <span className="text-gray-600">
                           ✓ Paid{' '}
                           {new Date(payroll.paid_at).toLocaleDateString()}
                         </span>

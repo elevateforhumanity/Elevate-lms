@@ -378,7 +378,7 @@ export default function CheckoutPage() {
               )}
 
               <div className="mt-8 pt-6 border-t">
-                <p className="text-xs text-gray-500 text-center">
+                <p className="text-xs text-gray-700 text-center">
                   By completing this purchase, you agree to our{' '}
                   <Link href="/terms" className="underline">
                     Terms of Service

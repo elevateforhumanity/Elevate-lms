@@ -8,26 +8,8 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  // Hide main site header/footer for these sections (they have their own navigation)
-  const hideHeaderFooter = 
-    pathname?.startsWith('/supersonic-fast-cash') ||
-    pathname?.startsWith('/lms/') || // LMS app pages have LMSNavigation
-    pathname?.startsWith('/admin') ||
-    pathname?.startsWith('/staff-portal') ||
-    pathname?.startsWith('/creator') ||
-    pathname?.startsWith('/instructor') ||
-    pathname?.startsWith('/employer/dashboard') ||
-    pathname?.startsWith('/employer/post-job') ||
-    pathname?.startsWith('/program-holder/dashboard') ||
-    pathname?.startsWith('/workforce-board/dashboard') ||
-    pathname?.startsWith('/mobile/') ||
-    pathname?.startsWith('/login') ||
-    pathname?.startsWith('/signup') ||
-    pathname?.startsWith('/verify-email') ||
-    pathname?.startsWith('/admin-login') ||
-    pathname?.startsWith('/nonprofit') || // Has custom navigation
-    pathname?.startsWith('/rise-foundation') || // Part of nonprofit
-    pathname?.startsWith('/tax/rise-up-foundation'); // Has custom layout
+  // Never hide header/footer - all pages should be discoverable
+  const hideHeaderFooter = false;
 
   // Show header/footer for public LMS landing page and other exceptions
   const isLMSLanding = pathname === '/lms';
@@ -37,7 +19,7 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col [--header-h:72px]">
       {shouldShowHeaderFooter && (
-        <header className="fixed inset-x-0 top-0 z-[9999] h-[var(--header-h)]">
+        <header className="fixed inset-x-0 top-0 z-[99999] h-[var(--header-h)]">
           <SiteHeader />
         </header>
       )}

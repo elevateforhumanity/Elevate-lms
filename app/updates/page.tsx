@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Updates & Announcements',
   description: 'Latest news, program updates, and announcements from Elevate for Humanity',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/updates',
+    canonical: 'https://elevateforhumanity.institute/updates',
   },
 };
 

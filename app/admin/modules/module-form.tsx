@@ -172,7 +172,7 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="0"
             />
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-gray-700 mt-1">
               Display order in program
             </p>
           </div>

@@ -142,7 +142,7 @@ export default async function CurriculumPage() {
                   ))}
                 </div>
               ) : (
-                <p className="text-gray-500 text-center py-8">
+                <p className="text-gray-700 text-center py-8">
                   No curriculum items found
                 </p>
               )}

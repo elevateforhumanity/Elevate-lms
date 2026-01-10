@@ -18,7 +18,7 @@ export default function VITAPage() {
         accentText="For $0"
         subheadline="Free VITA Tax Preparation - Income Under $64K"
         description="We filed 2,045 FREE returns last year. Average refund: $2,847. Total saved in tax prep fees: $408,000. If you earn under $64K, you qualify. IRS-certified volunteers. E-file included. Direct deposit setup. Zero cost to you."
-        imageSrc="/images/heroes/cash-bills.jpg"
+        imageSrc="/images/business/tax-prep-certification.jpg"
         imageAlt="Free VITA Tax Preparation"
         primaryCTA={{ text: "Book Free Appointment", href: "/tax/rise-up-foundation/site-locator" }}
         secondaryCTA={{ text: "Check If You Qualify", href: "/tax/free" }}

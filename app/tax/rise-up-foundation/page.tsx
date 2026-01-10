@@ -45,7 +45,7 @@ export default function RiseUpFoundationPage() {
         <h1 className="text-4xl font-bold tracking-tight">
           Rise Up Foundation
         </h1>
-        <p className="text-lg text-gray-500 mt-2">
+        <p className="text-lg text-gray-700 mt-2">
           VITA-style Free Tax Preparation
         </p>
 

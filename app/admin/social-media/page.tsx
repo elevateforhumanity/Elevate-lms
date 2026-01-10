@@ -574,7 +574,7 @@ function ScheduleSlot({ time, status, campaign }: ScheduleSlotProps) {
   return (
     <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
       <div className="flex items-center space-x-4">
-        <Clock className="w-5 h-5 text-gray-400" />
+        <Clock className="w-5 h-5 text-gray-600" />
         <div>
           <div className="font-medium text-gray-900">{time}</div>
           <div className="text-sm text-gray-600">{campaign}</div>

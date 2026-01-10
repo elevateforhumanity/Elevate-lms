@@ -150,7 +150,7 @@ export default function ClientIntakeDashboard() {
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="flex-1 w-full md:w-auto">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600" />
                 <input
                   type="text"
                   placeholder="Search clients..."
@@ -200,22 +200,22 @@ export default function ClientIntakeDashboard() {
           <table className="w-full">
             <thead className="bg-gray-50 border-b">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Client
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Contact
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Filing Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Drake
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -225,8 +225,8 @@ export default function ClientIntakeDashboard() {
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <div className="flex items-center justify-center gap-2">
-                      <RefreshCw className="w-5 h-5 animate-spin text-gray-400" />
-                      <span className="text-gray-500">Loading clients...</span>
+                      <RefreshCw className="w-5 h-5 animate-spin text-gray-600" />
+                      <span className="text-gray-700">Loading clients...</span>
                     </div>
                   </td>
                 </tr>
@@ -234,7 +234,7 @@ export default function ClientIntakeDashboard() {
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <AlertCircle className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                    <p className="text-gray-500">No clients found</p>
+                    <p className="text-gray-700">No clients found</p>
                   </td>
                 </tr>
               ) : (
@@ -245,7 +245,7 @@ export default function ClientIntakeDashboard() {
                         <div className="font-semibold">
                           {client.first_name} {client.last_name}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-gray-700">
                           ID: {client.id.slice(0, 8)}
                         </div>
                       </div>
@@ -253,7 +253,7 @@ export default function ClientIntakeDashboard() {
                     <td className="px-6 py-4">
                       <div className="text-sm">
                         <div>{client.email}</div>
-                        <div className="text-gray-500">{client.phone}</div>
+                        <div className="text-gray-700">{client.phone}</div>
                       </div>
                     </td>
                     <td className="px-6 py-4">
@@ -293,7 +293,7 @@ export default function ClientIntakeDashboard() {
                           Open
                         </button>
                       ) : (
-                        <span className="text-sm text-gray-400">
+                        <span className="text-sm text-gray-600">
                           Not created
                         </span>
                       )}

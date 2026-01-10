@@ -220,7 +220,7 @@ export default function PlatformAppsPage() {
                         {app.enabledByDefault ? (
                           <Check className="w-5 h-5 text-brand-green-600 mx-auto" />
                         ) : (
-                          <span className="text-gray-400">—</span>
+                          <span className="text-gray-600">—</span>
                         )}
                       </td>
                       <td className="px-6 py-4 text-center">

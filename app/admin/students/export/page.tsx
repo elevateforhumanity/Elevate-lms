@@ -117,7 +117,7 @@ export default function ExportStudentsPage() {
                   />
                   <div>
                     <div className="font-semibold text-gray-900">CSV</div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-gray-700">
                       Excel compatible
                     </div>
                   </div>
@@ -132,7 +132,7 @@ export default function ExportStudentsPage() {
                   />
                   <div>
                     <div className="font-semibold text-gray-900">Excel</div>
-                    <div className="text-xs text-gray-500">Available now</div>
+                    <div className="text-xs text-gray-700">Available now</div>
                   </div>
                 </label>
                 <label className="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-500 opacity-50">
@@ -145,7 +145,7 @@ export default function ExportStudentsPage() {
                   />
                   <div>
                     <div className="font-semibold text-gray-900">PDF</div>
-                    <div className="text-xs text-gray-500">Available now</div>
+                    <div className="text-xs text-gray-700">Available now</div>
                   </div>
                 </label>
               </div>
@@ -332,7 +332,7 @@ export default function ExportStudentsPage() {
             </h2>
           </div>
           <div className="p-6">
-            <div className="text-center text-gray-500 py-8">
+            <div className="text-center text-gray-700 py-8">
               No recent exports. Generate your first export above.
             </div>
           </div>
