@@ -78,22 +78,22 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">By the Numbers</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="bg-white rounded-lg p-6 border-2 border-blue-200 text-center">
-              <Image src="/images/icons/trending-up.png" alt="Job Placement" width={48} height={48} className="mx-auto mb-3" loading="lazy" loading="lazy" />
+              <Image src="/images/icons/trending-up.png" alt="Job Placement" width={48} height={48} className="mx-auto mb-3" loading="lazy" />
               <div className="text-4xl font-bold text-blue-600 mb-2">85%</div>
               <div className="text-sm text-gray-900 font-medium">Job Placement Rate</div>
             </div>
             <div className="bg-white rounded-lg p-6 border-2 border-green-200 text-center">
-              <Image src="/images/icons/users.png" alt="Students" width={48} height={48} className="mx-auto mb-3" loading="lazy" loading="lazy" />
+              <Image src="/images/icons/users.png" alt="Students" width={48} height={48} className="mx-auto mb-3" loading="lazy" />
               <div className="text-4xl font-bold text-green-600 mb-2">1,000+</div>
               <div className="text-sm text-gray-900 font-medium">Students Trained</div>
             </div>
             <div className="bg-white rounded-lg p-6 border-2 border-purple-200 text-center">
-              <Image src="/images/icons/check-circle.png" alt="Programs" width={48} height={48} className="mx-auto mb-3" loading="lazy" loading="lazy" />
+              <Image src="/images/icons/check-circle.png" alt="Programs" width={48} height={48} className="mx-auto mb-3" loading="lazy" />
               <div className="text-4xl font-bold text-purple-600 mb-2">20+</div>
               <div className="text-sm text-gray-900 font-medium">Career Programs</div>
             </div>
             <div className="bg-white rounded-lg p-6 border-2 border-orange-200 text-center">
-              <Image src="/images/icons/clock.png" alt="Since 2020" width={48} height={48} className="mx-auto mb-3" loading="lazy" loading="lazy" />
+              <Image src="/images/icons/clock.png" alt="Since 2020" width={48} height={48} className="mx-auto mb-3" loading="lazy" />
               <div className="text-4xl font-bold text-orange-600 mb-2">2020</div>
               <div className="text-sm text-gray-900 font-medium">Founded</div>
             </div>
@@ -108,7 +108,7 @@ export default function AboutPage() {
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
-              <Image src="/images/icons/book.png" alt="Training Coordination" width={64} height={64} className="mb-4" loading="lazy" loading="lazy" />
+              <Image src="/images/icons/book.png" alt="Training Coordination" width={64} height={64} className="mb-4" loading="lazy" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Training Coordination</h3>
               <p className="text-gray-700">
                 We coordinate career training programs delivered by credentialed partner institutions including licensed schools, state-approved providers, and DOL-registered apprenticeship sponsors.
@@ -116,7 +116,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
-              <Image src="/images/icons/dollar.png" alt="Funding Access" width={64} height={64} className="mb-4" loading="lazy" loading="lazy" />
+              <Image src="/images/icons/dollar.png" alt="Funding Access" width={64} height={64} className="mb-4" loading="lazy" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Funding Access</h3>
               <p className="text-gray-700">
                 We help students access WIOA, WRG, JRI, and apprenticeship funding. Some programs are free with funding, others require self-pay. Your advisor explains all costs upfront.
@@ -124,7 +124,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
-              <Image src="/images/icons/trending-up.png" alt="Career Support" width={64} height={64} className="mb-4" loading="lazy" loading="lazy" />
+              <Image src="/images/icons/trending-up.png" alt="Career Support" width={64} height={64} className="mb-4" loading="lazy" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Career Support</h3>
               <p className="text-gray-700">
                 We provide job search support, employer connections, and career coaching. Certifications come from state boards, industry bodies, and accredited institutions—not from us.
