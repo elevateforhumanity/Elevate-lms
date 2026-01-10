@@ -168,6 +168,8 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    id="name"
                     required
                     value={formData.name}
                     onChange={(e) =>
@@ -184,12 +186,14 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    id="email"
                     required
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-500 focus:border-outline-none transition-colors"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -237,6 +241,8 @@ export default function ContactPage() {
                   Message *
                 </label>
                 <textarea
+                  name="message"
+                  id="message"
                   required
                   value={formData.message}
                   onChange={(e) =>

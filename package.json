@@ -138,6 +138,7 @@
     "globals": "16.5.0",
     "happy-dom": "20.0.10",
     "husky": "8.0.3",
+    "jsdom": "^27.4.0",
     "linkinator": "7.5.0",
     "lint-staged": "16.2.7",
     "pg": "8.16.3",
