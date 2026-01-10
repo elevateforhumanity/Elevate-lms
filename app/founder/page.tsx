@@ -38,13 +38,14 @@ export default function FounderPage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Founder Photo */}
-            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-lg">
+            <div className="relative h-[500px] rounded-lg overflow-hidden border-4 border-gray-200">
               <Image
                 src="/images/team/founder/elizabeth-greene-founder-hero-01.jpg"
-                alt="Founder"
+                alt="Elizabeth Greene - Founder & CEO"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                quality={90}
               />
             </div>
 
@@ -127,48 +128,100 @@ export default function FounderPage() {
         </div>
       </section>
 
-      {/* Leadership Commitment */}
+      {/* Organizations & Credentials */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-            Leadership Commitment
+            Organizations & Credentials
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-lg border-2 border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Elevate for Humanity</h3>
+              <p className="text-sm text-gray-600 mb-4">2EXCLUSIVE LLC-S</p>
+              <div className="space-y-2 text-sm text-gray-700">
+                <p><strong>SAM.gov UEI:</strong> VX2GK5S8SZH8</p>
+                <p><strong>CAGE Code:</strong> 0QH19</p>
+                <p><strong>Status:</strong> Active federal registration</p>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg border-2 border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">RISE Foundation</h3>
+              <p className="text-sm text-gray-600 mb-4">SELFISH INC</p>
+              <div className="space-y-2 text-sm text-gray-700">
+                <p><strong>EIN:</strong> 99-3483511</p>
+                <p><strong>Status:</strong> 501(c)(3) tax-exempt</p>
+                <p><strong>IRS Determination:</strong> July 2024</p>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg border-2 border-gray-200">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Curvature Body Sculpting</h3>
+              <p className="text-sm text-gray-600 mb-4">Curvature Body Sculpting LLC</p>
+              <div className="space-y-2 text-sm text-gray-700">
+                <p><strong>Certiport CATC:</strong> Authorized Testing Center</p>
+                <p><strong>Certifications:</strong> Microsoft Office Specialist, IC3, Adobe</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Commitment */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+            Leadership Principles
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-gray-50 p-6 rounded-lg border-2 border-gray-200">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6 text-brand-blue-600" />
+                <Shield className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">
-                Ethical operations
+                Ethical Operations
               </h3>
+              <p className="text-sm text-gray-600">
+                Transparent, honest, and compliant with all regulations
+              </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                <Target className="w-6 h-6 text-brand-green-600" />
+            <div className="bg-gray-50 p-6 rounded-lg border-2 border-gray-200">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                <Target className="w-6 h-6 text-green-600" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">
-                Compliance with workforce and funding standards
+                Results-Driven
               </h3>
+              <p className="text-sm text-gray-600">
+                85% job placement rate through measurable outcomes
+              </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-gray-50 p-6 rounded-lg border-2 border-gray-200">
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                 <Eye className="w-6 h-6 text-purple-600" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">
-                Transparency with partners and participants
+                Full Transparency
               </h3>
+              <p className="text-sm text-gray-600">
+                Clear communication about costs, requirements, and expectations
+              </p>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-gray-50 p-6 rounded-lg border-2 border-gray-200">
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                <Heart className="w-6 h-6 text-brand-orange-600" />
+                <Heart className="w-6 h-6 text-orange-600" />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">
-                Long-term community investment
+                Community Impact
               </h3>
+              <p className="text-sm text-gray-600">
+                Long-term investment in people and neighborhoods
+              </p>
             </div>
           </div>
         </div>

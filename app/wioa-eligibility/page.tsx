@@ -105,19 +105,18 @@ export default function WIOAEligibilityPage() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-4 mb-12">
-            <div className="bg-orange-50 p-4 rounded-lg">
-              <p className="font-semibold text-slate-900">• Veterans</p>
-            </div>
-            <div className="bg-orange-50 p-4 rounded-lg">
-              <p className="font-semibold text-slate-900">
-                • Low-income individuals
-              </p>
-            </div>
-            <div className="bg-orange-50 p-4 rounded-lg">
-              <p className="font-semibold text-slate-900">
-                • Public assistance recipients
-              </p>
-            </div>
+            <Link href="/wioa-eligibility/veterans" className="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition border-2 border-transparent hover:border-orange-500">
+              <p className="font-semibold text-slate-900">• Veterans →</p>
+              <p className="text-sm text-slate-600 mt-1">Priority services for military veterans</p>
+            </Link>
+            <Link href="/wioa-eligibility/low-income" className="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition border-2 border-transparent hover:border-orange-500">
+              <p className="font-semibold text-slate-900">• Low-Income Individuals →</p>
+              <p className="text-sm text-slate-600 mt-1">Income-based eligibility criteria</p>
+            </Link>
+            <Link href="/wioa-eligibility/public-assistance" className="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition border-2 border-transparent hover:border-orange-500">
+              <p className="font-semibold text-slate-900">• Public Assistance Recipients →</p>
+              <p className="text-sm text-slate-600 mt-1">SNAP, TANF, and other programs</p>
+            </Link>
             <div className="bg-orange-50 p-4 rounded-lg">
               <p className="font-semibold text-slate-900">
                 • Individuals with disabilities

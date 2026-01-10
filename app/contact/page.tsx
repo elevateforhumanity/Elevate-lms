@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Metadata } from 'next';
+import Image from 'next/image';
 import {
   Phone,
   Mail,
@@ -10,9 +10,6 @@ import {
   Clock,
   Send,
   CheckCircle,
-  MessageSquare,
-  Calendar,
-  Users,
   ArrowRight,
 } from 'lucide-react';
 
@@ -32,75 +29,45 @@ export default function ContactPage() {
     setSubmitted(true);
   };
 
-  const contactMethods = [
-    {
-      icon: Phone,
-      title: 'Call Us',
-      detail: '(317) 314-3757',
-      description: 'Mon-Fri, 8am-6pm EST',
-      href: 'tel:+13173143757',
-      color: 'green',
-    },
-    {
-      icon: Mail,
-      title: 'Email Us',
-      detail: 'elevate4humanityedu@gmail.com',
-      description: 'We respond within 24 hours',
-      href: 'mailto:elevate4humanityedu@gmail.com',
-      color: 'blue',
-    },
-    {
-      icon: MapPin,
-      title: 'Visit Us',
-      detail: 'Indianapolis, IN',
-      description: 'Multiple locations across Indiana',
-      href: '/locations',
-      color: 'purple',
-    },
-    {
-      icon: Calendar,
-      title: 'Schedule Call',
-      detail: 'Book a consultation',
-      description: 'Free 15-minute career consultation',
-      href: '/booking',
-      color: 'orange',
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-green-600 to-green-800 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full border border-white/30 mb-6">
-            <MessageSquare className="w-5 h-5" />
-            <span className="text-sm font-semibold">Get In Touch</span>
+      <section className="relative w-full -mt-[72px]">
+        <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
+          <Image
+            src="/images/efh/hero/hero-support.jpg"
+            alt="Contact Elevate for Humanity"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            quality={85}
+          />
+        </div>
+      </section>
+
+      {/* Hero Content */}
+      <section className="bg-gray-50">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            <span className="px-3 py-1 bg-green-500 text-white text-sm font-medium rounded-full">
+              24-Hour Response
+            </span>
+            <span className="px-3 py-1 bg-brand-blue-600 text-white text-sm font-medium rounded-full">
+              Free Consultation
+            </span>
+            <span className="px-3 py-1 bg-brand-orange-600 text-white text-sm font-medium rounded-full">
+              Real Advisors
+            </span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight" style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}>
-            We're Here to Help
+          <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl text-gray-900">
+            Talk to a real person about your career goals
           </h1>
 
-          <p className="text-xl md:text-2xl text-green-100 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Questions about programs, funding, or enrollment? Our team is ready
-            to guide you every step of the way.
+          <p className="mt-4 max-w-2xl text-base md:text-lg text-gray-700 leading-relaxed">
+            Questions about programs, funding, or eligibility? Our advisors are here to help you understand your options and find the right path forward.
           </p>
-
-          {/* Quick Stats */}
-          <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <div className="bg-white/10  rounded-lg p-4 border border-white/20">
-              <div className="text-3xl font-black mb-1">24hr</div>
-              <div className="text-xs text-green-100">Response Time</div>
-            </div>
-            <div className="bg-white/10  rounded-lg p-4 border border-white/20">
-              <div className="text-3xl font-black mb-1">Free</div>
-              <div className="text-xs text-green-100">Consultation</div>
-            </div>
-            <div className="bg-white/10  rounded-lg p-4 border border-white/20">
-              <div className="text-3xl font-black mb-1">5min</div>
-              <div className="text-xs text-green-100">To Apply</div>
-            </div>
-          </div>
         </div>
       </section>
 

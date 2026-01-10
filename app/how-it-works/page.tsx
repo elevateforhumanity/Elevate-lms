@@ -362,12 +362,11 @@ export default function HowItWorksPage() {
 
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-brand-blue-600">
               <h3 className="text-xl font-bold mb-2">
-                Free ≠ Paid (Strict Separation)
+                Some Programs Are Free, Some Are Not
               </h3>
               <p className="text-gray-700">
-                Free services (VITA tax prep, workforce-funded training) are
-                never mixed with paid services (SupersonicFastCash, self-pay
-                programs).
+                Programs funded by WIOA, WRG, JRI, or apprenticeships are free to eligible students. 
+                Other programs require self-pay or alternative funding. Your advisor will explain all costs upfront.
               </p>
             </div>
 

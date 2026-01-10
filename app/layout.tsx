@@ -2,6 +2,7 @@ import React from 'react';
 import UnregisterSW from "./components/UnregisterSW";
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import './font-consistency.css';
 import './globals-mobile-complete.css';
 import './globals-mobile-pro.css';
 import './globals-modern-design.css';

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight,
   CheckCircle,
@@ -7,12 +8,16 @@ import {
   DollarSign,
   TrendingUp,
   Award,
+  Briefcase,
+  GraduationCap,
+  Users,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Career Pathways | Elevate for Humanity',
+  title: 'Career Pathways | Free Job Training Programs | Indianapolis | Elevate for Humanity',
   description:
-    'Explore career pathways and course progressions for all programs',
+    'Explore career pathways in healthcare, skilled trades, business, and transportation. See course progressions, certifications, salaries, and career options. Free training with WIOA funding.',
+  keywords: 'career pathways Indianapolis, job training programs, CNA training, HVAC training, CDL training, barber apprenticeship, tax preparation training, career progression, free job training',
   alternates: {
     canonical: 'https://elevateforhumanity.institute/pathways',
   },
@@ -168,68 +173,137 @@ const pathways = [
 
 export default function PathwaysPage() {
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Header */}
-      <div className="bg-white text-white">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Career Pathways
-          </h1>
-          <p className="text-base md:text-lg text-blue-100 max-w-3xl">
-            Clear, structured paths from training to career success. See exactly
-            what you'll learn, how long it takes, and where it leads.
-          </p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative w-full -mt-[72px]">
+        <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
+          <Image
+            src="/hero-images/pathways-hero.jpg"
+            alt="Career Pathways"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            quality={85}
+          />
         </div>
-      </div>
+      </section>
+
+      {/* Hero Content */}
+      <section className="bg-gray-50">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            <span className="px-3 py-1 bg-green-500 text-white text-sm font-medium rounded-full">
+              Free with funding
+            </span>
+            <span className="px-3 py-1 bg-brand-blue-600 text-white text-sm font-medium rounded-full">
+              Multiple Career Paths
+            </span>
+            <span className="px-3 py-1 bg-brand-orange-600 text-white text-sm font-medium rounded-full">
+              Industry Certifications
+            </span>
+          </div>
+
+          <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl text-gray-900">
+            Career Pathways: Your roadmap from training to career
+          </h1>
+
+          <p className="mt-4 max-w-2xl text-base md:text-lg text-gray-700 leading-relaxed">
+            Clear, structured paths from training to career success. See exactly what you'll learn, how long it takes, what certifications you'll earn, and where your career can go.
+          </p>
+
+          <div className="mt-6 flex flex-col sm:flex-row gap-3">
+            <Link
+              href="/apply"
+              className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white hover:bg-blue-700 transition-colors"
+            >
+              Apply for Free Training
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-6 py-3 text-base font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+            >
+              Talk to an Advisor
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-6 py-12">
         {/* Overview */}
-        <div className="bg-white rounded-xl shadow-sm p-8 mb-12">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+        <div className="bg-white rounded-lg p-8 mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
             How Our Pathways Work
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-2xl font-bold text-brand-blue-600">
-                  1
-                </span>
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-blue-600">1</span>
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">Foundation</h3>
-              <p className="text-sm text-slate-600">
-                Learn core concepts and safety
+              <h3 className="font-bold text-gray-900 mb-2">Foundation</h3>
+              <p className="text-sm text-gray-600">
+                Learn core concepts, safety, and industry fundamentals
               </p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-2xl font-bold text-brand-green-600">
-                  2
-                </span>
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-green-600">2</span>
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">Skills</h3>
-              <p className="text-sm text-slate-600">
-                Develop hands-on abilities
+              <h3 className="font-bold text-gray-900 mb-2">Skills Development</h3>
+              <p className="text-sm text-gray-600">
+                Build hands-on abilities through practice and training
               </p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-purple-600">3</span>
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">Advanced</h3>
-              <p className="text-sm text-slate-600">
-                Master complex techniques
+              <h3 className="font-bold text-gray-900 mb-2">Advanced Training</h3>
+              <p className="text-sm text-gray-600">
+                Master complex techniques and specialized skills
               </p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-2xl font-bold text-brand-orange-600">
-                  4
-                </span>
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-orange-600">4</span>
               </div>
-              <h3 className="font-bold text-slate-900 mb-2">Certification</h3>
-              <p className="text-sm text-slate-600">Get certified and hired</p>
+              <h3 className="font-bold text-gray-900 mb-2">Certification & Career</h3>
+              <p className="text-sm text-gray-600">
+                Earn credentials and start your career
+              </p>
             </div>
+          </div>
+        </div>
+
+        {/* Why Choose Our Pathways */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-white rounded-lg p-6">
+            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+              <GraduationCap className="w-6 h-6 text-blue-600" />
+            </div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Industry-Recognized Credentials</h3>
+            <p className="text-gray-600">
+              Earn certifications that employers value and that open doors to career advancement
+            </p>
+          </div>
+          <div className="bg-white rounded-lg p-6">
+            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+              <Briefcase className="w-6 h-6 text-green-600" />
+            </div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Clear Career Outcomes</h3>
+            <p className="text-gray-600">
+              See exactly what jobs you can get and what you'll earn at each stage of your career
+            </p>
+          </div>
+          <div className="bg-white rounded-lg p-6">
+            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+              <Users className="w-6 h-6 text-purple-600" />
+            </div>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Ongoing Support</h3>
+            <p className="text-gray-600">
+              Get guidance from advisors and instructors throughout your training and job search
+            </p>
           </div>
         </div>
 
@@ -238,48 +312,48 @@ export default function PathwaysPage() {
           {pathways.map((pathway) => (
             <div
               key={pathway.slug}
-              className="bg-white rounded-xl shadow-sm overflow-hidden"
+              className="bg-white rounded-lg overflow-hidden"
             >
               {/* Pathway Header */}
-              <div className="bg-white text-white p-8">
-                <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">
                   {pathway.title}
                 </h2>
-                <div className="grid md:grid-cols-4 gap-6">
+                <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                   <div className="flex items-center gap-3">
-                    <Clock className="w-6 h-6 text-blue-300" />
+                    <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Clock className="w-6 h-6 text-white" />
+                    </div>
                     <div>
-                      <div className="text-sm text-slate-300">Duration</div>
-                      <div className="font-bold">{pathway.duration}</div>
+                      <div className="text-sm text-blue-100">Duration</div>
+                      <div className="font-bold text-lg">{pathway.duration}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <DollarSign className="w-6 h-6 text-green-300" />
+                    <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <DollarSign className="w-6 h-6 text-white" />
+                    </div>
                     <div>
-                      <div className="text-sm text-slate-300">
-                        Starting Salary
-                      </div>
-                      <div className="font-bold">{pathway.startingSalary}</div>
+                      <div className="text-sm text-blue-100">Starting Salary</div>
+                      <div className="font-bold text-lg">{pathway.startingSalary}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <TrendingUp className="w-6 h-6 text-purple-300" />
+                    <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <TrendingUp className="w-6 h-6 text-white" />
+                    </div>
                     <div>
-                      <div className="text-sm text-slate-300">Experienced</div>
-                      <div className="font-bold">
-                        {pathway.experiencedSalary}
-                      </div>
+                      <div className="text-sm text-blue-100">Experienced</div>
+                      <div className="font-bold text-lg">{pathway.experiencedSalary}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Award className="w-6 h-6 text-orange-300" />
+                    <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Award className="w-6 h-6 text-white" />
+                    </div>
                     <div>
-                      <div className="text-sm text-slate-300">
-                        Certifications
-                      </div>
-                      <div className="font-bold">
-                        {pathway.certifications.length}
-                      </div>
+                      <div className="text-sm text-blue-100">Certifications</div>
+                      <div className="font-bold text-lg">{pathway.certifications.length}</div>
                     </div>
                   </div>
                 </div>

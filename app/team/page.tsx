@@ -63,7 +63,7 @@ export default function TeamPage() {
 
           {/* Founder */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+            <div className="bg-white rounded-lg overflow-hidden border-4 border-gray-200">
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="relative h-96 md:h-auto">
                   <Image
@@ -72,6 +72,7 @@ export default function TeamPage() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={90}
                   />
                 </div>
                 <div className="p-8 flex flex-col justify-center">
