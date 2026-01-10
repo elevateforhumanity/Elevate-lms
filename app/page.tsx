@@ -1,11 +1,14 @@
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
-import Intro from '@/components/home/Intro';
-import Orientation from '@/components/home/Orientation';
-import Testimonials from '@/components/home/Testimonials';
-import Assurance from '@/components/home/Assurance';
-import Start from '@/components/home/Start';
 import Image from 'next/image';
+
+// Lazy load below-fold components
+const Intro = dynamic(() => import('@/components/home/Intro'), { ssr: false });
+const Orientation = dynamic(() => import('@/components/home/Orientation'), { ssr: false });
+const Testimonials = dynamic(() => import('@/components/home/Testimonials'), { ssr: false });
+const Assurance = dynamic(() => import('@/components/home/Assurance'), { ssr: false });
+const Start = dynamic(() => import('@/components/home/Start'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Elevate for Humanity | Workforce and Education Hub',
