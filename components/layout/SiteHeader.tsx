@@ -5,6 +5,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import {
   Menu,
   X,
@@ -40,6 +41,7 @@ function getDashboardUrl(user: { role?: string } | null) {
 import { createClient } from '@/lib/supabase/client';
 
 export default function SiteHeader() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [expandedMobileSection, setExpandedMobileSection] = useState<
@@ -49,6 +51,13 @@ export default function SiteHeader() {
   const [navigation, setNavigation] = useState(getNavigation(null));
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setOpenDropdown(null);
+    setExpandedMobileSection(null);
+  }, [pathname]);
 
   // Get user and update navigation
   useEffect(() => {
