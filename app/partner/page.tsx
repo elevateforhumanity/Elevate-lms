@@ -1,13 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import {
-  Users,
-  Briefcase,
-  TrendingUp,
-  Award,
-  CheckCircle,
   ArrowRight,
-  Building2,
-  GraduationCap,
   Handshake,
 } from 'lucide-react';
 
@@ -84,7 +78,7 @@ export default function PartnerPage() {
             {/* Employer Partners */}
             <div className="bg-white rounded-3xl p-8 shadow-lg border-2 border-blue-100 hover:shadow-2xl transition">
               <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-6">
-                <Briefcase className="w-8 h-8 text-white" />
+                <Image src="/images/icons/users.png" alt="Employer Partners" width={32} height={32} />
               </div>
               <h3 className="text-2xl font-bold text-black mb-4">
                 Employer Partners
@@ -95,25 +89,25 @@ export default function PartnerPage() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Pre-screened, trained candidates
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Apprenticeship program hosting
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Tax credits (WOTC) available
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Ongoing support and coordination
                   </span>
@@ -131,7 +125,7 @@ export default function PartnerPage() {
             {/* Training Providers */}
             <div className="bg-white rounded-3xl p-8 shadow-lg border-2 border-green-100 hover:shadow-2xl transition">
               <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-6">
-                <GraduationCap className="w-8 h-8 text-white" />
+                <Image src="/images/icons/award.png" alt="Icon" width={32} height={32} className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-black mb-4">
                 Training Providers
@@ -142,25 +136,25 @@ export default function PartnerPage() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Access to funded students
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Platform integration support
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Marketing and enrollment support
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Revenue sharing opportunities
                   </span>
@@ -178,7 +172,7 @@ export default function PartnerPage() {
             {/* Community Organizations */}
             <div className="bg-white rounded-3xl p-8 shadow-lg border-2 border-purple-100 hover:shadow-2xl transition">
               <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-6">
-                <Building2 className="w-8 h-8 text-white" />
+                <Image src="/images/icons/shield.png" alt="Icon" width={32} height={32} className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-black mb-4">
                 Community Organizations
@@ -189,25 +183,25 @@ export default function PartnerPage() {
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Referral partnerships
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Coordinated support services
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Shared impact measurement
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                  <Image src="/images/icons/check-circle.png" alt="Check" width={20} height={20} className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-black">
                     Joint funding opportunities
                   </span>

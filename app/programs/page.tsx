@@ -5,24 +5,7 @@ import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import ModernFeatures from '@/components/landing/ModernFeatures';
 
 import {
-  GraduationCap,
-  Search,
-  GitCompare,
-  Briefcase,
-  BookOpen,
-  Zap,
-  TrendingUp,
-  Building2,
-  Award,
-  FileCheck,
-  CheckCircle,
-  MapPin,
-  Calendar,
-  CalendarDays,
   ArrowRight,
-  DollarSign,
-  Clock,
-  Users,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -41,42 +24,36 @@ export default function ProgramsBioSitePage() {
       title: 'Healthcare',
       description: 'CNA, Medical Assistant, Home Health Aide',
       href: '/programs/healthcare',
-      icon: GraduationCap,
       image: '/hero-images/healthcare-category.jpg',
     },
     {
       title: 'Skilled Trades',
       description: 'HVAC, Electrical, Plumbing, Construction',
       href: '/programs/skilled-trades',
-      icon: Briefcase,
       image: '/hero-images/skilled-trades-category.jpg',
     },
     {
       title: 'Barber & Beauty',
       description: 'Barbering, Cosmetology, Esthetics',
       href: '/programs/barber-apprenticeship',
-      icon: Award,
       image: '/hero-images/barber-beauty-category.jpg',
     },
     {
       title: 'Technology',
       description: 'IT Support, Cybersecurity, Web Development',
       href: '/programs/technology',
-      icon: BookOpen,
       image: '/hero-images/technology-category.jpg',
     },
     {
       title: 'Business',
       description: 'Accounting, Management, Entrepreneurship',
       href: '/programs/business',
-      icon: Building2,
       image: '/hero-images/business-category.jpg',
     },
     {
       title: 'CDL & Transportation',
       description: 'Commercial Driving License training',
       href: '/programs/cdl-transportation',
-      icon: TrendingUp,
       image: '/hero-images/cdl-transportation-category.jpg',
     },
   ];
@@ -102,116 +79,72 @@ export default function ProgramsBioSitePage() {
         imageOnRight={true}
       />
 
-      {/* Features Section */}
-      <ModernFeatures
-        title="Why Choose Our Programs"
-        subtitle="Real training, real credentials, real careers"
-        features={[
-          {
-            icon: DollarSign,
-            title: "100% Free Training",
-            description: "No tuition costs with WIOA, WRG, or DOL funding. Training is completely free for eligible students.",
-            color: "green"
-          },
-          {
-            icon: Award,
-            title: "Industry Credentials",
-            description: "Earn certifications and licenses that employers recognize and value in the job market.",
-            color: "blue"
-          },
-          {
-            icon: Briefcase,
-            title: "Job Placement Support",
-            description: "Connect with employers hiring our graduates. We help you find work after program completion.",
-            color: "orange"
-          },
-          {
-            icon: Clock,
-            title: "Fast-Track Programs",
-            description: "Complete programs in weeks or months, not years. Get certified and start earning sooner.",
-            color: "purple"
-          },
-          {
-            icon: Users,
-            title: "Career Support Services",
-            description: "Resume building, interview prep, job search assistance, and ongoing career counseling.",
-            color: "teal"
-          },
-          {
-            icon: CheckCircle,
-            title: "Multiple Start Dates",
-            description: "Rolling enrollment throughout the year. Apply now to secure your spot in the next cohort.",
-            color: "red"
-          }
-        ]}
-        columns={3}
-      />
-
-      {/* Programs Grid - Keep existing */}
-      <main id="main-content">
-      <section id="programs" className="relative w-full -mt-[72px]">
-        <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
-          <img
-            src="/images/efh/hero/hero-main-clean.jpg"
-            alt="Career training programs overview - students in classroom"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+      {/* Features Section with Images */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-black mb-4">Why Choose Our Programs</h2>
+            <p className="text-xl text-black">Real training, real credentials, real careers</p>
+          </div>
           
-          {/* Overlay Content */}
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-full mb-6">
-                <GraduationCap className="w-5 h-5" />
-                <span className="text-sm font-bold uppercase tracking-wide">
-                  Browse All Programs
-                </span>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl p-8 shadow-lg">
+              <div className="w-16 h-16 mb-4">
+                <Image src="/images/icons/dollar.png" alt="Free Training" width={64} height={64} />
               </div>
-
-              {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6">
-                Free Career Training Programs
-              </h1>
-
-              {/* Subheadline */}
-              <p className="text-xl sm:text-2xl md:text-3xl mb-4">
-                100% Free • No Tuition • No Debt
-              </p>
-
-              {/* Body */}
-              <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
-                Browse our complete catalog of training programs in healthcare,
-                skilled trades, and business
-              </p>
-
-              {/* Buttons */}
-              <div className="flex flex-col gap-4 sm:flex-row justify-center">
-                <Link
-                  href="/apply"
-                  className="inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-bold bg-white text-orange-600 hover:bg-gray-100 transition shadow-lg"
-                >
-                  Apply Now
-                </Link>
-                <Link
-                  href="#programs"
-                  className="inline-flex items-center justify-center rounded-xl px-8 py-4 text-lg font-bold border-2 border-white text-white hover:bg-white/10 transition"
-                >
-                  Browse Programs
-                </Link>
+              <h3 className="text-xl font-bold text-black mb-3">100% Free Training</h3>
+              <p className="text-black">No tuition costs with WIOA, WRG, or DOL funding. Training is completely free for eligible students.</p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-8 shadow-lg">
+              <div className="w-16 h-16 mb-4">
+                <Image src="/images/icons/award.png" alt="Industry Credentials" width={64} height={64} />
               </div>
+              <h3 className="text-xl font-bold text-black mb-3">Industry Credentials</h3>
+              <p className="text-black">Earn certifications and licenses that employers recognize and value in the job market.</p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-8 shadow-lg">
+              <div className="w-16 h-16 mb-4">
+                <Image src="/images/icons/users.png" alt="Job Placement" width={64} height={64} />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Job Placement Support</h3>
+              <p className="text-black">Connect with employers hiring our graduates. We help you find work after program completion.</p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-8 shadow-lg">
+              <div className="w-16 h-16 mb-4">
+                <Image src="/images/icons/clock.png" alt="Fast Track" width={64} height={64} />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Fast-Track Programs</h3>
+              <p className="text-black">Complete programs in weeks or months, not years. Get certified and start earning sooner.</p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-8 shadow-lg">
+              <div className="w-16 h-16 mb-4">
+                <Image src="/images/icons/check-circle.png" alt="Career Support" width={64} height={64} />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Career Support Services</h3>
+              <p className="text-black">Resume building, interview prep, job search assistance, and ongoing career counseling.</p>
+            </div>
+            
+            <div className="bg-white rounded-xl p-8 shadow-lg">
+              <div className="w-16 h-16 mb-4">
+                <Image src="/images/icons/trending-up.png" alt="Multiple Start Dates" width={64} height={64} />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Multiple Start Dates</h3>
+              <p className="text-black">Rolling enrollment throughout the year. Apply now to secure your spot in the next cohort.</p>
             </div>
           </div>
         </div>
       </section>
 
-
-
-      {/* Program Cards Grid - Uniform Layout */}
+      {/* Program Cards Grid */}
+      <main id="main-content">
       <section className="pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {links.map((link) => {
-              const Icon = link.icon;
               return (
                 <Link
                   key={link.href}
