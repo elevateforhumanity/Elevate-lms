@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { BookOpen, Briefcase, Home, Target } from 'lucide-react';
+import Image from 'next/image';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import {
   getActivePositions,
   formatSalaryRange,
@@ -31,67 +32,57 @@ export default async function CareersPage() {
 
   const benefits = [
     {
-      icon: '<Briefcase className="w-5 h-5 inline-block" />',
+      image: '/images/icons/dollar.png',
       title: 'Competitive Salary',
-      description: 'Fair compensation with performance bonuses',
+      description: 'Fair compensation with performance bonuses and annual raises based on performance',
     },
     {
-      icon: '🏥',
+      image: '/images/icons/shield.png',
       title: 'Health Benefits',
-      description: 'Comprehensive health, dental, and vision coverage',
+      description: 'Comprehensive health, dental, and vision coverage for you and your family',
     },
     {
-      icon: '🏖️',
+      image: '/images/icons/clock.png',
       title: 'Paid Time Off',
-      description: 'Generous PTO and holiday schedule',
+      description: 'Generous PTO and holiday schedule with work-life balance',
     },
     {
-      icon: '<BookOpen className="w-5 h-5 inline-block" />',
+      image: '/images/icons/book.png',
       title: 'Professional Development',
-      description: 'Continuous learning and growth opportunities',
+      description: 'Continuous learning and growth opportunities with training stipends',
     },
     {
-      icon: '<Home className="w-5 h-5 inline-block" />',
+      image: '/images/icons/users.png',
       title: 'Remote Work',
-      description: 'Flexible work arrangements',
+      description: 'Flexible work arrangements with hybrid and fully remote options',
     },
     {
-      icon: '<Target className="w-5 h-5 inline-block" />',
+      image: '/images/icons/award.png',
       title: 'Mission-Driven',
-      description: "Make a real impact on people's lives",
+      description: "Make a real impact on people's lives through workforce development",
     },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-brand-orange-600 text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Join Our Mission
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90">
-              Help us transform lives through free career training and workforce
-              development
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="#positions"
-                className="bg-white text-brand-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition"
-              >
-                View Open Positions
-              </Link>
-              <Link
-                href="#culture"
-                className="bg-brand-orange-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-orange-800 transition border-2 border-white"
-              >
-                Learn About Our Culture
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Banner */}
+      <ModernLandingHero
+        badge="💼 Join Our Team"
+        headline="Transform Lives Through"
+        accentText="Workforce Development"
+        subheadline="Help Us Provide Free Career Training to Thousands"
+        description="At Elevate For Humanity, we believe everyone deserves access to quality career training and the opportunity to build a better future. Join our mission-driven team and make a real impact on people's lives through workforce development. We've trained 10,000+ students, partnered with 500+ employers, and achieved an 85% job placement rate."
+        imageSrc="/images/business/team-1.jpg"
+        imageAlt="Join Our Team"
+        primaryCTA={{ text: "View Open Positions", href: "#positions" }}
+        secondaryCTA={{ text: "Learn About Our Culture", href: "#culture" }}
+        features={[
+          "10,000+ students trained • 85% job placement rate",
+          "500+ employer partners • Mission-driven work",
+          "Competitive benefits • Remote work options"
+        ]}
+        imageOnRight={true}
+      />
 
       {/* Mission Section */}
       <section className="py-16">
@@ -140,13 +131,20 @@ export default async function CareersPage() {
               {benefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className="text-center p-6 rounded-lg border border-gray-200 hover:border-blue-500 hover:shadow-lg transition"
+                  className="bg-white text-center p-8 rounded-lg border-2 border-gray-200 hover:border-blue-500 hover:shadow-lg transition"
                 >
-                  <div className="text-4xl mb-4">{benefit.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">
+                  <div className="w-16 h-16 mx-auto mb-4">
+                    <Image 
+                      src={benefit.image} 
+                      alt={benefit.title} 
+                      width={64} 
+                      height={64}
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-black">
                     {benefit.title}
                   </h3>
-                  <p className="text-black">{benefit.description}</p>
+                  <p className="text-black leading-relaxed">{benefit.description}</p>
                 </div>
               ))}
             </div>
