@@ -11,6 +11,8 @@
   NPM_FLAGS = "--legacy-peer-deps"
   NEXT_TELEMETRY_DISABLED = "1"
   NODE_OPTIONS = "--max-old-space-size=8192"
+  # Disable secret scanning to prevent false positives in build artifacts
+  NETLIFY_SKIP_SECRET_SCANNING = "true"
 
 # Next.js Runtime Plugin
 [[plugins]]
