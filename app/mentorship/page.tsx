@@ -1,14 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import {
-  Users,
-  Lightbulb,
-  Target,
-  TrendingUp,
-  MessageCircle,
-  Award,
-  Calendar,
   ArrowRight,
 } from 'lucide-react';
 
@@ -27,28 +21,24 @@ export const revalidate = 3600; // 1 hour
 export default function MentorshipPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="bg-gradient-to-r from-indigo-600 to-purple-600 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Users className="h-20 w-20 text-white mx-auto mb-6" />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
-              Mentorship Program
-            </h1>
-            <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto mb-8">
-              Connect with experienced industry professionals who will guide you
-              through your career journey
-            </p>
-            <Link
-              href="/apply"
-              className="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-xl text-lg font-bold hover:bg-gray-100 transition-colors"
-            >
-              Join the Program
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Hero Banner */}
+      <ModernLandingHero
+        badge="🤝 Professional Mentorship"
+        headline="Connect With Industry"
+        accentText="Mentors"
+        subheadline="Get Guidance From Experienced Professionals"
+        description="Our mentorship program connects students and graduates with experienced professionals in their field. Mentors provide one-on-one guidance, share industry insights, help you set career goals, and navigate your professional journey. Whether you're just starting out or looking to advance, our mentors are here to support your success."
+        imageSrc="/images/business/team-2.jpg"
+        imageAlt="Mentorship Program"
+        primaryCTA={{ text: "Join the Program", href: "/apply" }}
+        secondaryCTA={{ text: "Learn More", href: "#benefits" }}
+        features={[
+          "One-on-one guidance from industry professionals",
+          "Career planning and goal setting support",
+          "Networking opportunities and job connections"
+        ]}
+        imageOnRight={true}
+      />
 
       {/* What is Mentorship */}
       <section className="py-20">

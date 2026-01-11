@@ -171,21 +171,21 @@ export default function SiteHeader() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-3 shrink-0 group cursor-pointer"
+            className="flex items-center gap-3 shrink-0 group cursor-pointer z-50"
             aria-label="Go to homepage"
           >
-            <div className="relative h-10 w-10 sm:h-12 sm:w-12 shrink-0">
+            <div className="relative h-12 w-12 sm:h-14 sm:w-14 shrink-0">
               <Image
-                src="/logo.svg"
-                alt="Elevate for Humanity"
-                width={48}
-                height={48}
-                loading="lazy"
-                className="h-full w-full object-contain transition-opacity hover:opacity-80"
+                src="/logo.png"
+                alt="Elevate for Humanity Logo"
+                width={56}
+                height={56}
+                priority
+                className="h-full w-full object-contain transition-transform hover:scale-105"
                 style={{ maxWidth: '100%', height: 'auto' }}
               />
             </div>
-            <span className="hidden sm:block text-lg font-bold text-black hover:text-orange-600 transition-colors">
+            <span className="text-lg sm:text-xl font-bold text-black hover:text-orange-600 transition-colors">
               Elevate for Humanity
             </span>
           </Link>

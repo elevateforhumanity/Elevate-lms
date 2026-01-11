@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-
+import Image from 'next/image';
 import Link from 'next/link';
 import { Home, Search } from 'lucide-react';
 import { useEffect } from 'react';
@@ -15,15 +15,26 @@ export default function NotFound() {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center   ">
-      <div className="text-center px-4 max-w-2xl">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="text-center px-4 max-w-3xl">
         <div className="mb-8">
+          <div className="w-32 h-32 mx-auto mb-6">
+            <Image 
+              src="/images/icons/shield.png" 
+              alt="404" 
+              width={128} 
+              height={128}
+            />
+          </div>
           <h1 className="text-9xl font-bold text-brand-orange-600 mb-4">404</h1>
-          <h2 className="text-4xl font-bold text-black mb-4 text-2xl md:text-3xl lg:text-4xl">
+          <h2 className="text-4xl font-bold text-black mb-4">
             Page Not Found
           </h2>
-          <p className="text-xl text-black mb-8">
+          <p className="text-xl text-black mb-4">
             The page you're looking for doesn't exist or has been moved.
+          </p>
+          <p className="text-lg text-black mb-8">
+            Don't worry! You can explore our programs, check your WIOA eligibility, or contact us for help finding what you need.
           </p>
         </div>
 
