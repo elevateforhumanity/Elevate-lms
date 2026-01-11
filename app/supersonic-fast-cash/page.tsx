@@ -79,18 +79,18 @@ export default function SupersonicFastCashPage() {
 
       {/* Modern Hero with Urgency */}
       <ModernLandingHero
-        badge="🚀 Same-Day Refund Advance Available - Up to $6,000"
-        headline="Your Refund in"
-        accentText="24 Hours"
+        badge="🚀 Same-Day Refund Advance Available"
+        headline="Your Refund"
+        accentText="Fast"
         subheadline="Professional Tax Prep + Instant Refund Advance"
-        description="Don't wait 21 days for the IRS. Get up to $6,000 of your refund TODAY. We filed 2,847 returns last season. Average refund: $4,215. Average advance: $3,200. Walk in with documents, walk out with cash."
+        description="Don't wait weeks for the IRS. Get your refund advance TODAY. We filed 2,847 returns last season. Walk in with documents, walk out with your advance."
         imageSrc="/images/business/tax-prep-certification.jpg"
         imageAlt="Fast Tax Refunds"
-        primaryCTA={{ text: "Get Cash Today - Book Now", href: "/supersonic-fast-cash/book-appointment" }}
-        secondaryCTA={{ text: "Calculate My Refund", href: "/supersonic-fast-cash/calculator" }}
+        primaryCTA={{ text: "Book Appointment", href: "/supersonic-fast-cash/book-appointment" }}
+        secondaryCTA={{ text: "Learn More", href: "/supersonic-fast-cash/how-it-works" }}
         features={[
-          "2,847 returns filed in 2025 • $12M in refunds processed",
-          "Refund advance up to $6,000 • Get cash in 24 hours",
+          "2,847 returns filed in 2025 • Millions in refunds processed",
+          "Refund advance available • Get cash fast",
           "Open 7 days/week • Walk-ins welcome • Same-day service"
         ]}
         imageOnRight={true}
@@ -103,14 +103,14 @@ export default function SupersonicFastCashPage() {
         features={[
           {
             icon: Zap,
-            title: "24-Hour Cash Advance",
-            description: "Get up to $6,000 TODAY. No waiting for IRS. Simple fee structure. Bad credit OK. Most approvals in 30 minutes.",
+            title: "Fast Cash Advance",
+            description: "Get your refund advance TODAY. No waiting for IRS. Simple process. Bad credit OK. Most approvals in 30 minutes.",
             color: "orange"
           },
           {
             icon: DollarSign,
-            title: "$4,215 Average Refund",
-            description: "We find EVERY deduction. EITC specialists. Business expense experts. Last year's average: $4,215. Yours could be more.",
+            title: "Maximum Refund",
+            description: "We find EVERY deduction. EITC specialists. Business expense experts. We maximize your refund every time.",
             color: "green"
           },
           {
@@ -134,7 +134,7 @@ export default function SupersonicFastCashPage() {
           {
             icon: TrendingUp,
             title: "Maximum Refund Guarantee",
-            description: "If you find a bigger refund elsewhere, we'll match it + $100. We're that confident. Accuracy guaranteed.",
+            description: "If you find a bigger refund elsewhere, we'll match it. We're that confident. Accuracy guaranteed.",
             color: "red"
           }
         ]}
@@ -145,13 +145,13 @@ export default function SupersonicFastCashPage() {
       <section className="bg-gradient-to-r from-orange-500 to-red-500 py-16">
         <div className="max-w-4xl mx-auto px-6 text-center text-white">
           <div className="text-sm font-bold uppercase tracking-wider mb-4">
-            ⚡ LIMITED TIME OFFER
+            ⚡ BOOK YOUR APPOINTMENT
           </div>
           <h2 className="text-3xl md:text-4xl font-black mb-4">
-            File This Week, Get $50 Off
+            File Your Taxes Today
           </h2>
           <p className="text-xl mb-8 text-white/90">
-            Book by January 31st and save $50 on tax preparation. 
+            Professional tax preparation with fast refund advance. 
             Limited appointments available this week.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -159,7 +159,7 @@ export default function SupersonicFastCashPage() {
               href="/supersonic-fast-cash/book-appointment"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-orange-600 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors"
             >
-              Book Now - Save $75
+              Book Appointment Now
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
             <Link

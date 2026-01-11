@@ -4,12 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
   Send,
-  CheckCircle,
   ArrowRight,
 } from 'lucide-react';
 
@@ -49,7 +44,7 @@ export default function ContactPage() {
 
       {/* Hero Content */}
       <section className="bg-gray-50">
-        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
           <div className="flex flex-wrap items-center gap-2 mb-3">
             <span className="px-3 py-1 bg-green-500 text-white text-sm font-medium rounded-full">
               24-Hour Response
@@ -74,7 +69,7 @@ export default function ContactPage() {
 
       {/* Contact Methods Grid */}
       <section className="py-16 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-black mb-4">
               How to Reach Us
@@ -90,7 +85,7 @@ export default function ContactPage() {
               className="group bg-white rounded-lg p-8 border-2 border-gray-200 hover:border-blue-500 hover:shadow-xl transition-all"
             >
               <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <Phone className="w-8 h-8 text-blue-600" />
+                <Image src="/images/icons/users.png" alt="Phone" width={32} height={32} />
               </div>
               <h3 className="text-xl font-bold text-black mb-2">
                 Call Us
@@ -106,7 +101,7 @@ export default function ContactPage() {
               className="group bg-white rounded-lg p-8 border-2 border-gray-200 hover:border-green-500 hover:shadow-xl transition-all"
             >
               <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <Mail className="w-8 h-8 text-green-600" />
+                <Image src="/images/icons/book.png" alt="Email" width={32} height={32} className="w-8 h-8 text-green-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-2">
                 Email Us
@@ -119,7 +114,7 @@ export default function ContactPage() {
 
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
               <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <MapPin className="w-8 h-8 text-purple-600" />
+                <Image src="/images/icons/shield.png" alt="Location" width={32} height={32} className="w-8 h-8 text-purple-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-2">
                 Visit Us
