@@ -89,11 +89,7 @@ const resources = {
       file: 'enrollment-application.pdf',
       size: '500 KB',
     },
-    {
-      title: 'Financial Aid Application',
-      file: 'financial-aid-application.pdf',
-      size: '600 KB',
-    },
+
     {
       title: 'Change of Information Form',
       file: 'change-of-information.pdf',

@@ -25,15 +25,7 @@ export default function FundingPage() {
       color: 'green',
       category: 'Eligibility',
     },
-    {
-      title: 'Financial Aid Info',
-      description:
-        'Learn about federal workforce funding programs. We do not offer traditional financial aid or student loans.',
-      href: '/financial-aid',
-      icon: FileText,
-      color: 'blue',
-      category: 'Information',
-    },
+
     {
       title: 'Grants',
       description:
@@ -165,10 +157,40 @@ export default function FundingPage() {
           </p>
 
           {/* Description */}
-          <p className="text-xl text-green-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-green-100 mb-6 max-w-2xl mx-auto leading-relaxed">
             All training is funded through federal workforce programs like WIOA,
             SNAP E&T, and JRI. You pay nothing. We handle all the paperwork.
           </p>
+          
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 max-w-3xl mx-auto mb-10">
+            <h3 className="text-2xl font-bold mb-4">How It Works</h3>
+            <div className="space-y-3 text-left text-green-50">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" />
+                <div>
+                  <strong className="text-white">Step 1:</strong> Visit Indiana Career Connect and create your free profile
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" />
+                <div>
+                  <strong className="text-white">Step 2:</strong> Schedule an appointment with a WorkOne career advisor
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" />
+                <div>
+                  <strong className="text-white">Step 3:</strong> Your advisor verifies eligibility and approves funding
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 flex-shrink-0 mt-1" />
+                <div>
+                  <strong className="text-white">Step 4:</strong> Bring your training voucher to us and start your program
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
@@ -184,6 +206,77 @@ export default function FundingPage() {
               <div className="text-4xl font-black mb-2">5,000+</div>
               <div className="text-sm text-green-100">Students Served</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Who Qualifies Section */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-black text-black mb-8 text-center">
+            Who Qualifies for Free Training?
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-green-50 border-2 border-green-200 rounded-xl p-8">
+              <h3 className="text-2xl font-bold text-black mb-4">WIOA Eligibility</h3>
+              <p className="text-black mb-4">Most adults qualify if you meet ONE of these:</p>
+              <ul className="space-y-2 text-black">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <span>Low income (based on family size)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <span>Receiving public assistance (SNAP, TANF, SSI)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <span>Veteran or military spouse</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <span>Displaced worker or laid off</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <span>Individual with a disability</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-8">
+              <h3 className="text-2xl font-bold text-black mb-4">Other Funding Options</h3>
+              <div className="space-y-4 text-black">
+                <div>
+                  <strong className="text-blue-900">JRI Funding:</strong> For individuals with criminal justice involvement
+                </div>
+                <div>
+                  <strong className="text-blue-900">SNAP E&T:</strong> For SNAP (food stamps) recipients
+                </div>
+                <div>
+                  <strong className="text-blue-900">Workforce Ready Grant:</strong> For high-demand programs like HVAC
+                </div>
+                <div>
+                  <strong className="text-blue-900">Employer Sponsorship:</strong> Some employers pay for employee training
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-orange-50 border-2 border-orange-300 rounded-xl p-8 text-center">
+            <p className="text-xl text-black mb-4">
+              <strong>Not sure if you qualify?</strong> Most people do! The WorkOne advisor will help you determine eligibility during your appointment.
+            </p>
+            <Link
+              href="https://www.indianacareerconnect.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-orange-700 transition-all"
+            >
+              <span>Check Eligibility on Indiana Career Connect</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
