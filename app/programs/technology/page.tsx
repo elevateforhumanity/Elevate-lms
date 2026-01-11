@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = 'force-static';
+export const revalidate = 3600; // 1 hour
+
 export default function TechnologyPage() {
   return (
     <div className="min-h-screen bg-gray-50">

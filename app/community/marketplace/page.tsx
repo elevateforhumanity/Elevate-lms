@@ -12,21 +12,29 @@ export const metadata = {
   },
 };
 
-export default async function CommunityMarketplacePage() {
-  const supabase = await createClient();
+export const dynamic = 'force-dynamic';
 
-  // Get published creator courses
-  const { data: courses } = await supabase
-    .from('creator_courses')
-    .select(
+export default async function CommunityMarketplacePage() {
+  let courses: any[] = [];
+  
+  try {
+    const supabase = await createClient();
+    const result = await supabase
+      .from('creator_courses')
+      .select(
+        `
+        *,
+        creator_profiles!inner(display_name, bio, verified)
       `
-      *,
-      creator_profiles!inner(display_name, bio, verified)
-    `
-    )
-    .eq('status', 'published')
-    .order('total_enrollments', { ascending: false })
-    .limit(12);
+      )
+      .eq('status', 'published')
+      .order('total_enrollments', { ascending: false })
+      .limit(12);
+    
+    courses = result.data || [];
+  } catch (error) {
+    console.error('Failed to fetch marketplace courses:', error);
+  }
 
   // Get active shop products
   const { data: products } = await supabase

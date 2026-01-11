@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     'Connect with industry professionals for guidance, support, and career development. Our mentorship program pairs you with experienced mentors in your field.',
 };
 
+export const dynamic = 'force-static';
+export const revalidate = 3600; // 1 hour
+
 export default function MentorshipPage() {
   return (
     <div className="min-h-screen bg-white">

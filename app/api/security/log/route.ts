@@ -33,10 +33,15 @@ export async function POST(request: NextRequest) {
     
     // Rate limit check
     if (!checkRateLimit(ip)) {
-      return NextResponse.json({ success: false, error: 'Rate limited' }, { status: 429 });
+      return NextResponse.json({ success: true }, { status: 200 }); // Fail-open
     }
     
     const body = await parseBody<Record<string, unknown>>(request);
+    
+    // Validate required fields
+    if (!body.type || !body.timestamp) {
+      return NextResponse.json({ success: true }, { status: 200 }); // Fail-open
+    }
     
     // Fast response - don't wait for DB
     const responsePromise = NextResponse.json({ success: true });
@@ -50,7 +55,7 @@ export async function POST(request: NextRequest) {
           timestamp: body.timestamp,
           url: body.url,
           user_agent: body.userAgent,
-          ip_address: request.ip || request.headers.get('x-forwarded-for'),
+          ip_address: ip,
           data: body.data,
           severity: getSeverity(body.type as string),
         });
@@ -60,13 +65,16 @@ export async function POST(request: NextRequest) {
           sendSecurityAlert(body).catch(() => {});
         }
       } catch (error) {
-        // Silent fail
+        // Silent fail - logging should never break the app
+        console.error('[Security Log] Background error:', error);
       }
     });
 
     return responsePromise;
   } catch (error: unknown) {
-    return NextResponse.json({ success: false }, { status: 500 });
+    // Fail-open - always return 200 so client doesn't retry
+    console.error('[Security Log] Request error:', error);
+    return NextResponse.json({ success: true }, { status: 200 });
   }
 }
 
@@ -89,23 +97,25 @@ function isCriticalEvent(eventType: string): boolean {
   );
 }
 
-async function sendSecurityAlert(data: unknown) {
+async function sendSecurityAlert(data: Record<string, unknown>) {
   // Send email/SMS/Slack notification for critical events
-  // Implementation depends on your notification service
-  logger.warn('[CRITICAL SECURITY EVENT]', event);
+  console.warn('[CRITICAL SECURITY EVENT]', data);
 
-  // Example: Send to admin email
+  // Example: Send to admin email (disabled for now)
+  // Uncomment when notification service is configured
+  /*
   try {
     await fetch('/api/notifications/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         type: 'security_alert',
-        subject: `Security Alert: ${event.type}`,
-        message: `Critical security event detected:\n\nType: ${event.type}\nURL: ${event.url}\nTime: ${event.timestamp}\n\nData: ${JSON.stringify(event.data, null, 2)}`,
+        subject: `Security Alert: ${data.type}`,
+        message: `Critical security event detected:\n\nType: ${data.type}\nURL: ${data.url}\nTime: ${data.timestamp}\n\nData: ${JSON.stringify(data.data, null, 2)}`,
       }),
     });
   } catch (error: unknown) {
-    // Error: $1
+    console.error('[Security Alert] Failed to send:', error);
   }
+  */
 }

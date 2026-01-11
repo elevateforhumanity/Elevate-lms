@@ -109,7 +109,37 @@ public/branding/brand.css (empty)
 - Overlays must close on route change to prevent stuck states
 - AbortController with timeout prevents hanging fetch calls
 
+## Additional Fixes (2026-01-11 18:00 UTC)
+
+### Security Log Loop Fix (Commit: 680e199b)
+- Added 60s cooldown per event type to prevent spam
+- Changed DevTools detection from `setInterval(1s)` to resize event
+- Added rate limiting to `/api/security/log` (10 req/min per IP)
+- Made `/cookies` page static with 24h revalidation
+
+### ScraperDetection Loop Fix (Commit: e0154dbb)
+- Removed `setInterval(detectDevTools, 1000)` that was firing every second
+- Changed to resize event listener (only fires when window resizes)
+- Added guard to only alert once per session
+- Prevents repeated `/api/alert-scraper` calls
+
+### Root Causes Eliminated
+1. **SecurityMonitor**: `setInterval(check, 1000)` → resize event
+2. **ScraperDetection**: `setInterval(detectDevTools, 1000)` → resize event
+3. Both were calling their respective APIs every second, creating 499 spam
+
+### Results
+- Eliminated 499 POST /api/security/log spam (was firing every 1s)
+- Eliminated 499 POST /api/alert-scraper spam (was firing every 1s)
+- All hero images verified to exist (hero-main-clean.jpg)
+- All CSS files created in public/ (no more 404s)
+- Rate limiting prevents abuse (10 req/min per IP)
+- Cooldown prevents duplicate events (60s per event type)
+
 ## Prevention
+- Never use `setInterval` for security/analytics logging
+- Use event-based logging (resize, route change, user action)
+- Always add cooldowns/throttling to prevent spam
 - Always verify CSS files exist before referencing them
 - Use Next.js CSS import system instead of manual `<link>` tags
 - Make all logging/analytics non-blocking
