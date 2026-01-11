@@ -1541,32 +1541,8 @@ footer a:hover {
 
 /* ============================================================================
    FIXED HEADER / NAVBAR STYLING
-   Dark navy header with blue border
+   Removed - Let component styles control header appearance
    ============================================================================ */
-
-header, .navbar, .site-header {
-  position: fixed !important;
-  top: 0 !important;
-  width: 100% !important;
-  background-color: #101820 !important; /* dark navy */
-  z-index: 1000 !important;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
-  border-bottom: 2px solid #004a99 !important; /* blue border */
-}
-
-/* Scrolled state - add shadow */
-header.scrolled, .navbar.scrolled, .site-header.scrolled {
-  background-color: #101820 !important; /* keep dark navy */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-  border-bottom: 2px solid #004a99 !important;
-}
-
-/* Header links styling */
-header a, .navbar a, .site-header a {
-  color: #ffffff !important;
-  font-weight: 500 !important;
-  transition: color 0.2s ease !important;
-}
 
 header a:hover, .navbar a:hover, .site-header a:hover {
   color: #80bfff !important; /* light blue highlight on hover */

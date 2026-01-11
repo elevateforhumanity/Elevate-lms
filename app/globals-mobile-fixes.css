@@ -67,9 +67,10 @@
     background-color: #ffffff !important;
   }
 
-  [class*='bg-black/'] {
+  /* Removed: Don't force black overlay opacity - let components control it */
+  /* [class*='bg-black/'] {
     background-color: rgba(0, 0, 0, 0.8) !important;
-  }
+  } */
 
   [class*='bg-gray/'] {
     background-color: #f3f4f6 !important;
