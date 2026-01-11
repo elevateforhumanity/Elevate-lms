@@ -138,7 +138,7 @@ export default function PartnerAttendancePage() {
           Load Students
         </button>
         <button
-          className="border rounded-xl px-4 py-2 bg-black text-white"
+          className="border rounded-xl px-4 py-2 bg-brand-blue-600 text-white hover:bg-brand-blue-700 transition-colors"
           onClick={save}
         >
           Save

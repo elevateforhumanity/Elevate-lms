@@ -143,7 +143,7 @@ export default function AdminNextStepsPage() {
         <div className="flex items-end gap-2">
           <button
             onClick={load}
-            className="w-full rounded-xl bg-black px-4 py-2 text-sm font-semibold text-white hover:opacity-95"
+            className="w-full rounded-xl bg-brand-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-blue-700 transition-colors"
           >
             Refresh
           </button>
@@ -457,7 +457,7 @@ function QuickEdit({
                 staff_notes: notes || null,
               })
             }
-            className="rounded-xl bg-black px-4 py-2 text-sm font-semibold text-white hover:opacity-95 disabled:opacity-60"
+            className="rounded-xl bg-brand-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-blue-700 transition-colors disabled:opacity-60"
           >
             {saving ? 'Saving…' : 'Save'}
           </button>

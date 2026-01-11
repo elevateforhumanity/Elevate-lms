@@ -31,7 +31,7 @@ export default function ApplicationSuccessPage() {
           </h2>
           <ol className="space-y-3 text-gray-700">
             <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-black text-white text-sm font-semibold">
+              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-brand-blue-600 text-white text-sm font-semibold">
                 1
               </span>
               <span>
@@ -47,13 +47,13 @@ export default function ApplicationSuccessPage() {
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-black text-white text-sm font-semibold">
+              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-brand-blue-600 text-white text-sm font-semibold">
                 2
               </span>
               <span>Schedule a WorkOne appointment</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-black text-white text-sm font-semibold">
+              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-brand-blue-600 text-white text-sm font-semibold">
                 3
               </span>
               <span>
@@ -62,7 +62,7 @@ export default function ApplicationSuccessPage() {
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-black text-white text-sm font-semibold">
+              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-brand-blue-600 text-white text-sm font-semibold">
                 4
               </span>
               <span>
@@ -75,7 +75,7 @@ export default function ApplicationSuccessPage() {
         <div className="space-y-3">
           <a
             href="tel:13173143757"
-            className="block w-full rounded-xl bg-black px-6 py-3 text-center font-semibold text-white hover:bg-gray-800"
+            className="block w-full rounded-xl bg-brand-blue-600 px-6 py-3 text-center font-semibold text-white hover:bg-brand-blue-700 transition-colors"
           >
             Need help now? Call 317-314-3757
           </a>

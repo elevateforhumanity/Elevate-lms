@@ -85,7 +85,7 @@ export default function NonprofitPage() {
           <Link
             href="https://curvaturebodysculpting.store/"
             target="_blank"
-            className="inline-block bg-black text-white px-12 py-4 rounded-lg text-lg font-bold hover:bg-gray-800 transition-colors shadow-lg uppercase"
+            className="inline-block bg-brand-orange-600 text-white px-12 py-4 rounded-lg text-lg font-bold hover:bg-brand-orange-700 transition-colors shadow-lg uppercase"
           >
             SHOP NOW
           </Link>

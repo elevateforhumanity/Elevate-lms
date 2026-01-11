@@ -94,7 +94,7 @@ export default function NextStepsPage() {
 
         <div className="mt-3 h-2 w-full rounded-full bg-gray-100">
           <div
-            className="h-2 rounded-full bg-black"
+            className="h-2 rounded-full bg-brand-blue-600"
             style={{ width: `${progress.percent || 0}%` }}
           />
         </div>
