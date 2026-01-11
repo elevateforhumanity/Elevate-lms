@@ -147,23 +147,15 @@ export default function SiteHeader() {
       
       <div className="w-full h-full bg-white border-b border-gray-200 shadow-sm site-header">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4 relative">
-          {/* Logo */}
+          {/* Site Name - No Logo */}
           <Link
             href="/"
             className="flex items-center gap-3 shrink-0 group cursor-pointer"
             aria-label="Go to homepage"
           >
-            <div className="relative h-10 w-10 sm:h-12 sm:w-12 shrink-0">
-              <Image
-                src="/logo.svg"
-                alt="Elevate for Humanity"
-                width={48}
-                height={48}
-                loading="lazy"
-                className="h-full w-full object-contain transition-opacity hover:opacity-80"
-                style={{ maxWidth: '100%', height: 'auto' }}
-              />
-            </div>
+            <span className="text-lg sm:text-xl font-bold text-gray-900 hover:text-orange-600 transition-colors">
+              Elevate for Humanity
+            </span>
           </Link>
 
           {/* Desktop Nav */}

@@ -26,10 +26,10 @@ export default function PWAInstallPrompt() {
     const handler = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      // Show prompt after 30 seconds
+      // Show prompt after page loads (when logo is visible)
       setTimeout(() => {
         setShowPrompt(true);
-      }, 30000);
+      }, 2000); // 2 seconds after page load
     };
     window.addEventListener('beforeinstallprompt', handler);
     return () => {
