@@ -1,14 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  FileText,
-  DollarSign,
-  Building,
-  Calculator,
-  Shield,
-  Clock,
-  CheckCircle,
-} from 'lucide-react';
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata = {
   title: 'Tax Services | Supersonic Fast Cash',
@@ -24,7 +16,7 @@ export default function ServicesPage() {
     {
       icon: FileText,
       name: 'Individual Tax Preparation',
-      price: 'Starting at $89',
+      price: 'Contact for Pricing',
       description: 'Personal tax returns filed accurately and on time',
       features: [
         'W-2 and 1099 income',
@@ -52,7 +44,7 @@ export default function ServicesPage() {
     {
       icon: Building,
       name: 'Business Tax Returns',
-      price: 'Starting at $299',
+      price: 'Contact for Pricing',
       description: 'Complete business tax solutions for all entity types',
       features: [
         'LLC, S-Corp, C-Corp',
@@ -96,7 +88,7 @@ export default function ServicesPage() {
     {
       icon: Clock,
       name: 'Prior Year Returns',
-      price: 'Starting at $149',
+      price: 'Contact for Pricing',
       description: 'Catch up on unfiled tax returns from previous years',
       features: [
         'Any tax year',
