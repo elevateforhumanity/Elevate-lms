@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { PolicyReference } from '@/components/compliance/PolicyReference';
 import { POLICIES } from '@/lib/policies';
-
+import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -17,105 +17,102 @@ export const metadata: Metadata = {
 export default async function AiTutorPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-1.jpg"
-          alt="Ai Tutor"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+      {/* Hero Banner */}
+      <ModernLandingHero
+        badge="🤖 AI-Powered Learning"
+        headline="Your Personal AI"
+        accentText="Tutor"
+        subheadline="24/7 Learning Support Powered by Artificial Intelligence"
+        description="Get instant answers to your questions, personalized study help, and guided learning support anytime, anywhere. Our AI Tutor uses advanced language models to provide clear explanations, practice problems, and step-by-step guidance tailored to your learning style. Whether you're studying for certifications, learning new skills, or need homework help, your AI Tutor is always available."
+        imageSrc="/images/business/professional-2.jpg"
+        imageAlt="AI Tutor Learning Support"
+        primaryCTA={{ text: "Start Learning Now", href: "/apply" }}
+        secondaryCTA={{ text: "See How It Works", href: "#features" }}
+        features={[
+          "24/7 instant answers • Personalized explanations",
+          "Practice problems and quizzes • Study guides",
+          "Multi-subject support • Progress tracking"
+        ]}
+        imageOnRight={true}
+      />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Ai Tutor
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Ai Tutor and discover opportunities for career growth and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
+      {/* Features Section */}
+      <section id="features" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-black mb-4">How AI Tutor Helps You Learn</h2>
+              <p className="text-xl text-black max-w-3xl mx-auto">
+                Advanced AI technology provides personalized learning support tailored to your needs
+              </p>
+            </div>
+
             {/* Feature Grid */}
+            <div className="grid md:grid-cols-3 gap-8 mb-16">
+              <div className="bg-gray-50 rounded-xl p-8">
+                <div className="w-16 h-16 mb-4">
+                  <Image src="/images/icons/book.png" alt="Instant Answers" width={64} height={64} />
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-3">Instant Answers</h3>
+                <p className="text-black leading-relaxed">
+                  Get immediate responses to your questions on any subject. No waiting for office hours or email replies.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-8">
+                <div className="w-16 h-16 mb-4">
+                  <Image src="/images/icons/users.png" alt="Personalized Learning" width={64} height={64} />
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-3">Personalized Learning</h3>
+                <p className="text-black leading-relaxed">
+                  AI adapts to your learning style and pace, providing explanations that match your level of understanding.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-8">
+                <div className="w-16 h-16 mb-4">
+                  <Image src="/images/icons/clock.png" alt="24/7 Availability" width={64} height={64} />
+                </div>
+                <h3 className="text-2xl font-bold text-black mb-3">24/7 Availability</h3>
+                <p className="text-black leading-relaxed">
+                  Study anytime, anywhere. Your AI Tutor is always available, even at 2 AM before your exam.
+                </p>
+              </div>
+            </div>
+
+            {/* What You Can Do */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Ai Tutor
+                <h2 className="text-3xl font-bold text-black mb-6">
+                  What You Can Do With AI Tutor
                 </h2>
-                <p className="text-black mb-6">
-                  Explore Ai Tutor and discover opportunities for career growth
-                  and development.
+                <p className="text-black mb-6 text-lg">
+                  Your AI Tutor is a powerful learning companion that helps you master new skills, prepare for certifications, and succeed in your training programs.
                 </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-1" />
+                    <span className="text-black"><strong>Ask Questions:</strong> Get clear explanations on any topic in your coursework</span>
                   </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
+                  <li className="flex items-start gap-3">
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-1" />
+                    <span className="text-black"><strong>Practice Problems:</strong> Generate unlimited practice questions with step-by-step solutions</span>
                   </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
+                  <li className="flex items-start gap-3">
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-1" />
+                    <span className="text-black"><strong>Study Guides:</strong> Create custom study materials for exams and certifications</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-1" />
+                    <span className="text-black"><strong>Concept Review:</strong> Break down complex topics into easy-to-understand explanations</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-1" />
+                    <span className="text-black"><strong>Exam Prep:</strong> Prepare for certification exams with targeted practice and review</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-1" />
+                    <span className="text-black"><strong>Progress Tracking:</strong> Monitor your learning progress and identify areas for improvement</span>
                   </li>
                 </ul>
               </div>
