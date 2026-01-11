@@ -164,13 +164,7 @@ export default function SiteHeader() {
 
   return (
     <>
-      {/* Skip to main content link for accessibility */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100000] focus:bg-orange-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:font-semibold"
-      >
-        Skip to main content
-      </a>
+      {/* Skip link removed - already in layout.tsx to avoid duplicate */}
       
       <div className="w-full h-full bg-white border-b border-gray-200 shadow-sm site-header">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4 relative">

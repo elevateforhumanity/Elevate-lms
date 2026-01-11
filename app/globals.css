@@ -1256,16 +1256,7 @@ body {
   border-width: 0;
 }
 
-.sr-only:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: inherit;
-  margin: inherit;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
+/* Removed conflicting :focus styles - let Tailwind focus: classes handle it */
 
 /* ============================================================================
    MOBILE-SAFE CARD - Nuclear option for readability

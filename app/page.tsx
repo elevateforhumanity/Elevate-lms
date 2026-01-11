@@ -37,7 +37,7 @@ export default function HomePage() {
       />
 
       {/* Features with Your Icon Images */}
-      <main id="main-content">
+      {/* Removed duplicate main tag - ConditionalLayout already provides main#main-content */}
       <section className="py-8 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="text-center mb-8 md:mb-16">
@@ -202,7 +202,7 @@ export default function HomePage() {
       <Testimonials />
       <Assurance />
       <Start />
-      </main>
+      {/* Removed closing main tag - ConditionalLayout handles it */}
     </>
   );
 }
