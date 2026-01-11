@@ -78,6 +78,26 @@ export async function POST(request: NextRequest) {
       data: { publicUrl },
     } = supabase.storage.from('documents').getPublicUrl(fileName);
 
+    // Parse and validate metadata
+    let parsedMetadata = {};
+    if (metadata) {
+      try {
+        parsedMetadata = JSON.parse(metadata);
+        if (typeof parsedMetadata !== 'object' || parsedMetadata === null || Array.isArray(parsedMetadata)) {
+          return NextResponse.json(
+            { error: 'Metadata must be a valid JSON object' },
+            { status: 400 }
+          );
+        }
+      } catch (parseError) {
+        await supabase.storage.from('documents').remove([fileName]);
+        return NextResponse.json(
+          { error: 'Invalid metadata format. Must be valid JSON' },
+          { status: 400 }
+        );
+      }
+    }
+
     // Save document record to database
     const { data: document, error: dbError } = await supabase
       .from('documents')
@@ -90,7 +110,7 @@ export async function POST(request: NextRequest) {
         mime_type: file.type,
         status: 'pending',
         uploaded_by: user.id,
-        metadata: metadata ? JSON.parse(metadata) : {},
+        metadata: parsedMetadata,
       })
       .select()
       .single();
