@@ -369,7 +369,7 @@ export default function SiteHeader() {
         {mobileMenuOpen && (
           <>
             <div
-              className="lg:hidden fixed inset-0 bg-black/50 z-[9998]"
+              className="lg:hidden fixed inset-0 bg-gray-900/60 z-[9998]"
               style={{ top: 'var(--header-h)' }}
               onClick={() => setMobileMenuOpen(false)}
               aria-hidden="true"
