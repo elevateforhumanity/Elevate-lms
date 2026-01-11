@@ -159,7 +159,7 @@ export default function SiteHeader() {
                 alt="Elevate for Humanity"
                 width={48}
                 height={48}
-                priority
+                loading="lazy"
                 className="h-full w-full object-contain transition-opacity hover:opacity-80"
                 style={{ maxWidth: '100%', height: 'auto' }}
               />
