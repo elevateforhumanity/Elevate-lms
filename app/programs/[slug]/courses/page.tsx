@@ -64,7 +64,7 @@ export default function ProgramCoursesPage() {
       {/* Hero Banner */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <img
-          src="/images/efh/hero/hero-main.jpg"
+          src="/images/efh/hero/hero-main-clean.jpg"
           alt="Professional training courses and certification programs"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -173,7 +173,7 @@ export default function ProgramCoursesPage() {
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src = '/images/efh/hero/hero-main.jpg';
+                        target.src = '/images/efh/hero/hero-main-clean.jpg';
                       }}
                     />
                     <div className="absolute top-4 right-4">

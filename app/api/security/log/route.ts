@@ -1,5 +1,5 @@
 export const runtime = 'edge';
-export const maxDuration = 60;
+export const maxDuration = 10;
 
 import { NextRequest, NextResponse } from 'next/server';
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
@@ -8,31 +8,35 @@ import { createClient } from '@/lib/supabase/server';
 export async function POST(request: NextRequest) {
   try {
     const body = await parseBody<Record<string, unknown>>(request);
-    const supabase = await createClient();
+    
+    // Fast response - don't wait for DB
+    const responsePromise = NextResponse.json({ success: true });
+    
+    // Background logging (fire-and-forget)
+    Promise.resolve().then(async () => {
+      try {
+        const supabase = await createClient();
+        await supabase.from('security_logs').insert({
+          event_type: body.type,
+          timestamp: body.timestamp,
+          url: body.url,
+          user_agent: body.userAgent,
+          ip_address: request.ip || request.headers.get('x-forwarded-for'),
+          data: body.data,
+          severity: getSeverity(body.type as string),
+        });
 
-    // Log security event to database
-    const { error } = await supabase.from('security_logs').insert({
-      event_type: body.type,
-      timestamp: body.timestamp,
-      url: body.url,
-      user_agent: body.userAgent,
-      ip_address: request.ip || request.headers.get('x-forwarded-for'),
-      data: body.data,
-      severity: getSeverity(body.type),
+        // Send alerts for critical events (non-blocking)
+        if (isCriticalEvent(body.type as string)) {
+          sendSecurityAlert(body).catch(() => {});
+        }
+      } catch (error) {
+        // Silent fail
+      }
     });
 
-    if (error) {
-      // Error: $1
-    }
-
-    // Send alerts for critical events
-    if (isCriticalEvent(body.type)) {
-      await sendSecurityAlert(body);
-    }
-
-    return NextResponse.json({ success: true });
+    return responsePromise;
   } catch (error: unknown) {
-    // Error: $1
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }

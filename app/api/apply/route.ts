@@ -1,5 +1,5 @@
 export const runtime = 'nodejs';
-export const maxDuration = 60;
+export const maxDuration = 30;
 
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/server';
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
     const supabase = createAdminClient();
     
-    await supabase.from('applications').insert({
+    const { error } = await supabase.from('applications').insert({
       name: d.get('name'),
       email: d.get('email'),
       phone: d.get('phone'),
@@ -24,11 +24,17 @@ export async function POST(req: Request) {
       notes: eligible ? 'Prescreen pass' : 'Manual review',
     });
 
+    if (error) {
+      console.error('Supabase insert error:', error);
+      throw error;
+    }
+
     return NextResponse.redirect(
       new URL('/apply/confirmation', req.url),
       { status: 303 }
     );
   } catch (err: unknown) {
+    console.error('Apply route error:', err);
     return NextResponse.json(
       { error: 'Submission failed. Please call 317-314-3757.' },
       { status: 500 }

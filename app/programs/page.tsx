@@ -90,7 +90,7 @@ export default function ProgramsBioSitePage() {
         accentText="Real Credentials"
         subheadline="Healthcare • Skilled Trades • Technology • Business"
         description="100% funded career training through WIOA, WRG, and DOL programs. No tuition. No debt. Earn industry-recognized credentials and connect with employers hiring our graduates."
-        imageSrc="/images/efh/hero/hero-main.jpg"
+        imageSrc="/images/efh/hero/hero-main-clean.jpg"
         imageAlt="Career Training Programs"
         primaryCTA={{ text: "View All Programs", href: "#programs" }}
         secondaryCTA={{ text: "Check Eligibility", href: "/wioa-eligibility" }}
@@ -152,7 +152,7 @@ export default function ProgramsBioSitePage() {
       <section id="programs" className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
           <img
-            src="/images/efh/hero/hero-main.jpg"
+            src="/images/efh/hero/hero-main-clean.jpg"
             alt="Career training programs overview - students in classroom"
             className="absolute inset-0 h-full w-full object-cover"
           />

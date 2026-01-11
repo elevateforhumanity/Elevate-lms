@@ -5,7 +5,7 @@ export default function Assurance() {
     <section className="bg-gray-50 py-12 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 opacity-5">
         <Image
-          src="/clear-pathways-hero.jpg"
+          src="/clear-path-main-image.jpg"
           alt="Clear Pathways Background"
           fill
           className="object-cover"

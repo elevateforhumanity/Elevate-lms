@@ -40,20 +40,42 @@ type Entry = {
 };
 
 async function fetchJSON<T>(url: string): Promise<T> {
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(await res.text());
-  return (await res.json()) as T;
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000);
+  
+  try {
+    const res = await fetch(url, { 
+      cache: 'no-store',
+      signal: controller.signal 
+    });
+    clearTimeout(timeoutId);
+    if (!res.ok) throw new Error(await res.text());
+    return (await res.json()) as T;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    throw error;
+  }
 }
 
-async function postJSON<T>(data: unknown): Promise<T> {
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    cache: 'no-store',
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) throw new Error(await res.text());
-  return (await res.json()) as T;
+async function postJSON<T>(url: string, data: unknown): Promise<T> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000);
+  
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      cache: 'no-store',
+      body: JSON.stringify(data),
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+    if (!res.ok) throw new Error(await res.text());
+    return (await res.json()) as T;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    throw error;
+  }
 }
 
 async function actionServer(

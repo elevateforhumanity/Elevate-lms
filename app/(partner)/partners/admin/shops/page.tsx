@@ -1,11 +1,21 @@
 import { createClient } from '@/lib/supabase/server';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminShopsPage() {
-  const supabase = await createClient();
-  const { data: shops } = await supabase
-    .from('shops')
-    .select('*')
-    .order('created_at', { ascending: false });
+  let shops: any[] = [];
+  
+  try {
+    const supabase = await createClient();
+    const result = await supabase
+      .from('shops')
+      .select('*')
+      .order('created_at', { ascending: false });
+    
+    shops = result.data || [];
+  } catch (error) {
+    console.error('Failed to fetch shops:', error);
+  }
 
   return (
     <div className="rounded-2xl border p-5">
@@ -26,17 +36,25 @@ export default async function AdminShopsPage() {
             </tr>
           </thead>
           <tbody>
-            {(shops ?? []).map((s: unknown) => (
-              <tr key={s.id} className="border-b">
-                <td className="py-2">{s.name}</td>
-                <td className="py-2">{s.active ? 'Active' : 'Inactive'}</td>
-                <td className="py-2">{s.city ?? '-'}</td>
-                <td className="py-2">
-                  {new Date(s.created_at).toLocaleString()}
+            {shops.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="py-4 text-center text-gray-500">
+                  No shops found
                 </td>
-                <td className="py-2">{s.id}</td>
               </tr>
-            ))}
+            ) : (
+              shops.map((s: any) => (
+                <tr key={s.id} className="border-b">
+                  <td className="py-2">{s.name}</td>
+                  <td className="py-2">{s.active ? 'Active' : 'Inactive'}</td>
+                  <td className="py-2">{s.city ?? '-'}</td>
+                  <td className="py-2">
+                    {new Date(s.created_at).toLocaleString()}
+                  </td>
+                  <td className="py-2">{s.id}</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from 'react';
+import { usePathname } from 'next/navigation';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import {
@@ -41,6 +42,7 @@ const searchableContent = [
 export function SearchDialog() {
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState('');
+  const pathname = usePathname();
 
   const filteredResults = React.useMemo(() => {
     if (!query) return [];
@@ -48,6 +50,12 @@ export function SearchDialog() {
       item.title.toLowerCase().includes(query.toLowerCase())
     );
   }, [query]);
+
+  // Close dialog on route change
+  React.useEffect(() => {
+    setOpen(false);
+    setQuery('');
+  }, [pathname]);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {

@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import {
@@ -53,6 +54,12 @@ const programs = [
 
 export function DoceboHeader() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const pathname = usePathname();
+
+  // Close mobile menu on route change
+  React.useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   return (
     <header

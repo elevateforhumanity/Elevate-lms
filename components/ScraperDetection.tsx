@@ -122,12 +122,17 @@ export function ScraperDetection() {
   return null;
 }
 function sendAlert(data: Record<string, unknown>) {
-  // Send alert to backend
+  // Fire-and-forget with timeout
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 2000);
+  
   fetch('/api/alert-scraper', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
-    keepalive: true
-  }).catch((error) => {
-  });
+    keepalive: true,
+    signal: controller.signal
+  })
+    .then(() => clearTimeout(timeoutId))
+    .catch(() => clearTimeout(timeoutId));
 }

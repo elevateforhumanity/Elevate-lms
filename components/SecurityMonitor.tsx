@@ -178,14 +178,18 @@ function logSecurityEvent(eventType: string, data: unknown) {
 
   // Send to analytics/monitoring service
   try {
-    // Send to your backend API
+    // Fire-and-forget with timeout
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 2000);
+    
     fetch('/api/security/log', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(event),
-    }).catch(() => {
-      // Silently fail if API is not available
-    });
+      signal: controller.signal
+    })
+      .then(() => clearTimeout(timeoutId))
+      .catch(() => clearTimeout(timeoutId));
 
     // Also send to Google Analytics if available
     if (typeof window !== 'undefined' && (window as any).gtag) {

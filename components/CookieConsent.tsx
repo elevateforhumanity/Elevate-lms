@@ -8,20 +8,42 @@ import { X } from 'lucide-react';
 export default function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Check if user has already made a choice
-    const consent = localStorage.getItem('cookie-consent');
-    if (!consent) {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
+    // Check cookie first (more reliable than localStorage)
+    const getCookie = (name: string) => {
+      if (typeof document === 'undefined') return null;
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(';').shift();
+      return null;
+    };
+
+    const cookieConsent = getCookie('cookie-consent');
+    const localConsent = localStorage.getItem('cookie-consent');
+    
+    if (!cookieConsent && !localConsent) {
       // Delay showing banner slightly for better UX
       setTimeout(() => {
         setShowBanner(true);
         setTimeout(() => setIsVisible(true), 100);
       }, 1000);
     }
-  }, []);
+  }, [mounted]);
 
   const handleAccept = () => {
+    // Set cookie (365 days expiry)
+    const expiryDate = new Date();
+    expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+    document.cookie = `cookie-consent=accepted; expires=${expiryDate.toUTCString()}; path=/; SameSite=Lax`;
+    
     localStorage.setItem('cookie-consent', 'accepted');
     localStorage.setItem('cookie-consent-date', new Date().toISOString());
     setIsVisible(false);
@@ -36,6 +58,11 @@ export default function CookieConsent() {
   };
 
   const handleReject = () => {
+    // Set cookie (365 days expiry)
+    const expiryDate = new Date();
+    expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+    document.cookie = `cookie-consent=rejected; expires=${expiryDate.toUTCString()}; path=/; SameSite=Lax`;
+    
     localStorage.setItem('cookie-consent', 'rejected');
     localStorage.setItem('cookie-consent-date', new Date().toISOString());
     setIsVisible(false);
@@ -54,7 +81,8 @@ export default function CookieConsent() {
     setTimeout(() => setShowBanner(false), 300);
   };
 
-  if (!showBanner) return null;
+  // Don't render anything until mounted (prevents SSR/hydration issues)
+  if (!mounted || !showBanner) return null;
 
   return (
     <div

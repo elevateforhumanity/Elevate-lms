@@ -1,4 +1,5 @@
 export const runtime = 'edge';
+export const maxDuration = 10;
 
 import { NextRequest, NextResponse } from 'next/server';
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
@@ -28,47 +29,51 @@ export async function POST(request: NextRequest) {
       ...additionalData,
     });
 
-    // Log to database
-    try {
-      const supabase = await createClient();
-      await supabase.from('scraping_attempts').insert({
-        detection_type: type,
-        url,
-        ip_address: ip,
-        user_agent: userAgent,
-        additional_data: additionalData,
-        detected_at: timestamp || new Date().toISOString(),
-        alert_sent: true,
-      });
-    } catch (dbError) {
-      logger.error('Failed to log to database:', dbError);
-      // Continue even if database logging fails
-    }
-
-    // Send email alert
-    await sendEmailAlert({
-      type,
-      url,
-      ip,
-      userAgent,
-      timestamp: timestamp || new Date().toISOString(),
-      ...additionalData,
-    });
-
-    // Send Slack alert if configured
-    if (process.env.SLACK_WEBHOOK_URL) {
-      await sendSlackAlert({
-        type,
-        url,
-        ip,
-        timestamp: timestamp || new Date().toISOString(),
-      });
-    }
-
-    return NextResponse.json({
+    // Fast response - don't wait for DB or alerts
+    const responsePromise = NextResponse.json({
       status: 'alert_sent',
       message: 'Scraping attempt logged and alert sent',
     });
+
+    // Background processing (fire-and-forget)
+    Promise.resolve().then(async () => {
+      try {
+        // Log to database
+        const supabase = await createClient();
+        await supabase.from('scraping_attempts').insert({
+          detection_type: type,
+          url,
+          ip_address: ip,
+          user_agent: userAgent,
+          additional_data: additionalData,
+          detected_at: timestamp || new Date().toISOString(),
+          alert_sent: true,
+        });
+
+        // Send alerts (non-blocking)
+        sendEmailAlert({
+          type,
+          url,
+          ip,
+          userAgent,
+          timestamp: timestamp || new Date().toISOString(),
+          ...additionalData,
+        }).catch(() => {});
+
+        if (process.env.SLACK_WEBHOOK_URL) {
+          sendSlackAlert({
+            type,
+            url,
+            ip,
+            timestamp: timestamp || new Date().toISOString(),
+          }).catch(() => {});
+        }
+      } catch (error) {
+        logger.error('Background alert processing failed:', error);
+      }
+    });
+
+    return responsePromise;
   } catch (error: unknown) {
     logger.error('Error processing scraper alert:', error);
     return NextResponse.json(
