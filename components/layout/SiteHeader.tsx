@@ -82,7 +82,11 @@ export default function SiteHeader() {
       setNavigation(getNavigation(session?.user ?? null));
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      if (subscription) {
+        subscription.unsubscribe();
+      }
+    };
   }, []);
 
   // Debug: Check if navigation is loaded

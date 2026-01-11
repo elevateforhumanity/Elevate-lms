@@ -11,8 +11,13 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log error to monitoring service
-    console.error('Global error:', error);
+    // Log error to monitoring service with full details
+    console.error('=== GLOBAL ERROR CAUGHT ===');
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
+    console.error('Error digest:', error.digest);
+    console.error('Full error object:', error);
+    console.error('========================');
     
     // Send to Sentry if configured
     if (typeof window !== 'undefined' && window.Sentry) {
@@ -41,9 +46,9 @@ export default function GlobalError({
                 Our team has been automatically notified and is working to resolve this issue.
               </p>
 
-              {process.env.NODE_ENV === 'development' && error.message && (
+              {error.message && (
                 <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4 mb-6 text-left">
-                  <p className="text-xs font-semibold text-red-800 mb-2">Error Details (Development Only):</p>
+                  <p className="text-xs font-semibold text-red-800 mb-2">Error Details:</p>
                   <p className="text-sm text-red-700 font-mono break-words">
                     {error.message}
                   </p>
@@ -51,6 +56,14 @@ export default function GlobalError({
                     <p className="text-xs text-red-600 mt-2">
                       Error ID: {error.digest}
                     </p>
+                  )}
+                  {error.stack && (
+                    <details className="mt-2">
+                      <summary className="text-xs text-red-600 cursor-pointer">Stack Trace</summary>
+                      <pre className="text-xs text-red-600 mt-2 overflow-auto max-h-40">
+                        {error.stack}
+                      </pre>
+                    </details>
                   )}
                 </div>
               )}
