@@ -1,191 +1,160 @@
 import { createClient } from '@/lib/supabase/server';
+import { withErrorHandling, APIErrors, ErrorCode } from '@/lib/api';
+import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 export const maxDuration = 60;
-import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
-  try {
-    const supabase = await createClient();
+export const POST = withErrorHandling(async (request: NextRequest) => {
+  const supabase = await createClient();
 
-    // Check authentication
-    const {
-      data: { user },
-      error: authError,
-    } = await supabase.auth.getUser();
-    if (authError || !user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+  // Check authentication
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.getUser();
+  if (authError || !user) {
+    throw APIErrors.unauthorized();
+  }
 
-    // Parse form data
-    const formData = await request.formData();
-    const file = formData.get('file') as File;
-    const documentType = formData.get('documentType') as string;
-    const metadata = formData.get('metadata') as string;
+  // Parse form data
+  const formData = await request.formData();
+  const file = formData.get('file') as File;
+  const documentType = formData.get('documentType') as string;
+  const metadata = formData.get('metadata') as string;
 
-    if (!file || !documentType) {
-      return NextResponse.json(
-        { error: 'File and document type are required' },
-        { status: 400 }
-      );
-    }
+  if (!file || !documentType) {
+    throw APIErrors.validation('file and documentType', 'File and document type are required');
+  }
 
-    // Validate file size (10MB max)
-    const maxSize = 10 * 1024 * 1024;
-    if (file.size > maxSize) {
-      return NextResponse.json(
-        { error: 'File size exceeds 10MB limit' },
-        { status: 400 }
-      );
-    }
+  // Validate file size (10MB max)
+  const maxSize = 10 * 1024 * 1024;
+  if (file.size > maxSize) {
+    throw APIErrors.badRequest('File size exceeds 10MB limit', { maxSize, actualSize: file.size });
+  }
 
-    // Validate file type
-    const allowedTypes = [
-      'application/pdf',
-      'image/jpeg',
-      'image/jpg',
-      'image/png',
-      'image/webp',
-    ];
-    if (!allowedTypes.includes(file.type)) {
-      return NextResponse.json(
-        { error: 'Invalid file type. Only PDF and images are allowed' },
-        { status: 400 }
-      );
-    }
+  // Validate file type
+  const allowedTypes = [
+    'application/pdf',
+    'image/jpeg',
+    'image/jpg',
+    'image/png',
+    'image/webp',
+  ];
+  if (!allowedTypes.includes(file.type)) {
+    throw APIErrors.badRequest('Invalid file type. Only PDF and images are allowed', {
+      allowedTypes,
+      receivedType: file.type,
+    });
+  }
 
-    // Generate unique file name
-    const fileExt = file.name.split('.').pop();
-    const fileName = `${user.id}/${documentType}/${Date.now()}.${fileExt}`;
+  // Generate unique file name
+  const fileExt = file.name.split('.').pop();
+  const fileName = `${user.id}/${documentType}/${Date.now()}.${fileExt}`;
 
-    // Upload to Supabase Storage
-    const { data: uploadData, error: uploadError } = await supabase.storage
-      .from('documents')
-      .upload(fileName, file, {
-        contentType: file.type,
-        upsert: false,
-      });
+  // Upload to Supabase Storage
+  const { data: uploadData, error: uploadError } = await supabase.storage
+    .from('documents')
+    .upload(fileName, file, {
+      contentType: file.type,
+      upsert: false,
+    });
 
-    if (uploadError) {
-      return NextResponse.json(
-        { error: 'Failed to upload file' },
-        { status: 500 }
-      );
-    }
+  if (uploadError) {
+    throw APIErrors.external('Supabase Storage', 'Failed to upload file');
+  }
 
     // Get public URL
     const {
       data: { publicUrl },
     } = supabase.storage.from('documents').getPublicUrl(fileName);
 
-    // Parse and validate metadata
-    let parsedMetadata = {};
-    if (metadata) {
-      try {
-        parsedMetadata = JSON.parse(metadata);
-        if (typeof parsedMetadata !== 'object' || parsedMetadata === null || Array.isArray(parsedMetadata)) {
-          return NextResponse.json(
-            { error: 'Metadata must be a valid JSON object' },
-            { status: 400 }
-          );
-        }
-      } catch (parseError) {
-        await supabase.storage.from('documents').remove([fileName]);
-        return NextResponse.json(
-          { error: 'Invalid metadata format. Must be valid JSON' },
-          { status: 400 }
-        );
+  // Parse and validate metadata
+  let parsedMetadata = {};
+  if (metadata) {
+    try {
+      parsedMetadata = JSON.parse(metadata);
+      if (typeof parsedMetadata !== 'object' || parsedMetadata === null || Array.isArray(parsedMetadata)) {
+        throw APIErrors.validation('metadata', 'Metadata must be a valid JSON object');
       }
-    }
-
-    // Save document record to database
-    const { data: document, error: dbError } = await supabase
-      .from('documents')
-      .insert({
-        user_id: user.id,
-        document_type: documentType,
-        file_name: file.name,
-        file_size: file.size,
-        file_url: publicUrl,
-        mime_type: file.type,
-        status: 'pending',
-        uploaded_by: user.id,
-        metadata: parsedMetadata,
-      })
-      .select()
-      .single();
-
-    if (dbError) {
-      // Clean up uploaded file
+    } catch (parseError) {
       await supabase.storage.from('documents').remove([fileName]);
-      return NextResponse.json(
-        { error: 'Failed to save document record' },
-        { status: 500 }
-      );
+      if (parseError instanceof Error && parseError.name === 'SyntaxError') {
+        throw APIErrors.validation('metadata', 'Invalid JSON format');
+      }
+      throw parseError;
     }
-
-    return NextResponse.json({
-      success: true,
-      document,
-    });
-  } catch (error) {
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
   }
-}
 
-export async function GET(request: NextRequest) {
-  try {
-    const supabase = await createClient();
+  // Save document record to database
+  const { data: document, error: dbError } = await supabase
+    .from('documents')
+    .insert({
+      user_id: user.id,
+      document_type: documentType,
+      file_name: file.name,
+      file_size: file.size,
+      file_url: publicUrl,
+      mime_type: file.type,
+      status: 'pending',
+      uploaded_by: user.id,
+      metadata: parsedMetadata,
+    })
+    .select()
+    .single();
 
-    // Check authentication
-    const {
-      data: { user },
-      error: authError,
-    } = await supabase.auth.getUser();
-    if (authError || !user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    // Get query parameters
-    const { searchParams } = new URL(request.url);
-    const documentType = searchParams.get('type');
-    const status = searchParams.get('status');
-
-    // Build query
-    let query = supabase
-      .from('documents')
-      .select('*')
-      .eq('user_id', user.id)
-      .order('created_at', { ascending: false });
-
-    if (documentType) {
-      query = query.eq('document_type', documentType);
-    }
-
-    if (status) {
-      query = query.eq('status', status);
-    }
-
-    const { data: documents, error } = await query;
-
-    if (error) {
-      return NextResponse.json(
-        { error: 'Failed to fetch documents' },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json({
-      success: true,
-      documents,
-    });
-  } catch (error) {
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+  if (dbError) {
+    // Clean up uploaded file
+    await supabase.storage.from('documents').remove([fileName]);
+    throw APIErrors.database('Failed to save document record');
   }
-}
+
+  return NextResponse.json({
+    success: true,
+    document,
+  });
+});
+
+export const GET = withErrorHandling(async (request: NextRequest) => {
+  const supabase = await createClient();
+
+  // Check authentication
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.getUser();
+  if (authError || !user) {
+    throw APIErrors.unauthorized();
+  }
+
+  // Get query parameters
+  const { searchParams } = new URL(request.url);
+  const documentType = searchParams.get('type');
+  const status = searchParams.get('status');
+
+  // Build query
+  let query = supabase
+    .from('documents')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false });
+
+  if (documentType) {
+    query = query.eq('document_type', documentType);
+  }
+
+  if (status) {
+    query = query.eq('status', status);
+  }
+
+  const { data: documents, error } = await query;
+
+  if (error) {
+    throw APIErrors.database('Failed to fetch documents');
+  }
+
+  return NextResponse.json({
+    success: true,
+    documents,
+  });
+});
