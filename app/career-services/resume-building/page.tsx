@@ -1,11 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowLeft,
   Home,
-  FileText,
-  CheckCircle,
-  Download,
   Calendar,
 } from 'lucide-react';
 
@@ -47,10 +45,25 @@ export default function ResumeBuildingPage() {
       </nav>
 
       {/* Hero */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 py-20">
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="/images/business/professional-1.jpg"
+            alt="Resume Building"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <FileText className="h-20 w-20 text-white mx-auto mb-6" />
+            <div className="w-20 h-20 mx-auto mb-6 relative">
+              <Image
+                src="/images/icons/book.png"
+                alt="Resume"
+                width={80}
+                height={80}
+              />
+            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
               Resume Building Services
             </h1>
@@ -78,7 +91,14 @@ export default function ResumeBuildingPage() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="bg-white border-2 border-blue-600 rounded-xl p-8">
-              <CheckCircle className="h-12 w-12 text-blue-600 mb-4" />
+              <div className="relative w-12 h-12 mb-4">
+                <Image
+                  src="/images/icons/check-circle.png"
+                  alt="Resume Writing"
+                  width={48}
+                  height={48}
+                />
+              </div>
               <h3 className="text-2xl font-bold text-black mb-3">
                 Resume Writing
               </h3>
@@ -95,7 +115,14 @@ export default function ResumeBuildingPage() {
             </div>
 
             <div className="bg-white border-2 border-green-600 rounded-xl p-8">
-              <CheckCircle className="h-12 w-12 text-green-600 mb-4" />
+              <div className="relative w-12 h-12 mb-4">
+                <Image
+                  src="/images/icons/check-circle.png"
+                  alt="Resume Review"
+                  width={48}
+                  height={48}
+                />
+              </div>
               <h3 className="text-2xl font-bold text-black mb-3">
                 Resume Review
               </h3>
@@ -112,7 +139,14 @@ export default function ResumeBuildingPage() {
             </div>
 
             <div className="bg-white border-2 border-purple-600 rounded-xl p-8">
-              <CheckCircle className="h-12 w-12 text-purple-600 mb-4" />
+              <div className="relative w-12 h-12 mb-4">
+                <Image
+                  src="/images/icons/book.png"
+                  alt="Cover Letters"
+                  width={48}
+                  height={48}
+                />
+              </div>
               <h3 className="text-2xl font-bold text-black mb-3">
                 Cover Letters
               </h3>
@@ -129,7 +163,14 @@ export default function ResumeBuildingPage() {
             </div>
 
             <div className="bg-white border-2 border-orange-600 rounded-xl p-8">
-              <CheckCircle className="h-12 w-12 text-orange-600 mb-4" />
+              <div className="relative w-12 h-12 mb-4">
+                <Image
+                  src="/images/icons/users.png"
+                  alt="LinkedIn Profiles"
+                  width={48}
+                  height={48}
+                />
+              </div>
               <h3 className="text-2xl font-bold text-black mb-3">
                 LinkedIn Profiles
               </h3>
