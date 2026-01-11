@@ -10,15 +10,22 @@ export const metadata: Metadata = {
 export default function LowIncomePage() {
   return (
     <main className="min-h-screen bg-gray-50">
-      <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
-        <img
-          src="/hero-images/services-hero.jpg"
+      <section className="relative h-[500px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/hero-images/wioa-hero.jpg"
           alt="Low-Income Eligibility"
-          className="absolute inset-0 w-full h-full object-cover"
+          fill
+          className="object-cover"
+          priority
         />
+        <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          <div className="inline-block px-4 py-2 bg-green-600 rounded-full text-sm font-bold mb-4">
+            ✓ Most People Qualify
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Low-Income Eligibility</h1>
-          <p className="text-xl">Free training for individuals and families meeting income guidelines</p>
+          <p className="text-xl mb-6">Free training for individuals and families meeting income guidelines</p>
+          <p className="text-lg text-white/90">If your household income is below federal poverty guidelines, you qualify for 100% free career training with no cost to you.</p>
         </div>
       </section>
 

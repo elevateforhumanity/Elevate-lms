@@ -11,10 +11,12 @@ export default function PublicAssistancePage() {
   return (
     <main className="min-h-screen bg-gray-50">
       <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
-        <img
+        <Image
           src="/hero-images/pathways-hero.jpg"
           alt="Public Assistance Recipients"
-          className="absolute inset-0 w-full h-full object-cover"
+          fill
+          className="object-cover"
+          priority
         />
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Public Assistance Recipients</h1>
