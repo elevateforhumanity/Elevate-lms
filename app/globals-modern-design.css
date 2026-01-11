@@ -134,12 +134,7 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
 }
 
-/* Navigation - clean, minimal */
-nav {
-  background: #ffffff;
-  border-bottom: 1px solid #f0f0f0;
-  backdrop-filter: blur(10px);
-}
+
 
 /* Footer - clean, organized */
 footer {

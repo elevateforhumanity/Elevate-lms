@@ -10,7 +10,7 @@ import { UnregisterServiceWorker } from '@/components/UnregisterServiceWorker';
 import { VersionGuard } from '@/components/VersionGuard';
 import CookieConsent from '@/components/CookieConsent';
 import { Inter } from 'next/font/google';
-import { DeferredStyles } from './deferred-styles';
+
 import { AIAssistantBubble } from '@/components/AIAssistantBubble';
 
 const inter = Inter({
@@ -244,7 +244,7 @@ export default function RootLayout({
         <ConditionalLayout>{children}</ConditionalLayout>
         <ClientProviders />
         <CookieConsent />
-        <DeferredStyles />
+
         <AIAssistantBubble />
         <Toaster
           position="top-right"

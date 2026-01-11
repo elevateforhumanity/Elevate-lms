@@ -1338,36 +1338,7 @@ img {
   height: auto;
 }
 
-/* Emergency guard: prevent header logo from taking over mobile viewport */
-header img,
-header svg {
-  max-height: 48px !important;
-  max-width: 200px !important;
-  object-fit: contain !important;
-}
-
-/* EMERGENCY: ensure header stays clickable above any overlay */
-header {
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 9999 !important;
-  pointer-events: auto !important;
-}
-
-/* EMERGENCY: prevent big decorative images from blocking taps */
-main img:not(header img),
-main svg:not(header svg) {
-  pointer-events: none !important;
-}
-
-/* Ensure header buttons/links are always clickable */
-header button,
-header a,
-header nav {
-  pointer-events: auto !important;
-  z-index: 10000 !important;
-  position: relative !important;
-}
+/* Header CSS removed - component controls all header styles */
 
 /* ============================================================================
    RESPONSIVE SCALING & FONT UPGRADE
@@ -1519,29 +1490,4 @@ footer a:hover {
    Removed - Let component styles control header appearance
    ============================================================================ */
 
-header a:hover, .navbar a:hover, .site-header a:hover {
-  color: #80bfff !important; /* light blue highlight on hover */
-}
 
-/* Ensure logo is visible on dark background */
-header img, .navbar img, .site-header img {
-  filter: brightness(0) invert(1) !important; /* Make dark logos white */
-}
-
-/* Body padding to prevent content from hiding under fixed header */
-body {
-  padding-top: 80px !important; /* Adjust based on your header height */
-  background-color: #ffffff !important; /* white background for all pages */
-  color: #111827 !important; /* dark gray text for readability */
-}
-
-/* Mobile adjustments */
-@media screen and (max-width: 768px) {
-  body {
-    padding-top: 64px !important; /* Smaller padding for mobile */
-  }
-  
-  header, .navbar, .site-header {
-    background-color: rgba(16, 24, 32, 0.98) !important; /* More opaque on mobile */
-  }
-}
