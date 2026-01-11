@@ -82,7 +82,47 @@ export default function BarberApprenticeshipPage() {
             </Link>
           </div>
 
-          {/* Payment Options for Self-Pay */}
+          {/* Funding & Payment Options */}
+          <div className="mt-8 p-6 bg-green-50 border-2 border-green-300 rounded-lg max-w-2xl">
+            <div className="flex items-start gap-3 mb-4">
+              <Image src="/images/icons/dollar.png" alt="Funding" width={24} height={24} className="flex-shrink-0 mt-1" />
+              <div className="w-full">
+                <h3 className="text-lg font-bold text-slate-900 mb-2">
+                  100% Free with Funding
+                </h3>
+                <p className="text-slate-700 mb-4">
+                  This program is fully funded through WIOA and WRG for eligible students. You pay nothing for tuition, books, supplies, or tools.
+                </p>
+                
+                <div className="bg-white rounded-lg p-4 mb-4 border-2 border-green-200">
+                  <h4 className="font-bold text-slate-900 mb-2">What's Covered:</h4>
+                  <ul className="text-sm text-slate-700 space-y-1">
+                    <li>✓ All tuition and instructional costs</li>
+                    <li>✓ Milady RISE curriculum ($299 value)</li>
+                    <li>✓ Books and learning materials</li>
+                    <li>✓ Supplies and tools</li>
+                    <li>✓ Career placement assistance</li>
+                  </ul>
+                  <p className="text-xs text-slate-600 mt-3">
+                    Note: State barber license fee ($45) paid separately to Indiana State Board
+                  </p>
+                </div>
+
+                <p className="text-sm text-slate-700 mb-4">
+                  <strong>Plus, you earn while you learn!</strong> Apprentices earn $12-15/hour during on-the-job training at licensed barbershops.
+                </p>
+
+                <Link
+                  href="/funding"
+                  className="inline-block px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-all"
+                >
+                  Check Your Eligibility
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Self-Pay Option */}
           <div className="mt-8 p-6 bg-amber-50 border-2 border-amber-300 rounded-lg max-w-2xl">
             <div className="flex items-start gap-3 mb-4">
               <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0 mt-1" />
@@ -91,21 +131,30 @@ export default function BarberApprenticeshipPage() {
                   Can't Get Funded? No Problem!
                 </h3>
                 <p className="text-slate-700 mb-4">
-                  If you don't qualify for WIOA, WRG, or JRI funding, you can
-                  still enroll with flexible payment options:
+                  If you don't qualify for WIOA or WRG funding, you can still enroll with flexible payment options:
                 </p>
 
                 {/* Pricing */}
                 <div className="bg-white rounded-lg p-4 mb-4 border-2 border-amber-200">
                   <div className="flex items-baseline gap-2 mb-2">
                     <span className="text-3xl font-bold text-slate-900">
-                      $4,950
+                      $4,890
                     </span>
                     <span className="text-slate-600">total program cost</span>
                   </div>
-                  <p className="text-sm text-slate-600">
-                    15-17 month apprenticeship • Earn while you learn
+                  <p className="text-sm text-slate-600 mb-3">
+                    15 month apprenticeship • Earn while you learn
                   </p>
+                  <div className="text-xs text-slate-600 space-y-1">
+                    <p>• Tuition: $3,990</p>
+                    <p>• Admission Fee: $100</p>
+                    <p>• Books: $150</p>
+                    <p>• Supplies: $300</p>
+                    <p>• Tools: $250</p>
+                    <p>• Miscellaneous: $100</p>
+                    <p className="pt-2 font-semibold">Milady RISE ($299) included in tuition</p>
+                    <p className="text-amber-700">Barber License Fee: $45 (paid separately to state)</p>
+                  </div>
                 </div>
 
                 {/* Payment Buttons */}
@@ -179,46 +228,10 @@ export default function BarberApprenticeshipPage() {
                       />
                     </svg>
                   </Link>
-
-                  {/* Afterpay Payment */}
-                  <Link
-                    href="/checkout/barber-apprenticeship?method=afterpay"
-                    className="w-full flex items-center justify-between px-6 py-4 bg-teal-500 hover:bg-teal-600 text-white font-bold rounded-lg transition-all"
-                  >
-                    <div className="flex items-center gap-3">
-                      <svg
-                        className="w-6 h-6"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                      </svg>
-                      <div className="text-left">
-                        <div className="font-bold">Pay with Afterpay</div>
-                        <div className="text-sm text-teal-100">
-                          4 interest-free payments of $1,237.50
-                        </div>
-                      </div>
-                    </div>
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </Link>
                 </div>
 
                 <p className="text-xs text-slate-600 mt-3 text-center">
-                  <Lightbulb className="w-5 h-5 inline-block" /> Most students
-                  qualify for 100% FREE training through WIOA funding.{' '}
+                  <Lightbulb className="w-5 h-5 inline-block" /> Most students qualify for 100% FREE training through WIOA funding.{' '}
                   <Link href="/funding" className="text-blue-600 underline">
                     Check eligibility
                   </Link>
@@ -226,6 +239,54 @@ export default function BarberApprenticeshipPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* About the Program */}
+      <section className="py-16 bg-white">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-3xl font-bold text-black mb-6">About the Program</h2>
+          <div className="space-y-4 text-gray-700">
+            <p>
+              The Indiana Barbering Apprenticeship Program is a registered, earn-and-learn training program that prepares participants for barber licensure and employment. The program is delivered in two required components: instructional training and on-the-job training (OJT).
+            </p>
+            
+            <h3 className="text-xl font-bold text-black mt-6 mb-3">Instructional Training (Milady RISE)</h3>
+            <p>
+              Participants complete the instructional portion of the program using Milady RISE, an industry-recognized barbering curriculum aligned with Indiana licensing standards. Instruction includes coursework in haircutting, shaving, sanitation and safety, skin and scalp care, customer service, professionalism, and state laws. This portion of the program is delivered through structured online modules and assessments to ensure participants gain the required technical knowledge before entering full-time shop training.
+            </p>
+            
+            <h3 className="text-xl font-bold text-black mt-6 mb-3">On-the-Job Training (Licensed Barbershop)</h3>
+            <p>
+              After completing the instructional training, participants enter a licensed barbershop to complete supervised, paid on-the-job training hours. Apprentices work under the guidance of a licensed barber-mentor and apply classroom instruction in a real-world setting. All training hours are documented and tracked in accordance with Indiana apprenticeship and licensing requirements.
+            </p>
+            
+            <p className="mt-6">
+              This program is part of a 2,000-hour Registered Apprenticeship and meets Indiana State Board of Barber Examiners, Department of Workforce Development, and U.S. Department of Labor standards. Upon completion, participants are prepared to sit for the state licensure examination and pursue employment as professional barbers.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* What You'll Learn */}
+      <section className="py-16 bg-gray-50">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-3xl font-bold text-black mb-6">What You'll Learn</h2>
+          <p className="text-gray-700 mb-6">
+            The Milady RISE curriculum covers all aspects of professional barbering aligned with Indiana licensing standards:
+          </p>
+          <ul className="space-y-3 text-gray-700 list-disc list-inside">
+            <li>Haircutting techniques (clipper cuts, scissor cuts, fades, tapers)</li>
+            <li>Shaving and beard trimming with straight razor</li>
+            <li>Sanitation and safety protocols</li>
+            <li>Skin and scalp care treatments</li>
+            <li>Customer service and professionalism</li>
+            <li>Indiana state laws and regulations</li>
+            <li>Hair coloring and chemical services</li>
+            <li>Client consultation and communication</li>
+            <li>Shop management and business basics</li>
+            <li>State Board licensure exam preparation</li>
+          </ul>
         </div>
       </section>
 
@@ -395,28 +456,32 @@ export default function BarberApprenticeshipPage() {
               <Image src="/images/icons/clock.png" alt="Duration" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Duration</h3>
-                <p className="text-gray-700">12-18 months</p>
+                <p className="text-gray-700">15 months</p>
+                <p className="text-sm text-gray-600">260 instructional hours + 2,000 OJT hours</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Cost</h3>
-                <p className="text-gray-700">Free with funding when eligible</p>
+                <p className="text-gray-700">100% Free</p>
+                <p className="text-sm text-gray-600">With WIOA/WRG funding</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <Image src="/images/icons/shield.png" alt="Format" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Format</h3>
-                <p className="text-gray-700">In-person at licensed shop</p>
+                <p className="text-gray-700">40% Online + 60% In-Person</p>
+                <p className="text-sm text-gray-600">Day, Evening, Weekend options</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <Image src="/images/icons/award.png" alt="Outcome" width={24} height={24} className="flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-bold text-black mb-1">Outcome</h3>
-                <p className="text-gray-700">Barber License + Job</p>
+                <p className="text-gray-700">Registered Barber License</p>
+                <p className="text-sm text-gray-600">Job placement assistance</p>
               </div>
             </div>
           </div>

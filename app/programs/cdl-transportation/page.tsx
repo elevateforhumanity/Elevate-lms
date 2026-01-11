@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Truck } from 'lucide-react';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 
 export const metadata: Metadata = {
@@ -62,13 +61,33 @@ export default function CdlTransportationPage() {
         </div>
       </section>
 
-      {/* Who This Program Is For */}
+      {/* About the Program */}
       <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-3xl font-bold text-black mb-6">
+            About the Program
+          </h2>
+          <div className="bg-white rounded-xl p-8 shadow-sm">
+            <p className="text-gray-700 mb-4">
+              Our CDL & Transportation program prepares you for a high-demand career in commercial truck driving. Earn your Commercial Driver's License (CDL) and start a career with strong earning potential and job security.
+            </p>
+            <p className="text-gray-700 mb-4">
+              With experienced instructors and hands-on training, you'll learn everything from vehicle operation and safety to DOT regulations and route planning. Most graduates secure employment within weeks of completing the program.
+            </p>
+            <p className="text-gray-700">
+              The trucking industry offers excellent opportunities for career growth, with starting salaries of $50,000+ annually and potential to earn $70,000+ with experience. Many companies offer sign-on bonuses and benefits packages.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Who This Program Is For */}
+      <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-3xl font-bold text-black mb-6">
             Who This Program Is For
           </h2>
-          <div className="bg-white rounded-xl p-8 shadow-sm">
+          <div className="bg-gray-50 rounded-xl p-8 shadow-sm">
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
@@ -94,6 +113,29 @@ export default function CdlTransportationPage() {
                   Barriers support available
                 </span>
               </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* What You'll Learn */}
+      <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-3xl font-bold text-black mb-6">
+            What You'll Learn
+          </h2>
+          <div className="bg-white rounded-xl p-8 shadow-sm">
+            <ul className="space-y-3 list-disc list-inside">
+              <li className="text-gray-700">Vehicle inspection and maintenance basics</li>
+              <li className="text-gray-700">Safe driving techniques and defensive driving</li>
+              <li className="text-gray-700">DOT regulations and compliance</li>
+              <li className="text-gray-700">Hours of service and logbook management</li>
+              <li className="text-gray-700">Cargo handling and securement</li>
+              <li className="text-gray-700">Route planning and navigation</li>
+              <li className="text-gray-700">Backing, parking, and maneuvering</li>
+              <li className="text-gray-700">Emergency procedures and accident prevention</li>
+              <li className="text-gray-700">Customer service and professionalism</li>
+              <li className="text-gray-700">CDL exam preparation (written and road test)</li>
             </ul>
           </div>
         </div>

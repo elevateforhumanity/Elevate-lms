@@ -63,26 +63,92 @@ export default function HealthcarePage() {
         </div>
       </section>
 
-      {/* Who This Program Is For */}
+      {/* About the Program */}
       <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-3xl font-bold text-black mb-6">
+            About the Program
+          </h2>
+          <div className="bg-white rounded-xl p-8 shadow-sm">
+            <p className="text-gray-700 mb-4">
+              Our Healthcare pathway prepares you for rewarding careers in the medical field. From Certified Nursing Assistant (CNA) to Medical Assistant, Phlebotomy Technician, and Home Health Aide, you'll gain the skills and certifications needed to start your healthcare career.
+            </p>
+            <p className="text-gray-700 mb-4">
+              With hands-on training from experienced healthcare professionals, you'll learn patient care, medical procedures, and clinical skills in real-world settings. Most programs can be completed in 4-12 weeks, getting you to work quickly.
+            </p>
+            <p className="text-gray-700">
+              The healthcare industry offers strong job security, competitive salaries starting at $30,000-$40,000 annually, and clear pathways for career advancement. Many employers offer tuition reimbursement for continued education.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Who This Program Is For */}
+      <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-3xl font-bold text-black mb-6">
             Who This Program Is For
           </h2>
+          <div className="bg-gray-50 rounded-xl p-8 shadow-sm">
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
+                <div>
+                  <strong className="text-gray-900">Career changers</strong>
+                  <p className="text-gray-700 text-sm">Looking to enter the healthcare field from another industry</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
+                <div>
+                  <strong className="text-gray-900">No experience required</strong>
+                  <p className="text-gray-700 text-sm">Most programs accept students with no prior healthcare background</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
+                <div>
+                  <strong className="text-gray-900">Individuals with criminal records</strong>
+                  <p className="text-gray-700 text-sm">We work with justice-impacted individuals and help navigate background check requirements</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
+                <div>
+                  <strong className="text-gray-900">Those facing barriers</strong>
+                  <p className="text-gray-700 text-sm">We provide support for transportation, childcare, housing, and other challenges</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-green-600 font-bold text-xl flex-shrink-0">✓</span>
+                <div>
+                  <strong className="text-gray-900">High school diploma or GED holders</strong>
+                  <p className="text-gray-700 text-sm">Basic education requirement for most healthcare certifications</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* What You'll Learn */}
+      <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-3xl font-bold text-black mb-6">
+            What You'll Learn
+          </h2>
           <div className="bg-white rounded-xl p-8 shadow-sm">
-            <ul className="space-y-4 list-disc list-inside">
-              <li className="text-gray-700">
-                Individuals seeking career change or advancement
-              </li>
-              <li className="text-gray-700">
-                No prior experience required for most programs
-              </li>
-              <li className="text-gray-700">
-                Justice-impacted individuals welcome
-              </li>
-              <li className="text-gray-700">
-                Barriers support available
-              </li>
+            <ul className="space-y-3 list-disc list-inside">
+              <li className="text-gray-700">Patient care fundamentals and bedside manner</li>
+              <li className="text-gray-700">Vital signs monitoring and documentation</li>
+              <li className="text-gray-700">Medical terminology and healthcare communication</li>
+              <li className="text-gray-700">Infection control and safety protocols</li>
+              <li className="text-gray-700">Basic life support (BLS) and emergency procedures</li>
+              <li className="text-gray-700">Electronic health records (EHR) systems</li>
+              <li className="text-gray-700">Phlebotomy and specimen collection (program-specific)</li>
+              <li className="text-gray-700">Medical assisting procedures (program-specific)</li>
+              <li className="text-gray-700">HIPAA compliance and patient privacy</li>
+              <li className="text-gray-700">Certification exam preparation</li>
             </ul>
           </div>
         </div>
@@ -198,9 +264,9 @@ export default function HealthcarePage() {
                 1
               </div>
               <div>
-                <h3 className="font-bold mb-1">Apply</h3>
+                <h3 className="font-bold mb-1">Visit Indiana Career Connect</h3>
                 <p className="text-slate-600 text-sm">
-                  Submit your application online
+                  Go to <a href="https://www.indianacareerconnect.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">www.indianacareerconnect.com</a> and create your free account
                 </p>
               </div>
             </div>
@@ -209,9 +275,9 @@ export default function HealthcarePage() {
                 2
               </div>
               <div>
-                <h3 className="font-bold mb-1">Meet with advisor</h3>
+                <h3 className="font-bold mb-1">Complete Your Profile</h3>
                 <p className="text-slate-600 text-sm">
-                  Discuss your goals and eligibility
+                  Fill out your work history, education, and career goals
                 </p>
               </div>
             </div>
@@ -220,9 +286,9 @@ export default function HealthcarePage() {
                 3
               </div>
               <div>
-                <h3 className="font-bold mb-1">Confirm eligibility</h3>
+                <h3 className="font-bold mb-1">Schedule Appointment</h3>
                 <p className="text-slate-600 text-sm">
-                  We help with funding paperwork
+                  Book an appointment with a WorkOne career advisor through the portal (in-person or virtual)
                 </p>
               </div>
             </div>
@@ -231,19 +297,40 @@ export default function HealthcarePage() {
                 4
               </div>
               <div>
-                <h3 className="font-bold mb-1">Enroll</h3>
+                <h3 className="font-bold mb-1">Meet with Advisor</h3>
                 <p className="text-slate-600 text-sm">
-                  Start your training program
+                  Your advisor will verify eligibility and help you select Elevate for Humanity as your training provider
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-8 h-8 rounded-full bg-brand-orange-600 text-white font-bold flex items-center justify-center flex-shrink-0">
+                5
+              </div>
+              <div>
+                <h3 className="font-bold mb-1">Get Approved & Enroll</h3>
+                <p className="text-slate-600 text-sm">
+                  Once approved for WIOA funding, bring your training voucher to us and start your program
                 </p>
               </div>
             </div>
           </div>
-          <Link
-            href="/apply"
-            className="inline-block px-10 py-5 bg-brand-orange-600 hover:bg-brand-orange-600 text-white font-bold text-xl rounded-lg transition-all shadow-lg hover:shadow-xl"
-          >
-            Apply Now
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://www.indianacareerconnect.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-10 py-5 bg-brand-orange-600 hover:bg-brand-orange-700 text-white font-bold text-xl rounded-lg transition-all shadow-lg hover:shadow-xl"
+            >
+              Go to Indiana Career Connect
+            </a>
+            <Link
+              href="/contact"
+              className="inline-block px-10 py-5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xl rounded-lg transition-all shadow-lg hover:shadow-xl"
+            >
+              Need Help? Contact Us
+            </Link>
+          </div>
         </div>
       </section>
     </div>

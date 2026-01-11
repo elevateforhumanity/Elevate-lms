@@ -16,7 +16,7 @@ export default function BusinessPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <VideoHeroBanner
-        videoSrc="/videos/business-hero.mp4"
+        videoSrc="/videos/hero-home.mp4"
         headline="Business & Administration Programs"
         subheadline="Build Your Business Career - Accounting, Office Skills & Management"
         primaryCTA={{ text: 'Apply Now', href: '/apply' }}

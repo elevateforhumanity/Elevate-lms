@@ -62,13 +62,30 @@ export default function SkilledTradesPage() {
         </div>
       </section>
 
-      {/* Who This Program Is For */}
+      {/* About the Program */}
       <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-3xl font-bold text-black mb-6">
+            About the Program
+          </h2>
+          <div className="bg-white rounded-xl p-8 shadow-sm">
+            <p className="text-gray-700 mb-4">
+              Our Skilled Trades pathway prepares you for in-demand careers in HVAC, building maintenance, and building technology. Learn hands-on skills from experienced instructors and earn industry-recognized certifications.
+            </p>
+            <p className="text-gray-700">
+              From installing and repairing HVAC systems to maintaining commercial buildings, you'll gain practical experience that prepares you for entry-level positions with strong earning potential and career growth opportunities.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Who This Program Is For */}
+      <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-3xl font-bold text-black mb-6">
             Who This Program Is For
           </h2>
-          <div className="bg-white rounded-xl p-8 shadow-sm">
+          <div className="bg-gray-50 rounded-xl p-8 shadow-sm">
             <ul className="space-y-4 list-disc list-inside">
               <li className="text-gray-700">
                 Individuals seeking career change or advancement
@@ -82,6 +99,27 @@ export default function SkilledTradesPage() {
               <li className="text-gray-700">
                 Barriers support available
               </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* What You'll Learn */}
+      <section className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-3xl font-bold text-black mb-6">
+            What You'll Learn
+          </h2>
+          <div className="bg-white rounded-xl p-8 shadow-sm">
+            <ul className="space-y-3 list-disc list-inside">
+              <li className="text-gray-700">HVAC system installation and repair</li>
+              <li className="text-gray-700">Building maintenance fundamentals</li>
+              <li className="text-gray-700">Electrical systems basics</li>
+              <li className="text-gray-700">Plumbing fundamentals</li>
+              <li className="text-gray-700">Safety protocols and OSHA compliance</li>
+              <li className="text-gray-700">Troubleshooting and diagnostics</li>
+              <li className="text-gray-700">Customer service and professionalism</li>
+              <li className="text-gray-700">Tool usage and equipment operation</li>
             </ul>
           </div>
         </div>

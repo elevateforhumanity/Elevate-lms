@@ -19,7 +19,7 @@ export default function TechnologyPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <VideoHeroBanner
-        videoSrc="/videos/tech-hero.mp4"
+        videoSrc="/videos/hero-home.mp4"
         headline="Technology & IT Programs"
         subheadline="Launch Your Tech Career - IT Support, Networking & Cybersecurity"
         primaryCTA={{ text: 'Apply Now', href: '/apply' }}
