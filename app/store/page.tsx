@@ -85,13 +85,13 @@ export default function StorePage() {
                   <Shield className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <h3 className="text-2xl font-bold text-black">
                     Platform Licenses
                   </h3>
-                  <p className="text-gray-600">Clone our entire platform</p>
+                  <p className="text-black">Clone our entire platform</p>
                 </div>
               </div>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 License the complete Elevate for Humanity workforce training
                 platform. White-label solutions for schools, training providers,
                 and workforce agencies.
@@ -101,9 +101,9 @@ export default function StorePage() {
                 <TrendingUp className="w-5 h-5" />
               </div>
               <div className="mt-4 pt-4 border-t border-gray-200">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Starting at{' '}
-                  <span className="font-bold text-gray-900">$4,999</span>
+                  <span className="font-bold text-black">$4,999</span>
                 </p>
               </div>
             </Link>
@@ -118,13 +118,13 @@ export default function StorePage() {
                   <Download className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <h3 className="text-2xl font-bold text-black">
                     Digital Products
                   </h3>
-                  <p className="text-gray-600">Toolkits, guides & resources</p>
+                  <p className="text-black">Toolkits, guides & resources</p>
                 </div>
               </div>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 One-time digital downloads including business toolkits,
                 compliance guides, and training resources. Instant delivery,
                 lifetime access.
@@ -134,9 +134,9 @@ export default function StorePage() {
                 <Download className="w-5 h-5" />
               </div>
               <div className="mt-4 pt-4 border-t border-gray-200">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Starting at{' '}
-                  <span className="font-bold text-gray-900">$29</span>
+                  <span className="font-bold text-black">$29</span>
                 </p>
               </div>
             </Link>
@@ -148,10 +148,10 @@ export default function StorePage() {
       <section id="digital-products" className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               Digital Products
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-black max-w-2xl mx-auto">
               Instant-access resources to help you launch and grow your career
               or business.
             </p>
@@ -167,23 +167,23 @@ export default function StorePage() {
               <div className="text-4xl font-bold text-orange-600 mb-2">
                 $127K+
               </div>
-              <div className="text-slate-600">Raised for Training Programs</div>
+              <div className="text-black">Raised for Training Programs</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-orange-600 mb-2">
                 1,500+
               </div>
-              <div className="text-slate-600">Students Supported</div>
+              <div className="text-black">Students Supported</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-orange-600 mb-2">
                 100%
               </div>
-              <div className="text-slate-600">Proceeds to Mission</div>
+              <div className="text-black">Proceeds to Mission</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-orange-600 mb-2">$0</div>
-              <div className="text-slate-600">Tuition for Participants</div>
+              <div className="text-black">Tuition for Participants</div>
             </div>
           </div>
         </div>
@@ -192,7 +192,7 @@ export default function StorePage() {
       {/* How This Works */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-black mb-12">
             How Mission Commerce Works
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -200,10 +200,10 @@ export default function StorePage() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FileText className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 1. Purchase Resources
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Buy practical tools, guides, and templates for career
                 development and business launch.
               </p>
@@ -212,10 +212,10 @@ export default function StorePage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Heart className="h-8 w-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 2. Funds Support Training
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 100% of proceeds fund free training programs, student emergency
                 funds, and participant resources.
               </p>
@@ -224,10 +224,10 @@ export default function StorePage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 3. Students Succeed
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Your purchase helps participants complete training, earn
                 credentials, and launch careers.
               </p>
@@ -240,10 +240,10 @@ export default function StorePage() {
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               Digital Resources & Tools
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-lg text-black max-w-3xl mx-auto">
               Practical resources for workforce training, career development,
               and business launch. Instant digital delivery.
             </p>
@@ -267,11 +267,11 @@ export default function StorePage() {
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                  <h3 className="text-2xl font-bold text-black mb-3">
                     {product.name}
                   </h3>
 
-                  <p className="text-slate-600 mb-6">{product.description}</p>
+                  <p className="text-black mb-6">{product.description}</p>
 
                   <ul className="space-y-2 mb-6">
                     {product.features.slice(0, 4).map((feature, idx) => (
@@ -280,7 +280,7 @@ export default function StorePage() {
                           className="text-green-600 flex-shrink-0 mt-0.5"
                           size={16}
                         />
-                        <span className="text-slate-700">{feature}</span>
+                        <span className="text-black">{feature}</span>
                       </li>
                     ))}
                     {product.features.length > 4 && (
@@ -291,7 +291,7 @@ export default function StorePage() {
                   </ul>
 
                   <div className="flex items-center justify-between mb-6">
-                    <div className="text-3xl font-bold text-slate-900">
+                    <div className="text-3xl font-bold text-black">
                       {product.priceDisplay}
                     </div>
                     {product.deliveryType === 'download' &&
@@ -310,7 +310,7 @@ export default function StorePage() {
                     {product.category === 'donation' ? 'Donate Now' : 'Buy Now'}
                   </Link>
 
-                  <div className="mt-4 text-center text-sm text-slate-600">
+                  <div className="mt-4 text-center text-sm text-black">
                     <Heart className="h-4 w-4 inline mr-1 text-orange-600" />
                     Supports free training programs
                   </div>
@@ -320,12 +320,12 @@ export default function StorePage() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-slate-600 mb-4">
+            <p className="text-black mb-4">
               Looking for something specific?
             </p>
             <Link
               href="/contact"
-              className="inline-block px-8 py-3 bg-slate-200 text-slate-900 rounded-lg font-semibold hover:bg-slate-300 transition"
+              className="inline-block px-8 py-3 bg-slate-200 text-black rounded-lg font-semibold hover:bg-slate-300 transition"
             >
               Contact Us
             </Link>
@@ -356,19 +356,19 @@ export default function StorePage() {
                 <div className="text-2xl font-bold text-blue-600 mb-1">
                   100%
                 </div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-black">
                   Proceeds to Mission
                 </div>
               </div>
               <div className="bg-white rounded-lg p-4">
                 <div className="text-2xl font-bold text-blue-600 mb-1">$0</div>
-                <div className="text-sm text-slate-600">Admin Overhead</div>
+                <div className="text-sm text-black">Admin Overhead</div>
               </div>
               <div className="bg-white rounded-lg p-4">
                 <div className="text-2xl font-bold text-blue-600 mb-1">
                   Public
                 </div>
-                <div className="text-sm text-slate-600">Impact Reports</div>
+                <div className="text-sm text-black">Impact Reports</div>
               </div>
             </div>
           </div>
@@ -382,34 +382,34 @@ export default function StorePage() {
             <TrendingUp className="h-4 w-4" />
             <span>Licensable Module</span>
           </div>
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl font-bold text-black mb-4">
             Mission Commerce as a System Module
           </h2>
-          <p className="text-lg text-slate-600 mb-8">
+          <p className="text-lg text-black mb-8">
             This store demonstrates a replicable monetization model for
             workforce hubs. It can be white-labeled and licensed to training
             providers, nonprofits, and workforce boards.
           </p>
           <div className="grid md:grid-cols-3 gap-6 text-left">
             <div className="bg-white rounded-lg p-6 border border-slate-200">
-              <h4 className="font-bold text-slate-900 mb-2">Revenue Stream</h4>
-              <p className="text-sm text-slate-600">
+              <h4 className="font-bold text-black mb-2">Revenue Stream</h4>
+              <p className="text-sm text-black">
                 Sustainable funding model that doesn't rely solely on grants
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 border border-slate-200">
-              <h4 className="font-bold text-slate-900 mb-2">
+              <h4 className="font-bold text-black mb-2">
                 Participant Support
               </h4>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-black">
                 Provides resources while funding emergency assistance
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 border border-slate-200">
-              <h4 className="font-bold text-slate-900 mb-2">
+              <h4 className="font-bold text-black mb-2">
                 White-Label Ready
               </h4>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-black">
                 Can be branded and deployed for any workforce organization
               </p>
             </div>

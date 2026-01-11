@@ -173,10 +173,10 @@ export default function OrgInvitesPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-2xl font-semibold text-gray-900">
+          <h1 className="text-2xl font-semibold text-black">
             Organization Invitations
           </h1>
-          <p className="mt-2 text-sm text-gray-700">
+          <p className="mt-2 text-sm text-black">
             Manage pending and accepted invitations to your organization
           </p>
         </div>
@@ -199,14 +199,14 @@ export default function OrgInvitesPage() {
       {showInviteForm && (
         <div className="mt-6 bg-white shadow sm:rounded-lg">
           <div className="px-4 py-5 sm:p-6">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">
+            <h3 className="text-lg font-medium leading-6 text-black">
               Send New Invitation
             </h3>
             <form onSubmit={sendInvite} className="mt-5 space-y-4">
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-black"
                 >
                   Email Address
                 </label>
@@ -224,7 +224,7 @@ export default function OrgInvitesPage() {
               <div>
                 <label
                   htmlFor="role"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-black"
                 >
                   Role
                 </label>
@@ -249,7 +249,7 @@ export default function OrgInvitesPage() {
                     setInviteRole('member');
                     setError(null);
                   }}
-                  className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
+                  className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-black shadow-sm hover:bg-gray-50"
                 >
                   Cancel
                 </button>
@@ -273,19 +273,19 @@ export default function OrgInvitesPage() {
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-black">
                       Email
                     </th>
-                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-black">
                       Role
                     </th>
-                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-black">
                       Status
                     </th>
-                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-black">
                       Invited By
                     </th>
-                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-3 py-3.5 text-left text-sm font-semibold text-black">
                       Expires
                     </th>
                     <th className="relative py-3.5 pl-3 pr-4 sm:pr-6">
@@ -298,7 +298,7 @@ export default function OrgInvitesPage() {
                     <tr>
                       <td
                         colSpan={6}
-                        className="px-3 py-8 text-center text-sm text-gray-700"
+                        className="px-3 py-8 text-center text-sm text-black"
                       >
                         No invitations found
                       </td>
@@ -306,10 +306,10 @@ export default function OrgInvitesPage() {
                   ) : (
                     invites.map((invite) => (
                       <tr key={invite.id}>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-900">
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-black">
                           {invite.email}
                         </td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-700">
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-black">
                           {invite.role}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm">
@@ -325,10 +325,10 @@ export default function OrgInvitesPage() {
                             {invite.status}
                           </span>
                         </td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-700">
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-black">
                           {invite.inviterName || 'Unknown'}
                         </td>
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-700">
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-black">
                           {new Date(invite.expiresAt).toLocaleDateString()}
                         </td>
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">

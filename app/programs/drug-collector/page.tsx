@@ -39,46 +39,46 @@ export default function Page() {
       <section className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            <h2 className="text-3xl font-bold text-black mb-6">
               Program Overview
             </h2>
-            <p className="text-lg text-slate-600 mb-4">
+            <p className="text-lg text-black mb-4">
               Become a certified Drug & Alcohol Specimen Collector and work in
               healthcare facilities, labs, and workplace testing programs. This
               specialized certification is in high demand across transportation,
               healthcare, and corporate sectors.
             </p>
-            <p className="text-lg text-slate-600 mb-4">
+            <p className="text-lg text-black mb-4">
               Our DOT-approved training meets all federal requirements for urine
               and breath alcohol specimen collection.
             </p>
           </div>
           <div className="bg-blue-50 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            <h3 className="text-2xl font-bold text-black mb-4">
               Quick Facts
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Duration:</span>
-                <span className="text-slate-700">2-3 weeks</span>
+                <span className="text-black">2-3 weeks</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Cost:</span>
-                <span className="text-slate-700">$0 with funding</span>
+                <span className="text-black">$0 with funding</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Format:</span>
-                <span className="text-slate-700">
+                <span className="text-black">
                   Hybrid (online + hands-on)
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Starting Pay:</span>
-                <span className="text-slate-700">$16-$22/hour</span>
+                <span className="text-black">$16-$22/hour</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Certification:</span>
-                <span className="text-slate-700">DOT-approved</span>
+                <span className="text-black">DOT-approved</span>
               </li>
             </ul>
           </div>
@@ -88,55 +88,55 @@ export default function Page() {
       {/* What You'll Learn */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-black mb-8 text-center">
             What You'll Learn
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 DOT Regulations
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Federal requirements for drug and alcohol testing
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Specimen Collection
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Proper urine collection procedures and chain of custody
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Breath Alcohol Testing
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Operating evidential breath testing devices
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Documentation
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Accurate record-keeping and reporting
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Quality Control
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Maintaining specimen integrity and validity
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Legal Compliance
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Privacy laws and legal requirements
               </p>
             </div>
@@ -146,15 +146,15 @@ export default function Page() {
 
       {/* Career Outlook */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+        <h2 className="text-3xl font-bold text-black mb-8 text-center">
           Career Opportunities
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            <h3 className="text-2xl font-bold text-black mb-4">
               Work Settings
             </h3>
-            <ul className="space-y-2 text-slate-600">
+            <ul className="space-y-2 text-black">
               <li>• Medical Laboratories</li>
               <li>• Occupational Health Clinics</li>
               <li>• Mobile Collection Services</li>
@@ -164,10 +164,10 @@ export default function Page() {
             </ul>
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            <h3 className="text-2xl font-bold text-black mb-4">
               Why This Career?
             </h3>
-            <ul className="space-y-2 text-slate-600">
+            <ul className="space-y-2 text-black">
               <li>• High demand across industries</li>
               <li>• Flexible scheduling options</li>
               <li>• Specialized, respected role</li>

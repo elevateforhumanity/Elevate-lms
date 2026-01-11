@@ -69,7 +69,7 @@ export function Breadcrumbs() {
                     <ChevronRight className="w-4 h-4 text-slate-400 mx-2" />
                   )}
                   {isLast ? (
-                    <span className="text-slate-900 font-semibold" aria-current="page">
+                    <span className="text-black font-semibold" aria-current="page">
                       {index === 0 ? <Home className="w-4 h-4" /> : crumb.label}
                     </span>
                   ) : (

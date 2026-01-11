@@ -96,7 +96,7 @@ export function NoteTaking({ courseId, lessonId, videoTimestamp }: NoteTakingPro
 
   return (
     <div className="bg-white rounded-lg border border-slate-200 p-4">
-      <h3 className="text-lg font-semibold text-slate-900 mb-4">My Notes</h3>
+      <h3 className="text-lg font-semibold text-black mb-4">My Notes</h3>
 
       {/* New Note */}
       <div className="mb-4">
@@ -154,7 +154,7 @@ export function NoteTaking({ courseId, lessonId, videoTimestamp }: NoteTakingPro
                       {formatTimestamp(note.timestamp)}
                     </div>
                   )}
-                  <p className="text-sm text-slate-700 whitespace-pre-wrap">
+                  <p className="text-sm text-black whitespace-pre-wrap">
                     {note.content}
                   </p>
                   <p className="text-xs text-slate-500 mt-2">

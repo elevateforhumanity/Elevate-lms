@@ -17,19 +17,19 @@ export default function ApplicationSuccessPage() {
         <div className="text-5xl mb-4">
           <PartyPopper className="w-5 h-5 inline-block" />
         </div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
+        <h1 className="text-3xl font-bold text-black mb-4">
           Application Received
         </h1>
-        <p className="text-lg text-gray-700 mb-8">
+        <p className="text-lg text-black mb-8">
           Thank you for applying to Elevate for Humanity. A real advisor will
           contact you within 1–2 business days.
         </p>
 
         <div className="rounded-xl border bg-gray-50 p-6 text-left mb-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg font-semibold text-black mb-4">
             What to do now:
           </h2>
-          <ol className="space-y-3 text-gray-700">
+          <ol className="space-y-3 text-black">
             <li className="flex items-start gap-3">
               <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-brand-blue-600 text-white text-sm font-semibold">
                 1
@@ -81,7 +81,7 @@ export default function ApplicationSuccessPage() {
           </a>
           <Link
             href="/"
-            className="block w-full rounded-xl border px-6 py-3 text-center font-semibold text-gray-900 hover:bg-gray-50"
+            className="block w-full rounded-xl border px-6 py-3 text-center font-semibold text-black hover:bg-gray-50"
           >
             Return to Home
           </Link>

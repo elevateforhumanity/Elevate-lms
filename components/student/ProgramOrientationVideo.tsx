@@ -48,8 +48,8 @@ export default function ProgramOrientationVideo({
             </div>
           </div>
           <div className="flex-1">
-            <h3 className="text-lg font-bold text-slate-900 mb-2">{title}</h3>
-            <p className="text-sm text-slate-600 mb-4">{description}</p>
+            <h3 className="text-lg font-bold text-black mb-2">{title}</h3>
+            <p className="text-sm text-black mb-4">{description}</p>
             <button
               onClick={() => setShowModal(true)}
               className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
@@ -72,7 +72,7 @@ export default function ProgramOrientationVideo({
           <div className="bg-white rounded-xl shadow-2xl max-w-5xl w-full overflow-hidden">
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-slate-200">
-              <h2 className="text-xl font-bold text-slate-900">{title}</h2>
+              <h2 className="text-xl font-bold text-black">{title}</h2>
               <button
                 onClick={handleClose}
                 className="p-2 hover:bg-slate-100 rounded-lg transition"
@@ -99,7 +99,7 @@ export default function ProgramOrientationVideo({
 
             {/* Footer */}
             <div className="p-4 bg-slate-50 border-t border-slate-200">
-              <p className="text-sm text-slate-600 mb-3">
+              <p className="text-sm text-black mb-3">
                 {description}
               </p>
               {hasWatched && (

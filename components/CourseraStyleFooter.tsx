@@ -7,12 +7,12 @@ export default function CourseraStyleFooter() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           {/* Column 1 - Company */}
           <div>
-            <h3 className="text-sm font-bold text-gray-900 mb-4">Company</h3>
+            <h3 className="text-sm font-bold text-black mb-4">Company</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/about"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   About Us
                 </Link>
@@ -20,7 +20,7 @@ export default function CourseraStyleFooter() {
               <li>
                 <Link
                   href="/careers"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Careers
                 </Link>
@@ -29,7 +29,7 @@ export default function CourseraStyleFooter() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Contact
                 </Link>
@@ -39,12 +39,12 @@ export default function CourseraStyleFooter() {
 
           {/* Column 2 - Programs */}
           <div>
-            <h3 className="text-sm font-bold text-gray-900 mb-4">Programs</h3>
+            <h3 className="text-sm font-bold text-black mb-4">Programs</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/programs"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   All Programs
                 </Link>
@@ -52,7 +52,7 @@ export default function CourseraStyleFooter() {
               <li>
                 <Link
                   href="/programs/medical-assistant"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Medical Assistant
                 </Link>
@@ -60,7 +60,7 @@ export default function CourseraStyleFooter() {
               <li>
                 <Link
                   href="/programs/hvac-technician"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   HVAC Technician
                 </Link>
@@ -68,7 +68,7 @@ export default function CourseraStyleFooter() {
               <li>
                 <Link
                   href="/programs/barber-apprenticeship"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Barber Apprenticeship
                 </Link>
@@ -78,12 +78,12 @@ export default function CourseraStyleFooter() {
 
           {/* Column 3 - For You */}
           <div>
-            <h3 className="text-sm font-bold text-gray-900 mb-4">For You</h3>
+            <h3 className="text-sm font-bold text-black mb-4">For You</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/apply"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Apply Now
                 </Link>
@@ -91,7 +91,7 @@ export default function CourseraStyleFooter() {
               <li>
                 <Link
                   href="/employers"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   For Employers
                 </Link>
@@ -99,7 +99,7 @@ export default function CourseraStyleFooter() {
               <li>
                 <Link
                   href="/partners"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   For Partners
                 </Link>
@@ -110,12 +110,12 @@ export default function CourseraStyleFooter() {
 
           {/* Column 4 - Support */}
           <div>
-            <h3 className="text-sm font-bold text-gray-900 mb-4">Support</h3>
+            <h3 className="text-sm font-bold text-black mb-4">Support</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/faq"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   FAQ
                 </Link>
@@ -123,7 +123,7 @@ export default function CourseraStyleFooter() {
               <li>
                 <Link
                   href="/support"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Help Center
                 </Link>
@@ -131,7 +131,7 @@ export default function CourseraStyleFooter() {
               <li>
                 <Link
                   href="/directory"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Directory
                 </Link>
@@ -139,7 +139,7 @@ export default function CourseraStyleFooter() {
               <li>
                 <Link
                   href="/philanthropy"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Community Impact
                 </Link>
@@ -154,20 +154,20 @@ export default function CourseraStyleFooter() {
             <div className="flex flex-wrap items-center gap-3 text-sm">
               <span className="font-bold text-blue-900">🏛️ Government-Contracted Workforce Training Provider</span>
               <span className="text-gray-400">|</span>
-              <span className="text-gray-700">ETPL-Approved</span>
+              <span className="text-black">ETPL-Approved</span>
               <span className="text-gray-400">|</span>
-              <span className="text-gray-700">WIOA Certified</span>
+              <span className="text-black">WIOA Certified</span>
             </div>
 
-            <div className="text-xs text-gray-700 leading-relaxed">
+            <div className="text-xs text-black leading-relaxed">
               A program of <strong>Selfish Inc</strong>, a 501(c)(3) nonprofit organization serving Marion County and surrounding areas through partnerships with EmployIndy, Indiana Department of Workforce Development, and the U.S. Department of Labor.
             </div>
 
-            <div className="text-xs text-gray-800 leading-relaxed bg-white p-3 rounded border border-blue-200">
+            <div className="text-xs text-black leading-relaxed bg-white p-3 rounded border border-blue-200">
               <strong>⚖️ Equal Opportunity Employer/Program:</strong> Elevate for Humanity is an equal opportunity employer and does not discriminate on the basis of race, color, religion, sex, national origin, age, disability, veteran status, sexual orientation, gender identity, or any other protected characteristic. Auxiliary aids and services are available upon request to individuals with disabilities. <strong>Indiana Relay:</strong> 711 or 800-743-3333 (TDD).
             </div>
 
-            <div className="text-xs text-gray-600">
+            <div className="text-xs text-black">
               <strong>Contact:</strong> (317) 314-3757 | <a href="mailto:elevate4humanityedu@gmail.com" className="text-blue-600 hover:underline">elevate4humanityedu@gmail.com</a> | Serving 8888 Keystone Crossing Suite 1300, Indianapolis, IN 46240
             </div>
           </div>

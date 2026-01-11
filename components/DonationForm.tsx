@@ -63,7 +63,7 @@ export default function DonationForm() {
 
   return (
     <div className="bg-white rounded-2xl shadow-xl p-8 border border-slate-200">
-      <h3 className="text-2xl font-bold text-slate-900 mb-6">
+      <h3 className="text-2xl font-bold text-black mb-6">
         Choose Your Donation Amount
       </h3>
 
@@ -79,7 +79,7 @@ export default function DonationForm() {
             className={`py-4 px-6 rounded-lg font-semibold text-lg transition-all ${
               selectedAmount === amount && !customAmount
                 ? 'bg-orange-600 text-white shadow-lg scale-105'
-                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                : 'bg-slate-100 text-black hover:bg-slate-200'
             }`}
           >
             ${amount}
@@ -89,7 +89,7 @@ export default function DonationForm() {
 
       {/* Custom Amount */}
       <div className="mb-6">
-        <label className="block text-sm font-semibold text-slate-700 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Or enter a custom amount:
         </label>
         <div className="relative">

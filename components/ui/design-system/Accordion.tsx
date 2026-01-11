@@ -39,7 +39,7 @@ export function Accordion({
         className={cn(
           'w-full flex items-center justify-between py-4 text-left',
           'hover:text-blue-600 transition-colors',
-          alwaysOpenOnDesktop && 'md:cursor-default md:hover:text-slate-900'
+          alwaysOpenOnDesktop && 'md:cursor-default md:hover:text-black'
         )}
         disabled={alwaysOpenOnDesktop}
       >

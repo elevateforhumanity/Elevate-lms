@@ -52,7 +52,7 @@ export default function AgenciesPage() {
       {/* THREE ALIGNMENT POINTS */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-black mb-12">
             Government Alignment
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -60,13 +60,13 @@ export default function AgenciesPage() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 DOL Registered Apprenticeship Sponsor
               </h3>
-              <p className="text-slate-700 mb-4">
+              <p className="text-black mb-4">
                 U.S. Department of Labor official registration
               </p>
-              <div className="font-mono text-sm text-slate-600">
+              <div className="font-mono text-sm text-black">
                 RAPIDS: 2025-IN-132301
               </div>
             </div>
@@ -75,13 +75,13 @@ export default function AgenciesPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FileCheck className="h-8 w-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 ETPL Approved Provider
               </h3>
-              <p className="text-slate-700 mb-4">
+              <p className="text-black mb-4">
                 Indiana Department of Workforce Development approved
               </p>
-              <div className="font-mono text-sm text-slate-600">
+              <div className="font-mono text-sm text-black">
                 Active since 2020
               </div>
             </div>
@@ -90,13 +90,13 @@ export default function AgenciesPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="h-8 w-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 WIOA Compliant Programs
               </h3>
-              <p className="text-slate-700 mb-4">
+              <p className="text-black mb-4">
                 All programs eligible for workforce funding
               </p>
-              <div className="font-mono text-sm text-slate-600">
+              <div className="font-mono text-sm text-black">
                 1,500+ participants tracked
               </div>
             </div>
@@ -107,17 +107,17 @@ export default function AgenciesPage() {
       {/* WHAT YOU GET (CAPABILITIES) */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-black mb-12">
             What You Get
           </h2>
           <div className="space-y-4">
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
               <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Real-Time Compliance Dashboards
                 </h3>
-                <p className="text-slate-700">
+                <p className="text-black">
                   RAPIDS, ETPL, and WIOA reporting automated. No manual data
                   entry.
                 </p>
@@ -127,10 +127,10 @@ export default function AgenciesPage() {
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
               <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Automated Reporting
                 </h3>
-                <p className="text-slate-700">
+                <p className="text-black">
                   Generate compliance reports with one click. Audit-ready
                   documentation.
                 </p>
@@ -140,10 +140,10 @@ export default function AgenciesPage() {
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
               <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Multi-Tenant Architecture
                 </h3>
-                <p className="text-slate-700">
+                <p className="text-black">
                   White-label ready. Deploy for multiple regions or providers
                   simultaneously.
                 </p>
@@ -156,19 +156,19 @@ export default function AgenciesPage() {
       {/* WHO THIS IS FOR */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-black mb-12">
             Who This Is For
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-blue-50 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 WorkOne Regions
               </h3>
-              <p className="text-slate-700 mb-6">
+              <p className="text-black mb-6">
                 Track WIOA and WRG funded participants, monitor outcomes,
                 generate compliance reports automatically.
               </p>
-              <ul className="space-y-3 text-slate-700">
+              <ul className="space-y-3 text-black">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span>Real-time dashboards</span>
@@ -185,14 +185,14 @@ export default function AgenciesPage() {
             </div>
 
             <div className="bg-green-50 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Training Providers
               </h3>
-              <p className="text-slate-700 mb-6">
+              <p className="text-black mb-6">
                 License our platform to deliver workforce-funded programs
                 without building your own LMS and compliance systems.
               </p>
-              <ul className="space-y-3 text-slate-700">
+              <ul className="space-y-3 text-black">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>White-label LMS</span>
@@ -209,14 +209,14 @@ export default function AgenciesPage() {
             </div>
 
             <div className="bg-purple-50 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 State Agencies
               </h3>
-              <p className="text-slate-700 mb-6">
+              <p className="text-black mb-6">
                 Monitor statewide workforce initiatives, track performance
                 metrics, ensure compliance across multiple providers.
               </p>
-              <ul className="space-y-3 text-slate-700">
+              <ul className="space-y-3 text-black">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span>Multi-provider oversight</span>
@@ -233,14 +233,14 @@ export default function AgenciesPage() {
             </div>
 
             <div className="bg-orange-50 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Nonprofits
               </h3>
-              <p className="text-slate-700 mb-6">
+              <p className="text-black mb-6">
                 Deliver accredited training programs with built-in funding
                 navigation and employer connections.
               </p>
-              <ul className="space-y-3 text-slate-700">
+              <ul className="space-y-3 text-black">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-orange-600 flex-shrink-0 mt-0.5" />
                   <span>Grant-ready programs</span>
@@ -262,25 +262,25 @@ export default function AgenciesPage() {
       {/* PROOF (METRICS) */}
       <section className="py-16 bg-blue-50">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-black mb-12">
             Proven Track Record
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl p-8 text-center shadow-sm">
               <div className="text-5xl font-bold text-green-600 mb-2">5</div>
-              <div className="text-slate-700 text-lg">
+              <div className="text-black text-lg">
                 DOL Registered Programs
               </div>
             </div>
             <div className="bg-white rounded-xl p-8 text-center shadow-sm">
               <div className="text-5xl font-bold text-green-600 mb-2">2020</div>
-              <div className="text-slate-700 text-lg">ETPL Approved Since</div>
+              <div className="text-black text-lg">ETPL Approved Since</div>
             </div>
             <div className="bg-white rounded-xl p-8 text-center shadow-sm">
               <div className="text-5xl font-bold text-green-600 mb-2">
                 1,500+
               </div>
-              <div className="text-slate-700 text-lg">
+              <div className="text-black text-lg">
                 WIOA Participants Tracked
               </div>
             </div>
@@ -291,7 +291,7 @@ export default function AgenciesPage() {
       {/* PLATFORM CAPABILITIES */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-black mb-12">
             Platform Capabilities
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -314,7 +314,7 @@ export default function AgenciesPage() {
                 className="bg-slate-50 rounded-lg p-4 flex items-center gap-3"
               >
                 <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                <span className="text-slate-700 font-medium">{capability}</span>
+                <span className="text-black font-medium">{capability}</span>
               </div>
             ))}
           </div>

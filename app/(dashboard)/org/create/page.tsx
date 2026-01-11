@@ -62,10 +62,10 @@ export default function CreateOrgPage() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-black">
             Create Organization
           </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
+          <p className="mt-2 text-center text-sm text-black">
             Set up your organization to get started
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function CreateOrgPage() {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-black"
               >
                 Organization Name
               </label>
@@ -109,7 +109,7 @@ export default function CreateOrgPage() {
                 required
                 value={formData.name}
                 onChange={(e) => handleNameChange(e.target.value)}
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-black rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                 placeholder="Acme Training Center"
               />
             </div>
@@ -117,12 +117,12 @@ export default function CreateOrgPage() {
             <div>
               <label
                 htmlFor="slug"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-black"
               >
                 URL Slug
               </label>
               <div className="mt-1 flex rounded-md shadow-sm">
-                <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-700 text-sm">
+                <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-black text-sm">
                   yourapp.com/org/
                 </span>
                 <input
@@ -139,7 +139,7 @@ export default function CreateOrgPage() {
                   placeholder="acme-training"
                 />
               </div>
-              <p className="mt-1 text-xs text-gray-700">
+              <p className="mt-1 text-xs text-black">
                 Lowercase letters, numbers, and hyphens only
               </p>
             </div>
@@ -147,7 +147,7 @@ export default function CreateOrgPage() {
             <div>
               <label
                 htmlFor="type"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-black"
               >
                 Organization Type
               </label>
@@ -183,7 +183,7 @@ export default function CreateOrgPage() {
             <button
               type="button"
               onClick={() => router.back()}
-              className="text-sm text-gray-600 hover:text-gray-900"
+              className="text-sm text-black hover:text-black"
             >
               Cancel
             </button>

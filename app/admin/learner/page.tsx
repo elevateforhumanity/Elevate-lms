@@ -81,7 +81,7 @@ export default async function LearnerPage() {
               <h2 className="text-2xl font-bold mb-4">
                 Individual Learner View
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 Select a specific learner ID to view detailed information
               </p>
               <Link

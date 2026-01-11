@@ -92,31 +92,31 @@ export default function FAQPage() {
       <div className="mb-6">
         <Link
           href="/tax/rise-up-foundation"
-          className="text-sm text-gray-600 hover:text-gray-900"
+          className="text-sm text-black hover:text-black"
         >
           ← Back to Rise Up Foundation
         </Link>
       </div>
 
       <h1 className="text-4xl font-bold">Frequently Asked Questions</h1>
-      <p className="mt-3 text-lg text-gray-600">
+      <p className="mt-3 text-lg text-black">
         Common questions about free VITA tax preparation services.
       </p>
 
       <section className="mt-8 space-y-4">
         {faqs.map((faq, index) => (
           <div key={index} className="rounded-2xl border bg-white p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-2">
+            <h2 className="text-lg font-semibold text-black mb-2">
               {faq.question}
             </h2>
-            <p className="text-gray-600">{faq.answer}</p>
+            <p className="text-black">{faq.answer}</p>
           </div>
         ))}
       </section>
 
       <section className="mt-8 rounded-2xl bg-green-50 border-l-4 border-brand-green-600 p-6">
         <h2 className="text-xl font-bold mb-3">Still Have Questions?</h2>
-        <p className="text-gray-700 mb-6">
+        <p className="text-black mb-6">
           Can't find the answer you're looking for? Give us a call and we'll be
           happy to help.
         </p>

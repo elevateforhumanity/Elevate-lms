@@ -9,7 +9,7 @@ export default function PrivacyPage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Privacy Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Information We Collect</h2>
       <ul><li>Personal information (name, email, phone)</li><li>Education records</li><li>Usage data</li><li>Cookies and tracking</li></ul>
       <h2>How We Use It</h2>

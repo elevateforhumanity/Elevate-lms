@@ -45,16 +45,16 @@ export function InstructorBio({
 
         {/* Info */}
         <div className="flex-1">
-          <h2 className="text-2xl font-bold text-slate-900">{name}</h2>
+          <h2 className="text-2xl font-bold text-black">{name}</h2>
           <p className="text-brand-orange-600 font-semibold mt-1">{title}</p>
 
           {/* Stats */}
           <div className="flex gap-6 mt-4">
-            <div className="flex items-center gap-2 text-sm text-slate-600">
+            <div className="flex items-center gap-2 text-sm text-black">
               <BookOpen className="w-4 h-4" />
               <span>{coursesCount} Courses</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-slate-600">
+            <div className="flex items-center gap-2 text-sm text-black">
               <Award className="w-4 h-4" />
               <span>{studentsCount} Students</span>
             </div>
@@ -85,17 +85,17 @@ export function InstructorBio({
           </div>
 
           {/* Bio */}
-          <p className="mt-4 text-slate-700 leading-relaxed">{bio}</p>
+          <p className="mt-4 text-black leading-relaxed">{bio}</p>
 
           {/* Credentials */}
           {credentials.length > 0 && (
             <div className="mt-4">
-              <h3 className="text-sm font-semibold text-slate-900 mb-2">
+              <h3 className="text-sm font-semibold text-black mb-2">
                 Credentials & Certifications
               </h3>
               <ul className="space-y-1">
                 {credentials.map((cred, idx) => (
-                  <li key={idx} className="text-sm text-slate-600 flex items-start gap-2">
+                  <li key={idx} className="text-sm text-black flex items-start gap-2">
                     <span className="text-emerald-500 mt-1">✓</span>
                     {cred}
                   </li>
@@ -107,7 +107,7 @@ export function InstructorBio({
           {/* Specialties */}
           {specialties.length > 0 && (
             <div className="mt-4">
-              <h3 className="text-sm font-semibold text-slate-900 mb-2">
+              <h3 className="text-sm font-semibold text-black mb-2">
                 Areas of Expertise
               </h3>
               <div className="flex flex-wrap gap-2">

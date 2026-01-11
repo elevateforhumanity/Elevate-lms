@@ -147,7 +147,7 @@ export default function DiscussionsClient({
     <main className="min-h-screen bg-slate-50">
       <section className="mx-auto max-w-4xl px-4 py-10">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-semibold text-slate-900">
+          <h1 className="text-2xl font-semibold text-black">
             Course Discussions
           </h1>
           <div className="flex gap-2">
@@ -156,7 +156,7 @@ export default function DiscussionsClient({
               className={`px-3 py-1 text-sm rounded-lg ${
                 sortBy === 'recent'
                   ? 'bg-brand-orange-500 text-white'
-                  : 'bg-white text-slate-600 border border-slate-200'
+                  : 'bg-white text-black border border-slate-200'
               }`}
             >
               Recent
@@ -166,7 +166,7 @@ export default function DiscussionsClient({
               className={`px-3 py-1 text-sm rounded-lg ${
                 sortBy === 'popular'
                   ? 'bg-brand-orange-500 text-white'
-                  : 'bg-white text-slate-600 border border-slate-200'
+                  : 'bg-white text-black border border-slate-200'
               }`}
             >
               Popular
@@ -187,7 +187,7 @@ export default function DiscussionsClient({
           onSubmit={createThread}
           className="mt-4 space-y-2 rounded-2xl border border-slate-100 bg-white p-4 text-sm shadow-sm"
         >
-          <p className="text-xs font-semibold text-slate-700">
+          <p className="text-xs font-semibold text-black">
             Start a new topic
           </p>
           <input
@@ -218,11 +218,11 @@ export default function DiscussionsClient({
               className="rounded-2xl border border-slate-100 bg-white p-4 text-sm shadow-sm"
             >
               <div className="flex items-start justify-between">
-                <h2 className="text-sm font-semibold text-slate-900">
+                <h2 className="text-sm font-semibold text-black">
                   {t.title}
                 </h2>
               </div>
-              <p className="mt-1 text-sm text-slate-700">{t.body}</p>
+              <p className="mt-1 text-sm text-black">{t.body}</p>
               <p className="mt-1 text-[10px] text-slate-500">
                 Posted {new Date(t.created_at).toLocaleString()}
               </p>

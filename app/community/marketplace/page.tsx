@@ -54,10 +54,10 @@ export default async function CommunityMarketplacePage() {
       {/* Hero */}
       <section className="bg-zinc-900  via-white  py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-black text-gray-900 mb-6">
+          <h1 className="text-5xl font-black text-black mb-6">
             Community Marketplace
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-black max-w-3xl mx-auto">
             Discover courses, training programs, and products created by our
             community of program owners, instructors, and entrepreneurs.
           </p>
@@ -69,10 +69,10 @@ export default async function CommunityMarketplacePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold text-black">
                 Featured Courses
               </h2>
-              <p className="text-gray-600 mt-2">
+              <p className="text-black mt-2">
                 Learn from expert instructors in our community
               </p>
             </div>
@@ -113,14 +113,14 @@ export default async function CommunityMarketplacePage() {
                         <span className="text-blue-600">✓</span>
                       )}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-green-600">
+                    <h3 className="text-xl font-bold text-black mb-2 group-hover:text-brand-green-600">
                       {course.title}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                    <p className="text-black text-sm mb-4 line-clamp-2">
                       {course.description}
                     </p>
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4 text-sm text-gray-600">
+                      <div className="flex items-center gap-4 text-sm text-black">
                         <div className="flex items-center gap-1">
                           <Users className="w-4 h-4" />
                           <span>{course.total_enrollments || 0}</span>
@@ -132,7 +132,7 @@ export default async function CommunityMarketplacePage() {
                           </div>
                         )}
                       </div>
-                      <div className="text-lg font-bold text-gray-900">
+                      <div className="text-lg font-bold text-black">
                         {course.is_free ? (
                           <span className="text-green-600">Free</span>
                         ) : (
@@ -141,7 +141,7 @@ export default async function CommunityMarketplacePage() {
                       </div>
                     </div>
                     <div className="mt-4 pt-4 border-t border-gray-100">
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-black">
                         by{' '}
                         <span className="font-semibold">
                           {course.creator_profiles.display_name}
@@ -154,8 +154,8 @@ export default async function CommunityMarketplacePage() {
             </div>
           ) : (
             <div className="text-center py-12 bg-gray-50 rounded-xl">
-              <BookOpen className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-              <p className="text-gray-600">
+              <BookOpen className="w-12 h-12 text-black mx-auto mb-4" />
+              <p className="text-black">
                 No courses available yet. Check back soon!
               </p>
             </div>
@@ -168,10 +168,10 @@ export default async function CommunityMarketplacePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold text-black">
                 Shop Products
               </h2>
-              <p className="text-gray-600 mt-2">
+              <p className="text-black mt-2">
                 Tools and resources from community sellers
               </p>
             </div>
@@ -204,24 +204,24 @@ export default async function CommunityMarketplacePage() {
                     </div>
                   )}
                   <div className="p-4">
-                    <h3 className="font-bold text-gray-900 mb-2 group-hover:text-brand-green-600">
+                    <h3 className="font-bold text-black mb-2 group-hover:text-brand-green-600">
                       {product.name}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                    <p className="text-black text-sm mb-3 line-clamp-2">
                       {product.description}
                     </p>
                     <div className="flex items-center justify-between">
-                      <div className="text-lg font-bold text-gray-900">
+                      <div className="text-lg font-bold text-black">
                         ${(product.price / 100).toFixed(2)}
                       </div>
                       {product.compare_at_price && (
-                        <div className="text-sm text-gray-700 line-through">
+                        <div className="text-sm text-black line-through">
                           ${(product.compare_at_price / 100).toFixed(2)}
                         </div>
                       )}
                     </div>
                     <div className="mt-3 pt-3 border-t border-gray-100">
-                      <div className="flex items-center justify-between text-xs text-gray-600">
+                      <div className="flex items-center justify-between text-xs text-black">
                         <span>{product.shop_profiles.shop_name}</span>
                         {product.shop_profiles.verified && (
                           <span className="text-blue-600">✓ Verified</span>
@@ -234,8 +234,8 @@ export default async function CommunityMarketplacePage() {
             </div>
           ) : (
             <div className="text-center py-12 bg-white rounded-xl">
-              <ShoppingBag className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-              <p className="text-gray-600">
+              <ShoppingBag className="w-12 h-12 text-black mx-auto mb-4" />
+              <p className="text-black">
                 No products available yet. Check back soon!
               </p>
             </div>

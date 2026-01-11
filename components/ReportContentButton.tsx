@@ -79,7 +79,7 @@ export default function ReportContentButton({
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className={`flex items-center gap-2 text-gray-600 hover:text-brand-orange-600 transition-colors ${className}`}
+        className={`flex items-center gap-2 text-black hover:text-brand-orange-600 transition-colors ${className}`}
         title="Report content"
       >
         <Flag className="w-4 h-4" />
@@ -96,7 +96,7 @@ export default function ReportContentButton({
                   <Flag className="w-5 h-5 text-brand-orange-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-black">
                     Report Content
                   </h3>
                   <p className="text-sm text-gray-500">
@@ -106,7 +106,7 @@ export default function ReportContentButton({
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-black transition-colors"
                 disabled={isSubmitting}
               >
                 <X className="w-5 h-5" />
@@ -123,10 +123,10 @@ stroke="currentColor">
 d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                <h4 className="text-lg font-semibold text-black mb-2">
                   Report Submitted
                 </h4>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Thank you for helping us maintain a safe community. We'll review this report shortly.
                 </p>
               </div>
@@ -134,7 +134,7 @@ d="M5 13l4 4L19 7" />
               <form onSubmit={handleSubmit} className="p-6 space-y-4">
                 {/* Reason Selection */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Why are you reporting this?
                   </label>
                   <div className="space-y-2">
@@ -151,7 +151,7 @@ d="M5 13l4 4L19 7" />
                           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setReason(e.target.value)}
                           className="w-4 h-4 text-brand-orange-600 border-gray-300 focus:ring-red-500"
                         />
-                        <span className="text-sm text-gray-900">{r.label}</span>
+                        <span className="text-sm text-black">{r.label}</span>
                       </label>
                     ))}
                   </div>
@@ -159,7 +159,7 @@ d="M5 13l4 4L19 7" />
 
                 {/* Description */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Additional details (optional)
                   </label>
                   <textarea
@@ -184,7 +184,7 @@ d="M5 13l4 4L19 7" />
                     type="button"
                     onClick={() => setIsOpen(false)}
                     disabled={isSubmitting}
-                    className="flex-1 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
+                    className="flex-1 px-4 py-2 text-black bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
                   >
                     Cancel
                   </button>

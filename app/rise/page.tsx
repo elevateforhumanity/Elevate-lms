@@ -69,10 +69,10 @@ export default function RiseFoundationPage() {
       <section className="py-40 px-12">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-24">
-            <h2 className="text-2xl md:text-3xl font-light text-slate-900 mb-6 text-3xl md:text-2xl md:text-3xl lg:text-3xl md:text-4xl">
+            <h2 className="text-2xl md:text-3xl font-light text-black mb-6 text-3xl md:text-2xl md:text-3xl lg:text-3xl md:text-4xl">
               Our Mission
             </h2>
-            <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-black max-w-3xl mx-auto">
               To empower individuals and communities through accessible
               education, workforce training, and comprehensive support services.
             </p>
@@ -95,10 +95,10 @@ export default function RiseFoundationPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-lg md:text-lg font-semibold text-slate-900 mb-4">
+              <h3 className="text-lg md:text-lg font-semibold text-black mb-4">
                 Education
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Free training programs in healthcare, beauty, trades, and
                 technology
               </p>
@@ -120,10 +120,10 @@ export default function RiseFoundationPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-lg md:text-lg font-semibold text-slate-900 mb-4">
+              <h3 className="text-lg md:text-lg font-semibold text-black mb-4">
                 Community
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Building stronger communities through support services and
                 partnerships
               </p>
@@ -145,10 +145,10 @@ export default function RiseFoundationPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-lg md:text-lg font-semibold text-slate-900 mb-4">
+              <h3 className="text-lg md:text-lg font-semibold text-black mb-4">
                 Empowerment
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Helping individuals achieve economic independence and career
                 success
               </p>
@@ -161,20 +161,20 @@ export default function RiseFoundationPage() {
       <section className="py-40 px-12 bg-slate-50">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-24">
-            <h2 className="text-2xl md:text-3xl font-light text-slate-900 mb-6 text-3xl md:text-2xl md:text-3xl lg:text-3xl md:text-4xl">
+            <h2 className="text-2xl md:text-3xl font-light text-black mb-6 text-3xl md:text-2xl md:text-3xl lg:text-3xl md:text-4xl">
               Our Programs
             </h2>
-            <p className="text-base md:text-lg text-slate-600">
+            <p className="text-base md:text-lg text-black">
               Comprehensive training and support services
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-all duration-700">
-              <h3 className="text-3xl font-semibold text-slate-900 mb-4">
+              <h3 className="text-3xl font-semibold text-black mb-4">
                 IRS VITA Volunteer Training
               </h3>
-              <p className="text-slate-600 mb-6">
+              <p className="text-black mb-6">
                 Become an IRS-certified tax preparer through our free VITA
                 (Volunteer Income Tax Assistance) training program. Complete IRS
                 Link & Learn certification and help low-income families file
@@ -207,10 +207,10 @@ export default function RiseFoundationPage() {
             </div>
 
             <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-all duration-700">
-              <h3 className="text-3xl font-semibold text-slate-900 mb-4">
+              <h3 className="text-3xl font-semibold text-black mb-4">
                 Support Services
               </h3>
-              <p className="text-slate-600 mb-6">
+              <p className="text-black mb-6">
                 Comprehensive wraparound services including housing assistance,
                 mental health support, childcare, and transportation.
               </p>
@@ -223,10 +223,10 @@ export default function RiseFoundationPage() {
             </div>
 
             <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-all duration-700">
-              <h3 className="text-3xl font-semibold text-slate-900 mb-4">
+              <h3 className="text-3xl font-semibold text-black mb-4">
                 Apprenticeships
               </h3>
-              <p className="text-slate-600 mb-6">
+              <p className="text-black mb-6">
                 DOL-registered apprenticeship programs where students earn while
                 they learn, gaining real-world experience and industry-standard
                 credentials.
@@ -240,10 +240,10 @@ export default function RiseFoundationPage() {
             </div>
 
             <div className="bg-white rounded-lg p-8 shadow-md hover:shadow-xl transition-all duration-700">
-              <h3 className="text-3xl font-semibold text-slate-900 mb-4">
+              <h3 className="text-3xl font-semibold text-black mb-4">
                 Community Partnerships
               </h3>
-              <p className="text-slate-600 mb-6">
+              <p className="text-black mb-6">
                 Collaborating with employers, educational institutions, and
                 community organizations to create pathways to success.
               </p>
@@ -277,7 +277,7 @@ export default function RiseFoundationPage() {
             </Link>
             <Link
               href="/about"
-              className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-slate-900 transition text-lg"
+              className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-black transition text-lg"
             >
               Learn More
             </Link>

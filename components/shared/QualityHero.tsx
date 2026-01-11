@@ -85,10 +85,10 @@ export function QualityHero({
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6">
               {title}
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-black mb-8 leading-relaxed">
               {description}
             </p>
 
@@ -104,7 +104,7 @@ export function QualityHero({
                       ${
                         action.variant === 'primary'
                           ? 'bg-brand-orange-600 hover:bg-brand-orange-700 text-white'
-                          : 'bg-white hover:bg-slate-50 text-slate-900 border-2 border-slate-300'
+                          : 'bg-white hover:bg-slate-50 text-black border-2 border-slate-300'
                       }
                     `}
                   >

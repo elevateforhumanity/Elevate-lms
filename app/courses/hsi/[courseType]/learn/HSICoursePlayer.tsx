@@ -53,17 +53,17 @@ export function HSICoursePlayer({
           <div className="flex items-center gap-4">
             <button
               onClick={() => router.push('/student/courses')}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="flex items-center gap-2 text-black hover:text-black transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               <span className="font-medium">Back to Courses</span>
             </button>
             <div className="h-6 w-px bg-gray-300" />
             <div>
-              <h1 className="text-lg font-semibold text-gray-900">
+              <h1 className="text-lg font-semibold text-black">
                 {courseName}
               </h1>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 HSI Health & Safety Training
               </p>
             </div>
@@ -72,7 +72,7 @@ export function HSICoursePlayer({
           <div className="flex items-center gap-3">
             <button
               onClick={() => setUseIframe(!useIframe)}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+              className="px-4 py-2 text-sm font-medium text-black bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
             >
               {useIframe ? 'Open in New Tab' : 'Embed Course'}
             </button>
@@ -101,10 +101,10 @@ export function HSICoursePlayer({
                   <span className="text-white font-bold">i</span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900 mb-1">
+                  <h3 className="font-semibold text-black mb-1">
                     HSI Course Instructions
                   </h3>
-                  <p className="text-sm text-gray-700 mb-2">
+                  <p className="text-sm text-black mb-2">
                     Complete the course in the HSI system below. When finished,
                     click "Mark as Complete" to generate your certificate.
                   </p>
@@ -125,10 +125,10 @@ export function HSICoursePlayer({
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <ExternalLink className="w-10 h-10 text-brand-blue-600" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-black mb-4">
                 Continue to HSI Training
               </h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-black mb-8">
                 Click the button below to access your HSI course in a new
                 window. Complete the training, then return here to mark it as
                 complete.

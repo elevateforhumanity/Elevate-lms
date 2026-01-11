@@ -93,7 +93,7 @@ export default function ExternalProgressAdminClient({ initialRows }: Props) {
 
       <div className="rounded-lg border bg-blue-50 p-4 text-sm">
         <p className="font-semibold mb-2">How this works</p>
-        <ul className="space-y-1 text-slate-700">
+        <ul className="space-y-1 text-black">
           <li>
             • <span className="font-semibold">submitted</span> – student
             uploaded proof. Awaiting review.
@@ -116,7 +116,7 @@ export default function ExternalProgressAdminClient({ initialRows }: Props) {
         </h2>
         {submitted.length === 0 ? (
           <div className="rounded-lg border bg-white p-6 text-center">
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-black">
               No pending submissions to review
             </p>
           </div>
@@ -152,7 +152,7 @@ export default function ExternalProgressAdminClient({ initialRows }: Props) {
                       <div className="font-semibold">
                         {row.module?.course?.title || "Course"}
                       </div>
-                      <div className="text-xs text-slate-600">
+                      <div className="text-xs text-black">
                         {row.module?.title}
                       </div>
                     </td>
@@ -160,7 +160,7 @@ export default function ExternalProgressAdminClient({ initialRows }: Props) {
                       <div className="text-sm">{row.module?.partner_name}</div>
                     </td>
                     <td className="px-4 py-3 align-top">
-                      <div className="text-xs text-slate-600">
+                      <div className="text-xs text-black">
                         {new Date(row.created_at).toLocaleDateString()}
                       </div>
                       <div className="text-xs text-slate-500">
@@ -216,7 +216,7 @@ export default function ExternalProgressAdminClient({ initialRows }: Props) {
                           type="button"
                           disabled={loadingId === row.id}
                           onClick={() => updateStatus(row.id, "in_progress")}
-                          className="inline-flex items-center justify-center rounded-full bg-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-300 disabled:opacity-50"
+                          className="inline-flex items-center justify-center rounded-full bg-slate-200 px-4 py-2 text-xs font-semibold text-black hover:bg-slate-300 disabled:opacity-50"
                         >
                           {loadingId === row.id ? "..." : "✗ Reset"}
                         </button>
@@ -237,7 +237,7 @@ export default function ExternalProgressAdminClient({ initialRows }: Props) {
         </h2>
         {approved.length === 0 ? (
           <div className="rounded-lg border bg-white p-6 text-center">
-            <p className="text-sm text-slate-600">No approved modules yet</p>
+            <p className="text-sm text-black">No approved modules yet</p>
           </div>
         ) : (
           <div className="space-y-2">
@@ -250,7 +250,7 @@ export default function ExternalProgressAdminClient({ initialRows }: Props) {
                   <p className="text-sm font-semibold">
                     {row.user?.full_name || "Unknown"}
                   </p>
-                  <p className="text-xs text-slate-600">
+                  <p className="text-xs text-black">
                     {row.module?.title} • {row.module?.partner_name}
                   </p>
                 </div>
@@ -258,7 +258,7 @@ export default function ExternalProgressAdminClient({ initialRows }: Props) {
                   <p className="text-xs font-semibold text-emerald-700">
                     ✓ Approved
                   </p>
-                  <p className="text-xs text-slate-600">
+                  <p className="text-xs text-black">
                     {new Date(row.updated_at).toLocaleDateString()}
                   </p>
                 </div>
@@ -284,12 +284,12 @@ export default function ExternalProgressAdminClient({ initialRows }: Props) {
                   <p className="text-sm font-semibold">
                     {row.user?.full_name || "Unknown"}
                   </p>
-                  <p className="text-xs text-slate-600">
+                  <p className="text-xs text-black">
                     {row.module?.title} • {row.module?.partner_name}
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-xs text-slate-600">
+                  <p className="text-xs text-black">
                     Status: {row.status}
                   </p>
                 </div>

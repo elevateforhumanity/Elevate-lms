@@ -76,7 +76,7 @@ export default async function CategoryPage({
           <nav
             role="navigation"
             aria-label="Main navigation"
-            className="text-sm text-slate-600 mb-4"
+            className="text-sm text-black mb-4"
           >
             <Link
               href="/blog"
@@ -86,14 +86,14 @@ export default async function CategoryPage({
               Blog
             </Link>
             <span className="mx-2">/</span>
-            <span className="text-slate-900 font-semibold capitalize">
+            <span className="text-black font-semibold capitalize">
               {categoryName}
             </span>
           </nav>
-          <h1 className="text-4xl font-bold text-slate-900 mb-4 capitalize text-2xl md:text-3xl lg:text-4xl">
+          <h1 className="text-4xl font-bold text-black mb-4 capitalize text-2xl md:text-3xl lg:text-4xl">
             {categoryName}
           </h1>
-          <p className="text-slate-600">
+          <p className="text-black">
             {posts.length} article{posts.length === 1 ? '' : 's'} in this
             category
           </p>
@@ -121,7 +121,7 @@ export default async function CategoryPage({
                     </div>
                   )}
                   <div className="p-6">
-                    <h2 className="text-xl font-bold text-slate-900 mb-2">
+                    <h2 className="text-xl font-bold text-black mb-2">
                       <Link
                         href={`/blog/${post.slug}`}
                         className="hover:text-brand-blue-600"
@@ -130,7 +130,7 @@ export default async function CategoryPage({
                       </Link>
                     </h2>
                     {post.excerpt && (
-                      <p className="text-slate-600 mb-4 line-clamp-3">
+                      <p className="text-black mb-4 line-clamp-3">
                         {post.excerpt}
                       </p>
                     )}
@@ -149,7 +149,7 @@ export default async function CategoryPage({
           {/* Sidebar */}
           <aside className="lg:col-span-1">
             <div className="bg-slate-50 rounded-lg p-6 sticky top-4">
-              <h3 className="font-bold text-slate-900 mb-4">Categories</h3>
+              <h3 className="font-bold text-black mb-4">Categories</h3>
               <ul className="space-y-2">
                 {allCategories.map((cat) => (
                   <li key={cat}>
@@ -158,7 +158,7 @@ export default async function CategoryPage({
                       className={`block px-3 py-2 rounded hover:bg-white transition-colors ${
                         cat.toLowerCase() === categoryName.toLowerCase()
                           ? 'bg-blue-100 text-blue-800 font-semibold'
-                          : 'text-slate-700'
+                          : 'text-black'
                       }`}
                     >
                       {cat}

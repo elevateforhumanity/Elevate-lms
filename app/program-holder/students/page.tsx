@@ -131,7 +131,7 @@ export default async function StudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Users className="h-8 w-8 text-brand-blue-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Total Students
                   </h3>
                 </div>
@@ -142,7 +142,7 @@ export default async function StudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <GraduationCap className="h-8 w-8 text-brand-green-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Active Students
                   </h3>
                 </div>
@@ -153,7 +153,7 @@ export default async function StudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <TrendingUp className="h-8 w-8 text-purple-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Completed
                   </h3>
                 </div>
@@ -164,7 +164,7 @@ export default async function StudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Clock className="h-8 w-8 text-brand-orange-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Recent (7 days)
                   </h3>
                 </div>
@@ -177,7 +177,7 @@ export default async function StudentsPage() {
             {/* Students List */}
             <div className="bg-white rounded-lg shadow-sm border p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-2xl font-bold text-black">
                   Enrolled Students
                 </h2>
                 <Link
@@ -193,19 +193,19 @@ export default async function StudentsPage() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b">
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Student
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Program
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Status
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Enrolled
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Contact
                         </th>
                       </tr>
@@ -217,12 +217,12 @@ export default async function StudentsPage() {
                           className="border-b hover:bg-slate-50 transition-colors"
                         >
                           <td className="py-3 px-4">
-                            <div className="font-medium text-slate-900">
+                            <div className="font-medium text-black">
                               {enrollment.student?.first_name}{' '}
                               {enrollment.student?.last_name}
                             </div>
                           </td>
-                          <td className="py-3 px-4 text-slate-600">
+                          <td className="py-3 px-4 text-black">
                             {enrollment.program?.name || 'N/A'}
                           </td>
                           <td className="py-3 px-4">
@@ -232,13 +232,13 @@ export default async function StudentsPage() {
                                   ? 'bg-brand-green-100 text-green-800'
                                   : enrollment.status === 'completed'
                                     ? 'bg-purple-100 text-purple-800'
-                                    : 'bg-gray-100 text-gray-800'
+                                    : 'bg-gray-100 text-black'
                               }`}
                             >
                               {enrollment.status}
                             </span>
                           </td>
-                          <td className="py-3 px-4 text-slate-600">
+                          <td className="py-3 px-4 text-black">
                             {new Date(
                               enrollment.enrolled_at
                             ).toLocaleDateString()}
@@ -273,10 +273,10 @@ export default async function StudentsPage() {
               ) : (
                 <div className="text-center py-12">
                   <Users className="h-16 w-16 text-slate-300 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-slate-700 mb-2">
+                  <h3 className="text-lg font-semibold text-black mb-2">
                     No Students Yet
                   </h3>
-                  <p className="text-slate-600 mb-6">
+                  <p className="text-black mb-6">
                     You haven't enrolled any students yet.
                   </p>
                   <Link

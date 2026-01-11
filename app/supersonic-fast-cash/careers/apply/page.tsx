@@ -43,7 +43,7 @@ export default function CareersApplyPage() {
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Full Name *
                 </label>
                 <input
@@ -56,7 +56,7 @@ export default function CareersApplyPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Email *
                 </label>
                 <input
@@ -69,7 +69,7 @@ export default function CareersApplyPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Phone *
                 </label>
                 <input
@@ -82,7 +82,7 @@ export default function CareersApplyPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Position Applying For *
                 </label>
                 <select
@@ -100,7 +100,7 @@ export default function CareersApplyPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Years of Experience
                 </label>
                 <input
@@ -112,7 +112,7 @@ export default function CareersApplyPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Additional Information
                 </label>
                 <textarea
@@ -132,7 +132,7 @@ export default function CareersApplyPage() {
                 </button>
                 <Link
                   href="/supersonic-fast-cash/careers"
-                  className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 py-3 rounded-lg font-semibold transition-colors text-center"
+                  className="flex-1 bg-gray-200 hover:bg-gray-300 text-black px-8 py-3 rounded-lg font-semibold transition-colors text-center"
                 >
                   Back to Careers
                 </Link>

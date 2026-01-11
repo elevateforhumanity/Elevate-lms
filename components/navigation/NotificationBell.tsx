@@ -78,7 +78,7 @@ export function NotificationBell() {
         onClick={() => setIsOpen(!isOpen)}
         className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
       >
-        <Bell className="h-6 w-6 text-gray-600" />
+        <Bell className="h-6 w-6 text-black" />
         {unreadCount > 0 && (
           <span className="absolute top-0 right-0 w-5 h-5 bg-brand-orange-600 text-white text-xs rounded-full flex items-center justify-center font-bold">
             {unreadCount}
@@ -89,7 +89,7 @@ export function NotificationBell() {
         <div className="absolute right-0 mt-2 w-96 bg-white rounded-lg shadow-xl border border-gray-200 z-50">
           {/* Header */}
           <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
-            <h3 className="font-semibold text-gray-900">Notifications</h3>
+            <h3 className="font-semibold text-black">Notifications</h3>
             {unreadCount > 0 && (
               <button
                 onClick={markAllRead}
@@ -121,10 +121,10 @@ export function NotificationBell() {
                         <Icon className="h-5 w-5" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium text-gray-900 text-sm">
+                        <p className="font-medium text-black text-sm">
                           {notif.title}
                         </p>
-                        <p className="text-sm text-gray-600 mt-1">
+                        <p className="text-sm text-black mt-1">
                           {notif.message}
                         </p>
                         <p className="text-xs text-gray-400 mt-1">

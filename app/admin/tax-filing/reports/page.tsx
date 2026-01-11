@@ -37,10 +37,10 @@ export default async function TaxFilingReportsPage() {
           >
             ← Back to Tax Filing
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Tax Filing Reports
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-black">
             View analytics and generate reports for tax filing operations.
           </p>
         </div>
@@ -48,49 +48,49 @@ export default async function TaxFilingReportsPage() {
         <div className="grid md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-3xl font-bold text-brand-blue-600">0</div>
-            <div className="text-gray-600 text-sm">Returns Filed</div>
+            <div className="text-black text-sm">Returns Filed</div>
           </div>
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-3xl font-bold text-brand-green-600">$0</div>
-            <div className="text-gray-600 text-sm">Total Refunds</div>
+            <div className="text-black text-sm">Total Refunds</div>
           </div>
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-3xl font-bold text-purple-600">0</div>
-            <div className="text-gray-600 text-sm">Clients Served</div>
+            <div className="text-black text-sm">Clients Served</div>
           </div>
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-3xl font-bold text-brand-orange-600">$0</div>
-            <div className="text-gray-600 text-sm">Avg Refund</div>
+            <div className="text-black text-sm">Avg Refund</div>
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-xl font-semibold text-black mb-4">
               Report Types
             </h2>
             <div className="space-y-3">
               <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500" aria-label="Action button">
-                <div className="font-semibold text-gray-900">
+                <div className="font-semibold text-black">
                   Monthly Summary
                 </div>
-                <div className="text-sm text-gray-700">
+                <div className="text-sm text-black">
                   Returns filed and refunds processed
                 </div>
               </button>
               <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500" aria-label="Action button">
-                <div className="font-semibold text-gray-900">
+                <div className="font-semibold text-black">
                   Preparer Performance
                 </div>
-                <div className="text-sm text-gray-700">
+                <div className="text-sm text-black">
                   Individual preparer statistics
                 </div>
               </button>
               <button className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg hover:border-blue-500" aria-label="Action button">
-                <div className="font-semibold text-gray-900">
+                <div className="font-semibold text-black">
                   Client Demographics
                 </div>
-                <div className="text-sm text-gray-700">
+                <div className="text-sm text-black">
                   Client breakdown and trends
                 </div>
               </button>
@@ -98,7 +98,7 @@ export default async function TaxFilingReportsPage() {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-xl font-semibold text-black mb-4">
               Export Options
             </h2>
             <div className="space-y-4">

@@ -124,8 +124,8 @@ export function DashboardUpload({
           <Upload className="h-5 w-5 text-blue-600" />
         </div>
         <div>
-          <h3 className="text-lg font-bold text-slate-900">{title}</h3>
-          <p className="text-sm text-slate-600">{description}</p>
+          <h3 className="text-lg font-bold text-black">{title}</h3>
+          <p className="text-sm text-black">{description}</p>
         </div>
       </div>
 
@@ -156,7 +156,7 @@ export function DashboardUpload({
       {/* Uploaded Files List */}
       {files.length > 0 && (
         <div>
-          <h4 className="text-sm font-semibold text-slate-700 mb-3">
+          <h4 className="text-sm font-semibold text-black mb-3">
             Uploaded Files ({files.length})
           </h4>
           <div className="space-y-2">
@@ -168,7 +168,7 @@ export function DashboardUpload({
                 <div className="flex items-center gap-3 flex-1 min-w-0">
                   <FileText className="h-5 w-5 text-slate-400 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-slate-900 truncate">
+                    <p className="text-sm font-medium text-black truncate">
                       {file.name}
                     </p>
                     <p className="text-xs text-slate-500">

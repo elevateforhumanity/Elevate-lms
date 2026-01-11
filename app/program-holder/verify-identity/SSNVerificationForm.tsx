@@ -89,7 +89,7 @@ export default function SSNVerificationForm({
     <div className="bg-white rounded-lg shadow-lg p-8">
       <div className="mb-6">
         <h2 className="text-2xl font-bold mb-2">SSN Verification (FREE)</h2>
-        <p className="text-gray-600">
+        <p className="text-black">
           Verify your Social Security Number with the Social Security
           Administration. This is a free service and helps confirm your
           identity.
@@ -152,7 +152,7 @@ export default function SSNVerificationForm({
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Social Security Number <span className="text-red-600">*</span>
           </label>
           <input
@@ -169,7 +169,7 @@ export default function SSNVerificationForm({
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
-          <p className="text-xs text-gray-700 mt-1">
+          <p className="text-xs text-black mt-1">
             <Lock className="w-5 h-5 inline-block" /> We only store the last 4
             digits for security
           </p>
@@ -177,7 +177,7 @@ export default function SSNVerificationForm({
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               First Name <span className="text-red-600">*</span>
             </label>
             <input
@@ -193,7 +193,7 @@ export default function SSNVerificationForm({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Last Name <span className="text-red-600">*</span>
             </label>
             <input
@@ -210,7 +210,7 @@ export default function SSNVerificationForm({
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Date of Birth <span className="text-red-600">*</span>
           </label>
           <input
@@ -241,7 +241,7 @@ export default function SSNVerificationForm({
       </form>
 
       <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-black">
           <strong>About SSN Verification:</strong>
           <br />
           This free service is provided by the Social Security Administration

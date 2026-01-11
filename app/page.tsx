@@ -41,10 +41,10 @@ export default function HomePage() {
       <section className="py-8 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-2 md:mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-black mb-2 md:mb-4">
               Why Choose Our Programs
             </h2>
-            <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-black max-w-3xl mx-auto">
               Real training, real credentials, real careers
             </p>
           </div>
@@ -91,10 +91,10 @@ export default function HomePage() {
                     className="object-contain"
                   />
                 </div>
-                <h3 className="text-sm md:text-xl font-bold text-gray-900 mb-1 md:mb-3">
+                <h3 className="text-sm md:text-xl font-bold text-black mb-1 md:mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-xs md:text-base text-gray-600 leading-relaxed hidden md:block">
+                <p className="text-xs md:text-base text-black leading-relaxed hidden md:block">
                   {feature.description}
                 </p>
               </div>
@@ -106,28 +106,28 @@ export default function HomePage() {
       {/* Geographic Coverage */}
       <section className="py-12 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
             Serving Indiana Residents Statewide
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-lg md:text-xl text-black max-w-3xl mx-auto mb-8">
             With training locations across Indiana and online options, we make career training accessible to all Hoosiers
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <div className="text-3xl font-black text-blue-600 mb-2">Indianapolis</div>
-              <div className="text-sm text-gray-600">Main Campus</div>
+              <div className="text-sm text-black">Main Campus</div>
             </div>
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <div className="text-3xl font-black text-blue-600 mb-2">Fort Wayne</div>
-              <div className="text-sm text-gray-600">Training Center</div>
+              <div className="text-sm text-black">Training Center</div>
             </div>
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <div className="text-3xl font-black text-blue-600 mb-2">Evansville</div>
-              <div className="text-sm text-gray-600">Partner Site</div>
+              <div className="text-sm text-black">Partner Site</div>
             </div>
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <div className="text-3xl font-black text-blue-600 mb-2">Online</div>
-              <div className="text-sm text-gray-600">Statewide Access</div>
+              <div className="text-sm text-black">Statewide Access</div>
             </div>
           </div>
         </div>
@@ -137,10 +137,10 @@ export default function HomePage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
               Trusted Partners & Recognized Credentials
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-black max-w-3xl mx-auto">
               We partner with leading organizations to provide industry-recognized training and certifications
             </p>
           </div>
@@ -149,42 +149,42 @@ export default function HomePage() {
             <div className="flex flex-col items-center gap-2">
               <div className="h-20 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-2xl font-black text-gray-800">WorkOne</div>
-                  <div className="text-xs text-gray-600">Indiana</div>
+                  <div className="text-2xl font-black text-black">WorkOne</div>
+                  <div className="text-xs text-black">Indiana</div>
                 </div>
               </div>
             </div>
             <div className="flex flex-col items-center gap-2">
               <div className="h-20 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-2xl font-black text-gray-800">Certiport</div>
-                  <div className="text-xs text-gray-700">Testing Center</div>
+                  <div className="text-2xl font-black text-black">Certiport</div>
+                  <div className="text-xs text-black">Testing Center</div>
                 </div>
               </div>
             </div>
             <div className="flex flex-col items-center gap-2">
               <div className="h-20 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-2xl font-black text-gray-800">WIOA</div>
-                  <div className="text-xs text-gray-700">Approved Provider</div>
+                  <div className="text-2xl font-black text-black">WIOA</div>
+                  <div className="text-xs text-black">Approved Provider</div>
                 </div>
               </div>
             </div>
             <div className="flex flex-col items-center gap-2">
               <div className="h-20 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-2xl font-black text-gray-800">ETPL</div>
-                  <div className="text-xs text-gray-700">Listed Programs</div>
+                  <div className="text-2xl font-black text-black">ETPL</div>
+                  <div className="text-xs text-black">Listed Programs</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl font-bold text-black mb-4">
               Industry-Recognized Certifications
             </h3>
-            <div className="flex flex-wrap justify-center gap-4 text-sm font-semibold text-gray-700">
+            <div className="flex flex-wrap justify-center gap-4 text-sm font-semibold text-black">
               <span className="bg-white px-4 py-2 rounded-full shadow-sm">CompTIA A+</span>
               <span className="bg-white px-4 py-2 rounded-full shadow-sm">CNA Certification</span>
               <span className="bg-white px-4 py-2 rounded-full shadow-sm">HVAC EPA 608</span>

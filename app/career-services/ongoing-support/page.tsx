@@ -34,7 +34,7 @@ export default function OngoingSupportPage() {
                 <Heart className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-bold text-black mb-1">Career Coaching</h3>
-                  <p className="text-gray-700">
+                  <p className="text-black">
                     Ongoing guidance for career advancement
                   </p>
                 </div>
@@ -43,7 +43,7 @@ export default function OngoingSupportPage() {
                 <MessageCircle className="w-6 h-6 text-brand-green-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-bold text-black mb-1">Alumni Network</h3>
-                  <p className="text-gray-700">Connect with other graduates</p>
+                  <p className="text-black">Connect with other graduates</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
@@ -52,7 +52,7 @@ export default function OngoingSupportPage() {
                   <h3 className="font-bold text-black mb-1">
                     Advancement Opportunities
                   </h3>
-                  <p className="text-gray-700">Help finding better positions</p>
+                  <p className="text-black">Help finding better positions</p>
                 </div>
               </li>
             </ul>
@@ -62,7 +62,7 @@ export default function OngoingSupportPage() {
             <h3 className="text-2xl font-bold text-black mb-4">
               Need Support?
             </h3>
-            <p className="text-gray-700 mb-6">
+            <p className="text-black mb-6">
               Whether you need help with a job search, career change, or
               advancement, we're here for you.
             </p>

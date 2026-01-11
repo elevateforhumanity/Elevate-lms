@@ -51,7 +51,7 @@ export default function SuccessStoriesPage() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">Healthcare Careers</h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-black mb-4">
                   CNA, Medical Assistant, and Home Health Aide graduates now
                   working in hospitals and clinics across Indiana.
                 </p>
@@ -72,7 +72,7 @@ export default function SuccessStoriesPage() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">Skilled Trades</h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-black mb-4">
                   Barber, HVAC, and Building Maintenance graduates earning
                   $40K-$60K annually.
                 </p>
@@ -93,7 +93,7 @@ export default function SuccessStoriesPage() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">Business & Tech</h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-black mb-4">
                   Entrepreneurs and tech professionals building successful
                   careers and businesses.
                 </p>
@@ -117,21 +117,21 @@ export default function SuccessStoriesPage() {
               <div className="text-4xl font-bold text-orange-600 mb-2">
                 5,000+
               </div>
-              <p className="text-gray-600">Students Trained</p>
+              <p className="text-black">Students Trained</p>
             </div>
             <div>
               <div className="text-4xl font-bold text-orange-600 mb-2">85%</div>
-              <p className="text-gray-600">Job Placement Rate</p>
+              <p className="text-black">Job Placement Rate</p>
             </div>
             <div>
               <div className="text-4xl font-bold text-orange-600 mb-2">
                 $45K
               </div>
-              <p className="text-gray-600">Average Starting Salary</p>
+              <p className="text-black">Average Starting Salary</p>
             </div>
             <div>
               <div className="text-4xl font-bold text-orange-600 mb-2">90%</div>
-              <p className="text-gray-600">Student Satisfaction</p>
+              <p className="text-black">Student Satisfaction</p>
             </div>
           </div>
         </div>

@@ -156,10 +156,10 @@ export default function SolutionsPage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-2xl md:text-3xl font-bold text-black mb-4">
               Solutions for Every Organization
             </h2>
-            <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-black max-w-3xl mx-auto">
               Whether you're a workforce agency, training provider, or employer,
               we have a solution that fits your needs.
             </p>
@@ -176,15 +176,15 @@ export default function SolutionsPage() {
                   <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
                     <Icon className="w-8 h-8 text-brand-blue-600" />
                   </div>
-                  <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-4">
+                  <h3 className="text-lg md:text-lg font-bold text-black mb-4">
                     {solution.title}
                   </h3>
-                  <p className="text-slate-600 mb-6">{solution.description}</p>
+                  <p className="text-black mb-6">{solution.description}</p>
                   <ul className="space-y-3 mb-8">
                     {solution.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2">
                         <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-700">
+                        <span className="text-sm text-black">
                           {feature}
                         </span>
                       </li>
@@ -208,10 +208,10 @@ export default function SolutionsPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-2xl md:text-3xl font-bold text-black mb-4">
               Integrated Content Partners
             </h2>
-            <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-black max-w-3xl mx-auto">
               Access industry-leading training content through our platform. No
               separate logins or integrations needed.
             </p>
@@ -225,10 +225,10 @@ export default function SolutionsPage() {
                 className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition text-center group"
               >
                 <div className="text-5xl mb-4">{product.logo}</div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-blue-600 transition">
+                <h3 className="text-lg font-bold text-black mb-2 group-hover:text-brand-blue-600 transition">
                   {product.name}
                 </h3>
-                <p className="text-sm text-slate-600">{product.description}</p>
+                <p className="text-sm text-black">{product.description}</p>
               </Link>
             ))}
           </div>
@@ -254,7 +254,7 @@ export default function SolutionsPage() {
             </Link>
             <Link
               href="/contact?topic=enterprise"
-              className="inline-flex items-center justify-center bg-white text-slate-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-slate-100 transition"
+              className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-slate-100 transition"
             >
               Contact Sales
             </Link>

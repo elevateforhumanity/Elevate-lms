@@ -66,39 +66,39 @@ export default function HSIPage() {
       {/* Features */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-8 text-center">
             What You Get
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
               <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
-              <div className="text-slate-700">
+              <div className="text-black">
                 Industry-recognized certifications
               </div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
               <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
-              <div className="text-slate-700">
+              <div className="text-black">
                 Hands-on training with real equipment
               </div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
               <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
-              <div className="text-slate-700">Experienced instructors</div>
+              <div className="text-black">Experienced instructors</div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
               <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
-              <div className="text-slate-700">
+              <div className="text-black">
                 Small class sizes (max 12 students)
               </div>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-sm flex items-start gap-3">
               <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
-              <div className="text-slate-700">
+              <div className="text-black">
                 Traditional and blended learning options
               </div>
             </div>
@@ -109,23 +109,23 @@ export default function HSIPage() {
       {/* Available Courses */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-2xl md:text-3xl font-bold text-slate-900 mb-12 text-center text-2xl md:text-3xl lg:text-2xl md:text-3xl">
+          <h2 className="text-2xl md:text-2xl md:text-3xl font-bold text-black mb-12 text-center text-2xl md:text-3xl lg:text-2xl md:text-3xl">
             Available Courses
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-blue-500 transition-colors">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-black">
                   CPR & AED Training
                 </h3>
               </div>
 
-              <div className="flex items-center gap-2 text-slate-600 mb-2">
+              <div className="flex items-center gap-2 text-black mb-2">
                 <Clock className="w-4 h-4" />
                 <span>4 hours</span>
               </div>
 
-              <div className="flex items-center gap-2 text-slate-600 mb-2">
+              <div className="flex items-center gap-2 text-black mb-2">
                 <Award className="w-4 h-4" />
                 <span>HSI CPR/AED Certificate</span>
               </div>
@@ -133,17 +133,17 @@ export default function HSIPage() {
 
             <div className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-blue-500 transition-colors">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-black">
                   First Aid Training
                 </h3>
               </div>
 
-              <div className="flex items-center gap-2 text-slate-600 mb-2">
+              <div className="flex items-center gap-2 text-black mb-2">
                 <Clock className="w-4 h-4" />
                 <span>4 hours</span>
               </div>
 
-              <div className="flex items-center gap-2 text-slate-600 mb-2">
+              <div className="flex items-center gap-2 text-black mb-2">
                 <Award className="w-4 h-4" />
                 <span>HSI First Aid Certificate</span>
               </div>
@@ -151,17 +151,17 @@ export default function HSIPage() {
 
             <div className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-blue-500 transition-colors">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-black">
                   Emergency Medical Responder
                 </h3>
               </div>
 
-              <div className="flex items-center gap-2 text-slate-600 mb-2">
+              <div className="flex items-center gap-2 text-black mb-2">
                 <Clock className="w-4 h-4" />
                 <span>80 hours</span>
               </div>
 
-              <div className="flex items-center gap-2 text-slate-600 mb-2">
+              <div className="flex items-center gap-2 text-black mb-2">
                 <Award className="w-4 h-4" />
                 <span>EMR Certification</span>
               </div>
@@ -169,17 +169,17 @@ export default function HSIPage() {
 
             <div className="bg-white border-2 border-slate-200 rounded-xl p-6 hover:border-blue-500 transition-colors">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-lg font-bold text-slate-900">
+                <h3 className="text-lg font-bold text-black">
                   RSV Training
                 </h3>
               </div>
 
-              <div className="flex items-center gap-2 text-slate-600 mb-2">
+              <div className="flex items-center gap-2 text-black mb-2">
                 <Clock className="w-4 h-4" />
                 <span>2 hours</span>
               </div>
 
-              <div className="flex items-center gap-2 text-slate-600 mb-2">
+              <div className="flex items-center gap-2 text-black mb-2">
                 <Award className="w-4 h-4" />
                 <span>RSV Certificate</span>
               </div>
@@ -191,12 +191,12 @@ export default function HSIPage() {
       {/* Contact Information */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-8 text-center">
             Need Help?
           </h2>
           <div className="bg-white rounded-xl p-8 shadow-lg">
             <div className="mb-6">
-              <div className="font-bold text-slate-900 text-lg mb-2">
+              <div className="font-bold text-black text-lg mb-2">
                 Geoff Albrecht
               </div>
 

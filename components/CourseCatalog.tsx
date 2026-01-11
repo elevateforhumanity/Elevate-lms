@@ -184,7 +184,7 @@ export function CourseCatalog() {
 
         {/* Results Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-          <p className="text-gray-600">
+          <p className="text-black">
             Showing <span className="font-semibold">{filteredCourses.length}</span> courses
           </p>
           <select
@@ -221,9 +221,9 @@ export function CourseCatalog() {
                 </div>
 
                 <h3 className="text-xl font-bold mb-2">{course.title}</h3>
-                <p className="text-sm text-gray-600 mb-3">{course.description}</p>
+                <p className="text-sm text-black mb-3">{course.description}</p>
 
-                <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                <div className="flex items-center gap-4 text-sm text-black mb-3">
                   <div className="flex items-center gap-1">
                     <span className="text-yellow-500">★</span>
                     <span className="font-semibold">{course.rating}</span>
@@ -232,15 +232,15 @@ export function CourseCatalog() {
                   <span>⏱️ {course.duration}</span>
                 </div>
 
-                <p className="text-sm text-gray-600 mb-3">
+                <p className="text-sm text-black mb-3">
                   Instructor: <span className="font-semibold">{course.instructor}</span>
                 </p>
 
                 <div className="mb-4">
-                  <p className="text-xs font-semibold text-gray-700 mb-2">Skills:</p>
+                  <p className="text-xs font-semibold text-black mb-2">Skills:</p>
                   <div className="flex flex-wrap gap-1">
                     {course.skills.slice(0, 3).map(skill => (
-                      <span key={skill} className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs rounded">
+                      <span key={skill} className="px-2 py-0.5 bg-gray-100 text-black text-xs rounded">
                         {skill}
                       </span>
                     ))}
@@ -260,7 +260,7 @@ export function CourseCatalog() {
 
         {filteredCourses.length === 0 && (
           <Card className="p-12 text-center">
-            <p className="text-xl text-gray-600 mb-2">No courses found</p>
+            <p className="text-xl text-black mb-2">No courses found</p>
             <p className="text-gray-500">Try adjusting your filters or search query</p>
           </Card>
         )}

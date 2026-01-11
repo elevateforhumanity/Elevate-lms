@@ -15,16 +15,16 @@ export default function HomeProgramsSection() {
             <p className="text-xs font-semibold uppercase tracking-widest text-orange-500">
               Elevate For Humanity
             </p>
-            <h2 className="mt-1 text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900">
+            <h2 className="mt-1 text-3xl sm:text-4xl md:text-5xl font-bold text-black">
               Training programs for real careers
             </h2>
-            <p className="mt-3 sm:mt-4 max-w-2xl text-base sm:text-lg text-slate-600">
+            <p className="mt-3 sm:mt-4 max-w-2xl text-base sm:text-lg text-black">
               Skilled trades, healthcare, and transportation
             </p>
           </div>
           <Link
             href="/programs"
-            className="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 whitespace-nowrap"
+            className="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-black hover:bg-slate-100 whitespace-nowrap"
           >
             View all programs
           </Link>
@@ -55,10 +55,10 @@ export default function HomeProgramsSection() {
 
               {/* Content */}
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-lg font-semibold text-slate-900">
+                <h3 className="text-lg font-semibold text-black">
                   {program.name}
                 </h3>
-                <p className="mt-2 line-clamp-3 text-sm text-slate-700">
+                <p className="mt-2 line-clamp-3 text-sm text-black">
                   {program.shortDescription}
                 </p>
 
@@ -78,7 +78,7 @@ export default function HomeProgramsSection() {
                   </Link>
                   <Link
                     href={`/apply?program=${encodeURIComponent(program.slug)}`}
-                    className="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-800 hover:bg-slate-100 min-h-[44px]"
+                    className="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-xs sm:text-sm font-semibold text-black hover:bg-slate-100 min-h-[44px]"
                   >
                     Start application
                   </Link>

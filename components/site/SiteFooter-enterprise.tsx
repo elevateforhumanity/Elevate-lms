@@ -21,12 +21,12 @@ export default function SiteFooterEnterprise() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white text-slate-900 border-t border-slate-200">
+    <footer className="bg-white text-black border-t border-slate-200">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16">
         {/* 1. Hero Block */}
         <div className="mb-12 text-center">
           <Link href="/" aria-label="Link" className="inline-block mb-4">
-            <div className="font-black text-slate-900 text-3xl tracking-tight">
+            <div className="font-black text-black text-3xl tracking-tight">
               Elevate
             </div>
             <div className="text-orange-500 text-sm font-semibold -mt-1">
@@ -34,13 +34,13 @@ export default function SiteFooterEnterprise() {
             </div>
           </Link>
 
-          <p className="text-lg text-slate-700 mb-6 max-w-2xl mx-auto">
+          <p className="text-lg text-black mb-6 max-w-2xl mx-auto">
             Free job training. Real careers. No debt.
           </p>
 
           {/* ONE CTA */}
           <div className="bg-blue-50 border-2 border-blue-600 rounded-lg p-6 max-w-md mx-auto">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
+            <h3 className="text-xl font-bold text-black mb-3">
               Need Help? Talk to an Advisor
             </h3>
             <a
@@ -57,14 +57,14 @@ export default function SiteFooterEnterprise() {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Column 1: About */}
           <div>
-            <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wide mb-4">
+            <h3 className="font-bold text-black text-sm uppercase tracking-wide mb-4">
               About
             </h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/about"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   Our Mission
                 </Link>
@@ -72,7 +72,7 @@ export default function SiteFooterEnterprise() {
               <li>
                 <Link
                   href="/about/team"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   Our Story
                 </Link>
@@ -80,7 +80,7 @@ export default function SiteFooterEnterprise() {
               <li>
                 <Link
                   href="/careers"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   Careers
                 </Link>
@@ -88,7 +88,7 @@ export default function SiteFooterEnterprise() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   Contact Us
                 </Link>
@@ -98,14 +98,14 @@ export default function SiteFooterEnterprise() {
 
           {/* Column 2: Get Help */}
           <div>
-            <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wide mb-4">
+            <h3 className="font-bold text-black text-sm uppercase tracking-wide mb-4">
               Get Help
             </h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/contact"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   Contact Us
                 </Link>
@@ -113,7 +113,7 @@ export default function SiteFooterEnterprise() {
               <li>
                 <Link
                   href="/faq"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   FAQ
                 </Link>
@@ -121,7 +121,7 @@ export default function SiteFooterEnterprise() {
               <li>
                 <Link
                   href="/support"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   Student Support
                 </Link>
@@ -129,7 +129,7 @@ export default function SiteFooterEnterprise() {
               <li>
                 <Link
                   href="/help"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   Technical Support
                 </Link>
@@ -139,14 +139,14 @@ export default function SiteFooterEnterprise() {
 
           {/* Column 3: Legal */}
           <div>
-            <h3 className="font-bold text-slate-900 text-sm uppercase tracking-wide mb-4">
+            <h3 className="font-bold text-black text-sm uppercase tracking-wide mb-4">
               Legal
             </h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   Privacy Policy
                 </Link>
@@ -154,7 +154,7 @@ export default function SiteFooterEnterprise() {
               <li>
                 <Link
                   href="/terms-of-service"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   Terms of Service
                 </Link>
@@ -162,7 +162,7 @@ export default function SiteFooterEnterprise() {
               <li>
                 <Link
                   href="/refund-policy"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   Refund Policy
                 </Link>
@@ -170,7 +170,7 @@ export default function SiteFooterEnterprise() {
               <li>
                 <Link
                   href="/accessibility"
-                  className="text-slate-700 hover:text-slate-900 transition"
+                  className="text-black hover:text-black transition"
                 >
                   Accessibility
                 </Link>
@@ -183,17 +183,17 @@ export default function SiteFooterEnterprise() {
         <div className="bg-slate-50 border border-slate-200 rounded-lg p-8 mb-8">
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h4 className="font-bold text-slate-900 mb-3">
+              <h4 className="font-bold text-black mb-3">
                 Elevate For Humanity, Inc.
               </h4>
-              <p className="text-slate-700 mb-2">Indianapolis, Indiana</p>
-              <p className="text-slate-600 text-sm">
+              <p className="text-black mb-2">Indianapolis, Indiana</p>
+              <p className="text-black text-sm">
                 Nonprofit workforce development organization
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-slate-900 mb-3">Credentials</h4>
-              <ul className="space-y-2 text-slate-700 text-sm">
+              <h4 className="font-bold text-black mb-3">Credentials</h4>
+              <ul className="space-y-2 text-black text-sm">
                 <li className="flex items-start gap-2">
                   <span className="text-green-600 font-bold">✓</span>
                   <span>DOL Registered Apprenticeship Sponsor</span>
@@ -219,7 +219,7 @@ export default function SiteFooterEnterprise() {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition text-slate-900"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition text-black"
               >
                 <svg
                   className="w-4 h-4"
@@ -233,7 +233,7 @@ export default function SiteFooterEnterprise() {
                 href="https://www.linkedin.com/company/elevate-for-humanity"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-900 transition"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-black transition"
                 aria-label="LinkedIn"
               >
                 <svg
@@ -248,7 +248,7 @@ export default function SiteFooterEnterprise() {
                 href="https://www.facebook.com/profile.php?id=61571046346179"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-900 transition"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-black transition"
                 aria-label="Facebook"
               >
                 <svg
@@ -263,7 +263,7 @@ export default function SiteFooterEnterprise() {
                 href="https://www.instagram.com/elevateforhumanity"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-900 transition"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-black transition"
                 aria-label="Instagram"
               >
                 <svg
@@ -278,7 +278,7 @@ export default function SiteFooterEnterprise() {
                 href="https://www.youtube.com/@elevateforhumanity"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-slate-900 transition"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 text-black transition"
                 aria-label="YouTube"
               >
                 <svg
@@ -292,7 +292,7 @@ export default function SiteFooterEnterprise() {
             </div>
 
             {/* Copyright */}
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-black">
               © {currentYear} Elevate For Humanity. All Rights Reserved.
             </p>
           </div>

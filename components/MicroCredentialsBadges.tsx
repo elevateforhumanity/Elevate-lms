@@ -136,17 +136,17 @@ export default function MicroCredentialsBadges() {
           <Card className="p-6 text-center">
             <div className="text-4xl mb-2 text-2xl md:text-3xl lg:text-4xl">🏆</div>
             <p className="text-3xl font-bold text-brand-orange-600">{earnedBadges.length}</p>
-            <p className="text-gray-600">Badges Earned</p>
+            <p className="text-black">Badges Earned</p>
           </Card>
           <Card className="p-6 text-center">
             <div className="text-4xl mb-2 text-2xl md:text-3xl lg:text-4xl">⏳</div>
             <p className="text-3xl font-bold text-orange-500">{inProgressBadges.length}</p>
-            <p className="text-gray-600">In Progress</p>
+            <p className="text-black">In Progress</p>
           </Card>
           <Card className="p-6 text-center">
             <div className="text-4xl mb-2 text-2xl md:text-3xl lg:text-4xl">🎯</div>
             <p className="text-3xl font-bold text-blue-600">{availableBadges.length}</p>
-            <p className="text-gray-600">Available</p>
+            <p className="text-black">Available</p>
           </Card>
         </div>
 
@@ -179,12 +179,12 @@ export default function MicroCredentialsBadges() {
                 </span>
               </div>
 
-              <p className="text-gray-600 text-sm mb-4 text-center">{badge.description}</p>
+              <p className="text-black text-sm mb-4 text-center">{badge.description}</p>
 
               {badge.progress !== undefined && !badge.earnedDate && (
                 <div className="mb-4">
                   <div className="flex justify-between text-sm mb-1">
-                    <span className="text-gray-600">Progress</span>
+                    <span className="text-black">Progress</span>
                     <span className="font-semibold text-brand-orange-600">{badge.progress}%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
@@ -197,10 +197,10 @@ export default function MicroCredentialsBadges() {
               )}
 
               <div className="mb-4">
-                <p className="text-sm font-semibold text-gray-700 mb-2">Requirements:</p>
+                <p className="text-sm font-semibold text-black mb-2">Requirements:</p>
                 <ul className="space-y-1">
                   {badge.requirements.map((req, idx) => (
-                    <li key={idx} className="text-xs text-gray-600 flex items-start">
+                    <li key={idx} className="text-xs text-black flex items-start">
                       <span className={`mr-2 ${badge.earnedDate ? 'text-green-500' : 'text-gray-400'}`}>
                         {badge.earnedDate ? '✓' : '○'}
                       </span>
@@ -250,19 +250,19 @@ export default function MicroCredentialsBadges() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
               <h4 className="font-semibold text-red-700 mb-2">🔒 Verified</h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 All badges are blockchain-verified and tamper-proof
               </p>
             </div>
             <div>
               <h4 className="font-semibold text-orange-700 mb-2">🌐 Shareable</h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Share on LinkedIn, resume, or portfolio with verification links
               </p>
             </div>
             <div>
               <h4 className="font-semibold text-red-700 mb-2">📊 Stackable</h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Combine badges to earn advanced credentials and certifications
               </p>
             </div>

@@ -310,7 +310,7 @@ export default function DevStudioPage() {
                 ))}
               </select>
 
-              <div className="flex items-center gap-1 text-sm text-gray-600">
+              <div className="flex items-center gap-1 text-sm text-black">
                 <GitBranch className="w-4 h-4" />
                 <span>{branch}</span>
               </div>
@@ -381,7 +381,7 @@ export default function DevStudioPage() {
                 filePath={selectedFile}
               />
             ) : (
-              <div className="flex items-center justify-center h-full bg-slate-900 text-gray-600">
+              <div className="flex items-center justify-center h-full bg-slate-900 text-black">
                 <div className="text-center">
                   <p className="text-lg mb-2">No file selected</p>
                   <p className="text-sm">

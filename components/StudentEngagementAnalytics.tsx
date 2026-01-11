@@ -58,37 +58,37 @@ export default function StudentEngagementAnalytics() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Active Students</h3>
+            <h3 className="text-sm text-black mb-2">Active Students</h3>
             <p className="text-3xl font-bold text-brand-orange-600">{metrics.activeStudents.toLocaleString()}</p>
             <p className="text-sm text-green-600">↑ 8% from last period</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Engagement Rate</h3>
+            <h3 className="text-sm text-black mb-2">Engagement Rate</h3>
             <p className="text-3xl font-bold text-orange-500">{metrics.engagementRate}%</p>
             <p className="text-sm text-green-600">↑ 3% improvement</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Avg Session Time</h3>
+            <h3 className="text-sm text-black mb-2">Avg Session Time</h3>
             <p className="text-3xl font-bold text-blue-600">{metrics.avgSessionTime} min</p>
-            <p className="text-sm text-gray-600">Per student</p>
+            <p className="text-sm text-black">Per student</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Completion Rate</h3>
+            <h3 className="text-sm text-black mb-2">Completion Rate</h3>
             <p className="text-3xl font-bold text-green-600">{metrics.completionRate}%</p>
             <p className="text-sm text-green-600">Above target</p>
           </Card>
 
           <Card className="p-6 bg-yellow-50">
-            <h3 className="text-sm text-gray-600 mb-2">At-Risk Students</h3>
+            <h3 className="text-sm text-black mb-2">At-Risk Students</h3>
             <p className="text-3xl font-bold text-yellow-600">{metrics.atRiskStudents}</p>
             <p className="text-sm text-yellow-700">Need intervention</p>
           </Card>
 
           <Card className="p-6 bg-green-50">
-            <h3 className="text-sm text-gray-600 mb-2">High Performers</h3>
+            <h3 className="text-sm text-black mb-2">High Performers</h3>
             <p className="text-3xl font-bold text-green-600">{metrics.highPerformers}</p>
             <p className="text-sm text-green-700">Top 10%</p>
           </Card>
@@ -102,7 +102,7 @@ export default function StudentEngagementAnalytics() {
                 <div key={trend.week}>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="font-medium">{trend.week}</span>
-                    <span className="text-gray-600">{trend.rate}% • {trend.active} active</span>
+                    <span className="text-black">{trend.rate}% • {trend.active} active</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
@@ -123,7 +123,7 @@ export default function StudentEngagementAnalytics() {
                   <div className="flex-1">
                     <div className="flex justify-between text-sm mb-1">
                       <span className="font-medium">{activity.type}</span>
-                      <span className="text-gray-600">{activity.count.toLocaleString()}</span>
+                      <span className="text-black">{activity.count.toLocaleString()}</span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
                       <div
@@ -142,7 +142,7 @@ export default function StudentEngagementAnalytics() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="p-6   ">
             <h3 className="font-bold mb-2">⚠️ Alert</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               42 students haven't logged in for 7+ days. Consider sending re-engagement emails.
             </p>
             <Button size="sm" className="mt-3 w-full">Send Reminders</Button>
@@ -150,14 +150,14 @@ export default function StudentEngagementAnalytics() {
 
           <Card className="p-6   ">
             <h3 className="font-bold mb-2">✓ Success</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Engagement rate increased 3% this month. Video content is driving participation.
             </p>
           </Card>
 
           <Card className="p-6   ">
             <h3 className="font-bold mb-2">💡 Insight</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Peak activity hours are 7-9 PM. Schedule live sessions during this window.
             </p>
           </Card>

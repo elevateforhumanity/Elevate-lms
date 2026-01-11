@@ -19,10 +19,10 @@ export default function NotFound() {
       <div className="text-center px-4 max-w-2xl">
         <div className="mb-8">
           <h1 className="text-9xl font-bold text-brand-orange-600 mb-4">404</h1>
-          <h2 className="text-4xl font-bold text-slate-900 mb-4 text-2xl md:text-3xl lg:text-4xl">
+          <h2 className="text-4xl font-bold text-black mb-4 text-2xl md:text-3xl lg:text-4xl">
             Page Not Found
           </h2>
-          <p className="text-xl text-slate-600 mb-8">
+          <p className="text-xl text-black mb-8">
             The page you're looking for doesn't exist or has been moved.
           </p>
         </div>
@@ -37,7 +37,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/programs"
-            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition font-semibold"
+            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-slate-300 text-black rounded-lg hover:bg-slate-50 transition font-semibold"
           >
             <Search className="h-5 w-5" />
             Browse Programs

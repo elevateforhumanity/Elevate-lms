@@ -30,12 +30,12 @@ export default function ProfessionalTaxPage() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <h2 className="text-2xl font-bold mb-6">Professional Tax Preparation</h2>
-            <p className="text-gray-700 mb-6">
+            <p className="text-black mb-6">
               For returns that don't qualify for free VITA services, we offer professional tax preparation through Supersonic Fast Cash.
             </p>
             <div className="bg-orange-50 rounded-lg p-6 border border-orange-200 mb-6">
               <h3 className="text-xl font-semibold mb-3">Services Include</h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
+              <ul className="list-disc list-inside space-y-2 text-black">
                 <li>Individual and business tax returns</li>
                 <li>Self-employment income</li>
                 <li>Rental property income</li>
@@ -54,7 +54,7 @@ export default function ProfessionalTaxPage() {
               </Link>
               <Link
                 href="/supersonic-fast-cash/book-appointment"
-                className="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 py-3 rounded-lg font-semibold transition-colors"
+                className="inline-block bg-gray-200 hover:bg-gray-300 text-black px-8 py-3 rounded-lg font-semibold transition-colors"
               >
                 Book Appointment
               </Link>

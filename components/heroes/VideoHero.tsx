@@ -74,7 +74,7 @@ export function VideoHero({
               {secondaryCTA && (
                 <Link
                   href={secondaryCTA.href}
-                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border-3 border-white bg-white/10 backdrop-blur-sm px-10 py-4 text-lg font-bold text-white hover:bg-white hover:text-gray-900 transition-all transform hover:scale-105"
+                  className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border-3 border-white bg-white/10 backdrop-blur-sm px-10 py-4 text-lg font-bold text-white hover:bg-white hover:text-black transition-all transform hover:scale-105"
                 >
                   {secondaryCTA.text}
                 </Link>

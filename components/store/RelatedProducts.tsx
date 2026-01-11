@@ -14,7 +14,7 @@ export default function RelatedProducts({ products }: RelatedProductsProps) {
   return (
     <section className="py-12 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-slate-900 mb-8">Related Products</h2>
+        <h2 className="text-3xl font-bold text-black mb-8">Related Products</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {products.map((product) => (
             <Link
@@ -36,14 +36,14 @@ export default function RelatedProducts({ products }: RelatedProductsProps) {
                 <span className="text-xs font-semibold text-blue-700 uppercase">
                   {product.category.replace('-', ' ')}
                 </span>
-                <h3 className="text-xl font-bold mt-2 mb-2 text-slate-900">
+                <h3 className="text-xl font-bold mt-2 mb-2 text-black">
                   {product.name}
                 </h3>
-                <p className="text-slate-600 text-sm mb-4 line-clamp-2">
+                <p className="text-black text-sm mb-4 line-clamp-2">
                   {product.description}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-slate-900">
+                  <span className="text-2xl font-bold text-black">
                     ${product.salePrice || product.price}
                   </span>
                   <span className="text-blue-600 font-semibold group-hover:text-blue-700">

@@ -28,10 +28,10 @@ export default function PlatformPage() {
           </p>
 
           <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6 text-left">
-            <h2 className="text-xl font-bold mb-4 text-gray-900">
+            <h2 className="text-xl font-bold mb-4 text-black">
               Official Credentials
             </h2>
-            <ul className="space-y-2 text-gray-700">
+            <ul className="space-y-2 text-black">
               <li className="flex items-start gap-2">
                 <span className="text-blue-600 font-bold">✓</span>
                 <span>

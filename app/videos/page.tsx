@@ -41,7 +41,7 @@ export default function VideosPage() {
 
             return (
               <div key={category} className="mb-16">
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">
+                <h2 className="text-3xl font-bold text-black mb-8">
                   {category}
                 </h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -66,10 +66,10 @@ export default function VideosPage() {
                         </div>
                       </div>
                       <div className="p-6">
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                        <h3 className="text-xl font-bold text-black mb-3 line-clamp-2">
                           {video.title}
                         </h3>
-                        <p className="text-gray-600 line-clamp-3">
+                        <p className="text-black line-clamp-3">
                           {video.description}
                         </p>
                       </div>
@@ -85,10 +85,10 @@ export default function VideosPage() {
       {/* CTA */}
       <section className="bg-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl font-bold text-black mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-black mb-8">
             Apply now for 100% free career training. No tuition, no debt, real
             careers.
           </p>
@@ -101,7 +101,7 @@ export default function VideosPage() {
             </Link>
             <Link
               href="/programs"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 font-bold rounded-lg border-2 border-gray-300 transition"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white hover:bg-gray-50 text-black font-bold rounded-lg border-2 border-gray-300 transition"
             >
               View Programs
             </Link>

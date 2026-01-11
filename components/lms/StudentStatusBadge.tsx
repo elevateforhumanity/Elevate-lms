@@ -45,7 +45,7 @@ export function StudentStatusBadge({
         return {
           icon: <Clock className={size === 'sm' ? 'w-4 h-4' : size === 'lg' ? 'w-6 h-6' : 'w-5 h-5'} />,
           text: 'Getting Started',
-          color: 'text-gray-600',
+          color: 'text-black',
           bgColor: 'bg-gray-600',
           lightBg: 'bg-gray-100'
         };

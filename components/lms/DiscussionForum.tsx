@@ -126,7 +126,7 @@ export function DiscussionForum({
                       {comment.timestamp}
                     </span>
                   </div>
-                  <p className="text-slate-700">{comment.content}</p>
+                  <p className="text-black">{comment.content}</p>
                 </div>
               </div>
 
@@ -134,14 +134,14 @@ export function DiscussionForum({
               <div className="flex items-center gap-4 ml-14">
                 <button
                   onClick={() => likeComment(comment.id)}
-                  className="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 transition"
+                  className="flex items-center gap-2 text-sm text-black hover:text-blue-600 transition"
                 >
                   <ThumbsUp className="w-4 h-4" />
                   <span>{comment.likes > 0 ? comment.likes : 'Like'}</span>
                 </button>
                 <button
                   onClick={() => setReplyingTo(comment.id)}
-                  className="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 transition"
+                  className="flex items-center gap-2 text-sm text-black hover:text-blue-600 transition"
                 >
                   <Reply className="w-4 h-4" />
                   Reply
@@ -164,7 +164,7 @@ export function DiscussionForum({
                         setReplyingTo(null);
                         setReplyText('');
                       }}
-                      className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg font-semibold transition"
+                      className="px-4 py-2 text-black hover:bg-slate-100 rounded-lg font-semibold transition"
                     >
                       Cancel
                     </button>
@@ -199,7 +199,7 @@ export function DiscussionForum({
                             {reply.timestamp}
                           </span>
                         </div>
-                        <p className="text-sm text-slate-700">
+                        <p className="text-sm text-black">
                           {reply.content}
                         </p>
                       </div>
@@ -213,7 +213,7 @@ export function DiscussionForum({
           <div className="bg-white rounded-lg p-12 text-center">
             <MessageSquare className="w-16 h-16 text-slate-300 mx-auto mb-4" />
             <h3 className="text-xl font-bold mb-2">No discussions yet</h3>
-            <p className="text-slate-600">
+            <p className="text-black">
               Be the first to start a conversation about this lesson!
             </p>
           </div>

@@ -84,10 +84,10 @@ export default function SubOfficeAgreementPage() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-white rounded-lg shadow-xl p-8 text-center">
             <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl font-bold text-black mb-4">
               Agreement Signed Successfully!
             </h1>
-            <p className="text-gray-600 mb-6">
+            <p className="text-black mb-6">
               Your Sub-Office Agreement has been digitally signed and recorded.
               You will receive a copy via email shortly.
             </p>
@@ -133,7 +133,7 @@ export default function SubOfficeAgreementPage() {
         {/* Agreement Content */}
         <div className="bg-white shadow-xl p-8">
           <div className="prose max-w-none mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               Sub-Office Tax Preparation Memorandum of Understanding
             </h2>
 
@@ -460,11 +460,11 @@ export default function SubOfficeAgreementPage() {
               </div>
 
               <div className="bg-gray-50 p-4 rounded-lg mb-6">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   <strong>Digital Signature Acknowledgment:</strong> By signing
                   above, you acknowledge that:
                 </p>
-                <ul className="text-sm text-gray-600 list-disc ml-6 mt-2">
+                <ul className="text-sm text-black list-disc ml-6 mt-2">
                   <li>
                     This digital signature has the same legal effect as a
                     handwritten signature
@@ -490,7 +490,7 @@ export default function SubOfficeAgreementPage() {
         </div>
 
         {/* Footer */}
-        <div className="bg-gray-100 rounded-b-lg p-6 text-center text-sm text-gray-600">
+        <div className="bg-gray-100 rounded-b-lg p-6 text-center text-sm text-black">
           <p>
             Supersonic Fast Cash | Licensed Enrolled Agent | IRS-Authorized Tax
             Professional

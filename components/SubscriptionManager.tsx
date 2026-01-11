@@ -124,12 +124,12 @@ export function SubscriptionManager() {
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-2xl font-bold">{currentSubscription.planName}</div>
-                <div className="text-gray-600">
+                <div className="text-black">
                   ${(currentSubscription.price / 100).toFixed(2)}/month
                 </div>
               </div>
               <div className="text-right">
-                <div className="flex items-center gap-2 text-sm text-gray-600 mb-1">
+                <div className="flex items-center gap-2 text-sm text-black mb-1">
                   <Calendar size={16} />
                   <span>Renews on</span>
                 </div>
@@ -203,7 +203,7 @@ export function SubscriptionManager() {
                   <span className="text-4xl font-bold text-2xl md:text-3xl lg:text-4xl">
                     ${(plan.price / 100).toFixed(0)}
                   </span>
-                  <span className="text-gray-600">/{plan.interval}</span>
+                  <span className="text-black">/{plan.interval}</span>
                 </div>
               </CardHeader>
               <CardContent>
@@ -256,7 +256,7 @@ export function SubscriptionManager() {
                     <div className="font-semibold">
                       ${(invoice.amount / 100).toFixed(2)}
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-black">
                       {new Date(invoice.date).toLocaleDateString()}
                     </div>
                   </div>

@@ -62,7 +62,7 @@ function CourseCard({ course }: { course: Course }) {
       {/* Content */}
       <div className="flex flex-1 flex-col gap-2 p-4">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="line-clamp-2 text-sm font-semibold text-slate-900">
+          <h3 className="line-clamp-2 text-sm font-semibold text-black">
             {course.title}
           </h3>
           {course.program_type && (
@@ -73,7 +73,7 @@ function CourseCard({ course }: { course: Course }) {
         </div>
 
         {course.short_description && (
-          <p className="line-clamp-2 text-xs text-slate-600">
+          <p className="line-clamp-2 text-xs text-black">
             {course.short_description}
           </p>
         )}

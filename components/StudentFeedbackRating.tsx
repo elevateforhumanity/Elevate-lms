@@ -112,8 +112,8 @@ export function StudentFeedbackRating() {
                         </div>
                       </div>
                     </div>
-                    <p className="text-gray-700 mb-3">{review.comment}</p>
-                    <button className="text-sm text-gray-600 hover:text-gray-900">
+                    <p className="text-black mb-3">{review.comment}</p>
+                    <button className="text-sm text-black hover:text-black">
                       👍 Helpful ({review.helpful})
                     </button>
                   </div>
@@ -134,7 +134,7 @@ export function StudentFeedbackRating() {
                     </span>
                   ))}
                 </div>
-                <p className="text-sm text-gray-600">Based on {reviews.length} reviews</p>
+                <p className="text-sm text-black">Based on {reviews.length} reviews</p>
               </div>
 
               <div className="space-y-2">
@@ -150,7 +150,7 @@ export function StudentFeedbackRating() {
                           style={{ width: `${percentage}%` }}
                         />
                       </div>
-                      <span className="text-sm text-gray-600 w-8">{count}</span>
+                      <span className="text-sm text-black w-8">{count}</span>
                     </div>
                   );
                 })}
@@ -159,7 +159,7 @@ export function StudentFeedbackRating() {
 
             <Card className="p-6   ">
               <h3 className="font-bold mb-2">💡 Review Guidelines</h3>
-              <ul className="text-sm text-gray-700 space-y-2">
+              <ul className="text-sm text-black space-y-2">
                 <li>• Be specific and constructive</li>
                 <li>• Focus on course content and delivery</li>
                 <li>• Respect others' opinions</li>

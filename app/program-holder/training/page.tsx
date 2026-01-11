@@ -53,10 +53,10 @@ export default async function TrainingPage() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="p-8">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              <h2 className="text-3xl font-bold text-black mb-4">
                 Program Holder Orientation Video
               </h2>
-              <p className="text-lg text-slate-600 mb-6">
+              <p className="text-lg text-black mb-6">
                 Watch this comprehensive orientation to understand your role,
                 responsibilities, and how to use the platform effectively.
               </p>
@@ -92,7 +92,7 @@ export default async function TrainingPage() {
       {/* Training Modules */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8">
+          <h2 className="text-3xl font-bold text-black mb-8">
             Training Modules
           </h2>
 
@@ -103,7 +103,7 @@ export default async function TrainingPage() {
                 <span className="text-2xl font-bold text-blue-700">1</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Getting Started</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Learn how to set up your account, complete verification, and
                 navigate the dashboard.
               </p>
@@ -121,7 +121,7 @@ export default async function TrainingPage() {
                 <span className="text-2xl font-bold text-green-700">2</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Student Management</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Enroll students, track progress, and manage your student roster
                 effectively.
               </p>
@@ -139,7 +139,7 @@ export default async function TrainingPage() {
                 <span className="text-2xl font-bold text-purple-700">3</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Compliance & Reporting</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Understand reporting requirements and maintain compliance with
                 program standards.
               </p>
@@ -157,7 +157,7 @@ export default async function TrainingPage() {
                 <span className="text-2xl font-bold text-orange-700">4</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Document Management</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Upload and manage required documents, licenses, and
                 certifications.
               </p>
@@ -175,7 +175,7 @@ export default async function TrainingPage() {
                 <span className="text-2xl font-bold text-red-700">5</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Support & Resources</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Access help documentation, contact support, and find answers to
                 common questions.
               </p>
@@ -193,7 +193,7 @@ export default async function TrainingPage() {
                 <span className="text-2xl font-bold text-teal-700">6</span>
               </div>
               <h3 className="text-xl font-bold mb-3">Best Practices</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Learn proven strategies for student success and program
                 excellence.
               </p>

@@ -57,10 +57,10 @@ export default function CertificateVerificationForm() {
             />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold text-gray-900">
+        <h2 className="text-2xl font-bold text-black">
           Enter Certificate Number
         </h2>
-        <p className="text-gray-600 mt-2">
+        <p className="text-black mt-2">
           Enter the certificate number to verify its authenticity
         </p>
       </div>
@@ -75,7 +75,7 @@ export default function CertificateVerificationForm() {
         <div>
           <label
             htmlFor="certificateNumber"
-            className="block text-sm font-medium text-gray-700 mb-2"
+            className="block text-sm font-medium text-black mb-2"
           >
             Certificate Number
           </label>
@@ -93,7 +93,7 @@ export default function CertificateVerificationForm() {
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center text-lg font-mono"
             maxLength={20}
           />
-          <p className="mt-2 text-xs text-gray-700 text-center">
+          <p className="mt-2 text-xs text-black text-center">
             Format: EFH-YYYY-XXXXXXXX (e.g., EFH-2024-A1B2C3D4)
           </p>
         </div>
@@ -148,7 +148,7 @@ export default function CertificateVerificationForm() {
               d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-black">
             <p className="font-semibold mb-1">
               Verification is instant and secure
             </p>

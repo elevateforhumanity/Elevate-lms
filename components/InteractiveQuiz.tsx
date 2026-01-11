@@ -105,12 +105,12 @@ export function InteractiveQuiz({ questions, onComplete }: InteractiveQuizProps)
             <p className={`font-semibold mb-2 ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
               {isCorrect ? '✓ Correct!' : '✗ Incorrect'}
             </p>
-            <p className="text-sm text-gray-700">{question.explanation}</p>
+            <p className="text-sm text-black">{question.explanation}</p>
           </div>
         )}
 
         <div className="flex justify-between items-center">
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-black">
             Score: {score} / {currentQuestion + (showFeedback ? 1 : 0)}
           </div>
 

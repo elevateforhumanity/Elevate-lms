@@ -229,10 +229,10 @@ export default function AutopilotsPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Autopilot Control Center
           </h1>
-          <p className="text-gray-600">
+          <p className="text-black">
             Run automated tasks to build, fix, optimize, and deploy your
             platform
           </p>
@@ -243,7 +243,7 @@ export default function AutopilotsPage() {
           <div className="lg:col-span-2 space-y-6">
             {Object.entries(categories).map(([category, tasks]: any) => (
               <div key={category}>
-                <h2 className="text-lg font-semibold text-gray-900 mb-3 capitalize">
+                <h2 className="text-lg font-semibold text-black mb-3 capitalize">
                   {category}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -285,15 +285,15 @@ export default function AutopilotsPage() {
                                       ? 'text-brand-green-600'
                                       : status === 'failed'
                                         ? 'text-brand-orange-600'
-                                        : 'text-gray-600'
+                                        : 'text-black'
                                 }`}
                               />
                             </div>
                             <div>
-                              <h3 className="font-semibold text-gray-900">
+                              <h3 className="font-semibold text-black">
                                 {task.name}
                               </h3>
-                              <p className="text-sm text-gray-600 mt-1">
+                              <p className="text-sm text-black mt-1">
                                 {task.description}
                               </p>
                             </div>
@@ -341,7 +341,7 @@ export default function AutopilotsPage() {
                     onClick={() =>
                       setLogs((prev) => ({ ...prev, [selectedTask]: [] }))
                     }
-                    className="text-gray-600 hover:text-white text-xs"
+                    className="text-black hover:text-white text-xs"
                   >
                     Clear
                   </button>
@@ -357,7 +357,7 @@ export default function AutopilotsPage() {
                   ))}
                 </div>
               ) : (
-                <div className="text-gray-700">
+                <div className="text-black">
                   $ Select an autopilot to see output...
                 </div>
               )}

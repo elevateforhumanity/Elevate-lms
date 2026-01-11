@@ -37,11 +37,11 @@ export default function GlobalError({
             <div className="mb-8">
               <AlertTriangle className="h-20 w-20 text-red-600 mx-auto mb-6 animate-pulse" />
               
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
                 Critical Application Error
               </h1>
               
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-lg text-black mb-6">
                 We encountered a critical error that prevented the application from loading properly.
                 Our team has been automatically notified and is working to resolve this issue.
               </p>
@@ -80,7 +80,7 @@ export default function GlobalError({
               
               <a
                 href="/"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all font-semibold"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-gray-300 text-black rounded-lg hover:bg-gray-50 transition-all font-semibold"
               >
                 <Home className="h-5 w-5" />
                 Go to Homepage
@@ -88,7 +88,7 @@ export default function GlobalError({
             </div>
 
             <div className="pt-6 border-t border-gray-200">
-              <p className="text-sm text-gray-600 mb-2">
+              <p className="text-sm text-black mb-2">
                 Need immediate assistance?
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm">

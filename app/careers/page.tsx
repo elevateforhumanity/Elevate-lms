@@ -98,7 +98,7 @@ export default async function CareersPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-            <p className="text-lg text-gray-700 mb-8">
+            <p className="text-lg text-black mb-8">
               At Elevate For Humanity, we believe everyone deserves access to
               quality career training and the opportunity to build a better
               future. We partner with workforce boards, employers, and community
@@ -110,19 +110,19 @@ export default async function CareersPage() {
                 <div className="text-4xl font-bold text-brand-blue-600 mb-2">
                   10,000+
                 </div>
-                <div className="text-gray-600">Students Trained</div>
+                <div className="text-black">Students Trained</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-brand-blue-600 mb-2">
                   500+
                 </div>
-                <div className="text-gray-600">Employer Partners</div>
+                <div className="text-black">Employer Partners</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-brand-blue-600 mb-2">
                   85%
                 </div>
-                <div className="text-gray-600">Job Placement Rate</div>
+                <div className="text-black">Job Placement Rate</div>
               </div>
             </div>
           </div>
@@ -146,7 +146,7 @@ export default async function CareersPage() {
                   <h3 className="text-xl font-semibold mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+                  <p className="text-black">{benefit.description}</p>
                 </div>
               ))}
             </div>
@@ -172,7 +172,7 @@ export default async function CareersPage() {
                       <h3 className="text-xl font-semibold mb-2">
                         {position.title}
                       </h3>
-                      <p className="text-gray-600 mb-3">
+                      <p className="text-black mb-3">
                         {position.description ||
                           'Join our team and make a difference in workforce development.'}
                       </p>
@@ -213,10 +213,10 @@ export default async function CareersPage() {
 
             {openPositions.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-xl text-gray-600 mb-4">
+                <p className="text-xl text-black mb-4">
                   No open positions at the moment.
                 </p>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Check back soon or send us your resume for future
                   opportunities.
                 </p>
@@ -240,7 +240,7 @@ export default async function CareersPage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Apply Online</h3>
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Submit your application and resume through our online
                     portal.
                   </p>
@@ -252,7 +252,7 @@ export default async function CareersPage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Phone Screen</h3>
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Initial conversation with our HR team to discuss your
                     background and the role.
                   </p>
@@ -264,7 +264,7 @@ export default async function CareersPage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Team Interview</h3>
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Meet with the hiring manager and team members to discuss the
                     role in detail.
                   </p>
@@ -276,7 +276,7 @@ export default async function CareersPage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Offer</h3>
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Receive your offer and join our mission to transform lives!
                   </p>
                 </div>

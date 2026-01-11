@@ -48,7 +48,7 @@ export default function GrantProgramsPage() {
             </Link>
             <Link
               href="/funding/how-it-works"
-              className="bg-white hover:bg-slate-100 text-slate-900 px-8 py-4 rounded-lg text-lg font-semibold transition-colors shadow-lg"
+              className="bg-white hover:bg-slate-100 text-black px-8 py-4 rounded-lg text-lg font-semibold transition-colors shadow-lg"
             >
               How It Works
             </Link>
@@ -63,7 +63,7 @@ export default function GrantProgramsPage() {
             What Does ETPL Approved Mean?
           </h2>
 
-          <p className="text-lg text-slate-700 mb-6">
+          <p className="text-lg text-black mb-6">
             ETPL stands for <strong>Eligible Training Provider List</strong>. It
             means our programs are approved by the state for 100% free training
             through government funding programs like WIOA, WRG, and JRI.
@@ -72,10 +72,10 @@ export default function GrantProgramsPage() {
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-bold mb-3 text-blue-900">WIOA</h3>
-              <p className="text-sm text-slate-600 mb-2">
+              <p className="text-sm text-black mb-2">
                 Workforce Innovation and Opportunity Act
               </p>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Federal program providing free training for eligible adults and
                 dislocated workers.
               </p>
@@ -83,10 +83,10 @@ export default function GrantProgramsPage() {
 
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-bold mb-3 text-blue-900">WRG</h3>
-              <p className="text-sm text-slate-600 mb-2">
+              <p className="text-sm text-black mb-2">
                 Workforce Ready Grant (Indiana)
               </p>
-              <p className="text-slate-700">
+              <p className="text-black">
                 State program covering short-term training (4-12 weeks) for
                 Indiana residents.
               </p>
@@ -94,10 +94,10 @@ export default function GrantProgramsPage() {
 
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <h3 className="text-lg font-bold mb-3 text-blue-900">JRI</h3>
-              <p className="text-sm text-slate-600 mb-2">
+              <p className="text-sm text-black mb-2">
                 Justice Reinvestment Initiative
               </p>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Programs for individuals with criminal justice involvement
                 seeking employment.
               </p>
@@ -113,7 +113,7 @@ export default function GrantProgramsPage() {
                 <span className="text-brand-green-600 font-bold text-base">
                   ✓
                 </span>
-                <span className="text-slate-700">
+                <span className="text-black">
                   <strong>100% Tuition</strong> - No cost to you
                 </span>
               </li>
@@ -121,7 +121,7 @@ export default function GrantProgramsPage() {
                 <span className="text-brand-green-600 font-bold text-base">
                   ✓
                 </span>
-                <span className="text-slate-700">
+                <span className="text-black">
                   <strong>Books & Materials</strong> - All included
                 </span>
               </li>
@@ -129,7 +129,7 @@ export default function GrantProgramsPage() {
                 <span className="text-brand-green-600 font-bold text-base">
                   ✓
                 </span>
-                <span className="text-slate-700">
+                <span className="text-black">
                   <strong>Certification Exams</strong> - Fees covered
                 </span>
               </li>
@@ -137,7 +137,7 @@ export default function GrantProgramsPage() {
                 <span className="text-brand-green-600 font-bold text-base">
                   ✓
                 </span>
-                <span className="text-slate-700">
+                <span className="text-black">
                   <strong>No Payback Required</strong> - It's a grant, not a
                   loan
                 </span>
@@ -171,26 +171,26 @@ export default function GrantProgramsPage() {
                 </div>
                 <div className="p-6">
                   <h3 className="text-lg font-bold mb-2">{program.name}</h3>
-                  <p className="text-slate-600 mb-4 line-clamp-2">
+                  <p className="text-black mb-4 line-clamp-2">
                     {program.shortDescription}
                   </p>
 
                   <div className="space-y-2 mb-4">
-                    <p className="text-sm text-slate-700">
+                    <p className="text-sm text-black">
                       <strong>Duration:</strong> {program.duration}
                     </p>
-                    <p className="text-sm text-slate-700">
+                    <p className="text-sm text-black">
                       <strong>Delivery:</strong> {program.delivery}
                     </p>
                     {program.price && (
                       <div className="bg-slate-50 rounded p-3 mt-3">
-                        <p className="text-sm font-semibold text-slate-900 mb-1">
+                        <p className="text-sm font-semibold text-black mb-1">
                           Self-Pay Option (if funding not available):
                         </p>
-                        <p className="text-lg font-bold text-slate-900">
+                        <p className="text-lg font-bold text-black">
                           ${program.price.toLocaleString()}
                         </p>
-                        <p className="text-xs text-slate-600 mt-1">
+                        <p className="text-xs text-black mt-1">
                           Or split over 6 months: $
                           {(program.price / 6).toFixed(2)}/month
                         </p>
@@ -202,7 +202,7 @@ export default function GrantProgramsPage() {
                     <p className="text-sm font-semibold text-green-900 mb-1">
                       ✓ 100% FREE with:
                     </p>
-                    <ul className="text-xs text-slate-700 space-y-1">
+                    <ul className="text-xs text-black space-y-1">
                       {program.fundingOptions.slice(0, 3).map((option, idx) => (
                         <li key={idx}>• {option}</li>
                       ))}
@@ -235,7 +235,7 @@ export default function GrantProgramsPage() {
                 1
               </div>
               <h3 className="text-lg font-bold mb-2">Apply to Program</h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Choose your program and submit your application. We'll guide you
                 through the process.
               </p>
@@ -246,7 +246,7 @@ export default function GrantProgramsPage() {
                 2
               </div>
               <h3 className="text-lg font-bold mb-2">Check Eligibility</h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 We'll help you determine which funding program you qualify for
                 (WIOA, WRG, or JRI).
               </p>
@@ -257,7 +257,7 @@ export default function GrantProgramsPage() {
                 3
               </div>
               <h3 className="text-lg font-bold mb-2">Start Training</h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Once approved, start your training immediately. No tuition. No
                 debt.
               </p>
@@ -271,7 +271,7 @@ export default function GrantProgramsPage() {
             >
               Apply Now - It's Free
             </Link>
-            <p className="text-sm text-slate-600 mt-4">
+            <p className="text-sm text-black mt-4">
               Questions?{' '}
               <Link
                 href="/contact"

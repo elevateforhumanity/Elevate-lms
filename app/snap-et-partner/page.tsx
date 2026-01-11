@@ -73,7 +73,7 @@ export default function SNAPETPartnerPage() {
             <h2 className="text-4xl font-bold mb-4">
               Why Elevate for Humanity is Positioned
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               We already operate like a federal contractor with proven
               compliance infrastructure
             </p>
@@ -85,7 +85,7 @@ export default function SNAPETPartnerPage() {
                 <Award className="w-8 h-8 text-green-600" />
               </div>
               <h3 className="text-xl font-bold mb-3">Already Approved</h3>
-              <ul className="space-y-2 text-sm text-gray-700">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>ETPL programs (WIOA eligible)</span>
@@ -116,7 +116,7 @@ export default function SNAPETPartnerPage() {
               <h3 className="text-xl font-bold mb-3">
                 80-Hour Compliance Ready
               </h3>
-              <ul className="space-y-2 text-sm text-gray-700">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span>Real-time attendance tracking</span>
@@ -145,7 +145,7 @@ export default function SNAPETPartnerPage() {
                 <TrendingUp className="w-8 h-8 text-purple-600" />
               </div>
               <h3 className="text-xl font-bold mb-3">Verified Outcomes</h3>
-              <ul className="space-y-2 text-sm text-gray-700">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
                   <span>Credential tracking system</span>
@@ -179,7 +179,7 @@ export default function SNAPETPartnerPage() {
             <h2 className="text-4xl font-bold mb-4">
               SNAP E&T Allowable Activities
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Our programs map directly to SNAP E&T categories
             </p>
           </div>
@@ -337,7 +337,7 @@ export default function SNAPETPartnerPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Our Infrastructure</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Built for federal contractor-level compliance
             </p>
           </div>
@@ -346,7 +346,7 @@ export default function SNAPETPartnerPage() {
             <div className="bg-white rounded-xl p-6 shadow-lg text-center">
               <div className="text-4xl font-bold text-blue-600 mb-2">15+</div>
               <p className="font-bold mb-2">Training Programs</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 All ETPL-approved and credentialed
               </p>
             </div>
@@ -354,7 +354,7 @@ export default function SNAPETPartnerPage() {
             <div className="bg-white rounded-xl p-6 shadow-lg text-center">
               <div className="text-4xl font-bold text-green-600 mb-2">500+</div>
               <p className="font-bold mb-2">Students Trained</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Proven track record of outcomes
               </p>
             </div>
@@ -362,7 +362,7 @@ export default function SNAPETPartnerPage() {
             <div className="bg-white rounded-xl p-6 shadow-lg text-center">
               <div className="text-4xl font-bold text-purple-600 mb-2">85%</div>
               <p className="font-bold mb-2">Job Placement Rate</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Verified employer connections
               </p>
             </div>
@@ -372,7 +372,7 @@ export default function SNAPETPartnerPage() {
                 100%
               </div>
               <p className="font-bold mb-2">Compliance Ready</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Real-time tracking and reporting
               </p>
             </div>
@@ -385,7 +385,7 @@ export default function SNAPETPartnerPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Partnership Process</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               How we become your SNAP E&T execution partner
             </p>
           </div>
@@ -396,10 +396,10 @@ export default function SNAPETPartnerPage() {
                 1
               </div>
               <h3 className="text-xl font-bold mb-3">Intro Meeting</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Meet with FSSA/WorkOne to present capabilities
               </p>
-              <p className="text-sm text-gray-700 mt-2">2-4 weeks</p>
+              <p className="text-sm text-black mt-2">2-4 weeks</p>
             </div>
 
             <div className="text-center">
@@ -407,10 +407,10 @@ export default function SNAPETPartnerPage() {
                 2
               </div>
               <h3 className="text-xl font-bold mb-3">Program Mapping</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Map programs to SNAP E&T categories and get approval
               </p>
-              <p className="text-sm text-gray-700 mt-2">30-60 days</p>
+              <p className="text-sm text-black mt-2">30-60 days</p>
             </div>
 
             <div className="text-center">
@@ -418,10 +418,10 @@ export default function SNAPETPartnerPage() {
                 3
               </div>
               <h3 className="text-xl font-bold mb-3">Contract/MOU</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Execute partnership agreement and set up reporting
               </p>
-              <p className="text-sm text-gray-700 mt-2">30-90 days</p>
+              <p className="text-sm text-black mt-2">30-90 days</p>
             </div>
 
             <div className="text-center">
@@ -429,10 +429,10 @@ export default function SNAPETPartnerPage() {
                 4
               </div>
               <h3 className="text-xl font-bold mb-3">First Referrals</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Begin receiving and serving SNAP E&T participants
               </p>
-              <p className="text-sm text-gray-700 mt-2">Same quarter</p>
+              <p className="text-sm text-black mt-2">Same quarter</p>
             </div>
           </div>
         </div>

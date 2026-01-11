@@ -49,32 +49,32 @@ export function DashboardSidebar({
     <div className="space-y-4">
       {/* Quick Actions */}
       <div className="bg-white rounded-lg border border-slate-200 p-4">
-        <h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+        <h3 className="font-semibold text-black mb-3 flex items-center gap-2">
           <Target className="w-4 h-4 text-brand-orange-600" />
           Quick Actions
         </h3>
         <div className="space-y-2">
           <Link
             href="/lms/courses"
-            className="block px-3 py-2 text-sm text-slate-700 hover:bg-red-50 hover:text-red-700 rounded-lg transition"
+            className="block px-3 py-2 text-sm text-black hover:bg-red-50 hover:text-red-700 rounded-lg transition"
           >
             Browse Courses
           </Link>
           <Link
             href="/lms/assignments"
-            className="block px-3 py-2 text-sm text-slate-700 hover:bg-red-50 hover:text-red-700 rounded-lg transition"
+            className="block px-3 py-2 text-sm text-black hover:bg-red-50 hover:text-red-700 rounded-lg transition"
           >
             View Assignments
           </Link>
           <Link
             href="/lms/grades"
-            className="block px-3 py-2 text-sm text-slate-700 hover:bg-red-50 hover:text-red-700 rounded-lg transition"
+            className="block px-3 py-2 text-sm text-black hover:bg-red-50 hover:text-red-700 rounded-lg transition"
           >
             Check Grades
           </Link>
           <Link
             href="/lms/certificates"
-            className="block px-3 py-2 text-sm text-slate-700 hover:bg-red-50 hover:text-red-700 rounded-lg transition"
+            className="block px-3 py-2 text-sm text-black hover:bg-red-50 hover:text-red-700 rounded-lg transition"
           >
             My Certificates
           </Link>
@@ -83,7 +83,7 @@ export function DashboardSidebar({
 
       {/* Upcoming Deadlines */}
       <div className="bg-white rounded-lg border border-slate-200 p-4">
-        <h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+        <h3 className="font-semibold text-black mb-3 flex items-center gap-2">
           <Clock className="w-4 h-4 text-orange-600" />
           Upcoming Deadlines
         </h3>
@@ -93,8 +93,8 @@ export function DashboardSidebar({
           <div className="space-y-3">
             {upcomingDeadlines.slice(0, 5).map((deadline) => (
               <div key={deadline.id} className="border-l-2 border-orange-400 pl-3">
-                <p className="text-sm font-medium text-slate-900">{deadline.title}</p>
-                <p className="text-xs text-slate-600">{deadline.courseTitle}</p>
+                <p className="text-sm font-medium text-black">{deadline.title}</p>
+                <p className="text-xs text-black">{deadline.courseTitle}</p>
                 <p className="text-xs text-orange-600 font-medium mt-1">
                   {formatDate(deadline.dueDate)}
                 </p>
@@ -106,15 +106,15 @@ export function DashboardSidebar({
 
       {/* Calendar Widget */}
       <div className="bg-white rounded-lg border border-slate-200 p-4">
-        <h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+        <h3 className="font-semibold text-black mb-3 flex items-center gap-2">
           <Calendar className="w-4 h-4 text-blue-600" />
           Calendar
         </h3>
         <div className="text-center">
-          <div className="text-3xl font-bold text-slate-900">
+          <div className="text-3xl font-bold text-black">
             {new Date().getDate()}
           </div>
-          <div className="text-sm text-slate-600">
+          <div className="text-sm text-black">
             {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
           </div>
         </div>
@@ -128,7 +128,7 @@ export function DashboardSidebar({
 
       {/* Recent Activity */}
       <div className="bg-white rounded-lg border border-slate-200 p-4">
-        <h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+        <h3 className="font-semibold text-black mb-3 flex items-center gap-2">
           <TrendingUp className="w-4 h-4 text-purple-600" />
           Recent Activity
         </h3>
@@ -144,7 +144,7 @@ export function DashboardSidebar({
                   'bg-yellow-500'
                 }`} />
                 <div className="flex-1">
-                  <p className="text-sm text-slate-900">{activity.title}</p>
+                  <p className="text-sm text-black">{activity.title}</p>
                   <p className="text-xs text-slate-500">
                     {activity.timestamp.toLocaleDateString()}
                   </p>
@@ -157,7 +157,7 @@ export function DashboardSidebar({
 
       {/* Notifications */}
       <div className="bg-white rounded-lg border border-slate-200 p-4">
-        <h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+        <h3 className="font-semibold text-black mb-3 flex items-center gap-2">
           <Bell className="w-4 h-4 text-brand-orange-600" />
           Notifications
           {notifications > 0 && (
@@ -205,35 +205,35 @@ export function LeftSidebar() {
       <nav role="navigation" aria-label="Main navigation" className="space-y-1">
         <Link
           href="/lms/dashboard"
-          className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-slate-900 bg-white rounded-lg"
+          className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-black bg-white rounded-lg"
         >
           <BookOpen className="w-4 h-4" />
           Dashboard
         </Link>
         <Link
           href="/lms/courses"
-          className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-white rounded-lg transition"
+          className="flex items-center gap-3 px-3 py-2 text-sm text-black hover:bg-white rounded-lg transition"
         >
           <BookOpen className="w-4 h-4" />
           My Courses
         </Link>
         <Link
           href="/lms/calendar"
-          className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-white rounded-lg transition"
+          className="flex items-center gap-3 px-3 py-2 text-sm text-black hover:bg-white rounded-lg transition"
         >
           <Calendar className="w-4 h-4" />
           Calendar
         </Link>
         <Link
           href="/lms/grades"
-          className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-white rounded-lg transition"
+          className="flex items-center gap-3 px-3 py-2 text-sm text-black hover:bg-white rounded-lg transition"
         >
           <Award className="w-4 h-4" />
           Grades
         </Link>
         <Link
           href="/lms/notifications"
-          className="flex items-center gap-3 px-3 py-2 text-sm text-slate-700 hover:bg-white rounded-lg transition"
+          className="flex items-center gap-3 px-3 py-2 text-sm text-black hover:bg-white rounded-lg transition"
         >
           <Bell className="w-4 h-4" />
           Notifications

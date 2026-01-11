@@ -95,7 +95,7 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Search */}
           <div className="lg:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Search Courses
             </label>
             <input
@@ -113,7 +113,7 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
 
           {/* Provider Filter */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Provider
             </label>
             <select
@@ -136,7 +136,7 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
 
           {/* Category Filter */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Category
             </label>
             <select
@@ -160,7 +160,7 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
 
         {/* Price Range Filter */}
         <div className="mt-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Price Range
           </label>
           <div className="flex flex-wrap gap-2">
@@ -178,7 +178,7 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   priceRange === option.value
                     ? 'bg-brand-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-gray-100 text-black hover:bg-gray-200'
                 }`}
               >
                 {option.label}
@@ -189,7 +189,7 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
 
         {/* Results Count */}
         <div className="mt-4 pt-4 border-t border-gray-200">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-black">
             Showing{' '}
             <span className="font-semibold">{filteredCourses.length}</span> of{' '}
             <span className="font-semibold">{courses.length}</span> courses
@@ -200,7 +200,7 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
       {/* Course Grid */}
       {filteredCourses.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-xl shadow-sm border border-gray-200">
-          <p className="text-gray-700 text-lg">
+          <p className="text-black text-lg">
             No courses found matching your criteria
           </p>
           <button
@@ -227,10 +227,10 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
                   {course.category}
                 </span>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+              <h3 className="text-lg font-semibold text-black mb-2 line-clamp-2">
                 {course.course_name}
               </h3>
-              <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+              <p className="text-sm text-black mb-4 line-clamp-3">
                 {course.description}
               </p>
               <div className="flex items-center justify-between mb-4">
@@ -241,7 +241,7 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
                       : `$${course.retail_price}`}
                   </div>
                   {course.duration_hours && (
-                    <div className="text-xs text-gray-700">
+                    <div className="text-xs text-black">
                       {course.duration_hours} hours
                     </div>
                   )}

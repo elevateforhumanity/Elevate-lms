@@ -38,10 +38,10 @@ export default async function AutopilotPage() {
           >
             ← Back to Admin Dashboard
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Autopilot Management
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-black">
             Manage automation features and autopilot settings for the LMS
             system.
           </p>
@@ -53,10 +53,10 @@ export default async function AutopilotPage() {
             href="/admin/autopilots"
             className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition"
           >
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-black mb-2">
               All Autopilots
             </h3>
-            <p className="text-gray-600 text-sm">
+            <p className="text-black text-sm">
               View and manage all autopilot configurations
             </p>
           </Link>
@@ -65,20 +65,20 @@ export default async function AutopilotPage() {
             href="/admin/workflows"
             className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition"
           >
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-black mb-2">
               Workflows
             </h3>
-            <p className="text-gray-600 text-sm">Manage automated workflows</p>
+            <p className="text-black text-sm">Manage automated workflows</p>
           </Link>
 
           <Link
             href="/admin/copilot"
             className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition"
           >
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-black mb-2">
               Copilot
             </h3>
-            <p className="text-gray-600 text-sm">AI copilot management</p>
+            <p className="text-black text-sm">AI copilot management</p>
           </Link>
         </div>
 

@@ -58,22 +58,22 @@ export default function LicensesPage() {
                 )}
 
                 <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-2xl font-bold text-black mb-2">
                     {product.name}
                   </h3>
-                  <p className="text-gray-600 text-sm">{product.description}</p>
+                  <p className="text-black text-sm">{product.description}</p>
                 </div>
 
                 <div className="mb-6">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-black text-gray-900">
+                    <span className="text-4xl font-black text-black">
                       ${(product.price / 100).toLocaleString()}
                     </span>
                     {product.billingType === 'subscription' && (
-                      <span className="text-gray-600">/month</span>
+                      <span className="text-black">/month</span>
                     )}
                   </div>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="text-sm text-black mt-1">
                     {product.billingType === 'one_time'
                       ? 'One-time payment'
                       : 'Monthly billing'}
@@ -94,29 +94,29 @@ export default function LicensesPage() {
                 </Link>
 
                 <div className="space-y-3">
-                  <p className="text-sm font-semibold text-gray-900 mb-3">
+                  <p className="text-sm font-semibold text-black mb-3">
                     What's included:
                   </p>
                   {product.features.slice(0, 6).map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-700">{feature}</span>
+                      <span className="text-sm text-black">{feature}</span>
                     </div>
                   ))}
                   {product.features.length > 6 && (
-                    <p className="text-sm text-gray-600 italic">
+                    <p className="text-sm text-black italic">
                       + {product.features.length - 6} more features
                     </p>
                   )}
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <p className="text-xs font-semibold text-gray-900 mb-2">
+                  <p className="text-xs font-semibold text-black mb-2">
                     Ideal for:
                   </p>
                   <ul className="space-y-1">
                     {product.idealFor.map((use, idx) => (
-                      <li key={idx} className="text-xs text-gray-600">
+                      <li key={idx} className="text-xs text-black">
                         • {use}
                       </li>
                     ))}
@@ -140,10 +140,10 @@ export default function LicensesPage() {
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Complete Platform
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Full LMS, enrollment system, admin dashboard, payment
                 processing, and mobile app. Everything you need to run training
                 programs.
@@ -154,10 +154,10 @@ export default function LicensesPage() {
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Compliance Built-In
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 WIOA reporting, FERPA compliance, ETPL tracking, and automated
                 data collection for grant reporting.
               </p>
@@ -167,10 +167,10 @@ export default function LicensesPage() {
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                 <Users className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Support & Updates
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Ongoing platform updates, technical support, and access to our
                 community of training providers.
               </p>

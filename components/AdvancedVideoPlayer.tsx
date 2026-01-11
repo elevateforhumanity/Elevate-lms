@@ -188,7 +188,7 @@ export function AdvancedVideoPlayer({
       <div ref={videoRef} className="rounded-lg overflow-hidden shadow-lg" />
 
       {/* Keyboard shortcuts help */}
-      <div className="mt-4 p-4 bg-slate-50 rounded-lg text-xs text-slate-600">
+      <div className="mt-4 p-4 bg-slate-50 rounded-lg text-xs text-black">
         <p className="font-semibold mb-2">Keyboard Shortcuts:</p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
           <div><kbd className="px-2 py-1 bg-white border rounded">Space</kbd> Play/Pause</div>

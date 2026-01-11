@@ -57,7 +57,7 @@ export function ReportProduct({ productId }: { productId: string }) {
     return (
       <button
         onClick={() => setShowForm(true)}
-        className="text-sm text-gray-600 hover:text-gray-900 underline"
+        className="text-sm text-black hover:text-black underline"
       >
         Report this product
       </button>

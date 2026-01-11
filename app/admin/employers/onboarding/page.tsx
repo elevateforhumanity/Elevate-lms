@@ -32,10 +32,10 @@ export default async function EmployerOnboardingReview() {
     <div className="min-h-screen bg-slate-50 py-8 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Employer Onboarding Review
           </h1>
-          <p className="text-slate-600">
+          <p className="text-black">
             Review and approve employer applications
           </p>
         </div>
@@ -45,25 +45,25 @@ export default async function EmployerOnboardingReview() {
             <table className="w-full">
               <thead className="bg-slate-100 border-b border-slate-200">
                 <tr>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900">
+                  <th className="px-6 py-4 text-left text-sm font-bold text-black">
                     Business Name
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900">
+                  <th className="px-6 py-4 text-left text-sm font-bold text-black">
                     Contact
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900">
+                  <th className="px-6 py-4 text-left text-sm font-bold text-black">
                     Email
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900">
+                  <th className="px-6 py-4 text-left text-sm font-bold text-black">
                     Phone
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900">
+                  <th className="px-6 py-4 text-left text-sm font-bold text-black">
                     Status
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900">
+                  <th className="px-6 py-4 text-left text-sm font-bold text-black">
                     Submitted
                   </th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900">
+                  <th className="px-6 py-4 text-left text-sm font-bold text-black">
                     Actions
                   </th>
                 </tr>
@@ -73,30 +73,30 @@ export default async function EmployerOnboardingReview() {
                   const StatusIcon = statusIcons[onboarding.status] || Clock;
                   return (
                     <tr key={onboarding.id} className="hover:bg-slate-50">
-                      <td className="px-6 py-4 text-sm font-medium text-slate-900">
+                      <td className="px-6 py-4 text-sm font-medium text-black">
                         {onboarding.business_name}
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-700">
+                      <td className="px-6 py-4 text-sm text-black">
                         {onboarding.contact_name}
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-700">
+                      <td className="px-6 py-4 text-sm text-black">
                         {onboarding.contact_email}
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-700">
+                      <td className="px-6 py-4 text-sm text-black">
                         {onboarding.contact_phone}
                       </td>
                       <td className="px-6 py-4">
                         <span
                           className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold ${
                             statusColors[onboarding.status] ||
-                            'bg-slate-100 text-slate-800'
+                            'bg-slate-100 text-black'
                           }`}
                         >
                           <StatusIcon className="w-3 h-3" />
                           {onboarding.status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-700">
+                      <td className="px-6 py-4 text-sm text-black">
                         {new Date(onboarding.created_at).toLocaleDateString()}
                       </td>
                       <td className="px-6 py-4">
@@ -116,7 +116,7 @@ export default async function EmployerOnboardingReview() {
 
           {!onboardings || onboardings.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-slate-600">
+              <p className="text-black">
                 No employer onboarding submissions yet
               </p>
             </div>

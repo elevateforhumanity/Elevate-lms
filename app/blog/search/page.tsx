@@ -47,7 +47,7 @@ export default async function BlogSearchPage({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         {/* Search Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4 text-2xl md:text-3xl lg:text-4xl">
+          <h1 className="text-4xl font-bold text-black mb-4 text-2xl md:text-3xl lg:text-4xl">
             Search Blog
           </h1>
 
@@ -70,7 +70,7 @@ export default async function BlogSearchPage({
         {/* Results */}
         {query && (
           <div className="mb-6">
-            <p className="text-slate-600">
+            <p className="text-black">
               {results.length > 0
                 ? `Found ${results.length} result${results.length === 1 ? '' : 's'} for "${query}"`
                 : `No results found for "${query}"`}
@@ -104,7 +104,7 @@ export default async function BlogSearchPage({
                       {post.category}
                     </span>
                   )}
-                  <h2 className="text-xl font-bold text-slate-900 mb-2">
+                  <h2 className="text-xl font-bold text-black mb-2">
                     <Link
                       href={`/blog/${post.slug}`}
                       className="hover:text-brand-blue-600"
@@ -113,7 +113,7 @@ export default async function BlogSearchPage({
                     </Link>
                   </h2>
                   {post.excerpt && (
-                    <p className="text-slate-600 mb-4 line-clamp-3">
+                    <p className="text-black mb-4 line-clamp-3">
                       {post.excerpt}
                     </p>
                   )}
@@ -133,7 +133,7 @@ export default async function BlogSearchPage({
         {!query && (
           <div className="text-center py-12">
             <Search className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-            <p className="text-slate-600 text-lg">
+            <p className="text-black text-lg">
               Enter a search term to find blog posts
             </p>
           </div>

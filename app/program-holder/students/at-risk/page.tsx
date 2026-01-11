@@ -129,7 +129,7 @@ export default async function AtRiskStudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <AlertTriangle className="h-8 w-8 text-yellow-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     At-Risk Students
                   </h3>
                 </div>
@@ -140,7 +140,7 @@ export default async function AtRiskStudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <TrendingDown className="h-8 w-8 text-red-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Requires Intervention
                   </h3>
                 </div>
@@ -151,7 +151,7 @@ export default async function AtRiskStudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Clock className="h-8 w-8 text-brand-blue-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Avg. Days Enrolled
                   </h3>
                 </div>
@@ -175,7 +175,7 @@ export default async function AtRiskStudentsPage() {
             {/* Students List */}
             <div className="bg-white rounded-lg shadow-sm border p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-2xl font-bold text-black">
                   Students Requiring Attention
                 </h2>
                 <Link
@@ -191,19 +191,19 @@ export default async function AtRiskStudentsPage() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b">
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Student
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Program
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Enrolled
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Risk Factors
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Contact
                         </th>
                       </tr>
@@ -221,15 +221,15 @@ export default async function AtRiskStudentsPage() {
                             className="border-b hover:bg-yellow-50 transition-colors"
                           >
                             <td className="py-3 px-4">
-                              <div className="font-medium text-slate-900">
+                              <div className="font-medium text-black">
                                 {enrollment.student?.first_name}{' '}
                                 {enrollment.student?.last_name}
                               </div>
                             </td>
-                            <td className="py-3 px-4 text-slate-600">
+                            <td className="py-3 px-4 text-black">
                               {enrollment.program?.name || 'N/A'}
                             </td>
-                            <td className="py-3 px-4 text-slate-600">
+                            <td className="py-3 px-4 text-black">
                               {daysEnrolled} days ago
                             </td>
                             <td className="py-3 px-4">
@@ -268,10 +268,10 @@ export default async function AtRiskStudentsPage() {
               ) : (
                 <div className="text-center py-12">
                   <AlertTriangle className="h-16 w-16 text-green-300 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-slate-700 mb-2">
+                  <h3 className="text-lg font-semibold text-black mb-2">
                     No At-Risk Students
                   </h3>
-                  <p className="text-slate-600 mb-6">
+                  <p className="text-black mb-6">
                     All students are progressing well. Great work!
                   </p>
                   <Link

@@ -143,10 +143,10 @@ export default async function CompliancePage() {
             <div className="bg-white rounded-lg shadow-sm border p-8 mb-8">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-900 mb-2">
+                  <h2 className="text-2xl font-bold text-black mb-2">
                     Overall Compliance Score
                   </h2>
-                  <p className="text-slate-600">
+                  <p className="text-black">
                     {complianceStatus === 'compliant'
                       ? 'Your program is in good standing'
                       : 'Action required to maintain compliance'}
@@ -198,14 +198,14 @@ export default async function CompliancePage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <FileText className="h-8 w-8 text-brand-blue-600" />
-                  <h3 className="font-semibold text-slate-900">
+                  <h3 className="font-semibold text-black">
                     Documentation
                   </h3>
                 </div>
                 <div className="text-3xl font-bold text-brand-blue-600 mb-2">
                   {Math.round(documentScore)}%
                 </div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-black">
                   {approvedDocs.length} of {requiredDocs.length} required
                   documents approved
                 </p>
@@ -214,12 +214,12 @@ export default async function CompliancePage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <TrendingUp className="h-8 w-8 text-brand-green-600" />
-                  <h3 className="font-semibold text-slate-900">Reporting</h3>
+                  <h3 className="font-semibold text-black">Reporting</h3>
                 </div>
                 <div className="text-3xl font-bold text-brand-green-600 mb-2">
                   {Math.round(reportingScore)}%
                 </div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-black">
                   {recentReports.length} reports submitted in last 30 days
                 </p>
               </div>
@@ -227,14 +227,14 @@ export default async function CompliancePage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Shield className="h-8 w-8 text-purple-600" />
-                  <h3 className="font-semibold text-slate-900">
+                  <h3 className="font-semibold text-black">
                     Student Management
                   </h3>
                 </div>
                 <div className="text-3xl font-bold text-purple-600 mb-2">
                   {Math.round(studentScore)}%
                 </div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-black">
                   {activeStudents.length} active student(s)
                 </p>
               </div>
@@ -243,7 +243,7 @@ export default async function CompliancePage() {
             {/* Issues */}
             {issues.length > 0 && (
               <div className="bg-white rounded-lg shadow-sm border p-6 mb-8">
-                <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                <h2 className="text-2xl font-bold text-black mb-6">
                   Action Items
                 </h2>
                 <div className="space-y-4">
@@ -264,10 +264,10 @@ export default async function CompliancePage() {
                         }`}
                       />
                       <div className="flex-1">
-                        <h3 className="font-semibold text-slate-900 mb-1">
+                        <h3 className="font-semibold text-black mb-1">
                           {issue.title}
                         </h3>
-                        <p className="text-sm text-slate-600 mb-3">
+                        <p className="text-sm text-black mb-3">
                           {issue.description}
                         </p>
                         <Link
@@ -312,7 +312,7 @@ export default async function CompliancePage() {
               </Link>
               <Link
                 href="/program-holder/dashboard"
-                className="inline-flex items-center justify-center px-6 py-3 bg-white hover:bg-slate-50 text-slate-900 font-semibold rounded-lg border-2 border-slate-300 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white hover:bg-slate-50 text-black font-semibold rounded-lg border-2 border-slate-300 transition-colors"
               >
                 Back to Dashboard
               </Link>

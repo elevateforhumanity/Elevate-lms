@@ -117,10 +117,10 @@ export default function CookieConsentBanner() {
                   <Cookie className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  <h3 className="text-lg font-bold text-black mb-2">
                     We Value Your Privacy
                   </h3>
-                  <p className="text-sm text-gray-600 mb-2">
+                  <p className="text-sm text-black mb-2">
                     We use cookies to enhance your experience, analyze site traffic, and personalize content.
                     By clicking "Accept All", you consent to our use of cookies.
                   </p>
@@ -146,7 +146,7 @@ export default function CookieConsentBanner() {
               <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                 <button
                   onClick={acceptNecessary}
-                  className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium"
+                  className="px-6 py-3 border-2 border-gray-300 text-black rounded-lg hover:bg-gray-50 transition font-medium"
                 >
                   Necessary Only
                 </button>
@@ -164,7 +164,7 @@ export default function CookieConsentBanner() {
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <Settings className="w-6 h-6 text-blue-600" />
-                  <h3 className="text-xl font-bold text-gray-900">
+                  <h3 className="text-xl font-bold text-black">
                     Cookie Preferences
                   </h3>
                 </div>
@@ -183,12 +183,12 @@ export default function CookieConsentBanner() {
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
                         <Shield className="w-5 h-5 text-green-600" />
-                        <h4 className="font-bold text-gray-900">Necessary Cookies</h4>
+                        <h4 className="font-bold text-black">Necessary Cookies</h4>
                         <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
                           Always Active
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-black">
                         Essential for the website to function properly. These cookies enable basic functions like page navigation,
                         secure areas access, and authentication. The website cannot function properly without these cookies.
                       </p>
@@ -203,8 +203,8 @@ export default function CookieConsentBanner() {
                 <div className="p-4 bg-white rounded-lg border border-gray-200">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <h4 className="font-bold text-gray-900 mb-2">Functional Cookies</h4>
-                      <p className="text-sm text-gray-600">
+                      <h4 className="font-bold text-black mb-2">Functional Cookies</h4>
+                      <p className="text-sm text-black">
                         Enable enhanced functionality and personalization, such as videos, live chat, and remembering your preferences.
                       </p>
                     </div>
@@ -224,8 +224,8 @@ export default function CookieConsentBanner() {
                 <div className="p-4 bg-white rounded-lg border border-gray-200">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <h4 className="font-bold text-gray-900 mb-2">Analytics Cookies</h4>
-                      <p className="text-sm text-gray-600">
+                      <h4 className="font-bold text-black mb-2">Analytics Cookies</h4>
+                      <p className="text-sm text-black">
                         Help us understand how visitors interact with our website by collecting and reporting information anonymously.
                         This helps us improve our services.
                       </p>
@@ -246,8 +246,8 @@ export default function CookieConsentBanner() {
                 <div className="p-4 bg-white rounded-lg border border-gray-200">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <h4 className="font-bold text-gray-900 mb-2">Marketing Cookies</h4>
-                      <p className="text-sm text-gray-600">
+                      <h4 className="font-bold text-black mb-2">Marketing Cookies</h4>
+                      <p className="text-sm text-black">
                         Used to track visitors across websites to display relevant advertisements. These cookies help us show you
                         content that may be of interest to you.
                       </p>
@@ -268,7 +268,7 @@ export default function CookieConsentBanner() {
               <div className="flex flex-col sm:flex-row gap-3 justify-end">
                 <button
                   onClick={acceptNecessary}
-                  className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-medium"
+                  className="px-6 py-3 border-2 border-gray-300 text-black rounded-lg hover:bg-gray-50 transition font-medium"
                 >
                   Reject All
                 </button>

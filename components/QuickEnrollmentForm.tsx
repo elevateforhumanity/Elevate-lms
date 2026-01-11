@@ -93,8 +93,8 @@ export function QuickEnrollmentForm() {
       className="space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-lg"
     >
       <div>
-        <h3 className="text-lg font-bold text-slate-900">Apply Now</h3>
-        <p className="mt-1 text-sm text-slate-600">
+        <h3 className="text-lg font-bold text-black">Apply Now</h3>
+        <p className="mt-1 text-sm text-black">
           Fill out this form and we'll help you get started.
         </p>
       </div>
@@ -113,7 +113,7 @@ export function QuickEnrollmentForm() {
 
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="block text-sm font-medium text-slate-700">
+          <label className="block text-sm font-medium text-black">
             First Name *
           </label>
           <input
@@ -124,7 +124,7 @@ export function QuickEnrollmentForm() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700">
+          <label className="block text-sm font-medium text-black">
             Last Name *
           </label>
           <input
@@ -138,7 +138,7 @@ export function QuickEnrollmentForm() {
 
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="block text-sm font-medium text-slate-700">
+          <label className="block text-sm font-medium text-black">
             Email *
           </label>
           <input
@@ -150,7 +150,7 @@ export function QuickEnrollmentForm() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-700">
+          <label className="block text-sm font-medium text-black">
             Phone (optional)
           </label>
           <input
@@ -162,7 +162,7 @@ export function QuickEnrollmentForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-700">
+        <label className="block text-sm font-medium text-black">
           Program *
         </label>
         <select
@@ -179,7 +179,7 @@ export function QuickEnrollmentForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-700">
+        <label className="block text-sm font-medium text-black">
           How will you cover tuition?
         </label>
         <select
@@ -196,7 +196,7 @@ export function QuickEnrollmentForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-700">
+        <label className="block text-sm font-medium text-black">
           How did you hear about us?
         </label>
         <select
@@ -213,7 +213,7 @@ export function QuickEnrollmentForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-700">
+        <label className="block text-sm font-medium text-black">
           Additional Notes (optional)
         </label>
         <textarea

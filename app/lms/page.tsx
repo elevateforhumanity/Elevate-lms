@@ -222,10 +222,10 @@ export default function LMSLandingPage() {
       <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-6">
               Everything You Need to Succeed
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               Our LMS platform provides all the tools and resources for
               effective online learning
             </p>
@@ -248,10 +248,10 @@ export default function LMSLandingPage() {
                     />
                   </div>
                   <div className="p-8">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
+                    <h3 className="text-xl font-bold text-black mb-3 group-hover:text-teal-600 transition-colors">
                       {feature.title} →
                     </h3>
-                    <p className="text-gray-600 leading-relaxed mb-4">
+                    <p className="text-black leading-relaxed mb-4">
                       {feature.description}
                     </p>
                     <span className="text-teal-600 font-semibold text-sm">
@@ -269,10 +269,10 @@ export default function LMSLandingPage() {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-6">
               Why Choose Our LMS?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               Modern learning platform designed for workforce development
             </p>
           </div>
@@ -281,10 +281,10 @@ export default function LMSLandingPage() {
             <div className="flex items-start gap-4">
               <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Learn at Your Own Pace
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Access courses anytime, anywhere. Study when it fits your
                   schedule.
                 </p>
@@ -294,10 +294,10 @@ export default function LMSLandingPage() {
             <div className="flex items-start gap-4">
               <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Expert Instructors
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Learn from industry professionals with real-world experience.
                 </p>
               </div>
@@ -306,10 +306,10 @@ export default function LMSLandingPage() {
             <div className="flex items-start gap-4">
               <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Interactive Learning
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Engage with videos, quizzes, discussions, and hands-on
                   projects.
                 </p>
@@ -319,10 +319,10 @@ export default function LMSLandingPage() {
             <div className="flex items-start gap-4">
               <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Mobile Friendly
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Learn on any device - desktop, tablet, or smartphone.
                 </p>
               </div>
@@ -331,10 +331,10 @@ export default function LMSLandingPage() {
             <div className="flex items-start gap-4">
               <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Track Your Progress
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Monitor completion, grades, and achievements in real-time.
                 </p>
               </div>
@@ -343,10 +343,10 @@ export default function LMSLandingPage() {
             <div className="flex items-start gap-4">
               <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Earn Certificates
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Receive industry-recognized certificates upon completion.
                 </p>
               </div>
@@ -359,10 +359,10 @@ export default function LMSLandingPage() {
       <section id="courses" className="py-20 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-6">
               Available Courses
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               Explore our training programs - each course has its own dedicated
               page with full details
             </p>
@@ -384,20 +384,20 @@ export default function LMSLandingPage() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">
+                  <h3 className="text-xl font-bold text-black mb-2 group-hover:text-teal-600 transition-colors">
                     {course.title} →
                   </h3>
-                  <p className="text-gray-600 mb-3 text-sm">
+                  <p className="text-black mb-3 text-sm">
                     Instructor: {course.instructor}
                   </p>
                   <div className="flex items-center justify-between mb-4 text-sm">
                     <div className="flex items-center gap-1">
                       <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="font-bold text-gray-900">
+                      <span className="font-bold text-black">
                         {course.rating}
                       </span>
                     </div>
-                    <div className="text-gray-600">{course.duration}</div>
+                    <div className="text-black">{course.duration}</div>
                   </div>
                   <div className="text-teal-600 font-semibold text-sm">
                     View Course Details →
@@ -430,11 +430,11 @@ export default function LMSLandingPage() {
               />
             ))}
           </div>
-          <blockquote className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-relaxed">
+          <blockquote className="text-2xl md:text-3xl font-bold text-black mb-6 leading-relaxed">
             "The LMS platform made learning so easy. I could study at my own
             pace and the instructors were always available to help."
           </blockquote>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-black">
             — Marcus Thompson, CNA Graduate
           </p>
         </div>

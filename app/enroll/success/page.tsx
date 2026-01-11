@@ -29,18 +29,18 @@ export default function EnrollSuccessPage() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-green-600 rounded-full mb-6">
             <CheckCircle className="w-12 h-12 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">
+          <h1 className="text-4xl font-bold text-black mb-4">
             <PartyPopper className="w-5 h-5 inline-block" /> Enrollment
             Successful!
           </h1>
-          <p className="text-base md:text-lg text-slate-700">
+          <p className="text-base md:text-lg text-black">
             Welcome to the Barber Apprenticeship Program
           </p>
         </div>
 
         {/* What's Next */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl font-bold text-black mb-6">
             What Happens Next:
           </h2>
 
@@ -51,11 +51,11 @@ export default function EnrollSuccessPage() {
                 1
               </div>
               <div>
-                <h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <h3 className="font-bold text-black mb-2 flex items-center gap-2">
                   <Mail className="w-5 h-5 text-brand-blue-600" />
                   Check Your Email
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   We've sent you an email to set your password. Check your inbox
                   and spam folder.
                 </p>
@@ -68,10 +68,10 @@ export default function EnrollSuccessPage() {
                 2
               </div>
               <div>
-                <h3 className="font-bold text-slate-900 mb-2">
+                <h3 className="font-bold text-black mb-2">
                   Set Your Password
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Click the link in the email to create your password and access
                   your dashboard.
                 </p>
@@ -84,10 +84,10 @@ export default function EnrollSuccessPage() {
                 3
               </div>
               <div>
-                <h3 className="font-bold text-slate-900 mb-2">
+                <h3 className="font-bold text-black mb-2">
                   Enroll in Milady RISE (FREE)
                 </h3>
-                <p className="text-slate-600 mb-3">
+                <p className="text-black mb-3">
                   Get your FREE Client Well-Being & Safety Certification:
                 </p>
                 <a
@@ -120,11 +120,11 @@ export default function EnrollSuccessPage() {
                 4
               </div>
               <div>
-                <h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <h3 className="font-bold text-black mb-2 flex items-center gap-2">
                   <Smartphone className="w-5 h-5 text-brand-blue-600" />
                   Download Mobile App (Optional)
                 </h3>
-                <p className="text-slate-600 mb-3">
+                <p className="text-black mb-3">
                   Access your training on the go:
                 </p>
                 <div className="flex flex-col sm:flex-row gap-2">
@@ -198,7 +198,7 @@ export default function EnrollSuccessPage() {
         </div>
 
         {/* Support Info */}
-        <div className="text-center mt-8 text-slate-600">
+        <div className="text-center mt-8 text-black">
           <p className="mb-2">Need help? We're here for you!</p>
           <p className="font-semibold">
             <Phone className="w-5 h-5 inline-block" />{' '}

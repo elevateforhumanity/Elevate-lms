@@ -38,9 +38,9 @@ export const Progress: React.FC<ProgressProps> = ({
     <div className={`w-full ${className}`}>
       {(showLabel || label) && (
         <div className="flex justify-between items-center mb-2">
-          {label && <span className="text-sm font-medium text-slate-700">{label}</span>}
+          {label && <span className="text-sm font-medium text-black">{label}</span>}
           {showLabel && (
-            <span className="text-sm font-medium text-slate-700">
+            <span className="text-sm font-medium text-black">
               {Math.round(percentage)}%
             </span>
           )}

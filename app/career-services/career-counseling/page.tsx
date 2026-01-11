@@ -28,7 +28,7 @@ export default function CareerCounselingPage() {
           <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
             <Target className="w-12 h-12 text-brand-purple-600 mb-4" />
             <h3 className="text-xl font-bold text-black mb-3">Goal Setting</h3>
-            <p className="text-gray-700">
+            <p className="text-black">
               Define clear career objectives and create actionable plans
             </p>
           </div>
@@ -37,7 +37,7 @@ export default function CareerCounselingPage() {
             <h3 className="text-xl font-bold text-black mb-3">
               Career Pathways
             </h3>
-            <p className="text-gray-700">
+            <p className="text-black">
               Explore advancement opportunities in your field
             </p>
           </div>
@@ -46,7 +46,7 @@ export default function CareerCounselingPage() {
             <h3 className="text-xl font-bold text-black mb-3">
               Ongoing Support
             </h3>
-            <p className="text-gray-700">
+            <p className="text-black">
               Continuous guidance throughout your career journey
             </p>
           </div>
@@ -58,7 +58,7 @@ export default function CareerCounselingPage() {
           <h2 className="text-3xl font-bold text-black mb-6">
             Schedule a Session
           </h2>
-          <p className="text-xl text-gray-700 mb-8">
+          <p className="text-xl text-black mb-8">
             Meet with a career counselor to discuss your goals and create your
             success plan.
           </p>

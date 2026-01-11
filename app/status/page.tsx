@@ -64,7 +64,7 @@ export default async function StatusPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-lg shadow-xl p-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+          <h1 className="text-4xl font-bold text-black mb-2">
             Production Status
           </h1>
           <p className="text-xl text-green-600 font-semibold mb-8">
@@ -74,7 +74,7 @@ export default async function StatusPage() {
 
           {/* Production Readiness */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               Production Readiness
             </h2>
             <div className="grid gap-3">
@@ -87,10 +87,10 @@ export default async function StatusPage() {
                     <CheckCircle className="w-5 h-5 inline-block" />
                   </span>
                   <div>
-                    <div className="font-semibold text-gray-700 capitalize">
+                    <div className="font-semibold text-black capitalize">
                       {key.replace(/_/g, ' ')}
                     </div>
-                    <div className="text-sm text-gray-600">{value}</div>
+                    <div className="text-sm text-black">{value}</div>
                   </div>
                 </div>
               ))}
@@ -99,13 +99,13 @@ export default async function StatusPage() {
 
           {/* Build Info */}
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               Build Information
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {Object.entries(buildInfo).map(([key, value]: any) => (
                 <div key={key} className="p-4 bg-blue-50 rounded-lg">
-                  <div className="text-sm text-gray-600 capitalize">
+                  <div className="text-sm text-black capitalize">
                     {key.replace(/_/g, ' ')}
                   </div>
                   <div className="text-2xl font-bold text-blue-600">
@@ -118,7 +118,7 @@ export default async function StatusPage() {
 
           {/* Verification Checklist */}
           <section>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               Verification Checklist
             </h2>
             <div className="grid gap-2">
@@ -132,7 +132,7 @@ export default async function StatusPage() {
                       ? '<CheckCircle className="w-5 h-5 inline-block" />'
                       : '<XCircle className="w-5 h-5 inline-block" />'}
                   </span>
-                  <span className="text-gray-700 capitalize">
+                  <span className="text-black capitalize">
                     {key.replace(/_/g, ' ')}
                   </span>
                 </div>
@@ -141,7 +141,7 @@ export default async function StatusPage() {
           </section>
 
           {/* Timestamp */}
-          <div className="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-700">
+          <div className="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-black">
             Last updated: {new Date().toLocaleString()}
           </div>
         </div>

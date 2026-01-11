@@ -56,10 +56,10 @@ export default async function CashAdvanceReportsPage() {
           >
             ← Back to Cash Advances
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Cash Advance Reports
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-black">
             View analytics and reports for cash advance program.
           </p>
         </div>
@@ -70,35 +70,35 @@ export default async function CashAdvanceReportsPage() {
             <div className="text-3xl font-bold text-brand-blue-600">
               {allAdvances?.length || 0}
             </div>
-            <div className="text-gray-600 text-sm">Total Requests</div>
+            <div className="text-black text-sm">Total Requests</div>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-3xl font-bold text-brand-green-600">
               {approvedAdvances?.length || 0}
             </div>
-            <div className="text-gray-600 text-sm">Approved</div>
+            <div className="text-black text-sm">Approved</div>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-3xl font-bold text-brand-orange-600">
               {pendingAdvances?.length || 0}
             </div>
-            <div className="text-gray-600 text-sm">Pending</div>
+            <div className="text-black text-sm">Pending</div>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-3xl font-bold text-purple-600">
               ${totalAmount.toFixed(2)}
             </div>
-            <div className="text-gray-600 text-sm">Total Amount</div>
+            <div className="text-black text-sm">Total Amount</div>
           </div>
         </div>
 
         {/* Report Sections */}
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-xl font-semibold text-black mb-4">
               Approval Rate
             </h2>
             <div className="text-4xl font-bold text-brand-green-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
@@ -109,14 +109,14 @@ export default async function CashAdvanceReportsPage() {
                 : 0}
               %
             </div>
-            <p className="text-gray-600">
+            <p className="text-black">
               {approvedAdvances?.length || 0} of {allAdvances?.length || 0}{' '}
               requests approved
             </p>
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-xl font-semibold text-black mb-4">
               Average Amount
             </h2>
             <div className="text-4xl font-bold text-brand-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
@@ -125,13 +125,13 @@ export default async function CashAdvanceReportsPage() {
                 ? (totalAmount / allAdvances.length).toFixed(2)
                 : '0.00'}
             </div>
-            <p className="text-gray-600">Average cash advance amount</p>
+            <p className="text-black">Average cash advance amount</p>
           </div>
         </div>
 
         {/* Export Options */}
         <div className="mt-8 bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-xl font-semibold text-black mb-4">
             Export Reports
           </h2>
           <div className="flex gap-4">

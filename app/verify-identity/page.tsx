@@ -32,10 +32,10 @@ export default async function VerifyIdentityPage() {
       <div className="min-h-screen bg-slate-50">
         <section className="bg-white border-b py-8">
           <div className="max-w-4xl mx-auto px-6">
-            <h1 className="text-4xl font-bold text-slate-900 mb-2">
+            <h1 className="text-4xl font-bold text-black mb-2">
               Identity Verification
             </h1>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-black">
               Your identity has been verified
             </p>
           </div>
@@ -55,7 +55,7 @@ export default async function VerifyIdentityPage() {
               </div>
             </div>
             <div className="mt-6 p-4 bg-white rounded-lg border border-green-200">
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-black">
                 <strong>Verified on:</strong>{' '}
                 {new Date(verification.verified_at).toLocaleDateString()}
               </p>
@@ -71,10 +71,10 @@ export default async function VerifyIdentityPage() {
       <div className="min-h-screen bg-slate-50">
         <section className="bg-white border-b py-8">
           <div className="max-w-4xl mx-auto px-6">
-            <h1 className="text-4xl font-bold text-slate-900 mb-2">
+            <h1 className="text-4xl font-bold text-black mb-2">
               Identity Verification
             </h1>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-black">
               Your verification is being reviewed
             </p>
           </div>
@@ -99,7 +99,7 @@ export default async function VerifyIdentityPage() {
               notification once your verification is approved.
             </p>
             <div className="mt-6 p-4 bg-white rounded-lg border border-yellow-200">
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-black">
                 <strong>Submitted on:</strong>{' '}
                 {new Date(verification.created_at).toLocaleDateString()}
               </p>
@@ -115,10 +115,10 @@ export default async function VerifyIdentityPage() {
       <div className="min-h-screen bg-slate-50">
         <section className="bg-white border-b py-8">
           <div className="max-w-4xl mx-auto px-6">
-            <h1 className="text-4xl font-bold text-slate-900 mb-2">
+            <h1 className="text-4xl font-bold text-black mb-2">
               Identity Verification
             </h1>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-black">
               Your verification was not approved
             </p>
           </div>
@@ -135,7 +135,7 @@ export default async function VerifyIdentityPage() {
             </p>
             {verification.rejection_reason && (
               <div className="p-4 bg-white rounded-lg border border-red-200 mb-4">
-                <p className="text-sm text-slate-700">
+                <p className="text-sm text-black">
                   <strong>Reason:</strong> {verification.rejection_reason}
                 </p>
               </div>

@@ -88,11 +88,11 @@ export default function HoursExportPage() {
           </Link>
           <div className="flex items-center gap-3 mb-2">
             <Clock className="w-8 h-8 text-brand-blue-600" />
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-black">
               Weekly Hours Export
             </h1>
           </div>
-          <p className="text-gray-600">
+          <p className="text-black">
             Export apprenticeship hours for WorkOne/DWD reporting
           </p>
         </div>
@@ -118,7 +118,7 @@ export default function HoursExportPage() {
 
         {/* Export Form */}
         <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6">
+          <h2 className="text-lg font-semibold text-black mb-6">
             Select Date Range
           </h2>
 
@@ -132,7 +132,7 @@ export default function HoursExportPage() {
             </button>
             <button
               onClick={setLastWeek}
-              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 font-medium"
+              className="px-4 py-2 bg-gray-100 text-black rounded-md hover:bg-gray-200 font-medium"
             >
               Last Week
             </button>
@@ -141,7 +141,7 @@ export default function HoursExportPage() {
           {/* Date Inputs */}
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 <Calendar className="w-4 h-4 inline mr-1" />
                 Week Start Date
               </label>
@@ -153,7 +153,7 @@ export default function HoursExportPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 <Calendar className="w-4 h-4 inline mr-1" />
                 Week End Date
               </label>
@@ -168,10 +168,10 @@ export default function HoursExportPage() {
 
           {/* Export Info */}
           <div className="bg-gray-50 rounded-md p-4 mb-6">
-            <h3 className="text-sm font-semibold text-gray-900 mb-2">
+            <h3 className="text-sm font-semibold text-black mb-2">
               Export will include:
             </h3>
-            <ul className="text-sm text-gray-700 space-y-1">
+            <ul className="text-sm text-black space-y-1">
               <li>• Student name and email</li>
               <li>• Shop name and license number</li>
               <li>• Date and hours worked</li>
@@ -196,10 +196,10 @@ export default function HoursExportPage() {
 
         {/* Instructions */}
         <div className="mt-6 bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg font-semibold text-black mb-4">
             How to Use This Export
           </h2>
-          <ol className="space-y-3 text-sm text-gray-700">
+          <ol className="space-y-3 text-sm text-black">
             <li className="flex gap-2">
               <span className="font-semibold text-brand-blue-600">1.</span>
               <span>

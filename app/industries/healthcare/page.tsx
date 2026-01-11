@@ -64,10 +64,10 @@ export default function HealthcarePage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 uppercase">
+            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 uppercase">
               Healthcare Training Programs
             </h2>
-            <p className="text-lg text-gray-700">
+            <p className="text-lg text-black">
               Choose from {healthcarePrograms.length} healthcare programs
             </p>
           </div>
@@ -124,7 +124,7 @@ export default function HealthcarePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
                 Why Choose Healthcare?
               </h2>
               <ul className="space-y-4">
@@ -145,10 +145,10 @@ export default function HealthcarePage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">
+                    <h3 className="font-bold text-black mb-1">
                       High Demand
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-black">
                       Healthcare jobs are always in demand with excellent job
                       security
                     </p>
@@ -171,8 +171,8 @@ export default function HealthcarePage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">Good Pay</h3>
-                    <p className="text-gray-600">
+                    <h3 className="font-bold text-black mb-1">Good Pay</h3>
+                    <p className="text-black">
                       Competitive wages with opportunities for advancement
                     </p>
                   </div>
@@ -194,10 +194,10 @@ export default function HealthcarePage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">
+                    <h3 className="font-bold text-black mb-1">
                       Make a Difference
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-black">
                       Help people every day and make a real impact in your
                       community
                     </p>
@@ -220,10 +220,10 @@ export default function HealthcarePage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">
+                    <h3 className="font-bold text-black mb-1">
                       Fast Training
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-black">
                       Get certified and start working in weeks, not years
                     </p>
                   </div>

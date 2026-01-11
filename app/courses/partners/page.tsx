@@ -126,7 +126,7 @@ export default async function PartnerCoursesPage() {
                   <div className="font-semibold text-sm">
                     {provider.provider_name}
                   </div>
-                  <div className="text-xs text-gray-600 mt-1">
+                  <div className="text-xs text-black mt-1">
                     {coursesByPartner[provider.provider_name]?.length || 0}{' '}
                     courses
                   </div>
@@ -141,7 +141,7 @@ export default async function PartnerCoursesPage() {
               <div key={partnerName} className="mb-12">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-2xl font-bold">{partnerName}</h2>
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-black">
                     {partnerCourses.length} courses
                   </span>
                 </div>
@@ -159,14 +159,14 @@ export default async function PartnerCoursesPage() {
                             {course.course_name}
                           </h3>
                           {course.description && (
-                            <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                            <p className="text-sm text-black mb-4 line-clamp-3">
                               {course.description}
                             </p>
                           )}
 
                           <div className="flex items-center justify-between text-sm mb-4">
                             {course.duration_hours && (
-                              <span className="text-gray-600">
+                              <span className="text-black">
                                 {course.duration_hours} hours
                               </span>
                             )}
@@ -198,7 +198,7 @@ export default async function PartnerCoursesPage() {
 
                 {partnerCourses.length > 6 && (
                   <div className="mt-6 text-center">
-                    <button className="px-6 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200" aria-label="Action button">
+                    <button className="px-6 py-2 bg-gray-100 text-black rounded-lg hover:bg-gray-200" aria-label="Action button">
                       View All {partnerCourses.length} {partnerName} Courses
                     </button>
                   </div>
@@ -211,7 +211,7 @@ export default async function PartnerCoursesPage() {
           {(!courses || courses.length === 0) && (
             <div className="bg-white rounded-lg shadow-sm border p-12 text-center">
               <svg
-                className="w-16 h-16 text-gray-600 mx-auto mb-4"
+                className="w-16 h-16 text-black mx-auto mb-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -223,10 +223,10 @@ export default async function PartnerCoursesPage() {
                   d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
                 />
               </svg>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-black mb-2">
                 No Partner Courses Available
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Partner courses will appear here once they are loaded into the
                 system.
               </p>
@@ -240,10 +240,10 @@ export default async function PartnerCoursesPage() {
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                     Your Journey Starts Here
                   </h2>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  <p className="text-lg text-black mb-6 leading-relaxed">
                     Every great career begins with a single step. Whether you're
                     looking to change careers, upgrade your skills, or enter the
                     workforce for the first time, we're here to help you
@@ -265,7 +265,7 @@ export default async function PartnerCoursesPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         100% free training - no tuition, no hidden costs
                       </span>
                     </li>
@@ -283,7 +283,7 @@ export default async function PartnerCoursesPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Industry-recognized certifications that employers value
                       </span>
                     </li>
@@ -301,7 +301,7 @@ export default async function PartnerCoursesPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Job placement assistance and career support
                       </span>
                     </li>
@@ -319,7 +319,7 @@ export default async function PartnerCoursesPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Flexible scheduling for working adults
                       </span>
                     </li>

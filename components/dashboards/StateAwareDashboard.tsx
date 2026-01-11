@@ -157,7 +157,7 @@ export function StateAwareDashboard({
       {/* LOCKED SECTIONS - Visible But Not Accessible */}
       {lockedSections.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 py-8">
-          <h3 className="text-xl font-bold text-slate-900 mb-6">
+          <h3 className="text-xl font-bold text-black mb-6">
             Locked Until Prerequisites Complete
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -168,9 +168,9 @@ export function StateAwareDashboard({
               >
                 <div className="flex items-start gap-3 mb-3">
                   <Lock className="h-5 w-5 text-slate-500 flex-shrink-0 mt-0.5" />
-                  <h4 className="font-bold text-slate-700">{section.label}</h4>
+                  <h4 className="font-bold text-black">{section.label}</h4>
                 </div>
-                <p className="text-sm text-slate-600">{section.reason}</p>
+                <p className="text-sm text-black">{section.reason}</p>
               </div>
             ))}
           </div>
@@ -206,7 +206,7 @@ export function SectionCard({
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
           {icon && <div className="text-blue-600">{icon}</div>}
-          <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition">
+          <h4 className="font-bold text-black group-hover:text-blue-600 transition">
             {title}
           </h4>
         </div>
@@ -216,7 +216,7 @@ export function SectionCard({
           </span>
         )}
       </div>
-      <p className="text-slate-600 text-sm mb-4">{description}</p>
+      <p className="text-black text-sm mb-4">{description}</p>
       <div className="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
         <span>View</span>
         <ArrowRight className="h-4 w-4" />
@@ -238,7 +238,7 @@ interface ProgressIndicatorProps {
 export function ProgressIndicator({ steps }: ProgressIndicatorProps) {
   return (
     <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-      <h3 className="text-lg font-bold text-slate-900 mb-6">Your Journey</h3>
+      <h3 className="text-lg font-bold text-black mb-6">Your Journey</h3>
       <div className="space-y-4">
         {steps.map((step, index) => (
           <div key={index} className="flex items-center gap-4">

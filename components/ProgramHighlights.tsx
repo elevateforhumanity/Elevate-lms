@@ -48,10 +48,10 @@ export default function ProgramHighlights({ highlights = defaultHighlights }: Pr
     <section className="py-16 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4">
             Why Choose This Program
           </h2>
-          <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-black max-w-3xl mx-auto">
             Everything you need to launch your career, completely free
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function ProgramHighlights({ highlights = defaultHighlights }: Pr
                 </h3>
               </div>
               <div className="p-6">
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-black leading-relaxed">
                   {highlight.description}
                 </p>
               </div>
@@ -92,8 +92,8 @@ export default function ProgramHighlights({ highlights = defaultHighlights }: Pr
                   className="object-cover"
                 />
               </div>
-              <h4 className="font-bold text-slate-900 mb-1">Small Classes</h4>
-              <p className="text-sm text-slate-600">8-12 students per class</p>
+              <h4 className="font-bold text-black mb-1">Small Classes</h4>
+              <p className="text-sm text-black">8-12 students per class</p>
             </div>
             <div>
               <div className="relative w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden">
@@ -104,8 +104,8 @@ export default function ProgramHighlights({ highlights = defaultHighlights }: Pr
                   className="object-cover"
                 />
               </div>
-              <h4 className="font-bold text-slate-900 mb-1">Expert Instructors</h4>
-              <p className="text-sm text-slate-600">10+ years experience</p>
+              <h4 className="font-bold text-black mb-1">Expert Instructors</h4>
+              <p className="text-sm text-black">10+ years experience</p>
             </div>
             <div>
               <div className="relative w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden">
@@ -116,8 +116,8 @@ export default function ProgramHighlights({ highlights = defaultHighlights }: Pr
                   className="object-cover"
                 />
               </div>
-              <h4 className="font-bold text-slate-900 mb-1">Modern Equipment</h4>
-              <p className="text-sm text-slate-600">Industry-standard tools</p>
+              <h4 className="font-bold text-black mb-1">Modern Equipment</h4>
+              <p className="text-sm text-black">Industry-standard tools</p>
             </div>
             <div>
               <div className="relative w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden">
@@ -128,8 +128,8 @@ export default function ProgramHighlights({ highlights = defaultHighlights }: Pr
                   className="object-cover"
                 />
               </div>
-              <h4 className="font-bold text-slate-900 mb-1">Job Placement</h4>
-              <p className="text-sm text-slate-600">Employer connections</p>
+              <h4 className="font-bold text-black mb-1">Job Placement</h4>
+              <p className="text-sm text-black">Employer connections</p>
             </div>
           </div>
         </div>

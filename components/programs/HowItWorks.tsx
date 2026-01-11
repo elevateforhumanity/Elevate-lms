@@ -24,8 +24,8 @@ export function HowItWorks({ steps, variant = 'horizontal' }: HowItWorksProps) {
               </div>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
-              <p className="text-gray-700">{step.description}</p>
+              <h3 className="text-xl font-bold text-black mb-2">{step.title}</h3>
+              <p className="text-black">{step.description}</p>
             </div>
             {step.icon && (
               <div className="flex-shrink-0 text-blue-600">
@@ -56,8 +56,8 @@ export function HowItWorks({ steps, variant = 'horizontal' }: HowItWorksProps) {
                 {step.icon}
               </div>
             )}
-            <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
-            <p className="text-sm text-gray-700">{step.description}</p>
+            <h3 className="text-lg font-bold text-black mb-2">{step.title}</h3>
+            <p className="text-sm text-black">{step.description}</p>
           </div>
         </div>
       ))}

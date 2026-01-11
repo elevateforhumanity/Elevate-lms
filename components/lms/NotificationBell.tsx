@@ -106,7 +106,7 @@ export function NotificationBell() {
       case 'message':
         return <Bell className="w-5 h-5 text-green-600" />;
       default:
-        return <CheckCircle className="w-5 h-5 text-slate-600" />;
+        return <CheckCircle className="w-5 h-5 text-black" />;
     }
   };
 
@@ -117,7 +117,7 @@ export function NotificationBell() {
         onClick={() => setIsOpen(!isOpen)}
         className="relative p-2 hover:bg-slate-100 rounded-lg transition"
       >
-        <Bell className="w-6 h-6 text-slate-700" />
+        <Bell className="w-6 h-6 text-black" />
         {unreadCount > 0 && (
           <span className="absolute -top-1 -right-1 bg-brand-orange-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
             {unreadCount}
@@ -165,17 +165,17 @@ export function NotificationBell() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-2">
-                          <h4 className="font-semibold text-sm text-slate-900">
+                          <h4 className="font-semibold text-sm text-black">
                             {notification.title}
                           </h4>
                           <button
                             onClick={() => deleteNotification(notification.id)}
-                            className="flex-shrink-0 text-slate-400 hover:text-slate-600"
+                            className="flex-shrink-0 text-slate-400 hover:text-black"
                           >
                             <X className="w-4 h-4" />
                           </button>
                         </div>
-                        <p className="text-sm text-slate-600 mt-1">
+                        <p className="text-sm text-black mt-1">
                           {notification.message}
                         </p>
                         <div className="flex items-center gap-3 mt-2">
@@ -198,7 +198,7 @@ export function NotificationBell() {
               ) : (
                 <div className="p-8 text-center">
                   <Bell className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-                  <p className="text-slate-600">No notifications</p>
+                  <p className="text-black">No notifications</p>
                 </div>
               )}
             </div>

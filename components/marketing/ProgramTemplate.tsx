@@ -119,7 +119,7 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
                 </Link>
                 <Link
                   href="/programs"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 font-semibold rounded border-2 border-white hover:bg-slate-50 transition-colors shadow-lg"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-semibold rounded border-2 border-white hover:bg-slate-50 transition-colors shadow-lg"
                 >
                   All Programs
                 </Link>
@@ -137,16 +137,16 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
             <div className="text-center">
-              <p className="font-semibold text-slate-700">EmployIndy</p>
+              <p className="font-semibold text-black">EmployIndy</p>
             </div>
             <div className="text-center">
-              <p className="font-semibold text-slate-700">WorkOne</p>
+              <p className="font-semibold text-black">WorkOne</p>
             </div>
             <div className="text-center">
-              <p className="font-semibold text-slate-700">Indiana DWD</p>
+              <p className="font-semibold text-black">Indiana DWD</p>
             </div>
             <div className="text-center">
-              <p className="font-semibold text-slate-700">US Dept of Labor</p>
+              <p className="font-semibold text-black">US Dept of Labor</p>
             </div>
           </div>
         </div>
@@ -156,10 +156,10 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
       <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
               What You'll Learn
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-lg text-black max-w-3xl mx-auto">
               Our comprehensive curriculum covers all the skills you need to
               excel as a {program.name}.
             </p>
@@ -175,10 +175,10 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
                   <CheckCircle size={20} className="text-brand-orange-600" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-1">
+                  <h3 className="font-bold text-black mb-1">
                     {skill.title}
                   </h3>
-                  <p className="text-sm text-slate-600">{skill.description}</p>
+                  <p className="text-sm text-black">{skill.description}</p>
                 </div>
               </div>
             ))}
@@ -191,10 +191,10 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
                 Career Opportunities
               </h2>
-              <p className="text-lg text-slate-600 mb-8">
+              <p className="text-lg text-black mb-8">
                 {program.name}s are in high demand across healthcare settings.
                 Upon completion, you'll be qualified for positions including:
               </p>
@@ -210,10 +210,10 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
                       className="text-brand-orange-600 flex-shrink-0"
                     />
                     <div>
-                      <div className="font-bold text-slate-900">
+                      <div className="font-bold text-black">
                         {job.title}
                       </div>
-                      <div className="text-sm text-slate-600">
+                      <div className="text-sm text-black">
                         {job.setting}
                       </div>
                     </div>
@@ -223,13 +223,13 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
             </div>
 
             <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-lg">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">
+              <h3 className="text-2xl font-bold text-black mb-6">
                 Program Outcomes
               </h3>
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-slate-700">Job Placement Rate</span>
+                    <span className="text-black">Job Placement Rate</span>
                     <span className="text-2xl font-bold text-brand-orange-600">
                       {program.outcomes.jobPlacement}%
                     </span>
@@ -243,7 +243,7 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-slate-700">
+                    <span className="text-black">
                       Certification Pass Rate
                     </span>
                     <span className="text-2xl font-bold text-blue-600">
@@ -261,7 +261,7 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
                 </div>
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-slate-700">Student Satisfaction</span>
+                    <span className="text-black">Student Satisfaction</span>
                     <span className="text-2xl font-bold text-purple-600">
                       {program.outcomes.satisfaction}%
                     </span>
@@ -278,11 +278,11 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
               <div className="mt-8 p-4 bg-red-50 rounded-xl border border-red-200">
                 <div className="flex items-center gap-3 mb-2">
                   <Award size={20} className="text-brand-orange-600" />
-                  <span className="font-bold text-slate-900">
+                  <span className="font-bold text-black">
                     Certification Included
                   </span>
                 </div>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-black">
                   {program.certification}
                 </p>
               </div>
@@ -295,7 +295,7 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
       <section className="py-20 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
               Program Details
             </h2>
           </div>
@@ -305,13 +305,13 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
               <div className="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center mb-4">
                 <Clock size={24} className="text-brand-orange-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Schedule
               </h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Flexible options to fit your life:
               </p>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 {program.schedule.map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-brand-orange-600" />
@@ -325,11 +325,11 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
               <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
                 <GraduationCap size={24} className="text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Requirements
               </h3>
-              <p className="text-slate-600 mb-4">Minimal prerequisites:</p>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <p className="text-black mb-4">Minimal prerequisites:</p>
+              <ul className="space-y-2 text-sm text-black">
                 {program.requirements.map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-blue-600" />
@@ -343,13 +343,13 @@ export function ProgramTemplate({ program }: ProgramTemplateProps) {
               <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center mb-4">
                 <Users size={24} className="text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Support Services
               </h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 We're here to help you succeed:
               </p>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 {program.support.map((item, index) => (
                   <li key={index} className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-purple-600" />

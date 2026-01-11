@@ -64,7 +64,7 @@ export function LoadingSpinner({ text }: { text?: string }) {
   return (
     <div className="flex flex-col items-center justify-center p-8 gap-4">
       <Spinner size="lg" />
-      {text && <p className="text-slate-600 animate-pulse">{text}</p>}
+      {text && <p className="text-black animate-pulse">{text}</p>}
     </div>
   );
 }
@@ -126,7 +126,7 @@ export function PageLoading() {
     <div className="fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="text-center">
         <Spinner size="lg" />
-        <p className="mt-4 text-slate-600 font-semibold">Loading...</p>
+        <p className="mt-4 text-black font-semibold">Loading...</p>
       </div>
     </div>
   );

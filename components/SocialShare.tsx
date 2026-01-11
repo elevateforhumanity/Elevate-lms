@@ -55,7 +55,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
     <div className="relative">
       <button
         onClick={handleNativeShare}
-        className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition"
+        className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-black rounded-lg transition"
         aria-label="Share"
       >
         <Share2 className="w-4 h-4" />
@@ -72,7 +72,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
 
           {/* Share Menu */}
           <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-lg shadow-xl border border-slate-200 z-50 p-4">
-            <h3 className="text-sm font-semibold text-slate-900 mb-3">Share this</h3>
+            <h3 className="text-sm font-semibold text-black mb-3">Share this</h3>
 
             <div className="space-y-2">
               {/* Facebook */}
@@ -85,7 +85,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                   <Facebook className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-sm font-medium text-slate-700">Facebook</span>
+                <span className="text-sm font-medium text-black">Facebook</span>
               </a>
 
               <a
@@ -106,7 +106,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
                 <div className="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center">
                   <Linkedin className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-sm font-medium text-slate-700">LinkedIn</span>
+                <span className="text-sm font-medium text-black">LinkedIn</span>
               </a>
 
               {/* Email */}
@@ -117,7 +117,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
                 <div className="w-8 h-8 bg-slate-600 rounded-lg flex items-center justify-center">
                   <Mail className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-sm font-medium text-slate-700">Email</span>
+                <span className="text-sm font-medium text-black">Email</span>
               </a>
 
               {/* Copy Link */}
@@ -132,7 +132,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
                     <LinkIcon className="w-4 h-4 text-white" />
                   )}
                 </div>
-                <span className="text-sm font-medium text-slate-700">
+                <span className="text-sm font-medium text-black">
                   {copied ? 'Copied!' : 'Copy Link'}
                 </span>
               </button>

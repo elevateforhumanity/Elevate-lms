@@ -52,7 +52,7 @@ export function CourseCard(props: CourseCardProps) {
           <p className="text-xs font-semibold uppercase tracking-wide text-accent-500">
             {provider ?? "Elevate for Humanity"}
           </p>
-          <h3 className="line-clamp-2 text-base font-semibold text-slate-900 group-hover:text-brand-600 transition-colors">
+          <h3 className="line-clamp-2 text-base font-semibold text-black group-hover:text-brand-600 transition-colors">
             {title}
           </h3>
           {level && (

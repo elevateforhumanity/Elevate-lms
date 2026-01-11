@@ -72,10 +72,10 @@ export default function FooterPageTemplate({
                 />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                <h2 className="text-3xl font-bold text-black mb-4">
                   Questions About Our Policies?
                 </h2>
-                <p className="text-slate-600 mb-6">
+                <p className="text-black mb-6">
                   Our team is here to help. Contact us for clarification on any of our policies or to learn more about our programs.
                 </p>
                 <div className="flex flex-wrap gap-4">
@@ -102,7 +102,7 @@ export default function FooterPageTemplate({
       <section className="py-12 bg-white border-t border-slate-200">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h3 className="text-xl font-bold text-slate-900 mb-6 text-center">
+            <h3 className="text-xl font-bold text-black mb-6 text-center">
               Related Information
             </h3>
             <div className="grid md:grid-cols-3 gap-4">
@@ -110,22 +110,22 @@ export default function FooterPageTemplate({
                 href="/privacy-policy"
                 className="p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition text-center"
               >
-                <div className="font-semibold text-slate-900">Privacy Policy</div>
-                <div className="text-sm text-slate-600 mt-1">How we protect your data</div>
+                <div className="font-semibold text-black">Privacy Policy</div>
+                <div className="text-sm text-black mt-1">How we protect your data</div>
               </Link>
               <Link
                 href="/terms-of-service"
                 className="p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition text-center"
               >
-                <div className="font-semibold text-slate-900">Terms of Service</div>
-                <div className="text-sm text-slate-600 mt-1">Our service agreement</div>
+                <div className="font-semibold text-black">Terms of Service</div>
+                <div className="text-sm text-black mt-1">Our service agreement</div>
               </Link>
               <Link
                 href="/refund-policy"
                 className="p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition text-center"
               >
-                <div className="font-semibold text-slate-900">Refund Policy</div>
-                <div className="text-sm text-slate-600 mt-1">Our refund terms</div>
+                <div className="font-semibold text-black">Refund Policy</div>
+                <div className="text-sm text-black mt-1">Our refund terms</div>
               </Link>
             </div>
           </div>

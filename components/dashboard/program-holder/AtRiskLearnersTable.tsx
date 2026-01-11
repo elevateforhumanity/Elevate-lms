@@ -41,7 +41,7 @@ export function AtRiskLearnersTable({ learners }: Props) {
               <tr key={l.id} className="border-t border-slate-50">
                 <td className="px-3 py-2">
                   <div className="flex flex-col">
-                    <span className="text-xs font-medium text-slate-900">
+                    <span className="text-xs font-medium text-black">
                       {l.name}
                     </span>
                     {l.email && (
@@ -51,15 +51,15 @@ export function AtRiskLearnersTable({ learners }: Props) {
                     )}
                   </div>
                 </td>
-                <td className="px-3 py-2 text-xs text-slate-700">
+                <td className="px-3 py-2 text-xs text-black">
                   {l.program_title}
                 </td>
-                <td className="px-3 py-2 text-xs text-slate-700">
+                <td className="px-3 py-2 text-xs text-black">
                   {l.course_title}
                 </td>
                 <td className="px-3 py-2 text-xs">
                   <div className="flex items-center gap-2">
-                    <span className="text-slate-700">
+                    <span className="text-black">
                       {l.progress_percent}%
                     </span>
                     <div className="h-1.5 w-20 rounded-full bg-slate-100">

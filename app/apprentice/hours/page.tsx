@@ -119,8 +119,8 @@ export default function ApprenticeHoursPage() {
   return (
     <div className="p-6 space-y-4 max-w-7xl mx-auto">
       <div className="space-y-1">
-        <h1 className="text-2xl font-bold text-slate-900">Log Hours</h1>
-        <p className="text-sm text-slate-600">
+        <h1 className="text-2xl font-bold text-black">Log Hours</h1>
+        <p className="text-sm text-black">
           Log weekly. WIOA hours can't be backdated. RTI/OJT caps are enforced
           automatically.
         </p>
@@ -137,11 +137,11 @@ export default function ApprenticeHoursPage() {
       ) : null}
 
       <div className="border border-slate-200 rounded-lg p-6 space-y-4 bg-white shadow-sm">
-        <h2 className="text-lg font-semibold text-slate-900">New Entry</h2>
+        <h2 className="text-lg font-semibold text-black">New Entry</h2>
 
         <div className="grid md:grid-cols-3 gap-4">
           <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-slate-700">
+            <label className="text-xs font-semibold mb-1 text-black">
               Entry date
             </label>
             <input
@@ -153,7 +153,7 @@ export default function ApprenticeHoursPage() {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-slate-700">
+            <label className="text-xs font-semibold mb-1 text-black">
               Start time
             </label>
             <input
@@ -165,7 +165,7 @@ export default function ApprenticeHoursPage() {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-slate-700">
+            <label className="text-xs font-semibold mb-1 text-black">
               End time
             </label>
             <input
@@ -179,7 +179,7 @@ export default function ApprenticeHoursPage() {
 
         <div className="grid md:grid-cols-3 gap-4">
           <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-slate-700">
+            <label className="text-xs font-semibold mb-1 text-black">
               Hour type
             </label>
             <select
@@ -193,7 +193,7 @@ export default function ApprenticeHoursPage() {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-slate-700">
+            <label className="text-xs font-semibold mb-1 text-black">
               Funding phase
             </label>
             <select
@@ -208,7 +208,7 @@ export default function ApprenticeHoursPage() {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-xs font-semibold mb-1 text-slate-700">
+            <label className="text-xs font-semibold mb-1 text-black">
               Milady module (optional)
             </label>
             <input
@@ -221,7 +221,7 @@ export default function ApprenticeHoursPage() {
         </div>
 
         <div className="flex flex-col">
-          <label className="text-xs font-semibold mb-1 text-slate-700">
+          <label className="text-xs font-semibold mb-1 text-black">
             Activity note (optional)
           </label>
           <input
@@ -239,7 +239,7 @@ export default function ApprenticeHoursPage() {
             onChange={(e) => setAttest(e.target.checked)}
             className="w-4 h-4"
           />
-          <span className="text-slate-700">
+          <span className="text-black">
             I attest these hours are accurate and were completed as logged.
           </span>
         </label>
@@ -254,7 +254,7 @@ export default function ApprenticeHoursPage() {
       </div>
 
       <div className="border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm">
-        <div className="px-4 py-3 text-sm font-bold bg-slate-100 text-slate-700 border-b border-slate-200">
+        <div className="px-4 py-3 text-sm font-bold bg-slate-100 text-black border-b border-slate-200">
           Recent Entries
         </div>
         {loading ? (
@@ -273,10 +273,10 @@ export default function ApprenticeHoursPage() {
                 className="px-4 py-3 text-sm flex flex-wrap gap-3 items-center justify-between hover:bg-slate-50 transition"
               >
                 <div className="space-y-1">
-                  <div className="font-semibold text-slate-900">
+                  <div className="font-semibold text-black">
                     {e.log_date} • {e.hour_type} • {e.funding_phase}
                   </div>
-                  <div className="text-xs text-slate-600">
+                  <div className="text-xs text-black">
                     {new Date(e.start_at).toLocaleString()} →{' '}
                     {new Date(e.end_at).toLocaleString()} •{' '}
                     {minutesToHrsMin(e.minutes)} •{' '}
@@ -288,20 +288,20 @@ export default function ApprenticeHoursPage() {
                             ? 'bg-brand-green-100 text-green-800'
                             : e.status === 'REJECTED'
                               ? 'bg-red-100 text-red-800'
-                              : 'bg-slate-100 text-slate-800'
+                              : 'bg-slate-100 text-black'
                       }`}
                     >
                       {e.status}
                     </span>
                   </div>
                   {e.milady_module_ref ? (
-                    <div className="text-xs text-slate-600">
+                    <div className="text-xs text-black">
                       <span className="font-semibold">Milady:</span>{' '}
                       {e.milady_module_ref}
                     </div>
                   ) : null}
                   {e.activity_note ? (
-                    <div className="text-xs text-slate-600">
+                    <div className="text-xs text-black">
                       {e.activity_note}
                     </div>
                   ) : null}

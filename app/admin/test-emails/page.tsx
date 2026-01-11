@@ -60,11 +60,11 @@ export default function TestEmailsPage() {
           </Link>
           <div className="flex items-center gap-3 mb-2">
             <Mail className="w-8 h-8 text-brand-blue-600" />
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-black">
               Test Email System
             </h1>
           </div>
-          <p className="text-gray-600">
+          <p className="text-black">
             Verify that automated emails are working correctly
           </p>
         </div>
@@ -91,18 +91,18 @@ export default function TestEmailsPage() {
 
         {/* Email System Status */}
         <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg font-semibold text-black mb-4">
             Email System Status
           </h2>
           <div className="space-y-3">
             <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-black">
                 Email Provider
               </span>
-              <span className="text-sm text-gray-900">Resend</span>
+              <span className="text-sm text-black">Resend</span>
             </div>
             <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-black">
                 Configuration
               </span>
               <span className="text-sm text-brand-green-600 font-medium">
@@ -110,7 +110,7 @@ export default function TestEmailsPage() {
               </span>
             </div>
             <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-              <span className="text-sm font-medium text-gray-700">API Key</span>
+              <span className="text-sm font-medium text-black">API Key</span>
               <span className="text-sm text-brand-green-600 font-medium">
                 ✓ Set
               </span>
@@ -120,10 +120,10 @@ export default function TestEmailsPage() {
 
         {/* Test Email Types */}
         <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg font-semibold text-black mb-4">
             Send Test Emails
           </h2>
-          <p className="text-sm text-gray-600 mb-6">
+          <p className="text-sm text-black mb-6">
             Click a button below to send a test email to your admin account.
             Check your inbox to verify delivery.
           </p>
@@ -136,8 +136,8 @@ export default function TestEmailsPage() {
             >
               <Send className="w-8 h-8 text-brand-blue-600" />
               <div className="text-center">
-                <div className="font-semibold text-gray-900">Welcome Email</div>
-                <div className="text-xs text-gray-700 mt-1">
+                <div className="font-semibold text-black">Welcome Email</div>
+                <div className="text-xs text-black mt-1">
                   New user onboarding
                 </div>
               </div>
@@ -150,10 +150,10 @@ export default function TestEmailsPage() {
             >
               <Send className="w-8 h-8 text-brand-orange-600" />
               <div className="text-center">
-                <div className="font-semibold text-gray-900">
+                <div className="font-semibold text-black">
                   Reminder Email
                 </div>
-                <div className="text-xs text-gray-700 mt-1">
+                <div className="text-xs text-black mt-1">
                   Action required alerts
                 </div>
               </div>
@@ -166,10 +166,10 @@ export default function TestEmailsPage() {
             >
               <Send className="w-8 h-8 text-brand-green-600" />
               <div className="text-center">
-                <div className="font-semibold text-gray-900">
+                <div className="font-semibold text-black">
                   Notification Email
                 </div>
-                <div className="text-xs text-gray-700 mt-1">
+                <div className="text-xs text-black mt-1">
                   Activity updates
                 </div>
               </div>
@@ -179,17 +179,17 @@ export default function TestEmailsPage() {
 
         {/* Email Triggers */}
         <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg font-semibold text-black mb-4">
             Automated Email Triggers
           </h2>
           <div className="space-y-3 text-sm">
             <div className="flex items-start gap-3 p-3 bg-gray-50 rounded">
               <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <div>
-                <div className="font-medium text-gray-900">
+                <div className="font-medium text-black">
                   Student Application
                 </div>
-                <div className="text-gray-600">
+                <div className="text-black">
                   Welcome email sent on successful enrollment
                 </div>
               </div>
@@ -197,10 +197,10 @@ export default function TestEmailsPage() {
             <div className="flex items-start gap-3 p-3 bg-gray-50 rounded">
               <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <div>
-                <div className="font-medium text-gray-900">
+                <div className="font-medium text-black">
                   Shop Partner Application
                 </div>
-                <div className="text-gray-600">
+                <div className="text-black">
                   Confirmation email sent to new shop partners
                 </div>
               </div>
@@ -208,8 +208,8 @@ export default function TestEmailsPage() {
             <div className="flex items-start gap-3 p-3 bg-gray-50 rounded">
               <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <div>
-                <div className="font-medium text-gray-900">Contact Form</div>
-                <div className="text-gray-600">
+                <div className="font-medium text-black">Contact Form</div>
+                <div className="text-black">
                   Notification sent to admin on new inquiries
                 </div>
               </div>
@@ -217,8 +217,8 @@ export default function TestEmailsPage() {
             <div className="flex items-start gap-3 p-3 bg-gray-50 rounded">
               <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <div>
-                <div className="font-medium text-gray-900">License Request</div>
-                <div className="text-gray-600">
+                <div className="font-medium text-black">License Request</div>
+                <div className="text-black">
                   Confirmation and admin notification emails
                 </div>
               </div>
@@ -226,8 +226,8 @@ export default function TestEmailsPage() {
             <div className="flex items-start gap-3 p-3 bg-gray-50 rounded">
               <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <div>
-                <div className="font-medium text-gray-900">Partner Inquiry</div>
-                <div className="text-gray-600">
+                <div className="font-medium text-black">Partner Inquiry</div>
+                <div className="text-black">
                   Confirmation and admin notification emails
                 </div>
               </div>

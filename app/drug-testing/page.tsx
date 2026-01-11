@@ -189,7 +189,7 @@ export default function DrugTestingPage() {
                 <Shield className="w-8 h-8 text-brand-blue-600" />
               </div>
               <h3 className="font-bold mb-2">MRO Review Included</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 All tests reviewed by certified Medical Review Officer
               </p>
             </div>
@@ -198,7 +198,7 @@ export default function DrugTestingPage() {
                 <MapPin className="w-8 h-8 text-brand-green-600" />
               </div>
               <h3 className="font-bold mb-2">Nationwide Network</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 20,000+ collection sites across the US
               </p>
             </div>
@@ -207,7 +207,7 @@ export default function DrugTestingPage() {
                 <Clock className="w-8 h-8 text-purple-600" />
               </div>
               <h3 className="font-bold mb-2">Fast Results</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Results typically within 24-48 hours
               </p>
             </div>
@@ -216,7 +216,7 @@ export default function DrugTestingPage() {
                 <CheckCircle className="w-8 h-8 text-brand-orange-600" />
               </div>
               <h3 className="font-bold mb-2">DOT Compliant</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 FMCSA-approved testing and procedures
               </p>
             </div>
@@ -228,7 +228,7 @@ export default function DrugTestingPage() {
       <section className="py-16 bg-white">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-bold mb-8">Urine Drug Tests</h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             Lab-based urine drug testing with certified MRO review. Most common
             testing method for workplace programs.
           </p>
@@ -244,7 +244,7 @@ export default function DrugTestingPage() {
                   </div>
                 )}
                 <h3 className="text-xl font-bold mb-2">{test.name}</h3>
-                <p className="text-gray-600 text-sm mb-4">{test.description}</p>
+                <p className="text-black text-sm mb-4">{test.description}</p>
                 <div className="text-3xl font-bold text-brand-blue-600 mb-4">
                   ${test.price}
                 </div>
@@ -264,7 +264,7 @@ export default function DrugTestingPage() {
       <section className="py-16 bg-gray-50">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-bold mb-8">Instant Rapid Tests</h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             On-site rapid testing with immediate preliminary results. Positive
             results confirmed by lab.
           </p>
@@ -275,7 +275,7 @@ export default function DrugTestingPage() {
                 className="bg-white border-2 border-gray-200 rounded-lg p-6"
               >
                 <h3 className="text-lg font-bold mb-2">{test.name}</h3>
-                <p className="text-gray-600 text-sm mb-4">{test.description}</p>
+                <p className="text-black text-sm mb-4">{test.description}</p>
                 <div className="text-2xl font-bold text-brand-blue-600 mb-4">
                   ${test.price}
                 </div>
@@ -295,7 +295,7 @@ export default function DrugTestingPage() {
       <section className="py-16 bg-white">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-bold mb-8">Hair Drug Tests</h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             Hair follicle testing provides 90-day detection window. Ideal for
             pre-employment and comprehensive screening.
           </p>
@@ -306,7 +306,7 @@ export default function DrugTestingPage() {
                 className="bg-white border-2 border-gray-200 rounded-lg p-6"
               >
                 <h3 className="text-lg font-bold mb-2">{test.name}</h3>
-                <p className="text-gray-600 text-sm mb-4">{test.description}</p>
+                <p className="text-black text-sm mb-4">{test.description}</p>
                 <div className="text-2xl font-bold text-brand-blue-600 mb-4">
                   ${test.price}
                 </div>
@@ -326,7 +326,7 @@ export default function DrugTestingPage() {
       <section className="py-16 bg-blue-50">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-bold mb-8">DOT Specialty Tests</h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             FMCSA-compliant testing for commercial drivers and DOT-regulated
             industries.
           </p>
@@ -337,7 +337,7 @@ export default function DrugTestingPage() {
                 className="bg-white border-2 border-blue-200 rounded-lg p-6"
               >
                 <h3 className="text-xl font-bold mb-2">{test.name}</h3>
-                <p className="text-gray-600 mb-4">{test.description}</p>
+                <p className="text-black mb-4">{test.description}</p>
                 <div className="text-3xl font-bold text-brand-blue-600 mb-4">
                   ${test.price}
                 </div>
@@ -364,7 +364,7 @@ export default function DrugTestingPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Order Test</h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Call (317) 314-3757 to order. We'll schedule your test at a
                   convenient collection site.
                 </p>
@@ -378,7 +378,7 @@ export default function DrugTestingPage() {
                 <h3 className="text-xl font-bold mb-2">
                   Visit Collection Site
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Go to the collection site (LabCorp, Quest, or local clinic).
                   Bring photo ID.
                 </p>
@@ -390,7 +390,7 @@ export default function DrugTestingPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Sample Collection</h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Trained collector obtains sample and sends to SAMHSA-certified
                   lab.
                 </p>
@@ -402,7 +402,7 @@ export default function DrugTestingPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">MRO Review</h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Medical Review Officer reviews results and contacts donor if
                   needed.
                 </p>
@@ -414,7 +414,7 @@ export default function DrugTestingPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Results Delivered</h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Results typically available within 24-48 hours via email and
                   online portal.
                 </p>

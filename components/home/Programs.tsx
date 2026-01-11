@@ -44,10 +44,10 @@ export default function Programs() {
   return (
     <section className="bg-white py-16">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
+        <h2 className="text-3xl font-bold text-black mb-4 text-center">
           Training Programs
         </h2>
-        <p className="text-lg text-gray-600 mb-12 text-center max-w-3xl mx-auto">
+        <p className="text-lg text-black mb-12 text-center max-w-3xl mx-auto">
           Each program is structured to meet industry standards and lead to recognized credentials.
         </p>
 
@@ -67,10 +67,10 @@ export default function Programs() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold text-black mb-3">
                   {program.title}
                 </h3>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-black leading-relaxed">
                   {program.description}
                 </p>
               </div>

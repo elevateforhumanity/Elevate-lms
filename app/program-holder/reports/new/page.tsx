@@ -79,12 +79,12 @@ export default async function NewReportPage() {
               <form method="POST">
                 {/* Report Period */}
                 <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                  <h2 className="text-2xl font-bold text-black mb-6">
                     Report Period
                   </h2>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label className="block text-sm font-medium text-black mb-2">
                         Week Ending Date
                       </label>
                       <div className="relative">
@@ -98,7 +98,7 @@ export default async function NewReportPage() {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label className="block text-sm font-medium text-black mb-2">
                         Total Hours This Week
                       </label>
                       <div className="relative">
@@ -119,7 +119,7 @@ export default async function NewReportPage() {
 
                 {/* Student Information */}
                 <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                  <h2 className="text-2xl font-bold text-black mb-6">
                     Student Progress
                   </h2>
                   {students && students.length > 0 ? (
@@ -129,7 +129,7 @@ export default async function NewReportPage() {
                           key={enrollment.id}
                           className="p-4 bg-slate-50 rounded-lg border border-slate-200"
                         >
-                          <div className="font-medium text-slate-900 mb-2">
+                          <div className="font-medium text-black mb-2">
                             {enrollment.student?.first_name}{' '}
                             {enrollment.student?.last_name}
                           </div>
@@ -143,7 +143,7 @@ export default async function NewReportPage() {
                       ))}
                     </div>
                   ) : (
-                    <p className="text-slate-600">
+                    <p className="text-black">
                       No active students to report on.
                     </p>
                   )}
@@ -151,12 +151,12 @@ export default async function NewReportPage() {
 
                 {/* Activities & Notes */}
                 <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                  <h2 className="text-2xl font-bold text-black mb-6">
                     Activities & Notes
                   </h2>
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label className="block text-sm font-medium text-black mb-2">
                         Skills Practiced
                       </label>
                       <textarea
@@ -167,7 +167,7 @@ export default async function NewReportPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label className="block text-sm font-medium text-black mb-2">
                         Challenges or Issues
                       </label>
                       <textarea
@@ -178,7 +178,7 @@ export default async function NewReportPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label className="block text-sm font-medium text-black mb-2">
                         Additional Notes
                       </label>
                       <textarea
@@ -202,7 +202,7 @@ export default async function NewReportPage() {
                   </Link>
                   <Link
                     href="/program-holder/reports"
-                    className="inline-flex items-center justify-center px-6 py-3 bg-white hover:bg-slate-50 text-slate-900 font-semibold rounded-lg border-2 border-slate-300 transition-colors"
+                    className="inline-flex items-center justify-center px-6 py-3 bg-white hover:bg-slate-50 text-black font-semibold rounded-lg border-2 border-slate-300 transition-colors"
                   >
                     Cancel
                   </Link>

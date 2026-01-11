@@ -56,22 +56,22 @@ export default async function EmployerPostingsPage() {
         </div>
       ) : !postings || postings.length === 0 ? (
         <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">Create Your First Job Posting</h2>
-          <p className="text-slate-600 mb-6">
+          <h2 className="text-2xl font-bold text-black mb-4">Create Your First Job Posting</h2>
+          <p className="text-black mb-6">
             Post jobs and connect with qualified candidates from our training programs.
           </p>
           <div className="grid md:grid-cols-3 gap-4 mb-8 text-left">
             <div className="border rounded-lg p-4">
               <div className="text-blue-600 font-semibold mb-2">1. Create Posting</div>
-              <p className="text-sm text-slate-600">Add job details, requirements, and compensation</p>
+              <p className="text-sm text-black">Add job details, requirements, and compensation</p>
             </div>
             <div className="border rounded-lg p-4">
               <div className="text-blue-600 font-semibold mb-2">2. Review Applications</div>
-              <p className="text-sm text-slate-600">Get matched with qualified candidates</p>
+              <p className="text-sm text-black">Get matched with qualified candidates</p>
             </div>
             <div className="border rounded-lg p-4">
               <div className="text-blue-600 font-semibold mb-2">3. Hire Talent</div>
-              <p className="text-sm text-slate-600">Schedule interviews and make offers</p>
+              <p className="text-sm text-black">Schedule interviews and make offers</p>
             </div>
           </div>
           <a
@@ -89,7 +89,7 @@ export default async function EmployerPostingsPage() {
           {postings.map((posting) => (
             <div key={posting.id} className="bg-white rounded-lg shadow-sm border p-6">
               <h3 className="text-xl font-semibold mb-2">{posting.title}</h3>
-              <p className="text-slate-600 mb-4">{posting.description}</p>
+              <p className="text-black mb-4">{posting.description}</p>
               <div className="flex gap-4 text-sm text-slate-500">
                 <span>Status: {posting.status}</span>
                 <span>Applications: {posting.application_count || 0}</span>

@@ -64,10 +64,10 @@ export default async function EventsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="mb-12 text-center">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
                 Upcoming Events
               </h2>
-              <p className="text-lg text-slate-600">
+              <p className="text-lg text-black">
                 All events are free. Registration recommended but not required
                 for most events.
               </p>
@@ -100,7 +100,7 @@ export default async function EventsPage() {
                     {/* Event Details */}
                     <div className="flex-1">
                       <div className="flex flex-wrap items-start gap-3 mb-3">
-                        <h3 className="text-lg md:text-lg font-bold text-slate-900 flex-1">
+                        <h3 className="text-lg md:text-lg font-bold text-black flex-1">
                           {event.title}
                         </h3>
                         <span
@@ -115,11 +115,11 @@ export default async function EventsPage() {
                       </div>
 
                       <div className="space-y-2 mb-4">
-                        <div className="flex items-center gap-2 text-slate-600">
+                        <div className="flex items-center gap-2 text-black">
                           <Clock className="w-5 h-5 text-slate-400" />
                           <span>{event.time}</span>
                         </div>
-                        <div className="flex items-start gap-2 text-slate-600">
+                        <div className="flex items-start gap-2 text-black">
                           {event.virtual ? (
                             <Video className="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5" />
                           ) : (
@@ -134,13 +134,13 @@ export default async function EventsPage() {
                             )}
                           </div>
                         </div>
-                        <div className="flex items-center gap-2 text-slate-600">
+                        <div className="flex items-center gap-2 text-black">
                           <Users className="w-5 h-5 text-slate-400" />
                           <span>{event.capacity}</span>
                         </div>
                       </div>
 
-                      <p className="text-slate-700 mb-4 leading-relaxed">
+                      <p className="text-black mb-4 leading-relaxed">
                         {event.description}
                       </p>
 
@@ -172,7 +172,7 @@ export default async function EventsPage() {
                 <h3 className="text-lg font-bold mb-2">
                   Monthly Info Sessions
                 </h3>
-                <p className="text-slate-600 mb-4">
+                <p className="text-black mb-4">
                   Second Tuesday of every month, 6:00 PM - 7:30 PM. Learn about
                   all our programs and funding options.
                 </p>
@@ -187,7 +187,7 @@ export default async function EventsPage() {
                 <h3 className="text-lg font-bold mb-2">
                   Quarterly Hiring Events
                 </h3>
-                <p className="text-slate-600 mb-4">
+                <p className="text-black mb-4">
                   Third Thursday of Jan, Apr, Jul, Oct. Meet 20+ employers
                   hiring our graduates.
                 </p>
@@ -200,7 +200,7 @@ export default async function EventsPage() {
               </div>
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <h3 className="text-lg font-bold mb-2">Weekly Open Hours</h3>
-                <p className="text-slate-600 mb-4">
+                <p className="text-black mb-4">
                   Every Wednesday, 4:00 PM - 6:00 PM. Drop in for questions,
                   tours, or to start your application.
                 </p>
@@ -215,7 +215,7 @@ export default async function EventsPage() {
                 <h3 className="text-lg font-bold mb-2">
                   Graduation Ceremonies
                 </h3>
-                <p className="text-slate-600 mb-4">
+                <p className="text-black mb-4">
                   End of each quarter (Mar, Jun, Sep, Dec). Celebrate our
                   graduates and their achievements!
                 </p>

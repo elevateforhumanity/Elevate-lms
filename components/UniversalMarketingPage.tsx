@@ -85,7 +85,7 @@ export default function UniversalMarketingPage({
                 </Link>
                 <Link
                   href="/programs"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 font-semibold rounded border-2 border-white hover:bg-slate-50 transition-colors shadow-lg"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-semibold rounded border-2 border-white hover:bg-slate-50 transition-colors shadow-lg"
                 >
                   Explore Programs
                 </Link>
@@ -103,16 +103,16 @@ export default function UniversalMarketingPage({
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
             <div className="text-center">
-              <p className="font-semibold text-slate-700">EmployIndy</p>
+              <p className="font-semibold text-black">EmployIndy</p>
             </div>
             <div className="text-center">
-              <p className="font-semibold text-slate-700">WorkOne</p>
+              <p className="font-semibold text-black">WorkOne</p>
             </div>
             <div className="text-center">
-              <p className="font-semibold text-slate-700">Indiana DWD</p>
+              <p className="font-semibold text-black">Indiana DWD</p>
             </div>
             <div className="text-center">
-              <p className="font-semibold text-slate-700">US Dept of Labor</p>
+              <p className="font-semibold text-black">US Dept of Labor</p>
             </div>
           </div>
         </div>
@@ -129,11 +129,11 @@ export default function UniversalMarketingPage({
               {section.imagePosition === "right" ? (
                 <>
                   <div>
-                    <h2 className="text-4xl font-light text-slate-900 mb-6 leading-tight text-2xl md:text-3xl lg:text-4xl">
+                    <h2 className="text-4xl font-light text-black mb-6 leading-tight text-2xl md:text-3xl lg:text-4xl">
                       {section.title}
                     </h2>
                     <div
-                      className="text-lg text-slate-600 leading-relaxed prose prose-lg max-w-none"
+                      className="text-lg text-black leading-relaxed prose prose-lg max-w-none"
                       dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }}
                     />
                   </div>
@@ -163,11 +163,11 @@ export default function UniversalMarketingPage({
                     </div>
                   )}
                   <div>
-                    <h2 className="text-4xl font-light text-slate-900 mb-6 leading-tight text-2xl md:text-3xl lg:text-4xl">
+                    <h2 className="text-4xl font-light text-black mb-6 leading-tight text-2xl md:text-3xl lg:text-4xl">
                       {section.title}
                     </h2>
                     <div
-                      className="text-lg text-slate-600 leading-relaxed prose prose-lg max-w-none"
+                      className="text-lg text-black leading-relaxed prose prose-lg max-w-none"
                       dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }}
                     />
                   </div>

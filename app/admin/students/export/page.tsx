@@ -76,10 +76,10 @@ export default function ExportStudentsPage() {
           >
             ← Back to Students
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Export Student Data
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-black">
             Generate and download student reports in various formats.
           </p>
         </div>
@@ -94,7 +94,7 @@ export default function ExportStudentsPage() {
         {/* Export Options */}
         <div className="bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-black">
               Export Options
             </h2>
           </div>
@@ -102,7 +102,7 @@ export default function ExportStudentsPage() {
           <div className="p-6 space-y-6">
             {/* Export Format */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-black mb-3">
                 Select Export Format
               </label>
               <div className="grid md:grid-cols-3 gap-4">
@@ -116,8 +116,8 @@ export default function ExportStudentsPage() {
                     className="mr-3"
                   />
                   <div>
-                    <div className="font-semibold text-gray-900">CSV</div>
-                    <div className="text-xs text-gray-700">
+                    <div className="font-semibold text-black">CSV</div>
+                    <div className="text-xs text-black">
                       Excel compatible
                     </div>
                   </div>
@@ -131,8 +131,8 @@ export default function ExportStudentsPage() {
                     className="mr-3"
                   />
                   <div>
-                    <div className="font-semibold text-gray-900">Excel</div>
-                    <div className="text-xs text-gray-700">Available now</div>
+                    <div className="font-semibold text-black">Excel</div>
+                    <div className="text-xs text-black">Available now</div>
                   </div>
                 </label>
                 <label className="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-blue-500 opacity-50">
@@ -144,8 +144,8 @@ export default function ExportStudentsPage() {
                     className="mr-3"
                   />
                   <div>
-                    <div className="font-semibold text-gray-900">PDF</div>
-                    <div className="text-xs text-gray-700">Available now</div>
+                    <div className="font-semibold text-black">PDF</div>
+                    <div className="text-xs text-black">Available now</div>
                   </div>
                 </label>
               </div>
@@ -153,7 +153,7 @@ export default function ExportStudentsPage() {
 
             {/* Data Selection */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-black mb-3">
                 Select Data to Include
               </label>
               <div className="space-y-2">
@@ -164,7 +164,7 @@ export default function ExportStudentsPage() {
                     disabled
                     className="rounded text-brand-blue-600"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-black">
                     Basic Information (Name, Email, Phone)
                   </span>
                 </label>
@@ -175,7 +175,7 @@ export default function ExportStudentsPage() {
                     disabled
                     className="rounded text-brand-blue-600"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-black">
                     Enrollment Status
                   </span>
                 </label>
@@ -186,7 +186,7 @@ export default function ExportStudentsPage() {
                     disabled
                     className="rounded text-brand-blue-600"
                   />
-                  <span className="text-sm text-gray-700">Course Progress</span>
+                  <span className="text-sm text-black">Course Progress</span>
                 </label>
                 <label className="flex items-center gap-2">
                   <input
@@ -195,7 +195,7 @@ export default function ExportStudentsPage() {
                     onChange={(e) => setIncludeGrades(e.target.checked)}
                     className="rounded text-brand-blue-600"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-black">
                     Grades and Assessments
                   </span>
                 </label>
@@ -206,7 +206,7 @@ export default function ExportStudentsPage() {
                     onChange={(e) => setIncludeAttendance(e.target.checked)}
                     className="rounded text-brand-blue-600"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-black">
                     Attendance Records
                   </span>
                 </label>
@@ -217,7 +217,7 @@ export default function ExportStudentsPage() {
                     onChange={(e) => setIncludeCertificates(e.target.checked)}
                     className="rounded text-brand-blue-600"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-black">
                     Certificates Earned
                   </span>
                 </label>
@@ -228,7 +228,7 @@ export default function ExportStudentsPage() {
                     onChange={(e) => setIncludeFinancial(e.target.checked)}
                     className="rounded text-brand-blue-600"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-black">
                     Financial Information
                   </span>
                 </label>
@@ -237,12 +237,12 @@ export default function ExportStudentsPage() {
 
             {/* Filter Options */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-black mb-3">
                 Filter Students
               </label>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs text-gray-600 mb-1">
+                  <label className="block text-xs text-black mb-1">
                     Program
                   </label>
                   <select
@@ -260,7 +260,7 @@ export default function ExportStudentsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-600 mb-1">
+                  <label className="block text-xs text-black mb-1">
                     Status
                   </label>
                   <select
@@ -276,7 +276,7 @@ export default function ExportStudentsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-600 mb-1">
+                  <label className="block text-xs text-black mb-1">
                     Start Date From
                   </label>
                   <input
@@ -287,7 +287,7 @@ export default function ExportStudentsPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-600 mb-1">
+                  <label className="block text-xs text-black mb-1">
                     Start Date To
                   </label>
                   <input
@@ -302,13 +302,13 @@ export default function ExportStudentsPage() {
 
             {/* Export Actions */}
             <div className="flex justify-between items-center pt-4 border-t border-gray-200">
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 Ready to export student data
               </div>
               <div className="flex gap-4">
                 <Link
                   href="/admin/students"
-                  className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                  className="px-4 py-2 border border-gray-300 rounded-md text-black hover:bg-gray-50"
                 >
                   Cancel
                 </Link>
@@ -327,12 +327,12 @@ export default function ExportStudentsPage() {
         {/* Recent Exports */}
         <div className="mt-6 bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-black">
               Recent Exports
             </h2>
           </div>
           <div className="p-6">
-            <div className="text-center text-gray-700 py-8">
+            <div className="text-center text-black py-8">
               No recent exports. Generate your first export above.
             </div>
           </div>

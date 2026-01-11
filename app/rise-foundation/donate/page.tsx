@@ -37,36 +37,36 @@ export default async function DonatePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 text-center">
             <Users className="h-12 w-12 text-purple-600 mx-auto mb-3" />
-            <p className="text-3xl font-bold text-slate-900 mb-1">5,000+</p>
-            <p className="text-slate-600">Lives Impacted</p>
+            <p className="text-3xl font-bold text-black mb-1">5,000+</p>
+            <p className="text-black">Lives Impacted</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 text-center">
             <Target className="h-12 w-12 text-purple-600 mx-auto mb-3" />
-            <p className="text-3xl font-bold text-slate-900 mb-1">20+</p>
-            <p className="text-slate-600">Programs Offered</p>
+            <p className="text-3xl font-bold text-black mb-1">20+</p>
+            <p className="text-black">Programs Offered</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 text-center">
             <TrendingUp className="h-12 w-12 text-purple-600 mx-auto mb-3" />
-            <p className="text-3xl font-bold text-slate-900 mb-1">85%</p>
-            <p className="text-slate-600">Success Rate</p>
+            <p className="text-3xl font-bold text-black mb-1">85%</p>
+            <p className="text-black">Success Rate</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">
+            <h2 className="text-2xl font-bold text-black mb-6">
               Active Campaigns
             </h2>
 
             {!campaigns || campaigns.length === 0 ? (
               <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-12 text-center">
                 <Heart className="h-16 w-16 text-slate-300 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                <h3 className="text-xl font-semibold text-black mb-2">
                   General Fund
                 </h3>
-                <p className="text-slate-600 mb-6">
+                <p className="text-black mb-6">
                   Support our mission with a general donation
                 </p>
                 <button className="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium" aria-label="Action button">
@@ -86,17 +86,17 @@ export default async function DonatePage() {
                       key={campaign.id}
                       className="bg-white rounded-lg shadow-sm border border-slate-200 p-6"
                     >
-                      <h3 className="text-xl font-bold text-slate-900 mb-2">
+                      <h3 className="text-xl font-bold text-black mb-2">
                         {campaign.name}
                       </h3>
                       {campaign.description && (
-                        <p className="text-slate-600 mb-4">
+                        <p className="text-black mb-4">
                           {campaign.description}
                         </p>
                       )}
 
                       <div className="mb-4">
-                        <div className="flex justify-between text-sm text-slate-600 mb-2">
+                        <div className="flex justify-between text-sm text-black mb-2">
                           <span>
                             ${campaign.current_amount.toLocaleString()} raised
                           </span>
@@ -124,7 +124,7 @@ export default async function DonatePage() {
 
           <div>
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 mb-6">
-              <h3 className="text-lg font-bold text-slate-900 mb-4">
+              <h3 className="text-lg font-bold text-black mb-4">
                 Quick Donate
               </h3>
               <div className="grid grid-cols-2 gap-3 mb-4">

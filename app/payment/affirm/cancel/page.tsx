@@ -18,11 +18,11 @@ export default function AffirmCancelPage() {
       <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
         <XCircle className="w-16 h-16 text-brand-orange-600 mx-auto mb-4" />
 
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
+        <h1 className="text-2xl font-bold text-black mb-2">
           Payment Cancelled
         </h1>
 
-        <p className="text-gray-600 mb-6">
+        <p className="text-black mb-6">
           You cancelled the payment process. No charges were made to your
           account.
         </p>
@@ -44,21 +44,21 @@ export default function AffirmCancelPage() {
 
           <Link
             href="/contact"
-            className="inline-block px-6 py-3 bg-gray-100 text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+            className="inline-block px-6 py-3 bg-gray-100 text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors"
           >
             Contact Us
           </Link>
 
           <Link
             href="/"
-            className="text-gray-600 hover:text-gray-900 transition-colors"
+            className="text-black hover:text-black transition-colors"
           >
             Return to Homepage
           </Link>
         </div>
 
         <div className="mt-8 pt-6 border-t border-gray-200">
-          <p className="text-sm text-gray-700">
+          <p className="text-sm text-black">
             Remember: Most of our programs are 100% FREE through WIOA, WRG, or
             JRI funding.
           </p>

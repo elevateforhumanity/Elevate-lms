@@ -14,7 +14,7 @@ export function CourseProgress({ current, total, className = '' }: CourseProgres
   return (
     <div className={`w-full ${className}`}>
       <div className="flex justify-between items-center text-sm mb-2">
-        <span className="text-slate-700 font-medium">
+        <span className="text-black font-medium">
           {current} of {total} lessons complete
         </span>
         <span className="text-brand-orange-600 font-semibold">{percentage}%</span>

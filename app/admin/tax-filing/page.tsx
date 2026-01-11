@@ -80,10 +80,10 @@ export default async function TaxFilingAdminPage() {
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">
+        <h1 className="text-3xl font-bold text-black mb-2">
           Tax Filing Management
         </h1>
-        <p className="text-slate-600">
+        <p className="text-black">
           Manage tax return applications, preparers, and tax software
           integration
         </p>
@@ -92,14 +92,14 @@ export default async function TaxFilingAdminPage() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div className="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
-          <div className="text-sm font-medium text-slate-600 mb-1">
+          <div className="text-sm font-medium text-black mb-1">
             Total Returns
           </div>
-          <div className="text-3xl font-bold text-slate-900">{stats.total}</div>
+          <div className="text-3xl font-bold text-black">{stats.total}</div>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
-          <div className="text-sm font-medium text-slate-600 mb-1">
+          <div className="text-sm font-medium text-black mb-1">
             Pending Assignment
           </div>
           <div className="text-3xl font-bold text-brand-orange-600">
@@ -108,7 +108,7 @@ export default async function TaxFilingAdminPage() {
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
-          <div className="text-sm font-medium text-slate-600 mb-1">
+          <div className="text-sm font-medium text-black mb-1">
             Active Preparers
           </div>
           <div className="text-3xl font-bold text-brand-green-600">
@@ -117,7 +117,7 @@ export default async function TaxFilingAdminPage() {
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
-          <div className="text-sm font-medium text-slate-600 mb-1">
+          <div className="text-sm font-medium text-black mb-1">
             Total Revenue
           </div>
           <div className="text-3xl font-bold text-brand-blue-600">
@@ -207,15 +207,15 @@ export default async function TaxFilingAdminPage() {
                 {applications.map((app) => (
                   <tr key={app.id} className="hover:bg-slate-50">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-slate-900">
+                      <div className="text-sm font-medium text-black">
                         {app.first_name} {app.last_name}
                       </div>
                       <div className="text-sm text-slate-500">{app.email}</div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {app.tax_year || '2024'}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {app.preparer_id ? (
                         <span className="text-brand-green-600">Assigned</span>
                       ) : (
@@ -235,13 +235,13 @@ export default async function TaxFilingAdminPage() {
                                 ? 'bg-yellow-100 text-yellow-800'
                                 : app.status === 'pending'
                                   ? 'bg-orange-100 text-orange-800'
-                                  : 'bg-slate-100 text-slate-800'
+                                  : 'bg-slate-100 text-black'
                         }`}
                       >
                         {app.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       ${app.fee_amount?.toLocaleString() || '100'}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500">
@@ -310,10 +310,10 @@ export default async function TaxFilingAdminPage() {
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                     Your Journey Starts Here
                   </h2>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  <p className="text-lg text-black mb-6 leading-relaxed">
                     Every great career begins with a single step. Whether you're
                     looking to change careers, upgrade your skills, or enter the
                     workforce for the first time, we're here to help you
@@ -335,7 +335,7 @@ export default async function TaxFilingAdminPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         100% free training - no tuition, no hidden costs
                       </span>
                     </li>
@@ -353,7 +353,7 @@ export default async function TaxFilingAdminPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Industry-recognized certifications that employers value
                       </span>
                     </li>
@@ -371,7 +371,7 @@ export default async function TaxFilingAdminPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Job placement assistance and career support
                       </span>
                     </li>
@@ -389,7 +389,7 @@ export default async function TaxFilingAdminPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Flexible scheduling for working adults
                       </span>
                     </li>

@@ -31,7 +31,7 @@ export function SupersonicNav() {
               <button className="flex items-center gap-1 font-bold hover:text-red-500 transition-colors">
                 Services <ChevronDown className="w-4 h-4" />
               </button>
-              <div className="absolute top-full left-0 bg-white text-gray-900 shadow-xl rounded-lg p-4 hidden group-hover:block w-64 mt-2">
+              <div className="absolute top-full left-0 bg-white text-black shadow-xl rounded-lg p-4 hidden group-hover:block w-64 mt-2">
                 <Link
                   href="/supersonic-fast-cash/apply"
                   className="block py-2 px-3 hover:bg-red-50 hover:text-red-600 rounded transition-colors"
@@ -64,7 +64,7 @@ export function SupersonicNav() {
               <button className="flex items-center gap-1 font-bold hover:text-red-500 transition-colors">
                 Tools <ChevronDown className="w-4 h-4" />
               </button>
-              <div className="absolute top-full left-0 bg-white text-gray-900 shadow-xl rounded-lg p-4 hidden group-hover:block w-64 mt-2">
+              <div className="absolute top-full left-0 bg-white text-black shadow-xl rounded-lg p-4 hidden group-hover:block w-64 mt-2">
                 <Link
                   href="/supersonic-fast-cash/calculator"
                   className="block py-2 px-3 hover:bg-gray-50 hover:text-blue-900 rounded transition-colors"
@@ -103,7 +103,7 @@ export function SupersonicNav() {
               <button className="flex items-center gap-1 font-bold hover:text-red-500 transition-colors">
                 Resources <ChevronDown className="w-4 h-4" />
               </button>
-              <div className="absolute top-full left-0 bg-white text-gray-900 shadow-xl rounded-lg p-4 hidden group-hover:block w-64 mt-2">
+              <div className="absolute top-full left-0 bg-white text-black shadow-xl rounded-lg p-4 hidden group-hover:block w-64 mt-2">
                 <Link
                   href="/supersonic-fast-cash/how-it-works"
                   className="block py-2 px-3 hover:bg-red-50 hover:text-red-600 rounded transition-colors"
@@ -130,7 +130,7 @@ export function SupersonicNav() {
               <button className="flex items-center gap-1 font-bold hover:text-red-500 transition-colors">
                 About <ChevronDown className="w-4 h-4" />
               </button>
-              <div className="absolute top-full left-0 bg-white text-gray-900 shadow-xl rounded-lg p-4 hidden group-hover:block w-64 mt-2">
+              <div className="absolute top-full left-0 bg-white text-black shadow-xl rounded-lg p-4 hidden group-hover:block w-64 mt-2">
                 <Link
                   href="/supersonic-fast-cash/careers"
                   className="block py-2 px-3 hover:bg-gray-50 hover:text-blue-900 rounded transition-colors"

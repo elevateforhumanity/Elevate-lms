@@ -131,7 +131,7 @@ export default function TaxCalculatorPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Income Tax Return Estimator
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-black max-w-2xl mx-auto">
             Get an instant estimate of your federal tax refund or amount owed.
             Based on 2024 IRS tax tables.
           </p>
@@ -207,7 +207,7 @@ export default function TaxCalculatorPage() {
                     W-2 Wages (Box 1)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-black">
                       $
                     </span>
                     <input
@@ -231,7 +231,7 @@ export default function TaxCalculatorPage() {
                     Self-Employment Income (1099-NEC)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-black">
                       $
                     </span>
                     <input
@@ -255,7 +255,7 @@ export default function TaxCalculatorPage() {
                     Interest Income (1099-INT)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-black">
                       $
                     </span>
                     <input
@@ -279,7 +279,7 @@ export default function TaxCalculatorPage() {
                     Dividend Income (1099-DIV)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-black">
                       $
                     </span>
                     <input
@@ -303,7 +303,7 @@ export default function TaxCalculatorPage() {
                     Other Income
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-black">
                       $
                     </span>
                     <input
@@ -363,7 +363,7 @@ export default function TaxCalculatorPage() {
                       Total Itemized Deductions
                     </label>
                     <div className="relative">
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-black">
                         $
                       </span>
                       <input
@@ -388,7 +388,7 @@ export default function TaxCalculatorPage() {
                     Student Loan Interest Paid
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-black">
                       $
                     </span>
                     <input
@@ -406,7 +406,7 @@ export default function TaxCalculatorPage() {
                       className="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none"
                     />
                   </div>
-                  <p className="text-xs text-gray-700 mt-1">
+                  <p className="text-xs text-black mt-1">
                     Max deduction: $2,500
                   </p>
                 </div>
@@ -428,7 +428,7 @@ export default function TaxCalculatorPage() {
                     Federal Tax Withheld (W-2 Box 2)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-black">
                       $
                     </span>
                     <input
@@ -449,7 +449,7 @@ export default function TaxCalculatorPage() {
                     Estimated Tax Payments
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-black">
                       $
                     </span>
                     <input
@@ -523,14 +523,14 @@ export default function TaxCalculatorPage() {
 
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Total Income</span>
+                      <span className="text-black">Total Income</span>
                       <span className="font-semibold">
                         {formatCurrency(calculation.total_income)}
                       </span>
                     </div>
 
                     <div className="flex justify-between">
-                      <span className="text-gray-600">
+                      <span className="text-black">
                         Adjusted Gross Income
                       </span>
                       <span className="font-semibold">
@@ -539,21 +539,21 @@ export default function TaxCalculatorPage() {
                     </div>
 
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Deductions</span>
+                      <span className="text-black">Deductions</span>
                       <span className="font-semibold text-green-600">
                         -{formatCurrency(calculation.deductions)}
                       </span>
                     </div>
 
                     <div className="flex justify-between pt-3 border-t">
-                      <span className="text-gray-600">Taxable Income</span>
+                      <span className="text-black">Taxable Income</span>
                       <span className="font-semibold">
                         {formatCurrency(calculation.taxable_income)}
                       </span>
                     </div>
 
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Federal Tax</span>
+                      <span className="text-black">Federal Tax</span>
                       <span className="font-semibold text-red-600">
                         {formatCurrency(calculation.federal_tax)}
                       </span>
@@ -561,7 +561,7 @@ export default function TaxCalculatorPage() {
 
                     {calculation.self_employment_tax > 0 && (
                       <div className="flex justify-between">
-                        <span className="text-gray-600">
+                        <span className="text-black">
                           Self-Employment Tax
                         </span>
                         <span className="font-semibold text-red-600">
@@ -578,13 +578,13 @@ export default function TaxCalculatorPage() {
                     </div>
 
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Tax Payments</span>
+                      <span className="text-black">Tax Payments</span>
                       <span className="font-semibold text-green-600">
                         {formatCurrency(refundResult?.total_payments || 0)}
                       </span>
                     </div>
 
-                    <div className="flex justify-between text-xs text-gray-700 mt-4">
+                    <div className="flex justify-between text-xs text-black mt-4">
                       <span>Effective Tax Rate</span>
                       <span>{calculation.effective_tax_rate.toFixed(2)}%</span>
                     </div>
@@ -619,7 +619,7 @@ export default function TaxCalculatorPage() {
               </div>
 
               {/* Disclaimer */}
-              <div className="bg-blue-50 rounded-xl p-4 text-xs text-gray-600">
+              <div className="bg-blue-50 rounded-xl p-4 text-xs text-black">
                 <div className="flex gap-2">
                   <Info className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                   <p>

@@ -127,7 +127,7 @@ export default function AICareerCounseling() {
                       <div className={`max-w-[80%] ${
                         message.sender === 'user'
                           ? 'bg-brand-orange-600 text-white'
-                          : 'bg-gray-100 text-gray-900'
+                          : 'bg-gray-100 text-black'
                       } rounded-lg p-4`}>
                         <p className="text-sm">{message.content}</p>
                         <p className={`text-xs mt-2 ${
@@ -178,11 +178,11 @@ export default function AICareerCounseling() {
               <h3 className="font-bold mb-4">Your Profile</h3>
               <div className="space-y-3 text-sm">
                 <div>
-                  <p className="text-gray-600">Current Level</p>
+                  <p className="text-black">Current Level</p>
                   <p className="font-semibold">Intermediate Developer</p>
                 </div>
                 <div>
-                  <p className="text-gray-600">Primary Skills</p>
+                  <p className="text-black">Primary Skills</p>
                   <div className="flex flex-wrap gap-1 mt-1">
                     {['JavaScript', 'React', 'CSS'].map((skill) => (
                       <span key={skill} className="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs rounded">
@@ -192,7 +192,7 @@ export default function AICareerCounseling() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-gray-600">Career Goal</p>
+                  <p className="text-black">Career Goal</p>
                   <p className="font-semibold">Full-Stack Developer</p>
                 </div>
               </div>
@@ -207,7 +207,7 @@ export default function AICareerCounseling() {
                       <h4 className="font-semibold text-sm">{rec.title}</h4>
                       <span className="text-xs font-bold text-brand-orange-600">{rec.matchScore}%</span>
                     </div>
-                    <p className="text-xs text-gray-600 mb-1">💰 {rec.salary}</p>
+                    <p className="text-xs text-black mb-1">💰 {rec.salary}</p>
                     <p className="text-xs text-green-600">📈 {rec.growth}</p>
                   </div>
                 ))}

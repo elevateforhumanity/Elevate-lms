@@ -93,7 +93,7 @@ export default function DrakeDownloadPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Drake Tax Software
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-black max-w-2xl mx-auto">
             Download professional tax preparation software. Your account is
             already configured.
           </p>
@@ -198,8 +198,8 @@ export default function DrakeDownloadPage() {
               <div className="flex items-start justify-between mb-6">
                 <div>
                   <h3 className="text-2xl font-bold mb-2">{product.name}</h3>
-                  <p className="text-gray-600">{product.description}</p>
-                  <div className="flex items-center gap-4 mt-2 text-sm text-gray-700">
+                  <p className="text-black">{product.description}</p>
+                  <div className="flex items-center gap-4 mt-2 text-sm text-black">
                     <span>Version: {product.version}</span>
                     <span>•</span>
                     <span>Size: {product.size}</span>
@@ -231,7 +231,7 @@ export default function DrakeDownloadPage() {
 
                 <div>
                   <h4 className="font-semibold mb-3">System Requirements:</h4>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-black">
                     {product.requirements}
                   </p>
                 </div>
@@ -251,7 +251,7 @@ export default function DrakeDownloadPage() {
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Download Drake Tax</h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Click the download button above to get the latest version of
                   Drake Tax software.
                 </p>
@@ -264,7 +264,7 @@ export default function DrakeDownloadPage() {
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Run the Installer</h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Double-click DrakeSetup.exe and follow the installation
                   wizard.
                 </p>
@@ -277,7 +277,7 @@ export default function DrakeDownloadPage() {
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Enter Your Credentials</h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   When prompted, enter your Account Number and Serial Number
                   from above.
                 </p>
@@ -290,7 +290,7 @@ export default function DrakeDownloadPage() {
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Configure E-File</h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Go to Setup → E-File Setup and enter your E-File Password.
                 </p>
               </div>
@@ -302,7 +302,7 @@ export default function DrakeDownloadPage() {
               </div>
               <div>
                 <h3 className="font-semibold mb-1">Start Preparing Returns</h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   You're ready to prepare and e-file tax returns!
                 </p>
               </div>
@@ -320,7 +320,7 @@ export default function DrakeDownloadPage() {
           >
             <FileText className="w-10 h-10 text-blue-600 mb-4" />
             <h3 className="font-bold text-lg mb-2">Documentation</h3>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-black mb-4">
               User guides, tutorials, and help articles
             </p>
             <span className="text-blue-600 font-semibold flex items-center gap-1">
@@ -336,7 +336,7 @@ export default function DrakeDownloadPage() {
           >
             <Key className="w-10 h-10 text-green-600 mb-4" />
             <h3 className="font-bold text-lg mb-2">Training Videos</h3>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-black mb-4">
               Learn how to use Drake Tax effectively
             </p>
             <span className="text-green-600 font-semibold flex items-center gap-1">
@@ -350,7 +350,7 @@ export default function DrakeDownloadPage() {
           >
             <CheckCircle className="w-10 h-10 text-purple-600 mb-4" />
             <h3 className="font-bold text-lg mb-2">Our Training</h3>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-black mb-4">
               SupersonicFastCash tax preparation courses
             </p>
             <span className="text-purple-600 font-semibold flex items-center gap-1">

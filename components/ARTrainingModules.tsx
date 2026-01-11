@@ -137,7 +137,7 @@ export function ARTrainingModules() {
             <div className="text-5xl text-3xl md:text-4xl lg:text-5xl">🥽</div>
             <div>
               <h3 className="text-xl font-bold mb-2">Experience Learning in 3D</h3>
-              <p className="text-gray-700 mb-3">
+              <p className="text-black mb-3">
                 Our AR training modules use your device's camera to overlay interactive 3D models in your real environment.
                 Practice skills safely before working with actual equipment.
               </p>
@@ -173,9 +173,9 @@ export function ARTrainingModules() {
                     </span>
                   </div>
 
-                  <p className="text-gray-600 text-sm mb-4">{module.description}</p>
+                  <p className="text-black text-sm mb-4">{module.description}</p>
 
-                  <div className="flex justify-between text-sm text-gray-600 mb-4">
+                  <div className="flex justify-between text-sm text-black mb-4">
                     <span>⏱️ {module.duration}</span>
                     <span className={`px-2 py-0.5 rounded text-xs ${
                       module.difficulty === 'beginner' ? 'bg-blue-100 text-blue-700' :
@@ -187,10 +187,10 @@ export function ARTrainingModules() {
                   </div>
 
                   <div className="mb-4">
-                    <p className="text-xs font-semibold text-gray-700 mb-2">Features:</p>
+                    <p className="text-xs font-semibold text-black mb-2">Features:</p>
                     <ul className="space-y-1">
                       {module.features.slice(0, 3).map((feature, idx) => (
-                        <li key={idx} className="text-xs text-gray-600 flex items-start">
+                        <li key={idx} className="text-xs text-black flex items-start">
                           <span className="text-green-500 mr-1">✓</span>
                           {feature}
                         </li>
@@ -249,11 +249,11 @@ export function ARTrainingModules() {
                       ].map((step, idx) => (
                         <div key={idx} className="flex items-center gap-3 p-3 bg-gray-50 rounded">
                           <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
-                            idx === 0 ? 'bg-brand-orange-600 text-white' : 'bg-gray-300 text-gray-600'
+                            idx === 0 ? 'bg-brand-orange-600 text-white' : 'bg-gray-300 text-black'
                           }`}>
                             {idx + 1}
                           </div>
-                          <span className={idx === 0 ? 'font-semibold' : 'text-gray-600'}>
+                          <span className={idx === 0 ? 'font-semibold' : 'text-black'}>
                             {step}
                           </span>
                         </div>
@@ -265,19 +265,19 @@ export function ARTrainingModules() {
                 <div className="space-y-6">
                   <Card className="p-6">
                     <h3 className="text-xl font-bold mb-4">{selectedModuleData.title}</h3>
-                    <p className="text-gray-600 text-sm mb-4">{selectedModuleData.description}</p>
+                    <p className="text-black text-sm mb-4">{selectedModuleData.description}</p>
 
                     <div className="space-y-3 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Duration:</span>
+                        <span className="text-black">Duration:</span>
                         <span className="font-semibold">{selectedModuleData.duration}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Difficulty:</span>
+                        <span className="text-black">Difficulty:</span>
                         <span className="font-semibold capitalize">{selectedModuleData.difficulty}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-gray-600">Category:</span>
+                        <span className="text-black">Category:</span>
                         <span className="font-semibold">{selectedModuleData.category}</span>
                       </div>
                     </div>
@@ -303,7 +303,7 @@ export function ARTrainingModules() {
                     <h3 className="font-bold mb-3">Features</h3>
                     <ul className="space-y-2">
                       {selectedModuleData.features.map((feature, idx) => (
-                        <li key={idx} className="text-sm text-gray-600 flex items-start">
+                        <li key={idx} className="text-sm text-black flex items-start">
                           <span className="text-green-500 mr-2">✓</span>
                           {feature}
                         </li>
@@ -313,7 +313,7 @@ export function ARTrainingModules() {
 
                   <Card className="p-6   ">
                     <h3 className="font-bold mb-2">💡 Pro Tip</h3>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-black">
                       Use headphones for the best experience. Audio cues will guide you through each step.
                     </p>
                   </Card>

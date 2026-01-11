@@ -99,7 +99,7 @@ export default function ProgramPageLayout({
               </Link>
               <Link
                 href={ctaSecondary.href}
-                className="bg-white text-slate-900 px-10 py-5 rounded-full font-bold hover:bg-slate-100 text-xl shadow-2xl transition-all hover:scale-105"
+                className="bg-white text-black px-10 py-5 rounded-full font-bold hover:bg-slate-100 text-xl shadow-2xl transition-all hover:scale-105"
               >
                 {ctaSecondary.text}
               </Link>
@@ -114,19 +114,19 @@ export default function ProgramPageLayout({
           <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-6">
             <div className="bg-white rounded-2xl shadow-lg border-2 border-orange-100 p-8 text-center transform hover:scale-105 transition-all">
               <div className="text-5xl font-black text-orange-600 mb-3 text-3xl md:text-4xl lg:text-5xl">{duration}</div>
-              <div className="text-gray-700 font-semibold text-lg">Program Duration</div>
+              <div className="text-black font-semibold text-lg">Program Duration</div>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border-2 border-green-100 p-8 text-center transform hover:scale-105 transition-all">
               <div className="text-5xl font-black text-green-600 mb-3 text-3xl md:text-4xl lg:text-5xl">{cost}</div>
-              <div className="text-gray-700 font-semibold text-lg">100% Funded</div>
+              <div className="text-black font-semibold text-lg">100% Funded</div>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border-2 border-blue-100 p-8 text-center transform hover:scale-105 transition-all">
               <div className="text-5xl font-black text-blue-600 mb-3 text-3xl md:text-4xl lg:text-5xl">{placement}</div>
-              <div className="text-gray-700 font-semibold text-lg">Job Placement</div>
+              <div className="text-black font-semibold text-lg">Job Placement</div>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border-2 border-orange-100 p-8 text-center transform hover:scale-105 transition-all">
               <div className="text-5xl font-black text-orange-600 mb-3 text-3xl md:text-4xl lg:text-5xl">{salary}</div>
-              <div className="text-gray-700 font-semibold text-lg">Starting Salary</div>
+              <div className="text-black font-semibold text-lg">Starting Salary</div>
             </div>
           </div>
         </div>
@@ -141,14 +141,14 @@ export default function ProgramPageLayout({
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div className="space-y-6">
                 {overviewDescription.map((paragraph, index) => (
-                  <p key={index} className="text-xl text-gray-700 leading-relaxed">
+                  <p key={index} className="text-xl text-black leading-relaxed">
                     {paragraph}
                   </p>
                 ))}
               </div>
 
               <div className="   rounded-3xl p-10 shadow-xl">
-                <h3 className="text-3xl font-bold mb-6 text-gray-900">Certifications You'll Earn</h3>
+                <h3 className="text-3xl font-bold mb-6 text-black">Certifications You'll Earn</h3>
                 <div className="space-y-4">
                   {certifications.map((cert, index) => (
                     <div key={index} className="flex items-start bg-white rounded-xl p-4 shadow-sm">
@@ -159,7 +159,7 @@ viewBox="0 0 24 24">
 d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="text-lg font-medium text-gray-800">{cert}</span>
+                      <span className="text-lg font-medium text-black">{cert}</span>
                     </div>
                   ))}
                 </div>
@@ -196,8 +196,8 @@ d="M5 13l4 4L19 7" />
                   </div>
 
                   <div className={index % 2 === 1 ? 'md:order-1' : ''}>
-                    <h3 className="text-4xl font-bold mb-6 text-gray-900 text-2xl md:text-3xl lg:text-4xl">{highlight.title}</h3>
-                    <p className="text-xl text-gray-700 leading-relaxed">{highlight.description}</p>
+                    <h3 className="text-4xl font-bold mb-6 text-black text-2xl md:text-3xl lg:text-4xl">{highlight.title}</h3>
+                    <p className="text-xl text-black leading-relaxed">{highlight.description}</p>
                   </div>
                 </div>
               ))}
@@ -224,15 +224,15 @@ d="M5 13l4 4L19 7" />
               </div>
 
               <div>
-                <p className="text-xl text-gray-700 leading-relaxed mb-8">
+                <p className="text-xl text-black leading-relaxed mb-8">
                   {careerDescription}
                 </p>
 
-                <h3 className="text-3xl font-bold mb-6 text-gray-900">Career Opportunities</h3>
+                <h3 className="text-3xl font-bold mb-6 text-black">Career Opportunities</h3>
                 <div className="grid grid-cols-1 gap-4">
                   {jobTitles.map((job, index) => (
                     <div key={index} className="   rounded-xl p-5 shadow-sm border-l-4 border-blue-500">
-                      <span className="text-lg font-semibold text-gray-800">{job}</span>
+                      <span className="text-lg font-semibold text-black">{job}</span>
                     </div>
                   ))}
                 </div>

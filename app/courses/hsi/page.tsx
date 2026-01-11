@@ -130,25 +130,25 @@ export default function HsiPage() {
               <div className="text-4xl font-bold text-brand-orange-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                 1,200+
               </div>
-              <div className="text-gray-600">Safety Courses</div>
+              <div className="text-black">Safety Courses</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-brand-orange-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                 100%
               </div>
-              <div className="text-gray-600">OSHA Compliant</div>
+              <div className="text-black">OSHA Compliant</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-brand-orange-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                 24/7
               </div>
-              <div className="text-gray-600">Online Access</div>
+              <div className="text-black">Online Access</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-brand-orange-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                 Free
               </div>
-              <div className="text-gray-600">WIOA Funded</div>
+              <div className="text-black">WIOA Funded</div>
             </div>
           </div>
         </div>
@@ -171,14 +171,14 @@ export default function HsiPage() {
                   <div className="text-4xl mb-4 text-2xl md:text-3xl lg:text-4xl">
                     {category.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-brand-orange-600 transition-colors">
+                  <h3 className="text-lg font-bold text-black mb-2 group-hover:text-brand-orange-600 transition-colors">
                     {category.name}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4">
+                  <p className="text-black text-sm mb-4">
                     {category.description}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-700">
+                    <span className="text-sm text-black">
                       {category.count} courses
                     </span>
                     <span className="text-brand-orange-600 font-semibold group-hover:translate-x-1 transition-transform">
@@ -217,7 +217,7 @@ export default function HsiPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">OSHA Compliant</h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   All courses meet or exceed OSHA standards and requirements
                 </p>
               </div>
@@ -238,7 +238,7 @@ export default function HsiPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">Self-Paced</h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Learn at your own pace with 24/7 online access
                 </p>
               </div>
@@ -259,7 +259,7 @@ export default function HsiPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">Certificates</h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Receive industry-standard-recognized certificates upon
                   completion
                 </p>

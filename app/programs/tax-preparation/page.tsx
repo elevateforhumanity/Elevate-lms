@@ -78,14 +78,14 @@ export default function Page() {
                 <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0" loading="lazy" />
               </div>
               <h3 className="font-bold text-lg mb-2">High Income</h3>
-              <p className="text-gray-600">$40k-$100k+ per year</p>
+              <p className="text-black">$40k-$100k+ per year</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Image src="/images/icons/clock.png" alt="Duration" width={24} height={24} className="flex-shrink-0" loading="lazy" />
               </div>
               <h3 className="font-bold text-lg mb-2">Flexible Schedule</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Work tax season, vacation the rest
               </p>
             </div>
@@ -94,14 +94,14 @@ export default function Page() {
                 <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0" loading="lazy" />
               </div>
               <h3 className="font-bold text-lg mb-2">Be Your Own Boss</h3>
-              <p className="text-gray-600">Start your own tax business</p>
+              <p className="text-black">Start your own tax business</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Image src="/images/icons/award.png" alt="Award" width={24} height={24} className="flex-shrink-0" loading="lazy" />
               </div>
               <h3 className="font-bold text-lg mb-2">IRS Certified</h3>
-              <p className="text-gray-600">Nationally recognized credential</p>
+              <p className="text-black">Nationally recognized credential</p>
             </div>
           </div>
         </div>
@@ -123,7 +123,7 @@ export default function Page() {
                   <h3 className="font-bold text-lg mb-2">
                     Complete Our Free Training Course
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Learn tax preparation fundamentals, IRS regulations, and
                     business setup
                   </p>
@@ -137,7 +137,7 @@ export default function Page() {
                   <h3 className="font-bold text-lg mb-2">
                     IRS Link & Learn Certification
                   </h3>
-                  <p className="text-gray-600 mb-3">
+                  <p className="text-black mb-3">
                     Complete IRS Link & Learn modules for VITA volunteer
                     certification
                   </p>
@@ -157,7 +157,7 @@ export default function Page() {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg mb-2">Get Your PTIN</h3>
-                  <p className="text-gray-600 mb-3">
+                  <p className="text-black mb-3">
                     Apply for your Preparer Tax Identification Number from the
                     IRS
                   </p>
@@ -177,7 +177,7 @@ export default function Page() {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg mb-2">Start Earning</h3>
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Volunteer at VITA sites or start your own tax preparation
                     business
                   </p>
@@ -199,7 +199,7 @@ export default function Page() {
               <h3 className="text-2xl font-bold mb-4 text-blue-900">
                 VITA Volunteer
               </h3>
-              <p className="text-gray-700 mb-6">
+              <p className="text-black mb-6">
                 Help low-income families file taxes for free through IRS VITA
                 program
               </p>
@@ -235,7 +235,7 @@ export default function Page() {
               <h3 className="text-2xl font-bold mb-4 text-green-900">
                 Start Your Business
               </h3>
-              <p className="text-gray-700 mb-6">
+              <p className="text-black mb-6">
                 Launch your own tax preparation business and earn $40k-$100k+
                 per year
               </p>
@@ -272,7 +272,7 @@ export default function Page() {
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Why Pay Franchise Fees?</h2>
-          <p className="text-xl text-gray-700 mb-8">
+          <p className="text-xl text-black mb-8">
             H&R Block, Jackson Hewitt, and Liberty Tax charge $2,000-$10,000+ in
             franchise fees. TurboTax Pro costs $500+/year.
           </p>
@@ -329,7 +329,7 @@ export default function Page() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-6 bg-green-600 text-slate-900">
+      <section className="py-16 px-6 bg-green-600 text-black">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Start Your Tax Business?

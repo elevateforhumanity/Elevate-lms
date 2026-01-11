@@ -40,7 +40,7 @@ export default function PostJobPage() {
               />
             </div>
             <h1 className="text-3xl font-bold mb-4">Job Posted Successfully!</h1>
-            <p className="text-gray-600 mb-6">
+            <p className="text-black mb-6">
               Your job posting has been submitted and will be reviewed by our team.
               You'll receive a confirmation email shortly.
             </p>
@@ -67,7 +67,7 @@ export default function PostJobPage() {
         
         <div className="bg-white rounded-lg shadow-sm p-8">
           <h1 className="text-3xl font-bold mb-2">Post a Job Opening</h1>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             Connect with qualified, certified candidates from our talent pool.
           </p>
 

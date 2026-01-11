@@ -125,32 +125,32 @@ export default function SocialProof() {
             <div className="inline-flex items-center justify-center w-12 h-12 bg-teal-100 rounded-full mb-3">
               <Users className="w-6 h-6 text-teal-600" />
             </div>
-            <div className="text-3xl font-bold text-slate-900 mb-1">500+</div>
-            <div className="text-sm text-slate-600">Success Stories</div>
+            <div className="text-3xl font-bold text-black mb-1">500+</div>
+            <div className="text-sm text-black">Success Stories</div>
           </div>
 
           <div className="bg-white rounded-xl p-6 shadow-lg text-center border border-slate-200">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-3">
               <Star className="w-6 h-6 text-blue-600" />
             </div>
-            <div className="text-3xl font-bold text-slate-900 mb-1">4.9/5</div>
-            <div className="text-sm text-slate-600">Average Rating</div>
+            <div className="text-3xl font-bold text-black mb-1">4.9/5</div>
+            <div className="text-sm text-black">Average Rating</div>
           </div>
 
           <div className="bg-white rounded-xl p-6 shadow-lg text-center border border-slate-200">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-full mb-3">
               <TrendingUp className="w-6 h-6 text-green-600" />
             </div>
-            <div className="text-3xl font-bold text-slate-900 mb-1">87%</div>
-            <div className="text-sm text-slate-600">Job Placement</div>
+            <div className="text-3xl font-bold text-black mb-1">87%</div>
+            <div className="text-sm text-black">Job Placement</div>
           </div>
 
           <div className="bg-white rounded-xl p-6 shadow-lg text-center border border-slate-200">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-full mb-3">
               <Award className="w-6 h-6 text-purple-600" />
             </div>
-            <div className="text-3xl font-bold text-slate-900 mb-1">95%</div>
-            <div className="text-sm text-slate-600">Completion Rate</div>
+            <div className="text-3xl font-bold text-black mb-1">95%</div>
+            <div className="text-sm text-black">Completion Rate</div>
           </div>
         </div>
 
@@ -188,7 +188,7 @@ export default function SocialProof() {
                   {currentTestimonial.program}
                 </div>
                 <Quote className="w-12 h-12 text-teal-600 mb-4" />
-                <p className="text-xl text-slate-700 leading-relaxed mb-6 italic">
+                <p className="text-xl text-black leading-relaxed mb-6 italic">
                   &quot;{currentTestimonial.quote}&quot;
                 </p>
               </div>
@@ -196,14 +196,14 @@ export default function SocialProof() {
               <div className="space-y-3 mb-8">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  <span className="text-slate-700 font-semibold">
+                  <span className="text-black font-semibold">
                     {currentTestimonial.outcome}
                   </span>
                 </div>
                 {currentTestimonial.salary && (
                   <div className="flex items-center gap-3">
                     <TrendingUp className="w-5 h-5 text-green-600 flex-shrink-0" />
-                    <span className="text-slate-700 font-semibold">
+                    <span className="text-black font-semibold">
                       Starting salary: {currentTestimonial.salary}
                     </span>
                   </div>
@@ -247,10 +247,10 @@ export default function SocialProof() {
                     .join('')}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-bold text-slate-900">
+                  <div className="font-bold text-black">
                     {testimonial.name}
                   </div>
-                  <div className="text-sm text-slate-600">
+                  <div className="text-sm text-black">
                     {testimonial.role}
                   </div>
                   <div className="flex gap-0.5 mt-1">
@@ -264,12 +264,12 @@ export default function SocialProof() {
                 </div>
               </div>
 
-              <p className="text-sm text-slate-700 mb-4 line-clamp-3 italic">
+              <p className="text-sm text-black mb-4 line-clamp-3 italic">
                 &quot;{testimonial.quote}&quot;
               </p>
 
               <div className="pt-4 border-t border-slate-200">
-                <div className="text-xs text-slate-600 mb-1">
+                <div className="text-xs text-black mb-1">
                   {testimonial.program}
                 </div>
                 <div className="text-sm font-semibold text-teal-600">
@@ -283,10 +283,10 @@ export default function SocialProof() {
         {/* Trust Badges */}
         <div className="mt-16 pt-12 border-t border-slate-200">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">
+            <h3 className="text-2xl font-bold text-black mb-2">
               Trusted By
             </h3>
-            <p className="text-slate-600">
+            <p className="text-black">
               Our graduates work at leading companies
             </p>
           </div>
@@ -301,7 +301,7 @@ export default function SocialProof() {
               'Healthcare Partners',
             ].map((company, index) => (
               <div key={index} className="text-center">
-                <div className="font-bold text-slate-700">{company}</div>
+                <div className="font-bold text-black">{company}</div>
               </div>
             ))}
           </div>

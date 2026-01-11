@@ -11,8 +11,6 @@ import { VersionGuard } from '@/components/VersionGuard';
 import CookieConsent from '@/components/CookieConsent';
 import { Inter } from 'next/font/google';
 
-import { AIAssistantBubble } from '@/components/AIAssistantBubble';
-
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
@@ -213,7 +211,7 @@ export default function RootLayout({
           .px-4{padding-left:1rem;padding-right:1rem}
           .py-2{padding-top:0.5rem;padding-bottom:0.5rem}
           .text-white{color:#fff}
-          .text-gray-900{color:#111827}
+          .text-black{color:#111827}
           .bg-white{background-color:#fff}
           .bg-blue-600{background-color:#2563eb}
           .bg-orange-500{background-color:#f97316}
@@ -245,7 +243,6 @@ export default function RootLayout({
         <ClientProviders />
         <CookieConsent />
 
-        <AIAssistantBubble />
         <Toaster
           position="top-right"
           toastOptions={{

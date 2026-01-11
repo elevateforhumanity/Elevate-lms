@@ -26,20 +26,20 @@ export default function PublicAssistancePage() {
         <Link href="/wioa-eligibility" className="text-blue-600 hover:underline mb-6 inline-block">← Back to WIOA Eligibility</Link>
 
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Public Assistance Eligibility</h2>
+          <h2 className="text-3xl font-bold text-black mb-6">Public Assistance Eligibility</h2>
           
           <div className="prose max-w-none">
-            <p className="text-lg text-gray-700 mb-6">
+            <p className="text-lg text-black mb-6">
               If you currently receive public assistance, you <strong>automatically qualify</strong> for WIOA-funded training. No additional income verification needed.
             </p>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Qualifying Programs</h3>
+            <h3 className="text-2xl font-bold text-black mb-4">Qualifying Programs</h3>
             
             <div className="space-y-4 mb-8">
               <div className="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-600">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">SNAP (Food Stamps)</h4>
-                <p className="text-gray-700 mb-2">Supplemental Nutrition Assistance Program</p>
-                <ul className="list-disc pl-6 text-gray-600 text-sm space-y-1">
+                <h4 className="text-xl font-bold text-black mb-2">SNAP (Food Stamps)</h4>
+                <p className="text-black mb-2">Supplemental Nutrition Assistance Program</p>
+                <ul className="list-disc pl-6 text-black text-sm space-y-1">
                   <li>Must have active SNAP benefits</li>
                   <li>Bring current EBT card or benefit letter</li>
                   <li>Letter must be dated within last 6 months</li>
@@ -47,9 +47,9 @@ export default function PublicAssistancePage() {
               </div>
 
               <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">TANF (Temporary Assistance)</h4>
-                <p className="text-gray-700 mb-2">Temporary Assistance for Needy Families</p>
-                <ul className="list-disc pl-6 text-gray-600 text-sm space-y-1">
+                <h4 className="text-xl font-bold text-black mb-2">TANF (Temporary Assistance)</h4>
+                <p className="text-black mb-2">Temporary Assistance for Needy Families</p>
+                <ul className="list-disc pl-6 text-black text-sm space-y-1">
                   <li>Cash assistance recipients</li>
                   <li>Must be currently receiving benefits</li>
                   <li>Bring TANF approval letter or case number</li>
@@ -57,9 +57,9 @@ export default function PublicAssistancePage() {
               </div>
 
               <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-600">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">SSI (Supplemental Security Income)</h4>
-                <p className="text-gray-700 mb-2">For individuals with disabilities or seniors</p>
-                <ul className="list-disc pl-6 text-gray-600 text-sm space-y-1">
+                <h4 className="text-xl font-bold text-black mb-2">SSI (Supplemental Security Income)</h4>
+                <p className="text-black mb-2">For individuals with disabilities or seniors</p>
+                <ul className="list-disc pl-6 text-black text-sm space-y-1">
                   <li>Must be receiving SSI payments</li>
                   <li>Bring SSI award letter or benefit statement</li>
                   <li>Different from Social Security retirement</li>
@@ -67,9 +67,9 @@ export default function PublicAssistancePage() {
               </div>
 
               <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-600">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">General Assistance</h4>
-                <p className="text-gray-700 mb-2">State or local cash assistance programs</p>
-                <ul className="list-disc pl-6 text-gray-600 text-sm space-y-1">
+                <h4 className="text-xl font-bold text-black mb-2">General Assistance</h4>
+                <p className="text-black mb-2">State or local cash assistance programs</p>
+                <ul className="list-disc pl-6 text-black text-sm space-y-1">
                   <li>County-level assistance programs</li>
                   <li>Emergency assistance recipients</li>
                   <li>Bring documentation from assistance office</li>
@@ -77,8 +77,8 @@ export default function PublicAssistancePage() {
               </div>
 
               <div className="bg-red-50 p-6 rounded-lg border-l-4 border-red-600">
-                <h4 className="text-xl font-bold text-gray-900 mb-2">Other Qualifying Programs</h4>
-                <ul className="list-disc pl-6 text-gray-700 space-y-1">
+                <h4 className="text-xl font-bold text-black mb-2">Other Qualifying Programs</h4>
+                <ul className="list-disc pl-6 text-black space-y-1">
                   <li>Medicaid (income-based, not disability-based)</li>
                   <li>WIC (Women, Infants, and Children)</li>
                   <li>Free or Reduced School Lunch (for your children)</li>
@@ -88,9 +88,9 @@ export default function PublicAssistancePage() {
               </div>
             </div>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">What You Get</h3>
+            <h3 className="text-2xl font-bold text-black mb-4">What You Get</h3>
             <div className="bg-gray-50 p-6 rounded-lg mb-6">
-              <ul className="space-y-3 text-gray-800">
+              <ul className="space-y-3 text-black">
                 <li><strong>✓ 100% Free Training:</strong> No tuition, fees, or hidden costs</li>
                 <li><strong>✓ Books & Supplies:</strong> All materials provided at no cost</li>
                 <li><strong>✓ Certification Exams:</strong> Testing fees covered</li>
@@ -102,10 +102,10 @@ export default function PublicAssistancePage() {
               </ul>
             </div>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Required Documents</h3>
+            <h3 className="text-2xl font-bold text-black mb-4">Required Documents</h3>
             <div className="bg-yellow-50 p-6 rounded-lg mb-6">
-              <p className="font-bold text-gray-900 mb-3">Bring ALL of the following:</p>
-              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+              <p className="font-bold text-black mb-3">Bring ALL of the following:</p>
+              <ul className="list-disc pl-6 space-y-2 text-black">
                 <li><strong>Valid ID:</strong> Driver's license or state-issued ID</li>
                 <li><strong>Social Security Card:</strong> Original or certified copy</li>
                 <li><strong>Proof of Residency:</strong> Utility bill, lease, or mail dated within 30 days</li>
@@ -114,50 +114,50 @@ export default function PublicAssistancePage() {
               </ul>
             </div>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Application Process</h3>
+            <h3 className="text-2xl font-bold text-black mb-4">Application Process</h3>
             <div className="space-y-4 mb-6">
               <div className="flex gap-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold">1</div>
                 <div>
-                  <h4 className="font-bold text-gray-900">Submit Online Application</h4>
-                  <p className="text-gray-600 text-sm">Takes 10 minutes. We'll review within 2-3 days.</p>
+                  <h4 className="font-bold text-black">Submit Online Application</h4>
+                  <p className="text-black text-sm">Takes 10 minutes. We'll review within 2-3 days.</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold">2</div>
                 <div>
-                  <h4 className="font-bold text-gray-900">Gather Your Documents</h4>
-                  <p className="text-gray-600 text-sm">Collect ID, Social Security card, benefit letter, and proof of address.</p>
+                  <h4 className="font-bold text-black">Gather Your Documents</h4>
+                  <p className="text-black text-sm">Collect ID, Social Security card, benefit letter, and proof of address.</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold">3</div>
                 <div>
-                  <h4 className="font-bold text-gray-900">Meet with WIOA Counselor</h4>
-                  <p className="text-gray-600 text-sm">We schedule this for you. Bring your documents. Takes about 1 hour.</p>
+                  <h4 className="font-bold text-black">Meet with WIOA Counselor</h4>
+                  <p className="text-black text-sm">We schedule this for you. Bring your documents. Takes about 1 hour.</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold">4</div>
                 <div>
-                  <h4 className="font-bold text-gray-900">Get Approved & Choose Program</h4>
-                  <p className="text-gray-600 text-sm">Usually approved same day. Pick your training program.</p>
+                  <h4 className="font-bold text-black">Get Approved & Choose Program</h4>
+                  <p className="text-black text-sm">Usually approved same day. Pick your training program.</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold">5</div>
                 <div>
-                  <h4 className="font-bold text-gray-900">Start Training</h4>
-                  <p className="text-gray-600 text-sm">Begin classes within 2-4 weeks. Everything is covered.</p>
+                  <h4 className="font-bold text-black">Start Training</h4>
+                  <p className="text-black text-sm">Begin classes within 2-4 weeks. Everything is covered.</p>
                 </div>
               </div>
             </div>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Available Training Programs</h3>
+            <h3 className="text-2xl font-bold text-black mb-4">Available Training Programs</h3>
             <div className="grid md:grid-cols-3 gap-4 mb-6">
               <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Healthcare</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
+                <h4 className="font-bold text-black mb-2">Healthcare</h4>
+                <ul className="text-sm text-black space-y-1">
                   <li>• CNA (4-6 weeks)</li>
                   <li>• Medical Assistant</li>
                   <li>• Phlebotomy</li>
@@ -165,8 +165,8 @@ export default function PublicAssistancePage() {
                 </ul>
               </div>
               <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Skilled Trades</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
+                <h4 className="font-bold text-black mb-2">Skilled Trades</h4>
+                <ul className="text-sm text-black space-y-1">
                   <li>• HVAC Technician</li>
                   <li>• Electrical</li>
                   <li>• Plumbing</li>
@@ -174,32 +174,32 @@ export default function PublicAssistancePage() {
                 </ul>
               </div>
               <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Technology</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
+                <h4 className="font-bold text-black mb-2">Technology</h4>
+                <ul className="text-sm text-black space-y-1">
                   <li>• IT Support</li>
                   <li>• Cybersecurity</li>
                   <li>• Web Development</li>
                 </ul>
               </div>
               <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Business</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
+                <h4 className="font-bold text-black mb-2">Business</h4>
+                <ul className="text-sm text-black space-y-1">
                   <li>• Accounting</li>
                   <li>• Management</li>
                   <li>• Customer Service</li>
                 </ul>
               </div>
               <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">CDL</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
+                <h4 className="font-bold text-black mb-2">CDL</h4>
+                <ul className="text-sm text-black space-y-1">
                   <li>• Commercial Driver</li>
                   <li>• Class A License</li>
                   <li>• Job placement help</li>
                 </ul>
               </div>
               <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Barber & Beauty</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
+                <h4 className="font-bold text-black mb-2">Barber & Beauty</h4>
+                <ul className="text-sm text-black space-y-1">
                   <li>• Barbering</li>
                   <li>• Cosmetology</li>
                   <li>• Esthetics</li>
@@ -213,10 +213,10 @@ export default function PublicAssistancePage() {
           <h3 className="text-2xl font-bold mb-4">You Already Qualify!</h3>
           <p className="mb-6">If you receive public assistance, you're eligible for free training. Apply today.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/apply" className="px-8 py-4 bg-white text-gray-900 font-bold rounded-lg hover:bg-gray-100 transition">
+            <Link href="/apply" className="px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-100 transition">
               Apply Now
             </Link>
-            <Link href="/contact" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-gray-900 transition">
+            <Link href="/contact" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition">
               Have Questions?
             </Link>
           </div>

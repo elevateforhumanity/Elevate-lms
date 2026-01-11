@@ -118,10 +118,10 @@ export function CoursePlayer() {
         </div>
         {/* Lesson Info */}
         <div className="elevate-card">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          <h2 className="text-2xl font-bold text-black mb-2">
             {currentLesson.title}
           </h2>
-          <p className="text-gray-600 mb-4">
+          <p className="text-black mb-4">
             Learn the fundamental techniques of basic cutting in this
             comprehensive lesson. You'll master the essential skills needed to
             perform professional haircuts.
@@ -130,7 +130,7 @@ export function CoursePlayer() {
             <div className="elevate-pill elevate-pill--blue">
               Lesson {currentLesson.id} of {lessons.length}
             </div>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-black">
               Duration: {currentLesson.duration}
             </div>
           </div>
@@ -151,7 +151,7 @@ export function CoursePlayer() {
         </div>
         {/* Resources & Notes */}
         <div className="elevate-card">
-          <h3 className="font-bold text-gray-900 mb-4">Lesson Resources</h3>
+          <h3 className="font-bold text-black mb-4">Lesson Resources</h3>
           <div className="space-y-2">
             <button
               onClick={() => alert('Resource download Available Now!')}
@@ -176,7 +176,7 @@ export function CoursePlayer() {
       </div>
       {/* Lesson Sidebar */}
       <div className="elevate-card h-fit sticky top-4">
-        <h3 className="font-bold text-gray-900 mb-4">Course Content</h3>
+        <h3 className="font-bold text-black mb-4">Course Content</h3>
         <div className="space-y-2">
           {lessons.map((lesson) => (
             <button
@@ -202,7 +202,7 @@ export function CoursePlayer() {
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium text-sm text-gray-900">
+                  <p className="font-medium text-sm text-black">
                     {lesson.title}
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
@@ -216,8 +216,8 @@ export function CoursePlayer() {
         {/* Progress */}
         <div className="mt-6 pt-6 border-t border-gray-200">
           <div className="flex justify-between text-sm mb-2">
-            <span className="text-gray-600">Course Progress</span>
-            <span className="font-bold text-gray-900">40%</span>
+            <span className="text-black">Course Progress</span>
+            <span className="font-bold text-black">40%</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div

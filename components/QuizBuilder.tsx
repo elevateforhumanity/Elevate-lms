@@ -200,11 +200,11 @@ export function QuizBuilder() {
                               {q.points} {q.points === 1 ? 'point' : 'points'}
                             </span>
                           </div>
-                          <p className="text-gray-900 mb-2">{q.question}</p>
+                          <p className="text-black mb-2">{q.question}</p>
                           {q.options && (
                             <ul className="space-y-1 text-sm">
                               {q.options.map((opt, i) => (
-                                <li key={i} className={`${q.correctAnswer === i ? 'text-green-600 font-semibold' : 'text-gray-600'}`}>
+                                <li key={i} className={`${q.correctAnswer === i ? 'text-green-600 font-semibold' : 'text-black'}`}>
                                   {q.correctAnswer === i && '✓ '}{opt}
                                 </li>
                               ))}
@@ -231,33 +231,33 @@ export function QuizBuilder() {
               <h3 className="font-bold mb-4">Quiz Summary</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Total Questions:</span>
+                  <span className="text-black">Total Questions:</span>
                   <span className="font-semibold">{questions.length}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Total Points:</span>
+                  <span className="text-black">Total Points:</span>
                   <span className="font-semibold">{totalPoints}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Multiple Choice:</span>
+                  <span className="text-black">Multiple Choice:</span>
                   <span className="font-semibold">
                     {questions.filter(q => q.type === 'multiple-choice').length}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">True/False:</span>
+                  <span className="text-black">True/False:</span>
                   <span className="font-semibold">
                     {questions.filter(q => q.type === 'true-false').length}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Short Answer:</span>
+                  <span className="text-black">Short Answer:</span>
                   <span className="font-semibold">
                     {questions.filter(q => q.type === 'short-answer').length}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Essay:</span>
+                  <span className="text-black">Essay:</span>
                   <span className="font-semibold">
                     {questions.filter(q => q.type === 'essay').length}
                   </span>
@@ -282,7 +282,7 @@ export function QuizBuilder() {
 
             <Card className="p-6   ">
               <h3 className="font-bold mb-2">💡 Tips</h3>
-              <ul className="text-sm text-gray-700 space-y-2">
+              <ul className="text-sm text-black space-y-2">
                 <li>• Use clear, concise language</li>
                 <li>• Avoid trick questions</li>
                 <li>• Mix question types</li>

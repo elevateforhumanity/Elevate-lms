@@ -82,8 +82,8 @@ export function ShopDocumentUpload({
       {/* Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
-          <h1 className="text-3xl font-bold text-slate-900">Upload Documents</h1>
-          <p className="mt-2 text-slate-600">
+          <h1 className="text-3xl font-bold text-black">Upload Documents</h1>
+          <p className="mt-2 text-black">
             Upload required documents for shop partner onboarding
           </p>
         </div>
@@ -96,12 +96,12 @@ export function ShopDocumentUpload({
           <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6">
             <div className="flex items-center gap-3 mb-6">
               <Upload className="w-6 h-6 text-blue-600" />
-              <h2 className="text-xl font-bold text-slate-900">Upload Document</h2>
+              <h2 className="text-xl font-bold text-black">Upload Document</h2>
             </div>
 
             <form onSubmit={handleUpload} className="space-y-4">
               <div>
-                <label className="block text-sm font-bold text-slate-900 mb-2">
+                <label className="block text-sm font-bold text-black mb-2">
                   Document Type *
                 </label>
                 <select
@@ -118,14 +118,14 @@ export function ShopDocumentUpload({
                   ))}
                 </select>
                 {selectedType && (
-                  <p className="mt-2 text-xs text-slate-600">
+                  <p className="mt-2 text-xs text-black">
                     {requirements.find((r) => r.document_type === selectedType)?.description}
                   </p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-slate-900 mb-2">
+                <label className="block text-sm font-bold text-black mb-2">
                   File (PDF) *
                 </label>
                 <input
@@ -135,7 +135,7 @@ export function ShopDocumentUpload({
                   className="w-full rounded-lg border border-slate-300 p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
-                <p className="mt-2 text-xs text-slate-600">
+                <p className="mt-2 text-xs text-black">
                   Upload signed PDF documents only. Max size: 10MB
                 </p>
               </div>
@@ -177,15 +177,15 @@ export function ShopDocumentUpload({
           <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6">
             <div className="flex items-center gap-3 mb-6">
               <FileText className="w-6 h-6 text-blue-600" />
-              <h2 className="text-xl font-bold text-slate-900">Document Templates</h2>
+              <h2 className="text-xl font-bold text-black">Document Templates</h2>
             </div>
 
             <div className="space-y-3">
               <div className="border border-slate-200 rounded-lg p-4">
-                <div className="font-semibold text-slate-900 mb-1">
+                <div className="font-semibold text-black mb-1">
                   MOU (Memorandum of Understanding)
                 </div>
-                <p className="text-sm text-slate-600 mb-3">
+                <p className="text-sm text-black mb-3">
                   Employer/worksite agreement with sponsor
                 </p>
                 <a
@@ -199,10 +199,10 @@ export function ShopDocumentUpload({
               </div>
 
               <div className="border border-slate-200 rounded-lg p-4">
-                <div className="font-semibold text-slate-900 mb-1">
+                <div className="font-semibold text-black mb-1">
                   NDA + IP Acknowledgment
                 </div>
-                <p className="text-sm text-slate-600 mb-3">
+                <p className="text-sm text-black mb-3">
                   Confidentiality + IP protection for EFH systems
                 </p>
                 <a
@@ -216,10 +216,10 @@ export function ShopDocumentUpload({
               </div>
 
               <div className="border border-slate-200 rounded-lg p-4">
-                <div className="font-semibold text-slate-900 mb-1">
+                <div className="font-semibold text-black mb-1">
                   Non-Compete Agreement
                 </div>
-                <p className="text-sm text-slate-600 mb-3">
+                <p className="text-sm text-black mb-3">
                   Restricts use of EFH curriculum and IP
                 </p>
                 <a
@@ -233,8 +233,8 @@ export function ShopDocumentUpload({
               </div>
 
               <div className="border border-slate-200 rounded-lg p-4">
-                <div className="font-semibold text-slate-900 mb-1">W-9 Form</div>
-                <p className="text-sm text-slate-600 mb-3">
+                <div className="font-semibold text-black mb-1">W-9 Form</div>
+                <p className="text-sm text-black mb-3">
                   IRS tax form for vendor/payroll setup
                 </p>
                 <a
@@ -250,7 +250,7 @@ export function ShopDocumentUpload({
             </div>
 
             <div className="mt-6 pt-6 border-t border-slate-200">
-              <p className="text-xs text-slate-600">
+              <p className="text-xs text-black">
                 <strong>Note:</strong> Download templates, sign them, and upload the
                 signed PDFs. Your sponsor will review and approve each document.
               </p>

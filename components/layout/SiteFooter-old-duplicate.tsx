@@ -334,7 +334,7 @@ export default function SiteFooter() {
                   Sitemap
                 </Link>
               </div>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-black">
                 © {new Date().getFullYear()} Elevate For Humanity. All Rights
                 Reserved.
               </p>
@@ -348,7 +348,7 @@ export default function SiteFooter() {
     return (
       <footer className="bg-white text-black border-t border-gray-200 py-8">
         <div className="mx-auto max-w-7xl px-6 text-center">
-          <p className="text-sm text-gray-700">
+          <p className="text-sm text-black">
             © {new Date().getFullYear()} Elevate For Humanity. All Rights
             Reserved.
           </p>

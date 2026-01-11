@@ -29,7 +29,7 @@ export function PushNotificationService() {
           <div className="flex justify-between items-center">
             <div>
               <h2 className="text-xl font-bold mb-1">Enable Push Notifications</h2>
-              <p className="text-sm text-gray-600">Get instant updates on your device</p>
+              <p className="text-sm text-black">Get instant updates on your device</p>
             </div>
             <button
               onClick={() => setIsEnabled(!isEnabled)}
@@ -53,7 +53,7 @@ export function PushNotificationService() {
                   <h4 className="font-bold">{notif.title}</h4>
                   <span className="text-xs text-gray-500">{notif.time}</span>
                 </div>
-                <p className="text-sm text-gray-600">{notif.body}</p>
+                <p className="text-sm text-black">{notif.body}</p>
               </div>
             ))}
           </div>

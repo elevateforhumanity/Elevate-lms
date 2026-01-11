@@ -232,7 +232,7 @@ export default function SiteSearch() {
       case 'article':
         return 'text-orange-600 bg-orange-50';
       default:
-        return 'text-slate-600 bg-slate-50';
+        return 'text-black bg-slate-50';
     }
   };
 
@@ -241,7 +241,7 @@ export default function SiteSearch() {
       {/* Search Trigger Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2 px-4 py-2 text-sm text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition"
+        className="flex items-center gap-2 px-4 py-2 text-sm text-black bg-slate-100 hover:bg-slate-200 rounded-lg transition"
         aria-label="Search site"
       >
         <Search className="w-4 h-4" />
@@ -307,10 +307,10 @@ export default function SiteSearch() {
                         {getCategoryIcon(result.category)}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="font-semibold text-slate-900 mb-1">
+                        <div className="font-semibold text-black mb-1">
                           {result.title}
                         </div>
-                        <div className="text-sm text-slate-600 line-clamp-1">
+                        <div className="text-sm text-black line-clamp-1">
                           {result.description}
                         </div>
                       </div>

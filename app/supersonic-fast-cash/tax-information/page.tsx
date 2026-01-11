@@ -15,10 +15,10 @@ export default function TaxInformationPage() {
       {/* Hero */}
       <section className="relative bg-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">
             Tax Information
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
+          <p className="text-xl text-black max-w-3xl">
             Everything you need to know about filing your taxes
           </p>
         </div>
@@ -29,12 +29,12 @@ export default function TaxInformationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-12">
             <FileText className="w-12 h-12 text-blue-600" />
-            <h2 className="text-4xl font-black text-gray-900">Tax Tips</h2>
+            <h2 className="text-4xl font-black text-black">Tax Tips</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-blue-50 rounded-lg p-8 border border-blue-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Maximize Your Deductions</h3>
+              <h3 className="text-2xl font-bold text-black mb-4">Maximize Your Deductions</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
@@ -56,7 +56,7 @@ export default function TaxInformationPage() {
             </div>
 
             <div className="bg-green-50 rounded-lg p-8 border border-green-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Avoid Common Mistakes</h3>
+              <h3 className="text-2xl font-bold text-black mb-4">Avoid Common Mistakes</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
@@ -78,7 +78,7 @@ export default function TaxInformationPage() {
             </div>
 
             <div className="bg-orange-50 rounded-lg p-8 border border-orange-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Tax Credits to Claim</h3>
+              <h3 className="text-2xl font-bold text-black mb-4">Tax Credits to Claim</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
@@ -100,7 +100,7 @@ export default function TaxInformationPage() {
             </div>
 
             <div className="bg-purple-50 rounded-lg p-8 border border-purple-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Year-Round Planning</h3>
+              <h3 className="text-2xl font-bold text-black mb-4">Year-Round Planning</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
@@ -129,11 +129,11 @@ export default function TaxInformationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-12">
             <TrendingUp className="w-12 h-12 text-green-600" />
-            <h2 className="text-4xl font-black text-gray-900">2024 Tax Rates</h2>
+            <h2 className="text-4xl font-black text-black">2024 Tax Rates</h2>
           </div>
 
           <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200">
-            <h3 className="text-2xl font-black text-gray-900 mb-6">Federal Income Tax Brackets</h3>
+            <h3 className="text-2xl font-black text-black mb-6">Federal Income Tax Brackets</h3>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
@@ -182,7 +182,7 @@ export default function TaxInformationPage() {
                 </tbody>
               </table>
             </div>
-            <p className="mt-6 text-sm text-gray-600">
+            <p className="mt-6 text-sm text-black">
               * Rates shown are for 2024 tax year. Consult with a tax professional for personalized advice.
             </p>
           </div>
@@ -194,13 +194,13 @@ export default function TaxInformationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-12">
             <FolderOpen className="w-12 h-12 text-orange-600" />
-            <h2 className="text-4xl font-black text-gray-900">Document Retention Guide</h2>
+            <h2 className="text-4xl font-black text-black">Document Retention Guide</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gradient-to-br from-red-50 to-white rounded-2xl p-8 border-2 border-red-200">
               <h3 className="text-2xl font-black text-red-600 mb-4">Keep 3 Years</h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>• Employment tax records</li>
                 <li>• Income documents (W-2, 1099)</li>
                 <li>• Expense receipts</li>
@@ -211,7 +211,7 @@ export default function TaxInformationPage() {
 
             <div className="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border-2 border-orange-200">
               <h3 className="text-2xl font-black text-orange-600 mb-4">Keep 7 Years</h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>• Tax returns and supporting docs</li>
                 <li>• Business expense records</li>
                 <li>• Property records</li>
@@ -222,7 +222,7 @@ export default function TaxInformationPage() {
 
             <div className="bg-gradient-to-br from-green-50 to-white rounded-2xl p-8 border-2 border-green-200">
               <h3 className="text-2xl font-black text-green-600 mb-4">Keep Permanently</h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>• Tax returns (copies)</li>
                 <li>• Property deeds</li>
                 <li>• Stock certificates</li>
@@ -233,7 +233,7 @@ export default function TaxInformationPage() {
           </div>
 
           <div className="mt-12 bg-blue-50 rounded-2xl p-8 border-2 border-blue-200">
-            <h3 className="text-2xl font-black text-gray-900 mb-4">Important Notes</h3>
+            <h3 className="text-2xl font-black text-black mb-4">Important Notes</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />

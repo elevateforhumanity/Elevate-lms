@@ -53,31 +53,31 @@ export default function WIOAEligibilityPage() {
 
           <div className="space-y-6 mb-12">
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 hover:border-orange-500 transition-colors">
-              <h3 className="text-lg font-bold text-slate-900 mb-3">
+              <h3 className="text-lg font-bold text-black mb-3">
                 ✓ Adults (18+)
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 You must be 18 years or older and legally authorized to work in
                 the United States.
               </p>
             </div>
 
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 hover:border-orange-500 transition-colors">
-              <h3 className="text-lg font-bold text-slate-900 mb-3">
+              <h3 className="text-lg font-bold text-black mb-3">
                 ✓ Indiana Residents
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 You must be a resident of Indiana. Proof of residency required
                 (utility bill, lease agreement, etc.).
               </p>
             </div>
 
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 hover:border-orange-500 transition-colors">
-              <h3 className="text-lg font-bold text-slate-900 mb-3">
+              <h3 className="text-lg font-bold text-black mb-3">
                 ✓ Employment Status
               </h3>
-              <p className="text-slate-700 mb-3">You qualify if you are:</p>
-              <ul className="list-disc list-inside space-y-2 text-slate-700">
+              <p className="text-black mb-3">You qualify if you are:</p>
+              <ul className="list-disc list-inside space-y-2 text-black">
                 <li>Unemployed</li>
                 <li>Underemployed (working part-time but want full-time)</li>
                 <li>Low-income and seeking better employment</li>
@@ -87,57 +87,57 @@ export default function WIOAEligibilityPage() {
             </div>
 
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 hover:border-orange-500 transition-colors">
-              <h3 className="text-lg font-bold text-slate-900 mb-3">
+              <h3 className="text-lg font-bold text-black mb-3">
                 ✓ Education Level
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 High school diploma or GED preferred, but not always required.
                 Some programs accept students working toward their GED.
               </p>
             </div>
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">
             Priority Groups
           </h2>
-          <p className="text-lg text-slate-700 mb-6">
+          <p className="text-lg text-black mb-6">
             WIOA gives priority to individuals who are:
           </p>
 
           <div className="grid md:grid-cols-2 gap-4 mb-12">
             <Link href="/wioa-eligibility/veterans" className="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition border-2 border-transparent hover:border-orange-500">
-              <p className="font-semibold text-slate-900">• Veterans →</p>
-              <p className="text-sm text-slate-600 mt-1">Priority services for military veterans</p>
+              <p className="font-semibold text-black">• Veterans →</p>
+              <p className="text-sm text-black mt-1">Priority services for military veterans</p>
             </Link>
             <Link href="/wioa-eligibility/low-income" className="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition border-2 border-transparent hover:border-orange-500">
-              <p className="font-semibold text-slate-900">• Low-Income Individuals →</p>
-              <p className="text-sm text-slate-600 mt-1">Income-based eligibility criteria</p>
+              <p className="font-semibold text-black">• Low-Income Individuals →</p>
+              <p className="text-sm text-black mt-1">Income-based eligibility criteria</p>
             </Link>
             <Link href="/wioa-eligibility/public-assistance" className="bg-orange-50 p-4 rounded-lg hover:bg-orange-100 transition border-2 border-transparent hover:border-orange-500">
-              <p className="font-semibold text-slate-900">• Public Assistance Recipients →</p>
-              <p className="text-sm text-slate-600 mt-1">SNAP, TANF, and other programs</p>
+              <p className="font-semibold text-black">• Public Assistance Recipients →</p>
+              <p className="text-sm text-black mt-1">SNAP, TANF, and other programs</p>
             </Link>
             <div className="bg-orange-50 p-4 rounded-lg">
-              <p className="font-semibold text-slate-900">
+              <p className="font-semibold text-black">
                 • Individuals with disabilities
               </p>
             </div>
             <div className="bg-orange-50 p-4 rounded-lg">
-              <p className="font-semibold text-slate-900">• Ex-offenders</p>
+              <p className="font-semibold text-black">• Ex-offenders</p>
             </div>
             <div className="bg-orange-50 p-4 rounded-lg">
-              <p className="font-semibold text-slate-900">
+              <p className="font-semibold text-black">
                 • Homeless individuals
               </p>
             </div>
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">
             What You'll Need to Apply
           </h2>
 
           <div className="bg-blue-50 p-6 rounded-lg mb-12">
-            <ul className="space-y-3 text-slate-800">
+            <ul className="space-y-3 text-black">
               <li className="flex items-start">
                 <span className="text-2xl mr-3">📋</span>
                 <span>
@@ -180,27 +180,27 @@ export default function WIOAEligibilityPage() {
           </div>
 
           <div id="form" className="bg-white border-2 border-gray-900 p-8 rounded-lg">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-black">
               Check Your Eligibility
             </h2>
-            <p className="text-base md:text-lg mb-6 text-gray-700">
+            <p className="text-base md:text-lg mb-6 text-black">
               Fill out this quick form and we'll help you determine if you qualify for WIOA funding
             </p>
             <form className="space-y-4">
               <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">Full Name *</label>
+                <label className="block text-sm font-bold text-black mb-2">Full Name *</label>
                 <input type="text" required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none" />
               </div>
               <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">Email *</label>
+                <label className="block text-sm font-bold text-black mb-2">Email *</label>
                 <input type="email" required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none" />
               </div>
               <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">Phone *</label>
+                <label className="block text-sm font-bold text-black mb-2">Phone *</label>
                 <input type="tel" required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none" />
               </div>
               <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">Employment Status *</label>
+                <label className="block text-sm font-bold text-black mb-2">Employment Status *</label>
                 <select required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none">
                   <option value="">Select...</option>
                   <option>Unemployed</option>
@@ -210,7 +210,7 @@ export default function WIOAEligibilityPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">Indiana Resident? *</label>
+                <label className="block text-sm font-bold text-black mb-2">Indiana Resident? *</label>
                 <select required className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-gray-900 focus:outline-none">
                   <option value="">Select...</option>
                   <option>Yes</option>
@@ -224,11 +224,11 @@ export default function WIOAEligibilityPage() {
           </div>
 
           <div className="mt-8 text-center">
-            <p className="text-gray-600 mb-4">Or contact us directly:</p>
+            <p className="text-black mb-4">Or contact us directly:</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="px-8 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-gray-100 transition-all shadow-xl"
+                className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-100 transition-all shadow-xl"
               >
                 Contact Us for Help
               </Link>

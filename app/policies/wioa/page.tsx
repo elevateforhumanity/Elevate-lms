@@ -12,7 +12,7 @@ export default function WIOAPage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>WIOA Eligibility Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
 
       <h2>Overview</h2>
       <p>

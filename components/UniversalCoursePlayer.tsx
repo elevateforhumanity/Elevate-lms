@@ -75,15 +75,15 @@ export function UniversalCoursePlayer({
           <div className="flex items-center gap-4">
             <button
               onClick={() => router.push('/student/courses')}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="flex items-center gap-2 text-black hover:text-black transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               <span className="font-medium">Back to Courses</span>
             </button>
             <div className="h-6 w-px bg-gray-300" />
             <div>
-              <h1 className="text-lg font-semibold text-gray-900">{courseName}</h1>
-              <p className="text-sm text-gray-600">{partnerName}</p>
+              <h1 className="text-lg font-semibold text-black">{courseName}</h1>
+              <p className="text-sm text-black">{partnerName}</p>
             </div>
           </div>
 
@@ -91,7 +91,7 @@ export function UniversalCoursePlayer({
             {!isScorm && (
               <button
                 onClick={() => setUseIframe(!useIframe)}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                className="px-4 py-2 text-sm font-medium text-black bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
               >
                 {useIframe ? 'Open in New Tab' : 'Embed Course'}
               </button>
@@ -121,8 +121,8 @@ export function UniversalCoursePlayer({
                     <AlertCircle className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-1">Course Instructions</h3>
-                    <p className="text-sm text-gray-700 mb-3">
+                    <h3 className="font-semibold text-black mb-1">Course Instructions</h3>
+                    <p className="text-sm text-black mb-3">
                       Complete the course in the {partnerName} system below. When finished, click "Mark as Complete" to generate your Elevate For Humanity certificate.
                     </p>
                     <button
@@ -144,10 +144,10 @@ export function UniversalCoursePlayer({
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <ExternalLink className="w-10 h-10 text-blue-600" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-black mb-4">
                 Continue to {partnerName}
               </h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-black mb-8">
                 Click the button below to access your course in a new window. Complete the training, then return here to mark it as complete and receive your Elevate For Humanity certificate.
               </p>
               <div className="space-y-4">
@@ -173,8 +173,8 @@ export function UniversalCoursePlayer({
 
               {/* Instructions */}
               <div className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-left">
-                <h4 className="font-semibold text-gray-900 mb-2">📋 Important:</h4>
-                <ul className="text-sm text-gray-700 space-y-1">
+                <h4 className="font-semibold text-black mb-2">📋 Important:</h4>
+                <ul className="text-sm text-black space-y-1">
                   <li>• Complete all course modules in the {partnerName} system</li>
                   <li>• Pass any required assessments or quizzes</li>
                   <li>• Return to this page when finished</li>

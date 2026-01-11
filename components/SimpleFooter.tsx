@@ -6,12 +6,12 @@ export default function SimpleFooter() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="text-sm font-bold text-gray-900 mb-4">Elevate</h3>
+            <h3 className="text-sm font-bold text-black mb-4">Elevate</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/about"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   About
                 </Link>
@@ -19,7 +19,7 @@ export default function SimpleFooter() {
               <li>
                 <Link
                   href="/programs"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Programs
                 </Link>
@@ -27,7 +27,7 @@ export default function SimpleFooter() {
               <li>
                 <Link
                   href="/courses"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Courses
                 </Link>
@@ -35,12 +35,12 @@ export default function SimpleFooter() {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-bold text-gray-900 mb-4">Community</h3>
+            <h3 className="text-sm font-bold text-black mb-4">Community</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/student/dashboard"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Learners
                 </Link>
@@ -48,7 +48,7 @@ export default function SimpleFooter() {
               <li>
                 <Link
                   href="/employers"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Employers
                 </Link>
@@ -56,12 +56,12 @@ export default function SimpleFooter() {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-bold text-gray-900 mb-4">Support</h3>
+            <h3 className="text-sm font-bold text-black mb-4">Support</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Contact
                 </Link>
@@ -69,7 +69,7 @@ export default function SimpleFooter() {
               <li>
                 <Link
                   href="/faq"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Help Center
                 </Link>
@@ -77,12 +77,12 @@ export default function SimpleFooter() {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-bold text-gray-900 mb-4">Legal</h3>
+            <h3 className="text-sm font-bold text-black mb-4">Legal</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Privacy
                 </Link>
@@ -90,7 +90,7 @@ export default function SimpleFooter() {
               <li>
                 <Link
                   href="/terms-of-service"
-                  className="text-sm text-gray-600 hover:text-blue-600"
+                  className="text-sm text-black hover:text-blue-600"
                 >
                   Terms
                 </Link>

@@ -49,12 +49,12 @@ export function OnboardingFlow({ steps, onComplete }: OnboardingFlowProps) {
         {/* Header */}
         <div className="p-6 border-b border-slate-200">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold text-slate-900">
+            <h2 className="text-2xl font-bold text-black">
               Welcome to Elevate for Humanity
             </h2>
             <button
               onClick={handleSkip}
-              className="text-sm text-slate-500 hover:text-slate-700"
+              className="text-sm text-slate-500 hover:text-black"
             >
               Skip tour
             </button>
@@ -97,10 +97,10 @@ export function OnboardingFlow({ steps, onComplete }: OnboardingFlowProps) {
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-6">
           <div className="mb-4">
-            <h3 className="text-xl font-semibold text-slate-900 mb-2">
+            <h3 className="text-xl font-semibold text-black mb-2">
               {steps[currentStep].title}
             </h3>
-            <p className="text-slate-600">
+            <p className="text-black">
               {steps[currentStep].description}
             </p>
           </div>
@@ -114,7 +114,7 @@ export function OnboardingFlow({ steps, onComplete }: OnboardingFlowProps) {
           <button
             onClick={handleBack}
             disabled={currentStep === 0}
-            className="flex items-center gap-2 px-4 py-2 text-slate-600 hover:text-slate-900 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-4 py-2 text-black hover:text-black disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <ChevronLeft className="w-4 h-4" />
             Back
@@ -157,15 +157,15 @@ export function StudentOnboarding({ onComplete }: { onComplete: () => void }) {
           <div className="grid grid-cols-3 gap-4 mt-6">
             <div className="text-center">
               <div className="text-3xl font-bold text-brand-orange-600">12+</div>
-              <div className="text-sm text-slate-600">Programs</div>
+              <div className="text-sm text-black">Programs</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-brand-orange-600">100%</div>
-              <div className="text-sm text-slate-600">Free</div>
+              <div className="text-sm text-black">Free</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-brand-orange-600">85%</div>
-              <div className="text-sm text-slate-600">Job Placement</div>
+              <div className="text-sm text-black">Job Placement</div>
             </div>
           </div>
         </div>
@@ -177,7 +177,7 @@ export function StudentOnboarding({ onComplete }: { onComplete: () => void }) {
       description: 'Navigate your learning hub',
       content: (
         <div className="space-y-4">
-          <p className="text-slate-700">
+          <p className="text-black">
             Your dashboard is your home base. Here you can:
           </p>
           <ul className="space-y-3">
@@ -207,7 +207,7 @@ export function StudentOnboarding({ onComplete }: { onComplete: () => void }) {
       description: 'Find the perfect program for you',
       content: (
         <div className="space-y-4">
-          <p className="text-slate-700">
+          <p className="text-black">
             Explore our programs in:
           </p>
           <div className="grid grid-cols-2 gap-3">
@@ -237,21 +237,21 @@ export function StudentOnboarding({ onComplete }: { onComplete: () => void }) {
       description: 'We\'re here to help you succeed',
       content: (
         <div className="space-y-4">
-          <p className="text-slate-700">
+          <p className="text-black">
             Need help? We've got you covered:
           </p>
           <div className="space-y-3">
             <div className="bg-slate-50 rounded-lg p-4">
-              <div className="font-semibold text-slate-900 mb-1">💬 Live Chat</div>
-              <div className="text-sm text-slate-600">Get instant answers from our support team</div>
+              <div className="font-semibold text-black mb-1">💬 Live Chat</div>
+              <div className="text-sm text-black">Get instant answers from our support team</div>
             </div>
             <div className="bg-slate-50 rounded-lg p-4">
-              <div className="font-semibold text-slate-900 mb-1">📧 Email Support</div>
-              <div className="text-sm text-slate-600">elevate4humanityedu@gmail.com</div>
+              <div className="font-semibold text-black mb-1">📧 Email Support</div>
+              <div className="text-sm text-black">elevate4humanityedu@gmail.com</div>
             </div>
             <div className="bg-slate-50 rounded-lg p-4">
-              <div className="font-semibold text-slate-900 mb-1">📚 Help Center</div>
-              <div className="text-sm text-slate-600">Browse FAQs and guides</div>
+              <div className="font-semibold text-black mb-1">📚 Help Center</div>
+              <div className="text-sm text-black">Browse FAQs and guides</div>
             </div>
           </div>
         </div>
@@ -288,7 +288,7 @@ export function InstructorOnboarding({ onComplete }: { onComplete: () => void })
       description: 'Create and organize your courses',
       content: (
         <div className="space-y-4">
-          <p className="text-slate-700">As an instructor, you can:</p>
+          <p className="text-black">As an instructor, you can:</p>
           <ul className="space-y-3">
             <li className="flex items-start gap-3">
               <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
@@ -312,10 +312,10 @@ export function InstructorOnboarding({ onComplete }: { onComplete: () => void })
       description: 'Evaluate student work efficiently',
       content: (
         <div className="space-y-4">
-          <p className="text-slate-700">Streamlined grading tools:</p>
+          <p className="text-black">Streamlined grading tools:</p>
           <div className="bg-slate-50 rounded-lg p-4">
-            <div className="font-semibold text-slate-900 mb-2">Quick Grading</div>
-            <div className="text-sm text-slate-600">Grade assignments with rubrics and provide detailed feedback</div>
+            <div className="font-semibold text-black mb-2">Quick Grading</div>
+            <div className="text-sm text-black">Grade assignments with rubrics and provide detailed feedback</div>
           </div>
         </div>
       ),

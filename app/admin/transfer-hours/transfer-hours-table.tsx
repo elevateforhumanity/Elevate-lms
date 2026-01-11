@@ -68,7 +68,7 @@ export function TransferHoursTable({
       case 'denied':
         return 'bg-red-100 text-red-800';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 text-black';
     }
   };
 
@@ -148,28 +148,28 @@ export function TransferHoursTable({
           <table className="w-full">
             <thead className="bg-gray-50 border-b">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Student
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Program
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Category
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Hours Requested
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Hours Approved
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Submitted
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-xs font-medium text-black uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -179,7 +179,7 @@ export function TransferHoursTable({
                 <tr>
                   <td
                     colSpan={8}
-                    className="px-6 py-12 text-center text-gray-700"
+                    className="px-6 py-12 text-center text-black"
                   >
                     No transfer hour requests found
                   </td>
@@ -189,24 +189,24 @@ export function TransferHoursTable({
                   <tr key={request.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4">
                       <div>
-                        <div className="font-medium text-gray-900">
+                        <div className="font-medium text-black">
                           {request.enrollment?.student?.full_name || 'Unknown'}
                         </div>
-                        <div className="text-sm text-gray-700">
+                        <div className="text-sm text-black">
                           {request.enrollment?.student?.email || ''}
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-900">
+                    <td className="px-6 py-4 text-sm text-black">
                       {request.enrollment?.program?.name || 'Unknown'}
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-900">
+                    <td className="px-6 py-4 text-sm text-black">
                       {request.category || 'General'}
                     </td>
-                    <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                    <td className="px-6 py-4 text-sm font-medium text-black">
                       {request.hours_requested}h
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-900">
+                    <td className="px-6 py-4 text-sm text-black">
                       {request.hours_approved
                         ? `${request.hours_approved}h`
                         : '-'}
@@ -218,7 +218,7 @@ export function TransferHoursTable({
                         {request.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-700">
+                    <td className="px-6 py-4 text-sm text-black">
                       {new Date(request.created_at).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 text-right text-sm font-medium">
@@ -238,7 +238,7 @@ export function TransferHoursTable({
 
         {/* Pagination info */}
         <div className="px-6 py-4 border-t bg-gray-50">
-          <p className="text-sm text-gray-700">
+          <p className="text-sm text-black">
             Showing{' '}
             <span className="font-medium">{filteredRequests.length}</span> of{' '}
             <span className="font-medium">{transferHours.length}</span> requests
@@ -251,7 +251,7 @@ export function TransferHoursTable({
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b">
-              <h2 className="text-2xl font-bold text-gray-900">
+              <h2 className="text-2xl font-bold text-black">
                 Review Transfer Hours Request
               </h2>
             </div>
@@ -259,21 +259,21 @@ export function TransferHoursTable({
             <div className="p-6 space-y-4">
               {/* Student Info */}
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">
+                <h3 className="font-semibold text-black mb-2">
                   Student Information
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   {selectedRequest.enrollment?.student?.full_name}
                 </p>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-black">
                   {selectedRequest.enrollment?.student?.email}
                 </p>
               </div>
 
               {/* Program Info */}
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Program</h3>
-                <p className="text-gray-700">
+                <h3 className="font-semibold text-black mb-2">Program</h3>
+                <p className="text-black">
                   {selectedRequest.enrollment?.program?.name}
                 </p>
               </div>
@@ -281,7 +281,7 @@ export function TransferHoursTable({
               {/* Request Details */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">
+                  <h3 className="font-semibold text-black mb-1">
                     Hours Requested
                   </h3>
                   <p className="text-2xl font-bold text-brand-blue-600">
@@ -289,8 +289,8 @@ export function TransferHoursTable({
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Category</h3>
-                  <p className="text-gray-700">
+                  <h3 className="font-semibold text-black mb-1">Category</h3>
+                  <p className="text-black">
                     {selectedRequest.category || 'General'}
                   </p>
                 </div>
@@ -299,10 +299,10 @@ export function TransferHoursTable({
               {/* Evidence */}
               {selectedRequest.evidence_description && (
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">
+                  <h3 className="font-semibold text-black mb-2">
                     Evidence Description
                   </h3>
-                  <p className="text-gray-700 whitespace-pre-wrap">
+                  <p className="text-black whitespace-pre-wrap">
                     {selectedRequest.evidence_description}
                   </p>
                 </div>
@@ -310,7 +310,7 @@ export function TransferHoursTable({
 
               {selectedRequest.evidence_file_url && (
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">
+                  <h3 className="font-semibold text-black mb-2">
                     Evidence File
                   </h3>
                   <a
@@ -328,7 +328,7 @@ export function TransferHoursTable({
               {selectedRequest.status === 'pending' && (
                 <div className="pt-4 border-t space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-black mb-1">
                       Hours to Approve
                     </label>
                     <input
@@ -347,13 +347,13 @@ export function TransferHoursTable({
                       Content={`Max: ${selectedRequest.hours_requested}`}
                       className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
-                    <p className="text-sm text-gray-700 mt-1">
+                    <p className="text-sm text-black mt-1">
                       Leave empty to approve full amount
                     </p>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-black mb-1">
                       Review Notes
                     </label>
                     <textarea
@@ -376,10 +376,10 @@ export function TransferHoursTable({
               {/* Existing Review */}
               {selectedRequest.status !== 'pending' && (
                 <div className="pt-4 border-t">
-                  <h3 className="font-semibold text-gray-900 mb-2">
+                  <h3 className="font-semibold text-black mb-2">
                     Review Decision
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-black">
                     <span className="font-medium">Status:</span>{' '}
                     <span
                       className={`px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(selectedRequest.status)}`}
@@ -388,19 +388,19 @@ export function TransferHoursTable({
                     </span>
                   </p>
                   {selectedRequest.hours_approved && (
-                    <p className="text-gray-700 mt-2">
+                    <p className="text-black mt-2">
                       <span className="font-medium">Hours Approved:</span>{' '}
                       {selectedRequest.hours_approved}h
                     </p>
                   )}
                   {selectedRequest.notes && (
-                    <p className="text-gray-700 mt-2">
+                    <p className="text-black mt-2">
                       <span className="font-medium">Notes:</span>{' '}
                       {selectedRequest.notes}
                     </p>
                   )}
                   {selectedRequest.reviewed_at && (
-                    <p className="text-sm text-gray-700 mt-2">
+                    <p className="text-sm text-black mt-2">
                       Reviewed on{' '}
                       {new Date(selectedRequest.reviewed_at).toLocaleString()}
                     </p>
@@ -417,7 +417,7 @@ export function TransferHoursTable({
                   setApprovalHours('');
                   setApprovalNotes('');
                 }}
-                className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 font-medium"
+                className="px-6 py-2 border border-gray-300 rounded-lg text-black hover:bg-gray-100 font-medium"
               >
                 Close
               </button>

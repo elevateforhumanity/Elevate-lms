@@ -154,7 +154,7 @@ export default function AdminProgramHolderDocuments() {
       <div className="min-h-screen bg-gray-50 py-8 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4" />
-          <p className="text-gray-600">Loading documents...</p>
+          <p className="text-black">Loading documents...</p>
         </div>
       </div>
     );
@@ -165,10 +165,10 @@ export default function AdminProgramHolderDocuments() {
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Program Holder Documents
           </h1>
-          <p className="text-gray-600">
+          <p className="text-black">
             Review and approve documents submitted by program holders
           </p>
         </div>
@@ -202,7 +202,7 @@ export default function AdminProgramHolderDocuments() {
                 className={`px-6 py-4 font-medium transition ${
                   filter === tab.key
                     ? 'border-b-2 border-blue-600 text-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                    : 'text-black hover:text-black'
                 }`}
               >
                 {tab.label}
@@ -219,7 +219,7 @@ export default function AdminProgramHolderDocuments() {
           {documents.length === 0 ? (
             <div className="bg-white rounded-lg shadow-sm p-12 text-center">
               <FileText size={48} className="mx-auto mb-4 text-gray-300" />
-              <p className="text-gray-600">No documents found</p>
+              <p className="text-black">No documents found</p>
             </div>
           ) : (
             documents.map((doc) => (
@@ -234,18 +234,18 @@ export default function AdminProgramHolderDocuments() {
                       size={32}
                     />
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                      <h3 className="font-semibold text-lg text-black mb-1">
                         {doc.file_name}
                       </h3>
-                      <p className="text-sm text-gray-600 capitalize mb-2">
+                      <p className="text-sm text-black capitalize mb-2">
                         {doc.document_type.replace(/_/g, ' ')}
                       </p>
                       {doc.description && (
-                        <p className="text-sm text-gray-700 mb-2">
+                        <p className="text-sm text-black mb-2">
                           {doc.description}
                         </p>
                       )}
-                      <div className="flex items-center gap-4 text-sm text-gray-700">
+                      <div className="flex items-center gap-4 text-sm text-black">
                         <span className="flex items-center gap-1">
                           <User size={14} />
                           {doc.profiles?.full_name || 'Unknown User'}
@@ -287,7 +287,7 @@ export default function AdminProgramHolderDocuments() {
                   <div className="mt-4 pt-4 border-t">
                     <div className="flex items-start gap-4">
                       <div className="flex-1">
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-black mb-2">
                           Approval Notes (Optional)
                         </label>
                         <textarea

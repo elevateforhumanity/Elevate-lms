@@ -71,8 +71,8 @@ export function AssignmentActivity({
     <div className="bg-white rounded-lg border border-slate-200 p-6">
       {/* Header */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-2">{title}</h2>
-        <div className="flex items-center gap-4 text-sm text-slate-600">
+        <h2 className="text-2xl font-bold text-black mb-2">{title}</h2>
+        <div className="flex items-center gap-4 text-sm text-black">
           <span className="flex items-center gap-1">
             <Calendar className="w-4 h-4" />
             Due: {dueDate.toLocaleDateString()}
@@ -89,8 +89,8 @@ export function AssignmentActivity({
 
       {/* Description */}
       <div className="mb-6">
-        <h3 className="font-semibold text-slate-900 mb-2">Description</h3>
-        <p className="text-slate-700">{description}</p>
+        <h3 className="font-semibold text-black mb-2">Description</h3>
+        <p className="text-black">{description}</p>
       </div>
 
       {/* Instructions */}
@@ -102,12 +102,12 @@ export function AssignmentActivity({
       {/* Submission Area */}
       {canSubmit && (
         <div className="border-t border-slate-200 pt-6">
-          <h3 className="font-semibold text-slate-900 mb-4">Your Submission</h3>
+          <h3 className="font-semibold text-black mb-4">Your Submission</h3>
 
           {/* File Upload */}
           {(submissionType === 'file' || submissionType === 'multiple') && (
             <div className="mb-4">
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Upload Files
               </label>
               <div className="border-2 border-dashed border-slate-300 rounded-lg p-6 text-center hover:border-emerald-500 transition">
@@ -133,7 +133,7 @@ export function AssignmentActivity({
               {selectedFiles.length > 0 && (
                 <div className="mt-2 space-y-1">
                   {selectedFiles.map((file, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-slate-700">
+                    <div key={i} className="flex items-center gap-2 text-sm text-black">
                       <FileText className="w-4 h-4" />
                       {file.name} ({(file.size / 1024 / 1024).toFixed(2)}MB)
                     </div>
@@ -146,7 +146,7 @@ export function AssignmentActivity({
           {/* Text Submission */}
           {(submissionType === 'text' || submissionType === 'multiple') && (
             <div className="mb-4">
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Text Submission
               </label>
               <textarea
@@ -162,7 +162,7 @@ export function AssignmentActivity({
           {/* URL Submission */}
           {(submissionType === 'url' || submissionType === 'multiple') && (
             <div className="mb-4">
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 URL Submission
               </label>
               <div className="flex items-center gap-2">

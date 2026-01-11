@@ -65,16 +65,16 @@ export default function EmployersPage() {
           <h2 className="text-3xl font-bold text-center mb-4">
             What You Get as an Employer Partner
           </h2>
-          <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+          <p className="text-xl text-black text-center mb-12 max-w-3xl mx-auto">
             Access to trained, certified candidates ready to work. No recruiting fees. No placement costs.
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-3">Free Job Postings</h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Post unlimited job openings at no cost. Your listings go directly to students completing relevant training programs.
               </p>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-black">
                 <li>• No posting fees</li>
                 <li>• Direct access to candidates</li>
                 <li>• Targeted by program/skill</li>
@@ -82,10 +82,10 @@ export default function EmployersPage() {
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-3">Pre-Trained Candidates</h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Candidates have completed industry-recognized training and hold certifications required for the role.
               </p>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-black">
                 <li>• Industry certifications</li>
                 <li>• Hands-on training completed</li>
                 <li>• Background checks available</li>
@@ -93,10 +93,10 @@ export default function EmployersPage() {
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-3">Apprenticeship Support</h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 We help you set up DOL-registered apprenticeship programs with administrative support and funding guidance.
               </p>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-black">
                 <li>• DOL registration assistance</li>
                 <li>• Curriculum development</li>
                 <li>• Compliance support</li>
@@ -124,7 +124,7 @@ export default function EmployersPage() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">Job Postings</h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-black mb-4">
                   Post your open positions and connect directly with qualified
                   candidates from our talent pool.
                 </p>
@@ -144,7 +144,7 @@ export default function EmployersPage() {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">Apprenticeships</h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-black mb-4">
                   Build your workforce through DOL-registered apprenticeship
                   programs with our support.
                 </p>

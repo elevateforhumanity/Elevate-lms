@@ -77,17 +77,17 @@ export default async function FERPAPortal() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 FERPA Portal
               </h1>
-              <p className="text-slate-600 mt-1">
+              <p className="text-black mt-1">
                 Family Educational Rights and Privacy Act Compliance
               </p>
             </div>
             <div className="flex items-center gap-4">
               <Link
                 href="/admin"
-                className="px-4 py-2 text-slate-600 hover:text-slate-900 font-medium"
+                className="px-4 py-2 text-black hover:text-black font-medium"
               >
                 Admin Dashboard
               </Link>
@@ -114,10 +114,10 @@ export default async function FERPAPortal() {
               </div>
               <span className="text-sm text-slate-500">Total</span>
             </div>
-            <div className="text-3xl font-bold text-slate-900">
+            <div className="text-3xl font-bold text-black">
               {totalStudents || 0}
             </div>
-            <div className="text-sm text-slate-600 mt-1">Student Records</div>
+            <div className="text-sm text-black mt-1">Student Records</div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
@@ -127,10 +127,10 @@ export default async function FERPAPortal() {
               </div>
               <span className="text-sm text-slate-500">Pending</span>
             </div>
-            <div className="text-3xl font-bold text-slate-900">
+            <div className="text-3xl font-bold text-black">
               {pendingRequests || 0}
             </div>
-            <div className="text-sm text-slate-600 mt-1">Access Requests</div>
+            <div className="text-sm text-black mt-1">Access Requests</div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
@@ -140,10 +140,10 @@ export default async function FERPAPortal() {
               </div>
               <span className="text-sm text-slate-500">Active</span>
             </div>
-            <div className="text-3xl font-bold text-slate-900">
+            <div className="text-3xl font-bold text-black">
               {activeEnrollments || 0}
             </div>
-            <div className="text-sm text-slate-600 mt-1">Enrollments</div>
+            <div className="text-sm text-black mt-1">Enrollments</div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
@@ -154,7 +154,7 @@ export default async function FERPAPortal() {
               <span className="text-sm text-slate-500">Status</span>
             </div>
             <div className="text-3xl font-bold text-brand-green-600">✓</div>
-            <div className="text-sm text-slate-600 mt-1">Compliant</div>
+            <div className="text-sm text-black mt-1">Compliant</div>
           </div>
         </div>
 
@@ -168,15 +168,15 @@ export default async function FERPAPortal() {
                   <FileText className="w-8 h-8 text-brand-blue-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">
+                  <h3 className="text-lg font-bold text-black">
                     Student Records
                   </h3>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     Manage education records
                   </p>
                 </div>
               </div>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-brand-green-600" />
                   View student records
@@ -201,15 +201,15 @@ export default async function FERPAPortal() {
                   <Users className="w-8 h-8 text-brand-green-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">
+                  <h3 className="text-lg font-bold text-black">
                     Privacy Requests
                   </h3>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     Handle access requests
                   </p>
                 </div>
               </div>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-brand-green-600" />
                   Student access requests
@@ -238,15 +238,15 @@ export default async function FERPAPortal() {
                   <Shield className="w-8 h-8 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">
+                  <h3 className="text-lg font-bold text-black">
                     FERPA Compliance
                   </h3>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     Privacy standards & audits
                   </p>
                 </div>
               </div>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-brand-green-600" />
                   Compliance monitoring
@@ -275,13 +275,13 @@ export default async function FERPAPortal() {
                   <BarChart3 className="w-8 h-8 text-brand-orange-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">
+                  <h3 className="text-lg font-bold text-black">
                     Reports & Analytics
                   </h3>
-                  <p className="text-sm text-slate-600">Performance metrics</p>
+                  <p className="text-sm text-black">Performance metrics</p>
                 </div>
               </div>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-brand-green-600" />
                   Access logs
@@ -310,13 +310,13 @@ export default async function FERPAPortal() {
                   <FileText className="w-8 h-8 text-indigo-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">
+                  <h3 className="text-lg font-bold text-black">
                     Documentation
                   </h3>
-                  <p className="text-sm text-slate-600">Forms & templates</p>
+                  <p className="text-sm text-black">Forms & templates</p>
                 </div>
               </div>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-brand-green-600" />
                   Consent forms
@@ -345,13 +345,13 @@ export default async function FERPAPortal() {
                   <Calendar className="w-8 h-8 text-brand-orange-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">
+                  <h3 className="text-lg font-bold text-black">
                     Calendar & Deadlines
                   </h3>
-                  <p className="text-sm text-slate-600">Important dates</p>
+                  <p className="text-sm text-black">Important dates</p>
                 </div>
               </div>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 text-brand-orange-600" />
                   Request deadlines
@@ -371,7 +371,7 @@ export default async function FERPAPortal() {
 
         {/* Quick Actions */}
         <div className="mt-8 bg-white rounded-xl shadow-sm p-6 border border-slate-200">
-          <h2 className="text-xl font-bold text-slate-900 mb-4">
+          <h2 className="text-xl font-bold text-black mb-4">
             Quick Actions
           </h2>
           <div className="grid md:grid-cols-4 gap-4">

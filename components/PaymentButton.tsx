@@ -128,7 +128,7 @@ export default function PaymentButton({
       )}
 
       {!loading && !error && (
-        <div className="text-xs text-slate-600 text-center">
+        <div className="text-xs text-black text-center">
           <p>Secure checkout powered by Stripe</p>
           <p className="mt-1">
             Pay with card, Affirm, Klarna, Afterpay, or bank account

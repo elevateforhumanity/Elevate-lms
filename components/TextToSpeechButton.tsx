@@ -48,7 +48,7 @@ export function TextToSpeechButton({ text, label = "Listen to this section" }: P
     <button
       type="button"
       onClick={handleClick}
-      className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-medium text-slate-700 shadow-sm hover:bg-slate-50 transition-colors"
+      className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-medium text-black shadow-sm hover:bg-slate-50 transition-colors"
     >
       <span aria-hidden="true">{isSpeaking ? "⏹️" : "▶️"}</span>
       <span>{isSpeaking ? "Stop audio" : label}</span>

@@ -112,10 +112,10 @@ export default function CookieConsent() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">
+                  <h3 className="font-semibold text-black mb-1">
                     We Value Your Privacy
                   </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-sm text-black leading-relaxed">
                     We use cookies to enhance your experience, analyze site
                     traffic, and provide personalized content. By clicking
                     "Accept All", you consent to our use of cookies.{' '}
@@ -133,7 +133,7 @@ export default function CookieConsent() {
             <div className="flex items-center gap-3 flex-shrink-0">
               <button
                 onClick={handleReject}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                className="px-4 py-2 text-sm font-medium text-black bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
                 aria-label="Reject all cookies"
               >
                 Reject All
@@ -147,7 +147,7 @@ export default function CookieConsent() {
               </button>
               <button
                 onClick={handleClose}
-                className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                className="p-2 text-gray-400 hover:text-black transition-colors"
                 aria-label="Close cookie consent banner"
               >
                 <X className="w-5 h-5" />

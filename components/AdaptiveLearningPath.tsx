@@ -117,7 +117,7 @@ export function AdaptiveLearningPath() {
             <div className="text-4xl text-2xl md:text-3xl lg:text-4xl">🤖</div>
             <div>
               <h3 className="text-xl font-bold mb-2">Your Personalized Recommendations</h3>
-              <p className="text-gray-700 mb-2">
+              <p className="text-black mb-2">
                 Based on your current skills, learning patterns, and career goals, we've curated these learning paths for you.
               </p>
               <div className="flex gap-4 text-sm">
@@ -141,15 +141,15 @@ export function AdaptiveLearningPath() {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="text-2xl font-bold mb-2">{path.name}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{path.description}</p>
+                  <p className="text-black text-sm mb-3">{path.description}</p>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-brand-orange-600">{path.matchScore}%</div>
-                  <p className="text-xs text-gray-600">Match</p>
+                  <p className="text-xs text-black">Match</p>
                 </div>
               </div>
 
-              <div className="flex gap-4 text-sm text-gray-600 mb-4">
+              <div className="flex gap-4 text-sm text-black mb-4">
                 <span>📚 {path.courses.length} courses</span>
                 <span>⏱️ {path.totalDuration}</span>
               </div>
@@ -158,7 +158,7 @@ export function AdaptiveLearningPath() {
                 {path.courses.slice(0, 3).map((course) => (
                   <div key={course.id} className="flex items-center gap-2 text-sm">
                     {course.recommended && <span className="text-green-500">✓</span>}
-                    <span className="text-gray-700">{course.title}</span>
+                    <span className="text-black">{course.title}</span>
                     <span className={`px-2 py-0.5 rounded text-xs ${
                       course.difficulty === 'beginner' ? 'bg-blue-100 text-blue-700' :
                       course.difficulty === 'intermediate' ? 'bg-purple-100 text-purple-700' :
@@ -194,23 +194,23 @@ export function AdaptiveLearningPath() {
                       <div className="flex justify-between items-start mb-2">
                         <div>
                           <h4 className="text-lg font-bold">{course.title}</h4>
-                          <p className="text-sm text-gray-600">{course.duration}</p>
+                          <p className="text-sm text-black">{course.duration}</p>
                         </div>
                         <div className="text-right">
                           <div className="text-xl font-bold text-brand-orange-600">{course.matchScore}%</div>
-                          <p className="text-xs text-gray-600">Match</p>
+                          <p className="text-xs text-black">Match</p>
                         </div>
                       </div>
 
                       {course.prerequisites.length > 0 && (
                         <div className="mb-2">
-                          <p className="text-xs font-semibold text-gray-700">Prerequisites:</p>
-                          <p className="text-xs text-gray-600">{course.prerequisites.join(', ')}</p>
+                          <p className="text-xs font-semibold text-black">Prerequisites:</p>
+                          <p className="text-xs text-black">{course.prerequisites.join(', ')}</p>
                         </div>
                       )}
 
                       <div className="mb-3">
-                        <p className="text-xs font-semibold text-gray-700 mb-1">Skills you'll learn:</p>
+                        <p className="text-xs font-semibold text-black mb-1">Skills you'll learn:</p>
                         <div className="flex flex-wrap gap-1">
                           {course.skills.map((skill) => (
                             <span key={skill} className="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs rounded">
@@ -234,7 +234,7 @@ export function AdaptiveLearningPath() {
 
             <div className="mt-6 p-4    rounded-lg">
               <h4 className="font-bold mb-2">Why this path?</h4>
-              <ul className="space-y-1 text-sm text-gray-700">
+              <ul className="space-y-1 text-sm text-black">
                 <li>• Builds on your existing JavaScript knowledge</li>
                 <li>• Aligns with your full-stack developer career goal</li>
                 <li>• Matches your visual learning style with interactive content</li>

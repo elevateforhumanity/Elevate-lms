@@ -74,10 +74,10 @@ export default function SignInForm() {
     <div className="w-full max-w-md mx-auto">
       <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Welcome Back
           </h1>
-          <p className="text-slate-600">
+          <p className="text-black">
             Sign in to continue your learning journey
           </p>
         </div>
@@ -92,7 +92,7 @@ export default function SignInForm() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Email Address
             </label>
@@ -114,7 +114,7 @@ export default function SignInForm() {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Password
             </label>
@@ -135,7 +135,7 @@ export default function SignInForm() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-700"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-black"
               >
                 {showPassword ? (
                   <svg
@@ -182,7 +182,7 @@ export default function SignInForm() {
                 type="checkbox"
                 className="w-4 h-4 text-brand-orange-600 border-slate-300 rounded focus:ring-orange-500"
               />
-              <span className="ml-2 text-sm text-slate-600">Remember me</span>
+              <span className="ml-2 text-sm text-black">Remember me</span>
             </label>
             <Link
               href="/auth/forgot-password"
@@ -237,7 +237,7 @@ export default function SignInForm() {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
-              <span className="text-sm font-medium text-slate-700">Google</span>
+              <span className="text-sm font-medium text-black">Google</span>
             </button>
 
             <button
@@ -252,14 +252,14 @@ export default function SignInForm() {
                 <path fill="#05a6f0" d="M1 12h10v10H1z" />
                 <path fill="#ffba08" d="M12 12h10v10H12z" />
               </svg>
-              <span className="text-sm font-medium text-slate-700">
+              <span className="text-sm font-medium text-black">
                 Microsoft
               </span>
             </button>
           </div>
         </div>
 
-        <p className="mt-8 text-center text-sm text-slate-600">
+        <p className="mt-8 text-center text-sm text-black">
           Don't have an account?{' '}
           <Link
             href="/auth/signup"

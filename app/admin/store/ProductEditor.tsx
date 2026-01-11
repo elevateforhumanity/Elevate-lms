@@ -45,7 +45,7 @@ export default function ProductEditor() {
       <h2 className="font-bold text-xl">Create Product</h2>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-sm font-medium text-black mb-1">
           Product Title
         </label>
         <input
@@ -61,7 +61,7 @@ export default function ProductEditor() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-sm font-medium text-black mb-1">
           Description
         </label>
         <textarea
@@ -78,7 +78,7 @@ export default function ProductEditor() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-sm font-medium text-black mb-1">
           Price (USD)
         </label>
         <input
@@ -95,7 +95,7 @@ export default function ProductEditor() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-sm font-medium text-black mb-1">
           GitHub Repository to Clone
         </label>
         <input

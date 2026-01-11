@@ -36,8 +36,8 @@ export default async function NewUserPage() {
           >
             ← Back to Users
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">Create New User</h1>
-          <p className="mt-2 text-gray-600">
+          <h1 className="text-3xl font-bold text-black">Create New User</h1>
+          <p className="mt-2 text-black">
             Add a new user to the system with appropriate role and permissions.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default async function NewUserPage() {
         {/* Create User Form */}
         <div className="bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-black">
               User Information
             </h2>
           </div>
@@ -54,7 +54,7 @@ export default async function NewUserPage() {
             {/* Basic Information */}
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   First Name *
                 </label>
                 <input
@@ -65,7 +65,7 @@ export default async function NewUserPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Last Name *
                 </label>
                 <input
@@ -78,7 +78,7 @@ export default async function NewUserPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Email Address *
               </label>
               <input
@@ -87,14 +87,14 @@ export default async function NewUserPage() {
                 placeholder="user@organization.org"
                 className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
-              <p className="mt-1 text-xs text-gray-700">
+              <p className="mt-1 text-xs text-black">
                 User will receive a verification email at this address
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Phone Number
                 </label>
                 <input
@@ -104,7 +104,7 @@ export default async function NewUserPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Date of Birth
                 </label>
                 <input
@@ -116,7 +116,7 @@ export default async function NewUserPage() {
 
             {/* Role Selection */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 User Role *
               </label>
               <select
@@ -131,14 +131,14 @@ export default async function NewUserPage() {
                 <option value="program_holder">Program Holder</option>
                 <option value="employer">Employer</option>
               </select>
-              <p className="mt-1 text-xs text-gray-700">
+              <p className="mt-1 text-xs text-black">
                 Role determines user permissions and access level
               </p>
             </div>
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Temporary Password *
               </label>
               <input
@@ -147,7 +147,7 @@ export default async function NewUserPage() {
                 placeholder="Enter temporary password"
                 className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
               />
-              <p className="mt-1 text-xs text-gray-700">
+              <p className="mt-1 text-xs text-black">
                 User will be required to change password on first login
               </p>
             </div>
@@ -160,7 +160,7 @@ export default async function NewUserPage() {
                   defaultChecked
                   className="rounded text-brand-blue-600"
                 />
-                <span className="text-sm text-gray-700">
+                <span className="text-sm text-black">
                   Send welcome email
                 </span>
               </label>
@@ -170,7 +170,7 @@ export default async function NewUserPage() {
                   defaultChecked
                   className="rounded text-brand-blue-600"
                 />
-                <span className="text-sm text-gray-700">
+                <span className="text-sm text-black">
                   Require password change on first login
                 </span>
               </label>
@@ -180,7 +180,7 @@ export default async function NewUserPage() {
                   defaultChecked
                   className="rounded text-brand-blue-600"
                 />
-                <span className="text-sm text-gray-700">
+                <span className="text-sm text-black">
                   Account active immediately
                 </span>
               </label>
@@ -188,7 +188,7 @@ export default async function NewUserPage() {
 
             {/* Program Assignment (for students) */}
             <div className="pt-4 border-t border-gray-200">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Assign to Program (Optional)
               </label>
               <select className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
@@ -203,7 +203,7 @@ export default async function NewUserPage() {
 
             {/* Notes */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Admin Notes (Optional)
               </label>
               <textarea
@@ -217,7 +217,7 @@ export default async function NewUserPage() {
             <div className="flex justify-end gap-4 pt-4 border-t border-gray-200">
               <Link
                 href="/admin/users"
-                className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                className="px-4 py-2 border border-gray-300 rounded-md text-black hover:bg-gray-50"
               >
                 Cancel
               </Link>

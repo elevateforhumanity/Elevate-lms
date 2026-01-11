@@ -121,11 +121,11 @@ export default async function ProgramHolderDashboardOrchestrated() {
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
               <div className="flex items-center justify-between mb-2">
                 <Users className="h-8 w-8 text-blue-600" />
-                <span className="text-3xl font-bold text-slate-900">
+                <span className="text-3xl font-bold text-black">
                   {stateData.metrics.activeStudents}
                 </span>
               </div>
-              <div className="text-sm text-slate-600">Active Students</div>
+              <div className="text-sm text-black">Active Students</div>
             </div>
 
             <div
@@ -147,7 +147,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   className={`text-3xl font-bold ${
                     stateData.metrics.atRiskStudents > 0
                       ? 'text-yellow-900'
-                      : 'text-slate-900'
+                      : 'text-black'
                   }`}
                 >
                   {stateData.metrics.atRiskStudents}
@@ -157,7 +157,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                 className={`text-sm ${
                   stateData.metrics.atRiskStudents > 0
                     ? 'text-yellow-900'
-                    : 'text-slate-600'
+                    : 'text-black'
                 }`}
               >
                 At-Risk Students
@@ -183,7 +183,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   className={`text-3xl font-bold ${
                     stateData.metrics.pendingVerifications > 5
                       ? 'text-orange-900'
-                      : 'text-slate-900'
+                      : 'text-black'
                   }`}
                 >
                   {stateData.metrics.pendingVerifications}
@@ -193,7 +193,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                 className={`text-sm ${
                   stateData.metrics.pendingVerifications > 5
                     ? 'text-orange-900'
-                    : 'text-slate-600'
+                    : 'text-black'
                 }`}
               >
                 Pending Verifications
@@ -219,7 +219,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   className={`text-3xl font-bold ${
                     stateData.metrics.overdueReports > 0
                       ? 'text-red-900'
-                      : 'text-slate-900'
+                      : 'text-black'
                   }`}
                 >
                   {stateData.metrics.overdueReports}
@@ -229,7 +229,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                 className={`text-sm ${
                   stateData.metrics.overdueReports > 0
                     ? 'text-red-900'
-                    : 'text-slate-600'
+                    : 'text-black'
                 }`}
               >
                 Overdue Reports
@@ -239,7 +239,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
 
           {/* Available Sections */}
           <div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">
+            <h3 className="text-2xl font-bold text-black mb-6">
               Available Actions
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
@@ -329,7 +329,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
           {/* Recent Activity */}
           {activeStudents.length > 0 && (
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">
+              <h3 className="text-xl font-bold text-black mb-4">
                 Recent Student Activity
               </h3>
               <div className="space-y-3">
@@ -339,10 +339,10 @@ export default async function ProgramHolderDashboardOrchestrated() {
                     className="flex items-center justify-between p-3 bg-slate-50 rounded-lg"
                   >
                     <div>
-                      <div className="font-semibold text-slate-900">
+                      <div className="font-semibold text-black">
                         {student.profiles?.full_name || 'Student'}
                       </div>
-                      <div className="text-sm text-slate-600">
+                      <div className="text-sm text-black">
                         Status:{' '}
                         <span className="capitalize">{student.status}</span>
                       </div>
@@ -402,7 +402,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
 
           {/* Quick Actions */}
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">
+            <h3 className="text-lg font-bold text-black mb-4">
               Quick Actions
             </h3>
             <div className="space-y-3">
@@ -414,7 +414,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
               </a>
               <a
                 href="/program-holder/reports/new"
-                className="block w-full text-center px-4 py-3 bg-slate-200 text-slate-900 rounded-lg font-semibold hover:bg-slate-300 transition"
+                className="block w-full text-center px-4 py-3 bg-slate-200 text-black rounded-lg font-semibold hover:bg-slate-300 transition"
               >
                 Submit New Report
               </a>
@@ -423,37 +423,37 @@ export default async function ProgramHolderDashboardOrchestrated() {
 
           {/* Legal Documents */}
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">
+            <h3 className="text-lg font-bold text-black mb-4">
               Legal Documents
             </h3>
             <div className="space-y-2">
               <a
                 href="/legal/marketplace-terms"
-                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-lg transition"
+                className="block px-4 py-2 text-sm text-black hover:bg-slate-50 rounded-lg transition"
               >
                 📄 Marketplace Terms
               </a>
               <a
                 href="/legal/creator-agreement"
-                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-lg transition"
+                className="block px-4 py-2 text-sm text-black hover:bg-slate-50 rounded-lg transition"
               >
                 📄 Creator Agreement
               </a>
               <a
                 href="/legal/nda"
-                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-lg transition"
+                className="block px-4 py-2 text-sm text-black hover:bg-slate-50 rounded-lg transition"
               >
                 📄 Non-Disclosure Agreement
               </a>
               <a
                 href="/legal/non-compete"
-                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-lg transition"
+                className="block px-4 py-2 text-sm text-black hover:bg-slate-50 rounded-lg transition"
               >
                 📄 Non-Compete Agreement
               </a>
               <a
                 href="/legal/mou"
-                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 rounded-lg transition"
+                className="block px-4 py-2 text-sm text-black hover:bg-slate-50 rounded-lg transition"
               >
                 📄 Memorandum of Understanding
               </a>

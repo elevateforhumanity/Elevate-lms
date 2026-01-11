@@ -61,7 +61,7 @@ export function ArchetypeBase({
                   {finalContent.cta.secondary && (
                     <a
                       href={finalContent.cta.secondaryHref || '#'}
-                      className="px-6 py-3 bg-white text-gray-900 rounded-lg font-medium hover:bg-gray-100 transition"
+                      className="px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-gray-100 transition"
                     >
                       {finalContent.cta.secondary}
                     </a>
@@ -78,10 +78,10 @@ export function ArchetypeBase({
         {Object.entries(finalContent.sections).map(([key, section]) => (
           <section key={key} className="mb-12">
             <h2 className="text-3xl font-bold mb-4">{section.title}</h2>
-            <p className="text-lg text-gray-700 mb-4">{section.content}</p>
+            <p className="text-lg text-black mb-4">{section.content}</p>
             {section.emptyState && (
               <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
-                <p className="text-gray-600">{section.emptyState}</p>
+                <p className="text-black">{section.emptyState}</p>
               </div>
             )}
           </section>

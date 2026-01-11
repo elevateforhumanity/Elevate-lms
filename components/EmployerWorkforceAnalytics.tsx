@@ -69,37 +69,37 @@ export default function EmployerWorkforceAnalytics() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Total Hires</h3>
+            <h3 className="text-sm text-black mb-2">Total Hires</h3>
             <p className="text-3xl font-bold text-brand-orange-600">{metrics.totalHires}</p>
             <p className="text-sm text-green-600">↑ 15% from last period</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Active Positions</h3>
+            <h3 className="text-sm text-black mb-2">Active Positions</h3>
             <p className="text-3xl font-bold text-orange-500">{metrics.activePositions}</p>
-            <p className="text-sm text-gray-600">Across all departments</p>
+            <p className="text-sm text-black">Across all departments</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Avg Time to Hire</h3>
+            <h3 className="text-sm text-black mb-2">Avg Time to Hire</h3>
             <p className="text-3xl font-bold text-blue-600">{metrics.avgTimeToHire} days</p>
             <p className="text-sm text-green-600">↓ 8% improvement</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Retention Rate</h3>
+            <h3 className="text-sm text-black mb-2">Retention Rate</h3>
             <p className="text-3xl font-bold text-green-600">{metrics.retentionRate}%</p>
             <p className="text-sm text-green-600">↑ 3% from last year</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Training Completion</h3>
+            <h3 className="text-sm text-black mb-2">Training Completion</h3>
             <p className="text-3xl font-bold text-purple-600">{metrics.trainingCompletion}%</p>
             <p className="text-sm text-green-600">Above target</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Skills Gap Score</h3>
+            <h3 className="text-sm text-black mb-2">Skills Gap Score</h3>
             <p className="text-3xl font-bold text-yellow-600">{metrics.skillsGapScore}%</p>
             <p className="text-sm text-yellow-600">Needs attention</p>
           </Card>
@@ -113,7 +113,7 @@ export default function EmployerWorkforceAnalytics() {
                 <div key={trend.month}>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="font-medium">{trend.month}</span>
-                    <span className="text-gray-600">{trend.hires} hires • {trend.applications} applications</span>
+                    <span className="text-black">{trend.hires} hires • {trend.applications} applications</span>
                   </div>
                   <div className="flex gap-2">
                     <div className="flex-1 bg-gray-200 rounded-full h-2">
@@ -135,7 +135,7 @@ export default function EmployerWorkforceAnalytics() {
                 <div key={skill.skill}>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="font-medium">{skill.skill}</span>
-                    <span className="text-gray-600">
+                    <span className="text-black">
                       Demand: {skill.demand}% • Supply: {skill.supply}%
                     </span>
                   </div>
@@ -203,21 +203,21 @@ export default function EmployerWorkforceAnalytics() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="p-6   ">
             <h3 className="font-bold mb-3">💡 Insight</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Your time- has improved by 8% this quarter. Consider sharing your recruitment process as a best practice.
             </p>
           </Card>
 
           <Card className="p-6   ">
             <h3 className="font-bold mb-3">🎯 Recommendation</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Partner with Elevate for Humanity to address the AWS skills gap. 15 qualified candidates available.
             </p>
           </Card>
 
           <Card className="p-6   ">
             <h3 className="font-bold mb-3">📈 Trend</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Engineering roles are taking 35% longer to fill. Consider expanding your talent pipeline.
             </p>
           </Card>

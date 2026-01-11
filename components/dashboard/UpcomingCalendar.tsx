@@ -46,10 +46,10 @@ export function UpcomingCalendar() {
           >
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1">
-                <h4 className="font-semibold text-gray-900 text-sm">
+                <h4 className="font-semibold text-black text-sm">
                   {event.title}
                 </h4>
-                <p className="text-xs text-gray-600 mt-1">{event.course}</p>
+                <p className="text-xs text-black mt-1">{event.course}</p>
               </div>
               <span className="elevate-pill elevate-pill--red text-xs">
                 {event.type}

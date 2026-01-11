@@ -449,11 +449,11 @@ export default function SyllabiPage() {
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex items-center gap-3 mb-2">
             <BookOpen className="w-10 h-10 text-brand-blue-600" />
-            <h1 className="text-4xl font-bold text-slate-900 text-2xl md:text-3xl lg:text-4xl">
+            <h1 className="text-4xl font-bold text-black text-2xl md:text-3xl lg:text-4xl">
               Course Syllabi
             </h1>
           </div>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-black">
             Detailed course information including learning outcomes,
             assessments, and requirements
           </p>
@@ -467,16 +467,16 @@ export default function SyllabiPage() {
           <div className="flex items-start gap-4">
             <Target className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
             <div>
-              <h2 className="text-lg font-bold text-slate-900 mb-2">
+              <h2 className="text-lg font-bold text-black mb-2">
                 About Learning Outcomes
               </h2>
-              <p className="text-slate-700 mb-2">
+              <p className="text-black mb-2">
                 Each course includes specific, measurable learning outcomes that
                 define what you will be able to do upon successful completion.
                 These outcomes align with industry standards and certification
                 requirements.
               </p>
-              <p className="text-slate-700">
+              <p className="text-black">
                 All syllabi are subject to updates to reflect current industry
                 practices and regulatory requirements.
               </p>
@@ -522,14 +522,14 @@ export default function SyllabiPage() {
                           <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold">
                             {course.code}
                           </span>
-                          <h3 className="text-lg md:text-lg font-bold text-slate-900">
+                          <h3 className="text-lg md:text-lg font-bold text-black">
                             {course.title}
                           </h3>
                         </div>
-                        <p className="text-slate-700 mb-3">
+                        <p className="text-black mb-3">
                           {course.description}
                         </p>
-                        <div className="flex items-center gap-4 text-sm text-slate-600">
+                        <div className="flex items-center gap-4 text-sm text-black">
                           <span>{course.hours} hours</span>
                           <span>•</span>
                           <span>{course.credits} credits</span>
@@ -550,11 +550,11 @@ export default function SyllabiPage() {
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-3">
                         <Target className="w-5 h-5 text-brand-green-600" />
-                        <h4 className="font-bold text-slate-900">
+                        <h4 className="font-bold text-black">
                           Learning Outcomes
                         </h4>
                       </div>
-                      <p className="text-sm text-slate-600 mb-3">
+                      <p className="text-sm text-black mb-3">
                         Upon successful completion of this course, students will
                         be able to:
                       </p>
@@ -562,7 +562,7 @@ export default function SyllabiPage() {
                         {course.learningOutcomes.map((outcome, idx) => (
                           <li key={idx} className="flex items-start gap-3">
                             <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
-                            <span className="text-slate-700">{outcome}</span>
+                            <span className="text-black">{outcome}</span>
                           </li>
                         ))}
                       </ul>
@@ -572,7 +572,7 @@ export default function SyllabiPage() {
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-3">
                         <Award className="w-5 h-5 text-purple-600" />
-                        <h4 className="font-bold text-slate-900">
+                        <h4 className="font-bold text-black">
                           Assessments & Grading
                         </h4>
                       </div>
@@ -580,28 +580,28 @@ export default function SyllabiPage() {
                         {course.assessments.map((assessment, idx) => (
                           <li
                             key={idx}
-                            className="flex items-start gap-3 text-slate-700"
+                            className="flex items-start gap-3 text-black"
                           >
                             <span className="text-purple-600 font-bold">•</span>
                             <span>{assessment}</span>
                           </li>
                         ))}
                       </ul>
-                      <p className="text-sm text-slate-600 mt-3">
+                      <p className="text-sm text-black mt-3">
                         Minimum passing grade: 70% (C)
                       </p>
                     </div>
 
                     {/* Required Materials */}
                     <div>
-                      <h4 className="font-bold text-slate-900 mb-3">
+                      <h4 className="font-bold text-black mb-3">
                         Required Materials
                       </h4>
                       <ul className="space-y-2">
                         {course.requiredMaterials.map((material, idx) => (
                           <li
                             key={idx}
-                            className="flex items-start gap-3 text-slate-700"
+                            className="flex items-start gap-3 text-black"
                           >
                             <span className="text-brand-blue-600 font-bold">
                               •
@@ -644,15 +644,15 @@ export default function SyllabiPage() {
 
         {/* Additional Info */}
         <div className="mt-12 bg-white rounded-xl shadow-sm p-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl font-bold text-black mb-4">
             Accreditation & Standards
           </h2>
-          <p className="text-slate-700 mb-4">
+          <p className="text-black mb-4">
             All course syllabi are developed in accordance with industry
             standards and accreditation requirements. Learning outcomes are
             aligned with:
           </p>
-          <ul className="space-y-2 text-slate-700">
+          <ul className="space-y-2 text-black">
             <li className="flex items-start gap-3">
               <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
               <span>Council on Occupational Education (COE) standards</span>
@@ -674,10 +674,10 @@ export default function SyllabiPage() {
 
         {/* Contact */}
         <div className="mt-8 bg-blue-50 rounded-xl p-8">
-          <h2 className="text-xl font-bold text-slate-900 mb-4">
+          <h2 className="text-xl font-bold text-black mb-4">
             Questions About Course Content?
           </h2>
-          <p className="text-slate-700 mb-4">
+          <p className="text-black mb-4">
             Contact our academic advising team for detailed information about
             course requirements and learning outcomes.
           </p>

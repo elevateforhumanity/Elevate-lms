@@ -84,10 +84,10 @@ export default async function ProgramHolderVerificationPage() {
       {/* Header */}
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-6 py-6">
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Program Holder Verification
           </h1>
-          <p className="text-gray-600 mt-2">
+          <p className="text-black mt-2">
             Review and verify program holder documents and information
           </p>
         </div>
@@ -99,7 +99,7 @@ export default async function ProgramHolderVerificationPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Pending Review</p>
+                <p className="text-sm text-black">Pending Review</p>
                 <p className="text-3xl font-bold text-orange-600">
                   {holdersWithDocs.length}
                 </p>
@@ -111,7 +111,7 @@ export default async function ProgramHolderVerificationPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Verified Today</p>
+                <p className="text-sm text-black">Verified Today</p>
                 <p className="text-3xl font-bold text-green-600">
                   {
                     recentlyVerified?.filter(
@@ -130,7 +130,7 @@ export default async function ProgramHolderVerificationPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Rejected</p>
+                <p className="text-sm text-black">Rejected</p>
                 <p className="text-3xl font-bold text-red-600">
                   {
                     recentlyVerified?.filter(
@@ -147,14 +147,14 @@ export default async function ProgramHolderVerificationPage() {
         {/* Pending Verifications */}
         <div className="bg-white rounded-lg shadow mb-8">
           <div className="px-6 py-4 border-b">
-            <h2 className="text-xl font-bold text-gray-900">
+            <h2 className="text-xl font-bold text-black">
               Pending Verifications
             </h2>
           </div>
 
           {holdersWithDocs.length === 0 ? (
-            <div className="px-6 py-12 text-center text-gray-700">
-              <Clock className="w-16 h-16 mx-auto mb-4 text-gray-600" />
+            <div className="px-6 py-12 text-center text-black">
+              <Clock className="w-16 h-16 mx-auto mb-4 text-black" />
               <p>No pending verifications</p>
             </div>
           ) : (
@@ -163,16 +163,16 @@ export default async function ProgramHolderVerificationPage() {
                 <div key={holder.id} className="px-6 py-6">
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900">
+                      <h3 className="text-lg font-semibold text-black">
                         {holder.user?.first_name} {holder.user?.last_name}
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-black">
                         {holder.user?.email}
                       </p>
-                      <p className="text-sm text-gray-700 mt-1">
+                      <p className="text-sm text-black mt-1">
                         Organization: {holder.organization_name || 'N/A'}
                       </p>
-                      <p className="text-xs text-gray-600 mt-1">
+                      <p className="text-xs text-black mt-1">
                         Applied:{' '}
                         {new Date(holder.created_at).toLocaleDateString()}
                       </p>
@@ -184,7 +184,7 @@ export default async function ProgramHolderVerificationPage() {
 
                   {/* Documents */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                    <h4 className="text-sm font-semibold text-black mb-2">
                       Uploaded Documents
                     </h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -194,14 +194,14 @@ export default async function ProgramHolderVerificationPage() {
                           className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
                         >
                           <div className="flex items-center gap-3">
-                            <FileText className="w-5 h-5 text-gray-600" />
+                            <FileText className="w-5 h-5 text-black" />
                             <div>
-                              <p className="text-sm font-medium text-gray-900">
+                              <p className="text-sm font-medium text-black">
                                 {doc.document_type
                                   .replace(/_/g, ' ')
                                   .replace(/\b\w/g, (l) => l.toUpperCase())}
                               </p>
-                              <p className="text-xs text-gray-700">
+                              <p className="text-xs text-black">
                                 {doc.file_name}
                               </p>
                             </div>
@@ -217,7 +217,7 @@ export default async function ProgramHolderVerificationPage() {
                             </a>
                             <a
                               href={`/api/admin/documents/${doc.id}/download`}
-                              className="p-2 text-gray-600 hover:bg-gray-100 rounded"
+                              className="p-2 text-black hover:bg-gray-100 rounded"
                             >
                               <Download className="w-4 h-4" />
                             </a>
@@ -230,31 +230,31 @@ export default async function ProgramHolderVerificationPage() {
                   {/* Banking Info */}
                   {holder.banking && (
                     <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                      <h4 className="text-sm font-semibold text-black mb-2">
                         Banking Information
                       </h4>
                       <div className="p-3 bg-gray-50 rounded-lg">
                         <div className="grid grid-cols-2 gap-4 text-sm">
                           <div>
-                            <p className="text-gray-600">Account Holder</p>
+                            <p className="text-black">Account Holder</p>
                             <p className="font-medium">
                               {holder.banking.account_holder_name}
                             </p>
                           </div>
                           <div>
-                            <p className="text-gray-600">Bank</p>
+                            <p className="text-black">Bank</p>
                             <p className="font-medium">
                               {holder.banking.bank_name}
                             </p>
                           </div>
                           <div>
-                            <p className="text-gray-600">Account Type</p>
+                            <p className="text-black">Account Type</p>
                             <p className="font-medium capitalize">
                               {holder.banking.account_type}
                             </p>
                           </div>
                           <div>
-                            <p className="text-gray-600">Routing Number</p>
+                            <p className="text-black">Routing Number</p>
                             <p className="font-medium">
                               ****{holder.banking.routing_number?.slice(-4)}
                             </p>
@@ -274,7 +274,7 @@ export default async function ProgramHolderVerificationPage() {
                     </Link>
                     <Link
                       href={`/admin/program-holders/${holder.id}`}
-                      className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-medium"
+                      className="px-4 py-2 bg-gray-200 text-black rounded-lg hover:bg-gray-300 font-medium"
                     >
                       View Details
                     </Link>
@@ -288,7 +288,7 @@ export default async function ProgramHolderVerificationPage() {
         {/* Recently Verified */}
         <div className="bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b">
-            <h2 className="text-xl font-bold text-gray-900">
+            <h2 className="text-xl font-bold text-black">
               Recently Verified
             </h2>
           </div>
@@ -301,10 +301,10 @@ export default async function ProgramHolderVerificationPage() {
                   className="px-6 py-4 flex items-center justify-between"
                 >
                   <div>
-                    <p className="font-medium text-gray-900">
+                    <p className="font-medium text-black">
                       {holder.user?.first_name} {holder.user?.last_name}
                     </p>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-black">
                       {holder.user?.email}
                     </p>
                   </div>
@@ -331,7 +331,7 @@ export default async function ProgramHolderVerificationPage() {
               ))}
             </div>
           ) : (
-            <div className="px-6 py-8 text-center text-gray-700">
+            <div className="px-6 py-8 text-center text-black">
               <p>No recent verifications</p>
             </div>
           )}

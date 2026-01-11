@@ -70,25 +70,25 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
         <table className="w-full">
           <thead className="bg-gray-50 border-b">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Program
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Modules
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Duration
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Price
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Created
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium text-black uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -98,7 +98,7 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
               <tr>
                 <td
                   colSpan={7}
-                  className="px-6 py-12 text-center text-gray-700"
+                  className="px-6 py-12 text-center text-black"
                 >
                   No programs found
                 </td>
@@ -108,10 +108,10 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
                 <tr key={program.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4">
                     <div>
-                      <div className="font-medium text-gray-900">
+                      <div className="font-medium text-black">
                         {program.name}
                       </div>
-                      <div className="text-sm text-gray-700">
+                      <div className="text-sm text-black">
                         {program.slug}
                       </div>
                     </div>
@@ -123,7 +123,7 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
                           Active
                         </span>
                       ) : (
-                        <span className="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800">
+                        <span className="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-black">
                           Inactive
                         </span>
                       )}
@@ -134,20 +134,20 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
                       )}
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">
+                  <td className="px-6 py-4 text-sm text-black">
                     {program.modules?.[0]?.count || 0}
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">
+                  <td className="px-6 py-4 text-sm text-black">
                     {program.duration_hours
                       ? `${program.duration_hours}h`
                       : '-'}
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">
+                  <td className="px-6 py-4 text-sm text-black">
                     {program.price
                       ? `$${program.price.toLocaleString()}`
                       : 'Free'}
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-700">
+                  <td className="px-6 py-4 text-sm text-black">
                     {new Date(program.created_at).toLocaleDateString()}
                   </td>
                   <td className="px-6 py-4 text-right text-sm font-medium">
@@ -161,7 +161,7 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
                       <Link
                         href={`/programs/${program.slug}`}
                         target="_blank"
-                        className="text-gray-600 hover:text-gray-900"
+                        className="text-black hover:text-black"
                       >
                         View
                       </Link>
@@ -176,7 +176,7 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
 
       {/* Pagination info */}
       <div className="px-6 py-4 border-t bg-gray-50">
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-black">
           Showing <span className="font-medium">{filteredPrograms.length}</span>{' '}
           of <span className="font-medium">{programs.length}</span> programs
         </p>

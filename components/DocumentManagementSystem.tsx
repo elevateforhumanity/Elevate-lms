@@ -94,7 +94,7 @@ export function DocumentManagementSystem() {
                         <div className="text-3xl">📄</div>
                         <div>
                           <h3 className="font-bold">{doc.name}</h3>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-black">
                             {doc.type} • {doc.size} • {doc.version}
                           </p>
                           <p className="text-xs text-gray-500">
@@ -121,7 +121,7 @@ export function DocumentManagementSystem() {
                         <span className="font-semibold">{version.version}</span>
                         <Button size="sm" variant="secondary">Restore</Button>
                       </div>
-                      <p className="text-xs text-gray-600">{version.date}</p>
+                      <p className="text-xs text-black">{version.date}</p>
                       <p className="text-xs text-gray-500">by {version.author}</p>
                     </div>
                   ))}

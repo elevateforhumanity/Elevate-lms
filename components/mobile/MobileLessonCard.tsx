@@ -63,8 +63,8 @@ export default function MobileLessonCard({
             locked
               ? 'text-gray-400'
               : completed
-                ? 'text-gray-700'
-                : 'text-gray-900'
+                ? 'text-black'
+                : 'text-black'
           }`}
         >
           {title}

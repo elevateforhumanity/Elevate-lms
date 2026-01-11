@@ -15,10 +15,10 @@ export default function PayPage() {
   return (
     <div className="min-h-screen bg-slate-50">
       <section className="max-w-4xl mx-auto px-4 py-10">
-        <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
+        <h1 className="text-3xl md:text-4xl font-bold text-black mb-2">
           Payment Options
         </h1>
-        <p className="text-slate-700 mb-6">
+        <p className="text-black mb-6">
           If you're not using WIOA/WRG/JRI or other funding, you can review{' '}
           monthly payments with Affirm or pay in full with Stripe below.
         </p>

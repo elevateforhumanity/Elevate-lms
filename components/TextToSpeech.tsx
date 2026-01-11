@@ -149,7 +149,7 @@ export default function TextToSpeech({ text, autoPlay = false, className = '' }:
       {(isPlaying || isPaused) && (
         <button
           onClick={handleStop}
-          className="p-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors"
+          className="p-2 bg-slate-200 text-black rounded-lg hover:bg-slate-300 transition-colors"
           title="Stop"
         >
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -160,7 +160,7 @@ export default function TextToSpeech({ text, autoPlay = false, className = '' }:
 
       {/* Speed Control */}
       <div className="flex items-center gap-2">
-        <label className="text-xs text-slate-600 font-medium">Speed:</label>
+        <label className="text-xs text-black font-medium">Speed:</label>
         <select
           value={rate}
           onChange={(e) => setRate(parseFloat(e.target.value))}
@@ -179,7 +179,7 @@ export default function TextToSpeech({ text, autoPlay = false, className = '' }:
       {/* Voice Selection */}
       {voices.length > 0 && (
         <div className="flex items-center gap-2">
-          <label className="text-xs text-slate-600 font-medium">Voice:</label>
+          <label className="text-xs text-black font-medium">Voice:</label>
           <select
             value={selectedVoice?.name || ''}
             onChange={(e) => {

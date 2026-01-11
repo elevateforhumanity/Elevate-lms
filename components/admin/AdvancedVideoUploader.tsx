@@ -86,10 +86,10 @@ Apply today and start your journey.`;
   return (
     <div className="w-full max-w-4xl mx-auto">
       <div className="bg-white rounded-lg shadow-xl p-8">
-        <h2 className="text-3xl font-bold text-slate-900 mb-2">
+        <h2 className="text-3xl font-bold text-black mb-2">
           🎬 Professional Video Enhancement
         </h2>
-        <p className="text-slate-600 mb-6">
+        <p className="text-black mb-6">
           Upload your video, add voiceover and music, get professional results
         </p>
 
@@ -98,13 +98,13 @@ Apply today and start your journey.`;
           <div className="border-2 border-slate-200 rounded-lg p-6">
             <div className="flex items-center gap-3 mb-4">
               <FileVideo className="h-6 w-6 text-blue-600" />
-              <h3 className="text-lg font-bold text-slate-900">1. Upload Video</h3>
+              <h3 className="text-lg font-bold text-black">1. Upload Video</h3>
             </div>
             <input
               type="file"
               accept="video/*"
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setVideoFile(e.target.files?.[0] || null)}
-              className="w-full text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+              className="w-full text-sm text-black file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
             />
             {videoFile && (
               <p className="mt-2 text-sm text-green-600">
@@ -117,7 +117,7 @@ Apply today and start your journey.`;
           <div className="border-2 border-slate-200 rounded-lg p-6">
             <div className="flex items-center gap-3 mb-4">
               <Mic className="h-6 w-6 text-purple-600" />
-              <h3 className="text-lg font-bold text-slate-900">2. Add Voiceover</h3>
+              <h3 className="text-lg font-bold text-black">2. Add Voiceover</h3>
             </div>
 
             <div className="space-y-4">
@@ -128,7 +128,7 @@ Apply today and start your journey.`;
                   className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all ${
                     useTextToSpeech
                       ? 'bg-purple-600 text-white'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      : 'bg-slate-100 text-black hover:bg-slate-200'
                   }`}
                 >
                   AI Text-
@@ -138,7 +138,7 @@ Apply today and start your journey.`;
                   className={`flex-1 py-3 px-4 rounded-lg font-semibold transition-all ${
                     !useTextToSpeech
                       ? 'bg-purple-600 text-white'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      : 'bg-slate-100 text-black hover:bg-slate-200'
                   }`}
                 >
                   Upload Audio File
@@ -147,7 +147,7 @@ Apply today and start your journey.`;
 
               {useTextToSpeech ? (
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Voiceover Script:
                   </label>
                   <textarea
@@ -164,7 +164,7 @@ Apply today and start your journey.`;
                     Use default script
                   </button>
                   <div className="mt-3 flex items-center gap-4">
-                    <label className="text-sm font-semibold text-slate-700">
+                    <label className="text-sm font-semibold text-black">
                       Voiceover Volume:
                     </label>
                     <input
@@ -176,7 +176,7 @@ Apply today and start your journey.`;
                       onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setVoiceoverVolume(parseFloat(e.target.value))}
                       className="flex-1"
                     />
-                    <span className="text-sm text-slate-600 w-12">
+                    <span className="text-sm text-black w-12">
                       {(voiceoverVolume * 100).toFixed(0)}%
                     </span>
                   </div>
@@ -187,7 +187,7 @@ Apply today and start your journey.`;
                     type="file"
                     accept="audio/*"
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setVoiceoverFile(e.target.files?.[0] || null)}
-                    className="w-full text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100"
+                    className="w-full text-sm text-black file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100"
                   />
                   {voiceoverFile && (
                     <p className="mt-2 text-sm text-green-600">
@@ -203,13 +203,13 @@ Apply today and start your journey.`;
           <div className="border-2 border-slate-200 rounded-lg p-6">
             <div className="flex items-center gap-3 mb-4">
               <Music className="h-6 w-6 text-green-600" />
-              <h3 className="text-lg font-bold text-slate-900">3. Add Background Music (Optional)</h3>
+              <h3 className="text-lg font-bold text-black">3. Add Background Music (Optional)</h3>
             </div>
             <input
               type="file"
               accept="audio/*"
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setMusicFile(e.target.files?.[0] || null)}
-              className="w-full text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+              className="w-full text-sm text-black file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
             />
             {musicFile && (
               <>
@@ -217,7 +217,7 @@ Apply today and start your journey.`;
                   ✓ {musicFile.name}
                 </p>
                 <div className="mt-3 flex items-center gap-4">
-                  <label className="text-sm font-semibold text-slate-700">
+                  <label className="text-sm font-semibold text-black">
                     Music Volume:
                   </label>
                   <input
@@ -229,7 +229,7 @@ Apply today and start your journey.`;
                     onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setMusicVolume(parseFloat(e.target.value))}
                     className="flex-1"
                   />
-                  <span className="text-sm text-slate-600 w-12">
+                  <span className="text-sm text-black w-12">
                     {(musicVolume * 100).toFixed(0)}%
                   </span>
                 </div>
@@ -265,7 +265,7 @@ Apply today and start your journey.`;
                   style={{ width: `${progress}%` }}
                 />
               </div>
-              <p className="text-sm text-center text-slate-600">
+              <p className="text-sm text-center text-black">
                 Enhancing video quality, adding voiceover and music...
               </p>
             </div>
@@ -286,20 +286,20 @@ Apply today and start your journey.`;
 
                   <div className="space-y-3 mb-4">
                     <div className="bg-white rounded-lg p-3">
-                      <p className="text-sm font-semibold text-slate-700 mb-1">
+                      <p className="text-sm font-semibold text-black mb-1">
                         Video Enhancement:
                       </p>
-                      <p className="text-sm text-slate-600">
+                      <p className="text-sm text-black">
                         {result.details?.videoEnhancement}
                       </p>
                     </div>
 
                     {result.hasVoiceover && (
                       <div className="bg-white rounded-lg p-3">
-                        <p className="text-sm font-semibold text-slate-700 mb-1">
+                        <p className="text-sm font-semibold text-black mb-1">
                           Voiceover:
                         </p>
-                        <p className="text-sm text-slate-600">
+                        <p className="text-sm text-black">
                           {result.generatedVoiceover ? 'AI-generated voiceover added' : 'Custom voiceover added'}
                         </p>
                       </div>
@@ -307,10 +307,10 @@ Apply today and start your journey.`;
 
                     {result.hasMusic && (
                       <div className="bg-white rounded-lg p-3">
-                        <p className="text-sm font-semibold text-slate-700 mb-1">
+                        <p className="text-sm font-semibold text-black mb-1">
                           Background Music:
                         </p>
-                        <p className="text-sm text-slate-600">
+                        <p className="text-sm text-black">
                           Added at {(result.details?.musicVolume * 100).toFixed(0)}% volume
                         </p>
                       </div>

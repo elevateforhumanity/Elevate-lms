@@ -63,10 +63,10 @@ export function CourseLeaderboard({ courseId }: { courseId: string }) {
             className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2"
           >
             <div className="flex items-center gap-3">
-              <span className="text-xs font-bold text-slate-700">
+              <span className="text-xs font-bold text-black">
                 #{row.rank}
               </span>
-              <span className="font-medium text-slate-800">{row.name}</span>
+              <span className="font-medium text-black">{row.name}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="font-semibold text-brand-orange-600">

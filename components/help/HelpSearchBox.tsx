@@ -61,11 +61,11 @@ export function HelpSearchBox() {
               href={`/help/${r.slug}`}
               className="block rounded-xl border border-slate-100 bg-white px-4 py-3 text-sm shadow-sm hover:border-orange-500 hover:bg-orange-50"
             >
-              <p className="font-semibold text-slate-900">{r.title}</p>
+              <p className="font-semibold text-black">{r.title}</p>
               <p className="mt-1 text-xs text-slate-500">
                 {r.category} • {r.audience}
               </p>
-              <p className="mt-1 text-xs text-slate-600">
+              <p className="mt-1 text-xs text-black">
                 {r.snippet}...
               </p>
             </Link>

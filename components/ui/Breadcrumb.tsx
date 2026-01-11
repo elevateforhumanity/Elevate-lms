@@ -23,13 +23,13 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
               <ChevronRight className="h-4 w-4 text-slate-400" />
             )}
             {isLast || !item.href ? (
-              <span className="text-slate-900 font-medium" aria-current="page">
+              <span className="text-black font-medium" aria-current="page">
                 {item.label}
               </span>
             ) : (
               <Link
                 href={item.href}
-                className="text-slate-600 hover:text-slate-900 transition-colors"
+                className="text-black hover:text-black transition-colors"
               >
                 {item.label}
               </Link>

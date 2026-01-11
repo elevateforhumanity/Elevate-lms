@@ -173,10 +173,10 @@ export default function AutomaticCourseBuilder() {
     <div className="max-w-6xl mx-auto p-6">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl font-bold text-slate-900 mb-2 text-2xl md:text-3xl lg:text-4xl">
+        <h1 className="text-4xl font-bold text-black mb-2 text-2xl md:text-3xl lg:text-4xl">
           AI Course Builder
         </h1>
-        <p className="text-lg text-slate-600">
+        <p className="text-lg text-black">
           Describe your course and let AI create a complete curriculum in minutes
         </p>
       </div>
@@ -184,7 +184,7 @@ export default function AutomaticCourseBuilder() {
       {/* Main Input */}
       {!generating && !showPreview && (
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <label className="block text-lg font-semibold text-slate-900 mb-4">
+          <label className="block text-lg font-semibold text-black mb-4">
             What course would you like to create?
           </label>
           <textarea
@@ -196,7 +196,7 @@ export default function AutomaticCourseBuilder() {
           />
 
           <div className="mt-6 flex items-center justify-between">
-            <div className="text-sm text-slate-600">
+            <div className="text-sm text-black">
               Be specific about topics, skills, and learning outcomes you want to include
             </div>
             <button
@@ -213,7 +213,7 @@ export default function AutomaticCourseBuilder() {
       {/* Example Prompts */}
       {!generating && !showPreview && (
         <div className="bg-slate-50 rounded-lg p-6 mb-8">
-          <h3 className="font-bold text-slate-900 mb-4">Example Prompts:</h3>
+          <h3 className="font-bold text-black mb-4">Example Prompts:</h3>
           <div className="space-y-3">
             {examplePrompts.map((example, index) => (
               <button
@@ -225,7 +225,7 @@ export default function AutomaticCourseBuilder() {
                   <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-slate-700">{example}</span>
+                  <span className="text-black">{example}</span>
                 </div>
               </button>
             ))}
@@ -243,15 +243,15 @@ export default function AutomaticCourseBuilder() {
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">
+            <h2 className="text-2xl font-bold text-black mb-2">
               Creating Your Course...
             </h2>
-            <p className="text-lg text-slate-600">{currentStep}</p>
+            <p className="text-lg text-black">{currentStep}</p>
           </div>
 
           {/* Progress Bar */}
           <div className="mb-8">
-            <div className="flex justify-between text-sm font-medium text-slate-600 mb-2">
+            <div className="flex justify-between text-sm font-medium text-black mb-2">
               <span>Progress</span>
               <span>{progress}%</span>
             </div>
@@ -279,7 +279,7 @@ export default function AutomaticCourseBuilder() {
                       ? 'bg-green-500 text-white'
                       : progress >= item.progress - 20
                       ? 'bg-blue-500 text-white'
-                      : 'bg-slate-200 text-slate-600'
+                      : 'bg-slate-200 text-black'
                   }`}
                 >
                   {progress >= item.progress ? (
@@ -292,7 +292,7 @@ export default function AutomaticCourseBuilder() {
                 </div>
                 <span
                   className={`font-medium ${
-                    progress >= item.progress - 20 ? 'text-slate-900' : 'text-slate-500'
+                    progress >= item.progress - 20 ? 'text-black' : 'text-slate-500'
                   }`}
                 >
                   {item.label}
@@ -312,36 +312,36 @@ export default function AutomaticCourseBuilder() {
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
             </div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-2">
+            <h2 className="text-3xl font-bold text-black mb-2">
               Course Created Successfully!
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-black">
               Your course has been generated and saved. Redirecting to editor...
             </p>
           </div>
 
           {/* Course Summary */}
           <div className="bg-slate-50 rounded-lg p-6 mb-6">
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">{outline.title}</h3>
-            <p className="text-slate-700 mb-4">{outline.description}</p>
+            <h3 className="text-2xl font-bold text-black mb-2">{outline.title}</h3>
+            <p className="text-black mb-4">{outline.description}</p>
             <div className="flex gap-6 text-sm">
               <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="text-slate-700">{outline.duration}</span>
+                <span className="text-black">{outline.duration}</span>
               </div>
               <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <span className="text-slate-700">{outline.modules.length} modules</span>
+                <span className="text-black">{outline.modules.length} modules</span>
               </div>
               <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-                <span className="text-slate-700 capitalize">{outline.level}</span>
+                <span className="text-black capitalize">{outline.level}</span>
               </div>
             </div>
           </div>
@@ -355,8 +355,8 @@ export default function AutomaticCourseBuilder() {
                     <span className="font-bold text-blue-600">{index + 1}</span>
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-bold text-slate-900 mb-1">{module.title}</h4>
-                    <p className="text-sm text-slate-600 mb-2">{module.description}</p>
+                    <h4 className="font-bold text-black mb-1">{module.title}</h4>
+                    <p className="text-sm text-black mb-2">{module.description}</p>
                     <div className="text-xs text-slate-500">
                       {module.lessons.length} lessons • {module.duration} minutes
                     </div>
@@ -377,8 +377,8 @@ export default function AutomaticCourseBuilder() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h3 className="font-bold text-slate-900 mb-2">Lightning Fast</h3>
-            <p className="text-slate-600 text-sm">
+            <h3 className="font-bold text-black mb-2">Lightning Fast</h3>
+            <p className="text-black text-sm">
               Generate complete courses in minutes, not weeks. AI creates structure, content, and assessments automatically.
             </p>
           </div>
@@ -389,8 +389,8 @@ export default function AutomaticCourseBuilder() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="font-bold text-slate-900 mb-2">Industry Standards</h3>
-            <p className="text-slate-600 text-sm">
+            <h3 className="font-bold text-black mb-2">Industry Standards</h3>
+            <p className="text-black text-sm">
               Courses follow best practices and include learning objectives, assessments, and proper sequencing.
             </p>
           </div>
@@ -401,8 +401,8 @@ export default function AutomaticCourseBuilder() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
               </svg>
             </div>
-            <h3 className="font-bold text-slate-900 mb-2">Fully Editable</h3>
-            <p className="text-slate-600 text-sm">
+            <h3 className="font-bold text-black mb-2">Fully Editable</h3>
+            <p className="text-black text-sm">
               AI creates the foundation. You can edit, customize, and refine every aspect to match your needs.
             </p>
           </div>

@@ -34,7 +34,7 @@ export default function VITAVolunteerPage() {
         <div className="bg-white rounded-lg shadow-lg p-8 max-w-md text-center">
           <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-4">Thank You for Volunteering!</h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             We'll contact you within 2 business days to discuss next steps and training opportunities.
           </p>
         </div>
@@ -56,10 +56,10 @@ export default function VITAVolunteerPage() {
           <div className="bg-white rounded-lg shadow-md p-8">
             <Heart className="w-12 h-12 text-green-600 mb-4" />
             <h2 className="text-2xl font-bold mb-4">Make a Difference</h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-black mb-4">
               Last year, VITA volunteers helped 2,045 families save over $408,000 in tax preparation fees and receive $5.8 million in refunds.
             </p>
-            <p className="text-gray-600">
+            <p className="text-black">
               Your time and skills can help families keep more of their hard-earned money.
             </p>
           </div>
@@ -67,10 +67,10 @@ export default function VITAVolunteerPage() {
           <div className="bg-white rounded-lg shadow-md p-8">
             <BookOpen className="w-12 h-12 text-green-600 mb-4" />
             <h2 className="text-2xl font-bold mb-4">Free Training Provided</h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-black mb-4">
               No tax experience required! We provide comprehensive IRS-certified training covering tax law, software, and ethics.
             </p>
-            <p className="text-gray-600">
+            <p className="text-black">
               Training is flexible and can be completed online or in-person.
             </p>
           </div>
@@ -78,10 +78,10 @@ export default function VITAVolunteerPage() {
           <div className="bg-white rounded-lg shadow-md p-8">
             <Users className="w-12 h-12 text-green-600 mb-4" />
             <h2 className="text-2xl font-bold mb-4">Flexible Schedule</h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-black mb-4">
               Volunteer as little as 4 hours per week during tax season (January-April).
             </p>
-            <p className="text-gray-600">
+            <p className="text-black">
               Choose shifts that work with your schedule - weekdays, evenings, or weekends.
             </p>
           </div>
@@ -89,10 +89,10 @@ export default function VITAVolunteerPage() {
           <div className="bg-white rounded-lg shadow-md p-8">
             <Award className="w-12 h-12 text-green-600 mb-4" />
             <h2 className="text-2xl font-bold mb-4">Gain Valuable Skills</h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-black mb-4">
               Learn tax preparation, gain IRS certification, and develop professional skills.
             </p>
-            <p className="text-gray-600">
+            <p className="text-black">
               Great for students, retirees, and anyone interested in tax or accounting.
             </p>
           </div>
@@ -103,7 +103,7 @@ export default function VITAVolunteerPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Full Name *
                 </label>
                 <input
@@ -116,7 +116,7 @@ export default function VITAVolunteerPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Email *
                 </label>
                 <input
@@ -129,7 +129,7 @@ export default function VITAVolunteerPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Phone *
                 </label>
                 <input
@@ -142,7 +142,7 @@ export default function VITAVolunteerPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Tax Experience
                 </label>
                 <select
@@ -160,7 +160,7 @@ export default function VITAVolunteerPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 Availability
               </label>
               <textarea

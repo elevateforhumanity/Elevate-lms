@@ -12,13 +12,13 @@ export default function PlacementPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Job Placement Services</h1>
       <div className="bg-white rounded-lg shadow-sm border p-6">
-        <p className="text-slate-600 mb-4">
+        <p className="text-black mb-4">
           Get help finding employment after completing your training.
         </p>
         <div className="space-y-4">
           <div>
             <h2 className="text-xl font-semibold mb-2">Services Available:</h2>
-            <ul className="list-disc list-inside text-slate-600 space-y-2">
+            <ul className="list-disc list-inside text-black space-y-2">
               <li>Resume review and optimization</li>
               <li>Interview preparation</li>
               <li>Job search assistance</li>

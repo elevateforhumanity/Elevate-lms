@@ -34,13 +34,13 @@ export default function StudentCheckout() {
     <div className="min-h-screen bg-slate-50 py-16 px-4">
       <div className="max-w-2xl mx-auto">
         <div className="bg-white rounded-2xl shadow-lg p-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-4">
+          <h1 className="text-3xl font-bold text-black mb-4">
             Student Access
           </h1>
-          <p className="text-lg text-slate-700 mb-2">
+          <p className="text-lg text-black mb-2">
             $39/month platform access
           </p>
-          <p className="text-slate-600 mb-8">
+          <p className="text-black mb-8">
             Includes LMS access, assigned courses, progress tracking, and
             completion certificates.
           </p>
@@ -68,7 +68,7 @@ export default function StudentCheckout() {
           <div className="mt-6 text-center">
             <Link
               href="/pricing"
-              className="text-slate-600 hover:text-slate-900 underline"
+              className="text-black hover:text-black underline"
             >
               ← Back to pricing
             </Link>

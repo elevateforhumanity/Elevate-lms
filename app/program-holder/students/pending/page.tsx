@@ -100,7 +100,7 @@ export default async function PendingStudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <UserPlus className="h-8 w-8 text-brand-orange-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Pending Applications
                   </h3>
                 </div>
@@ -111,7 +111,7 @@ export default async function PendingStudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <CheckCircle className="h-8 w-8 text-brand-green-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     This Week
                   </h3>
                 </div>
@@ -125,12 +125,12 @@ export default async function PendingStudentsPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <XCircle className="h-8 w-8 text-slate-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <XCircle className="h-8 w-8 text-black" />
+                  <h3 className="text-sm font-medium text-black">
                     Awaiting Review
                   </h3>
                 </div>
-                <p className="text-3xl font-bold text-slate-600">
+                <p className="text-3xl font-bold text-black">
                   {count || 0}
                 </p>
               </div>
@@ -139,7 +139,7 @@ export default async function PendingStudentsPage() {
             {/* Applications List */}
             <div className="bg-white rounded-lg shadow-sm border p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-2xl font-bold text-black">
                   Applications to Review
                 </h2>
                 <Link
@@ -155,19 +155,19 @@ export default async function PendingStudentsPage() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b">
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Student
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Program
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Applied
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Contact
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Actions
                         </th>
                       </tr>
@@ -179,15 +179,15 @@ export default async function PendingStudentsPage() {
                           className="border-b hover:bg-slate-50 transition-colors"
                         >
                           <td className="py-3 px-4">
-                            <div className="font-medium text-slate-900">
+                            <div className="font-medium text-black">
                               {application.student?.first_name}{' '}
                               {application.student?.last_name}
                             </div>
                           </td>
-                          <td className="py-3 px-4 text-slate-600">
+                          <td className="py-3 px-4 text-black">
                             {application.program?.name || 'N/A'}
                           </td>
-                          <td className="py-3 px-4 text-slate-600">
+                          <td className="py-3 px-4 text-black">
                             {new Date(
                               application.enrolled_at
                             ).toLocaleDateString()}
@@ -232,10 +232,10 @@ export default async function PendingStudentsPage() {
               ) : (
                 <div className="text-center py-12">
                   <UserPlus className="h-16 w-16 text-slate-300 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-slate-700 mb-2">
+                  <h3 className="text-lg font-semibold text-black mb-2">
                     No Pending Applications
                   </h3>
-                  <p className="text-slate-600 mb-6">
+                  <p className="text-black mb-6">
                     There are no student applications waiting for review.
                   </p>
                   <Link

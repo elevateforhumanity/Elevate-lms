@@ -130,7 +130,7 @@ export default async function StudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Users className="h-8 w-8 text-brand-blue-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Total Students
                   </h3>
                 </div>
@@ -141,7 +141,7 @@ export default async function StudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <GraduationCap className="h-8 w-8 text-brand-green-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Active Enrollments
                   </h3>
                 </div>
@@ -152,7 +152,7 @@ export default async function StudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <TrendingUp className="h-8 w-8 text-purple-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Completed
                   </h3>
                 </div>
@@ -163,7 +163,7 @@ export default async function StudentsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Clock className="h-8 w-8 text-brand-orange-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     New (7 days)
                   </h3>
                 </div>
@@ -196,7 +196,7 @@ export default async function StudentsPage() {
                           <h3 className="font-semibold text-lg">
                             {student.full_name || 'Unnamed Student'}
                           </h3>
-                          <div className="mt-2 flex flex-wrap gap-4 text-sm text-gray-600">
+                          <div className="mt-2 flex flex-wrap gap-4 text-sm text-black">
                             {student.email && (
                               <span className="flex items-center gap-1">
                                 <Mail className="h-4 w-4" />
@@ -219,7 +219,7 @@ export default async function StudentsPage() {
                           {student.enrollments &&
                             student.enrollments.length > 0 && (
                               <div className="mt-3">
-                                <p className="text-xs text-gray-700 mb-1">
+                                <p className="text-xs text-black mb-1">
                                   Enrollments:
                                 </p>
                                 <div className="flex flex-wrap gap-2">
@@ -232,7 +232,7 @@ export default async function StudentsPage() {
                                             ? 'bg-brand-green-100 text-green-700'
                                             : enrollment.status === 'completed'
                                               ? 'bg-blue-100 text-blue-700'
-                                              : 'bg-gray-100 text-gray-700'
+                                              : 'bg-gray-100 text-black'
                                         }`}
                                       >
                                         {enrollment.program?.name ||
@@ -260,8 +260,8 @@ export default async function StudentsPage() {
               ) : (
                 <div className="text-center py-12">
                   <Users className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-700 text-lg">No students found</p>
-                  <p className="text-gray-600 text-sm mt-2">
+                  <p className="text-black text-lg">No students found</p>
+                  <p className="text-black text-sm mt-2">
                     Students will appear here once they register
                   </p>
                 </div>

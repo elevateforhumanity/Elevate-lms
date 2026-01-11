@@ -77,7 +77,7 @@ function CheckoutForm({ product }: { product: any }) {
         )}
       </button>
 
-      <p className="text-xs text-center text-slate-600">
+      <p className="text-xs text-center text-black">
         Secure payment powered by Stripe. Your payment information is encrypted
         and secure.
       </p>
@@ -127,7 +127,7 @@ export default function CheckoutPage() {
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-orange-600 mx-auto mb-4" />
-          <p className="text-slate-600">Loading checkout...</p>
+          <p className="text-black">Loading checkout...</p>
         </div>
       </div>
     );
@@ -137,7 +137,7 @@ export default function CheckoutPage() {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-slate-600 mb-4">Unable to load checkout</p>
+          <p className="text-black mb-4">Unable to load checkout</p>
           <Link
             href="/store"
             aria-label="Link"
@@ -156,7 +156,7 @@ export default function CheckoutPage() {
         {/* Back Link */}
         <Link
           href="/store"
-          className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-6"
+          className="inline-flex items-center gap-2 text-black hover:text-black mb-6"
         >
           <ArrowLeft size={20} />
           Back to Store
@@ -165,15 +165,15 @@ export default function CheckoutPage() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Order Summary */}
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 mb-6">Checkout</h1>
+            <h1 className="text-3xl font-bold text-black mb-6">Checkout</h1>
 
             <div className="bg-white rounded-lg p-6 border border-slate-200">
-              <h2 className="font-bold text-slate-900 mb-4">Order Summary</h2>
+              <h2 className="font-bold text-black mb-4">Order Summary</h2>
 
               <div className="space-y-4">
                 <div className="flex justify-between">
-                  <span className="text-slate-700">{product.name}</span>
-                  <span className="font-bold text-slate-900">
+                  <span className="text-black">{product.name}</span>
+                  <span className="font-bold text-black">
                     {product.priceDisplay}
                   </span>
                 </div>
@@ -189,7 +189,7 @@ export default function CheckoutPage() {
               </div>
 
               <div className="mt-6 space-y-3">
-                <h3 className="font-semibold text-slate-900 text-sm">
+                <h3 className="font-semibold text-black text-sm">
                   What's Included:
                 </h3>
                 {product.features.map((feature: string, index: number) => (
@@ -198,7 +198,7 @@ export default function CheckoutPage() {
                       className="text-green-600 flex-shrink-0 mt-0.5"
                       size={16}
                     />
-                    <span className="text-sm text-slate-700">{feature}</span>
+                    <span className="text-sm text-black">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -208,7 +208,7 @@ export default function CheckoutPage() {
           {/* Payment Form */}
           <div>
             <div className="bg-white rounded-lg p-6 border border-slate-200">
-              <h2 className="font-bold text-slate-900 mb-6">Payment Details</h2>
+              <h2 className="font-bold text-black mb-6">Payment Details</h2>
 
               <Elements
                 stripe={stripePromise}
@@ -227,7 +227,7 @@ export default function CheckoutPage() {
             </div>
 
             {/* Security Badges */}
-            <div className="mt-6 flex items-center justify-center gap-4 text-xs text-slate-600">
+            <div className="mt-6 flex items-center justify-center gap-4 text-xs text-black">
               <div className="flex items-center gap-1">
                 <Lock size={14} />
                 <span>Secure Checkout</span>

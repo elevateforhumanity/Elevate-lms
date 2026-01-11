@@ -97,7 +97,7 @@ export function RequirementsChecklist({ requirements, enrollmentId }: Requiremen
 
         let borderColor = 'border-gray-300';
         let bgColor = 'bg-gray-50';
-        let iconColor = 'text-gray-600';
+        let iconColor = 'text-black';
 
         if (isCompleted) {
           borderColor = 'border-green-300';
@@ -130,17 +130,17 @@ export function RequirementsChecklist({ requirements, enrollmentId }: Requiremen
               )}
             </div>
             <div className="flex-1">
-              <h3 className="font-semibold text-gray-900 mb-1">
+              <h3 className="font-semibold text-black mb-1">
                 {isCompleted && '✓ '}
                 {req.title}
               </h3>
               {req.description && (
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-black mb-2">
                   {req.description}
                 </p>
               )}
               {req.due_date && (
-                <p className={`text-sm mb-2 ${isOverdue ? 'text-brand-orange-600 font-semibold' : 'text-gray-600'}`}>
+                <p className={`text-sm mb-2 ${isOverdue ? 'text-brand-orange-600 font-semibold' : 'text-black'}`}>
                   Due: {new Date(req.due_date).toLocaleDateString('en-US', {
                     month: 'long',
                     day: 'numeric',

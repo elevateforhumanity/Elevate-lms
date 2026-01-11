@@ -30,21 +30,21 @@ export default function NetworkingEventsPage() {
             <h3 className="text-xl font-bold text-black mb-2">
               Monthly Events
             </h3>
-            <p className="text-gray-700">Regular networking opportunities</p>
+            <p className="text-black">Regular networking opportunities</p>
           </div>
           <div className="text-center">
             <Users className="w-16 h-16 text-brand-blue-600 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-black mb-2">
               Industry Professionals
             </h3>
-            <p className="text-gray-700">Meet hiring managers and recruiters</p>
+            <p className="text-black">Meet hiring managers and recruiters</p>
           </div>
           <div className="text-center">
             <Briefcase className="w-16 h-16 text-brand-orange-600 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-black mb-2">
               Job Opportunities
             </h3>
-            <p className="text-gray-700">Direct access to open positions</p>
+            <p className="text-black">Direct access to open positions</p>
           </div>
         </div>
 
@@ -52,7 +52,7 @@ export default function NetworkingEventsPage() {
           <h2 className="text-3xl font-bold text-black mb-6">
             Upcoming Events
           </h2>
-          <p className="text-gray-700 mb-6">
+          <p className="text-black mb-6">
             Check back soon for our next networking event. Events are free for
             all students and alumni.
           </p>

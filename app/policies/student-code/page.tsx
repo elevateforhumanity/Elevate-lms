@@ -9,7 +9,7 @@ export default function StudentCodePage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Student Code of Conduct</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Expected Behavior</h2>
       <ul><li>Respect for others</li><li>Professional conduct</li><li>Honesty and integrity</li><li>Compliance with policies</li></ul>
       <h2>Prohibited Conduct</h2>

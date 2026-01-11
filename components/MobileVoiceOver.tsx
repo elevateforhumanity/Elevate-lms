@@ -61,7 +61,7 @@ export function MobileVoiceOver() {
             onClick={handleClose}
             className="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-lg"
           >
-            <X size={14} className="text-slate-700" />
+            <X size={14} className="text-black" />
           </button>
           {/* Content */}
           <div className="flex items-center gap-3 mb-3">

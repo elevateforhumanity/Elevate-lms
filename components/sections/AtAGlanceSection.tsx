@@ -34,7 +34,7 @@ export function AtAGlanceSection({
                 <Icon className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-bold text-black mb-1">{item.label}</h3>
-                  <p className="text-gray-700">{item.value}</p>
+                  <p className="text-black">{item.value}</p>
                 </div>
               </div>
             );

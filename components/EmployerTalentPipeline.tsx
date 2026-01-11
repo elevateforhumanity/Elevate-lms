@@ -55,7 +55,7 @@ export function EmployerTalentPipeline() {
     : candidates.filter(c => c.stage === selectedStage);
 
   const stageColors: Record<string, string> = {
-    sourced: 'bg-gray-100 text-gray-700',
+    sourced: 'bg-gray-100 text-black',
     screening: 'bg-blue-100 text-blue-700',
     interview: 'bg-purple-100 text-purple-700',
     offer: 'bg-orange-100 text-orange-700',
@@ -78,7 +78,7 @@ export function EmployerTalentPipeline() {
               <p className="text-2xl font-bold text-brand-orange-600">
                 {candidates.filter(c => c.stage === stage).length}
               </p>
-              <p className="text-sm text-gray-600 capitalize">{stage}</p>
+              <p className="text-sm text-black capitalize">{stage}</p>
             </Card>
           ))}
         </div>
@@ -91,7 +91,7 @@ export function EmployerTalentPipeline() {
               className={`px-4 py-2 rounded-lg text-sm font-medium capitalize ${
                 selectedStage === stage
                   ? 'bg-brand-orange-600 text-white'
-                  : 'bg-white text-gray-700 border hover:bg-gray-50'
+                  : 'bg-white text-black border hover:bg-gray-50'
               }`}
             >
               {stage}
@@ -110,17 +110,17 @@ export function EmployerTalentPipeline() {
                       {candidate.stage}
                     </span>
                   </div>
-                  <p className="text-gray-600">{candidate.program}</p>
+                  <p className="text-black">{candidate.program}</p>
                   <p className="text-sm text-gray-500">Graduates: {candidate.graduationDate}</p>
                 </div>
                 <div className="text-right">
                   <div className="text-3xl font-bold text-brand-orange-600">{candidate.matchScore}%</div>
-                  <p className="text-sm text-gray-600">Match Score</p>
+                  <p className="text-sm text-black">Match Score</p>
                 </div>
               </div>
 
               <div className="mb-4">
-                <p className="text-sm font-semibold text-gray-700 mb-2">Skills:</p>
+                <p className="text-sm font-semibold text-black mb-2">Skills:</p>
                 <div className="flex flex-wrap gap-2">
                   {candidate.skills.map((skill) => (
                     <span key={skill} className="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded">

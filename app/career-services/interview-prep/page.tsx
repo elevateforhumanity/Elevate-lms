@@ -33,37 +33,37 @@ export default function InterviewPrepPage() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
-                <span className="text-gray-700">
+                <span className="text-black">
                   Common interview questions and how to answer them
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
-                <span className="text-gray-700">
+                <span className="text-black">
                   Body language and professional presentation
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
-                <span className="text-gray-700">
+                <span className="text-black">
                   Mock interviews with feedback
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
-                <span className="text-gray-700">
+                <span className="text-black">
                   Industry-specific interview strategies
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
-                <span className="text-gray-700">
+                <span className="text-black">
                   Salary negotiation techniques
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
-                <span className="text-gray-700">Follow-up strategies</span>
+                <span className="text-black">Follow-up strategies</span>
               </li>
             </ul>
           </div>
@@ -72,7 +72,7 @@ export default function InterviewPrepPage() {
             <h3 className="text-2xl font-bold text-black mb-4">
               Schedule Your Session
             </h3>
-            <p className="text-gray-700 mb-6">
+            <p className="text-black mb-6">
               One-on-one interview coaching sessions available for all students
               and alumni.
             </p>
@@ -100,7 +100,7 @@ export default function InterviewPrepPage() {
               <h3 className="text-xl font-bold text-black mb-2">
                 Resume Building
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Professional resume writing and review
               </p>
             </Link>
@@ -111,7 +111,7 @@ export default function InterviewPrepPage() {
               <h3 className="text-xl font-bold text-black mb-2">
                 Job Placement
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Direct connections to hiring employers
               </p>
             </Link>
@@ -122,7 +122,7 @@ export default function InterviewPrepPage() {
               <h3 className="text-xl font-bold text-black mb-2">
                 Career Counseling
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Long-term career planning and guidance
               </p>
             </Link>

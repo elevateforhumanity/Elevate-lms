@@ -45,7 +45,7 @@ export function ProgramSearch() {
           value={query}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setQuery(e.target.value)}
           placeholder="Search by career, program, or funding (ex: CNA, HVAC, WIOA)…"
-          className="w-full rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-900 Content:text-slate-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 md:max-w-md"
+          className="w-full rounded-full border border-slate-200 px-4 py-2 text-sm text-black Content:text-slate-400 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 md:max-w-md"
         />
         <p className="text-xs text-slate-500">
           Showing {filtered.length} of {programs.length} programs
@@ -57,10 +57,10 @@ export function ProgramSearch() {
           <Link
             key={program.id}
             href={`/programs/${program.slug}`}
-            className="flex flex-col justify-between rounded-xl border border-slate-100 bg-white p-4 text-sm text-slate-800 shadow-sm hover:border-red-200 hover:shadow-md"
+            className="flex flex-col justify-between rounded-xl border border-slate-100 bg-white p-4 text-sm text-black shadow-sm hover:border-red-200 hover:shadow-md"
           >
             <div>
-              <h2 className="text-sm font-semibold text-slate-900">
+              <h2 className="text-sm font-semibold text-black">
                 {program.title}
               </h2>
               {program.category && (
@@ -69,7 +69,7 @@ export function ProgramSearch() {
                 </p>
               )}
               {program.subtitle && (
-                <p className="mt-2 text-xs text-slate-700">
+                <p className="mt-2 text-xs text-black">
                   {program.subtitle}
                 </p>
               )}

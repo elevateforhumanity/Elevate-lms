@@ -19,14 +19,14 @@ export default async function CredentialsPage() {
       <nav className="bg-white border-b border-gray-200 py-3">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-gray-600 hover:text-teal-600 transition">
+            <Link href="/" className="text-black hover:text-teal-600 transition">
               Home
             </Link>
-            <ChevronRight className="w-4 h-4 text-gray-600" />
-            <Link href="/programs" className="text-gray-600 hover:text-teal-600 transition">
+            <ChevronRight className="w-4 h-4 text-black" />
+            <Link href="/programs" className="text-black hover:text-teal-600 transition">
               Programs
             </Link>
-            <ChevronRight className="w-4 h-4 text-gray-600" />
+            <ChevronRight className="w-4 h-4 text-black" />
             <span className="text-teal-600 font-semibold">Credentials</span>
           </div>
         </div>
@@ -83,39 +83,39 @@ export default async function CredentialsPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-3xl md:text-4xl font-black mb-6 text-gray-900">
+                <h2 className="text-3xl md:text-4xl font-black mb-6 text-black">
                   Industry-Recognized Credentials
                 </h2>
-                <p className="text-xl text-gray-600 mb-8">
+                <p className="text-xl text-black mb-8">
                   Our programs prepare you to earn certifications and licenses that employers actively seek. Graduate with credentials that open doors.
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start">
                     <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
-                      <strong className="text-gray-900">National Certifications</strong>
-                      <p className="text-gray-600">Recognized across all 50 states</p>
+                      <strong className="text-black">National Certifications</strong>
+                      <p className="text-black">Recognized across all 50 states</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
-                      <strong className="text-gray-900">State Licenses</strong>
-                      <p className="text-gray-600">Required credentials for regulated professions</p>
+                      <strong className="text-black">State Licenses</strong>
+                      <p className="text-black">Required credentials for regulated professions</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
-                      <strong className="text-gray-900">Exam Preparation</strong>
-                      <p className="text-gray-600">We prepare you to pass certification exams</p>
+                      <strong className="text-black">Exam Preparation</strong>
+                      <p className="text-black">We prepare you to pass certification exams</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="w-6 h-6 text-teal-600 mr-3 flex-shrink-0 mt-1" />
                     <div>
-                      <strong className="text-gray-900">100% Free</strong>
-                      <p className="text-gray-600">Training and exam costs covered</p>
+                      <strong className="text-black">100% Free</strong>
+                      <p className="text-black">Training and exam costs covered</p>
                     </div>
                   </li>
                 </ul>
@@ -151,7 +151,7 @@ export default async function CredentialsPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Access quality training programs
                 </p>
               </div>
@@ -173,7 +173,7 @@ export default async function CredentialsPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-gray-600">Earn industry certifications</p>
+                <p className="text-black">Earn industry certifications</p>
               </div>
 
               <div className="bg-white rounded-lg shadow-sm border p-6">
@@ -193,7 +193,7 @@ export default async function CredentialsPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-gray-600">Get hired in your field</p>
+                <p className="text-black">Get hired in your field</p>
               </div>
             </div>
           </div>

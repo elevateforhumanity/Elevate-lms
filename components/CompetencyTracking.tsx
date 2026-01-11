@@ -96,7 +96,7 @@ export default function CompetencyTracking() {
   };
 
   const statusColors: Record<string, string> = {
-    'not-started': 'bg-gray-100 text-gray-700',
+    'not-started': 'bg-gray-100 text-black',
     'in-progress': 'bg-yellow-100 text-yellow-700',
     'mastered': 'bg-green-100 text-green-700',
   };
@@ -113,23 +113,23 @@ export default function CompetencyTracking() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Total Competencies</h3>
+            <h3 className="text-sm text-black mb-2">Total Competencies</h3>
             <p className="text-3xl font-bold text-brand-orange-600">{competencies.length}</p>
           </Card>
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Mastered</h3>
+            <h3 className="text-sm text-black mb-2">Mastered</h3>
             <p className="text-3xl font-bold text-green-600">
               {competencies.filter(c => c.status === 'mastered').length}
             </p>
           </Card>
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">In Progress</h3>
+            <h3 className="text-sm text-black mb-2">In Progress</h3>
             <p className="text-3xl font-bold text-yellow-600">
               {competencies.filter(c => c.status === 'in-progress').length}
             </p>
           </Card>
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Avg Progress</h3>
+            <h3 className="text-sm text-black mb-2">Avg Progress</h3>
             <p className="text-3xl font-bold text-orange-600">
               {Math.round(competencies.reduce((sum, c) => sum + c.progress, 0) / competencies.length)}%
             </p>
@@ -144,7 +144,7 @@ export default function CompetencyTracking() {
               className={`px-4 py-2 rounded-lg text-sm font-medium ${
                 activeCategory === category
                   ? 'bg-brand-orange-600 text-white'
-                  : 'bg-white text-gray-700 border hover:bg-gray-50'
+                  : 'bg-white text-black border hover:bg-gray-50'
               }`}
             >
               {category}
@@ -166,14 +166,14 @@ export default function CompetencyTracking() {
                       {competency.status.replace('-', ' ')}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-600">{competency.category}</p>
+                  <p className="text-sm text-black">{competency.category}</p>
                   <p className="text-sm text-gray-500">
                     {competency.assessments} assessments • Last assessed: {competency.lastAssessed}
                   </p>
                 </div>
                 <div className="text-right">
                   <div className="text-3xl font-bold text-brand-orange-600">{competency.progress}%</div>
-                  <p className="text-sm text-gray-600">Progress</p>
+                  <p className="text-sm text-black">Progress</p>
                 </div>
               </div>
 
@@ -200,19 +200,19 @@ export default function CompetencyTracking() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
               <h4 className="font-semibold text-blue-700 mb-2">Beginner</h4>
-              <p className="text-sm text-gray-600">Basic understanding and awareness</p>
+              <p className="text-sm text-black">Basic understanding and awareness</p>
             </div>
             <div>
               <h4 className="font-semibold text-purple-700 mb-2">Intermediate</h4>
-              <p className="text-sm text-gray-600">Can apply with guidance</p>
+              <p className="text-sm text-black">Can apply with guidance</p>
             </div>
             <div>
               <h4 className="font-semibold text-orange-700 mb-2">Advanced</h4>
-              <p className="text-sm text-gray-600">Independent application</p>
+              <p className="text-sm text-black">Independent application</p>
             </div>
             <div>
               <h4 className="font-semibold text-red-700 mb-2">Expert</h4>
-              <p className="text-sm text-gray-600">Can teach and mentor others</p>
+              <p className="text-sm text-black">Can teach and mentor others</p>
             </div>
           </div>
         </Card>

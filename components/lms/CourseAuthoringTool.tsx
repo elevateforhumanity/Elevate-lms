@@ -87,8 +87,8 @@ function SortableModule(data: unknown) {
           <GripVertical className="w-5 h-5 text-gray-400" />
         </div>
         <div className="flex-1">
-          <h3 className="font-semibold text-gray-900">{module.title}</h3>
-          <p className="text-sm text-gray-600">
+          <h3 className="font-semibold text-black">{module.title}</h3>
+          <p className="text-sm text-black">
             {module.lessons.length} lessons
           </p>
         </div>
@@ -134,8 +134,8 @@ function SortableLesson(data: unknown) {
           <GripVertical className="w-4 h-4 text-gray-400" />
         </div>
         <div className="flex-1">
-          <h4 className="font-medium text-gray-900">{lesson.title}</h4>
-          <p className="text-xs text-gray-600">
+          <h4 className="font-medium text-black">{lesson.title}</h4>
+          <p className="text-xs text-black">
             {lesson.blocks.length} content blocks
           </p>
         </div>
@@ -328,7 +328,7 @@ export default function CourseAuthoringTool() {
                     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
                   >
                 ) => setCourse({ ...course, description: e.target.value })}
-                className="text-gray-600 border-none focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 mt-1 w-full"
+                className="text-black border-none focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 mt-1 w-full"
                 Content="Course Description"
               />
             </div>
@@ -438,7 +438,7 @@ export default function CourseAuthoringTool() {
                   <h2 className="text-xl font-bold mb-4">Edit Module</h2>
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-black mb-1">
                         Module Title
                       </label>
                       <input
@@ -454,7 +454,7 @@ export default function CourseAuthoringTool() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-black mb-1">
                         Description
                       </label>
                       <textarea
@@ -481,7 +481,7 @@ export default function CourseAuthoringTool() {
                           setShowModuleForm(false);
                           setEditingModule(null);
                         }}
-                        className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
+                        className="px-6 py-2 bg-gray-200 text-black rounded-lg hover:bg-gray-300"
                       >
                         Cancel
                       </button>
@@ -493,7 +493,7 @@ export default function CourseAuthoringTool() {
                   <h2 className="text-xl font-bold mb-4">Edit Lesson</h2>
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-black mb-1">
                         Lesson Title
                       </label>
                       <input
@@ -509,7 +509,7 @@ export default function CourseAuthoringTool() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-black mb-1">
                         Description
                       </label>
                       <textarea
@@ -526,7 +526,7 @@ export default function CourseAuthoringTool() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-black mb-2">
                         Content Blocks
                       </label>
                       <div className="space-y-2">
@@ -565,7 +565,7 @@ export default function CourseAuthoringTool() {
                           setShowLessonForm(false);
                           setEditingLesson(null);
                         }}
-                        className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
+                        className="px-6 py-2 bg-gray-200 text-black rounded-lg hover:bg-gray-300"
                       >
                         Cancel
                       </button>

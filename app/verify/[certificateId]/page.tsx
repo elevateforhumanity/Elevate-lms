@@ -178,10 +178,10 @@ export default async function VerifyCertificatePage({
                   </svg>
                 </div>
               </div>
-              <h2 className="text-2xl font-bold text-center text-gray-900 mb-2">
+              <h2 className="text-2xl font-bold text-center text-black mb-2">
                 Valid Certificate
               </h2>
-              <p className="text-center text-gray-600 mb-6">
+              <p className="text-center text-black mb-6">
                 This certificate has been verified and is authentic
               </p>
 
@@ -189,35 +189,35 @@ export default async function VerifyCertificatePage({
               <div className="border-t border-b border-gray-200 py-6 space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm text-gray-600">Certificate Number</p>
+                    <p className="text-sm text-black">Certificate Number</p>
                     <p className="font-semibold text-lg">
                       {params.certificateId}
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Certificate Type</p>
+                    <p className="text-sm text-black">Certificate Type</p>
                     <p className="font-semibold text-lg">{certificateType}</p>
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm text-gray-600">Recipient</p>
+                    <p className="text-sm text-black">Recipient</p>
                     <p className="font-semibold text-lg">{studentName}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Course/Program</p>
+                    <p className="text-sm text-black">Course/Program</p>
                     <p className="font-semibold text-lg">{courseName}</p>
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm text-gray-600">Completion Date</p>
+                    <p className="text-sm text-black">Completion Date</p>
                     <p className="font-semibold text-lg">{formattedDate}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Issued By</p>
+                    <p className="text-sm text-black">Issued By</p>
                     <p className="font-semibold text-lg">
                       Elevate For Humanity
                     </p>
@@ -227,7 +227,7 @@ export default async function VerifyCertificatePage({
 
               {/* QR Code Section */}
               <div className="mt-6 text-center">
-                <p className="text-sm text-gray-600 mb-4">
+                <p className="text-sm text-black mb-4">
                   Scan to verify on mobile
                 </p>
                 <div className="inline-block p-4 bg-white border-2 border-gray-200 rounded-lg">
@@ -278,7 +278,7 @@ export default async function VerifyCertificatePage({
 
             {/* Verification Notice */}
             <div className="bg-gray-100 rounded-lg p-6 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 This certificate was verified on{' '}
                 <strong>
                   {new Date().toLocaleDateString('en-US', {
@@ -290,7 +290,7 @@ export default async function VerifyCertificatePage({
                   })}
                 </strong>
               </p>
-              <p className="text-xs text-gray-700 mt-2">
+              <p className="text-xs text-black mt-2">
                 Certificate verification is logged for security purposes
               </p>
             </div>
@@ -305,7 +305,7 @@ export default async function VerifyCertificatePage({
               </Link>
               <button
                 onClick={() => window.print()}
-                className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                className="px-6 py-3 border border-gray-300 text-black rounded-lg hover:bg-gray-50 transition-colors"
               >
                 Print Verification
               </button>

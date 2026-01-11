@@ -67,10 +67,10 @@ export default function NewCampaignPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Create Email Campaign
           </h1>
-          <p className="text-gray-600 mt-2">
+          <p className="text-black mt-2">
             Send bulk emails to your contacts
           </p>
         </div>
@@ -79,7 +79,7 @@ export default function NewCampaignPage() {
           {/* Templates Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-bold text-gray-900 mb-4">
+              <h2 className="text-lg font-bold text-black mb-4">
                 Templates
               </h2>
               <div className="space-y-2">
@@ -93,10 +93,10 @@ export default function NewCampaignPage() {
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
-                    <p className="font-semibold text-gray-900 text-sm">
+                    <p className="font-semibold text-black text-sm">
                       {template.name}
                     </p>
-                    <p className="text-xs text-gray-600 mt-1 capitalize">
+                    <p className="text-xs text-black mt-1 capitalize">
                       {template.category.replace('_', ' ')}
                     </p>
                   </button>
@@ -113,7 +113,7 @@ export default function NewCampaignPage() {
             >
               {/* Campaign Name */}
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Campaign Name *
                 </label>
                 <input
@@ -130,7 +130,7 @@ export default function NewCampaignPage() {
 
               {/* Target Audience */}
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Send To *
                 </label>
                 <select
@@ -159,7 +159,7 @@ export default function NewCampaignPage() {
 
               {/* Subject Line */}
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Subject Line *
                 </label>
                 <input
@@ -177,7 +177,7 @@ export default function NewCampaignPage() {
               {/* From Name */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     From Name
                   </label>
                   <input
@@ -190,7 +190,7 @@ export default function NewCampaignPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     From Email
                   </label>
                   <input
@@ -206,7 +206,7 @@ export default function NewCampaignPage() {
 
               {/* Email Content */}
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Email Content (HTML) *
                 </label>
                 <textarea
@@ -219,7 +219,7 @@ export default function NewCampaignPage() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent font-mono text-sm"
                   placeholder="Paste HTML content or select a template..."
                 />
-                <p className="text-xs text-gray-600 mt-2">
+                <p className="text-xs text-black mt-2">
                   Use variables: {'{'}
                   {'{'} student_name {'}'}
                   {'}'}, {'{'}
@@ -252,7 +252,7 @@ export default function NewCampaignPage() {
                 <button
                   type="button"
                   onClick={() => router.back()}
-                  className="px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+                  className="px-6 py-3 border-2 border-gray-300 text-black font-semibold rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   Cancel
                 </button>

@@ -31,14 +31,14 @@ export default function VolunteerPage() {
       <div className="mb-6">
         <Link
           href="/tax/rise-up-foundation"
-          className="text-sm text-gray-600 hover:text-gray-900"
+          className="text-sm text-black hover:text-black"
         >
           ← Back to Rise Up Foundation
         </Link>
       </div>
 
       <h1 className="text-4xl font-bold">Volunteer with VITA</h1>
-      <p className="mt-3 text-lg text-gray-600">
+      <p className="mt-3 text-lg text-black">
         Make a real difference in your community by helping people file their
         taxes for free.
       </p>
@@ -51,7 +51,7 @@ export default function VolunteerPage() {
               <span className="text-brand-green-600 font-bold text-xl">✓</span>
               <div>
                 <div className="font-semibold">Help Your Community</div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-black">
                   Provide free tax help to those who need it most
                 </div>
               </div>
@@ -60,7 +60,7 @@ export default function VolunteerPage() {
               <span className="text-brand-green-600 font-bold text-xl">✓</span>
               <div>
                 <div className="font-semibold">Gain Valuable Skills</div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-black">
                   Learn tax preparation and financial literacy
                 </div>
               </div>
@@ -69,7 +69,7 @@ export default function VolunteerPage() {
               <span className="text-brand-green-600 font-bold text-xl">✓</span>
               <div>
                 <div className="font-semibold">IRS Certification</div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-black">
                   Receive official IRS training and certification
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function VolunteerPage() {
               <span className="text-brand-green-600 font-bold text-xl">✓</span>
               <div>
                 <div className="font-semibold">Flexible Schedule</div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-black">
                   Choose shifts that work for you
                 </div>
               </div>
@@ -89,7 +89,7 @@ export default function VolunteerPage() {
               <span className="text-brand-green-600 font-bold text-xl">✓</span>
               <div>
                 <div className="font-semibold">Free Training</div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-black">
                   All training materials provided at no cost
                 </div>
               </div>
@@ -98,7 +98,7 @@ export default function VolunteerPage() {
               <span className="text-brand-green-600 font-bold text-xl">✓</span>
               <div>
                 <div className="font-semibold">Resume Builder</div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-black">
                   Great experience for accounting/finance careers
                 </div>
               </div>
@@ -112,7 +112,7 @@ export default function VolunteerPage() {
         <div className="space-y-4">
           <div>
             <h3 className="font-semibold text-lg mb-2">Basic Requirements</h3>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+            <ul className="list-disc pl-5 space-y-2 text-black">
               <li>Must be 18 years or older</li>
               <li>Pass IRS background check</li>
               <li>Complete IRS Link & Learn Taxes training</li>
@@ -125,7 +125,7 @@ export default function VolunteerPage() {
 
           <div>
             <h3 className="font-semibold text-lg mb-2">Time Commitment</h3>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700">
+            <ul className="list-disc pl-5 space-y-2 text-black">
               <li>
                 <strong>Training:</strong> 15-30 hours (self-paced online)
               </li>
@@ -145,7 +145,7 @@ export default function VolunteerPage() {
 
           <div>
             <h3 className="font-semibold text-lg mb-2">No Experience Needed</h3>
-            <p className="text-gray-700">
+            <p className="text-black">
               You don't need to be a tax expert! We provide comprehensive
               training that covers everything you need to know. Many of our
               volunteers have no prior tax experience and become confident
@@ -164,7 +164,7 @@ export default function VolunteerPage() {
             </div>
             <div>
               <h3 className="font-semibold text-lg">Express Interest</h3>
-              <p className="text-gray-600 mt-1">
+              <p className="text-black mt-1">
                 Call us at 317-314-3757 or email to express your interest in
                 volunteering.
               </p>
@@ -179,7 +179,7 @@ export default function VolunteerPage() {
               <h3 className="font-semibold text-lg">
                 Complete Background Check
               </h3>
-              <p className="text-gray-600 mt-1">
+              <p className="text-black mt-1">
                 Submit required information for IRS background check (we'll
                 guide you through this).
               </p>
@@ -192,7 +192,7 @@ export default function VolunteerPage() {
             </div>
             <div>
               <h3 className="font-semibold text-lg">Complete Training</h3>
-              <p className="text-gray-600 mt-1">
+              <p className="text-black mt-1">
                 Take the IRS Link & Learn Taxes online course at your own pace
                 (15-30 hours).
               </p>
@@ -211,7 +211,7 @@ export default function VolunteerPage() {
             </div>
             <div>
               <h3 className="font-semibold text-lg">Pass Certification Exam</h3>
-              <p className="text-gray-600 mt-1">
+              <p className="text-black mt-1">
                 Take and pass the IRS certification exam (Basic, Intermediate,
                 or Advanced level).
               </p>
@@ -224,7 +224,7 @@ export default function VolunteerPage() {
             </div>
             <div>
               <h3 className="font-semibold text-lg">Start Volunteering</h3>
-              <p className="text-gray-600 mt-1">
+              <p className="text-black mt-1">
                 Choose your shifts and start helping taxpayers in your
                 community!
               </p>
@@ -238,28 +238,28 @@ export default function VolunteerPage() {
         <div className="grid md:grid-cols-2 gap-6">
           <div className="rounded-lg bg-green-50 p-6">
             <h3 className="font-semibold text-lg mb-2">Tax Preparer</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Interview taxpayers, prepare returns, and ensure accuracy.
               Requires IRS certification.
             </p>
           </div>
           <div className="rounded-lg bg-green-50 p-6">
             <h3 className="font-semibold text-lg mb-2">Quality Reviewer</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Review completed returns for accuracy before e-filing. Requires
               advanced certification.
             </p>
           </div>
           <div className="rounded-lg bg-green-50 p-6">
             <h3 className="font-semibold text-lg mb-2">Greeter/Intake</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Welcome taxpayers, check documents, and complete intake forms. No
               certification required.
             </p>
           </div>
           <div className="rounded-lg bg-green-50 p-6">
             <h3 className="font-semibold text-lg mb-2">Site Coordinator</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Manage volunteer schedules, supplies, and site operations.
               Leadership experience helpful.
             </p>
@@ -269,7 +269,7 @@ export default function VolunteerPage() {
 
       <section className="mt-8 rounded-2xl bg-green-50 border-l-4 border-brand-green-600 p-6">
         <h2 className="text-xl font-bold mb-3">Ready to Make a Difference?</h2>
-        <p className="text-gray-700 mb-6">
+        <p className="text-black mb-6">
           Join our team of dedicated volunteers and help your community this tax
           season.
         </p>
@@ -296,8 +296,8 @@ export default function VolunteerPage() {
       </section>
 
       <section className="mt-8 rounded-2xl bg-blue-50 border-l-4 border-blue-400 p-6">
-        <h3 className="font-semibold text-gray-900">Reference</h3>
-        <p className="mt-2 text-sm text-gray-700">
+        <h3 className="font-semibold text-black">Reference</h3>
+        <p className="mt-2 text-sm text-black">
           For more information about volunteering with VITA, visit the{' '}
           <a
             href="https://www.irs.gov/individuals/irs-tax-volunteers"

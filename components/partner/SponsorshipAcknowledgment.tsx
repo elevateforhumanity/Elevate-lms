@@ -76,10 +76,10 @@ export function SponsorshipAcknowledgment({
     <div className="space-y-6">
       {/* Header */}
       <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-2">
+        <h3 className="text-lg font-semibold text-black mb-2">
           Required Acknowledgments
         </h3>
-        <p className="text-sm text-slate-600">
+        <p className="text-sm text-black">
           Please read and acknowledge each statement below. All acknowledgments
           are required before program activation.
         </p>
@@ -108,12 +108,12 @@ export function SponsorshipAcknowledgment({
                   className={`font-medium mb-1 ${
                     acknowledgments[item.key]
                       ? 'text-green-900'
-                      : 'text-slate-900'
+                      : 'text-black'
                   }`}
                 >
                   {item.label}
                 </div>
-                <div className="text-sm text-slate-600">{item.description}</div>
+                <div className="text-sm text-black">{item.description}</div>
               </div>
             </div>
           </button>
@@ -143,7 +143,7 @@ export function SponsorshipAcknowledgment({
 
       {/* Legal Notice */}
       <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
-        <p className="text-xs text-slate-600">
+        <p className="text-xs text-black">
           <strong>Legal Notice:</strong> These acknowledgments are legally
           binding. By checking each box and signing, you agree to operate under
           Elevate for Humanity sponsorship and comply with all requirements

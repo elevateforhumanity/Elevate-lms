@@ -86,14 +86,14 @@ export default async function QuizReviewPage({
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="bg-white rounded-xl border border-slate-200 p-6 mb-6">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">
+          <h1 className="text-2xl font-bold text-black mb-2">
             Quiz Review
           </h1>
-          <p className="text-slate-600">{attempt.quizzes.title}</p>
+          <p className="text-black">{attempt.quizzes.title}</p>
           <div className="mt-4 flex items-center gap-4">
-            <div className="text-sm text-slate-600">
+            <div className="text-sm text-black">
               Your Score:{' '}
-              <span className="font-bold text-slate-900">{attempt.score}%</span>
+              <span className="font-bold text-black">{attempt.score}%</span>
             </div>
           </div>
         </div>
@@ -149,7 +149,7 @@ export default async function QuizReviewPage({
 
                   <div className="flex-1">
                     {/* Question */}
-                    <h3 className="text-lg font-semibold text-slate-900 mb-4">
+                    <h3 className="text-lg font-semibold text-black mb-4">
                       {index + 1}. {question.question}
                     </h3>
 
@@ -204,10 +204,10 @@ export default async function QuizReviewPage({
                                     <div className="max-w-7xl mx-auto">
                                       <div className="grid md:grid-cols-2 gap-12 items-center">
                                         <div>
-                                          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                                          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                                             Your Journey Starts Here
                                           </h2>
-                                          <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                                          <p className="text-lg text-black mb-6 leading-relaxed">
                                             Every great career begins with a
                                             single step. Whether you're looking
                                             to change careers, upgrade your
@@ -232,7 +232,7 @@ export default async function QuizReviewPage({
                                                   d="M5 13l4 4L19 7"
                                                 />
                                               </svg>
-                                              <span className="text-gray-700">
+                                              <span className="text-black">
                                                 100% free training - no tuition,
                                                 no hidden costs
                                               </span>
@@ -251,7 +251,7 @@ export default async function QuizReviewPage({
                                                   d="M5 13l4 4L19 7"
                                                 />
                                               </svg>
-                                              <span className="text-gray-700">
+                                              <span className="text-black">
                                                 Industry-recognized
                                                 certifications that employers
                                                 value
@@ -271,7 +271,7 @@ export default async function QuizReviewPage({
                                                   d="M5 13l4 4L19 7"
                                                 />
                                               </svg>
-                                              <span className="text-gray-700">
+                                              <span className="text-black">
                                                 Job placement assistance and
                                                 career support
                                               </span>
@@ -290,7 +290,7 @@ export default async function QuizReviewPage({
                                                   d="M5 13l4 4L19 7"
                                                 />
                                               </svg>
-                                              <span className="text-gray-700">
+                                              <span className="text-black">
                                                 Flexible scheduling for working
                                                 adults
                                               </span>

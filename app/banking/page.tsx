@@ -76,7 +76,7 @@ export default function BankingPage() {
       {/* Products */}
       <section id="products" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center">
             Our Banking Products
           </h2>
 
@@ -86,10 +86,10 @@ export default function BankingPage() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <DollarSign className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+              <h3 className="text-2xl font-bold text-black mb-4 text-center">
                 Refund Advance
               </h3>
-              <p className="text-gray-700 mb-6 text-center">
+              <p className="text-black mb-6 text-center">
                 Get your refund faster with an advance loan. No credit check
                 required.
               </p>
@@ -124,10 +124,10 @@ export default function BankingPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Zap className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+              <h3 className="text-2xl font-bold text-black mb-4 text-center">
                 Direct Deposit
               </h3>
-              <p className="text-gray-700 mb-6 text-center">
+              <p className="text-black mb-6 text-center">
                 Get your refund deposited directly to your bank account.
               </p>
               <ul className="space-y-3 mb-6">
@@ -161,10 +161,10 @@ export default function BankingPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CreditCard className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+              <h3 className="text-2xl font-bold text-black mb-4 text-center">
                 Prepaid Card
               </h3>
-              <p className="text-gray-700 mb-6 text-center">
+              <p className="text-black mb-6 text-center">
                 Receive your refund on a prepaid debit card. No bank account
                 needed.
               </p>
@@ -200,7 +200,7 @@ export default function BankingPage() {
       {/* How It Works */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center">
             How It Works
           </h2>
 
@@ -209,10 +209,10 @@ export default function BankingPage() {
               <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 1
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 File Your Taxes
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Complete your tax return with our professional preparers.
               </p>
             </div>
@@ -221,10 +221,10 @@ export default function BankingPage() {
               <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 2
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Choose Your Option
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Select refund advance, direct deposit, or prepaid card.
               </p>
             </div>
@@ -233,10 +233,10 @@ export default function BankingPage() {
               <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 3
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Get Approved
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Quick approval process, usually within minutes.
               </p>
             </div>
@@ -245,10 +245,10 @@ export default function BankingPage() {
               <div className="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 4
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Receive Funds
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Get your money fast - same day or next day available.
               </p>
             </div>
@@ -260,10 +260,10 @@ export default function BankingPage() {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+            <h2 className="text-2xl font-bold text-black mb-4 text-center">
               Powered by EPS Financial
             </h2>
-            <p className="text-gray-700 mb-6 text-center">
+            <p className="text-black mb-6 text-center">
               All banking products are provided by EPS Financial, Member FDIC,
               with professional tax software integration.
             </p>
@@ -271,21 +271,21 @@ export default function BankingPage() {
               <div>
                 <Shield className="w-12 h-12 text-blue-600 mx-auto mb-2" />
                 <p className="font-semibold">FDIC Insured</p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Your deposits are protected
                 </p>
               </div>
               <div>
                 <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-2" />
                 <p className="font-semibold">IRS Approved</p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Authorized e-file provider
                 </p>
               </div>
               <div>
                 <Clock className="w-12 h-12 text-orange-600 mx-auto mb-2" />
                 <p className="font-semibold">Fast Service</p>
-                <p className="text-sm text-gray-600">Quick processing times</p>
+                <p className="text-sm text-black">Quick processing times</p>
               </div>
             </div>
             <div className="mt-6 text-center">
@@ -305,33 +305,33 @@ export default function BankingPage() {
       {/* Fees & Disclosures */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-8 text-center">
             Fees & Disclosures
           </h2>
 
           <div className="bg-white rounded-lg shadow-md p-8">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <h3 className="text-xl font-bold text-black mb-4">
               Refund Advance Fees
             </h3>
-            <ul className="space-y-2 mb-6 text-gray-700">
+            <ul className="space-y-2 mb-6 text-black">
               <li>• No application fee</li>
               <li>• No credit check</li>
               <li>• Interest rates vary by loan amount</li>
               <li>• Repaid automatically from IRS refund</li>
             </ul>
 
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <h3 className="text-xl font-bold text-black mb-4">
               Direct Deposit
             </h3>
-            <ul className="space-y-2 mb-6 text-gray-700">
+            <ul className="space-y-2 mb-6 text-black">
               <li>• No fees for direct deposit</li>
               <li>• Fastest refund method available</li>
             </ul>
 
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <h3 className="text-xl font-bold text-black mb-4">
               Prepaid Card Fees
             </h3>
-            <ul className="space-y-2 mb-6 text-gray-700">
+            <ul className="space-y-2 mb-6 text-black">
               <li>• No monthly maintenance fee</li>
               <li>• Free ATM withdrawals at network ATMs</li>
               <li>• $2.50 fee for out-of-network ATMs</li>
@@ -339,7 +339,7 @@ export default function BankingPage() {
             </ul>
 
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-6">
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-black">
                 <strong>Important:</strong> All banking products are provided by
                 EPS Financial, Member FDIC. Refund advances are loans and must
                 be repaid. Terms and conditions apply. See your tax professional

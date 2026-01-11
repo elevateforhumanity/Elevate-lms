@@ -120,7 +120,7 @@ export default function ServicesPage() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rich-nav-link px-4 py-2 text-sm font-semibold text-gray-700 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition whitespace-nowrap flex-shrink-0 snap-start"
+                className="rich-nav-link px-4 py-2 text-sm font-semibold text-black hover:text-teal-600 hover:bg-teal-50 rounded-lg transition whitespace-nowrap flex-shrink-0 snap-start"
               >
                 {link.label}
               </Link>
@@ -135,7 +135,7 @@ export default function ServicesPage() {
         <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
           <div className="max-w-2xl">
             {/* Administrative Header */}
-            <div className="mb-6 text-xs uppercase tracking-wider text-gray-600 font-mono">
+            <div className="mb-6 text-xs uppercase tracking-wider text-black font-mono">
               STUDENT SUPPORT SERVICES / UPDATED JAN 2026
             </div>
 
@@ -174,20 +174,20 @@ export default function ServicesPage() {
       <section className="bg-white border-y-4 border-black py-12">
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-gray-50 border-l-4 border-black p-8">
-            <div className="text-xs uppercase tracking-wider text-gray-700 mb-4 font-mono">
+            <div className="text-xs uppercase tracking-wider text-black mb-4 font-mono">
               ELIGIBILITY NOTICE / EFFECTIVE JANUARY 2026
             </div>
             <h3 className="text-2xl font-bold text-black mb-4 leading-tight">
               Services Available to Enrolled Students Only
             </h3>
-            <div className="prose prose-sm max-w-none text-gray-800 leading-relaxed">
+            <div className="prose prose-sm max-w-none text-black leading-relaxed">
               <p className="mb-3">
                 Support services including tax preparation, career counseling, and job placement assistance are provided at no cost to students enrolled in approved training programs through WIOA, WRG, or DOL funding.
               </p>
               <p className="mb-3">
                 <strong>Eligibility Requirements:</strong> Active enrollment in a credentialed program, compliance with attendance policies, and completion of intake documentation.
               </p>
-              <p className="text-sm text-gray-600 mb-0">
+              <p className="text-sm text-black mb-0">
                 For questions regarding eligibility or service access, contact Student Services at (317) 314-3757 or visit the Help Center.
               </p>
             </div>
@@ -202,7 +202,7 @@ export default function ServicesPage() {
             <h2 className="text-4xl md:text-5xl font-black text-black mb-4 leading-tight">
               Available Services
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl">
+            <p className="text-lg text-black max-w-2xl">
               Click any service for details and access requirements
             </p>
           </div>
@@ -228,7 +228,7 @@ export default function ServicesPage() {
                         <Icon className="w-5 h-5 text-black" />
                         <h3 className="text-xl font-bold text-black">{service.title}</h3>
                       </div>
-                      <p className="text-sm text-gray-700 mb-4 leading-relaxed">{service.description}</p>
+                      <p className="text-sm text-black mb-4 leading-relaxed">{service.description}</p>
                       <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-black">
                         View Details
                         <ArrowRight className="w-4 h-4" />
@@ -254,12 +254,12 @@ export default function ServicesPage() {
                 />
               ))}
             </div>
-            <blockquote className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 leading-relaxed text-center">
+            <blockquote className="text-2xl md:text-3xl font-bold text-black mb-6 leading-relaxed text-center">
               "The career services team helped me land a job before I even
               graduated. The resume help and interview prep made all the
               difference."
             </blockquote>
-            <p className="text-xl text-gray-600 text-center">
+            <p className="text-xl text-black text-center">
               — Marcus Thompson, HVAC Graduate
             </p>
           </div>
@@ -302,7 +302,7 @@ export default function ServicesPage() {
 
       {/* Footer */}
       <footer className="py-8 px-4 bg-gray-100 text-center border-t border-gray-200">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-black">
           © 2025 Elevate for Humanity. All rights reserved.
         </p>
       </footer>

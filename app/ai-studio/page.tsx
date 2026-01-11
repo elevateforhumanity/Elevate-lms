@@ -170,7 +170,7 @@ export default function AIStudioPage() {
               AI Studio
             </h1>
           </div>
-          <p className="text-gray-600 text-lg">
+          <p className="text-black text-lg">
             Create professional videos, images, avatars, voiceovers, and music
             with AI
           </p>
@@ -187,7 +187,7 @@ export default function AIStudioPage() {
                 className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+                    : 'bg-white text-black hover:bg-gray-50 border border-gray-200'
                 }`}
               >
                 <Icon className="w-5 h-5" />
@@ -201,14 +201,14 @@ export default function AIStudioPage() {
           {/* Generation Panel */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-black mb-6 flex items-center gap-2">
                 <Wand2 className="w-6 h-6 text-purple-600" />
                 Generate {tabs.find((t) => t.id === activeTab)?.label}
               </h2>
 
               {/* Prompt Input */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   {activeTab === 'voiceover'
                     ? 'Text to Speak'
                     : 'Describe what you want to create'}
@@ -236,7 +236,7 @@ export default function AIStudioPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 {/* Style Selection */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     {activeTab === 'voiceover' ? 'Voice' : 'Style'}
                   </label>
                   <select
@@ -257,7 +257,7 @@ export default function AIStudioPage() {
                   activeTab === 'avatar' ||
                   activeTab === 'music') && (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-black mb-2">
                       Duration (seconds)
                     </label>
                     <input
@@ -274,7 +274,7 @@ export default function AIStudioPage() {
                 {/* Aspect Ratio (for video) */}
                 {activeTab === 'video' && (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-black mb-2">
                       Aspect Ratio
                     </label>
                     <select
@@ -365,14 +365,14 @@ export default function AIStudioPage() {
           {/* Generated Assets Panel */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl shadow-lg p-6 sticky top-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+              <h3 className="text-xl font-bold text-black mb-4">
                 Recent Creations
               </h3>
 
               {generatedAssets.length === 0 ? (
                 <div className="text-center py-12">
                   <Palette className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-700">
+                  <p className="text-black">
                     Your generated assets will appear here
                   </p>
                 </div>
@@ -387,7 +387,7 @@ export default function AIStudioPage() {
                         <span className="text-xs font-medium text-purple-600 uppercase">
                           {asset.type}
                         </span>
-                        <button className="text-gray-600 hover:text-purple-600" aria-label="Download">
+                        <button className="text-black hover:text-purple-600" aria-label="Download">
                           <Download className="w-4 h-4" />
                         </button>
                       </div>
@@ -406,7 +406,7 @@ export default function AIStudioPage() {
 
                       {(asset.type === 'video' || asset.type === 'avatar') && (
                         <div className="relative w-full h-32 bg-gray-100 rounded-lg mb-2 flex items-center justify-center">
-                          <Play className="w-8 h-8 text-gray-600" />
+                          <Play className="w-8 h-8 text-black" />
                         </div>
                       )}
 
@@ -422,10 +422,10 @@ export default function AIStudioPage() {
                         </div>
                       )}
 
-                      <p className="text-xs text-gray-600 line-clamp-2">
+                      <p className="text-xs text-black line-clamp-2">
                         {asset.prompt}
                       </p>
-                      <p className="text-xs text-gray-600 mt-1">
+                      <p className="text-xs text-black mt-1">
                         {asset.createdAt.toLocaleTimeString()}
                       </p>
                     </div>

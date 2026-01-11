@@ -28,11 +28,11 @@ export default function AIHubPage() {
             AI-Powered Learning
           </div>
 
-          <h1 className="text-5xl sm:text-6xl font-black text-gray-900 mb-6">
+          <h1 className="text-5xl sm:text-6xl font-black text-black mb-6">
             Learn Faster with AI
           </h1>
 
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-black max-w-3xl mx-auto">
             Get instant help, build courses automatically, match to jobs, and
             more. Our AI tools are available 24/7 to accelerate your learning
             journey.
@@ -52,10 +52,10 @@ export default function AIHubPage() {
               <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
                 <Brain className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 AI Tutor
               </h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Get instant answers to your questions. Available 24/7 to help
                 you understand course material, solve problems, and learn
                 faster.
@@ -65,7 +65,7 @@ export default function AIHubPage() {
                 <span>→</span>
               </div>
               <div className="mt-6 pt-6 border-t border-blue-200">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
+                <div className="flex items-center gap-2 text-sm text-black">
                   <Sparkles className="w-4 h-4 text-yellow-500" />
                   <span>Most Popular</span>
                 </div>
@@ -80,10 +80,10 @@ export default function AIHubPage() {
               <div className="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-6">
                 <MessageSquare className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 AI Chat Assistant
               </h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Have a conversation with AI about your career goals, training
                 options, and next steps. Get personalized guidance instantly.
               </p>
@@ -101,10 +101,10 @@ export default function AIHubPage() {
               <div className="w-16 h-16 bg-purple-600 rounded-xl flex items-center justify-center mb-6">
                 <BookOpen className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 AI Course Builder
               </h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Create complete training courses in minutes. AI generates
                 outlines, lessons, quizzes, and materials automatically.
               </p>
@@ -113,7 +113,7 @@ export default function AIHubPage() {
                 <span>→</span>
               </div>
               <div className="mt-6 pt-6 border-t border-purple-200">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
+                <div className="flex items-center gap-2 text-sm text-black">
                   <Target className="w-4 h-4 text-orange-500" />
                   <span>For Instructors</span>
                 </div>
@@ -128,10 +128,10 @@ export default function AIHubPage() {
               <div className="w-16 h-16 bg-orange-600 rounded-xl flex items-center justify-center mb-6">
                 <Briefcase className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 AI Job Matcher
               </h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Find jobs that match your skills and training. AI analyzes your
                 profile and recommends the best opportunities.
               </p>
@@ -149,10 +149,10 @@ export default function AIHubPage() {
               <div className="w-16 h-16 bg-pink-600 rounded-xl flex items-center justify-center mb-6">
                 <Brain className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 AI Instructor
               </h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Virtual instructor that teaches concepts, provides examples, and
                 adapts to your learning style.
               </p>
@@ -170,10 +170,10 @@ export default function AIHubPage() {
               <div className="w-16 h-16 bg-teal-600 rounded-xl flex items-center justify-center mb-6">
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 AI Asset Generator
               </h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Generate images, diagrams, and visual content for your courses
                 and presentations automatically.
               </p>
@@ -198,10 +198,10 @@ export default function AIHubPage() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-blue-600">1</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Ask Questions
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Type your question in plain English. No need to search through
                 materials.
               </p>
@@ -211,10 +211,10 @@ export default function AIHubPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-green-600">2</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Get Instant Answers
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 AI analyzes your course content and provides accurate, helpful
                 responses.
               </p>
@@ -224,10 +224,10 @@ export default function AIHubPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-purple-600">3</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Learn Faster
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Understand concepts quickly and move through your training at
                 your own pace.
               </p>

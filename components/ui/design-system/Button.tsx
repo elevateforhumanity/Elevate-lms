@@ -28,7 +28,7 @@ interface ButtonProps {
 const variantClasses = {
   primary: 'bg-blue-600 text-white hover:bg-blue-700 shadow-button',
   secondary:
-    'bg-white text-slate-900 border-2 border-slate-300 hover:border-slate-400',
+    'bg-white text-black border-2 border-slate-300 hover:border-slate-400',
   tertiary: 'text-blue-600 hover:text-blue-700 hover:underline',
 };
 

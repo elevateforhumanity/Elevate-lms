@@ -109,7 +109,7 @@ export function PayNowSection() {
       <h2 className="text-3xl font-bold text-blue-700 mb-4">
         Pay Now &amp; Start
       </h2>
-      <p className="text-lg text-slate-700 mb-6">
+      <p className="text-lg text-black mb-6">
         Choose your program and complete your payment to start right away.
       </p>
 
@@ -117,7 +117,7 @@ export function PayNowSection() {
       <div className="mb-6">
         <label
           htmlFor="program"
-          className="block text-sm font-bold text-slate-900 mb-2"
+          className="block text-sm font-bold text-black mb-2"
         >
           Select Program:
         </label>
@@ -154,10 +154,10 @@ export function PayNowSection() {
 
       {/* Price + button */}
       <div className="mb-6">
-        <div className="text-2xl font-bold text-slate-900 mb-2">
+        <div className="text-2xl font-bold text-black mb-2">
           {formattedPrice}
         </div>
-        <p className="text-sm text-slate-600">
+        <p className="text-sm text-black">
           Includes all materials, certifications, and support
         </p>
       </div>

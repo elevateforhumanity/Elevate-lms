@@ -61,10 +61,10 @@ export default async function ProgramHolderDashboard() {
         <div className="mx-auto max-w-7xl px-6 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 Instructor Dashboard
               </h1>
-              <p className="text-slate-600 mt-1">
+              <p className="text-black mt-1">
                 Welcome back, {profile?.full_name || 'Instructor'}!
               </p>
             </div>
@@ -87,10 +87,10 @@ export default async function ProgramHolderDashboard() {
                 <Users className="text-brand-blue-600" size={24} />
               </div>
               <div>
-                <p className="text-base md:text-lg font-bold text-slate-900">
+                <p className="text-base md:text-lg font-bold text-black">
                   {totalStudents}
                 </p>
-                <p className="text-sm text-slate-600">Total Students</p>
+                <p className="text-sm text-black">Total Students</p>
               </div>
             </div>
           </div>
@@ -101,10 +101,10 @@ export default async function ProgramHolderDashboard() {
                 <CheckCircle className="text-brand-green-600" size={24} />
               </div>
               <div>
-                <p className="text-base md:text-lg font-bold text-slate-900">
+                <p className="text-base md:text-lg font-bold text-black">
                   {activeStudents}
                 </p>
-                <p className="text-sm text-slate-600">Active</p>
+                <p className="text-sm text-black">Active</p>
               </div>
             </div>
           </div>
@@ -115,10 +115,10 @@ export default async function ProgramHolderDashboard() {
                 <Award className="text-purple-600" size={24} />
               </div>
               <div>
-                <p className="text-base md:text-lg font-bold text-slate-900">
+                <p className="text-base md:text-lg font-bold text-black">
                   {completedStudents}
                 </p>
-                <p className="text-sm text-slate-600">Completed</p>
+                <p className="text-sm text-black">Completed</p>
               </div>
             </div>
           </div>
@@ -129,10 +129,10 @@ export default async function ProgramHolderDashboard() {
                 <Clock className="text-brand-orange-600" size={24} />
               </div>
               <div>
-                <p className="text-base md:text-lg font-bold text-slate-900">
+                <p className="text-base md:text-lg font-bold text-black">
                   0
                 </p>
-                <p className="text-sm text-slate-600">Pending Review</p>
+                <p className="text-sm text-black">Pending Review</p>
               </div>
             </div>
           </div>
@@ -144,7 +144,7 @@ export default async function ProgramHolderDashboard() {
             {/* Students List */}
             <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold text-slate-900">
+                <h2 className="text-xl font-bold text-black">
                   Recent Students
                 </h2>
                 <Link
@@ -163,10 +163,10 @@ export default async function ProgramHolderDashboard() {
                     >
                       <div className="flex items-center justify-between">
                         <div>
-                          <h3 className="font-semibold text-slate-900">
+                          <h3 className="font-semibold text-black">
                             {student.profiles?.full_name || 'Unknown'}
                           </h3>
-                          <p className="text-sm text-slate-600">
+                          <p className="text-sm text-black">
                             {student.programs?.title || student.programs?.name}
                           </p>
                           <p className="text-xs text-slate-500 mt-1">
@@ -180,7 +180,7 @@ export default async function ProgramHolderDashboard() {
                                 ? 'bg-brand-green-100 text-green-700'
                                 : student.status === 'completed'
                                   ? 'bg-blue-100 text-blue-700'
-                                  : 'bg-gray-100 text-gray-700'
+                                  : 'bg-gray-100 text-black'
                             }`}
                           >
                             {student.status}
@@ -197,7 +197,7 @@ export default async function ProgramHolderDashboard() {
               ) : (
                 <div className="text-center py-8">
                   <Users className="mx-auto h-12 w-12 text-slate-400 mb-4" />
-                  <p className="text-slate-600 mb-4">No students yet</p>
+                  <p className="text-black mb-4">No students yet</p>
                   <Link
                     href="/instructor/students/new"
                     className="text-brand-blue-600 hover:text-brand-blue-700 font-medium"
@@ -213,14 +213,14 @@ export default async function ProgramHolderDashboard() {
           <div className="space-y-6">
             {/* Quick Actions */}
             <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
-              <h3 className="font-bold text-slate-900 mb-4">Quick Actions</h3>
+              <h3 className="font-bold text-black mb-4">Quick Actions</h3>
               <div className="space-y-3">
                 <Link
                   href="/instructor/students"
                   className="block w-full text-left px-4 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg transition"
                 >
-                  <p className="font-medium text-slate-900">Manage Students</p>
-                  <p className="text-xs text-slate-600">
+                  <p className="font-medium text-black">Manage Students</p>
+                  <p className="text-xs text-black">
                     View and manage all students
                   </p>
                 </Link>
@@ -228,8 +228,8 @@ export default async function ProgramHolderDashboard() {
                   href="/instructor/programs"
                   className="block w-full text-left px-4 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg transition"
                 >
-                  <p className="font-medium text-slate-900">View Programs</p>
-                  <p className="text-xs text-slate-600">
+                  <p className="font-medium text-black">View Programs</p>
+                  <p className="text-xs text-black">
                     Browse available programs
                   </p>
                 </Link>
@@ -237,14 +237,14 @@ export default async function ProgramHolderDashboard() {
                   href="/instructor/settings"
                   className="block w-full text-left px-4 py-3 bg-slate-50 hover:bg-slate-100 rounded-lg transition"
                 >
-                  <p className="font-medium text-slate-900">Settings</p>
-                  <p className="text-xs text-slate-600">Update your profile</p>
+                  <p className="font-medium text-black">Settings</p>
+                  <p className="text-xs text-black">Update your profile</p>
                 </Link>
               </div>
 
               {/* All Instructor Features */}
               <div className="mt-8">
-                <h3 className="text-lg font-semibold text-slate-900 mb-4">Instructor Tools</h3>
+                <h3 className="text-lg font-semibold text-black mb-4">Instructor Tools</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   <Link href="/instructor/courses" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Courses</Link>
                   <Link href="/instructor/students" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Students</Link>

@@ -3,7 +3,7 @@ export default function Loading() {
     <div className="min-h-screen bg-white">
       {/* Hero skeleton - white background for instant load */}
       <div className="relative h-screen bg-white flex items-center justify-center">
-        <div className="text-center text-gray-900 px-4 max-w-4xl mx-auto animate-pulse">
+        <div className="text-center text-black px-4 max-w-4xl mx-auto animate-pulse">
           <div className="h-16 bg-gray-200 rounded-lg mb-4 mx-auto max-w-2xl"></div>
           <div className="h-8 bg-gray-200 rounded-lg mb-8 mx-auto max-w-xl"></div>
           <div className="flex gap-4 justify-center">

@@ -122,7 +122,7 @@ export function AIInstructorWidget({
           <div className="p-6 max-h-96 overflow-y-auto">
             <div className="bg-blue-50 rounded-2xl p-4 relative">
               <div className="absolute -top-2 left-6 w-4 h-4 bg-blue-50 transform rotate-45" />
-              <p className="text-gray-800 leading-relaxed">
+              <p className="text-black leading-relaxed">
                 {message || contextMessages[context]}
               </p>
             </div>
@@ -131,19 +131,19 @@ export function AIInstructorWidget({
             <div className="mt-4 space-y-2">
               <button
                 onClick={() => fetchMessage()}
-                className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm font-medium text-gray-700 transition-colors"
+                className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm font-medium text-black transition-colors"
               >
                 💡 Give me a tip
               </button>
               <button
                 onClick={() => setMessage('Remember: Learning takes time. Don\'t rush through the material. Take breaks when needed, and review concepts until they click. You\'ve got this!')}
-                className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm font-medium text-gray-700 transition-colors"
+                className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm font-medium text-black transition-colors"
               >
                 🎯 Study tips
               </button>
               <button
                 onClick={() => setMessage('If you\'re stuck, try: 1) Re-read the material slowly, 2) Take notes in your own words, 3) Ask for help from your instructor, 4) Practice with real examples. Every expert was once a beginner!')}
-                className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm font-medium text-gray-700 transition-colors"
+                className="w-full text-left px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-sm font-medium text-black transition-colors"
               >
                 ❓ I need help
               </button>

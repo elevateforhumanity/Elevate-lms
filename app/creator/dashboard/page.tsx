@@ -78,10 +78,10 @@ export default async function CreatorDashboard() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Creator Dashboard
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-black">
             Manage your courses and community
           </p>
         </div>
@@ -91,8 +91,8 @@ export default async function CreatorDashboard() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Courses</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-sm text-black">Total Courses</p>
+                <p className="text-2xl font-bold text-black">
                   {totalCourses}
                 </p>
               </div>
@@ -103,8 +103,8 @@ export default async function CreatorDashboard() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Students</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-sm text-black">Total Students</p>
+                <p className="text-2xl font-bold text-black">
                   {totalStudents}
                 </p>
               </div>
@@ -115,8 +115,8 @@ export default async function CreatorDashboard() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Engagement</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-sm text-black">Engagement</p>
+                <p className="text-2xl font-bold text-black">
                   {engagementRate}%
                 </p>
               </div>
@@ -127,8 +127,8 @@ export default async function CreatorDashboard() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Revenue</p>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-sm text-black">Revenue</p>
+                <p className="text-2xl font-bold text-black">
                   ${totalRevenue.toFixed(2)}
                 </p>
               </div>
@@ -144,10 +144,10 @@ export default async function CreatorDashboard() {
             className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow"
           >
             <Video className="w-8 h-8 text-blue-600 mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-black mb-2">
               Create Course
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Build a new course for your community
             </p>
           </Link>
@@ -157,10 +157,10 @@ export default async function CreatorDashboard() {
             className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow"
           >
             <Users className="w-8 h-8 text-green-600 mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-black mb-2">
               Manage Community
             </h3>
-            <p className="text-sm text-gray-600">Engage with your students</p>
+            <p className="text-sm text-black">Engage with your students</p>
           </Link>
 
           <Link
@@ -168,17 +168,17 @@ export default async function CreatorDashboard() {
             className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow"
           >
             <TrendingUp className="w-8 h-8 text-purple-600 mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-black mb-2">
               View Analytics
             </h3>
-            <p className="text-sm text-gray-600">Track your performance</p>
+            <p className="text-sm text-black">Track your performance</p>
           </Link>
         </div>
 
         {/* Courses List */}
         <div className="bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-black">
               Your Courses
             </h2>
           </div>
@@ -191,13 +191,13 @@ export default async function CreatorDashboard() {
                     className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:border-blue-500 transition-colors"
                   >
                     <div>
-                      <h3 className="font-semibold text-gray-900">
+                      <h3 className="font-semibold text-black">
                         {course.title}
                       </h3>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <p className="text-sm text-black mt-1">
                         {course.description}
                       </p>
-                      <p className="text-sm text-gray-700 mt-2">
+                      <p className="text-sm text-black mt-2">
                         {course.enrollments?.[0]?.count || 0} students enrolled
                       </p>
                     </div>
@@ -212,8 +212,8 @@ export default async function CreatorDashboard() {
               </div>
             ) : (
               <div className="text-center py-12">
-                <FileText className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-                <p className="text-gray-600 mb-4">No courses yet</p>
+                <FileText className="w-12 h-12 text-black mx-auto mb-4" />
+                <p className="text-black mb-4">No courses yet</p>
                 <Link
                   href="/creator/courses/new"
                   className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -225,7 +225,7 @@ export default async function CreatorDashboard() {
 
             {/* Creator Tools */}
             <div className="mt-8">
-              <h3 className="text-lg font-semibold text-slate-900 mb-4">Creator Tools</h3>
+              <h3 className="text-lg font-semibold text-black mb-4">Creator Tools</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 <Link href="/creator/products" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">My Products</Link>
                 <Link href="/creator/dashboard" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Dashboard</Link>

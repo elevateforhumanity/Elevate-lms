@@ -23,13 +23,13 @@ export default async function CreatorCommunityPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Creator Community</h1>
       <div className="bg-white rounded-lg shadow-sm border p-6">
-        <p className="text-slate-600 mb-6">
+        <p className="text-black mb-6">
           Connect with other course creators, share best practices, and collaborate.
         </p>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="border rounded-lg p-6 hover:shadow-md transition-shadow">
             <h3 className="text-xl font-semibold mb-3">Discussion Forums</h3>
-            <p className="text-slate-600 text-sm mb-4">
+            <p className="text-black text-sm mb-4">
               Join conversations about course design, student engagement, and more.
             </p>
             <div className="space-y-2 mb-4">
@@ -44,7 +44,7 @@ export default async function CreatorCommunityPage() {
           </div>
           <div className="border rounded-lg p-6 hover:shadow-md transition-shadow">
             <h3 className="text-xl font-semibold mb-3">Resource Library</h3>
-            <p className="text-slate-600 text-sm mb-4">
+            <p className="text-black text-sm mb-4">
               Access templates, guides, and best practices for course creation.
             </p>
             <div className="space-y-2 mb-4">
@@ -59,7 +59,7 @@ export default async function CreatorCommunityPage() {
           </div>
           <div className="border rounded-lg p-6 hover:shadow-md transition-shadow">
             <h3 className="text-xl font-semibold mb-3">Events & Webinars</h3>
-            <p className="text-slate-600 text-sm mb-4">
+            <p className="text-black text-sm mb-4">
               Attend training sessions and networking events.
             </p>
             <div className="space-y-2 mb-4">
@@ -74,7 +74,7 @@ export default async function CreatorCommunityPage() {
           </div>
           <div className="border rounded-lg p-6 hover:shadow-md transition-shadow">
             <h3 className="text-xl font-semibold mb-3">Collaboration</h3>
-            <p className="text-slate-600 text-sm mb-4">
+            <p className="text-black text-sm mb-4">
               Find partners for co-creating courses and content.
             </p>
             <div className="space-y-2 mb-4">

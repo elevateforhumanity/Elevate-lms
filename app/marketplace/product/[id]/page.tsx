@@ -75,7 +75,7 @@ export default async function ProductPage({
                   {product.creator?.display_name?.charAt(0) || '?'}
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Created by</p>
+                  <p className="text-sm text-black">Created by</p>
                   <p className="font-semibold">
                     {product.creator?.display_name || 'Unknown'}
                   </p>
@@ -90,7 +90,7 @@ export default async function ProductPage({
 
               <div className="mb-8">
                 <h2 className="text-lg font-semibold mb-2">Description</h2>
-                <p className="text-gray-700 whitespace-pre-wrap">
+                <p className="text-black whitespace-pre-wrap">
                   {product.description || 'No description available.'}
                 </p>
               </div>
@@ -120,7 +120,7 @@ export default async function ProductPage({
         {product.creator?.bio && (
           <div className="mt-8 bg-white rounded-lg shadow-md p-8">
             <h2 className="text-2xl font-bold mb-4">About the Creator</h2>
-            <p className="text-gray-700">{product.creator.bio}</p>
+            <p className="text-black">{product.creator.bio}</p>
           </div>
         )}
       </div>

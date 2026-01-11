@@ -73,10 +73,10 @@ export default function ResetPasswordForm() {
               />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          <h2 className="text-2xl font-bold text-black mb-2">
             Password Updated!
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             Your password has been successfully updated. Redirecting to login...
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function ResetPasswordForm() {
         <div>
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-gray-700 mb-2"
+            className="block text-sm font-medium text-black mb-2"
           >
             New Password
           </label>
@@ -116,7 +116,7 @@ export default function ResetPasswordForm() {
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="••••••••"
           />
-          <p className="mt-1 text-xs text-gray-700">
+          <p className="mt-1 text-xs text-black">
             Must be at least 8 characters
           </p>
         </div>
@@ -124,7 +124,7 @@ export default function ResetPasswordForm() {
         <div>
           <label
             htmlFor="confirmPassword"
-            className="block text-sm font-medium text-gray-700 mb-2"
+            className="block text-sm font-medium text-black mb-2"
           >
             Confirm New Password
           </label>

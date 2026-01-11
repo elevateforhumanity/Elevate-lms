@@ -33,7 +33,7 @@ export default async function CreatorProductsPage() {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold mb-2">My Products</h1>
-            <p className="text-gray-600">
+            <p className="text-black">
               Manage your digital products and track performance
             </p>
           </div>
@@ -63,7 +63,7 @@ export default async function CreatorProductsPage() {
               </svg>
             </div>
             <h2 className="text-2xl font-bold mb-2">No Products Yet</h2>
-            <p className="text-gray-600 mb-6">
+            <p className="text-black mb-6">
               Create your first product to start selling on the marketplace.
             </p>
             <Link
@@ -78,11 +78,11 @@ export default async function CreatorProductsPage() {
             {products.map((product) => {
               const salesCount = salesByProduct[product.id] || 0;
               const statusColors = {
-                draft: 'bg-gray-100 text-gray-700',
+                draft: 'bg-gray-100 text-black',
                 pending_review: 'bg-yellow-100 text-yellow-700',
                 approved: 'bg-brand-green-100 text-green-700',
                 rejected: 'bg-red-100 text-red-700',
-                archived: 'bg-gray-100 text-gray-700',
+                archived: 'bg-gray-100 text-black',
               };
 
               return (
@@ -132,7 +132,7 @@ export default async function CreatorProductsPage() {
                       </span>
                     </div>
 
-                    <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                    <p className="text-sm text-black mb-3 line-clamp-2">
                       {product.description || 'No description'}
                     </p>
 
@@ -140,7 +140,7 @@ export default async function CreatorProductsPage() {
                       <span className="text-lg font-bold text-brand-blue-600">
                         ${(product.price_cents / 100).toFixed(2)}
                       </span>
-                      <span className="text-sm text-gray-600">
+                      <span className="text-sm text-black">
                         {salesCount} {salesCount === 1 ? 'sale' : 'sales'}
                       </span>
                     </div>
@@ -156,7 +156,7 @@ export default async function CreatorProductsPage() {
                     <div className="flex gap-2">
                       <Link
                         href={`/creator/products/${product.id}/edit`}
-                        className="flex-1 text-center border border-gray-300 text-gray-700 py-2 rounded hover:bg-gray-50 transition text-sm"
+                        className="flex-1 text-center border border-gray-300 text-black py-2 rounded hover:bg-gray-50 transition text-sm"
                       >
                         Edit
                       </Link>

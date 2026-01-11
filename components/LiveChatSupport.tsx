@@ -77,7 +77,7 @@ export function LiveChatSupport() {
         {messages.map((msg) => (
           <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-[80%] rounded-lg p-3 ${
-              msg.sender === 'user' ? 'bg-brand-orange-600 text-white' : 'bg-gray-100 text-gray-900'
+              msg.sender === 'user' ? 'bg-brand-orange-600 text-white' : 'bg-gray-100 text-black'
             }`}>
               <p className="text-sm">{msg.text}</p>
               <p className={`text-xs mt-1 ${msg.sender === 'user' ? 'text-red-200' : 'text-gray-500'}`}>

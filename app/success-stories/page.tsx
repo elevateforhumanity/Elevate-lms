@@ -265,13 +265,13 @@ export default function SuccessStoriesPage() {
                 {/* Content */}
                 <div className={`${index % 2 === 1 ? 'md:order-1' : ''}`}>
                   <div className="mb-4">
-                    <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+                    <h2 className="text-2xl md:text-3xl font-bold text-black mb-2">
                       {story.name}
                     </h2>
                     <p className="text-lg text-brand-blue-600 font-semibold">
                       {story.program}
                     </p>
-                    <p className="text-sm text-slate-600">Age {story.age}</p>
+                    <p className="text-sm text-black">Age {story.age}</p>
                   </div>
 
                   {/* Before/After */}
@@ -281,7 +281,7 @@ export default function SuccessStoriesPage() {
                         <div className="text-xs text-slate-500 uppercase mb-1">
                           Before
                         </div>
-                        <div className="text-sm font-semibold text-slate-900">
+                        <div className="text-sm font-semibold text-black">
                           {story.beforeJob}
                         </div>
                       </div>
@@ -307,13 +307,13 @@ export default function SuccessStoriesPage() {
                   {/* Quote */}
                   <div className="relative mb-6">
                     <Quote className="w-8 h-8 text-blue-200 absolute -top-2 -left-2" />
-                    <p className="text-lg text-slate-700 italic pl-6 leading-relaxed">
+                    <p className="text-lg text-black italic pl-6 leading-relaxed">
                       &quot;{story.quote}&quot;
                     </p>
                   </div>
 
                   {/* Story */}
-                  <p className="text-slate-600 leading-relaxed mb-6">
+                  <p className="text-black leading-relaxed mb-6">
                     {story.story}
                   </p>
 
@@ -378,15 +378,15 @@ export default function SuccessStoriesPage() {
                       <CheckCircle className="w-6 h-6 text-brand-blue-600" />
                     </div>
                     <div>
-                      <div className="font-bold text-slate-900">
+                      <div className="font-bold text-black">
                         {story.name}
                       </div>
-                      <div className="text-sm text-slate-600">
+                      <div className="text-sm text-black">
                         {story.program}
                       </div>
                     </div>
                   </div>
-                  <p className="text-sm text-slate-700 italic">
+                  <p className="text-sm text-black italic">
                     &quot;{story.quote.substring(0, 150)}...&quot;
                   </p>
                 </div>

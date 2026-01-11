@@ -96,7 +96,7 @@ export function AssignmentSubmission({
   const getFileIcon = (type: string) => {
     if (type.startsWith('image/')) return <ImageIcon size={20} className="text-blue-600" />;
     if (type.startsWith('video/')) return <Video size={20} className="text-purple-600" />;
-    return <FileText size={20} className="text-gray-600" />;
+    return <FileText size={20} className="text-black" />;
   };
 
   const handleSubmit = async () => {
@@ -122,10 +122,10 @@ export function AssignmentSubmission({
             <CheckCircle className="w-12 h-12 text-green-600" />
           </div>
           <h2 className="text-3xl font-bold mb-4">Assignment Submitted!</h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             Your submission has been received. You&apos;ll be notified when it&apos;s graded.
           </p>
-          <div className="space-y-2 text-sm text-gray-600">
+          <div className="space-y-2 text-sm text-black">
             <div>Submitted: {new Date().toLocaleString()}</div>
             <div>Files: {files.length}</div>
           </div>
@@ -171,10 +171,10 @@ export function AssignmentSubmission({
             <div className="text-lg font-semibold mb-2">
               Drop files here or click to browse
             </div>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-black">
               Supported formats: {allowedTypes.join(', ')}
             </div>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-black">
               Maximum file size: {maxFileSize}MB
             </div>
           </div>
@@ -200,7 +200,7 @@ export function AssignmentSubmission({
                   {getFileIcon(file.type)}
                   <div className="flex-1 min-w-0">
                     <div className="font-medium truncate">{file.name}</div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-black">
                       {formatFileSize(file.size)}
                     </div>
                   </div>

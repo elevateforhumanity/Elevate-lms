@@ -28,16 +28,16 @@ function SuccessContent() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
             <CheckCircle className="text-green-600" size={48} />
           </div>
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">
+          <h1 className="text-4xl font-bold text-black mb-2">
             Payment Successful!
           </h1>
-          <p className="text-xl text-slate-600">Thank you for your purchase</p>
+          <p className="text-xl text-black">Thank you for your purchase</p>
         </div>
 
         {/* Order Details */}
         {product && (
           <div className="bg-white rounded-lg p-8 border border-slate-200 mb-6">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               {product.name}
             </h2>
 
@@ -48,10 +48,10 @@ function SuccessContent() {
                   size={20}
                 />
                 <div>
-                  <p className="font-semibold text-slate-900">
+                  <p className="font-semibold text-black">
                     Check Your Email
                   </p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     We've sent your purchase confirmation and download link to
                     your email address.
                   </p>
@@ -65,8 +65,8 @@ function SuccessContent() {
                     size={20}
                   />
                   <div>
-                    <p className="font-semibold text-slate-900">Download Now</p>
-                    <p className="text-sm text-slate-600 mb-2">
+                    <p className="font-semibold text-black">Download Now</p>
+                    <p className="text-sm text-black mb-2">
                       Your download is ready. Click below to get your files.
                     </p>
                     <a
@@ -87,10 +87,10 @@ function SuccessContent() {
                     size={20}
                   />
                   <div>
-                    <p className="font-semibold text-slate-900">
+                    <p className="font-semibold text-black">
                       Access Your Course
                     </p>
-                    <p className="text-sm text-slate-600 mb-2">
+                    <p className="text-sm text-black mb-2">
                       Your course access has been activated. Login to get
                       started.
                     </p>
@@ -107,7 +107,7 @@ function SuccessContent() {
             </div>
 
             <div className="border-t border-slate-200 pt-6">
-              <h3 className="font-semibold text-slate-900 mb-3">
+              <h3 className="font-semibold text-black mb-3">
                 What's Included:
               </h3>
               <ul className="space-y-2">
@@ -117,7 +117,7 @@ function SuccessContent() {
                       className="text-green-600 flex-shrink-0 mt-0.5"
                       size={16}
                     />
-                    <span className="text-sm text-slate-700">{feature}</span>
+                    <span className="text-sm text-black">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -127,8 +127,8 @@ function SuccessContent() {
 
         {/* Next Steps */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-          <h3 className="font-bold text-slate-900 mb-3">What Happens Next?</h3>
-          <ol className="space-y-2 text-sm text-slate-700">
+          <h3 className="font-bold text-black mb-3">What Happens Next?</h3>
+          <ol className="space-y-2 text-sm text-black">
             <li className="flex gap-2">
               <span className="font-bold">1.</span>
               <span>Check your email for the receipt and download link</span>
@@ -148,7 +148,7 @@ function SuccessContent() {
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
             href="/store"
-            className="flex-1 text-center bg-white hover:bg-slate-50 text-slate-900 font-bold px-6 py-3 rounded-lg border-2 border-slate-300 transition"
+            className="flex-1 text-center bg-white hover:bg-slate-50 text-black font-bold px-6 py-3 rounded-lg border-2 border-slate-300 transition"
           >
             Browse More Products
           </Link>
@@ -161,7 +161,7 @@ function SuccessContent() {
         </div>
 
         {/* Support */}
-        <div className="mt-8 text-center text-sm text-slate-600">
+        <div className="mt-8 text-center text-sm text-black">
           <p>Questions about your purchase?</p>
           <p>
             Email us at{' '}

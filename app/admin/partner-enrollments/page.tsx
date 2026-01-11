@@ -36,21 +36,21 @@ export default async function PartnerEnrollmentsPage() {
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold mb-6">Partner Course Enrollments</h1>
         <div className="bg-white rounded-lg shadow p-6">
-          <p className="text-gray-600 mb-4">Total: {count || 0}</p>
+          <p className="text-black mb-4">Total: {count || 0}</p>
           <div className="overflow-x-auto">
             <table className="min-w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Student
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Course
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Progress
                   </th>
                 </tr>

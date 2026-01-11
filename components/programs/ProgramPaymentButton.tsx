@@ -39,8 +39,8 @@ export function ProgramPaymentButton({
   return (
     <div className="bg-white border-2 border-slate-200 rounded-xl p-6 sticky top-4">
       <div className="mb-6">
-        <div className="text-sm text-slate-600 mb-1">Program Cost</div>
-        <div className="text-4xl font-bold text-slate-900">
+        <div className="text-sm text-black mb-1">Program Cost</div>
+        <div className="text-4xl font-bold text-black">
           ${price.toLocaleString()}
         </div>
         {etplProgramId && (
@@ -87,7 +87,7 @@ export function ProgramPaymentButton({
       </div>
 
       <div className="mt-6 pt-6 border-t border-slate-200">
-        <div className="text-sm text-slate-600 space-y-2">
+        <div className="text-sm text-black space-y-2">
           <div className="flex items-center gap-2">
             <span className="text-green-600">✓</span>
             <span>Secure payment via Stripe</span>

@@ -73,7 +73,7 @@ export function ProgramDetailTemplate({ data }: ProgramDetailTemplateProps) {
             <h2 className="text-3xl font-bold text-black mb-6">
               About This Program
             </h2>
-            <div className="prose prose-lg max-w-none text-gray-700">
+            <div className="prose prose-lg max-w-none text-black">
               <p>{data.longDescription}</p>
             </div>
           </div>
@@ -92,7 +92,7 @@ export function ProgramDetailTemplate({ data }: ProgramDetailTemplateProps) {
                 {data.highlights.map((highlight, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{highlight}</span>
+                    <span className="text-black">{highlight}</span>
                   </li>
                 ))}
               </ul>
@@ -116,7 +116,7 @@ export function ProgramDetailTemplate({ data }: ProgramDetailTemplateProps) {
                 {data.whatYouLearn.map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{item}</span>
+                    <span className="text-black">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -138,7 +138,7 @@ export function ProgramDetailTemplate({ data }: ProgramDetailTemplateProps) {
                 {data.outcomes.map((outcome, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{outcome}</span>
+                    <span className="text-black">{outcome}</span>
                   </li>
                 ))}
               </ul>
@@ -164,7 +164,7 @@ export function ProgramDetailTemplate({ data }: ProgramDetailTemplateProps) {
                 {data.fundingOptions.map((option, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{option}</span>
+                    <span className="text-black">{option}</span>
                   </li>
                 ))}
               </ul>

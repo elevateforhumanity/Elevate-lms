@@ -20,17 +20,17 @@ export default function FundingSuccessPage() {
           <CheckCircle className="w-12 h-12 text-white" />
         </div>
 
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">
+        <h1 className="text-4xl font-bold text-black mb-4">
           <CheckCircle className="w-5 h-5 inline-block" /> Funding Approved &
           Processed!
         </h1>
 
-        <p className="text-base md:text-lg text-slate-700 mb-8">
+        <p className="text-base md:text-lg text-black mb-8">
           Student enrollment has been automatically activated
         </p>
 
         <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl font-bold text-black mb-4">
             What Happens Next:
           </h2>
 
@@ -40,10 +40,10 @@ export default function FundingSuccessPage() {
                 ✓
               </div>
               <div>
-                <p className="font-semibold text-slate-900">
+                <p className="font-semibold text-black">
                   Enrollment Activated
                 </p>
-                <p className="text-slate-600 text-sm">
+                <p className="text-black text-sm">
                   Student is now enrolled and active in the program
                 </p>
               </div>
@@ -54,10 +54,10 @@ export default function FundingSuccessPage() {
                 ✓
               </div>
               <div>
-                <p className="font-semibold text-slate-900">
+                <p className="font-semibold text-black">
                   Milady RISE Access
                 </p>
-                <p className="text-slate-600 text-sm">
+                <p className="text-black text-sm">
                   Student has been auto-enrolled in required courses
                 </p>
               </div>
@@ -68,8 +68,8 @@ export default function FundingSuccessPage() {
                 ✓
               </div>
               <div>
-                <p className="font-semibold text-slate-900">Dashboard Access</p>
-                <p className="text-slate-600 text-sm">
+                <p className="font-semibold text-black">Dashboard Access</p>
+                <p className="text-black text-sm">
                   Student can login and start learning immediately
                 </p>
               </div>

@@ -131,7 +131,7 @@ export default function SupersonicMarketingPage() {
                 <div className="text-3xl font-black text-blue-900 mb-1">
                   Licensed Enrolled Agent
                 </div>
-                <div className="text-lg text-gray-600 font-semibold">
+                <div className="text-lg text-black font-semibold">
                   IRS-Authorized Tax Professional
                 </div>
               </div>
@@ -167,7 +167,7 @@ export default function SupersonicMarketingPage() {
             <h2 className="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tight">
               Choose Your Service
             </h2>
-            <p className="text-xl text-gray-600 font-semibold">
+            <p className="text-xl text-black font-semibold">
               Professional tax solutions for every need
             </p>
           </div>
@@ -191,25 +191,25 @@ export default function SupersonicMarketingPage() {
                 <ul className="space-y-4 mb-6">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       Up to $7,500 cash today
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       15-minute approval
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       No credit check needed
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       Free tax preparation included
                     </span>
                   </li>
@@ -219,7 +219,7 @@ export default function SupersonicMarketingPage() {
                   <div className="font-black text-red-900 mb-2 text-sm uppercase">
                     Documents Needed:
                   </div>
-                  <ul className="text-sm text-gray-700 space-y-1">
+                  <ul className="text-sm text-black space-y-1">
                     <li>• Photo ID (Driver's License)</li>
                     <li>• Social Security Card</li>
                     <li>• W-2 or 1099 forms</li>
@@ -264,25 +264,25 @@ export default function SupersonicMarketingPage() {
                 <ul className="space-y-4 mb-6">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-blue-900 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       IRS-certified preparers
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-blue-900 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       Maximum refund guaranteed
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-blue-900 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       Online or in-person
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-blue-900 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       All 50 states
                     </span>
                   </li>
@@ -292,7 +292,7 @@ export default function SupersonicMarketingPage() {
                   <div className="font-black text-blue-900 mb-2 text-sm uppercase">
                     Documents Needed:
                   </div>
-                  <ul className="text-sm text-gray-700 space-y-1">
+                  <ul className="text-sm text-black space-y-1">
                     <li>• All W-2s and 1099s</li>
                     <li>• Income statements</li>
                     <li>• Deduction receipts</li>
@@ -337,25 +337,25 @@ export default function SupersonicMarketingPage() {
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       File your own taxes online
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       Easy step-by-step wizard
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       Free for simple returns
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg font-semibold text-gray-700">
+                    <span className="text-lg font-semibold text-black">
                       E-file directly to IRS
                     </span>
                   </li>
@@ -379,7 +379,7 @@ export default function SupersonicMarketingPage() {
             <h2 className="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tight">
               All Features & Tools
             </h2>
-            <p className="text-xl text-gray-600 font-semibold">
+            <p className="text-xl text-black font-semibold">
               Everything you need for a smooth tax experience
             </p>
           </div>
@@ -393,7 +393,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-blue-900 group-hover:text-blue-700">
                 Refund Calculator
               </h3>
-              <p className="text-gray-600">Estimate your refund amount</p>
+              <p className="text-black">Estimate your refund amount</p>
             </Link>
 
             <Link
@@ -404,7 +404,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-red-600 group-hover:text-red-700">
                 Track Refund
               </h3>
-              <p className="text-gray-600">Check IRS status live</p>
+              <p className="text-black">Check IRS status live</p>
             </Link>
 
             <Link
@@ -415,7 +415,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-blue-900 group-hover:text-blue-700">
                 Upload Documents
               </h3>
-              <p className="text-gray-600">Secure document portal</p>
+              <p className="text-black">Secure document portal</p>
             </Link>
 
             <Link
@@ -426,7 +426,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-red-600 group-hover:text-red-700">
                 Customer Portal
               </h3>
-              <p className="text-gray-600">Track your application</p>
+              <p className="text-black">Track your application</p>
             </Link>
 
             <Link
@@ -437,7 +437,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-green-600 group-hover:text-green-700">
                 Pricing
               </h3>
-              <p className="text-gray-600">Transparent, upfront fees</p>
+              <p className="text-black">Transparent, upfront fees</p>
             </Link>
 
             <Link
@@ -448,7 +448,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-blue-900 group-hover:text-blue-700">
                 Locations
               </h3>
-              <p className="text-gray-600">Indianapolis offices</p>
+              <p className="text-black">Indianapolis offices</p>
             </Link>
 
             <Link
@@ -459,7 +459,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-red-600 group-hover:text-red-700">
                 How It Works
               </h3>
-              <p className="text-gray-600">Simple 3-step process</p>
+              <p className="text-black">Simple 3-step process</p>
             </Link>
 
             <Link
@@ -470,7 +470,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-green-600 group-hover:text-green-700">
                 Book Appointment
               </h3>
-              <p className="text-gray-600">Schedule your visit</p>
+              <p className="text-black">Schedule your visit</p>
             </Link>
 
             <Link
@@ -481,7 +481,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-blue-900 group-hover:text-blue-700">
                 Careers
               </h3>
-              <p className="text-gray-600">Join our team</p>
+              <p className="text-black">Join our team</p>
             </Link>
 
             <Link
@@ -492,7 +492,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-red-600 group-hover:text-red-700">
                 Sub-Office Program
               </h3>
-              <p className="text-gray-600">Partner with us</p>
+              <p className="text-black">Partner with us</p>
             </Link>
 
             <Link
@@ -503,7 +503,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-purple-600 group-hover:text-purple-700">
                 Staff Dashboard
               </h3>
-              <p className="text-gray-600">DIY intake management</p>
+              <p className="text-black">DIY intake management</p>
             </Link>
 
             <Link
@@ -514,7 +514,7 @@ export default function SupersonicMarketingPage() {
               <h3 className="font-black text-xl mb-2 text-orange-600 group-hover:text-orange-700">
                 Sub-Office Dashboard
               </h3>
-              <p className="text-gray-600">Performance tracking</p>
+              <p className="text-black">Performance tracking</p>
             </Link>
           </div>
 
@@ -533,7 +533,7 @@ export default function SupersonicMarketingPage() {
                   <div className="font-bold text-blue-900 group-hover:text-blue-700">
                     Tax Preparer Training
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-black">
                     Complete certification course
                   </div>
                 </div>
@@ -547,7 +547,7 @@ export default function SupersonicMarketingPage() {
                   <div className="font-bold text-blue-900 group-hover:text-blue-700">
                     Competency Test
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-black">
                     Verify your skills
                   </div>
                 </div>
@@ -561,7 +561,7 @@ export default function SupersonicMarketingPage() {
                   <div className="font-bold text-blue-900 group-hover:text-blue-700">
                     Client Intake System
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-black">
                     Process new clients
                   </div>
                 </div>
@@ -578,7 +578,7 @@ export default function SupersonicMarketingPage() {
             <h2 className="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tight">
               Meet Your Tax Expert
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               Licensed Enrolled Agent with full IRS representation rights
             </p>
           </div>
@@ -604,13 +604,13 @@ export default function SupersonicMarketingPage() {
                       Licensed Enrolled Agent (EA)
                     </span>
                   </div>
-                  <h3 className="text-3xl font-black text-gray-900 mb-2">
+                  <h3 className="text-3xl font-black text-black mb-2">
                     Your Tax Professional
                   </h3>
                   <p className="text-lg text-blue-600 font-bold mb-4">
                     IRS-Authorized Tax Expert
                   </p>
-                  <p className="text-gray-700 leading-relaxed mb-6">
+                  <p className="text-black leading-relaxed mb-6">
                     With years of experience in tax preparation and IRS
                     representation, our licensed Enrolled Agent provides expert
                     guidance for individuals and businesses. Authorized to
@@ -657,7 +657,7 @@ export default function SupersonicMarketingPage() {
             <h2 className="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tight">
               Enterprise Tax Solutions
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Advanced features for businesses and tax professionals
             </p>
           </div>
@@ -668,29 +668,29 @@ export default function SupersonicMarketingPage() {
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
                 <Building2 className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-black text-gray-900 mb-4">
+              <h3 className="text-2xl font-black text-black mb-4">
                 Business Tax Prep
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Corporate returns (1120, 1120S)
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Partnership returns (1065)
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Multi-state filing</span>
+                  <span className="text-black">Multi-state filing</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Quarterly estimates</span>
+                  <span className="text-black">Quarterly estimates</span>
                 </li>
               </ul>
             </div>
@@ -700,25 +700,25 @@ export default function SupersonicMarketingPage() {
               <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6">
                 <Users className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-black text-gray-900 mb-4">
+              <h3 className="text-2xl font-black text-black mb-4">
                 Payroll & Bookkeeping
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Full-service payroll</span>
+                  <span className="text-black">Full-service payroll</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Quarterly payroll taxes</span>
+                  <span className="text-black">Quarterly payroll taxes</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">W-2 & 1099 preparation</span>
+                  <span className="text-black">W-2 & 1099 preparation</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Monthly bookkeeping</span>
+                  <span className="text-black">Monthly bookkeeping</span>
                 </li>
               </ul>
             </div>
@@ -728,25 +728,25 @@ export default function SupersonicMarketingPage() {
               <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6">
                 <Shield className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-black text-gray-900 mb-4">
+              <h3 className="text-2xl font-black text-black mb-4">
                 IRS Representation
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Audit defense & appeals</span>
+                  <span className="text-black">Audit defense & appeals</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Tax debt resolution</span>
+                  <span className="text-black">Tax debt resolution</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Offer in compromise</span>
+                  <span className="text-black">Offer in compromise</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Payment plans</span>
+                  <span className="text-black">Payment plans</span>
                 </li>
               </ul>
             </div>
@@ -755,47 +755,47 @@ export default function SupersonicMarketingPage() {
           {/* Additional Enterprise Features */}
           <div className="mt-12 grid md:grid-cols-2 gap-8">
             <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 border-2 border-purple-200">
-              <h3 className="text-2xl font-black text-gray-900 mb-6 flex items-center gap-3">
+              <h3 className="text-2xl font-black text-black mb-6 flex items-center gap-3">
                 <FileText className="w-8 h-8 text-purple-600" />
                 Tax Planning & Consulting
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Year-round tax strategy</span>
+                  <span className="text-black">Year-round tax strategy</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Entity structure optimization
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Retirement planning</span>
+                  <span className="text-black">Retirement planning</span>
                 </li>
               </ul>
             </div>
 
             <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-8 border-2 border-orange-200">
-              <h3 className="text-2xl font-black text-gray-900 mb-6 flex items-center gap-3">
+              <h3 className="text-2xl font-black text-black mb-6 flex items-center gap-3">
                 <Target className="w-8 h-8 text-orange-600" />
                 Specialized Services
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Non-profit tax returns (990)
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Estate & trust returns</span>
+                  <span className="text-black">Estate & trust returns</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     International tax compliance
                   </span>
                 </li>

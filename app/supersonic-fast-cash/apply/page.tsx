@@ -37,14 +37,14 @@ export default function ApplyPage() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <h2 className="text-2xl font-bold mb-6">Career Opportunities</h2>
-            <p className="text-gray-700 mb-6">
+            <p className="text-black mb-6">
               We're looking for motivated individuals to join our team. Whether you're an experienced tax professional or looking to start your career, we have opportunities available.
             </p>
             
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-semibold mb-3">Available Positions</h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-700">
+                <ul className="list-disc list-inside space-y-2 text-black">
                   <li>Tax Preparers (IRS-certified)</li>
                   <li>Office Staff</li>
                   <li>Customer Service Representatives</li>
@@ -54,7 +54,7 @@ export default function ApplyPage() {
 
               <div>
                 <h3 className="text-xl font-semibold mb-3">How to Apply</h3>
-                <p className="text-gray-700 mb-4">
+                <p className="text-black mb-4">
                   Visit our careers page to learn more about available positions and requirements.
                 </p>
                 <Link

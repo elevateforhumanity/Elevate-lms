@@ -48,7 +48,7 @@ export default function AlumniPage() {
       
       <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-8">
         <h2 className="text-xl font-bold mb-2">Connect with Graduates</h2>
-        <p className="text-slate-700">
+        <p className="text-black">
           Network with over 2,000 Elevate for Humanity alumni. Get career advice, mentorship, and professional connections.
         </p>
       </div>
@@ -57,17 +57,17 @@ export default function AlumniPage() {
         <div className="bg-white rounded-lg shadow-md p-6 text-center">
           <Users className="w-12 h-12 text-blue-600 mx-auto mb-3" />
           <div className="text-3xl font-bold mb-1">2,045</div>
-          <div className="text-slate-600">Alumni</div>
+          <div className="text-black">Alumni</div>
         </div>
         <div className="bg-white rounded-lg shadow-md p-6 text-center">
           <Briefcase className="w-12 h-12 text-green-600 mx-auto mb-3" />
           <div className="text-3xl font-bold mb-1">87%</div>
-          <div className="text-slate-600">Employed</div>
+          <div className="text-black">Employed</div>
         </div>
         <div className="bg-white rounded-lg shadow-md p-6 text-center">
           <Award className="w-12 h-12 text-purple-600 mx-auto mb-3" />
           <div className="text-3xl font-bold mb-1">150+</div>
-          <div className="text-slate-600">Companies</div>
+          <div className="text-black">Companies</div>
         </div>
       </div>
 
@@ -76,7 +76,7 @@ export default function AlumniPage() {
           <button
             onClick={() => setFilter('all')}
             className={`px-4 py-2 rounded-lg font-semibold transition ${
-              filter === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              filter === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-black hover:bg-gray-200'
             }`}
           >
             All Alumni
@@ -84,7 +84,7 @@ export default function AlumniPage() {
           <button
             onClick={() => setFilter('available')}
             className={`px-4 py-2 rounded-lg font-semibold transition ${
-              filter === 'available' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              filter === 'available' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-black hover:bg-gray-200'
             }`}
           >
             Available for Mentorship
@@ -104,7 +104,7 @@ export default function AlumniPage() {
                 <h3 className="text-xl font-bold text-center mb-2">{person.name}</h3>
                 <p className="text-sm text-blue-600 text-center mb-3">{person.program}</p>
                 
-                <div className="space-y-2 text-sm text-slate-600">
+                <div className="space-y-2 text-sm text-black">
                   <div className="flex items-center gap-2">
                     <Briefcase className="w-4 h-4" />
                     <span>{person.currentRole}</span>
@@ -140,12 +140,12 @@ export default function AlumniPage() {
           <div className="space-y-4">
             <div className="border-l-4 border-blue-600 pl-4">
               <h3 className="font-semibold">Alumni Networking Mixer</h3>
-              <p className="text-sm text-slate-600">March 15, 2026 • 6:00 PM</p>
+              <p className="text-sm text-black">March 15, 2026 • 6:00 PM</p>
               <p className="text-sm text-slate-500">Downtown Indianapolis</p>
             </div>
             <div className="border-l-4 border-green-600 pl-4">
               <h3 className="font-semibold">Career Fair</h3>
-              <p className="text-sm text-slate-600">April 20, 2026 • 10:00 AM</p>
+              <p className="text-sm text-black">April 20, 2026 • 10:00 AM</p>
               <p className="text-sm text-slate-500">Convention Center</p>
             </div>
           </div>
@@ -153,7 +153,7 @@ export default function AlumniPage() {
 
         <div className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-xl font-bold mb-4">Mentorship Program</h2>
-          <p className="text-slate-600 mb-4">
+          <p className="text-black mb-4">
             Connect with experienced alumni for career guidance and professional development.
           </p>
           <button className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition">

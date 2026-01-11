@@ -70,10 +70,10 @@ export default async function StaffTrainingPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 Staff Training
               </h1>
-              <p className="text-slate-600 mt-2">
+              <p className="text-black mt-2">
                 Complete training modules and earn certifications
               </p>
             </div>
@@ -94,51 +94,51 @@ export default async function StaffTrainingPage() {
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {totalModules}
               </span>
             </div>
-            <p className="text-slate-600 text-sm">Total Modules</p>
+            <p className="text-black text-sm">Total Modules</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
               <CheckCircle className="h-8 w-8 text-green-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {completedModules}
               </span>
             </div>
-            <p className="text-slate-600 text-sm">Completed</p>
+            <p className="text-black text-sm">Completed</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
               <Award className="h-8 w-8 text-yellow-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {certifiedModules}
               </span>
             </div>
-            <p className="text-slate-600 text-sm">Certifications</p>
+            <p className="text-black text-sm">Certifications</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
               <Clock className="h-8 w-8 text-purple-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {completionPercentage}%
               </span>
             </div>
-            <p className="text-slate-600 text-sm">Progress</p>
+            <p className="text-black text-sm">Progress</p>
           </div>
         </div>
 
         {/* Progress Bar */}
         <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 mb-8">
           <div className="flex items-center justify-between mb-2">
-            <h2 className="text-lg font-semibold text-slate-900">
+            <h2 className="text-lg font-semibold text-black">
               Overall Progress
             </h2>
-            <span className="text-sm text-slate-600">
+            <span className="text-sm text-black">
               {completedModules} of {totalModules} modules completed
             </span>
           </div>
@@ -152,7 +152,7 @@ export default async function StaffTrainingPage() {
 
         {/* Training Modules */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-slate-900">
+          <h2 className="text-2xl font-bold text-black">
             Training Modules
           </h2>
 
@@ -167,10 +167,10 @@ export default async function StaffTrainingPage() {
           {!modules || modules.length === 0 ? (
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-12 text-center">
               <BookOpen className="h-16 w-16 text-slate-300 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">
+              <h3 className="text-xl font-semibold text-black mb-2">
                 No Training Modules Available
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Training modules will appear here once they are added by
                 administrators.
               </p>
@@ -185,7 +185,7 @@ export default async function StaffTrainingPage() {
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-lg font-semibold text-slate-900">
+                        <h3 className="text-lg font-semibold text-black">
                           {module.title}
                         </h3>
                         {module.required && (
@@ -194,7 +194,7 @@ export default async function StaffTrainingPage() {
                           </span>
                         )}
                       </div>
-                      <p className="text-slate-600 text-sm mb-3">
+                      <p className="text-black text-sm mb-3">
                         {module.description}
                       </p>
                       {module.duration && (
@@ -212,14 +212,14 @@ export default async function StaffTrainingPage() {
                   {module.progress && (
                     <div className="mb-4 p-3 bg-slate-50 rounded-lg">
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-slate-600">
+                        <span className="text-black">
                           Completed:{' '}
                           {new Date(
                             module.progress.completed_at
                           ).toLocaleDateString()}
                         </span>
                         {module.progress.quiz_score && (
-                          <span className="font-medium text-slate-900">
+                          <span className="font-medium text-black">
                             Score: {module.progress.quiz_score}%
                           </span>
                         )}
@@ -247,7 +247,7 @@ export default async function StaffTrainingPage() {
                     )}
                     {!module.isCompleted && (
                       <button
-                        className="flex-1 px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors"
+                        className="flex-1 px-4 py-2 bg-slate-100 text-black rounded-lg hover:bg-slate-200 transition-colors"
                         onClick={() => {
                           alert(
                             'Quiz functionality will be implemented with interactive modal'

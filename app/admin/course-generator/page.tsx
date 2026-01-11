@@ -26,12 +26,12 @@ export default async function CourseGeneratorPage() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-6">AI Course Generator</h1>
         <div className="bg-white rounded-lg shadow p-6">
-          <p className="text-gray-600 mb-4">
+          <p className="text-black mb-4">
             Generate complete courses using AI
           </p>
           <form className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Course Topic
               </label>
               <input
@@ -41,7 +41,7 @@ export default async function CourseGeneratorPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Duration (weeks)
               </label>
               <input
@@ -51,7 +51,7 @@ export default async function CourseGeneratorPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Skill Level
               </label>
               <select className="w-full px-4 py-2 border rounded-lg">

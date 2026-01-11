@@ -42,7 +42,7 @@ export default function TestWebhookPage() {
     <div className="min-h-screen bg-slate-50 p-8">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold mb-2">Test Webhook (No Payment)</h1>
-        <p className="text-slate-600 mb-8">
+        <p className="text-black mb-8">
           Simulates automatic enrollment without going through Stripe
         </p>
 

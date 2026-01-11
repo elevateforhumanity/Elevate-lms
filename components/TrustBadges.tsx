@@ -6,10 +6,10 @@ export function TrustBadges() {
     <section className="py-12 bg-slate-50 border-y border-slate-200">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">
+          <h2 className="text-2xl font-bold text-black mb-2">
             Trusted by Government Agencies & Employers
           </h2>
-          <p className="text-slate-600">
+          <p className="text-black">
             Accredited, compliant, and recognized by leading workforce development organizations
           </p>
         </div>
@@ -20,8 +20,8 @@ export function TrustBadges() {
             <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3">
               <Shield className="w-8 h-8 text-blue-600" />
             </div>
-            <div className="text-sm font-semibold text-slate-900">FERPA</div>
-            <div className="text-xs text-slate-600">Compliant</div>
+            <div className="text-sm font-semibold text-black">FERPA</div>
+            <div className="text-xs text-black">Compliant</div>
           </div>
 
           {/* WIOA Approved */}
@@ -29,8 +29,8 @@ export function TrustBadges() {
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-3">
               <CheckCircle className="w-8 h-8 text-green-600" />
             </div>
-            <div className="text-sm font-semibold text-slate-900">WIOA</div>
-            <div className="text-xs text-slate-600">Approved Provider</div>
+            <div className="text-sm font-semibold text-black">WIOA</div>
+            <div className="text-xs text-black">Approved Provider</div>
           </div>
 
           {/* Industry Certified */}
@@ -38,8 +38,8 @@ export function TrustBadges() {
             <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-3">
               <Award className="w-8 h-8 text-orange-600" />
             </div>
-            <div className="text-sm font-semibold text-slate-900">Industry</div>
-            <div className="text-xs text-slate-600">Certified Programs</div>
+            <div className="text-sm font-semibold text-black">Industry</div>
+            <div className="text-xs text-black">Certified Programs</div>
           </div>
 
           {/* Data Security */}
@@ -47,14 +47,14 @@ export function TrustBadges() {
             <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-3">
               <Lock className="w-8 h-8 text-purple-600" />
             </div>
-            <div className="text-sm font-semibold text-slate-900">Secure</div>
-            <div className="text-xs text-slate-600">AES-256 Encrypted</div>
+            <div className="text-sm font-semibold text-black">Secure</div>
+            <div className="text-xs text-black">AES-256 Encrypted</div>
           </div>
         </div>
 
         {/* Partner Logos Content */}
         <div className="mt-12 pt-8 border-t border-slate-200">
-          <p className="text-center text-sm text-slate-600 mb-6">
+          <p className="text-center text-sm text-black mb-6">
             Partnered with leading workforce development organizations
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">

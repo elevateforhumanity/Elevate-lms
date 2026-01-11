@@ -39,10 +39,10 @@ export default function TrainingPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div>
               <h2 className="text-3xl font-bold mb-6">Professional Tax Training</h2>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Our training program prepares you to become an IRS-certified tax preparer. Learn the skills needed to prepare individual and business tax returns accurately and efficiently.
               </p>
-              <p className="text-gray-700 mb-6">
+              <p className="text-black mb-6">
                 Training includes federal tax law, tax software operation, client communication, and ethics requirements.
               </p>
               <Link
@@ -81,7 +81,7 @@ export default function TrainingPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-semibold mb-2">Prerequisites</h4>
-                <ul className="list-disc list-inside space-y-1 text-gray-700">
+                <ul className="list-disc list-inside space-y-1 text-black">
                   <li>High school diploma or equivalent</li>
                   <li>Basic computer skills</li>
                   <li>Strong attention to detail</li>
@@ -90,7 +90,7 @@ export default function TrainingPage() {
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Certification</h4>
-                <ul className="list-disc list-inside space-y-1 text-gray-700">
+                <ul className="list-disc list-inside space-y-1 text-black">
                   <li>Complete training program</li>
                   <li>Pass IRS competency test</li>
                   <li>Obtain PTIN (Preparer Tax ID)</li>

@@ -59,10 +59,10 @@ export default async function EnrollmentJobsPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Enrollment Jobs Monitor
           </h1>
-          <p className="text-gray-600">
+          <p className="text-black">
             View and retry failed enrollment orchestration jobs
           </p>
         </div>
@@ -72,7 +72,7 @@ export default async function EnrollmentJobsPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Failed Jobs</p>
+                <p className="text-sm text-black mb-1">Failed Jobs</p>
                 <p className="text-3xl font-bold text-red-600">{failedCount}</p>
               </div>
               <XCircle className="h-12 w-12 text-red-600" />
@@ -82,7 +82,7 @@ export default async function EnrollmentJobsPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Retrying</p>
+                <p className="text-sm text-black mb-1">Retrying</p>
                 <p className="text-3xl font-bold text-yellow-600">
                   {retryingCount}
                 </p>
@@ -94,12 +94,12 @@ export default async function EnrollmentJobsPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Total Issues</p>
-                <p className="text-3xl font-bold text-gray-900">
+                <p className="text-sm text-black mb-1">Total Issues</p>
+                <p className="text-3xl font-bold text-black">
                   {failedCount + retryingCount}
                 </p>
               </div>
-              <AlertCircle className="h-12 w-12 text-gray-600" />
+              <AlertCircle className="h-12 w-12 text-black" />
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@ export default async function EnrollmentJobsPage() {
         {/* Jobs List */}
         <div className="bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-black">
               Failed & Retrying Jobs
             </h2>
           </div>
@@ -115,10 +115,10 @@ export default async function EnrollmentJobsPage() {
           {!jobs || jobs.length === 0 ? (
             <div className="p-8 text-center">
               <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
-              <p className="text-lg font-medium text-gray-900 mb-2">
+              <p className="text-lg font-medium text-black mb-2">
                 All Clear!
               </p>
-              <p className="text-gray-600">
+              <p className="text-black">
                 No failed or retrying jobs at this time.
               </p>
             </div>
@@ -138,12 +138,12 @@ export default async function EnrollmentJobsPage() {
                         >
                           {job.status}
                         </span>
-                        <span className="text-sm font-medium text-gray-900">
+                        <span className="text-sm font-medium text-black">
                           {job.job_type.replace(/_/g, ' ').toUpperCase()}
                         </span>
                       </div>
 
-                      <div className="text-sm text-gray-600 space-y-1">
+                      <div className="text-sm text-black space-y-1">
                         <p>
                           <span className="font-medium">Enrollment:</span>{' '}
                           {job.enrollment_id}
@@ -188,7 +188,7 @@ export default async function EnrollmentJobsPage() {
                     )}
                   </div>
 
-                  <div className="text-xs text-gray-700">
+                  <div className="text-xs text-black">
                     Created: {new Date(job.created_at).toLocaleString()}
                     {job.scheduled_for && (
                       <>

@@ -113,7 +113,7 @@ export function PageTemplate({
                     <h3 className="text-xl font-semibold mb-2">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <p className="text-black">{feature.description}</p>
                   </div>
                 ))}
               </div>
@@ -130,7 +130,7 @@ export function PageTemplate({
                 >
                   <div className={section.reverse ? 'md:order-2' : ''}>
                     <h2 className="text-3xl font-bold mb-6">{section.title}</h2>
-                    <p className="text-gray-700 mb-6">{section.description}</p>
+                    <p className="text-black mb-6">{section.description}</p>
                     {section.bullets && (
                       <ul className="space-y-3">
                         {section.bullets.map((bullet, i) => (
@@ -183,7 +183,7 @@ export function PageTemplate({
                       <h3 className="text-xl font-semibold mb-3">
                         {card.title}
                       </h3>
-                      <p className="text-gray-600">{card.description}</p>
+                      <p className="text-black">{card.description}</p>
                     </>
                   );
 

@@ -22,7 +22,7 @@ export function ComplianceNotice({
   if (variant === 'compact') {
     return (
       <div
-        className={`flex items-center gap-2 text-xs text-gray-600 ${className}`}
+        className={`flex items-center gap-2 text-xs text-black ${className}`}
       >
         <Shield className="w-4 h-4 text-gray-400" />
         <span>
@@ -83,9 +83,9 @@ export function ComplianceNotice({
       className={`bg-gray-50 border border-gray-200 rounded-lg p-4 ${className}`}
     >
       <div className="flex items-start gap-3">
-        <Shield className="w-5 h-5 text-gray-600 flex-shrink-0 mt-0.5" />
+        <Shield className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
         <div className="flex-1">
-          <p className="text-sm text-gray-700 mb-2">{context}</p>
+          <p className="text-sm text-black mb-2">{context}</p>
           <div className="flex flex-wrap gap-3">
             {policies.map((policy) => (
               <Link

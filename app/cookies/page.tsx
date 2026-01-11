@@ -30,69 +30,69 @@ export default function CookiesPage() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-6">
           <div className="prose prose-lg max-w-none">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">
               What Are Cookies?
             </h2>
-            <p className="text-slate-700 mb-6">
+            <p className="text-black mb-6">
               Cookies are small text files that are placed on your computer or
               mobile device when you visit our website. They help us provide you
               with a better experience by remembering your preferences and
               understanding how you use our site.
             </p>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 mt-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-6 mt-12">
               How We Use Cookies
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               Elevate For Humanity uses cookies for the following purposes:
             </p>
 
-            <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-4 mt-8">
+            <h3 className="text-lg md:text-lg font-bold text-black mb-4 mt-8">
               Essential Cookies
             </h3>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               These cookies are necessary for the website to function properly.
               They enable basic functions like:
             </p>
-            <ul className="list-disc pl-6 mb-6 text-slate-700 space-y-2">
+            <ul className="list-disc pl-6 mb-6 text-black space-y-2">
               <li>Page navigation</li>
               <li>Access to secure areas</li>
               <li>Form submissions</li>
               <li>User authentication</li>
             </ul>
 
-            <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-4 mt-8">
+            <h3 className="text-lg md:text-lg font-bold text-black mb-4 mt-8">
               Analytics Cookies
             </h3>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               We use analytics cookies to understand how visitors interact with
               our website. This helps us improve our services. These cookies
               collect information such as:
             </p>
-            <ul className="list-disc pl-6 mb-6 text-slate-700 space-y-2">
+            <ul className="list-disc pl-6 mb-6 text-black space-y-2">
               <li>Number of visitors</li>
               <li>Pages visited</li>
               <li>Time spent on pages</li>
               <li>Traffic sources</li>
             </ul>
 
-            <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-4 mt-8">
+            <h3 className="text-lg md:text-lg font-bold text-black mb-4 mt-8">
               Functionality Cookies
             </h3>
-            <p className="text-slate-700 mb-6">
+            <p className="text-black mb-6">
               These cookies allow our website to remember choices you make (such
               as your language preference) and provide enhanced, personalized
               features.
             </p>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 mt-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-6 mt-12">
               Third-Party Cookies
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               We may use third-party services that set cookies on our website,
               including:
             </p>
-            <ul className="list-disc pl-6 mb-6 text-slate-700 space-y-2">
+            <ul className="list-disc pl-6 mb-6 text-black space-y-2">
               <li>
                 <strong>Google Analytics:</strong> To analyze website traffic
                 and usage
@@ -106,13 +106,13 @@ export default function CookiesPage() {
               </li>
             </ul>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 mt-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-6 mt-12">
               Managing Cookies
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               You can control and manage cookies in several ways:
             </p>
-            <ul className="list-disc pl-6 mb-6 text-slate-700 space-y-2">
+            <ul className="list-disc pl-6 mb-6 text-black space-y-2">
               <li>
                 <strong>Browser Settings:</strong> Most browsers allow you to
                 refuse or accept cookies through their settings
@@ -126,40 +126,40 @@ export default function CookiesPage() {
                 opt-out tools provided by third parties
               </li>
             </ul>
-            <p className="text-slate-700 mb-6">
+            <p className="text-black mb-6">
               Please note that blocking or deleting cookies may impact your
               experience on our website and limit certain features.
             </p>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 mt-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-6 mt-12">
               Your Consent
             </h2>
-            <p className="text-slate-700 mb-6">
+            <p className="text-black mb-6">
               By using our website, you consent to our use of cookies as
               described in this policy. If you do not agree with our use of
               cookies, you should adjust your browser settings accordingly or
               refrain from using our website.
             </p>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 mt-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-6 mt-12">
               Changes to This Policy
             </h2>
-            <p className="text-slate-700 mb-6">
+            <p className="text-black mb-6">
               We may update this Cookie Policy from time to time. Any changes
               will be posted on this page with an updated revision date.
             </p>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 mt-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-6 mt-12">
               Contact Us
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               If you have questions about our use of cookies, please contact us:
             </p>
             <div className="bg-slate-50 p-6 rounded-lg mb-8">
-              <p className="text-slate-700 mb-2">
+              <p className="text-black mb-2">
                 <strong>Elevate For Humanity</strong>
               </p>
-              <p className="text-slate-700 mb-2">
+              <p className="text-black mb-2">
                 Phone:{' '}
                 <a
                   href="tel:317-314-3757"
@@ -168,7 +168,7 @@ export default function CookiesPage() {
                   317-314-3757
                 </a>
               </p>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Email:{' '}
                 <a
                   href="mailto:info@elevateforhumanity.institute"

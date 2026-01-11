@@ -11,10 +11,10 @@ export function AiNarratorSection() {
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-orange-600">
             AI Instructor
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-black">
             Let our AI guide explain Elevate for Humanity
           </h2>
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-black">
             This short AI-narrated overview introduces Elevate for Humanity and
             the Elevate for Humanity. It explains how our programs connect
             to federal and state workforce funding streams like WIOA, Workforce
@@ -22,7 +22,7 @@ export function AiNarratorSection() {
             may attend at little or no cost.
           </p>
 
-          <ul className="mt-3 space-y-2 text-sm text-slate-700 list-disc pl-4">
+          <ul className="mt-3 space-y-2 text-sm text-black list-disc pl-4">
             <li>What Elevate for Humanity is and who we serve</li>
             <li>How programs link to WIOA and state workforce grants</li>
             <li>How to use elevateforhumanity.institute to explore and apply</li>

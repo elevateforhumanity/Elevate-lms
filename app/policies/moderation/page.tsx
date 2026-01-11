@@ -9,7 +9,7 @@ export default function ModerationPage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Moderation Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Moderation Process</h2>
       <ul><li>Content reviewed by moderators</li><li>Violations removed or flagged</li><li>Users notified of actions</li><li>Appeals process available</li></ul>
       <h2>Enforcement Actions</h2>

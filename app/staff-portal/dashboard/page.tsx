@@ -82,8 +82,8 @@ export default async function StaffDashboard() {
       {/* Header */}
       <section className="bg-white border-b border-slate-200 py-6">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl font-bold text-slate-900">Staff Dashboard</h1>
-          <p className="text-slate-600 mt-2">
+          <h1 className="text-3xl font-bold text-black">Staff Dashboard</h1>
+          <p className="text-black mt-2">
             Welcome back, {profile.full_name || profile.email}
           </p>
         </div>
@@ -96,21 +96,21 @@ export default async function StaffDashboard() {
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
               <Users className="h-8 w-8 text-blue-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {totalStudents || 0}
               </span>
             </div>
-            <div className="text-sm text-slate-600">Total Students</div>
+            <div className="text-sm text-black">Total Students</div>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
               <BookOpen className="h-8 w-8 text-green-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {activeEnrollments || 0}
               </span>
             </div>
-            <div className="text-sm text-slate-600">Active Enrollments</div>
+            <div className="text-sm text-black">Active Enrollments</div>
           </div>
 
           <div
@@ -128,7 +128,7 @@ export default async function StaffDashboard() {
               />
               <span
                 className={`text-3xl font-bold ${
-                  (atRiskCount || 0) > 0 ? 'text-yellow-900' : 'text-slate-900'
+                  (atRiskCount || 0) > 0 ? 'text-yellow-900' : 'text-black'
                 }`}
               >
                 {atRiskCount || 0}
@@ -136,7 +136,7 @@ export default async function StaffDashboard() {
             </div>
             <div
               className={`text-sm ${
-                (atRiskCount || 0) > 0 ? 'text-yellow-900' : 'text-slate-600'
+                (atRiskCount || 0) > 0 ? 'text-yellow-900' : 'text-black'
               }`}
             >
               At-Risk Students
@@ -146,11 +146,11 @@ export default async function StaffDashboard() {
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
               <Clock className="h-8 w-8 text-purple-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {pendingEnrollments || 0}
               </span>
             </div>
-            <div className="text-sm text-slate-600">Pending Enrollments</div>
+            <div className="text-sm text-black">Pending Enrollments</div>
           </div>
         </div>
 
@@ -164,7 +164,7 @@ export default async function StaffDashboard() {
                 className="block p-3 border rounded-lg hover:bg-slate-50 transition"
               >
                 <div className="font-semibold">View All Students</div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-black">
                   Manage student accounts and enrollments
                 </div>
               </Link>
@@ -173,7 +173,7 @@ export default async function StaffDashboard() {
                 className="block p-3 border rounded-lg hover:bg-slate-50 transition"
               >
                 <div className="font-semibold">View Programs</div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-black">
                   Browse available training programs
                 </div>
               </Link>
@@ -182,7 +182,7 @@ export default async function StaffDashboard() {
                 className="block p-3 border rounded-lg hover:bg-slate-50 transition"
               >
                 <div className="font-semibold">Generate Reports</div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-black">
                   Access analytics and insights
                 </div>
               </Link>
@@ -256,12 +256,12 @@ export default async function StaffDashboard() {
                 <tbody className="divide-y divide-slate-200">
                   {recentEnrollments.map((enrollment) => (
                     <tr key={enrollment.id} className="hover:bg-slate-50">
-                      <td className="px-6 py-4 text-sm text-slate-900">
+                      <td className="px-6 py-4 text-sm text-black">
                         {enrollment.profiles?.full_name ||
                           enrollment.profiles?.email ||
                           'N/A'}
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-900">
+                      <td className="px-6 py-4 text-sm text-black">
                         {enrollment.programs?.name || 'N/A'}
                       </td>
                       <td className="px-6 py-4 text-sm">
@@ -273,7 +273,7 @@ export default async function StaffDashboard() {
                                 ? 'bg-blue-100 text-blue-800'
                                 : enrollment.status === 'pending'
                                   ? 'bg-yellow-100 text-yellow-800'
-                                  : 'bg-slate-100 text-slate-800'
+                                  : 'bg-slate-100 text-black'
                           }`}
                         >
                           {enrollment.status}
@@ -296,7 +296,7 @@ export default async function StaffDashboard() {
 
         {/* Staff Tools */}
         <div className="mt-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">Staff Tools</h3>
+          <h3 className="text-lg font-semibold text-black mb-4">Staff Tools</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <Link href="/staff-portal/students" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Students</Link>
             <Link href="/staff-portal/courses" aria-label="Link" className="p-3 bg-white border rounded-lg hover:border-blue-500 hover:shadow text-sm">Courses</Link>

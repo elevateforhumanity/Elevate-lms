@@ -17,27 +17,27 @@ export default function DivorceSupportPage() {
           ← Back to Rise Forward Foundation
         </Link>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-6">
+        <h1 className="text-4xl font-bold text-black mb-6">
           Divorce Support
         </h1>
 
         <div className="prose prose-lg max-w-none">
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-black mb-8">
             Compassionate support for individuals and families navigating the challenges of divorce.
           </p>
 
-          <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">
+          <h2 className="text-2xl font-bold text-black mt-8 mb-4">
             Our Support Services
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-black mb-4">
             Divorce can be one of life's most challenging transitions. We provide support to help
             you navigate this difficult time with grace and resilience.
           </p>
 
-          <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">
+          <h2 className="text-2xl font-bold text-black mt-8 mb-4">
             Services Offered
           </h2>
-          <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-8">
+          <ul className="list-disc pl-6 text-black space-y-2 mb-8">
             <li>Individual counseling and emotional support</li>
             <li>Co-parenting guidance and strategies</li>
             <li>Support groups for divorced individuals</li>
@@ -47,10 +47,10 @@ export default function DivorceSupportPage() {
           </ul>
 
           <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mt-8">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">
+            <h3 className="text-xl font-bold text-black mb-3">
               Get Support Today
             </h3>
-            <p className="text-gray-700 mb-4">
+            <p className="text-black mb-4">
               You don't have to navigate this alone. We're here to support you.
             </p>
             <Link

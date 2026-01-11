@@ -66,7 +66,7 @@ export default function JRIProgramsPage() {
             Why JRI Works
           </h2>
 
-          <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-lg text-black leading-relaxed">
             <p>
               Returning to society after incarceration is one of the hardest
               challenges anyone can face. Without job skills, stable employment,
@@ -111,7 +111,7 @@ export default function JRIProgramsPage() {
                 <Shield className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Free Training</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 100% free career training in high-demand fields
               </p>
             </div>
@@ -121,7 +121,7 @@ export default function JRIProgramsPage() {
                 <Users className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Case Management</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Dedicated support coordinator to help you succeed
               </p>
             </div>
@@ -131,7 +131,7 @@ export default function JRIProgramsPage() {
                 <TrendingUp className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Job Placement</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Direct connections to employers ready to hire
               </p>
             </div>
@@ -141,7 +141,7 @@ export default function JRIProgramsPage() {
                 <Heart className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Wraparound Support</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Transportation, childcare, and other assistance
               </p>
             </div>
@@ -150,7 +150,7 @@ export default function JRIProgramsPage() {
       </section>
 
       {/* Earn While You Learn - Apprenticeships */}
-      <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20 bg-zinc-900   text-slate-900">
+      <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20 bg-zinc-900   text-black">
         <div className="mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
@@ -236,36 +236,36 @@ export default function JRIProgramsPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-8 text-gray-900">
+          <div className="bg-white rounded-xl p-8 text-black">
             <h3 className="text-2xl font-bold mb-4 text-center">
               Available Apprenticeship Programs
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <p className="font-bold text-lg mb-2">Barber Apprenticeship</p>
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-black mb-2">
                   1,500 hours | $12-15/hr starting
                 </p>
-                <p className="text-xs text-gray-700">State Board approved</p>
+                <p className="text-xs text-black">State Board approved</p>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <p className="font-bold text-lg mb-2">HVAC Technician</p>
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-black mb-2">
                   2,000 hours | $15-18/hr starting
                 </p>
-                <p className="text-xs text-gray-700">
+                <p className="text-xs text-black">
                   EPA certification included
                 </p>
               </div>
               <div className="text-center p-4 bg-gray-50 rounded-lg">
                 <p className="font-bold text-lg mb-2">Building Maintenance</p>
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-black mb-2">
                   1,000 hours | $14-17/hr starting
                 </p>
-                <p className="text-xs text-gray-700">Multi-trade skills</p>
+                <p className="text-xs text-black">Multi-trade skills</p>
               </div>
             </div>
-            <p className="text-center mt-6 text-sm text-gray-600">
+            <p className="text-center mt-6 text-sm text-black">
               <strong>
                 U.S. Department of Labor Registered Apprenticeship Sponsor
               </strong>
@@ -359,7 +359,7 @@ export default function JRIProgramsPage() {
             <h3 className="text-xl font-bold text-black mb-4">
               JRI Eligibility
             </h3>
-            <ul className="space-y-3 text-gray-700">
+            <ul className="space-y-3 text-black">
               <li className="flex items-start gap-3">
                 <span className="text-indigo-600 font-bold">•</span>
                 <span>Individuals with prior justice system involvement</span>
@@ -383,7 +383,7 @@ export default function JRIProgramsPage() {
             </ul>
 
             <div className="mt-6 pt-6 border-t border-indigo-200">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 <strong>Note:</strong> Eligibility requirements may vary by
                 program and location. Contact us to discuss your specific
                 situation.
@@ -408,7 +408,7 @@ export default function JRIProgramsPage() {
                   ▼
                 </span>
               </summary>
-              <div className="mt-4 text-gray-700 space-y-3">
+              <div className="mt-4 text-black space-y-3">
                 <p>
                   JRI is a state-funded program designed to reduce recidivism by
                   providing job training, education, and support services to
@@ -433,7 +433,7 @@ export default function JRIProgramsPage() {
                   ▼
                 </span>
               </summary>
-              <div className="mt-4 text-gray-700 space-y-3">
+              <div className="mt-4 text-black space-y-3">
                 <p>You may be eligible if you:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>
@@ -469,7 +469,7 @@ export default function JRIProgramsPage() {
                   ▼
                 </span>
               </summary>
-              <div className="mt-4 text-gray-700 space-y-3">
+              <div className="mt-4 text-black space-y-3">
                 <p>
                   <strong>Yes, completely free.</strong> JRI funding covers all
                   tuition, books, materials, certifications, and exam fees. You
@@ -491,7 +491,7 @@ export default function JRIProgramsPage() {
                   ▼
                 </span>
               </summary>
-              <div className="mt-4 text-gray-700 space-y-3">
+              <div className="mt-4 text-black space-y-3">
                 <p>
                   Not necessarily. Many of our programs are specifically
                   designed for individuals with criminal backgrounds. We work
@@ -515,7 +515,7 @@ export default function JRIProgramsPage() {
                   ▼
                 </span>
               </summary>
-              <div className="mt-4 text-gray-700 space-y-3">
+              <div className="mt-4 text-black space-y-3">
                 <p className="font-bold text-lg">
                   Visit{' '}
                   <a
@@ -553,7 +553,7 @@ export default function JRIProgramsPage() {
                   ▼
                 </span>
               </summary>
-              <div className="mt-4 text-gray-700 space-y-3">
+              <div className="mt-4 text-black space-y-3">
                 <p className="font-bold">We are officially approved by:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>
@@ -612,7 +612,7 @@ export default function JRIProgramsPage() {
                   ▼
                 </span>
               </summary>
-              <div className="mt-4 text-gray-700 space-y-3">
+              <div className="mt-4 text-black space-y-3">
                 <p>
                   <strong>Yes.</strong> Job placement is a core part of JRI. We
                   have partnerships with employers across Indiana who actively
@@ -633,7 +633,7 @@ export default function JRIProgramsPage() {
                   ▼
                 </span>
               </summary>
-              <div className="mt-4 text-gray-700 space-y-3">
+              <div className="mt-4 text-black space-y-3">
                 <p>Training duration varies by program:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>
@@ -671,7 +671,7 @@ export default function JRIProgramsPage() {
                   ▼
                 </span>
               </summary>
-              <div className="mt-4 text-gray-700 space-y-3">
+              <div className="mt-4 text-black space-y-3">
                 <p className="font-bold text-lg">
                   Yes! Through DOL-registered apprenticeship programs, you can
                   earn while you learn.
@@ -718,7 +718,7 @@ export default function JRIProgramsPage() {
                   ▼
                 </span>
               </summary>
-              <div className="mt-4 text-gray-700 space-y-3">
+              <div className="mt-4 text-black space-y-3">
                 <p>
                   We partner with employers, nonprofits, and program holders to
                   create registered apprenticeship programs and provide trained
@@ -769,7 +769,7 @@ export default function JRIProgramsPage() {
                   ▼
                 </span>
               </summary>
-              <div className="mt-4 text-gray-700 space-y-3">
+              <div className="mt-4 text-black space-y-3">
                 <p>
                   We're not just a training school—we're a complete support
                   system:
@@ -819,7 +819,7 @@ export default function JRIProgramsPage() {
           <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6">
             Ready to Start Your New Career?
           </h2>
-          <p className="text-xl text-gray-700 mb-8">
+          <p className="text-xl text-black mb-8">
             Apply now to see if you qualify for JRI-funded training.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

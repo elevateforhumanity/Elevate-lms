@@ -63,10 +63,10 @@ export default function WorkOneLocator() {
     <section className="py-16 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4">
             Find Your Nearest WorkOne Center
           </h2>
-          <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-black max-w-3xl mx-auto">
             Visit a WorkOne center to meet with a career advisor and get approved for free training
           </p>
         </div>
@@ -78,8 +78,8 @@ export default function WorkOneLocator() {
               <div className="flex items-start gap-3 mb-4">
                 <div className="text-3xl">📍</div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-lg text-slate-900 mb-2">{location.name}</h3>
-                  <div className="space-y-2 text-sm text-slate-600">
+                  <h3 className="font-bold text-lg text-black mb-2">{location.name}</h3>
+                  <div className="space-y-2 text-sm text-black">
                     <p>
                       {location.address}<br/>
                       {location.city}, IN {location.zip}
@@ -141,10 +141,10 @@ export default function WorkOneLocator() {
         {/* Additional Resources */}
         <div className="mt-12 bg-blue-50 rounded-lg p-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            <h3 className="text-2xl font-bold text-black mb-4">
               Can't Visit in Person?
             </h3>
-            <p className="text-lg text-slate-700 mb-6">
+            <p className="text-lg text-black mb-6">
               Many WorkOne centers offer virtual appointments via phone or video call
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -158,7 +158,7 @@ export default function WorkOneLocator() {
               </a>
               <a
                 href="tel:317-684-2400"
-                className="px-8 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-slate-50 transition-all shadow-lg border-2 border-slate-200"
+                className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-slate-50 transition-all shadow-lg border-2 border-slate-200"
               >
                 Call (317) 684-2400
               </a>
@@ -168,7 +168,7 @@ export default function WorkOneLocator() {
 
         {/* Search All Locations */}
         <div className="mt-12 text-center">
-          <p className="text-slate-600 mb-4">Looking for a WorkOne center outside Marion County?</p>
+          <p className="text-black mb-4">Looking for a WorkOne center outside Marion County?</p>
           <a
             href="https://www.in.gov/dwd/workone-centers/"
             target="_blank"

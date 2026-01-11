@@ -83,7 +83,7 @@ export default function AdminNextStepsPage() {
           <h1 className="text-3xl font-bold">
             WorkOne / ICC Progress Dashboard
           </h1>
-          <p className="mt-2 text-sm text-gray-700 leading-relaxed">
+          <p className="mt-2 text-sm text-black leading-relaxed">
             Track inquiry → Indiana Career Connect → WorkOne appointment →
             funding → EFH onboarding → start date.
           </p>
@@ -98,7 +98,7 @@ export default function AdminNextStepsPage() {
 
       <div className="mt-6 grid gap-3 rounded-2xl border bg-white p-5 sm:grid-cols-4">
         <div>
-          <label className="text-xs font-semibold text-gray-700">Search</label>
+          <label className="text-xs font-semibold text-black">Search</label>
           <input
             className="mt-1 w-full rounded-xl border px-3 py-2 text-sm"
             placeholder="Name, email, program…"
@@ -108,7 +108,7 @@ export default function AdminNextStepsPage() {
         </div>
 
         <div>
-          <label className="text-xs font-semibold text-gray-700">
+          <label className="text-xs font-semibold text-black">
             Funding status
           </label>
           <select
@@ -124,7 +124,7 @@ export default function AdminNextStepsPage() {
         </div>
 
         <div>
-          <label className="text-xs font-semibold text-gray-700">
+          <label className="text-xs font-semibold text-black">
             Needs attention
           </label>
           <select
@@ -167,13 +167,13 @@ export default function AdminNextStepsPage() {
         </div>
 
         {loading ? (
-          <div className="px-5 py-6 text-sm text-gray-700">Loading…</div>
+          <div className="px-5 py-6 text-sm text-black">Loading…</div>
         ) : rows.length === 0 ? (
-          <div className="px-5 py-6 text-sm text-gray-700">No results.</div>
+          <div className="px-5 py-6 text-sm text-black">No results.</div>
         ) : (
           <div className="w-full overflow-x-auto">
             <table className="w-full text-left text-sm">
-              <thead className="bg-gray-50 text-xs font-semibold text-gray-700">
+              <thead className="bg-gray-50 text-xs font-semibold text-black">
                 <tr>
                   <th className="px-4 py-3">Student</th>
                   <th className="px-4 py-3">Program</th>
@@ -188,7 +188,7 @@ export default function AdminNextStepsPage() {
                   <tr key={r.id} className="hover:bg-gray-50">
                     <td className="px-4 py-3">
                       <div className="font-semibold">{r.student_name}</div>
-                      <div className="text-xs text-gray-600">
+                      <div className="text-xs text-black">
                         {r.student_email}
                       </div>
                     </td>
@@ -197,7 +197,7 @@ export default function AdminNextStepsPage() {
                       <div className="font-semibold">
                         {r.program_name || '—'}
                       </div>
-                      <div className="text-xs text-gray-600">
+                      <div className="text-xs text-black">
                         {r.program_slug || ''}
                       </div>
                     </td>
@@ -206,7 +206,7 @@ export default function AdminNextStepsPage() {
                       <div className="font-semibold">
                         {r.progress?.percent ?? 0}%
                       </div>
-                      <div className="text-xs text-gray-600">
+                      <div className="text-xs text-black">
                         {r.progress?.done ?? 0}/{r.progress?.total ?? 8}
                       </div>
                     </td>
@@ -217,7 +217,7 @@ export default function AdminNextStepsPage() {
                           <div className="font-semibold">
                             {r.workone_appointment_date || 'Scheduled'}
                           </div>
-                          <div className="text-xs text-gray-600">
+                          <div className="text-xs text-black">
                             {r.workone_appointment_time || ''}{' '}
                             {r.workone_location
                               ? `• ${r.workone_location}`
@@ -235,7 +235,7 @@ export default function AdminNextStepsPage() {
                       <div className="font-semibold capitalize">
                         {r.funding_status}
                       </div>
-                      <div className="text-xs text-gray-600">
+                      <div className="text-xs text-black">
                         {r.funding_type || '—'}
                       </div>
                     </td>
@@ -327,7 +327,7 @@ export default function AdminNextStepsPage() {
 function Stat({ label, value }: { label: string; value: number }) {
   return (
     <div className="rounded-2xl border bg-white p-4">
-      <div className="text-xs font-semibold text-gray-600">{label}</div>
+      <div className="text-xs font-semibold text-black">{label}</div>
       <div className="mt-1 text-2xl font-bold">{value ?? 0}</div>
     </div>
   );
@@ -362,7 +362,7 @@ function QuickEdit({
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="text-lg font-bold">Quick Edit</div>
-            <div className="text-sm text-gray-700">
+            <div className="text-sm text-black">
               {row.student_name} • {row.program_name || '—'}
             </div>
           </div>
@@ -376,7 +376,7 @@ function QuickEdit({
 
         <div className="mt-5 grid gap-4 sm:grid-cols-3">
           <div className="sm:col-span-1">
-            <label className="text-xs font-semibold text-gray-700">
+            <label className="text-xs font-semibold text-black">
               WorkOne Appt Date
             </label>
             <input
@@ -388,7 +388,7 @@ function QuickEdit({
           </div>
 
           <div className="sm:col-span-1">
-            <label className="text-xs font-semibold text-gray-700">
+            <label className="text-xs font-semibold text-black">
               WorkOne Appt Time
             </label>
             <input
@@ -400,7 +400,7 @@ function QuickEdit({
           </div>
 
           <div className="sm:col-span-1">
-            <label className="text-xs font-semibold text-gray-700">
+            <label className="text-xs font-semibold text-black">
               WorkOne Location
             </label>
             <input
@@ -412,7 +412,7 @@ function QuickEdit({
           </div>
 
           <div className="sm:col-span-1">
-            <label className="text-xs font-semibold text-gray-700">
+            <label className="text-xs font-semibold text-black">
               Funding Type
             </label>
             <select
@@ -430,7 +430,7 @@ function QuickEdit({
           </div>
 
           <div className="sm:col-span-2">
-            <label className="text-xs font-semibold text-gray-700">
+            <label className="text-xs font-semibold text-black">
               Staff Notes
             </label>
             <textarea

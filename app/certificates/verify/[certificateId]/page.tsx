@@ -98,10 +98,10 @@ export default async function VerifyCertificatePage({
 
         <div className="max-w-2xl w-full bg-white rounded-2xl shadow-xl p-8 text-center">
           <XCircle className="w-20 h-20 text-red-500 mx-auto mb-6" />
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl font-bold text-black mb-4">
             Certificate Not Found
           </h1>
-          <p className="text-lg text-gray-600 mb-8">
+          <p className="text-lg text-black mb-8">
             Certificate number{' '}
             <span className="font-mono font-semibold">
               {params.certificateId}
@@ -109,10 +109,10 @@ export default async function VerifyCertificatePage({
             will not be found in our repository.
           </p>
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               <strong>Please verify:</strong>
             </p>
-            <ul className="text-sm text-gray-600 mt-2 space-y-1 text-left">
+            <ul className="text-sm text-black mt-2 space-y-1 text-left">
               <li>• Certificate number is entered correctly</li>
               <li>• Certificate has been issued (may take 24-48 hours)</li>
               <li>• Certificate has not been revoked</li>
@@ -131,10 +131,10 @@ export default async function VerifyCertificatePage({
               <div className="max-w-7xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div>
-                    <h2 className="text-2xl md:text-3xl md:text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                    <h2 className="text-2xl md:text-3xl md:text-2xl md:text-3xl font-bold mb-6 text-black">
                       Your Journey Starts Here
                     </h2>
-                    <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                    <p className="text-lg text-black mb-6 leading-relaxed">
                       Every great career begins with a single step. Whether
                       you're looking to change careers, upgrade your skills, or
                       enter the workforce for the first time, we're here to help
@@ -156,7 +156,7 @@ export default async function VerifyCertificatePage({
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           100% free training - no tuition, no hidden costs
                         </span>
                       </li>
@@ -174,7 +174,7 @@ export default async function VerifyCertificatePage({
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Industry-recognized certifications that employers
                           value
                         </span>
@@ -193,7 +193,7 @@ export default async function VerifyCertificatePage({
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Job placement assistance and career support
                         </span>
                       </li>
@@ -211,7 +211,7 @@ export default async function VerifyCertificatePage({
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Flexible scheduling for working adults
                         </span>
                       </li>
@@ -297,10 +297,10 @@ export default async function VerifyCertificatePage({
               <XCircle className="w-12 h-12 text-brand-orange-600" />
             )}
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-black">
                 {isValid ? 'Certificate Verified ✓' : 'Certificate Invalid'}
               </h1>
-              <p className="text-gray-600">
+              <p className="text-black">
                 {isValid
                   ? 'This certificate is authentic and stored in our official repository'
                   : 'This certificate has been revoked or is no longer valid'}
@@ -311,63 +311,63 @@ export default async function VerifyCertificatePage({
 
         {/* Certificate Details */}
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-black mb-6">
             Certificate Details
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
+              <label className="text-sm font-semibold text-black uppercase tracking-wide">
                 Certificate Number
               </label>
-              <p className="text-lg font-mono font-bold text-gray-900 mt-1">
+              <p className="text-lg font-mono font-bold text-black mt-1">
                 {certificate.certificate_number}
               </p>
             </div>
 
             <div>
-              <label className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
+              <label className="text-sm font-semibold text-black uppercase tracking-wide">
                 Issue Date
               </label>
-              <p className="text-lg font-semibold text-gray-900 mt-1">
+              <p className="text-lg font-semibold text-black mt-1">
                 {completionDate}
               </p>
             </div>
 
             <div>
-              <label className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
+              <label className="text-sm font-semibold text-black uppercase tracking-wide">
                 Recipient
               </label>
-              <p className="text-lg font-semibold text-gray-900 mt-1">
+              <p className="text-lg font-semibold text-black mt-1">
                 {studentName}
               </p>
             </div>
 
             <div>
-              <label className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
+              <label className="text-sm font-semibold text-black uppercase tracking-wide">
                 Program
               </label>
-              <p className="text-lg font-semibold text-gray-900 mt-1">
+              <p className="text-lg font-semibold text-black mt-1">
                 {programTitle}
               </p>
             </div>
 
             {totalHours > 0 && (
               <div>
-                <label className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
+                <label className="text-sm font-semibold text-black uppercase tracking-wide">
                   Training Hours
                 </label>
-                <p className="text-lg font-semibold text-gray-900 mt-1">
+                <p className="text-lg font-semibold text-black mt-1">
                   {totalHours} hours
                 </p>
               </div>
             )}
 
             <div>
-              <label className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
+              <label className="text-sm font-semibold text-black uppercase tracking-wide">
                 Issued By
               </label>
-              <p className="text-lg font-semibold text-gray-900 mt-1">
+              <p className="text-lg font-semibold text-black mt-1">
                 Elevate For Humanity
               </p>
             </div>
@@ -375,20 +375,20 @@ export default async function VerifyCertificatePage({
 
           {/* Repository Information */}
           <div className="mt-8 pt-8 border-t">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">
+            <h3 className="text-lg font-bold text-black mb-4">
               Repository Information
             </h3>
             <div className="bg-blue-50 rounded-lg p-6">
-              <p className="text-sm text-gray-700 mb-2">
+              <p className="text-sm text-black mb-2">
                 <strong>Official Record:</strong> This certificate is
                 permanently stored in the Elevate For Humanity certificate
                 repository.
               </p>
-              <p className="text-sm text-gray-700 mb-2">
+              <p className="text-sm text-black mb-2">
                 <strong>Verification Method:</strong> Each certificate contains
                 a unique number and QR code linked to this verification page.
               </p>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-black">
                 <strong>Authenticity:</strong> Only certificates issued by
                 Elevate For Humanity and stored in our repository are considered
                 valid.
@@ -400,7 +400,7 @@ export default async function VerifyCertificatePage({
         {/* Actions */}
         {isValid && (
           <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Actions</h2>
+            <h2 className="text-2xl font-bold text-black mb-6">Actions</h2>
             <div className="flex flex-wrap gap-4">
               {certificate.certificate_url && (
                 <a
@@ -428,7 +428,7 @@ export default async function VerifyCertificatePage({
 
         {/* Footer */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-black">
             Questions about this certificate? Contact us at{' '}
             <a
               href="mailto:Elevate4humanityedu@gmail.com"

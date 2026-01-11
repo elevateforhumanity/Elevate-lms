@@ -154,10 +154,10 @@ export default function ContactClient() {
                   <Phone className="w-5 h-5 inline-block" />
                 </span>
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
                 Prefer to call now?
               </h2>
-              <p className="text-slate-600 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 You can reach us Monday-Friday, 8am-5pm EST. Our advisors are
                 ready to help you find the right program.
               </p>
@@ -174,10 +174,10 @@ export default function ContactClient() {
               <div className="w-20 h-20 bg-zinc-900   rounded-3xl flex items-center justify-center mb-6 transform hover:scale-110 transition-transform">
                 <span className="text-4xl">✉️</span>
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
                 Send us an email
               </h2>
-              <p className="text-slate-600 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 Have a detailed question? Email us and we'll respond within 24
                 hours with the information you need.
               </p>
@@ -209,7 +209,7 @@ export default function ContactClient() {
               </p>
               <Link
                 href="/login"
-                className="inline-flex items-center justify-center bg-white text-slate-900 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-brand-orange-600 hover:text-white transition-all shadow-xl"
+                className="inline-flex items-center justify-center bg-white text-black px-10 py-4 rounded-2xl font-bold text-lg hover:bg-brand-orange-600 hover:text-white transition-all shadow-xl"
               >
                 Sign In to Portal
               </Link>
@@ -221,10 +221,10 @@ export default function ContactClient() {
       {/* Ready to Join Section */}
       <section className="py-20 bg-zinc-900  ">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
             Ready to start your journey?
           </h2>
-          <p className="text-base md:text-lg text-slate-700 mb-8">
+          <p className="text-base md:text-lg text-black mb-8">
             Apply now and take the first step toward a better future.
           </p>
           <Link

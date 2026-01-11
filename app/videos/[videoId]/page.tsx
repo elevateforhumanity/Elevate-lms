@@ -103,7 +103,7 @@ export default function VideoWatchPage({
           <div className="max-w-7xl mx-auto px-4 py-4">
             <Link
               href="/videos"
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition"
+              className="inline-flex items-center gap-2 text-black hover:text-black transition"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Videos
@@ -132,10 +132,10 @@ export default function VideoWatchPage({
                 {video.category}
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
               {video.title}
             </h1>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-black leading-relaxed">
               {video.description}
             </p>
 
@@ -149,7 +149,7 @@ export default function VideoWatchPage({
               </Link>
               <Link
                 href="/programs"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 font-bold rounded-lg border-2 border-gray-300 transition"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white hover:bg-gray-50 text-black font-bold rounded-lg border-2 border-gray-300 transition"
               >
                 View Programs
               </Link>
@@ -158,7 +158,7 @@ export default function VideoWatchPage({
 
           {/* Related Videos */}
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl font-bold text-black mb-6">
               More Videos
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
@@ -181,10 +181,10 @@ export default function VideoWatchPage({
                       />
                     </div>
                     <div className="p-4">
-                      <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">
+                      <h3 className="font-bold text-black mb-2 line-clamp-2">
                         {relatedVideo.title}
                       </h3>
-                      <p className="text-sm text-gray-600 line-clamp-2">
+                      <p className="text-sm text-black line-clamp-2">
                         {relatedVideo.description}
                       </p>
                     </div>

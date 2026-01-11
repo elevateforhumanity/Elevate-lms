@@ -91,10 +91,10 @@ export default async function GrantWorkflowPage() {
       <div className="min-h-screen bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">
+            <h1 className="text-3xl font-bold text-black mb-2">
               Grant Autopilot Workflow
             </h1>
-            <p className="text-slate-600">
+            <p className="text-black">
               Complete grant management from discovery to submission
             </p>
           </div>
@@ -106,7 +106,7 @@ export default async function GrantWorkflowPage() {
                 <div className="w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center mx-auto mb-2 font-bold">
                   {statusCounts.intake}
                 </div>
-                <p className="text-sm font-medium text-slate-900">🟡 Intake</p>
+                <p className="text-sm font-medium text-black">🟡 Intake</p>
                 <p className="text-xs text-slate-500">New Opportunities</p>
               </div>
               <div className="flex-shrink-0 w-16 h-1 bg-slate-200" />
@@ -114,7 +114,7 @@ export default async function GrantWorkflowPage() {
                 <div className="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-2 font-bold">
                   {statusCounts.draft}
                 </div>
-                <p className="text-sm font-medium text-slate-900">🟢 Draft</p>
+                <p className="text-sm font-medium text-black">🟢 Draft</p>
                 <p className="text-xs text-slate-500">AI Generated</p>
               </div>
               <div className="flex-shrink-0 w-16 h-1 bg-slate-200" />
@@ -122,7 +122,7 @@ export default async function GrantWorkflowPage() {
                 <div className="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-2 font-bold">
                   {statusCounts.review}
                 </div>
-                <p className="text-sm font-medium text-slate-900">🔵 Review</p>
+                <p className="text-sm font-medium text-black">🔵 Review</p>
                 <p className="text-xs text-slate-500">In Progress</p>
               </div>
               <div className="flex-shrink-0 w-16 h-1 bg-slate-200" />
@@ -130,7 +130,7 @@ export default async function GrantWorkflowPage() {
                 <div className="w-12 h-12 bg-purple-500 text-white rounded-full flex items-center justify-center mx-auto mb-2 font-bold">
                   {statusCounts.ready}
                 </div>
-                <p className="text-sm font-medium text-slate-900">🟣 Ready</p>
+                <p className="text-sm font-medium text-black">🟣 Ready</p>
                 <p className="text-xs text-slate-500">Package Built</p>
               </div>
               <div className="flex-shrink-0 w-16 h-1 bg-slate-200" />
@@ -138,7 +138,7 @@ export default async function GrantWorkflowPage() {
                 <div className="w-12 h-12 bg-emerald-600 text-white rounded-full flex items-center justify-center mx-auto mb-2 font-bold">
                   {statusCounts.submitted}
                 </div>
-                <p className="text-sm font-medium text-slate-900">
+                <p className="text-sm font-medium text-black">
                   <CheckCircle className="w-5 h-5 inline-block" /> Submitted
                 </p>
                 <p className="text-xs text-slate-500">Complete</p>
@@ -150,7 +150,7 @@ export default async function GrantWorkflowPage() {
             {/* Stage 1: Intake - New Opportunities */}
             <section className="bg-white rounded-xl shadow-sm p-6">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-slate-900">
+                <h2 className="text-xl font-semibold text-black">
                   🟡 Intake: New Opportunities
                 </h2>
                 <Link
@@ -166,10 +166,10 @@ export default async function GrantWorkflowPage() {
                     key={grant.id}
                     className="border border-slate-200 rounded-lg p-4 hover:border-blue-300 transition"
                   >
-                    <h3 className="font-semibold text-slate-900 mb-1">
+                    <h3 className="font-semibold text-black mb-1">
                       {grant.title}
                     </h3>
-                    <p className="text-sm text-slate-600 mb-2">
+                    <p className="text-sm text-black mb-2">
                       {grant.agency || 'Federal Agency'}
                     </p>
                     <div className="flex items-center justify-between">

@@ -64,10 +64,10 @@ export default async function FeaturesPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-black">
               Everything You Need to Succeed
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-black max-w-3xl mx-auto">
               Our platform combines cutting-edge technology with personalized
               support to help you achieve your career goals.
             </p>
@@ -79,10 +79,10 @@ export default async function FeaturesPage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg mb-4">
                 <BookOpen className="w-6 h-6 text-brand-blue-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Interactive Learning
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Engage with video lessons, quizzes, hands-on projects, and
                 real-world simulations designed by industry experts.
               </p>
@@ -93,10 +93,10 @@ export default async function FeaturesPage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-brand-green-100 rounded-lg mb-4">
                 <Users className="w-6 h-6 text-brand-green-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 1-on-1 Support
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Get personalized guidance from instructors, career coaches, and
                 mentors who are invested in your success.
               </p>
@@ -107,10 +107,10 @@ export default async function FeaturesPage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-lg mb-4">
                 <Award className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Industry Certifications
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Earn recognized credentials from leading organizations that
                 employers actively seek when hiring.
               </p>
@@ -121,10 +121,10 @@ export default async function FeaturesPage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 rounded-lg mb-4">
                 <Briefcase className="w-6 h-6 text-brand-orange-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Career Services
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Access resume building, interview prep, job matching, and direct
                 connections to hiring employers.
               </p>
@@ -135,10 +135,10 @@ export default async function FeaturesPage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-red-100 rounded-lg mb-4">
                 <Clock className="w-6 h-6 text-brand-orange-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Flexible Schedule
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Learn at your own pace with 24/7 access to course materials.
                 Balance training with work and family commitments.
               </p>
@@ -149,10 +149,10 @@ export default async function FeaturesPage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-lg mb-4">
                 <DollarSign className="w-6 h-6 text-indigo-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 100% Free
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 No tuition, no hidden fees. We're funded by government grants
                 and employer partnerships to keep training free.
               </p>
@@ -163,10 +163,10 @@ export default async function FeaturesPage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-pink-100 rounded-lg mb-4">
                 <Smartphone className="w-6 h-6 text-pink-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Mobile App
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Install our PWA directly from your browser. Learn on the go with
                 offline access and push notifications.
               </p>
@@ -177,10 +177,10 @@ export default async function FeaturesPage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-teal-100 rounded-lg mb-4">
                 <BarChart className="w-6 h-6 text-teal-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Progress Tracking
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Monitor your learning journey with detailed analytics,
                 completion badges, and skill assessments.
               </p>
@@ -204,10 +204,10 @@ export default async function FeaturesPage() {
               />
             </div>
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                 Designed for Real-World Success
               </h2>
-              <p className="text-gray-700 mb-6">
+              <p className="text-black mb-6">
                 Our platform isn't just about watching videos. You'll work on
                 real projects, collaborate with peers, and build a portfolio
                 that demonstrates your skills to employers.
@@ -227,7 +227,7 @@ export default async function FeaturesPage() {
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Hands-on projects that mirror actual job tasks
                   </span>
                 </li>
@@ -245,7 +245,7 @@ export default async function FeaturesPage() {
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Peer collaboration and discussion forums
                   </span>
                 </li>
@@ -263,7 +263,7 @@ export default async function FeaturesPage() {
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Instant feedback on assignments and quizzes
                   </span>
                 </li>
@@ -281,7 +281,7 @@ export default async function FeaturesPage() {
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Digital portfolio to showcase your work
                   </span>
                 </li>
@@ -296,10 +296,10 @@ export default async function FeaturesPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                 You're Never Alone
               </h2>
-              <p className="text-gray-700 mb-6">
+              <p className="text-black mb-6">
                 From day one, you'll have a dedicated support team helping you
                 overcome barriers and stay on track. We provide wraparound
                 services that address the whole person, not just the student.
@@ -319,7 +319,7 @@ export default async function FeaturesPage() {
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Case management and barrier removal support
                   </span>
                 </li>
@@ -337,7 +337,7 @@ export default async function FeaturesPage() {
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Financial assistance for transportation, childcare, and
                     tools
                   </span>
@@ -356,7 +356,7 @@ export default async function FeaturesPage() {
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Mental health and wellness resources
                   </span>
                 </li>
@@ -374,7 +374,7 @@ export default async function FeaturesPage() {
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     24/7 technical support and live chat
                   </span>
                 </li>

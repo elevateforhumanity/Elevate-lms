@@ -107,14 +107,14 @@ export default function DocumentUploadPage() {
         <Link
           href="/tax"
           aria-label="Link"
-          className="text-sm text-gray-600 hover:text-gray-900"
+          className="text-sm text-black hover:text-black"
         >
           ← Back to Tax Services
         </Link>
       </div>
 
       <h1 className="text-4xl font-bold mb-3">Upload Tax Documents</h1>
-      <p className="text-lg text-gray-600 mb-8">
+      <p className="text-lg text-black mb-8">
         Securely upload your tax documents for SupersonicFastCash preparation
         services.
       </p>
@@ -124,7 +124,7 @@ export default function DocumentUploadPage() {
         <h2 className="text-xl font-bold mb-4">Your Information</h2>
         <div className="grid md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Full Name *
             </label>
             <input
@@ -139,7 +139,7 @@ export default function DocumentUploadPage() {
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Email *
             </label>
             <input
@@ -154,7 +154,7 @@ export default function DocumentUploadPage() {
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Phone *
             </label>
             <input
@@ -173,9 +173,9 @@ export default function DocumentUploadPage() {
 
       {/* Upload Area */}
       <section className="rounded-2xl border-2 border-dashed border-gray-300 bg-white p-8 text-center mb-6">
-        <Upload className="w-12 h-12 text-gray-600 mx-auto mb-4" />
+        <Upload className="w-12 h-12 text-black mx-auto mb-4" />
         <h2 className="text-xl font-bold mb-2">Upload Your Documents</h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-black mb-6">
           Drag and drop files here, or click to browse
         </p>
         <label className="inline-block px-6 py-3 bg-brand-blue-600 text-white font-semibold rounded-lg hover:bg-brand-blue-700 transition cursor-pointer">
@@ -191,7 +191,7 @@ export default function DocumentUploadPage() {
             }
           />
         </label>
-        <p className="text-xs text-gray-700 mt-4">
+        <p className="text-xs text-black mt-4">
           Accepted formats: PDF, JPG, PNG, DOC, DOCX (Max 10MB per file)
         </p>
         {(!contactInfo.name || !contactInfo.email || !contactInfo.phone) && (
@@ -214,19 +214,19 @@ export default function DocumentUploadPage() {
                 className="flex items-center justify-between p-4 rounded-lg border"
               >
                 <div className="flex items-center gap-3 flex-1">
-                  <FileText className="w-5 h-5 text-gray-600 flex-shrink-0" />
+                  <FileText className="w-5 h-5 text-black flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <div className="font-medium text-sm truncate">
                       {file.name}
                     </div>
-                    <div className="text-xs text-gray-700">
+                    <div className="text-xs text-black">
                       {formatFileSize(file.size)}
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   {file.status === 'uploading' && (
-                    <div className="text-sm text-gray-600">Uploading...</div>
+                    <div className="text-sm text-black">Uploading...</div>
                   )}
                   {file.status === 'success' && (
                     <CheckCircle className="w-5 h-5 text-brand-green-600" />
@@ -239,7 +239,7 @@ export default function DocumentUploadPage() {
                     className="p-1 hover:bg-gray-100 rounded"
                     disabled={file.status === 'uploading'}
                   >
-                    <X className="w-4 h-4 text-gray-600" />
+                    <X className="w-4 h-4 text-black" />
                   </button>
                 </div>
               </div>
@@ -251,7 +251,7 @@ export default function DocumentUploadPage() {
       {/* Document Checklist */}
       <section className="rounded-2xl border bg-white p-6">
         <h2 className="text-xl font-bold mb-4">Document Checklist</h2>
-        <p className="text-gray-600 mb-4">
+        <p className="text-black mb-4">
           Please upload the following documents for your tax preparation:
         </p>
         <div className="grid md:grid-cols-2 gap-6">
@@ -286,23 +286,23 @@ export default function DocumentUploadPage() {
             </h3>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
-                <span className="text-gray-600">•</span>
+                <span className="text-black">•</span>
                 <span>Form 1098 (mortgage interest)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-600">•</span>
+                <span className="text-black">•</span>
                 <span>Form 1098-T (education expenses)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-600">•</span>
+                <span className="text-black">•</span>
                 <span>Childcare provider information</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-600">•</span>
+                <span className="text-black">•</span>
                 <span>Business income/expense records</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-gray-600">•</span>
+                <span className="text-black">•</span>
                 <span>Last year's tax return</span>
               </li>
             </ul>
@@ -312,8 +312,8 @@ export default function DocumentUploadPage() {
 
       {/* Security Notice */}
       <section className="mt-6 rounded-2xl bg-blue-50 border-l-4 border-brand-blue-600 p-6">
-        <h3 className="font-semibold text-gray-900 mb-2">Secure Upload</h3>
-        <p className="text-sm text-gray-700">
+        <h3 className="font-semibold text-black mb-2">Secure Upload</h3>
+        <p className="text-sm text-black">
           Your documents are encrypted during upload and stored securely. We use
           bank-level security to protect your sensitive information. Files are
           only accessible to authorized tax preparers.
@@ -330,7 +330,7 @@ export default function DocumentUploadPage() {
             </div>
             <div>
               <div className="font-semibold">We Review Your Documents</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 Our team will review your uploaded documents within 24 hours
               </div>
             </div>
@@ -341,7 +341,7 @@ export default function DocumentUploadPage() {
             </div>
             <div>
               <div className="font-semibold">We Contact You</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 We'll call or email if we need any additional information
               </div>
             </div>
@@ -352,7 +352,7 @@ export default function DocumentUploadPage() {
             </div>
             <div>
               <div className="font-semibold">We Prepare Your Return</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 Your tax return is prepared by our certified professionals
               </div>
             </div>
@@ -363,7 +363,7 @@ export default function DocumentUploadPage() {
             </div>
             <div>
               <div className="font-semibold">Review & E-File</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 You review and approve before we e-file with the IRS
               </div>
             </div>
@@ -373,7 +373,7 @@ export default function DocumentUploadPage() {
 
       {/* Contact & Scheduling */}
       <section className="mt-6 text-center">
-        <p className="text-gray-600 mb-4">
+        <p className="text-black mb-4">
           Questions about uploading documents?
         </p>
         <div className="flex flex-wrap gap-4 justify-center">

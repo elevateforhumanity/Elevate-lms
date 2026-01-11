@@ -71,10 +71,10 @@ function AffirmConfirmContent() {
         {status === 'processing' && (
           <div className="text-center">
             <Loader2 className="w-16 h-16 text-brand-blue-600 animate-spin mx-auto mb-4" />
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl font-bold text-black mb-2">
               Processing Payment
             </h1>
-            <p className="text-gray-600">
+            <p className="text-black">
               Please wait while we confirm your payment with Affirm...
             </p>
           </div>
@@ -83,18 +83,18 @@ function AffirmConfirmContent() {
         {status === 'success' && (
           <div className="text-center">
             <CheckCircle className="w-16 h-16 text-brand-green-600 mx-auto mb-4" />
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl font-bold text-black mb-2">
               Payment Successful!
             </h1>
-            <p className="text-gray-600 mb-4">
+            <p className="text-black mb-4">
               Your payment has been processed successfully.
             </p>
             {transactionId && (
-              <p className="text-sm text-gray-700 mb-6">
+              <p className="text-sm text-black mb-6">
                 Transaction ID: {transactionId}
               </p>
             )}
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Redirecting to confirmation page...
             </p>
           </div>
@@ -117,10 +117,10 @@ function AffirmConfirmContent() {
                 />
               </svg>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl font-bold text-black mb-2">
               Payment Failed
             </h1>
-            <p className="text-gray-600 mb-6">
+            <p className="text-black mb-6">
               {errorMessage || 'There was an error processing your payment.'}
             </p>
             <div className="flex flex-col gap-3">
@@ -132,7 +132,7 @@ function AffirmConfirmContent() {
               </Link>
               <Link
                 href="/contact"
-                className="inline-block px-6 py-3 bg-gray-100 text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+                className="inline-block px-6 py-3 bg-gray-100 text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors"
               >
                 Contact Support
               </Link>
@@ -151,10 +151,10 @@ export default function AffirmConfirmPage() {
         <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
           <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
             <Loader2 className="w-16 h-16 text-brand-blue-600 animate-spin mx-auto mb-4" />
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl font-bold text-black mb-2">
               Loading...
             </h1>
-            <p className="text-gray-600">Please wait</p>
+            <p className="text-black">Please wait</p>
           </div>
         </div>
       }

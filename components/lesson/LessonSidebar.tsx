@@ -212,7 +212,7 @@ export function LessonSidebar({
 
       {/* BOOKMARKS */}
       <section className="space-y-1.5">
-        <h3 className="text-xs font-semibold text-slate-800">
+        <h3 className="text-xs font-semibold text-black">
           Bookmarks
         </h3>
         <div className="flex gap-2">
@@ -259,7 +259,7 @@ export function LessonSidebar({
 
       {/* NOTES */}
       <section className="space-y-1.5 border-t pt-2">
-        <h3 className="text-xs font-semibold text-slate-800">Notes</h3>
+        <h3 className="text-xs font-semibold text-black">Notes</h3>
         <textarea
           value={noteBody}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNoteBody(e.target.value)}
@@ -267,7 +267,7 @@ export function LessonSidebar({
           className="h-16 w-full resize-none rounded border px-2 py-1 text-[11px]"
         />
         <div className="flex items-center justify-between">
-          <label className="flex items-center gap-1 text-[11px] text-slate-600">
+          <label className="flex items-center gap-1 text-[11px] text-black">
             <input
               type="checkbox"
               checked={attachTime}
@@ -307,7 +307,7 @@ export function LessonSidebar({
                     {formatDate(n.created_at)}
                   </span>
                 </div>
-                <p className="mt-0.5 text-slate-700">{n.body}</p>
+                <p className="mt-0.5 text-black">{n.body}</p>
               </li>
             ))}
           </ul>
@@ -321,7 +321,7 @@ export function LessonSidebar({
       {/* Q&A */}
       <section className="space-y-1.5 border-t pt-2">
         <div className="flex items-center justify-between text-[11px]">
-          <h3 className="font-semibold text-slate-800">
+          <h3 className="font-semibold text-black">
             Lesson Q&amp;A
           </h3>
           <div className="flex gap-1 rounded-full bg-slate-100 p-0.5">
@@ -330,8 +330,8 @@ export function LessonSidebar({
               onClick={() => setQaTab("list")}
               className={`rounded-full px-2 py-0.5 ${
                 qaTab === "list"
-                  ? "bg-white text-slate-900 shadow"
-                  : "text-slate-600"
+                  ? "bg-white text-black shadow"
+                  : "text-black"
               }`}
             >
               Questions
@@ -341,8 +341,8 @@ export function LessonSidebar({
               onClick={() => setQaTab("ask")}
               className={`rounded-full px-2 py-0.5 ${
                 qaTab === "ask"
-                  ? "bg-white text-slate-900 shadow"
-                  : "text-slate-600"
+                  ? "bg-white text-black shadow"
+                  : "text-black"
               }`}
             >
               Ask
@@ -380,10 +380,10 @@ export function LessonSidebar({
                   key={q.id}
                   className="rounded-lg bg-slate-50 p-2 text-[11px]"
                 >
-                  <p className="font-semibold text-slate-900">
+                  <p className="font-semibold text-black">
                     {q.title}
                   </p>
-                  <p className="text-slate-700">{q.body}</p>
+                  <p className="text-black">{q.body}</p>
                   <p className="mt-0.5 text-[10px] text-slate-500">
                     {formatDate(q.created_at)}
                   </p>
@@ -392,7 +392,7 @@ export function LessonSidebar({
                   {q.lesson_answers && q.lesson_answers.length > 0 && (
                     <ul className="mt-1 space-y-0.5 border-l pl-2">
                       {q.lesson_answers.map((a) => (
-                        <li key={a.id} className="text-slate-700">
+                        <li key={a.id} className="text-black">
                           {a.body}
                           <span className="ml-1 text-[10px] text-slate-500">
                             ({formatDate(a.created_at)})

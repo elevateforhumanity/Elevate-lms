@@ -23,7 +23,7 @@ export default function Start() {
           </Link>
         </div>
         
-        <p className="text-gray-600 text-base">
+        <p className="text-black text-base">
           You are not signing up for a promise. You are entering a framework designed to work.
         </p>
       </div>

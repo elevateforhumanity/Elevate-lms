@@ -48,11 +48,11 @@ export function CourseMetaPanel({
             ⭐ {averageRating.toFixed(1)} ({ratingCount} reviews)
           </span>
         )}
-        <span className="rounded-full bg-slate-100 px-3 py-1 font-semibold text-slate-700">
+        <span className="rounded-full bg-slate-100 px-3 py-1 font-semibold text-black">
           {enrollmentCount} learners
         </span>
         {course.duration_hours && course.duration_hours > 0 && (
-          <span className="rounded-full bg-slate-100 px-3 py-1 font-semibold text-slate-700">
+          <span className="rounded-full bg-slate-100 px-3 py-1 font-semibold text-black">
             ~{course.duration_hours} hours
           </span>
         )}
@@ -62,7 +62,7 @@ export function CourseMetaPanel({
       {course.learning_outcomes && course.learning_outcomes.length > 0 && (
         <div>
           <h3 className="text-sm font-semibold">What you&apos;ll learn</h3>
-          <ul className="mt-2 grid gap-2 text-xs text-slate-700 md:grid-cols-2">
+          <ul className="mt-2 grid gap-2 text-xs text-black md:grid-cols-2">
             {course.learning_outcomes.map((item, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-brand-orange-500" />
@@ -81,7 +81,7 @@ export function CourseMetaPanel({
             {course.skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-800"
+                className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-black"
               >
                 {skill}
               </span>
@@ -117,7 +117,7 @@ export function CourseMetaPanel({
               {instructor.full_name || "Elevate For Humanity Instructor"}
             </p>
             {instructor.bio && (
-              <p className="line-clamp-3 text-xs text-slate-600">
+              <p className="line-clamp-3 text-xs text-black">
                 {instructor.bio}
               </p>
             )}

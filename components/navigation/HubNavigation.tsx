@@ -169,7 +169,7 @@ function NavDropdown({ title, items }: { title: string; items: unknown[] }) {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <button className="flex items-center gap-1 text-gray-700 hover:text-blue-600">
+      <button className="flex items-center gap-1 text-black hover:text-blue-600">
         {title}
         <ChevronDown className="w-4 h-4" />
       </button>
@@ -182,8 +182,8 @@ function NavDropdown({ title, items }: { title: string; items: unknown[] }) {
               href={item.href}
               className="block p-3 rounded-lg hover:bg-gray-50"
             >
-              <div className="font-medium text-gray-900">{item.name}</div>
-              <div className="text-sm text-gray-600">{item.description}</div>
+              <div className="font-medium text-black">{item.name}</div>
+              <div className="text-sm text-black">{item.description}</div>
             </Link>
           ))}
         </div>
@@ -199,7 +199,7 @@ function MobileSection({ title, items }: { title: string; items: unknown[] }) {
     <div className="border-b pb-4">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center justify-between w-full text-left font-medium text-gray-900"
+        className="flex items-center justify-between w-full text-left font-medium text-black"
       >
         {title}
         <ChevronDown className={`w-5 h-5 transition-transform ${open ? 'rotate-180' : ''}`} />
@@ -211,10 +211,10 @@ function MobileSection({ title, items }: { title: string; items: unknown[] }) {
             <Link
               key={item.href}
               href={item.href}
-              className="block py-2 text-gray-700 hover:text-blue-600"
+              className="block py-2 text-black hover:text-blue-600"
             >
               <div className="font-medium">{item.name}</div>
-              <div className="text-sm text-gray-600">{item.description}</div>
+              <div className="text-sm text-black">{item.description}</div>
             </Link>
           ))}
         </div>

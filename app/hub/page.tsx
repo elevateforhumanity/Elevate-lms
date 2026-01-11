@@ -501,11 +501,11 @@ function HubCard({
         </div>
       )}
       <h3
-        className={`font-bold text-gray-900 mb-2 ${size === 'small' ? 'text-lg' : 'text-xl'}`}
+        className={`font-bold text-black mb-2 ${size === 'small' ? 'text-lg' : 'text-xl'}`}
       >
         {title}
       </h3>
-      <p className="text-gray-600 text-sm">{description}</p>
+      <p className="text-black text-sm">{description}</p>
     </Link>
   );
 }

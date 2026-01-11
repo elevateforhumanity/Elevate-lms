@@ -22,25 +22,25 @@ export default async function EmployerCompliancePage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Compliance & Reporting</h1>
       <div className="bg-white rounded-lg shadow-sm border p-6">
-        <p className="text-slate-600 mb-4">
+        <p className="text-black mb-4">
           Stay compliant with workforce development requirements.
         </p>
         <div className="grid md:grid-cols-2 gap-4 mt-6">
           <div className="border rounded-lg p-4">
             <h3 className="font-semibold mb-2">WIOA Reporting</h3>
-            <p className="text-sm text-slate-600">Track workforce outcomes and compliance</p>
+            <p className="text-sm text-black">Track workforce outcomes and compliance</p>
           </div>
           <div className="border rounded-lg p-4">
             <h3 className="font-semibold mb-2">Tax Credits</h3>
-            <p className="text-sm text-slate-600">WOTC and other hiring incentives</p>
+            <p className="text-sm text-black">WOTC and other hiring incentives</p>
           </div>
           <div className="border rounded-lg p-4">
             <h3 className="font-semibold mb-2">Equal Opportunity</h3>
-            <p className="text-sm text-slate-600">EEO compliance and reporting</p>
+            <p className="text-sm text-black">EEO compliance and reporting</p>
           </div>
           <div className="border rounded-lg p-4">
             <h3 className="font-semibold mb-2">Documentation</h3>
-            <p className="text-sm text-slate-600">Required forms and records</p>
+            <p className="text-sm text-black">Required forms and records</p>
           </div>
         </div>
       </div>

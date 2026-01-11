@@ -125,8 +125,8 @@ export function ProgressDashboard({ userId }: { userId: string }) {
               <div className={`w-10 h-10 rounded-lg ${stat.bgColor} flex items-center justify-center mb-3`}>
                 <Icon className={`w-5 h-5 ${stat.color}`} />
               </div>
-              <p className="text-2xl font-bold text-slate-900">{stat.value}</p>
-              <p className="text-xs text-slate-600 mt-1">{stat.label}</p>
+              <p className="text-2xl font-bold text-black">{stat.value}</p>
+              <p className="text-xs text-black mt-1">{stat.label}</p>
             </div>
           );
         })}
@@ -135,7 +135,7 @@ export function ProgressDashboard({ userId }: { userId: string }) {
       {/* Overall Progress Bar */}
       <div className="bg-white rounded-lg border border-slate-200 p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-slate-900">Overall Progress</h3>
+          <h3 className="text-lg font-semibold text-black">Overall Progress</h3>
           <span className="text-2xl font-bold text-brand-orange-600">
             {data.overall_progress}%
           </span>
@@ -146,7 +146,7 @@ export function ProgressDashboard({ userId }: { userId: string }) {
             style={{ width: `${data.overall_progress}%` }}
           />
         </div>
-        <div className="flex items-center justify-between mt-2 text-sm text-slate-600">
+        <div className="flex items-center justify-between mt-2 text-sm text-black">
           <span>{data.courses_completed} courses completed</span>
           <span>{data.courses_in_progress} in progress</span>
         </div>
@@ -154,13 +154,13 @@ export function ProgressDashboard({ userId }: { userId: string }) {
 
       {/* Course Progress */}
       <div className="bg-white rounded-lg border border-slate-200 p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-4">Course Progress</h3>
+        <h3 className="text-lg font-semibold text-black mb-4">Course Progress</h3>
         <div className="space-y-4">
           {courses.map((course) => (
             <div key={course.id} className="border-b border-slate-200 pb-4 last:border-0">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex-1">
-                  <h4 className="font-medium text-slate-900">{course.title}</h4>
+                  <h4 className="font-medium text-black">{course.title}</h4>
                   <p className="text-xs text-slate-500 mt-1">
                     Last accessed: {new Date(course.last_accessed).toLocaleDateString()}
                   </p>
@@ -170,7 +170,7 @@ export function ProgressDashboard({ userId }: { userId: string }) {
                     {course.progress}%
                   </p>
                   {course.grade !== undefined && (
-                    <p className="text-xs text-slate-600">Grade: {course.grade}%</p>
+                    <p className="text-xs text-black">Grade: {course.grade}%</p>
                   )}
                 </div>
               </div>

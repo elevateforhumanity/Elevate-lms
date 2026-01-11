@@ -25,7 +25,7 @@ export default function Testimonials() {
   return (
     <section className="bg-white py-8 md:py-24">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
-        <h2 className="text-xl md:text-4xl font-bold text-gray-900 mb-6 md:mb-16 text-center">
+        <h2 className="text-xl md:text-4xl font-bold text-black mb-6 md:mb-16 text-center">
           What Students Say
         </h2>
         
@@ -43,15 +43,15 @@ export default function Testimonials() {
                   />
                 </div>
                 <div>
-                  <p className="text-lg md:text-xl font-bold text-gray-900">
+                  <p className="text-lg md:text-xl font-bold text-black">
                     {testimonial.name}
                   </p>
-                  <p className="text-base md:text-lg text-gray-600">
+                  <p className="text-base md:text-lg text-black">
                     {testimonial.role}
                   </p>
                 </div>
               </div>
-              <p className="text-base md:text-xl text-gray-700 leading-relaxed text-center">
+              <p className="text-base md:text-xl text-black leading-relaxed text-center">
                 "{testimonial.quote}"
               </p>
             </div>

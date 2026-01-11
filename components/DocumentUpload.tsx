@@ -185,15 +185,15 @@ export default function DocumentUpload({
             <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
               isDragging ? 'bg-blue-600' : 'bg-gray-200'
             }`}>
-              <Upload className={`w-8 h-8 ${isDragging ? 'text-white' : 'text-gray-600'}`} />
+              <Upload className={`w-8 h-8 ${isDragging ? 'text-white' : 'text-black'}`} />
             </div>
           </motion.div>
 
-          <h3 className="text-xl font-bold text-gray-900 mb-2">
+          <h3 className="text-xl font-bold text-black mb-2">
             {isDragging ? 'Drop files here' : 'Upload Documents'}
           </h3>
 
-          <p className="text-gray-600 mb-4">
+          <p className="text-black mb-4">
             Drag and drop files here, or click to browse
           </p>
 
@@ -240,7 +240,7 @@ export default function DocumentUpload({
       {files.length > 0 && (
         <div className="mt-6 space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="font-semibold text-gray-900">
+            <h4 className="font-semibold text-black">
               Uploaded Files ({successCount}/{files.length})
             </h4>
             {uploadingCount > 0 && (
@@ -281,7 +281,7 @@ export default function DocumentUpload({
                     {/* File Info */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
-                        <h5 className="font-semibold text-gray-900 truncate">
+                        <h5 className="font-semibold text-black truncate">
                           {file.name}
                         </h5>
                         <span className="text-sm text-gray-500 ml-2">
@@ -301,7 +301,7 @@ export default function DocumentUpload({
                             />
                           </div>
                           <div className="flex items-center justify-between mt-1">
-                            <span className="text-xs text-gray-600">
+                            <span className="text-xs text-black">
                               Uploading... {Math.round(file.progress)}%
                             </span>
                             <Loader className="w-4 h-4 text-blue-600 animate-spin" />
@@ -330,7 +330,7 @@ export default function DocumentUpload({
                         <>
                           <button
                             onClick={() => window.open(file.url, '_blank')}
-                            className="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors"
+                            className="p-2 text-black hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors"
                             title="Preview"
                           >
                             <Eye className="w-5 h-5" />
@@ -338,7 +338,7 @@ export default function DocumentUpload({
                           <a
                             href={file.url}
                             download={file.name}
-                            className="p-2 text-gray-600 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
+                            className="p-2 text-black hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
                             title="Download"
                           >
                             <Download className="w-5 h-5" />
@@ -347,7 +347,7 @@ export default function DocumentUpload({
                       )}
                       <button
                         onClick={() => removeFile(file.id)}
-                        className="p-2 text-gray-600 hover:text-brand-orange-600 hover:bg-red-50 rounded-lg transition-colors"
+                        className="p-2 text-black hover:text-brand-orange-600 hover:bg-red-50 rounded-lg transition-colors"
                         title="Remove"
                       >
                         <Trash2 className="w-5 h-5" />
@@ -363,7 +363,7 @@ export default function DocumentUpload({
 
       {/* Required Field Indicator */}
       {required && files.length === 0 && (
-        <p className="mt-4 text-sm text-gray-600">
+        <p className="mt-4 text-sm text-black">
           * At least one document is required
         </p>
       )}

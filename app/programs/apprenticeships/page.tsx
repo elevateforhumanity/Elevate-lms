@@ -60,7 +60,7 @@ export default function ApprenticeshipProgramsPage() {
             Why Apprenticeships Work
           </h2>
 
-          <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-lg text-black leading-relaxed">
             <p>
               Traditional education asks you to pay tuition and wait years
               before earning a real income. Apprenticeships flip that model—you
@@ -104,7 +104,7 @@ export default function ApprenticeshipProgramsPage() {
                 <DollarSign className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Get Paid</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Earn a wage from day one, with increases as you progress
               </p>
             </div>
@@ -114,7 +114,7 @@ export default function ApprenticeshipProgramsPage() {
                 <Briefcase className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Real Experience</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Work on actual projects, not just classroom exercises
               </p>
             </div>
@@ -124,7 +124,7 @@ export default function ApprenticeshipProgramsPage() {
                 <Award className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Certifications</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Earn industry-recognized credentials as you train
               </p>
             </div>
@@ -134,7 +134,7 @@ export default function ApprenticeshipProgramsPage() {
                 <Clock className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">No Debt</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Zero tuition costs—you're paid to learn
               </p>
             </div>
@@ -171,7 +171,7 @@ export default function ApprenticeshipProgramsPage() {
                   <h3 className="text-2xl font-bold text-black mb-3">
                     {program.name}
                   </h3>
-                  <p className="text-gray-700 mb-4 leading-relaxed">
+                  <p className="text-black mb-4 leading-relaxed">
                     {program.shortDescription}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -198,7 +198,7 @@ export default function ApprenticeshipProgramsPage() {
           <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6">
             Ready to Start Your Apprenticeship?
           </h2>
-          <p className="text-xl text-gray-700 mb-8">
+          <p className="text-xl text-black mb-8">
             Apply now and start earning while you learn a skilled trade.
           </p>
           <Link

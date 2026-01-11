@@ -76,7 +76,7 @@ export function CoursePrerequisiteManagement() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <Card className="p-6 mb-8   ">
           <h3 className="text-xl font-bold mb-2">Learning Path Structure</h3>
-          <p className="text-gray-700">
+          <p className="text-black">
             Courses are organized in a logical sequence. Complete prerequisites to unlock advanced courses.
           </p>
         </Card>
@@ -93,7 +93,7 @@ export function CoursePrerequisiteManagement() {
                     <span className={`px-3 py-1 rounded text-xs font-medium ${
                       course.status === 'completed' ? 'bg-green-100 text-green-700' :
                       course.status === 'available' ? 'bg-blue-100 text-blue-700' :
-                      'bg-gray-100 text-gray-700'
+                      'bg-gray-100 text-black'
                     }`}>
                       {course.status.toUpperCase()}
                     </span>
@@ -101,7 +101,7 @@ export function CoursePrerequisiteManagement() {
 
                   {course.prerequisites.length > 0 && (
                     <div className="mb-3">
-                      <p className="text-sm font-semibold text-gray-700 mb-1">Prerequisites:</p>
+                      <p className="text-sm font-semibold text-black mb-1">Prerequisites:</p>
                       <div className="flex flex-wrap gap-2">
                         {getPrerequisiteTitles(course.prerequisites).map((title) => (
                           <span key={title} className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded">
@@ -114,7 +114,7 @@ export function CoursePrerequisiteManagement() {
 
                   {course.unlocks.length > 0 && (
                     <div>
-                      <p className="text-sm font-semibold text-gray-700 mb-1">Unlocks:</p>
+                      <p className="text-sm font-semibold text-black mb-1">Unlocks:</p>
                       <div className="flex flex-wrap gap-2">
                         {getPrerequisiteTitles(course.unlocks).map((title) => (
                           <span key={title} className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">

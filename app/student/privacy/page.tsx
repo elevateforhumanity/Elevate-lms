@@ -81,7 +81,7 @@ export default function StudentPrivacyPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading privacy settings...</p>
+          <p className="text-black">Loading privacy settings...</p>
         </div>
       </div>
     );
@@ -93,11 +93,11 @@ export default function StudentPrivacyPage() {
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="flex items-center gap-3 mb-6">
             <Shield className="w-8 h-8 text-blue-600" />
-            <h1 className="text-3xl font-bold text-gray-900">Privacy & Consent Settings</h1>
+            <h1 className="text-3xl font-bold text-black">Privacy & Consent Settings</h1>
           </div>
 
           <div className="bg-blue-50 border-l-4 border-blue-600 p-4 mb-8">
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Manage your privacy preferences and data sharing consents. You can update these settings at any time.
             </p>
           </div>
@@ -112,20 +112,20 @@ export default function StudentPrivacyPage() {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
+                        <h3 className="text-lg font-semibold text-black">{item.title}</h3>
                         {item.required && (
                           <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Required</span>
                         )}
                       </div>
-                      <p className="text-gray-600 mb-4">{item.description}</p>
+                      <p className="text-black mb-4">{item.description}</p>
                       
                       <div className="flex items-center gap-2">
                         {isGranted ? (
                           <CheckCircle className="w-5 h-5 text-green-600" />
                         ) : (
-                          <XCircle className="w-5 h-5 text-gray-600" />
+                          <XCircle className="w-5 h-5 text-black" />
                         )}
-                        <span className="text-sm font-medium text-gray-700">
+                        <span className="text-sm font-medium text-black">
                           {isGranted ? 'Granted' : 'Not granted'}
                         </span>
                       </div>
@@ -156,15 +156,15 @@ export default function StudentPrivacyPage() {
             <div className="flex items-start gap-3">
               <AlertCircle className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
               <div>
-                <h4 className="font-semibold text-gray-900 mb-1">Your Rights Under FERPA</h4>
-                <p className="text-sm text-gray-700 mb-2">
+                <h4 className="font-semibold text-black mb-1">Your Rights Under FERPA</h4>
+                <p className="text-sm text-black mb-2">
                   You have the right to inspect your education records, request amendments, and control disclosure 
                   of your information. For more information, see our{' '}
                   <a href="/privacy-policy" className="text-blue-600 hover:underline font-semibold">
                     Privacy Policy
                   </a>.
                 </p>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-black">
                   To request access to your records or file a complaint, contact:{' '}
                   <a href="mailto:ferpa@elevateforhumanity.institute" className="text-blue-600 hover:underline">
                     ferpa@elevateforhumanity.institute
@@ -175,8 +175,8 @@ export default function StudentPrivacyPage() {
           </div>
 
           <div className="mt-8 pt-6 border-t">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Data Deletion Request</h3>
-            <p className="text-gray-600 mb-4">
+            <h3 className="text-lg font-semibold text-black mb-4">Data Deletion Request</h3>
+            <p className="text-black mb-4">
               You have the right to request deletion of your personal data, subject to legal retention requirements.
             </p>
             <a

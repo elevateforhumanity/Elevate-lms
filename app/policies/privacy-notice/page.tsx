@@ -9,7 +9,7 @@ export default function PrivacyNoticePage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Privacy Notice</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Data Collection</h2>
       <p>We collect: name, email, phone, address, education history, and program data.</p>
       <h2>Use</h2>

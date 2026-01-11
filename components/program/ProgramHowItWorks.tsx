@@ -14,7 +14,7 @@ export default function ProgramHowItWorks({
       <h2 className="text-2xl font-semibold">
         How {programName ? programName : 'This Program'} Works
       </h2>
-      <p className="mt-2 text-sm text-gray-600">
+      <p className="mt-2 text-sm text-black">
         Structured steps, clear expectations, and real progress tracking—so you
         always know what's next.
       </p>
@@ -22,7 +22,7 @@ export default function ProgramHowItWorks({
       <ol className="mt-5 space-y-3">
         <li className="rounded-xl border p-4">
           <div className="font-semibold">1) Apply</div>
-          <div className="mt-1 text-sm text-gray-600">
+          <div className="mt-1 text-sm text-black">
             Submit the quick application so we can confirm your goals,
             eligibility, and best program fit.
           </div>
@@ -30,7 +30,7 @@ export default function ProgramHowItWorks({
 
         <li className="rounded-xl border p-4">
           <div className="font-semibold">2) Choose Your Funding Path</div>
-          <div className="mt-1 text-sm text-gray-600">
+          <div className="mt-1 text-sm text-black">
             We guide you into the right option: workforce funding
             (WIOA/WRG/JRI), employer sponsorship, or self-pay/payment plan (if
             available).
@@ -39,7 +39,7 @@ export default function ProgramHowItWorks({
 
         <li className="rounded-xl border p-4">
           <div className="font-semibold">3) Complete Onboarding</div>
-          <div className="mt-1 text-sm text-gray-600">
+          <div className="mt-1 text-sm text-black">
             You'll receive onboarding steps (documents, expectations, schedule,
             platform access). If compliance items are required, we list them
             upfront.
@@ -48,7 +48,7 @@ export default function ProgramHowItWorks({
 
         <li className="rounded-xl border p-4">
           <div className="font-semibold">4) Start Training</div>
-          <div className="mt-1 text-sm text-gray-600">
+          <div className="mt-1 text-sm text-black">
             Theory is completed online with progress tracking. Hands-on training
             is completed in-person when the program requires labs/clinical/shop
             hours.
@@ -59,7 +59,7 @@ export default function ProgramHowItWorks({
           <div className="font-semibold">
             5) Track Progress + Stay On Schedule
           </div>
-          <div className="mt-1 text-sm text-gray-600">
+          <div className="mt-1 text-sm text-black">
             Attendance and progress are tracked so you stay on pace and can show
             completion for workforce or employer requirements.
           </div>
@@ -67,7 +67,7 @@ export default function ProgramHowItWorks({
 
         <li className="rounded-xl border p-4">
           <div className="font-semibold">6) Finish + Next Steps</div>
-          <div className="mt-1 text-sm text-gray-600">
+          <div className="mt-1 text-sm text-black">
             When you complete the requirements, you receive completion
             documentation and next-step support (credentialing guidance and
             career readiness where applicable).
@@ -80,7 +80,7 @@ export default function ProgramHowItWorks({
           <h3 className="text-lg font-semibold">
             Earn While You Learn (Apprenticeship Track)
           </h3>
-          <p className="mt-2 text-sm text-gray-700">
+          <p className="mt-2 text-sm text-black">
             This is job-based training. You learn by working under supervision,
             logging hours, and completing required theory. Compensation
             (hourly/commission/tips) depends on the employer/shop agreement.

@@ -130,7 +130,7 @@ export default function CampaignsClient({
                 />
                 <div>
                   <div className="font-medium">{student.name}</div>
-                  <div className="text-sm text-gray-700">{student.email}</div>
+                  <div className="text-sm text-black">{student.email}</div>
                 </div>
               </label>
             ))}

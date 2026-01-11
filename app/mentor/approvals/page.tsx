@@ -125,8 +125,8 @@ export default async function MentorApprovalsPage({
   return (
     <div className="p-6 space-y-4 max-w-7xl mx-auto">
       <div className="flex flex-col gap-2">
-        <h1 className="text-2xl font-bold text-slate-900">Mentor Approvals</h1>
-        <p className="text-sm text-slate-600">
+        <h1 className="text-2xl font-bold text-black">Mentor Approvals</h1>
+        <p className="text-sm text-black">
           Review submitted hours, approve/reject, and lock once finalized.
           Locked entries cannot be modified.
         </p>
@@ -138,7 +138,7 @@ export default async function MentorApprovalsPage({
         method="get"
       >
         <div className="flex flex-col">
-          <label className="text-xs font-semibold mb-1 text-slate-700">
+          <label className="text-xs font-semibold mb-1 text-black">
             Status
           </label>
           <select
@@ -154,7 +154,7 @@ export default async function MentorApprovalsPage({
         </div>
 
         <div className="flex flex-col">
-          <label className="text-xs font-semibold mb-1 text-slate-700">
+          <label className="text-xs font-semibold mb-1 text-black">
             Funding Phase
           </label>
           <select
@@ -170,7 +170,7 @@ export default async function MentorApprovalsPage({
         </div>
 
         <div className="flex flex-col">
-          <label className="text-xs font-semibold mb-1 text-slate-700">
+          <label className="text-xs font-semibold mb-1 text-black">
             Hour Type
           </label>
           <select
@@ -185,7 +185,7 @@ export default async function MentorApprovalsPage({
         </div>
 
         <div className="flex flex-col">
-          <label className="text-xs font-semibold mb-1 text-slate-700">
+          <label className="text-xs font-semibold mb-1 text-black">
             From
           </label>
           <input
@@ -197,7 +197,7 @@ export default async function MentorApprovalsPage({
         </div>
 
         <div className="flex flex-col">
-          <label className="text-xs font-semibold mb-1 text-slate-700">
+          <label className="text-xs font-semibold mb-1 text-black">
             To
           </label>
           <input
@@ -225,7 +225,7 @@ export default async function MentorApprovalsPage({
       </form>
 
       <div className="border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm">
-        <div className="grid grid-cols-14 gap-2 px-4 py-3 text-xs font-bold bg-slate-100 text-slate-700 border-b border-slate-200">
+        <div className="grid grid-cols-14 gap-2 px-4 py-3 text-xs font-bold bg-slate-100 text-black border-b border-slate-200">
           <div className="col-span-3">Apprentice</div>
           <div className="col-span-2">Date</div>
           <div className="col-span-2">Type</div>
@@ -252,7 +252,7 @@ export default async function MentorApprovalsPage({
                   className="grid grid-cols-14 gap-2 px-4 py-3 text-sm items-start hover:bg-slate-50 transition"
                 >
                   <div className="col-span-3">
-                    <div className="font-semibold text-slate-900">
+                    <div className="font-semibold text-black">
                       {apprenticeName}
                     </div>
                     <div className="text-xs text-slate-500">
@@ -261,7 +261,7 @@ export default async function MentorApprovalsPage({
                   </div>
 
                   <div className="col-span-2">
-                    <div className="font-semibold text-slate-900">
+                    <div className="font-semibold text-black">
                       {e.log_date}
                     </div>
                     <div className="text-xs text-slate-500">
@@ -278,7 +278,7 @@ export default async function MentorApprovalsPage({
                   </div>
 
                   <div className="col-span-2">
-                    <div className="font-semibold text-slate-900">
+                    <div className="font-semibold text-black">
                       {e.hour_type}
                     </div>
                     <div
@@ -289,7 +289,7 @@ export default async function MentorApprovalsPage({
                             ? 'bg-brand-green-100 text-green-800'
                             : e.status === 'REJECTED'
                               ? 'bg-red-100 text-red-800'
-                              : 'bg-slate-100 text-slate-800'
+                              : 'bg-slate-100 text-black'
                       }`}
                     >
                       {e.status}
@@ -302,7 +302,7 @@ export default async function MentorApprovalsPage({
                         e.funding_phase === 'WIOA'
                           ? 'bg-blue-100 text-blue-800'
                           : e.funding_phase === 'PRE_WIOA'
-                            ? 'bg-slate-100 text-slate-800'
+                            ? 'bg-slate-100 text-black'
                             : 'bg-purple-100 text-purple-800'
                       }`}
                     >
@@ -311,7 +311,7 @@ export default async function MentorApprovalsPage({
                   </div>
 
                   <div className="col-span-2">
-                    <div className="font-semibold text-slate-900">
+                    <div className="font-semibold text-black">
                       {minutesToHrsMin(e.minutes)}
                     </div>
                   </div>
@@ -319,14 +319,14 @@ export default async function MentorApprovalsPage({
                   <div className="col-span-2">
                     {e.milady_module_ref ? (
                       <div className="text-xs mb-1">
-                        <span className="font-semibold text-slate-700">
+                        <span className="font-semibold text-black">
                           Milady:
                         </span>{' '}
                         {e.milady_module_ref}
                       </div>
                     ) : null}
                     {e.activity_note ? (
-                      <div className="text-xs text-slate-600">
+                      <div className="text-xs text-black">
                         {e.activity_note}
                       </div>
                     ) : null}
@@ -371,7 +371,7 @@ export default async function MentorApprovalsPage({
                       }}
                     >
                       <button
-                        className="px-3 py-1 border border-slate-600 text-slate-600 rounded text-xs font-semibold hover:bg-slate-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-3 py-1 border border-slate-600 text-black rounded text-xs font-semibold hover:bg-slate-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={e.status !== 'APPROVED'}
                         title="Lock after approval so it can't be changed"
                       >

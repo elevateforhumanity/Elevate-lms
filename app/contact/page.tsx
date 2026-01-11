@@ -62,11 +62,11 @@ export default function ContactPage() {
             </span>
           </div>
 
-          <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl text-gray-900">
+          <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl text-black">
             Talk to a real person about your career goals
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base md:text-lg text-gray-700 leading-relaxed">
+          <p className="mt-4 max-w-2xl text-base md:text-lg text-black leading-relaxed">
             Questions about programs, funding, or eligibility? Our advisors are here to help you understand your options and find the right path forward.
           </p>
         </div>
@@ -76,10 +76,10 @@ export default function ContactPage() {
       <section className="py-16 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               How to Reach Us
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-black">
               Choose the method that works best for you
             </p>
           </div>
@@ -92,13 +92,13 @@ export default function ContactPage() {
               <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                 <Phone className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Call Us
               </h3>
               <p className="text-lg font-semibold text-blue-600 mb-2">
                 (317) 314-3757
               </p>
-              <p className="text-sm text-gray-600">Mon-Fri, 8am-6pm EST</p>
+              <p className="text-sm text-black">Mon-Fri, 8am-6pm EST</p>
             </a>
 
             <a
@@ -108,27 +108,27 @@ export default function ContactPage() {
               <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                 <Mail className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Email Us
               </h3>
               <p className="text-sm font-semibold text-green-600 mb-2">
                 elevate4humanityedu@gmail.com
               </p>
-              <p className="text-sm text-gray-600">24-hour response time</p>
+              <p className="text-sm text-black">24-hour response time</p>
             </a>
 
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
               <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                 <MapPin className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Visit Us
               </h3>
-              <p className="text-sm text-gray-700 mb-2">
+              <p className="text-sm text-black mb-2">
                 8888 Keystone Xing, Suite 1300<br />
                 Indianapolis, IN 46240
               </p>
-              <p className="text-sm text-gray-600">By appointment only</p>
+              <p className="text-sm text-black">By appointment only</p>
             </div>
           </div>
         </div>
@@ -138,10 +138,10 @@ export default function ContactPage() {
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               Send Us a Message
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-black">
               We'll respond within 24 hours
             </p>
           </div>
@@ -153,7 +153,7 @@ export default function ContactPage() {
             >
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                  <label className="block text-sm font-bold text-black mb-2">
                     Full Name *
                   </label>
                   <input
@@ -171,7 +171,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                  <label className="block text-sm font-bold text-black mb-2">
                     Email Address *
                   </label>
                   <input
@@ -191,7 +191,7 @@ export default function ContactPage() {
 
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                  <label className="block text-sm font-bold text-black mb-2">
                     Phone Number
                   </label>
                   <input
@@ -206,7 +206,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                  <label className="block text-sm font-bold text-black mb-2">
                     I'm Interested In *
                   </label>
                   <select
@@ -227,7 +227,7 @@ export default function ContactPage() {
               </div>
 
               <div className="mb-6">
-                <label className="block text-sm font-bold text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-black mb-2">
                   Message *
                 </label>
                 <textarea
@@ -252,7 +252,7 @@ export default function ContactPage() {
                 <span>Send Message</span>
               </button>
 
-              <p className="text-center text-sm text-gray-600 mt-4">
+              <p className="text-center text-sm text-black mt-4">
                 We'll respond within 24 hours
               </p>
             </form>
@@ -261,10 +261,10 @@ export default function ContactPage() {
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="w-10 h-10 text-green-600" />
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">
+              <h3 className="text-3xl font-bold text-black mb-4">
                 Message Sent!
               </h3>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-black mb-8">
                 Thank you for reaching out. We'll get back to you within 24 hours.
               </p>
               <Link
@@ -285,10 +285,10 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
               <Clock className="w-12 h-12 text-blue-600 mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Office Hours
               </h3>
-              <div className="space-y-2 text-gray-700">
+              <div className="space-y-2 text-black">
                 <p>
                   <strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM EST
                 </p>
@@ -303,10 +303,10 @@ export default function ContactPage() {
 
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
               <CheckCircle className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Who We Help
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>• Students & Job Seekers</li>
                 <li>• Employers & Partners</li>
                 <li>• Workforce Boards</li>
@@ -316,7 +316,7 @@ export default function ContactPage() {
 
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
               <ArrowRight className="w-12 h-12 text-purple-600 mb-4" />
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Quick Links
               </h3>
               <div className="space-y-2">

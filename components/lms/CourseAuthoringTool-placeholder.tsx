@@ -18,11 +18,11 @@ d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.
           </svg>
         </div>
 
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
+        <h1 className="text-2xl font-bold text-black mb-2">
           Course Authoring Tool
         </h1>
 
-        <p className="text-gray-600 mb-6">
+        <p className="text-black mb-6">
           This feature is being upgraded to use modern drag-and-drop technology.
         </p>
 
@@ -44,7 +44,7 @@ d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.
           </a>
           <a
             href="/admin/migrations"
-            className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+            className="px-6 py-3 bg-gray-200 text-black rounded-lg hover:bg-gray-300 transition"
           >
             Run Migrations
           </a>

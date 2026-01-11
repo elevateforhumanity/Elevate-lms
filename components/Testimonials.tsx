@@ -39,7 +39,7 @@ export default function Testimonials() {
           <h2 className="text-2xl font-semibold">
             Real Stories. Real Results.
           </h2>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-black">
             100% funded programs • $0 cost to students
           </p>
         </div>
@@ -56,10 +56,10 @@ export default function Testimonials() {
                 />
                 <div>
                   <div className="font-semibold">{t.name}</div>
-                  <div className="text-sm text-slate-600">{t.role}</div>
+                  <div className="text-sm text-black">{t.role}</div>
                 </div>
               </div>
-              <p className="mt-4 text-slate-700">"{t.quote}"</p>
+              <p className="mt-4 text-black">"{t.quote}"</p>
             </div>
           ))}
         </div>

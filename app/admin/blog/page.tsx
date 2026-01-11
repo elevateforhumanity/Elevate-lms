@@ -16,22 +16,22 @@ export default function BlogAdminPage() {
         <div className="space-y-4">
           <div className="border-l-4 border-blue-500 pl-4">
             <h3 className="font-semibold">Draft Posts</h3>
-            <p className="text-sm text-gray-600">Posts in progress</p>
+            <p className="text-sm text-black">Posts in progress</p>
           </div>
 
           <div className="border-l-4 border-yellow-500 pl-4">
             <h3 className="font-semibold">Pending Review</h3>
-            <p className="text-sm text-gray-600">Posts awaiting approval</p>
+            <p className="text-sm text-black">Posts awaiting approval</p>
           </div>
 
           <div className="border-l-4 border-green-500 pl-4">
             <h3 className="font-semibold">Published</h3>
-            <p className="text-sm text-gray-600">Live blog posts</p>
+            <p className="text-sm text-black">Live blog posts</p>
           </div>
 
           <div className="border-l-4 border-red-500 pl-4">
             <h3 className="font-semibold">Archived</h3>
-            <p className="text-sm text-gray-600">Removed from public view</p>
+            <p className="text-sm text-black">Removed from public view</p>
           </div>
         </div>
 

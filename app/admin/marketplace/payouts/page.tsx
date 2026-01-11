@@ -67,7 +67,7 @@ export default async function AdminPayoutsPage() {
     <div className="py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Manage Payouts</h1>
-        <p className="text-gray-600">
+        <p className="text-black">
           Process monthly payouts to creators (minimum $50)
         </p>
       </div>
@@ -79,7 +79,7 @@ export default async function AdminPayoutsPage() {
         </h2>
 
         {creatorsNeedingPayout.length === 0 ? (
-          <p className="text-gray-600">
+          <p className="text-black">
             No creators have reached the $50 minimum payout threshold.
           </p>
         ) : (
@@ -157,7 +157,7 @@ export default async function AdminPayoutsPage() {
                   <td className="py-3 px-4 text-yellow-600">
                     ${(creator.pendingEarnings / 100).toFixed(2)}
                   </td>
-                  <td className="py-3 px-4 text-sm text-gray-600">
+                  <td className="py-3 px-4 text-sm text-black">
                     {creator.lastPayoutDate
                       ? new Date(creator.lastPayoutDate).toLocaleDateString()
                       : 'Never'}

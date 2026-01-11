@@ -25,7 +25,7 @@ export default function LanguageSwitcher() {
         className={`px-3 py-1 rounded text-sm font-medium transition ${
           locale === 'en'
             ? 'bg-blue-600 text-white'
-            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            : 'bg-gray-200 text-black hover:bg-gray-300'
         }`}
         aria-label="Switch to English"
       >
@@ -36,7 +36,7 @@ export default function LanguageSwitcher() {
         className={`px-3 py-1 rounded text-sm font-medium transition ${
           locale === 'es'
             ? 'bg-blue-600 text-white'
-            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            : 'bg-gray-200 text-black hover:bg-gray-300'
         }`}
         aria-label="Cambiar a Español"
       >

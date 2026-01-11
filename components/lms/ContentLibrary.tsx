@@ -178,7 +178,7 @@ export default function ContentLibrary() {
         <div className="flex items-center justify-between mb-4">
           <div>
             <h1 className="text-2xl font-bold">Content Library</h1>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Manage and reuse your learning content
             </p>
           </div>
@@ -267,7 +267,7 @@ export default function ContentLibrary() {
         </div>
 
         {/* Stats */}
-        <div className="mt-4 flex gap-6 text-sm text-gray-600">
+        <div className="mt-4 flex gap-6 text-sm text-black">
           <span>{filteredItems.length} items</span>
           <span>{selectedItems.size} selected</span>
         </div>
@@ -311,7 +311,7 @@ export default function ContentLibrary() {
                   {/* Info */}
                   <div className="space-y-2">
                     <h3 className="font-semibold truncate">{item.title}</h3>
-                    <p className="text-sm text-gray-600 line-clamp-2">
+                    <p className="text-sm text-black line-clamp-2">
                       {item.description}
                     </p>
 
@@ -376,7 +376,7 @@ export default function ContentLibrary() {
           <div className="bg-white rounded-lg border">
             <table className="w-full">
               <thead className="border-b">
-                <tr className="text-left text-sm text-gray-600">
+                <tr className="text-left text-sm text-black">
                   <th className="p-4 w-12">
                     <input type="checkbox" className="rounded" />
                   </th>
@@ -418,16 +418,16 @@ export default function ContentLibrary() {
                           {item.content_type}
                         </span>
                       </td>
-                      <td className="p-4 text-sm text-gray-600">
+                      <td className="p-4 text-sm text-black">
                         {item.category}
                       </td>
-                      <td className="p-4 text-sm text-gray-600">
+                      <td className="p-4 text-sm text-black">
                         {formatFileSize(item.file_size)}
                       </td>
-                      <td className="p-4 text-sm text-gray-600">
+                      <td className="p-4 text-sm text-black">
                         {item.usage_count}
                       </td>
-                      <td className="p-4 text-sm text-gray-600">
+                      <td className="p-4 text-sm text-black">
                         {new Date(item.created_at).toLocaleDateString()}
                       </td>
                       <td className="p-4">

@@ -89,9 +89,9 @@ export default async function ShopReportsPage() {
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <FileText className="w-8 h-8 text-brand-blue-600" />
-                <h1 className="text-3xl font-bold text-gray-900">Reports</h1>
+                <h1 className="text-3xl font-bold text-black">Reports</h1>
               </div>
-              <p className="text-gray-600">
+              <p className="text-black">
                 View and download student progress reports
               </p>
             </div>
@@ -109,7 +109,7 @@ export default async function ShopReportsPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center gap-3 mb-2">
               <FileText className="w-6 h-6 text-brand-blue-600" />
-              <h3 className="text-sm font-medium text-gray-600">
+              <h3 className="text-sm font-medium text-black">
                 Total Reports
               </h3>
             </div>
@@ -120,7 +120,7 @@ export default async function ShopReportsPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center gap-3 mb-2">
               <Users className="w-6 h-6 text-brand-green-600" />
-              <h3 className="text-sm font-medium text-gray-600">
+              <h3 className="text-sm font-medium text-black">
                 Active Students
               </h3>
             </div>
@@ -131,7 +131,7 @@ export default async function ShopReportsPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center gap-3 mb-2">
               <Clock className="w-6 h-6 text-purple-600" />
-              <h3 className="text-sm font-medium text-gray-600">Total Hours</h3>
+              <h3 className="text-sm font-medium text-black">Total Hours</h3>
             </div>
             <p className="text-3xl font-bold text-purple-600">
               {reports.reduce((sum, r) => sum + r.hours, 0)}
@@ -140,7 +140,7 @@ export default async function ShopReportsPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center gap-3 mb-2">
               <Calendar className="w-6 h-6 text-brand-orange-600" />
-              <h3 className="text-sm font-medium text-gray-600">This Month</h3>
+              <h3 className="text-sm font-medium text-black">This Month</h3>
             </div>
             <p className="text-3xl font-bold text-brand-orange-600">
               {
@@ -161,7 +161,7 @@ export default async function ShopReportsPage() {
         <div className="bg-white rounded-lg shadow p-4 mb-6">
           <div className="flex gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 Report Type
               </label>
               <select
@@ -183,8 +183,8 @@ export default async function ShopReportsPage() {
           {filteredReports.length === 0 ? (
             <div className="text-center py-12">
               <FileText className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-700 text-lg">No reports found</p>
-              <p className="text-gray-600 text-sm mt-2">
+              <p className="text-black text-lg">No reports found</p>
+              <p className="text-black text-sm mt-2">
                 Create your first report to get started
               </p>
             </div>
@@ -192,25 +192,25 @@ export default async function ShopReportsPage() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Student
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Type
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Period
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Hours
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Date
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Actions
                   </th>
                 </tr>
@@ -219,7 +219,7 @@ export default async function ShopReportsPage() {
                 {filteredReports.map((report) => (
                   <tr key={report.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-black">
                         {report.student_name}
                       </div>
                     </td>
@@ -228,10 +228,10 @@ export default async function ShopReportsPage() {
                         {report.report_type}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {report.period}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {report.hours} hrs
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -241,13 +241,13 @@ export default async function ShopReportsPage() {
                             ? 'bg-brand-green-100 text-green-800'
                             : report.status === 'pending'
                               ? 'bg-yellow-100 text-yellow-800'
-                              : 'bg-gray-100 text-gray-800'
+                              : 'bg-gray-100 text-black'
                         }`}
                       >
                         {report.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {new Date(report.created_at).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">

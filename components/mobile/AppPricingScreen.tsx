@@ -20,10 +20,10 @@ export function AppPricingScreen() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Choose Your Access Level
           </h1>
-          <p className="text-slate-600">
+          <p className="text-black">
             The app is free to download. Some programs require paid platform access.
           </p>
         </div>
@@ -45,19 +45,19 @@ export function AppPricingScreen() {
 
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h2 className="text-xl font-bold text-slate-900">
+                  <h2 className="text-xl font-bold text-black">
                     {product.name}
                   </h2>
-                  <p className="text-sm text-slate-600 mt-1">
+                  <p className="text-sm text-black mt-1">
                     {product.description}
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-bold text-slate-900">
+                  <div className="text-2xl font-bold text-black">
                     {product.priceDisplay.split('/')[0]}
                   </div>
                   {product.interval === 'month' && product.price > 0 && (
-                    <div className="text-xs text-slate-600">/month</div>
+                    <div className="text-xs text-black">/month</div>
                   )}
                 </div>
               </div>
@@ -66,7 +66,7 @@ export function AppPricingScreen() {
                 {product.features.slice(0, 4).map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-sm">
                     <Check className="text-green-600 flex-shrink-0 mt-0.5" size={16} />
-                    <span className="text-slate-700">{feature}</span>
+                    <span className="text-black">{feature}</span>
                   </li>
                 ))}
                 {product.features.length > 4 && (
@@ -77,7 +77,7 @@ export function AppPricingScreen() {
               </ul>
 
               {product.tier === 'free' && (
-                <div className="text-center py-2 text-sm text-slate-600 font-medium">
+                <div className="text-center py-2 text-sm text-black font-medium">
                   Already Active
                 </div>
               )}
@@ -104,7 +104,7 @@ export function AppPricingScreen() {
         </div>
 
         {/* Footer Note - REQUIRED FOR APP STORE COMPLIANCE */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-slate-700">
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-black">
           <p className="font-semibold mb-2">Important:</p>
           <p>
             Prices apply to platform access. Training and services may be paid separately through our website.

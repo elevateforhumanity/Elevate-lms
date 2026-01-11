@@ -172,7 +172,7 @@ export default async function VerificationPage() {
 
             {/* Verification Checklist */}
             <div className="bg-white rounded-lg shadow-sm border p-8 mb-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">
+              <h2 className="text-2xl font-bold text-black mb-6">
                 Verification Requirements
               </h2>
 
@@ -193,7 +193,7 @@ export default async function VerificationPage() {
                     )}
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-slate-900">
+                        <h3 className="font-semibold text-black">
                           {req.label}
                         </h3>
                         {req.required && (
@@ -202,7 +202,7 @@ export default async function VerificationPage() {
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-slate-600 mt-1">
+                      <p className="text-sm text-black mt-1">
                         {req.description}
                       </p>
                       {req.completed && (
@@ -226,7 +226,7 @@ export default async function VerificationPage() {
                 </Link>
                 <Link
                   href="/program-holder/dashboard"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-white hover:bg-slate-50 text-slate-900 font-semibold rounded-lg border-2 border-slate-300 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-white hover:bg-slate-50 text-black font-semibold rounded-lg border-2 border-slate-300 transition-colors"
                 >
                   Back to Dashboard
                 </Link>

@@ -83,10 +83,10 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
           <div className="flex items-start gap-3">
             <AlertCircle className="w-6 h-6 text-orange-600 mt-0.5" />
             <div>
-              <h2 className="text-lg font-bold text-slate-900">
+              <h2 className="text-lg font-bold text-black">
                 No Active Apprentices
               </h2>
-              <p className="mt-1 text-sm text-slate-700">
+              <p className="mt-1 text-sm text-black">
                 You don't have any active apprentices assigned yet. Contact your
                 program sponsor to get started.
               </p>
@@ -100,10 +100,10 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
   return (
     <div className="max-w-3xl mx-auto px-6 py-8">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-slate-900">
+        <h1 className="text-3xl font-bold text-black">
           Submit Weekly Apprentice Report
         </h1>
-        <p className="mt-2 text-slate-600">
+        <p className="mt-2 text-black">
           Indiana weekly hours & attendance reporting for RAPIDS compliance
         </p>
       </div>
@@ -114,7 +114,7 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
       >
         {/* Apprentice Selection */}
         <div>
-          <label className="block text-sm font-bold text-slate-900 mb-2">
+          <label className="block text-sm font-bold text-black mb-2">
             Apprentice *
           </label>
           <select
@@ -134,7 +134,7 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
         {/* Week Range */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-bold text-slate-900 mb-2">
+            <label className="block text-sm font-bold text-black mb-2">
               Week Start *
             </label>
             <input
@@ -146,7 +146,7 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
             />
           </div>
           <div>
-            <label className="block text-sm font-bold text-slate-900 mb-2">
+            <label className="block text-sm font-bold text-black mb-2">
               Week End *
             </label>
             <input
@@ -162,7 +162,7 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
         {/* Hours */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-bold text-slate-900 mb-2">
+            <label className="block text-sm font-bold text-black mb-2">
               On-the-Job Training Hours *
             </label>
             <input
@@ -175,12 +175,12 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
               onChange={(e) => setHoursOjt(e.target.value)}
               required
             />
-            <p className="mt-1 text-xs text-slate-600">
+            <p className="mt-1 text-xs text-black">
               Hours worked at the shop
             </p>
           </div>
           <div>
-            <label className="block text-sm font-bold text-slate-900 mb-2">
+            <label className="block text-sm font-bold text-black mb-2">
               Related Instruction Hours
             </label>
             <input
@@ -192,7 +192,7 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
               value={hoursRelated}
               onChange={(e) => setHoursRelated(e.target.value)}
             />
-            <p className="mt-1 text-xs text-slate-600">
+            <p className="mt-1 text-xs text-black">
               Milady RISE coursework hours
             </p>
           </div>
@@ -200,7 +200,7 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
 
         {/* Total Hours Display */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <div className="text-sm font-semibold text-slate-700">
+          <div className="text-sm font-semibold text-black">
             Total Hours This Week
           </div>
           <div className="text-2xl font-bold text-blue-600">
@@ -210,7 +210,7 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
 
         {/* Attendance Notes */}
         <div>
-          <label className="block text-sm font-bold text-slate-900 mb-2">
+          <label className="block text-sm font-bold text-black mb-2">
             Attendance / Progress Notes
           </label>
           <textarea
@@ -224,7 +224,7 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
 
         {/* Competencies Notes */}
         <div>
-          <label className="block text-sm font-bold text-slate-900 mb-2">
+          <label className="block text-sm font-bold text-black mb-2">
             Skills / Competencies Progress
           </label>
           <textarea
@@ -272,7 +272,7 @@ export function ShopReportForm({ placements }: { placements: Placement[] }) {
           <button
             type="button"
             onClick={() => router.push('/shop/dashboard')}
-            className="px-6 py-3 border border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 transition"
+            className="px-6 py-3 border border-slate-300 text-black font-semibold rounded-lg hover:bg-slate-50 transition"
           >
             Cancel
           </button>

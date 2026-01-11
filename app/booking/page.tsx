@@ -143,10 +143,10 @@ export default async function BookingPage() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-slate-900 mb-2 text-2xl md:text-3xl lg:text-4xl">
+          <h1 className="text-4xl font-bold text-black mb-2 text-2xl md:text-3xl lg:text-4xl">
             Book a Live Session
           </h1>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-black">
             Schedule one-on-one time with expert instructors via Zoom or
             Microsoft Teams
           </p>
@@ -161,7 +161,7 @@ export default async function BookingPage() {
                   className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
                     step >= s
                       ? 'bg-brand-blue-600 text-white'
-                      : 'bg-slate-200 text-slate-600'
+                      : 'bg-slate-200 text-black'
                   }`}
                 >
                   {s}
@@ -174,7 +174,7 @@ export default async function BookingPage() {
               </div>
             ))}
           </div>
-          <div className="flex justify-center gap-32 mt-2 text-sm font-medium text-slate-600">
+          <div className="flex justify-center gap-32 mt-2 text-sm font-medium text-black">
             <span>Select Instructor</span>
             <span>Choose Time</span>
             <span>Confirm</span>
@@ -209,10 +209,10 @@ export default async function BookingPage() {
                     />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900">
+                    <h3 className="font-bold text-black">
                       {instructor.name}
                     </h3>
-                    <p className="text-sm text-slate-600">{instructor.title}</p>
+                    <p className="text-sm text-black">{instructor.title}</p>
                   </div>
                 </div>
 
@@ -232,7 +232,7 @@ export default async function BookingPage() {
                       </svg>
                     ))}
                   </div>
-                  <span className="text-sm text-slate-600">
+                  <span className="text-sm text-black">
                     {instructor.rating} ({instructor.totalSessions} sessions)
                   </span>
                 </div>
@@ -259,15 +259,15 @@ export default async function BookingPage() {
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => setStep(1)}
-                  className="text-slate-600 hover:text-slate-900"
+                  className="text-black hover:text-black"
                 >
                   ← Back
                 </button>
                 <div>
-                  <h2 className="text-2xl font-bold text-slate-900">
+                  <h2 className="text-2xl font-bold text-black">
                     {selectedInstructor.name}
                   </h2>
-                  <p className="text-slate-600">
+                  <p className="text-black">
                     Select an available time slot
                   </p>
                 </div>
@@ -280,7 +280,7 @@ export default async function BookingPage() {
                   className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                     selectedPlatform === 'zoom'
                       ? 'bg-brand-blue-600 text-white'
-                      : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                      : 'bg-slate-200 text-black hover:bg-slate-300'
                   }`}
                 >
                   <span className="flex items-center gap-2">
@@ -299,7 +299,7 @@ export default async function BookingPage() {
                   className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                     selectedPlatform === 'teams'
                       ? 'bg-purple-600 text-white'
-                      : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                      : 'bg-slate-200 text-black hover:bg-slate-300'
                   }`}
                 >
                   <span className="flex items-center gap-2">
@@ -322,7 +322,7 @@ export default async function BookingPage() {
                 groupSlotsByDate(selectedInstructor.availability)
               ).map(([date, slots]) => (
                 <div key={date}>
-                  <h3 className="font-bold text-slate-900 mb-3">
+                  <h3 className="font-bold text-black mb-3">
                     {new Date(date).toLocaleDateString('en-US', {
                       weekday: 'long',
                       month: 'long',
@@ -344,7 +344,7 @@ export default async function BookingPage() {
                           slot.available
                             ? selectedSlot?.id === slot.id
                               ? 'bg-brand-blue-600 text-white'
-                              : 'bg-slate-100 text-slate-900 hover:bg-gray-100'
+                              : 'bg-slate-100 text-black hover:bg-gray-100'
                             : 'bg-slate-50 text-slate-400 cursor-not-allowed'
                         }`}
                       >
@@ -364,28 +364,28 @@ export default async function BookingPage() {
             <div className="flex items-center gap-4 mb-6">
               <button
                 onClick={() => setStep(2)}
-                className="text-slate-600 hover:text-slate-900"
+                className="text-black hover:text-black"
               >
                 ← Back
               </button>
-              <h2 className="text-2xl font-bold text-slate-900">
+              <h2 className="text-2xl font-bold text-black">
                 Confirm Booking
               </h2>
             </div>
 
             {/* Booking Summary */}
             <div className="bg-slate-50 rounded-lg p-6 mb-6">
-              <h3 className="font-bold text-slate-900 mb-4">Session Details</h3>
+              <h3 className="font-bold text-black mb-4">Session Details</h3>
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Instructor:</span>
-                  <span className="font-semibold text-slate-900">
+                  <span className="text-black">Instructor:</span>
+                  <span className="font-semibold text-black">
                     {selectedInstructor.name}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Date:</span>
-                  <span className="font-semibold text-slate-900">
+                  <span className="text-black">Date:</span>
+                  <span className="font-semibold text-black">
                     {new Date(selectedSlot.date).toLocaleDateString('en-US', {
                       weekday: 'long',
                       month: 'long',
@@ -395,20 +395,20 @@ export default async function BookingPage() {
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Time:</span>
-                  <span className="font-semibold text-slate-900">
+                  <span className="text-black">Time:</span>
+                  <span className="font-semibold text-black">
                     {selectedSlot.time}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Platform:</span>
-                  <span className="font-semibold text-slate-900 capitalize">
+                  <span className="text-black">Platform:</span>
+                  <span className="font-semibold text-black capitalize">
                     {selectedPlatform}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Duration:</span>
-                  <span className="font-semibold text-slate-900">
+                  <span className="text-black">Duration:</span>
+                  <span className="font-semibold text-black">
                     60 minutes
                   </span>
                 </div>
@@ -418,7 +418,7 @@ export default async function BookingPage() {
             {/* Additional Information */}
             <div className="space-y-4 mb-6">
               <div>
-                <label className="block text-sm font-semibold text-slate-900 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Session Topic *
                 </label>
                 <input
@@ -432,7 +432,7 @@ export default async function BookingPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-900 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Additional Notes (Optional)
                 </label>
                 <textarea
@@ -456,7 +456,7 @@ export default async function BookingPage() {
               </button>
               <button
                 onClick={() => setStep(2)}
-                className="px-8 py-4 bg-slate-200 text-slate-700 font-bold rounded-lg hover:bg-slate-300 transition-all"
+                className="px-8 py-4 bg-slate-200 text-black font-bold rounded-lg hover:bg-slate-300 transition-all"
               >
                 Cancel
               </button>

@@ -34,7 +34,7 @@ export default function CourseraStyleHeader() {
               <div className="relative">
                 <button
                   onClick={() => setExploreOpen(!exploreOpen)}
-                  className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-blue-600 transition"
+                  className="flex items-center gap-1 text-sm font-medium text-black hover:text-blue-600 transition"
                 >
                   Programs
                   <ChevronDown className="w-4 h-4" />
@@ -51,42 +51,42 @@ export default function CourseraStyleHeader() {
                     </Link>
                     <Link
                       href="/programs/medical-assistant"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="block px-4 py-2 text-sm text-black hover:bg-gray-50"
                       onClick={() => setExploreOpen(false)}
                     >
                       Medical Assistant
                     </Link>
                     <Link
                       href="/programs/barber-apprenticeship"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="block px-4 py-2 text-sm text-black hover:bg-gray-50"
                       onClick={() => setExploreOpen(false)}
                     >
                       Barber Apprenticeship
                     </Link>
                     <Link
                       href="/programs/hvac-technician"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="block px-4 py-2 text-sm text-black hover:bg-gray-50"
                       onClick={() => setExploreOpen(false)}
                     >
                       HVAC Technician
                     </Link>
                     <Link
                       href="/programs/building-maintenance"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="block px-4 py-2 text-sm text-black hover:bg-gray-50"
                       onClick={() => setExploreOpen(false)}
                     >
                       Building Maintenance
                     </Link>
                     <Link
                       href="/programs/truck-driving"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="block px-4 py-2 text-sm text-black hover:bg-gray-50"
                       onClick={() => setExploreOpen(false)}
                     >
                       CDL / Truck Driving
                     </Link>
                     <Link
                       href="/programs/workforce-readiness"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="block px-4 py-2 text-sm text-black hover:bg-gray-50"
                       onClick={() => setExploreOpen(false)}
                     >
                       Workforce Readiness
@@ -97,25 +97,25 @@ export default function CourseraStyleHeader() {
 
               <Link
                 href="/employers"
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 transition"
+                className="text-sm font-medium text-black hover:text-blue-600 transition"
               >
                 For Employers
               </Link>
               <Link
                 href="/partners"
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 transition"
+                className="text-sm font-medium text-black hover:text-blue-600 transition"
               >
                 Partners
               </Link>
               <Link
                 href="/about"
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 transition"
+                className="text-sm font-medium text-black hover:text-blue-600 transition"
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 transition"
+                className="text-sm font-medium text-black hover:text-blue-600 transition"
               >
                 Contact
               </Link>
@@ -156,7 +156,7 @@ d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-gray-600 hover:text-gray-900"
+              className="lg:hidden p-2 text-black hover:text-black"
             >
               {mobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -174,35 +174,35 @@ d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 
           <div className="px-4 py-4 space-y-3">
             <Link
               href="/programs"
-              className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-2 text-sm font-medium text-black hover:bg-gray-50 rounded-lg"
               onClick={() => setMobileMenuOpen(false)}
             >
               Programs
             </Link>
             <Link
               href="/employers"
-              className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-2 text-sm font-medium text-black hover:bg-gray-50 rounded-lg"
               onClick={() => setMobileMenuOpen(false)}
             >
               For Employers
             </Link>
             <Link
               href="/partners"
-              className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-2 text-sm font-medium text-black hover:bg-gray-50 rounded-lg"
               onClick={() => setMobileMenuOpen(false)}
             >
               Partners
             </Link>
             <Link
               href="/about"
-              className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-2 text-sm font-medium text-black hover:bg-gray-50 rounded-lg"
               onClick={() => setMobileMenuOpen(false)}
             >
               About
             </Link>
             <Link
               href="/contact"
-              className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-2 text-sm font-medium text-black hover:bg-gray-50 rounded-lg"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact

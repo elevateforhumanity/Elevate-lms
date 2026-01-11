@@ -50,7 +50,7 @@ export default function MobileNav() {
                     className={`flex items-center gap-3 px-4 py-3 rounded-lg mb-1 ${
                       isActive(item.href)
                         ? 'bg-blue-50 text-brand-orange-600'
-                        : 'text-gray-700 hover:bg-gray-50'
+                        : 'text-black hover:bg-gray-50'
                     }`}
                   >
                     <Icon size={20} />
@@ -73,7 +73,7 @@ export default function MobileNav() {
                 key={item.href}
                 href={item.href}
                 className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg min-w-[64px] ${
-                  active ? 'text-brand-orange-600' : 'text-gray-600 hover:text-gray-900'
+                  active ? 'text-brand-orange-600' : 'text-black hover:text-black'
                 }`}
               >
                 <Icon size={24} strokeWidth={active ? 2.5 : 2} />

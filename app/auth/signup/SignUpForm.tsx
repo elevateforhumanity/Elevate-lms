@@ -144,10 +144,10 @@ export default function SignUpForm() {
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">
+            <h2 className="text-2xl font-bold text-black mb-2">
               Account Created!
             </h2>
-            <p className="text-slate-600 mb-6">
+            <p className="text-black mb-6">
               Welcome to Elevate For Humanity. Check your email to verify your
               account.
             </p>
@@ -167,10 +167,10 @@ export default function SignUpForm() {
     <div className="w-full max-w-md mx-auto">
       <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Create Your Account
           </h1>
-          <p className="text-slate-600">
+          <p className="text-black">
             Start your workforce training journey today
           </p>
         </div>
@@ -186,7 +186,7 @@ export default function SignUpForm() {
             <div>
               <label
                 htmlFor="firstName"
-                className="block text-sm font-medium text-slate-700 mb-2"
+                className="block text-sm font-medium text-black mb-2"
               >
                 First Name
               </label>
@@ -204,7 +204,7 @@ export default function SignUpForm() {
             <div>
               <label
                 htmlFor="lastName"
-                className="block text-sm font-medium text-slate-700 mb-2"
+                className="block text-sm font-medium text-black mb-2"
               >
                 Last Name
               </label>
@@ -224,7 +224,7 @@ export default function SignUpForm() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Email Address
             </label>
@@ -243,7 +243,7 @@ export default function SignUpForm() {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Password
             </label>
@@ -261,7 +261,7 @@ export default function SignUpForm() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-700"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-black"
               >
                 {showPassword ? (
                   <svg
@@ -308,7 +308,7 @@ export default function SignUpForm() {
           <div>
             <label
               htmlFor="confirmPassword"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Confirm Password
             </label>
@@ -343,7 +343,7 @@ export default function SignUpForm() {
               ) => setAgreedToTerms(e.target.checked)}
               className="w-4 h-4 mt-1 text-brand-orange-600 border-slate-300 rounded focus:ring-orange-500"
             />
-            <label htmlFor="terms" className="ml-3 text-sm text-slate-600">
+            <label htmlFor="terms" className="ml-3 text-sm text-black">
               I agree to the{' '}
               <Link
                 href="/terms"
@@ -406,7 +406,7 @@ export default function SignUpForm() {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
-              <span className="text-sm font-medium text-slate-700">Google</span>
+              <span className="text-sm font-medium text-black">Google</span>
             </button>
 
             <button
@@ -421,14 +421,14 @@ export default function SignUpForm() {
                 <path fill="#05a6f0" d="M1 12h10v10H1z" />
                 <path fill="#ffba08" d="M12 12h10v10H12z" />
               </svg>
-              <span className="text-sm font-medium text-slate-700">
+              <span className="text-sm font-medium text-black">
                 Microsoft
               </span>
             </button>
           </div>
         </div>
 
-        <p className="mt-8 text-center text-sm text-slate-600">
+        <p className="mt-8 text-center text-sm text-black">
           Already have an account?{' '}
           <Link
             href="/auth/signin"

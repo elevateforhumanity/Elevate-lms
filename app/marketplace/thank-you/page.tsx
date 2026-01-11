@@ -47,7 +47,7 @@ function MarketplaceThankYouContent() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-blue-600 mx-auto mb-4" />
-          <p className="text-gray-600">Processing your purchase...</p>
+          <p className="text-black">Processing your purchase...</p>
         </div>
       </div>
     );
@@ -73,7 +73,7 @@ function MarketplaceThankYouContent() {
             </svg>
           </div>
           <h1 className="text-2xl font-bold mb-2">Something Went Wrong</h1>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             {error || 'Unable to retrieve purchase details'}
           </p>
           <Link
@@ -108,7 +108,7 @@ function MarketplaceThankYouContent() {
           </div>
 
           <h1 className="text-3xl font-bold mb-2">Purchase Complete!</h1>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             Thank you for your purchase. Check your email for download
             instructions.
           </p>
@@ -117,25 +117,25 @@ function MarketplaceThankYouContent() {
             <h2 className="font-semibold text-lg mb-4">Purchase Details</h2>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-600">Product:</span>
+                <span className="text-black">Product:</span>
                 <span className="font-semibold">
                   {purchaseData.productTitle || 'Digital Product'}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Creator:</span>
+                <span className="text-black">Creator:</span>
                 <span className="font-semibold">
                   {purchaseData.creatorName || 'Unknown'}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Amount:</span>
+                <span className="text-black">Amount:</span>
                 <span className="font-semibold">
                   ${((purchaseData.amount || 0) / 100).toFixed(2)}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Email:</span>
+                <span className="text-black">Email:</span>
                 <span className="font-semibold">
                   {purchaseData.email || 'N/A'}
                 </span>
@@ -168,13 +168,13 @@ function MarketplaceThankYouContent() {
         <div className="text-center space-y-3">
           <Link
             href="/marketplace"
-            className="block w-full bg-gray-100 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-200 transition"
+            className="block w-full bg-gray-100 text-black py-3 rounded-lg font-semibold hover:bg-gray-200 transition"
           >
             Browse More Products
           </Link>
           <Link
             href="/"
-            className="block w-full border border-gray-300 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-50 transition"
+            className="block w-full border border-gray-300 text-black py-3 rounded-lg font-semibold hover:bg-gray-50 transition"
           >
             Return Home
           </Link>
@@ -191,7 +191,7 @@ export default function MarketplaceThankYouPage() {
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-blue-600 mx-auto" />
-            <p className="mt-4 text-gray-600">Loading...</p>
+            <p className="mt-4 text-black">Loading...</p>
           </div>
         </div>
       }

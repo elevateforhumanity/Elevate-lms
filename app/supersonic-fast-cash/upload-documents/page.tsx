@@ -116,22 +116,22 @@ export default function UploadDocumentsPage() {
       <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-black mb-4">
             Upload Your Tax Documents
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-black">
             Securely upload your W-2s, 1099s, receipts, and other tax documents
           </p>
         </div>
 
         {/* Contact Info */}
         <div className="bg-white rounded-xl shadow-sm p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-black mb-6">
             Your Information
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Email Address *
               </label>
               <input
@@ -144,7 +144,7 @@ export default function UploadDocumentsPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Phone Number *
               </label>
               <input
@@ -161,16 +161,16 @@ export default function UploadDocumentsPage() {
 
         {/* Upload Area */}
         <div className="bg-white rounded-xl shadow-sm p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-black mb-6">
             Upload Documents
           </h2>
 
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-blue-500 transition-colors">
-            <Upload className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <Upload className="w-16 h-16 text-black mx-auto mb-4" />
+            <h3 className="text-lg font-semibold text-black mb-2">
               Drop files here or click to browse
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-black mb-6">
               Accepted: PDF, JPG, PNG, DOC, DOCX (Max 10MB per file)
             </p>
             <input
@@ -186,7 +186,7 @@ export default function UploadDocumentsPage() {
               htmlFor="file-upload"
               className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-colors cursor-pointer ${
                 !email || !phone || uploading
-                  ? 'bg-gray-300 text-gray-700 cursor-not-allowed'
+                  ? 'bg-gray-300 text-black cursor-not-allowed'
                   : 'bg-blue-600 text-white hover:bg-blue-700'
               }`}
             >
@@ -207,7 +207,7 @@ export default function UploadDocumentsPage() {
         {/* Uploaded Files List */}
         {files.length > 0 && (
           <div className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl font-bold text-black mb-6">
               Uploaded Files
             </h2>
             <div className="space-y-4">
@@ -219,10 +219,10 @@ export default function UploadDocumentsPage() {
                   <div className="flex items-center gap-4 flex-1">
                     <FileText className="w-8 h-8 text-blue-600 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium text-gray-900 truncate">
+                      <p className="font-medium text-black truncate">
                         {file.name}
                       </p>
-                      <p className="text-sm text-gray-700">
+                      <p className="text-sm text-black">
                         {formatFileSize(file.size)}
                       </p>
                       {file.error && (
@@ -247,7 +247,7 @@ export default function UploadDocumentsPage() {
                       className="p-1 hover:bg-gray-100 rounded"
                       disabled={file.status === 'uploading'}
                     >
-                      <X className="w-5 h-5 text-gray-600" />
+                      <X className="w-5 h-5 text-black" />
                     </button>
                   </div>
                 </div>
@@ -258,15 +258,15 @@ export default function UploadDocumentsPage() {
 
         {/* What to Upload */}
         <div className="bg-blue-50 rounded-xl p-8 mt-8">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">
+          <h3 className="text-xl font-bold text-black mb-4">
             What Documents to Upload
           </h3>
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">
+              <h4 className="font-semibold text-black mb-2">
                 Income Documents:
               </h4>
-              <ul className="space-y-1 text-gray-700">
+              <ul className="space-y-1 text-black">
                 <li>• W-2 forms from all employers</li>
                 <li>• 1099 forms (all types)</li>
                 <li>• Business income records</li>
@@ -274,10 +274,10 @@ export default function UploadDocumentsPage() {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">
+              <h4 className="font-semibold text-black mb-2">
                 Deduction Documents:
               </h4>
-              <ul className="space-y-1 text-gray-700">
+              <ul className="space-y-1 text-black">
                 <li>• Mortgage interest statements</li>
                 <li>• Property tax receipts</li>
                 <li>• Charitable donation receipts</li>

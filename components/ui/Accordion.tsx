@@ -41,7 +41,7 @@ export const Accordion: React.FC<AccordionProps> = ({
               className="w-full flex items-center justify-between p-4 text-left hover:bg-slate-50 transition-colors"
               aria-expanded={isOpen}
             >
-              <span className="font-semibold text-slate-900">{item.title}</span>
+              <span className="font-semibold text-black">{item.title}</span>
               <ChevronDown
                 className={`h-5 w-5 text-slate-500 transition-transform ${
                   isOpen ? 'rotate-180' : ''
@@ -49,7 +49,7 @@ export const Accordion: React.FC<AccordionProps> = ({
               />
             </button>
             {isOpen && (
-              <div className="p-4 pt-0 text-slate-600">{item.content}</div>
+              <div className="p-4 pt-0 text-black">{item.content}</div>
             )}
           </div>
         );

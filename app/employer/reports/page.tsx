@@ -23,21 +23,21 @@ export default async function EmployerReportsPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Reports & Analytics</h1>
       <div className="bg-white rounded-lg shadow-sm border p-6">
-        <p className="text-slate-600 mb-6">
+        <p className="text-black mb-6">
           View hiring metrics and workforce analytics.
         </p>
         <div className="grid md:grid-cols-3 gap-4">
           <div className="border rounded-lg p-4 text-center">
             <div className="text-3xl font-bold text-blue-600 mb-2">0</div>
-            <div className="text-sm text-slate-600">Active Postings</div>
+            <div className="text-sm text-black">Active Postings</div>
           </div>
           <div className="border rounded-lg p-4 text-center">
             <div className="text-3xl font-bold text-green-600 mb-2">0</div>
-            <div className="text-sm text-slate-600">Applications</div>
+            <div className="text-sm text-black">Applications</div>
           </div>
           <div className="border rounded-lg p-4 text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">0</div>
-            <div className="text-sm text-slate-600">Hires</div>
+            <div className="text-sm text-black">Hires</div>
           </div>
         </div>
         
@@ -46,19 +46,19 @@ export default async function EmployerReportsPage() {
             <h3 className="text-lg font-semibold mb-4">Hiring Pipeline</h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">New Applications</span>
+                <span className="text-black">New Applications</span>
                 <span className="font-semibold">0</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Under Review</span>
+                <span className="text-black">Under Review</span>
                 <span className="font-semibold">0</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Interviews Scheduled</span>
+                <span className="text-black">Interviews Scheduled</span>
                 <span className="font-semibold">0</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Offers Extended</span>
+                <span className="text-black">Offers Extended</span>
                 <span className="font-semibold">0</span>
               </div>
             </div>
@@ -68,19 +68,19 @@ export default async function EmployerReportsPage() {
             <h3 className="text-lg font-semibold mb-4">Time to Hire</h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Average Days</span>
+                <span className="text-black">Average Days</span>
                 <span className="font-semibold">-</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Fastest Hire</span>
+                <span className="text-black">Fastest Hire</span>
                 <span className="font-semibold">-</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Application Response Rate</span>
+                <span className="text-black">Application Response Rate</span>
                 <span className="font-semibold">-</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Interview Show Rate</span>
+                <span className="text-black">Interview Show Rate</span>
                 <span className="font-semibold">-</span>
               </div>
             </div>
@@ -90,19 +90,19 @@ export default async function EmployerReportsPage() {
             <h3 className="text-lg font-semibold mb-4">Candidate Sources</h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Direct Applications</span>
+                <span className="text-black">Direct Applications</span>
                 <span className="font-semibold">0</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Referrals</span>
+                <span className="text-black">Referrals</span>
                 <span className="font-semibold">0</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Training Programs</span>
+                <span className="text-black">Training Programs</span>
                 <span className="font-semibold">0</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Job Boards</span>
+                <span className="text-black">Job Boards</span>
                 <span className="font-semibold">0</span>
               </div>
             </div>
@@ -112,19 +112,19 @@ export default async function EmployerReportsPage() {
             <h3 className="text-lg font-semibold mb-4">Retention Metrics</h3>
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">30-Day Retention</span>
+                <span className="text-black">30-Day Retention</span>
                 <span className="font-semibold">-</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">90-Day Retention</span>
+                <span className="text-black">90-Day Retention</span>
                 <span className="font-semibold">-</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">1-Year Retention</span>
+                <span className="text-black">1-Year Retention</span>
                 <span className="font-semibold">-</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-slate-600">Avg. Tenure</span>
+                <span className="text-black">Avg. Tenure</span>
                 <span className="font-semibold">-</span>
               </div>
             </div>

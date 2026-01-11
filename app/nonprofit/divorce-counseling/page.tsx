@@ -17,15 +17,15 @@ export default function DivorceCounselingPage() {
           ← Back to Selfish Inc.
         </Link>
 
-        <h1 className="text-4xl font-bold text-gray-900 mb-6">Divorce Counseling</h1>
+        <h1 className="text-4xl font-bold text-black mb-6">Divorce Counseling</h1>
 
         <div className="prose prose-lg max-w-none">
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-black mb-8">
             Professional support for individuals and families navigating divorce.
           </p>
 
-          <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Our Services</h2>
-          <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-8">
+          <h2 className="text-2xl font-bold text-black mt-8 mb-4">Our Services</h2>
+          <ul className="list-disc pl-6 text-black space-y-2 mb-8">
             <li>Individual counseling</li>
             <li>Co-parenting support</li>
             <li>Family therapy</li>

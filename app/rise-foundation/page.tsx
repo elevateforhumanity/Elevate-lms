@@ -53,7 +53,7 @@ export default function RiseFoundationPage() {
 
         <div className="max-w-6xl mx-auto relative z-10">
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-black text-black mb-8 leading-tight">
             "Welcome to Selfish Inc. Your Partner in Mental Wellness and
             Holistic Healing"
           </h1>
@@ -102,7 +102,7 @@ export default function RiseFoundationPage() {
       {/* Healing Products Section */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
             Shop our healing Products-browse items designed to uplift your mood
             and body.
           </h2>
@@ -119,7 +119,7 @@ export default function RiseFoundationPage() {
       {/* Video Section - Will be added */}
       <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center text-gray-700">
+          <div className="text-center text-black">
             <p>Video section - to be added</p>
           </div>
         </div>
@@ -144,7 +144,7 @@ export default function RiseFoundationPage() {
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">
+              <h3 className="text-2xl font-bold text-black group-hover:text-purple-600 transition-colors">
                 Trauma Recovery
               </h3>
             </Link>
@@ -164,7 +164,7 @@ export default function RiseFoundationPage() {
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">
+              <h3 className="text-2xl font-bold text-black group-hover:text-purple-600 transition-colors">
                 Addiction Rehabilitation
               </h3>
             </Link>
@@ -184,7 +184,7 @@ export default function RiseFoundationPage() {
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">
+              <h3 className="text-2xl font-bold text-black group-hover:text-purple-600 transition-colors">
                 Divorce Support
               </h3>
             </Link>
@@ -205,7 +205,7 @@ export default function RiseFoundationPage() {
 
       {/* Footer */}
       <footer className="py-8 px-4 bg-gray-100 text-center">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-black">
           Do Not Sell My Personal Information
         </p>
       </footer>

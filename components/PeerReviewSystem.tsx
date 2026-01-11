@@ -57,7 +57,7 @@ export default function PeerReviewSystem() {
           className={`px-4 py-2 font-medium transition-colors ${
             activeTab === '
               ? 'text-blue-600 border-b-2 border-blue-600'
-              : 'text-gray-600 hover:text-gray-900'
+              : 'text-black hover:text-black'
           }`}
         >
           To Review ({reviewsToComplete.length})
@@ -67,7 +67,7 @@ export default function PeerReviewSystem() {
           className={`px-4 py-2 font-medium transition-colors ${
             activeTab === 'completed'
               ? 'text-blue-600 border-b-2 border-blue-600'
-              : 'text-gray-600 hover:text-gray-900'
+              : 'text-black hover:text-black'
           }`}
         >
           Completed ({completedReviews.length})
@@ -81,7 +81,7 @@ export default function PeerReviewSystem() {
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-black">
                     {review.assignmentTitle}
                   </h3>
                   {review.status === 'pending' && (
@@ -91,13 +91,13 @@ export default function PeerReviewSystem() {
                     <Badge variant="success">Completed</Badge>
                   )}
                 </div>
-                <p className="text-sm text-gray-600 mb-1">
+                <p className="text-sm text-black mb-1">
                   Submitted by: <span className="font-medium">{review.studentName}</span>
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Submitted: {new Date(review.submittedDate).toLocaleDateString()}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Review due: {new Date(review.dueDate).toLocaleDateString()}
                 </p>
               </div>
@@ -107,7 +107,7 @@ export default function PeerReviewSystem() {
                     Start Review
                   </button>
                 ) : (
-                  <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+                  <button className="px-4 py-2 bg-gray-100 text-black rounded-lg hover:bg-gray-200 transition-colors">
                     View Review
                   </button>
                 )}
@@ -129,8 +129,8 @@ export default function PeerReviewSystem() {
 
       {/* Instructions */}
       <Card className="p-6 bg-blue-50 border-blue-200">
-        <h4 className="font-semibold text-gray-900 mb-2">Peer Review Guidelines</h4>
-        <ul className="text-sm text-gray-700 space-y-1">
+        <h4 className="font-semibold text-black mb-2">Peer Review Guidelines</h4>
+        <ul className="text-sm text-black space-y-1">
           <li>• Provide constructive and respectful feedback</li>
           <li>• Focus on specific strengths and areas for improvement</li>
           <li>• Use the rubric provided for each assignment</li>

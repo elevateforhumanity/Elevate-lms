@@ -21,7 +21,7 @@ export function PageFlow({ currentStep = 'learn', nextStepHref = '/apply', nextS
       <div className="max-w-7xl mx-auto px-6">
         {/* Progress Steps */}
         <div className="mb-8">
-          <h3 className="text-sm font-semibold text-slate-600 mb-4 text-center">YOUR JOURNEY</h3>
+          <h3 className="text-sm font-semibold text-black mb-4 text-center">YOUR JOURNEY</h3>
           <div className="flex items-center justify-between max-w-4xl mx-auto">
             {steps.map((step, index) => (
               <div key={step.id} className="flex items-center flex-1">
@@ -62,7 +62,7 @@ export function PageFlow({ currentStep = 'learn', nextStepHref = '/apply', nextS
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-slate-50 text-slate-900 font-bold rounded-lg border-2 border-slate-300 transition"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-slate-50 text-black font-bold rounded-lg border-2 border-slate-300 transition"
           >
             <Phone className="w-5 h-5" />
             Talk to an Advisor
@@ -70,7 +70,7 @@ export function PageFlow({ currentStep = 'learn', nextStepHref = '/apply', nextS
         </div>
 
         {/* Quick Links */}
-        <div className="mt-6 text-center text-sm text-slate-600">
+        <div className="mt-6 text-center text-sm text-black">
           <span>Not sure if you qualify? </span>
           <Link href="/funding" aria-label="Link" className="text-brand-orange-600 hover:underline font-semibold">
             Check Eligibility
@@ -94,7 +94,7 @@ export function ComplianceFooter() {
   return (
     <div className="bg-slate-100 border-t py-6">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-xs text-slate-600 space-y-2">
+        <div className="text-xs text-black space-y-2">
           <p>
             <strong>Equal Opportunity:</strong> Elevate for Humanity is an equal opportunity employer and training provider.
             We do not discriminate on the basis of race, color, religion, sex, national origin, age, disability, or any other protected class.

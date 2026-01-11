@@ -107,7 +107,7 @@ export default function VoiceoverPlayer({
         {isPlaying && (
           <button
             onClick={toggleMute}
-            className="p-3 bg-white text-slate-900 rounded-full shadow-lg hover:bg-slate-100 transition-all border-2 border-slate-200"
+            className="p-3 bg-white text-black rounded-full shadow-lg hover:bg-slate-100 transition-all border-2 border-slate-200"
             title={isMuted ? "Unmute voiceover" : "Mute voiceover"}
             aria-label={isMuted ? "Unmute voiceover" : "Mute voiceover"}
           >

@@ -75,18 +75,18 @@ export function AchievementsBadges({ userId }: AchievementsBadgesProps) {
   return (
     <div className="bg-white rounded-lg border border-slate-200 p-6">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-2xl font-bold text-slate-900">Achievements & Badges</h3>
+        <h3 className="text-2xl font-bold text-black">Achievements & Badges</h3>
         <div className="text-right">
           <p className="text-3xl font-bold text-brand-orange-600">{earnedCount}/{totalCount}</p>
-          <p className="text-sm text-slate-600">Badges Earned</p>
+          <p className="text-sm text-black">Badges Earned</p>
         </div>
       </div>
 
       {/* Progress Bar */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-slate-700">Overall Progress</span>
-          <span className="text-sm text-slate-600">{completionPercentage.toFixed(0)}%</span>
+          <span className="text-sm font-medium text-black">Overall Progress</span>
+          <span className="text-sm text-black">{completionPercentage.toFixed(0)}%</span>
         </div>
         <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
           <div
@@ -103,7 +103,7 @@ export function AchievementsBadges({ userId }: AchievementsBadgesProps) {
           className={`px-4 py-2 text-sm rounded-lg transition ${
             filter === 'all'
               ? 'bg-brand-orange-600 text-white'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              : 'bg-slate-100 text-black hover:bg-slate-200'
           }`}
         >
           All ({totalCount})
@@ -113,7 +113,7 @@ export function AchievementsBadges({ userId }: AchievementsBadgesProps) {
           className={`px-4 py-2 text-sm rounded-lg transition ${
             filter === 'earned'
               ? 'bg-brand-orange-600 text-white'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              : 'bg-slate-100 text-black hover:bg-slate-200'
           }`}
         >
           Earned ({earnedCount})
@@ -123,7 +123,7 @@ export function AchievementsBadges({ userId }: AchievementsBadgesProps) {
           className={`px-4 py-2 text-sm rounded-lg transition ${
             filter === 'locked'
               ? 'bg-brand-orange-600 text-white'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+              : 'bg-slate-100 text-black hover:bg-slate-200'
           }`}
         >
           Locked ({totalCount - earnedCount})
@@ -159,14 +159,14 @@ export function AchievementsBadges({ userId }: AchievementsBadgesProps) {
               {/* Badge Name */}
               <h4
                 className={`text-center font-semibold mb-1 ${
-                  isEarned ? 'text-slate-900' : 'text-slate-600'
+                  isEarned ? 'text-black' : 'text-black'
                 }`}
               >
                 {badge.name}
               </h4>
 
               {/* Badge Description */}
-              <p className="text-xs text-center text-slate-600 mb-2">
+              <p className="text-xs text-center text-black mb-2">
                 {badge.description}
               </p>
 
@@ -180,8 +180,8 @@ export function AchievementsBadges({ userId }: AchievementsBadgesProps) {
               ) : badge.progress !== undefined && badge.requirement !== undefined ? (
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs text-slate-600">Progress</span>
-                    <span className="text-xs font-medium text-slate-700">
+                    <span className="text-xs text-black">Progress</span>
+                    <span className="text-xs font-medium text-black">
                       {badge.progress}/{badge.requirement}
                     </span>
                   </div>
@@ -214,7 +214,7 @@ export function AchievementsBadges({ userId }: AchievementsBadgesProps) {
       {filteredBadges.length === 0 && (
         <div className="text-center py-12">
           <Trophy className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-          <p className="text-slate-600">
+          <p className="text-black">
             {filter === 'earned'
               ? 'No badges earned yet. Keep learning!'
               : filter === 'locked'

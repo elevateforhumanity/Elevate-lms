@@ -89,7 +89,7 @@ function LoginForm() {
         <div className="max-w-md mx-auto px-4">
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h1 className="text-3xl font-bold text-center mb-2">Login</h1>
-            <p className="text-center text-slate-600 mb-8">
+            <p className="text-center text-black mb-8">
               Access your dashboard
             </p>
 
@@ -103,7 +103,7 @@ function LoginForm() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-semibold text-slate-900 mb-2"
+                  className="block text-sm font-semibold text-black mb-2"
                 >
                   Email Address
                 </label>
@@ -121,7 +121,7 @@ function LoginForm() {
               <div>
                 <label
                   htmlFor="password"
-                  className="block text-sm font-semibold text-slate-900 mb-2"
+                  className="block text-sm font-semibold text-black mb-2"
                 >
                   Password
                 </label>
@@ -139,7 +139,7 @@ function LoginForm() {
               <div className="flex items-center justify-between text-sm">
                 <label className="flex items-center">
                   <input type="checkbox" className="mr-2" />
-                  <span className="text-slate-600">Remember me</span>
+                  <span className="text-black">Remember me</span>
                 </label>
                 <Link
                   href="/auth/forgot-password"
@@ -158,7 +158,7 @@ function LoginForm() {
               </button>
             </form>
 
-            <div className="mt-6 text-center text-sm text-slate-600">
+            <div className="mt-6 text-center text-sm text-black">
               Don't have an account?{' '}
               <Link
                 href={`/signup${next ? `?next=${encodeURIComponent(next)}` : ''}`}
@@ -169,19 +169,19 @@ function LoginForm() {
             </div>
 
             <div className="mt-8 pt-6 border-t border-slate-200">
-              <p className="text-center text-sm text-slate-600 mb-4">
+              <p className="text-center text-sm text-black mb-4">
                 Quick Access:
               </p>
               <div className="grid grid-cols-1 xs:grid-cols-2 gap-3">
                 <Link
                   href="/lms/dashboard"
-                  className="text-center px-4 py-3 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-all text-sm font-semibold min-h-[44px] inline-flex items-center justify-center"
+                  className="text-center px-4 py-3 bg-slate-100 text-black rounded-lg hover:bg-slate-200 transition-all text-sm font-semibold min-h-[44px] inline-flex items-center justify-center"
                 >
                   Student Portal
                 </Link>
                 <Link
                   href="/admin"
-                  className="text-center px-4 py-3 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-all text-sm font-semibold min-h-[44px] inline-flex items-center justify-center"
+                  className="text-center px-4 py-3 bg-slate-100 text-black rounded-lg hover:bg-slate-200 transition-all text-sm font-semibold min-h-[44px] inline-flex items-center justify-center"
                 >
                   Admin Portal
                 </Link>
@@ -189,7 +189,7 @@ function LoginForm() {
             </div>
           </div>
 
-          <div className="mt-6 text-center text-sm text-slate-600">
+          <div className="mt-6 text-center text-sm text-black">
             <p>
               Need help? Call{' '}
               <a

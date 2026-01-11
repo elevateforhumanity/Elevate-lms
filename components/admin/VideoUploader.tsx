@@ -77,7 +77,7 @@ export default function VideoUploader({
   return (
     <div className="w-full max-w-2xl mx-auto">
       <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-xl font-bold text-slate-900 mb-4">
+        <h3 className="text-xl font-bold text-black mb-4">
           Video Upload & Enhancement
         </h3>
 
@@ -102,7 +102,7 @@ export default function VideoUploader({
                 <Upload className="h-12 w-12 text-slate-400" />
               )}
               <div>
-                <p className="text-lg font-semibold text-slate-700">
+                <p className="text-lg font-semibold text-black">
                   {uploading ? 'Processing...' : 'Click to upload video'}
                 </p>
                 <p className="text-sm text-slate-500 mt-1">
@@ -116,7 +116,7 @@ export default function VideoUploader({
           {uploading && (
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-slate-600">
+                <span className="text-black">
                   {enhancing ? 'Enhancing video quality...' : 'Uploading...'}
                 </span>
                 <span className="text-blue-600 font-semibold">{progress}%</span>

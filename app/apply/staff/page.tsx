@@ -18,10 +18,10 @@ export default function StaffApplicationPage() {
           <p className="text-xs font-semibold tracking-widest text-purple-700 uppercase mb-2">
             Staff / Instructor Application
           </p>
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
+          <h1 className="text-3xl sm:text-4xl font-bold text-black mb-3">
             Join Our Team
           </h1>
-          <p className="text-base sm:text-lg text-slate-700 max-w-3xl">
+          <p className="text-base sm:text-lg text-black max-w-3xl">
             Support student success and workforce development as part of our
             team.
           </p>

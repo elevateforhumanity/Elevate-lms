@@ -101,7 +101,7 @@ export default async function ProgramHolderLayout({
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-700 hover:text-gray-700 hover:border-gray-300"
+                      className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-black hover:text-black hover:border-gray-300"
                     >
                       <Icon className="h-4 w-4 mr-2" />
                       {item.label}
@@ -114,7 +114,7 @@ export default async function ProgramHolderLayout({
               <form action="/auth/signout" method="post">
                 <button
                   type="submit"
-                  className="text-sm font-medium text-gray-700 hover:text-gray-700"
+                  className="text-sm font-medium text-black hover:text-black"
                 >
                   Sign Out
                 </button>
@@ -132,7 +132,7 @@ export default async function ProgramHolderLayout({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="flex items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300"
+                  className="flex items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-black hover:text-black hover:bg-gray-50 hover:border-gray-300"
                 >
                   <Icon className="h-5 w-5 mr-3" />
                   {item.label}

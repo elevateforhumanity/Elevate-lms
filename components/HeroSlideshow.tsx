@@ -167,7 +167,7 @@ export default function HeroSlideshow() {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
                       href={slide.cta.href}
-                      className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 font-semibold rounded hover:bg-slate-100 transition-colors shadow-lg"
+                      className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-semibold rounded hover:bg-slate-100 transition-colors shadow-lg"
                     >
                       {slide.cta.text}
                     </Link>

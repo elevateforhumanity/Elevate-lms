@@ -87,11 +87,11 @@ export function SMSNotificationSystem() {
               <div className="space-y-3">
                 <div className="p-3 bg-gray-50 rounded">
                   <p className="text-sm font-semibold">Assignment Reminder</p>
-                  <p className="text-xs text-gray-600">Sent to 245 students • 2 hours ago</p>
+                  <p className="text-xs text-black">Sent to 245 students • 2 hours ago</p>
                 </div>
                 <div className="p-3 bg-gray-50 rounded">
                   <p className="text-sm font-semibold">Class Starting Soon</p>
-                  <p className="text-xs text-gray-600">Sent to 89 students • 1 day ago</p>
+                  <p className="text-xs text-black">Sent to 89 students • 1 day ago</p>
                 </div>
               </div>
             </Card>
@@ -108,7 +108,7 @@ export function SMSNotificationSystem() {
                     className="w-full text-left p-3 bg-gray-50 hover:bg-gray-100 rounded transition-colors"
                   >
                     <p className="font-semibold text-sm">{template.name}</p>
-                    <p className="text-xs text-gray-600 truncate">{template.message}</p>
+                    <p className="text-xs text-black truncate">{template.message}</p>
                   </button>
                 ))}
               </div>
@@ -118,15 +118,15 @@ export function SMSNotificationSystem() {
               <h3 className="font-bold mb-4">Statistics</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Sent Today:</span>
+                  <span className="text-black">Sent Today:</span>
                   <span className="font-semibold">245</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">This Month:</span>
+                  <span className="text-black">This Month:</span>
                   <span className="font-semibold">3,456</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Delivery Rate:</span>
+                  <span className="text-black">Delivery Rate:</span>
                   <span className="font-semibold text-green-600">98.5%</span>
                 </div>
               </div>

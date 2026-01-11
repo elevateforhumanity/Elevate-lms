@@ -156,23 +156,23 @@ export function ProgramHero({ program }: { program: Program }) {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
-                <div className="text-sm text-slate-600 mb-1">Duration</div>
+                <div className="text-sm text-black mb-1">Duration</div>
                 <div className="text-3xl font-bold text-orange-500">
                   {program.duration}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-sm text-slate-600 mb-1">Cost</div>
+                <div className="text-sm text-black mb-1">Cost</div>
                 <div className="text-3xl font-bold text-orange-500">$0</div>
               </div>
               <div className="text-center">
-                <div className="text-sm text-slate-600 mb-1">Format</div>
+                <div className="text-sm text-black mb-1">Format</div>
                 <div className="text-lg font-bold text-orange-500">
                   {program.delivery}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-sm text-slate-600 mb-1">Credential</div>
+                <div className="text-sm text-black mb-1">Credential</div>
                 <div className="text-lg font-bold text-orange-500">
                   {program.credential.split(':')[0] || 'Certificate'}
                 </div>

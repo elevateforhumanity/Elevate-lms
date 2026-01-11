@@ -153,10 +153,10 @@ export default function ProgramCTA({ programName = "this program" }: ProgramCTAP
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-black mb-4">
               We Support Your Success
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               Beyond training, we provide comprehensive support to help you succeed
             </p>
           </div>
@@ -173,8 +173,8 @@ export default function ProgramCTA({ programName = "this program" }: ProgramCTAP
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Career Counseling</h3>
-                <p className="text-slate-600 mb-4">
+                <h3 className="text-xl font-bold text-black mb-3">Career Counseling</h3>
+                <p className="text-black mb-4">
                   One-on-one guidance to help you choose the right career path and achieve your goals.
                 </p>
                 <Link href="/advising" aria-label="Link" className="text-orange-600 font-semibold hover:underline">
@@ -194,8 +194,8 @@ export default function ProgramCTA({ programName = "this program" }: ProgramCTAP
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Job Placement</h3>
-                <p className="text-slate-600 mb-4">
+                <h3 className="text-xl font-bold text-black mb-3">Job Placement</h3>
+                <p className="text-black mb-4">
                   We connect you with employers actively hiring in your field. Resume help and interview prep included.
                 </p>
                 <Link href="/employers" aria-label="Link" className="text-orange-600 font-semibold hover:underline">
@@ -215,8 +215,8 @@ export default function ProgramCTA({ programName = "this program" }: ProgramCTAP
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Supportive Services</h3>
-                <p className="text-slate-600 mb-4">
+                <h3 className="text-xl font-bold text-black mb-3">Supportive Services</h3>
+                <p className="text-black mb-4">
                   Transportation assistance, childcare support, and other services to help you complete training.
                 </p>
                 <Link href="/support" aria-label="Link" className="text-orange-600 font-semibold hover:underline">

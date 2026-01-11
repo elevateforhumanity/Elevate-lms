@@ -118,7 +118,7 @@ export default function AdminApprenticeships() {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <h1 className="text-3xl font-bold">Apprenticeship Management</h1>
-          <p className="text-gray-600 mt-2">
+          <p className="text-black mt-2">
             Monitor and manage all apprenticeships
           </p>
         </div>
@@ -128,23 +128,23 @@ export default function AdminApprenticeships() {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow p-6">
-            <p className="text-sm text-gray-600">Total Apprentices</p>
+            <p className="text-sm text-black">Total Apprentices</p>
             <p className="text-3xl font-bold">{apprenticeships.length}</p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
-            <p className="text-sm text-gray-600">Active</p>
+            <p className="text-sm text-black">Active</p>
             <p className="text-3xl font-bold text-brand-green-600">
               {apprenticeships.filter((a) => a.status === 'active').length}
             </p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
-            <p className="text-sm text-gray-600">Pending Approvals</p>
+            <p className="text-sm text-black">Pending Approvals</p>
             <p className="text-3xl font-bold text-brand-orange-600">
               {pendingApprovals.length}
             </p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
-            <p className="text-sm text-gray-600">Completed</p>
+            <p className="text-sm text-black">Completed</p>
             <p className="text-3xl font-bold text-brand-blue-600">
               {apprenticeships.filter((a) => a.status === 'completed').length}
             </p>
@@ -165,15 +165,15 @@ export default function AdminApprenticeships() {
                 >
                   <div>
                     <p className="font-semibold">{log.student?.full_name}</p>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-black">
                       {log.apprenticeship?.employer_name}
                     </p>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-black">
                       {new Date(log.work_date).toLocaleDateString()} -{' '}
                       {log.total_hours?.toFixed(1)} hours
                     </p>
                     {log.student_notes && (
-                      <p className="text-sm text-gray-600 mt-2">
+                      <p className="text-sm text-black mt-2">
                         Notes: {log.student_notes}
                       </p>
                     )}
@@ -200,7 +200,7 @@ export default function AdminApprenticeships() {
                 className={`px-6 py-3 font-semibold capitalize ${
                   filter === status
                     ? 'border-b-2 border-brand-blue-600 text-brand-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                    : 'text-black hover:text-black'
                 }`}
               >
                 {status}
@@ -218,25 +218,25 @@ export default function AdminApprenticeships() {
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Student
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Program
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Employer
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Hours
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Progress
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Actions
                   </th>
                 </tr>
@@ -254,7 +254,7 @@ export default function AdminApprenticeships() {
                           <p className="font-semibold">
                             {apprenticeship.student?.full_name}
                           </p>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-black">
                             {apprenticeship.student?.email}
                           </p>
                         </div>
@@ -269,7 +269,7 @@ export default function AdminApprenticeships() {
                           <p className="font-medium">
                             {apprenticeship.employer_name}
                           </p>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-black">
                             {apprenticeship.supervisor_name}
                           </p>
                         </div>
@@ -278,7 +278,7 @@ export default function AdminApprenticeships() {
                         <p className="font-bold">
                           {apprenticeship.total_hours_completed.toFixed(1)}
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-black">
                           / {apprenticeship.total_hours_required}
                         </p>
                       </td>
@@ -289,7 +289,7 @@ export default function AdminApprenticeships() {
                             style={{ width: `${Math.min(progress, 100)}%` }}
                           />
                         </div>
-                        <p className="text-xs text-gray-600 mt-1">
+                        <p className="text-xs text-black mt-1">
                           {progress.toFixed(0)}%
                         </p>
                       </td>
@@ -300,7 +300,7 @@ export default function AdminApprenticeships() {
                               ? 'bg-brand-green-100 text-green-800'
                               : apprenticeship.status === 'completed'
                                 ? 'bg-blue-100 text-blue-800'
-                                : 'bg-gray-100 text-gray-800'
+                                : 'bg-gray-100 text-black'
                           }`}
                         >
                           {apprenticeship.status}
@@ -328,10 +328,10 @@ export default function AdminApprenticeships() {
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                     Your Journey Starts Here
                   </h2>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  <p className="text-lg text-black mb-6 leading-relaxed">
                     Every great career begins with a single step. Whether you're
                     looking to change careers, upgrade your skills, or enter the
                     workforce for the first time, we're here to help you
@@ -353,7 +353,7 @@ export default function AdminApprenticeships() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         100% free training - no tuition, no hidden costs
                       </span>
                     </li>
@@ -371,7 +371,7 @@ export default function AdminApprenticeships() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Industry-recognized certifications that employers value
                       </span>
                     </li>
@@ -389,7 +389,7 @@ export default function AdminApprenticeships() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Job placement assistance and career support
                       </span>
                     </li>
@@ -407,7 +407,7 @@ export default function AdminApprenticeships() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Flexible scheduling for working adults
                       </span>
                     </li>

@@ -20,7 +20,7 @@ export default async function PartnerStudentsPage() {
   return (
     <div className="rounded-2xl border p-5">
       <div className="font-semibold">Students</div>
-      <div className="text-sm text-gray-600 mt-1">
+      <div className="text-sm text-black mt-1">
         Placements tied to your location(s).
       </div>
 
@@ -49,7 +49,7 @@ export default async function PartnerStudentsPage() {
             ))}
             {(placements ?? []).length === 0 && (
               <tr>
-                <td className="py-3 text-gray-600" colSpan={5}>
+                <td className="py-3 text-black" colSpan={5}>
                   No placements found for your shop(s) yet.
                 </td>
               </tr>

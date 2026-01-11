@@ -53,7 +53,7 @@ export function SimpleCaptcha({ onVerify, className = '' }: SimpleCaptchaProps) 
   return (
     <div className={`space-y-3 ${className}`}>
       <div className="flex items-center gap-4 p-4 bg-slate-50 border border-slate-200 rounded-lg">
-        <div className="flex items-center gap-2 text-lg font-semibold text-slate-900">
+        <div className="flex items-center gap-2 text-lg font-semibold text-black">
           <span className="text-2xl">{num1}</span>
           <span>+</span>
           <span className="text-2xl">{num2}</span>
@@ -92,7 +92,7 @@ d="M5 13l4 4L19 7" />
         <p className="text-sm text-brand-orange-600">{error}</p>
       )}
       {!isVerified && (
-        <p className="text-xs text-slate-600">
+        <p className="text-xs text-black">
           Please solve the math problem to verify you're human
         </p>
       )}

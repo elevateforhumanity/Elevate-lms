@@ -60,7 +60,7 @@ export default function ApprovalsPage() {
                     INTraining Approved Provider – Indiana Department of
                     Workforce Development
                   </h3>
-                  <div className="space-y-2 text-lg text-slate-700">
+                  <div className="space-y-2 text-lg text-black">
                     <p>
                       <strong>Program:</strong> Emergency Health & Safety
                       Technician
@@ -81,7 +81,7 @@ export default function ApprovalsPage() {
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     Eligible Training Provider (ETP) – WIOA-funded training
                   </h3>
-                  <p className="text-lg text-slate-700">
+                  <p className="text-lg text-black">
                     Approved to serve participants funded through the Workforce
                     Innovation and Opportunity Act (WIOA)
                   </p>
@@ -97,7 +97,7 @@ export default function ApprovalsPage() {
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     Workforce Ready Grant (WRG) Training Provider
                   </h3>
-                  <p className="text-lg text-slate-700">
+                  <p className="text-lg text-black">
                     Selected programs available at no cost to eligible adults
                     through Indiana's Workforce Ready Grant
                   </p>
@@ -113,7 +113,7 @@ export default function ApprovalsPage() {
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     Job Ready Indy (JRI) Training Partner – Marion County
                   </h3>
-                  <p className="text-lg text-slate-700">
+                  <p className="text-lg text-black">
                     Approved partner for Job Ready Indy workforce readiness
                     training in Marion County
                   </p>
@@ -129,7 +129,7 @@ export default function ApprovalsPage() {
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     ITAP / INDOT Registration
                   </h3>
-                  <p className="text-lg text-slate-700">
+                  <p className="text-lg text-black">
                     2Exclusive LLC-S registered with INDOT's ITAP for
                     transportation and construction-aligned workforce services
                   </p>
@@ -159,7 +159,7 @@ export default function ApprovalsPage() {
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     U.S. Department of Labor Registered Apprenticeship Sponsor
                   </h3>
-                  <div className="space-y-2 text-lg text-slate-700">
+                  <div className="space-y-2 text-lg text-black">
                     <p>
                       <strong>Program:</strong> Emergency Health & Safety
                       Technician
@@ -180,7 +180,7 @@ export default function ApprovalsPage() {
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     SAM.gov Active Federal Contractor (Selfish Inc)
                   </h3>
-                  <div className="space-y-2 text-lg text-slate-700">
+                  <div className="space-y-2 text-lg text-black">
                     <p>
                       <strong>UEI:</strong> VX2GK5S8SZH8
                     </p>
@@ -214,33 +214,33 @@ export default function ApprovalsPage() {
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     Certiport Authorized Testing Center
                   </h3>
-                  <p className="text-lg text-slate-700 mb-4">
+                  <p className="text-lg text-black mb-4">
                     Authorized to administer industry-standard-recognized
                     certification exams for:
                   </p>
                   <ul className="grid md:grid-cols-2 gap-3">
-                    <li className="flex items-center gap-2 text-slate-700">
+                    <li className="flex items-center gap-2 text-black">
                       <span className="text-brand-green-600">✓</span> Microsoft
                       Office Specialist (MOS)
                     </li>
-                    <li className="flex items-center gap-2 text-slate-700">
+                    <li className="flex items-center gap-2 text-black">
                       <span className="text-brand-green-600">✓</span> IC3
                       Digital Literacy
                     </li>
-                    <li className="flex items-center gap-2 text-slate-700">
+                    <li className="flex items-center gap-2 text-black">
                       <span className="text-brand-green-600">✓</span> IT
                       Specialist (Networking, Security, Python, Databases,
                       HTML/CSS/JS)
                     </li>
-                    <li className="flex items-center gap-2 text-slate-700">
+                    <li className="flex items-center gap-2 text-black">
                       <span className="text-brand-green-600">✓</span> Adobe
                       Certified Professional
                     </li>
-                    <li className="flex items-center gap-2 text-slate-700">
+                    <li className="flex items-center gap-2 text-black">
                       <span className="text-brand-green-600">✓</span>{' '}
                       Entrepreneurship & Small Business (ESB)
                     </li>
-                    <li className="flex items-center gap-2 text-slate-700">
+                    <li className="flex items-center gap-2 text-black">
                       <span className="text-brand-green-600">✓</span>{' '}
                       Communication Skills for Business (CSB)
                     </li>
@@ -258,11 +258,11 @@ export default function ApprovalsPage() {
                     Milady RISE Partner School – Client Well-Being & Safety
                     Certification
                   </h3>
-                  <p className="text-lg text-slate-700 mb-3">
+                  <p className="text-lg text-black mb-3">
                     Training in domestic violence awareness, human trafficking
                     awareness, and infection control (2-hour course)
                   </p>
-                  <p className="text-slate-700">
+                  <p className="text-black">
                     <strong>School promo code:</strong>{' '}
                     <code className="bg-slate-200 px-2 py-1 rounded">
                       efhcti-rise295
@@ -281,7 +281,7 @@ export default function ApprovalsPage() {
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     CareerSafe / OSHA-aligned Safety Training
                   </h3>
-                  <p className="text-lg text-slate-700">
+                  <p className="text-lg text-black">
                     Integrated into trades and safety pathways for workplace
                     safety certification
                   </p>
@@ -311,7 +311,7 @@ export default function ApprovalsPage() {
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     501(c)(3) Nonprofit – Selfish Inc
                   </h3>
-                  <p className="text-lg text-slate-700">
+                  <p className="text-lg text-black">
                     IRS-recognized tax-exempt charitable organization
                   </p>
                 </div>
@@ -326,7 +326,7 @@ export default function ApprovalsPage() {
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     Candid/Guidestar Registered Nonprofit
                   </h3>
-                  <p className="text-lg text-slate-700">
+                  <p className="text-lg text-black">
                     Verified nonprofit profile on the nation's leading nonprofit
                     information platform
                   </p>
@@ -342,7 +342,7 @@ export default function ApprovalsPage() {
                   <h3 className="text-lg md:text-lg font-bold mb-3">
                     ByBlack Certified Black-Owned Business
                   </h3>
-                  <p className="text-lg text-slate-700">
+                  <p className="text-lg text-black">
                     Certified by U.S. Black Chambers & ByBlack.us
                   </p>
                 </div>
@@ -367,7 +367,7 @@ export default function ApprovalsPage() {
               <h3 className="text-lg md:text-lg font-bold text-white mb-4">
                 For Students
               </h3>
-              <p className="text-slate-600 text-lg leading-relaxed">
+              <p className="text-black text-lg leading-relaxed">
                 Our students can access funded training through WRG, WIOA, JRI,
                 and apprenticeships. Your training is legitimate, recognized,
                 and leads to real employment.
@@ -378,7 +378,7 @@ export default function ApprovalsPage() {
               <h3 className="text-lg md:text-lg font-bold text-white mb-4">
                 For Employers
               </h3>
-              <p className="text-slate-600 text-lg leading-relaxed">
+              <p className="text-black text-lg leading-relaxed">
                 Our employers can trust that our programs are standards-aligned
                 and reportable. Graduates meet industry-standard requirements
                 and are job-ready from day one.
@@ -389,7 +389,7 @@ export default function ApprovalsPage() {
               <h3 className="text-lg md:text-lg font-bold text-white mb-4">
                 For Partners
               </h3>
-              <p className="text-slate-600 text-lg leading-relaxed">
+              <p className="text-black text-lg leading-relaxed">
                 Workforce boards, schools, reenstart programs, and community
                 partners can confidently refer people to Elevate For Humanity
                 knowing we meet state and federal quality benchmarks.
@@ -405,7 +405,7 @@ export default function ApprovalsPage() {
           <h2 className="text-2xl md:text-2xl md:text-3xl font-bold mb-6 text-2xl md:text-3xl lg:text-2xl md:text-3xl">
             Ready to Get Started?
           </h2>
-          <p className="text-base md:text-lg text-slate-600 mb-8 leading-relaxed">
+          <p className="text-base md:text-lg text-black mb-8 leading-relaxed">
             Join thousands of students who have transformed their careers
             through our state-approved, federally recognized training programs.
           </p>
@@ -418,13 +418,13 @@ export default function ApprovalsPage() {
             </Link>
             <Link
               href="/programs"
-              className="px-8 py-4 bg-slate-100 text-slate-900 font-bold rounded-full hover:bg-slate-200 transition-all shadow-lg"
+              className="px-8 py-4 bg-slate-100 text-black font-bold rounded-full hover:bg-slate-200 transition-all shadow-lg"
             >
               View Programs
             </Link>
             <Link
               href="/contact"
-              className="px-8 py-4 bg-slate-100 text-slate-900 font-bold rounded-full hover:bg-slate-200 transition-all shadow-lg"
+              className="px-8 py-4 bg-slate-100 text-black font-bold rounded-full hover:bg-slate-200 transition-all shadow-lg"
             >
               Contact Us
             </Link>

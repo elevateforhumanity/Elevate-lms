@@ -189,10 +189,10 @@ export default function MediaStudioPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Media Studio
           </h1>
-          <p className="text-gray-600">
+          <p className="text-black">
             Manage images, videos, and assets across all buckets
           </p>
         </div>
@@ -220,7 +220,7 @@ export default function MediaStudioPage() {
 
               {/* Search */}
               <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
                 <input
                   type="text"
                   placeholder="Search files..."
@@ -240,13 +240,13 @@ export default function MediaStudioPage() {
               <div className="flex gap-1 border rounded-lg p-1">
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`p-2 rounded ${viewMode === 'grid' ? 'bg-blue-100 text-brand-blue-600' : 'text-gray-600'}`}
+                  className={`p-2 rounded ${viewMode === 'grid' ? 'bg-blue-100 text-brand-blue-600' : 'text-black'}`}
                 >
                   <Grid className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className={`p-2 rounded ${viewMode === 'list' ? 'bg-blue-100 text-brand-blue-600' : 'text-gray-600'}`}
+                  className={`p-2 rounded ${viewMode === 'list' ? 'bg-blue-100 text-brand-blue-600' : 'text-black'}`}
                 >
                   <List className="w-4 h-4" />
                 </button>
@@ -311,15 +311,15 @@ export default function MediaStudioPage() {
                     />
                   ) : (
                     <div className="flex items-center justify-center h-full">
-                      <ImageIcon className="w-12 h-12 text-gray-600" />
+                      <ImageIcon className="w-12 h-12 text-black" />
                     </div>
                   )}
                 </div>
                 <div className="p-3">
-                  <p className="text-sm font-medium text-gray-900 truncate">
+                  <p className="text-sm font-medium text-black truncate">
                     {file.name}
                   </p>
-                  <p className="text-xs text-gray-700 mt-1">
+                  <p className="text-xs text-black mt-1">
                     {(file.size / 1024).toFixed(1)} KB
                   </p>
                   <div className="flex gap-2 mt-3">
@@ -345,16 +345,16 @@ export default function MediaStudioPage() {
             <table className="w-full">
               <thead className="bg-gray-50 border-b">
                 <tr>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">
+                  <th className="px-4 py-3 text-left text-sm font-medium text-black">
                     Name
                   </th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">
+                  <th className="px-4 py-3 text-left text-sm font-medium text-black">
                     Size
                   </th>
-                  <th className="px-4 py-3 text-left text-sm font-medium text-gray-900">
+                  <th className="px-4 py-3 text-left text-sm font-medium text-black">
                     Created
                   </th>
-                  <th className="px-4 py-3 text-right text-sm font-medium text-gray-900">
+                  <th className="px-4 py-3 text-right text-sm font-medium text-black">
                     Actions
                   </th>
                 </tr>
@@ -362,13 +362,13 @@ export default function MediaStudioPage() {
               <tbody>
                 {filteredFiles.map((file) => (
                   <tr key={file.name} className="border-b hover:bg-gray-50">
-                    <td className="px-4 py-3 text-sm text-gray-900">
+                    <td className="px-4 py-3 text-sm text-black">
                       {file.name}
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
+                    <td className="px-4 py-3 text-sm text-black">
                       {(file.size / 1024).toFixed(1)} KB
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">
+                    <td className="px-4 py-3 text-sm text-black">
                       {new Date(file.created_at).toLocaleDateString()}
                     </td>
                     <td className="px-4 py-3 text-right">

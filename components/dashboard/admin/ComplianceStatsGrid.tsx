@@ -66,7 +66,7 @@ function StatCard({
   intent = "default",
 }: StatCardProps) {
   let badgeClass =
-    "bg-slate-50 text-slate-700 border border-slate-100";
+    "bg-slate-50 text-black border border-slate-100";
 
   if (intent === "good") {
     badgeClass = "bg-emerald-50 text-emerald-700 border border-emerald-100";
@@ -81,7 +81,7 @@ function StatCard({
       <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
         {label}
       </p>
-      <p className="mt-1 text-xl font-semibold text-slate-900">{value}</p>
+      <p className="mt-1 text-xl font-semibold text-black">{value}</p>
       {helper && (
         <span
           className={`mt-1 inline-flex rounded-full px-2 py-0.5 text-[10px] font-medium ${badgeClass}`}

@@ -16,12 +16,12 @@ export default function PageHeader({
   return (
     <header className="py-8 px-4">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">
           {title}
         </h1>
 
         {excerpt && (
-          <p className="text-xl text-gray-600 max-w-3xl mb-6">
+          <p className="text-xl text-black max-w-3xl mb-6">
             {excerpt}
           </p>
         )}

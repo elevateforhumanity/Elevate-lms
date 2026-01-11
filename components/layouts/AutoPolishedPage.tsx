@@ -511,7 +511,7 @@ export function AutoPolishedPage({ route, label, section }: AutoPolishedPageProp
                 {config.secondaryCta && (
                   <Link
                     href={config.secondaryCta.href}
-                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 font-semibold rounded border-2 border-white hover:bg-slate-50 transition-colors shadow-lg"
+                    className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-semibold rounded border-2 border-white hover:bg-slate-50 transition-colors shadow-lg"
                   >
                     {config.secondaryCta.label}
                   </Link>
@@ -530,16 +530,16 @@ export function AutoPolishedPage({ route, label, section }: AutoPolishedPageProp
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
             <div className="text-center">
-              <p className="font-semibold text-slate-700">EmployIndy</p>
+              <p className="font-semibold text-black">EmployIndy</p>
             </div>
             <div className="text-center">
-              <p className="font-semibold text-slate-700">WorkOne</p>
+              <p className="font-semibold text-black">WorkOne</p>
             </div>
             <div className="text-center">
-              <p className="font-semibold text-slate-700">Indiana DWD</p>
+              <p className="font-semibold text-black">Indiana DWD</p>
             </div>
             <div className="text-center">
-              <p className="font-semibold text-slate-700">US Dept of Labor</p>
+              <p className="font-semibold text-black">US Dept of Labor</p>
             </div>
           </div>
         </div>
@@ -553,18 +553,18 @@ export function AutoPolishedPage({ route, label, section }: AutoPolishedPageProp
               <p className="text-sm font-semibold text-orange-600 uppercase tracking-wide mb-3">
                 {config.categoryLabel}
               </p>
-              <h2 className="text-4xl font-light text-slate-900 mb-6 leading-tight text-2xl md:text-3xl lg:text-4xl">
+              <h2 className="text-4xl font-light text-black mb-6 leading-tight text-2xl md:text-3xl lg:text-4xl">
                 Built for: {config.audience}
               </h2>
-              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+              <p className="text-lg text-black leading-relaxed mb-6">
                 {config.description}
               </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8">
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">
+              <h3 className="text-xl font-semibold text-black mb-4">
                 How this page fits the ecosystem
               </h3>
-              <ul className="space-y-3 text-slate-700">
+              <ul className="space-y-3 text-black">
                 {config.bullets.map((b) => (
                   <li key={b} className="flex gap-3">
                     <span className="text-orange-500 font-bold">✓</span>

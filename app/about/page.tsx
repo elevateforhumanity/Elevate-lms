@@ -46,11 +46,11 @@ export default function AboutPage() {
             </span>
           </div>
 
-          <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl text-gray-900">
+          <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl text-black">
             We coordinate access to career training, funding, and employment
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base md:text-lg text-gray-700 leading-relaxed">
+          <p className="mt-4 max-w-2xl text-base md:text-lg text-black leading-relaxed">
             Elevate for Humanity is a workforce coordination hub that connects individuals to training programs delivered by credentialed partner institutions. We help students access WIOA, WRG, JRI, and apprenticeship funding, then support them through training to employment.
           </p>
 
@@ -63,7 +63,7 @@ export default function AboutPage() {
             </Link>
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-6 py-3 text-base font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-6 py-3 text-base font-semibold text-black hover:bg-gray-50 transition-colors"
             >
               Apply Now
             </Link>
@@ -75,27 +75,27 @@ export default function AboutPage() {
       {/* Stats Section */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">By the Numbers</h2>
+          <h2 className="text-3xl font-bold text-black mb-8 text-center">By the Numbers</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="bg-white rounded-lg p-6 border-2 border-blue-200 text-center">
               <Image src="/images/icons/trending-up.png" alt="Job Placement" width={48} height={48} className="mx-auto mb-3" loading="lazy" />
               <div className="text-4xl font-bold text-blue-600 mb-2">85%</div>
-              <div className="text-sm text-gray-900 font-medium">Job Placement Rate</div>
+              <div className="text-sm text-black font-medium">Job Placement Rate</div>
             </div>
             <div className="bg-white rounded-lg p-6 border-2 border-green-200 text-center">
               <Image src="/images/icons/users.png" alt="Students" width={48} height={48} className="mx-auto mb-3" loading="lazy" />
               <div className="text-4xl font-bold text-green-600 mb-2">1,000+</div>
-              <div className="text-sm text-gray-900 font-medium">Students Trained</div>
+              <div className="text-sm text-black font-medium">Students Trained</div>
             </div>
             <div className="bg-white rounded-lg p-6 border-2 border-purple-200 text-center">
               <Image src="/images/icons/check-circle.png" alt="Programs" width={48} height={48} className="mx-auto mb-3" loading="lazy" />
               <div className="text-4xl font-bold text-purple-600 mb-2">20+</div>
-              <div className="text-sm text-gray-900 font-medium">Career Programs</div>
+              <div className="text-sm text-black font-medium">Career Programs</div>
             </div>
             <div className="bg-white rounded-lg p-6 border-2 border-orange-200 text-center">
               <Image src="/images/icons/clock.png" alt="Since 2020" width={48} height={48} className="mx-auto mb-3" loading="lazy" />
               <div className="text-4xl font-bold text-orange-600 mb-2">2020</div>
-              <div className="text-sm text-gray-900 font-medium">Founded</div>
+              <div className="text-sm text-black font-medium">Founded</div>
             </div>
           </div>
         </div>
@@ -104,29 +104,29 @@ export default function AboutPage() {
       {/* What We Do */}
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">What We Do</h2>
+          <h2 className="text-3xl font-bold text-black mb-12 text-center">What We Do</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
               <Image src="/images/icons/book.png" alt="Training Coordination" width={64} height={64} className="mb-4" loading="lazy" />
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Training Coordination</h3>
-              <p className="text-gray-700">
+              <h3 className="text-xl font-bold text-black mb-3">Training Coordination</h3>
+              <p className="text-black">
                 We coordinate career training programs delivered by credentialed partner institutions including licensed schools, state-approved providers, and DOL-registered apprenticeship sponsors.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
               <Image src="/images/icons/dollar.png" alt="Funding Access" width={64} height={64} className="mb-4" loading="lazy" />
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Funding Access</h3>
-              <p className="text-gray-700">
+              <h3 className="text-xl font-bold text-black mb-3">Funding Access</h3>
+              <p className="text-black">
                 We help students access WIOA, WRG, JRI, and apprenticeship funding. Some programs are free with funding, others require self-pay. Your advisor explains all costs upfront.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
               <Image src="/images/icons/trending-up.png" alt="Career Support" width={64} height={64} className="mb-4" loading="lazy" />
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Career Support</h3>
-              <p className="text-gray-700">
+              <h3 className="text-xl font-bold text-black mb-3">Career Support</h3>
+              <p className="text-black">
                 We provide job search support, employer connections, and career coaching. Certifications come from state boards, industry bodies, and accredited institutions—not from us.
               </p>
             </div>
@@ -137,7 +137,7 @@ export default function AboutPage() {
       {/* Founder Section */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Leadership</h2>
+          <h2 className="text-3xl font-bold text-black mb-12 text-center">Leadership</h2>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative h-[500px] rounded-lg overflow-hidden border-4 border-gray-200">
@@ -152,22 +152,22 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-2">Elizabeth Greene</h3>
+              <h3 className="text-3xl font-bold text-black mb-2">Elizabeth Greene</h3>
               <p className="text-xl text-orange-600 font-semibold mb-6">Founder & CEO</p>
               
-              <p className="text-gray-700 mb-4 leading-relaxed">
+              <p className="text-black mb-4 leading-relaxed">
                 Elizabeth founded <strong>2EXCLUSIVE LLC-S</strong> (operating as Elevate for Humanity) to address disconnected workforce systems that prevent motivated individuals from accessing training, funding, and employment pathways.
               </p>
 
-              <p className="text-gray-700 mb-4 leading-relaxed">
+              <p className="text-black mb-4 leading-relaxed">
                 Under her leadership, Elevate for Humanity has grown into a workforce coordination hub serving 1,000+ individuals across Indiana with an 85% job placement rate.
               </p>
 
               <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-6">
-                <p className="text-gray-900 font-semibold italic">
+                <p className="text-black font-semibold italic">
                   "Elevate for Humanity exists to ensure opportunity is not theoretical — it's accessible, supported, and measurable."
                 </p>
-                <p className="text-sm text-gray-600 mt-2">— Elizabeth Greene</p>
+                <p className="text-sm text-black mt-2">— Elizabeth Greene</p>
               </div>
 
               <Link
@@ -184,28 +184,28 @@ export default function AboutPage() {
       {/* Organizations */}
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Our Organizations</h2>
+          <h2 className="text-3xl font-bold text-black mb-12 text-center">Our Organizations</h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Elevate for Humanity</h3>
-              <p className="text-sm text-gray-600 mb-4">2EXCLUSIVE LLC-S</p>
-              <p className="text-gray-700 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">Elevate for Humanity</h3>
+              <p className="text-sm text-black mb-4">2EXCLUSIVE LLC-S</p>
+              <p className="text-black mb-4">
                 Workforce coordination hub connecting individuals to training, funding, and employment pathways.
               </p>
-              <div className="space-y-2 text-sm text-gray-600">
+              <div className="space-y-2 text-sm text-black">
                 <p><strong>SAM.gov UEI:</strong> VX2GK5S8SZH8</p>
                 <p><strong>CAGE Code:</strong> 0QH19</p>
               </div>
             </div>
 
             <div className="bg-white rounded-lg p-8 border-2 border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">RISE Foundation</h3>
-              <p className="text-sm text-gray-600 mb-4">SELFISH INC</p>
-              <p className="text-gray-700 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">RISE Foundation</h3>
+              <p className="text-sm text-black mb-4">SELFISH INC</p>
+              <p className="text-black mb-4">
                 501(c)(3) tax-exempt nonprofit providing philanthropic support for workforce development initiatives.
               </p>
-              <div className="space-y-2 text-sm text-gray-600">
+              <div className="space-y-2 text-sm text-black">
                 <p><strong>EIN:</strong> 99-3483511</p>
                 <p><strong>IRS Determination:</strong> July 2024</p>
               </div>
@@ -217,8 +217,8 @@ export default function AboutPage() {
       {/* Mission */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
-          <p className="text-lg text-gray-700 leading-relaxed">
+          <h2 className="text-3xl font-bold text-black mb-6">Our Mission</h2>
+          <p className="text-lg text-black leading-relaxed">
             We connect individuals to career training, remove barriers to success, and create pathways to sustainable employment. 
             Through partnerships with workforce boards, training providers, and employers, we're building a more inclusive economy where everyone has access to opportunity.
           </p>
@@ -228,15 +228,15 @@ export default function AboutPage() {
       {/* How We're Different */}
       <section className="py-20 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">How We're Different</h2>
+          <h2 className="text-3xl font-bold text-black mb-12 text-center">How We're Different</h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg p-8 border-2 border-green-200">
               <div className="flex items-center gap-3 mb-4">
                 <Image src="/images/icons/check-circle.png" alt="What We Are" width={48} height={48} loading="lazy" />
-                <h3 className="text-xl font-bold text-gray-900">What We Are</h3>
+                <h3 className="text-xl font-bold text-black">What We Are</h3>
               </div>
-              <ul className="space-y-3 text-gray-700">
+              <ul className="space-y-3 text-black">
                 <li className="flex items-start gap-2">
                   <span className="text-green-600 font-bold">✓</span>
                   <span>Workforce coordination hub</span>
@@ -263,9 +263,9 @@ export default function AboutPage() {
             <div className="bg-white rounded-lg p-8 border-2 border-red-200">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-4xl">✗</span>
-                <h3 className="text-xl font-bold text-gray-900">What We're Not</h3>
+                <h3 className="text-xl font-bold text-black">What We're Not</h3>
               </div>
-              <ul className="space-y-3 text-gray-700">
+              <ul className="space-y-3 text-black">
                 <li className="flex items-start gap-2">
                   <span className="text-red-600 font-bold">✗</span>
                   <span>Not a school (we coordinate with schools)</span>
@@ -295,7 +295,7 @@ export default function AboutPage() {
       {/* Learn More Links */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Learn More</h2>
+          <h2 className="text-3xl font-bold text-black mb-12 text-center">Learn More</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <Link href="/founder" className="group bg-white rounded-lg overflow-hidden border-2 border-gray-200 hover:border-blue-500 hover:shadow-xl transition-all">
               <div className="relative h-64 overflow-hidden">
@@ -307,10 +307,10 @@ export default function AboutPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-blue-600 transition-colors">
                   Our Founder
                 </h3>
-                <p className="text-gray-600 mb-4">Meet Elizabeth Greene and learn about her vision for workforce development</p>
+                <p className="text-black mb-4">Meet Elizabeth Greene and learn about her vision for workforce development</p>
                 <span className="text-blue-600 font-semibold">Read More →</span>
               </div>
             </Link>
@@ -325,10 +325,10 @@ export default function AboutPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-blue-600 transition-colors">
                   How It Works
                 </h3>
-                <p className="text-gray-600 mb-4">Understand our process from application to employment</p>
+                <p className="text-black mb-4">Understand our process from application to employment</p>
                 <span className="text-blue-600 font-semibold">Learn More →</span>
               </div>
             </Link>
@@ -343,10 +343,10 @@ export default function AboutPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-blue-600 transition-colors">
                   Success Stories
                 </h3>
-                <p className="text-gray-600 mb-4">Read real stories from graduates who transformed their careers</p>
+                <p className="text-black mb-4">Read real stories from graduates who transformed their careers</p>
                 <span className="text-blue-600 font-semibold">Read Stories →</span>
               </div>
             </Link>

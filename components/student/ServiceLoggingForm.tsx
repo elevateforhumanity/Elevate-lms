@@ -132,12 +132,12 @@ export default function ServiceLoggingForm({
   return (
     <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-6">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-2xl font-bold text-slate-900">
+        <h3 className="text-2xl font-bold text-black">
           Log Hours & Services
         </h3>
         <button
           onClick={() => setIsOpen(false)}
-          className="text-slate-400 hover:text-slate-600 transition-colors"
+          className="text-slate-400 hover:text-black transition-colors"
         >
           <X className="w-6 h-6" />
         </button>
@@ -147,7 +147,7 @@ export default function ServiceLoggingForm({
         {/* Date and Hours */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Date
             </label>
             <input
@@ -160,7 +160,7 @@ export default function ServiceLoggingForm({
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Hours Worked
             </label>
             <input
@@ -179,10 +179,10 @@ export default function ServiceLoggingForm({
         {/* Service Counters */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <label className="block text-sm font-semibold text-slate-700">
+            <label className="block text-sm font-semibold text-black">
               Services Performed
             </label>
-            <span className="text-sm text-slate-600">
+            <span className="text-sm text-black">
               Total:{' '}
               <span className="font-bold text-blue-600">{totalServices}</span>{' '}
               services
@@ -196,7 +196,7 @@ export default function ServiceLoggingForm({
                 className="bg-slate-50 rounded-lg p-4 border border-slate-200"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-semibold text-slate-700">
+                  <span className="text-sm font-semibold text-black">
                     {icon} {label}
                   </span>
                 </div>
@@ -204,7 +204,7 @@ export default function ServiceLoggingForm({
                   <button
                     type="button"
                     onClick={() => decrementService(key as keyof ServiceCount)}
-                    className="w-8 h-8 flex items-center justify-center bg-white border border-slate-300 rounded-lg hover:bg-slate-100 transition-colors text-slate-700 font-bold"
+                    className="w-8 h-8 flex items-center justify-center bg-white border border-slate-300 rounded-lg hover:bg-slate-100 transition-colors text-black font-bold"
                   >
                     −
                   </button>
@@ -223,7 +223,7 @@ export default function ServiceLoggingForm({
                   <button
                     type="button"
                     onClick={() => incrementService(key as keyof ServiceCount)}
-                    className="w-8 h-8 flex items-center justify-center bg-white border border-slate-300 rounded-lg hover:bg-slate-100 transition-colors text-slate-700 font-bold"
+                    className="w-8 h-8 flex items-center justify-center bg-white border border-slate-300 rounded-lg hover:bg-slate-100 transition-colors text-black font-bold"
                   >
                     +
                   </button>
@@ -235,7 +235,7 @@ export default function ServiceLoggingForm({
 
         {/* Notes */}
         <div>
-          <label className="block text-sm font-semibold text-slate-700 mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             Notes (Optional)
           </label>
           <textarea
@@ -260,7 +260,7 @@ export default function ServiceLoggingForm({
           <button
             type="button"
             onClick={() => setIsOpen(false)}
-            className="px-6 py-3 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-colors font-semibold"
+            className="px-6 py-3 border border-slate-300 text-black rounded-lg hover:bg-slate-50 transition-colors font-semibold"
           >
             Cancel
           </button>

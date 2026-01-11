@@ -37,8 +37,8 @@ export default async function GrantIntakePage() {
           >
             ← Back to Grants
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">Grant Intake</h1>
-          <p className="mt-2 text-gray-600">
+          <h1 className="text-3xl font-bold text-black">Grant Intake</h1>
+          <p className="mt-2 text-black">
             Submit new grant application and start the intake process.
           </p>
         </div>
@@ -46,7 +46,7 @@ export default async function GrantIntakePage() {
         {/* Intake Form */}
         <div className="bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-black">
               New Grant Application
             </h2>
           </div>
@@ -54,7 +54,7 @@ export default async function GrantIntakePage() {
           <div className="p-6 space-y-6">
             {/* Grant Information */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Grant Name
               </label>
               <input
@@ -65,7 +65,7 @@ export default async function GrantIntakePage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Funding Agency
               </label>
               <input
@@ -77,11 +77,11 @@ export default async function GrantIntakePage() {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Grant Amount
                 </label>
                 <div className="flex items-center gap-2">
-                  <span className="text-gray-700">$</span>
+                  <span className="text-black">$</span>
                   <input
                     type="number"
                     placeholder="0.00"
@@ -91,7 +91,7 @@ export default async function GrantIntakePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Grant Type
                 </label>
                 <select className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
@@ -108,7 +108,7 @@ export default async function GrantIntakePage() {
 
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Application Deadline
                 </label>
                 <input
@@ -118,7 +118,7 @@ export default async function GrantIntakePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Grant Period
                 </label>
                 <select className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
@@ -132,7 +132,7 @@ export default async function GrantIntakePage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Grant Description
               </label>
               <textarea
@@ -143,7 +143,7 @@ export default async function GrantIntakePage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Target Population
               </label>
               <textarea
@@ -155,7 +155,7 @@ export default async function GrantIntakePage() {
 
             {/* Required Documents */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Required Documents
               </label>
               <div className="space-y-2">
@@ -164,7 +164,7 @@ export default async function GrantIntakePage() {
                     type="checkbox"
                     className="rounded text-brand-blue-600"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-black">
                     Budget Narrative
                   </span>
                 </label>
@@ -173,14 +173,14 @@ export default async function GrantIntakePage() {
                     type="checkbox"
                     className="rounded text-brand-blue-600"
                   />
-                  <span className="text-sm text-gray-700">Program Plan</span>
+                  <span className="text-sm text-black">Program Plan</span>
                 </label>
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     className="rounded text-brand-blue-600"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-black">
                     Letters of Support
                   </span>
                 </label>
@@ -189,7 +189,7 @@ export default async function GrantIntakePage() {
                     type="checkbox"
                     className="rounded text-brand-blue-600"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-black">
                     Financial Statements
                   </span>
                 </label>
@@ -198,7 +198,7 @@ export default async function GrantIntakePage() {
 
             {/* File Upload */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Upload Documents
               </label>
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
@@ -209,9 +209,9 @@ export default async function GrantIntakePage() {
                   id="file-upload"
                 />
                 <label htmlFor="file-upload" className="cursor-pointer">
-                  <div className="text-gray-600">
+                  <div className="text-black">
                     <p className="text-sm">Click to upload or drag and drop</p>
-                    <p className="text-xs text-gray-700 mt-1">
+                    <p className="text-xs text-black mt-1">
                       PDF, DOC, DOCX up to 10MB
                     </p>
                   </div>
@@ -223,7 +223,7 @@ export default async function GrantIntakePage() {
             <div className="flex justify-end gap-4 pt-4 border-t border-gray-200">
               <Link
                 href="/admin/grants"
-                className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                className="px-4 py-2 border border-gray-300 rounded-md text-black hover:bg-gray-50"
               >
                 Cancel
               </Link>

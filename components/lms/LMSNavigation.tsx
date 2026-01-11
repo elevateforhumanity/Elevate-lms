@@ -78,7 +78,7 @@ export function LMSNavigation({ user, profile }: LMSNavigationProps) {
               onClick={() => setSearchOpen(!searchOpen)}
               className="p-2 hover:bg-white/20 rounded-lg transition text-white"
             >
-              <Search className="w-5 h-5 text-slate-600" />
+              <Search className="w-5 h-5 text-black" />
             </button>
 
             {/* Notifications */}
@@ -91,7 +91,7 @@ export function LMSNavigation({ user, profile }: LMSNavigationProps) {
                 {profile?.last_name?.[0] || ''}
               </div>
               <div className="hidden lg:block">
-                <div className="text-sm font-semibold text-slate-900">
+                <div className="text-sm font-semibold text-black">
                   {profile?.first_name || 'User'} {profile?.last_name || ''}
                 </div>
                 <div className="text-xs text-slate-500">Student</div>
@@ -104,9 +104,9 @@ export function LMSNavigation({ user, profile }: LMSNavigationProps) {
               className="md:hidden p-2 hover:bg-slate-100 rounded-lg transition"
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-slate-600" />
+                <X className="w-6 h-6 text-black" />
               ) : (
-                <Menu className="w-6 h-6 text-slate-600" />
+                <Menu className="w-6 h-6 text-black" />
               )}
             </button>
           </div>
@@ -141,7 +141,7 @@ export function LMSNavigation({ user, profile }: LMSNavigationProps) {
                     className={`flex items-center gap-3 px-4 py-3 rounded-lg font-semibold transition ${
                       isActive(item.href)
                         ? 'bg-blue-50 text-blue-600'
-                        : 'text-slate-600 hover:bg-slate-50'
+                        : 'text-black hover:bg-slate-50'
                     }`}
                   >
                     <Icon className="w-5 h-5" />
@@ -157,7 +157,7 @@ export function LMSNavigation({ user, profile }: LMSNavigationProps) {
                   {profile?.last_name?.[0] || ''}
                 </div>
                 <div>
-                  <div className="font-semibold text-slate-900">
+                  <div className="font-semibold text-black">
                     {profile?.first_name || 'User'} {profile?.last_name || ''}
                   </div>
                   <div className="text-sm text-slate-500">{user.email}</div>

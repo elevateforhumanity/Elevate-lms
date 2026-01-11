@@ -67,7 +67,7 @@ export default function DocumentUploadPage() {
         <div className="container mx-auto px-4 max-w-2xl text-center">
           <div className="bg-white rounded-lg shadow-sm p-8">
             <h1 className="text-3xl font-bold mb-4">Document Uploaded!</h1>
-            <p className="text-gray-600 mb-6">
+            <p className="text-black mb-6">
               Your document has been uploaded successfully.
             </p>
             <div className="flex gap-4 justify-center">
@@ -88,7 +88,7 @@ export default function DocumentUploadPage() {
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container mx-auto px-4 max-w-2xl">
         <h1 className="text-3xl font-bold mb-2">Upload Document</h1>
-        <p className="text-gray-600 mb-8">
+        <p className="text-black mb-8">
           Upload certificates, transcripts, or other required documents.
         </p>
 
@@ -137,7 +137,7 @@ export default function DocumentUploadPage() {
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
                 accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
               />
-              <p className="text-sm text-gray-700 mt-2">
+              <p className="text-sm text-black mt-2">
                 Accepted formats: PDF, JPG, PNG, DOC, DOCX (Max 10MB)
               </p>
             </div>

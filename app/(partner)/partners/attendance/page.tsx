@@ -110,12 +110,12 @@ export default function PartnerAttendancePage() {
     <div className="rounded-2xl border p-5 space-y-4">
       <div>
         <div className="font-semibold">Attendance</div>
-        <div className="text-sm text-gray-600">Weekly hours per student.</div>
+        <div className="text-sm text-black">Weekly hours per student.</div>
       </div>
 
       <div className="flex flex-wrap gap-3 items-end">
         <div>
-          <div className="text-xs text-gray-700 mb-1">Shop ID</div>
+          <div className="text-xs text-black mb-1">Shop ID</div>
           <input
             className="border rounded-xl p-2 w-[360px]"
             value={shopId}
@@ -123,7 +123,7 @@ export default function PartnerAttendancePage() {
           />
         </div>
         <div>
-          <div className="text-xs text-gray-700 mb-1">Week Start (Mon)</div>
+          <div className="text-xs text-black mb-1">Week Start (Mon)</div>
           <input
             type="date"
             className="border rounded-xl p-2"
@@ -143,7 +143,7 @@ export default function PartnerAttendancePage() {
         >
           Save
         </button>
-        <div className="text-sm text-gray-600">Total hours: {totalHours}</div>
+        <div className="text-sm text-black">Total hours: {totalHours}</div>
       </div>
 
       <div className="overflow-auto">
@@ -216,7 +216,7 @@ export default function PartnerAttendancePage() {
             ))}
             {rows.length === 0 && (
               <tr>
-                <td className="py-3 text-gray-600" colSpan={11}>
+                <td className="py-3 text-black" colSpan={11}>
                   Load students to begin.
                 </td>
               </tr>

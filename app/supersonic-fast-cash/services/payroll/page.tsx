@@ -30,12 +30,12 @@ export default function PayrollPage() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <h2 className="text-2xl font-bold mb-6">Professional Payroll Processing</h2>
-            <p className="text-gray-700 mb-6">
+            <p className="text-black mb-6">
               Let us handle your payroll so you can focus on running your business. We ensure accurate, timely payroll processing and tax compliance.
             </p>
             <div className="bg-blue-50 rounded-lg p-6 border border-blue-200 mb-6">
               <h3 className="text-xl font-semibold mb-3">Services Include</h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
+              <ul className="list-disc list-inside space-y-2 text-black">
                 <li>Weekly, bi-weekly, or monthly payroll processing</li>
                 <li>Direct deposit setup</li>
                 <li>Payroll tax calculations and filing</li>

@@ -130,7 +130,7 @@ export default function TeamPage() {
 
                 {/* Bio */}
                 <div className="lg:w-2/3">
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 text-2xl md:text-3xl lg:text-4xl">
+                  <h2 className="text-2xl md:text-3xl font-bold text-black mb-2 text-2xl md:text-3xl lg:text-4xl">
                     {member.name}
                   </h2>
                   <p className="text-base md:text-lg text-brand-blue-600 font-semibold mb-6">
@@ -138,7 +138,7 @@ export default function TeamPage() {
                   </p>
                   <div className="prose prose-lg max-w-none">
                     {member.bio.split('\n\n').map((paragraph, i) => (
-                      <p key={i} className="text-gray-700 leading-relaxed mb-4">
+                      <p key={i} className="text-black leading-relaxed mb-4">
                         {paragraph}
                       </p>
                     ))}
@@ -156,7 +156,7 @@ export default function TeamPage() {
           <h2 className="text-2xl md:text-3xl font-bold mb-6 text-2xl md:text-3xl lg:text-4xl">
             Join Our Team
           </h2>
-          <p className="text-base md:text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-black mb-8 max-w-3xl mx-auto">
             We're always looking for passionate professionals who share our
             mission to transform lives through education and opportunity.
           </p>

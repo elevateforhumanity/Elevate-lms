@@ -37,10 +37,10 @@ export default async function ProgramHolderNotificationsPage() {
       <div className="max-w-4xl mx-auto px-4">
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-black mb-2">
               Notifications
             </h1>
-            <p className="text-gray-600">
+            <p className="text-black">
               {unreadCount > 0
                 ? `You have ${unreadCount} unread notification${unreadCount === 1 ? '' : 's'}`
                 : 'All caught up!'}
@@ -57,10 +57,10 @@ export default async function ProgramHolderNotificationsPage() {
         {!notifications || notifications.length === 0 ? (
           <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
             <Bell className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">
+            <h2 className="text-xl font-semibold text-black mb-2">
               No Notifications Yet
             </h2>
-            <p className="text-gray-600">
+            <p className="text-black">
               You'll see notifications here when students enroll or complete
               milestones.
             </p>
@@ -83,13 +83,13 @@ export default async function ProgramHolderNotificationsPage() {
                     }`}
                   />
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-1">
+                    <h3 className="font-semibold text-black mb-1">
                       {notification.title}
                     </h3>
-                    <p className="text-sm text-gray-600 mb-2">
+                    <p className="text-sm text-black mb-2">
                       {notification.message}
                     </p>
-                    <div className="flex items-center gap-4 text-xs text-gray-700">
+                    <div className="flex items-center gap-4 text-xs text-black">
                       <span>
                         {new Date(notification.created_at).toLocaleDateString(
                           'en-US',

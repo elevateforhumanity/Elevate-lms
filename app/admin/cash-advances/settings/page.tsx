@@ -36,10 +36,10 @@ export default async function CashAdvanceSettingsPage() {
           >
             ← Back to Cash Advances
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Cash Advance Settings
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-black">
             Configure cash advance program parameters and limits.
           </p>
         </div>
@@ -47,7 +47,7 @@ export default async function CashAdvanceSettingsPage() {
         {/* Settings Form */}
         <div className="bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-black">
               Program Settings
             </h2>
           </div>
@@ -55,29 +55,29 @@ export default async function CashAdvanceSettingsPage() {
           <div className="p-6 space-y-6">
             {/* Maximum Amount */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Maximum Advance Amount
               </label>
               <div className="flex items-center gap-2">
-                <span className="text-gray-700">$</span>
+                <span className="text-black">$</span>
                 <input
                   type="number"
                   defaultValue="6000"
                   className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
-              <p className="mt-1 text-sm text-gray-700">
+              <p className="mt-1 text-sm text-black">
                 Maximum amount a student can request
               </p>
             </div>
 
             {/* Minimum Amount */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Minimum Advance Amount
               </label>
               <div className="flex items-center gap-2">
-                <span className="text-gray-700">$</span>
+                <span className="text-black">$</span>
                 <input
                   type="number"
                   defaultValue="100"
@@ -88,7 +88,7 @@ export default async function CashAdvanceSettingsPage() {
 
             {/* Processing Fee */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Processing Fee (%)
               </label>
               <input
@@ -101,18 +101,18 @@ export default async function CashAdvanceSettingsPage() {
 
             {/* Au Threshold */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Au Threshold
               </label>
               <div className="flex items-center gap-2">
-                <span className="text-gray-700">$</span>
+                <span className="text-black">$</span>
                 <input
                   type="number"
                   defaultValue="500"
                   className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
-              <p className="mt-1 text-sm text-gray-700">
+              <p className="mt-1 text-sm text-black">
                 Requests below this amount are au
               </p>
             </div>
@@ -120,10 +120,10 @@ export default async function CashAdvanceSettingsPage() {
             {/* Enable/Disable Program */}
             <div className="flex items-center justify-between py-4 border-t border-gray-200">
               <div>
-                <h3 className="text-sm font-medium text-gray-900">
+                <h3 className="text-sm font-medium text-black">
                   Enable Cash Advance Program
                 </h3>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-black">
                   Allow students to request cash advances
                 </p>
               </div>
@@ -137,7 +137,7 @@ export default async function CashAdvanceSettingsPage() {
 
             {/* Save Button */}
             <div className="flex justify-end gap-4 pt-4 border-t border-gray-200">
-              <button className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50" aria-label="Action button">
+              <button className="px-4 py-2 border border-gray-300 rounded-md text-black hover:bg-gray-50" aria-label="Action button">
                 Cancel
               </button>
               <button className="px-4 py-2 bg-brand-blue-600 text-white rounded-md hover:bg-brand-blue-700" aria-label="Action button">
@@ -150,7 +150,7 @@ export default async function CashAdvanceSettingsPage() {
         {/* Notification Settings */}
         <div className="mt-6 bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-black">
               Notification Settings
             </h2>
           </div>
@@ -158,10 +158,10 @@ export default async function CashAdvanceSettingsPage() {
           <div className="p-6 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-gray-900">
+                <h3 className="text-sm font-medium text-black">
                   Email Notifications
                 </h3>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-black">
                   Send email when request is submitted
                 </p>
               </div>
@@ -174,10 +174,10 @@ export default async function CashAdvanceSettingsPage() {
 
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-gray-900">
+                <h3 className="text-sm font-medium text-black">
                   SMS Notifications
                 </h3>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-black">
                   Send SMS for status updates
                 </p>
               </div>
@@ -190,10 +190,10 @@ export default async function CashAdvanceSettingsPage() {
 
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-gray-900">
+                <h3 className="text-sm font-medium text-black">
                   Admin Alerts
                 </h3>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-black">
                   Alert admins of new requests
                 </p>
               </div>

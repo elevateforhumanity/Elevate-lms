@@ -125,7 +125,7 @@ export default function EnrollPage({
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-blue-600 mx-auto"></div>
-          <p className="mt-4 text-slate-600">Loading course details...</p>
+          <p className="mt-4 text-black">Loading course details...</p>
         </div>
       </div>
     );
@@ -138,10 +138,10 @@ export default function EnrollPage({
           <div className="text-red-600 text-5xl mb-4">
             <AlertTriangle className="w-5 h-5 inline-block" />
           </div>
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">
+          <h1 className="text-2xl font-bold text-black mb-2">
             Course Not Found
           </h1>
-          <p className="text-slate-600 mb-6">{error}</p>
+          <p className="text-black mb-6">{error}</p>
           <Link
             href="/courses/partners"
             className="inline-block px-6 py-3 bg-brand-blue-600 text-white rounded-lg hover:bg-brand-blue-700 transition-colors"
@@ -166,7 +166,7 @@ export default function EnrollPage({
           >
             ← Back to Courses
           </Link>
-          <h1 className="text-3xl font-bold text-slate-900">
+          <h1 className="text-3xl font-bold text-black">
             Confirm Enrollment
           </h1>
         </div>
@@ -205,10 +205,10 @@ export default function EnrollPage({
           {/* Course Details */}
           <div className="p-8">
             <div className="mb-6">
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">
+              <h3 className="text-lg font-semibold text-black mb-2">
                 About This Course
               </h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-black leading-relaxed">
                 {course.description}
               </p>
             </div>
@@ -218,8 +218,8 @@ export default function EnrollPage({
               <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
                 <Clock className="w-5 h-5 text-brand-blue-600" />
                 <div>
-                  <div className="text-sm text-slate-600">Duration</div>
-                  <div className="font-semibold text-slate-900">
+                  <div className="text-sm text-black">Duration</div>
+                  <div className="font-semibold text-black">
                     {course.duration_hours} hours
                   </div>
                 </div>
@@ -227,8 +227,8 @@ export default function EnrollPage({
               <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
                 <BookOpen className="w-5 h-5 text-brand-blue-600" />
                 <div>
-                  <div className="text-sm text-slate-600">Format</div>
-                  <div className="font-semibold text-slate-900">
+                  <div className="text-sm text-black">Format</div>
+                  <div className="font-semibold text-black">
                     Online Self-Paced
                   </div>
                 </div>
@@ -237,11 +237,11 @@ export default function EnrollPage({
 
             {/* What Happens Next */}
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-              <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-black mb-4 flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-brand-blue-600" />
                 What Happens Next
               </h3>
-              <ol className="space-y-3 text-slate-700">
+              <ol className="space-y-3 text-black">
                 <li className="flex gap-3">
                   <span className="flex-shrink-0 w-6 h-6 bg-brand-blue-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">
                     1
@@ -299,7 +299,7 @@ export default function EnrollPage({
               </button>
               <Link
                 href="/courses/partners"
-                className="px-8 py-4 bg-slate-100 text-slate-700 font-semibold rounded-lg hover:bg-slate-200 transition-colors text-center"
+                className="px-8 py-4 bg-slate-100 text-black font-semibold rounded-lg hover:bg-slate-200 transition-colors text-center"
               >
                 Cancel
               </Link>

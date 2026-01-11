@@ -9,7 +9,7 @@ export default function AcceptableUsePage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Acceptable Use Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Acceptable Use</h2>
       <ul><li>Educational purposes</li><li>Professional development</li><li>Authorized activities</li></ul>
       <h2>Prohibited Use</h2>

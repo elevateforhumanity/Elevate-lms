@@ -742,37 +742,37 @@ export default async function MegaAdminDashboard() {
       <section className="max-w-7xl mx-auto px-4 py-4">
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
-            <div className="text-xs text-slate-600">Students</div>
+            <div className="text-xs text-black">Students</div>
             <div className="text-base font-bold text-brand-blue-600">
               {totalStudents || 0}
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
-            <div className="text-xs text-slate-600">Enrollments</div>
+            <div className="text-xs text-black">Enrollments</div>
             <div className="text-base font-bold text-brand-green-600">
               {totalEnrollments || 0}
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
-            <div className="text-xs text-slate-600">Active</div>
+            <div className="text-xs text-black">Active</div>
             <div className="text-base font-bold text-brand-orange-600">
               {activeEnrollments || 0}
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
-            <div className="text-xs text-slate-600">Programs</div>
+            <div className="text-xs text-black">Programs</div>
             <div className="text-base font-bold text-purple-600">
               {totalPrograms || 0}
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
-            <div className="text-xs text-slate-600">Courses</div>
+            <div className="text-xs text-black">Courses</div>
             <div className="text-base font-bold text-indigo-600">
               {totalCourses || 0}
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
-            <div className="text-xs text-slate-600">Pending</div>
+            <div className="text-xs text-black">Pending</div>
             <div className="text-base font-bold text-brand-orange-600">
               {pendingApplications || 0}
             </div>

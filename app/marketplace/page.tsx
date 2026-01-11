@@ -61,7 +61,7 @@ export default async function MarketplacePage() {
           <h1 className="text-3xl font-bold mb-4">
             Marketplace Setup Required
           </h1>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             The marketplace database tables need to be created. Please run the
             database migrations.
           </p>
@@ -123,7 +123,7 @@ export default async function MarketplacePage() {
                 <h3 className="text-lg font-semibold mb-2">
                   {creator.display_name}
                 </h3>
-                <p className="text-gray-600 text-sm line-clamp-3">
+                <p className="text-black text-sm line-clamp-3">
                   {creator.bio}
                 </p>
               </div>
@@ -138,7 +138,7 @@ export default async function MarketplacePage() {
 
         {!products || products.length === 0 ? (
           <div className="bg-white rounded-lg shadow-md p-12 text-center">
-            <p className="text-gray-600 mb-4">
+            <p className="text-black mb-4">
               No products available yet. Be the first creator!
             </p>
             <Link
@@ -185,7 +185,7 @@ export default async function MarketplacePage() {
                   <h3 className="font-semibold mb-1 group-hover:text-brand-blue-600 transition line-clamp-2">
                     {product.title}
                   </h3>
-                  <p className="text-sm text-gray-600 mb-2">
+                  <p className="text-sm text-black mb-2">
                     by {product.creator?.display_name || 'Unknown'}
                   </p>
                   <p className="text-lg font-bold text-brand-blue-600">
@@ -204,7 +204,7 @@ export default async function MarketplacePage() {
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Ready to Share Your Work?
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             Join our marketplace and earn 70% on every sale. No upfront costs,
             no technical setup required.
           </p>

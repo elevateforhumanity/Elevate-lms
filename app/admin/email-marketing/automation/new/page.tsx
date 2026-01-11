@@ -167,10 +167,10 @@ export default function NewWorkflowPage() {
                 <ArrowLeft className="w-5 h-5" />
               </button>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="text-2xl font-bold text-black">
                   Create Drip Campaign
                 </h1>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-black">
                   Build automated email sequences
                 </p>
               </div>
@@ -206,7 +206,7 @@ export default function NewWorkflowPage() {
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Workflow Name
                   </label>
                   <input
@@ -225,7 +225,7 @@ export default function NewWorkflowPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Trigger Event
                   </label>
                   <select
@@ -260,7 +260,7 @@ export default function NewWorkflowPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Target Audience
                   </label>
                   <select
@@ -313,7 +313,7 @@ export default function NewWorkflowPage() {
                         <div className="w-8 h-8 bg-brand-blue-600 text-white rounded-full flex items-center justify-center font-semibold">
                           {index + 1}
                         </div>
-                        <h3 className="font-semibold text-gray-900">
+                        <h3 className="font-semibold text-black">
                           Email {index + 1}
                           {index === 0 ? ' (Immediate)' : ''}
                         </h3>
@@ -330,8 +330,8 @@ export default function NewWorkflowPage() {
 
                     {index > 0 && (
                       <div className="mb-4 flex items-center space-x-3">
-                        <Clock className="w-5 h-5 text-gray-600" />
-                        <span className="text-sm text-gray-600">Wait</span>
+                        <Clock className="w-5 h-5 text-black" />
+                        <span className="text-sm text-black">Wait</span>
                         <input
                           type="number"
                           value={step.delay}
@@ -371,7 +371,7 @@ export default function NewWorkflowPage() {
                           <option value="hours">Hours</option>
                           <option value="days">Days</option>
                         </select>
-                        <span className="text-sm text-gray-600">
+                        <span className="text-sm text-black">
                           after previous email
                         </span>
                       </div>
@@ -379,7 +379,7 @@ export default function NewWorkflowPage() {
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-black mb-2">
                           Select Template
                         </label>
                         <div className="grid grid-cols-2 gap-2">
@@ -400,7 +400,7 @@ export default function NewWorkflowPage() {
                                     : 'border-gray-200 hover:border-gray-300'
                                 }`}
                               >
-                                <div className="font-medium text-gray-900">
+                                <div className="font-medium text-black">
                                   {template.name}
                                 </div>
                               </button>
@@ -409,7 +409,7 @@ export default function NewWorkflowPage() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-black mb-2">
                           Subject Line
                         </label>
                         <input
@@ -428,7 +428,7 @@ export default function NewWorkflowPage() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-black mb-2">
                           Preview
                         </label>
                         <div className="border border-gray-300 rounded-lg p-4 bg-gray-50 max-h-40 overflow-auto">
@@ -442,7 +442,7 @@ export default function NewWorkflowPage() {
                               }}
                             />
                           ) : (
-                            <p className="text-sm text-gray-600 italic">
+                            <p className="text-sm text-black italic">
                               Select a template to preview
                             </p>
                           )}
@@ -458,21 +458,21 @@ export default function NewWorkflowPage() {
           {/* Summary Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow p-6 sticky top-8">
-              <h3 className="font-semibold text-gray-900 mb-4">
+              <h3 className="font-semibold text-black mb-4">
                 Workflow Summary
               </h3>
 
               <div className="space-y-4">
                 <div>
-                  <div className="text-xs text-gray-700 mb-1">Name</div>
-                  <div className="text-sm font-medium text-gray-900">
+                  <div className="text-xs text-black mb-1">Name</div>
+                  <div className="text-sm font-medium text-black">
                     {workflow.name || 'Untitled Workflow'}
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-700 mb-1">Trigger</div>
-                  <div className="text-sm text-gray-900">
+                  <div className="text-xs text-black mb-1">Trigger</div>
+                  <div className="text-sm text-black">
                     {workflow.trigger === 'enrollment'
                       ? 'New Student Enrollment'
                       : workflow.trigger === 'application'
@@ -484,10 +484,10 @@ export default function NewWorkflowPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-700 mb-1">
+                  <div className="text-xs text-black mb-1">
                     Target Audience
                   </div>
-                  <div className="text-sm text-gray-900">
+                  <div className="text-sm text-black">
                     {workflow.targetAudience
                       .split('-')
                       .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -496,14 +496,14 @@ export default function NewWorkflowPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-700 mb-1">Total Emails</div>
-                  <div className="text-sm font-medium text-gray-900">
+                  <div className="text-xs text-black mb-1">Total Emails</div>
+                  <div className="text-sm font-medium text-black">
                     {steps.length}
                   </div>
                 </div>
 
                 <div className="pt-4 border-t border-gray-200">
-                  <div className="text-xs text-gray-700 mb-2">Timeline</div>
+                  <div className="text-xs text-black mb-2">Timeline</div>
                   <div className="space-y-2">
                     {steps.map((step, index) => (
                       <div
@@ -512,10 +512,10 @@ export default function NewWorkflowPage() {
                       >
                         <Mail className="w-3 h-3 text-brand-blue-600 mt-0.5" />
                         <div>
-                          <div className="font-medium text-gray-900">
+                          <div className="font-medium text-black">
                             Email {index + 1}
                           </div>
-                          <div className="text-gray-700">
+                          <div className="text-black">
                             {index === 0
                               ? 'Immediate'
                               : `${step.delay} ${step.delayUnit} after Email ${index}`}
@@ -527,10 +527,10 @@ export default function NewWorkflowPage() {
                 </div>
 
                 <div className="pt-4 border-t border-gray-200">
-                  <div className="text-xs text-gray-700 mb-2">
+                  <div className="text-xs text-black mb-2">
                     Total Duration
                   </div>
-                  <div className="text-sm font-medium text-gray-900">
+                  <div className="text-sm font-medium text-black">
                     {calculateTotalDuration(steps)}
                   </div>
                 </div>
@@ -545,10 +545,10 @@ export default function NewWorkflowPage() {
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                     Your Journey Starts Here
                   </h2>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  <p className="text-lg text-black mb-6 leading-relaxed">
                     Every great career begins with a single step. Whether you're
                     looking to change careers, upgrade your skills, or enter the
                     workforce for the first time, we're here to help you
@@ -570,7 +570,7 @@ export default function NewWorkflowPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         100% free training - no tuition, no hidden costs
                       </span>
                     </li>
@@ -588,7 +588,7 @@ export default function NewWorkflowPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Industry-recognized certifications that employers value
                       </span>
                     </li>
@@ -606,7 +606,7 @@ export default function NewWorkflowPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Job placement assistance and career support
                       </span>
                     </li>
@@ -624,7 +624,7 @@ export default function NewWorkflowPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Flexible scheduling for working adults
                       </span>
                     </li>

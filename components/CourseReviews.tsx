@@ -96,12 +96,12 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
 
   return (
     <div className="bg-white rounded-lg border border-slate-200 p-6">
-      <h3 className="text-2xl font-bold text-slate-900 mb-6">Student Reviews</h3>
+      <h3 className="text-2xl font-bold text-black mb-6">Student Reviews</h3>
 
       {/* Rating Summary */}
       <div className="grid md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-slate-200">
         <div className="text-center">
-          <div className="text-5xl font-bold text-slate-900 mb-2 text-3xl md:text-4xl lg:text-5xl">
+          <div className="text-5xl font-bold text-black mb-2 text-3xl md:text-4xl lg:text-5xl">
             {averageRating.toFixed(1)}
           </div>
           <div className="flex items-center justify-center gap-1 mb-2">
@@ -116,7 +116,7 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
               />
             ))}
           </div>
-          <p className="text-sm text-slate-600">{totalReviews} reviews</p>
+          <p className="text-sm text-black">{totalReviews} reviews</p>
         </div>
 
         <div className="space-y-2">
@@ -126,7 +126,7 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
               onClick={() => setFilter(rating as string)}
               className="flex items-center gap-3 w-full hover:bg-slate-50 p-2 rounded transition"
             >
-              <span className="text-sm font-medium text-slate-700 w-12">
+              <span className="text-sm font-medium text-black w-12">
                 {rating} star
               </span>
               <div className="flex-1 h-2 bg-slate-200 rounded-full overflow-hidden">
@@ -135,7 +135,7 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
                   style={{ width: `${percentage}%` }}
                 />
               </div>
-              <span className="text-sm text-slate-600 w-12 text-right">
+              <span className="text-sm text-black w-12 text-right">
                 {count}
               </span>
             </button>
@@ -145,10 +145,10 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
 
       {/* Write Review */}
       <div className="mb-8 pb-8 border-b border-slate-200">
-        <h4 className="text-lg font-semibold text-slate-900 mb-4">Write a Review</h4>
+        <h4 className="text-lg font-semibold text-black mb-4">Write a Review</h4>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Your Rating
           </label>
           <div className="flex gap-2">
@@ -171,7 +171,7 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Your Review
           </label>
           <textarea
@@ -198,13 +198,13 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
           className={`px-3 py-1 text-sm rounded-lg ${
             filter === 'all'
               ? 'bg-brand-orange-600 text-white'
-              : 'bg-slate-100 text-slate-600'
+              : 'bg-slate-100 text-black'
           }`}
         >
           All Reviews
         </button>
         {filter !== 'all' && (
-          <span className="text-sm text-slate-600">
+          <span className="text-sm text-black">
             Showing {filter} star reviews
           </span>
         )}
@@ -217,7 +217,7 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
             <div key={review.id} className="border-b border-slate-200 pb-6 last:border-0">
               <div className="flex items-start justify-between mb-2">
                 <div>
-                  <p className="font-semibold text-slate-900">{review.user_name}</p>
+                  <p className="font-semibold text-black">{review.user_name}</p>
                   <div className="flex items-center gap-2 mt-1">
                     <div className="flex gap-1">
                       {[1, 2, 3, 4, 5].map((star) => (
@@ -237,10 +237,10 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
                   </div>
                 </div>
               </div>
-              <p className="text-slate-700 mb-3">{review.comment}</p>
+              <p className="text-black mb-3">{review.comment}</p>
               <button
                 onClick={() => markHelpful(review.id)}
-                className="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-orange-600"
+                className="flex items-center gap-2 text-sm text-black hover:text-brand-orange-600"
               >
                 <ThumbsUp className="w-4 h-4" />
                 Helpful ({review.helpful_count})

@@ -47,7 +47,7 @@ export default function ProgramCoursesPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading courses...</p>
+          <p className="text-black">Loading courses...</p>
         </div>
       </div>
     );
@@ -103,9 +103,9 @@ export default function ProgramCoursesPage() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         {courses.length === 0 ? (
           <div className="bg-white rounded-lg shadow-md p-12 text-center">
-            <BookOpen className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+            <BookOpen className="w-16 h-16 text-black mx-auto mb-4" />
             <h2 className="text-2xl font-bold mb-2">No Courses Available Yet</h2>
-            <p className="text-gray-600 mb-6">Courses for this program are coming soon.</p>
+            <p className="text-black mb-6">Courses for this program are coming soon.</p>
             <Link href="/programs" className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition">
               Browse Other Programs
             </Link>
@@ -186,23 +186,23 @@ export default function ProgramCoursesPage() {
                   </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-3">{course.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">{course.description}</p>
+                  <p className="text-black mb-4 line-clamp-3">{course.description}</p>
 
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="flex items-center gap-2 text-sm text-black">
                       <Clock className="w-4 h-4" />
                       <span>{course.duration || '8 weeks'}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="flex items-center gap-2 text-sm text-black">
                       <BookOpen className="w-4 h-4" />
                       <span>{course.lessons || 24} lessons</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <div className="flex items-center gap-2 text-sm text-black">
                       <Users className="w-4 h-4" />
                       <span>{course.enrolled || 0} enrolled</span>
                     </div>
                     {course.certification && (
-                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                      <div className="flex items-center gap-2 text-sm text-black">
                         <Award className="w-4 h-4" />
                         <span>Certificate included</span>
                       </div>
@@ -216,9 +216,9 @@ export default function ProgramCoursesPage() {
                           <div className="text-2xl font-bold text-green-600">FREE</div>
                         ) : (
                           <>
-                            <div className="text-2xl font-bold text-gray-900">${course.price}</div>
+                            <div className="text-2xl font-bold text-black">${course.price}</div>
                             {course.originalPrice && (
-                              <div className="text-sm text-gray-700 line-through">${course.originalPrice}</div>
+                              <div className="text-sm text-black line-through">${course.originalPrice}</div>
                             )}
                           </>
                         )}

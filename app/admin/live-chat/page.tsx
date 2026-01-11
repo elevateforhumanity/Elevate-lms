@@ -78,8 +78,8 @@ export default function LiveChatPage() {
             <div className="flex items-center space-x-3">
               <MessageCircle className="w-8 h-8 text-brand-blue-600" />
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Live Chat</h1>
-                <p className="text-gray-600 mt-1">
+                <h1 className="text-3xl font-bold text-black">Live Chat</h1>
+                <p className="text-black mt-1">
                   Real-time support for students and visitors
                 </p>
               </div>
@@ -133,10 +133,10 @@ export default function LiveChatPage() {
 
           <div className="space-y-6">
             <div>
-              <h3 className="font-medium text-gray-900 mb-2">
+              <h3 className="font-medium text-black mb-2">
                 1. Create Tawk.to Account (FREE)
               </h3>
-              <p className="text-gray-600 mb-2">
+              <p className="text-black mb-2">
                 Sign up at{' '}
                 <a
                   href="https://www.tawk.to"
@@ -151,10 +151,10 @@ export default function LiveChatPage() {
             </div>
 
             <div>
-              <h3 className="font-medium text-gray-900 mb-2">
+              <h3 className="font-medium text-black mb-2">
                 2. Get Your Widget Code
               </h3>
-              <ol className="list-decimal list-inside text-gray-600 space-y-1 ml-4">
+              <ol className="list-decimal list-inside text-black space-y-1 ml-4">
                 <li>Log in to Tawk.to dashboard</li>
                 <li>Go to Administration → Channels → Chat Widget</li>
                 <li>Copy your Property ID and Widget ID</li>
@@ -162,7 +162,7 @@ export default function LiveChatPage() {
             </div>
 
             <div>
-              <h3 className="font-medium text-gray-900 mb-2">
+              <h3 className="font-medium text-black mb-2">
                 3. Add to Environment Variables
               </h3>
               <div className="bg-slate-800 text-gray-100 p-4 rounded-lg font-mono text-sm">
@@ -172,10 +172,10 @@ export default function LiveChatPage() {
             </div>
 
             <div>
-              <h3 className="font-medium text-gray-900 mb-2">
+              <h3 className="font-medium text-black mb-2">
                 4. Deploy & Test
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Redeploy your site and the chat widget will appear on all pages
                 automatically.
               </p>
@@ -324,8 +324,8 @@ function StatCard({ title, value, icon: Icon, color }: StatCardProps) {
       <div className="flex items-center justify-between mb-2">
         <Icon className={`w-8 h-8 ${colorClasses[color]}`} />
       </div>
-      <div className="text-2xl font-bold text-gray-900">{value}</div>
-      <div className="text-sm text-gray-600">{title}</div>
+      <div className="text-2xl font-bold text-black">{value}</div>
+      <div className="text-sm text-black">{title}</div>
     </div>
   );
 }
@@ -340,8 +340,8 @@ function FeatureItem({ title, description }: FeatureItemProps) {
     <div className="flex items-start space-x-3">
       <CheckCircle className="w-5 h-5 text-brand-green-600 mt-0.5 flex-shrink-0" />
       <div>
-        <div className="font-medium text-gray-900">{title}</div>
-        <div className="text-sm text-gray-600">{description}</div>
+        <div className="font-medium text-black">{title}</div>
+        <div className="text-sm text-black">{description}</div>
       </div>
     </div>
   );
@@ -361,8 +361,8 @@ function ActionButton({ title, description, href }: ActionButtonProps) {
       rel="noopener noreferrer"
       className="p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 hover:bg-gray-50 transition-colors"
     >
-      <div className="font-medium text-gray-900 mb-1">{title}</div>
-      <div className="text-sm text-gray-600 mb-2">{description}</div>
+      <div className="font-medium text-black mb-1">{title}</div>
+      <div className="text-sm text-black mb-2">{description}</div>
       <div className="flex items-center text-sm text-brand-blue-600">
         <span>Open</span>
         <ExternalLink className="w-3 h-3 ml-1" />

@@ -136,7 +136,7 @@ export default function SurveyModal({
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => handleAnswer(currentQuestion.id, e.target.value)}
                   className="w-5 h-5 text-blue-600 border-gray-300 focus:ring-blue-500"
                 />
-                <span className="text-gray-900">{option}</span>
+                <span className="text-black">{option}</span>
               </label>
             ))}
           </div>
@@ -163,7 +163,7 @@ export default function SurveyModal({
                   }}
                   className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
-                <span className="text-gray-900">{option}</span>
+                <span className="text-black">{option}</span>
               </label>
             ))}
           </div>
@@ -180,7 +180,7 @@ export default function SurveyModal({
                 className={`w-12 h-12 rounded-full font-bold transition-all ${
                   answer === rating
                     ? 'bg-blue-600 text-white scale-110'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    : 'bg-gray-200 text-black hover:bg-gray-300'
                 }`}
               >
                 {rating}
@@ -200,7 +200,7 @@ export default function SurveyModal({
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => handleAnswer(currentQuestion.id, parseInt(e.target.value))}
               className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
             />
-            <div className="flex justify-between text-sm text-gray-600">
+            <div className="flex justify-between text-sm text-black">
               <span>0</span>
               <span className="text-2xl font-bold text-blue-600">{answer || 5}</span>
               <span>10</span>
@@ -220,16 +220,16 @@ export default function SurveyModal({
         <div className="p-6 border-b">
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              <h3 className="text-2xl font-bold text-black mb-2">
                 {survey.title}
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 {survey.description}
               </p>
             </div>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-gray-400 hover:text-black transition-colors"
               disabled={isSubmitting}
             >
               <X className="w-6 h-6" />
@@ -244,7 +244,7 @@ export default function SurveyModal({
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <div className="flex justify-between mt-2 text-sm text-gray-600">
+            <div className="flex justify-between mt-2 text-sm text-black">
               <span>Question {currentQuestionIndex + 1} of {survey.questions.length}</span>
               <span>{Math.round(progress)}% Complete</span>
             </div>
@@ -254,7 +254,7 @@ export default function SurveyModal({
         {/* Question */}
         <div className="flex-1 overflow-y-auto p-6">
           <div className="mb-6">
-            <h4 className="text-xl font-semibold text-gray-900 mb-2">
+            <h4 className="text-xl font-semibold text-black mb-2">
               {currentQuestion.question}
               {currentQuestion.required && (
                 <span className="text-brand-orange-600 ml-1">*</span>
@@ -273,7 +273,7 @@ export default function SurveyModal({
           <button
             onClick={handlePrevious}
             disabled={isFirstQuestion || isSubmitting}
-            className="flex items-center gap-2 px-6 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-6 py-2 text-black bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <ChevronLeft className="w-4 h-4" />
             Previous

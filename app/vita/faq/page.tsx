@@ -70,11 +70,11 @@ export default function VITAFAQPage() {
                 {openIndex === index ? (
                   <ChevronUp className="w-5 h-5 text-green-600 flex-shrink-0" />
                 ) : (
-                  <ChevronDown className="w-5 h-5 text-gray-600 flex-shrink-0" />
+                  <ChevronDown className="w-5 h-5 text-black flex-shrink-0" />
                 )}
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-4 text-gray-600">
+                <div className="px-6 pb-4 text-black">
                   {faq.answer}
                 </div>
               )}
@@ -84,7 +84,7 @@ export default function VITAFAQPage() {
 
         <div className="mt-12 bg-green-50 border-2 border-green-600 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Still Have Questions?</h2>
-          <p className="text-gray-700 mb-6">
+          <p className="text-black mb-6">
             Contact us or schedule a free appointment to speak with a VITA volunteer
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

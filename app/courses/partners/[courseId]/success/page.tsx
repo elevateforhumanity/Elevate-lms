@@ -117,13 +117,13 @@ export default async function EnrollmentSuccessPage({
               <h2 className="text-2xl font-bold mb-4">Course Details</h2>
               <div className="space-y-3">
                 <div>
-                  <p className="text-sm text-gray-600">Course Name</p>
+                  <p className="text-sm text-black">Course Name</p>
                   <p className="font-semibold text-lg">
                     {enrollment.partner_courses?.course_name}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Provider</p>
+                  <p className="text-sm text-black">Provider</p>
                   <p className="font-medium">
                     {
                       enrollment.partner_courses?.partner_lms_providers
@@ -132,7 +132,7 @@ export default async function EnrollmentSuccessPage({
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Enrollment Date</p>
+                  <p className="text-sm text-black">Enrollment Date</p>
                   <p className="font-medium">
                     {new Date(enrollment.enrolled_at).toLocaleDateString(
                       'en-US',
@@ -145,7 +145,7 @@ export default async function EnrollmentSuccessPage({
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Status</p>
+                  <p className="text-sm text-black">Status</p>
                   <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-brand-green-100 text-green-800">
                     {enrollment.enrollment_status}
                   </span>
@@ -235,7 +235,7 @@ export default async function EnrollmentSuccessPage({
               </Link>
               <Link
                 href="/student/dashboard"
-                className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 text-center rounded-lg hover:bg-gray-50 transition-colors font-medium"
+                className="flex-1 px-6 py-3 border border-gray-300 text-black text-center rounded-lg hover:bg-gray-50 transition-colors font-medium"
               >
                 View Dashboard
               </Link>

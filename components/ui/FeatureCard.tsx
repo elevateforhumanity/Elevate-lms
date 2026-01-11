@@ -14,8 +14,8 @@ export function FeatureCard({ icon, title, description }: FeatureCardProps) {
           {icon}
         </div>
       </div>
-      <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <h3 className="text-xl font-bold text-black mb-2">{title}</h3>
+      <p className="text-black">{description}</p>
     </div>
   );
 }

@@ -119,7 +119,7 @@ export default function CourseLeaderboardPage() {
 
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-brand-blue-600 mb-4" />
-          <p className="text-gray-600">Loading leaderboard...</p>
+          <p className="text-black">Loading leaderboard...</p>
 
           {/* Storytelling Section */}
           <section className="py-16 bg-white">
@@ -127,10 +127,10 @@ export default function CourseLeaderboardPage() {
               <div className="max-w-7xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                       Your Journey Starts Here
                     </h2>
-                    <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                    <p className="text-lg text-black mb-6 leading-relaxed">
                       Every great career begins with a single step. Whether
                       you're looking to change careers, upgrade your skills, or
                       enter the workforce for the first time, we're here to help
@@ -152,7 +152,7 @@ export default function CourseLeaderboardPage() {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           100% free training - no tuition, no hidden costs
                         </span>
                       </li>
@@ -170,7 +170,7 @@ export default function CourseLeaderboardPage() {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Industry-recognized certifications that employers
                           value
                         </span>
@@ -189,7 +189,7 @@ export default function CourseLeaderboardPage() {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Job placement assistance and career support
                         </span>
                       </li>
@@ -207,7 +207,7 @@ export default function CourseLeaderboardPage() {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Flexible scheduling for working adults
                         </span>
                       </li>
@@ -268,7 +268,7 @@ export default function CourseLeaderboardPage() {
           <div className="max-w-4xl mx-auto">
             <Link
               href={`/courses/${courseId}`}
-              className="text-slate-600 hover:text-white text-sm mb-4 inline-block"
+              className="text-black hover:text-white text-sm mb-4 inline-block"
             >
               ← Back to Course
             </Link>
@@ -287,14 +287,14 @@ export default function CourseLeaderboardPage() {
           {/* Timeframe Filter */}
           <div className="bg-white rounded-lg shadow-sm border p-4 mb-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-900">Timeframe</h2>
+              <h2 className="text-lg font-semibold text-black">Timeframe</h2>
               <div className="flex gap-2">
                 <button
                   onClick={() => setTimeframe('week')}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     timeframe === 'week'
                       ? 'bg-purple-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-gray-100 text-black hover:bg-gray-200'
                   }`}
                 >
                   This Week
@@ -304,7 +304,7 @@ export default function CourseLeaderboardPage() {
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     timeframe === 'month'
                       ? 'bg-purple-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-gray-100 text-black hover:bg-gray-200'
                   }`}
                 >
                   This Month
@@ -314,7 +314,7 @@ export default function CourseLeaderboardPage() {
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                     timeframe === 'all'
                       ? 'bg-purple-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-gray-100 text-black hover:bg-gray-200'
                   }`}
                 >
                   All Time
@@ -349,10 +349,10 @@ export default function CourseLeaderboardPage() {
                     2
                   </div>
                 </div>
-                <p className="font-semibold text-gray-900">
+                <p className="font-semibold text-black">
                   {leaderboard[1]?.profiles?.full_name}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   {leaderboard[1]?.points} points
                 </p>
               </div>
@@ -380,10 +380,10 @@ export default function CourseLeaderboardPage() {
                     👑
                   </div>
                 </div>
-                <p className="font-bold text-gray-900 text-lg">
+                <p className="font-bold text-black text-lg">
                   {leaderboard[0]?.profiles?.full_name}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   {leaderboard[0]?.points} points
                 </p>
               </div>
@@ -411,10 +411,10 @@ export default function CourseLeaderboardPage() {
                     3
                   </div>
                 </div>
-                <p className="font-semibold text-gray-900">
+                <p className="font-semibold text-black">
                   {leaderboard[2]?.profiles?.full_name}
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   {leaderboard[2]?.points} points
                 </p>
               </div>
@@ -424,7 +424,7 @@ export default function CourseLeaderboardPage() {
           {/* Full Leaderboard */}
           <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
             <div className="p-4 bg-gray-50 border-b">
-              <h3 className="font-semibold text-gray-900">Full Rankings</h3>
+              <h3 className="font-semibold text-black">Full Rankings</h3>
             </div>
             {leaderboard.length > 0 ? (
               <div className="divide-y">
@@ -440,10 +440,10 @@ export default function CourseLeaderboardPage() {
                             enstart.rank === 1
                               ? 'text-yellow-500'
                               : enstart.rank === 2
-                                ? 'text-gray-600'
+                                ? 'text-black'
                                 : enstart.rank === 3
                                   ? 'text-brand-orange-600'
-                                  : 'text-gray-600'
+                                  : 'text-black'
                           }`}
                         >
                           #{enstart.rank}
@@ -466,10 +466,10 @@ export default function CourseLeaderboardPage() {
                         )}
                       </div>
                       <div className="flex-1">
-                        <p className="font-semibold text-gray-900">
+                        <p className="font-semibold text-black">
                           {enstart.profiles?.full_name || 'Anonymous'}
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-black">
                           {enstart.progress_percentage}% complete •{' '}
                           {enstart.completed_lessons || 0} lessons
                         </p>
@@ -478,7 +478,7 @@ export default function CourseLeaderboardPage() {
                         <p className="text-lg font-bold text-purple-600">
                           {enstart.points}
                         </p>
-                        <p className="text-xs text-gray-700">points</p>
+                        <p className="text-xs text-black">points</p>
                       </div>
                     </div>
                   </div>
@@ -487,7 +487,7 @@ export default function CourseLeaderboardPage() {
             ) : (
               <div className="p-12 text-center">
                 <svg
-                  className="w-16 h-16 text-gray-600 mx-auto mb-4"
+                  className="w-16 h-16 text-black mx-auto mb-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -499,10 +499,10 @@ export default function CourseLeaderboardPage() {
                     d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
                   />
                 </svg>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-black mb-2">
                   No rankings yet
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Be the first to complete lessons and earn points!
                 </p>
               </div>

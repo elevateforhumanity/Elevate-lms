@@ -120,7 +120,7 @@ export default function DigitalBinder({
       case 'missing':
         return 'bg-red-100 text-red-800';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 text-black';
     }
   };
 
@@ -133,7 +133,7 @@ export default function DigitalBinder({
       case 'progress':
         return 'bg-blue-100 text-blue-800';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 text-black';
     }
   };
 
@@ -160,7 +160,7 @@ export default function DigitalBinder({
           className={`px-6 py-3 font-medium transition-colors ${
             activeTab === 'documents'
               ? 'text-blue-600 border-b-2 border-blue-600'
-              : 'text-gray-600 hover:text-gray-900'
+              : 'text-black hover:text-black'
           }`}
         >
           Documents ({documents.length})
@@ -170,7 +170,7 @@ export default function DigitalBinder({
           className={`px-6 py-3 font-medium transition-colors ${
             activeTab === 'notes'
               ? 'text-blue-600 border-b-2 border-blue-600'
-              : 'text-gray-600 hover:text-gray-900'
+              : 'text-black hover:text-black'
           }`}
         >
           Notes ({notes.length})
@@ -180,7 +180,7 @@ export default function DigitalBinder({
           className={`px-6 py-3 font-medium transition-colors ${
             activeTab === 'tracking'
               ? 'text-blue-600 border-b-2 border-blue-600'
-              : 'text-gray-600 hover:text-gray-900'
+              : 'text-black hover:text-black'
           }`}
         >
           Progress Tracking
@@ -191,7 +191,7 @@ export default function DigitalBinder({
       {activeTab === 'documents' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-gray-900">Required Documents</h3>
+            <h3 className="text-lg font-semibold text-black">Required Documents</h3>
             <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
               Upload Document
             </button>
@@ -203,12 +203,12 @@ export default function DigitalBinder({
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h4 className="font-semibold text-gray-900">{doc.title}</h4>
+                      <h4 className="font-semibold text-black">{doc.title}</h4>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(doc.status)}`}>
                         {doc.status}
                       </span>
                     </div>
-                    <div className="flex items-center gap-4 text-sm text-gray-600">
+                    <div className="flex items-center gap-4 text-sm text-black">
                       <span>Type: {doc.type}</span>
                       <span>Date: {new Date(doc.date).toLocaleDateString()}</span>
                       {doc.uploadedBy && <span>By: {doc.uploadedBy}</span>}
@@ -220,7 +220,7 @@ export default function DigitalBinder({
                         View
                       </button>
                     )}
-                    <button className="px-3 py-1 text-sm text-gray-600 hover:bg-gray-50 rounded">
+                    <button className="px-3 py-1 text-sm text-black hover:bg-gray-50 rounded">
                       Download
                     </button>
                   </div>
@@ -235,7 +235,7 @@ export default function DigitalBinder({
       {activeTab === 'notes' && (
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Case Notes & Progress Updates</h3>
+            <h3 className="text-lg font-semibold text-black mb-4">Case Notes & Progress Updates</h3>
 
             {/* Add Note Form */}
             <Card className="p-4 mb-4 bg-blue-50 border-blue-200">
@@ -265,7 +265,7 @@ export default function DigitalBinder({
                 <Card key={note.id} className="p-4">
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="font-semibold text-gray-900">{note.author}</span>
+                      <span className="font-semibold text-black">{note.author}</span>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(note.category)}`}>
                         {note.category}
                       </span>
@@ -274,7 +274,7 @@ export default function DigitalBinder({
                       {new Date(note.date).toLocaleDateString()}
                     </span>
                   </div>
-                  <p className="text-gray-700">{note.note}</p>
+                  <p className="text-black">{note.note}</p>
                 </Card>
               ))}
             </div>
@@ -285,12 +285,12 @@ export default function DigitalBinder({
       {/* Tracking Tab */}
       {activeTab === 'tracking' && (
         <div className="space-y-6">
-          <h3 className="text-lg font-semibold text-gray-900">Progress Tracking</h3>
+          <h3 className="text-lg font-semibold text-black">Progress Tracking</h3>
 
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="p-6">
-              <div className="text-sm text-gray-600 mb-2">Hours Completed</div>
-              <div className="text-3xl font-bold text-gray-900 mb-3">
+              <div className="text-sm text-black mb-2">Hours Completed</div>
+              <div className="text-3xl font-bold text-black mb-3">
                 {trackingData.hoursCompleted} / {trackingData.hoursRequired}
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -302,8 +302,8 @@ export default function DigitalBinder({
             </Card>
 
             <Card className="p-6">
-              <div className="text-sm text-gray-600 mb-2">Attendance Rate</div>
-              <div className="text-3xl font-bold text-gray-900 mb-3">
+              <div className="text-sm text-black mb-2">Attendance Rate</div>
+              <div className="text-3xl font-bold text-black mb-3">
                 {trackingData.attendanceRate}%
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -315,8 +315,8 @@ export default function DigitalBinder({
             </Card>
 
             <Card className="p-6">
-              <div className="text-sm text-gray-600 mb-2">Current Grade</div>
-              <div className="text-3xl font-bold text-gray-900 mb-3">
+              <div className="text-sm text-black mb-2">Current Grade</div>
+              <div className="text-3xl font-bold text-black mb-3">
                 {trackingData.currentGrade}%
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
@@ -329,10 +329,10 @@ export default function DigitalBinder({
           </div>
 
           <Card className="p-6">
-            <h4 className="font-semibold text-gray-900 mb-4">Assignments</h4>
+            <h4 className="font-semibold text-black mb-4">Assignments</h4>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-gray-700">Completed: {trackingData.assignmentsCompleted} / {trackingData.assignmentsTotal}</span>
-              <span className="font-semibold text-gray-900">
+              <span className="text-black">Completed: {trackingData.assignmentsCompleted} / {trackingData.assignmentsTotal}</span>
+              <span className="font-semibold text-black">
                 {Math.round((trackingData.assignmentsCompleted / trackingData.assignmentsTotal) * 100)}%
               </span>
             </div>
@@ -345,8 +345,8 @@ export default function DigitalBinder({
           </Card>
 
           <Card className="p-6 bg-yellow-50 border-yellow-200">
-            <h4 className="font-semibold text-gray-900 mb-2">Action Items</h4>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <h4 className="font-semibold text-black mb-2">Action Items</h4>
+            <ul className="space-y-2 text-sm text-black">
               <li className="flex items-start gap-2">
                 <span className="text-yellow-600">⚠️</span>
                 <span>Background check pending - follow up with student</span>

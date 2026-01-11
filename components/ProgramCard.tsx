@@ -44,18 +44,18 @@ export function ProgramCard({
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-orange-500 transition-colors">
+        <h3 className="text-xl font-bold text-black mb-3 group-hover:text-orange-500 transition-colors">
           {title}
         </h3>
-        <p className="text-slate-600 mb-4 line-clamp-2">{description}</p>
+        <p className="text-black mb-4 line-clamp-2">{description}</p>
 
         {/* Stats */}
         <div className="flex items-center gap-4 mb-4 text-sm">
-          <div className="flex items-center gap-2 text-slate-700">
+          <div className="flex items-center gap-2 text-black">
             <Clock size={16} className="text-blue-600" />
             <span className="font-semibold">{duration}</span>
           </div>
-          <div className="flex items-center gap-2 text-slate-700">
+          <div className="flex items-center gap-2 text-black">
             <DollarSign size={16} className="text-green-600" />
             <span className="font-semibold">{salary}</span>
           </div>

@@ -34,10 +34,10 @@ export default async function SignMOUPage() {
           <div className="flex items-center gap-3">
             <FileText className="text-brand-blue-600" size={32} />
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 Sign Program Partner MOU
               </h1>
-              <p className="text-slate-600 mt-1">Memorandum of Understanding</p>
+              <p className="text-black mt-1">Memorandum of Understanding</p>
             </div>
           </div>
         </div>
@@ -48,29 +48,29 @@ export default async function SignMOUPage() {
         <div className="grid md:grid-cols-3 gap-4 mb-8">
           <div className="bg-white rounded-lg p-4 border border-slate-200">
             <Shield className="text-brand-blue-600 mb-2" size={24} />
-            <h3 className="font-semibold text-slate-900 text-sm">
+            <h3 className="font-semibold text-black text-sm">
               Legally Binding
             </h3>
-            <p className="text-xs text-slate-600 mt-1">
+            <p className="text-xs text-black mt-1">
               Digital signatures have the same legal effect as handwritten
               signatures
             </p>
           </div>
           <div className="bg-white rounded-lg p-4 border border-slate-200">
             <CheckCircle className="text-brand-green-600 mb-2" size={24} />
-            <h3 className="font-semibold text-slate-900 text-sm">
+            <h3 className="font-semibold text-black text-sm">
               Secure Process
             </h3>
-            <p className="text-xs text-slate-600 mt-1">
+            <p className="text-xs text-black mt-1">
               Your signature is encrypted and stored securely
             </p>
           </div>
           <div className="bg-white rounded-lg p-4 border border-slate-200">
             <FileText className="text-purple-600 mb-2" size={24} />
-            <h3 className="font-semibold text-slate-900 text-sm">
+            <h3 className="font-semibold text-black text-sm">
               Instant Processing
             </h3>
-            <p className="text-xs text-slate-600 mt-1">
+            <p className="text-xs text-black mt-1">
               Receive confirmation immediately upon signing
             </p>
           </div>
@@ -78,7 +78,7 @@ export default async function SignMOUPage() {
 
         {/* MOU Document */}
         <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200 mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl font-bold text-black mb-6">
             Program Partner Memorandum of Understanding
           </h2>
 
@@ -89,7 +89,7 @@ export default async function SignMOUPage() {
               Partner identified below.
             </p>
 
-            <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-3">
+            <h3 className="text-lg font-semibold text-black mt-6 mb-3">
               Purpose
             </h3>
             <p>
@@ -98,7 +98,7 @@ export default async function SignMOUPage() {
               participants through WIOA-funded programs.
             </p>
 
-            <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-3">
+            <h3 className="text-lg font-semibold text-black mt-6 mb-3">
               Program Partner Responsibilities
             </h3>
             <ul className="list-disc pl-6 space-y-2">
@@ -109,7 +109,7 @@ export default async function SignMOUPage() {
               <li>Participate in program evaluations and reporting</li>
             </ul>
 
-            <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-3">
+            <h3 className="text-lg font-semibold text-black mt-6 mb-3">
               EFH Responsibilities
             </h3>
             <ul className="list-disc pl-6 space-y-2">
@@ -120,7 +120,7 @@ export default async function SignMOUPage() {
               <li>Facilitate wage reimbursement (if applicable)</li>
             </ul>
 
-            <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-3">
+            <h3 className="text-lg font-semibold text-black mt-6 mb-3">
               Term
             </h3>
             <p>
@@ -128,7 +128,7 @@ export default async function SignMOUPage() {
               execution and may be renewed by mutual agreement of both parties.
             </p>
 
-            <h3 className="text-lg font-semibold text-slate-900 mt-6 mb-3">
+            <h3 className="text-lg font-semibold text-black mt-6 mb-3">
               Termination
             </h3>
             <p>
@@ -140,7 +140,7 @@ export default async function SignMOUPage() {
 
         {/* Signature Form */}
         <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
-          <h2 className="text-xl font-bold text-slate-900 mb-6">
+          <h2 className="text-xl font-bold text-black mb-6">
             Sign Agreement
           </h2>
           <SignMOUForm />
@@ -148,7 +148,7 @@ export default async function SignMOUPage() {
 
         {/* Footer Note */}
         <div className="mt-6 text-center">
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-black">
             Questions?{' '}
             <Link
               href="/contact"

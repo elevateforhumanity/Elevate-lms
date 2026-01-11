@@ -36,12 +36,12 @@ export function CertificateTemplate({
         </div>
 
         {/* Title */}
-        <h1 className="text-5xl font-bold text-slate-900 mb-4">
+        <h1 className="text-5xl font-bold text-black mb-4">
           Certificate of Completion
         </h1>
 
         {/* Subtitle */}
-        <p className="text-xl text-slate-600 mb-8">This certifies that</p>
+        <p className="text-xl text-black mb-8">This certifies that</p>
 
         {/* Student Name */}
         <h2 className="text-6xl font-bold text-blue-600 mb-8 border-b-4 border-blue-600 pb-4 px-8">
@@ -49,13 +49,13 @@ export function CertificateTemplate({
         </h2>
 
         {/* Course Info */}
-        <p className="text-xl text-slate-600 mb-4">
+        <p className="text-xl text-black mb-4">
           has successfully completed
         </p>
-        <h3 className="text-3xl font-bold text-slate-900 mb-8">{courseName}</h3>
+        <h3 className="text-3xl font-bold text-black mb-8">{courseName}</h3>
 
         {/* Date */}
-        <p className="text-lg text-slate-600 mb-12">
+        <p className="text-lg text-black mb-12">
           Completed on{' '}
           {new Date(completionDate).toLocaleDateString('en-US', {
             month: 'long',
@@ -68,8 +68,8 @@ export function CertificateTemplate({
         <div className="flex justify-center gap-24 w-full mt-auto">
           <div className="text-center">
             <div className="border-t-2 border-slate-900 pt-2 px-8">
-              <p className="font-bold text-slate-900">{instructorName}</p>
-              <p className="text-sm text-slate-600">Elevate for Humanity</p>
+              <p className="font-bold text-black">{instructorName}</p>
+              <p className="text-sm text-black">Elevate for Humanity</p>
             </div>
           </div>
         </div>
@@ -182,7 +182,7 @@ export function CertificatePreview({
         </button>
         <button
           onClick={copyVerificationLink}
-          className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-900 px-6 py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2"
+          className="flex-1 bg-slate-100 hover:bg-slate-200 text-black px-6 py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2"
         >
           <svg
             className="w-5 h-5"

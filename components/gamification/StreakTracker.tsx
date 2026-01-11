@@ -115,7 +115,7 @@ export function StreakTracker({
                 className={`flex-1 h-12 rounded-lg flex items-center justify-center ${
                   day.active
                     ? "bg-orange-500 text-white"
-                    : "bg-slate-900 text-slate-600"
+                    : "bg-slate-900 text-black"
                 }`}
               >
                 <span className="text-xs font-semibold">

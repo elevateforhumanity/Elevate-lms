@@ -69,8 +69,8 @@ export default function NotificationSettings() {
             )}
           </div>
           <div>
-            <h3 className="font-semibold text-gray-900">Push Notifications</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="font-semibold text-black">Push Notifications</h3>
+            <p className="text-sm text-black">
               {enabled ? 'Enabled' : 'Disabled'}
             </p>
           </div>
@@ -89,7 +89,7 @@ export default function NotificationSettings() {
           />
         </button>
       </div>
-      <div className="space-y-3 text-sm text-gray-600">
+      <div className="space-y-3 text-sm text-black">
         <p>Receive notifications about:</p>
         <ul className="space-y-2 ml-4">
           <li className="flex items-center gap-2">
@@ -118,7 +118,7 @@ export default function NotificationSettings() {
             className={`w-full px-4 py-2 rounded-lg font-medium text-sm transition-all ${
               testSent
                 ? 'bg-green-100 text-green-700'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:scale-98'
+                : 'bg-gray-100 text-black hover:bg-gray-200 active:scale-98'
             }`}
           >
             {testSent ? (

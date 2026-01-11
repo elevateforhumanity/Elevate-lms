@@ -54,10 +54,10 @@ export default async function TaxFilingApplicationsPage() {
           >
             ← Back to Tax Filing
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Tax Filing Applications
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-black">
             Manage client tax filing applications and intake process.
           </p>
         </div>
@@ -68,19 +68,19 @@ export default async function TaxFilingApplicationsPage() {
             <div className="text-3xl font-bold text-brand-blue-600">
               {applications?.length || 0}
             </div>
-            <div className="text-gray-600 text-sm">Total Applications</div>
+            <div className="text-black text-sm">Total Applications</div>
           </div>
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-3xl font-bold text-brand-orange-600">
               {pendingCount || 0}
             </div>
-            <div className="text-gray-600 text-sm">Pending Review</div>
+            <div className="text-black text-sm">Pending Review</div>
           </div>
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-3xl font-bold text-brand-green-600">
               {completedCount || 0}
             </div>
-            <div className="text-gray-600 text-sm">Completed</div>
+            <div className="text-black text-sm">Completed</div>
           </div>
           <div className="bg-white p-6 rounded-lg shadow">
             <Link
@@ -89,7 +89,7 @@ export default async function TaxFilingApplicationsPage() {
               className="block"
             >
               <div className="text-lg font-bold text-purple-600">+ New</div>
-              <div className="text-gray-600 text-sm">Add Application</div>
+              <div className="text-black text-sm">Add Application</div>
             </Link>
           </div>
         </div>
@@ -124,7 +124,7 @@ export default async function TaxFilingApplicationsPage() {
         {/* Applications List */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-black">
               Recent Applications
             </h2>
             <Link
@@ -140,19 +140,19 @@ export default async function TaxFilingApplicationsPage() {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                       Client
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                       Tax Year
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                       Status
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                       Submitted
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
@@ -161,14 +161,14 @@ export default async function TaxFilingApplicationsPage() {
                   {applications.map((item: any) => (
                     <tr key={item.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">
+                        <div className="text-sm font-medium text-black">
                           {item.client_name || 'N/A'}
                         </div>
-                        <div className="text-sm text-gray-700">
+                        <div className="text-sm text-black">
                           {item.client_email || ''}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                         {item.tax_year || '2024'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -184,7 +184,7 @@ export default async function TaxFilingApplicationsPage() {
                           {item.status || 'pending'}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                         {new Date(item.created_at).toLocaleDateString()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm">
@@ -201,7 +201,7 @@ export default async function TaxFilingApplicationsPage() {
               </table>
             </div>
           ) : (
-            <div className="px-6 py-12 text-center text-gray-700">
+            <div className="px-6 py-12 text-center text-black">
               No tax filing applications yet. Create your first application
               above.
             </div>

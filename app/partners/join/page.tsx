@@ -46,10 +46,10 @@ export default async function PartnersJoinPage() {
       {/* Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 py-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Become a Partner
           </h1>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-black">
             Join our network and help students succeed. Choose the role that
             fits your capacity and expertise.
           </p>

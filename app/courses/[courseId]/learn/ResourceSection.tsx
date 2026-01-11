@@ -31,7 +31,7 @@ export default function ResourceSection({
 
   return (
     <div className="mt-8">
-      <h2 className="text-xl font-bold text-slate-900 mb-4">
+      <h2 className="text-xl font-bold text-black mb-4">
         Lesson Resources
       </h2>
       <div className="grid gap-3">
@@ -58,8 +58,8 @@ export default function ResourceSection({
               </svg>
             </div>
             <div className="flex-1">
-              <h3 className="font-medium text-slate-900">{resource.title}</h3>
-              <p className="text-sm text-slate-600">
+              <h3 className="font-medium text-black">{resource.title}</h3>
+              <p className="text-sm text-black">
                 {resource.type} {resource.size && `• ${resource.size}`}
               </p>
             </div>

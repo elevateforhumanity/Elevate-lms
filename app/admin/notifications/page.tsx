@@ -25,8 +25,8 @@ function QuickTemplate({
       onClick={onClick}
       className="p-4 border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-gray-50 transition text-left"
     >
-      <h3 className="font-semibold text-gray-900 mb-1">{title}</h3>
-      <p className="text-sm text-gray-600">{body}</p>
+      <h3 className="font-semibold text-black mb-1">{title}</h3>
+      <p className="text-sm text-black">{body}</p>
     </button>
   );
 }
@@ -107,10 +107,10 @@ export default function NotificationsPage() {
           <div className="flex items-center space-x-3">
             <Bell className="w-8 h-8 text-brand-blue-600" />
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-black">
                 Push Notifications
               </h1>
-              <p className="text-gray-600 mt-1">
+              <p className="text-black mt-1">
                 Send instant notifications to students and staff
               </p>
             </div>
@@ -129,7 +129,7 @@ export default function NotificationsPage() {
 
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Title
                   </label>
                   <input
@@ -153,7 +153,7 @@ export default function NotificationsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Message
                   </label>
                   <textarea
@@ -174,7 +174,7 @@ export default function NotificationsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Target Audience
                   </label>
                   <select
@@ -205,7 +205,7 @@ export default function NotificationsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Click Action URL (Optional)
                   </label>
                   <input
@@ -223,7 +223,7 @@ export default function NotificationsPage() {
                     placeholder="/student/courses"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
-                  <p className="text-sm text-gray-700 mt-1">
+                  <p className="text-sm text-black mt-1">
                     Where users go when they click the notification
                   </p>
                 </div>
@@ -343,7 +343,7 @@ export default function NotificationsPage() {
           {/* Preview & Stats */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow p-6 sticky top-8">
-              <h3 className="font-semibold text-gray-900 mb-4">Preview</h3>
+              <h3 className="font-semibold text-black mb-4">Preview</h3>
 
               {/* Notification Preview */}
               <div className="border-2 border-gray-200 rounded-lg p-4 mb-6">
@@ -356,14 +356,14 @@ export default function NotificationsPage() {
                     className="rounded"
                   />
                   <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-gray-900 text-sm">
+                    <div className="font-semibold text-black text-sm">
                       {notification.title || 'Notification Title'}
                     </div>
-                    <div className="text-sm text-gray-600 mt-1">
+                    <div className="text-sm text-black mt-1">
                       {notification.body ||
                         'Notification message will appear here'}
                     </div>
-                    <div className="text-xs text-gray-600 mt-2">
+                    <div className="text-xs text-black mt-2">
                       Elevate for Humanity • now
                     </div>
                   </div>
@@ -373,10 +373,10 @@ export default function NotificationsPage() {
               {/* Stats */}
               <div className="space-y-4">
                 <div>
-                  <div className="text-xs text-gray-700 mb-1">
+                  <div className="text-xs text-black mb-1">
                     Target Audience
                   </div>
-                  <div className="text-sm font-medium text-gray-900">
+                  <div className="text-sm font-medium text-black">
                     {notification.targetAudience
                       .split('-')
                       .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -385,10 +385,10 @@ export default function NotificationsPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-700 mb-1">
+                  <div className="text-xs text-black mb-1">
                     Estimated Recipients
                   </div>
-                  <div className="text-sm font-medium text-gray-900">
+                  <div className="text-sm font-medium text-black">
                     {notification.targetAudience === 'all-students'
                       ? '1,234'
                       : notification.targetAudience === 'active-students'
@@ -400,8 +400,8 @@ export default function NotificationsPage() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-700 mb-1">Click Action</div>
-                  <div className="text-sm text-gray-900 truncate">
+                  <div className="text-xs text-black mb-1">Click Action</div>
+                  <div className="text-sm text-black truncate">
                     {notification.url}
                   </div>
                 </div>
@@ -409,7 +409,7 @@ export default function NotificationsPage() {
 
               {/* Info */}
               <div className="mt-6 pt-6 border-t border-gray-200">
-                <div className="flex items-start space-x-2 text-xs text-gray-600">
+                <div className="flex items-start space-x-2 text-xs text-black">
                   <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
                   <p>
                     Notifications are sent instantly to all users with push

@@ -46,16 +46,16 @@ export default function AcademicIntegrityPage() {
       <div className="max-w-4xl mx-auto px-4 py-6 sm:py-8 sm:px-6 sm:py-12">
         {/* Introduction */}
         <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-black mb-4">
             Our Commitment to Academic Honesty
           </h2>
-          <p className="text-slate-700 mb-4">
+          <p className="text-black mb-4">
             At Elevate for Humanity, we are committed to maintaining the highest
             standards of academic integrity. Academic honesty is fundamental to
             the learning process and essential for preparing students for
             professional careers.
           </p>
-          <p className="text-slate-700 mb-4">
+          <p className="text-black mb-4">
             All students, faculty, and staff are expected to uphold these
             principles and contribute to a culture of honesty, trust, and
             ethical behavior.
@@ -70,18 +70,18 @@ export default function AcademicIntegrityPage() {
 
         {/* What is Academic Dishonesty */}
         <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-black mb-6">
             What Constitutes Academic Dishonesty?
           </h2>
 
           <div className="space-y-6">
             {/* Plagiarism */}
             <div className="border-l-4 border-red-500 pl-6">
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-black mb-3 flex items-center gap-2">
                 <AlertTriangle className="w-6 h-6 text-brand-orange-600" />
                 Plagiarism
               </h3>
-              <p className="text-slate-700 mb-3">
+              <p className="text-black mb-3">
                 Using someone else's words, ideas, or work without proper
                 attribution.
               </p>
@@ -110,11 +110,11 @@ export default function AcademicIntegrityPage() {
 
             {/* Cheating */}
             <div className="border-l-4 border-orange-500 pl-6">
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-black mb-3 flex items-center gap-2">
                 <AlertTriangle className="w-6 h-6 text-brand-orange-600" />
                 Cheating
               </h3>
-              <p className="text-slate-700 mb-3">
+              <p className="text-black mb-3">
                 Using unauthorized materials or assistance during assessments.
               </p>
               <div className="bg-orange-50 rounded-lg p-4">
@@ -138,11 +138,11 @@ export default function AcademicIntegrityPage() {
 
             {/* Unauthorized Collaboration */}
             <div className="border-l-4 border-yellow-500 pl-6">
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-black mb-3 flex items-center gap-2">
                 <Users className="w-6 h-6 text-yellow-600" />
                 Unauthorized Collaboration
               </h3>
-              <p className="text-slate-700 mb-3">
+              <p className="text-black mb-3">
                 Working with others when individual work is required.
               </p>
               <div className="bg-yellow-50 rounded-lg p-4">
@@ -163,11 +163,11 @@ export default function AcademicIntegrityPage() {
 
             {/* Falsification */}
             <div className="border-l-4 border-purple-500 pl-6">
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-black mb-3 flex items-center gap-2">
                 <FileText className="w-6 h-6 text-purple-600" />
                 Falsification of Records
               </h3>
-              <p className="text-slate-700 mb-3">
+              <p className="text-black mb-3">
                 Altering or fabricating academic records or documentation.
               </p>
               <div className="bg-purple-50 rounded-lg p-4">
@@ -185,11 +185,11 @@ export default function AcademicIntegrityPage() {
 
             {/* Multiple Submissions */}
             <div className="border-l-4 border-blue-500 pl-6">
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-black mb-3 flex items-center gap-2">
                 <BookOpen className="w-6 h-6 text-brand-blue-600" />
                 Multiple Submissions
               </h3>
-              <p className="text-slate-700 mb-3">
+              <p className="text-black mb-3">
                 Submitting the same work for multiple courses without
                 permission.
               </p>
@@ -206,10 +206,10 @@ export default function AcademicIntegrityPage() {
 
         {/* Consequences */}
         <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-black mb-6">
             Consequences of Academic Dishonesty
           </h2>
-          <p className="text-slate-700 mb-6">
+          <p className="text-black mb-6">
             Violations of academic integrity are taken seriously and will result
             in disciplinary action. The severity of consequences depends on the
             nature and frequency of the violation.
@@ -269,7 +269,7 @@ export default function AcademicIntegrityPage() {
           </div>
 
           <div className="mt-6 bg-slate-100 rounded-lg p-4">
-            <p className="text-slate-700 text-sm">
+            <p className="text-black text-sm">
               <strong>Note:</strong> Particularly egregious violations (such as
               falsifying clinical records, forging signatures, or systematic
               cheating) may result in immediate dismissal regardless of prior
@@ -280,7 +280,7 @@ export default function AcademicIntegrityPage() {
 
         {/* How to Avoid Violations */}
         <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-black mb-6">
             How to Maintain Academic Integrity
           </h2>
 
@@ -327,20 +327,20 @@ export default function AcademicIntegrityPage() {
 
         {/* Proper Citation */}
         <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-black mb-6">
             Proper Citation Guidelines
           </h2>
-          <p className="text-slate-700 mb-4">
+          <p className="text-black mb-4">
             When using information from other sources, you must give proper
             credit. Here are basic guidelines:
           </p>
 
           <div className="space-y-4">
             <div className="bg-slate-50 rounded-lg p-4">
-              <h3 className="font-semibold text-slate-900 mb-2">
+              <h3 className="font-semibold text-black mb-2">
                 When to Cite:
               </h3>
-              <ul className="space-y-1 text-slate-700 text-sm ml-4">
+              <ul className="space-y-1 text-black text-sm ml-4">
                 <li>• Direct quotations from any source</li>
                 <li>• Paraphrased ideas or information</li>
                 <li>• Statistics, data, or research findings</li>
@@ -351,14 +351,14 @@ export default function AcademicIntegrityPage() {
             </div>
 
             <div className="bg-slate-50 rounded-lg p-4">
-              <h3 className="font-semibold text-slate-900 mb-2">
+              <h3 className="font-semibold text-black mb-2">
                 Citation Formats:
               </h3>
-              <p className="text-slate-700 text-sm mb-2">
+              <p className="text-black text-sm mb-2">
                 Use the citation format specified by your instructor (APA, MLA,
                 Chicago, etc.). If no format is specified, use APA format.
               </p>
-              <p className="text-slate-700 text-sm">
+              <p className="text-black text-sm">
                 <strong>Resources:</strong> Ask your instructor for citation
                 guides or visit the library for assistance with proper citation
                 formatting.
@@ -369,10 +369,10 @@ export default function AcademicIntegrityPage() {
 
         {/* Reporting Violations */}
         <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8 mb-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-black mb-6">
             Reporting Academic Dishonesty
           </h2>
-          <p className="text-slate-700 mb-4">
+          <p className="text-black mb-4">
             If you witness or suspect academic dishonesty, you have a
             responsibility to report it. All reports are taken seriously and
             handled confidentially.
@@ -417,15 +417,15 @@ export default function AcademicIntegrityPage() {
 
         {/* Resources */}
         <div className="bg-white rounded-xl shadow-sm border p-4 sm:p-4 sm:p-6 md:p-8">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-black mb-6">
             Resources & Support
           </h2>
           <div className="grid md:grid-cols-3 gap-4 sm:p-6">
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">
+              <h3 className="font-semibold text-black mb-2">
                 Academic Support
               </h3>
-              <p className="text-sm text-slate-600 mb-2">
+              <p className="text-sm text-black mb-2">
                 Get help with assignments and studying
               </p>
               <Link
@@ -436,10 +436,10 @@ export default function AcademicIntegrityPage() {
               </Link>
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">
+              <h3 className="font-semibold text-black mb-2">
                 Student Handbook
               </h3>
-              <p className="text-sm text-slate-600 mb-2">
+              <p className="text-sm text-black mb-2">
                 Review all academic policies
               </p>
               <Link
@@ -450,8 +450,8 @@ export default function AcademicIntegrityPage() {
               </Link>
             </div>
             <div>
-              <h3 className="font-semibold text-slate-900 mb-2">Questions?</h3>
-              <p className="text-sm text-slate-600 mb-2">
+              <h3 className="font-semibold text-black mb-2">Questions?</h3>
+              <p className="text-sm text-black mb-2">
                 Contact Student Services
               </p>
               <a

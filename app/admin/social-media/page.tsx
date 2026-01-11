@@ -136,10 +136,10 @@ export default function SocialMediaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-black">
                 Social Media Automation
               </h1>
-              <p className="text-gray-600 mt-1" />
+              <p className="text-black mt-1" />
             </div>
 
             <button
@@ -160,42 +160,42 @@ export default function SocialMediaPage() {
             <div className="flex items-center justify-between mb-2">
               <Share2 className="w-8 h-8 text-brand-blue-600" />
             </div>
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold text-black">
               {campaigns.filter((c) => c.status === 'active').length}
             </div>
-            <div className="text-sm text-gray-600">Active Campaigns</div>
+            <div className="text-sm text-black">Active Campaigns</div>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-2">
               <Calendar className="w-8 h-8 text-brand-green-600" />
             </div>
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold text-black">
               {campaigns.reduce((sum, c) => sum + c.postsScheduled, 0)}
             </div>
-            <div className="text-sm text-gray-600">Posts Scheduled</div>
+            <div className="text-sm text-black">Posts Scheduled</div>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-2">
               <Clock className="w-8 h-8 text-purple-600" />
             </div>
-            <div className="text-2xl font-bold text-gray-900">3x Daily</div>
-            <div className="text-sm text-gray-600">Post Frequency</div>
+            <div className="text-2xl font-bold text-black">3x Daily</div>
+            <div className="text-sm text-black">Post Frequency</div>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-2">
               <TrendingUp className="w-8 h-8 text-brand-orange-600" />
             </div>
-            <div className="text-2xl font-bold text-gray-900">4</div>
-            <div className="text-sm text-gray-600">Connected Platforms</div>
+            <div className="text-2xl font-bold text-black">4</div>
+            <div className="text-sm text-black">Connected Platforms</div>
           </div>
         </div>
 
         {/* Connected Platforms */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-xl font-semibold text-black mb-4">
             Connected Platforms
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -226,7 +226,7 @@ export default function SocialMediaPage() {
 
         {/* Posting Schedule */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-xl font-semibold text-black mb-4">
             Daily Posting Schedule (3x Daily)
           </h2>
           <div className="space-y-4">
@@ -251,7 +251,7 @@ export default function SocialMediaPage() {
         {/* Campaigns List */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-black">
               Your Campaigns
             </h2>
             <button
@@ -272,7 +272,7 @@ export default function SocialMediaPage() {
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900">
+                      <h3 className="text-lg font-semibold text-black">
                         {campaign.name}
                       </h3>
                       <span
@@ -281,7 +281,7 @@ export default function SocialMediaPage() {
                             ? 'bg-brand-green-100 text-green-800'
                             : campaign.status === 'paused'
                               ? 'bg-yellow-100 text-yellow-800'
-                              : 'bg-gray-100 text-gray-800'
+                              : 'bg-gray-100 text-black'
                         }`}
                       >
                         {campaign.status === 'active'
@@ -292,7 +292,7 @@ export default function SocialMediaPage() {
                       </span>
                     </div>
 
-                    <div className="flex items-center space-x-6 text-sm text-gray-600 mb-3">
+                    <div className="flex items-center space-x-6 text-sm text-black mb-3">
                       <div className="flex items-center space-x-2">
                         <Clock className="w-4 h-4" />
                         <span>
@@ -394,10 +394,10 @@ export default function SocialMediaPage() {
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                     Your Journey Starts Here
                   </h2>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  <p className="text-lg text-black mb-6 leading-relaxed">
                     Every great career begins with a single step. Whether you're
                     looking to change careers, upgrade your skills, or enter the
                     workforce for the first time, we're here to help you
@@ -419,7 +419,7 @@ export default function SocialMediaPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         100% free training - no tuition, no hidden costs
                       </span>
                     </li>
@@ -437,7 +437,7 @@ export default function SocialMediaPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Industry-recognized certifications that employers value
                       </span>
                     </li>
@@ -455,7 +455,7 @@ export default function SocialMediaPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Job placement assistance and career support
                       </span>
                     </li>
@@ -473,7 +473,7 @@ export default function SocialMediaPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Flexible scheduling for working adults
                       </span>
                     </li>
@@ -552,8 +552,8 @@ function PlatformCard({
           </span>
         )}
       </div>
-      <h3 className="font-semibold text-gray-900 mb-1">{name}</h3>
-      <p className="text-sm text-gray-600">{followers} followers</p>
+      <h3 className="font-semibold text-black mb-1">{name}</h3>
+      <p className="text-sm text-black">{followers} followers</p>
     </div>
   );
 }
@@ -568,16 +568,16 @@ function ScheduleSlot({ time, status, campaign }: ScheduleSlotProps) {
   const statusColors = {
     completed: 'bg-brand-green-100 text-green-800',
     upcoming: 'bg-blue-100 text-blue-800',
-    scheduled: 'bg-gray-100 text-gray-800',
+    scheduled: 'bg-gray-100 text-black',
   };
 
   return (
     <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
       <div className="flex items-center space-x-4">
-        <Clock className="w-5 h-5 text-gray-600" />
+        <Clock className="w-5 h-5 text-black" />
         <div>
-          <div className="font-medium text-gray-900">{time}</div>
-          <div className="text-sm text-gray-600">{campaign}</div>
+          <div className="font-medium text-black">{time}</div>
+          <div className="text-sm text-black">{campaign}</div>
         </div>
       </div>
       <span

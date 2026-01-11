@@ -78,7 +78,7 @@ export default function StudentPortalNav() {
                     className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition ${
                       isActive
                         ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                        : 'text-black hover:bg-gray-50 hover:text-black'
                     }`}
                   >
                     <Icon size={16} />
@@ -91,7 +91,7 @@ export default function StudentPortalNav() {
               <div className="relative">
                 <button
                   onClick={() => setMoreMenuOpen(!moreMenuOpen)}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-black hover:bg-gray-50 hover:text-black"
                 >
                   <span>More</span>
                   <ChevronDown size={16} />
@@ -113,7 +113,7 @@ export default function StudentPortalNav() {
                             href={item.href}
                             onClick={() => setMoreMenuOpen(false)}
                             className={`flex items-center gap-3 px-4 py-2 text-sm hover:bg-gray-50 ${
-                              isActive ? 'text-blue-600 bg-blue-50' : 'text-gray-700'
+                              isActive ? 'text-blue-600 bg-blue-50' : 'text-black'
                             }`}
                           >
                             <Icon size={16} />
@@ -132,19 +132,19 @@ export default function StudentPortalNav() {
           <div className="flex items-center gap-2">
             <Link
               href="/portal/student/notifications"
-              className="p-2 text-gray-600 hover:bg-gray-50 rounded-lg"
+              className="p-2 text-black hover:bg-gray-50 rounded-lg"
             >
               <Bell size={20} />
             </Link>
             <Link
               href="/portal/student/profile"
-              className="p-2 text-gray-600 hover:bg-gray-50 rounded-lg"
+              className="p-2 text-black hover:bg-gray-50 rounded-lg"
             >
               <User size={20} />
             </Link>
             <Link
               href="/portal/student/settings"
-              className="hidden md:block p-2 text-gray-600 hover:bg-gray-50 rounded-lg"
+              className="hidden md:block p-2 text-black hover:bg-gray-50 rounded-lg"
             >
               <Settings size={20} />
             </Link>
@@ -152,7 +152,7 @@ export default function StudentPortalNav() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-gray-600 hover:bg-gray-50 rounded-lg"
+              className="lg:hidden p-2 text-black hover:bg-gray-50 rounded-lg"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -174,7 +174,7 @@ export default function StudentPortalNav() {
                     className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium ${
                       isActive
                         ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-600 hover:bg-gray-50'
+                        : 'text-black hover:bg-gray-50'
                     }`}
                   >
                     <Icon size={18} />
@@ -185,7 +185,7 @@ export default function StudentPortalNav() {
               <Link
                 href="/portal/student/settings"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50"
+                className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-black hover:bg-gray-50"
               >
                 <Settings size={18} />
                 <span>Settings</span>

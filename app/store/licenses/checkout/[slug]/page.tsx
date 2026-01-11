@@ -84,7 +84,7 @@ function CheckoutForm({
         )}
       </button>
 
-      <p className="text-xs text-center text-gray-600">
+      <p className="text-xs text-center text-black">
         Secure payment powered by Stripe. Your payment information is encrypted
         and secure.
       </p>
@@ -167,7 +167,7 @@ export default function LicenseCheckoutPage() {
         {/* Back Link */}
         <Link
           href="/store/licenses"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8"
+          className="inline-flex items-center gap-2 text-black hover:text-black mb-8"
         >
           <ArrowLeft size={20} />
           Back to Licenses
@@ -176,28 +176,28 @@ export default function LicenseCheckoutPage() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Order Summary */}
           <div className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl font-bold text-black mb-6">
               Order Summary
             </h2>
 
             <div className="space-y-4 mb-6">
               <div>
-                <h3 className="font-bold text-gray-900">{product.name}</h3>
-                <p className="text-sm text-gray-600 mt-1">
+                <h3 className="font-bold text-black">{product.name}</h3>
+                <p className="text-sm text-black mt-1">
                   {product.description}
                 </p>
               </div>
 
               <div className="pt-4 border-t border-gray-200">
                 <div className="flex justify-between text-sm mb-2">
-                  <span className="text-gray-600">License Type</span>
-                  <span className="font-semibold text-gray-900 capitalize">
+                  <span className="text-black">License Type</span>
+                  <span className="font-semibold text-black capitalize">
                     {product.licenseType}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm mb-2">
-                  <span className="text-gray-600">Billing</span>
-                  <span className="font-semibold text-gray-900 capitalize">
+                  <span className="text-black">Billing</span>
+                  <span className="font-semibold text-black capitalize">
                     {product.billingType === 'one_time'
                       ? 'One-time'
                       : 'Monthly'}
@@ -207,15 +207,15 @@ export default function LicenseCheckoutPage() {
 
               <div className="pt-4 border-t border-gray-200">
                 <div className="flex justify-between items-baseline">
-                  <span className="text-lg font-semibold text-gray-900">
+                  <span className="text-lg font-semibold text-black">
                     Total
                   </span>
-                  <span className="text-3xl font-black text-gray-900">
+                  <span className="text-3xl font-black text-black">
                     ${(product.price / 100).toLocaleString()}
                   </span>
                 </div>
                 {product.billingType === 'subscription' && (
-                  <p className="text-sm text-gray-600 text-right mt-1">
+                  <p className="text-sm text-black text-right mt-1">
                     per month
                   </p>
                 )}
@@ -242,13 +242,13 @@ export default function LicenseCheckoutPage() {
           <div className="bg-white rounded-xl shadow-sm p-8">
             {step === 'info' ? (
               <>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                <h2 className="text-2xl font-bold text-black mb-6">
                   Organization Information
                 </h2>
 
                 <form onSubmit={handleInfoSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label className="block text-sm font-semibold text-black mb-2">
                       Organization Name *
                     </label>
                     <input
@@ -267,7 +267,7 @@ export default function LicenseCheckoutPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label className="block text-sm font-semibold text-black mb-2">
                       Contact Name *
                     </label>
                     <input
@@ -286,7 +286,7 @@ export default function LicenseCheckoutPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label className="block text-sm font-semibold text-black mb-2">
                       Email Address *
                     </label>
                     <input
@@ -305,7 +305,7 @@ export default function LicenseCheckoutPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label className="block text-sm font-semibold text-black mb-2">
                       Phone Number
                     </label>
                     <input
@@ -342,7 +342,7 @@ export default function LicenseCheckoutPage() {
               </>
             ) : (
               <>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                <h2 className="text-2xl font-bold text-black mb-6">
                   Payment Information
                 </h2>
 

@@ -97,10 +97,10 @@ export default function ProgramOwnerCampaignsPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Email My Students
           </h1>
-          <p className="text-gray-600 mt-2">
+          <p className="text-black mt-2">
             Send emails to students in your programs
           </p>
         </div>
@@ -109,7 +109,7 @@ export default function ProgramOwnerCampaignsPage() {
           {/* Templates */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
-              <h2 className="text-lg font-bold text-gray-900 mb-4">
+              <h2 className="text-lg font-bold text-black mb-4">
                 Templates
               </h2>
               <div className="space-y-2 max-h-96 overflow-y-auto">
@@ -123,10 +123,10 @@ export default function ProgramOwnerCampaignsPage() {
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
-                    <p className="font-semibold text-gray-900 text-sm">
+                    <p className="font-semibold text-black text-sm">
                       {template.name}
                     </p>
-                    <p className="text-xs text-gray-600 mt-1 capitalize">
+                    <p className="text-xs text-black mt-1 capitalize">
                       {template.category.replace('_', ' ')}
                     </p>
                   </button>
@@ -137,7 +137,7 @@ export default function ProgramOwnerCampaignsPage() {
             {/* My Students */}
             <div className="bg-white rounded-xl shadow-sm p-6">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-bold text-gray-900">
+                <h2 className="text-lg font-bold text-black">
                   My Students ({myStudents.length})
                 </h2>
                 <div className="flex gap-2">
@@ -149,7 +149,7 @@ export default function ProgramOwnerCampaignsPage() {
                   </button>
                   <button
                     onClick={deselectAll}
-                    className="text-xs text-gray-600 hover:text-gray-700 font-semibold"
+                    className="text-xs text-black hover:text-black font-semibold"
                   >
                     None
                   </button>
@@ -168,10 +168,10 @@ export default function ProgramOwnerCampaignsPage() {
                       className="w-4 h-4 text-blue-600 rounded"
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-gray-900 text-sm truncate">
+                      <p className="font-semibold text-black text-sm truncate">
                         {student.full_name}
                       </p>
-                      <p className="text-xs text-gray-600 truncate">
+                      <p className="text-xs text-black truncate">
                         {student.email}
                       </p>
                     </div>
@@ -179,9 +179,9 @@ export default function ProgramOwnerCampaignsPage() {
                 ))}
               </div>
               <div className="mt-4 pt-4 border-t border-gray-200">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Selected:{' '}
-                  <span className="font-bold text-gray-900">
+                  <span className="font-bold text-black">
                     {selectedStudents.length}
                   </span>
                 </p>
@@ -192,13 +192,13 @@ export default function ProgramOwnerCampaignsPage() {
           {/* Email Form */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-xl shadow-sm p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-6">
+              <h2 className="text-xl font-bold text-black mb-6">
                 Compose Email
               </h2>
 
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Subject Line *
                   </label>
                   <input
@@ -214,7 +214,7 @@ export default function ProgramOwnerCampaignsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Email Content (HTML) *
                   </label>
                   <textarea
@@ -227,7 +227,7 @@ export default function ProgramOwnerCampaignsPage() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent font-mono text-sm"
                     placeholder="Select a template or write your own..."
                   />
-                  <p className="text-xs text-gray-600 mt-2">
+                  <p className="text-xs text-black mt-2">
                     Variables: {'{{'}student_name{'}}'}, {'{{'}dashboard_link
                     {'}}'}, {'{{'}support_email{'}}'}
                   </p>

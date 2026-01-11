@@ -484,7 +484,7 @@ export default function CoursesCatalogPage() {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                 priceRange === 'all'
                   ? 'bg-brand-blue-600 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-slate-100 text-black hover:bg-slate-200'
               }`}
             >
               All Prices
@@ -494,7 +494,7 @@ export default function CoursesCatalogPage() {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                 priceRange === 'free'
                   ? 'bg-brand-blue-600 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-slate-100 text-black hover:bg-slate-200'
               }`}
             >
               Free
@@ -504,7 +504,7 @@ export default function CoursesCatalogPage() {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                 priceRange === 'under-50'
                   ? 'bg-brand-blue-600 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-slate-100 text-black hover:bg-slate-200'
               }`}
             >
               Under $50
@@ -514,7 +514,7 @@ export default function CoursesCatalogPage() {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                 priceRange === '50-150'
                   ? 'bg-brand-blue-600 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-slate-100 text-black hover:bg-slate-200'
               }`}
             >
               $50 - $150
@@ -524,7 +524,7 @@ export default function CoursesCatalogPage() {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                 priceRange === 'over-150'
                   ? 'bg-brand-blue-600 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-slate-100 text-black hover:bg-slate-200'
               }`}
             >
               Over $150
@@ -536,7 +536,7 @@ export default function CoursesCatalogPage() {
       {/* Results */}
       <section className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-6">
-          <p className="text-slate-600">
+          <p className="text-black">
             Showing{' '}
             <span className="font-semibold">{filteredCourses.length}</span>{' '}
             courses
@@ -561,12 +561,12 @@ export default function CoursesCatalogPage() {
               </div>
 
               {/* Course Name */}
-              <h3 className="text-lg font-bold text-slate-900 mb-3 line-clamp-2">
+              <h3 className="text-lg font-bold text-black mb-3 line-clamp-2">
                 {course.name}
               </h3>
 
               {/* Details */}
-              <div className="flex items-center gap-4 text-sm text-slate-600 mb-4">
+              <div className="flex items-center gap-4 text-sm text-black mb-4">
                 <div className="flex items-center gap-1">
                   <Clock className="w-4 h-4" />
                   <span>{course.duration}h</span>
@@ -580,7 +580,7 @@ export default function CoursesCatalogPage() {
               {/* Price */}
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <div className="text-2xl font-bold text-slate-900">
+                  <div className="text-2xl font-bold text-black">
                     {course.studentPrice === 0
                       ? 'FREE'
                       : `$${course.studentPrice}`}
@@ -606,7 +606,7 @@ export default function CoursesCatalogPage() {
 
         {filteredCourses.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-slate-600 mb-4">No courses match your filters</p>
+            <p className="text-black mb-4">No courses match your filters</p>
             <button
               onClick={() => {
                 setSearch('');
@@ -625,7 +625,7 @@ export default function CoursesCatalogPage() {
       {/* Info Section */}
       <section className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-8 text-center">
             Why Choose Partner Courses?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -634,7 +634,7 @@ export default function CoursesCatalogPage() {
                 <Award className="w-8 h-8 text-brand-blue-600" />
               </div>
               <h3 className="text-lg font-bold mb-2">Industry Recognized</h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Certifications from leading providers accepted by employers
                 nationwide
               </p>
@@ -644,7 +644,7 @@ export default function CoursesCatalogPage() {
                 <Clock className="w-8 h-8 text-brand-green-600" />
               </div>
               <h3 className="text-lg font-bold mb-2">Flexible Learning</h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Self-paced courses that fit your schedule, from 1 hour to 160
                 hours
               </p>
@@ -654,7 +654,7 @@ export default function CoursesCatalogPage() {
                 <DollarSign className="w-8 h-8 text-brand-orange-600" />
               </div>
               <h3 className="text-lg font-bold mb-2">Affordable Pricing</h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Competitive pricing with many free options and WIOA funding
                 available
               </p>

@@ -104,14 +104,14 @@ export default function ApplyFormClient() {
 
       <section className="max-w-4xl mx-auto px-4 py-12">
         <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">
             Talk to an Advisor
           </h1>
-          <p className="text-base md:text-lg text-slate-700 mb-6">
+          <p className="text-base md:text-lg text-black mb-6">
             Let's discuss your goals and find the right training program for
             you.
           </p>
-          <p className="text-lg text-slate-600 mb-6">
+          <p className="text-lg text-black mb-6">
             Call us at{' '}
             <a
               href="tel:3173143757"
@@ -123,7 +123,7 @@ export default function ApplyFormClient() {
           </p>
 
           <div className="bg-orange-50 border-2 border-orange-200 rounded-xl p-6 mb-8">
-            <p className="text-slate-900 font-semibold mb-3">
+            <p className="text-black font-semibold mb-3">
               Ready to apply? Complete our full application form:
             </p>
             <a
@@ -148,14 +148,14 @@ export default function ApplyFormClient() {
               <div className="w-16 h-16 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl">✓</span>
               </div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">
+              <h2 className="text-2xl font-bold text-black mb-2">
                 Inquiry Received!
               </h2>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Thank you for your interest! We've received your inquiry and
                 sent a confirmation to your email.
               </p>
-              <p className="text-sm text-slate-600 mb-6">
+              <p className="text-sm text-black mb-6">
                 An advisor will contact you within 1-2 business days to discuss
                 your goals and next steps.
               </p>
@@ -181,7 +181,7 @@ export default function ApplyFormClient() {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-semibold text-slate-900 mb-2"
+                  className="block text-sm font-semibold text-black mb-2"
                 >
                   Full Name *
                 </label>
@@ -201,7 +201,7 @@ export default function ApplyFormClient() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-semibold text-slate-900 mb-2"
+                  className="block text-sm font-semibold text-black mb-2"
                 >
                   Email Address *
                 </label>
@@ -221,7 +221,7 @@ export default function ApplyFormClient() {
               <div>
                 <label
                   htmlFor="phone"
-                  className="block text-sm font-semibold text-slate-900 mb-2"
+                  className="block text-sm font-semibold text-black mb-2"
                 >
                   Phone Number *
                 </label>
@@ -241,7 +241,7 @@ export default function ApplyFormClient() {
               <div>
                 <label
                   htmlFor="program"
-                  className="block text-sm font-semibold text-slate-900 mb-2"
+                  className="block text-sm font-semibold text-black mb-2"
                 >
                   Program of Interest
                 </label>
@@ -281,7 +281,7 @@ export default function ApplyFormClient() {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-semibold text-slate-900 mb-2"
+                  className="block text-sm font-semibold text-black mb-2"
                 >
                   Message
                 </label>
@@ -326,7 +326,7 @@ export default function ApplyFormClient() {
               </button>
 
               <div className="text-center space-y-2">
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-black">
                   This will open your email client to send to:{' '}
                   <span className="font-semibold">
                     elevate4humanityedu@gmail.com

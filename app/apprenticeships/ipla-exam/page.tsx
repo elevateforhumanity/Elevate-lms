@@ -92,7 +92,7 @@ export default function IPLAExamSignup() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-blue-50 rounded-lg p-6">
               <h3 className="font-bold text-lg mb-3">What's Included</h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>State licensing exam fee</span>
@@ -113,7 +113,7 @@ export default function IPLAExamSignup() {
             </div>
             <div className="bg-green-50 rounded-lg p-6">
               <h3 className="font-bold text-lg mb-3">Exam Details</h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>
                   <strong>Duration:</strong> 2 hours
                 </li>
@@ -264,7 +264,7 @@ export default function IPLAExamSignup() {
               <span className="text-lg">IPLA Exam Fee</span>
               <span className="text-2xl font-bold">$150.00</span>
             </div>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Secure payment processed by Stripe. You will receive a
               confirmation email after payment.
             </p>

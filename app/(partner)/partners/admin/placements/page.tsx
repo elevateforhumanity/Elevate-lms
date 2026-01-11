@@ -20,7 +20,7 @@ export default async function AdminPlacementsPage() {
   return (
     <div className="rounded-2xl border p-5">
       <div className="font-semibold">Admin: Placements</div>
-      <div className="text-sm text-gray-600 mt-1">
+      <div className="text-sm text-black mt-1">
         All students assigned to partner locations.
       </div>
 

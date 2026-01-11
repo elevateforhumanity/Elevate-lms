@@ -2,8 +2,9 @@ export const runtime = 'edge';
 
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { protectTestEndpoint } from '@/lib/api/protect-test-endpoint';
 
-export async function GET() {
+export const GET = protectTestEndpoint(async () => {
   try {
     // Check environment variables
     const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -70,4 +71,4 @@ export async function GET() {
       message: error instanceof Error ? error.message : String(error),
     });
   }
-}
+});

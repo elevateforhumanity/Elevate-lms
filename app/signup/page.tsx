@@ -18,14 +18,14 @@ export default async function SignupPage() {
         <h1 className="text-3xl font-bold text-black">
           Create your Elevate account
         </h1>
-        <p className="mt-2 text-gray-600">
+        <p className="mt-2 text-black">
           Use one account to apply, track training, and manage documents. After
           you apply, a real advisor follows up.
         </p>
 
         <div className="mt-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-black">What you get</h2>
-          <ul className="mt-3 list-disc pl-5 text-gray-700 space-y-2">
+          <ul className="mt-3 list-disc pl-5 text-black space-y-2">
             <li>Program access (training, apprenticeships, credentials)</li>
             <li>Progress tracking and reporting</li>
             <li>Secure document upload for funding and onboarding</li>
@@ -36,7 +36,7 @@ export default async function SignupPage() {
           <SignupForm />
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-4 text-sm text-gray-600">
+        <div className="mt-6 flex flex-wrap gap-4 text-sm text-black">
           <Link
             href="/login"
             aria-label="Link"

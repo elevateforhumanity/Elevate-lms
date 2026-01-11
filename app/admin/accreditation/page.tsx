@@ -215,10 +215,10 @@ export default async function AccreditationPage() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-black">
                 Accreditation Readiness
               </h1>
-              <p className="text-gray-600 mt-1">
+              <p className="text-black mt-1">
                 Monitor compliance and prepare for accreditation
               </p>
             </div>
@@ -268,14 +268,14 @@ export default async function AccreditationPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center justify-between mb-4">
               <GraduationCap className="w-8 h-8 text-brand-blue-600" />
-              <span className="text-2xl font-bold text-gray-900">
+              <span className="text-2xl font-bold text-black">
                 {programs?.length || 0}
               </span>
             </div>
-            <h3 className="text-sm font-medium text-gray-600">
+            <h3 className="text-sm font-medium text-black">
               Active Programs
             </h3>
-            <p className="text-xs text-gray-700 mt-1">
+            <p className="text-xs text-black mt-1">
               All with documented outcomes
             </p>
           </div>
@@ -283,40 +283,40 @@ export default async function AccreditationPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center justify-between mb-4">
               <Users className="w-8 h-8 text-brand-green-600" />
-              <span className="text-2xl font-bold text-gray-900">
+              <span className="text-2xl font-bold text-black">
                 {enrollments?.length || 0}
               </span>
             </div>
-            <h3 className="text-sm font-medium text-gray-600">
+            <h3 className="text-sm font-medium text-black">
               Annual Enrollments
             </h3>
-            <p className="text-xs text-gray-700 mt-1">Last 12 months</p>
+            <p className="text-xs text-black mt-1">Last 12 months</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center justify-between mb-4">
               <Award className="w-8 h-8 text-purple-600" />
-              <span className="text-2xl font-bold text-gray-900">
+              <span className="text-2xl font-bold text-black">
                 {completionRate}%
               </span>
             </div>
-            <h3 className="text-sm font-medium text-gray-600">
+            <h3 className="text-sm font-medium text-black">
               Completion Rate
             </h3>
-            <p className="text-xs text-gray-700 mt-1">Target: 75%+</p>
+            <p className="text-xs text-black mt-1">Target: 75%+</p>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center justify-between mb-4">
               <TrendingUp className="w-8 h-8 text-brand-orange-600" />
-              <span className="text-2xl font-bold text-gray-900">
+              <span className="text-2xl font-bold text-black">
                 {placementRate}%
               </span>
             </div>
-            <h3 className="text-sm font-medium text-gray-600">
+            <h3 className="text-sm font-medium text-black">
               Placement Rate
             </h3>
-            <p className="text-xs text-gray-700 mt-1">Target: 80%+</p>
+            <p className="text-xs text-black mt-1">Target: 80%+</p>
           </div>
         </div>
 
@@ -325,7 +325,7 @@ export default async function AccreditationPage() {
           {complianceItems.map((category, idx) => (
             <div key={idx} className="bg-white rounded-lg shadow-sm border">
               <div className="px-6 py-4 border-b bg-gray-50">
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-lg font-semibold text-black">
                   {category.category}
                 </h3>
               </div>
@@ -342,7 +342,7 @@ export default async function AccreditationPage() {
                         ) : (
                           <AlertTriangle className="w-5 h-5 text-brand-orange-600" />
                         )}
-                        <span className="font-medium text-gray-900">
+                        <span className="font-medium text-black">
                           {item.name}
                         </span>
                       </div>
@@ -402,10 +402,10 @@ export default async function AccreditationPage() {
             className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow"
           >
             <Shield className="w-8 h-8 text-brand-blue-600 mb-3" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-black mb-2">
               Compliance Documentation
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Complete COE standards compliance framework
             </p>
           </Link>
@@ -415,10 +415,10 @@ export default async function AccreditationPage() {
             className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow"
           >
             <BookOpen className="w-8 h-8 text-brand-green-600 mb-3" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-black mb-2">
               Course Syllabi
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Learning outcomes and assessment methods
             </p>
           </Link>
@@ -428,10 +428,10 @@ export default async function AccreditationPage() {
             className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow"
           >
             <FileText className="w-8 h-8 text-purple-600 mb-3" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-black mb-2">
               Student Handbook
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Policies, procedures, and student rights
             </p>
           </Link>

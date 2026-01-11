@@ -118,7 +118,7 @@ export default async function SupportPage() {
                       />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-slate-900 mb-2">
+                      <h3 className="text-xl font-bold text-black mb-2">
                         {channel.type}
                       </h3>
                       <p
@@ -126,7 +126,7 @@ export default async function SupportPage() {
                       >
                         {channel.value}
                       </p>
-                      <p className="text-sm text-slate-600 flex items-center gap-2">
+                      <p className="text-sm text-black flex items-center gap-2">
                         <Clock className="h-4 w-4" />
                         {channel.description}
                       </p>
@@ -140,7 +140,7 @@ export default async function SupportPage() {
             <div className="bg-white rounded-lg shadow-sm border p-8 mb-8">
               <div className="flex items-center gap-3 mb-6">
                 <HelpCircle className="h-8 w-8 text-brand-blue-600" />
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-2xl font-bold text-black">
                   Frequently Asked Questions
                 </h2>
               </div>
@@ -151,10 +151,10 @@ export default async function SupportPage() {
                     key={index}
                     className="border-b pb-6 last:border-b-0 last:pb-0"
                   >
-                    <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                    <h3 className="text-lg font-semibold text-black mb-2">
                       {faq.question}
                     </h3>
-                    <p className="text-slate-600 mb-3">{faq.answer}</p>
+                    <p className="text-black mb-3">{faq.answer}</p>
                     <Link
                       href={faq.link}
                       className="text-brand-blue-600 hover:text-brand-blue-700 font-medium text-sm"
@@ -195,27 +195,27 @@ export default async function SupportPage() {
 
             {/* Office Hours */}
             <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-lg font-semibold text-slate-900 mb-4">
+              <h3 className="text-lg font-semibold text-black mb-4">
                 Office Hours
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-medium text-slate-700 mb-2">
+                  <h4 className="font-medium text-black mb-2">
                     Phone Support
                   </h4>
-                  <p className="text-slate-600">
+                  <p className="text-black">
                     Monday - Friday: 9:00 AM - 5:00 PM EST
                   </p>
-                  <p className="text-slate-600">Saturday - Sunday: Closed</p>
+                  <p className="text-black">Saturday - Sunday: Closed</p>
                 </div>
                 <div>
-                  <h4 className="font-medium text-slate-700 mb-2">
+                  <h4 className="font-medium text-black mb-2">
                     Email Support
                   </h4>
-                  <p className="text-slate-600">
+                  <p className="text-black">
                     24/7 - We respond within 24 hours
                   </p>
-                  <p className="text-slate-600">
+                  <p className="text-black">
                     Urgent matters: Call during office hours
                   </p>
                 </div>

@@ -90,7 +90,7 @@ export function OnboardingTour({ steps, tourKey, onComplete }: OnboardingTourPro
                   {currentStep + 1} of {steps.length}
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-slate-900">{step.title}</h3>
+              <h3 className="text-xl font-bold text-black">{step.title}</h3>
             </div>
             <button
               onClick={skipTour}
@@ -101,13 +101,13 @@ export function OnboardingTour({ steps, tourKey, onComplete }: OnboardingTourPro
           </div>
 
           {/* Content */}
-          <p className="text-slate-600 leading-relaxed mb-6">{step.description}</p>
+          <p className="text-black leading-relaxed mb-6">{step.description}</p>
 
           {/* Actions */}
           <div className="flex items-center justify-between">
             <button
               onClick={skipTour}
-              className="text-sm text-slate-500 hover:text-slate-700 font-medium transition"
+              className="text-sm text-slate-500 hover:text-black font-medium transition"
             >
               Skip Tour
             </button>
@@ -115,7 +115,7 @@ export function OnboardingTour({ steps, tourKey, onComplete }: OnboardingTourPro
               {currentStep > 0 && (
                 <button
                   onClick={handlePrevious}
-                  className="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg font-semibold hover:bg-slate-50 transition flex items-center gap-1"
+                  className="px-4 py-2 border border-slate-300 text-black rounded-lg font-semibold hover:bg-slate-50 transition flex items-center gap-1"
                 >
                   <ChevronLeft className="w-4 h-4" />
                   Back

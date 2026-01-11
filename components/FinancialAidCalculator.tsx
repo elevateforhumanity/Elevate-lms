@@ -91,7 +91,7 @@ export function FinancialAidCalculator() {
             {results ? (
               <div className="space-y-4">
                 <div className="p-4 bg-gray-50 rounded">
-                  <p className="text-sm text-gray-600">Total Program Cost</p>
+                  <p className="text-sm text-black">Total Program Cost</p>
                   <p className="text-2xl font-bold">${results.totalCost.toLocaleString()}</p>
                 </div>
 
@@ -118,7 +118,7 @@ export function FinancialAidCalculator() {
 
                 <div className="pt-4 border-t">
                   <h3 className="font-bold mb-2">Payment Plan Options</h3>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                  <ul className="space-y-2 text-sm text-black">
                     <li>• Monthly payment: ${(results.outOfPocket / 12).toFixed(2)}</li>
                     <li>• Quarterly payment: ${(results.outOfPocket / 4).toFixed(2)}</li>
                     <li>• Semester payment: ${(results.outOfPocket / 2).toFixed(2)}</li>

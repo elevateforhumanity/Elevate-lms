@@ -47,14 +47,14 @@ export default function MobileCourseCard({
       )}
       {/* Content */}
       <div className="p-4">
-        <h3 className="font-semibold text-lg text-gray-900 mb-2 line-clamp-2">
+        <h3 className="font-semibold text-lg text-black mb-2 line-clamp-2">
           {title}
         </h3>
-        <p className="text-sm text-gray-600 mb-3 line-clamp-2">{description}</p>
+        <p className="text-sm text-black mb-3 line-clamp-2">{description}</p>
         {/* Progress Bar */}
         {progress > 0 && (
           <div className="mb-3">
-            <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+            <div className="flex items-center justify-between text-xs text-black mb-1">
               <span>Progress</span>
               <span className="font-semibold">{progress}%</span>
             </div>
@@ -67,7 +67,7 @@ export default function MobileCourseCard({
           </div>
         )}
         {/* Meta Info */}
-        <div className="flex items-center gap-4 text-xs text-gray-600 mb-3">
+        <div className="flex items-center gap-4 text-xs text-black mb-3">
           <div className="flex items-center gap-1">
             <Clock size={14} />
             <span>{duration}</span>

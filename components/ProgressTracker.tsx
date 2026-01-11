@@ -60,7 +60,7 @@ export function ProgressTracker({ modules, overallProgress }: ProgressTrackerPro
                   </div>
                   <div className="flex-1">
                     <div className="font-semibold mb-1">{module.title}</div>
-                    <div className="text-sm text-gray-600 mb-2">
+                    <div className="text-sm text-black mb-2">
                       {module.completedLessons} of {module.lessons} lessons completed
                     </div>
                     <div className="h-2 bg-gray-200 rounded-full overflow-hidden">

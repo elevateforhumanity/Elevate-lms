@@ -35,13 +35,13 @@ export default function AutomatedEnrollmentWorkflow() {
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold ${
                   item.status === 'completed' ? 'bg-green-500 text-white' :
                   item.status === 'in-progress' ? 'bg-blue-500 text-white' :
-                  'bg-gray-300 text-gray-600'
+                  'bg-gray-300 text-black'
                 }`}>
                   {item.status === 'completed' ? '✓' : item.step}
                 </div>
                 <div className="flex-1">
                   <p className="font-bold">{item.title}</p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-black">
                     {item.automated && '🤖 Automated'} • {item.status}
                   </p>
                 </div>
@@ -52,21 +52,21 @@ export default function AutomatedEnrollmentWorkflow() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Enrollments Today</h3>
+            <h3 className="text-sm text-black mb-2">Enrollments Today</h3>
             <p className="text-3xl font-bold text-brand-orange-600">24</p>
             <p className="text-sm text-green-600">↑ 15% from yesterday</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Avg Processing Time</h3>
+            <h3 className="text-sm text-black mb-2">Avg Processing Time</h3>
             <p className="text-3xl font-bold text-orange-500">2.5 min</p>
             <p className="text-sm text-green-600">↓ 40% improvement</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Success Rate</h3>
+            <h3 className="text-sm text-black mb-2">Success Rate</h3>
             <p className="text-3xl font-bold text-green-600">98%</p>
-            <p className="text-sm text-gray-600">Automated workflow</p>
+            <p className="text-sm text-black">Automated workflow</p>
           </Card>
         </div>
       </div>

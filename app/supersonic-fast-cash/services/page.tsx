@@ -163,18 +163,18 @@ export default function ServicesPage() {
                 <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                   <service.icon className="w-7 h-7 text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-2xl font-bold text-black mb-2">
                   {service.name}
                 </h3>
                 <div className="text-2xl font-bold text-blue-600 mb-4">
                   {service.price}
                 </div>
-                <p className="text-gray-600 mb-6">{service.description}</p>
+                <p className="text-black mb-6">{service.description}</p>
                 <ul className="space-y-3 mb-8">
                   {service.features.map((feature, idx) => (
                     <li
                       key={idx}
-                      className="flex items-start gap-2 text-sm text-gray-700"
+                      className="flex items-start gap-2 text-sm text-black"
                     >
                       <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                       {feature}
@@ -197,10 +197,10 @@ export default function ServicesPage() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-black mb-4">
               Why Choose Supersonic Fast Cash?
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Professional service, competitive pricing, and personalized
               attention
             </p>
@@ -211,10 +211,10 @@ export default function ServicesPage() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 IRS Certified
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 All preparers are IRS-certified with years of experience
               </p>
             </div>
@@ -223,10 +223,10 @@ export default function ServicesPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <DollarSign className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Maximum Refund
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 We find every deduction and credit you deserve
               </p>
             </div>
@@ -235,10 +235,10 @@ export default function ServicesPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Fast Service
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Most returns completed within 24-48 hours
               </p>
             </div>

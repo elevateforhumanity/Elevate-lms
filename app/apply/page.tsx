@@ -24,10 +24,10 @@ export default function Apply() {
         imageOnRight={true}
       />
     <main id="application" className="max-w-3xl mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold text-slate-900 mb-4">
+      <h1 className="text-3xl font-bold text-black mb-4">
         Start Your Application
       </h1>
-      <p className="my-4 text-slate-700">
+      <p className="my-4 text-black">
         10–15 minutes. Response within 2–3 business days.
       </p>
 
@@ -39,7 +39,7 @@ export default function Apply() {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-slate-700 mb-2"
+            className="block text-sm font-medium text-black mb-2"
           >
             Full Name <span className="text-red-600">*</span>
           </label>
@@ -55,7 +55,7 @@ export default function Apply() {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-slate-700 mb-2"
+            className="block text-sm font-medium text-black mb-2"
           >
             Email <span className="text-red-600">*</span>
           </label>
@@ -72,7 +72,7 @@ export default function Apply() {
         <div>
           <label
             htmlFor="phone"
-            className="block text-sm font-medium text-slate-700 mb-2"
+            className="block text-sm font-medium text-black mb-2"
           >
             Phone <span className="text-red-600">*</span>
           </label>
@@ -88,7 +88,7 @@ export default function Apply() {
         <div>
           <label
             htmlFor="program"
-            className="block text-sm font-medium text-slate-700 mb-2"
+            className="block text-sm font-medium text-black mb-2"
           >
             Program <span className="text-red-600">*</span>
           </label>
@@ -137,7 +137,7 @@ export default function Apply() {
         <div>
           <label
             htmlFor="funding"
-            className="block text-sm font-medium text-slate-700 mb-2"
+            className="block text-sm font-medium text-black mb-2"
           >
             Funding <span className="text-red-600">*</span>
           </label>

@@ -63,7 +63,7 @@ export function StudyGroups() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold">Study Groups</h2>
-          <p className="text-gray-600">Connect with peers and learn together</p>
+          <p className="text-black">Connect with peers and learn together</p>
         </div>
         <Button
           onClick={() => setShowCreateModal(true)}
@@ -89,7 +89,7 @@ export function StudyGroups() {
             </div>
             <CardContent className="p-6">
               <h3 className="font-bold text-lg mb-2">{group.name}</h3>
-              <p className="text-sm text-gray-600 mb-3">{group.description}</p>
+              <p className="text-sm text-black mb-3">{group.description}</p>
 
               <div className="space-y-2 mb-4">
                 <div className="flex items-center gap-2 text-sm">

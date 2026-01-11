@@ -94,7 +94,7 @@ export default function JRIPage() {
               <h2 className="text-2xl md:text-3xl font-bold mb-4">
                 Your Second Chance Starts Here
               </h2>
-              <p className="text-base md:text-lg text-slate-600">
+              <p className="text-base md:text-lg text-black">
                 Every person deserves the opportunity to rebuild their life with
                 dignity and purpose.
               </p>
@@ -114,14 +114,14 @@ export default function JRIPage() {
                 <h3 className="text-lg md:text-lg font-bold mb-4">
                   From Incarceration to Career Success
                 </h3>
-                <p className="text-slate-700 mb-4 leading-relaxed">
+                <p className="text-black mb-4 leading-relaxed">
                   The Justice Reinvestment Initiative recognizes that successful
                   reentry requires more than just release—it requires
                   opportunity. Through JRI funding, we provide comprehensive
                   workforce training that opens doors to stable, well-paying
                   careers.
                 </p>
-                <p className="text-slate-700 leading-relaxed">
+                <p className="text-black leading-relaxed">
                   Our programs are designed specifically for individuals with
                   justice involvement, addressing the unique challenges you face
                   while building the skills employers demand.
@@ -134,13 +134,13 @@ export default function JRIPage() {
                 <h3 className="text-lg md:text-lg font-bold mb-4">
                   100% Funded Training
                 </h3>
-                <p className="text-slate-700 mb-4 leading-relaxed">
+                <p className="text-black mb-4 leading-relaxed">
                   Through JRI funding, your entire training program is
                   covered—no tuition, no fees, no barriers. This includes
                   industry-recognized certifications, hands-on training, and
                   ongoing support services.
                 </p>
-                <p className="text-slate-700 leading-relaxed">
+                <p className="text-black leading-relaxed">
                   We believe financial constraints should never prevent someone
                   from accessing the education they need to succeed. JRI makes
                   that belief a reality.
@@ -178,7 +178,7 @@ export default function JRIPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600">
+                  <p className="text-black">
                     Employment rate within 6 months of program completion
                   </p>
                 </CardContent>
@@ -194,7 +194,7 @@ export default function JRIPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600">
+                  <p className="text-black">
                     Average starting hourly wage for graduates
                   </p>
                 </CardContent>
@@ -210,7 +210,7 @@ export default function JRIPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600">
+                  <p className="text-black">
                     Program completion rate with dedicated support
                   </p>
                 </CardContent>
@@ -226,7 +226,7 @@ export default function JRIPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600">
+                  <p className="text-black">
                     Reduction in recidivism for program participants
                   </p>
                 </CardContent>
@@ -359,7 +359,7 @@ export default function JRIPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
               JRI-Funded Programs
             </h2>
-            <p className="text-base md:text-lg text-slate-600 text-center mb-12">
+            <p className="text-base md:text-lg text-black text-center mb-12">
               Choose from high-demand career pathways with proven employment
               outcomes
             </p>
@@ -517,7 +517,7 @@ export default function JRIPage() {
                   <CheckCircle2 className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold">Justice System Involvement</p>
-                    <p className="text-slate-700">
+                    <p className="text-black">
                       Currently or previously involved with the criminal justice
                       system
                     </p>
@@ -527,7 +527,7 @@ export default function JRIPage() {
                   <CheckCircle2 className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold">Indiana Resident</p>
-                    <p className="text-slate-700">
+                    <p className="text-black">
                       Must be a current resident of Indiana
                     </p>
                   </div>
@@ -536,7 +536,7 @@ export default function JRIPage() {
                   <CheckCircle2 className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold">Commitment to Success</p>
-                    <p className="text-slate-700">
+                    <p className="text-black">
                       Dedicated to completing training and securing employment
                     </p>
                   </div>
@@ -545,7 +545,7 @@ export default function JRIPage() {
                   <CheckCircle2 className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold">Referral or Self-Enrollment</p>
-                    <p className="text-slate-700">
+                    <p className="text-black">
                       Can be referred by case manager or self-enroll through our
                       application process
                     </p>
@@ -643,7 +643,7 @@ export default function JRIPage() {
                     <Users className="w-10 h-10 text-brand-blue-600" />
                   </div>
                   <div>
-                    <p className="text-lg text-slate-700 italic mb-4 leading-relaxed">
+                    <p className="text-lg text-black italic mb-4 leading-relaxed">
                       &quot;After 8 years of incarceration, I didn&apos;t think
                       anyone would give me a chance. The JRI program not only
                       gave me the training I needed, but they believed in me
@@ -652,7 +652,7 @@ export default function JRIPage() {
                       path, just like someone helped me find mine.&quot;
                     </p>
                     <p className="font-bold">— Marcus T.</p>
-                    <p className="text-slate-600">
+                    <p className="text-black">
                       Public Safety & Reentry Specialist Graduate, 2023
                     </p>
                   </div>

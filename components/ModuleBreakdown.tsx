@@ -60,7 +60,7 @@ export function ModuleBreakdown({ modules, className = '' }: ModuleBreakdownProp
 
   return (
     <section className={`bg-white rounded-2xl border border-slate-200 p-6 md:p-8 ${className}`}>
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">Course Modules</h2>
+      <h2 className="text-2xl font-bold text-black mb-6">Course Modules</h2>
       <div className="space-y-4">
         {modules.map((module, index) => {
           const isExpanded = expandedModules.has(module.id);
@@ -79,9 +79,9 @@ export function ModuleBreakdown({ modules, className = '' }: ModuleBreakdownProp
                     <span className="text-sm font-semibold text-brand-orange-600">
                       Module {index + 1}
                     </span>
-                    <h3 className="font-semibold text-slate-900">{module.title}</h3>
+                    <h3 className="font-semibold text-black">{module.title}</h3>
                   </div>
-                  <p className="text-sm text-slate-600 mb-3">{module.description}</p>
+                  <p className="text-sm text-black mb-3">{module.description}</p>
                   <div className="flex flex-wrap gap-4 text-xs text-slate-500">
                     <span className="flex items-center gap-1">
                       <Clock className="w-3 h-3" />
@@ -132,7 +132,7 @@ export function ModuleBreakdown({ modules, className = '' }: ModuleBreakdownProp
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
                               <span className="text-slate-400">{getLessonIcon(lesson.type)}</span>
-                              <span className="text-sm font-medium text-slate-900">
+                              <span className="text-sm font-medium text-black">
                                 {lesson.title}
                               </span>
                             </div>

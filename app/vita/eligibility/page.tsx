@@ -35,7 +35,7 @@ export default function VITAEligibilityPage() {
           
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 <DollarSign className="w-4 h-4 inline mr-2" />
                 Annual Household Income
               </label>
@@ -49,7 +49,7 @@ export default function VITAEligibilityPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 <Users className="w-4 h-4 inline mr-2" />
                 Household Size
               </label>
@@ -117,28 +117,28 @@ export default function VITAEligibilityPage() {
               <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">Income Under $64,000</h3>
-                <p className="text-gray-600">Individuals and families earning $64,000 or less per year</p>
+                <p className="text-black">Individuals and families earning $64,000 or less per year</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">Persons with Disabilities</h3>
-                <p className="text-gray-600">Regardless of income level</p>
+                <p className="text-black">Regardless of income level</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">Limited English Speakers</h3>
-                <p className="text-gray-600">Taxpayers who need language assistance</p>
+                <p className="text-black">Taxpayers who need language assistance</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">Seniors</h3>
-                <p className="text-gray-600">Older adults needing assistance with tax preparation</p>
+                <p className="text-black">Older adults needing assistance with tax preparation</p>
               </div>
             </div>
           </div>

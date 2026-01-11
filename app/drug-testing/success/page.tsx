@@ -20,7 +20,7 @@ export default function DrugTestingSuccessPage() {
 
         <h1 className="text-3xl font-bold mb-4">Order Confirmed!</h1>
 
-        <p className="text-xl text-gray-700 mb-6">
+        <p className="text-xl text-black mb-6">
           Thank you for your order. We'll contact you within 1 business day to
           schedule your test.
         </p>
@@ -32,7 +32,7 @@ export default function DrugTestingSuccessPage() {
               <div className="w-6 h-6 bg-brand-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">
                 1
               </div>
-              <p className="text-gray-700">
+              <p className="text-black">
                 We'll call you at the phone number provided to schedule your
                 test
               </p>
@@ -41,7 +41,7 @@ export default function DrugTestingSuccessPage() {
               <div className="w-6 h-6 bg-brand-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">
                 2
               </div>
-              <p className="text-gray-700">
+              <p className="text-black">
                 You'll receive an email with collection site details and
                 instructions
               </p>
@@ -50,7 +50,7 @@ export default function DrugTestingSuccessPage() {
               <div className="w-6 h-6 bg-brand-blue-600 text-white rounded-full flex-shrink-0 text-sm font-bold">
                 3
               </div>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Visit the collection site at your scheduled time with photo ID
               </p>
             </div>
@@ -58,7 +58,7 @@ export default function DrugTestingSuccessPage() {
               <div className="w-6 h-6 bg-brand-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">
                 4
               </div>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Results typically available within 24-48 hours
               </p>
             </div>
@@ -77,7 +77,7 @@ export default function DrugTestingSuccessPage() {
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-200 text-gray-900 rounded-lg font-bold hover:bg-gray-300"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-200 text-black rounded-lg font-bold hover:bg-gray-300"
             >
               <Mail className="w-5 h-5" />
               Email Us

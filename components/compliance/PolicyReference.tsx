@@ -46,7 +46,7 @@ export function PolicyReference({
       <div
         className={`bg-gray-50 border border-gray-200 rounded p-3 ${className}`}
       >
-        <p className="text-xs text-gray-700">
+        <p className="text-xs text-black">
           {description || `Subject to our ${policyName}.`}{' '}
           <Link
             href={policyUrl}
@@ -62,7 +62,7 @@ export function PolicyReference({
   }
 
   return (
-    <span className={`text-sm text-gray-600 ${className}`}>
+    <span className={`text-sm text-black ${className}`}>
       {description || `See our `}
       <Link
         href={policyUrl}

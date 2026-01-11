@@ -85,7 +85,7 @@ const industryColors: Record<string, string> = {
   Transportation: 'bg-green-100 text-green-700',
   Technology: 'bg-purple-100 text-purple-700',
   Retail: 'bg-yellow-100 text-yellow-700',
-  Manufacturing: 'bg-gray-100 text-gray-700',
+  Manufacturing: 'bg-gray-100 text-black',
   Pharmaceutical: 'bg-teal-100 text-teal-700',
   Hospitality: 'bg-indigo-100 text-indigo-700',
   'Food Service': 'bg-red-100 text-red-700',
@@ -113,10 +113,10 @@ export default function EmployerPartners() {
             <Building2 className="w-4 h-4" />
             50+ Employer Partners
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
             Hired by Industry Leaders
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-black max-w-3xl mx-auto">
             Our graduates work at top companies across healthcare, technology, trades, and more.
             These employers trust Ona to prepare job-ready professionals.
           </p>
@@ -131,19 +131,19 @@ export default function EmployerPartners() {
         >
           <div className="bg-white rounded-xl p-6 shadow-lg text-center">
             <div className="text-4xl font-bold text-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">50+</div>
-            <div className="text-gray-700 font-semibold">Employer Partners</div>
+            <div className="text-black font-semibold">Employer Partners</div>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-lg text-center">
             <div className="text-4xl font-bold text-green-600 mb-2 text-2xl md:text-3xl lg:text-4xl">94%</div>
-            <div className="text-gray-700 font-semibold">Placement Rate</div>
+            <div className="text-black font-semibold">Placement Rate</div>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-lg text-center">
             <div className="text-4xl font-bold text-purple-600 mb-2 text-2xl md:text-3xl lg:text-4xl">2,500+</div>
-            <div className="text-gray-700 font-semibold">Graduates Hired</div>
+            <div className="text-black font-semibold">Graduates Hired</div>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-lg text-center">
             <div className="text-4xl font-bold text-orange-600 mb-2 text-2xl md:text-3xl lg:text-4xl">$52K</div>
-            <div className="text-gray-700 font-semibold">Avg. Starting Salary</div>
+            <div className="text-black font-semibold">Avg. Starting Salary</div>
           </div>
         </motion.div>
 
@@ -175,15 +175,15 @@ export default function EmployerPartners() {
                   <div className="w-12 h-12    rounded-lg flex items-center justify-center">
                     <Building2 className="w-6 h-6 text-white" />
                   </div>
-                  <span className={`text-xs px-2 py-1 rounded-full ${industryColors[partner.industry] || 'bg-gray-100 text-gray-700'}`}>
+                  <span className={`text-xs px-2 py-1 rounded-full ${industryColors[partner.industry] || 'bg-gray-100 text-black'}`}>
                     {partner.industry}
                   </span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-lg font-bold text-black mb-2 group-hover:text-blue-600 transition-colors">
                   {partner.name}
                 </h3>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-600">Hiring Rate:</span>
+                  <span className="text-black">Hiring Rate:</span>
                   <span className="font-bold text-green-600">{partner.hiringRate}</span>
                 </div>
               </div>
@@ -219,15 +219,15 @@ export default function EmployerPartners() {
                   <div className="w-12 h-12    rounded-lg flex items-center justify-center">
                     <Briefcase className="w-6 h-6 text-white" />
                   </div>
-                  <span className={`text-xs px-2 py-1 rounded-full ${industryColors[partner.industry] || 'bg-gray-100 text-gray-700'}`}>
+                  <span className={`text-xs px-2 py-1 rounded-full ${industryColors[partner.industry] || 'bg-gray-100 text-black'}`}>
                     {partner.industry}
                   </span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
+                <h3 className="text-lg font-bold text-black mb-2 group-hover:text-green-600 transition-colors">
                   {partner.name}
                 </h3>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-600">Hiring Rate:</span>
+                  <span className="text-black">Hiring Rate:</span>
                   <span className="font-bold text-green-600">{partner.hiringRate}</span>
                 </div>
               </div>
@@ -242,7 +242,7 @@ export default function EmployerPartners() {
           viewport={{ once: true }}
           className="bg-white rounded-2xl p-8 shadow-xl mb-16"
         >
-          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+          <h3 className="text-2xl font-bold text-black mb-6 text-center">
             Industries We Serve
           </h3>
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -268,10 +268,10 @@ export default function EmployerPartners() {
             <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
               <Users className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">
+            <h3 className="text-xl font-bold text-black mb-3">
               Job-Ready Graduates
             </h3>
-            <p className="text-gray-700">
+            <p className="text-black">
               Our students complete hands-on training and are prepared to contribute from day one.
               No additional training required.
             </p>
@@ -281,10 +281,10 @@ export default function EmployerPartners() {
             <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4">
               <TrendingUp className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">
+            <h3 className="text-xl font-bold text-black mb-3">
               Reduced Turnover
             </h3>
-            <p className="text-gray-700">
+            <p className="text-black">
               Ona graduates have 40% lower turnover rates compared to traditional hires.
               They're committed to their careers.
             </p>
@@ -294,10 +294,10 @@ export default function EmployerPartners() {
             <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
               <Briefcase className="w-6 h-6 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">
+            <h3 className="text-xl font-bold text-black mb-3">
               Diverse Talent Pool
             </h3>
-            <p className="text-gray-700">
+            <p className="text-black">
               Access candidates from diverse backgrounds who bring unique perspectives
               and strong work ethic.
             </p>
@@ -344,7 +344,7 @@ export default function EmployerPartners() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <p className="text-xl text-gray-700 mb-6">
+          <p className="text-xl text-black mb-6">
             Want to work at one of these companies?
           </p>
           <a

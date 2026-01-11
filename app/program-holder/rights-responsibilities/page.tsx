@@ -267,10 +267,10 @@ export default async function ProgramHolderRightsPage() {
           <div className="flex items-start gap-4 mb-6">
             <CheckCircle className="text-blue-600 flex-shrink-0" size={32} />
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">
+              <h3 className="text-2xl font-bold text-black mb-2">
                 Acknowledgement Required
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Please confirm that you have read and understood your Rights &
                 Responsibilities.
               </p>

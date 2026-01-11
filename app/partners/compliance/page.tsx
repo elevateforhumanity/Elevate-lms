@@ -26,7 +26,7 @@ export default function PartnerCompliancePage() {
         <div className="text-center mb-12">
           <Shield className="h-16 w-16 text-orange-600 mx-auto mb-4" />
           <h1 className="text-4xl font-bold mb-4">Compliance Tools</h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-black">
             Everything you need to maintain WIOA and DOL compliance.
           </p>
         </div>
@@ -35,7 +35,7 @@ export default function PartnerCompliancePage() {
           <div className="bg-white rounded-lg shadow-sm p-6 text-center">
             <FileText className="h-12 w-12 text-orange-600 mx-auto mb-4" />
             <h3 className="font-semibold text-lg mb-2">Reporting</h3>
-            <p className="text-gray-600 text-sm mb-4">
+            <p className="text-black text-sm mb-4">
               Automated WIOA reporting and documentation
             </p>
             <Link href="/program-holder/reports">
@@ -48,7 +48,7 @@ export default function PartnerCompliancePage() {
           <div className="bg-white rounded-lg shadow-sm p-6 text-center">
             <BarChart3 className="h-12 w-12 text-orange-600 mx-auto mb-4" />
             <h3 className="font-semibold text-lg mb-2">Analytics</h3>
-            <p className="text-gray-600 text-sm mb-4">
+            <p className="text-black text-sm mb-4">
               Track student outcomes and performance
             </p>
             <Link href="/program-holder/dashboard">
@@ -61,7 +61,7 @@ export default function PartnerCompliancePage() {
           <div className="bg-white rounded-lg shadow-sm p-6 text-center">
             <Shield className="h-12 w-12 text-orange-600 mx-auto mb-4" />
             <h3 className="font-semibold text-lg mb-2">Documentation</h3>
-            <p className="text-gray-600 text-sm mb-4">
+            <p className="text-black text-sm mb-4">
               Access compliance guides and templates
             </p>
             <Link href="/program-holder/documents">
@@ -74,7 +74,7 @@ export default function PartnerCompliancePage() {
 
         <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
           <h2 className="text-xl font-bold mb-2">Need Help?</h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-black mb-4">
             Our compliance team is here to support you. Access your partner
             portal for full compliance tools and support.
           </p>

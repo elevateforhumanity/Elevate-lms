@@ -131,7 +131,7 @@ export default function CourseDiscussionsPage() {
 
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-brand-blue-600 mb-4" />
-          <p className="text-gray-600">Loading discussions...</p>
+          <p className="text-black">Loading discussions...</p>
 
           {/* Storytelling Section */}
           <section className="py-16 bg-white">
@@ -139,10 +139,10 @@ export default function CourseDiscussionsPage() {
               <div className="max-w-7xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                       Your Journey Starts Here
                     </h2>
-                    <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                    <p className="text-lg text-black mb-6 leading-relaxed">
                       Every great career begins with a single step. Whether
                       you're looking to change careers, upgrade your skills, or
                       enter the workforce for the first time, we're here to help
@@ -164,7 +164,7 @@ export default function CourseDiscussionsPage() {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           100% free training - no tuition, no hidden costs
                         </span>
                       </li>
@@ -182,7 +182,7 @@ export default function CourseDiscussionsPage() {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Industry-recognized certifications that employers
                           value
                         </span>
@@ -201,7 +201,7 @@ export default function CourseDiscussionsPage() {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Job placement assistance and career support
                         </span>
                       </li>
@@ -219,7 +219,7 @@ export default function CourseDiscussionsPage() {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Flexible scheduling for working adults
                         </span>
                       </li>
@@ -286,10 +286,10 @@ export default function CourseDiscussionsPage() {
               >
                 ← Back to Course
               </Link>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-black">
                 {course?.title}
               </h1>
-              <p className="text-gray-600 mt-1">Course Discussions</p>
+              <p className="text-black mt-1">Course Discussions</p>
             </div>
             <button
               onClick={() => setShowNewTopic(true)}
@@ -309,7 +309,7 @@ export default function CourseDiscussionsPage() {
               <h2 className="text-xl font-bold mb-4">Start a New Discussion</h2>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Topic Title
                   </label>
                   <input
@@ -327,7 +327,7 @@ export default function CourseDiscussionsPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Message
                   </label>
                   <textarea
@@ -353,7 +353,7 @@ export default function CourseDiscussionsPage() {
                   </button>
                   <button
                     onClick={() => setShowNewTopic(false)}
-                    className="bg-gray-200 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+                    className="bg-gray-200 text-black px-6 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
                   >
                     Cancel
                   </button>
@@ -380,13 +380,13 @@ export default function CourseDiscussionsPage() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-gray-900 mb-1 hover:text-brand-blue-600">
+                      <h3 className="text-lg font-bold text-black mb-1 hover:text-brand-blue-600">
                         {discussion.title}
                       </h3>
-                      <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                      <p className="text-black text-sm mb-3 line-clamp-2">
                         {discussion.content}
                       </p>
-                      <div className="flex items-center gap-4 text-sm text-gray-700">
+                      <div className="flex items-center gap-4 text-sm text-black">
                         <span>
                           {discussion.profiles?.full_name || 'Anonymous'}
                         </span>
@@ -405,7 +405,7 @@ export default function CourseDiscussionsPage() {
           ) : (
             <div className="bg-white rounded-lg shadow-sm border p-12 text-center">
               <svg
-                className="w-16 h-16 text-gray-600 mx-auto mb-4"
+                className="w-16 h-16 text-black mx-auto mb-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -417,10 +417,10 @@ export default function CourseDiscussionsPage() {
                   d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                 />
               </svg>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-black mb-2">
                 No discussions yet
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 Be the first to start a discussion!
               </p>
               <button

@@ -31,8 +31,8 @@ export default function SignUpPage() {
               />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Thank You!</h2>
-          <p className="text-lg text-gray-600">
+          <h2 className="text-3xl font-bold text-black mb-4">Thank You!</h2>
+          <p className="text-lg text-black">
             We've received your registration. You'll receive a confirmation
             email shortly.
           </p>
@@ -44,10 +44,10 @@ export default function SignUpPage() {
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 text-center">
+        <h1 className="text-4xl md:text-5xl font-black text-black mb-6 text-center">
           Sign Up for Workshops
         </h1>
-        <p className="text-lg text-gray-600 mb-12 text-center">
+        <p className="text-lg text-black mb-12 text-center">
           Join our healing community and start your wellness journey
         </p>
 
@@ -56,7 +56,7 @@ export default function SignUpPage() {
           className="bg-white border border-gray-200 rounded-lg p-8 space-y-6"
         >
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Full Name *
             </label>
             <input
@@ -67,7 +67,7 @@ export default function SignUpPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Email *
             </label>
             <input
@@ -78,7 +78,7 @@ export default function SignUpPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Phone
             </label>
             <input
@@ -88,7 +88,7 @@ export default function SignUpPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Workshop Interest *
             </label>
             <select
@@ -104,7 +104,7 @@ export default function SignUpPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Tell us about yourself (optional)
             </label>
             <textarea

@@ -55,14 +55,14 @@ export default function MobileAchievementCard({
         <div className="flex-1">
           <h3
             className={`font-semibold text-sm mb-1 ${
-              unlocked ? 'text-gray-900' : 'text-gray-500'
+              unlocked ? 'text-black' : 'text-gray-500'
             }`}
           >
             {title}
           </h3>
           <p
             className={`text-xs ${
-              unlocked ? 'text-gray-600' : 'text-gray-400'
+              unlocked ? 'text-black' : 'text-gray-400'
             }`}
           >
             {description}
@@ -78,7 +78,7 @@ export default function MobileAchievementCard({
         )
       ) : (
         <div>
-          <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+          <div className="flex items-center justify-between text-xs text-black mb-1">
             <span>Progress</span>
             <span className="font-semibold">
               {progress}/{total}

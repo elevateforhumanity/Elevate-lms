@@ -29,9 +29,9 @@ export function Leaderboard({ entries, timeframe = 'week' }: LeaderboardProps) {
 
   const getRankBadge = (rank: number) => {
     if (rank === 1) return 'bg-yellow-100 text-yellow-800 border-yellow-300';
-    if (rank === 2) return 'bg-gray-100 text-gray-800 border-gray-300';
+    if (rank === 2) return 'bg-gray-100 text-black border-gray-300';
     if (rank === 3) return 'bg-orange-100 text-orange-800 border-orange-300';
-    return 'bg-gray-50 text-gray-600 border-gray-200';
+    return 'bg-gray-50 text-black border-gray-200';
   };
 
   return (
@@ -69,7 +69,7 @@ export function Leaderboard({ entries, timeframe = 'week' }: LeaderboardProps) {
 
               <div className="flex-1">
                 <div className="font-semibold">{entry.name}</div>
-                <div className="text-sm text-gray-600">Level {entry.level}</div>
+                <div className="text-sm text-black">Level {entry.level}</div>
               </div>
 
               <div className="text-right">

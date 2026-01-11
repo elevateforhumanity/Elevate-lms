@@ -57,11 +57,11 @@ export default function LessonContent({
     <div className="max-w-5xl mx-auto p-6">
       {/* Lesson Header */}
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">
+        <h1 className="text-3xl font-bold text-black mb-2">
           {lesson.title}
         </h1>
         {lesson.duration && (
-          <p className="text-slate-600">
+          <p className="text-black">
             Duration: {Math.floor(lesson.duration / 60)} minutes
           </p>
         )}

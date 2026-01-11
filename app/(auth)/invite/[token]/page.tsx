@@ -113,7 +113,7 @@ export default function AcceptInvitePage({
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-blue-600 mx-auto" />
-          <p className="mt-4 text-gray-600">Loading invitation...</p>
+          <p className="mt-4 text-black">Loading invitation...</p>
         </div>
       </div>
     );
@@ -139,10 +139,10 @@ export default function AcceptInvitePage({
                 />
               </svg>
             </div>
-            <h2 className="mt-4 text-2xl font-bold text-gray-900">
+            <h2 className="mt-4 text-2xl font-bold text-black">
               Invalid Invitation
             </h2>
-            <p className="mt-2 text-gray-600">{error}</p>
+            <p className="mt-2 text-black">{error}</p>
             <button
               onClick={() => router.push('/')}
               className="mt-6 w-full bg-brand-blue-600 text-white py-2 px-4 rounded-md hover:bg-brand-blue-700"
@@ -178,10 +178,10 @@ export default function AcceptInvitePage({
               />
             </svg>
           </div>
-          <h2 className="mt-4 text-2xl font-bold text-gray-900">
+          <h2 className="mt-4 text-2xl font-bold text-black">
             You're Invited!
           </h2>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-black">
             {invite.inviterName ? (
               <>
                 <span className="font-semibold">{invite.inviterName}</span> has
@@ -191,15 +191,15 @@ export default function AcceptInvitePage({
               'You have been invited to join'
             )}
           </p>
-          <p className="mt-1 text-xl font-semibold text-gray-900">
+          <p className="mt-1 text-xl font-semibold text-black">
             {invite.organizationName}
           </p>
 
           <div className="mt-6 bg-gray-50 rounded-md p-4">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               <span className="font-medium">Email:</span> {invite.email}
             </p>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-black">
               <span className="font-medium">Expires:</span>{' '}
               {new Date(invite.expiresAt).toLocaleDateString()}
             </p>
@@ -213,7 +213,7 @@ export default function AcceptInvitePage({
             {accepting ? 'Accepting...' : 'Accept Invitation'}
           </button>
 
-          <p className="mt-4 text-xs text-gray-700">
+          <p className="mt-4 text-xs text-black">
             By accepting, you will become a member of this organization
           </p>
         </div>

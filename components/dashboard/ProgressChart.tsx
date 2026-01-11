@@ -16,10 +16,10 @@ export function ProgressChart() {
         {courses.map((course) => (
           <div key={course.name}>
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-black">
                 {course.name}
               </span>
-              <span className="text-sm font-bold text-gray-900">
+              <span className="text-sm font-bold text-black">
                 {course.progress}%
               </span>
             </div>
@@ -35,16 +35,16 @@ export function ProgressChart() {
       <div className="mt-6 pt-6 border-t border-gray-200">
         <div className="grid grid-cols-3 gap-4 text-center">
           <div>
-            <div className="text-2xl font-bold text-gray-900">3</div>
-            <div className="text-xs text-gray-600">Active Courses</div>
+            <div className="text-2xl font-bold text-black">3</div>
+            <div className="text-xs text-black">Active Courses</div>
           </div>
           <div>
             <div className="text-2xl font-bold text-green-600">1</div>
-            <div className="text-xs text-gray-600">Completed</div>
+            <div className="text-xs text-black">Completed</div>
           </div>
           <div>
             <div className="text-2xl font-bold text-orange-600">63%</div>
-            <div className="text-xs text-gray-600">Avg Progress</div>
+            <div className="text-xs text-black">Avg Progress</div>
           </div>
         </div>
       </div>

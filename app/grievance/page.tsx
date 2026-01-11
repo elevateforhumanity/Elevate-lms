@@ -51,19 +51,19 @@ export default function GrievancePage() {
       </section>
 
       <div className="max-w-4xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8 text-2xl md:text-3xl lg:text-4xl">
+        <h1 className="text-4xl font-bold text-black mb-8 text-2xl md:text-3xl lg:text-4xl">
           Grievance Procedure
         </h1>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-black mb-4">
             Your Right to File a Grievance
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-black mb-4">
             As a WIOA participant, you have the right to file a grievance if you
             believe:
           </p>
-          <ul className="list-disc pl-6 mb-4 text-gray-700 space-y-2">
+          <ul className="list-disc pl-6 mb-4 text-black space-y-2">
             <li>You were denied services you are entitled to</li>
             <li>You experienced discrimination</li>
             <li>Program rules were not followed</li>
@@ -72,65 +72,65 @@ export default function GrievancePage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-black mb-4">
             How to File a Grievance
           </h2>
 
           <div className="space-y-6">
             <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-black mb-2">
                 Step 1: Informal Resolution
               </h3>
-              <p className="text-gray-700 mb-2">
+              <p className="text-black mb-2">
                 Start to resolve the issue with your case manager or instructor
                 first.
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Timeline: Within 5 business days
               </p>
             </div>
 
             <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-black mb-2">
                 Step 2: Formal Written Grievance
               </h3>
-              <p className="text-gray-700 mb-2">
+              <p className="text-black mb-2">
                 If informal resolution doesn't work, submit a written grievance:
               </p>
-              <ul className="list-disc pl-6 mb-2 text-gray-700 space-y-1">
+              <ul className="list-disc pl-6 mb-2 text-black space-y-1">
                 <li>Your name and contact information</li>
                 <li>Description of the issue</li>
                 <li>Date(s) the issue occurred</li>
                 <li>Names of people involved</li>
                 <li>What resolution you are seeking</li>
               </ul>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Timeline: Within 30 days of the incident
               </p>
             </div>
 
             <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-black mb-2">
                 Step 3: Investigation
               </h3>
-              <p className="text-gray-700 mb-2">
+              <p className="text-black mb-2">
                 We will investigate your grievance and provide a written
                 response.
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Timeline: Within 30 days of receiving your grievance
               </p>
             </div>
 
             <div className="bg-gray-50 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-black mb-2">
                 Step 4: Appeal
               </h3>
-              <p className="text-gray-700 mb-2">
+              <p className="text-black mb-2">
                 If you disagree with our decision, you can appeal to the state
                 workforce board.
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Timeline: Within 15 days of receiving our decision
               </p>
             </div>
@@ -138,14 +138,14 @@ export default function GrievancePage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-black mb-4">
             Submit Your Grievance
           </h2>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
             <div className="space-y-4">
               <div>
-                <p className="font-semibold text-gray-900 mb-2">Mail:</p>
-                <p className="text-gray-700">
+                <p className="font-semibold text-black mb-2">Mail:</p>
+                <p className="text-black">
                   Grievance Officer
                   <br />
                   Elevate for Humanity
@@ -154,8 +154,8 @@ export default function GrievancePage() {
                 </p>
               </div>
               <div>
-                <p className="font-semibold text-gray-900 mb-2">Email:</p>
-                <p className="text-gray-700">
+                <p className="font-semibold text-black mb-2">Email:</p>
+                <p className="text-black">
                   <a
                     href="mailto:grievance@elevateforhumanity.institute"
                     className="text-brand-blue-600 hover:underline"
@@ -165,8 +165,8 @@ export default function GrievancePage() {
                 </p>
               </div>
               <div>
-                <p className="font-semibold text-gray-900 mb-2">Phone:</p>
-                <p className="text-gray-700">
+                <p className="font-semibold text-black mb-2">Phone:</p>
+                <p className="text-black">
                   <a
                     href="tel:+13173143757"
                     className="text-brand-blue-600 hover:underline"
@@ -176,8 +176,8 @@ export default function GrievancePage() {
                 </p>
               </div>
               <div>
-                <p className="font-semibold text-gray-900 mb-2">In Person:</p>
-                <p className="text-gray-700">
+                <p className="font-semibold text-black mb-2">In Person:</p>
+                <p className="text-black">
                   Visit our office Monday-Friday, 9am-5pm
                 </p>
               </div>
@@ -186,26 +186,26 @@ export default function GrievancePage() {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-black mb-4">
             No Retaliation
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-black mb-4">
             You will not face retaliation for filing a grievance. Your services
             will continue while your grievance is being resolved.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-2xl font-semibold text-black mb-4">
             Additional Support
           </h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-black mb-4">
             If you need assistance filing a grievance or have questions about
             the process, contact:
           </p>
           <div className="bg-gray-50 p-6 rounded-lg">
-            <p className="text-gray-700">
-              <strong className="text-gray-900">
+            <p className="text-black">
+              <strong className="text-black">
                 Student Support Services
               </strong>
               <br />
@@ -228,7 +228,7 @@ export default function GrievancePage() {
           </div>
         </section>
 
-        <div className="text-sm text-gray-600 mt-8 pt-8 border-t">
+        <div className="text-sm text-black mt-8 pt-8 border-t">
           <p>Last Updated: {new Date().toLocaleDateString()}</p>
           <p>Effective Date: {new Date().toLocaleDateString()}</p>
         </div>
@@ -239,10 +239,10 @@ export default function GrievancePage() {
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                     Your Journey Starts Here
                   </h2>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  <p className="text-lg text-black mb-6 leading-relaxed">
                     Every great career begins with a single step. Whether you're
                     looking to change careers, upgrade your skills, or enter the
                     workforce for the first time, we're here to help you
@@ -264,7 +264,7 @@ export default function GrievancePage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         100% free training - no tuition, no hidden costs
                       </span>
                     </li>
@@ -282,7 +282,7 @@ export default function GrievancePage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Industry-recognized certifications that employers value
                       </span>
                     </li>
@@ -300,7 +300,7 @@ export default function GrievancePage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Job placement assistance and career support
                       </span>
                     </li>
@@ -318,7 +318,7 @@ export default function GrievancePage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Flexible scheduling for working adults
                       </span>
                     </li>

@@ -56,7 +56,7 @@ export default function MicroProgramsPage() {
             Why Micro Programs Matter
           </h2>
 
-          <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-lg text-black leading-relaxed">
             <p>
               Not every career path requires years of training. Sometimes you
               just need a specific certification to qualify for a job, meet a
@@ -98,7 +98,7 @@ export default function MicroProgramsPage() {
                 <Clock className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Fast Completion</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Finish in days or weeks, not months
               </p>
             </div>
@@ -108,7 +108,7 @@ export default function MicroProgramsPage() {
                 <Target className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Focused Training</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Learn exactly what you need, nothing extra
               </p>
             </div>
@@ -118,7 +118,7 @@ export default function MicroProgramsPage() {
                 <TrendingUp className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Career Boost</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Add credentials to your resume quickly
               </p>
             </div>
@@ -128,7 +128,7 @@ export default function MicroProgramsPage() {
                 <Zap className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Low Cost</h3>
-              <p className="text-gray-600">Affordable or free with funding</p>
+              <p className="text-black">Affordable or free with funding</p>
             </div>
           </div>
         </div>
@@ -187,7 +187,7 @@ export default function MicroProgramsPage() {
               <h3 className="font-bold text-black mb-2">
                 You need a specific certification
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Many jobs require CPR, safety training, or other specific
                 credentials. Get certified quickly.
               </p>
@@ -197,7 +197,7 @@ export default function MicroProgramsPage() {
               <h3 className="font-bold text-black mb-2">
                 You're exploring career options
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Try a short program to see if a field interests you before
                 committing to longer training.
               </p>
@@ -207,7 +207,7 @@ export default function MicroProgramsPage() {
               <h3 className="font-bold text-black mb-2">
                 You want to add skills fast
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Boost your resume with additional certifications that make you
                 more competitive.
               </p>
@@ -217,7 +217,7 @@ export default function MicroProgramsPage() {
               <h3 className="font-bold text-black mb-2">
                 You need workforce readiness
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Prepare for employment with essential workplace skills and
                 professional development.
               </p>
@@ -232,7 +232,7 @@ export default function MicroProgramsPage() {
           <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6">
             Get Certified This Month
           </h2>
-          <p className="text-xl text-gray-700 mb-8">
+          <p className="text-xl text-black mb-8">
             Start a micro program and earn your certification in weeks.
           </p>
           <Link

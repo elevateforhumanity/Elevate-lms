@@ -132,18 +132,18 @@ export default function VirtualCareerFair() {
                   <div className="text-5xl text-3xl md:text-4xl lg:text-5xl">{employer.logo}</div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold">{employer.name}</h3>
-                    <p className="text-sm text-gray-600">{employer.industry}</p>
+                    <p className="text-sm text-black">{employer.industry}</p>
                     <p className="text-sm text-orange-600 font-semibold mt-1">
                       {employer.openPositions} open positions
                     </p>
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-sm mb-4">{employer.description}</p>
+                <p className="text-black text-sm mb-4">{employer.description}</p>
 
                 <div className="mb-4">
-                  <p className="text-sm font-semibold text-gray-700 mb-1">Representatives:</p>
-                  <p className="text-sm text-gray-600">{employer.representatives.join(', ')}</p>
+                  <p className="text-sm font-semibold text-black mb-1">Representatives:</p>
+                  <p className="text-sm text-black">{employer.representatives.join(', ')}</p>
                 </div>
 
                 <div className="space-y-2">
@@ -170,10 +170,10 @@ export default function VirtualCareerFair() {
                       }`}>
                         {session.type}
                       </span>
-                      <span className="text-sm text-gray-600">{session.time}</span>
+                      <span className="text-sm text-black">{session.time}</span>
                     </div>
                     <h3 className="text-xl font-bold mb-1">{session.title}</h3>
-                    <p className="text-gray-600">Speaker: {session.speaker}</p>
+                    <p className="text-black">Speaker: {session.speaker}</p>
                   </div>
                   <Button>Register</Button>
                 </div>
@@ -186,7 +186,7 @@ export default function VirtualCareerFair() {
           <div className="text-center py-12">
             <div className="text-6xl mb-4 text-4xl md:text-5xl lg:text-6xl">💬</div>
             <h2 className="text-2xl font-bold mb-4">Networking Lounge</h2>
-            <p className="text-gray-600 mb-6">Connect with other attendees and employers</p>
+            <p className="text-black mb-6">Connect with other attendees and employers</p>
             <div className="flex gap-4 justify-center">
               <Button>Join Video Chat</Button>
               <Button variant="secondary">Browse Attendees</Button>

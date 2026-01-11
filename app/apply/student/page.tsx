@@ -17,10 +17,10 @@ export default function StudentApplicationPage() {
           <p className="text-xs font-semibold tracking-widest text-emerald-700 uppercase mb-2">
             Student Application
           </p>
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
+          <h1 className="text-3xl sm:text-4xl font-bold text-black mb-3">
             Start Your Career Journey
           </h1>
-          <p className="text-base sm:text-lg text-slate-700 max-w-3xl">
+          <p className="text-base sm:text-lg text-black max-w-3xl">
             Take the first step toward a better future. This application helps
             us understand your goals and match you with the right training
             program.

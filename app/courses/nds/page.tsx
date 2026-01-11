@@ -156,7 +156,7 @@ export default function NdsPage() {
                 <Award className="w-8 h-8 text-brand-orange-600" />
               </div>
               <h3 className="text-lg font-semibold mb-2">DOT Required</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Federally mandated training for all commercial drivers and
                 supervisors
               </p>
@@ -166,7 +166,7 @@ export default function NdsPage() {
                 <CheckCircle className="w-8 h-8 text-brand-green-600" />
               </div>
               <h3 className="text-lg font-semibold mb-2">100% Free</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Included with CDL program enrollment through WIOA or WRG funding
               </p>
             </div>
@@ -175,7 +175,7 @@ export default function NdsPage() {
                 <Clock className="w-8 h-8 text-brand-blue-600" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Self-Paced</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Complete training on your schedule with 24/7 online access
               </p>
             </div>
@@ -204,14 +204,14 @@ export default function NdsPage() {
                     <h4 className="text-xl font-semibold mb-2">
                       {course.title}
                     </h4>
-                    <p className="text-gray-600 mb-4">{course.description}</p>
+                    <p className="text-black mb-4">{course.description}</p>
 
                     <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
+                      <div className="flex items-center gap-2 text-sm text-black">
                         <Clock className="w-4 h-4" />
                         <span>Duration: {course.duration}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-700">
+                      <div className="flex items-center gap-2 text-sm text-black">
                         <Award className="w-4 h-4" />
                         <span>Certificate: {course.certificate}</span>
                       </div>
@@ -250,7 +250,7 @@ export default function NdsPage() {
               className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow"
             >
               <h3 className="text-lg font-semibold mb-2">CDL Training</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-black mb-4">
                 Includes all DOT-required training and compliance courses
               </p>
               <span className="text-brand-orange-600 font-semibold">Learn More →</span>
@@ -263,7 +263,7 @@ export default function NdsPage() {
               <h3 className="text-lg font-semibold mb-2">
                 Drug Collector Certification
               </h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-black mb-4">
                 Includes DOT drug testing procedures and compliance
               </p>
               <span className="text-brand-orange-600 font-semibold">Learn More →</span>

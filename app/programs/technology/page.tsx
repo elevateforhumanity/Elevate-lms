@@ -35,28 +35,28 @@ export default function TechnologyPage() {
               <Image src="/images/icons/clock.png" alt="Duration" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
               <div>
                 <h3 className="font-bold text-black mb-1">Duration</h3>
-                <p className="text-gray-700">8-16 weeks</p>
+                <p className="text-black">8-16 weeks</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
               <div>
                 <h3 className="font-bold text-black mb-1">Cost</h3>
-                <p className="text-gray-700">Free with funding when eligible</p>
+                <p className="text-black">Free with funding when eligible</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <Image src="/images/icons/shield.png" alt="Format" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
               <div>
                 <h3 className="font-bold text-black mb-1">Format</h3>
-                <p className="text-gray-700">Hybrid (online & hands-on labs)</p>
+                <p className="text-black">Hybrid (online & hands-on labs)</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <Image src="/images/icons/award.png" alt="Outcome" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
               <div>
                 <h3 className="font-bold text-black mb-1">Outcome</h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   CompTIA A+, Network+, Google IT certification
                 </p>
               </div>
@@ -72,10 +72,10 @@ export default function TechnologyPage() {
             About the Program
           </h2>
           <div className="bg-white rounded-xl p-8 shadow-sm">
-            <p className="text-gray-700 mb-4">
+            <p className="text-black mb-4">
               Our Technology & IT Support pathway equips you with core IT support, networking, and cybersecurity skills. Learn hands-on in a lab setting and prepare for industry-recognized certifications that employers value.
             </p>
-            <p className="text-gray-700">
+            <p className="text-black">
               From troubleshooting networks to setting up systems and supporting users, you'll gain real-world experience that prepares you for entry-level IT positions with growth potential.
             </p>
           </div>
@@ -90,16 +90,16 @@ export default function TechnologyPage() {
           </h2>
           <div className="bg-gray-50 rounded-xl p-8 shadow-sm">
             <ul className="space-y-4 list-disc list-inside">
-              <li className="text-gray-700">
+              <li className="text-black">
                 Career changers interested in technology
               </li>
-              <li className="text-gray-700">
+              <li className="text-black">
                 No prior IT experience required
               </li>
-              <li className="text-gray-700">
+              <li className="text-black">
                 Tech-curious individuals ready to learn
               </li>
-              <li className="text-gray-700">
+              <li className="text-black">
                 Justice-impacted individuals welcome
               </li>
             </ul>
@@ -117,28 +117,28 @@ export default function TechnologyPage() {
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <div className="text-4xl mb-4">💻</div>
               <h3 className="font-bold text-black mb-2">Real-World Skills</h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-black text-sm">
                 Troubleshoot networks, set up systems, and support users in live lab environments
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <div className="text-4xl mb-4">🎓</div>
               <h3 className="font-bold text-black mb-2">Industry Certifications</h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-black text-sm">
                 Prepare for CompTIA A+, Network+, and Google IT Support credentials
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <div className="text-4xl mb-4">💰</div>
               <h3 className="font-bold text-black mb-2">Funded Training</h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-black text-sm">
                 Training fully covered for eligible Indiana residents via WIOA grants
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <div className="text-4xl mb-4">🎖</div>
               <h3 className="font-bold text-black mb-2">Veteran Eligible</h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-black text-sm">
                 VA education benefits accepted for qualified veterans
               </p>
             </div>
@@ -152,21 +152,21 @@ export default function TechnologyPage() {
           <h2 className="text-3xl font-bold text-black mb-6">
             Funding Options
           </h2>
-          <p className="text-gray-700 mb-6">You may qualify for:</p>
+          <p className="text-black mb-6">You may qualify for:</p>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-blue-50 rounded-lg p-6">
               <h3 className="font-bold text-black mb-2">WIOA</h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-black text-sm">
                 Workforce Innovation and Opportunity Act funding
               </p>
             </div>
             <div className="bg-blue-50 rounded-lg p-6">
               <h3 className="font-bold text-black mb-2">WRG</h3>
-              <p className="text-gray-700 text-sm">Workforce Ready Grant</p>
+              <p className="text-black text-sm">Workforce Ready Grant</p>
             </div>
             <div className="bg-blue-50 rounded-lg p-6">
               <h3 className="font-bold text-black mb-2">JRI</h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-black text-sm">
                 Justice Reinvestment Initiative
               </p>
             </div>
@@ -174,7 +174,7 @@ export default function TechnologyPage() {
               <h3 className="font-bold text-black mb-2">
                 Employer Sponsorship
               </h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-black text-sm">
                 Some employers sponsor IT training
               </p>
             </div>
@@ -188,30 +188,30 @@ export default function TechnologyPage() {
           <h2 className="text-3xl font-bold text-black mb-6">
             Support Services
           </h2>
-          <p className="text-gray-700 mb-6">We help coordinate:</p>
+          <p className="text-black mb-6">We help coordinate:</p>
           <div className="bg-white rounded-xl p-8 shadow-sm">
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">Case management</span>
+                <span className="text-black">Case management</span>
               </li>
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">
+                <span className="text-black">
                   Career counseling and job placement
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">Transportation resources</span>
+                <span className="text-black">Transportation resources</span>
               </li>
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">Equipment and tools assistance</span>
+                <span className="text-black">Equipment and tools assistance</span>
               </li>
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">Documentation support</span>
+                <span className="text-black">Documentation support</span>
               </li>
             </ul>
           </div>
@@ -224,7 +224,7 @@ export default function TechnologyPage() {
           <h2 className="text-3xl font-bold text-black mb-6">
             Career Outcomes
           </h2>
-          <p className="text-gray-700 mb-6">Students typically move into:</p>
+          <p className="text-black mb-6">Students typically move into:</p>
           <div className="grid md:grid-cols-3 gap-4">
             <div className="bg-green-50 rounded-lg p-6 text-center">
               <h3 className="font-bold text-black mb-2">
@@ -262,7 +262,7 @@ export default function TechnologyPage() {
               </div>
               <div>
                 <h3 className="font-bold mb-1">Apply</h3>
-                <p className="text-slate-600 text-sm">
+                <p className="text-black text-sm">
                   Submit your application online
                 </p>
               </div>
@@ -273,7 +273,7 @@ export default function TechnologyPage() {
               </div>
               <div>
                 <h3 className="font-bold mb-1">Meet with advisor</h3>
-                <p className="text-slate-600 text-sm">
+                <p className="text-black text-sm">
                   Discuss your goals and eligibility
                 </p>
               </div>
@@ -284,7 +284,7 @@ export default function TechnologyPage() {
               </div>
               <div>
                 <h3 className="font-bold mb-1">Confirm eligibility</h3>
-                <p className="text-slate-600 text-sm">
+                <p className="text-black text-sm">
                   We help with funding paperwork
                 </p>
               </div>
@@ -295,7 +295,7 @@ export default function TechnologyPage() {
               </div>
               <div>
                 <h3 className="font-bold mb-1">Enroll</h3>
-                <p className="text-slate-600 text-sm">
+                <p className="text-black text-sm">
                   Start your training program
                 </p>
               </div>

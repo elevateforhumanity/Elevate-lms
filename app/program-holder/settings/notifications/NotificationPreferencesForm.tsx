@@ -61,10 +61,10 @@ export default function NotificationPreferencesForm({
       <div className="flex items-start gap-4">
         <Bell className="w-6 h-6 text-blue-600 mt-1" />
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+          <h3 className="text-lg font-semibold text-black mb-1">
             In-App Notifications
           </h3>
-          <p className="text-sm text-gray-600 mb-2">
+          <p className="text-sm text-black mb-2">
             Always enabled. You'll see notifications in your dashboard.
           </p>
           <div className="flex items-center gap-2 text-sm text-green-600">
@@ -80,10 +80,10 @@ export default function NotificationPreferencesForm({
       <div className="flex items-start gap-4">
         <Mail className="w-6 h-6 text-blue-600 mt-1" />
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+          <h3 className="text-lg font-semibold text-black mb-1">
             Email Notifications
           </h3>
-          <p className="text-sm text-gray-600 mb-3">
+          <p className="text-sm text-black mb-3">
             Receive email alerts when students enroll or complete milestones.
           </p>
           <label className="flex items-center gap-3 cursor-pointer">
@@ -98,7 +98,7 @@ export default function NotificationPreferencesForm({
               }
               className="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
             />
-            <span className="text-sm font-medium text-gray-700">
+            <span className="text-sm font-medium text-black">
               Enable email notifications
             </span>
           </label>
@@ -111,10 +111,10 @@ export default function NotificationPreferencesForm({
       <div className="flex items-start gap-4">
         <MessageSquare className="w-6 h-6 text-blue-600 mt-1" />
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+          <h3 className="text-lg font-semibold text-black mb-1">
             SMS Notifications
           </h3>
-          <p className="text-sm text-gray-600 mb-3">
+          <p className="text-sm text-black mb-3">
             Receive text message alerts for urgent updates. Requires consent.
           </p>
 
@@ -132,7 +132,7 @@ export default function NotificationPreferencesForm({
                 disabled={!preferences.sms_consent}
                 className="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500 disabled:opacity-50"
               />
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-black">
                 Enable SMS notifications
               </span>
             </label>
@@ -160,7 +160,7 @@ export default function NotificationPreferencesForm({
                   }
                   className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mt-0.5"
                 />
-                <span className="text-xs text-gray-600">
+                <span className="text-xs text-black">
                   I consent to receive SMS notifications at this number. Message
                   and data rates may apply. Reply STOP to opt out.
                 </span>
@@ -181,7 +181,7 @@ export default function NotificationPreferencesForm({
 
       {/* Save Button */}
       <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-black">
           Changes take effect immediately after saving.
         </p>
         <button

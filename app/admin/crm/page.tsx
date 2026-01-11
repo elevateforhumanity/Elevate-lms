@@ -78,8 +78,8 @@ export default async function CRMHubPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">CRM Hub</h1>
-          <p className="text-gray-600 mt-2">
+          <h1 className="text-3xl font-bold text-black">CRM Hub</h1>
+          <p className="text-black mt-2">
             Manage all customer relationships and campaigns
           </p>
         </div>
@@ -95,11 +95,11 @@ export default async function CRMHubPage() {
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Users className="w-6 h-6 text-blue-600" />
               </div>
-              <span className="text-2xl font-bold text-gray-900">
+              <span className="text-2xl font-bold text-black">
                 {totalContacts || 0}
               </span>
             </div>
-            <h3 className="text-sm font-semibold text-gray-600">
+            <h3 className="text-sm font-semibold text-black">
               Total Contacts
             </h3>
           </Link>
@@ -113,11 +113,11 @@ export default async function CRMHubPage() {
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                 <Target className="w-6 h-6 text-green-600" />
               </div>
-              <span className="text-2xl font-bold text-gray-900">
+              <span className="text-2xl font-bold text-black">
                 {activeLeads || 0}
               </span>
             </div>
-            <h3 className="text-sm font-semibold text-gray-600">
+            <h3 className="text-sm font-semibold text-black">
               Active Leads
             </h3>
           </Link>
@@ -131,11 +131,11 @@ export default async function CRMHubPage() {
               <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
                 <Clock className="w-6 h-6 text-yellow-600" />
               </div>
-              <span className="text-2xl font-bold text-gray-900">
+              <span className="text-2xl font-bold text-black">
                 {pendingFollowUps || 0}
               </span>
             </div>
-            <h3 className="text-sm font-semibold text-gray-600">
+            <h3 className="text-sm font-semibold text-black">
               Pending Follow-ups
             </h3>
           </Link>
@@ -149,11 +149,11 @@ export default async function CRMHubPage() {
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                 <Calendar className="w-6 h-6 text-purple-600" />
               </div>
-              <span className="text-2xl font-bold text-gray-900">
+              <span className="text-2xl font-bold text-black">
                 {scheduledMeetings || 0}
               </span>
             </div>
-            <h3 className="text-sm font-semibold text-gray-600">
+            <h3 className="text-sm font-semibold text-black">
               Upcoming Meetings
             </h3>
           </Link>
@@ -198,7 +198,7 @@ export default async function CRMHubPage() {
           {/* Recent Campaigns */}
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-gray-900">
+              <h2 className="text-xl font-bold text-black">
                 Recent Campaigns
               </h2>
               <Link
@@ -220,13 +220,13 @@ export default async function CRMHubPage() {
                       <Mail className="w-5 h-5 text-blue-600" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-gray-900 truncate">
+                      <h3 className="font-semibold text-black truncate">
                         {campaign.name}
                       </h3>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <p className="text-sm text-black mt-1">
                         {campaign.subject}
                       </p>
-                      <div className="flex items-center gap-4 mt-2 text-xs text-gray-700">
+                      <div className="flex items-center gap-4 mt-2 text-xs text-black">
                         <span>Sent: {campaign.sent_count || 0}</span>
                         <span>Opened: {campaign.opened_count || 0}</span>
                         <span>Clicked: {campaign.clicked_count || 0}</span>
@@ -236,8 +236,8 @@ export default async function CRMHubPage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-gray-700">
-                <Mail className="w-12 h-12 mx-auto mb-4 text-gray-600" />
+              <div className="text-center py-8 text-black">
+                <Mail className="w-12 h-12 mx-auto mb-4 text-black" />
                 <p>No campaigns yet</p>
                 <Link
                   href="/admin/crm/campaigns/new"
@@ -254,8 +254,8 @@ export default async function CRMHubPage() {
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-xl font-bold text-gray-900">Open Deals</h2>
-                <p className="text-sm text-gray-600 mt-1">
+                <h2 className="text-xl font-bold text-black">Open Deals</h2>
+                <p className="text-sm text-black mt-1">
                   Pipeline Value:{' '}
                   <span className="font-bold text-green-600">
                     ${pipelineValue.toLocaleString()}
@@ -281,11 +281,11 @@ export default async function CRMHubPage() {
                       <DollarSign className="w-5 h-5 text-green-600" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-gray-900 truncate">
+                      <h3 className="font-semibold text-black truncate">
                         {deal.name}
                       </h3>
                       <div className="flex items-center gap-4 mt-2">
-                        <span className="text-lg font-bold text-gray-900">
+                        <span className="text-lg font-bold text-black">
                           ${Number(deal.amount).toLocaleString()}
                         </span>
                         <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded capitalize">
@@ -293,7 +293,7 @@ export default async function CRMHubPage() {
                         </span>
                       </div>
                       {deal.expected_close_date && (
-                        <p className="text-xs text-gray-700 mt-1">
+                        <p className="text-xs text-black mt-1">
                           Expected close:{' '}
                           {new Date(
                             deal.expected_close_date
@@ -305,8 +305,8 @@ export default async function CRMHubPage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-gray-700">
-                <DollarSign className="w-12 h-12 mx-auto mb-4 text-gray-600" />
+              <div className="text-center py-8 text-black">
+                <DollarSign className="w-12 h-12 mx-auto mb-4 text-black" />
                 <p>No open deals</p>
                 <Link
                   href="/admin/crm/deals/new"

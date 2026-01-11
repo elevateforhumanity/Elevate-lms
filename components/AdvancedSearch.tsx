@@ -288,7 +288,7 @@ export function AdvancedSearch({ onSearch }: AdvancedSearchProps) {
                 </div>
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-lg mb-2">{result.title}</h3>
-                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                  <div className="flex items-center gap-4 text-sm text-black mb-4">
                     <span>{result.duration}</span>
                     <span>•</span>
                     <span>{result.level}</span>
@@ -297,7 +297,7 @@ export function AdvancedSearch({ onSearch }: AdvancedSearchProps) {
                     <div className="flex items-center gap-1">
                       <span className="text-orange-500">★</span>
                       <span className="font-semibold">{result.rating}</span>
-                      <span className="text-sm text-gray-600">({result.students})</span>
+                      <span className="text-sm text-black">({result.students})</span>
                     </div>
                     <div className="font-bold text-green-600">
                       {result.price === 0 ? 'FREE' : `$${result.price}`}

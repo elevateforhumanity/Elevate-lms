@@ -100,7 +100,7 @@ export function EnhancedVideoPlayer(props: EnhancedVideoPlayerProps) {
       </div>
 
       <div className="flex justify-between items-center text-xs text-slate-500">
-        <span className="font-medium text-slate-700">{props.title}</span>
+        <span className="font-medium text-black">{props.title}</span>
         {completed ? (
           <span className="text-green-600 font-semibold flex items-center gap-1">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">

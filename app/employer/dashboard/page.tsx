@@ -93,11 +93,11 @@ export default async function EmployerDashboardOrchestrated() {
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
               <div className="flex items-center justify-between mb-2">
                 <Briefcase className="h-8 w-8 text-blue-600" />
-                <span className="text-3xl font-bold text-slate-900">
+                <span className="text-3xl font-bold text-black">
                   {postings?.length || 0}
                 </span>
               </div>
-              <div className="text-sm text-slate-600">Active Job Postings</div>
+              <div className="text-sm text-black">Active Job Postings</div>
             </div>
 
             <div
@@ -119,7 +119,7 @@ export default async function EmployerDashboardOrchestrated() {
                   className={`text-3xl font-bold ${
                     (applications?.length || 0) > 0
                       ? 'text-green-900'
-                      : 'text-slate-900'
+                      : 'text-black'
                   }`}
                 >
                   {applications?.length || 0}
@@ -129,7 +129,7 @@ export default async function EmployerDashboardOrchestrated() {
                 className={`text-sm ${
                   (applications?.length || 0) > 0
                     ? 'text-green-900'
-                    : 'text-slate-600'
+                    : 'text-black'
                 }`}
               >
                 Pending Applications
@@ -151,7 +151,7 @@ export default async function EmployerDashboardOrchestrated() {
                 />
                 <span
                   className={`text-3xl font-bold ${
-                    apprenticeshipProgram ? 'text-purple-900' : 'text-slate-900'
+                    apprenticeshipProgram ? 'text-purple-900' : 'text-black'
                   }`}
                 >
                   {apprenticeshipProgram ? '1' : '0'}
@@ -159,7 +159,7 @@ export default async function EmployerDashboardOrchestrated() {
               </div>
               <div
                 className={`text-sm ${
-                  apprenticeshipProgram ? 'text-purple-900' : 'text-slate-600'
+                  apprenticeshipProgram ? 'text-purple-900' : 'text-black'
                 }`}
               >
                 Apprenticeship Programs
@@ -169,7 +169,7 @@ export default async function EmployerDashboardOrchestrated() {
 
           {/* Available Sections */}
           <div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">
+            <h3 className="text-2xl font-bold text-black mb-6">
               Available Actions
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
@@ -247,7 +247,7 @@ export default async function EmployerDashboardOrchestrated() {
           {/* Recent Postings */}
           {(postings?.length || 0) > 0 && (
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">
+              <h3 className="text-xl font-bold text-black mb-4">
                 Active Job Postings
               </h3>
               <div className="space-y-3">
@@ -257,10 +257,10 @@ export default async function EmployerDashboardOrchestrated() {
                     className="flex items-center justify-between p-3 bg-slate-50 rounded-lg"
                   >
                     <div>
-                      <div className="font-semibold text-slate-900">
+                      <div className="font-semibold text-black">
                         {posting.title}
                       </div>
-                      <div className="text-sm text-slate-600">
+                      <div className="text-sm text-black">
                         Posted:{' '}
                         {safeFormatDate(posting.created_at)}
                       </div>
@@ -285,10 +285,10 @@ export default async function EmployerDashboardOrchestrated() {
             <div className="flex items-center gap-3 mb-4">
               <Building2 className="h-8 w-8 text-blue-600" />
               <div>
-                <h3 className="font-bold text-slate-900">
+                <h3 className="font-bold text-black">
                   {profile.company_name || 'Your Company'}
                 </h3>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-black">
                   {profile.verified ? (
                     <span className="text-green-600 font-semibold">
                       ✓ Verified
@@ -305,7 +305,7 @@ export default async function EmployerDashboardOrchestrated() {
 
           {/* Quick Actions */}
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">
+            <h3 className="text-lg font-bold text-black mb-4">
               Quick Actions
             </h3>
             <div className="space-y-3">
@@ -319,7 +319,7 @@ export default async function EmployerDashboardOrchestrated() {
               )}
               <a
                 href="/employer/candidates"
-                className="block w-full text-center px-4 py-3 bg-slate-200 text-slate-900 rounded-lg font-semibold hover:bg-slate-300 transition"
+                className="block w-full text-center px-4 py-3 bg-slate-200 text-black rounded-lg font-semibold hover:bg-slate-300 transition"
               >
                 Browse Candidates
               </a>
@@ -361,7 +361,7 @@ export default async function EmployerDashboardOrchestrated() {
 
           {/* Employer Tools */}
           <div className="mt-8">
-            <h3 className="text-lg font-semibold text-slate-900 mb-4">
+            <h3 className="text-lg font-semibold text-black mb-4">
               Employer Tools
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">

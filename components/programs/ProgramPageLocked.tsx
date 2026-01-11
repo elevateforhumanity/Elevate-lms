@@ -85,7 +85,7 @@ export function ProgramPageLocked({
       {/* 1. WHO THIS IS FOR */}
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-black mb-8 text-center">
             Is This For You?
           </h2>
 
@@ -96,7 +96,7 @@ export function ProgramPageLocked({
                 className="flex items-start gap-4 bg-slate-50 p-6 rounded-lg"
               >
                 <Users className="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" />
-                <p className="text-lg text-slate-900">{item}</p>
+                <p className="text-lg text-black">{item}</p>
               </div>
             ))}
           </div>
@@ -106,7 +106,7 @@ export function ProgramPageLocked({
       {/* 2. WHAT YOU GET */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-black mb-8 text-center">
             What You Get
           </h2>
 
@@ -117,7 +117,7 @@ export function ProgramPageLocked({
                 className="flex items-start gap-4 bg-white p-6 rounded-lg border border-slate-200"
               >
                 <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
-                <p className="text-lg text-slate-900 font-semibold">
+                <p className="text-lg text-black font-semibold">
                   {outcome}
                 </p>
               </div>
@@ -129,25 +129,25 @@ export function ProgramPageLocked({
       {/* 3. HOW LONG IT TAKES */}
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-black mb-8 text-center">
             Time Commitment
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-slate-50 p-8 rounded-lg text-center">
               <Clock className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <div className="text-3xl font-bold text-slate-900 mb-2">
+              <div className="text-3xl font-bold text-black mb-2">
                 {duration}
               </div>
-              <div className="text-slate-600">Total Duration</div>
+              <div className="text-black">Total Duration</div>
             </div>
 
             <div className="bg-slate-50 p-8 rounded-lg text-center">
               <Clock className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <div className="text-3xl font-bold text-slate-900 mb-2">
+              <div className="text-3xl font-bold text-black mb-2">
                 {schedule}
               </div>
-              <div className="text-slate-600">Schedule</div>
+              <div className="text-black">Schedule</div>
             </div>
           </div>
         </div>
@@ -156,16 +156,16 @@ export function ProgramPageLocked({
       {/* 4. WHAT IT COSTS */}
       <section className="py-16 bg-green-50">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8">
+          <h2 className="text-3xl font-bold text-black mb-8">
             What It Costs
           </h2>
 
           <div className="bg-white border-2 border-green-600 rounded-lg p-12 mb-6">
             <div className="text-5xl font-bold text-green-600 mb-4">{cost}</div>
-            <div className="text-xl text-slate-700">Funded by {fundedBy}</div>
+            <div className="text-xl text-black">Funded by {fundedBy}</div>
           </div>
 
-          <p className="text-slate-600">
+          <p className="text-black">
             No tuition. No student debt. No hidden fees.
           </p>
         </div>
@@ -179,10 +179,10 @@ export function ProgramPageLocked({
               {rapidsId && (
                 <div className="bg-slate-50 p-6 rounded-lg text-center">
                   <Shield className="h-8 w-8 text-blue-600 mx-auto mb-4" />
-                  <div className="text-sm text-slate-600 mb-2">
+                  <div className="text-sm text-black mb-2">
                     DOL Registered
                   </div>
-                  <div className="font-mono text-sm font-semibold text-slate-900">
+                  <div className="font-mono text-sm font-semibold text-black">
                     {rapidsId}
                   </div>
                 </div>
@@ -191,10 +191,10 @@ export function ProgramPageLocked({
               {avgSalary && (
                 <div className="bg-slate-50 p-6 rounded-lg text-center">
                   <DollarSign className="h-8 w-8 text-green-600 mx-auto mb-4" />
-                  <div className="text-sm text-slate-600 mb-2">
+                  <div className="text-sm text-black mb-2">
                     Average Salary
                   </div>
-                  <div className="text-2xl font-bold text-slate-900">
+                  <div className="text-2xl font-bold text-black">
                     {avgSalary}
                   </div>
                 </div>

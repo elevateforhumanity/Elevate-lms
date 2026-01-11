@@ -62,7 +62,7 @@ export default async function EmployerDocumentsPage() {
     };
     return (
       styles[status as keyof typeof styles] ||
-      'bg-slate-100 text-slate-800 border-slate-300'
+      'bg-slate-100 text-black border-slate-300'
     );
   };
 
@@ -70,10 +70,10 @@ export default async function EmployerDocumentsPage() {
     <div className="min-h-screen bg-slate-50">
       <section className="bg-white border-b py-8">
         <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">
+          <h1 className="text-4xl font-bold text-black mb-2">
             My Documents
           </h1>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-black">
             Upload and manage your required documents
           </p>
         </div>
@@ -82,7 +82,7 @@ export default async function EmployerDocumentsPage() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="bg-white rounded-lg shadow-sm border p-6 mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold text-slate-900">
+            <h2 className="text-2xl font-bold text-black">
               Upload New Document
             </h2>
             <Link
@@ -93,7 +93,7 @@ export default async function EmployerDocumentsPage() {
               Upload Document
             </Link>
           </div>
-          <p className="text-slate-600">
+          <p className="text-black">
             Upload required documents to complete your profile and maintain
             compliance.
           </p>
@@ -101,7 +101,7 @@ export default async function EmployerDocumentsPage() {
 
         {requirements && requirements.length > 0 && (
           <div className="bg-white rounded-lg shadow-sm border p-6 mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               Required Documents
             </h2>
             <div className="space-y-3">
@@ -121,13 +121,13 @@ export default async function EmployerDocumentsPage() {
                         <FileText className="w-5 h-5 text-slate-400" />
                       )}
                       <div>
-                        <h3 className="font-semibold text-slate-900">
+                        <h3 className="font-semibold text-black">
                           {req.description}
                           {req.is_required && (
                             <span className="text-red-600 ml-1">*</span>
                           )}
                         </h3>
-                        <p className="text-sm text-slate-600">
+                        <p className="text-sm text-black">
                           {req.instructions}
                         </p>
                       </div>
@@ -148,7 +148,7 @@ export default async function EmployerDocumentsPage() {
         )}
 
         <div className="bg-white rounded-lg shadow-sm border p-6">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl font-bold text-black mb-4">
             Uploaded Documents
           </h2>
           {documents && documents.length > 0 ? (
@@ -161,10 +161,10 @@ export default async function EmployerDocumentsPage() {
                   <div className="flex items-center gap-3">
                     {getStatusIcon(doc.status)}
                     <div>
-                      <h3 className="font-semibold text-slate-900">
+                      <h3 className="font-semibold text-black">
                         {doc.file_name}
                       </h3>
-                      <p className="text-sm text-slate-600">
+                      <p className="text-sm text-black">
                         {doc.document_type
                           .replace(/_/g, ' ')
                           .replace(/\b\w/g, (l) => l.toUpperCase())}{' '}
@@ -199,7 +199,7 @@ export default async function EmployerDocumentsPage() {
           ) : (
             <div className="text-center py-12">
               <FileText className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-              <p className="text-slate-600 mb-4">No documents uploaded yet</p>
+              <p className="text-black mb-4">No documents uploaded yet</p>
               <Link
                 href="/employer/documents/upload"
                 className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"

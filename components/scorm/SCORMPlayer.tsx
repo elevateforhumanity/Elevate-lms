@@ -183,14 +183,14 @@ export function SCORMPlayer({
             <div className="flex items-center gap-4">
               <button
                 onClick={() => router.back()}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+                className="flex items-center gap-2 text-black hover:text-black transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" />
                 <span className="hidden sm:inline">Back</span>
               </button>
               <div className="h-6 w-px bg-gray-300" />
               <div>
-                <h1 className="text-lg font-semibold text-gray-900">{packageTitle}</h1>
+                <h1 className="text-lg font-semibold text-black">{packageTitle}</h1>
                 <p className="text-sm text-gray-500">
                   Attempt {attempts + 1}{maxAttempts ? ` of ${maxAttempts}` : ''}
                 </p>
@@ -200,20 +200,20 @@ export function SCORMPlayer({
               {/* Progress */}
               {progress > 0 && !isCompleted && (
                 <div className="flex items-center gap-3">
-                  <div className="text-sm text-gray-600">Progress:</div>
+                  <div className="text-sm text-black">Progress:</div>
                   <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-blue-600 transition-all duration-300"
                       style={{ width: `${progress}%` }}
                     />
                   </div>
-                  <div className="text-sm font-semibold text-gray-900">{progress}%</div>
+                  <div className="text-sm font-semibold text-black">{progress}%</div>
                 </div>
               )}
               {/* Score */}
               {score !== null && (
                 <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-600">Score:</span>
+                  <span className="text-sm text-black">Score:</span>
                   <span className={`text-sm font-semibold ${isPassed ? 'text-green-600' : 'text-brand-orange-600'}`}>
                     {score}%
                   </span>
@@ -248,7 +248,7 @@ export function SCORMPlayer({
           <div className="absolute inset-0 flex items-center justify-center bg-white">
             <div className="text-center">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4" />
-              <p className="text-gray-600">Loading course content...</p>
+              <p className="text-black">Loading course content...</p>
             </div>
           </div>
         )}
@@ -282,7 +282,7 @@ export function SCORMPlayer({
               </div>
               <button
                 onClick={() => router.push('/student/courses')}
-                className="px-6 py-2 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors font-medium"
+                className="px-6 py-2 bg-white text-black rounded-lg hover:bg-gray-100 transition-colors font-medium"
               >
                 Back to Courses
               </button>

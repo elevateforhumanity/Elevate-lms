@@ -107,12 +107,20 @@ export default async function CourseDetailPage({
                 Continue Learning
               </Link>
             ) : (
-              <Link
-                href={user ? `/courses/${courseId}/enroll` : '/login'}
-                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl text-lg font-bold transition-colors"
-              >
-                {user ? 'Enroll Now' : 'Sign In to Enroll'}
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href={user ? `/courses/${courseId}/enroll` : '/login'}
+                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl text-lg font-bold transition-colors"
+                >
+                  ⚡ {user ? 'Enroll Now - Instant Access' : 'Sign In to Enroll'}
+                </Link>
+                {course.price && course.price > 0 && (
+                  <div className="flex items-center gap-2 text-white">
+                    <span className="text-3xl font-black">${course.price}</span>
+                    <span className="text-sm opacity-90">one-time payment</span>
+                  </div>
+                )}
+              </div>
             )}
           </div>
         </div>

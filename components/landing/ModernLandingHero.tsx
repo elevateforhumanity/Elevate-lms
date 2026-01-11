@@ -38,18 +38,18 @@ export default function ModernLandingHero({
         </div>
       )}
       
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4 leading-tight">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-black mb-4 leading-tight">
         {headline}
         {accentText && (
           <span className="block text-blue-600">{accentText}</span>
         )}
       </h1>
       
-      <h2 className="text-xl md:text-2xl text-gray-700 font-semibold mb-6">
+      <h2 className="text-xl md:text-2xl text-black font-semibold mb-6">
         {subheadline}
       </h2>
       
-      <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+      <p className="text-lg text-black mb-8 leading-relaxed">
         {description}
       </p>
 
@@ -58,7 +58,7 @@ export default function ModernLandingHero({
           {features.map((feature, index) => (
             <div key={index} className="flex items-center gap-3">
               <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
-              <span className="text-gray-700">{feature}</span>
+              <span className="text-black">{feature}</span>
             </div>
           ))}
         </div>
@@ -76,7 +76,7 @@ export default function ModernLandingHero({
         {secondaryCTA && (
           <Link
             href={secondaryCTA.href}
-            className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-lg font-bold text-lg transition-colors border-2 border-gray-200"
+            className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-black px-8 py-4 rounded-lg font-bold text-lg transition-colors border-2 border-gray-200"
           >
             {secondaryCTA.text}
           </Link>

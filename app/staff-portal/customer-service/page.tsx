@@ -45,10 +45,10 @@ export default async function CustomerServicePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 Customer Service
               </h1>
-              <p className="text-slate-600 mt-2">
+              <p className="text-black mt-2">
                 Manage tickets and view protocols
               </p>
             </div>
@@ -66,34 +66,34 @@ export default async function CustomerServicePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <Ticket className="h-8 w-8 text-blue-600 mb-2" />
-            <p className="text-3xl font-bold text-slate-900">
+            <p className="text-3xl font-bold text-black">
               {tickets?.length || 0}
             </p>
-            <p className="text-slate-600 text-sm">Total Active Tickets</p>
+            <p className="text-black text-sm">Total Active Tickets</p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <AlertCircle className="h-8 w-8 text-red-600 mb-2" />
-            <p className="text-3xl font-bold text-slate-900">{openCount}</p>
-            <p className="text-slate-600 text-sm">Open Tickets</p>
+            <p className="text-3xl font-bold text-black">{openCount}</p>
+            <p className="text-black text-sm">Open Tickets</p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <Clock className="h-8 w-8 text-yellow-600 mb-2" />
-            <p className="text-3xl font-bold text-slate-900">
+            <p className="text-3xl font-bold text-black">
               {inProgressCount}
             </p>
-            <p className="text-slate-600 text-sm">In Progress</p>
+            <p className="text-black text-sm">In Progress</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               Active Tickets
             </h2>
             {!tickets || tickets.length === 0 ? (
               <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-8 text-center">
                 <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-3" />
-                <p className="text-slate-600">No active tickets</p>
+                <p className="text-black">No active tickets</p>
               </div>
             ) : (
               <div className="space-y-4">
@@ -104,10 +104,10 @@ export default async function CustomerServicePage() {
                   >
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex-1">
-                        <h3 className="font-semibold text-slate-900">
+                        <h3 className="font-semibold text-black">
                           {ticket.issue}
                         </h3>
-                        <p className="text-sm text-slate-600 mt-1">
+                        <p className="text-sm text-black mt-1">
                           Student: {ticket.student?.first_name}{' '}
                           {ticket.student?.last_name}
                         </p>
@@ -120,7 +120,7 @@ export default async function CustomerServicePage() {
                               ? 'bg-orange-100 text-orange-700'
                               : ticket.priority === 'medium'
                                 ? 'bg-yellow-100 text-yellow-700'
-                                : 'bg-slate-100 text-slate-700'
+                                : 'bg-slate-100 text-black'
                         }`}
                       >
                         {ticket.priority}
@@ -147,7 +147,7 @@ export default async function CustomerServicePage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               Service Protocols
             </h2>
             {protocols && protocols.length > 0 ? (
@@ -157,7 +157,7 @@ export default async function CustomerServicePage() {
                     key={protocol.id}
                     className="bg-white rounded-lg shadow-sm border border-slate-200 p-4"
                   >
-                    <h3 className="font-semibold text-slate-900 mb-2">
+                    <h3 className="font-semibold text-black mb-2">
                       {protocol.category}
                     </h3>
                     {protocol.dos && protocol.dos.length > 0 && (
@@ -165,7 +165,7 @@ export default async function CustomerServicePage() {
                         <p className="text-sm font-medium text-green-700">
                           Do:
                         </p>
-                        <ul className="text-sm text-slate-600 list-disc list-inside">
+                        <ul className="text-sm text-black list-disc list-inside">
                           {protocol.dos.map((item: string, idx: number) => (
                             <li key={idx}>{item}</li>
                           ))}
@@ -177,7 +177,7 @@ export default async function CustomerServicePage() {
                         <p className="text-sm font-medium text-red-700">
                           Don't:
                         </p>
-                        <ul className="text-sm text-slate-600 list-disc list-inside">
+                        <ul className="text-sm text-black list-disc list-inside">
                           {protocol.donts.map((item: string, idx: number) => (
                             <li key={idx}>{item}</li>
                           ))}
@@ -189,7 +189,7 @@ export default async function CustomerServicePage() {
               </div>
             ) : (
               <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-8 text-center">
-                <p className="text-slate-600">No protocols available</p>
+                <p className="text-black">No protocols available</p>
               </div>
             )}
           </div>

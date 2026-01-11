@@ -32,7 +32,7 @@ export default function RiseUpFoundationPage() {
         <Link
           href="/tax"
           aria-label="Link"
-          className="text-sm text-gray-600 hover:text-gray-900"
+          className="text-sm text-black hover:text-black"
         >
           ← Back to Tax Services
         </Link>
@@ -45,11 +45,11 @@ export default function RiseUpFoundationPage() {
         <h1 className="text-4xl font-bold tracking-tight">
           Rise Up Foundation
         </h1>
-        <p className="text-lg text-gray-700 mt-2">
+        <p className="text-lg text-black mt-2">
           VITA-style Free Tax Preparation
         </p>
 
-        <p className="mt-6 text-lg text-gray-600 leading-relaxed max-w-3xl">
+        <p className="mt-6 text-lg text-black leading-relaxed max-w-3xl">
           Rise Up Foundation provides free tax preparation services to
           qualifying individuals and families through the IRS Volunteer Income
           Tax Assistance (VITA) program. Our IRS-certified volunteers help you
@@ -59,17 +59,17 @@ export default function RiseUpFoundationPage() {
         <div className="mt-8 grid md:grid-cols-3 gap-4">
           <div className="rounded-lg bg-green-50 p-6">
             <div className="text-3xl font-bold text-green-700">100%</div>
-            <div className="text-sm text-gray-700 mt-1">Free Service</div>
+            <div className="text-sm text-black mt-1">Free Service</div>
           </div>
           <div className="rounded-lg bg-green-50 p-6">
             <div className="text-3xl font-bold text-green-700">IRS</div>
-            <div className="text-sm text-gray-700 mt-1">
+            <div className="text-sm text-black mt-1">
               Certified Volunteers
             </div>
           </div>
           <div className="rounded-lg bg-green-50 p-6">
             <div className="text-3xl font-bold text-green-700">$0</div>
-            <div className="text-sm text-gray-700 mt-1">No Hidden Fees</div>
+            <div className="text-sm text-black mt-1">No Hidden Fees</div>
           </div>
         </div>
       </section>
@@ -79,8 +79,8 @@ export default function RiseUpFoundationPage() {
           href="/tax/rise-up-foundation/free-tax-help"
           className="block rounded-2xl border-2 border-green-200 bg-white p-6 hover:shadow-lg transition"
         >
-          <h2 className="text-xl font-bold text-gray-900">Get Free Tax Help</h2>
-          <p className="mt-2 text-gray-600">
+          <h2 className="text-xl font-bold text-black">Get Free Tax Help</h2>
+          <p className="mt-2 text-black">
             Learn about eligibility, what to bring, and how to schedule your
             appointment.
           </p>
@@ -93,8 +93,8 @@ export default function RiseUpFoundationPage() {
           href="/tax/rise-up-foundation/volunteer"
           className="block rounded-2xl border-2 border-green-200 bg-white p-6 hover:shadow-lg transition"
         >
-          <h2 className="text-xl font-bold text-gray-900">Volunteer With Us</h2>
-          <p className="mt-2 text-gray-600">
+          <h2 className="text-xl font-bold text-black">Volunteer With Us</h2>
+          <p className="mt-2 text-black">
             Join our team of IRS-certified volunteers and help your community.
           </p>
           <div className="mt-4 text-brand-green-600 font-semibold">
@@ -106,10 +106,10 @@ export default function RiseUpFoundationPage() {
           href="/tax/rise-up-foundation/training"
           className="block rounded-2xl border-2 border-green-200 bg-white p-6 hover:shadow-lg transition"
         >
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-black">
             Volunteer Training
           </h2>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-black">
             Complete IRS Link & Learn certification to become a volunteer tax
             preparer.
           </p>
@@ -122,8 +122,8 @@ export default function RiseUpFoundationPage() {
           href="/tax/rise-up-foundation/site-locator"
           className="block rounded-2xl border-2 border-green-200 bg-white p-6 hover:shadow-lg transition"
         >
-          <h2 className="text-xl font-bold text-gray-900">Find a VITA Site</h2>
-          <p className="mt-2 text-gray-600">
+          <h2 className="text-xl font-bold text-black">Find a VITA Site</h2>
+          <p className="mt-2 text-black">
             Use the IRS locator to find nearby VITA sites and hours.
           </p>
           <div className="mt-4 text-brand-green-600 font-semibold">
@@ -133,10 +133,10 @@ export default function RiseUpFoundationPage() {
       </section>
 
       <section className="mt-8 rounded-2xl bg-yellow-50 border-l-4 border-yellow-400 p-6">
-        <h2 className="text-lg font-semibold text-gray-900">
+        <h2 className="text-lg font-semibold text-black">
           Important Notice
         </h2>
-        <p className="mt-2 text-gray-700">
+        <p className="mt-2 text-black">
           Rise Up Foundation operates as a separate 501(c)(3) nonprofit
           organization providing free VITA tax services. This program is
           completely separate from SupersonicFastCash paid tax preparation

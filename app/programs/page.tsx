@@ -86,18 +86,18 @@ export default function ProgramsBioSitePage() {
       {/* Modern Landing Hero */}
       <ModernLandingHero
         badge="Spring 2026 Enrollment Open"
-        headline="Free Career Training"
-        accentText="Real Credentials"
+        headline="Career Training Programs"
+        accentText="Start Your Future"
         subheadline="Healthcare • Skilled Trades • Technology • Business"
-        description="100% funded career training through WIOA, WRG, and DOL programs. No tuition. No debt. Earn industry-recognized credentials and connect with employers hiring our graduates."
-        imageSrc="/images/efh/hero/hero-main-clean.jpg"
-        imageAlt="Career Training Programs"
-        primaryCTA={{ text: "View All Programs", href: "#programs" }}
-        secondaryCTA={{ text: "Check Eligibility", href: "/wioa-eligibility" }}
+        description="Explore 20+ career training programs across multiple industries. 100% funded through WIOA, WRG, and DOL programs. No tuition. No debt. Earn industry-recognized credentials and connect with employers."
+        imageSrc="/hero-images/apprenticeships-hero.jpg"
+        imageAlt="Career Training Programs - Students Learning"
+        primaryCTA={{ text: "Browse Programs", href: "#programs" }}
+        secondaryCTA={{ text: "Apply Now", href: "/apply" }}
         features={[
+          "20+ programs in high-demand industries",
           "100% free training with WIOA, WRG, or DOL funding",
-          "Industry-recognized credentials employers trust",
-          "Job placement assistance after completion"
+          "Industry credentials and job placement support"
         ]}
         imageOnRight={true}
       />
@@ -230,10 +230,10 @@ export default function ProgramsBioSitePage() {
                   
                   {/* Text Section */}
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-black mb-2">
                       {link.title}
                     </h3>
-                    <p className="text-gray-600">{link.description}</p>
+                    <p className="text-black">{link.description}</p>
                   </div>
                 </Link>
               );

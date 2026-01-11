@@ -44,10 +44,10 @@ export default function WorkshopsPage() {
       {/* Hero */}
       <section className="py-20 px-4 bg-gradient-to-br from-purple-50 to-white text-center">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
+          <h1 className="text-5xl md:text-6xl font-black text-black mb-6">
             Workshops
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-black mb-8">
             Join our healing workshops and connect with a supportive community
           </p>
         </div>
@@ -62,11 +62,11 @@ export default function WorkshopsPage() {
                 key={index}
                 className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <h3 className="text-2xl font-bold text-black mb-4">
                   {workshop.title}
                 </h3>
-                <p className="text-gray-600 mb-6">{workshop.description}</p>
-                <div className="space-y-3 text-sm text-gray-600">
+                <p className="text-black mb-6">{workshop.description}</p>
+                <div className="space-y-3 text-sm text-black">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-purple-600" />
                     {workshop.date}
@@ -99,10 +99,10 @@ export default function WorkshopsPage() {
       {/* CTA */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-black mb-4">
             Ready to Begin Your Healing Journey?
           </h2>
-          <p className="text-lg text-gray-600 mb-8">
+          <p className="text-lg text-black mb-8">
             Sign up for a workshop today and take the first step toward wellness
           </p>
           <Link

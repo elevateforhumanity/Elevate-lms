@@ -40,10 +40,10 @@ export default function ProgramHolderOnboarding() {
       {/* Title Section */}
       <section className="py-12 sm:py-16 bg-white border-b">
         <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-4">
             Program Holder Onboarding
           </h1>
-          <p className="text-base md:text-lg sm:text-xl text-slate-700 mb-6">
+          <p className="text-base md:text-lg sm:text-xl text-black mb-6">
             Welcome! This guide will help you understand your role, navigate the
             platform, and manage your students effectively.
           </p>
@@ -56,7 +56,7 @@ export default function ProgramHolderOnboarding() {
             </Link>
             <Link
               href="/program-holder/apply"
-              className="bg-white text-slate-900 px-8 py-4 rounded-lg font-semibold hover:bg-slate-50 border-2 border-slate-300 text-lg transition-all"
+              className="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-slate-50 border-2 border-slate-300 text-lg transition-all"
             >
               Apply as Program Holder
             </Link>
@@ -67,17 +67,17 @@ export default function ProgramHolderOnboarding() {
       {/* What is a Program Holder */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">
             What is a Program Holder?
           </h2>
           <div className="bg-white rounded-lg shadow-sm border p-8">
-            <p className="text-lg text-slate-700 mb-4">
+            <p className="text-lg text-black mb-4">
               A <strong>Program Holder</strong> is an organization or entity
               that partners with Elevate for Humanity to deliver workforce
               training programs to students. As a program holder, you are
               responsible for:
             </p>
-            <ul className="space-y-3 text-slate-700">
+            <ul className="space-y-3 text-black">
               <li className="flex items-start">
                 <CheckCircle
                   className="text-brand-green-600 mr-3 flex-shrink-0 mt-1"
@@ -135,7 +135,7 @@ export default function ProgramHolderOnboarding() {
       {/* Getting Started */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-8">
             Getting Started
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -144,7 +144,7 @@ export default function ProgramHolderOnboarding() {
                 <span className="text-2xl font-bold text-blue-700">1</span>
               </div>
               <h3 className="text-lg font-bold mb-3">Apply</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Submit your program holder application with organization details
                 and program interests.
               </p>
@@ -161,7 +161,7 @@ export default function ProgramHolderOnboarding() {
                 <span className="text-2xl font-bold text-blue-700">2</span>
               </div>
               <h3 className="text-lg font-bold mb-3">Get Approved</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Our team will review your application and contact you within 2-3
                 business days.
               </p>
@@ -175,7 +175,7 @@ export default function ProgramHolderOnboarding() {
                 <span className="text-2xl font-bold text-blue-700">3</span>
               </div>
               <h3 className="text-lg font-bold mb-3">Access Dashboard</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Once approved, log in to access your dashboard and start
                 enrolling students.
               </p>
@@ -193,7 +193,7 @@ export default function ProgramHolderOnboarding() {
       {/* Platform Navigation */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-8">
             Navigating Your Dashboard
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -204,12 +204,12 @@ export default function ProgramHolderOnboarding() {
                 </div>
                 <h3 className="text-lg font-bold">Student Management</h3>
               </div>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 View all your enrolled students, track their progress, and
                 manage enrollments. You can see completion rates, active
                 courses, and student status at a glance.
               </p>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li>• View student list with status</li>
                 <li>• Enroll new students in programs</li>
                 <li>• Track individual progress</li>
@@ -224,12 +224,12 @@ export default function ProgramHolderOnboarding() {
                 </div>
                 <h3 className="text-lg font-bold">Reports & Analytics</h3>
               </div>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Access detailed reports on student outcomes, completion rates,
                 and program performance. Generate reports for compliance and
                 funding requirements.
               </p>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li>• Completion rate reports</li>
                 <li>• Student outcome tracking</li>
                 <li>• Compliance documentation</li>
@@ -244,11 +244,11 @@ export default function ProgramHolderOnboarding() {
                 </div>
                 <h3 className="text-lg font-bold">Communication</h3>
               </div>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Send messages to students, receive notifications about progress,
                 and communicate with Elevate staff for support.
               </p>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li>• Message individual students</li>
                 <li>• Broadcast announcements</li>
                 <li>• Receive progress notifications</li>
@@ -263,11 +263,11 @@ export default function ProgramHolderOnboarding() {
                 </div>
                 <h3 className="text-lg font-bold">Program Access</h3>
               </div>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Browse available training programs, view curriculum details, and
                 enroll students in approved programs.
               </p>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li>• View all available programs</li>
                 <li>• See program requirements</li>
                 <li>• Check funding eligibility</li>
@@ -281,14 +281,14 @@ export default function ProgramHolderOnboarding() {
       {/* Responsibilities */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">
             Your Responsibilities
           </h2>
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <div className="space-y-6">
               <div>
                 <h3 className="text-lg font-bold mb-3">Student Support</h3>
-                <p className="text-slate-700">
+                <p className="text-black">
                   Provide guidance and support to students throughout their
                   training. This includes answering questions, helping with
                   technical issues, and ensuring students stay engaged with
@@ -298,7 +298,7 @@ export default function ProgramHolderOnboarding() {
 
               <div>
                 <h3 className="text-lg font-bold mb-3">Progress Monitoring</h3>
-                <p className="text-slate-700">
+                <p className="text-black">
                   Regularly check student progress through the dashboard.
                   Identify students who may be falling behind and provide
                   additional support or intervention as needed.
@@ -309,7 +309,7 @@ export default function ProgramHolderOnboarding() {
                 <h3 className="text-lg font-bold mb-3">
                   Compliance & Reporting
                 </h3>
-                <p className="text-slate-700">
+                <p className="text-black">
                   Maintain accurate records of student enrollments, progress,
                   and completions. Submit required reports on time and ensure
                   all documentation meets state and federal requirements.
@@ -318,7 +318,7 @@ export default function ProgramHolderOnboarding() {
 
               <div>
                 <h3 className="text-lg font-bold mb-3">Communication</h3>
-                <p className="text-slate-700">
+                <p className="text-black">
                   Maintain regular communication with students and Elevate
                   staff. Respond to messages within 24-48 hours and keep
                   students informed of important updates or changes.
@@ -327,7 +327,7 @@ export default function ProgramHolderOnboarding() {
 
               <div>
                 <h3 className="text-lg font-bold mb-3">Quality Assurance</h3>
-                <p className="text-slate-700">
+                <p className="text-black">
                   Ensure students are receiving quality training and support.
                   Report any issues or concerns to Elevate staff immediately and
                   work collaboratively to resolve problems.
@@ -341,7 +341,7 @@ export default function ProgramHolderOnboarding() {
       {/* Resources */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-8">
             Resources & Support
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -353,7 +353,7 @@ export default function ProgramHolderOnboarding() {
                 <FileText className="text-blue-700" size={24} />
               </div>
               <h3 className="text-lg font-bold mb-2">User Guide</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Complete documentation on using the platform, managing students,
                 and accessing features.
               </p>
@@ -368,7 +368,7 @@ export default function ProgramHolderOnboarding() {
                 <Video className="text-blue-700" size={24} />
               </div>
               <h3 className="text-lg font-bold mb-2">Video Tutorials</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Step-by-step video guides showing how to use key features and
                 manage students.
               </p>
@@ -385,7 +385,7 @@ export default function ProgramHolderOnboarding() {
                 <HelpCircle className="text-blue-700" size={24} />
               </div>
               <h3 className="text-lg font-bold mb-2">Get Support</h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Contact our support team for help with technical issues,
                 questions, or concerns.
               </p>
@@ -400,7 +400,7 @@ export default function ProgramHolderOnboarding() {
       {/* FAQ */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-8">
             Frequently Asked Questions
           </h2>
           <div className="space-y-6">
@@ -408,7 +408,7 @@ export default function ProgramHolderOnboarding() {
               <h3 className="text-lg font-bold mb-2">
                 How do I enroll a new student?
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 From your dashboard, click "Enroll Student" and enter their
                 information. Select the program they'll be enrolled in, and
                 submit. The student will receive an email with login
@@ -420,7 +420,7 @@ export default function ProgramHolderOnboarding() {
               <h3 className="text-lg font-bold mb-2">
                 How do I track student progress?
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Go to your dashboard and click on any student's name to view
                 their detailed progress. You'll see courses completed, current
                 progress, grades, and time spent in training.
@@ -431,7 +431,7 @@ export default function ProgramHolderOnboarding() {
               <h3 className="text-lg font-bold mb-2">
                 What reports do I need to submit?
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Monthly progress reports are required, showing student
                 enrollments, completions, and outcomes. These can be generated
                 automatically from your dashboard under "Reports."
@@ -442,7 +442,7 @@ export default function ProgramHolderOnboarding() {
               <h3 className="text-lg font-bold mb-2">
                 Who do I contact for technical support?
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Email{' '}
                 <a
                   href="mailto:support@elevateforhumanity.institute"
@@ -465,7 +465,7 @@ export default function ProgramHolderOnboarding() {
               <h3 className="text-lg font-bold mb-2">
                 Can I enroll students in multiple programs?
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Yes! Students can be enrolled in multiple programs
                 simultaneously. Each enrollment is tracked separately in your
                 dashboard.

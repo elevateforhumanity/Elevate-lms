@@ -81,14 +81,14 @@ export function ProgramTemplate({ program }: { program: Program }) {
         <div className="grid md:grid-cols-3 gap-12">
           {/* Left: Overview + Outcomes */}
           <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold mb-6 text-gray-900">
+            <h2 className="text-3xl font-bold mb-6 text-black">
               Program Overview
             </h2>
-            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+            <p className="text-lg text-black mb-8 leading-relaxed">
               {program.shortDescription}
             </p>
 
-            <h3 className="text-xl font-bold mb-4 text-gray-900">
+            <h3 className="text-xl font-bold mb-4 text-black">
               What You'll Achieve
             </h3>
             <ul className="space-y-3">
@@ -97,7 +97,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
                 .map((outcome, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <span className="text-blue-600 font-bold text-xl">✓</span>
-                    <span className="text-gray-700">{outcome}</span>
+                    <span className="text-black">{outcome}</span>
                   </li>
                 ))}
             </ul>
@@ -105,14 +105,14 @@ export function ProgramTemplate({ program }: { program: Program }) {
 
           {/* Middle: What You'll Learn */}
           <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold mb-6 text-gray-900">
+            <h2 className="text-3xl font-bold mb-6 text-black">
               What You'll Learn
             </h2>
 
             {/* Show specializations for programs with multiple tracks */}
             {program.slug === 'drug-alcohol-specimen-collector' && (
               <div className="mb-8">
-                <h3 className="text-xl font-bold mb-4 text-gray-900">
+                <h3 className="text-xl font-bold mb-4 text-black">
                   Program Specializations:
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4 mb-6">
@@ -120,7 +120,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
                     <h4 className="font-bold text-orange-900 mb-2">
                       DOT Urine Drug Testing
                     </h4>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-black">
                       Department of Transportation certified collection
                       procedures
                     </p>
@@ -129,7 +129,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
                     <h4 className="font-bold text-orange-900 mb-2">
                       DOT Breath Alcohol Testing
                     </h4>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-black">
                       Breath Alcohol Technician (BAT) certification
                     </p>
                   </div>
@@ -137,7 +137,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
                     <h4 className="font-bold text-orange-900 mb-2">
                       Non-DOT Testing
                     </h4>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-black">
                       Workplace and employer-mandated testing programs
                     </p>
                   </div>
@@ -145,7 +145,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
                     <h4 className="font-bold text-orange-900 mb-2">
                       Oral Fluid Testing
                     </h4>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-black">
                       Saliva-based drug testing procedures
                     </p>
                   </div>
@@ -153,7 +153,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
               </div>
             )}
 
-            <h3 className="text-xl font-bold mb-4 text-gray-900">
+            <h3 className="text-xl font-bold mb-4 text-black">
               Training Curriculum:
             </h3>
             <div className="space-y-4">
@@ -164,7 +164,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
                 >
                   <div className="flex items-start gap-3">
                     <span className="text-blue-600 font-bold">{i + 1}.</span>
-                    <span className="text-gray-800">{item}</span>
+                    <span className="text-black">{item}</span>
                   </div>
                 </div>
               ))}
@@ -190,7 +190,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
       {program.highlights && program.highlights.length > 0 && (
         <section className="bg-gray-50 py-12">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 text-center">
+            <h2 className="text-3xl font-bold mb-8 text-black text-center">
               Why This Program
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -201,7 +201,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
                 >
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">⭐</span>
-                    <p className="text-gray-700">{highlight}</p>
+                    <p className="text-black">{highlight}</p>
                   </div>
                 </div>
               ))}
@@ -212,7 +212,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
 
       {/* HOW TO ENROLL */}
       <section className="max-w-6xl mx-auto px-4 py-12">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900 text-center">
+        <h2 className="text-3xl font-bold mb-8 text-black text-center">
           How to Enroll
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -248,14 +248,14 @@ export function ProgramTemplate({ program }: { program: Program }) {
       {program.requirements && program.requirements.length > 0 && (
         <section className="bg-gray-50 py-12">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-6 text-gray-900">
+            <h2 className="text-3xl font-bold mb-6 text-black">
               Who This Is For
             </h2>
             <ul className="space-y-3">
               {program.requirements.map((req, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <span className="text-blue-600 font-bold">•</span>
-                  <span className="text-gray-700">{req}</span>
+                  <span className="text-black">{req}</span>
                 </li>
               ))}
             </ul>
@@ -266,7 +266,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
       {/* FUNDING OPTIONS */}
       {program.fundingOptions && program.fundingOptions.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 py-12">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900">
+          <h2 className="text-3xl font-bold mb-6 text-black">
             Funding Options
           </h2>
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-8">
@@ -274,7 +274,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
               {program.fundingOptions.map((option, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <span className="text-blue-600 font-bold text-xl">$</span>
-                  <span className="text-gray-800">{option}</span>
+                  <span className="text-black">{option}</span>
                 </li>
               ))}
             </ul>
@@ -330,7 +330,7 @@ function Card({ title, value }: { title: string; value: string }) {
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
       <div className="text-sm text-gray-500 mb-2">{title}</div>
-      <div className="text-base font-semibold text-gray-900">{value}</div>
+      <div className="text-base font-semibold text-black">{value}</div>
     </div>
   );
 }
@@ -342,8 +342,8 @@ function Step({ n, title, desc }: { n: number; title: string; desc: string }) {
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white text-xl font-bold mb-4">
           {n}
         </div>
-        <div className="font-bold text-gray-900 mb-2">{title}</div>
-        <div className="text-sm text-gray-600">{desc}</div>
+        <div className="font-bold text-black mb-2">{title}</div>
+        <div className="text-sm text-black">{desc}</div>
       </div>
     </div>
   );

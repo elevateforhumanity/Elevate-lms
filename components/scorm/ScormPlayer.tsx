@@ -61,7 +61,7 @@ export function ScormPlayer({
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-orange-500 border-t-transparent" />
-            <p className="text-sm text-slate-600">Loading SCORM content...</p>
+            <p className="text-sm text-black">Loading SCORM content...</p>
           </div>
         </div>
       )}

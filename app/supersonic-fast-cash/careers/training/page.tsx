@@ -417,7 +417,7 @@ export default function TrainingPage() {
                     const taxBasics = document.getElementById('tax-basics');
                     taxBasics?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="w-full mt-4 bg-yellow-500 text-gray-900 py-3 px-6 rounded-lg font-bold hover:bg-yellow-400"
+                  className="w-full mt-4 bg-yellow-500 text-black py-3 px-6 rounded-lg font-bold hover:bg-yellow-400"
                 >
                   Browse Courses Below
                 </button>
@@ -467,7 +467,7 @@ export default function TrainingPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Tax Preparer Training</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-black max-w-3xl mx-auto">
             Professional training courses. Get certified and start preparing tax
             returns.
           </p>
@@ -478,7 +478,7 @@ export default function TrainingPage() {
           <h2 className="text-2xl font-bold mb-4">
             Training Bundles - Save Big!
           </h2>
-          <div className="bg-yellow-400 text-gray-900 rounded-lg p-4 mb-6 font-bold text-center">
+          <div className="bg-yellow-400 text-black rounded-lg p-4 mb-6 font-bold text-center">
             <PartyPopper className="w-5 h-5 inline-block" /> Employees get ALL
             courses FREE! Apply now to save $1,000+
           </div>
@@ -552,7 +552,7 @@ export default function TrainingPage() {
               >
                 <div className="bg-gradient-to-r from-green-600 to-blue-600 p-6 text-white relative">
                   {module.price === 0 && (
-                    <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold">
+                    <div className="absolute top-2 right-2 bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold">
                       FREE!
                     </div>
                   )}
@@ -574,7 +574,7 @@ export default function TrainingPage() {
                 </div>
 
                 <div className="p-6">
-                  <p className="text-gray-600 text-sm mb-4">
+                  <p className="text-black text-sm mb-4">
                     {module.description}
                   </p>
 
@@ -597,7 +597,7 @@ export default function TrainingPage() {
                         Certification:
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-black">
                       {module.certification}
                     </p>
                   </div>
@@ -619,7 +619,7 @@ export default function TrainingPage() {
                             <span className="text-3xl font-bold text-green-600">
                               ${module.price}
                             </span>
-                            <div className="text-sm text-gray-700">
+                            <div className="text-sm text-black">
                               FREE for employees
                             </div>
                           </>
@@ -675,7 +675,7 @@ export default function TrainingPage() {
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-6 z-50">
             <div className="bg-white rounded-xl max-w-md w-full p-8">
               <h2 className="text-2xl font-bold mb-4">Employee Access Key</h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 Enter the access key from your welcome email to get FREE access
                 to all training courses.
               </p>
@@ -706,7 +706,7 @@ export default function TrainingPage() {
                     placeholder="XXXX-XXXX-XXXX-XXXX"
                     maxLength={19}
                   />
-                  <p className="text-xs text-gray-700 mt-1">
+                  <p className="text-xs text-black mt-1">
                     Format: XXXX-XXXX-XXXX-XXXX (check your email)
                   </p>
                 </div>
@@ -728,7 +728,7 @@ export default function TrainingPage() {
                     setAccessKey('');
                     setEmployeeEmail('');
                   }}
-                  className="flex-1 bg-gray-300 text-gray-700 py-3 rounded-lg font-bold hover:bg-gray-400"
+                  className="flex-1 bg-gray-300 text-black py-3 rounded-lg font-bold hover:bg-gray-400"
                 >
                   Cancel
                 </button>
@@ -764,19 +764,19 @@ export default function TrainingPage() {
                     <div className="font-bold">
                       {selectedModuleData.duration}
                     </div>
-                    <div className="text-sm text-gray-600">Duration</div>
+                    <div className="text-sm text-black">Duration</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 rounded-lg">
                     <BookOpen className="w-8 h-8 mx-auto mb-2 text-blue-600" />
                     <div className="font-bold">
                       {selectedModuleData.lessons} Lessons
                     </div>
-                    <div className="text-sm text-gray-600">Content</div>
+                    <div className="text-sm text-black">Content</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 rounded-lg">
                     <Award className="w-8 h-8 mx-auto mb-2 text-purple-600" />
                     <div className="font-bold">Certificate</div>
-                    <div className="text-sm text-gray-600">Upon Completion</div>
+                    <div className="text-sm text-black">Upon Completion</div>
                   </div>
                 </div>
 
@@ -803,7 +803,7 @@ export default function TrainingPage() {
                 <div className="flex gap-4">
                   <button
                     onClick={() => setSelectedModule(null)}
-                    className="flex-1 bg-gray-300 text-gray-700 py-3 rounded-lg font-bold hover:bg-gray-400"
+                    className="flex-1 bg-gray-300 text-black py-3 rounded-lg font-bold hover:bg-gray-400"
                   >
                     Close
                   </button>

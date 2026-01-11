@@ -103,17 +103,17 @@ export function StudentSuccessCoaching() {
         {activeTab === 'dashboard' && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="p-6">
-              <h3 className="text-sm text-gray-600 mb-2">Coaching Sessions</h3>
+              <h3 className="text-sm text-black mb-2">Coaching Sessions</h3>
               <p className="text-3xl font-bold text-brand-orange-600">{sessions.length}</p>
               <p className="text-sm text-gray-500">1 upcoming</p>
             </Card>
             <Card className="p-6">
-              <h3 className="text-sm text-gray-600 mb-2">Active Goals</h3>
+              <h3 className="text-sm text-black mb-2">Active Goals</h3>
               <p className="text-3xl font-bold text-orange-500">{goals.filter(g => g.status !== 'completed').length}</p>
               <p className="text-sm text-gray-500">2 in progress</p>
             </Card>
             <Card className="p-6">
-              <h3 className="text-sm text-gray-600 mb-2">Success Rate</h3>
+              <h3 className="text-sm text-black mb-2">Success Rate</h3>
               <p className="text-3xl font-bold text-green-600">85%</p>
               <p className="text-sm text-gray-500">Above average</p>
             </Card>
@@ -131,16 +131,16 @@ export function StudentSuccessCoaching() {
                 <div className="flex justify-between items-start">
                   <div>
                     <h3 className="text-xl font-bold">{session.topic}</h3>
-                    <p className="text-gray-600">Coach: {session.coach}</p>
+                    <p className="text-black">Coach: {session.coach}</p>
                     <p className="text-sm text-gray-500">{session.date}</p>
                     {session.notes && (
-                      <p className="mt-2 text-sm text-gray-600">{session.notes}</p>
+                      <p className="mt-2 text-sm text-black">{session.notes}</p>
                     )}
                   </div>
                   <span className={`px-3 py-1 rounded text-sm ${
                     session.status === 'scheduled' ? 'bg-blue-100 text-blue-700' :
                     session.status === 'completed' ? 'bg-green-100 text-green-700' :
-                    'bg-gray-100 text-gray-700'
+                    'bg-gray-100 text-black'
                   }`}>
                     {session.status}
                   </span>
@@ -161,7 +161,7 @@ export function StudentSuccessCoaching() {
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h3 className="text-xl font-bold">{goal.title}</h3>
-                    <p className="text-sm text-gray-600">{goal.category}</p>
+                    <p className="text-sm text-black">{goal.category}</p>
                     <p className="text-sm text-gray-500">Due: {goal.dueDate}</p>
                   </div>
                   <span className={`px-3 py-1 rounded text-sm ${

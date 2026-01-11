@@ -83,14 +83,14 @@ export default function PartnerDocumentsPage() {
     <div className="rounded-2xl border p-5 space-y-4">
       <div>
         <div className="font-semibold">Documents</div>
-        <div className="text-sm text-gray-600">
+        <div className="text-sm text-black">
           Upload onboarding documents for approval.
         </div>
       </div>
 
       <div className="flex flex-wrap gap-3 items-end">
         <div>
-          <div className="text-xs text-gray-700 mb-1">Shop ID</div>
+          <div className="text-xs text-black mb-1">Shop ID</div>
           <input
             className="border rounded-xl p-2 w-[360px]"
             value={shopId}
@@ -99,7 +99,7 @@ export default function PartnerDocumentsPage() {
         </div>
 
         <div>
-          <div className="text-xs text-gray-700 mb-1">Type</div>
+          <div className="text-xs text-black mb-1">Type</div>
           <select
             className="border rounded-xl p-2"
             value={type}
@@ -114,7 +114,7 @@ export default function PartnerDocumentsPage() {
         </div>
 
         <div>
-          <div className="text-xs text-gray-700 mb-1">File</div>
+          <div className="text-xs text-black mb-1">File</div>
           <input
             type="file"
             onChange={(e) => setFile(e.target.files?.[0] ?? null)}
@@ -143,13 +143,13 @@ export default function PartnerDocumentsPage() {
             <div key={d.id} className="rounded-lg border p-2 text-sm">
               <div className="flex items-center justify-between">
                 <div>{d.document_type}</div>
-                <div className="text-xs text-gray-600">{d.status}</div>
+                <div className="text-xs text-black">{d.status}</div>
               </div>
-              <div className="text-xs text-gray-700 mt-1">{d.file_path}</div>
+              <div className="text-xs text-black mt-1">{d.file_path}</div>
             </div>
           ))}
           {docs.length === 0 && (
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-black">
               No documents submitted yet.
             </div>
           )}

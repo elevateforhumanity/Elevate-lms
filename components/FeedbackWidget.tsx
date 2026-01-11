@@ -99,16 +99,16 @@ export default function FeedbackWidget({ userId }: FeedbackWidgetProps) {
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b   ">
               <div>
-                <h3 className="text-xl font-bold text-gray-900">
+                <h3 className="text-xl font-bold text-black">
                   Send Feedback
                 </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Help us improve your experience
                 </p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-black transition-colors"
                 disabled={isSubmitting}
               >
                 <X className="w-6 h-6" />
@@ -126,10 +126,10 @@ stroke="currentColor">
 d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h4 className="text-2xl font-bold text-black mb-2">
                     Thank You!
                   </h4>
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Your feedback has been submitted. We'll review it shortly.
                   </p>
                 </div>
@@ -138,7 +138,7 @@ d="M5 13l4 4L19 7" />
               <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-6">
                 {/* Type Selection */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-black mb-3">
                     What type of feedback is this? *
                   </label>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -161,7 +161,7 @@ d="M5 13l4 4L19 7" />
 
                 {/* Category */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Category
                   </label>
                   <select
@@ -178,7 +178,7 @@ d="M5 13l4 4L19 7" />
 
                 {/* Title */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Title *
                   </label>
                   <input
@@ -193,7 +193,7 @@ d="M5 13l4 4L19 7" />
 
                 {/* Description */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Description *
                   </label>
                   <textarea
@@ -222,7 +222,7 @@ d="M5 13l4 4L19 7" />
                   type="button"
                   onClick={() => setIsOpen(false)}
                   disabled={isSubmitting}
-                  className="px-6 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
+                  className="px-6 py-2 text-black bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
                 >
                   Cancel
                 </button>

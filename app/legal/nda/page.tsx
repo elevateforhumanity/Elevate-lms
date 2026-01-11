@@ -21,20 +21,20 @@ export default function NDAPage() {
           ← Back to Home
         </Link>
 
-        <h1 className="text-4xl font-bold text-slate-900 mb-8">
+        <h1 className="text-4xl font-bold text-black mb-8">
           Non-Disclosure Agreement
         </h1>
 
         <div className="prose prose-slate max-w-none">
-          <p className="text-sm text-slate-600 mb-8">
+          <p className="text-sm text-black mb-8">
             Last Updated: December 15, 2024
           </p>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               1. Purpose
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               This Non-Disclosure Agreement ("Agreement") is entered into by and
               between Elevate for Humanity ("Disclosing Party") and the
               individual or entity accessing confidential information
@@ -43,13 +43,13 @@ export default function NDAPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               2. Confidential Information
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               "Confidential Information" includes, but is not limited to:
             </p>
-            <ul className="list-disc pl-6 text-slate-700 space-y-2 mb-4">
+            <ul className="list-disc pl-6 text-black space-y-2 mb-4">
               <li>Proprietary training materials and curricula</li>
               <li>Business processes and operational procedures</li>
               <li>Student and partner data</li>
@@ -61,13 +61,13 @@ export default function NDAPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               3. Obligations
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               The Receiving Party agrees to:
             </p>
-            <ul className="list-disc pl-6 text-slate-700 space-y-2 mb-4">
+            <ul className="list-disc pl-6 text-black space-y-2 mb-4">
               <li>
                 Maintain the confidentiality of all Confidential Information
               </li>
@@ -89,13 +89,13 @@ export default function NDAPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               4. Exceptions
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               This Agreement does not apply to information that:
             </p>
-            <ul className="list-disc pl-6 text-slate-700 space-y-2 mb-4">
+            <ul className="list-disc pl-6 text-black space-y-2 mb-4">
               <li>
                 Is or becomes publicly available through no breach of this
                 Agreement
@@ -110,8 +110,8 @@ export default function NDAPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">5. Term</h2>
-            <p className="text-slate-700 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">5. Term</h2>
+            <p className="text-black mb-4">
               This Agreement remains in effect for the duration of the
               relationship between the parties and for three (3) years
               thereafter.
@@ -119,10 +119,10 @@ export default function NDAPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               6. Remedies
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               The Receiving Party acknowledges that breach of this Agreement may
               cause irreparable harm for which monetary damages may be
               inadequate. The Disclosing Party shall be entitled to seek
@@ -132,10 +132,10 @@ export default function NDAPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               7. Governing Law
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               This Agreement shall be governed by and construed in accordance
               with the laws of the State of Indiana, without regard to its
               conflict of law provisions.
@@ -143,15 +143,15 @@ export default function NDAPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               8. Contact Information
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               For questions regarding this Non-Disclosure Agreement, please
               contact:
             </p>
             <div className="bg-slate-50 p-4 rounded-lg">
-              <p className="text-slate-700">
+              <p className="text-black">
                 <strong>Elevate for Humanity</strong>
                 <br />
                 Email: legal@elevateforhumanity.institute

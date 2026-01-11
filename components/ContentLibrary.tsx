@@ -91,7 +91,7 @@ export default function ContentLibrary() {
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedCategory === category
                   ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-gray-100 text-black hover:bg-gray-200'
               }`}
             >
               {category}
@@ -107,7 +107,7 @@ export default function ContentLibrary() {
             <div className="flex items-start gap-3 mb-3">
               <span className="text-3xl">{getTypeIcon(item.type)}</span>
               <div className="flex-1">
-                <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
+                <h3 className="font-semibold text-black mb-1">{item.title}</h3>
                 <div className="flex items-center gap-2">
                   <Badge variant="secondary">{item.category}</Badge>
                   {item.duration && (

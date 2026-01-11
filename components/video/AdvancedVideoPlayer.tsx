@@ -244,7 +244,7 @@ export default function AdvancedVideoPlayer({
             onClick={togglePlay}
             className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all"
           >
-            <svg className="w-10 h-10 text-slate-900 ml-1" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-10 h-10 text-black ml-1" fill="currentColor" viewBox="0 0 20 20">
               <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
             </svg>
           </button>

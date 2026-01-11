@@ -128,7 +128,7 @@ export default async function DocumentationPage() {
                   {category.category === 'Policies' && (
                     <FileCheck className="h-8 w-8 text-purple-600" />
                   )}
-                  <h2 className="text-2xl font-bold text-slate-900">
+                  <h2 className="text-2xl font-bold text-black">
                     {category.category}
                   </h2>
                 </div>
@@ -143,7 +143,7 @@ export default async function DocumentationPage() {
                       <div className="flex items-center gap-3">
                         <Download className="h-5 w-5 text-slate-400 group-hover:text-brand-blue-600 transition-colors" />
                         <div>
-                          <h3 className="font-medium text-slate-900 group-hover:text-brand-blue-600 transition-colors">
+                          <h3 className="font-medium text-black group-hover:text-brand-blue-600 transition-colors">
                             {item.name}
                           </h3>
                           <p className="text-sm text-slate-500">{item.type}</p>

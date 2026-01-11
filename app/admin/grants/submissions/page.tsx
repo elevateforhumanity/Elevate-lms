@@ -48,7 +48,7 @@ function getStatusBadge(status: string) {
     },
     awarded: { color: 'bg-brand-green-100 text-green-800', text: '🟢 Awarded' },
     rejected: { color: 'bg-red-100 text-red-800', text: '🔴 Rejected' },
-    withdrawn: { color: 'bg-gray-100 text-gray-800', text: '⚪ Withdrawn' },
+    withdrawn: { color: 'bg-gray-100 text-black', text: '⚪ Withdrawn' },
   };
 
   const badge = badges[status] || badges.submitted;
@@ -74,7 +74,7 @@ function getMethodBadge(method: string) {
 
   const badge = badges[method] || badges.other;
   return (
-    <span className="text-sm text-slate-600">
+    <span className="text-sm text-black">
       {badge.icon} {badge.text}
     </span>
   );
@@ -141,10 +141,10 @@ export default async function GrantSubmissionsPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900 mb-2">
+              <h1 className="text-3xl font-bold text-black mb-2">
                 Grant Submissions Archive
               </h1>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Complete history of all submitted grant applications
               </p>
             </div>
@@ -161,7 +161,7 @@ export default async function GrantSubmissionsPage() {
         <div className="grid gap-4 md:grid-cols-5 mb-8">
           <div className="bg-white rounded-xl shadow-sm p-6">
             <p className="text-sm text-slate-500 mb-1">Total Submissions</p>
-            <p className="text-3xl font-bold text-slate-900">{stats.total}</p>
+            <p className="text-3xl font-bold text-black">{stats.total}</p>
           </div>
           <div className="bg-white rounded-xl shadow-sm p-6">
             <p className="text-sm text-slate-500 mb-1">Submitted</p>
@@ -195,25 +195,25 @@ export default async function GrantSubmissionsPage() {
             <table className="w-full">
               <thead className="bg-slate-50 border-b border-slate-200">
                 <tr>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Grant
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Entity
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Method
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Submitted
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Confirmation
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -223,7 +223,7 @@ export default async function GrantSubmissionsPage() {
                   <tr key={submission.id} className="hover:bg-slate-50">
                     <td className="px-6 py-4">
                       <div>
-                        <p className="font-semibold text-slate-900">
+                        <p className="font-semibold text-black">
                           {submission.grant?.title || 'Unknown Grant'}
                         </p>
                         <p className="text-sm text-slate-500">
@@ -232,7 +232,7 @@ export default async function GrantSubmissionsPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <p className="text-sm text-slate-900">
+                      <p className="text-sm text-black">
                         {submission.entity?.name || 'Unknown Entity'}
                       </p>
                     </td>
@@ -244,7 +244,7 @@ export default async function GrantSubmissionsPage() {
                     </td>
                     <td className="px-6 py-4">
                       <div>
-                        <p className="text-sm text-slate-900">
+                        <p className="text-sm text-black">
                           {new Date(
                             submission.submitted_at
                           ).toLocaleDateString()}
@@ -256,7 +256,7 @@ export default async function GrantSubmissionsPage() {
                     </td>
                     <td className="px-6 py-4">
                       {submission.confirmation_number ? (
-                        <p className="text-sm font-mono text-slate-700">
+                        <p className="text-sm font-mono text-black">
                           {submission.confirmation_number}
                         </p>
                       ) : (
@@ -294,10 +294,10 @@ export default async function GrantSubmissionsPage() {
               <div className="text-6xl mb-4 text-4xl md:text-5xl lg:text-6xl">
                 📋
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">
+              <h3 className="text-lg font-semibold text-black mb-2">
                 No Submissions Yet
               </h3>
-              <p className="text-slate-600 mb-6">
+              <p className="text-black mb-6">
                 Start by drafting and submitting your first grant application.
               </p>
               <Link
@@ -313,7 +313,7 @@ export default async function GrantSubmissionsPage() {
         {/* Export Options */}
         {submissions.length > 0 && (
           <div className="mt-8 bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-lg font-semibold text-slate-900 mb-4">
+            <h2 className="text-lg font-semibold text-black mb-4">
               Export Options
             </h2>
             <div className="flex gap-4">

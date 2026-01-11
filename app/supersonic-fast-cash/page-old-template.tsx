@@ -96,10 +96,10 @@ export default function SupersonicFastCashPage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
               Our Services
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-black">
               Comprehensive financial solutions for individuals and businesses
             </p>
           </div>
@@ -110,10 +110,10 @@ export default function SupersonicFastCashPage() {
               <div className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <FileText className="w-10 h-10 text-brand-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 Tax Preparation
               </h3>
-              <p className="text-slate-600 leading-relaxed mb-4">
+              <p className="text-black leading-relaxed mb-4">
                 Personal and business tax returns prepared accurately and filed
                 on time. Maximize your refund with expert guidance.
               </p>
@@ -130,10 +130,10 @@ export default function SupersonicFastCashPage() {
               <div className="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <Calculator className="w-10 h-10 text-brand-green-600" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 Bookkeeping
               </h3>
-              <p className="text-slate-600 leading-relaxed mb-4">
+              <p className="text-black leading-relaxed mb-4">
                 Professional bookkeeping services to keep your finances
                 organized and your business running smoothly.
               </p>
@@ -150,10 +150,10 @@ export default function SupersonicFastCashPage() {
               <div className="w-20 h-20 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <DollarSign className="w-10 h-10 text-brand-orange-600" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 Payroll Services
               </h3>
-              <p className="text-slate-600 leading-relaxed mb-4">
+              <p className="text-black leading-relaxed mb-4">
                 Efficient payroll processing with accurate tax calculations and
                 timely payments to your employees.
               </p>
@@ -170,10 +170,10 @@ export default function SupersonicFastCashPage() {
               <div className="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <TrendingUp className="w-10 h-10 text-purple-600" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 Business Consulting
               </h3>
-              <p className="text-slate-600 leading-relaxed mb-4">
+              <p className="text-black leading-relaxed mb-4">
                 Strategic planning, entity selection, and financial advice to
                 help your business grow and succeed.
               </p>
@@ -193,7 +193,7 @@ export default function SupersonicFastCashPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8">
+              <h2 className="text-4xl md:text-5xl font-black text-black mb-8">
                 Why Choose Supersonic Fast Cash?
               </h2>
 
@@ -203,10 +203,10 @@ export default function SupersonicFastCashPage() {
                     <Shield className="w-6 h-6 text-brand-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    <h3 className="text-xl font-bold text-black mb-2">
                       Trusted Expertise
                     </h3>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-black leading-relaxed">
                       Years of experience helping individuals and businesses
                       navigate complex tax laws and financial regulations.
                     </p>
@@ -218,10 +218,10 @@ export default function SupersonicFastCashPage() {
                     <Users className="w-6 h-6 text-brand-green-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    <h3 className="text-xl font-bold text-black mb-2">
                       Personalized Service
                     </h3>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-black leading-relaxed">
                       We take time to understand your unique situation and
                       provide tailored solutions that meet your specific needs.
                     </p>
@@ -233,10 +233,10 @@ export default function SupersonicFastCashPage() {
                     <Clock className="w-6 h-6 text-brand-orange-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    <h3 className="text-xl font-bold text-black mb-2">
                       Fast Turnaround
                     </h3>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-black leading-relaxed">
                       Quick, efficient service without sacrificing accuracy. Get
                       your returns filed and refunds processed faster.
                     </p>
@@ -248,10 +248,10 @@ export default function SupersonicFastCashPage() {
                     <Award className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    <h3 className="text-xl font-bold text-black mb-2">
                       Maximum Refunds
                     </h3>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-black leading-relaxed">
                       We find every deduction and credit you're entitled to,
                       ensuring you get the maximum refund possible.
                     </p>
@@ -301,10 +301,10 @@ export default function SupersonicFastCashPage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
               How It Works
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-black">
               Simple, straightforward process to get your taxes done right
             </p>
           </div>
@@ -314,10 +314,10 @@ export default function SupersonicFastCashPage() {
               <div className="w-20 h-20 bg-brand-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">
                 1
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Schedule
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Book your appointment online or call us to schedule a
                 consultation.
               </p>
@@ -327,10 +327,10 @@ export default function SupersonicFastCashPage() {
               <div className="w-20 h-20 bg-brand-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">
                 2
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Gather Documents
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Collect your W-2s, 1099s, receipts, and other tax documents.
               </p>
             </div>
@@ -339,10 +339,10 @@ export default function SupersonicFastCashPage() {
               <div className="w-20 h-20 bg-brand-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">
                 3
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 We Prepare
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Our experts prepare your return, finding every deduction you
                 deserve.
               </p>
@@ -352,10 +352,10 @@ export default function SupersonicFastCashPage() {
               <div className="w-20 h-20 bg-brand-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">
                 4
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 File & Refund
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 We file electronically and you get your refund fast and secure.
               </p>
             </div>
@@ -367,7 +367,7 @@ export default function SupersonicFastCashPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
               What Our Clients Say
             </h2>
           </div>
@@ -382,13 +382,13 @@ export default function SupersonicFastCashPage() {
                   />
                 ))}
               </div>
-              <p className="text-slate-700 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 "Best tax service I've ever used. They found deductions I didn't
                 even know existed and got me a much bigger refund than I
                 expected!"
               </p>
-              <div className="font-bold text-slate-900">Jennifer M.</div>
-              <div className="text-sm text-slate-600">Small Business Owner</div>
+              <div className="font-bold text-black">Jennifer M.</div>
+              <div className="text-sm text-black">Small Business Owner</div>
             </div>
 
             <div className="bg-slate-50 rounded-2xl p-8">
@@ -400,12 +400,12 @@ export default function SupersonicFastCashPage() {
                   />
                 ))}
               </div>
-              <p className="text-slate-700 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 "Professional, fast, and affordable. They made tax season
                 stress-free. I'll definitely be using them again next year."
               </p>
-              <div className="font-bold text-slate-900">Robert T.</div>
-              <div className="text-sm text-slate-600">Individual Filer</div>
+              <div className="font-bold text-black">Robert T.</div>
+              <div className="text-sm text-black">Individual Filer</div>
             </div>
 
             <div className="bg-slate-50 rounded-2xl p-8">
@@ -417,13 +417,13 @@ export default function SupersonicFastCashPage() {
                   />
                 ))}
               </div>
-              <p className="text-slate-700 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 "Their bookkeeping services have been a game-changer for my
                 business. Everything is organized and I always know where I
                 stand financially."
               </p>
-              <div className="font-bold text-slate-900">Maria S.</div>
-              <div className="text-sm text-slate-600">Restaurant Owner</div>
+              <div className="font-bold text-black">Maria S.</div>
+              <div className="text-sm text-black">Restaurant Owner</div>
             </div>
           </div>
         </div>

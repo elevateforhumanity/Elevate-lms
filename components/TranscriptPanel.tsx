@@ -76,7 +76,7 @@ export function TranscriptPanel({
       <div className="flex items-center justify-between p-4 border-b border-slate-200">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="flex items-center gap-2 font-semibold text-slate-900 hover:text-brand-orange-600 transition"
+          className="flex items-center gap-2 font-semibold text-black hover:text-brand-orange-600 transition"
         >
           <span>Transcript</span>
           {isExpanded ? (
@@ -87,7 +87,7 @@ export function TranscriptPanel({
         </button>
         <button
           onClick={downloadTranscript}
-          className="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-orange-600 transition"
+          className="flex items-center gap-2 text-sm text-black hover:text-brand-orange-600 transition"
           title="Download transcript"
         >
           <Download className="w-4 h-4" />
@@ -110,7 +110,7 @@ export function TranscriptPanel({
               />
             </div>
             {searchQuery && (
-              <p className="mt-2 text-xs text-slate-600">
+              <p className="mt-2 text-xs text-black">
                 Found {filteredSegments.length} result{filteredSegments.length !== 1 ? 's' : ''}
               </p>
             )}
@@ -148,7 +148,7 @@ export function TranscriptPanel({
                       </span>
                       <p
                         className={`text-sm leading-relaxed ${
-                          isActive ? 'text-slate-900 font-medium' : 'text-slate-700'
+                          isActive ? 'text-black font-medium' : 'text-black'
                         }`}
                       >
                         {searchQuery ? (
@@ -182,7 +182,7 @@ function HighlightText({ text, highlight }: { text: string; highlight: string })
     <>
       {parts.map((part, i) =>
         regex.test(part) ? (
-          <mark key={i} className="bg-yellow-200 text-slate-900">
+          <mark key={i} className="bg-yellow-200 text-black">
             {part}
           </mark>
         ) : (

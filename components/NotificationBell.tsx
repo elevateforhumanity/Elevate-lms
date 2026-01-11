@@ -91,7 +91,7 @@ export default function NotificationBell() {
         className="relative p-2 rounded-lg hover:bg-slate-100 transition-colors"
         aria-label="Notifications"
       >
-        <Bell className="w-6 h-6 text-slate-700" />
+        <Bell className="w-6 h-6 text-black" />
         {unreadCount > 0 && (
           <span className="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-600 rounded-full">
             {unreadCount}
@@ -107,7 +107,7 @@ export default function NotificationBell() {
           />
           <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white border border-slate-200 rounded-lg shadow-xl z-50 max-h-[80vh] overflow-hidden flex flex-col">
             <div className="flex items-center justify-between p-4 border-b border-slate-200">
-              <h3 className="font-bold text-slate-900">Notifications</h3>
+              <h3 className="font-bold text-black">Notifications</h3>
               <div className="flex items-center gap-2">
                 {unreadCount > 0 && (
                   <button
@@ -143,10 +143,10 @@ export default function NotificationBell() {
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 min-w-0">
-                          <p className="font-semibold text-slate-900 text-sm mb-1">
+                          <p className="font-semibold text-black text-sm mb-1">
                             {notification.title}
                           </p>
-                          <p className="text-sm text-slate-600 mb-2">
+                          <p className="text-sm text-black mb-2">
                             {notification.message}
                           </p>
                           <p className="text-xs text-slate-400">
@@ -161,7 +161,7 @@ export default function NotificationBell() {
                             className="p-1 hover:bg-slate-200 rounded flex-shrink-0"
                             title="Mark as read"
                           >
-                            <Check className="w-4 h-4 text-slate-600" />
+                            <Check className="w-4 h-4 text-black" />
                           </button>
                         )}
                       </div>

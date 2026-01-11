@@ -148,10 +148,10 @@ export default async function AdminDashboardOrchestrated() {
       {/* Header */}
       <section className="bg-white border-b border-slate-200 py-6">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl font-bold text-slate-900">
+          <h1 className="text-3xl font-bold text-black">
             System Oversight Dashboard
           </h1>
-          <p className="text-slate-600 mt-2">
+          <p className="text-black mt-2">
             Real-time monitoring and compliance tracking
           </p>
         </div>
@@ -225,22 +225,22 @@ export default async function AdminDashboardOrchestrated() {
 
       {/* Snapshot Metrics */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-black mb-4 sm:mb-6">
           System Snapshot
         </h2>
 
         {/* Students */}
         <div className="mb-6 sm:mb-8">
-          <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
+          <h3 className="text-base sm:text-lg font-bold text-black mb-3 sm:mb-4 flex items-center gap-2">
             <Users className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
             Students
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6">
-              <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">
+              <div className="text-2xl sm:text-3xl font-bold text-black mb-1 sm:mb-2">
                 {totalStudents || 0}
               </div>
-              <div className="text-xs sm:text-sm text-slate-600">
+              <div className="text-xs sm:text-sm text-black">
                 Total Enrolled
               </div>
             </div>
@@ -261,7 +261,7 @@ export default async function AdminDashboardOrchestrated() {
                 className={`text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 ${
                   (atRiskStudents || 0) > 0
                     ? 'text-yellow-900'
-                    : 'text-slate-900'
+                    : 'text-black'
                 }`}
               >
                 {atRiskStudents || 0}
@@ -270,7 +270,7 @@ export default async function AdminDashboardOrchestrated() {
                 className={`text-xs sm:text-sm ${
                   (atRiskStudents || 0) > 0
                     ? 'text-yellow-900'
-                    : 'text-slate-600'
+                    : 'text-black'
                 }`}
               >
                 At Risk
@@ -287,16 +287,16 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Program Holders */}
         <div className="mb-6 sm:mb-8">
-          <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
+          <h3 className="text-base sm:text-lg font-bold text-black mb-3 sm:mb-4 flex items-center gap-2">
             <Building2 className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
             Program Holders
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6">
-              <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">
+              <div className="text-2xl sm:text-3xl font-bold text-black mb-1 sm:mb-2">
                 {totalProgramHolders || 0}
               </div>
-              <div className="text-xs sm:text-sm text-slate-600">
+              <div className="text-xs sm:text-sm text-black">
                 Total Registered
               </div>
             </div>
@@ -315,14 +315,14 @@ export default async function AdminDashboardOrchestrated() {
             >
               <div
                 className={`text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 ${
-                  (overdueReports || 0) > 0 ? 'text-red-900' : 'text-slate-900'
+                  (overdueReports || 0) > 0 ? 'text-red-900' : 'text-black'
                 }`}
               >
                 {overdueReports || 0}
               </div>
               <div
                 className={`text-xs sm:text-sm ${
-                  (overdueReports || 0) > 0 ? 'text-red-900' : 'text-slate-600'
+                  (overdueReports || 0) > 0 ? 'text-red-900' : 'text-black'
                 }`}
               >
                 Overdue Reports
@@ -339,7 +339,7 @@ export default async function AdminDashboardOrchestrated() {
                 className={`text-2xl sm:text-3xl font-bold mb-1 sm:mb-2 ${
                   (lowComplianceHolders?.length || 0) > 0
                     ? 'text-yellow-900'
-                    : 'text-slate-900'
+                    : 'text-black'
                 }`}
               >
                 {lowComplianceHolders?.length || 0}
@@ -348,7 +348,7 @@ export default async function AdminDashboardOrchestrated() {
                 className={`text-xs sm:text-sm ${
                   (lowComplianceHolders?.length || 0) > 0
                     ? 'text-yellow-900'
-                    : 'text-slate-600'
+                    : 'text-black'
                 }`}
               >
                 Low Compliance
@@ -359,16 +359,16 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Employers & Placements */}
         <div className="mb-6 sm:mb-8">
-          <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
+          <h3 className="text-base sm:text-lg font-bold text-black mb-3 sm:mb-4 flex items-center gap-2">
             <Briefcase className="h-4 w-4 sm:h-5 sm:w-5 text-green-600" />
             Employers & Placements
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6">
-              <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">
+              <div className="text-2xl sm:text-3xl font-bold text-black mb-1 sm:mb-2">
                 {totalEmployers || 0}
               </div>
-              <div className="text-xs sm:text-sm text-slate-600">
+              <div className="text-xs sm:text-sm text-black">
                 Total Employers
               </div>
             </div>
@@ -393,16 +393,16 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Programs */}
         <div className="mb-6 sm:mb-8">
-          <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4 flex items-center gap-2">
+          <h3 className="text-base sm:text-lg font-bold text-black mb-3 sm:mb-4 flex items-center gap-2">
             <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-orange-600" />
             Programs
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6">
-              <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">
+              <div className="text-2xl sm:text-3xl font-bold text-black mb-1 sm:mb-2">
                 {totalPrograms || 0}
               </div>
-              <div className="text-xs sm:text-sm text-slate-600">
+              <div className="text-xs sm:text-sm text-black">
                 Total Programs
               </div>
             </div>
@@ -420,7 +420,7 @@ export default async function AdminDashboardOrchestrated() {
 
       {/* Quick Actions */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-black mb-4 sm:mb-6">
           Quick Actions
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
@@ -429,10 +429,10 @@ export default async function AdminDashboardOrchestrated() {
             className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-blue-600 hover:shadow-lg transition"
           >
             <Users className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 mb-2 sm:mb-3" />
-            <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">
+            <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
               Manage Students
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="text-xs sm:text-sm text-black">
               View all enrollments
             </p>
           </Link>
@@ -442,10 +442,10 @@ export default async function AdminDashboardOrchestrated() {
             className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-purple-600 hover:shadow-lg transition"
           >
             <Building2 className="h-6 w-6 sm:h-8 sm:w-8 text-purple-600 mb-2 sm:mb-3" />
-            <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">
+            <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
               Program Holders
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="text-xs sm:text-sm text-black">
               Monitor compliance
             </p>
           </Link>
@@ -455,10 +455,10 @@ export default async function AdminDashboardOrchestrated() {
             className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-green-600 hover:shadow-lg transition"
           >
             <Briefcase className="h-6 w-6 sm:h-8 sm:w-8 text-green-600 mb-2 sm:mb-3" />
-            <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">
+            <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
               Employers
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="text-xs sm:text-sm text-black">
               Track placements
             </p>
           </Link>
@@ -468,23 +468,23 @@ export default async function AdminDashboardOrchestrated() {
             className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-orange-600 hover:shadow-lg transition"
           >
             <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600 mb-2 sm:mb-3" />
-            <h3 className="font-bold text-slate-900 mb-1 sm:mb-2 text-sm sm:text-base">
+            <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
               Generate Reports
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600">Export data</p>
+            <p className="text-xs sm:text-sm text-black">Export data</p>
           </Link>
         </div>
       </section>
 
       {/* ALL ADMIN FEATURES - Gitpod-style Control Panel */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-black mb-4 sm:mb-6">
           Platform Management
         </h2>
 
         {/* Content & Courses */}
         <div className="mb-6 sm:mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Content & Courses
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -556,7 +556,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Users & Access */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Users & Access
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -614,7 +614,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Analytics & Monitoring */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Analytics & Monitoring
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -679,7 +679,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Operations & Automation */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Operations & Automation
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -737,7 +737,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Development & Integration */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Development & Integration
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -781,7 +781,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Media & Content */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Media & Content
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -839,7 +839,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Communication */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Communication
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -897,7 +897,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Compliance & Reporting */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Compliance & Reporting
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -955,7 +955,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Funding & Finance */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Funding & Finance
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -1013,7 +1013,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Marketplace & Shop */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Marketplace & Shop
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -1050,7 +1050,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Student Support */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Student Support
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -1108,7 +1108,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Credentials & Certificates */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Credentials & Certificates
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -1159,7 +1159,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Programs & Partnerships */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Programs & Partnerships
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -1210,7 +1210,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* System & Settings */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             System & Settings
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -1254,7 +1254,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Documentation & Help */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Documentation & Help
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -1305,7 +1305,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Testing & Development */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Testing & Development
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -1342,7 +1342,7 @@ export default async function AdminDashboardOrchestrated() {
 
         {/* Outcomes & Impact */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             Outcomes & Impact
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">

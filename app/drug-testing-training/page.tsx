@@ -177,7 +177,7 @@ export default async function DrugTestingTrainingPage() {
                 <Award className="w-8 h-8 text-purple-600" />
               </div>
               <h3 className="font-bold mb-2">Certified Training</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 All courses include certificate of completion
               </p>
             </div>
@@ -186,7 +186,7 @@ export default async function DrugTestingTrainingPage() {
                 <Users className="w-8 h-8 text-brand-blue-600" />
               </div>
               <h3 className="font-bold mb-2">Expert Instructors</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Learn from industry professionals
               </p>
             </div>
@@ -195,7 +195,7 @@ export default async function DrugTestingTrainingPage() {
                 <CheckCircle className="w-8 h-8 text-brand-green-600" />
               </div>
               <h3 className="font-bold mb-2">DOT Compliant</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Meets all federal requirements
               </p>
             </div>
@@ -204,7 +204,7 @@ export default async function DrugTestingTrainingPage() {
                 <GraduationCap className="w-8 h-8 text-brand-orange-600" />
               </div>
               <h3 className="font-bold mb-2">Self-Paced</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Complete training on your schedule
               </p>
             </div>
@@ -218,7 +218,7 @@ export default async function DrugTestingTrainingPage() {
           <h2 className="text-3xl font-bold mb-8">
             Specimen Collector Training
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             Become a qualified DOT or non-DOT specimen collector. Required for
             anyone performing drug test collections.
           </p>
@@ -241,10 +241,10 @@ export default async function DrugTestingTrainingPage() {
                   )}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{course.name}</h3>
-                <p className="text-gray-600 text-sm mb-3">
+                <p className="text-black text-sm mb-3">
                   {course.description}
                 </p>
-                <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                <div className="flex items-center gap-4 mb-4 text-sm text-black">
                   <span>⏱️ {course.duration}</span>
                   {course.certificate && <span>📜 Certificate</span>}
                 </div>
@@ -267,7 +267,7 @@ export default async function DrugTestingTrainingPage() {
       <section className="py-16 bg-gray-50">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-bold mb-8">Supervisor Training</h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             Required training for supervisors who make reasonable suspicion
             determinations. DOT requires 60 minutes of training.
           </p>
@@ -283,10 +283,10 @@ export default async function DrugTestingTrainingPage() {
                   </div>
                 )}
                 <h3 className="text-xl font-bold mb-2">{course.name}</h3>
-                <p className="text-gray-600 text-sm mb-3">
+                <p className="text-black text-sm mb-3">
                   {course.description}
                 </p>
-                <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                <div className="flex items-center gap-4 mb-4 text-sm text-black">
                   <span>⏱️ {course.duration}</span>
                   {course.certificate && <span>📜 Certificate</span>}
                 </div>
@@ -311,7 +311,7 @@ export default async function DrugTestingTrainingPage() {
           <h2 className="text-3xl font-bold mb-8">
             Designated Employer Representative (DER) Training
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             Training for DERs who manage drug and alcohol testing programs.
             Learn DOT regulations, procedures, and compliance requirements.
           </p>
@@ -322,10 +322,10 @@ export default async function DrugTestingTrainingPage() {
                 className="bg-white border-2 border-gray-200 rounded-lg p-6"
               >
                 <h3 className="text-lg font-bold mb-2">{course.name}</h3>
-                <p className="text-gray-600 text-sm mb-3">
+                <p className="text-black text-sm mb-3">
                   {course.description}
                 </p>
-                <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                <div className="flex items-center gap-4 mb-4 text-sm text-black">
                   <span>⏱️ {course.duration}</span>
                   {course.certificate && <span>📜 Certificate</span>}
                 </div>
@@ -348,7 +348,7 @@ export default async function DrugTestingTrainingPage() {
       <section className="py-16 bg-purple-50">
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="text-3xl font-bold mb-8">Employee Training</h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             Educate employees on drug-free workplace policies, testing
             procedures, and their rights and responsibilities.
           </p>
@@ -356,8 +356,8 @@ export default async function DrugTestingTrainingPage() {
             {trainingCourses.employee.map((course: any) => (
               <div key={course.name}>
                 <h3 className="text-xl font-bold mb-2">{course.name}</h3>
-                <p className="text-gray-600 mb-3">{course.description}</p>
-                <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                <p className="text-black mb-3">{course.description}</p>
+                <div className="flex items-center gap-4 mb-4 text-sm text-black">
                   <span>⏱️ {course.duration}</span>
                   {course.certificate && <span>📜 Certificate</span>}
                 </div>
@@ -380,7 +380,7 @@ export default async function DrugTestingTrainingPage() {
       <section className="py-16 bg-white">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-bold mb-8">Advanced Training</h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-black mb-8">
             Train-the-trainer programs and business development courses for drug
             testing professionals.
           </p>
@@ -391,8 +391,8 @@ export default async function DrugTestingTrainingPage() {
                 className="bg-white border-2 border-gray-200 rounded-lg p-6"
               >
                 <h3 className="text-xl font-bold mb-2">{course.name}</h3>
-                <p className="text-gray-600 mb-3">{course.description}</p>
-                <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                <p className="text-black mb-3">{course.description}</p>
+                <div className="flex items-center gap-4 mb-4 text-sm text-black">
                   <span>⏱️ {course.duration}</span>
                   {course.certificate && <span>📜 Certificate</span>}
                 </div>
@@ -424,7 +424,7 @@ export default async function DrugTestingTrainingPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Enroll in Course</h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Call (317) 314-3757 to enroll. We'll set up your account and
                   provide access.
                 </p>
@@ -436,7 +436,7 @@ export default async function DrugTestingTrainingPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Complete Training</h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Self-paced online training. Complete modules at your
                   convenience.
                 </p>
@@ -448,7 +448,7 @@ export default async function DrugTestingTrainingPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Pass Assessment</h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Complete quizzes and final assessment to demonstrate
                   knowledge.
                 </p>
@@ -462,7 +462,7 @@ export default async function DrugTestingTrainingPage() {
                 <h3 className="text-xl font-bold mb-2">
                   Complete Mocks (If Required)
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   For collector training, complete 5 error-free mock collections
                   via webcam.
                 </p>
@@ -474,7 +474,7 @@ export default async function DrugTestingTrainingPage() {
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Receive Certificate</h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Download your certificate of completion immediately upon
                   finishing.
                 </p>

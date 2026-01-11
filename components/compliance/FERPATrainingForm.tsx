@@ -255,10 +255,10 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
             <div className="text-center">
               <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-              <h1 className="text-3xl font-bold text-slate-900 mb-4">
+              <h1 className="text-3xl font-bold text-black mb-4">
                 Training Already Completed
               </h1>
-              <p className="text-slate-600 mb-6">
+              <p className="text-black mb-6">
                 You completed FERPA training on {new Date(existingTraining.completed_at).toLocaleDateString()}.
                 Your certification is valid until {new Date(new Date(existingTraining.completed_at).setFullYear(new Date(existingTraining.completed_at).getFullYear() + 1)).toLocaleDateString()}.
               </p>
@@ -289,10 +289,10 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-slate-700">
+            <span className="text-sm font-medium text-black">
               Step {step} of {totalSteps}
             </span>
-            <span className="text-sm text-slate-600">
+            <span className="text-sm text-black">
               {Math.round((step / totalSteps) * 100)}% Complete
             </span>
           </div>
@@ -309,7 +309,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
             <div className="flex items-center gap-3 mb-6">
               <FileText className="w-8 h-8 text-blue-600" />
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 FERPA Training Course
               </h1>
             </div>
@@ -380,7 +380,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
                 onChange={(e) => setTrainingAcknowledged(e.target.checked)}
                 className="mt-1 w-5 h-5 text-blue-600 rounded"
               />
-              <label htmlFor="training-reviewed" className="text-slate-700">
+              <label htmlFor="training-reviewed" className="text-black">
                 I have reviewed all training materials and understand my responsibilities under FERPA
               </label>
             </div>
@@ -400,7 +400,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
             <div className="flex items-center gap-3 mb-6">
               <CheckCircle className="w-8 h-8 text-green-600" />
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 FERPA Assessment Quiz
               </h1>
             </div>
@@ -440,7 +440,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
             <div className="space-y-6 mb-8">
               {QUIZ_QUESTIONS.map((q, idx) => (
                 <div key={q.id} className="border border-slate-200 rounded-lg p-6">
-                  <h3 className="font-semibold text-slate-900 mb-4">
+                  <h3 className="font-semibold text-black mb-4">
                     {idx + 1}. {q.question}
                   </h3>
                   <div className="space-y-2">
@@ -457,7 +457,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
                           onChange={() => setAnswers({ ...answers, [q.id]: optIdx })}
                           className="mt-1 w-4 h-4 text-blue-600"
                         />
-                        <span className="text-slate-700">{option}</span>
+                        <span className="text-black">{option}</span>
                       </label>
                     ))}
                   </div>
@@ -468,7 +468,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
             <div className="flex gap-4">
               <button
                 onClick={() => setStep(1)}
-                className="px-6 py-3 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition"
+                className="px-6 py-3 bg-slate-200 text-black rounded-lg hover:bg-slate-300 transition"
               >
                 Back to Training
               </button>
@@ -490,13 +490,13 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
               <div className="text-center">
                 <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-                <h2 className="text-2xl font-bold text-slate-900 mb-2">
+                <h2 className="text-2xl font-bold text-black mb-2">
                   Assessment Passed!
                 </h2>
                 <p className="text-3xl font-bold text-green-600 mb-2">
                   {score}%
                 </p>
-                <p className="text-slate-600">
+                <p className="text-black">
                   You answered {Math.round((score! / 100) * QUIZ_QUESTIONS.length)} out of {QUIZ_QUESTIONS.length} questions correctly
                 </p>
               </div>
@@ -504,7 +504,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
 
             {/* Training Acknowledgment Signature */}
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">
+              <h2 className="text-2xl font-bold text-black mb-6">
                 Training Acknowledgment
               </h2>
 
@@ -516,7 +516,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
               </div>
 
               <div className="mb-6">
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Digital Signature *
                 </label>
                 <div className="border-2 border-slate-300 rounded-lg overflow-hidden">
@@ -529,7 +529,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
                   />
                 </div>
                 <div className="flex justify-between items-center mt-2">
-                  <p className="text-sm text-slate-600">Sign above</p>
+                  <p className="text-sm text-black">Sign above</p>
                   <button
                     onClick={clearSignature}
                     className="text-sm text-blue-600 hover:text-blue-700"
@@ -541,7 +541,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
 
               <div className="grid md:grid-cols-2 gap-4 mb-6">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     Name
                   </label>
                   <input
@@ -552,7 +552,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     Date
                   </label>
                   <input
@@ -569,7 +569,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
               <div className="flex items-center gap-3 mb-6">
                 <Shield className="w-8 h-8 text-purple-600" />
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-2xl font-bold text-black">
                   FERPA Confidentiality Agreement
                 </h2>
               </div>
@@ -603,13 +603,13 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
                   onChange={(e) => setConfidentialityAcknowledged(e.target.checked)}
                   className="mt-1 w-5 h-5 text-blue-600 rounded"
                 />
-                <label htmlFor="confidentiality-acknowledged" className="text-slate-700">
+                <label htmlFor="confidentiality-acknowledged" className="text-black">
                   I have read and agree to the FERPA Confidentiality Agreement and understand the consequences of violations
                 </label>
               </div>
 
               <div className="mb-6">
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Digital Signature *
                 </label>
                 <div className="border-2 border-slate-300 rounded-lg overflow-hidden">
@@ -622,7 +622,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
                   />
                 </div>
                 <div className="flex justify-between items-center mt-2">
-                  <p className="text-sm text-slate-600">Sign above</p>
+                  <p className="text-sm text-black">Sign above</p>
                   <button
                     onClick={clearConfidentialitySignature}
                     className="text-sm text-blue-600 hover:text-blue-700"
@@ -634,7 +634,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
 
               <div className="grid md:grid-cols-3 gap-4 mb-6">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     Name
                   </label>
                   <input
@@ -645,7 +645,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     Role
                   </label>
                   <input
@@ -656,7 +656,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     Date
                   </label>
                   <input
@@ -681,7 +681,7 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
             <div className="flex gap-4">
               <button
                 onClick={() => setStep(2)}
-                className="px-6 py-3 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition"
+                className="px-6 py-3 bg-slate-200 text-black rounded-lg hover:bg-slate-300 transition"
               >
                 Back
               </button>
@@ -701,10 +701,10 @@ export default function FERPATrainingForm({ user, existingTraining }: FERPATrain
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
             <div className="text-center">
               <CheckCircle className="w-20 h-20 text-green-600 mx-auto mb-6" />
-              <h1 className="text-3xl font-bold text-slate-900 mb-4">
+              <h1 className="text-3xl font-bold text-black mb-4">
                 Training Complete!
               </h1>
-              <p className="text-slate-600 mb-6">
+              <p className="text-black mb-6">
                 Your FERPA training has been successfully completed and recorded.
                 Your certificate is being generated...
               </p>

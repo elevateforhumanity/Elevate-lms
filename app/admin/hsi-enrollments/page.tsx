@@ -56,8 +56,8 @@ export default async function HSIEnrollmentsPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">HSI Enrollments</h1>
-          <p className="mt-2 text-gray-600">
+          <h1 className="text-3xl font-bold text-black">HSI Enrollments</h1>
+          <p className="mt-2 text-black">
             Health & Safety Institute partner course enrollments
           </p>
         </div>
@@ -66,7 +66,7 @@ export default async function HSIEnrollmentsPage() {
           <div className="px-6 py-4 border-b border-gray-200">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">
+                <h2 className="text-lg font-semibold text-black">
                   Total Enrollments: {count || 0}
                 </h2>
               </div>
@@ -83,19 +83,19 @@ export default async function HSIEnrollmentsPage() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Student
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Course
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Progress
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Enrolled
                   </th>
                 </tr>
@@ -104,15 +104,15 @@ export default async function HSIEnrollmentsPage() {
                 {hsiEnrollments?.map((enrollment: any) => (
                   <tr key={enrollment.id}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-black">
                         {enrollment.student?.full_name || 'N/A'}
                       </div>
-                      <div className="text-sm text-gray-700">
+                      <div className="text-sm text-black">
                         {enrollment.student?.email}
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm text-gray-900">
+                      <div className="text-sm text-black">
                         {enrollment.course?.course_name || 'N/A'}
                       </div>
                     </td>
@@ -123,18 +123,18 @@ export default async function HSIEnrollmentsPage() {
                             ? 'bg-green-100 text-green-800'
                             : enrollment.status === 'active'
                               ? 'bg-blue-100 text-blue-800'
-                              : 'bg-gray-100 text-gray-800'
+                              : 'bg-gray-100 text-black'
                         }`}
                       >
                         {enrollment.status}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
+                      <div className="text-sm text-black">
                         {enrollment.progress_percentage || 0}%
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {new Date(enrollment.created_at).toLocaleDateString()}
                     </td>
                   </tr>
@@ -145,7 +145,7 @@ export default async function HSIEnrollmentsPage() {
 
           {(!hsiEnrollments || hsiEnrollments.length === 0) && (
             <div className="text-center py-12">
-              <p className="text-gray-700">No HSI enrollments found</p>
+              <p className="text-black">No HSI enrollments found</p>
             </div>
           )}
         </div>

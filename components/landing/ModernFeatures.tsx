@@ -30,11 +30,11 @@ export default function ModernFeatures({
     <section className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-4">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               {subtitle}
             </p>
           )}
@@ -53,10 +53,10 @@ export default function ModernFeatures({
                 <div className={`w-16 h-16 bg-${colorClass}-100 rounded-xl flex items-center justify-center mb-6`}>
                   <Icon className={`w-8 h-8 text-${colorClass}-600`} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold text-black mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-black leading-relaxed">
                   {feature.description}
                 </p>
               </div>

@@ -24,7 +24,7 @@ export default function VITAContactPage() {
         <div className="bg-white rounded-lg shadow-lg p-8 max-w-md text-center">
           <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-4">Message Sent!</h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             We'll respond within 1 business day.
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function VITAContactPage() {
                   <MapPin className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                   <div>
                     <div className="font-semibold">Address</div>
-                    <div className="text-gray-600">
+                    <div className="text-black">
                       123 Main Street<br />
                       Indianapolis, IN 46204
                     </div>
@@ -82,7 +82,7 @@ export default function VITAContactPage() {
                   <Clock className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
                   <div>
                     <div className="font-semibold">Hours</div>
-                    <div className="text-gray-600">
+                    <div className="text-black">
                       Monday-Friday: 9am-5pm<br />
                       Saturday: 10am-2pm<br />
                       Sunday: Closed
@@ -94,7 +94,7 @@ export default function VITAContactPage() {
 
             <div className="bg-green-50 border-2 border-green-600 rounded-lg p-6">
               <h3 className="text-xl font-bold mb-3">Need Immediate Help?</h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Schedule a free appointment to speak with a VITA volunteer
               </p>
               <a
@@ -110,7 +110,7 @@ export default function VITAContactPage() {
             <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Name *
                 </label>
                 <input
@@ -123,7 +123,7 @@ export default function VITAContactPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Email *
                 </label>
                 <input
@@ -136,7 +136,7 @@ export default function VITAContactPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Phone
                 </label>
                 <input
@@ -148,7 +148,7 @@ export default function VITAContactPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Subject *
                 </label>
                 <input
@@ -161,7 +161,7 @@ export default function VITAContactPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Message *
                 </label>
                 <textarea

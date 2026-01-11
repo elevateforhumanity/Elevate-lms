@@ -9,7 +9,7 @@ export default function AcademicIntegrityPage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Academic Integrity Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Standards</h2>
       <p>All work must be your own. Prohibited: cheating, plagiarism, unauthorized collaboration.</p>
       <h2>Violations</h2>

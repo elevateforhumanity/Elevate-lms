@@ -46,7 +46,7 @@ export function CaseloadTable({ learners }: Props) {
               <tr key={`${l.learnerId}-${l.courseTitle}`} className="border-t border-slate-50">
                 <td className="px-4 py-2">
                   <div className="flex flex-col">
-                    <span className="text-xs font-medium text-slate-900">
+                    <span className="text-xs font-medium text-black">
                       {l.name}
                     </span>
                     {l.email && (
@@ -56,7 +56,7 @@ export function CaseloadTable({ learners }: Props) {
                     )}
                   </div>
                 </td>
-                <td className="px-4 py-2 text-xs text-slate-700">
+                <td className="px-4 py-2 text-xs text-black">
                   <span className="block">{l.programTitle}</span>
                   {l.programFundingType && (
                     <span className="text-[11px] text-slate-500">
@@ -64,12 +64,12 @@ export function CaseloadTable({ learners }: Props) {
                     </span>
                   )}
                 </td>
-                <td className="px-4 py-2 text-xs text-slate-700">
+                <td className="px-4 py-2 text-xs text-black">
                   {l.courseTitle}
                 </td>
                 <td className="px-4 py-2 text-xs">
                   <div className="flex items-center gap-2">
-                    <span className="text-slate-700">
+                    <span className="text-black">
                       {l.progressPercent}%
                     </span>
                     <div className="h-1.5 w-20 rounded-full bg-slate-100">
@@ -85,7 +85,7 @@ export function CaseloadTable({ learners }: Props) {
                     </div>
                   </div>
                 </td>
-                <td className="px-4 py-2 text-xs text-slate-700">
+                <td className="px-4 py-2 text-xs text-black">
                   {l.status}
                 </td>
                 <td className="px-4 py-2 text-xs">

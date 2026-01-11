@@ -66,7 +66,7 @@ export default async function InstructorCoursesPage() {
         </div>
       ) : !courses || courses.length === 0 ? (
         <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
-          <p className="text-slate-600 mb-4">No courses assigned yet.</p>
+          <p className="text-black mb-4">No courses assigned yet.</p>
           <p className="text-slate-500 text-sm">
             Contact your program coordinator to get assigned to courses.
           </p>
@@ -80,7 +80,7 @@ export default async function InstructorCoursesPage() {
               className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition"
             >
               <h3 className="text-xl font-semibold mb-2">{course.course_name || course.title}</h3>
-              <p className="text-slate-600 text-sm mb-4 line-clamp-2">
+              <p className="text-black text-sm mb-4 line-clamp-2">
                 {course.description}
               </p>
               <div className="text-sm text-slate-500">

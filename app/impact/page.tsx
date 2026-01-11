@@ -42,7 +42,7 @@ export default function ImpactPage() {
               <h3 className="text-2xl font-bold text-black mb-4">
                 Aligned with Funding Requirements
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Programs designed to meet WIOA, WRG, DOL, and state workforce
                 board requirements. Built-in compliance and reporting.
               </p>
@@ -55,7 +55,7 @@ export default function ImpactPage() {
               <h3 className="text-2xl font-bold text-black mb-4">
                 Proven Outcomes
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 High completion rates, strong job placement, and wage gains.
                 Real-time tracking and transparent reporting.
               </p>
@@ -68,7 +68,7 @@ export default function ImpactPage() {
               <h3 className="text-2xl font-bold text-black mb-4">
                 Scalable Infrastructure
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Technology platform that can be licensed and deployed across
                 multiple sites, maximizing your investment.
               </p>
@@ -81,7 +81,7 @@ export default function ImpactPage() {
               <h3 className="text-2xl font-bold text-black mb-4">
                 Sustainable Model
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Designed for long-term sustainability through employer
                 partnerships, licensing, and diversified funding.
               </p>
@@ -102,7 +102,7 @@ export default function ImpactPage() {
               <h3 className="text-xl font-bold text-black mb-2">
                 Program Sponsorship
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Fund specific training programs or cohorts. Direct impact with
                 clear outcomes.
               </p>
@@ -112,7 +112,7 @@ export default function ImpactPage() {
               <h3 className="text-xl font-bold text-black mb-2">
                 Platform Licensing
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Support deployment of the platform to additional organizations
                 and regions.
               </p>
@@ -122,7 +122,7 @@ export default function ImpactPage() {
               <h3 className="text-xl font-bold text-black mb-2">
                 Barrier Removal Fund
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Support wraparound services: transportation, childcare,
                 emergency assistance.
               </p>
@@ -132,7 +132,7 @@ export default function ImpactPage() {
               <h3 className="text-xl font-bold text-black mb-2">
                 Innovation & Expansion
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Fund new program development, technology enhancements, or
                 geographic expansion.
               </p>
@@ -147,7 +147,7 @@ export default function ImpactPage() {
           <h2 className="text-4xl font-black text-black mb-6">
             Ready to Make an Impact?
           </h2>
-          <p className="text-xl text-gray-700 mb-10">
+          <p className="text-xl text-black mb-10">
             Let's discuss how your support can create lasting change in
             workforce development.
           </p>

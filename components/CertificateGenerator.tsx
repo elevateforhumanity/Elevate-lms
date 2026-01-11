@@ -29,22 +29,22 @@ export default function CertificateGenerator({
           <div className="mb-8">
             <Award className="mx-auto text-brand-orange-600" size={64} />
           </div>
-          <h1 className="text-4xl font-bold mb-4 text-gray-900 text-2xl md:text-3xl lg:text-4xl">
+          <h1 className="text-4xl font-bold mb-4 text-black text-2xl md:text-3xl lg:text-4xl">
             Certificate of Completion
           </h1>
-          <div className="text-lg text-gray-600 mb-8">
+          <div className="text-lg text-black mb-8">
             This certifies that
           </div>
           <div className="text-3xl font-bold mb-8 text-brand-orange-600">
             {studentName}
           </div>
-          <div className="text-lg text-gray-600 mb-4">
+          <div className="text-lg text-black mb-4">
             has successfully completed
           </div>
-          <div className="text-2xl font-semibold mb-8 text-gray-900">
+          <div className="text-2xl font-semibold mb-8 text-black">
             {courseName}
           </div>
-          <div className="flex items-center justify-center gap-12 text-sm text-gray-600 mb-8">
+          <div className="flex items-center justify-center gap-12 text-sm text-black mb-8">
             <div>
               <div className="font-semibold">Date of Completion</div>
               <div>{completionDate}</div>
@@ -55,7 +55,7 @@ export default function CertificateGenerator({
             </div>
           </div>
           <div className="border-t-2 border-gray-300 pt-8">
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-black">
               Elevate for Humanity
             </div>
             <div className="text-xs text-gray-500 mt-2">

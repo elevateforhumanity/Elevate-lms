@@ -45,7 +45,7 @@ export default function CreatorNewCoursePage() {
         <div className="text-center">
           <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-2">Course Created!</h2>
-          <p className="text-slate-600">Redirecting to course editor...</p>
+          <p className="text-black">Redirecting to course editor...</p>
         </div>
       </div>
     );
@@ -57,7 +57,7 @@ export default function CreatorNewCoursePage() {
       <div className="bg-white rounded-lg shadow-md p-8 max-w-3xl">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               <BookOpen className="w-4 h-4 inline mr-2" />
               Course Title *
             </label>
@@ -72,7 +72,7 @@ export default function CreatorNewCoursePage() {
           </div>
           
           <div>
-            <label className="block text-sm font-semibold text-slate-700 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Description *
             </label>
             <textarea
@@ -87,7 +87,7 @@ export default function CreatorNewCoursePage() {
 
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 <Clock className="w-4 h-4 inline mr-2" />
                 Duration (hours) *
               </label>
@@ -101,7 +101,7 @@ export default function CreatorNewCoursePage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 <DollarSign className="w-4 h-4 inline mr-2" />
                 Price (USD) *
               </label>
@@ -118,7 +118,7 @@ export default function CreatorNewCoursePage() {
 
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 Category *
               </label>
               <select
@@ -135,7 +135,7 @@ export default function CreatorNewCoursePage() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 Level *
               </label>
               <select

@@ -37,14 +37,14 @@ export default function AdminHeader() {
     <header className="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
       <div className="px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <h2 className="text-xl font-semibold text-gray-900">Admin Dashboard</h2>
+          <h2 className="text-xl font-semibold text-black">Admin Dashboard</h2>
         </div>
 
         <div className="flex items-center gap-4">
           {/* User Info */}
           <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg">
-            <User className="w-4 h-4 text-gray-600" />
-            <span className="text-sm font-medium text-gray-700">
+            <User className="w-4 h-4 text-black" />
+            <span className="text-sm font-medium text-black">
               {userEmail || 'Admin'}
             </span>
           </div>

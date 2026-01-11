@@ -58,7 +58,7 @@ export default function SimpleHeader() {
               >
                 {section.items && section.items.length > 0 ? (
                   <>
-                    <button className="flex items-center text-gray-700 hover:text-blue-600 font-medium transition">
+                    <button className="flex items-center text-black hover:text-blue-600 font-medium transition">
                       {section.label}
                       <ChevronDown className="ml-1 h-4 w-4" />
                     </button>
@@ -68,7 +68,7 @@ export default function SimpleHeader() {
                           <Link
                             key={item.href}
                             href={item.href}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition"
+                            className="block px-4 py-2 text-sm text-black hover:bg-gray-50 hover:text-blue-600 transition"
                           >
                             {item.label}
                           </Link>
@@ -79,7 +79,7 @@ export default function SimpleHeader() {
                 ) : (
                   <Link
                     href={section.href || '/'}
-                    className="text-gray-700 hover:text-blue-600 font-medium transition"
+                    className="text-black hover:text-blue-600 font-medium transition"
                   >
                     {section.label}
                   </Link>
@@ -90,7 +90,7 @@ export default function SimpleHeader() {
             {/* Login */}
             <Link
               href="/login"
-              className="text-gray-700 hover:text-blue-600 font-medium"
+              className="text-black hover:text-blue-600 font-medium"
             >
               Login
             </Link>
@@ -161,7 +161,7 @@ export default function SimpleHeader() {
                               <Link
                                 key={item.href}
                                 href={item.href}
-                                className="block px-6 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition"
+                                className="block px-6 py-2.5 text-sm text-black hover:bg-gray-50 hover:text-blue-600 transition"
                                 onClick={() => {
                                   setMobileMenuOpen(false);
                                   setExpandedMobileSection(null);
@@ -188,7 +188,7 @@ export default function SimpleHeader() {
                 <div className="pt-4 space-y-2 px-2">
                   <Link
                     href="/login"
-                    className="block px-4 py-2 text-center border-2 border-gray-300 text-gray-700 hover:bg-gray-100 rounded-lg font-bold"
+                    className="block px-4 py-2 text-center border-2 border-gray-300 text-black hover:bg-gray-100 rounded-lg font-bold"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Login

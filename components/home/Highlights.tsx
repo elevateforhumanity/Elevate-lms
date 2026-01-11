@@ -5,7 +5,7 @@ export default function Highlights() {
   return (
     <section className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
+        <h2 className="text-4xl font-bold text-center text-black mb-12">
           How It Works
         </h2>
         

@@ -94,7 +94,7 @@ export function QuizSystem({
           <h2 className="text-3xl font-bold mb-2">
             {passed ? 'Congratulations!' : 'Keep Trying!'}
           </h2>
-          <p className="text-slate-600 mb-4">
+          <p className="text-black mb-4">
             You scored {score}% ({correctCount} out of {questions.length}{' '}
             correct)
           </p>
@@ -127,7 +127,7 @@ export function QuizSystem({
                     <p className="font-semibold mb-2">
                       Question {index + 1}: {question.question}
                     </p>
-                    <p className="text-sm text-slate-600 mb-1">
+                    <p className="text-sm text-black mb-1">
                       Your answer:{' '}
                       <span
                         className={
@@ -140,7 +140,7 @@ export function QuizSystem({
                       </span>
                     </p>
                     {!isCorrect && (
-                      <p className="text-sm text-slate-600">
+                      <p className="text-sm text-black">
                         Correct answer:{' '}
                         <span className="text-green-700 font-semibold">
                           {question.options[question.correctAnswer]}
@@ -148,7 +148,7 @@ export function QuizSystem({
                       </p>
                     )}
                     {question.explanation && (
-                      <p className="text-sm text-slate-600 mt-2 italic">
+                      <p className="text-sm text-black mt-2 italic">
                         {question.explanation}
                       </p>
                     )}
@@ -187,7 +187,7 @@ export function QuizSystem({
     <div className="bg-white rounded-lg p-8">
       {/* Progress */}
       <div className="mb-6">
-        <div className="flex justify-between text-sm text-slate-600 mb-2">
+        <div className="flex justify-between text-sm text-black mb-2">
           <span>
             Question {currentQuestion + 1} of {questions.length}
           </span>
@@ -239,12 +239,12 @@ export function QuizSystem({
         <button
           onClick={goToPrevious}
           disabled={currentQuestion === 0}
-          className="px-6 py-3 rounded-lg font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed bg-slate-100 hover:bg-slate-200 text-slate-900"
+          className="px-6 py-3 rounded-lg font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed bg-slate-100 hover:bg-slate-200 text-black"
         >
           Previous
         </button>
 
-        <div className="text-sm text-slate-600">
+        <div className="text-sm text-black">
           {answers.filter((a) => a !== -1).length} of {questions.length}{' '}
           answered
         </div>

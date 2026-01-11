@@ -170,7 +170,7 @@ export function AffirmPaymentButton({
       {affirmLoaded && (
         <div className="mt-3 text-center">
           <p
-            className="affirm-as-low-as text-sm text-slate-600"
+            className="affirm-as-low-as text-sm text-black"
             data-amount={amount * 100}
             data-affirm-type="logo"
             data-affirm-color="blue"

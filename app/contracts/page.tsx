@@ -55,10 +55,10 @@ export default function ContractsPage() {
                   <FileText className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                  <h3 className="text-2xl font-bold text-black mb-2">
                     Master Platform License Agreement
                   </h3>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     For: Nonprofits, Workforce Orgs, States, Tribal Nations
                   </p>
                 </div>
@@ -66,8 +66,8 @@ export default function ContractsPage() {
 
               <div className="space-y-4 mb-6">
                 <div className="bg-blue-50 rounded-xl p-4">
-                  <h4 className="font-bold text-slate-900 mb-2">Covers:</h4>
-                  <ul className="text-sm text-slate-700 space-y-1">
+                  <h4 className="font-bold text-black mb-2">Covers:</h4>
+                  <ul className="text-sm text-black space-y-1">
                     <li>• Scope of license (platform access only)</li>
                     <li>• No sale of training or employment</li>
                     <li>• Regulatory compliance requirements</li>
@@ -78,8 +78,8 @@ export default function ContractsPage() {
                 </div>
 
                 <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                  <p className="text-xs text-slate-700">
-                    <strong className="text-slate-900">Grant-Safe:</strong> All
+                  <p className="text-xs text-black">
+                    <strong className="text-black">Grant-Safe:</strong> All
                     fees are platform licensing and administrative fees only and
                     are not tied to grant disbursement.
                   </p>
@@ -102,10 +102,10 @@ export default function ContractsPage() {
                   <Users className="w-6 h-6 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                  <h3 className="text-2xl font-bold text-black mb-2">
                     Workforce Partnership MOU
                   </h3>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     For: WorkOne, Workforce Boards, DWD
                   </p>
                 </div>
@@ -113,8 +113,8 @@ export default function ContractsPage() {
 
               <div className="space-y-4 mb-6">
                 <div className="bg-green-50 rounded-xl p-4">
-                  <h4 className="font-bold text-slate-900 mb-2">Covers:</h4>
-                  <ul className="text-sm text-slate-700 space-y-1">
+                  <h4 className="font-bold text-black mb-2">Covers:</h4>
+                  <ul className="text-sm text-black space-y-1">
                     <li>• Purpose (referrals & enrollment)</li>
                     <li>• Sponsor roles (registration, RTI, tracking)</li>
                     <li>• Partner roles (eligibility, funding)</li>
@@ -125,8 +125,8 @@ export default function ContractsPage() {
                 </div>
 
                 <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-                  <p className="text-xs text-slate-700">
-                    <strong className="text-slate-900">
+                  <p className="text-xs text-black">
+                    <strong className="text-black">
                       WorkOne-Friendly:
                     </strong>{' '}
                     All funding determinations remain solely with the workforce
@@ -151,10 +151,10 @@ export default function ContractsPage() {
                   <Briefcase className="w-6 h-6 text-orange-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                  <h3 className="text-2xl font-bold text-black mb-2">
                     Employer Participation Agreement
                   </h3>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     For: Barber Shops, Contractors, Businesses
                   </p>
                 </div>
@@ -162,8 +162,8 @@ export default function ContractsPage() {
 
               <div className="space-y-4 mb-6">
                 <div className="bg-orange-50 rounded-xl p-4">
-                  <h4 className="font-bold text-slate-900 mb-2">Covers:</h4>
-                  <ul className="text-sm text-slate-700 space-y-1">
+                  <h4 className="font-bold text-black mb-2">Covers:</h4>
+                  <ul className="text-sm text-black space-y-1">
                     <li>• Employer responsibilities (hire, train, pay)</li>
                     <li>• Sponsor responsibilities (register, coordinate)</li>
                     <li>• Fee structure (admin fees only)</li>
@@ -174,8 +174,8 @@ export default function ContractsPage() {
                 </div>
 
                 <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
-                  <p className="text-xs text-slate-700">
-                    <strong className="text-slate-900">Clear Terms:</strong>{' '}
+                  <p className="text-xs text-black">
+                    <strong className="text-black">Clear Terms:</strong>{' '}
                     Funding eligibility is determined by workforce agencies and
                     is not guaranteed.
                   </p>
@@ -198,10 +198,10 @@ export default function ContractsPage() {
                   <Shield className="w-6 h-6 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                  <h3 className="text-2xl font-bold text-black mb-2">
                     Data Sharing & Confidentiality
                   </h3>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     For: All Partners (HIPAA-style)
                   </p>
                 </div>
@@ -209,8 +209,8 @@ export default function ContractsPage() {
 
               <div className="space-y-4 mb-6">
                 <div className="bg-purple-50 rounded-xl p-4">
-                  <h4 className="font-bold text-slate-900 mb-2">Covers:</h4>
-                  <ul className="text-sm text-slate-700 space-y-1">
+                  <h4 className="font-bold text-black mb-2">Covers:</h4>
+                  <ul className="text-sm text-black space-y-1">
                     <li>• Confidential information definition</li>
                     <li>• Permitted use of data</li>
                     <li>• Security safeguards</li>
@@ -221,8 +221,8 @@ export default function ContractsPage() {
                 </div>
 
                 <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
-                  <p className="text-xs text-slate-700">
-                    <strong className="text-slate-900">Secure:</strong> Data may
+                  <p className="text-xs text-black">
+                    <strong className="text-black">Secure:</strong> Data may
                     be used solely for program administration, compliance,
                     reporting, and audits.
                   </p>
@@ -245,10 +245,10 @@ export default function ContractsPage() {
                   <Building2 className="w-6 h-6 text-indigo-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                  <h3 className="text-2xl font-bold text-black mb-2">
                     White-Label / Branding Addendum
                   </h3>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     Optional: For Professional & Enterprise Tiers
                   </p>
                 </div>
@@ -256,8 +256,8 @@ export default function ContractsPage() {
 
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div className="bg-indigo-50 rounded-xl p-4">
-                  <h4 className="font-bold text-slate-900 mb-2">Covers:</h4>
-                  <ul className="text-sm text-slate-700 space-y-1">
+                  <h4 className="font-bold text-black mb-2">Covers:</h4>
+                  <ul className="text-sm text-black space-y-1">
                     <li>• Custom branding rights (logo, colors, domain)</li>
                     <li>• No misrepresentation clause</li>
                     <li>• No claim of accreditation unless granted</li>
@@ -266,12 +266,12 @@ export default function ContractsPage() {
                 </div>
 
                 <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4">
-                  <p className="text-xs text-slate-700 mb-3">
-                    <strong className="text-slate-900">Protection:</strong>{' '}
+                  <p className="text-xs text-black mb-3">
+                    <strong className="text-black">Protection:</strong>{' '}
                     Licensee may use custom branding subject to restrictions on
                     misrepresentation and resale.
                   </p>
-                  <p className="text-xs text-slate-600 italic">
+                  <p className="text-xs text-black italic">
                     Typically included with Professional and Enterprise
                     licenses.
                   </p>
@@ -297,17 +297,17 @@ export default function ContractsPage() {
             <div className="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-bold mb-4">
               Use This Verbatim
             </div>
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl font-bold text-black mb-4">
               Grant-Safe Language
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-black">
               For proposals, contracts, and agreements
             </p>
           </div>
 
           <div className="bg-zinc-900   rounded-3xl p-8 md:p-12 border-2 border-green-200">
             <div className="bg-white rounded-2xl p-6 md:p-8 border border-green-200">
-              <p className="text-lg text-slate-700 leading-relaxed italic">
+              <p className="text-lg text-black leading-relaxed italic">
                 "All fees charged under this agreement are for software access,
                 administrative infrastructure, and compliance support. No grant
                 funds are used for wages, training delivery, or participant
@@ -316,7 +316,7 @@ export default function ContractsPage() {
             </div>
             <div className="mt-6 flex items-start gap-3">
               <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <p className="text-sm text-slate-700">
+              <p className="text-sm text-black">
                 This language protects your WIOA/WRG position and is exactly
                 what auditors expect to see.
               </p>
@@ -329,10 +329,10 @@ export default function ContractsPage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl font-bold text-black mb-4">
               How to Use These Templates
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-black">
               Match the right contract to your partner type
             </p>
           </div>
@@ -364,17 +364,17 @@ export default function ContractsPage() {
                 key={i}
                 className={`bg-white rounded-2xl p-6 border-2 border-${item.color}-200`}
               >
-                <h3 className="font-bold text-slate-900 mb-2">
+                <h3 className="font-bold text-black mb-2">
                   {item.partner}
                 </h3>
-                <p className="text-sm text-slate-600">→ {item.contract}</p>
+                <p className="text-sm text-black">→ {item.contract}</p>
               </div>
             ))}
           </div>
 
           <div className="mt-12 bg-blue-50 border border-blue-200 rounded-2xl p-6 text-center">
-            <p className="text-slate-700">
-              <strong className="text-slate-900">
+            <p className="text-black">
+              <strong className="text-black">
                 This structure is exactly what auditors expect.
               </strong>
             </p>
@@ -393,7 +393,7 @@ export default function ContractsPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact?topic=contracts"
-              className="inline-flex items-center justify-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-10 py-5 rounded-xl font-bold text-lg transition shadow-2xl"
+              className="inline-flex items-center justify-center gap-2 bg-white text-black hover:bg-slate-100 px-10 py-5 rounded-xl font-bold text-lg transition shadow-2xl"
             >
               Contact Us
             </Link>

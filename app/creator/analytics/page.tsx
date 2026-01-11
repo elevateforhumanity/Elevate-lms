@@ -85,19 +85,19 @@ export default async function CreatorAnalyticsPage() {
           
           <div className="grid md:grid-cols-4 gap-6 mb-8">
             <div className="bg-white rounded-lg shadow-sm border p-6">
-              <div className="text-sm text-slate-600 mb-2">Total Courses</div>
+              <div className="text-sm text-black mb-2">Total Courses</div>
               <div className="text-3xl font-bold text-blue-600">0</div>
             </div>
             <div className="bg-white rounded-lg shadow-sm border p-6">
-              <div className="text-sm text-slate-600 mb-2">Total Enrollments</div>
+              <div className="text-sm text-black mb-2">Total Enrollments</div>
               <div className="text-3xl font-bold text-green-600">{totalEnrollments}</div>
             </div>
             <div className="bg-white rounded-lg shadow-sm border p-6">
-              <div className="text-sm text-slate-600 mb-2">Active Students</div>
+              <div className="text-sm text-black mb-2">Active Students</div>
               <div className="text-3xl font-bold text-purple-600">{activeEnrollments}</div>
             </div>
             <div className="bg-white rounded-lg shadow-sm border p-6">
-              <div className="text-sm text-slate-600 mb-2">Completion Rate</div>
+              <div className="text-sm text-black mb-2">Completion Rate</div>
               <div className="text-3xl font-bold text-orange-600">{completionRate}%</div>
             </div>
           </div>
@@ -107,15 +107,15 @@ export default async function CreatorAnalyticsPage() {
               <h2 className="text-xl font-semibold mb-4">Enrollment Trends</h2>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">This Month</span>
+                  <span className="text-black">This Month</span>
                   <span className="font-semibold text-green-600">+{Math.floor(totalEnrollments * 0.3)}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Last Month</span>
+                  <span className="text-black">Last Month</span>
                   <span className="font-semibold">{Math.floor(totalEnrollments * 0.25)}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">3 Months Ago</span>
+                  <span className="text-black">3 Months Ago</span>
                   <span className="font-semibold">{Math.floor(totalEnrollments * 0.2)}</span>
                 </div>
                 <div className="pt-4 border-t">
@@ -130,15 +130,15 @@ export default async function CreatorAnalyticsPage() {
               <h2 className="text-xl font-semibold mb-4">Student Engagement</h2>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Avg. Completion Time</span>
+                  <span className="text-black">Avg. Completion Time</span>
                   <span className="font-semibold">4.2 weeks</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Active Daily Users</span>
+                  <span className="text-black">Active Daily Users</span>
                   <span className="font-semibold">{Math.floor(activeEnrollments * 0.6)}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Avg. Session Duration</span>
+                  <span className="text-black">Avg. Session Duration</span>
                   <span className="font-semibold">28 min</span>
                 </div>
                 <div className="pt-4 border-t">
@@ -152,7 +152,7 @@ export default async function CreatorAnalyticsPage() {
             <div className="bg-white rounded-lg shadow-sm border p-6">
               <h2 className="text-xl font-semibold mb-4">Course Performance</h2>
               <div className="space-y-3">
-                <div className="text-sm text-slate-600 mb-2">Top Performing Courses</div>
+                <div className="text-sm text-black mb-2">Top Performing Courses</div>
                 <div className="space-y-2">
                   <div className="flex justify-between items-center p-2 bg-slate-50 rounded">
                     <span className="text-sm">Course 1</span>
@@ -174,15 +174,15 @@ export default async function CreatorAnalyticsPage() {
               <h2 className="text-xl font-semibold mb-4">Student Feedback</h2>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Average Rating</span>
+                  <span className="text-black">Average Rating</span>
                   <span className="font-semibold text-yellow-600">4.7/5.0</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Total Reviews</span>
+                  <span className="text-black">Total Reviews</span>
                   <span className="font-semibold">{Math.floor(totalEnrollments * 0.4)}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-600">Positive Feedback</span>
+                  <span className="text-black">Positive Feedback</span>
                   <span className="font-semibold text-green-600">92%</span>
                 </div>
                 <div className="pt-4 border-t">

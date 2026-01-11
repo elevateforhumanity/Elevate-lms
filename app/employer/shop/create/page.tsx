@@ -33,16 +33,16 @@ export default async function CreateShopPage() {
     <div className="min-h-screen bg-slate-50 py-12">
       <div className="max-w-2xl mx-auto px-4">
         <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Create Your Shop
           </h1>
-          <p className="text-slate-600 mb-8">
+          <p className="text-black mb-8">
             Set up your shop to start managing apprenticeships
           </p>
 
           <form action={createShop} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="name" className="block text-sm font-semibold text-black mb-2">
                 Shop Name *
               </label>
               <input
@@ -56,7 +56,7 @@ export default async function CreateShopPage() {
             </div>
 
             <div>
-              <label htmlFor="ein" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="ein" className="block text-sm font-semibold text-black mb-2">
                 EIN (Employer Identification Number)
               </label>
               <input
@@ -69,7 +69,7 @@ export default async function CreateShopPage() {
             </div>
 
             <div>
-              <label htmlFor="address1" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="address1" className="block text-sm font-semibold text-black mb-2">
                 Street Address *
               </label>
               <input
@@ -82,7 +82,7 @@ export default async function CreateShopPage() {
             </div>
 
             <div>
-              <label htmlFor="address2" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="address2" className="block text-sm font-semibold text-black mb-2">
                 Address Line 2
               </label>
               <input
@@ -96,7 +96,7 @@ export default async function CreateShopPage() {
 
             <div className="grid grid-cols-3 gap-4">
               <div className="col-span-2">
-                <label htmlFor="city" className="block text-sm font-semibold text-slate-900 mb-2">
+                <label htmlFor="city" className="block text-sm font-semibold text-black mb-2">
                   City *
                 </label>
                 <input
@@ -109,7 +109,7 @@ export default async function CreateShopPage() {
               </div>
 
               <div>
-                <label htmlFor="state" className="block text-sm font-semibold text-slate-900 mb-2">
+                <label htmlFor="state" className="block text-sm font-semibold text-black mb-2">
                   State *
                 </label>
                 <select
@@ -129,7 +129,7 @@ export default async function CreateShopPage() {
             </div>
 
             <div>
-              <label htmlFor="zip" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="zip" className="block text-sm font-semibold text-black mb-2">
                 ZIP Code *
               </label>
               <input
@@ -143,7 +143,7 @@ export default async function CreateShopPage() {
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="phone" className="block text-sm font-semibold text-black mb-2">
                 Phone Number *
               </label>
               <input
@@ -157,7 +157,7 @@ export default async function CreateShopPage() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="email" className="block text-sm font-semibold text-black mb-2">
                 Shop Email *
               </label>
               <input

@@ -13,10 +13,10 @@ export function ContentWithImage({ section, reverse }: ContentWithImageProps) {
     <section className="bg-white">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 md:flex-row md:items-center">
         <div className={reverse ? "md:order-2 md:w-1/2" : "md:w-1/2"}>
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h2 className="text-lg font-semibold text-black">
             {section.title}
           </h2>
-          <ul className="mt-3 list-disc space-y-2 pl-4 text-sm text-slate-700">
+          <ul className="mt-3 list-disc space-y-2 pl-4 text-sm text-black">
             {section.bullets.map((bullet) => (
               <li key={bullet}>{bullet}</li>
             ))}

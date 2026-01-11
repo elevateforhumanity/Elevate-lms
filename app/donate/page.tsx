@@ -77,29 +77,29 @@ export default function DonatePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-full mb-4">
                 <Users className="w-8 h-8 text-teal-600" />
               </div>
-              <div className="text-4xl font-bold text-slate-900 mb-2">500+</div>
-              <div className="text-slate-600">Lives Transformed</div>
+              <div className="text-4xl font-bold text-black mb-2">500+</div>
+              <div className="text-black">Lives Transformed</div>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
                 <GraduationCap className="w-8 h-8 text-brand-blue-600" />
               </div>
-              <div className="text-4xl font-bold text-slate-900 mb-2">95%</div>
-              <div className="text-slate-600">Completion Rate</div>
+              <div className="text-4xl font-bold text-black mb-2">95%</div>
+              <div className="text-black">Completion Rate</div>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-green-100 rounded-full mb-4">
                 <Briefcase className="w-8 h-8 text-brand-green-600" />
               </div>
-              <div className="text-4xl font-bold text-slate-900 mb-2">87%</div>
-              <div className="text-slate-600">Job Placement</div>
+              <div className="text-4xl font-bold text-black mb-2">87%</div>
+              <div className="text-black">Job Placement</div>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
                 <TrendingUp className="w-8 h-8 text-purple-600" />
               </div>
-              <div className="text-4xl font-bold text-slate-900 mb-2">$45K</div>
-              <div className="text-slate-600">Avg. Starting Salary</div>
+              <div className="text-4xl font-bold text-black mb-2">$45K</div>
+              <div className="text-black">Avg. Starting Salary</div>
             </div>
           </div>
         </div>
@@ -109,10 +109,10 @@ export default function DonatePage() {
       <section id="impact" className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
               Your Donation Makes a Real Difference
             </h2>
-            <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-black max-w-3xl mx-auto">
               Every dollar directly supports career training, certifications,
               and job placement services.
             </p>
@@ -123,22 +123,22 @@ export default function DonatePage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-teal-100 rounded-lg mb-4">
                 <DollarSign className="w-6 h-6 text-teal-600" />
               </div>
-              <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-2">
+              <h3 className="text-lg md:text-lg font-bold text-black mb-2">
                 $50
               </h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Provides training materials and supplies for one student
               </p>
               <ul className="space-y-2">
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                   <span>Textbooks and workbooks</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                   <span>Safety equipment</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                   <span>Digital learning resources</span>
                 </li>
@@ -152,22 +152,22 @@ export default function DonatePage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg mb-4">
                 <GraduationCap className="w-6 h-6 text-brand-blue-600" />
               </div>
-              <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-2">
+              <h3 className="text-lg md:text-lg font-bold text-black mb-2">
                 $250
               </h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Covers certification exam fees for one student
               </p>
               <ul className="space-y-2">
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                   <span>Industry certification exam</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                   <span>Study materials and prep courses</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                   <span>Professional resume building</span>
                 </li>
@@ -178,22 +178,22 @@ export default function DonatePage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-brand-green-100 rounded-lg mb-4">
                 <Briefcase className="w-6 h-6 text-brand-green-600" />
               </div>
-              <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-2">
+              <h3 className="text-lg md:text-lg font-bold text-black mb-2">
                 $1,000
               </h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Sponsors complete training program for one student
               </p>
               <ul className="space-y-2">
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
                   <span>Full 8-12 week training program</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
                   <span>All certifications and materials</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
                   <span>Job placement assistance</span>
                 </li>
@@ -207,10 +207,10 @@ export default function DonatePage() {
       <section id="donate-now" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
               Make Your Donation Today
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-black">
               Secure payment powered by Stripe. 100% tax-deductible.
             </p>
           </div>
@@ -220,21 +220,21 @@ export default function DonatePage() {
           <div className="hidden bg-slate-50 rounded-2xl shadow-xl p-8 md:p-12 border border-slate-200">
             {/* Donation Amount Selection */}
             <div className="mb-8">
-              <label className="block text-sm font-bold text-slate-900 mb-4">
+              <label className="block text-sm font-bold text-black mb-4">
                 SELECT AMOUNT
               </label>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                 {[50, 100, 250, 500].map((amount) => (
                   <button
                     key={amount}
-                    className="px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-slate-900 hover:border-teal-500 hover:bg-teal-50 transition"
+                    className="px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-black hover:border-teal-500 hover:bg-teal-50 transition"
                   >
                     ${amount}
                   </button>
                 ))}
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-slate-700 font-semibold">$</span>
+                <span className="text-black font-semibold">$</span>
                 <input
                   type="number"
                   placeholder="Custom amount"
@@ -245,14 +245,14 @@ export default function DonatePage() {
 
             {/* Donation Type */}
             <div className="mb-8">
-              <label className="block text-sm font-bold text-slate-900 mb-4">
+              <label className="block text-sm font-bold text-black mb-4">
                 DONATION TYPE
               </label>
               <div className="grid md:grid-cols-2 gap-4">
                 <button className="px-6 py-4 border-2 border-teal-500 bg-teal-50 rounded-lg font-bold text-teal-700 transition" aria-label="Action button">
                   One-Time Gift
                 </button>
-                <button className="px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-slate-900 hover:border-teal-500 hover:bg-teal-50 transition" aria-label="Action button">
+                <button className="px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-black hover:border-teal-500 hover:bg-teal-50 transition" aria-label="Action button">
                   Monthly Giving
                 </button>
               </div>
@@ -260,7 +260,7 @@ export default function DonatePage() {
 
             {/* Payment Methods */}
             <div className="mb-8">
-              <label className="block text-sm font-bold text-slate-900 mb-4">
+              <label className="block text-sm font-bold text-black mb-4">
                 PAYMENT METHOD
               </label>
               <div className="grid md:grid-cols-3 gap-4">
@@ -268,11 +268,11 @@ export default function DonatePage() {
                   <CreditCard className="w-5 h-5" />
                   Card
                 </button>
-                <button className="flex items-center justify-center gap-2 px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-slate-900 hover:border-teal-500 hover:bg-teal-50 transition" aria-label="Action button">
+                <button className="flex items-center justify-center gap-2 px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-black hover:border-teal-500 hover:bg-teal-50 transition" aria-label="Action button">
                   <Building2 className="w-5 h-5" />
                   Bank
                 </button>
-                <button className="flex items-center justify-center gap-2 px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-slate-900 hover:border-teal-500 hover:bg-teal-50 transition" aria-label="Action button">
+                <button className="flex items-center justify-center gap-2 px-6 py-4 border-2 border-slate-300 rounded-lg font-bold text-black hover:border-teal-500 hover:bg-teal-50 transition" aria-label="Action button">
                   <Gift className="w-5 h-5" />
                   Other
                 </button>
@@ -283,7 +283,7 @@ export default function DonatePage() {
             <div className="space-y-4 mb-8">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     First Name *
                   </label>
                   <input
@@ -293,7 +293,7 @@ export default function DonatePage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Last Name *
                   </label>
                   <input
@@ -304,7 +304,7 @@ export default function DonatePage() {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Email Address *
                 </label>
                 <input
@@ -314,7 +314,7 @@ export default function DonatePage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Phone Number
                 </label>
                 <input
@@ -331,7 +331,7 @@ export default function DonatePage() {
                   type="checkbox"
                   className="w-5 h-5 text-teal-600 rounded"
                 />
-                <span className="font-semibold text-slate-900">
+                <span className="font-semibold text-black">
                   Make this donation in honor or memory of someone
                 </span>
               </label>
@@ -344,7 +344,7 @@ export default function DonatePage() {
             </button>
 
             {/* Security Note */}
-            <div className="mt-6 flex items-center justify-center gap-2 text-sm text-slate-600">
+            <div className="mt-6 flex items-center justify-center gap-2 text-sm text-black">
               <Shield className="w-5 h-5 text-brand-green-600" />
               <span>Secure payment processing • 501(c)(3) tax-deductible</span>
             </div>
@@ -356,10 +356,10 @@ export default function DonatePage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
               Other Ways to Support
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-black">
               Multiple options to make a difference
             </p>
           </div>
@@ -369,10 +369,10 @@ export default function DonatePage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-lg mb-4">
                 <Building2 className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-3">
+              <h3 className="text-lg font-bold text-black mb-3">
                 Corporate Sponsorship
               </h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Partner with us to sponsor training programs, provide
                 internships, or support specific initiatives.
               </p>
@@ -389,10 +389,10 @@ export default function DonatePage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 rounded-lg mb-4">
                 <Gift className="w-6 h-6 text-brand-orange-600" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-3">
+              <h3 className="text-lg font-bold text-black mb-3">
                 Planned Giving
               </h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Include Elevate for Humanity in your estate planning to create a
                 lasting legacy of opportunity.
               </p>
@@ -409,10 +409,10 @@ export default function DonatePage() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-brand-green-100 rounded-lg mb-4">
                 <Award className="w-6 h-6 text-brand-green-600" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-3">
+              <h3 className="text-lg font-bold text-black mb-3">
                 Matching Gifts
               </h3>
-              <p className="text-slate-600 mb-4">
+              <p className="text-black mb-4">
                 Many employers match charitable donations. Check if your company
                 participates to double your impact.
               </p>
@@ -434,10 +434,10 @@ export default function DonatePage() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-full mb-6">
             <Shield className="w-8 h-8 text-teal-600" />
           </div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl font-bold text-black mb-4">
             Tax-Deductible Donations
           </h2>
-          <p className="text-slate-600 mb-6 leading-relaxed">
+          <p className="text-black mb-6 leading-relaxed">
             Elevate for Humanity is a registered 501(c)(3) nonprofit
             organization. Your donation is tax-deductible to the fullest extent
             allowed by law. You will receive a receipt for your records

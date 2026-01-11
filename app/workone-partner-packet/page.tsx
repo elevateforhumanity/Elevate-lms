@@ -80,19 +80,19 @@ export default function WorkOnePartnerPacketPage() {
                 <Award className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                <h2 className="text-3xl font-bold text-black mb-4">
                   1. Who We Are
                 </h2>
               </div>
             </div>
             <div className="prose prose-lg max-w-none">
-              <p className="text-slate-700 leading-relaxed">
+              <p className="text-black leading-relaxed">
                 We are a registered apprenticeship sponsor and ETPL-approved
                 workforce intermediary that helps Indiana employers implement
                 earn-and-learn apprenticeship programs aligned with WIOA and WRG
                 funding.
               </p>
-              <p className="text-slate-700 leading-relaxed">
+              <p className="text-black leading-relaxed">
                 We are not a staffing agency and not a traditional school. We
                 provide infrastructure, compliance, and training coordination so
                 employers can hire, train, and retain talent with reduced cost
@@ -108,39 +108,39 @@ export default function WorkOnePartnerPacketPage() {
                 <FileText className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                <h2 className="text-3xl font-bold text-black mb-4">
                   2. Programs Offered
                 </h2>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-black">
                   Currently active; additional trades available upon request
                 </p>
               </div>
             </div>
             <div className="space-y-4">
               <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                <h3 className="font-bold text-slate-900 mb-2">
+                <h3 className="font-bold text-black mb-2">
                   Barber Apprenticeship
                 </h3>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-black">
                   Indiana licensed pathway
                 </p>
               </div>
               <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                <h3 className="font-bold text-slate-900 mb-2">
+                <h3 className="font-bold text-black mb-2">
                   Skilled Trades
                 </h3>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-black">
                   Expandable: HVAC, Construction, Facilities, etc.
                 </p>
               </div>
             </div>
             <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4">
-              <p className="text-sm text-slate-700">
-                <strong className="text-slate-900">
+              <p className="text-sm text-black">
+                <strong className="text-black">
                   All listed programs are:
                 </strong>
               </p>
-              <ul className="mt-2 space-y-1 text-sm text-slate-700">
+              <ul className="mt-2 space-y-1 text-sm text-black">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-blue-600" />
                   Registered apprenticeships
@@ -164,15 +164,15 @@ export default function WorkOnePartnerPacketPage() {
                 <Users className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                <h2 className="text-3xl font-bold text-black mb-4">
                   3. Who We Serve
                 </h2>
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-zinc-900   rounded-xl p-6 border border-blue-200">
-                <h3 className="font-bold text-slate-900 mb-4">Participants</h3>
-                <ul className="space-y-2 text-sm text-slate-700">
+                <h3 className="font-bold text-black mb-4">Participants</h3>
+                <ul className="space-y-2 text-sm text-black">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                     <span>WIOA-eligible individuals</span>
@@ -191,8 +191,8 @@ export default function WorkOnePartnerPacketPage() {
                 </ul>
               </div>
               <div className="bg-zinc-900   rounded-xl p-6 border border-green-200">
-                <h3 className="font-bold text-slate-900 mb-4">Employers</h3>
-                <ul className="space-y-2 text-sm text-slate-700">
+                <h3 className="font-bold text-black mb-4">Employers</h3>
+                <ul className="space-y-2 text-sm text-black">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                     <span>Licensed barber shops</span>
@@ -223,7 +223,7 @@ export default function WorkOnePartnerPacketPage() {
                 <TrendingUp className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                <h2 className="text-3xl font-bold text-black mb-4">
                   4. How the Model Works (Simple)
                 </h2>
               </div>
@@ -243,7 +243,7 @@ export default function WorkOnePartnerPacketPage() {
                   <div className="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
                     {i + 1}
                   </div>
-                  <p className="text-slate-700 pt-1">{step}</p>
+                  <p className="text-black pt-1">{step}</p>
                 </div>
               ))}
             </div>
@@ -251,14 +251,14 @@ export default function WorkOnePartnerPacketPage() {
 
           {/* 5. Funding Compatibility */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            <h2 className="text-3xl font-bold text-black mb-6">
               5. Funding Compatibility
             </h2>
             <div className="bg-zinc-900   rounded-xl p-8 border border-green-200">
-              <p className="text-slate-700 mb-4">
+              <p className="text-black mb-4">
                 Our programs are compatible with:
               </p>
-              <ul className="space-y-2 text-slate-700 mb-6">
+              <ul className="space-y-2 text-black mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>WIOA Individual Training Accounts (ITA)</span>
@@ -280,7 +280,7 @@ export default function WorkOnePartnerPacketPage() {
                   <span>Work Opportunity Tax Credit (WOTC) for employers</span>
                 </li>
               </ul>
-              <p className="text-sm text-slate-600 italic">
+              <p className="text-sm text-black italic">
                 Funding decisions remain with the WorkOne region and case
                 manager.
               </p>
@@ -289,11 +289,11 @@ export default function WorkOnePartnerPacketPage() {
 
           {/* 6. Employer Value */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            <h2 className="text-3xl font-bold text-black mb-6">
               6. Employer Value (Why WorkOne Uses Us)
             </h2>
             <div className="bg-zinc-900   rounded-xl p-8 border border-blue-200">
-              <p className="text-slate-700 mb-4">Employers benefit from:</p>
+              <p className="text-black mb-4">Employers benefit from:</p>
               <div className="grid md:grid-cols-2 gap-4">
                 {[
                   'Paid apprentices',
@@ -308,11 +308,11 @@ export default function WorkOnePartnerPacketPage() {
                     className="flex items-center gap-3 bg-white rounded-lg p-3"
                   >
                     <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                    <span className="text-slate-700">{benefit}</span>
+                    <span className="text-black">{benefit}</span>
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-slate-600 mt-6 italic">
+              <p className="text-sm text-black mt-6 italic">
                 This reduces employer hesitation and increases placement
                 success.
               </p>
@@ -321,16 +321,16 @@ export default function WorkOnePartnerPacketPage() {
 
           {/* 7. Referral & Intake Flow */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            <h2 className="text-3xl font-bold text-black mb-6">
               7. Referral & Intake Flow
             </h2>
             <div className="bg-slate-50 rounded-xl p-8 border border-slate-200">
               <div className="text-center mb-6">
-                <p className="text-lg font-bold text-slate-900">
+                <p className="text-lg font-bold text-black">
                   WorkOne → Participant → Employer → Sponsor
                 </p>
               </div>
-              <ol className="space-y-3 text-slate-700">
+              <ol className="space-y-3 text-black">
                 <li className="flex items-start gap-3">
                   <span className="font-bold text-blue-600">1.</span>
                   <span>WorkOne identifies eligible participant</span>
@@ -352,7 +352,7 @@ export default function WorkOnePartnerPacketPage() {
                   <span>Training and funding coordination begins</span>
                 </li>
               </ol>
-              <p className="text-sm text-slate-600 mt-6 font-bold">
+              <p className="text-sm text-black mt-6 font-bold">
                 We respond to referrals within 1–2 business days.
               </p>
             </div>
@@ -360,13 +360,13 @@ export default function WorkOnePartnerPacketPage() {
 
           {/* 8. Compliance & Reporting */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            <h2 className="text-3xl font-bold text-black mb-6">
               8. Compliance & Reporting
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-zinc-900   rounded-xl p-6 border border-purple-200">
-                <h3 className="font-bold text-slate-900 mb-4">We maintain:</h3>
-                <ul className="space-y-2 text-sm text-slate-700">
+                <h3 className="font-bold text-black mb-4">We maintain:</h3>
+                <ul className="space-y-2 text-sm text-black">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
                     <span>RAPIDS registrations</span>
@@ -390,10 +390,10 @@ export default function WorkOnePartnerPacketPage() {
                 </ul>
               </div>
               <div className="bg-zinc-900   rounded-xl p-6 border border-orange-200">
-                <h3 className="font-bold text-slate-900 mb-4">
+                <h3 className="font-bold text-black mb-4">
                   We close the loop with WorkOne on:
                 </h3>
-                <ul className="space-y-2 text-sm text-slate-700">
+                <ul className="space-y-2 text-sm text-black">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-orange-600 flex-shrink-0 mt-0.5" />
                     <span>Starts</span>
@@ -417,11 +417,11 @@ export default function WorkOnePartnerPacketPage() {
 
           {/* 9. What We Ask From WorkOne */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            <h2 className="text-3xl font-bold text-black mb-6">
               9. What We Ask From WorkOne
             </h2>
             <div className="bg-blue-50 rounded-xl p-8 border border-blue-200">
-              <ul className="space-y-3 text-slate-700">
+              <ul className="space-y-3 text-black">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span>Referral of eligible participants</span>
@@ -435,7 +435,7 @@ export default function WorkOnePartnerPacketPage() {
                   <span>Ongoing communication on participant status</span>
                 </li>
               </ul>
-              <p className="text-sm text-slate-600 mt-6 font-bold italic">
+              <p className="text-sm text-black mt-6 font-bold italic">
                 We are built to reduce staff workload, not increase it.
               </p>
             </div>
@@ -443,26 +443,26 @@ export default function WorkOnePartnerPacketPage() {
 
           {/* 10. Contact & Next Steps */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            <h2 className="text-3xl font-bold text-black mb-6">
               10. Contact & Next Steps
             </h2>
             <div className="bg-zinc-900   rounded-xl p-8 border border-slate-200">
-              <p className="text-slate-700 mb-4">Available for:</p>
-              <ul className="space-y-2 text-slate-700 mb-6">
+              <p className="text-black mb-4">Available for:</p>
+              <ul className="space-y-2 text-black mb-6">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-slate-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span>Regional alignment meetings</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-slate-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span>Employer pilots</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-slate-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span>Sector strategy participation</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-slate-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-black flex-shrink-0 mt-0.5" />
                   <span>Expansion into additional trades</span>
                 </li>
               </ul>

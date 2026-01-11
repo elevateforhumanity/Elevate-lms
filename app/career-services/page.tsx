@@ -272,7 +272,7 @@ export default async function CareerServicesPage() {
               <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
                 95%
               </div>
-              <div className="text-gray-700 font-semibold">
+              <div className="text-black font-semibold">
                 Job Placement Rate
               </div>
             </div>
@@ -280,7 +280,7 @@ export default async function CareerServicesPage() {
               <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">
                 $45K+
               </div>
-              <div className="text-gray-700 font-semibold">
+              <div className="text-black font-semibold">
                 Average Starting Salary
               </div>
             </div>
@@ -288,7 +288,7 @@ export default async function CareerServicesPage() {
               <div className="text-4xl md:text-5xl font-bold text-orange-600 mb-2">
                 500+
               </div>
-              <div className="text-gray-700 font-semibold">
+              <div className="text-black font-semibold">
                 Employer Partners
               </div>
             </div>
@@ -296,7 +296,7 @@ export default async function CareerServicesPage() {
               <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">
                 100%
               </div>
-              <div className="text-gray-700 font-semibold">Free Services</div>
+              <div className="text-black font-semibold">Free Services</div>
             </div>
           </div>
         </div>

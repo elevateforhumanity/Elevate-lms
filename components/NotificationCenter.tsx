@@ -105,7 +105,7 @@ export function NotificationCenter() {
             <button
               onClick={() => setFilter('all')}
               className={`px-4 py-2 rounded-lg font-medium ${
-                filter === 'all' ? 'bg-brand-orange-600 text-white' : 'bg-white text-gray-700 border'
+                filter === 'all' ? 'bg-brand-orange-600 text-white' : 'bg-white text-black border'
               }`}
             >
               All ({notifications.length})
@@ -113,7 +113,7 @@ export function NotificationCenter() {
             <button
               onClick={() => setFilter('unread')}
               className={`px-4 py-2 rounded-lg font-medium ${
-                filter === 'unread' ? 'bg-brand-orange-600 text-white' : 'bg-white text-gray-700 border'
+                filter === 'unread' ? 'bg-brand-orange-600 text-white' : 'bg-white text-black border'
               }`}
             >
               Unread ({unreadCount})
@@ -136,7 +136,7 @@ export function NotificationCenter() {
                       <span className="w-2 h-2 bg-brand-orange-600 rounded-full" />
                     )}
                   </div>
-                  <p className="text-sm text-gray-700 mb-2">{notification.message}</p>
+                  <p className="text-sm text-black mb-2">{notification.message}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-xs text-gray-500">{notification.timestamp}</span>
                     {notification.actionUrl && (
@@ -151,7 +151,7 @@ export function NotificationCenter() {
 
         {filteredNotifications.length === 0 && (
           <Card className="p-12 text-center">
-            <p className="text-xl text-gray-600 mb-2">No notifications</p>
+            <p className="text-xl text-black mb-2">No notifications</p>
             <p className="text-gray-500">You're all caught up!</p>
           </Card>
         )}

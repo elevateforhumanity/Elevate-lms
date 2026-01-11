@@ -91,7 +91,7 @@ export function CalendarWidget({ userId }: CalendarWidgetProps) {
   return (
     <div className="bg-white rounded-lg border border-slate-200 p-6">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-bold text-slate-900">Calendar</h3>
+        <h3 className="text-xl font-bold text-black">Calendar</h3>
         <div className="flex items-center gap-2">
           <button
             onClick={previousMonth}
@@ -100,7 +100,7 @@ export function CalendarWidget({ userId }: CalendarWidgetProps) {
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <span className="text-sm font-medium text-slate-700 min-w-[150px] text-center">
+          <span className="text-sm font-medium text-black min-w-[150px] text-center">
             {monthName}
           </span>
           <button
@@ -118,7 +118,7 @@ export function CalendarWidget({ userId }: CalendarWidgetProps) {
         {/* Day Headers */}
         <div className="grid grid-cols-7 gap-1 mb-2">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-            <div key={day} className="text-center text-xs font-semibold text-slate-600 py-2">
+            <div key={day} className="text-center text-xs font-semibold text-black py-2">
               {day}
             </div>
           ))}
@@ -153,7 +153,7 @@ export function CalendarWidget({ userId }: CalendarWidgetProps) {
                     : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'
                 }`}
               >
-                <div className="text-sm font-medium text-slate-900">{day}</div>
+                <div className="text-sm font-medium text-black">{day}</div>
                 {dateEvents.length > 0 && (
                   <div className="flex gap-0.5 mt-1 justify-center">
                     {dateEvents.slice(0, 3).map((event, idx) => (
@@ -173,7 +173,7 @@ export function CalendarWidget({ userId }: CalendarWidgetProps) {
       {/* Selected Date Events */}
       {selectedDate && (
         <div className="border-t border-slate-200 pt-4">
-          <h4 className="text-sm font-semibold text-slate-900 mb-3">
+          <h4 className="text-sm font-semibold text-black mb-3">
             {selectedDate.toLocaleDateString('default', {
               weekday: 'long',
               month: 'long',
@@ -189,9 +189,9 @@ export function CalendarWidget({ userId }: CalendarWidgetProps) {
                 >
                   <div className={`w-2 h-2 rounded-full mt-1.5 ${getEventColor(event.type)}`} />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-slate-900">{event.title}</p>
+                    <p className="text-sm font-medium text-black">{event.title}</p>
                     {event.course && (
-                      <p className="text-xs text-slate-600 mt-0.5">{event.course}</p>
+                      <p className="text-xs text-black mt-0.5">{event.course}</p>
                     )}
                     {event.time && (
                       <div className="flex items-center gap-1 mt-1 text-xs text-slate-500">
@@ -200,7 +200,7 @@ export function CalendarWidget({ userId }: CalendarWidgetProps) {
                       </div>
                     )}
                   </div>
-                  <span className="text-xs px-2 py-1 bg-white rounded text-slate-600 capitalize">
+                  <span className="text-xs px-2 py-1 bg-white rounded text-black capitalize">
                     {event.type}
                   </span>
                 </div>
@@ -216,7 +216,7 @@ export function CalendarWidget({ userId }: CalendarWidgetProps) {
 
       {/* Upcoming Events */}
       <div className="border-t border-slate-200 pt-4 mt-4">
-        <h4 className="text-sm font-semibold text-slate-900 mb-3">Upcoming</h4>
+        <h4 className="text-sm font-semibold text-black mb-3">Upcoming</h4>
         <div className="space-y-2">
           {events
             .filter(event => new Date(event.date) >= new Date())
@@ -228,8 +228,8 @@ export function CalendarWidget({ userId }: CalendarWidgetProps) {
               >
                 <div className={`w-2 h-2 rounded-full ${getEventColor(event.type)}`} />
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium text-slate-900 truncate">{event.title}</p>
-                  <p className="text-xs text-slate-600">
+                  <p className="font-medium text-black truncate">{event.title}</p>
+                  <p className="text-xs text-black">
                     {new Date(event.date).toLocaleDateString()}
                   </p>
                 </div>

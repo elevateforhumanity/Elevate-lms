@@ -55,7 +55,7 @@ export default function ProgramLandingPage({
               {category}
             </p>
             <h1 className="text-2xl font-bold md:text-3xl">{title}</h1>
-            <p className="text-sm text-slate-600">{description}</p>
+            <p className="text-sm text-black">{description}</p>
             <div className="flex flex-wrap gap-2 text-xs">
               <span className="rounded-full bg-orange-100 px-3 py-1 font-medium text-orange-800">
                 {duration}
@@ -81,7 +81,7 @@ export default function ProgramLandingPage({
               </Link>
               <Link
                 href={`/contact?topic=${programSlug}`}
-                className="rounded-full border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                className="rounded-full border border-slate-300 px-5 py-2 text-sm font-semibold text-black hover:bg-slate-50"
               >
                 Talk With Our Team
               </Link>
@@ -104,9 +104,9 @@ export default function ProgramLandingPage({
         {/* Left column */}
         <div className="space-y-8">
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">Who This Is For</h2>
-            <p className="mt-2 text-sm text-slate-600">{whoThisIsFor.description}</p>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-600">
+            <h2 className="text-lg font-semibold text-black">Who This Is For</h2>
+            <p className="mt-2 text-sm text-black">{whoThisIsFor.description}</p>
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-black">
               {whoThisIsFor.bullets.map((bullet, idx) => (
                 <li key={idx}>{bullet}</li>
               ))}
@@ -114,8 +114,8 @@ export default function ProgramLandingPage({
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">What You'll Learn</h2>
-            <ul className="mt-2 grid list-disc gap-1 pl-5 text-sm text-slate-600">
+            <h2 className="text-lg font-semibold text-black">What You'll Learn</h2>
+            <ul className="mt-2 grid list-disc gap-1 pl-5 text-sm text-black">
               {whatYouLearn.map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
@@ -123,8 +123,8 @@ export default function ProgramLandingPage({
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">How It Works</h2>
-            <ol className="mt-2 space-y-2 text-sm text-slate-600">
+            <h2 className="text-lg font-semibold text-black">How It Works</h2>
+            <ol className="mt-2 space-y-2 text-sm text-black">
               {howItWorks.map((step) => (
                 <li key={step.step}>
                   <span className="font-semibold">{step.step}. {step.title}.</span> {step.description}
@@ -135,22 +135,22 @@ export default function ProgramLandingPage({
 
           {schedule && (
             <div>
-              <h2 className="text-lg font-semibold text-slate-900">Schedule & Format</h2>
-              <p className="mt-2 text-sm text-slate-600">{schedule}</p>
+              <h2 className="text-lg font-semibold text-black">Schedule & Format</h2>
+              <p className="mt-2 text-sm text-black">{schedule}</p>
             </div>
           )}
 
           {whatHappensAfter && (
             <div>
-              <h2 className="text-lg font-semibold text-slate-900">What Happens After</h2>
-              <p className="mt-2 text-sm text-slate-600">{whatHappensAfter}</p>
+              <h2 className="text-lg font-semibold text-black">What Happens After</h2>
+              <p className="mt-2 text-sm text-black">{whatHappensAfter}</p>
             </div>
           )}
         </div>
 
         {/* Right column – Funding card */}
-        <aside className="space-y-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700 h-fit">
-          <h3 className="text-sm font-semibold text-slate-900">Funding & Support</h3>
+        <aside className="space-y-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-black h-fit">
+          <h3 className="text-sm font-semibold text-black">Funding & Support</h3>
           <ul className="mt-2 space-y-1">
             {fundingOptions.map((option, idx) => (
               <li key={idx}>✔ {option}</li>

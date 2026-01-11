@@ -145,7 +145,7 @@ export default function AdminPayroll() {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <h1 className="text-3xl font-bold">Payroll Management</h1>
-          <p className="text-gray-600 mt-2">
+          <p className="text-black mt-2">
             Track apprentice hours and payments
           </p>
         </div>
@@ -156,7 +156,7 @@ export default function AdminPayroll() {
         <div className="bg-white rounded-lg shadow mb-8">
           <div className="p-6 border-b">
             <h2 className="text-xl font-bold">Generate Payroll</h2>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-sm text-black mt-1">
               Calculate pay for the last week
             </p>
           </div>
@@ -170,10 +170,10 @@ export default function AdminPayroll() {
                   <p className="font-semibold">
                     {apprenticeship.student?.full_name}
                   </p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-black">
                     {apprenticeship.employer_name}
                   </p>
-                  <p className="text-sm text-gray-700">
+                  <p className="text-sm text-black">
                     Rate: ${apprenticeship.wage_current}/hr | Total Hours:{' '}
                     {apprenticeship.total_hours_completed.toFixed(1)}
                   </p>
@@ -199,28 +199,28 @@ export default function AdminPayroll() {
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Student
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Employer
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Period
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Hours
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Rate
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Gross Pay
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Actions
                   </th>
                 </tr>
@@ -268,7 +268,7 @@ export default function AdminPayroll() {
                         </button>
                       )}
                       {payroll.status === 'paid' && (
-                        <span className="text-gray-600">
+                        <span className="text-black">
                           ✓ Paid{' '}
                           {new Date(payroll.paid_at).toLocaleDateString()}
                         </span>

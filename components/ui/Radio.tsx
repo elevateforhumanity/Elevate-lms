@@ -33,7 +33,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   return (
     <div>
       {label && (
-        <label className="block text-sm font-semibold text-slate-700 mb-3">
+        <label className="block text-sm font-semibold text-black mb-3">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>
@@ -100,7 +100,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
             {label && (
               <label
                 htmlFor={radioId}
-                className="text-sm font-medium text-slate-900 cursor-pointer"
+                className="text-sm font-medium text-black cursor-pointer"
               >
                 {label}
               </label>

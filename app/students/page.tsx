@@ -71,21 +71,21 @@ export default function StudentsPage() {
                 <DollarSign className="w-8 h-8 text-green-600" />
               </div>
               <h3 className="text-2xl font-bold mb-4">100% Free</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-black mb-4">
                 No tuition. No fees. No hidden costs. Funded through WIOA, WRG, and JRI programs.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Free training</span>
+                  <span className="text-sm text-black">Free training</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Free materials</span>
+                  <span className="text-sm text-black">Free materials</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Free certification</span>
+                  <span className="text-sm text-black">Free certification</span>
                 </li>
               </ul>
             </div>
@@ -95,21 +95,21 @@ export default function StudentsPage() {
                 <Clock className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-2xl font-bold mb-4">Fast Track</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-black mb-4">
                 Get certified and start earning in weeks, not years. Programs designed for quick entry into the workforce.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">4-16 week programs</span>
+                  <span className="text-sm text-black">4-16 week programs</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Flexible schedules</span>
+                  <span className="text-sm text-black">Flexible schedules</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Online & in-person</span>
+                  <span className="text-sm text-black">Online & in-person</span>
                 </li>
               </ul>
             </div>
@@ -119,21 +119,21 @@ export default function StudentsPage() {
                 <Briefcase className="w-8 h-8 text-purple-600" />
               </div>
               <h3 className="text-2xl font-bold mb-4">Job Placement</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-black mb-4">
                 85% job placement rate. We connect you with employers actively hiring in your field.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Resume building</span>
+                  <span className="text-sm text-black">Resume building</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Interview prep</span>
+                  <span className="text-sm text-black">Interview prep</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-gray-700">Employer connections</span>
+                  <span className="text-sm text-black">Employer connections</span>
                 </li>
               </ul>
             </div>
@@ -154,7 +154,7 @@ export default function StudentsPage() {
                 1
               </div>
               <h3 className="text-xl font-bold mb-2">Apply</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Fill out our simple application. Takes 5 minutes.
               </p>
             </div>
@@ -164,7 +164,7 @@ export default function StudentsPage() {
                 2
               </div>
               <h3 className="text-xl font-bold mb-2">Get Approved</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 We verify your eligibility for free funding.
               </p>
             </div>
@@ -174,7 +174,7 @@ export default function StudentsPage() {
                 3
               </div>
               <h3 className="text-xl font-bold mb-2">Train</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Complete your program and earn your certification.
               </p>
             </div>
@@ -184,7 +184,7 @@ export default function StudentsPage() {
                 4
               </div>
               <h3 className="text-xl font-bold mb-2">Get Hired</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Start your new career with job placement support.
               </p>
             </div>
@@ -198,7 +198,7 @@ export default function StudentsPage() {
           <h2 className="text-3xl md:text-4xl font-black text-center mb-4">
             Popular Programs
           </h2>
-          <p className="text-xl text-gray-600 text-center mb-12">
+          <p className="text-xl text-black text-center mb-12">
             Choose from 20+ career training programs
           </p>
           
@@ -206,7 +206,7 @@ export default function StudentsPage() {
             <Link href="/programs/cna" className="bg-white rounded-xl p-6 shadow-sm border-2 border-gray-100 hover:border-blue-500 transition group">
               <Award className="w-12 h-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600">CNA Training</h3>
-              <p className="text-gray-600 mb-4">6-8 weeks • $16-20/hr starting</p>
+              <p className="text-black mb-4">6-8 weeks • $16-20/hr starting</p>
               <div className="flex items-center text-blue-600 font-semibold">
                 Learn More <ArrowRight className="w-4 h-4 ml-2" />
               </div>
@@ -215,7 +215,7 @@ export default function StudentsPage() {
             <Link href="/programs/barber-apprenticeship" className="bg-white rounded-xl p-6 shadow-sm border-2 border-gray-100 hover:border-blue-500 transition group">
               <Award className="w-12 h-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600">Barber Apprenticeship</h3>
-              <p className="text-gray-600 mb-4">12 months • Earn while you learn</p>
+              <p className="text-black mb-4">12 months • Earn while you learn</p>
               <div className="flex items-center text-blue-600 font-semibold">
                 Learn More <ArrowRight className="w-4 h-4 ml-2" />
               </div>
@@ -224,7 +224,7 @@ export default function StudentsPage() {
             <Link href="/programs/cdl-transportation" className="bg-white rounded-xl p-6 shadow-sm border-2 border-gray-100 hover:border-blue-500 transition group">
               <Award className="w-12 h-12 text-blue-600 mb-4" />
               <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600">CDL Training</h3>
-              <p className="text-gray-600 mb-4">4-6 weeks • $50k+ annually</p>
+              <p className="text-black mb-4">4-6 weeks • $50k+ annually</p>
               <div className="flex items-center text-blue-600 font-semibold">
                 Learn More <ArrowRight className="w-4 h-4 ml-2" />
               </div>

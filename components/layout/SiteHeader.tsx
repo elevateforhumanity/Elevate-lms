@@ -166,8 +166,8 @@ export default function SiteHeader() {
     <>
       {/* Skip link removed - already in layout.tsx to avoid duplicate */}
       
-      <div className="w-full h-full bg-white border-b border-gray-200 shadow-sm site-header">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4 relative">
+      <div className="w-full h-full bg-white border-b border-gray-200 shadow-sm site-header" style={{ display: 'block', visibility: 'visible', opacity: 1 }}>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4 relative" style={{ display: 'flex' }}>
           {/* Logo */}
           <Link
             href="/"
@@ -185,7 +185,7 @@ export default function SiteHeader() {
                 style={{ maxWidth: '100%', height: 'auto' }}
               />
             </div>
-            <span className="hidden sm:block text-lg font-bold text-gray-900 hover:text-orange-600 transition-colors">
+            <span className="hidden sm:block text-lg font-bold text-black hover:text-orange-600 transition-colors">
               Elevate for Humanity
             </span>
           </Link>
@@ -208,7 +208,7 @@ export default function SiteHeader() {
                     <>
                       <button
                         type="button"
-                        className="font-bold text-gray-900 hover:text-orange-600 transition flex items-center gap-1 py-2 text-base uppercase tracking-wide"
+                        className="font-bold text-black hover:text-orange-600 transition flex items-center gap-1 py-2 text-base uppercase tracking-wide"
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
@@ -239,14 +239,14 @@ export default function SiteHeader() {
                               <Link
                                 key={item.href}
                                 href={item.href}
-                                className="flex items-center justify-between px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition group"
+                                className="flex items-center justify-between px-4 py-2.5 text-sm text-black hover:bg-gray-50 hover:text-black transition group"
                                 onClick={() => setOpenDropdown(null)}
                               >
                                 <span className="font-medium">
                                   {item.label}
                                 </span>
                                 <svg
-                                  className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-transform group-hover:translate-x-1"
+                                  className="w-4 h-4 text-gray-400 group-hover:text-black transition-transform group-hover:translate-x-1"
                                   fill="none"
                                   stroke="currentColor"
                                   viewBox="0 0 24 24"
@@ -284,7 +284,7 @@ export default function SiteHeader() {
             {/* Search Button */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="text-gray-600 hover:text-gray-900 transition"
+              className="text-black hover:text-black transition"
               aria-label="Search"
             >
               <Search className="w-5 h-5" />
@@ -296,7 +296,7 @@ export default function SiteHeader() {
                 href="https://www.facebook.com/profile.php?id=61571046346179"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900 transition"
+                className="text-black hover:text-black transition"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
@@ -305,7 +305,7 @@ export default function SiteHeader() {
                 href="https://www.instagram.com/elevateforhumanity"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900 transition"
+                className="text-black hover:text-black transition"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
@@ -314,7 +314,7 @@ export default function SiteHeader() {
                 href="https://www.linkedin.com/company/elevate-for-humanity"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900 transition"
+                className="text-black hover:text-black transition"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
@@ -419,7 +419,7 @@ export default function SiteHeader() {
                               <Link
                                 key={item.href}
                                 href={item.href}
-                                className="block px-6 py-2.5 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition active:bg-gray-200 touch-manipulation"
+                                className="block px-6 py-2.5 text-sm text-black hover:bg-gray-100 hover:text-black transition active:bg-gray-200 touch-manipulation"
                                 onClick={() => {
                                   setMobileMenuOpen(false);
                                   setExpandedMobileSection(null);

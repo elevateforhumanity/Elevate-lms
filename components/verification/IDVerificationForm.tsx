@@ -377,7 +377,7 @@ export function IDVerificationForm() {
                 <span className="text-blue-600 font-semibold">
                   Click to upload
                 </span>
-                <span className="text-slate-600"> or drag and drop</span>
+                <span className="text-black"> or drag and drop</span>
               </label>
               {files.idFront && (
                 <p className="mt-2 text-sm text-green-600 font-semibold">
@@ -405,7 +405,7 @@ export function IDVerificationForm() {
                 <span className="text-blue-600 font-semibold">
                   Click to upload
                 </span>
-                <span className="text-slate-600"> or drag and drop</span>
+                <span className="text-black"> or drag and drop</span>
               </label>
               {files.idBack && (
                 <p className="mt-2 text-sm text-green-600 font-semibold">
@@ -435,7 +435,7 @@ export function IDVerificationForm() {
                 <span className="text-blue-600 font-semibold">
                   Take a selfie
                 </span>
-                <span className="text-slate-600"> or upload photo</span>
+                <span className="text-black"> or upload photo</span>
               </label>
               {files.selfie && (
                 <p className="mt-2 text-sm text-green-600 font-semibold">
@@ -443,7 +443,7 @@ export function IDVerificationForm() {
                 </p>
               )}
             </div>
-            <p className="mt-2 text-sm text-slate-600">
+            <p className="mt-2 text-sm text-black">
               Take a clear photo of your face. Make sure your face is well-lit
               and clearly visible.
             </p>
@@ -456,7 +456,7 @@ export function IDVerificationForm() {
         <button
           type="button"
           onClick={() => router.back()}
-          className="px-8 py-3 border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 transition"
+          className="px-8 py-3 border-2 border-slate-300 text-black font-semibold rounded-lg hover:bg-slate-50 transition"
         >
           Cancel
         </button>

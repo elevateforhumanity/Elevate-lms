@@ -73,12 +73,12 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">Customer Reviews</h2>
+      <h2 className="text-2xl font-bold text-black mb-6">Customer Reviews</h2>
 
       {/* Rating Summary */}
       <div className="grid md:grid-cols-2 gap-8 mb-8 pb-8 border-b border-slate-200">
         <div className="text-center">
-          <div className="text-5xl font-bold text-slate-900 mb-2 text-3xl md:text-4xl lg:text-5xl">
+          <div className="text-5xl font-bold text-black mb-2 text-3xl md:text-4xl lg:text-5xl">
             {averageRating.toFixed(1)}
           </div>
           <div className="flex items-center justify-center gap-1 mb-2">
@@ -94,13 +94,13 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
               </svg>
             ))}
           </div>
-          <div className="text-sm text-slate-600">Based on {reviews.length} reviews</div>
+          <div className="text-sm text-black">Based on {reviews.length} reviews</div>
         </div>
 
         <div className="space-y-2">
           {[5, 4, 3, 2, 1].map((rating, index) => (
             <div key={rating} className="flex items-center gap-3">
-              <span className="text-sm font-medium text-slate-700 w-12">
+              <span className="text-sm font-medium text-black w-12">
                 {rating} star
               </span>
               <div className="flex-1 h-2 bg-slate-200 rounded-full overflow-hidden">
@@ -111,7 +111,7 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
                   }}
                 />
               </div>
-              <span className="text-sm text-slate-600 w-8">
+              <span className="text-sm text-black w-8">
                 {ratingCounts[index]}
               </span>
             </div>
@@ -121,13 +121,13 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
 
       {/* Sort Options */}
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-bold text-slate-900">
+        <h3 className="text-lg font-bold text-black">
           {reviews.length} Reviews
         </h3>
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as 'recent' | 'helpful')}
-          className="px-4 py-2 border border-slate-300 rounded-lg text-sm font-medium text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-4 py-2 border border-slate-300 rounded-lg text-sm font-medium text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="recent">Most Recent</option>
           <option value="helpful">Most Helpful</option>
@@ -140,12 +140,12 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
           <div key={review.id} className="p-6 bg-slate-50 rounded-lg">
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-slate-300 rounded-full flex items-center justify-center text-slate-600 font-bold">
+                <div className="w-10 h-10 bg-slate-300 rounded-full flex items-center justify-center text-black font-bold">
                   {review.author.charAt(0)}
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold text-slate-900">
+                    <span className="font-semibold text-black">
                       {review.author}
                     </span>
                     {review.verified && (
@@ -154,7 +154,7 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
                       </span>
                     )}
                   </div>
-                  <div className="text-sm text-slate-600">
+                  <div className="text-sm text-black">
                     {new Date(review.date).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
@@ -178,11 +178,11 @@ export default function ProductReviews({ productId }: ProductReviewsProps) {
               </div>
             </div>
 
-            <h4 className="font-bold text-slate-900 mb-2">{review.title}</h4>
-            <p className="text-slate-700 mb-4">{review.content}</p>
+            <h4 className="font-bold text-black mb-2">{review.title}</h4>
+            <p className="text-black mb-4">{review.content}</p>
 
             <div className="flex items-center gap-4 text-sm">
-              <button className="flex items-center gap-2 text-slate-600 hover:text-slate-900">
+              <button className="flex items-center gap-2 text-black hover:text-black">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor"
 viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -190,7 +190,7 @@ d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326
                 </svg>
                 <span>Helpful ({review.helpful})</span>
               </button>
-              <button className="text-slate-600 hover:text-slate-900">
+              <button className="text-black hover:text-black">
                 Report
               </button>
             </div>

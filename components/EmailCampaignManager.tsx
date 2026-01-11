@@ -70,19 +70,19 @@ export function EmailCampaignManager() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Total Sent</h3>
+            <h3 className="text-sm text-black mb-2">Total Sent</h3>
             <p className="text-3xl font-bold text-brand-orange-600">
               {campaigns.reduce((sum, c) => sum + c.sent, 0).toLocaleString()}
             </p>
           </Card>
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Open Rate</h3>
+            <h3 className="text-sm text-black mb-2">Open Rate</h3>
             <p className="text-3xl font-bold text-orange-500">
               {Math.round((campaigns.reduce((sum, c) => sum + c.opened, 0) / campaigns.reduce((sum, c) => sum + c.sent, 0)) * 100) || 0}%
             </p>
           </Card>
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Click Rate</h3>
+            <h3 className="text-sm text-black mb-2">Click Rate</h3>
             <p className="text-3xl font-bold text-green-600">
               {Math.round((campaigns.reduce((sum, c) => sum + c.clicked, 0) / campaigns.reduce((sum, c) => sum + c.sent, 0)) * 100) || 0}%
             </p>
@@ -99,12 +99,12 @@ export function EmailCampaignManager() {
                     <span className={`px-3 py-1 rounded text-xs font-medium ${
                       campaign.status === 'sent' ? 'bg-green-100 text-green-700' :
                       campaign.status === 'scheduled' ? 'bg-blue-100 text-blue-700' :
-                      'bg-gray-100 text-gray-700'
+                      'bg-gray-100 text-black'
                     }`}>
                       {campaign.status.toUpperCase()}
                     </span>
                   </div>
-                  <p className="text-gray-600">{campaign.subject}</p>
+                  <p className="text-black">{campaign.subject}</p>
                   {campaign.scheduledDate && (
                     <p className="text-sm text-gray-500 mt-1">
                       Scheduled for: {campaign.scheduledDate}
@@ -127,21 +127,21 @@ export function EmailCampaignManager() {
               {campaign.status === 'sent' && (
                 <div className="grid grid-cols-4 gap-4 text-sm">
                   <div>
-                    <p className="text-gray-600">Recipients</p>
+                    <p className="text-black">Recipients</p>
                     <p className="font-bold">{campaign.recipients.toLocaleString()}</p>
                   </div>
                   <div>
-                    <p className="text-gray-600">Sent</p>
+                    <p className="text-black">Sent</p>
                     <p className="font-bold">{campaign.sent.toLocaleString()}</p>
                   </div>
                   <div>
-                    <p className="text-gray-600">Opened</p>
+                    <p className="text-black">Opened</p>
                     <p className="font-bold text-orange-600">
                       {campaign.opened.toLocaleString()} ({Math.round((campaign.opened / campaign.sent) * 100)}%)
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-600">Clicked</p>
+                    <p className="text-black">Clicked</p>
                     <p className="font-bold text-green-600">
                       {campaign.clicked.toLocaleString()} ({Math.round((campaign.clicked / campaign.sent) * 100)}%)
                     </p>

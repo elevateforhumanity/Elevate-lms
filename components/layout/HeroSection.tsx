@@ -105,7 +105,7 @@ export function HeroSection({
               {ctaSecondary && (
                 <Link
                   href={ctaSecondary.href}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-900 font-semibold rounded-lg hover:bg-slate-50 transition-all hover:scale-105 shadow-lg text-lg"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-slate-50 transition-all hover:scale-105 shadow-lg text-lg"
                 >
                   {ctaSecondary.text}
                 </Link>

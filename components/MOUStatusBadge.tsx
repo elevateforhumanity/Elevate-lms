@@ -22,7 +22,7 @@ export function MOUStatusBadge({
   > = {
     not_sent: {
       label: 'Not Sent',
-      color: 'text-gray-700',
+      color: 'text-black',
       bgColor: 'bg-gray-100',
       icon: XCircle,
     },
@@ -54,7 +54,7 @@ export function MOUStatusBadge({
 
   const config = configs[status] || {
     label: 'Unknown',
-    color: 'text-gray-700',
+    color: 'text-black',
     bgColor: 'bg-gray-100',
     icon: AlertCircle,
   };

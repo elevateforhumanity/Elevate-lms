@@ -39,7 +39,7 @@ export default function AnalyticsDashboard() {
       <div className="grid gap-4 md:grid-cols-4">
         <div className="rounded-lg border bg-white p-4 shadow-sm">
           <p className="text-sm text-slate-500 mb-1">Active Users</p>
-          <p className="text-3xl font-semibold text-slate-900">{data.activeUsers}</p>
+          <p className="text-3xl font-semibold text-black">{data.activeUsers}</p>
           <p className="text-xs text-slate-400 mt-1">Last 15 minutes</p>
         </div>
 

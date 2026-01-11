@@ -28,10 +28,10 @@ export function DueSoonList({ items }: Props) {
           className="flex flex-col rounded-xl bg-slate-50 px-3 py-2"
         >
           <div className="flex items-center justify-between">
-            <span className="font-medium text-slate-900">
+            <span className="font-medium text-black">
               {item.title}
             </span>
-            <span className="rounded-full bg-slate-900/5 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-slate-600">
+            <span className="rounded-full bg-slate-900/5 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-black">
               {item.type}
             </span>
           </div>

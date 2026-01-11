@@ -34,10 +34,10 @@ export default async function OnboardingStartPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">
+          <h1 className="text-2xl font-bold text-black mb-4">
             Role Not Assigned
           </h1>
-          <p className="text-slate-600 mb-6">
+          <p className="text-black mb-6">
             Your account does not have a role assigned yet. Please contact
             Elevate for Humanity to complete your account setup.
           </p>
@@ -83,10 +83,10 @@ export default async function OnboardingStartPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">
+          <h1 className="text-2xl font-bold text-black mb-4">
             Complete Your Profile
           </h1>
-          <p className="text-slate-600 mb-6">
+          <p className="text-black mb-6">
             To begin onboarding, please complete your profile information first. Contact support if you need assistance.
           </p>
           <a

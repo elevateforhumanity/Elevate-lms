@@ -49,7 +49,7 @@ export function CourseOverviewMeta({
             ⭐ {averageRating.toFixed(1)} ({ratingCount} reviews)
           </span>
         )}
-        <span className="rounded-full bg-slate-100 px-3 py-1 font-semibold text-slate-700">
+        <span className="rounded-full bg-slate-100 px-3 py-1 font-semibold text-black">
           {enrollmentCount} learners
         </span>
       </div>
@@ -58,7 +58,7 @@ export function CourseOverviewMeta({
       {course.what_you_learn && course.what_you_learn.length > 0 && (
         <div>
           <h3 className="text-sm font-semibold">What you&apos;ll learn</h3>
-          <ul className="mt-2 grid gap-2 text-xs text-slate-700 md:grid-cols-2">
+          <ul className="mt-2 grid gap-2 text-xs text-black md:grid-cols-2">
             {course.what_you_learn.map((item, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-brand-orange-500" />
@@ -77,7 +77,7 @@ export function CourseOverviewMeta({
             {course.skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-800"
+                className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-black"
               >
                 {skill}
               </span>
@@ -98,7 +98,7 @@ export function CourseOverviewMeta({
               className="mt-1 rounded-full object-cover"
             />
           ) : (
-            <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-xs font-semibold text-slate-700">
+            <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-slate-200 text-xs font-semibold text-black">
               {(instructor.full_name || "I")
                 .split(" ")
                 .map((p) => p[0])
@@ -106,10 +106,10 @@ export function CourseOverviewMeta({
             </div>
           )}
           <div>
-            <p className="text-xs font-semibold text-slate-900">
+            <p className="text-xs font-semibold text-black">
               {instructor.full_name || "Instructor"}
             </p>
-            <p className="mt-1 text-xs text-slate-600">
+            <p className="mt-1 text-xs text-black">
               {instructor.bio ||
                 "Instructor with real-world experience in this field."}
             </p>

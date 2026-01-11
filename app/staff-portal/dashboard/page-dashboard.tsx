@@ -61,10 +61,10 @@ export default async function StaffPortalPage() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 Staff Portal
               </h1>
-              <p className="text-slate-600 mt-1">
+              <p className="text-black mt-1">
                 Welcome back, {profile?.full_name || profile?.email}
               </p>
             </div>
@@ -78,7 +78,7 @@ export default async function StaffPortalPage() {
               <form action="/api/auth/signout" method="post">
                 <button
                   type="submit"
-                  className="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition"
+                  className="px-4 py-2 border border-slate-300 text-black rounded-lg hover:bg-slate-50 transition"
                 >
                   Sign Out
                 </button>
@@ -94,8 +94,8 @@ export default async function StaffPortalPage() {
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-600 mb-1">Total Students</p>
-                <p className="text-3xl font-bold text-slate-900">
+                <p className="text-sm text-black mb-1">Total Students</p>
+                <p className="text-3xl font-bold text-black">
                   {totalStudents || 0}
                 </p>
               </div>
@@ -110,7 +110,7 @@ export default async function StaffPortalPage() {
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-600 mb-1">
+                <p className="text-sm text-black mb-1">
                   Active Enrollments
                 </p>
                 <p className="text-3xl font-bold text-brand-green-600">
@@ -128,7 +128,7 @@ export default async function StaffPortalPage() {
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-600 mb-1">Total Courses</p>
+                <p className="text-sm text-black mb-1">Total Courses</p>
                 <p className="text-3xl font-bold text-brand-orange-600">
                   {totalCourses || 0}
                 </p>
@@ -144,7 +144,7 @@ export default async function StaffPortalPage() {
 
         {/* Quick Actions */}
         <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 mb-8">
-          <h2 className="text-xl font-bold text-slate-900 mb-4">
+          <h2 className="text-xl font-bold text-black mb-4">
             Quick Actions
           </h2>
           <div className="grid md:grid-cols-4 gap-4">
@@ -155,10 +155,10 @@ export default async function StaffPortalPage() {
               <div className="text-3xl mb-2">
                 <Users className="w-5 h-5 inline-block" />
               </div>
-              <div className="font-semibold text-slate-900">
+              <div className="font-semibold text-black">
                 Manage Students
               </div>
-              <div className="text-sm text-slate-600 mt-1">
+              <div className="text-sm text-black mt-1">
                 {totalStudents || 0} students
               </div>
             </Link>
@@ -169,8 +169,8 @@ export default async function StaffPortalPage() {
               <div className="text-3xl mb-2">
                 <BookOpen className="w-5 h-5 inline-block" />
               </div>
-              <div className="font-semibold text-slate-900">View Courses</div>
-              <div className="text-sm text-slate-600 mt-1">
+              <div className="font-semibold text-black">View Courses</div>
+              <div className="text-sm text-black mt-1">
                 {totalCourses || 0} courses
               </div>
             </Link>
@@ -181,16 +181,16 @@ export default async function StaffPortalPage() {
               <div className="text-3xl mb-2">
                 <BarChart className="w-5 h-5 inline-block" />
               </div>
-              <div className="font-semibold text-slate-900">Reports</div>
-              <div className="text-sm text-slate-600 mt-1">View analytics</div>
+              <div className="font-semibold text-black">Reports</div>
+              <div className="text-sm text-black mt-1">View analytics</div>
             </Link>
             <Link
               href="/contact"
               className="p-4 border-2 border-slate-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition text-center"
             >
               <div className="text-3xl mb-2">💬</div>
-              <div className="font-semibold text-slate-900">Support</div>
-              <div className="text-sm text-slate-600 mt-1">Get help</div>
+              <div className="font-semibold text-black">Support</div>
+              <div className="text-sm text-black mt-1">Get help</div>
             </Link>
           </div>
         </div>
@@ -198,7 +198,7 @@ export default async function StaffPortalPage() {
         {/* Recent Students */}
         <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-slate-900">
+            <h2 className="text-xl font-bold text-black">
               Recent Students
             </h2>
             <Link
@@ -213,16 +213,16 @@ export default async function StaffPortalPage() {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-slate-200">
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-black">
                       Name
                     </th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-black">
                       Email
                     </th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-black">
                       Phone
                     </th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-slate-700">
+                    <th className="text-left py-3 px-4 text-sm font-semibold text-black">
                       Joined
                     </th>
                   </tr>
@@ -233,16 +233,16 @@ export default async function StaffPortalPage() {
                       key={student.id}
                       className="border-b border-slate-100 hover:bg-slate-50"
                     >
-                      <td className="py-3 px-4 text-sm text-slate-900">
+                      <td className="py-3 px-4 text-sm text-black">
                         {student.full_name || 'N/A'}
                       </td>
-                      <td className="py-3 px-4 text-sm text-slate-600">
+                      <td className="py-3 px-4 text-sm text-black">
                         {student.email}
                       </td>
-                      <td className="py-3 px-4 text-sm text-slate-600">
+                      <td className="py-3 px-4 text-sm text-black">
                         {student.phone || 'N/A'}
                       </td>
-                      <td className="py-3 px-4 text-sm text-slate-600">
+                      <td className="py-3 px-4 text-sm text-black">
                         {new Date(student.created_at).toLocaleDateString()}
                       </td>
                     </tr>
@@ -251,13 +251,13 @@ export default async function StaffPortalPage() {
               </table>
             </div>
           ) : (
-            <p className="text-slate-600 text-center py-8">No students found</p>
+            <p className="text-black text-center py-8">No students found</p>
           )}
         </div>
 
         {/* Recent Enrollments */}
         <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-          <h2 className="text-xl font-bold text-slate-900 mb-4">
+          <h2 className="text-xl font-bold text-black mb-4">
             Recent Enrollments
           </h2>
           {recentEnrollments && recentEnrollments.length > 0 ? (
@@ -268,12 +268,12 @@ export default async function StaffPortalPage() {
                   className="flex items-center justify-between p-4 bg-slate-50 rounded-lg"
                 >
                   <div>
-                    <p className="font-semibold text-slate-900">
+                    <p className="font-semibold text-black">
                       {item.profiles?.full_name ||
                         item.profiles?.email ||
                         'Unknown'}
                     </p>
-                    <p className="text-sm text-slate-600">
+                    <p className="text-sm text-black">
                       {item.courses?.title || 'Unknown Course'}
                     </p>
                   </div>
@@ -284,7 +284,7 @@ export default async function StaffPortalPage() {
                           ? 'bg-brand-green-100 text-green-800'
                           : item.status === 'completed'
                             ? 'bg-blue-100 text-blue-800'
-                            : 'bg-slate-100 text-slate-800'
+                            : 'bg-slate-100 text-black'
                       }`}
                     >
                       {item.status}
@@ -297,7 +297,7 @@ export default async function StaffPortalPage() {
               ))}
             </div>
           ) : (
-            <p className="text-slate-600 text-center py-8">
+            <p className="text-black text-center py-8">
               No recent enrollments
             </p>
           )}

@@ -31,7 +31,7 @@ export function AchievementsStrip({ achievements }: Props) {
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-orange-100 text-xs">
               {a.icon ?? "⭐"}
             </span>
-            <span className="font-medium text-slate-900">{a.name}</span>
+            <span className="font-medium text-black">{a.name}</span>
           </div>
           <span className="text-[11px] text-slate-500">
             Earned{" "}

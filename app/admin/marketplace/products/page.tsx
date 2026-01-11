@@ -32,7 +32,7 @@ export default async function AdminProductsPage() {
     <div className="py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Manage Products</h1>
-        <p className="text-gray-600">
+        <p className="text-black">
           Review and approve creator products before they go live
         </p>
       </div>
@@ -44,7 +44,7 @@ export default async function AdminProductsPage() {
         </h2>
 
         {pendingProducts.length === 0 ? (
-          <p className="text-gray-600">No products pending review.</p>
+          <p className="text-black">No products pending review.</p>
         ) : (
           <div className="space-y-4">
             {pendingProducts.map((product) => (
@@ -54,23 +54,23 @@ export default async function AdminProductsPage() {
               >
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg">{product.title}</h3>
-                  <p className="text-sm text-gray-600 mb-2">
+                  <p className="text-sm text-black mb-2">
                     by {product.creator?.display_name || 'Unknown'}
                   </p>
-                  <p className="text-sm text-gray-700 mb-3">
+                  <p className="text-sm text-black mb-3">
                     {product.description || 'No description'}
                   </p>
                   <div className="flex gap-4 text-sm">
-                    <span className="text-gray-600">
+                    <span className="text-black">
                       Price:{' '}
                       <strong>${(product.price_cents / 100).toFixed(2)}</strong>
                     </span>
                     {product.category && (
-                      <span className="text-gray-600">
+                      <span className="text-black">
                         Category: <strong>{product.category}</strong>
                       </span>
                     )}
-                    <span className="text-gray-600">
+                    <span className="text-black">
                       Status:{' '}
                       <strong className="text-yellow-600">
                         {product.status}
@@ -104,7 +104,7 @@ export default async function AdminProductsPage() {
         </h2>
 
         {approvedProducts.length === 0 ? (
-          <p className="text-gray-600">No approved products yet.</p>
+          <p className="text-black">No approved products yet.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {approvedProducts.map((product) => (
@@ -113,7 +113,7 @@ export default async function AdminProductsPage() {
                 className="border rounded-lg p-4 hover:shadow-md transition"
               >
                 <h3 className="font-semibold mb-1">{product.title}</h3>
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-black mb-2">
                   by {product.creator?.display_name || 'Unknown'}
                 </p>
                 <p className="text-lg font-bold text-brand-blue-600">
@@ -143,7 +143,7 @@ export default async function AdminProductsPage() {
             {rejectedProducts.map((product) => (
               <div key={product.id} className="border rounded-lg p-4 bg-red-50">
                 <h3 className="font-semibold">{product.title}</h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   by {product.creator?.display_name || 'Unknown'}
                 </p>
                 {product.rejection_reason && (

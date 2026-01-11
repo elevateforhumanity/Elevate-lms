@@ -91,10 +91,10 @@ export function PushNotificationSettings() {
             />
           </svg>
           <div>
-            <h3 className="font-semibold text-gray-900">
+            <h3 className="font-semibold text-black">
               Push Notifications Not Supported
             </h3>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-sm text-black mt-1">
               Your browser doesn't support push notifications. Try using a modern
               browser like Chrome, Firefox, or Edge.
             </p>
@@ -124,8 +124,8 @@ export function PushNotificationSettings() {
             />
           </svg>
           <div>
-            <h3 className="font-semibold text-gray-900">Push Notifications</h3>
-            <p className="text-sm text-gray-600 mt-1">
+            <h3 className="font-semibold text-black">Push Notifications</h3>
+            <p className="text-sm text-black mt-1">
               {isSubscribed
                 ? 'You will receive notifications about course updates, achievements, and more.'
                 : 'Enable push notifications to stay updated on your learning progress.'}
@@ -138,7 +138,7 @@ export function PushNotificationSettings() {
                     ? 'bg-green-100 text-green-800'
                     : permission === 'denied'
                     ? 'bg-red-100 text-red-800'
-                    : 'bg-gray-100 text-gray-800'
+                    : 'bg-gray-100 text-black'
                 }`}
               >
                 {permission === 'granted'
@@ -193,7 +193,7 @@ export function PushNotificationSettings() {
         )}
 
         {permission === 'denied' && (
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-black">
             <p>
               Notifications are blocked. To enable them, click the lock icon in your
               browser's address bar and allow notifications.

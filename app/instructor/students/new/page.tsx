@@ -22,12 +22,12 @@ export default async function InstructorAddStudentPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Add Student</h1>
       <div className="bg-white rounded-lg shadow-sm border p-6 max-w-2xl">
-        <p className="text-slate-600 mb-6">
+        <p className="text-black mb-6">
           Enroll a student in your course.
         </p>
         <form className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Student Email
             </label>
             <input
@@ -37,7 +37,7 @@ export default async function InstructorAddStudentPage() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Course
             </label>
             <select className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
@@ -70,8 +70,8 @@ export default async function InstructorAddStudentPage() {
         </div>
         
         <div className="mt-4 p-4 bg-slate-50 border border-slate-200 rounded-lg">
-          <h3 className="font-semibold text-slate-900 mb-2">Need Help?</h3>
-          <p className="text-sm text-slate-600">
+          <h3 className="font-semibold text-black mb-2">Need Help?</h3>
+          <p className="text-sm text-black">
             Contact support at <a href="mailto:support@elevateforhumanity.institute" className="text-blue-600 hover:underline">support@elevateforhumanity.institute</a> for assistance with student enrollment.
           </p>
         </div>

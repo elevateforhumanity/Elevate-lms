@@ -227,10 +227,10 @@ export default function DownloadsPage() {
                         <h3 className="text-lg font-semibold mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-gray-600 mb-3">
+                        <p className="text-sm text-black mb-3">
                           {item.description}
                         </p>
-                        <div className="flex items-center gap-4 text-sm text-gray-700">
+                        <div className="flex items-center gap-4 text-sm text-black">
                           <span>{item.size}</span>
                           <span>•</span>
                           <span>Updated {item.updated}</span>
@@ -269,10 +269,10 @@ export default function DownloadsPage() {
                         <h3 className="text-lg font-semibold mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-gray-600 mb-3">
+                        <p className="text-sm text-black mb-3">
                           {item.description}
                         </p>
-                        <div className="text-sm text-gray-700">
+                        <div className="text-sm text-black">
                           <span>{item.size}</span>
                         </div>
                       </div>
@@ -306,7 +306,7 @@ export default function DownloadsPage() {
                   >
                     <FileText className="w-8 h-8 text-purple-600 mb-3" />
                     <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                    <div className="text-sm text-gray-700 mb-4">
+                    <div className="text-sm text-black mb-4">
                       <span>{item.size}</span>
                     </div>
                     <button
@@ -340,10 +340,10 @@ export default function DownloadsPage() {
                         <h3 className="text-lg font-semibold mb-2">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-gray-600 mb-3">
+                        <p className="text-sm text-black mb-3">
                           {item.description}
                         </p>
-                        <div className="text-sm text-gray-700">
+                        <div className="text-sm text-black">
                           <span>{item.size}</span>
                         </div>
                       </div>
@@ -370,7 +370,7 @@ export default function DownloadsPage() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-blue-50 rounded-lg p-8 text-center">
               <h2 className="text-2xl font-bold mb-4">Need Help?</h2>
-              <p className="text-gray-700 mb-6">
+              <p className="text-black mb-6">
                 Can't find what you're looking for? Our student services team is
                 here to help.
               </p>
@@ -396,7 +396,7 @@ export default function DownloadsPage() {
       {/* Accessibility Notice */}
       <section className="py-8 bg-gray-100">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center text-sm text-gray-600">
+          <div className="max-w-4xl mx-auto text-center text-sm text-black">
             <p>
               All documents are provided in PDF format. If you need documents in
               an alternative format for accessibility purposes, please contact{' '}

@@ -120,7 +120,7 @@ function ResourceCard({ icon, title, description, href, count }: any) {
     <Link href={href} className="p-6 border rounded-lg hover:shadow-xl transition-shadow bg-white group">
       <div className="mb-4 group-hover:scale-110 transition-transform">{icon}</div>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-gray-600 mb-3">{description}</p>
+      <p className="text-black mb-3">{description}</p>
       <p className="text-sm font-semibold text-blue-600">{count}</p>
     </Link>
   );

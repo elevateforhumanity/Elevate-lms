@@ -66,7 +66,7 @@ export default function ProgramHolderSetup() {
                   className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
                     step >= s
                       ? 'bg-green-600 text-white'
-                      : 'bg-gray-300 text-gray-600'
+                      : 'bg-gray-300 text-black'
                   }`}
                 >
                   {step > s ? <CheckCircle size={20} /> : s}
@@ -127,7 +127,7 @@ export default function ProgramHolderSetup() {
                   className="w-full px-4 py-3 border rounded-lg"
                   placeholder="e.g., Advanced Welding Certification"
                 />
-                <p className="text-sm text-gray-600 mt-1">
+                <p className="text-sm text-black mt-1">
                   This name will appear on certificates: "[Program Name] -
                   Sponsored by Elevate for Humanity"
                 </p>
@@ -222,7 +222,7 @@ export default function ProgramHolderSetup() {
               <div className="flex gap-4">
                 <button
                   onClick={() => setStep(1)}
-                  className="flex-1 bg-gray-300 text-gray-700 py-4 rounded-lg font-bold hover:bg-gray-400"
+                  className="flex-1 bg-gray-300 text-black py-4 rounded-lg font-bold hover:bg-gray-400"
                 >
                   Back
                 </button>
@@ -243,11 +243,11 @@ export default function ProgramHolderSetup() {
             <h2 className="text-3xl font-bold mb-6">Upload Your Syllabus</h2>
             <div className="space-y-6">
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                <Upload className="w-16 h-16 mx-auto mb-4 text-gray-600" />
+                <Upload className="w-16 h-16 mx-auto mb-4 text-black" />
                 <p className="text-lg font-semibold mb-2">
                   Upload Course Syllabus
                 </p>
-                <p className="text-gray-600 mb-4">
+                <p className="text-black mb-4">
                   PDF, DOC, or DOCX (Max 10MB)
                 </p>
                 <input
@@ -311,7 +311,7 @@ export default function ProgramHolderSetup() {
               <div className="flex gap-4">
                 <button
                   onClick={() => setStep(2)}
-                  className="flex-1 bg-gray-300 text-gray-700 py-4 rounded-lg font-bold hover:bg-gray-400"
+                  className="flex-1 bg-gray-300 text-black py-4 rounded-lg font-bold hover:bg-gray-400"
                 >
                   Back
                 </button>
@@ -330,7 +330,7 @@ export default function ProgramHolderSetup() {
         {step === 4 && (
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-3xl font-bold mb-6">Banking Information</h2>
-            <p className="text-gray-600 mb-6">
+            <p className="text-black mb-6">
               Provide your banking details for payment processing. This
               information is encrypted and secure.
             </p>
@@ -399,7 +399,7 @@ export default function ProgramHolderSetup() {
                   placeholder="9-digit routing number"
                   maxLength={9}
                 />
-                <p className="text-sm text-gray-700 mt-1">
+                <p className="text-sm text-black mt-1">
                   Found on the bottom left of your check
                 </p>
               </div>
@@ -417,7 +417,7 @@ export default function ProgramHolderSetup() {
                   className="w-full px-4 py-3 border rounded-lg"
                   placeholder="Account number"
                 />
-                <p className="text-sm text-gray-700 mt-1">
+                <p className="text-sm text-black mt-1">
                   Found on the bottom of your check, after the routing number
                 </p>
               </div>
@@ -427,7 +427,7 @@ export default function ProgramHolderSetup() {
                   Upload Voided Check or Bank Letter (Optional)
                 </label>
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                  <FileText className="w-12 h-12 mx-auto mb-3 text-gray-600" />
+                  <FileText className="w-12 h-12 mx-auto mb-3 text-black" />
                   <input
                     type="file"
                     accept="image/*,.pdf"
@@ -466,7 +466,7 @@ export default function ProgramHolderSetup() {
               <div className="flex gap-4">
                 <button
                   onClick={() => setStep(3)}
-                  className="flex-1 bg-gray-300 text-gray-700 py-4 rounded-lg font-bold hover:bg-gray-400"
+                  className="flex-1 bg-gray-300 text-black py-4 rounded-lg font-bold hover:bg-gray-400"
                 >
                   Back
                 </button>
@@ -488,29 +488,29 @@ export default function ProgramHolderSetup() {
             <div className="space-y-6">
               <div className="bg-gray-50 rounded-lg p-6 space-y-4">
                 <div>
-                  <p className="text-sm text-gray-600">Organization</p>
+                  <p className="text-sm text-black">Organization</p>
                   <p className="font-semibold">{formData.organizationName}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Program Name</p>
+                  <p className="text-sm text-black">Program Name</p>
                   <p className="font-semibold">{formData.programName}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Certificate Will Read</p>
+                  <p className="text-sm text-black">Certificate Will Read</p>
                   <p className="font-semibold text-green-600">
                     {formData.programName} - Sponsored by Elevate for Humanity
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Program Type</p>
+                  <p className="text-sm text-black">Program Type</p>
                   <p className="font-semibold">{formData.programType}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Duration</p>
+                  <p className="text-sm text-black">Duration</p>
                   <p className="font-semibold">{formData.programDuration}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Syllabus</p>
+                  <p className="text-sm text-black">Syllabus</p>
                   <p className="font-semibold">
                     {formData.syllabusFile?.name || 'Not uploaded'}
                   </p>
@@ -542,7 +542,7 @@ export default function ProgramHolderSetup() {
               <div className="flex gap-4">
                 <button
                   onClick={() => setStep(3)}
-                  className="flex-1 bg-gray-300 text-gray-700 py-4 rounded-lg font-bold hover:bg-gray-400"
+                  className="flex-1 bg-gray-300 text-black py-4 rounded-lg font-bold hover:bg-gray-400"
                 >
                   Back
                 </button>

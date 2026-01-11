@@ -17,10 +17,10 @@ export default function ResetDonePage() {
             />
           </svg>
         </div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
+        <h1 className="text-2xl font-bold text-black mb-2">
           Browser Reset Complete
         </h1>
-        <p className="text-gray-600 mb-6">
+        <p className="text-black mb-6">
           All cached data, sessions, and service workers have been cleared.
         </p>
         <a

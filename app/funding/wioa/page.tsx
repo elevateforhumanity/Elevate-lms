@@ -30,22 +30,22 @@ export default function WioaPage() {
       {/* Story Section */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <p className="text-base md:text-lg text-slate-700 mb-6 leading-relaxed">
+          <p className="text-base md:text-lg text-black mb-6 leading-relaxed">
             James worked at a factory for 8 years. Then the plant closed. No
             warning. No severance. Just... gone.
           </p>
-          <p className="text-lg text-slate-600 mb-6">
+          <p className="text-lg text-black mb-6">
             He applied everywhere. Fast food. Warehouses. Retail. But without
             new skills, he couldn't find anything that paid more than $12/hour.
             He had a mortgage. Two kids. Bills piling up.
           </p>
-          <p className="text-lg text-slate-600 mb-6">
+          <p className="text-lg text-black mb-6">
             Then his WorkOne advisor told him about WIOA. The government would
             pay for him to learn HVAC repair—a skill that's in high demand.
             Tuition: $5,000. Books: $300. Gas money to get to class: covered.
             All free.
           </p>
-          <p className="text-lg text-slate-600 mb-6">
+          <p className="text-lg text-black mb-6">
             60 days later, James graduated with 6 certifications. He got hired
             at $55,000/year with benefits. "WIOA saved my family," he says.
           </p>
@@ -57,7 +57,7 @@ export default function WioaPage() {
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-8">What is WIOA?</h2>
 
-          <p className="text-lg text-slate-700 mb-6">
+          <p className="text-lg text-black mb-6">
             WIOA stands for{' '}
             <strong>Workforce Innovation and Opportunity Act</strong>. It's a
             federal program that provides free job training to people who are:
@@ -68,7 +68,7 @@ export default function WioaPage() {
               <span className="text-brand-green-600 font-bold text-base">
                 ✓
               </span>
-              <span className="text-slate-700">
+              <span className="text-black">
                 <strong>Unemployed</strong> (lost your job, can't find work)
               </span>
             </li>
@@ -76,7 +76,7 @@ export default function WioaPage() {
               <span className="text-brand-green-600 font-bold text-base">
                 ✓
               </span>
-              <span className="text-slate-700">
+              <span className="text-black">
                 <strong>Underemployed</strong> (working part-time, low wages, no
                 benefits)
               </span>
@@ -85,7 +85,7 @@ export default function WioaPage() {
               <span className="text-brand-green-600 font-bold text-base">
                 ✓
               </span>
-              <span className="text-slate-700">
+              <span className="text-black">
                 <strong>Facing barriers</strong> (disability, low income,
                 justice involvement, lack of education)
               </span>
@@ -94,14 +94,14 @@ export default function WioaPage() {
               <span className="text-brand-green-600 font-bold text-base">
                 ✓
               </span>
-              <span className="text-slate-700">
+              <span className="text-black">
                 <strong>Dislocated workers</strong> (laid off, plant closure,
                 industry decline)
               </span>
             </li>
           </ul>
 
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-black">
             WIOA is run through your local <strong>WorkOne center</strong>. They
             connect you with training providers (like us), help you apply for
             funding, and support you through the entire process.
@@ -121,7 +121,7 @@ export default function WioaPage() {
               <h3 className="text-lg font-bold mb-3 text-green-900">
                 ✓ Tuition
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 100% of training costs. Whether it's a 3-week CNA program or a
                 12-month HVAC apprenticeship, WIOA pays for it.
               </p>
@@ -131,7 +131,7 @@ export default function WioaPage() {
               <h3 className="text-lg font-bold mb-3 text-green-900">
                 ✓ Books & Materials
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Textbooks, workbooks, uniforms, tools—whatever you need for
                 training.
               </p>
@@ -141,7 +141,7 @@ export default function WioaPage() {
               <h3 className="text-lg font-bold mb-3 text-green-900">
                 ✓ Transportation
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Gas money, bus passes, or mileage reimbursement to get to class.
               </p>
             </div>
@@ -150,7 +150,7 @@ export default function WioaPage() {
               <h3 className="text-lg font-bold mb-3 text-green-900">
                 ✓ Childcare
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 If you need childcare while you're in training, WIOA can help
                 cover it.
               </p>
@@ -160,7 +160,7 @@ export default function WioaPage() {
               <h3 className="text-lg font-bold mb-3 text-green-900">
                 ✓ Support Services
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Work clothes, internet access, even emergency assistance if
                 you're struggling.
               </p>
@@ -170,7 +170,7 @@ export default function WioaPage() {
               <h3 className="text-lg font-bold mb-3 text-green-900">
                 ✓ Job Placement Help
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Resume writing, interview prep, and connections to employers
                 hiring in your field.
               </p>
@@ -186,7 +186,7 @@ export default function WioaPage() {
             How Do I Qualify?
           </h2>
 
-          <p className="text-lg text-slate-700 mb-6">
+          <p className="text-lg text-black mb-6">
             WIOA eligibility depends on your situation. Here are the most common
             ways people qualify:
           </p>
@@ -194,7 +194,7 @@ export default function WioaPage() {
           <div className="space-y-6">
             <div className="bg-white rounded-lg p-6">
               <h3 className="text-lg font-bold mb-2">1. You Lost Your Job</h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Laid off, fired, plant closure, company downsizing—if you're
                 unemployed through no fault of your own, you likely qualify.
               </p>
@@ -204,7 +204,7 @@ export default function WioaPage() {
               <h3 className="text-lg font-bold mb-2">
                 2. You're Working But Struggling
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Part-time hours, low wages (under $15/hour), no benefits,
                 unstable work—WIOA helps underemployed workers upgrade their
                 skills.
@@ -215,7 +215,7 @@ export default function WioaPage() {
               <h3 className="text-lg font-bold mb-2">
                 3. You Face Barriers to Employment
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Disability, low income, lack of high school diploma, English as
                 a second language, justice involvement, homelessness—WIOA is
                 designed to help people overcome barriers.
@@ -224,7 +224,7 @@ export default function WioaPage() {
 
             <div className="bg-white rounded-lg p-6">
               <h3 className="text-lg font-bold mb-2">4. You're a Veteran</h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Veterans get priority for WIOA services. If you served, you're
                 likely eligible.
               </p>
@@ -257,7 +257,7 @@ export default function WioaPage() {
                 <h3 className="text-lg font-bold mb-2">
                   Contact Your Local WorkOne Center
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Find your nearest WorkOne at{' '}
                   <a
                     href="https://www.in.gov/dwd/workone-centers/"
@@ -281,7 +281,7 @@ export default function WioaPage() {
                 <h3 className="text-lg font-bold mb-2">
                   Meet with a Career Advisor
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   They'll assess your eligibility, discuss your career goals,
                   and help you choose a training program.
                 </p>
@@ -296,7 +296,7 @@ export default function WioaPage() {
                 <h3 className="text-lg font-bold mb-2">
                   Choose Elevate For Humanity
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Tell your advisor you want to train with us. We're an approved
                   WIOA provider. We'll handle the enrollment paperwork.
                 </p>
@@ -311,7 +311,7 @@ export default function WioaPage() {
                 <h3 className="text-lg font-bold mb-2">
                   Start Training (For Free)
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Once approved, you start immediately. No tuition bills. No
                   loans. Just focus on learning.
                 </p>
@@ -341,10 +341,10 @@ export default function WioaPage() {
 
           <div className="space-y-8">
             <div className="bg-white rounded-lg p-6">
-              <p className="text-lg text-slate-700 mb-4">
+              <p className="text-lg text-black mb-4">
                 <strong>Sarah, 32 - Medical Assistant</strong>
               </p>
-              <p className="text-slate-600">
+              <p className="text-black">
                 "I was working at Walmart for $13/hour. Single mom, two kids,
                 barely making rent. My WorkOne advisor told me about WIOA. They
                 paid for my Medical Assistant training—21 days, completely free.
@@ -354,10 +354,10 @@ export default function WioaPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <p className="text-lg text-slate-700 mb-4">
+              <p className="text-lg text-black mb-4">
                 <strong>Marcus, 45 - HVAC Technician</strong>
               </p>
-              <p className="text-slate-600">
+              <p className="text-black">
                 "I got laid off after 15 years in manufacturing. I was 45 years
                 old with no college degree. I thought my career was over. WIOA
                 paid for my HVAC training—60 days, 6 certifications. I got hired
@@ -368,10 +368,10 @@ export default function WioaPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6">
-              <p className="text-lg text-slate-700 mb-4">
+              <p className="text-lg text-black mb-4">
                 <strong>Keisha, 26 - Peer Recovery Coach</strong>
               </p>
-              <p className="text-slate-600">
+              <p className="text-black">
                 "I'm in recovery. I have a record. Nobody would hire me. WIOA
                 gave me a chance. They paid for my Peer Recovery Coach training.
                 Now I work at a treatment center helping people like me. I make
@@ -408,7 +408,7 @@ export default function WioaPage() {
               Find Your WorkOne Center
             </a>
           </div>
-          <p className="mt-6 text-slate-600">
+          <p className="mt-6 text-black">
             Questions? Call{' '}
             <a href="tel:3173143757" className="font-bold underline">
               317-314-3757

@@ -41,7 +41,7 @@ export default function ApprenticeshipPage() {
                 <CheckCircle className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold mb-1">Earn While You Learn</h3>
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Apprentices earn wages while gaining valuable skills and
                     experience.
                   </p>
@@ -51,7 +51,7 @@ export default function ApprenticeshipPage() {
                 <CheckCircle className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold mb-1">Industry Credentials</h3>
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Programs lead to nationally recognized certifications.
                   </p>
                 </div>
@@ -60,7 +60,7 @@ export default function ApprenticeshipPage() {
                 <CheckCircle className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold mb-1">Reduced Turnover</h3>
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Apprentices are more likely to stay with your company
                     long-term.
                   </p>
@@ -70,7 +70,7 @@ export default function ApprenticeshipPage() {
                 <CheckCircle className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold mb-1">Tax Benefits</h3>
-                  <p className="text-gray-600">
+                  <p className="text-black">
                     Employers may qualify for tax credits and incentives.
                   </p>
                 </div>
@@ -81,11 +81,11 @@ export default function ApprenticeshipPage() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold mb-6">Our Support</h2>
             <div className="bg-gray-50 rounded-lg p-6 space-y-4">
-              <p className="text-gray-700">
+              <p className="text-black">
                 We provide comprehensive support for employers looking to start
                 or expand apprenticeship programs:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-600">
+              <ul className="list-disc list-inside space-y-2 text-black">
                 <li>DOL registration and compliance assistance</li>
                 <li>Curriculum development and training materials</li>
                 <li>Apprentice recruitment and screening</li>
@@ -99,7 +99,7 @@ export default function ApprenticeshipPage() {
             <h2 className="text-2xl font-bold mb-4">
               Ready to Start an Apprenticeship Program?
             </h2>
-            <p className="text-gray-700 mb-6">
+            <p className="text-black mb-6">
               Contact us to discuss how we can help you build a skilled
               workforce through apprenticeships.
             </p>

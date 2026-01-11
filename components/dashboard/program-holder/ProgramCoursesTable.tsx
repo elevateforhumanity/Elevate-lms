@@ -39,7 +39,7 @@ export function ProgramCoursesTable({ summaries }: Props) {
         >
           <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
             <div>
-              <h3 className="text-sm font-semibold text-slate-900">
+              <h3 className="text-sm font-semibold text-black">
                 {group.program.title}
               </h3>
               <p className="text-[11px] text-slate-500">
@@ -75,18 +75,18 @@ export function ProgramCoursesTable({ summaries }: Props) {
                 ) : (
                   group.courses.map((course) => (
                     <tr key={course.id} className="border-t border-slate-50">
-                      <td className="px-4 py-2 text-xs font-medium text-slate-900">
+                      <td className="px-4 py-2 text-xs font-medium text-black">
                         {course.title}
                       </td>
-                      <td className="px-4 py-2 text-xs text-slate-700">
+                      <td className="px-4 py-2 text-xs text-black">
                         {course.active_learners}
                       </td>
-                      <td className="px-4 py-2 text-xs text-slate-700">
+                      <td className="px-4 py-2 text-xs text-black">
                         {course.completed_learners}
                       </td>
                       <td className="px-4 py-2 text-xs">
                         <div className="flex items-center gap-2">
-                          <span className="text-slate-700">
+                          <span className="text-black">
                             {course.avg_progress_percent}%
                           </span>
                           <div className="h-1.5 flex-1 rounded-full bg-slate-100">
@@ -102,7 +102,7 @@ export function ProgramCoursesTable({ summaries }: Props) {
                           </div>
                         </div>
                       </td>
-                      <td className="px-4 py-2 text-xs text-slate-700">
+                      <td className="px-4 py-2 text-xs text-black">
                         {course.estimated_hours
                           ? `${course.estimated_hours} hrs`
                           : "—"}

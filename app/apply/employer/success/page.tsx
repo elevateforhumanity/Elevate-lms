@@ -16,16 +16,16 @@ export default function EmployerApplicationSuccess() {
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-700 mb-4">
           <CheckCircle className="w-10 h-10" />
         </div>
-        <h1 className="text-3xl font-bold text-slate-900 mb-3">
+        <h1 className="text-3xl font-bold text-black mb-3">
           Application Submitted!
         </h1>
-        <p className="text-lg text-slate-700 mb-6">
+        <p className="text-lg text-black mb-6">
           Thank you for your interest in partnering with us. We'll review your
           application and contact you within 1-2 business days.
         </p>
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6 text-left">
-          <h2 className="font-semibold text-slate-900 mb-2">What's Next?</h2>
-          <ol className="space-y-2 text-sm text-slate-700">
+          <h2 className="font-semibold text-black mb-2">What's Next?</h2>
+          <ol className="space-y-2 text-sm text-black">
             <li>1. Our team will verify your company information</li>
             <li>2. You'll receive an email with next steps</li>
             <li>

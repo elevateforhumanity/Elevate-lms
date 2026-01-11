@@ -67,10 +67,10 @@ export default function TeamSection() {
           <p className="text-sm font-semibold text-teal-600 uppercase tracking-wide mb-3">
             Our Team
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
             Meet the People Behind the Mission
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-black max-w-3xl mx-auto">
             Our dedicated team works every day to connect individuals with life-changing career opportunities through free workforce training.
           </p>
         </div>
@@ -95,13 +95,13 @@ export default function TeamSection() {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   {member.name}
                 </h3>
                 <p className="text-sm font-semibold text-teal-600 mb-3">
                   {member.title}
                 </p>
-                <p className="text-sm text-slate-600 leading-relaxed">
+                <p className="text-sm text-black leading-relaxed">
                   {member.bio}
                 </p>
               </div>
@@ -111,7 +111,7 @@ export default function TeamSection() {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <p className="text-lg text-slate-700 mb-6">
+          <p className="text-lg text-black mb-6">
             Want to join our mission to elevate communities through workforce development?
           </p>
           <Link

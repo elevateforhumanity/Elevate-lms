@@ -70,14 +70,14 @@ export default async function AdminEnrollmentsPage() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">Enrollments</h1>
-              <p className="text-slate-600 mt-1">
+              <h1 className="text-3xl font-bold text-black">Enrollments</h1>
+              <p className="text-black mt-1">
                 Manage student enrollments and progress
               </p>
             </div>
             <Link
               href="/admin/dashboard"
-              className="px-4 py-2 text-slate-700 hover:text-slate-900 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
+              className="px-4 py-2 text-black hover:text-black border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
             >
               Back to Dashboard
             </Link>
@@ -100,11 +100,11 @@ export default async function AdminEnrollmentsPage() {
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
               <Users className="w-8 h-8 text-brand-blue-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {totalCount}
               </span>
             </div>
-            <h3 className="text-sm font-semibold text-slate-600 uppercase">
+            <h3 className="text-sm font-semibold text-black uppercase">
               Total Enrollments
             </h3>
           </div>
@@ -116,7 +116,7 @@ export default async function AdminEnrollmentsPage() {
                 {activeCount}
               </span>
             </div>
-            <h3 className="text-sm font-semibold text-slate-600 uppercase">
+            <h3 className="text-sm font-semibold text-black uppercase">
               Active
             </h3>
           </div>
@@ -128,7 +128,7 @@ export default async function AdminEnrollmentsPage() {
                 {completedCount}
               </span>
             </div>
-            <h3 className="text-sm font-semibold text-slate-600 uppercase">
+            <h3 className="text-sm font-semibold text-black uppercase">
               Completed
             </h3>
           </div>
@@ -140,7 +140,7 @@ export default async function AdminEnrollmentsPage() {
                 {withdrawnCount}
               </span>
             </div>
-            <h3 className="text-sm font-semibold text-slate-600 uppercase">
+            <h3 className="text-sm font-semibold text-black uppercase">
               Withdrawn
             </h3>
           </div>
@@ -149,7 +149,7 @@ export default async function AdminEnrollmentsPage() {
         {/* Enrollments Table */}
         <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
           <div className="px-6 py-4 border-b border-slate-200 bg-slate-50">
-            <h2 className="text-xl font-bold text-slate-900">
+            <h2 className="text-xl font-bold text-black">
               All Enrollments
             </h2>
           </div>
@@ -158,19 +158,19 @@ export default async function AdminEnrollmentsPage() {
             <table className="w-full">
               <thead className="bg-slate-50 border-b border-slate-200">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Student
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Program
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Enrolled
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-black uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -181,20 +181,20 @@ export default async function AdminEnrollmentsPage() {
                     <tr key={enrollment.id} className="hover:bg-slate-50">
                       <td className="px-6 py-4">
                         <div>
-                          <div className="font-semibold text-slate-900">
+                          <div className="font-semibold text-black">
                             {enrollment.student?.full_name || 'Unknown'}
                           </div>
-                          <div className="text-sm text-slate-600">
+                          <div className="text-sm text-black">
                             {enrollment.student?.email}
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="font-medium text-slate-900">
+                        <div className="font-medium text-black">
                           {enrollment.program?.name || 'Unknown Program'}
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-600">
+                      <td className="px-6 py-4 text-sm text-black">
                         {new Date(
                           enrollment.enrolled_at || enrollment.created_at
                         ).toLocaleDateString()}
@@ -208,7 +208,7 @@ export default async function AdminEnrollmentsPage() {
                                 ? 'bg-purple-100 text-purple-800'
                                 : enrollment.status === 'withdrawn'
                                   ? 'bg-orange-100 text-orange-800'
-                                  : 'bg-slate-100 text-slate-800'
+                                  : 'bg-slate-100 text-black'
                           }`}
                         >
                           {enrollment.status}

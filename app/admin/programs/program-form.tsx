@@ -61,14 +61,14 @@ export function ProgramForm({ program }: ProgramFormProps) {
 
       {/* Basic Info */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-gray-900">
+        <h2 className="text-xl font-semibold text-black">
           Basic Information
         </h2>
 
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Program Name *
           </label>
@@ -86,7 +86,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
         <div>
           <label
             htmlFor="slug"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             URL Slug *
           </label>
@@ -99,7 +99,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="e.g., barber-apprenticeship"
           />
-          <p className="text-sm text-gray-700 mt-1">
+          <p className="text-sm text-black mt-1">
             Used in URL: /programs/your-slug
           </p>
         </div>
@@ -107,7 +107,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
         <div>
           <label
             htmlFor="description"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Description
           </label>
@@ -124,7 +124,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
         <div>
           <label
             htmlFor="category"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Category
           </label>
@@ -147,13 +147,13 @@ export function ProgramForm({ program }: ProgramFormProps) {
 
       {/* Program Details */}
       <div className="space-y-4 pt-6 border-t">
-        <h2 className="text-xl font-semibold text-gray-900">Program Details</h2>
+        <h2 className="text-xl font-semibold text-black">Program Details</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label
               htmlFor="duration_hours"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-black mb-1"
             >
               Duration (hours)
             </label>
@@ -172,7 +172,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
           <div>
             <label
               htmlFor="price"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-black mb-1"
             >
               Price ($)
             </label>
@@ -186,7 +186,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="e.g., 2500.00"
             />
-            <p className="text-sm text-gray-700 mt-1">
+            <p className="text-sm text-black mt-1">
               Leave empty for free programs
             </p>
           </div>
@@ -195,7 +195,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
         <div>
           <label
             htmlFor="requirements"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Requirements
           </label>
@@ -212,7 +212,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
         <div>
           <label
             htmlFor="outcomes"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Learning Outcomes
           </label>
@@ -229,7 +229,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
 
       {/* Status */}
       <div className="space-y-4 pt-6 border-t">
-        <h2 className="text-xl font-semibold text-gray-900">Status</h2>
+        <h2 className="text-xl font-semibold text-black">Status</h2>
 
         <div className="flex items-center gap-6">
           <label className="flex items-center gap-2">
@@ -239,7 +239,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
               defaultChecked={program?.is_active ?? true}
               className="w-4 h-4 text-brand-blue-600 border-gray-300 rounded focus:ring-blue-500"
             />
-            <span className="text-sm font-medium text-gray-700">Active</span>
+            <span className="text-sm font-medium text-black">Active</span>
           </label>
 
           <label className="flex items-center gap-2">
@@ -249,7 +249,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
               defaultChecked={program?.featured ?? false}
               className="w-4 h-4 text-brand-blue-600 border-gray-300 rounded focus:ring-blue-500"
             />
-            <span className="text-sm font-medium text-gray-700">Featured</span>
+            <span className="text-sm font-medium text-black">Featured</span>
           </label>
         </div>
       </div>
@@ -259,7 +259,7 @@ export function ProgramForm({ program }: ProgramFormProps) {
         <button
           type="button"
           onClick={() => router.back()}
-          className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium"
+          className="px-6 py-2 border border-gray-300 rounded-lg text-black hover:bg-gray-50 font-medium"
         >
           Cancel
         </button>

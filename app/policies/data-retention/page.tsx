@@ -9,7 +9,7 @@ export default function DataRetentionPage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Data Retention Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Retention Periods</h2>
       <ul><li>Student records: 7 years after last enrollment</li><li>Transcripts: Permanent</li><li>Financial records: 7 years</li><li>Application data: 3 years</li></ul>
       <h2>Deletion</h2>

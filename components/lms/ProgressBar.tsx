@@ -8,10 +8,10 @@ export function ProgressBar({ progress, showLabel = true, size = "md" }: Props) 
     <div className="space-y-1.5">
       {showLabel && (
         <div className="flex items-center justify-between text-xs">
-          <span className="font-semibold uppercase tracking-wide text-slate-600">
+          <span className="font-semibold uppercase tracking-wide text-black">
             Progress
           </span>
-          <span className="font-semibold text-slate-800">{pct}%</span>
+          <span className="font-semibold text-black">{pct}%</span>
         </div>
       )}
       <div className={`w-full rounded-full bg-slate-200 ${heightClass}`}>

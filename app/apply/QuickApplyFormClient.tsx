@@ -152,20 +152,20 @@ Preferred Contact: ${form.preferredContact}`,
           <div className="w-20 h-20 bg-brand-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 className="w-12 h-12 text-brand-green-600" />
           </div>
-          <h2 className="text-3xl font-bold text-slate-900 mb-3">
+          <h2 className="text-3xl font-bold text-black mb-3">
             Application Received!
           </h2>
-          <p className="text-lg text-slate-700 mb-6">
+          <p className="text-lg text-black mb-6">
             Thank you for applying! We've received your application and sent a
             confirmation to <strong>{form.email}</strong>.
           </p>
 
           {/* Reference Number */}
           <div className="bg-slate-50 border-2 border-slate-200 rounded-xl p-6 mb-6 max-w-md mx-auto">
-            <p className="text-sm text-slate-600 mb-2">
+            <p className="text-sm text-black mb-2">
               Your Reference Number:
             </p>
-            <p className="text-2xl font-bold text-slate-900 font-mono">
+            <p className="text-2xl font-bold text-black font-mono">
               {referenceNumber}
             </p>
             <p className="text-xs text-slate-500 mt-2">
@@ -175,10 +175,10 @@ Preferred Contact: ${form.preferredContact}`,
 
           {/* What's Next */}
           <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 mb-6 text-left max-w-2xl mx-auto">
-            <h3 className="text-xl font-bold text-slate-900 mb-4">
+            <h3 className="text-xl font-bold text-black mb-4">
               What Happens Next?
             </h3>
-            <ol className="space-y-3 text-slate-700">
+            <ol className="space-y-3 text-black">
               <li className="flex gap-3">
                 <span className="flex-shrink-0 w-6 h-6 bg-brand-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
                   1
@@ -210,10 +210,10 @@ Preferred Contact: ${form.preferredContact}`,
 
           {/* Calendly CTA */}
           <div className="bg-orange-50 border-2 border-orange-200 rounded-xl p-6 mb-6 max-w-2xl mx-auto">
-            <h3 className="text-lg font-bold text-slate-900 mb-2">
+            <h3 className="text-lg font-bold text-black mb-2">
               Want to Talk Sooner?
             </h3>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               Schedule your advisor call now instead of waiting for us to reach
               out.
             </p>
@@ -236,7 +236,7 @@ Preferred Contact: ${form.preferredContact}`,
                 setReferenceNumber(null);
                 setForm(initialState);
               }}
-              className="px-6 py-3 bg-slate-100 text-slate-900 font-semibold rounded-lg hover:bg-slate-200 transition"
+              className="px-6 py-3 bg-slate-100 text-black font-semibold rounded-lg hover:bg-slate-200 transition"
             >
               Submit Another Application
             </button>
@@ -250,7 +250,7 @@ Preferred Contact: ${form.preferredContact}`,
 
           {/* Contact Info */}
           <div className="mt-8 pt-6 border-t border-slate-200">
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-black">
               Questions? Call us at{' '}
               <a
                 href="tel:3173143757"
@@ -282,43 +282,43 @@ Preferred Contact: ${form.preferredContact}`,
 
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
+          <label className="block text-xs font-medium text-black mb-1">
             First Name *
           </label>
           <input
             name="firstName"
             value={form.firstName}
             onChange={handleChange}
-            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
+          <label className="block text-xs font-medium text-black mb-1">
             Last Name *
           </label>
           <input
             name="lastName"
             value={form.lastName}
             onChange={handleChange}
-            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
+          <label className="block text-xs font-medium text-black mb-1">
             Phone Number *
           </label>
           <input
             name="phone"
             value={form.phone}
             onChange={handleChange}
-            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
+          <label className="block text-xs font-medium text-black mb-1">
             Email *
           </label>
           <input
@@ -326,45 +326,45 @@ Preferred Contact: ${form.preferredContact}`,
             type="email"
             value={form.email}
             onChange={handleChange}
-            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
+          <label className="block text-xs font-medium text-black mb-1">
             City *
           </label>
           <input
             name="city"
             value={form.city}
             onChange={handleChange}
-            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
+          <label className="block text-xs font-medium text-black mb-1">
             ZIP Code *
           </label>
           <input
             name="zip"
             value={form.zip}
             onChange={handleChange}
-            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-slate-700 mb-1">
+        <label className="block text-xs font-medium text-black mb-1">
           Program you&apos;re most interested in *
         </label>
         <select
           name="program"
           value={form.program}
           onChange={handleChange}
-          className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+          className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-black bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
         >
           <option value="">Select a program</option>
           <option value="barber">Barber Apprenticeship</option>
@@ -383,14 +383,14 @@ Preferred Contact: ${form.preferredContact}`,
 
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
+          <label className="block text-xs font-medium text-black mb-1">
             Do you have a case manager? *
           </label>
           <select
             name="hasCaseManager"
             value={form.hasCaseManager}
             onChange={handleChange}
-            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-black bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           >
             <option value="">Select one</option>
             <option value="yes">Yes, I have a case manager</option>
@@ -398,20 +398,20 @@ Preferred Contact: ${form.preferredContact}`,
           </select>
         </div>
         <div>
-          <label className="block text-xs font-medium text-slate-700 mb-1">
+          <label className="block text-xs font-medium text-black mb-1">
             If yes, what agency? (WorkOne, probation, housing, etc.)
           </label>
           <input
             name="caseManagerAgency"
             value={form.caseManagerAgency}
             onChange={handleChange}
-            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-slate-700 mb-1">
+        <label className="block text-xs font-medium text-black mb-1">
           Anything we should know to better support you? (Optional)
         </label>
         <p className="text-[11px] text-slate-500 mb-1">
@@ -423,12 +423,12 @@ Preferred Contact: ${form.preferredContact}`,
           value={form.supportNeeds}
           onChange={handleChange}
           rows={4}
-          className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+          className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
         />
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-slate-700 mb-1">
+        <label className="block text-xs font-medium text-black mb-1">
           How do you prefer we contact you? *
         </label>
         <div className="flex flex-wrap gap-3 mt-1">
@@ -445,7 +445,7 @@ Preferred Contact: ${form.preferredContact}`,
               className={`inline-flex items-center rounded-full px-4 py-2 text-xs font-semibold border transition ${
                 form.preferredContact === method
                   ? 'border-emerald-600 bg-emerald-50 text-emerald-800'
-                  : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
+                  : 'border-slate-300 bg-white text-black hover:bg-slate-50'
               }`}
             >
               {method === 'call'
@@ -476,7 +476,7 @@ Preferred Contact: ${form.preferredContact}`,
             </>
           )}
         </button>
-        <p className="mt-3 text-xs text-slate-600">
+        <p className="mt-3 text-xs text-black">
           By submitting, you agree that Elevate for Humanity may contact you
           about programs, funding, and support services. We do not sell your
           information.

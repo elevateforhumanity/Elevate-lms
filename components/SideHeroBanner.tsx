@@ -8,7 +8,7 @@ export default function SideHeroBanner() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left Side - Content */}
-          <div className="text-slate-900">
+          <div className="text-black">
             <div className="inline-flex items-center gap-2 rounded-full bg-teal-500 px-4 py-2 text-sm font-bold mb-6 text-white">
               <span>💼</span>
               <span>100% Job Placement Support</span>
@@ -16,7 +16,7 @@ export default function SideHeroBanner() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               Your Career Starts Here
             </h2>
-            <p className="text-xl text-slate-700 mb-8 leading-relaxed">
+            <p className="text-xl text-black mb-8 leading-relaxed">
               Our dedicated team connects you with employers before you even graduate. Real training, real credentials, real jobs waiting.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">

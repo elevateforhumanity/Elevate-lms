@@ -136,10 +136,10 @@ export default function AutomationPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-black">
                 Marketing Automation
               </h1>
-              <p className="text-gray-600 mt-1">
+              <p className="text-black mt-1">
                 Create automated email workflows and drip campaigns
               </p>
             </div>
@@ -164,46 +164,46 @@ export default function AutomationPage() {
             <div className="flex items-center justify-between mb-2">
               <Zap className="w-8 h-8 text-brand-blue-600" />
             </div>
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold text-black">
               {workflows.length}
             </div>
-            <div className="text-sm text-gray-600">Total Workflows</div>
+            <div className="text-sm text-black">Total Workflows</div>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-2">
               <Play className="w-8 h-8 text-brand-green-600" />
             </div>
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold text-black">
               {workflows.filter((w) => w.status === 'active').length}
             </div>
-            <div className="text-sm text-gray-600">Active Workflows</div>
+            <div className="text-sm text-black">Active Workflows</div>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-2">
               <Mail className="w-8 h-8 text-purple-600" />
             </div>
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold text-black">
               {workflows.reduce((sum, w) => sum + w.emails, 0)}
             </div>
-            <div className="text-sm text-gray-600">Total Emails</div>
+            <div className="text-sm text-black">Total Emails</div>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-2">
               <Users className="w-8 h-8 text-brand-orange-600" />
             </div>
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold text-black">
               {workflows.reduce((sum, w) => sum + w.recipients, 0)}
             </div>
-            <div className="text-sm text-gray-600">Active Recipients</div>
+            <div className="text-sm text-black">Active Recipients</div>
           </div>
         </div>
 
         {/* Workflow Templates */}
         <div className="mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-xl font-semibold text-black mb-4">
             Quick Start Templates
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -246,18 +246,18 @@ export default function AutomationPage() {
         {/* Workflows List */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-black">
               Your Workflows
             </h2>
           </div>
 
           {workflows.length === 0 ? (
             <div className="p-12 text-center">
-              <Zap className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
+              <Zap className="w-12 h-12 text-black mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-black mb-2">
                 No workflows yet
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 Create your first automated workflow to save time
               </p>
               <button
@@ -280,7 +280,7 @@ export default function AutomationPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900">
+                        <h3 className="text-lg font-semibold text-black">
                           {workflow.name}
                         </h3>
                         <span
@@ -289,7 +289,7 @@ export default function AutomationPage() {
                               ? 'bg-brand-green-100 text-green-800'
                               : workflow.status === 'paused'
                                 ? 'bg-yellow-100 text-yellow-800'
-                                : 'bg-gray-100 text-gray-800'
+                                : 'bg-gray-100 text-black'
                           }`}
                         >
                           {workflow.status === 'active'
@@ -300,7 +300,7 @@ export default function AutomationPage() {
                         </span>
                       </div>
 
-                      <div className="flex items-center space-x-6 text-sm text-gray-600">
+                      <div className="flex items-center space-x-6 text-sm text-black">
                         <div className="flex items-center space-x-2">
                           <Zap className="w-4 h-4" />
                           <span>Trigger: {workflow.trigger}</span>
@@ -377,10 +377,10 @@ export default function AutomationPage() {
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                     Your Journey Starts Here
                   </h2>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  <p className="text-lg text-black mb-6 leading-relaxed">
                     Every great career begins with a single step. Whether you're
                     looking to change careers, upgrade your skills, or enter the
                     workforce for the first time, we're here to help you
@@ -402,7 +402,7 @@ export default function AutomationPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         100% free training - no tuition, no hidden costs
                       </span>
                     </li>
@@ -420,7 +420,7 @@ export default function AutomationPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Industry-recognized certifications that employers value
                       </span>
                     </li>
@@ -438,7 +438,7 @@ export default function AutomationPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Job placement assistance and career support
                       </span>
                     </li>
@@ -456,7 +456,7 @@ export default function AutomationPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Flexible scheduling for working adults
                       </span>
                     </li>
@@ -508,8 +508,8 @@ function WorkflowTemplate({
       className={`p-6 rounded-lg border-2 border-gray-200 hover:border-gray-300 transition-all text-left ${colorClasses[color]}`}
     >
       <Icon className="w-8 h-8 mb-3" />
-      <h3 className="font-semibold text-gray-900 mb-2">{title}</h3>
-      <p className="text-sm text-gray-600">{description}</p>
+      <h3 className="font-semibold text-black mb-2">{title}</h3>
+      <p className="text-sm text-black">{description}</p>
     </button>
   );
 }

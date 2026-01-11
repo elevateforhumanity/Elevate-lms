@@ -105,7 +105,7 @@ export default async function SignaturesPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <FileSignature className="h-8 w-8 text-brand-blue-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Total Signatures
                   </h3>
                 </div>
@@ -116,7 +116,7 @@ export default async function SignaturesPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Clock className="h-8 w-8 text-brand-orange-600" />
-                  <h3 className="text-sm font-medium text-gray-600">Pending</h3>
+                  <h3 className="text-sm font-medium text-black">Pending</h3>
                 </div>
                 <p className="text-3xl font-bold text-brand-orange-600">
                   {pendingSignatures || 0}
@@ -125,7 +125,7 @@ export default async function SignaturesPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <CheckCircle className="h-8 w-8 text-brand-green-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Completed
                   </h3>
                 </div>
@@ -150,13 +150,13 @@ export default async function SignaturesPage() {
                           <h3 className="font-semibold">
                             {signature.document_name || 'Untitled Document'}
                           </h3>
-                          <p className="text-sm text-gray-600 mt-1">
+                          <p className="text-sm text-black mt-1">
                             Signer:{' '}
                             {signature.signer?.full_name ||
                               signature.signer?.email ||
                               'Unknown'}
                           </p>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-black">
                             Requested:{' '}
                             {new Date(
                               signature.created_at
@@ -188,7 +188,7 @@ export default async function SignaturesPage() {
                   ))}
                 </div>
               ) : (
-                <p className="text-gray-700 text-center py-8">
+                <p className="text-black text-center py-8">
                   No signatures found
                 </p>
               )}

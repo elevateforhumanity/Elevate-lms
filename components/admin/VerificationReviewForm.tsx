@@ -78,8 +78,8 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
           <div className="flex items-start gap-3">
             <User className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">Full Name</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">Full Name</p>
+              <p className="font-semibold text-black">
                 {verification.first_name} {verification.middle_name}{' '}
                 {verification.last_name}
               </p>
@@ -88,8 +88,8 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
           <div className="flex items-start gap-3">
             <Calendar className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">Date of Birth</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">Date of Birth</p>
+              <p className="font-semibold text-black">
                 {new Date(verification.date_of_birth).toLocaleDateString()}
               </p>
             </div>
@@ -98,8 +98,8 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
             <div className="flex items-start gap-3">
               <CreditCard className="w-5 h-5 text-slate-400 mt-0.5" />
               <div>
-                <p className="text-sm text-slate-600">SSN (Last 4)</p>
-                <p className="font-semibold text-slate-900">
+                <p className="text-sm text-black">SSN (Last 4)</p>
+                <p className="font-semibold text-black">
                   ***-**-{verification.ssn_last_4}
                 </p>
               </div>
@@ -108,11 +108,11 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
           <div className="flex items-start gap-3">
             <User className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">User Account</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">User Account</p>
+              <p className="font-semibold text-black">
                 {verification.profiles?.full_name || 'Unknown'}
               </p>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-black">
                 {verification.profiles?.email} • {verification.profiles?.role}
               </p>
             </div>
@@ -125,13 +125,13 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
         <div className="flex items-start gap-3">
           <MapPin className="w-5 h-5 text-slate-400 mt-0.5" />
           <div>
-            <p className="font-semibold text-slate-900">
+            <p className="font-semibold text-black">
               {verification.street_address}
             </p>
             {verification.address_line_2 && (
-              <p className="text-slate-700">{verification.address_line_2}</p>
+              <p className="text-black">{verification.address_line_2}</p>
             )}
-            <p className="text-slate-700">
+            <p className="text-black">
               {verification.city}, {verification.state} {verification.zip_code}
             </p>
           </div>
@@ -144,8 +144,8 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
           <div className="flex items-start gap-3">
             <Shield className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">ID Type</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">ID Type</p>
+              <p className="font-semibold text-black">
                 {verification.id_type
                   .replace(/_/g, ' ')
                   .replace(/\b\w/g, (l: string) => l.toUpperCase())}
@@ -155,8 +155,8 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
           <div className="flex items-start gap-3">
             <CreditCard className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">ID Number</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">ID Number</p>
+              <p className="font-semibold text-black">
                 {verification.id_number}
               </p>
             </div>
@@ -165,8 +165,8 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
             <div className="flex items-start gap-3">
               <MapPin className="w-5 h-5 text-slate-400 mt-0.5" />
               <div>
-                <p className="text-sm text-slate-600">Issuing State</p>
-                <p className="font-semibold text-slate-900">
+                <p className="text-sm text-black">Issuing State</p>
+                <p className="font-semibold text-black">
                   {verification.id_state}
                 </p>
               </div>
@@ -176,8 +176,8 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
             <div className="flex items-start gap-3">
               <Calendar className="w-5 h-5 text-slate-400 mt-0.5" />
               <div>
-                <p className="text-sm text-slate-600">Expiration Date</p>
-                <p className="font-semibold text-slate-900">
+                <p className="text-sm text-black">Expiration Date</p>
+                <p className="font-semibold text-black">
                   {new Date(
                     verification.id_expiration_date
                   ).toLocaleDateString()}
@@ -192,7 +192,7 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
         <h2 className="text-2xl font-bold mb-4">Uploaded Documents</h2>
         <div className="grid md:grid-cols-3 gap-4">
           <div>
-            <p className="text-sm font-semibold text-slate-600 mb-2">
+            <p className="text-sm font-semibold text-black mb-2">
               ID Front
             </p>
             <a
@@ -212,7 +212,7 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
           </div>
           {verification.id_back_url && (
             <div>
-              <p className="text-sm font-semibold text-slate-600 mb-2">
+              <p className="text-sm font-semibold text-black mb-2">
                 ID Back
               </p>
               <a
@@ -232,7 +232,7 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
             </div>
           )}
           <div>
-            <p className="text-sm font-semibold text-slate-600 mb-2">Selfie</p>
+            <p className="text-sm font-semibold text-black mb-2">Selfie</p>
             <a
               href={verification.selfie_url}
               target="_blank"
@@ -257,8 +257,8 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
           <div className="flex items-start gap-3">
             <Calendar className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">Submitted</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">Submitted</p>
+              <p className="font-semibold text-black">
                 {new Date(verification.created_at).toLocaleString()}
               </p>
             </div>
@@ -266,8 +266,8 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
           <div className="flex items-start gap-3">
             <Shield className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">IP Address</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">IP Address</p>
+              <p className="font-semibold text-black">
                 {verification.ip_address}
               </p>
             </div>
@@ -297,12 +297,12 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
               />
               <div className="text-left">
                 <p
-                  className={`font-bold ${action === 'approve' ? 'text-green-900' : 'text-slate-900'}`}
+                  className={`font-bold ${action === 'approve' ? 'text-green-900' : 'text-black'}`}
                 >
                   Approve Verification
                 </p>
                 <p
-                  className={`text-sm ${action === 'approve' ? 'text-green-700' : 'text-slate-600'}`}
+                  className={`text-sm ${action === 'approve' ? 'text-green-700' : 'text-black'}`}
                 >
                   Identity verified and approved
                 </p>
@@ -323,12 +323,12 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
               />
               <div className="text-left">
                 <p
-                  className={`font-bold ${action === 'reject' ? 'text-red-900' : 'text-slate-900'}`}
+                  className={`font-bold ${action === 'reject' ? 'text-red-900' : 'text-black'}`}
                 >
                   Reject Verification
                 </p>
                 <p
-                  className={`text-sm ${action === 'reject' ? 'text-red-700' : 'text-slate-600'}`}
+                  className={`text-sm ${action === 'reject' ? 'text-red-700' : 'text-black'}`}
                 >
                   Identity cannot be verified
                 </p>
@@ -356,7 +356,7 @@ export function VerificationReviewForm({ verification, adminId }: Props) {
             <button
               type="button"
               onClick={() => router.back()}
-              className="px-8 py-3 border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 transition"
+              className="px-8 py-3 border-2 border-slate-300 text-black font-semibold rounded-lg hover:bg-slate-50 transition"
             >
               Cancel
             </button>

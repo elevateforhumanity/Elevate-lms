@@ -34,16 +34,16 @@ export default function AIJobMatchPage() {
             <Briefcase className="w-4 h-4" />
             AI Job Matcher
           </div>
-          <h1 className="text-4xl font-black text-gray-900 mb-4">
+          <h1 className="text-4xl font-black text-black mb-4">
             Find Jobs That Match Your Skills
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-black">
             AI analyzes your skills and recommends the best job opportunities
           </p>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm p-8">
-          <label className="block text-sm font-semibold text-gray-900 mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             What skills do you have?
           </label>
           <textarea
@@ -72,20 +72,20 @@ export default function AIJobMatchPage() {
 
         {matches.length > 0 && (
           <div className="mt-8 space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 className="text-2xl font-bold text-black">
               Your Job Matches
             </h2>
             {matches.map((match, idx) => (
               <div key={idx} className="bg-white rounded-xl shadow-sm p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   {match.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{match.description}</p>
+                <p className="text-black mb-4">{match.description}</p>
                 <div className="flex items-center gap-4">
                   <span className="px-3 py-1 bg-orange-100 text-orange-700 text-sm font-semibold rounded">
                     {match.matchScore}% Match
                   </span>
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-black">
                     {match.location}
                   </span>
                 </div>

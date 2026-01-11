@@ -100,7 +100,7 @@ export default function ModerationDashboard() {
       misinformation: 'bg-blue-100 text-blue-800',
       hate_speech: 'bg-red-100 text-red-800',
       violence: 'bg-red-100 text-red-800',
-      other: 'bg-gray-100 text-gray-800',
+      other: 'bg-gray-100 text-black',
     };
 
     return (
@@ -140,8 +140,8 @@ export default function ModerationDashboard() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Content Moderation</h1>
-          <p className="text-gray-600">Review and manage reported content</p>
+          <h1 className="text-2xl font-bold text-black">Content Moderation</h1>
+          <p className="text-black">Review and manage reported content</p>
         </div>
         <div className="flex items-center gap-2">
           <Shield className="w-8 h-8 text-blue-600" />
@@ -154,8 +154,8 @@ export default function ModerationDashboard() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Reports</p>
-                <p className="text-2xl font-bold text-gray-900">{stats.totalReports}</p>
+                <p className="text-sm text-black">Total Reports</p>
+                <p className="text-2xl font-bold text-black">{stats.totalReports}</p>
               </div>
               <AlertTriangle className="w-8 h-8 text-gray-400" />
             </div>
@@ -164,7 +164,7 @@ export default function ModerationDashboard() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Pending</p>
+                <p className="text-sm text-black">Pending</p>
                 <p className="text-2xl font-bold text-yellow-600">{stats.pendingReports}</p>
               </div>
               <Flag className="w-8 h-8 text-yellow-400" />
@@ -174,7 +174,7 @@ export default function ModerationDashboard() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Approved</p>
+                <p className="text-sm text-black">Approved</p>
                 <p className="text-2xl font-bold text-green-600">{stats.approvedReports}</p>
               </div>
               <CheckCircle className="w-8 h-8 text-green-400" />
@@ -184,7 +184,7 @@ export default function ModerationDashboard() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Avg Review Time</p>
+                <p className="text-sm text-black">Avg Review Time</p>
                 <p className="text-2xl font-bold text-blue-600">
                   {stats.averageReviewTime.toFixed(1)}h
                 </p>
@@ -207,7 +207,7 @@ export default function ModerationDashboard() {
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   filter === f
                     ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-gray-100 text-black hover:bg-gray-200'
                 }`}
               >
                 {f.charAt(0).toUpperCase() + f.slice(1)}
@@ -247,7 +247,7 @@ export default function ModerationDashboard() {
                     <div className="flex items-center gap-2">
                       <span className="text-2xl">{getContentTypeIcon(report.content_type)}</span>
                       <div>
-                        <div className="text-sm font-medium text-gray-900">
+                        <div className="text-sm font-medium text-black">
                           {report.content_type}
                         </div>
                         <div className="text-sm text-gray-500">
@@ -260,7 +260,7 @@ export default function ModerationDashboard() {
                     {getReasonBadge(report.reason)}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">
+                    <div className="text-sm text-black">
                       {report.reporter?.first_name} {report.reporter?.last_name}
                     </div>
                     <div className="text-sm text-gray-500">
@@ -304,7 +304,7 @@ export default function ModerationDashboard() {
         {reports.length === 0 && (
           <div className="text-center py-12">
             <Shield className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-600">No pending reports</p>
+            <p className="text-black">No pending reports</p>
           </div>
         )}
       </div>
@@ -314,30 +314,30 @@ export default function ModerationDashboard() {
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden">
             <div className="p-6 border-b">
-              <h3 className="text-xl font-bold text-gray-900">Review Report</h3>
+              <h3 className="text-xl font-bold text-black">Review Report</h3>
             </div>
 
             <div className="p-6 space-y-4 overflow-y-auto max-h-[60vh]">
               <div>
-                <label className="text-sm font-medium text-gray-700">Content Type</label>
-                <p className="text-gray-900">{selectedReport.content_type}</p>
+                <label className="text-sm font-medium text-black">Content Type</label>
+                <p className="text-black">{selectedReport.content_type}</p>
               </div>
 
               <div>
-                <label className="text-sm font-medium text-gray-700">Reason</label>
+                <label className="text-sm font-medium text-black">Reason</label>
                 <div className="mt-1">{getReasonBadge(selectedReport.reason)}</div>
               </div>
 
               {selectedReport.description && (
                 <div>
-                  <label className="text-sm font-medium text-gray-700">Description</label>
-                  <p className="text-gray-900 mt-1">{selectedReport.description}</p>
+                  <label className="text-sm font-medium text-black">Description</label>
+                  <p className="text-black mt-1">{selectedReport.description}</p>
                 </div>
               )}
 
               <div>
-                <label className="text-sm font-medium text-gray-700">Reporter</label>
-                <p className="text-gray-900">
+                <label className="text-sm font-medium text-black">Reporter</label>
+                <p className="text-black">
                   {selectedReport.reporter?.first_name} {selectedReport.reporter?.last_name}
                 </p>
                 <p className="text-sm text-gray-500">{selectedReport.reporter?.email}</p>

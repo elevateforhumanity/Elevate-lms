@@ -69,12 +69,12 @@ export function GlobalLeaderboard() {
             }`}
           >
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold text-slate-700">
+              <span className="text-[11px] font-bold text-black">
                 #{row.rank}
               </span>
               <span
                 className={`font-medium ${
-                  row.isYou ? "text-orange-700" : "text-slate-800"
+                  row.isYou ? "text-orange-700" : "text-black"
                 }`}
               >
                 {row.isYou ? "You" : row.name}

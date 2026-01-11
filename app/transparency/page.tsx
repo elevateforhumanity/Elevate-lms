@@ -63,10 +63,10 @@ export default function TransparencyPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
               2024 Impact at a Glance
             </h2>
-            <p className="text-lg text-slate-600">Real numbers, real impact</p>
+            <p className="text-lg text-black">Real numbers, real impact</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
@@ -75,7 +75,7 @@ export default function TransparencyPage() {
                 <Users className="w-8 h-8 text-white" />
               </div>
               <div className="text-4xl font-bold text-teal-900 mb-2">523</div>
-              <div className="text-slate-700 font-semibold">
+              <div className="text-black font-semibold">
                 Students Trained
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function TransparencyPage() {
                 <Award className="w-8 h-8 text-white" />
               </div>
               <div className="text-4xl font-bold text-blue-900 mb-2">87%</div>
-              <div className="text-slate-700 font-semibold">
+              <div className="text-black font-semibold">
                 Job Placement Rate
               </div>
             </div>
@@ -97,7 +97,7 @@ export default function TransparencyPage() {
               <div className="text-4xl font-bold text-green-900 mb-2">
                 $2.1M
               </div>
-              <div className="text-slate-700 font-semibold">Total Budget</div>
+              <div className="text-black font-semibold">Total Budget</div>
             </div>
 
             <div className="bg-white rounded-xl p-8 text-center border border-purple-200">
@@ -107,7 +107,7 @@ export default function TransparencyPage() {
               <div className="text-4xl font-bold text-purple-900 mb-2">
                 $45K
               </div>
-              <div className="text-slate-700 font-semibold">
+              <div className="text-black font-semibold">
                 Avg. Starting Salary
               </div>
             </div>
@@ -119,10 +119,10 @@ export default function TransparencyPage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
               How We Use Your Donations
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-black">
               Every dollar is invested in our mission
             </p>
           </div>
@@ -130,14 +130,14 @@ export default function TransparencyPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Pie Chart Visual */}
             <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-8 text-center">
+              <h3 className="text-lg md:text-lg font-bold text-black mb-8 text-center">
                 2024 Expense Allocation
               </h3>
 
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-slate-900">
+                    <span className="font-semibold text-black">
                       Program Services
                     </span>
                     <span className="text-2xl font-bold text-teal-600">
@@ -150,14 +150,14 @@ export default function TransparencyPage() {
                       style={{ width: '82%' }}
                     />
                   </div>
-                  <p className="text-sm text-slate-600 mt-2">
+                  <p className="text-sm text-black mt-2">
                     Direct training, certifications, and job placement services
                   </p>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-slate-900">
+                    <span className="font-semibold text-black">
                       Administrative
                     </span>
                     <span className="text-2xl font-bold text-brand-blue-600">
@@ -170,14 +170,14 @@ export default function TransparencyPage() {
                       style={{ width: '12%' }}
                     />
                   </div>
-                  <p className="text-sm text-slate-600 mt-2">
+                  <p className="text-sm text-black mt-2">
                     Operations, technology, and compliance
                   </p>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-slate-900">
+                    <span className="font-semibold text-black">
                       Fundraising
                     </span>
                     <span className="text-2xl font-bold text-purple-600">
@@ -190,7 +190,7 @@ export default function TransparencyPage() {
                       style={{ width: '6%' }}
                     />
                   </div>
-                  <p className="text-sm text-slate-600 mt-2">
+                  <p className="text-sm text-black mt-2">
                     Donor relations and development activities
                   </p>
                 </div>
@@ -203,7 +203,7 @@ export default function TransparencyPage() {
                     Industry Leading Efficiency
                   </span>
                 </div>
-                <p className="text-sm text-slate-700">
+                <p className="text-sm text-black">
                   82% program spending exceeds the Charity Navigator standard of
                   75%
                 </p>
@@ -212,14 +212,14 @@ export default function TransparencyPage() {
 
             {/* Revenue Sources */}
             <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-8 text-center">
+              <h3 className="text-lg md:text-lg font-bold text-black mb-8 text-center">
                 2024 Revenue Sources
               </h3>
 
               <div className="space-y-6">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-slate-900">
+                    <span className="font-semibold text-black">
                       Government Grants
                     </span>
                     <span className="text-2xl font-bold text-brand-blue-600">
@@ -232,14 +232,14 @@ export default function TransparencyPage() {
                       style={{ width: '45%' }}
                     />
                   </div>
-                  <p className="text-sm text-slate-600 mt-2">
+                  <p className="text-sm text-black mt-2">
                     WIOA, WRG, and federal workforce funding
                   </p>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-slate-900">
+                    <span className="font-semibold text-black">
                       Individual Donations
                     </span>
                     <span className="text-2xl font-bold text-teal-600">
@@ -252,14 +252,14 @@ export default function TransparencyPage() {
                       style={{ width: '30%' }}
                     />
                   </div>
-                  <p className="text-sm text-slate-600 mt-2">
+                  <p className="text-sm text-black mt-2">
                     Generous support from community members
                   </p>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-slate-900">
+                    <span className="font-semibold text-black">
                       Corporate Partnerships
                     </span>
                     <span className="text-2xl font-bold text-purple-600">
@@ -272,14 +272,14 @@ export default function TransparencyPage() {
                       style={{ width: '20%' }}
                     />
                   </div>
-                  <p className="text-sm text-slate-600 mt-2">
+                  <p className="text-sm text-black mt-2">
                     Employer sponsorships and partnerships
                   </p>
                 </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-slate-900">
+                    <span className="font-semibold text-black">
                       Foundation Grants
                     </span>
                     <span className="text-2xl font-bold text-brand-orange-600">
@@ -292,7 +292,7 @@ export default function TransparencyPage() {
                       style={{ width: '5%' }}
                     />
                   </div>
-                  <p className="text-sm text-slate-600 mt-2">
+                  <p className="text-sm text-black mt-2">
                     Private foundation support
                   </p>
                 </div>
@@ -305,7 +305,7 @@ export default function TransparencyPage() {
                     Diversified Funding
                   </span>
                 </div>
-                <p className="text-sm text-slate-700">
+                <p className="text-sm text-black">
                   Multiple revenue streams ensure program stability and
                   sustainability
                 </p>
@@ -319,10 +319,10 @@ export default function TransparencyPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
               Program Outcomes & Impact
             </h2>
-            <p className="text-lg text-slate-600">Measuring what matters</p>
+            <p className="text-lg text-black">Measuring what matters</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -331,21 +331,21 @@ export default function TransparencyPage() {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-teal-100 rounded-full mb-4">
                   <Award className="w-8 h-8 text-teal-600" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">
+                <h3 className="text-lg font-bold text-black mb-2">
                   Completion Rate
                 </h3>
                 <div className="text-5xl font-bold text-teal-600 mb-2">95%</div>
               </div>
               <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                   <span>497 of 523 students completed training</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                   <span>Industry-leading retention rate</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-teal-600 flex-shrink-0 mt-0.5" />
                   <span>Comprehensive support services</span>
                 </li>
@@ -357,7 +357,7 @@ export default function TransparencyPage() {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
                   <Users className="w-8 h-8 text-brand-blue-600" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">
+                <h3 className="text-lg font-bold text-black mb-2">
                   Job Placement
                 </h3>
                 <div className="text-5xl font-bold text-brand-blue-600 mb-2">
@@ -365,15 +365,15 @@ export default function TransparencyPage() {
                 </div>
               </div>
               <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                   <span>432 graduates employed within 90 days</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                   <span>Average starting salary: $45,000</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                   <span>Full-time positions with benefits</span>
                 </li>
@@ -385,7 +385,7 @@ export default function TransparencyPage() {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-green-100 rounded-full mb-4">
                   <TrendingUp className="w-8 h-8 text-brand-green-600" />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">
+                <h3 className="text-lg font-bold text-black mb-2">
                   Wage Growth
                 </h3>
                 <div className="text-5xl font-bold text-brand-green-600 mb-2">
@@ -393,15 +393,15 @@ export default function TransparencyPage() {
                 </div>
               </div>
               <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
                   <span>Average income increase from $14K to $45K</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
                   <span>Breaking the cycle of poverty</span>
                 </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
+                <li className="flex items-start gap-2 text-sm text-black">
                   <CheckCircle2 className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
                   <span>Long-term economic mobility</span>
                 </li>
@@ -415,10 +415,10 @@ export default function TransparencyPage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
               Official Documents & Reports
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-black">
               Download our complete financial and impact reports
             </p>
           </div>
@@ -471,10 +471,10 @@ export default function TransparencyPage() {
                     <FileText className="w-6 h-6 text-brand-orange-600" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-slate-900 mb-1">
+                    <h3 className="font-bold text-black mb-1">
                       {doc.title}
                     </h3>
-                    <p className="text-sm text-slate-600 mb-2">{doc.desc}</p>
+                    <p className="text-sm text-black mb-2">{doc.desc}</p>
                     <div className="flex items-center gap-2 text-xs text-slate-500">
                       <span className="px-2 py-1 bg-slate-100 rounded">
                         PDF
@@ -501,10 +501,10 @@ export default function TransparencyPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
               Third-Party Ratings & Certifications
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-black">
               Independently verified excellence
             </p>
           </div>
@@ -514,13 +514,13 @@ export default function TransparencyPage() {
               <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-blue-600 rounded-full mb-4">
                 <Award className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 Charity Navigator
               </h3>
               <div className="text-4xl font-bold text-brand-blue-600 mb-2">
                 4 Stars
               </div>
-              <p className="text-sm text-slate-700 mb-4">
+              <p className="text-sm text-black mb-4">
                 Highest rating for accountability and transparency
               </p>
               <a
@@ -536,13 +536,13 @@ export default function TransparencyPage() {
               <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-green-600 rounded-full mb-4">
                 <Shield className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 GuideStar
               </h3>
               <div className="text-4xl font-bold text-brand-green-600 mb-2">
                 Platinum
               </div>
-              <p className="text-sm text-slate-700 mb-4">
+              <p className="text-sm text-black mb-4">
                 Seal of transparency from Candid
               </p>
               <a
@@ -558,11 +558,11 @@ export default function TransparencyPage() {
               <div className="inline-flex items-center justify-center w-20 h-20 bg-purple-600 rounded-full mb-4">
                 <CheckCircle2 className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 BBB Accredited
               </h3>
               <div className="text-4xl font-bold text-purple-600 mb-2">A+</div>
-              <p className="text-sm text-slate-700 mb-4">
+              <p className="text-sm text-black mb-4">
                 Better Business Bureau accreditation
               </p>
               <a

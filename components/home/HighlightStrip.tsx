@@ -21,7 +21,7 @@ export default function HighlightStrip() {
         {items.map((it, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-2 rounded-full bg-slate-50 px-3 py-2 text-xs font-medium text-slate-700 ring-1 ring-slate-200 md:text-sm"
+            className="flex items-center gap-2 rounded-full bg-slate-50 px-3 py-2 text-xs font-medium text-black ring-1 ring-slate-200 md:text-sm"
           >
             <span className="text-orange-600">{it.icon}</span>
             <span>{it.label}</span>

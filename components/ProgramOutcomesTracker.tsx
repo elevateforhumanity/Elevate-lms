@@ -57,21 +57,21 @@ export default function ProgramOutcomesTracker() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
-              <p className="text-sm text-gray-600">Completion Rate</p>
+              <p className="text-sm text-black">Completion Rate</p>
               <p className="text-2xl font-bold">{outcome.completionRate}%</p>
             </div>
             <div>
-              <p className="text-sm text-gray-600">Employment Rate</p>
+              <p className="text-sm text-black">Employment Rate</p>
               <p className="text-2xl font-bold">{outcome.employmentRate}%</p>
             </div>
             <div>
-              <p className="text-sm text-gray-600">Avg Salary</p>
+              <p className="text-sm text-black">Avg Salary</p>
               <p className="text-2xl font-bold">
                 ${outcome.avgSalary.toLocaleString()}
               </p>
             </div>
             <div>
-              <p className="text-sm text-gray-600">Satisfaction</p>
+              <p className="text-sm text-black">Satisfaction</p>
               <p className="text-2xl font-bold">{outcome.studentSatisfaction}/5</p>
             </div>
           </div>

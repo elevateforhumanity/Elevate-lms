@@ -126,12 +126,12 @@ export function PushNotificationSender() {
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-      <h2 className="text-xl font-bold text-gray-900 mb-4">
+      <h2 className="text-xl font-bold text-black mb-4">
         Send Push Notification
       </h2>
 
       <div className="mb-6">
-        <h3 className="text-sm font-semibold text-gray-700 mb-2">
+        <h3 className="text-sm font-semibold text-black mb-2">
           Quick Templates
         </h3>
         <div className="flex flex-wrap gap-2">
@@ -139,7 +139,7 @@ export function PushNotificationSender() {
             <button
               key={template.name}
               onClick={() => applyTemplate(template)}
-              className="px-3 py-1 bg-gray-100 text-gray-700 rounded text-sm hover:bg-gray-200"
+              className="px-3 py-1 bg-gray-100 text-black rounded text-sm hover:bg-gray-200"
             >
               {template.name}
             </button>
@@ -149,7 +149,7 @@ export function PushNotificationSender() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-black mb-1">
             Title *
           </label>
           <input
@@ -163,7 +163,7 @@ export function PushNotificationSender() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-black mb-1">
             Body *
           </label>
           <textarea
@@ -177,7 +177,7 @@ export function PushNotificationSender() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-black mb-1">
             URL
           </label>
           <input
@@ -190,7 +190,7 @@ export function PushNotificationSender() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-black mb-1">
             Icon URL
           </label>
           <input
@@ -214,7 +214,7 @@ export function PushNotificationSender() {
           />
           <label
             htmlFor="requireInteraction"
-            className="text-sm text-gray-700"
+            className="text-sm text-black"
           >
             Require user interaction (notification stays until dismissed)
           </label>
@@ -231,14 +231,14 @@ export function PushNotificationSender() {
               }
               className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
             />
-            <label htmlFor="broadcast" className="text-sm font-medium text-gray-700">
+            <label htmlFor="broadcast" className="text-sm font-medium text-black">
               Broadcast to all users
             </label>
           </div>
 
           {!form.broadcast && (
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 User ID *
               </label>
               <input

@@ -100,8 +100,8 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
       <div className="bg-white border-b border-slate-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-semibold text-slate-900">{assignment.title}</h1>
-            <p className="text-sm text-slate-600">
+            <h1 className="text-xl font-semibold text-black">{assignment.title}</h1>
+            <p className="text-sm text-black">
               Grading {currentIndex + 1} of {submissions.length}
             </p>
           </div>
@@ -110,7 +110,7 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
             <button
               onClick={handlePrevious}
               disabled={currentIndex === 0}
-              className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-2 text-sm font-medium text-black bg-white border border-slate-300 rounded hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               ← Previous
             </button>
@@ -132,10 +132,10 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
               <div className="mb-4">
-                <h2 className="text-lg font-semibold text-slate-900">
+                <h2 className="text-lg font-semibold text-black">
                   Student Submission
                 </h2>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-black">
                   Submitted {new Date(currentSubmission.submittedAt).toLocaleString()}
                   {currentSubmission.isLate && (
                     <span className="ml-2 text-brand-orange-600 font-medium">LATE</span>
@@ -144,14 +144,14 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
               </div>
 
               <div className="prose max-w-none">
-                <div className="whitespace-pre-wrap text-slate-700">
+                <div className="whitespace-pre-wrap text-black">
                   {currentSubmission.content}
                 </div>
               </div>
 
               {currentSubmission.attachments && currentSubmission.attachments.length > 0 && (
                 <div className="mt-6">
-                  <h3 className="text-sm font-semibold text-slate-900 mb-2">Attachments</h3>
+                  <h3 className="text-sm font-semibold text-black mb-2">Attachments</h3>
                   <div className="space-y-2">
                     {currentSubmission.attachments.map((attachment, idx) => (
                       <a
@@ -159,7 +159,7 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
                         href={attachment}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block px-4 py-2 bg-slate-50 rounded border border-slate-200 hover:bg-slate-100 text-sm text-slate-700"
+                        className="block px-4 py-2 bg-slate-50 rounded border border-slate-200 hover:bg-slate-100 text-sm text-black"
                       >
                         📎 {attachment.split('/').pop()}
                       </a>
@@ -176,7 +176,7 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
           <div className="p-6 space-y-6">
             {/* Points */}
             <div>
-              <label className="block text-sm font-semibold text-slate-900 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 Points
               </label>
               <div className="flex items-center gap-2">
@@ -189,9 +189,9 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
                   step={0.5}
                   className="flex-1 px-3 py-2 border border-slate-300 rounded focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 />
-                <span className="text-sm text-slate-600">/ {assignment.points}</span>
+                <span className="text-sm text-black">/ {assignment.points}</span>
               </div>
-              <p className="mt-1 text-sm text-slate-600">
+              <p className="mt-1 text-sm text-black">
                 {((points / assignment.points) * 100).toFixed(1)}%
               </p>
             </div>
@@ -199,14 +199,14 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
             {/* Rubric */}
             {assignment.rubric && (
               <div>
-                <h3 className="text-sm font-semibold text-slate-900 mb-3">Rubric</h3>
+                <h3 className="text-sm font-semibold text-black mb-3">Rubric</h3>
                 <div className="space-y-4">
                   {assignment.rubric.criteria.map((criterion) => (
                     <div key={criterion.id} className="border border-slate-200 rounded p-3">
-                      <h4 className="text-sm font-medium text-slate-900 mb-2">
+                      <h4 className="text-sm font-medium text-black mb-2">
                         {criterion.name}
                       </h4>
-                      <p className="text-xs text-slate-600 mb-3">
+                      <p className="text-xs text-black mb-3">
                         {criterion.description}
                       </p>
                       <div className="space-y-2">
@@ -217,7 +217,7 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
                             className={`w-full text-left px-3 py-2 rounded text-sm border ${
                               rubricScores.find(s => s.criterionId === criterion.id)?.levelId === level.id
                                 ? 'bg-orange-50 border-orange-500 text-orange-900'
-                                : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                                : 'bg-white border-slate-200 text-black hover:bg-slate-50'
                             }`}
                           >
                             <div className="flex justify-between items-center">
@@ -236,7 +236,7 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
 
             {/* Feedback */}
             <div>
-              <label className="block text-sm font-semibold text-slate-900 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 Feedback
               </label>
               <textarea
@@ -250,7 +250,7 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
 
             {/* Quick Comments */}
             <div>
-              <label className="block text-sm font-semibold text-slate-900 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 Quick Comments
               </label>
               <div className="flex flex-wrap gap-2">
@@ -264,7 +264,7 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
                   <button
                     key={comment}
                     onClick={() => setFeedback(prev => prev + (prev ? '\n' : '') + comment)}
-                    className="px-3 py-1 text-xs bg-slate-100 text-slate-700 rounded hover:bg-slate-200"
+                    className="px-3 py-1 text-xs bg-slate-100 text-black rounded hover:bg-slate-200"
                   >
                     {comment}
                   </button>

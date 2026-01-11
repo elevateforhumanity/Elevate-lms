@@ -116,10 +116,10 @@ export default function PayrollSetupForm({
       <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
           <CheckCircle2 className="w-16 h-16 text-brand-green-600 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">
+          <h2 className="text-2xl font-bold text-black mb-2">
             Payroll Setup Complete!
           </h2>
-          <p className="text-slate-600 mb-4">
+          <p className="text-black mb-4">
             Your payroll profile has been submitted for approval.
           </p>
           <p className="text-sm text-slate-500">
@@ -140,10 +140,10 @@ export default function PayrollSetupForm({
               <DollarSign className="w-6 h-6 text-brand-green-600" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">
+              <h1 className="text-2xl font-bold text-black">
                 Payroll Setup
               </h1>
-              <p className="text-slate-600 mt-1">
+              <p className="text-black mt-1">
                 Configure your payment method and tax information
               </p>
             </div>
@@ -169,15 +169,15 @@ export default function PayrollSetupForm({
               <div className="bg-white rounded-lg p-4">
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-sm text-slate-600">Minimum</div>
-                    <div className="text-lg font-bold text-slate-900">
+                    <div className="text-sm text-black">Minimum</div>
+                    <div className="text-lg font-bold text-black">
                       {rateConfig.payment_type === 'PERCENTAGE'
                         ? `${rateConfig.min_rate}%`
                         : `$${rateConfig.min_rate}`}
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-slate-600">Default</div>
+                    <div className="text-sm text-black">Default</div>
                     <div className="text-lg font-bold text-brand-blue-600">
                       {rateConfig.payment_type === 'PERCENTAGE'
                         ? `${rateConfig.default_rate}%`
@@ -185,8 +185,8 @@ export default function PayrollSetupForm({
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-slate-600">Maximum</div>
-                    <div className="text-lg font-bold text-slate-900">
+                    <div className="text-sm text-black">Maximum</div>
+                    <div className="text-lg font-bold text-black">
                       {rateConfig.payment_type === 'PERCENTAGE'
                         ? `${rateConfig.max_rate}%`
                         : `$${rateConfig.max_rate}`}
@@ -199,7 +199,7 @@ export default function PayrollSetupForm({
 
           {/* Payment Rate */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               Your Rate{' '}
               {rateConfig?.payment_type === 'PERCENTAGE'
                 ? '(%)'
@@ -217,7 +217,7 @@ export default function PayrollSetupForm({
               required
             />
             {rateConfig && (
-              <p className="text-sm text-slate-600 mt-2">
+              <p className="text-sm text-black mt-2">
                 Enter a rate between {rateConfig.min_rate} and{' '}
                 {rateConfig.max_rate}
                 {rateConfig.payment_type === 'PERCENTAGE' ? '%' : ' dollars'}
@@ -227,7 +227,7 @@ export default function PayrollSetupForm({
 
           {/* Payout Method */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-3">
+            <label className="block text-sm font-medium text-black mb-3">
               Payout Method
             </label>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -252,12 +252,12 @@ export default function PayrollSetupForm({
                     className={`font-semibold ${
                       payoutMethod === 'STRIPE'
                         ? 'text-blue-900'
-                        : 'text-slate-900'
+                        : 'text-black'
                     }`}
                   >
                     Stripe Connect
                   </div>
-                  <div className="text-sm text-slate-600 mt-1">
+                  <div className="text-sm text-black mt-1">
                     Fast, secure payments to your bank account or debit card
                   </div>
                 </div>
@@ -284,12 +284,12 @@ export default function PayrollSetupForm({
                     className={`font-semibold ${
                       payoutMethod === 'ACH'
                         ? 'text-blue-900'
-                        : 'text-slate-900'
+                        : 'text-black'
                     }`}
                   >
                     ACH Transfer
                   </div>
-                  <div className="text-sm text-slate-600 mt-1">
+                  <div className="text-sm text-black mt-1">
                     Direct deposit to your bank account (3-5 business days)
                   </div>
                 </div>
@@ -299,7 +299,7 @@ export default function PayrollSetupForm({
 
           {/* W-9 Upload */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2">
+            <label className="block text-sm font-medium text-black mb-2">
               W-9 Tax Form
             </label>
             <div
@@ -317,7 +317,7 @@ export default function PayrollSetupForm({
               ) : (
                 <div>
                   <Upload className="w-12 h-12 text-slate-400 mx-auto mb-3" />
-                  <p className="text-slate-600 mb-2">
+                  <p className="text-black mb-2">
                     Upload your completed W-9 form
                   </p>
                   <a
@@ -342,8 +342,8 @@ export default function PayrollSetupForm({
 
           {/* Payment Terms */}
           <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
-            <h3 className="font-semibold text-slate-900 mb-3">Payment Terms</h3>
-            <ul className="space-y-2 text-sm text-slate-700">
+            <h3 className="font-semibold text-black mb-3">Payment Terms</h3>
+            <ul className="space-y-2 text-sm text-black">
               <li className="flex items-start gap-2">
                 <span className="text-brand-blue-600 mt-0.5">•</span>
                 <span>Payments are processed monthly, in arrears</span>
@@ -382,7 +382,7 @@ export default function PayrollSetupForm({
             <button
               type="button"
               onClick={() => router.back()}
-              className="flex-1 px-6 py-3 border border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-50"
+              className="flex-1 px-6 py-3 border border-slate-300 text-black font-semibold rounded-lg hover:bg-slate-50"
             >
               Back
             </button>

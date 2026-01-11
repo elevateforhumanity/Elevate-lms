@@ -278,21 +278,21 @@ export default function WIOAApplicationForm() {
               <AlertTriangle className="w-5 h-5 inline-block" />
             </span>
           </div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl font-bold text-black mb-4">
             Thank you for your interest
           </h2>
-          <p className="text-slate-700 mb-6">
+          <p className="text-black mb-6">
             Based on your responses, you do not meet one or all of the following
             minimum eligibility requirements:
           </p>
-          <ul className="text-left text-slate-700 space-y-2 mb-6 max-w-md mx-auto">
+          <ul className="text-left text-black space-y-2 mb-6 max-w-md mx-auto">
             <li>• At least 18 years of age</li>
             <li>• High school diploma or equivalent</li>
             <li>• Able to provide proof of U.S. work authorization</li>
             <li>• Indiana resident</li>
             <li>• Able to commit to training schedule</li>
           </ul>
-          <p className="text-sm text-slate-600 mb-6">
+          <p className="text-sm text-black mb-6">
             If your situation changes, please resubmit this form. Best of luck
             on your future endeavors!
           </p>
@@ -325,7 +325,7 @@ export default function WIOAApplicationForm() {
                       ? 'bg-brand-green-600 text-white'
                       : currentStep === step.number
                         ? 'bg-brand-orange-600 text-white'
-                        : 'bg-slate-200 text-slate-600'
+                        : 'bg-slate-200 text-black'
                   }`}
                 >
                   {currentStep > step.number ? (
@@ -336,7 +336,7 @@ export default function WIOAApplicationForm() {
                 </div>
                 <div className="text-center mt-2 hidden md:block">
                   <div
-                    className={`text-xs font-semibold ${currentStep >= step.number ? 'text-slate-900' : 'text-slate-500'}`}
+                    className={`text-xs font-semibold ${currentStep >= step.number ? 'text-black' : 'text-slate-500'}`}
                   >
                     {step.title}
                   </div>
@@ -406,7 +406,7 @@ export default function WIOAApplicationForm() {
         {currentStep > 1 && (
           <button
             onClick={prevStep}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 text-slate-900 font-semibold rounded-lg hover:bg-slate-200 transition"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 text-black font-semibold rounded-lg hover:bg-slate-200 transition"
           >
             <ChevronLeft className="w-5 h-5" />
             Previous
@@ -452,10 +452,10 @@ function Step1Eligibility({ formData, updateField }: unknown) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-slate-900 mb-2">
+        <h2 className="text-2xl font-bold text-black mb-2">
           Eligibility Screening
         </h2>
-        <p className="text-slate-600">
+        <p className="text-black">
           Please answer these questions to confirm you meet our basic
           requirements.
         </p>
@@ -480,14 +480,14 @@ function Step1Eligibility({ formData, updateField }: unknown) {
         },
       ].map(({ field, question }) => (
         <div key={field} className="border border-slate-200 rounded-lg p-4">
-          <p className="font-semibold text-slate-900 mb-3">{question}</p>
+          <p className="font-semibold text-black mb-3">{question}</p>
           <div className="flex gap-4">
             <button
               onClick={() => updateField(field, true)}
               className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${
                 formData[field] === true
                   ? 'bg-brand-green-600 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-slate-100 text-black hover:bg-slate-200'
               }`}
             >
               Yes
@@ -497,7 +497,7 @@ function Step1Eligibility({ formData, updateField }: unknown) {
               className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${
                 formData[field] === false
                   ? 'bg-red-600 text-white'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-slate-100 text-black hover:bg-slate-200'
               }`}
             >
               No
@@ -536,10 +536,10 @@ function Step2PersonalInfo({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-slate-900 mb-2">
+        <h2 className="text-2xl font-bold text-black mb-2">
           Personal Information
         </h2>
-        <p className="text-slate-600">
+        <p className="text-black">
           This information helps us serve you better and is required for WIOA
           reporting.
         </p>
@@ -547,7 +547,7 @@ function Step2PersonalInfo({
 
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-slate-900 mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             First Name *
           </label>
           <input
@@ -559,7 +559,7 @@ function Step2PersonalInfo({
           />
         </div>
         <div>
-          <label className="block text-sm font-semibold text-slate-900 mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             Last Name *
           </label>
           <input
@@ -573,7 +573,7 @@ function Step2PersonalInfo({
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Date of Birth *
         </label>
         <input
@@ -586,7 +586,7 @@ function Step2PersonalInfo({
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Race/Ethnicity (Select all that apply)
         </label>
         <div className="grid md:grid-cols-2 gap-2">
@@ -608,7 +608,7 @@ function Step2PersonalInfo({
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Gender Identity
         </label>
         <select
@@ -625,7 +625,7 @@ function Step2PersonalInfo({
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Highest Education Level *
         </label>
         <select
@@ -644,19 +644,19 @@ function Step2PersonalInfo({
       </div>
 
       <div className="border border-slate-200 rounded-lg p-4">
-        <p className="font-semibold text-slate-900 mb-3">
+        <p className="font-semibold text-black mb-3">
           Are you a U.S. Military Veteran?
         </p>
         <div className="flex gap-4">
           <button
             onClick={() => updateField('isVeteran', true)}
-            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.isVeteran === true ? 'bg-brand-green-600 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.isVeteran === true ? 'bg-brand-green-600 text-white' : 'bg-slate-100 text-black hover:bg-slate-200'}`}
           >
             Yes
           </button>
           <button
             onClick={() => updateField('isVeteran', false)}
-            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.isVeteran === false ? 'bg-slate-600 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.isVeteran === false ? 'bg-slate-600 text-white' : 'bg-slate-100 text-black hover:bg-slate-200'}`}
           >
             No
           </button>
@@ -680,17 +680,17 @@ function Step3IncomeWIOA({ formData, updateField, toggleArrayField }: unknown) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-slate-900 mb-2">
+        <h2 className="text-2xl font-bold text-black mb-2">
           Income & WIOA Eligibility
         </h2>
-        <p className="text-slate-600">
+        <p className="text-black">
           This information determines funding eligibility. All information is
           confidential.
         </p>
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Current Employment Status *
         </label>
         <select
@@ -709,7 +709,7 @@ function Step3IncomeWIOA({ formData, updateField, toggleArrayField }: unknown) {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Annual Household Income *
         </label>
         <select
@@ -728,7 +728,7 @@ function Step3IncomeWIOA({ formData, updateField, toggleArrayField }: unknown) {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Number of Dependents
         </label>
         <input
@@ -741,7 +741,7 @@ function Step3IncomeWIOA({ formData, updateField, toggleArrayField }: unknown) {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-3">
+        <label className="block text-sm font-semibold text-black mb-3">
           Do you receive any public assistance? (Select all that apply)
         </label>
         <div className="grid md:grid-cols-2 gap-2">
@@ -765,7 +765,7 @@ function Step3IncomeWIOA({ formData, updateField, toggleArrayField }: unknown) {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Housing Status *
         </label>
         <select
@@ -786,23 +786,23 @@ function Step3IncomeWIOA({ formData, updateField, toggleArrayField }: unknown) {
       </div>
 
       <div className="border border-slate-200 rounded-lg p-4">
-        <p className="font-semibold text-slate-900 mb-3">
+        <p className="font-semibold text-black mb-3">
           Have you been involved in the justice system?
         </p>
-        <p className="text-sm text-slate-600 mb-3">
+        <p className="text-sm text-black mb-3">
           This helps us connect you with additional support services (JRI
           funding).
         </p>
         <div className="flex gap-4">
           <button
             onClick={() => updateField('hasJusticeInvolvement', true)}
-            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.hasJusticeInvolvement === true ? 'bg-brand-green-600 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.hasJusticeInvolvement === true ? 'bg-brand-green-600 text-white' : 'bg-slate-100 text-black hover:bg-slate-200'}`}
           >
             Yes
           </button>
           <button
             onClick={() => updateField('hasJusticeInvolvement', false)}
-            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.hasJusticeInvolvement === false ? 'bg-slate-600 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.hasJusticeInvolvement === false ? 'bg-slate-600 text-white' : 'bg-slate-100 text-black hover:bg-slate-200'}`}
           >
             No
           </button>
@@ -839,16 +839,16 @@ function Step4Authorization({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-slate-900 mb-2">
+        <h2 className="text-2xl font-bold text-black mb-2">
           Work Authorization & Barriers
         </h2>
-        <p className="text-slate-600">
+        <p className="text-black">
           Required for enrollment and to identify support needs.
         </p>
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Work Authorization Document Type *
         </label>
         <select
@@ -870,7 +870,7 @@ function Step4Authorization({
         formData.workAuthDocument !== 'Birth Certificate' &&
         formData.workAuthDocument !== 'Other' && (
           <div>
-            <label className="block text-sm font-semibold text-slate-900 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Document Expiration Date (if applicable)
             </label>
             <input
@@ -885,7 +885,7 @@ function Step4Authorization({
         )}
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-3">
+        <label className="block text-sm font-semibold text-black mb-3">
           Do you face any barriers to training? (Select all that apply)
         </label>
         <div className="grid md:grid-cols-2 gap-2">
@@ -908,7 +908,7 @@ function Step4Authorization({
 
       {formData.barriers.includes('Other') && (
         <div>
-          <label className="block text-sm font-semibold text-slate-900 mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             Please describe other barriers
           </label>
           <textarea
@@ -921,26 +921,26 @@ function Step4Authorization({
       )}
 
       <div className="border border-slate-200 rounded-lg p-4">
-        <p className="font-semibold text-slate-900 mb-3">
+        <p className="font-semibold text-black mb-3">
           Do you have a case manager? *
         </p>
         <div className="flex gap-4 mb-4">
           <button
             onClick={() => updateField('hasCaseManager', true)}
-            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.hasCaseManager === true ? 'bg-brand-green-600 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.hasCaseManager === true ? 'bg-brand-green-600 text-white' : 'bg-slate-100 text-black hover:bg-slate-200'}`}
           >
             Yes
           </button>
           <button
             onClick={() => updateField('hasCaseManager', false)}
-            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.hasCaseManager === false ? 'bg-slate-600 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition ${formData.hasCaseManager === false ? 'bg-slate-600 text-white' : 'bg-slate-100 text-black hover:bg-slate-200'}`}
           >
             No
           </button>
         </div>
         {formData.hasCaseManager && (
           <div>
-            <label className="block text-sm font-semibold text-slate-900 mb-2">
+            <label className="block text-sm font-semibold text-black mb-2">
               Case Manager Agency
             </label>
             <input
@@ -955,7 +955,7 @@ function Step4Authorization({
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Additional Support Needs
         </label>
         <textarea
@@ -986,16 +986,16 @@ function Step5Program({ formData, updateField }: unknown) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-slate-900 mb-2">
+        <h2 className="text-2xl font-bold text-black mb-2">
           Program Selection & Contact
         </h2>
-        <p className="text-slate-600">
+        <p className="text-black">
           Choose your program and provide contact information.
         </p>
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Program of Interest *
         </label>
         <select
@@ -1015,7 +1015,7 @@ function Step5Program({ formData, updateField }: unknown) {
 
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-slate-900 mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             Email Address *
           </label>
           <input
@@ -1027,7 +1027,7 @@ function Step5Program({ formData, updateField }: unknown) {
           />
         </div>
         <div>
-          <label className="block text-sm font-semibold text-slate-900 mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             Phone Number *
           </label>
           <input
@@ -1041,7 +1041,7 @@ function Step5Program({ formData, updateField }: unknown) {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Street Address
         </label>
         <input
@@ -1054,7 +1054,7 @@ function Step5Program({ formData, updateField }: unknown) {
 
       <div className="grid md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-slate-900 mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             City *
           </label>
           <input
@@ -1066,7 +1066,7 @@ function Step5Program({ formData, updateField }: unknown) {
           />
         </div>
         <div>
-          <label className="block text-sm font-semibold text-slate-900 mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             ZIP Code *
           </label>
           <input
@@ -1080,7 +1080,7 @@ function Step5Program({ formData, updateField }: unknown) {
       </div>
 
       <div>
-        <label className="block text-sm font-semibold text-slate-900 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           Preferred Contact Method *
         </label>
         <select
@@ -1103,16 +1103,16 @@ function Step6Review({ formData, updateField }: unknown) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-slate-900 mb-2">
+        <h2 className="text-2xl font-bold text-black mb-2">
           Review & Consent
         </h2>
-        <p className="text-slate-600">
+        <p className="text-black">
           Please review your information and provide required consents.
         </p>
       </div>
 
       <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 space-y-4">
-        <h3 className="font-bold text-slate-900">Application Summary</h3>
+        <h3 className="font-bold text-black">Application Summary</h3>
         <div className="grid md:grid-cols-2 gap-4 text-sm">
           <div>
             <strong>Name:</strong> {formData.firstName} {formData.lastName}
@@ -1147,10 +1147,10 @@ function Step6Review({ formData, updateField }: unknown) {
             required
           />
           <div className="text-sm">
-            <strong className="text-slate-900">
+            <strong className="text-black">
               Background Check Consent *
             </strong>
-            <p className="text-slate-600 mt-1">
+            <p className="text-black mt-1">
               I consent to a background check as required for program enrollment
               and employment placement.
             </p>
@@ -1165,8 +1165,8 @@ function Step6Review({ formData, updateField }: unknown) {
             className="w-5 h-5 text-brand-orange-600 mt-1"
           />
           <div className="text-sm">
-            <strong className="text-slate-900">Photo/Video Release</strong>
-            <p className="text-slate-600 mt-1">
+            <strong className="text-black">Photo/Video Release</strong>
+            <p className="text-black mt-1">
               I consent to the use of my photo/video for marketing and
               promotional purposes.
             </p>
@@ -1184,8 +1184,8 @@ function Step6Review({ formData, updateField }: unknown) {
             required
           />
           <div className="text-sm">
-            <strong className="text-slate-900">Data Sharing Consent *</strong>
-            <p className="text-slate-600 mt-1">
+            <strong className="text-black">Data Sharing Consent *</strong>
+            <p className="text-black mt-1">
               I consent to sharing my information with funding partners (WIOA,
               WRG, JRI) and training partners for program administration and
               reporting.
@@ -1203,8 +1203,8 @@ function Step6Review({ formData, updateField }: unknown) {
             className="w-5 h-5 text-brand-orange-600 mt-1"
           />
           <div className="text-sm">
-            <strong className="text-slate-900">Text Message Opt-In</strong>
-            <p className="text-slate-600 mt-1">
+            <strong className="text-black">Text Message Opt-In</strong>
+            <p className="text-black mt-1">
               I consent to receive text messages about my application, program
               updates, and important notifications.
             </p>
@@ -1212,7 +1212,7 @@ function Step6Review({ formData, updateField }: unknown) {
         </label>
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-slate-700">
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-black">
         <p>
           <strong>Note:</strong> By submitting this application, you certify
           that all information provided is true and accurate to the best of your

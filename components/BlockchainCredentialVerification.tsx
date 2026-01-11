@@ -104,7 +104,7 @@ export function BlockchainCredentialVerification() {
             <div className="text-5xl text-3xl md:text-4xl lg:text-5xl">🔐</div>
             <div>
               <h3 className="text-xl font-bold mb-2">Blockchain-Secured Credentials</h3>
-              <p className="text-gray-700 mb-3">
+              <p className="text-black mb-3">
                 All credentials issued through Elevate for Humanity are recorded on the blockchain, ensuring they cannot be
                 forged, altered, or falsified. Employers and institutions can instantly verify authenticity.
               </p>
@@ -146,7 +146,7 @@ export function BlockchainCredentialVerification() {
           <div className="max-w-2xl mx-auto">
             <Card className="p-8">
               <h2 className="text-2xl font-bold mb-6 text-center">Verify a Credential</h2>
-              <p className="text-gray-600 text-center mb-6">
+              <p className="text-black text-center mb-6">
                 Enter the verification code or blockchain hash to verify authenticity
               </p>
 
@@ -201,8 +201,8 @@ export function BlockchainCredentialVerification() {
                   </div>
 
                   <div className="mt-4 p-3 bg-white rounded">
-                    <p className="text-xs font-semibold text-gray-700 mb-1">Blockchain Hash:</p>
-                    <p className="text-xs text-gray-600 font-mono break-all">
+                    <p className="text-xs font-semibold text-black mb-1">Blockchain Hash:</p>
+                    <p className="text-xs text-black font-mono break-all">
                       {verificationResult.blockchainHash}
                     </p>
                   </div>
@@ -232,7 +232,7 @@ export function BlockchainCredentialVerification() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm">Credential Issued</h4>
-                    <p className="text-xs text-gray-600">
+                    <p className="text-xs text-black">
                       When you earn a credential, it's recorded on the blockchain with a unique hash
                     </p>
                   </div>
@@ -243,7 +243,7 @@ export function BlockchainCredentialVerification() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm">Verification Code Generated</h4>
-                    <p className="text-xs text-gray-600">
+                    <p className="text-xs text-black">
                       A unique verification code is created and linked to the blockchain record
                     </p>
                   </div>
@@ -254,7 +254,7 @@ export function BlockchainCredentialVerification() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm">Instant Verification</h4>
-                    <p className="text-xs text-gray-600">
+                    <p className="text-xs text-black">
                       Anyone can verify the credential by entering the code or blockchain hash
                     </p>
                   </div>
@@ -289,12 +289,12 @@ export function BlockchainCredentialVerification() {
                   </div>
 
                   <h3 className="text-lg font-bold mb-2">{credential.title}</h3>
-                  <p className="text-sm text-gray-600 mb-1">{credential.issuer}</p>
+                  <p className="text-sm text-black mb-1">{credential.issuer}</p>
                   <p className="text-xs text-gray-500 mb-4">Issued: {credential.issueDate}</p>
 
                   {credential.metadata.skills && (
                     <div className="mb-4">
-                      <p className="text-xs font-semibold text-gray-700 mb-2">Skills:</p>
+                      <p className="text-xs font-semibold text-black mb-2">Skills:</p>
                       <div className="flex flex-wrap gap-1">
                         {credential.metadata.skills.slice(0, 3).map((skill) => (
                           <span key={skill} className="px-2 py-0.5 bg-orange-100 text-orange-700 text-xs rounded">
@@ -306,8 +306,8 @@ export function BlockchainCredentialVerification() {
                   )}
 
                   <div className="mb-4 p-2 bg-gray-50 rounded">
-                    <p className="text-xs font-semibold text-gray-700 mb-1">Blockchain Hash:</p>
-                    <p className="text-xs text-gray-600 font-mono truncate">
+                    <p className="text-xs font-semibold text-black mb-1">Blockchain Hash:</p>
+                    <p className="text-xs text-black font-mono truncate">
                       {credential.blockchainHash}
                     </p>
                   </div>

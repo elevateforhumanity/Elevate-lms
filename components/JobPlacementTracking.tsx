@@ -110,25 +110,25 @@ export function JobPlacementTracking() {
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               <Card className="p-6">
-                <h3 className="text-sm text-gray-600 mb-2">Total Placements</h3>
+                <h3 className="text-sm text-black mb-2">Total Placements</h3>
                 <p className="text-3xl font-bold text-brand-orange-600">{metrics.totalPlacements}</p>
                 <p className="text-sm text-green-600">↑ 12% from last quarter</p>
               </Card>
 
               <Card className="p-6">
-                <h3 className="text-sm text-gray-600 mb-2">Placement Rate</h3>
+                <h3 className="text-sm text-black mb-2">Placement Rate</h3>
                 <p className="text-3xl font-bold text-green-600">{metrics.placementRate}%</p>
-                <p className="text-sm text-gray-600">Within 90 days</p>
+                <p className="text-sm text-black">Within 90 days</p>
               </Card>
 
               <Card className="p-6">
-                <h3 className="text-sm text-gray-600 mb-2">Avg Starting Salary</h3>
+                <h3 className="text-sm text-black mb-2">Avg Starting Salary</h3>
                 <p className="text-3xl font-bold text-orange-500">${(metrics.avgSalary / 1000).toFixed(0)}k</p>
                 <p className="text-sm text-green-600">↑ 8% from last year</p>
               </Card>
 
               <Card className="p-6">
-                <h3 className="text-sm text-gray-600 mb-2">Avg Time to Placement</h3>
+                <h3 className="text-sm text-black mb-2">Avg Time to Placement</h3>
                 <p className="text-3xl font-bold text-blue-600">{metrics.avgTimeToPlacement} days</p>
                 <p className="text-sm text-green-600">↓ 15% improvement</p>
               </Card>
@@ -147,7 +147,7 @@ export function JobPlacementTracking() {
                     <div key={item.program}>
                       <div className="flex justify-between text-sm mb-1">
                         <span className="font-medium">{item.program}</span>
-                        <span className="text-gray-600">{item.count} placements</span>
+                        <span className="text-black">{item.count} placements</span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <div
@@ -188,19 +188,19 @@ export function JobPlacementTracking() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="p-4 bg-white rounded">
                   <p className="text-3xl mb-2">🎉</p>
-                  <p className="text-sm text-gray-700">
+                  <p className="text-sm text-black">
                     <strong>Jordan Martinez</strong> secured a $75k position at Tech Solutions Inc within 30 days of graduation
                   </p>
                 </div>
                 <div className="p-4 bg-white rounded">
                   <p className="text-3xl mb-2">🏆</p>
-                  <p className="text-sm text-gray-700">
+                  <p className="text-sm text-black">
                     <strong>Taylor Anderson</strong> received multiple offers and chose Healthcare Plus for career growth
                   </p>
                 </div>
                 <div className="p-4 bg-white rounded">
                   <p className="text-3xl mb-2">⭐</p>
-                  <p className="text-sm text-gray-700">
+                  <p className="text-sm text-black">
                     <strong>Alex Kim</strong> matched with Climate Control Systems with a 95% compatibility score
                   </p>
                 </div>
@@ -243,31 +243,31 @@ export function JobPlacementTracking() {
                           {placement.status.replace('-', ' ').toUpperCase()}
                         </span>
                       </div>
-                      <p className="text-gray-600 mb-1">{placement.program}</p>
+                      <p className="text-black mb-1">{placement.program}</p>
                       <div className="grid grid-cols-2 gap-4 mt-3 text-sm">
                         <div>
-                          <p className="text-gray-600">Employer:</p>
+                          <p className="text-black">Employer:</p>
                           <p className="font-semibold">{placement.employer}</p>
                         </div>
                         <div>
-                          <p className="text-gray-600">Position:</p>
+                          <p className="text-black">Position:</p>
                           <p className="font-semibold">{placement.position}</p>
                         </div>
                         <div>
-                          <p className="text-gray-600">Salary:</p>
+                          <p className="text-black">Salary:</p>
                           <p className="font-semibold text-green-600">
                             ${placement.salary.toLocaleString()}/year
                           </p>
                         </div>
                         <div>
-                          <p className="text-gray-600">Start Date:</p>
+                          <p className="text-black">Start Date:</p>
                           <p className="font-semibold">{placement.startDate}</p>
                         </div>
                       </div>
                     </div>
                     <div className="text-right ml-6">
                       <div className="text-3xl font-bold text-brand-orange-600">{placement.matchScore}%</div>
-                      <p className="text-sm text-gray-600">Match Score</p>
+                      <p className="text-sm text-black">Match Score</p>
                     </div>
                   </div>
                 </Card>
@@ -291,7 +291,7 @@ export function JobPlacementTracking() {
                   <p className={`text-4xl font-bold mb-2 text-${stage.color}-600`}>
                     {stage.count}
                   </p>
-                  <p className="text-sm text-gray-600">students</p>
+                  <p className="text-sm text-black">students</p>
                   <Button size="sm" variant="secondary" className="w-full mt-4">
                     View Details
                   </Button>

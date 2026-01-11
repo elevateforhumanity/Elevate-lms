@@ -193,10 +193,10 @@ export default function FundingPage() {
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
               Explore Funding Resources
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               Learn about federal funding programs, eligibility requirements,
               and partnership opportunities
             </p>
@@ -214,7 +214,7 @@ export default function FundingPage() {
                 >
                   {/* Category Badge */}
                   <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-3 border-b border-gray-200">
-                    <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">
+                    <span className="text-xs font-bold text-black uppercase tracking-wider">
                       {resource.category}
                     </span>
                   </div>
@@ -229,12 +229,12 @@ export default function FundingPage() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
+                    <h3 className="text-xl font-bold text-black mb-3 group-hover:text-green-600 transition-colors">
                       {resource.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-gray-600 mb-4 leading-relaxed">
+                    <p className="text-black mb-4 leading-relaxed">
                       {resource.description}
                     </p>
 
@@ -258,7 +258,7 @@ export default function FundingPage() {
               <span>Apply for Free Training</span>
               <ArrowRight className="w-6 h-6" />
             </Link>
-            <p className="text-gray-600 mt-4">
+            <p className="text-black mt-4">
               Takes 5 minutes • No commitment required
             </p>
           </div>
@@ -268,10 +268,10 @@ export default function FundingPage() {
       {/* Footer */}
       <section className="py-12 px-4 bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-gray-600 mb-2">
+          <p className="text-black mb-2">
             Questions about funding eligibility?
           </p>
-          <p className="text-sm text-gray-700">
+          <p className="text-sm text-black">
             Contact us at{' '}
             <a
               href="mailto:elevate4humanityedu@gmail.com"

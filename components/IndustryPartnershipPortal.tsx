@@ -109,15 +109,15 @@ export default function IndustryPartnershipPortal() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="p-6">
               <h3 className="text-2xl font-bold text-brand-orange-600">{partners.length}</h3>
-              <p className="text-gray-600">Active Partners</p>
+              <p className="text-black">Active Partners</p>
             </Card>
             <Card className="p-6">
               <h3 className="text-2xl font-bold text-orange-500">{collaborations.length}</h3>
-              <p className="text-gray-600">Active Collaborations</p>
+              <p className="text-black">Active Collaborations</p>
             </Card>
             <Card className="p-6">
               <h3 className="text-2xl font-bold text-brand-orange-600">65</h3>
-              <p className="text-gray-600">Total Participants</p>
+              <p className="text-black">Total Participants</p>
             </Card>
           </div>
         )}
@@ -130,11 +130,11 @@ export default function IndustryPartnershipPortal() {
                   <div className="text-4xl text-2xl md:text-3xl lg:text-4xl">{partner.logo}</div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold">{partner.name}</h3>
-                    <p className="text-gray-600">{partner.industry}</p>
+                    <p className="text-black">{partner.industry}</p>
                     <p className="text-sm text-gray-500 mt-2">{partner.contactPerson} • {partner.email}</p>
                   </div>
                   <span className={`px-3 py-1 rounded text-sm ${
-                    partner.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
+                    partner.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-black'
                   }`}>
                     {partner.status}
                   </span>

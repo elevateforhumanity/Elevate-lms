@@ -24,33 +24,33 @@ export default function SecurityPage() {
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex items-center gap-3 mb-8">
           <Shield className="w-10 h-10 text-brand-blue-600" />
-          <h1 className="text-4xl font-bold text-gray-900">
+          <h1 className="text-4xl font-bold text-black">
             Security & Data Protection
           </h1>
         </div>
 
         <div className="bg-blue-50 border-l-4 border-brand-blue-600 p-6 mb-8">
-          <p className="text-xl font-semibold text-gray-900">
+          <p className="text-xl font-semibold text-black">
             Your information is protected. Your trust matters.
           </p>
         </div>
 
         <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+          <p className="text-lg text-black leading-relaxed mb-6">
             Elevate for Humanity takes data security and privacy seriously. Our
             platform is designed to protect personal, educational, and
             workforce-related information using industry-standard safeguards and
             access controls.
           </p>
 
-          <p className="text-lg text-gray-700 leading-relaxed">
+          <p className="text-lg text-black leading-relaxed">
             We collect only the information necessary to support program
             coordination, advising, reporting, and compliance.
           </p>
         </div>
 
         <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-black mb-6">
             Security Measures Include
           </h2>
 
@@ -58,10 +58,10 @@ export default function SecurityPage() {
             <div className="flex items-start gap-3">
               <Lock className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-black">
                   Role-based access control (RBAC)
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Users only see data they're authorized to access
                 </p>
               </div>
@@ -70,10 +70,10 @@ export default function SecurityPage() {
             <div className="flex items-start gap-3">
               <Shield className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-black">
                   Secure authentication and authorization
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Multi-factor authentication and session management
                 </p>
               </div>
@@ -82,10 +82,10 @@ export default function SecurityPage() {
             <div className="flex items-start gap-3">
               <Lock className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-black">
                   Encrypted data in transit and at rest
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   TLS 1.3 for transmission, database encryption for storage
                 </p>
               </div>
@@ -94,10 +94,10 @@ export default function SecurityPage() {
             <div className="flex items-start gap-3">
               <Eye className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-black">
                   Limited data access based on user role and organization
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Multi-tenant isolation prevents cross-organization access
                 </p>
               </div>
@@ -106,10 +106,10 @@ export default function SecurityPage() {
             <div className="flex items-start gap-3">
               <FileCheck className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-black">
                   Audit logs for system activity
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   All actions tracked with user attribution and timestamps
                 </p>
               </div>
@@ -118,10 +118,10 @@ export default function SecurityPage() {
             <div className="flex items-start gap-3">
               <Shield className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-black">
                   Secure document handling and storage
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Encrypted uploads with access controls
                 </p>
               </div>
@@ -130,10 +130,10 @@ export default function SecurityPage() {
             <div className="flex items-start gap-3">
               <Eye className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-black">
                   Regular system monitoring
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Continuous monitoring for security threats and anomalies
                 </p>
               </div>
@@ -142,26 +142,26 @@ export default function SecurityPage() {
         </div>
 
         <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-black mb-6">
             What We Do Not Do
           </h2>
 
           <ul className="space-y-3">
             <li className="flex items-start gap-3">
               <div className="w-2 h-2 bg-brand-orange-600 rounded-full mt-2 flex-shrink-0" />
-              <span className="text-gray-700">
+              <span className="text-black">
                 We do not sell personal data
               </span>
             </li>
             <li className="flex items-start gap-3">
               <div className="w-2 h-2 bg-brand-orange-600 rounded-full mt-2 flex-shrink-0" />
-              <span className="text-gray-700">
+              <span className="text-black">
                 We do not allow unrestricted access to sensitive records
               </span>
             </li>
             <li className="flex items-start gap-3">
               <div className="w-2 h-2 bg-brand-orange-600 rounded-full mt-2 flex-shrink-0" />
-              <span className="text-gray-700">
+              <span className="text-black">
                 We do not expose internal dashboards publicly
               </span>
             </li>
@@ -172,10 +172,10 @@ export default function SecurityPage() {
           <div className="flex items-start gap-4">
             <AlertTriangle className="w-8 h-8 text-brand-orange-600 flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Reporting a Security Concern
               </h3>
-              <p className="text-gray-700 mb-3">
+              <p className="text-black mb-3">
                 If you believe there is a security issue or vulnerability,
                 please contact:
               </p>
@@ -193,62 +193,62 @@ export default function SecurityPage() {
         </div>
 
         <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl font-bold text-black mb-4">
             Authorization & Access Control
           </h2>
 
-          <p className="text-gray-700 mb-4">
+          <p className="text-black mb-4">
             Elevate for Humanity operates as a multi-tenant workforce platform
             with strict authorization boundaries.
           </p>
 
-          <h3 className="text-lg font-bold text-gray-900 mb-3">
+          <h3 className="text-lg font-bold text-black mb-3">
             Access Is Based On:
           </h3>
           <ul className="space-y-2 mb-6">
             <li className="flex items-start gap-3">
               <div className="w-2 h-2 bg-brand-blue-600 rounded-full mt-2 flex-shrink-0" />
-              <span className="text-gray-700">User role</span>
+              <span className="text-black">User role</span>
             </li>
             <li className="flex items-start gap-3">
               <div className="w-2 h-2 bg-brand-blue-600 rounded-full mt-2 flex-shrink-0" />
-              <span className="text-gray-700">Organizational affiliation</span>
+              <span className="text-black">Organizational affiliation</span>
             </li>
             <li className="flex items-start gap-3">
               <div className="w-2 h-2 bg-brand-blue-600 rounded-full mt-2 flex-shrink-0" />
-              <span className="text-gray-700">Program association</span>
+              <span className="text-black">Program association</span>
             </li>
             <li className="flex items-start gap-3">
               <div className="w-2 h-2 bg-brand-blue-600 rounded-full mt-2 flex-shrink-0" />
-              <span className="text-gray-700">Jurisdictional permissions</span>
+              <span className="text-black">Jurisdictional permissions</span>
             </li>
           </ul>
 
-          <h3 className="text-lg font-bold text-gray-900 mb-3">
+          <h3 className="text-lg font-bold text-black mb-3">
             Authorization Principles:
           </h3>
           <ul className="space-y-2">
             <li className="flex items-start gap-3">
               <div className="w-2 h-2 bg-brand-green-600 rounded-full mt-2 flex-shrink-0" />
-              <span className="text-gray-700">
+              <span className="text-black">
                 Users only see what they are authorized to see
               </span>
             </li>
             <li className="flex items-start gap-3">
               <div className="w-2 h-2 bg-brand-green-600 rounded-full mt-2 flex-shrink-0" />
-              <span className="text-gray-700">
+              <span className="text-black">
                 No cross-organization data visibility
               </span>
             </li>
             <li className="flex items-start gap-3">
               <div className="w-2 h-2 bg-brand-green-600 rounded-full mt-2 flex-shrink-0" />
-              <span className="text-gray-700">
+              <span className="text-black">
                 No role escalation without approval
               </span>
             </li>
             <li className="flex items-start gap-3">
               <div className="w-2 h-2 bg-brand-green-600 rounded-full mt-2 flex-shrink-0" />
-              <span className="text-gray-700">
+              <span className="text-black">
                 Administrative actions are logged
               </span>
             </li>
@@ -260,10 +260,10 @@ export default function SecurityPage() {
             href="/privacy"
             className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border-2 border-gray-200 hover:border-blue-500"
           >
-            <h3 className="text-lg font-bold text-gray-900 mb-2">
+            <h3 className="text-lg font-bold text-black mb-2">
               Privacy Policy
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Learn how we handle your personal information
             </p>
           </Link>
@@ -272,10 +272,10 @@ export default function SecurityPage() {
             href="/terms"
             className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow border-2 border-gray-200 hover:border-blue-500"
           >
-            <h3 className="text-lg font-bold text-gray-900 mb-2">
+            <h3 className="text-lg font-bold text-black mb-2">
               Terms of Service
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Review our terms and conditions
             </p>
           </Link>

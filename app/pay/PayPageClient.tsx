@@ -95,12 +95,12 @@ export default function PayPageClient() {
     <div className="space-y-8">
       {/* High-level summary + amount */}
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-        <h2 className="text-xl font-semibold text-slate-900 mb-2">
+        <h2 className="text-xl font-semibold text-black mb-2">
           Barber Apprenticeship Tuition
         </h2>
-        <p className="text-slate-600 mb-2">
+        <p className="text-black mb-2">
           Total program tuition:{' '}
-          <span className="font-semibold text-slate-900">
+          <span className="font-semibold text-black">
             ${TUITION_AMOUNT.toLocaleString()}
           </span>
           . Most students qualify for WIOA / WRG / JRI funding, but if you are
@@ -123,10 +123,10 @@ export default function PayPageClient() {
 
       {/* Affirm "as low as" widget */}
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-2">
+        <h3 className="text-lg font-semibold text-black mb-2">
           Option 1: Monthly Payments with Affirm
         </h3>
-        <p className="text-slate-600 mb-4">
+        <p className="text-black mb-4">
           See your real monthly payment options with Affirm. Checking your
           eligibility won&apos;t affect your credit score.
         </p>
@@ -152,10 +152,10 @@ export default function PayPageClient() {
 
       {/* Stripe Buy Button */}
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-2">
+        <h3 className="text-lg font-semibold text-black mb-2">
           Option 2: Pay in Full with Card (Stripe)
         </h3>
-        <p className="text-slate-600 mb-4">
+        <p className="text-black mb-4">
           Pay your tuition in full using a debit or credit card. Your payment is
           processed securely by Stripe.
         </p>

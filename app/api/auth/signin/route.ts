@@ -1,23 +1,24 @@
 /**
  * Auth API - Sign In
  * Authenticates user with email and password
+ * Protected with rate limiting and input validation
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { withErrorHandling, APIErrors } from '@/lib/api';
 import { createClient } from '@/lib/supabase/server';
+import { withRateLimit } from '@/lib/api/with-rate-limit';
+import { authRateLimit } from '@/lib/rate-limit';
+import { signInSchema } from '@/lib/api/validation-schemas';
 
-export const POST = withErrorHandling(async (request: NextRequest) => {
-  const supabase = await createClient();
-  
-  // Parse request body
-  const body = await request.json();
-  const { email, password } = body;
-
-  // Validation
-  if (!email || !password) {
-    throw APIErrors.validation('credentials', 'Email and password are required');
-  }
+export const POST = withRateLimit(
+  withErrorHandling(async (request: NextRequest) => {
+    const supabase = await createClient();
+    
+    // Parse and validate request body
+    const body = await request.json();
+    const validatedData = signInSchema.parse(body);
+    const { email, password } = validatedData;
 
   // Sign in
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -52,7 +53,9 @@ export const POST = withErrorHandling(async (request: NextRequest) => {
       expiresAt: data.session.expires_at,
     },
   });
-});
+  }),
+  { limiter: authRateLimit, skipOnMissing: true }
+);
 
 export const runtime = 'edge';
 export const maxDuration = 60;

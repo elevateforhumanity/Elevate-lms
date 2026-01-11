@@ -172,7 +172,7 @@ export default function AnalyticsPage() {
 
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-blue-600 mx-auto mb-4" />
-          <p className="text-gray-600">Loading analytics...</p>
+          <p className="text-black">Loading analytics...</p>
 
           {/* CTA Section */}
           <section className="py-16    text-white">
@@ -211,8 +211,8 @@ export default function AnalyticsPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <AlertCircle className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-          <p className="text-gray-600">No analytics data available</p>
+          <AlertCircle className="w-12 h-12 text-black mx-auto mb-4" />
+          <p className="text-black">No analytics data available</p>
         </div>
       </div>
     );
@@ -225,10 +225,10 @@ export default function AnalyticsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-black">
                 Email Analytics
               </h1>
-              <p className="text-gray-600 mt-1">
+              <p className="text-black mt-1">
                 Track campaign performance and engagement
               </p>
             </div>
@@ -315,39 +315,39 @@ export default function AnalyticsPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-gray-900">Total Opens</h3>
+              <h3 className="font-semibold text-black">Total Opens</h3>
               <Eye className="w-5 h-5 text-brand-green-600" />
             </div>
-            <div className="text-3xl font-bold text-gray-900 mb-2">
+            <div className="text-3xl font-bold text-black mb-2">
               {data.overview.totalOpens.toLocaleString()}
             </div>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-black">
               {data.overview.openRate.toFixed(1)}% of emails sent
             </div>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-gray-900">Total Clicks</h3>
+              <h3 className="font-semibold text-black">Total Clicks</h3>
               <MousePointerClick className="w-5 h-5 text-purple-600" />
             </div>
-            <div className="text-3xl font-bold text-gray-900 mb-2">
+            <div className="text-3xl font-bold text-black mb-2">
               {data.overview.totalClicks.toLocaleString()}
             </div>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-black">
               {data.overview.clickRate.toFixed(1)}% of emails sent
             </div>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold text-gray-900">Total Bounces</h3>
+              <h3 className="font-semibold text-black">Total Bounces</h3>
               <AlertCircle className="w-5 h-5 text-brand-orange-600" />
             </div>
-            <div className="text-3xl font-bold text-gray-900 mb-2">
+            <div className="text-3xl font-bold text-black mb-2">
               {data.overview.totalBounces.toLocaleString()}
             </div>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-black">
               {data.overview.bounceRate.toFixed(1)}% of emails sent
             </div>
           </div>
@@ -355,13 +355,13 @@ export default function AnalyticsPage() {
 
         {/* Timeline Chart */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h3 className="font-semibold text-gray-900 mb-6">
+          <h3 className="font-semibold text-black mb-6">
             Performance Timeline
           </h3>
           <div className="space-y-4">
             {data.timeline.map((day, index) => (
               <div key={index} className="flex items-center space-x-4">
-                <div className="w-24 text-sm text-gray-600">
+                <div className="w-24 text-sm text-black">
                   {new Date(day.date).toLocaleDateString('en-US', {
                     month: 'short',
                     day: 'numeric',
@@ -377,7 +377,7 @@ export default function AnalyticsPage() {
                         }}
                       />
                     </div>
-                    <span className="text-sm text-gray-600 w-16 text-right">
+                    <span className="text-sm text-black w-16 text-right">
                       {day.sent} sent
                     </span>
                   </div>
@@ -390,7 +390,7 @@ export default function AnalyticsPage() {
                         }}
                       />
                     </div>
-                    <span className="text-sm text-gray-600 w-16 text-right">
+                    <span className="text-sm text-black w-16 text-right">
                       {day.opens} opens
                     </span>
                   </div>
@@ -403,7 +403,7 @@ export default function AnalyticsPage() {
                         }}
                       />
                     </div>
-                    <span className="text-sm text-gray-600 w-16 text-right">
+                    <span className="text-sm text-black w-16 text-right">
                       {day.clicks} clicks
                     </span>
                   </div>
@@ -416,7 +416,7 @@ export default function AnalyticsPage() {
         {/* Campaign Performance Table */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h3 className="font-semibold text-gray-900">
+            <h3 className="font-semibold text-black">
               Campaign Performance
             </h3>
           </div>
@@ -424,25 +424,25 @@ export default function AnalyticsPage() {
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                     Campaign
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                     Sent
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                     Opens
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                     Clicks
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                     Open Rate
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                     Click Rate
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                     Date
                   </th>
                 </tr>
@@ -451,17 +451,17 @@ export default function AnalyticsPage() {
                 {data.campaigns.map((campaign) => (
                   <tr key={campaign.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-black">
                         {campaign.name}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {campaign.sent.toLocaleString()}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {campaign.opens.toLocaleString()}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {campaign.clicks.toLocaleString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -490,7 +490,7 @@ export default function AnalyticsPage() {
                         {campaign.clickRate.toFixed(1)}%
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {new Date(campaign.sentAt).toLocaleDateString()}
                     </td>
                   </tr>
@@ -538,8 +538,8 @@ function StatCard({ title, value, icon: Icon, color, trend }: StatCardProps) {
           </div>
         )}
       </div>
-      <div className="text-2xl font-bold text-gray-900 mb-1">{value}</div>
-      <div className="text-sm text-gray-600">{title}</div>
+      <div className="text-2xl font-bold text-black mb-1">{value}</div>
+      <div className="text-sm text-black">{title}</div>
     </div>
   );
 }

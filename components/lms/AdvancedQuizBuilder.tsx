@@ -171,7 +171,7 @@ export default function AdvancedQuizBuilder() {
               onChange={(e) =>
                 setQuiz({ ...quiz, description: e.target.value })
               }
-              className="text-sm text-gray-600 border-none focus:outline-none w-full mt-1"
+              className="text-sm text-black border-none focus:outline-none w-full mt-1"
               Content="Quiz description..."
             />
           </div>
@@ -196,7 +196,7 @@ export default function AdvancedQuizBuilder() {
         {/* Quiz Settings */}
         <div className="mt-4 flex gap-6 text-sm">
           <div className="flex items-center gap-2">
-            <label className="text-gray-600">Time Limit:</label>
+            <label className="text-black">Time Limit:</label>
             <input
               type="number"
               value={quiz.timeLimit || ''}
@@ -209,10 +209,10 @@ export default function AdvancedQuizBuilder() {
               className="w-20 px-2 py-1 border rounded"
               Content="None"
             />
-            <span className="text-gray-600">minutes</span>
+            <span className="text-black">minutes</span>
           </div>
           <div className="flex items-center gap-2">
-            <label className="text-gray-600">Passing Score:</label>
+            <label className="text-black">Passing Score:</label>
             <input
               type="number"
               value={quiz.passingScore}
@@ -223,10 +223,10 @@ export default function AdvancedQuizBuilder() {
               min="0"
               max="100"
             />
-            <span className="text-gray-600">%</span>
+            <span className="text-black">%</span>
           </div>
           <div className="flex items-center gap-2">
-            <label className="text-gray-600">Total Points:</label>
+            <label className="text-black">Total Points:</label>
             <span className="font-semibold">{totalPoints}</span>
           </div>
         </div>

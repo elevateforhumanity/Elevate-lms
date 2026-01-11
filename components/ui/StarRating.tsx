@@ -8,7 +8,7 @@ export function StarRating({ rating, count }: StarRatingProps) {
   const rounded = Math.round(rating * 2) / 2;
 
   return (
-    <div className="flex items-center gap-1 text-[11px] text-slate-600">
+    <div className="flex items-center gap-1 text-[11px] text-black">
       <div className="flex items-center">
         {[1, 2, 3, 4, 5].map((star) => {
           const filled = star <= rounded;

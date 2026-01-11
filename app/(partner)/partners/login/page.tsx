@@ -33,7 +33,7 @@ export default function PartnerLoginPage() {
         className="w-full max-w-md border rounded-2xl p-6"
       >
         <h1 className="text-xl font-semibold">Partner Portal Login</h1>
-        <p className="text-sm text-gray-600 mt-1">
+        <p className="text-sm text-black mt-1">
           Site coordinators and partner staff sign in here.
         </p>
 

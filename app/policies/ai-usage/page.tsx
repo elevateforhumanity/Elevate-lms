@@ -9,7 +9,7 @@ export default function AIUsagePage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>AI Usage Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>AI Tutor</h2>
       <p>Our AI tutor provides educational support. Use responsibly and verify information.</p>
       <h2>Acceptable Use</h2>

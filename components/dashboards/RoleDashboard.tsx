@@ -110,7 +110,7 @@ export default function RoleDashboard({ role, userName }: RoleDashboardProps) {
             <div className="grid md:grid-cols-4 gap-6 mb-12">
               {config.stats.map((stat, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-sm border p-6">
-                  <div className="text-sm text-gray-600 mb-1">{stat.label}</div>
+                  <div className="text-sm text-black mb-1">{stat.label}</div>
                   <div className="text-3xl font-bold text-blue-600">{stat.value}</div>
                 </div>
               ))}
@@ -128,7 +128,7 @@ export default function RoleDashboard({ role, userName }: RoleDashboardProps) {
                 </Link>
                 <Link
                   href={config.secondaryAction.href}
-                  className="px-8 py-3 bg-gray-100 text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition border-2 border-gray-300"
+                  className="px-8 py-3 bg-gray-100 text-black font-semibold rounded-lg hover:bg-gray-200 transition border-2 border-gray-300"
                 >
                   {config.secondaryAction.label}
                 </Link>

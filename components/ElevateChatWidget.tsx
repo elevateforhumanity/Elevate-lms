@@ -65,13 +65,13 @@ export function ElevateChatWidget() {
               </button>
             </div>
             <div className="p-4">
-              <p className="text-sm text-slate-700 mb-3 font-semibold">
+              <p className="text-sm text-black mb-3 font-semibold">
                 👋 Welcome to Elevate For Humanity!
               </p>
-              <p className="text-sm text-slate-600 mb-3">
+              <p className="text-sm text-black mb-3">
                 I can help you with:
               </p>
-              <ul className="text-xs text-slate-600 space-y-2 mb-4">
+              <ul className="text-xs text-black space-y-2 mb-4">
                 <li className="flex items-start gap-2">
                   <span className="text-orange-500">✓</span>
                   <span>Finding 100% FREE training programs</span>

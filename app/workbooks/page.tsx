@@ -92,11 +92,11 @@ export default function WorkbooksPage() {
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex items-center gap-3 mb-2">
             <BookOpen className="w-10 h-10 text-brand-blue-600" />
-            <h1 className="text-4xl font-bold text-slate-900 text-2xl md:text-3xl lg:text-4xl">
+            <h1 className="text-4xl font-bold text-black text-2xl md:text-3xl lg:text-4xl">
               Program Workbooks
             </h1>
           </div>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-black">
             Download workbooks, study guides, and course materials for your
             program
           </p>
@@ -110,10 +110,10 @@ export default function WorkbooksPage() {
           <div className="flex items-start gap-4">
             <FileText className="w-6 h-6 text-brand-blue-600 flex-shrink-0 mt-1" />
             <div>
-              <h2 className="text-lg font-bold text-slate-900 mb-2">
+              <h2 className="text-lg font-bold text-black mb-2">
                 About These Materials
               </h2>
-              <p className="text-slate-700">
+              <p className="text-black">
                 All workbooks are provided free of charge to enrolled students.
                 Materials are updated regularly to reflect current industry
                 standards and certification requirements. For best results,
@@ -132,7 +132,7 @@ export default function WorkbooksPage() {
             >
               <div className="flex items-center gap-3 mb-6">
                 <GraduationCap className="w-8 h-8 text-brand-blue-600" />
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-2xl font-bold text-black">
                   {program.program}
                 </h2>
               </div>
@@ -145,10 +145,10 @@ export default function WorkbooksPage() {
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
-                        <h3 className="font-bold text-slate-900 mb-1">
+                        <h3 className="font-bold text-black mb-1">
                           {material.title}
                         </h3>
-                        <p className="text-sm text-slate-600">
+                        <p className="text-sm text-black">
                           {material.pages} pages • PDF Format
                         </p>
                       </div>
@@ -180,7 +180,7 @@ export default function WorkbooksPage() {
 
         {/* Additional Resources */}
         <div className="mt-12 bg-slate-100 rounded-xl p-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl font-bold text-black mb-4">
             Additional Resources
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -189,10 +189,10 @@ export default function WorkbooksPage() {
               className="block p-6 bg-white rounded-lg hover:shadow-md transition"
             >
               <FileText className="w-8 h-8 text-brand-blue-600 mb-3" />
-              <h3 className="font-bold text-slate-900 mb-2">
+              <h3 className="font-bold text-black mb-2">
                 Student Handbook
               </h3>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-black">
                 Policies, procedures, and student rights
               </p>
             </Link>
@@ -201,10 +201,10 @@ export default function WorkbooksPage() {
               className="block p-6 bg-white rounded-lg hover:shadow-md transition"
             >
               <BookOpen className="w-8 h-8 text-brand-green-600 mb-3" />
-              <h3 className="font-bold text-slate-900 mb-2">
+              <h3 className="font-bold text-black mb-2">
                 Course Materials
               </h3>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-black">
                 Access your enrolled course materials
               </p>
             </Link>
@@ -213,8 +213,8 @@ export default function WorkbooksPage() {
               className="block p-6 bg-white rounded-lg hover:shadow-md transition"
             >
               <Download className="w-8 h-8 text-purple-600 mb-3" />
-              <h3 className="font-bold text-slate-900 mb-2">Download Center</h3>
-              <p className="text-sm text-slate-600">
+              <h3 className="font-bold text-black mb-2">Download Center</h3>
+              <p className="text-sm text-black">
                 Forms, guides, and documents
               </p>
             </Link>
@@ -223,8 +223,8 @@ export default function WorkbooksPage() {
 
         {/* Help Section */}
         <div className="mt-8 bg-white rounded-xl shadow-sm p-8">
-          <h2 className="text-xl font-bold text-slate-900 mb-4">Need Help?</h2>
-          <p className="text-slate-700 mb-4">
+          <h2 className="text-xl font-bold text-black mb-4">Need Help?</h2>
+          <p className="text-black mb-4">
             If you have trouble downloading materials or need additional
             resources, contact student support:
           </p>

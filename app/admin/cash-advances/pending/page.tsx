@@ -43,10 +43,10 @@ export default async function PendingCashAdvancesPage() {
           >
             ← Back to Cash Advances
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Pending Cash Advances
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-black">
             Review and approve pending cash advance requests.
           </p>
         </div>
@@ -57,14 +57,14 @@ export default async function PendingCashAdvancesPage() {
             <div className="text-3xl font-bold text-brand-orange-600">
               {pendingAdvances?.length || 0}
             </div>
-            <div className="text-gray-600">Pending Requests</div>
+            <div className="text-black">Pending Requests</div>
           </div>
         </div>
 
         {/* Pending List */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-900">
+            <h2 className="text-lg font-semibold text-black">
               Pending Requests
             </h2>
           </div>
@@ -75,19 +75,19 @@ export default async function PendingCashAdvancesPage() {
                 <div key={advance.id} className="px-6 py-4 hover:bg-gray-50">
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="font-semibold text-gray-900">
+                      <h3 className="font-semibold text-black">
                         {advance.profiles?.full_name || 'Unknown'}
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-black">
                         {advance.profiles?.email}
                       </p>
-                      <p className="text-sm text-gray-700 mt-1">
+                      <p className="text-sm text-black mt-1">
                         Requested:{' '}
                         {new Date(advance.created_at).toLocaleDateString()}
                       </p>
                     </div>
                     <div className="text-right">
-                      <div className="text-lg font-bold text-gray-900">
+                      <div className="text-lg font-bold text-black">
                         ${advance.amount?.toFixed(2) || '0.00'}
                       </div>
                       <Link
@@ -102,7 +102,7 @@ export default async function PendingCashAdvancesPage() {
               ))}
             </div>
           ) : (
-            <div className="px-6 py-12 text-center text-gray-700">
+            <div className="px-6 py-12 text-center text-black">
               No pending cash advance requests
             </div>
           )}

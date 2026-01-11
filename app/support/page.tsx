@@ -118,10 +118,10 @@ export default async function SupportPage() {
       <section className="w-full py-12 md:py-16 lg:py-20 bg-white">
         <div className="mx-auto w-full max-w-7xl px-6">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4 md:mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-4 md:mb-6">
               Support Services We Provide
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-black max-w-3xl mx-auto">
               We remove barriers so you can focus on your training and career
               success
             </p>
@@ -138,10 +138,10 @@ export default async function SupportPage() {
                   <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-md">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-2xl font-bold text-black mb-4">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-black leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -155,10 +155,10 @@ export default async function SupportPage() {
       <section className="w-full py-12 md:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-gray-100">
         <div className="mx-auto w-full max-w-5xl px-6">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4 md:mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-4 md:mb-6">
               How to Access Support
             </h2>
-            <p className="text-base md:text-lg text-gray-600">
+            <p className="text-base md:text-lg text-black">
               Getting support is simple and confidential
             </p>
           </div>
@@ -170,10 +170,10 @@ export default async function SupportPage() {
                   1
                 </span>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-3">
                 Apply
               </h3>
-              <p className="text-sm md:text-base text-gray-600">
+              <p className="text-sm md:text-base text-black">
                 Complete your program application and indicate support needs
               </p>
             </div>
@@ -184,10 +184,10 @@ export default async function SupportPage() {
                   2
                 </span>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-3">
                 Meet Your Coordinator
               </h3>
-              <p className="text-sm md:text-base text-gray-600">
+              <p className="text-sm md:text-base text-black">
                 We'll assign you a support coordinator to assess your needs
               </p>
             </div>
@@ -198,10 +198,10 @@ export default async function SupportPage() {
                   3
                 </span>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+              <h3 className="text-xl md:text-2xl font-bold text-black mb-3">
                 Get Support
               </h3>
-              <p className="text-sm md:text-base text-gray-600">
+              <p className="text-sm md:text-base text-black">
                 Receive assistance throughout your training program
               </p>
             </div>

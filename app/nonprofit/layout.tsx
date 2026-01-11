@@ -20,7 +20,7 @@ export default function NonprofitLayout({
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo/Brand */}
-            <Link href="/nonprofit" className="text-xl font-bold text-gray-900">
+            <Link href="/nonprofit" className="text-xl font-bold text-black">
               Selfish Inc.(dba)Rise Forward Foundation
             </Link>
 
@@ -28,31 +28,31 @@ export default function NonprofitLayout({
             <div className="hidden lg:flex items-center space-x-6">
               <Link
                 href="/nonprofit"
-                className="text-gray-700 hover:text-purple-600"
+                className="text-black hover:text-purple-600"
               >
                 Home
               </Link>
               <Link
                 href="/nonprofit/workshops"
-                className="text-gray-700 hover:text-purple-600"
+                className="text-black hover:text-purple-600"
               >
                 Workshops
               </Link>
               <Link
                 href="/nonprofit/sign-up"
-                className="text-gray-700 hover:text-purple-600"
+                className="text-black hover:text-purple-600"
               >
                 Sign up for workshops
               </Link>
               <Link
                 href="/nonprofit/donations"
-                className="text-gray-700 hover:text-purple-600"
+                className="text-black hover:text-purple-600"
               >
                 Donations
               </Link>
               <Link
                 href="/rise-foundation/programs"
-                className="text-gray-700 hover:text-purple-600"
+                className="text-black hover:text-purple-600"
               >
                 Our Programs
               </Link>
@@ -76,31 +76,31 @@ export default function NonprofitLayout({
             <div className="lg:hidden py-4 space-y-2">
               <Link
                 href="/nonprofit"
-                className="block py-2 text-gray-700 hover:text-purple-600"
+                className="block py-2 text-black hover:text-purple-600"
               >
                 Home
               </Link>
               <Link
                 href="/nonprofit/workshops"
-                className="block py-2 text-gray-700 hover:text-purple-600"
+                className="block py-2 text-black hover:text-purple-600"
               >
                 Workshops
               </Link>
               <Link
                 href="/nonprofit/sign-up"
-                className="block py-2 text-gray-700 hover:text-purple-600"
+                className="block py-2 text-black hover:text-purple-600"
               >
                 Sign up for workshops
               </Link>
               <Link
                 href="/nonprofit/donations"
-                className="block py-2 text-gray-700 hover:text-purple-600"
+                className="block py-2 text-black hover:text-purple-600"
               >
                 Donations
               </Link>
               <Link
                 href="/rise-foundation/programs"
-                className="block py-2 text-gray-700 hover:text-purple-600"
+                className="block py-2 text-black hover:text-purple-600"
               >
                 Our Programs
               </Link>
@@ -114,7 +114,7 @@ export default function NonprofitLayout({
 
       {/* Footer */}
       <footer className="py-8 px-4 bg-gray-100 text-center">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-black">
           Do Not Sell My Personal Information
         </p>
       </footer>

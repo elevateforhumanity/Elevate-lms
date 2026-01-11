@@ -84,7 +84,7 @@ export function CourseCompletionTracking() {
               style={{ width: `${overallProgress}%` }}
             />
           </div>
-          <p className="text-sm text-gray-600 mt-2">
+          <p className="text-sm text-black mt-2">
             {milestones.filter(m => m.completed).length} of {milestones.length} milestones completed
           </p>
         </Card>
@@ -96,7 +96,7 @@ export function CourseCompletionTracking() {
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold flex-shrink-0 ${
                   milestone.completed ? 'bg-green-500 text-white' :
                   milestone.progress > 0 ? 'bg-blue-500 text-white' :
-                  'bg-gray-300 text-gray-600'
+                  'bg-gray-300 text-black'
                 }`}>
                   {milestone.completed ? '✓' : index + 1}
                 </div>
@@ -105,7 +105,7 @@ export function CourseCompletionTracking() {
                   <div className="flex justify-between items-start mb-2">
                     <div>
                       <h3 className="text-xl font-bold">{milestone.title}</h3>
-                      <p className="text-sm text-gray-600">{milestone.description}</p>
+                      <p className="text-sm text-black">{milestone.description}</p>
                       <p className="text-xs text-gray-500 mt-1">Due: {milestone.dueDate}</p>
                     </div>
                     <span className="text-2xl font-bold text-brand-orange-600">{milestone.progress}%</span>

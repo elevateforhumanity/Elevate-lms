@@ -49,7 +49,7 @@ export default function EmployerApplicationForm() {
       )}
 
       <div className="bg-white border border-slate-200 rounded-lg p-6">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
+        <h2 className="text-xl font-bold text-black mb-4">
           Company Information
         </h2>
 
@@ -57,7 +57,7 @@ export default function EmployerApplicationForm() {
           <div>
             <label
               htmlFor="companyName"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Company Name *
             </label>
@@ -74,7 +74,7 @@ export default function EmployerApplicationForm() {
             <div>
               <label
                 htmlFor="industry"
-                className="block text-sm font-medium text-slate-700 mb-2"
+                className="block text-sm font-medium text-black mb-2"
               >
                 Industry *
               </label>
@@ -98,7 +98,7 @@ export default function EmployerApplicationForm() {
             <div>
               <label
                 htmlFor="companySize"
-                className="block text-sm font-medium text-slate-700 mb-2"
+                className="block text-sm font-medium text-black mb-2"
               >
                 Company Size *
               </label>
@@ -121,7 +121,7 @@ export default function EmployerApplicationForm() {
           <div>
             <label
               htmlFor="website"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Website
             </label>
@@ -137,7 +137,7 @@ export default function EmployerApplicationForm() {
       </div>
 
       <div className="bg-white border border-slate-200 rounded-lg p-6">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
+        <h2 className="text-xl font-bold text-black mb-4">
           Contact Information
         </h2>
 
@@ -145,7 +145,7 @@ export default function EmployerApplicationForm() {
           <div>
             <label
               htmlFor="firstName"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               First Name *
             </label>
@@ -161,7 +161,7 @@ export default function EmployerApplicationForm() {
           <div>
             <label
               htmlFor="lastName"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Last Name *
             </label>
@@ -177,7 +177,7 @@ export default function EmployerApplicationForm() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Email *
             </label>
@@ -193,7 +193,7 @@ export default function EmployerApplicationForm() {
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Phone *
             </label>
@@ -209,13 +209,13 @@ export default function EmployerApplicationForm() {
       </div>
 
       <div className="bg-white border border-slate-200 rounded-lg p-6">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">Hiring Needs</h2>
+        <h2 className="text-xl font-bold text-black mb-4">Hiring Needs</h2>
 
         <div className="space-y-4">
           <div>
             <label
               htmlFor="hiringNeeds"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               What are your hiring needs?
             </label>
@@ -231,7 +231,7 @@ export default function EmployerApplicationForm() {
           <div>
             <label
               htmlFor="positionsAvailable"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Number of Positions Available
             </label>
@@ -257,7 +257,7 @@ export default function EmployerApplicationForm() {
         <button
           type="button"
           onClick={() => router.back()}
-          className="min-h-[48px] px-6 py-3 bg-white border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:border-slate-400 transition-colors"
+          className="min-h-[48px] px-6 py-3 bg-white border-2 border-slate-300 text-black font-semibold rounded-lg hover:border-slate-400 transition-colors"
         >
           Back
         </button>

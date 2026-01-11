@@ -93,7 +93,7 @@ export default function ProgramPageTemplate({
               </Link>
               <Link
                 href={heroCTA2Link}
-                className="px-8 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-slate-100 transition text-lg shadow-2xl border-2 border-white"
+                className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-slate-100 transition text-lg shadow-2xl border-2 border-white"
               >
                 {heroCTA2Text}
               </Link>
@@ -115,7 +115,7 @@ viewBox="0 0 24 24">
 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Program Duration</h3>
+              <h3 className="text-lg font-bold text-black mb-2">Program Duration</h3>
               <p className="text-2xl font-bold text-blue-600">{duration}</p>
             </div>
 
@@ -128,7 +128,7 @@ viewBox="0 0 24 24">
 d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Learning Format</h3>
+              <h3 className="text-lg font-bold text-black mb-2">Learning Format</h3>
               <p className="text-xl font-semibold text-green-600">{format}</p>
             </div>
 
@@ -141,8 +141,8 @@ viewBox="0 0 24 24">
 d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Career Opportunities</h3>
-              <p className="text-sm text-slate-600">{jobs.length}+ Job Titles</p>
+              <h3 className="text-lg font-bold text-black mb-2">Career Opportunities</h3>
+              <p className="text-sm text-black">{jobs.length}+ Job Titles</p>
             </div>
           </div>
         </div>
@@ -152,10 +152,10 @@ d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center text-slate-900 mb-4">
+            <h2 className="text-3xl font-bold text-center text-black mb-4">
               Jobs You Can Get
             </h2>
-            <p className="text-center text-slate-600 mb-12">
+            <p className="text-center text-black mb-12">
               Graduates are qualified for these in-demand positions
             </p>
             <div className="grid md:grid-cols-2 gap-4">
@@ -169,7 +169,7 @@ viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span className="font-semibold text-slate-900">{job}</span>
+                  <span className="font-semibold text-black">{job}</span>
                 </div>
               ))}
             </div>
@@ -180,7 +180,7 @@ d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       {/* Program Highlights */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-slate-900 mb-16 text-2xl md:text-3xl lg:text-4xl">
+          <h2 className="text-4xl font-bold text-center text-black mb-16 text-2xl md:text-3xl lg:text-4xl">
             Program Highlights
           </h2>
 
@@ -195,10 +195,10 @@ d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     <span className="text-3xl">{highlight.icon}</span>
                   </div>
                 )}
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                <h3 className="text-2xl font-bold text-black mb-4">
                   {highlight.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-black leading-relaxed">
                   {highlight.description}
                 </p>
               </div>
@@ -211,10 +211,10 @@ d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       <section className="py-20   ">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-center text-slate-900 mb-4 text-2xl md:text-3xl lg:text-4xl">
+            <h2 className="text-4xl font-bold text-center text-black mb-4 text-2xl md:text-3xl lg:text-4xl">
               How to Get Started
             </h2>
-            <p className="text-center text-xl text-slate-600 mb-12">
+            <p className="text-center text-xl text-black mb-12">
               Follow these simple steps to begin your training
             </p>
 
@@ -228,17 +228,17 @@ d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     {index + 1}
                   </div>
                   <div className="flex-1">
-                    <p className="text-lg text-slate-700 leading-relaxed">{step}</p>
+                    <p className="text-lg text-black leading-relaxed">{step}</p>
                   </div>
                 </div>
               ))}
             </div>
 
             <div className="mt-12 text-center bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Ready to Take the First Step?
               </h3>
-              <p className="text-slate-600 mb-6">
+              <p className="text-black mb-6">
                 Call us at <a href="tel:3173143757" className="text-orange-600 font-bold hover:underline">317-314-3757</a> or apply online to get started today.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
@@ -275,10 +275,10 @@ d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 />
               </div>
               <div>
-                <h2 className="text-4xl font-bold text-slate-900 mb-6 text-2xl md:text-3xl lg:text-4xl">
+                <h2 className="text-4xl font-bold text-black mb-6 text-2xl md:text-3xl lg:text-4xl">
                   {ctaTitle}
                 </h2>
-                <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+                <p className="text-xl text-black mb-8 leading-relaxed">
                   {ctaDescription}
                 </p>
                 <div className="flex flex-wrap gap-4">

@@ -68,9 +68,9 @@ export default function GrantScholarshipApplication() {
                 >
                   <h3 className="font-bold text-lg">{grant.name}</h3>
                   <p className="text-2xl font-bold text-brand-orange-600">${grant.amount.toLocaleString()}</p>
-                  <p className="text-sm text-gray-600">Deadline: {grant.deadline}</p>
+                  <p className="text-sm text-black">Deadline: {grant.deadline}</p>
                   <span className={`inline-block mt-2 px-2 py-1 rounded text-xs ${
-                    grant.status === 'open' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700'
+                    grant.status === 'open' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-black'
                   }`}>
                     {grant.status}
                   </span>

@@ -30,8 +30,8 @@ export function ProgressTracker({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-xl font-bold text-slate-900">Your Progress</h3>
-          <p className="text-sm text-slate-600">{programName}</p>
+          <h3 className="text-xl font-bold text-black">Your Progress</h3>
+          <p className="text-sm text-black">{programName}</p>
         </div>
         <div className="flex items-center gap-2 px-4 py-2 bg-brand-orange-50 rounded-full">
           <Trophy className="w-5 h-5 text-brand-orange-600" />
@@ -42,8 +42,8 @@ export function ProgressTracker({
       {/* Progress Bar */}
       <div>
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-slate-700">Overall Progress</span>
-          <span className="text-sm font-bold text-slate-900">
+          <span className="text-sm font-medium text-black">Overall Progress</span>
+          <span className="text-sm font-bold text-black">
             {currentPoints} / {totalPoints} points
           </span>
         </div>
@@ -57,7 +57,7 @@ export function ProgressTracker({
 
       {/* Milestones */}
       <div>
-        <h4 className="text-sm font-semibold text-slate-700 mb-3">Milestones</h4>
+        <h4 className="text-sm font-semibold text-black mb-3">Milestones</h4>
         <div className="space-y-3">
           {milestones.map((milestone) => (
             <div
@@ -72,7 +72,7 @@ export function ProgressTracker({
                 className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                   milestone.completed
                     ? 'bg-green-500 text-white'
-                    : 'bg-slate-300 text-slate-600'
+                    : 'bg-slate-300 text-black'
                 }`}
               >
                 {milestone.completed ? (
@@ -83,12 +83,12 @@ export function ProgressTracker({
               </div>
               <div className="flex-1">
                 <div className="flex items-center justify-between">
-                  <h5 className="font-semibold text-slate-900">{milestone.title}</h5>
+                  <h5 className="font-semibold text-black">{milestone.title}</h5>
                   <span className="text-xs font-bold text-brand-orange-600">
                     +{milestone.points} pts
                   </span>
                 </div>
-                <p className="text-sm text-slate-600 mt-1">{milestone.description}</p>
+                <p className="text-sm text-black mt-1">{milestone.description}</p>
               </div>
             </div>
           ))}
@@ -97,7 +97,7 @@ export function ProgressTracker({
 
       {/* Achievements */}
       <div className="pt-4 border-t">
-        <div className="flex items-center gap-2 text-sm text-slate-600">
+        <div className="flex items-center gap-2 text-sm text-black">
           <TrendingUp className="w-4 h-4 text-green-600" />
           <span>Keep going! Complete all milestones to earn your certification.</span>
         </div>
@@ -129,7 +129,7 @@ export function Leaderboard() {
     <div className="bg-white rounded-2xl border p-6">
       <div className="flex items-center gap-2 mb-4">
         <Star className="w-5 h-5 text-yellow-500" />
-        <h3 className="text-lg font-bold text-slate-900">Top Performers This Month</h3>
+        <h3 className="text-lg font-bold text-black">Top Performers This Month</h3>
       </div>
 
       <div className="space-y-2">
@@ -144,16 +144,16 @@ export function Leaderboard() {
                   performer.rank === 1
                     ? 'bg-yellow-400 text-yellow-900'
                     : performer.rank === 2
-                    ? 'bg-slate-300 text-slate-700'
+                    ? 'bg-slate-300 text-black'
                     : performer.rank === 3
                     ? 'bg-amber-600 text-white'
-                    : 'bg-slate-200 text-slate-600'
+                    : 'bg-slate-200 text-black'
                 }`}
               >
                 {performer.rank}
               </div>
               <div>
-                <div className="font-semibold text-slate-900">{performer.initials}</div>
+                <div className="font-semibold text-black">{performer.initials}</div>
                 <div className="text-xs text-slate-500">Level {performer.level}</div>
               </div>
             </div>
@@ -187,7 +187,7 @@ export function AchievementBadges({ badges }: { badges: string[] }) {
 
   return (
     <div className="bg-white rounded-2xl border p-6">
-      <h3 className="text-lg font-bold text-slate-900 mb-4">Your Achievements</h3>
+      <h3 className="text-lg font-bold text-black mb-4">Your Achievements</h3>
       <div className="grid grid-cols-3 gap-4">
         {badges.map((badgeId) => {
           const badge = badgeIcons[badgeId];
@@ -198,7 +198,7 @@ export function AchievementBadges({ badges }: { badges: string[] }) {
               <div className={`w-16 h-16 rounded-full ${badge.color} flex items-center justify-center`}>
                 <Icon className="w-8 h-8 text-white" />
               </div>
-              <span className="text-xs text-center font-medium text-slate-700">{badge.label}</span>
+              <span className="text-xs text-center font-medium text-black">{badge.label}</span>
             </div>
           );
         })}

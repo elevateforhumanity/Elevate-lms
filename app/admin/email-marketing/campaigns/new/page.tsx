@@ -159,10 +159,10 @@ export default function NewCampaignPage() {
                 <ArrowLeft className="w-5 h-5" />
               </button>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="text-2xl font-bold text-black">
                   Create Campaign
                 </h1>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-black">
                   Design and send email campaigns
                 </p>
               </div>
@@ -225,7 +225,7 @@ export default function NewCampaignPage() {
                 className={`flex items-center space-x-2 py-4 border-b-2 transition-colors ${
                   step === s.key
                     ? 'border-brand-blue-600 text-brand-blue-600'
-                    : 'border-transparent text-gray-700 hover:text-gray-700'
+                    : 'border-transparent text-black hover:text-black'
                 }`}
               >
                 <s.icon className="w-4 h-4" />
@@ -247,7 +247,7 @@ export default function NewCampaignPage() {
                   <h2 className="text-xl font-semibold">Campaign Details</h2>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-black mb-2">
                       Campaign Name
                     </label>
                     <input
@@ -266,7 +266,7 @@ export default function NewCampaignPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-black mb-2">
                       Subject Line
                     </label>
                     <input
@@ -284,14 +284,14 @@ export default function NewCampaignPage() {
                       placeholder="e.g., Welcome to Elevate for Humanity!"
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
-                    <p className="mt-1 text-sm text-gray-700">
+                    <p className="mt-1 text-sm text-black">
                       Use variables like {'{{firstName}}'} for personalization
                     </p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-black mb-2">
                         From Name
                       </label>
                       <input
@@ -310,7 +310,7 @@ export default function NewCampaignPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-black mb-2">
                         From Email
                       </label>
                       <input
@@ -334,7 +334,7 @@ export default function NewCampaignPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-black mb-2">
                       Reply-To Email
                     </label>
                     <input
@@ -367,7 +367,7 @@ export default function NewCampaignPage() {
                   <h2 className="text-xl font-semibold">Email Content</h2>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-black mb-2">
                       Choose Template
                     </label>
                     <div className="grid grid-cols-2 gap-3">
@@ -383,10 +383,10 @@ export default function NewCampaignPage() {
                               : 'border-gray-200 hover:border-gray-300'
                           }`}
                         >
-                          <div className="font-medium text-gray-900">
+                          <div className="font-medium text-black">
                             {template.name}
                           </div>
-                          <div className="text-sm text-gray-700 mt-1">
+                          <div className="text-sm text-black mt-1">
                             {template.subject}
                           </div>
                         </button>
@@ -395,7 +395,7 @@ export default function NewCampaignPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-black mb-2">
                       Custom HTML (Optional)
                     </label>
                     <textarea
@@ -498,15 +498,15 @@ export default function NewCampaignPage() {
                             className="w-4 h-4 text-brand-blue-600"
                           />
                           <div>
-                            <div className="font-medium text-gray-900">
+                            <div className="font-medium text-black">
                               {list.label}
                             </div>
-                            <div className="text-sm text-gray-700">
+                            <div className="text-sm text-black">
                               {list.count} contacts
                             </div>
                           </div>
                         </div>
-                        <Users className="w-5 h-5 text-gray-600" />
+                        <Users className="w-5 h-5 text-black" />
                       </label>
                     ))}
                   </div>
@@ -549,10 +549,10 @@ export default function NewCampaignPage() {
                         className="w-4 h-4 text-brand-blue-600"
                       />
                       <div className="ml-3">
-                        <div className="font-medium text-gray-900">
+                        <div className="font-medium text-black">
                           Send Now
                         </div>
-                        <div className="text-sm text-gray-700">
+                        <div className="text-sm text-black">
                           Campaign will be sent immediately
                         </div>
                       </div>
@@ -579,13 +579,13 @@ export default function NewCampaignPage() {
                         className="w-4 h-4 text-brand-blue-600 mt-1"
                       />
                       <div className="ml-3 flex-1">
-                        <div className="font-medium text-gray-900 mb-3">
+                        <div className="font-medium text-black mb-3">
                           Schedule for Later
                         </div>
                         {campaign.scheduleType === 'scheduled' && (
                           <div className="grid grid-cols-2 gap-3">
                             <div>
-                              <label className="block text-sm text-gray-600 mb-1">
+                              <label className="block text-sm text-black mb-1">
                                 Date
                               </label>
                               <input
@@ -607,7 +607,7 @@ export default function NewCampaignPage() {
                               />
                             </div>
                             <div>
-                              <label className="block text-sm text-gray-600 mb-1">
+                              <label className="block text-sm text-black mb-1">
                                 Time
                               </label>
                               <input
@@ -665,26 +665,26 @@ export default function NewCampaignPage() {
           {/* Preview Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow p-6 sticky top-8">
-              <h3 className="font-semibold text-gray-900 mb-4">Preview</h3>
+              <h3 className="font-semibold text-black mb-4">Preview</h3>
 
               <div className="space-y-4">
                 <div>
-                  <div className="text-xs text-gray-700 mb-1">Subject</div>
-                  <div className="text-sm font-medium text-gray-900">
+                  <div className="text-xs text-black mb-1">Subject</div>
+                  <div className="text-sm font-medium text-black">
                     {campaign.subject || 'No subject'}
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-700 mb-1">From</div>
-                  <div className="text-sm text-gray-900">
+                  <div className="text-xs text-black mb-1">From</div>
+                  <div className="text-sm text-black">
                     {campaign.fromName} &lt;{campaign.fromEmail}&gt;
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-xs text-gray-700 mb-1">Recipients</div>
-                  <div className="text-sm text-gray-900">
+                  <div className="text-xs text-black mb-1">Recipients</div>
+                  <div className="text-sm text-black">
                     {campaign.recipientList
                       .split('-')
                       .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -695,17 +695,17 @@ export default function NewCampaignPage() {
                 {campaign.scheduleType === 'scheduled' &&
                   campaign.scheduleDate && (
                     <div>
-                      <div className="text-xs text-gray-700 mb-1">
+                      <div className="text-xs text-black mb-1">
                         Scheduled For
                       </div>
-                      <div className="text-sm text-gray-900">
+                      <div className="text-sm text-black">
                         {campaign.scheduleDate} at {campaign.scheduleTime}
                       </div>
                     </div>
                   )}
 
                 <div className="border-t pt-4">
-                  <div className="text-xs text-gray-700 mb-2">
+                  <div className="text-xs text-black mb-2">
                     Email Preview
                   </div>
                   <div className="border rounded-lg p-3 bg-gray-50 max-h-96 overflow-auto">
@@ -717,7 +717,7 @@ export default function NewCampaignPage() {
                         }}
                       />
                     ) : (
-                      <div className="text-xs text-gray-600 italic">
+                      <div className="text-xs text-black italic">
                         Select a template to preview
                       </div>
                     )}

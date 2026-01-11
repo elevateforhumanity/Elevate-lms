@@ -113,7 +113,7 @@ export function TestimonialCarousel() {
         </div>
 
         {/* Quote */}
-        <p className="text-xl md:text-2xl text-slate-700 mb-8 leading-relaxed relative z-10">
+        <p className="text-xl md:text-2xl text-black mb-8 leading-relaxed relative z-10">
           "{currentTestimonial.quote}"
         </p>
 
@@ -123,8 +123,8 @@ export function TestimonialCarousel() {
             {currentTestimonial.name.charAt(0)}
           </div>
           <div>
-            <div className="font-bold text-slate-900 text-lg">{currentTestimonial.name}</div>
-            <div className="text-slate-600">{currentTestimonial.title}</div>
+            <div className="font-bold text-black text-lg">{currentTestimonial.name}</div>
+            <div className="text-black">{currentTestimonial.title}</div>
           </div>
         </div>
       </div>
@@ -135,14 +135,14 @@ export function TestimonialCarousel() {
         className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-16 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-slate-50 transition-all button-scale"
         aria-label="Previous testimonial"
       >
-        <ChevronLeft className="w-6 h-6 text-slate-700" />
+        <ChevronLeft className="w-6 h-6 text-black" />
       </button>
       <button
         onClick={goToNext}
         className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-slate-50 transition-all button-scale"
         aria-label="Next testimonial"
       >
-        <ChevronRight className="w-6 h-6 text-slate-700" />
+        <ChevronRight className="w-6 h-6 text-black" />
       </button>
 
       {/* Dots indicator */}

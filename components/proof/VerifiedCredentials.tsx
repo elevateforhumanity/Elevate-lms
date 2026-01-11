@@ -44,10 +44,10 @@ export function VerifiedCredentials() {
             <Shield className="h-4 w-4" />
             <span className="text-sm font-semibold">Verified Credentials</span>
           </div>
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl font-bold text-black mb-4">
             Official Approvals & Registrations
           </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto">
+          <p className="text-black max-w-2xl mx-auto">
             Every credential listed below can be independently verified through
             government databases.
           </p>
@@ -64,12 +64,12 @@ export function VerifiedCredentials() {
                 <CheckCircle className="h-5 w-5 text-green-600" />
               </div>
 
-              <h3 className="font-bold text-slate-900 mb-2">{cred.agency}</h3>
+              <h3 className="font-bold text-black mb-2">{cred.agency}</h3>
 
-              <p className="text-sm text-slate-600 mb-4">{cred.credential}</p>
+              <p className="text-sm text-black mb-4">{cred.credential}</p>
 
               <div className="bg-slate-50 rounded p-3 mb-3">
-                <p className="text-sm font-mono font-semibold text-slate-900">
+                <p className="text-sm font-mono font-semibold text-black">
                   {cred.id}
                 </p>
               </div>

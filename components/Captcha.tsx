@@ -38,7 +38,7 @@ export default function Captcha({ onVerify, siteKey }: CaptchaProps) {
   // If no site key, show Content
   if (key === 'Content-key') {
     return (
-      <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-center text-sm text-slate-600">
+      <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-center text-sm text-black">
         <p>CAPTCHA Content (configure NEXT_PUBLIC_HCAPTCHA_SITE_KEY)</p>
         <button
           type="button"

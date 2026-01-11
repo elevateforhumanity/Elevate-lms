@@ -59,7 +59,7 @@ export function SponsorshipTooltip() {
           <li>Compliance and reporting</li>
           <li>Payment coordination</li>
         </ul>
-        <p className="text-xs text-slate-600 pt-2 border-t">
+        <p className="text-xs text-black pt-2 border-t">
           You retain your program name and curriculum. EFH handles the funding
           and compliance.
         </p>

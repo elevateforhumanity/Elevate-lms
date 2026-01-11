@@ -158,7 +158,7 @@ export default function NrfPage() {
               <h3 className="text-lg font-semibold mb-2">
                 Industry-Recognized
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Credentials from the National Retail Federation, trusted by
                 employers nationwide
               </p>
@@ -168,7 +168,7 @@ export default function NrfPage() {
                 <CheckCircle className="w-8 h-8 text-brand-green-600" />
               </div>
               <h3 className="text-lg font-semibold mb-2">100% Free</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Included with your program enrollment through WIOA or WRG
                 funding
               </p>
@@ -178,7 +178,7 @@ export default function NrfPage() {
                 <Clock className="w-8 h-8 text-brand-blue-600" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Self-Paced</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Complete training on your schedule with 24/7 online access
               </p>
             </div>
@@ -200,14 +200,14 @@ export default function NrfPage() {
                 className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
               >
                 <h4 className="text-xl font-semibold mb-2">{course.title}</h4>
-                <p className="text-gray-600 mb-4">{course.description}</p>
+                <p className="text-black mb-4">{course.description}</p>
 
                 <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-sm text-gray-700">
+                  <div className="flex items-center gap-2 text-sm text-black">
                     <Clock className="w-4 h-4" />
                     <span>Duration: {course.duration}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-700">
+                  <div className="flex items-center gap-2 text-sm text-black">
                     <Award className="w-4 h-4" />
                     <span>Certificate: {course.certificate}</span>
                   </div>
@@ -221,7 +221,7 @@ export default function NrfPage() {
                   <h5 className="font-semibold text-sm mb-2">
                     Topics Covered:
                   </h5>
-                  <ul className="text-sm text-gray-600 space-y-1">
+                  <ul className="text-sm text-black space-y-1">
                     {course.topics.map((topic, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <span className="text-purple-600 mt-1">•</span>
@@ -257,7 +257,7 @@ export default function NrfPage() {
               <h3 className="text-lg font-semibold mb-2">
                 Workforce Readiness
               </h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-black mb-4">
                 Includes NRF RISE Up credentials and job readiness training
               </p>
               <span className="text-purple-600 font-semibold">
@@ -272,7 +272,7 @@ export default function NrfPage() {
               <h3 className="text-lg font-semibold mb-2">
                 Business Startup & Marketing
               </h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-black mb-4">
                 Includes retail business fundamentals and customer service
               </p>
               <span className="text-purple-600 font-semibold">

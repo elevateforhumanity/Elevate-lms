@@ -41,7 +41,7 @@ export function SignatureInput({
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg border-2 transition-colors ${
             signatureType === 'TYPED'
               ? 'border-blue-600 bg-blue-50 text-blue-900'
-              : 'border-slate-300 bg-white text-slate-700 hover:border-slate-400'
+              : 'border-slate-300 bg-white text-black hover:border-slate-400'
           }`}
         >
           <Type className="w-5 h-5" />
@@ -53,7 +53,7 @@ export function SignatureInput({
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg border-2 transition-colors ${
             signatureType === 'DRAWN'
               ? 'border-blue-600 bg-blue-50 text-blue-900'
-              : 'border-slate-300 bg-white text-slate-700 hover:border-slate-400'
+              : 'border-slate-300 bg-white text-black hover:border-slate-400'
           }`}
         >
           <Pen className="w-5 h-5" />
@@ -64,7 +64,7 @@ export function SignatureInput({
       {/* Typed Signature Input */}
       {signatureType === 'TYPED' && (
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Type Your Full Name
           </label>
           <input
@@ -75,7 +75,7 @@ export function SignatureInput({
             className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-serif text-lg"
             style={{ fontFamily: 'Brush Script MT, cursive' }}
           />
-          <p className="text-sm text-slate-600 mt-2">
+          <p className="text-sm text-black mt-2">
             Must match: <strong>{userName}</strong>
           </p>
         </div>
@@ -84,7 +84,7 @@ export function SignatureInput({
       {/* Drawn Signature Canvas */}
       {signatureType === 'DRAWN' && (
         <div>
-          <label className="block text-sm font-medium text-slate-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Draw Your Signature
           </label>
           <SignatureCanvas
@@ -92,7 +92,7 @@ export function SignatureInput({
             width={500}
             height={200}
           />
-          <p className="text-sm text-slate-600 mt-2">
+          <p className="text-sm text-black mt-2">
             Draw your signature using your mouse or touchscreen
           </p>
         </div>

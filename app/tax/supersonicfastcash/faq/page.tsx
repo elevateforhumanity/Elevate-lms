@@ -134,14 +134,14 @@ export default function FAQPage() {
         <Link
           href="/tax"
           aria-label="Link"
-          className="text-sm text-gray-600 hover:text-gray-900"
+          className="text-sm text-black hover:text-black"
         >
           ← Back to Tax Services
         </Link>
       </div>
 
       <h1 className="text-4xl font-bold mb-3">Frequently Asked Questions</h1>
-      <p className="text-lg text-gray-600 mb-8">
+      <p className="text-lg text-black mb-8">
         Common questions about SupersonicFastCash tax preparation and refund
         advance services.
       </p>
@@ -155,10 +155,10 @@ export default function FAQPage() {
             <div className="space-y-6">
               {category.questions.map((faq, qIdx) => (
                 <div key={qIdx}>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-black mb-2">
                     {faq.q}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">{faq.a}</p>
+                  <p className="text-black leading-relaxed">{faq.a}</p>
                 </div>
               ))}
             </div>
@@ -168,7 +168,7 @@ export default function FAQPage() {
 
       <section className="mt-8 rounded-2xl bg-blue-50 border-l-4 border-brand-blue-600 p-6">
         <h2 className="text-xl font-bold mb-3">Still Have Questions?</h2>
-        <p className="text-gray-700 mb-6">
+        <p className="text-black mb-6">
           Can't find the answer you're looking for? We're here to help.
         </p>
         <div className="flex flex-wrap gap-4">
@@ -194,7 +194,7 @@ export default function FAQPage() {
       </section>
 
       <section className="mt-8 text-center">
-        <p className="text-gray-600 mb-4">Ready to get started?</p>
+        <p className="text-black mb-4">Ready to get started?</p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
             href="/tax/supersonicfastcash/documents"

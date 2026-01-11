@@ -203,7 +203,7 @@ export default function BlogPage() {
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition whitespace-nowrap flex-shrink-0 min-h-[44px] ${
                       category === selectedCategory
                         ? 'bg-brand-orange-600 text-white'
-                        : 'bg-white text-slate-700 border border-slate-300 hover:border-brand-orange-600 hover:text-brand-orange-600'
+                        : 'bg-white text-black border border-slate-300 hover:border-brand-orange-600 hover:text-brand-orange-600'
                     }`}
                   >
                     {category}
@@ -221,13 +221,13 @@ export default function BlogPage() {
           {loading && (
             <div className="text-center py-12">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-              <p className="mt-4 text-gray-600">Loading articles...</p>
+              <p className="mt-4 text-black">Loading articles...</p>
             </div>
           )}
           
           {!loading && displayedPosts.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-xl text-gray-600">No articles found matching your criteria.</p>
+              <p className="text-xl text-black">No articles found matching your criteria.</p>
             </div>
           )}
 
@@ -251,7 +251,7 @@ export default function BlogPage() {
                   />
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-slate-900 text-xs font-bold uppercase rounded-full">
+                    <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-black text-xs font-bold uppercase rounded-full">
                       {post.category}
                     </span>
                   </div>
@@ -259,10 +259,10 @@ export default function BlogPage() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h2 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-orange-600 transition line-clamp-2">
+                  <h2 className="text-xl font-bold text-black mb-3 group-hover:text-brand-orange-600 transition line-clamp-2">
                     {post.title}
                   </h2>
-                  <p className="text-slate-600 mb-4 line-clamp-3">
+                  <p className="text-black mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
 
@@ -293,7 +293,7 @@ export default function BlogPage() {
             <div className="text-center mt-12">
               <button 
                 onClick={() => setVisiblePosts(prev => prev + 6)}
-                className="px-8 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-semibold rounded-lg transition"
+                className="px-8 py-3 bg-slate-100 hover:bg-slate-200 text-black font-semibold rounded-lg transition"
               >
                 Load More Articles ({filteredPosts.length - visiblePosts} remaining)
               </button>
@@ -308,7 +308,7 @@ export default function BlogPage() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Start Your Success Story?
           </h2>
-          <p className="text-xl text-slate-600 mb-8">
+          <p className="text-xl text-black mb-8">
             Join hundreds of students who have transformed their careers through
             our free training programs.
           </p>

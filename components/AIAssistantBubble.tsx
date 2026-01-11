@@ -80,15 +80,15 @@ export function AIAssistantBubble() {
           <div className="bg-white rounded-lg shadow-2xl p-4 max-w-xs border border-gray-200 relative">
             <button
               onClick={() => setShowWelcome(false)}
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+              className="absolute top-2 right-2 text-gray-400 hover:text-black"
               aria-label="Close welcome message"
             >
               <X className="h-4 w-4" />
             </button>
-            <p className="text-sm text-gray-800 font-medium mb-2">
+            <p className="text-sm text-black font-medium mb-2">
               Welcome to Elevate for Humanity!
             </p>
-            <p className="text-xs text-gray-600 mb-3">
+            <p className="text-xs text-black mb-3">
               Need help navigating? I'm here to assist you!
             </p>
             <button
@@ -146,7 +146,7 @@ export function AIAssistantBubble() {
                   className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                     message.role === 'user'
                       ? 'bg-brand-orange-600 text-white'
-                      : 'bg-white text-gray-800 shadow-sm border border-gray-200'
+                      : 'bg-white text-black shadow-sm border border-gray-200'
                   }`}
                 >
                   {message.role === 'assistant' && (
@@ -154,7 +154,7 @@ export function AIAssistantBubble() {
                       <div className="bg-brand-orange-100 rounded-full p-1">
                         <MessageCircle className="h-3 w-3 text-brand-orange-600" />
                       </div>
-                      <span className="text-xs font-semibold text-gray-600">Assistant</span>
+                      <span className="text-xs font-semibold text-black">Assistant</span>
                     </div>
                   )}
                   <p className="text-sm whitespace-pre-line">{message.content}</p>

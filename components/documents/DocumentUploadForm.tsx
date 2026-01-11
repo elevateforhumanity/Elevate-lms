@@ -182,7 +182,7 @@ export function DocumentUploadForm({ requirements }: Props) {
               <span className="text-blue-600 font-semibold text-lg">
                 Click to upload
               </span>
-              <span className="text-slate-600"> or drag and drop</span>
+              <span className="text-black"> or drag and drop</span>
             </label>
             <p className="text-sm text-slate-500 mt-2">
               PDF, JPG, PNG or WEBP (max 10MB)
@@ -202,7 +202,7 @@ export function DocumentUploadForm({ requirements }: Props) {
         <button
           type="button"
           onClick={() => router.back()}
-          className="px-8 py-3 border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 transition"
+          className="px-8 py-3 border-2 border-slate-300 text-black font-semibold rounded-lg hover:bg-slate-50 transition"
         >
           Cancel
         </button>

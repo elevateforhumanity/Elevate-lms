@@ -59,10 +59,10 @@ export default async function ShopOnboardingPage() {
       {/* Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
-          <h1 className="text-3xl font-bold text-slate-900">
+          <h1 className="text-3xl font-bold text-black">
             Shop Partner Onboarding
           </h1>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-black">
             Complete all steps to begin hosting apprentices
           </p>
         </div>
@@ -73,14 +73,14 @@ export default async function ShopOnboardingPage() {
         {/* Progress Overview */}
         <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-slate-900">
+            <h2 className="text-xl font-bold text-black">
               Onboarding Progress
             </h2>
             <div className="text-right">
               <div className="text-3xl font-bold text-brand-blue-600">
                 {approvedDocs.length}/{requiredDocs.length}
               </div>
-              <div className="text-xs text-slate-600">Documents Approved</div>
+              <div className="text-xs text-black">Documents Approved</div>
             </div>
           </div>
 
@@ -102,7 +102,7 @@ export default async function ShopOnboardingPage() {
         <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6">
           <div className="flex items-center gap-3 mb-6">
             <FileText className="w-6 h-6 text-brand-blue-600" />
-            <h2 className="text-xl font-bold text-slate-900">
+            <h2 className="text-xl font-bold text-black">
               Required Documents
             </h2>
           </div>
@@ -123,13 +123,13 @@ export default async function ShopOnboardingPage() {
                     <div className="flex-1">
                       <div
                         className={`font-semibold ${
-                          doc.approved ? 'text-slate-900' : 'text-slate-700'
+                          doc.approved ? 'text-black' : 'text-black'
                         }`}
                       >
                         {doc.display_name}
                       </div>
                       {doc.description && (
-                        <div className="text-sm text-slate-600 mt-1">
+                        <div className="text-sm text-black mt-1">
                           {doc.description}
                         </div>
                       )}
@@ -180,7 +180,7 @@ export default async function ShopOnboardingPage() {
 
         {/* Onboarding Checklist */}
         <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6">
-          <h2 className="text-xl font-bold text-slate-900 mb-4">
+          <h2 className="text-xl font-bold text-black mb-4">
             Onboarding Checklist
           </h2>
 
@@ -194,8 +194,8 @@ export default async function ShopOnboardingPage() {
               <span
                 className={
                   onboarding?.handbook_ack
-                    ? 'text-slate-900 font-medium'
-                    : 'text-slate-600'
+                    ? 'text-black font-medium'
+                    : 'text-black'
                 }
               >
                 Acknowledge sponsor handbook + expectations
@@ -211,8 +211,8 @@ export default async function ShopOnboardingPage() {
               <span
                 className={
                   onboarding?.reporting_trained
-                    ? 'text-slate-900 font-medium'
-                    : 'text-slate-600'
+                    ? 'text-black font-medium'
+                    : 'text-black'
                 }
               >
                 Complete reporting training
@@ -228,8 +228,8 @@ export default async function ShopOnboardingPage() {
               <span
                 className={
                   onboarding?.apprentice_supervisor_assigned
-                    ? 'text-slate-900 font-medium'
-                    : 'text-slate-600'
+                    ? 'text-black font-medium'
+                    : 'text-black'
                 }
               >
                 Assign apprentice supervisor
@@ -245,8 +245,8 @@ export default async function ShopOnboardingPage() {
               <span
                 className={
                   onboarding?.rapids_reporting_ready
-                    ? 'text-slate-900 font-medium'
-                    : 'text-slate-600'
+                    ? 'text-black font-medium'
+                    : 'text-black'
                 }
               >
                 RAPIDS reporting readiness
@@ -257,10 +257,10 @@ export default async function ShopOnboardingPage() {
 
         {/* Shop Partner Responsibilities */}
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-          <h3 className="text-lg font-bold text-slate-900 mb-3">
+          <h3 className="text-lg font-bold text-black mb-3">
             Shop Partner Responsibilities – Indiana
           </h3>
-          <ul className="space-y-2 text-sm text-slate-700">
+          <ul className="space-y-2 text-sm text-black">
             <li className="flex items-start gap-2">
               <span className="text-brand-blue-600 mt-0.5">•</span>
               <span>Maintain active barber license(s)</span>

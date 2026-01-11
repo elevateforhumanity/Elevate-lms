@@ -59,7 +59,7 @@ export default function FederalFundedProgramsPage() {
             How Federal Funding Works
           </h2>
 
-          <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+          <div className="space-y-6 text-lg text-black leading-relaxed">
             <p>
               The federal government recognizes that workforce development is
               essential for economic growth. That's why programs like WIOA
@@ -99,7 +99,7 @@ export default function FederalFundedProgramsPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-xl border-2 border-green-200 p-8">
               <h3 className="text-2xl font-bold text-black mb-4">WIOA</h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Workforce Innovation and Opportunity Act provides funding for
                 job training and employment services.
               </p>
@@ -113,7 +113,7 @@ export default function FederalFundedProgramsPage() {
 
             <div className="bg-white rounded-xl border-2 border-green-200 p-8">
               <h3 className="text-2xl font-bold text-black mb-4">ETPL</h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Eligible Training Provider List certifies quality training
                 programs approved for federal funding.
               </p>
@@ -127,7 +127,7 @@ export default function FederalFundedProgramsPage() {
 
             <div className="bg-white rounded-xl border-2 border-green-200 p-8">
               <h3 className="text-2xl font-bold text-black mb-4">WRG</h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Workforce Ready Grant supports training in high-demand
                 occupations with employer partnerships.
               </p>
@@ -155,7 +155,7 @@ export default function FederalFundedProgramsPage() {
                 <CheckCircle className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Tuition</h3>
-              <p className="text-gray-600">100% of training costs covered</p>
+              <p className="text-black">100% of training costs covered</p>
             </div>
 
             <div className="text-center">
@@ -163,7 +163,7 @@ export default function FederalFundedProgramsPage() {
                 <Award className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Certifications</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Exam fees and credentials included
               </p>
             </div>
@@ -173,7 +173,7 @@ export default function FederalFundedProgramsPage() {
                 <Users className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">Support Services</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Career counseling and job placement
               </p>
             </div>
@@ -183,7 +183,7 @@ export default function FederalFundedProgramsPage() {
                 <Shield className="w-8 h-8" />
               </div>
               <h3 className="font-bold text-black mb-2">No Payback</h3>
-              <p className="text-gray-600">Not a loan—nothing to repay</p>
+              <p className="text-black">Not a loan—nothing to repay</p>
             </div>
           </div>
         </div>
@@ -242,7 +242,7 @@ export default function FederalFundedProgramsPage() {
           <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6">
             Ready to Start Free Training?
           </h2>
-          <p className="text-xl text-gray-700 mb-8">
+          <p className="text-xl text-black mb-8">
             Apply now to see if you qualify for federal funding.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

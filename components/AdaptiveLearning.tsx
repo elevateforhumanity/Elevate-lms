@@ -75,7 +75,7 @@ export function AdaptiveLearning({
       case 'advanced':
         return 'bg-red-100 text-red-800';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 text-black';
     }
   };
 
@@ -95,17 +95,17 @@ export function AdaptiveLearning({
           <div className="grid md:grid-cols-3 gap-4">
             <div className="text-center">
               <div className="text-3xl font-bold text-brand-orange-600">{currentSkillLevel}%</div>
-              <div className="text-sm text-gray-600">Skill Level</div>
+              <div className="text-sm text-black">Skill Level</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-orange-600">{completedTopics.length}</div>
-              <div className="text-sm text-gray-600">Topics Mastered</div>
+              <div className="text-sm text-black">Topics Mastered</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-green-600">
                 {learningStyle === 'visual' ? '👁️' : learningStyle === 'auditory' ? '👂' : '✋'}
               </div>
-              <div className="text-sm text-gray-600">Learning Style</div>
+              <div className="text-sm text-black">Learning Style</div>
             </div>
           </div>
         </CardContent>
@@ -133,14 +133,14 @@ export function AdaptiveLearning({
                       <span className={`px-2 py-1 rounded text-xs font-semibold ${getDifficultyColor(path.difficulty)}`}>
                         {path.difficulty}
                       </span>
-                      <span className="text-sm text-gray-600">{path.estimatedTime}</span>
+                      <span className="text-sm text-black">{path.estimatedTime}</span>
                     </div>
                   </div>
                   <Target className="text-brand-orange-600" size={20} />
                 </div>
 
                 <div className="mb-4">
-                  <div className="text-sm text-gray-600 mb-2">Topics covered:</div>
+                  <div className="text-sm text-black mb-2">Topics covered:</div>
                   <div className="flex flex-wrap gap-2">
                     {path.topics.map((topic, index) => (
                       <span

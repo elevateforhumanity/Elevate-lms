@@ -9,7 +9,7 @@ export default function CommunityGuidelinesPage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Community Guidelines</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Our Values</h2>
       <ul><li>Respect and inclusivity</li><li>Constructive dialogue</li><li>Support and encouragement</li><li>Professional conduct</li></ul>
       <h2>Prohibited Content</h2>

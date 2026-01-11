@@ -59,7 +59,7 @@ export default function ProgramFAQ() {
         {items.map((it) => (
           <details key={it.q} className="rounded-xl border p-4">
             <summary className="cursor-pointer font-semibold">{it.q}</summary>
-            <p className="mt-2 text-sm text-gray-700">{it.a}</p>
+            <p className="mt-2 text-sm text-black">{it.a}</p>
           </details>
         ))}
       </div>

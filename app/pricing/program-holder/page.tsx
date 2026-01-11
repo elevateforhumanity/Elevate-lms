@@ -67,10 +67,10 @@ export default function ProgramHolderLicensePage() {
       <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               Operate Under OUR Credentials
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-black">
               We already have the approvals. You use them via MOU.
             </p>
           </div>
@@ -86,7 +86,7 @@ export default function ProgramHolderLicensePage() {
                     <div className="font-semibold">
                       DOL Registered Apprenticeship Sponsor
                     </div>
-                    <div className="text-slate-600">
+                    <div className="text-black">
                       RAPIDS ID: 2025-IN-132301
                     </div>
                     <a
@@ -105,7 +105,7 @@ export default function ProgramHolderLicensePage() {
                     <div className="font-semibold">
                       WIOA Eligible Training Provider
                     </div>
-                    <div className="text-slate-600">
+                    <div className="text-black">
                       Federal workforce funding approved
                     </div>
                   </div>
@@ -123,14 +123,14 @@ export default function ProgramHolderLicensePage() {
                   <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="font-semibold">ETPL Listed Provider</div>
-                    <div className="text-slate-600">Provider ID: 10000949</div>
+                    <div className="text-black">Provider ID: 10000949</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="font-semibold">Indiana DWD Approved</div>
-                    <div className="text-slate-600">
+                    <div className="text-black">
                       INTraining Location ID: 10004621
                     </div>
                   </div>
@@ -141,7 +141,7 @@ export default function ProgramHolderLicensePage() {
                     <div className="font-semibold">
                       Workforce Ready Grant (WRG) Approved
                     </div>
-                    <div className="text-slate-600">
+                    <div className="text-black">
                       Free state funding for students
                     </div>
                   </div>
@@ -193,10 +193,10 @@ export default function ProgramHolderLicensePage() {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               How It Works
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-black">
               Simple process. Clear requirements. Fast approval.
             </p>
           </div>
@@ -207,10 +207,10 @@ export default function ProgramHolderLicensePage() {
                 1
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Submit Application
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Tell us about your organization, programs, and experience.
                   Takes 15-20 minutes.
                 </p>
@@ -222,10 +222,10 @@ export default function ProgramHolderLicensePage() {
                 2
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   We Review (2-3 Days)
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   We check references, verify compliance history, and assess
                   program fit.
                 </p>
@@ -237,10 +237,10 @@ export default function ProgramHolderLicensePage() {
                 3
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Sign MOU
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   If approved, we generate your MOU. Review and sign
                   electronically.
                 </p>
@@ -252,10 +252,10 @@ export default function ProgramHolderLicensePage() {
                 4
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Setup Payment
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Set up your monthly license fee. First payment includes setup
                   fee.
                 </p>
@@ -267,10 +267,10 @@ export default function ProgramHolderLicensePage() {
                 5
               </div>
               <div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   Launch in 30 Days
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Platform access granted. Onboarding scheduled. Start serving
                   students.
                 </p>
@@ -284,20 +284,20 @@ export default function ProgramHolderLicensePage() {
       <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Pricing</h2>
-            <p className="text-xl text-slate-600">
+            <h2 className="text-3xl font-bold text-black mb-4">Pricing</h2>
+            <p className="text-xl text-black">
               Based on your student volume. All credentials included.
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
             <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="text-sm font-bold text-slate-600 mb-2">SMALL</div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">
+              <div className="text-sm font-bold text-black mb-2">SMALL</div>
+              <div className="text-3xl font-bold text-black mb-1">
                 $4,000
               </div>
-              <div className="text-sm text-slate-600 mb-4">/month</div>
-              <div className="text-sm text-slate-700 mb-4">
+              <div className="text-sm text-black mb-4">/month</div>
+              <div className="text-sm text-black mb-4">
                 Up to 500 students
               </div>
               <div className="text-xs text-slate-500">Setup: $15,000</div>
@@ -305,37 +305,37 @@ export default function ProgramHolderLicensePage() {
 
             <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-blue-500">
               <div className="text-sm font-bold text-blue-600 mb-2">MEDIUM</div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">
+              <div className="text-3xl font-bold text-black mb-1">
                 $8,000
               </div>
-              <div className="text-sm text-slate-600 mb-4">/month</div>
-              <div className="text-sm text-slate-700 mb-4">
+              <div className="text-sm text-black mb-4">/month</div>
+              <div className="text-sm text-black mb-4">
                 Up to 2,500 students
               </div>
               <div className="text-xs text-slate-500">Setup: $25,000</div>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="text-sm font-bold text-slate-600 mb-2">LARGE</div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">
+              <div className="text-sm font-bold text-black mb-2">LARGE</div>
+              <div className="text-3xl font-bold text-black mb-1">
                 $16,000
               </div>
-              <div className="text-sm text-slate-600 mb-4">/month</div>
-              <div className="text-sm text-slate-700 mb-4">
+              <div className="text-sm text-black mb-4">/month</div>
+              <div className="text-sm text-black mb-4">
                 Up to 10,000 students
               </div>
               <div className="text-xs text-slate-500">Setup: $35,000</div>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="text-sm font-bold text-slate-600 mb-2">
+              <div className="text-sm font-bold text-black mb-2">
                 ENTERPRISE
               </div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">
+              <div className="text-3xl font-bold text-black mb-1">
                 $30,000
               </div>
-              <div className="text-sm text-slate-600 mb-4">/month</div>
-              <div className="text-sm text-slate-700 mb-4">
+              <div className="text-sm text-black mb-4">/month</div>
+              <div className="text-sm text-black mb-4">
                 Unlimited students
               </div>
               <div className="text-xs text-slate-500">Setup: $50,000</div>
@@ -348,10 +348,10 @@ export default function ProgramHolderLicensePage() {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               Requirements
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-black">
               Not everyone qualifies. We protect our credentials.
             </p>
           </div>

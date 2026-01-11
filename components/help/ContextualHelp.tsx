@@ -45,7 +45,7 @@ export function ContextualHelp({ title, content, position = 'top' }: ContextualH
           >
             <div className="bg-white rounded-lg shadow-xl border border-slate-200 p-4">
               <div className="flex items-start justify-between mb-2">
-                <h4 className="font-semibold text-slate-900 text-sm">{title}</h4>
+                <h4 className="font-semibold text-black text-sm">{title}</h4>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-0.5 hover:bg-slate-100 rounded transition"
@@ -53,7 +53,7 @@ export function ContextualHelp({ title, content, position = 'top' }: ContextualH
                   <X className="w-3.5 h-3.5 text-slate-400" />
                 </button>
               </div>
-              <p className="text-sm text-slate-600 leading-relaxed">{content}</p>
+              <p className="text-sm text-black leading-relaxed">{content}</p>
             </div>
             {/* Arrow */}
             <div

@@ -63,14 +63,14 @@ function StatCard({
       ? "bg-amber-50 text-amber-700"
       : intent === "danger"
       ? "bg-rose-50 text-rose-700"
-      : "bg-slate-50 text-slate-700";
+      : "bg-slate-50 text-black";
 
   return (
     <div className="flex flex-col justify-between rounded-2xl bg-white p-3 shadow-sm">
       <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
         {label}
       </p>
-      <p className="mt-1 text-xl font-semibold text-slate-900">{value}</p>
+      <p className="mt-1 text-xl font-semibold text-black">{value}</p>
       {helper && (
         <span
           className={`mt-1 inline-flex rounded-full px-2 py-0.5 text-[10px] font-medium ${badgeClass}`}

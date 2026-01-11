@@ -31,21 +31,21 @@ export default function TrainingPage() {
       <div className="mb-6">
         <Link
           href="/tax/rise-up-foundation"
-          className="text-sm text-gray-600 hover:text-gray-900"
+          className="text-sm text-black hover:text-black"
         >
           ← Back to Rise Up Foundation
         </Link>
       </div>
 
       <h1 className="text-4xl font-bold">Volunteer Training</h1>
-      <p className="mt-3 text-lg text-gray-600">
+      <p className="mt-3 text-lg text-black">
         Complete IRS Link & Learn Taxes training to become a certified VITA
         volunteer.
       </p>
 
       <section className="mt-8 rounded-2xl border bg-white p-8">
         <h2 className="text-2xl font-bold mb-4">IRS Link & Learn Taxes</h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-black mb-6">
           Link & Learn Taxes is the official IRS training program for VITA
           volunteers. It's a free, self-paced online course that teaches you
           everything you need to know to prepare basic tax returns.
@@ -56,29 +56,29 @@ export default function TrainingPage() {
           <ul className="space-y-2">
             <li className="flex items-start gap-2">
               <span className="text-brand-green-600 font-bold">✓</span>
-              <span className="text-gray-700">
+              <span className="text-black">
                 Interactive lessons and videos
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand-green-600 font-bold">✓</span>
-              <span className="text-gray-700">
+              <span className="text-black">
                 Practice exercises and quizzes
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand-green-600 font-bold">✓</span>
-              <span className="text-gray-700">Real-world tax scenarios</span>
+              <span className="text-black">Real-world tax scenarios</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand-green-600 font-bold">✓</span>
-              <span className="text-gray-700">
+              <span className="text-black">
                 Certification exam preparation
               </span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand-green-600 font-bold">✓</span>
-              <span className="text-gray-700">
+              <span className="text-black">
                 Reference materials and resources
               </span>
             </li>
@@ -110,7 +110,7 @@ export default function TrainingPage() {
 
       <section className="mt-8 rounded-2xl border bg-white p-8">
         <h2 className="text-2xl font-bold mb-4">Certification Levels</h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-black mb-6">
           Choose the certification level that matches your experience and the
           types of returns you want to prepare.
         </p>
@@ -123,11 +123,11 @@ export default function TrainingPage() {
                 RECOMMENDED FOR NEW VOLUNTEERS
               </span>
             </div>
-            <p className="text-gray-600 mb-3">
+            <p className="text-black mb-3">
               Covers fundamental tax concepts and simple returns (W-2 income,
               standard deduction, basic credits).
             </p>
-            <div className="text-sm text-gray-700">
+            <div className="text-sm text-black">
               <strong>Training Time:</strong> 15-20 hours
               <br />
               <strong>Best For:</strong> First-time volunteers, simple returns
@@ -143,11 +143,11 @@ export default function TrainingPage() {
                 MOST COMMON
               </span>
             </div>
-            <p className="text-gray-600 mb-3">
+            <p className="text-black mb-3">
               Includes Basic topics plus itemized deductions, self-employment
               income, and additional credits.
             </p>
-            <div className="text-sm text-gray-700">
+            <div className="text-sm text-black">
               <strong>Training Time:</strong> 20-25 hours
               <br />
               <strong>Best For:</strong> Volunteers with some tax knowledge,
@@ -162,11 +162,11 @@ export default function TrainingPage() {
                 FOR EXPERIENCED VOLUNTEERS
               </span>
             </div>
-            <p className="text-gray-600 mb-3">
+            <p className="text-black mb-3">
               Covers all topics including business income, rental property,
               capital gains, and complex situations.
             </p>
-            <div className="text-sm text-gray-700">
+            <div className="text-sm text-black">
               <strong>Training Time:</strong> 25-30 hours
               <br />
               <strong>Best For:</strong> Experienced volunteers, quality
@@ -185,7 +185,7 @@ export default function TrainingPage() {
             </div>
             <div>
               <h3 className="font-semibold">Register for Training</h3>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-black mt-1">
                 <strong>When:</strong> October - December
                 <br />
                 <strong>Action:</strong> Contact us to get your Link & Learn
@@ -200,7 +200,7 @@ export default function TrainingPage() {
             </div>
             <div>
               <h3 className="font-semibold">Complete Online Training</h3>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-black mt-1">
                 <strong>When:</strong> November - January
                 <br />
                 <strong>Duration:</strong> 15-30 hours (self-paced)
@@ -216,7 +216,7 @@ export default function TrainingPage() {
             </div>
             <div>
               <h3 className="font-semibold">Pass Certification Exam</h3>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-black mt-1">
                 <strong>When:</strong> December - January
                 <br />
                 <strong>Passing Score:</strong> 80% or higher
@@ -232,7 +232,7 @@ export default function TrainingPage() {
             </div>
             <div>
               <h3 className="font-semibold">Attend Orientation</h3>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-black mt-1">
                 <strong>When:</strong> January (before tax season)
                 <br />
                 <strong>Duration:</strong> 2-3 hours
@@ -248,7 +248,7 @@ export default function TrainingPage() {
             </div>
             <div>
               <h3 className="font-semibold">Start Volunteering</h3>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-black mt-1">
                 <strong>When:</strong> Late January - April 15
                 <br />
                 <strong>Action:</strong> Begin helping taxpayers!
@@ -263,7 +263,7 @@ export default function TrainingPage() {
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <h3 className="font-semibold mb-2">Study Tips</h3>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className="space-y-2 text-sm text-black">
               <li>• Set aside 2-3 hours per week for training</li>
               <li>• Take notes on key concepts</li>
               <li>• Complete all practice exercises</li>
@@ -273,7 +273,7 @@ export default function TrainingPage() {
           </div>
           <div>
             <h3 className="font-semibold mb-2">Exam Tips</h3>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className="space-y-2 text-sm text-black">
               <li>• Review all lessons before taking exam</li>
               <li>• Take practice quizzes multiple times</li>
               <li>• Read questions carefully</li>
@@ -286,7 +286,7 @@ export default function TrainingPage() {
 
       <section className="mt-8 rounded-2xl bg-green-50 border-l-4 border-brand-green-600 p-6">
         <h2 className="text-xl font-bold mb-3">Ready to Start Training?</h2>
-        <p className="text-gray-700 mb-6">
+        <p className="text-black mb-6">
           Contact us to get your Link & Learn access code and begin your journey
           to becoming a certified VITA volunteer.
         </p>
@@ -313,8 +313,8 @@ export default function TrainingPage() {
       </section>
 
       <section className="mt-8 rounded-2xl bg-blue-50 border-l-4 border-blue-400 p-6">
-        <h3 className="font-semibold text-gray-900">Reference</h3>
-        <p className="mt-2 text-sm text-gray-700">
+        <h3 className="font-semibold text-black">Reference</h3>
+        <p className="mt-2 text-sm text-black">
           Official IRS training portal:{' '}
           <a
             href="https://linklearncertification.com/"

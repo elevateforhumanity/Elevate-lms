@@ -81,14 +81,14 @@ export default function VITAPage() {
             <div className="bg-white p-8 rounded-lg shadow-md">
               <Heart className="w-12 h-12 text-blue-600 mb-4" />
               <h3 className="text-2xl font-bold mb-4">Free Tax Help</h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 The Volunteer Income Tax Assistance (VITA) program offers free tax help to people who generally make $64,000 or less, persons with disabilities, and limited English-speaking taxpayers.
               </p>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-md">
               <CheckCircle className="w-12 h-12 text-green-600 mb-4" />
               <h3 className="text-2xl font-bold mb-4">IRS Certified</h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 All VITA volunteers are IRS-certified and trained to help you prepare your taxes accurately and get the maximum refund you deserve.
               </p>
             </div>
@@ -125,7 +125,7 @@ export default function VITAPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-8">Ready to Get Started?</h2>
-          <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-black mb-8 max-w-3xl mx-auto">
             Schedule your free tax preparation appointment today
           </p>
           <Link

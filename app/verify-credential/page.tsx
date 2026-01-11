@@ -51,11 +51,11 @@ export default function VerifyCredentialPage() {
         <div className="max-w-4xl mx-auto px-6 py-8">
           <div className="flex items-center gap-3 mb-2">
             <Shield className="w-8 h-8 text-blue-600" />
-            <h1 className="text-3xl font-semibold text-gray-900">
+            <h1 className="text-3xl font-semibold text-black">
               Verify Credential
             </h1>
           </div>
-          <p className="text-base text-gray-600">
+          <p className="text-base text-black">
             Confirm the authenticity of a credential or certificate
           </p>
         </div>
@@ -69,11 +69,11 @@ export default function VerifyCredentialPage() {
               <div>
                 <label
                   htmlFor="code"
-                  className="block text-lg font-semibold text-gray-900 mb-2"
+                  className="block text-lg font-semibold text-black mb-2"
                 >
                   Credential Code
                 </label>
-                <p className="text-sm text-gray-600 mb-4">
+                <p className="text-sm text-black mb-4">
                   Enter the credential code found on the certificate or
                   credential document.
                 </p>
@@ -87,7 +87,7 @@ export default function VerifyCredentialPage() {
                     className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg font-mono"
                     required
                   />
-                  <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600" />
+                  <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
                 </div>
               </div>
 
@@ -127,19 +127,19 @@ export default function VerifyCredentialPage() {
 
                     <div className="space-y-3">
                       <div>
-                        <div className="text-sm font-semibold text-gray-600">
+                        <div className="text-sm font-semibold text-black">
                           Credential Type
                         </div>
-                        <div className="text-lg text-gray-900">
+                        <div className="text-lg text-black">
                           {result.credential.type}
                         </div>
                       </div>
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-600">
+                        <div className="text-sm font-semibold text-black">
                           Issued To
                         </div>
-                        <div className="text-lg text-gray-900">
+                        <div className="text-lg text-black">
                           {result.credential.student.first_name}{' '}
                           {result.credential.student.last_initial ||
                             result.credential.student.last_name}
@@ -148,20 +148,20 @@ export default function VerifyCredentialPage() {
 
                       {result.credential.program && (
                         <div>
-                          <div className="text-sm font-semibold text-gray-600">
+                          <div className="text-sm font-semibold text-black">
                             Program
                           </div>
-                          <div className="text-lg text-gray-900">
+                          <div className="text-lg text-black">
                             {result.credential.program.title}
                           </div>
                         </div>
                       )}
 
                       <div>
-                        <div className="text-sm font-semibold text-gray-600">
+                        <div className="text-sm font-semibold text-black">
                           Issued Date
                         </div>
-                        <div className="text-lg text-gray-900">
+                        <div className="text-lg text-black">
                           {new Date(
                             result.credential.issued_at
                           ).toLocaleDateString()}
@@ -170,10 +170,10 @@ export default function VerifyCredentialPage() {
 
                       {result.credential.expires_at && (
                         <div>
-                          <div className="text-sm font-semibold text-gray-600">
+                          <div className="text-sm font-semibold text-black">
                             Expires
                           </div>
-                          <div className="text-lg text-gray-900">
+                          <div className="text-lg text-black">
                             {new Date(
                               result.credential.expires_at
                             ).toLocaleDateString()}
@@ -182,7 +182,7 @@ export default function VerifyCredentialPage() {
                       )}
 
                       <div className="pt-4 border-t border-green-200">
-                        <div className="text-sm text-gray-600">
+                        <div className="text-sm text-black">
                           This credential has been verified as authentic and is
                           currently valid.
                         </div>
@@ -205,7 +205,7 @@ export default function VerifyCredentialPage() {
 
                     <div className="space-y-3">
                       <div>
-                        <div className="text-sm font-semibold text-gray-600">
+                        <div className="text-sm font-semibold text-black">
                           Status
                         </div>
                         <div className="text-lg text-red-900 font-semibold uppercase">
@@ -215,17 +215,17 @@ export default function VerifyCredentialPage() {
 
                       {result.credential?.revoked_reason && (
                         <div>
-                          <div className="text-sm font-semibold text-gray-600">
+                          <div className="text-sm font-semibold text-black">
                             Reason
                           </div>
-                          <div className="text-lg text-gray-900">
+                          <div className="text-lg text-black">
                             {result.credential.revoked_reason}
                           </div>
                         </div>
                       )}
 
                       <div className="pt-4 border-t border-red-200">
-                        <div className="text-sm text-gray-600">
+                        <div className="text-sm text-black">
                           This credential is not currently valid. Please contact
                           the issuing organization for more information.
                         </div>
@@ -239,10 +239,10 @@ export default function VerifyCredentialPage() {
 
           {/* Info Section */}
           <div className="mt-12 bg-blue-50 rounded-lg p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl font-bold text-black mb-4">
               About Credential Verification
             </h2>
-            <div className="space-y-3 text-gray-700">
+            <div className="space-y-3 text-black">
               <p>
                 This verification system allows employers, partners, and other
                 organizations to confirm the authenticity of credentials issued
@@ -258,7 +258,7 @@ export default function VerifyCredentialPage() {
                 <li>When it was issued and when it expires</li>
                 <li>The name of the credential holder</li>
               </ul>
-              <p className="text-sm text-gray-600 mt-4">
+              <p className="text-sm text-black mt-4">
                 For privacy protection, only minimal information is displayed
                 publicly. Authenticated partners can view additional details.
               </p>

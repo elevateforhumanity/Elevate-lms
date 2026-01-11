@@ -80,7 +80,7 @@ export default function NewsPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <div className="flex items-center gap-2 text-sm text-gray-700 mb-2">
+                  <div className="flex items-center gap-2 text-sm text-black mb-2">
                     <time>{new Date(item.date).toLocaleDateString()}</time>
                     <span className="mx-2">•</span>
                     <span className="text-orange-600 font-medium">
@@ -88,7 +88,7 @@ export default function NewsPage() {
                     </span>
                   </div>
                   <h2 className="text-2xl font-bold mb-3">{item.title}</h2>
-                  <p className="text-gray-600 mb-4">{item.excerpt}</p>
+                  <p className="text-black mb-4">{item.excerpt}</p>
                   <Link
                     href="#"
                     className="text-orange-600 font-semibold hover:underline"
@@ -101,7 +101,7 @@ export default function NewsPage() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">
+            <p className="text-black mb-4">
               Looking for press materials or media inquiries?
             </p>
             <Link href="/contact">
@@ -116,7 +116,7 @@ export default function NewsPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Stay Informed</h2>
-            <p className="text-gray-600 mb-8">
+            <p className="text-black mb-8">
               Subscribe to our newsletter for the latest updates, success
               stories, and program announcements.
             </p>

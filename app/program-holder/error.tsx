@@ -20,10 +20,10 @@ export default function Error({
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
         <AlertTriangle className="h-16 w-16 text-red-600 mx-auto mb-4" />
-        <h1 className="text-2xl font-bold text-slate-900 mb-2">
+        <h1 className="text-2xl font-bold text-black mb-2">
           Something went wrong
         </h1>
-        <p className="text-slate-600 mb-6">
+        <p className="text-black mb-6">
           {error.message || 'An unexpected error occurred. Please try again.'}
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -35,7 +35,7 @@ export default function Error({
           </button>
           <Link
             href="/program-holder/dashboard"
-            className="px-6 py-3 bg-white hover:bg-slate-50 text-slate-900 font-semibold rounded-lg border-2 border-slate-300 transition-colors"
+            className="px-6 py-3 bg-white hover:bg-slate-50 text-black font-semibold rounded-lg border-2 border-slate-300 transition-colors"
           >
             Back to Dashboard
           </Link>

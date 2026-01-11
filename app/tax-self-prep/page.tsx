@@ -72,7 +72,7 @@ export default function TaxSelfPrepPage() {
             <h2 className="text-2xl md:text-2xl md:text-3xl font-bold text-center mb-4 text-2xl md:text-3xl lg:text-2xl md:text-3xl">
               Choose the right product for you
             </h2>
-            <p className="text-center text-slate-600 mb-16">
+            <p className="text-center text-black mb-16">
               All products include maximum refund guarantee and 100% accuracy
             </p>
 
@@ -86,7 +86,7 @@ export default function TaxSelfPrepPage() {
                   <div className="text-4xl font-bold text-brand-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                     $0
                   </div>
-                  <div className="text-sm text-slate-600">Federal & State</div>
+                  <div className="text-sm text-black">Federal & State</div>
                 </div>
                 <div className="mb-6">
                   <div className="text-sm font-semibold mb-3">Best for:</div>
@@ -150,7 +150,7 @@ export default function TaxSelfPrepPage() {
                   <div className="text-4xl font-bold text-brand-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                     $39
                   </div>
-                  <div className="text-sm text-slate-600">
+                  <div className="text-sm text-black">
                     Federal + $39 State
                   </div>
                 </div>
@@ -221,7 +221,7 @@ export default function TaxSelfPrepPage() {
                   <div className="text-4xl font-bold text-brand-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                     $69
                   </div>
-                  <div className="text-sm text-slate-600">
+                  <div className="text-sm text-black">
                     Federal + $39 State
                   </div>
                 </div>
@@ -291,7 +291,7 @@ export default function TaxSelfPrepPage() {
                   <div className="text-4xl font-bold text-brand-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                     $99
                   </div>
-                  <div className="text-sm text-slate-600">
+                  <div className="text-sm text-black">
                     Federal + $39 State
                   </div>
                 </div>
@@ -354,7 +354,7 @@ export default function TaxSelfPrepPage() {
             </div>
 
             <div className="mt-12 text-center">
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-black">
                 Not sure which product? Start for free and we'll recommend the
                 right one for you.
               </p>
@@ -378,7 +378,7 @@ export default function TaxSelfPrepPage() {
                 <h3 className="text-lg font-bold mb-3">
                   Answer simple questions
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   We'll ask you about your income, deductions, and credits in
                   plain English.
                 </p>
@@ -391,7 +391,7 @@ export default function TaxSelfPrepPage() {
                 <h3 className="text-lg font-bold mb-3">
                   We fill out the forms
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Our software automatically fills out all the right tax forms
                   for you.
                 </p>
@@ -404,7 +404,7 @@ export default function TaxSelfPrepPage() {
                 <h3 className="text-lg font-bold mb-3">
                   Double-check everything
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Review your return and make sure everything looks right before
                   filing.
                 </p>
@@ -417,7 +417,7 @@ export default function TaxSelfPrepPage() {
                 <h3 className="text-lg font-bold mb-3">
                   E-file and get refund
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   File electronically and get your refund in as little as 8
                   days.
                 </p>
@@ -442,7 +442,7 @@ export default function TaxSelfPrepPage() {
                 <h3 className="text-lg font-bold mb-3">
                   Maximum Refund Guaranteed
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   We guarantee you'll get the maximum refund you're entitled to,
                   or we'll refund your service fee.
                 </p>
@@ -453,7 +453,7 @@ export default function TaxSelfPrepPage() {
                   <Lock className="w-5 h-5 inline-block" />
                 </div>
                 <h3 className="text-lg font-bold mb-3">100% Secure</h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Bank-level encryption and multi-factor authentication protect
                   your data.
                 </p>
@@ -466,7 +466,7 @@ export default function TaxSelfPrepPage() {
                 <h3 className="text-lg font-bold mb-3">
                   Expert Help Available
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Get help from tax experts via chat, phone, or video call if
                   you need it.
                 </p>
@@ -477,7 +477,7 @@ export default function TaxSelfPrepPage() {
                   <Smartphone className="w-5 h-5 inline-block" />
                 </div>
                 <h3 className="text-lg font-bold mb-3">Mobile App</h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Do your taxes on your phone or tablet. Snap photos of W-2s and
                   upload instantly.
                 </p>
@@ -488,7 +488,7 @@ export default function TaxSelfPrepPage() {
                   <Zap className="w-5 h-5 inline-block" />
                 </div>
                 <h3 className="text-lg font-bold mb-3">Fast & Easy</h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Most people finish in under 30 minutes. Save and come back
                   anytime.
                 </p>
@@ -499,7 +499,7 @@ export default function TaxSelfPrepPage() {
                   <BarChart className="w-5 h-5 inline-block" />
                 </div>
                 <h3 className="text-lg font-bold mb-3">Import Last Year</h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Import last year's return from any major tax software to save
                   time.
                 </p>

@@ -182,10 +182,10 @@ export default function CheckoutPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-lg shadow-lg p-8 max-w-md text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">
+          <h1 className="text-2xl font-bold text-black mb-4">
             Program Not Found
           </h1>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             The program you're trying to purchase doesn't exist.
           </p>
           <Link
@@ -204,48 +204,48 @@ export default function CheckoutPage() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-2">
             Complete Your Enrollment
           </h1>
-          <p className="text-lg text-gray-600">{programData.name}</p>
+          <p className="text-lg text-black">{programData.name}</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {/* Order Summary */}
           <div className="md:col-span-1">
             <div className="bg-white rounded-lg shadow-lg p-6 sticky top-4">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">
+              <h2 className="text-xl font-bold text-black mb-4">
                 Order Summary
               </h2>
 
               <div className="space-y-4 mb-6">
                 <div>
-                  <h3 className="font-bold text-gray-900">
+                  <h3 className="font-bold text-black">
                     {programData.name}
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-black">
                     {programData.duration}
                   </p>
-                  <p className="text-sm text-gray-600 mt-2">
+                  <p className="text-sm text-black mt-2">
                     {programData.description}
                   </p>
                 </div>
 
                 <div className="border-t pt-4">
                   <div className="flex justify-between mb-2">
-                    <span className="text-gray-600">Program Cost</span>
+                    <span className="text-black">Program Cost</span>
                     <span className="font-bold">
                       ${programData.price.toLocaleString()}
                     </span>
                   </div>
-                  <div className="flex justify-between text-lg font-bold text-gray-900 pt-2 border-t">
+                  <div className="flex justify-between text-lg font-bold text-black pt-2 border-t">
                     <span>Total</span>
                     <span>${programData.price.toLocaleString()}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-blue-50 rounded-lg p-4 text-sm text-gray-700">
+              <div className="bg-blue-50 rounded-lg p-4 text-sm text-black">
                 <p className="font-bold mb-2">
                   <Lightbulb className="w-5 h-5 inline-block" /> Did you know?
                 </p>
@@ -266,7 +266,7 @@ export default function CheckoutPage() {
           {/* Payment Method */}
           <div className="md:col-span-2">
             <div className="bg-white rounded-lg shadow-lg p-6 md:p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-black mb-6">
                 Payment Method
               </h2>
 
@@ -280,7 +280,7 @@ export default function CheckoutPage() {
                 <div>
                   <div className="flex items-center gap-3 mb-6">
                     <CreditCard className="w-6 h-6 text-blue-600" />
-                    <h3 className="text-xl font-bold text-gray-900">
+                    <h3 className="text-xl font-bold text-black">
                       Pay with Stripe
                     </h3>
                   </div>
@@ -288,19 +288,19 @@ export default function CheckoutPage() {
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Secure one-time payment
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         All major credit and debit cards accepted
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Instant enrollment confirmation
                       </span>
                     </div>
@@ -316,7 +316,7 @@ export default function CheckoutPage() {
                       : `Pay $${programData.price.toLocaleString()} with Stripe`}
                   </button>
 
-                  <p className="text-center text-sm text-gray-600 mt-4">
+                  <p className="text-center text-sm text-black mt-4">
                     Or{' '}
                     <Link
                       href={`/checkout/${program}?method=affirm`}
@@ -331,7 +331,7 @@ export default function CheckoutPage() {
                 <div>
                   <div className="flex items-center gap-3 mb-6">
                     <Calendar className="w-6 h-6 text-cyan-600" />
-                    <h3 className="text-xl font-bold text-gray-900">
+                    <h3 className="text-xl font-bold text-black">
                       Pay with Affirm
                     </h3>
                   </div>
@@ -339,19 +339,19 @@ export default function CheckoutPage() {
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Monthly payment plans available
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         0% APR options for qualified buyers
                       </span>
                     </div>
                     <div className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         As low as ${Math.ceil(programData.price / 24)}/month
                       </span>
                     </div>
@@ -365,7 +365,7 @@ export default function CheckoutPage() {
                     {loading ? 'Processing...' : 'Continue with Affirm'}
                   </button>
 
-                  <p className="text-center text-sm text-gray-600 mt-4">
+                  <p className="text-center text-sm text-black mt-4">
                     Or{' '}
                     <Link
                       href={`/checkout/${program}?method=stripe`}
@@ -378,7 +378,7 @@ export default function CheckoutPage() {
               )}
 
               <div className="mt-8 pt-6 border-t">
-                <p className="text-xs text-gray-700 text-center">
+                <p className="text-xs text-black text-center">
                   By completing this purchase, you agree to our{' '}
                   <Link href="/terms" className="underline">
                     Terms of Service

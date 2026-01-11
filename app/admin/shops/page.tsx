@@ -91,17 +91,17 @@ export default async function AdminShopsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 Shop Management
               </h1>
-              <p className="mt-1 text-slate-600">
+              <p className="mt-1 text-black">
                 Manage shop partners and onboarding
               </p>
             </div>
             <div className="flex items-center gap-3">
               <Link
                 href="/admin/dashboard"
-                className="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg transition"
+                className="px-4 py-2 text-black hover:bg-slate-100 rounded-lg transition"
               >
                 ← Back to Admin
               </Link>
@@ -118,10 +118,10 @@ export default async function AdminShopsPage() {
             <div className="flex items-center gap-3">
               <Building2 className="w-8 h-8 text-brand-blue-600" />
               <div>
-                <div className="text-2xl font-bold text-slate-900">
+                <div className="text-2xl font-bold text-black">
                   {shops?.length || 0}
                 </div>
-                <div className="text-sm text-slate-600">Total Shops</div>
+                <div className="text-sm text-black">Total Shops</div>
               </div>
             </div>
           </div>
@@ -130,10 +130,10 @@ export default async function AdminShopsPage() {
             <div className="flex items-center gap-3">
               <CheckCircle className="w-8 h-8 text-brand-green-600" />
               <div>
-                <div className="text-2xl font-bold text-slate-900">
+                <div className="text-2xl font-bold text-black">
                   {shopsWithDocs.filter((s) => s.docsComplete).length}
                 </div>
-                <div className="text-sm text-slate-600">Fully Approved</div>
+                <div className="text-sm text-black">Fully Approved</div>
               </div>
             </div>
           </div>
@@ -142,10 +142,10 @@ export default async function AdminShopsPage() {
             <div className="flex items-center gap-3">
               <Clock className="w-8 h-8 text-yellow-600" />
               <div>
-                <div className="text-2xl font-bold text-slate-900">
+                <div className="text-2xl font-bold text-black">
                   {applications?.length || 0}
                 </div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-black">
                   Pending Applications
                 </div>
               </div>
@@ -156,14 +156,14 @@ export default async function AdminShopsPage() {
             <div className="flex items-center gap-3">
               <Users className="w-8 h-8 text-purple-600" />
               <div>
-                <div className="text-2xl font-bold text-slate-900">
+                <div className="text-2xl font-bold text-black">
                   {shopsWithDocs.reduce(
                     (sum, s) =>
                       sum + (s.apprentice_placements?.[0]?.count || 0),
                     0
                   )}
                 </div>
-                <div className="text-sm text-slate-600">Active Placements</div>
+                <div className="text-sm text-black">Active Placements</div>
               </div>
             </div>
           </div>
@@ -172,7 +172,7 @@ export default async function AdminShopsPage() {
         {/* Pending Applications */}
         {applications && applications.length > 0 && (
           <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6 mb-8">
-            <h2 className="text-xl font-bold text-slate-900 mb-4">
+            <h2 className="text-xl font-bold text-black mb-4">
               Pending Applications
             </h2>
             <div className="space-y-3">
@@ -182,10 +182,10 @@ export default async function AdminShopsPage() {
                   className="border border-slate-200 rounded-lg p-4 flex items-center justify-between"
                 >
                   <div>
-                    <div className="font-semibold text-slate-900">
+                    <div className="font-semibold text-black">
                       {app.shop_name}
                     </div>
-                    <div className="text-sm text-slate-600">
+                    <div className="text-sm text-black">
                       {app.owner_name} • {app.email}
                     </div>
                     <div className="text-xs text-slate-500 mt-1">
@@ -208,7 +208,7 @@ export default async function AdminShopsPage() {
 
         {/* All Shops */}
         <div className="bg-white rounded-xl shadow-md border border-slate-200 p-6">
-          <h2 className="text-xl font-bold text-slate-900 mb-4">All Shops</h2>
+          <h2 className="text-xl font-bold text-black mb-4">All Shops</h2>
 
           <div className="space-y-3">
             {shopsWithDocs.map((shop) => {
@@ -223,7 +223,7 @@ export default async function AdminShopsPage() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="font-bold text-slate-900">
+                        <div className="font-bold text-black">
                           {shop.name}
                         </div>
                         <div
@@ -240,7 +240,7 @@ export default async function AdminShopsPage() {
                         </div>
                       </div>
 
-                      <div className="text-sm text-slate-600 space-y-1">
+                      <div className="text-sm text-black space-y-1">
                         <div>
                           {shop.address1}
                           {shop.city && `, ${shop.city}`}
@@ -254,13 +254,13 @@ export default async function AdminShopsPage() {
                       <div className="mt-3 flex items-center gap-4 text-sm">
                         <div className="flex items-center gap-1">
                           <FileText className="w-4 h-4 text-slate-400" />
-                          <span className="text-slate-600">
+                          <span className="text-black">
                             Docs: {shop.docsApproved}/{shop.docsRequired}
                           </span>
                         </div>
                         <div className="flex items-center gap-1">
                           <Users className="w-4 h-4 text-slate-400" />
-                          <span className="text-slate-600">
+                          <span className="text-black">
                             Apprentices:{' '}
                             {shop.apprentice_placements?.[0]?.count || 0}
                           </span>
@@ -277,7 +277,7 @@ export default async function AdminShopsPage() {
                       </Link>
                       <Link
                         href={`/admin/shops/${shop.id}/documents`}
-                        className="px-4 py-2 border border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 transition text-sm text-center"
+                        className="px-4 py-2 border border-slate-300 text-black font-semibold rounded-lg hover:bg-slate-50 transition text-sm text-center"
                       >
                         Documents
                       </Link>
@@ -288,7 +288,7 @@ export default async function AdminShopsPage() {
             })}
 
             {shopsWithDocs.length === 0 && (
-              <div className="text-center py-12 text-slate-600">
+              <div className="text-center py-12 text-black">
                 No shops yet. Applications will appear here.
               </div>
             )}

@@ -43,10 +43,10 @@ export default async function ClientPortalPage() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+          <h1 className="text-4xl font-bold text-black mb-2">
             Client Portal
           </h1>
-          <p className="text-xl text-gray-600">Welcome back, {user.email}</p>
+          <p className="text-xl text-black">Welcome back, {user.email}</p>
         </div>
 
         {/* Quick Stats */}
@@ -57,10 +57,10 @@ export default async function ClientPortalPage() {
                 <FileText className="w-6 h-6 text-blue-600" />
               </div>
               <div>
-                <div className="text-3xl font-bold text-gray-900">
+                <div className="text-3xl font-bold text-black">
                   {documents?.length || 0}
                 </div>
-                <div className="text-sm text-gray-600">Documents Uploaded</div>
+                <div className="text-sm text-black">Documents Uploaded</div>
               </div>
             </div>
           </div>
@@ -71,10 +71,10 @@ export default async function ClientPortalPage() {
                 <Calendar className="w-6 h-6 text-green-600" />
               </div>
               <div>
-                <div className="text-3xl font-bold text-gray-900">
+                <div className="text-3xl font-bold text-black">
                   {appointments?.length || 0}
                 </div>
-                <div className="text-sm text-gray-600">Appointments</div>
+                <div className="text-sm text-black">Appointments</div>
               </div>
             </div>
           </div>
@@ -85,8 +85,8 @@ export default async function ClientPortalPage() {
                 <DollarSign className="w-6 h-6 text-purple-600" />
               </div>
               <div>
-                <div className="text-3xl font-bold text-gray-900">$0</div>
-                <div className="text-sm text-gray-600">Estimated Refund</div>
+                <div className="text-3xl font-bold text-black">$0</div>
+                <div className="text-sm text-black">Estimated Refund</div>
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@ export default async function ClientPortalPage() {
         {/* Appointments Section */}
         <div className="bg-white rounded-xl shadow-sm p-8 mb-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 className="text-2xl font-bold text-black">
               Your Appointments
             </h2>
             <Link
@@ -117,7 +117,7 @@ export default async function ClientPortalPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <Calendar className="w-5 h-5 text-blue-600" />
-                        <h3 className="font-semibold text-gray-900">
+                        <h3 className="font-semibold text-black">
                           {appointment.service_type}
                         </h3>
                         <span
@@ -128,13 +128,13 @@ export default async function ClientPortalPage() {
                                 ? 'bg-yellow-100 text-yellow-700'
                                 : appointment.status === 'completed'
                                   ? 'bg-blue-100 text-blue-700'
-                                  : 'bg-gray-100 text-gray-700'
+                                  : 'bg-gray-100 text-black'
                           }`}
                         >
                           {appointment.status}
                         </span>
                       </div>
-                      <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
+                      <div className="grid md:grid-cols-2 gap-4 text-sm text-black">
                         <div>
                           <strong>Date:</strong>{' '}
                           {new Date(
@@ -161,7 +161,7 @@ export default async function ClientPortalPage() {
           ) : (
             <div className="text-center py-12">
               <Calendar className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-600 mb-4">No appointments scheduled</p>
+              <p className="text-black mb-4">No appointments scheduled</p>
               <Link
                 href="/supersonic-fast-cash/book-appointment"
                 className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -175,7 +175,7 @@ export default async function ClientPortalPage() {
         {/* Documents Section */}
         <div className="bg-white rounded-xl shadow-sm p-8">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Your Documents</h2>
+            <h2 className="text-2xl font-bold text-black">Your Documents</h2>
             <Link
               href="/supersonic-fast-cash/upload-documents"
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -194,10 +194,10 @@ export default async function ClientPortalPage() {
                   <div className="flex items-center gap-4">
                     <FileText className="w-8 h-8 text-blue-600" />
                     <div>
-                      <h3 className="font-semibold text-gray-900">
+                      <h3 className="font-semibold text-black">
                         {doc.file_name}
                       </h3>
-                      <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
+                      <div className="flex items-center gap-4 text-sm text-black mt-1">
                         <span>
                           {(doc.file_size / 1024 / 1024).toFixed(2)} MB
                         </span>
@@ -212,7 +212,7 @@ export default async function ClientPortalPage() {
                               ? 'bg-green-100 text-green-700'
                               : doc.status === 'pending_review'
                                 ? 'bg-yellow-100 text-yellow-700'
-                                : 'bg-gray-100 text-gray-700'
+                                : 'bg-gray-100 text-black'
                           }`}
                         >
                           {doc.status.replace('_', ' ')}
@@ -221,7 +221,7 @@ export default async function ClientPortalPage() {
                     </div>
                   </div>
                   <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors" aria-label="Action button">
-                    <Download className="w-5 h-5 text-gray-600" />
+                    <Download className="w-5 h-5 text-black" />
                   </button>
                 </div>
               ))}
@@ -229,7 +229,7 @@ export default async function ClientPortalPage() {
           ) : (
             <div className="text-center py-12">
               <FileText className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-600 mb-4">No documents uploaded yet</p>
+              <p className="text-black mb-4">No documents uploaded yet</p>
               <Link
                 href="/supersonic-fast-cash/upload-documents"
                 className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"

@@ -80,7 +80,7 @@ export default function PurchaseLicensePage() {
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container mx-auto px-4 max-w-6xl">
         <h1 className="text-4xl font-bold mb-2">Purchase Program License</h1>
-        <p className="text-gray-600 mb-8">
+        <p className="text-black mb-8">
           Select a program license to offer training to your students
         </p>
 
@@ -113,14 +113,14 @@ export default function PurchaseLicensePage() {
                         <h3 className="text-lg font-semibold mb-1">
                           {license.name}
                         </h3>
-                        <p className="text-sm text-gray-600 mb-2">
+                        <p className="text-sm text-black mb-2">
                           {license.description}
                         </p>
                         <div className="flex items-center gap-4 text-sm">
                           <span className="text-orange-600 font-semibold">
                             ${license.price.toLocaleString()}
                           </span>
-                          <span className="text-gray-700">
+                          <span className="text-black">
                             Duration: {license.duration}
                           </span>
                         </div>
@@ -133,7 +133,7 @@ export default function PurchaseLicensePage() {
 
             <div className="bg-white rounded-lg shadow-sm p-6">
               <h3 className="text-lg font-semibold mb-4">What's Included</h3>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-black">
                 <li>✓ Full curriculum access</li>
                 <li>✓ Student enrollment management</li>
                 <li>✓ Progress tracking and reporting</li>
@@ -152,12 +152,12 @@ export default function PurchaseLicensePage() {
                 <>
                   <div className="space-y-4 mb-6">
                     <div>
-                      <p className="text-sm text-gray-600">License</p>
+                      <p className="text-sm text-black">License</p>
                       <p className="font-semibold">{selectedLicenseData.name}</p>
                     </div>
 
                     <div>
-                      <label className="block text-sm text-gray-600 mb-2">
+                      <label className="block text-sm text-black mb-2">
                         Quantity
                       </label>
                       <input
@@ -172,7 +172,7 @@ export default function PurchaseLicensePage() {
 
                     <div className="border-t pt-4">
                       <div className="flex justify-between mb-2">
-                        <span className="text-gray-600">Subtotal</span>
+                        <span className="text-black">Subtotal</span>
                         <span>${total.toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between font-bold text-lg">
@@ -194,12 +194,12 @@ export default function PurchaseLicensePage() {
                   </Button>
                 </>
               ) : (
-                <p className="text-gray-700 text-center py-8">
+                <p className="text-black text-center py-8">
                   Select a license to continue
                 </p>
               )}
 
-              <p className="text-xs text-gray-700 text-center mt-4">
+              <p className="text-xs text-black text-center mt-4">
                 Secure payment powered by Stripe
               </p>
             </div>

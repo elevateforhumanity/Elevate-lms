@@ -65,14 +65,14 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
 
       {/* Basic Info */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-gray-900">
+        <h2 className="text-xl font-semibold text-black">
           Basic Information
         </h2>
 
         <div>
           <label
             htmlFor="program_id"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Program *
           </label>
@@ -95,7 +95,7 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
         <div>
           <label
             htmlFor="title"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Module Title *
           </label>
@@ -113,7 +113,7 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
         <div>
           <label
             htmlFor="description"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Description
           </label>
@@ -130,13 +130,13 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
 
       {/* Module Settings */}
       <div className="space-y-4 pt-6 border-t">
-        <h2 className="text-xl font-semibold text-gray-900">Module Settings</h2>
+        <h2 className="text-xl font-semibold text-black">Module Settings</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label
               htmlFor="module_type"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-black mb-1"
             >
               Module Type *
             </label>
@@ -157,7 +157,7 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
           <div>
             <label
               htmlFor="order_index"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-black mb-1"
             >
               Order *
             </label>
@@ -172,7 +172,7 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="0"
             />
-            <p className="text-sm text-gray-700 mt-1">
+            <p className="text-sm text-black mt-1">
               Display order in program
             </p>
           </div>
@@ -180,7 +180,7 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
           <div>
             <label
               htmlFor="duration_hours"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-black mb-1"
             >
               Duration (hours)
             </label>
@@ -207,7 +207,7 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
           />
           <label
             htmlFor="is_required"
-            className="text-sm font-medium text-gray-700"
+            className="text-sm font-medium text-black"
           >
             Required Module (students must complete this)
           </label>
@@ -216,7 +216,7 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
 
       {/* SCORM Upload Section */}
       <div className="space-y-4 pt-6 border-t">
-        <h2 className="text-xl font-semibold text-gray-900">Content</h2>
+        <h2 className="text-xl font-semibold text-black">Content</h2>
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
           <p className="text-sm text-blue-800">
             <strong>Note:</strong> After creating the module, you can upload
@@ -230,7 +230,7 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
         <button
           type="button"
           onClick={() => router.back()}
-          className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium"
+          className="px-6 py-2 border border-gray-300 rounded-lg text-black hover:bg-gray-50 font-medium"
         >
           Cancel
         </button>

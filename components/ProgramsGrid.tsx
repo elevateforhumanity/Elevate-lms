@@ -78,10 +78,10 @@ export default function ProgramsGrid() {
     <section className="section bg-slate-50">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
             Empower Your Future Today
           </h2>
-          <p className="text-lg text-slate-600 leading-relaxed">
+          <p className="text-lg text-black leading-relaxed">
             Join our transformative programs and unlock career opportunities
             that align with industry demands. Flexible, grant-funded options
             mean more possibilities for growth.
@@ -111,13 +111,13 @@ export default function ProgramsGrid() {
                   <span className="text-xs text-slate-500">{p.hours}</span>
                 </div>
                 <h3 className="mt-2 text-lg font-semibold">{p.title}</h3>
-                <p className="mt-1 text-sm text-slate-600">{p.blurb}</p>
+                <p className="mt-1 text-sm text-black">{p.blurb}</p>
                 {!!p.certs?.length && (
                   <div className="mt-3 flex flex-wrap gap-2">
                     {p.certs.map((c) => (
                       <span
                         key={c}
-                        className="text-xs text-slate-600 bg-slate-100 px-2 py-1 rounded-full"
+                        className="text-xs text-black bg-slate-100 px-2 py-1 rounded-full"
                       >
                         {c}
                       </span>

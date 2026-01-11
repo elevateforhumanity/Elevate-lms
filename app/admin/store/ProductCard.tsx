@@ -58,12 +58,12 @@ export default function ProductCard() {
   }
 
   if (loading) {
-    return <div className="text-gray-700">Loading products...</div>;
+    return <div className="text-black">Loading products...</div>;
   }
 
   if (products.length === 0) {
     return (
-      <div className="col-span-full text-center py-12 text-gray-700">
+      <div className="col-span-full text-center py-12 text-black">
         No products yet. Create your first product above!
       </div>
     );
@@ -76,20 +76,20 @@ export default function ProductCard() {
           key={p.id}
           className="border border-gray-200 p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow space-y-3"
         >
-          <h3 className="font-bold text-lg text-gray-900">{p.title}</h3>
+          <h3 className="font-bold text-lg text-black">{p.title}</h3>
 
           {p.description && (
-            <p className="text-sm text-gray-600">{p.description}</p>
+            <p className="text-sm text-black">{p.description}</p>
           )}
 
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-2xl font-bold text-black">
               ${(p.price / 100).toLocaleString()}
             </span>
-            <span className="text-sm text-gray-700">USD</span>
+            <span className="text-sm text-black">USD</span>
           </div>
 
-          <div className="text-xs text-gray-700">
+          <div className="text-xs text-black">
             <span className="font-medium">Repo:</span> {p.repo}
           </div>
 

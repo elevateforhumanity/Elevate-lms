@@ -29,10 +29,10 @@ export function CourseCard({ course }: Props) {
         />
       </div>
       <div className="flex flex-1 flex-col gap-2 p-4">
-        <h3 className="text-base font-semibold text-slate-900">
+        <h3 className="text-base font-semibold text-black">
           {course.title}
         </h3>
-        <p className="line-clamp-3 text-sm text-slate-600">
+        <p className="line-clamp-3 text-sm text-black">
           {course.shortDescription}
         </p>
         <span className="mt-2 inline-flex items-center text-xs font-medium text-brand-orange-600 group-hover:underline">

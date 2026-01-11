@@ -242,10 +242,10 @@ export default function ProgramFinder() {
               <CheckCircle className="w-4 h-4" />
               Your Personalized Results
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
               Perfect Programs for You
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Based on your answers, here are the programs that match your goals and interests.
             </p>
           </motion.div>
@@ -269,7 +269,7 @@ export default function ProgramFinder() {
                         </div>
                         <div>
                           <div className="flex items-center gap-3 mb-2">
-                            <h3 className="text-2xl font-bold text-gray-900">
+                            <h3 className="text-2xl font-bold text-black">
                               {program.name}
                             </h3>
                             {index === 0 && (
@@ -278,7 +278,7 @@ export default function ProgramFinder() {
                               </span>
                             )}
                           </div>
-                          <p className="text-gray-600 mb-4">
+                          <p className="text-black mb-4">
                             {program.description}
                           </p>
                         </div>
@@ -292,21 +292,21 @@ export default function ProgramFinder() {
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-4 mb-6">
-                      <div className="flex items-center gap-2 text-gray-700">
+                      <div className="flex items-center gap-2 text-black">
                         <Clock className="w-5 h-5 text-blue-600" />
                         <div>
                           <div className="text-xs text-gray-500">Duration</div>
                           <div className="font-semibold">{program.duration}</div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 text-gray-700">
+                      <div className="flex items-center gap-2 text-black">
                         <DollarSign className="w-5 h-5 text-green-600" />
                         <div>
                           <div className="text-xs text-gray-500">Salary Range</div>
                           <div className="font-semibold">{program.salary}</div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 text-gray-700">
+                      <div className="flex items-center gap-2 text-black">
                         <TrendingUp className="w-5 h-5 text-purple-600" />
                         <div>
                           <div className="text-xs text-gray-500">Job Demand</div>
@@ -324,7 +324,7 @@ export default function ProgramFinder() {
                       </a>
                       <a
                         href="/apply"
-                        className="flex-1 px-6 py-3 bg-gray-100 text-gray-900 rounded-lg font-semibold hover:bg-gray-200 transition-all text-center flex items-center justify-center gap-2"
+                        className="flex-1 px-6 py-3 bg-gray-100 text-black rounded-lg font-semibold hover:bg-gray-200 transition-all text-center flex items-center justify-center gap-2"
                       >
                         Apply Now
                         <ArrowRight className="w-5 h-5" />
@@ -339,11 +339,11 @@ export default function ProgramFinder() {
           <div className="text-center space-y-4">
             <button
               onClick={handleRestart}
-              className="px-8 py-3 bg-white text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all shadow-md"
+              className="px-8 py-3 bg-white text-black rounded-lg font-semibold hover:bg-gray-50 transition-all shadow-md"
             >
               Start Over
             </button>
-            <p className="text-gray-600">
+            <p className="text-black">
               Not sure yet? <a href="/programs" className="text-blue-600 hover:underline">Browse all programs</a>
             </p>
           </div>
@@ -367,10 +367,10 @@ export default function ProgramFinder() {
             <Sparkles className="w-4 h-4" />
             Find Your Perfect Program
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
             Let's Find Your Path
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-black">
             Answer 5 quick questions to get personalized program recommendations
           </p>
         </motion.div>
@@ -378,10 +378,10 @@ export default function ProgramFinder() {
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-semibold text-gray-700">
+            <span className="text-sm font-semibold text-black">
               Question {currentQuestion + 1} of {questions.length}
             </span>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-black">
               {Math.round(progress)}% Complete
             </span>
           </div>
@@ -404,7 +404,7 @@ export default function ProgramFinder() {
             exit={{ opacity: 0, x: -20 }}
             className="bg-white rounded-2xl shadow-2xl p-8 md:p-12"
           >
-            <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            <h3 className="text-3xl font-bold text-black mb-8 text-center">
               {question.question}
             </h3>
 
@@ -428,11 +428,11 @@ export default function ProgramFinder() {
                     <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
                       isSelected
                         ? 'bg-blue-600 text-white'
-                        : 'bg-gray-100 text-gray-600 group-hover:bg-blue-600 group-hover:text-white'
+                        : 'bg-gray-100 text-black group-hover:bg-blue-600 group-hover:text-white'
                     }`}>
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-lg font-semibold text-gray-900 flex-1">
+                    <span className="text-lg font-semibold text-black flex-1">
                       {option.text}
                     </span>
                     {isSelected && (
@@ -453,7 +453,7 @@ export default function ProgramFinder() {
             className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
               currentQuestion === 0
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : 'bg-white text-gray-700 hover:bg-gray-50 shadow-md'
+                : 'bg-white text-black hover:bg-gray-50 shadow-md'
             }`}
           >
             <ChevronLeft className="w-5 h-5" />
@@ -461,7 +461,7 @@ export default function ProgramFinder() {
           </button>
 
           <div className="text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Takes less than 2 minutes
             </p>
           </div>

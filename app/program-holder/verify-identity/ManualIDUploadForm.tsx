@@ -105,7 +105,7 @@ export default function ManualIDUploadForm({
           <h2 className="text-2xl font-bold text-green-900 mb-2">
             Documents Uploaded Successfully!
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             Your identity documents have been submitted for review. Our team
             will verify your documents within 1-2 business days.
           </p>
@@ -129,7 +129,7 @@ export default function ManualIDUploadForm({
     <div className="bg-white rounded-lg shadow-lg p-8">
       <div className="mb-6">
         <h2 className="text-2xl font-bold mb-2">Upload Photo ID (FREE)</h2>
-        <p className="text-gray-600">
+        <p className="text-black">
           Upload photos of your government-issued ID and a selfie. Admin will
           review within 1-2 business days.
         </p>
@@ -162,7 +162,7 @@ export default function ManualIDUploadForm({
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* ID Front */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             ID Front <span className="text-red-600">*</span>
           </label>
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition">
@@ -181,18 +181,18 @@ export default function ManualIDUploadForm({
               {idFrontFile ? (
                 <>
                   <CheckCircle className="text-green-600 mb-2" size={32} />
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-sm font-medium text-black">
                     {idFrontFile.name}
                   </p>
-                  <p className="text-xs text-gray-700 mt-1">Click to change</p>
+                  <p className="text-xs text-black mt-1">Click to change</p>
                 </>
               ) : (
                 <>
-                  <Upload className="text-gray-600 mb-2" size={32} />
-                  <p className="text-sm font-medium text-gray-900">
+                  <Upload className="text-black mb-2" size={32} />
+                  <p className="text-sm font-medium text-black">
                     Upload front of ID
                   </p>
-                  <p className="text-xs text-gray-700 mt-1">
+                  <p className="text-xs text-black mt-1">
                     Driver's license, passport, or state ID
                   </p>
                 </>
@@ -203,8 +203,8 @@ export default function ManualIDUploadForm({
 
         {/* ID Back */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            ID Back <span className="text-gray-700">(Optional)</span>
+          <label className="block text-sm font-medium text-black mb-2">
+            ID Back <span className="text-black">(Optional)</span>
           </label>
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition">
             <input
@@ -221,18 +221,18 @@ export default function ManualIDUploadForm({
               {idBackFile ? (
                 <>
                   <CheckCircle className="text-green-600 mb-2" size={32} />
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-sm font-medium text-black">
                     {idBackFile.name}
                   </p>
-                  <p className="text-xs text-gray-700 mt-1">Click to change</p>
+                  <p className="text-xs text-black mt-1">Click to change</p>
                 </>
               ) : (
                 <>
-                  <Upload className="text-gray-600 mb-2" size={32} />
-                  <p className="text-sm font-medium text-gray-900">
+                  <Upload className="text-black mb-2" size={32} />
+                  <p className="text-sm font-medium text-black">
                     Upload back of ID
                   </p>
-                  <p className="text-xs text-gray-700 mt-1">
+                  <p className="text-xs text-black mt-1">
                     Optional but recommended
                   </p>
                 </>
@@ -243,7 +243,7 @@ export default function ManualIDUploadForm({
 
         {/* Selfie */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-black mb-2">
             Selfie Holding ID <span className="text-red-600">*</span>
           </label>
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition">
@@ -263,18 +263,18 @@ export default function ManualIDUploadForm({
               {selfieFile ? (
                 <>
                   <CheckCircle className="text-green-600 mb-2" size={32} />
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-sm font-medium text-black">
                     {selfieFile.name}
                   </p>
-                  <p className="text-xs text-gray-700 mt-1">Click to change</p>
+                  <p className="text-xs text-black mt-1">Click to change</p>
                 </>
               ) : (
                 <>
-                  <Camera className="text-gray-600 mb-2" size={32} />
-                  <p className="text-sm font-medium text-gray-900">
+                  <Camera className="text-black mb-2" size={32} />
+                  <p className="text-sm font-medium text-black">
                     Take selfie holding ID
                   </p>
-                  <p className="text-xs text-gray-700 mt-1">
+                  <p className="text-xs text-black mt-1">
                     Hold your ID next to your face
                   </p>
                 </>
@@ -285,10 +285,10 @@ export default function ManualIDUploadForm({
 
         {/* Tips */}
         <div className="bg-gray-50 rounded-lg p-4">
-          <p className="text-sm font-semibold text-gray-900 mb-2">
+          <p className="text-sm font-semibold text-black mb-2">
             📸 Photo Tips:
           </p>
-          <ul className="text-sm text-gray-600 space-y-1">
+          <ul className="text-sm text-black space-y-1">
             <li>• Ensure good lighting</li>
             <li>• ID should be clearly visible and readable</li>
             <li>• No glare or shadows on ID</li>
@@ -311,7 +311,7 @@ export default function ManualIDUploadForm({
       </form>
 
       <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-black">
           <strong>What we verify:</strong>
           <br />
           • ID is not expired

@@ -30,14 +30,14 @@ export default function FreeTaxHelpPage() {
       <div className="mb-6">
         <Link
           href="/tax/rise-up-foundation"
-          className="text-sm text-gray-600 hover:text-gray-900"
+          className="text-sm text-black hover:text-black"
         >
           ← Back to Rise Up Foundation
         </Link>
       </div>
 
       <h1 className="text-4xl font-bold">Free Tax Help</h1>
-      <p className="mt-3 text-lg text-gray-600 mb-6">
+      <p className="mt-3 text-lg text-black mb-6">
         Get your taxes done for free by IRS-certified volunteers through the
         VITA program.
       </p>
@@ -51,14 +51,14 @@ export default function FreeTaxHelpPage() {
           <Calendar className="w-5 h-5" />
           Schedule Free Tax Appointment (Video or Phone)
         </button>
-        <p className="text-sm text-gray-600 text-center mt-2">
+        <p className="text-sm text-black text-center mt-2">
           100% Free • IRS-Certified Volunteers • Video or Phone Available
         </p>
       </div>
 
       <section className="mt-8 rounded-2xl border bg-white p-8">
         <h2 className="text-2xl font-bold mb-4">Who Qualifies?</h2>
-        <p className="text-gray-600 mb-4">
+        <p className="text-black mb-4">
           The VITA program provides free tax help to people who generally make
           $64,000 or less, persons with disabilities, and limited
           English-speaking taxpayers who need assistance in preparing their own
@@ -70,7 +70,7 @@ export default function FreeTaxHelpPage() {
             <span className="text-brand-green-600 font-bold text-xl">✓</span>
             <div>
               <div className="font-semibold">Income Limit</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 Generally $64,000 or less per year
               </div>
             </div>
@@ -79,7 +79,7 @@ export default function FreeTaxHelpPage() {
             <span className="text-brand-green-600 font-bold text-xl">✓</span>
             <div>
               <div className="font-semibold">Persons with Disabilities</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 Regardless of income level
               </div>
             </div>
@@ -88,7 +88,7 @@ export default function FreeTaxHelpPage() {
             <span className="text-brand-green-600 font-bold text-xl">✓</span>
             <div>
               <div className="font-semibold">Limited English Speakers</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 We provide assistance in multiple languages
               </div>
             </div>
@@ -98,14 +98,14 @@ export default function FreeTaxHelpPage() {
 
       <section className="mt-8 rounded-2xl border bg-white p-8">
         <h2 className="text-2xl font-bold mb-4">What to Bring</h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-black mb-6">
           To prepare your tax return, please bring the following documents:
         </p>
 
         <div className="space-y-6">
           <div>
             <h3 className="font-semibold text-lg mb-2">Identification</h3>
-            <ul className="list-disc pl-5 space-y-1 text-gray-700">
+            <ul className="list-disc pl-5 space-y-1 text-black">
               <li>
                 Government-issued photo ID (driver's license, state ID,
                 passport)
@@ -119,7 +119,7 @@ export default function FreeTaxHelpPage() {
 
           <div>
             <h3 className="font-semibold text-lg mb-2">Income Documents</h3>
-            <ul className="list-disc pl-5 space-y-1 text-gray-700">
+            <ul className="list-disc pl-5 space-y-1 text-black">
               <li>W-2 forms from all employers</li>
               <li>
                 1099 forms (interest, dividends, retirement, unemployment, etc.)
@@ -132,7 +132,7 @@ export default function FreeTaxHelpPage() {
             <h3 className="font-semibold text-lg mb-2">
               Deduction Documents (if applicable)
             </h3>
-            <ul className="list-disc pl-5 space-y-1 text-gray-700">
+            <ul className="list-disc pl-5 space-y-1 text-black">
               <li>Childcare provider information (name, address, tax ID)</li>
               <li>Form 1098-T for education expenses</li>
               <li>Form 1098 for mortgage interest</li>
@@ -142,7 +142,7 @@ export default function FreeTaxHelpPage() {
 
           <div>
             <h3 className="font-semibold text-lg mb-2">Other</h3>
-            <ul className="list-disc pl-5 space-y-1 text-gray-700">
+            <ul className="list-disc pl-5 space-y-1 text-black">
               <li>Copy of last year's tax return (if available)</li>
               <li>Bank account and routing numbers for direct deposit</li>
               <li>Health insurance information (Form 1095-A, B, or C)</li>
@@ -153,7 +153,7 @@ export default function FreeTaxHelpPage() {
 
       <section className="mt-8 rounded-2xl border bg-white p-8">
         <h2 className="text-2xl font-bold mb-4">How to Schedule</h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-black mb-6">
           Schedule your VITA tax preparation appointment to ensure we can give
           you the time and attention you deserve.
         </p>
@@ -165,7 +165,7 @@ export default function FreeTaxHelpPage() {
             </div>
             <div>
               <div className="font-semibold">Call to Schedule</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 Call 317-314-3757 to book your appointment
               </div>
             </div>
@@ -176,7 +176,7 @@ export default function FreeTaxHelpPage() {
             </div>
             <div>
               <div className="font-semibold">Gather Documents</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 Collect all required documents listed above
               </div>
             </div>
@@ -187,7 +187,7 @@ export default function FreeTaxHelpPage() {
             </div>
             <div>
               <div className="font-semibold">Attend Appointment</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 Meet with our volunteer at your scheduled time
               </div>
             </div>
@@ -198,7 +198,7 @@ export default function FreeTaxHelpPage() {
             </div>
             <div>
               <div className="font-semibold">File for Free</div>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 We'll prepare and e-file your return at no cost
               </div>
             </div>
@@ -222,8 +222,8 @@ export default function FreeTaxHelpPage() {
       </section>
 
       <section className="mt-8 rounded-2xl bg-blue-50 border-l-4 border-blue-400 p-6">
-        <h3 className="font-semibold text-gray-900">Reference</h3>
-        <p className="mt-2 text-sm text-gray-700">
+        <h3 className="font-semibold text-black">Reference</h3>
+        <p className="mt-2 text-sm text-black">
           For more information about the VITA program, visit the{' '}
           <a
             href="https://www.irs.gov/individuals/free-tax-return-preparation-for-qualifying-taxpayers"

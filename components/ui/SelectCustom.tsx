@@ -99,7 +99,7 @@ export const Select: React.FC<SelectProps> = ({
   return (
     <div className={fullWidth ? 'w-full' : ''} ref={containerRef}>
       {label && (
-        <label className="block text-sm font-semibold text-slate-700 mb-2">
+        <label className="block text-sm font-semibold text-black mb-2">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>
@@ -119,13 +119,13 @@ export const Select: React.FC<SelectProps> = ({
           `}
         >
           <div className="flex items-center justify-between">
-            <span className={selectedValues.length === 0 ? 'text-slate-400' : 'text-slate-900'}>
+            <span className={selectedValues.length === 0 ? 'text-slate-400' : 'text-black'}>
               {selectedValues.length === 0 ? Content : selectedLabels}
             </span>
             <div className="flex items-center gap-2">
               {selectedValues.length > 0 && !disabled && (
                 <X
-                  className="h-4 w-4 text-slate-400 hover:text-slate-600"
+                  className="h-4 w-4 text-slate-400 hover:text-black"
                   onClick={handleClear}
                 />
               )}
@@ -168,7 +168,7 @@ export const Select: React.FC<SelectProps> = ({
                       disabled={option.disabled}
                       className={`
                         w-full px-4 py-2 text-left text-sm transition-colors
-                        ${option.disabled ? 'text-slate-400 cursor-not-allowed' : 'text-slate-900 hover:bg-slate-50 cursor-pointer'}
+                        ${option.disabled ? 'text-slate-400 cursor-not-allowed' : 'text-black hover:bg-slate-50 cursor-pointer'}
                         ${isSelected ? 'bg-blue-50 text-brand-orange-600' : ''}
                       `}
                     >

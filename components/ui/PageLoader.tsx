@@ -11,7 +11,7 @@ export function PageLoader({ message = 'Loading...' }: PageLoaderProps) {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="text-center">
         <LoadingSpinner size="lg" />
-        <p className="mt-4 text-lg text-gray-600">{message}</p>
+        <p className="mt-4 text-lg text-black">{message}</p>
       </div>
     </div>
   );
@@ -22,7 +22,7 @@ export function SectionLoader({ message = 'Loading...' }: PageLoaderProps) {
     <div className="py-12 flex items-center justify-center">
       <div className="text-center">
         <LoadingSpinner size="md" />
-        <p className="mt-4 text-gray-600">{message}</p>
+        <p className="mt-4 text-black">{message}</p>
       </div>
     </div>
   );

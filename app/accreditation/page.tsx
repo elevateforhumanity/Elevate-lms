@@ -80,26 +80,26 @@ export default function AccreditationPage() {
             Why Accreditation Matters
           </h2>
 
-          <p className="text-base md:text-lg text-slate-700 mb-6 leading-relaxed">
+          <p className="text-base md:text-lg text-black mb-6 leading-relaxed">
             Anyone can call themselves a "training provider." But not everyone
             is officially approved by the government.
           </p>
 
-          <p className="text-lg text-slate-600 mb-6">
+          <p className="text-lg text-black mb-6">
             We're not just a training school—we're an{' '}
             <strong>officially approved provider</strong> by Indiana's
             Department of Workforce Development, the U.S. Department of Labor,
             and state licensing boards.
           </p>
 
-          <p className="text-lg text-slate-600 mb-6">That means:</p>
+          <p className="text-lg text-black mb-6">That means:</p>
 
           <ul className="space-y-3 mb-6">
             <li className="flex items-start gap-3">
               <span className="text-brand-green-600 font-bold text-base">
                 ✓
               </span>
-              <span className="text-slate-700">
+              <span className="text-black">
                 Your training is <strong>recognized by employers</strong>{' '}
                 nationwide
               </span>
@@ -108,7 +108,7 @@ export default function AccreditationPage() {
               <span className="text-brand-green-600 font-bold text-base">
                 ✓
               </span>
-              <span className="text-slate-700">
+              <span className="text-black">
                 You can get <strong>government funding</strong> (WRG, WIOA) to
                 pay for it
               </span>
@@ -117,7 +117,7 @@ export default function AccreditationPage() {
               <span className="text-brand-green-600 font-bold text-base">
                 ✓
               </span>
-              <span className="text-slate-700">
+              <span className="text-black">
                 Your certifications are <strong>valid and transferable</strong>
               </span>
             </li>
@@ -125,14 +125,14 @@ export default function AccreditationPage() {
               <span className="text-brand-green-600 font-bold text-base">
                 ✓
               </span>
-              <span className="text-slate-700">
+              <span className="text-black">
                 We meet <strong>federal and state standards</strong> for quality
                 training
               </span>
             </li>
           </ul>
 
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-black">
             Bottom line: When you train with us, you're getting real credentials
             that employers respect.
           </p>
@@ -158,10 +158,10 @@ export default function AccreditationPage() {
 
               <div className="space-y-4">
                 <div>
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-black">
                     U.S. Department of Labor
                   </p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     Registered Apprenticeship Sponsor
                   </p>
                   <p className="text-xs text-slate-500">
@@ -170,10 +170,10 @@ export default function AccreditationPage() {
                 </div>
 
                 <div>
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-black">
                     WIOA Eligible Training Provider
                   </p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     Approved for federal workforce funding
                   </p>
                 </div>
@@ -191,37 +191,37 @@ export default function AccreditationPage() {
 
               <div className="space-y-4">
                 <div>
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-black">
                     Indiana Department of Workforce Development
                   </p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     INTraining Program Location ID: 10004621
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-black">
                     Workforce Ready Grant (WRG) Approved
                   </p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     All programs eligible for free state funding
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-black">
                     Indiana State Board of Cosmetology
                   </p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     Approved school for beauty programs
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-black">
                     Indiana State Board of Barber Examiners
                   </p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     Approved for barber apprenticeships
                   </p>
                 </div>
@@ -239,24 +239,24 @@ export default function AccreditationPage() {
 
               <div className="space-y-4">
                 <div>
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-black">
                     Justice Reinvestment Initiative (JRI)
                   </p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     Partner for justice-involved individuals
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-slate-900">WorkOne Centers</p>
-                  <p className="text-sm text-slate-600">
+                  <p className="font-bold text-black">WorkOne Centers</p>
+                  <p className="text-sm text-black">
                     Approved WIOA training provider
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-slate-900">EmployIndy</p>
-                  <p className="text-sm text-slate-600">
+                  <p className="font-bold text-black">EmployIndy</p>
+                  <p className="text-sm text-black">
                     Workforce development partner
                   </p>
                 </div>
@@ -274,36 +274,36 @@ export default function AccreditationPage() {
 
               <div className="space-y-4">
                 <div>
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-black">
                     Licensed Instructors
                   </p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     All instructors hold current state licenses and industry
                     certifications
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-black">
                     Industry-Recognized Certifications
                   </p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     Credentials accepted by employers nationwide
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-slate-900">ADA Compliant</p>
-                  <p className="text-sm text-slate-600">
+                  <p className="font-bold text-black">ADA Compliant</p>
+                  <p className="text-sm text-black">
                     Accessible facilities and accommodations
                   </p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-slate-900">
+                  <p className="font-bold text-black">
                     Equal Opportunity Provider
                   </p>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     No discrimination based on race, gender, age, or background
                   </p>
                 </div>
@@ -325,7 +325,7 @@ export default function AccreditationPage() {
               <h3 className="text-lg font-bold mb-2 text-green-900">
                 ✓ Your Training is Legitimate
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 We're not a diploma mill. We're officially approved by
                 government agencies. Your certifications are real and
                 recognized.
@@ -336,7 +336,7 @@ export default function AccreditationPage() {
               <h3 className="text-lg font-bold mb-2 text-blue-900">
                 ✓ You Can Get Free Funding
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Because we're WRG and WIOA approved, you can get 100% free
                 training through government programs. No tuition. No debt.
               </p>
@@ -346,7 +346,7 @@ export default function AccreditationPage() {
               <h3 className="text-lg font-bold mb-2 text-orange-900">
                 ✓ Employers Trust Our Graduates
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 When you graduate from an approved program, employers know
                 you've been trained to industry standards. It opens doors.
               </p>
@@ -356,7 +356,7 @@ export default function AccreditationPage() {
               <h3 className="text-lg font-bold mb-2 text-purple-900">
                 ✓ Your Credentials Transfer
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 If you move to another state, your certifications are still
                 valid. Federal and state approvals mean nationwide recognition.
               </p>
@@ -372,7 +372,7 @@ export default function AccreditationPage() {
             Verify Our Credentials
           </h2>
 
-          <p className="text-lg text-slate-600 mb-8">
+          <p className="text-lg text-black mb-8">
             Don't just take our word for it. You can verify our approvals
             directly with government agencies:
           </p>
@@ -380,7 +380,7 @@ export default function AccreditationPage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white rounded-lg p-6 text-left">
               <p className="font-bold mb-2">U.S. Department of Labor</p>
-              <p className="text-sm text-slate-600 mb-2">
+              <p className="text-sm text-black mb-2">
                 Search RAPIDS ID: 2025-IN-132301
               </p>
               <a
@@ -395,7 +395,7 @@ export default function AccreditationPage() {
 
             <div className="bg-white rounded-lg p-6 text-left">
               <p className="font-bold mb-2">Indiana DWD</p>
-              <p className="text-sm text-slate-600 mb-2">
+              <p className="text-sm text-black mb-2">
                 INTraining Location ID: 10004621
               </p>
               <a
@@ -580,26 +580,26 @@ export default function AccreditationPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl p-8 text-gray-900">
+          <div className="bg-white rounded-xl p-8 text-black">
             <h3 className="text-2xl font-bold mb-4 text-center">Our Impact</h3>
             <div className="grid md:grid-cols-4 gap-6 text-center">
               <div>
                 <div className="text-4xl font-bold text-purple-600 mb-2">
                   500+
                 </div>
-                <div className="text-sm text-gray-600">Students Trained</div>
+                <div className="text-sm text-black">Students Trained</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-purple-600 mb-2">
                   85%
                 </div>
-                <div className="text-sm text-gray-600">Job Placement Rate</div>
+                <div className="text-sm text-black">Job Placement Rate</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-purple-600 mb-2">
                   $18+
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-black">
                   Average Starting Wage
                 </div>
               </div>
@@ -607,7 +607,7 @@ export default function AccreditationPage() {
                 <div className="text-4xl font-bold text-purple-600 mb-2">
                   15+
                 </div>
-                <div className="text-sm text-gray-600">Career Pathways</div>
+                <div className="text-sm text-black">Career Pathways</div>
               </div>
             </div>
           </div>
@@ -660,7 +660,7 @@ export default function AccreditationPage() {
               Schedule at IndianaCareerConnect.com
             </a>
           </div>
-          <p className="mt-6 text-slate-600">
+          <p className="mt-6 text-black">
             Call{' '}
             <a href="tel:3173143757" className="font-bold underline">
               317-314-3757

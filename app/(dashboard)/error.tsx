@@ -19,11 +19,11 @@ export default function DashboardError({
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
         <AlertCircle className="h-16 w-16 text-red-600 mx-auto mb-6" />
 
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">
+        <h1 className="text-2xl font-bold text-black mb-4">
           Dashboard Error
         </h1>
 
-        <p className="text-gray-600 mb-6">
+        <p className="text-black mb-6">
           We couldn't load your dashboard. This might be a temporary issue.
         </p>
 
@@ -46,7 +46,7 @@ export default function DashboardError({
 
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition font-semibold"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 text-black rounded-lg hover:bg-gray-200 transition font-semibold"
           >
             <Home className="h-5 w-5" />
             Go Home
@@ -54,7 +54,7 @@ export default function DashboardError({
 
           <Link
             href="/api/auth/signout"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition font-semibold"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-300 text-black rounded-lg hover:bg-gray-50 transition font-semibold"
           >
             <LogOut className="h-5 w-5" />
             Sign Out & Try Again
@@ -62,7 +62,7 @@ export default function DashboardError({
         </div>
 
         <div className="mt-6 pt-6 border-t border-gray-200">
-          <p className="text-sm text-gray-700">
+          <p className="text-sm text-black">
             Need help?{' '}
             <a href="mailto:Elevate4humanityedu@gmail.com" className="text-blue-600 hover:underline">
               Contact Support

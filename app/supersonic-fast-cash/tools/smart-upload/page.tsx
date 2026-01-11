@@ -220,7 +220,7 @@ export default function SmartUploadPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Smart Document Upload
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-black max-w-2xl mx-auto">
             Upload your W-2s, 1099s, and receipts. We'll automatically extract
             all the data for you using Drake Software OCR.
           </p>
@@ -253,11 +253,11 @@ export default function SmartUploadPage() {
             <h3 className="text-2xl font-bold mb-2">
               {isDragActive ? 'Drop files here' : 'Upload Tax Documents'}
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-black mb-6">
               Drag & drop or click to browse. We support W-2s, 1099s, receipts,
               and more.
             </p>
-            <div className="flex items-center gap-4 text-sm text-gray-700">
+            <div className="flex items-center gap-4 text-sm text-black">
               <div className="flex items-center gap-1">
                 <ImageIcon className="w-4 h-4" />
                 <span>JPG, PNG, HEIC</span>
@@ -279,7 +279,7 @@ export default function SmartUploadPage() {
           <div className="bg-white rounded-xl shadow-sm p-6">
             <Sparkles className="w-10 h-10 text-purple-600 mb-4" />
             <h3 className="font-bold text-lg mb-2">Auto Data Extraction</h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Drake Software OCR automatically reads and extracts all data from
               your documents
             </p>
@@ -288,7 +288,7 @@ export default function SmartUploadPage() {
           <div className="bg-white rounded-xl shadow-sm p-6">
             <CheckCircle className="w-10 h-10 text-green-600 mb-4" />
             <h3 className="font-bold text-lg mb-2">95%+ Accuracy</h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Industry-leading OCR technology ensures accurate data extraction
             </p>
           </div>
@@ -296,7 +296,7 @@ export default function SmartUploadPage() {
           <div className="bg-white rounded-xl shadow-sm p-6">
             <Loader2 className="w-10 h-10 text-blue-600 mb-4" />
             <h3 className="font-bold text-lg mb-2">Instant Processing</h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Get results in seconds. No manual data entry required
             </p>
           </div>
@@ -325,7 +325,7 @@ export default function SmartUploadPage() {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <FileText className="w-12 h-12 text-gray-600" />
+                        <FileText className="w-12 h-12 text-black" />
                       </div>
                     )}
                   </div>
@@ -337,7 +337,7 @@ export default function SmartUploadPage() {
                         <h3 className="font-bold text-lg mb-1">
                           {file.file.name}
                         </h3>
-                        <p className="text-sm text-gray-700">
+                        <p className="text-sm text-black">
                           {(file.file.size / 1024 / 1024).toFixed(2)} MB
                         </p>
                       </div>
@@ -372,7 +372,7 @@ export default function SmartUploadPage() {
                           onClick={() => removeFile(file.id)}
                           className="p-2 hover:bg-gray-100 rounded-lg transition"
                         >
-                          <Trash2 className="w-4 h-4 text-gray-600" />
+                          <Trash2 className="w-4 h-4 text-black" />
                         </button>
                       </div>
                     </div>
@@ -394,7 +394,7 @@ export default function SmartUploadPage() {
                         <div className="grid md:grid-cols-2 gap-4">
                           {file.extractedData.data.employer && (
                             <div>
-                              <label className="text-xs font-medium text-gray-600">
+                              <label className="text-xs font-medium text-black">
                                 Employer
                               </label>
                               <p className="font-semibold">
@@ -404,7 +404,7 @@ export default function SmartUploadPage() {
                           )}
                           {file.extractedData.data.ein && (
                             <div>
-                              <label className="text-xs font-medium text-gray-600">
+                              <label className="text-xs font-medium text-black">
                                 EIN
                               </label>
                               <p className="font-semibold">
@@ -414,7 +414,7 @@ export default function SmartUploadPage() {
                           )}
                           {file.extractedData.data.wages && (
                             <div>
-                              <label className="text-xs font-medium text-gray-600">
+                              <label className="text-xs font-medium text-black">
                                 Wages (Box 1)
                               </label>
                               <p className="font-semibold text-green-700 text-lg">
@@ -424,7 +424,7 @@ export default function SmartUploadPage() {
                           )}
                           {file.extractedData.data.federalWithholding && (
                             <div>
-                              <label className="text-xs font-medium text-gray-600">
+                              <label className="text-xs font-medium text-black">
                                 Federal Withholding (Box 2)
                               </label>
                               <p className="font-semibold text-green-700 text-lg">
@@ -436,7 +436,7 @@ export default function SmartUploadPage() {
                           )}
                           {file.extractedData.data.socialSecurityWages && (
                             <div>
-                              <label className="text-xs font-medium text-gray-600">
+                              <label className="text-xs font-medium text-black">
                                 Social Security Wages (Box 3)
                               </label>
                               <p className="font-semibold">
@@ -448,7 +448,7 @@ export default function SmartUploadPage() {
                           )}
                           {file.extractedData.data.medicareWages && (
                             <div>
-                              <label className="text-xs font-medium text-gray-600">
+                              <label className="text-xs font-medium text-black">
                                 Medicare Wages (Box 5)
                               </label>
                               <p className="font-semibold">
@@ -460,7 +460,7 @@ export default function SmartUploadPage() {
                           )}
                           {file.extractedData.data.stateWithholding && (
                             <div>
-                              <label className="text-xs font-medium text-gray-600">
+                              <label className="text-xs font-medium text-black">
                                 State Withholding (Box 17)
                               </label>
                               <p className="font-semibold">

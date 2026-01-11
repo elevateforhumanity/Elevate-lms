@@ -186,10 +186,10 @@ export default function DeviceCompatibility() {
         <div className="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
           <Smartphone size={32} className="text-brand-orange-600" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
+        <h1 className="text-2xl font-bold text-black mb-2">
           Device Compatibility
         </h1>
-        <p className="text-gray-600">
+        <p className="text-black">
           {supportedCount} of {totalCount} features supported (
           {Math.round(compatibilityPercent)}%)
         </p>
@@ -204,56 +204,56 @@ export default function DeviceCompatibility() {
       {/* Device Info */}
       {deviceInfo && (
         <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <h2 className="font-semibold text-gray-900 mb-4">
+          <h2 className="font-semibold text-black mb-4">
             Device Information
           </h2>
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div>
-              <div className="text-gray-600">Operating System</div>
-              <div className="font-medium text-gray-900">{deviceInfo.os}</div>
+              <div className="text-black">Operating System</div>
+              <div className="font-medium text-black">{deviceInfo.os}</div>
             </div>
             <div>
-              <div className="text-gray-600">Device Type</div>
-              <div className="font-medium text-gray-900">
+              <div className="text-black">Device Type</div>
+              <div className="font-medium text-black">
                 {deviceInfo.device}
               </div>
             </div>
             <div>
-              <div className="text-gray-600">Browser</div>
-              <div className="font-medium text-gray-900">
+              <div className="text-black">Browser</div>
+              <div className="font-medium text-black">
                 {deviceInfo.browser}
               </div>
             </div>
             <div>
-              <div className="text-gray-600">Screen Size</div>
-              <div className="font-medium text-gray-900">
+              <div className="text-black">Screen Size</div>
+              <div className="font-medium text-black">
                 {deviceInfo.screen.width} × {deviceInfo.screen.height}
               </div>
             </div>
             <div>
-              <div className="text-gray-600">Pixel Ratio</div>
-              <div className="font-medium text-gray-900">
+              <div className="text-black">Pixel Ratio</div>
+              <div className="font-medium text-black">
                 {deviceInfo.screen.pixelRatio}x
               </div>
             </div>
             <div>
-              <div className="text-gray-600">Online Status</div>
-              <div className="font-medium text-gray-900">
+              <div className="text-black">Online Status</div>
+              <div className="font-medium text-black">
                 {deviceInfo.online ? 'Online' : 'Offline'}
               </div>
             </div>
             {deviceInfo.network && (
               <>
                 <div>
-                  <div className="text-gray-600">Connection Type</div>
-                  <div className="font-medium text-gray-900">
+                  <div className="text-black">Connection Type</div>
+                  <div className="font-medium text-black">
                     {deviceInfo.network.effectiveType?.toUpperCase() ||
                       'Unknown'}
                   </div>
                 </div>
                 <div>
-                  <div className="text-gray-600">Download Speed</div>
-                  <div className="font-medium text-gray-900">
+                  <div className="text-black">Download Speed</div>
+                  <div className="font-medium text-black">
                     {deviceInfo.network.downlink
                       ? `${deviceInfo.network.downlink} Mbps`
                       : 'Unknown'}
@@ -267,7 +267,7 @@ export default function DeviceCompatibility() {
       {/* Feature Support */}
       <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-200">
-          <h2 className="font-semibold text-gray-900">Feature Support</h2>
+          <h2 className="font-semibold text-black">Feature Support</h2>
         </div>
         <div className="divide-y divide-gray-200">
           {checks.map((check, index) => (
@@ -280,8 +280,8 @@ export default function DeviceCompatibility() {
                 )}
               </div>
               <div className="flex-1">
-                <div className="font-medium text-gray-900">{check.name}</div>
-                <div className="text-sm text-gray-600">{check.message}</div>
+                <div className="font-medium text-black">{check.name}</div>
+                <div className="text-sm text-black">{check.message}</div>
               </div>
             </div>
           ))}

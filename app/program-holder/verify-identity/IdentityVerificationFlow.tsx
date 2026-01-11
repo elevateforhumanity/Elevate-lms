@@ -152,10 +152,10 @@ export default function IdentityVerificationFlow({
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
           <Clock className="w-16 h-16 mx-auto mb-4 text-orange-600" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">
+          <h1 className="text-2xl font-bold text-black mb-4">
             Verification Pending
           </h1>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             Your documents have been submitted and are under review. Our team
             will verify your identity within 24-48 hours.
           </p>
@@ -182,10 +182,10 @@ export default function IdentityVerificationFlow({
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
           <AlertCircle className="w-16 h-16 mx-auto mb-4 text-red-600" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">
+          <h1 className="text-2xl font-bold text-black mb-4">
             Verification Failed
           </h1>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             We were unable to verify your identity. Please try again or contact
             support for assistance.
           </p>
@@ -214,10 +214,10 @@ export default function IdentityVerificationFlow({
         <div className="max-w-2xl w-full">
           <div className="text-center mb-8">
             <Shield className="w-16 h-16 mx-auto mb-4 text-blue-600" />
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl font-bold text-black mb-4">
               Identity Verification
             </h1>
-            <p className="text-gray-600">
+            <p className="text-black">
               To activate your program holder account, we need to verify your
               identity. Choose your preferred verification method:
             </p>
@@ -229,7 +229,7 @@ export default function IdentityVerificationFlow({
               <div className="flex items-center gap-3 mb-4">
                 <Camera className="w-8 h-8 text-blue-600" />
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">
+                  <h3 className="text-lg font-bold text-black">
                     Instant Verification
                   </h3>
                   <span className="text-xs text-green-600 font-medium">
@@ -237,11 +237,11 @@ export default function IdentityVerificationFlow({
                   </span>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-black mb-4">
                 Take a selfie and photo of your ID. Verification completes in
                 minutes.
               </p>
-              <ul className="text-sm text-gray-700 space-y-2 mb-6">
+              <ul className="text-sm text-black space-y-2 mb-6">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-green-600" />
                   Instant results
@@ -266,31 +266,31 @@ export default function IdentityVerificationFlow({
             {/* Manual Upload */}
             <div className="bg-white rounded-lg shadow-lg p-6">
               <div className="flex items-center gap-3 mb-4">
-                <Upload className="w-8 h-8 text-gray-600" />
+                <Upload className="w-8 h-8 text-black" />
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900">
+                  <h3 className="text-lg font-bold text-black">
                     Manual Upload
                   </h3>
-                  <span className="text-xs text-gray-700 font-medium">
+                  <span className="text-xs text-black font-medium">
                     24-48 HOURS
                   </span>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-black mb-4">
                 Upload photos of your ID and Social Security Card for manual
                 review.
               </p>
-              <ul className="text-sm text-gray-700 space-y-2 mb-6">
+              <ul className="text-sm text-black space-y-2 mb-6">
                 <li className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-orange-600" />
                   24-48 hour review
                 </li>
                 <li className="flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-gray-600" />
+                  <FileText className="w-4 h-4 text-black" />
                   Upload documents
                 </li>
                 <li className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-gray-600" />
+                  <Shield className="w-4 h-4 text-black" />
                   Secure storage
                 </li>
               </ul>
@@ -304,7 +304,7 @@ export default function IdentityVerificationFlow({
           </div>
 
           <div className="mt-8 text-center">
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Your information is encrypted and secure. We comply with all
               privacy regulations.
             </p>
@@ -320,10 +320,10 @@ export default function IdentityVerificationFlow({
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
           <Camera className="w-16 h-16 mx-auto mb-4 text-blue-600" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+          <h1 className="text-2xl font-bold text-black mb-4 text-center">
             Instant Identity Verification
           </h1>
-          <p className="text-gray-600 mb-6 text-center">
+          <p className="text-black mb-6 text-center">
             You'll be redirected to our secure verification partner to complete
             identity verification.
           </p>
@@ -355,7 +355,7 @@ export default function IdentityVerificationFlow({
 
           <button
             onClick={() => setVerificationMethod(null)}
-            className="w-full px-4 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300"
+            className="w-full px-4 py-3 bg-gray-200 text-black rounded-lg font-medium hover:bg-gray-300"
           >
             Back
           </button>
@@ -369,11 +369,11 @@ export default function IdentityVerificationFlow({
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-8">
         <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8">
-          <Upload className="w-16 h-16 mx-auto mb-4 text-gray-600" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+          <Upload className="w-16 h-16 mx-auto mb-4 text-black" />
+          <h1 className="text-2xl font-bold text-black mb-4 text-center">
             Upload Verification Documents
           </h1>
-          <p className="text-gray-600 mb-6 text-center">
+          <p className="text-black mb-6 text-center">
             Upload clear photos of your ID and Social Security Card. Our team
             will review within 24-48 hours.
           </p>
@@ -387,11 +387,11 @@ export default function IdentityVerificationFlow({
           <div className="space-y-6 mb-6">
             {/* Photo ID */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 Photo ID (Driver's License, Passport, State ID) *
               </label>
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                <FileText className="w-12 h-12 mx-auto mb-3 text-gray-600" />
+                <FileText className="w-12 h-12 mx-auto mb-3 text-black" />
                 <input
                   type="file"
                   accept="image/*,.pdf"
@@ -421,11 +421,11 @@ export default function IdentityVerificationFlow({
 
             {/* Social Security Card */}
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-black mb-2">
                 Social Security Card *
               </label>
               <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                <FileText className="w-12 h-12 mx-auto mb-3 text-gray-600" />
+                <FileText className="w-12 h-12 mx-auto mb-3 text-black" />
                 <input
                   type="file"
                   accept="image/*,.pdf"
@@ -472,7 +472,7 @@ export default function IdentityVerificationFlow({
 
           <button
             onClick={() => setVerificationMethod(null)}
-            className="w-full px-4 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300"
+            className="w-full px-4 py-3 bg-gray-200 text-black rounded-lg font-medium hover:bg-gray-300"
           >
             Back
           </button>

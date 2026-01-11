@@ -26,7 +26,7 @@ export function ServiceWorkerInit() {
         (t) => (
           <div className="flex flex-col gap-2">
             <p className="font-semibold">Update Available</p>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               A new version of the app is available.
             </p>
             <button

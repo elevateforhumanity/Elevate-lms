@@ -30,7 +30,7 @@ export function Tooltip({ content, type = 'help', children }: TooltipProps) {
     <div className="relative inline-block">
       <button
         type="button"
-        className="inline-flex items-center justify-center w-5 h-5 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full"
+        className="inline-flex items-center justify-center w-5 h-5 text-gray-500 hover:text-black focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full"
         onMouseEnter={() => setIsVisible(true)}
         onMouseLeave={() => setIsVisible(false)}
         onFocus={() => setIsVisible(true)}
@@ -43,7 +43,7 @@ export function Tooltip({ content, type = 'help', children }: TooltipProps) {
 
       {isVisible && (
         <div
-          className="absolute z-50 w-64 p-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg shadow-lg bottom-full left-1/2 transform -translate-x-1/2 mb-2"
+          className="absolute z-50 w-64 p-3 text-sm text-black bg-white border border-gray-200 rounded-lg shadow-lg bottom-full left-1/2 transform -translate-x-1/2 mb-2"
           role="tooltip"
         >
           <div className="relative">
@@ -183,10 +183,10 @@ export function EmptyState({
   return (
     <div className="flex flex-col items-center justify-center p-8 text-center border-2 border-dashed border-gray-300 rounded-lg">
       <div className="flex items-center gap-2 mb-2">
-        <h3 className="text-lg font-medium text-gray-900">{title}</h3>
+        <h3 className="text-lg font-medium text-black">{title}</h3>
         {tooltipContent && <Tooltip content={tooltipContent} />}
       </div>
-      <p className="max-w-md mb-4 text-sm text-gray-600">{description}</p>
+      <p className="max-w-md mb-4 text-sm text-black">{description}</p>
       {action && (
         <a
           href={action.href}
@@ -226,7 +226,7 @@ export function FormField({
       <div className="flex items-center gap-2 mb-1">
         <label
           htmlFor={name}
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium text-black"
         >
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}

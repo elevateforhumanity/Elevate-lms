@@ -22,7 +22,7 @@ export default function GoogleClassroomSync() {
         <h2 className="text-xl font-semibold mb-4">Sync Status</h2>
         <div className="space-y-4">
           <div>
-            <p className="text-sm text-gray-600">Last Sync</p>
+            <p className="text-sm text-black">Last Sync</p>
             <p className="font-medium">
               {lastSync ? lastSync.toLocaleString() : 'Never'}
             </p>

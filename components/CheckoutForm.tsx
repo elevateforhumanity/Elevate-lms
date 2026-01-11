@@ -104,10 +104,10 @@ function PaymentForm({
         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
           <Check className="w-10 h-10 text-green-600" />
         </div>
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">
+        <h3 className="text-2xl font-bold text-black mb-2">
           Payment Successful!
         </h3>
-        <p className="text-gray-600 mb-6">
+        <p className="text-black mb-6">
           You're now enrolled in {courseName}
         </p>
         <button
@@ -124,11 +124,11 @@ function PaymentForm({
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Order Summary */}
       <div className="bg-gray-50 rounded-lg p-6">
-        <h3 className="font-semibold text-gray-900 mb-4">Order Summary</h3>
+        <h3 className="font-semibold text-black mb-4">Order Summary</h3>
         <div className="space-y-2">
           <div className="flex justify-between">
-            <span className="text-gray-600">{courseName}</span>
-            <span className="font-semibold text-gray-900">
+            <span className="text-black">{courseName}</span>
+            <span className="font-semibold text-black">
               ${amount.toFixed(2)}
             </span>
           </div>
@@ -149,7 +149,7 @@ function PaymentForm({
 
       {/* Payment Element */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-black mb-2">
           Payment Details
         </label>
         <PaymentElement />
@@ -163,7 +163,7 @@ function PaymentForm({
       )}
 
       {/* Security Notice */}
-      <div className="flex items-center gap-2 text-sm text-gray-600">
+      <div className="flex items-center gap-2 text-sm text-black">
         <Lock className="w-4 h-4" />
         <span>Your payment information is secure and encrypted</span>
       </div>

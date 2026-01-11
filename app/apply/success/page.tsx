@@ -83,14 +83,14 @@ export default function ApplicationSuccessPage({
             <CheckCircle className="w-10 h-10 text-emerald-600" />
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl font-bold text-black mb-4">
             {content.title}
           </h1>
 
-          <p className="text-lg text-slate-700 mb-8">{content.message}</p>
+          <p className="text-lg text-black mb-8">{content.message}</p>
 
           <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 mb-8 text-left">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">
+            <h2 className="text-lg font-bold text-black mb-4">
               What Happens Next?
             </h2>
             <ol className="space-y-3">
@@ -99,7 +99,7 @@ export default function ApplicationSuccessPage({
                   <span className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full text-sm font-bold mr-3 flex-shrink-0">
                     {index + 1}
                   </span>
-                  <span className="text-slate-700">{step}</span>
+                  <span className="text-black">{step}</span>
                 </li>
               ))}
             </ol>
@@ -115,27 +115,27 @@ export default function ApplicationSuccessPage({
             </Link>
             <Link
               href={content.dashboardLink}
-              className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 bg-white border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:border-slate-400 transition-colors"
+              className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 bg-white border-2 border-slate-300 text-black font-semibold rounded-lg hover:border-slate-400 transition-colors"
             >
               {content.dashboardText}
             </Link>
           </div>
 
           <div className="border-t border-slate-200 pt-8">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">
+            <h3 className="text-lg font-bold text-black mb-4">
               Need Help?
             </h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="tel:3173143757"
-                className="inline-flex items-center justify-center text-slate-700 hover:text-emerald-600 transition-colors"
+                className="inline-flex items-center justify-center text-black hover:text-emerald-600 transition-colors"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 <span className="font-semibold">317-314-3757</span>
               </a>
               <a
                 href="mailto:info@elevateforhumanity.institute"
-                className="inline-flex items-center justify-center text-slate-700 hover:text-emerald-600 transition-colors"
+                className="inline-flex items-center justify-center text-black hover:text-emerald-600 transition-colors"
               >
                 <Mail className="w-5 h-5 mr-2" />
                 <span className="font-semibold">

@@ -35,10 +35,10 @@ export default async function EventsPage() {
         {!events || events.length === 0 ? (
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-12 text-center">
             <Calendar className="h-16 w-16 text-slate-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-slate-900 mb-2">
+            <h3 className="text-xl font-semibold text-black mb-2">
               No Upcoming Events
             </h3>
-            <p className="text-slate-600 mb-6">
+            <p className="text-black mb-6">
               Check back soon for new events and programs
             </p>
             <Link
@@ -57,20 +57,20 @@ export default async function EventsPage() {
               >
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-bold text-slate-900 flex-1">
+                    <h3 className="text-xl font-bold text-black flex-1">
                       {event.title}
                     </h3>
                     <Calendar className="h-5 w-5 text-indigo-600 flex-shrink-0" />
                   </div>
 
                   {event.description && (
-                    <p className="text-slate-600 text-sm mb-4 line-clamp-3">
+                    <p className="text-black text-sm mb-4 line-clamp-3">
                       {event.description}
                     </p>
                   )}
 
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-slate-600">
+                    <div className="flex items-center gap-2 text-sm text-black">
                       <Calendar className="h-4 w-4" />
                       <span>
                         {new Date(event.date).toLocaleDateString('en-US', {
@@ -83,21 +83,21 @@ export default async function EventsPage() {
                     </div>
 
                     {event.time && (
-                      <div className="flex items-center gap-2 text-sm text-slate-600">
+                      <div className="flex items-center gap-2 text-sm text-black">
                         <Clock className="h-4 w-4" />
                         <span>{event.time}</span>
                       </div>
                     )}
 
                     {event.location && (
-                      <div className="flex items-center gap-2 text-sm text-slate-600">
+                      <div className="flex items-center gap-2 text-sm text-black">
                         <MapPin className="h-4 w-4" />
                         <span>{event.location}</span>
                       </div>
                     )}
 
                     {event.capacity && (
-                      <div className="flex items-center gap-2 text-sm text-slate-600">
+                      <div className="flex items-center gap-2 text-sm text-black">
                         <Users className="h-4 w-4" />
                         <span>Capacity: {event.capacity}</span>
                       </div>

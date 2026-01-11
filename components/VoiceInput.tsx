@@ -258,7 +258,7 @@ export function VoiceInput({ onCommand, className = '' }: VoiceInputProps) {
         )}
       </button>
       {transcript && (
-        <div className="text-xs text-gray-600 max-w-xs text-center">
+        <div className="text-xs text-black max-w-xs text-center">
           "{transcript}"
         </div>
       )}

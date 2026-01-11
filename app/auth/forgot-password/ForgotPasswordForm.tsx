@@ -58,13 +58,13 @@ export default function ForgotPasswordForm() {
               />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          <h2 className="text-2xl font-bold text-black mb-2">
             Check Your Email
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             We've sent a password reset link to <strong>{email}</strong>
           </p>
-          <p className="text-sm text-gray-700 mb-6">
+          <p className="text-sm text-black mb-6">
             Didn't receive the email? Check your spam folder or start again.
           </p>
           <Link
@@ -92,7 +92,7 @@ export default function ForgotPasswordForm() {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700 mb-2"
+            className="block text-sm font-medium text-black mb-2"
           >
             Email Address
           </label>
@@ -109,7 +109,7 @@ export default function ForgotPasswordForm() {
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="you@example.com"
           />
-          <p className="mt-2 text-sm text-gray-700">
+          <p className="mt-2 text-sm text-black">
             Enter the email address associated with your account
           </p>
         </div>

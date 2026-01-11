@@ -33,28 +33,28 @@ export default function CdlTransportationPage() {
               <Image src="/images/icons/clock.png" alt="Duration" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
               <div>
                 <h3 className="font-bold text-black mb-1">Duration</h3>
-                <p className="text-gray-700">4-8 weeks</p>
+                <p className="text-black">4-8 weeks</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <Image src="/images/icons/dollar.png" alt="Cost" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
               <div>
                 <h3 className="font-bold text-black mb-1">Cost</h3>
-                <p className="text-gray-700">Free with funding when eligible</p>
+                <p className="text-black">Free with funding when eligible</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <Image src="/images/icons/shield.png" alt="Format" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
               <div>
                 <h3 className="font-bold text-black mb-1">Format</h3>
-                <p className="text-gray-700">In-person</p>
+                <p className="text-black">In-person</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <Image src="/images/icons/award.png" alt="Outcome" width={24} height={24} className="flex-shrink-0 mt-1" loading="lazy" />
               <div>
                 <h3 className="font-bold text-black mb-1">Outcome</h3>
-                <p className="text-gray-700">CDL License + Job placement</p>
+                <p className="text-black">CDL License + Job placement</p>
               </div>
             </div>
           </div>
@@ -68,13 +68,13 @@ export default function CdlTransportationPage() {
             About the Program
           </h2>
           <div className="bg-white rounded-xl p-8 shadow-sm">
-            <p className="text-gray-700 mb-4">
+            <p className="text-black mb-4">
               Our CDL & Transportation program prepares you for a high-demand career in commercial truck driving. Earn your Commercial Driver's License (CDL) and start a career with strong earning potential and job security.
             </p>
-            <p className="text-gray-700 mb-4">
+            <p className="text-black mb-4">
               With experienced instructors and hands-on training, you'll learn everything from vehicle operation and safety to DOT regulations and route planning. Most graduates secure employment within weeks of completing the program.
             </p>
-            <p className="text-gray-700">
+            <p className="text-black">
               The trucking industry offers excellent opportunities for career growth, with starting salaries of $50,000+ annually and potential to earn $70,000+ with experience. Many companies offer sign-on bonuses and benefits packages.
             </p>
           </div>
@@ -91,25 +91,25 @@ export default function CdlTransportationPage() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">
+                <span className="text-black">
                   Individuals seeking career change or advancement
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">
+                <span className="text-black">
                   No prior experience required for most programs
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">
+                <span className="text-black">
                   Justice-impacted individuals welcome
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">
+                <span className="text-black">
                   Barriers support available
                 </span>
               </li>
@@ -126,16 +126,16 @@ export default function CdlTransportationPage() {
           </h2>
           <div className="bg-white rounded-xl p-8 shadow-sm">
             <ul className="space-y-3 list-disc list-inside">
-              <li className="text-gray-700">Vehicle inspection and maintenance basics</li>
-              <li className="text-gray-700">Safe driving techniques and defensive driving</li>
-              <li className="text-gray-700">DOT regulations and compliance</li>
-              <li className="text-gray-700">Hours of service and logbook management</li>
-              <li className="text-gray-700">Cargo handling and securement</li>
-              <li className="text-gray-700">Route planning and navigation</li>
-              <li className="text-gray-700">Backing, parking, and maneuvering</li>
-              <li className="text-gray-700">Emergency procedures and accident prevention</li>
-              <li className="text-gray-700">Customer service and professionalism</li>
-              <li className="text-gray-700">CDL exam preparation (written and road test)</li>
+              <li className="text-black">Vehicle inspection and maintenance basics</li>
+              <li className="text-black">Safe driving techniques and defensive driving</li>
+              <li className="text-black">DOT regulations and compliance</li>
+              <li className="text-black">Hours of service and logbook management</li>
+              <li className="text-black">Cargo handling and securement</li>
+              <li className="text-black">Route planning and navigation</li>
+              <li className="text-black">Backing, parking, and maneuvering</li>
+              <li className="text-black">Emergency procedures and accident prevention</li>
+              <li className="text-black">Customer service and professionalism</li>
+              <li className="text-black">CDL exam preparation (written and road test)</li>
             </ul>
           </div>
         </div>
@@ -147,21 +147,21 @@ export default function CdlTransportationPage() {
           <h2 className="text-3xl font-bold text-black mb-6">
             Funding Options
           </h2>
-          <p className="text-gray-700 mb-6">You may qualify for:</p>
+          <p className="text-black mb-6">You may qualify for:</p>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="bg-blue-50 rounded-lg p-6">
               <h3 className="font-bold text-black mb-2">WIOA</h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-black text-sm">
                 Workforce Innovation and Opportunity Act funding
               </p>
             </div>
             <div className="bg-blue-50 rounded-lg p-6">
               <h3 className="font-bold text-black mb-2">WRG</h3>
-              <p className="text-gray-700 text-sm">Workforce Ready Grant</p>
+              <p className="text-black text-sm">Workforce Ready Grant</p>
             </div>
             <div className="bg-blue-50 rounded-lg p-6">
               <h3 className="font-bold text-black mb-2">JRI</h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-black text-sm">
                 Justice Reinvestment Initiative
               </p>
             </div>
@@ -169,7 +169,7 @@ export default function CdlTransportationPage() {
               <h3 className="font-bold text-black mb-2">
                 Employer Sponsorship
               </h3>
-              <p className="text-gray-700 text-sm">
+              <p className="text-black text-sm">
                 Some employers sponsor training
               </p>
             </div>
@@ -183,30 +183,30 @@ export default function CdlTransportationPage() {
           <h2 className="text-3xl font-bold text-black mb-6">
             Support Services
           </h2>
-          <p className="text-gray-700 mb-6">We help coordinate:</p>
+          <p className="text-black mb-6">We help coordinate:</p>
           <div className="bg-white rounded-xl p-8 shadow-sm">
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">Case management</span>
+                <span className="text-black">Case management</span>
               </li>
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">
+                <span className="text-black">
                   Justice navigation for returning citizens
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">Transportation resources</span>
+                <span className="text-black">Transportation resources</span>
               </li>
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">Childcare referrals</span>
+                <span className="text-black">Childcare referrals</span>
               </li>
               <li className="flex items-start gap-3">
                 <Image src="/images/icons/users.png" alt="Users" width={20} height={20} className="flex-shrink-0 mt-0.5" loading="lazy" />
-                <span className="text-gray-700">Documentation support</span>
+                <span className="text-black">Documentation support</span>
               </li>
             </ul>
           </div>
@@ -219,7 +219,7 @@ export default function CdlTransportationPage() {
           <h2 className="text-3xl font-bold text-black mb-6">
             Career Outcomes
           </h2>
-          <p className="text-gray-700 mb-6">Students typically move into:</p>
+          <p className="text-black mb-6">Students typically move into:</p>
           <div className="grid md:grid-cols-3 gap-4">
             <div className="bg-green-50 rounded-lg p-6 text-center">
               <h3 className="font-bold text-black mb-2">
@@ -249,7 +249,7 @@ export default function CdlTransportationPage() {
               </div>
               <div>
                 <h3 className="font-bold mb-1">Apply</h3>
-                <p className="text-slate-600 text-sm">
+                <p className="text-black text-sm">
                   Submit your application online
                 </p>
               </div>
@@ -260,7 +260,7 @@ export default function CdlTransportationPage() {
               </div>
               <div>
                 <h3 className="font-bold mb-1">Meet with advisor</h3>
-                <p className="text-slate-600 text-sm">
+                <p className="text-black text-sm">
                   Discuss your goals and eligibility
                 </p>
               </div>
@@ -271,7 +271,7 @@ export default function CdlTransportationPage() {
               </div>
               <div>
                 <h3 className="font-bold mb-1">Confirm eligibility</h3>
-                <p className="text-slate-600 text-sm">
+                <p className="text-black text-sm">
                   We help with funding paperwork
                 </p>
               </div>
@@ -282,7 +282,7 @@ export default function CdlTransportationPage() {
               </div>
               <div>
                 <h3 className="font-bold mb-1">Enroll</h3>
-                <p className="text-slate-600 text-sm">
+                <p className="text-black text-sm">
                   Start your training program
                 </p>
               </div>

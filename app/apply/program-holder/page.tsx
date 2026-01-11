@@ -18,10 +18,10 @@ export default function ProgramHolderApplicationPage() {
           <p className="text-xs font-semibold tracking-widest text-blue-700 uppercase mb-2">
             Program Holder Application
           </p>
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">
+          <h1 className="text-3xl sm:text-4xl font-bold text-black mb-3">
             Partner With Us
           </h1>
-          <p className="text-base sm:text-lg text-slate-700 max-w-3xl">
+          <p className="text-base sm:text-lg text-black max-w-3xl">
             Offer training programs to your community or organization through
             our platform.
           </p>

@@ -44,7 +44,7 @@ export default async function ProgramHolderPage() {
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">
                   Partner with Us
                 </h2>
-                <p className="text-gray-700 mb-6">
+                <p className="text-black mb-6">
                   Join our network of approved training providers and help
                   students access free career training through WIOA funding.
                 </p>
@@ -130,7 +130,7 @@ export default async function ProgramHolderPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Manage Students</h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Track enrollment, attendance, and progress
                 </p>
               </div>
@@ -152,7 +152,7 @@ export default async function ProgramHolderPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Submit Reports</h3>
-                <p className="text-gray-600">Generate compliance documentation</p>
+                <p className="text-black">Generate compliance documentation</p>
               </div>
 
               <div className="bg-white rounded-lg shadow-sm border p-6">
@@ -172,7 +172,7 @@ export default async function ProgramHolderPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Receive Funding</h3>
-                <p className="text-gray-600">Get paid for training services</p>
+                <p className="text-black">Get paid for training services</p>
               </div>
             </div>
           </div>

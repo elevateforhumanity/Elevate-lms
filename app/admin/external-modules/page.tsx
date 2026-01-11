@@ -139,26 +139,26 @@ export default function ExternalModulesPage() {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-sm border p-6">
-            <p className="text-sm text-gray-600 mb-2">Total Modules</p>
+            <p className="text-sm text-black mb-2">Total Modules</p>
             <p className="text-3xl font-bold text-brand-blue-600">
               {modules.length}
             </p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-6">
-            <p className="text-sm text-gray-600 mb-2">Active</p>
+            <p className="text-sm text-black mb-2">Active</p>
             <p className="text-3xl font-bold text-brand-green-600">
               {modules.filter((m) => m.status === 'active').length}
             </p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-6">
-            <p className="text-sm text-gray-600 mb-2">Pending Approval</p>
+            <p className="text-sm text-black mb-2">Pending Approval</p>
             <p className="text-3xl font-bold text-brand-orange-600">
               {pendingApprovals.length}
             </p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-6">
-            <p className="text-sm text-gray-600 mb-2">Inactive</p>
-            <p className="text-3xl font-bold text-gray-600">
+            <p className="text-sm text-black mb-2">Inactive</p>
+            <p className="text-3xl font-bold text-black">
               {modules.filter((m) => m.status === 'inactive').length}
             </p>
           </div>
@@ -172,7 +172,7 @@ export default function ExternalModulesPage() {
               className={`px-4 py-2 rounded-lg font-medium ${
                 filter === 'all'
                   ? 'bg-brand-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-700'
+                  : 'bg-gray-100 text-black'
               }`}
             >
               All Modules
@@ -182,7 +182,7 @@ export default function ExternalModulesPage() {
               className={`px-4 py-2 rounded-lg font-medium ${
                 filter === 'active'
                   ? 'bg-brand-green-600 text-white'
-                  : 'bg-gray-100 text-gray-700'
+                  : 'bg-gray-100 text-black'
               }`}
             >
               Active
@@ -192,7 +192,7 @@ export default function ExternalModulesPage() {
               className={`px-4 py-2 rounded-lg font-medium ${
                 filter === 'pending'
                   ? 'bg-brand-orange-600 text-white'
-                  : 'bg-gray-100 text-gray-700'
+                  : 'bg-gray-100 text-black'
               }`}
             >
               Pending
@@ -216,10 +216,10 @@ export default function ExternalModulesPage() {
                   <div className="flex justify-between items-start">
                     <div>
                       <h3 className="font-semibold text-lg">{module.name}</h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-black">
                         Provider: {module.provider?.name || 'Unknown'}
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-black">
                         Submitted:{' '}
                         {new Date(module.created_at).toLocaleDateString()}
                       </p>
@@ -259,12 +259,12 @@ export default function ExternalModulesPage() {
                     <div>
                       <h3 className="font-semibold text-lg flex items-center gap-2">
                         {module.name}
-                        <ExternalLink className="h-4 w-4 text-gray-600" />
+                        <ExternalLink className="h-4 w-4 text-black" />
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-black">
                         Provider: {module.provider?.name || 'Unknown'}
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-black">
                         Created:{' '}
                         {new Date(module.created_at).toLocaleDateString()}
                       </p>
@@ -283,7 +283,7 @@ export default function ExternalModulesPage() {
                         </span>
                       )}
                       {module.status === 'inactive' && (
-                        <span className="flex items-center gap-1 text-gray-600 text-sm font-medium">
+                        <span className="flex items-center gap-1 text-black text-sm font-medium">
                           <XCircle className="h-4 w-4" />
                           Inactive
                         </span>
@@ -294,7 +294,7 @@ export default function ExternalModulesPage() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-700 text-center py-8">
+            <p className="text-black text-center py-8">
               No external modules found
             </p>
           )}

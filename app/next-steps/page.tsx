@@ -64,7 +64,7 @@ export default function NextStepsPage() {
     return (
       <div className="mx-auto max-w-3xl px-4 py-10">
         <h1 className="text-2xl font-bold">Your Next Steps Checklist</h1>
-        <p className="mt-2 text-sm text-gray-700 leading-relaxed">
+        <p className="mt-2 text-sm text-black leading-relaxed">
           Please log in to view and update your checklist.
         </p>
       </div>
@@ -74,7 +74,7 @@ export default function NextStepsPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <h1 className="text-3xl font-bold">Your Next Steps Checklist</h1>
-      <p className="mt-2 text-sm text-gray-700 leading-relaxed">
+      <p className="mt-2 text-sm text-black leading-relaxed">
         Complete each step so we can move you into the correct funding and
         enrollment pathway.
       </p>
@@ -83,7 +83,7 @@ export default function NextStepsPage() {
         <div className="flex items-center justify-between gap-4">
           <div>
             <p className="text-sm font-semibold">Progress</p>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               {progress.done}/{progress.total} complete
             </p>
           </div>
@@ -99,19 +99,19 @@ export default function NextStepsPage() {
           />
         </div>
 
-        {saving && <p className="mt-3 text-xs text-gray-700">Saving…</p>}
+        {saving && <p className="mt-3 text-xs text-black">Saving…</p>}
       </div>
 
       <div className="mt-6 space-y-4">
         <div className="rounded-2xl border bg-white p-5">
           <p className="text-sm font-semibold">Program Information</p>
-          <p className="mt-1 text-sm text-gray-700 leading-relaxed">
+          <p className="mt-1 text-sm text-black leading-relaxed">
             Tell us which program you're applying for so we know exactly what
             you need.
           </p>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             <div>
-              <label className="text-xs font-semibold text-gray-700">
+              <label className="text-xs font-semibold text-black">
                 Program Code
               </label>
               <select
@@ -138,7 +138,7 @@ export default function NextStepsPage() {
               </select>
             </div>
             <div>
-              <label className="text-xs font-semibold text-gray-700">
+              <label className="text-xs font-semibold text-black">
                 Program Name (if Other)
               </label>
               <input
@@ -171,7 +171,7 @@ export default function NextStepsPage() {
             onChange={(v) => patch({ icc_account_created: v })}
           />
           <div className="mt-3">
-            <label className="text-xs font-semibold text-gray-700">
+            <label className="text-xs font-semibold text-black">
               Optional: ICC Username
             </label>
             <input
@@ -187,7 +187,7 @@ export default function NextStepsPage() {
           <p className="text-sm font-semibold">
             Step 3: Track your WorkOne appointments
           </p>
-          <p className="mt-1 text-sm text-gray-700 leading-relaxed">
+          <p className="mt-1 text-sm text-black leading-relaxed">
             WorkOne will schedule 3-4 appointments. After EACH appointment, come
             back here and document what happened. We get notified when you
             update this.
@@ -219,7 +219,7 @@ export default function NextStepsPage() {
                   <p className="text-sm font-semibold">Appointment #1</p>
                   <div className="mt-2 grid gap-3 sm:grid-cols-3">
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Date
                       </label>
                       <input
@@ -232,7 +232,7 @@ export default function NextStepsPage() {
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Time
                       </label>
                       <input
@@ -245,7 +245,7 @@ export default function NextStepsPage() {
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Location
                       </label>
                       <input
@@ -261,7 +261,7 @@ export default function NextStepsPage() {
                     </div>
                   </div>
                   <div className="mt-3">
-                    <label className="text-xs font-semibold text-gray-700">
+                    <label className="text-xs font-semibold text-black">
                       What happened in this appointment?
                     </label>
                     <textarea
@@ -292,7 +292,7 @@ export default function NextStepsPage() {
                   <p className="text-sm font-semibold">Appointment #2</p>
                   <div className="mt-2 grid gap-3 sm:grid-cols-3">
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Date
                       </label>
                       <input
@@ -305,7 +305,7 @@ export default function NextStepsPage() {
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Time
                       </label>
                       <input
@@ -318,7 +318,7 @@ export default function NextStepsPage() {
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Location
                       </label>
                       <input
@@ -334,7 +334,7 @@ export default function NextStepsPage() {
                     </div>
                   </div>
                   <div className="mt-3">
-                    <label className="text-xs font-semibold text-gray-700">
+                    <label className="text-xs font-semibold text-black">
                       What happened in this appointment?
                     </label>
                     <textarea
@@ -365,7 +365,7 @@ export default function NextStepsPage() {
                   <p className="text-sm font-semibold">Appointment #3</p>
                   <div className="mt-2 grid gap-3 sm:grid-cols-3">
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Date
                       </label>
                       <input
@@ -378,7 +378,7 @@ export default function NextStepsPage() {
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Time
                       </label>
                       <input
@@ -391,7 +391,7 @@ export default function NextStepsPage() {
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Location
                       </label>
                       <input
@@ -407,7 +407,7 @@ export default function NextStepsPage() {
                     </div>
                   </div>
                   <div className="mt-3">
-                    <label className="text-xs font-semibold text-gray-700">
+                    <label className="text-xs font-semibold text-black">
                       What happened in this appointment?
                     </label>
                     <textarea
@@ -438,7 +438,7 @@ export default function NextStepsPage() {
                   <p className="text-sm font-semibold">Appointment #4</p>
                   <div className="mt-2 grid gap-3 sm:grid-cols-3">
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Date
                       </label>
                       <input
@@ -451,7 +451,7 @@ export default function NextStepsPage() {
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Time
                       </label>
                       <input
@@ -464,7 +464,7 @@ export default function NextStepsPage() {
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-gray-700">
+                      <label className="text-xs font-semibold text-black">
                         Location
                       </label>
                       <input
@@ -480,7 +480,7 @@ export default function NextStepsPage() {
                     </div>
                   </div>
                   <div className="mt-3">
-                    <label className="text-xs font-semibold text-gray-700">
+                    <label className="text-xs font-semibold text-black">
                       What happened in this appointment?
                     </label>
                     <textarea
@@ -514,7 +514,7 @@ export default function NextStepsPage() {
             onChange={(v) => patch({ advisor_docs_uploaded: v })}
           />
           <div className="mt-3">
-            <label className="text-xs font-semibold text-gray-700">
+            <label className="text-xs font-semibold text-black">
               Optional notes
             </label>
             <textarea
@@ -531,12 +531,12 @@ export default function NextStepsPage() {
           <p className="text-sm font-semibold">
             Step 6: Funding determination received
           </p>
-          <p className="mt-1 text-sm text-gray-700 leading-relaxed">
+          <p className="mt-1 text-sm text-black leading-relaxed">
             Select what your advisor decided so we know your pathway.
           </p>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             <div>
-              <label className="text-xs font-semibold text-gray-700">
+              <label className="text-xs font-semibold text-black">
                 Funding status
               </label>
               <select
@@ -550,7 +550,7 @@ export default function NextStepsPage() {
               </select>
             </div>
             <div>
-              <label className="text-xs font-semibold text-gray-700">
+              <label className="text-xs font-semibold text-black">
                 Funding type
               </label>
               <select
@@ -579,7 +579,7 @@ export default function NextStepsPage() {
             onChange={(v) => patch({ efh_onboarding_call_completed: v })}
           />
           <div className="mt-3">
-            <label className="text-xs font-semibold text-gray-700">
+            <label className="text-xs font-semibold text-black">
               Onboarding call date
             </label>
             <input
@@ -601,7 +601,7 @@ export default function NextStepsPage() {
             onChange={(v) => patch({ program_start_confirmed: v })}
           />
           <div className="mt-3">
-            <label className="text-xs font-semibold text-gray-700">
+            <label className="text-xs font-semibold text-black">
               Program start date
             </label>
             <input
@@ -615,7 +615,7 @@ export default function NextStepsPage() {
 
         <div className="rounded-2xl border bg-gray-50 p-5">
           <p className="text-sm font-semibold">What happens next</p>
-          <p className="mt-1 text-sm text-gray-700 leading-relaxed">
+          <p className="mt-1 text-sm text-black leading-relaxed">
             Once your checklist is complete, our team can move faster and ensure
             nothing falls through the cracks.
           </p>
@@ -647,7 +647,7 @@ function ChecklistRow({
         />
         <div>
           <p className="text-sm font-semibold">{title}</p>
-          <p className="mt-1 text-sm text-gray-700 leading-relaxed">{note}</p>
+          <p className="mt-1 text-sm text-black leading-relaxed">{note}</p>
         </div>
       </label>
     </div>

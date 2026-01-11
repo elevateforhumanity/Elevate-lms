@@ -130,7 +130,7 @@ function CheckoutForm({ courseId, courseName, price, userId, onSuccess }: Checko
             <div className="flex justify-between items-start mb-2">
               <div>
                 <h3 className="font-semibold text-lg">{courseName}</h3>
-                <p className="text-gray-600 text-sm">Lifetime access</p>
+                <p className="text-black text-sm">Lifetime access</p>
               </div>
               <div className="text-right">
                 <p className="text-2xl font-bold">${price}</p>
@@ -139,11 +139,11 @@ function CheckoutForm({ courseId, courseName, price, userId, onSuccess }: Checko
           </div>
 
           <div className="space-y-2 mb-6">
-            <div className="flex justify-between text-gray-700">
+            <div className="flex justify-between text-black">
               <span>Subtotal</span>
               <span>${price}</span>
             </div>
-            <div className="flex justify-between text-gray-700">
+            <div className="flex justify-between text-black">
               <span>Tax</span>
               <span>$0.00</span>
             </div>
@@ -181,7 +181,7 @@ function CheckoutForm({ courseId, courseName, price, userId, onSuccess }: Checko
 
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Card Details
               </label>
               <div className="border border-gray-300 rounded-lg p-4">
@@ -211,7 +211,7 @@ function CheckoutForm({ courseId, courseName, price, userId, onSuccess }: Checko
             )}
 
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
-              <div className="flex items-center text-sm text-gray-600">
+              <div className="flex items-center text-sm text-black">
                 <svg className="w-5 h-5 text-gray-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                 </svg>
@@ -223,7 +223,7 @@ function CheckoutForm({ courseId, courseName, price, userId, onSuccess }: Checko
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
+                className="flex-1 bg-gray-200 text-black py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
                 disabled={loading}
               >
                 Back
@@ -265,10 +265,10 @@ fill="#0066B2"/>
             </svg>
           </div>
 
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">
+          <h2 className="text-3xl font-bold text-black mb-2">
             Enrollment Complete!
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             You're now enrolled in {courseName}
           </p>
 
@@ -287,7 +287,7 @@ fill="#0066B2"/>
             </button>
             <button
               onClick={() => window.location.href = '/student/dashboard'}
-              className="w-full bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
+              className="w-full bg-gray-200 text-black py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
             >
               Go to Dashboard
             </button>

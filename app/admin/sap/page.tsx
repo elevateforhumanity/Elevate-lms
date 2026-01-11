@@ -173,7 +173,7 @@ export default async function SAPMonitoringPage() {
       case 'suspension':
         return 'bg-red-100 text-red-800 border-red-200';
       default:
-        return 'bg-gray-100 text-gray-800 border-gray-200';
+        return 'bg-gray-100 text-black border-gray-200';
     }
   };
 
@@ -199,21 +199,21 @@ export default async function SAPMonitoringPage() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 Satisfactory Academic Progress (SAP)
               </h1>
-              <p className="text-slate-600 mt-1">
+              <p className="text-black mt-1">
                 Monitor student academic standing and compliance
               </p>
             </div>
             <div className="flex items-center gap-4">
-              <button className="flex items-center gap-2 px-4 py-2 text-slate-700 hover:text-slate-900 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors" aria-label="Action button">
+              <button className="flex items-center gap-2 px-4 py-2 text-black hover:text-black border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors" aria-label="Action button">
                 <Download className="w-4 h-4" />
                 <span>Export Report</span>
               </button>
               <Link
                 href="/admin"
-                className="px-4 py-2 text-slate-700 hover:text-slate-900 font-medium transition-colors"
+                className="px-4 py-2 text-black hover:text-black font-medium transition-colors"
               >
                 Back to Admin
               </Link>
@@ -228,11 +228,11 @@ export default async function SAPMonitoringPage() {
           <div className="bg-white rounded-xl shadow-sm border p-6">
             <div className="flex items-center justify-between mb-2">
               <Users className="w-8 h-8 text-brand-blue-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {totalStudents}
               </span>
             </div>
-            <div className="text-sm text-slate-600">Total Students</div>
+            <div className="text-sm text-black">Total Students</div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm border p-6">
@@ -242,7 +242,7 @@ export default async function SAPMonitoringPage() {
                 {goodStanding}
               </span>
             </div>
-            <div className="text-sm text-slate-600">Good Standing</div>
+            <div className="text-sm text-black">Good Standing</div>
             <div className="text-xs text-slate-500 mt-1">
               {totalStudents > 0
                 ? Math.round((goodStanding / totalStudents) * 100)
@@ -258,7 +258,7 @@ export default async function SAPMonitoringPage() {
                 {warnings}
               </span>
             </div>
-            <div className="text-sm text-slate-600">Warning</div>
+            <div className="text-sm text-black">Warning</div>
             <div className="text-xs text-slate-500 mt-1">
               {totalStudents > 0
                 ? Math.round((warnings / totalStudents) * 100)
@@ -274,7 +274,7 @@ export default async function SAPMonitoringPage() {
                 {probation}
               </span>
             </div>
-            <div className="text-sm text-slate-600">Probation</div>
+            <div className="text-sm text-black">Probation</div>
             <div className="text-xs text-slate-500 mt-1">
               {totalStudents > 0
                 ? Math.round((probation / totalStudents) * 100)
@@ -290,7 +290,7 @@ export default async function SAPMonitoringPage() {
                 {suspension}
               </span>
             </div>
-            <div className="text-sm text-slate-600">At Risk</div>
+            <div className="text-sm text-black">At Risk</div>
             <div className="text-xs text-slate-500 mt-1">
               {totalStudents > 0
                 ? Math.round((suspension / totalStudents) * 100)
@@ -346,7 +346,7 @@ export default async function SAPMonitoringPage() {
         <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
           <div className="px-6 py-4 border-b bg-slate-50">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-slate-900">
+              <h2 className="text-xl font-bold text-black">
                 Student SAP Status
               </h2>
               <div className="flex items-center gap-4">
@@ -358,7 +358,7 @@ export default async function SAPMonitoringPage() {
                     className="pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
-                <button className="flex items-center gap-2 px-4 py-2 text-slate-700 hover:text-slate-900 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors text-sm" aria-label="Action button">
+                <button className="flex items-center gap-2 px-4 py-2 text-black hover:text-black border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors text-sm" aria-label="Action button">
                   <Filter className="w-4 h-4" />
                   <span>Filter</span>
                 </button>
@@ -398,7 +398,7 @@ export default async function SAPMonitoringPage() {
                   <tr key={student.enrollmentId} className="hover:bg-slate-50">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div>
-                        <div className="text-sm font-medium text-slate-900">
+                        <div className="text-sm font-medium text-black">
                           {student.studentName}
                         </div>
                         <div className="text-xs text-slate-500">
@@ -407,7 +407,7 @@ export default async function SAPMonitoringPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-slate-900">
+                      <div className="text-sm text-black">
                         {student.programName}
                       </div>
                       <div className="text-xs text-slate-500">

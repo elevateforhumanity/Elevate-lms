@@ -46,7 +46,7 @@ export default async function PrivacyPolicyPage() {
               <div className="prose prose-lg max-w-none">
                 <h2 className="text-3xl font-bold mb-6">Privacy Policy</h2>
 
-                <p className="text-gray-600 mb-8">
+                <p className="text-black mb-8">
                   <strong>Effective Date:</strong> January 1, 2026
                   <br />
                   <strong>Last Updated:</strong> January 1, 2026
@@ -391,7 +391,7 @@ export default async function PrivacyPolicyPage() {
                 </div>
 
                 <div className="mt-12 pt-8 border-t border-gray-200">
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-black">
                     By using our website and services, you acknowledge that you
                     have read and understood this Privacy Policy and agree to
                     its terms.
@@ -405,7 +405,7 @@ export default async function PrivacyPolicyPage() {
               <h3 className="text-xl sm:text-2xl font-bold mb-4">
                 Questions About Your Privacy?
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 We're here to help. Contact us anytime with privacy-related
                 questions or concerns.
               </p>

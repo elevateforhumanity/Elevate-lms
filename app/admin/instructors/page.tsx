@@ -104,7 +104,7 @@ export default function InstructorsPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
               <Users className="h-8 w-8 text-brand-blue-600" />
-              <p className="text-sm text-gray-600">Total Instructors</p>
+              <p className="text-sm text-black">Total Instructors</p>
             </div>
             <p className="text-3xl font-bold text-brand-blue-600">
               {instructors.length}
@@ -113,7 +113,7 @@ export default function InstructorsPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
               <Award className="h-8 w-8 text-brand-green-600" />
-              <p className="text-sm text-gray-600">Active</p>
+              <p className="text-sm text-black">Active</p>
             </div>
             <p className="text-3xl font-bold text-brand-green-600">
               {instructors.filter((i) => i.is_active).length}
@@ -122,7 +122,7 @@ export default function InstructorsPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
               <BookOpen className="h-8 w-8 text-purple-600" />
-              <p className="text-sm text-gray-600">Total Courses</p>
+              <p className="text-sm text-black">Total Courses</p>
             </div>
             <p className="text-3xl font-bold text-purple-600">
               {instructors.reduce(
@@ -134,7 +134,7 @@ export default function InstructorsPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
               <Star className="h-8 w-8 text-yellow-600" />
-              <p className="text-sm text-gray-600">Avg Rating</p>
+              <p className="text-sm text-black">Avg Rating</p>
             </div>
             <p className="text-3xl font-bold text-yellow-600">
               {instructors.length > 0
@@ -161,7 +161,7 @@ export default function InstructorsPage() {
               className={`px-4 py-2 rounded-lg font-medium ${
                 filter === 'all'
                   ? 'bg-brand-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-700'
+                  : 'bg-gray-100 text-black'
               }`}
             >
               All Instructors
@@ -171,7 +171,7 @@ export default function InstructorsPage() {
               className={`px-4 py-2 rounded-lg font-medium ${
                 filter === 'active'
                   ? 'bg-brand-green-600 text-white'
-                  : 'bg-gray-100 text-gray-700'
+                  : 'bg-gray-100 text-black'
               }`}
             >
               Active
@@ -181,7 +181,7 @@ export default function InstructorsPage() {
               className={`px-4 py-2 rounded-lg font-medium ${
                 filter === 'inactive'
                   ? 'bg-gray-600 text-white'
-                  : 'bg-gray-100 text-gray-700'
+                  : 'bg-gray-100 text-black'
               }`}
             >
               Inactive
@@ -204,21 +204,21 @@ export default function InstructorsPage() {
                       <h3 className="font-semibold text-lg">
                         {instructor.full_name}
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-black">
                         {instructor.email}
                       </p>
                       <div className="mt-2 flex flex-wrap gap-4 text-sm">
-                        <span className="text-gray-600">
+                        <span className="text-black">
                           Courses: {instructor.instructor_courses?.length || 0}
                         </span>
-                        <span className="text-gray-600 flex items-center gap-1">
+                        <span className="text-black flex items-center gap-1">
                           <Star className="h-4 w-4 text-yellow-500" />
                           Rating:{' '}
                           {calculateAverageRating(
                             instructor.instructor_ratings
                           )}
                         </span>
-                        <span className="text-gray-600">
+                        <span className="text-black">
                           Joined:{' '}
                           {new Date(instructor.created_at).toLocaleDateString()}
                         </span>
@@ -226,7 +226,7 @@ export default function InstructorsPage() {
                       {instructor.instructor_courses &&
                         instructor.instructor_courses.length > 0 && (
                           <div className="mt-2">
-                            <p className="text-xs text-gray-700 mb-1">
+                            <p className="text-xs text-black mb-1">
                               Teaching:
                             </p>
                             <div className="flex flex-wrap gap-2">
@@ -250,7 +250,7 @@ export default function InstructorsPage() {
                           Active
                         </span>
                       ) : (
-                        <span className="text-gray-600 text-sm font-medium bg-gray-100 px-3 py-1 rounded-full">
+                        <span className="text-black text-sm font-medium bg-gray-100 px-3 py-1 rounded-full">
                           Inactive
                         </span>
                       )}
@@ -266,7 +266,7 @@ export default function InstructorsPage() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-700 text-center py-8">
+            <p className="text-black text-center py-8">
               No instructors found
             </p>
           )}

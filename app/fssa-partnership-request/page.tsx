@@ -76,17 +76,17 @@ export default function FSSAPartnershipRequestPage() {
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-12 h-12 text-green-600" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl font-bold text-black mb-4">
               Thank You for Your Interest!
             </h1>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg text-black mb-6">
               We've received your FSSA/SNAP E&T partnership request.
             </p>
             <div className="bg-blue-50 rounded-lg p-6 mb-6 text-left">
-              <h3 className="font-bold text-gray-900 mb-3">
+              <h3 className="font-bold text-black mb-3">
                 What Happens Next:
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li className="flex items-start">
                   <span className="text-blue-600 mr-2">1.</span>
                   Our partnerships team will review your request
@@ -106,14 +106,14 @@ export default function FSSAPartnershipRequestPage() {
               </ul>
             </div>
             <div className="border-t pt-6">
-              <p className="text-gray-600 mb-4">
+              <p className="text-black mb-4">
                 <strong>Contact Us Directly:</strong>
               </p>
-              <p className="text-gray-700">
+              <p className="text-black">
                 <Phone className="inline w-4 h-4 mr-2" />
                 317-314-3757
               </p>
-              <p className="text-gray-700">
+              <p className="text-black">
                 <Mail className="inline w-4 h-4 mr-2" />
                 partnerships@elevateforhumanity.institute
               </p>
@@ -127,7 +127,7 @@ export default function FSSAPartnershipRequestPage() {
               </Link>
               <Link
                 href="/"
-                className="inline-block px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+                className="inline-block px-6 py-3 bg-gray-200 text-black rounded-lg hover:bg-gray-300 transition"
               >
                 Go to Homepage
               </Link>
@@ -143,10 +143,10 @@ export default function FSSAPartnershipRequestPage() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-black mb-4">
             FSSA/SNAP E&T Partnership Request
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-black max-w-2xl mx-auto">
             Partner with Elevate for Humanity to provide workforce training for
             SNAP recipients
           </p>
@@ -158,8 +158,8 @@ export default function FSSAPartnershipRequestPage() {
             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
               <CheckCircle className="w-6 h-6 text-blue-600" />
             </div>
-            <h3 className="font-bold text-gray-900 mb-2">ETPL Approved</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="font-bold text-black mb-2">ETPL Approved</h3>
+            <p className="text-sm text-black">
               Indiana DWD approved training provider
             </p>
           </div>
@@ -167,8 +167,8 @@ export default function FSSAPartnershipRequestPage() {
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
               <Building className="w-6 h-6 text-green-600" />
             </div>
-            <h3 className="font-bold text-gray-900 mb-2">DOL Registered</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="font-bold text-black mb-2">DOL Registered</h3>
+            <p className="text-sm text-black">
               Registered Apprenticeship Sponsor
             </p>
           </div>
@@ -176,8 +176,8 @@ export default function FSSAPartnershipRequestPage() {
             <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
               <TrendingUp className="w-6 h-6 text-orange-600" />
             </div>
-            <h3 className="font-bold text-gray-900 mb-2">80-Hour Tracking</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="font-bold text-black mb-2">80-Hour Tracking</h3>
+            <p className="text-sm text-black">
               Automated compliance reporting
             </p>
           </div>
@@ -188,13 +188,13 @@ export default function FSSAPartnershipRequestPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Contact Information */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-black mb-6">
                 Contact Information
               </h2>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     <User className="inline w-4 h-4 mr-1" />
                     Full Name *
                   </label>
@@ -210,7 +210,7 @@ export default function FSSAPartnershipRequestPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     <Building className="inline w-4 h-4 mr-1" />
                     Organization *
                   </label>
@@ -226,7 +226,7 @@ export default function FSSAPartnershipRequestPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     <Briefcase className="inline w-4 h-4 mr-1" />
                     Title/Position
                   </label>
@@ -241,7 +241,7 @@ export default function FSSAPartnershipRequestPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     <Mail className="inline w-4 h-4 mr-1" />
                     Email Address *
                   </label>
@@ -257,7 +257,7 @@ export default function FSSAPartnershipRequestPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     <Phone className="inline w-4 h-4 mr-1" />
                     Phone Number
                   </label>
@@ -272,7 +272,7 @@ export default function FSSAPartnershipRequestPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Partnership Type *
                   </label>
                   <select
@@ -295,13 +295,13 @@ export default function FSSAPartnershipRequestPage() {
 
             {/* Partnership Details */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-black mb-6">
                 Partnership Details
               </h2>
 
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Programs of Interest
                   </label>
                   <input
@@ -315,7 +315,7 @@ export default function FSSAPartnershipRequestPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     <MessageSquare className="inline w-4 h-4 mr-1" />
                     Message / Additional Information
                   </label>
@@ -342,7 +342,7 @@ export default function FSSAPartnershipRequestPage() {
             <div className="flex items-center justify-between pt-6 border-t">
               <Link
                 href="/snap-et-partner"
-                className="text-gray-600 hover:text-gray-900 font-semibold"
+                className="text-black hover:text-black font-semibold"
               >
                 ← Back to SNAP E&T Info
               </Link>
@@ -368,11 +368,11 @@ export default function FSSAPartnershipRequestPage() {
         </div>
 
         {/* Contact Info */}
-        <div className="mt-8 text-center text-gray-600">
+        <div className="mt-8 text-center text-black">
           <p className="mb-2">
             <strong>Prefer to call?</strong> Contact us directly:
           </p>
-          <p className="text-lg font-semibold text-gray-900">
+          <p className="text-lg font-semibold text-black">
             317-314-3757 | partnerships@elevateforhumanity.institute
           </p>
         </div>

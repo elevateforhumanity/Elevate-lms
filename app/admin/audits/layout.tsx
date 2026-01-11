@@ -25,14 +25,14 @@ export default function AuditsLayout({
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center gap-3 mb-4">
             <Shield className="w-8 h-8 text-orange-600" />
-            <h1 className="text-3xl font-bold text-gray-900">Audit Dashboards</h1>
+            <h1 className="text-3xl font-bold text-black">Audit Dashboards</h1>
           </div>
           <nav role="navigation" aria-label="Main navigation" className="flex gap-4 overflow-x-auto">
             {auditTypes.map((audit) => (
               <Link
                 key={audit.href}
                 href={audit.href}
-                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg whitespace-nowrap"
+                className="px-4 py-2 text-sm font-medium text-black hover:text-orange-600 hover:bg-orange-50 rounded-lg whitespace-nowrap"
               >
                 {audit.name}
               </Link>

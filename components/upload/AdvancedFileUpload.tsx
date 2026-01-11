@@ -242,7 +242,7 @@ export function AdvancedFileUpload({
         `}
       >
         <Upload className="h-12 w-12 mx-auto mb-4 text-slate-400" />
-        <p className="text-lg font-medium text-slate-700 mb-2">
+        <p className="text-lg font-medium text-black mb-2">
           Drop files here or click to browse
         </p>
         <p className="text-sm text-slate-500">
@@ -261,7 +261,7 @@ export function AdvancedFileUpload({
       {/* Upload Stats */}
       {files.length > 0 && (
         <div className="flex items-center gap-4 text-sm">
-          <span className="text-slate-600">
+          <span className="text-black">
             {files.length} file{files.length !== 1 ? 's' : ''}
           </span>
           {successCount > 0 && (
@@ -306,7 +306,7 @@ export function AdvancedFileUpload({
 
                 {/* File Info */}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-slate-900 truncate">
+                  <p className="text-sm font-medium text-black truncate">
                     {uploadFile.file.name}
                   </p>
                   <p className="text-xs text-slate-500">
@@ -356,7 +356,7 @@ export function AdvancedFileUpload({
                   {uploadFile.status === 'pending' && (
                     <button
                       onClick={() => removeFile(uploadFile.id)}
-                      className="text-slate-400 hover:text-slate-600"
+                      className="text-slate-400 hover:text-black"
                       title="Remove"
                     >
                       <X className="h-5 w-5" />

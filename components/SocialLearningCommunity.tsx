@@ -123,13 +123,13 @@ export function SocialLearningCommunity() {
                 />
                 <div className="flex justify-between items-center mt-3">
                   <div className="flex gap-2">
-                    <button className="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded">
+                    <button className="px-3 py-1 text-sm text-black hover:bg-gray-100 rounded">
                       📷 Image
                     </button>
-                    <button className="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded">
+                    <button className="px-3 py-1 text-sm text-black hover:bg-gray-100 rounded">
                       💻 Code
                     </button>
-                    <button className="px-3 py-1 text-sm text-gray-600 hover:bg-gray-100 rounded">
+                    <button className="px-3 py-1 text-sm text-black hover:bg-gray-100 rounded">
                       🏷️ Tag
                     </button>
                   </div>
@@ -148,7 +148,7 @@ export function SocialLearningCommunity() {
                           <p className="text-sm text-gray-500">{post.timestamp}</p>
                         </div>
                       </div>
-                      <p className="text-gray-700 mb-3">{post.content}</p>
+                      <p className="text-black mb-3">{post.content}</p>
                       <div className="flex flex-wrap gap-2 mb-3">
                         {post.tags.map((tag) => (
                           <span key={tag} className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded">
@@ -156,7 +156,7 @@ export function SocialLearningCommunity() {
                           </span>
                         ))}
                       </div>
-                      <div className="flex gap-4 text-sm text-gray-600">
+                      <div className="flex gap-4 text-sm text-black">
                         <button className="hover:text-brand-orange-600">❤️ {post.likes}</button>
                         <button className="hover:text-blue-600">💬 {post.comments}</button>
                         <button className="hover:text-green-600">🔗 Share</button>
@@ -211,8 +211,8 @@ export function SocialLearningCommunity() {
               {studyGroups.map((group) => (
                 <Card key={group.id} className="p-6">
                   <h3 className="text-xl font-bold mb-2">{group.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{group.topic}</p>
-                  <div className="space-y-2 text-sm text-gray-600 mb-4">
+                  <p className="text-black text-sm mb-4">{group.topic}</p>
+                  <div className="space-y-2 text-sm text-black mb-4">
                     <p>👥 {group.members} members</p>
                     <p>📅 Next: {group.nextSession}</p>
                   </div>
@@ -231,7 +231,7 @@ export function SocialLearningCommunity() {
             </div>
             <Card className="p-6">
               <h3 className="text-lg font-bold mb-2">How to handle state in large React apps?</h3>
-              <p className="text-sm text-gray-600 mb-3">Posted by Alex Chen • 24 replies • Last activity 1 hour ago</p>
+              <p className="text-sm text-black mb-3">Posted by Alex Chen • 24 replies • Last activity 1 hour ago</p>
               <div className="flex gap-2">
                 <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">#React</span>
                 <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">#StateManagement</span>
@@ -239,7 +239,7 @@ export function SocialLearningCommunity() {
             </Card>
             <Card className="p-6">
               <h3 className="text-lg font-bold mb-2">Best practices for API error handling</h3>
-              <p className="text-sm text-gray-600 mb-3">Posted by Sarah Lee • 18 replies • Last activity 3 hours ago</p>
+              <p className="text-sm text-black mb-3">Posted by Sarah Lee • 18 replies • Last activity 3 hours ago</p>
               <div className="flex gap-2">
                 <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">#Backend</span>
                 <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded">#BestPractices</span>

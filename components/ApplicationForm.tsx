@@ -60,14 +60,14 @@ export function ApplicationForm() {
       <Card className="max-w-2xl mx-auto">
         <CardContent className="p-12 text-center">
           <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-6" />
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl font-bold text-black mb-4">
             Application Submitted!
           </h2>
-          <p className="text-lg text-slate-600 mb-8">
+          <p className="text-lg text-black mb-8">
             Thank you for applying. We'll review your application and contact you within 2-3 business days.
           </p>
           <div className="space-y-4">
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-black">
               Application ID: <span className="font-mono font-semibold">APP-2024-{Math.floor(Math.random() * 10000)}</span>
             </p>
             <Button variant="primary" size="lg">
@@ -91,10 +91,10 @@ export function ApplicationForm() {
         {/* Step 1: Personal Information */}
         {step === 1 && (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-slate-900">Personal Information</h3>
+            <h3 className="text-xl font-semibold text-black">Personal Information</h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   First Name *
                 </label>
                 <Input
@@ -104,7 +104,7 @@ export function ApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Last Name *
                 </label>
                 <Input
@@ -114,7 +114,7 @@ export function ApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Email *
                 </label>
                 <Input
@@ -125,7 +125,7 @@ export function ApplicationForm() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Phone *
                 </label>
                 <Input
@@ -136,7 +136,7 @@ export function ApplicationForm() {
                 />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Date of Birth *
                 </label>
                 <Input
@@ -151,10 +151,10 @@ export function ApplicationForm() {
         {/* Step 2: Address */}
         {step === 2 && (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-slate-900">Address</h3>
+            <h3 className="text-xl font-semibold text-black">Address</h3>
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Street Address *
                 </label>
                 <Input
@@ -165,7 +165,7 @@ export function ApplicationForm() {
               </div>
               <div className="grid md:grid-cols-3 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     City *
                   </label>
                   <Input
@@ -175,7 +175,7 @@ export function ApplicationForm() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     State *
                   </label>
                   <Input
@@ -185,7 +185,7 @@ export function ApplicationForm() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     ZIP Code *
                   </label>
                   <Input
@@ -201,9 +201,9 @@ export function ApplicationForm() {
         {/* Step 3: Program Selection */}
         {step === 3 && (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-slate-900">Program Selection</h3>
+            <h3 className="text-xl font-semibold text-black">Program Selection</h3>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Which program are you interested in? *
               </label>
               <select
@@ -218,7 +218,7 @@ export function ApplicationForm() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Preferred Start Date *
               </label>
               <Input
@@ -232,9 +232,9 @@ export function ApplicationForm() {
         {/* Step 4: Eligibility */}
         {step === 4 && (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-slate-900">Eligibility Information</h3>
+            <h3 className="text-xl font-semibold text-black">Eligibility Information</h3>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Current Employment Status *
               </label>
               <select
@@ -249,7 +249,7 @@ export function ApplicationForm() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Annual Household Income *
               </label>
               <select
@@ -265,7 +265,7 @@ export function ApplicationForm() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Household Size *
               </label>
               <Input
@@ -281,8 +281,8 @@ export function ApplicationForm() {
         {/* Step 5: Documents */}
         {step === 5 && (
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-slate-900">Required Documents</h3>
-            <p className="text-slate-600">
+            <h3 className="text-xl font-semibold text-black">Required Documents</h3>
+            <p className="text-black">
               Please confirm you have the following documents ready to upload:
             </p>
             <div className="space-y-4">
@@ -294,8 +294,8 @@ export function ApplicationForm() {
                   className="h-5 w-5"
                 />
                 <div>
-                  <div className="font-medium text-slate-900">Social Security Card</div>
-                  <div className="text-sm text-slate-600">Copy of your Social Security card</div>
+                  <div className="font-medium text-black">Social Security Card</div>
+                  <div className="text-sm text-black">Copy of your Social Security card</div>
                 </div>
               </label>
               <label className="flex items-center gap-3 p-4 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50">
@@ -306,8 +306,8 @@ export function ApplicationForm() {
                   className="h-5 w-5"
                 />
                 <div>
-                  <div className="font-medium text-slate-900">Photo ID</div>
-                  <div className="text-sm text-slate-600">Driver's license or state ID</div>
+                  <div className="font-medium text-black">Photo ID</div>
+                  <div className="text-sm text-black">Driver's license or state ID</div>
                 </div>
               </label>
               <label className="flex items-center gap-3 p-4 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50">
@@ -318,8 +318,8 @@ export function ApplicationForm() {
                   className="h-5 w-5"
                 />
                 <div>
-                  <div className="font-medium text-slate-900">Proof of Income</div>
-                  <div className="text-sm text-slate-600">Recent pay stubs or tax returns</div>
+                  <div className="font-medium text-black">Proof of Income</div>
+                  <div className="text-sm text-black">Recent pay stubs or tax returns</div>
                 </div>
               </label>
             </div>

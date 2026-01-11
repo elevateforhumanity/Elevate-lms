@@ -46,18 +46,18 @@ export default function TestPaymentsPage() {
           </Link>
           <div className="flex items-center gap-3 mb-2">
             <CreditCard className="w-8 h-8 text-brand-blue-600" />
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-black">
               Payment System Status
             </h1>
           </div>
-          <p className="text-gray-600">
+          <p className="text-black">
             Verify Stripe integration and WIOA funding assignment
           </p>
         </div>
 
         {/* Stripe Configuration Status */}
         <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg font-semibold text-black mb-4">
             Stripe Configuration
           </h2>
 
@@ -68,7 +68,7 @@ export default function TestPaymentsPage() {
           ) : (
             <div className="space-y-3">
               <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                <span className="text-sm font-medium text-gray-700">
+                <span className="text-sm font-medium text-black">
                   Stripe API Key
                 </span>
                 {stripeConfigured ? (
@@ -84,7 +84,7 @@ export default function TestPaymentsPage() {
                 )}
               </div>
               <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                <span className="text-sm font-medium text-gray-700">
+                <span className="text-sm font-medium text-black">
                   Checkout Endpoint
                 </span>
                 <span className="flex items-center gap-1 text-sm text-brand-green-600 font-medium">
@@ -93,7 +93,7 @@ export default function TestPaymentsPage() {
                 </span>
               </div>
               <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                <span className="text-sm font-medium text-gray-700">
+                <span className="text-sm font-medium text-black">
                   Webhook Handler
                 </span>
                 <span className="flex items-center gap-1 text-sm text-brand-green-600 font-medium">
@@ -107,7 +107,7 @@ export default function TestPaymentsPage() {
 
         {/* Payment Flow Status */}
         <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg font-semibold text-black mb-4">
             Payment Flow Status
           </h2>
           <div className="space-y-3">
@@ -149,7 +149,7 @@ export default function TestPaymentsPage() {
 
         {/* WIOA Funding Status */}
         <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg font-semibold text-black mb-4">
             WIOA Funding Integration
           </h2>
           <div className="space-y-3">
@@ -204,41 +204,41 @@ export default function TestPaymentsPage() {
 
         {/* Funding Sources */}
         <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg font-semibold text-black mb-4">
             Supported Funding Sources
           </h2>
           <div className="grid md:grid-cols-2 gap-3">
             <div className="p-3 border border-gray-200 rounded">
-              <div className="font-medium text-gray-900">WIOA</div>
-              <div className="text-xs text-gray-600">
+              <div className="font-medium text-black">WIOA</div>
+              <div className="text-xs text-black">
                 Workforce Innovation and Opportunity Act
               </div>
             </div>
             <div className="p-3 border border-gray-200 rounded">
-              <div className="font-medium text-gray-900">WRG</div>
-              <div className="text-xs text-gray-600">Workforce Ready Grant</div>
+              <div className="font-medium text-black">WRG</div>
+              <div className="text-xs text-black">Workforce Ready Grant</div>
             </div>
             <div className="p-3 border border-gray-200 rounded">
-              <div className="font-medium text-gray-900">JRI</div>
-              <div className="text-xs text-gray-600">
+              <div className="font-medium text-black">JRI</div>
+              <div className="text-xs text-black">
                 Justice Reinvestment Initiative
               </div>
             </div>
             <div className="p-3 border border-gray-200 rounded">
-              <div className="font-medium text-gray-900">DOL</div>
-              <div className="text-xs text-gray-600">Department of Labor</div>
+              <div className="font-medium text-black">DOL</div>
+              <div className="text-xs text-black">Department of Labor</div>
             </div>
             <div className="p-3 border border-gray-200 rounded">
-              <div className="font-medium text-gray-900">Self-Pay</div>
-              <div className="text-xs text-gray-600">
+              <div className="font-medium text-black">Self-Pay</div>
+              <div className="text-xs text-black">
                 Direct payment via Stripe
               </div>
             </div>
             <div className="p-3 border border-gray-200 rounded">
-              <div className="font-medium text-gray-900">
+              <div className="font-medium text-black">
                 Employer-Sponsored
               </div>
-              <div className="text-xs text-gray-600">
+              <div className="text-xs text-black">
                 Paid by employer partner
               </div>
             </div>

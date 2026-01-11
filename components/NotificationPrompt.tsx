@@ -56,8 +56,8 @@ export default function NotificationPrompt() {
             <Bell size={20} className="text-brand-orange-600" />
           </div>
           <div className="flex-1">
-            <h3 className="font-semibold text-gray-900 mb-1">Stay Updated</h3>
-            <p className="text-sm text-gray-600 mb-3">
+            <h3 className="font-semibold text-black mb-1">Stay Updated</h3>
+            <p className="text-sm text-black mb-3">
               Get notified about new courses, achievements, and important
               updates.
             </p>
@@ -70,7 +70,7 @@ export default function NotificationPrompt() {
               </button>
               <button
                 onClick={handleDismiss}
-                className="px-4 py-2 bg-gray-100 text-gray-700 font-medium text-sm rounded-lg hover:bg-gray-200 active:scale-95 transition-transform"
+                className="px-4 py-2 bg-gray-100 text-black font-medium text-sm rounded-lg hover:bg-gray-200 active:scale-95 transition-transform"
               >
                 Not now
               </button>

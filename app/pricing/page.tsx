@@ -18,10 +18,10 @@ export default function PricingPage() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">
             Choose Your Access Level
           </h1>
-          <p className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-black max-w-3xl mx-auto">
             The app is free to download. Some programs and services require paid
             platform access.
           </p>
@@ -46,18 +46,18 @@ export default function PricingPage() {
               )}
 
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-slate-900 mb-2">
+                <h2 className="text-2xl font-bold text-black mb-2">
                   {product.name}
                 </h2>
-                <p className="text-slate-600 text-sm mb-4">
+                <p className="text-black text-sm mb-4">
                   {product.description}
                 </p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold text-slate-900">
+                  <span className="text-4xl font-bold text-black">
                     {product.priceDisplay.split('/')[0]}
                   </span>
                   {product.interval === 'month' && product.price > 0 && (
-                    <span className="text-slate-600">/month</span>
+                    <span className="text-black">/month</span>
                   )}
                 </div>
               </div>
@@ -69,7 +69,7 @@ export default function PricingPage() {
                       className="text-brand-green-600 flex-shrink-0 mt-0.5"
                       size={20}
                     />
-                    <span className="text-slate-700 text-sm">{feature}</span>
+                    <span className="text-black text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -115,10 +115,10 @@ export default function PricingPage() {
 
         {/* Important Notes */}
         <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl font-bold text-black mb-4">
             Important Information
           </h2>
-          <div className="space-y-4 text-slate-700">
+          <div className="space-y-4 text-black">
             <p>
               <strong>Platform Access:</strong> Prices apply to platform access
               for enrolled learners. Training and services may be paid
@@ -143,15 +143,15 @@ export default function PricingPage() {
 
         {/* FAQ Section */}
         <div className="mt-16 max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-8 text-center">
             Frequently Asked Questions
           </h2>
           <div className="space-y-6">
             <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 Is the app really free?
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Yes! The app download is completely free. You can browse
                 programs, submit inquiries, and view public content without
                 paying anything.
@@ -159,10 +159,10 @@ export default function PricingPage() {
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 What's included in Student Access?
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Student Access ($39/month) gives you full LMS access, assigned
                 courses, progress tracking, and certificates. This is for
                 enrolled learners actively taking courses.
@@ -170,10 +170,10 @@ export default function PricingPage() {
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 How do I pay for access?
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Payments are processed securely on our website through Stripe.
                 After enrolling, you'll receive a payment link to set up your
                 subscription.
@@ -181,10 +181,10 @@ export default function PricingPage() {
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow">
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 Can I try before I buy?
               </h3>
-              <p className="text-slate-700">
+              <p className="text-black">
                 Yes! Download the free app to explore programs and content. When
                 you're ready to enroll, submit an inquiry and we'll guide you
                 through the process.
@@ -195,7 +195,7 @@ export default function PricingPage() {
 
         {/* CTA */}
         <div className="mt-16 text-center">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl font-bold text-black mb-4">
             Ready to Get Started?
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

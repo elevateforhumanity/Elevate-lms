@@ -58,8 +58,8 @@ export default async function BrowseCoursesPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Browse Courses</h1>
-          <p className="text-gray-600">
+          <h1 className="text-3xl font-bold text-black mb-2">Browse Courses</h1>
+          <p className="text-black">
             Choose from {courses?.length || 0} partner courses across {Object.keys(coursesByProvider || {}).length} providers
           </p>
         </div>
@@ -72,17 +72,17 @@ export default async function BrowseCoursesPage() {
 
         {!courses || courses.length === 0 ? (
           <div className="bg-white rounded-lg shadow p-8 text-center">
-            <BookOpen className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">No Courses Available</h2>
-            <p className="text-gray-600">Check back soon for new courses.</p>
+            <BookOpen className="w-16 h-16 text-black mx-auto mb-4" />
+            <h2 className="text-xl font-semibold text-black mb-2">No Courses Available</h2>
+            <p className="text-black">Check back soon for new courses.</p>
           </div>
         ) : (
           <div className="space-y-8">
             {Object.entries(coursesByProvider || {}).map(([providerName, providerCourses]: [string, any]) => (
               <div key={providerName} className="bg-white rounded-lg shadow-sm border">
                 <div className="bg-gray-50 px-6 py-4 border-b">
-                  <h2 className="text-xl font-bold text-gray-900">{providerName}</h2>
-                  <p className="text-sm text-gray-600">{providerCourses.length} courses available</p>
+                  <h2 className="text-xl font-bold text-black">{providerName}</h2>
+                  <p className="text-sm text-black">{providerCourses.length} courses available</p>
                 </div>
                 
                 <div className="p-6">
@@ -94,21 +94,21 @@ export default async function BrowseCoursesPage() {
                       return (
                         <div key={course.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
                           <div className="mb-3">
-                            <h3 className="font-semibold text-gray-900 mb-1">{course.course_name}</h3>
+                            <h3 className="font-semibold text-black mb-1">{course.course_name}</h3>
                             {course.description && (
-                              <p className="text-sm text-gray-600 line-clamp-2">{course.description}</p>
+                              <p className="text-sm text-black line-clamp-2">{course.description}</p>
                             )}
                           </div>
 
                           <div className="space-y-2 mb-4">
                             {course.hours && (
-                              <div className="flex items-center gap-2 text-sm text-gray-600">
+                              <div className="flex items-center gap-2 text-sm text-black">
                                 <Clock className="w-4 h-4" />
                                 <span>{course.hours} hours</span>
                               </div>
                             )}
                             
-                            <div className="flex items-center gap-2 text-sm text-gray-600">
+                            <div className="flex items-center gap-2 text-sm text-black">
                               <DollarSign className="w-4 h-4" />
                               <span>${price}</span>
                             </div>

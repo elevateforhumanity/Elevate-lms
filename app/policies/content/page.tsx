@@ -9,7 +9,7 @@ export default function ContentPage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Content Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Acceptable Content</h2>
       <ul><li>Educational and informative</li><li>Respectful and professional</li><li>Relevant to community</li><li>Original or properly attributed</li></ul>
       <h2>Prohibited Content</h2>

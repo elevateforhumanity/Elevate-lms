@@ -92,7 +92,7 @@ export default async function CertificationsPage() {
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-gray-600 mb-2">
+                <h3 className="text-sm font-medium text-black mb-2">
                   Total Certifications
                 </h3>
                 <p className="text-3xl font-bold text-brand-blue-600">
@@ -100,7 +100,7 @@ export default async function CertificationsPage() {
                 </p>
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-gray-600 mb-2">
+                <h3 className="text-sm font-medium text-black mb-2">
                   Active
                 </h3>
                 <p className="text-3xl font-bold text-brand-green-600">
@@ -108,7 +108,7 @@ export default async function CertificationsPage() {
                 </p>
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-sm font-medium text-gray-600 mb-2">
+                <h3 className="text-sm font-medium text-black mb-2">
                   Recent
                 </h3>
                 <p className="text-3xl font-bold text-purple-600">
@@ -135,14 +135,14 @@ export default async function CertificationsPage() {
                       <p className="font-semibold">
                         {item.title || item.name || item.id}
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-black">
                         {new Date(item.created_at).toLocaleDateString()}
                       </p>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-gray-700 text-center py-8">
+                <p className="text-black text-center py-8">
                   No certifications found
                 </p>
               )}

@@ -20,7 +20,7 @@ export default async function AdminShopsPage() {
   return (
     <div className="rounded-2xl border p-5">
       <div className="font-semibold">Admin: Shops</div>
-      <div className="text-sm text-gray-600 mt-1">
+      <div className="text-sm text-black mt-1">
         Approve and manage partner locations.
       </div>
 

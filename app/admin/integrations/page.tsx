@@ -88,7 +88,7 @@ export default function IntegrationsPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
               <Plug className="h-8 w-8 text-brand-blue-600" />
-              <p className="text-sm text-gray-600">Total Integrations</p>
+              <p className="text-sm text-black">Total Integrations</p>
             </div>
             <p className="text-3xl font-bold text-brand-blue-600">
               {integrations.length}
@@ -97,7 +97,7 @@ export default function IntegrationsPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
               <CheckCircle className="h-8 w-8 text-brand-green-600" />
-              <p className="text-sm text-gray-600">Active</p>
+              <p className="text-sm text-black">Active</p>
             </div>
             <p className="text-3xl font-bold text-brand-green-600">
               {activeCount}
@@ -105,10 +105,10 @@ export default function IntegrationsPage() {
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
-              <XCircle className="h-8 w-8 text-gray-600" />
-              <p className="text-sm text-gray-600">Inactive</p>
+              <XCircle className="h-8 w-8 text-black" />
+              <p className="text-sm text-black">Inactive</p>
             </div>
-            <p className="text-3xl font-bold text-gray-600">
+            <p className="text-3xl font-bold text-black">
               {integrations.length - activeCount}
             </p>
           </div>
@@ -128,14 +128,14 @@ export default function IntegrationsPage() {
                     <h3 className="font-semibold text-lg">
                       {integration.name}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-black mt-1">
                       {integration.description}
                     </p>
                   </div>
                   {integration.is_active ? (
                     <CheckCircle className="h-6 w-6 text-brand-green-600" />
                   ) : (
-                    <XCircle className="h-6 w-6 text-gray-600" />
+                    <XCircle className="h-6 w-6 text-black" />
                   )}
                 </div>
                 <div className="flex gap-2">

@@ -101,7 +101,7 @@ export default function WhatToBringPage() {
 
         <div className="bg-blue-50 border-2 border-blue-600 rounded-lg p-6">
           <h3 className="text-xl font-bold mb-3">Pro Tip</h3>
-          <p className="text-gray-700">
+          <p className="text-black">
             Bring all documents even if you're not sure you need them. It's better to have too much information than not enough!
           </p>
         </div>

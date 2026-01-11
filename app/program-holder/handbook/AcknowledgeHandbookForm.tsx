@@ -61,7 +61,7 @@ export function AcknowledgeHandbookForm() {
       <div>
         <label
           htmlFor="fullName"
-          className="block text-sm font-medium text-slate-700 mb-2"
+          className="block text-sm font-medium text-black mb-2"
         >
           Full Name *
         </label>
@@ -79,7 +79,7 @@ export function AcknowledgeHandbookForm() {
       <div>
         <label
           htmlFor="title"
-          className="block text-sm font-medium text-slate-700 mb-2"
+          className="block text-sm font-medium text-black mb-2"
         >
           Title/Position *
         </label>
@@ -102,7 +102,7 @@ export function AcknowledgeHandbookForm() {
             onChange={(e) => setAgreed(e.target.checked)}
             className="mt-1 w-5 h-5 text-blue-600 border-slate-300 rounded focus:ring-2 focus:ring-blue-500"
           />
-          <span className="text-slate-900 font-medium">
+          <span className="text-black font-medium">
             I acknowledge that I have read, understood, and agree to comply with
             all policies and procedures outlined in the Program Holder Employee
             Handbook. I understand that failure to comply may result in
@@ -125,7 +125,7 @@ export function AcknowledgeHandbookForm() {
         {isSubmitting ? 'Submitting...' : 'Submit Acknowledgement'}
       </button>
 
-      <p className="text-sm text-slate-600 text-center">
+      <p className="text-sm text-black text-center">
         After submitting, you will be directed to review the Rights &
         Responsibilities document.
       </p>

@@ -62,9 +62,9 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-slate-200">
         <div>
-          <h2 className="text-lg font-semibold text-slate-900">Filters</h2>
+          <h2 className="text-lg font-semibold text-black">Filters</h2>
           {totalSelectedCount > 0 && (
-            <p className="text-sm text-slate-600 mt-0.5">
+            <p className="text-sm text-black mt-0.5">
               {totalSelectedCount} selected
             </p>
           )}
@@ -103,7 +103,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                 className="w-full flex items-center justify-between p-4 hover:bg-slate-50 transition-colors"
                 aria-expanded={isExpanded}
               >
-                <span className="font-medium text-slate-900">
+                <span className="font-medium text-black">
                   {group.label}
                   {groupSelections.length > 0 && (
                     <span className="ml-2 text-sm text-brand-orange-600">
@@ -138,7 +138,7 @@ export const FilterSidebar: React.FC<FilterSidebarProps> = ({
                           }
                           className="h-4 w-4 text-brand-orange-600 border-slate-300 rounded focus:ring-2 focus:ring-blue-500 cursor-pointer"
                         />
-                        <span className="flex-1 text-sm text-slate-700 group-hover:text-slate-900">
+                        <span className="flex-1 text-sm text-black group-hover:text-black">
                           {option.label}
                         </span>
                         {option.count !== undefined && (

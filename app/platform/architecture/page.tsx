@@ -17,21 +17,21 @@ export default function ArchitecturePage() {
       <ComplianceBar />
 
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <h1 className="text-4xl font-bold mb-6 text-gray-900">
+        <h1 className="text-4xl font-bold mb-6 text-black">
           Platform Architecture
         </h1>
 
-        <p className="text-xl text-gray-700 mb-12 leading-relaxed">
+        <p className="text-xl text-black mb-12 leading-relaxed">
           Built from the ground up as government-aligned workforce
           infrastructure, not adapted from generic LMS software.
         </p>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-8">
-            <h2 className="text-2xl font-bold mb-4 text-gray-900">
+            <h2 className="text-2xl font-bold mb-4 text-black">
               Core Infrastructure
             </h2>
-            <ul className="space-y-3 text-gray-700">
+            <ul className="space-y-3 text-black">
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">•</span>
                 <span>
@@ -64,10 +64,10 @@ export default function ArchitecturePage() {
           </div>
 
           <div className="bg-green-50 border border-green-200 rounded-xl p-8">
-            <h2 className="text-2xl font-bold mb-4 text-gray-900">
+            <h2 className="text-2xl font-bold mb-4 text-black">
               Compliance & Reporting
             </h2>
-            <ul className="space-y-3 text-gray-700">
+            <ul className="space-y-3 text-black">
               <li className="flex items-start gap-3">
                 <span className="text-green-600 font-bold">•</span>
                 <span>
@@ -98,10 +98,10 @@ export default function ArchitecturePage() {
           </div>
 
           <div className="bg-purple-50 border border-purple-200 rounded-xl p-8">
-            <h2 className="text-2xl font-bold mb-4 text-gray-900">
+            <h2 className="text-2xl font-bold mb-4 text-black">
               Mobile & AI
             </h2>
-            <ul className="space-y-3 text-gray-700">
+            <ul className="space-y-3 text-black">
               <li className="flex items-start gap-3">
                 <span className="text-purple-600 font-bold">•</span>
                 <span>
@@ -141,10 +141,10 @@ export default function ArchitecturePage() {
           </div>
 
           <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-8">
-            <h2 className="text-2xl font-bold mb-4 text-gray-900">
+            <h2 className="text-2xl font-bold mb-4 text-black">
               Engagement & Gamification
             </h2>
-            <ul className="space-y-3 text-gray-700">
+            <ul className="space-y-3 text-black">
               <li className="flex items-start gap-3">
                 <span className="text-indigo-600 font-bold">•</span>
                 <span>
@@ -177,12 +177,12 @@ export default function ArchitecturePage() {
         </div>
 
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-8 mb-8">
-          <h2 className="text-2xl font-bold mb-6 text-gray-900">
+          <h2 className="text-2xl font-bold mb-6 text-black">
             Partner Integrations
           </h2>
-          <div className="grid md:grid-cols-3 gap-6 text-gray-700">
+          <div className="grid md:grid-cols-3 gap-6 text-black">
             <div>
-              <h3 className="font-bold text-gray-900 mb-2">LMS Partners (6)</h3>
+              <h3 className="font-bold text-black mb-2">LMS Partners (6)</h3>
               <ul className="text-sm space-y-1">
                 <li>• Coursera</li>
                 <li>• Udemy Business</li>
@@ -193,7 +193,7 @@ export default function ArchitecturePage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 mb-2">
+              <h3 className="font-bold text-black mb-2">
                 Payment Processing
               </h3>
               <ul className="text-sm space-y-1">
@@ -204,7 +204,7 @@ export default function ArchitecturePage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 mb-2">
+              <h3 className="font-bold text-black mb-2">
                 Government Systems
               </h3>
               <ul className="text-sm space-y-1">
@@ -218,12 +218,12 @@ export default function ArchitecturePage() {
         </div>
 
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-4 text-gray-900">
+          <h2 className="text-2xl font-bold mb-4 text-black">
             Technical Stack
           </h2>
-          <div className="grid md:grid-cols-2 gap-6 text-gray-700">
+          <div className="grid md:grid-cols-2 gap-6 text-black">
             <div>
-              <h3 className="font-bold text-gray-900 mb-3">Frontend</h3>
+              <h3 className="font-bold text-black mb-3">Frontend</h3>
               <ul className="space-y-2 text-sm">
                 <li>• Next.js 16 (Turbopack)</li>
                 <li>• React 19</li>
@@ -233,7 +233,7 @@ export default function ArchitecturePage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 mb-3">Backend</h3>
+              <h3 className="font-bold text-black mb-3">Backend</h3>
               <ul className="space-y-2 text-sm">
                 <li>• Supabase (PostgreSQL)</li>
                 <li>• Row-level security (RLS)</li>
@@ -243,7 +243,7 @@ export default function ArchitecturePage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 mb-3">Mobile</h3>
+              <h3 className="font-bold text-black mb-3">Mobile</h3>
               <ul className="space-y-2 text-sm">
                 <li>• React Native</li>
                 <li>• Expo SDK 50</li>
@@ -253,7 +253,7 @@ export default function ArchitecturePage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-gray-900 mb-3">Infrastructure</h3>
+              <h3 className="font-bold text-black mb-3">Infrastructure</h3>
               <ul className="space-y-2 text-sm">
                 <li>• Multi-tenant database</li>
                 <li>• Automated backups</li>

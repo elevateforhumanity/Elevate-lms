@@ -80,7 +80,7 @@ export function VoiceAssistant() {
                   className={`max-w-[80%] rounded-2xl px-4 py-2 ${
                     message.isUser
                       ? 'bg-brand-orange-600 text-white'
-                      : 'bg-white text-gray-800 border border-gray-200'
+                      : 'bg-white text-black border border-gray-200'
                   }`}
                 >
                   <p className="text-sm">{message.text}</p>
@@ -99,14 +99,14 @@ export function VoiceAssistant() {
           </div>
           {/* Quick Commands */}
           <div className="p-4 border-t border-gray-200 bg-gray-50">
-            <p className="text-xs font-semibold text-gray-700 mb-2">
+            <p className="text-xs font-semibold text-black mb-2">
               Try these commands:
             </p>
             <div className="space-y-1 max-h-32 overflow-y-auto">
               {voiceCommands.slice(0, 5).map((cmd, index) => (
                 <div
                   key={index}
-                  className="text-xs text-gray-600 flex items-start gap-2"
+                  className="text-xs text-black flex items-start gap-2"
                 >
                   <span className="text-brand-orange-600">•</span>
                   <span>

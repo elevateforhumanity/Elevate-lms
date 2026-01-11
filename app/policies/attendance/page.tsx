@@ -9,7 +9,7 @@ export default function AttendancePage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Attendance Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Requirements</h2>
       <p>Students must attend 80% of scheduled classes to maintain good standing.</p>
       <h2>Absences</h2>

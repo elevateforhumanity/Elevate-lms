@@ -698,13 +698,13 @@ export default function AdminPortalMapPage() {
         );
       case 'planned':
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full">
+          <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-black bg-gray-100 rounded-full">
             Planned
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full">
+          <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-black bg-gray-100 rounded-full">
             Unknown
           </span>
         );
@@ -716,10 +716,10 @@ export default function AdminPortalMapPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Admin Portal Map
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-black">
             Complete overview of all admin portal features and routes
           </p>
         </div>
@@ -727,7 +727,7 @@ export default function AdminPortalMapPage() {
         {/* Search */}
         <div className="mb-8">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 w-5 h-5" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black w-5 h-5" />
             <input
               type="text"
               placeholder="Search features, routes, or descriptions..."
@@ -745,29 +745,29 @@ export default function AdminPortalMapPage() {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-lg shadow p-6">
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold text-black">
               {adminRoutes.length}
             </div>
-            <div className="text-sm text-gray-600">Main Sections</div>
+            <div className="text-sm text-black">Main Sections</div>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
-            <div className="text-2xl font-bold text-gray-900">
+            <div className="text-2xl font-bold text-black">
               {adminRoutes.reduce(
                 (acc, route) => acc + (route.children?.length || 0),
                 0
               )}
             </div>
-            <div className="text-sm text-gray-600">Total Routes</div>
+            <div className="text-sm text-black">Total Routes</div>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
             <div className="text-2xl font-bold text-brand-green-600">
               {adminRoutes.filter((r) => r.status === 'active').length}
             </div>
-            <div className="text-sm text-gray-600">Active Features</div>
+            <div className="text-sm text-black">Active Features</div>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
             <div className="text-2xl font-bold text-brand-blue-600">155</div>
-            <div className="text-sm text-gray-600">Total Pages</div>
+            <div className="text-sm text-black">Total Pages</div>
           </div>
         </div>
 
@@ -792,12 +792,12 @@ export default function AdminPortalMapPage() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-semibold text-gray-900">
+                          <h3 className="text-lg font-semibold text-black">
                             {route.name}
                           </h3>
                           {getStatusBadge(route.status)}
                         </div>
-                        <p className="text-gray-600 mb-3">
+                        <p className="text-black mb-3">
                           {route.description}
                         </p>
                         <div className="flex items-center gap-4">
@@ -811,7 +811,7 @@ export default function AdminPortalMapPage() {
                           {route.children && (
                             <button
                               onClick={() => toggleSection(route.name)}
-                              className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+                              className="inline-flex items-center gap-2 text-sm font-medium text-black hover:text-black"
                             >
                               {isExpanded ? 'Hide' : 'Show'}{' '}
                               {route.children.length} sub-pages
@@ -833,12 +833,12 @@ export default function AdminPortalMapPage() {
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <div className="flex items-center gap-2 mb-1">
-                                <h4 className="text-sm font-medium text-gray-900">
+                                <h4 className="text-sm font-medium text-black">
                                   {child.name}
                                 </h4>
                                 {getStatusBadge(child.status)}
                               </div>
-                              <p className="text-sm text-gray-600 mb-2">
+                              <p className="text-sm text-black mb-2">
                                 {child.description}
                               </p>
                               <Link
@@ -862,10 +862,10 @@ export default function AdminPortalMapPage() {
 
         {/* Footer Info */}
         <div className="mt-12 bg-blue-50 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+          <h3 className="text-lg font-semibold text-black mb-2">
             About This Portal
           </h3>
-          <p className="text-gray-700 mb-4">
+          <p className="text-black mb-4">
             The Elevate for Humanity Admin Portal provides comprehensive tools
             for managing workforce development programs, student enrollment,
             compliance reporting, and partner relationships. All features are
@@ -873,10 +873,10 @@ export default function AdminPortalMapPage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">
+              <h4 className="font-semibold text-black mb-2">
                 Key Features:
               </h4>
-              <ul className="space-y-1 text-gray-700">
+              <ul className="space-y-1 text-black">
                 <li>• Complete student lifecycle management</li>
                 <li>• WIOA compliance and reporting</li>
                 <li>• Partner integration and MOUs</li>
@@ -885,10 +885,10 @@ export default function AdminPortalMapPage() {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">
+              <h4 className="font-semibold text-black mb-2">
                 Technical Stack:
               </h4>
-              <ul className="space-y-1 text-gray-700">
+              <ul className="space-y-1 text-black">
                 <li>• Next.js 14 with App Router</li>
                 <li>• TypeScript for type safety</li>
                 <li>• Supabase for database and auth</li>
@@ -906,13 +906,13 @@ export default function AdminPortalMapPage() {
             Code Reference
           </h3>
           <div className="space-y-2 text-sm font-mono">
-            <div className="text-gray-600">// Admin Layout</div>
+            <div className="text-black">// Admin Layout</div>
             <div>app/admin/layout.tsx</div>
-            <div className="text-gray-600 mt-4">// Admin Navigation</div>
+            <div className="text-black mt-4">// Admin Navigation</div>
             <div>components/AdminNav.tsx</div>
-            <div className="text-gray-600 mt-4">// Admin Header</div>
+            <div className="text-black mt-4">// Admin Header</div>
             <div>components/AdminHeader.tsx</div>
-            <div className="text-gray-600 mt-4">// Footer Component</div>
+            <div className="text-black mt-4">// Footer Component</div>
             <div>components/layout/Footer.tsx</div>
           </div>
         </div>

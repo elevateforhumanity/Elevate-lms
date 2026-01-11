@@ -53,7 +53,7 @@ export default function StudentApplicationForm() {
 
       {/* Personal Information */}
       <div className="bg-white border border-slate-200 rounded-lg p-6">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
+        <h2 className="text-xl font-bold text-black mb-4">
           Personal Information
         </h2>
 
@@ -61,7 +61,7 @@ export default function StudentApplicationForm() {
           <div>
             <label
               htmlFor="firstName"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               First Name *
             </label>
@@ -77,7 +77,7 @@ export default function StudentApplicationForm() {
           <div>
             <label
               htmlFor="lastName"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Last Name *
             </label>
@@ -93,7 +93,7 @@ export default function StudentApplicationForm() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Email *
             </label>
@@ -109,7 +109,7 @@ export default function StudentApplicationForm() {
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Phone *
             </label>
@@ -125,7 +125,7 @@ export default function StudentApplicationForm() {
           <div>
             <label
               htmlFor="dateOfBirth"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Date of Birth
             </label>
@@ -141,13 +141,13 @@ export default function StudentApplicationForm() {
 
       {/* Address */}
       <div className="bg-white border border-slate-200 rounded-lg p-6">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">Address</h2>
+        <h2 className="text-xl font-bold text-black mb-4">Address</h2>
 
         <div className="space-y-4">
           <div>
             <label
               htmlFor="address"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Street Address
             </label>
@@ -163,7 +163,7 @@ export default function StudentApplicationForm() {
             <div>
               <label
                 htmlFor="city"
-                className="block text-sm font-medium text-slate-700 mb-2"
+                className="block text-sm font-medium text-black mb-2"
               >
                 City
               </label>
@@ -178,7 +178,7 @@ export default function StudentApplicationForm() {
             <div>
               <label
                 htmlFor="state"
-                className="block text-sm font-medium text-slate-700 mb-2"
+                className="block text-sm font-medium text-black mb-2"
               >
                 State
               </label>
@@ -199,7 +199,7 @@ export default function StudentApplicationForm() {
             <div>
               <label
                 htmlFor="zipCode"
-                className="block text-sm font-medium text-slate-700 mb-2"
+                className="block text-sm font-medium text-black mb-2"
               >
                 ZIP Code
               </label>
@@ -216,7 +216,7 @@ export default function StudentApplicationForm() {
 
       {/* Program Interest */}
       <div className="bg-white border border-slate-200 rounded-lg p-6">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
+        <h2 className="text-xl font-bold text-black mb-4">
           Program Interest
         </h2>
 
@@ -224,7 +224,7 @@ export default function StudentApplicationForm() {
           <div>
             <label
               htmlFor="programInterest"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Which program interests you?
             </label>
@@ -247,7 +247,7 @@ export default function StudentApplicationForm() {
           <div>
             <label
               htmlFor="employmentStatus"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Current Employment Status
             </label>
@@ -267,7 +267,7 @@ export default function StudentApplicationForm() {
           <div>
             <label
               htmlFor="educationLevel"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Highest Education Level
             </label>
@@ -290,7 +290,7 @@ export default function StudentApplicationForm() {
           <div>
             <label
               htmlFor="goals"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               What are your career goals?
             </label>
@@ -317,7 +317,7 @@ export default function StudentApplicationForm() {
         <button
           type="button"
           onClick={() => router.back()}
-          className="min-h-[48px] px-6 py-3 bg-white border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:border-slate-400 transition-colors"
+          className="min-h-[48px] px-6 py-3 bg-white border-2 border-slate-300 text-black font-semibold rounded-lg hover:border-slate-400 transition-colors"
         >
           Back
         </button>

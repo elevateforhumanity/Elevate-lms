@@ -17,11 +17,11 @@ export default function UnauthorizedPage() {
           <ShieldAlert className="w-10 h-10 text-red-600" />
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+        <h1 className="text-3xl sm:text-4xl font-bold text-black mb-4">
           Access Denied
         </h1>
 
-        <p className="text-lg text-slate-700 mb-8">
+        <p className="text-lg text-black mb-8">
           You don't have permission to access this page. This area is restricted
           to specific user roles.
         </p>
@@ -36,7 +36,7 @@ export default function UnauthorizedPage() {
           </Link>
           <Link
             href="/dashboard"
-            className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 bg-white border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:border-slate-400 transition-colors"
+            className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 bg-white border-2 border-slate-300 text-black font-semibold rounded-lg hover:border-slate-400 transition-colors"
           >
             Go to Dashboard
           </Link>

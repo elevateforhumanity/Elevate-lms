@@ -6,10 +6,10 @@ export default function EnrollmentProcess() {
     <section className="py-16 sm:py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4">
             How to Enroll - Step by Step
           </h2>
-          <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-black max-w-3xl mx-auto">
             Follow these simple steps to start your free training through Indiana Career Connect
           </p>
         </div>
@@ -29,10 +29,10 @@ d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.0
               </div>
             </div>
             <div className="flex-1">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 Visit Indiana Career Connect
               </h3>
-              <p className="text-slate-700 mb-4 leading-relaxed">
+              <p className="text-black mb-4 leading-relaxed">
                 Go to <a href="https://www.indianacareerconnect.com" target="_blank" rel="noopener noreferrer"
 className="text-orange-600 font-semibold hover:underline">www.indianacareerconnect.com</a> and create your free account. This is the official portal for all WIOA-funded training programs in Indiana.
               </p>
@@ -59,14 +59,14 @@ d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </div>
             </div>
             <div className="flex-1">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 Complete Your Profile
               </h3>
-              <p className="text-slate-700 mb-4 leading-relaxed">
+              <p className="text-black mb-4 leading-relaxed">
                 Fill out your profile with your work history, education, and career goals. This helps us match you with the right training program and funding options.
               </p>
               <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
-                <p className="text-sm text-slate-700">
+                <p className="text-sm text-black">
                   <strong>What you'll need:</strong> Social Security Number, proof of residency, income documentation (if applicable), and high school diploma or GED.
                 </p>
               </div>
@@ -81,20 +81,20 @@ d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </div>
             </div>
             <div className="flex-1">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 Schedule Your Appointment
               </h3>
-              <p className="text-slate-700 mb-4 leading-relaxed">
+              <p className="text-black mb-4 leading-relaxed">
                 Book an appointment with a career advisor through the Indiana Career Connect portal. They will review your eligibility for WIOA funding and help you choose the right program.
               </p>
               <div className="grid sm:grid-cols-2 gap-4 mt-4">
                 <div className="bg-slate-50 p-4 rounded-lg">
-                  <h4 className="font-bold text-slate-900 mb-2">📍 In-Person</h4>
-                  <p className="text-sm text-slate-600">Visit a WorkOne center near you</p>
+                  <h4 className="font-bold text-black mb-2">📍 In-Person</h4>
+                  <p className="text-sm text-black">Visit a WorkOne center near you</p>
                 </div>
                 <div className="bg-slate-50 p-4 rounded-lg">
-                  <h4 className="font-bold text-slate-900 mb-2">💻 Virtual</h4>
-                  <p className="text-sm text-slate-600">Schedule a video call appointment</p>
+                  <h4 className="font-bold text-black mb-2">💻 Virtual</h4>
+                  <p className="text-sm text-black">Schedule a video call appointment</p>
                 </div>
               </div>
             </div>
@@ -108,14 +108,14 @@ d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </div>
             </div>
             <div className="flex-1">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 Meet with Your Advisor
               </h3>
-              <p className="text-slate-700 mb-4 leading-relaxed">
+              <p className="text-black mb-4 leading-relaxed">
                 Your career advisor will verify your eligibility, explain funding options, and help you select Elevate for Humanity as your training provider. They'll also discuss supportive services like transportation and childcare assistance.
               </p>
               <div className="bg-green-50 border-l-4 border-green-600 p-4 rounded">
-                <p className="text-sm text-slate-700">
+                <p className="text-sm text-black">
                   <strong>Tip:</strong> Mention you want to train with Elevate for Humanity. We're an approved WIOA provider in Marion County.
                 </p>
               </div>
@@ -130,10 +130,10 @@ d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </div>
             </div>
             <div className="flex-1">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              <h3 className="text-2xl font-bold text-black mb-3">
                 Get Approved & Enroll
               </h3>
-              <p className="text-slate-700 mb-4 leading-relaxed">
+              <p className="text-black mb-4 leading-relaxed">
                 Once approved for WIOA funding, your advisor will issue a training voucher. Bring this to Elevate for Humanity to complete your enrollment. We'll handle all the paperwork and get you started!
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mt-4">
@@ -145,7 +145,7 @@ d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </Link>
                 <a
                   href="tel:317-314-3757"
-                  className="inline-block px-6 py-3 bg-white text-slate-900 font-bold rounded-full hover:bg-slate-50 transition-all border-2 border-slate-200 text-center"
+                  className="inline-block px-6 py-3 bg-white text-black font-bold rounded-full hover:bg-slate-50 transition-all border-2 border-slate-200 text-center"
                 >
                   Call 317-314-3757
                 </a>
@@ -181,16 +181,16 @@ d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         <div className="mt-12 grid md:grid-cols-3 gap-6">
           <div className="bg-white rounded-lg shadow p-6 text-center">
             <div className="text-4xl mb-3 text-2xl md:text-3xl lg:text-4xl">📋</div>
-            <h4 className="font-bold text-slate-900 mb-2">Eligibility Requirements</h4>
-            <p className="text-sm text-slate-600 mb-4">Check if you qualify for WIOA funding</p>
+            <h4 className="font-bold text-black mb-2">Eligibility Requirements</h4>
+            <p className="text-sm text-black mb-4">Check if you qualify for WIOA funding</p>
             <Link href="/wioa-eligibility" aria-label="Link" className="text-orange-600 font-semibold hover:underline">
               Learn More →
             </Link>
           </div>
           <div className="bg-white rounded-lg shadow p-6 text-center">
             <div className="text-4xl mb-3 text-2xl md:text-3xl lg:text-4xl">🏢</div>
-            <h4 className="font-bold text-slate-900 mb-2">Find WorkOne Center</h4>
-            <p className="text-sm text-slate-600 mb-4">Locate your nearest WorkOne office</p>
+            <h4 className="font-bold text-black mb-2">Find WorkOne Center</h4>
+            <p className="text-sm text-black mb-4">Locate your nearest WorkOne office</p>
             <a
               href="https://www.in.gov/dwd/workone-centers/"
               target="_blank"
@@ -202,8 +202,8 @@ d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
           </div>
           <div className="bg-white rounded-lg shadow p-6 text-center">
             <div className="text-4xl mb-3 text-2xl md:text-3xl lg:text-4xl">💰</div>
-            <h4 className="font-bold text-slate-900 mb-2">Funding Options</h4>
-            <p className="text-sm text-slate-600 mb-4">Learn about WIOA, WRG, and JRI funding</p>
+            <h4 className="font-bold text-black mb-2">Funding Options</h4>
+            <p className="text-sm text-black mb-4">Learn about WIOA, WRG, and JRI funding</p>
             <Link href="/funding" aria-label="Link" className="text-orange-600 font-semibold hover:underline">
               View Options →
             </Link>

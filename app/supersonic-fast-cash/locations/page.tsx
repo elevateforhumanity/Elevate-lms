@@ -16,8 +16,8 @@ export default function LocationsPage() {
       {/* Hero */}
       <section className="bg-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Visit Us or Meet Online</h1>
-          <p className="text-xl text-gray-600">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">Visit Us or Meet Online</h1>
+          <p className="text-xl text-black">
             In-person service in Indianapolis or virtual appointments nationwide
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function LocationsPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Office Info */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">
+              <h2 className="text-3xl font-bold text-black mb-8">
                 Indianapolis Office
               </h2>
 
@@ -37,10 +37,10 @@ export default function LocationsPage() {
                 <div className="flex items-start gap-4">
                   <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                   <div>
-                    <div className="font-semibold text-gray-900 mb-1">
+                    <div className="font-semibold text-black mb-1">
                       Address
                     </div>
-                    <div className="text-gray-600">
+                    <div className="text-black">
                       7009 E 56th St
                       <br />
                       Indianapolis, IN 46226
@@ -51,7 +51,7 @@ export default function LocationsPage() {
                 <div className="flex items-start gap-4">
                   <Phone className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                   <div>
-                    <div className="font-semibold text-gray-900 mb-1">
+                    <div className="font-semibold text-black mb-1">
                       Phone
                     </div>
                     <a
@@ -66,7 +66,7 @@ export default function LocationsPage() {
                 <div className="flex items-start gap-4">
                   <Mail className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                   <div>
-                    <div className="font-semibold text-gray-900 mb-1">
+                    <div className="font-semibold text-black mb-1">
                       Email
                     </div>
                     <a
@@ -81,10 +81,10 @@ export default function LocationsPage() {
                 <div className="flex items-start gap-4">
                   <Clock className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                   <div>
-                    <div className="font-semibold text-gray-900 mb-2">
+                    <div className="font-semibold text-black mb-2">
                       Hours
                     </div>
-                    <div className="space-y-1 text-gray-600">
+                    <div className="space-y-1 text-black">
                       <div className="flex justify-between gap-8">
                         <span>Monday - Friday:</span>
                         <span className="font-medium">9:00 AM - 7:00 PM</span>
@@ -104,10 +104,10 @@ export default function LocationsPage() {
                 <div className="flex items-start gap-4">
                   <Car className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
                   <div>
-                    <div className="font-semibold text-gray-900 mb-1">
+                    <div className="font-semibold text-black mb-1">
                       Parking
                     </div>
-                    <div className="text-gray-600">
+                    <div className="text-black">
                       Free parking available on-site
                     </div>
                   </div>
@@ -125,7 +125,7 @@ export default function LocationsPage() {
                   href="https://www.google.com/maps/place/7009+E+56th+St,+Indianapolis,+IN+46226"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-gray-100 text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-gray-100 text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors"
                 >
                   Get Directions
                 </a>
@@ -153,10 +153,10 @@ export default function LocationsPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <Video className="w-16 h-16 text-blue-600 mx-auto mb-4" />
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               Virtual Appointments Available
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Can't make it to our office? We offer secure video consultations
               for clients anywhere in the United States.
             </p>
@@ -167,10 +167,10 @@ export default function LocationsPage() {
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Video className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">
+              <h3 className="font-bold text-black mb-2">
                 Video Consultation
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Face-to-face meeting via secure video call
               </p>
             </div>
@@ -179,10 +179,10 @@ export default function LocationsPage() {
               <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Phone className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">
+              <h3 className="font-bold text-black mb-2">
                 Phone Consultation
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Discuss your tax situation over the phone
               </p>
             </div>
@@ -191,8 +191,8 @@ export default function LocationsPage() {
               <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Document Upload</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-bold text-black mb-2">Document Upload</h3>
+              <p className="text-sm text-black">
                 Securely upload documents online
               </p>
             </div>
@@ -213,10 +213,10 @@ export default function LocationsPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               Serving All 50 States
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               While our office is in Indianapolis, we prepare returns for
               clients nationwide
             </p>
@@ -275,7 +275,7 @@ export default function LocationsPage() {
               'Wisconsin',
               'Wyoming',
             ].map((state) => (
-              <div key={state} className="text-center py-2 text-gray-700">
+              <div key={state} className="text-center py-2 text-black">
                 {state}
               </div>
             ))}

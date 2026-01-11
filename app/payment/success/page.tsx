@@ -19,11 +19,11 @@ export default function PaymentSuccessPage() {
             <CheckCircle className="w-12 h-12 text-brand-green-600" />
           </div>
 
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 text-2xl md:text-3xl lg:text-4xl">
+          <h1 className="text-4xl font-bold text-black mb-4 text-2xl md:text-3xl lg:text-4xl">
             Payment Successful!
           </h1>
 
-          <p className="text-base md:text-lg text-gray-600 mb-8">
+          <p className="text-base md:text-lg text-black mb-8">
             Thank you for enrolling in Elevate for Humanity. Your payment has
             been processed successfully.
           </p>
@@ -59,14 +59,14 @@ export default function PaymentSuccessPage() {
             </Link>
             <Link
               href="/"
-              className="bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
+              className="bg-gray-200 text-black px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
             >
               Return Home
             </Link>
           </div>
 
           <div className="mt-8 pt-8 border-t border-gray-200">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Questions? Contact us at{' '}
               <a
                 href="tel:317-314-3757"

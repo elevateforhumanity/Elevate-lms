@@ -32,7 +32,7 @@ export default function VolunteerPage() {
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div>
               <h2 className="text-3xl font-bold mb-6">Make a Difference</h2>
-              <p className="text-gray-700 mb-6">
+              <p className="text-black mb-6">
                 Join our team of VITA volunteers and help low-income individuals and families file their taxes for free. No prior tax experience required - we provide all the training you need.
               </p>
               <div className="space-y-4">
@@ -40,35 +40,35 @@ export default function VolunteerPage() {
                   <Heart className="w-6 h-6 text-red-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Give Back</h3>
-                    <p className="text-gray-600">Help families keep more of their refund</p>
+                    <p className="text-black">Help families keep more of their refund</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <BookOpen className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Learn Skills</h3>
-                    <p className="text-gray-600">Gain valuable tax preparation knowledge</p>
+                    <p className="text-black">Gain valuable tax preparation knowledge</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Users className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Meet People</h3>
-                    <p className="text-gray-600">Connect with community members</p>
+                    <p className="text-black">Connect with community members</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Award className="w-6 h-6 text-orange-600 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold mb-1">Get Certified</h3>
-                    <p className="text-gray-600">Earn IRS certification</p>
+                    <p className="text-black">Earn IRS certification</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="bg-blue-50 rounded-lg p-8 border border-blue-200">
               <h3 className="text-2xl font-bold mb-4">Volunteer Roles</h3>
-              <ul className="space-y-3 text-gray-700 mb-6">
+              <ul className="space-y-3 text-black mb-6">
                 <li className="flex items-start gap-2">
                   <span className="text-blue-600 font-bold">•</span>
                   <span><strong>Tax Preparer:</strong> Prepare returns with taxpayers</span>
@@ -98,7 +98,7 @@ export default function VolunteerPage() {
           {/* Training Info */}
           <div className="bg-gray-50 rounded-lg p-8">
             <h3 className="text-2xl font-bold mb-6 text-center">Training Provided</h3>
-            <p className="text-center text-gray-700 mb-8 max-w-3xl mx-auto">
+            <p className="text-center text-black mb-8 max-w-3xl mx-auto">
               All volunteers receive free IRS-certified training. Training is available online and in-person, typically taking 20-40 hours depending on certification level.
             </p>
             <div className="text-center">

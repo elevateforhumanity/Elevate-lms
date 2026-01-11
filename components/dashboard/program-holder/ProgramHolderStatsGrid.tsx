@@ -65,7 +65,7 @@ function StatCard({ label, value, helper }: StatCardProps) {
       <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
         {label}
       </p>
-      <p className="mt-1 text-xl font-semibold text-slate-900">{value}</p>
+      <p className="mt-1 text-xl font-semibold text-black">{value}</p>
       {helper && (
         <p className="mt-1 text-[11px] text-slate-500">{helper}</p>
       )}

@@ -49,7 +49,7 @@ export default function StaffApplicationForm() {
       )}
 
       <div className="bg-white border border-slate-200 rounded-lg p-6">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
+        <h2 className="text-xl font-bold text-black mb-4">
           Personal Information
         </h2>
 
@@ -57,7 +57,7 @@ export default function StaffApplicationForm() {
           <div>
             <label
               htmlFor="firstName"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               First Name *
             </label>
@@ -73,7 +73,7 @@ export default function StaffApplicationForm() {
           <div>
             <label
               htmlFor="lastName"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Last Name *
             </label>
@@ -89,7 +89,7 @@ export default function StaffApplicationForm() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Email *
             </label>
@@ -105,7 +105,7 @@ export default function StaffApplicationForm() {
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Phone *
             </label>
@@ -121,7 +121,7 @@ export default function StaffApplicationForm() {
       </div>
 
       <div className="bg-white border border-slate-200 rounded-lg p-6">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
+        <h2 className="text-xl font-bold text-black mb-4">
           Position Details
         </h2>
 
@@ -129,7 +129,7 @@ export default function StaffApplicationForm() {
           <div>
             <label
               htmlFor="role"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Role Type *
             </label>
@@ -148,7 +148,7 @@ export default function StaffApplicationForm() {
           <div>
             <label
               htmlFor="position"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Position Applying For *
             </label>
@@ -165,7 +165,7 @@ export default function StaffApplicationForm() {
           <div>
             <label
               htmlFor="experience"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Relevant Experience
             </label>
@@ -181,7 +181,7 @@ export default function StaffApplicationForm() {
           <div>
             <label
               htmlFor="education"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Education
             </label>
@@ -197,7 +197,7 @@ export default function StaffApplicationForm() {
           <div>
             <label
               htmlFor="certifications"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Certifications & Licenses
             </label>
@@ -213,7 +213,7 @@ export default function StaffApplicationForm() {
           <div>
             <label
               htmlFor="availability"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Availability
             </label>
@@ -233,7 +233,7 @@ export default function StaffApplicationForm() {
           <div>
             <label
               htmlFor="coverLetter"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Cover Letter
             </label>
@@ -259,7 +259,7 @@ export default function StaffApplicationForm() {
         <button
           type="button"
           onClick={() => router.back()}
-          className="min-h-[48px] px-6 py-3 bg-white border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:border-slate-400 transition-colors"
+          className="min-h-[48px] px-6 py-3 bg-white border-2 border-slate-300 text-black font-semibold rounded-lg hover:border-slate-400 transition-colors"
         >
           Back
         </button>

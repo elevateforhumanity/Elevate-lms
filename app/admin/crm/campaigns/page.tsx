@@ -50,10 +50,10 @@ export default async function CampaignsPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-black">
               Email Campaigns
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className="text-black mt-2">
               Send and track bulk email campaigns
             </p>
           </div>
@@ -70,50 +70,50 @@ export default async function CampaignsPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-gray-600">
+              <span className="text-sm font-semibold text-black">
                 Total Sent
               </span>
               <Mail className="w-5 h-5 text-blue-600" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-3xl font-bold text-black">
               {totalSent.toLocaleString()}
             </p>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-gray-600">
+              <span className="text-sm font-semibold text-black">
                 Open Rate
               </span>
               <Eye className="w-5 h-5 text-green-600" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">{openRate}%</p>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-3xl font-bold text-black">{openRate}%</p>
+            <p className="text-sm text-black mt-1">
               {totalOpened.toLocaleString()} opened
             </p>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-gray-600">
+              <span className="text-sm font-semibold text-black">
                 Click Rate
               </span>
               <TrendingUp className="w-5 h-5 text-purple-600" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">{clickRate}%</p>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-3xl font-bold text-black">{clickRate}%</p>
+            <p className="text-sm text-black mt-1">
               {totalClicked.toLocaleString()} clicked
             </p>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-semibold text-gray-600">
+              <span className="text-sm font-semibold text-black">
                 Campaigns
               </span>
               <Users className="w-5 h-5 text-orange-600" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-3xl font-bold text-black">
               {campaigns?.length || 0}
             </p>
           </div>
@@ -122,7 +122,7 @@ export default async function CampaignsPage() {
         {/* Campaigns List */}
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-xl font-bold text-gray-900">All Campaigns</h2>
+            <h2 className="text-xl font-bold text-black">All Campaigns</h2>
           </div>
 
           {campaigns && campaigns.length > 0 ? (
@@ -135,26 +135,26 @@ export default async function CampaignsPage() {
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-gray-900">
+                      <h3 className="text-lg font-semibold text-black">
                         {campaign.name}
                       </h3>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <p className="text-sm text-black mt-1">
                         {campaign.subject}
                       </p>
                       <div className="flex items-center gap-6 mt-3 text-sm">
-                        <span className="text-gray-600">
+                        <span className="text-black">
                           Sent:{' '}
-                          <span className="font-semibold text-gray-900">
+                          <span className="font-semibold text-black">
                             {campaign.sent_count || 0}
                           </span>
                         </span>
-                        <span className="text-gray-600">
+                        <span className="text-black">
                           Opened:{' '}
                           <span className="font-semibold text-green-600">
                             {campaign.opened_count || 0}
                           </span>
                         </span>
-                        <span className="text-gray-600">
+                        <span className="text-black">
                           Clicked:{' '}
                           <span className="font-semibold text-blue-600">
                             {campaign.clicked_count || 0}
@@ -168,13 +168,13 @@ export default async function CampaignsPage() {
                           campaign.status === 'sent'
                             ? 'bg-green-100 text-green-700'
                             : campaign.status === 'draft'
-                              ? 'bg-gray-100 text-gray-700'
+                              ? 'bg-gray-100 text-black'
                               : 'bg-blue-100 text-blue-700'
                         }`}
                       >
                         {campaign.status}
                       </span>
-                      <p className="text-xs text-gray-700 mt-2">
+                      <p className="text-xs text-black mt-2">
                         {new Date(campaign.created_at).toLocaleDateString()}
                       </p>
                     </div>
@@ -184,11 +184,11 @@ export default async function CampaignsPage() {
             </div>
           ) : (
             <div className="px-6 py-12 text-center">
-              <Mail className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <Mail className="w-16 h-16 text-black mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-black mb-2">
                 No campaigns yet
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 Create your first email campaign to get started
               </p>
               <Link

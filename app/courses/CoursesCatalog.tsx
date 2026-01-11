@@ -94,25 +94,25 @@ export default function CoursesCatalog({
               <div className="text-4xl font-bold text-brand-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                 {courses.length}
               </div>
-              <div className="text-gray-600">Courses Available</div>
+              <div className="text-black">Courses Available</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-brand-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                 100%
               </div>
-              <div className="text-gray-600">Free Training</div>
+              <div className="text-black">Free Training</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-brand-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                 {categories.length}
               </div>
-              <div className="text-gray-600">Categories</div>
+              <div className="text-black">Categories</div>
             </div>
             <div>
               <div className="text-4xl font-bold text-brand-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">
                 24/7
               </div>
-              <div className="text-gray-600">Access</div>
+              <div className="text-black">Access</div>
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function CoursesCatalog({
                     className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                   <svg
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-600"
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-black"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -198,13 +198,13 @@ export default function CoursesCatalog({
 
             {/* Results Count & Sort */}
             <div className="flex items-center justify-between mt-6">
-              <p className="text-gray-600">
+              <p className="text-black">
                 Showing{' '}
                 <span className="font-semibold">{sortedCourses.length}</span> of{' '}
                 <span className="font-semibold">{courses.length}</span> courses
               </p>
               <div className="flex items-center gap-2">
-                <label className="text-sm text-gray-600">Sort by:</label>
+                <label className="text-sm text-black">Sort by:</label>
                 <select
                   value={sortBy}
                   onChange={(
@@ -271,17 +271,17 @@ export default function CoursesCatalog({
                         </span>
                       )}
 
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-blue-600 transition-colors">
+                      <h3 className="text-xl font-bold text-black mb-2 group-hover:text-brand-blue-600 transition-colors">
                         {course.title}
                       </h3>
 
                       {course.description && (
-                        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                        <p className="text-black text-sm mb-4 line-clamp-2">
                           {course.description}
                         </p>
                       )}
 
-                      <div className="flex items-center justify-between text-sm text-gray-700">
+                      <div className="flex items-center justify-between text-sm text-black">
                         {course.duration_hours && (
                           <span className="flex items-center">
                             <svg
@@ -317,7 +317,7 @@ export default function CoursesCatalog({
             ) : (
               <div className="text-center py-16">
                 <svg
-                  className="w-16 h-16 text-gray-600 mx-auto mb-4"
+                  className="w-16 h-16 text-black mx-auto mb-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -329,10 +329,10 @@ export default function CoursesCatalog({
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   />
                 </svg>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-black mb-2">
                   No courses found
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-black mb-6">
                   Try adjusting your search or filters
                 </p>
                 <button

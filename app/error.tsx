@@ -22,10 +22,10 @@ export default function Error({
       <div className="text-center px-4 max-w-2xl">
         <div className="mb-8">
           <AlertCircle className="h-24 w-24 text-brand-orange-600 mx-auto mb-6" />
-          <h1 className="text-4xl font-bold text-slate-900 mb-4 text-2xl md:text-3xl lg:text-4xl">
+          <h1 className="text-4xl font-bold text-black mb-4 text-2xl md:text-3xl lg:text-4xl">
             Something Went Wrong
           </h1>
-          <p className="text-xl text-slate-600 mb-4">
+          <p className="text-xl text-black mb-4">
             We encountered an unexpected error. Don't worry, our team has been notified.
           </p>
           {error.message && (
@@ -45,7 +45,7 @@ export default function Error({
           </button>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition font-semibold"
+            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-slate-300 text-black rounded-lg hover:bg-slate-50 transition font-semibold"
           >
             <Home className="h-5 w-5" />
             Go Home

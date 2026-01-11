@@ -91,7 +91,7 @@ export default function ClientIntakeDashboard() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Client Intake Dashboard</h1>
-          <p className="text-gray-600">
+          <p className="text-black">
             Manage JotForm submissions and Drake Software integration
           </p>
         </div>
@@ -100,7 +100,7 @@ export default function ClientIntakeDashboard() {
         <div className="grid md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-600">
+              <span className="text-sm font-medium text-black">
                 Total Clients
               </span>
               <Users className="w-5 h-5 text-blue-600" />
@@ -110,7 +110,7 @@ export default function ClientIntakeDashboard() {
 
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-600">
+              <span className="text-sm font-medium text-black">
                 In Progress
               </span>
               <Clock className="w-5 h-5 text-yellow-600" />
@@ -122,7 +122,7 @@ export default function ClientIntakeDashboard() {
 
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-600">
+              <span className="text-sm font-medium text-black">
                 Completed
               </span>
               <CheckCircle className="w-5 h-5 text-green-600" />
@@ -134,7 +134,7 @@ export default function ClientIntakeDashboard() {
 
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-600">
+              <span className="text-sm font-medium text-black">
                 Drake Returns
               </span>
               <FileText className="w-5 h-5 text-purple-600" />
@@ -150,7 +150,7 @@ export default function ClientIntakeDashboard() {
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="flex-1 w-full md:w-auto">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-600" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
                 <input
                   type="text"
                   placeholder="Search clients..."
@@ -200,22 +200,22 @@ export default function ClientIntakeDashboard() {
           <table className="w-full">
             <thead className="bg-gray-50 border-b">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Client
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Contact
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Filing Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Drake
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -225,8 +225,8 @@ export default function ClientIntakeDashboard() {
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <div className="flex items-center justify-center gap-2">
-                      <RefreshCw className="w-5 h-5 animate-spin text-gray-600" />
-                      <span className="text-gray-700">Loading clients...</span>
+                      <RefreshCw className="w-5 h-5 animate-spin text-black" />
+                      <span className="text-black">Loading clients...</span>
                     </div>
                   </td>
                 </tr>
@@ -234,7 +234,7 @@ export default function ClientIntakeDashboard() {
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center">
                     <AlertCircle className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-                    <p className="text-gray-700">No clients found</p>
+                    <p className="text-black">No clients found</p>
                   </td>
                 </tr>
               ) : (
@@ -245,7 +245,7 @@ export default function ClientIntakeDashboard() {
                         <div className="font-semibold">
                           {client.first_name} {client.last_name}
                         </div>
-                        <div className="text-sm text-gray-700">
+                        <div className="text-sm text-black">
                           ID: {client.id.slice(0, 8)}
                         </div>
                       </div>
@@ -253,7 +253,7 @@ export default function ClientIntakeDashboard() {
                     <td className="px-6 py-4">
                       <div className="text-sm">
                         <div>{client.email}</div>
-                        <div className="text-gray-700">{client.phone}</div>
+                        <div className="text-black">{client.phone}</div>
                       </div>
                     </td>
                     <td className="px-6 py-4">
@@ -293,7 +293,7 @@ export default function ClientIntakeDashboard() {
                           Open
                         </button>
                       ) : (
-                        <span className="text-sm text-gray-600">
+                        <span className="text-sm text-black">
                           Not created
                         </span>
                       )}
@@ -310,7 +310,7 @@ export default function ClientIntakeDashboard() {
                           href={`https://www.jotform.com/submission/${client.jotform_submission_id}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm text-gray-600 hover:text-gray-700 font-semibold flex items-center gap-1"
+                          className="text-sm text-black hover:text-black font-semibold flex items-center gap-1"
                         >
                           JotForm
                           <ExternalLink className="w-3 h-3" />
@@ -333,7 +333,7 @@ export default function ClientIntakeDashboard() {
               <h4 className="font-semibold mb-2">
                 1. Configure JotForm Webhook
               </h4>
-              <p className="text-gray-700 mb-2">
+              <p className="text-black mb-2">
                 Add this webhook URL to your JotForm:
               </p>
               <code className="block bg-white px-4 py-2 rounded border">
@@ -352,7 +352,7 @@ export default function ClientIntakeDashboard() {
 
             <div>
               <h4 className="font-semibold mb-2">3. Test Integration</h4>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Submit a test form and verify it appears here and creates a
                 Drake return.
               </p>

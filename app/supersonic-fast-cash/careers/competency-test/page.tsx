@@ -492,13 +492,13 @@ export default function CompetencyTest() {
               <h1 className="text-3xl font-bold mb-2">
                 {passed ? 'Congratulations!' : 'Test Not Passed'}
               </h1>
-              <p className="text-xl text-gray-600">
+              <p className="text-xl text-black">
                 Your Score:{' '}
                 <strong className={passed ? 'text-green-600' : 'text-red-600'}>
                   {score}%
                 </strong>
               </p>
-              <p className="text-sm text-gray-700 mt-2">
+              <p className="text-sm text-black mt-2">
                 ({Math.round((score / 100) * COMPETENCY_QUESTIONS.length)}/
                 {COMPETENCY_QUESTIONS.length} correct)
               </p>
@@ -598,7 +598,7 @@ export default function CompetencyTest() {
         {/* Timer */}
         <div className="bg-white rounded-lg shadow p-4 mb-6 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Clock className="w-5 h-5 text-gray-600" />
+            <Clock className="w-5 h-5 text-black" />
             <span className="font-semibold">Time Remaining:</span>
             <span
               className={`font-bold ${timeRemaining < 300 ? 'text-red-600' : 'text-green-600'}`}
@@ -606,7 +606,7 @@ export default function CompetencyTest() {
               {formatTime(timeRemaining)}
             </span>
           </div>
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-black">
             Question {currentQuestion + 1} of {COMPETENCY_QUESTIONS.length}
           </div>
         </div>
@@ -621,7 +621,7 @@ export default function CompetencyTest() {
 
         {/* Question */}
         <div className="bg-white rounded-xl shadow-lg p-8">
-          <div className="mb-2 text-sm text-gray-700">{question.category}</div>
+          <div className="mb-2 text-sm text-black">{question.category}</div>
           <h2 className="text-xl font-bold mb-6">{question.question}</h2>
 
           <div className="space-y-3 mb-8">
@@ -660,7 +660,7 @@ export default function CompetencyTest() {
                 setCurrentQuestion(Math.max(0, currentQuestion - 1))
               }
               disabled={currentQuestion === 0}
-              className="flex-1 bg-gray-300 text-gray-700 py-3 rounded-lg font-bold hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 bg-gray-300 text-black py-3 rounded-lg font-bold hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Previous
             </button>
@@ -697,14 +697,14 @@ export default function CompetencyTest() {
                       ? 'bg-green-600 text-white'
                       : answers[index] !== -1
                         ? 'bg-green-100 text-green-700 border border-green-300'
-                        : 'bg-gray-100 text-gray-600 border border-gray-300'
+                        : 'bg-gray-100 text-black border border-gray-300'
                   }`}
                 >
                   {index + 1}
                 </button>
               ))}
             </div>
-            <div className="mt-3 text-xs text-gray-700">
+            <div className="mt-3 text-xs text-black">
               Answered: {answers.filter((a) => a !== -1).length}/
               {COMPETENCY_QUESTIONS.length}
             </div>

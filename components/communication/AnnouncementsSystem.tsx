@@ -62,7 +62,7 @@ export function AnnouncementsSystem({
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
+        <h2 className="text-2xl font-bold text-black flex items-center gap-2">
           <Megaphone className="w-6 h-6 text-brand-orange-600" />
           Announcements
         </h2>
@@ -79,11 +79,11 @@ export function AnnouncementsSystem({
       {/* Create Form */}
       {isCreating && (
         <div className="bg-white rounded-lg border border-slate-200 p-6">
-          <h3 className="font-semibold text-slate-900 mb-4">Create Announcement</h3>
+          <h3 className="font-semibold text-black mb-4">Create Announcement</h3>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Title
               </label>
               <input
@@ -96,7 +96,7 @@ export function AnnouncementsSystem({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Content
               </label>
               <textarea
@@ -116,8 +116,8 @@ export function AnnouncementsSystem({
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNewAnnouncement({ ...newAnnouncement, isPinned: e.target.checked })}
                   className="rounded border-slate-300 text-brand-orange-600 focus:ring-emerald-500"
                 />
-                <Pin className="w-4 h-4 text-slate-600" />
-                <span className="text-sm text-slate-700">Pin to top</span>
+                <Pin className="w-4 h-4 text-black" />
+                <span className="text-sm text-black">Pin to top</span>
               </label>
 
               <label className="flex items-center gap-2">
@@ -127,8 +127,8 @@ export function AnnouncementsSystem({
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNewAnnouncement({ ...newAnnouncement, sendEmail: e.target.checked })}
                   className="rounded border-slate-300 text-brand-orange-600 focus:ring-emerald-500"
                 />
-                <Mail className="w-4 h-4 text-slate-600" />
-                <span className="text-sm text-slate-700">Send email notification</span>
+                <Mail className="w-4 h-4 text-black" />
+                <span className="text-sm text-black">Send email notification</span>
               </label>
 
               <label className="flex items-center gap-2">
@@ -138,8 +138,8 @@ export function AnnouncementsSystem({
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNewAnnouncement({ ...newAnnouncement, sendPush: e.target.checked })}
                   className="rounded border-slate-300 text-brand-orange-600 focus:ring-emerald-500"
                 />
-                <Bell className="w-4 h-4 text-slate-600" />
-                <span className="text-sm text-slate-700">Send push notification</span>
+                <Bell className="w-4 h-4 text-black" />
+                <span className="text-sm text-black">Send push notification</span>
               </label>
 
               <label className="flex items-center gap-2">
@@ -149,7 +149,7 @@ export function AnnouncementsSystem({
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNewAnnouncement({ ...newAnnouncement, sendSMS: e.target.checked })}
                   className="rounded border-slate-300 text-brand-orange-600 focus:ring-emerald-500"
                 />
-                <span className="text-sm text-slate-700">Send SMS notification (if enabled)</span>
+                <span className="text-sm text-black">Send SMS notification (if enabled)</span>
               </label>
             </div>
 
@@ -166,7 +166,7 @@ export function AnnouncementsSystem({
       {/* Pinned Announcements */}
       {pinnedAnnouncements.length > 0 && (
         <div className="space-y-4">
-          <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-wide flex items-center gap-2">
+          <h3 className="text-sm font-semibold text-black uppercase tracking-wide flex items-center gap-2">
             <Pin className="w-4 h-4" />
             Pinned
           </h3>
@@ -186,7 +186,7 @@ export function AnnouncementsSystem({
       {announcements.length === 0 && !isCreating && (
         <div className="text-center py-12 bg-slate-50 rounded-lg border border-slate-200">
           <Megaphone className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-          <p className="text-slate-600">No announcements yet</p>
+          <p className="text-black">No announcements yet</p>
         </div>
       )}
     </div>
@@ -214,7 +214,7 @@ function AnnouncementCard({ announcement }: { announcement: Announcement }) {
             </div>
           )}
           <div>
-            <p className="font-semibold text-slate-900">{announcement.authorName}</p>
+            <p className="font-semibold text-black">{announcement.authorName}</p>
             <div className="flex items-center gap-2 text-xs text-slate-500">
               <Calendar className="w-3 h-3" />
               {announcement.publishedAt.toLocaleDateString()}
@@ -226,8 +226,8 @@ function AnnouncementCard({ announcement }: { announcement: Announcement }) {
         )}
       </div>
 
-      <h3 className="text-xl font-bold text-slate-900 mb-2">{announcement.title}</h3>
-      <p className="text-slate-700 whitespace-pre-wrap mb-3">{announcement.content}</p>
+      <h3 className="text-xl font-bold text-black mb-2">{announcement.title}</h3>
+      <p className="text-black whitespace-pre-wrap mb-3">{announcement.content}</p>
 
       <div className="flex items-center gap-4 text-xs text-slate-500 pt-3 border-t border-slate-200">
         <span className="flex items-center gap-1">

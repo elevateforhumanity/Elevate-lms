@@ -26,24 +26,24 @@ export default function VeteransPage() {
         <Link href="/wioa-eligibility" className="text-blue-600 hover:underline mb-6 inline-block">← Back to WIOA Eligibility</Link>
 
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Veterans Priority Services</h2>
+          <h2 className="text-3xl font-bold text-black mb-6">Veterans Priority Services</h2>
           
           <div className="prose max-w-none">
-            <p className="text-lg text-gray-700 mb-6">
+            <p className="text-lg text-black mb-6">
               As a veteran, you receive <strong>priority of service</strong> under WIOA. This means you get first access to training programs, career counseling, and job placement services.
             </p>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Who Qualifies</h3>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
+            <h3 className="text-2xl font-bold text-black mb-4">Who Qualifies</h3>
+            <ul className="list-disc pl-6 space-y-2 text-black mb-6">
               <li>Veterans who served on active duty (not including active duty for training)</li>
               <li>Honorable or general discharge</li>
               <li>Spouses of veterans who died or are disabled due to service</li>
               <li>Spouses of active duty service members</li>
             </ul>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">What You Get</h3>
+            <h3 className="text-2xl font-bold text-black mb-4">What You Get</h3>
             <div className="bg-blue-50 p-6 rounded-lg mb-6">
-              <ul className="space-y-3 text-gray-800">
+              <ul className="space-y-3 text-black">
                 <li><strong>✓ Priority Enrollment:</strong> First access to training programs</li>
                 <li><strong>✓ Expedited Processing:</strong> Faster application review</li>
                 <li><strong>✓ Dedicated Counselor:</strong> Veteran-focused career advisor</li>
@@ -53,43 +53,43 @@ export default function VeteransPage() {
               </ul>
             </div>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Required Documents</h3>
-            <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-6">
+            <h3 className="text-2xl font-bold text-black mb-4">Required Documents</h3>
+            <ul className="list-disc pl-6 space-y-2 text-black mb-6">
               <li>DD-214 (Certificate of Release or Discharge from Active Duty)</li>
               <li>Valid ID (driver's license or state ID)</li>
               <li>Social Security card</li>
               <li>Proof of Indiana residency</li>
             </ul>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Available Programs</h3>
+            <h3 className="text-2xl font-bold text-black mb-4">Available Programs</h3>
             <div className="grid md:grid-cols-2 gap-4 mb-6">
               <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Healthcare</h4>
-                <p className="text-sm text-gray-600">CNA, Medical Assistant, Phlebotomy</p>
+                <h4 className="font-bold text-black mb-2">Healthcare</h4>
+                <p className="text-sm text-black">CNA, Medical Assistant, Phlebotomy</p>
               </div>
               <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Skilled Trades</h4>
-                <p className="text-sm text-gray-600">HVAC, Electrical, Construction</p>
+                <h4 className="font-bold text-black mb-2">Skilled Trades</h4>
+                <p className="text-sm text-black">HVAC, Electrical, Construction</p>
               </div>
               <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Technology</h4>
-                <p className="text-sm text-gray-600">IT Support, Cybersecurity</p>
+                <h4 className="font-bold text-black mb-2">Technology</h4>
+                <p className="text-sm text-black">IT Support, Cybersecurity</p>
               </div>
               <div className="border-2 border-gray-200 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">CDL</h4>
-                <p className="text-sm text-gray-600">Commercial Driver License</p>
+                <h4 className="font-bold text-black mb-2">CDL</h4>
+                <p className="text-sm text-black">Commercial Driver License</p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="bg-blue-50 border-2 border-blue-600 p-8 rounded-lg mb-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">How to Apply for WIOA</h3>
-          <p className="text-gray-700 mb-6">WIOA applications are processed through Indiana Career Connect, the state's official workforce system.</p>
+          <h3 className="text-2xl font-bold text-black mb-4">How to Apply for WIOA</h3>
+          <p className="text-black mb-6">WIOA applications are processed through Indiana Career Connect, the state's official workforce system.</p>
           
           <div className="bg-white p-6 rounded-lg mb-6">
-            <h4 className="font-bold text-gray-900 mb-4">Step-by-Step Instructions:</h4>
-            <ol className="list-decimal pl-6 space-y-3 text-gray-700">
+            <h4 className="font-bold text-black mb-4">Step-by-Step Instructions:</h4>
+            <ol className="list-decimal pl-6 space-y-3 text-black">
               <li><strong>Visit Indiana Career Connect:</strong> Go to <a href="https://www.indianacareerconnect.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">www.indianacareerconnect.com</a></li>
               <li><strong>Create Account:</strong> Click "Register" and create your free account</li>
               <li><strong>Complete Profile:</strong> Fill out your work history, education, and skills</li>
@@ -108,17 +108,17 @@ export default function VeteransPage() {
           >
             Go to Indiana Career Connect →
           </a>
-          <p className="text-sm text-gray-600">You'll be redirected to the official Indiana state website</p>
+          <p className="text-sm text-black">You'll be redirected to the official Indiana state website</p>
         </div>
 
         <div className="bg-gray-900 text-white p-8 rounded-lg text-center">
           <h3 className="text-2xl font-bold mb-4">Need Help Applying?</h3>
           <p className="mb-6">We can guide you through the Indiana Career Connect application process</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/apply" className="px-8 py-4 bg-white text-gray-900 font-bold rounded-lg hover:bg-gray-100 transition">
+            <Link href="/apply" className="px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-100 transition">
               Contact Us for Help
             </Link>
-            <Link href="/contact" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-gray-900 transition">
+            <Link href="/contact" className="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-black transition">
               Call: 317-314-3757
             </Link>
           </div>

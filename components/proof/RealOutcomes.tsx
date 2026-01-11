@@ -29,7 +29,7 @@ export function RealOutcomes() {
     return (
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="text-slate-600">Loading verified outcomes...</div>
+          <div className="text-black">Loading verified outcomes...</div>
         </div>
       </section>
     );
@@ -90,10 +90,10 @@ export function RealOutcomes() {
               Live Data from Production Database
             </span>
           </div>
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl font-bold text-black mb-4">
             Real Outcomes, Not Promises
           </h2>
-          <p className="text-slate-600 max-w-2xl mx-auto">
+          <p className="text-black max-w-2xl mx-auto">
             Every number below is pulled directly from our database and updated
             in real-time.
           </p>
@@ -115,10 +115,10 @@ export function RealOutcomes() {
                     </span>
                   )}
                 </div>
-                <div className="text-3xl font-bold text-slate-900 mb-2">
+                <div className="text-3xl font-bold text-black mb-2">
                   {outcome.value}
                 </div>
-                <div className="text-sm font-semibold text-slate-700 mb-2">
+                <div className="text-sm font-semibold text-black mb-2">
                   {outcome.label}
                 </div>
                 <div className="text-xs text-slate-500">{outcome.context}</div>

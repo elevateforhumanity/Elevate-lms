@@ -9,7 +9,7 @@ export default function CopyrightPage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Copyright Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Our Content</h2>
       <p>All content © Elevate for Humanity. All rights reserved.</p>
       <h2>User Content</h2>

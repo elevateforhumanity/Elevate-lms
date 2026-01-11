@@ -172,7 +172,7 @@ export default function EnrollmentWizard({
                 />
                 <div>
                   <div className="font-bold">Pay in Full - ${price}</div>
-                  <div className="text-sm text-gray-600">One-time payment</div>
+                  <div className="text-sm text-black">One-time payment</div>
                 </div>
               </label>
               <label className="flex items-center p-4 border rounded-lg cursor-pointer">
@@ -186,7 +186,7 @@ export default function EnrollmentWizard({
                 />
                 <div>
                   <div className="font-bold">Payment Plan - ${Math.ceil(price/4)}/mo</div>
-                  <div className="text-sm text-gray-600">4 monthly payments</div>
+                  <div className="text-sm text-black">4 monthly payments</div>
                 </div>
               </label>
             </div>

@@ -154,7 +154,7 @@ export default function SubofficeOnboardingPage() {
       {/* Onboarding Steps */}
       <section id="start" className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center">
             Onboarding Process
           </h2>
 
@@ -164,10 +164,10 @@ export default function SubofficeOnboardingPage() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Building2 className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
+              <h3 className="text-xl font-bold text-black mb-3 text-center">
                 Step 1: Business Info
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>• Legal business name</li>
                 <li>• EIN/FEIN number</li>
                 <li>• Business address</li>
@@ -181,10 +181,10 @@ export default function SubofficeOnboardingPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Upload className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
+              <h3 className="text-xl font-bold text-black mb-3 text-center">
                 Step 2: Upload Documents
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>
                   • <strong>PTIN</strong> for each preparer
                 </li>
@@ -202,10 +202,10 @@ export default function SubofficeOnboardingPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
+              <h3 className="text-xl font-bold text-black mb-3 text-center">
                 Step 3: Staff & Payroll
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>• Add preparers/admins</li>
                 <li>• PTIN for each staff</li>
                 <li>• Payroll information</li>
@@ -219,10 +219,10 @@ export default function SubofficeOnboardingPage() {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <FileText className="w-8 h-8 text-orange-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
+              <h3 className="text-xl font-bold text-black mb-3 text-center">
                 Step 4: Compliance Test
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>• IRS ethics & privacy</li>
                 <li>• Data security</li>
                 <li>• PTIN requirements</li>
@@ -236,10 +236,10 @@ export default function SubofficeOnboardingPage() {
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
+              <h3 className="text-xl font-bold text-black mb-3 text-center">
                 Step 5: Training
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>• Software training</li>
                 <li>• Workflow procedures</li>
                 <li>• Quality standards</li>
@@ -253,10 +253,10 @@ export default function SubofficeOnboardingPage() {
               <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <DollarSign className="w-8 h-8 text-yellow-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
+              <h3 className="text-xl font-bold text-black mb-3 text-center">
                 Step 6: Agreements
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>• Revenue share agreement</li>
                 <li>• Software license</li>
                 <li>• Privacy policy</li>
@@ -271,7 +271,7 @@ export default function SubofficeOnboardingPage() {
       {/* Required Acknowledgments */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-8 text-center">
             Required Acknowledgments
           </h2>
 
@@ -279,7 +279,7 @@ export default function SubofficeOnboardingPage() {
             <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-6">
               <label className="flex items-start cursor-pointer">
                 <input type="checkbox" className="mt-1 mr-4 w-5 h-5" required />
-                <span className="text-gray-900">
+                <span className="text-black">
                   <strong>I understand revenue is shared 40/60</strong> (main
                   office 40%, suboffice 60%) and payments are only made after
                   IRS releases the refund to main office.
@@ -290,7 +290,7 @@ export default function SubofficeOnboardingPage() {
             <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-6">
               <label className="flex items-start cursor-pointer">
                 <input type="checkbox" className="mt-1 mr-4 w-5 h-5" required />
-                <span className="text-gray-900">
+                <span className="text-black">
                   <strong>
                     I understand all add-on fees go to main office
                   </strong>{' '}
@@ -302,7 +302,7 @@ export default function SubofficeOnboardingPage() {
             <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-6">
               <label className="flex items-start cursor-pointer">
                 <input type="checkbox" className="mt-1 mr-4 w-5 h-5" required />
-                <span className="text-gray-900">
+                <span className="text-black">
                   <strong>
                     I understand software, training, and support are included
                   </strong>{' '}
@@ -314,7 +314,7 @@ export default function SubofficeOnboardingPage() {
             <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-6">
               <label className="flex items-start cursor-pointer">
                 <input type="checkbox" className="mt-1 mr-4 w-5 h-5" required />
-                <span className="text-gray-900">
+                <span className="text-black">
                   <strong>
                     I understand payroll/commissions cannot be run
                   </strong>{' '}
@@ -326,7 +326,7 @@ export default function SubofficeOnboardingPage() {
             <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-6">
               <label className="flex items-start cursor-pointer">
                 <input type="checkbox" className="mt-1 mr-4 w-5 h-5" required />
-                <span className="text-gray-900">
+                <span className="text-black">
                   <strong>I have downloaded and reviewed</strong> the complete
                   payout policy and billing schedule.
                 </span>
@@ -367,16 +367,16 @@ export default function SubofficeOnboardingPage() {
       {/* FAQ */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-8 text-center">
             Frequently Asked Questions
           </h2>
 
           <div className="space-y-6">
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 What is a PTIN?
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 A Preparer Tax Identification Number (PTIN) is required by the
                 IRS for anyone who prepares federal tax returns for
                 compensation. Each preparer must have their own PTIN.
@@ -384,10 +384,10 @@ export default function SubofficeOnboardingPage() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 What is an EFIN?
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 An Electronic Filing Identification Number (EFIN) is issued by
                 the IRS to tax professionals who want to file returns
                 electronically. Your business needs one EFIN.
@@ -395,10 +395,10 @@ export default function SubofficeOnboardingPage() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 How long until I get paid?
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Payment is released after the IRS processes and releases the
                 client's refund. This typically takes 21 days for e-filed
                 returns with direct deposit, but can vary.
@@ -406,10 +406,10 @@ export default function SubofficeOnboardingPage() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 What if a client's refund is delayed?
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 If the IRS delays or offsets a refund, your payout for that
                 specific client is delayed. This protects both parties and is
                 standard industry practice.
@@ -417,10 +417,10 @@ export default function SubofficeOnboardingPage() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-black mb-2">
                 Can I change the revenue split?
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 The 70/30 split is standard for all suboffices. High-volume
                 offices may qualify for better terms after the first year.
               </p>

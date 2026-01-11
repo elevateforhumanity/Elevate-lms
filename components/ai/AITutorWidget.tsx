@@ -88,7 +88,7 @@ export function AITutorWidget({ courseId, courseName }: { courseId: string; cour
                   className={`max-w-[80%] rounded-lg p-3 ${
                     msg.role === 'user'
                       ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-900'
+                      : 'bg-gray-100 text-black'
                   }`}
                 >
                   {msg.content}

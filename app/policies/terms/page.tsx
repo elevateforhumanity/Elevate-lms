@@ -9,7 +9,7 @@ export default function TermsPage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Terms of Service</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Acceptance</h2>
       <p>By using our platform, you agree to these terms.</p>
       <h2>User Accounts</h2>

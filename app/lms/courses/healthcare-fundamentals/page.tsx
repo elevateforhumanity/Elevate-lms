@@ -239,7 +239,7 @@ export default function HealthcareFundamentalsCoursePage() {
                   <h3 className="text-xl font-bold text-black">
                     {item.module}: {item.title}
                   </h3>
-                  <div className="flex items-center gap-4 text-sm text-gray-600">
+                  <div className="flex items-center gap-4 text-sm text-black">
                     <span>{item.lessons} lessons</span>
                     <span>{item.duration}</span>
                   </div>

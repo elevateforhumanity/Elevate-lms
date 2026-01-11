@@ -98,7 +98,7 @@ export function AchievementBadges() {
                 </div>
               </div>
               <h4
-                className={`font-bold text-sm mb-1 ${badge.earned ? 'text-white' : 'text-gray-700'}`}
+                className={`font-bold text-sm mb-1 ${badge.earned ? 'text-white' : 'text-black'}`}
               >
                 {badge.name}
               </h4>
@@ -123,7 +123,7 @@ export function AchievementBadges() {
       </div>
       <div className="mt-6 pt-6 border-t border-gray-200">
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-600">Next Achievement</span>
+          <span className="text-sm text-black">Next Achievement</span>
           <span className="elevate-pill elevate-pill--orange">
             2 lessons away
           </span>

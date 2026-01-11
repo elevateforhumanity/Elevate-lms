@@ -91,39 +91,39 @@ export default function LearningAnalyticsDashboard() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Study Time (hours)</h3>
+            <h3 className="text-sm text-black mb-2">Study Time (hours)</h3>
             <p className="text-3xl font-bold text-brand-orange-600">{learningMetrics.studyTime}</p>
             <p className="text-sm text-green-600">↑ 12% from last period</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Completion Rate</h3>
+            <h3 className="text-sm text-black mb-2">Completion Rate</h3>
             <p className="text-3xl font-bold text-orange-500">{learningMetrics.completionRate}%</p>
             <p className="text-sm text-green-600">↑ 5% from last period</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Average Score</h3>
+            <h3 className="text-sm text-black mb-2">Average Score</h3>
             <p className="text-3xl font-bold text-green-600">{learningMetrics.averageScore}%</p>
             <p className="text-sm text-green-600">↑ 3% from last period</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Engagement Score</h3>
+            <h3 className="text-sm text-black mb-2">Engagement Score</h3>
             <p className="text-3xl font-bold text-blue-600">{learningMetrics.engagementScore}%</p>
             <p className="text-sm text-yellow-600">→ Stable</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Predicted Final Grade</h3>
+            <h3 className="text-sm text-black mb-2">Predicted Final Grade</h3>
             <p className="text-3xl font-bold text-purple-600">{learningMetrics.predictedGrade}</p>
-            <p className="text-sm text-gray-600">Based on current trajectory</p>
+            <p className="text-sm text-black">Based on current trajectory</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">On Track</h3>
+            <h3 className="text-sm text-black mb-2">On Track</h3>
             <p className="text-3xl font-bold text-green-600">{learningMetrics.onTrackPercentage}%</p>
-            <p className="text-sm text-gray-600">Meeting milestones</p>
+            <p className="text-sm text-black">Meeting milestones</p>
           </Card>
         </div>
 
@@ -135,7 +135,7 @@ export default function LearningAnalyticsDashboard() {
                 <div key={day.day}>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="font-medium">{day.day}</span>
-                    <span className="text-gray-600">{day.hours}h • {day.score}%</span>
+                    <span className="text-black">{day.hours}h • {day.score}%</span>
                   </div>
                   <div className="flex gap-2">
                     <div className="flex-1 bg-gray-200 rounded-full h-2">
@@ -204,8 +204,8 @@ export default function LearningAnalyticsDashboard() {
                       </span>
                       <h4 className="font-bold">{insight.title}</h4>
                     </div>
-                    <p className="text-sm text-gray-700 mb-2">{insight.description}</p>
-                    <p className="text-xs text-gray-600">Confidence: {insight.confidence}%</p>
+                    <p className="text-sm text-black mb-2">{insight.description}</p>
+                    <p className="text-xs text-black">Confidence: {insight.confidence}%</p>
                   </div>
                   {insight.action && (
                     <Button size="sm" variant="secondary">
@@ -223,25 +223,25 @@ export default function LearningAnalyticsDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 bg-white rounded">
               <h4 className="font-semibold mb-2">📚 Study Strategy</h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Focus on JavaScript fundamentals before moving to frameworks. Your assessment scores suggest gaps in core concepts.
               </p>
             </div>
             <div className="p-4 bg-white rounded">
               <h4 className="font-semibold mb-2">⏰ Time Management</h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Increase study time by 5 hours/week to stay on track for certification deadline.
               </p>
             </div>
             <div className="p-4 bg-white rounded">
               <h4 className="font-semibold mb-2">🤝 Peer Learning</h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Join study groups for React topics. Collaborative learning improves retention by 40%.
               </p>
             </div>
             <div className="p-4 bg-white rounded">
               <h4 className="font-semibold mb-2">🎯 Next Milestone</h4>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Complete Module 5 by Friday to maintain your current pace and predicted grade.
               </p>
             </div>

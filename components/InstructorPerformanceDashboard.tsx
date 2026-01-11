@@ -49,37 +49,37 @@ export default function InstructorPerformanceDashboard() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Total Students</h3>
+            <h3 className="text-sm text-black mb-2">Total Students</h3>
             <p className="text-3xl font-bold text-brand-orange-600">{metrics.totalStudents}</p>
             <p className="text-sm text-green-600">↑ 12% from last period</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Average Rating</h3>
+            <h3 className="text-sm text-black mb-2">Average Rating</h3>
             <p className="text-3xl font-bold text-orange-500">{metrics.avgRating}</p>
-            <p className="text-sm text-gray-600">⭐⭐⭐⭐⭐</p>
+            <p className="text-sm text-black">⭐⭐⭐⭐⭐</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Courses Teaching</h3>
+            <h3 className="text-sm text-black mb-2">Courses Teaching</h3>
             <p className="text-3xl font-bold text-blue-600">{metrics.coursesTeaching}</p>
-            <p className="text-sm text-gray-600">Active courses</p>
+            <p className="text-sm text-black">Active courses</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Completion Rate</h3>
+            <h3 className="text-sm text-black mb-2">Completion Rate</h3>
             <p className="text-3xl font-bold text-green-600">{metrics.completionRate}%</p>
             <p className="text-sm text-green-600">Above average</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Avg Response Time</h3>
+            <h3 className="text-sm text-black mb-2">Avg Response Time</h3>
             <p className="text-3xl font-bold text-purple-600">{metrics.responseTime}h</p>
             <p className="text-sm text-green-600">Excellent</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Student Engagement</h3>
+            <h3 className="text-sm text-black mb-2">Student Engagement</h3>
             <p className="text-3xl font-bold text-indigo-600">{metrics.engagement}%</p>
             <p className="text-sm text-green-600">Very high</p>
           </Card>
@@ -116,21 +116,21 @@ export default function InstructorPerformanceDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="p-6   ">
             <h3 className="font-bold mb-2">🎯 Strength</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Your response time is 40% faster than average. Students appreciate your quick feedback!
             </p>
           </Card>
 
           <Card className="p-6   ">
             <h3 className="font-bold mb-2">💡 Tip</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Consider adding more interactive elements to boost engagement in React Fundamentals.
             </p>
           </Card>
 
           <Card className="p-6   ">
             <h3 className="font-bold mb-2">🏆 Achievement</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               You've maintained a 4.8+ rating for 6 months straight. Excellent work!
             </p>
           </Card>

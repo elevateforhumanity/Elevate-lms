@@ -62,10 +62,10 @@ export function ActivityFeed() {
                 <Icon className={`h-5 w-5 ${activity.color}`} />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-medium text-gray-900 text-sm">
+                <p className="font-medium text-black text-sm">
                   {activity.title}
                 </p>
-                <p className="text-sm text-gray-600">{activity.course}</p>
+                <p className="text-sm text-black">{activity.course}</p>
                 <p className="text-xs text-gray-400 mt-1">{activity.time}</p>
               </div>
             </div>

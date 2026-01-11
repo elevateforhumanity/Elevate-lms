@@ -38,7 +38,7 @@ export default function QuickApplyForm() {
     >
       {/* Contact Information */}
       <div>
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
+        <h2 className="text-xl font-bold text-black mb-4">
           Contact Information
         </h2>
 
@@ -46,7 +46,7 @@ export default function QuickApplyForm() {
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Full Name <span className="text-red-600">*</span>
             </label>
@@ -64,7 +64,7 @@ export default function QuickApplyForm() {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Email Address <span className="text-red-600">*</span>
             </label>
@@ -82,7 +82,7 @@ export default function QuickApplyForm() {
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Phone Number
             </label>
@@ -99,7 +99,7 @@ export default function QuickApplyForm() {
 
       {/* Program Selection */}
       <div>
-        <h2 className="text-xl font-bold text-slate-900 mb-4">
+        <h2 className="text-xl font-bold text-black mb-4">
           Program Interest
         </h2>
 
@@ -107,7 +107,7 @@ export default function QuickApplyForm() {
           <div>
             <label
               htmlFor="program"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Which program are you interested in?{' '}
               <span className="text-red-600">*</span>
@@ -132,7 +132,7 @@ export default function QuickApplyForm() {
           <div>
             <label
               htmlFor="funding"
-              className="block text-sm font-medium text-slate-700 mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               How do you plan to fund your training?{' '}
               <span className="text-red-600">*</span>
@@ -177,7 +177,7 @@ export default function QuickApplyForm() {
       </div>
 
       {/* Privacy Notice */}
-      <p className="text-xs text-slate-600 text-center">
+      <p className="text-xs text-black text-center">
         By submitting this form, you agree to our privacy policy and consent to
         be contacted about training programs.
       </p>

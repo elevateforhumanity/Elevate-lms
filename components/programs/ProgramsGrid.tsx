@@ -9,8 +9,8 @@ export async function ProgramsGrid() {
     return (
       <section className="mx-auto max-w-6xl px-4 py-10 md:py-14">
         <div className="text-center py-12">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">No Programs Available</h2>
-          <p className="text-slate-600">Check back soon for new training programs.</p>
+          <h2 className="text-2xl font-bold text-black mb-4">No Programs Available</h2>
+          <p className="text-black">Check back soon for new training programs.</p>
         </div>
       </section>
     );
@@ -20,10 +20,10 @@ export async function ProgramsGrid() {
     <section className="mx-auto max-w-6xl px-4 py-10 md:py-14">
       <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">
+          <h1 className="text-2xl font-bold text-black md:text-3xl">
             Training & Career Pathways
           </h1>
-          <p className="mt-2 max-w-2xl text-sm text-slate-700">
+          <p className="mt-2 max-w-2xl text-sm text-black">
             Elevate connects learners to training programs, apprenticeships, and career pathways
             across trades, healthcare, transportation, and career readiness.
           </p>
@@ -56,8 +56,8 @@ d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.
               )}
             </div>
             <div className="flex flex-1 flex-col p-4">
-              <h2 className="text-sm font-semibold text-slate-900">{program.title || program.name}</h2>
-              <p className="mt-1 line-clamp-3 text-xs text-slate-700">{program.description}</p>
+              <h2 className="text-sm font-semibold text-black">{program.title || program.name}</h2>
+              <p className="mt-1 line-clamp-3 text-xs text-black">{program.description}</p>
               <p className="mt-2 text-[11px] font-medium text-slate-500">{program.category}</p>
               {program.training_hours && (
                 <p className="text-[11px] text-slate-500">Duration: {program.training_hours} hours</p>

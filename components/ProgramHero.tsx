@@ -79,19 +79,19 @@ export default function ProgramHero({
             <div className="grid md:grid-cols-4 gap-6">
               <div className="bg-white rounded-lg shadow-sm border p-6 text-center">
                 <div className="text-3xl font-bold text-purple-600 mb-2">{duration}</div>
-                <div className="text-gray-600">Program Duration</div>
+                <div className="text-black">Program Duration</div>
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6 text-center">
                 <div className="text-3xl font-bold text-green-600 mb-2">{cost}</div>
-                <div className="text-gray-600">100% Funded</div>
+                <div className="text-black">100% Funded</div>
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6 text-center">
                 <div className="text-3xl font-bold text-blue-600 mb-2">{placement}</div>
-                <div className="text-gray-600">Job Placement</div>
+                <div className="text-black">Job Placement</div>
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6 text-center">
                 <div className="text-3xl font-bold text-orange-600 mb-2">{salary}</div>
-                <div className="text-gray-600">Starting Salary</div>
+                <div className="text-black">Starting Salary</div>
               </div>
             </div>
           </div>

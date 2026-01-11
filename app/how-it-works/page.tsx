@@ -70,7 +70,7 @@ export default function HowItWorksPage() {
               <h3 className="text-xl font-bold mb-3">
                 Workforce Coordination Hub
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 We connect people to training programs, funding sources, and
                 career pathways across multiple jurisdictions.
               </p>
@@ -81,7 +81,7 @@ export default function HowItWorksPage() {
                 <Building2 className="w-6 h-6 text-brand-green-600" />
               </div>
               <h3 className="text-xl font-bold mb-3">Multi-Tenant Platform</h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Organizations license our platform to manage their own programs,
                 students, and compliance requirements.
               </p>
@@ -91,53 +91,94 @@ export default function HowItWorksPage() {
               <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
                 <FileCheck className="w-6 h-6 text-brand-green-600" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Advisor-Led Process</h3>
-              <p className="text-gray-700">
-                Every student works with a real advisor. No instant checkout, no
-                predatory enrollment, no false promises.
+              <h3 className="text-xl font-bold mb-3">Flexible Enrollment</h3>
+              <p className="text-black">
+                Instant checkout for self-pay courses. Advisor-led process for funded programs (WIOA, WRG, JRI). No predatory enrollment, no false promises.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What We Are NOT */}
+      {/* Two Enrollment Paths */}
       <section className="py-16 bg-white">
         <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            What Elevate Is NOT
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Two Ways to Enroll
           </h2>
+          <p className="text-center text-black mb-12 max-w-2xl mx-auto">
+            Choose the path that works for you: instant enrollment for self-pay courses or advisor-guided enrollment for funded programs.
+          </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-red-50 p-6 rounded-lg border-2 border-red-200">
-              <h3 className="text-xl font-bold mb-3 text-red-900">
-                <XCircle className="w-5 h-5 inline-block" /> Not a School
-              </h3>
-              <p className="text-gray-700">
-                We don't deliver training. We coordinate access to accredited
-                training providers and partners.
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Instant Enrollment */}
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border-2 border-orange-300">
+              <div className="inline-block px-4 py-2 bg-orange-500 text-white rounded-full text-sm font-bold mb-4">
+                ⚡ Instant Access
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Self-Pay Courses</h3>
+              <p className="text-black mb-6">
+                Browse our course catalog, click "Enroll Now", complete secure checkout, and start learning immediately.
               </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>Instant access after payment</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>No waiting for approval</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>Secure payment via Stripe</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>30-day money-back guarantee</span>
+                </li>
+              </ul>
+              <Link
+                href="/courses/catalog"
+                className="inline-block w-full text-center px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-bold transition-colors"
+              >
+                Browse Courses
+              </Link>
             </div>
 
-            <div className="bg-red-50 p-6 rounded-lg border-2 border-red-200">
-              <h3 className="text-xl font-bold mb-3 text-red-900">
-                <XCircle className="w-5 h-5 inline-block" /> Not a Certifier
-              </h3>
-              <p className="text-gray-700">
-                We don't issue credentials. Certifications come from state
-                boards, industry bodies, and accredited institutions.
+            {/* Advisor-Guided Enrollment */}
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border-2 border-blue-300">
+              <div className="inline-block px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-bold mb-4">
+                💯 100% Free
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Funded Programs</h3>
+              <p className="text-black mb-6">
+                Apply for free training through WIOA, WRG, or JRI funding. An advisor will guide you through eligibility and enrollment.
               </p>
-            </div>
-
-            <div className="bg-red-50 p-6 rounded-lg border-2 border-red-200">
-              <h3 className="text-xl font-bold mb-3 text-red-900">
-                <XCircle className="w-5 h-5 inline-block" /> Not Instant
-                Enrollment
-              </h3>
-              <p className="text-gray-700">
-                We don't sell courses online. Every enrollment requires advisor
-                review, eligibility verification, and funding coordination.
-              </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>100% free with funding</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>Advisor reviews eligibility</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>We handle all paperwork</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span>1-2 day response time</span>
+                </li>
+              </ul>
+              <Link
+                href="/apply"
+                className="inline-block w-full text-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition-colors"
+              >
+                Apply for Free Training
+              </Link>
             </div>
           </div>
         </div>
@@ -146,9 +187,12 @@ export default function HowItWorksPage() {
       {/* How It Works - Step by Step */}
       <section className="py-16 bg-gray-50">
         <div className="mx-auto max-w-4xl px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            The Process: Step by Step
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Funded Program Process
           </h2>
+          <p className="text-center text-black mb-12">
+            For WIOA, WRG, and JRI funded programs
+          </p>
 
           <div className="space-y-8">
             {/* Step 1 */}
@@ -162,11 +206,11 @@ export default function HowItWorksPage() {
                 <h3 className="text-xl font-bold mb-2">
                   You Apply (No Payment Required)
                 </h3>
-                <p className="text-gray-700 mb-3">
+                <p className="text-black mb-3">
                   Submit an application expressing interest in a program. This
                   is not enrollment. This is inquiry.
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   <strong>What happens:</strong> Your information is reviewed by
                   an advisor within 1-2 business days.
                 </p>
@@ -184,11 +228,11 @@ export default function HowItWorksPage() {
                 <h3 className="text-xl font-bold mb-2">
                   Advisor Reviews Your Eligibility
                 </h3>
-                <p className="text-gray-700 mb-3">
+                <p className="text-black mb-3">
                   An advisor contacts you to discuss program fit, funding
                   options (WIOA, WRG, JRI, apprenticeships), and next steps.
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   <strong>What happens:</strong> We determine if you qualify for
                   free or subsidized training, or if self-pay is required.
                 </p>
@@ -206,11 +250,11 @@ export default function HowItWorksPage() {
                 <h3 className="text-xl font-bold mb-2">
                   Funding Is Coordinated (If Eligible)
                 </h3>
-                <p className="text-gray-700 mb-3">
+                <p className="text-black mb-3">
                   If you qualify for workforce funding, we coordinate with the
                   appropriate agency (WorkOne, DOC, etc.) to secure approval.
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   <strong>What happens:</strong> You are not charged until
                   funding is confirmed or you approve self-pay terms.
                 </p>
@@ -228,12 +272,12 @@ export default function HowItWorksPage() {
                 <h3 className="text-xl font-bold mb-2">
                   You Are Enrolled in a Partner Program
                 </h3>
-                <p className="text-gray-700 mb-3">
+                <p className="text-black mb-3">
                   Once approved, you are enrolled with an accredited training
                   provider (Milady, HSI, CareerSafe, etc.) or apprenticeship
                   sponsor.
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   <strong>What happens:</strong> You receive access to course
                   materials, schedules, and support resources.
                 </p>
@@ -251,12 +295,12 @@ export default function HowItWorksPage() {
                 <h3 className="text-xl font-bold mb-2">
                   You Complete Training & Earn Credentials
                 </h3>
-                <p className="text-gray-700 mb-3">
+                <p className="text-black mb-3">
                   You complete coursework, log hours (if apprenticeship), and
                   meet all requirements set by the training provider and
                   certifying body.
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   <strong>What happens:</strong> Credentials are issued by the
                   appropriate authority (state board, industry certification
                   body, etc.).
@@ -275,11 +319,11 @@ export default function HowItWorksPage() {
                 <h3 className="text-xl font-bold mb-2">
                   We Track Outcomes & Support Your Next Step
                 </h3>
-                <p className="text-gray-700 mb-3">
+                <p className="text-black mb-3">
                   We report completion to funders, track employment outcomes,
                   and support your career progression.
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   <strong>What happens:</strong> You remain connected to our
                   network for ongoing support and advancement opportunities.
                 </p>
@@ -298,7 +342,7 @@ export default function HowItWorksPage() {
             <div className="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
               <GraduationCap className="w-8 h-8 text-brand-blue-600 mb-3" />
               <h3 className="text-lg font-bold mb-2">Students</h3>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-black">
                 People seeking training, credentials, and career pathways with
                 funding support.
               </p>
@@ -307,7 +351,7 @@ export default function HowItWorksPage() {
             <div className="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
               <Building2 className="w-8 h-8 text-brand-blue-600 mb-3" />
               <h3 className="text-lg font-bold mb-2">Workforce Boards</h3>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-black">
                 Agencies managing WIOA, WRG, JRI, and other workforce
                 development programs.
               </p>
@@ -316,7 +360,7 @@ export default function HowItWorksPage() {
             <div className="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
               <Users className="w-8 h-8 text-brand-blue-600 mb-3" />
               <h3 className="text-lg font-bold mb-2">Training Providers</h3>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-black">
                 Accredited schools, certification bodies, and apprenticeship
                 sponsors.
               </p>
@@ -325,7 +369,7 @@ export default function HowItWorksPage() {
             <div className="bg-blue-50 p-6 rounded-lg border-2 border-blue-200">
               <Briefcase className="w-8 h-8 text-brand-blue-600 mb-3" />
               <h3 className="text-lg font-bold mb-2">Employers</h3>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-black">
                 Companies seeking trained workers and apprenticeship
                 partnerships.
               </p>
@@ -346,7 +390,7 @@ export default function HowItWorksPage() {
               <h3 className="text-xl font-bold mb-2">
                 We Coordinate, We Don't Control
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 We connect people to resources. We don't own credentials,
                 replace authorities, or sell outcomes.
               </p>
@@ -354,7 +398,7 @@ export default function HowItWorksPage() {
 
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-brand-blue-600">
               <h3 className="text-xl font-bold mb-2">Interest ≠ Obligation</h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Applying does not create debt, obligation, or enrollment.
                 Advisors review every case before any commitment.
               </p>
@@ -364,7 +408,7 @@ export default function HowItWorksPage() {
               <h3 className="text-xl font-bold mb-2">
                 Some Programs Are Free, Some Are Not
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Programs funded by WIOA, WRG, JRI, or apprenticeships are free to eligible students. 
                 Other programs require self-pay or alternative funding. Your advisor will explain all costs upfront.
               </p>
@@ -372,7 +416,7 @@ export default function HowItWorksPage() {
 
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-brand-blue-600">
               <h3 className="text-xl font-bold mb-2">Platform ≠ Provider</h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 We provide the coordination platform. Training delivery,
                 certification, and employment are handled by partners and
                 authorities.
@@ -383,7 +427,7 @@ export default function HowItWorksPage() {
               <h3 className="text-xl font-bold mb-2">
                 Multi-Jurisdiction by Design
               </h3>
-              <p className="text-gray-700">
+              <p className="text-black">
                 We respect state, federal, and local authority. Our platform
                 adapts to each jurisdiction's rules and requirements.
               </p>

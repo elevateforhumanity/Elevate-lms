@@ -64,7 +64,7 @@ export function SignMOUForm() {
         <div>
           <label
             htmlFor="signerName"
-            className="block text-sm font-medium text-slate-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Full Name *
           </label>
@@ -86,7 +86,7 @@ export function SignMOUForm() {
         <div>
           <label
             htmlFor="signerTitle"
-            className="block text-sm font-medium text-slate-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Title/Position *
           </label>
@@ -108,10 +108,10 @@ export function SignMOUForm() {
 
       {/* Signature */}
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-2">
+        <label className="block text-sm font-medium text-black mb-2">
           Digital Signature *
         </label>
-        <p className="text-sm text-slate-600 mb-3">
+        <p className="text-sm text-black mb-3">
           Please sign in the box below using your mouse or touchscreen
         </p>
         <SignatureCanvas onSignatureChange={setSignatureDataUrl} />
@@ -130,7 +130,7 @@ export function SignMOUForm() {
           ) => setAgreed(e.target.checked)}
           className="mt-1 h-4 w-4 text-brand-blue-600 focus:ring-blue-500 border-slate-300 rounded"
         />
-        <label htmlFor="agreed" className="text-sm text-slate-700">
+        <label htmlFor="agreed" className="text-sm text-black">
           I have read and agree to the terms of this Memorandum of
           Understanding. I understand that this digital signature is legally
           binding and has the same effect as a handwritten signature.
@@ -149,7 +149,7 @@ export function SignMOUForm() {
         <button
           type="button"
           onClick={() => router.back()}
-          className="px-6 py-3 border border-slate-300 text-slate-700 rounded-lg font-semibold hover:bg-slate-50 transition"
+          className="px-6 py-3 border border-slate-300 text-black rounded-lg font-semibold hover:bg-slate-50 transition"
         >
           Cancel
         </button>

@@ -132,7 +132,7 @@ export function HourTracker({ programName, requiredHours, studentId }: HourTrack
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 Currently Clocked In
               </div>
-              <div className="text-5xl font-bold text-slate-900 font-mono text-3xl md:text-4xl lg:text-5xl">
+              <div className="text-5xl font-bold text-black font-mono text-3xl md:text-4xl lg:text-5xl">
                 {formatTime(elapsedTime)}
               </div>
               <button
@@ -145,7 +145,7 @@ export function HourTracker({ programName, requiredHours, studentId }: HourTrack
             </div>
           ) : (
             <div className="space-y-4">
-              <div className="text-slate-600 text-sm">Ready to log your training hours?</div>
+              <div className="text-black text-sm">Ready to log your training hours?</div>
               <button
                 onClick={handleClockIn}
                 className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:scale-105"
@@ -163,7 +163,7 @@ export function HourTracker({ programName, requiredHours, studentId }: HourTrack
         {/* Total Hours */}
         <div>
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-semibold text-slate-700">Total Hours Completed</span>
+            <span className="text-sm font-semibold text-black">Total Hours Completed</span>
             <span className="text-2xl font-bold text-purple-600">
               {totalHours.toFixed(1)} / {requiredHours}
             </span>
@@ -174,7 +174,7 @@ export function HourTracker({ programName, requiredHours, studentId }: HourTrack
               style={{ width: `${progressPercentage}%` }}
              />
           </div>
-          <div className="flex items-center justify-between mt-2 text-xs text-slate-600">
+          <div className="flex items-center justify-between mt-2 text-xs text-black">
             <span>{progressPercentage.toFixed(1)}% Complete</span>
             <span>{hoursRemaining.toFixed(1)} hours remaining</span>
           </div>
@@ -185,28 +185,28 @@ export function HourTracker({ programName, requiredHours, studentId }: HourTrack
           <div className="bg-blue-50 rounded-xl p-4 text-center">
             <TrendingUp className="w-6 h-6 text-blue-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-blue-600">{recentSessions.length}</div>
-            <div className="text-xs text-slate-600">Sessions</div>
+            <div className="text-xs text-black">Sessions</div>
           </div>
           <div className="bg-green-50 rounded-xl p-4 text-center">
             <Calendar className="w-6 h-6 text-green-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-green-600">
               {recentSessions.length > 0 ? recentSessions[0].date : 'N/A'}
             </div>
-            <div className="text-xs text-slate-600">Last Session</div>
+            <div className="text-xs text-black">Last Session</div>
           </div>
           <div className="bg-purple-50 rounded-xl p-4 text-center">
             <Award className="w-6 h-6 text-purple-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-purple-600">
               {progressPercentage >= 100 ? '✓' : Math.ceil(hoursRemaining)}
             </div>
-            <div className="text-xs text-slate-600">To Complete</div>
+            <div className="text-xs text-black">To Complete</div>
           </div>
         </div>
 
         {/* Recent Sessions */}
         {recentSessions.length > 0 && (
           <div>
-            <h4 className="text-sm font-semibold text-slate-700 mb-3">Recent Sessions</h4>
+            <h4 className="text-sm font-semibold text-black mb-3">Recent Sessions</h4>
             <div className="space-y-2 max-h-48 overflow-y-auto">
               {recentSessions.map((session, index) => (
                 <div
@@ -216,8 +216,8 @@ export function HourTracker({ programName, requiredHours, studentId }: HourTrack
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-purple-500 rounded-full" />
                     <div>
-                      <div className="font-semibold text-slate-900">{session.activity}</div>
-                      <div className="text-xs text-slate-600">{session.date}</div>
+                      <div className="font-semibold text-black">{session.activity}</div>
+                      <div className="text-xs text-black">{session.date}</div>
                     </div>
                   </div>
                   <div className="font-bold text-purple-600">{session.hours.toFixed(2)}h</div>
@@ -241,7 +241,7 @@ export function HourTracker({ programName, requiredHours, studentId }: HourTrack
 
       {/* Footer Note */}
       <div className="bg-slate-50 px-6 py-4 border-t border-slate-200">
-        <p className="text-xs text-slate-600 text-center">
+        <p className="text-xs text-black text-center">
           💡 <strong>Tip:</strong> Clock in when you start training and clock out when you finish.
           Your hours are automatically saved and synced with your instructor.
         </p>

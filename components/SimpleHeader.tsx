@@ -10,16 +10,16 @@ export default function SimpleHeader() {
               <div className="text-2xl font-bold text-blue-600">Elevate</div>
             </Link>
             <nav role="navigation" aria-label="Main navigation" className="hidden lg:flex items-center gap-6">
-              <Link href="/programs" aria-label="Link" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition">
+              <Link href="/programs" aria-label="Link" className="text-sm font-medium text-black hover:text-blue-600 transition">
                 Programs
               </Link>
-              <Link href="/courses" aria-label="Link" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition">
+              <Link href="/courses" aria-label="Link" className="text-sm font-medium text-black hover:text-blue-600 transition">
                 Courses
               </Link>
-              <Link href="/about" aria-label="Link" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition">
+              <Link href="/about" aria-label="Link" className="text-sm font-medium text-black hover:text-blue-600 transition">
                 About
               </Link>
-              <Link href="/contact" aria-label="Link" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition">
+              <Link href="/contact" aria-label="Link" className="text-sm font-medium text-black hover:text-blue-600 transition">
                 Contact
               </Link>
             </nav>

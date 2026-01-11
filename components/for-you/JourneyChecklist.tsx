@@ -75,16 +75,16 @@ export function JourneyChecklist() {
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <div className="text-blue-600">{step.icon}</div>
-                    <h3 className="text-xl font-bold text-slate-900">
+                    <h3 className="text-xl font-bold text-black">
                       {step.title}
                     </h3>
                   </div>
-                  <div className="flex items-center gap-2 text-slate-600 text-sm">
+                  <div className="flex items-center gap-2 text-black text-sm">
                     <Clock className="h-4 w-4" />
                     <span className="font-semibold">{step.duration}</span>
                   </div>
                 </div>
-                <p className="text-slate-700">{step.description}</p>
+                <p className="text-black">{step.description}</p>
               </div>
             </div>
           ))}

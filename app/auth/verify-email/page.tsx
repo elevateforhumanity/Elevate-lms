@@ -40,10 +40,10 @@ export default function VerifyEmailPage() {
       <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
         <div className="text-center mb-6">
           <Mail className="w-16 h-16 text-orange-600 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <h1 className="text-2xl font-bold text-black mb-2">
             Verify Your Email
           </h1>
-          <p className="text-gray-600">
+          <p className="text-black">
             Please check your email and click the verification link to access
             your account.
           </p>
@@ -90,7 +90,7 @@ export default function VerifyEmailPage() {
         </button>
 
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-black">
             Need help?{' '}
             <a
               href="/contact"

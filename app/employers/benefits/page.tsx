@@ -74,7 +74,7 @@ export default function EmployerBenefitsPage() {
                     <h3 className="font-semibold text-lg mb-1">
                       {benefit.title}
                     </h3>
-                    <p className="text-gray-600">{benefit.description}</p>
+                    <p className="text-black">{benefit.description}</p>
                   </div>
                 </div>
               ))}
@@ -88,19 +88,19 @@ export default function EmployerBenefitsPage() {
                 <div className="text-4xl font-bold text-orange-600 mb-2">
                   90%
                 </div>
-                <p className="text-gray-600">Placement Success Rate</p>
+                <p className="text-black">Placement Success Rate</p>
               </div>
               <div>
                 <div className="text-4xl font-bold text-orange-600 mb-2">
                   85%
                 </div>
-                <p className="text-gray-600">1-Year Retention Rate</p>
+                <p className="text-black">1-Year Retention Rate</p>
               </div>
               <div>
                 <div className="text-4xl font-bold text-orange-600 mb-2">
                   500+
                 </div>
-                <p className="text-gray-600">Employer Partners</p>
+                <p className="text-black">Employer Partners</p>
               </div>
             </div>
           </section>
@@ -109,7 +109,7 @@ export default function EmployerBenefitsPage() {
             <h2 className="text-2xl font-bold mb-4">
               Ready to Partner With Us?
             </h2>
-            <p className="text-gray-700 mb-6">
+            <p className="text-black mb-6">
               Join hundreds of employers who have found success through our
               platform.
             </p>

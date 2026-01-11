@@ -237,7 +237,7 @@ export default function DIYTaxesPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2">Do Your Own Taxes</h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-black">
             Step-by-step guidance to maximize your refund
           </p>
         </div>
@@ -252,7 +252,7 @@ export default function DIYTaxesPage() {
                     className={`w-12 h-12 rounded-full flex items-center justify-center font-bold ${
                       currentStep >= step.id
                         ? 'bg-green-600 text-white'
-                        : 'bg-gray-300 text-gray-600'
+                        : 'bg-gray-300 text-black'
                     }`}
                   >
                     {currentStep > step.id ? (
@@ -276,7 +276,7 @@ export default function DIYTaxesPage() {
 
           {/* Estimated Refund */}
           <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
-            <div className="text-sm text-gray-600 mb-1">Estimated Refund</div>
+            <div className="text-sm text-black mb-1">Estimated Refund</div>
             <div className="text-3xl font-bold text-green-600">
               {calculating
                 ? 'Calculating...'
@@ -444,7 +444,7 @@ export default function DIYTaxesPage() {
           {currentStep === 2 && (
             <div>
               <h2 className="text-2xl font-bold mb-6">Filing Status</h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 Your filing status determines your tax rates and standard
                 deduction amount.
               </p>
@@ -507,7 +507,7 @@ export default function DIYTaxesPage() {
                       </div>
                       <div>
                         <div className="font-bold text-lg">{status.label}</div>
-                        <div className="text-sm text-gray-600">
+                        <div className="text-sm text-black">
                           {status.description}
                         </div>
                       </div>
@@ -609,7 +609,7 @@ export default function DIYTaxesPage() {
                 </div>
 
                 {taxReturn.dependents.length === 0 ? (
-                  <div className="text-center py-8 text-gray-700">
+                  <div className="text-center py-8 text-black">
                     No dependents added yet. Click "Add Dependent" to add one.
                   </div>
                 ) : (
@@ -701,7 +701,7 @@ export default function DIYTaxesPage() {
           {currentStep === 3 && (
             <div>
               <h2 className="text-2xl font-bold mb-6">Income</h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 Tell us about all your income for 2024.
               </p>
 
@@ -718,7 +718,7 @@ export default function DIYTaxesPage() {
                 </div>
 
                 {taxReturn.w2Income.length === 0 ? (
-                  <div className="text-center py-8 bg-gray-50 rounded-lg text-gray-700">
+                  <div className="text-center py-8 bg-gray-50 rounded-lg text-black">
                     No W-2s added yet. Click "Add W-2" or upload your W-2 to
                     auto-fill.
                   </div>
@@ -815,7 +815,7 @@ export default function DIYTaxesPage() {
           {currentStep === 4 && (
             <div>
               <h2 className="text-2xl font-bold mb-6">Deductions</h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 Choose between standard deduction or itemized deductions.
               </p>
 
@@ -846,7 +846,7 @@ export default function DIYTaxesPage() {
                       <div className="font-bold text-lg">
                         Standard Deduction
                       </div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-sm text-black">
                         Recommended for most people. Amount: $14,600 (Single),
                         $29,200 (Married)
                       </div>
@@ -880,7 +880,7 @@ export default function DIYTaxesPage() {
                       <div className="font-bold text-lg">
                         Itemized Deductions
                       </div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-sm text-black">
                         Choose this if you have mortgage interest, large
                         charitable donations, or high medical expenses
                       </div>
@@ -1043,7 +1043,7 @@ export default function DIYTaxesPage() {
           {currentStep === 5 && (
             <div>
               <h2 className="text-2xl font-bold mb-6">Tax Credits</h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 Tax credits reduce your tax bill dollar-for-dollar. Let's see
                 which ones you qualify for.
               </p>
@@ -1065,7 +1065,7 @@ export default function DIYTaxesPage() {
                     />
                     <div>
                       <div className="font-bold text-lg">Child Tax Credit</div>
-                      <div className="text-sm text-gray-600 mt-1">
+                      <div className="text-sm text-black mt-1">
                         Up to $2,000 per qualifying child under age 17. Based on
                         your {taxReturn.dependents.length} dependent(s).
                       </div>
@@ -1100,7 +1100,7 @@ export default function DIYTaxesPage() {
                       <div className="font-bold text-lg">
                         Earned Income Tax Credit (EITC)
                       </div>
-                      <div className="text-sm text-gray-600 mt-1">
+                      <div className="text-sm text-black mt-1">
                         For low to moderate income workers. Amount varies based
                         on income and number of children.
                       </div>
@@ -1130,7 +1130,7 @@ export default function DIYTaxesPage() {
                     />
                     <div>
                       <div className="font-bold text-lg">Education Credits</div>
-                      <div className="text-sm text-gray-600 mt-1">
+                      <div className="text-sm text-black mt-1">
                         American Opportunity Credit (up to $2,500) or Lifetime
                         Learning Credit (up to $2,000) for college expenses.
                       </div>
@@ -1158,7 +1158,7 @@ export default function DIYTaxesPage() {
                     (taxReturn.hasEducationCredits ? 2500 : 0)
                   ).toLocaleString()}
                 </div>
-                <p className="text-sm text-gray-600 mt-2">
+                <p className="text-sm text-black mt-2">
                   This is an estimate. Final amount will be calculated based on
                   your complete tax return.
                 </p>
@@ -1255,7 +1255,7 @@ export default function DIYTaxesPage() {
                   <h3 className="font-bold text-lg mb-4">
                     Direct Deposit Information
                   </h3>
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm text-black mb-4">
                     Get your refund faster with direct deposit!
                   </p>
                   <div className="space-y-4">
@@ -1368,7 +1368,7 @@ export default function DIYTaxesPage() {
                   File My Tax Return Now
                 </button>
 
-                <p className="text-center text-sm text-gray-700">
+                <p className="text-center text-sm text-black">
                   By filing, you agree to our terms and authorize e-filing with
                   the IRS.
                 </p>
@@ -1382,7 +1382,7 @@ export default function DIYTaxesPage() {
           {currentStep > 1 && (
             <button
               onClick={prevStep}
-              className="flex-1 bg-gray-300 text-gray-700 py-4 rounded-lg font-bold hover:bg-gray-400 flex items-center justify-center gap-2"
+              className="flex-1 bg-gray-300 text-black py-4 rounded-lg font-bold hover:bg-gray-400 flex items-center justify-center gap-2"
             >
               <ChevronLeft className="w-5 h-5" />
               Previous

@@ -194,10 +194,10 @@ function SubscriptionsContent() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-black mb-4">
             Store Subscriptions
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-black">
             Choose the plan that fits your needs
           </p>
         </div>
@@ -303,7 +303,7 @@ function SubscriptionsContent() {
                     {plan.features.map((feature: string, idx: number) => (
                       <li key={idx} className="flex items-start">
                         <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700">{feature}</span>
+                        <span className="text-black">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -312,7 +312,7 @@ function SubscriptionsContent() {
                   {isCurrentPlan ? (
                     <button
                       disabled
-                      className="w-full py-3 px-4 bg-gray-100 text-gray-700 rounded-lg font-semibold cursor-not-allowed"
+                      className="w-full py-3 px-4 bg-gray-100 text-black rounded-lg font-semibold cursor-not-allowed"
                     >
                       Current Plan
                     </button>
@@ -347,33 +347,33 @@ function SubscriptionsContent() {
 
         {/* FAQ Section */}
         <div className="mt-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+          <h2 className="text-2xl font-bold text-black mb-6 text-center">
             Frequently Asked Questions
           </h2>
           <div className="space-y-4">
             <div className="bg-white rounded-lg p-6 shadow">
-              <h3 className="font-semibold text-gray-900 mb-2">
+              <h3 className="font-semibold text-black mb-2">
                 Can I cancel anytime?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Yes, you can cancel your subscription at any time. You'll
                 continue to have access until the end of your billing period.
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 shadow">
-              <h3 className="font-semibold text-gray-900 mb-2">
+              <h3 className="font-semibold text-black mb-2">
                 Can I switch plans?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Yes, you can upgrade or downgrade your plan at any time through
                 the customer portal.
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 shadow">
-              <h3 className="font-semibold text-gray-900 mb-2">
+              <h3 className="font-semibold text-black mb-2">
                 What payment methods do you accept?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 We accept all major credit cards through Stripe's secure payment
                 processing.
               </p>

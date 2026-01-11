@@ -84,11 +84,11 @@ export default function IncentivesPage() {
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <DollarSign className="w-8 h-8 text-brand-blue-600" />
-                <h1 className="text-3xl font-bold text-gray-900">
+                <h1 className="text-3xl font-bold text-black">
                   Employer Incentives
                 </h1>
               </div>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Track WEX and OJT employer incentive programs
               </p>
             </div>
@@ -106,14 +106,14 @@ export default function IncentivesPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center gap-3 mb-2">
               <Award className="w-6 h-6 text-brand-blue-600" />
-              <h3 className="text-sm font-medium text-gray-600">
+              <h3 className="text-sm font-medium text-black">
                 Total Programs
               </h3>
             </div>
             <p className="text-3xl font-bold text-brand-blue-600">
               {stats.total}
             </p>
-            <p className="text-xs text-gray-700 mt-1">
+            <p className="text-xs text-black mt-1">
               {stats.wex} WEX • {stats.ojt} OJT
             </p>
           </div>
@@ -121,34 +121,34 @@ export default function IncentivesPage() {
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center gap-3 mb-2">
               <DollarSign className="w-6 h-6 text-brand-green-600" />
-              <h3 className="text-sm font-medium text-gray-600">
+              <h3 className="text-sm font-medium text-black">
                 Total Amount
               </h3>
             </div>
             <p className="text-3xl font-bold text-brand-green-600">
               ${stats.totalAmount.toLocaleString()}
             </p>
-            <p className="text-xs text-gray-700 mt-1">Across all programs</p>
+            <p className="text-xs text-black mt-1">Across all programs</p>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center gap-3 mb-2">
               <TrendingUp className="w-6 h-6 text-brand-orange-600" />
-              <h3 className="text-sm font-medium text-gray-600">Pending</h3>
+              <h3 className="text-sm font-medium text-black">Pending</h3>
             </div>
             <p className="text-3xl font-bold text-brand-orange-600">
               {stats.pending}
             </p>
-            <p className="text-xs text-gray-700 mt-1">Awaiting approval</p>
+            <p className="text-xs text-black mt-1">Awaiting approval</p>
           </div>
 
           <div className="bg-white rounded-lg shadow p-6">
             <div className="flex items-center gap-3 mb-2">
               <Users className="w-6 h-6 text-purple-600" />
-              <h3 className="text-sm font-medium text-gray-600">Paid Out</h3>
+              <h3 className="text-sm font-medium text-black">Paid Out</h3>
             </div>
             <p className="text-3xl font-bold text-purple-600">{stats.paid}</p>
-            <p className="text-xs text-gray-700 mt-1">Completed programs</p>
+            <p className="text-xs text-black mt-1">Completed programs</p>
           </div>
         </div>
 
@@ -156,7 +156,7 @@ export default function IncentivesPage() {
         <div className="bg-white rounded-lg shadow p-4 mb-6">
           <div className="flex flex-wrap gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 Program Type
               </label>
               <select
@@ -170,7 +170,7 @@ export default function IncentivesPage() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 Status
               </label>
               <select
@@ -186,7 +186,7 @@ export default function IncentivesPage() {
               </select>
             </div>
             <div className="ml-auto flex items-end">
-              <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200" aria-label="Action button">
+              <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-black rounded-md hover:bg-gray-200" aria-label="Action button">
                 <Download className="w-4 h-4" />
                 Export
               </button>
@@ -199,10 +199,10 @@ export default function IncentivesPage() {
           {filteredIncentives.length === 0 ? (
             <div className="text-center py-12">
               <DollarSign className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-700 text-lg">
+              <p className="text-black text-lg">
                 No incentive programs found
               </p>
-              <p className="text-gray-600 text-sm mt-2">
+              <p className="text-black text-sm mt-2">
                 Create a new incentive program to get started
               </p>
             </div>
@@ -210,25 +210,25 @@ export default function IncentivesPage() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Employer
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Student
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Type
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Amount
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Progress
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                     Actions
                   </th>
                 </tr>
@@ -237,12 +237,12 @@ export default function IncentivesPage() {
                 {filteredIncentives.map((incentive) => (
                   <tr key={incentive.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-black">
                         {incentive.employer_name}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
+                      <div className="text-sm text-black">
                         {incentive.student_name}
                       </div>
                     </td>
@@ -258,12 +258,12 @@ export default function IncentivesPage() {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-black">
                         ${incentive.amount.toLocaleString()}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">
+                      <div className="text-sm text-black">
                         {incentive.hours_completed} / {incentive.hours_required}{' '}
                         hrs
                       </div>

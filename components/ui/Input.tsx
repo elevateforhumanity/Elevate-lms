@@ -50,7 +50,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-sm font-semibold text-slate-700 mb-2"
+            className="block text-sm font-semibold text-black mb-2"
           >
             {label}
             {props.required && <span className="text-red-500 ml-1">*</span>}

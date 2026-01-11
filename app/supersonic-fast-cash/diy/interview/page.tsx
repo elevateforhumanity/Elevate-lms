@@ -9,7 +9,7 @@ export default function DIYInterviewPage() {
           <div className="mb-8">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold">Tax Filing Interview</h2>
-              <span className="text-sm text-gray-700">Step 1 of 5</span>
+              <span className="text-sm text-black">Step 1 of 5</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
               <div className="bg-orange-600 h-2 rounded-full" style={{width: '20%'}}></div>
@@ -21,7 +21,7 @@ export default function DIYInterviewPage() {
               <h3 className="text-lg font-semibold mb-4">Personal Information</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     First Name *
                   </label>
                   <input
@@ -31,7 +31,7 @@ export default function DIYInterviewPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Last Name *
                   </label>
                   <input
@@ -41,7 +41,7 @@ export default function DIYInterviewPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Social Security Number *
                   </label>
                   <input
@@ -52,7 +52,7 @@ export default function DIYInterviewPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Date of Birth *
                   </label>
                   <input
@@ -103,7 +103,7 @@ export default function DIYInterviewPage() {
           </form>
 
           <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               <strong>Need help?</strong> Our tax professionals are available to assist you.{' '}
               <Link href="/supersonic-fast-cash/book-appointment" className="text-blue-600 hover:underline">
                 Book an appointment

@@ -74,7 +74,7 @@ export default async function AdminVerificationReviewPage() {
     };
     return (
       styles[status as keyof typeof styles] ||
-      'bg-slate-100 text-slate-800 border-slate-300'
+      'bg-slate-100 text-black border-slate-300'
     );
   };
 
@@ -84,16 +84,16 @@ export default async function AdminVerificationReviewPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold text-slate-900 mb-2">
+              <h1 className="text-4xl font-bold text-black mb-2">
                 ID Verification Review
               </h1>
-              <p className="text-lg text-slate-600">
+              <p className="text-lg text-black">
                 Review and approve identity verifications
               </p>
             </div>
             <Link
               href="/admin/dashboard"
-              className="px-6 py-3 bg-slate-200 text-slate-900 font-semibold rounded-lg hover:bg-slate-300 transition"
+              className="px-6 py-3 bg-slate-200 text-black font-semibold rounded-lg hover:bg-slate-300 transition"
             >
               Back to Dashboard
             </Link>
@@ -106,11 +106,11 @@ export default async function AdminVerificationReviewPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center justify-between mb-2">
               <Shield className="w-8 h-8 text-blue-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {verifications?.length || 0}
               </span>
             </div>
-            <div className="text-sm text-slate-600">Total Verifications</div>
+            <div className="text-sm text-black">Total Verifications</div>
           </div>
 
           <div className="bg-yellow-50 border-2 border-yellow-600 rounded-lg p-6">
@@ -128,27 +128,27 @@ export default async function AdminVerificationReviewPage() {
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center justify-between mb-2">
               <CheckCircle className="w-8 h-8 text-green-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {approvedVerifications.length}
               </span>
             </div>
-            <div className="text-sm text-slate-600">Approved</div>
+            <div className="text-sm text-black">Approved</div>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center justify-between mb-2">
               <XCircle className="w-8 h-8 text-red-600" />
-              <span className="text-3xl font-bold text-slate-900">
+              <span className="text-3xl font-bold text-black">
                 {rejectedVerifications.length}
               </span>
             </div>
-            <div className="text-sm text-slate-600">Rejected</div>
+            <div className="text-sm text-black">Rejected</div>
           </div>
         </div>
 
         {pendingVerifications.length > 0 && (
           <div className="bg-white rounded-lg shadow-sm border p-6 mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-black mb-4">
               Pending Review ({pendingVerifications.length})
             </h2>
             <div className="space-y-3">
@@ -160,10 +160,10 @@ export default async function AdminVerificationReviewPage() {
                   <div className="flex items-center gap-3 flex-1">
                     {getStatusIcon(verification.status)}
                     <div className="flex-1">
-                      <h3 className="font-semibold text-slate-900">
+                      <h3 className="font-semibold text-black">
                         {verification.first_name} {verification.last_name}
                       </h3>
-                      <p className="text-sm text-slate-600">
+                      <p className="text-sm text-black">
                         {verification.id_type
                           .replace(/_/g, ' ')
                           .replace(/\b\w/g, (l: string) =>
@@ -191,7 +191,7 @@ export default async function AdminVerificationReviewPage() {
         )}
 
         <div className="bg-white rounded-lg shadow-sm border p-6">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl font-bold text-black mb-4">
             All Verifications
           </h2>
 
@@ -205,10 +205,10 @@ export default async function AdminVerificationReviewPage() {
                   <div className="flex items-center gap-3 flex-1">
                     {getStatusIcon(verification.status)}
                     <div className="flex-1">
-                      <h3 className="font-semibold text-slate-900">
+                      <h3 className="font-semibold text-black">
                         {verification.first_name} {verification.last_name}
                       </h3>
-                      <p className="text-sm text-slate-600">
+                      <p className="text-sm text-black">
                         {verification.id_type
                           .replace(/_/g, ' ')
                           .replace(/\b\w/g, (l: string) =>
@@ -236,7 +236,7 @@ export default async function AdminVerificationReviewPage() {
                     </span>
                     <Link
                       href={`/admin/verifications/review/${verification.id}`}
-                      className="px-4 py-2 bg-slate-200 text-slate-900 font-semibold rounded-lg hover:bg-slate-300 transition"
+                      className="px-4 py-2 bg-slate-200 text-black font-semibold rounded-lg hover:bg-slate-300 transition"
                     >
                       Review
                     </Link>
@@ -247,7 +247,7 @@ export default async function AdminVerificationReviewPage() {
           ) : (
             <div className="text-center py-12">
               <Shield className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-              <p className="text-slate-600">No verifications to review</p>
+              <p className="text-black">No verifications to review</p>
             </div>
           )}
         </div>

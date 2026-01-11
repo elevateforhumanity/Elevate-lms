@@ -118,7 +118,7 @@ export default async function AdminCoursesPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div className="bg-white rounded-lg shadow-sm border p-6">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-medium text-gray-600">
+                <h3 className="text-sm font-medium text-black">
                   Total Courses
                 </h3>
                 <svg
@@ -135,13 +135,13 @@ export default async function AdminCoursesPage() {
                   />
                 </svg>
               </div>
-              <p className="text-3xl font-bold text-gray-900">
+              <p className="text-3xl font-bold text-black">
                 {totalCourses || 0}
               </p>
             </div>
 
             <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-sm font-medium text-gray-600 mb-2">
+              <h3 className="text-sm font-medium text-black mb-2">
                 Published
               </h3>
               <p className="text-3xl font-bold text-brand-green-600">
@@ -150,14 +150,14 @@ export default async function AdminCoursesPage() {
             </div>
 
             <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-sm font-medium text-gray-600 mb-2">Drafts</h3>
+              <h3 className="text-sm font-medium text-black mb-2">Drafts</h3>
               <p className="text-3xl font-bold text-brand-orange-600">
                 {draftCount}
               </p>
             </div>
 
             <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-sm font-medium text-gray-600 mb-2">
+              <h3 className="text-sm font-medium text-black mb-2">
                 Total Enrollments
               </h3>
               <p className="text-3xl font-bold text-purple-600">
@@ -171,7 +171,7 @@ export default async function AdminCoursesPage() {
             <div className="p-6 border-b flex justify-between items-center">
               <div>
                 <h2 className="text-xl font-semibold">All Courses</h2>
-                <p className="text-sm text-gray-600 mt-1">
+                <p className="text-sm text-black mt-1">
                   Manage course content and settings
                 </p>
               </div>
@@ -193,22 +193,22 @@ export default async function AdminCoursesPage() {
               <table className="w-full">
                 <thead className="bg-gray-50 border-b">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                       Course
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                       Status
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                       Enrollments
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                       Duration
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                       Level
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-700 uppercase">
+                    <th className="px-6 py-3 text-right text-xs font-medium text-black uppercase">
                       Actions
                     </th>
                   </tr>
@@ -245,10 +245,10 @@ export default async function AdminCoursesPage() {
                               </div>
                             )}
                             <div className="ml-3">
-                              <p className="text-sm font-medium text-gray-900">
+                              <p className="text-sm font-medium text-black">
                                 {course.title}
                               </p>
-                              <p className="text-xs text-gray-700">
+                              <p className="text-xs text-black">
                                 {course.id.slice(0, 8)}
                               </p>
                             </div>
@@ -259,16 +259,16 @@ export default async function AdminCoursesPage() {
                             className={`px-2 py-1 rounded-full text-xs font-medium ${
                               course.is_published
                                 ? 'bg-blue-100 text-green-700'
-                                : 'bg-gray-100 text-gray-700'
+                                : 'bg-gray-100 text-black'
                             }`}
                           >
                             {course.is_published ? 'Published' : 'Draft'}
                           </span>
                         </td>
-                        <td className="px-6 py-4 text-sm text-gray-900">
+                        <td className="px-6 py-4 text-sm text-black">
                           {enrollmentMap[course.id] || 0} students
                         </td>
-                        <td className="px-6 py-4 text-sm text-gray-600">
+                        <td className="px-6 py-4 text-sm text-black">
                           {course.duration_weeks
                             ? `${course.duration_weeks} weeks`
                             : '—'}
@@ -297,7 +297,7 @@ export default async function AdminCoursesPage() {
                           </Link>
                           <Link
                             href={`/admin/courses/${course.id}/edit`}
-                            className="text-gray-600 hover:text-gray-700 mr-3"
+                            className="text-black hover:text-black mr-3"
                           >
                             Edit
                           </Link>
@@ -311,10 +311,10 @@ export default async function AdminCoursesPage() {
                     <tr>
                       <td
                         colSpan={6}
-                        className="px-6 py-12 text-center text-gray-700"
+                        className="px-6 py-12 text-center text-black"
                       >
                         <svg
-                          className="w-12 h-12 text-gray-600 mx-auto mb-4"
+                          className="w-12 h-12 text-black mx-auto mb-4"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -341,7 +341,7 @@ export default async function AdminCoursesPage() {
             </div>
             {courses && courses.length > 0 && (
               <div className="px-6 py-4 border-t bg-gray-50 flex items-center justify-between">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Showing {courses.length} of {totalCourses || 0} courses
                 </p>
                 <div className="flex gap-2">
@@ -366,10 +366,10 @@ export default async function AdminCoursesPage() {
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                     Your Journey Starts Here
                   </h2>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  <p className="text-lg text-black mb-6 leading-relaxed">
                     Every great career begins with a single step. Whether you're
                     looking to change careers, upgrade your skills, or enter the
                     workforce for the first time, we're here to help you
@@ -391,7 +391,7 @@ export default async function AdminCoursesPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         100% free training - no tuition, no hidden costs
                       </span>
                     </li>
@@ -409,7 +409,7 @@ export default async function AdminCoursesPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Industry-recognized certifications that employers value
                       </span>
                     </li>
@@ -427,7 +427,7 @@ export default async function AdminCoursesPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Job placement assistance and career support
                       </span>
                     </li>
@@ -445,7 +445,7 @@ export default async function AdminCoursesPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Flexible scheduling for working adults
                       </span>
                     </li>

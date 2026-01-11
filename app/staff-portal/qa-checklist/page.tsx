@@ -47,10 +47,10 @@ export default async function QAChecklistPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 QA Checklist
               </h1>
-              <p className="text-slate-600 mt-2">
+              <p className="text-black mt-2">
                 Daily and weekly quality assurance tasks
               </p>
             </div>
@@ -68,22 +68,22 @@ export default async function QAChecklistPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <Calendar className="h-8 w-8 text-blue-600 mb-2" />
-            <p className="text-3xl font-bold text-slate-900">
+            <p className="text-3xl font-bold text-black">
               {checklistsWithStatus?.length || 0}
             </p>
-            <p className="text-slate-600 text-sm">Total Checklists</p>
+            <p className="text-black text-sm">Total Checklists</p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <CheckSquare className="h-8 w-8 text-green-600 mb-2" />
-            <p className="text-3xl font-bold text-slate-900">
+            <p className="text-3xl font-bold text-black">
               {completions?.length || 0}
             </p>
-            <p className="text-slate-600 text-sm">Completed Today</p>
+            <p className="text-black text-sm">Completed Today</p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <User className="h-8 w-8 text-purple-600 mb-2" />
-            <p className="text-3xl font-bold text-slate-900">{profile.role}</p>
-            <p className="text-slate-600 text-sm">Your Role</p>
+            <p className="text-3xl font-bold text-black">{profile.role}</p>
+            <p className="text-black text-sm">Your Role</p>
           </div>
         </div>
 
@@ -102,7 +102,7 @@ export default async function QAChecklistPage() {
 
             return (
               <div key={freq}>
-                <h2 className="text-xl font-bold text-slate-900 mb-4 capitalize">
+                <h2 className="text-xl font-bold text-black mb-4 capitalize">
                   {freq} Checklists
                 </h2>
                 <div className="space-y-4">
@@ -113,11 +113,11 @@ export default async function QAChecklistPage() {
                     >
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-slate-900">
+                          <h3 className="text-lg font-semibold text-black">
                             {checklist.title}
                           </h3>
                           {checklist.assignee_role && (
-                            <p className="text-sm text-slate-600 mt-1">
+                            <p className="text-sm text-black mt-1">
                               For: {checklist.assignee_role}
                             </p>
                           )}
@@ -128,7 +128,7 @@ export default async function QAChecklistPage() {
                             Completed
                           </span>
                         ) : (
-                          <span className="px-3 py-1 bg-slate-100 text-slate-700 text-sm font-medium rounded-full flex items-center gap-1">
+                          <span className="px-3 py-1 bg-slate-100 text-black text-sm font-medium rounded-full flex items-center gap-1">
                             <Square className="h-4 w-4" />
                             Pending
                           </span>
@@ -140,7 +140,7 @@ export default async function QAChecklistPage() {
                           {checklist.tasks.map((task: unknown, idx: number) => (
                             <div
                               key={idx}
-                              className="flex items-start gap-2 text-sm text-slate-700"
+                              className="flex items-start gap-2 text-sm text-black"
                             >
                               <Square className="h-4 w-4 mt-0.5 flex-shrink-0" />
                               <span>{task.task || task}</span>

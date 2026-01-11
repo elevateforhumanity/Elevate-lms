@@ -102,7 +102,7 @@ export default async function VideosPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Video className="h-8 w-8 text-brand-blue-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Total Videos
                   </h3>
                 </div>
@@ -113,7 +113,7 @@ export default async function VideosPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Play className="h-8 w-8 text-brand-green-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Published
                   </h3>
                 </div>
@@ -124,7 +124,7 @@ export default async function VideosPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Eye className="h-8 w-8 text-purple-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Total Views
                   </h3>
                 </div>
@@ -168,15 +168,15 @@ export default async function VideosPage() {
                         </div>
                       ) : (
                         <div className="h-48 bg-gray-200 flex items-center justify-center">
-                          <Video className="h-12 w-12 text-gray-600" />
+                          <Video className="h-12 w-12 text-black" />
                         </div>
                       )}
                       <div className="p-4">
                         <h3 className="font-semibold mb-2">{video.title}</h3>
-                        <p className="text-sm text-gray-600 mb-2">
+                        <p className="text-sm text-black mb-2">
                           {video.course?.name || 'No course assigned'}
                         </p>
-                        <div className="flex justify-between items-center text-xs text-gray-700">
+                        <div className="flex justify-between items-center text-xs text-black">
                           <span>{video.duration || '0:00'}</span>
                           <span>{video.view_count || 0} views</span>
                         </div>
@@ -189,7 +189,7 @@ export default async function VideosPage() {
                           </Link>
                           <Link
                             href={`/videos/${video.slug}`}
-                            className="flex-1 text-center bg-gray-100 text-gray-700 px-3 py-2 rounded text-sm font-medium hover:bg-gray-200"
+                            className="flex-1 text-center bg-gray-100 text-black px-3 py-2 rounded text-sm font-medium hover:bg-gray-200"
                           >
                             View
                           </Link>
@@ -201,8 +201,8 @@ export default async function VideosPage() {
               ) : (
                 <div className="text-center py-12">
                   <Video className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-700 text-lg">No videos found</p>
-                  <p className="text-gray-600 text-sm mt-2">
+                  <p className="text-black text-lg">No videos found</p>
+                  <p className="text-black text-sm mt-2">
                     Upload your first video to get started
                   </p>
                 </div>

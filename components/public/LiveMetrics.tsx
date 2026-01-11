@@ -72,7 +72,7 @@ export function LiveMetrics() {
       <div className="bg-white rounded-lg border border-slate-200 p-8">
         <div className="flex items-center justify-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
-          <span className="ml-3 text-slate-600">Loading live metrics...</span>
+          <span className="ml-3 text-black">Loading live metrics...</span>
         </div>
       </div>
     );
@@ -195,10 +195,10 @@ export function LiveMetrics() {
                 </div>
                 <Activity className="h-4 w-4 text-green-500 animate-pulse" />
               </div>
-              <p className="text-3xl font-bold text-slate-900 mb-1">
+              <p className="text-3xl font-bold text-black mb-1">
                 {stat.value}
               </p>
-              <p className="text-sm font-semibold text-slate-700 mb-1">
+              <p className="text-sm font-semibold text-black mb-1">
                 {stat.label}
               </p>
               <p className="text-xs text-slate-500">{stat.description}</p>
@@ -210,7 +210,7 @@ export function LiveMetrics() {
       {/* Completion Rate */}
       <div className="bg-white rounded-lg border border-slate-200 p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-bold text-slate-900">
+          <h3 className="text-lg font-bold text-black">
             Course Completion Rate
           </h3>
           <span className="text-2xl font-bold text-green-600">
@@ -223,7 +223,7 @@ export function LiveMetrics() {
             style={{ width: `${metrics.metrics.completionRate}%` }}
           />
         </div>
-        <p className="text-sm text-slate-600 mt-2">
+        <p className="text-sm text-black mt-2">
           {metrics.metrics.completedCourses.toLocaleString()} of{' '}
           {metrics.metrics.totalEnrollments.toLocaleString()} enrollments
           completed
@@ -233,8 +233,8 @@ export function LiveMetrics() {
       {/* Recent Activity */}
       <div className="bg-white rounded-lg border border-slate-200 p-6">
         <div className="flex items-center gap-2 mb-4">
-          <Clock className="h-5 w-5 text-slate-600" />
-          <h3 className="text-lg font-bold text-slate-900">Recent Activity</h3>
+          <Clock className="h-5 w-5 text-black" />
+          <h3 className="text-lg font-bold text-black">Recent Activity</h3>
           <span className="ml-auto text-xs text-slate-500">Live updates</span>
         </div>
         <div className="space-y-3">
@@ -246,7 +246,7 @@ export function LiveMetrics() {
               >
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-slate-900 truncate">
+                  <p className="text-sm font-medium text-black truncate">
                     New enrollment: {activity.courseTitle}
                   </p>
                   <p className="text-xs text-slate-500">
@@ -265,7 +265,7 @@ export function LiveMetrics() {
 
       {/* Data Source Info */}
       <div className="bg-slate-50 border border-slate-200 rounded-lg p-4">
-        <p className="text-xs text-slate-600 text-center">
+        <p className="text-xs text-black text-center">
           <strong>Data Source:</strong> {metrics.dataSource} •
           <strong> Updated:</strong>{' '}
           {new Date(metrics.lastUpdated).toLocaleString()} •

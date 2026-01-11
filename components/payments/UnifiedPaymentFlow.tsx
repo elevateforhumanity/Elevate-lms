@@ -148,7 +148,7 @@ export default function UnifiedPaymentFlow({
     <div className="max-w-4xl mx-auto">
       {/* Payment Type Selection */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">
+        <h2 className="text-2xl font-bold text-black mb-4">
           Choose Your Payment Option
         </h2>
 
@@ -170,13 +170,13 @@ export default function UnifiedPaymentFlow({
                 <CheckCircle className="w-6 h-6 text-blue-600" />
               )}
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-2">
+            <h3 className="text-lg font-bold text-black mb-2">
               Pay in Full
             </h3>
-            <p className="text-3xl font-bold text-slate-900 mb-2">
+            <p className="text-3xl font-bold text-black mb-2">
               ${price.toLocaleString()}
             </p>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-black">
               One-time payment. Start immediately.
             </p>
           </button>
@@ -199,13 +199,13 @@ export default function UnifiedPaymentFlow({
                   <CheckCircle className="w-6 h-6 text-green-600" />
                 )}
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 Payment Plan
               </h3>
-              <p className="text-3xl font-bold text-slate-900 mb-2">
-                ${monthlyPayment.toLocaleString()}<span className="text-lg text-slate-600">/mo</span>
+              <p className="text-3xl font-bold text-black mb-2">
+                ${monthlyPayment.toLocaleString()}<span className="text-lg text-black">/mo</span>
               </p>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-black">
                 4 monthly payments. Start immediately.
               </p>
             </button>
@@ -232,7 +232,7 @@ export default function UnifiedPaymentFlow({
 
       {/* Payment Method Selection */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">
+        <h2 className="text-2xl font-bold text-black mb-4">
           Select Payment Method
         </h2>
 
@@ -254,12 +254,12 @@ export default function UnifiedPaymentFlow({
                 <span className="text-3xl">{method.icon}</span>
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-1">
-                    <h3 className="font-bold text-slate-900">{method.name}</h3>
+                    <h3 className="font-bold text-black">{method.name}</h3>
                     {selectedMethod === method.id && (
                       <CheckCircle className="w-5 h-5 text-blue-600" />
                     )}
                   </div>
-                  <p className="text-sm text-slate-600">{method.description}</p>
+                  <p className="text-sm text-black">{method.description}</p>
                   {!method.available && (
                     <p className="text-xs text-brand-orange-600 mt-1">
                       {method.minAmount && price < method.minAmount &&
@@ -277,27 +277,27 @@ export default function UnifiedPaymentFlow({
 
       {/* Order Summary */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-4">
+        <h2 className="text-2xl font-bold text-black mb-4">
           Order Summary
         </h2>
 
         <div className="space-y-3">
           <div className="flex justify-between items-center">
-            <span className="text-slate-600">Program</span>
-            <span className="font-semibold text-slate-900">{programName}</span>
+            <span className="text-black">Program</span>
+            <span className="font-semibold text-black">{programName}</span>
           </div>
 
           <div className="flex justify-between items-center">
-            <span className="text-slate-600">Payment Type</span>
-            <span className="font-semibold text-slate-900">
+            <span className="text-black">Payment Type</span>
+            <span className="font-semibold text-black">
               {paymentType === 'full' ? 'Pay in Full' : '4 Monthly Payments'}
             </span>
           </div>
 
           {paymentType === 'plan' && (
             <div className="flex justify-between items-center">
-              <span className="text-slate-600">Monthly Payment</span>
-              <span className="font-semibold text-slate-900">
+              <span className="text-black">Monthly Payment</span>
+              <span className="font-semibold text-black">
                 ${monthlyPayment.toLocaleString()}
               </span>
             </div>
@@ -305,7 +305,7 @@ export default function UnifiedPaymentFlow({
 
           <div className="border-t border-slate-200 pt-3 mt-3">
             <div className="flex justify-between items-center">
-              <span className="text-lg font-bold text-slate-900">
+              <span className="text-lg font-bold text-black">
                 {paymentType === 'full' ? 'Total Due Today' : 'First Payment'}
               </span>
               <span className="text-2xl font-bold text-blue-600">
@@ -320,7 +320,7 @@ export default function UnifiedPaymentFlow({
       <div className="bg-slate-50 rounded-lg p-4 mb-6">
         <div className="flex items-start gap-3">
           <Shield className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-          <div className="text-sm text-slate-700">
+          <div className="text-sm text-black">
             <p className="font-semibold mb-1">Secure Payment Processing</p>
             <p>
               Your payment is processed securely through Stripe. We never store your payment information.
@@ -363,7 +363,7 @@ export default function UnifiedPaymentFlow({
       </button>
 
       {/* Additional Info */}
-      <div className="mt-6 text-center text-sm text-slate-600">
+      <div className="mt-6 text-center text-sm text-black">
         <p>
           By proceeding, you agree to our{' '}
           <a href="/terms" className="text-blue-600 hover:underline">

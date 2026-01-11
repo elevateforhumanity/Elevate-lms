@@ -77,7 +77,7 @@ export default function AffirmPromo({
               clipRule="evenodd"
             />
           </svg>
-          <h3 className="text-lg font-bold text-gray-900">
+          <h3 className="text-lg font-bold text-black">
             Make easy monthly payments
           </h3>
         </div>
@@ -89,7 +89,7 @@ export default function AffirmPromo({
         </div>
       </div>
 
-      <p className="text-sm text-gray-700 mb-4">
+      <p className="text-sm text-black mb-4">
         Checking your eligibility won't affect your credit
       </p>
 
@@ -102,7 +102,7 @@ export default function AffirmPromo({
             className={`px-3 py-2 rounded-lg text-sm font-semibold transition-all ${
               selectedPlan === key
                 ? 'bg-blue-600 text-white shadow-md'
-                : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+                : 'bg-white text-black hover:bg-gray-50 border border-gray-200'
             }`}
           >
             {plans[key].label}
@@ -113,13 +113,13 @@ export default function AffirmPromo({
       {/* Payment Display */}
       <div className="bg-white rounded-lg p-6 shadow-sm mb-4">
         <div className="text-center mb-4">
-          <div className="text-4xl font-bold text-gray-900 mb-1 text-2xl md:text-3xl lg:text-4xl">
+          <div className="text-4xl font-bold text-black mb-1 text-2xl md:text-3xl lg:text-4xl">
             ${currentPlan.payment}
-            <span className="text-lg text-gray-600 font-normal">
+            <span className="text-lg text-black font-normal">
               /{currentPlan.frequency.split(' ')[1] || 'payment'}
             </span>
           </div>
-          <div className="text-sm text-gray-600">{currentPlan.duration}</div>
+          <div className="text-sm text-black">{currentPlan.duration}</div>
         </div>
 
         <div className="grid grid-cols-3 gap-4 text-center border-t border-gray-200 pt-4">
@@ -137,7 +137,7 @@ export default function AffirmPromo({
           </div>
           <div>
             <div className="text-xs text-gray-500 mb-1">Total</div>
-            <div className="text-lg font-bold text-gray-900">
+            <div className="text-lg font-bold text-black">
               ${currentPlan.total}
             </div>
           </div>
@@ -146,11 +146,11 @@ export default function AffirmPromo({
 
       {/* CTA */}
       <div className="text-center">
-        <p className="text-sm text-gray-700 mb-3">
+        <p className="text-sm text-black mb-3">
           Just select <strong className="text-blue-600">Affirm</strong> at
           checkout.
         </p>
-        <p className="text-xs text-gray-600">
+        <p className="text-xs text-black">
           Get a real-time decision with just 5 pieces of info.
         </p>
       </div>

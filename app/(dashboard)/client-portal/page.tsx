@@ -63,7 +63,7 @@ export default function ClientPortalPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Everything You Need
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Professional client portal with advanced features
               and more
             </p>
@@ -76,7 +76,7 @@ export default function ClientPortalPage() {
                 <Shield className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Bank-Level Security</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 At-rest encryption, secure file transfers, and access controls
                 to protect client data.
               </p>
@@ -88,7 +88,7 @@ export default function ClientPortalPage() {
                 <Upload className="w-6 h-6 text-green-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Easy Document Upload</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Clients can upload W-2s, 1099s, and other tax documents from any
                 device with drag-and-drop.
               </p>
@@ -100,7 +100,7 @@ export default function ClientPortalPage() {
                 <FileText className="w-6 h-6 text-purple-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">E-Signatures</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Send fillable forms and request digital signatures on any
                 device. Legally binding and IRS-compliant.
               </p>
@@ -112,7 +112,7 @@ export default function ClientPortalPage() {
                 <MessageSquare className="w-6 h-6 text-orange-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Secure Messaging</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 In-app messaging for secure communication without leaving the
                 portal. No more unsecure emails.
               </p>
@@ -124,7 +124,7 @@ export default function ClientPortalPage() {
                 <CreditCard className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Online Payments</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Collect payments through the portal with integrated payment
                 processing. Stripe and ACH supported.
               </p>
@@ -136,7 +136,7 @@ export default function ClientPortalPage() {
                 <Smartphone className="w-6 h-6 text-green-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Mobile-Friendly</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Clients can snap and send tax documents from their phone.
                 Responsive design works on all devices.
               </p>
@@ -148,7 +148,7 @@ export default function ClientPortalPage() {
                 <FolderOpen className="w-6 h-6 text-purple-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Prior-Year Summary</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Show clients what they submitted last year to help them stay
                 organized and complete.
               </p>
@@ -160,7 +160,7 @@ export default function ClientPortalPage() {
                 <Download className="w-6 h-6 text-orange-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Tax Software Integration</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Seamlessly integrates with professional tax software. Import client
                 data directly into returns.
               </p>
@@ -172,7 +172,7 @@ export default function ClientPortalPage() {
                 <CheckCircle className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">Custom Branding</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Showcase your firm's logo and personalized web address.
                 White-label solution.
               </p>
@@ -188,7 +188,7 @@ export default function ClientPortalPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Simple, Transparent Pricing
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Better features, better price
             </p>
           </div>
@@ -198,7 +198,7 @@ export default function ClientPortalPage() {
             <div className="border-2 border-gray-200 rounded-lg p-8">
               <h3 className="text-2xl font-bold mb-2">Free Trial</h3>
               <div className="text-4xl font-bold mb-4">
-                $0<span className="text-lg text-gray-600">/14 days</span>
+                $0<span className="text-lg text-black">/14 days</span>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
@@ -220,7 +220,7 @@ export default function ClientPortalPage() {
               </ul>
               <Link
                 href="/client-portal/signup?plan=trial"
-                className="block w-full bg-gray-100 hover:bg-gray-200 text-gray-900 px-6 py-3 rounded-lg font-semibold text-center transition-colors"
+                className="block w-full bg-gray-100 hover:bg-gray-200 text-black px-6 py-3 rounded-lg font-semibold text-center transition-colors"
               >
                 Start Free Trial
               </Link>
@@ -233,9 +233,9 @@ export default function ClientPortalPage() {
               </div>
               <h3 className="text-2xl font-bold mb-2">Monthly</h3>
               <div className="text-4xl font-bold mb-4">
-                $19.95<span className="text-lg text-gray-600">/month</span>
+                $19.95<span className="text-lg text-black">/month</span>
               </div>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-black mb-4">
                 Affordable pricing
               </p>
               <ul className="space-y-3 mb-8">
@@ -272,7 +272,7 @@ export default function ClientPortalPage() {
             <div className="border-2 border-gray-200 rounded-lg p-8">
               <h3 className="text-2xl font-bold mb-2">Yearly</h3>
               <div className="text-4xl font-bold mb-4">
-                $179.95<span className="text-lg text-gray-600">/year</span>
+                $179.95<span className="text-lg text-black">/year</span>
               </div>
               <p className="text-sm text-green-600 font-semibold mb-4">
                 Save $60/year (25% off)
@@ -309,7 +309,7 @@ export default function ClientPortalPage() {
           </div>
 
           <div className="text-center mt-8">
-            <p className="text-gray-600">
+            <p className="text-black">
               All plans include SSL encryption, automatic backups, and 24/7
               support
             </p>
@@ -324,7 +324,7 @@ export default function ClientPortalPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Elevate Client Portal Features
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Better features at a better price
             </p>
           </div>
@@ -367,7 +367,7 @@ export default function ClientPortalPage() {
                   <td className="px-6 py-4 text-center">
                     <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                   </td>
-                  <td className="px-6 py-4 text-center text-gray-600">
+                  <td className="px-6 py-4 text-center text-black">
                     Additional Fee
                   </td>
                 </tr>
@@ -394,7 +394,7 @@ export default function ClientPortalPage() {
                   <td className="px-6 py-4 text-center">
                     <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                   </td>
-                  <td className="px-6 py-4 text-center text-gray-600">
+                  <td className="px-6 py-4 text-center text-black">
                     Additional Payment Required
                   </td>
                 </tr>
@@ -403,7 +403,7 @@ export default function ClientPortalPage() {
                   <td className="px-6 py-4 text-center">
                     <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                   </td>
-                  <td className="px-6 py-4 text-center text-gray-600">
+                  <td className="px-6 py-4 text-center text-black">
                     Not Available
                   </td>
                 </tr>

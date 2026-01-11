@@ -18,7 +18,7 @@ export function StarRating({ rating, count, size = "md" }: Props) {
           />
         ))}
       </div>
-      <span className="text-xs font-semibold text-slate-800">{clamped.toFixed(1)}</span>
+      <span className="text-xs font-semibold text-black">{clamped.toFixed(1)}</span>
       {typeof count === "number" && (
         <span className="text-xs text-slate-500">({count.toLocaleString()})</span>
       )}

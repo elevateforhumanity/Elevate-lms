@@ -112,7 +112,7 @@ export function ForumList({ threads, categoryId }: ForumListProps) {
 
       {threads.length === 0 && (
         <div className="text-center py-12 bg-slate-800 rounded-lg">
-          <MessageSquare className="w-12 h-12 text-slate-600 mx-auto mb-4" />
+          <MessageSquare className="w-12 h-12 text-black mx-auto mb-4" />
           <p className="text-slate-400">No discussions yet. Be the first to start one!</p>
         </div>
       )}

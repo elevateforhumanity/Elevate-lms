@@ -88,54 +88,54 @@ export default function EnhancedDashboard({ role, userId }: DashboardProps) {
         <div className="bg-white border border-slate-200 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <Bell className="w-8 h-8 text-orange-600" />
-            <span className="text-2xl font-bold text-slate-900">
+            <span className="text-2xl font-bold text-black">
               {stats.notifications}
             </span>
           </div>
-          <p className="text-sm text-slate-600">Unread Notifications</p>
+          <p className="text-sm text-black">Unread Notifications</p>
         </div>
 
         <div className="bg-white border border-slate-200 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <MessageSquare className="w-8 h-8 text-blue-600" />
-            <span className="text-2xl font-bold text-slate-900">
+            <span className="text-2xl font-bold text-black">
               {stats.messages}
             </span>
           </div>
-          <p className="text-sm text-slate-600">New Messages</p>
+          <p className="text-sm text-black">New Messages</p>
         </div>
 
         <div className="bg-white border border-slate-200 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <Award className="w-8 h-8 text-purple-600" />
-            <span className="text-2xl font-bold text-slate-900">
+            <span className="text-2xl font-bold text-black">
               {stats.achievements}
             </span>
           </div>
-          <p className="text-sm text-slate-600">Achievements</p>
+          <p className="text-sm text-black">Achievements</p>
         </div>
 
         <div className="bg-white border border-slate-200 rounded-lg p-6">
           <div className="flex items-center justify-between mb-2">
             <TrendingUp className="w-8 h-8 text-emerald-600" />
-            <span className="text-2xl font-bold text-slate-900">
+            <span className="text-2xl font-bold text-black">
               {stats.progress}
             </span>
           </div>
-          <p className="text-sm text-slate-600">Total Points</p>
+          <p className="text-sm text-black">Total Points</p>
         </div>
       </div>
 
       {/* Quick Actions */}
       <div className="bg-white border border-slate-200 rounded-lg p-6">
-        <h2 className="text-lg font-bold text-slate-900 mb-4">Quick Actions</h2>
+        <h2 className="text-lg font-bold text-black mb-4">Quick Actions</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           <a
             href="/messages"
             className="flex flex-col items-center justify-center p-4 border-2 border-slate-200 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-colors"
           >
-            <MessageSquare className="w-6 h-6 text-slate-700 mb-2" />
-            <span className="text-xs font-semibold text-slate-700">
+            <MessageSquare className="w-6 h-6 text-black mb-2" />
+            <span className="text-xs font-semibold text-black">
               Messages
             </span>
           </a>
@@ -144,8 +144,8 @@ export default function EnhancedDashboard({ role, userId }: DashboardProps) {
             href="/calendar"
             className="flex flex-col items-center justify-center p-4 border-2 border-slate-200 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-colors"
           >
-            <Calendar className="w-6 h-6 text-slate-700 mb-2" />
-            <span className="text-xs font-semibold text-slate-700">
+            <Calendar className="w-6 h-6 text-black mb-2" />
+            <span className="text-xs font-semibold text-black">
               Calendar
             </span>
           </a>
@@ -154,8 +154,8 @@ export default function EnhancedDashboard({ role, userId }: DashboardProps) {
             href="/documents"
             className="flex flex-col items-center justify-center p-4 border-2 border-slate-200 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-colors"
           >
-            <Upload className="w-6 h-6 text-slate-700 mb-2" />
-            <span className="text-xs font-semibold text-slate-700">
+            <Upload className="w-6 h-6 text-black mb-2" />
+            <span className="text-xs font-semibold text-black">
               Documents
             </span>
           </a>
@@ -164,8 +164,8 @@ export default function EnhancedDashboard({ role, userId }: DashboardProps) {
             href="/achievements"
             className="flex flex-col items-center justify-center p-4 border-2 border-slate-200 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-colors"
           >
-            <Award className="w-6 h-6 text-slate-700 mb-2" />
-            <span className="text-xs font-semibold text-slate-700">
+            <Award className="w-6 h-6 text-black mb-2" />
+            <span className="text-xs font-semibold text-black">
               Achievements
             </span>
           </a>
@@ -174,16 +174,16 @@ export default function EnhancedDashboard({ role, userId }: DashboardProps) {
             href="/search"
             className="flex flex-col items-center justify-center p-4 border-2 border-slate-200 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-colors"
           >
-            <Search className="w-6 h-6 text-slate-700 mb-2" />
-            <span className="text-xs font-semibold text-slate-700">Search</span>
+            <Search className="w-6 h-6 text-black mb-2" />
+            <span className="text-xs font-semibold text-black">Search</span>
           </a>
 
           <a
             href="/reports"
             className="flex flex-col items-center justify-center p-4 border-2 border-slate-200 rounded-lg hover:border-orange-500 hover:bg-orange-50 transition-colors"
           >
-            <BarChart3 className="w-6 h-6 text-slate-700 mb-2" />
-            <span className="text-xs font-semibold text-slate-700">
+            <BarChart3 className="w-6 h-6 text-black mb-2" />
+            <span className="text-xs font-semibold text-black">
               Reports
             </span>
           </a>
@@ -192,7 +192,7 @@ export default function EnhancedDashboard({ role, userId }: DashboardProps) {
 
       {/* Recent Activity */}
       <div className="bg-white border border-slate-200 rounded-lg p-6">
-        <h2 className="text-lg font-bold text-slate-900 mb-4">
+        <h2 className="text-lg font-bold text-black mb-4">
           Recent Activity
         </h2>
         {recentActivity.length === 0 ? (
@@ -205,10 +205,10 @@ export default function EnhancedDashboard({ role, userId }: DashboardProps) {
                 className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg"
               >
                 <div className="flex-1">
-                  <p className="font-semibold text-slate-900 text-sm">
+                  <p className="font-semibold text-black text-sm">
                     {activity.title}
                   </p>
-                  <p className="text-sm text-slate-600">{activity.message}</p>
+                  <p className="text-sm text-black">{activity.message}</p>
                   <p className="text-xs text-slate-400 mt-1">
                     {new Date(activity.created_at).toLocaleString()}
                   </p>

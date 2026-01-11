@@ -37,40 +37,40 @@ export default function FederalCompliancePage() {
                 <Shield className="w-6 h-6 text-blue-600" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                <h2 className="text-3xl font-bold text-black mb-2">
                   WIOA Compliance
                 </h2>
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-black">
                   Workforce Innovation and Opportunity Act
                 </p>
               </div>
             </div>
             <div className="bg-gray-50 rounded-xl p-8">
-              <p className="text-gray-700 mb-6">
+              <p className="text-black mb-6">
                 Our programs are designed to meet WIOA requirements for eligible training providers and workforce development activities.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Eligible Training Provider:</strong> Programs listed on state Eligible Training Provider Lists (ETPL)
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Performance Reporting:</strong> Track and report participant outcomes as required
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Equal Opportunity:</strong> Non-discrimination in all programs and activities
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Data Privacy:</strong> Protect participant personally identifiable information (PII)
                   </span>
                 </li>
@@ -85,40 +85,40 @@ export default function FederalCompliancePage() {
                 <FileText className="w-6 h-6 text-purple-600" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                <h2 className="text-3xl font-bold text-black mb-2">
                   FERPA Compliance
                 </h2>
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-black">
                   Family Educational Rights and Privacy Act
                 </p>
               </div>
             </div>
             <div className="bg-gray-50 rounded-xl p-8">
-              <p className="text-gray-700 mb-6">
+              <p className="text-black mb-6">
                 We protect student education records in accordance with FERPA requirements.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Student Consent:</strong> Obtain written consent before disclosing education records
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Access Rights:</strong> Students can review and request amendments to their records
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Secure Storage:</strong> Education records stored securely with access controls
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Limited Disclosure:</strong> Share information only as permitted by law
                   </span>
                 </li>
@@ -133,40 +133,40 @@ export default function FederalCompliancePage() {
                 <Users className="w-6 h-6 text-green-600" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                <h2 className="text-3xl font-bold text-black mb-2">
                   ADA Compliance
                 </h2>
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-black">
                   Americans with Disabilities Act
                 </p>
               </div>
             </div>
             <div className="bg-gray-50 rounded-xl p-8">
-              <p className="text-gray-700 mb-6">
+              <p className="text-black mb-6">
                 Our platform and programs are accessible to individuals with disabilities.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Web Accessibility:</strong> WCAG 2.1 Level AA compliance for digital content
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Reasonable Accommodations:</strong> Provide accommodations for participants with disabilities
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Accessible Facilities:</strong> Physical locations meet ADA accessibility standards
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     <strong>Assistive Technology:</strong> Compatible with screen readers and other assistive devices
                   </span>
                 </li>
@@ -181,58 +181,58 @@ export default function FederalCompliancePage() {
                 <Scale className="w-6 h-6 text-orange-600" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                <h2 className="text-3xl font-bold text-black mb-2">
                   Equal Opportunity
                 </h2>
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-black">
                   Non-Discrimination Policy
                 </p>
               </div>
             </div>
             <div className="bg-gray-50 rounded-xl p-8">
-              <p className="text-gray-700 mb-6">
+              <p className="text-black mb-6">
                 Elevate for Humanity is an equal opportunity provider and does not discriminate on the basis of:
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">Race</span>
+                  <span className="text-black">Race</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">Color</span>
+                  <span className="text-black">Color</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">Religion</span>
+                  <span className="text-black">Religion</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">Sex</span>
+                  <span className="text-black">Sex</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">National Origin</span>
+                  <span className="text-black">National Origin</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">Age</span>
+                  <span className="text-black">Age</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">Disability</span>
+                  <span className="text-black">Disability</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">Veteran Status</span>
+                  <span className="text-black">Veteran Status</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">Genetic Information</span>
+                  <span className="text-black">Genetic Information</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  <span className="text-gray-700">Citizenship Status</span>
+                  <span className="text-black">Citizenship Status</span>
                 </div>
               </div>
             </div>
@@ -259,22 +259,22 @@ export default function FederalCompliancePage() {
               href="/privacy-policy"
               className="block p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-600 transition"
             >
-              <h4 className="font-bold text-gray-900 mb-2">Privacy Policy</h4>
-              <p className="text-sm text-gray-600">How we protect your personal information</p>
+              <h4 className="font-bold text-black mb-2">Privacy Policy</h4>
+              <p className="text-sm text-black">How we protect your personal information</p>
             </Link>
             <Link
               href="/accessibility"
               className="block p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-600 transition"
             >
-              <h4 className="font-bold text-gray-900 mb-2">Accessibility</h4>
-              <p className="text-sm text-gray-600">Our commitment to digital accessibility</p>
+              <h4 className="font-bold text-black mb-2">Accessibility</h4>
+              <p className="text-sm text-black">Our commitment to digital accessibility</p>
             </Link>
             <Link
               href="/security"
               className="block p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-600 transition"
             >
-              <h4 className="font-bold text-gray-900 mb-2">Security</h4>
-              <p className="text-sm text-gray-600">How we keep your data secure</p>
+              <h4 className="font-bold text-black mb-2">Security</h4>
+              <p className="text-sm text-black">How we keep your data secure</p>
             </Link>
           </div>
         </div>

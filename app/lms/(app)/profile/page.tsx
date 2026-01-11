@@ -120,7 +120,7 @@ export default async function ProfilePage() {
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Profile</h2>
-                <p className="text-gray-700 mb-6">
+                <p className="text-black mb-6">
                   Explore Profile and discover opportunities for career growth
                   and development.
                 </p>
@@ -206,7 +206,7 @@ export default async function ProfilePage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Access quality training programs
                 </p>
               </div>
@@ -228,7 +228,7 @@ export default async function ProfilePage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-gray-600">Earn industry certifications</p>
+                <p className="text-black">Earn industry certifications</p>
               </div>
 
               <div className="bg-white rounded-lg shadow-sm border p-6">
@@ -248,7 +248,7 @@ export default async function ProfilePage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-gray-600">Get hired in your field</p>
+                <p className="text-black">Get hired in your field</p>
               </div>
             </div>
           </div>

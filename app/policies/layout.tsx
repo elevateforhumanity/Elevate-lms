@@ -14,9 +14,9 @@ export default function PoliciesLayout({
         <div className="max-w-4xl mx-auto px-4 py-6">
           <div className="flex items-center gap-3 mb-2">
             <FileText className="w-6 h-6 text-orange-600" />
-            <h1 className="text-2xl font-bold text-gray-900">Policies & Compliance</h1>
+            <h1 className="text-2xl font-bold text-black">Policies & Compliance</h1>
           </div>
-          <div className="flex items-center gap-2 text-sm text-gray-600">
+          <div className="flex items-center gap-2 text-sm text-black">
             <Link href="/" aria-label="Link" className="hover:text-orange-600 flex items-center gap-1">
               <Home className="w-4 h-4" />
               Home
@@ -35,7 +35,7 @@ export default function PoliciesLayout({
       {/* Footer */}
       <div className="bg-white border-t border-gray-200 mt-16">
         <div className="max-w-4xl mx-auto px-4 py-8">
-          <p className="text-sm text-gray-600 text-center">
+          <p className="text-sm text-black text-center">
             Questions about our policies? Contact us at{' '}
             <a href="mailto:compliance@elevateforhumanity.institute" className="text-orange-600 hover:text-orange-700">
               compliance@elevateforhumanity.institute

@@ -136,14 +136,14 @@ export default function ProgramHolderApplyForm() {
 
       {/* Organization Information */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-gray-900">
+        <h3 className="text-lg font-semibold text-black">
           Organization Information
         </h3>
 
         <div>
           <label
             htmlFor="organizationName"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Organization Name *
           </label>
@@ -162,7 +162,7 @@ export default function ProgramHolderApplyForm() {
         <div>
           <label
             htmlFor="organizationType"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Organization Type *
           </label>
@@ -185,14 +185,14 @@ export default function ProgramHolderApplyForm() {
 
       {/* Contact Information */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-gray-900">
+        <h3 className="text-lg font-semibold text-black">
           Contact Information
         </h3>
 
         <div>
           <label
             htmlFor="contactName"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Contact Name *
           </label>
@@ -212,7 +212,7 @@ export default function ProgramHolderApplyForm() {
           <div>
             <label
               htmlFor="contactEmail"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-black mb-1"
             >
               Email Address *
             </label>
@@ -231,7 +231,7 @@ export default function ProgramHolderApplyForm() {
           <div>
             <label
               htmlFor="contactPhone"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-black mb-1"
             >
               Phone Number
             </label>
@@ -250,12 +250,12 @@ export default function ProgramHolderApplyForm() {
 
       {/* Location */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-gray-900">Location</h3>
+        <h3 className="text-lg font-semibold text-black">Location</h3>
 
         <div>
           <label
             htmlFor="address"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Street Address
           </label>
@@ -274,7 +274,7 @@ export default function ProgramHolderApplyForm() {
           <div>
             <label
               htmlFor="city"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-black mb-1"
             >
               City
             </label>
@@ -292,7 +292,7 @@ export default function ProgramHolderApplyForm() {
           <div>
             <label
               htmlFor="state"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-black mb-1"
             >
               State
             </label>
@@ -311,7 +311,7 @@ export default function ProgramHolderApplyForm() {
           <div>
             <label
               htmlFor="zip"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-black mb-1"
             >
               ZIP Code
             </label>
@@ -331,10 +331,10 @@ export default function ProgramHolderApplyForm() {
 
       {/* Programs */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-gray-900">
+        <h3 className="text-lg font-semibold text-black">
           Programs of Interest *
         </h3>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-black">
           Select all programs you're interested in offering
         </p>
 
@@ -350,7 +350,7 @@ export default function ProgramHolderApplyForm() {
                 onChange={() => handleProgramToggle(program)}
                 className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
-              <span className="text-sm text-gray-900">{program}</span>
+              <span className="text-sm text-black">{program}</span>
             </label>
           ))}
         </div>
@@ -358,14 +358,14 @@ export default function ProgramHolderApplyForm() {
 
       {/* Additional Information */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-gray-900">
+        <h3 className="text-lg font-semibold text-black">
           Additional Information
         </h3>
 
         <div>
           <label
             htmlFor="estimatedStudents"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Estimated Number of Students Per Year
           </label>
@@ -384,7 +384,7 @@ export default function ProgramHolderApplyForm() {
         <div>
           <label
             htmlFor="howHeardAboutUs"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             How did you hear about us?
           </label>
@@ -402,7 +402,7 @@ export default function ProgramHolderApplyForm() {
         <div>
           <label
             htmlFor="additionalInfo"
-            className="block text-sm font-medium text-gray-700 mb-1"
+            className="block text-sm font-medium text-black mb-1"
           >
             Additional Information
           </label>
@@ -434,7 +434,7 @@ export default function ProgramHolderApplyForm() {
             'Submit Application'
           )}
         </button>
-        <p className="text-xs text-gray-700 mt-2 text-center">
+        <p className="text-xs text-black mt-2 text-center">
           By submitting, you agree to our terms and privacy policy
         </p>
       </div>

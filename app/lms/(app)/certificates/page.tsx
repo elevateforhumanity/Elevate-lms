@@ -49,7 +49,7 @@ export default async function CertificatesPage() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">My Certificates</h1>
-          <p className="text-slate-600">
+          <p className="text-black">
             View and download your earned certificates
           </p>
         </div>
@@ -62,7 +62,7 @@ export default async function CertificatesPage() {
                   <h3 className="text-lg font-bold mb-1">
                     {cert.courses?.title}
                   </h3>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     Issued: {new Date(cert.issued_at).toLocaleDateString()} •
                     Certificate #{cert.certificate_number}
                   </p>
@@ -96,7 +96,7 @@ export default async function CertificatesPage() {
             <h3 className="text-lg md:text-lg font-bold mb-2">
               No Certificates Yet
             </h3>
-            <p className="text-slate-600 mb-6 max-w-md mx-auto">
+            <p className="text-black mb-6 max-w-md mx-auto">
               Complete a course to earn your first certificate. Certificates are
               automatically generated when you finish all course requirements.
             </p>

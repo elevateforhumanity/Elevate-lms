@@ -133,10 +133,10 @@ export default function VideoTestimonials() {
             <Quote className="w-4 h-4" />
             Real Stories, Real Success
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
             See How Ona Changed Lives
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-black max-w-3xl mx-auto">
             Watch real students share their journey from struggle to success. These aren't actors—they're your future colleagues.
           </p>
         </motion.div>
@@ -148,14 +148,14 @@ export default function VideoTestimonials() {
             onClick={handlePrevious}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-gray-50 transition-colors"
           >
-            <ChevronLeft className="w-6 h-6 text-gray-700" />
+            <ChevronLeft className="w-6 h-6 text-black" />
           </button>
 
           <button
             onClick={handleNext}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-gray-50 transition-colors"
           >
-            <ChevronRight className="w-6 h-6 text-gray-700" />
+            <ChevronRight className="w-6 h-6 text-black" />
           </button>
 
           {/* Video Cards */}
@@ -209,7 +209,7 @@ export default function VideoTestimonials() {
                     <div className="p-6">
                       <div className="flex items-start justify-between mb-3">
                         <div>
-                          <h3 className="text-xl font-bold text-gray-900 mb-1">
+                          <h3 className="text-xl font-bold text-black mb-1">
                             {testimonial.name}
                           </h3>
                           <p className="text-sm text-blue-600 font-semibold">
@@ -218,14 +218,14 @@ export default function VideoTestimonials() {
                         </div>
                         <div className="text-right">
                           <div className="text-xs text-gray-500">Class of</div>
-                          <div className="text-sm font-bold text-gray-900">{testimonial.graduationYear}</div>
+                          <div className="text-sm font-bold text-black">{testimonial.graduationYear}</div>
                         </div>
                       </div>
 
                       {/* Quote */}
                       <div className="mb-4">
                         <Quote className="w-5 h-5 text-blue-600 mb-2" />
-                        <p className="text-gray-700 text-sm italic line-clamp-3">
+                        <p className="text-black text-sm italic line-clamp-3">
                           "{testimonial.quote}"
                         </p>
                       </div>
@@ -234,18 +234,18 @@ export default function VideoTestimonials() {
                       <div className="space-y-2 mb-4">
                         <div className="flex items-start gap-2">
                           <div className="text-xs font-semibold text-gray-500 w-16">BEFORE:</div>
-                          <div className="text-sm text-gray-700 flex-1">{testimonial.beforeJob}</div>
+                          <div className="text-sm text-black flex-1">{testimonial.beforeJob}</div>
                         </div>
                         <div className="flex items-start gap-2">
                           <div className="text-xs font-semibold text-green-600 w-16">AFTER:</div>
-                          <div className="text-sm text-gray-900 font-semibold flex-1">{testimonial.afterJob}</div>
+                          <div className="text-sm text-black font-semibold flex-1">{testimonial.afterJob}</div>
                         </div>
                       </div>
 
                       {/* Salary */}
                       <div className="pt-4 border-t border-gray-200">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-gray-600">New Salary:</span>
+                          <span className="text-sm text-black">New Salary:</span>
                           <span className="text-lg font-bold text-green-600">{testimonial.salary}</span>
                         </div>
                       </div>
@@ -290,19 +290,19 @@ export default function VideoTestimonials() {
         >
           <div className="text-center">
             <div className="text-4xl font-bold text-blue-600 mb-2 text-2xl md:text-3xl lg:text-4xl">94%</div>
-            <div className="text-gray-600">Graduate Employment Rate</div>
+            <div className="text-black">Graduate Employment Rate</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-green-600 mb-2 text-2xl md:text-3xl lg:text-4xl">$15K+</div>
-            <div className="text-gray-600">Average Salary Increase</div>
+            <div className="text-black">Average Salary Increase</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-purple-600 mb-2 text-2xl md:text-3xl lg:text-4xl">2,500+</div>
-            <div className="text-gray-600">Success Stories</div>
+            <div className="text-black">Success Stories</div>
           </div>
           <div className="text-center">
             <div className="text-4xl font-bold text-orange-600 mb-2 text-2xl md:text-3xl lg:text-4xl">4.9★</div>
-            <div className="text-gray-600">Student Satisfaction</div>
+            <div className="text-black">Student Satisfaction</div>
           </div>
         </motion.div>
 
@@ -313,7 +313,7 @@ export default function VideoTestimonials() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <p className="text-xl text-gray-700 mb-6">
+          <p className="text-xl text-black mb-6">
             Ready to write your own success story?
           </p>
           <a
@@ -365,7 +365,7 @@ export default function VideoTestimonials() {
               <div className="p-6 bg-white">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-2xl font-bold text-black mb-2">
                       {selectedVideo.name}
                     </h3>
                     <p className="text-blue-600 font-semibold mb-2">
@@ -373,7 +373,7 @@ export default function VideoTestimonials() {
                     </p>
                   </div>
                   <div className="text-right">
-                    <div className="text-sm text-gray-600">New Salary</div>
+                    <div className="text-sm text-black">New Salary</div>
                     <div className="text-2xl font-bold text-green-600">{selectedVideo.salary}</div>
                   </div>
                 </div>
@@ -381,17 +381,17 @@ export default function VideoTestimonials() {
                 <div className="grid md:grid-cols-2 gap-4 mb-4">
                   <div className="bg-gray-50 rounded-lg p-4">
                     <div className="text-xs font-semibold text-gray-500 mb-1">BEFORE</div>
-                    <div className="text-gray-900">{selectedVideo.beforeJob}</div>
+                    <div className="text-black">{selectedVideo.beforeJob}</div>
                   </div>
                   <div className="bg-green-50 rounded-lg p-4">
                     <div className="text-xs font-semibold text-green-600 mb-1">AFTER</div>
-                    <div className="text-gray-900 font-semibold">{selectedVideo.afterJob}</div>
+                    <div className="text-black font-semibold">{selectedVideo.afterJob}</div>
                   </div>
                 </div>
 
                 <div className="bg-blue-50 rounded-lg p-4">
                   <Quote className="w-5 h-5 text-blue-600 mb-2" />
-                  <p className="text-gray-700 italic">"{selectedVideo.quote}"</p>
+                  <p className="text-black italic">"{selectedVideo.quote}"</p>
                 </div>
 
                 <div className="mt-6 flex gap-4">
@@ -403,7 +403,7 @@ export default function VideoTestimonials() {
                   </a>
                   <a
                     href="/programs"
-                    className="flex-1 px-6 py-3 bg-gray-100 text-gray-900 rounded-lg font-semibold hover:bg-gray-200 transition-all text-center"
+                    className="flex-1 px-6 py-3 bg-gray-100 text-black rounded-lg font-semibold hover:bg-gray-200 transition-all text-center"
                   >
                     View Programs
                   </a>

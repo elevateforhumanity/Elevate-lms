@@ -71,10 +71,10 @@ export default function PartnerPage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
               Partnership Opportunities
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               We work with multiple types of partners to create comprehensive
               career pathways for our students.
             </p>
@@ -86,35 +86,35 @@ export default function PartnerPage() {
               <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-6">
                 <Briefcase className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Employer Partners
               </h3>
-              <p className="text-slate-600 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 Hire trained, job-ready graduates. Access our talent pipeline.
                 Participate in apprenticeship programs.
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Pre-screened, trained candidates
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Apprenticeship program hosting
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Tax credits (WOTC) available
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Ongoing support and coordination
                   </span>
                 </li>
@@ -133,35 +133,35 @@ export default function PartnerPage() {
               <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-6">
                 <GraduationCap className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Training Providers
               </h3>
-              <p className="text-slate-600 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 Deliver curriculum through our platform. Reach more students.
                 Expand your impact.
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Access to funded students
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Platform integration support
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Marketing and enrollment support
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Revenue sharing opportunities
                   </span>
                 </li>
@@ -180,35 +180,35 @@ export default function PartnerPage() {
               <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-6">
                 <Building2 className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Community Organizations
               </h3>
-              <p className="text-slate-600 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 Refer participants. Provide wraparound services. Build stronger
                 communities together.
               </p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Referral partnerships
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Coordinated support services
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Shared impact measurement
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Joint funding opportunities
                   </span>
                 </li>
@@ -229,10 +229,10 @@ export default function PartnerPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
               Why Partner With Us
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               We make it easy to connect talent with opportunity.
             </p>
           </div>
@@ -268,10 +268,10 @@ export default function PartnerPage() {
                 <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <benefit.icon className="w-8 h-8 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   {benefit.title}
                 </h3>
-                <p className="text-slate-600">{benefit.description}</p>
+                <p className="text-black">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -282,7 +282,7 @@ export default function PartnerPage() {
       <section className="py-20 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
               Our Impact
             </h2>
           </div>
@@ -292,13 +292,13 @@ export default function PartnerPage() {
               <div className="text-5xl md:text-6xl font-bold text-blue-600 mb-2">
                 WIOA
               </div>
-              <div className="text-lg text-slate-700">Funded Programs</div>
+              <div className="text-lg text-black">Funded Programs</div>
             </div>
             <div className="text-center">
               <div className="text-5xl md:text-6xl font-bold text-blue-600 mb-2">
                 DOL
               </div>
-              <div className="text-lg text-slate-700">
+              <div className="text-lg text-black">
                 Registered Apprenticeships
               </div>
             </div>
@@ -306,7 +306,7 @@ export default function PartnerPage() {
               <div className="text-5xl md:text-6xl font-bold text-blue-600 mb-2">
                 ETPL
               </div>
-              <div className="text-lg text-slate-700">Approved Provider</div>
+              <div className="text-lg text-black">Approved Provider</div>
             </div>
           </div>
         </div>

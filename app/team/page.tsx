@@ -40,14 +40,14 @@ export default function TeamPage() {
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="prose prose-lg max-w-none mb-12">
-            <p className="text-xl text-gray-700 leading-relaxed mb-6">
+            <p className="text-xl text-black leading-relaxed mb-6">
               Elevate for Humanity is led by Elizabeth Greene, who manages all
               aspects of workforce development, compliance, partnerships, and
               operations.
             </p>
 
             <div className="bg-blue-50 border-l-4 border-brand-blue-600 p-6 my-8">
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-lg text-black leading-relaxed">
                 As a solo founder, Elizabeth handles program delivery,
                 regulatory compliance, partner coordination, and student
                 support—ensuring every individual receives the guidance they
@@ -55,7 +55,7 @@ export default function TeamPage() {
               </p>
             </div>
 
-            <blockquote className="text-xl font-semibold text-gray-900 italic border-l-4 border-brand-blue-600 pl-6 my-8">
+            <blockquote className="text-xl font-semibold text-black italic border-l-4 border-brand-blue-600 pl-6 my-8">
               Systems should work for people. That's what drives this work every
               day.
             </blockquote>
@@ -76,13 +76,13 @@ export default function TeamPage() {
                   />
                 </div>
                 <div className="p-8 flex flex-col justify-center">
-                  <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                  <h2 className="text-3xl font-bold text-black mb-2">
                     Elizabeth Greene
                   </h2>
                   <p className="text-brand-orange-600 font-semibold text-xl mb-6">
                     Founder & CEO
                   </p>
-                  <div className="space-y-4 text-gray-700">
+                  <div className="space-y-4 text-black">
                     <p className="leading-relaxed">
                       Elizabeth founded and operates Elevate for Humanity
                       (2EXCLUSIVE LLC-S), managing all aspects of workforce
@@ -95,7 +95,7 @@ export default function TeamPage() {
                       they need to succeed.
                     </p>
                     <div className="pt-4 border-t border-gray-200">
-                      <h3 className="font-bold text-gray-900 mb-3">
+                      <h3 className="font-bold text-black mb-3">
                         Areas of Focus:
                       </h3>
                       <ul className="space-y-2">

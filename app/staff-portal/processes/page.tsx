@@ -32,10 +32,10 @@ export default async function ProcessesPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 Process Documentation
               </h1>
-              <p className="text-slate-600 mt-2">
+              <p className="text-black mt-2">
                 Step-by-step guides for all procedures
               </p>
             </div>
@@ -61,10 +61,10 @@ export default async function ProcessesPage() {
         {!processes || processes.length === 0 ? (
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-12 text-center">
             <FileText className="h-16 w-16 text-slate-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-slate-900 mb-2">
+            <h3 className="text-xl font-semibold text-black mb-2">
               No Processes Available
             </h3>
-            <p className="text-slate-600">
+            <p className="text-black">
               Process documentation will appear here once added.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default async function ProcessesPage() {
                 className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-slate-900">
+                  <h3 className="text-lg font-semibold text-black">
                     {process.name}
                   </h3>
                   {process.category && (
@@ -87,26 +87,26 @@ export default async function ProcessesPage() {
                 </div>
 
                 {process.description && (
-                  <p className="text-slate-600 text-sm mb-4">
+                  <p className="text-black text-sm mb-4">
                     {process.description}
                   </p>
                 )}
 
                 <div className="space-y-2 mb-4">
                   {process.average_time && (
-                    <div className="flex items-center gap-2 text-sm text-slate-600">
+                    <div className="flex items-center gap-2 text-sm text-black">
                       <Clock className="h-4 w-4" />
                       <span>~{process.average_time} minutes</span>
                     </div>
                   )}
                   {process.completion_rate && (
-                    <div className="flex items-center gap-2 text-sm text-slate-600">
+                    <div className="flex items-center gap-2 text-sm text-black">
                       <TrendingUp className="h-4 w-4" />
                       <span>{process.completion_rate}% success rate</span>
                     </div>
                   )}
                   {process.process_steps && (
-                    <div className="flex items-center gap-2 text-sm text-slate-600">
+                    <div className="flex items-center gap-2 text-sm text-black">
                       <FileText className="h-4 w-4" />
                       <span>{process.process_steps.length} steps</span>
                     </div>

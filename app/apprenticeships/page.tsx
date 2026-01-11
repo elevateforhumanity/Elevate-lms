@@ -168,7 +168,7 @@ export default function ApprenticeshipsPage() {
             <div className="hidden md:flex items-center gap-6">
               <Link
                 href="/programs"
-                className="text-gray-700 hover:text-blue-900 font-medium transition-colors"
+                className="text-black hover:text-blue-900 font-medium transition-colors"
               >
                 Programs
               </Link>
@@ -177,13 +177,13 @@ export default function ApprenticeshipsPage() {
               </Link>
               <Link
                 href="/about"
-                className="text-gray-700 hover:text-blue-900 font-medium transition-colors"
+                className="text-black hover:text-blue-900 font-medium transition-colors"
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="text-gray-700 hover:text-blue-900 font-medium transition-colors"
+                className="text-black hover:text-blue-900 font-medium transition-colors"
               >
                 Contact
               </Link>
@@ -216,7 +216,7 @@ export default function ApprenticeshipsPage() {
             <div className="flex flex-col">
               <Link
                 href="/programs"
-                className="px-6 py-4 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-900 transition-colors border-b border-gray-200"
+                className="px-6 py-4 text-base font-medium text-black hover:bg-gray-50 hover:text-blue-900 transition-colors border-b border-gray-200"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Programs
@@ -230,14 +230,14 @@ export default function ApprenticeshipsPage() {
               </Link>
               <Link
                 href="/about"
-                className="px-6 py-4 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-900 transition-colors border-b border-gray-200"
+                className="px-6 py-4 text-base font-medium text-black hover:bg-gray-50 hover:text-blue-900 transition-colors border-b border-gray-200"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="px-6 py-4 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-900 transition-colors border-b border-gray-200"
+                className="px-6 py-4 text-base font-medium text-black hover:bg-gray-50 hover:text-blue-900 transition-colors border-b border-gray-200"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
@@ -298,10 +298,10 @@ export default function ApprenticeshipsPage() {
       <section className="py-12 md:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4">
               Why Choose Apprenticeship?
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-black max-w-2xl mx-auto">
               Apprenticeships offer a proven pathway to skilled careers with no
               student debt
             </p>
@@ -311,10 +311,10 @@ export default function ApprenticeshipsPage() {
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                 <DollarSign className="h-6 w-6 text-green-600" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Get Paid
               </h3>
-              <p className="text-sm md:text-base text-gray-600">
+              <p className="text-sm md:text-base text-black">
                 Earn a wage from day one while you learn valuable skills
               </p>
             </div>
@@ -322,10 +322,10 @@ export default function ApprenticeshipsPage() {
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                 <Award className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Earn Credentials
               </h3>
-              <p className="text-sm md:text-base text-gray-600">
+              <p className="text-sm md:text-base text-black">
                 Receive industry-recognized certifications and licenses
               </p>
             </div>
@@ -333,10 +333,10 @@ export default function ApprenticeshipsPage() {
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                 <Users className="h-6 w-6 text-purple-600" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Expert Mentors
               </h3>
-              <p className="text-sm md:text-base text-gray-600">
+              <p className="text-sm md:text-base text-black">
                 Learn from experienced professionals in your field
               </p>
             </div>
@@ -344,10 +344,10 @@ export default function ApprenticeshipsPage() {
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
                 <TrendingUp className="h-6 w-6 text-orange-600" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Career Growth
               </h3>
-              <p className="text-sm md:text-base text-gray-600">
+              <p className="text-sm md:text-base text-black">
                 Build a foundation for long-term career advancement
               </p>
             </div>
@@ -359,10 +359,10 @@ export default function ApprenticeshipsPage() {
       <section id="programs" className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4">
               Available Apprenticeship Programs
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-black max-w-2xl mx-auto">
               Explore our registered apprenticeship opportunities across
               multiple industries
             </p>
@@ -376,11 +376,11 @@ export default function ApprenticeshipsPage() {
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-xl md:text-2xl font-bold text-black mb-2">
                       {program.title}
                     </h3>
                     <div className="flex flex-wrap gap-3 text-sm">
-                      <span className="flex items-center gap-1 text-gray-600">
+                      <span className="flex items-center gap-1 text-black">
                         <Clock className="h-4 w-4" />
                         {program.duration}
                       </span>
@@ -395,13 +395,13 @@ export default function ApprenticeshipsPage() {
                   </div>
                 </div>
 
-                <p className="text-sm md:text-base text-gray-700 mb-6 leading-relaxed">
+                <p className="text-sm md:text-base text-black mb-6 leading-relaxed">
                   {program.description}
                 </p>
 
                 <div className="space-y-4 mb-6">
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                    <h4 className="font-bold text-black mb-2 flex items-center gap-2 text-sm md:text-base">
                       <FileText className="h-4 w-4 text-blue-600" />
                       Requirements
                     </h4>
@@ -409,7 +409,7 @@ export default function ApprenticeshipsPage() {
                       {program.requirements.map((req, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start gap-2 text-xs md:text-sm text-gray-600"
+                          className="flex items-start gap-2 text-xs md:text-sm text-black"
                         >
                           <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
                           <span>{req}</span>
@@ -419,7 +419,7 @@ export default function ApprenticeshipsPage() {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                    <h4 className="font-bold text-black mb-2 flex items-center gap-2 text-sm md:text-base">
                       <Award className="h-4 w-4 text-orange-600" />
                       Benefits
                     </h4>
@@ -427,7 +427,7 @@ export default function ApprenticeshipsPage() {
                       {program.benefits.map((benefit, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start gap-2 text-xs md:text-sm text-gray-600"
+                          className="flex items-start gap-2 text-xs md:text-sm text-black"
                         >
                           <CheckCircle className="h-4 w-4 text-blue-500 mt-0.5 flex-shrink-0" />
                           <span>{benefit}</span>
@@ -437,11 +437,11 @@ export default function ApprenticeshipsPage() {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                    <h4 className="font-bold text-black mb-2 flex items-center gap-2 text-sm md:text-base">
                       <MapPin className="h-4 w-4 text-purple-600" />
                       Locations
                     </h4>
-                    <p className="text-xs md:text-sm text-gray-600">
+                    <p className="text-xs md:text-sm text-black">
                       {program.locations.join(', ')}
                     </p>
                   </div>
@@ -457,7 +457,7 @@ export default function ApprenticeshipsPage() {
                   </Link>
                   <Link
                     href={`/programs/${program.slug}`}
-                    className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-gray-100 text-gray-900 font-bold rounded-lg hover:bg-gray-200 transition-colors text-sm md:text-base"
+                    className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-gray-100 text-black font-bold rounded-lg hover:bg-gray-200 transition-colors text-sm md:text-base"
                   >
                     Learn More
                   </Link>
@@ -472,10 +472,10 @@ export default function ApprenticeshipsPage() {
       <section className="py-12 md:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4">
               How Apprenticeship Works
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-black max-w-2xl mx-auto">
               A clear path from application to career success
             </p>
           </div>
@@ -519,16 +519,16 @@ export default function ApprenticeshipsPage() {
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                     <item.icon className="h-6 w-6 text-blue-600" />
                   </div>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600">
+                  <p className="text-sm md:text-base text-black">
                     {item.description}
                   </p>
                 </div>
                 {index < 3 && (
                   <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <ArrowRight className="h-6 w-6 text-gray-600" />
+                    <ArrowRight className="h-6 w-6 text-black" />
                   </div>
                 )}
               </div>
@@ -572,7 +572,7 @@ export default function ApprenticeshipsPage() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Phone className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Call Us
               </h3>
               <a
@@ -586,7 +586,7 @@ export default function ApprenticeshipsPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="h-8 w-8 text-green-600" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Email Us
               </h3>
               <a
@@ -600,10 +600,10 @@ export default function ApprenticeshipsPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="h-8 w-8 text-purple-600" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Visit Us
               </h3>
-              <p className="text-sm md:text-base text-gray-600">
+              <p className="text-sm md:text-base text-black">
                 7009 East 56th Street, Suite EE1
                 <br />
                 Indianapolis, IN 46226
@@ -621,7 +621,7 @@ export default function ApprenticeshipsPage() {
               <h3 className="text-lg md:text-xl font-bold mb-4">
                 Elevate For Humanity
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-black text-sm">
                 Empowering individuals through workforce development and
                 apprenticeship programs.
               </p>
@@ -632,7 +632,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/programs"
-                    className="text-gray-600 hover:text-white transition-colors"
+                    className="text-black hover:text-white transition-colors"
                   >
                     All Programs
                   </Link>
@@ -640,7 +640,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/apprenticeships"
-                    className="text-gray-600 hover:text-white transition-colors"
+                    className="text-black hover:text-white transition-colors"
                   >
                     Apprenticeships
                   </Link>
@@ -648,7 +648,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/apply"
-                    className="text-gray-600 hover:text-white transition-colors"
+                    className="text-black hover:text-white transition-colors"
                   >
                     Apply Now
                   </Link>
@@ -661,7 +661,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/about"
-                    className="text-gray-600 hover:text-white transition-colors"
+                    className="text-black hover:text-white transition-colors"
                   >
                     About Us
                   </Link>
@@ -669,7 +669,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/team"
-                    className="text-gray-600 hover:text-white transition-colors"
+                    className="text-black hover:text-white transition-colors"
                   >
                     Our Team
                   </Link>
@@ -677,7 +677,7 @@ export default function ApprenticeshipsPage() {
                 <li>
                   <Link
                     href="/founder"
-                    className="text-gray-600 hover:text-white transition-colors"
+                    className="text-black hover:text-white transition-colors"
                   >
                     Our Founder
                   </Link>
@@ -686,14 +686,14 @@ export default function ApprenticeshipsPage() {
             </div>
             <div>
               <h4 className="font-bold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li>(317) 314-3757</li>
                 <li className="break-all">elevate4humanityedu@gmail.com</li>
                 <li>Indianapolis, IN</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-600">
+          <div className="border-t border-gray-800 pt-8 text-center text-sm text-black">
             <p>
               &copy; {new Date().getFullYear()} Elevate For Humanity. All rights
               reserved.

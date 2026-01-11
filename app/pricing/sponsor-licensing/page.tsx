@@ -51,10 +51,10 @@ export default function SponsorLicensingPage() {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
               Choose Your Tier
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-black">
               WIOA/WRG-safe, audit-defensible, ready to deploy
             </p>
           </div>
@@ -67,20 +67,20 @@ export default function SponsorLicensingPage() {
                   <Building2 className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900">Starter</h3>
-                  <p className="text-sm text-slate-600">Local / Pilot</p>
+                  <h3 className="text-2xl font-bold text-black">Starter</h3>
+                  <p className="text-sm text-black">Local / Pilot</p>
                 </div>
               </div>
 
               <div className="mb-6">
-                <div className="text-4xl font-bold text-slate-900 mb-2">
-                  $750<span className="text-xl text-slate-600">/month</span>
+                <div className="text-4xl font-bold text-black mb-2">
+                  $750<span className="text-xl text-black">/month</span>
                 </div>
-                <div className="text-sm text-slate-600">+ $1,500 setup fee</div>
+                <div className="text-sm text-black">+ $1,500 setup fee</div>
               </div>
 
               <div className="mb-6">
-                <p className="text-sm text-slate-700 font-medium mb-4">
+                <p className="text-sm text-black font-medium mb-4">
                   Best for: Single region, small nonprofit, small workforce org
                 </p>
               </div>
@@ -88,41 +88,41 @@ export default function SponsorLicensingPage() {
               <div className="space-y-3 mb-8">
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Sponsor dashboard (referrals, employers, apprentices)
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     RAPIDS lifecycle tracking
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     WIOA/WRG compatibility
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Employer onboarding + MOU workflow
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Audit logs + exports
                   </span>
                 </div>
               </div>
 
               <div className="bg-blue-50 rounded-xl p-4 mb-6">
-                <p className="text-sm font-bold text-slate-900 mb-2">
+                <p className="text-sm font-bold text-black mb-2">
                   Includes:
                 </p>
-                <ul className="text-sm text-slate-700 space-y-1">
+                <ul className="text-sm text-black space-y-1">
                   <li>• Up to 5 employers</li>
                   <li>• Up to 25 apprentices</li>
                 </ul>
@@ -232,27 +232,27 @@ export default function SponsorLicensingPage() {
                   <Globe className="w-6 h-6 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900">
+                  <h3 className="text-2xl font-bold text-black">
                     Enterprise
                   </h3>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-black">
                     State / Tribal / National
                   </p>
                 </div>
               </div>
 
               <div className="mb-6">
-                <div className="text-4xl font-bold text-slate-900 mb-2">
+                <div className="text-4xl font-bold text-black mb-2">
                   Custom
                 </div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-black">
                   $7,500–$15,000/month
                   <br />+ $25,000–$50,000 setup
                 </div>
               </div>
 
               <div className="mb-6">
-                <p className="text-sm text-slate-700 font-medium mb-4">
+                <p className="text-sm text-black font-medium mb-4">
                   Best for: State agencies, tribal nations, national
                   intermediaries
                 </p>
@@ -261,47 +261,47 @@ export default function SponsorLicensingPage() {
               <div className="space-y-3 mb-8">
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Everything in Professional
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Multi-state rules engine
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Tenant licensing enforcement
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     SOC-style audit controls
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Monitoring response bundles
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700">
+                  <span className="text-sm text-black">
                     Dedicated onboarding + training
                   </span>
                 </div>
               </div>
 
               <div className="bg-purple-50 rounded-xl p-4 mb-6">
-                <p className="text-sm font-bold text-slate-900 mb-2">
+                <p className="text-sm font-bold text-black mb-2">
                   Includes:
                 </p>
-                <ul className="text-sm text-slate-700 space-y-1">
+                <ul className="text-sm text-black space-y-1">
                   <li>• Unlimited employers & apprentices</li>
                   <li>• Custom contract terms</li>
                 </ul>
@@ -322,10 +322,10 @@ export default function SponsorLicensingPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl font-bold text-black mb-4">
               Optional Add-Ons
             </h2>
-            <p className="text-xl text-slate-600">À la carte services</p>
+            <p className="text-xl text-black">À la carte services</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -355,11 +355,11 @@ export default function SponsorLicensingPage() {
                 key={i}
                 className="bg-slate-50 rounded-2xl p-6 border border-slate-200"
               >
-                <h3 className="font-bold text-slate-900 mb-2">{addon.title}</h3>
+                <h3 className="font-bold text-black mb-2">{addon.title}</h3>
                 <div className="text-2xl font-bold text-blue-600 mb-2">
                   {addon.price}
                 </div>
-                <p className="text-sm text-slate-600">{addon.description}</p>
+                <p className="text-sm text-black">{addon.description}</p>
               </div>
             ))}
           </div>
@@ -373,10 +373,10 @@ export default function SponsorLicensingPage() {
             <div className="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-bold mb-4">
               Allowed & Safe
             </div>
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl font-bold text-black mb-4">
               Employer Fees
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-black">
               Paid by employer — never grant funds
             </p>
           </div>
@@ -384,30 +384,30 @@ export default function SponsorLicensingPage() {
           <div className="bg-white rounded-3xl p-8 shadow-lg border-2 border-green-200">
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-slate-900 mb-2">
+                <div className="text-3xl font-bold text-black mb-2">
                   $250–$750
                 </div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-black">
                   Onboarding/admin fee
                   <br />
                   (one-time)
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-slate-900 mb-2">
+                <div className="text-3xl font-bold text-black mb-2">
                   $50–$150
                 </div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-black">
                   Per-apprentice platform fee
                   <br />
                   (monthly)
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-slate-900 mb-2">
+                <div className="text-3xl font-bold text-black mb-2">
                   Bundled
                 </div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-black">
                   Compliance/reporting
                   <br />
                   services
@@ -416,8 +416,8 @@ export default function SponsorLicensingPage() {
             </div>
 
             <div className="bg-green-50 border border-green-200 rounded-xl p-4">
-              <p className="text-sm text-slate-700">
-                <strong className="text-slate-900">Rule:</strong> Never bill
+              <p className="text-sm text-black">
+                <strong className="text-black">Rule:</strong> Never bill
                 training, wages, kits, or grant-funded costs.
               </p>
             </div>
@@ -429,10 +429,10 @@ export default function SponsorLicensingPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
               What You Get
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-black">
               State-grade workforce infrastructure
             </p>
           </div>
@@ -480,10 +480,10 @@ export default function SponsorLicensingPage() {
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
                   <feature.icon className="w-6 h-6 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-slate-600">{feature.description}</p>
+                <p className="text-black">{feature.description}</p>
               </div>
             ))}
           </div>

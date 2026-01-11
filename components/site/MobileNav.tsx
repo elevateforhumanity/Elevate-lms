@@ -74,21 +74,21 @@ export function MobileNav({
             </div>
             <Link
               onClick={onClose}
-              className="block py-2 text-slate-700 hover:text-blue-600"
+              className="block py-2 text-black hover:text-blue-600"
               href="/employers"
             >
               For Employers
             </Link>
             <Link
               onClick={onClose}
-              className="block py-2 text-slate-700 hover:text-blue-600"
+              className="block py-2 text-black hover:text-blue-600"
               href="/providers"
             >
               For Providers
             </Link>
             <Link
               onClick={onClose}
-              className="block py-2 text-slate-700 hover:text-blue-600"
+              className="block py-2 text-black hover:text-blue-600"
               href="/workforce-boards"
             >
               For Workforce Boards

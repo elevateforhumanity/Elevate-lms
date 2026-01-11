@@ -48,10 +48,10 @@ export function PhotoCTA() {
             <h2 className="text-xs font-semibold uppercase tracking-[0.25em] text-orange-600">
               Real spaces, real people
             </h2>
-            <p className="mt-3 text-3xl font-semibold tracking-tight text-slate-900">
+            <p className="mt-3 text-3xl font-semibold tracking-tight text-black">
               Show courts, case managers, and employers what Elevate feels like.
             </p>
-            <p className="mt-3 text-sm text-slate-600">
+            <p className="mt-3 text-sm text-black">
               These aren&apos;t stock photos. They&apos;re the environments,
               partners, and energy your learners actually experience — from the
               shop floor to the clinic to the classroom.
@@ -66,7 +66,7 @@ export function PhotoCTA() {
               </Link>
               <Link
                 href="/employers"
-                className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm hover:border-orange-300 hover:bg-orange-50"
+                className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-black shadow-sm hover:border-orange-300 hover:bg-orange-50"
               >
                 I&apos;m an employer / court / partner
               </Link>

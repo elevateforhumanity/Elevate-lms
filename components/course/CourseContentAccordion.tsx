@@ -26,7 +26,7 @@ export function CourseContentAccordion({
 }: CourseContentAccordionProps) {
   if (!modules.length) {
     return (
-      <div className="rounded-xl border bg-white p-4 text-sm text-slate-600">
+      <div className="rounded-xl border bg-white p-4 text-sm text-black">
         Course outline Available Now.
       </div>
     );
@@ -51,9 +51,9 @@ export function CourseContentAccordion({
               className="group py-2"
               open={module.order_index === 0 || module.order_index === 1}
             >
-              <summary className="flex cursor-pointer items-center justify-between gap-2 text-xs font-semibold text-slate-800">
+              <summary className="flex cursor-pointer items-center justify-between gap-2 text-xs font-semibold text-black">
                 <span className="flex items-center gap-2">
-                  <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-700">
+                  <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-black">
                     Module {module.order_index ?? ""}
                   </span>
                   <span>{module.title}</span>
@@ -76,7 +76,7 @@ export function CourseContentAccordion({
                         <span className="h-2 w-2 rounded-full bg-slate-300" />
                         <Link
                           href={`/lms/courses/${courseSlug}/lessons/${lesson.id}`}
-                          className="text-xs text-slate-800 hover:text-blue-600 hover:underline"
+                          className="text-xs text-black hover:text-blue-600 hover:underline"
                         >
                           {lesson.title}
                         </Link>

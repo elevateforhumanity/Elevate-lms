@@ -110,7 +110,7 @@ export default function ReportsDashboard({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="bg-white rounded-lg shadow-sm border p-6">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-sm font-medium text-gray-600">
+            <h3 className="text-sm font-medium text-black">
               Total Students
             </h3>
             <svg
@@ -127,15 +127,15 @@ export default function ReportsDashboard({
               />
             </svg>
           </div>
-          <p className="text-3xl font-bold text-gray-900">
+          <p className="text-3xl font-bold text-black">
             {stats.totalStudents}
           </p>
-          <p className="text-sm text-gray-700 mt-1">Registered users</p>
+          <p className="text-sm text-black mt-1">Registered users</p>
         </div>
 
         <div className="bg-white rounded-lg shadow-sm border p-6">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-sm font-medium text-gray-600">
+            <h3 className="text-sm font-medium text-black">
               Total Enrollments
             </h3>
             <svg
@@ -152,7 +152,7 @@ export default function ReportsDashboard({
               />
             </svg>
           </div>
-          <p className="text-3xl font-bold text-gray-900">
+          <p className="text-3xl font-bold text-black">
             {stats.totalEnrollments}
           </p>
           <p className="text-sm text-brand-green-600 mt-1">
@@ -162,7 +162,7 @@ export default function ReportsDashboard({
 
         <div className="bg-white rounded-lg shadow-sm border p-6">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-sm font-medium text-gray-600">
+            <h3 className="text-sm font-medium text-black">
               Completion Rate
             </h3>
             <svg
@@ -179,17 +179,17 @@ export default function ReportsDashboard({
               />
             </svg>
           </div>
-          <p className="text-3xl font-bold text-gray-900">
+          <p className="text-3xl font-bold text-black">
             {stats.completionRate}%
           </p>
-          <p className="text-sm text-gray-700 mt-1">
+          <p className="text-sm text-black mt-1">
             {stats.completedCourses} completed
           </p>
         </div>
 
         <div className="bg-white rounded-lg shadow-sm border p-6">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-sm font-medium text-gray-600">
+            <h3 className="text-sm font-medium text-black">
               Certificates Issued
             </h3>
             <svg
@@ -206,10 +206,10 @@ export default function ReportsDashboard({
               />
             </svg>
           </div>
-          <p className="text-3xl font-bold text-gray-900">
+          <p className="text-3xl font-bold text-black">
             {stats.totalCertificates}
           </p>
-          <p className="text-sm text-gray-700 mt-1">Total awarded</p>
+          <p className="text-sm text-black mt-1">Total awarded</p>
         </div>
       </div>
 
@@ -300,16 +300,16 @@ export default function ReportsDashboard({
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Student
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Course
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                   Date
                 </th>
               </tr>
@@ -318,10 +318,10 @@ export default function ReportsDashboard({
               {recentEnrollments.length > 0 ? (
                 recentEnrollments.slice(0, 10).map((enrollment) => (
                   <tr key={enrollment.id}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-black">
                       {enrollment.profiles?.full_name || 'Unknown'}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {enrollment.courses?.title || 'Unknown Course'}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -337,7 +337,7 @@ export default function ReportsDashboard({
                         {enrollment.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                       {new Date(enrollment.created_at).toLocaleDateString()}
                     </td>
                   </tr>
@@ -346,7 +346,7 @@ export default function ReportsDashboard({
                 <tr>
                   <td
                     colSpan={4}
-                    className="px-6 py-8 text-center text-gray-700"
+                    className="px-6 py-8 text-center text-black"
                   >
                     No recent enrollments
                   </td>
@@ -360,15 +360,15 @@ export default function ReportsDashboard({
       {/* Application Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white rounded-lg shadow-sm border p-6">
-          <h3 className="text-sm font-medium text-gray-600 mb-2">
+          <h3 className="text-sm font-medium text-black mb-2">
             Total Applications
           </h3>
-          <p className="text-3xl font-bold text-gray-900">
+          <p className="text-3xl font-bold text-black">
             {stats.totalApplications}
           </p>
         </div>
         <div className="bg-white rounded-lg shadow-sm border p-6">
-          <h3 className="text-sm font-medium text-gray-600 mb-2">
+          <h3 className="text-sm font-medium text-black mb-2">
             Pending Review
           </h3>
           <p className="text-3xl font-bold text-brand-orange-600">
@@ -376,7 +376,7 @@ export default function ReportsDashboard({
           </p>
         </div>
         <div className="bg-white rounded-lg shadow-sm border p-6">
-          <h3 className="text-sm font-medium text-gray-600 mb-2">
+          <h3 className="text-sm font-medium text-black mb-2">
             Approval Rate
           </h3>
           <p className="text-3xl font-bold text-brand-green-600">

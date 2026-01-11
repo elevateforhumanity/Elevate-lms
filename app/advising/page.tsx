@@ -56,15 +56,15 @@ export default function AdvisingPage() {
           <p className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
             Student Advising
           </p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-black">
             Talk with an advisor about your next steps.
           </h1>
-          <p className="mt-3 text-sm text-slate-700">
+          <p className="mt-3 text-sm text-black">
             Not sure where to start, what you qualify for, or which program fits
             you best? Our advising team will walk through your goals, barriers,
             and options so you don&apos;t have to figure it out alone.
           </p>
-          <p className="mt-4 text-sm text-slate-900">
+          <p className="mt-4 text-sm text-black">
             <strong>Prefer to call?</strong> Reach us at{' '}
             <a
               href="tel:3173143757"
@@ -92,14 +92,14 @@ export default function AdvisingPage() {
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">
+            <h2 className="text-2xl font-bold text-black mb-2">
               Request Submitted!
             </h2>
-            <p className="text-slate-700 mb-4">
+            <p className="text-black mb-4">
               Thank you for your interest. An advisor will contact you within
               1-2 business days.
             </p>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-black">
               Need immediate assistance? Call us at{' '}
               <a
                 href="tel:3173143757"
@@ -111,10 +111,10 @@ export default function AdvisingPage() {
           </section>
         ) : (
           <section className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
-            <h2 className="text-sm font-semibold text-slate-900">
+            <h2 className="text-sm font-semibold text-black">
               Schedule a call or visit
             </h2>
-            <p className="mt-2 text-xs text-slate-700">
+            <p className="mt-2 text-xs text-black">
               Complete this form and a member of our team will reach out to you
               within a reasonable timeframe to schedule a phone call, video
               meeting, or in-person appointment where available.
@@ -122,13 +122,13 @@ export default function AdvisingPage() {
 
             <form
               onSubmit={handleSubmit}
-              className="mt-5 space-y-5 text-sm text-slate-800"
+              className="mt-5 space-y-5 text-sm text-black"
             >
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-xs font-semibold text-slate-900"
+                    className="block text-xs font-semibold text-black"
                   >
                     Full Name
                   </label>
@@ -142,7 +142,7 @@ export default function AdvisingPage() {
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-xs font-semibold text-slate-900"
+                    className="block text-xs font-semibold text-black"
                   >
                     Phone Number
                   </label>
@@ -158,7 +158,7 @@ export default function AdvisingPage() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-xs font-semibold text-slate-900"
+                  className="block text-xs font-semibold text-black"
                 >
                   Email (optional)
                 </label>
@@ -173,7 +173,7 @@ export default function AdvisingPage() {
               <div>
                 <label
                   htmlFor="programInterest"
-                  className="block text-xs font-semibold text-slate-900"
+                  className="block text-xs font-semibold text-black"
                 >
                   Program or pathway you&apos;re interested in
                 </label>
@@ -200,10 +200,10 @@ export default function AdvisingPage() {
               </div>
 
               <div>
-                <span className="block text-xs font-semibold text-slate-900">
+                <span className="block text-xs font-semibold text-black">
                   How would you like us to contact you?
                 </span>
-                <div className="mt-2 flex flex-wrap gap-4 text-xs text-slate-700">
+                <div className="mt-2 flex flex-wrap gap-4 text-xs text-black">
                   <label className="inline-flex items-center gap-2">
                     <input
                       type="checkbox"
@@ -237,7 +237,7 @@ export default function AdvisingPage() {
               <div>
                 <label
                   htmlFor="questions"
-                  className="block text-xs font-semibold text-slate-900"
+                  className="block text-xs font-semibold text-black"
                 >
                   What would you like to talk about?
                 </label>

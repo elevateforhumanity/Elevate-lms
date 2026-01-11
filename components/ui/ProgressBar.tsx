@@ -8,8 +8,8 @@ export function ProgressBar({ progress }: ProgressBarProps) {
 
   return (
     <div className="w-full">
-      <div className="mb-1 flex items-center justify-between text-[11px] text-slate-600">
-        <span className="font-medium text-slate-800">Progress</span>
+      <div className="mb-1 flex items-center justify-between text-[11px] text-black">
+        <span className="font-medium text-black">Progress</span>
         <span>{clamped}%</span>
       </div>
       <div className="h-2.5 w-full rounded-full bg-slate-200">

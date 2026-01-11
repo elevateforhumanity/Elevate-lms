@@ -73,7 +73,7 @@ export default function BookAppointmentPage() {
         <Link
           href="/tax"
           aria-label="Link"
-          className="text-sm text-gray-600 hover:text-gray-900"
+          className="text-sm text-black hover:text-black"
         >
           ← Back to Tax Services
         </Link>
@@ -83,7 +83,7 @@ export default function BookAppointmentPage() {
         {/* Booking Form */}
         <div className="lg:col-span-2">
           <h1 className="text-4xl font-bold mb-3">Book Your Appointment</h1>
-          <p className="text-lg text-gray-600 mb-8">
+          <p className="text-lg text-black mb-8">
             Schedule your tax preparation appointment - in-person or virtual.
           </p>
 
@@ -92,14 +92,14 @@ export default function BookAppointmentPage() {
               <div className="w-16 h-16 rounded-full bg-brand-green-100 flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 text-brand-green-600" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              <h2 className="text-2xl font-bold text-black mb-2">
                 Appointment Request Received!
               </h2>
-              <p className="text-gray-600 mb-4">
+              <p className="text-black mb-4">
                 We'll contact you within 24 hours to confirm your appointment
                 time.
               </p>
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-black">
                 Check your email for confirmation details.
               </p>
             </div>
@@ -110,7 +110,7 @@ export default function BookAppointmentPage() {
             >
               {/* Service Selection */}
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Which service do you need? *
                 </label>
                 <select
@@ -145,7 +145,7 @@ export default function BookAppointmentPage() {
 
               {/* Appointment Type */}
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-3">
+                <label className="block text-sm font-semibold text-black mb-3">
                   Appointment Type *
                 </label>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -164,7 +164,7 @@ export default function BookAppointmentPage() {
                       <MapPin className="w-5 h-5 text-brand-blue-600" />
                       <span className="font-semibold">In-Person</span>
                     </div>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-black">
                       Visit our office at 7009 E 56th St, Indianapolis
                     </p>
                   </button>
@@ -184,7 +184,7 @@ export default function BookAppointmentPage() {
                       <Video className="w-5 h-5 text-brand-blue-600" />
                       <span className="font-semibold">Virtual</span>
                     </div>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-black">
                       Meet via Zoom video call from anywhere
                     </p>
                   </button>
@@ -194,7 +194,7 @@ export default function BookAppointmentPage() {
               {/* Contact Information */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Full Name *
                   </label>
                   <input
@@ -210,7 +210,7 @@ export default function BookAppointmentPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Phone Number *
                   </label>
                   <input
@@ -227,7 +227,7 @@ export default function BookAppointmentPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Email Address *
                 </label>
                 <input
@@ -245,7 +245,7 @@ export default function BookAppointmentPage() {
               {/* Date & Time */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Preferred Date *
                   </label>
                   <input
@@ -264,7 +264,7 @@ export default function BookAppointmentPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Preferred Time *
                   </label>
                   <select
@@ -293,7 +293,7 @@ export default function BookAppointmentPage() {
 
               {/* Additional Notes */}
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Additional Notes (Optional)
                 </label>
                 <textarea
@@ -324,7 +324,7 @@ export default function BookAppointmentPage() {
                 {status === 'loading' ? 'Submitting...' : 'Request Appointment'}
               </button>
 
-              <p className="text-xs text-gray-700 text-center">
+              <p className="text-xs text-black text-center">
                 By submitting, you agree to be contacted about your appointment.
                 We'll confirm your appointment within 24 hours.
               </p>
@@ -366,7 +366,7 @@ export default function BookAppointmentPage() {
                 <MapPin className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="font-semibold text-sm">Address</div>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-black">
                     7009 East 56th Street, Suite EE1
                     <br />
                     Indianapolis, IN 46226
@@ -381,19 +381,19 @@ export default function BookAppointmentPage() {
             <h2 className="font-bold text-lg mb-4">Office Hours</h2>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-600">Monday - Friday:</span>
+                <span className="text-black">Monday - Friday:</span>
                 <span className="font-semibold">9:00 AM - 5:00 PM</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Saturday:</span>
+                <span className="text-black">Saturday:</span>
                 <span className="font-semibold">10:00 AM - 2:00 PM</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Sunday:</span>
+                <span className="text-black">Sunday:</span>
                 <span className="font-semibold">Closed</span>
               </div>
             </div>
-            <p className="text-xs text-gray-700 mt-4">
+            <p className="text-xs text-black mt-4">
               Extended hours available during tax season (Jan - Apr)
             </p>
           </div>
@@ -404,11 +404,11 @@ export default function BookAppointmentPage() {
               <Video className="w-5 h-5 text-brand-blue-600" />
               <h2 className="font-bold text-lg">Virtual Appointments</h2>
             </div>
-            <p className="text-sm text-gray-700 mb-3">
+            <p className="text-sm text-black mb-3">
               Can't make it to our office? No problem! We offer secure video
               appointments via Zoom.
             </p>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className="space-y-2 text-sm text-black">
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-4 h-4 text-brand-blue-600 flex-shrink-0 mt-0.5" />
                 <span>Same service as in-person</span>
@@ -427,7 +427,7 @@ export default function BookAppointmentPage() {
           {/* What to Bring */}
           <div className="rounded-2xl border bg-white p-6">
             <h2 className="font-bold text-lg mb-4">What to Bring</h2>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <ul className="space-y-2 text-sm text-black">
               <li>• Photo ID</li>
               <li>• Social Security cards</li>
               <li>• W-2s and 1099s</li>

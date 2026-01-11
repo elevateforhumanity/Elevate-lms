@@ -59,7 +59,7 @@ export function EligibilityChecker() {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
-        <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">
+        <h3 className="text-2xl font-bold text-black mb-6 text-center">
           Check Your Eligibility
         </h3>
 
@@ -71,7 +71,7 @@ export function EligibilityChecker() {
             >
               <label
                 htmlFor={question.id}
-                className="text-slate-900 font-medium flex-1"
+                className="text-black font-medium flex-1"
               >
                 {question.text}
                 {question.required && (
@@ -85,7 +85,7 @@ export function EligibilityChecker() {
                   className={`px-6 py-2 rounded-lg font-semibold transition ${
                     answers[question.id] === true
                       ? 'bg-green-600 text-white'
-                      : 'bg-white text-slate-600 border border-slate-300 hover:border-green-600'
+                      : 'bg-white text-black border border-slate-300 hover:border-green-600'
                   }`}
                 >
                   Yes
@@ -96,7 +96,7 @@ export function EligibilityChecker() {
                   className={`px-6 py-2 rounded-lg font-semibold transition ${
                     answers[question.id] === false
                       ? 'bg-red-600 text-white'
-                      : 'bg-white text-slate-600 border border-slate-300 hover:border-red-600'
+                      : 'bg-white text-black border border-slate-300 hover:border-red-600'
                   }`}
                 >
                   No

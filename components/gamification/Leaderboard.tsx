@@ -89,7 +89,7 @@ export function Leaderboard() {
             {/* User Info */}
             <div className="flex-1 min-w-0">
               <p
-                className={`font-semibold text-sm ${user.isCurrentUser ? 'text-blue-900' : 'text-gray-900'}`}
+                className={`font-semibold text-sm ${user.isCurrentUser ? 'text-blue-900' : 'text-black'}`}
               >
                 {user.name}
               </p>
@@ -110,7 +110,7 @@ export function Leaderboard() {
       </div>
       <div className="mt-6 pt-6 border-t border-gray-200">
         <div className="flex items-center justify-between text-sm">
-          <span className="text-gray-600">Your Progress</span>
+          <span className="text-black">Your Progress</span>
           <div className="flex items-center gap-2 text-green-600 font-semibold">
             <TrendingUp className="h-4 w-4" />
             +230 pts this week

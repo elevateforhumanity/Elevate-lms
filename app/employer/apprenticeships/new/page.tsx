@@ -32,16 +32,16 @@ export default async function NewPlacementPage() {
     <div className="min-h-screen bg-slate-50 py-12">
       <div className="max-w-2xl mx-auto px-4">
         <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Create Apprentice Placement
           </h1>
-          <p className="text-slate-600 mb-8">
+          <p className="text-black mb-8">
             Add a new apprentice to your shop
           </p>
 
           <form action={createPlacement} className="space-y-6">
             <div>
-              <label htmlFor="shop_id" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="shop_id" className="block text-sm font-semibold text-black mb-2">
                 Shop *
               </label>
               <select
@@ -60,7 +60,7 @@ export default async function NewPlacementPage() {
             </div>
 
             <div>
-              <label htmlFor="student_email" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="student_email" className="block text-sm font-semibold text-black mb-2">
                 Student Email *
               </label>
               <input
@@ -77,7 +77,7 @@ export default async function NewPlacementPage() {
             </div>
 
             <div>
-              <label htmlFor="program_slug" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="program_slug" className="block text-sm font-semibold text-black mb-2">
                 Program *
               </label>
               <select
@@ -95,7 +95,7 @@ export default async function NewPlacementPage() {
             </div>
 
             <div>
-              <label htmlFor="start_date" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="start_date" className="block text-sm font-semibold text-black mb-2">
                 Start Date *
               </label>
               <input
@@ -108,7 +108,7 @@ export default async function NewPlacementPage() {
             </div>
 
             <div>
-              <label htmlFor="end_date" className="block text-sm font-semibold text-slate-900 mb-2">
+              <label htmlFor="end_date" className="block text-sm font-semibold text-black mb-2">
                 Expected End Date
               </label>
               <input
@@ -122,7 +122,7 @@ export default async function NewPlacementPage() {
             <div className="pt-4 flex gap-4">
               <a
                 href="/employer/dashboard"
-                className="flex-1 px-6 py-3 border border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 transition text-center"
+                className="flex-1 px-6 py-3 border border-slate-300 text-black font-semibold rounded-lg hover:bg-slate-50 transition text-center"
               >
                 Cancel
               </a>

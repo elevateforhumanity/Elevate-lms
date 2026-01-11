@@ -88,7 +88,7 @@ export function ShoppingCart() {
                 <div className="text-center py-12">
                   <CartIcon className="mx-auto text-gray-400 mb-4" size={64} />
                   <h3 className="text-xl font-semibold mb-2">Your cart is empty</h3>
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-black mb-6">
                     Browse our courses and add them to your cart
                   </p>
                   <Link href="/programs">
@@ -163,7 +163,7 @@ export function ShoppingCart() {
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Subtotal</span>
+                  <span className="text-black">Subtotal</span>
                   <span className="font-semibold">
                     ${(subtotal / 100).toFixed(2)}
                   </span>
@@ -189,7 +189,7 @@ export function ShoppingCart() {
               {/* Promo Code */}
               <div className="pt-4 border-t">
                 <div className="flex items-center gap-2 mb-2">
-                  <Tag size={16} className="text-gray-600" />
+                  <Tag size={16} className="text-black" />
                   <span className="text-sm font-semibold">Promo Code</span>
                 </div>
                 <div className="flex gap-2">
@@ -222,7 +222,7 @@ export function ShoppingCart() {
                 Proceed to Checkout
               </Button>
 
-              <div className="text-center text-sm text-gray-600">
+              <div className="text-center text-sm text-black">
                 <p>30-day money-back guarantee</p>
                 <p>Secure checkout with SSL encryption</p>
               </div>

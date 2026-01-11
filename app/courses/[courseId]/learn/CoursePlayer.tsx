@@ -97,16 +97,16 @@ export default function CoursePlayer({
                 </svg>
               </button>
               <div>
-                <h1 className="text-xl font-bold text-slate-900">
+                <h1 className="text-xl font-bold text-black">
                   {courseTitle}
                 </h1>
-                <p className="text-sm text-slate-600">
+                <p className="text-sm text-black">
                   Lesson {currentIndex + 1} of {lessons.length}
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="text-sm text-slate-600">
+              <div className="text-sm text-black">
                 {progressPercentage}% Complete
               </div>
               <div className="w-32 h-2 bg-slate-200 rounded-full overflow-hidden">
@@ -130,7 +130,7 @@ export default function CoursePlayer({
             />
           ) : (
             <div className="flex items-center justify-center h-full">
-              <p className="text-slate-600">No lesson selected</p>
+              <p className="text-black">No lesson selected</p>
             </div>
           )}
         </div>

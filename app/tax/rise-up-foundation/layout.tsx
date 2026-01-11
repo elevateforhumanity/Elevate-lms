@@ -48,13 +48,13 @@ function VITAFooter() {
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <h3 className="font-bold text-lg mb-4">Rise Up Foundation</h3>
-            <p className="text-gray-600 text-sm">
+            <p className="text-black text-sm">
               Free tax preparation services through the IRS VITA program.
             </p>
           </div>
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 text-sm text-black">
               <li><Link href="/tax/rise-up-foundation/free-tax-help" className="hover:text-white">Free Tax Help</Link></li>
               <li><Link href="/tax/rise-up-foundation/volunteer" className="hover:text-white">Volunteer</Link></li>
               <li><Link href="/tax/rise-up-foundation/training" className="hover:text-white">Training</Link></li>
@@ -63,7 +63,7 @@ function VITAFooter() {
           </div>
           <div>
             <h4 className="font-semibold mb-4">Resources</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 text-sm text-black">
               <li><Link href="/tax/rise-up-foundation/faq" className="hover:text-white">FAQ</Link></li>
               <li><Link href="/tax/rise-up-foundation/documents" className="hover:text-white">Documents Needed</Link></li>
               <li><a href="https://www.irs.gov/individuals/free-tax-return-preparation-for-qualifying-taxpayers" target="_blank" rel="noopener noreferrer" className="hover:text-white">IRS VITA Info</a></li>
@@ -71,7 +71,7 @@ function VITAFooter() {
           </div>
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
-            <ul className="space-y-3 text-sm text-gray-600">
+            <ul className="space-y-3 text-sm text-black">
               <li className="flex items-start gap-2">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <a href="tel:3173143757" className="hover:text-white">(317) 314-3757</a>
@@ -87,7 +87,7 @@ function VITAFooter() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-600">
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-black">
           <p>&copy; {new Date().getFullYear()} Rise Up Foundation. Part of Elevate for Humanity. All rights reserved.</p>
         </div>
       </div>

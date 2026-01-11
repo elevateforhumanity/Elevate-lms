@@ -16,10 +16,10 @@ export default function DonationsPage() {
       <section className="py-20 px-4 bg-gradient-to-br from-purple-50 to-white text-center">
         <div className="max-w-4xl mx-auto">
           <Heart className="w-16 h-16 text-purple-600 mx-auto mb-6" />
-          <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
+          <h1 className="text-5xl md:text-6xl font-black text-black mb-6">
             Support Our Mission
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-black mb-8">
             Your donation helps us provide mental wellness and holistic healing
             services to those in need
           </p>
@@ -35,7 +35,7 @@ export default function DonationsPage() {
 
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-black mb-12">
             Your Impact
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -43,22 +43,22 @@ export default function DonationsPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <DollarSign className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">$50</h3>
-              <p className="text-gray-600">Provides one counseling session</p>
+              <h3 className="text-xl font-bold text-black mb-2">$50</h3>
+              <p className="text-black">Provides one counseling session</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">$100</h3>
-              <p className="text-gray-600">Sponsors a workshop for 5 people</p>
+              <h3 className="text-xl font-bold text-black mb-2">$100</h3>
+              <p className="text-black">Sponsors a workshop for 5 people</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">$500</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl font-bold text-black mb-2">$500</h3>
+              <p className="text-black">
                 Funds a full program for one person
               </p>
             </div>

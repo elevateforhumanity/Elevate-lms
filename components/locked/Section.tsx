@@ -40,7 +40,7 @@ export function Section({
  */
 export function SectionTitle({ children }: { children: ReactNode }) {
   return (
-    <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+    <h2 className="text-3xl font-bold text-black mb-8 text-center">
       {children}
     </h2>
   );
@@ -53,7 +53,7 @@ export function SectionTitle({ children }: { children: ReactNode }) {
  */
 export function SectionDescription({ children }: { children: ReactNode }) {
   return (
-    <p className="text-base text-slate-600 mb-12 text-center max-w-2xl mx-auto">
+    <p className="text-base text-black mb-12 text-center max-w-2xl mx-auto">
       {children}
     </p>
   );

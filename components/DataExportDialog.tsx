@@ -88,7 +88,7 @@ export default function DataExportDialog({
               <Download className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-black">
                 Export Data
               </h3>
               <p className="text-sm text-gray-500">
@@ -98,7 +98,7 @@ export default function DataExportDialog({
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-gray-400 hover:text-black transition-colors"
             disabled={isExporting}
           >
             <X className="w-5 h-5" />
@@ -109,7 +109,7 @@ export default function DataExportDialog({
         <div className="p-6 space-y-6">
           {/* Format Selection */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
+            <label className="block text-sm font-medium text-black mb-3">
               Export Format
             </label>
             <div className="grid grid-cols-2 gap-3">
@@ -127,7 +127,7 @@ export default function DataExportDialog({
                 }`} />
                 <div className="text-left">
                   <div className={`font-medium ${
-                    format === 'csv' ? 'text-blue-900' : 'text-gray-900'
+                    format === 'csv' ? 'text-blue-900' : 'text-black'
                   }`}>
                     CSV
                   </div>
@@ -151,7 +151,7 @@ export default function DataExportDialog({
                 }`} />
                 <div className="text-left">
                   <div className={`font-medium ${
-                    format === 'pdf' ? 'text-blue-900' : 'text-gray-900'
+                    format === 'pdf' ? 'text-blue-900' : 'text-black'
                   }`}>
                     PDF
                   </div>
@@ -185,12 +185,12 @@ export default function DataExportDialog({
           {/* Active Filters */}
           {Object.keys(filters).length > 0 && (
             <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="text-sm font-medium text-gray-900 mb-2">
+              <h4 className="text-sm font-medium text-black mb-2">
                 Active Filters
               </h4>
               <div className="space-y-1">
                 {Object.entries(filters).map(([key, value]) => (
-                  <div key={key} className="text-sm text-gray-600">
+                  <div key={key} className="text-sm text-black">
                     <span className="font-medium">{key}:</span> {String(value)}
                   </div>
                 ))}
@@ -204,7 +204,7 @@ export default function DataExportDialog({
           <button
             onClick={onClose}
             disabled={isExporting}
-            className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-4 py-2 text-black bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Cancel
           </button>
@@ -322,7 +322,7 @@ export function BatchExportDialog({ isOpen, onClose }: BatchExportDialogProps) {
               <Download className="w-5 h-5 text-purple-600" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-black">
                 Batch Export
               </h3>
               <p className="text-sm text-gray-500">
@@ -332,7 +332,7 @@ export function BatchExportDialog({ isOpen, onClose }: BatchExportDialogProps) {
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-gray-400 hover:text-black transition-colors"
             disabled={isExporting}
           >
             <X className="w-5 h-5" />
@@ -343,7 +343,7 @@ export function BatchExportDialog({ isOpen, onClose }: BatchExportDialogProps) {
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Table Selection */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
+            <label className="block text-sm font-medium text-black mb-3">
               Select Tables
             </label>
             <div className="space-y-2">
@@ -360,7 +360,7 @@ export function BatchExportDialog({ isOpen, onClose }: BatchExportDialogProps) {
                     className="mt-1 w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
                   />
                   <div className="flex-1">
-                    <div className="font-medium text-gray-900">{table.label}</div>
+                    <div className="font-medium text-black">{table.label}</div>
                     <div className="text-sm text-gray-500">{table.description}</div>
                   </div>
                 </label>
@@ -370,7 +370,7 @@ export function BatchExportDialog({ isOpen, onClose }: BatchExportDialogProps) {
 
           {/* Format Selection */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
+            <label className="block text-sm font-medium text-black mb-3">
               Export Format
             </label>
             <div className="grid grid-cols-3 gap-3">
@@ -382,7 +382,7 @@ export function BatchExportDialog({ isOpen, onClose }: BatchExportDialogProps) {
                   className={`p-3 border-2 rounded-lg transition-all ${
                     format === fmt
                       ? 'border-purple-600 bg-purple-50 text-purple-900'
-                      : 'border-gray-200 hover:border-gray-300 text-gray-700'
+                      : 'border-gray-200 hover:border-gray-300 text-black'
                   } ${isExporting ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   {fmt.toUpperCase()}
@@ -394,14 +394,14 @@ export function BatchExportDialog({ isOpen, onClose }: BatchExportDialogProps) {
 
         {/* Footer */}
         <div className="flex items-center justify-between p-6 border-t bg-gray-50">
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-black">
             {selectedTables.length} table{selectedTables.length !== 1 ? 's' : ''} selected
           </div>
           <div className="flex gap-3">
             <button
               onClick={onClose}
               disabled={isExporting}
-              className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
+              className="px-4 py-2 text-black bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
             >
               Cancel
             </button>

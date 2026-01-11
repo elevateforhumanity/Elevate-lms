@@ -52,7 +52,7 @@ export default function IndependentLicensePage() {
           </div>
           <Link
             href="/contact?license=independent"
-            className="inline-block bg-white text-slate-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition"
+            className="inline-block bg-white text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition"
           >
             Get Started →
           </Link>
@@ -63,10 +63,10 @@ export default function IndependentLicensePage() {
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               What's Included
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-black">
               Complete platform. No credentials. You handle compliance.
             </p>
           </div>
@@ -76,10 +76,10 @@ export default function IndependentLicensePage() {
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                 <Building2 className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-3">
+              <h3 className="text-lg font-bold text-black mb-3">
                 White-Label Platform
               </h3>
-              <ul className="space-y-2 text-sm text-slate-700">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Your branding, colors, logo</span>
@@ -99,10 +99,10 @@ export default function IndependentLicensePage() {
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-3">
+              <h3 className="text-lg font-bold text-black mb-3">
                 Complete LMS
               </h3>
-              <ul className="space-y-2 text-sm text-slate-700">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>Course creation & management</span>
@@ -122,10 +122,10 @@ export default function IndependentLicensePage() {
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-3">
+              <h3 className="text-lg font-bold text-black mb-3">
                 Mobile App
               </h3>
-              <ul className="space-y-2 text-sm text-slate-700">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
                   <span>iOS & Android apps</span>
@@ -148,22 +148,22 @@ export default function IndependentLicensePage() {
       <section className="py-16 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl font-bold text-black mb-4">
               Simple Pricing
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-black">
               Based on student volume. No hidden fees.
             </p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
             <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="text-sm font-bold text-slate-600 mb-2">SMALL</div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">
+              <div className="text-sm font-bold text-black mb-2">SMALL</div>
+              <div className="text-3xl font-bold text-black mb-1">
                 $2,000
               </div>
-              <div className="text-sm text-slate-600 mb-4">/month</div>
-              <div className="text-sm text-slate-700 mb-4">
+              <div className="text-sm text-black mb-4">/month</div>
+              <div className="text-sm text-black mb-4">
                 Up to 500 students
               </div>
               <div className="text-xs text-slate-500">Setup: $5,000</div>
@@ -171,37 +171,37 @@ export default function IndependentLicensePage() {
 
             <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-blue-500">
               <div className="text-sm font-bold text-blue-600 mb-2">MEDIUM</div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">
+              <div className="text-3xl font-bold text-black mb-1">
                 $4,000
               </div>
-              <div className="text-sm text-slate-600 mb-4">/month</div>
-              <div className="text-sm text-slate-700 mb-4">
+              <div className="text-sm text-black mb-4">/month</div>
+              <div className="text-sm text-black mb-4">
                 Up to 2,500 students
               </div>
               <div className="text-xs text-slate-500">Setup: $10,000</div>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="text-sm font-bold text-slate-600 mb-2">LARGE</div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">
+              <div className="text-sm font-bold text-black mb-2">LARGE</div>
+              <div className="text-3xl font-bold text-black mb-1">
                 $8,000
               </div>
-              <div className="text-sm text-slate-600 mb-4">/month</div>
-              <div className="text-sm text-slate-700 mb-4">
+              <div className="text-sm text-black mb-4">/month</div>
+              <div className="text-sm text-black mb-4">
                 Up to 10,000 students
               </div>
               <div className="text-xs text-slate-500">Setup: $20,000</div>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="text-sm font-bold text-slate-600 mb-2">
+              <div className="text-sm font-bold text-black mb-2">
                 ENTERPRISE
               </div>
-              <div className="text-3xl font-bold text-slate-900 mb-1">
+              <div className="text-3xl font-bold text-black mb-1">
                 $15,000
               </div>
-              <div className="text-sm text-slate-600 mb-4">/month</div>
-              <div className="text-sm text-slate-700 mb-4">
+              <div className="text-sm text-black mb-4">/month</div>
+              <div className="text-sm text-black mb-4">
                 Unlimited students
               </div>
               <div className="text-xs text-slate-500">Setup: $25,000</div>
@@ -214,7 +214,7 @@ export default function IndependentLicensePage() {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Best For</h2>
+            <h2 className="text-3xl font-bold text-black mb-4">Best For</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -263,7 +263,7 @@ export default function IndependentLicensePage() {
           </p>
           <Link
             href="/contact?license=independent"
-            className="inline-block bg-white text-slate-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition"
+            className="inline-block bg-white text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition"
           >
             Contact Sales →
           </Link>

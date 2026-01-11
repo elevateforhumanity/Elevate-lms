@@ -77,8 +77,8 @@ export function DocumentReviewForm({ document, adminId }: Props) {
           <div className="flex items-start gap-3">
             <FileText className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">File Name</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">File Name</p>
+              <p className="font-semibold text-black">
                 {document.file_name}
               </p>
             </div>
@@ -86,8 +86,8 @@ export function DocumentReviewForm({ document, adminId }: Props) {
           <div className="flex items-start gap-3">
             <FileText className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">Document Type</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">Document Type</p>
+              <p className="font-semibold text-black">
                 {document.document_type
                   .replace(/_/g, ' ')
                   .replace(/\b\w/g, (l: string) => l.toUpperCase())}
@@ -97,11 +97,11 @@ export function DocumentReviewForm({ document, adminId }: Props) {
           <div className="flex items-start gap-3">
             <User className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">Uploaded By</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">Uploaded By</p>
+              <p className="font-semibold text-black">
                 {document.profiles?.full_name || 'Unknown User'}
               </p>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-black">
                 {document.profiles?.email} • {document.profiles?.role}
               </p>
             </div>
@@ -109,8 +109,8 @@ export function DocumentReviewForm({ document, adminId }: Props) {
           <div className="flex items-start gap-3">
             <Calendar className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">Upload Date</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">Upload Date</p>
+              <p className="font-semibold text-black">
                 {new Date(document.created_at).toLocaleString()}
               </p>
             </div>
@@ -118,8 +118,8 @@ export function DocumentReviewForm({ document, adminId }: Props) {
           <div className="flex items-start gap-3">
             <FileText className="w-5 h-5 text-slate-400 mt-0.5" />
             <div>
-              <p className="text-sm text-slate-600">File Size</p>
-              <p className="font-semibold text-slate-900">
+              <p className="text-sm text-black">File Size</p>
+              <p className="font-semibold text-black">
                 {(document.file_size / 1024 / 1024).toFixed(2)} MB
               </p>
             </div>
@@ -184,12 +184,12 @@ export function DocumentReviewForm({ document, adminId }: Props) {
               />
               <div className="text-left">
                 <p
-                  className={`font-bold ${action === 'approve' ? 'text-green-900' : 'text-slate-900'}`}
+                  className={`font-bold ${action === 'approve' ? 'text-green-900' : 'text-black'}`}
                 >
                   Approve Document
                 </p>
                 <p
-                  className={`text-sm ${action === 'approve' ? 'text-green-700' : 'text-slate-600'}`}
+                  className={`text-sm ${action === 'approve' ? 'text-green-700' : 'text-black'}`}
                 >
                   Document meets requirements and is approved
                 </p>
@@ -210,12 +210,12 @@ export function DocumentReviewForm({ document, adminId }: Props) {
               />
               <div className="text-left">
                 <p
-                  className={`font-bold ${action === 'reject' ? 'text-red-900' : 'text-slate-900'}`}
+                  className={`font-bold ${action === 'reject' ? 'text-red-900' : 'text-black'}`}
                 >
                   Reject Document
                 </p>
                 <p
-                  className={`text-sm ${action === 'reject' ? 'text-red-700' : 'text-slate-600'}`}
+                  className={`text-sm ${action === 'reject' ? 'text-red-700' : 'text-black'}`}
                 >
                   Document does not meet requirements
                 </p>
@@ -243,7 +243,7 @@ export function DocumentReviewForm({ document, adminId }: Props) {
             <button
               type="button"
               onClick={() => router.back()}
-              className="px-8 py-3 border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 transition"
+              className="px-8 py-3 border-2 border-slate-300 text-black font-semibold rounded-lg hover:bg-slate-50 transition"
             >
               Cancel
             </button>

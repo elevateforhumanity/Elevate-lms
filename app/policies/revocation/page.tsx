@@ -9,7 +9,7 @@ export default function RevocationPage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Credential Revocation Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Grounds for Revocation</h2>
       <ul><li>Fraud or misrepresentation</li><li>Academic dishonesty discovered post-graduation</li><li>Violation of professional standards</li></ul>
       <h2>Process</h2>

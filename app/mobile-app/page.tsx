@@ -60,7 +60,7 @@ export default async function MobileAppPage() {
       {/* Features Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-black">
             Everything You Need, Anywhere
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -68,10 +68,10 @@ export default async function MobileAppPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
                 <Smartphone className="w-8 h-8 text-brand-blue-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Works Like a Native App
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Full-screen experience with smooth navigation and native-like
                 performance.
               </p>
@@ -81,10 +81,10 @@ export default async function MobileAppPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-green-100 rounded-full mb-4">
                 <Wifi className="w-8 h-8 text-brand-green-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Works Offline
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Access your programs and progress even without an internet
                 connection.
               </p>
@@ -94,10 +94,10 @@ export default async function MobileAppPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
                 <Bell className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Push Notifications
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Stay updated with program reminders, new opportunities, and
                 important announcements.
               </p>
@@ -107,10 +107,10 @@ export default async function MobileAppPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-4">
                 <Zap className="w-8 h-8 text-brand-orange-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Lightning Fast
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Optimized for speed with instant loading and smooth transitions.
               </p>
             </div>
@@ -119,10 +119,10 @@ export default async function MobileAppPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
                 <Download className="w-8 h-8 text-brand-orange-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 No App Store Required
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Install directly from your browser. Updates happen
                 automatically.
               </p>
@@ -132,10 +132,10 @@ export default async function MobileAppPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
                 <Lock className="w-8 h-8 text-indigo-600" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Secure & Private
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Your data is encrypted and stored securely on your device.
               </p>
             </div>
@@ -146,19 +146,19 @@ export default async function MobileAppPage() {
       {/* Installation Instructions */}
       <section id="install" className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-black">
             How to Install
           </h2>
 
           {/* iOS Instructions */}
           <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-            <h3 className="text-lg md:text-lg font-bold mb-6 text-gray-900 flex items-center">
+            <h3 className="text-lg md:text-lg font-bold mb-6 text-black flex items-center">
               <span className="text-3xl mr-3">
                 <Smartphone className="w-5 h-5 inline-block" />
               </span>
               iPhone & iPad (Safari)
             </h3>
-            <ol className="space-y-4 text-gray-700">
+            <ol className="space-y-4 text-black">
               <li className="flex">
                 <span className="font-bold text-brand-blue-600 mr-3">1.</span>
                 <span>
@@ -195,11 +195,11 @@ export default async function MobileAppPage() {
 
           {/* Android Instructions */}
           <div className="bg-white rounded-lg shadow-md p-8">
-            <h3 className="text-lg md:text-lg font-bold mb-6 text-gray-900 flex items-center">
+            <h3 className="text-lg md:text-lg font-bold mb-6 text-black flex items-center">
               <span className="text-3xl mr-3">🤖</span>
               Android (Chrome)
             </h3>
-            <ol className="space-y-4 text-gray-700">
+            <ol className="space-y-4 text-black">
               <li className="flex">
                 <span className="font-bold text-brand-green-600 mr-3">1.</span>
                 <span>

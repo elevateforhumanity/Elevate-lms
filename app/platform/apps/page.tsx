@@ -51,10 +51,10 @@ export default function PlatformAppsPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl md:text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+            <h2 className="text-2xl md:text-3xl md:text-2xl md:text-3xl font-bold mb-4 text-black">
               How Platform Apps Work
             </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-black max-w-3xl mx-auto">
               Apps are not separate products. They're modules built into the
               platform that you enable based on your license.
             </p>
@@ -63,10 +63,10 @@ export default function PlatformAppsPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6">
               <div className="text-5xl mb-4">🧩</div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Modular by Design
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Each app is a self-contained module with its own UI, database
                 tables, and permissions.
               </p>
@@ -74,10 +74,10 @@ export default function PlatformAppsPage() {
 
             <div className="text-center p-6">
               <div className="text-5xl mb-4">🔐</div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 License-Controlled
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Your license determines which apps you can enable. Upgrade
                 anytime to unlock more.
               </p>
@@ -87,10 +87,10 @@ export default function PlatformAppsPage() {
               <div className="text-5xl mb-4">
                 <Zap className="w-5 h-5 inline-block" />
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-gray-900">
+              <h3 className="text-lg font-semibold mb-3 text-black">
                 Enable Instantly
               </h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Toggle apps on/off from your dashboard. No reinstallation or
                 migration required.
               </p>
@@ -103,10 +103,10 @@ export default function PlatformAppsPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl md:text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+            <h2 className="text-2xl md:text-3xl md:text-2xl md:text-3xl font-bold mb-4 text-black">
               Core Apps
             </h2>
-            <p className="text-base md:text-lg text-gray-600">
+            <p className="text-base md:text-lg text-black">
               Included with all licenses. These are the foundation of your
               workforce platform.
             </p>
@@ -121,7 +121,7 @@ export default function PlatformAppsPage() {
                 <div className="flex items-start mb-4">
                   <span className="text-4xl mr-4">{app.icon}</span>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <h3 className="text-lg font-semibold text-black mb-2">
                       {app.name}
                     </h3>
                     <div className="inline-flex items-center px-2 py-1 bg-brand-green-100 text-green-800 text-xs font-semibold rounded">
@@ -130,7 +130,7 @@ export default function PlatformAppsPage() {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-600">{app.description}</p>
+                <p className="text-black">{app.description}</p>
               </div>
             ))}
           </div>
@@ -141,10 +141,10 @@ export default function PlatformAppsPage() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-12">
-            <h2 className="text-2xl md:text-3xl md:text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+            <h2 className="text-2xl md:text-3xl md:text-2xl md:text-3xl font-bold mb-4 text-black">
               Premium Apps
             </h2>
-            <p className="text-base md:text-lg text-gray-600">
+            <p className="text-base md:text-lg text-black">
               Included with School and Enterprise licenses. Advanced features
               for larger organizations.
             </p>
@@ -159,7 +159,7 @@ export default function PlatformAppsPage() {
                 <div className="flex items-start mb-4">
                   <span className="text-4xl mr-4">{app.icon}</span>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <h3 className="text-lg font-semibold text-black mb-2">
                       {app.name}
                     </h3>
                     <div className="inline-flex items-center px-2 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded">
@@ -167,7 +167,7 @@ export default function PlatformAppsPage() {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-600">{app.description}</p>
+                <p className="text-black">{app.description}</p>
               </div>
             ))}
           </div>
@@ -177,7 +177,7 @@ export default function PlatformAppsPage() {
       {/* App Comparison Table */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl md:text-2xl md:text-3xl font-bold mb-8 text-center text-gray-900">
+          <h2 className="text-2xl md:text-3xl md:text-2xl md:text-3xl font-bold mb-8 text-center text-black">
             What's Included in Each License
           </h2>
 
@@ -186,16 +186,16 @@ export default function PlatformAppsPage() {
               <table className="w-full">
                 <thead className="bg-gray-100">
                   <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-black">
                       App
                     </th>
-                    <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-4 text-center text-sm font-semibold text-black">
                       Core
                     </th>
-                    <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-4 text-center text-sm font-semibold text-black">
                       School
                     </th>
-                    <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-4 text-center text-sm font-semibold text-black">
                       Enterprise
                     </th>
                   </tr>
@@ -207,10 +207,10 @@ export default function PlatformAppsPage() {
                         <div className="flex items-center">
                           <span className="text-2xl mr-3">{app.icon}</span>
                           <div>
-                            <div className="font-semibold text-gray-900">
+                            <div className="font-semibold text-black">
                               {app.name}
                             </div>
-                            <div className="text-sm text-gray-600">
+                            <div className="text-sm text-black">
                               {app.description}
                             </div>
                           </div>
@@ -220,7 +220,7 @@ export default function PlatformAppsPage() {
                         {app.enabledByDefault ? (
                           <Check className="w-5 h-5 text-brand-green-600 mx-auto" />
                         ) : (
-                          <span className="text-gray-600">—</span>
+                          <span className="text-black">—</span>
                         )}
                       </td>
                       <td className="px-6 py-4 text-center">

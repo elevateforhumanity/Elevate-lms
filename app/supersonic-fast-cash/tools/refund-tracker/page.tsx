@@ -113,7 +113,7 @@ export default function RefundTrackerPage() {
       case 'sent':
         return <TrendingUp className="w-12 h-12 text-purple-600" />;
       default:
-        return <AlertCircle className="w-12 h-12 text-gray-600" />;
+        return <AlertCircle className="w-12 h-12 text-black" />;
     }
   };
 
@@ -142,7 +142,7 @@ export default function RefundTrackerPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Where's My Refund?
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-black max-w-2xl mx-auto">
             Track your federal tax refund status in real-time. Connected to IRS
             systems.
           </p>
@@ -168,7 +168,7 @@ export default function RefundTrackerPage() {
                   maxLength={11}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none"
                 />
-                <p className="text-xs text-gray-700 mt-1">
+                <p className="text-xs text-black mt-1">
                   Your SSN is encrypted and secure
                 </p>
               </div>
@@ -198,7 +198,7 @@ export default function RefundTrackerPage() {
                   Expected Refund Amount
                 </label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-black">
                     $
                   </span>
                   <input
@@ -209,7 +209,7 @@ export default function RefundTrackerPage() {
                     className="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none"
                   />
                 </div>
-                <p className="text-xs text-gray-700 mt-1">
+                <p className="text-xs text-black mt-1">
                   Enter the exact amount from your tax return
                 </p>
               </div>
@@ -245,7 +245,7 @@ export default function RefundTrackerPage() {
             {/* Info Box */}
             <div className="mt-8 bg-blue-50 rounded-xl p-6">
               <h3 className="font-semibold mb-3">When to Check:</h3>
-              <ul className="space-y-2 text-sm text-gray-700">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                   <span>
@@ -335,10 +335,10 @@ export default function RefundTrackerPage() {
                   </div>
                   <div className="flex-1 pb-6">
                     <h4 className="font-semibold mb-1">Return Received</h4>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-black">
                       Your tax return has been received and is being processed
                     </p>
-                    <p className="text-xs text-gray-700 mt-1">Completed</p>
+                    <p className="text-xs text-black mt-1">Completed</p>
                   </div>
                 </div>
 
@@ -364,10 +364,10 @@ export default function RefundTrackerPage() {
                   </div>
                   <div className="flex-1 pb-6">
                     <h4 className="font-semibold mb-1">Refund Approved</h4>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-black">
                       Your refund has been approved and will be sent soon
                     </p>
-                    <p className="text-xs text-gray-700 mt-1">
+                    <p className="text-xs text-black mt-1">
                       {refundStatus.status === 'approved' ||
                       refundStatus.status === 'sent'
                         ? 'Completed'
@@ -390,13 +390,13 @@ export default function RefundTrackerPage() {
                   </div>
                   <div className="flex-1">
                     <h4 className="font-semibold mb-1">Refund Sent</h4>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-black">
                       Your refund has been sent via{' '}
                       {refundStatus.method === 'direct_deposit'
                         ? 'direct deposit'
                         : 'check'}
                     </p>
-                    <p className="text-xs text-gray-700 mt-1">
+                    <p className="text-xs text-black mt-1">
                       {refundStatus.status === 'sent' ? 'Completed' : 'Pending'}
                     </p>
                   </div>
@@ -429,7 +429,7 @@ export default function RefundTrackerPage() {
             {refundStatus.status !== 'sent' &&
               refundStatus.refundAmount &&
               refundStatus.refundAmount >= 250 && (
-                <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl shadow-xl p-8 text-gray-900">
+                <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl shadow-xl p-8 text-black">
                   <h3 className="text-2xl font-bold mb-3">
                     <DollarSign className="w-5 h-5 inline-block" /> Get Your
                     Money Today!
@@ -475,7 +475,7 @@ export default function RefundTrackerPage() {
               <summary className="font-semibold cursor-pointer">
                 How long does it take to get my refund?
               </summary>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-black mt-2">
                 Most refunds are issued within 21 days of e-filing. Direct
                 deposit is faster than paper checks.
               </p>
@@ -485,7 +485,7 @@ export default function RefundTrackerPage() {
               <summary className="font-semibold cursor-pointer">
                 Why is my refund delayed?
               </summary>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-black mt-2">
                 Common reasons include errors on your return, identity
                 verification, claiming certain credits (EITC, ACTC), or amended
                 returns.
@@ -496,7 +496,7 @@ export default function RefundTrackerPage() {
               <summary className="font-semibold cursor-pointer">
                 Can I change my direct deposit information?
               </summary>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-black mt-2">
                 Once your return is submitted, you cannot change your direct
                 deposit information. Contact the IRS if you need to update it.
               </p>
@@ -506,7 +506,7 @@ export default function RefundTrackerPage() {
               <summary className="font-semibold cursor-pointer">
                 What if my refund is less than expected?
               </summary>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm text-black mt-2">
                 The IRS may have adjusted your refund due to errors, offsets for
                 debts, or other issues. Check your IRS notice for details.
               </p>

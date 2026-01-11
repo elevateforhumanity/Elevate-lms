@@ -52,8 +52,8 @@ export function ProgramPageShell({
               Elevate for Humanity • Funded Program
             </p>
             <h1>{title}</h1>
-            <p className="text-sm md:text-base text-slate-600">{subtitle}</p>
-            <p className="text-sm md:text-base text-slate-700">{blurb}</p>
+            <p className="text-sm md:text-base text-black">{subtitle}</p>
+            <p className="text-sm md:text-base text-black">{blurb}</p>
 
             <div className="flex flex-wrap gap-3">
               <Link href={applyHref}>
@@ -66,21 +66,21 @@ export function ProgramPageShell({
               </Link>
             </div>
 
-            <div className="mt-4 flex flex-wrap gap-6 text-xs text-slate-600">
+            <div className="mt-4 flex flex-wrap gap-6 text-xs text-black">
               <div>
-                <p className="text-base font-bold text-slate-900">
+                <p className="text-base font-bold text-black">
                   {credential}
                 </p>
                 <p>Credential / outcome</p>
               </div>
               <div>
-                <p className="text-base font-bold text-slate-900">
+                <p className="text-base font-bold text-black">
                   {duration}
                 </p>
                 <p>Approximate program length</p>
               </div>
               <div>
-                <p className="text-base font-bold text-slate-900">
+                <p className="text-base font-bold text-black">
                   {schedule}
                 </p>
                 <p>Schedule</p>
@@ -119,10 +119,10 @@ export function ProgramPageShell({
             )}
 
             <Card className="p-5 md:p-6 space-y-4">
-              <h3 className="text-lg font-semibold text-slate-900">
+              <h3 className="text-lg font-semibold text-black">
                 Program at a glance
               </h3>
-            <dl className="space-y-2 text-sm text-slate-700">
+            <dl className="space-y-2 text-sm text-black">
               {location && (
                 <div className="flex justify-between gap-4">
                   <dt className="text-slate-500">Location</dt>
@@ -142,7 +142,7 @@ export function ProgramPageShell({
               <p className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-2">
                 Program highlights
               </p>
-              <ul className="space-y-1 text-xs md:text-sm text-slate-700">
+              <ul className="space-y-1 text-xs md:text-sm text-black">
                 {highlights.map((item) => (
                   <li key={item}>• {item}</li>
                 ))}
@@ -153,7 +153,7 @@ export function ProgramPageShell({
                 <p className="text-xs font-semibold text-slate-500 mb-1">
                   For employers
                 </p>
-                <p className="text-xs text-slate-600">{employerNotes}</p>
+                <p className="text-xs text-black">{employerNotes}</p>
               </div>
             )}
           </Card>
@@ -168,7 +168,7 @@ export function ProgramPageShell({
             <h2 className="text-xl md:text-2xl font-semibold">
               What you'll be able to do
             </h2>
-            <ul className="space-y-2 text-sm md:text-base text-slate-700">
+            <ul className="space-y-2 text-sm md:text-base text-black">
               {outcomes.map((o) => (
                 <li key={o}>• {o}</li>
               ))}

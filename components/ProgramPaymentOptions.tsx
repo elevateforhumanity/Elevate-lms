@@ -63,7 +63,7 @@ export default function ProgramPaymentOptions({
         <h3 className="text-2xl font-bold mb-2">
           Don't Qualify for Free Funding?
         </h3>
-        <p className="text-gray-600">
+        <p className="text-black">
           Self-pay options available with flexible payment plans
         </p>
       </div>
@@ -73,7 +73,7 @@ export default function ProgramPaymentOptions({
         <p className="text-sm text-blue-900 font-semibold mb-2">
           ✅ Check Free Funding First!
         </p>
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-black">
           Most students qualify for 100% FREE training through WIOA, WRG, or
           JRI.
           <a href="/apply" className="text-blue-600 underline font-bold ml-1">
@@ -87,7 +87,7 @@ export default function ProgramPaymentOptions({
         <div className="text-5xl font-bold text-orange-600 mb-2">
           ${price.toLocaleString()}
         </div>
-        <p className="text-gray-600">One-time payment for {duration}</p>
+        <p className="text-black">One-time payment for {duration}</p>
       </div>
 
       {/* Payment Method Selection */}
@@ -106,7 +106,7 @@ export default function ProgramPaymentOptions({
               <DollarSign className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h4 className="font-bold text-lg mb-1">Pay in Full</h4>
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-black mb-2">
                   One-time payment - Start immediately
                 </p>
                 <p className="text-2xl font-bold text-green-600">
@@ -134,7 +134,7 @@ export default function ProgramPaymentOptions({
               <CreditCard className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
               <div>
                 <h4 className="font-bold text-lg mb-1">Stripe Payment Plan</h4>
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-black mb-2">
                   Break up payments over 12 months
                 </p>
                 <p className="text-2xl font-bold text-blue-600">
@@ -165,7 +165,7 @@ export default function ProgramPaymentOptions({
               <CreditCard className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
               <div>
                 <h4 className="font-bold text-lg mb-1">Affirm Financing</h4>
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-black mb-2">
                   Get approved instantly - Pay over 6 months
                 </p>
                 <p className="text-2xl font-bold text-purple-600">
@@ -196,7 +196,7 @@ export default function ProgramPaymentOptions({
       </button>
 
       {/* Additional Info */}
-      <div className="mt-6 space-y-3 text-sm text-gray-600">
+      <div className="mt-6 space-y-3 text-sm text-black">
         <p className="flex items-start gap-2">
           <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
           <span>Secure payment processing via Stripe</span>
@@ -217,7 +217,7 @@ export default function ProgramPaymentOptions({
 
       {/* Contact */}
       <div className="mt-6 pt-6 border-t text-center">
-        <p className="text-sm text-gray-600 mb-2">
+        <p className="text-sm text-black mb-2">
           Questions about payment options?
         </p>
         <a

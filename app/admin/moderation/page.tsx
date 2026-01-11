@@ -18,7 +18,7 @@ export default function ModerationPage() {
             <div className="flex justify-between items-start">
               <div>
                 <h3 className="font-semibold">Post Title</h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   Posted by User • 2 hours ago
                 </p>
                 <p className="mt-2">Post content preview...</p>
@@ -35,7 +35,7 @@ export default function ModerationPage() {
           </div>
         </div>
 
-        <div className="mt-6 text-sm text-gray-600">
+        <div className="mt-6 text-sm text-black">
           <p>Review cadence: Check queue every 4 hours</p>
           <p>Response SLA: 24 hours for flagged content</p>
         </div>

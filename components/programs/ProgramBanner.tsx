@@ -12,10 +12,10 @@ export function ProgramBanner() {
     <section className="rounded-2xl border bg-white p-4 md:p-5 shadow-sm">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-sm font-semibold text-gray-900">
+          <p className="text-sm font-semibold text-black">
             Appointment-Based Information (Required Step)
           </p>
-          <p className="text-sm text-gray-700 mt-1">
+          <p className="text-sm text-black mt-1">
             1) Submit the Inquiry Form. 2) Schedule a WorkOne appointment on
             IndianaCareerConnect.com. 3) Tell them you're there for Elevate for
             Humanity. 4) Complete your checklist so we can track your progress.
@@ -85,10 +85,10 @@ function WorkOneChecklist() {
 
   return (
     <div className="rounded-2xl border bg-gray-50 p-4">
-      <p className="text-sm font-semibold text-gray-900">
+      <p className="text-sm font-semibold text-black">
         My Progress Checklist
       </p>
-      <p className="text-sm text-gray-700 mt-1">
+      <p className="text-sm text-black mt-1">
         Check these off as you go. This helps us support you faster and keeps
         everything organized.
       </p>
@@ -111,7 +111,7 @@ function WorkOneChecklist() {
         />
 
         <div className="grid gap-2 sm:grid-cols-2">
-          <label className="text-sm text-gray-800">
+          <label className="text-sm text-black">
             Appointment date (optional)
             <input
               value={state.appointmentDate || ''}
@@ -142,8 +142,8 @@ function WorkOneChecklist() {
       </div>
 
       <div className="mt-4 rounded-xl bg-white border p-3">
-        <p className="text-sm font-semibold text-gray-900">Next step</p>
-        <p className="text-sm text-gray-700 mt-1">
+        <p className="text-sm font-semibold text-black">Next step</p>
+        <p className="text-sm text-black mt-1">
           Once your appointment is scheduled, keep going through the checklist
           and watch for follow-up from our team.
         </p>
@@ -169,7 +169,7 @@ function CheckRow({
         checked={!!checked}
         onChange={(e) => onChange(e.target.checked)}
       />
-      <span className="text-sm text-gray-800">{label}</span>
+      <span className="text-sm text-black">{label}</span>
     </label>
   );
 }

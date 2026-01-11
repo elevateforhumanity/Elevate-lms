@@ -105,7 +105,7 @@ export default async function ReportsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <FileText className="h-8 w-8 text-brand-blue-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Total Reports
                   </h3>
                 </div>
@@ -116,7 +116,7 @@ export default async function ReportsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Calendar className="h-8 w-8 text-brand-green-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     This Month
                   </h3>
                 </div>
@@ -127,7 +127,7 @@ export default async function ReportsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <AlertCircle className="h-8 w-8 text-yellow-600" />
-                  <h3 className="text-sm font-medium text-gray-600">Pending</h3>
+                  <h3 className="text-sm font-medium text-black">Pending</h3>
                 </div>
                 <p className="text-3xl font-bold text-yellow-600">
                   {pendingReports.length}
@@ -136,7 +136,7 @@ export default async function ReportsPage() {
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Download className="h-8 w-8 text-purple-600" />
-                  <h3 className="text-sm font-medium text-gray-600">
+                  <h3 className="text-sm font-medium text-black">
                     Approved
                   </h3>
                 </div>
@@ -149,7 +149,7 @@ export default async function ReportsPage() {
             {/* Reports List */}
             <div className="bg-white rounded-lg shadow-sm border p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-2xl font-bold text-black">
                   Recent Reports
                 </h2>
                 <Link
@@ -166,19 +166,19 @@ export default async function ReportsPage() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b">
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Week Ending
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Hours
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Status
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Submitted
                         </th>
-                        <th className="text-left py-3 px-4 font-semibold text-slate-700">
+                        <th className="text-left py-3 px-4 font-semibold text-black">
                           Actions
                         </th>
                       </tr>
@@ -189,10 +189,10 @@ export default async function ReportsPage() {
                           key={report.id}
                           className="border-b hover:bg-slate-50 transition-colors"
                         >
-                          <td className="py-3 px-4 font-medium text-slate-900">
+                          <td className="py-3 px-4 font-medium text-black">
                             {new Date(report.week_ending).toLocaleDateString()}
                           </td>
-                          <td className="py-3 px-4 text-slate-600">
+                          <td className="py-3 px-4 text-black">
                             {report.hours_worked || 0} hrs
                           </td>
                           <td className="py-3 px-4">
@@ -202,13 +202,13 @@ export default async function ReportsPage() {
                                   ? 'bg-brand-green-100 text-green-800'
                                   : report.status === 'pending'
                                     ? 'bg-yellow-100 text-yellow-800'
-                                    : 'bg-gray-100 text-gray-800'
+                                    : 'bg-gray-100 text-black'
                               }`}
                             >
                               {report.status}
                             </span>
                           </td>
-                          <td className="py-3 px-4 text-slate-600">
+                          <td className="py-3 px-4 text-black">
                             {new Date(report.created_at).toLocaleDateString()}
                           </td>
                           <td className="py-3 px-4">
@@ -224,10 +224,10 @@ export default async function ReportsPage() {
               ) : (
                 <div className="text-center py-12">
                   <FileText className="h-16 w-16 text-slate-300 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-slate-700 mb-2">
+                  <h3 className="text-lg font-semibold text-black mb-2">
                     No Reports Yet
                   </h3>
-                  <p className="text-slate-600 mb-6">
+                  <p className="text-black mb-6">
                     You haven't submitted any reports yet.
                   </p>
                   <Link

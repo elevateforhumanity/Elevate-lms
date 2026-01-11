@@ -117,7 +117,7 @@ export default function VideoDownloadButton({
   return (
     <button
       onClick={handleDownload}
-      className={`${sizeClasses[size]} rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 active:scale-95 transition-all`}
+      className={`${sizeClasses[size]} rounded-lg bg-gray-100 text-black hover:bg-gray-200 active:scale-95 transition-all`}
       title="Download for offline viewing"
     >
       <Download size={iconSizes[size]} />

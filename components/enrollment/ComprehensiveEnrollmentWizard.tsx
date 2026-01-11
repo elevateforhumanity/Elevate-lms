@@ -358,16 +358,16 @@ export default function ComprehensiveEnrollmentWizard({
       <div className="max-w-5xl mx-auto px-4">
         {/* Header */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Enroll in {programName}
           </h1>
-          <p className="text-gray-600">
+          <p className="text-black">
             Complete all steps to finalize your enrollment
           </p>
 
           {/* Progress Bar */}
           <div className="mt-6">
-            <div className="flex justify-between text-sm text-gray-600 mb-2">
+            <div className="flex justify-between text-sm text-black mb-2">
               <span>Step {currentStep} of {STEPS.length}</span>
               <span>{Math.round(progress)}% Complete</span>
               {saving && (
@@ -425,11 +425,11 @@ export default function ComprehensiveEnrollmentWizard({
           {/* Step 1: Personal Information */}
           {currentStep === 1 && (
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Personal Information</h2>
+              <h2 className="text-2xl font-bold text-black mb-4">Personal Information</h2>
 
               <div className="grid md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     First Name *
                   </label>
                   <input
@@ -442,7 +442,7 @@ export default function ComprehensiveEnrollmentWizard({
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Middle Name
                   </label>
                   <input
@@ -454,7 +454,7 @@ export default function ComprehensiveEnrollmentWizard({
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Last Name *
                   </label>
                   <input
@@ -469,7 +469,7 @@ export default function ComprehensiveEnrollmentWizard({
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Date of Birth *
                   </label>
                   <input
@@ -482,7 +482,7 @@ export default function ComprehensiveEnrollmentWizard({
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Social Security Number *
                   </label>
                   <div className="relative">
@@ -509,7 +509,7 @@ export default function ComprehensiveEnrollmentWizard({
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Gender *
                 </label>
                 <select
@@ -531,11 +531,11 @@ export default function ComprehensiveEnrollmentWizard({
           {/* Step 2: Contact Information */}
           {currentStep === 2 && (
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Information</h2>
+              <h2 className="text-2xl font-bold text-black mb-4">Contact Information</h2>
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Email Address *
                   </label>
                   <input
@@ -548,7 +548,7 @@ export default function ComprehensiveEnrollmentWizard({
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Phone Number *
                   </label>
                   <input
@@ -563,7 +563,7 @@ export default function ComprehensiveEnrollmentWizard({
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Alternate Phone Number
                 </label>
                 <input
@@ -576,7 +576,7 @@ export default function ComprehensiveEnrollmentWizard({
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Street Address *
                 </label>
                 <input
@@ -589,7 +589,7 @@ export default function ComprehensiveEnrollmentWizard({
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-black mb-2">
                   Apartment, Suite, etc.
                 </label>
                 <input
@@ -602,7 +602,7 @@ export default function ComprehensiveEnrollmentWizard({
 
               <div className="grid md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     City *
                   </label>
                   <input
@@ -615,7 +615,7 @@ export default function ComprehensiveEnrollmentWizard({
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     State *
                   </label>
                   <select
@@ -635,7 +635,7 @@ export default function ComprehensiveEnrollmentWizard({
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     ZIP Code *
                   </label>
                   <input
@@ -673,7 +673,7 @@ export default function ComprehensiveEnrollmentWizard({
           <button
             onClick={prevStep}
             disabled={currentStep === 1}
-            className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            className="px-6 py-3 border border-gray-300 rounded-lg text-black hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
           >
             <ChevronLeft className="w-5 h-5" />
             Previous

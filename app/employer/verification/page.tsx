@@ -33,13 +33,13 @@ export default async function EmployerVerificationPage() {
       )}
       
       <div className="bg-white rounded-lg shadow-sm border p-6">
-        <p className="text-slate-600 mb-4">
+        <p className="text-black mb-4">
           Complete your employer verification to access all features.
         </p>
         <div className="space-y-4">
           <div className="border-l-4 border-blue-500 pl-4">
             <h3 className="font-semibold mb-2">Required Documents:</h3>
-            <ul className="list-disc list-inside text-slate-600 space-y-1">
+            <ul className="list-disc list-inside text-black space-y-1">
               <li>Business license or registration</li>
               <li>Tax ID (EIN)</li>
               <li>Proof of business address</li>

@@ -77,7 +77,7 @@ export default function SiteHeader() {
           {/* Logo */}
           <Link
             href="/"
-            className="font-black text-slate-900 text-lg tracking-tight flex-shrink-0"
+            className="font-black text-black text-lg tracking-tight flex-shrink-0"
           >
             Elevate for Humanity
           </Link>
@@ -91,7 +91,7 @@ export default function SiteHeader() {
                 onMouseEnter={() => setOpenDropdown(item.label)}
                 onMouseLeave={() => setOpenDropdown(null)}
               >
-                <button className="flex items-center gap-1 px-4 py-2 text-sm font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition">
+                <button className="flex items-center gap-1 px-4 py-2 text-sm font-semibold text-black hover:text-black hover:bg-slate-50 rounded-lg transition">
                   {item.label}
                   <ChevronDown className="w-4 h-4" />
                 </button>
@@ -103,7 +103,7 @@ export default function SiteHeader() {
                       <Link
                         key={subItem.href}
                         href={subItem.href}
-                        className="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition"
+                        className="block px-4 py-3 text-sm text-black hover:bg-slate-50 hover:text-black transition"
                       >
                         {subItem.label}
                       </Link>
@@ -118,19 +118,19 @@ export default function SiteHeader() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/about"
-              className="text-sm font-semibold text-slate-700 hover:text-slate-900 px-4 py-2"
+              className="text-sm font-semibold text-black hover:text-black px-4 py-2"
             >
               About
             </Link>
             <Link
               href="/contact"
-              className="text-sm font-semibold text-slate-700 hover:text-slate-900 px-4 py-2"
+              className="text-sm font-semibold text-black hover:text-black px-4 py-2"
             >
               Contact
             </Link>
             <Link
               href="/login"
-              className="text-sm font-semibold text-slate-700 hover:text-slate-900 px-4 py-2"
+              className="text-sm font-semibold text-black hover:text-black px-4 py-2"
             >
               Login
             </Link>
@@ -145,7 +145,7 @@ export default function SiteHeader() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-700 hover:text-slate-900"
+            className="lg:hidden p-2 text-black hover:text-black"
           >
             {mobileMenuOpen ? (
               <svg
@@ -184,14 +184,14 @@ export default function SiteHeader() {
           <div className="lg:hidden py-4 border-t border-slate-200">
             {navigation.map((item) => (
               <div key={item.label} className="mb-4">
-                <div className="font-bold text-slate-900 px-4 py-2 text-sm uppercase tracking-wider">
+                <div className="font-bold text-black px-4 py-2 text-sm uppercase tracking-wider">
                   {item.label}
                 </div>
                 {item.items.map((subItem) => (
                   <Link
                     key={subItem.href}
                     href={subItem.href}
-                    className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+                    className="block px-4 py-2 text-sm text-black hover:bg-slate-50 hover:text-black"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {subItem.label}
@@ -202,19 +202,19 @@ export default function SiteHeader() {
             <div className="border-t border-slate-200 pt-4 px-4 space-y-2">
               <Link
                 href="/about"
-                className="block py-2 text-sm font-semibold text-slate-700"
+                className="block py-2 text-sm font-semibold text-black"
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className="block py-2 text-sm font-semibold text-slate-700"
+                className="block py-2 text-sm font-semibold text-black"
               >
                 Contact
               </Link>
               <Link
                 href="/login"
-                className="block py-2 text-sm font-semibold text-slate-700"
+                className="block py-2 text-sm font-semibold text-black"
               >
                 Login
               </Link>

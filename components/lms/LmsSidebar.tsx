@@ -43,7 +43,7 @@ export function LmsSidebar() {
             E
           </div>
           <div>
-            <div className="font-semibold text-sm text-slate-900">
+            <div className="font-semibold text-sm text-black">
               Elevate For Humanity
             </div>
             <div className="text-xs text-slate-500">Workforce LMS</div>
@@ -70,7 +70,7 @@ export function LmsSidebar() {
                 'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all',
                 active
                   ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-700 hover:bg-gray-50 hover:text-blue-700'
+                  : 'text-black hover:bg-gray-50 hover:text-blue-700'
               )}
             >
               <Icon className="w-4 h-4" />
@@ -83,7 +83,7 @@ export function LmsSidebar() {
       <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-white">
         <Link
           href="/lms/support"
-          className="flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900"
+          className="flex items-center gap-2 text-sm text-black hover:text-black"
         >
           <Settings className="w-4 h-4" />
           <span>Settings & Support</span>

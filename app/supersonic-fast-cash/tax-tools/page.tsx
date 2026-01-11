@@ -22,10 +22,10 @@ export default function TaxToolsPage() {
       {/* Hero */}
       <section className="relative bg-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">
             Tax Tools & Calculators
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl">
+          <p className="text-xl text-black max-w-3xl">
             Everything you need to prepare and file your taxes
           </p>
         </div>
@@ -36,7 +36,7 @@ export default function TaxToolsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-12">
             <FileText className="w-12 h-12 text-blue-600" />
-            <h2 className="text-4xl font-black text-gray-900">IRS Forms</h2>
+            <h2 className="text-4xl font-black text-black">IRS Forms</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -50,7 +50,7 @@ export default function TaxToolsPage() {
                 <h3 className="text-2xl font-black text-blue-600">Form 1040</h3>
                 <ExternalLink className="w-6 h-6 text-blue-600 group-hover:translate-x-1 transition-transform" />
               </div>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 U.S. Individual Income Tax Return
               </p>
               <div className="flex items-center gap-2 text-blue-600 font-bold">
@@ -71,7 +71,7 @@ export default function TaxToolsPage() {
                 </h3>
                 <ExternalLink className="w-6 h-6 text-green-600 group-hover:translate-x-1 transition-transform" />
               </div>
-              <p className="text-gray-700 mb-4">Profit or Loss from Business</p>
+              <p className="text-black mb-4">Profit or Loss from Business</p>
               <div className="flex items-center gap-2 text-green-600 font-bold">
                 <Download className="w-5 h-5" />
                 <span>Download PDF</span>
@@ -90,7 +90,7 @@ export default function TaxToolsPage() {
                 </h3>
                 <ExternalLink className="w-6 h-6 text-orange-600 group-hover:translate-x-1 transition-transform" />
               </div>
-              <p className="text-gray-700 mb-4">Wage and Tax Statement</p>
+              <p className="text-black mb-4">Wage and Tax Statement</p>
               <div className="flex items-center gap-2 text-orange-600 font-bold">
                 <Download className="w-5 h-5" />
                 <span>Download PDF</span>
@@ -109,7 +109,7 @@ export default function TaxToolsPage() {
                 </h3>
                 <ExternalLink className="w-6 h-6 text-purple-600 group-hover:translate-x-1 transition-transform" />
               </div>
-              <p className="text-gray-700 mb-4">Miscellaneous Income</p>
+              <p className="text-black mb-4">Miscellaneous Income</p>
               <div className="flex items-center gap-2 text-purple-600 font-bold">
                 <Download className="w-5 h-5" />
                 <span>Download PDF</span>
@@ -126,7 +126,7 @@ export default function TaxToolsPage() {
                 <h3 className="text-2xl font-black text-red-600">Schedule A</h3>
                 <ExternalLink className="w-6 h-6 text-red-600 group-hover:translate-x-1 transition-transform" />
               </div>
-              <p className="text-gray-700 mb-4">Itemized Deductions</p>
+              <p className="text-black mb-4">Itemized Deductions</p>
               <div className="flex items-center gap-2 text-red-600 font-bold">
                 <Download className="w-5 h-5" />
                 <span>Download PDF</span>
@@ -140,13 +140,13 @@ export default function TaxToolsPage() {
               className="group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border-2 border-gray-300 hover:border-gray-500 transition-all transform hover:scale-105"
             >
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-2xl font-black text-gray-900">All Forms</h3>
-                <ExternalLink className="w-6 h-6 text-gray-900 group-hover:translate-x-1 transition-transform" />
+                <h3 className="text-2xl font-black text-black">All Forms</h3>
+                <ExternalLink className="w-6 h-6 text-black group-hover:translate-x-1 transition-transform" />
               </div>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Browse complete IRS forms library
               </p>
-              <div className="flex items-center gap-2 text-gray-900 font-bold">
+              <div className="flex items-center gap-2 text-black font-bold">
                 <ExternalLink className="w-5 h-5" />
                 <span>Visit IRS.gov</span>
               </div>
@@ -160,14 +160,14 @@ export default function TaxToolsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-12">
             <Calendar className="w-12 h-12 text-green-600" />
-            <h2 className="text-4xl font-black text-gray-900">
+            <h2 className="text-4xl font-black text-black">
               Important Tax Due Dates
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200">
-              <h3 className="text-2xl font-black text-gray-900 mb-6">
+              <h3 className="text-2xl font-black text-black mb-6">
                 2024 Tax Year
               </h3>
               <div className="space-y-4">
@@ -177,10 +177,10 @@ export default function TaxToolsPage() {
                     <div className="text-2xl font-black text-blue-600">15</div>
                   </div>
                   <div>
-                    <div className="font-black text-gray-900 mb-1">
+                    <div className="font-black text-black mb-1">
                       Individual Tax Returns
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-black">
                       Form 1040 filing deadline
                     </div>
                   </div>
@@ -194,10 +194,10 @@ export default function TaxToolsPage() {
                     <div className="text-2xl font-black text-green-600">15</div>
                   </div>
                   <div>
-                    <div className="font-black text-gray-900 mb-1">
+                    <div className="font-black text-black mb-1">
                       Partnership Returns
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-black">
                       Form 1065 filing deadline
                     </div>
                   </div>
@@ -213,10 +213,10 @@ export default function TaxToolsPage() {
                     </div>
                   </div>
                   <div>
-                    <div className="font-black text-gray-900 mb-1">
+                    <div className="font-black text-black mb-1">
                       S-Corporation Returns
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-black">
                       Form 1120-S filing deadline
                     </div>
                   </div>
@@ -232,10 +232,10 @@ export default function TaxToolsPage() {
                     </div>
                   </div>
                   <div>
-                    <div className="font-black text-gray-900 mb-1">
+                    <div className="font-black text-black mb-1">
                       C-Corporation Returns
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-black">
                       Form 1120 filing deadline
                     </div>
                   </div>
@@ -244,7 +244,7 @@ export default function TaxToolsPage() {
             </div>
 
             <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200">
-              <h3 className="text-2xl font-black text-gray-900 mb-6">
+              <h3 className="text-2xl font-black text-black mb-6">
                 Quarterly Estimates
               </h3>
               <div className="space-y-4">
@@ -254,10 +254,10 @@ export default function TaxToolsPage() {
                     <div className="text-2xl font-black text-red-600">15</div>
                   </div>
                   <div>
-                    <div className="font-black text-gray-900 mb-1">
+                    <div className="font-black text-black mb-1">
                       Q1 Estimated Tax
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-black">
                       Jan 1 - Mar 31 income
                     </div>
                   </div>
@@ -269,10 +269,10 @@ export default function TaxToolsPage() {
                     <div className="text-2xl font-black text-red-600">15</div>
                   </div>
                   <div>
-                    <div className="font-black text-gray-900 mb-1">
+                    <div className="font-black text-black mb-1">
                       Q2 Estimated Tax
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-black">
                       Apr 1 - May 31 income
                     </div>
                   </div>
@@ -284,10 +284,10 @@ export default function TaxToolsPage() {
                     <div className="text-2xl font-black text-red-600">15</div>
                   </div>
                   <div>
-                    <div className="font-black text-gray-900 mb-1">
+                    <div className="font-black text-black mb-1">
                       Q3 Estimated Tax
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-black">
                       Jun 1 - Aug 31 income
                     </div>
                   </div>
@@ -299,10 +299,10 @@ export default function TaxToolsPage() {
                     <div className="text-2xl font-black text-red-600">15</div>
                   </div>
                   <div>
-                    <div className="font-black text-gray-900 mb-1">
+                    <div className="font-black text-black mb-1">
                       Q4 Estimated Tax
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-black">
                       Sep 1 - Dec 31 income
                     </div>
                   </div>
@@ -318,7 +318,7 @@ export default function TaxToolsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-12">
             <Calculator className="w-12 h-12 text-orange-600" />
-            <h2 className="text-4xl font-black text-gray-900">
+            <h2 className="text-4xl font-black text-black">
               Financial Calculators
             </h2>
           </div>
@@ -329,10 +329,10 @@ export default function TaxToolsPage() {
               className="group bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 border-2 border-blue-200 hover:border-blue-500 transition-all transform hover:scale-105"
             >
               <Calculator className="w-12 h-12 text-blue-600 mb-4" />
-              <h3 className="text-2xl font-black text-gray-900 mb-3">
+              <h3 className="text-2xl font-black text-black mb-3">
                 Refund Calculator
               </h3>
-              <p className="text-gray-700 mb-4">
+              <p className="text-black mb-4">
                 Estimate your tax refund amount
               </p>
               <div className="flex items-center gap-2 text-blue-600 font-bold">
@@ -348,10 +348,10 @@ export default function TaxToolsPage() {
               className="group bg-gradient-to-br from-green-50 to-white rounded-2xl p-8 border-2 border-green-200 hover:border-green-500 transition-all transform hover:scale-105"
             >
               <Calculator className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-2xl font-black text-gray-900 mb-3">
+              <h3 className="text-2xl font-black text-black mb-3">
                 W-4 Calculator
               </h3>
-              <p className="text-gray-700 mb-4">Adjust your withholding</p>
+              <p className="text-black mb-4">Adjust your withholding</p>
               <div className="flex items-center gap-2 text-green-600 font-bold">
                 <span>Calculate Now</span>
                 <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -365,10 +365,10 @@ export default function TaxToolsPage() {
               className="group bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border-2 border-orange-200 hover:border-orange-500 transition-all transform hover:scale-105"
             >
               <Calculator className="w-12 h-12 text-orange-600 mb-4" />
-              <h3 className="text-2xl font-black text-gray-900 mb-3">
+              <h3 className="text-2xl font-black text-black mb-3">
                 Self-Employment Tax
               </h3>
-              <p className="text-gray-700 mb-4">Calculate SE tax liability</p>
+              <p className="text-black mb-4">Calculate SE tax liability</p>
               <div className="flex items-center gap-2 text-orange-600 font-bold">
                 <span>Learn More</span>
                 <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

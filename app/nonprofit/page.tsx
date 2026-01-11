@@ -29,7 +29,7 @@ export default function NonprofitPage() {
           </div>
 
           {/* Animated Headline - Exact from Wix */}
-          <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-black text-black mb-8 leading-tight">
             "Welcome to Selfish Inc. Your Partner in Mental Wellness and
             Holistic Healing"
           </h1>
@@ -78,7 +78,7 @@ export default function NonprofitPage() {
       {/* Healing Products Section */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
             Shop our healing Products-browse items designed to uplift your mood
             and body.
           </h2>
@@ -106,7 +106,7 @@ export default function NonprofitPage() {
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
-              <p className="text-gray-600">Video: 00:00 / 01:26</p>
+              <p className="text-black">Video: 00:00 / 01:26</p>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@ export default function NonprofitPage() {
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">
+              <h3 className="text-2xl font-bold text-black">
                 Trauma Recovery
               </h3>
             </div>
@@ -145,7 +145,7 @@ export default function NonprofitPage() {
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">
+              <h3 className="text-2xl font-bold text-black">
                 Addiction Rehabilitation
               </h3>
             </div>
@@ -162,7 +162,7 @@ export default function NonprofitPage() {
                   loading="lazy"
                 />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">
+              <h3 className="text-2xl font-bold text-black">
                 Divorce Support
               </h3>
             </div>
@@ -183,7 +183,7 @@ export default function NonprofitPage() {
 
       {/* Footer */}
       <footer className="py-8 px-4 bg-gray-100 text-center">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-black">
           Do Not Sell My Personal Information
         </p>
       </footer>

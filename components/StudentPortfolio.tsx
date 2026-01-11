@@ -238,7 +238,7 @@ className="text-white hover:text-red-100 transition-colors">
                 className={`py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
                   activeTab === tab
                     ? 'border-red-600 text-brand-orange-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    : 'border-transparent text-gray-500 hover:text-black hover:border-gray-300'
                 }`}
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -255,8 +255,8 @@ className="text-white hover:text-red-100 transition-colors">
           <div>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900">Project Gallery</h2>
-                <p className="text-gray-600 mt-1">Showcasing {projects.length} completed projects</p>
+                <h2 className="text-3xl font-bold text-black">Project Gallery</h2>
+                <p className="text-black mt-1">Showcasing {projects.length} completed projects</p>
               </div>
               <div className="flex gap-2 flex-wrap">
                 {categories.map((category) => (
@@ -266,7 +266,7 @@ className="text-white hover:text-red-100 transition-colors">
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                       selectedCategory === category
                         ? 'bg-brand-orange-600 text-white'
-                        : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                        : 'bg-white text-black hover:bg-gray-100 border border-gray-300'
                     }`}
                   >
                     {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -289,18 +289,18 @@ className="text-white hover:text-red-100 transition-colors">
                   </div>
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-xl font-bold text-gray-900">{project.title}</h3>
+                      <h3 className="text-xl font-bold text-black">{project.title}</h3>
                       <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded">
                         {project.category}
                       </span>
                     </div>
-                    <p className="text-gray-600 text-sm mb-4">{project.description}</p>
+                    <p className="text-black text-sm mb-4">{project.description}</p>
 
                     <div className="mb-4">
-                      <p className="text-xs font-semibold text-gray-700 mb-2">Technologies:</p>
+                      <p className="text-xs font-semibold text-black mb-2">Technologies:</p>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
-                          <span key={tech} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                          <span key={tech} className="px-2 py-1 bg-gray-100 text-black text-xs rounded">
                             {tech}
                           </span>
                         ))}
@@ -308,10 +308,10 @@ className="text-white hover:text-red-100 transition-colors">
                     </div>
 
                     <div className="mb-4">
-                      <p className="text-xs font-semibold text-gray-700 mb-2">Key Achievements:</p>
+                      <p className="text-xs font-semibold text-black mb-2">Key Achievements:</p>
                       <ul className="space-y-1">
                         {project.achievements.map((achievement, idx) => (
-                          <li key={idx} className="text-xs text-gray-600 flex items-start">
+                          <li key={idx} className="text-xs text-black flex items-start">
                             <span className="text-green-500 mr-1">✓</span>
                             {achievement}
                           </li>
@@ -356,21 +356,21 @@ className="text-white hover:text-red-100 transition-colors">
         {activeTab === 'skills' && (
           <div>
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-gray-900">Technical Skills</h2>
-              <p className="text-gray-600 mt-1">Proficiency levels across various technologies</p>
+              <h2 className="text-3xl font-bold text-black">Technical Skills</h2>
+              <p className="text-black mt-1">Proficiency levels across various technologies</p>
             </div>
 
             <div className="space-y-8">
               {skillCategories.map((category) => (
                 <Card key={category} className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{category}</h3>
+                  <h3 className="text-xl font-bold text-black mb-4">{category}</h3>
                   <div className="space-y-4">
                     {skills
                       .filter((skill) => skill.category === category)
                       .map((skill) => (
                         <div key={skill.name}>
                           <div className="flex justify-between items-center mb-2">
-                            <span className="text-sm font-medium text-gray-700">{skill.name}</span>
+                            <span className="text-sm font-medium text-black">{skill.name}</span>
                             <span className="text-sm font-semibold text-brand-orange-600">{skill.level}%</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2.5">
@@ -392,8 +392,8 @@ className="text-white hover:text-red-100 transition-colors">
         {activeTab === 'certificates' && (
           <div>
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-gray-900">Certifications & Credentials</h2>
-              <p className="text-gray-600 mt-1">Professional certifications and achievements</p>
+              <h2 className="text-3xl font-bold text-black">Certifications & Credentials</h2>
+              <p className="text-black mt-1">Professional certifications and achievements</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -404,8 +404,8 @@ className="text-white hover:text-red-100 transition-colors">
                       <span className="text-3xl">🏆</span>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-gray-900 mb-1">{cert.title}</h3>
-                      <p className="text-sm text-gray-600 mb-2">{cert.issuer}</p>
+                      <h3 className="text-lg font-bold text-black mb-1">{cert.title}</h3>
+                      <p className="text-sm text-black mb-2">{cert.issuer}</p>
                       <p className="text-xs text-gray-500 mb-3">
                         Issued: {new Date(cert.date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                       </p>
@@ -427,14 +427,14 @@ className="text-white hover:text-red-100 transition-colors">
         {activeTab === 'about' && (
           <div>
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-gray-900">About Me</h2>
-              <p className="text-gray-600 mt-1">Background, experience, and career goals</p>
+              <h2 className="text-3xl font-bold text-black">About Me</h2>
+              <p className="text-black mt-1">Background, experience, and career goals</p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <Card className="p-6 lg:col-span-2">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Professional Summary</h3>
-                <div className="prose prose-sm max-w-none text-gray-600 space-y-4">
+                <h3 className="text-xl font-bold text-black mb-4">Professional Summary</h3>
+                <div className="prose prose-sm max-w-none text-black space-y-4">
                   <p>
                     I'm a passionate full-stack developer with over 3 years of experience building web and mobile applications.
                     My journey in tech started with a curiosity about how websites work, which led me to pursue formal education
@@ -456,21 +456,21 @@ className="text-white hover:text-red-100 transition-colors">
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h4 className="text-lg font-bold text-gray-900 mb-3">Career Goals</h4>
+                  <h4 className="text-lg font-bold text-black mb-3">Career Goals</h4>
                   <ul className="space-y-2">
-                    <li className="flex items-start text-gray-600">
+                    <li className="flex items-start text-black">
                       <span className="text-brand-orange-600 mr-2">▸</span>
                       <span>Lead development teams on large-scale enterprise projects</span>
                     </li>
-                    <li className="flex items-start text-gray-600">
+                    <li className="flex items-start text-black">
                       <span className="text-brand-orange-600 mr-2">▸</span>
                       <span>Contribute to open-source projects that make a social impact</span>
                     </li>
-                    <li className="flex items-start text-gray-600">
+                    <li className="flex items-start text-black">
                       <span className="text-brand-orange-600 mr-2">▸</span>
                       <span>Obtain AWS Solutions Architect certification</span>
                     </li>
-                    <li className="flex items-start text-gray-600">
+                    <li className="flex items-start text-black">
                       <span className="text-brand-orange-600 mr-2">▸</span>
                       <span>Mentor aspiring developers through Elevate for Humanity</span>
                     </li>
@@ -480,29 +480,29 @@ className="text-white hover:text-red-100 transition-colors">
 
               <div className="space-y-6">
                 <Card className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Stats</h3>
+                  <h3 className="text-xl font-bold text-black mb-4">Quick Stats</h3>
                   <div className="space-y-4">
                     <div>
                       <p className="text-3xl font-bold text-brand-orange-600">{projects.length}</p>
-                      <p className="text-sm text-gray-600">Completed Projects</p>
+                      <p className="text-sm text-black">Completed Projects</p>
                     </div>
                     <div>
                       <p className="text-3xl font-bold text-orange-500">{certificates.length}</p>
-                      <p className="text-sm text-gray-600">Certifications</p>
+                      <p className="text-sm text-black">Certifications</p>
                     </div>
                     <div>
                       <p className="text-3xl font-bold text-brand-orange-600">{skills.length}</p>
-                      <p className="text-sm text-gray-600">Technical Skills</p>
+                      <p className="text-sm text-black">Technical Skills</p>
                     </div>
                     <div>
                       <p className="text-3xl font-bold text-orange-500">3+</p>
-                      <p className="text-sm text-gray-600">Years Experience</p>
+                      <p className="text-sm text-black">Years Experience</p>
                     </div>
                   </div>
                 </Card>
 
                 <Card className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Interests</h3>
+                  <h3 className="text-xl font-bold text-black mb-4">Interests</h3>
                   <div className="flex flex-wrap gap-2">
                     {['Web Development', 'Mobile Apps', 'Cloud Computing', 'AI/ML', 'Open Source', 'UI/UX Design', 'DevOps', 'Mentoring'].map((interest) => (
                       <span key={interest} className="px-3 py-1    text-red-700 text-sm rounded-full">

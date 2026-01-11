@@ -31,7 +31,7 @@ export default async function AdminCreatorsPage() {
     <div className="py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Manage Creators</h1>
-        <p className="text-gray-600">
+        <p className="text-black">
           Approve applications, manage creator accounts, and track earnings
         </p>
       </div>
@@ -42,7 +42,7 @@ export default async function AdminCreatorsPage() {
         </h2>
 
         {pendingCreators.length === 0 ? (
-          <p className="text-gray-600">No pending applications.</p>
+          <p className="text-black">No pending applications.</p>
         ) : (
           <div className="space-y-4">
             {pendingCreators.map((creator) => (
@@ -54,8 +54,8 @@ export default async function AdminCreatorsPage() {
                   <h3 className="font-semibold text-lg">
                     {creator.display_name}
                   </h3>
-                  <p className="text-sm text-gray-600 mb-2">{creator.bio}</p>
-                  <div className="text-sm text-gray-700">
+                  <p className="text-sm text-black mb-2">{creator.bio}</p>
+                  <div className="text-sm text-black">
                     <p>Payout: {creator.payout_email}</p>
                     <p>Method: {creator.payout_method}</p>
                     <p>
@@ -77,7 +77,7 @@ export default async function AdminCreatorsPage() {
         </h2>
 
         {approvedCreators.length === 0 ? (
-          <p className="text-gray-600">No approved creators yet.</p>
+          <p className="text-black">No approved creators yet.</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -114,7 +114,7 @@ export default async function AdminCreatorsPage() {
                         <div className="font-semibold">
                           {creator.display_name}
                         </div>
-                        <div className="text-sm text-gray-600">
+                        <div className="text-sm text-black">
                           {creator.payout_email}
                         </div>
                       </td>

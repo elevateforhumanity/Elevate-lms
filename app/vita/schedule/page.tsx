@@ -37,7 +37,7 @@ export default function VITASchedulePage() {
         <div className="bg-white rounded-lg shadow-lg p-8 max-w-md text-center">
           <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
           <h2 className="text-2xl font-bold mb-4">Appointment Confirmed!</h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-black mb-6">
             We've sent a confirmation email to {formData.email}. You'll receive a reminder 24 hours before your appointment.
           </p>
           <button
@@ -65,7 +65,7 @@ export default function VITASchedulePage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   <User className="w-4 h-4 inline mr-2" />
                   Full Name *
                 </label>
@@ -79,7 +79,7 @@ export default function VITASchedulePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   <Mail className="w-4 h-4 inline mr-2" />
                   Email *
                 </label>
@@ -93,7 +93,7 @@ export default function VITASchedulePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   <Phone className="w-4 h-4 inline mr-2" />
                   Phone *
                 </label>
@@ -107,7 +107,7 @@ export default function VITASchedulePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   <MapPin className="w-4 h-4 inline mr-2" />
                   Location *
                 </label>
@@ -125,7 +125,7 @@ export default function VITASchedulePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   <Calendar className="w-4 h-4 inline mr-2" />
                   Preferred Date *
                 </label>
@@ -139,7 +139,7 @@ export default function VITASchedulePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   <Clock className="w-4 h-4 inline mr-2" />
                   Preferred Time *
                 </label>
@@ -162,7 +162,7 @@ export default function VITASchedulePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Annual Income
                 </label>
                 <input
@@ -175,7 +175,7 @@ export default function VITASchedulePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-black mb-2">
                   Number of Dependents
                 </label>
                 <input

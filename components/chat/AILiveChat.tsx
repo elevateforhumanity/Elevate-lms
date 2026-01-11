@@ -212,8 +212,8 @@ export default function AILiveChat({
                 <Bot className="w-6 h-6 text-white" />
               </div>
               <div>
-                <p className="font-bold text-slate-900 mb-1">Need Help?</p>
-                <p className="text-sm text-slate-600 mb-3">
+                <p className="font-bold text-black mb-1">Need Help?</p>
+                <p className="text-sm text-black mb-3">
                   Hi! I'm here to answer questions about our programs. Click to
                   chat!
                 </p>
@@ -304,7 +304,7 @@ export default function AILiveChat({
                       className={`rounded-2xl px-4 py-2 ${
                         message.sender === 'user'
                           ? 'bg-blue-600 text-white'
-                          : 'bg-white text-gray-800 shadow-sm'
+                          : 'bg-white text-black shadow-sm'
                       }`}
                     >
                       {message.isTyping ? (

@@ -128,7 +128,7 @@ export default function TaxServicesPage() {
       {/* Choose Your Option */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+          <h2 className="text-3xl font-bold text-black mb-12 text-center">
             Choose the Option That Fits You
           </h2>
 
@@ -138,7 +138,7 @@ export default function TaxServicesPage() {
               <div className="flex items-center gap-3 mb-4">
                 <Users className="w-10 h-10 text-brand-green-600" />
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <h3 className="text-2xl font-bold text-black">
                     Rise Up Foundation
                   </h3>
                   <p className="text-green-700 font-semibold">
@@ -150,21 +150,21 @@ export default function TaxServicesPage() {
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">No cost</span>
+                  <span className="text-black">No cost</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     IRS-aligned volunteer program
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Appointment-based</span>
+                  <span className="text-black">Appointment-based</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-brand-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Secure document handling
                   </span>
                 </li>
@@ -177,7 +177,7 @@ export default function TaxServicesPage() {
                 Get Free Tax Help
               </Link>
 
-              <p className="text-xs text-gray-600 italic">
+              <p className="text-xs text-black italic">
                 Free tax services are provided through Rise Up Foundation and
                 follow IRS VITA/TCE guidelines.
               </p>
@@ -188,7 +188,7 @@ export default function TaxServicesPage() {
               <div className="flex items-center gap-3 mb-4">
                 <Building2 className="w-10 h-10 text-brand-blue-600" />
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <h3 className="text-2xl font-bold text-black">
                     SupersonicFastCash
                   </h3>
                   <p className="text-blue-700 font-semibold">
@@ -200,21 +200,21 @@ export default function TaxServicesPage() {
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Experienced preparers</span>
+                  <span className="text-black">Experienced preparers</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Fast turnaround</span>
+                  <span className="text-black">Fast turnaround</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Business & self-employed support
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-brand-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">
+                  <span className="text-black">
                     Secure upload & appointments
                   </span>
                 </li>
@@ -227,7 +227,7 @@ export default function TaxServicesPage() {
                 Book Paid Tax Services
               </Link>
 
-              <p className="text-xs text-gray-600 italic">
+              <p className="text-xs text-black italic">
                 Paid tax services are provided by SupersonicFastCash, a
                 for-profit tax preparation business.
               </p>
@@ -243,14 +243,14 @@ export default function TaxServicesPage() {
             <div className="flex items-start gap-4">
               <AlertCircle className="w-8 h-8 text-brand-orange-600 flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold text-black mb-3">
                   Important Compliance Notice
                 </h3>
-                <p className="text-gray-700 leading-relaxed mb-2">
+                <p className="text-black leading-relaxed mb-2">
                   Free and paid tax services are operated separately. Clients
                   must choose one service path.
                 </p>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-black leading-relaxed">
                   Volunteers involved in free tax services do not receive
                   compensation for tax preparation.
                 </p>
@@ -263,7 +263,7 @@ export default function TaxServicesPage() {
       {/* Additional Resources */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-black mb-8 text-center">
             Additional Resources
           </h2>
 
@@ -275,10 +275,10 @@ export default function TaxServicesPage() {
               <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-green-600 transition-colors">
                 <Users className="w-6 h-6 text-brand-green-600 group-hover:text-white" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 Volunteer With Us
               </h3>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-black mb-4">
                 Help your community by becoming a VITA volunteer tax preparer.
               </p>
               <div className="flex items-center text-brand-green-600 font-semibold text-sm">
@@ -293,10 +293,10 @@ export default function TaxServicesPage() {
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-brand-blue-600 transition-colors">
                 <Shield className="w-6 h-6 text-brand-blue-600 group-hover:text-white" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 Secure Document Upload
               </h3>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-black mb-4">
                 Upload your tax documents securely for faster processing.
               </p>
               <div className="flex items-center text-brand-blue-600 font-semibold text-sm">
@@ -308,10 +308,10 @@ export default function TaxServicesPage() {
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 IRS Resources
               </h3>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-black mb-4">
                 Official IRS information and free tax preparation resources.
               </p>
               <div className="space-y-2">

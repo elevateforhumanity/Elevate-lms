@@ -32,10 +32,10 @@ export function ProgramDetails({ program }: { program: Program }) {
             {/* Appointment-Based Enrollment Banner */}
             <ProgramAppointmentBanner />
 
-            <h2 className="text-xl font-bold text-slate-900 mt-8">
+            <h2 className="text-xl font-bold text-black mt-8">
               What You&apos;ll Learn
             </h2>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-black">
               {program.whatYouLearn?.map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
@@ -44,7 +44,7 @@ export function ProgramDetails({ program }: { program: Program }) {
             <h3 className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-slate-500">
               Program Highlights
             </h3>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-black">
               {program.highlights?.map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
@@ -53,7 +53,7 @@ export function ProgramDetails({ program }: { program: Program }) {
             <h3 className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-slate-500">
               Is This Program For You?
             </h3>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-black">
               {program.requirements?.map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
@@ -64,24 +64,24 @@ export function ProgramDetails({ program }: { program: Program }) {
             {/* Quick Facts */}
             <div className="space-y-2">
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                <span className="text-xs text-slate-600">Duration</span>
-                <span className="text-sm font-semibold text-slate-900">
+                <span className="text-xs text-black">Duration</span>
+                <span className="text-sm font-semibold text-black">
                   {program.duration}
                 </span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                <span className="text-xs text-slate-600">Cost</span>
+                <span className="text-xs text-black">Cost</span>
                 <span className="text-sm font-bold text-green-600">$0*</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                <span className="text-xs text-slate-600">Format</span>
-                <span className="text-sm font-semibold text-slate-900">
+                <span className="text-xs text-black">Format</span>
+                <span className="text-sm font-semibold text-black">
                   {program.delivery.split(' ')[0]}
                 </span>
               </div>
               <div className="flex justify-between items-center py-2">
-                <span className="text-xs text-slate-600">Level</span>
-                <span className="text-sm font-semibold text-slate-900">
+                <span className="text-xs text-black">Level</span>
+                <span className="text-sm font-semibold text-black">
                   Entry
                 </span>
               </div>
@@ -120,7 +120,7 @@ export function ProgramDetails({ program }: { program: Program }) {
             )}
 
             <div className="border-t border-slate-200 pt-4 mt-4">
-              <h4 className="text-xs font-bold text-slate-900 mb-3">
+              <h4 className="text-xs font-bold text-black mb-3">
                 Ready to Apply?
               </h4>
               <a
@@ -133,7 +133,7 @@ export function ProgramDetails({ program }: { program: Program }) {
 
             {isBarberProgram && (
               <div className="border-t border-slate-200 pt-6 mt-6">
-                <h4 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <h4 className="text-sm font-bold text-black mb-4 flex items-center gap-2">
                   <svg
                     className="w-5 h-5 text-blue-600"
                     fill="currentColor"
@@ -244,7 +244,7 @@ export function ProgramDetails({ program }: { program: Program }) {
                     <div className="text-3xl font-bold text-blue-600 mb-1">
                       ${programPrice.toLocaleString()}
                     </div>
-                    <div className="text-sm text-slate-600">
+                    <div className="text-sm text-black">
                       Total Program Cost
                     </div>
                   </div>
@@ -266,7 +266,7 @@ export function ProgramDetails({ program }: { program: Program }) {
                     </svg>
                     Pay Now / See Payment Options
                   </Link>
-                  <p className="text-xs text-center text-slate-600">
+                  <p className="text-xs text-center text-black">
                     Stripe • Affirm • As low as $207/month • 0% APR available
                   </p>
                 </div>
@@ -284,10 +284,10 @@ export function ProgramDetails({ program }: { program: Program }) {
                       Premium Adaptive Checkout™
                     </p>
                   </div>
-                  <p className="text-xs text-gray-700 mb-2">
+                  <p className="text-xs text-black mb-2">
                     <strong>Flexible Payment Options:</strong>
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 pl-4 list-disc">
+                  <ul className="text-xs text-black space-y-1 pl-4 list-disc">
                     <li>
                       <strong>Pay in 4:</strong> Split into 4 interest-free
                       payments
@@ -301,7 +301,7 @@ export function ProgramDetails({ program }: { program: Program }) {
                     </li>
                   </ul>
                   <div className="mt-2 pt-2 border-t border-purple-200">
-                    <p className="text-xs text-gray-600">
+                    <p className="text-xs text-black">
                       <strong>How it works:</strong> Click "Finance with Affirm"
                       → Get instant approval → Choose your plan → Start training
                       today

@@ -217,7 +217,7 @@ export default function LessonPage() {
           </Link>
           <h2 className="font-bold text-lg">{course?.title}</h2>
           <div className="mt-3">
-            <div className="text-sm text-slate-600 mb-1">
+            <div className="text-sm text-black mb-1">
               {course?.completedLessons} of {course?.totalLessons} lessons
             </div>
             <div className="w-full bg-slate-200 rounded-full h-2">
@@ -248,7 +248,7 @@ export default function LessonPage() {
                     ? 'bg-brand-green-100 text-brand-green-600'
                     : l.id === lessonId
                       ? 'bg-blue-100 text-brand-blue-600'
-                      : 'bg-slate-100 text-slate-600'
+                      : 'bg-slate-100 text-black'
                 }`}
               >
                 {l.completed ? (
@@ -259,7 +259,7 @@ export default function LessonPage() {
               </div>
               <div className="flex-1 min-w-0">
                 <div
-                  className={`font-semibold text-sm truncate ${l.id === lessonId ? 'text-blue-900' : 'text-slate-900'}`}
+                  className={`font-semibold text-sm truncate ${l.id === lessonId ? 'text-blue-900' : 'text-black'}`}
                 >
                   {l.title}
                 </div>
@@ -316,7 +316,7 @@ export default function LessonPage() {
                 className={`pb-3 px-1 font-semibold whitespace-nowrap ${
                   activeTab === 'overview'
                     ? 'border-b-2 border-brand-blue-600 text-brand-blue-600'
-                    : 'text-slate-600 hover:text-slate-900'
+                    : 'text-black hover:text-black'
                 }`}
               >
                 <BookOpen className="w-4 h-4 inline mr-2" />
@@ -327,7 +327,7 @@ export default function LessonPage() {
                 className={`pb-3 px-1 font-semibold whitespace-nowrap ${
                   activeTab === 'resources'
                     ? 'border-b-2 border-brand-blue-600 text-brand-blue-600'
-                    : 'text-slate-600 hover:text-slate-900'
+                    : 'text-black hover:text-black'
                 }`}
               >
                 <FileText className="w-4 h-4 inline mr-2" />
@@ -338,7 +338,7 @@ export default function LessonPage() {
                 className={`pb-3 px-1 font-semibold whitespace-nowrap ${
                   activeTab === 'notes'
                     ? 'border-b-2 border-brand-blue-600 text-brand-blue-600'
-                    : 'text-slate-600 hover:text-slate-900'
+                    : 'text-black hover:text-black'
                 }`}
               >
                 <MessageSquare className="w-4 h-4 inline mr-2" />
@@ -351,7 +351,7 @@ export default function LessonPage() {
           <div className="mb-8">
             {activeTab === 'overview' && (
               <div className="prose max-w-none">
-                <p className="text-slate-700 text-lg leading-relaxed">
+                <p className="text-black text-lg leading-relaxed">
                   {lesson.description}
                 </p>
               </div>
@@ -408,7 +408,7 @@ export default function LessonPage() {
               disabled={!hasPrevious}
               className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition ${
                 hasPrevious
-                  ? 'bg-slate-100 hover:bg-slate-200 text-slate-900'
+                  ? 'bg-slate-100 hover:bg-slate-200 text-black'
                   : 'bg-slate-50 text-slate-400 cursor-not-allowed'
               }`}
             >

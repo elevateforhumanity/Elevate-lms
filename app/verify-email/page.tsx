@@ -60,10 +60,10 @@ export default function VerifyEmailPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-orange-100 rounded-full mb-4">
             <Mail className="w-8 h-8 text-brand-orange-600" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <h1 className="text-2xl font-bold text-black mb-2">
             Verify Your Email
           </h1>
-          <p className="text-gray-600">We sent a verification link to:</p>
+          <p className="text-black">We sent a verification link to:</p>
           <p className="text-brand-blue-600 font-semibold mt-2">{email}</p>
         </div>
 
@@ -112,17 +112,17 @@ export default function VerifyEmailPage() {
 
           <button
             onClick={() => window.location.reload()}
-            className="w-full px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition"
+            className="w-full px-6 py-3 border-2 border-gray-300 text-black font-semibold rounded-lg hover:bg-gray-50 transition"
           >
             I've Verified - Refresh Page
           </button>
         </div>
 
         <div className="mt-6 pt-6 border-t border-gray-200 text-center">
-          <p className="text-sm text-gray-600 mb-2">
+          <p className="text-sm text-black mb-2">
             Didn't receive the email?
           </p>
-          <ul className="text-xs text-gray-700 space-y-1">
+          <ul className="text-xs text-black space-y-1">
             <li>• Check your spam/junk folder</li>
             <li>• Make sure {email} is correct</li>
             <li>• Wait a few minutes and try again</li>

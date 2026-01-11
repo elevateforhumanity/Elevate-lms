@@ -16,14 +16,14 @@ export default function PaymentCancelPage() {
       <div className="container mx-auto px-4 max-w-2xl text-center">
         <div className="bg-white rounded-2xl shadow-xl p-12">
           <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <XCircle className="w-12 h-12 text-gray-600" />
+            <XCircle className="w-12 h-12 text-black" />
           </div>
 
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 text-2xl md:text-3xl lg:text-4xl">
+          <h1 className="text-4xl font-bold text-black mb-4 text-2xl md:text-3xl lg:text-4xl">
             Payment Cancelled
           </h1>
 
-          <p className="text-base md:text-lg text-gray-600 mb-8">
+          <p className="text-base md:text-lg text-black mb-8">
             Your payment was cancelled. No charges were made to your account.
           </p>
 
@@ -55,14 +55,14 @@ export default function PaymentCancelPage() {
             </Link>
             <Link
               href="/programs"
-              className="bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
+              className="bg-gray-200 text-black px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
             >
               View Programs
             </Link>
           </div>
 
           <div className="mt-8 pt-8 border-t border-gray-200">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Questions? Contact us at{' '}
               <a
                 href="tel:317-314-3757"

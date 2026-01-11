@@ -66,7 +66,7 @@ export function ModulesTable({
       case 'external':
         return 'bg-yellow-100 text-yellow-800';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-gray-100 text-black';
     }
   };
 
@@ -125,25 +125,25 @@ export function ModulesTable({
         <table className="w-full">
           <thead className="bg-gray-50 border-b">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Module
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Program
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Type
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Order
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Duration
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase tracking-wider">
                 Required
               </th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-700 uppercase tracking-wider">
+              <th className="px-6 py-3 text-right text-xs font-medium text-black uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -153,7 +153,7 @@ export function ModulesTable({
               <tr>
                 <td
                   colSpan={7}
-                  className="px-6 py-12 text-center text-gray-700"
+                  className="px-6 py-12 text-center text-black"
                 >
                   No modules found
                 </td>
@@ -163,11 +163,11 @@ export function ModulesTable({
                 <tr key={module.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4">
                     <div>
-                      <div className="font-medium text-gray-900">
+                      <div className="font-medium text-black">
                         {module.title}
                       </div>
                       {module.description && (
-                        <div className="text-sm text-gray-700 line-clamp-1">
+                        <div className="text-sm text-black line-clamp-1">
                           {module.description}
                         </div>
                       )}
@@ -179,7 +179,7 @@ export function ModulesTable({
                         )}
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">
+                  <td className="px-6 py-4 text-sm text-black">
                     {module.program?.name || 'Unknown'}
                   </td>
                   <td className="px-6 py-4">
@@ -189,10 +189,10 @@ export function ModulesTable({
                       {module.module_type}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">
+                  <td className="px-6 py-4 text-sm text-black">
                     #{module.order_index}
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-900">
+                  <td className="px-6 py-4 text-sm text-black">
                     {module.duration_hours ? `${module.duration_hours}h` : '-'}
                   </td>
                   <td className="px-6 py-4">
@@ -201,7 +201,7 @@ export function ModulesTable({
                         ✓ Required
                       </span>
                     ) : (
-                      <span className="text-gray-600">Optional</span>
+                      <span className="text-black">Optional</span>
                     )}
                   </td>
                   <td className="px-6 py-4 text-right text-sm font-medium">
@@ -216,7 +216,7 @@ export function ModulesTable({
                         <Link
                           href={`/student/programs/${module.program?.slug}/modules/${module.id}`}
                           target="_blank"
-                          className="text-gray-600 hover:text-gray-900"
+                          className="text-black hover:text-black"
                         >
                           Preview
                         </Link>
@@ -232,7 +232,7 @@ export function ModulesTable({
 
       {/* Pagination info */}
       <div className="px-6 py-4 border-t bg-gray-50">
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-black">
           Showing <span className="font-medium">{filteredModules.length}</span>{' '}
           of <span className="font-medium">{modules.length}</span> modules
         </p>

@@ -62,7 +62,7 @@ export default function UniversalNav({
             <Link
               href={ctaHref}
               target={ctaHref.startsWith('http') ? '_blank' : undefined}
-              className="hidden md:block bg-white text-gray-900 px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors cursor-pointer"
+              className="hidden md:block bg-white text-black px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors cursor-pointer"
             >
               {ctaText}
             </Link>
@@ -100,7 +100,7 @@ export default function UniversalNav({
                 <Link
                   href={ctaHref}
                   target={ctaHref.startsWith('http') ? '_blank' : undefined}
-                  className="bg-white text-gray-900 px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors text-center cursor-pointer"
+                  className="bg-white text-black px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition-colors text-center cursor-pointer"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {ctaText}

@@ -37,7 +37,7 @@ CardHeader.displayName = 'CardHeader';
 
 export const CardTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
   ({ children, className = '', ...props }, ref) => (
-    <h3 ref={ref} className={`text-xl font-semibold text-slate-900 ${className}`} {...props}>
+    <h3 ref={ref} className={`text-xl font-semibold text-black ${className}`} {...props}>
       {children}
     </h3>
   )
@@ -55,7 +55,7 @@ CardContent.displayName = 'CardContent';
 
 export const CardDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
   ({ children, className = '', ...props }, ref) => (
-    <p ref={ref} className={`text-sm text-slate-600 ${className}`} {...props}>
+    <p ref={ref} className={`text-sm text-black ${className}`} {...props}>
       {children}
     </p>
   )
@@ -108,13 +108,13 @@ export const ProgramCard: React.FC<ProgramCardProps> = ({
               </span>
             )}
           </div>
-          <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-brand-orange-600 transition-colors">
+          <h3 className="text-xl font-bold text-black mb-2 group-hover:text-brand-orange-600 transition-colors">
             {title}
           </h3>
           {provider && (
-            <p className="text-sm text-slate-600 mb-3">{provider}</p>
+            <p className="text-sm text-black mb-3">{provider}</p>
           )}
-          <p className="text-sm text-slate-600 mb-4 line-clamp-2">{description}</p>
+          <p className="text-sm text-black mb-4 line-clamp-2">{description}</p>
           <div className="flex items-center gap-4 text-sm text-slate-500">
             {duration && (
               <div className="flex items-center gap-1">
@@ -163,8 +163,8 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
           />
         </div>
         <div>
-          <h4 className="font-bold text-slate-900">{name}</h4>
-          <p className="text-sm text-slate-600">{program}</p>
+          <h4 className="font-bold text-black">{name}</h4>
+          <p className="text-sm text-black">{program}</p>
           {rating && (
             <div className="flex items-center gap-1 mt-1">
               {[...Array(5)].map((_, i) => (
@@ -179,7 +179,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
           )}
         </div>
       </div>
-      <p className="text-slate-700 leading-relaxed italic">"{quote}"</p>
+      <p className="text-black leading-relaxed italic">"{quote}"</p>
     </Card>
   );
 };
@@ -217,17 +217,17 @@ export const BlogCard: React.FC<BlogCardProps> = ({
         </div>
         <div className="p-6">
           <div className="flex items-center gap-2 mb-3">
-            <span className="px-2 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded">
+            <span className="px-2 py-1 bg-slate-100 text-black text-xs font-semibold rounded">
               {category}
             </span>
             {readTime && (
               <span className="text-xs text-slate-500">{readTime}</span>
             )}
           </div>
-          <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-orange-600 transition-colors line-clamp-2">
+          <h3 className="text-lg font-bold text-black mb-2 group-hover:text-brand-orange-600 transition-colors line-clamp-2">
             {title}
           </h3>
-          <p className="text-sm text-slate-600 mb-4 line-clamp-3">{excerpt}</p>
+          <p className="text-sm text-black mb-4 line-clamp-3">{excerpt}</p>
           <p className="text-xs text-slate-500">{date}</p>
         </div>
       </Card>
@@ -260,7 +260,7 @@ export const StatCard: React.FC<StatCardProps> = ({
         </div>
       )}
       <div className="text-4xl font-bold text-brand-orange-600 mb-2 text-2xl md:text-3xl lg:text-4xl">{number}</div>
-      <div className="text-sm font-semibold text-slate-600 uppercase tracking-wide">{label}</div>
+      <div className="text-sm font-semibold text-black uppercase tracking-wide">{label}</div>
       {trend && (
         <div className={`text-xs mt-2 ${trend.direction === 'up' ? 'text-green-600' : 'text-brand-orange-600'}`}>
           {trend.direction === 'up' ? '↑' : '↓'} {trend.value}

@@ -43,7 +43,7 @@ export function CompactHero({
     <section className={backgrounds[variant]}>
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         {eyebrow && (
-          <p className="mb-3 text-sm font-medium text-gray-600 uppercase tracking-wide">
+          <p className="mb-3 text-sm font-medium text-black uppercase tracking-wide">
             {eyebrow}
           </p>
         )}
@@ -58,11 +58,11 @@ export function CompactHero({
           </Link>
         )}
 
-        <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl text-gray-900">
+        <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl text-black">
           {headline}
         </h1>
 
-        <p className="mt-4 max-w-2xl text-base md:text-lg text-gray-700 leading-relaxed">
+        <p className="mt-4 max-w-2xl text-base md:text-lg text-black leading-relaxed">
           {description || subheadline}
         </p>
 
@@ -79,7 +79,7 @@ export function CompactHero({
             {secondaryCTA && (
               <Link
                 href={secondaryCTA.href}
-                className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-6 py-3 text-base font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-6 py-3 text-base font-semibold text-black hover:bg-gray-50 transition-colors"
               >
                 {secondaryCTA.text}
               </Link>

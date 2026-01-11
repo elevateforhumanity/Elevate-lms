@@ -144,7 +144,7 @@ export default function TakeQuizPage({
 
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-orange-600 mx-auto mb-4" />
-          <p className="text-slate-600">Loading quiz...</p>
+          <p className="text-black">Loading quiz...</p>
 
           {/* Storytelling Section */}
           <section className="py-16 bg-white">
@@ -152,10 +152,10 @@ export default function TakeQuizPage({
               <div className="max-w-7xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                       Your Journey Starts Here
                     </h2>
-                    <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                    <p className="text-lg text-black mb-6 leading-relaxed">
                       Every great career begins with a single step. Whether
                       you're looking to change careers, upgrade your skills, or
                       enter the workforce for the first time, we're here to help
@@ -177,7 +177,7 @@ export default function TakeQuizPage({
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           100% free training - no tuition, no hidden costs
                         </span>
                       </li>
@@ -195,7 +195,7 @@ export default function TakeQuizPage({
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Industry-recognized certifications that employers
                           value
                         </span>
@@ -214,7 +214,7 @@ export default function TakeQuizPage({
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Job placement assistance and career support
                         </span>
                       </li>
@@ -232,7 +232,7 @@ export default function TakeQuizPage({
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-black">
                           Flexible scheduling for working adults
                         </span>
                       </li>
@@ -302,17 +302,17 @@ export default function TakeQuizPage({
         <div className="bg-white rounded-xl border border-slate-200 p-6 mb-6 sticky top-4 z-10 shadow-sm">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">
+              <h1 className="text-2xl font-bold text-black">
                 Quiz in Progress
               </h1>
-              <p className="text-sm text-slate-600 mt-1">
+              <p className="text-sm text-black mt-1">
                 {answeredCount} of {questions.length} questions answered
               </p>
             </div>
             <div className="text-right">
               {timeRemaining !== null && (
                 <div
-                  className={`text-2xl font-bold ${timeRemaining < 60 ? 'text-brand-orange-600' : 'text-slate-900'}`}
+                  className={`text-2xl font-bold ${timeRemaining < 60 ? 'text-brand-orange-600' : 'text-black'}`}
                 >
                   {formatTime(timeRemaining)}
                 </div>
@@ -341,7 +341,7 @@ export default function TakeQuizPage({
                   </span>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-slate-900 mb-4">
+                  <h3 className="text-lg font-semibold text-black mb-4">
                     {question.question}
                   </h3>
                   <div className="space-y-3">
@@ -376,7 +376,7 @@ export default function TakeQuizPage({
                                 <div className="w-2 h-2 bg-white rounded-full" />
                               )}
                             </div>
-                            <span className="text-slate-900">{option}</span>
+                            <span className="text-black">{option}</span>
                           </div>
                         </button>
                       )
@@ -392,7 +392,7 @@ export default function TakeQuizPage({
         <div className="mt-8 bg-white rounded-xl border border-slate-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-black">
                 {answeredCount === questions.length
                   ? 'All questions answered!'
                   : `${questions.length - answeredCount} questions remaining`}

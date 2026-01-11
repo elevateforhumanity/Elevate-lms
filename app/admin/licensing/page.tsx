@@ -64,14 +64,14 @@ export default function LicensingPage() {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="text-xl font-semibold">{tenant?.name || 'Unknown Tenant'}</h3>
-                  <p className="text-sm text-gray-600">{tenant?.slug}</p>
+                  <p className="text-sm text-black">{tenant?.slug}</p>
                 </div>
                 <div className="flex gap-2">
                   <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                     license.status === 'active' ? 'bg-green-100 text-green-800' :
                     license.status === 'suspended' ? 'bg-yellow-100 text-yellow-800' :
                     license.status === 'expired' ? 'bg-red-100 text-red-800' :
-                    'bg-gray-100 text-gray-800'
+                    'bg-gray-100 text-black'
                   }`}>
                     {license.status}
                   </span>
@@ -83,15 +83,15 @@ export default function LicensingPage() {
 
               <div className="grid grid-cols-3 gap-4 mb-4">
                 <div>
-                  <p className="text-sm text-gray-600">Max Users</p>
+                  <p className="text-sm text-black">Max Users</p>
                   <p className="text-lg font-semibold">{license.max_users || '∞'}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Max Students</p>
+                  <p className="text-sm text-black">Max Students</p>
                   <p className="text-lg font-semibold">{license.max_students || '∞'}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600">Expires</p>
+                  <p className="text-sm text-black">Expires</p>
                   <p className="text-lg font-semibold">
                     {license.expires_at ? new Date(license.expires_at).toLocaleDateString() : 'Never'}
                   </p>
@@ -99,13 +99,13 @@ export default function LicensingPage() {
               </div>
 
               <div className="mb-4">
-                <p className="text-sm font-medium text-gray-700 mb-2">Features:</p>
+                <p className="text-sm font-medium text-black mb-2">Features:</p>
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(license.features).map(([key, enabled]: any) => (
                     <span
                       key={key}
                       className={`px-2 py-1 rounded text-xs ${
-                        enabled ? 'bg-green-50 text-green-700' : 'bg-gray-50 text-gray-700'
+                        enabled ? 'bg-green-50 text-green-700' : 'bg-gray-50 text-black'
                       }`}
                     >
                       {key.replace(/_/g, ' ')}
@@ -146,7 +146,7 @@ export default function LicensingPage() {
       </div>
 
       {licenses.length === 0 && (
-        <div className="text-center py-12 text-gray-700">
+        <div className="text-center py-12 text-black">
           No licenses found
         </div>
       )}

@@ -116,7 +116,7 @@ export const SearchAutocomplete: React.FC<SearchAutocompleteProps> = ({
         {query && (
           <button
             onClick={handleClear}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-black"
             aria-label="Clear search"
           >
             <X className="h-5 w-5" />
@@ -151,11 +151,11 @@ export const SearchAutocomplete: React.FC<SearchAutocompleteProps> = ({
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium text-slate-900 truncate">
+                        <p className="font-medium text-black truncate">
                           {result.title}
                         </p>
                         {result.description && (
-                          <p className="text-sm text-slate-600 line-clamp-1 mt-0.5">
+                          <p className="text-sm text-black line-clamp-1 mt-0.5">
                             {result.description}
                           </p>
                         )}

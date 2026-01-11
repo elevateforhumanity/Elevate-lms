@@ -33,7 +33,7 @@ export function SupportTicketForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
       <div>
-        <label className="block text-xs font-medium text-slate-700">
+        <label className="block text-xs font-medium text-black">
           Subject
         </label>
         <input
@@ -45,7 +45,7 @@ export function SupportTicketForm() {
         />
       </div>
       <div>
-        <label className="block text-xs font-medium text-slate-700">
+        <label className="block text-xs font-medium text-black">
           Message
         </label>
         <textarea

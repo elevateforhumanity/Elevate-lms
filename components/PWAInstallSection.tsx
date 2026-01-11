@@ -55,10 +55,10 @@ export default function PWAInstallSection() {
             <div className="inline-flex items-center gap-2 rounded-full bg-orange-600 px-4 py-2 text-sm font-bold text-white mb-6">
               📱 Download Our App
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
               Take Your Training Anywhere
             </h2>
-            <p className="text-xl text-slate-700 mb-8 leading-relaxed">
+            <p className="text-xl text-black mb-8 leading-relaxed">
               Access your courses, track progress, and stay connected—right from
               your phone. No app store required. Works on iPhone, Android, and
               desktop.
@@ -71,7 +71,7 @@ export default function PWAInstallSection() {
               📱 Download the App
             </button>
 
-            <p className="mt-6 text-sm text-slate-600">
+            <p className="mt-6 text-sm text-black">
               ✓ Works offline - access courses anywhere
               <br />
               ✓ Fast and lightweight - no app store required

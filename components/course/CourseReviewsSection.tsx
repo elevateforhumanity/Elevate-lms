@@ -71,7 +71,7 @@ export function CourseReviewsSection({ courseId }: { courseId: string }) {
     <section className="mt-8 space-y-4 rounded-xl border bg-white p-5 shadow-sm">
       <div className="flex items-center justify-between gap-3">
         <h2 className="text-sm font-semibold">Student reviews</h2>
-        <div className="text-xs text-slate-600">
+        <div className="text-xs text-black">
           ⭐ {avg.toFixed(1)} ({reviews.length} reviews)
         </div>
       </div>
@@ -93,7 +93,7 @@ export function CourseReviewsSection({ courseId }: { courseId: string }) {
                 <div>⭐ {r.rating}</div>
               </div>
               {r.body && (
-                <p className="mt-1 text-slate-700 whitespace-pre-line">
+                <p className="mt-1 text-black whitespace-pre-line">
                   {r.body}
                 </p>
               )}

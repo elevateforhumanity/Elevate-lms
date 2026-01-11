@@ -62,7 +62,7 @@ export function StudentAchievementsWidget() {
         <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
           Achievements
         </p>
-        <p className="mt-1 text-xs text-slate-600">
+        <p className="mt-1 text-xs text-black">
           Start learning to unlock your first badge.
         </p>
       </div>
@@ -96,14 +96,14 @@ export function StudentAchievementsWidget() {
               <div className="flex items-center gap-2">
                 <span className="text-lg">{emoji}</span>
                 <div className="flex-1">
-                  <p className="line-clamp-1 text-[11px] font-semibold text-slate-900">
+                  <p className="line-clamp-1 text-[11px] font-semibold text-black">
                     {a.label}
                   </p>
                   <p className="text-[10px] text-slate-500">{dateLabel}</p>
                 </div>
               </div>
               {a.description && (
-                <p className="line-clamp-2 text-[10px] text-slate-600">
+                <p className="line-clamp-2 text-[10px] text-black">
                   {a.description}
                 </p>
               )}

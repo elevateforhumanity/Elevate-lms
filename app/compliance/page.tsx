@@ -17,7 +17,7 @@ export default function CompliancePage() {
         <div className="text-center mb-12">
           <Shield className="h-16 w-16 text-orange-600 mx-auto mb-4" />
           <h1 className="text-4xl font-bold mb-4">Compliance & Standards</h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-black">
             We maintain the highest standards of compliance with federal and
             state workforce regulations.
           </p>
@@ -37,7 +37,7 @@ export default function CompliancePage() {
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <CheckCircle className="h-6 w-6 text-orange-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">{item}</span>
+                  <span className="text-black">{item}</span>
                 </div>
               ))}
             </div>
@@ -45,7 +45,7 @@ export default function CompliancePage() {
 
           <section className="bg-gray-50 rounded-lg p-6">
             <h2 className="text-2xl font-bold mb-4">For Partners</h2>
-            <p className="text-gray-700 mb-4">
+            <p className="text-black mb-4">
               Program holders and workforce partners can access compliance tools
               and reporting through their portals.
             </p>
@@ -59,7 +59,7 @@ export default function CompliancePage() {
 
           <section className="bg-gray-50 rounded-lg p-6">
             <h2 className="text-2xl font-bold mb-4">Questions?</h2>
-            <p className="text-gray-700 mb-4">
+            <p className="text-black mb-4">
               For compliance inquiries or to request documentation, please
               contact our compliance team.
             </p>

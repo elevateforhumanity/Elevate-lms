@@ -40,7 +40,7 @@ export default async function CheckoutPage({
           <h1 className="text-2xl font-bold text-red-600 mb-4">
             Payment System Not Configured
           </h1>
-          <p className="text-gray-600 mb-4">
+          <p className="text-black mb-4">
             The payment system is not yet configured. Please contact us directly
             to purchase.
           </p>
@@ -121,7 +121,7 @@ export default async function CheckoutPage({
           <h1 className="text-2xl font-bold text-red-600 mb-4">
             Checkout Error
           </h1>
-          <p className="text-gray-600 mb-4">
+          <p className="text-black mb-4">
             We encountered an error creating your checkout session. Please try
             again or contact support.
           </p>
@@ -134,7 +134,7 @@ export default async function CheckoutPage({
             </a>
             <a
               href="/contact?topic=licensing-enterprise"
-              className="block w-full bg-gray-200 text-gray-800 text-center py-3 rounded-lg hover:bg-gray-300"
+              className="block w-full bg-gray-200 text-black text-center py-3 rounded-lg hover:bg-gray-300"
             >
               Contact Support
             </a>

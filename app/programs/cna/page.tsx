@@ -46,41 +46,41 @@ export default function Page() {
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {/* Quick Facts */}
           <div className="bg-green-50 rounded-xl p-6 border-2 border-green-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <h3 className="text-xl font-bold text-black mb-4">
               Program Length
             </h3>
             <p className="text-3xl font-black text-green-600 mb-2">6-8 Weeks</p>
-            <p className="text-gray-600">Full-time training</p>
+            <p className="text-black">Full-time training</p>
           </div>
 
           <div className="bg-blue-50 rounded-xl p-6 border-2 border-blue-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Cost</h3>
+            <h3 className="text-xl font-bold text-black mb-4">Cost</h3>
             <p className="text-3xl font-black text-blue-600 mb-2">Varies</p>
-            <p className="text-gray-600">Funding options available</p>
+            <p className="text-black">Funding options available</p>
           </div>
 
           <div className="bg-orange-50 rounded-xl p-6 border-2 border-orange-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <h3 className="text-xl font-bold text-black mb-4">
               Starting Salary
             </h3>
             <p className="text-3xl font-black text-orange-600 mb-2">
               $16-$20/hr
             </p>
-            <p className="text-gray-600">Entry-level positions</p>
+            <p className="text-black">Entry-level positions</p>
           </div>
         </div>
 
         {/* What You'll Learn */}
         <div id="curriculum" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl font-bold text-black mb-8">
             What You'll Learn
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+              <h3 className="text-xl font-bold text-black mb-4">
                 Clinical Skills
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>
                   • Vital signs monitoring (blood pressure, temperature, pulse)
                 </li>
@@ -92,10 +92,10 @@ export default function Page() {
             </div>
 
             <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+              <h3 className="text-xl font-bold text-black mb-4">
                 Professional Skills
               </h3>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-black">
                 <li>• Medical terminology</li>
                 <li>• Patient communication and empathy</li>
                 <li>• Documentation and record keeping</li>
@@ -108,19 +108,19 @@ export default function Page() {
 
         {/* Program Schedule */}
         <div id="schedule" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl font-bold text-black mb-8">
             Program Schedule
           </h2>
           <div className="bg-gray-50 rounded-xl p-8 border-2 border-gray-200">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <h3 className="text-xl font-bold text-black mb-4">
                   Classroom Training
                 </h3>
-                <p className="text-gray-700 mb-4">
+                <p className="text-black mb-4">
                   4 weeks of classroom instruction covering:
                 </p>
-                <ul className="space-y-2 text-gray-700">
+                <ul className="space-y-2 text-black">
                   <li>• Anatomy and physiology basics</li>
                   <li>• Nursing assistant duties and responsibilities</li>
                   <li>• Patient care procedures</li>
@@ -129,13 +129,13 @@ export default function Page() {
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <h3 className="text-xl font-bold text-black mb-4">
                   Clinical Experience
                 </h3>
-                <p className="text-gray-700 mb-4">
+                <p className="text-black mb-4">
                   2-4 weeks of hands-on training in:
                 </p>
-                <ul className="space-y-2 text-gray-700">
+                <ul className="space-y-2 text-black">
                   <li>• Nursing homes and long-term care facilities</li>
                   <li>• Hospitals and medical centers</li>
                   <li>• Supervised patient care</li>
@@ -148,16 +148,16 @@ export default function Page() {
 
         {/* Requirements */}
         <div id="requirements" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl font-bold text-black mb-8">
             Requirements
           </h2>
           <div className="bg-white rounded-xl p-8 border-2 border-gray-200">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <h3 className="text-xl font-bold text-black mb-4">
                   To Enroll:
                 </h3>
-                <ul className="space-y-2 text-gray-700">
+                <ul className="space-y-2 text-black">
                   <li>• High school diploma or GED</li>
                   <li>• Valid government-issued ID</li>
                   <li>• Background check (required for healthcare)</li>
@@ -167,10 +167,10 @@ export default function Page() {
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <h3 className="text-xl font-bold text-black mb-4">
                   To Graduate:
                 </h3>
-                <ul className="space-y-2 text-gray-700">
+                <ul className="space-y-2 text-black">
                   <li>• Complete all classroom hours</li>
                   <li>• Pass skills competency exam</li>
                   <li>• Complete clinical rotation hours</li>
@@ -184,32 +184,32 @@ export default function Page() {
 
         {/* Career Opportunities */}
         <div id="career" className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl font-bold text-black mb-8">
             Career Opportunities
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 Nursing Homes
               </h3>
-              <p className="text-gray-600 mb-2">$16-$18/hour</p>
-              <p className="text-sm text-gray-700">Long-term patient care</p>
+              <p className="text-black mb-2">$16-$18/hour</p>
+              <p className="text-sm text-black">Long-term patient care</p>
             </div>
 
             <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 Hospitals
               </h3>
-              <p className="text-gray-600 mb-2">$17-$20/hour</p>
-              <p className="text-sm text-gray-700">Acute care settings</p>
+              <p className="text-black mb-2">$17-$20/hour</p>
+              <p className="text-sm text-black">Acute care settings</p>
             </div>
 
             <div className="bg-white rounded-lg p-6 border-2 border-gray-200">
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
+              <h3 className="text-lg font-bold text-black mb-2">
                 Home Health
               </h3>
-              <p className="text-gray-600 mb-2">$18-$22/hour</p>
-              <p className="text-sm text-gray-700">In-home patient care</p>
+              <p className="text-black mb-2">$18-$22/hour</p>
+              <p className="text-sm text-black">In-home patient care</p>
             </div>
           </div>
         </div>

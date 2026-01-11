@@ -57,10 +57,10 @@ export default async function AuthorPage({
               .map((n) => n[0])
               .join('')}
           </div>
-          <h1 className="text-4xl font-bold text-slate-900 mb-2 capitalize text-2xl md:text-3xl lg:text-4xl">
+          <h1 className="text-4xl font-bold text-black mb-2 capitalize text-2xl md:text-3xl lg:text-4xl">
             {authorName}
           </h1>
-          <p className="text-slate-600">
+          <p className="text-black">
             {posts.length} article{posts.length === 1 ? '' : 's'} published
           </p>
         </div>
@@ -90,7 +90,7 @@ export default async function AuthorPage({
                     {post.category}
                   </span>
                 )}
-                <h2 className="text-xl font-bold text-slate-900 mb-2">
+                <h2 className="text-xl font-bold text-black mb-2">
                   <Link
                     href={`/blog/${post.slug}`}
                     className="hover:text-brand-blue-600"
@@ -99,7 +99,7 @@ export default async function AuthorPage({
                   </Link>
                 </h2>
                 {post.excerpt && (
-                  <p className="text-slate-600 mb-4 line-clamp-3">
+                  <p className="text-black mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
                 )}

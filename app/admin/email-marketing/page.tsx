@@ -76,10 +76,10 @@ export default function EmailMarketingPage() {
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Email Marketing
           </h1>
-          <p className="text-slate-600">
+          <p className="text-black">
             Send campaigns to students, employers, and partners. Powered by
             Resend.
           </p>
@@ -94,8 +94,8 @@ export default function EmailMarketingPage() {
                 THIS MONTH
               </span>
             </div>
-            <div className="text-2xl font-bold text-slate-900">2,847</div>
-            <div className="text-sm text-slate-600">Emails Sent</div>
+            <div className="text-2xl font-bold text-black">2,847</div>
+            <div className="text-sm text-black">Emails Sent</div>
           </div>
 
           <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
@@ -105,8 +105,8 @@ export default function EmailMarketingPage() {
                 OPEN RATE
               </span>
             </div>
-            <div className="text-2xl font-bold text-slate-900">42.3%</div>
-            <div className="text-sm text-slate-600">Average Opens</div>
+            <div className="text-2xl font-bold text-black">42.3%</div>
+            <div className="text-sm text-black">Average Opens</div>
           </div>
 
           <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
@@ -116,8 +116,8 @@ export default function EmailMarketingPage() {
                 CONTACTS
               </span>
             </div>
-            <div className="text-2xl font-bold text-slate-900">1,234</div>
-            <div className="text-sm text-slate-600">Total Subscribers</div>
+            <div className="text-2xl font-bold text-black">1,234</div>
+            <div className="text-sm text-black">Total Subscribers</div>
           </div>
 
           <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
@@ -127,8 +127,8 @@ export default function EmailMarketingPage() {
                 CLICK RATE
               </span>
             </div>
-            <div className="text-2xl font-bold text-slate-900">8.7%</div>
-            <div className="text-sm text-slate-600">Average Clicks</div>
+            <div className="text-2xl font-bold text-black">8.7%</div>
+            <div className="text-sm text-black">Average Clicks</div>
           </div>
         </div>
 
@@ -140,7 +140,7 @@ export default function EmailMarketingPage() {
               className={`pb-3 px-1 text-sm font-semibold border-b-2 transition ${
                 activeTab === 'campaigns'
                   ? 'border-brand-orange-600 text-brand-orange-600'
-                  : 'border-transparent text-slate-600 hover:text-slate-900'
+                  : 'border-transparent text-black hover:text-black'
               }`}
             >
               Campaigns
@@ -150,14 +150,14 @@ export default function EmailMarketingPage() {
               className={`pb-3 px-1 text-sm font-semibold border-b-2 transition ${
                 activeTab === 'templates'
                   ? 'border-brand-orange-600 text-brand-orange-600'
-                  : 'border-transparent text-slate-600 hover:text-slate-900'
+                  : 'border-transparent text-black hover:text-black'
               }`}
             >
               Templates
             </button>
             <button
               onClick={() => router.push('/admin/email-marketing/analytics')}
-              className="pb-3 px-1 text-sm font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 transition"
+              className="pb-3 px-1 text-sm font-semibold border-b-2 border-transparent text-black hover:text-black transition"
             >
               Analytics
             </button>
@@ -168,7 +168,7 @@ export default function EmailMarketingPage() {
         {activeTab === 'campaigns' && (
           <div className="space-y-4">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-semibold text-slate-900">
+              <h2 className="text-xl font-semibold text-black">
                 Email Campaigns
               </h2>
               <button
@@ -217,7 +217,7 @@ export default function EmailMarketingPage() {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-slate-900">
+                        <h3 className="text-lg font-semibold text-black">
                           {campaign.name}
                         </h3>
                         <span
@@ -226,7 +226,7 @@ export default function EmailMarketingPage() {
                               ? 'bg-brand-green-100 text-green-800'
                               : campaign.status === 'Scheduled'
                                 ? 'bg-blue-100 text-blue-800'
-                                : 'bg-slate-100 text-slate-800'
+                                : 'bg-slate-100 text-black'
                           }`}
                         >
                           {campaign.status}
@@ -235,25 +235,25 @@ export default function EmailMarketingPage() {
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
                         <div>
                           <div className="text-slate-500">Sent</div>
-                          <div className="font-semibold text-slate-900">
+                          <div className="font-semibold text-black">
                             {campaign.sent}
                           </div>
                         </div>
                         <div>
                           <div className="text-slate-500">Recipients</div>
-                          <div className="font-semibold text-slate-900">
+                          <div className="font-semibold text-black">
                             {campaign.recipients}
                           </div>
                         </div>
                         <div>
                           <div className="text-slate-500">Opens</div>
-                          <div className="font-semibold text-slate-900">
+                          <div className="font-semibold text-black">
                             {campaign.opens}
                           </div>
                         </div>
                         <div>
                           <div className="text-slate-500">Clicks</div>
-                          <div className="font-semibold text-slate-900">
+                          <div className="font-semibold text-black">
                             {campaign.clicks}
                           </div>
                         </div>
@@ -272,7 +272,7 @@ export default function EmailMarketingPage() {
         {activeTab === 'templates' && (
           <div className="space-y-4">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-semibold text-slate-900">
+              <h2 className="text-xl font-semibold text-black">
                 Email Templates
               </h2>
               <button className="inline-flex items-center gap-2 rounded-xl bg-brand-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-orange-700 transition" aria-label="Action button">
@@ -296,17 +296,17 @@ export default function EmailMarketingPage() {
                   <div className="aspect-video bg-slate-100 rounded-lg mb-4 flex items-center justify-center">
                     <Mail className="h-12 w-12 text-slate-400" />
                   </div>
-                  <h3 className="font-semibold text-slate-900 mb-2">
+                  <h3 className="font-semibold text-black mb-2">
                     {template}
                   </h3>
-                  <p className="text-sm text-slate-600 mb-4">
+                  <p className="text-sm text-black mb-4">
                     Professional email template for {template.toLowerCase()}
                   </p>
                   <div className="flex gap-2">
                     <button className="flex-1 text-sm font-semibold text-brand-orange-600 hover:text-brand-orange-700" aria-label="Action button">
                       Edit
                     </button>
-                    <button className="flex-1 text-sm font-semibold text-slate-600 hover:text-slate-900" aria-label="Action button">
+                    <button className="flex-1 text-sm font-semibold text-black hover:text-black" aria-label="Action button">
                       Preview
                     </button>
                   </div>
@@ -318,12 +318,12 @@ export default function EmailMarketingPage() {
 
         {activeTab === 'analytics' && (
           <div className="space-y-6">
-            <h2 className="text-xl font-semibold text-slate-900">
+            <h2 className="text-xl font-semibold text-black">
               Email Analytics
             </h2>
 
             <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
-              <h3 className="font-semibold text-slate-900 mb-4">
+              <h3 className="font-semibold text-black mb-4">
                 Performance Over Time
               </h3>
               <div className="h-64 flex items-center justify-center bg-slate-50 rounded-lg">
@@ -338,7 +338,7 @@ export default function EmailMarketingPage() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
-                <h3 className="font-semibold text-slate-900 mb-4">
+                <h3 className="font-semibold text-black mb-4">
                   Top Performing Campaigns
                 </h3>
                 <div className="space-y-3">
@@ -351,7 +351,7 @@ export default function EmailMarketingPage() {
                       key={idx}
                       className="flex justify-between items-center"
                     >
-                      <span className="text-sm text-slate-700">
+                      <span className="text-sm text-black">
                         {item.name}
                       </span>
                       <span className="text-sm font-semibold text-brand-green-600">
@@ -363,7 +363,7 @@ export default function EmailMarketingPage() {
               </div>
 
               <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
-                <h3 className="font-semibold text-slate-900 mb-4">
+                <h3 className="font-semibold text-black mb-4">
                   Engagement by Audience
                 </h3>
                 <div className="space-y-3">
@@ -376,7 +376,7 @@ export default function EmailMarketingPage() {
                       key={idx}
                       className="flex justify-between items-center"
                     >
-                      <span className="text-sm text-slate-700">
+                      <span className="text-sm text-black">
                         {item.name}
                       </span>
                       <span className="text-sm font-semibold text-brand-blue-600">
@@ -396,10 +396,10 @@ export default function EmailMarketingPage() {
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                     Your Journey Starts Here
                   </h2>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  <p className="text-lg text-black mb-6 leading-relaxed">
                     Every great career begins with a single step. Whether you're
                     looking to change careers, upgrade your skills, or enter the
                     workforce for the first time, we're here to help you
@@ -421,7 +421,7 @@ export default function EmailMarketingPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         100% free training - no tuition, no hidden costs
                       </span>
                     </li>
@@ -439,7 +439,7 @@ export default function EmailMarketingPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Industry-recognized certifications that employers value
                       </span>
                     </li>
@@ -457,7 +457,7 @@ export default function EmailMarketingPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Job placement assistance and career support
                       </span>
                     </li>
@@ -475,7 +475,7 @@ export default function EmailMarketingPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Flexible scheduling for working adults
                       </span>
                     </li>

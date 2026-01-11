@@ -18,7 +18,7 @@ export function ProgramNav({ sections }: ProgramNavProps) {
             <a
               key={section.id}
               href={`#${section.id}`}
-              className="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-brand-blue-600 hover:bg-gray-50 rounded-lg transition whitespace-nowrap"
+              className="px-4 py-2 text-sm font-semibold text-black hover:text-brand-blue-600 hover:bg-gray-50 rounded-lg transition whitespace-nowrap"
             >
               {section.label}
             </a>

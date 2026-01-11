@@ -114,16 +114,16 @@ export function TutorialSystem({
                 {tutorial.category}
               </span>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 className="text-2xl font-bold text-black">
               {tutorial.title}
             </h2>
-            <p className="text-sm text-gray-600 mt-1">
+            <p className="text-sm text-black mt-1">
               {tutorial.description} • {tutorial.duration} min
             </p>
           </div>
           <button
             onClick={handleClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-gray-400 hover:text-black transition-colors"
             aria-label="Close tutorial"
           >
             <X className="w-6 h-6" />
@@ -133,7 +133,7 @@ export function TutorialSystem({
         {/* Progress bar */}
         <div className="px-6 pt-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-700">
+            <span className="text-sm font-medium text-black">
               Step {currentStepIndex + 1} of {tutorial.steps.length}
             </span>
             <span className="text-sm text-gray-500">
@@ -153,7 +153,7 @@ export function TutorialSystem({
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-6">
           <div className="mb-4">
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+            <h3 className="text-xl font-semibold text-black mb-3">
               {currentStep.title}
             </h3>
 
@@ -167,7 +167,7 @@ export function TutorialSystem({
             </div>
 
             <div className="prose max-w-none">
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+              <p className="text-black leading-relaxed whitespace-pre-line">
                 {currentStep.content}
               </p>
             </div>
@@ -225,7 +225,7 @@ export function TutorialSystem({
           {currentStep.type === 'quiz' && (
             <div className="mt-6 space-y-3">
               <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <p className="text-sm text-gray-600 mb-3">
+                <p className="text-sm text-black mb-3">
                   Test your understanding before moving forward
                 </p>
                 <button className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
@@ -241,7 +241,7 @@ export function TutorialSystem({
           <button
             onClick={handlePrevious}
             disabled={isFirstStep}
-            className="flex items-center gap-2 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-4 py-2 text-black bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <ChevronLeft className="w-4 h-4" />
             Previous
@@ -309,17 +309,17 @@ export function TutorialLibrary({ userId, userRole }: { userId: string; userRole
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <h2 className="text-2xl font-bold text-black mb-2">
           Interactive Tutorials
         </h2>
-        <p className="text-gray-600">
+        <p className="text-black">
           Learn how to use all the features of the platform with step-by-step guides
         </p>
       </div>
 
       {Object.entries(tutorialsByCategory).map(([category, tutorials]) => (
         <div key={category}>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+          <h3 className="text-lg font-semibold text-black mb-4">
             {category}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -334,10 +334,10 @@ export function TutorialLibrary({ userId, userRole }: { userId: string; userRole
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
-                      <h4 className="font-semibold text-gray-900 mb-1">
+                      <h4 className="font-semibold text-black mb-1">
                         {tutorial.title}
                       </h4>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-black">
                         {tutorial.description}
                       </p>
                     </div>

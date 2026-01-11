@@ -80,7 +80,7 @@ export function PeerTutoringMarketplace() {
               className={`px-4 py-2 rounded-lg text-sm font-medium ${
                 selectedSubject === subject
                   ? 'bg-brand-orange-600 text-white'
-                  : 'bg-white text-gray-700 border hover:bg-gray-50'
+                  : 'bg-white text-black border hover:bg-gray-50'
               }`}
             >
               {subject}
@@ -103,10 +103,10 @@ export function PeerTutoringMarketplace() {
                 </div>
               </div>
 
-              <p className="text-gray-600 text-sm mb-4">{tutor.bio}</p>
+              <p className="text-black text-sm mb-4">{tutor.bio}</p>
 
               <div className="mb-4">
-                <p className="text-sm font-semibold text-gray-700 mb-2">Subjects:</p>
+                <p className="text-sm font-semibold text-black mb-2">Subjects:</p>
                 <div className="flex flex-wrap gap-2">
                   {tutor.subjects.map((subject) => (
                     <span key={subject} className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded">
@@ -116,7 +116,7 @@ export function PeerTutoringMarketplace() {
                 </div>
               </div>
 
-              <div className="mb-4 text-sm text-gray-600">
+              <div className="mb-4 text-sm text-black">
                 <p>📅 {tutor.availability}</p>
                 <p className="font-bold text-brand-orange-600 text-lg mt-2">${tutor.hourlyRate}/hour</p>
               </div>

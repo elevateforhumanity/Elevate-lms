@@ -125,7 +125,7 @@ export default function AIInstructor({
         {/* Message */}
         <div className="flex-1">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-bold text-gray-900">{instructorName}</h3>
+            <h3 className="font-bold text-black">{instructorName}</h3>
             <div className="flex gap-2">
               {!isSpeaking ? (
                 <button
@@ -164,7 +164,7 @@ export default function AIInstructor({
           </div>
 
           <div className="bg-white rounded-lg p-4 shadow-sm">
-            <p className="text-gray-800 leading-relaxed">{message}</p>
+            <p className="text-black leading-relaxed">{message}</p>
           </div>
 
           {isSpeaking && (

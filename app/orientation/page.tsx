@@ -62,18 +62,18 @@ export default async function OrientationPage() {
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">
                   This Is Different
                 </h2>
-                <p className="text-gray-700 mb-4">
+                <p className="text-black mb-4">
                   You've probably heard promises before. "Get trained fast."
                   "Start a new career." But then you see the price tag. Or the
                   fine print. Or the catch.
                 </p>
-                <p className="text-gray-700 mb-6">
+                <p className="text-black mb-6">
                   Here's the truth: We don't charge you. We don't put you in
                   debt. We don't make money unless you succeed. This is 100%
                   free training, funded by workforce grants, because we believe
                   everyone deserves a real shot.
                 </p>
-                <p className="text-gray-700 mb-6 font-semibold">
+                <p className="text-black mb-6 font-semibold">
                   What you're about to learn in orientation:
                 </p>
                 <ul className="space-y-3">
@@ -180,7 +180,7 @@ export default async function OrientationPage() {
                 <h3 className="text-lg font-semibold mb-3">
                   Week 1: The Basics
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   You'll meet your instructors, get your materials, and learn
                   the fundamentals. No one expects you to know everything. We
                   start from the beginning.
@@ -206,7 +206,7 @@ export default async function OrientationPage() {
                 <h3 className="text-lg font-semibold mb-3">
                   Weeks 2-12: Hands-On
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   This is where it clicks. You'll practice, make mistakes, get
                   better. Your instructors are there every step. By week 12,
                   you'll be confident.
@@ -232,7 +232,7 @@ export default async function OrientationPage() {
                 <h3 className="text-lg font-semibold mb-3">
                   Graduation & Beyond
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   You'll earn your certification, update your resume, and we'll
                   help you find work. Most graduates are hired within 30 days.
                   You're not alone in this.
@@ -247,41 +247,41 @@ export default async function OrientationPage() {
               </h2>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <p className="text-gray-700 mb-4 italic">
+                  <p className="text-black mb-4 italic">
                     "I thought I'd be the oldest person there. I wasn't. I
                     thought I'd be behind. I wasn't. Everyone starts somewhere.
                     The instructors actually care."
                   </p>
-                  <p className="text-sm font-semibold text-gray-900">
+                  <p className="text-sm font-semibold text-black">
                     — Marcus, CNA Graduate
                   </p>
                 </div>
                 <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <p className="text-gray-700 mb-4 italic">
+                  <p className="text-black mb-4 italic">
                     "I had a record. I thought no one would hire me. But they
                     helped me with my resume, practiced interviews with me, and
                     connected me with employers who gave me a chance."
                   </p>
-                  <p className="text-sm font-semibold text-gray-900">
+                  <p className="text-sm font-semibold text-black">
                     — James, HVAC Technician
                   </p>
                 </div>
                 <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <p className="text-gray-700 mb-4 italic">
+                  <p className="text-black mb-4 italic">
                     "I was working two part-time jobs with no benefits. Now I
                     have a career. I have insurance. I can actually plan for the
                     future."
                   </p>
-                  <p className="text-sm font-semibold text-gray-900">
+                  <p className="text-sm font-semibold text-black">
                     — Sarah, Medical Assistant
                   </p>
                 </div>
                 <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <p className="text-gray-700 mb-4 italic">
+                  <p className="text-black mb-4 italic">
                     "The best part? No student loans. I graduated and started
                     working the next week. No debt hanging over me."
                   </p>
-                  <p className="text-sm font-semibold text-gray-900">
+                  <p className="text-sm font-semibold text-black">
                     — David, Barber Apprentice
                   </p>
                 </div>

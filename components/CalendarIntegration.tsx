@@ -77,7 +77,7 @@ export function CalendarIntegration() {
 
               <div className="grid grid-cols-7 gap-2 mb-2">
                 {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-                  <div key={day} className="text-center font-semibold text-sm text-gray-600">
+                  <div key={day} className="text-center font-semibold text-sm text-black">
                     {day}
                   </div>
                 ))}
@@ -113,7 +113,7 @@ export function CalendarIntegration() {
                     <div className="flex justify-between items-start mb-2">
                       <div>
                         <h4 className="font-bold">{event.title}</h4>
-                        <p className="text-sm text-gray-600">{event.description}</p>
+                        <p className="text-sm text-black">{event.description}</p>
                       </div>
                       <span className={`px-2 py-1 rounded text-xs font-medium ${getTypeColor(event.type)}`}>
                         {event.type}

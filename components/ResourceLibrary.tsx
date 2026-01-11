@@ -112,7 +112,7 @@ export function ResourceLibrary() {
               key={tag}
               onClick={() => setSelectedTag(tag)}
               className={`px-4 py-2 rounded-lg text-sm font-medium ${
-                selectedTag === tag ? 'bg-brand-orange-600 text-white' : 'bg-white text-gray-700 border'
+                selectedTag === tag ? 'bg-brand-orange-600 text-white' : 'bg-white text-black border'
               }`}
             >
               {tag}
@@ -133,12 +133,12 @@ export function ResourceLibrary() {
                 </div>
               </div>
 
-              <p className="text-sm text-gray-600 mb-3">{resource.description}</p>
+              <p className="text-sm text-black mb-3">{resource.description}</p>
 
               <div className="mb-3">
                 <div className="flex flex-wrap gap-1">
                   {resource.tags.map((tag) => (
-                    <span key={tag} className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs rounded">
+                    <span key={tag} className="px-2 py-0.5 bg-gray-100 text-black text-xs rounded">
                       {tag}
                     </span>
                   ))}
@@ -157,7 +157,7 @@ export function ResourceLibrary() {
 
         {filteredResources.length === 0 && (
           <Card className="p-12 text-center">
-            <p className="text-xl text-gray-600 mb-2">No resources found</p>
+            <p className="text-xl text-black mb-2">No resources found</p>
             <p className="text-gray-500">Try adjusting your search or filters</p>
           </Card>
         )}

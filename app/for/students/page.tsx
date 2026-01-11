@@ -90,7 +90,7 @@ export default function StudentsPage() {
             </Link>
             <Link
               href="/programs"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-100 transition text-lg"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-slate-100 transition text-lg"
             >
               View All Programs
             </Link>
@@ -101,7 +101,7 @@ export default function StudentsPage() {
       {/* Benefits */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-black mb-12">
             Why Choose Us
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -111,7 +111,7 @@ export default function StudentsPage() {
                 className="flex items-center gap-3 bg-white p-6 rounded-lg border border-slate-200"
               >
                 <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
-                <span className="font-semibold text-slate-900">{benefit}</span>
+                <span className="font-semibold text-black">{benefit}</span>
               </div>
             ))}
           </div>
@@ -121,7 +121,7 @@ export default function StudentsPage() {
       {/* Programs */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-black mb-12">
             Popular Programs
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -131,10 +131,10 @@ export default function StudentsPage() {
                 href={program.href}
                 className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-lg transition group"
               >
-                <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-600">
+                <h3 className="text-xl font-bold text-black mb-4 group-hover:text-blue-600">
                   {program.title}
                 </h3>
-                <div className="space-y-2 text-sm text-slate-600 mb-4">
+                <div className="space-y-2 text-sm text-black mb-4">
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
                     <span>{program.duration}</span>
@@ -166,7 +166,7 @@ export default function StudentsPage() {
       {/* How It Works */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
+          <h2 className="text-3xl font-bold text-center text-black mb-12">
             How It Works
           </h2>
           <div className="grid md:grid-cols-4 gap-8">
@@ -196,10 +196,10 @@ export default function StudentsPage() {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white text-2xl font-bold rounded-full mb-4">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                <h3 className="text-xl font-bold text-black mb-2">
                   {item.title}
                 </h3>
-                <p className="text-slate-600">{item.desc}</p>
+                <p className="text-black">{item.desc}</p>
               </div>
             ))}
           </div>

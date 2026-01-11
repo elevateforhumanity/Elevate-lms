@@ -50,7 +50,7 @@ export default function Page() {
               </Link>
               <Link
                 href="/programs"
-                className="bg-white text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-slate-100 text-lg shadow-2xl transition-all border-2 border-white"
+                className="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-slate-100 text-lg shadow-2xl transition-all border-2 border-white"
               >
                 View Programs
               </Link>
@@ -66,7 +66,7 @@ export default function Page() {
             <h2 className="text-2xl md:text-2xl md:text-3xl font-bold mb-4 text-2xl md:text-3xl lg:text-2xl md:text-3xl">
               Your Path to a New Career
             </h2>
-            <p className="text-base md:text-lg text-slate-700">
+            <p className="text-base md:text-lg text-black">
               Three simple steps. No hidden costs. No complicated process. Just
               you and your future.
             </p>
@@ -81,7 +81,7 @@ export default function Page() {
               <h3 className="text-lg md:text-lg font-bold mb-4">
                 Apply Online
               </h3>
-              <p className="text-slate-700 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 Fill out a simple application (takes 5 minutes). Tell us about
                 yourself, what you're interested in, and what support you might
                 need. No commitment required.
@@ -102,12 +102,12 @@ export default function Page() {
               <h3 className="text-lg md:text-lg font-bold mb-4">
                 Meet Your Advisor
               </h3>
-              <p className="text-slate-700 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 Within 1-2 days, a real person will call you. They'll explain
                 programs, help you check eligibility for free funding, and
                 answer all your questions. No pressure, just guidance.
               </p>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-black">
                 Call us anytime:{' '}
                 <a
                   href="tel:3173143757"
@@ -126,7 +126,7 @@ export default function Page() {
               <h3 className="text-lg md:text-lg font-bold mb-4">
                 Start Training
               </h3>
-              <p className="text-slate-700 mb-6 leading-relaxed">
+              <p className="text-black mb-6 leading-relaxed">
                 Once approved, you'll start training—100% free. Learn new
                 skills, earn credentials, and get connected to employers. We
                 support you every step until you're hired.
@@ -151,7 +151,7 @@ export default function Page() {
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">
                   Why Thousands Choose Elevate
                 </h2>
-                <p className="text-lg text-slate-700 mb-6 leading-relaxed">
+                <p className="text-lg text-black mb-6 leading-relaxed">
                   We're not just a training program—we're a community that
                   believes everyone deserves a shot at a better life, regardless
                   of their past or current situation.
@@ -172,8 +172,8 @@ export default function Page() {
                       />
                     </svg>
                     <div>
-                      <strong className="text-slate-900">Zero Cost:</strong>
-                      <span className="text-slate-700">
+                      <strong className="text-black">Zero Cost:</strong>
+                      <span className="text-black">
                         {' '}
                         Government pays for everything—tuition, books, supplies,
                         even transportation and childcare support.
@@ -195,10 +195,10 @@ export default function Page() {
                       />
                     </svg>
                     <div>
-                      <strong className="text-slate-900">
+                      <strong className="text-black">
                         Real Credentials:
                       </strong>
-                      <span className="text-slate-700">
+                      <span className="text-black">
                         {' '}
                         State licenses and industry certifications that
                         employers actually hire for.
@@ -220,8 +220,8 @@ export default function Page() {
                       />
                     </svg>
                     <div>
-                      <strong className="text-slate-900">Job Placement:</strong>
-                      <span className="text-slate-700">
+                      <strong className="text-black">Job Placement:</strong>
+                      <span className="text-black">
                         {' '}
                         We don't stop at training—we connect you with employers
                         and support you through your first 90 days.
@@ -243,10 +243,10 @@ export default function Page() {
                       />
                     </svg>
                     <div>
-                      <strong className="text-slate-900">
+                      <strong className="text-black">
                         Second Chances Welcome:
                       </strong>
-                      <span className="text-slate-700">
+                      <span className="text-black">
                         {' '}
                         Re-entry? Past struggles? We don't judge—we help you
                         move forward.
@@ -295,7 +295,7 @@ export default function Page() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">100% Funded</h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   All programs completely free through government funding
                 </p>
               </div>
@@ -317,7 +317,7 @@ export default function Page() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Job Placement</h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   We help you find employment after training
                 </p>
               </div>
@@ -339,7 +339,7 @@ export default function Page() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Expert Training</h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   Learn from industry professionals
                 </p>
               </div>

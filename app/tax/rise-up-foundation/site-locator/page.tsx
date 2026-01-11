@@ -29,21 +29,21 @@ export default function SiteLocatorPage() {
       <div className="mb-6">
         <Link
           href="/tax/rise-up-foundation"
-          className="text-sm text-gray-600 hover:text-gray-900"
+          className="text-sm text-black hover:text-black"
         >
           ← Back to Rise Up Foundation
         </Link>
       </div>
 
       <h1 className="text-4xl font-bold">Find a VITA Site</h1>
-      <p className="mt-3 text-lg text-gray-600">
+      <p className="mt-3 text-lg text-black">
         Use the official IRS locator to find free tax preparation sites near
         you.
       </p>
 
       <section className="mt-8 rounded-2xl border bg-white p-8">
         <h2 className="text-2xl font-bold mb-4">IRS VITA Site Locator</h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-black mb-6">
           The IRS maintains a comprehensive database of all VITA sites across
           the country. Use their locator tool to find sites near you, check
           hours, and see what services are available.
@@ -79,7 +79,7 @@ export default function SiteLocatorPage() {
             <h3 className="font-semibold text-lg">
               Rise Up Foundation - VITA Site
             </h3>
-            <p className="text-gray-600 mt-2">
+            <p className="text-black mt-2">
               7009 East 56th Street, Suite EE1
               <br />
               Indianapolis, IN 46226
@@ -88,7 +88,7 @@ export default function SiteLocatorPage() {
 
           <div>
             <h3 className="font-semibold">Hours (Tax Season: Jan - Apr 15)</h3>
-            <div className="mt-2 space-y-1 text-gray-700">
+            <div className="mt-2 space-y-1 text-black">
               <div className="flex justify-between max-w-md">
                 <span>Monday - Friday:</span>
                 <span className="font-semibold">9:00 AM - 5:00 PM</span>
@@ -106,7 +106,7 @@ export default function SiteLocatorPage() {
 
           <div>
             <h3 className="font-semibold">Contact</h3>
-            <p className="text-gray-700 mt-2">
+            <p className="text-black mt-2">
               Phone:{' '}
               <a
                 href="tel:3173143757"
@@ -126,7 +126,7 @@ export default function SiteLocatorPage() {
           </div>
 
           <div className="rounded-lg bg-yellow-50 border-l-4 border-yellow-400 p-4">
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               <strong>Appointment Required:</strong> Please call ahead to
               schedule your appointment. Walk-ins may experience long wait
               times.
@@ -144,7 +144,7 @@ export default function SiteLocatorPage() {
             <span className="text-brand-green-600 font-bold text-xl">1</span>
             <div>
               <h3 className="font-semibold">Check-In</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Arrive at your scheduled time and check in with the greeter
               </p>
             </div>
@@ -153,7 +153,7 @@ export default function SiteLocatorPage() {
             <span className="text-brand-green-600 font-bold text-xl">2</span>
             <div>
               <h3 className="font-semibold">Document Review</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 A volunteer will review your documents to ensure everything is
                 complete
               </p>
@@ -163,7 +163,7 @@ export default function SiteLocatorPage() {
             <span className="text-brand-green-600 font-bold text-xl">3</span>
             <div>
               <h3 className="font-semibold">Tax Preparation</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 An IRS-certified volunteer will prepare your return with you
               </p>
             </div>
@@ -172,7 +172,7 @@ export default function SiteLocatorPage() {
             <span className="text-brand-green-600 font-bold text-xl">4</span>
             <div>
               <h3 className="font-semibold">Quality Review</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 A second volunteer reviews your return for accuracy
               </p>
             </div>
@@ -181,7 +181,7 @@ export default function SiteLocatorPage() {
             <span className="text-brand-green-600 font-bold text-xl">5</span>
             <div>
               <h3 className="font-semibold">E-File</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 Your return is electronically filed with the IRS
               </p>
             </div>
@@ -191,7 +191,7 @@ export default function SiteLocatorPage() {
 
       <section className="mt-8 rounded-2xl bg-green-50 border-l-4 border-brand-green-600 p-6">
         <h2 className="text-xl font-bold mb-3">Ready to Get Started?</h2>
-        <p className="text-gray-700 mb-6">
+        <p className="text-black mb-6">
           Call us to schedule your appointment or use the IRS locator to find
           other VITA sites in your area.
         </p>
@@ -218,8 +218,8 @@ export default function SiteLocatorPage() {
       </section>
 
       <section className="mt-8 rounded-2xl bg-blue-50 border-l-4 border-blue-400 p-6">
-        <h3 className="font-semibold text-gray-900">Reference</h3>
-        <p className="mt-2 text-sm text-gray-700">
+        <h3 className="font-semibold text-black">Reference</h3>
+        <p className="mt-2 text-sm text-black">
           Official IRS VITA site locator:{' '}
           <a
             href="https://irs.treasury.gov/freetaxprep/"

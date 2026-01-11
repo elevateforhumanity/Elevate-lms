@@ -72,7 +72,7 @@ function SortableItem({ module, onEdit, onDelete }: { module: CourseModule; onEd
     <div ref={setNodeRef} style={style} className="bg-white border border-slate-200 rounded-lg p-4 mb-3 hover:shadow-md transition-shadow">
       <div className="flex items-center gap-4">
         {/* Drag Handle */}
-        <button {...attributes} {...listeners} className="cursor-grab active:cursor-grabbing text-slate-400 hover:text-slate-600">
+        <button {...attributes} {...listeners} className="cursor-grab active:cursor-grabbing text-slate-400 hover:text-black">
           <svg className="w-6 h-6" fill="none" stroke="currentColor"
 viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -87,8 +87,8 @@ d="M4 8h16M4 16h16" />
 
         {/* Content */}
         <div className="flex-1">
-          <h4 className="font-semibold text-slate-900">{module.title}</h4>
-          <div className="flex items-center gap-4 text-sm text-slate-600 mt-1">
+          <h4 className="font-semibold text-black">{module.title}</h4>
+          <div className="flex items-center gap-4 text-sm text-black mt-1">
             <span className="capitalize">{module.type}</span>
             {module.duration && <span>{module.duration} min</span>}
           </div>
@@ -98,7 +98,7 @@ d="M4 8h16M4 16h16" />
         <div className="flex items-center gap-2">
           <button
             onClick={() => onEdit(module.id)}
-            className="p-2 text-slate-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors"
+            className="p-2 text-black hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor"
 viewBox="0 0 24 24">
@@ -108,7 +108,7 @@ d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.
           </button>
           <button
             onClick={() => onDelete(module.id)}
-            className="p-2 text-slate-600 hover:text-brand-orange-600 hover:bg-red-50 rounded-lg transition-colors"
+            className="p-2 text-black hover:text-brand-orange-600 hover:bg-red-50 rounded-lg transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor"
 viewBox="0 0 24 24">
@@ -218,8 +218,8 @@ export default function DragDropBuilder({ courseId, initialModules = [], onSave 
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900">Course Builder</h2>
-          <p className="text-slate-600 mt-1">Drag and drop to reorder modules</p>
+          <h2 className="text-2xl font-bold text-black">Course Builder</h2>
+          <p className="text-black mt-1">Drag and drop to reorder modules</p>
         </div>
         <div className="flex gap-3">
           <button
@@ -245,8 +245,8 @@ viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
 d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
           </svg>
-          <h3 className="text-xl font-semibold text-slate-900 mb-2">No modules yet</h3>
-          <p className="text-slate-600 mb-4">Get started by adding your first module</p>
+          <h3 className="text-xl font-semibold text-black mb-2">No modules yet</h3>
+          <p className="text-black mb-4">Get started by adding your first module</p>
           <button
             onClick={() => setShowAddModal(true)}
             className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
@@ -270,7 +270,7 @@ onDelete={handleDeleteModule} />
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-slate-200">
-              <h3 className="text-2xl font-bold text-slate-900">
+              <h3 className="text-2xl font-bold text-black">
                 {editingModule ? 'Edit Module' : 'Add New Module'}
               </h3>
             </div>
@@ -278,7 +278,7 @@ onDelete={handleDeleteModule} />
             <div className="p-6 space-y-6">
               {/* Title */}
               <div>
-                <label className="block text-sm font-semibold text-slate-900 mb-2">Module Title *</label>
+                <label className="block text-sm font-semibold text-black mb-2">Module Title *</label>
                 <input
                   type="text"
                   value={newModule.title}
@@ -290,7 +290,7 @@ onDelete={handleDeleteModule} />
 
               {/* Type */}
               <div>
-                <label className="block text-sm font-semibold text-slate-900 mb-2">Module Type *</label>
+                <label className="block text-sm font-semibold text-black mb-2">Module Type *</label>
                 <select
                   value={newModule.type}
                   onChange={(e) => setNewModule({ ...newModule, type: e.target.value as CourseModule['type'] })}
@@ -306,7 +306,7 @@ onDelete={handleDeleteModule} />
 
               {/* Duration */}
               <div>
-                <label className="block text-sm font-semibold text-slate-900 mb-2">Duration (minutes)</label>
+                <label className="block text-sm font-semibold text-black mb-2">Duration (minutes)</label>
                 <input
                   type="number"
                   value={newModule.duration || ''}
@@ -318,7 +318,7 @@ onDelete={handleDeleteModule} />
 
               {/* Content */}
               <div>
-                <label className="block text-sm font-semibold text-slate-900 mb-2">Content/Description</label>
+                <label className="block text-sm font-semibold text-black mb-2">Content/Description</label>
                 <textarea
                   value={newModule.content}
                   onChange={(e) => setNewModule({ ...newModule, content: e.target.value })}
@@ -336,7 +336,7 @@ onDelete={handleDeleteModule} />
                   setEditingModule(null);
                   setNewModule({ title: '', type: 'video', duration: 0, content: '' });
                 }}
-                className="px-6 py-3 bg-slate-200 text-slate-700 font-semibold rounded-lg hover:bg-slate-300 transition-colors"
+                className="px-6 py-3 bg-slate-200 text-black font-semibold rounded-lg hover:bg-slate-300 transition-colors"
               >
                 Cancel
               </button>

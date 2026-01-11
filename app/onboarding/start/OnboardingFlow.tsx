@@ -48,10 +48,10 @@ export default function OnboardingFlow({
         <div className="max-w-5xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">
+              <h1 className="text-2xl font-bold text-black">
                 {roleNames[profile.role]} Onboarding
               </h1>
-              <p className="text-slate-600 mt-1">
+              <p className="text-black mt-1">
                 Complete all steps to access your dashboard
               </p>
             </div>
@@ -59,7 +59,7 @@ export default function OnboardingFlow({
               <div className="text-3xl font-bold text-brand-blue-600">
                 {progressPercent}%
               </div>
-              <div className="text-sm text-slate-600">
+              <div className="text-sm text-black">
                 {completedSteps} of {totalSteps} complete
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function OnboardingFlow({
           {/* Sidebar - Checklist */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 sticky top-8">
-              <h2 className="text-lg font-semibold text-slate-900 mb-4">
+              <h2 className="text-lg font-semibold text-black mb-4">
                 Onboarding Checklist
               </h2>
               <div className="space-y-3">
@@ -117,7 +117,7 @@ export default function OnboardingFlow({
                               ? 'text-green-900'
                               : isCurrent
                                 ? 'text-blue-900'
-                                : 'text-slate-600'
+                                : 'text-black'
                           }`}
                         >
                           {doc.title}
@@ -155,7 +155,7 @@ export default function OnboardingFlow({
                           ? 'text-green-900'
                           : currentStep === documents.length
                             ? 'text-blue-900'
-                            : 'text-slate-600'
+                            : 'text-black'
                       }`}
                     >
                       Payroll Setup
@@ -265,10 +265,10 @@ function DocumentStep({
       <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-8">
         <div className="text-center">
           <CheckCircle2 className="w-16 h-16 text-brand-green-600 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">
+          <h2 className="text-2xl font-bold text-black mb-2">
             {document.title}
           </h2>
-          <p className="text-slate-600 mb-6">
+          <p className="text-black mb-6">
             You completed this step on {new Date().toLocaleDateString()}
           </p>
           <button
@@ -291,10 +291,10 @@ function DocumentStep({
             <FileText className="w-6 h-6 text-brand-blue-600" />
           </div>
           <div className="flex-1">
-            <h2 className="text-xl font-bold text-slate-900">
+            <h2 className="text-xl font-bold text-black">
               {document.title}
             </h2>
-            <p className="text-slate-600 mt-1">{document.document_type}</p>
+            <p className="text-black mt-1">{document.document_type}</p>
           </div>
         </div>
       </div>
@@ -314,7 +314,7 @@ function DocumentStep({
         {document.requires_signature && (
           <div className="mt-6 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-black mb-2">
                 Digital Signature
               </label>
               <input
@@ -324,7 +324,7 @@ function DocumentStep({
                 placeholder="Type your full name"
                 className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
-              <p className="text-sm text-slate-600 mt-1">
+              <p className="text-sm text-black mt-1">
                 Must match: <strong>{userName}</strong>
               </p>
             </div>
@@ -340,7 +340,7 @@ function DocumentStep({
               onChange={(e) => setAcknowledged(e.target.checked)}
               className="mt-1 w-5 h-5 text-brand-blue-600 border-slate-300 rounded focus:ring-blue-500"
             />
-            <span className="text-sm text-slate-700">
+            <span className="text-sm text-black">
               I have read and understood this document. I acknowledge that this
               digital signature has the same legal effect as a handwritten
               signature.
@@ -387,8 +387,8 @@ function PayrollSetupStep({
           <DollarSign className="w-6 h-6 text-brand-green-600" />
         </div>
         <div className="flex-1">
-          <h2 className="text-xl font-bold text-slate-900">Payroll Setup</h2>
-          <p className="text-slate-600 mt-1">
+          <h2 className="text-xl font-bold text-black">Payroll Setup</h2>
+          <p className="text-black mt-1">
             Configure your payment method and tax information
           </p>
         </div>
@@ -397,10 +397,10 @@ function PayrollSetupStep({
       {currentStatus === 'PENDING' || currentStatus === 'ACTIVE' ? (
         <div className="text-center py-8">
           <CheckCircle2 className="w-16 h-16 text-brand-green-600 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-slate-900 mb-2">
+          <h3 className="text-lg font-semibold text-black mb-2">
             Payroll Setup Complete
           </h3>
-          <p className="text-slate-600 mb-6">
+          <p className="text-black mb-6">
             Status: <strong>{currentStatus}</strong>
           </p>
           <button
@@ -412,10 +412,10 @@ function PayrollSetupStep({
         </div>
       ) : (
         <div className="space-y-4">
-          <p className="text-slate-700">
+          <p className="text-black">
             Set up your payroll profile to receive payments. You'll need:
           </p>
-          <ul className="list-disc list-inside space-y-2 text-slate-600">
+          <ul className="list-disc list-inside space-y-2 text-black">
             <li>W-9 tax form</li>
             <li>Bank account information (for ACH) or Stripe Connect</li>
             <li>Payment rate configuration</li>

@@ -58,10 +58,10 @@ export default async function OnboardingPage() {
       </section>
       <section className="py-12 sm:py-16 bg-white border-b">
         <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-4">
             Welcome to Elevate for Humanity
           </h1>
-          <p className="text-base md:text-lg sm:text-base md:text-lg text-slate-700 mb-6">
+          <p className="text-base md:text-lg sm:text-base md:text-lg text-black mb-6">
             Choose your path to get started with our platform and access free
             workforce training.
           </p>
@@ -69,7 +69,7 @@ export default async function OnboardingPage() {
       </section>
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-8 text-center">
             Choose Your Path
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -80,10 +80,10 @@ export default async function OnboardingPage() {
               <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 mx-auto">
                 <GraduationCap className="text-blue-700" size={32} />
               </div>
-              <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-3 text-center">
+              <h3 className="text-lg md:text-lg font-bold text-black mb-3 text-center">
                 I'm a Student
               </h3>
-              <p className="text-slate-600 mb-6 text-center">
+              <p className="text-black mb-6 text-center">
                 Start your free training, access courses, and earn
                 certifications.
               </p>
@@ -123,10 +123,10 @@ export default async function OnboardingPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6 mx-auto">
                 <Building2 className="text-purple-700" size={32} />
               </div>
-              <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-3 text-center">
+              <h3 className="text-lg md:text-lg font-bold text-black mb-3 text-center">
                 I'm a Program Holder
               </h3>
-              <p className="text-slate-600 mb-6 text-center">
+              <p className="text-black mb-6 text-center">
                 Manage students, track progress, and access reports.
               </p>
               <ul className="space-y-2 mb-6">
@@ -165,10 +165,10 @@ export default async function OnboardingPage() {
               <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-6 mx-auto">
                 <Users className="text-orange-700" size={32} />
               </div>
-              <h3 className="text-lg md:text-lg font-bold text-slate-900 mb-3 text-center">
+              <h3 className="text-lg md:text-lg font-bold text-black mb-3 text-center">
                 I'm a Partner/Employer
               </h3>
-              <p className="text-slate-600 mb-6 text-center">
+              <p className="text-black mb-6 text-center">
                 Partner with us to train your workforce or hire our graduates.
               </p>
               <ul className="space-y-2 mb-6">

@@ -179,7 +179,7 @@ export default function TaxCareersPage() {
             <h2 className="text-4xl font-bold mb-4">
               Earn $50 Per Completed Return!
             </h2>
-            <p className="text-xl text-gray-700">
+            <p className="text-xl text-black">
               Refer tax preparers and earn bonuses for every completed return
               they file
             </p>
@@ -193,7 +193,7 @@ export default function TaxCareersPage() {
 
             <div className="space-y-4 mb-6">
               <h3 className="font-bold text-lg">How It Works:</h3>
-              <ol className="list-decimal pl-6 space-y-2 text-gray-700">
+              <ol className="list-decimal pl-6 space-y-2 text-black">
                 <li>Refer a qualified tax preparer to join our team</li>
                 <li>They get hired and start preparing returns</li>
                 <li>You earn $50 for each completed return they file</li>
@@ -207,7 +207,7 @@ export default function TaxCareersPage() {
               <h3 className="font-bold text-lg mb-3">
                 Stipulations & Requirements:
               </h3>
-              <ul className="space-y-2 text-sm text-gray-700">
+              <ul className="space-y-2 text-sm text-black">
                 <li className="flex items-start gap-2">
                   <span className="text-blue-600 font-bold">•</span>
                   <span>Referral must be hired and complete onboarding</span>
@@ -291,7 +291,7 @@ export default function TaxCareersPage() {
             <h2 className="text-4xl font-bold mb-4">
               How to Become a Tax Preparer
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Don't have your PTIN yet? Here's how to get started
             </p>
           </div>
@@ -306,7 +306,7 @@ export default function TaxCareersPage() {
               <div className="space-y-4 mb-6">
                 <div>
                   <p className="font-bold mb-2">What is a PTIN?</p>
-                  <p className="text-gray-700">
+                  <p className="text-black">
                     A PTIN is required by the IRS for anyone who prepares or
                     assists in preparing federal tax returns for compensation.
                   </p>
@@ -314,14 +314,14 @@ export default function TaxCareersPage() {
 
                 <div>
                   <p className="font-bold mb-2">Cost:</p>
-                  <p className="text-gray-700">
+                  <p className="text-black">
                     $19.75 per year (renewed annually)
                   </p>
                 </div>
 
                 <div>
                   <p className="font-bold mb-2">How to Apply:</p>
-                  <ol className="list-decimal pl-6 space-y-2 text-gray-700">
+                  <ol className="list-decimal pl-6 space-y-2 text-black">
                     <li>
                       Go to{' '}
                       <a
@@ -343,7 +343,7 @@ export default function TaxCareersPage() {
 
                 <div>
                   <p className="font-bold mb-2">Requirements:</p>
-                  <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                  <ul className="list-disc pl-6 space-y-1 text-black">
                     <li>Valid Social Security Number or ITIN</li>
                     <li>Pass IRS suitability check</li>
                     <li>No recent tax compliance issues</li>
@@ -370,7 +370,7 @@ export default function TaxCareersPage() {
               <div className="space-y-4 mb-6">
                 <div>
                   <p className="font-bold mb-2">What is an EFIN?</p>
-                  <p className="text-gray-700">
+                  <p className="text-black">
                     An EFIN allows you to electronically file tax returns with
                     the IRS. Required for professional tax preparers.
                   </p>
@@ -389,7 +389,7 @@ export default function TaxCareersPage() {
 
                 <div>
                   <p className="font-bold mb-2">If You Want Your Own EFIN:</p>
-                  <ol className="list-decimal pl-6 space-y-2 text-gray-700">
+                  <ol className="list-decimal pl-6 space-y-2 text-black">
                     <li>
                       Complete IRS Form 8633 (Application to Participate in IRS
                       e-file)
@@ -402,14 +402,14 @@ export default function TaxCareersPage() {
 
                 <div>
                   <p className="font-bold mb-2">Cost:</p>
-                  <p className="text-gray-700">
+                  <p className="text-black">
                     Free from IRS (fingerprinting costs ~$50)
                   </p>
                 </div>
 
                 <div>
                   <p className="font-bold mb-2">Requirements:</p>
-                  <ul className="list-disc pl-6 space-y-1 text-gray-700">
+                  <ul className="list-disc pl-6 space-y-1 text-black">
                     <li>Valid PTIN</li>
                     <li>Business address (not P.O. Box)</li>
                     <li>Pass fingerprint-based background check</li>
@@ -440,11 +440,11 @@ export default function TaxCareersPage() {
                 <h4 className="font-bold mb-3">
                   IRS Annual Filing Season Program
                 </h4>
-                <p className="text-gray-700 mb-3">
+                <p className="text-black mb-3">
                   Complete 18 hours of continuing education from IRS-approved
                   providers
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   <strong>Cost:</strong> $100-$300
                   <br />
                   <strong>Time:</strong> Self-paced online
@@ -453,10 +453,10 @@ export default function TaxCareersPage() {
 
               <div>
                 <h4 className="font-bold mb-3">Enrolled Agent (EA)</h4>
-                <p className="text-gray-700 mb-3">
+                <p className="text-black mb-3">
                   Pass IRS Special Enrollment Examination (SEE) - 3 parts
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   <strong>Cost:</strong> $206 per part
                   <br />
                   <strong>Time:</strong> 3-6 months study
@@ -467,10 +467,10 @@ export default function TaxCareersPage() {
                 <h4 className="font-bold mb-3">
                   CPA (Certified Public Accountant)
                 </h4>
-                <p className="text-gray-700 mb-3">
+                <p className="text-black mb-3">
                   Pass CPA exam and meet state requirements
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-black">
                   <strong>Cost:</strong> $1,000+
                   <br />
                   <strong>Time:</strong> 1-2 years
@@ -483,11 +483,11 @@ export default function TaxCareersPage() {
                 <Lightbulb className="w-5 h-5 inline-block" /> We Provide Free
                 Training!
               </p>
-              <p className="text-gray-700">
+              <p className="text-black">
                 Even if you don't have formal credentials, we offer free tax
                 preparation training for new hires. You'll learn:
               </p>
-              <ul className="list-disc pl-6 mt-2 text-gray-700">
+              <ul className="list-disc pl-6 mt-2 text-black">
                 <li>Tax software (Drake, ProSeries)</li>
                 <li>Common tax forms (W-2, 1099, Schedule C)</li>
                 <li>Deductions and credits</li>
@@ -504,7 +504,7 @@ export default function TaxCareersPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Why Work With Us?</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Better pay, better flexibility, better culture than H&R Block or
               Jackson Hewitt
             </p>
@@ -522,7 +522,7 @@ export default function TaxCareersPage() {
                     <Icon className="w-8 h-8 text-green-600" />
                   </div>
                   <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+                  <p className="text-black">{benefit.description}</p>
                 </div>
               );
             })}
@@ -535,7 +535,7 @@ export default function TaxCareersPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Open Positions</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Find the perfect role for your skills and schedule
             </p>
           </div>
@@ -567,7 +567,7 @@ export default function TaxCareersPage() {
                   </div>
                 </div>
 
-                <p className="text-gray-700 mb-6">{position.description}</p>
+                <p className="text-black mb-6">{position.description}</p>
 
                 <div className="mb-6">
                   <h4 className="font-bold mb-3">Requirements:</h4>
@@ -575,7 +575,7 @@ export default function TaxCareersPage() {
                     {position.requirements.map((req, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700">{req}</span>
+                        <span className="text-black">{req}</span>
                       </li>
                     ))}
                   </ul>
@@ -598,7 +598,7 @@ export default function TaxCareersPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">How We Compare</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               See why tax professionals choose us over H&R Block, Jackson
               Hewitt, and Liberty Tax
             </p>
@@ -715,13 +715,13 @@ export default function TaxCareersPage() {
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">Apply Now</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Join our team for tax season 2025. We're hiring now!
             </p>
           </div>
 
           <div className="bg-white border-2 border-gray-200 rounded-xl p-12 text-center">
-            <p className="text-xl text-gray-700 mb-8">
+            <p className="text-xl text-black mb-8">
               Ready to join our team? Complete our online application to get
               started.
             </p>
@@ -731,13 +731,13 @@ export default function TaxCareersPage() {
             >
               Complete Application Form
             </Link>
-            <p className="text-sm text-gray-600 mt-6">
+            <p className="text-sm text-black mt-6">
               Application takes approximately 5-10 minutes to complete
             </p>
           </div>
 
           <div className="mt-8 text-center">
-            <p className="text-gray-600">
+            <p className="text-black">
               Questions? Call us at{' '}
               <a
                 href="tel:3173143757"

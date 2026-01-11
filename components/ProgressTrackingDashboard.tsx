@@ -107,7 +107,7 @@ export function ProgressTrackingDashboard() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Overall Completion</h3>
+            <h3 className="text-sm text-black mb-2">Overall Completion</h3>
             <p className="text-3xl font-bold text-brand-orange-600">{overallProgress.completionRate}%</p>
             <div className="w-full bg-gray-200 rounded-full h-2 mt-3">
               <div
@@ -118,33 +118,33 @@ export function ProgressTrackingDashboard() {
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Study Hours</h3>
+            <h3 className="text-sm text-black mb-2">Study Hours</h3>
             <p className="text-3xl font-bold text-orange-500">{overallProgress.studyHours}h</p>
             <p className="text-sm text-green-600 mt-2">↑ 15% from last week</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Current Streak</h3>
+            <h3 className="text-sm text-black mb-2">Current Streak</h3>
             <p className="text-3xl font-bold text-green-600">{overallProgress.streak} days</p>
-            <p className="text-sm text-gray-600 mt-2">🔥 Keep it going!</p>
+            <p className="text-sm text-black mt-2">🔥 Keep it going!</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Courses In Progress</h3>
+            <h3 className="text-sm text-black mb-2">Courses In Progress</h3>
             <p className="text-3xl font-bold text-blue-600">{overallProgress.coursesInProgress}</p>
-            <p className="text-sm text-gray-600 mt-2">{overallProgress.coursesCompleted} completed</p>
+            <p className="text-sm text-black mt-2">{overallProgress.coursesCompleted} completed</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Average Score</h3>
+            <h3 className="text-sm text-black mb-2">Average Score</h3>
             <p className="text-3xl font-bold text-purple-600">{overallProgress.averageScore}%</p>
             <p className="text-sm text-green-600 mt-2">Above target</p>
           </Card>
 
           <Card className="p-6   ">
-            <h3 className="text-sm text-gray-700 mb-2">Next Goal</h3>
+            <h3 className="text-sm text-black mb-2">Next Goal</h3>
             <p className="text-lg font-bold text-red-700">Complete React Module</p>
-            <p className="text-sm text-gray-600 mt-2">3 lessons remaining</p>
+            <p className="text-sm text-black mt-2">3 lessons remaining</p>
           </Card>
         </div>
 
@@ -156,7 +156,7 @@ export function ProgressTrackingDashboard() {
                 <div key={day.day}>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="font-medium">{day.day}</span>
-                    <span className="text-gray-600">{day.hours}h • {day.completed} lessons</span>
+                    <span className="text-black">{day.hours}h • {day.completed} lessons</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
@@ -175,12 +175,12 @@ export function ProgressTrackingDashboard() {
               {milestones.map((milestone, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    milestone.completed ? 'bg-green-500 text-white' : 'bg-gray-300 text-gray-600'
+                    milestone.completed ? 'bg-green-500 text-white' : 'bg-gray-300 text-black'
                   }`}>
                     {milestone.completed ? '✓' : index + 1}
                   </div>
                   <div className="flex-1">
-                    <p className={`font-medium ${milestone.completed ? 'text-gray-900' : 'text-gray-600'}`}>
+                    <p className={`font-medium ${milestone.completed ? 'text-black' : 'text-black'}`}>
                       {milestone.title}
                     </p>
                     <p className="text-sm text-gray-500">{milestone.date}</p>
@@ -199,7 +199,7 @@ export function ProgressTrackingDashboard() {
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex-1">
                     <h4 className="text-lg font-bold mb-1">{course.title}</h4>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-black">
                       {course.lessonsCompleted} of {course.totalLessons} lessons completed
                     </p>
                     <p className="text-sm text-gray-500">Last activity: {course.lastActivity}</p>
@@ -226,7 +226,7 @@ export function ProgressTrackingDashboard() {
                 </div>
 
                 <div className="flex justify-between items-center">
-                  <p className="text-sm text-gray-700">
+                  <p className="text-sm text-black">
                     <span className="font-semibold">Next:</span> {course.nextMilestone}
                   </p>
                   <Button size="sm">Continue</Button>
@@ -239,21 +239,21 @@ export function ProgressTrackingDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="p-6   ">
             <h3 className="font-bold mb-2">🎯 On Track</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               You're making great progress! Keep up the consistent study schedule.
             </p>
           </Card>
 
           <Card className="p-6   ">
             <h3 className="font-bold mb-2">💡 Tip</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               Your best learning time is 9-11 AM. Schedule difficult topics during this window.
             </p>
           </Card>
 
           <Card className="p-6   ">
             <h3 className="font-bold mb-2">🏆 Achievement</h3>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-black">
               You've maintained a 7-day streak! Unlock the "Dedicated Learner" badge at 14 days.
             </p>
           </Card>

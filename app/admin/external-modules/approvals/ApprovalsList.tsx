@@ -118,7 +118,7 @@ export default function ApprovalsList({
     <div className="space-y-6">
       {message && (
         <div className="rounded-lg border bg-slate-50 p-4">
-          <p className="text-sm text-slate-700">{message}</p>
+          <p className="text-sm text-black">{message}</p>
         </div>
       )}
 
@@ -129,7 +129,7 @@ export default function ApprovalsList({
         </h2>
         {pending.length === 0 ? (
           <div className="rounded-lg border bg-white p-6 text-center">
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-black">
               No pending submissions to review
             </p>
           </div>
@@ -146,7 +146,7 @@ export default function ApprovalsList({
                       <h3 className="text-sm font-semibold">
                         {submission.profiles.full_name}
                       </h3>
-                      <p className="text-xs text-slate-600">
+                      <p className="text-xs text-black">
                         {submission.profiles.email}
                       </p>
                     </div>
@@ -154,7 +154,7 @@ export default function ApprovalsList({
                       <p className="text-xs font-semibold text-emerald-700">
                         {submission.external_partner_modules.title}
                       </p>
-                      <p className="text-xs text-slate-600">
+                      <p className="text-xs text-black">
                         {submission.external_partner_modules.partner_name} •{" "}
                         {submission.external_partner_modules.courses.title}
                       </p>
@@ -164,7 +164,7 @@ export default function ApprovalsList({
                       {new Date(submission.created_at).toLocaleString()}
                     </p>
                     {submission.notes && (
-                      <p className="text-xs text-slate-600 italic">
+                      <p className="text-xs text-black italic">
                         Note: {submission.notes}
                       </p>
                     )}
@@ -175,7 +175,7 @@ export default function ApprovalsList({
                         href={submission.proof_file_url}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center justify-center rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-200"
+                        className="inline-flex items-center justify-center rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-black hover:bg-slate-200"
                       >
                         <svg
                           className="w-3 h-3 mr-1"
@@ -228,7 +228,7 @@ export default function ApprovalsList({
         </h2>
         {approved.length === 0 ? (
           <div className="rounded-lg border bg-white p-6 text-center">
-            <p className="text-sm text-slate-600">No recent approvals</p>
+            <p className="text-sm text-black">No recent approvals</p>
           </div>
         ) : (
           <div className="space-y-2">
@@ -242,7 +242,7 @@ export default function ApprovalsList({
                     <p className="text-xs font-semibold">
                       {submission.profiles.full_name}
                     </p>
-                    <p className="text-xs text-slate-600">
+                    <p className="text-xs text-black">
                       {submission.external_partner_modules.title} •{" "}
                       {submission.external_partner_modules.partner_name}
                     </p>
@@ -252,7 +252,7 @@ export default function ApprovalsList({
                       ✓ Approved
                     </p>
                     {submission.approved_at && (
-                      <p className="text-[11px] text-slate-600">
+                      <p className="text-[11px] text-black">
                         {new Date(submission.approved_at).toLocaleDateString()}
                       </p>
                     )}

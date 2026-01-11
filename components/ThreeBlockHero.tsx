@@ -38,10 +38,10 @@ export default function ThreeBlockHero() {
       <div className="mx-auto max-w-7xl px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
             Three Pathways to Success
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-black max-w-3xl mx-auto">
             Choose your path, get trained, and start earning. Our team supports you every step of the way.
           </p>
         </div>

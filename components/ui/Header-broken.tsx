@@ -74,10 +74,10 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
                 <span className="text-white font-bold text-xl">E</span>
               </div>
               <div className="hidden sm:block">
-                <span className="text-xl font-bold text-slate-900">
+                <span className="text-xl font-bold text-black">
                   Elevate for Humanity
                 </span>
-                <span className="block text-xs text-slate-600">
+                <span className="block text-xs text-black">
                   Directory
                 </span>
               </div>
@@ -90,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                className="px-3 py-2 text-sm font-medium text-black hover:text-black hover:bg-slate-50 rounded-lg transition-colors"
               >
                 {item.name}
               </Link>
@@ -102,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
             {/* Search Button */}
             <button
               onClick={onSearchClick}
-              className="p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+              className="p-2 text-black hover:text-black hover:bg-slate-50 rounded-lg transition-colors"
               aria-label="Search"
             >
               <Search className="h-5 w-5" />
@@ -112,7 +112,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
             <div className="hidden lg:block relative">
               <button
                 onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-black hover:text-black hover:bg-slate-50 rounded-lg transition-colors"
                 aria-expanded={isUserMenuOpen}
               >
                 <User className="h-5 w-5" />
@@ -129,20 +129,20 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
                   <div className="absolute right-0 mt-2 w-48 bg-white border border-slate-200 rounded-lg shadow-lg py-1 z-20">
                     <Link
                       href="/student/dashboard"
-                      className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50"
+                      className="block px-4 py-2 text-sm text-black hover:bg-slate-50"
                     >
                       Student Portal
                     </Link>
                     <Link
                       href="/employer/dashboard"
-                      className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50"
+                      className="block px-4 py-2 text-sm text-black hover:bg-slate-50"
                     >
                       Employer Portal
                     </Link>
                     <div className="border-t border-slate-200 my-1" />
                     <Link
                       href="/login"
-                      className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50"
+                      className="block px-4 py-2 text-sm text-black hover:bg-slate-50"
                     >
                       Sign In
                     </Link>
@@ -168,7 +168,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+              className="lg:hidden p-2 text-black hover:text-black hover:bg-slate-50 rounded-lg transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
@@ -188,7 +188,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                  className="block px-3 py-2 text-base font-medium text-black hover:text-black hover:bg-slate-50 rounded-lg transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -197,21 +197,21 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
               <div className="border-t border-slate-200 my-2" />
               <Link
                 href="/student/dashboard"
-                className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                className="block px-3 py-2 text-base font-medium text-black hover:text-black hover:bg-slate-50 rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Student Portal
               </Link>
               <Link
                 href="/employer/dashboard"
-                className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                className="block px-3 py-2 text-base font-medium text-black hover:text-black hover:bg-slate-50 rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Employer Portal
               </Link>
               <Link
                 href="/login"
-                className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                className="block px-3 py-2 text-base font-medium text-black hover:text-black hover:bg-slate-50 rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Sign In

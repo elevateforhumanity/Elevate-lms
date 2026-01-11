@@ -84,7 +84,7 @@ export function CourseReviewsPanel({
     <div className="space-y-2 rounded-xl border bg-white p-3 shadow-sm">
       <h2 className="text-sm font-semibold">Reviews</h2>
 
-      <p className="text-xs text-slate-600">
+      <p className="text-xs text-black">
         ⭐ {computedStats.average.toFixed(1)} average •{" "}
         {computedStats.count} review
         {computedStats.count === 1 ? "" : "s"}
@@ -96,7 +96,7 @@ export function CourseReviewsPanel({
           className="mt-2 space-y-2 rounded-lg bg-slate-50 p-3 text-xs"
         >
           <div className="flex items-center gap-2">
-            <span className="text-slate-600">Your rating:</span>
+            <span className="text-black">Your rating:</span>
             <select
               value={rating}
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setRating(Number(e.target.value))}
@@ -143,7 +143,7 @@ export function CourseReviewsPanel({
           {localReviews.slice(0, 4).map((r) => (
             <li
               key={r.id}
-              className="rounded-lg bg-slate-50 p-2 text-slate-700"
+              className="rounded-lg bg-slate-50 p-2 text-black"
             >
               <p className="font-medium">
                 {"⭐".repeat(r.rating || 0)}{" "}
@@ -155,7 +155,7 @@ export function CourseReviewsPanel({
                 <p className="text-[11px] font-semibold">{r.title}</p>
               )}
               {r.body && (
-                <p className="text-[11px] text-slate-600">{r.body}</p>
+                <p className="text-[11px] text-black">{r.body}</p>
               )}
               <p className="mt-1 text-[10px] text-slate-500">
                 {new Date(r.created_at).toLocaleDateString()}

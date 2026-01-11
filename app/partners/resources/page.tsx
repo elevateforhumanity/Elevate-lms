@@ -24,7 +24,7 @@ export default function PartnerResourcesPage() {
         </Link>
 
         <h1 className="text-4xl font-bold mb-4">Partner Resources</h1>
-        <p className="text-xl text-gray-600 mb-12">
+        <p className="text-xl text-black mb-12">
           Guides, templates, and documentation to help you succeed as a training
           partner.
         </p>
@@ -37,7 +37,7 @@ export default function PartnerResourcesPage() {
                 <h3 className="text-xl font-semibold mb-2">
                   Partner Handbook
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-black mb-4">
                   Complete guide to program requirements, compliance, and best
                   practices.
                 </p>
@@ -53,7 +53,7 @@ export default function PartnerResourcesPage() {
               <FileText className="h-10 w-10 text-orange-600 flex-shrink-0" />
               <div className="flex-1">
                 <h3 className="text-xl font-semibold mb-2">MOU Templates</h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-black mb-4">
                   Memorandum of Understanding templates and signing process.
                 </p>
                 <Link href="/program-holder/documents">
@@ -68,7 +68,7 @@ export default function PartnerResourcesPage() {
               <Video className="h-10 w-10 text-orange-600 flex-shrink-0" />
               <div className="flex-1">
                 <h3 className="text-xl font-semibold mb-2">Training Videos</h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-black mb-4">
                   Video tutorials on using the platform and managing students.
                 </p>
                 <Link href="/program-holder/dashboard">
@@ -81,7 +81,7 @@ export default function PartnerResourcesPage() {
 
         <div className="mt-12 bg-orange-50 border border-orange-200 rounded-lg p-6">
           <h2 className="text-xl font-bold mb-2">Need More Help?</h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-black mb-4">
             Contact our partner support team for personalized assistance.
           </p>
           <Link href="/contact">

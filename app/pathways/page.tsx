@@ -204,11 +204,11 @@ export default function PathwaysPage() {
             </span>
           </div>
 
-          <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl text-gray-900">
+          <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl text-black">
             Career Pathways: Your roadmap from training to career
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base md:text-lg text-gray-700 leading-relaxed">
+          <p className="mt-4 max-w-2xl text-base md:text-lg text-black leading-relaxed">
             Clear, structured paths from training to career success. See exactly what you'll learn, how long it takes, what certifications you'll earn, and where your career can go.
           </p>
 
@@ -221,7 +221,7 @@ export default function PathwaysPage() {
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-6 py-3 text-base font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+              className="inline-flex items-center justify-center rounded-lg border-2 border-gray-300 px-6 py-3 text-base font-semibold text-black hover:bg-gray-50 transition-colors"
             >
               Talk to an Advisor
             </Link>
@@ -233,7 +233,7 @@ export default function PathwaysPage() {
       <div className="max-w-6xl mx-auto px-6 py-12">
         {/* Overview */}
         <div className="bg-white rounded-lg p-8 mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-black mb-6">
             How Our Pathways Work
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
@@ -241,8 +241,8 @@ export default function PathwaysPage() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-blue-600">1</span>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Foundation</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-bold text-black mb-2">Foundation</h3>
+              <p className="text-sm text-black">
                 Learn core concepts, safety, and industry fundamentals
               </p>
             </div>
@@ -250,8 +250,8 @@ export default function PathwaysPage() {
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-green-600">2</span>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Skills Development</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-bold text-black mb-2">Skills Development</h3>
+              <p className="text-sm text-black">
                 Build hands-on abilities through practice and training
               </p>
             </div>
@@ -259,8 +259,8 @@ export default function PathwaysPage() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-purple-600">3</span>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Advanced Training</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-bold text-black mb-2">Advanced Training</h3>
+              <p className="text-sm text-black">
                 Master complex techniques and specialized skills
               </p>
             </div>
@@ -268,8 +268,8 @@ export default function PathwaysPage() {
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-orange-600">4</span>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Certification & Career</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-bold text-black mb-2">Certification & Career</h3>
+              <p className="text-sm text-black">
                 Earn credentials and start your career
               </p>
             </div>
@@ -282,8 +282,8 @@ export default function PathwaysPage() {
             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
               <GraduationCap className="w-6 h-6 text-blue-600" />
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Industry-Recognized Credentials</h3>
-            <p className="text-gray-600">
+            <h3 className="text-lg font-bold text-black mb-2">Industry-Recognized Credentials</h3>
+            <p className="text-black">
               Earn certifications that employers value and that open doors to career advancement
             </p>
           </div>
@@ -291,8 +291,8 @@ export default function PathwaysPage() {
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
               <Briefcase className="w-6 h-6 text-green-600" />
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Clear Career Outcomes</h3>
-            <p className="text-gray-600">
+            <h3 className="text-lg font-bold text-black mb-2">Clear Career Outcomes</h3>
+            <p className="text-black">
               See exactly what jobs you can get and what you'll earn at each stage of your career
             </p>
           </div>
@@ -300,8 +300,8 @@ export default function PathwaysPage() {
             <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
               <Users className="w-6 h-6 text-purple-600" />
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Ongoing Support</h3>
-            <p className="text-gray-600">
+            <h3 className="text-lg font-bold text-black mb-2">Ongoing Support</h3>
+            <p className="text-black">
               Get guidance from advisors and instructors throughout your training and job search
             </p>
           </div>
@@ -361,7 +361,7 @@ export default function PathwaysPage() {
 
               {/* Course Sequence */}
               <div className="p-8">
-                <h3 className="text-lg font-bold text-slate-900 mb-6">
+                <h3 className="text-lg font-bold text-black mb-6">
                   Course Sequence
                 </h3>
                 <div className="space-y-6">
@@ -371,7 +371,7 @@ export default function PathwaysPage() {
                         <div className="w-8 h-8 bg-brand-blue-600 text-white rounded-full flex items-center justify-center font-bold">
                           {level}
                         </div>
-                        <h4 className="font-bold text-slate-900">
+                        <h4 className="font-bold text-black">
                           Level {level}:{' '}
                           {level === 1
                             ? 'Foundation'
@@ -392,10 +392,10 @@ export default function PathwaysPage() {
                             >
                               <div className="flex items-start justify-between gap-2">
                                 <div className="flex-1">
-                                  <h5 className="font-semibold text-slate-900 mb-1">
+                                  <h5 className="font-semibold text-black mb-1">
                                     {course.title}
                                   </h5>
-                                  <p className="text-sm text-slate-600">
+                                  <p className="text-sm text-black">
                                     {course.weeks} weeks • {course.credits}{' '}
                                     credits
                                   </p>
@@ -411,7 +411,7 @@ export default function PathwaysPage() {
 
                 {/* Certifications */}
                 <div className="mt-8 pt-8 border-t border-slate-200">
-                  <h4 className="font-bold text-slate-900 mb-3">
+                  <h4 className="font-bold text-black mb-3">
                     Certifications Earned
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -428,7 +428,7 @@ export default function PathwaysPage() {
 
                 {/* Career Options */}
                 <div className="mt-6">
-                  <h4 className="font-bold text-slate-900 mb-3">
+                  <h4 className="font-bold text-black mb-3">
                     Career Options
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -446,7 +446,7 @@ export default function PathwaysPage() {
                 {/* Next Steps */}
                 {pathway.nextSteps && (
                   <div className="mt-6">
-                    <h4 className="font-bold text-slate-900 mb-3">
+                    <h4 className="font-bold text-black mb-3">
                       Continue Your Education
                     </h4>
                     <div className="flex flex-wrap gap-2">

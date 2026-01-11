@@ -5,7 +5,7 @@ export default function Pathways() {
   return (
     <section className="bg-gray-50 py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
+        <h2 className="text-4xl font-bold text-black mb-12 text-center">
           Your Path to Success
         </h2>
 
@@ -44,8 +44,8 @@ export default function Pathways() {
         </div>
 
         <div className="bg-white p-8 rounded-lg shadow-md">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">What You Get</h3>
-          <div className="grid md:grid-cols-2 gap-6 text-lg text-gray-700">
+          <h3 className="text-2xl font-bold text-black mb-6">What You Get</h3>
+          <div className="grid md:grid-cols-2 gap-6 text-lg text-black">
             <div className="flex items-start gap-3">
               <span className="text-green-600 font-bold text-xl">✓</span>
               <span>Training programs tied to real careers with employer demand</span>

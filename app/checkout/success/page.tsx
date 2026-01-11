@@ -15,20 +15,20 @@ function SuccessContent({
         <div className="text-center">
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
 
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl font-bold text-black mb-4">
             Payment Successful!
           </h1>
 
-          <p className="text-lg text-gray-600 mb-8">
+          <p className="text-lg text-black mb-8">
             Thank you for choosing Elevate for Humanity. Your platform license
             is being activated.
           </p>
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8 text-left">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-xl font-semibold text-black mb-4">
               What happens next?
             </h2>
-            <ol className="space-y-3 text-gray-700">
+            <ol className="space-y-3 text-black">
               <li className="flex items-start">
                 <span className="font-semibold mr-2">1.</span>
                 <span>
@@ -54,13 +54,13 @@ function SuccessContent({
 
           {sessionId && (
             <div className="bg-gray-50 rounded-lg p-4 mb-8">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-black">
                 <span className="font-semibold">Session ID:</span>{' '}
                 <code className="bg-gray-200 px-2 py-1 rounded text-xs">
                   {sessionId}
                 </code>
               </p>
-              <p className="text-xs text-gray-700 mt-2">
+              <p className="text-xs text-black mt-2">
                 Save this for your records
               </p>
             </div>
@@ -76,14 +76,14 @@ function SuccessContent({
 
             <Link
               href="/"
-              className="block w-full bg-gray-200 text-gray-800 text-center py-3 rounded-lg hover:bg-gray-300 transition"
+              className="block w-full bg-gray-200 text-black text-center py-3 rounded-lg hover:bg-gray-300 transition"
             >
               Return to Homepage
             </Link>
           </div>
 
           <div className="mt-8 pt-8 border-t border-gray-200">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Questions? Contact us at{' '}
               <a
                 href="mailto:support@elevateforhumanity.institute"

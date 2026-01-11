@@ -45,19 +45,19 @@ export function SupersonicHeader() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
-              <Link href="/supersonic-fast-cash" className="text-gray-700 hover:text-blue-600 font-semibold">
+              <Link href="/supersonic-fast-cash" className="text-black hover:text-blue-600 font-semibold">
                 Home
               </Link>
-              <Link href="/supersonic-fast-cash/services" className="text-gray-700 hover:text-blue-600 font-semibold">
+              <Link href="/supersonic-fast-cash/services" className="text-black hover:text-blue-600 font-semibold">
                 Services
               </Link>
-              <Link href="/supersonic-fast-cash/tax-information" className="text-gray-700 hover:text-blue-600 font-semibold">
+              <Link href="/supersonic-fast-cash/tax-information" className="text-black hover:text-blue-600 font-semibold">
                 Tax Information
               </Link>
-              <Link href="/supersonic-fast-cash/tax-tools" className="text-gray-700 hover:text-blue-600 font-semibold">
+              <Link href="/supersonic-fast-cash/tax-tools" className="text-black hover:text-blue-600 font-semibold">
                 Tax Tools
               </Link>
-              <Link href="/supersonic-fast-cash/contact" className="text-gray-700 hover:text-blue-600 font-semibold">
+              <Link href="/supersonic-fast-cash/contact" className="text-black hover:text-blue-600 font-semibold">
                 Contact
               </Link>
               <Link
@@ -71,7 +71,7 @@ export function SupersonicHeader() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:text-blue-600"
+              className="md:hidden p-2 text-black hover:text-blue-600"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -85,35 +85,35 @@ export function SupersonicHeader() {
             <nav className="px-4 py-4 space-y-3">
               <Link 
                 href="/supersonic-fast-cash" 
-                className="block py-2 text-gray-700 hover:text-blue-600 font-semibold"
+                className="block py-2 text-black hover:text-blue-600 font-semibold"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 href="/supersonic-fast-cash/services" 
-                className="block py-2 text-gray-700 hover:text-blue-600 font-semibold"
+                className="block py-2 text-black hover:text-blue-600 font-semibold"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Services
               </Link>
               <Link 
                 href="/supersonic-fast-cash/tax-information" 
-                className="block py-2 text-gray-700 hover:text-blue-600 font-semibold"
+                className="block py-2 text-black hover:text-blue-600 font-semibold"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Tax Information
               </Link>
               <Link 
                 href="/supersonic-fast-cash/tax-tools" 
-                className="block py-2 text-gray-700 hover:text-blue-600 font-semibold"
+                className="block py-2 text-black hover:text-blue-600 font-semibold"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Tax Tools
               </Link>
               <Link 
                 href="/supersonic-fast-cash/contact" 
-                className="block py-2 text-gray-700 hover:text-blue-600 font-semibold"
+                className="block py-2 text-black hover:text-blue-600 font-semibold"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact

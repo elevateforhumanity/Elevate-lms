@@ -59,9 +59,9 @@ export default function HeroSlideshow() {
         aria-label={isMuted ? 'Unmute video' : 'Mute video'}
       >
         {isMuted ? (
-          <VolumeX className="w-5 h-5 text-slate-900" />
+          <VolumeX className="w-5 h-5 text-black" />
         ) : (
-          <Volume2 className="w-5 h-5 text-slate-900" />
+          <Volume2 className="w-5 h-5 text-black" />
         )}
       </button>
     </div>

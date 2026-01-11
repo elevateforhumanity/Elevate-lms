@@ -66,16 +66,16 @@ export default async function TransferHoursPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-black">
                 Transfer Hours Management
               </h1>
-              <p className="text-gray-600 mt-1">
+              <p className="text-black mt-1">
                 Review and approve transfer hour requests from students
               </p>
             </div>
             <Link
               href="/admin/dashboard"
-              className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium"
+              className="px-6 py-3 border border-gray-300 rounded-lg text-black hover:bg-gray-50 font-medium"
             >
               Back to Dashboard
             </Link>
@@ -84,15 +84,15 @@ export default async function TransferHoursPage() {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
             <div className="bg-white rounded-lg shadow-sm border p-4">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">
+              <h3 className="text-sm font-medium text-black mb-1">
                 Total Requests
               </h3>
-              <p className="text-base md:text-lg font-bold text-gray-900">
+              <p className="text-base md:text-lg font-bold text-black">
                 {totalRequests || 0}
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-sm border p-4">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">
+              <h3 className="text-sm font-medium text-black mb-1">
                 Pending Review
               </h3>
               <p className="text-base md:text-lg font-bold text-yellow-600">
@@ -100,7 +100,7 @@ export default async function TransferHoursPage() {
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-sm border p-4">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">
+              <h3 className="text-sm font-medium text-black mb-1">
                 Approved
               </h3>
               <p className="text-base md:text-lg font-bold text-brand-green-600">
@@ -108,7 +108,7 @@ export default async function TransferHoursPage() {
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-sm border p-4">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">Denied</h3>
+              <h3 className="text-sm font-medium text-black mb-1">Denied</h3>
               <p className="text-base md:text-lg font-bold text-brand-orange-600">
                 {deniedRequests || 0}
               </p>

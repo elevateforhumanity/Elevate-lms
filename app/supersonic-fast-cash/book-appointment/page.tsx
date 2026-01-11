@@ -202,7 +202,7 @@ export default function BookAppointment() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Book Your Tax Appointment</h1>
-          <p className="text-xl text-gray-600 mb-6">
+          <p className="text-xl text-black mb-6">
             Schedule online, video, or phone consultation with IRS-certified tax
             pro
           </p>
@@ -218,7 +218,7 @@ export default function BookAppointment() {
             </button>
             <button
               onClick={() => setStep(1)}
-              className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 py-4 rounded-lg font-bold text-lg transition-colors"
+              className="bg-gray-200 hover:bg-gray-300 text-black px-8 py-4 rounded-lg font-bold text-lg transition-colors"
             >
               Manual Booking
             </button>
@@ -234,7 +234,7 @@ export default function BookAppointment() {
                   className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
                     step >= s
                       ? 'bg-green-600 text-white'
-                      : 'bg-gray-300 text-gray-600'
+                      : 'bg-gray-300 text-black'
                   }`}
                 >
                   {s}
@@ -284,8 +284,8 @@ export default function BookAppointment() {
                       ${service.price}
                     </span>
                   </div>
-                  <p className="text-gray-600 mb-2">{service.description}</p>
-                  <p className="text-sm text-gray-700">
+                  <p className="text-black mb-2">{service.description}</p>
+                  <p className="text-sm text-black">
                     <Clock className="w-4 h-4 inline mr-1" />
                     {service.duration}
                   </p>
@@ -323,7 +323,7 @@ export default function BookAppointment() {
                       <Icon className="w-8 h-8 text-blue-600 flex-shrink-0" />
                       <div>
                         <h3 className="text-xl font-bold mb-2">{type.name}</h3>
-                        <p className="text-gray-600">{type.description}</p>
+                        <p className="text-black">{type.description}</p>
                       </div>
                     </div>
                   </button>
@@ -334,7 +334,7 @@ export default function BookAppointment() {
             {appointmentData.appointmentType === 'video' && (
               <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-6">
                 <h4 className="font-bold mb-2">Video Call Requirements:</h4>
-                <ul className="text-sm text-gray-700 space-y-1">
+                <ul className="text-sm text-black space-y-1">
                   <li>✓ Computer, tablet, or smartphone with camera</li>
                   <li>✓ Stable internet connection</li>
                   <li>✓ Zoom app (we'll send link before appointment)</li>
@@ -349,7 +349,7 @@ export default function BookAppointment() {
                   <AlertTriangle className="w-5 h-5 inline-block" /> In-Person
                   Appointments:
                 </h4>
-                <p className="text-sm text-gray-700 mb-3">
+                <p className="text-sm text-black mb-3">
                   Walk-ins are NOT available. You must book an appointment
                   online first.
                 </p>
@@ -380,7 +380,7 @@ export default function BookAppointment() {
             <div className="flex gap-4 mt-8">
               <button
                 onClick={() => setStep(1)}
-                className="flex-1 bg-gray-300 text-gray-700 py-4 rounded-lg font-bold hover:bg-gray-400"
+                className="flex-1 bg-gray-300 text-black py-4 rounded-lg font-bold hover:bg-gray-400"
               >
                 Back
               </button>
@@ -433,7 +433,7 @@ export default function BookAppointment() {
               <div>
                 <h3 className="font-bold mb-4">Available Times</h3>
                 {!appointmentData.date && (
-                  <p className="text-gray-700 italic">Select a date first</p>
+                  <p className="text-black italic">Select a date first</p>
                 )}
                 {appointmentData.date && (
                   <div className="grid grid-cols-2 gap-2 max-h-96 overflow-y-auto">
@@ -474,7 +474,7 @@ export default function BookAppointment() {
             <div className="flex gap-4 mt-8">
               <button
                 onClick={() => setStep(2)}
-                className="flex-1 bg-gray-300 text-gray-700 py-4 rounded-lg font-bold hover:bg-gray-400"
+                className="flex-1 bg-gray-300 text-black py-4 rounded-lg font-bold hover:bg-gray-400"
               >
                 Back
               </button>
@@ -546,7 +546,7 @@ export default function BookAppointment() {
                   className="w-full px-4 py-3 border rounded-lg"
                   placeholder="john@example.com"
                 />
-                <p className="text-sm text-gray-600 mt-1">
+                <p className="text-sm text-black mt-1">
                   We'll send appointment confirmation and{' '}
                   {appointmentData.appointmentType === 'video'
                     ? 'Zoom link'
@@ -727,7 +727,7 @@ export default function BookAppointment() {
             <div className="flex gap-4">
               <button
                 onClick={() => setStep(3)}
-                className="flex-1 bg-gray-300 text-gray-700 py-4 rounded-lg font-bold hover:bg-gray-400"
+                className="flex-1 bg-gray-300 text-black py-4 rounded-lg font-bold hover:bg-gray-400"
               >
                 Back
               </button>

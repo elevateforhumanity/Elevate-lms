@@ -114,10 +114,10 @@ export default function ApprenticeshipPage() {
       <section id="how-it-works" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-6">
+            <h2 className="text-5xl md:text-6xl font-black text-black mb-6">
               How It Works
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               Your path from beginner to licensed professional barber
             </p>
           </div>
@@ -191,7 +191,7 @@ export default function ApprenticeshipPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-8">
+              <h2 className="text-5xl md:text-6xl font-black text-black mb-8">
                 Why Choose Apprenticeship?
               </h2>
 
@@ -201,10 +201,10 @@ export default function ApprenticeshipPage() {
                     <DollarSign className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                    <h3 className="text-2xl font-bold text-black mb-2">
                       Get Paid to Learn
                     </h3>
-                    <p className="text-slate-600 text-lg leading-relaxed">
+                    <p className="text-black text-lg leading-relaxed">
                       Unlike traditional barber school, you earn $12-15/hour
                       from day one. No student debt, just income while you
                       train.
@@ -217,10 +217,10 @@ export default function ApprenticeshipPage() {
                     <Users className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                    <h3 className="text-2xl font-bold text-black mb-2">
                       Real-World Experience
                     </h3>
-                    <p className="text-slate-600 text-lg leading-relaxed">
+                    <p className="text-black text-lg leading-relaxed">
                       Learn from master barbers in actual shops with real
                       clients. Build your skills and clientele from the start.
                     </p>
@@ -232,10 +232,10 @@ export default function ApprenticeshipPage() {
                     <Shield className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                    <h3 className="text-2xl font-bold text-black mb-2">
                       DOL Registered
                     </h3>
-                    <p className="text-slate-600 text-lg leading-relaxed">
+                    <p className="text-black text-lg leading-relaxed">
                       U.S. Department of Labor registered program. Nationally
                       recognized credential that opens doors nationwide.
                     </p>
@@ -247,10 +247,10 @@ export default function ApprenticeshipPage() {
                     <Briefcase className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                    <h3 className="text-2xl font-bold text-black mb-2">
                       Job Ready
                     </h3>
-                    <p className="text-slate-600 text-lg leading-relaxed">
+                    <p className="text-black text-lg leading-relaxed">
                       Graduate with 1,500 hours of real experience, a client
                       base, and connections in the industry.
                     </p>
@@ -314,10 +314,10 @@ export default function ApprenticeshipPage() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-6">
+            <h2 className="text-5xl md:text-6xl font-black text-black mb-6">
               What You'll Master
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               Complete training in all aspects of professional barbering
             </p>
           </div>
@@ -327,10 +327,10 @@ export default function ApprenticeshipPage() {
               <div className="w-16 h-16 bg-brand-blue-500 rounded-2xl flex items-center justify-center mb-6">
                 <CheckCircle className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Classic Cuts
               </h3>
-              <ul className="space-y-3 text-slate-600">
+              <ul className="space-y-3 text-black">
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 bg-brand-blue-500 rounded-full"></div>
                   Clipper techniques
@@ -354,10 +354,10 @@ export default function ApprenticeshipPage() {
               <div className="w-16 h-16 bg-brand-blue-600 rounded-2xl flex items-center justify-center mb-6">
                 <CheckCircle className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Grooming Services
               </h3>
-              <ul className="space-y-3 text-slate-600">
+              <ul className="space-y-3 text-black">
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 bg-brand-blue-600 rounded-full"></div>
                   Beard shaping
@@ -381,10 +381,10 @@ export default function ApprenticeshipPage() {
               <div className="w-16 h-16 bg-brand-orange-500 rounded-2xl flex items-center justify-center mb-6">
                 <CheckCircle className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Business Skills
               </h3>
-              <ul className="space-y-3 text-slate-600">
+              <ul className="space-y-3 text-black">
                 <li className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 bg-brand-orange-500 rounded-full"></div>
                   Client consultation

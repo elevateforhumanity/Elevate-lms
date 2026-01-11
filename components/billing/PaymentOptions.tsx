@@ -9,7 +9,7 @@ export default function PaymentOptions({ price, programName }: Props) {
   return (
     <section className="mt-6 rounded-2xl border bg-white p-5 shadow-sm">
       <h3 className="text-xl font-semibold">Payment Options</h3>
-      <p className="mt-1 text-sm text-gray-600">
+      <p className="mt-1 text-sm text-black">
         Choose the option that fits your situation. If you're using workforce
         funding (WIOA/WRG/JRI/Employer), select that during checkout or after
         you apply.
@@ -18,7 +18,7 @@ export default function PaymentOptions({ price, programName }: Props) {
       <div className="mt-4 grid gap-3 md:grid-cols-2">
         <div className="rounded-xl border p-4">
           <div className="font-semibold">Pay in Full (Card)</div>
-          <div className="mt-1 text-sm text-gray-600">
+          <div className="mt-1 text-sm text-black">
             Visa, Mastercard, Amex, Discover.
             {typeof price === 'number' ? (
               <div className="mt-1">
@@ -31,11 +31,11 @@ export default function PaymentOptions({ price, programName }: Props) {
 
         <div className="rounded-xl border p-4">
           <div className="font-semibold">Pay Over Time (If Available)</div>
-          <div className="mt-1 text-sm text-gray-600">
+          <div className="mt-1 text-sm text-black">
             Affirm / Klarna / Afterpay (availability depends on Stripe settings,
             purchase amount, and eligibility).
           </div>
-          <ul className="mt-2 list-disc pl-5 text-sm text-gray-600">
+          <ul className="mt-2 list-disc pl-5 text-sm text-black">
             <li>Monthly payments (Affirm) or Pay-in-4 (Klarna/Afterpay)</li>
             <li>Instant decision at checkout</li>
             <li>Some options may not appear for certain totals</li>
@@ -46,7 +46,7 @@ export default function PaymentOptions({ price, programName }: Props) {
           <div className="font-semibold">
             Workforce Funding (WIOA / WRG / JRI)
           </div>
-          <div className="mt-1 text-sm text-gray-600">
+          <div className="mt-1 text-sm text-black">
             If you qualify, your training may be fully covered. We'll guide you
             through the steps after you apply.
           </div>
@@ -54,14 +54,14 @@ export default function PaymentOptions({ price, programName }: Props) {
 
         <div className="rounded-xl border p-4">
           <div className="font-semibold">Employer Paid / Sponsorship</div>
-          <div className="mt-1 text-sm text-gray-600">
+          <div className="mt-1 text-sm text-black">
             Your employer can sponsor your training. We can provide an invoice
             or sponsorship agreement.
           </div>
         </div>
       </div>
 
-      <div className="mt-4 rounded-xl bg-gray-50 p-4 text-sm text-gray-700">
+      <div className="mt-4 rounded-xl bg-gray-50 p-4 text-sm text-black">
         <div className="font-medium">Note:</div>
         <div className="mt-1">
           Pay-over-time options show automatically at checkout if they're

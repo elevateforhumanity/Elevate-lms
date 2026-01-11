@@ -40,7 +40,7 @@ export default function SuccessStoryCards() {
           <h2 className="text-3xl md:text-4xl font-black text-zinc-900 mb-4">
             Real People, Real Results
           </h2>
-          <p className="text-lg text-slate-700 max-w-2xl mx-auto">
+          <p className="text-lg text-black max-w-2xl mx-auto">
             See how our graduates transformed their lives and careers
           </p>
         </div>
@@ -63,7 +63,7 @@ export default function SuccessStoryCards() {
                 <div className="space-y-2 mb-4">
                   <div className="flex items-start gap-2">
                     <span className="text-slate-500 text-sm">Before:</span>
-                    <span className="text-sm text-slate-700">{story.beforeJob}</span>
+                    <span className="text-sm text-black">{story.beforeJob}</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <TrendingUp className="w-4 h-4 text-green-600 mt-0.5" />
@@ -74,7 +74,7 @@ export default function SuccessStoryCards() {
                   </div>
                 </div>
 
-                <p className="text-sm text-slate-600 italic mb-4">"{story.quote}"</p>
+                <p className="text-sm text-black italic mb-4">"{story.quote}"</p>
               </div>
             </div>
           ))}

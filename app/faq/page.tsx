@@ -236,7 +236,7 @@ export default function FAQPage() {
                 placeholder="Search for answers..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 rounded-lg text-slate-900 text-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
+                className="w-full pl-12 pr-4 py-4 rounded-lg text-black text-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
               />
             </div>
           </div>
@@ -252,7 +252,7 @@ export default function FAQPage() {
               className={`px-6 py-2 rounded-full font-semibold transition ${
                 selectedCategory === 'all'
                   ? 'bg-brand-blue-600 text-white'
-                  : 'bg-white text-slate-700 hover:bg-slate-100'
+                  : 'bg-white text-black hover:bg-slate-100'
               }`}
             >
               All Questions
@@ -264,7 +264,7 @@ export default function FAQPage() {
                 className={`px-6 py-2 rounded-full font-semibold transition ${
                   selectedCategory === category.id
                     ? 'bg-brand-blue-600 text-white'
-                    : 'bg-white text-slate-700 hover:bg-slate-100'
+                    : 'bg-white text-black hover:bg-slate-100'
                 }`}
               >
                 {category.icon} {category.name}
@@ -280,7 +280,7 @@ export default function FAQPage() {
           <div className="max-w-4xl mx-auto space-y-12">
             {filteredCategories.map((category) => (
               <div key={category.id}>
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                <h2 className="text-2xl md:text-3xl font-bold text-black mb-6 flex items-center gap-3">
                   <span className="text-4xl text-2xl md:text-3xl lg:text-4xl">
                     {category.icon}
                   </span>
@@ -300,7 +300,7 @@ export default function FAQPage() {
                           onClick={() => toggleQuestion(category.id, index)}
                           className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-slate-50 transition"
                         >
-                          <span className="font-semibold text-slate-900 text-lg">
+                          <span className="font-semibold text-black text-lg">
                             {question.q}
                           </span>
                           <ChevronDown
@@ -310,7 +310,7 @@ export default function FAQPage() {
                           />
                         </button>
                         {isOpen && (
-                          <div className="px-6 pb-4 text-slate-600 leading-relaxed">
+                          <div className="px-6 pb-4 text-black leading-relaxed">
                             {question.a}
                           </div>
                         )}
@@ -328,20 +328,20 @@ export default function FAQPage() {
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">
               Still Have Questions?
             </h2>
-            <p className="text-base md:text-lg text-slate-600 mb-8">
+            <p className="text-base md:text-lg text-black mb-8">
               We&apos;re here to help! Contact us and we&apos;ll get you the
               answers you need.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white rounded-lg p-8 shadow-sm">
                 <Phone className="w-12 h-12 text-brand-blue-600 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-slate-900 mb-2">
+                <h3 className="text-lg font-bold text-black mb-2">
                   Call Us
                 </h3>
-                <p className="text-slate-600 mb-4">
+                <p className="text-black mb-4">
                   Speak with an advisor Monday-Friday, 8am-5pm
                 </p>
                 <a
@@ -353,10 +353,10 @@ export default function FAQPage() {
               </div>
               <div className="bg-white rounded-lg p-8 shadow-sm">
                 <Mail className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-slate-900 mb-2">
+                <h3 className="text-lg font-bold text-black mb-2">
                   Email Us
                 </h3>
-                <p className="text-slate-600 mb-4">
+                <p className="text-black mb-4">
                   Send us a message and we&apos;ll respond within 24 hours
                 </p>
                 <Link
@@ -375,7 +375,7 @@ export default function FAQPage() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">
+            <h2 className="text-2xl font-bold text-black mb-6 text-center">
               Quick Links
             </h2>
             <div className="grid md:grid-cols-3 gap-4">
@@ -386,7 +386,7 @@ export default function FAQPage() {
                 <div className="text-3xl mb-2">
                   <BookOpen className="w-5 h-5 inline-block" />
                 </div>
-                <div className="font-semibold text-slate-900">
+                <div className="font-semibold text-black">
                   View Programs
                 </div>
               </Link>
@@ -395,7 +395,7 @@ export default function FAQPage() {
                 className="bg-green-50 hover:bg-brand-green-100 rounded-lg p-6 text-center transition"
               >
                 <div className="text-3xl mb-2">✍️</div>
-                <div className="font-semibold text-slate-900">Apply Now</div>
+                <div className="font-semibold text-black">Apply Now</div>
               </Link>
               <Link
                 href="/getstarted"
@@ -404,7 +404,7 @@ export default function FAQPage() {
                 <div className="text-3xl mb-2">
                   <Rocket className="w-5 h-5 inline-block" />
                 </div>
-                <div className="font-semibold text-slate-900">Get Started</div>
+                <div className="font-semibold text-black">Get Started</div>
               </Link>
             </div>
           </div>

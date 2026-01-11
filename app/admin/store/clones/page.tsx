@@ -150,10 +150,10 @@ export default function StoreBuilderPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             Store Builder - Clone Codebase
           </h1>
-          <p className="text-gray-600">
+          <p className="text-black">
             Create and manage your codebase product listing
           </p>
         </div>
@@ -169,7 +169,7 @@ export default function StoreBuilderPage() {
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Product Title
                   </label>
                   <input
@@ -187,7 +187,7 @@ export default function StoreBuilderPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-black mb-2">
                     Description
                   </label>
                   <textarea
@@ -276,7 +276,7 @@ export default function StoreBuilderPage() {
                     />
 
                     <div className="flex items-center gap-2 mb-3">
-                      <DollarSign className="w-4 h-4 text-gray-600" />
+                      <DollarSign className="w-4 h-4 text-black" />
                       <input
                         type="number"
                         value={tier.price}
@@ -304,7 +304,7 @@ export default function StoreBuilderPage() {
 
                     <div className="space-y-1">
                       {tier.features.map((f, i) => (
-                        <div key={i} className="text-xs text-gray-600">
+                        <div key={i} className="text-xs text-black">
                           • {f}
                         </div>
                       ))}
@@ -336,7 +336,7 @@ export default function StoreBuilderPage() {
 
                 {product.demo.enabled && (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-black mb-2">
                       Demo URL
                     </label>
                     <input
@@ -405,19 +405,19 @@ export default function StoreBuilderPage() {
 
                 <div className="space-y-3">
                   <div>
-                    <div className="text-xs text-gray-700 mb-1">Title</div>
+                    <div className="text-xs text-black mb-1">Title</div>
                     <div className="text-sm font-medium">{product.title}</div>
                   </div>
 
                   <div>
-                    <div className="text-xs text-gray-700 mb-1">Features</div>
-                    <div className="text-xs text-gray-600">
+                    <div className="text-xs text-black mb-1">Features</div>
+                    <div className="text-xs text-black">
                       {product.features.length} features
                     </div>
                   </div>
 
                   <div>
-                    <div className="text-xs text-gray-700 mb-1">Pricing</div>
+                    <div className="text-xs text-black mb-1">Pricing</div>
                     <div className="text-sm font-medium">
                       ${product.pricing.starter.price} - $
                       {product.pricing.enterprise.price}
@@ -425,8 +425,8 @@ export default function StoreBuilderPage() {
                   </div>
 
                   <div>
-                    <div className="text-xs text-gray-700 mb-1">Demo</div>
-                    <div className="text-xs text-gray-600">
+                    <div className="text-xs text-black mb-1">Demo</div>
+                    <div className="text-xs text-black">
                       {product.demo.enabled
                         ? '<CheckCircle className="w-5 h-5 inline-block" /> Enabled'
                         : '<XCircle className="w-5 h-5 inline-block" /> Disabled'}
@@ -441,15 +441,15 @@ export default function StoreBuilderPage() {
 
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Views</span>
+                    <span className="text-black">Views</span>
                     <span className="font-medium">0</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Demo Requests</span>
+                    <span className="text-black">Demo Requests</span>
                     <span className="font-medium">0</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Purchases</span>
+                    <span className="text-black">Purchases</span>
                     <span className="font-medium">0</span>
                   </div>
                 </div>
@@ -464,10 +464,10 @@ export default function StoreBuilderPage() {
             <div className="max-w-7xl mx-auto">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
                     Your Journey Starts Here
                   </h2>
-                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                  <p className="text-lg text-black mb-6 leading-relaxed">
                     Every great career begins with a single step. Whether you're
                     looking to change careers, upgrade your skills, or enter the
                     workforce for the first time, we're here to help you
@@ -489,7 +489,7 @@ export default function StoreBuilderPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         100% free training - no tuition, no hidden costs
                       </span>
                     </li>
@@ -507,7 +507,7 @@ export default function StoreBuilderPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Industry-recognized certifications that employers value
                       </span>
                     </li>
@@ -525,7 +525,7 @@ export default function StoreBuilderPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Job placement assistance and career support
                       </span>
                     </li>
@@ -543,7 +543,7 @@ export default function StoreBuilderPage() {
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
-                      <span className="text-gray-700">
+                      <span className="text-black">
                         Flexible scheduling for working adults
                       </span>
                     </li>

@@ -66,7 +66,7 @@ export function AutomatedCertificateWorkflow() {
                   <div key={cert.id} className="p-4 bg-gray-50 rounded flex justify-between items-center">
                     <div>
                       <p className="font-bold">{cert.studentName}</p>
-                      <p className="text-sm text-gray-600">{cert.course}</p>
+                      <p className="text-sm text-black">{cert.course}</p>
                       <p className="text-xs text-gray-500">Completed: {cert.completionDate}</p>
                     </div>
                     <Button size="sm">Generate</Button>
@@ -110,7 +110,7 @@ export function AutomatedCertificateWorkflow() {
                       <span className="text-3xl">{template.preview}</span>
                       <div>
                         <p className="font-semibold text-sm">{template.name}</p>
-                        <p className="text-xs text-gray-600">{template.type}</p>
+                        <p className="text-xs text-black">{template.type}</p>
                       </div>
                     </div>
                   </div>
@@ -122,15 +122,15 @@ export function AutomatedCertificateWorkflow() {
               <h3 className="font-bold mb-4">Statistics</h3>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Generated Today:</span>
+                  <span className="text-black">Generated Today:</span>
                   <span className="font-semibold">24</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">This Month:</span>
+                  <span className="text-black">This Month:</span>
                   <span className="font-semibold">456</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Pending:</span>
+                  <span className="text-black">Pending:</span>
                   <span className="font-semibold text-yellow-600">{pending.length}</span>
                 </div>
               </div>

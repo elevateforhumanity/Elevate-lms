@@ -96,23 +96,23 @@ export default function FERPATrainingDashboard({
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-black">
                 FERPA Training Management
               </h1>
-              <p className="text-slate-600 mt-1">
+              <p className="text-black mt-1">
                 Monitor and manage FERPA training compliance
               </p>
             </div>
             <div className="flex items-center gap-4">
               <Link
                 href="/ferpa"
-                className="px-4 py-2 text-slate-600 hover:text-slate-900 font-medium"
+                className="px-4 py-2 text-black hover:text-black font-medium"
               >
                 FERPA Portal
               </Link>
               <Link
                 href="/admin"
-                className="px-4 py-2 text-slate-600 hover:text-slate-900 font-medium"
+                className="px-4 py-2 text-black hover:text-black font-medium"
               >
                 Admin Dashboard
               </Link>
@@ -130,8 +130,8 @@ export default function FERPATrainingDashboard({
                 <Users className="w-6 h-6 text-blue-600" />
               </div>
             </div>
-            <div className="text-3xl font-bold text-slate-900">{totalStaff}</div>
-            <div className="text-sm text-slate-600 mt-1">Total Staff</div>
+            <div className="text-3xl font-bold text-black">{totalStaff}</div>
+            <div className="text-sm text-black mt-1">Total Staff</div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
@@ -141,7 +141,7 @@ export default function FERPATrainingDashboard({
               </div>
             </div>
             <div className="text-3xl font-bold text-green-600">{completedCount}</div>
-            <div className="text-sm text-slate-600 mt-1">Completed</div>
+            <div className="text-sm text-black mt-1">Completed</div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
@@ -151,7 +151,7 @@ export default function FERPATrainingDashboard({
               </div>
             </div>
             <div className="text-3xl font-bold text-brand-orange-600">{expiredCount}</div>
-            <div className="text-sm text-slate-600 mt-1">Expired</div>
+            <div className="text-sm text-black mt-1">Expired</div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
@@ -161,7 +161,7 @@ export default function FERPATrainingDashboard({
               </div>
             </div>
             <div className="text-3xl font-bold text-orange-600">{pendingCount}</div>
-            <div className="text-sm text-slate-600 mt-1">Pending</div>
+            <div className="text-sm text-black mt-1">Pending</div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
@@ -171,7 +171,7 @@ export default function FERPATrainingDashboard({
               </div>
             </div>
             <div className="text-3xl font-bold text-purple-600">{complianceRate}%</div>
-            <div className="text-sm text-slate-600 mt-1">Compliance Rate</div>
+            <div className="text-sm text-black mt-1">Compliance Rate</div>
           </div>
         </div>
 
@@ -193,7 +193,7 @@ export default function FERPATrainingDashboard({
                 className={`px-4 py-2 rounded-lg font-medium transition ${
                   filter === 'all'
                     ? 'bg-blue-600 text-white'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    : 'bg-slate-100 text-black hover:bg-slate-200'
                 }`}
               >
                 All
@@ -203,7 +203,7 @@ export default function FERPATrainingDashboard({
                 className={`px-4 py-2 rounded-lg font-medium transition ${
                   filter === 'completed'
                     ? 'bg-green-600 text-white'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    : 'bg-slate-100 text-black hover:bg-slate-200'
                 }`}
               >
                 Completed
@@ -213,7 +213,7 @@ export default function FERPATrainingDashboard({
                 className={`px-4 py-2 rounded-lg font-medium transition ${
                   filter === 'expired'
                     ? 'bg-brand-orange-600 text-white'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    : 'bg-slate-100 text-black hover:bg-slate-200'
                 }`}
               >
                 Expired
@@ -223,7 +223,7 @@ export default function FERPATrainingDashboard({
                 className={`px-4 py-2 rounded-lg font-medium transition ${
                   filter === 'pending'
                     ? 'bg-orange-600 text-white'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    : 'bg-slate-100 text-black hover:bg-slate-200'
                 }`}
               >
                 Pending
@@ -236,7 +236,7 @@ export default function FERPATrainingDashboard({
         {(filter === 'all' || filter === 'completed' || filter === 'expired') && (
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 mb-6">
             <div className="p-6 border-b border-slate-200">
-              <h2 className="text-xl font-bold text-slate-900">Training Records</h2>
+              <h2 className="text-xl font-bold text-black">Training Records</h2>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -271,7 +271,7 @@ export default function FERPATrainingDashboard({
                     return (
                       <tr key={record.id} className="hover:bg-slate-50">
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm font-medium text-slate-900">
+                          <div className="text-sm font-medium text-black">
                             {record.profiles.full_name}
                           </div>
                           <div className="text-sm text-slate-500">
@@ -292,10 +292,10 @@ export default function FERPATrainingDashboard({
                             {record.quiz_score}%
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                           {new Date(record.completed_at).toLocaleDateString()}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                           {new Date(record.expires_at).toLocaleDateString()}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -347,7 +347,7 @@ export default function FERPATrainingDashboard({
         {(filter === 'all' || filter === 'pending') && pendingCount > 0 && (
           <div className="bg-white rounded-xl shadow-sm border border-slate-200">
             <div className="p-6 border-b border-slate-200">
-              <h2 className="text-xl font-bold text-slate-900">Pending Training</h2>
+              <h2 className="text-xl font-bold text-black">Pending Training</h2>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -376,7 +376,7 @@ export default function FERPATrainingDashboard({
                     return (
                       <tr key={user.id} className="hover:bg-slate-50">
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm font-medium text-slate-900">
+                          <div className="text-sm font-medium text-black">
                             {user.full_name}
                           </div>
                           <div className="text-sm text-slate-500">
@@ -388,14 +388,14 @@ export default function FERPATrainingDashboard({
                             {user.role}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                           {new Date(user.created_at).toLocaleDateString()}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`text-sm font-medium ${
                             daysPending > 30 ? 'text-brand-orange-600' :
                             daysPending > 14 ? 'text-orange-600' :
-                            'text-slate-600'
+                            'text-black'
                           }`}>
                             {daysPending} days
                           </span>

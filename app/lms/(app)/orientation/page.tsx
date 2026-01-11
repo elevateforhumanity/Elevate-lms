@@ -29,10 +29,10 @@ export default async function OrientationPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-black mb-2">
             Program Orientation
           </h1>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-black">
             {isCompleted
               ? 'You have completed your orientation. Review the video anytime.'
               : 'Watch this orientation video to get started with your training journey.'}
@@ -77,44 +77,44 @@ export default async function OrientationPage() {
 
             {/* What You'll Learn */}
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-              <h2 className="text-xl font-bold text-slate-900 mb-4">
+              <h2 className="text-xl font-bold text-black mb-4">
                 What You'll Learn
               </h2>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-700">
+                  <span className="text-black">
                     How our 100% free training programs work
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-700">
+                  <span className="text-black">
                     Available programs in healthcare, skilled trades, and
                     business
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-700">
+                  <span className="text-black">
                     Funding options (WIOA, WRG, employer-sponsored)
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-700">
+                  <span className="text-black">
                     Support services (childcare, transportation, tools)
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-700">
+                  <span className="text-black">
                     Job placement assistance and career services
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-700">
+                  <span className="text-black">
                     How to succeed in your training program
                   </span>
                 </li>
@@ -126,7 +126,7 @@ export default async function OrientationPage() {
           <div className="space-y-6">
             {/* Next Steps */}
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-              <h3 className="text-lg font-bold text-slate-900 mb-4">
+              <h3 className="text-lg font-bold text-black mb-4">
                 Next Steps
               </h3>
               <div className="space-y-4">
@@ -135,45 +135,45 @@ export default async function OrientationPage() {
                     <span className="text-sm font-bold text-blue-600">1</span>
                   </div>
                   <div>
-                    <p className="font-medium text-slate-900">
+                    <p className="font-medium text-black">
                       Watch Orientation
                     </p>
-                    <p className="text-sm text-slate-600">
+                    <p className="text-sm text-black">
                       Complete the video above
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm font-bold text-slate-600">2</span>
+                    <span className="text-sm font-bold text-black">2</span>
                   </div>
                   <div>
-                    <p className="font-medium text-slate-900">
+                    <p className="font-medium text-black">
                       Verify Eligibility
                     </p>
-                    <p className="text-sm text-slate-600">
+                    <p className="text-sm text-black">
                       Check if you qualify for free training
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm font-bold text-slate-600">3</span>
+                    <span className="text-sm font-bold text-black">3</span>
                   </div>
                   <div>
-                    <p className="font-medium text-slate-900">Choose Program</p>
-                    <p className="text-sm text-slate-600">
+                    <p className="font-medium text-black">Choose Program</p>
+                    <p className="text-sm text-black">
                       Browse 20+ training programs
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm font-bold text-slate-600">4</span>
+                    <span className="text-sm font-bold text-black">4</span>
                   </div>
                   <div>
-                    <p className="font-medium text-slate-900">Start Training</p>
-                    <p className="text-sm text-slate-600">
+                    <p className="font-medium text-black">Start Training</p>
+                    <p className="text-sm text-black">
                       Begin your career journey
                     </p>
                   </div>
@@ -183,7 +183,7 @@ export default async function OrientationPage() {
 
             {/* Quick Links */}
             <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-              <h3 className="text-lg font-bold text-slate-900 mb-4">
+              <h3 className="text-lg font-bold text-black mb-4">
                 Quick Links
               </h3>
               <div className="space-y-2">
@@ -192,7 +192,7 @@ export default async function OrientationPage() {
                   className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 transition"
                 >
                   <Book className="w-5 h-5 text-blue-600" />
-                  <span className="text-sm font-medium text-slate-900">
+                  <span className="text-sm font-medium text-black">
                     Browse Programs
                   </span>
                 </Link>
@@ -201,7 +201,7 @@ export default async function OrientationPage() {
                   className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 transition"
                 >
                   <Users className="w-5 h-5 text-blue-600" />
-                  <span className="text-sm font-medium text-slate-900">
+                  <span className="text-sm font-medium text-black">
                     How It Works
                   </span>
                 </Link>
@@ -210,7 +210,7 @@ export default async function OrientationPage() {
                   className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 transition"
                 >
                   <Award className="w-5 h-5 text-blue-600" />
-                  <span className="text-sm font-medium text-slate-900">
+                  <span className="text-sm font-medium text-black">
                     Funding Options
                   </span>
                 </Link>
@@ -219,7 +219,7 @@ export default async function OrientationPage() {
                   className="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 transition"
                 >
                   <Briefcase className="w-5 h-5 text-blue-600" />
-                  <span className="text-sm font-medium text-slate-900">
+                  <span className="text-sm font-medium text-black">
                     Career Services
                   </span>
                 </Link>
@@ -249,10 +249,10 @@ export default async function OrientationPage() {
           <div className="mt-8 bg-white rounded-xl shadow-sm border border-slate-200 p-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div>
-                <h3 className="text-lg font-bold text-slate-900 mb-1">
+                <h3 className="text-lg font-bold text-black mb-1">
                   Ready for the Next Step?
                 </h3>
-                <p className="text-slate-600">
+                <p className="text-black">
                   Verify your eligibility to unlock program enrollment.
                 </p>
               </div>

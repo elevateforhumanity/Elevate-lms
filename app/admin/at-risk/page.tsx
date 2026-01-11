@@ -135,10 +135,10 @@ export default async function AtRiskStudentsPage() {
       <div className="mx-auto max-w-7xl px-4">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-black mb-2">
             At-Risk Students
           </h1>
-          <p className="text-gray-600">
+          <p className="text-black">
             Monitor and support students who need immediate attention
           </p>
         </div>
@@ -149,13 +149,13 @@ export default async function AtRiskStudentsPage() {
             <div className="flex items-center gap-3 mb-2">
               <AlertCircle className="w-8 h-8 text-red-600" />
               <div>
-                <div className="text-sm text-gray-700">At-Risk Students</div>
+                <div className="text-sm text-black">At-Risk Students</div>
                 <div className="text-3xl font-bold text-red-600">
                   {atRiskStudents?.length || 0}
                 </div>
               </div>
             </div>
-            <p className="text-sm text-gray-600 mt-2">
+            <p className="text-sm text-black mt-2">
               3+ overdue requirements or critical issues
             </p>
           </div>
@@ -164,13 +164,13 @@ export default async function AtRiskStudentsPage() {
             <div className="flex items-center gap-3 mb-2">
               <FileWarning className="w-8 h-8 text-yellow-600" />
               <div>
-                <div className="text-sm text-gray-700">Needs Action</div>
+                <div className="text-sm text-black">Needs Action</div>
                 <div className="text-3xl font-bold text-yellow-600">
                   {needsActionStudents?.length || 0}
                 </div>
               </div>
             </div>
-            <p className="text-sm text-gray-600 mt-2">
+            <p className="text-sm text-black mt-2">
               1-2 overdue requirements
             </p>
           </div>
@@ -179,7 +179,7 @@ export default async function AtRiskStudentsPage() {
             <div className="flex items-center gap-3 mb-2">
               <TrendingDown className="w-8 h-8 text-purple-600" />
               <div>
-                <div className="text-sm text-gray-700">
+                <div className="text-sm text-black">
                   Low Completion Programs
                 </div>
                 <div className="text-3xl font-bold text-purple-600">
@@ -187,7 +187,7 @@ export default async function AtRiskStudentsPage() {
                 </div>
               </div>
             </div>
-            <p className="text-sm text-gray-600 mt-2">
+            <p className="text-sm text-black mt-2">
               Programs with &lt;70% completion rate
             </p>
           </div>
@@ -195,7 +195,7 @@ export default async function AtRiskStudentsPage() {
 
         {/* At-Risk Students List */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <h2 className="text-xl font-bold text-black mb-4 flex items-center gap-2">
             <AlertCircle className="w-6 h-6 text-red-600" />
             Critical: At-Risk Students
           </h2>
@@ -217,7 +217,7 @@ export default async function AtRiskStudentsPage() {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="font-bold text-gray-900 text-lg">
+                          <h3 className="font-bold text-black text-lg">
                             {student?.first_name} {student?.last_name}
                           </h3>
                           <span className="px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded">
@@ -226,34 +226,34 @@ export default async function AtRiskStudentsPage() {
                         </div>
                         <div className="grid grid-cols-2 gap-4 text-sm">
                           <div>
-                            <span className="text-gray-700">Program:</span>
-                            <span className="ml-2 font-medium text-gray-900">
+                            <span className="text-black">Program:</span>
+                            <span className="ml-2 font-medium text-black">
                               {program?.name}
                             </span>
                           </div>
                           <div>
-                            <span className="text-gray-700">Progress:</span>
-                            <span className="ml-2 font-medium text-gray-900">
+                            <span className="text-black">Progress:</span>
+                            <span className="ml-2 font-medium text-black">
                               {risk.progress_percentage}%
                             </span>
                           </div>
                           <div>
-                            <span className="text-gray-700">Email:</span>
-                            <span className="ml-2 text-gray-900">
+                            <span className="text-black">Email:</span>
+                            <span className="ml-2 text-black">
                               {student?.email}
                             </span>
                           </div>
                           <div>
-                            <span className="text-gray-700">Funding:</span>
-                            <span className="ml-2 font-medium text-gray-900">
+                            <span className="text-black">Funding:</span>
+                            <span className="ml-2 font-medium text-black">
                               {funding?.code || 'N/A'}
                             </span>
                           </div>
                           <div>
-                            <span className="text-gray-700">
+                            <span className="text-black">
                               Last Activity:
                             </span>
-                            <span className="ml-2 text-gray-900">
+                            <span className="ml-2 text-black">
                               {risk.last_activity_date
                                 ? new Date(
                                     risk.last_activity_date
@@ -262,7 +262,7 @@ export default async function AtRiskStudentsPage() {
                             </span>
                           </div>
                           <div>
-                            <span className="text-gray-700">
+                            <span className="text-black">
                               Days Inactive:
                             </span>
                             <span className="ml-2 font-medium text-red-600">
@@ -293,7 +293,7 @@ export default async function AtRiskStudentsPage() {
               })}
             </div>
           ) : (
-            <div className="text-center py-8 text-gray-700">
+            <div className="text-center py-8 text-black">
               <p>No at-risk students. Great job!</p>
             </div>
           )}
@@ -302,7 +302,7 @@ export default async function AtRiskStudentsPage() {
         {/* Needs Action Students */}
         {needsActionStudents && needsActionStudents.length > 0 && (
           <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-black mb-4 flex items-center gap-2">
               <FileWarning className="w-6 h-6 text-yellow-600" />
               Needs Action ({needsActionStudents.length})
             </h2>
@@ -318,10 +318,10 @@ export default async function AtRiskStudentsPage() {
                     className="flex items-center justify-between p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded"
                   >
                     <div>
-                      <div className="font-semibold text-gray-900">
+                      <div className="font-semibold text-black">
                         {student?.first_name} {student?.last_name}
                       </div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-sm text-black">
                         {program?.name} • {risk.overdue_count} overdue •{' '}
                         {risk.progress_percentage}% complete
                       </div>
@@ -342,7 +342,7 @@ export default async function AtRiskStudentsPage() {
         {/* Low Completion Programs */}
         {lowCompletionPrograms && lowCompletionPrograms.length > 0 && (
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-black mb-4 flex items-center gap-2">
               <TrendingDown className="w-6 h-6 text-purple-600" />
               Programs Needing Attention
             </h2>
@@ -350,19 +350,19 @@ export default async function AtRiskStudentsPage() {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gray-200">
-                    <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                    <th className="text-left py-3 px-4 font-semibold text-black">
                       Program
                     </th>
-                    <th className="text-center py-3 px-4 font-semibold text-gray-700">
+                    <th className="text-center py-3 px-4 font-semibold text-black">
                       Total Students
                     </th>
-                    <th className="text-center py-3 px-4 font-semibold text-gray-700">
+                    <th className="text-center py-3 px-4 font-semibold text-black">
                       Completion Rate
                     </th>
-                    <th className="text-center py-3 px-4 font-semibold text-gray-700">
+                    <th className="text-center py-3 px-4 font-semibold text-black">
                       Dropout Rate
                     </th>
-                    <th className="text-right py-3 px-4 font-semibold text-gray-700">
+                    <th className="text-right py-3 px-4 font-semibold text-black">
                       Actions
                     </th>
                   </tr>
@@ -373,10 +373,10 @@ export default async function AtRiskStudentsPage() {
                       key={program.id}
                       className="border-b border-gray-100 hover:bg-gray-50"
                     >
-                      <td className="py-3 px-4 font-medium text-gray-900">
+                      <td className="py-3 px-4 font-medium text-black">
                         {program.name}
                       </td>
-                      <td className="py-3 px-4 text-center text-gray-700">
+                      <td className="py-3 px-4 text-center text-black">
                         {program.total}
                       </td>
                       <td className="py-3 px-4 text-center">

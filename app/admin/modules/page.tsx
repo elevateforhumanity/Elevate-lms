@@ -70,10 +70,10 @@ export default async function ModulesPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-black">
                 Modules Management
               </h1>
-              <p className="text-gray-600 mt-1">
+              <p className="text-black mt-1">
                 Manage program modules and SCORM content
               </p>
             </div>
@@ -88,15 +88,15 @@ export default async function ModulesPage() {
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
             <div className="bg-white rounded-lg shadow-sm border p-4">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">
+              <h3 className="text-sm font-medium text-black mb-1">
                 Total Modules
               </h3>
-              <p className="text-base md:text-lg font-bold text-gray-900">
+              <p className="text-base md:text-lg font-bold text-black">
                 {totalModules || 0}
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-sm border p-4">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">
+              <h3 className="text-sm font-medium text-black mb-1">
                 SCORM Packages
               </h3>
               <p className="text-base md:text-lg font-bold text-brand-blue-600">
@@ -104,7 +104,7 @@ export default async function ModulesPage() {
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-sm border p-4">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">
+              <h3 className="text-sm font-medium text-black mb-1">
                 Lessons
               </h3>
               <p className="text-base md:text-lg font-bold text-brand-green-600">
@@ -112,7 +112,7 @@ export default async function ModulesPage() {
               </p>
             </div>
             <div className="bg-white rounded-lg shadow-sm border p-4">
-              <h3 className="text-sm font-medium text-gray-600 mb-1">
+              <h3 className="text-sm font-medium text-black mb-1">
                 Assessments
               </h3>
               <p className="text-base md:text-lg font-bold text-purple-600">

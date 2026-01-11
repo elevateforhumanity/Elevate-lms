@@ -9,7 +9,7 @@ export default function VerificationPage() {
   return (
     <article className="prose prose-lg max-w-none">
       <h1>Credential Verification Policy</h1>
-      <p className="text-gray-600">Last Updated: December 22, 2024</p>
+      <p className="text-black">Last Updated: December 22, 2024</p>
       <h2>Verification Process</h2>
       <p>Employers and institutions may verify credentials by contacting our registrar with certificate number.</p>
       <h2>Information Provided</h2>

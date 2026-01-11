@@ -68,7 +68,7 @@ export function Navbar() {
                 href={link.href}
                 className={`font-semibold transition-colors ${
                   scrolled
-                    ? 'text-slate-900 hover:text-orange-600'
+                    ? 'text-black hover:text-orange-600'
                     : 'text-white hover:text-orange-400'
                 }`}
               >
@@ -86,11 +86,11 @@ export function Navbar() {
           >
             {mobileMenuOpen ? (
               <X
-                className={`w-6 h-6 ${scrolled ? 'text-slate-900' : 'text-white'}`}
+                className={`w-6 h-6 ${scrolled ? 'text-black' : 'text-white'}`}
               />
             ) : (
               <Menu
-                className={`w-6 h-6 ${scrolled ? 'text-slate-900' : 'text-white'}`}
+                className={`w-6 h-6 ${scrolled ? 'text-black' : 'text-white'}`}
               />
             )}
           </button>
@@ -113,7 +113,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-6 py-4 text-lg font-semibold text-slate-900 hover:bg-orange-50 hover:text-orange-600 transition-colors border-b border-slate-200"
+                  className="px-6 py-4 text-lg font-semibold text-black hover:bg-orange-50 hover:text-orange-600 transition-colors border-b border-slate-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}

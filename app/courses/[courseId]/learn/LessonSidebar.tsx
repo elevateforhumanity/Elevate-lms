@@ -48,7 +48,7 @@ export default function LessonSidebar({
         {/* Header */}
         <div className="p-4 border-b border-slate-200">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="font-semibold text-slate-900">Course Content</h2>
+            <h2 className="font-semibold text-black">Course Content</h2>
             <button
               onClick={onToggle}
               className="lg:hidden p-2 hover:bg-slate-100 rounded-lg transition"
@@ -72,8 +72,8 @@ export default function LessonSidebar({
           {/* Progress Bar */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-slate-600">Progress</span>
-              <span className="font-semibold text-slate-900">
+              <span className="text-black">Progress</span>
+              <span className="font-semibold text-black">
                 {progressPercentage}%
               </span>
             </div>
@@ -132,7 +132,7 @@ export default function LessonSidebar({
                           ${
                             isActive
                               ? 'bg-brand-orange-600 text-white'
-                              : 'bg-slate-200 text-slate-600'
+                              : 'bg-slate-200 text-black'
                           }
                         `}
                         >
@@ -146,7 +146,7 @@ export default function LessonSidebar({
                       <h3
                         className={`
                         text-sm font-medium mb-1 line-clamp-2
-                        ${isActive ? 'text-orange-900' : 'text-slate-900'}
+                        ${isActive ? 'text-orange-900' : 'text-black'}
                       `}
                       >
                         {lesson.title}
@@ -173,7 +173,7 @@ export default function LessonSidebar({
 
         {/* Footer */}
         <div className="p-4 border-t border-slate-200 bg-slate-50">
-          <div className="text-xs text-slate-600 text-center">
+          <div className="text-xs text-black text-center">
             {lessons.filter((l) => l.completed).length} of {lessons.length}{' '}
             lessons completed
           </div>

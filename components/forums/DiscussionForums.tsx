@@ -305,10 +305,10 @@ export default function DiscussionForums() {
 
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2 text-2xl md:text-3xl lg:text-4xl">
+            <h1 className="text-4xl font-bold text-black mb-2 text-2xl md:text-3xl lg:text-4xl">
               Discussion Forums
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Connect with peers, ask questions, and share knowledge
             </p>
             <div className="mt-4">
@@ -338,24 +338,24 @@ export default function DiscussionForums() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900">
+                <div className="text-3xl font-bold text-black">
                   {categories.reduce((sum, cat) => sum + cat.thread_count, 0)}
                 </div>
-                <div className="text-sm text-gray-600">Total Threads</div>
+                <div className="text-sm text-black">Total Threads</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900">
+                <div className="text-3xl font-bold text-black">
                   {categories.reduce((sum, cat) => sum + cat.post_count, 0)}
                 </div>
-                <div className="text-sm text-gray-600">Total Posts</div>
+                <div className="text-sm text-black">Total Posts</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900">1,247</div>
-                <div className="text-sm text-gray-600">Active Members</div>
+                <div className="text-3xl font-bold text-black">1,247</div>
+                <div className="text-sm text-black">Active Members</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900">89%</div>
-                <div className="text-sm text-gray-600">Response Rate</div>
+                <div className="text-3xl font-bold text-black">89%</div>
+                <div className="text-sm text-black">Response Rate</div>
               </div>
             </div>
           </div>
@@ -381,10 +381,10 @@ export default function DiscussionForums() {
                       <MessageSquare className="w-6 h-6 text-blue-600" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                      <h3 className="text-lg font-semibold text-black mb-1">
                         {category.name}
                       </h3>
-                      <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                      <p className="text-sm text-black mb-3 line-clamp-2">
                         {category.description}
                       </p>
                       <div className="flex items-center gap-4 text-sm text-gray-500">
@@ -425,10 +425,10 @@ export default function DiscussionForums() {
               <ArrowLeft className="w-5 h-5" />
               Back to Categories
             </button>
-            <h1 className="text-4xl font-bold text-gray-900 text-2xl md:text-3xl lg:text-4xl">
+            <h1 className="text-4xl font-bold text-black text-2xl md:text-3xl lg:text-4xl">
               {selectedCategory?.name}
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className="text-black mt-2">
               {selectedCategory?.description}
             </p>
           </div>
@@ -441,7 +441,7 @@ export default function DiscussionForums() {
                 className={`px-4 py-2 rounded-lg flex items-center gap-2 font-medium transition-colors ${
                   sortBy === 'recent'
                     ? 'bg-blue-100 text-blue-700'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    : 'text-black hover:bg-gray-100'
                 }`}
               >
                 <Clock className="w-4 h-4" />
@@ -452,7 +452,7 @@ export default function DiscussionForums() {
                 className={`px-4 py-2 rounded-lg flex items-center gap-2 font-medium transition-colors ${
                   sortBy === 'popular'
                     ? 'bg-blue-100 text-blue-700'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    : 'text-black hover:bg-gray-100'
                 }`}
               >
                 <TrendingUp className="w-4 h-4" />
@@ -478,10 +478,10 @@ export default function DiscussionForums() {
           ) : threads.length === 0 ? (
             <div className="bg-white rounded-lg shadow-sm p-12 text-center">
               <MessageSquare className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-xl font-semibold text-black mb-2">
                 No threads yet
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 Be the first to start a discussion!
               </p>
               {currentUser && (
@@ -515,11 +515,11 @@ export default function DiscussionForums() {
                             {thread.is_locked && (
                               <Lock className="w-4 h-4 text-gray-400" />
                             )}
-                            <h3 className="text-lg font-semibold text-gray-900 hover:text-blue-600">
+                            <h3 className="text-lg font-semibold text-black hover:text-blue-600">
                               {thread.title}
                             </h3>
                           </div>
-                          <p className="text-sm text-gray-600 line-clamp-2">
+                          <p className="text-sm text-black line-clamp-2">
                             {thread.content}
                           </p>
                         </div>
@@ -549,12 +549,12 @@ export default function DiscussionForums() {
           {showNewThreadModal && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
               <div className="bg-white rounded-lg max-w-2xl w-full p-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                <h2 className="text-2xl font-bold text-black mb-4">
                   Create New Thread
                 </h2>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-black mb-2">
                       Title
                     </label>
                     <input
@@ -566,7 +566,7 @@ export default function DiscussionForums() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-black mb-2">
                       Content
                     </label>
                     <textarea
@@ -580,7 +580,7 @@ export default function DiscussionForums() {
                   <div className="flex items-center justify-end gap-3">
                     <button
                       onClick={() => setShowNewThreadModal(false)}
-                      className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg font-medium"
+                      className="px-4 py-2 text-black hover:bg-gray-100 rounded-lg font-medium"
                     >
                       Cancel
                     </button>
@@ -622,7 +622,7 @@ export default function DiscussionForums() {
         {/* Thread */}
         {selectedThread && (
           <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl font-bold text-black mb-4">
               {selectedThread.title}
             </h1>
             <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
@@ -635,7 +635,7 @@ export default function DiscussionForums() {
                 {selectedThread.view_count} views
               </span>
             </div>
-            <div className="prose max-w-none text-gray-700">
+            <div className="prose max-w-none text-black">
               {selectedThread.content}
             </div>
           </div>
@@ -648,14 +648,14 @@ export default function DiscussionForums() {
               <div className="flex items-start gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="font-semibold text-gray-900">
+                    <span className="font-semibold text-black">
                       {post.author_name}
                     </span>
                     <span className="text-sm text-gray-500">
                       {formatTimeAgo(post.created_at)}
                     </span>
                   </div>
-                  <div className="prose max-w-none text-gray-700">
+                  <div className="prose max-w-none text-black">
                     {post.content}
                   </div>
                 </div>
@@ -667,7 +667,7 @@ export default function DiscussionForums() {
         {/* Reply Box */}
         {currentUser && !selectedThread?.is_locked && (
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <h3 className="text-lg font-semibold text-black mb-4">
               Post a Reply
             </h3>
             <textarea
@@ -692,7 +692,7 @@ export default function DiscussionForums() {
 
         {!currentUser && (
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
-            <p className="text-gray-700 mb-4">
+            <p className="text-black mb-4">
               Please log in to reply to this thread
             </p>
             <Link

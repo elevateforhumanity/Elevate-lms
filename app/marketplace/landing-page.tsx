@@ -146,7 +146,7 @@ export default function MarketplaceLanding() {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-black mb-8">
             Join thousands of buyers and sellers in our marketplace today
           </p>
           <div className="flex gap-4 justify-center">
@@ -158,7 +158,7 @@ export default function MarketplaceLanding() {
             </Link>
             <Link
               href="/marketplace/sell"
-              className="px-8 py-4 bg-gray-200 text-gray-900 rounded-lg font-bold hover:bg-gray-300"
+              className="px-8 py-4 bg-gray-200 text-black rounded-lg font-bold hover:bg-gray-300"
             >
               Become a Seller
             </Link>
@@ -174,7 +174,7 @@ function FeatureCard({ icon, title, description, href }: any) {
     <Link href={href} className="p-6 border rounded-lg hover:shadow-lg transition-shadow bg-white">
       <div className="mb-4">{icon}</div>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <p className="text-black">{description}</p>
     </Link>
   );
 }
@@ -183,7 +183,7 @@ function CategoryCard({ title, count }: any) {
   return (
     <div className="p-6 border rounded-lg hover:shadow-lg transition-shadow bg-white cursor-pointer">
       <h3 className="text-lg font-bold mb-2">{title}</h3>
-      <p className="text-gray-600">{count}</p>
+      <p className="text-black">{count}</p>
     </div>
   );
 }
@@ -194,7 +194,7 @@ function BenefitCard({ icon, title, description }: any) {
       <div className="flex-shrink-0">{icon}</div>
       <div>
         <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+        <p className="text-black">{description}</p>
       </div>
     </div>
   );

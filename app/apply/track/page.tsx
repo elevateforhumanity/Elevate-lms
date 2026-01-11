@@ -138,10 +138,10 @@ export default function TrackApplicationPage() {
       <div className="max-w-4xl mx-auto px-4 py-16">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">
+          <h1 className="text-4xl font-bold text-black mb-4">
             Track Your Application
           </h1>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-black">
             Enter your Application ID or Email Address to check your status
           </p>
         </div>
@@ -152,7 +152,7 @@ export default function TrackApplicationPage() {
             <div>
               <label
                 htmlFor="applicationId"
-                className="block text-sm font-semibold text-slate-900 mb-2"
+                className="block text-sm font-semibold text-black mb-2"
               >
                 Application ID (Optional)
               </label>
@@ -173,7 +173,7 @@ export default function TrackApplicationPage() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-semibold text-slate-900 mb-2"
+                className="block text-sm font-semibold text-black mb-2"
               >
                 Email Address (Optional)
               </label>
@@ -224,25 +224,25 @@ export default function TrackApplicationPage() {
                 <h2 className={`text-2xl font-bold ${status.color} mb-2`}>
                   {status.label}
                 </h2>
-                <p className="text-slate-700">{status.description}</p>
+                <p className="text-black">{status.description}</p>
               </div>
             </div>
 
             <div className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <p className="text-sm font-semibold text-slate-600 mb-1">
+                  <p className="text-sm font-semibold text-black mb-1">
                     Applicant Name
                   </p>
-                  <p className="text-slate-900 font-medium">
+                  <p className="text-black font-medium">
                     {application.first_name} {application.last_name}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-600 mb-1">
+                  <p className="text-sm font-semibold text-black mb-1">
                     Email
                   </p>
-                  <p className="text-slate-900 font-medium">
+                  <p className="text-black font-medium">
                     {application.email}
                   </p>
                 </div>
@@ -250,10 +250,10 @@ export default function TrackApplicationPage() {
 
               {application.phone && (
                 <div>
-                  <p className="text-sm font-semibold text-slate-600 mb-1">
+                  <p className="text-sm font-semibold text-black mb-1">
                     Phone
                   </p>
-                  <p className="text-slate-900 font-medium">
+                  <p className="text-black font-medium">
                     {application.phone}
                   </p>
                 </div>
@@ -261,20 +261,20 @@ export default function TrackApplicationPage() {
 
               {application.program_id && (
                 <div>
-                  <p className="text-sm font-semibold text-slate-600 mb-1">
+                  <p className="text-sm font-semibold text-black mb-1">
                     Program Interest
                   </p>
-                  <p className="text-slate-900 font-medium">
+                  <p className="text-black font-medium">
                     {application.program_id}
                   </p>
                 </div>
               )}
 
               <div>
-                <p className="text-sm font-semibold text-slate-600 mb-1">
+                <p className="text-sm font-semibold text-black mb-1">
                   Submitted
                 </p>
-                <p className="text-slate-900 font-medium">
+                <p className="text-black font-medium">
                   {new Date(application.submitted_at).toLocaleDateString(
                     'en-US',
                     {
@@ -289,30 +289,30 @@ export default function TrackApplicationPage() {
               </div>
 
               <div>
-                <p className="text-sm font-semibold text-slate-600 mb-1">
+                <p className="text-sm font-semibold text-black mb-1">
                   Application ID
                 </p>
-                <p className="text-slate-900 font-mono text-sm">
+                <p className="text-black font-mono text-sm">
                   {application.id}
                 </p>
               </div>
 
               {application.notes && (
                 <div>
-                  <p className="text-sm font-semibold text-slate-600 mb-1">
+                  <p className="text-sm font-semibold text-black mb-1">
                     Notes
                   </p>
-                  <p className="text-slate-700">{application.notes}</p>
+                  <p className="text-black">{application.notes}</p>
                 </div>
               )}
             </div>
 
             {/* Next Steps */}
             <div className="mt-8 pt-6 border-t border-slate-200">
-              <h3 className="font-bold text-slate-900 mb-4">What's Next?</h3>
+              <h3 className="font-bold text-black mb-4">What's Next?</h3>
 
               {application.status === 'pending' && (
-                <div className="space-y-3 text-sm text-slate-700">
+                <div className="space-y-3 text-sm text-black">
                   <p>
                     • An advisor will review your application within 24 hours
                   </p>
@@ -322,7 +322,7 @@ export default function TrackApplicationPage() {
               )}
 
               {application.status === 'contacted' && (
-                <div className="space-y-3 text-sm text-slate-700">
+                <div className="space-y-3 text-sm text-black">
                   <p>• Please respond to our advisor's message</p>
                   <p>• Check your email inbox and spam folder</p>
                   <p>• Call us if you haven't heard from us: (317) 314-3757</p>
@@ -330,7 +330,7 @@ export default function TrackApplicationPage() {
               )}
 
               {application.status === 'approved' && (
-                <div className="space-y-3 text-sm text-slate-700">
+                <div className="space-y-3 text-sm text-black">
                   <p>• An advisor will contact you to complete enrollment</p>
                   <p>• We'll discuss funding options (WIOA, WRG, JRI)</p>
                   <p>• You'll receive program start date and details</p>
@@ -338,7 +338,7 @@ export default function TrackApplicationPage() {
               )}
 
               {application.status === 'rejected' && (
-                <div className="space-y-3 text-sm text-slate-700">
+                <div className="space-y-3 text-sm text-black">
                   <p>• Contact us to discuss alternative options</p>
                   <p>• We may have other programs that fit your needs</p>
                   <p>• Call us at (317) 314-3757 for more information</p>
@@ -352,8 +352,8 @@ export default function TrackApplicationPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-white rounded-xl shadow-sm p-6">
             <Phone className="w-8 h-8 text-brand-orange-600 mb-3" />
-            <h3 className="font-bold text-slate-900 mb-2">Need Help?</h3>
-            <p className="text-sm text-slate-600 mb-3">
+            <h3 className="font-bold text-black mb-2">Need Help?</h3>
+            <p className="text-sm text-black mb-3">
               Call us Monday-Friday, 9am-5pm
             </p>
             <a
@@ -366,8 +366,8 @@ export default function TrackApplicationPage() {
 
           <div className="bg-white rounded-xl shadow-sm p-6">
             <Mail className="w-8 h-8 text-brand-orange-600 mb-3" />
-            <h3 className="font-bold text-slate-900 mb-2">Email Us</h3>
-            <p className="text-sm text-slate-600 mb-3">
+            <h3 className="font-bold text-black mb-2">Email Us</h3>
+            <p className="text-sm text-black mb-3">
               We respond within 24 hours
             </p>
             <a
@@ -383,7 +383,7 @@ export default function TrackApplicationPage() {
         <div className="text-center mt-8">
           <Link
             href="/"
-            className="text-slate-600 hover:text-slate-900 font-semibold"
+            className="text-black hover:text-black font-semibold"
           >
             ← Back to Home
           </Link>

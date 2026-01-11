@@ -39,46 +39,46 @@ export default function Page() {
       <section className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            <h2 className="text-3xl font-bold text-black mb-6">
               Program Overview
             </h2>
-            <p className="text-lg text-slate-600 mb-4">
+            <p className="text-lg text-black mb-4">
               Direct Support Professionals provide essential care and support to
               individuals with intellectual and developmental disabilities. This
               rewarding career helps people live independently and participate
               fully in their communities.
             </p>
-            <p className="text-lg text-slate-600 mb-4">
+            <p className="text-lg text-black mb-4">
               Our free training program prepares you for immediate employment in
               residential facilities, day programs, and community settings.
             </p>
           </div>
           <div className="bg-blue-50 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            <h3 className="text-2xl font-bold text-black mb-4">
               Quick Facts
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Duration:</span>
-                <span className="text-slate-700">4-6 weeks</span>
+                <span className="text-black">4-6 weeks</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Cost:</span>
-                <span className="text-slate-700">$0 with WIOA/WRG funding</span>
+                <span className="text-black">$0 with WIOA/WRG funding</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Format:</span>
-                <span className="text-slate-700">
+                <span className="text-black">
                   Hybrid (online + in-person)
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Starting Pay:</span>
-                <span className="text-slate-700">$14-$18/hour</span>
+                <span className="text-black">$14-$18/hour</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-600 font-bold">Job Placement:</span>
-                <span className="text-slate-700">Included</span>
+                <span className="text-black">Included</span>
               </li>
             </ul>
           </div>
@@ -88,55 +88,55 @@ export default function Page() {
       {/* What You'll Learn */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-black mb-8 text-center">
             What You'll Learn
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Person-Centered Care
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Supporting individual goals, preferences, and independence
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Health & Safety
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Medication administration, first aid, emergency procedures
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Communication
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Effective communication strategies and documentation
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Rights & Ethics
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Protecting rights, dignity, and confidentiality
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Behavioral Support
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Positive behavior strategies and crisis intervention
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">
+              <h3 className="text-xl font-bold text-black mb-3">
                 Community Integration
               </h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Supporting community participation and social connections
               </p>
             </div>
@@ -146,11 +146,11 @@ export default function Page() {
 
       {/* Career Outlook */}
       <section className="max-w-7xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
+        <h2 className="text-3xl font-bold text-black mb-8 text-center">
           Career Outlook
         </h2>
         <div className="prose prose-lg max-w-none">
-          <p className="text-lg text-slate-600 mb-4">
+          <p className="text-lg text-black mb-4">
             The demand for Direct Support Professionals is growing rapidly as
             more individuals with disabilities choose community-based living.
             This is a stable, rewarding career with opportunities for
@@ -158,10 +158,10 @@ export default function Page() {
           </p>
           <div className="grid md:grid-cols-2 gap-8 mt-8">
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Career Paths
               </h3>
-              <ul className="space-y-2 text-slate-600">
+              <ul className="space-y-2 text-black">
                 <li>• Residential Support Specialist</li>
                 <li>• Day Program Coordinator</li>
                 <li>• Job Coach</li>
@@ -170,10 +170,10 @@ export default function Page() {
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+              <h3 className="text-2xl font-bold text-black mb-4">
                 Work Settings
               </h3>
-              <ul className="space-y-2 text-slate-600">
+              <ul className="space-y-2 text-black">
                 <li>• Group Homes</li>
                 <li>• Day Programs</li>
                 <li>• Community Living</li>

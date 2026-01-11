@@ -95,10 +95,10 @@ export default function GradebookClient({ initialData }: Props) {
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-semibold text-slate-900">
+            <h1 className="text-2xl font-semibold text-black">
               Gradebook – {initialData.course.title}
             </h1>
-            <p className="mt-2 text-sm text-slate-600">
+            <p className="mt-2 text-sm text-black">
               Click a cell to enter or update grades. Changes save
               automatically.
             </p>
@@ -156,7 +156,7 @@ export default function GradebookClient({ initialData }: Props) {
                     key={s.enrollmentId}
                     className="border-t border-slate-100"
                   >
-                    <td className="sticky left-0 z-10 bg-white px-3 py-2 text-slate-900">
+                    <td className="sticky left-0 z-10 bg-white px-3 py-2 text-black">
                       <div className="font-medium">{s.name}</div>
                       <div className="text-[10px] text-slate-500">
                         {s.email}
@@ -178,7 +178,7 @@ export default function GradebookClient({ initialData }: Props) {
                         />
                       </td>
                     ))}
-                    <td className="px-3 py-2 text-right font-semibold text-slate-900">
+                    <td className="px-3 py-2 text-right font-semibold text-black">
                       {percentage}%
                     </td>
                   </tr>

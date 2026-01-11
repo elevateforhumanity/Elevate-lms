@@ -92,7 +92,7 @@ export function PeerReview({ assignmentId, studentName }: PeerReviewProps) {
                   />
                 ))}
               </div>
-              <div className="text-sm text-gray-600">{reviews.length} peer reviews</div>
+              <div className="text-sm text-black">{reviews.length} peer reviews</div>
             </div>
             <div className="text-center">
               <Award className="text-orange-600 mx-auto mb-2" size={48} />
@@ -181,14 +181,14 @@ export function PeerReview({ assignmentId, studentName }: PeerReviewProps) {
                     </div>
                   </div>
 
-                  <p className="text-gray-700 mb-3">{review.comment}</p>
+                  <p className="text-black mb-3">{review.comment}</p>
 
                   <div className="flex items-center gap-4">
-                    <button className="flex items-center gap-2 text-sm text-gray-600 hover:text-brand-orange-600 transition">
+                    <button className="flex items-center gap-2 text-sm text-black hover:text-brand-orange-600 transition">
                       <ThumbsUp size={16} />
                       <span>Helpful ({review.helpful})</span>
                     </button>
-                    <button className="flex items-center gap-2 text-sm text-gray-600 hover:text-brand-orange-600 transition">
+                    <button className="flex items-center gap-2 text-sm text-black hover:text-brand-orange-600 transition">
                       <MessageSquare size={16} />
                       <span>Reply</span>
                     </button>

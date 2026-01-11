@@ -13,10 +13,10 @@ export default function VITAAboutPage() {
       <div className="max-w-6xl mx-auto px-6 py-12 space-y-12">
         <div className="bg-white rounded-lg shadow-md p-8">
           <h2 className="text-3xl font-bold mb-6">What is VITA?</h2>
-          <p className="text-gray-700 text-lg mb-4">
+          <p className="text-black text-lg mb-4">
             The Volunteer Income Tax Assistance (VITA) program offers free tax help to people who generally make $64,000 or less, persons with disabilities, the elderly, and limited English-speaking taxpayers who need assistance in preparing their own tax returns.
           </p>
-          <p className="text-gray-700 text-lg">
+          <p className="text-black text-lg">
             IRS-certified volunteers provide free basic income tax return preparation with electronic filing to qualified individuals. VITA has been helping taxpayers since 1971.
           </p>
         </div>
@@ -24,35 +24,35 @@ export default function VITAAboutPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <Users className="w-12 h-12 text-green-600 mx-auto mb-4" />
-            <div className="text-3xl font-bold text-gray-900 mb-2">2,045</div>
-            <div className="text-gray-600">Returns Filed (2025)</div>
+            <div className="text-3xl font-bold text-black mb-2">2,045</div>
+            <div className="text-black">Returns Filed (2025)</div>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <TrendingUp className="w-12 h-12 text-green-600 mx-auto mb-4" />
-            <div className="text-3xl font-bold text-gray-900 mb-2">$5.8M</div>
-            <div className="text-gray-600">Refunds Processed</div>
+            <div className="text-3xl font-bold text-black mb-2">$5.8M</div>
+            <div className="text-black">Refunds Processed</div>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <Award className="w-12 h-12 text-green-600 mx-auto mb-4" />
-            <div className="text-3xl font-bold text-gray-900 mb-2">$408K</div>
-            <div className="text-gray-600">Saved in Fees</div>
+            <div className="text-3xl font-bold text-black mb-2">$408K</div>
+            <div className="text-black">Saved in Fees</div>
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <Heart className="w-12 h-12 text-green-600 mx-auto mb-4" />
-            <div className="text-3xl font-bold text-gray-900 mb-2">100%</div>
-            <div className="text-gray-600">Free Service</div>
+            <div className="text-3xl font-bold text-black mb-2">100%</div>
+            <div className="text-black">Free Service</div>
           </div>
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-8">
           <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-          <p className="text-gray-700 text-lg mb-4">
+          <p className="text-black text-lg mb-4">
             To provide free, high-quality tax preparation services to low-income individuals and families, ensuring they receive every credit and deduction they deserve.
           </p>
-          <p className="text-gray-700 text-lg">
+          <p className="text-black text-lg">
             We believe everyone deserves access to professional tax assistance, regardless of their ability to pay. Through VITA, we help families keep more of their hard-earned money and build financial stability.
           </p>
         </div>
@@ -66,7 +66,7 @@ export default function VITAAboutPage() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Schedule Appointment</h3>
-                <p className="text-gray-600">Book a free appointment at a VITA site near you</p>
+                <p className="text-black">Book a free appointment at a VITA site near you</p>
               </div>
             </div>
 
@@ -76,7 +76,7 @@ export default function VITAAboutPage() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Bring Documents</h3>
-                <p className="text-gray-600">Bring your ID, Social Security cards, and income documents</p>
+                <p className="text-black">Bring your ID, Social Security cards, and income documents</p>
               </div>
             </div>
 
@@ -86,7 +86,7 @@ export default function VITAAboutPage() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">Meet with Volunteer</h3>
-                <p className="text-gray-600">IRS-certified volunteer prepares your return</p>
+                <p className="text-black">IRS-certified volunteer prepares your return</p>
               </div>
             </div>
 
@@ -96,7 +96,7 @@ export default function VITAAboutPage() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">E-File & Get Refund</h3>
-                <p className="text-gray-600">We e-file your return and you get your refund in 7-14 days</p>
+                <p className="text-black">We e-file your return and you get your refund in 7-14 days</p>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function VITAAboutPage() {
 
         <div className="bg-green-50 border-2 border-green-600 rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-gray-700 mb-6">
+          <p className="text-black mb-6">
             Schedule your free tax preparation appointment today
           </p>
           <a

@@ -107,10 +107,10 @@ export default function PaymentOptionsClient() {
     <div className="space-y-6">
       {/* Tuition summary */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-2">
+        <h2 className="text-lg font-semibold text-black mb-2">
           Tuition Summary
         </h2>
-        <p className="text-slate-700">
+        <p className="text-black">
           Typical tuition:{' '}
           <span className="font-semibold">
             ${TUITION_AMOUNT.toLocaleString()}
@@ -126,10 +126,10 @@ export default function PaymentOptionsClient() {
 
       {/* Stripe - Option 1 */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-1">
+        <h3 className="text-lg font-semibold text-black mb-1">
           Option 1: Pay in Full with Card
         </h3>
-        <p className="text-sm text-slate-700 mb-4">
+        <p className="text-sm text-black mb-4">
           Pay securely with debit or credit. Processed by Stripe.
         </p>
         {!stripeLoaded && (
@@ -150,10 +150,10 @@ export default function PaymentOptionsClient() {
 
       {/* Affirm - Option 2 */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-1">
+        <h3 className="text-lg font-semibold text-black mb-1">
           Option 2: Monthly Payments with Affirm
         </h3>
-        <p className="text-sm text-slate-700 mb-4">
+        <p className="text-sm text-black mb-4">
           Pay over time with flexible monthly payments. See your options for
           tuition around{' '}
           <span className="font-semibold">
@@ -227,10 +227,10 @@ export default function PaymentOptionsClient() {
 
       {/* Stripe */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6">
-        <h3 className="text-lg font-semibold text-slate-900 mb-1">
+        <h3 className="text-lg font-semibold text-black mb-1">
           Pay in Full with Card (Stripe)
         </h3>
-        <p className="text-sm text-slate-700 mb-4">
+        <p className="text-sm text-black mb-4">
           Pay securely with debit or credit. Processed by Stripe.
         </p>
         {!stripeLoaded && (

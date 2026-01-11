@@ -118,7 +118,7 @@ export function RealTimeCollaboration({
                 <div className="flex-1">
                   <div className="font-semibold">{user.name}</div>
                   {user.currentPage && (
-                    <div className="text-xs text-gray-600">{user.currentPage}</div>
+                    <div className="text-xs text-black">{user.currentPage}</div>
                   )}
                 </div>
                 <Button variant="outline" size="sm">
@@ -190,7 +190,7 @@ export function RealTimeCollaboration({
         <CardContent>
           <div className="text-center py-8">
             <Share2 className="mx-auto text-gray-400 mb-4" size={48} />
-            <p className="text-gray-600 mb-4">Share your screen with the study group</p>
+            <p className="text-black mb-4">Share your screen with the study group</p>
             <Button className="bg-green-600 hover:bg-green-700">
               Start Screen Share
             </Button>

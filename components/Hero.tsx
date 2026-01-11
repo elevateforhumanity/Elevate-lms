@@ -10,11 +10,11 @@ export default function Hero() {
               <span>🎓</span>
               <span>100% FREE Training • Marion County</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6">
               Ignite Your Future:{' '}
               <span className="text-brand-600">Fund Training Today</span>
             </h1>
-            <p className="text-xl text-slate-600 leading-relaxed mb-8">
+            <p className="text-xl text-black leading-relaxed mb-8">
               Empower Dreams: Support Skills Development and Transform Lives at
               Elevate for Humanity. Invest in Growth, Today! Marion County.
             </p>
@@ -29,11 +29,11 @@ export default function Hero() {
             <div className="grid grid-cols-2 gap-6 pt-8 border-t border-slate-200">
               <div>
                 <div className="text-3xl font-bold text-brand-600">$0</div>
-                <div className="text-sm text-slate-600">Cost to Students</div>
+                <div className="text-sm text-black">Cost to Students</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-brand-600">100%</div>
-                <div className="text-sm text-slate-600">Funded Programs</div>
+                <div className="text-sm text-black">Funded Programs</div>
               </div>
             </div>
           </div>

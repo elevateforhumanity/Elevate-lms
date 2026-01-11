@@ -32,7 +32,7 @@ export default function ResumeBuildingPage() {
               <Home className="h-4 w-4" />
               Home
             </Link>
-            <span className="text-gray-600">/</span>
+            <span className="text-black">/</span>
             <Link
               href="/career-services"
               className="text-blue-600 hover:text-blue-700 flex items-center gap-1"
@@ -40,7 +40,7 @@ export default function ResumeBuildingPage() {
               <ArrowLeft className="h-4 w-4" />
               Career Services
             </Link>
-            <span className="text-gray-600">/</span>
+            <span className="text-black">/</span>
             <span className="text-black font-semibold">Resume Building</span>
           </div>
         </div>

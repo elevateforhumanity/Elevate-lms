@@ -77,12 +77,12 @@ export function StudentStreakWidget() {
           <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
             Daily Goal & Streak
           </p>
-          <p className="text-sm font-bold text-slate-900">
+          <p className="text-sm font-bold text-black">
             {minutesToday} / {dailyMinutes} min today
           </p>
         </div>
         <div className="text-right">
-          <p className="text-[11px] text-slate-600">
+          <p className="text-[11px] text-black">
             🔥 Streak:{" "}
             <span className="font-semibold">{currentStreak} days</span>
           </p>
@@ -100,7 +100,7 @@ export function StudentStreakWidget() {
       </div>
 
       <div className="mt-3 flex items-center justify-between gap-2">
-        <p className="text-[11px] text-slate-600">
+        <p className="text-[11px] text-black">
           Hit your daily minutes to keep your streak alive.
         </p>
         {!editingGoal ? (

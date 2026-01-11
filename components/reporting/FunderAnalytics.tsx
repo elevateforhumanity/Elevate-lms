@@ -42,7 +42,7 @@ const funderColors: Record<string, string> = {
   JRI: 'bg-purple-100 text-purple-800 border-purple-300',
   SEAL: 'bg-orange-100 text-orange-800 border-orange-300',
   Apprenticeship: 'bg-indigo-100 text-indigo-800 border-indigo-300',
-  Other: 'bg-gray-100 text-gray-800 border-gray-300',
+  Other: 'bg-gray-100 text-black border-gray-300',
 };
 
 export default function FunderAnalytics() {

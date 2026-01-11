@@ -76,7 +76,7 @@ export default function FranchisePage() {
             <h2 className="text-4xl font-bold mb-4">
               Why Franchise With Elevate for Humanity?
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Proven business model with government funding and high demand
             </p>
           </div>
@@ -87,7 +87,7 @@ export default function FranchisePage() {
                 <Award className="w-8 h-8 text-green-600" />
               </div>
               <h3 className="text-xl font-bold mb-3">DOL-Approved Programs</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Use our DOL Registered Apprenticeship Sponsor status (RAPIDS ID:
                 2025-IN-132301) and DWD approvals
               </p>
@@ -98,7 +98,7 @@ export default function FranchisePage() {
                 <DollarSign className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold mb-3">Government Funding</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Students pay $0 through WIOA, WRG, JRI funding. You get paid
                 directly by government programs
               </p>
@@ -109,7 +109,7 @@ export default function FranchisePage() {
                 <TrendingUp className="w-8 h-8 text-purple-600" />
               </div>
               <h3 className="text-xl font-bold mb-3">High Profit Margins</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Earn $2,000-$8,000 per student. Low overhead. High demand.
                 Recession-proof industry
               </p>
@@ -120,7 +120,7 @@ export default function FranchisePage() {
                 <Briefcase className="w-8 h-8 text-orange-600" />
               </div>
               <h3 className="text-xl font-bold mb-3">Complete Curriculum</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 15+ ready-to-launch programs: CDL, CNA, Barber, HVAC, Tax Prep,
                 Business, and more
               </p>
@@ -131,7 +131,7 @@ export default function FranchisePage() {
                 <Users className="w-8 h-8 text-brand-orange-600" />
               </div>
               <h3 className="text-xl font-bold mb-3">Marketing Support</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Website, social media, SEO, advertising templates, and lead
                 generation system included
               </p>
@@ -142,7 +142,7 @@ export default function FranchisePage() {
                 <Home className="w-8 h-8 text-green-600" />
               </div>
               <h3 className="text-xl font-bold mb-3">Home-Based Option</h3>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Start from home with online/hybrid programs. No expensive
                 facility required initially
               </p>
@@ -156,7 +156,7 @@ export default function FranchisePage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Franchise Packages</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-black">
               Choose the package that fits your goals and budget
             </p>
           </div>
@@ -169,8 +169,8 @@ export default function FranchisePage() {
                 <div className="text-4xl font-bold text-green-600 mb-2">
                   $15,000
                 </div>
-                <p className="text-sm text-gray-600">One-time franchise fee</p>
-                <p className="text-sm text-gray-600">+ 5% ongoing royalty</p>
+                <p className="text-sm text-black">One-time franchise fee</p>
+                <p className="text-sm text-black">+ 5% ongoing royalty</p>
               </div>
 
               <div className="mb-6">
@@ -218,7 +218,7 @@ export default function FranchisePage() {
                 <p className="text-sm font-bold text-green-600">
                   Payment Plans Available
                 </p>
-                <p className="text-xs text-gray-600">
+                <p className="text-xs text-black">
                   $2,500 down + $500/month for 25 months
                 </p>
               </div>
@@ -308,8 +308,8 @@ export default function FranchisePage() {
                 <div className="text-4xl font-bold text-purple-600 mb-2">
                   $75,000
                 </div>
-                <p className="text-sm text-gray-600">One-time franchise fee</p>
-                <p className="text-sm text-gray-600">+ 3% ongoing royalty</p>
+                <p className="text-sm text-black">One-time franchise fee</p>
+                <p className="text-sm text-black">+ 3% ongoing royalty</p>
               </div>
 
               <div className="mb-6">
@@ -373,7 +373,7 @@ export default function FranchisePage() {
                 <p className="text-sm font-bold text-purple-600">
                   Payment Plans Available
                 </p>
-                <p className="text-xs text-gray-600">
+                <p className="text-xs text-black">
                   $15,000 down + $2,000/month for 30 months
                 </p>
               </div>
@@ -387,7 +387,7 @@ export default function FranchisePage() {
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               <div>
                 <p className="font-bold mb-2">💳 Stripe Payment Plans</p>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-black">
                   Break up payments over 12-36 months with low interest rates
                 </p>
               </div>
@@ -396,7 +396,7 @@ export default function FranchisePage() {
                   <CheckCircle className="w-5 h-5 inline-block" /> Affirm
                   Financing
                 </p>
-                <p className="text-sm text-gray-700">
+                <p className="text-sm text-black">
                   Get approved instantly. Pay over time with fixed monthly
                   payments
                 </p>
@@ -428,7 +428,7 @@ export default function FranchisePage() {
               </ul>
             </div>
 
-            <div className="bg-yellow-400 text-gray-900 rounded-xl p-8">
+            <div className="bg-yellow-400 text-black rounded-xl p-8">
               <h3 className="text-2xl font-bold mb-4">Year 2-3</h3>
               <div className="text-4xl font-bold mb-4">$250k-$400k</div>
               <ul className="space-y-2 text-sm">
@@ -459,7 +459,7 @@ export default function FranchisePage() {
           <h2 className="text-4xl font-bold mb-6">
             Ready to Start Your Own Training Center?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-black mb-8">
             Schedule a free consultation to learn more about franchise
             opportunities
           </p>
@@ -477,7 +477,7 @@ export default function FranchisePage() {
               Call 317-314-3757
             </a>
           </div>
-          <p className="mt-6 text-gray-600">
+          <p className="mt-6 text-black">
             Email:{' '}
             <a
               href="mailto:franchise@elevateforhumanity.institute"

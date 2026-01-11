@@ -32,7 +32,7 @@ export function StatStrip({ stats, background = "slate" }: StatStripProps) {
               <div className={`text-4xl md:text-5xl font-bold mb-2 ${getColorClass(stat.color)}`}>
                 {stat.value}
               </div>
-              <p className={`text-sm ${background === "dark" ? "text-slate-300" : "text-slate-600"}`}>
+              <p className={`text-sm ${background === "dark" ? "text-slate-300" : "text-black"}`}>
                 {stat.label}
               </p>
             </div>

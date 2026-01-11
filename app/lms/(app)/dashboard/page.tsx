@@ -240,7 +240,7 @@ export default async function StudentDashboardOrchestrated() {
           <div className="lg:col-span-2 space-y-6">
             {/* Available Sections */}
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">
+              <h3 className="text-2xl font-bold text-black mb-6">
                 Available Now
               </h3>
               <div className="grid md:grid-cols-2 gap-4">
@@ -365,15 +365,15 @@ export default async function StudentDashboardOrchestrated() {
             {/* Current Enrollment Info */}
             {activeEnrollment && (
               <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">
+                <h3 className="text-xl font-bold text-black mb-4">
                   Current Program
                 </h3>
                 <div className="flex items-start gap-4">
                   <div className="flex-1">
-                    <h4 className="font-semibold text-slate-900 mb-2">
+                    <h4 className="font-semibold text-black mb-2">
                       {activeEnrollment.programs?.name || 'Program'}
                     </h4>
-                    <div className="space-y-2 text-sm text-slate-600">
+                    <div className="space-y-2 text-sm text-black">
                       <div>
                         <span className="font-semibold">Status:</span>{' '}
                         <span className="capitalize">
@@ -402,25 +402,25 @@ export default async function StudentDashboardOrchestrated() {
 
             {/* Quick Stats */}
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-              <h3 className="text-lg font-bold text-slate-900 mb-4">
+              <h3 className="text-lg font-bold text-black mb-4">
                 Your Stats
               </h3>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600">Programs Enrolled</span>
-                  <span className="font-bold text-slate-900">
+                  <span className="text-black">Programs Enrolled</span>
+                  <span className="font-bold text-black">
                     {enrollments?.length || 0}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600">Certificates Earned</span>
-                  <span className="font-bold text-slate-900">
+                  <span className="text-black">Certificates Earned</span>
+                  <span className="font-bold text-black">
                     {certifications?.length || 0}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-600">Overall Progress</span>
-                  <span className="font-bold text-slate-900">
+                  <span className="text-black">Overall Progress</span>
+                  <span className="font-bold text-black">
                     {stateData.progressPercentage}%
                   </span>
                 </div>
@@ -445,7 +445,7 @@ export default async function StudentDashboardOrchestrated() {
 
             {/* All Student Features */}
             <div className="mt-8">
-              <h3 className="text-lg font-semibold text-slate-900 mb-4">
+              <h3 className="text-lg font-semibold text-black mb-4">
                 My Learning Tools
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">

@@ -36,7 +36,7 @@ export default function PreviewPanel({ url = 'http://localhost:3000', filePath }
       {/* Preview Header */}
       <div className="flex items-center justify-between px-4 py-2 bg-slate-100 border-b">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-semibold text-gray-700">Live Preview</span>
+          <span className="text-sm font-semibold text-black">Live Preview</span>
           {filePath && (
             <span className="text-xs text-gray-500 truncate max-w-[200px]">
               {filePath}
@@ -49,21 +49,21 @@ export default function PreviewPanel({ url = 'http://localhost:3000', filePath }
           <div className="flex gap-1 bg-white border rounded p-1">
             <button
               onClick={() => setDevice('desktop')}
-              className={`p-1 rounded ${device === 'desktop' ? 'bg-blue-100 text-blue-600' : 'text-gray-600 hover:bg-gray-100'}`}
+              className={`p-1 rounded ${device === 'desktop' ? 'bg-blue-100 text-blue-600' : 'text-black hover:bg-gray-100'}`}
               title="Desktop view"
             >
               <Monitor className="w-4 h-4" />
             </button>
             <button
               onClick={() => setDevice('tablet')}
-              className={`p-1 rounded ${device === 'tablet' ? 'bg-blue-100 text-blue-600' : 'text-gray-600 hover:bg-gray-100'}`}
+              className={`p-1 rounded ${device === 'tablet' ? 'bg-blue-100 text-blue-600' : 'text-black hover:bg-gray-100'}`}
               title="Tablet view"
             >
               <Tablet className="w-4 h-4" />
             </button>
             <button
               onClick={() => setDevice('mobile')}
-              className={`p-1 rounded ${device === 'mobile' ? 'bg-blue-100 text-blue-600' : 'text-gray-600 hover:bg-gray-100'}`}
+              className={`p-1 rounded ${device === 'mobile' ? 'bg-blue-100 text-blue-600' : 'text-black hover:bg-gray-100'}`}
               title="Mobile view"
             >
               <Smartphone className="w-4 h-4" />
@@ -76,7 +76,7 @@ export default function PreviewPanel({ url = 'http://localhost:3000', filePath }
             className="p-2 hover:bg-gray-200 rounded transition-colors"
             title="Refresh preview"
           >
-            <RefreshCw className="w-4 h-4 text-gray-600" />
+            <RefreshCw className="w-4 h-4 text-black" />
           </button>
 
           {/* Open in New Tab */}
@@ -85,7 +85,7 @@ export default function PreviewPanel({ url = 'http://localhost:3000', filePath }
             className="p-2 hover:bg-gray-200 rounded transition-colors"
             title="Open in new tab"
           >
-            <ExternalLink className="w-4 h-4 text-gray-600" />
+            <ExternalLink className="w-4 h-4 text-black" />
           </button>
         </div>
       </div>

@@ -34,7 +34,7 @@ export function SupersonicHeader() {
                 Services{' '}
                 <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform" />
               </button>
-              <div className="absolute top-full left-0 mt-2 bg-white text-gray-900 shadow-2xl rounded-xl p-2 hidden group-hover:block w-64 border border-gray-100">
+              <div className="absolute top-full left-0 mt-2 bg-white text-black shadow-2xl rounded-xl p-2 hidden group-hover:block w-64 border border-gray-100">
                 <Link
                   href="/supersonic-fast-cash/apply"
                   className="block px-4 py-3 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors font-semibold"
@@ -69,7 +69,7 @@ export function SupersonicHeader() {
                 Tools{' '}
                 <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform" />
               </button>
-              <div className="absolute top-full left-0 mt-2 bg-white text-gray-900 shadow-2xl rounded-xl p-2 hidden group-hover:block w-64 border border-gray-100">
+              <div className="absolute top-full left-0 mt-2 bg-white text-black shadow-2xl rounded-xl p-2 hidden group-hover:block w-64 border border-gray-100">
                 <Link
                   href="/supersonic-fast-cash/tax-information"
                   className="block px-4 py-3 hover:bg-gray-50 hover:text-blue-600 rounded-lg transition-colors font-semibold"

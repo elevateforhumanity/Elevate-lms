@@ -33,10 +33,10 @@ export default async function NewProgramPage() {
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-black">
             Create New Program
           </h1>
-          <p className="text-gray-600 mt-1">
+          <p className="text-black mt-1">
             Add a new training program to the system
           </p>
         </div>

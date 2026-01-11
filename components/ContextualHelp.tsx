@@ -76,19 +76,19 @@ export function ContextualHelp({
         >
           <div className="bg-white rounded-lg shadow-xl border border-gray-200 p-4">
             <div className="flex items-start justify-between mb-2">
-              <h4 className="font-semibold text-gray-900 text-sm">
+              <h4 className="font-semibold text-black text-sm">
                 {title}
               </h4>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-black transition-colors"
                 aria-label="Close"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <p className="text-sm text-gray-600 leading-relaxed mb-3">
+            <p className="text-sm text-black leading-relaxed mb-3">
               {content}
             </p>
 
@@ -211,7 +211,7 @@ export function KeyboardShortcuts({
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="text-sm text-gray-600 hover:text-gray-900 flex items-center gap-1"
+        className="text-sm text-black hover:text-black flex items-center gap-1"
         type="button"
       >
         <span className="font-mono text-xs bg-gray-100 px-2 py-1 rounded">?</span>
@@ -222,12 +222,12 @@ export function KeyboardShortcuts({
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
             <div className="flex items-center justify-between p-6 border-b">
-              <h3 className="text-xl font-bold text-gray-900">
+              <h3 className="text-xl font-bold text-black">
                 Keyboard Shortcuts
               </h3>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 hover:text-black"
                 aria-label="Close"
               >
                 <X className="w-6 h-6" />
@@ -241,7 +241,7 @@ export function KeyboardShortcuts({
                     key={index}
                     className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0"
                   >
-                    <span className="text-gray-700">{shortcut.description}</span>
+                    <span className="text-black">{shortcut.description}</span>
                     <div className="flex items-center gap-1">
                       {shortcut.keys.map((key, keyIndex) => (
                         <span key={keyIndex}>

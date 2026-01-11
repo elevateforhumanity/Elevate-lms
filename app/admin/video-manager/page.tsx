@@ -29,10 +29,10 @@ export default function VideoManagerPage() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-4xl font-bold text-slate-900 mb-2 text-2xl md:text-3xl lg:text-4xl">
+            <h1 className="text-4xl font-bold text-black mb-2 text-2xl md:text-3xl lg:text-4xl">
               Video Manager
             </h1>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-black">
               Upload and enhance videos for your hero banners and content
             </p>
           </div>
@@ -45,7 +45,7 @@ export default function VideoManagerPage() {
           {/* Uploaded Videos */}
           {uploadedVideos.length > 0 && (
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
                 <Video className="h-6 w-6" />
                 Uploaded Videos
               </h2>
@@ -57,7 +57,7 @@ export default function VideoManagerPage() {
                   >
                     <div className="flex items-center justify-between gap-4">
                       <div className="flex-1">
-                        <p className="text-sm font-mono text-slate-600 break-all">
+                        <p className="text-sm font-mono text-black break-all">
                           {url}
                         </p>
                       </div>
@@ -93,11 +93,11 @@ export default function VideoManagerPage() {
 
           {/* Instructions */}
           <div className="mt-12    rounded-lg p-6 border border-blue-200">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">
+            <h3 className="text-lg font-bold text-black mb-4">
               <FileText className="w-5 h-5 inline-block" /> How to Use Your
               Enhanced Video
             </h3>
-            <div className="space-y-3 text-slate-700">
+            <div className="space-y-3 text-black">
               <p>
                 <strong>1. Upload your video</strong> - Even low quality videos
                 will be enhanced
@@ -131,11 +131,11 @@ export default function VideoManagerPage() {
           {/* Enhancement Details */}
           <div className="mt-8 grid md:grid-cols-2 gap-6">
             <div className="bg-white rounded-lg shadow p-6">
-              <h4 className="font-bold text-slate-900 mb-3">
+              <h4 className="font-bold text-black mb-3">
                 <Sparkles className="w-5 h-5 inline-block" /> What Gets
                 Enhanced:
               </h4>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li>✓ Resolution upscaled to 1080p</li>
                 <li>✓ Noise and grain removed</li>
                 <li>✓ Colors enhanced and balanced</li>
@@ -145,10 +145,10 @@ export default function VideoManagerPage() {
               </ul>
             </div>
             <div className="bg-white rounded-lg shadow p-6">
-              <h4 className="font-bold text-slate-900 mb-3">
+              <h4 className="font-bold text-black mb-3">
                 📹 Best Practices:
               </h4>
-              <ul className="space-y-2 text-sm text-slate-600">
+              <ul className="space-y-2 text-sm text-black">
                 <li>• Keep videos 10-30 seconds long</li>
                 <li>• Show your barbershop atmosphere</li>
                 <li>• Include cutting techniques</li>

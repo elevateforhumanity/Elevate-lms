@@ -31,7 +31,7 @@ export default function JobPlacementPage() {
             <h3 className="text-xl font-bold text-black mb-2">
               Direct Employer Connections
             </h3>
-            <p className="text-gray-700">
+            <p className="text-black">
               Access to our network of hiring partners
             </p>
           </div>
@@ -40,7 +40,7 @@ export default function JobPlacementPage() {
               <Building2 className="w-8 h-8 text-brand-blue-600" />
             </div>
             <h3 className="text-xl font-bold text-black mb-2">Job Matching</h3>
-            <p className="text-gray-700">
+            <p className="text-black">
               We match your skills to the right opportunities
             </p>
           </div>
@@ -49,7 +49,7 @@ export default function JobPlacementPage() {
               <TrendingUp className="w-8 h-8 text-brand-green-600" />
             </div>
             <h3 className="text-xl font-bold text-black mb-2">Career Growth</h3>
-            <p className="text-gray-700">
+            <p className="text-black">
               Support for advancement and promotions
             </p>
           </div>
@@ -66,7 +66,7 @@ export default function JobPlacementPage() {
                 <h3 className="text-xl font-bold text-black mb-2">
                   Complete Your Training
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Finish your program and earn your certification
                 </p>
               </div>
@@ -79,7 +79,7 @@ export default function JobPlacementPage() {
                 <h3 className="text-xl font-bold text-black mb-2">
                   Meet with Career Coach
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Review your goals and preferences
                 </p>
               </div>
@@ -92,7 +92,7 @@ export default function JobPlacementPage() {
                 <h3 className="text-xl font-bold text-black mb-2">
                   Get Matched
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   We connect you with hiring employers
                 </p>
               </div>
@@ -105,7 +105,7 @@ export default function JobPlacementPage() {
                 <h3 className="text-xl font-bold text-black mb-2">
                   Start Your Career
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-black">
                   Begin working with ongoing support
                 </p>
               </div>

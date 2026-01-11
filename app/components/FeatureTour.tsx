@@ -57,10 +57,10 @@ export default function FeatureTour() {
       <div className="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl animate-slide-up">
         <div className="text-center mb-6">
           <div className="text-6xl mb-4 animate-bounce">{feature.emoji}</div>
-          <h2 className="text-2xl font-bold mb-2 text-gray-900">
+          <h2 className="text-2xl font-bold mb-2 text-black">
             {feature.title}
           </h2>
-          <p className="text-gray-600">{feature.description}</p>
+          <p className="text-black">{feature.description}</p>
         </div>
 
         <div className="flex gap-3 mb-6">
@@ -98,7 +98,7 @@ export default function FeatureTour() {
 
         <button
           onClick={handleComplete}
-          className="w-full text-sm text-gray-700 hover:text-gray-700 transition"
+          className="w-full text-sm text-black hover:text-black transition"
         >
           Skip tour
         </button>

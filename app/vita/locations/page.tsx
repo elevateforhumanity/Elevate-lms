@@ -71,22 +71,22 @@ export default function VITALocationsPage() {
                 <h3 className="text-xl font-bold mb-3">{location.name}</h3>
                 
                 <div className="space-y-2 mb-4">
-                  <div className="flex items-start gap-2 text-gray-600">
+                  <div className="flex items-start gap-2 text-black">
                     <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" />
                     <span className="text-sm">{location.address}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-600">
+                  <div className="flex items-center gap-2 text-black">
                     <Phone className="w-5 h-5 flex-shrink-0" />
                     <span className="text-sm">{location.phone}</span>
                   </div>
-                  <div className="flex items-start gap-2 text-gray-600">
+                  <div className="flex items-start gap-2 text-black">
                     <Clock className="w-5 h-5 flex-shrink-0 mt-0.5" />
                     <span className="text-sm">{location.hours}</span>
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <p className="text-sm font-semibold text-gray-700 mb-2">Services:</p>
+                  <p className="text-sm font-semibold text-black mb-2">Services:</p>
                   <div className="flex flex-wrap gap-2">
                     {location.services.map((service, idx) => (
                       <span key={idx} className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">

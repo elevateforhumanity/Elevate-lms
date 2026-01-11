@@ -119,9 +119,9 @@ export default function AuditLogsPage() {
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <Shield className="w-8 h-8 text-brand-blue-600" />
-                <h1 className="text-3xl font-bold text-gray-900">Audit Logs</h1>
+                <h1 className="text-3xl font-bold text-black">Audit Logs</h1>
               </div>
-              <p className="text-gray-600">
+              <p className="text-black">
                 Track all system activities and user actions
               </p>
             </div>
@@ -138,7 +138,7 @@ export default function AuditLogsPage() {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-sm font-medium text-gray-600 mb-2">
+            <h3 className="text-sm font-medium text-black mb-2">
               Total Events
             </h3>
             <p className="text-3xl font-bold text-brand-blue-600">
@@ -146,7 +146,7 @@ export default function AuditLogsPage() {
             </p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-sm font-medium text-gray-600 mb-2">Today</h3>
+            <h3 className="text-sm font-medium text-black mb-2">Today</h3>
             <p className="text-3xl font-bold text-brand-green-600">
               {
                 logs.filter(
@@ -158,7 +158,7 @@ export default function AuditLogsPage() {
             </p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-sm font-medium text-gray-600 mb-2">
+            <h3 className="text-sm font-medium text-black mb-2">
               Unique Users
             </h3>
             <p className="text-3xl font-bold text-purple-600">
@@ -166,7 +166,7 @@ export default function AuditLogsPage() {
             </p>
           </div>
           <div className="bg-white rounded-lg shadow p-6">
-            <h3 className="text-sm font-medium text-gray-600 mb-2">
+            <h3 className="text-sm font-medium text-black mb-2">
               Resource Types
             </h3>
             <p className="text-3xl font-bold text-brand-orange-600">
@@ -179,7 +179,7 @@ export default function AuditLogsPage() {
         <div className="bg-white rounded-lg shadow p-4 mb-6">
           <div className="flex flex-wrap gap-4">
             <div className="flex-1 min-w-[200px]">
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 <Search className="w-4 h-4 inline mr-1" />
                 Search
               </label>
@@ -192,7 +192,7 @@ export default function AuditLogsPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 <Filter className="w-4 h-4 inline mr-1" />
                 Action
               </label>
@@ -211,7 +211,7 @@ export default function AuditLogsPage() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-black mb-1">
                 Resource Type
               </label>
               <select
@@ -235,26 +235,26 @@ export default function AuditLogsPage() {
           {filteredLogs.length === 0 ? (
             <div className="text-center py-12">
               <Shield className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-700 text-lg">No audit logs found</p>
+              <p className="text-black text-lg">No audit logs found</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                       Timestamp
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                       User
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                       Action
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                       Resource
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-black uppercase">
                       Details
                     </th>
                   </tr>
@@ -262,14 +262,14 @@ export default function AuditLogsPage() {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {filteredLogs.map((log) => (
                     <tr key={log.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
                         {new Date(log.created_at).toLocaleString()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">
+                        <div className="text-sm font-medium text-black">
                           {log.user?.full_name || 'Unknown'}
                         </div>
-                        <div className="text-sm text-gray-700">
+                        <div className="text-sm text-black">
                           {log.user?.email || ''}
                         </div>
                       </td>
@@ -279,16 +279,16 @@ export default function AuditLogsPage() {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">
+                        <div className="text-sm text-black">
                           {log.resource_type}
                         </div>
                         {log.resource_id && (
-                          <div className="text-xs text-gray-700">
+                          <div className="text-xs text-black">
                             ID: {log.resource_id.substring(0, 8)}...
                           </div>
                         )}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-700">
+                      <td className="px-6 py-4 text-sm text-black">
                         {log.metadata &&
                           Object.keys(log.metadata).length > 0 && (
                             <details className="cursor-pointer">

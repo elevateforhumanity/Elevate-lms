@@ -119,7 +119,7 @@ export default function SkillsGapAnalysis() {
             <div className="text-5xl text-3xl md:text-4xl lg:text-5xl">📊</div>
             <div>
               <h3 className="text-xl font-bold mb-2">Automated Skills Assessment</h3>
-              <p className="text-gray-700 mb-3">
+              <p className="text-black mb-3">
                 Our AI analyzes your team's current skills against industry requirements and job descriptions
                 to identify critical gaps and recommend targeted training.
               </p>
@@ -151,27 +151,27 @@ export default function SkillsGapAnalysis() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Critical Gaps</h3>
+            <h3 className="text-sm text-black mb-2">Critical Gaps</h3>
             <p className="text-3xl font-bold text-brand-orange-600">
               {skillGaps.filter(g => g.priority === 'high').length}
             </p>
-            <p className="text-sm text-gray-600">Require immediate attention</p>
+            <p className="text-sm text-black">Require immediate attention</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Average Gap</h3>
+            <h3 className="text-sm text-black mb-2">Average Gap</h3>
             <p className="text-3xl font-bold text-orange-500">
               {Math.round(skillGaps.reduce((sum, g) => sum + g.gap, 0) / skillGaps.length)}%
             </p>
-            <p className="text-sm text-gray-600">Across all skills</p>
+            <p className="text-sm text-black">Across all skills</p>
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-sm text-gray-600 mb-2">Training Needed</h3>
+            <h3 className="text-sm text-black mb-2">Training Needed</h3>
             <p className="text-3xl font-bold text-blue-600">
               {skillGaps.reduce((sum, g) => sum + g.trainingOptions.length, 0)}
             </p>
-            <p className="text-sm text-gray-600">Courses recommended</p>
+            <p className="text-sm text-black">Courses recommended</p>
           </Card>
         </div>
 
@@ -193,13 +193,13 @@ export default function SkillsGapAnalysis() {
                   </div>
                   <div className="text-right">
                     <div className="text-2xl font-bold text-brand-orange-600">{gap.gap}%</div>
-                    <p className="text-xs text-gray-600">Gap</p>
+                    <p className="text-xs text-black">Gap</p>
                   </div>
                 </div>
 
                 <div className="mb-4">
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-600">Current Level</span>
+                    <span className="text-black">Current Level</span>
                     <span className="font-semibold">{gap.currentLevel}%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-3 mb-3">
@@ -210,7 +210,7 @@ export default function SkillsGapAnalysis() {
                   </div>
 
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-600">Required Level</span>
+                    <span className="text-black">Required Level</span>
                     <span className="font-semibold">{gap.requiredLevel}%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-3">
@@ -222,7 +222,7 @@ export default function SkillsGapAnalysis() {
                 </div>
 
                 <div>
-                  <p className="text-sm font-semibold text-gray-700 mb-2">Recommended Training:</p>
+                  <p className="text-sm font-semibold text-black mb-2">Recommended Training:</p>
                   <div className="flex flex-wrap gap-2">
                     {gap.trainingOptions.map((option) => (
                       <button
@@ -257,7 +257,7 @@ export default function SkillsGapAnalysis() {
                 {teamMembers.map((member) => (
                   <tr key={member.id} className="border-b hover:bg-gray-50">
                     <td className="py-3 px-4 font-medium">{member.name}</td>
-                    <td className="py-3 px-4 text-sm text-gray-600">{member.role}</td>
+                    <td className="py-3 px-4 text-sm text-black">{member.role}</td>
                     {['JavaScript', 'React', 'TypeScript', 'AWS'].map((skillName) => {
                       const skill = member.skills.find(s => s.name === skillName);
                       const level = skill?.level || 0;
