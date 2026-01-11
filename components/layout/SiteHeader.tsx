@@ -42,6 +42,7 @@ import { createClient } from '@/lib/supabase/client';
 
 export default function SiteHeader() {
   const pathname = usePathname();
+  // Ensure mobile menu is always closed on mount (prevent SSR/hydration mismatch)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [expandedMobileSection, setExpandedMobileSection] = useState<

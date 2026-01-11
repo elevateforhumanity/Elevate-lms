@@ -15,15 +15,9 @@ body {
 }
 
 /* ============================================================================
-   TEMP FIX: Force hide stuck overlays/dialogs
-   Remove after identifying root cause
+   OVERLAY FIX: Ensure closed Radix portals are hidden
    ============================================================================ */
 [data-radix-portal] [data-state="closed"] {
-  display: none !important;
-}
-
-/* Force hide any stuck mobile menu overlays */
-.lg\:hidden.fixed.inset-0.bg-black\/50 {
   display: none !important;
 }
 
