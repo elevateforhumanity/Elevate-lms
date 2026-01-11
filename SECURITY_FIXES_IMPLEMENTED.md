@@ -168,7 +168,7 @@ SESSION_SECRET=Ssmfa7vyi2EBXXs0eaxA07jHnX9c0nPu
 ```bash
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_51RvqjzIRNf5vPH3A...
 STRIPE_SECRET_KEY=sk_live_51RvqjzIRNf5vPH3A...
-STRIPE_WEBHOOK_SECRET=whsec_9FCfU8BXfK2cMMf7PXVyOcUqHgXsBg4T
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret_here
 ```
 
 **Upstash Redis (Rate Limiting):**
