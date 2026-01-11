@@ -58,16 +58,21 @@ export function SecurityMonitor() {
 
     // 3. Monitor console access - disabled for performance
 
-    // 4. Detect DevTools opening
+    // 4. Detect DevTools opening (check once, not every second)
     const detectDevTools = () => {
       const threshold = 160;
+      let hasLogged = false;
+      
       const check = () => {
+        if (hasLogged) return; // Only log once per session
+        
         const widthThreshold =
           window.outerWidth - window.innerWidth > threshold;
         const heightThreshold =
           window.outerHeight - window.innerHeight > threshold;
 
         if (widthThreshold || heightThreshold) {
+          hasLogged = true;
           logSecurityEvent('DEVTOOLS_OPENED', {
             outerWidth: window.outerWidth,
             innerWidth: window.innerWidth,
@@ -77,8 +82,10 @@ export function SecurityMonitor() {
         }
       };
 
-      const interval = setInterval(check, 1000);
-      return () => clearInterval(interval);
+      // Check on mount and on resize (not every second)
+      check();
+      window.addEventListener('resize', check);
+      return () => window.removeEventListener('resize', check);
     };
 
     // 5. Monitor for iframe embedding attempts
@@ -157,12 +164,30 @@ export function SecurityMonitor() {
   return null; // This component doesn't render anything
 }
 
+// Track logged events to prevent spam
+const loggedEvents = new Set<string>();
+const eventCooldowns = new Map<string, number>();
+const COOLDOWN_MS = 60000; // 1 minute cooldown per event type
+
 /**
  * Log security events
  */
 function logSecurityEvent(eventType: string, data: unknown) {
   // Safety checks for SSR
   if (typeof window === 'undefined' || typeof navigator === 'undefined') return;
+
+  // Create unique key for this event type + URL
+  const eventKey = `${eventType}:${window.location.pathname}`;
+  
+  // Check cooldown - only log same event once per minute
+  const lastLogged = eventCooldowns.get(eventKey);
+  const now = Date.now();
+  if (lastLogged && now - lastLogged < COOLDOWN_MS) {
+    return; // Skip - too soon
+  }
+  
+  // Update cooldown
+  eventCooldowns.set(eventKey, now);
 
   const event = {
     type: eventType,
@@ -174,6 +199,7 @@ function logSecurityEvent(eventType: string, data: unknown) {
 
   // Log to console in development
   if (process.env.NODE_ENV === 'development') {
+    console.log('[Security Event]', eventType, data);
   }
 
   // Send to analytics/monitoring service

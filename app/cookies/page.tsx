@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     'Learn about how Elevate For Humanity uses cookies and similar technologies on our website.',
 };
 
+export const dynamic = 'force-static';
+export const revalidate = 86400; // 24 hours
+
 export default function CookiesPage() {
   return (
     <div className="min-h-screen bg-white">
