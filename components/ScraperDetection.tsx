@@ -88,17 +88,19 @@ export function ScraperDetection() {
         });
       }
     }, 5000);
-    // Check for DevTools opening
+    // Check for DevTools opening (on resize, not every second)
     const detectDevTools = () => {
       // Guard against undefined window properties on mobile
       if (typeof window === 'undefined' || !window.outerWidth || !window.outerHeight) {
         return;
       }
       
+      if (alerted.current) return; // Only alert once
+      
       const threshold = 160;
       const widthThreshold = window.outerWidth - window.innerWidth > threshold;
       const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-      if ((widthThreshold || heightThreshold) && !alerted.current) {
+      if (widthThreshold || heightThreshold) {
         alerted.current = true;
         sendAlert({
           type: 'DEVTOOLS_OPENED',
@@ -107,7 +109,10 @@ export function ScraperDetection() {
         });
       }
     };
-    const devToolsInterval = setInterval(detectDevTools, 1000);
+    
+    // Check on mount and on resize (not every second)
+    detectDevTools();
+    window.addEventListener('resize', detectDevTools);
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('scroll', handleScroll);
@@ -115,8 +120,8 @@ export function ScraperDetection() {
       document.removeEventListener('copy', handleCopy);
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', detectDevTools);
       clearTimeout(checkTimer);
-      clearInterval(devToolsInterval);
     };
   }, []);
   return null;
