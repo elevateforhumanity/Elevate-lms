@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   DollarSign,
   Users,
@@ -20,119 +21,145 @@ export default function FundingPage() {
       title: 'WIOA Eligibility',
       description:
         'Check if you qualify for Workforce Innovation and Opportunity Act funding. Most adults qualify for free training.',
+      fullDescription: 'The Workforce Innovation and Opportunity Act (WIOA) is the primary federal workforce development program. WIOA provides funding for job training, education, and employment services to help individuals gain skills and find good jobs. Most adults qualify based on income, public assistance receipt, veteran status, or displacement from previous employment.',
       href: '/wioa-eligibility',
       icon: CheckCircle,
       color: 'green',
       category: 'Eligibility',
+      image: '/images/heroes/hero-state-funding.jpg',
     },
 
     {
       title: 'Grants',
       description:
         'Federal and state grant programs that cover 100% of training costs with no repayment required.',
+      fullDescription: 'Federal and state workforce grants provide 100% funding for career training programs. Unlike loans, grants never need to be repaid. These include WIOA, Workforce Ready Grant (WRG), and other state-administered programs that cover tuition, books, supplies, and support services.',
       href: '/grants',
       icon: DollarSign,
       color: 'emerald',
       category: 'Funding',
+      image: '/images/heroes/hero-federal-funding.jpg',
     },
     {
       title: 'JRI Funding',
       description:
         'Justice Reinvestment Initiative funding for individuals with criminal justice involvement.',
+      fullDescription: 'The Justice Reinvestment Initiative (JRI) provides funding for workforce training and support services for individuals with criminal justice involvement. JRI helps justice-impacted individuals gain skills, find employment, and successfully reintegrate into their communities.',
       href: '/jri',
       icon: Shield,
       color: 'purple',
       category: 'Funding',
+      image: '/images/apprenticeships-card.jpg',
     },
     {
       title: 'SNAP E&T',
       description:
         'Supplemental Nutrition Assistance Program Employment & Training funding for SNAP recipients.',
+      fullDescription: 'SNAP Employment & Training (SNAP E&T) provides job training and support services for individuals receiving SNAP benefits (food stamps). The program helps SNAP recipients gain skills and find employment to achieve self-sufficiency.',
       href: '/snap-et-partner',
       icon: Users,
       color: 'orange',
       category: 'Funding',
+      image: '/images/heroes/hero-state-funding.jpg',
     },
     {
       title: 'FSSA Partnership',
       description:
         'Family and Social Services Administration partnership programs and funding opportunities.',
+      fullDescription: 'The Indiana Family and Social Services Administration (FSSA) partners with workforce providers to deliver training and support services to vulnerable populations. FSSA programs help individuals receiving public assistance gain skills and achieve self-sufficiency.',
       href: '/fssa-partnership-request',
       icon: Handshake,
       color: 'pink',
       category: 'Partnerships',
+      image: '/images/apprenticeships-card.jpg',
     },
     {
       title: 'OJT & Funding',
       description:
         'On-the-Job Training programs with employer wage reimbursement and participant support.',
+      fullDescription: 'On-the-Job Training (OJT) programs provide wage reimbursement to employers who hire and train new workers. Participants earn a paycheck while learning job skills, and employers receive funding to offset training costs. OJT programs are available through WIOA and other workforce initiatives.',
       href: '/ojt-and-funding',
       icon: Briefcase,
       color: 'indigo',
       category: 'Programs',
+      image: '/images/apprenticeships-card.jpg',
     },
     {
       title: 'Funding Impact',
       description:
         'See how federal funding transforms lives and communities through workforce development.',
+      fullDescription: 'Federal workforce funding has helped thousands of Hoosiers gain skills, find good jobs, and achieve economic stability. See real stories of how WIOA, JRI, and other programs have transformed lives and strengthened communities across Indiana.',
       href: '/fundingimpact',
       icon: TrendingUp,
       color: 'cyan',
       category: 'Impact',
+      image: '/images/heroes/hero-federal-funding.jpg',
     },
     {
       title: 'Workforce Partners',
       description:
         'Our network of workforce development boards, agencies, and community partners.',
+      fullDescription: 'We partner with WorkOne centers, workforce development boards, community organizations, and government agencies across Indiana to connect students with funding and support services. Our collaborative approach ensures students receive comprehensive assistance.',
       href: '/workforce-partners',
       icon: Users,
       color: 'violet',
       category: 'Partnerships',
+      image: '/images/apprenticeships-card.jpg',
     },
     {
       title: 'WorkOne Partner Packet',
       description:
         'Information for WorkOne centers and workforce board partners.',
+      fullDescription: 'Resources and information for WorkOne career advisors and workforce board staff. Learn about our programs, enrollment process, and how to refer clients for training services.',
       href: '/workone-partner-packet',
       icon: FileText,
       color: 'rose',
       category: 'Resources',
+      image: '/images/heroes/hero-state-funding.jpg',
     },
     {
       title: 'Partner Agencies',
       description:
         'Government agencies and community organizations we work with to serve students.',
+      fullDescription: 'We collaborate with federal, state, and local agencies including DWD, FSSA, DOC, and community-based organizations to provide training and support services to diverse populations across Indiana.',
       href: '/agencies',
       icon: Building2,
       color: 'amber',
       category: 'Partnerships',
+      image: '/images/apprenticeships-card.jpg',
     },
     {
       title: 'Government Programs',
       description:
         'Federal and state workforce programs that fund training at no cost to students.',
+      fullDescription: 'Learn about federal programs like WIOA, SNAP E&T, and state initiatives like Workforce Ready Grant that provide 100% funding for career training. These programs are administered through WorkOne centers and local workforce boards.',
       href: '/government',
       icon: Shield,
       color: 'lime',
       category: 'Programs',
+      image: '/images/heroes/hero-federal-funding.jpg',
     },
     {
       title: 'Federal Compliance',
       description:
         'Our compliance with federal workforce development regulations and reporting requirements.',
+      fullDescription: 'We maintain full compliance with federal workforce development regulations including WIOA, Equal Opportunity, and data privacy requirements. Our programs meet all federal standards for quality, accountability, and student outcomes.',
       href: '/federal-compliance',
       icon: CheckCircle,
       color: 'teal',
       category: 'Compliance',
+      image: '/images/heroes/hero-state-funding.jpg',
     },
     {
       title: 'Equal Opportunity',
       description:
         'Our commitment to equal opportunity and non-discrimination in all programs and services.',
+      fullDescription: 'Elevate for Humanity is an equal opportunity provider. We do not discriminate based on race, color, religion, sex, national origin, age, disability, or political affiliation. All programs and services are available to all eligible individuals.',
       href: '/equal-opportunity',
       icon: Users,
       color: 'sky',
       category: 'Compliance',
+      image: '/images/apprenticeships-card.jpg',
     },
   ];
 
@@ -300,29 +327,39 @@ export default function FundingPage() {
             {fundingResources.map((resource) => {
               const Icon = resource.icon;
               return (
-                <Link
+                <div
                   key={resource.href}
-                  href={resource.href}
-                  className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border-2 border-gray-100 hover:border-green-500 hover:-translate-y-1 transform"
+                  className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border-2 border-gray-100 hover:border-green-500"
                 >
-                  {/* Category Badge */}
-                  <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-3 border-b border-gray-200">
-                    <span className="text-xs font-bold text-black uppercase tracking-wider">
-                      {resource.category}
-                    </span>
-                  </div>
+                  {/* Image */}
+                  {resource.image && (
+                    <div className="relative h-48 w-full overflow-hidden">
+                      <Image
+                        src={resource.image}
+                        alt={resource.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      {/* Category Badge Overlay */}
+                      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <span className="text-xs font-bold text-black uppercase tracking-wider">
+                          {resource.category}
+                        </span>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Card Content */}
                   <div className="p-6">
                     {/* Icon */}
                     <div
-                      className={`w-14 h-14 bg-${resource.color}-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
+                      className={`w-14 h-14 bg-${resource.color}-100 rounded-xl flex items-center justify-center mb-4`}
                     >
                       <Icon className={`w-7 h-7 text-${resource.color}-600`} />
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-black mb-3 group-hover:text-green-600 transition-colors">
+                    <h3 className="text-xl font-bold text-black mb-3">
                       {resource.title}
                     </h3>
 
@@ -330,14 +367,24 @@ export default function FundingPage() {
                     <p className="text-black mb-4 leading-relaxed">
                       {resource.description}
                     </p>
+                    
+                    {/* Full Description (if available) */}
+                    {resource.fullDescription && (
+                      <p className="text-sm text-black mb-6 leading-relaxed border-t border-gray-200 pt-4">
+                        {resource.fullDescription}
+                      </p>
+                    )}
 
-                    {/* CTA */}
-                    <div className="flex items-center gap-2 text-green-600 font-semibold group-hover:gap-3 transition-all">
+                    {/* Learn More Button */}
+                    <Link
+                      href={resource.href}
+                      className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 transition-all w-full justify-center"
+                    >
                       <span>Learn More</span>
                       <ArrowRight className="w-4 h-4" />
-                    </div>
+                    </Link>
                   </div>
-                </Link>
+                </div>
               );
             })}
           </div>
