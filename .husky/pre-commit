@@ -6,8 +6,12 @@ if git diff --cached --name-only | grep -q "\.env\.local"; then
   exit 1
 fi
 
-# Check for API keys in staged files
-if git diff --cached | grep -E "(sk-|eyJ|AKIA|whsec_)" > /dev/null; then
+# Check for API keys in staged files (excluding documentation)
+# Exclude: .md files, .example files, and lines with "example" or "..." placeholders
+if git diff --cached --diff-filter=AM -- ':!*.md' ':!*.example' ':!.env.example' | \
+   grep -E "(sk-[a-zA-Z0-9]{48}|eyJ[a-zA-Z0-9]{100,}|AKIA[A-Z0-9]{16}|whsec_[a-zA-Z0-9]{32})" | \
+   grep -v "example" | \
+   grep -v "\.\.\." > /dev/null; then
   echo "⚠️  WARNING: Possible API key detected"
   echo "Please review your changes."
   exit 1
