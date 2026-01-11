@@ -16,14 +16,37 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# Redirect .org domain to .institute
+[[redirects]]
+  from = "https://elevateforhumanity.org/*"
+  to = "https://elevateforhumanity.institute/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.elevateforhumanity.org/*"
+  to = "https://elevateforhumanity.institute/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://elevateforhumanity.org/*"
+  to = "https://elevateforhumanity.institute/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.elevateforhumanity.org/*"
+  to = "https://elevateforhumanity.institute/:splat"
+  status = 301
+  force = true
+
 # Redirect www to non-www for .institute domain
 [[redirects]]
   from = "https://www.elevateforhumanity.institute/*"
   to = "https://elevateforhumanity.institute/:splat"
   status = 301
   force = true
-
-# Note: elevateforhumanity.org is separate (hosted on Durable)
 
 [[redirects]]
   from = "/index.html"
