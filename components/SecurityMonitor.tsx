@@ -164,10 +164,26 @@ export function SecurityMonitor() {
   return null; // This component doesn't render anything
 }
 
-// Track logged events to prevent spam
-const loggedEvents = new Set<string>();
+// Track logged routes to prevent spam (route-level guard)
+const loggedRoutes = new Set<string>();
 const eventCooldowns = new Map<string, number>();
 const COOLDOWN_MS = 60000; // 1 minute cooldown per event type
+
+// Clear old entries periodically to prevent memory leak
+if (typeof window !== 'undefined') {
+  setInterval(() => {
+    if (loggedRoutes.size > 100) {
+      loggedRoutes.clear();
+    }
+    // Clean up old cooldowns
+    const now = Date.now();
+    for (const [key, timestamp] of eventCooldowns.entries()) {
+      if (now - timestamp > COOLDOWN_MS * 2) {
+        eventCooldowns.delete(key);
+      }
+    }
+  }, 300000); // Every 5 minutes
+}
 
 /**
  * Log security events
@@ -176,15 +192,27 @@ function logSecurityEvent(eventType: string, data: unknown) {
   // Safety checks for SSR
   if (typeof window === 'undefined' || typeof navigator === 'undefined') return;
 
-  // Create unique key for this event type + URL
-  const eventKey = `${eventType}:${window.location.pathname}`;
+  // Create unique key for this route + event (route-level guard)
+  const routeKey = `${window.location.pathname}:${eventType}`;
+  
+  // Check if already logged for this route
+  if (loggedRoutes.has(routeKey)) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[Security] Already logged for route:', routeKey);
+    }
+    return; // Skip - already logged for this route
+  }
   
   // Check cooldown - only log same event once per minute
+  const eventKey = `${eventType}:${window.location.pathname}`;
   const lastLogged = eventCooldowns.get(eventKey);
   const now = Date.now();
   if (lastLogged && now - lastLogged < COOLDOWN_MS) {
     return; // Skip - too soon
   }
+  
+  // Mark as logged for this route
+  loggedRoutes.add(routeKey);
   
   // Update cooldown
   eventCooldowns.set(eventKey, now);

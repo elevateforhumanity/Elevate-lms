@@ -138,6 +138,18 @@ const nextConfig = {
         destination: 'https://elevateforhumanity.institute/:path*',
         permanent: true,
       },
+      
+      // Fix old hero image paths
+      {
+        source: '/clear-pathways-hero.jpg',
+        destination: '/clear-path-main-image.jpg',
+        permanent: true,
+      },
+      {
+        source: '/images/efh/hero/hero-main.jpg',
+        destination: '/images/efh/hero/hero-main-clean.jpg',
+        permanent: true,
+      },
       // Redirect sitemap-page to sitemap.xml
       {
         source: '/sitemap-page',
