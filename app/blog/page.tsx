@@ -3,7 +3,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, Calendar, User, ArrowRight, Facebook, Twitter, Linkedin, Instagram, Share2 } from 'lucide-react';
+import { Search, ArrowRight, Facebook, Twitter, Linkedin, Instagram, Share2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
@@ -21,7 +21,8 @@ const mockBlogPosts = [
     id: 1,
     title: "From Unemployed to HVAC Technician: Marcus's Journey",
     excerpt:
-      "After losing his job during the pandemic, Marcus enrolled in our HVAC program. Six months later, he's earning $55,000/year with full benefits.",
+      "After losing his job during the pandemic, Marcus enrolled in our HVAC program. Six months later, he's earning $55,000/year with full benefits. His story shows how workforce training can transform lives and provide stable, well-paying careers in skilled trades.",
+    preview: "Marcus Thompson was working in retail management when COVID-19 hit. After being laid off, he struggled to find work in his field. That's when he discovered Elevate for Humanity's HVAC program through Indiana Career Connect. 'I never thought about HVAC before, but the advisor showed me the job outlook and salary potential,' Marcus recalls. The 20-week program was fully funded through WIOA, covering tuition, books, tools, and even his EPA certification exam. Today, Marcus works for a leading Indianapolis HVAC company, earning $55,000 annually with full benefits and opportunities for advancement.",
     image: '/images/blog/hvac-success.jpg',
     category: 'Success Story',
     date: 'December 15, 2024',
@@ -32,7 +33,8 @@ const mockBlogPosts = [
     id: 2,
     title: 'New Partnership with Indiana Career Connect',
     excerpt:
-      "We're excited to announce our expanded partnership with Indiana Career Connect, bringing more funding opportunities to students across Indianapolis.",
+      "We're excited to announce our expanded partnership with Indiana Career Connect, bringing more funding opportunities to students across Indianapolis. This collaboration streamlines the enrollment process and increases access to WIOA funding for eligible residents seeking career training.",
+    preview: "Elevate for Humanity has formalized an expanded partnership with Indiana Career Connect, the state's official workforce development portal. This partnership makes it easier for Hoosiers to access free career training through WIOA funding. Students can now complete their entire eligibility process online through the Indiana Career Connect portal, schedule appointments with WorkOne advisors, and receive training vouchers faster than ever. The partnership also includes co-location services at select WorkOne centers, allowing students to meet with both WorkOne advisors and Elevate staff in one visit.",
     image: '/images/blog/partnership.jpg',
     category: 'News',
     date: 'December 10, 2024',
@@ -43,7 +45,8 @@ const mockBlogPosts = [
     id: 4,
     title: 'Understanding WIOA Funding: A Complete Guide',
     excerpt:
-      'Learn how WIOA funding works, who qualifies, and how it can cover 100% of your training costs for in-demand careers.',
+      'Learn how WIOA funding works, who qualifies, and how it can cover 100% of your training costs for in-demand careers. This comprehensive guide breaks down eligibility requirements, the application process, and what expenses are covered under WIOA.',
+    preview: "The Workforce Innovation and Opportunity Act (WIOA) is the primary federal workforce development program, providing funding for job training and education. Most adults qualify based on income, public assistance receipt, veteran status, or displacement from previous employment. WIOA covers 100% of training costs including tuition, books, supplies, tools, and even support services like transportation and childcare. To apply, visit Indiana Career Connect, create your profile, and schedule an appointment with a WorkOne career advisor. The advisor will verify your eligibility and issue a training voucher if approved. The entire process typically takes 2-3 weeks from initial appointment to program start.",
     image: '/images/blog/wioa-guide.jpg',
     category: 'Resource',
     date: 'November 28, 2024',
@@ -54,7 +57,8 @@ const mockBlogPosts = [
     id: 5,
     title: 'Meet Sarah: CNA to Nursing School',
     excerpt:
-      "Sarah started as a CNA through our program. Now she's enrolled in nursing school while working full-time, with her employer covering tuition.",
+      "Sarah started as a CNA through our program. Now she's enrolled in nursing school while working full-time, with her employer covering tuition. Her journey demonstrates how entry-level healthcare certifications can serve as stepping stones to advanced nursing careers.",
+    preview: "Sarah Martinez completed our CNA program in just 4 weeks and immediately found employment at a local hospital. 'The CNA program gave me the foundation I needed to understand healthcare,' Sarah explains. 'But more importantly, it got my foot in the door.' After working as a CNA for 18 months, Sarah's employer offered tuition reimbursement for nursing school. She's now enrolled in an RN program while continuing to work full-time as a CNA. 'I'm earning money while going to school, and my employer is paying for it. I couldn't have done this without starting with the CNA certification,' she says. Sarah expects to graduate with her RN in two years, debt-free.",
     image: '/images/blog/sarah-cna.jpg',
     category: 'Success Story',
     date: 'November 20, 2024',
@@ -65,7 +69,8 @@ const mockBlogPosts = [
     id: 6,
     title: 'Employer Spotlight: Local HVAC Company Hires 8 Graduates',
     excerpt:
-      'Indianapolis-based HVAC company shares why they prefer hiring our graduates and how our training aligns with industry needs.',
+      'Indianapolis-based HVAC company shares why they prefer hiring our graduates and how our training aligns with industry needs. Owner Mike Johnson explains how our curriculum prepares students for real-world HVAC work better than traditional programs.',
+    preview: "Comfort Solutions HVAC has hired 8 graduates from Elevate for Humanity's HVAC program in the past year. Owner Mike Johnson says our graduates stand out because of their hands-on training and industry certifications. 'These students come in with EPA certification, OSHA 30, and real experience working on actual HVAC systems,' Johnson explains. 'They're not just book-smart—they can troubleshoot, they understand customer service, and they're ready to work from day one.' The company now partners with Elevate to provide on-the-job training opportunities for current students and has committed to interviewing every graduate who completes the program. Starting pay for new technicians is $18-22/hour with full benefits and opportunities for advancement.",
     image: '/images/blog/employer-spotlight.jpg',
     category: 'Employer Story',
     date: 'November 15, 2024',
@@ -262,25 +267,32 @@ export default function BlogPage() {
                   <h2 className="text-xl font-bold text-black mb-3 group-hover:text-brand-orange-600 transition line-clamp-2">
                     {post.title}
                   </h2>
-                  <p className="text-black mb-4 line-clamp-3">
+                  <p className="text-black mb-3 line-clamp-3 leading-relaxed">
                     {post.excerpt}
                   </p>
+                  
+                  {/* Preview snippet */}
+                  {post.preview && (
+                    <p className="text-sm text-black mb-4 line-clamp-2 leading-relaxed border-t border-gray-200 pt-3">
+                      {post.preview}
+                    </p>
+                  )}
 
                   {/* Meta */}
-                  <div className="flex items-center gap-4 text-sm text-slate-500">
+                  <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
                     <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
+                      <Image src="/images/icons/clock.png" alt="Date" width={16} height={16} />
                       <span>{post.date}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <User className="w-4 h-4" />
+                      <Image src="/images/icons/users.png" alt="Author" width={16} height={16} />
                       <span>{post.author}</span>
                     </div>
                   </div>
 
-                  {/* Read More */}
-                  <div className="mt-4 flex items-center gap-2 text-brand-orange-600 font-semibold group-hover:gap-3 transition-all">
-                    Read More
+                  {/* Read More Button */}
+                  <div className="inline-flex items-center gap-2 bg-brand-orange-600 text-white px-6 py-3 rounded-lg font-semibold group-hover:bg-brand-orange-700 transition-all">
+                    Read Full Story
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
