@@ -140,7 +140,7 @@ export function SecurityMonitor() {
     // Initialize all monitors
     const cleanup1 = monitorActivity();
     detectAutomation();
-    monitorConsole();
+    // monitorConsole() - disabled for performance
     const cleanup2 = detectDevTools();
     detectIframeEmbedding();
     monitorResourceLoading();
