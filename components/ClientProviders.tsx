@@ -45,11 +45,12 @@ export function ClientProviders() {
     <>
       <GoogleAnalytics />
       <FacebookPixel />
-      <AILiveChat />
+      {/* Temporarily disabled to debug black overlay */}
+      {/* <AILiveChat /> */}
       <CookieBanner />
       <PerformanceMonitor />
-      <ScraperDetection />
-      <CopyrightProtection />
+      {/* <ScraperDetection /> */}
+      {/* <CopyrightProtection /> */}
       <SecurityMonitor />
     </>
   );
