@@ -57,7 +57,20 @@ export default function SiteHeader() {
     setMobileMenuOpen(false);
     setOpenDropdown(null);
     setExpandedMobileSection(null);
+    // Force unlock body scroll
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
+      document.body.classList.remove('mobile-menu-open');
+    }
   }, [pathname]);
+
+  // Force unlock body scroll on mount (in case it's stuck)
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = '';
+      document.body.classList.remove('mobile-menu-open');
+    }
+  }, []);
 
   // Get user and update navigation
   useEffect(() => {
