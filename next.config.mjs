@@ -130,42 +130,6 @@ const nextConfig = {
   // Redirects for consolidated routes
   async redirects() {
     return [
-      // Redirect .org domain to .institute (OLD DOMAIN)
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'elevateforhumanity.org',
-          },
-        ],
-        destination: 'https://elevateforhumanity.institute/:path*',
-        permanent: true,
-      },
-      // Redirect www.org to .institute (OLD DOMAIN)
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.elevateforhumanity.org',
-          },
-        ],
-        destination: 'https://elevateforhumanity.institute/:path*',
-        permanent: true,
-      },
-      // Redirect any vercel.app host to canonical domain
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: '.*\\.vercel\\.app',
-          },
-        ],
-        destination: 'https://elevateforhumanity.institute/:path*',
-        permanent: true,
-      },
       // WWW to non-WWW redirect (canonical domain)
       {
         source: '/:path*',

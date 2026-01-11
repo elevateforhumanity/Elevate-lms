@@ -1,28 +1,30 @@
 # DNS Setup for Netlify
 
-**Domain:** elevateforhumanity.institute  
+**Domain:** elevateforhumanity.institute (bought on Vercel)  
 **Netlify Site:** thunderous-axolotl-89d28d.netlify.app  
 **Status:** ✅ Domain added to Netlify, DNS configuration needed
 
+**Note:** elevateforhumanity.org is separate (hosted on Durable) - no changes needed there
+
 ## 🌐 DNS Records to Add
 
-Go to your domain registrar (where you bought elevateforhumanity.institute) and add these DNS records:
+Since you bought the domain on Vercel, you need to update DNS in Vercel's domain settings:
 
-### Primary Domain (elevateforhumanity.institute)
+### Configure DNS in Vercel
 
-**Option A: Using Netlify DNS (Recommended)**
+**Step 1: Go to Vercel Domain Settings**
+1. Log in to [Vercel Dashboard](https://vercel.com/dashboard)
+2. Go to Domains
+3. Find `elevateforhumanity.institute`
+4. Click on the domain to manage DNS
 
-Point your nameservers to Netlify:
-```
-dns1.p01.nsone.net
-dns2.p01.nsone.net
-dns3.p01.nsone.net
-dns4.p01.nsone.net
-```
+**Step 2: Update DNS Records**
 
-**Option B: Using Your Current DNS Provider**
+Since Vercel manages your domain, you have two options:
 
-Add these records:
+**Option A: Point to Netlify (Recommended)**
+
+Update the DNS records in Vercel:
 
 #### A Record (for root domain)
 ```
@@ -40,27 +42,11 @@ Value: thunderous-axolotl-89d28d.netlify.app
 TTL: 3600
 ```
 
-### Old Domain Redirects (elevateforhumanity.org)
+### elevateforhumanity.org Domain
 
-If you still own elevateforhumanity.org, add these records:
+**No changes needed!** This domain is hosted on Durable and should remain separate.
 
-#### A Record
-```
-Type: A
-Name: @
-Value: 75.2.60.5
-TTL: 3600
-```
-
-#### CNAME Record
-```
-Type: CNAME
-Name: www
-Value: thunderous-axolotl-89d28d.netlify.app
-TTL: 3600
-```
-
-**Note:** The redirects from .org to .institute are already configured in `netlify.toml`
+The .org and .institute sites are independent - no redirects between them.
 
 ## 🔒 SSL Certificate
 
@@ -113,10 +99,9 @@ curl -I https://elevateforhumanity.institute
 
 These redirects are already set up in `netlify.toml`:
 
-1. ✅ elevateforhumanity.org → elevateforhumanity.institute
-2. ✅ www.elevateforhumanity.org → elevateforhumanity.institute
-3. ✅ www.elevateforhumanity.institute → elevateforhumanity.institute
-4. ✅ All Vercel URLs → elevateforhumanity.institute
+1. ✅ www.elevateforhumanity.institute → elevateforhumanity.institute
+
+**Note:** elevateforhumanity.org is separate and hosted on Durable - no redirects configured
 
 ## 🧪 Test After DNS Propagation
 
