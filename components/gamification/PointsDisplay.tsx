@@ -1,12 +1,15 @@
 "use client";
 
 import { Trophy, TrendingUp, Star } from "lucide-react";
+import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 interface PointsDisplayProps {
-  totalPoints: number;
-  level: number;
-  levelName: string;
-  pointsToNextLevel: number;
+  userId: string;
+  totalPoints?: number;
+  level?: number;
+  levelName?: string;
+  pointsToNextLevel?: number;
   recentTransactions?: Array<{
     points: number;
     description: string;
@@ -15,12 +18,56 @@ interface PointsDisplayProps {
 }
 
 export function PointsDisplay({
-  totalPoints,
-  level,
-  levelName,
-  pointsToNextLevel,
-  recentTransactions = [],
+  userId,
+  totalPoints: initialPoints,
+  level: initialLevel,
+  levelName: initialLevelName,
+  pointsToNextLevel: initialPointsToNext,
+  recentTransactions: initialTransactions = [],
 }: PointsDisplayProps) {
+  const [totalPoints, setTotalPoints] = useState(initialPoints || 0);
+  const [level, setLevel] = useState(initialLevel || 1);
+  const [levelName, setLevelName] = useState(initialLevelName || "Beginner");
+  const [pointsToNextLevel, setPointsToNextLevel] = useState(initialPointsToNext || 1000);
+  const [recentTransactions, setRecentTransactions] = useState(initialTransactions);
+  const [loading, setLoading] = useState(!initialPoints);
+
+  useEffect(() => {
+    if (initialPoints !== undefined) return; // Already have data
+
+    async function fetchPoints() {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from('gamification_points')
+          .select('total_points, level, level_name, points_to_next_level')
+          .eq('user_id', userId)
+          .single();
+
+        if (!error && data) {
+          setTotalPoints(data.total_points || 0);
+          setLevel(data.level || 1);
+          setLevelName(data.level_name || "Beginner");
+          setPointsToNextLevel(data.points_to_next_level || 1000);
+        }
+      } catch (error) {
+        console.error('Failed to fetch points:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPoints();
+  }, [userId, initialPoints]);
+
+  if (loading) {
+    return (
+      <div className="rounded-lg p-6 bg-gray-100 animate-pulse">
+        <div className="h-20"></div>
+      </div>
+    );
+  }
+
   const progressPercentage = ((totalPoints % 1000) / 1000) * 100;
 
   return (

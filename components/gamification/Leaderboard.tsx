@@ -101,7 +101,7 @@ export function Leaderboard() {
             <div className="text-right">
               <div className="flex items-center gap-1 text-orange-600 font-bold">
                 <Award className="h-4 w-4" />
-                {user.points.toLocaleString()}
+                {(user.points || 0).toLocaleString()}
               </div>
               <p className="text-xs text-gray-500">points</p>
             </div>

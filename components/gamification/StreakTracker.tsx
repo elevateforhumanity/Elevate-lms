@@ -1,12 +1,15 @@
 "use client";
 
 import { Flame, Calendar } from "lucide-react";
+import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 interface StreakTrackerProps {
-  currentStreak: number;
-  longestStreak: number;
-  totalActiveDays: number;
-  lastActivityDate: string;
+  userId?: string;
+  currentStreak?: number;
+  longestStreak?: number;
+  totalActiveDays?: number;
+  lastActivityDate?: string;
   recentDays?: Array<{
     date: string;
     active: boolean;
@@ -14,12 +17,55 @@ interface StreakTrackerProps {
 }
 
 export function StreakTracker({
-  currentStreak,
-  longestStreak,
-  totalActiveDays,
-  lastActivityDate,
-  recentDays = [],
+  userId,
+  currentStreak: initialStreak,
+  longestStreak: initialLongest,
+  totalActiveDays: initialDays,
+  lastActivityDate: initialLastActivity,
+  recentDays: initialRecentDays = [],
 }: StreakTrackerProps) {
+  const [currentStreak, setCurrentStreak] = useState(initialStreak || 0);
+  const [longestStreak, setLongestStreak] = useState(initialLongest || 0);
+  const [totalActiveDays, setTotalActiveDays] = useState(initialDays || 0);
+  const [lastActivityDate, setLastActivityDate] = useState(initialLastActivity || new Date().toISOString());
+  const [recentDays, setRecentDays] = useState(initialRecentDays);
+  const [loading, setLoading] = useState(!initialStreak && initialStreak !== 0);
+
+  useEffect(() => {
+    if (initialStreak !== undefined || !userId) return;
+
+    async function fetchStreak() {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from('user_streaks')
+          .select('current_streak, longest_streak, total_active_days, last_activity_date')
+          .eq('user_id', userId)
+          .single();
+
+        if (!error && data) {
+          setCurrentStreak(data.current_streak || 0);
+          setLongestStreak(data.longest_streak || 0);
+          setTotalActiveDays(data.total_active_days || 0);
+          setLastActivityDate(data.last_activity_date || new Date().toISOString());
+        }
+      } catch (error) {
+        console.error('Failed to fetch streak:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchStreak();
+  }, [userId, initialStreak]);
+
+  if (loading) {
+    return (
+      <div className="rounded-lg p-6 bg-gray-100 animate-pulse">
+        <div className="h-20"></div>
+      </div>
+    );
+  }
   const isStreakActive = () => {
     const lastActivity = new Date(lastActivityDate);
     const today = new Date();

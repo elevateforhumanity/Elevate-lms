@@ -1,6 +1,8 @@
 "use client";
 
 import { Award, Lock } from "lucide-react";
+import { useEffect, useState } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 interface Badge {
   id: string;
@@ -15,10 +17,55 @@ interface Badge {
 }
 
 interface BadgeShowcaseProps {
-  badges: Badge[];
+  userId?: string;
+  badges?: Badge[];
+  limit?: number;
 }
 
-export function BadgeShowcase({ badges }: BadgeShowcaseProps) {
+export function BadgeShowcase({ userId, badges: initialBadges, limit = 6 }: BadgeShowcaseProps) {
+  const [badges, setBadges] = useState<Badge[]>(initialBadges || []);
+  const [loading, setLoading] = useState(!initialBadges);
+
+  useEffect(() => {
+    if (initialBadges || !userId) return;
+
+    async function fetchBadges() {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from('user_badges')
+          .select('*, badges(*)')
+          .eq('user_id', userId)
+          .limit(limit);
+
+        if (!error && data) {
+          setBadges(data.map((ub: any) => ({
+            id: ub.badge_id,
+            name: ub.badges?.name || 'Badge',
+            description: ub.badges?.description || '',
+            icon_url: ub.badges?.icon_url,
+            rarity: ub.badges?.rarity || 'common',
+            earned: true,
+            earned_at: ub.earned_at,
+          })));
+        }
+      } catch (error) {
+        console.error('Failed to fetch badges:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchBadges();
+  }, [userId, initialBadges, limit]);
+
+  if (loading) {
+    return (
+      <div className="rounded-lg p-6 bg-gray-100 animate-pulse">
+        <div className="h-20"></div>
+      </div>
+    );
+  }
   const getRarityColor = (rarity: string) => {
     switch (rarity) {
       case "common":
