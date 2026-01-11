@@ -122,7 +122,8 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  staticPageGenerationTimeout: 180,
+  // Removed staticPageGenerationTimeout - use route segment config instead
+  // See: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
   outputFileTracingExcludes: {
     '/api/accreditation/report': ['**/*'],
   },
