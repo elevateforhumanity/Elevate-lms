@@ -1,7 +1,30 @@
 import { Metadata } from 'next';
-
 import Link from 'next/link';
 import Image from 'next/image';
+import {
+  BookOpen,
+  Calendar,
+  FileText,
+  Users,
+  Award,
+  TrendingUp,
+  Clock,
+  CheckCircle,
+  Video,
+  MessageSquare,
+  Briefcase,
+  GraduationCap,
+  Target,
+  BarChart3,
+  Mail,
+  Phone,
+  Download,
+  ExternalLink,
+  ArrowRight,
+  Bell,
+  Settings,
+  HelpCircle,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
@@ -9,14 +32,195 @@ export const metadata: Metadata = {
   },
   title: 'Student Portal | Elevate For Humanity',
   description:
-    'Explore Student Portal and discover opportunities for career growth and development.',
+    'Access your courses, track progress, connect with instructors, view grades, manage your schedule, and access career services. Your complete student dashboard.',
+  keywords: ['student portal', 'student dashboard', 'course access', 'grades', 'schedule', 'career services', 'student resources'],
 };
 
 export default async function StudentPortalPage() {
+  const quickLinks = [
+    {
+      icon: BookOpen,
+      title: 'My Courses',
+      description: 'Access course materials, lectures, and assignments',
+      href: '/student-portal/courses',
+      color: 'blue',
+    },
+    {
+      icon: Calendar,
+      title: 'Schedule',
+      description: 'View class schedule, deadlines, and upcoming events',
+      href: '/student-portal/schedule',
+      color: 'green',
+    },
+    {
+      icon: BarChart3,
+      title: 'Grades & Progress',
+      description: 'Track your academic performance and completion status',
+      href: '/student-portal/grades',
+      color: 'purple',
+    },
+    {
+      icon: Users,
+      title: 'Instructors',
+      description: 'Connect with instructors and get support',
+      href: '/student-portal/instructors',
+      color: 'orange',
+    },
+    {
+      icon: Briefcase,
+      title: 'Career Services',
+      description: 'Resume help, job placement, and interview prep',
+      href: '/career-services',
+      color: 'teal',
+    },
+    {
+      icon: FileText,
+      title: 'Documents',
+      description: 'Transcripts, certificates, and important forms',
+      href: '/student-portal/documents',
+      color: 'indigo',
+    },
+  ];
+
+  const resources = [
+    {
+      icon: Video,
+      title: 'Video Tutorials',
+      description: 'Step-by-step guides for using the portal and course tools',
+      href: '/student-portal/tutorials',
+    },
+    {
+      icon: HelpCircle,
+      title: 'Student Handbook',
+      description: 'Policies, procedures, and important information',
+      href: '/student-portal/handbook',
+    },
+    {
+      icon: MessageSquare,
+      title: 'Discussion Forums',
+      description: 'Connect with classmates and study groups',
+      href: '/student-portal/forums',
+    },
+    {
+      icon: Award,
+      title: 'Certifications',
+      description: 'View earned credentials and download certificates',
+      href: '/student-portal/certifications',
+    },
+  ];
+
+  const careerServices = [
+    {
+      icon: FileText,
+      title: 'Resume Building',
+      description: 'Professional resume writing and review services',
+      href: '/career-services/resume-building',
+    },
+    {
+      icon: Users,
+      title: 'Interview Prep',
+      description: 'Mock interviews and expert feedback',
+      href: '/career-services/interview-prep',
+    },
+    {
+      icon: Briefcase,
+      title: 'Job Placement',
+      description: 'Direct connections to hiring employers',
+      href: '/career-services/job-placement',
+    },
+    {
+      icon: Calendar,
+      title: 'Networking Events',
+      description: 'Career fairs and industry meetups',
+      href: '/career-services/networking-events',
+    },
+  ];
+
+  const supportOptions = [
+    {
+      icon: Phone,
+      title: 'Call Student Services',
+      description: '(317) 314-3757',
+      href: 'tel:317-314-3757',
+    },
+    {
+      icon: Mail,
+      title: 'Email Support',
+      description: 'students@elevateforhumanity.institute',
+      href: 'mailto:students@elevateforhumanity.institute',
+    },
+    {
+      icon: MessageSquare,
+      title: 'Live Chat',
+      description: 'Available Mon-Fri 9AM-6PM EST',
+      href: '/contact',
+    },
+    {
+      icon: HelpCircle,
+      title: 'Help Center',
+      description: 'FAQs and troubleshooting guides',
+      href: '/student-portal/help',
+    },
+  ];
+
+  const announcements = [
+    {
+      title: 'Spring 2026 Registration Open',
+      date: 'January 15, 2026',
+      description: 'Register for spring courses now. Priority deadline is February 1st.',
+      type: 'info',
+    },
+    {
+      title: 'Career Fair - February 8th',
+      date: 'January 12, 2026',
+      description: '50+ employers hiring. Register to attend in-person or virtually.',
+      type: 'event',
+    },
+    {
+      title: 'Financial Aid Reminder',
+      date: 'January 10, 2026',
+      description: 'Complete your FAFSA renewal by March 1st to maintain eligibility.',
+      type: 'important',
+    },
+  ];
+
+  const faqs = [
+    {
+      question: 'How do I access my courses?',
+      answer:
+        'Click "My Courses" from the dashboard. All enrolled courses will appear with direct links to course materials, lectures, and assignments.',
+    },
+    {
+      question: 'Where can I view my grades?',
+      answer:
+        'Navigate to "Grades & Progress" to see current grades, assignment scores, and overall completion percentage for each course.',
+    },
+    {
+      question: 'How do I contact my instructor?',
+      answer:
+        'Go to "Instructors" to see contact information, office hours, and messaging options for all your instructors.',
+    },
+    {
+      question: 'Can I download my transcripts?',
+      answer:
+        'Yes! Visit "Documents" to request official transcripts, download unofficial transcripts, and access certificates.',
+    },
+    {
+      question: 'What career services are available?',
+      answer:
+        'All students have free access to resume building, interview prep, job placement assistance, and networking events. Click "Career Services" to learn more.',
+    },
+    {
+      question: 'How do I get technical support?',
+      answer:
+        'Contact student services via phone, email, or live chat. Technical support is available Monday-Friday 9AM-6PM EST.',
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
+      <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
         <Image
           src="/images/artlist/hero-training-1.jpg"
           alt="Student Portal"
@@ -26,43 +230,246 @@ export default async function StudentPortalPage() {
           priority
           sizes="100vw"
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/80" />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Student Portal
           </h1>
-          <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Explore Student Portal and discover opportunities for career growth
-            and development.
+          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
+            Your complete dashboard for courses, grades, schedule, career services, and student resources
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-wrap justify-center gap-4 text-white/90">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5" />
+              <span>24/7 Course Access</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5" />
+              <span>Real-Time Grades</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5" />
+              <span>Career Support</span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Links Dashboard */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-black text-black mb-4">Quick Access</h2>
+          <p className="text-xl text-gray-600 mb-12">
+            Everything you need in one place
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {quickLinks.map((link, index) => (
+              <Link
+                key={index}
+                href={link.href}
+                className="bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-blue-600 hover:shadow-lg transition group"
+              >
+                <link.icon className={`w-12 h-12 text-${link.color}-600 mb-4`} />
+                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-blue-600 transition">
+                  {link.title}
+                </h3>
+                <p className="text-gray-600 mb-4">{link.description}</p>
+                <span className="text-blue-600 font-semibold text-sm flex items-center gap-1">
+                  Access Now <ArrowRight className="w-4 h-4" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Announcements */}
+      <section className="bg-gray-100 py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center gap-3 mb-8">
+            <Bell className="w-8 h-8 text-orange-600" />
+            <h2 className="text-3xl font-black text-black">Announcements</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {announcements.map((announcement, index) => (
+              <div
+                key={index}
+                className={`bg-white rounded-xl p-6 border-l-4 ${
+                  announcement.type === 'important'
+                    ? 'border-red-600'
+                    : announcement.type === 'event'
+                    ? 'border-green-600'
+                    : 'border-blue-600'
+                }`}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="text-lg font-bold text-black">
+                    {announcement.title}
+                  </h3>
+                  <span
+                    className={`text-xs px-2 py-1 rounded-full ${
+                      announcement.type === 'important'
+                        ? 'bg-red-100 text-red-700'
+                        : announcement.type === 'event'
+                        ? 'bg-green-100 text-green-700'
+                        : 'bg-blue-100 text-blue-700'
+                    }`}
+                  >
+                    {announcement.type}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-500 mb-3">{announcement.date}</p>
+                <p className="text-gray-600">{announcement.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Career Services */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-black text-black mb-4">
+            Career Services
+          </h2>
+          <p className="text-xl text-gray-600 mb-12">
+            Free support to help you land your dream job
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {careerServices.map((service, index) => (
+              <Link
+                key={index}
+                href={service.href}
+                className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-green-600 transition text-center group"
+              >
+                <service.icon className="w-12 h-12 text-green-600 mx-auto mb-4" />
+                <h3 className="text-lg font-bold text-black mb-2 group-hover:text-green-600 transition">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{service.description}</p>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8">
             <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+              href="/career-services"
+              className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-700 transition"
             >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
+              View All Career Services
+              <ExternalLink className="w-5 h-5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Content Section */}
+      {/* Student Resources */}
+      <section className="bg-gray-100 py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-black text-black mb-4">
+            Student Resources
+          </h2>
+          <p className="text-xl text-gray-600 mb-12">
+            Tools and information to support your success
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {resources.map((resource, index) => (
+              <Link
+                key={index}
+                href={resource.href}
+                className="bg-white rounded-xl p-6 hover:shadow-lg transition"
+              >
+                <resource.icon className="w-10 h-10 text-blue-600 mb-4" />
+                <h3 className="text-lg font-bold text-black mb-2">
+                  {resource.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{resource.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Support Options */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Student Portal
-                </h2>
-                <p className="text-black mb-6">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-black text-black mb-4 text-center">
+            Need Help?
+          </h2>
+          <p className="text-xl text-gray-600 mb-12 text-center">
+            Student services is here to support you
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {supportOptions.map((option, index) => (
+              <Link
+                key={index}
+                href={option.href}
+                className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-blue-600 transition text-center"
+              >
+                <option.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-lg font-bold text-black mb-2">
+                  {option.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{option.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-gray-100 py-16">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-4xl font-black text-black mb-12 text-center">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white border-2 border-gray-200 rounded-xl p-6"
+              >
+                <h3 className="text-xl font-bold text-black mb-3">
+                  {faq.question}
+                </h3>
+                <p className="text-gray-600">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-4xl font-black mb-6">
+            Ready to Start Your Journey?
+          </h2>
+          <p className="text-xl text-white/90 mb-8">
+            Join thousands of students building successful careers through our programs
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/apply"
+              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition"
+            >
+              Apply Now
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/programs"
+              className="inline-flex items-center justify-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition border-2 border-white"
+            >
+              Browse Programs
+              <BookOpen className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
                   Explore Student Portal and discover opportunities for career
                   growth and development.
                 </p>
