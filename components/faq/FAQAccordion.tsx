@@ -1,7 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown, Rocket, BookOpen, DollarSign, Users, Laptop, Star } from 'lucide-react';
+import {
+  ChevronDown,
+  BookOpen,
+  DollarSign,
+  Rocket,
+  Users,
+  Laptop,
+  Star,
+} from 'lucide-react';
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  BookOpen,
+  DollarSign,
+  Rocket,
+  Users,
+  Laptop,
+  Star,
+};
 
 interface FAQQuestion {
   q: string;
@@ -11,18 +28,9 @@ interface FAQQuestion {
 interface FAQCategory {
   id: string;
   name: string;
-  icon: string;
+  iconName: string;
   questions: FAQQuestion[];
 }
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Rocket,
-  BookOpen,
-  DollarSign,
-  Users,
-  Laptop,
-  Star,
-};
 
 interface FAQAccordionProps {
   categories: FAQCategory[];
@@ -69,16 +77,17 @@ export function FAQAccordion({ categories, searchQuery = '', activeCategory = 'a
 
   return (
     <div className="space-y-12">
-      {filteredCategories.map((category) => {
-        const IconComponent = iconMap[category.icon] || Rocket;
-        return (
-          <div key={category.id}>
-            <h2 className="text-2xl font-bold text-black mb-6 flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <IconComponent className="w-6 h-6 text-blue-600" />
-              </div>
-              {category.name}
-            </h2>
+      {filteredCategories.map((category) => (
+        <div key={category.id}>
+          <h2 className="text-2xl font-bold text-black mb-6 flex items-center gap-3">
+            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              {(() => {
+                const Icon = iconMap[category.iconName];
+                return Icon ? <Icon className="w-6 h-6 text-blue-600" /> : null;
+              })()}
+            </div>
+            {category.name}
+          </h2>
           <div className="space-y-4">
             {category.questions.map((faq, index) => {
               const isOpen = openQuestions.has(`${category.id}-${index}`);
@@ -114,8 +123,7 @@ export function FAQAccordion({ categories, searchQuery = '', activeCategory = 'a
             })}
           </div>
         </div>
-      );
-      })}
+      ))}
     </div>
   );
 }

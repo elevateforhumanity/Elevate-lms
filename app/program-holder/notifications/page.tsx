@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+export const dynamic = 'force-dynamic';
 import { redirect } from 'next/navigation';
 import { Bell, Check, ExternalLink } from 'lucide-react';
 import Link from 'next/link';

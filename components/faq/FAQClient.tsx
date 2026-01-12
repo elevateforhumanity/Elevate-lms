@@ -3,6 +3,23 @@
 import { useState } from 'react';
 import { FAQAccordion } from './FAQAccordion';
 import { FAQSearch } from './FAQSearch';
+import {
+  BookOpen,
+  DollarSign,
+  Rocket,
+  Users,
+  Laptop,
+  Star,
+} from 'lucide-react';
+
+const iconMap = {
+  BookOpen,
+  DollarSign,
+  Rocket,
+  Users,
+  Laptop,
+  Star,
+} as const;
 
 interface FAQQuestion {
   q: string;
@@ -12,7 +29,7 @@ interface FAQQuestion {
 interface FAQCategory {
   id: string;
   name: string;
-  icon: string;
+  iconName: keyof typeof iconMap;
   questions: FAQQuestion[];
 }
 

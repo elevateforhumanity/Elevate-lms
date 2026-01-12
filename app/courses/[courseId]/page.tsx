@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 import { generateMetadata } from '@/lib/seo/metadata';
 
 export const metadata: Metadata = generateMetadata({

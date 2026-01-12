@@ -235,9 +235,17 @@ export const workforceBoardNav: NavSection[] = [
  * The header only shows public navigation items.
  */
 export function getNavigation(user?: { role?: string } | null) {
-  // Always return public navigation only
-  // Dashboard features are accessed via the Dashboard button and internal navigation
-  return [...publicNav];
+  // Transform publicNav to the format expected by DesktopNav
+  const main = publicNav.map((section) => ({
+    name: section.label,
+    href: section.href || '#',
+    children: section.items?.map((item) => ({
+      name: item.label,
+      href: item.href,
+    })),
+  }));
+
+  return { main };
 }
 
 // Export for backward compatibility

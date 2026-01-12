@@ -1,4 +1,5 @@
 import { requireAdmin } from '@/lib/auth';
+export const dynamic = 'force-dynamic';
 import { createClient } from '@/utils/supabase/server';
 import CreatorApprovalActions from './CreatorApprovalActions';
 

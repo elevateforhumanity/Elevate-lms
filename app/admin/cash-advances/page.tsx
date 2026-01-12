@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 import { requireAdmin } from '@/lib/authGuards';
 import { supabaseServer } from '@/lib/supabase-server';
 import Link from 'next/link';

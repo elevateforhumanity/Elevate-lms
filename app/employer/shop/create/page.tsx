@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+export const dynamic = 'force-dynamic';
 import { redirect } from 'next/navigation';
 import { createShop } from './_actions/create-shop';
 

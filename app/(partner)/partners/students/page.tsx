@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+export const dynamic = 'force-dynamic';
 import { getMyPartnerContext } from '@/lib/partner/access';
 
 export default async function PartnerStudentsPage() {

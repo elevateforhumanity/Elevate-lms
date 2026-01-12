@@ -1,5 +1,6 @@
 // app/admin/tax-filing/page.tsx
 import { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 import { supabaseServer } from '@/lib/supabase-server';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';

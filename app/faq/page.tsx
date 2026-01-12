@@ -1,12 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import {
-  BookOpen,
-  DollarSign,
   Rocket,
-  Users,
-  Laptop,
-  Star,
   Phone,
   Mail,
 } from 'lucide-react';
@@ -32,7 +27,7 @@ const faqCategories = [
   {
     id: 'getting-started',
     name: 'Getting Started',
-    icon: 'Rocket',
+    iconName: 'Rocket' as const,
     questions: [
       {
         q: 'How do I apply for a program?',
@@ -59,7 +54,7 @@ const faqCategories = [
   {
     id: 'programs',
     name: 'Programs & Training',
-    icon: 'BookOpen',
+    iconName: 'BookOpen' as const,
     questions: [
       {
         q: 'What programs do you offer?',
@@ -90,7 +85,7 @@ const faqCategories = [
   {
     id: 'funding',
     name: 'Funding & Costs',
-    icon: 'DollarSign',
+    iconName: 'DollarSign' as const,
     questions: [
       {
         q: 'What is WIOA funding?',
@@ -121,7 +116,7 @@ const faqCategories = [
   {
     id: 'career-services',
     name: 'Career Services',
-    icon: 'Users',
+    iconName: 'Users' as const,
     questions: [
       {
         q: 'Do you help with job placement?',
@@ -148,7 +143,7 @@ const faqCategories = [
   {
     id: 'technical',
     name: 'Technical Support',
-    icon: 'Laptop',
+    iconName: 'Laptop' as const,
     questions: [
       {
         q: 'How do I access my online courses?',
@@ -175,7 +170,7 @@ const faqCategories = [
   {
     id: 'student-life',
     name: 'Student Life',
-    icon: 'Star',
+    iconName: 'Star' as const,
     questions: [
       {
         q: 'What support services are available?',

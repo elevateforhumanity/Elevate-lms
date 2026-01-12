@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';

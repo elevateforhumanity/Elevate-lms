@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+export const dynamic = 'force-dynamic';
 import { redirect } from 'next/navigation';
 import { submitWeeklyReport } from './_actions/submit-weekly-report';
 

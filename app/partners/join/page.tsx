@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+export const dynamic = 'force-dynamic';
 import { createClient } from '@/utils/supabase/server';
 import RoleSelectionCards from './RoleSelectionCards';
 
