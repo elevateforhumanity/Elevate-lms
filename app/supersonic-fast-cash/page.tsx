@@ -389,17 +389,6 @@ export default function SupersonicFastCashPage() {
           </div>
         </div>
       </section>
-            color: "teal"
-          },
-          {
-            icon: TrendingUp,
-            title: "Maximum Refund Guarantee",
-            description: "If you find a bigger refund elsewhere, we'll match it. We're that confident. Accuracy guaranteed.",
-            color: "red"
-          }
-        ]}
-        columns={3}
-      />
 
       {/* Urgency CTA */}
       <section className="bg-gradient-to-r from-orange-500 to-red-500 py-16">
