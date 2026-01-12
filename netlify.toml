@@ -18,6 +18,12 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# CRITICAL: Allow Cloudflare verification (MUST BE FIRST)
+[[redirects]]
+  from = "/.well-known/*"
+  to = "/:splat"
+  status = 200
+
 # Redirect .org domain to .institute
 [[redirects]]
   from = "https://elevateforhumanity.org/*"
