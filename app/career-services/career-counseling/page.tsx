@@ -291,6 +291,6 @@ export default function CareerCounselingPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
