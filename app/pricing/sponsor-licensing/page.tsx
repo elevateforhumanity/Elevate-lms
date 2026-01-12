@@ -6,6 +6,9 @@ import {
   Mail,
   Shield,
   TrendingUp,
+  Users,
+  Check,
+  Globe,
 } from 'lucide-react';
 
 export const metadata = {
