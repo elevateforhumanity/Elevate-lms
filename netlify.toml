@@ -24,6 +24,19 @@
   to = "/:splat"
   status = 200
 
+# Canonical redirects: force HTTPS + non-www for .institute domain
+[[redirects]]
+  from = "http://www.elevateforhumanity.institute/*"
+  to = "https://elevateforhumanity.institute/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://elevateforhumanity.institute/*"
+  to = "https://elevateforhumanity.institute/:splat"
+  status = 301
+  force = true
+
 # Redirect .org domain to .institute
 [[redirects]]
   from = "https://elevateforhumanity.org/*"
@@ -60,6 +73,19 @@
   from = "/index.html"
   to = "/"
   status = 301
+
+# Fix broken program-holder/apply links
+[[redirects]]
+  from = "/program-holder/apply"
+  to = "/apply"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/program-holder/apply/*"
+  to = "/apply"
+  status = 301
+  force = true
 
 # Headers for security and caching
 [[headers]]
