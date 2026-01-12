@@ -1,39 +1,59 @@
 import { Metadata } from 'next';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
+
 import Link from 'next/link';
 import Image from 'next/image';
 
+export const dynamic = 'force-static';
+export const revalidate = 86400; // 24 hours
+
 export const metadata: Metadata = {
   alternates: {
-    canonical:
-      'https://elevateforhumanity.institute/supersonic-fast-cash/how-it-works',
+    canonical: 'https://elevateforhumanity.org/video',
   },
-  title: 'How It Works | Elevate For Humanity',
+  title: 'Video | Elevate For Humanity',
   description:
-    'Explore How It Works and discover opportunities for career growth and development.',
+    'Explore Video and discover opportunities for career growth and development.',
 };
 
-export default async function HowItWorksPage() {
+export default async function VideoPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Banner */}
-      <ModernLandingHero
-        badge="💰 Fast Tax Refunds"
-        headline="How Supersonic Fast Cash"
-        accentText="Works"
-        subheadline="Get Your Refund Advance in 3 Simple Steps"
-        description="Getting your tax refund advance is quick and easy. Walk in with your documents, we prepare your taxes professionally, and you walk out with your refund advance the same day. No waiting weeks for the IRS. Our streamlined process gets you cash fast while ensuring accuracy and maximum refund."
-        imageSrc="/images/business/tax-prep-certification.jpg"
-        imageAlt="How Tax Refund Advance Works"
-        primaryCTA={{ text: "Book Appointment", href: "/supersonic-fast-cash/book-appointment" }}
-        secondaryCTA={{ text: "Calculate Refund", href: "/supersonic-fast-cash/calculator" }}
-        features={[
-          "Same-day service • Walk-ins welcome",
-          "Professional tax preparation • Maximum refund",
-          "Instant refund advance • No waiting for IRS"
-        ]}
-        imageOnRight={true}
-      />
+      {/* Hero Section */}
+      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/artlist/hero-training-1.jpg"
+          alt="Video"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Video
+          </h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100">
+            Explore Video and discover opportunities for career growth and
+            development.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/programs"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              View Programs
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Content Section */}
       <section className="py-16">
@@ -42,12 +62,10 @@ export default async function HowItWorksPage() {
             {/* Feature Grid */}
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  How It Works
-                </h2>
-                <p className="text-black mb-6">
-                  Explore How It Works and discover opportunities for career
-                  growth and development.
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Video</h2>
+                <p className="text-gray-700 mb-6">
+                  Explore Video and discover opportunities for career growth and
+                  development.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">
@@ -64,7 +82,7 @@ export default async function HowItWorksPage() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span>Professional training programs</span>
+                    <span>100% free training programs</span>
                   </li>
                   <li className="flex items-start">
                     <svg
@@ -101,12 +119,13 @@ export default async function HowItWorksPage() {
                 </ul>
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image 
-                  src="/images/business/team-1.jpg" 
-                  alt="Professional Tax Team" 
+                <Image
+                  src="/images/artlist/hero-training-2.jpg"
+                  alt="Video"
                   fill
-                  className="object-cover" 
-                  quality={85}
+                  className="object-cover"
+                  quality={100}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
@@ -115,7 +134,7 @@ export default async function HowItWorksPage() {
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24}
+                  <svg
                     className="w-6 h-6 text-brand-blue-600"
                     fill="none"
                     stroke="currentColor"
@@ -130,14 +149,14 @@ export default async function HowItWorksPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
+                <p className="text-gray-600">
                   Access quality training programs
                 </p>
               </div>
 
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24}
+                  <svg
                     className="w-6 h-6 text-brand-green-600"
                     fill="none"
                     stroke="currentColor"
@@ -152,12 +171,12 @@ export default async function HowItWorksPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
+                <p className="text-gray-600">Earn industry certifications</p>
               </div>
 
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <Image src="/images/icons/check-circle.png" alt="Check" width={24} height={24}
+                  <svg
                     className="w-6 h-6 text-purple-600"
                     fill="none"
                     stroke="currentColor"
@@ -172,7 +191,7 @@ export default async function HowItWorksPage() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
+                <p className="text-gray-600">Get hired in your field</p>
               </div>
             </div>
           </div>
@@ -193,7 +212,7 @@ export default async function HowItWorksPage() {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
+                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 text-lg"
               >
                 Apply Now
               </Link>
