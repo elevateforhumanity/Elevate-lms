@@ -16,11 +16,12 @@ import Link from 'next/link';
 export default function DrakeDownloadPage() {
   const [showCredentials, setShowCredentials] = useState(false);
 
-  // Your actual Drake credentials from .env.local
+  // Drake credentials are provided to authorized staff only
+  // Contact your supervisor for account access
   const drakeCredentials = {
-    accountNumber: '211607',
-    serialNumber: 'B7ED-0119-0036-E407',
-    efilePassword: 'Lizzy6262*',
+    accountNumber: 'Contact supervisor',
+    serialNumber: 'Contact supervisor',
+    efilePassword: 'Contact supervisor',
   };
 
   const drakeProducts = [
@@ -99,93 +100,59 @@ export default function DrakeDownloadPage() {
           </p>
         </div>
 
-        {/* Credentials Section */}
-        <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl shadow-xl p-8 text-white mb-8">
+        {/* Credentials Section - For Authorized Staff Only */}
+        <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-xl p-8 text-white mb-8">
           <div className="flex items-start justify-between mb-6">
             <div>
-              <h2 className="text-2xl font-bold mb-2">Your Drake Account</h2>
-              <p className="text-green-100">
-                Your credentials are pre-configured and ready to use
+              <h2 className="text-2xl font-bold mb-2">Drake Account Access</h2>
+              <p className="text-blue-100">
+                For authorized Supersonic Fast Cash staff only
               </p>
             </div>
-            <button
-              onClick={() => setShowCredentials(!showCredentials)}
-              className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg font-semibold transition"
-            >
-              {showCredentials ? 'Hide' : 'Show'} Credentials
-            </button>
+            <Key className="w-8 h-8 text-blue-200" />
           </div>
 
-          {showCredentials && (
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-green-100 mb-2">
-                  Account Number
-                </label>
-                <div className="flex items-center gap-2">
-                  <code className="flex-1 bg-white/20 px-4 py-3 rounded-lg font-mono">
-                    {drakeCredentials.accountNumber}
-                  </code>
-                  <button
-                    onClick={() =>
-                      copyToClipboard(drakeCredentials.accountNumber)
-                    }
-                    className="px-4 py-3 bg-white/20 hover:bg-white/30 rounded-lg transition"
-                  >
-                    Copy
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-green-100 mb-2">
-                  Serial Number
-                </label>
-                <div className="flex items-center gap-2">
-                  <code className="flex-1 bg-white/20 px-4 py-3 rounded-lg font-mono">
-                    {drakeCredentials.serialNumber}
-                  </code>
-                  <button
-                    onClick={() =>
-                      copyToClipboard(drakeCredentials.serialNumber)
-                    }
-                    className="px-4 py-3 bg-white/20 hover:bg-white/30 rounded-lg transition"
-                  >
-                    Copy
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-green-100 mb-2">
-                  E-File Password
-                </label>
-                <div className="flex items-center gap-2">
-                  <code className="flex-1 bg-white/20 px-4 py-3 rounded-lg font-mono">
-                    {drakeCredentials.efilePassword}
-                  </code>
-                  <button
-                    onClick={() =>
-                      copyToClipboard(drakeCredentials.efilePassword)
-                    }
-                    className="px-4 py-3 bg-white/20 hover:bg-white/30 rounded-lg transition"
-                  >
-                    Copy
-                  </button>
-                </div>
-              </div>
-
-              <div className="bg-yellow-500/20 border border-yellow-400/30 rounded-lg p-4 mt-4">
-                <div className="flex gap-2">
-                  <AlertCircle className="w-5 h-5 text-yellow-300 flex-shrink-0" />
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div className="bg-yellow-500/20 border border-yellow-400/30 rounded-lg p-4 mb-4">
+              <div className="flex gap-2">
+                <AlertCircle className="w-5 h-5 text-yellow-300 flex-shrink-0" />
+                <div>
+                  <p className="text-sm text-yellow-100 font-semibold mb-1">
+                    Restricted Access
+                  </p>
                   <p className="text-sm text-yellow-100">
-                    Keep these credentials secure. Do not share with
-                    unauthorized users.
+                    Drake software credentials are provided to authorized staff only. 
+                    Contact your supervisor or manager to obtain account access.
                   </p>
                 </div>
               </div>
             </div>
-          )}
+
+            <div className="space-y-3 text-sm">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-green-300" />
+                <span>Account credentials managed by IT department</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-green-300" />
+                <span>Secure access for certified tax preparers</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-green-300" />
+                <span>Training required before software access</span>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-6 border-t border-white/20">
+              <p className="text-sm text-blue-100 mb-3">
+                <strong>Need Access?</strong> Contact:
+              </p>
+              <div className="space-y-2 text-sm">
+                <div>📧 Email: <a href="mailto:Supersonicfadtcashllc@gmail.com" className="text-white hover:underline">Supersonicfadtcashllc@gmail.com</a></div>
+                <div>📞 Phone: <a href="tel:+13173143757" className="text-white hover:underline">(317) 314-3757</a></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Download Products */}
