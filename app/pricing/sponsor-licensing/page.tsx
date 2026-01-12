@@ -10,6 +10,7 @@ import {
   Users,
   Check,
   Globe,
+  Building2,
 } from 'lucide-react';
 
 export const metadata = {
