@@ -5,7 +5,7 @@
  * edge cases that could cause issues without the radix parameter.
  */
 
-import { describe, it, expect } from '@jest/globals';
+import { describe, it, expect } from 'vitest';
 
 describe('parseInt with radix parameter', () => {
   it('should correctly parse decimal numbers with leading zeros', () => {
