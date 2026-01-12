@@ -78,6 +78,10 @@ export default function SupersonicFastCashPage() {
                   height={400}
                   className="w-full h-auto object-cover"
                   priority
+                  onError={(e) => {
+                    // Fallback to a solid color if image fails to load
+                    e.currentTarget.style.display = 'none';
+                  }}
                 />
               </div>
             </div>
