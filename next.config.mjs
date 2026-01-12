@@ -14,6 +14,11 @@ const nextConfig = {
   compress: true,
   productionBrowserSourceMaps: false,
 
+  // CRITICAL: Disable Next Image optimization to prevent 502s
+  images: {
+    unoptimized: true,
+  },
+
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? {
