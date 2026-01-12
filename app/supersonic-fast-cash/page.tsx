@@ -69,22 +69,7 @@ export default function SupersonicFastCashPage() {
                 </div>
               </div>
             </div>
-            <div className="relative hidden md:block">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
-                <Image
-                  src="/images/supersonic-fast-cash/hero-banner.jpg"
-                  alt="Fast Tax Refunds - Professional Tax Preparation"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto object-cover"
-                  priority
-                  onError={(e) => {
-                    // Fallback to a solid color if image fails to load
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
