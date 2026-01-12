@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import { GraduationCap, Building2, Briefcase, Users } from 'lucide-react';
 
 export default function Apply() {
   return (
