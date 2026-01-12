@@ -7,6 +7,8 @@ import {
   Send,
   ArrowRight,
   Clock,
+  CheckCircle,
+  Phone,
 } from 'lucide-react';
 
 export default function ContactPage() {
