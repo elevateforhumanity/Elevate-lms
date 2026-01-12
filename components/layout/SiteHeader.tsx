@@ -17,17 +17,7 @@ export default function SiteHeader() {
   const { user, isLoading } = useUser();
   const navigation = getNavigation();
 
-  const navItems = useMemo(() => 
-    navigation.map(section => ({
-      name: section.label,
-      href: section.href || '#',
-      children: section.items?.map(item => ({
-        name: item.label,
-        href: item.href
-      }))
-    })),
-    [navigation]
-  );
+  const navItems = useMemo(() => navigation.main, [navigation]);
 
   return (
     <div className="w-full h-full bg-white border-b border-gray-200">
