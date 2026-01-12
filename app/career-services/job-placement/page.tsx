@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { Briefcase, Building2, TrendingUp, ArrowRight } from 'lucide-react';
+import { Briefcase, Building2, TrendingUp, ArrowRight, CheckCircle, Users, Target, Award, Search, Handshake } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Job Placement Services | Elevate for Humanity',
-  description: 'Direct connections to employers actively hiring our graduates.',
+  description: 'Direct connections to employers actively hiring our graduates. Job matching, employer partnerships, interview coordination, and ongoing career support.',
+  keywords: ['job placement', 'career placement', 'employer connections', 'job matching', 'hiring partners', 'career services', 'job search assistance'],
   alternates: {
     canonical: 'https://elevateforhumanity.institute/career-services/job-placement',
   },
@@ -16,100 +17,505 @@ export default function JobPlacementPage() {
       <section className="bg-gradient-to-br from-brand-orange-600 to-brand-purple-600 text-white py-20">
         <div className="max-w-6xl mx-auto px-6">
           <h1 className="text-5xl font-black mb-6">Job Placement Services</h1>
-          <p className="text-xl text-white/90 max-w-3xl">
-            We connect you directly with employers who are actively hiring.
+          <p className="text-xl text-white/90 max-w-3xl mb-8">
+            We connect you directly with employers who are actively hiring. Our employer 
+            partnerships and job matching services help you land your first job or advance your career.
           </p>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-white text-brand-orange-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition"
+            >
+              Get Started
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="#employers"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition border border-white/20"
+            >
+              View Employers
+            </Link>
+          </div>
         </div>
       </section>
 
       <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div className="text-4xl font-black text-brand-orange-600 mb-2">500+</div>
+            <div className="text-gray-600">Employer Partners</div>
+          </div>
+          <div>
+            <div className="text-4xl font-black text-brand-orange-600 mb-2">85%</div>
+            <div className="text-gray-600">Placement Rate</div>
+          </div>
+          <div>
+            <div className="text-4xl font-black text-brand-orange-600 mb-2">90 Days</div>
+            <div className="text-gray-600">Average Time to Hire</div>
+          </div>
+          <div>
+            <div className="text-4xl font-black text-brand-orange-600 mb-2">Free</div>
+            <div className="text-gray-600">For All Graduates</div>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-4xl font-black text-black mb-4 text-center">
+          Comprehensive Job Placement Support
+        </h2>
+        <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+          From resume submission to your first day on the job, we're with you every step of the way.
+        </p>
+
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-brand-orange-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <Briefcase className="w-8 h-8 text-brand-orange-600" />
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-brand-orange-600 transition">
+            <div className="w-12 h-12 bg-brand-orange-100 rounded-xl flex items-center justify-center mb-4">
+              <Briefcase className="w-6 h-6 text-brand-orange-600" />
             </div>
-            <h3 className="text-xl font-bold text-black mb-2">
-              Direct Employer Connections
-            </h3>
-            <p className="text-black">
-              Access to our network of hiring partners
+            <h3 className="text-xl font-bold text-black mb-3">Direct Employer Connections</h3>
+            <p className="text-gray-600 mb-4">
+              Access our network of 500+ employers actively seeking qualified candidates.
             </p>
+            <ul className="space-y-2 text-sm text-gray-600">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Pre-vetted hiring partners</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Exclusive job postings</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Direct referrals to hiring managers</span>
+              </li>
+            </ul>
           </div>
-          <div className="text-center">
-            <div className="w-16 h-16 bg-brand-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <Building2 className="w-8 h-8 text-brand-blue-600" />
+
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-brand-orange-600 transition">
+            <div className="w-12 h-12 bg-brand-blue-100 rounded-xl flex items-center justify-center mb-4">
+              <Target className="w-6 h-6 text-brand-blue-600" />
             </div>
-            <h3 className="text-xl font-bold text-black mb-2">Job Matching</h3>
-            <p className="text-black">
-              We match your skills to the right opportunities
+            <h3 className="text-xl font-bold text-black mb-3">Personalized Job Matching</h3>
+            <p className="text-gray-600 mb-4">
+              We match your skills, goals, and preferences to the right opportunities.
             </p>
+            <ul className="space-y-2 text-sm text-gray-600">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Skills-based matching</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Location and schedule preferences</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Career goals alignment</span>
+              </li>
+            </ul>
           </div>
-          <div className="text-center">
-            <div className="w-16 h-16 bg-brand-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <TrendingUp className="w-8 h-8 text-brand-green-600" />
+
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-brand-orange-600 transition">
+            <div className="w-12 h-12 bg-brand-green-100 rounded-xl flex items-center justify-center mb-4">
+              <Handshake className="w-6 h-6 text-brand-green-600" />
             </div>
-            <h3 className="text-xl font-bold text-black mb-2">Career Growth</h3>
-            <p className="text-black">
-              Support for advancement and promotions
+            <h3 className="text-xl font-bold text-black mb-3">Interview Coordination</h3>
+            <p className="text-gray-600 mb-4">
+              We facilitate connections and prepare you for success.
             </p>
+            <ul className="space-y-2 text-sm text-gray-600">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Interview scheduling assistance</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Company-specific preparation</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Follow-up support</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="bg-gray-50 rounded-2xl p-8">
-          <h2 className="text-3xl font-bold text-black mb-6">How It Works</h2>
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-brand-orange-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                1
+        <div className="bg-gradient-to-br from-gray-50 to-orange-50 rounded-2xl p-8 md:p-12">
+          <h2 className="text-3xl font-bold text-black mb-8 text-center">How Job Placement Works</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-brand-orange-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0 text-xl">
+                  1
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-black mb-2">
+                    Complete Your Training
+                  </h3>
+                  <p className="text-gray-600">
+                    Finish your program, earn your certification, and demonstrate job-ready skills.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Complete Your Training
-                </h3>
-                <p className="text-black">
-                  Finish your program and earn your certification
-                </p>
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-brand-orange-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0 text-xl">
+                  2
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-black mb-2">
+                    Career Assessment
+                  </h3>
+                  <p className="text-gray-600">
+                    Meet with your career coach to discuss goals, preferences, and target employers.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-brand-orange-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                2
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Meet with Career Coach
-                </h3>
-                <p className="text-black">
-                  Review your goals and preferences
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-brand-orange-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                3
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Get Matched
-                </h3>
-                <p className="text-black">
-                  We connect you with hiring employers
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-brand-orange-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
-                4
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Start Your Career
-                </h3>
-                <p className="text-black">
-                  Begin working with ongoing support
-                </p>
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-brand-orange-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0 text-xl">
+                  3
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-black mb-2">
+                    Job Matching
+                  </h3>
+                  <p className="text-gray-600">
+                    We identify opportunities that match your skills, location, and career goals.
+                  </p>
+                </div>
               </div>
             </div>
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-brand-orange-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0 text-xl">
+                  4
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-black mb-2">
+                    Employer Introduction
+                  </h3>
+                  <p className="text-gray-600">
+                    We submit your resume and credentials directly to hiring managers.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-brand-orange-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0 text-xl">
+                  5
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-black mb-2">
+                    Interview Support
+                  </h3>
+                  <p className="text-gray-600">
+                    Prepare for interviews with company-specific coaching and practice sessions.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-brand-orange-600 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0 text-xl">
+                  6
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-black mb-2">
+                    Start Your Career
+                  </h3>
+                  <p className="text-gray-600">
+                    Accept your offer and begin working with ongoing support from our team.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="employers" className="bg-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-4xl font-black text-black mb-4 text-center">
+            Our Employer Partners
+          </h2>
+          <p className="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            We partner with leading employers across multiple industries who are committed to 
+            hiring and developing our graduates.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <Building2 className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Technology</h3>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Software development companies</li>
+                <li>• IT service providers</li>
+                <li>• Tech startups and enterprises</li>
+                <li>• Cybersecurity firms</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                <Briefcase className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Business Services</h3>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Accounting and tax firms</li>
+                <li>• Financial services</li>
+                <li>• Consulting companies</li>
+                <li>• Professional services</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Healthcare</h3>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Hospitals and clinics</li>
+                <li>• Healthcare IT companies</li>
+                <li>• Medical billing services</li>
+                <li>• Health insurance providers</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                <TrendingUp className="w-6 h-6 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Manufacturing</h3>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Advanced manufacturing</li>
+                <li>• Logistics and supply chain</li>
+                <li>• Quality assurance</li>
+                <li>• Production management</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <Award className="w-6 h-6 text-red-600" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Nonprofit</h3>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Community organizations</li>
+                <li>• Educational institutions</li>
+                <li>• Social services agencies</li>
+                <li>• Foundations and charities</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                <Search className="w-6 h-6 text-yellow-600" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Government</h3>
+              <ul className="space-y-2 text-gray-600 text-sm">
+                <li>• Federal agencies</li>
+                <li>• State and local government</li>
+                <li>• Public schools and libraries</li>
+                <li>• Government contractors</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-8 text-center">
+            <h3 className="text-2xl font-bold text-black mb-4">
+              Interested in Hiring Our Graduates?
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Join our employer network and gain access to skilled, motivated candidates 
+              ready to contribute to your organization.
+            </p>
+            <Link
+              href="/employers"
+              className="inline-flex items-center gap-2 bg-brand-orange-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-brand-orange-700 transition"
+            >
+              Partner With Us
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-4xl font-black text-black mb-12 text-center">
+          What Makes Our Placement Services Different
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-black mb-4">Employer Relationships</h3>
+            <p className="text-gray-600 mb-4">
+              We don't just post job listings. We build long-term partnerships with employers 
+              who understand our training and trust our graduates.
+            </p>
+            <ul className="space-y-2 text-gray-600">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Regular employer engagement and feedback</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Understanding of employer needs and culture</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Direct access to hiring managers</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-black mb-4">Personalized Matching</h3>
+            <p className="text-gray-600 mb-4">
+              We take time to understand your unique situation, goals, and preferences to 
+              find opportunities that truly fit.
+            </p>
+            <ul className="space-y-2 text-gray-600">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>One-on-one career coaching</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Skills and interest assessment</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Location and schedule flexibility</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-black mb-4">Ongoing Support</h3>
+            <p className="text-gray-600 mb-4">
+              Our support doesn't end when you get hired. We stay connected to ensure your 
+              success and help you advance in your career.
+            </p>
+            <ul className="space-y-2 text-gray-600">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>90-day check-ins after placement</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Career advancement coaching</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Lifetime alumni services</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-white border-2 border-gray-200 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-black mb-4">No Cost to You</h3>
+            <p className="text-gray-600 mb-4">
+              All job placement services are completely free for our students and alumni. 
+              No fees, no commissions, no hidden costs.
+            </p>
+            <ul className="space-y-2 text-gray-600">
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Free for all graduates</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>No placement fees or commissions</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span>Unlimited job search support</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gradient-to-br from-brand-orange-600 to-brand-purple-600 text-white py-16">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-4xl font-black mb-6 text-center">
+            Success Stories
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white/10 backdrop-blur rounded-xl p-6">
+              <p className="text-white/90 mb-4 italic">
+                "Within two weeks of graduating, I had three job offers. The career services 
+                team helped me prepare for interviews and negotiate my salary. I'm now working 
+                as a junior developer making $65,000/year."
+              </p>
+              <div className="font-bold">— Maria S., Web Development Graduate</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur rounded-xl p-6">
+              <p className="text-white/90 mb-4 italic">
+                "I was nervous about changing careers, but the job placement team matched me 
+                with an employer who valued my transferable skills. I started as a tax preparer 
+                and got promoted to senior preparer within a year."
+              </p>
+              <div className="font-bold">— James T., Tax Preparation Graduate</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-4xl font-black text-black mb-12 text-center">
+          Frequently Asked Questions
+        </h2>
+
+        <div className="space-y-6 max-w-4xl mx-auto">
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
+            <h3 className="text-xl font-bold text-black mb-3">When can I start using job placement services?</h3>
+            <p className="text-gray-600">
+              Job placement services are available as soon as you complete your program and earn your 
+              certification. We recommend connecting with career services during your final weeks of training 
+              to prepare for your job search.
+            </p>
+          </div>
+
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
+            <h3 className="text-xl font-bold text-black mb-3">Do I have to accept the jobs you recommend?</h3>
+            <p className="text-gray-600">
+              No. We present opportunities that match your criteria, but you have complete control over 
+              which positions you pursue. We're here to support your decisions and help you find the right fit.
+            </p>
+          </div>
+
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
+            <h3 className="text-xl font-bold text-black mb-3">What if I don't get hired right away?</h3>
+            <p className="text-gray-600">
+              We continue working with you until you find the right position. There's no time limit on our 
+              support. We'll refine your approach, expand your search, and keep connecting you with opportunities.
+            </p>
+          </div>
+
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
+            <h3 className="text-xl font-bold text-black mb-3">Can I use job placement services if I'm already employed?</h3>
+            <p className="text-gray-600">
+              Yes! Our services are available to help you advance your career, find better opportunities, 
+              or transition to a new role. We support both job seekers and those looking to level up.
+            </p>
+          </div>
+
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
+            <h3 className="text-xl font-bold text-black mb-3">Do you help with remote job opportunities?</h3>
+            <p className="text-gray-600">
+              Absolutely. Many of our employer partners offer remote and hybrid positions. We can help you 
+              find opportunities that match your location preferences, whether that's in-person, remote, or hybrid.
+            </p>
+          </div>
+
+          <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
+            <h3 className="text-xl font-bold text-black mb-3">Is job placement guaranteed?</h3>
+            <p className="text-gray-600">
+              While we cannot guarantee employment (as hiring decisions are made by employers), we have an 85% 
+              placement rate and provide unlimited support until you find the right position. We're committed 
+              to your success.
+            </p>
           </div>
         </div>
       </section>
@@ -119,12 +525,64 @@ export default function JobPlacementPage() {
           <h2 className="text-4xl font-black mb-6">
             Ready to Start Your Career?
           </h2>
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Complete your training and let us connect you with employers who are ready to hire.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/apply"
+              className="inline-flex items-center gap-2 bg-white text-brand-blue-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition"
+            >
+              Apply Now
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white/20 transition border border-white/20"
+            >
+              Contact Career Services
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <h2 className="text-3xl font-bold text-black mb-8 text-center">
+          More Career Services
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6">
           <Link
-            href="/apply"
-            className="inline-flex items-center gap-2 bg-white text-brand-blue-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-gray-100 transition"
+            href="/career-services/resume-building"
+            className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-brand-blue-600 transition"
           >
-            Apply Now
-            <ArrowRight className="w-5 h-5" />
+            <h3 className="text-xl font-bold text-black mb-2">
+              Resume Building
+            </h3>
+            <p className="text-gray-600">
+              Professional resume writing and review services
+            </p>
+          </Link>
+          <Link
+            href="/career-services/interview-prep"
+            className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-brand-blue-600 transition"
+          >
+            <h3 className="text-xl font-bold text-black mb-2">
+              Interview Preparation
+            </h3>
+            <p className="text-gray-600">
+              Mock interviews and coaching to ace your interviews
+            </p>
+          </Link>
+          <Link
+            href="/career-services/career-counseling"
+            className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-brand-blue-600 transition"
+          >
+            <h3 className="text-xl font-bold text-black mb-2">
+              Career Counseling
+            </h3>
+            <p className="text-gray-600">
+              Long-term career planning and guidance
+            </p>
           </Link>
         </div>
       </section>
