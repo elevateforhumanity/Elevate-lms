@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { ArrowRight, CheckCircle, Video, Users, FileText, Target } from 'lucide-react';
+import { CareerHero } from '../components/CareerHero';
 
 export const metadata: Metadata = {
   title: 'Interview Preparation | Career Services | Elevate for Humanity',
@@ -16,30 +17,11 @@ export const metadata: Metadata = {
 export default function InterviewPrepPage() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-brand-blue-600 to-brand-purple-600 text-white py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <h1 className="text-5xl font-black mb-6">Interview Preparation</h1>
-          <p className="text-xl text-white/90 max-w-3xl mb-8">
-            Professional coaching to help you ace your interviews and land the
-            job. One-on-one sessions, mock interviews, and personalized feedback.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-white text-brand-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition"
-            >
-              Schedule Session
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="#how-it-works"
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition border border-white/20"
-            >
-              Learn More
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CareerHero
+        badge="🎯 Interview Coaching"
+        title="Interview Preparation"
+        description="Professional coaching to help you ace your interviews and land the job. One-on-one sessions, mock interviews, and personalized feedback."
+      />
 
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-4 gap-8 text-center">

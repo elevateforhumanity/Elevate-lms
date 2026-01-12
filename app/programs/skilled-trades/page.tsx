@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 
 export const metadata: Metadata = {
   title: 'Skilled Trades Programs | Free HVAC, Building Maintenance Training',
@@ -15,13 +14,43 @@ export const metadata: Metadata = {
 export default function SkilledTradesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <VideoHeroBanner
-        videoSrc="/videos/hvac-hero-final.mp4"
-        headline="Skilled Trades Programs"
-        subheadline="Build Your Future - HVAC, Building Maintenance & More"
-        primaryCTA={{ text: 'Apply Now', href: '/apply' }}
-        secondaryCTA={{ text: 'View All Programs', href: '/programs' }}
-      />
+      {/* Hero Banner with Image */}
+      <section className="relative bg-gradient-to-br from-orange-600 to-orange-800 text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/programs/skilled-trades-hero.jpg"
+            alt="Skilled Trades Training"
+            fill
+            className="object-cover opacity-30"
+            priority
+          />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
+          <div className="inline-block bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-bold mb-6">
+            🔧 Hands-On Training
+          </div>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6">
+            Skilled Trades Programs
+          </h1>
+          <p className="text-2xl md:text-3xl text-white/90 mb-8 max-w-3xl">
+            Build Your Future - HVAC, Building Maintenance & More
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/apply"
+              className="inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition shadow-xl"
+            >
+              Apply Now
+            </Link>
+            <Link
+              href="/programs"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition"
+            >
+              View All Programs
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* At-a-Glance */}
       <section className="bg-white py-16">

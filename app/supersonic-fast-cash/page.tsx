@@ -780,31 +780,102 @@ export default function SupersonicFastCashPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-brand-orange-600 to-brand-orange-700 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl mb-10 text-white/90">
-            Schedule your consultation today and discover how much you could
-            save.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link
-              href="/supersonic-fast-cash/apply"
-              className="inline-flex items-center justify-center gap-3 bg-white text-brand-orange-600 px-12 py-6 rounded-xl text-xl font-bold hover:bg-slate-100 transition shadow-2xl"
-            >
-              Book Appointment
-              <ArrowRight className="w-6 h-6" />
-            </Link>
-            <a
-              href="tel:317-555-0100"
-              className="inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm text-white px-12 py-6 rounded-xl text-xl font-bold hover:bg-white/20 transition border-2 border-white/30"
-            >
-              <Phone className="w-6 h-6" />
-              Call Now
-            </a>
+      {/* CTA Section with Image */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/supersonic-fast-cash/cta-instant-cash.jpg"
+            alt="Instant Cash Refund Advance"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/95 to-orange-700/95"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="text-white">
+              <div className="inline-block bg-yellow-400 text-orange-900 px-6 py-2 rounded-full font-black text-sm mb-6 animate-pulse">
+                🚀 SAME-DAY APPROVAL
+              </div>
+              <h2 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
+                Get Instant Cash Up to <span className="text-yellow-300">$6,000</span>
+              </h2>
+              <p className="text-2xl mb-8 text-white/90 leading-relaxed">
+                Don't wait for the IRS. Walk out with cash TODAY. Most approvals in 30 minutes or less.
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-green-900" />
+                  </div>
+                  <span className="text-lg">No credit check required</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-green-900" />
+                  </div>
+                  <span className="text-lg">Same-day cash advance available</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-green-900" />
+                  </div>
+                  <span className="text-lg">Simple application process</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/supersonic-fast-cash/apply"
+                  className="inline-flex items-center justify-center gap-3 bg-yellow-400 text-orange-900 px-10 py-5 rounded-xl text-xl font-black hover:bg-yellow-300 transition shadow-2xl"
+                >
+                  Apply Now
+                  <ArrowRight className="w-6 h-6" />
+                </Link>
+                <a
+                  href="tel:+13173143757"
+                  className="inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/20 transition border-2 border-white/30"
+                >
+                  <Phone className="w-6 h-6" />
+                  Call Now
+                </a>
+              </div>
+            </div>
+
+            <div className="hidden md:block">
+              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border-2 border-white/20">
+                <div className="text-center mb-6">
+                  <div className="text-7xl font-black text-yellow-300 mb-2">$6,000</div>
+                  <div className="text-xl font-bold">Maximum Advance</div>
+                </div>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-center justify-between py-2 border-b border-white/20">
+                    <span>Processing Time:</span>
+                    <span className="font-bold">30 Minutes</span>
+                  </div>
+                  <div className="flex items-center justify-between py-2 border-b border-white/20">
+                    <span>Credit Check:</span>
+                    <span className="font-bold">Not Required</span>
+                  </div>
+                  <div className="flex items-center justify-between py-2 border-b border-white/20">
+                    <span>Availability:</span>
+                    <span className="font-bold">Same Day</span>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span>Bad Credit:</span>
+                    <span className="font-bold text-green-300">OK</span>
+                  </div>
+                </div>
+                <div className="mt-6 pt-6 border-t border-white/20 text-center">
+                  <p className="text-xs text-white/70">
+                    Advance amount based on expected refund. Terms and conditions apply.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

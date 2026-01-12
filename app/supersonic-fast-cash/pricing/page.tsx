@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Phone } from 'lucide-react';
+import { SubpageHero } from '../components/SubpageHero';
 
 export const metadata = {
   title: 'Refund Advance Options | Supersonic Fast Cash',
@@ -13,21 +14,11 @@ export const metadata = {
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Refund Advance Options
-          </h1>
-          <p className="text-xl text-blue-100 mb-6">
-            Get your refund faster with optional advances through our banking partners
-          </p>
-          <div className="flex items-center justify-center gap-2 text-blue-100">
-            <Phone className="w-5 h-5" />
-            <span>Call (317) 314-3757 for tax preparation pricing</span>
-          </div>
-        </div>
-      </section>
+      <SubpageHero
+        badge="💰 Transparent Pricing"
+        title="Refund Advance Options"
+        description="Get your refund faster with optional advances through our banking partners"
+      />
 
       {/* Advance Options */}
       <section className="py-20">

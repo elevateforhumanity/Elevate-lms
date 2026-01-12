@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Target, TrendingUp, Users, ArrowRight, Calendar, CheckCircle, MessageCircle, Briefcase } from 'lucide-react';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import { CareerHero } from '../components/CareerHero';
 
 export const metadata: Metadata = {
   title: 'Career Counseling Services | One-on-One Career Guidance | Elevate for Humanity',
@@ -16,23 +16,11 @@ export const metadata: Metadata = {
 
 export default function CareerCounselingPage() {
   return (
-    <>
-      <ModernLandingHero
-        badge="💼 Career Services"
-        headline="Professional Career"
-        accentText="Counseling"
-        subheadline="One-on-One Guidance for Your Career Success"
+    <div className="min-h-screen bg-white">
+      <CareerHero
+        badge="💼 Career Counseling"
+        title="Professional Career Counseling"
         description="Work with experienced career counselors to define your goals, explore opportunities, and create a personalized plan for long-term career success. Available to all students and alumni."
-        imageSrc="/images/services/career-counseling.jpg"
-        imageAlt="Career counselor meeting with student"
-        primaryCTA={{ text: "Schedule Counseling", href: "/contact" }}
-        secondaryCTA={{ text: "View All Services", href: "/career-services" }}
-        features={[
-          "One-on-one sessions • Personalized career plans",
-          "Goal setting and pathway planning • Skills assessment",
-          "Ongoing support • Available to students and alumni"
-        ]}
-        imageOnRight={true}
       />
 
       {/* Quick Facts */}

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { Briefcase, Building2, TrendingUp, ArrowRight, CheckCircle, Users, Target, Award, Search, Handshake } from 'lucide-react';
+import { CareerHero } from '../components/CareerHero';
 
 export const metadata: Metadata = {
   title: 'Job Placement Services | Elevate for Humanity',
@@ -14,30 +15,11 @@ export const metadata: Metadata = {
 export default function JobPlacementPage() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-br from-brand-orange-600 to-brand-purple-600 text-white py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <h1 className="text-5xl font-black mb-6">Job Placement Services</h1>
-          <p className="text-xl text-white/90 max-w-3xl mb-8">
-            We connect you directly with employers who are actively hiring. Our employer 
-            partnerships and job matching services help you land your first job or advance your career.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-white text-brand-orange-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition"
-            >
-              Get Started
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="#employers"
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition border border-white/20"
-            >
-              View Employers
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CareerHero
+        badge="💼 Job Placement"
+        title="Job Placement Services"
+        description="We connect you directly with employers who are actively hiring. Our employer partnerships and job matching services help you land your first job or advance your career."
+      />
 
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-4 gap-8 text-center">

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
+import { SubpageHero } from '../components/SubpageHero';
+import { FileText, DollarSign, Building } from 'lucide-react';
 
 export const metadata = {
   title: 'Tax Services | Supersonic Fast Cash',
@@ -12,6 +13,23 @@ export const metadata = {
 };
 
 export default function ServicesPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      <SubpageHero
+        badge="🎯 Professional Tax Services"
+        title="Our Services"
+        description="Complete tax preparation and financial services for individuals and businesses"
+      />
+      
+      {/* Rest of page content */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <p className="text-center text-gray-600 mb-12">Services content coming soon...</p>
+      </div>
+    </div>
+  );
+}
+
+function ServicesPageOld() {
   const services = [
     {
       icon: FileText,
