@@ -1,83 +1,404 @@
-
-
 'use client';
 
 import Link from 'next/link';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
-import ModernFeatures from '@/components/landing/ModernFeatures';
+import Image from 'next/image';
 import {
-  FileText,
   DollarSign,
   Calculator,
-  TrendingUp,
+  Clock,
   CheckCircle,
   ArrowRight,
   Users,
   Shield,
   Award,
   Zap,
-  CreditCard,
-  HeadphonesIcon,
   Star,
-  BadgeCheck,
+  Phone,
+  Calendar,
+  TrendingUp,
+  FileText,
 } from 'lucide-react';
 
 export default function SupersonicFastCashPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-white">
 
-      {/* Modern Hero with Urgency */}
-      <ModernLandingHero
-        badge="🚀 Same-Day Refund Advance Available"
-        headline="Your Refund"
-        accentText="Fast"
-        subheadline="Professional Tax Prep + Instant Refund Advance"
-        description="Don't wait weeks for the IRS. Get your refund advance TODAY. We filed 2,847 returns last season. Walk in with documents, walk out with your advance."
-        imageSrc="/images/business/tax-prep-certification.jpg"
-        imageAlt="Fast Tax Refunds"
-        primaryCTA={{ text: "Book Appointment", href: "/supersonic-fast-cash/book-appointment" }}
-        secondaryCTA={{ text: "Learn More", href: "/supersonic-fast-cash/how-it-works" }}
-        features={[
-          "2,847 returns filed in 2025 • Millions in refunds processed",
-          "Refund advance available • Get cash fast",
-          "Open 7 days/week • Walk-ins welcome • Same-day service"
-        ]}
-        imageOnRight={true}
-      />
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-orange-600 via-orange-500 to-orange-700 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative max-w-7xl mx-auto px-6 py-20 md:py-32">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-block bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-bold mb-6">
+                🚀 Same-Day Refund Advance Available
+              </div>
+              <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                Get Your Tax Refund <span className="text-yellow-300">Fast</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
+                Don't wait weeks for the IRS. Get your refund advance TODAY. Professional tax preparation with instant cash advance.
+              </p>
+              <div className="flex flex-wrap gap-4 mb-8">
+                <Link
+                  href="/supersonic-fast-cash/book-appointment"
+                  className="inline-flex items-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition shadow-xl"
+                >
+                  <Calendar className="w-5 h-5" />
+                  Book Appointment
+                </Link>
+                <Link
+                  href="/supersonic-fast-cash/calculator"
+                  className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition"
+                >
+                  <Calculator className="w-5 h-5" />
+                  Estimate Refund
+                </Link>
+              </div>
+              <div className="grid grid-cols-3 gap-4 text-center">
+                <div className="bg-white/10 backdrop-blur rounded-lg p-4">
+                  <div className="text-3xl font-black text-yellow-300">2,847</div>
+                  <div className="text-sm text-white/80">Returns Filed</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur rounded-lg p-4">
+                  <div className="text-3xl font-black text-yellow-300">$5M+</div>
+                  <div className="text-sm text-white/80">Refunds Processed</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur rounded-lg p-4">
+                  <div className="text-3xl font-black text-yellow-300">15+</div>
+                  <div className="text-sm text-white/80">Years Experience</div>
+                </div>
+              </div>
+            </div>
+            <div className="relative hidden md:block">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/business/tax-prep-certification.jpg"
+                  alt="Professional Tax Preparation"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* Features with Excitement */}
-      <ModernFeatures
-        title="Why Wait 21 Days? Get Your Money NOW."
-        subtitle="What makes us different from H&R Block and TurboTax"
-        features={[
-          {
-            icon: Zap,
-            title: "Fast Cash Advance",
-            description: "Get your refund advance TODAY. No waiting for IRS. Simple process. Bad credit OK. Most approvals in 30 minutes.",
-            color: "orange"
-          },
-          {
-            icon: DollarSign,
-            title: "Maximum Refund",
-            description: "We find EVERY deduction. EITC specialists. Business expense experts. We maximize your refund every time.",
-            color: "green"
-          },
-          {
-            icon: Clock,
-            title: "Open 7 Days/Week",
-            description: "Mon-Fri: 9am-8pm. Sat-Sun: 10am-6pm. Walk-ins welcome. Most returns done same day. No appointment needed.",
-            color: "blue"
-          },
-          {
-            icon: Shield,
-            title: "Audit Protection",
-            description: "If IRS audits you, we handle it with our audit protection service. We stand behind every return. 15+ years experience.",
-            color: "purple"
-          },
-          {
-            icon: Award,
-            title: "IRS-Certified Pros",
-            description: "All preparers pass IRS exam. Average 12 years experience. Bilingual staff. We speak English, Spanish, and numbers.",
+      {/* Trust Bar */}
+      <section className="bg-blue-900 text-white py-6">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-wrap justify-center items-center gap-8 text-center">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-green-400" />
+              <span className="font-semibold">IRS Certified</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-green-400" />
+              <span className="font-semibold">Same-Day Service</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-green-400" />
+              <span className="font-semibold">Walk-Ins Welcome</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-green-400" />
+              <span className="font-semibold">Bilingual Staff</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
+              Why Wait 21 Days? Get Your Money NOW
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              What makes us different from H&R Block and TurboTax
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+              <div className="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+                <Zap className="w-8 h-8 text-orange-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">Fast Cash Advance</h3>
+              <p className="text-gray-600 mb-4">
+                Get your refund advance TODAY. No waiting for IRS. Simple process. Bad credit OK. Most approvals in 30 minutes.
+              </p>
+              <Link href="/supersonic-fast-cash/how-it-works" className="text-orange-600 font-semibold hover:text-orange-700 inline-flex items-center gap-2">
+                Learn More <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+              <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                <DollarSign className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">Maximum Refund</h3>
+              <p className="text-gray-600 mb-4">
+                We find EVERY deduction. EITC specialists. Business expense experts. We maximize your refund every time.
+              </p>
+              <Link href="/supersonic-fast-cash/services" className="text-green-600 font-semibold hover:text-green-700 inline-flex items-center gap-2">
+                Our Services <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+              <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                <Clock className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">Open 7 Days/Week</h3>
+              <p className="text-gray-600 mb-4">
+                Mon-Fri: 9am-8pm. Sat-Sun: 10am-6pm. Walk-ins welcome. Most returns done same day. No appointment needed.
+              </p>
+              <Link href="/supersonic-fast-cash/locations" className="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center gap-2">
+                Find Location <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+              <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                <Shield className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">Audit Protection</h3>
+              <p className="text-gray-600 mb-4">
+                If IRS audits you, we handle it. Audit protection service included. We stand behind every return. 15+ years experience.
+              </p>
+              <Link href="/supersonic-fast-cash/services" className="text-purple-600 font-semibold hover:text-purple-700 inline-flex items-center gap-2">
+                Protection Details <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+              <div className="w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
+                <Award className="w-8 h-8 text-indigo-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">IRS-Certified Pros</h3>
+              <p className="text-gray-600 mb-4">
+                All preparers pass IRS exam. Average 12 years experience. Bilingual staff. We speak English, Spanish, and numbers.
+              </p>
+              <Link href="/supersonic-fast-cash/careers" className="text-indigo-600 font-semibold hover:text-indigo-700 inline-flex items-center gap-2">
+                Join Our Team <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+              <div className="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+                <Users className="w-8 h-8 text-red-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">Trusted by Thousands</h3>
+              <p className="text-gray-600 mb-4">
+                2,847 returns filed last season. 4.9-star rating. Family-owned and operated. Serving Indianapolis for 15+ years.
+              </p>
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
+              How It Works
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Get your refund in 3 simple steps
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-orange-600 text-white rounded-full flex items-center justify-center text-3xl font-black mx-auto mb-6">
+                1
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">Bring Your Documents</h3>
+              <p className="text-gray-600 mb-4">
+                W-2s, 1099s, receipts, and ID. Not sure what you need? We'll help you figure it out.
+              </p>
+              <Link href="/supersonic-fast-cash/tax-information" className="text-orange-600 font-semibold hover:text-orange-700">
+                Document Checklist →
+              </Link>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-orange-600 text-white rounded-full flex items-center justify-center text-3xl font-black mx-auto mb-6">
+                2
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">We Prepare Your Return</h3>
+              <p className="text-gray-600 mb-4">
+                Our IRS-certified pros review your documents, find every deduction, and maximize your refund.
+              </p>
+              <Link href="/supersonic-fast-cash/services" className="text-orange-600 font-semibold hover:text-orange-700">
+                Our Services →
+              </Link>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-orange-600 text-white rounded-full flex items-center justify-center text-3xl font-black mx-auto mb-6">
+                3
+              </div>
+              <h3 className="text-2xl font-bold text-black mb-4">Get Your Money Fast</h3>
+              <p className="text-gray-600 mb-4">
+                Choose refund advance for same-day cash, or e-file for fastest IRS processing.
+              </p>
+              <Link href="/supersonic-fast-cash/how-it-works" className="text-orange-600 font-semibold hover:text-orange-700">
+                Learn More →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Overview */}
+      <section className="py-20 bg-gradient-to-br from-blue-900 to-blue-800 text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black mb-4">
+              Our Services
+            </h2>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              More than just tax preparation
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Link href="/supersonic-fast-cash/services/tax-preparation" className="bg-white/10 backdrop-blur rounded-xl p-6 hover:bg-white/20 transition">
+              <FileText className="w-12 h-12 text-orange-400 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Tax Preparation</h3>
+              <p className="text-white/80 text-sm">Individual, business, and complex returns</p>
+            </Link>
+
+            <Link href="/supersonic-fast-cash/services" className="bg-white/10 backdrop-blur rounded-xl p-6 hover:bg-white/20 transition">
+              <Zap className="w-12 h-12 text-yellow-400 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Refund Advance</h3>
+              <p className="text-white/80 text-sm">Get your money today, not in 21 days</p>
+            </Link>
+
+            <Link href="/supersonic-fast-cash/services/bookkeeping" className="bg-white/10 backdrop-blur rounded-xl p-6 hover:bg-white/20 transition">
+              <Calculator className="w-12 h-12 text-green-400 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Bookkeeping</h3>
+              <p className="text-white/80 text-sm">Monthly bookkeeping for small businesses</p>
+            </Link>
+
+            <Link href="/supersonic-fast-cash/services/payroll" className="bg-white/10 backdrop-blur rounded-xl p-6 hover:bg-white/20 transition">
+              <Users className="w-12 h-12 text-blue-400 mb-4" />
+              <h3 className="text-xl font-bold mb-2">Payroll Services</h3>
+              <p className="text-white/80 text-sm">Full-service payroll processing</p>
+            </Link>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/supersonic-fast-cash/services"
+              className="inline-flex items-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-700 transition"
+            >
+              View All Services
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Preview */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-black mb-4">
+              Transparent Pricing
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              No hidden fees. Know exactly what you'll pay before we start.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200">
+              <h3 className="text-2xl font-bold text-black mb-2">Basic Return</h3>
+              <div className="text-4xl font-black text-orange-600 mb-4">$89</div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">W-2 income only</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Standard deduction</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">E-file included</span>
+                </li>
+              </ul>
+              <Link href="/supersonic-fast-cash/pricing" className="block text-center bg-gray-100 text-black font-bold py-3 rounded-lg hover:bg-gray-200 transition">
+                Learn More
+              </Link>
+            </div>
+
+            <div className="bg-orange-600 text-white rounded-2xl p-8 shadow-xl border-4 border-orange-400 relative">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black px-4 py-1 rounded-full text-sm font-bold">
+                MOST POPULAR
+              </div>
+              <h3 className="text-2xl font-bold mb-2">Standard Return</h3>
+              <div className="text-4xl font-black mb-4">$149</div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                  <span>Multiple income sources</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                  <span>Itemized deductions</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                  <span>Refund advance eligible</span>
+                </li>
+              </ul>
+              <Link href="/supersonic-fast-cash/book-appointment" className="block text-center bg-white text-orange-600 font-bold py-3 rounded-lg hover:bg-gray-100 transition">
+                Book Now
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200">
+              <h3 className="text-2xl font-bold text-black mb-2">Business Return</h3>
+              <div className="text-4xl font-black text-orange-600 mb-4">$299+</div>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Schedule C/LLC</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Business deductions</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Quarterly estimates</span>
+                </li>
+              </ul>
+              <Link href="/supersonic-fast-cash/pricing" className="block text-center bg-gray-100 text-black font-bold py-3 rounded-lg hover:bg-gray-200 transition">
+                Learn More
+              </Link>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/supersonic-fast-cash/pricing" className="text-orange-600 font-bold text-lg hover:text-orange-700">
+              View Complete Pricing →
+            </Link>
+          </div>
+        </div>
+      </section>
             color: "teal"
           },
           {
