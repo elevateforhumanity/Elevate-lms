@@ -3,7 +3,6 @@
 'use client';
 
 import Link from 'next/link';
-import UniversalNav from '@/components/UniversalNav';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import ModernFeatures from '@/components/landing/ModernFeatures';
 import {
@@ -11,10 +10,6 @@ import {
   DollarSign,
   Calculator,
   TrendingUp,
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
   CheckCircle,
   ArrowRight,
   Users,
@@ -28,54 +23,8 @@ import {
 } from 'lucide-react';
 
 export default function SupersonicFastCashPage() {
-  const navLinks = [
-    { label: 'Home', href: '/supersonic-fast-cash' },
-    { label: 'Services', href: '/supersonic-fast-cash/services' },
-    { label: 'Pricing', href: '/supersonic-fast-cash/pricing' },
-    { label: 'How It Works', href: '/supersonic-fast-cash/how-it-works' },
-    { label: 'Locations', href: '/supersonic-fast-cash/locations' },
-    { label: 'Tax Tools', href: '/supersonic-fast-cash/tax-tools' },
-    { label: 'Careers', href: '/supersonic-fast-cash/careers' },
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      {/* Navigation */}
-      <UniversalNav
-        links={navLinks}
-        ctaText="Book Appointment"
-        ctaHref="/supersonic-fast-cash/book-appointment"
-        bgColor="bg-orange-600"
-        textColor="text-white"
-        logo="Supersonic Fast Cash"
-        logoHref="/supersonic-fast-cash"
-      />
-
-      {/* Top Bar */}
-      <div className="bg-slate-900 text-white py-3">
-        <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center text-sm">
-          <div className="flex items-center gap-6">
-            <a
-              href="tel:317-555-0100"
-              className="flex items-center gap-2 hover:text-brand-orange-500 transition"
-            >
-              <Phone className="w-4 h-4" />
-              (317) 555-0100
-            </a>
-            <a
-              href="mailto:info@supersonicfastcash.com"
-              className="flex items-center gap-2 hover:text-brand-orange-500 transition"
-            >
-              <Mail className="w-4 h-4" />
-              info@supersonicfastcash.com
-            </a>
-          </div>
-          <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4" />
-            Indianapolis, IN
-          </div>
-        </div>
-      </div>
 
       {/* Modern Hero with Urgency */}
       <ModernLandingHero
