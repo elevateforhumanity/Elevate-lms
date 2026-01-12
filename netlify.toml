@@ -87,6 +87,19 @@
   status = 301
   force = true
 
+# Fix broken student/dashboard links
+[[redirects]]
+  from = "/student/dashboard"
+  to = "/student-portal"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/student/dashboard/*"
+  to = "/student-portal"
+  status = 301
+  force = true
+
 # Headers for security and caching
 [[headers]]
   for = "/*"
