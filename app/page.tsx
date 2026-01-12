@@ -1,16 +1,23 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import VideoHeroBanner from '@/components/home/VideoHeroBanner';
 
-// Load components with loading placeholders
-const VideoHeroBanner = dynamic(() => import('@/components/home/VideoHeroBanner'), { 
-  loading: () => <div className="h-screen bg-white" /> 
+const Intro = dynamic(() => import('@/components/home/Intro'), { 
+  loading: () => <div className="h-96 bg-white" />
 });
-const Intro = dynamic(() => import('@/components/home/Intro'), { loading: () => <div className="h-96 bg-white" /> });
-const Orientation = dynamic(() => import('@/components/home/Orientation'), { loading: () => <div className="h-96 bg-white" /> });
-const Testimonials = dynamic(() => import('@/components/home/Testimonials'), { loading: () => <div className="h-96 bg-white" /> });
-const Assurance = dynamic(() => import('@/components/home/Assurance'), { loading: () => <div className="h-96 bg-white" /> });
-const Start = dynamic(() => import('@/components/home/Start'), { loading: () => <div className="h-96 bg-white" /> });
+const Orientation = dynamic(() => import('@/components/home/Orientation'), { 
+  loading: () => <div className="h-96 bg-white" />
+});
+const Testimonials = dynamic(() => import('@/components/home/Testimonials'), { 
+  loading: () => <div className="h-96 bg-white" />
+});
+const Assurance = dynamic(() => import('@/components/home/Assurance'), { 
+  loading: () => <div className="h-96 bg-white" />
+});
+const Start = dynamic(() => import('@/components/home/Start'), { 
+  loading: () => <div className="h-96 bg-white" />
+});
 
 export const metadata: Metadata = {
   title: 'Elevate for Humanity | Workforce and Education Hub',
@@ -88,6 +95,7 @@ export default function HomePage() {
                     src={feature.icon}
                     alt={feature.title}
                     fill
+                    priority
                     className="object-contain"
                   />
                 </div>

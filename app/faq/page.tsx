@@ -32,7 +32,7 @@ const faqCategories = [
   {
     id: 'getting-started',
     name: 'Getting Started',
-    icon: Rocket,
+    icon: 'Rocket',
     questions: [
       {
         q: 'How do I apply for a program?',
@@ -59,7 +59,7 @@ const faqCategories = [
   {
     id: 'programs',
     name: 'Programs & Training',
-    icon: BookOpen,
+    icon: 'BookOpen',
     questions: [
       {
         q: 'What programs do you offer?',
@@ -90,7 +90,7 @@ const faqCategories = [
   {
     id: 'funding',
     name: 'Funding & Costs',
-    icon: DollarSign,
+    icon: 'DollarSign',
     questions: [
       {
         q: 'What is WIOA funding?',
@@ -121,7 +121,7 @@ const faqCategories = [
   {
     id: 'career-services',
     name: 'Career Services',
-    icon: Users,
+    icon: 'Users',
     questions: [
       {
         q: 'Do you help with job placement?',
@@ -148,7 +148,7 @@ const faqCategories = [
   {
     id: 'technical',
     name: 'Technical Support',
-    icon: Laptop,
+    icon: 'Laptop',
     questions: [
       {
         q: 'How do I access my online courses?',
@@ -175,7 +175,7 @@ const faqCategories = [
   {
     id: 'student-life',
     name: 'Student Life',
-    icon: Star,
+    icon: 'Star',
     questions: [
       {
         q: 'What support services are available?',

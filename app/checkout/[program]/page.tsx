@@ -21,7 +21,7 @@ interface ProgramPricing {
 const programPricing: Record<string, ProgramPricing> = {
   'barber-apprenticeship': {
     name: 'Barber Apprenticeship',
-    price: 4950,
+    price: 4890,
     duration: '15-17 months',
     description:
       'DOL-registered apprenticeship with earn-while-you-learn model',
@@ -52,17 +52,46 @@ export default function CheckoutPage() {
   const programData = programPricing[program];
 
   useEffect(() => {
-    // Load Affirm script if needed
     if (method === 'affirm' && typeof window !== 'undefined') {
+      if (window.affirm) {
+        return;
+      }
+
+      const publicKey = process.env.NEXT_PUBLIC_AFFIRM_PUBLIC_KEY;
+      
+      const configScript = document.createElement('script');
+      configScript.innerHTML = `
+        _affirm_config = {
+          public_api_key: "${publicKey}",
+          script: "https://cdn1.affirm.com/js/v2/affirm.js"
+        };
+      `;
+      document.head.appendChild(configScript);
+      
       const script = document.createElement('script');
       script.src = 'https://cdn1.affirm.com/js/v2/affirm.js';
       script.async = true;
-      document.body.appendChild(script);
-
+      
       script.onload = () => {
         if (window.affirm) {
           window.affirm.ui.ready(() => {
+            console.log('Affirm loaded');
           });
+        }
+      };
+      
+      script.onerror = () => {
+        setError('Failed to load Affirm. Please try Stripe instead.');
+      };
+      
+      document.body.appendChild(script);
+
+      return () => {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+        if (configScript.parentNode) {
+          configScript.parentNode.removeChild(configScript);
         }
       };
     }
@@ -79,33 +108,25 @@ export default function CheckoutPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          program,
-          amount: programData.price,
-          name: programData.name,
+          programName: programData.name,
+          programSlug: program,
+          price: programData.price,
+          paymentType: 'full',
         }),
       });
 
-      const { sessionId, error: apiError } = await response.json();
+      const data = await response.json();
 
-      if (apiError) {
-        setError(apiError);
+      if (data.error) {
+        setError(data.error);
         setLoading(false);
         return;
       }
 
-      const stripe = await stripePromise;
-      if (!stripe) {
-        setError('Stripe failed to load');
-        setLoading(false);
-        return;
-      }
-
-      const { error: stripeError } = await stripe.redirectToCheckout({
-        sessionId,
-      });
-
-      if (stripeError) {
-        setError(stripeError.message || 'Payment failed');
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        setError('No checkout URL received');
         setLoading(false);
       }
     } catch (err) {
@@ -114,11 +135,17 @@ export default function CheckoutPage() {
     }
   };
 
-  const handleAffirmCheckout = () => {
+  const handleAffirmCheckout = async () => {
     setLoading(true);
     setError(null);
 
-    if (typeof window !== 'undefined' && window.affirm) {
+    if (typeof window === 'undefined' || !window.affirm) {
+      setError('Affirm is not available. Please try Stripe instead.');
+      setLoading(false);
+      return;
+    }
+
+    try {
       window.affirm.checkout({
         merchant: {
           user_confirmation_url: `${window.location.origin}/checkout/success?program=${program}`,
@@ -129,51 +156,59 @@ export default function CheckoutPage() {
           {
             display_name: programData.name,
             sku: program,
-            unit_price: programData.price * 100, // Affirm uses cents
+            unit_price: programData.price * 100,
             qty: 1,
             item_image_url: `${window.location.origin}/images/programs/${program}.jpg`,
             item_url: `${window.location.origin}/programs/${program}`,
           },
         ],
-        billing: {
-          name: {
-            first: '',
-            last: '',
-          },
+        metadata: {
+          program_slug: program,
+          program_name: programData.name,
         },
-        shipping: {
-          name: {
-            first: '',
-            last: '',
-          },
-        },
+        order_id: `${program}-${Date.now()}`,
+        shipping_amount: 0,
+        tax_amount: 0,
         total: programData.price * 100,
         currency: 'USD',
       });
-
+      
       window.affirm.checkout.open({
         onFail: (error: any) => {
-          setError('Affirm checkout failed');
+          console.error('Affirm checkout failed:', error);
+          setError('Affirm checkout failed. Please try again or use Stripe.');
           setLoading(false);
         },
-        onSuccess: (data: any) => {
-          // Send checkout token to backend
-          fetch('/api/affirm-charge', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              checkout_token: data.checkout_token,
-              program,
-            }),
-          }).then(() => {
-            window.location.href = `/checkout/success?program=${program}`;
-          });
+        onSuccess: async (data: any) => {
+          try {
+            const response = await fetch('/api/affirm-charge', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                checkout_token: data.checkout_token,
+                program,
+              }),
+            });
+
+            const result = await response.json();
+
+            if (result.error) {
+              setError(result.error);
+              setLoading(false);
+            } else {
+              window.location.href = `/checkout/success?program=${program}`;
+            }
+          } catch (err) {
+            setError('Failed to process payment. Please contact support.');
+            setLoading(false);
+          }
         },
       });
-    } else {
-      setError('Affirm is not available. Please try Stripe instead.');
+    } catch (err) {
+      console.error('Affirm error:', err);
+      setError('An error occurred with Affirm. Please try Stripe instead.');
       setLoading(false);
     }
   };

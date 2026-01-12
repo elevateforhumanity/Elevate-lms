@@ -10,11 +10,18 @@ export async function POST(request: NextRequest) {
     const { checkout_token, program, user_id, user_email } = await request.json();
 
     // Call Affirm API to authorize the charge
+    const publicKey = process.env.NEXT_PUBLIC_AFFIRM_PUBLIC_KEY;
+    const privateKey = process.env.AFFIRM_PRIVATE_API_KEY;
+
+    if (!publicKey || !privateKey) {
+      throw new Error('Affirm API keys not configured');
+    }
+
     const affirmResponse = await fetch('https://api.affirm.com/api/v2/charges', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Basic ${Buffer.from(`${process.env.AFFIRM_PUBLIC_KEY}:${process.env.AFFIRM_PRIVATE_KEY}`).toString('base64')}`,
+        'Authorization': `Basic ${Buffer.from(`${publicKey}:${privateKey}`).toString('base64')}`,
       },
       body: JSON.stringify({
         checkout_token,

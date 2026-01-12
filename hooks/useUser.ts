@@ -16,7 +16,7 @@ export function useUser() {
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
-      dedupingInterval: 60000,
+      dedupingInterval: 300000,
       shouldRetryOnError: false,
     }
   );

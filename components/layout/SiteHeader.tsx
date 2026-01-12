@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Menu } from 'lucide-react';
 import { getNavigation } from '@/config/navigation-clean';
 import { useUser } from '@/hooks/useUser';
@@ -16,6 +16,18 @@ export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, isLoading } = useUser();
   const navigation = getNavigation();
+
+  const navItems = useMemo(() => 
+    navigation.map(section => ({
+      name: section.label,
+      href: section.href || '#',
+      children: section.items?.map(item => ({
+        name: item.label,
+        href: item.href
+      }))
+    })),
+    [navigation]
+  );
 
   return (
     <div className="w-full h-full bg-white border-b border-gray-200">
@@ -35,7 +47,7 @@ export default function SiteHeader() {
             </span>
           </Link>
 
-          <DesktopNav items={navigation.main} />
+          <DesktopNav items={navItems} />
 
           <div className="flex items-center gap-4">
             <SearchButton />
@@ -57,7 +69,7 @@ export default function SiteHeader() {
       <MobileMenu
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
-        items={navigation.main}
+        items={navItems}
       />
     </div>
   );

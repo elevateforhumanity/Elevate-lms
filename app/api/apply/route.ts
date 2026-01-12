@@ -10,16 +10,23 @@ import { applicationSchema } from '@/lib/api/validation-schemas';
 export const POST = withRateLimit(
   async (req: Request) => {
     try {
-      const d = await req.formData();
+      const contentType = req.headers.get('content-type');
+      let data;
+
+      if (contentType?.includes('application/json')) {
+        data = await req.json();
+      } else {
+        const formData = await req.formData();
+        data = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          program: formData.get('program'),
+          funding: formData.get('funding'),
+        };
+      }
       
-      // Validate input
-      const validatedData = applicationSchema.parse({
-        name: d.get('name'),
-        email: d.get('email'),
-        phone: d.get('phone'),
-        program: d.get('program'),
-        funding: d.get('funding'),
-      });
+      const validatedData = applicationSchema.parse(data);
 
       const { program, funding, name, email, phone } = validatedData;
       const eligible = funding !== 'Self Pay' && program !== 'Not Sure';
@@ -34,11 +41,19 @@ export const POST = withRateLimit(
         funding,
         eligible,
         notes: eligible ? 'Prescreen pass' : 'Manual review',
+        created_at: new Date().toISOString(),
       });
 
     if (error) {
       console.error('Supabase insert error:', error);
-      throw error;
+      return NextResponse.json(
+        { error: 'Failed to submit application. Please call 317-314-3757 for assistance.' },
+        { status: 500 }
+      );
+    }
+
+    if (contentType?.includes('application/json')) {
+      return NextResponse.json({ success: true });
     }
 
     return NextResponse.redirect(

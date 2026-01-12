@@ -1,10 +1,64 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import { GraduationCap, Building2, Briefcase, Users } from 'lucide-react';
 
 export default function Apply() {
+  const searchParams = useSearchParams();
+  const [selectedProgram, setSelectedProgram] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const programParam = searchParams.get('program');
+    if (programParam) {
+      const programMap: Record<string, string> = {
+        'barber-apprenticeship': 'Barber Apprenticeship',
+        'hvac-technician': 'HVAC Technician',
+        'cna-certification': 'CNA (Certified Nursing Assistant)',
+      };
+      setSelectedProgram(programMap[programParam] || '');
+    }
+  }, [searchParams]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData);
+
+    try {
+      const response = await fetch('/api/apply', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSuccess(true);
+        setTimeout(() => {
+          window.location.href = '/apply/success';
+        }, 1000);
+      } else {
+        setError(result.error || 'Application failed. Please try again.');
+        setLoading(false);
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again or call 317-314-3757.');
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <ModernLandingHero
@@ -32,9 +86,20 @@ export default function Apply() {
         10–15 minutes. Response within 2–3 business days.
       </p>
 
+      {error && (
+        <div className="mb-6 p-4 bg-red-50 border-2 border-red-200 rounded-lg">
+          <p className="text-red-800 font-semibold">{error}</p>
+        </div>
+      )}
+
+      {success && (
+        <div className="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-lg">
+          <p className="text-green-800 font-semibold">✓ Application submitted successfully! Redirecting...</p>
+        </div>
+      )}
+
       <form
-        method="POST"
-        action="/api/apply"
+        onSubmit={handleSubmit}
         className="space-y-4 bg-white border border-slate-200 rounded-lg p-6"
       >
         <div>
@@ -97,41 +162,43 @@ export default function Apply() {
             required
             id="program"
             name="program"
+            value={selectedProgram}
+            onChange={(e) => setSelectedProgram(e.target.value)}
             className="w-full min-h-[44px] px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
           >
             <option value="">Select program...</option>
             <optgroup label="Healthcare">
-              <option>CNA (Certified Nursing Assistant)</option>
-              <option>Medical Assistant</option>
-              <option>Home Health Aide</option>
-              <option>Phlebotomy</option>
+              <option value="CNA (Certified Nursing Assistant)">CNA (Certified Nursing Assistant)</option>
+              <option value="Medical Assistant">Medical Assistant</option>
+              <option value="Home Health Aide">Home Health Aide</option>
+              <option value="Phlebotomy">Phlebotomy</option>
             </optgroup>
             <optgroup label="Skilled Trades">
-              <option>HVAC Technician</option>
-              <option>Electrical</option>
-              <option>Plumbing</option>
-              <option>Building Maintenance</option>
-              <option>Construction</option>
+              <option value="HVAC Technician">HVAC Technician</option>
+              <option value="Electrical">Electrical</option>
+              <option value="Plumbing">Plumbing</option>
+              <option value="Building Maintenance">Building Maintenance</option>
+              <option value="Construction">Construction</option>
             </optgroup>
             <optgroup label="Barber & Beauty">
-              <option>Barber Apprenticeship</option>
-              <option>Cosmetology</option>
-              <option>Esthetics</option>
+              <option value="Barber Apprenticeship">Barber Apprenticeship</option>
+              <option value="Cosmetology">Cosmetology</option>
+              <option value="Esthetics">Esthetics</option>
             </optgroup>
             <optgroup label="Technology">
-              <option>IT Support</option>
-              <option>Cybersecurity</option>
-              <option>Web Development</option>
+              <option value="IT Support">IT Support</option>
+              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="Web Development">Web Development</option>
             </optgroup>
             <optgroup label="Business">
-              <option>Accounting</option>
-              <option>Business Management</option>
-              <option>Entrepreneurship</option>
+              <option value="Accounting">Accounting</option>
+              <option value="Business Management">Business Management</option>
+              <option value="Entrepreneurship">Entrepreneurship</option>
             </optgroup>
             <optgroup label="Transportation">
-              <option>CDL (Commercial Driver License)</option>
+              <option value="CDL (Commercial Driver License)">CDL (Commercial Driver License)</option>
             </optgroup>
-            <option>Not Sure - Help Me Choose</option>
+            <option value="Not Sure - Help Me Choose">Not Sure - Help Me Choose</option>
           </select>
         </div>
 
@@ -163,9 +230,10 @@ export default function Apply() {
 
         <button
           type="submit"
-          className="w-full min-h-[44px] bg-slate-900 text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition-colors font-semibold"
+          disabled={loading}
+          className="w-full min-h-[44px] bg-slate-900 text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition-colors font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
         >
-          Submit
+          {loading ? 'Submitting...' : 'Submit Application'}
         </button>
       </form>
     </main>

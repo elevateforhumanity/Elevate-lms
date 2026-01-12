@@ -12,7 +12,7 @@ interface FAQQuestion {
 interface FAQCategory {
   id: string;
   name: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: string;
   questions: FAQQuestion[];
 }
 

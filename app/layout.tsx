@@ -16,15 +16,8 @@ const inter = Inter({
   display: 'swap',
   variable: '--font-inter',
   preload: true,
-  fallback: [
-    'system-ui',
-    '-apple-system',
-    'BlinkMacSystemFont',
-    'Segoe UI',
-    'sans-serif',
-  ],
-  preload: true, // Ensure font is preloaded
-  adjustFontFallback: true, // Reduce layout shift
+  fallback: ['system-ui', '-apple-system', 'sans-serif'],
+  adjustFontFallback: true,
 });
 
 // Viewport configuration (separate from metadata in Next.js 14+)
@@ -116,20 +109,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  openGraph: {
-    type: 'website',
-    url: 'https://elevateforhumanity.institute',
-    siteName: 'Elevate for Humanity',
-    locale: 'en_US',
-    images: [
-      {
-        url: '/images/heroes/hero-homepage.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Elevate for Humanity - Workforce Training and Apprenticeships',
-      },
-    ],
-  },
 
   facebook: {
     appId: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID,
@@ -182,19 +161,13 @@ export default function RootLayout({
           sizes="180x180"
         />
         <meta name="theme-color" content="#10b981" />
-        <meta
-          httpEquiv="Cache-Control"
-          content="no-cache, no-store, must-revalidate, max-age=0, post-check=0, pre-check=0"
-        />
-        <meta httpEquiv="Pragma" content="no-cache" />
-        <meta httpEquiv="Expires" content="0" />
+        {!isProduction && (
+          <>
+            <meta httpEquiv="Cache-Control" content="no-cache" />
+            <meta httpEquiv="Pragma" content="no-cache" />
+          </>
+        )}
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="cache-control" content="no-cache" />
-        <meta name="cache-control" content="no-store" />
-        <meta name="cache-control" content="must-revalidate" />
-        <meta name="expires" content="0" />
-        <meta name="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-        <meta name="pragma" content="no-cache" />
 
         {/* Critical CSS to prevent FOUC on mobile - FIXED: removed forced black text */}
         <style dangerouslySetInnerHTML={{__html: `

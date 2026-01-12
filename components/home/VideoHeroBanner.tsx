@@ -30,33 +30,10 @@ export default function VideoHeroBanner({
   const videoRef = useRef<HTMLVideoElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Prevent hydration mismatch and load video immediately
   useEffect(() => {
     setIsMounted(true);
-    
-    // Load video immediately for instant page display
     setShouldLoadVideo(true);
-  }, []);
-
-  useEffect(() => {
-    if (!shouldLoadVideo) return;
     
-    setIsLoaded(true);
-    
-    // Autoplay voiceover on page load
-    if (voiceoverSrc && audioRef.current) {
-      audioRef.current.muted = false;
-      audioRef.current.play().catch((error) => {
-      });
-    }
-    
-    // If withAudio is true, unmute video audio
-    if (withAudio && videoRef.current) {
-      videoRef.current.muted = false;
-    }
-  }, [shouldLoadVideo, withAudio, voiceoverSrc]);
-
-  useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
@@ -72,11 +49,15 @@ export default function VideoHeroBanner({
     video.addEventListener('canplay', handleCanPlay);
     video.addEventListener('error', handleError);
 
+    if (withAudio && video) {
+      video.muted = false;
+    }
+
     return () => {
       video.removeEventListener('canplay', handleCanPlay);
       video.removeEventListener('error', handleError);
     };
-  }, [videoSrc]);
+  }, [withAudio, videoSrc]);
 
   const handleUserInteraction = () => {
     if (audioRef.current && voiceoverSrc && audioRef.current.paused) {

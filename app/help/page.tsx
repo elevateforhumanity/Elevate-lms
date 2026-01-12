@@ -17,7 +17,8 @@ import {
   LifeBuoy,
   Zap,
   Shield,
-  Award
+  Award,
+  Rocket
 } from 'lucide-react';
 
 export const metadata: Metadata = {
