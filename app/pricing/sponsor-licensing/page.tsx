@@ -5,6 +5,7 @@ import {
   Phone,
   Mail,
   Shield,
+  TrendingUp,
 } from 'lucide-react';
 
 export const metadata = {
