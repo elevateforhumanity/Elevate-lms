@@ -35,6 +35,32 @@ export default function LicensesPage() {
             Get the complete Elevate for Humanity platform with your branding.
             Everything you need to launch and scale workforce training programs.
           </p>
+          <div className="flex flex-wrap gap-4 justify-center mt-8">
+            <Link
+              href="/store/demo"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition border-2 border-blue-600"
+            >
+              Try Live Demo
+            </Link>
+            <Link
+              href="/store/compliance"
+              className="inline-flex items-center gap-2 bg-white text-green-600 px-6 py-3 rounded-lg font-bold hover:bg-green-50 transition border-2 border-green-600"
+            >
+              View Compliance
+            </Link>
+            <Link
+              href="/store/deployment"
+              className="inline-flex items-center gap-2 bg-white text-purple-600 px-6 py-3 rounded-lg font-bold hover:bg-purple-50 transition border-2 border-purple-600"
+            >
+              Deployment Guide
+            </Link>
+            <Link
+              href="/store/integrations"
+              className="inline-flex items-center gap-2 bg-white text-indigo-600 px-6 py-3 rounded-lg font-bold hover:bg-indigo-50 transition border-2 border-indigo-600"
+            >
+              Integrations & API
+            </Link>
+          </div>
         </div>
       </section>
 

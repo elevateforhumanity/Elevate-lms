@@ -75,10 +75,9 @@ export default function StorePage() {
             What Are You Looking For?
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Platform Licenses */}
             <Link
               href="/store/licenses"
-              className="group bg-zinc-900   rounded-2xl p-8 border-2 border-gray-200 hover:border-brand-green-600 hover:shadow-xl transition-all"
+              className="group bg-white rounded-2xl p-8 border-2 border-gray-200 hover:border-brand-green-600 hover:shadow-xl transition-all"
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-16 h-16 bg-brand-green-600 rounded-xl flex items-center justify-center">
@@ -96,8 +95,22 @@ export default function StorePage() {
                 platform. White-label solutions for schools, training providers,
                 and workforce agencies.
               </p>
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                <Link
+                  href="/store/demo"
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition text-center text-sm"
+                >
+                  Try Demo
+                </Link>
+                <Link
+                  href="/store/compliance"
+                  className="px-4 py-2 bg-gray-100 text-gray-900 rounded-lg font-semibold hover:bg-gray-200 transition text-center text-sm"
+                >
+                  Compliance
+                </Link>
+              </div>
               <div className="flex items-center gap-2 text-brand-green-600 font-semibold group-hover:gap-4 transition-all">
-                <span>View Licenses</span>
+                <span>View All Licenses</span>
                 <TrendingUp className="w-5 h-5" />
               </div>
               <div className="mt-4 pt-4 border-t border-gray-200">
