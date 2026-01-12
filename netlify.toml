@@ -100,6 +100,13 @@
   status = 301
   force = true
 
+# Fix broken partner-with-us links (route doesn't exist)
+[[redirects]]
+  from = "/partner-with-us"
+  to = "/partner"
+  status = 301
+  force = true
+
 # Headers for security and caching
 [[headers]]
   for = "/*"
