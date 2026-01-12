@@ -12,6 +12,8 @@ export const metadata: Metadata = {
     'Explore Reset Password and discover opportunities for career growth and development.',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function ResetPasswordPage() {
   return (
     <div className="min-h-screen bg-gray-50">
