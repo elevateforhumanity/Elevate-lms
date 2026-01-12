@@ -1,195 +1,397 @@
 import { Metadata } from 'next';
-
 import Link from 'next/link';
 import Image from 'next/image';
+import {
+  BookOpen,
+  Video,
+  MessageCircle,
+  Phone,
+  Mail,
+  Search,
+  FileText,
+  Users,
+  Headphones,
+  Clock,
+  CheckCircle,
+  ArrowRight,
+  LifeBuoy,
+  Zap,
+  Shield,
+  Award
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/help',
   },
-  title: 'Help | Elevate For Humanity',
+  title: 'Help Center | Get Support & Resources | Elevate For Humanity',
   description:
-    'Explore Help and discover opportunities for career growth and development.',
+    'Access comprehensive help resources, tutorials, FAQs, and support for your training journey. Get answers fast with our knowledge base, video guides, and 24/7 support.',
 };
 
 export default async function HelpPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-1.jpg"
-          alt="Help"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+    <div className="min-h-screen bg-white">
+      {/* Enhanced Hero Section with Gradient Overlay */}
+      <section className="relative h-[500px] md:h-[600px] flex items-center justify-center text-white overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/artlist/hero-training-1.jpg"
+            alt="Student receiving personalized help and support"
+            fill
+            className="object-cover"
+            quality={100}
+            priority
+            sizes="100vw"
+          />
+          {/* Gradient Overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/80 to-purple-900/90" />
+        </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Help
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+            <LifeBuoy className="w-5 h-5" />
+            <span className="text-sm font-semibold">24/7 Support Available</span>
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+            How Can We Help You Today?
           </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Help and discover opportunities for career growth and
-            development.
+          
+          <p className="text-lg md:text-xl mb-10 text-white/90 max-w-3xl mx-auto leading-relaxed">
+            Get instant answers, watch tutorials, or connect with our support team. 
+            We're here to ensure your success every step of the way.
           </p>
+
+          {/* Search Bar */}
+          <div className="max-w-2xl mx-auto mb-8">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search for help articles, tutorials, or FAQs..."
+                className="w-full pl-12 pr-4 py-4 rounded-xl text-black border-2 border-white/20 focus:border-white focus:outline-none text-lg"
+              />
+            </div>
+          </div>
+
+          {/* Quick Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+              href="/faq"
+              className="inline-flex items-center justify-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-xl text-lg font-bold hover:bg-gray-100 transition shadow-lg"
             >
-              Get Started
+              <FileText className="w-5 h-5" />
+              Browse FAQs
             </Link>
             <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+              href="/help/tutorials"
+              className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-700 transition border-2 border-white/20"
             >
-              View Programs
+              <Video className="w-5 h-5" />
+              Watch Tutorials
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/10 transition border-2 border-white"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Contact Support
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">Help</h2>
-                <p className="text-black mb-6">
-                  Explore Help and discover opportunities for career growth and
-                  development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
+      {/* Help Categories Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
+              Choose Your Help Topic
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Find the resources you need to succeed in your training journey
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Getting Started */}
+            <Link
+              href="/help/getting-started"
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition border-2 border-gray-200 hover:border-blue-600 group"
+            >
+              <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition">
+                <Rocket className="w-8 h-8 text-blue-600 group-hover:text-white transition" />
               </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-2.jpg"
-                  alt="Help"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+              <h3 className="text-xl font-bold text-black mb-3">Getting Started</h3>
+              <p className="text-gray-600 mb-4">
+                Learn how to apply, enroll, and begin your training journey
+              </p>
+              <div className="flex items-center text-blue-600 font-semibold group-hover:gap-2 transition-all">
+                <span>Learn more</span>
+                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition" />
+              </div>
+            </Link>
+
+            {/* Technical Support */}
+            <Link
+              href="/help/technical"
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition border-2 border-gray-200 hover:border-green-600 group"
+            >
+              <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition">
+                <Headphones className="w-8 h-8 text-green-600 group-hover:text-white transition" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Technical Support</h3>
+              <p className="text-gray-600 mb-4">
+                Get help with login issues, platform navigation, and technical problems
+              </p>
+              <div className="flex items-center text-green-600 font-semibold group-hover:gap-2 transition-all">
+                <span>Get support</span>
+                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition" />
+              </div>
+            </Link>
+
+            {/* Course Help */}
+            <Link
+              href="/help/courses"
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition border-2 border-gray-200 hover:border-purple-600 group"
+            >
+              <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition">
+                <BookOpen className="w-8 h-8 text-purple-600 group-hover:text-white transition" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Course Help</h3>
+              <p className="text-gray-600 mb-4">
+                Access course materials, submit assignments, and track your progress
+              </p>
+              <div className="flex items-center text-purple-600 font-semibold group-hover:gap-2 transition-all">
+                <span>View guides</span>
+                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition" />
+              </div>
+            </Link>
+
+            {/* Account & Billing */}
+            <Link
+              href="/help/account"
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition border-2 border-gray-200 hover:border-orange-600 group"
+            >
+              <div className="w-16 h-16 bg-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-600 transition">
+                <Shield className="w-8 h-8 text-orange-600 group-hover:text-white transition" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Account & Billing</h3>
+              <p className="text-gray-600 mb-4">
+                Manage your account settings, update information, and view billing
+              </p>
+              <div className="flex items-center text-orange-600 font-semibold group-hover:gap-2 transition-all">
+                <span>Manage account</span>
+                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition" />
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Resources Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Image */}
+            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/artlist/hero-training-2.jpg"
+                alt="Student using help resources on laptop"
+                fill
+                className="object-cover"
+                quality={100}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8 text-white">
+                <div className="flex items-center gap-2 mb-3">
+                  <Award className="w-6 h-6" />
+                  <span className="font-bold">98% Student Satisfaction</span>
+                </div>
+                <p className="text-sm text-white/90">
+                  Our support team is rated excellent by students
+                </p>
               </div>
             </div>
 
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
+            {/* Right: Popular Resources */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-black text-black mb-6">
+                Popular Help Resources
+              </h2>
+              <p className="text-xl text-gray-600 mb-8">
+                Quick access to our most-used guides and tutorials
+              </p>
+
+              <div className="space-y-4">
+                <Link
+                  href="/help/tutorials/how-to-apply"
+                  className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl hover:bg-blue-50 hover:border-blue-600 border-2 border-gray-200 transition group"
+                >
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 transition">
+                    <Video className="w-6 h-6 text-blue-600 group-hover:text-white transition" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-black mb-1">How to Apply for Programs</h3>
+                    <p className="text-sm text-gray-600">Step-by-step video guide • 5 min</p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition" />
+                </Link>
+
+                <Link
+                  href="/help/tutorials/accessing-courses"
+                  className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl hover:bg-blue-50 hover:border-blue-600 border-2 border-gray-200 transition group"
+                >
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-green-600 transition">
+                    <BookOpen className="w-6 h-6 text-green-600 group-hover:text-white transition" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-black mb-1">Accessing Your Courses</h3>
+                    <p className="text-sm text-gray-600">Complete guide • 3 min read</p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-green-600 transition" />
+                </Link>
+
+                <Link
+                  href="/help/tutorials/submitting-assignments"
+                  className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl hover:bg-blue-50 hover:border-blue-600 border-2 border-gray-200 transition group"
+                >
+                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-purple-600 transition">
+                    <FileText className="w-6 h-6 text-purple-600 group-hover:text-white transition" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-black mb-1">Submitting Assignments</h3>
+                    <p className="text-sm text-gray-600">Tutorial with screenshots • 4 min</p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-purple-600 transition" />
+                </Link>
+
+                <Link
+                  href="/help/tutorials/troubleshooting"
+                  className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl hover:bg-blue-50 hover:border-blue-600 border-2 border-gray-200 transition group"
+                >
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-orange-600 transition">
+                    <Zap className="w-6 h-6 text-orange-600 group-hover:text-white transition" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-black mb-1">Common Technical Issues</h3>
+                    <p className="text-sm text-gray-600">Troubleshooting guide • 6 min</p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-orange-600 transition" />
+                </Link>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
+              <Link
+                href="/help/tutorials"
+                className="inline-flex items-center gap-2 mt-8 text-blue-600 font-bold hover:gap-3 transition-all"
+              >
+                View All Tutorials
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
+      {/* Contact Support Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
+              Need Personal Assistance?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our support team is available 24/7 to help you succeed
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Phone Support */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Phone className="w-8 h-8 text-blue-600" />
               </div>
+              <h3 className="text-xl font-bold text-black mb-3">Call Us</h3>
+              <p className="text-gray-600 mb-6">
+                Speak directly with a support specialist
+              </p>
+              <a
+                href="tel:+13173143757"
+                className="text-2xl font-bold text-blue-600 hover:text-blue-700 mb-4 block"
+              >
+                (317) 314-3757
+              </a>
+              <p className="text-sm text-gray-500">
+                Mon-Fri: 9am-5pm EST<br />
+                Sat: 10am-2pm EST
+              </p>
+            </div>
+
+            {/* Email Support */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Mail className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Email Us</h3>
+              <p className="text-gray-600 mb-6">
+                Get a detailed response within 24 hours
+              </p>
+              <a
+                href="mailto:elevate4humanityedu@gmail.com"
+                className="text-lg font-bold text-green-600 hover:text-green-700 mb-4 block break-all"
+              >
+                elevate4humanityedu@gmail.com
+              </a>
+              <p className="text-sm text-gray-500">
+                Response time:<br />
+                Usually within 2-4 hours
+              </p>
+            </div>
+
+            {/* Live Chat */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <MessageCircle className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-bold text-black mb-3">Live Chat</h3>
+              <p className="text-gray-600 mb-6">
+                Chat with us in real-time for instant help
+              </p>
+              <button className="bg-purple-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-purple-700 transition mb-4">
+                Start Chat
+              </button>
+              <p className="text-sm text-gray-500">
+                Available:<br />
+                Mon-Fri: 9am-9pm EST
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Stats */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-black text-blue-600 mb-2">24/7</div>
+              <div className="text-gray-600">Support Available</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black text-green-600 mb-2">&lt;2hrs</div>
+              <div className="text-gray-600">Average Response Time</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black text-purple-600 mb-2">500+</div>
+              <div className="text-gray-600">Help Articles</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black text-orange-600 mb-2">98%</div>
+              <div className="text-gray-600">Satisfaction Rate</div>
             </div>
           </div>
         </div>
