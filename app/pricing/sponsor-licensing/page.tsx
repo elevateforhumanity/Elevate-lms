@@ -4,6 +4,7 @@ import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import {
   Phone,
   Mail,
+  Shield,
 } from 'lucide-react';
 
 export const metadata = {

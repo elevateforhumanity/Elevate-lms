@@ -6,6 +6,7 @@ import Image from 'next/image';
 import {
   Send,
   ArrowRight,
+  Clock,
 } from 'lucide-react';
 
 export default function ContactPage() {
