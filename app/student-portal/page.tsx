@@ -253,7 +253,6 @@ export default async function StudentPortalPage() {
               <span>Career Support</span>
             </div>
           </div>
-          </div>
         </div>
       </section>
 
