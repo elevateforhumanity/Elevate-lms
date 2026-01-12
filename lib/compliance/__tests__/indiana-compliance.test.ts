@@ -4,6 +4,8 @@
  * Test scenarios for Indiana DWD compliance automation
  */
 
+import { describe, test, expect } from 'vitest';
+
 import {
   meetsIndianaETPLStandards,
   getNextIndianaReportDueDate,
@@ -15,6 +17,7 @@ import {
 import {
   getIndianaAlertForReport,
   checkIndianaPerformanceStandards,
+  BATCH_CONFIG,
 } from '../alert-system';
 
 describe('Indiana ETPL Standards', () => {
@@ -41,8 +44,8 @@ describe('Indiana ETPL Standards', () => {
     );
 
     expect(result.meets).toBe(false);
-    expect(result.failures).toContain(
-      expect.stringContaining('Employment rate')
+    expect(result.failures).toEqual(
+      expect.arrayContaining([expect.stringContaining('Employment rate')])
     );
   });
 
@@ -56,8 +59,8 @@ describe('Indiana ETPL Standards', () => {
     );
 
     expect(result.meets).toBe(false);
-    expect(result.failures).toContain(
-      expect.stringContaining('Credential rate')
+    expect(result.failures).toEqual(
+      expect.arrayContaining([expect.stringContaining('Credential rate')])
     );
   });
 
@@ -96,7 +99,7 @@ describe('Indiana Performance Alerts', () => {
       0.58, // 58% credential rate (below 60% but above 50%)
       5000, // Positive wage gain
       25, // 25 students
-      0.88 // 88% data quality (below 90% but above 80%)
+      0.92 // 92% data quality (above 90% threshold)
     );
 
     expect(result.needsAlert).toBe(true);
@@ -283,8 +286,6 @@ describe('Indiana Alert Scenarios', () => {
 
 describe('Mass Scale Processing', () => {
   test('Batch configuration is set for mass scale', () => {
-    import { BATCH_CONFIG } from '../alert-system';
-
     expect(BATCH_CONFIG.batchSize).toBe(50);
     expect(BATCH_CONFIG.delayBetweenBatches).toBeGreaterThan(0);
     expect(BATCH_CONFIG.maxConcurrent).toBeGreaterThan(0);
@@ -292,7 +293,6 @@ describe('Mass Scale Processing', () => {
   });
 
   test('Can process 500 program holders in batches', () => {
-    import { BATCH_CONFIG } from '../alert-system';
     const totalProgramHolders = 500;
     const expectedBatches = Math.ceil(
       totalProgramHolders / BATCH_CONFIG.batchSize
