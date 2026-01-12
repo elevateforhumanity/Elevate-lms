@@ -32,10 +32,11 @@ body {
     box-sizing: border-box;
   }
 
-  /* Accessibility: Focus visible styles */
+  /* Accessibility: Enhanced Focus visible styles for WCAG AA compliance */
   *:focus-visible {
     outline: 3px solid #2563eb;
     outline-offset: 2px;
+    border-radius: 4px;
   }
 
   a:focus-visible,
@@ -45,6 +46,32 @@ body {
   textarea:focus-visible {
     outline: 3px solid #2563eb;
     outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* High contrast focus for better visibility */
+  @media (prefers-contrast: high) {
+    *:focus-visible {
+      outline: 4px solid #000;
+      outline-offset: 3px;
+    }
+  }
+
+  /* Skip to main content link */
+  .skip-to-main {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 1rem 1.5rem;
+    background-color: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+  }
+
+  .skip-to-main:focus {
+    left: 0;
+    top: 0;
   }
 
   html,

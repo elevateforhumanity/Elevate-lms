@@ -64,40 +64,49 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="lg:hidden fixed right-0 top-0 bottom-0 w-80 max-w-full bg-white z-50 overflow-y-auto shadow-2xl"
+            className="lg:hidden fixed right-0 top-0 bottom-0 w-80 max-w-full bg-white z-50 overflow-y-auto shadow-2xl focus:outline-none"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
+            tabIndex={-1}
           >
             <div className="p-4 border-b border-gray-200 flex items-center justify-between">
-              <h2 className="text-lg font-bold text-black">Menu</h2>
+              <h2 id="mobile-menu-title" className="text-lg font-bold text-black">Menu</h2>
               <button
                 onClick={onClose}
-                className="p-2 text-black hover:text-blue-600 transition"
+                className="p-2 text-black hover:text-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded"
                 aria-label="Close menu"
               >
                 <X className="w-6 h-6" />
               </button>
             </div>
 
-            <nav className="px-4 py-6 space-y-4">
+            <nav className="px-4 py-6 space-y-4" aria-labelledby="mobile-menu-title">
               {items.map((item) => {
                 const isActive = pathname === item.href;
 
                 if (item.children) {
                   return (
                     <div key={item.name} className="space-y-2">
-                      <div className="font-bold text-black text-lg">{item.name}</div>
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.name}
-                          href={child.href}
-                          onClick={onClose}
-                          className="block pl-4 py-2 text-black hover:text-blue-600 transition"
-                        >
-                          {child.name}
-                        </Link>
-                      ))}
+                      <div className="font-bold text-black text-lg" role="heading" aria-level={3}>
+                        {item.name}
+                      </div>
+                      {item.children.map((child) => {
+                        const childActive = pathname === child.href;
+                        return (
+                          <Link
+                            key={child.name}
+                            href={child.href}
+                            onClick={onClose}
+                            className={`block pl-4 py-2 transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded ${
+                              childActive ? 'text-blue-600 font-semibold' : 'text-black hover:text-blue-600'
+                            }`}
+                            aria-current={childActive ? 'page' : undefined}
+                          >
+                            {child.name}
+                          </Link>
+                        );
+                      })}
                     </div>
                   );
                 }
@@ -107,7 +116,7 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
                     key={item.name}
                     href={item.href}
                     onClick={onClose}
-                    className={`block py-2 text-lg font-medium transition ${
+                    className={`block py-2 text-lg font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded ${
                       isActive ? 'text-blue-600' : 'text-black hover:text-blue-600'
                     }`}
                     aria-current={isActive ? 'page' : undefined}

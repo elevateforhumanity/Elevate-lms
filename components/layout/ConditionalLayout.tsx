@@ -13,13 +13,19 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col [--header-h:72px]">
-      <header className="fixed inset-x-0 top-0 z-[99999] h-[var(--header-h)] bg-white shadow-sm">
+      <a href="#main-content" className="skip-to-main">
+        Skip to main content
+      </a>
+      
+      <header className="fixed inset-x-0 top-0 z-[99999] h-[var(--header-h)] bg-white shadow-sm" role="banner">
         <SiteHeader />
       </header>
 
       <main
         id="main-content"
         className="pt-[var(--header-h)] flex-1"
+        role="main"
+        tabIndex={-1}
       >
         <Breadcrumbs />
         {children}
