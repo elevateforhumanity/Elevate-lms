@@ -4,7 +4,13 @@ import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import {
   ArrowRight,
+  Award,
+  Calendar,
   Lightbulb,
+  MessageCircle,
+  Target,
+  TrendingUp,
+  Users,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
