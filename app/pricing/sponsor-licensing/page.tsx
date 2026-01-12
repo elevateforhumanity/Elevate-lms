@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
+// All required icons imported
 import {
   Phone,
   Mail,
