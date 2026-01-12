@@ -58,7 +58,7 @@ export const GET = withAuth(
         target_id: targetId || undefined,
         start_date: startDate || undefined,
         end_date: endDate || undefined,
-        limit: limit ? parseInt(limit) : undefined,
+        limit: limit ? parseInt(limit, 10) : undefined,
       });
 
       if (!result.success) {

@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ webhook });
 
       case 'deliveries':
-        const limit = parseInt(searchParams.get('limit') || '50');
+        const limit = parseInt(searchParams.get('limit') || '50', 10);
         const deliveries = await getWebhookDeliveries(
           webhookId || undefined,
           limit

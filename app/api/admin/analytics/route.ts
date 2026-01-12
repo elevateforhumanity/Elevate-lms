@@ -28,7 +28,7 @@ export async function GET(request: Request) {
     }
 
     const { searchParams } = new URL(request.url);
-    const days = parseInt(searchParams.get('days') || '30');
+    const days = parseInt(searchParams.get('days') || '30', 10);
     const startDate = new Date(
       Date.now() - days * 24 * 60 * 60 * 1000
     ).toISOString();

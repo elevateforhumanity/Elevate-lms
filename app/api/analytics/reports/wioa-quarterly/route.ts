@@ -26,9 +26,10 @@ export async function GET(request: NextRequest) {
 
     // Get query parameters
     const searchParams = request.nextUrl.searchParams;
-    const quarter = parseInt(searchParams.get('quarter') || '1');
+    const quarter = parseInt(searchParams.get('quarter') || '1', 10);
     const year = parseInt(
-      searchParams.get('year') || new Date().getFullYear().toString()
+      searchParams.get('year') || new Date().getFullYear().toString(),
+      10
     );
     const programId = searchParams.get('programId');
     const format = searchParams.get('format') || 'json'; // json, csv, excel

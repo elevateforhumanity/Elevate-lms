@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
         zip: body.zip || null,
         programs_interested: body.programsInterested,
         estimated_students: body.estimatedStudents
-          ? parseInt(body.estimatedStudents)
+          ? parseInt(body.estimatedStudents, 10)
           : null,
         how_heard_about_us: body.howHeardAboutUs || null,
         additional_info: body.additionalInfo || null,

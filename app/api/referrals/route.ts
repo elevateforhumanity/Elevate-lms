@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ stats });
 
       case 'leaderboard':
-        const limit = parseInt(searchParams.get('limit') || '10');
+        const limit = parseInt(searchParams.get('limit') || '10', 10);
         const leaderboard = await getAffiliateLeaderboard(limit);
         return NextResponse.json({ leaderboard });
 

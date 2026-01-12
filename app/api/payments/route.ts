@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
 
     switch (action) {
       case 'history':
-        const limit = parseInt(searchParams.get('limit') || '50');
+        const limit = parseInt(searchParams.get('limit') || '50', 10);
         const history = await getPaymentHistory(user.id, limit);
         return NextResponse.json({ payments: history });
 

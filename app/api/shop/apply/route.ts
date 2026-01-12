@@ -73,7 +73,7 @@ export async function POST(req: Request) {
         zip,
         phone,
         email,
-        years_in_business: parseInt(years_in_business) || 0,
+        years_in_business: parseInt(years_in_business, 10) || 0,
         status: 'pending',
         approved: false,
       })

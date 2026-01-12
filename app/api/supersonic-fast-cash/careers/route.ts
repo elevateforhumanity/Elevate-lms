@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
         email: body.email,
         phone: body.phone,
         position: body.position || 'Tax Preparer',
-        experience_years: parseInt(body.experience) || 0,
+        experience_years: parseInt(body.experience, 10) || 0,
         has_ptin: body.hasPTIN || false,
         has_efin: body.hasEFIN || false,
         availability: body.availability || 'full-time',

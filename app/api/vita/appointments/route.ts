@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
         preferred_date: body.date,
         preferred_time: body.time,
         annual_income: body.income,
-        dependents: body.dependents ? parseInt(body.dependents) : 0,
+        dependents: body.dependents ? parseInt(body.dependents, 10) : 0,
         status: 'pending'
       })
       .select()

@@ -15,8 +15,8 @@ export async function GET(request: NextRequest) {
     // Get query parameters
     const status = searchParams.get('status');
     const tax_year = searchParams.get('tax_year');
-    const limit = parseInt(searchParams.get('limit') || '100');
-    const offset = parseInt(searchParams.get('offset') || '0');
+    const limit = parseInt(searchParams.get('limit') || '100', 10);
+    const offset = parseInt(searchParams.get('offset') || '0', 10);
 
     // Build query
     let query = supabase

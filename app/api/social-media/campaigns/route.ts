@@ -44,7 +44,7 @@ export async function POST(req: Request) {
         frequency: body.frequency,
         posting_times: body.times,
         program: body.program,
-        duration_days: parseInt(body.duration),
+        duration_days: parseInt(body.duration, 10),
         posts: body.posts,
         status: body.status || 'draft',
       })

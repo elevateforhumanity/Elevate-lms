@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
       filters: filters ? JSON.parse(filters) : undefined,
       sortBy: sortBy || undefined,
       sortOrder: sortOrder || 'asc',
-      limit: limit ? parseInt(limit) : undefined,
+      limit: limit ? parseInt(limit, 10) : undefined,
     };
 
     // Fetch data based on type

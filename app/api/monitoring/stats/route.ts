@@ -41,8 +41,8 @@ export async function GET(req: Request) {
     }
 
     const url = new URL(req.url);
-    const timeWindow = parseInt(url.searchParams.get('window') || '3600000'); // Default 1 hour
-    const limit = parseInt(url.searchParams.get('limit') || '50');
+    const timeWindow = parseInt(url.searchParams.get('window') || '3600000', 10); // Default 1 hour
+    const limit = parseInt(url.searchParams.get('limit') || '50', 10);
 
     const stats = getStats(timeWindow);
     const authFailures = getRecentAuthFailures(limit);

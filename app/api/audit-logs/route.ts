@@ -29,8 +29,8 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const action = searchParams.get("action");
   const resourceType = searchParams.get("resource_type");
-  const limit = parseInt(searchParams.get("limit") || "100");
-  const offset = parseInt(searchParams.get("offset") || "0");
+  const limit = parseInt(searchParams.get("limit") || "100", 10);
+  const offset = parseInt(searchParams.get("offset") || "0", 10);
 
   let query = supabase
     .from("audit_logs")

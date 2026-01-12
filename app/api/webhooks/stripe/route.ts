@@ -357,10 +357,12 @@ export async function POST(request: NextRequest) {
       const userId = session.metadata?.user_id;
       const courseId = session.metadata?.course_id;
       const partnerOwedCents = parseInt(
-        session.metadata?.partner_owed_cents || '0'
+        session.metadata?.partner_owed_cents || '0',
+        10
       );
       const yourRevenueCents = parseInt(
-        session.metadata?.your_revenue_cents || '0'
+        session.metadata?.your_revenue_cents || '0',
+        10
       );
 
       if (userId && courseId) {

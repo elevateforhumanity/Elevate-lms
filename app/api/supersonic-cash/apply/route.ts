@@ -41,8 +41,8 @@ export async function POST(req: Request) {
 
     // Calculate total monthly income
     const totalIncome =
-      parseInt(applicationData.monthlyIncome || '0') +
-      parseInt(applicationData.trainingStipend || '0');
+      parseInt(applicationData.monthlyIncome || '0', 10) +
+      parseInt(applicationData.trainingStipend || '0', 10);
 
     // Basic underwriting rules (similar to H&R Block)
     const maxAdvance = calculateMaxAdvance(totalIncome);
