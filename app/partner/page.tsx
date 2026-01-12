@@ -3,6 +3,9 @@ import Image from 'next/image';
 import {
   ArrowRight,
   Handshake,
+  Users,
+  Award,
+  TrendingUp,
 } from 'lucide-react';
 
 export const metadata = {
