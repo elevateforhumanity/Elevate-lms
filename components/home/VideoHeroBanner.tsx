@@ -71,12 +71,11 @@ export default function VideoHeroBanner({
       className="relative w-full bg-gradient-to-br from-blue-900 to-purple-900 -mb-1"
       onClick={handleUserInteraction}
     >
-      {/* Video Container - Mobile Optimized with viewport units */}
+      {/* Video Container - Full viewport height */}
       <div
         className="relative w-full min-h-[500px] md:min-h-[600px] lg:min-h-[700px]"
         style={{
-          height: '100vh',
-          height: '100svh',
+          height: 'calc(100vh - var(--header-h, 72px))',
           maxHeight: '900px',
         }}
       >
@@ -102,8 +101,8 @@ export default function VideoHeroBanner({
 
         {/* Gradient Overlay - Removed per user request */}
 
-        {/* Text Content - Mobile First */}
-        <div className="absolute inset-0 flex items-center z-10 pt-16 md:pt-0">
+        {/* Text Content - Centered vertically */}
+        <div className="absolute inset-0 flex items-center z-10">
           <div className="max-w-7xl mx-auto px-4 md:px-6 w-full">
             <div className="max-w-2xl">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight break-words drop-shadow-2xl">
