@@ -54,7 +54,7 @@ export async function POST(req: Request) {
     // Get or create Stripe price for this program
     const amount = program.total_cost
       ? Math.round(Number(program.total_cost) * 100)
-      : 489000; // Default $4,890
+      : 498000; // Default $4,980
 
     // Create or get user profile
     let userId: string | null = null;

@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 
 // Adjust this one number to change the displayed tuition
-const TUITION_AMOUNT = 4890; // dollars
+const PROGRAM_FEE_AMOUNT = 4980; // dollars - flat program fee
 const AMOUNT_CENTS = TUITION_AMOUNT * 100; // Affirm requires cents
 
 export default function PaymentOptionsClient() {
@@ -195,7 +195,7 @@ export default function PaymentOptionsClient() {
                 items: [
                   {
                     display_name: 'Barber Apprenticeship Tuition',
-                    sku: 'barber-tuition',
+                    sku: 'barber-program-fee',
                     unit_price: AMOUNT_CENTS,
                     qty: 1,
                   },

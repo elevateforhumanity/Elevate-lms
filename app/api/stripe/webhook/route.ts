@@ -308,35 +308,73 @@ export async function POST(req: Request) {
         try {
           const { data: programDetails } = await supabaseClient
             .from('programs')
-            .select('name')
+            .select('name, slug')
             .eq('id', programId)
             .single();
 
-          await fetch(
-            `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/api/email/send`,
-            {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                to: email,
-                subject: `Welcome to ${programDetails?.name || 'Your Program'}!`,
-                html: `
-                <h2>Welcome to Elevate for Humanity!</h2>
-                <p>Hi ${firstName || 'there'},</p>
-                <p>Congratulations! Your enrollment in <strong>${programDetails?.name || 'your program'}</strong> is now active.</p>
-                <h3>Next Steps:</h3>
-                <ol>
-                  <li>Log in to your student portal: <a href="https://www.elevateforhumanity.org/login">Login Here</a></li>
-                  <li>Complete your student profile</li>
-                  <li>Access your course materials</li>
-                  <li>Meet your instructor</li>
-                </ol>
-                <p>Questions? Call us at <a href="tel:3173143757">317-314-3757</a></p>
-                <p>Best regards,<br>Elevate for Humanity Team</p>
-              `,
-              }),
-            }
-          );
+          // Use barber-specific email for barber apprenticeship
+          if (programSlug === 'barber-apprenticeship' || programDetails?.slug === 'barber-apprenticeship') {
+            const { getBarberWelcomePaidEmail } = await import('@/lib/email/templates/barber-welcome-paid');
+            
+            // Get student's transfer hours if any
+            const { data: enrollmentData } = await supabaseClient
+              .from('student_enrollments')
+              .select('transfer_hours, required_hours')
+              .eq('student_id', studentId)
+              .eq('program_id', programId)
+              .maybeSingle();
+
+            const barberEmail = getBarberWelcomePaidEmail({
+              studentName: firstName || 'Student',
+              studentEmail: email,
+              dashboardUrl: 'https://elevateforhumanity.institute/lms/dashboard',
+              miladyEnrollmentUrl: 'https://www.miladytraining.com/bundles/barber-apprentice-program',
+              requiredHours: enrollmentData?.required_hours || 1500,
+              transferHours: enrollmentData?.transfer_hours || 0,
+              rapidsPending: true,
+            });
+
+            await fetch(
+              `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/api/email/send`,
+              {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  to: email,
+                  subject: barberEmail.subject,
+                  html: barberEmail.html,
+                }),
+              }
+            );
+            logger.info('[Webhook] Sent barber welcome email with Milady enrollment link', { email });
+          } else {
+            // Generic welcome email for other programs
+            await fetch(
+              `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/api/email/send`,
+              {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  to: email,
+                  subject: `Welcome to ${programDetails?.name || 'Your Program'}!`,
+                  html: `
+                  <h2>Welcome to Elevate for Humanity!</h2>
+                  <p>Hi ${firstName || 'there'},</p>
+                  <p>Congratulations! Your enrollment in <strong>${programDetails?.name || 'your program'}</strong> is now active.</p>
+                  <h3>Next Steps:</h3>
+                  <ol>
+                    <li>Log in to your student portal: <a href="https://elevateforhumanity.institute/login">Login Here</a></li>
+                    <li>Complete your student profile</li>
+                    <li>Access your course materials</li>
+                    <li>Meet your instructor</li>
+                  </ol>
+                  <p>Questions? Call us at <a href="tel:3173143757">317-314-3757</a></p>
+                  <p>Best regards,<br>Elevate for Humanity Team</p>
+                `,
+                }),
+              }
+            );
+          }
         } catch (emailError) {
           logger.warn('[Webhook] Failed to send welcome email', emailError);
         }
@@ -368,30 +406,77 @@ export async function POST(req: Request) {
         }
       }
 
-      // STEP 4: Milady auto-provision (turn it on automatically)
+      // STEP 4: Barber Apprenticeship specific setup (Indiana IPLA)
       if (programSlug === 'barber-apprenticeship') {
         try {
-          const miladyResponse = await fetch(
-            `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/milady/auto-enroll`,
-            {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                studentId,
-                programId,
-              }),
-            }
-          );
+          // 4a: Create student_enrollments record with Indiana requirements
+          const { data: studentEnrollment, error: seError } = await supabaseClient
+            .from('student_enrollments')
+            .upsert({
+              student_id: studentId,
+              program_id: programId,
+              status: 'active',
+              required_hours: 1500, // Indiana IPLA requirement
+              transfer_hours: 0,
+              rapids_status: 'pending',
+              milady_enrolled: false,
+              started_at: new Date().toISOString(),
+            }, {
+              onConflict: 'student_id,program_id',
+            })
+            .select('id')
+            .single();
 
-          if (miladyResponse.ok) { /* Condition handled */ } else {
-            const errorText = await miladyResponse.text();
-            logger.warn(
-              '[Webhook] ⚠️ Milady auto-enrollment failed',
-              errorText
-            );
+          if (seError) {
+            logger.warn('[Webhook] Failed to create student_enrollment', seError);
+          } else {
+            logger.info('[Webhook] ✅ Created student_enrollment for barber apprenticeship', {
+              enrollmentId: studentEnrollment?.id,
+            });
           }
-        } catch (miladyError) {
-          logger.warn('[Webhook] ⚠️ Milady auto-enrollment error', miladyError);
+
+          // 4b: Create RAPIDS registration record
+          const { error: rapidsError } = await supabaseClient
+            .from('rapids_registrations')
+            .insert({
+              student_id: studentId,
+              enrollment_id: studentEnrollment?.id || enrollmentId,
+              occupation_code: '39-5011.00', // Barbers
+              status: 'pending',
+              submitted_at: new Date().toISOString(),
+            });
+
+          if (rapidsError) {
+            logger.warn('[Webhook] Failed to create RAPIDS registration', rapidsError);
+          } else {
+            logger.info('[Webhook] ✅ Created RAPIDS registration record');
+          }
+
+          // 4c: Create state board readiness record
+          const { error: sbError } = await supabaseClient
+            .from('state_board_readiness')
+            .insert({
+              student_id: studentId,
+              enrollment_id: studentEnrollment?.id || enrollmentId,
+              total_hours_completed: 0,
+              rti_hours_completed: 0,
+              ojt_hours_completed: 0,
+              milady_completed: false,
+              ready_for_exam: false,
+            });
+
+          if (sbError) {
+            logger.warn('[Webhook] Failed to create state board readiness record', sbError);
+          }
+
+          logger.info('[Webhook] ✅ Barber apprenticeship setup complete', {
+            studentId,
+            programId,
+            enrollmentId: studentEnrollment?.id,
+          });
+
+        } catch (barberSetupError) {
+          logger.warn('[Webhook] ⚠️ Barber apprenticeship setup error', barberSetupError);
           // Don't fail the whole webhook - enrollment is still active
         }
       }

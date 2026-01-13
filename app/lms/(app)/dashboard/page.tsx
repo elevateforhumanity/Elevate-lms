@@ -35,6 +35,7 @@ import {
 import { PointsDisplay } from '@/components/gamification/PointsDisplay';
 import { BadgeShowcase } from '@/components/gamification/BadgeShowcase';
 import { StreakTracker } from '@/components/gamification/StreakTracker';
+import { ApprenticeProgressWidget } from '@/components/apprenticeship/ApprenticeProgressWidget';
 
 /**
  * STUDENT PORTAL - ORCHESTRATED
@@ -236,6 +237,20 @@ export default async function StudentDashboardOrchestrated() {
           <StreakTracker userId={user.id} />
           <BadgeShowcase userId={user.id} limit={3} />
         </div>
+
+        {/* Apprentice Progress Widget - Show for barber apprenticeship students */}
+        {activeEnrollment && (
+          activeEnrollment.programs?.slug === 'barber-apprenticeship' ||
+          activeEnrollment.partner_lms_courses?.slug === 'barber-apprenticeship'
+        ) && (
+          <div className="mb-8">
+            <ApprenticeProgressWidget 
+              enrollmentId={activeEnrollment.id}
+              studentId={user.id}
+              programName={activeEnrollment.programs?.name || activeEnrollment.partner_lms_courses?.name || 'Barber Apprenticeship'}
+            />
+          </div>
+        )}
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content - 2/3 width */}

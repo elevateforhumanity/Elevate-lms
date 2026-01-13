@@ -114,14 +114,31 @@ export default function ApprenticeHoursPage() {
   return (
     <div className="p-6 space-y-4 max-w-7xl mx-auto">
       <div className="space-y-1">
-        <h1 className="text-2xl font-bold text-black">Log Hours</h1>
+        <div className="flex items-center justify-between">
+          <h1 className="text-2xl font-bold text-black">Log Apprenticeship Hours</h1>
+          <a
+            href="/apprentice/transfer-hours"
+            className="text-sm text-purple-600 hover:text-purple-700 font-medium"
+          >
+            Transfer Hours →
+          </a>
+        </div>
         <p className="text-sm text-black">
-          Log weekly. WIOA hours can't be backdated. RTI/OJT caps are enforced
-          automatically.
+          Indiana IPLA requires 1,500 hours. Log your RTI (theory) and OJT (hands-on) hours weekly.
         </p>
-        <div className="text-xs text-slate-500">
-          Last 7 days total:{' '}
-          <span className="font-semibold">{weeklyTotal}</span>
+        <div className="flex items-center gap-4 text-xs text-slate-500">
+          <span>
+            Last 7 days:{' '}
+            <span className="font-semibold">{weeklyTotal}</span>
+          </span>
+          <span className="text-slate-300">|</span>
+          <span>
+            RTI = Related Technical Instruction (Milady)
+          </span>
+          <span className="text-slate-300">|</span>
+          <span>
+            OJT = On-the-Job Training (Shop)
+          </span>
         </div>
       </div>
 

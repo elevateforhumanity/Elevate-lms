@@ -35,7 +35,7 @@ export const PROGRAMS: Program[] = [
     intrainingId: '#10004637',
     name: 'Barber Apprenticeship Program',
     slug: 'barber-apprenticeship-program',
-    price: 4890,
+    price: 4980,
     duration: '15 months',
     durationDays: 450,
     location: 'Elevate for Humanity Training Center, Indianapolis, Indiana',

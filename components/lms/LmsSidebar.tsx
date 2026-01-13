@@ -14,11 +14,14 @@ import {
   Award,
   Calendar,
   Settings,
+  Clock,
+  ExternalLink,
 } from 'lucide-react';
 
 const navItems = [
   { href: '/lms/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/lms/courses', label: 'My Courses', icon: BookOpen },
+  { href: '/apprentice/hours', label: 'Log Hours', icon: Clock },
   { href: '/lms/forums', label: 'Forums', icon: MessageSquare },
   { href: '/lms/analytics', label: 'My Analytics', icon: TrendingUp },
   { href: '/lms/chat', label: 'AI Tutor Chat', icon: MessageCircle },
@@ -26,6 +29,15 @@ const navItems = [
   { href: '/lms/certificates', label: 'Certificates', icon: Award },
   { href: '/lms/calendar', label: 'Calendar', icon: Calendar },
   { href: '/lms/resources', label: 'Resources', icon: FileText },
+];
+
+const externalLinks = [
+  { 
+    href: 'https://www.miladytraining.com', 
+    label: 'Milady Theory', 
+    icon: ExternalLink,
+    description: 'Access your RTI coursework'
+  },
 ];
 
 export function LmsSidebar() {
@@ -78,6 +90,28 @@ export function LmsSidebar() {
             </Link>
           );
         })}
+
+        {/* External Links Section */}
+        <div className="pt-4 mt-4 border-t border-slate-200">
+          <div className="px-3 py-2 text-xs font-semibold text-slate-500 uppercase">
+            External Resources
+          </div>
+          {externalLinks.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-black hover:bg-gray-50 hover:text-blue-700 transition-all"
+              >
+                <Icon className="w-4 h-4" />
+                <span>{item.label}</span>
+              </a>
+            );
+          })}
+        </div>
       </nav>
 
       <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-white">

@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { CheckCircle } from 'lucide-react';
 
 
-const TUITION_AMOUNT = 4890; // total in dollars for display
+const PROGRAM_FEE_AMOUNT = 4980; // total in dollars for display - flat program fee
 const TUITION_AMOUNT_CENTS = TUITION_AMOUNT * 100; // for Affirm
 
 export default function PayPageClient() {

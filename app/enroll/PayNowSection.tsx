@@ -10,7 +10,7 @@ const PROGRAMS = [
     id: 'barber',
     label: 'Barber Apprenticeship',
     slug: 'barber-apprentice',
-    price: 4890,
+    price: 4980,
   },
   {
     id: 'dsp',

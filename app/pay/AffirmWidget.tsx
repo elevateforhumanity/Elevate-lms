@@ -7,7 +7,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 
 
-const TUITION_AMOUNT = 4890; // in dollars
+const PROGRAM_FEE_AMOUNT = 4980; // in dollars - flat program fee
 const TUITION_AMOUNT_CENTS = TUITION_AMOUNT * 100; // Affirm needs cents
 
 export default function AffirmWidget() {

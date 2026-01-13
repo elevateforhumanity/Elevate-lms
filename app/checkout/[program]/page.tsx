@@ -22,7 +22,7 @@ interface ProgramPricing {
 const programPricing: Record<string, ProgramPricing> = {
   'barber-apprenticeship': {
     name: 'Barber Apprenticeship',
-    price: 4890,
+    price: 4980,
     duration: '15-17 months',
     description:
       'DOL-registered apprenticeship with earn-while-you-learn model',

@@ -1,6 +1,27 @@
 /**
  * Payment Configuration
- * Defines pricing and vendor costs for all programs
+ * Defines pricing for all programs
+ * 
+ * BARBER APPRENTICESHIP PROGRAM FEE: $4,980 (FLAT FEE)
+ * 
+ * IMPORTANT COMPLIANCE NOTICE:
+ * - This is a DOL Registered Apprenticeship overlay program
+ * - The fee is FLAT regardless of transferred hours
+ * - Transferred hours reduce time-in-program ONLY, NOT the fee
+ * - This program is NOT a barber school
+ * - This program does NOT sell clock hours or licensure eligibility
+ * 
+ * THE $4,980 FEE COVERS:
+ * - DOL Registered Apprenticeship sponsorship
+ * - Compliance and RAPIDS reporting
+ * - Employer (barbershop) coordination and OJT verification
+ * - Program monitoring and completion documentation
+ * - Related Instruction: Milady theory curriculum
+ * 
+ * THE $4,980 FEE DOES NOT COVER:
+ * - Practical hands-on barber skills training
+ * - State licensure-required instructional hours
+ * - Barber school enrollment
  */
 
 export interface ProgramPaymentConfig {
@@ -8,26 +29,138 @@ export interface ProgramPaymentConfig {
   label: string;
   slug: string;
   price: number;
+  isFlatFee: boolean;
   vendorName: string | null;
   vendorCost: number;
   description: string;
   features: string[];
+  notIncluded: string[];
+  disclaimer: string;
+  paymentPlans?: {
+    months: number;
+    monthlyAmount: number;
+    totalAmount: number;
+    label: string;
+  }[];
 }
 
 export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
   {
     id: 'barber',
-    label: 'Barber Apprenticeship',
+    label: 'Registered Barber Apprenticeship',
     slug: 'barber-apprenticeship',
-    price: 4890,
+    price: 4980,
+    isFlatFee: true,
     vendorName: 'milady',
-    vendorCost: 295,
-    description: 'Complete barber training with Milady RISE certification',
+    vendorCost: 386,
+    description: 'Registered Barber Apprenticeship Sponsorship, Oversight & Related Instruction (Milady Theory). This program provides federal apprenticeship sponsorship, employer coordination, compliance reporting, and related instruction. Practical skills training and licensure-required instructional hours are provided by a licensed barber school. This program does not grant barber licensure or clock hours toward state exams.',
     features: [
-      'Milady RISE online coursework',
-      'Hands-on apprenticeship placement',
-      'State board exam preparation',
+      'DOL Registered Apprenticeship sponsorship',
+      'Compliance and RAPIDS reporting',
+      'Employer (barbershop) coordination and OJT verification',
+      'Program monitoring and completion documentation',
+      'Related Instruction: Milady theory curriculum',
       'AI instructor support 24/7',
+    ],
+    notIncluded: [
+      'Practical hands-on barber skills training',
+      'State licensure-required instructional hours',
+      'Barber school enrollment',
+    ],
+    disclaimer: 'This program is not a barber school and does not issue state licensure hours. Enrollment requires concurrent or subsequent participation in a licensed barber school for state licensure eligibility.',
+    paymentPlans: [
+      { months: 1, monthlyAmount: 4980, totalAmount: 4980, label: 'Pay in Full' },
+      { months: 4, monthlyAmount: 1245, totalAmount: 4980, label: '4-Month Plan' },
+      { months: 6, monthlyAmount: 830, totalAmount: 4980, label: '6-Month Plan' },
+      { months: 12, monthlyAmount: 415, totalAmount: 4980, label: '12-Month Plan' },
+    ],
+  },
+  {
+    id: 'nail-tech',
+    label: 'Registered Nail Technician Apprenticeship',
+    slug: 'nail-technician-apprenticeship',
+    price: 2980,
+    isFlatFee: true,
+    vendorName: 'milady',
+    vendorCost: 200,
+    description: 'Registered Nail Technician Apprenticeship Sponsorship, Oversight & Related Instruction (Milady Theory). This program provides federal apprenticeship sponsorship, employer coordination, compliance reporting, and related instruction. Practical skills training and licensure-required instructional hours are provided by a licensed nail technician school. This program does not grant nail technician licensure or clock hours toward state exams.',
+    features: [
+      'DOL Registered Apprenticeship sponsorship',
+      'Compliance and RAPIDS reporting',
+      'Employer (salon) coordination and OJT verification',
+      'Program monitoring and completion documentation',
+      'Related Instruction: Milady theory curriculum',
+      'AI instructor support 24/7',
+    ],
+    notIncluded: [
+      'Practical hands-on nail technician training',
+      'State licensure-required instructional hours',
+      'Nail technician school enrollment',
+    ],
+    disclaimer: 'This program is not a nail technician school and does not issue state licensure hours. Enrollment requires concurrent or subsequent participation in a licensed nail technician school for state licensure eligibility.',
+    paymentPlans: [
+      { months: 1, monthlyAmount: 2980, totalAmount: 2980, label: 'Pay in Full' },
+      { months: 4, monthlyAmount: 745, totalAmount: 2980, label: '4-Month Plan' },
+      { months: 6, monthlyAmount: 497, totalAmount: 2980, label: '6-Month Plan' },
+    ],
+  },
+  {
+    id: 'esthetician',
+    label: 'Registered Esthetician Apprenticeship',
+    slug: 'esthetician-apprenticeship',
+    price: 3480,
+    isFlatFee: true,
+    vendorName: 'milady',
+    vendorCost: 250,
+    description: 'Registered Esthetician Apprenticeship Sponsorship, Oversight & Related Instruction (Milady Theory). This program provides federal apprenticeship sponsorship, employer coordination, compliance reporting, and related instruction. Practical skills training and licensure-required instructional hours are provided by a licensed esthetician school. This program does not grant esthetician licensure or clock hours toward state exams.',
+    features: [
+      'DOL Registered Apprenticeship sponsorship',
+      'Compliance and RAPIDS reporting',
+      'Employer (spa/salon) coordination and OJT verification',
+      'Program monitoring and completion documentation',
+      'Related Instruction: Milady theory curriculum',
+      'AI instructor support 24/7',
+    ],
+    notIncluded: [
+      'Practical hands-on esthetician training',
+      'State licensure-required instructional hours',
+      'Esthetician school enrollment',
+    ],
+    disclaimer: 'This program is not an esthetician school and does not issue state licensure hours. Enrollment requires concurrent or subsequent participation in a licensed esthetician school for state licensure eligibility.',
+    paymentPlans: [
+      { months: 1, monthlyAmount: 3480, totalAmount: 3480, label: 'Pay in Full' },
+      { months: 4, monthlyAmount: 870, totalAmount: 3480, label: '4-Month Plan' },
+      { months: 6, monthlyAmount: 580, totalAmount: 3480, label: '6-Month Plan' },
+    ],
+  },
+  {
+    id: 'cosmetology',
+    label: 'Registered Cosmetology Apprenticeship',
+    slug: 'cosmetology-apprenticeship',
+    price: 4980,
+    isFlatFee: true,
+    vendorName: 'milady',
+    vendorCost: 386,
+    description: 'Registered Cosmetology Apprenticeship Sponsorship, Oversight & Related Instruction (Milady Theory). This program provides federal apprenticeship sponsorship, employer coordination, compliance reporting, and related instruction. Practical skills training and licensure-required instructional hours are provided by a licensed cosmetology school. This program does not grant cosmetology licensure or clock hours toward state exams.',
+    features: [
+      'DOL Registered Apprenticeship sponsorship',
+      'Compliance and RAPIDS reporting',
+      'Employer (salon) coordination and OJT verification',
+      'Program monitoring and completion documentation',
+      'Related Instruction: Milady theory curriculum',
+      'AI instructor support 24/7',
+    ],
+    notIncluded: [
+      'Practical hands-on cosmetology training',
+      'State licensure-required instructional hours',
+      'Cosmetology school enrollment',
+    ],
+    disclaimer: 'This program is not a cosmetology school and does not issue state licensure hours. Enrollment requires concurrent or subsequent participation in a licensed cosmetology school for state licensure eligibility.',
+    paymentPlans: [
+      { months: 1, monthlyAmount: 4980, totalAmount: 4980, label: 'Pay in Full' },
+      { months: 4, monthlyAmount: 1245, totalAmount: 4980, label: '4-Month Plan' },
+      { months: 6, monthlyAmount: 830, totalAmount: 4980, label: '6-Month Plan' },
+      { months: 12, monthlyAmount: 415, totalAmount: 4980, label: '12-Month Plan' },
     ],
   },
   {
@@ -35,6 +168,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
     label: 'Direct Support Professional (DSP)',
     slug: 'direct-support-professional',
     price: 4325,
+    isFlatFee: false,
     vendorName: null,
     vendorCost: 0,
     description: 'Become a certified Direct Support Professional',
@@ -43,6 +177,8 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'Job placement assistance',
       'AI instructor support 24/7',
     ],
+    notIncluded: [],
+    disclaimer: '',
   },
   {
     id: 'hvac',
