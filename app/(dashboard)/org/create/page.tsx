@@ -1,9 +1,3 @@
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: '(dashboard) Org Create | Elevate For Humanity',
-  description: 'Elevate For Humanity - (dashboard) Org Create page',
-  alternates: { canonical: 'https://elevateforhumanity.institute/(dashboard)/org/create' },
 };
 
 

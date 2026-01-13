@@ -1,9 +1,3 @@
-'use client';
-
-import { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Search, ArrowRight, Facebook, Twitter, Linkedin, Instagram, Share2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
