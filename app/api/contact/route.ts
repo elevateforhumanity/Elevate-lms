@@ -68,17 +68,18 @@ export async function POST(req: Request) {
     // Save to database using admin client (bypasses RLS for public form)
     const supabase = createAdminClient();
 
+    // Split name into first/last for marketing_contacts table
+    const nameParts = data.name.trim().split(' ');
+    const firstName = nameParts[0] || data.name;
+    const lastName = nameParts.slice(1).join(' ') || '';
+
     const { error: dbError } = await supabase
-      .from('contact_requests')
+      .from('marketing_contacts')
       .insert({
-        name: data.name,
         email: data.email,
-        phone: data.phone || null,
-        role: data.role || null,
-        interest: data.program || data.interest || null,
-        followup: data.message,
-        source: 'efh-website',
-        created_at: new Date().toISOString(),
+        first_name: firstName,
+        last_name: lastName,
+        tags: [data.role || 'contact-form', data.program || data.interest || 'general'].filter(Boolean),
       });
 
     if (dbError) {
