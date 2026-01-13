@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Ratelimit } from '@upstash/ratelimit';
 import { getIdentifier, createRateLimitHeaders } from '@/lib/rate-limit';
 
+type RateLimiterGetter = { get: () => Ratelimit | null };
+
 /**
  * Rate limit middleware for API routes
  * 
@@ -12,12 +14,17 @@ import { getIdentifier, createRateLimitHeaders } from '@/lib/rate-limit';
 export function withRateLimit<T = any>(
   handler: (request: NextRequest, context?: any) => Promise<NextResponse<T>>,
   options: {
-    limiter: Ratelimit | null;
+    limiter: Ratelimit | null | RateLimiterGetter;
     skipOnMissing?: boolean; // Skip rate limiting if Redis not configured
   }
 ) {
   return async (request: NextRequest, context?: any): Promise<NextResponse> => {
-    const { limiter, skipOnMissing = true } = options;
+    const { skipOnMissing = true } = options;
+    
+    // Get limiter (support both direct and getter patterns)
+    const limiter = typeof (options.limiter as any)?.get === 'function' 
+      ? (options.limiter as RateLimiterGetter).get() 
+      : options.limiter as Ratelimit | null;
 
     // Skip if rate limiter not configured
     if (!limiter) {

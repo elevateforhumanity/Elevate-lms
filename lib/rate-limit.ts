@@ -1,14 +1,21 @@
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 
-// Initialize Redis client
+// Lazy initialize Redis client to avoid build-time errors
 let redis: Redis | null = null;
 
-if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
-  redis = new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN,
-  });
+function getRedis(): Redis | null {
+  if (redis) return redis;
+  
+  const url = process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  
+  if (!url || !token || !url.startsWith('https://')) {
+    return null;
+  }
+  
+  redis = new Redis({ url, token });
+  return redis;
 }
 
 // Rate limit configurations
@@ -20,51 +27,30 @@ const RATE_LIMITS = {
   strict: { requests: 3, window: '5 m' }, // 3 requests per 5 minutes
 } as const;
 
-// Create rate limiters
-export const authRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(RATE_LIMITS.auth.requests, RATE_LIMITS.auth.window),
-      analytics: true,
-      prefix: 'ratelimit:auth',
-    })
-  : null;
+// Create rate limiters lazily
+function createRateLimiter(config: { requests: number; window: string }, prefix: string): Ratelimit | null {
+  const r = getRedis();
+  if (!r) return null;
+  return new Ratelimit({
+    redis: r,
+    limiter: Ratelimit.slidingWindow(config.requests, config.window as any),
+    analytics: true,
+    prefix,
+  });
+}
 
-export const paymentRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(RATE_LIMITS.payment.requests, RATE_LIMITS.payment.window),
-      analytics: true,
-      prefix: 'ratelimit:payment',
-    })
-  : null;
+// Lazy getters for rate limiters
+let _authRateLimit: Ratelimit | null | undefined;
+let _paymentRateLimit: Ratelimit | null | undefined;
+let _contactRateLimit: Ratelimit | null | undefined;
+let _apiRateLimit: Ratelimit | null | undefined;
+let _strictRateLimit: Ratelimit | null | undefined;
 
-export const contactRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(RATE_LIMITS.contact.requests, RATE_LIMITS.contact.window),
-      analytics: true,
-      prefix: 'ratelimit:contact',
-    })
-  : null;
-
-export const apiRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(RATE_LIMITS.api.requests, RATE_LIMITS.api.window),
-      analytics: true,
-      prefix: 'ratelimit:api',
-    })
-  : null;
-
-export const strictRateLimit = redis
-  ? new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(RATE_LIMITS.strict.requests, RATE_LIMITS.strict.window),
-      analytics: true,
-      prefix: 'ratelimit:strict',
-    })
-  : null;
+export const authRateLimit = { get: () => _authRateLimit ?? (_authRateLimit = createRateLimiter(RATE_LIMITS.auth, 'ratelimit:auth')) };
+export const paymentRateLimit = { get: () => _paymentRateLimit ?? (_paymentRateLimit = createRateLimiter(RATE_LIMITS.payment, 'ratelimit:payment')) };
+export const contactRateLimit = { get: () => _contactRateLimit ?? (_contactRateLimit = createRateLimiter(RATE_LIMITS.contact, 'ratelimit:contact')) };
+export const apiRateLimit = { get: () => _apiRateLimit ?? (_apiRateLimit = createRateLimiter(RATE_LIMITS.api, 'ratelimit:api')) };
+export const strictRateLimit = { get: () => _strictRateLimit ?? (_strictRateLimit = createRateLimiter(RATE_LIMITS.strict, 'ratelimit:strict')) };
 
 // Helper function to get identifier from request
 export function getIdentifier(request: Request): string {
@@ -98,7 +84,8 @@ interface RateLimitConfig {
 }
 
 export async function checkRateLimit(config: RateLimitConfig) {
-  if (!redis) {
+  const r = getRedis();
+  if (!r) {
     console.warn('⚠️ Rate limiting disabled - Redis not configured');
     return { ok: true, remaining: config.limit, current: 0 };
   }
@@ -107,10 +94,10 @@ export async function checkRateLimit(config: RateLimitConfig) {
   const now = Math.floor(Date.now() / 1000);
   const windowKey = `${key}:${Math.floor(now / windowSeconds)}`;
 
-  const current = (await redis.incr(windowKey)) as number;
+  const current = (await r.incr(windowKey)) as number;
 
   if (current === 1) {
-    await redis.expire(windowKey, windowSeconds);
+    await r.expire(windowKey, windowSeconds);
   }
 
   const remaining = Math.max(limit - current, 0);

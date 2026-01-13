@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     // Rate limiting
     if (paymentRateLimit) {
       const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
-      const { success } = await paymentRateLimit.limit(ip);
+      const { success } = await paymentRateLimit.get()?.limit(ip);
       
       if (!success) {
         return NextResponse.json(
