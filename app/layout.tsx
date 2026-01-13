@@ -1,5 +1,6 @@
 import React from 'react';
 import UnregisterSW from "./components/UnregisterSW";
+import InstallPrompt from '@/components/pwa/InstallPrompt';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import StructuredData from '@/components/StructuredData';
@@ -217,6 +218,7 @@ export default function RootLayout({
         <ClientProviders />
         <CookieConsent />
         <LiveChatWidget />
+        <InstallPrompt />
 
         <Toaster
           position="top-right"
