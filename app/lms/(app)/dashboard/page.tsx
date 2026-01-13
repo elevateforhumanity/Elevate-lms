@@ -36,6 +36,7 @@ import { PointsDisplay } from '@/components/gamification/PointsDisplay';
 import { BadgeShowcase } from '@/components/gamification/BadgeShowcase';
 import { StreakTracker } from '@/components/gamification/StreakTracker';
 import { ApprenticeProgressWidget } from '@/components/apprenticeship/ApprenticeProgressWidget';
+import { MiladyAccessCard } from '@/components/apprenticeship/MiladyAccessCard';
 
 /**
  * STUDENT PORTAL - ORCHESTRATED
@@ -238,16 +239,26 @@ export default async function StudentDashboardOrchestrated() {
           <BadgeShowcase userId={user.id} limit={3} />
         </div>
 
-        {/* Apprentice Progress Widget - Show for barber apprenticeship students */}
+        {/* Beauty Apprenticeship Widgets - Show for beauty industry programs */}
         {activeEnrollment && (
-          activeEnrollment.programs?.slug === 'barber-apprenticeship' ||
-          activeEnrollment.partner_lms_courses?.slug === 'barber-apprenticeship'
+          ['barber-apprenticeship', 'cosmetology-apprenticeship', 'esthetician-apprenticeship', 'nail-technician-apprenticeship'].includes(
+            activeEnrollment.programs?.slug || activeEnrollment.partner_lms_courses?.slug || ''
+          )
         ) && (
-          <div className="mb-8">
+          <div className="mb-8 space-y-6">
+            {/* Milady Access Card - Prominent access to theory training */}
+            <MiladyAccessCard
+              studentId={user.id}
+              programSlug={activeEnrollment.programs?.slug || activeEnrollment.partner_lms_courses?.slug || 'barber-apprenticeship'}
+              miladyEnrolled={activeEnrollment.milady_enrolled}
+              miladyCompleted={activeEnrollment.milady_completed}
+            />
+            
+            {/* Apprentice Progress Widget */}
             <ApprenticeProgressWidget 
               enrollmentId={activeEnrollment.id}
               studentId={user.id}
-              programName={activeEnrollment.programs?.name || activeEnrollment.partner_lms_courses?.name || 'Barber Apprenticeship'}
+              programName={activeEnrollment.programs?.name || activeEnrollment.partner_lms_courses?.name || 'Beauty Apprenticeship'}
             />
           </div>
         )}

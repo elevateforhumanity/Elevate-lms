@@ -475,9 +475,112 @@ export async function POST(req: Request) {
             enrollmentId: studentEnrollment?.id,
           });
 
+          // 4d: Purchase Milady course and provision student access
+          // Elevate pays Milady $295 per student (included in $4,980 flat fee)
+          try {
+            const { purchaseMiladyCourse } = await import('@/lib/vendors/milady-purchase');
+            
+            const miladyResult = await purchaseMiladyCourse(
+              {
+                id: studentId,
+                email: email,
+                firstName: firstName || 'Student',
+                lastName: lastName || '',
+              },
+              'barber-apprenticeship',
+              paymentIntentId || session.id
+            );
+
+            if (miladyResult.success) {
+              logger.info('[Webhook] ✅ Milady course purchased', {
+                hasCredentials: !!miladyResult.studentCredentials,
+                hasLicenseCode: !!miladyResult.licenseCode,
+                paymentId: miladyResult.paymentId,
+              });
+
+              // Update enrollment to mark Milady as enrolled
+              await supabaseClient
+                .from('student_enrollments')
+                .update({ 
+                  milady_enrolled: true,
+                  milady_access_url: miladyResult.studentCredentials?.loginUrl,
+                })
+                .eq('student_id', studentId)
+                .eq('program_id', programId);
+
+            } else {
+              logger.warn('[Webhook] ⚠️ Milady purchase failed', { error: miladyResult.error });
+            }
+          } catch (miladyError) {
+            logger.warn('[Webhook] ⚠️ Milady purchase error', miladyError);
+            // Don't fail - student access will be provisioned manually
+          }
+
         } catch (barberSetupError) {
           logger.warn('[Webhook] ⚠️ Barber apprenticeship setup error', barberSetupError);
           // Don't fail the whole webhook - enrollment is still active
+        }
+      }
+
+      // Handle other beauty apprenticeship programs (cosmetology, esthetician, nail tech)
+      const beautyPrograms = ['cosmetology-apprenticeship', 'esthetician-apprenticeship', 'nail-technician-apprenticeship'];
+      const programHours: Record<string, number> = {
+        'cosmetology-apprenticeship': 1500,
+        'esthetician-apprenticeship': 700,
+        'nail-technician-apprenticeship': 450,
+      };
+
+      if (beautyPrograms.includes(programSlug)) {
+        try {
+          // Create student_enrollments record
+          const { data: studentEnrollment, error: seError } = await supabaseClient
+            .from('student_enrollments')
+            .upsert({
+              student_id: studentId,
+              program_id: programId,
+              status: 'active',
+              required_hours: programHours[programSlug] || 1500,
+              transfer_hours: 0,
+              rapids_status: 'pending',
+              milady_enrolled: false,
+              started_at: new Date().toISOString(),
+            }, {
+              onConflict: 'student_id,program_id',
+            })
+            .select('id')
+            .single();
+
+          if (seError) {
+            logger.warn(`[Webhook] Failed to create student_enrollment for ${programSlug}`, seError);
+          }
+
+          // Process Milady payment and auto-enrollment
+          try {
+            const { processMiladyPayment } = await import('@/lib/vendors/milady-payment');
+            const miladyResult = await processMiladyPayment({
+              enrollmentId: studentEnrollment?.id || enrollmentId,
+              studentId,
+              programId,
+            });
+
+            if (miladyResult.success) {
+              logger.info(`[Webhook] ✅ Milady payment processed for ${programSlug}`, {
+                amount: miladyResult.amount,
+              });
+
+              await supabaseClient
+                .from('student_enrollments')
+                .update({ milady_enrolled: true })
+                .eq('student_id', studentId)
+                .eq('program_id', programId);
+            }
+          } catch (miladyError) {
+            logger.warn(`[Webhook] ⚠️ Milady payment error for ${programSlug}`, miladyError);
+          }
+
+          logger.info(`[Webhook] ✅ ${programSlug} setup complete`, { studentId, programId });
+        } catch (beautySetupError) {
+          logger.warn(`[Webhook] ⚠️ ${programSlug} setup error`, beautySetupError);
         }
       }
       } // Close else block for studentId/programId check

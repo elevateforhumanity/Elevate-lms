@@ -48,8 +48,8 @@ export default function ProgramsBioSitePage() {
     },
     {
       title: 'Barber & Beauty',
-      description: 'Barbering, Cosmetology, Esthetics',
-      href: '/programs/barber-apprenticeship',
+      description: 'Barbering, Cosmetology, Esthetics, Nails',
+      href: '/programs/beauty',
       image: '/hero-images/barber-beauty-category.jpg',
     },
     {
