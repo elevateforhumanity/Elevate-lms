@@ -6,7 +6,12 @@ import { ChevronDown, User as UserIcon, Settings, LogOut } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { User } from '@/types/user';
 import { getDashboardUrl } from '@/config/dashboard-routes';
-import DOMPurify from 'isomorphic-dompurify';
+
+// Simple sanitization without jsdom dependency
+function sanitizeText(text: string): string {
+  if (!text) return '';
+  return text.replace(/[<>]/g, '');
+}
 
 interface UserMenuProps {
   user: User | null;
@@ -78,7 +83,7 @@ export function UserMenu({ user, isLoading }: UserMenuProps) {
   }
 
   const displayName = user.firstName 
-    ? DOMPurify.sanitize(user.firstName) 
+    ? sanitizeText(user.firstName) 
     : user.email?.split('@')[0] || 'User';
   
   const initials = user.firstName?.[0] || user.email?.[0] || 'U';
