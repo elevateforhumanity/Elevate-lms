@@ -1,8 +1,19 @@
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { rateLimitNew as rateLimit, getClientIdentifier } from '@/lib/rateLimit';
 
 export async function GET(request: Request) {
   try {
+    // Rate limit: 60 requests per minute
+    const identifier = getClientIdentifier(request.headers);
+    const rateLimitResult = rateLimit(identifier, { limit: 60, window: 60000 });
+    
+    if (!rateLimitResult.ok) {
+      return NextResponse.json(
+        { error: 'Rate limit exceeded' },
+        { status: 429 }
+      );
+    }
     const { searchParams } = new URL(request.url);
     const limit = parseInt(searchParams.get('limit') || '10');
     const offset = parseInt(searchParams.get('offset') || '0');

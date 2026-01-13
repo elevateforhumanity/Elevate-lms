@@ -1,71 +1,59 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Briefcase, Building2, MapPin, Clock, Plus, Search, Filter, Eye, Edit, Trash2 } from 'lucide-react';
+import { createAdminClient } from '@/lib/supabase/admin';
 
 export const metadata: Metadata = {
   title: 'Job Postings | Admin | Elevate for Humanity',
   description: 'Manage job postings and employer partnerships',
 };
 
-export default function JobsPage() {
+async function getJobsData() {
+  const supabase = createAdminClient();
+  
+  const { data: jobPostings, count: jobCount } = await supabase
+    .from('job_postings')
+    .select('*', { count: 'exact' })
+    .order('created_at', { ascending: false })
+    .limit(10);
+
+  const { count: employerCount } = await supabase
+    .from('employers')
+    .select('*', { count: 'exact', head: true });
+
+  const activeJobs = jobPostings?.filter(j => j.status === 'active').length || 0;
+
+  return {
+    jobs: jobPostings || [],
+    stats: {
+      totalJobs: jobCount || 0,
+      activeJobs,
+      employers: employerCount || 0,
+    }
+  };
+}
+
+export default async function JobsPage() {
+  const { jobs: dbJobs, stats: dbStats } = await getJobsData();
+
   const stats = [
-    { label: 'Active Jobs', value: '34', icon: Briefcase },
-    { label: 'Partner Employers', value: '18', icon: Building2 },
+    { label: 'Active Jobs', value: String(dbStats.activeJobs), icon: Briefcase },
+    { label: 'Partner Employers', value: String(dbStats.employers), icon: Building2 },
     { label: 'Applications', value: '156', icon: Clock },
     { label: 'Placements', value: '89', icon: MapPin },
   ];
 
-  const jobs = [
-    { 
-      id: 1, 
-      title: 'Medical Assistant', 
-      company: 'Community Health Center', 
-      location: 'Indianapolis, IN',
-      type: 'Full-time',
-      applications: 12,
-      status: 'active',
-      posted: '2024-01-10'
-    },
-    { 
-      id: 2, 
-      title: 'HVAC Technician', 
-      company: 'Comfort Systems Inc', 
-      location: 'Carmel, IN',
-      type: 'Full-time',
-      applications: 8,
-      status: 'active',
-      posted: '2024-01-08'
-    },
-    { 
-      id: 3, 
-      title: 'CDL Driver - Class A', 
-      company: 'Midwest Logistics', 
-      location: 'Fishers, IN',
-      type: 'Full-time',
-      applications: 15,
-      status: 'active',
-      posted: '2024-01-05'
-    },
-    { 
-      id: 4, 
-      title: 'Licensed Barber', 
-      company: 'Elite Cuts Barbershop', 
-      location: 'Noblesville, IN',
-      type: 'Full-time',
-      applications: 6,
-      status: 'active',
-      posted: '2024-01-12'
-    },
-    { 
-      id: 5, 
-      title: 'Phlebotomist', 
-      company: 'LabCorp', 
-      location: 'Indianapolis, IN',
-      type: 'Part-time',
-      applications: 9,
-      status: 'paused',
-      posted: '2024-01-03'
-    },
+  const jobs = dbJobs.length > 0 ? dbJobs.map((j: any) => ({
+    id: j.id,
+    title: j.title || 'Untitled Position',
+    company: j.company_name || 'Unknown Company',
+    location: j.location || 'Indianapolis, IN',
+    type: j.employment_type || 'Full-time',
+    applications: j.application_count || 0,
+    status: j.status || 'active',
+    posted: j.created_at ? new Date(j.created_at).toISOString().split('T')[0] : 'N/A',
+  })) : [
+    { id: 1, title: 'No job postings yet', company: '', location: '', type: '', applications: 0, status: 'none', posted: '' },
   ];
 
   return (

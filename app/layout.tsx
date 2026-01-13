@@ -12,6 +12,7 @@ import { VersionGuard } from '@/components/VersionGuard';
 import CookieConsent from '@/components/CookieConsent';
 import { LiveChatWidget } from '@/components/support/LiveChatWidget';
 import { Inter } from 'next/font/google';
+import { GoogleAnalytics } from '@/components/analytics/google-analytics';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -208,6 +209,7 @@ export default function RootLayout({
           backgroundColor: '#ffffff',
         }}
       >
+        <GoogleAnalytics />
         <UnregisterSW />
         <VersionGuard />
         <ConditionalLayout>{children}</ConditionalLayout>

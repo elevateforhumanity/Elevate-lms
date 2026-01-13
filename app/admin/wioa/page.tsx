@@ -1,26 +1,62 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { FileText, Users, CheckCircle, Clock, AlertTriangle, Download, Filter, Search } from 'lucide-react';
+import { createAdminClient } from '@/lib/supabase/admin';
 
 export const metadata: Metadata = {
   title: 'WIOA Compliance | Admin | Elevate for Humanity',
   description: 'Manage WIOA compliance, eligibility verification, and reporting',
 };
 
-export default function WIOAPage() {
+async function getWIOAData() {
+  const supabase = createAdminClient();
+  
+  // Get enrollments with WIOA funding
+  const { data: enrollments, count } = await supabase
+    .from('enrollments')
+    .select(`
+      *,
+      profiles:user_id (full_name, email),
+      programs:program_id (name)
+    `, { count: 'exact' })
+    .eq('funding_source', 'WIOA')
+    .order('created_at', { ascending: false })
+    .limit(10);
+
+  const verified = enrollments?.filter(e => e.wioa_verified === true).length || 0;
+  const pending = enrollments?.filter(e => e.wioa_verified === null).length || 0;
+  const needsAttention = enrollments?.filter(e => e.wioa_verified === false).length || 0;
+
+  return {
+    participants: enrollments || [],
+    stats: {
+      total: count || 0,
+      verified,
+      pending,
+      needsAttention,
+    }
+  };
+}
+
+export default async function WIOAPage() {
+  const { participants: dbParticipants, stats: dbStats } = await getWIOAData();
+
   const stats = [
-    { label: 'Total WIOA Participants', value: '156', icon: Users, color: 'blue' },
-    { label: 'Pending Verification', value: '23', icon: Clock, color: 'yellow' },
-    { label: 'Verified Eligible', value: '128', icon: CheckCircle, color: 'green' },
-    { label: 'Needs Attention', value: '5', icon: AlertTriangle, color: 'red' },
+    { label: 'Total WIOA Participants', value: String(dbStats.total), icon: Users, color: 'blue' },
+    { label: 'Pending Verification', value: String(dbStats.pending), icon: Clock, color: 'yellow' },
+    { label: 'Verified Eligible', value: String(dbStats.verified), icon: CheckCircle, color: 'green' },
+    { label: 'Needs Attention', value: String(dbStats.needsAttention), icon: AlertTriangle, color: 'red' },
   ];
 
-  const participants = [
-    { id: 1, name: 'Maria Garcia', program: 'Healthcare', status: 'verified', eligibility: 'Low Income', date: '2024-01-10' },
-    { id: 2, name: 'James Wilson', program: 'HVAC', status: 'pending', eligibility: 'Veteran', date: '2024-01-12' },
-    { id: 3, name: 'Lisa Chen', program: 'CDL', status: 'verified', eligibility: 'Public Assistance', date: '2024-01-08' },
-    { id: 4, name: 'Robert Taylor', program: 'Barber', status: 'needs_docs', eligibility: 'Low Income', date: '2024-01-11' },
-    { id: 5, name: 'Amanda Johnson', program: 'Medical Assistant', status: 'verified', eligibility: 'Dislocated Worker', date: '2024-01-09' },
+  const participants = dbParticipants.length > 0 ? dbParticipants.map((p: any) => ({
+    id: p.id,
+    name: p.profiles?.full_name || 'Unknown',
+    program: p.programs?.name || 'Unknown Program',
+    status: p.wioa_verified === true ? 'verified' : p.wioa_verified === false ? 'needs_docs' : 'pending',
+    eligibility: p.wioa_eligibility_type || 'Not specified',
+    date: p.created_at ? new Date(p.created_at).toISOString().split('T')[0] : 'N/A',
+  })) : [
+    { id: 1, name: 'No WIOA participants yet', program: '', status: 'pending', eligibility: '', date: '' },
   ];
 
   const getStatusBadge = (status: string) => {

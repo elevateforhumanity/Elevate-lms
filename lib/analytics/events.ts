@@ -1,0 +1,247 @@
+// Analytics event tracking utilities
+
+type EventCategory = 
+  | 'engagement'
+  | 'conversion'
+  | 'navigation'
+  | 'form'
+  | 'video'
+  | 'download'
+  | 'error';
+
+interface TrackEventParams {
+  action: string;
+  category: EventCategory;
+  label?: string;
+  value?: number;
+  nonInteraction?: boolean;
+}
+
+// Track generic event
+export function trackEvent({ action, category, label, value, nonInteraction }: TrackEventParams) {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', action, {
+      event_category: category,
+      event_label: label,
+      value: value,
+      non_interaction: nonInteraction,
+    });
+  }
+}
+
+// Pre-defined conversion events
+export const ConversionEvents = {
+  // Application submitted
+  applicationSubmit: (programName?: string) => {
+    trackEvent({
+      action: 'application_submit',
+      category: 'conversion',
+      label: programName,
+    });
+  },
+
+  // Contact form submitted
+  contactSubmit: () => {
+    trackEvent({
+      action: 'contact_submit',
+      category: 'conversion',
+    });
+  },
+
+  // User signed up
+  signUp: (method?: string) => {
+    trackEvent({
+      action: 'sign_up',
+      category: 'conversion',
+      label: method,
+    });
+  },
+
+  // User logged in
+  login: (method?: string) => {
+    trackEvent({
+      action: 'login',
+      category: 'conversion',
+      label: method,
+    });
+  },
+
+  // Course enrollment
+  courseEnroll: (courseName: string, value?: number) => {
+    trackEvent({
+      action: 'course_enroll',
+      category: 'conversion',
+      label: courseName,
+      value,
+    });
+  },
+
+  // Purchase completed
+  purchase: (itemName: string, value: number) => {
+    trackEvent({
+      action: 'purchase',
+      category: 'conversion',
+      label: itemName,
+      value,
+    });
+  },
+
+  // Donation made
+  donate: (amount: number) => {
+    trackEvent({
+      action: 'donate',
+      category: 'conversion',
+      value: amount,
+    });
+  },
+};
+
+// Engagement events
+export const EngagementEvents = {
+  // Page scroll depth
+  scrollDepth: (percentage: number) => {
+    trackEvent({
+      action: 'scroll_depth',
+      category: 'engagement',
+      label: `${percentage}%`,
+      value: percentage,
+      nonInteraction: true,
+    });
+  },
+
+  // Time on page
+  timeOnPage: (seconds: number) => {
+    trackEvent({
+      action: 'time_on_page',
+      category: 'engagement',
+      value: seconds,
+      nonInteraction: true,
+    });
+  },
+
+  // Video play
+  videoPlay: (videoTitle: string) => {
+    trackEvent({
+      action: 'video_play',
+      category: 'video',
+      label: videoTitle,
+    });
+  },
+
+  // Video complete
+  videoComplete: (videoTitle: string) => {
+    trackEvent({
+      action: 'video_complete',
+      category: 'video',
+      label: videoTitle,
+    });
+  },
+
+  // File download
+  fileDownload: (fileName: string) => {
+    trackEvent({
+      action: 'file_download',
+      category: 'download',
+      label: fileName,
+    });
+  },
+
+  // External link click
+  externalLinkClick: (url: string) => {
+    trackEvent({
+      action: 'external_link_click',
+      category: 'navigation',
+      label: url,
+    });
+  },
+
+  // CTA click
+  ctaClick: (ctaName: string, location?: string) => {
+    trackEvent({
+      action: 'cta_click',
+      category: 'engagement',
+      label: `${ctaName}${location ? ` - ${location}` : ''}`,
+    });
+  },
+
+  // Search performed
+  search: (query: string) => {
+    trackEvent({
+      action: 'search',
+      category: 'engagement',
+      label: query,
+    });
+  },
+};
+
+// Form events
+export const FormEvents = {
+  // Form started
+  formStart: (formName: string) => {
+    trackEvent({
+      action: 'form_start',
+      category: 'form',
+      label: formName,
+    });
+  },
+
+  // Form field interaction
+  formFieldFocus: (formName: string, fieldName: string) => {
+    trackEvent({
+      action: 'form_field_focus',
+      category: 'form',
+      label: `${formName} - ${fieldName}`,
+    });
+  },
+
+  // Form error
+  formError: (formName: string, errorMessage: string) => {
+    trackEvent({
+      action: 'form_error',
+      category: 'error',
+      label: `${formName}: ${errorMessage}`,
+    });
+  },
+
+  // Form abandoned
+  formAbandon: (formName: string, lastField?: string) => {
+    trackEvent({
+      action: 'form_abandon',
+      category: 'form',
+      label: `${formName}${lastField ? ` - last: ${lastField}` : ''}`,
+    });
+  },
+};
+
+// Error tracking
+export const ErrorEvents = {
+  // JavaScript error
+  jsError: (message: string, source?: string) => {
+    trackEvent({
+      action: 'js_error',
+      category: 'error',
+      label: `${message}${source ? ` (${source})` : ''}`,
+      nonInteraction: true,
+    });
+  },
+
+  // API error
+  apiError: (endpoint: string, statusCode: number) => {
+    trackEvent({
+      action: 'api_error',
+      category: 'error',
+      label: `${endpoint} - ${statusCode}`,
+      nonInteraction: true,
+    });
+  },
+
+  // 404 page
+  notFound: (path: string) => {
+    trackEvent({
+      action: '404_error',
+      category: 'error',
+      label: path,
+      nonInteraction: true,
+    });
+  },
+};

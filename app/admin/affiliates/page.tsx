@@ -1,27 +1,61 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Users, DollarSign, TrendingUp, UserPlus, Search, Filter, MoreVertical } from 'lucide-react';
+import { createAdminClient } from '@/lib/supabase/admin';
 
 export const metadata: Metadata = {
   title: 'Affiliate Management | Admin | Elevate for Humanity',
   description: 'Manage affiliate partners and track referral performance',
 };
 
-export default function AffiliatesPage() {
-  // Mock data for display
+async function getAffiliateData() {
+  const supabase = createAdminClient();
+  
+  // Get affiliates from database
+  const { data: affiliates, count } = await supabase
+    .from('affiliate_applications')
+    .select('*', { count: 'exact' })
+    .order('created_at', { ascending: false })
+    .limit(10);
+
+  // Get payouts
+  const { data: payouts } = await supabase
+    .from('affiliate_payouts')
+    .select('amount')
+    .eq('status', 'paid');
+
+  const totalPaid = payouts?.reduce((sum, p) => sum + (p.amount || 0), 0) || 0;
+  const activeCount = affiliates?.filter(a => a.status === 'approved').length || 0;
+
+  return {
+    affiliates: affiliates || [],
+    stats: {
+      total: count || 0,
+      active: activeCount,
+      totalPaid,
+    }
+  };
+}
+
+export default async function AffiliatesPage() {
+  const { affiliates: dbAffiliates, stats: dbStats } = await getAffiliateData();
+
   const stats = [
-    { label: 'Total Affiliates', value: '47', icon: Users, change: '+12%' },
-    { label: 'Active This Month', value: '32', icon: TrendingUp, change: '+8%' },
+    { label: 'Total Affiliates', value: String(dbStats.total), icon: Users, change: '+12%' },
+    { label: 'Active', value: String(dbStats.active), icon: TrendingUp, change: '+8%' },
     { label: 'Total Referrals', value: '284', icon: UserPlus, change: '+23%' },
-    { label: 'Commissions Paid', value: '$12,450', icon: DollarSign, change: '+15%' },
+    { label: 'Commissions Paid', value: `$${dbStats.totalPaid.toLocaleString()}`, icon: DollarSign, change: '+15%' },
   ];
 
-  const affiliates = [
-    { id: 1, name: 'John Smith', email: 'john@example.com', referrals: 45, earnings: '$2,250', status: 'active' },
-    { id: 2, name: 'Sarah Johnson', email: 'sarah@example.com', referrals: 38, earnings: '$1,900', status: 'active' },
-    { id: 3, name: 'Mike Williams', email: 'mike@example.com', referrals: 29, earnings: '$1,450', status: 'active' },
-    { id: 4, name: 'Emily Brown', email: 'emily@example.com', referrals: 22, earnings: '$1,100', status: 'pending' },
-    { id: 5, name: 'David Lee', email: 'david@example.com', referrals: 18, earnings: '$900', status: 'active' },
+  const affiliates = dbAffiliates.length > 0 ? dbAffiliates.map((a: any) => ({
+    id: a.id,
+    name: a.company_name || a.contact_name || 'Unknown',
+    email: a.email || '',
+    referrals: a.referral_count || 0,
+    earnings: `$${(a.total_earnings || 0).toLocaleString()}`,
+    status: a.status || 'pending',
+  })) : [
+    { id: 1, name: 'No affiliates yet', email: '', referrals: 0, earnings: '$0', status: 'pending' },
   ];
 
   return (
