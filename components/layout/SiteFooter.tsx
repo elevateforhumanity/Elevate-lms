@@ -113,7 +113,7 @@ export default function SiteFooter() {
           <div>
             <h3 className="text-white font-bold text-sm mb-4">Portals</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/client-portal" className="hover:text-white transition">Student Portal</Link></li>
+              <li><Link href="/student-portal" className="hover:text-white transition">Student Portal</Link></li>
               <li><Link href="/admin" className="hover:text-white transition">Admin</Link></li>
               <li><Link href="/staff-portal" className="hover:text-white transition">Staff</Link></li>
               <li><Link href="/lms" className="hover:text-white transition">LMS</Link></li>
@@ -156,7 +156,7 @@ export default function SiteFooter() {
                 href="/sitemap-page"
                 className="hover:text-white transition"
               >
-                Site Map
+                Sitemap
               </Link>
             </div>
             <p className="text-xs text-gray-400">

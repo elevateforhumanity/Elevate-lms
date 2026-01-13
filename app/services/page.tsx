@@ -303,7 +303,7 @@ export default function ServicesPage() {
       {/* Footer */}
       <footer className="py-8 px-4 bg-gray-100 text-center border-t border-gray-200">
         <p className="text-sm text-black">
-          © 2025 Elevate for Humanity. All rights reserved.
+          © {new Date().getFullYear()} Elevate for Humanity. All rights reserved.
         </p>
       </footer>
     </div>

@@ -902,7 +902,7 @@ export default function SupersonicMarketingPage() {
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
             <p>
-              © 2025 Supersonic Fast Cash. Powered by EPS Financial & Pathward
+              © {new Date().getFullYear()} Supersonic Fast Cash. Powered by EPS Financial & Pathward
               Bank.
             </p>
           </div>

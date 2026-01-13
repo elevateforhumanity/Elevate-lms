@@ -103,7 +103,7 @@ export default function SimpleFooter() {
             Currently serving Indiana residents.
           </p>
           <p className="text-sm text-gray-500">
-            © 2025 Elevate for Humanity. All rights reserved.
+            © {new Date().getFullYear()} Elevate for Humanity. All rights reserved.
           </p>
         </div>
       </div>

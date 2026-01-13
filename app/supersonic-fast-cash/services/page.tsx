@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { SubpageHero } from '../components/SubpageHero';
-import { FileText, DollarSign, Building } from 'lucide-react';
+import { FileText, DollarSign, Building, Calculator, Shield, Clock, CheckCircle } from 'lucide-react';
 
 export const metadata = {
   title: 'Tax Services | Supersonic Fast Cash',
@@ -12,113 +11,94 @@ export const metadata = {
   },
 };
 
+const services = [
+  {
+    icon: FileText,
+    name: 'Individual Tax Preparation',
+    price: 'Contact for Pricing',
+    description: 'Personal tax returns filed accurately and on time',
+    features: [
+      'W-2 and 1099 income',
+      'Itemized deductions',
+      'Investment income',
+      'Rental property',
+      'Self-employment income',
+      'E-file included',
+    ],
+  },
+  {
+    icon: DollarSign,
+    name: 'Tax Refund Advance',
+    price: 'Up to $7,500',
+    description: 'Get your refund faster with our advance program',
+    features: [
+      'Same-day funding',
+      'No credit check',
+      'Simple approval',
+      'Tax prep included',
+      'Direct deposit or check',
+      'Fees paid from refund',
+    ],
+  },
+  {
+    icon: Building,
+    name: 'Business Tax Returns',
+    price: 'Contact for Pricing',
+    description: 'Complete business tax solutions for all entity types',
+    features: [
+      'LLC, S-Corp, C-Corp',
+      'Partnership returns',
+      'Sole proprietor',
+      'Quarterly estimates',
+      'Bookkeeping services',
+      'Payroll tax filing',
+    ],
+  },
+  {
+    icon: Calculator,
+    name: 'Bookkeeping Services',
+    price: 'Starting at $199/month',
+    description: 'Professional bookkeeping to keep your business organized',
+    features: [
+      'Monthly reconciliation',
+      'Financial statements',
+      'Expense tracking',
+      'Invoice management',
+      'QuickBooks setup',
+      'Year-end reports',
+    ],
+  },
+  {
+    icon: Shield,
+    name: 'IRS Audit Protection',
+    price: '$49/year',
+    description: 'Licensed Enrolled Agent representation before the IRS',
+    features: [
+      'Licensed EA representation',
+      'IRS audit defense',
+      'State audit support',
+      'Document preparation',
+      'Direct IRS communication',
+      'Resolution assistance',
+    ],
+  },
+  {
+    icon: Clock,
+    name: 'Prior Year Returns',
+    price: 'Contact for Pricing',
+    description: 'Catch up on unfiled tax returns from previous years',
+    features: [
+      'Any tax year',
+      'Penalty reduction help',
+      'Payment plan setup',
+      'IRS negotiation',
+      'State returns included',
+      'Fast turnaround',
+    ],
+  },
+];
+
 export default function ServicesPage() {
-  return (
-    <div className="min-h-screen bg-white">
-      <SubpageHero
-        badge="🎯 Professional Tax Services"
-        title="Our Services"
-        description="Complete tax preparation and financial services for individuals and businesses"
-      />
-      
-      {/* Rest of page content */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <p className="text-center text-gray-600 mb-12">Services content coming soon...</p>
-      </div>
-    </div>
-  );
-}
-
-function ServicesPageOld() {
-  const services = [
-    {
-      icon: FileText,
-      name: 'Individual Tax Preparation',
-      price: 'Contact for Pricing',
-      description: 'Personal tax returns filed accurately and on time',
-      features: [
-        'W-2 and 1099 income',
-        'Itemized deductions',
-        'Investment income',
-        'Rental property',
-        'Self-employment income',
-        'E-file included',
-      ],
-    },
-    {
-      icon: DollarSign,
-      name: 'Tax Refund Advance',
-      price: 'Up to $7,500',
-      description: 'Get your refund faster with our advance program',
-      features: [
-        'Same-day funding',
-        'No credit check',
-        'Simple approval',
-        'Tax prep included',
-        'Direct deposit or check',
-        'Fees paid from refund',
-      ],
-    },
-    {
-      icon: Building,
-      name: 'Business Tax Returns',
-      price: 'Contact for Pricing',
-      description: 'Complete business tax solutions for all entity types',
-      features: [
-        'LLC, S-Corp, C-Corp',
-        'Partnership returns',
-        'Sole proprietor',
-        'Quarterly estimates',
-        'Bookkeeping services',
-        'Payroll tax filing',
-      ],
-    },
-    {
-      icon: Calculator,
-      name: 'Bookkeeping Services',
-      price: 'Starting at $199/month',
-      description: 'Professional bookkeeping to keep your business organized',
-      features: [
-        'Monthly reconciliation',
-        'Financial statements',
-        'Expense tracking',
-        'Invoice management',
-        'QuickBooks setup',
-        'Year-end reports',
-      ],
-    },
-    {
-      icon: Shield,
-      name: 'IRS Audit Protection',
-      price: '$49/year',
-      description: 'Licensed Enrolled Agent representation before the IRS',
-      features: [
-        'Licensed EA representation',
-        'IRS audit defense',
-        'State audit support',
-        'Document preparation',
-        'Direct IRS communication',
-        'Resolution assistance',
-        'Unlimited consultations',
-        'Appeals representation',
-      ],
-    },
-    {
-      icon: Clock,
-      name: 'Prior Year Returns',
-      price: 'Contact for Pricing',
-      description: 'Catch up on unfiled tax returns from previous years',
-      features: [
-        'Any tax year',
-        'Penalty reduction help',
-        'Payment plan setup',
-        'IRS negotiation',
-        'State returns included',
-        'Fast turnaround',
-      ],
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
@@ -282,3 +262,4 @@ function ServicesPageOld() {
     </div>
   );
 }
+

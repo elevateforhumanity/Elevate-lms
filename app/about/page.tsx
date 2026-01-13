@@ -71,7 +71,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <main id="main-content">
       {/* Stats Section */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6">
@@ -379,7 +378,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      </main>
     </div>
   );
 }

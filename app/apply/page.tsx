@@ -78,7 +78,7 @@ export default function Apply() {
         ]}
         imageOnRight={true}
       />
-    <main id="application" className="max-w-3xl mx-auto px-6 py-12">
+    <section className="max-w-3xl mx-auto px-6 py-12">
       <h1 className="text-3xl font-bold text-black mb-4">
         Start Your Application
       </h1>
@@ -236,7 +236,7 @@ export default function Apply() {
           {loading ? 'Submitting...' : 'Submit Application'}
         </button>
       </form>
-    </main>
+    </section>
     </>
   );
 }

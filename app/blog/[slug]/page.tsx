@@ -1,245 +1,257 @@
 import { Metadata } from 'next';
-import { PolicyReference } from '@/components/compliance/PolicyReference';
-import { POLICIES } from '@/lib/policies';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { createAdminClient } from '@/lib/supabase/server';
+import { SocialShare } from '@/components/blog/SocialShare';
+import { ArrowLeft, Calendar, User, Clock, Tag } from 'lucide-react';
 
 type Params = Promise<{ slug: string }>;
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
-  const { slug } = await params;
+async function getBlogPost(slug: string) {
+  const supabase = createAdminClient();
+  const { data: post, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .single();
+  
+  if (error || !post) {
+    return null;
+  }
+  
+  // Increment view count
+  await supabase
+    .from('blog_posts')
+    .update({ views: (post.views || 0) + 1 })
+    .eq('id', post.id);
+  
+  return post;
+}
 
+async function getRelatedPosts(category: string, currentSlug: string) {
+  const supabase = createAdminClient();
+  const { data: posts } = await supabase
+    .from('blog_posts')
+    .select('title, slug, excerpt, image, published_at')
+    .eq('status', 'published')
+    .eq('category', category)
+    .neq('slug', currentSlug)
+    .order('published_at', { ascending: false })
+    .limit(3);
+  
+  return posts || [];
+}
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
+  
+  if (!post) {
+    return {
+      title: 'Post Not Found | Elevate For Humanity',
+    };
+  }
+  
   return {
+    title: `${post.title} | Elevate For Humanity Blog`,
+    description: post.excerpt,
     alternates: {
       canonical: `https://elevateforhumanity.institute/blog/${slug}`,
     },
-    title: `${slug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())} | Elevate For Humanity`,
-    description: `Explore ${slug.replace(/-/g, ' ')} and discover opportunities for career growth and development.`,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: `https://elevateforhumanity.institute/blog/${slug}`,
+      type: 'article',
+      publishedTime: post.published_at,
+      authors: [post.author_name],
+      images: [
+        {
+          url: post.image || '/images/blog/default.jpg',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image || '/images/blog/default.jpg'],
+    },
   };
 }
 
 export default async function BlogPostPage({ params }: { params: Params }) {
   const { slug } = await params;
-
-  // Format slug for display
-  const title = slug
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, (l) => l.toUpperCase());
+  const post = await getBlogPost(slug);
+  
+  if (!post) {
+    notFound();
+  }
+  
+  const relatedPosts = await getRelatedPosts(post.category, slug);
+  const postUrl = `https://elevateforhumanity.institute/blog/${slug}`;
+  
+  const publishedDate = post.published_at 
+    ? new Date(post.published_at).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : 'Recently';
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
+      <section className="relative h-[400px] md:h-[500px] flex items-end overflow-hidden">
         <Image
-          src="/images/artlist/hero-training-1.jpg"
-          alt={title}
+          src={post.image || '/images/blog/default.jpg'}
+          alt={post.title}
           fill
           className="object-cover"
-          quality={100}
+          quality={90}
           priority
           sizes="100vw"
         />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-            {title}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        <div className="relative z-10 max-w-4xl mx-auto px-6 pb-12 w-full">
+          <Link 
+            href="/blog" 
+            className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-4 transition"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Blog
+          </Link>
+          <span className="inline-block px-3 py-1 bg-orange-500 text-white text-sm font-bold rounded-full mb-4">
+            {post.category}
+          </span>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+            {post.title}
           </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 text-gray-100">
-            Explore {title.toLowerCase()} and discover opportunities for career
-            growth and development.
+          <div className="flex flex-wrap items-center gap-4 text-white/80 text-sm">
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4" />
+              <span>{post.author_name}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4" />
+              <span>{publishedDate}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4" />
+              <span>{post.reading_time || 5} min read</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Content */}
+      <article className="max-w-4xl mx-auto px-6 py-12">
+        <div className="mb-8 pb-8 border-b border-gray-200">
+          <SocialShare url={postUrl} title={post.title} description={post.excerpt} />
+        </div>
+        
+        <div 
+          className="prose prose-lg max-w-none prose-headings:text-black prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-black"
+          dangerouslySetInnerHTML={{ __html: formatContent(post.content) }}
+        />
+        
+        {post.tags && post.tags.length > 0 && (
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <div className="flex items-center gap-2 flex-wrap">
+              <Tag className="w-5 h-5 text-gray-400" />
+              {post.tags.map((tag: string) => (
+                <span 
+                  key={tag}
+                  className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+        
+        <div className="mt-8 pt-8 border-t border-gray-200">
+          <p className="text-gray-600 mb-4">Found this helpful? Share it:</p>
+          <SocialShare url={postUrl} title={post.title} description={post.excerpt} />
+        </div>
+      </article>
+
+      {relatedPosts.length > 0 && (
+        <section className="bg-gray-50 py-16">
+          <div className="max-w-7xl mx-auto px-6">
+            <h2 className="text-2xl font-bold text-black mb-8">Related Articles</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {relatedPosts.map((related: any) => (
+                <Link
+                  key={related.slug}
+                  href={`/blog/${related.slug}`}
+                  className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition group"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={related.image || '/images/blog/default.jpg'}
+                      alt={related.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-bold text-black group-hover:text-blue-600 transition line-clamp-2">
+                      {related.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm mt-2 line-clamp-2">
+                      {related.excerpt}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Start Your Career Journey?</h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Join hundreds of students who have transformed their careers through our free training programs.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-colors min-h-[44px] inline-flex items-center justify-center"
+              href="/apply"
+              className="px-8 py-4 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-100 transition"
             >
-              Get Started
+              Apply Now - It's Free
             </Link>
             <Link
               href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-colors min-h-[44px] inline-flex items-center justify-center"
+              className="px-8 py-4 bg-blue-700 text-white font-bold rounded-lg hover:bg-blue-800 transition border-2 border-white"
             >
-              View Programs
+              Browse Programs
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-12 sm:py-16">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center mb-12 sm:mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">{title}</h2>
-                <p className="text-black mb-6">
-                  Explore {title.toLowerCase()} and discover opportunities for
-                  career growth and development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="relative h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-2.jpg"
-                  alt={title}
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-
-            {/* Feature Cards */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
           </div>
         </div>
       </section>
     </div>
   );
+}
+
+function formatContent(content: string): string {
+  if (!content) return '';
+  
+  return content
+    .replace(/^### (.*$)/gim, '<h3 class="text-xl font-bold mt-8 mb-4">$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold mt-10 mb-4">$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold mt-12 mb-6">$1</h1>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-blue-600 hover:underline">$1</a>')
+    .replace(/^- (.*$)/gim, '<li class="ml-4">$1</li>')
+    .replace(/\n\n/g, '</p><p class="mb-4">');
 }

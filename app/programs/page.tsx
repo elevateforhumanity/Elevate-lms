@@ -140,8 +140,7 @@ export default function ProgramsBioSitePage() {
       </section>
 
       {/* Program Cards Grid */}
-      <main id="main-content">
-      <section className="pb-16 px-4 sm:px-6 lg:px-8">
+      <section id="programs" className="pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {links.map((link) => {
@@ -208,11 +207,10 @@ export default function ProgramsBioSitePage() {
             </a>
           </p>
           <p className="text-xs text-gray-400">
-            © 2025 Elevate for Humanity. All rights reserved.
+            © {new Date().getFullYear()} Elevate for Humanity. All rights reserved.
           </p>
         </div>
       </section>
-      </main>
     </div>
   );
 }

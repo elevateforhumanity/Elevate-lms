@@ -29,7 +29,6 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <main id="main-content">
       {/* Hero Section */}
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[100vh] sm:min-h-[70vh] md:min-h-[75vh] w-full overflow-hidden">
@@ -375,7 +374,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      </main>
     </div>
   );
 }

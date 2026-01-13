@@ -9,6 +9,7 @@ import { ClientProviders } from '@/components/ClientProviders';
 import { UnregisterServiceWorker } from '@/components/UnregisterServiceWorker';
 import { VersionGuard } from '@/components/VersionGuard';
 import CookieConsent from '@/components/CookieConsent';
+import { LiveChatWidget } from '@/components/support/LiveChatWidget';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({
@@ -215,6 +216,7 @@ export default function RootLayout({
         <ConditionalLayout>{children}</ConditionalLayout>
         <ClientProviders />
         <CookieConsent />
+        <LiveChatWidget />
 
         <Toaster
           position="top-right"
