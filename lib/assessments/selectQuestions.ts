@@ -8,11 +8,11 @@ interface Question {
   question_type?: string;
   points?: number;
   time_limit?: number;
-  options?: unknown[];
-  correct_answer?: unknown;
+  options?: any[];
+  correct_answer?: any;
   explanation?: string;
   tags?: string[];
-  [key: string]: unknown;
+  [key: string]: any;
 }
 
 export async function selectQuestionsForExamAttempt(

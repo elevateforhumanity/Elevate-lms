@@ -62,7 +62,7 @@ export default function VideoUploader({
       if (onUploadComplete && data.enhancedUrl) {
         onUploadComplete(data.enhancedUrl);
       }
-    } catch (err: unknown) {
+    } catch (err: any) {
       // Error: $1
       setError(
         (err instanceof Error ? err.message : String(err)) ||

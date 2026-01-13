@@ -155,7 +155,7 @@ export async function generateCertificate(data: CertificateData): Promise<Buffer
     doc.setFontSize(7);
     doc.setTextColor(100, 100, 100);
     doc.text('Scan to verify', pageWidth - 1.1, 1.6, { align: 'center' });
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
   }
 

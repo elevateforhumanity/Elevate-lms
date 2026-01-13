@@ -28,7 +28,7 @@ export default function AddToCartButton({ product, quantity = 1, className }: Ad
       setTimeout(() => {
         setShowSuccess(false);
       }, 2000);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     } finally {
       setIsAdding(false);

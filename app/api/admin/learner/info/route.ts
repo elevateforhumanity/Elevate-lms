@@ -12,7 +12,7 @@ async function getHandler(
   req: NextRequest,
   context: {
     params: Promise<Record<string, string>>;
-    user: Record<string, unknown>;
+    user: Record<string, any>;
   }
 ) {
   const user = context.user;
@@ -34,7 +34,7 @@ async function getHandler(
       id: userData.id,
       email: userData.email,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error fetching user:', error);
     return new Response('Failed to fetch user', { status: 500 });
   }

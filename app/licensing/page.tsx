@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Licensing | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 import Link from 'next/link';
 
 export const revalidate = 3600; // 1 hour ISR cache

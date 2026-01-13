@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Admin Email Marketing Analytics | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 "use client";
 
 import React from 'react';
@@ -89,7 +96,7 @@ export default function AnalyticsPage() {
       if (result.success) {
         setData(result.data);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
     // Error handled
   } finally {
       setLoading(false);

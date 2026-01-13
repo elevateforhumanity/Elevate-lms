@@ -89,7 +89,7 @@ export async function GET(req: Request) {
             error: sendResult.error,
           });
         }
-      } catch (error: unknown) {
+      } catch (error: any) {
         logger.error(
           `Error processing campaign ${campaign.id}:`,
           error instanceof Error ? error : new Error(String(error))
@@ -119,7 +119,7 @@ export async function GET(req: Request) {
       processed: campaigns.length,
       results,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Scheduler error:',
       error instanceof Error ? error : new Error(String(error))

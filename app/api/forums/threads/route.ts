@@ -39,7 +39,7 @@ export async function GET(req: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ threads: data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error fetching threads:', error);
     return NextResponse.json(
       { error: 'Failed to fetch threads' },
@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ thread: data }, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error creating thread:', error);
     return NextResponse.json(
       { error: 'Failed to create thread' },

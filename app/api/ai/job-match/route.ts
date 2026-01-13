@@ -75,7 +75,7 @@ Provide specific, actionable recommendations.`,
     });
 
     return NextResponse.json({ matches });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Job match error:',
       error instanceof Error ? error : new Error(String(error))

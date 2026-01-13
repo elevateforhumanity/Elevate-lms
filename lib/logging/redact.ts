@@ -15,8 +15,8 @@ const SENSITIVE_KEYS = [
   'serviceRole',
 ];
 
-export function redactSecrets(obj: Record<string, unknown>): Record<string, unknown> {
-  const redacted: Record<string, unknown> = {};
+export function redactSecrets(obj: Record<string, any>): Record<string, any> {
+  const redacted: Record<string, any> = {};
 
   for (const [key, value] of Object.entries(obj)) {
     const lowerKey = key.toLowerCase();

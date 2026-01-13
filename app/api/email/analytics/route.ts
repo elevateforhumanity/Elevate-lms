@@ -172,7 +172,7 @@ export async function GET(req: Request) {
         topPerformers,
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Analytics error:',
       error instanceof Error ? error : new Error(String(error))

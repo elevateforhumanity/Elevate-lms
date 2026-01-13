@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
   }
 
   // Filter by search query
-  const filtered = (data || []).filter((row: Record<string, unknown>) => {
+  const filtered = (data || []).filter((row: Record<string, any>) => {
     if (!searchQuery) return true;
     return (
       (row.learner_email || '').toLowerCase().includes(searchQuery) ||

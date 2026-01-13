@@ -168,7 +168,7 @@ export async function GET() {
 
     results.status = {
       drake_integration: drakeConfigured ? 'operational' : 'optional',
-      jotform_integration: !!jotformApiKey ? 'operational' : 'optional',
+      jotform_integration: jotformApiKey ? 'operational' : 'optional',
       routes: 'operational',
       features: drakeConfigured ? 'full' : 'partial',
       overall: results.summary.all_required_passed ? 'operational' : 'degraded',
@@ -177,7 +177,7 @@ export async function GET() {
     results.production_ready = {
       core_routes: '10/10',
       drake_integration: drakeConfigured ? '10/10' : '0/10 (optional)',
-      jotform_integration: !!jotformApiKey ? '10/10' : '0/10 (optional)',
+      jotform_integration: jotformApiKey ? '10/10' : '0/10 (optional)',
       graceful_degradation: '10/10',
       overall: '10/10 - OPERATIONAL (with or without Drake) ✅',
     };

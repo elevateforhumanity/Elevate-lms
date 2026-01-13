@@ -32,7 +32,7 @@ export async function POST(
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { response } = body;
 
     if (!response) {
@@ -83,7 +83,7 @@ export async function POST(
       success: true,
       review,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

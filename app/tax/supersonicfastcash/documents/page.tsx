@@ -76,7 +76,7 @@ export default function DocumentUploadPage() {
               : f
           )
         );
-      } catch (error: unknown) {
+      } catch (error: any) {
         // Update file status to error
         setFiles((prev) =>
           prev.map((f) =>

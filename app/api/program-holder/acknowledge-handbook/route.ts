@@ -69,7 +69,7 @@ export async function POST(req: Request) {
       message: 'Handbook acknowledgement recorded',
       data,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       '[Acknowledge Handbook] Error:',
       err instanceof Error ? err : new Error(String(err))

@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
       sessionId: session.id,
       url: session.url,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         error:

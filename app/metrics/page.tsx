@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Metrics | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 import { ComplianceBar } from '@/components/ComplianceBar';
 
 export const revalidate = 3600; // 1 hour ISR cache

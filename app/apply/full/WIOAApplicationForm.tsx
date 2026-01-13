@@ -133,7 +133,7 @@ export default function WIOAApplicationForm() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const updateField = (field: keyof ApplicationFormState, value: unknown) => {
+  const updateField = (field: keyof ApplicationFormState, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -260,7 +260,7 @@ export default function WIOAApplicationForm() {
 
       // Redirect to success page with reference number
       window.location.href = `/apply/success?ref=${data.referenceNumber}`;
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError(
         err.message || 'Failed to submit application. Please try again.'
       );
@@ -448,7 +448,7 @@ export default function WIOAApplicationForm() {
 }
 
 // Step Components (to be implemented)
-function Step1Eligibility({ formData, updateField }: unknown) {
+function Step1Eligibility({ formData, updateField }: any) {
   return (
     <div className="space-y-6">
       <div>
@@ -513,7 +513,7 @@ function Step2PersonalInfo({
   formData,
   updateField,
   toggleArrayField,
-}: unknown) {
+}: any) {
   const raceOptions = [
     'American Indian/Alaska Native',
     'Asian',
@@ -666,7 +666,7 @@ function Step2PersonalInfo({
   );
 }
 
-function Step3IncomeWIOA({ formData, updateField, toggleArrayField }: unknown) {
+function Step3IncomeWIOA({ formData, updateField, toggleArrayField }: any) {
   const publicAssistanceOptions = [
     'SNAP (Food Stamps)',
     'TANF (Cash Assistance)',
@@ -816,7 +816,7 @@ function Step4Authorization({
   formData,
   updateField,
   toggleArrayField,
-}: unknown) {
+}: any) {
   const workAuthDocs = [
     'U.S. Passport',
     'Birth Certificate',
@@ -970,7 +970,7 @@ function Step4Authorization({
   );
 }
 
-function Step5Program({ formData, updateField }: unknown) {
+function Step5Program({ formData, updateField }: any) {
   const programs = [
     'CNA (Certified Nursing Assistant)',
     'HVAC Technician',
@@ -1099,7 +1099,7 @@ function Step5Program({ formData, updateField }: unknown) {
   );
 }
 
-function Step6Review({ formData, updateField }: unknown) {
+function Step6Review({ formData, updateField }: any) {
   return (
     <div className="space-y-6">
       <div>

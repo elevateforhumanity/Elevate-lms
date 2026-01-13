@@ -48,7 +48,7 @@ export default function NotificationPreferencesForm({
 
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
-    } catch (error: unknown) {
+    } catch (error: any) {
       alert('Failed to save preferences. Please try again.');
     } finally {
       setSaving(false);

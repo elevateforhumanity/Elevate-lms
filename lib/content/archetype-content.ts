@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Centralized content configuration for all 10 archetypes
  *

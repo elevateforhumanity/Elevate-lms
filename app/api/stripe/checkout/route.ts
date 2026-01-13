@@ -147,7 +147,7 @@ export async function POST(req: Request) {
 
     // Redirect to Stripe Checkout
     return NextResponse.redirect(session.url, 303);
-  } catch (err: unknown) {
+  } catch (err: any) {
     // Error: $1
     return NextResponse.json(
       { err: toErrorMessage(err) || 'Internal server err' },

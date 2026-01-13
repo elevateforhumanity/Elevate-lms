@@ -83,10 +83,10 @@ export async function GET(req: NextRequest) {
     let filteredStudents = students || [];
 
     if (program || status) {
-      filteredStudents = filteredStudents.filter((student: unknown) => {
+      filteredStudents = filteredStudents.filter((student: any) => {
         if (!student.enrollments || student.enrollments.length === 0) return false;
 
-        return student.enrollments.some((enrollment: unknown) => {
+        return student.enrollments.some((enrollment: any) => {
           const programMatch = !program || enrollment.program?.slug === program;
           const statusMatch = !status || enrollment.status === status;
           return programMatch && statusMatch;
@@ -126,7 +126,7 @@ export async function GET(req: NextRequest) {
         headers.push('Tuition Amount', 'Paid Amount', 'Balance');
       }
 
-      const rows = filteredStudents.flatMap((student: unknown) => {
+      const rows = filteredStudents.flatMap((student: any) => {
         if (!student.enrollments || student.enrollments.length === 0) {
           // Student with no enrollments
           return [[
@@ -146,7 +146,7 @@ export async function GET(req: NextRequest) {
         }
 
         // One row per enrollment
-        return student.enrollments.map((enrollment: unknown) => {
+        return student.enrollments.map((enrollment: any) => {
           const row = [
             student.id,
             student.full_name || '',
@@ -200,7 +200,7 @@ export async function GET(req: NextRequest) {
       exported_at: new Date().toISOString(),
     });
 
-  } catch (err: unknown) {
+  } catch (err: any) {
     // Error: $1
     return NextResponse.json(
       { error: (err as Error).message || 'Failed to export students' },
@@ -209,7 +209,7 @@ export async function GET(req: NextRequest) {
   }
 }
 
-function escapeCsvField(field: unknown): string {
+function escapeCsvField(field: any): string {
   if (field == null || field === '') return '';
   const str = String(field);
   if (str.includes(',') || str.includes('"') || str.includes('\n')) {
@@ -218,7 +218,7 @@ function escapeCsvField(field: unknown): string {
   return str;
 }
 
-function formatDate(date: unknown): string {
+function formatDate(date: any): string {
   if (!date) return '';
   try {
     return new Date(date).toISOString().split('T')[0];

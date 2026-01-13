@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
   }
 
   const searchLower = query.toLowerCase();
-  let results: unknown[] = [];
+  let results: any[] = [];
 
   try {
     // Search programs from static data
@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ results, query });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { results: [], query, error: 'Search failed' },
       { status: 500 }

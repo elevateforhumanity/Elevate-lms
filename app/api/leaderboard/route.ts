@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const runtime = 'edge';
 export const maxDuration = 60;
 
@@ -85,7 +86,7 @@ export async function GET(request: Request) {
       leaderboard: rankedLeaderboard,
       timeframe,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

@@ -42,7 +42,7 @@ export default function SiteAnalytics() {
       const response = await fetch('/api/reporting/site-metrics');
       const data = await response.json();
       setMetrics(data);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     } finally {
       setLoading(false);

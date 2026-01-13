@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
   let learner;
   try {
     learner = await getUserById(user_id);
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error fetching user:', error);
     return new Response('Failed to fetch user', { status: 500 });
   }

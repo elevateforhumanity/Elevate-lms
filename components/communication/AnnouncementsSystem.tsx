@@ -23,7 +23,7 @@ interface AnnouncementsSystemProps {
   courseId: string;
   announcements?: Announcement[];
   canCreate?: boolean;
-  onCreateAnnouncement?: (data: unknown) => void;
+  onCreateAnnouncement?: (data: any) => void;
 }
 
 export function AnnouncementsSystem({

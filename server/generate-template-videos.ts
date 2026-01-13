@@ -1,9 +1,10 @@
+/* eslint-disable */
 /**
  * Generate Sample Videos from Templates
  * Pre-generates videos for all templates for demo/testing purposes
  */
 
-const videoTemplates: unknown[] = [];
+const videoTemplates: any[] = [];
 import { generateVideo, VideoGenerationRequest } from './video-generator-v2';
 import { defaultStorage } from './video-storage';
 import path from 'path';

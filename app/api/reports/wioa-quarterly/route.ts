@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
       },
       data: reportData,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('WIOA report generation error:', error);
     return NextResponse.json(
       { error: 'Failed to generate report' },
@@ -89,7 +89,7 @@ export async function GET(request: NextRequest) {
  * Generate quarterly performance report
  */
 async function generateQuarterlyReport(
-  supabase: unknown,
+  supabase: any,
   startDate: Date,
   endDate: Date,
   programId: string | null
@@ -198,7 +198,7 @@ async function generateQuarterlyReport(
       .select('id, title');
 
     programBreakdown = await Promise.all(
-      (programs || []).map(async (program: Record<string, unknown>) => {
+      (programs || []).map(async (program: Record<string, any>) => {
         const { data: programEnrollments } = await supabase
           .from('enrollments')
           .select('id, status')
@@ -212,7 +212,7 @@ async function generateQuarterlyReport(
           enrolled: programEnrollments?.length || 0,
           completed:
             programEnrollments?.filter(
-              (e: Record<string, unknown>) => e.status === 'completed'
+              (e: Record<string, any>) => e.status === 'completed'
             ).length || 0,
         };
       })
@@ -249,7 +249,7 @@ async function generateQuarterlyReport(
 /**
  * Convert report data to CSV format
  */
-function convertToCSV(reportData: Record<string, unknown>): string {
+function convertToCSV(reportData: Record<string, any>): string {
   const { summary, demographics } = reportData;
 
   let csv = 'WIOA Quarterly Performance Report\n\n';
@@ -294,7 +294,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { quarter, year, programId, reportData } = body;
 
     // Save to quarterly_performance table
@@ -329,7 +329,7 @@ export async function POST(request: NextRequest) {
       message: 'Report saved successfully',
       data,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error saving report:', error);
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }

@@ -49,7 +49,7 @@ export function AcknowledgeRightsForm() {
 
       // Success! Redirect to dashboard
       router.push('/program-holder/dashboard?onboarding=complete');
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message || 'Failed to submit acknowledgement');
     } finally {
       setIsSubmitting(false);

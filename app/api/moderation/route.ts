@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Moderation GET error:', error);
     return NextResponse.json(
       { error: 'Failed to fetch moderation data' },
@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
     }
 
     const { user } = authResult;
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { action } = body;
 
     switch (action) {
@@ -157,7 +157,7 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Moderation POST error:', error);
     return NextResponse.json(
       { error: 'Failed to process moderation action' },

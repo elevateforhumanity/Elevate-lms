@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ notes });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error fetching notes:', error);
     return NextResponse.json(
       { error: 'Failed to fetch notes' },
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { courseId, lessonId, content, timestamp } = body;
 
     if (!courseId || !content) {
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ note });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error creating note:', error);
     return NextResponse.json(
       { error: 'Failed to create note' },

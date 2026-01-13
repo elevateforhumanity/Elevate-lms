@@ -40,9 +40,9 @@ interface VerificationHistory {
 }
 
 interface VerificationReviewFormProps {
-  holder: unknown;
+  holder: any;
   documents: Document[];
-  banking: unknown;
+  banking: any;
   verificationHistory: VerificationHistory[];
   adminUserId: string;
 }
@@ -129,7 +129,7 @@ export default function VerificationReviewForm({
 
       router.push('/admin/program-holders/verification');
       router.refresh();
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message || 'Failed to process verification');
       setLoading(false);
     }

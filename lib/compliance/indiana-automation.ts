@@ -165,7 +165,7 @@ export async function runDailyIndianaComplianceCheck(): Promise<{
           try {
             await sendAlert(alert);
             results.alertsSent++;
-          } catch (error: unknown) {
+          } catch (error: any) {
             results.errors.push(
               `Failed to send alert to ${alert.programHolderId}: ${error}`
             );
@@ -177,7 +177,7 @@ export async function runDailyIndianaComplianceCheck(): Promise<{
           try {
             await executeEnforcementAction(action);
             results.enforcementActions++;
-          } catch (error: unknown) {
+          } catch (error: any) {
             results.errors.push(
               `Failed to execute enforcement action for ${action.programHolderId}: ${error}`
             );
@@ -190,7 +190,7 @@ export async function runDailyIndianaComplianceCheck(): Promise<{
         await delay(BATCH_CONFIG.delayBetweenBatches);
       }
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     console.error(
       '[Indiana Compliance] Fatal error during compliance check:',
       error
@@ -205,7 +205,7 @@ export async function runDailyIndianaComplianceCheck(): Promise<{
  * CHECK INDIVIDUAL PROGRAM HOLDER COMPLIANCE
  */
 async function checkProgramHolderCompliance(
-  programHolder: unknown
+  programHolder: any
 ): Promise<ComplianceCheckResult> {
   const result: ComplianceCheckResult = {
     programHolderId: programHolder.id,
@@ -269,7 +269,7 @@ async function checkProgramHolderCompliance(
  * CHECK REPORTING COMPLIANCE
  */
 async function checkReportingCompliance(
-  programHolder: unknown
+  programHolder: any
 ): Promise<ReportingComplianceCheck[]> {
   const checks: ReportingComplianceCheck[] = [];
   const today = new Date();
@@ -334,7 +334,7 @@ async function checkReportingCompliance(
  * CHECK PERFORMANCE COMPLIANCE
  */
 async function checkPerformanceCompliance(
-  programHolder: unknown
+  programHolder: any
 ): Promise<PerformanceComplianceCheck> {
   // Get performance metrics from database
   const metrics = await getProgramHolderPerformanceMetrics(programHolder.id);
@@ -373,7 +373,7 @@ async function checkPerformanceCompliance(
  * CHECK DATA QUALITY COMPLIANCE
  */
 async function checkDataQualityCompliance(
-  programHolder: unknown
+  programHolder: any
 ): Promise<DataQualityComplianceCheck> {
   // Get data quality score from database
   const dataQuality = await getProgramHolderDataQuality(programHolder.id);
@@ -402,7 +402,7 @@ async function checkDataQualityCompliance(
  * CHECK ETPL RENEWAL COMPLIANCE
  */
 async function checkETPLRenewalCompliance(
-  programHolder: unknown
+  programHolder: any
 ): Promise<ETPLRenewalComplianceCheck> {
   // Get ETPL expiration date from database
   const etplData = await getProgramHolderETPLData(programHolder.id);

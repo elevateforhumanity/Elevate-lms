@@ -11,7 +11,7 @@ async function getHandler(
   req: NextRequest,
   context: {
     params: Promise<Record<string, string>>;
-    user: Record<string, unknown>;
+    user: Record<string, any>;
   }
 ) {
   const user = context.user;
@@ -44,7 +44,7 @@ async function getHandler(
 
   if (error) return new Response(toErrorMessage(error), { status: 500 });
 
-  const mapped = (notes || []).map((n: Record<string, unknown>) => ({
+  const mapped = (notes || []).map((n: Record<string, any>) => ({
     user_id: n.user_id,
     course_id: n.course_id,
     course_title: (n.course as { title?: string } | null)?.title || 'Unknown Course',

@@ -45,7 +45,7 @@ export async function GET() {
         'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate',
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return new NextResponse('Error generating RSS feed', { status: 500 });
   }
 }

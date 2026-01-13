@@ -40,7 +40,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ employee });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error fetching employee:',
       error instanceof Error ? error : new Error(String(error))

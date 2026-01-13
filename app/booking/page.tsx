@@ -60,7 +60,7 @@ export default async function BookingPage() {
         const data = await response.json();
         setInstructors(data.instructors || []);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       setInstructors([]);
     }
   };
@@ -120,7 +120,7 @@ export default async function BookingPage() {
         setTopic('');
         setNotes('');
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       alert('Failed to create booking. Please try again.');
     } finally {
       setLoading(false);

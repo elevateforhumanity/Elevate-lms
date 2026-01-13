@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Admin Shops | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 import { createClient } from '@/lib/supabase/server';
 export const dynamic = 'force-dynamic';
 import { redirect } from 'next/navigation';
@@ -74,7 +81,7 @@ export default async function AdminShopsPage() {
     })
   );
 
-  function getShopStatus(shop: unknown) {
+  function getShopStatus(shop: any) {
     if (!shop.active) return { color: 'red', label: 'Inactive', icon: XCircle };
     if (shop.docsComplete && shop.shop_onboarding?.[0]?.completed_at) {
       return { color: 'green', label: 'Complete', icon: CheckCircle };

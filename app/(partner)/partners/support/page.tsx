@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Partners Support | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 export default function PartnerSupportPage() {
   return (
     <div className="rounded-2xl border p-5 space-y-3">

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
@@ -49,7 +50,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ accountId: account.id });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }

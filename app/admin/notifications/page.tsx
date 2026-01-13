@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Admin Notifications | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 "use client";
 
 import React from 'react';
@@ -56,7 +63,7 @@ export default function NotificationsPage() {
 
       const data = await response.json();
       setResult(data);
-    } catch (error: unknown) {
+    } catch (error: any) {
       setResult({ success: false, error: 'Failed to send notification' });
     } finally {
       setSending(false);

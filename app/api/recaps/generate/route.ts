@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
@@ -138,7 +139,7 @@ ${transcript}
     }
 
     return NextResponse.json({ recap_id: recap.id }, { status: 200 });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:

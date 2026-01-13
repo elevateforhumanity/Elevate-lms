@@ -9,7 +9,7 @@ interface DataExportDialogProps {
   isOpen: boolean;
   onClose: () => void;
   exportType: 'students' | 'courses' | 'enrollments' | 'assignments' | 'grades';
-  filters?: Record<string, unknown>;
+  filters?: Record<string, any>;
 }
 
 export default function DataExportDialog({
@@ -62,7 +62,7 @@ export default function DataExportDialog({
         onClose();
         setExportComplete(false);
       }, 2000);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('Failed to export data. Please try again.');
     } finally {
@@ -304,7 +304,7 @@ export function BatchExportDialog({ isOpen, onClose }: BatchExportDialogProps) {
 
       alert('Batch export completed successfully!');
       onClose();
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('Failed to export data. Please try again.');
     } finally {

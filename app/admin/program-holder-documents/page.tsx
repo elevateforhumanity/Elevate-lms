@@ -198,7 +198,7 @@ export default function AdminProgramHolderDocuments() {
             ].map((tab) => (
               <button
                 key={tab.key}
-                onClick={() => setFilter(tab.key as unknown)}
+                onClick={() => setFilter(tab.key as any)}
                 className={`px-6 py-4 font-medium transition ${
                   filter === tab.key
                     ? 'border-b-2 border-blue-600 text-blue-600'

@@ -186,7 +186,7 @@ export class ComplianceAutomation {
         }
 
         results.push(rule);
-      } catch (error: unknown) {
+      } catch (error: any) {
         logger.error(`Error checking rule ${rule.id}`, error as Error, { ruleId: rule.id, ruleName: rule.name });
         rule.status = 'warning';
         results.push(rule);
@@ -361,7 +361,7 @@ export class ComplianceAutomation {
       // return data.entityRegistration[0].registrationStatus === 'Active' ? 'compliant' : 'non-compliant';
 
       return 'compliant'; // Simulated
-    } catch (error: unknown) {
+    } catch (error: any) {
       return 'warning';
     }
   }
@@ -373,7 +373,7 @@ export class ComplianceAutomation {
     for (const source of this.dataSources) {
       try {
         await this.fetchFromSource(source);
-      } catch (error: unknown) {
+      } catch (error: any) {
         logger.error(`Error fetching from ${source.name}`, error as Error, { sourceName: source.name, sourceUrl: source.url });
       }
     }

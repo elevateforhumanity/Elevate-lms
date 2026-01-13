@@ -63,7 +63,7 @@ export async function POST(req: Request) {
       tenant,
       license,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
@@ -85,7 +85,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ tenants: data || [] });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }

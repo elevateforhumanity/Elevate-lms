@@ -88,7 +88,7 @@ export async function POST(
     }
 
     return NextResponse.json({ message: "Successfully joined study group" });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error("[Join Study Group Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },

@@ -74,10 +74,10 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (err: unknown) {
+  } catch (err: any) {
     // Error: $1
     return NextResponse.json(
-      { error: toErrorMessage(error) || 'Failed to assign shop placement' },
+      { error: toErrorMessage(err) || 'Failed to assign shop placement' },
       { status: 500 }
     );
   }

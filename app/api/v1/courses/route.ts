@@ -111,7 +111,7 @@ export async function GET(request: NextRequest) {
         totalPages: Math.ceil((count || 0) / limit),
       })
     );
-  } catch (err: unknown) {
+  } catch (err: any) {
     error = err instanceof Error ? err.message : String(err);
     statusCode = 500;
     logger.error(
@@ -147,7 +147,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const supabase = await createClient();
 
     const { data: course, error: createError } = await supabase
@@ -182,7 +182,7 @@ export async function POST(request: NextRequest) {
     );
 
     return NextResponse.json(apiResponse(true, course), { status: 201 });
-  } catch (err: unknown) {
+  } catch (err: any) {
     error = err instanceof Error ? err.message : String(err);
     statusCode = 500;
     logger.error(

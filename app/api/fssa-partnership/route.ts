@@ -8,7 +8,7 @@ import { resend } from '@/lib/resend';
 
 export async function POST(request: NextRequest) {
   try {
-    const data = await parseBody<Record<string, unknown>>(request);
+    const data = await parseBody<Record<string, any>>(request);
     const supabase = await createClient();
 
     // Store in snap_outreach_log
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'Partnership request received. We will contact you within 1-2 business days.'
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Failed to process partnership request' },
       { status: 500 }

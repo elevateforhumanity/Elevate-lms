@@ -65,7 +65,7 @@ export async function GET(req: NextRequest) {
       ) || 0,
     completed:
       rows?.filter(
-        (r: Record<string, unknown>) =>
+        (r: Record<string, any>) =>
           (r.status || '').toLowerCase() === 'completed'
       ).length || 0,
   };
@@ -75,7 +75,7 @@ export async function GET(req: NextRequest) {
     const header =
       'learner,email,course,start_date,minutes,percent,status,certificate_id\n';
     const lines = (rows || [])
-      .map((r: Record<string, unknown>) =>
+      .map((r: Record<string, any>) =>
         [
           r.learner,
           r.email,

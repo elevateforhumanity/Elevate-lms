@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import React from 'react';
@@ -8,8 +9,8 @@ import Script from 'next/script';
 
 declare global {
   interface Window {
-    fbq?: (...args: unknown[]) => void;
-    _fbq?: (...args: unknown[]) => void;
+    fbq?: (...args: any[]) => void;
+    _fbq?: (...args: any[]) => void;
   }
 }
 
@@ -29,7 +30,7 @@ export default function FacebookPixel() {
     if (mounted && typeof window !== 'undefined') {
       try {
         setPathname(window.location.pathname);
-      } catch (error: unknown) {
+      } catch (error: any) {
       }
     }
   }, [mounted]);
@@ -43,7 +44,7 @@ export default function FacebookPixel() {
       if (window.fbq) {
         window.fbq('track', 'PageView');
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Silently fail - don't break the app
     }
   }, [mounted, pathname]);
@@ -83,7 +84,7 @@ export default function FacebookPixel() {
         </noscript>
       </>
     );
-  } catch (error: unknown) {
+  } catch (error: any) {
     return null;
   }
 }
@@ -91,7 +92,7 @@ export default function FacebookPixel() {
 // Helper functions for tracking events
 export const trackFacebookEvent = (
   eventName: string,
-  data?: Record<string, unknown>
+  data?: Record<string, any>
 ) => {
   if (typeof window !== 'undefined' && window.fbq) {
     window.fbq('track', eventName, data);

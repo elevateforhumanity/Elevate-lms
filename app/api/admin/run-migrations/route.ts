@@ -52,7 +52,7 @@ export const POST = withAuth(
             } else {
               results.push({ file, status: 'success' });
             }
-          } catch (err: unknown) {
+          } catch (err: any) {
             results.push({ file, status: 'error', error: (err as Error).message });
           }
         } else {
@@ -61,7 +61,7 @@ export const POST = withAuth(
       }
 
       return NextResponse.json({ results });
-    } catch (error: unknown) {
+    } catch (error: any) {
       return NextResponse.json(
         { error: toErrorMessage(error) },
         { status: 500 }

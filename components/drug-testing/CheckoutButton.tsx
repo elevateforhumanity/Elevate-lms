@@ -47,7 +47,7 @@ export default function CheckoutButton({
         alert('Error creating checkout session. Please try again or call (317) 314-3757.');
         setLoading(false);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       alert('Error creating checkout session. Please try again or call (317) 314-3757.');
       setLoading(false);
     }

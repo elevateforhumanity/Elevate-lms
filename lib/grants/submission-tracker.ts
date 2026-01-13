@@ -38,7 +38,7 @@ export interface SubmissionTimelineEvent {
   event: string;
   description: string;
   performedBy?: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
 }
 
 /**

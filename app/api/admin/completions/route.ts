@@ -23,7 +23,7 @@ async function getSupabaseServerClient() {
   );
 }
 
-const toDateString = (value: unknown) => {
+const toDateString = (value: any) => {
   if (value instanceof Date) return value.toLocaleDateString();
   if (typeof value === "string" || typeof value === "number") {
     const d = new Date(value);
@@ -71,7 +71,7 @@ export const GET = withAuth(
       return NextResponse.json({ completions: [], error: toErrorMessage(error) }, { status: 200 });
     }
 
-    const completions = (data ?? []).map((row: unknown) => {
+    const completions = (data ?? []).map((row: any) => {
       const e = row.partner_lms_enrollments ?? {};
       const student = e.profiles ?? {};
       const provider = e.partner_lms_providers ?? {};
@@ -106,7 +106,7 @@ export const GET = withAuth(
         "Verification URL",
       ];
 
-      const rows = completions.map((c: unknown) => [
+      const rows = completions.map((c: any) => [
         c.studentName,
         c.studentEmail,
         c.courseName,
@@ -120,8 +120,8 @@ export const GET = withAuth(
 
       const csv = [
         headers.join(","),
-        ...rows.map((row: unknown[]) =>
-          row.map((cell: unknown) => `"${String(cell).replace(/"/g, '""')}"`).join(",")
+        ...rows.map((row: any[]) =>
+          row.map((cell: any) => `"${String(cell).replace(/"/g, '""')}"`).join(",")
         ),
       ].join("\n");
 

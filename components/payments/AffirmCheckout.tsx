@@ -20,7 +20,7 @@ interface AffirmCheckoutProps {
 declare global {
   interface Window {
     affirm: {
-      checkout: (data: unknown) => void;
+      checkout: (data: any) => void;
       checkout_open: () => void;
       ui: {
         ready: (callback: () => void) => void;
@@ -173,7 +173,7 @@ export default function AffirmCheckout({
         setIsLoading(false);
       });
 
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       const errorMessage = error instanceof Error ? error.message : 'Failed to start checkout';
       toast.error(errorMessage);

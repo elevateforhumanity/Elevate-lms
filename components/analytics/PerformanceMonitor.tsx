@@ -6,7 +6,7 @@ export function PerformanceMonitor() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     // Monitor Core Web Vitals
-    const reportWebVitals = (data: unknown) => {
+    const reportWebVitals = (data: any) => {
       //
       // Send to analytics
       if (window.gtag) {

@@ -460,7 +460,7 @@ export async function processAffiliatePayout(
   userId: string,
   amount: number,
   paymentMethod: string,
-  paymentDetails: unknown
+  paymentDetails: any
 ): Promise<void> {
   const supabase = await createClient();
 

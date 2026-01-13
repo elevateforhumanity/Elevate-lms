@@ -133,7 +133,7 @@ export async function GET(req: Request) {
       const csvRows = [
         headers.join(','),
         ...exportData.map((item: any) =>
-          headers.map((header) => JSON.stringify(row[header] || '')).join(',')
+          headers.map((header) => JSON.stringify(item[header] || '')).join(',')
         ),
       ];
       const csv = csvRows.join('\n');
@@ -152,7 +152,7 @@ export async function GET(req: Request) {
       record_count: exportData.length,
       data: exportData,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ error: 'Export failed' }, { status: 500 });
   }
 }

@@ -48,7 +48,7 @@ export default function ScormPlayer({
       }
       setScormUrl(url);
       setLoading(false);
-    } catch (err: unknown) {
+    } catch (err: any) {
       // Error: $1
       setError(
         (err instanceof Error ? err.message : String(err)) ||

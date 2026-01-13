@@ -204,7 +204,7 @@ export function calculateRefund(
 export function generateForm1040(
   taxReturn: TaxReturn,
   taxCalculation: TaxCalculation
-): Record<string, unknown> {
+): Record<string, any> {
   return {
     form: '1040',
     tax_year: taxReturn.tax_year,

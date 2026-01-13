@@ -1,6 +1,6 @@
 export function checkBrokenLinks(
   treePaths: string[],
-  metadata: Record<string, unknown>
+  metadata: Record<string, any>
 ) {
   const missing: string[] = [];
   const found: string[] = [];

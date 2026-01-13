@@ -136,8 +136,8 @@ export const validators = {
 };
 
 export function validateForm(
-  values: Record<string, unknown>,
-  rules: Record<string, Array<(data: unknown) => string | null>>
+  values: Record<string, any>,
+  rules: Record<string, Array<(data: any) => string | null>>
 ): Record<string, string> {
   const errors: Record<string, string> = {};
 

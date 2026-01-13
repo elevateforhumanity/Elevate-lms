@@ -50,7 +50,7 @@ export async function GET(req: NextRequest) {
     }
 
     return NextResponse.json({ courses: courses || [] });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error("[Course Authoring Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },
@@ -119,7 +119,7 @@ export async function POST(req: NextRequest) {
 
     // Create modules if provided
     if (modules && Array.isArray(modules) && modules.length > 0) {
-      const moduleInserts = modules.map((module: Record<string, unknown>, index: number) => ({
+      const moduleInserts = modules.map((module: Record<string, any>, index: number) => ({
         course_id: course.id,
         title: module.title,
         description: module.description,
@@ -141,7 +141,7 @@ export async function POST(req: NextRequest) {
       course_id: course.id,
       course,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error("[Course Creation Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },

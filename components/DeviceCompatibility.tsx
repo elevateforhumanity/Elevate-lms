@@ -109,7 +109,7 @@ export default function DeviceCompatibility() {
 
   const detectDevice = () => {
     const ua = navigator.userAgent;
-    const info: unknown = {
+    const info: any = {
       platform: navigator.platform,
       userAgent: ua,
       vendor: navigator.vendor,

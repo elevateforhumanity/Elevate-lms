@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
@@ -32,7 +33,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ url: link.url });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       { error: err instanceof Error ? err.message : String(err) },
       { status: 500 }

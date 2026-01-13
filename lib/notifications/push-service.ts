@@ -28,7 +28,7 @@ export interface PushNotification {
     title: string;
     icon?: string;
   }>;
-  data?: Record<string, unknown>;
+  data?: Record<string, any>;
 }
 export interface PushSubscription {
   endpoint: string;
@@ -52,7 +52,7 @@ export class PushNotificationService {
       const payload = JSON.stringify(notification);
       await webpush.sendNotification(subscription, payload);
       return true;
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Handle expired subscriptions
       if (error.statusCode === 410 || error.statusCode === 404) {
         await this.removeSubscription(subscription.endpoint);

@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 type Role = 'student' | 'staff' | 'admin' | 'super_admin' | 'partner';
 
 interface AuthedContext {
-  params?: unknown;
+  params?: any;
   user: {
     id: string;
     email: string | null;

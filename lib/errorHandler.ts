@@ -36,7 +36,7 @@ export class NotFoundError extends AppError {
   }
 }
 
-export function handleError(error: unknown): { message: string; statusCode: number } {
+export function handleError(error: any): { message: string; statusCode: number } {
   if (error instanceof AppError) {
     return {
       message: error.message,
@@ -77,13 +77,13 @@ export async function withErrorHandling<T>(
   try {
     const data = await fn();
     return { data };
-  } catch (error: unknown) {
+  } catch (error: any) {
     const { message } = handleError(error);
     return { error: message || errorMessage };
   }
 }
 
-export function logError(error: unknown, context?: Record<string, unknown>) {
+export function logError(error: any, context?: Record<string, any>) {
   // Error logged
 
   // Send to error tracking service (e.g., Sentry)

@@ -21,6 +21,6 @@ export const paymentSchema = z.object({
   userId: z.string().uuid(),
 });
 
-export function validateRequest<T>(schema: z.ZodSchema<T>, data: unknown): T {
+export function validateRequest<T>(schema: z.ZodSchema<T>, data: any): T {
   return schema.parse(data);
 }

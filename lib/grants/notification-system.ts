@@ -30,7 +30,7 @@ export interface GrantNotification {
   priority: 'low' | 'medium' | 'high' | 'urgent';
   read: boolean;
   createdAt: Date;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
 }
 
 export interface NotificationRecipient {
@@ -234,7 +234,7 @@ export async function sendGrantNotification(
           grantTitle,
           entityName
         );
-      } catch (error: unknown) {
+      } catch (error: any) {
         // Error: $1
       }
     }
@@ -242,7 +242,7 @@ export async function sendGrantNotification(
     if (smsEnabled && notification.priority === 'urgent') {
       try {
         await sendSMSNotification(recipient, createdNotification, grantTitle);
-      } catch (error: unknown) {
+      } catch (error: any) {
         // Error: $1
       }
     }

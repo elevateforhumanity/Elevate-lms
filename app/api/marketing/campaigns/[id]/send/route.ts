@@ -77,7 +77,7 @@ export async function POST(
       message: `Queued ${sendRows.length} recipients for campaign`,
       count: sendRows.length,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       'POST /marketing/campaigns/[id]/send error',
       err instanceof Error ? err : new Error(String(err))

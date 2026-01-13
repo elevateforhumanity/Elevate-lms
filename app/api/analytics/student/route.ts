@@ -138,7 +138,7 @@ export async function GET(request: NextRequest) {
     };
 
     return NextResponse.json(response);
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error("[Student Analytics API Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },

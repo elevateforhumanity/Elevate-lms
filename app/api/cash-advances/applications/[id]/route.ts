@@ -26,7 +26,7 @@ export async function GET(
     }
 
     return NextResponse.json(data);
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }
@@ -38,7 +38,7 @@ export async function PATCH(
   try {
     const supabase = supabaseServer();
     const { id } = await params;
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     const { data, error }: any = await supabase
       .from('cash_advance_applications')
@@ -52,7 +52,7 @@ export async function PATCH(
     }
 
     return NextResponse.json(data);
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

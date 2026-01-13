@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/nextjs';
 
-export function captureError(error: Error, context?: Record<string, unknown>) {
+export function captureError(error: Error, context?: Record<string, any>) {
   console.error('Error:', error);
 
   if (process.env.NODE_ENV === 'production') {
@@ -29,7 +29,7 @@ export function clearUserContext() {
   }
 }
 
-export async function trackEvent(name: string, properties?: Record<string, unknown>) {
+export async function trackEvent(name: string, properties?: Record<string, any>) {
   if (typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('event', name, properties);
   }

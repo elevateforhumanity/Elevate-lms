@@ -57,7 +57,7 @@ export async function GET() {
       totalModules: modules?.length || 0,
       completedModules: progress?.filter((p) => p.completed_at).length || 0,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -77,7 +77,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { module_id, quiz_score } = body;
 
     if (!module_id) {
@@ -130,7 +130,7 @@ export async function POST(request: Request) {
       progress,
       certified: quiz_score && quiz_score >= 80,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

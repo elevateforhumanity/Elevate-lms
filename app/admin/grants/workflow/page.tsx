@@ -55,15 +55,15 @@ export default async function GrantWorkflowPage() {
 
   const statusCounts = {
     intake: grants.length,
-    draft: applications.filter((a: Record<string, unknown>) => a.status === 'draft')
+    draft: applications.filter((a: Record<string, any>) => a.status === 'draft')
       .length,
     review: applications.filter(
-      (a: Record<string, unknown>) => a.status === 'review'
+      (a: Record<string, any>) => a.status === 'review'
     ).length,
-    ready: applications.filter((a: Record<string, unknown>) => a.status === 'ready')
+    ready: applications.filter((a: Record<string, any>) => a.status === 'ready')
       .length,
     submitted: applications.filter(
-      (a: Record<string, unknown>) => a.status === 'submitted'
+      (a: Record<string, any>) => a.status === 'submitted'
     ).length,
   };
 
@@ -162,7 +162,7 @@ export default async function GrantWorkflowPage() {
                 </Link>
               </div>
               <div className="space-y-3">
-                {grants.slice(0, 5).map((grant: Record<string, unknown>) => (
+                {grants.slice(0, 5).map((grant: Record<string, any>) => (
                   <div
                     key={grant.id}
                     className="border border-slate-200 rounded-lg p-4 hover:border-blue-300 transition"

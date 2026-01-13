@@ -33,7 +33,7 @@ export default function VideoSection({ videoUrl, lessonId, courseId }: VideoSect
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ progress: currentTime }),
       });
-    } catch (error: unknown) {
+    } catch (error: any) {
     // Error handled
   }
   };

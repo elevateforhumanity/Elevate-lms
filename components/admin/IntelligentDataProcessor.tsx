@@ -38,13 +38,13 @@ interface AnalyticsData {
   overallRetention: number;
   overallCompletion: number;
   atRiskCount: number;
-  monthlyTrends: unknown[];
+  monthlyTrends: any[];
 }
 
 interface FlowChartConfig {
   type: string;
   title: string;
-  data: unknown[];
+  data: any[];
   autoUpdate: boolean;
 }
 
@@ -268,7 +268,7 @@ export function IntelligentDataProcessor() {
     });
   };
 
-  const generateMonthlyTrends = (students: StudentRecord[]): unknown[] => {
+  const generateMonthlyTrends = (students: StudentRecord[]): any[] => {
     // Generate sample monthly trend data
     return [
       { month: 'Jan', enrolled: 25, completed: 20, retention: 85 },

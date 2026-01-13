@@ -1,24 +1,24 @@
 /**
  * Type-safe helpers for narrowing unknown types
- * Use these to safely access properties on unknown/Record<string, unknown> values
+ * Use these to safely access properties on unknown/Record<string, any> values
  */
 
-export const isRecord = (v: unknown): v is Record<string, unknown> =>
+export const isRecord = (v: any): v is Record<string, any> =>
   typeof v === 'object' && v !== null && !Array.isArray(v);
 
-export const rec = (v: unknown): Record<string, unknown> =>
+export const rec = (v: any): Record<string, any> =>
   isRecord(v) ? v : {};
 
-export const str = (v: unknown, fallback: string | null = null) =>
+export const str = (v: any, fallback: string | null = null) =>
   typeof v === 'string' ? v : fallback;
 
-export const num = (v: unknown, fallback: number | null = null) =>
+export const num = (v: any, fallback: number | null = null) =>
   typeof v === 'number' && Number.isFinite(v) ? v : fallback;
 
-export const bool = (v: unknown, fallback: boolean | null = null) =>
+export const bool = (v: any, fallback: boolean | null = null) =>
   typeof v === 'boolean' ? v : fallback;
 
-export const date = (v: unknown, fallback: Date | null = null) => {
+export const date = (v: any, fallback: Date | null = null) => {
   if (v instanceof Date) return v;
   if (typeof v === 'string' || typeof v === 'number') {
     const d = new Date(v);
@@ -27,10 +27,10 @@ export const date = (v: unknown, fallback: Date | null = null) => {
   return fallback;
 };
 
-export const arr = <T = unknown>(v: unknown): T[] =>
+export const arr = <T = unknown>(v: any): T[] =>
   Array.isArray(v) ? v : [];
 
-export const toDateString = (value: unknown): string => {
+export const toDateString = (value: any): string => {
   if (value instanceof Date) return value.toLocaleDateString();
   if (typeof value === "string" || typeof value === "number") {
     const d = new Date(value);
@@ -39,12 +39,12 @@ export const toDateString = (value: unknown): string => {
   return "";
 };
 
-export const toError = (error: unknown): Error => {
+export const toError = (error: any): Error => {
   if (error instanceof Error) return error;
   return new Error(String(error));
 };
 
-export const toErrorMessage = (error: unknown): string => {
+export const toErrorMessage = (error: any): string => {
   if (error instanceof Error) return error.message;
   return String(error);
 };

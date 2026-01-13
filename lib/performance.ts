@@ -59,7 +59,7 @@ export function measureWebVitals() {
   // Cumulative Layout Shift (CLS)
   let clsValue = 0;
   const clsObserver = new PerformanceObserver((list) => {
-    for (const entry of list.getEntries() as unknown[]) {
+    for (const entry of list.getEntries() as any[]) {
       if (!entry.hadRecentInput) {
         clsValue += entry.value;
       }
@@ -136,7 +136,7 @@ export function analyzeResourceTiming() {
 export function trackMemoryUsage() {
   if (typeof window === 'undefined') return;
 
-  const memory = (performance as unknown).memory;
+  const memory = (performance as any).memory;
   if (memory) {
     const usedMemory = memory.usedJSHeapSize / 1048576; // MB
     const totalMemory = memory.totalJSHeapSize / 1048576; // MB

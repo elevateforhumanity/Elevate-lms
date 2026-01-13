@@ -45,7 +45,7 @@ export function BuyNowButton({
       if (url) {
         window.location.href = url;
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('Something went wrong. Please try again or contact us.');
     } finally {

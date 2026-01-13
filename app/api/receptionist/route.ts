@@ -57,7 +57,7 @@ export async function POST(req: Request) {
     // Build conversation history for context
     const messages = [
       { role: 'system' as const, content: RECEPTIONIST_PROMPT },
-      ...(history || []).slice(-6).map((msg: unknown) => ({
+      ...(history || []).slice(-6).map((msg: any) => ({
         role: msg.role,
         content: msg.content,
       })),
@@ -78,7 +78,7 @@ export async function POST(req: Request) {
       "I apologize, I'm having trouble responding right now. Please call us at (317) 314-3757 or visit our contact page.";
 
     return NextResponse.json({ response });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Receptionist API error:', error);
 
     // Return helpful fallback

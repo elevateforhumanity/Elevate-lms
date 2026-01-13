@@ -1,7 +1,7 @@
 import { injectSchema } from '@/lib/schema';
 
 interface StructuredDataProps {
-  data: unknown;
+  data: any;
 }
 
 export default function StructuredData({ data }: StructuredDataProps) {

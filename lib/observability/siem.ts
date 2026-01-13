@@ -8,7 +8,7 @@ export async function sendSecurityLog(event: {
   actorId?: string;
   actorEmail?: string;
   ip?: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
 }) {
   if (!SIEM_ENDPOINT || !SIEM_API_KEY) {
     // No SIEM configured – fail soft, but still log locally.
@@ -35,7 +35,7 @@ export async function sendSecurityLog(event: {
       },
       body: JSON.stringify(body),
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
   }
 }
@@ -62,7 +62,7 @@ export async function logAdminAction(params: {
   action: string;
   targetId?: string;
   ip?: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
 }) {
   await sendSecurityLog({
     level: "info",

@@ -6,7 +6,7 @@ export interface AuditLogEntry {
   action: string;
   entity: string;
   entityId?: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
   ipAddress?: string;
   userAgent?: string;
 }
@@ -55,7 +55,7 @@ export async function auditLog(entry: AuditLogEntry): Promise<void> {
     if (error) {
       console.error('[auditLog] Failed to insert audit log:', error);
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Don't throw - audit logging should never break the app
     console.error('[auditLog] Exception:', error);
   }

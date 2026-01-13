@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { role, paymentType, rate, payoutMethod, taxIdUploaded } = body;
 
     if (!role || !paymentType || !rate || !payoutMethod) {
@@ -125,7 +125,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:

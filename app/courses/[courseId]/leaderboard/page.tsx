@@ -16,7 +16,7 @@ export default function CourseLeaderboardPage() {
   const params = useParams();
   const courseId = params.courseId as string;
   const [course, setCourse] = useState<any>(null);
-  const [leaderboard, setLeaderboard] = useState<unknown[]>([]);
+  const [leaderboard, setLeaderboard] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [timeframe, setTimeframe] = useState<'all' | 'month' | 'week'>('all');
 

@@ -7,7 +7,7 @@ export interface AutopilotInstruction {
   action: 'sync-env' | 'verify-env' | 'update-env';
   target: 'vercel-worker';
   priority: 'high' | 'medium' | 'low';
-  params?: Record<string, unknown>;
+  params?: Record<string, any>;
 }
 
 export interface AutopilotResult {
@@ -67,7 +67,7 @@ export async function instructEnvSync(): Promise<AutopilotResult> {
       timestamp: new Date().toISOString(),
     };
 
-  } catch (error: unknown) {
+  } catch (error: any) {
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
@@ -106,7 +106,7 @@ export async function verifyEnvSync(): Promise<AutopilotResult> {
       timestamp: new Date().toISOString(),
     };
 
-  } catch (error: unknown) {
+  } catch (error: any) {
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
@@ -138,7 +138,7 @@ export async function downloadEnvFile(autopilotSecret: string): Promise<string |
     const result = await response.json();
     return result.envContent || null;
 
-  } catch (error: unknown) {
+  } catch (error: any) {
     console.error('Failed to download env file:', error);
     return null;
   }

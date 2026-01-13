@@ -1,7 +1,7 @@
 // Resend email client
 export const resend = {
   emails: {
-    send: async (data: Record<string, unknown>) => {
+    send: async (data: Record<string, any>) => {
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {

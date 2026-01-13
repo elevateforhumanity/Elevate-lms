@@ -74,7 +74,7 @@ export async function POST(request: Request) {
       success: true,
       ticket,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: getErrorMessage(error) },
       { status: 500 }

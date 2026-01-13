@@ -32,7 +32,7 @@ async function getRedis() {
       });
 
       await redisClient.connect();
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       redisClient = null;
       redisAvailable = false;
@@ -75,7 +75,7 @@ export async function rateLimit(
 
   const ip =
     req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    (req as unknown).ip ||
+    (req as any).ip ||
     'unknown';
 
   const key = `rl:${keyPrefix}:${ip}`;
@@ -112,7 +112,7 @@ export async function rateLimit(
       }
 
       return null;
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       // Fall through to memory-based rate limiting
     }
@@ -167,7 +167,7 @@ export async function cacheGet<T>(key: string): Promise<T | null> {
   try {
     const value = await client.get(key);
     return value ? JSON.parse(value as string) : null;
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
     return null;
   }
@@ -183,7 +183,7 @@ export async function cacheSet(
 
   try {
     await client.set(key, JSON.stringify(value), { EX: ttlSeconds });
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
   }
 }
@@ -194,7 +194,7 @@ export async function cacheDel(key: string): Promise<void> {
 
   try {
     await client.del(key);
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
   }
 }
@@ -203,7 +203,7 @@ export async function cacheDel(key: string): Promise<void> {
  * Cache decorator for functions
  */
 export function cached<T>(
-  keyFn: (...args: unknown[]) => string,
+  keyFn: (...args: any[]) => string,
   ttlSeconds: number = 300
 ) {
   return function (
@@ -213,7 +213,7 @@ export function cached<T>(
   ) {
     const originalMethod = descriptor.value;
 
-    descriptor.value = async function (...args: unknown[]) {
+    descriptor.value = async function (...args: any[]) {
       const cacheKey = keyFn(...args);
 
       // Try to get from cache
@@ -249,7 +249,7 @@ export function rateLimited(
   ) {
     const originalMethod = descriptor.value;
 
-    descriptor.value = async function (req: NextRequest, ...args: unknown[]) {
+    descriptor.value = async function (req: NextRequest, ...args: any[]) {
       const limited = await rateLimit(req, keyPrefix, options);
       if (limited) return limited;
 

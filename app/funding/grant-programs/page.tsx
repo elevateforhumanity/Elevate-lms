@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Funding Grant Programs | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 "use client";
 
 export const dynamic = 'force-dynamic';

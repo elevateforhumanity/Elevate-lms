@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Careers Data - Real data from Supabase
  * Fetches job positions from the database

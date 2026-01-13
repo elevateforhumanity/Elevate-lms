@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Admin Media Studio | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 "use client";
 
 import React from 'react';
@@ -74,7 +81,7 @@ export default function MediaStudioPage() {
           setSelectedBucket(data.buckets[0]);
         }
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
     // Error handled
   }
   };
@@ -87,7 +94,7 @@ export default function MediaStudioPage() {
       if (res.ok) {
         setFiles(data.files);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
     // Error handled
   } finally {
       setLoading(false);
@@ -107,7 +114,7 @@ export default function MediaStudioPage() {
       if (res.ok) {
         loadFiles(selectedBucket);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
     // Error handled
   }
   };
@@ -125,7 +132,7 @@ export default function MediaStudioPage() {
       if (res.ok) {
         loadFiles(selectedBucket);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
     // Error handled
   }
   };
@@ -139,7 +146,7 @@ export default function MediaStudioPage() {
         alert('Images optimized successfully!');
         loadFiles(selectedBucket);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
     // Error handled
   }
   };

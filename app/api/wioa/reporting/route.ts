@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    let reportData: unknown = {};
+    let reportData: any = {};
 
     switch (reportType) {
       case 'enrollment':
@@ -71,7 +71,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true, data: reportData });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         success: false,
@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
 }
 
 async function generateEnrollmentReport(
-  supabase: unknown,
+  supabase: any,
   startDate: string | null,
   endDate: string | null
 ) {
@@ -103,7 +103,7 @@ async function generateEnrollmentReport(
 }
 
 async function generateOutcomesReport(
-  supabase: unknown,
+  supabase: any,
   startDate: string | null,
   endDate: string | null
 ) {
@@ -131,7 +131,7 @@ async function generateOutcomesReport(
 }
 
 async function generatePerformanceReport(
-  supabase: unknown,
+  supabase: any,
   startDate: string | null,
   endDate: string | null
 ) {
@@ -152,7 +152,7 @@ async function generatePerformanceReport(
 }
 
 async function generateDemographicsReport(
-  supabase: unknown,
+  supabase: any,
   startDate: string | null,
   endDate: string | null
 ) {
@@ -176,7 +176,7 @@ async function generateDemographicsReport(
 }
 
 async function generateServicesReport(
-  supabase: unknown,
+  supabase: any,
   startDate: string | null,
   endDate: string | null
 ) {

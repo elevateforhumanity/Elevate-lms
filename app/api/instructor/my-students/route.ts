@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ students: students || [] });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:

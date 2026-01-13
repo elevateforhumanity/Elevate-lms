@@ -44,7 +44,7 @@ export async function GET(req: Request) {
         ? `${process.env.NEXT_PUBLIC_SITE_URL}/marketplace/download/${sale.download_token}`
         : null,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json({ err: toErrorMessage(err) }, { status: 500 });
   }
 }

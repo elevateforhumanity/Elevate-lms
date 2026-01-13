@@ -27,7 +27,7 @@ function logErrorToSentry(error: Error, context: Record<string, any>) {
 /**
  * Sanitizes error for production
  */
-function sanitizeError(error: unknown): { message: string; code: string } {
+function sanitizeError(error: any): { message: string; code: string } {
   if (error instanceof APIError) {
     return {
       message: error.message,
@@ -58,7 +58,7 @@ function sanitizeError(error: unknown): { message: string; code: string } {
 /**
  * Logs error with context
  */
-function logError(error: unknown, context: Record<string, any>) {
+function logError(error: any, context: Record<string, any>) {
   const timestamp = new Date().toISOString();
   const errorInfo = {
     timestamp,

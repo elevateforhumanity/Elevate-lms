@@ -135,7 +135,7 @@ async function sendEmailNotification(data: z.infer<typeof ContactSchema>) {
         <p><em>Submitted from elevateforhumanity.institute</em></p>
       `,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Failed to send email notification:', error);
     throw error;
   }

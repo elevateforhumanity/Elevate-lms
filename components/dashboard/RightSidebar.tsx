@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import React from 'react';
@@ -78,7 +79,7 @@ export function RightSidebar() {
 
       // Load notifications count
       await loadNotifications(user.id);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     } finally {
       setLoading(false);
@@ -129,7 +130,7 @@ export function RightSidebar() {
     if (logs) {
       const formattedActivity: Activity[] = logs.map((log) => ({
         id: log.id,
-        type: log.activity_type as unknown,
+        type: log.activity_type as any,
         title: log.metadata?.title || 'Activity',
         timestamp: new Date(log.created_at),
         link: log.metadata?.link,

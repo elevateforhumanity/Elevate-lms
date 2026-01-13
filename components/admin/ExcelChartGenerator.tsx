@@ -353,7 +353,7 @@ export function ExcelChartGenerator() {
     setIsGenerating(false);
   };
 
-  const downloadExcelFile = (data: Record<string, unknown>) => {
+  const downloadExcelFile = (data: Record<string, any>) => {
     // Simulate file download
     const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',

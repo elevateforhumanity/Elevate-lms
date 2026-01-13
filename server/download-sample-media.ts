@@ -6,8 +6,8 @@
 import fs from 'fs/promises';
 import path from 'path';
 import fetch from 'node-fetch';
-const stockImages: unknown[] = [];
-const stockVideos: unknown[] = [];
+const stockImages: any[] = [];
+const stockVideos: any[] = [];
 
 const MEDIA_DIR = path.join(process.cwd(), 'public', 'media');
 const IMAGES_DIR = path.join(MEDIA_DIR, 'images');

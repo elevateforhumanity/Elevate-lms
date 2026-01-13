@@ -8,7 +8,7 @@ import { logger } from '@/lib/logger';
 
 export async function POST(request: Request) {
   try {
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { name, phone, email, programInterest, contactMethod, questions } = body;
 
     // Validate required fields
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error processing advising request:', error);
     return NextResponse.json(
       { error: 'Failed to process request' },

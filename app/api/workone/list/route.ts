@@ -46,7 +46,7 @@ export async function GET(req: Request) {
     }
 
     return NextResponse.json({ items: data || [] }, { status: 200 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         error:

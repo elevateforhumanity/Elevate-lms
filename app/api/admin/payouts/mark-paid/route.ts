@@ -76,7 +76,7 @@ export async function POST(req: Request) {
       success: true,
       salesUpdated: data?.length || 0,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     // Error: $1
     return NextResponse.json({ err: toErrorMessage(err) }, { status: 500 });
   }

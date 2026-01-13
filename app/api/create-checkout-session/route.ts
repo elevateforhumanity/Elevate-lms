@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
       'venmo', // Venmo (up to $5,000)
     ];
 
-    let sessionConfig: unknown = {
+    let sessionConfig: any = {
       payment_method_types: paymentMethods,
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/enroll/success?session_id={CHECKOUT_SESSION_ID}&program=${programSlug}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/micro-classes`,
@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
     const session = await stripe.checkout.sessions.create(sessionConfig);
 
     return NextResponse.json({ url: session.url });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Stripe error:', error);
     return NextResponse.json(
       { error: 'Error creating checkout session' },

@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
     }
 
     return NextResponse.json(data || []);
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Get courses error:',
       error instanceof Error ? error : new Error(String(error))

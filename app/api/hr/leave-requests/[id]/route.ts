@@ -14,7 +14,7 @@ export async function PATCH(
   const { id } = await params;
   try {
     const supabase = await createClient();
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { status, rejection_reason } = body;
 
     if (!['approved', 'rejected', 'cancelled'].includes(status)) {
@@ -73,7 +73,7 @@ export async function PATCH(
     }
 
     return NextResponse.json({ leaveRequest: updated });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error updating leave request:',
       error instanceof Error ? error : new Error(String(error))

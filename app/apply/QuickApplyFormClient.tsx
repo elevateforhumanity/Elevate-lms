@@ -134,7 +134,7 @@ Preferred Contact: ${form.preferredContact}`,
           'Thank you! Your application has been received. Someone from Elevate for Humanity will contact you within 1–2 business days.'
         );
       }
-    } catch (err: unknown) {
+    } catch (err: any) {
       setErrorMessage(
         (err instanceof Error ? err.message : String(err)) ||
           "We're having a temporary issue submitting this form. Please call 317-314-3757 or use the Quick Inquiry form while we fix this."

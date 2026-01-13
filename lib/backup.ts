@@ -27,7 +27,7 @@ export async function createBackup(tables: string[] = ['profiles', 'courses', 'e
       backup,
       recordCount: Object.values(backup).reduce((sum, records) => sum + records.length, 0),
     };
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
     return {
       success: false,
@@ -38,7 +38,7 @@ export async function createBackup(tables: string[] = ['profiles', 'courses', 'e
 export async function exportBackupToJSON(backup: Record<string, any[]>): Promise<string> {
   return JSON.stringify(backup, null, 2);
 }
-export async function exportBackupToCSV(tableName: string, data: unknown[]): Promise<string> {
+export async function exportBackupToCSV(tableName: string, data: any[]): Promise<string> {
   if (data.length === 0) return '';
   const headers = Object.keys(data[0]);
   const csvRows = [
@@ -82,7 +82,7 @@ export async function restoreFromBackup(backup: Record<string, any[]>, options: 
           count: count || records.length,
           error: error?.message,
         };
-      } catch (error: unknown) {
+      } catch (error: any) {
         results[table] = {
           success: false,
           count: 0,
@@ -94,7 +94,7 @@ export async function restoreFromBackup(backup: Record<string, any[]>, options: 
       success: true,
       results,
     };
-  } catch (error: unknown) {
+  } catch (error: any) {
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',

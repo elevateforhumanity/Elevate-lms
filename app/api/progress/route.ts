@@ -49,7 +49,7 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const body = await parseBody<Record<string, unknown>>(request);
+  const body = await parseBody<Record<string, any>>(request);
 
   if (!body.userId || !body.courseId || !body.lessonId) {
     return NextResponse.json(

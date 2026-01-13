@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
       limit,
       offset,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: toErrorMessage(error) },
       { status: 500 }
@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const supabase = supabaseServer();
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     const { data, error }: any = await supabase
       .from('tax_filing_applications')
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(data, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: toErrorMessage(error) },
       { status: 500 }

@@ -21,7 +21,7 @@ export default async function EmployerOnboardingReview() {
     rejected: 'bg-red-100 text-red-800',
   };
 
-  const statusIcons: Record<string, unknown> = {
+  const statusIcons: Record<string, any> = {
     submitted: Clock,
     reviewed: Eye,
     approved: CheckCircle,

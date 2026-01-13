@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
     );
 
     return NextResponse.json(forumsWithStats);
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error("[Forums API Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },

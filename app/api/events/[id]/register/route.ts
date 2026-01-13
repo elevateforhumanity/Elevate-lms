@@ -87,7 +87,7 @@ export async function POST(
       },
       { status: 201 }
     );
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       'POST /events/[id]/register error',
       err instanceof Error ? err : new Error(String(err))

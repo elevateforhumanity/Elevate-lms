@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const {
       scormPackageId,
       enrollmentId,
@@ -80,7 +80,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true, enrollment });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('SCORM tracking error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
@@ -116,7 +116,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json(enrollment || {});
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('SCORM tracking GET error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

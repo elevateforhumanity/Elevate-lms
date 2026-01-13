@@ -58,7 +58,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (err: unknown) {
+  } catch (err: any) {
     // Error: $1
     return NextResponse.json(
       { err: toErrorMessage(err) || 'Failed to approve hours' },
@@ -121,7 +121,7 @@ export async function PUT(req: Request) {
     }
 
     return NextResponse.json({ success: true, count: hour_ids.length });
-  } catch (err: unknown) {
+  } catch (err: any) {
     // Error: $1
     return NextResponse.json(
       { err: toErrorMessage(err) || 'Failed to approve hours' },

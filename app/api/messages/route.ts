@@ -63,7 +63,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({ messages });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error in GET /api/messages:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
@@ -80,7 +80,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { recipientId, subject, messageBody } = body;
 
     if (!recipientId || !subject || !messageBody) {
@@ -112,7 +112,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ message }, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error in POST /api/messages:', error);
     return NextResponse.json(
       { error: 'Internal server error' },

@@ -13,7 +13,7 @@ export default function LoginTracker() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ source: 'LMS_DASHBOARD' }),
         });
-      } catch (error: unknown) {
+      } catch (error: any) {
         // Silently fail - don't disrupt user experience
         // Error: $1
       }

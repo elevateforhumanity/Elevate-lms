@@ -130,7 +130,7 @@ export default function SiteHeader() {
           document.body.classList.remove('mobile-menu-open');
         }
       }
-    } catch (error: unknown) {}
+    } catch (error: any) {}
 
     // Cleanup on unmount
     return () => {
@@ -139,7 +139,7 @@ export default function SiteHeader() {
           document.body.style.overflow = '';
           document.body.classList.remove('mobile-menu-open');
         }
-      } catch (error: unknown) {
+      } catch (error: any) {
         // Ignore cleanup errors
       }
     };

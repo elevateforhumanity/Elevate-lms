@@ -21,7 +21,7 @@ export async function GET() {
         set(name: string, value: string, options: CookieOptions) {
           try {
             cookieStore.set({ name, value, ...options });
-          } catch (error: unknown) {
+          } catch (error: any) {
             // Handle cookie setting errors
             logger.error('Error setting cookie:', error);
           }
@@ -29,7 +29,7 @@ export async function GET() {
         remove(name: string, options: CookieOptions) {
           try {
             cookieStore.set({ name, value: '', ...options });
-          } catch (error: unknown) {
+          } catch (error: any) {
             // Handle cookie removal errors
             logger.error('Error removing cookie:', error);
           }
@@ -88,7 +88,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ redirectTo });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Auth landing error:', error);
     return NextResponse.json(
       { error: 'Authentication error' },

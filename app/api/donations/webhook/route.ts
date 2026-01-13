@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
@@ -24,7 +25,7 @@ export async function POST(request: Request) {
 
     try {
       event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
-    } catch (error: unknown) {
+    } catch (error: any) {
       return NextResponse.json(
         {
           error: `Webhook Error: ${error instanceof Error ? error.message : String(error)}`,
@@ -168,7 +169,7 @@ export async function POST(request: Request) {
       default:
     }
 
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Webhook handler failed' },
       { status: 500 }

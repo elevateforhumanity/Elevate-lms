@@ -79,7 +79,7 @@ export default function ApprovalsList({
       }
 
       setMessage("Submission approved successfully");
-    } catch (err: unknown) {
+    } catch (err: any) {
       setMessage(err instanceof Error ? err.message : "Error approving submission");
     } finally {
       setProcessing(null);
@@ -107,7 +107,7 @@ export default function ApprovalsList({
 
       setPending(pending.filter((s) => s.id !== submissionId));
       setMessage("Submission rejected - student can resubmit");
-    } catch (err: unknown) {
+    } catch (err: any) {
       setMessage(err instanceof Error ? err.message : "Error rejecting submission");
     } finally {
       setProcessing(null);

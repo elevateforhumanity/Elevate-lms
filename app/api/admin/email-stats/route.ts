@@ -40,7 +40,7 @@ export async function GET(req: Request) {
       health,
       timeframe,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       { error: 'Failed to fetch email statistics' },
       { status: 500 }

@@ -57,7 +57,7 @@ export default function PaymentButton({
       } else {
         throw new Error('No checkout URL received');
       }
-    } catch (data: unknown) {
+    } catch (data: any) {
       // Error: $1
       setError(err.message || 'Something went wrong. Please try again.');
       setLoading(false);

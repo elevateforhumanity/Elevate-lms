@@ -18,8 +18,8 @@ import {
 
 export default function ExternalModulesPage() {
   const supabase = createClient();
-  const [modules, setModules] = useState<unknown[]>([]);
-  const [pendingApprovals, setPendingApprovals] = useState<unknown[]>([]);
+  const [modules, setModules] = useState<any[]>([]);
+  const [pendingApprovals, setPendingApprovals] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
 

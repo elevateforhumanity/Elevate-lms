@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
       clientSecret: paymentIntent.client_secret,
       paymentIntentId: paymentIntent.id,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       { error: toErrorMessage(err) || 'Failed to create payment intent' },
       { status: 500 }

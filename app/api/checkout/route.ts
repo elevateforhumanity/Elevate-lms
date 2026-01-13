@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ url: session.url }, { status: 200 });
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       '[Elevate] Error in /api/checkout:',
       err instanceof Error ? err : new Error(String(err))

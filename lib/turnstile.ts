@@ -58,7 +58,7 @@ export async function verifyTurnstileToken(
     }
 
     return { success: true };
-  } catch (error: unknown) {
+  } catch (error: any) {
     console.error('❌ Turnstile verification error:', error);
     return {
       success: false,

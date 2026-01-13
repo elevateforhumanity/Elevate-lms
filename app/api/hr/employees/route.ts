@@ -64,7 +64,7 @@ export async function GET(request: NextRequest) {
         totalPages: Math.ceil((count || 0) / limit),
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error fetching employees:',
       error instanceof Error ? error : new Error(String(error))
@@ -80,7 +80,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createClient();
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     const {
       profile_id,
@@ -175,7 +175,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ employee }, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error creating employee:',
       error instanceof Error ? error : new Error(String(error))

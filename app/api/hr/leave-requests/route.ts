@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ leaveRequests: data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error fetching leave requests:',
       error instanceof Error ? error : new Error(String(error))
@@ -55,7 +55,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createClient();
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     const {
       employee_id,
@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ leaveRequest: data }, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error creating leave request:',
       error instanceof Error ? error : new Error(String(error))

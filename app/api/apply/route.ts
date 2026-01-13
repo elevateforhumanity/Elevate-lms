@@ -60,7 +60,7 @@ export const POST = withRateLimit(
       new URL('/apply/confirmation', req.url),
       { status: 303 }
     );
-  } catch (err: unknown) {
+  } catch (err: any) {
     console.error('Apply route error:', err);
     return NextResponse.json(
       { error: 'Submission failed. Please call 317-314-3757.' },

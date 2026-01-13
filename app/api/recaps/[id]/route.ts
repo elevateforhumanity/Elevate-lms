@@ -56,7 +56,7 @@ export async function GET(
       .order('created_at', { ascending: true });
 
     return NextResponse.json({ recap, items: items || [] }, { status: 200 });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:

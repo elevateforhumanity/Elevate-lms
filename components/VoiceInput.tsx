@@ -33,7 +33,7 @@ export function VoiceInput({ onCommand, className = '' }: VoiceInputProps) {
         recognitionRef.current.interimResults = true;
         recognitionRef.current.lang = 'en-US';
 
-        recognitionRef.current.onresult = (data: unknown) => {
+        recognitionRef.current.onresult = (data: any) => {
           const current = event.resultIndex;
           const transcriptText = event.results[current][0].transcript;
           setTranscript(transcriptText);
@@ -44,7 +44,7 @@ export function VoiceInput({ onCommand, className = '' }: VoiceInputProps) {
           }
         };
 
-        recognitionRef.current.onerror = (data: unknown) => {
+        recognitionRef.current.onerror = (data: any) => {
           // Error logged
           setIsListening(false);
         };

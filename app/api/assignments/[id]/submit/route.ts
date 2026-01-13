@@ -18,7 +18,7 @@ export async function POST(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { submissionText, submissionUrl, filePath } = body;
 
     const supabase = await createServerSupabaseClient();
@@ -81,7 +81,7 @@ export async function POST(
     }
 
     return NextResponse.json({ submission }, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error in POST /api/assignments/[id]/submit:', error);
     return NextResponse.json(
       { error: 'Internal server error' },

@@ -70,8 +70,8 @@ export default function ApprenticeHoursPage() {
       if (!res.ok) throw new Error(await res.text());
       const json = await res.json();
       setEntries(json.entries ?? json.data ?? []);
-    } catch (err: unknown) {
-      setError(e?.message ?? 'Failed to load entries');
+    } catch (err: any) {
+      setError(err?.message ?? 'Failed to load entries');
     } finally {
       setLoading(false);
     }
@@ -117,8 +117,8 @@ export default function ApprenticeHoursPage() {
       setMiladyRef('');
       setActivityNote('');
       await refresh();
-    } catch (err: unknown) {
-      setError(e?.message ?? 'Failed to submit');
+    } catch (err: any) {
+      setError(err?.message ?? 'Failed to submit');
     } finally {
       setSaving(false);
     }
@@ -193,7 +193,7 @@ export default function ApprenticeHoursPage() {
             <select
               className="border border-slate-300 rounded px-3 py-2 text-sm"
               value={hour_type}
-              onChange={(e) => setHourType(e.target.value as unknown)}
+              onChange={(e) => setHourType(e.target.value as any)}
             >
               <option value="RTI">RTI (Milady / theory)</option>
               <option value="OJT">OJT (hands-on)</option>
@@ -207,7 +207,7 @@ export default function ApprenticeHoursPage() {
             <select
               className="border border-slate-300 rounded px-3 py-2 text-sm"
               value={funding_phase}
-              onChange={(e) => setFundingPhase(e.target.value as unknown)}
+              onChange={(e) => setFundingPhase(e.target.value as any)}
             >
               <option value="PRE_WIOA">PRE_WIOA</option>
               <option value="WIOA">WIOA</option>

@@ -53,7 +53,7 @@ export async function POST(
 
     // Check organization access
     if (
-      (item.meeting_recaps as unknown).organization_id !== profile.organization_id
+      (item.meeting_recaps as any).organization_id !== profile.organization_id
     ) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
@@ -73,7 +73,7 @@ export async function POST(
       { ok: true, completed_at: nextCompletedAt },
       { status: 200 }
     );
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:

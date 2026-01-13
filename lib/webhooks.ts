@@ -38,7 +38,7 @@ export interface WebhookDelivery {
   id: string;
   webhook_id: string;
   event: WebhookEvent;
-  payload: unknown;
+  payload: any;
   response_status?: number;
   response_body?: string;
   error?: string;
@@ -49,7 +49,7 @@ export interface WebhookDelivery {
 export interface WebhookPayload {
   event: WebhookEvent;
   timestamp: string;
-  data: unknown;
+  data: any;
   signature?: string;
 }
 
@@ -210,7 +210,7 @@ export function verifyWebhookSignature(
  */
 export async function triggerWebhook(
   event: WebhookEvent,
-  data: Record<string, unknown>
+  data: Record<string, any>
 ): Promise<void> {
   const webhooks = await getWebhooks(true);
 
@@ -231,7 +231,7 @@ export async function triggerWebhook(
 async function deliverWebhook(
   webhook: Webhook,
   event: WebhookEvent,
-  data: Record<string, unknown>
+  data: Record<string, any>
 ): Promise<void> {
   const supabase = await createClient();
 
@@ -298,7 +298,7 @@ async function deliverWebhook(
     if (!response.ok) {
       throw new Error(`Webhook delivery failed with status ${response.status}`);
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
 
     // Update delivery record with error
@@ -407,7 +407,7 @@ export async function getWebhookStats(webhookId: string): Promise<{
 /**
  * Trigger user created webhook
  */
-export async function triggerUserCreated(userId: string, userData: Record<string, unknown> = {}): Promise<void> {
+export async function triggerUserCreated(userId: string, userData: Record<string, any> = {}): Promise<void> {
   await triggerWebhook('user.created', {
     user_id: userId,
     ...userData,
@@ -451,7 +451,7 @@ export async function triggerEnrollmentCompleted(
  */
 export async function triggerCoursePublished(
   courseId: string,
-  courseData: Record<string, unknown> = {}
+  courseData: Record<string, any> = {}
 ): Promise<void> {
   await triggerWebhook('course.published', {
     course_id: courseId,
@@ -569,7 +569,7 @@ export async function testWebhook(webhookId: string): Promise<{
       success: response.ok,
       status: response.status,
     };
-  } catch (error: unknown) {
+  } catch (error: any) {
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',

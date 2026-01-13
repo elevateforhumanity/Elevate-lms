@@ -10,7 +10,7 @@ import { getProductBySlug } from '@/app/data/store-products';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { productId, customerInfo } = body;
 
     if (!productId || !customerInfo) {
@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
       clientSecret: paymentIntent.client_secret,
       paymentIntentId: paymentIntent.id,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         error:

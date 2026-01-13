@@ -45,7 +45,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (err: unknown) {
+  } catch (err: any) {
     // Error: $1
     return NextResponse.json(
       { err: toErrorMessage(err) || 'Failed to log hours' },
@@ -105,7 +105,7 @@ export async function GET(req: Request) {
         onTheJob: onTheJobHours,
       },
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     // Error: $1
     return NextResponse.json(
       { error: 'Failed to load hours' },

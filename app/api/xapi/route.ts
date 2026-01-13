@@ -11,11 +11,11 @@ import { logger } from '@/lib/logger';
 export async function POST(request: Request) {
   const supabase = createSupabaseClient();
   // xAPI endpoint for receiving learning activity statements
-  const body = await parseBody<Record<string, unknown>>(request);
+  const body = await parseBody<Record<string, any>>(request);
 
   const statements = Array.isArray(body) ? body : [body];
 
-  const data = statements.map((s: Record<string, unknown>) => ({
+  const data = statements.map((s: Record<string, any>) => ({
     actor: s.actor,
     verb: s.verb,
     object: s.object,

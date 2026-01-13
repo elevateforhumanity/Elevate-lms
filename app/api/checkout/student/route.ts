@@ -46,7 +46,7 @@ export async function POST() {
     });
 
     return NextResponse.json({ sessionId: session.id });
-  } catch (err: unknown) {
+  } catch (err: any) {
     const error = toError(err);
     return NextResponse.json(
       { error: toErrorMessage(err) },

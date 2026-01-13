@@ -224,7 +224,7 @@ export default function CheckoutForm(props: CheckoutFormProps) {
 
         const data = await response.json();
         setClientSecret(data.intent.client_secret);
-      } catch (error: unknown) {
+      } catch (error: any) {
         // Error: $1
       } finally {
         setLoading(false);

@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 
-function csvEscape(v: unknown) {
+function csvEscape(v: any) {
   const s = (v ?? '').toString().replace(/\r?\n/g, ' ').trim();
   if (s.includes(',') || s.includes('"')) return `"${s.replace(/"/g, '""')}"`;
   return s;
@@ -57,7 +57,7 @@ export async function GET(req: Request) {
   if (error)
     return NextResponse.json({ error: error.message }, { status: 500 });
 
-  let rows = (data || []).map((r: unknown) => ({
+  let rows = (data || []).map((r: any) => ({
     ...r,
     student_name: r.profiles?.full_name || '',
     student_email: r.profiles?.email || '',
@@ -66,7 +66,7 @@ export async function GET(req: Request) {
   }));
 
   if (needs) {
-    rows = rows.filter((r: unknown) => {
+    rows = rows.filter((r: any) => {
       if (needs === 'appt') return !r.workone_appointment_scheduled;
       if (needs === 'docs') return !r.advisor_docs_uploaded;
       if (needs === 'onboarding') return !r.efh_onboarding_call_completed;
@@ -100,7 +100,7 @@ export async function GET(req: Request) {
 
   const lines = [
     header.join(','),
-    ...rows.map((r: unknown) =>
+    ...rows.map((r: any) =>
       [
         r.student_name,
         r.student_email,

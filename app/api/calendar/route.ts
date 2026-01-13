@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const body = await request.json() as Record<string, unknown>;
+  const body = await request.json() as Record<string, any>;
   const { title, date, time, duration, description, color } = body as {
     title: string;
     date: string;

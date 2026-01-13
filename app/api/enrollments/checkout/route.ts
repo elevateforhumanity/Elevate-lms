@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { enrollmentId, userId, userEmail, userName } = body;
 
     if (!enrollmentId || !userId || !userEmail) {
@@ -186,7 +186,7 @@ export async function POST(request: NextRequest) {
       sessionId: session.id,
       url: session.url,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error creating enrollment checkout:',
       error instanceof Error ? error : new Error(String(error))

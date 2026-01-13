@@ -80,7 +80,7 @@ export default function PageManager() {
 
   async function updatePageStatus(pageId: string, status: string) {
     try {
-      const updates: unknown = { status };
+      const updates: any = { status };
       if (status === 'published') {
         updates.published_at = new Date().toISOString();
       }
@@ -94,7 +94,7 @@ export default function PageManager() {
 
       alert(`Page ${status} successfully!`);
       loadPages();
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('Failed to update page status: ' + error instanceof Error ? error.message : String(error));
     }
@@ -114,7 +114,7 @@ export default function PageManager() {
       alert('Page deleted successfully!');
       setSelectedPage(null);
       loadPages();
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('Failed to delete page: ' + error instanceof Error ? error.message : String(error));
     }
@@ -141,7 +141,7 @@ export default function PageManager() {
         .eq('id', selectedPage.id)
         .single();
       if (data) setSelectedPage(data);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('Failed to save changes: ' + error instanceof Error ? error.message : String(error));
     }
@@ -167,7 +167,7 @@ export default function PageManager() {
         .eq('id', selectedPage.id)
         .single();
       if (data) setSelectedPage(data);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('Failed to rollback: ' + error instanceof Error ? error.message : String(error));
     }

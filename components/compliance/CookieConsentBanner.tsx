@@ -43,8 +43,8 @@ export default function CookieConsentBanner() {
 
   const applyCookiePreferences = (prefs: CookiePreferences) => {
     // Apply Google Analytics
-    if (prefs.analytics && typeof window !== 'undefined' && (window as unknown).gtag) {
-      (window as unknown).gtag('consent', 'update', {
+    if (prefs.analytics && typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
         analytics_storage: 'granted',
       });
     }
@@ -52,8 +52,8 @@ export default function CookieConsentBanner() {
     // Apply marketing cookies
     if (prefs.marketing && typeof window !== 'undefined') {
       // Enable Facebook Pixel, etc.
-      if ((window as unknown).fbq) {
-        (window as unknown).fbq('consent', 'grant');
+      if ((window as any).fbq) {
+        (window as any).fbq('consent', 'grant');
       }
     }
 

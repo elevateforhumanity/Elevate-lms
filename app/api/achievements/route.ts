@@ -23,7 +23,7 @@ export async function GET(request: Request) {
         totalAchievements: 0,
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
   }
 }
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     if (!body.achievementId) {
       return NextResponse.json(
@@ -63,7 +63,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ achievement }, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ error: error instanceof Error ? error.message : 'Unknown error' }, { status: 500 });
   }
 }

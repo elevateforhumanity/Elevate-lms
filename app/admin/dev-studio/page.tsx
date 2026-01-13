@@ -55,7 +55,7 @@ export default function DevStudioPage() {
 
   // GitHub state
   const [token, setToken] = useState<string>('');
-  const [repos, setRepos] = useState<unknown[]>([]);
+  const [repos, setRepos] = useState<any[]>([]);
   const [selectedRepo, setSelectedRepo] = useState<string>(
     'elevateforhumanity/fix2'
   );
@@ -132,7 +132,7 @@ export default function DevStudioPage() {
           '<XCircle className="w-5 h-5 inline-block" /> Failed to load repositories'
         );
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       addTerminalOutput(
         '<XCircle className="w-5 h-5 inline-block" /> Error loading repositories'
       );
@@ -156,7 +156,7 @@ export default function DevStudioPage() {
       const data = await res.json();
 
       if (res.ok) {
-        const filePaths = data.files.map((f: Record<string, unknown>) => f.path);
+        const filePaths = data.files.map((f: Record<string, any>) => f.path);
         setFiles(filePaths);
         addTerminalOutput(
           `<CheckCircle className="w-5 h-5 inline-block" /> Loaded ${filePaths.length} files`
@@ -166,7 +166,7 @@ export default function DevStudioPage() {
           '<XCircle className="w-5 h-5 inline-block" /> Failed to load file tree'
         );
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       addTerminalOutput(
         '<XCircle className="w-5 h-5 inline-block" /> Error loading file tree'
       );
@@ -203,7 +203,7 @@ export default function DevStudioPage() {
           `<XCircle className="w-5 h-5 inline-block" /> Failed to open ${path}`
         );
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       addTerminalOutput(
         `<XCircle className="w-5 h-5 inline-block" /> Error opening ${path}`
       );
@@ -246,7 +246,7 @@ export default function DevStudioPage() {
           `<XCircle className="w-5 h-5 inline-block" /> Failed to save: ${error instanceof Error ? error.message : String(error)}`
         );
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       addTerminalOutput(
         '<XCircle className="w-5 h-5 inline-block" /> Error saving file'
       );

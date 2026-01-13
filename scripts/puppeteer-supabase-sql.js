@@ -124,7 +124,7 @@ async function runSupabaseSQL() {
     // Take error screenshot
     try {
       const errorScreenshot = path.join(process.cwd(), 'supabase-error.png');
-      // eslint-disable-next-line no-undef
+       
       await page.screenshot({ path: errorScreenshot, fullPage: true });
     } catch (e) {}
 

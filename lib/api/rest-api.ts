@@ -161,7 +161,7 @@ export function apiResponse<T>(
   success: boolean,
   data?: T,
   error?: string,
-  meta?: Record<string, unknown>
+  meta?: Record<string, any>
 ): APIResponse<T> {
   return {
     success,

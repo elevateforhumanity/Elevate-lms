@@ -23,7 +23,7 @@ export function stringifyJSON(obj: any, pretty = true): string {
   return pretty ? JSON.stringify(obj, null, 2) : JSON.stringify(obj);
 }
 
-export function extractFrontmatter(content: string): { frontmatter: unknown; body: string } {
+export function extractFrontmatter(content: string): { frontmatter: any; body: string } {
   const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
   const match = content.match(frontmatterRegex);
 
@@ -35,7 +35,7 @@ export function extractFrontmatter(content: string): { frontmatter: unknown; bod
   const body = match[2];
 
   // Parse YAML-like frontmatter
-  const frontmatter: unknown = {};
+  const frontmatter: any = {};
   frontmatterText.split('\n').forEach(line => {
     const [key, ...valueParts] = line.split(':');
     if (key && valueParts.length > 0) {

@@ -44,7 +44,7 @@ export default function EnrollButton({
       // Redirect to the course page
       router.push(`/lms/courses/${courseId}`);
       router.refresh();
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError(err instanceof Error ? err.message : String(err));
       setLoading(false);
     }

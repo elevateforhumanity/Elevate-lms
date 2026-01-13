@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Employer Dashboard | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 import { createClient } from '@/lib/supabase/server';
 export const dynamic = 'force-dynamic';
 import { requireRole } from '@/lib/auth/require-role';

@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
       message: 'Invite accepted successfully',
       organization_id: invite.organization_id,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:
@@ -122,7 +122,7 @@ export async function GET(req: NextRequest) {
         organization_name: invite.organization_name,
       },
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:

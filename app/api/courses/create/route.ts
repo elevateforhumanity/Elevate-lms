@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
         funding_programs: courseData.fundingPrograms || ['WIOA'],
         status: 'draft',
         total_lessons: courseData.modules.reduce(
-          (acc: number, m: { lessons: unknown[] }) => acc + m.lessons.length,
+          (acc: number, m: { lessons: any[] }) => acc + m.lessons.length,
           0
         ),
       })
@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
         title: course.title,
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Course creation error:',
       error instanceof Error ? error : new Error(String(error))

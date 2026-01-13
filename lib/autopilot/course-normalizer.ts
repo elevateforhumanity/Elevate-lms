@@ -1,4 +1,4 @@
-export function normalizeCourseMetadata(metadata: Record<string, unknown>) {
+export function normalizeCourseMetadata(metadata: Record<string, any>) {
   const clean = { ...metadata };
 
   // Ensure required fields
@@ -50,7 +50,7 @@ export function normalizeCourseMetadata(metadata: Record<string, unknown>) {
   return clean;
 }
 
-export function validateCourseMetadata(metadata: Record<string, unknown>): {
+export function validateCourseMetadata(metadata: Record<string, any>): {
   valid: boolean;
   errors: string[];
 } {

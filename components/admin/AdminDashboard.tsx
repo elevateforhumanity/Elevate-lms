@@ -60,7 +60,7 @@ export default function AdminDashboard() {
 
       setMetrics(metricsData);
       setRecentActivity(activityData);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     } finally {
       setLoading(false);

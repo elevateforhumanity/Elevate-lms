@@ -35,7 +35,7 @@ export default function TestFundingPage() {
         // Open checkout in new tab
         window.open(data.url, '_blank');
       }
-    } catch (err: unknown) {
+    } catch (err: any) {
       setResult({ err: err instanceof Error ? err.message : String(err) });
     } finally {
       setLoading(false);

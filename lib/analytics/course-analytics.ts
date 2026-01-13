@@ -129,7 +129,7 @@ export async function getCourseAnalytics(courseId: string): Promise<CourseAnalyt
       const enrollment = enrollments?.find(e => e.student_id === p.user_id);
       return {
         studentId: p.user_id,
-        studentName: (enrollment?.profiles as unknown)?.full_name || 'Unknown',
+        studentName: (enrollment?.profiles as any)?.full_name || 'Unknown',
         progress: p.progress_percent || 0,
         timeSpent: 0, // Would need time tracking
         lastActive: p.last_activity_at || p.updated_at,
@@ -146,7 +146,7 @@ export async function getCourseAnalytics(courseId: string): Promise<CourseAnalyt
       const enrollment = enrollments?.find(e => e.student_id === p.user_id);
       return {
         studentId: p.user_id,
-        studentName: (enrollment?.profiles as unknown)?.full_name || 'Unknown',
+        studentName: (enrollment?.profiles as any)?.full_name || 'Unknown',
         progress: p.progress_percent || 0,
         timeSpent: 0,
         lastActive: p.last_activity_at || p.updated_at,
@@ -268,7 +268,7 @@ export async function generateCourseReport(courseId: string) {
  */
 function generateRecommendations(
   analytics: CourseAnalytics | null,
-  engagement: unknown
+  engagement: any
 ): string[] {
   const recommendations: string[] = [];
 

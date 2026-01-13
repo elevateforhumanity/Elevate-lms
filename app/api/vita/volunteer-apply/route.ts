@@ -18,7 +18,7 @@ export async function POST(request: Request) {
   try {
     const supabase = await createClient();
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { name, email, phone, availability, experience, certifications } =
       body;
 
@@ -101,7 +101,7 @@ export async function POST(request: Request) {
         'We will contact you about local volunteer opportunities',
       ],
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

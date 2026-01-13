@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Test Images | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 export default function TestImagesPage() {
   return (
     <div className="min-h-screen bg-gray-100 p-8">

@@ -2,7 +2,7 @@
 // Supports SCORM 1.2 and SCORM 2004 (SCORM 2004 4th Edition)
 export type SCORMVersion = '1.2' | '2004';
 export class SCORMAPIWrapper {
-  private lmsAPI: unknown;
+  private lmsAPI: any;
   private initialized: boolean = false;
   private version: SCORMVersion | null = null;
   constructor() {
@@ -17,12 +17,12 @@ export class SCORMAPIWrapper {
     while (currentWindow && attempts < maxAttempts) {
       attempts++;
       // Check for SCORM 1.2 API
-      if ((currentWindow as unknown).API) {
-        return (currentWindow as unknown).API;
+      if ((currentWindow as any).API) {
+        return (currentWindow as any).API;
       }
       // Check for SCORM 2004 API
-      if ((currentWindow as unknown).API_1484_11) {
-        return (currentWindow as unknown).API_1484_11;
+      if ((currentWindow as any).API_1484_11) {
+        return (currentWindow as any).API_1484_11;
       }
       // Move up to parent window
       if (currentWindow.parent && currentWindow.parent !== currentWindow) {
@@ -66,7 +66,7 @@ export class SCORMAPIWrapper {
         // Error logged
       }
       return this.initialized;
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       return false;
     }
@@ -82,7 +82,7 @@ export class SCORMAPIWrapper {
           ? this.lmsAPI.LMSGetValue(element)
           : this.lmsAPI.GetValue(element);
       return value || '';
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error logged
       return '';
     }
@@ -98,7 +98,7 @@ export class SCORMAPIWrapper {
           ? this.lmsAPI.LMSSetValue(element, value)
           : this.lmsAPI.SetValue(element, value);
       return result === 'true';
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error logged
       return false;
     }
@@ -114,7 +114,7 @@ export class SCORMAPIWrapper {
           ? this.lmsAPI.LMSCommit('')
           : this.lmsAPI.Commit('');
       return result === 'true';
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       return false;
     }
@@ -134,7 +134,7 @@ export class SCORMAPIWrapper {
         //
       }
       return result === 'true';
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       return false;
     }
@@ -146,7 +146,7 @@ export class SCORMAPIWrapper {
       return this.version === '1.2'
         ? this.lmsAPI.LMSGetLastError()
         : this.lmsAPI.GetLastError();
-    } catch (error: unknown) {
+    } catch (error: any) {
       return '';
     }
   }
@@ -157,7 +157,7 @@ export class SCORMAPIWrapper {
       return this.version === '1.2'
         ? this.lmsAPI.LMSGetErrorString(errorCode)
         : this.lmsAPI.GetErrorString(errorCode);
-    } catch (error: unknown) {
+    } catch (error: any) {
       return '';
     }
   }

@@ -72,16 +72,16 @@ export const GET = withAuth(
         ];
 
         const rows = enrollments.map((item: any) => [
-          e.id,
-          e.programs?.title || '',
-          e.programs?.slug || '',
-          e.user_id,
-          e.status,
-          e.funding_type || '',
-          e.source || '',
-          e.started_at || '',
-          e.completed_at || '',
-          e.created_at || '',
+          item.id,
+          item.programs?.title || '',
+          item.programs?.slug || '',
+          item.user_id,
+          item.status,
+          item.funding_type || '',
+          item.source || '',
+          item.started_at || '',
+          item.completed_at || '',
+          item.created_at || '',
         ]);
 
         const csv =
@@ -114,7 +114,7 @@ export const GET = withAuth(
   { roles: ['admin', 'super_admin'] }
 );
 
-function escapeCsvField(field: unknown): string {
+function escapeCsvField(field: any): string {
   if (field == null) return '';
   const str = String(field);
   if (str.includes(',') || str.includes('"') || str.includes('\n')) {

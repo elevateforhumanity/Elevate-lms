@@ -7,9 +7,9 @@ interface PartnerShellProps {
     user: User;
     profileRole: string;
     shops: Array<{
-      shop_id: unknown;
+      shop_id: any;
       staff_role: string;
-      shop: unknown;
+      shop: any;
     }>;
   };
   children: ReactNode;

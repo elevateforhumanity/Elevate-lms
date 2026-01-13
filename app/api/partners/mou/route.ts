@@ -63,7 +63,7 @@ export async function POST(req: Request) {
     // Note: Send notification email to admin
 
     return NextResponse.json({ ok: true });
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       'API error:',
       err instanceof Error ? err : new Error(String(err))

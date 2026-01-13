@@ -24,7 +24,7 @@ export function HandbookAcknowledgeButton({ userId }: { userId: string }) {
       } else {
         alert('Failed to acknowledge handbook. Please try again.');
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('An error occurred. Please try again.');
     } finally {

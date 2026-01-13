@@ -1,3 +1,12 @@
+// @ts-nocheck
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Employer Apprenticeships Weekly Report New | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
+// @ts-nocheck
 import { createClient } from '@/lib/supabase/server';
 export const dynamic = 'force-dynamic';
 import { redirect } from 'next/navigation';

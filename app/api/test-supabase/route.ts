@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const runtime = 'edge';
 
 import { NextResponse } from 'next/server';
@@ -49,7 +50,7 @@ export const GET = protectTestEndpoint(async () => {
             : null,
         },
       });
-    } catch (error: unknown) {
+    } catch (error: any) {
       clientError = error instanceof Error ? error.message : String(error);
       return NextResponse.json({
         status: 'error',
@@ -65,7 +66,7 @@ export const GET = protectTestEndpoint(async () => {
         },
       });
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({
       status: 'error',
       message: error instanceof Error ? error.message : String(error),

@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
     }));
 
     return NextResponse.json(branches);
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'GitHub branches error:',
       error instanceof Error ? error : new Error(String(error))

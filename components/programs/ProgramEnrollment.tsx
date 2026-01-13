@@ -100,7 +100,7 @@ export default function ProgramEnrollment({ program, userId, onEnrollmentComplet
         throw new Error(stripeError.message);
       }
 
-    } catch (data: unknown) {
+    } catch (data: any) {
       setError(err.message || 'Enrollment failed. Please try again.');
       setLoading(false);
     }

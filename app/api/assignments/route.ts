@@ -58,7 +58,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({ assignments });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error in GET /api/assignments:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
@@ -75,7 +75,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const {
       courseId,
       title,
@@ -118,7 +118,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ assignment }, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error in POST /api/assignments:', error);
     return NextResponse.json(
       { error: 'Internal server error' },

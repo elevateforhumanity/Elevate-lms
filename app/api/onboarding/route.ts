@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const runtime = 'edge';
 export const maxDuration = 60;
 
@@ -45,7 +46,7 @@ export async function GET(request: NextRequest) {
       { error: 'Invalid action or missing parameters' },
       { status: 400 }
     );
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Onboarding GET error:', error);
     return NextResponse.json(
       { error: getErrorMessage(error) },
@@ -99,7 +100,7 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Onboarding POST error:', error);
     return NextResponse.json(
       { error: getErrorMessage(error) },

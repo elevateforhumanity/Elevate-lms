@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ success: true, data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         success: false,
@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const supabase = createSupabaseClient();
   try {
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const {
       userId,
       careerGoal,
@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ success: true, data }, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         success: false,

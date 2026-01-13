@@ -30,7 +30,7 @@ async function getAuthorPosts(author: string) {
       .order('published_at', { ascending: false });
 
     return posts || [];
-  } catch (error: unknown) {
+  } catch (error: any) {
     return [];
   }
 }

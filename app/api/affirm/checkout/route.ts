@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     const authResult = await apiAuthGuard({ requireAuth: false });
     const user = authResult.user || { id: 'guest', email: '' };
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     const {
       amount,
@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
       checkout_token: data.checkout_token,
       redirect_url: data.redirect_url,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Affirm checkout error:', error);
     return NextResponse.json(
       {

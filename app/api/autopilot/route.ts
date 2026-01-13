@@ -96,7 +96,7 @@ export async function GET(request: NextRequest) {
   try {
     const state = loadState();
     return NextResponse.json(state);
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Failed to load autopilot state' },
       { status: 500 }
@@ -107,7 +107,7 @@ export async function GET(request: NextRequest) {
 // POST - Add new task or update state
 export async function POST(request: NextRequest) {
   try {
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const state = loadState();
 
     if (body.action === 'add_task') {
@@ -146,7 +146,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Failed to process request' },
       { status: 500 }
@@ -169,7 +169,7 @@ export async function DELETE(request: NextRequest) {
     saveState(state);
 
     return NextResponse.json({ success: true });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Failed to delete task' },
       { status: 500 }

@@ -96,7 +96,7 @@ export async function GET(request: Request) {
       total: donations?.length || 0,
       totalAmount,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

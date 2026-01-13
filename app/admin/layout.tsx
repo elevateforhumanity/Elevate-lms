@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { requireAdmin } from '@/lib/auth';
 import AdminNav from '@/components/AdminNav';
 import AdminHeader from '@/components/AdminHeader';
-import { SiteFooter } from '@/components/layout/Footer';
+import SiteFooter from '@/components/layout/SiteFooter';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,7 +38,7 @@ export default async function AdminLayout({
   // Require admin authentication
   try {
     await requireAdmin();
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Redirect to admin login with return URL
     redirect('/admin/login?redirect=/admin');
   }

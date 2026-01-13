@@ -57,7 +57,7 @@ function AffirmConfirmContent() {
           `/payment/success?transaction_id=${data.transaction_id}&provider=affirm`
         );
       }, 3000);
-    } catch (error: unknown) {
+    } catch (error: any) {
       setStatus('error');
       setErrorMessage(
         error instanceof Error ? error.message : 'Failed to process payment'

@@ -30,7 +30,7 @@ export async function GET(req: Request) {
     await auditExport(
       'audit_snapshot',
       req.headers.get('x-user-id') || undefined,
-      (req.headers.get('x-user-role') as unknown) || 'workone',
+      (req.headers.get('x-user-role') as any) || 'workone',
       req
     );
 
@@ -41,7 +41,7 @@ export async function GET(req: Request) {
     // Generate CSV
     const header = Object.keys(data[0]).join(',');
     const rows = data.map((item: any) =>
-      Object.values(row)
+      Object.values(item)
         .map((v) => `"${String(v ?? '').replace(/"/g, '""')}"`)
         .join(',')
     );
@@ -54,7 +54,7 @@ export async function GET(req: Request) {
         'Content-Disposition': `attachment; filename="audit_export_${new Date().toISOString().split('T')[0]}.csv"`,
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }

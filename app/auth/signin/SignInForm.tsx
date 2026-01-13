@@ -46,7 +46,7 @@ export default function SignInForm() {
         router.push('/student/dashboard');
         router.refresh();
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       setError('An unexpected error occurred. Please start again.');
       setLoading(false);
     }
@@ -65,7 +65,7 @@ export default function SignInForm() {
       if (error) {
         setError(error instanceof Error ? error.message : String(error));
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       setError('OAuth sign-in failed. Please start again.');
     }
   };

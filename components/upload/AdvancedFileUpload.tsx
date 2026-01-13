@@ -163,7 +163,7 @@ export function AdvancedFileUpload({
 
       xhr.open('POST', '/api/media/upload');
       xhr.send(formData);
-    } catch (error: unknown) {
+    } catch (error: any) {
       setFiles((prev) =>
         prev.map((f) =>
           f.id === uploadFile.id

@@ -57,7 +57,7 @@ export function UniversalCoursePlayer({
       } else {
         alert('Failed to mark course as complete. Please try again.');
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('Error marking course as complete. Please try again.');
     } finally {

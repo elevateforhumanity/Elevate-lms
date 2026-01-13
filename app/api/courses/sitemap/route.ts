@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
         })) || [];
 
     // Organize by course
-    const sitemap: Record<string, unknown> = {};
+    const sitemap: Record<string, any> = {};
 
     courseFiles.forEach((file) => {
       const parts = file.path!.split('/');
@@ -78,7 +78,7 @@ export async function GET(req: NextRequest) {
       courses: Object.keys(sitemap),
       totalFiles: courseFiles.length,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Generate sitemap error:',
       error instanceof Error ? error : new Error(String(error))

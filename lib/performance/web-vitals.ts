@@ -4,7 +4,7 @@ export function initWebVitalsDebug() {
 
   try {
     const po = new PerformanceObserver((list) => {
-      for (const entry of list.getEntries() as unknown[]) {
+      for (const entry of list.getEntries() as any[]) {
         // Ignore layout shifts from recent input
         if (entry?.hadRecentInput) continue;
         if (process.env.NODE_ENV === "development") {
@@ -18,7 +18,7 @@ export function initWebVitalsDebug() {
     // Resource summary (dev only)
     if (process.env.NODE_ENV === "development") {
       setTimeout(() => {
-        const resources = performance.getEntriesByType("resource") as unknown[];
+        const resources = performance.getEntriesByType("resource") as any[];
         const total = resources.reduce((a, r) => a + (r.transferSize || 0), 0);
         const byType: Record<string, number> = {};
         for (const r of resources) {

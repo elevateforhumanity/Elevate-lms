@@ -61,7 +61,7 @@ export interface AuditLogEntry {
   organizationId?: string;
   resourceType?: string;
   resourceId?: string;
-  details?: Record<string, unknown>;
+  details?: Record<string, any>;
   ipAddress?: string;
   userAgent?: string;
   success: boolean;
@@ -97,7 +97,7 @@ export async function logAuditEvent(entry: AuditLogEntry): Promise<boolean> {
     }
 
     return true;
-  } catch (error: unknown) {
+  } catch (error: any) {
     console.error('Exception logging audit event:', error);
     return false;
   }
@@ -109,7 +109,7 @@ export async function logAuditEvent(entry: AuditLogEntry): Promise<boolean> {
 export async function logStudentAction(
   action: AuditAction,
   studentId: string,
-  details?: Record<string, unknown>
+  details?: Record<string, any>
 ): Promise<void> {
   await logAuditEvent({
     action,
@@ -171,7 +171,7 @@ export async function logFundingAssignment(
 export async function logSecurityEvent(
   action: AuditAction,
   userId?: string,
-  details?: Record<string, unknown>,
+  details?: Record<string, any>,
   ipAddress?: string
 ): Promise<void> {
   await logAuditEvent({

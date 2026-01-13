@@ -36,7 +36,7 @@ export default function TestEmailsPage() {
         success: true,
         message: data.message,
       });
-    } catch (err: unknown) {
+    } catch (err: any) {
       setResult({
         success: false,
         message:

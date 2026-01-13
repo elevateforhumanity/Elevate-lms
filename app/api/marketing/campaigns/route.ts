@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
         totalPages: Math.ceil((count || 0) / limit),
       },
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       'GET /marketing/campaigns error',
       err instanceof Error ? err : new Error(String(err))
@@ -94,7 +94,7 @@ export async function POST(req: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ campaign: data }, { status: 201 });
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       'POST /marketing/campaigns error',
       err instanceof Error ? err : new Error(String(err))

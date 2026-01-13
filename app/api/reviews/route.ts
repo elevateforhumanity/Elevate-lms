@@ -67,7 +67,7 @@ export async function GET(request: Request) {
       total: reviews?.length || 0,
       averageRating: parseFloat(avgRating),
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -78,7 +78,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const supabase = await createClient();
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     const { reviewer_name, reviewer_email, rating, content } = body;
 
@@ -143,7 +143,7 @@ export async function POST(request: Request) {
       message:
         'Thank you for your review! It will be published after moderation.',
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

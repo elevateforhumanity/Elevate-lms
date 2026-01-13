@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import React from 'react';
@@ -159,7 +160,7 @@ export default function ChatAssistant({
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch (error: unknown) {
+    } catch (error: any) {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',

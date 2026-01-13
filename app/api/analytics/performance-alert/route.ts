@@ -7,7 +7,7 @@ import { logger } from '@/lib/logger';
 
 export async function POST(request: Request) {
   try {
-    const data = await parseBody<Record<string, unknown>>(request);
+    const data = await parseBody<Record<string, any>>(request);
 
     // Log performance alert
     logger.warn('[Performance Alert]', data);
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('[Performance Alert] Error:', error);
     return NextResponse.json({ error: 'Failed to log alert' }, { status: 500 });
   }

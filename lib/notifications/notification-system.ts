@@ -27,7 +27,7 @@ export interface Notification {
   read: boolean;
   created_at: string;
   read_at?: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
 }
 
 /**
@@ -40,7 +40,7 @@ export async function createNotification(data: {
   message: string;
   actionUrl?: string;
   actionLabel?: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
 }): Promise<string | null> {
   const supabase = await createClient();
 

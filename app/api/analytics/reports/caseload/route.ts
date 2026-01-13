@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
   // Get latest notes per learner/course
   const key = (u: string, c: string) => `${u}:${c}`;
   const userIds = Array.from(
-    new Set(enrolls.map((e: Record<string, unknown>) => e.user_id))
+    new Set(enrolls.map((e: Record<string, any>) => e.user_id))
   ).filter(Boolean);
 
   const latestMap: Record<
@@ -120,7 +120,7 @@ export async function GET(req: NextRequest) {
   }
 
   // Build rows
-  let rows = enrolls.map((e: Record<string, unknown>) => {
+  let rows = enrolls.map((e: Record<string, any>) => {
     const k = key(e.user_id, e.course_id);
     const latest = latestMap[k];
 

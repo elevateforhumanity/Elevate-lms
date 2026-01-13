@@ -63,7 +63,7 @@ export async function POST(req: Request) {
       repoUrl: result.repoUrl,
       cloneUrl: result.cloneUrl,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Clone error:',
       error instanceof Error ? error : new Error(String(error))

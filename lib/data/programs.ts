@@ -25,7 +25,7 @@ export async function getProgram(slug: string): Promise<Program | null> {
       // Map Supabase data to Program type
       return mapSupabaseProgramToProgram(supabaseProgram);
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error handled
   }
 
@@ -52,7 +52,7 @@ export async function getAllPrograms(): Promise<Program[]> {
       // Map Supabase data to Program type
       return supabasePrograms.map(mapSupabaseProgramToProgram);
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error handled
   }
 

@@ -40,7 +40,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ recaps: data || [] }, { status: 200 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         error:

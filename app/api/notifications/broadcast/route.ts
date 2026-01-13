@@ -79,7 +79,7 @@ export async function POST(req: Request) {
               status: 'sent',
               sent_at: new Date().toISOString(),
             });
-          } catch (error: unknown) {
+          } catch (error: any) {
             logger.error(
               `Error sending to subscription ${subscription.id}:`,
               error
@@ -105,7 +105,7 @@ export async function POST(req: Request) {
             });
           }
         }
-      } catch (error: unknown) {
+      } catch (error: any) {
         logger.error(
           `Error processing user ${user.id}:`,
           error instanceof Error ? error : new Error(String(error))
@@ -122,7 +122,7 @@ export async function POST(req: Request) {
         failed,
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Broadcast notification error:',
       error instanceof Error ? error : new Error(String(error))
@@ -134,7 +134,7 @@ export async function POST(req: Request) {
   }
 }
 
-async function getTargetUsers(supabase: unknown, targetAudience: string) {
+async function getTargetUsers(supabase: any, targetAudience: string) {
   let query;
 
   switch (targetAudience) {

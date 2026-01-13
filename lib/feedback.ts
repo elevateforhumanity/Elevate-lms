@@ -66,7 +66,7 @@ export interface SurveyResponse {
   id: string;
   survey_id: string;
   user_id: string;
-  answers: Record<string, unknown>;
+  answers: Record<string, any>;
   completed_at: string;
 }
 
@@ -182,7 +182,7 @@ export async function updateFeedbackStatus(
 ): Promise<void> {
   const supabase = await createClient();
 
-  const updateData: unknown = {
+  const updateData: any = {
     status,
     updated_at: new Date().toISOString(),
   };
@@ -385,7 +385,7 @@ export async function getAllSurveys(): Promise<Survey[]> {
 export async function submitSurveyResponse(
   surveyId: string,
   userId: string,
-  answers: Record<string, unknown>
+  answers: Record<string, any>
 ): Promise<SurveyResponse> {
   const supabase = await createClient();
 
@@ -452,7 +452,7 @@ export async function analyzeSurveyResults(surveyId: string): Promise<{
     questionId: string;
     question: string;
     type: string;
-    responses: unknown;
+    responses: any;
   }>;
 }> {
   const supabase = await createClient();
@@ -476,7 +476,7 @@ export async function analyzeSurveyResults(surveyId: string): Promise<{
         .map((r) => r.answers[q.id])
         .filter(Boolean);
 
-      let responseData: unknown = {};
+      let responseData: any = {};
 
       switch (q.type) {
         case 'text':

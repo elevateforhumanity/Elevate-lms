@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true, id: data.id });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error("API error:", error);
     return NextResponse.json(
       { error: "Server error" },
@@ -64,7 +64,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ requests: data || [] });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error("API error:", error);
     return NextResponse.json(
       { error: "Server error" },

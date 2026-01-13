@@ -13,8 +13,8 @@ function createClient() {
   );
 }
 type DatabasePayload = {
-  old: Record<string, unknown>;
-  new: Record<string, unknown>;
+  old: Record<string, any>;
+  new: Record<string, any>;
   eventType: 'INSERT' | 'UPDATE' | 'DELETE';
   schema: string;
   table: string;
@@ -25,11 +25,11 @@ interface SyncConfig {
   onUpdate: (payload: DatabasePayload) => void;
   onInsert?: (payload: DatabasePayload) => void;
   onDelete?: (payload: DatabasePayload) => void;
-  filter?: Record<string, unknown>;
+  filter?: Record<string, any>;
 }
 interface PendingChange {
   operation: 'insert' | 'update' | 'delete';
-  data: Record<string, unknown>;
+  data: Record<string, any>;
   timestamp: number;
 }
 interface SyncState {
@@ -124,7 +124,7 @@ class DataSynchronizationManager {
    */
   async syncData(
     table: string,
-    data: Record<string, unknown>,
+    data: Record<string, any>,
     operation: 'insert' | 'update' | 'delete'
   ): Promise<boolean> {
     const supabase = createClient();
@@ -161,7 +161,7 @@ class DataSynchronizationManager {
       //
       this.updateSyncState(table);
       return true;
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error logged
       await this.retrySync(table, data, operation);
       return false;
@@ -174,7 +174,7 @@ class DataSynchronizationManager {
    */
   private async retrySync(
     table: string,
-    data: Record<string, unknown>,
+    data: Record<string, any>,
     operation: 'insert' | 'update' | 'delete',
     attempt: number = 1
   ): Promise<void> {
@@ -247,7 +247,7 @@ class DataSynchronizationManager {
   /**
    * Build filter string for Supabase
    */
-  private buildFilter(filter: Record<string, unknown>): string {
+  private buildFilter(filter: Record<string, any>): string {
     return Object.entries(filter)
       .map(([key, value]) => `${key}=eq.${value}`)
       .join(',');
@@ -319,15 +319,15 @@ export const ConflictResolution = {
   /**
    * Server wins - always use server data
    */
-  serverWins: (serverData: Record<string, unknown>, _localData: Record<string, unknown>) => serverData,
+  serverWins: (serverData: Record<string, any>, _localData: Record<string, any>) => serverData,
   /**
    * Client wins - always use local data
    */
-  clientWins: (_serverData: Record<string, unknown>, localData: Record<string, unknown>) => localData,
+  clientWins: (_serverData: Record<string, any>, localData: Record<string, any>) => localData,
   /**
    * Last write wins - use most recent timestamp
    */
-  lastWriteWins: (serverData: Record<string, unknown>, localData: Record<string, unknown>) => {
+  lastWriteWins: (serverData: Record<string, any>, localData: Record<string, any>) => {
     const serverTime = new Date((serverData.updated_at || serverData.created_at) as string);
     const localTime = new Date((localData.updated_at || localData.created_at) as string);
     return serverTime > localTime ? serverData : localData;
@@ -335,7 +335,7 @@ export const ConflictResolution = {
   /**
    * Merge - combine both datasets
    */
-  merge: (serverData: Record<string, unknown>, localData: Record<string, unknown>) => {
+  merge: (serverData: Record<string, any>, localData: Record<string, any>) => {
     return { ...serverData, ...localData };
   },
 };

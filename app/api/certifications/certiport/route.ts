@@ -20,7 +20,7 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const body = await parseBody<Record<string, unknown>>(request);
+  const body = await parseBody<Record<string, any>>(request);
 
   return NextResponse.json({
     success: true,

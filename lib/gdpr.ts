@@ -41,7 +41,7 @@ export async function exportUserData(userId: string) {
       success: true,
       data: userData,
     };
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
     return {
       success: false,
@@ -83,7 +83,7 @@ export async function deleteUserData(userId: string, options: { keepProfile?: bo
       success: true,
       deletedRecords: deletions.filter(d => !d.error).length,
     };
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
     return {
       success: false,
@@ -126,7 +126,7 @@ export async function anonymizeUserData(userId: string) {
     });
 
     return { success: true };
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
     return {
       success: false,

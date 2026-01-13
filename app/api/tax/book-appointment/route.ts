@@ -130,7 +130,7 @@ export async function POST(req: Request) {
       appointment: data,
       message: 'Appointment booked successfully! Check your email for confirmation.',
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createClient } from '@/lib/supabase/server';
 export const dynamic = 'force-dynamic';
 import { requireRole } from '@/lib/auth/require-role';

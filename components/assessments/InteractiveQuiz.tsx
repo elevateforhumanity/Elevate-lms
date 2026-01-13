@@ -20,7 +20,7 @@ interface InteractiveQuizProps {
   title: string;
   questions: QuizQuestion[];
   passingScore: number;
-  onComplete: (score: number, answers: Record<string, unknown>) => Promise<void>;
+  onComplete: (score: number, answers: Record<string, any>) => Promise<void>;
 }
 
 export function InteractiveQuiz({
@@ -31,7 +31,7 @@ export function InteractiveQuiz({
   onComplete,
 }: InteractiveQuizProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, unknown>>({});
+  const [answers, setAnswers] = useState<Record<string, any>>({});
   const [showFeedback, setShowFeedback] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [score, setScore] = useState(0);
@@ -39,7 +39,7 @@ export function InteractiveQuiz({
   const question = questions[currentQuestion];
   const isLastQuestion = currentQuestion === questions.length - 1;
 
-  const handleAnswer = (data: unknown) => {
+  const handleAnswer = (data: any) => {
     setAnswers({ ...answers, [question.id]: answer });
   };
 

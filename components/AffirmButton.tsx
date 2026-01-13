@@ -22,9 +22,9 @@ export default function AffirmButton({ programId, programName, price, fullWidth 
 
     try {
       // Initialize Affirm if not already loaded
-      if (typeof window !== 'undefined' && !(window as unknown).affirm) {
+      if (typeof window !== 'undefined' && !(window as any).affirm) {
         // Configure Affirm BEFORE loading script
-        (window as unknown)._affirm_config = {
+        (window as any)._affirm_config = {
           public_api_key: 'aGax1GLWFexjLyW7PCf23rfznLl6YGyI', // Sandbox key
           script: 'https://cdn1-sandbox.affirm.com/js/v2/affirm.js'
         };
@@ -43,7 +43,7 @@ export default function AffirmButton({ programId, programName, price, fullWidth 
         // Wait for affirm object to be available
         await new Promise((resolve) => {
           const checkAffirm = setInterval(() => {
-            if ((window as unknown).affirm && (window as unknown).affirm.checkout) {
+            if ((window as any).affirm && (window as any).affirm.checkout) {
               clearInterval(checkAffirm);
               resolve(true);
             }
@@ -80,7 +80,7 @@ export default function AffirmButton({ programId, programName, price, fullWidth 
       };
 
       // Open Affirm checkout
-      const affirm = (window as unknown).affirm;
+      const affirm = (window as any).affirm;
       if (affirm && affirm.checkout && affirm.checkout.open) {
         affirm.checkout(checkoutData);
         affirm.checkout.open();
@@ -89,7 +89,7 @@ export default function AffirmButton({ programId, programName, price, fullWidth 
         throw new Error('Affirm checkout not available. Please refresh and try again.');
       }
 
-    } catch (data: unknown) {
+    } catch (data: any) {
       // Error: $1
       setError(err.message || 'Failed to initialize Affirm. Please try again.');
     } finally {

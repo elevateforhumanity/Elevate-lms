@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
             { status: 401 }
           );
         }
-        const status = searchParams.get('status') as unknown;
+        const status = searchParams.get('status') as any;
         const referrals = await getUserReferrals(authResult2.user.id, status);
         return NextResponse.json({ referrals });
 
@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Referrals GET error:', error);
     return NextResponse.json(
       { error: 'Failed to fetch referral data' },
@@ -96,7 +96,7 @@ export async function POST(request: NextRequest) {
     }
 
     const { user } = authResult;
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { action } = body;
 
     switch (action) {
@@ -164,7 +164,7 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Referrals POST error:', error);
     return NextResponse.json(
       {

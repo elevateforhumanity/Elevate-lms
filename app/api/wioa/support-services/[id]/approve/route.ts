@@ -14,7 +14,7 @@ export async function POST(
   const supabase = createSupabaseClient();
   try {
     const { id } = await params;
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { approved, approvedAmount, approvedBy, notes, denialReason } = body;
 
     const updateData = {
@@ -37,7 +37,7 @@ export async function POST(
     if (error) throw error;
 
     return NextResponse.json({ success: true, data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         success: false,

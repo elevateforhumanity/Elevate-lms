@@ -24,7 +24,7 @@ export async function GET(
     if (error) throw error;
 
     return NextResponse.json({ success: true, data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         success: false,
@@ -43,7 +43,7 @@ export async function PUT(
   const supabase = createSupabaseClient();
   try {
     const { id } = await params;
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     const updateData = {
       ...body,
@@ -60,7 +60,7 @@ export async function PUT(
     if (error) throw error;
 
     return NextResponse.json({ success: true, data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         success: false,
@@ -79,7 +79,7 @@ export async function POST(
   const supabase = createSupabaseClient();
   try {
     const { id } = await params;
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { approvedBy, approvalNotes } = body;
 
     const { data, error }: any = await supabase
@@ -98,7 +98,7 @@ export async function POST(
     if (error) throw error;
 
     return NextResponse.json({ success: true, data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         success: false,

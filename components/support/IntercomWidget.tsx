@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 declare global {
   interface Window {
-    Intercom?: unknown;
+    Intercom?: any;
   }
 }
 
@@ -22,18 +22,18 @@ export function IntercomWidget({
     const appId = process.env.NEXT_PUBLIC_INTERCOM_APP_ID;
 
     (function () {
-      const w = window as unknown;
+      const w = window as any;
       const ic = w.Intercom;
       if (typeof ic === "function") {
         ic("reattach_activator");
         ic("update", {});
       } else {
         const d = document;
-        const i = function (...args: unknown[]) {
+        const i = function (...args: any[]) {
           i.c(args);
-        } as unknown;
+        } as any;
         i.q = [];
-        i.c = function (data: unknown) {
+        i.c = function (data: any) {
           i.q.push(args);
         };
         w.Intercom = i;

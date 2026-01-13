@@ -23,8 +23,8 @@ function CheckoutForm({
   product,
   customerInfo,
 }: {
-  product: unknown;
-  customerInfo: unknown;
+  product: any;
+  customerInfo: any;
 }) {
   const stripe = useStripe();
   const elements = useElements();
@@ -144,7 +144,7 @@ export default function LicenseCheckoutPage() {
       } else {
         alert('Failed to create payment intent');
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       alert('Failed to process request');
     }
   };

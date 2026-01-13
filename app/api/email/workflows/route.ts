@@ -18,7 +18,7 @@ export async function GET(req: Request) {
     if (error) throw error;
 
     return NextResponse.json({ success: true, workflows });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error fetching workflows:',
       error instanceof Error ? error : new Error(String(error))
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     if (error) throw error;
 
     return NextResponse.json({ success: true, workflow });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error creating workflow:',
       error instanceof Error ? error : new Error(String(error))

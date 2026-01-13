@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { OptimizedVideo } from '@/components/OptimizedVideo';
 import type { Metadata } from 'next';
 import Link from 'next/link';

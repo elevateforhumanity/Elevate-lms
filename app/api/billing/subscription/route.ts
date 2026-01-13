@@ -41,7 +41,7 @@ export async function GET(req: NextRequest) {
       subscription,
       license_status: licenseStatus,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:

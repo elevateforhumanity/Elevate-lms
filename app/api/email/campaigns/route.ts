@@ -18,7 +18,7 @@ export async function GET(req: Request) {
     if (error) throw error;
 
     return NextResponse.json({ success: true, campaigns });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error fetching campaigns:',
       error instanceof Error ? error : new Error(String(error))
@@ -55,7 +55,7 @@ export async function POST(req: Request) {
     if (error) throw error;
 
     return NextResponse.json({ success: true, campaign });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error creating campaign:',
       error instanceof Error ? error : new Error(String(error))

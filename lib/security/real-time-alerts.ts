@@ -31,7 +31,7 @@ interface SecurityAlert {
   userId?: string;
   ipAddress?: string;
   userAgent?: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
   timestamp: Date;
 }
 interface AlertChannel {
@@ -64,7 +64,7 @@ export async function sendSecurityAlert(alert: SecurityAlert): Promise<void> {
       // SMS for critical alerts only
       alert.severity === AlertSeverity.CRITICAL && sendSMSAlert(alert, channels.sms),
     ]);
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
     // Fallback: Log to console at minimum
     // Error logged
@@ -151,7 +151,7 @@ async function sendEmailAlert(alert: SecurityAlert, emails?: string[]): Promise<
     if (!response.ok) {
       throw new Error(`SendGrid API error: ${response.statusText}`);
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
   }
 }
@@ -183,7 +183,7 @@ async function sendSlackAlert(alert: SecurityAlert, webhookUrl?: string): Promis
         ],
       }),
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
   }
 }
@@ -206,7 +206,7 @@ async function sendWebhookAlert(alert: SecurityAlert, webhookUrl?: string): Prom
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(alert),
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
   }
 }

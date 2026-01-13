@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ url: session.url }, { status: 200 });
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       '[Drug Testing] Checkout error:',
       err instanceof Error ? err : new Error(String(err))

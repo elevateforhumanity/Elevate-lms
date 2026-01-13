@@ -4,11 +4,11 @@ import {
   validateCourseMetadata,
 } from './course-normalizer';
 import { checkBrokenLinks, checkCourseStructure } from './link-checker';
-export async function runAutopilot(name: string, payload: unknown = {}) {
+export async function runAutopilot(name: string, payload: any = {}) {
   return { ok: true };
 }
 export async function runAutopilots(
-  metadata: Record<string, unknown>,
+  metadata: Record<string, any>,
   repo = 'elevateforhumanity/fix2'
 ) {
   try {
@@ -32,7 +32,7 @@ export async function runAutopilots(
       structure,
       errors: validation.errors,
     };
-  } catch (error: unknown) {
+  } catch (error: any) {
     return {
       ok: false,
       error: error instanceof Error ? error.message : String(error),
@@ -52,7 +52,7 @@ export async function runFullAnalysis(repo = 'elevateforhumanity/fix2') {
         codeFiles: analysis.components + analysis.pages + analysis.api,
       },
     };
-  } catch (error: unknown) {
+  } catch (error: any) {
     return {
       ok: false,
       error: error instanceof Error ? error.message : String(error),

@@ -38,7 +38,7 @@ export function ReportProduct({ productId }: { productId: string }) {
 
       setSent(true);
       setShowForm(false);
-    } catch (data: unknown) {
+    } catch (data: any) {
       alert(error.message);
     } finally {
       setLoading(false);

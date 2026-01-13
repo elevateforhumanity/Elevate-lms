@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
           { status: 400 }
         );
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Notification error:', error);
     return NextResponse.json(
       { error: (error as Error).message },
@@ -108,7 +108,7 @@ export async function GET(req: NextRequest) {
     }
 
     return NextResponse.json({ notifications });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error fetching notifications:', error);
     return NextResponse.json(
       { error: (error as Error).message },
@@ -139,7 +139,7 @@ export async function PATCH(req: NextRequest) {
     }
 
     return NextResponse.json({ success: true, message: 'Notification updated' });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error updating notification:', error);
     return NextResponse.json(
       { error: (error as Error).message },

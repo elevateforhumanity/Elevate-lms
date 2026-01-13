@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { message, conversationHistory = [] } = body;
 
     if (!message) {
@@ -183,7 +183,7 @@ export async function POST(request: NextRequest) {
       response,
       conversationId: completion.id,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
     return NextResponse.json(
       { error: 'Failed to process request' },
@@ -220,7 +220,7 @@ export async function GET(request: NextRequest) {
       .limit(20);
 
     return NextResponse.json({ conversations });
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
     return NextResponse.json(
       { error: 'Failed to fetch conversations' },

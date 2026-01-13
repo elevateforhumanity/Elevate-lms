@@ -4,7 +4,7 @@ export interface PushNotification {
   body: string;
   icon?: string;
   badge?: string;
-  data?: unknown;
+  data?: any;
   actions?: Array<{
     action: string;
     title: string;
@@ -42,7 +42,7 @@ export class PushService {
         return true;
       }
       return false;
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       return false;
     }

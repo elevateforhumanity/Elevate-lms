@@ -16,7 +16,7 @@ export interface CollaborationConfig {
 export class CollaborationProvider {
   private doc: Y.Doc;
   private provider: WebsocketProvider | null = null;
-  private awareness: unknown;
+  private awareness: any;
 
   constructor(config: CollaborationConfig) {
     this.doc = new Y.Doc();
@@ -53,14 +53,14 @@ export class CollaborationProvider {
   /**
    * Get a shared map (key-value store)
    */
-  getMap(fieldName: string): Y.Map<unknown> {
+  getMap(fieldName: string): Y.Map<any> {
     return this.doc.getMap(fieldName);
   }
 
   /**
    * Get a shared array
    */
-  getArray(fieldName: string): Y.Array<unknown> {
+  getArray(fieldName: string): Y.Array<any> {
     return this.doc.getArray(fieldName);
   }
 
@@ -90,7 +90,7 @@ export class CollaborationProvider {
   /**
    * Update local user state (cursor position, selection, etc.)
    */
-  updateLocalState(state: Record<string, unknown>) {
+  updateLocalState(state: Record<string, any>) {
     Object.entries(state).forEach(([key, value]) => {
       this.awareness.setLocalStateField(key, value);
     });

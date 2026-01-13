@@ -82,7 +82,7 @@ export async function GET(request: Request) {
       total: applications?.length || 0,
       statusCounts,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -116,7 +116,7 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { application_id, approval_status, rejection_reason } = body;
 
     if (!application_id || !approval_status) {
@@ -126,7 +126,7 @@ export async function PATCH(request: Request) {
       );
     }
 
-    const updateData: unknown = {
+    const updateData: any = {
       approval_status,
       updated_at: new Date().toISOString(),
     };
@@ -169,7 +169,7 @@ export async function PATCH(request: Request) {
       success: true,
       application,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

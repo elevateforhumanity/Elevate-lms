@@ -8,7 +8,7 @@ import { getAppVersion } from '@/lib/version/getAppVersion';
 import { logger } from '@/lib/logging/logger';
 
 export async function GET() {
-  const checks: Record<string, unknown> = {
+  const checks: Record<string, any> = {
     status: 'healthy',
     timestamp: new Date().toISOString(),
     version: getAppVersion(),
@@ -53,7 +53,7 @@ export async function GET() {
         error: 'Missing Supabase credentials',
       };
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     checks.checks.database = {
       connected: false,
       status: 'fail',

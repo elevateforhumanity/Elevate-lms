@@ -16,7 +16,7 @@ interface AssignmentActivityProps {
   allowedFileTypes?: string[];
   maxFileSizeMB?: number;
   allowLateSubmission?: boolean;
-  onSubmit?: (data: unknown) => void;
+  onSubmit?: (data: any) => void;
 }
 
 export function AssignmentActivity({

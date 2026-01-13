@@ -48,7 +48,7 @@ export async function GET(
         'Content-Disposition': `attachment; filename="certificate-${certificate.certificate_number}.pdf"`,
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

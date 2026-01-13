@@ -29,7 +29,7 @@ export default function LessonPage() {
   const lessonId = params.lessonId as string;
 
   const [lesson, setLesson] = useState<any>(null);
-  const [lessons, setLessons] = useState<unknown[]>([]);
+  const [lessons, setLessons] = useState<any[]>([]);
   const [course, setCourse] = useState<any>(null);
   const [isCompleted, setIsCompleted] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
@@ -359,7 +359,7 @@ export default function LessonPage() {
 
             {activeTab === 'resources' && (
               <div className="space-y-3">
-                {lesson.resources.map((resource: unknown, idx: number) => (
+                {lesson.resources.map((resource: any, idx: number) => (
                   <div
                     key={idx}
                     className="flex items-center justify-between p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition"

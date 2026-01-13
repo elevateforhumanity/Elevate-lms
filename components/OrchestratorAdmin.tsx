@@ -11,16 +11,16 @@ interface Autopilot {
   needs: {
     kvNamespaces?: string[];
     r2Buckets?: string[];
-    workers?: unknown[];
+    workers?: any[];
   };
 }
 
 interface DiagnoseReport {
-  token: unknown;
+  token: any;
   resources: {
-    kv?: unknown;
-    r2?: unknown;
-    workers?: unknown;
+    kv?: any;
+    r2?: any;
+    workers?: any;
   };
   timestamp: string;
 }
@@ -45,7 +45,7 @@ export default function OrchestratorAdmin() {
       const response = await fetch(`${ORCHESTRATOR_URL}/autopilot/list`);
       const data = await response.json();
       setAutopilots(data.autopilots || []);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     }
   }
@@ -56,7 +56,7 @@ export default function OrchestratorAdmin() {
       const response = await fetch(`${ORCHESTRATOR_URL}/autopilot/diagnose`);
       const data = await response.json();
       setDiagnose(data);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     } finally {
       setLoading(false);
@@ -87,7 +87,7 @@ export default function OrchestratorAdmin() {
       const data = await response.json();
       alert(JSON.stringify(data, null, 2));
       runDiagnose();
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('Failed to ensure infrastructure');
     } finally {
@@ -109,7 +109,7 @@ export default function OrchestratorAdmin() {
       });
       const data = await response.json();
       setTaskResult(data);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       setTaskResult({ error: error instanceof Error ? error.message : String(error) });
     } finally {

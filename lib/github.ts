@@ -12,7 +12,7 @@ export async function getAccessTokenWithCode(code: string) {
     clientSecret: process.env.GITHUB_OAUTH_CLIENT_SECRET!,
   });
 
-  const { token } = await auth({ type: "oauth-user", code }) as unknown;
+  const { token } = await auth({ type: "oauth-user", code }) as any;
   return token as string;
 }
 

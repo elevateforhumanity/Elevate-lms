@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Tutorials GET error:', error);
     return NextResponse.json(
       { error: 'Failed to fetch tutorial data' },
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
     }
 
     const { user } = authResult;
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { action, tutorialId, stepId, stepIndex } = body;
 
     const supabase = await createClient();
@@ -102,7 +102,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Tutorials POST error:', error);
     return NextResponse.json(
       { error: 'Failed to process tutorial action' },

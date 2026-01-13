@@ -16,8 +16,8 @@ import {
 } from 'lucide-react';
 
 interface FERPATrainingFormProps {
-  user: unknown;
-  existingTraining?: unknown;
+  user: any;
+  existingTraining?: any;
 }
 
 const QUIZ_QUESTIONS = [

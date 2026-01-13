@@ -316,7 +316,7 @@ export async function POST(request: NextRequest) {
       amount: price,
       paymentType,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     // Error: $1
 
     // Handle specific Stripe errors
@@ -331,18 +331,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (error.type === 'StripeInvalidRequestError') {
+    if (err.type === 'StripeInvalidRequestError') {
       return NextResponse.json(
         {
           error: 'Invalid request',
-          message: toErrorMessage(error),
+          message: toErrorMessage(err),
           code: 'INVALID_REQUEST',
         },
         { status: 400 }
       );
     }
 
-    if (error.type === 'StripeAPIError') {
+    if (err.type === 'StripeAPIError') {
       return NextResponse.json(
         {
           error: 'Payment system error',
@@ -363,7 +363,7 @@ export async function POST(request: NextRequest) {
         code: 'UNKNOWN_ERROR',
         details:
           process.env.NODE_ENV === 'development'
-            ? toErrorMessage(error)
+            ? toErrorMessage(err)
             : undefined,
       },
       { status: 500 }
@@ -399,7 +399,7 @@ export async function GET(request: NextRequest) {
       amount_total: session.amount_total,
       customer_email: session.customer_details?.email,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     // Error: $1
     return NextResponse.json(
       { error: 'Failed to retrieve session' },

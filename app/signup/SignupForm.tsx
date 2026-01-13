@@ -77,7 +77,7 @@ function SignupFormContent() {
           router.refresh();
         }, 2000);
       }
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message || 'Failed to create account');
       setLoading(false);
     }
@@ -98,7 +98,7 @@ function SignupFormContent() {
       });
 
       if (error) throw error;
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message || `Failed to sign up with ${provider}`);
     }
   };

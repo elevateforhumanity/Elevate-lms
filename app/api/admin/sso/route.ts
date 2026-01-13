@@ -22,7 +22,7 @@ export const GET = withAuth(
       if (error) throw error;
 
       return NextResponse.json({ connections: data });
-    } catch (err: unknown) {
+    } catch (err: any) {
       const { error, status } = handleRBACError(err);
       return NextResponse.json({ error }, { status });
     }
@@ -92,7 +92,7 @@ export const POST = withAuth(
       if (error) throw error;
 
       return NextResponse.json({ connection: data }, { status: 201 });
-    } catch (err: unknown) {
+    } catch (err: any) {
       const { error, status } = handleRBACError(err);
       return NextResponse.json({ error }, { status });
     }

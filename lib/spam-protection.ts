@@ -53,7 +53,7 @@ export async function verifyTurnstile(token: string): Promise<boolean> {
 
     const data = await response.json();
     return data.success === true;
-  } catch (error: unknown) {
+  } catch (error: any) {
     console.error('Turnstile verification error:', error);
     return false;
   }

@@ -11,8 +11,8 @@ import { Mail, Send, Users, Loader2 } from 'lucide-react';
 export default function ProgramOwnerCampaignsPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [templates, setTemplates] = useState<unknown[]>([]);
-  const [myStudents, setMyStudents] = useState<unknown[]>([]);
+  const [templates, setTemplates] = useState<any[]>([]);
+  const [myStudents, setMyStudents] = useState<any[]>([]);
   const [selectedTemplate, setSelectedTemplate] = useState<any>(null);
   const [selectedStudents, setSelectedStudents] = useState<string[]>([]);
 
@@ -86,7 +86,7 @@ export default function ProgramOwnerCampaignsPage() {
       } else {
         alert(`Error: ${data.error}`);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       alert('Failed to send emails');
     } finally {
       setLoading(false);

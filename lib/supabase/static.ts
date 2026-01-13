@@ -30,7 +30,7 @@ export function createStaticClient() {
           then: (resolve: any) => resolve({ data: [], error: null }),
         }),
       }),
-    } as unknown;
+    } as any;
   }
 
   return createSupabaseClient(supabaseUrl, supabaseAnonKey);

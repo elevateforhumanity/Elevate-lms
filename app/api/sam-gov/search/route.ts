@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
       count: entities.length,
       entities,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('SAM.gov search error:', toError(error));
     return NextResponse.json(
       { error: toErrorMessage(error) || 'Failed to search SAM.gov' },

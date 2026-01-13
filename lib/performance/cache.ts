@@ -1,7 +1,7 @@
 // Redis-based caching with fallback to in-memory
 import { Redis } from 'ioredis';
 let redis: Redis | null = null;
-const memoryCache = new Map<string, { value: unknown; expires: number }>();
+const memoryCache = new Map<string, { value: any; expires: number }>();
 // Initialize Redis if configured
 export function getRedisClient(): Redis | null {
   if (!process.env.REDIS_URL) {
@@ -10,7 +10,7 @@ export function getRedisClient(): Redis | null {
   if (!redis) {
     try {
       redis = new Redis(process.env.REDIS_URL);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       return null;
     }
@@ -33,7 +33,7 @@ export async function getCache<T>(
     try {
       const value = await client.get(fullKey);
       return value ? JSON.parse(value) : null;
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     }
   }
@@ -57,7 +57,7 @@ export async function setCache<T>(
     try {
       await client.setex(fullKey, ttl, JSON.stringify(value));
       return;
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     }
   }
@@ -77,7 +77,7 @@ export async function deleteCache(
   if (client) {
     try {
       await client.del(fullKey);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     }
   }
@@ -92,7 +92,7 @@ export async function clearCacheByPrefix(prefix: string): Promise<void> {
       if (keys.length > 0) {
         await client.del(...keys);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     }
   }
@@ -104,7 +104,7 @@ export async function clearCacheByPrefix(prefix: string): Promise<void> {
   }
 }
 // Cache decorator for functions
-export function cached<T extends (...args: unknown[]) => Promise<any>>(
+export function cached<T extends (...args: any[]) => Promise<any>>(
   fn: T,
   options: CacheOptions & {
     keyGenerator?: (...args: Parameters<T>) => string;

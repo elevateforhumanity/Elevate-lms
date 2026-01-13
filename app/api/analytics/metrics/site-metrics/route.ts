@@ -9,7 +9,7 @@ export async function GET() {
   try {
     const metrics = await calculateSiteMetrics();
     return NextResponse.json(metrics);
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error fetching site metrics:', error);
     return NextResponse.json(
       { error: 'Failed to fetch site metrics' },

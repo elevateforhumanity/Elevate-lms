@@ -33,7 +33,7 @@ export default function ForgotPasswordForm() {
       if (resetError) throw resetError;
 
       setSuccess(true);
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message || 'Failed to send reset email');
       setLoading(false);
     }

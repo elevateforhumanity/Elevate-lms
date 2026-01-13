@@ -78,7 +78,7 @@ function WorkOneChecklist() {
 
   if (!state) return null;
 
-  function save(data: unknown) {
+  function save(data: any) {
     setState(next);
     localStorage.setItem(key, JSON.stringify(next));
   }

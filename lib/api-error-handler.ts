@@ -12,7 +12,7 @@ export class ApiError extends Error {
   }
 }
 
-export function handleApiError(error: unknown): NextResponse {
+export function handleApiError(error: any): NextResponse {
   if (error instanceof ApiError) {
     logger.error('API Error', error);
     return NextResponse.json(

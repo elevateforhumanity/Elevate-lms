@@ -58,7 +58,7 @@ export async function GET(req: Request) {
           name: workflow.name,
           processed,
         });
-      } catch (error: unknown) {
+      } catch (error: any) {
         logger.error(
           `Error processing workflow ${workflow.id}:`,
           error instanceof Error ? error : new Error(String(error))
@@ -76,7 +76,7 @@ export async function GET(req: Request) {
       message: `Processed ${workflows.length} workflows`,
       results,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Workflow processor error:',
       error instanceof Error ? error : new Error(String(error))
@@ -91,14 +91,14 @@ export async function GET(req: Request) {
 /**
  * Check for new trigger events and enroll users in workflows
  */
-async function processNewTriggers(supabase: unknown, workflow: unknown, now: Date) {
+async function processNewTriggers(supabase: any, workflow: any, now: Date) {
   const trigger = workflow.trigger_event;
   const lookbackMinutes = 5; // Check last 5 minutes
   const lookbackTime = new Date(
     now.getTime() - lookbackMinutes * 60 * 1000
   ).toISOString();
 
-  let newUsers: unknown[] = [];
+  let newUsers: any[] = [];
 
   switch (trigger) {
     case 'enrollment':
@@ -178,7 +178,7 @@ async function processNewTriggers(supabase: unknown, workflow: unknown, now: Dat
 /**
  * Process pending workflow emails
  */
-async function processPendingEmails(supabase: unknown, workflow: unknown, now: Date) {
+async function processPendingEmails(supabase: any, workflow: any, now: Date) {
   // Get enrollments with pending emails
   const { data: enrollments, error } = await supabase
     .from('workflow_enrollments')
@@ -287,7 +287,7 @@ async function processPendingEmails(supabase: unknown, workflow: unknown, now: D
       });
 
       processed++;
-    } catch (error: unknown) {
+    } catch (error: any) {
       logger.error(
         `Error processing enrollment ${enrollment.id}:`,
         error instanceof Error ? error : new Error(String(error))

@@ -21,7 +21,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ courses: courses || [], total: courses?.length || 0 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ error: toErrorMessage(error), courses: [] }, { status: 200 });
   }
 }
@@ -29,7 +29,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const supabase = await createServerSupabaseClient();
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     if (!body.title) {
       return NextResponse.json(
@@ -57,7 +57,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(newCourse, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

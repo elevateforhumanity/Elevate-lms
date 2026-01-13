@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { userId } = body;
 
     if (!userId) {
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       url: session.url,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error creating customer portal session:',
       error instanceof Error ? error : new Error(String(error))

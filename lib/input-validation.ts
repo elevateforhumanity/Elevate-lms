@@ -56,7 +56,7 @@ export function sanitizeObject<T extends Record<string, any>>(obj: T): T {
   return sanitized;
 }
 
-export function validateAndSanitize<T>(schema: z.ZodSchema<T>, data: unknown): T {
+export function validateAndSanitize<T>(schema: z.ZodSchema<T>, data: any): T {
   const parsed = schema.parse(data);
   
   if (typeof parsed === 'object' && parsed !== null) {

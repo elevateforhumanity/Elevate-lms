@@ -8,7 +8,7 @@ import { Briefcase, Loader2 } from 'lucide-react';
 export default function AIJobMatchPage() {
   const [loading, setLoading] = useState(false);
   const [skills, setSkills] = useState('');
-  const [matches, setMatches] = useState<unknown[]>([]);
+  const [matches, setMatches] = useState<any[]>([]);
 
   const handleMatch = async () => {
     setLoading(true);
@@ -20,7 +20,7 @@ export default function AIJobMatchPage() {
       });
       const data = await response.json();
       setMatches(data.matches || []);
-    } catch (error: unknown) {
+    } catch (error: any) {
     } finally {
       setLoading(false);
     }

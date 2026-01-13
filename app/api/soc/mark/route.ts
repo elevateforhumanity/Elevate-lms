@@ -46,7 +46,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true, data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
@@ -78,7 +78,7 @@ export async function GET() {
         percentage: total > 0 ? Math.round((implemented / total) * 100) : 0,
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }

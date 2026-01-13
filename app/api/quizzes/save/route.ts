@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
     // Save questions
     if (quiz.questions && quiz.questions.length > 0) {
       const questions = quiz.questions.map(
-        (q: Record<string, unknown>, index: number) => ({
+        (q: Record<string, any>, index: number) => ({
           quiz_id: quizData.id,
           question_type: q.type,
           question_text: q.question,
@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
       quizId: quizData.id,
       message: 'Quiz saved successfully',
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error saving quiz:',
       error instanceof Error ? error : new Error(String(error))

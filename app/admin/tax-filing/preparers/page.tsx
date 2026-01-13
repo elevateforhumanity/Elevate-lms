@@ -59,7 +59,7 @@ export default async function TaxPreparersPage() {
           </div>
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-3xl font-bold text-brand-green-600">
-              {preparers?.filter((p: Record<string, unknown>) => p.is_active)
+              {preparers?.filter((p: Record<string, any>) => p.is_active)
                 .length || 0}
             </div>
             <div className="text-black text-sm">Active</div>

@@ -32,7 +32,7 @@ export async function GET(req: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ events: data });
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       'GET /events error',
       err instanceof Error ? err : new Error(String(err))
@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ event: data }, { status: 201 });
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       'POST /events error',
       err instanceof Error ? err : new Error(String(err))

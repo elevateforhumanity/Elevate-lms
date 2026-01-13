@@ -43,7 +43,7 @@ export default function ProductCheckoutButton({
 
       const { url } = await res.json();
       window.location.href = url;
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message);
       setLoading(false);
     }

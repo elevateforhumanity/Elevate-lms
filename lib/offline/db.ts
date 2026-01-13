@@ -18,7 +18,7 @@ export interface OfflineCourse {
   title: string;
   description: string;
   thumbnail?: string;
-  lessons: unknown[];
+  lessons: any[];
   cachedAt: number;
 }
 
@@ -202,7 +202,7 @@ class OfflineDB {
   }
 
   // Sync queue methods
-  async addToSyncQueue(data: Record<string, unknown>): Promise<number> {
+  async addToSyncQueue(data: Record<string, any>): Promise<number> {
     const store = this.getStore('sync-queue', 'readwrite');
     return new Promise((resolve, reject) => {
       const request = store.add({

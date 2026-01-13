@@ -18,9 +18,9 @@ import {
 interface IdentityVerificationFlowProps {
   userId: string;
   email: string;
-  programHolder: unknown;
-  verification: unknown;
-  documents: unknown[];
+  programHolder: any;
+  verification: any;
+  documents: any[];
 }
 
 export default function IdentityVerificationFlow({
@@ -65,7 +65,7 @@ export default function IdentityVerificationFlow({
 
       // Redirect to Stripe Identity
       window.location.href = url;
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message || 'Failed to start verification');
       setLoading(false);
     }
@@ -140,7 +140,7 @@ export default function IdentityVerificationFlow({
 
       router.push('/program-holder/verification-pending');
       router.refresh();
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message || 'Failed to upload documents');
       setLoading(false);
     }

@@ -7,7 +7,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { logger } from '@/lib/logger';
 
 async function awardAchievement(
-  supabase: unknown,
+  supabase: any,
   userId: string,
   code: string,
   label: string,

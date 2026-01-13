@@ -10,7 +10,7 @@ import { logger } from '@/lib/logger';
 
 export async function POST(request: Request) {
   try {
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { enrollmentId } = body;
 
     const cookieStore = await cookies();
@@ -74,7 +74,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ success: true });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error sending welcome email:', error);
     return NextResponse.json(
       { error: 'Failed to send email' },

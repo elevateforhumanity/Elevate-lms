@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
       organization: org,
       message: 'Organization created successfully',
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:

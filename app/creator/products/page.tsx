@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Creator Products | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 import { requireCreator } from '@/lib/creator';
 export const dynamic = 'force-dynamic';
 import Image from 'next/image';
@@ -23,7 +30,7 @@ export default async function CreatorProductsPage() {
     .eq('creator_id', creator.id);
 
   const salesByProduct =
-    salesData?.reduce((acc: unknown, sale) => {
+    salesData?.reduce((acc: any, sale) => {
       acc[sale.product_id] = (acc[sale.product_id] || 0) + 1;
       return acc;
     }, {}) || {};

@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 
 export default function InstructorsPage() {
   const supabase = createClient();
-  const [instructors, setInstructors] = useState<unknown[]>([]);
+  const [instructors, setInstructors] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
 
@@ -47,10 +47,10 @@ export default function InstructorsPage() {
     setLoading(false);
   }
 
-  function calculateAverageRating(ratings: unknown[]) {
+  function calculateAverageRating(ratings: any[]) {
     if (!ratings || ratings.length === 0) return '0';
     const sum: number = ratings.reduce(
-      (acc: number, r) => acc + ((r as unknown).rating || 0),
+      (acc: number, r) => acc + ((r as any).rating || 0),
       0
     ) as number;
     return (sum / ratings.length).toFixed(1);
@@ -231,7 +231,7 @@ export default function InstructorsPage() {
                             </p>
                             <div className="flex flex-wrap gap-2">
                               {instructor.instructor_courses.map(
-                                (ic: Record<string, unknown>, idx: number) => (
+                                (ic: Record<string, any>, idx: number) => (
                                   <span
                                     key={idx}
                                     className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded"

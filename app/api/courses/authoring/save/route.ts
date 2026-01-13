@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { courseId, modules } = body;
 
     // Save or update course structure
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
         // Save content blocks
         if (lesson.blocks && lesson.blocks.length > 0) {
           const blocks = lesson.blocks.map(
-            (block: Record<string, unknown>) => ({
+            (block: Record<string, any>) => ({
               lesson_id: lessonData.id,
               block_type: block.type,
               block_order: block.order,
@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'Course saved successfully',
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error saving course:',
       error instanceof Error ? error : new Error(String(error))

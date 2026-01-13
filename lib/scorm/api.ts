@@ -99,7 +99,7 @@ export class ScormAPI {
         const json = await response.json();
         this.data = new Map(Object.entries(json.data || {}));
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     }
   }
@@ -112,7 +112,7 @@ export class ScormAPI {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ data: dataObj }),
       });
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     }
   }
@@ -123,9 +123,9 @@ export function initializeScormAPI(attemptId: string, version: '1.2' | '2004') {
   const api = new ScormAPI(attemptId, version);
 
   if (version === '1.2') {
-    (window as unknown).API = api;
+    (window as any).API = api;
   } else {
-    (window as unknown).API_1484_11 = api;
+    (window as any).API_1484_11 = api;
   }
 
   return api;

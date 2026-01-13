@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Parse request body
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { enrollment_id } = body;
 
     if (!enrollment_id) {
@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

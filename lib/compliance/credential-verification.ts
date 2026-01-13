@@ -307,7 +307,7 @@ export async function generateCredentialReport() {
   };
 }
 
-function groupByType(credentials: unknown[]) {
+function groupByType(credentials: any[]) {
   const grouped: Record<string, number> = {};
 
   for (const cred of credentials) {

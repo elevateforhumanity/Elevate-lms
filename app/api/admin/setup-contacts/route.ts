@@ -226,7 +226,7 @@ export const POST = withAuth(
 
         if (error) {
           if (
-            (error as unknown).code === '23505' ||
+            (error as any).code === '23505' ||
             toErrorMessage(error)?.includes('duplicate')
           ) {
             skipped++;
@@ -252,7 +252,7 @@ export const POST = withAuth(
           total: count || 0,
         },
       });
-    } catch (err: unknown) {
+    } catch (err: any) {
       logger.error(
         'Setup error:',
         err instanceof Error ? err : new Error(String(err))

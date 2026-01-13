@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Admin Students Export | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 "use client";
 
 import React from 'react';
@@ -59,7 +66,7 @@ export default function ExportStudentsPage() {
       a.click();
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message || 'Failed to export data');
     } finally {
       setLoading(false);

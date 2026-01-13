@@ -69,7 +69,7 @@ export async function GET(
       courses: transformedCourses,
       total: transformedCourses.length 
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ 
       error: toErrorMessage(error), 
       courses: [] 

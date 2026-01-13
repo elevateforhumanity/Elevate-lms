@@ -19,7 +19,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ templates: templates || [] });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         error:

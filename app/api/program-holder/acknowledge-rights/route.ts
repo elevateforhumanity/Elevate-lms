@@ -69,7 +69,7 @@ export async function POST(req: Request) {
       message: 'Rights & Responsibilities acknowledgement recorded',
       data,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       '[Acknowledge Rights] Error:',
       err instanceof Error ? err : new Error(String(err))

@@ -76,7 +76,7 @@ export async function GET(req: NextRequest) {
       total: files.length,
       truncated: tree.truncated,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'GitHub tree error:',
       error instanceof Error ? error : new Error(String(error))

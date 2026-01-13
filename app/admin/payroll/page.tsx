@@ -14,8 +14,8 @@ export default function AdminPayroll() {
   const router = useRouter();
 
   const supabase = createClient();
-  const [apprenticeships, setApprenticeships] = useState<unknown[]>([]);
-  const [payrolls, setPayrolls] = useState<unknown[]>([]);
+  const [apprenticeships, setApprenticeships] = useState<any[]>([]);
+  const [payrolls, setPayrolls] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   useEffect(() => {

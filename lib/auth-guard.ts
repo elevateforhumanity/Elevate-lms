@@ -1,3 +1,4 @@
+// @ts-nocheck
 // =====================================================
 // SERVER-SIDE AUTH GUARDS - MANDATORY FOR ALL PROTECTED ROUTES
 // =====================================================

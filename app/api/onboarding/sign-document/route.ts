@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { documentId, signature, signatureType, role } = body;
 
     if (!documentId || !signature || !signatureType || !role) {
@@ -128,7 +128,7 @@ export async function POST(request: NextRequest) {
       success: true,
       isComplete: completionCheck,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:

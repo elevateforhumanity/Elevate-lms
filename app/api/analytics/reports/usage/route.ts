@@ -59,7 +59,7 @@ export async function GET(req: NextRequest) {
 
   // Get unique user IDs for login tracking
   const userIds = Array.from(
-    new Set((enrolls || []).map((e: Record<string, unknown>) => e.user_id))
+    new Set((enrolls || []).map((e: Record<string, any>) => e.user_id))
   ).filter(Boolean);
 
   // Get last login per user
@@ -151,7 +151,7 @@ export async function GET(req: NextRequest) {
   }
 
   // Build rows
-  const rows = (enrolls || []).map((e: Record<string, unknown>) => {
+  const rows = (enrolls || []).map((e: Record<string, any>) => {
     const k = key(e.user_id, e.course_id);
     const latest = latestMap[k];
     const prog = progressMap[e.user_id] || { minutes: 0, percent: 0 };
@@ -176,7 +176,7 @@ export async function GET(req: NextRequest) {
     const header =
       'participant_email,training_track,start_date,training_minutes,course_progress_percent,training_status,last_lms_login,training_provider,case_status,most_recent_case_note\n';
     const lines = rows
-      .map((r: Record<string, unknown>) =>
+      .map((r: Record<string, any>) =>
         [
           r.email,
           r.course,

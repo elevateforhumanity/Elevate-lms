@@ -103,7 +103,7 @@ export async function GET() {
     );
 
     return NextResponse.json({ students: studentsWithData });
-  } catch (err: unknown) {
+  } catch (err: any) {
     // Error: $1
     return NextResponse.json(
       { err: toErrorMessage(err) || 'Failed to load students' },

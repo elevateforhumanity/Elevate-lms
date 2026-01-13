@@ -1,4 +1,4 @@
-export function sanitizeError(error: unknown): string {
+export function sanitizeError(error: any): string {
   if (process.env.NODE_ENV === 'production') {
     return 'An error occurred. Please try again later.';
   }
@@ -10,7 +10,7 @@ export function sanitizeError(error: unknown): string {
   return String(error);
 }
 
-export function logError(context: string, error: unknown, metadata?: Record<string, any>) {
+export function logError(context: string, error: any, metadata?: Record<string, any>) {
   console.error(`[${context}]`, {
     error: error instanceof Error ? error.message : String(error),
     stack: error instanceof Error ? error.stack : undefined,
@@ -30,7 +30,7 @@ export class APIError extends Error {
   }
 }
 
-export function handleAPIError(error: unknown) {
+export function handleAPIError(error: any) {
   if (error instanceof APIError) {
     return {
       error: error.message,

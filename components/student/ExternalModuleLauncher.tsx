@@ -64,7 +64,7 @@ export default function ExternalModuleLauncher({
       alert(
         'Certificate uploaded successfully! Your instructor will review it soon.'
       );
-    } catch (err: unknown) {
+    } catch (err: any) {
       // Error: $1
       alert(
         `Upload failed: ${err instanceof Error ? err.message : String(err)}`

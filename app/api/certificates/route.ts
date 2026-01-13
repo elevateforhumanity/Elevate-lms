@@ -37,7 +37,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({ certificates: certificates || [] });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     if (!body.courseId) {
       return NextResponse.json(
@@ -76,7 +76,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(certificate, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

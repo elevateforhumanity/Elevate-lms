@@ -51,7 +51,7 @@ export async function POST(req: Request) {
     });
 
     // Send approval email
-    const profile = creator?.profiles as unknown;
+    const profile = creator?.profiles as any;
     if (profile?.email) {
       try {
         await sendCreatorApprovalEmail({
@@ -63,7 +63,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (err: unknown) {
-    return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
+  } catch (err: any) {
+    return NextResponse.json({ error: toErrorMessage(err) }, { status: 500 });
   }
 }

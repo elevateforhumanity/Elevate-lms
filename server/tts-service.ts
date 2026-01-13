@@ -114,7 +114,7 @@ export async function generateAndSaveAudio(
 
     return outputPath;
   } catch (error) {
-    throw error;
+    throw new Error(`TTS generation failed: ${error}`);
   }
 }
 
@@ -146,7 +146,7 @@ export async function generateMultipleAudio(
 
     return audioPaths;
   } catch (error) {
-    throw error;
+    throw new Error(`Multiple audio generation failed: ${error}`);
   }
 }
 

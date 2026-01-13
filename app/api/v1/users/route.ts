@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
         totalPages: Math.ceil((count || 0) / limit),
       })
     );
-  } catch (err: unknown) {
+  } catch (err: any) {
     statusCode = 500;
     logger.error(
       'API Error:',
@@ -119,7 +119,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const supabase = await createClient();
 
     // Create auth user
@@ -162,7 +162,7 @@ export async function POST(request: NextRequest) {
     );
 
     return NextResponse.json(apiResponse(true, profile), { status: 201 });
-  } catch (err: unknown) {
+  } catch (err: any) {
     statusCode = 500;
     logger.error(
       'API Error:',

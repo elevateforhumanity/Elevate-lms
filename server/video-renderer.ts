@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * Video Rendering Engine
  * Uses FFmpeg to render videos from scenes

@@ -31,7 +31,7 @@ export interface AuditLogEntry {
   resource_type?: string;
   resource_id?: string;
   action: string;
-  details?: Record<string, unknown>;
+  details?: Record<string, any>;
   ip_address?: string;
   user_agent?: string;
   success: boolean;
@@ -130,7 +130,7 @@ export async function logAdminAction(
   action: string,
   resourceType?: string,
   resourceId?: string,
-  details?: Record<string, unknown>
+  details?: Record<string, any>
 ): Promise<void> {
   await logAuditEvent({
     event_type: 'admin.action',
@@ -192,7 +192,7 @@ export async function logLicenseChange(
   adminEmail: string,
   tenantId: string,
   action: string,
-  details: Record<string, unknown>
+  details: Record<string, any>
 ): Promise<void> {
   await logAuditEvent({
     event_type: 'license.change',
@@ -253,7 +253,7 @@ export async function logSuspiciousActivity(
   userId: string | undefined,
   email: string | undefined,
   activity: string,
-  details: Record<string, unknown>
+  details: Record<string, any>
 ): Promise<void> {
   await logAuditEvent({
     event_type: 'security.suspicious_activity',

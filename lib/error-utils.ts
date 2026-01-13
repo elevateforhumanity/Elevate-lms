@@ -1,7 +1,7 @@
 /**
  * Safely extract error message from unknown error type
  */
-export function getErrorMessage(error: unknown): string {
+export function getErrorMessage(error: any): string {
   if (error instanceof Error) {
     return error.message;
   }
@@ -17,7 +17,7 @@ export function getErrorMessage(error: unknown): string {
 /**
  * Safely convert unknown error to Error instance
  */
-export function toError(error: unknown): Error {
+export function toError(error: any): Error {
   if (error instanceof Error) {
     return error;
   }

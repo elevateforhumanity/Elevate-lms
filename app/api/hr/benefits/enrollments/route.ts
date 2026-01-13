@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ enrollments: data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error fetching benefits enrollments:',
       error instanceof Error ? error : new Error(String(error))
@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createClient();
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     const { employee_id, plan_id, coverage_level, effective_date } = body;
 
@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ enrollment: data }, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error creating benefits enrollment:',
       error instanceof Error ? error : new Error(String(error))

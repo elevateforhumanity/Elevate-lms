@@ -13,7 +13,7 @@ function parseCSV(raw: string) {
   const cols = head.split(',').map((s) => s.trim().toLowerCase());
   return lines.map((line) => {
     const vals = line.split(',').map((v) => v.trim());
-    const row: unknown = {};
+    const row: any = {};
     cols.forEach((c, i) => (row[c] = vals[i] ?? ''));
     return row;
   });
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
 
   const raw = await req.text();
   const rows = parseCSV(raw);
-  const errors: unknown[] = [];
+  const errors: any[] = [];
   let issued = 0;
 
   for (const r of rows) {
@@ -149,7 +149,7 @@ export async function POST(req: NextRequest) {
       });
 
       issued++;
-    } catch (e: unknown) {
+    } catch (e: any) {
       errors.push({ row: r, err: e?.message || 'Unknown error' });
     }
   }

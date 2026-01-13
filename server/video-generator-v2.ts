@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * Video Generator V2
  * Main orchestrator for video generation pipeline

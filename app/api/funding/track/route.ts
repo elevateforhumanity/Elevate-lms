@@ -7,7 +7,7 @@ import { createServerSupabaseClient } from '@/lib/auth';
 import { toError, toErrorMessage } from '@/lib/safe';
 
 export async function POST(request: Request) {
-  const body = await parseBody<Record<string, unknown>>(request);
+  const body = await parseBody<Record<string, any>>(request);
   const supabase = await createServerSupabaseClient();
 
   const { data, error }: any = await supabase

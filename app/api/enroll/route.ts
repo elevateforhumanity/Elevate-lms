@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
         },
         { status: 201 }
       );
-    } catch (err: unknown) {
+    } catch (err: any) {
       logger.error(
         'Enrollment error',
         err instanceof Error ? err : new Error(String(err))
@@ -133,7 +133,7 @@ export async function POST(req: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error('Enrollment API error', err?.message ?? err);
     return NextResponse.json(
       {

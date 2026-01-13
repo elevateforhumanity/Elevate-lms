@@ -72,7 +72,7 @@ export default async function PendingCashAdvancesPage() {
 
           {pendingAdvances && pendingAdvances.length > 0 ? (
             <div className="divide-y divide-gray-200">
-              {pendingAdvances.map((advance: Record<string, unknown>) => (
+              {pendingAdvances.map((advance: Record<string, any>) => (
                 <div key={advance.id} className="px-6 py-4 hover:bg-gray-50">
                   <div className="flex justify-between items-start">
                     <div>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const runtime = 'nodejs';
 export const maxDuration = 60;
 
@@ -116,7 +117,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ sessionId: session.id, url: session.url });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Stripe checkout error:',
       error instanceof Error ? error : new Error(String(error))

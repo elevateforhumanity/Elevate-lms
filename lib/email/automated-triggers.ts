@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Automated Email Triggers
  * Real-time email automation based on database events

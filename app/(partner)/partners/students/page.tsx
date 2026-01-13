@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Partners Students | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 import { createClient } from '@/lib/supabase/server';
 export const dynamic = 'force-dynamic';
 import { getMyPartnerContext } from '@/lib/partner/access';
@@ -5,7 +12,7 @@ import { getMyPartnerContext } from '@/lib/partner/access';
 export default async function PartnerStudentsPage() {
   const supabase = await createClient();
   const ctx = await getMyPartnerContext();
-  const shopIds = (ctx?.shops ?? []).map((s: unknown) => s.shop_id);
+  const shopIds = (ctx?.shops ?? []).map((s: any) => s.shop_id);
 
   const { data: placements } = await supabase
     .from('apprentice_placements')
@@ -37,7 +44,7 @@ export default async function PartnerStudentsPage() {
             </tr>
           </thead>
           <tbody>
-            {(placements ?? []).map((p: unknown) => (
+            {(placements ?? []).map((p: any) => (
               <tr key={p.id} className="border-b">
                 <td className="py-2">{p.program_slug}</td>
                 <td className="py-2">{p.student_id}</td>

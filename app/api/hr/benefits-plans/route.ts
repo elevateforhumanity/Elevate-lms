@@ -19,7 +19,7 @@ export async function GET(_request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ plans: data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error fetching benefits plans:',
       error instanceof Error ? error : new Error(String(error))
@@ -34,7 +34,7 @@ export async function GET(_request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createClient();
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     const { plan_name, plan_type, carrier_name, plan_code, description } = body;
 
@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ plan: data }, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error creating benefits plan:',
       error instanceof Error ? error : new Error(String(error))

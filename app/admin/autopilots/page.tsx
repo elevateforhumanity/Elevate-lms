@@ -173,7 +173,7 @@ export default function AutopilotsPage() {
         );
         setFailedTasks((prev) => new Set(prev).add(task.id));
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       const errorMessage =
         error instanceof Error ? error.message : 'Unknown error';
       addLog(

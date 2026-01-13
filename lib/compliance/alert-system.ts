@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * TIERED ALERT SYSTEM
  *

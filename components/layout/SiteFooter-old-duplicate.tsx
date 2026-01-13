@@ -343,7 +343,7 @@ export default function SiteFooter() {
         </div>
       </footer>
     );
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Fallback minimal footer
     return (
       <footer className="bg-white text-black border-t border-gray-200 py-8">

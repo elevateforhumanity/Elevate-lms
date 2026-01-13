@@ -62,7 +62,7 @@ export async function GET(request: Request) {
 
   const header = ['EmployeeId', 'Name', 'Date', 'Hours', 'PayCode'];
 
-  const rows = (entries || []).map((e: Record<string, unknown>) => [
+  const rows = (entries || []).map((e: Record<string, any>) => [
     e.profiles?.external_payroll_id ?? e.profiles?.id ?? '',
     e.profiles?.full_name ?? e.profiles?.email ?? '',
     new Date(e.worked_at).toISOString().slice(0, 10),

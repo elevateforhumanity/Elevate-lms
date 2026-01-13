@@ -83,7 +83,7 @@ export async function POST(req: Request) {
       signedUrl: data.signedUrl,
       expiresIn: 3600, // 1 hour
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

@@ -9,7 +9,7 @@ import { Mail, Users, Send, Loader2 } from 'lucide-react';
 export default function NewCampaignPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [templates, setTemplates] = useState<unknown[]>([]);
+  const [templates, setTemplates] = useState<any[]>([]);
   const [selectedTemplate, setSelectedTemplate] = useState<any>(null);
 
   const [formData, setFormData] = useState({
@@ -56,7 +56,7 @@ export default function NewCampaignPage() {
       } else {
         alert(`Error: ${data.error}`);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       alert('Failed to send campaign');
     } finally {
       setLoading(false);

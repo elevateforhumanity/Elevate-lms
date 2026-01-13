@@ -126,7 +126,7 @@ export function ScraperDetection() {
   }, []);
   return null;
 }
-function sendAlert(data: Record<string, unknown>) {
+function sendAlert(data: Record<string, any>) {
   // Fire-and-forget with timeout
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 2000);

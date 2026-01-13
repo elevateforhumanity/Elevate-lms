@@ -375,7 +375,7 @@ export async function testEnrollmentFlow(
         data: { logCount: auditLogs?.length || 0 },
       });
     }
-  } catch (data: unknown) {
+  } catch (data: any) {
     results.push({
       step: 'Test Execution',
       status: 'failed',

@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
   try {
     const authResult = await apiAuthGuard({ requireAuth: false });
     const user = authResult.user || { id: 'guest', email: '' };
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { checkout_token, order_id, action = 'authorize' } = body;
 
     if (!checkout_token) {
@@ -213,7 +213,7 @@ export async function POST(request: NextRequest) {
           { status: 400 }
         );
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Affirm transaction error:', error);
     return NextResponse.json(
       {
@@ -263,7 +263,7 @@ export async function GET(request: NextRequest) {
 
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Affirm get transaction error:', error);
     return NextResponse.json(
       {

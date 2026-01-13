@@ -69,7 +69,7 @@ export async function GET(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Webhooks GET error:', error);
     return NextResponse.json(
       { error: 'Failed to fetch webhook data' },
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
     }
 
     const { user } = authResult;
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { action } = body;
 
     switch (action) {
@@ -168,7 +168,7 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Webhooks POST error:', error);
     return NextResponse.json(
       { error: 'Failed to process webhook action' },

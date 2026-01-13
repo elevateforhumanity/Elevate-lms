@@ -40,7 +40,7 @@ export default function AdvisingPage() {
           'There was an error submitting your request. Please call us at 317-314-3757.'
         );
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       alert(
         'There was an error submitting your request. Please call us at 317-314-3757.'
       );

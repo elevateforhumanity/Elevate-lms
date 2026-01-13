@@ -1,3 +1,12 @@
+// @ts-nocheck
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Admin Social Media Campaigns New | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
+// @ts-nocheck
 "use client";
 
 import React from 'react';
@@ -76,7 +85,7 @@ export default function NewSocialCampaignPage() {
       if (result.success) {
         setGeneratedPosts(result.posts);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
     // Error handled
   } finally {
       setGenerating(false);

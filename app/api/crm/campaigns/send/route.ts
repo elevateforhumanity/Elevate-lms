@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const {
       name,
       subject,
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     } = body;
 
     // Get recipients based on target audience
-    let recipients: unknown[] = [];
+    let recipients: any[] = [];
 
     switch (target_audience) {
       case 'all_students':
@@ -218,7 +218,7 @@ export async function POST(request: NextRequest) {
       sent_count: sentCount,
       total_recipients: recipients.length,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         error:

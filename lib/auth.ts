@@ -43,7 +43,7 @@ export async function createServerSupabaseClient() {
 // Alias for compatibility with old code using createRouteHandlerClient
 // Old API: createRouteHandlerClient({ cookies })
 // New API: createServerSupabaseClient() - cookies are handled internally
-export async function createRouteHandlerClient(_options?: Record<string, unknown>) {
+export async function createRouteHandlerClient(_options?: Record<string, any>) {
   return await createServerSupabaseClient();
 }
 
@@ -122,7 +122,7 @@ export async function getAuthUser(): Promise<AuthUser | null> {
         ? `${profile.first_name} ${profile.last_name}`
         : undefined,
     };
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error getting auth user', error as Error);
     return null;
   }

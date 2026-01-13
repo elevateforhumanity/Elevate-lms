@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
       size: file.size,
       type: file.type,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Upload error:',
       error instanceof Error ? error : new Error(String(error))

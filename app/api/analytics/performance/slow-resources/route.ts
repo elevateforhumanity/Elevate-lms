@@ -9,7 +9,7 @@ import { toError, toErrorMessage } from '@/lib/safe';
 
 export async function POST(request: NextRequest) {
   try {
-    const data = await parseBody<Record<string, unknown>>(request);
+    const data = await parseBody<Record<string, any>>(request);
     const supabase = await createClient();
 
     // Store slow resource data for analysis
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Slow resources API error:',
       error instanceof Error ? error : new Error(String(error))

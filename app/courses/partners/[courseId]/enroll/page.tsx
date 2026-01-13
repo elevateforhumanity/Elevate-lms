@@ -110,7 +110,7 @@ export default function EnrollPage({
         // Redirect to partner LMS
         window.location.href = course.enrollment_url;
       }
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError(
         err instanceof Error
           ? err.message

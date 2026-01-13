@@ -46,7 +46,7 @@ export function ModuleForm({ programs, module }: ModuleFormProps) {
       }
       router.push('/admin/modules');
       router.refresh();
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError(err instanceof Error ? err.message : 'Failed to save module');
       setLoading(false);
     }

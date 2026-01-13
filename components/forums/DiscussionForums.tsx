@@ -134,7 +134,7 @@ export default function DiscussionForums() {
           }))
         );
       }
-    } catch (data: unknown) {
+    } catch (data: any) {
       setError('Failed to load forum categories. Please try again.');
     } finally {
       setLoading(false);
@@ -164,7 +164,7 @@ export default function DiscussionForums() {
           }))
         );
       }
-    } catch (data: unknown) {
+    } catch (data: any) {
       setError('Failed to load forum threads. Please try again.');
     } finally {
       setLoading(false);
@@ -190,7 +190,7 @@ export default function DiscussionForums() {
           }))
         );
       }
-    } catch (data: unknown) {
+    } catch (data: any) {
       setError('Failed to load posts. Please try again.');
     }
   };
@@ -227,7 +227,7 @@ export default function DiscussionForums() {
         setTimeout(() => setSuccessMessage(null), 3000);
         loadThreads(selectedCategory.id);
       }
-    } catch (data: unknown) {
+    } catch (data: any) {
       setError('Failed to create thread. Please try again.');
     }
   };
@@ -255,7 +255,7 @@ export default function DiscussionForums() {
         setTimeout(() => setSuccessMessage(null), 3000);
         loadPosts(selectedThread.id);
       }
-    } catch (data: unknown) {
+    } catch (data: any) {
       setError('Failed to post reply. Please try again.');
     }
   };

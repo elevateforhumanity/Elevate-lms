@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Admin Marketplace Creators | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 import { requireAdmin } from '@/lib/auth';
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/utils/supabase/server';

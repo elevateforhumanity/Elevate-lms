@@ -58,7 +58,7 @@ export default function StripePayNow({
       } else {
         throw new Error('No checkout URL returned');
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       const errorMessage = error instanceof Error ? error.message : 'Failed to start checkout';
       toast.error(errorMessage);

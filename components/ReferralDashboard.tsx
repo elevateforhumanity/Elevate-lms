@@ -21,7 +21,7 @@ interface ReferralDashboardProps {
 export default function ReferralDashboard({ userId }: ReferralDashboardProps) {
   const [stats, setStats] = useState<any>(null);
   const [referralCode, setReferralCode] = useState<string>('');
-  const [referrals, setReferrals] = useState<unknown[]>([]);
+  const [referrals, setReferrals] = useState<any[]>([]);
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -47,7 +47,7 @@ export default function ReferralDashboard({ userId }: ReferralDashboardProps) {
       const referralsRes = await fetch('/api/referrals?action=my-referrals');
       const referralsData = await referralsRes.json();
       setReferrals(referralsData.referrals || []);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     } finally {
       setLoading(false);
@@ -71,7 +71,7 @@ export default function ReferralDashboard({ userId }: ReferralDashboardProps) {
           text: shareText,
           url: shareUrl,
         });
-      } catch (error: unknown) {
+      } catch (error: any) {
         // Error: $1
       }
     } else {

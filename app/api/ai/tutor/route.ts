@@ -80,7 +80,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       answer: completion.choices[0].message.content,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'AI tutor error:',
       error instanceof Error ? error : new Error(String(error))

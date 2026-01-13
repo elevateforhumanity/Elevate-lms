@@ -54,12 +54,12 @@ function SelfHostedAnalyticsContent() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Silently fail - don't break the app
     }
   };
 
-  const sendToAnalytics = async (data: unknown) => {
+  const sendToAnalytics = async (data: any) => {
     try {
       const data = {
         event: 'web-vital',
@@ -75,7 +75,7 @@ function SelfHostedAnalyticsContent() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-    } catch (error: unknown) {
+    } catch (error: any) {
     // Error handled
   }
   };
@@ -90,7 +90,7 @@ function SelfHostedAnalyticsContent() {
  *        trackEvent('button_click', { button_name: 'signup' });
  */
 export function useAnalytics() {
-  return async (eventName: string, properties?: Record<string, unknown>) => {
+  return async (eventName: string, properties?: Record<string, any>) => {
     try {
       await fetch('/api/analytics/track', {
         method: 'POST',
@@ -101,7 +101,7 @@ export function useAnalytics() {
           timestamp: new Date().toISOString(),
         }),
       });
-    } catch (error: unknown) {
+    } catch (error: any) {
     // Error handled
   }
   };

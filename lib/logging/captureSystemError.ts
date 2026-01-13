@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 export async function captureSystemError(
   errorType: string,
   errorMessage: string,
-  context?: Record<string, unknown>,
+  context?: Record<string, any>,
   errorStack?: string,
   userId?: string,
   requestId?: string
@@ -27,7 +27,7 @@ export async function captureSystemError(
       user_id: userId,
       request_id: requestId,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Don't throw - error capture should never break the app
     console.error('[captureSystemError] Failed to capture error:', error);
   }

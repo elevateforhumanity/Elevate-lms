@@ -228,7 +228,7 @@ export async function getMeetingParticipants(meetingId: string): Promise<any[]> 
 /**
  * Get meeting recordings
  */
-export async function getMeetingRecordings(meetingId: string): Promise<unknown> {
+export async function getMeetingRecordings(meetingId: string): Promise<any> {
   const accessToken = await getZoomAccessToken();
 
   const response = await fetch(`https://api.zoom.us/v2/meetings/${meetingId}/recordings`, {

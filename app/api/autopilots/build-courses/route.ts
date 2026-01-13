@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
           message: `Autopilot: Create ${path}`,
           content: Buffer.from(content).toString('base64'),
         });
-      } catch (error: unknown) {
+      } catch (error: any) {
         logger.error(
           `Failed to save ${path}:`,
           error instanceof Error ? error : new Error(String(error))
@@ -72,7 +72,7 @@ ${parsed.description || ''}
 ${parsed.objectives?.map((obj: string) => `- ${obj}`).join('\n') || ''}
 
 ## Modules
-${parsed.modules?.map((mod: unknown, i: number) => `${i + 1}. ${mod.title || mod}`).join('\n') || ''}
+${parsed.modules?.map((mod: any, i: number) => `${i + 1}. ${mod.title || mod}`).join('\n') || ''}
 `;
 
     await saveFile(`${basePath}/README.md`, readme);
@@ -111,7 +111,7 @@ ${parsed.modules?.map((mod: unknown, i: number) => `${i + 1}. ${mod.title || mod
       path: basePath,
       filesCreated: parsed.modules?.length || 0,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Build course error:',
       error instanceof Error ? error : new Error(String(error))

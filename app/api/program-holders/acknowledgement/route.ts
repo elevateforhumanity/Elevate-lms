@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ ok: true });
-  } catch (err: unknown) {
+  } catch (err: any) {
     logger.error(
       'API error:',
       err instanceof Error ? err : new Error(String(err))

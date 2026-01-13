@@ -69,7 +69,7 @@ export async function GET() {
     activities.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 
     return NextResponse.json(activities.slice(0, 20));
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error fetching recent activity:', error);
     return NextResponse.json(
       { error: 'Failed to fetch recent activity' },

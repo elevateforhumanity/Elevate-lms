@@ -142,7 +142,7 @@ export async function createAppointment(data: {
  */
 export async function handleCalendlyWebhook(
   eventType: string,
-  payload: unknown
+  payload: any
 ): Promise<boolean> {
   const supabase = await createClient();
 
@@ -223,7 +223,7 @@ export async function handleCalendlyWebhook(
     }
 
     return false;
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Error handling Calendly webhook:', error);
     return false;
   }

@@ -161,7 +161,7 @@ export default function IncentivesPage() {
               </label>
               <select
                 value={filter}
-                onChange={(e) => setFilter(e.target.value as unknown)}
+                onChange={(e) => setFilter(e.target.value as any)}
                 className="px-3 py-2 border border-gray-300 rounded-md"
               >
                 <option value="all">All Types</option>

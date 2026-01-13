@@ -33,7 +33,7 @@ export async function parseErrorResponse(response: Response): Promise<ErrorRespo
  * Handle fetch errors with toast notifications
  */
 export async function handleFetchError(
-  error: unknown,
+  error: any,
   showToast: (message: string, type: 'error' | 'success') => void
 ): Promise<string> {
   let message = 'An unexpected error occurred';

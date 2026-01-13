@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Legal Creator Agreement | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 export default function CreatorAgreementPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">

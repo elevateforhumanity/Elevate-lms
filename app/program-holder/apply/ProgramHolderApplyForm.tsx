@@ -118,7 +118,7 @@ export default function ProgramHolderApplyForm() {
       router.push(
         `/program-holder/apply/confirmation?id=${data.applicationId}`
       );
-    } catch (err: unknown) {
+    } catch (err: any) {
       const errorMessage =
         err instanceof Error ? err.message : 'Application submission failed';
       setError(errorMessage);

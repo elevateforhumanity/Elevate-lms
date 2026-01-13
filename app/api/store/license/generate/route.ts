@@ -130,7 +130,7 @@ export async function POST(req: Request) {
       expiresAt: expiresAt.toISOString(),
       features: config.features,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'License generation error:',
       error instanceof Error ? error : new Error(String(error))

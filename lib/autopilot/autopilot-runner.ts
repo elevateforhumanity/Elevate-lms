@@ -12,8 +12,8 @@ import { prepareDeploy } from './deploy-prep';
  */
 export async function runAutopilot(
   type: string,
-  payload: unknown = {}
-): Promise<{ success?: boolean; error?: string; data?: unknown }> {
+  payload: any = {}
+): Promise<{ success?: boolean; error?: string; data?: any }> {
   try {
     switch (type) {
       case 'course':
@@ -47,7 +47,7 @@ export async function runAutopilot(
           error: `Unknown autopilot mode: ${type}. Valid modes: course, scan, media, sitemap, deploy`
         };
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Autopilot task failed'

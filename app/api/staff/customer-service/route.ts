@@ -72,7 +72,7 @@ export async function GET() {
       inProgressTickets:
         tickets?.filter((t) => t.status === 'in_progress').length || 0,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

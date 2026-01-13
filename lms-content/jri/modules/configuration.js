@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+ 
 // web location of the content host's dispatch files (dispatch.client.loader.js, DispatchHost.html, etc.)
 DispatchRoot = 'https://employindy.contentcontroller.com/ScormEngineInterface/dispatch/';
 

@@ -80,7 +80,7 @@ export function QuickEnrollmentForm() {
         setPhone("");
         setNotes("");
       }
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError("Network error. Please check your connection and try again.");
     } finally {
       setIsSubmitting(false);

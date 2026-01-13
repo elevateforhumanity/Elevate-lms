@@ -57,7 +57,7 @@ async function fetchJSON<T>(url: string): Promise<T> {
   }
 }
 
-async function postJSON<T>(url: string, data: unknown): Promise<T> {
+async function postJSON<T>(url: string, data: any): Promise<T> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 10000);
   

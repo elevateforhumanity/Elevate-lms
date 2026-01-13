@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     }
 
     // Update or insert
-    const updateData: unknown = {
+    const updateData: any = {
       apprentice_id,
       status: safeStatus,
     };
@@ -77,7 +77,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true, rapids: data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }

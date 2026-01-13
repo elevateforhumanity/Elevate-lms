@@ -44,7 +44,7 @@ export default function ProgramAnalytics() {
       if (data.length > 0) {
         setSelectedProgram(data[0].programId);
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     } finally {
       setLoading(false);

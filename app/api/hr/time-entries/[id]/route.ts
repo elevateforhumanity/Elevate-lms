@@ -14,12 +14,12 @@ export async function PATCH(
   const { id } = await params;
   try {
     const supabase = await createClient();
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     const { clock_in, clock_out, break_minutes, lunch_minutes, status, notes } =
       body;
 
-    const update: unknown = {
+    const update: any = {
       clock_in,
       clock_out,
       break_minutes,
@@ -52,7 +52,7 @@ export async function PATCH(
     if (error) throw error;
 
     return NextResponse.json({ timeEntry: data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error updating time entry:',
       error instanceof Error ? error : new Error(String(error))
@@ -76,7 +76,7 @@ export async function DELETE(
     if (error) throw error;
 
     return NextResponse.json({ message: 'Time entry deleted' });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error deleting time entry:',
       error instanceof Error ? error : new Error(String(error))

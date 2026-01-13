@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Partners Join | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 import { redirect } from 'next/navigation';
 export const dynamic = 'force-dynamic';
 import { createClient } from '@/utils/supabase/server';

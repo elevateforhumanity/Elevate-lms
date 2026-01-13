@@ -35,7 +35,7 @@ export interface XAPIStatement {
   object: XAPIActivity;
   result?: XAPIResult;
   timestamp?: string;
-  context?: unknown;
+  context?: any;
 }
 export class XAPIClient {
   private endpoint: string;
@@ -76,7 +76,7 @@ export class XAPIClient {
         );
       }
       //
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       // Don't throw - we don't want tracking failures to break the app
     }

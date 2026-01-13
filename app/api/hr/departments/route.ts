@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ departments });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error fetching departments:',
       error instanceof Error ? error : new Error(String(error))
@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const supabase = await createClient();
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     const {
       name,
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ department }, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error creating department:',
       error instanceof Error ? error : new Error(String(error))

@@ -156,7 +156,7 @@ export default async function ProgramHolderDashboard() {
               </div>
               {students && students.length > 0 ? (
                 <div className="space-y-4">
-                  {students.slice(0, 5).map((student: Record<string, unknown>) => (
+                  {students.slice(0, 5).map((student: Record<string, any>) => (
                     <div
                       key={student.id}
                       className="border border-slate-200 rounded-lg p-4 hover:border-blue-300 transition"

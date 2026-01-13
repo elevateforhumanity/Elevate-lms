@@ -32,7 +32,7 @@ export const GET = withAuth(
       }
 
       return NextResponse.json({ acknowledgements: data || [] });
-    } catch (err: unknown) {
+    } catch (err: any) {
       logger.error(
         'API error:',
         err instanceof Error ? err : new Error(String(err))

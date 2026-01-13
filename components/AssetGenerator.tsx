@@ -146,7 +146,7 @@ export default function AssetGenerator() {
       setGeneratedAsset(null);
       setAssetName('');
       setContent('');
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('Failed to save asset: ' + error instanceof Error ? error.message : String(error));
     } finally {

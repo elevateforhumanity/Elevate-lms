@@ -49,7 +49,7 @@ export function AcknowledgeHandbookForm() {
 
       // Success! Redirect to rights & responsibilities
       router.push('/program-holder/rights-responsibilities');
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message || 'Failed to submit acknowledgement');
     } finally {
       setIsSubmitting(false);

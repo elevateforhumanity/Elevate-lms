@@ -6,7 +6,7 @@ interface LogEntry {
   level: LogLevel;
   message: string;
   timestamp: string;
-  context?: Record<string, unknown>;
+  context?: Record<string, any>;
   error?: Error;
 }
 
@@ -45,7 +45,7 @@ class Logger {
     });
   }
 
-  private log(level: LogLevel, message: string, context?: Record<string, unknown>, error?: Error) {
+  private log(level: LogLevel, message: string, context?: Record<string, any>, error?: Error) {
     // Skip logging in test environment unless explicitly enabled
     if (this.isTest && !process.env.ENABLE_TEST_LOGGING) {
       return;
@@ -92,24 +92,24 @@ class Logger {
           body: JSON.stringify(entry),
         });
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Fail silently to avoid infinite loops
     }
   }
 
-  debug(message: string, context?: Record<string, unknown>) {
+  debug(message: string, context?: Record<string, any>) {
     this.log('debug', message, context);
   }
 
-  info(message: string, context?: Record<string, unknown>) {
+  info(message: string, context?: Record<string, any>) {
     this.log('info', message, context);
   }
 
-  warn(message: string, context?: Record<string, unknown>) {
+  warn(message: string, context?: Record<string, any>) {
     this.log('warn', message, context);
   }
 
-  error(message: string, error?: Error, context?: Record<string, unknown>) {
+  error(message: string, error?: Error, context?: Record<string, any>) {
     this.log('error', message, context, error);
   }
 }
@@ -119,8 +119,8 @@ export const logger = new Logger();
 
 // Convenience exports
 export const log = {
-  debug: (message: string, context?: Record<string, unknown>) => logger.debug(message, context),
-  info: (message: string, context?: Record<string, unknown>) => logger.info(message, context),
-  warn: (message: string, context?: Record<string, unknown>) => logger.warn(message, context),
-  error: (message: string, error?: Error, context?: Record<string, unknown>) => logger.error(message, error, context),
+  debug: (message: string, context?: Record<string, any>) => logger.debug(message, context),
+  info: (message: string, context?: Record<string, any>) => logger.info(message, context),
+  warn: (message: string, context?: Record<string, any>) => logger.warn(message, context),
+  error: (message: string, error?: Error, context?: Record<string, any>) => logger.error(message, error, context),
 };

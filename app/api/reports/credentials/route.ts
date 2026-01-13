@@ -50,7 +50,7 @@ export async function GET(req: NextRequest) {
     }
 
     return NextResponse.json({ data });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }

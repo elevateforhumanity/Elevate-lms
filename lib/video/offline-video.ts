@@ -60,7 +60,7 @@ export class OfflineVideoManager {
       });
       //
       return true;
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       return false;
     }
@@ -77,7 +77,7 @@ export class OfflineVideoManager {
       }
       // Create object URL from blob
       return URL.createObjectURL(video.blob);
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       return null;
     }
@@ -90,7 +90,7 @@ export class OfflineVideoManager {
       const db = await getDB();
       const video = await db.getVideo(videoId);
       return !!video;
-    } catch (error: unknown) {
+    } catch (error: any) {
       return false;
     }
   }
@@ -103,7 +103,7 @@ export class OfflineVideoManager {
       await db.deleteVideo(videoId);
       //
       return true;
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       return false;
     }
@@ -120,7 +120,7 @@ export class OfflineVideoManager {
         count: 0, // Would need to query video count
         sizeMB: Math.round((estimate.usage / 1024 / 1024) * 100) / 100,
       };
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       return { count: 0, sizeMB: 0 };
     }
@@ -134,7 +134,7 @@ export class OfflineVideoManager {
       // Would need to implement getAllVideos and delete each
       //
       return true;
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       return false;
     }

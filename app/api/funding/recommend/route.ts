@@ -97,7 +97,7 @@ Be specific and actionable. Focus on practical next steps.
       });
 
       narrative = completion.choices[0].message.content || "";
-    } catch (error: unknown) {
+    } catch (error: any) {
       logger.error("Failed to generate funding narrative:", error);
       narrative =
         "Unable to generate detailed recommendations at this time. Please review the matching programs above.";

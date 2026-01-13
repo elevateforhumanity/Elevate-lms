@@ -42,7 +42,7 @@ export async function GET(
       quiz,
       questions: finalQuestions,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: toErrorMessage(error) || 'Failed to load quiz' },
       { status: 500 }
@@ -58,7 +58,7 @@ export async function POST(
   try {
     const supabase = getSupabaseServerClient();
     const { quizId } = await params;
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { userId, enrollmentId, answers, timeTakenSeconds } = body;
 
     // Fetch quiz and questions
@@ -79,9 +79,9 @@ export async function POST(
 
     // Calculate score
     let correctCount = 0;
-    const feedback: unknown = {};
+    const feedback: any = {};
 
-    questions.forEach((question: Record<string, unknown>) => {
+    questions.forEach((question: Record<string, any>) => {
       const userAnswer = answers[question.id];
       const correctAnswer = question.correct_answer;
 
@@ -156,7 +156,7 @@ export async function POST(
       attemptNumber,
       maxAttempts: quiz.max_attempts,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: toErrorMessage(error) || 'Failed to submit quiz' },
       { status: 500 }

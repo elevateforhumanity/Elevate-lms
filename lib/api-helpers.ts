@@ -8,7 +8,7 @@ import { NextRequest } from 'next/server';
 /**
  * Parse JSON body with type safety
  */
-export async function parseBody<T = Record<string, unknown>>(
+export async function parseBody<T = Record<string, any>>(
   request: NextRequest | Request
 ): Promise<T> {
   const body = await request.json();
@@ -18,7 +18,7 @@ export async function parseBody<T = Record<string, unknown>>(
 /**
  * Validate required fields in request body
  */
-export function validateRequired<T extends Record<string, unknown>>(
+export function validateRequired<T extends Record<string, any>>(
   body: T,
   fields: (keyof T)[]
 ): { valid: true } | { valid: false; missing: string[] } {
@@ -32,7 +32,7 @@ export function validateRequired<T extends Record<string, unknown>>(
 /**
  * Safe error message extraction
  */
-export function getErrorMessage(error: unknown): string {
+export function getErrorMessage(error: any): string {
   if (error instanceof Error) {
     return error.message;
   }
@@ -45,7 +45,7 @@ export function getErrorMessage(error: unknown): string {
 /**
  * Type guard for checking if value is an object
  */
-export function isObject(value: unknown): value is Record<string, unknown> {
+export function isObject(value: any): value is Record<string, any> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
@@ -53,7 +53,7 @@ export function isObject(value: unknown): value is Record<string, unknown> {
  * Type guard for checking if value has a specific property
  */
 export function hasProperty<K extends string>(
-  obj: unknown,
+  obj: any,
   key: K
 ): obj is Record<K, unknown> {
   return isObject(obj) && key in obj;

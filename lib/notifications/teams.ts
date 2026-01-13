@@ -4,12 +4,12 @@ const TEAMS_WEBHOOK_URL = process.env.TEAMS_WEBHOOK_URL;
 export async function sendTeamsMessage(
   title: string,
   text: string,
-  context?: Record<string, unknown>
+  context?: Record<string, any>
 ) {
   if (!TEAMS_WEBHOOK_URL) {
     return;
   }
-  const sections: unknown[] = [
+  const sections: any[] = [
     {
       activityTitle: title,
       text,
@@ -36,7 +36,7 @@ export async function sendTeamsMessage(
       }),
     });
     //
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
   }
 }

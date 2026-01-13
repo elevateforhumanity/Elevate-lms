@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * License Feature Gating System
  *

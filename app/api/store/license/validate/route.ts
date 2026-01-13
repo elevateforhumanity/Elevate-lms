@@ -53,7 +53,7 @@ export async function POST(req: Request) {
         createdAt: license.created_at,
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'License validation error:',
       error instanceof Error ? error : new Error(String(error))

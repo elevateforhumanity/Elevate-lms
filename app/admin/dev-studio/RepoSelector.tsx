@@ -20,7 +20,7 @@ export default function RepoSelector({ onSelect }) {
         onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => onSelect(e.target.value)}
       >
         <option value="">Select Repository</option>
-        {repos.map((r: Record<string, unknown>) => (
+        {repos.map((r: Record<string, any>) => (
           <option key={r.full_name} value={r.full_name}>
             {r.full_name}
           </option>

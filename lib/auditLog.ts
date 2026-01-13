@@ -35,7 +35,7 @@ export interface AuditLogParams {
   before?: any;
   after?: any;
   req?: Request;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
 }
 
 /**
@@ -86,7 +86,7 @@ export async function auditLog({
       console.error('Failed to write audit log:', error);
       // Don't throw - audit logging should never break the main flow
     }
-  } catch (error: unknown) {
+  } catch (error: any) {
     console.error('Audit log exception:', error);
     // Silent fail - audit logging is critical but shouldn't break operations
   }

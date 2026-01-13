@@ -8,7 +8,7 @@ export function Analytics() {
 
 export function trackEvent(
   eventName: string,
-  eventParams?: Record<string, unknown>
+  eventParams?: Record<string, any>
 ) {
   // Analytics disabled for performance
 }

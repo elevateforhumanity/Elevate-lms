@@ -35,7 +35,7 @@ export default async function PartnerCoursesPage() {
   // Group courses by partner
   const coursesByPartner =
     courses?.reduce(
-      (acc: Record<string, unknown>, course: Record<string, unknown>) => {
+      (acc: Record<string, any>, course: Record<string, any>) => {
         const partnerName =
           course.partner_lms_providers?.provider_name || 'Other';
         if (!acc[partnerName]) {
@@ -119,7 +119,7 @@ export default async function PartnerCoursesPage() {
               Our Partners
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-              {providers?.map((provider: Record<string, unknown>) => (
+              {providers?.map((provider: Record<string, any>) => (
                 <div
                   key={provider.id}
                   className="bg-white rounded-lg shadow-sm border p-4 text-center hover:shadow-md transition-shadow"
@@ -150,7 +150,7 @@ export default async function PartnerCoursesPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {partnerCourses
                     .slice(0, 6)
-                    .map((course: Record<string, unknown>) => (
+                    .map((course: Record<string, any>) => (
                       <div
                         key={course.id}
                         className="bg-white rounded-lg shadow-sm border overflow-hidden hover:shadow-md transition-shadow"

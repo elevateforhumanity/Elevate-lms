@@ -78,7 +78,7 @@ export async function GET(req: NextRequest) {
       longestStreak: streakData?.longest_streak || 0,
       recentActivity: recentActivityCount || 0,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error("[Mobile Summary Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },

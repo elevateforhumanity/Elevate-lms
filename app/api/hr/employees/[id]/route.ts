@@ -58,7 +58,7 @@ export async function GET(
     }
 
     return NextResponse.json({ employee });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error fetching employee:',
       error instanceof Error ? error : new Error(String(error))
@@ -78,7 +78,7 @@ export async function PATCH(
   try {
     const supabase = await createClient();
     const { id } = await params;
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
 
     // Don't allow updating certain fields directly
     const {
@@ -106,7 +106,7 @@ export async function PATCH(
     if (error) throw error;
 
     return NextResponse.json({ employee });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error updating employee:',
       error instanceof Error ? error : new Error(String(error))
@@ -158,7 +158,7 @@ export async function DELETE(
       message: 'Employee terminated successfully',
       employee,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Error terminating employee:',
       error instanceof Error ? error : new Error(String(error))

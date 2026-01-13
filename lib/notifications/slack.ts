@@ -38,7 +38,7 @@ export async function sendSlackMessage(params: {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
   }
 }

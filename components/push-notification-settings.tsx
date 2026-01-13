@@ -23,7 +23,7 @@ export function PushNotificationSettings() {
     try {
       await subscribe();
       toast.success('Push notifications enabled');
-    } catch (error: unknown) {
+    } catch (error: any) {
       toast.error('Failed to enable push notifications');
       // Error logged
     }
@@ -33,7 +33,7 @@ export function PushNotificationSettings() {
     try {
       await unsubscribe();
       toast.success('Push notifications disabled');
-    } catch (error: unknown) {
+    } catch (error: any) {
       toast.error('Failed to disable push notifications');
       // Error logged
     }
@@ -47,7 +47,7 @@ export function PushNotificationSettings() {
       } else {
         toast.error('Notification permission denied');
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       toast.error('Failed to request permission');
       // Error logged
     }
@@ -65,7 +65,7 @@ export function PushNotificationSettings() {
         tag: 'test',
       });
       toast.success('Test notification sent');
-    } catch (error: unknown) {
+    } catch (error: any) {
       toast.error('Failed to send test notification');
       // Error logged
     } finally {

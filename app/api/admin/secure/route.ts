@@ -35,7 +35,7 @@ export async function GET(req: Request) {
       secure: true,
       message: 'Access granted to secure admin endpoint',
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       { err: err instanceof Error ? err.message : String(err) },
       { status: 500 }

@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
     const page = parseInt(searchParams.get('page') || '1', 10);
     const perPage = parseInt(searchParams.get('perPage') || '20', 10);
 
-    let results: unknown[] = [];
+    let results: any[] = [];
 
     switch (type) {
       case 'photos':

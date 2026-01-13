@@ -43,7 +43,7 @@ export function TutorialSystem({
             setCompletedSteps(data.progress.completedSteps);
           }
         }
-      } catch (error: unknown) {
+      } catch (error: any) {
         // Error: $1
       }
     }
@@ -63,7 +63,7 @@ export function TutorialSystem({
           stepIndex: currentStepIndex,
         }),
       });
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
     }
 
@@ -79,7 +79,7 @@ export function TutorialSystem({
             tutorialId: tutorial.id,
           }),
         });
-      } catch (error: unknown) {
+      } catch (error: any) {
         // Error: $1
       }
       setIsVisible(false);

@@ -19,7 +19,7 @@ export class PartnerAPIError extends Error {
   constructor(
     message: string,
     public statusCode?: number,
-    public response?: unknown
+    public response?: any
   ) {
     super(message);
     this.name = 'PartnerAPIError';
@@ -63,7 +63,7 @@ export class HttpClient {
         responseHeaders[key] = value;
       });
 
-      let data: unknown;
+      let data: any;
       const contentType = response.headers.get('content-type');
       if (contentType?.includes('application/json')) {
         data = await response.json();
@@ -94,7 +94,7 @@ export class HttpClient {
         status: response.status,
         headers: responseHeaders,
       };
-    } catch (error: unknown) {
+    } catch (error: any) {
       clearTimeout(timeoutId);
 
       if (error.name === 'AbortError') {

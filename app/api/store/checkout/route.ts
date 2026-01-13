@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     });
 
     return Response.json({ sessionId: session.id, url: session.url });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Checkout error:',
       error instanceof Error ? error : new Error(String(error))

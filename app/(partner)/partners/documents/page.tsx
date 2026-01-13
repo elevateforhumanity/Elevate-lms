@@ -21,7 +21,7 @@ export default function PartnerDocumentsPage() {
   const [type, setType] = useState<(typeof TYPES)[number]>('mou');
   const [file, setFile] = useState<File | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
-  const [docs, setDocs] = useState<unknown[]>([]);
+  const [docs, setDocs] = useState<any[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -103,7 +103,7 @@ export default function PartnerDocumentsPage() {
           <select
             className="border rounded-xl p-2"
             value={type}
-            onChange={(e) => setType(e.target.value as unknown)}
+            onChange={(e) => setType(e.target.value as any)}
           >
             {TYPES.map((t) => (
               <option key={t} value={t}>

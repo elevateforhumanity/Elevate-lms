@@ -152,7 +152,7 @@ function calculateTrend(grades: Grade[]): 'improving' | 'declining' | 'stable' {
  * Calculate rubric score
  */
 export function calculateRubricScore(
-  rubricScores: unknown[],
+  rubricScores: any[],
   totalPoints: number
 ): number {
   const earnedPoints = rubricScores.reduce(

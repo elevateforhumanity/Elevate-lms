@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Checkout Success | Elevate For Humanity',
+  description: 'Elevate For Humanity - Career training and workforce development',
+};
+
 import { Suspense } from 'react';
 import Link from 'next/link';
 import { CheckCircle } from 'lucide-react';

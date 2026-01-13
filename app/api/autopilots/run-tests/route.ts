@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
           totalTests > 0 ? ((results.passed / totalTests) * 100).toFixed(1) : 0,
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Run tests error:',
       error instanceof Error ? error : new Error(String(error))

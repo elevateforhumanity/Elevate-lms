@@ -140,7 +140,7 @@ export async function POST(req: NextRequest) {
       invite_url: inviteUrl,
       email_sent: !!process.env.RESEND_API_KEY,
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:
@@ -186,7 +186,7 @@ export async function GET(req: NextRequest) {
     }
 
     return NextResponse.json({ invites });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:

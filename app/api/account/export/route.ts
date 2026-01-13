@@ -63,13 +63,13 @@ export async function GET() {
         name: user.name,
         created_at: user.created_at,
       },
-      enrollments: (enrollments || []).map((e: unknown) => ({
+      enrollments: (enrollments || []).map((e: any) => ({
         courseTitle: e.course?.title,
         status: e.status,
         startDate: e.start_date,
         completedAt: e.completed_at,
       })),
-      examAttempts: (examAttempts || []).map((a: Record<string, unknown>) => ({
+      examAttempts: (examAttempts || []).map((a: Record<string, any>) => ({
         examTitle: a.exam?.title,
         status: a.status,
         score: a.score,
@@ -100,7 +100,7 @@ export async function GET() {
         'Content-Disposition': 'attachment; filename="efh-account-export.json"',
       },
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error('Unexpected error in account export', error as Error);
     return NextResponse.json(
       { error: 'Failed to export account data' },

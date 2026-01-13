@@ -379,7 +379,7 @@ export async function gradeAssessmentAttempt(
   if (!attempt) throw new Error('Attempt not found');
 
   // Get questions
-  const questionIds = attempt.answers.map((a: Record<string, unknown>) => a.question_id);
+  const questionIds = attempt.answers.map((a: Record<string, any>) => a.question_id);
   const { data: questions } = await supabase
     .from('questions')
     .select('*')

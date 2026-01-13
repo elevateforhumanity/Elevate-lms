@@ -85,7 +85,7 @@ export async function processMiladyPayment(params: MiladyPaymentParams) {
       status: 'pending',
       message: 'Milady enrollment and payment processed',
     };
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
 
     // Log error but don't fail enrollment

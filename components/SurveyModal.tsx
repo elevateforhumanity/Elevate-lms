@@ -35,7 +35,7 @@ export default function SurveyModal({
   onClose,
 }: SurveyModalProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, unknown>>({});
+  const [answers, setAnswers] = useState<Record<string, any>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const currentQuestion = survey.questions[currentQuestionIndex];
@@ -43,7 +43,7 @@ export default function SurveyModal({
   const isFirstQuestion = currentQuestionIndex === 0;
   const progress = ((currentQuestionIndex + 1) / survey.questions.length) * 100;
 
-  const handleAnswer = (data: unknown) => {
+  const handleAnswer = (data: any) => {
     setAnswers(prev => ({ ...prev, [questionId]: value }));
   };
 
@@ -86,7 +86,7 @@ export default function SurveyModal({
         const data = await response.json();
         alert(data.error || 'Failed to submit survey');
       }
-    } catch (error: unknown) {
+    } catch (error: any) {
       // Error: $1
       alert('Failed to submit survey');
     } finally {

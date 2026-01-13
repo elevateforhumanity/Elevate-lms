@@ -36,7 +36,7 @@ class PartnerMonitoring {
     partner: PartnerType,
     requestId: string,
     success: boolean,
-    error?: unknown
+    error?: any
   ): void {
     const startTime = this.requestTimes.get(requestId);
     if (!startTime) return;
@@ -169,7 +169,7 @@ export function monitorPartnerCall(
   ) {
     const originalMethod = descriptor.value;
 
-    descriptor.value = async function (...args: unknown[]) {
+    descriptor.value = async function (...args: any[]) {
       const requestId = `${partner}_${operation}_${Date.now()}`;
       partnerMonitoring.startRequest(partner, requestId);
 
@@ -214,7 +214,7 @@ export async function checkPartnerHealth(
       lastChecked: new Date().toISOString(),
       responseTime,
     };
-  } catch (error: unknown) {
+  } catch (error: any) {
     return {
       partner,
       healthy: false,

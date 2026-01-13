@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { Check, X, DollarSign, FileText, AlertCircle } from 'lucide-react';
 
 interface RoleSelectionCardsProps {
-  rolePackages: unknown[];
+  rolePackages: any[];
   userId: string;
 }
 
@@ -37,7 +37,7 @@ export default function RoleSelectionCards({
       }
 
       router.push('/partners/onboarding');
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message);
       setIsSubmitting(false);
     }

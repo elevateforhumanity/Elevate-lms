@@ -191,7 +191,7 @@ const ROLE_HIERARCHY: Record<string, number> = {
  */
 export async function requireRoleLevel(
   minRole: string
-): Promise<{ user: unknown; profile: any }> {
+): Promise<{ user: any; profile: any }> {
   const { user, profile } = await requireRole(Object.keys(ROLE_HIERARCHY));
 
   const userLevel = ROLE_HIERARCHY[profile.role] || 0;

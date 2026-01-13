@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const {
       user_id,
       quiz_score,
@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
       training_record: trainingRecord
     });
 
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
     return NextResponse.json(
       { error: 'Internal server error' },

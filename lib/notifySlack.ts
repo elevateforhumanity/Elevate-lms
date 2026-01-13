@@ -9,7 +9,7 @@ export async function notifySlack(
   message: string,
   opts?: {
     severity?: SlackSeverity;
-    context?: Record<string, unknown>;
+    context?: Record<string, any>;
   }
 ): Promise<void> {
   if (!SLACK_WEBHOOK_URL) {
@@ -28,7 +28,7 @@ export async function notifySlack(
 
   const emoji = emojiMap[severity];
 
-  const blocks: unknown[] = [
+  const blocks: any[] = [
     {
       type: 'section',
       text: {
@@ -70,7 +70,7 @@ export async function notifySlack(
       },
       body: JSON.stringify({ blocks }),
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
   }
 }
@@ -82,7 +82,7 @@ export async function notifyTeams(
   message: string,
   opts?: {
     severity?: SlackSeverity;
-    context?: Record<string, unknown>;
+    context?: Record<string, any>;
   }
 ): Promise<void> {
   const TEAMS_WEBHOOK_URL = process.env.TEAMS_WEBHOOK_URL;
@@ -122,7 +122,7 @@ export async function notifyTeams(
       },
       body: JSON.stringify(card),
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Error: $1
   }
 }

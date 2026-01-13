@@ -7,7 +7,7 @@ export interface SecurityEvent {
   userAgent: string;
   endpoint: string;
   userId?: string;
-  details?: unknown;
+  details?: any;
   timestamp: Date;
 }
 

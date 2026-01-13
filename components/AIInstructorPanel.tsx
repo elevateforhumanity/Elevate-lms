@@ -82,7 +82,7 @@ export function AIInstructorPanel({ instructor, programTitle }: AIInstructorPane
         text: replyText,
       };
       setMessages((prev) => [...prev, instructorMsg]);
-    } catch (err: unknown) {
+    } catch (err: any) {
       // Error logged
       setError(
         err?.message ||

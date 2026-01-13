@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
       ssoUrl,
       courseName: enrollment.course_name,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       { error: 'Failed to generate SSO URL' },
       { status: 500 }

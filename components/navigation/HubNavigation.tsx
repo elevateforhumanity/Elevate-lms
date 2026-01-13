@@ -160,7 +160,7 @@ export function HubNavigation() {
   );
 }
 
-function NavDropdown({ title, items }: { title: string; items: unknown[] }) {
+function NavDropdown({ title, items }: { title: string; items: any[] }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -192,7 +192,7 @@ function NavDropdown({ title, items }: { title: string; items: unknown[] }) {
   );
 }
 
-function MobileSection({ title, items }: { title: string; items: unknown[] }) {
+function MobileSection({ title, items }: { title: string; items: any[] }) {
   const [open, setOpen] = useState(false);
 
   return (

@@ -21,7 +21,7 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const {
       organizationName,
       contactName,
@@ -152,7 +152,7 @@ export async function POST(request: NextRequest) {
         tempPassword, // Only returned once
       },
     });
-  } catch (err: unknown) {
+  } catch (err: any) {
     return NextResponse.json(
       {
         err:
@@ -238,7 +238,7 @@ function getLicenseConfig(licenseType: string) {
   }
 }
 
-function generateWelcomeEmail(data: unknown): string {
+function generateWelcomeEmail(data: any): string {
   return `
 <!DOCTYPE html>
 <html>
@@ -322,7 +322,7 @@ function generateWelcomeEmail(data: unknown): string {
   `;
 }
 
-function generateSetupGuideEmail(data: unknown): string {
+function generateSetupGuideEmail(data: any): string {
   return `
 <!DOCTYPE html>
 <html>

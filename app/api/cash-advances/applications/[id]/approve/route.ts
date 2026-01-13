@@ -15,7 +15,7 @@ export async function POST(
   try {
     const supabase = supabaseServer();
     const { id } = await params;
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { approved_amount, notes } = body;
 
     // Update application status
@@ -65,7 +65,7 @@ export async function POST(
       application: data,
       message: 'Application approved successfully',
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

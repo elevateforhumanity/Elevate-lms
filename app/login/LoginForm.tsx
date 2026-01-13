@@ -49,7 +49,7 @@ export default function LoginForm() {
         router.push('/student/dashboard');
       }
       router.refresh();
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message || 'Failed to sign in');
       setLoading(false);
     }
@@ -70,7 +70,7 @@ export default function LoginForm() {
       });
 
       if (error) throw error;
-    } catch (err: unknown) {
+    } catch (err: any) {
       setError((err as Error).message || `Failed to sign in with ${provider}`);
     }
   };

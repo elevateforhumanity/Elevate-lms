@@ -133,7 +133,7 @@ export class CloudflareStreamService {
           Authorization: `Bearer ${this.apiToken}`,
           ...form.getHeaders(),
         },
-        body: form as unknown as BodyInit,
+        body: form as any as BodyInit,
       });
 
       const data = (await response.json()) as StreamUploadResponse;

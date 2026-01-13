@@ -15,6 +15,7 @@
     "@dnd-kit/sortable": "10.0.0",
     "@dnd-kit/utilities": "3.2.2",
     "@hookform/resolvers": "5.2.2",
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@monaco-editor/react": "4.7.0",
     "@node-saml/passport-saml": "5.1.0",
     "@octokit/auth-oauth-app": "9.0.3",

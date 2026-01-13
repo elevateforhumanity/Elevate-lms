@@ -57,7 +57,7 @@ export interface PartnerAPIConfig {
 export class BasePartnerAPI {
   protected config: PartnerAPIConfig;
   protected partner: PartnerType;
-  protected httpClient: unknown; // HTTP client for API calls
+  protected httpClient: any; // HTTP client for API calls
   constructor(partner: PartnerType, config: PartnerAPIConfig = {}) {
     this.partner = partner;
     this.config = config;
@@ -66,7 +66,7 @@ export class BasePartnerAPI {
   /**
    * Logging helper
    */
-  protected log(data: unknown): void {
+  protected log(data: any): void {
   }
   /**
    * Get default headers for API requests

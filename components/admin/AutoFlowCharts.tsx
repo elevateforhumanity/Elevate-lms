@@ -5,8 +5,8 @@ import React, { useState, useEffect } from 'react';
 interface FlowChartData {
   type: 'enrollment' | 'retention' | 'completion' | 'attrition';
   title: string;
-  data: unknown[];
-  chartConfig: unknown;
+  data: any[];
+  chartConfig: any;
 }
 
 export function AutoFlowCharts() {
@@ -77,7 +77,7 @@ export function AutoFlowCharts() {
     setIsGenerating(false);
   };
 
-  const EnrollmentFlowChart = ({ data }: { data: unknown[] }) => (
+  const EnrollmentFlowChart = ({ data }: { data: any[] }) => (
     <div className="flow-chart bg-white p-6 rounded-lg border">
       <div className="flow-steps space-y-4">
         {data.map((step, index) => (
@@ -122,7 +122,7 @@ export function AutoFlowCharts() {
     </div>
   );
 
-  const RetentionChart = ({ data }: { data: unknown[] }) => (
+  const RetentionChart = ({ data }: { data: any[] }) => (
     <div className="retention-chart bg-white p-6 rounded-lg border">
       <div className="space-y-4">
         {data.map((program, index) => (
@@ -154,7 +154,7 @@ export function AutoFlowCharts() {
     </div>
   );
 
-  const CompletionChart = ({ data }: { data: unknown[] }) => (
+  const CompletionChart = ({ data }: { data: any[] }) => (
     <div className="completion-chart bg-white p-6 rounded-lg border">
       <div className="grid grid-cols-4 gap-4">
         {data.map((month, index) => (
@@ -178,7 +178,7 @@ export function AutoFlowCharts() {
     </div>
   );
 
-  const AttritionRiskChart = ({ data }: { data: unknown[] }) => (
+  const AttritionRiskChart = ({ data }: { data: any[] }) => (
     <div className="attrition-chart bg-white p-6 rounded-lg border">
       <div className="space-y-4">
         {data.map((risk, index) => (

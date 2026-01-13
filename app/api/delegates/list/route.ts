@@ -38,7 +38,7 @@ export async function GET() {
 
   if (error) return new Response(toErrorMessage(error), { status: 500 });
 
-  const mapped = (delegates || []).map((r: Record<string, unknown>) => ({
+  const mapped = (delegates || []).map((r: Record<string, any>) => ({
     id: r.id,
     ph_name: r.program_holder?.name || 'Unknown',
     email: r.user?.email || 'Unknown',

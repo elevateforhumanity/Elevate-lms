@@ -56,7 +56,7 @@ export const GET = withAuth(
           error: lessonsError?.message,
         },
       });
-    } catch (error: unknown) {
+    } catch (error: any) {
       return NextResponse.json(
         { error: toErrorMessage(error) },
         { status: 500 }

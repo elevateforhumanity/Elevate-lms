@@ -9,7 +9,7 @@ export type AuditEvent = {
   action: string;
   resourceType?: string | null;
   resourceId?: string | null;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
   ipAddress?: string | null;
   userAgent?: string | null;
 };
@@ -150,7 +150,7 @@ export async function auditedAction<T>(
   options?: {
     tenantId?: string;
     userId?: string;
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, any>;
   }
 ): Promise<T> {
   const { ipAddress, userAgent } = getRequestMetadata(req);
@@ -174,7 +174,7 @@ export async function auditedAction<T>(
     });
 
     return result;
-  } catch (error: unknown) {
+  } catch (error: any) {
     // Log failed action
     await logAuditEvent({
       tenantId: options?.tenantId,

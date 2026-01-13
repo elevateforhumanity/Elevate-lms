@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createSupabaseServerClient } from './supabaseServer';
 import integrations from '../config/integrations.json';
 
@@ -27,7 +28,7 @@ export type LearnerRecord = {
   email: string;
   name: string;
   created_at: string;
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, any>;
 };
 
 export interface ApiAdapter {

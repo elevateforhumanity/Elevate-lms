@@ -21,7 +21,7 @@ export async function POST(request: Request) {
 
   // Note: Look up platform by iss + client_id, fetch JWKS, and verify token properly.
   // For now, we decode without verification just to see shape (do NOT do this in prod).
-  const decoded: unknown = jwt.decode(idToken, { json: true });
+  const decoded: any = jwt.decode(idToken, { json: true });
 
   if (!decoded) {
     return NextResponse.json({ error: 'Invalid id_token' }, { status: 400 });

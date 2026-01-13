@@ -95,7 +95,7 @@ Format as JSON with this structure:
       .single();
 
     return NextResponse.json({ course, content });
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'AI course builder error:',
       error instanceof Error ? error : new Error(String(error))

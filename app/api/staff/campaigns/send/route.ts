@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    const body = await parseBody<Record<string, unknown>>(request);
+    const body = await parseBody<Record<string, any>>(request);
     const { subject, html_content, student_ids } = body;
 
     if (!student_ids || student_ids.length === 0) {
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
         });
 
         sentCount++;
-      } catch (error: unknown) {
+      } catch (error: any) {
   }
     }
 
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
       sent_count: sentCount,
       total_selected: students.length,
     });
-  } catch (error: unknown) {
+  } catch (error: any) {
     return NextResponse.json(
       {
         error:

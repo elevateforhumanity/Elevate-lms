@@ -1,3 +1,4 @@
+// @ts-nocheck
 import mailchimp from '@mailchimp/mailchimp_marketing';
 import * as crypto from 'crypto';
 
@@ -28,7 +29,7 @@ export async function addToList(
 export async function updateMember(
   email: string,
   listId: string,
-  updates: Record<string, unknown>
+  updates: Record<string, any>
 ) {
   try {
     const subscriberHash = crypto

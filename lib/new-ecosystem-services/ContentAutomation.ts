@@ -19,14 +19,14 @@ interface DataFeed {
   type: 'api' | 'rss' | 'json' | 'xml';
   updateFrequency: number; // milliseconds
   lastUpdate: Date;
-  parser: (data: unknown) => unknown;
+  parser: (data: any) => unknown;
 }
 
 interface ContentRule {
   id: string;
   selector: string;
   dataFeed: string;
-  transform: (data: unknown) => string;
+  transform: (data: any) => string;
   autoUpdate: boolean;
 }
 
@@ -209,7 +209,7 @@ export class ContentAutomation {
 
       // Apply content rules
       await this.applyContentRules(feed.id);
-    } catch (error: unknown) {
+    } catch (error: any) {
       logger.error(`Error updating feed ${feed.name}`, error as Error, { feedId: feed.id, feedName: feed.name });
     }
   }
@@ -419,7 +419,7 @@ export class ContentAutomation {
   /**
    * Parse XML data
    */
-  private parseXML(xmlString: string): unknown {
+  private parseXML(xmlString: string): any {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
     return xmlDoc;
@@ -458,7 +458,7 @@ export class ContentAutomation {
   /**
    * Get cached data
    */
-  getCachedData(feedId: string): unknown {
+  getCachedData(feedId: string): any {
     return this.cache.get(feedId);
   }
 

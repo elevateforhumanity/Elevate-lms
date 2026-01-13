@@ -10,14 +10,14 @@ export type RapidsStatus = (typeof RAPIDS_STATUSES)[number];
 
 export function normalizeRapidsStatus(input: string): RapidsStatus {
   const normalized = input.toLowerCase().trim();
-  if (RAPIDS_STATUSES.includes(normalized as unknown)) {
+  if (RAPIDS_STATUSES.includes(normalized as any)) {
     return normalized as RapidsStatus;
   }
   return 'pending';
 }
 
 export function isValidRapidsStatus(status: string): boolean {
-  return RAPIDS_STATUSES.includes(status as unknown);
+  return RAPIDS_STATUSES.includes(status as any);
 }
 
 export function getRapidsStatusColor(status: RapidsStatus): string {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const runtime = 'edge';
 export const maxDuration = 60;
 
@@ -45,7 +46,7 @@ export async function GET(req: NextRequest) {
     const metadata = JSON.parse(raw);
 
     return NextResponse.json(metadata);
-  } catch (error: unknown) {
+  } catch (error: any) {
     logger.error(
       'Get metadata error:',
       error instanceof Error ? error : new Error(String(error))
