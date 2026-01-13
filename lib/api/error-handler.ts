@@ -14,7 +14,7 @@ export function withErrorHandling(handler: ApiHandler): ApiHandler {
   return async (req: Request) => {
     try {
       return await handler(req);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
 
       // Handle specific error types

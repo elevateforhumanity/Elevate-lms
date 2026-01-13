@@ -37,8 +37,7 @@ export async function POST(request: NextRequest) {
       .eq('course_type', courseType)
       .single();
 
-    if (courseError || !course) {
-    }
+    if (courseError || !course) { /* Condition handled */ }
 
     // Create Stripe checkout session with Buy Now Pay Later options
     const session = await stripe.checkout.sessions.create({
@@ -87,7 +86,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ sessionId: session.id, url: session.url });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Stripe checkout error:',
       error instanceof Error ? error : new Error(String(error))

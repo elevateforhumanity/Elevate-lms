@@ -10,7 +10,7 @@ export function getRedisClient(): Redis | null {
   if (!redis) {
     try {
       redis = new Redis(process.env.REDIS_URL);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       return null;
     }
@@ -33,7 +33,7 @@ export async function getCache<T>(
     try {
       const value = await client.get(fullKey);
       return value ? JSON.parse(value) : null;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   }
@@ -57,7 +57,7 @@ export async function setCache<T>(
     try {
       await client.setex(fullKey, ttl, JSON.stringify(value));
       return;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   }
@@ -77,7 +77,7 @@ export async function deleteCache(
   if (client) {
     try {
       await client.del(fullKey);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   }
@@ -92,7 +92,7 @@ export async function clearCacheByPrefix(prefix: string): Promise<void> {
       if (keys.length > 0) {
         await client.del(...keys);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   }

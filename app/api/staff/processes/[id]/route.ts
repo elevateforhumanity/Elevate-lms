@@ -58,7 +58,7 @@ export async function GET(
     }
 
     return NextResponse.json({ process });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

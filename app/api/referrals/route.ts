@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Referrals GET error:', error);
     return NextResponse.json(
       { error: 'Failed to fetch referral data' },
@@ -164,7 +164,7 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Referrals POST error:', error);
     return NextResponse.json(
       {

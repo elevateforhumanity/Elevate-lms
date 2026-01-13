@@ -62,6 +62,7 @@ export default function VideoHeroBanner({
 
   const handleUserInteraction = () => {
     if (audioRef.current && voiceoverSrc && audioRef.current.paused) {
+      audioRef.current.play().catch(() => { /* Autoplay blocked */ });
     }
   };
 

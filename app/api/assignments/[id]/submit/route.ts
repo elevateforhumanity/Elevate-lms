@@ -82,7 +82,7 @@ export async function POST(
     }
 
     return NextResponse.json({ submission }, { status: 201 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Error in POST /api/assignments/[id]/submit:', error);
     return NextResponse.json(
       { error: 'Internal server error' },

@@ -132,7 +132,7 @@ export async function getStudentInstructors(studentId: string) {
     }
 
     return assignments || [];
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Get student instructors error', error);
     return [];
   }

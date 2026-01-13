@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'Subscription saved',
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('[Notifications] Subscribe error:', error);
     return NextResponse.json(
       { success: false, error: 'Failed to save subscription' },

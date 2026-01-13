@@ -126,7 +126,7 @@ export async function createPartnerPaymentSession(
       checkoutUrl: session.url || undefined,
       sessionId: session.id,
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,

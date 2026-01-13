@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ enrollments: data });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error fetching benefits enrollments:',
       error instanceof Error ? error : new Error(String(error))
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ enrollment: data }, { status: 201 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error creating benefits enrollment:',
       error instanceof Error ? error : new Error(String(error))

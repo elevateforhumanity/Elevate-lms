@@ -127,7 +127,7 @@ export async function POST(request: Request) {
       url: session.url,
       donation_id: donation.id,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

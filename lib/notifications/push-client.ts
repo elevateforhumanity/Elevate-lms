@@ -102,7 +102,7 @@ export class PushNotificationClient {
         await this.removeSubscription(subscription);
       }
       return success;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       return false;
     }
@@ -116,7 +116,7 @@ export class PushNotificationClient {
     }
     try {
       return await this.registration.pushManager.getSubscription();
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       return null;
     }

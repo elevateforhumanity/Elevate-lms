@@ -35,7 +35,7 @@ export async function cloneRepoForCustomer({
       repoUrl: data.html_url,
       cloneUrl: data.clone_url,
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Fallback: create fork if template doesn't work
     try {
       const { data } = await octokit.repos.createFork({
@@ -89,7 +89,7 @@ export async function grantRepoAccess({
     });
 
     return { success: true };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),

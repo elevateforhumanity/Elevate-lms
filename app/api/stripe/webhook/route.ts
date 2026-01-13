@@ -383,8 +383,7 @@ export async function POST(req: Request) {
             }
           );
 
-          if (miladyResponse.ok) {
-          } else {
+          if (miladyResponse.ok) { /* Condition handled */ } else {
             const errorText = await miladyResponse.text();
             logger.warn(
               '[Webhook] ⚠️ Milady auto-enrollment failed',

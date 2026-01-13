@@ -57,7 +57,7 @@ export async function GET() {
           },
         });
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       results.tests.push({
         name: 'Generate Q1 2026 Report',
         passed: false,
@@ -83,7 +83,7 @@ export async function GET() {
           measurable_skill_gains: performance.measurable_skill_gains,
         },
       });
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       results.tests.push({
         name: 'Calculate WIOA Performance Metrics',
         passed: false,
@@ -114,7 +114,7 @@ export async function GET() {
           present_fields: Object.keys(report),
         },
       });
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       results.tests.push({
         name: 'Report Has All Required Fields',
         passed: false,
@@ -138,7 +138,7 @@ export async function GET() {
     results.compliance_ready = failedTests === 0;
 
     return NextResponse.json(results);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: error.message, stack: error.stack },
       { status: 500 }

@@ -36,7 +36,7 @@ interface Booking {
   notes: string;
 }
 
-export default async function BookingPage() {
+export default function BookingPage() {
   const [instructors, setInstructors] = useState<Instructor[]>([]);
   const [selectedInstructor, setSelectedInstructor] =
     useState<Instructor | null>(null);
@@ -60,7 +60,7 @@ export default async function BookingPage() {
         const data = await response.json();
         setInstructors(data.instructors || []);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       setInstructors([]);
     }
   };
@@ -120,7 +120,7 @@ export default async function BookingPage() {
         setTopic('');
         setNotes('');
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       alert('Failed to create booking. Please try again.');
     } finally {
       setLoading(false);

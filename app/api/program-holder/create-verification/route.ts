@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
     const { userId } = await request.json();
 
     if (!userId) {
+      return NextResponse.json({ error: 'User ID required' }, { status: 400 });
     }
 
     // Verify user is authenticated
@@ -29,6 +30,7 @@ export async function POST(request: NextRequest) {
     } = await supabase.auth.getUser();
 
     if (!user || user.id !== userId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     // Get user email
@@ -39,6 +41,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (!profile) {
+      return NextResponse.json({ error: 'Profile not found' }, { status: 404 });
     }
 
     // Create Stripe Identity verification session

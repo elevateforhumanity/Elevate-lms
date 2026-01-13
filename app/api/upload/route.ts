@@ -77,7 +77,7 @@ export async function POST(request: Request) {
         type: file.type
       }
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { success: false, error: 'Failed to upload file' },
       { status: 500 }
@@ -104,7 +104,7 @@ export async function DELETE(request: Request) {
       success: true,
       message: 'File deleted successfully'
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { success: false, error: 'Failed to delete file' },
       { status: 500 }

@@ -74,7 +74,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Error processing upload:', error);
     return NextResponse.json(
       { error: 'Failed to process upload' },

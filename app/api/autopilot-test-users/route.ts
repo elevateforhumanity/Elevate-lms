@@ -107,7 +107,7 @@ export async function GET() {
             status: 'created',
           });
         }
-      } catch (error: any) {
+      } catch { /* Error handled silently */ 
         results.test_users.push({
           email: user.email,
           role: user.role,
@@ -223,7 +223,7 @@ export async function GET() {
     results.production_ready = results.summary.test_users_created >= 3;
 
     return NextResponse.json(results);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: error.message, stack: error.stack },
       { status: 500 }

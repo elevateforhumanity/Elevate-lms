@@ -70,7 +70,7 @@ export default function ContentLibrary() {
       const response = await fetch('/api/content-library');
       const data = await response.json();
       setItems(data.items || []);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   };
@@ -115,7 +115,7 @@ export default function ContentLibrary() {
       if (response.ok) {
         fetchContent();
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   };
@@ -126,7 +126,7 @@ export default function ContentLibrary() {
     try {
       await fetch(`/api/content-library/${id}`, { method: 'DELETE' });
       fetchContent();
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   };

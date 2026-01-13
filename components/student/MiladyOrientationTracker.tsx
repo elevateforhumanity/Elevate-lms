@@ -24,7 +24,7 @@ export function MiladyOrientationTracker({
           body: JSON.stringify({ userId }),
         });
         setMarked(true);
-      } catch (error: any) {
+      } catch { /* Error handled silently */ 
         // Error: $1
       }
     };

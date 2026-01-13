@@ -29,10 +29,8 @@ export function VideoShell({
 }: VideoShellProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  // TikTok-style behavior (optional)
-  if (autoPlay) {
-    useAutoPlayOnVisible(videoRef);
-  }
+  // TikTok-style behavior - always call hook, pass autoPlay flag
+  useAutoPlayOnVisible(videoRef, autoPlay);
 
   // Progress tracking for LMS
   useVideoProgress(videoRef, { lessonId, threshold: 0.8 });

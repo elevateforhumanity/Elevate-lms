@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ courses });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Courses list error:',
       error instanceof Error ? error : new Error(String(error))

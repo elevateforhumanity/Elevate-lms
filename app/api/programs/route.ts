@@ -39,7 +39,7 @@ export async function GET(request: Request) {
       count: filteredPrograms.length,
       programs: filteredPrograms,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Error fetching programs:', error);
     return NextResponse.json(
       { status: 'error', error: 'Failed to fetch programs' },

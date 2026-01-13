@@ -59,7 +59,7 @@ export async function GET(req: Request) {
           name: workflow.name,
           processed,
         });
-      } catch (error: any) {
+      } catch { /* Error handled silently */ 
         logger.error(
           `Error processing workflow ${workflow.id}:`,
           error instanceof Error ? error : new Error(String(error))
@@ -77,7 +77,7 @@ export async function GET(req: Request) {
       message: `Processed ${workflows.length} workflows`,
       results,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Workflow processor error:',
       error instanceof Error ? error : new Error(String(error))
@@ -288,7 +288,7 @@ async function processPendingEmails(supabase: any, workflow: any, now: Date) {
       });
 
       processed++;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       logger.error(
         `Error processing enrollment ${enrollment.id}:`,
         error instanceof Error ? error : new Error(String(error))

@@ -43,7 +43,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({ enrollments });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }
@@ -97,7 +97,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(enrollment, { status: 201 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

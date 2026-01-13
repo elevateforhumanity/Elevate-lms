@@ -416,15 +416,17 @@ if (require.main === module) {
         const icon =
           r.status === 'success' ? '✅' : r.status === 'failed' ? '❌' : '⏭️';
         if (r.data) {
+          console.log('  Data:', JSON.stringify(r.data, null, 2));
         }
         if (r.error) {
+          console.error('  Error:', r.error);
         }
       });
 
       process.exit(result.success ? 0 : 1);
     })
     .catch((error) => {
-      // Error: $1
+      console.error('Test failed:', error);
       process.exit(1);
     });
 }

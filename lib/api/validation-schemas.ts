@@ -13,7 +13,7 @@ import { z } from 'zod';
 export const emailSchema = z.string().email('Invalid email address').toLowerCase();
 
 export const phoneSchema = z.string().regex(
-  /^[\d\s\-\(\)\+]+$/,
+  /^[\d\s\-()+ ]+$/,
   'Invalid phone number format'
 ).min(10, 'Phone number must be at least 10 digits');
 
@@ -227,7 +227,7 @@ export const complianceReportSchema = z.object({
 
 export const fileUploadSchema = z.object({
   fileName: z.string().min(1, 'File name is required').max(255),
-  fileType: z.string().regex(/^[a-z]+\/[a-z0-9\-\+\.]+$/, 'Invalid MIME type'),
+  fileType: z.string().regex(/^[a-z]+\/[a-z0-9+.-]+$/, 'Invalid MIME type'),
   fileSize: z.number().positive().max(10 * 1024 * 1024, 'File size must be less than 10MB'),
   category: z.enum(['document', 'image', 'video', 'other']).optional(),
 });

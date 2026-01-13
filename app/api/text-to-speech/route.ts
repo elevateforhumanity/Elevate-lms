@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
       },
       { status: 503 }
     );
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Text-to-speech error:',
       error instanceof Error ? error : new Error(String(error))

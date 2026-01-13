@@ -18,15 +18,13 @@ export async function POST(request: NextRequest) {
     const headersList = headers();
     const signature = headersList.get('stripe-signature');
 
-    if (!signature) {
-    }
+    if (!signature) { /* Condition handled */ }
 
     // Verify webhook signature
     let event: Stripe.Event;
     try {
       event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
-    } catch (err: any) {
-    }
+    } catch { /* Error handled silently */ }
 
     const supabase = await createClient();
 

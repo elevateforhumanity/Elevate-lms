@@ -140,7 +140,7 @@ export async function syncStudentMiladyProgress(
           }
         }
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       console.error(
         `Failed to sync Milady enrollment ${miladyEnrollment.id}:`,
         error
@@ -234,7 +234,7 @@ export async function syncAllStudents(): Promise<{
     try {
       await syncStudentMiladyProgress(studentId);
       success++;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error logged
       failed++;
     }

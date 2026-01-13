@@ -87,7 +87,7 @@ export default function HeroMedia({
         a.currentTime = 0;
         await a.play();
       }
-    } catch {}
+    } catch { /* Error handled silently */ }
   };
 
   const onAudioEnded = () => {

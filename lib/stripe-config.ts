@@ -60,6 +60,7 @@ export function getStripeWebhookSecret(): string | null {
 
   if (!webhookSecret) {
     if (process.env.NODE_ENV === 'production') {
+      console.warn('STRIPE_WEBHOOK_SECRET not set in production');
     }
     return null;
   }

@@ -125,8 +125,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       session.amount_total ? session.amount_total / 100 : 0
     );
 
-  } catch (error) {
-  }
+  } catch { /* Error handled silently */ }
 }
 
 async function sendPurchaseConfirmationEmail(
@@ -230,6 +229,5 @@ async function sendPurchaseConfirmationEmail(
       `
     });
 
-  } catch (error) {
-  }
+  } catch { /* Error handled silently */ }
 }

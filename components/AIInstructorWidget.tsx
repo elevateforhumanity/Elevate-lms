@@ -41,7 +41,7 @@ export function AIInstructorWidget({
       if (data.audioUrl && !muted) {
         playAudio(data.audioUrl);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       setMessage('Hi! I\'m here to help you succeed in your training. Feel free to ask me anything!');
     }

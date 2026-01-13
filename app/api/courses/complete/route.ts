@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
       success: true,
       certificateNumber,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Course completion error:',
       error instanceof Error ? error : new Error(String(error))

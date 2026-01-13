@@ -47,7 +47,7 @@ export default function ReferralDashboard({ userId }: ReferralDashboardProps) {
       const referralsRes = await fetch('/api/referrals?action=my-referrals');
       const referralsData = await referralsRes.json();
       setReferrals(referralsData.referrals || []);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     } finally {
       setLoading(false);
@@ -71,7 +71,7 @@ export default function ReferralDashboard({ userId }: ReferralDashboardProps) {
           text: shareText,
           url: shareUrl,
         });
-      } catch (error: any) {
+      } catch { /* Error handled silently */ 
         // Error: $1
       }
     } else {

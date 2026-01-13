@@ -54,7 +54,7 @@ function SelfHostedAnalyticsContent() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Silently fail - don't break the app
     }
   };
@@ -75,7 +75,7 @@ function SelfHostedAnalyticsContent() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
     // Error handled
   }
   };
@@ -101,7 +101,7 @@ export function useAnalytics() {
           timestamp: new Date().toISOString(),
         }),
       });
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
     // Error handled
   }
   };

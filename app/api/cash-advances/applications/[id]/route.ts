@@ -27,7 +27,7 @@ export async function GET(
     }
 
     return NextResponse.json(data);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }
@@ -53,7 +53,7 @@ export async function PATCH(
     }
 
     return NextResponse.json(data);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

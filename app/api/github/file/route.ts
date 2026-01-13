@@ -65,7 +65,7 @@ export async function GET(req: NextRequest) {
       html_url: data.html_url,
       download_url: data.download_url,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'GitHub file read error:',
       error instanceof Error ? error : new Error(String(error))
@@ -143,7 +143,7 @@ export async function PUT(req: NextRequest) {
       },
       message: commitMessage,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'GitHub file write error:',
       error instanceof Error ? error : new Error(String(error))
@@ -194,7 +194,7 @@ export async function DELETE(req: NextRequest) {
       commit: res.data.commit.sha,
       message: commitMessage,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'GitHub file delete error:',
       error instanceof Error ? error : new Error(String(error))

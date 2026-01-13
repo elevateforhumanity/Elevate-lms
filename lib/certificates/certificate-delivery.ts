@@ -26,7 +26,7 @@ async function sendCertificateEmail(emailData: EmailData) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(emailData),
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
   }
 }

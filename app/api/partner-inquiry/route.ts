@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return NextResponse.json(
       { error: 'Failed to process inquiry' },

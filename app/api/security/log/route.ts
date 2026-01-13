@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     });
 
     return responsePromise;
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Fail-open - always return 200 so client doesn't retry
     console.error('[Security Log] Request error:', error);
     return NextResponse.json({ success: true }, { status: 200 });
@@ -116,7 +116,7 @@ async function sendSecurityAlert(data: Record<string, any>) {
         message: `Critical security event detected:\n\nType: ${data.type}\nURL: ${data.url}\nTime: ${data.timestamp}\n\nData: ${JSON.stringify(data.data, null, 2)}`,
       }),
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('[Security Alert] Failed to send:', error);
   }
   */

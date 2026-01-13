@@ -38,7 +38,7 @@ export default async function AdminLayout({
   // Require admin authentication
   try {
     await requireAdmin();
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Redirect to admin login with return URL
     redirect('/admin/login?redirect=/admin');
   }

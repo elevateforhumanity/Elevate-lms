@@ -73,7 +73,7 @@ export const GET = withAuth(
         logs: result.logs,
         stats,
       });
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       logger.error('Error fetching audit logs:', error);
       return NextResponse.json(
         { error: 'Failed to fetch audit logs' },

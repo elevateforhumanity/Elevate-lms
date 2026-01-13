@@ -36,7 +36,7 @@ export function InvisibleWatermark({
       if (typeof window !== 'undefined') {
         setClientTimestamp(timestamp || new Date().toISOString());
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
     }
   }, [timestamp]);
 
@@ -91,7 +91,7 @@ export function InvisibleWatermark({
       fpDiv.style.display = 'none';
       fpDiv.setAttribute('data-fp', fingerprint);
       document.body.appendChild(fpDiv);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
     }
   }, [owner, siteId, clientTimestamp]);
   try {
@@ -143,7 +143,7 @@ export function InvisibleWatermark({
         )}
       </>
     );
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return null;
   }
 }
@@ -170,7 +170,7 @@ function generateFingerprint(): string {
       hash = hash & hash;
     }
     return 'EFH-' + Math.abs(hash).toString(36).toUpperCase();
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return 'EFH-ERROR';
   }
 }

@@ -146,7 +146,7 @@ export class CloudflareStreamService {
 
       return data.result;
     } catch (error) {
-      throw error;
+      throw new Error(`Video upload failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }
 
@@ -194,7 +194,7 @@ export class CloudflareStreamService {
 
       return data.result;
     } catch (error) {
-      throw error;
+      throw new Error(`URL upload failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }
 

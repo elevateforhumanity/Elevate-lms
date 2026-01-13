@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
     await supabase.rpc('increment_thread_views', { thread_id: threadId });
 
     return NextResponse.json({ posts: data });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Error fetching posts:', error);
     return NextResponse.json(
       { error: 'Failed to fetch posts' },
@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
       .eq('id', thread_id);
 
     return NextResponse.json({ post: data }, { status: 201 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Error creating post:', error);
     return NextResponse.json(
       { error: 'Failed to create post' },

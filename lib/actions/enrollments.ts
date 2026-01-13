@@ -159,9 +159,10 @@ export async function createEnrollment(input: CreateEnrollmentInput) {
         .from('enrollment_module_progress')
         .insert(moduleProgressRows);
       if (progressError) {
-        // Error: $1
+        console.error('Module progress error:', progressError);
         // Don't fail the whole enrollment, but log it
       } else {
+        /* Module progress created successfully */
       }
     }
     // 8. If this is an apprenticeship program, create apprenticeship_enrollments record
@@ -179,9 +180,10 @@ export async function createEnrollment(input: CreateEnrollmentInput) {
           transferred_ojt_hours: 0,
         });
       if (apprenticeError) {
-        // Error: $1
+        console.error('Apprenticeship enrollment error:', apprenticeError);
         // Don't fail the whole enrollment
       } else {
+        /* Apprenticeship enrollment created successfully */
       }
     }
     // 9. Revalidate relevant paths
@@ -193,7 +195,7 @@ export async function createEnrollment(input: CreateEnrollmentInput) {
       enrollment_id: enrollment.id,
       message: `Enrollment created successfully for ${student.first_name} ${student.last_name} in ${program.name}`,
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -251,7 +253,7 @@ export async function addTransferHours(input: AddTransferHoursInput) {
       transfer_hours_id: transferHours.id,
       message: `Transfer hours from ${input.source_school_name} (${input.source_state}) added successfully. Status: Pending Review`,
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -362,7 +364,7 @@ export async function approveTransferHours(input: ApproveTransferHoursInput) {
       success: true,
       message: `Transfer hours approved: ${input.hours_theory_accepted} theory + ${input.hours_practical_accepted} practical hours`,
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -397,7 +399,7 @@ export async function rejectTransferHours(
       success: true,
       message: 'Transfer hours rejected',
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -445,7 +447,7 @@ export async function updateFundingAmounts(input: UpdateFundingAmountsInput) {
       success: true,
       message: 'Funding amounts updated successfully',
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -523,7 +525,7 @@ export async function getEnrollmentDetails(enrollment_id: string) {
         },
       },
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,

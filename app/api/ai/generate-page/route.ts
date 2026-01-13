@@ -76,7 +76,7 @@ Component should be a default export function.`;
       pageType,
       description,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'AI Page Builder error:',
       error instanceof Error ? error : new Error(String(error))

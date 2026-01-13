@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
       no_activity: result.no_activity,
       timestamp: new Date().toISOString(),
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       {
         ok: false,
@@ -166,8 +166,7 @@ async function createAlertsFromVerdicts(
     });
 
     await supabase.from('alert_notifications').insert(alerts);
-  } catch (error) {
-  }
+  } catch { /* Error handled silently */ }
 }
 
 // Allow GET for manual testing (development only)

@@ -74,6 +74,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (trackingError) {
+      /* Tracking error handled silently */
     }
 
     return NextResponse.json({

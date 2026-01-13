@@ -48,7 +48,7 @@ export async function POST(request: Request) {
         instructions: miladyConfig.enrollment_instructions,
       },
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

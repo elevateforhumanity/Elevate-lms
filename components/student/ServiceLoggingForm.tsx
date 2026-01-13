@@ -104,7 +104,7 @@ export default function ServiceLoggingForm({
       } else {
         alert('Failed to log hours. Please try again.');
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       alert('An error occurred. Please try again.');
     } finally {

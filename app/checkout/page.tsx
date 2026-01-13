@@ -115,7 +115,7 @@ export default async function CheckoutPage({
 
     // Redirect to Stripe Checkout
     redirect(session.url!);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
 
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">

@@ -49,7 +49,7 @@ export async function getStatus(req: Request, res: Response) {
         siteUrl: worker.config.VITE_SITE_URL || 'not set',
       },
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     res.status(500).json({
       error: 'Failed to get autopilot status',
       message: error instanceof Error ? error.message : String(error),
@@ -77,7 +77,7 @@ export async function triggerHealthCheck(req: Request, res: Response) {
       status: 'ok',
       health,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     res.status(500).json({
       error: 'Health check failed',
       message: error instanceof Error ? error.message : String(error),
@@ -106,7 +106,7 @@ export async function triggerSelfHeal(req: Request, res: Response) {
       healed: success,
       message: success ? 'Self-heal successful' : 'Self-heal failed',
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     res.status(500).json({
       error: 'Self-heal failed',
       message: error instanceof Error ? error.message : String(error),
@@ -138,7 +138,7 @@ export async function syncSecrets(req: Request, res: Response) {
       synced: results,
       message: 'Secrets synced successfully',
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     res.status(500).json({
       error: 'Secret sync failed',
       message: error instanceof Error ? error.message : String(error),
@@ -173,7 +173,7 @@ export async function startWorker(req: Request, res: Response) {
       status: 'ok',
       message: 'Autopilot started successfully',
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     res.status(500).json({
       error: 'Failed to start autopilot',
       message: error instanceof Error ? error.message : String(error),
@@ -201,7 +201,7 @@ export async function stopWorker(req: Request, res: Response) {
       status: 'ok',
       message: 'Autopilot stopped successfully',
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     res.status(500).json({
       error: 'Failed to stop autopilot',
       message: error instanceof Error ? error.message : String(error),

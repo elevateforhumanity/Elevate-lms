@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'Your data has been deleted',
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Error deleting user data:', error);
     return NextResponse.json(
       { error: 'Failed to delete data' },

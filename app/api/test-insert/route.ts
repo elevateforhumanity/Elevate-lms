@@ -60,7 +60,7 @@ export async function POST(req: Request) {
       message: 'Insert test successful (record deleted)',
       insertedId: data.id,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json({
       success: false,
       error: (err as Error).message,

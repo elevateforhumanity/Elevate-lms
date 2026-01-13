@@ -68,7 +68,7 @@ export class HsiAPI extends BasePartnerAPI {
         username: response.data.username,
         loginUrl: response.data.loginUrl,
       };
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       this.log('error', 'Failed to create HSI account', {
         error: error instanceof Error ? error.message : String(error),
       });
@@ -111,7 +111,7 @@ export class HsiAPI extends BasePartnerAPI {
         courseName: response.data.courseName,
         accessUrl: response.data.accessUrl,
       };
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       this.log('error', 'Failed to enroll in HSI course', {
         error: error instanceof Error ? error.message : String(error),
       });
@@ -148,7 +148,7 @@ export class HsiAPI extends BasePartnerAPI {
         lessonsCompleted: response.data.modulesCompleted,
         totalLessons: response.data.totalModules,
       };
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       if (error instanceof PartnerAPIError && error.statusCode === 404) {
         return null;
       }
@@ -182,7 +182,7 @@ export class HsiAPI extends BasePartnerAPI {
         downloadUrl: response.data.downloadUrl,
         verificationUrl: response.data.verificationUrl,
       };
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       if (error instanceof PartnerAPIError && error.statusCode === 404) {
         return null;
       }
@@ -211,7 +211,7 @@ export class HsiAPI extends BasePartnerAPI {
       });
 
       return response.data.launchUrl;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       this.log('error', 'Failed to generate HSI SSO URL', {
         error: error instanceof Error ? error.message : String(error),
       });

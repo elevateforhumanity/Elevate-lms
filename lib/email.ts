@@ -58,7 +58,7 @@ export async function sendEmail({
 
     const data = await response.json();
     return { success: true, messageId: data.id };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Failed to send email', error as Error, { to, subject });
     return { success: false, error };
   }

@@ -45,8 +45,7 @@ export function useOfflineData<T>(
                 return;
               }
             }
-          } catch (cacheError) {
-          }
+          } catch { /* Error handled silently */ }
         }
 
         // Fetch fresh data
@@ -80,8 +79,7 @@ export function useOfflineData<T>(
             cachedAt: Date.now(),
             ...(freshData as any),
           });
-        } catch (cacheError) {
-        }
+        } catch { /* Error handled silently */ }
       } catch (err) {
         if (mounted) {
           setError(err as Error);

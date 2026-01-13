@@ -70,7 +70,7 @@ export async function notifySlack(
       },
       body: JSON.stringify({ blocks }),
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
   }
 }
@@ -122,7 +122,7 @@ export async function notifyTeams(
       },
       body: JSON.stringify(card),
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
   }
 }

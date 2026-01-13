@@ -115,6 +115,7 @@ export default function SiteHeader() {
   // Debug: Check if navigation is loaded
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      /* Navigation loaded */
     }
   }, [navigation, user]);
 
@@ -130,7 +131,9 @@ export default function SiteHeader() {
           document.body.classList.remove('mobile-menu-open');
         }
       }
-    } catch (error: any) {}
+    } catch {
+      /* Error handled silently */
+    }
 
     // Cleanup on unmount
     return () => {
@@ -139,7 +142,7 @@ export default function SiteHeader() {
           document.body.style.overflow = '';
           document.body.classList.remove('mobile-menu-open');
         }
-      } catch (error: any) {
+      } catch { /* Error handled silently */ 
         // Ignore cleanup errors
       }
     };

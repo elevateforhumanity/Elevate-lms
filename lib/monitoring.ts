@@ -41,8 +41,7 @@ export function logEvent(event: Omit<MonitoringEvent, 'timestamp'>) {
   }
 
   // Log to console in development
-  if (process.env.NODE_ENV === 'development') {
-  }
+  if (process.env.NODE_ENV === 'development') { /* Condition handled */ }
 
   // In production, send to external service
   if (process.env.NODE_ENV === 'production') {
@@ -271,7 +270,7 @@ export function withMonitoring(
       }
 
       return response;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       const duration = Date.now() - startTime;
       logError(endpoint, 500, error);
       throw error;

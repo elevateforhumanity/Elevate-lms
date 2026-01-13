@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
       message,
       // audioUrl,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'AI Instructor error:',
       error instanceof Error ? error : new Error(String(error))

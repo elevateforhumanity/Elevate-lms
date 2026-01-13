@@ -204,7 +204,7 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Video processing error:',
       error instanceof Error ? error : new Error(String(error))

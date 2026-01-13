@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
     const metadata = JSON.parse(raw);
 
     return NextResponse.json(metadata);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Get metadata error:',
       error instanceof Error ? error : new Error(String(error))

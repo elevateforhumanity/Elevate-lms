@@ -121,7 +121,7 @@ ${JSON.stringify(features, null, 2)}
     }
 
     return NextResponse.json({ scores: parsed });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Dropout risk prediction error:',
       error instanceof Error ? error : new Error(String(error))

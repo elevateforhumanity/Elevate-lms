@@ -4,9 +4,11 @@ import { useEffect } from 'react';
 
 export function useAutoPlayOnVisible(
   ref: React.RefObject<HTMLVideoElement>,
+  enabled: boolean = true,
   options?: IntersectionObserverInit
 ) {
   useEffect(() => {
+    if (!enabled) return;
     const el = ref.current;
     if (!el) return;
 
@@ -34,5 +36,5 @@ export function useAutoPlayOnVisible(
     observer.observe(el);
 
     return () => observer.disconnect();
-  }, [ref, options]);
+  }, [ref, enabled, options]);
 }

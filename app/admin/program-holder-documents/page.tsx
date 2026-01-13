@@ -76,12 +76,10 @@ export default function AdminProgramHolderDocuments() {
 
       const { data, error } = await query;
 
-      if (error) {
-      } else if (data) {
+      if (error) { /* Condition handled */ } else if (data) {
         setDocuments(data);
       }
-    } catch (err) {
-    } finally {
+    } catch { /* Error handled silently */ } finally {
       setLoading(false);
     }
   };

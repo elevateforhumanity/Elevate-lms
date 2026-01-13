@@ -64,7 +64,7 @@ export async function sendSecurityAlert(alert: SecurityAlert): Promise<void> {
       // SMS for critical alerts only
       alert.severity === AlertSeverity.CRITICAL && sendSMSAlert(alert, channels.sms),
     ]);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     // Fallback: Log to console at minimum
     // Error logged
@@ -151,7 +151,7 @@ async function sendEmailAlert(alert: SecurityAlert, emails?: string[]): Promise<
     if (!response.ok) {
       throw new Error(`SendGrid API error: ${response.statusText}`);
     }
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
   }
 }
@@ -183,7 +183,7 @@ async function sendSlackAlert(alert: SecurityAlert, webhookUrl?: string): Promis
         ],
       }),
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
   }
 }
@@ -206,7 +206,7 @@ async function sendWebhookAlert(alert: SecurityAlert, webhookUrl?: string): Prom
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(alert),
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
   }
 }

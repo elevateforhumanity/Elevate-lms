@@ -46,7 +46,7 @@ export async function sendEmail(
       return { success: false, error: error.message };
     }
     return { success: true, messageId: data?.id };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
   }
 }

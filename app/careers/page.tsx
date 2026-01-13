@@ -40,7 +40,7 @@ export default async function CareersPage() {
   let openPositions = [];
   try {
     openPositions = await getActivePositions();
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Continue with empty positions array
   }
 

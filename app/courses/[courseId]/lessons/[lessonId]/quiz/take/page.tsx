@@ -94,7 +94,7 @@ export default function TakeQuizPage({
         alert('Failed to submit quiz. Please start again.');
         setSubmitting(false);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       alert('Failed to submit quiz. Please start again.');
       setSubmitting(false);
     }

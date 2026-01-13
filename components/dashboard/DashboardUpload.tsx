@@ -90,8 +90,7 @@ export function DashboardUpload({
           file_type: file.type,
         }),
       });
-    } catch (err) {
-    }
+    } catch { /* Error handled silently */ }
   };
 
   const handleDelete = async (fileId: string) => {

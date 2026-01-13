@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
       limit,
       offset,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: toErrorMessage(error) },
       { status: 500 }

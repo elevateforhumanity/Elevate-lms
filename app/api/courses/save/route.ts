@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ ok: true, course: data });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Save course error:',
       error instanceof Error ? error : new Error(String(error))

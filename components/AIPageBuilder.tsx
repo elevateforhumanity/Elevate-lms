@@ -137,7 +137,7 @@ export default function AIPageBuilder() {
       setPageName('');
       setPageSlug('');
       setDescription('');
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       alert('Failed to save page: ' + error instanceof Error ? error.message : String(error));
     } finally {
@@ -163,7 +163,7 @@ export default function AIPageBuilder() {
       if (error) throw error;
 
       alert('Page published successfully!');
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       alert('Failed to publish page: ' + error instanceof Error ? error.message : String(error));
     }

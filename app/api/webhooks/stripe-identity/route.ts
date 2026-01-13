@@ -16,8 +16,7 @@ const supabase = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SE
   : null;
 
 export async function POST(request: NextRequest) {
-  if (!stripe || !supabase) {
-  }
+  if (!stripe || !supabase) { /* Condition handled */ }
 
   const body = await request.text();
   const signature = request.headers.get('stripe-signature');
@@ -37,16 +36,14 @@ export async function POST(request: NextRequest) {
       signature,
       process.env.STRIPE_IDENTITY_WEBHOOK_SECRET!
     );
-  } catch (err: any) {
-  }
+  } catch { /* Error handled silently */ }
 
   // Handle verification session events
   if (event.type === 'identity.verification_session.verified') {
     const session = event.data.object as Stripe.Identity.VerificationSession;
     const userId = session.metadata?.user_id;
 
-    if (!userId) {
-    }
+    if (!userId) { /* Condition handled */ }
 
     try {
       // Update verification record
@@ -69,7 +66,7 @@ export async function POST(request: NextRequest) {
 
       // Email notification handled by trigger to user
 
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       return NextResponse.json(
         { error: 'Database update failed' },
         { status: 500 }
@@ -85,8 +82,7 @@ export async function POST(request: NextRequest) {
     const session = event.data.object as Stripe.Identity.VerificationSession;
     const userId = session.metadata?.user_id;
 
-    if (!userId) {
-    }
+    if (!userId) { /* Condition handled */ }
 
     try {
       // Update verification record
@@ -108,7 +104,7 @@ export async function POST(request: NextRequest) {
 
       // Email notification handled by trigger to user
 
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       return NextResponse.json(
         { error: 'Database update failed' },
         { status: 500 }

@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Performance alert API error:',
       error instanceof Error ? error : new Error(String(error))

@@ -62,7 +62,7 @@ export default function FunderAnalytics() {
       if (data.length > 0) {
         setSelectedFunder(data[0].funderType);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     } finally {
       setLoading(false);
@@ -127,7 +127,7 @@ export default function FunderAnalytics() {
       a.href = url;
       a.download = `wioa-pirl-report-${new Date().toISOString().split('T')[0]}.csv`;
       a.click();
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   };

@@ -20,7 +20,7 @@ export async function GET(_request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ plans: data });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error fetching benefits plans:',
       error instanceof Error ? error : new Error(String(error))
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ plan: data }, { status: 201 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error creating benefits plan:',
       error instanceof Error ? error : new Error(String(error))

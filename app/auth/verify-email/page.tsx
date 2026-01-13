@@ -30,7 +30,7 @@ export default function VerifyEmailPage() {
 
       if (error) throw error;
       setStatus('sent');
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       setStatus('error');
     }
   };

@@ -79,7 +79,7 @@ export default function NewSocialCampaignPage() {
       if (result.success) {
         setGeneratedPosts(result.posts);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
     // Error handled
   } finally {
       setGenerating(false);

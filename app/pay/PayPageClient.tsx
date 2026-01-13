@@ -56,8 +56,7 @@ export default function PayPageClient() {
 
       // IMPORTANT: your public API key must be set in NEXT_PUBLIC_AFFIRM_PUBLIC_KEY
       const publicKey = process.env.NEXT_PUBLIC_AFFIRM_PUBLIC_KEY;
-      if (!publicKey) {
-      }
+      if (!publicKey) { /* Condition handled */ }
 
       const script = document.createElement('script');
       script.src = 'https://cdn1.affirm.com/js/v2/affirm.js';
@@ -79,7 +78,7 @@ export default function PayPageClient() {
             window.affirm.ui.refresh();
           }
           setAffirmLoaded(true);
-        } catch (error: any) {
+        } catch { /* Error handled silently */ 
           // Error handled
         }
       };

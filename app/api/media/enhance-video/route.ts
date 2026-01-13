@@ -90,7 +90,7 @@ export async function POST(request: Request) {
         warning: 'FFmpeg not available or enhancement failed',
       });
     }
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Video upload error:',
       error instanceof Error ? error : new Error(String(error))

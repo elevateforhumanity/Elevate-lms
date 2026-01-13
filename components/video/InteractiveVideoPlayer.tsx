@@ -155,7 +155,7 @@ export default function InteractiveVideoPlayer({
       //   method: 'POST',
       //   body: JSON.stringify({ quizId: activeQuiz.id, answer: quizAnswer, isCorrect })
       // });
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
 

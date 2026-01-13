@@ -64,14 +64,17 @@ class Logger {
     switch (level) {
       case 'debug':
         if (this.isDevelopment) {
+          console.debug(formatted);
         }
         break;
       case 'info':
+        console.info(formatted);
         break;
       case 'warn':
+        console.warn(formatted);
         break;
       case 'error':
-        // Error logged
+        console.error(formatted);
         break;
     }
 
@@ -92,8 +95,8 @@ class Logger {
           body: JSON.stringify(entry),
         });
       }
-    } catch (error: any) {
-      // Fail silently to avoid infinite loops
+    } catch {
+      /* Fail silently to avoid infinite loops */
     }
   }
 

@@ -22,7 +22,7 @@ export class SMSService {
       // SMS notifications disabled - use email or in-app notifications instead
       // :', notification);
       return true;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       return false;
     }

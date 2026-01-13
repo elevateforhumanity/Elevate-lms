@@ -74,7 +74,7 @@ export async function GET(_req: NextRequest, { params }: Params) {
     };
 
     return NextResponse.json(response);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error("[Certificate Verification Error]:", error);
     return NextResponse.json(
       { error: "Internal server error", valid: false },

@@ -98,7 +98,7 @@ export function PayNowSection() {
         alert('Error: ' + (data.error || 'Unable to start checkout'));
         setIsProcessing(false);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       alert('Error connecting to payment system. Call 317-314-3757');
       setIsProcessing(false);
     }

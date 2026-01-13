@@ -47,7 +47,7 @@ export async function GET(req: Request) {
     }
 
     return NextResponse.json({ items: data || [] }, { status: 200 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       {
         error:

@@ -84,7 +84,7 @@ export default function InstructorCampaignsPage() {
       } else {
         alert(`Error: ${data.error}`);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       alert('Failed to send emails');
     } finally {
       setLoading(false);

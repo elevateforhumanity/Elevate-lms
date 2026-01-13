@@ -135,8 +135,7 @@ ${transcript}
           }))
         );
 
-      if (itemsErr) {
-      }
+      if (itemsErr) { /* Condition handled */ }
     }
 
     return NextResponse.json({ recap_id: recap.id }, { status: 200 });

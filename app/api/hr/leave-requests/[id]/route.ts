@@ -74,7 +74,7 @@ export async function PATCH(
     }
 
     return NextResponse.json({ leaveRequest: updated });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error updating leave request:',
       error instanceof Error ? error : new Error(String(error))

@@ -254,7 +254,7 @@ function logSecurityEvent(eventType: string, data: any) {
         value: 1,
       });
     }
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Silently fail
   }
 }

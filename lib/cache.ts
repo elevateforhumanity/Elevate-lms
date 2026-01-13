@@ -14,7 +14,7 @@ async function getClient() {
       client = createClient({ url: process.env.REDIS_URL });
       // Error: $1
       await client.connect();
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       return null;
     }
@@ -30,7 +30,7 @@ export async function cacheGet<T = any>(key: string): Promise<T | null> {
     const value = await c.get(key);
     if (!value) return null;
     return JSON.parse(value as string) as T;
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return null;
   }
@@ -46,7 +46,7 @@ export async function cacheSet(
 
   try {
     await c.set(key, JSON.stringify(value), { EX: ttlSeconds });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
   }
 }
@@ -57,7 +57,7 @@ export async function cacheDel(key: string): Promise<void> {
 
   try {
     await c.del(key);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
   }
 }
@@ -90,7 +90,7 @@ export async function cacheInvalidatePattern(pattern: string): Promise<void> {
         await c.del(batch);
       }
     }
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
   }
 }

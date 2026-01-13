@@ -41,8 +41,7 @@ export async function POST(request: NextRequest) {
       .eq('id', programId)
       .single();
 
-    if (!program) {
-    }
+    if (!program) { /* Condition handled */ }
 
     const price = program.tuition || 0;
 

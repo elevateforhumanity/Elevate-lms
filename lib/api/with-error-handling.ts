@@ -5,11 +5,11 @@ import { ErrorCode } from './error-codes';
 /**
  * Logs error to monitoring service (Sentry)
  */
-function logErrorToSentry(error: Error, context: Record<string, any>) {
+async function logErrorToSentry(error: Error, context: Record<string, any>) {
   if (typeof window === 'undefined') {
     // Server-side: Use Sentry Node SDK
     try {
-      const Sentry = require('@sentry/nextjs');
+      const Sentry = await import('@sentry/nextjs');
       Sentry.captureException(error, {
         tags: {
           type: 'api_error',
@@ -17,7 +17,7 @@ function logErrorToSentry(error: Error, context: Record<string, any>) {
         },
         extra: context,
       });
-    } catch (e) {
+    } catch {
       // Sentry not available, log to console
       console.error('[Sentry Error]', e);
     }

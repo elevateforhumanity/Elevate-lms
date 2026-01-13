@@ -62,7 +62,7 @@ export default function DataExportDialog({
         onClose();
         setExportComplete(false);
       }, 2000);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       alert('Failed to export data. Please try again.');
     } finally {
@@ -304,7 +304,7 @@ export function BatchExportDialog({ isOpen, onClose }: BatchExportDialogProps) {
 
       alert('Batch export completed successfully!');
       onClose();
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       alert('Failed to export data. Please try again.');
     } finally {

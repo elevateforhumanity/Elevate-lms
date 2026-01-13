@@ -140,7 +140,7 @@ export async function completeEnrollment(data: EnrollmentData): Promise<Enrollme
       courseAccessUrl: `/student/courses/${data.courseId}`,
     };
 
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Enrollment flow error', error);
     return {
       success: false,

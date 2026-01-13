@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       url: session.url,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error creating customer portal session:',
       error instanceof Error ? error : new Error(String(error))

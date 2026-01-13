@@ -90,7 +90,7 @@ export async function GET(req: Request) {
             error: sendResult.error,
           });
         }
-      } catch (error: any) {
+      } catch { /* Error handled silently */ 
         logger.error(
           `Error processing campaign ${campaign.id}:`,
           error instanceof Error ? error : new Error(String(error))
@@ -120,7 +120,7 @@ export async function GET(req: Request) {
       processed: campaigns.length,
       results,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Scheduler error:',
       error instanceof Error ? error : new Error(String(error))

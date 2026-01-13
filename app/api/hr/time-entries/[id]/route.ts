@@ -53,7 +53,7 @@ export async function PATCH(
     if (error) throw error;
 
     return NextResponse.json({ timeEntry: data });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error updating time entry:',
       error instanceof Error ? error : new Error(String(error))
@@ -77,7 +77,7 @@ export async function DELETE(
     if (error) throw error;
 
     return NextResponse.json({ message: 'Time entry deleted' });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error deleting time entry:',
       error instanceof Error ? error : new Error(String(error))

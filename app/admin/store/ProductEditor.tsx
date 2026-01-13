@@ -33,7 +33,7 @@ export default function ProductEditor() {
       } else {
         alert('Error: ' + (data.error || 'Failed to create product'));
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       alert('Failed to create product');
     } finally {
       setLoading(false);

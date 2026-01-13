@@ -124,15 +124,14 @@ export async function POST(req: Request) {
           </ul>
         `,
       });
-    } catch (emailError) {
-    }
+    } catch { /* Error handled silently */ }
 
     return NextResponse.json({
       success: true,
       appointment: data,
       message: 'Appointment booked successfully! Check your email for confirmation.',
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }

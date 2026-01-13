@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
         vendor_name: vendorConfig.vendor,
       },
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return NextResponse.json(
       { error: 'Failed to process payment split' },
@@ -163,7 +163,7 @@ async function processVendorPayment(params: {
         // Error logged
       }
     }
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     // Don't throw - enrollment should still succeed even if vendor payment fails
   }

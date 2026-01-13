@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
         name: profile?.full_name || data.user.email?.split("@")[0] || "User",
       },
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error("[Mobile Login Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },

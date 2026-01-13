@@ -49,7 +49,7 @@ export default function EnrollPage() {
       setProgram(data);
 
       await checkEligibility();
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       setMessage(`Error: ${error.message}`);
     } finally {
       setLoading(false);
@@ -71,7 +71,7 @@ export default function EnrollPage() {
 
       if (error) throw error;
       setEligibility(data);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       console.error('Eligibility check error:', error);
     }
   };
@@ -113,7 +113,7 @@ export default function EnrollPage() {
       setTimeout(() => {
         router.push(`/programs/${programId}`);
       }, 2000);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       setMessage(`Error: ${error.message}`);
     } finally {
       setEnrolling(false);

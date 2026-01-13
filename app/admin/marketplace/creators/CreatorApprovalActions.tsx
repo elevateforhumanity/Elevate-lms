@@ -27,7 +27,7 @@ export default function CreatorApprovalActions({
       if (!res.ok) throw new Error('Failed to approve');
 
       router.refresh();
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       alert('Failed to approve creator');
     } finally {
       setLoading(false);
@@ -49,7 +49,7 @@ export default function CreatorApprovalActions({
       if (!res.ok) throw new Error('Failed to reject');
 
       router.refresh();
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       alert('Failed to reject creator');
     } finally {
       setLoading(false);

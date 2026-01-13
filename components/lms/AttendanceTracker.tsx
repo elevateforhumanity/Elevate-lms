@@ -62,7 +62,7 @@ export default function AttendanceTracker({
         loginTimeRef.current = new Date();
         lastActivityRef.current = new Date();
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   }, [supabase, courseId, activityType]);
@@ -84,7 +84,7 @@ export default function AttendanceTracker({
           duration_minutes: durationMinutes,
         })
         .eq('id', sessionIdRef.current);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   }, [supabase]);
@@ -127,7 +127,7 @@ export default function AttendanceTracker({
             sessions_count: 1,
           });
         }
-      } catch (error: any) {
+      } catch { /* Error handled silently */ 
         // Error: $1
       }
     },
@@ -159,7 +159,7 @@ export default function AttendanceTracker({
       if (user) {
         await updateWeeklyHours(user.id, durationMinutes);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   }, [supabase, updateWeeklyHours]);

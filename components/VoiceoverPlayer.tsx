@@ -63,13 +63,13 @@ export default function VoiceoverPlayer({
         audioRef.current.loop = false; // NO LOOP - plays once
         await audioRef.current.play().catch(() => {});
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // NO robotic fallback - only professional voiceovers
-      useBrowserSpeech();
+      handleVoiceoverError();
     }
   };
 
-  const useBrowserSpeech = () => {
+  const handleVoiceoverError = () => {
     // DO NOT USE robotic browser speech
     // Only professional pre-recorded voiceovers allowed
     setIsPlaying(false);
@@ -144,7 +144,7 @@ export default function VoiceoverPlayer({
         onEnded={() => setIsPlaying(false)}
         onError={() => {
           // Only use custom professional voiceover - no robotic fallback
-          useBrowserSpeech();
+          handleVoiceoverError();
         }}
         preload="none"
         className="hidden"

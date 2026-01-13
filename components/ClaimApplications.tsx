@@ -28,10 +28,11 @@ export function ClaimApplications() {
         );
 
         if (error) {
+          /* Claim error handled silently */
         } else if (data > 0) {
+          /* Applications claimed successfully */
         }
-      } catch (err) {
-      }
+      } catch { /* Error handled silently */ }
     };
 
     // Claim on mount

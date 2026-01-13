@@ -87,7 +87,7 @@ export function TransferHoursTable({
       setApprovalHours('');
       setApprovalNotes('');
       window.location.reload();
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       alert('Failed to approve request');
     } finally {
       setLoading(false);
@@ -103,7 +103,7 @@ export function TransferHoursTable({
       setSelectedRequest(null);
       setApprovalNotes('');
       window.location.reload();
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       alert('Failed to deny request');
     } finally {
       setLoading(false);

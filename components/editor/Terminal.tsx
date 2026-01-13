@@ -62,7 +62,7 @@ export default function Terminal({ onCommand }: TerminalProps) {
       }
 
       setHistory((prev) => [...prev, { type: 'output', text: output }]);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       setHistory((prev) => [
         ...prev,
         {

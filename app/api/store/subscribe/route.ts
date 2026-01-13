@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
       sessionId: session.id,
       url: session.url,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error creating subscription checkout:',
       error instanceof Error ? error : new Error(String(error))

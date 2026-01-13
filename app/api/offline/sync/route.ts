@@ -59,7 +59,7 @@ export async function POST(req: Request) {
       ok: true,
       synced: pendingActions?.length || 0,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Sync error:',
       error instanceof Error ? error : new Error(String(error))

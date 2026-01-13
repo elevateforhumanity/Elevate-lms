@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ sessionId: session.id, url: session.url });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Stripe checkout error:', error);
     return NextResponse.json(
       { error: error.message || 'Failed to create checkout session' },

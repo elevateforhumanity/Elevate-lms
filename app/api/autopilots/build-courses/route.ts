@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
           message: `Autopilot: Create ${path}`,
           content: Buffer.from(content).toString('base64'),
         });
-      } catch (error: any) {
+      } catch { /* Error handled silently */ 
         logger.error(
           `Failed to save ${path}:`,
           error instanceof Error ? error : new Error(String(error))
@@ -111,7 +111,7 @@ ${parsed.modules?.map((mod: any, i: number) => `${i + 1}. ${mod.title || mod}`).
       path: basePath,
       filesCreated: parsed.modules?.length || 0,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Build course error:',
       error instanceof Error ? error : new Error(String(error))

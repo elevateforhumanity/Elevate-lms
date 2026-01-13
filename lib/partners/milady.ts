@@ -114,7 +114,7 @@ export class MiladyAPI extends BasePartnerAPI {
         username: response.data.username,
         loginUrl: response.data.accessUrl,
       };
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       this.log('error', 'Failed to create Milady RISE account', {
         error: error instanceof Error ? error.message : String(error),
       });
@@ -152,7 +152,7 @@ export class MiladyAPI extends BasePartnerAPI {
         courseName: response.data.courseName,
         accessUrl: response.data.courseUrl,
       };
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       this.log('error', 'Failed to enroll in Milady RISE course', {
         error: error instanceof Error ? error.message : String(error),
       });
@@ -191,7 +191,7 @@ export class MiladyAPI extends BasePartnerAPI {
         lessonsCompleted: response.data.lessonsCompleted,
         totalLessons: response.data.totalLessons,
       };
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       if (error instanceof PartnerAPIError && error.statusCode === 404) {
         return null;
       }
@@ -223,7 +223,7 @@ export class MiladyAPI extends BasePartnerAPI {
         issuedDate: new Date(response.data.issuedDate),
         downloadUrl: response.data.downloadUrl,
       };
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       if (error instanceof PartnerAPIError && error.statusCode === 404) {
         return null;
       }
@@ -252,7 +252,7 @@ export class MiladyAPI extends BasePartnerAPI {
       });
 
       return response.data.launchUrl;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       this.log('error', 'Failed to generate Milady RISE SSO URL', {
         error: error instanceof Error ? error.message : String(error),
       });

@@ -278,7 +278,7 @@ export async function confirmPayment(
       const { trackReferral } = await import('@/lib/referrals');
       try {
         await trackReferral(payment.metadata.referral_code, payment.user_id);
-      } catch (error: any) {
+      } catch { /* Error handled silently */ 
         // Error: $1
       }
     }

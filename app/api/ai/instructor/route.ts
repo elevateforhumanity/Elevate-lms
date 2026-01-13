@@ -106,7 +106,7 @@ Keep responses concise (2-4 paragraphs max), practical, and encouraging. Focus o
         { status: 503 }
       );
     }
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'AI instructor route error:',
       error instanceof Error ? error : new Error(String(error))

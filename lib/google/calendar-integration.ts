@@ -66,7 +66,7 @@ export async function addCourseToCalendar(
       eventId: response.data.id,
       eventLink: response.data.htmlLink,
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -134,7 +134,7 @@ export async function createRecurringClassSchedule(
       eventId: response.data.id,
       eventLink: response.data.htmlLink,
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -168,7 +168,7 @@ export async function getCalendarTokens(code: string) {
       success: true,
       tokens,
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,

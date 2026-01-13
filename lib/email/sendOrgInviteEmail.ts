@@ -48,7 +48,7 @@ If you did not expect this invitation, you can safely ignore this email.
     });
 
     return { success: true };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     const message = error instanceof Error ? error.message : String(error);
     console.error('Failed to send org invite email:', message);
     return { success: false, error: message };

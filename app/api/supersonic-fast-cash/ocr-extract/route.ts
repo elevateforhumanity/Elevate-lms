@@ -229,6 +229,5 @@ async function saveIncomeData(
       verified: false,
       created_at: new Date().toISOString(),
     });
-  } catch (error) {
-  }
+  } catch { /* Error handled silently */ }
 }

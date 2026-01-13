@@ -119,7 +119,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true, meeting });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Meeting creation error:',
       error instanceof Error ? error : new Error(String(error))

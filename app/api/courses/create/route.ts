@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
         title: course.title,
       },
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Course creation error:',
       error instanceof Error ? error : new Error(String(error))

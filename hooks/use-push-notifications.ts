@@ -40,8 +40,7 @@ export function usePushNotifications(): UsePushNotificationsReturn {
           const permissionState = await client.getPermissionState();
           setState(permissionState);
         }
-      } catch (error) {
-      } finally {
+      } catch { /* Error handled silently */ } finally {
         setIsLoading(false);
       }
     };
@@ -81,8 +80,6 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       await client.subscribe();
       const permissionState = await client.getPermissionState();
       setState(permissionState);
-    } catch (error) {
-      throw error;
     } finally {
       setIsLoading(false);
     }
@@ -94,8 +91,6 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       await client.unsubscribe();
       const permissionState = await client.getPermissionState();
       setState(permissionState);
-    } catch (error) {
-      throw error;
     } finally {
       setIsLoading(false);
     }
@@ -108,8 +103,6 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       const permissionState = await client.getPermissionState();
       setState(permissionState);
       return permission;
-    } catch (error) {
-      throw error;
     } finally {
       setIsLoading(false);
     }

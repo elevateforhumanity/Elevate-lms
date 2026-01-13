@@ -83,7 +83,7 @@ If user asks anything unsafe, redirect them to safe, legal, positive options.
       "I couldn't generate a response. Try asking in a different way.";
 
     return NextResponse.json({ reply });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error("Chat API error:", error);
     return NextResponse.json(
       { error: "Unexpected server error" },

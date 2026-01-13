@@ -59,7 +59,8 @@ export async function POST(req: Request) {
           email: profile.email,
           name: profile.full_name || 'Creator',
         });
-      } catch (emailError) {
+      } catch {
+        /* Email error handled silently */
       }
     }
 

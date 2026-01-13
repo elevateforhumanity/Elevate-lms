@@ -80,7 +80,7 @@ export function PushNotificationSender() {
       } else {
         toast.error(data.error || 'Failed to send notification');
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       toast.error('Failed to send notification');
     } finally {

@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ reviews: data });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error fetching performance reviews:',
       error instanceof Error ? error : new Error(String(error))
@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ review: data }, { status: 201 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error creating performance review:',
       error instanceof Error ? error : new Error(String(error))

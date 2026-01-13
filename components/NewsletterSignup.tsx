@@ -29,7 +29,7 @@ export default function NewsletterSignup() {
         setStatus('idle');
         setMessage('');
       }, 5000);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       setStatus('error');
       setMessage('Something went wrong. Please try again.');
 

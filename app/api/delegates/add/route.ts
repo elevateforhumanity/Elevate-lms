@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
     );
 
     return Response.json({ ok: true });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Error adding delegate:', error);
     return new Response('Failed to add delegate', { status: 500 });
   }

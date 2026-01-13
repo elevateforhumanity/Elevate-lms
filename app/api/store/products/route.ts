@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
     }
 
     return NextResponse.json(data || []);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Get products error:',
       error instanceof Error ? error : new Error(String(error))

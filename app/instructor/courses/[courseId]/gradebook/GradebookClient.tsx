@@ -81,7 +81,7 @@ export default function GradebookClient({ initialData }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ gradeItemId, enrollmentId, points }),
       });
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
     // Error handled
   } finally {
       setSaving(false);

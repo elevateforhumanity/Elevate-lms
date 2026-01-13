@@ -112,8 +112,7 @@ export default function TaxCalculatorPage() {
           text: `My estimated tax refund: ${formatCurrency(refundResult?.refund_or_owed || 0)}`,
           url: window.location.href,
         });
-      } catch (err) {
-      }
+      } catch { /* Error handled silently */ }
     }
   };
 

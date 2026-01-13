@@ -68,7 +68,7 @@ export async function GET(req: Request) {
       })),
       failedLoginsByIP: failedLoginsByIP.slice(0, 20), // Top 20 IPs
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     if (error instanceof Error && error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }

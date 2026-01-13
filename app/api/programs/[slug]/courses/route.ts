@@ -70,7 +70,7 @@ export async function GET(
       courses: transformedCourses,
       total: transformedCourses.length 
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json({ 
       error: toErrorMessage(error), 
       courses: [] 

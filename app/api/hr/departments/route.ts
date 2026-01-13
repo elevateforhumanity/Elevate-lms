@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ departments });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error fetching departments:',
       error instanceof Error ? error : new Error(String(error))
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ department }, { status: 201 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Error creating department:',
       error instanceof Error ? error : new Error(String(error))

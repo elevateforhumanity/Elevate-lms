@@ -74,8 +74,7 @@ export function useOffline(): UseOfflineReturn {
       try {
         const actions = await db.getAllOfflineActions();
         setPendingActionsCount(actions.length);
-      } catch (error) {
-      }
+      } catch { /* Error handled silently */ }
     };
 
     updateCount();
@@ -101,11 +100,7 @@ export function useOffline(): UseOfflineReturn {
   }, [db]);
 
   const handleSyncOfflineActions = useCallback(async () => {
-    try {
-      await syncOfflineActions();
-    } catch (error) {
-      throw error;
-    }
+    await syncOfflineActions();
   }, []);
 
   const addOfflineAction = useCallback(
@@ -115,32 +110,24 @@ export function useOffline(): UseOfflineReturn {
       headers: Record<string, string>;
       body: string;
     }) => {
-      try {
-        await db.addOfflineAction({
-          ...action,
-          timestamp: Date.now(),
-          retryCount: 0,
-        });
-        setPendingActionsCount((count) => count + 1);
-      } catch (error) {
-        throw error;
-      }
+      await db.addOfflineAction({
+        ...action,
+        timestamp: Date.now(),
+        retryCount: 0,
+      });
+      setPendingActionsCount((count) => count + 1);
     },
     [db]
   );
 
   const clearOfflineActions = useCallback(async () => {
-    try {
-      const actions = await db.getAllOfflineActions();
-      for (const action of actions) {
-        if (action.id) {
-          await db.removeOfflineAction(action.id);
-        }
+    const actions = await db.getAllOfflineActions();
+    for (const action of actions) {
+      if (action.id) {
+        await db.removeOfflineAction(action.id);
       }
-      setPendingActionsCount(0);
-    } catch (error) {
-      throw error;
     }
+    setPendingActionsCount(0);
   }, [db]);
 
   return {
@@ -170,8 +157,7 @@ export function useOfflineCache<T>(key: string, expiresIn?: number) {
       try {
         const cachedData = await db.getCachedData(key);
         setData(cachedData);
-      } catch (error) {
-      } finally {
+      } catch { /* Error handled silently */ } finally {
         setLoading(false);
       }
     };
@@ -181,23 +167,15 @@ export function useOfflineCache<T>(key: string, expiresIn?: number) {
 
   const saveData = useCallback(
     async (newData: T) => {
-      try {
-        await db.setCachedData(key, newData, expiresIn);
-        setData(newData);
-      } catch (error) {
-        throw error;
-      }
+      await db.setCachedData(key, newData, expiresIn);
+      setData(newData);
     },
     [db, key, expiresIn]
   );
 
   const clearData = useCallback(async () => {
-    try {
-      await db.deleteCachedData(key);
-      setData(null);
-    } catch (error) {
-      throw error;
-    }
+    await db.deleteCachedData(key);
+    setData(null);
   }, [db, key]);
 
   return {

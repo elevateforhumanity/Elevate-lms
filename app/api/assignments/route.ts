@@ -59,7 +59,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({ assignments });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Error in GET /api/assignments:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
@@ -119,7 +119,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ assignment }, { status: 201 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Error in POST /api/assignments:', error);
     return NextResponse.json(
       { error: 'Internal server error' },

@@ -40,7 +40,7 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
         setAverageRating(data.averageRating || 0);
         setTotalReviews(data.totalReviews || 0);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   }
@@ -64,7 +64,7 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
         setUserComment('');
         loadReviews();
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     } finally {
       setSubmitting(false);
@@ -77,7 +77,7 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
         method: 'POST',
       });
       loadReviews();
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   }

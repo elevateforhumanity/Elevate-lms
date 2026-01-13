@@ -22,7 +22,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ courses: courses || [], total: courses?.length || 0 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json({ error: toErrorMessage(error), courses: [] }, { status: 200 });
   }
 }
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(newCourse, { status: 201 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

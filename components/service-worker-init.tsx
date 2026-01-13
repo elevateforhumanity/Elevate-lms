@@ -11,10 +11,11 @@ export function ServiceWorkerInit() {
     initServiceWorker()
       .then((registration) => {
         if (registration) {
+          /* Service worker registered */
         }
       })
-      .catch((error) => {
-        // Error: $1
+      .catch(() => {
+        /* Service worker registration failed */
       });
     // Setup offline sync
     setupOfflineSync();

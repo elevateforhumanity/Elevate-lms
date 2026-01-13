@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
         'Content-Disposition': `attachment; filename="mou-${programHolderName?.replace(/\s+/g, '-') || 'program-holder'}-${Date.now()}.pdf"`,
       },
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

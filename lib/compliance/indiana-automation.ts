@@ -165,7 +165,7 @@ export async function runDailyIndianaComplianceCheck(): Promise<{
           try {
             await sendAlert(alert);
             results.alertsSent++;
-          } catch (error: any) {
+          } catch { /* Error handled silently */ 
             results.errors.push(
               `Failed to send alert to ${alert.programHolderId}: ${error}`
             );
@@ -177,7 +177,7 @@ export async function runDailyIndianaComplianceCheck(): Promise<{
           try {
             await executeEnforcementAction(action);
             results.enforcementActions++;
-          } catch (error: any) {
+          } catch { /* Error handled silently */ 
             results.errors.push(
               `Failed to execute enforcement action for ${action.programHolderId}: ${error}`
             );
@@ -190,7 +190,7 @@ export async function runDailyIndianaComplianceCheck(): Promise<{
         await delay(BATCH_CONFIG.delayBetweenBatches);
       }
     }
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     console.error(
       '[Indiana Compliance] Fatal error during compliance check:',
       error

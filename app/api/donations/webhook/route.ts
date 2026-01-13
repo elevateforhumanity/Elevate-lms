@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
     try {
       event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       return NextResponse.json(
         {
           error: `Webhook Error: ${error instanceof Error ? error.message : String(error)}`,
@@ -170,7 +170,7 @@ export async function POST(request: Request) {
       default:
     }
 
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Webhook handler failed' },
       { status: 500 }

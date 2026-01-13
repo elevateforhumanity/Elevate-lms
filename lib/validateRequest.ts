@@ -11,7 +11,7 @@ export async function validateRequest<T>(
     const body = await req.json();
     const data = schema.parse(body);
     return { data, error: null };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     if (error instanceof z.ZodError) {
       return {
         data: null,

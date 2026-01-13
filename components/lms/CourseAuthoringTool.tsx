@@ -297,7 +297,7 @@ export default function CourseAuthoringTool() {
       } else {
         alert('Failed to save course');
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       alert('Error saving course');
     }

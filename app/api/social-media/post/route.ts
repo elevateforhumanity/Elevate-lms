@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
         platform_url: result.url,
       });
     }
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       {
         error: 'Internal server err',
@@ -232,7 +232,7 @@ async function postToLinkedIn(data: any) {
       post_id: result.id,
       url: `https://www.linkedin.com/feed/update/${result.id}`,
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),
@@ -283,7 +283,7 @@ async function postToFacebook(data: any) {
       post_id: result.id,
       url: `https://www.facebook.com/${pageId}/posts/${result.id}`,
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),
@@ -311,7 +311,7 @@ async function postToYouTube(data: any) {
       error:
         'YouTube posting requires OAuth 2.0 setup. Please configure refresh token.',
     };
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),
@@ -365,7 +365,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ posts });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       {
         error: 'Internal server err',

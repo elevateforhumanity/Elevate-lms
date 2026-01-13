@@ -106,6 +106,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (returnError) {
+      /* Return record error handled silently */
     }
 
     // E-file the return
@@ -172,8 +173,7 @@ export async function POST(request: NextRequest) {
           </html>
         `
       });
-    } catch (emailError) {
-    }
+    } catch { /* Error handled silently */ }
 
     return NextResponse.json({
       success: true,

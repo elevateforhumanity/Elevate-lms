@@ -107,7 +107,7 @@ export async function POST(
       organizationId: invite.organization_id,
       organizationName: invite.organization_name,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return jsonErr('Internal server error', 500);
   }
 }

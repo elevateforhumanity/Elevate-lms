@@ -174,7 +174,7 @@ export async function auditedAction<T>(
     });
 
     return result;
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     // Log failed action
     await logAuditEvent({
       tenantId: options?.tenantId,

@@ -36,7 +36,7 @@ export class NotificationManager {
     try {
       const permission = await Notification.requestPermission();
       return permission === 'granted';
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       return false;
     }
@@ -64,7 +64,7 @@ export class NotificationManager {
         await this.sendSubscriptionToServer(subscription);
       }
       return subscription;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       return null;
     }
@@ -83,7 +83,7 @@ export class NotificationManager {
         return true;
       }
       return false;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       return false;
     }
@@ -121,7 +121,7 @@ export class NotificationManager {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(subscription),
       });
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       console.error(
         '[Notifications] Failed to send subscription to server:',
         error
@@ -137,7 +137,7 @@ export class NotificationManager {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(subscription),
       });
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       console.error(
         '[Notifications] Failed to remove subscription from server:',
         error

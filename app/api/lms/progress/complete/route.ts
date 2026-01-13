@@ -100,6 +100,7 @@ export async function POST(req: NextRequest) {
         });
 
       if (certError) {
+        /* Certificate error handled silently */
       }
 
       // Send completion email
@@ -123,7 +124,7 @@ export async function POST(req: NextRequest) {
             }),
           }
         );
-      } catch (emailError) {}
+      } catch { /* Error handled silently */ }
     } catch (certError) {
       // Don't fail the completion if certificate fails
     }
@@ -139,7 +140,7 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       {
         error:

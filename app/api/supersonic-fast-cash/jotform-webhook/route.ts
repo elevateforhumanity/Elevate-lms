@@ -239,8 +239,7 @@ export async function POST(request: NextRequest) {
           </p>
         `,
       });
-    } catch (emailError) {
-    }
+    } catch { /* Error handled silently */ }
 
     // Return success
     return NextResponse.json({

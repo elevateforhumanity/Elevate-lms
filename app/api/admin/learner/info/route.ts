@@ -35,7 +35,7 @@ async function getHandler(
       id: userData.id,
       email: userData.email,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('Error fetching user:', error);
     return new Response('Failed to fetch user', { status: 500 });
   }

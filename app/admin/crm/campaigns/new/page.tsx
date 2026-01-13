@@ -56,7 +56,7 @@ export default function NewCampaignPage() {
       } else {
         alert(`Error: ${data.error}`);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       alert('Failed to send campaign');
     } finally {
       setLoading(false);

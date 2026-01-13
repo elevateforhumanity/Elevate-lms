@@ -67,7 +67,7 @@ export async function instructEnvSync(): Promise<AutopilotResult> {
       timestamp: new Date().toISOString(),
     };
 
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
@@ -106,7 +106,7 @@ export async function verifyEnvSync(): Promise<AutopilotResult> {
       timestamp: new Date().toISOString(),
     };
 
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
@@ -138,7 +138,7 @@ export async function downloadEnvFile(autopilotSecret: string): Promise<string |
     const result = await response.json();
     return result.envContent || null;
 
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     console.error('Failed to download env file:', error);
     return null;
   }

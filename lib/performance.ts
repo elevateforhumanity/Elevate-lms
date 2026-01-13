@@ -16,6 +16,7 @@ export function measurePageLoad() {
     }
     // Log to console in development
     if (process.env.NODE_ENV === 'development') {
+      console.debug('Performance metric:', metric);
     }
   });
 }
@@ -91,10 +92,12 @@ export function trackAPIPerformance(endpoint: string, duration: number) {
   }
   // Log slow API calls
   if (duration > 1000 && process.env.NODE_ENV === 'development') {
+    console.warn(`Slow API call: ${endpoint} took ${duration}ms`);
   }
 }
 export function trackComponentRender(componentName: string, duration: number) {
   if (process.env.NODE_ENV === 'development' && duration > 100) {
+    console.warn(`Slow component render: ${componentName} took ${duration}ms`);
   }
 }
 // Resource timing
@@ -142,6 +145,7 @@ export function trackMemoryUsage() {
     const totalMemory = memory.totalJSHeapSize / 1048576; // MB
 
     if (process.env.NODE_ENV === 'development') {
+      console.debug(`Memory: ${usedMemory.toFixed(2)}MB / ${totalMemory.toFixed(2)}MB`);
     }
 
     if (window.gtag) {

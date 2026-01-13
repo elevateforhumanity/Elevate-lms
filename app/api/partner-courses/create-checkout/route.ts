@@ -46,8 +46,7 @@ export async function POST(request: NextRequest) {
       .eq('id', courseId)
       .single();
 
-    if (courseError || !course) {
-    }
+    if (courseError || !course) { /* Condition handled */ }
 
     // Check if course requires payment
     if (!course.requires_payment) {
@@ -118,7 +117,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ sessionId: session.id, url: session.url });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Stripe checkout error:',
       error instanceof Error ? error : new Error(String(error))

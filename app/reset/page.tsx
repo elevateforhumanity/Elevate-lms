@@ -15,18 +15,17 @@ export default function ResetPage() {
       setStatus('Signing out from Supabase...');
       const supabase = createClient();
       await supabase.auth.signOut();
-    } catch (e) {
-    }
+    } catch { /* Error handled silently */ }
 
     try {
       setStatus('Clearing localStorage...');
       localStorage.clear();
-    } catch {}
+    } catch { /* Error handled silently */ }
 
     try {
       setStatus('Clearing sessionStorage...');
       sessionStorage.clear();
-    } catch {}
+    } catch { /* Error handled silently */ }
 
     try {
       setStatus('Clearing Cache Storage...');
@@ -34,7 +33,7 @@ export default function ResetPage() {
         const keys = await caches.keys();
         await Promise.all(keys.map((k) => caches.delete(k)));
       }
-    } catch {}
+    } catch { /* Error handled silently */ }
 
     try {
       setStatus('Clearing IndexedDB...');
@@ -54,7 +53,7 @@ export default function ResetPage() {
           )
         );
       }
-    } catch {}
+    } catch { /* Error handled silently */ }
 
     try {
       setStatus('Unregistering service workers...');
@@ -62,7 +61,7 @@ export default function ResetPage() {
         const regs = await navigator.serviceWorker.getRegistrations();
         await Promise.all(regs.map((r) => r.unregister()));
       }
-    } catch {}
+    } catch { /* Error handled silently */ }
 
     try {
       setStatus('Clearing cookies...');
@@ -71,7 +70,7 @@ export default function ResetPage() {
         const name = eqPos > -1 ? c.slice(0, eqPos) : c;
         document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
       });
-    } catch {}
+    } catch { /* Error handled silently */ }
 
     setStatus('Complete! Reloading...');
     setTimeout(() => {

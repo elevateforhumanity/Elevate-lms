@@ -80,7 +80,7 @@ export async function GET(request: NextRequest) {
     );
 
     return NextResponse.json(groupsWithMembership);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error("[Study Groups API Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },

@@ -132,6 +132,7 @@ export default function ContentProtection({
     // Blur detection - warn if user switches tabs/windows
     const handleVisibilityChange = () => {
       if (document.hidden && level === "maximum") {
+        /* Tab hidden - maximum protection active */
       }
     };
 

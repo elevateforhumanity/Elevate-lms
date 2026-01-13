@@ -82,7 +82,7 @@ async function handleAudit(request: NextRequest, options: AuditOptions) {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
       },
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       {
         error: 'Audit failed',

@@ -39,7 +39,7 @@ export async function GET(request: Request) {
       results.overall_summary.total_tests += data.summary?.total || 0;
       results.overall_summary.passed_tests += data.summary?.passed || 0;
       results.overall_summary.failed_tests += data.summary?.failed || 0;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       results.test_suites.push({
         name: 'Multi-Tenant Isolation',
         status: 'ERROR',
@@ -59,7 +59,7 @@ export async function GET(request: Request) {
       results.overall_summary.total_tests += data.summary?.total || 0;
       results.overall_summary.passed_tests += data.summary?.passed || 0;
       results.overall_summary.failed_tests += data.summary?.failed || 0;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       results.test_suites.push({
         name: 'License Enforcement',
         status: 'ERROR',
@@ -79,7 +79,7 @@ export async function GET(request: Request) {
       results.overall_summary.total_tests += data.summary?.total || 0;
       results.overall_summary.passed_tests += data.summary?.passed || 0;
       results.overall_summary.failed_tests += data.summary?.failed || 0;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       results.test_suites.push({
         name: 'Compliance Reporting',
         status: 'ERROR',
@@ -99,7 +99,7 @@ export async function GET(request: Request) {
       results.overall_summary.total_tests += data.summary?.total_steps || 0;
       results.overall_summary.passed_tests += data.summary?.passed_steps || 0;
       results.overall_summary.failed_tests += data.summary?.failed_steps || 0;
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       results.test_suites.push({
         name: 'User Flows (LMS/Enrollment/Stripe)',
         status: 'ERROR',
@@ -116,7 +116,7 @@ export async function GET(request: Request) {
         status: data.summary?.all_required_working ? 'PASSED' : 'PARTIAL',
         ...data,
       });
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       results.test_suites.push({
         name: 'Partner Integrations',
         status: 'ERROR',
@@ -164,7 +164,7 @@ export async function GET(request: Request) {
         'Content-Type': 'application/json',
       },
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       {
         error: error.message,

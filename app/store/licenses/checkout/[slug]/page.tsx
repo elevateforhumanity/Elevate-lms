@@ -144,7 +144,7 @@ export default function LicenseCheckoutPage() {
       } else {
         alert('Failed to create payment intent');
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       alert('Failed to process request');
     }
   };

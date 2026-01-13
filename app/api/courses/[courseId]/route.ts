@@ -55,7 +55,7 @@ export async function GET(
     }
 
     return NextResponse.json({ course });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Course fetch error:',
       error instanceof Error ? error : new Error(String(error))
@@ -111,7 +111,7 @@ export async function PATCH(
     }
 
     return NextResponse.json({ course });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Course update error:',
       error instanceof Error ? error : new Error(String(error))
@@ -166,7 +166,7 @@ export async function DELETE(
     }
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Course delete error:',
       error instanceof Error ? error : new Error(String(error))

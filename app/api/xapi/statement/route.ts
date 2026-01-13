@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ stored: records.length });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('xAPI endpoint error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
@@ -101,7 +101,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ statements: data });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error('xAPI query endpoint error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },

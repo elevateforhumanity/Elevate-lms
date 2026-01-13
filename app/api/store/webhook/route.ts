@@ -112,7 +112,7 @@ export async function POST(req: Request) {
     }
 
     return Response.json({ received: true });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     logger.error(
       'Webhook error:',
       error instanceof Error ? error : new Error(String(error))

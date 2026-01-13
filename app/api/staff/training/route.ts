@@ -58,7 +58,7 @@ export async function GET() {
       totalModules: modules?.length || 0,
       completedModules: progress?.filter((p) => p.completed_at).length || 0,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -131,7 +131,7 @@ export async function POST(request: Request) {
       progress,
       certified: quiz_score && quiz_score >= 80,
     });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

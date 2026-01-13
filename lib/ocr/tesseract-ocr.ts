@@ -34,8 +34,7 @@ export async function extractTextFromImage(
   try {
     const result = await Tesseract.recognize(file, language, {
       logger: (m) => {
-        if (m.status === 'recognizing text') {
-        }
+        if (m.status === 'recognizing text') { /* Condition handled */ }
       },
     });
 

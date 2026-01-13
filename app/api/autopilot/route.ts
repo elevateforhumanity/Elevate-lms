@@ -96,7 +96,7 @@ export async function GET(request: NextRequest) {
   try {
     const state = loadState();
     return NextResponse.json(state);
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Failed to load autopilot state' },
       { status: 500 }
@@ -146,7 +146,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Failed to process request' },
       { status: 500 }
@@ -169,7 +169,7 @@ export async function DELETE(request: NextRequest) {
     saveState(state);
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Failed to delete task' },
       { status: 500 }

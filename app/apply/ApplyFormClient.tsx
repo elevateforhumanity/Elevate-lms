@@ -82,7 +82,7 @@ export default function ApplyFormClient() {
           setStatus('idle');
         }, 5000);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
     }

@@ -141,7 +141,7 @@ export default function AdvancedQuizBuilder() {
       if (response.ok) {
         alert('Quiz saved successfully!');
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       alert('Failed to save quiz');
     }

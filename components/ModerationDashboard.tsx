@@ -49,7 +49,7 @@ export default function ModerationDashboard() {
       const response = await fetch('/api/moderation?action=pending&limit=100');
       const data = await response.json();
       setReports(data.reports || []);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     } finally {
       setLoading(false);
@@ -61,7 +61,7 @@ export default function ModerationDashboard() {
       const response = await fetch('/api/moderation?action=stats');
       const data = await response.json();
       setStats(data.stats);
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
     }
   };
@@ -85,7 +85,7 @@ export default function ModerationDashboard() {
         fetchStats();
         setSelectedReport(null);
       }
-    } catch (error: any) {
+    } catch { /* Error handled silently */ 
       // Error: $1
       alert('Failed to process review');
     }
