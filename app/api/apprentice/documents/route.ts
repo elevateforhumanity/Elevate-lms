@@ -1,0 +1,226 @@
+// @ts-nocheck
+import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+/**
+ * GET /api/apprentice/documents
+ * Get document types and uploaded documents for a program
+ */
+export async function GET(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const programSlug = searchParams.get('program') || 'barber-apprenticeship';
+
+    // Get document types for this program
+    const { data: documentTypes, error: typesError } = await supabase
+      .from('apprentice_document_types')
+      .select('*')
+      .eq('program_slug', programSlug)
+      .order('display_order', { ascending: true });
+
+    if (typesError) {
+      console.error('[Documents API] Types error:', typesError);
+    }
+
+    // Get student's uploaded documents
+    const { data: uploadedDocuments, error: docsError } = await supabase
+      .from('apprentice_documents')
+      .select('*')
+      .eq('student_id', user.id)
+      .eq('program_slug', programSlug)
+      .order('uploaded_at', { ascending: false });
+
+    if (docsError) {
+      console.error('[Documents API] Docs error:', docsError);
+    }
+
+    return NextResponse.json({
+      documentTypes: documentTypes || [],
+      uploadedDocuments: uploadedDocuments || [],
+    });
+  } catch (error) {
+    console.error('[Documents API] Error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+/**
+ * POST /api/apprentice/documents
+ * Upload a document
+ */
+export async function POST(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const formData = await request.formData();
+    const file = formData.get('file') as File;
+    const documentTypeId = formData.get('documentTypeId') as string;
+    const programSlug = formData.get('programSlug') as string;
+
+    if (!file || !documentTypeId || !programSlug) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    // Get document type to validate
+    const { data: docType } = await supabase
+      .from('apprentice_document_types')
+      .select('*')
+      .eq('id', documentTypeId)
+      .single();
+
+    if (!docType) {
+      return NextResponse.json({ error: 'Invalid document type' }, { status: 400 });
+    }
+
+    // Validate file size
+    if (file.size > docType.max_file_size_mb * 1024 * 1024) {
+      return NextResponse.json({ 
+        error: `File too large. Maximum size is ${docType.max_file_size_mb}MB` 
+      }, { status: 400 });
+    }
+
+    // Validate file type
+    const ext = file.name.split('.').pop()?.toLowerCase();
+    if (!docType.accepted_formats.includes(ext || '')) {
+      return NextResponse.json({ 
+        error: `Invalid file type. Accepted: ${docType.accepted_formats.join(', ')}` 
+      }, { status: 400 });
+    }
+
+    // Generate unique filename
+    const timestamp = Date.now();
+    const safeFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+    const storagePath = `apprentice-documents/${user.id}/${docType.document_type}/${timestamp}_${safeFileName}`;
+
+    // Upload to Supabase Storage
+    const { data: uploadData, error: uploadError } = await supabase.storage
+      .from('documents')
+      .upload(storagePath, file, {
+        contentType: file.type,
+        upsert: false,
+      });
+
+    if (uploadError) {
+      console.error('[Documents API] Upload error:', uploadError);
+      return NextResponse.json({ error: 'Failed to upload file' }, { status: 500 });
+    }
+
+    // Get public URL
+    const { data: urlData } = supabase.storage
+      .from('documents')
+      .getPublicUrl(storagePath);
+
+    // Delete any existing document of this type (replace)
+    await supabase
+      .from('apprentice_documents')
+      .delete()
+      .eq('student_id', user.id)
+      .eq('document_type_id', documentTypeId);
+
+    // Create document record
+    const { data: docRecord, error: recordError } = await supabase
+      .from('apprentice_documents')
+      .insert({
+        student_id: user.id,
+        document_type_id: documentTypeId,
+        program_slug: programSlug,
+        file_name: file.name,
+        file_url: urlData.publicUrl,
+        file_size_bytes: file.size,
+        mime_type: file.type,
+        status: 'pending',
+        uploaded_at: new Date().toISOString(),
+      })
+      .select()
+      .single();
+
+    if (recordError) {
+      console.error('[Documents API] Record error:', recordError);
+      return NextResponse.json({ error: 'Failed to save document record' }, { status: 500 });
+    }
+
+    return NextResponse.json({ 
+      success: true, 
+      document: docRecord 
+    });
+  } catch (error) {
+    console.error('[Documents API] Error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
+
+/**
+ * DELETE /api/apprentice/documents
+ * Delete a document
+ */
+export async function DELETE(request: NextRequest) {
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const docId = searchParams.get('id');
+
+    if (!docId) {
+      return NextResponse.json({ error: 'Document ID required' }, { status: 400 });
+    }
+
+    // Get document to verify ownership and get file path
+    const { data: doc } = await supabase
+      .from('apprentice_documents')
+      .select('*')
+      .eq('id', docId)
+      .eq('student_id', user.id)
+      .single();
+
+    if (!doc) {
+      return NextResponse.json({ error: 'Document not found' }, { status: 404 });
+    }
+
+    // Don't allow deleting approved documents
+    if (doc.status === 'approved') {
+      return NextResponse.json({ error: 'Cannot delete approved documents' }, { status: 400 });
+    }
+
+    // Delete from storage (extract path from URL)
+    const urlParts = doc.file_url.split('/documents/');
+    if (urlParts.length > 1) {
+      await supabase.storage.from('documents').remove([urlParts[1]]);
+    }
+
+    // Delete record
+    const { error } = await supabase
+      .from('apprentice_documents')
+      .delete()
+      .eq('id', docId);
+
+    if (error) {
+      console.error('[Documents API] Delete error:', error);
+      return NextResponse.json({ error: 'Failed to delete document' }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('[Documents API] Error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}

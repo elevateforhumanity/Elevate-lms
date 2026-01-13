@@ -6,6 +6,7 @@ import {
   CheckCircle,
   XCircle,
 } from 'lucide-react';
+import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
 
 export const metadata: Metadata = {
   title:
@@ -292,6 +293,13 @@ export default function CosmetologyApprenticeshipPage() {
           </div>
         </div>
       </section>
+
+      {/* Host Shop Requirements Section */}
+      <HostShopRequirements 
+        programTrack="cosmetology" 
+        showApprovalProcess={true}
+        showMultiRegion={true}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-fuchsia-600">

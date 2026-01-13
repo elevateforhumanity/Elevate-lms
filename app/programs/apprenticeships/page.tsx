@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { programs } from '@/app/data/programs';
 import { Briefcase, Clock, DollarSign, Award } from 'lucide-react';
+import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
 
 export const metadata: Metadata = {
   title:
@@ -191,6 +192,13 @@ export default function ApprenticeshipProgramsPage() {
           </div>
         </div>
       </section>
+
+      {/* Host Shop Requirements - All Tracks */}
+      <HostShopRequirements 
+        programTrack="all" 
+        showApprovalProcess={true}
+        showMultiRegion={true}
+      />
 
       {/* CTA */}
       <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20">

@@ -17,12 +17,53 @@
  * - Employer (barbershop) coordination and OJT verification
  * - Program monitoring and completion documentation
  * - Related Instruction: Milady theory curriculum
+ * - Indiana IPLA State Board Exam Fee ($50)
  * 
  * THE $4,980 FEE DOES NOT COVER:
  * - Practical hands-on barber skills training
  * - State licensure-required instructional hours
  * - Barber school enrollment
  */
+
+// Indiana IPLA Exam Fees (included in program price)
+export const IPLA_EXAM_FEES: Record<string, number> = {
+  'barber-apprenticeship': 50,
+  'cosmetology-apprenticeship': 50,
+  'esthetician-apprenticeship': 50,
+  'nail-technician-apprenticeship': 50,
+};
+
+// IPLA Exam URLs
+export const IPLA_EXAM_INFO = {
+  barber: {
+    boardUrl: 'https://www.in.gov/pla/professions/barber-board/',
+    examUrl: 'https://www.in.gov/pla/professions/barber-board/barber-examination/',
+    applicationUrl: 'https://mylicense.in.gov/',
+    examProvider: 'PSI Services',
+    examProviderUrl: 'https://candidate.psiexams.com/',
+  },
+  cosmetology: {
+    boardUrl: 'https://www.in.gov/pla/professions/cosmetology-board/',
+    examUrl: 'https://www.in.gov/pla/professions/cosmetology-board/cosmetology-examination/',
+    applicationUrl: 'https://mylicense.in.gov/',
+    examProvider: 'PSI Services',
+    examProviderUrl: 'https://candidate.psiexams.com/',
+  },
+  esthetician: {
+    boardUrl: 'https://www.in.gov/pla/professions/cosmetology-board/',
+    examUrl: 'https://www.in.gov/pla/professions/cosmetology-board/esthetician-examination/',
+    applicationUrl: 'https://mylicense.in.gov/',
+    examProvider: 'PSI Services',
+    examProviderUrl: 'https://candidate.psiexams.com/',
+  },
+  nail: {
+    boardUrl: 'https://www.in.gov/pla/professions/cosmetology-board/',
+    examUrl: 'https://www.in.gov/pla/professions/cosmetology-board/manicurist-examination/',
+    applicationUrl: 'https://mylicense.in.gov/',
+    examProvider: 'PSI Services',
+    examProviderUrl: 'https://candidate.psiexams.com/',
+  },
+};
 
 export interface ProgramPaymentConfig {
   id: string;
@@ -60,6 +101,8 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'Employer (barbershop) coordination and OJT verification',
       'Program monitoring and completion documentation',
       'Related Instruction: Milady theory curriculum',
+      'Indiana IPLA State Board Exam Fee included',
+      'Indiana IPLA State Board Exam Fee included ($50)',
       'AI instructor support 24/7',
     ],
     notIncluded: [
@@ -90,6 +133,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'Employer (salon) coordination and OJT verification',
       'Program monitoring and completion documentation',
       'Related Instruction: Milady theory curriculum',
+      'Indiana IPLA State Board Exam Fee included',
       'AI instructor support 24/7',
     ],
     notIncluded: [
@@ -119,6 +163,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'Employer (spa/salon) coordination and OJT verification',
       'Program monitoring and completion documentation',
       'Related Instruction: Milady theory curriculum',
+      'Indiana IPLA State Board Exam Fee included',
       'AI instructor support 24/7',
     ],
     notIncluded: [
@@ -148,6 +193,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'Employer (salon) coordination and OJT verification',
       'Program monitoring and completion documentation',
       'Related Instruction: Milady theory curriculum',
+      'Indiana IPLA State Board Exam Fee included',
       'AI instructor support 24/7',
     ],
     notIncluded: [

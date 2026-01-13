@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import { ArrowRight, Clock, DollarSign, Award, CheckCircle } from 'lucide-react';
+import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
 
 export const metadata: Metadata = {
   title: 'Beauty Industry Apprenticeships | Barber, Cosmetology, Esthetics, Nails',
@@ -186,6 +187,13 @@ export default function BeautyProgramsPage() {
           </div>
         </div>
       </section>
+
+      {/* Host Shop Requirements - All Tracks */}
+      <HostShopRequirements 
+        programTrack="all" 
+        showApprovalProcess={true}
+        showMultiRegion={true}
+      />
 
       {/* Important Notice */}
       <section className="py-12 bg-amber-50 border-y border-amber-200">

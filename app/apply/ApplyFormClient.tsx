@@ -7,6 +7,14 @@ import Image from 'next/image';
 import { ApprenticeshipBadge } from '@/components/programs/ApprenticeshipBadge';
 import { ComplianceNotice } from '@/components/compliance/ComplianceNotice';
 import { getPoliciesForFeature } from '@/lib/policies';
+import { ApprenticeshipShopFields, type ShopFormData } from '@/components/forms/ApprenticeshipShopFields';
+
+const APPRENTICESHIP_PROGRAMS = [
+  'barber-apprenticeship',
+  'cosmetology-apprenticeship',
+  'esthetician-apprenticeship',
+  'nail-technician-apprenticeship',
+];
 
 export default function ApplyFormClient() {
   const [programParam, setProgramParam] = useState<string>('');
@@ -19,9 +27,27 @@ export default function ApplyFormClient() {
     message: '',
     state_code: 'IN',
   });
+
+  const [shopData, setShopData] = useState<ShopFormData>({
+    trainingRegion: 'indiana',
+    trainingRegionOther: '',
+    programTrack: '',
+    shopName: '',
+    shopAddress: '',
+    shopPhone: '',
+    ownerManagerName: '',
+    supervisorName: '',
+    supervisorLicenseType: '',
+    shopAcknowledgment: false,
+    regionAcknowledgment: false,
+  });
+
+  const [shopErrors, setShopErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('idle');
+
+  const isApprenticeshipProgram = APPRENTICESHIP_PROGRAMS.includes(formData.program);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -29,11 +55,71 @@ export default function ApplyFormClient() {
     if (program) {
       setProgramParam(program);
       setFormData((prev) => ({ ...prev, program }));
+      // Set program track based on program
+      if (program.includes('barber')) {
+        setShopData((prev) => ({ ...prev, programTrack: 'barber' }));
+      } else if (program.includes('cosmetology')) {
+        setShopData((prev) => ({ ...prev, programTrack: 'cosmetology' }));
+      } else if (program.includes('esthetician')) {
+        setShopData((prev) => ({ ...prev, programTrack: 'esthetician' }));
+      } else if (program.includes('nail')) {
+        setShopData((prev) => ({ ...prev, programTrack: 'nail-technician' }));
+      }
     }
   }, []);
 
+  const validateShopData = (): boolean => {
+    const errors: Record<string, string> = {};
+    
+    if (!shopData.trainingRegion) {
+      errors.trainingRegion = 'Training region is required';
+    }
+    if (shopData.trainingRegion === 'other' && !shopData.trainingRegionOther.trim()) {
+      errors.trainingRegionOther = 'Please specify your state/region';
+    }
+    if (!shopData.programTrack) {
+      errors.programTrack = 'Program track is required';
+    }
+    if (!shopData.shopName.trim()) {
+      errors.shopName = 'Shop name is required';
+    }
+    if (!shopData.shopAddress.trim()) {
+      errors.shopAddress = 'Shop address is required';
+    }
+    if (!shopData.shopPhone.trim()) {
+      errors.shopPhone = 'Shop phone is required';
+    }
+    if (!shopData.ownerManagerName.trim()) {
+      errors.ownerManagerName = 'Owner/manager name is required';
+    }
+    if (!shopData.supervisorName.trim()) {
+      errors.supervisorName = 'Supervisor name is required';
+    }
+    if (!shopData.supervisorLicenseType) {
+      errors.supervisorLicenseType = 'Supervisor license type is required';
+    }
+    if (!shopData.regionAcknowledgment) {
+      errors.regionAcknowledgment = 'You must acknowledge the region requirements';
+    }
+    if (!shopData.shopAcknowledgment) {
+      errors.shopAcknowledgment = 'You must acknowledge the shop requirements';
+    }
+
+    setShopErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate shop data for apprenticeship programs
+    if (isApprenticeshipProgram && !validateShopData()) {
+      // Scroll to first error
+      const firstError = document.querySelector('[class*="border-red"]');
+      firstError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    
     setStatus('loading');
 
     try {
@@ -48,6 +134,19 @@ export default function ApplyFormClient() {
           program: formData.program,
           message: formData.message,
           state_code: formData.state_code,
+          // Include shop data for apprenticeship programs
+          ...(isApprenticeshipProgram && {
+            training_region: shopData.trainingRegion === 'other' 
+              ? shopData.trainingRegionOther 
+              : shopData.trainingRegion,
+            program_track: shopData.programTrack,
+            shop_name: shopData.shopName,
+            shop_address: shopData.shopAddress,
+            shop_phone: shopData.shopPhone,
+            owner_manager_name: shopData.ownerManagerName,
+            supervisor_name: shopData.supervisorName,
+            supervisor_license_type: shopData.supervisorLicenseType,
+          }),
         }),
       });
 
@@ -248,20 +347,34 @@ export default function ApplyFormClient() {
                 <select
                   id="program"
                   value={formData.program}
-                  onChange={(e) =>
-                    setFormData({ ...formData, program: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setFormData({ ...formData, program: e.target.value });
+                    // Auto-set program track for apprenticeship programs
+                    if (e.target.value.includes('barber')) {
+                      setShopData((prev) => ({ ...prev, programTrack: 'barber' }));
+                    } else if (e.target.value.includes('cosmetology')) {
+                      setShopData((prev) => ({ ...prev, programTrack: 'cosmetology' }));
+                    } else if (e.target.value.includes('esthetician')) {
+                      setShopData((prev) => ({ ...prev, programTrack: 'esthetician' }));
+                    } else if (e.target.value.includes('nail')) {
+                      setShopData((prev) => ({ ...prev, programTrack: 'nail-technician' }));
+                    }
+                  }}
                   className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 >
                   <option value="">Select a program...</option>
-                  <optgroup label="Main Programs">
-                    <option value="barber">Barber Apprenticeship</option>
+                  <optgroup label="Beauty Industry Apprenticeships">
+                    <option value="barber-apprenticeship">Barber Apprenticeship</option>
+                    <option value="cosmetology-apprenticeship">Cosmetology Apprenticeship</option>
+                    <option value="esthetician-apprenticeship">Esthetician Apprenticeship</option>
+                    <option value="nail-technician-apprenticeship">Nail Technician Apprenticeship</option>
+                  </optgroup>
+                  <optgroup label="Other Programs">
                     <option value="dsp">
                       Direct Support Professional (DSP)
                     </option>
                     <option value="hvac">HVAC Technician</option>
                     <option value="ehst">Emergency Health & Safety Tech</option>
-                    <option value="esth">Professional Esthetician</option>
                     <option value="prc">Peer Recovery Coach</option>
                     <option value="tax">Tax Prep & Financial Services</option>
                     <option value="biz">Business Startup & Marketing</option>
@@ -278,12 +391,23 @@ export default function ApplyFormClient() {
                 </select>
               </div>
 
+              {/* Apprenticeship Shop Fields - Only show for apprenticeship programs */}
+              {isApprenticeshipProgram && (
+                <div className="border-t border-slate-200 pt-6 mt-6">
+                  <ApprenticeshipShopFields
+                    formData={shopData}
+                    onChange={(data) => setShopData((prev) => ({ ...prev, ...data }))}
+                    errors={shopErrors}
+                  />
+                </div>
+              )}
+
               <div>
                 <label
                   htmlFor="message"
                   className="block text-sm font-semibold text-black mb-2"
                 >
-                  Message
+                  Additional Message
                 </label>
                 <textarea
                   id="message"
