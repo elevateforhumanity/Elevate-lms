@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Supersonic Fast Cash Portal | Elevate For Humanity',
+  description: 'Elevate For Humanity - Supersonic Fast Cash Portal page',
+};
+
 import { logger } from '@/lib/logger';
 export const dynamic = 'force-dynamic';
 import { redirect } from 'next/navigation';

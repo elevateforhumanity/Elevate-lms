@@ -61,7 +61,7 @@ export class AdaptiveStreamingManager {
    * Get network information
    */
   private getNetworkInfo(): any {
-    const nav = navigator as unknown;
+    const nav = navigator as any;
     return nav.connection || nav.mozConnection || nav.webkitConnection || {};
   }
 
@@ -170,7 +170,7 @@ export function estimateDataUsage(
  * Check if device is on metered connection
  */
 export function isMeteredConnection(): boolean {
-  const connection = (navigator as unknown).connection;
+  const connection = (navigator as any).connection;
   if (!connection) return false;
 
   return (
@@ -184,8 +184,8 @@ export function isMeteredConnection(): boolean {
  * Get recommended buffer size based on network
  */
 export function getRecommendedBufferSize(): number {
-  const connection = (navigator as unknown).connection;
-  if (!connection) return 30; // Default 30 seconds
+  const connection = (navigator as any).connection;
+  if (!connection) return 30;
 
   const effectiveType = connection.effectiveType;
 

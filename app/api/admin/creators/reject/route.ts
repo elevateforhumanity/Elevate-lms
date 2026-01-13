@@ -147,11 +147,6 @@ export async function POST(req: Request) {
     }
 
     // 10. Success response
-    console.log('[Creator Rejection] Success', {
-      creatorId,
-      rejectedBy: user.id,
-      emailSent,
-    });
 
     return NextResponse.json({
       success: true,

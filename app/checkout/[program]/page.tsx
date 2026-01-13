@@ -74,9 +74,7 @@ export default function CheckoutPage() {
       
       script.onload = () => {
         if (window.affirm) {
-          window.affirm.ui.ready(() => {
-            console.log('Affirm loaded');
-          });
+          window.affirm.ui.ready(() => {});
         }
       };
       

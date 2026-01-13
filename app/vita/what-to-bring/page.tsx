@@ -1,3 +1,11 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Vita What To Bring | Elevate For Humanity',
+  description: 'Elevate For Humanity - Vita What To Bring page',
+  alternates: { canonical: 'https://elevateforhumanity.institute/vita/what-to-bring' },
+};
+
 import { FileText, CreditCard, Users, Home, CheckCircle } from 'lucide-react';
 
 export default function WhatToBringPage() {

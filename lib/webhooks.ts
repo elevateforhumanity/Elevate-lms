@@ -407,7 +407,7 @@ export async function getWebhookStats(webhookId: string): Promise<{
 /**
  * Trigger user created webhook
  */
-export async function triggerUserCreated(data: unknown): Promise<void> {
+export async function triggerUserCreated(userId: string, userData: Record<string, unknown> = {}): Promise<void> {
   await triggerWebhook('user.created', {
     user_id: userId,
     ...userData,
@@ -451,7 +451,7 @@ export async function triggerEnrollmentCompleted(
  */
 export async function triggerCoursePublished(
   courseId: string,
-  courseData: unknown
+  courseData: Record<string, unknown> = {}
 ): Promise<void> {
   await triggerWebhook('course.published', {
     course_id: courseId,

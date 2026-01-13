@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Reset Done | Elevate For Humanity',
+  description: 'Elevate For Humanity - Reset Done page',
+};
+
 export default function ResetDonePage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">

@@ -1,3 +1,11 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Apprentice Hours | Elevate For Humanity',
+  description: 'Elevate For Humanity - Apprentice Hours page',
+  alternates: { canonical: 'https://elevateforhumanity.institute/apprentice/hours' },
+};
+
 
 
 "use client";

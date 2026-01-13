@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Courses Dynamic Quiz Take | Elevate For Humanity',
+  description: 'Elevate For Humanity - Courses Dynamic Quiz Take page',
+};
+
 
 
 "use client";

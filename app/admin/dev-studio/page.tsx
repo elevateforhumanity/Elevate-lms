@@ -403,7 +403,7 @@ export default function DevStudioPage() {
 
         {/* Preview Panel */}
         <div className="w-96 border-l border-slate-700">
-          <PreviewPanel url="http://localhost:3000" filePath={selectedFile} />
+          <PreviewPanel url={process.env.NEXT_PUBLIC_SITE_URL || ''} filePath={selectedFile} />
         </div>
 
         {/* CTA Section */}

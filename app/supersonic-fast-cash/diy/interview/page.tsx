@@ -1,3 +1,10 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Supersonic Fast Cash Diy Interview | Elevate For Humanity',
+  description: 'Elevate For Humanity - Supersonic Fast Cash Diy Interview page',
+};
+
 import Link from 'next/link';
 
 export default function DIYInterviewPage() {

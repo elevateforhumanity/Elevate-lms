@@ -17,7 +17,7 @@ export default function PartnerAttendancePage() {
   const supabase = createClient();
   const [shopId, setShopId] = useState<string>('');
   const [weekStart, setWeekStart] = useState<string>(startOfWeek(new Date()));
-  const [rows, setRows] = useState<unknown[]>([]);
+  const [rows, setRows] = useState<any[]>([]);
   const [msg, setMsg] = useState<string | null>(null);
 
   useEffect(() => {
