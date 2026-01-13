@@ -69,17 +69,17 @@ export async function POST(req: Request) {
     const supabase = createAdminClient();
 
     // Split name into first/last for marketing_contacts table
-    const nameParts = data.name.trim().split(' ');
-    const firstName = nameParts[0] || data.name;
+    const nameParts = data.name.trim().split(/\s+/);
+    const firstName = nameParts[0] || '';
     const lastName = nameParts.slice(1).join(' ') || '';
-
+    
     const { error: dbError } = await supabase
       .from('marketing_contacts')
       .insert({
-        email: data.email,
         first_name: firstName,
         last_name: lastName,
-        tags: [data.role || 'contact-form', data.program || data.interest || 'general'].filter(Boolean),
+        email: data.email,
+        tags: ['contact_form', data.role || 'general', data.program || data.interest || 'inquiry'].filter(Boolean),
       });
 
     if (dbError) {
@@ -135,7 +135,7 @@ async function sendEmailNotification(data: z.infer<typeof ContactSchema>) {
         <p><em>Submitted from elevateforhumanity.institute</em></p>
       `,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     logger.error('Failed to send email notification:', error);
     throw error;
   }

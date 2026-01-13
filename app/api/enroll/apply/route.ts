@@ -5,6 +5,7 @@ export const maxDuration = 60;
 import { NextResponse } from 'next/server';
 import { logger } from '@/lib/logger';
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { orchestrateEnrollment } from '@/lib/enrollment/orchestrate-enrollment';
 import {
   sendApplicationConfirmation,
@@ -65,15 +66,17 @@ export async function POST(req: Request) {
 
     // If no authenticated user, create a lead record
     if (!studentId) {
+      // Use admin client to bypass RLS for public form submission
+      const adminClient = createAdminClient();
+      
       // Store as partner inquiry for now (can be migrated to dedicated applications table)
-      const { data: inquiry, error: inquiryError } = await supabase
+      const { data: inquiry, error: inquiryError } = await adminClient
         .from('partner_inquiries')
         .insert({
           name: `${body.firstName} ${body.lastName}`,
           email: body.email,
           phone: body.phone || null,
-          message: `Application for program: ${body.preferredProgramId}`,
-          inquiry_type: 'student_application',
+          message: `Student Application - Program: ${body.preferredProgramId}`,
           status: 'new',
         })
         .select()

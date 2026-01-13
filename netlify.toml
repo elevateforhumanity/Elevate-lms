@@ -4,7 +4,7 @@
 
 [build]
   command = "bash scripts/netlify-build.sh"
-  publish = ".next"
+  # publish directory is handled by @netlify/plugin-nextjs
   
 [build.environment]
   NODE_VERSION = "20.11.1"
@@ -136,9 +136,7 @@
 # Edge Functions for API routes (optional - Next.js handles this)
 # Netlify automatically routes /api/* to Next.js API routes
 
-# Function timeout for long-running operations
+# Function configuration
 [functions]
   node_bundler = "esbuild"
-  
-[functions."api/*"]
-  included_files = ["node_modules/**"]
+  directory = "netlify/functions"

@@ -31,17 +31,23 @@ export const POST = withRateLimit(
       const { program, funding, name, email, phone } = validatedData;
       const eligible = funding !== 'Self Pay' && program !== 'Not Sure';
 
+      // Split name into first and last
+      const nameParts = name.trim().split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+
       const supabase = createAdminClient();
     
       const { error } = await supabase.from('applications').insert({
-        name,
+        first_name: firstName,
+        last_name: lastName,
         email,
         phone,
-        program,
-        funding,
-        eligible,
-        notes: eligible ? 'Prescreen pass' : 'Manual review',
-        created_at: new Date().toISOString(),
+        city: 'Indianapolis',
+        zip: '46208',
+        program_interest: program,
+        status: 'pending',
+        support_notes: `Funding: ${funding}. ${eligible ? 'Prescreen pass' : 'Manual review'}`,
       });
 
     if (error) {

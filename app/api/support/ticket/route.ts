@@ -1,11 +1,12 @@
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const maxDuration = 60;
 
 // app/api/support/ticket/route.ts
 import { NextResponse } from 'next/server';
-import { parseBody, getErrorMessage } from '@/lib/api-helpers';
 import { requireAuth } from '@/lib/auth/getSession';
 import { createZendeskTicket } from '@/lib/support/zendesk';
+import { createAdminClient } from '@/lib/supabase/admin';
+import { logger } from '@/lib/logger';
 
 export async function POST(request: Request) {
   const session = await requireAuth();
@@ -19,13 +20,36 @@ export async function POST(request: Request) {
   }
 
   const email = session.user?.email as string;
+  const userId = session.user?.id;
 
-  await createZendeskTicket({
-    requesterEmail: email,
-    subject,
-    body: message,
-    tags: ['elevate_lms', 'in_app'],
-  });
+  // Save to Supabase for internal tracking
+  const supabase = createAdminClient();
+  const { error: dbError } = await supabase
+    .from('customer_service_tickets')
+    .insert({
+      student_id: userId,
+      subject: subject,
+      description: message,
+      status: 'open',
+      priority: 'normal',
+      category: 'general',
+    });
+
+  if (dbError) {
+    logger.error('Error saving support ticket to database:', dbError);
+  }
+
+  // Also try Zendesk if configured
+  try {
+    await createZendeskTicket({
+      requesterEmail: email,
+      subject,
+      body: message,
+      tags: ['elevate_lms', 'in_app'],
+    });
+  } catch (err) {
+    logger.warn('Zendesk ticket creation failed (may not be configured):', err);
+  }
 
   return NextResponse.json({ ok: true });
 }
