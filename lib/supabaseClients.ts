@@ -1,29 +1,56 @@
 // lib/supabaseClients.ts
-import { createClient } from "@supabase/supabase-js";
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+// Lazy initialization to avoid build-time errors
+let clientSupabase: SupabaseClient | null = null;
+let serverSupabase: SupabaseClient | null = null;
+let adminSupabase: SupabaseClient | null = null;
 
-// 👇 For client-side components (React hooks, etc.)
+function getEnvVars() {
+  return {
+    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL || "",
+    supabaseAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "",
+    serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || "",
+  };
+}
+
+// For client-side components (React hooks, etc.)
 export function getClientSupabase() {
+  const { supabaseUrl, supabaseAnonKey } = getEnvVars();
   if (!supabaseUrl || !supabaseAnonKey) {
     return null;
   }
-  return createClient(supabaseUrl, supabaseAnonKey);
+  if (!clientSupabase) {
+    clientSupabase = createClient(supabaseUrl, supabaseAnonKey);
+  }
+  return clientSupabase;
 }
 
-// 👇 For server components (App Router `async` page components)
+// For server components (App Router async page components)
 export function getServerSupabase() {
+  const { supabaseUrl, supabaseAnonKey } = getEnvVars();
   if (!supabaseUrl || !supabaseAnonKey) {
     return null;
   }
-  return createClient(supabaseUrl, supabaseAnonKey);
+  if (!serverSupabase) {
+    serverSupabase = createClient(supabaseUrl, supabaseAnonKey);
+  }
+  return serverSupabase;
 }
 
-// 👇 For admin / backend API routes only (service role key 🔐)
-export const supabaseAdmin = supabaseUrl && serviceRoleKey
-  ? createClient(supabaseUrl, serviceRoleKey, {
+// For admin / backend API routes only (service role key)
+export function getAdminSupabase() {
+  const { supabaseUrl, serviceRoleKey } = getEnvVars();
+  if (!supabaseUrl || !serviceRoleKey) {
+    return null;
+  }
+  if (!adminSupabase) {
+    adminSupabase = createClient(supabaseUrl, serviceRoleKey, {
       auth: { persistSession: false },
-    })
-  : null;
+    });
+  }
+  return adminSupabase;
+}
+
+// Legacy export for backward compatibility
+export const supabaseAdmin = null; // Use getAdminSupabase() instead
