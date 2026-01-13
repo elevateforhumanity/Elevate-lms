@@ -1,4 +1,5 @@
 export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 // app/api/tax-filing/applications/route.ts

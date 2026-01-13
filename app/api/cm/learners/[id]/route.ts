@@ -1,5 +1,6 @@
 // @ts-nocheck
 export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 // app/api/cm/learners/[id]/route.ts - Get learner details for case manager

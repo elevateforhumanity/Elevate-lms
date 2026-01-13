@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { generateMOUPDF } from '@/lib/pdf/generator';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {

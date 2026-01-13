@@ -1,5 +1,6 @@
 // @ts-nocheck
 export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';

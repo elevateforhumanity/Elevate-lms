@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 
 export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 import { NextResponse } from 'next/server';
 import { toError, toErrorMessage } from '@/lib/safe';

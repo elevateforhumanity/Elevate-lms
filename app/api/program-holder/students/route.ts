@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { getProgramHolderStudents } from '@/lib/program-holder-access';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {

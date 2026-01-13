@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 import { sendPayoutConfirmationEmail } from '@/lib/email/resend';
 import { createClient } from '@supabase/supabase-js';

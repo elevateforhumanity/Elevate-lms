@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 // Using Node.js runtime for email compatibility
 export const maxDuration = 60;
 

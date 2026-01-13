@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 import { generateId, generateShortId } from '@/lib/utils/id-generator';
 import { NextRequest, NextResponse } from 'next/server';

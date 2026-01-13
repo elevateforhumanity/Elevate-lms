@@ -1,6 +1,7 @@
 import { hashLicenseKey, isValidLicenseKeyFormat } from '@/lib/store/license';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';

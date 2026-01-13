@@ -32,4 +32,5 @@ export const GET = withErrorHandling(async (request: NextRequest) => {
 });
 
 export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 export const maxDuration = 60;

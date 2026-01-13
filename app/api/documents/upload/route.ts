@@ -3,6 +3,7 @@ import { withErrorHandling, APIErrors, ErrorCode } from '@/lib/api';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 export const POST = withErrorHandling(async (request: NextRequest) => {

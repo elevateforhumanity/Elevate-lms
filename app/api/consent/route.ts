@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { recordConsent, getUserConsents, ConsentType } from '@/lib/consent';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
