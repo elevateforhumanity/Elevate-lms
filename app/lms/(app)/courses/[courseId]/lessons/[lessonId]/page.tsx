@@ -55,7 +55,7 @@ export default function LessonPage() {
       .from('lessons')
       .select('*')
       .eq('course_id', courseId)
-      .order('order_number');
+      .order('order_index');
 
     // Fetch course info
     const { data: courseData } = await supabase
@@ -104,46 +104,36 @@ export default function LessonPage() {
   };
 
   const markComplete = async () => {
-    const { createClient } = await import('@/lib/supabase/client');
-    const supabase = createClient();
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    if (!user) return;
-
     const newStatus = !isCompleted;
     setIsCompleted(newStatus);
 
-    // Update lesson progress
-    await supabase.from('lesson_progress').upsert({
-      user_id: user.id,
-      lesson_id: lessonId,
-      course_id: courseId,
-      completed: newStatus,
-      completed_at: newStatus ? new Date().toISOString() : null,
-    });
+    try {
+      if (newStatus) {
+        // Mark as complete via API
+        const response = await fetch(`/api/lessons/${lessonId}/complete`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ timeSpentSeconds: 0 }),
+        });
 
-    // Update enrollment progress
-    if (newStatus) {
-      const { data: enrollment } = await supabase
-        .from('enrollments')
-        .select('progress')
-        .eq('user_id', user.id)
-        .eq('course_id', courseId)
-        .single();
+        if (!response.ok) {
+          setIsCompleted(false);
+          console.error('Failed to mark lesson complete');
+        }
+      } else {
+        // Mark as incomplete via API
+        const response = await fetch(`/api/lessons/${lessonId}/complete`, {
+          method: 'DELETE',
+        });
 
-      if (enrollment) {
-        const newProgress = Math.min(
-          100,
-          enrollment.progress + 100 / lessons.length
-        );
-        await supabase
-          .from('enrollments')
-          .update({ progress: newProgress })
-          .eq('user_id', user.id)
-          .eq('course_id', courseId);
+        if (!response.ok) {
+          setIsCompleted(true);
+          console.error('Failed to mark lesson incomplete');
+        }
       }
+    } catch (error) {
+      setIsCompleted(!newStatus);
+      console.error('Error updating lesson status:', error);
     }
   };
 
