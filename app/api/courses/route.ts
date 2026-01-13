@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
@@ -18,12 +18,12 @@ export async function GET() {
       .order('created_at', { ascending: false });
 
     if (error) {
-      return NextResponse.json({ error: toErrorMessage(error), courses: [] }, { status: 200 });
+      return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
     }
 
     return NextResponse.json({ courses: courses || [], total: courses?.length || 0 });
-  } catch { /* Error handled silently */ 
-    return NextResponse.json({ error: toErrorMessage(error), courses: [] }, { status: 200 });
+  } catch (error: any) {
+    return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }
 
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(newCourse, { status: 201 });
-  } catch { /* Error handled silently */ 
+  } catch (error: any) {
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

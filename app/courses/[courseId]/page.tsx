@@ -1,14 +1,34 @@
 import { Metadata } from 'next';
 export const dynamic = 'force-dynamic';
-import { generateMetadata } from '@/lib/seo/metadata';
-
-export const metadata: Metadata = generateMetadata({
-  title: 'Courses [CourseId]',
-  description: 'Courses [CourseId] - Elevate for Humanity workforce training and career development programs in Indianapolis.',
-  path: '/courses/[courseId]',
-});
-
 import { createClient } from '@/lib/supabase/server';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { courseId: string };
+}): Promise<Metadata> {
+  const supabase = await createClient();
+  const { data: course } = await supabase
+    .from('courses')
+    .select('title, description')
+    .eq('id', params.courseId)
+    .single();
+
+  if (!course) {
+    return {
+      title: 'Course Not Found | Elevate for Humanity',
+      description: 'The requested course could not be found.',
+    };
+  }
+
+  return {
+    title: `${course.title} | Elevate for Humanity`,
+    description: course.description || `Learn ${course.title} with Elevate for Humanity workforce training programs.`,
+    alternates: {
+      canonical: `https://elevateforhumanity.institute/courses/${params.courseId}`,
+    },
+  };
+}
 import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';

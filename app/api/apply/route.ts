@@ -45,8 +45,6 @@ export const POST = withRateLimit(
         last_name: lastName,
         email,
         phone,
-        city: 'Indianapolis',
-        zip: '46208',
         program_interest: program,
         status: 'pending',
         support_notes: `Funding: ${funding}. ${eligible ? 'Prescreen pass' : 'Manual review'}`,

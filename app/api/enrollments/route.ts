@@ -21,11 +21,11 @@ export async function GET(request: Request) {
       .select(
         `
         id,
-        student_id,
+        user_id,
         course_id,
         status,
-        progress_percentage,
-        enrolled_at,
+        progress,
+        started_at,
         completed_at,
         courses (
           id,
@@ -35,8 +35,8 @@ export async function GET(request: Request) {
         )
       `
       )
-      .eq('student_id', user.id)
-      .order('enrolled_at', { ascending: false });
+      .eq('user_id', user.id)
+      .order('started_at', { ascending: false });
 
     if (error) {
       return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
@@ -68,7 +68,7 @@ export async function POST(request: Request) {
     const { data: existing } = await supabase
       .from('enrollments')
       .select('id')
-      .eq('student_id', user.id)
+      .eq('user_id', user.id)
       .eq('course_id', courseId)
       .single();
 
@@ -83,11 +83,11 @@ export async function POST(request: Request) {
     const { data: enrollment, error } = await supabase
       .from('enrollments')
       .insert({
-        student_id: user.id,
+        user_id: user.id,
         course_id: courseId,
         status: 'active',
-        progress_percentage: 0,
-        enrolled_at: new Date().toISOString(),
+        progress: 0,
+        started_at: new Date().toISOString(),
       })
       .select()
       .single();

@@ -1,4 +1,4 @@
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
         course_id: courseId,
         status: 'active',
         progress: 0,
-        enrolled_at: new Date().toISOString(),
+        started_at: new Date().toISOString(),
       })
       .select()
       .single();

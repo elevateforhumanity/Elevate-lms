@@ -81,15 +81,9 @@ export async function completeEnrollment(data: EnrollmentData): Promise<Enrollme
       .insert({
         user_id: data.userId,
         course_id: data.courseId,
-        program_id: data.programId,
         status: 'active',
         progress: 0,
-        enrolled_at: new Date().toISOString(),
-        start_date: data.startDate?.toISOString(),
-        end_date: data.endDate?.toISOString(),
-        payment_status: data.paymentStatus || 'pending',
-        payment_amount: data.paymentAmount,
-        payment_method: data.paymentMethod,
+        started_at: new Date().toISOString(),
       })
       .select('id')
       .single();
