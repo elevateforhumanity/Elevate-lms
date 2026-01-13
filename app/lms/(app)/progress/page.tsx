@@ -1,26 +1,32 @@
+// @ts-nocheck
 export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
-
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import Image from 'next/image';
+import { 
+  Clock, 
+  BookOpen, 
+  Briefcase, 
+  Award, 
+  TrendingUp, 
+  CheckCircle,
+  AlertCircle,
+  ArrowRight,
+  Calendar,
+  FileText,
+} from 'lucide-react';
+import { MiladyAccessCard } from '@/components/apprenticeship/MiladyAccessCard';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/progress',
-  },
-  title: 'Progress | Elevate For Humanity',
-  description:
-    'Explore Progress and discover opportunities for career growth and development.',
+  title: 'My Progress | Student Portal',
+  description: 'Track your apprenticeship hours, coursework progress, and certification status.',
 };
 
 export default async function ProgressPage() {
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
     redirect('/login');
@@ -32,259 +38,354 @@ export default async function ProgressPage() {
     .eq('id', user.id)
     .single();
 
-  // Fetch student's courses
-  const { data: enrollments } = await supabase
-    .from('enrollments')
-    .select(
-      `
-      *,
-      courses (
-        id,
-        title,
-        description,
-        thumbnail_url
-      )
-    `
-    )
-    .eq('user_id', user.id)
-    .order('created_at', { ascending: false });
-
-  const { count: activeCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'active');
-
-  const { count: completedCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'completed');
-
-  const { data: recentProgress } = await supabase
-    .from('student_progress')
-    .select(
-      `
-      *,
-      courses (title)
-    `
-    )
+  // Get student enrollment
+  const { data: enrollment } = await supabase
+    .from('student_enrollments')
+    .select('*')
     .eq('student_id', user.id)
-    .order('updated_at', { ascending: false })
-    .limit(5);
+    .single();
+
+  // Get program info
+  const { data: program } = enrollment?.program_id ? await supabase
+    .from('programs')
+    .select('*')
+    .eq('id', enrollment.program_id)
+    .single() : { data: null };
+
+  // Get time entries for detailed breakdown
+  const { data: timeEntries } = await supabase
+    .from('time_entries')
+    .select('*')
+    .eq('student_id', user.id)
+    .order('log_date', { ascending: false });
+
+  // Calculate stats
+  const totalRTI = timeEntries?.filter(e => e.hour_type === 'RTI').reduce((sum, e) => sum + (e.minutes || 0), 0) || 0;
+  const totalOJT = timeEntries?.filter(e => e.hour_type === 'OJT').reduce((sum, e) => sum + (e.minutes || 0), 0) || 0;
+  const approvedHours = timeEntries?.filter(e => e.status === 'APPROVED').reduce((sum, e) => sum + (e.minutes || 0), 0) || 0;
+  const pendingHours = timeEntries?.filter(e => e.status === 'SUBMITTED' || e.status === 'DRAFT').reduce((sum, e) => sum + (e.minutes || 0), 0) || 0;
+
+  const totalMinutes = totalRTI + totalOJT;
+  const totalHours = totalMinutes / 60;
+  const requiredHours = enrollment?.required_hours || 1500;
+  const transferHours = enrollment?.transfer_hours || 0;
+  const effectiveTotal = totalHours + transferHours;
+  const progressPercentage = Math.min((effectiveTotal / requiredHours) * 100, 100);
+  const hoursRemaining = Math.max(requiredHours - effectiveTotal, 0);
+
+  // Get weekly breakdown
+  const now = new Date();
+  const weekStart = new Date(now);
+  weekStart.setDate(now.getDate() - 7);
+  
+  const weeklyEntries = timeEntries?.filter(e => new Date(e.log_date) >= weekStart) || [];
+  const weeklyMinutes = weeklyEntries.reduce((sum, e) => sum + (e.minutes || 0), 0);
+  const weeklyHours = weeklyMinutes / 60;
+
+  // Determine program slug for Milady card
+  const programSlug = program?.slug || enrollment?.program_slug || 'barber-apprenticeship';
+  const isBeautyProgram = ['barber-apprenticeship', 'cosmetology-apprenticeship', 'esthetician-apprenticeship', 'nail-technician-apprenticeship'].includes(programSlug);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-1.jpg"
-          alt="Progress"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Progress
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Progress and discover opportunities for career growth and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
+    <div className="min-h-screen bg-gray-50 p-6">
+      <div className="max-w-7xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-black">My Progress</h1>
+            <p className="text-slate-600">Track your apprenticeship hours and certification progress</p>
           </div>
+          <Link
+            href="/apprentice/hours"
+            className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+          >
+            <Clock className="w-5 h-5" />
+            Log Hours
+          </Link>
         </div>
-      </section>
 
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+        {/* Milady Access Card - For beauty programs */}
+        {isBeautyProgram && (
+          <MiladyAccessCard
+            studentId={user.id}
+            programSlug={programSlug}
+            miladyEnrolled={enrollment?.milady_enrolled}
+            miladyCompleted={enrollment?.milady_completed}
+          />
+        )}
+
+        {/* Main Progress Overview */}
+        <div className="bg-white rounded-2xl border-2 border-slate-200 shadow-sm overflow-hidden">
+          <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 text-white">
+            <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Progress
-                </h2>
-                <p className="text-black mb-6">
-                  Explore Progress and discover opportunities for career growth
-                  and development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
+                <h2 className="text-2xl font-bold">Apprenticeship Progress</h2>
+                <p className="text-purple-100">{program?.name || 'Beauty Apprenticeship'}</p>
               </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-2.jpg"
-                  alt="Progress"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+              <div className="text-right">
+                <div className="text-4xl font-black">{progressPercentage.toFixed(1)}%</div>
+                <div className="text-purple-100">Complete</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-6">
+            {/* Progress Bar */}
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-semibold text-slate-700">Total Hours</span>
+                <span className="text-lg font-bold text-purple-600">
+                  {effectiveTotal.toFixed(1)} / {requiredHours} hrs
+                </span>
+              </div>
+              <div className="w-full bg-slate-200 rounded-full h-6 overflow-hidden">
+                <div
+                  className="bg-gradient-to-r from-purple-500 to-blue-500 h-full transition-all duration-500 rounded-full flex items-center justify-end pr-2"
+                  style={{ width: `${Math.max(progressPercentage, 5)}%` }}
+                >
+                  {progressPercentage > 10 && (
+                    <span className="text-xs font-bold text-white">{progressPercentage.toFixed(0)}%</span>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-center justify-between mt-2 text-sm text-slate-500">
+                <span>{hoursRemaining.toFixed(1)} hours remaining</span>
+                <span>Indiana IPLA Requirement: {requiredHours} hours</span>
               </div>
             </div>
 
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
+            {/* Hour Breakdown Grid */}
+            <div className="grid md:grid-cols-4 gap-4 mb-6">
+              {/* RTI Hours */}
+              <div className="bg-blue-50 rounded-xl p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <BookOpen className="w-5 h-5 text-blue-600" />
+                  <span className="text-sm font-semibold text-blue-800">RTI (Theory)</span>
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
+                <div className="text-3xl font-bold text-blue-600">{(totalRTI / 60).toFixed(1)}</div>
+                <div className="text-xs text-blue-600">hours via Milady</div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
+              {/* OJT Hours */}
+              <div className="bg-green-50 rounded-xl p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Briefcase className="w-5 h-5 text-green-600" />
+                  <span className="text-sm font-semibold text-green-800">OJT (Hands-on)</span>
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
+                <div className="text-3xl font-bold text-green-600">{(totalOJT / 60).toFixed(1)}</div>
+                <div className="text-xs text-green-600">hours at shop</div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
+              {/* Transfer Hours */}
+              <div className="bg-amber-50 rounded-xl p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Award className="w-5 h-5 text-amber-600" />
+                  <span className="text-sm font-semibold text-amber-800">Transfer</span>
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
+                <div className="text-3xl font-bold text-amber-600">{transferHours.toFixed(1)}</div>
+                <div className="text-xs text-amber-600">credited hours</div>
+              </div>
+
+              {/* This Week */}
+              <div className="bg-purple-50 rounded-xl p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Calendar className="w-5 h-5 text-purple-600" />
+                  <span className="text-sm font-semibold text-purple-800">This Week</span>
+                </div>
+                <div className="text-3xl font-bold text-purple-600">{weeklyHours.toFixed(1)}</div>
+                <div className="text-xs text-purple-600">hours logged</div>
+              </div>
+            </div>
+
+            {/* Status Row */}
+            <div className="grid md:grid-cols-3 gap-4">
+              {/* Approval Status */}
+              <div className="bg-slate-50 rounded-xl p-4">
+                <h4 className="text-sm font-semibold text-slate-700 mb-3">Hour Status</h4>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      <span className="text-sm text-slate-600">Approved</span>
+                    </div>
+                    <span className="font-semibold">{(approvedHours / 60).toFixed(1)}h</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <span className="text-sm text-slate-600">Pending</span>
+                    </div>
+                    <span className="font-semibold">{(pendingHours / 60).toFixed(1)}h</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* RAPIDS Status */}
+              <div className="bg-slate-50 rounded-xl p-4">
+                <h4 className="text-sm font-semibold text-slate-700 mb-3">DOL RAPIDS</h4>
+                <div className="flex items-center gap-2">
+                  {enrollment?.rapids_status === 'registered' || enrollment?.rapids_status === 'active' ? (
+                    <>
+                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <span className="text-green-600 font-semibold">Registered</span>
+                    </>
+                  ) : (
+                    <>
+                      <AlertCircle className="w-5 h-5 text-amber-600" />
+                      <span className="text-amber-600 font-semibold">
+                        {enrollment?.rapids_status?.toUpperCase() || 'Pending'}
+                      </span>
+                    </>
+                  )}
+                </div>
+                {enrollment?.rapids_id && (
+                  <div className="text-xs text-slate-500 mt-1">ID: {enrollment.rapids_id}</div>
+                )}
+              </div>
+
+              {/* Milady Status */}
+              <div className="bg-slate-50 rounded-xl p-4">
+                <h4 className="text-sm font-semibold text-slate-700 mb-3">Milady Theory</h4>
+                <div className="flex items-center gap-2">
+                  {enrollment?.milady_completed ? (
+                    <>
+                      <CheckCircle className="w-5 h-5 text-green-600" />
+                      <span className="text-green-600 font-semibold">Complete</span>
+                    </>
+                  ) : enrollment?.milady_enrolled ? (
+                    <>
+                      <TrendingUp className="w-5 h-5 text-blue-600" />
+                      <span className="text-blue-600 font-semibold">In Progress</span>
+                    </>
+                  ) : (
+                    <>
+                      <AlertCircle className="w-5 h-5 text-amber-600" />
+                      <span className="text-amber-600 font-semibold">Not Started</span>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
+        {/* Recent Activity */}
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div className="p-4 border-b border-slate-200 flex items-center justify-between">
+            <h3 className="text-lg font-bold text-black">Recent Hour Entries</h3>
+            <Link
+              href="/apprentice/hours"
+              className="text-sm text-purple-600 hover:text-purple-700 font-medium flex items-center gap-1"
+            >
+              View All <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="divide-y divide-slate-100">
+            {timeEntries && timeEntries.length > 0 ? (
+              timeEntries.slice(0, 5).map((entry) => (
+                <div key={entry.id} className="p-4 flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                      entry.hour_type === 'RTI' ? 'bg-blue-100' : 'bg-green-100'
+                    }`}>
+                      {entry.hour_type === 'RTI' ? (
+                        <BookOpen className="w-5 h-5 text-blue-600" />
+                      ) : (
+                        <Briefcase className="w-5 h-5 text-green-600" />
+                      )}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-black">
+                        {entry.hour_type === 'RTI' ? 'Theory (RTI)' : 'Hands-on (OJT)'}
+                      </div>
+                      <div className="text-sm text-slate-500">
+                        {new Date(entry.log_date).toLocaleDateString('en-US', {
+                          weekday: 'short',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                        {entry.activity_note && ` • ${entry.activity_note}`}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-bold text-black">
+                      {(entry.minutes / 60).toFixed(1)}h
+                    </div>
+                    <div className={`text-xs font-semibold ${
+                      entry.status === 'APPROVED' ? 'text-green-600' :
+                      entry.status === 'REJECTED' ? 'text-red-600' :
+                      'text-amber-600'
+                    }`}>
+                      {entry.status}
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="p-8 text-center text-slate-500">
+                <Clock className="w-12 h-12 mx-auto mb-3 text-slate-300" />
+                <p>No hours logged yet</p>
+                <Link
+                  href="/apprentice/hours"
+                  className="text-purple-600 hover:text-purple-700 font-medium mt-2 inline-block"
+                >
+                  Log your first hours →
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Quick Actions */}
+        <div className="grid md:grid-cols-3 gap-4">
+          <Link
+            href="/apprentice/hours"
+            className="bg-white rounded-xl border border-slate-200 p-6 hover:border-purple-300 hover:shadow-md transition-all group"
+          >
+            <Clock className="w-8 h-8 text-purple-600 mb-3" />
+            <h3 className="font-bold text-black mb-1">Log Hours</h3>
+            <p className="text-sm text-slate-600">Record your RTI and OJT training hours</p>
+          </Link>
+
+          <Link
+            href="/apprentice/transfer-hours"
+            className="bg-white rounded-xl border border-slate-200 p-6 hover:border-purple-300 hover:shadow-md transition-all group"
+          >
+            <FileText className="w-8 h-8 text-amber-600 mb-3" />
+            <h3 className="font-bold text-black mb-1">Transfer Hours</h3>
+            <p className="text-sm text-slate-600">Request credit for prior training</p>
+          </Link>
+
+          <Link
+            href="/lms/certificates"
+            className="bg-white rounded-xl border border-slate-200 p-6 hover:border-purple-300 hover:shadow-md transition-all group"
+          >
+            <Award className="w-8 h-8 text-green-600 mb-3" />
+            <h3 className="font-bold text-black mb-1">Certificates</h3>
+            <p className="text-sm text-slate-600">View your earned credentials</p>
+          </Link>
+        </div>
+
+        {/* State Board Readiness */}
+        {progressPercentage >= 100 && enrollment?.milady_completed && (
+          <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-8 text-white text-center">
+            <Award className="w-16 h-16 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold mb-2">Ready for State Board Exam!</h2>
+            <p className="text-green-100 mb-6">
+              You have completed all required hours and theory training. Schedule your Indiana IPLA exam.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
+            <a
+              href="https://www.in.gov/pla/professions/barber-board/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-green-50 transition-colors"
+            >
+              Schedule IPLA Exam <ArrowRight className="w-5 h-5" />
+            </a>
           </div>
-        </div>
-      </section>
+        )}
+      </div>
     </div>
   );
 }

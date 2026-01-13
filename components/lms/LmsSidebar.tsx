@@ -20,14 +20,14 @@ import {
 
 const navItems = [
   { href: '/lms/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/lms/progress', label: 'My Progress', icon: TrendingUp },
   { href: '/lms/courses', label: 'My Courses', icon: BookOpen },
   { href: '/apprentice/hours', label: 'Log Hours', icon: Clock },
-  { href: '/lms/forums', label: 'Forums', icon: MessageSquare },
-  { href: '/lms/analytics', label: 'My Analytics', icon: TrendingUp },
   { href: '/lms/chat', label: 'AI Tutor Chat', icon: MessageCircle },
   { href: '/lms/assignments', label: 'Assignments', icon: FileText },
   { href: '/lms/certificates', label: 'Certificates', icon: Award },
   { href: '/lms/calendar', label: 'Calendar', icon: Calendar },
+  { href: '/lms/forums', label: 'Forums', icon: MessageSquare },
   { href: '/lms/resources', label: 'Resources', icon: FileText },
 ];
 
