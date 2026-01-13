@@ -1,19 +1,9 @@
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Admin Students Export | Elevate For Humanity',
-  description: 'Elevate For Humanity - Career training and workforce development',
-};
-
 "use client";
-
 import React from 'react';
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-
-
 export const dynamic = 'force-dynamic';
 
 export default function ExportStudentsPage() {

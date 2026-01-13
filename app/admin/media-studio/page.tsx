@@ -1,12 +1,4 @@
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Admin Media Studio | Elevate For Humanity',
-  description: 'Elevate For Humanity - Career training and workforce development',
-};
-
 "use client";
-
 import React from 'react';
 
 import { useEffect, useState } from 'react';
@@ -26,8 +18,6 @@ import {
   Sparkles,
 } from 'lucide-react';
 import Image from 'next/image';
-
-
 export const dynamic = 'force-dynamic';
 
 interface MediaFile {

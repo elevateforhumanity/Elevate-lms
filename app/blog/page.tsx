@@ -1,5 +1,10 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import { Facebook, Twitter, Linkedin, Instagram, Calendar, User, ArrowRight, Clock, Tag, Search } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 // Social media share URLs
 const SOCIAL_LINKS = {

@@ -1,13 +1,7 @@
-// @ts-nocheck
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Admin Social Media Campaigns New | Elevate For Humanity',
-  description: 'Elevate For Humanity - Career training and workforce development',
-};
-
-// @ts-nocheck
 "use client";
+
+// @ts-nocheck
+// @ts-nocheck
 
 import React from 'react';
 

@@ -1,4 +1,17 @@
+'use client';
+
 import { useState } from 'react';
+import Link from 'next/link';
+
+function Button({ children, variant, onClick, type, className }: { children: React.ReactNode; variant?: string; onClick?: () => void; type?: 'button' | 'submit'; className?: string }) {
+  const baseClass = 'px-4 py-2 rounded-lg font-medium transition-colors';
+  const variantClass = variant === 'outline' ? 'border border-gray-300 hover:bg-gray-50' : 'bg-blue-600 text-white hover:bg-blue-700';
+  return (
+    <button type={type || 'button'} onClick={onClick} className={`${baseClass} ${variantClass} ${className || ''}`}>
+      {children}
+    </button>
+  );
+}
 
 export default function PostJobPage() {
   const [formData, setFormData] = useState({

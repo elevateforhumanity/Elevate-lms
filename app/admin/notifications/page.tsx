@@ -1,12 +1,4 @@
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Admin Notifications | Elevate For Humanity',
-  description: 'Elevate For Humanity - Career training and workforce development',
-};
-
 "use client";
-
 import React from 'react';
 
 import { useState, useEffect } from 'react';
@@ -14,8 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Bell, Send, Users, CheckCircle, AlertCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-
-
 export const dynamic = 'force-dynamic';
 
 function QuickTemplate({

@@ -1,20 +1,7 @@
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Apprentice Hours | Elevate For Humanity',
-  description: 'Elevate For Humanity - Apprentice Hours page',
-  alternates: { canonical: 'https://elevateforhumanity.institute/apprentice/hours' },
-};
-
-
-
 "use client";
-
 import React from 'react';
 
 import { useEffect, useMemo, useState } from 'react';
-
-
 type Entry = {
   id: string;
   log_date: string;

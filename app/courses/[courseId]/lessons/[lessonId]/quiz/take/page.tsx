@@ -1,14 +1,6 @@
-// @ts-nocheck
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Courses Dynamic Quiz Take | Elevate For Humanity',
-  description: 'Elevate For Humanity - Courses Dynamic Quiz Take page',
-};
-
-
-
 "use client";
+
+// @ts-nocheck
 
 import React from 'react';
 
@@ -18,8 +10,6 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-
-
 export default function TakeQuizPage({
   params,
 }: {
