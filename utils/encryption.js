@@ -9,7 +9,7 @@ const crypto = require('crypto');
 
 // Require encryption key from environment
 if (!process.env.ENCRYPTION_KEY) {
-  );
+  console.error('ENCRYPTION_KEY environment variable is required');
   process.exit(1);
 }
 

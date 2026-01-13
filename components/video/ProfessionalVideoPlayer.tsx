@@ -81,7 +81,7 @@ export function ProfessionalVideoPlayer({
           lastPositionSeconds: video.currentTime,
           durationSeconds: video.duration,
         }),
-      // Error: $1
+      }).catch(() => {});
 
       // 2) Log watch tick (for streaks & goals)
       // Assume interval is 8 seconds
@@ -89,7 +89,7 @@ export function ProfessionalVideoPlayer({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ seconds: 8 }),
-      // Error: $1
+      }).catch(() => {});
     };
 
     const interval = window.setInterval(handler, 8000); // every 8 seconds

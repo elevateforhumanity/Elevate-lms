@@ -50,6 +50,12 @@ export default tseslint.config(
       'workers/**',
       '.pnpm-store/**',
       'playwright-report/**',
+      'scripts/**',
+      'public/*.js',
+      'server/video-*.ts',
+      'server/download-*.ts',
+      'server/generate-*.ts',
+      'server/test-*.ts',
     ],
   }
 );

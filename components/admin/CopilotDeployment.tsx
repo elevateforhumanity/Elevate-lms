@@ -177,7 +177,7 @@ export function CopilotDeployment() {
             action: 'Review the parsed student records and generated charts',
             tips: [
               'AI automatically creates flow charts and analytics',
-              'Missing emails are au
+              'Missing emails are auto-generated',
               'Invalid dates are automatically corrected',
             ],
           },

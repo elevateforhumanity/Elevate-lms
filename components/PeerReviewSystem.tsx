@@ -46,16 +46,16 @@ export default function PeerReviewSystem() {
     },
   ];
 
-  const reviews = activeTab === ' ? reviewsToComplete : completedReviews;
+  const reviews = activeTab === 'pending' ? reviewsToComplete : completedReviews;
 
   return (
     <div className="space-y-6">
       {/* Tabs */}
       <div className="flex gap-4 border-b border-gray-200">
         <button
-          onClick={() => setActiveTab('
+          onClick={() => setActiveTab('pending')}
           className={`px-4 py-2 font-medium transition-colors ${
-            activeTab === '
+            activeTab === 'pending'
               ? 'text-blue-600 border-b-2 border-blue-600'
               : 'text-black hover:text-black'
           }`}
@@ -120,7 +120,7 @@ export default function PeerReviewSystem() {
       {reviews.length === 0 && (
         <div className="text-center py-12">
           <p className="text-gray-500">
-            {activeTab === '
+            {activeTab === 'pending'
               ? 'No peer reviews pending'
               : 'No completed reviews yet'}
           </p>

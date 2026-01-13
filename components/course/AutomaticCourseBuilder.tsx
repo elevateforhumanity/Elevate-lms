@@ -134,7 +134,7 @@ export default function AutomaticCourseBuilder() {
       setProgress(95);
       setCurrentStep('Finalizing course...');
 
-      const saveResponse = await fetch('/api/courses/create- {
+      const saveResponse = await fetch('/api/courses/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ courseOutline }),

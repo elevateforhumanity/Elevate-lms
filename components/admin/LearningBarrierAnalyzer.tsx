@@ -265,7 +265,7 @@ export function LearningBarrierAnalyzer() {
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setAutoRemediationEnabled(e.target.checked)}
               className="mr-2"
             />
-            <span className="text-sm text-brand-text">Au
+            <span className="text-sm text-brand-text">Auto-remediation enabled</span>
           </label>
           <button
             onClick={runBarrierAnalysis}
@@ -489,7 +489,7 @@ export function LearningBarrierAnalyzer() {
             </div>
           </div>
           <div>
-            <div className="font-medium text-brand-info">Au
+            <div className="font-medium text-brand-info">Auto-Remediation</div>
             <div className="text-brand-info">
               Automatically creates and deploys targeted training
             </div>
@@ -499,3 +499,4 @@ export function LearningBarrierAnalyzer() {
     </div>
   );
 }
+

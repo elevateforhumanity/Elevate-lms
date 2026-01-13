@@ -810,6 +810,7 @@ export function createStorage(
       process.env.CLOUDFLARE_API_TOKEN;
 
     if (!accountId || !apiToken) {
+      console.warn(
         'Cloudflare Stream credentials not configured, falling back to local storage'
       );
       return new LocalStorage(config?.localPath);
@@ -831,6 +832,7 @@ export function createStorage(
     const publicUrl = config?.publicUrl || process.env.CLOUDFLARE_R2_PUBLIC_URL;
 
     if (!accountId || !bucket || !accessKeyId || !secretAccessKey) {
+      console.warn(
         'Cloudflare R2 credentials not configured, falling back to local storage'
       );
       return new LocalStorage(config?.localPath);
