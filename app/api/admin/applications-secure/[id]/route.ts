@@ -1,5 +1,6 @@
 export const runtime = 'edge';
 export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
 
 // app/api/admin/applications-secure/[id]/route.ts
 // SECURE VERSION with authentication
