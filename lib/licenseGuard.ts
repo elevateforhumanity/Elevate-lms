@@ -1,4 +1,14 @@
+/**
+ * @deprecated Use @/lib/licensing instead. This module will be removed in a future version.
+ * 
+ * Migration guide:
+ * - getTenantLicense -> import { getTenantLicense } from '@/lib/licensing'
+ * - enforceLimits -> import { checkUsageLimits, requireValidLicense } from '@/lib/licensing'
+ * - canAddEmployer/canAddApprentice -> use checkUsageLimits from '@/lib/licensing'
+ */
+
 import { createAdminClient } from '@/lib/supabase/admin';
+import { logger } from '@/lib/logger';
 
 export interface TenantLicense {
   tenant_id: string;
@@ -11,6 +21,7 @@ export interface TenantLicense {
 
 /**
  * Get tenant license details
+ * @deprecated Use getTenantLicense from '@/lib/licensing' instead
  */
 export async function getTenantLicense(
   tenantId: string
@@ -24,7 +35,7 @@ export async function getTenantLicense(
     .single();
 
   if (error) {
-    console.error('Failed to fetch tenant license:', error);
+    logger.error('Failed to fetch tenant license', { tenantId, error: error.message });
     return null;
   }
 
@@ -169,6 +180,7 @@ export const PLAN_LIMITS = {
 
 /**
  * Create or update tenant license
+ * @deprecated Use updateTenantLicense from '@/lib/licensing' instead
  */
 export async function updateTenantLicense(
   tenantId: string,
@@ -192,7 +204,7 @@ export async function updateTenantLicense(
     .single();
 
   if (error) {
-    console.error('Failed to update tenant license:', error);
+    logger.error('Failed to update tenant license', { tenantId, plan, error: error.message });
     return null;
   }
 

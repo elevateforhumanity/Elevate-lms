@@ -1,15 +1,30 @@
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
+import { generateLicenseKey, hashLicenseKey } from '@/lib/store/license';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 import { logger } from '@/lib/logger';
 import { toErrorMessage } from '@/lib/safe';
-import * as crypto from 'node:crypto';
+import { checkRateLimit } from '@/lib/rate-limit';
 
-// Generate license key
-function generateLicenseKey(): string {
-  return `EFH-${crypto.randomBytes(8).toString('hex').toUpperCase()}-${crypto.randomBytes(8).toString('hex').toUpperCase()}`;
+// Verify admin API key for internal/webhook calls
+function verifyAdminApiKey(request: Request): boolean {
+  const apiKey = request.headers.get('x-admin-api-key');
+  const expectedKey = process.env.ADMIN_API_KEY;
+  
+  if (!expectedKey) {
+    logger.warn('ADMIN_API_KEY not configured - admin API access disabled');
+    return false;
+  }
+  
+  return apiKey === expectedKey;
+}
+
+// Verify Stripe webhook signature for automated license generation
+function isStripeWebhook(request: Request): boolean {
+  return request.headers.has('stripe-signature');
 }
 
 // Determine tier and features from product
@@ -73,6 +88,61 @@ function getProductTier(productSlug: string): {
 
 export async function POST(req: Request) {
   try {
+    // Rate limiting - strict limit for license generation
+    const clientIp = req.headers.get('x-forwarded-for')?.split(',')[0] || 
+                     req.headers.get('x-real-ip') || 
+                     'unknown';
+    
+    const rateLimit = await checkRateLimit({
+      key: `license-generate:${clientIp}`,
+      limit: 5,
+      windowSeconds: 300, // 5 requests per 5 minutes
+    });
+
+    if (!rateLimit.ok) {
+      logger.warn('License generation rate limit exceeded', { ip: clientIp });
+      return Response.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429 }
+      );
+    }
+
+    // Authentication: require either admin API key or authenticated admin user
+    const isAdmin = verifyAdminApiKey(req);
+    const isWebhook = isStripeWebhook(req);
+    
+    if (!isAdmin && !isWebhook) {
+      // Check for authenticated admin user
+      const supabase = await createClient();
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      
+      if (authError || !user) {
+        logger.warn('Unauthorized license generation attempt', { ip: clientIp });
+        return Response.json(
+          { error: 'Authentication required' },
+          { status: 401 }
+        );
+      }
+
+      // Verify admin role
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', user.id)
+        .single();
+
+      if (!profile?.role || !['admin', 'super_admin'].includes(profile.role)) {
+        logger.warn('Non-admin license generation attempt', { 
+          userId: user.id, 
+          role: profile?.role 
+        });
+        return Response.json(
+          { error: 'Admin access required' },
+          { status: 403 }
+        );
+      }
+    }
+
     const { email, productSlug, domain } = await req.json();
 
     if (!email || !productSlug) {
@@ -82,23 +152,25 @@ export async function POST(req: Request) {
       );
     }
 
-    const supabase = await createClient();
+    // Use admin client for license operations
+    const supabase = createAdminClient();
 
     // Get product configuration
     const config = getProductTier(productSlug);
 
-    // Generate license key
+    // Generate license key and hash for storage
     const licenseKey = generateLicenseKey();
+    const licenseKeyHash = hashLicenseKey(licenseKey);
 
     // Calculate expiration
     const expiresAt = new Date();
     expiresAt.setDate(expiresAt.getDate() + config.duration);
 
-    // Store license
+    // Store license with hashed key (never store raw key)
     const { data: license, error: licenseError } = await supabase
       .from('licenses')
       .insert({
-        license_key: licenseKey,
+        license_key: licenseKeyHash,
         domain: domain || 'pending-setup',
         customer_email: email,
         tier: config.tier,
@@ -122,6 +194,16 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
+
+    // Audit log the license generation
+    logger.info('License generated', {
+      licenseId: license.id,
+      email,
+      productSlug,
+      tier: config.tier,
+      expiresAt: expiresAt.toISOString(),
+      generatedBy: isWebhook ? 'stripe-webhook' : isAdmin ? 'admin-api' : 'admin-user',
+    });
 
     return Response.json({
       success: true,

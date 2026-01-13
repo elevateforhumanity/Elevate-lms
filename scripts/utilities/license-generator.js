@@ -1,9 +1,23 @@
 // license-generator.js
-const crypto = require('crypto');
+import crypto from 'node:crypto';
 
-const LICENSE_SECRET = process.env.LICENSE_SECRET || 'elevateSuperSecretKey';
+const LICENSE_SECRET = process.env.LICENSE_SECRET;
 
-function generateLicense(email, productId, expiresInDays = 365) {
+if (!LICENSE_SECRET) {
+  throw new Error(
+    'LICENSE_SECRET environment variable is required. ' +
+    'Generate a secure secret with: node -e "console.log(require(\'crypto\').randomBytes(32).toString(\'hex\'))"'
+  );
+}
+
+if (LICENSE_SECRET.length < 32) {
+  throw new Error(
+    'LICENSE_SECRET must be at least 32 characters for security. ' +
+    'Generate a secure secret with: node -e "console.log(require(\'crypto\').randomBytes(32).toString(\'hex\'))"'
+  );
+}
+
+export function generateLicense(email, productId, expiresInDays = 365) {
   const issuedAt = new Date();
   const expiresAt = new Date(issuedAt);
   expiresAt.setDate(expiresAt.getDate() + expiresInDays);
@@ -19,7 +33,7 @@ function generateLicense(email, productId, expiresInDays = 365) {
   return { licenseKey, expiresAt };
 }
 
-function validateLicense(licenseKey) {
+export function validateLicense(licenseKey) {
   try {
     const [encodedPayload, signature] = licenseKey.split('.');
     const payload = Buffer.from(encodedPayload, 'base64').toString('utf-8');
@@ -40,5 +54,3 @@ function validateLicense(licenseKey) {
     return { valid: false, reason: 'Malformed license' };
   }
 }
-
-module.exports = { generateLicense, validateLicense };

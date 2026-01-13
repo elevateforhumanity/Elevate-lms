@@ -1,23 +1,27 @@
 import * as crypto from 'node:crypto';
 
 /**
- * Generate a unique license key
+ * Generate a unique license key with high entropy
+ * Format: EFH-{24 hex chars}-{24 hex chars}
+ * Total entropy: 192 bits (12 bytes * 2)
  */
 export function generateLicenseKey(): string {
-  const segments = [];
-  for (let i = 0; i < 4; i++) {
-    const segment = crypto.randomBytes(4).toString('hex').toUpperCase();
-    segments.push(segment);
-  }
-  return segments.join('-');
+  const part1 = crypto.randomBytes(12).toString('hex').toUpperCase();
+  const part2 = crypto.randomBytes(12).toString('hex').toUpperCase();
+  return `EFH-${part1}-${part2}`;
 }
 
 /**
  * Validate license key format
+ * Supports both legacy format and new EFH format
  */
 export function isValidLicenseKeyFormat(key: string): boolean {
-  const pattern = /^[A-F0-9]{8}-[A-F0-9]{8}-[A-F0-9]{8}-[A-F0-9]{8}$/;
-  return pattern.test(key);
+  // New format: EFH-{24 hex}-{24 hex}
+  const newPattern = /^EFH-[A-F0-9]{24}-[A-F0-9]{24}$/;
+  // Legacy format: {8 hex}-{8 hex}-{8 hex}-{8 hex}
+  const legacyPattern = /^[A-F0-9]{8}-[A-F0-9]{8}-[A-F0-9]{8}-[A-F0-9]{8}$/;
+  
+  return newPattern.test(key) || legacyPattern.test(key);
 }
 
 /**

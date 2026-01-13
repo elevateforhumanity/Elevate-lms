@@ -1,4 +1,16 @@
+/**
+ * Unified License Management Module
+ * 
+ * This is the canonical source for all license-related operations.
+ * Use this module instead of:
+ * - lib/licenseGuard.ts (deprecated)
+ * - lib/license-guard.ts (deprecated)
+ * - lib/license.ts (EFH domain license only)
+ */
+
 import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
+import { logger } from '@/lib/logger';
 
 export type LicensePlan = 'trial' | 'basic' | 'professional' | 'enterprise';
 export type LicenseStatus = 'active' | 'suspended' | 'expired' | 'cancelled';
@@ -39,19 +51,27 @@ export interface Tenant {
 }
 
 export async function getTenantLicense(tenantId: string): Promise<License | null> {
-  const supabase = await createClient();
+  try {
+    const supabase = await createClient();
 
-  const { data, error }: any = await supabase
-    .from('licenses')
-    .select('*')
-    .eq('tenant_id', tenantId)
-    .eq('status', 'active')
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .single();
+    const { data, error }: any = await supabase
+      .from('licenses')
+      .select('*')
+      .eq('tenant_id', tenantId)
+      .eq('status', 'active')
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .single();
 
-  if (error || !data) return null;
-  return data as License;
+    if (error || !data) {
+      logger.debug('No active license found for tenant', { tenantId });
+      return null;
+    }
+    return data as License;
+  } catch (error) {
+    logger.error('Failed to fetch tenant license', { tenantId, error });
+    return null;
+  }
 }
 
 export async function isFeatureEnabled(tenantId: string, feature: keyof License['features']): Promise<boolean> {
@@ -135,6 +155,7 @@ export async function checkUsageLimits(tenantId: string): Promise<{
 export async function requireFeature(tenantId: string, feature: keyof License['features']): Promise<void> {
   const enabled = await isFeatureEnabled(tenantId, feature);
   if (!enabled) {
+    logger.warn('Feature access denied', { tenantId, feature });
     throw new Error(`Feature '${feature}' is not enabled for this tenant`);
   }
 }
@@ -142,6 +163,90 @@ export async function requireFeature(tenantId: string, feature: keyof License['f
 export async function requireValidLicense(tenantId: string): Promise<void> {
   const valid = await isLicenseValid(tenantId);
   if (!valid) {
+    logger.warn('License validation failed', { tenantId });
     throw new Error('License is not valid or has expired');
   }
+}
+
+/**
+ * Plan limits configuration
+ */
+export const PLAN_LIMITS = {
+  trial: {
+    max_users: 10,
+    max_programs: 2,
+    max_students: 25,
+  },
+  basic: {
+    max_users: 50,
+    max_programs: 10,
+    max_students: 200,
+  },
+  professional: {
+    max_users: 200,
+    max_programs: 50,
+    max_students: 1000,
+  },
+  enterprise: {
+    max_users: null, // unlimited
+    max_programs: null,
+    max_students: null,
+  },
+} as const;
+
+/**
+ * Feature availability by plan
+ */
+export const PLAN_FEATURES: Record<LicensePlan, Partial<License['features']>> = {
+  trial: {
+    ai_features: false,
+    white_label: false,
+    custom_domain: false,
+    api_access: false,
+    advanced_reporting: false,
+    bulk_operations: false,
+    sso: false,
+    priority_support: false,
+  },
+  basic: {
+    ai_features: false,
+    white_label: false,
+    custom_domain: false,
+    api_access: false,
+    advanced_reporting: true,
+    bulk_operations: false,
+    sso: false,
+    priority_support: false,
+  },
+  professional: {
+    ai_features: true,
+    white_label: false,
+    custom_domain: true,
+    api_access: true,
+    advanced_reporting: true,
+    bulk_operations: true,
+    sso: false,
+    priority_support: true,
+  },
+  enterprise: {
+    ai_features: true,
+    white_label: true,
+    custom_domain: true,
+    api_access: true,
+    advanced_reporting: true,
+    bulk_operations: true,
+    sso: true,
+    priority_support: true,
+  },
+};
+
+/**
+ * Audit log a license event
+ */
+export async function logLicenseEvent(
+  tenantId: string,
+  event: 'created' | 'updated' | 'expired' | 'suspended' | 'validated',
+  metadata?: Record<string, any>
+): Promise<void> {
+  logger.info('License event', { tenantId, event, ...metadata });
 }

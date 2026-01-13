@@ -1,5 +1,5 @@
-const { generateLicense, validateLicense } = require('./license-generator');
-const generateLicensePDF = require('./generate-certificate');
+import { generateLicense, validateLicense } from './license-generator.js';
+import generateLicensePDF from './generate-certificate.js';
 
 // License Tier Definitions
 const LICENSE_TIERS = {
@@ -338,7 +338,7 @@ function getRequiredTierForFeature(feature) {
   return 'Enterprise License';
 }
 
-module.exports = {
+export {
   generateTieredLicense,
   validateTieredLicense,
   checkFeatureAccess,

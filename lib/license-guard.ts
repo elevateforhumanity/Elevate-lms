@@ -1,11 +1,18 @@
 // @ts-nocheck
 /**
+ * @deprecated Use @/lib/licensing instead. This module will be removed in a future version.
+ * 
+ * Migration guide:
+ * - getLicense -> import { getTenantLicense } from '@/lib/licensing'
+ * - isFeatureEnabled -> import { isFeatureEnabled } from '@/lib/licensing'
+ * - checkUsageLimits -> import { checkUsageLimits } from '@/lib/licensing'
+ * 
  * License Feature Gating System
- *
  * Enforces license-based feature access across the platform.
  */
 
 import { createClient } from '@supabase/supabase-js';
+import { logger } from '@/lib/logger';
 
 export type LicensePlan = 'trial' | 'basic' | 'professional' | 'enterprise';
 export type LicenseStatus = 'active' | 'suspended' | 'expired' | 'cancelled';
