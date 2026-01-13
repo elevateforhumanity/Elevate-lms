@@ -1,6 +1,6 @@
-# Netlify Configuration for Next.js 16
+# Netlify Configuration for Next.js
 # Elevate for Humanity LMS Platform
-# Site: thunderous-axolotl-89d28d.netlify.app
+# Site: elevateforhumanity.institute
 
 [build]
   command = "bash scripts/netlify-build.sh"
