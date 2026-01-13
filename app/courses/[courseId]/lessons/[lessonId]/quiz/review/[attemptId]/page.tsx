@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical:
       'https://elevateforhumanity.institute/courses/[courseId]/lessons/[lessonId]/quiz/review/[attemptId]',
   },
-  title: '[attemptId] | Elevate For Humanity',
+  title: 'Attempt Details | Elevate For Humanity',
   description:
     'Explore [attemptId] and discover opportunities for career growth and development at Elevate For Humanity.',
 };

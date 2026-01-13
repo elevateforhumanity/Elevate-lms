@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical:
       'https://elevateforhumanity.institute/programs/admin/portal/messages',
   },
-  title: 'Messages | Elevate For Humanity',
+  title: 'Programs Admin Messages | Elevate For Humanity',
   description:
     'Explore Messages and discover opportunities for career growth and development.',
 };

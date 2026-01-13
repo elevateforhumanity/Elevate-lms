@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     canonical:
       'https://elevateforhumanity.institute/programs/admin/courses/create',
   },
-  title: 'Create | Elevate For Humanity',
+  title: 'Create Programs Admin Course | Elevate For Humanity',
   description:
     'Explore Create and discover opportunities for career growth and development.',
 };

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/onboarding/mou',
   },
-  title: 'Mou | Elevate For Humanity',
+  title: 'Onboarding MOU | Elevate For Humanity',
   description:
     'Explore Mou and discover opportunities for career growth and development.',
 };

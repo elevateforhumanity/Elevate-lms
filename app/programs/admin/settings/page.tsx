@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/programs/admin/settings',
   },
-  title: 'Settings | Elevate For Humanity',
+  title: 'Programs Admin Settings | Elevate For Humanity',
   description:
     'Explore Settings and discover opportunities for career growth and development.',
 };

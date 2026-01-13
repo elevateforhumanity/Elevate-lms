@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical:
       'https://elevateforhumanity.institute/programs/admin/portal/reports',
   },
-  title: 'Reports | Elevate For Humanity',
+  title: 'Admin Reports | Elevate For Humanity',
   description:
     'Explore Reports and discover opportunities for career growth and development.',
 };

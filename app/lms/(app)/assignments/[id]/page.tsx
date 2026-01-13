@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/lms/assignments/[id]',
   },
-  title: '[id] | Elevate For Humanity',
+  title: 'Assignment Details | Elevate For Humanity',
   description:
     'Explore [id] and discover opportunities for career growth and development.',
 };

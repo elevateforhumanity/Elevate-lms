@@ -18,6 +18,20 @@ export const metadata: Metadata = {
   title: 'For Employers | Hire Trained Workers | No Fees',
   description:
     'Hire job-ready workers trained in healthcare, skilled trades, and technology. No recruiting fees. Build apprenticeship programs.',
+  openGraph: {
+    title: 'For Employers - Hire Trained Workers',
+    description: 'Access job-ready candidates with industry credentials. No recruiting fees.',
+    url: 'https://elevateforhumanity.institute/employer',
+    siteName: 'Elevate for Humanity',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Employer Services' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'For Employers - Hire Trained Workers',
+    description: 'Access job-ready candidates. No recruiting fees.',
+    images: ['/og-default.jpg'],
+  },
 };
 
 export default function EmployerPage() {

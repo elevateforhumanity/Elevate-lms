@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/workforce-board/training',
   },
-  title: 'Training | Elevate For Humanity',
+  title: 'Workforce Board Training | Elevate For Humanity',
   description:
     'Explore Training and discover opportunities for career growth and development.',
 };

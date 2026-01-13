@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/admin/signatures/new',
   },
-  title: 'New | Elevate For Humanity',
+  title: 'New Signature Request | Elevate For Humanity',
   description:
     'Explore New and discover opportunities for career growth and development.',
 };

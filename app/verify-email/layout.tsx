@@ -1,9 +1,10 @@
-export const dynamic = 'force-dynamic';
+import { Metadata } from 'next';
 
-export default function VerifyEmailLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const metadata: Metadata = {
+  title: 'Verify Email | Elevate For Humanity',
+  description: 'Verify your email address for your Elevate account.',
+};
+
+export default function Layout({ children }: { children: React.ReactNode }) {
   return children;
 }

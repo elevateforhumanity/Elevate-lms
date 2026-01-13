@@ -15,6 +15,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/careers',
   },
+  openGraph: {
+    title: 'Careers at Elevate for Humanity',
+    description: 'Join our mission to provide free career training and workforce development.',
+    url: 'https://elevateforhumanity.institute/careers',
+    siteName: 'Elevate for Humanity',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Careers at Elevate' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Careers at Elevate for Humanity',
+    description: 'Join our mission to provide free career training.',
+    images: ['/og-default.jpg'],
+  },
 };
 
 // Force dynamic rendering - don't try to statically generate at build time

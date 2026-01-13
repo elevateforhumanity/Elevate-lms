@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/staff-portal/students',
   },
-  title: 'Students | Elevate For Humanity',
+  title: 'Staff Portal Students | Elevate For Humanity',
   description:
     'Explore Students and discover opportunities for career growth and development.',
 };

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/admin/settings',
   },
-  title: 'Settings | Elevate For Humanity',
+  title: 'LMS Settings | Elevate For Humanity',
   description: 'Manage system data and configurations',
 };
 

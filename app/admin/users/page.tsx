@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 export const metadata: Metadata = {
-  title: 'Admin | Elevate For Humanity',
+  title: 'User Management | Elevate For Humanity',
   description: 'Admin dashboard',
 };
 

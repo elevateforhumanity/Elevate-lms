@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/messages',
   },
-  title: 'Messages | Elevate For Humanity',
+  title: 'LMS Messages | Elevate For Humanity',
   description:
     'Explore Messages and discover opportunities for career growth and development.',
 };

@@ -11,6 +11,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/rise-foundation',
   },
+  openGraph: {
+    title: 'Rise Forward Foundation - Mental Wellness',
+    description: 'Your partner in mental wellness and holistic healing.',
+    url: 'https://elevateforhumanity.institute/rise-foundation',
+    siteName: 'Elevate for Humanity',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Rise Foundation' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rise Forward Foundation - Mental Wellness',
+    description: 'Your partner in mental wellness and holistic healing.',
+    images: ['/og-default.jpg'],
+  },
 };
 
 export default function RiseFoundationPage() {

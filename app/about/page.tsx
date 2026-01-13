@@ -11,6 +11,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/about',
   },
+  openGraph: {
+    title: 'About Elevate for Humanity',
+    description: 'Workforce training school in Indianapolis. 85% job placement rate. 1,000+ students trained.',
+    url: 'https://elevateforhumanity.institute/about',
+    siteName: 'Elevate for Humanity',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'About Elevate for Humanity' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Elevate for Humanity',
+    description: 'Workforce training school in Indianapolis. 85% job placement rate.',
+    images: ['/og-default.jpg'],
+  },
 };
 
 export default function AboutPage() {

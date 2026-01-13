@@ -10,7 +10,7 @@ import { CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
-  title: 'Admin | Elevate For Humanity',
+  title: 'Grants Workflow | Elevate For Humanity',
   description: 'Admin dashboard',
 };
 

@@ -18,6 +18,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/success-stories',
   },
+  openGraph: {
+    title: 'Success Stories - Real People, Real Results',
+    description: 'Inspiring stories from graduates who transformed their lives through workforce training.',
+    url: 'https://elevateforhumanity.institute/success-stories',
+    siteName: 'Elevate for Humanity',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Success Stories' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Success Stories - Real People, Real Results',
+    description: 'Inspiring stories from workforce training graduates.',
+    images: ['/og-default.jpg'],
+  },
 };
 
 const successStories = [

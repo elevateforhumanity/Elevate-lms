@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical:
       'https://elevateforhumanity.institute/program-holder/courses/create',
   },
-  title: 'Create | Elevate For Humanity',
+  title: 'Create Program Holder Course | Elevate For Humanity',
   description:
     'Explore Create and discover opportunities for career growth and development.',
 };

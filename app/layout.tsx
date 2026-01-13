@@ -36,9 +36,6 @@ const isProduction = process.env.VERCEL_ENV === 'production';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  alternates: {
-    canonical: 'https://elevateforhumanity.institute',
-  },
 
   title: {
     default: 'Elevate for Humanity',
@@ -153,7 +150,6 @@ export default function RootLayout({
     <html lang="en" className={`light ${inter.variable}`}>
       <head>
         {!isProduction && <meta name="robots" content="noindex,nofollow" />}
-        <link rel="canonical" href="https://elevateforhumanity.institute" />
 
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.png" type="image/png" sizes="192x192" />

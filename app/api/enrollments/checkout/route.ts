@@ -9,19 +9,23 @@ import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/logger';
 
-const stripeKey = process.env.STRIPE_SECRET_KEY;
-const stripe = stripeKey
-  ? new Stripe(stripeKey, {
-      apiVersion: '2025-10-29.clover',
-    })
-  : null;
+function getStripe() {
+  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  if (!stripeKey) return null;
+  return new Stripe(stripeKey, { apiVersion: '2025-10-29.clover' });
+}
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const supabase =
-  supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
+function getSupabase() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!supabaseUrl || !supabaseKey) return null;
+  return createClient(supabaseUrl, supabaseKey);
+}
 
 export async function POST(request: NextRequest) {
+  const stripe = getStripe();
+  const supabase = getSupabase();
+  
   if (!stripe || !supabase) {
     return NextResponse.json(
       { error: 'Stripe or Supabase not configured' },

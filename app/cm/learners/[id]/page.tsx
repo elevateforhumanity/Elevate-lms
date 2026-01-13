@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/cm/learners/[id]',
   },
-  title: '[id] | Elevate For Humanity',
+  title: 'Learner Profile | Elevate For Humanity',
   description:
     'Explore [id] and discover opportunities for career growth and development.',
 };

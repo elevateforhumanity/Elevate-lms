@@ -7,9 +7,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/courses',
   },
-  title: 'Courses | Elevate For Humanity',
+  title: 'LMS Courses | Elevate For Humanity',
   description:
     'Browse our catalog of career training courses. Industry certifications, hands-on skills, and job-ready training in healthcare, IT, business, and skilled trades.',
+  openGraph: {
+    title: 'Career Training Courses',
+    description: 'Industry certifications and job-ready training in healthcare, IT, business, and skilled trades.',
+    url: 'https://elevateforhumanity.institute/courses',
+    siteName: 'Elevate for Humanity',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Training Courses' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Career Training Courses',
+    description: 'Industry certifications and job-ready training.',
+    images: ['/og-default.jpg'],
+  },
 };
 
 export default async function CoursesPage() {

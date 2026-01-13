@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical:
       'https://elevateforhumanity.institute/admin/partners/lms-integrations/[id]',
   },
-  title: '[id] | Elevate For Humanity',
+  title: 'LMS Integration Details | Elevate For Humanity',
   description:
     'Explore [id] and discover opportunities for career growth and development.',
 };

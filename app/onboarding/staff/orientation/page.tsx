@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical:
       'https://elevateforhumanity.institute/onboarding/staff/orientation',
   },
-  title: 'Orientation | Elevate For Humanity',
+  title: 'Staff Orientation | Elevate For Humanity',
   description:
     'Explore Orientation and discover opportunities for career growth and development.',
 };

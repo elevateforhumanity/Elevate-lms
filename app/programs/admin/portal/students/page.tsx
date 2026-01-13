@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     canonical:
       'https://elevateforhumanity.institute/programs/admin/portal/students',
   },
-  title: 'Students | Elevate For Humanity',
+  title: 'Programs Admin Portal Students | Elevate For Humanity',
   description:
     'Explore Students and discover opportunities for career growth and development.',
 };

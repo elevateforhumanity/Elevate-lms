@@ -24,6 +24,20 @@ export const metadata: Metadata = {
   title: 'Tax Preparation Services | Elevate For Humanity',
   description:
     'Trusted tax help — free community-based tax preparation and professional paid tax services.',
+  openGraph: {
+    title: 'Tax Preparation Services',
+    description: 'Free community-based tax preparation and professional paid tax services.',
+    url: 'https://elevateforhumanity.institute/tax',
+    siteName: 'Elevate for Humanity',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Tax Services' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tax Preparation Services',
+    description: 'Free and professional tax preparation services.',
+    images: ['/og-default.jpg'],
+  },
 };
 
 export default function TaxServicesPage() {

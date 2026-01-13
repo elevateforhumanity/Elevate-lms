@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { BarChart, DollarSign, Gift } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Admin | Elevate For Humanity',
+  title: 'Cash Advances Admin | Elevate For Humanity',
   description: 'Admin dashboard',
 };
 

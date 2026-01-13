@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/employer/analytics',
   },
-  title: 'Analytics | Elevate For Humanity',
+  title: 'Employer Analytics | Elevate For Humanity',
   description:
     'Explore Analytics and discover opportunities for career growth and development.',
 };

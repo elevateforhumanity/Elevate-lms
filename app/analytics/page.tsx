@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Analytics | Elevate For Humanity',
+  title: 'Platform Analytics | Elevate For Humanity',
   description: 'Elevate For Humanity - Career training and workforce development',
 };
 

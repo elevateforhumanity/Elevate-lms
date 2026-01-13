@@ -10,9 +10,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/partners',
   },
-  title: 'Partners | Elevate For Humanity',
+  title: 'Our Partners | Elevate For Humanity',
   description:
     'Explore Partners and discover opportunities for career growth and development.',
+  openGraph: {
+    title: 'Our Partners - Elevate for Humanity',
+    description: 'Explore our training and employer partners for career growth opportunities.',
+    url: 'https://elevateforhumanity.institute/partners',
+    siteName: 'Elevate for Humanity',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Our Partners' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Partners - Elevate for Humanity',
+    description: 'Explore our training and employer partners.',
+    images: ['/og-default.jpg'],
+  },
 };
 
 export default async function PartnersPage() {

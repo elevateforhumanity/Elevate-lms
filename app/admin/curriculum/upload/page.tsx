@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/admin/curriculum/upload',
   },
-  title: 'Upload | Elevate For Humanity',
+  title: 'Upload Curriculum | Elevate For Humanity',
   description:
     'Explore Upload and discover opportunities for career growth and development.',
 };

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/lms/courses/new',
   },
-  title: 'New | Elevate For Humanity',
+  title: 'Create New Course | Elevate For Humanity',
   description:
     'Explore New and discover opportunities for career growth and development.',
 };

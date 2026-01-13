@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/admin/mou',
   },
-  title: 'Mou | Elevate For Humanity',
+  title: 'Admin MOU Management | Elevate For Humanity',
   description: 'Manage system data and configurations',
 };
 

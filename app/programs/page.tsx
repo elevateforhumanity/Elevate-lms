@@ -15,6 +15,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute/programs',
   },
+  openGraph: {
+    title: 'Free Career Training Programs in Indiana',
+    description: '100% free training programs in healthcare, skilled trades, and business. Funded by WIOA.',
+    url: 'https://elevateforhumanity.institute/programs',
+    siteName: 'Elevate for Humanity',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Career Training Programs' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free Career Training Programs in Indiana',
+    description: '100% free training programs in healthcare, skilled trades, and business.',
+    images: ['/og-default.jpg'],
+  },
 };
 
 export default function ProgramsBioSitePage() {

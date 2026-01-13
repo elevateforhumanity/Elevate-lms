@@ -26,6 +26,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://elevateforhumanity.institute',
   },
+  openGraph: {
+    title: 'Elevate for Humanity - Free Career Training',
+    description: 'Workforce development connecting students to approved training, credentials, and career pathways.',
+    url: 'https://elevateforhumanity.institute',
+    siteName: 'Elevate for Humanity',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Elevate for Humanity' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Elevate for Humanity - Free Career Training',
+    description: 'Workforce development connecting students to training and career pathways.',
+    images: ['/og-default.jpg'],
+  },
 };
 
 // Use ISR for optimal performance with fresh content
