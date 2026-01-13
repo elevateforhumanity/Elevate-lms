@@ -70,7 +70,7 @@ export const applicationSchema = z.object({
   email: emailSchema,
   phone: phoneSchema,
   program: z.string().min(1, 'Program is required'),
-  funding: z.enum(['WIOA', 'WRG', 'JRI', 'Employer Sponsored', 'Self Pay', 'Not Sure']),
+  funding: z.string().min(1, 'Funding selection is required'),
   message: z.string().max(1000, 'Message must be less than 1000 characters').optional(),
 });
 

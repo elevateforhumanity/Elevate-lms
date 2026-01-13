@@ -7,6 +7,7 @@ import { createAdminClient } from '@/lib/supabase/server';
 import { withRateLimit } from '@/lib/api/with-rate-limit';
 import { contactRateLimit } from '@/lib/rate-limit';
 import { applicationSchema } from '@/lib/api/validation-schemas';
+import { ZodError } from 'zod';
 
 export const POST = withRateLimit(
   async (req: Request) => {
@@ -51,28 +52,39 @@ export const POST = withRateLimit(
         support_notes: `Funding: ${funding}. ${eligible ? 'Prescreen pass' : 'Manual review'}`,
       });
 
-    if (error) {
-      console.error('Supabase insert error:', error);
+      if (error) {
+        console.error('Supabase insert error:', error);
+        return NextResponse.json(
+          { error: 'Failed to submit application. Please call 317-314-3757 for assistance.' },
+          { status: 500 }
+        );
+      }
+
+      if (contentType?.includes('application/json')) {
+        return NextResponse.json({ success: true });
+      }
+
+      return NextResponse.redirect(
+        new URL('/apply/confirmation', req.url),
+        { status: 303 }
+      );
+    } catch (err: any) {
+      console.error('Apply route error:', err);
+      
+      // Handle validation errors specifically
+      if (err?.name === 'ZodError' || err?.issues) {
+        const issues = err.issues || err.errors || [];
+        const fieldErrors = issues.map((e: any) => `${e.path?.join('.') || 'field'}: ${e.message}`).join(', ');
+        return NextResponse.json(
+          { error: `Please fix: ${fieldErrors}` },
+          { status: 400 }
+        );
+      }
+      
       return NextResponse.json(
-        { error: 'Failed to submit application. Please call 317-314-3757 for assistance.' },
+        { error: 'Submission failed. Please call 317-314-3757.' },
         { status: 500 }
       );
-    }
-
-    if (contentType?.includes('application/json')) {
-      return NextResponse.json({ success: true });
-    }
-
-    return NextResponse.redirect(
-      new URL('/apply/confirmation', req.url),
-      { status: 303 }
-    );
-  } catch (err: any) {
-    console.error('Apply route error:', err);
-    return NextResponse.json(
-      { error: 'Submission failed. Please call 317-314-3757.' },
-      { status: 500 }
-    );
     }
   },
   { limiter: contactRateLimit, skipOnMissing: true }
