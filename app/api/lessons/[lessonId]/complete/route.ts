@@ -95,19 +95,52 @@ export async function POST(
       ? Math.round((completedCount / totalLessons) * 100) 
       : 0;
 
+    // Update enrollment progress (enrollments is a view, update underlying table)
+    await supabase.rpc('update_enrollment_progress_manual', {
+      p_user_id: user.id,
+      p_course_id: lesson.course_id,
+      p_progress: progressPercent
+    }).catch(() => {
+      // Fallback: try direct update if RPC doesn't exist
+      return supabase
+        .from('enrollments')
+        .update({ progress: progressPercent, updated_at: new Date().toISOString() })
+        .eq('user_id', user.id)
+        .eq('course_id', lesson.course_id);
+    });
+
     // Check if course is now complete
     const courseCompleted = progressPercent === 100;
 
-    // Get certificate if course completed
+    // Auto-create certificate if course completed
     let certificate = null;
     if (courseCompleted) {
-      const { data: cert } = await supabase
+      // Check if certificate exists
+      const { data: existingCert } = await supabase
         .from('certificates')
         .select('id, certificate_number, issued_at')
         .eq('user_id', user.id)
         .eq('course_id', lesson.course_id)
         .single();
-      certificate = cert;
+
+      if (existingCert) {
+        certificate = existingCert;
+      } else {
+        // Create new certificate
+        const certNumber = `EFH-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Math.random().toString(36).substring(2, 10).toUpperCase()}`;
+        const { data: newCert } = await supabase
+          .from('certificates')
+          .insert({
+            user_id: user.id,
+            course_id: lesson.course_id,
+            enrollment_id: enrollment.id,
+            certificate_number: certNumber,
+            issued_at: new Date().toISOString(),
+          })
+          .select()
+          .single();
+        certificate = newCert;
+      }
     }
 
     return NextResponse.json({
