@@ -1,23 +1,12 @@
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import Image from 'next/image';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
-
-const Intro = dynamic(() => import('@/components/home/Intro'), { 
-  loading: () => <div className="h-96 bg-white" />
-});
-const Orientation = dynamic(() => import('@/components/home/Orientation'), { 
-  loading: () => <div className="h-96 bg-white" />
-});
-const Testimonials = dynamic(() => import('@/components/home/Testimonials'), { 
-  loading: () => <div className="h-96 bg-white" />
-});
-const Assurance = dynamic(() => import('@/components/home/Assurance'), { 
-  loading: () => <div className="h-96 bg-white" />
-});
-const Start = dynamic(() => import('@/components/home/Start'), { 
-  loading: () => <div className="h-96 bg-white" />
-});
+import Intro from '@/components/home/Intro';
+import Orientation from '@/components/home/Orientation';
+import Testimonials from '@/components/home/Testimonials';
+import Assurance from '@/components/home/Assurance';
+import Start from '@/components/home/Start';
 
 export const metadata: Metadata = {
   title: 'Elevate for Humanity | Workforce and Education Hub',
