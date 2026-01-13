@@ -9,7 +9,7 @@ const leaderboardData = [
     points: 2850,
     courses: 3,
     avatar: 'SM',
-    color: '
+    color: 'bg-yellow-500',
   },
   {
     rank: 2,
@@ -17,7 +17,7 @@ const leaderboardData = [
     points: 2640,
     courses: 2,
     avatar: 'MJ',
-    color: '
+    color: 'bg-gray-400',
   },
   {
     rank: 3,
@@ -25,7 +25,7 @@ const leaderboardData = [
     points: 2420,
     courses: 2,
     avatar: 'DW',
-    color: '
+    color: 'bg-amber-600',
   },
   {
     rank: 4,
@@ -33,7 +33,7 @@ const leaderboardData = [
     points: 2180,
     courses: 2,
     avatar: 'J',
-    color: '
+    color: 'bg-emerald-500',
     isCurrentUser: true,
   },
   {
@@ -42,7 +42,7 @@ const leaderboardData = [
     points: 1950,
     courses: 1,
     avatar: 'LC',
-    color: '
+    color: 'bg-blue-500',
   },
 ];
 

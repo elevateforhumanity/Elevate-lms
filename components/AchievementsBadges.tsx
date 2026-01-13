@@ -149,7 +149,7 @@ export function AchievementsBadges({ userId }: AchievementsBadgesProps) {
               <div
                 className={`w-16 h-16 mx-auto mb-3 rounded-full flex items-center justify-center ${
                   isEarned
-                    ? '
+                    ? 'bg-emerald-500'
                     : 'bg-slate-300'
                 }`}
               >

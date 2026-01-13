@@ -14,7 +14,7 @@ interface PeerReview {
 }
 
 export default function PeerReviewSystem() {
-  const [activeTab, setActiveTab] = useState<' | 'completed'>('
+  const [activeTab, setActiveTab] = useState<'pending' | 'completed'>('pending');
 
   const reviewsToComplete: PeerReview[] = [
     {

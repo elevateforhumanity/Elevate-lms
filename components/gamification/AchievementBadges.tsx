@@ -8,7 +8,7 @@ const badges = [
     name: 'First Steps',
     description: 'Complete your first lesson',
     icon: Star,
-    color: '
+    color: 'bg-yellow-500',
     earned: true,
     earnedDate: '2024-11-01',
   },
@@ -17,7 +17,7 @@ const badges = [
     name: 'Quick Learner',
     description: 'Complete 5 lessons in one week',
     icon: Zap,
-    color: '
+    color: 'bg-blue-500',
     earned: true,
     earnedDate: '2024-11-05',
   },
@@ -26,7 +26,7 @@ const badges = [
     name: 'Course Master',
     description: 'Complete an entire course',
     icon: Trophy,
-    color: '
+    color: 'bg-emerald-500',
     earned: true,
     earnedDate: '2024-11-10',
   },
@@ -35,7 +35,7 @@ const badges = [
     name: 'Perfect Score',
     description: 'Score 100% on a quiz',
     icon: Target,
-    color: '
+    color: 'bg-purple-500',
     earned: false,
     earnedDate: null,
   },
@@ -44,7 +44,7 @@ const badges = [
     name: 'Dedication',
     description: 'Study for 7 days straight',
     icon: Award,
-    color: '
+    color: 'bg-orange-500',
     earned: false,
     earnedDate: null,
   },
@@ -53,7 +53,7 @@ const badges = [
     name: 'Champion',
     description: 'Complete 3 courses',
     icon: Crown,
-    color: '
+    color: 'bg-red-500',
     earned: false,
     earnedDate: null,
   },
