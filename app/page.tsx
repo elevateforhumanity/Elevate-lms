@@ -108,14 +108,7 @@ export const revalidate = 60;
 export default function HomePage() {
   return (
     <>
-      {/* Video Hero Banner - UNCHANGED */}
-      <VideoHeroBanner
-        videoSrc="/videos/hero-home.mp4"
-        headline="Free Career Training"
-        subheadline="Healthcare • Skilled Trades • Technology • Business"
-        primaryCTA={{ text: "Apply Now", href: "/apply" }}
-        secondaryCTA={{ text: "View Programs", href: "/programs" }}
-      />
+      {/* Hero Banner removed for testing */}
 
       {/* ═══════════════════════════════════════════════════════════════════
           BOX 1 — PRIMARY CTA STRIP (IMMEDIATELY AFTER HERO)
