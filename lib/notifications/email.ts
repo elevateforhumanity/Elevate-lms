@@ -1,5 +1,7 @@
-// Email notification system
+// Email notification system - PRODUCTION ENFORCED
+// All email delivery routes through Resend. No mock implementations.
 import { logger } from '@/lib/logger';
+import { sendEmail } from '@/lib/email';
 
 export interface EmailTemplate {
   subject: string;
@@ -17,12 +19,10 @@ export interface EmailNotification {
 
 export class EmailService {
   private static instance: EmailService;
-  private apiKey: string;
   private fromEmail: string;
 
   private constructor() {
-    this.apiKey = process.env.SENDGRID_API_KEY || '';
-    this.fromEmail = process.env.FROM_EMAIL || 'noreply@www.elevateforhumanity.org';
+    this.fromEmail = process.env.EMAIL_FROM || 'elevate4humanityedu@gmail.com';
   }
 
   static getInstance(): EmailService {
@@ -32,21 +32,45 @@ export class EmailService {
     return EmailService.instance;
   }
 
+  /**
+   * PRODUCTION EMAIL SENDER
+   * Routes all email through Resend via lib/email.ts
+   * Throws on misconfiguration - no silent failures
+   */
   async send(notification: EmailNotification): Promise<boolean> {
+    if (!process.env.RESEND_API_KEY) {
+      const error = new Error('RESEND_API_KEY is not configured. Email cannot be sent.');
+      logger.error('Email configuration error', error);
+      throw error;
+    }
+
     try {
-      // In production, integrate with SendGrid, AWS SES, or similar
-      logger.info('Sending email', {
+      const result = await sendEmail({
         to: notification.to,
-        subject: notification.subject
+        subject: notification.subject,
+        html: notification.html,
       });
 
-      // Mock implementation
-      return true;
-    } catch { /* Error handled silently */ 
-      logger.error('Email send error', error as Error, {
-        to: notification.to
+      if (!result.success) {
+        logger.error('Email send failed', new Error(result.error || 'Unknown error'), {
+          to: notification.to,
+          subject: notification.subject,
+        });
+        return false;
+      }
+
+      logger.info('Email sent successfully', {
+        to: notification.to,
+        subject: notification.subject,
+        messageId: result.messageId,
       });
-      return false;
+      return true;
+    } catch (error) {
+      logger.error('Email send error', error as Error, {
+        to: notification.to,
+        subject: notification.subject,
+      });
+      throw error;
     }
   }
 
@@ -128,6 +152,23 @@ export class EmailService {
     });
   }
 
+  // Staff notification for document upload
+  async sendDocumentUploadNotification(
+    staffEmail: string,
+    studentName: string,
+    documentType: string,
+    programName: string
+  ): Promise<boolean> {
+    const template = this.getDocumentUploadTemplate(studentName, documentType, programName);
+    return this.send({
+      to: staffEmail,
+      from: this.fromEmail,
+      subject: template.subject,
+      html: template.html,
+      text: template.text,
+    });
+  }
+
   // Email templates
   private getWelcomeTemplate(userName: string): EmailTemplate {
     return {
@@ -148,7 +189,7 @@ export class EmailService {
               <li>Industry-recognized certifications</li>
             </ul>
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://www.elevateforhumanity.org/dashboard" style="background: #dc2626; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
+              <a href="https://www.elevateforhumanity.org/lms/dashboard" style="background: #dc2626; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
                 Get Started
               </a>
             </div>
@@ -233,11 +274,11 @@ export class EmailService {
     certificateUrl: string
   ): EmailTemplate {
     return {
-      subject: `🎉 Your ${courseName} Certificate is Ready!`,
+      subject: `Your ${courseName} Certificate is Ready!`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #dc2626 0%, #f97316 100%); padding: 40px; text-align: center;">
-            <h1 style="color: white; margin: 0;">🎉 Congratulations!</h1>
+            <h1 style="color: white; margin: 0;">Congratulations!</h1>
           </div>
           <div style="padding: 40px; background: #ffffff;">
             <h2>Hi ${userName},</h2>
@@ -259,18 +300,18 @@ export class EmailService {
 
   private getAchievementTemplate(userName: string, achievementName: string): EmailTemplate {
     return {
-      subject: `🏆 Achievement Unlocked: ${achievementName}`,
+      subject: `Achievement Unlocked: ${achievementName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #f97316 0%, #dc2626 100%); padding: 40px; text-align: center;">
-            <h1 style="color: white; margin: 0;">🏆 Achievement Unlocked!</h1>
+            <h1 style="color: white; margin: 0;">Achievement Unlocked!</h1>
           </div>
           <div style="padding: 40px; background: #ffffff;">
             <h2>Hi ${userName},</h2>
             <p>You've unlocked the <strong>${achievementName}</strong> achievement!</p>
             <p>Keep up the great work and continue your learning journey!</p>
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://www.elevateforhumanity.org/achievements" style="background: #f97316; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
+              <a href="https://www.elevateforhumanity.org/lms/achievements" style="background: #f97316; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
                 View All Achievements
               </a>
             </div>
@@ -279,6 +320,48 @@ export class EmailService {
         </div>
       `,
       text: `Hi ${userName}, You've unlocked the ${achievementName} achievement! Keep up the great work!`,
+    };
+  }
+
+  private getDocumentUploadTemplate(
+    studentName: string,
+    documentType: string,
+    programName: string
+  ): EmailTemplate {
+    return {
+      subject: `Document Review Required: ${studentName} - ${documentType}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <div style="background: #2563eb; padding: 40px; text-align: center;">
+            <h1 style="color: white; margin: 0;">Document Review Required</h1>
+          </div>
+          <div style="padding: 40px; background: #ffffff;">
+            <h2>New Document Upload</h2>
+            <p>A student has uploaded a document that requires review:</p>
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Student:</strong></td>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">${studentName}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Document Type:</strong></td>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">${documentType}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;"><strong>Program:</strong></td>
+                <td style="padding: 10px; border-bottom: 1px solid #eee;">${programName}</td>
+              </tr>
+            </table>
+            <div style="text-align: center; margin: 30px 0;">
+              <a href="https://www.elevateforhumanity.org/admin/documents/review" style="background: #2563eb; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
+                Review Document
+              </a>
+            </div>
+            <p>Please review and approve or reject this document.</p>
+          </div>
+        </div>
+      `,
+      text: `New document upload from ${studentName}: ${documentType} for ${programName}. Review at https://www.elevateforhumanity.org/admin/documents/review`,
     };
   }
 }

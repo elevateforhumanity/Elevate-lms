@@ -154,6 +154,45 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to save document record' }, { status: 500 });
     }
 
+    // PHASE 2: Notify staff of document upload
+    try {
+      // Get student profile for name
+      const { data: studentProfile } = await supabase
+        .from('profiles')
+        .select('full_name, email')
+        .eq('id', user.id)
+        .single();
+
+      // Get admin emails
+      const { data: admins } = await supabase
+        .from('profiles')
+        .select('email')
+        .in('role', ['admin', 'super_admin']);
+
+      if (admins && admins.length > 0) {
+        const { emailService } = await import('@/lib/notifications/email');
+        const studentName = studentProfile?.full_name || studentProfile?.email || 'Unknown Student';
+        
+        // Send notification to all admins
+        for (const admin of admins) {
+          if (admin.email) {
+            await emailService.sendDocumentUploadNotification(
+              admin.email,
+              studentName,
+              docType.name || docType.document_type,
+              programSlug
+            ).catch((err: Error) => {
+              console.error('[Documents API] Staff notification failed:', err);
+            });
+          }
+        }
+        console.log('[Documents API] Staff notifications sent for document upload');
+      }
+    } catch (notifyError) {
+      // Log but don't fail the upload
+      console.error('[Documents API] Staff notification error:', notifyError);
+    }
+
     return NextResponse.json({ 
       success: true, 
       document: docRecord 

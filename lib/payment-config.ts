@@ -105,11 +105,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'Indiana IPLA State Board Exam Fee included ($50)',
       'AI instructor support 24/7',
     ],
-    notIncluded: [
-      'Practical hands-on barber skills training',
-      'State licensure-required instructional hours',
-      'Barber school enrollment',
-    ],
+    notIncluded: [],
     disclaimer: '',
     paymentPlans: [
       { months: 1, monthlyAmount: 4980, totalAmount: 4980, label: 'Pay in Full' },
@@ -136,11 +132,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'Indiana IPLA State Board Exam Fee included',
       'AI instructor support 24/7',
     ],
-    notIncluded: [
-      'Practical hands-on nail technician training',
-      'State licensure-required instructional hours',
-      'Nail technician school enrollment',
-    ],
+    notIncluded: [],
     disclaimer: '',
     paymentPlans: [
       { months: 1, monthlyAmount: 2980, totalAmount: 2980, label: 'Pay in Full' },
@@ -166,11 +158,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'Indiana IPLA State Board Exam Fee included',
       'AI instructor support 24/7',
     ],
-    notIncluded: [
-      'Practical hands-on esthetician training',
-      'State licensure-required instructional hours',
-      'Esthetician school enrollment',
-    ],
+    notIncluded: [],
     disclaimer: '',
     paymentPlans: [
       { months: 1, monthlyAmount: 3480, totalAmount: 3480, label: 'Pay in Full' },
@@ -196,11 +184,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'Indiana IPLA State Board Exam Fee included',
       'AI instructor support 24/7',
     ],
-    notIncluded: [
-      'Practical hands-on cosmetology training',
-      'State licensure-required instructional hours',
-      'Cosmetology school enrollment',
-    ],
+    notIncluded: [],
     disclaimer: '',
     paymentPlans: [
       { months: 1, monthlyAmount: 4980, totalAmount: 4980, label: 'Pay in Full' },
