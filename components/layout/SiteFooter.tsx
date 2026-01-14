@@ -5,7 +5,7 @@ import { ProgramFitNavigator } from '@/components/chatbot/ProgramFitNavigator';
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-gray-900 text-gray-300 border-t-4 border-orange-600 relative z-10 mt-auto">
+    <footer className="bg-gray-900 text-white border-t-4 border-orange-600 relative z-10 mt-auto">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-10">
         {/* Logo, Tagline, and Social */}
         <div className="mb-8">
@@ -14,7 +14,7 @@ export default function SiteFooter() {
               Elevate for Humanity
             </div>
           </Link>
-          <p className="text-gray-400 text-sm max-w-md mb-6">
+          <p className="text-white text-sm max-w-md mb-6">
             100% free career training in healthcare, skilled trades, and
             technology. Get trained, get hired, get paid.
           </p>
@@ -25,7 +25,7 @@ export default function SiteFooter() {
               href="https://www.linkedin.com/company/elevate-for-humanity"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 transition"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-white transition"
               aria-label="Follow us on LinkedIn"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -36,7 +36,7 @@ export default function SiteFooter() {
               href="https://www.youtube.com/@elevateforhumanity"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 transition"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-white transition"
               aria-label="Subscribe on YouTube"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -47,7 +47,7 @@ export default function SiteFooter() {
               href="https://www.facebook.com/profile.php?id=61571046346179"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 transition"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-white transition"
               aria-label="Follow us on Facebook"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -137,7 +137,7 @@ export default function SiteFooter() {
         {/* Legal Links and Copyright */}
         <div className="pt-6 border-t border-gray-800">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-400">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-white">
               <Link
                 href="/privacy-policy"
                 className="hover:text-white transition"
@@ -163,7 +163,7 @@ export default function SiteFooter() {
                 Sitemap
               </Link>
             </div>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-white">
               © {new Date().getFullYear()} Elevate For Humanity. All Rights Reserved.
               {process.env.COMMIT_REF && (
                 <span className="ml-2 opacity-50">

@@ -1544,17 +1544,13 @@ article a:hover {
   color: #ffffff !important;
 }
 
-/* Footer text contrast */
-footer {
-  color: #e2e8f0;  /* Light text on dark background */
-}
-
-footer a {
-  color: #f1f5f9;  /* Lighter for footer links */
+/* Footer text contrast - all white */
+footer,
+footer * {
+  color: #ffffff !important;
 }
 
 footer a:hover {
-  color: #ffffff;
   text-decoration: underline;
 }
 
