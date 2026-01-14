@@ -10,13 +10,21 @@ export default async function PathwayDetailPage({ params }: { params: Promise<{ 
 
   return (
     <main className="w-full">
-      <header className="bg-gradient-to-r from-slate-900 to-slate-800 text-white">
-        <div className="mx-auto max-w-6xl px-6 py-14">
-          <p className="text-gray-300">
-            <Link href="/pathways" className="underline">Workforce Pathways</Link> / {pathway.title}
+      <header className="relative min-h-[350px] flex items-center">
+        <Image
+          src={`/media/pathways/${pathway.slug}.jpg`}
+          alt={pathway.title}
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80" />
+        <div className="relative z-10 mx-auto max-w-6xl px-6 py-14 text-white">
+          <p className="text-white/80">
+            <Link href="/pathways" className="underline hover:text-white">Workforce Pathways</Link> / {pathway.title}
           </p>
           <h1 className="mt-3 text-4xl md:text-5xl font-bold">{pathway.title}</h1>
-          <p className="mt-4 max-w-3xl text-lg text-gray-200">
+          <p className="mt-4 max-w-3xl text-lg text-white/90">
             Credential-backed training aligned to employer demand and funding pathways.
           </p>
 

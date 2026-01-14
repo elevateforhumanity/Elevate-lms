@@ -4,10 +4,18 @@ import Image from "next/image";
 export default function PartnersPage() {
   return (
     <main className="w-full">
-      <header className="bg-gradient-to-r from-slate-900 to-slate-800 text-white">
-        <div className="mx-auto max-w-6xl px-6 py-16">
+      <header className="relative min-h-[400px] flex items-center">
+        <Image
+          src="/media/partner-hero.jpg"
+          alt="Partner with Elevate for Humanity"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80" />
+        <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 text-white">
           <h1 className="text-4xl md:text-5xl font-bold">Partner With Elevate for Humanity</h1>
-          <p className="mt-4 max-w-3xl text-lg text-gray-200">
+          <p className="mt-4 max-w-3xl text-lg text-white/90">
             Plug into workforce infrastructure that reduces hiring risk, improves training completion, and supports
             funding and reimbursement pathways.
           </p>
@@ -52,7 +60,7 @@ export default function PartnersPage() {
                   <li>Structured onboarding and retention support</li>
                 </ul>
                 <div className="mt-5">
-                  <Link href="/contact?type=employer" className="rounded-md bg-black px-5 py-2.5 text-white font-semibold hover:bg-gray-900">
+                  <Link href="/contact?type=employer" className="rounded-md bg-blue-600 px-5 py-2.5 text-white font-semibold hover:bg-blue-700">
                     Employer Intake
                   </Link>
                 </div>
@@ -89,7 +97,7 @@ export default function PartnersPage() {
           </div>
 
           <div className="mt-12 text-center">
-            <Link href="/contact" className="rounded-md bg-black px-7 py-3 text-white font-semibold hover:bg-gray-900">
+            <Link href="/contact" className="rounded-md bg-blue-600 px-7 py-3 text-white font-semibold hover:bg-blue-700">
               Start Partner Intake
             </Link>
           </div>
