@@ -17,7 +17,7 @@
 */
 
 // Pay Backend Integration with Supabase Memory Service
-// Add this to your existing Pay service (pay.elevateforhumanity.institute)
+// Add this to your existing Pay service (pay.elevateforhumanity.org)
 
 const { createClient } = require('@supabase/supabase-js');
 

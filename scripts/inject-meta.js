@@ -94,7 +94,7 @@ function getBaseHTML() {
  * Inject route-specific meta tags
  */
 function injectMeta(html, route, config) {
-  const baseUrl = 'https://elevateforhumanity.institute';
+  const baseUrl = 'https://elevateforhumanity.org';
   const canonicalUrl = `${baseUrl}${route}`;
 
   // Replace title

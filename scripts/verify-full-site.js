@@ -31,7 +31,7 @@ function verifyFullSite() {
     {
       name: 'Has correct canonical URL',
       test: content.includes(
-        'canonical" href="https://elevateforhumanity.institute/"'
+        'canonical" href="https://elevateforhumanity.org/"'
       ),
     },
     {

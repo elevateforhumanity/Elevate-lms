@@ -234,7 +234,7 @@ class EFHMonitor {
     try {
       await this.emailTransporter.sendMail({
         from: process.env.MONITOR_EMAIL,
-        to: process.env.ADMIN_EMAIL || 'admin@elevateforhumanity.institute',
+        to: process.env.ADMIN_EMAIL || 'admin@elevateforhumanity.org',
         subject: `[EFH] ${subject}`,
         html: emailContent,
       });
@@ -258,7 +258,7 @@ class EFHMonitor {
     try {
       await this.emailTransporter.sendMail({
         from: process.env.MONITOR_EMAIL,
-        to: process.env.ADMIN_EMAIL || 'admin@elevateforhumanity.institute',
+        to: process.env.ADMIN_EMAIL || 'admin@elevateforhumanity.org',
         subject: `🚨 [EFH ALERT] ${subject}`,
         html: emailContent,
         priority: 'high',

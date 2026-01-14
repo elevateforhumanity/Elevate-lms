@@ -52,7 +52,7 @@ class DemoProtection {
 
     return {
       error:
-        'Demo Mode: Contact licensing@elevateforhumanity.institute for full access',
+        'Demo Mode: Contact licensing@elevateforhumanity.org for full access',
       demo_contact: DEMO_CONFIG.contact_info,
     };
   }

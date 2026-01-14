@@ -2,7 +2,7 @@
 
 /**
  * Puppeteer Worker - Extract All CSS and Design Tokens
- * Automatically scrapes elevateforhumanity.institute for complete styling
+ * Automatically scrapes elevateforhumanity.org for complete styling
  */
 
 import puppeteer from 'puppeteer';
@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const TARGET_URL = 'https://elevateforhumanity.institute';
+const TARGET_URL = 'https://elevateforhumanity.org';
 const OUTPUT_DIR = path.join(process.cwd(), 'extracted-styles');
 
 async function extractAllCSS() {

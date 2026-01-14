@@ -249,7 +249,7 @@ class PaymentProcessor {
       <p>If you have any questions, please contact:</p>
       <ul>
         <li><strong>Training Partner:</strong> ${partner.supportEmail}</li>
-        <li><strong>Platform Support:</strong> support@elevateforhumanity.institute</li>
+        <li><strong>Platform Support:</strong> support@elevateforhumanity.org</li>
       </ul>
 
       <p>We're excited to support your professional development journey!</p>

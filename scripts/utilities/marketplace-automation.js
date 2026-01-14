@@ -389,7 +389,7 @@ class MarketplaceAutomation {
         content_type: 'digital',
         tags: ['education', 'business', 'workforce', 'lms', 'startup'],
         preview_url:
-          process.env.DEMO_URL || 'https://preview.elevateforhumanity.institute',
+          process.env.DEMO_URL || 'https://preview.elevateforhumanity.org',
         download_url: 'Will be provided after purchase',
       };
 

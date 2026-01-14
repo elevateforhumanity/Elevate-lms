@@ -306,7 +306,7 @@ class PhilanthropySystem {
           tertiary: 'Apply for a Grant',
         },
         contact: {
-          email: 'giving@elevateforhumanity.institute',
+          email: 'giving@elevateforhumanity.org',
           phone: '317-760-7908 ext. 201',
           address: this.philanthropyData.legal.address,
         },
@@ -610,7 +610,7 @@ class PhilanthropySystem {
         ],
         timeline: application.reviewTimeline,
         contact: {
-          email: 'grants@elevateforhumanity.institute',
+          email: 'grants@elevateforhumanity.org',
           phone: '317-760-7908 ext. 202',
         },
       });
@@ -657,7 +657,7 @@ class PhilanthropySystem {
         nextSteps: [
           'You will receive a tax receipt via email',
           'Impact updates will be sent quarterly',
-          'You can track your giving at elevateforhumanity.institute/donor-portal',
+          'You can track your giving at elevateforhumanity.org/donor-portal',
         ],
       });
     } catch (error) {
@@ -722,7 +722,7 @@ class PhilanthropySystem {
           'Ongoing support and recognition',
         ],
         contact: {
-          email: 'volunteer@elevateforhumanity.institute',
+          email: 'volunteer@elevateforhumanity.org',
           phone: '317-760-7908 ext. 203',
         },
       };

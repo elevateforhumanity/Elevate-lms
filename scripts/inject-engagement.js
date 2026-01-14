@@ -8,7 +8,7 @@ const fg = require('fast-glob');
 const cheerio = require('cheerio');
 
 const CONTACT_EMAIL =
-  process.env.CONTACT_EMAIL || 'contact@elevateforhumanity.institute';
+  process.env.CONTACT_EMAIL || 'contact@elevateforhumanity.org';
 const APPLY_URL = process.env.APPLY_URL || 'public/apply.html';
 const CONTACT_URL = process.env.CONTACT_URL || 'connect.html#contact';
 
