@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/programs',
     '/funding',
     '/apprenticeships',
+    '/start',
+    '/employers',
   ];
 
   // Program pages (0.9)
@@ -19,6 +21,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/programs/cna',
     '/programs/cdl-transportation',
     '/programs/barber-apprenticeship',
+    '/programs/cosmetology-apprenticeship',
+    '/programs/esthetician-apprenticeship',
+    '/programs/nail-technician-apprenticeship',
+    '/programs/beauty',
     '/programs/healthcare',
     '/programs/skilled-trades',
     '/programs/business-financial',

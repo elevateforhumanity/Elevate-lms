@@ -1,24 +1,22 @@
-// Service Worker - DISABLED TO PREVENT STALE CACHE
-// Unregister old service worker and clear all caches
+// Service Worker for Elevate for Humanity PWA
+const CACHE_NAME = 'elevate-v1';
+const OFFLINE_URL = '/offline.html';
 
+// Assets to cache on install
+const PRECACHE_ASSETS = [
+  '/',
+  '/offline.html',
+  '/icon-192.png',
+  '/icon-512.png',
+];
+
+// Install event - cache essential assets
 self.addEventListener('install', (event) => {
-  // Skip waiting and activate immediately
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', (event) => {
   event.waitUntil(
-    // Delete ALL caches
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => caches.delete(cacheName))
-      );
-    }).then(() => {
-      // Unregister this service worker
-      return self.registration.unregister();
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(PRECACHE_ASSETS);
     })
   );
-});
   self.skipWaiting();
 });
 
@@ -35,7 +33,6 @@ self.addEventListener('activate', (event) => {
       );
     })
   );
-  // Take control immediately
   return self.clients.claim();
 });
 
@@ -43,11 +40,21 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   // Skip non-GET requests
   if (event.request.method !== 'GET') return;
+  
+  // Skip API requests and external URLs
+  const url = new URL(event.request.url);
+  if (url.pathname.startsWith('/api/') || url.origin !== self.location.origin) {
+    return;
+  }
 
   event.respondWith(
-    // Try network first
     fetch(event.request)
       .then((response) => {
+        // Don't cache non-successful responses
+        if (!response || response.status !== 200 || response.type !== 'basic') {
+          return response;
+        }
+
         // Clone the response
         const responseToCache = response.clone();
 
@@ -61,7 +68,14 @@ self.addEventListener('fetch', (event) => {
       .catch(() => {
         // If network fails, try cache
         return caches.match(event.request).then((response) => {
-          return response || caches.match(OFFLINE_URL);
+          if (response) {
+            return response;
+          }
+          // Return offline page for navigation requests
+          if (event.request.mode === 'navigate') {
+            return caches.match(OFFLINE_URL);
+          }
+          return new Response('Offline', { status: 503 });
         });
       })
   );

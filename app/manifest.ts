@@ -7,13 +7,51 @@ export default function manifest(): MetadataRoute.Manifest {
     description:
       'Free career training in healthcare, skilled trades, and business',
     start_url: '/',
-    display: 'browser',
+    display: 'standalone',
+    orientation: 'portrait',
     background_color: '#ffffff',
     theme_color: '#f97316',
+    categories: ['education', 'business'],
     icons: [
+      {
+        src: '/icon-72.png',
+        sizes: '72x72',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-96.png',
+        sizes: '96x96',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-128.png',
+        sizes: '128x128',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-144.png',
+        sizes: '144x144',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-152.png',
+        sizes: '152x152',
+        type: 'image/png',
+        purpose: 'any',
+      },
       {
         src: '/icon-192.png',
         sizes: '192x192',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-384.png',
+        sizes: '384x384',
         type: 'image/png',
         purpose: 'any',
       },

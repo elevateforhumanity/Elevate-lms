@@ -46,6 +46,7 @@ export default function CheckoutPage() {
   const searchParams = useSearchParams();
   const program = params.program as string;
   const method = searchParams.get('method') || 'stripe';
+  const applicationId = searchParams.get('applicationId');
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -111,6 +112,7 @@ export default function CheckoutPage() {
           programSlug: program,
           price: programData.price,
           paymentType: 'full',
+          applicationId: applicationId,
         }),
       });
 

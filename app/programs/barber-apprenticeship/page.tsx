@@ -61,7 +61,7 @@ export default function BarberApprenticeshipPage() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
-              href="/apply?program=barber-apprenticeship"
+              href="/programs/barber-apprenticeship/apply"
               className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white hover:bg-blue-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
               Apply Now
@@ -361,7 +361,7 @@ export default function BarberApprenticeshipPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/apply?program=barber-apprenticeship"
+              href="/programs/barber-apprenticeship/apply"
               className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-purple-600 hover:bg-purple-50 transition-all shadow-xl"
             >
               Apply Now

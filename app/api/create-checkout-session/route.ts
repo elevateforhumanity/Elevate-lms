@@ -36,6 +36,7 @@ export async function POST(request: NextRequest) {
       programSlug,
       price,
       paymentType = 'full',
+      applicationId,
     } = await request.json();
 
     // Enable payment methods (Affirm removed per request)
@@ -60,6 +61,7 @@ export async function POST(request: NextRequest) {
         programName,
         programSlug,
         paymentType,
+        applicationId: applicationId || '',
       },
     };
 

@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 
 // Adjust this one number to change the displayed tuition
 const PROGRAM_FEE_AMOUNT = 4980; // dollars - flat program fee
-const AMOUNT_CENTS = TUITION_AMOUNT * 100; // Affirm requires cents
+const AMOUNT_CENTS = PROGRAM_FEE_AMOUNT * 100; // Affirm requires cents
 
 export default function PaymentOptionsClient() {
   const [affirmLoaded, setAffirmLoaded] = useState(false);
@@ -114,7 +114,7 @@ export default function PaymentOptionsClient() {
         <p className="text-black">
           Typical tuition:{' '}
           <span className="font-semibold">
-            ${TUITION_AMOUNT.toLocaleString()}
+            ${PROGRAM_FEE_AMOUNT.toLocaleString()}
           </span>
           . If public funding isn't available in your county, choose one of the
           secure payment options below.
@@ -158,7 +158,7 @@ export default function PaymentOptionsClient() {
           Pay over time with flexible monthly payments. See your options for
           tuition around{' '}
           <span className="font-semibold">
-            ${TUITION_AMOUNT.toLocaleString()}
+            ${PROGRAM_FEE_AMOUNT.toLocaleString()}
           </span>
           .
         </p>

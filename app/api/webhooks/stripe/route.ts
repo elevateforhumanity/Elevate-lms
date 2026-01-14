@@ -188,6 +188,97 @@ export async function POST(request: NextRequest) {
         break;
       }
 
+      // Handle barber apprenticeship enrollment
+      if (session.metadata?.programSlug === 'barber-apprenticeship' && session.metadata?.applicationId) {
+        try {
+          const applicationId = session.metadata.applicationId;
+          
+          // Update application status to paid
+          const { error: appError } = await supabase
+            .from('applications')
+            .update({
+              status: 'paid',
+              payment_completed_at: new Date().toISOString(),
+              stripe_session_id: session.id,
+            })
+            .eq('id', applicationId);
+
+          if (appError) {
+            logger.error('Error updating barber application:', appError);
+          }
+
+          // Update RAPIDS registration status
+          await supabase
+            .from('rapids_registrations')
+            .update({
+              status: 'active',
+              payment_completed_at: new Date().toISOString(),
+            })
+            .eq('application_id', applicationId);
+
+          // Create LMS enrollment
+          const { data: application } = await supabase
+            .from('applications')
+            .select('*')
+            .eq('id', applicationId)
+            .single();
+
+          if (application) {
+            // Get or create user profile
+            let userId = application.user_id;
+            
+            if (!userId) {
+              // Create profile for new user
+              const { data: profile } = await supabase
+                .from('profiles')
+                .insert({
+                  email: application.email,
+                  full_name: `${application.first_name} ${application.last_name}`,
+                  role: 'student',
+                })
+                .select('id')
+                .single();
+              
+              userId = profile?.id;
+            }
+
+            if (userId) {
+              // Create enrollment record
+              await supabase.from('enrollments').insert({
+                user_id: userId,
+                program_slug: 'barber-apprenticeship',
+                status: 'active',
+                payment_status: 'paid',
+                payment_amount: (session.amount_total || 0) / 100,
+                enrolled_at: new Date().toISOString(),
+              });
+            }
+          }
+
+          // Log payment
+          await supabase.from('payment_logs').insert({
+            stripe_session_id: session.id,
+            stripe_payment_id: session.payment_intent as string,
+            amount: (session.amount_total || 0) / 100,
+            currency: 'usd',
+            status: 'completed',
+            metadata: {
+              programSlug: 'barber-apprenticeship',
+              applicationId,
+              type: 'apprenticeship',
+            },
+          });
+
+          logger.info('✅ Barber apprenticeship enrollment completed:', applicationId);
+        } catch (err: any) {
+          logger.error(
+            'Error processing barber apprenticeship enrollment:',
+            err instanceof Error ? err : new Error(String(err))
+          );
+        }
+        break;
+      }
+
       // Check if this is a partner course enrollment (new system)
       if (session.metadata?.course_id && session.metadata?.provider_id) {
         try {

@@ -58,7 +58,7 @@ export default function LMSLandingPage() {
       instructor: 'Dr. Sarah Johnson',
       students: 'Multiple cohorts',
       rating: 4.9,
-      image: '/images/course-healthcare.jpg',
+      image: '/hero-images/healthcare-category.jpg',
       href: '/programs/healthcare',
       duration: '4-6 weeks',
       level: 'Beginner',
@@ -68,7 +68,7 @@ export default function LMSLandingPage() {
       instructor: 'Mike Rodriguez',
       students: 'Multiple cohorts',
       rating: 4.8,
-      image: '/images/course-hvac.jpg',
+      image: '/hero-images/skilled-trades-category.jpg',
       href: '/programs/hvac-technician',
       duration: '6-12 months',
       level: 'Beginner to Advanced',
@@ -78,7 +78,7 @@ export default function LMSLandingPage() {
       instructor: 'Jennifer Lee',
       students: 'Multiple cohorts',
       rating: 4.9,
-      image: '/images/course-business.jpg',
+      image: '/hero-images/business-category.jpg',
       href: '/programs/business',
       duration: '8-10 weeks',
       level: 'Intermediate',
@@ -88,19 +88,19 @@ export default function LMSLandingPage() {
       instructor: 'James Wilson',
       students: 'Multiple cohorts',
       rating: 4.9,
-      image: '/images/course-cdl.jpg',
+      image: '/hero-images/cdl-transportation-category.jpg',
       href: '/programs/cdl-transportation',
       duration: '3-4 weeks',
       level: 'Beginner',
     },
     {
-      title: 'Welding Certification',
-      instructor: 'Robert Martinez',
+      title: 'Barber Apprenticeship',
+      instructor: 'Licensed Barber Mentors',
       students: 'Multiple cohorts',
       rating: 4.8,
-      image: '/images/course-welding.jpg',
-      href: '/programs/skilled-trades',
-      duration: '12-16 weeks',
+      image: '/hero-images/barber-hero.jpg',
+      href: '/programs/barber-apprenticeship',
+      duration: '15-17 months',
       level: 'Beginner to Advanced',
     },
     {
@@ -108,7 +108,7 @@ export default function LMSLandingPage() {
       instructor: 'Dr. Emily Chen',
       students: 'Multiple cohorts',
       rating: 4.9,
-      image: '/images/course-medical-assistant.jpg',
+      image: '/media/programs/cna-hd.jpg',
       href: '/programs/healthcare',
       duration: '8-12 weeks',
       level: 'Beginner',
@@ -202,7 +202,7 @@ export default function LMSLandingPage() {
             <div className="relative">
               <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
                 <Image
-                  src="/images/heroes/hero-homepage.jpg"
+                  src="/images/efh/hero/hero-main-clean.jpg"
                   alt="LMS Platform"
                   fill
                   className="object-cover"

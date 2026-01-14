@@ -7,6 +7,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
+          // Admin and portal pages
           '/admin/',
           '/admin-login',
           '/api/',
@@ -19,6 +20,8 @@ export default function robots(): MetadataRoute.Robots {
           '/shop/',
           '/lms/(app)/',
           '/programs/admin/',
+          
+          // Employer dashboard pages
           '/employer/dashboard',
           '/employer/analytics',
           '/employer/candidates',
@@ -31,11 +34,18 @@ export default function robots(): MetadataRoute.Robots {
           '/employer/reports',
           '/employer/settings',
           '/employer/verification',
+          
+          // Checkout and payment
           '/checkout/',
           '/payment/',
+          
+          // Auth and verification
           '/reset/',
           '/verify-email',
           '/verify-identity',
+          '/auth/',
+          
+          // Internal tools
           '/usermanagement',
           '/approvals',
           '/messages',
@@ -48,11 +58,18 @@ export default function robots(): MetadataRoute.Robots {
           '/file-manager',
           '/curriculumupload',
           '/documents/upload',
-          '/auth/',
+          
+          // System pages
           '/_next/',
           '/test-images',
           '/cache-diagnostic',
           '/sentry-test',
+          
+          // Redirect pages (prevent duplicate content)
+          '/license',
+          '/donations',
+          '/onboarding/',
+          '/apprentice/',
         ],
       },
     ],
