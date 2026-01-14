@@ -1,185 +1,214 @@
-# Buyer Demo Script (10-12 Minutes)
+# Buyer Demo Script
 
-## Pre-Demo Setup
-- Browser open to production or staging URL
-- Logged in as admin user
-- Sample case data seeded (pending_signatures, active, completed)
+**Duration:** 10-12 minutes  
+**Format:** Live walkthrough via Google Meet  
+**Goal:** Show platform capabilities, establish credibility, move to pricing discussion
+
+---
+
+## Pre-Demo Setup (Before Call)
+
+1. Open browser tabs:
+   - `/store`
+   - `/license`
+   - `/demo/learner`
+   - `/demo/admin`
+   - `/demo/employer`
+   - `/schedule`
+
+2. Ensure Google Meet is ready
+
+3. Have `lib/pricing.ts` open for reference if pricing questions arise
 
 ---
 
 ## Minute 0-1: Opening
-**Route: Homepage**
 
-"Thank you for joining. Today I'll show you how our platform automates workforce program management from enrollment through completion.
+**Say:**
+> "Thanks for joining. I'm going to walk you through our workforce training platform — we'll look at it from three perspectives: learner, admin, and employer. Then we can discuss how it might fit your organization."
 
-The key differentiator: this is a system of record with signature-driven activation. Once required parties sign, the system takes over—creating tasks, logging events, and generating compliance reports automatically."
-
----
-
-## Minute 1-2: Platform Overview
-**Route: /store**
-
-"This is our platform licensing page. We provide the complete automation infrastructure:
-- Automated case enrollment
-- Multi-party signature workflows
-- Event-based task automation
-- Audit-ready reporting
-
-Pricing is scope-based depending on your region and requirements."
-
-**Click: View Licensing Options**
+**Do:** Share screen on `/store`
 
 ---
 
-## Minute 2-3: Licensing Details
-**Route: /license (redirects to /pricing/sponsor-licensing)**
+## Minute 1-2: Store Overview
 
-"The platform serves as the system of record for your programs. 
+**Say:**
+> "This is our store page. We offer digital products for career development, but the main offering is platform licensing — a white-label LMS built specifically for workforce training."
 
-Key points:
-- Program activation is driven by required signatures
-- Tasks and milestones initialize automatically
-- All actions are logged for audit and reimbursement
+**Point out:**
+- Platform license card (starting at $4,999)
+- Three tiers available
+- "Schedule a Demo" CTA
 
-Credentials and instructional content can be provided by you or your partners. We provide the infrastructure."
-
----
-
-## Minute 3-5: Admin Dashboard Demo
-**Route: /demo/admin**
-
-"Let me show you the admin view. This is where program staff manage cases.
-
-[Point to case list]
-Here you see all enrollment cases with their current status:
-- Draft: Application received
-- Pending Signatures: Waiting for required parties
-- Active: All signatures complete, tasks initialized
-- Completed: Program finished
-
-[Click into a case]
-Each case shows:
-- The three-party signature status (student, employer, program holder)
-- Auto-generated tasks with due dates
-- Complete event timeline for audit
-
-Notice the tasks were created automatically when signatures completed. No manual setup required."
+**Click:** "View Licensing" → navigate to `/license`
 
 ---
 
-## Minute 5-7: Signature Flow Demo
-**Route: /demo/admin → Case Detail**
+## Minute 2-4: License Landing Page
 
-"Let me show you the signature-driven activation.
+**Say:**
+> "This is the licensing overview. The platform is built for three audiences: training providers, workforce organizations, and employer partners."
 
-[Show a pending_signatures case]
-This case is waiting for the employer signature. Watch what happens when it's added.
+**Scroll through:**
+- Hero banner
+- "Built for" section
+- Module cards
 
-[Simulate or show completed case]
-Once all three signatures are in:
-1. System validates completeness
-2. Case status changes to 'active'
-3. Tasks are auto-created from templates
-4. Audit events are logged
+**Say:**
+> "The platform includes LMS delivery, program management, intake workflows, and employer partnerships — all in one system."
 
-This is the core automation. No staff intervention needed."
+**Click:** "View Demo Pages" → navigate to `/demo`
 
 ---
 
-## Minute 7-8: Learner View
-**Route: /demo/learner**
+## Minute 4-6: Learner Experience
 
-"From the student's perspective, they see:
-- Their case status
-- Required tasks with due dates
-- Document upload interface
-- Progress toward completion
+**Click:** Learner Experience card → `/demo/learner`
 
-Everything is role-based. Students only see their own data."
+**Say:**
+> "This is what a learner sees. They have their program dashboard, progress tracking, and funding pathway information."
 
----
+**Point out:**
+- Program card with schedule
+- Progress bar and module completion
+- Funding pathway section (WIOA, WRG, etc.)
+- Support resources
 
-## Minute 8-9: Employer/Partner View
-**Route: /demo/employer (if exists) or describe**
-
-"Employers and partners have their own portal:
-- Cases assigned to them
-- Signature requests
-- Hours verification workflow
-- Compliance documentation
-
-Each party sees only what's relevant to their role."
+**Say:**
+> "Everything a participant needs is in one place — no jumping between systems."
 
 ---
 
-## Minute 9-10: Audit & Reporting
-**Route: /demo/admin → Case Events or Reports**
+## Minute 6-8: Admin Dashboard
 
-"Every action creates an audit record:
-- Case created
-- Signature added
-- Status changed
-- Task completed
-- Document uploaded
+**Click:** Back to Demo Hub → Admin card → `/demo/admin`
 
-This is append-only—nothing can be deleted or modified. 
+**Say:**
+> "Now let's look at the admin view. Program managers see their programs, enrollment pipeline, and reporting tools."
 
-For WIOA, RAPIDS, or agency reporting, you can export:
-- Case timelines
-- Completion reports
-- Compliance summaries
+**Point out:**
+- Programs table
+- Enrollment pipeline (Intake → Eligible → Enrolled → Active → Completed)
+- Recent activity feed
+- Export/reporting options
 
-All data is already structured for your reporting requirements."
+**Say:**
+> "Compliance reporting is built in — you can export enrollment data, completion records, and attendance for grant reporting."
 
 ---
 
-## Minute 10-11: Implementation Overview
-**Route: Stay on admin or return to /license**
+## Minute 8-10: Employer Portal
 
-"Implementation typically takes 6-8 weeks:
-- Weeks 1-2: Environment setup
-- Weeks 3-4: Data migration and integration
-- Weeks 5-6: Training and pilot
-- Week 7+: Production launch
+**Click:** Back to Demo Hub → Employer card → `/demo/employer`
 
-We handle the technical deployment. Your team focuses on program operations."
+**Say:**
+> "For employer partners, there's a dedicated portal. They see their candidate pipeline, open roles, and hiring support information."
 
----
+**Point out:**
+- Candidate pipeline with match scores
+- Open roles management
+- Hiring incentive information
+- Apprenticeship tracking
 
-## Minute 11-12: Next Steps
-**Route: /schedule**
-
-"To move forward:
-1. We'll have a scoping call to understand your specific requirements
-2. I'll prepare a licensing proposal based on your region and volume
-3. We'll plan the implementation timeline
-
-You can schedule directly here, or I can send you a calendar link.
-
-Questions?"
+**Say:**
+> "This connects your training programs directly to employer hiring — candidates flow from completion to placement."
 
 ---
 
-## Handling Common Questions
+## Minute 10-11: Integrations (If Asked)
 
-**Q: Can we customize the task templates?**
-"Yes. Task templates are data-driven. We configure them during implementation based on your program requirements."
+**Navigate to:** `/license/integrations`
 
-**Q: How does this integrate with our existing systems?**
-"Integrations are supported via API and workflow configuration. Scope depends on your partner environment. We'll discuss specifics during the scoping call."
+**Say (for Salesforce specifically):**
+> "Salesforce integration is supported via API and webhooks. The implementation depends on your Salesforce setup — we can discuss specifics during scoping."
 
-**Q: What about data security?**
-"Row-level security is enforced at the database level. Each user only sees data they're authorized to access. Audit logs are append-only and tamper-evident."
+**Do NOT say:**
+- "It's fully integrated"
+- "It works out of the box"
+- "We have a native connector"
 
-**Q: Is this WIOA/RAPIDS compliant?**
-"The platform is designed for compliance. Audit logging, signature tracking, and reporting are built for WIOA and RAPIDS requirements. We can walk through specific compliance needs during scoping."
+**Safe language:**
+> "Integration-ready: available via API/webhooks and implementation configuration."
 
 ---
 
-## Post-Demo Follow-Up
+## Minute 11-12: Pricing & Next Steps
 
-Within 24 hours:
-1. Send thank-you email with deck attached
-2. Include link to /schedule for follow-up
-3. Note any specific requirements discussed
-4. Prepare scoping questions for next call
+**Navigate to:** `/license/pricing`
+
+**Say:**
+> "For pricing, we have three tiers. Core Platform starts at $4,999 for single-site deployment. School License at $15,000 includes white-label branding and compliance tools. Enterprise at $50,000 adds the employer portal and AI tutor."
+
+**Point out:**
+- Monthly option ($499/mo) for flexibility
+- What's included vs implementation-dependent
+
+**Say:**
+> "Final pricing depends on your scope and implementation needs. The next step would be a scoping call to understand your requirements and put together a proposal."
+
+---
+
+## Closing
+
+**Say:**
+> "What questions do you have? And would it be helpful to schedule a follow-up to discuss your specific use case?"
+
+**If they want to proceed:**
+> "Great — I'll send over a summary and we can schedule a scoping call to discuss implementation."
+
+**Navigate to:** `/schedule` (show them the scheduling page)
+
+---
+
+## Objection Handling
+
+### "Is Salesforce fully integrated?"
+
+**Say:**
+> "Salesforce integration is supported via API and webhooks. The specific implementation depends on your Salesforce configuration — we'd scope that during implementation planning."
+
+### "Can we customize it?"
+
+**Say:**
+> "White-label branding is included with School License and above. Additional customization beyond standard configuration is available through implementation support."
+
+### "What about compliance reporting?"
+
+**Say:**
+> "The platform includes enrollment reports, completion tracking, attendance records, and data exports. Specific compliance requirements vary by funding source — we'd discuss your needs during scoping."
+
+### "Is there a trial?"
+
+**Say:**
+> "We offer live demos like this one, and the demo pages are publicly accessible for you to explore. For a hands-on trial, we'd discuss that as part of the licensing conversation."
+
+---
+
+## Key URLs for Demo
+
+| Page | URL | Purpose |
+|------|-----|---------|
+| Store | `/store` | Entry point, shows offering |
+| License | `/license` | Main licensing page |
+| Features | `/license/features` | Detailed module info |
+| Integrations | `/license/integrations` | Salesforce, etc. |
+| Pricing | `/license/pricing` | Three tiers + monthly |
+| Demo Hub | `/demo` | Choose demo track |
+| Learner Demo | `/demo/learner` | Participant view |
+| Admin Demo | `/demo/admin` | Program manager view |
+| Employer Demo | `/demo/employer` | Partner view |
+| Schedule | `/schedule` | Book follow-up |
+
+---
+
+## Pricing Reference (from lib/pricing.ts)
+
+| Tier | Price | Key Inclusions |
+|------|-------|----------------|
+| Core Platform | $4,999 | Unlimited students, LMS, 1 year updates |
+| School License | $15,000 | White-label, compliance reporting, lifetime updates |
+| Enterprise | $50,000 | Employer portal, AI tutor, dedicated support |
+| Monthly | $499/mo | Up to 100 students, cancel anytime |
+
+**Disclaimer to use:** "Final pricing depends on scope, branding, modules, and implementation support."

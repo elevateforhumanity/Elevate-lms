@@ -1,4 +1,3 @@
-// @ts-nocheck
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -7,7 +6,14 @@ import { verifyWebhookSignature } from '@/lib/store/stripe';
 import { generateLicenseKey, hashLicenseKey } from '@/lib/store/license';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
-import { toError, toErrorMessage } from '@/lib/safe';
+import { toErrorMessage } from '@/lib/safe';
+
+interface ProductRecord {
+  id: string;
+  title: string;
+  repo?: string;
+  download_url?: string;
+}
 
 export async function POST(req: Request) {
   try {
@@ -31,7 +37,7 @@ export async function POST(req: Request) {
 
     // Handle checkout.session.completed event
     if (event.type === 'checkout.session.completed') {
-      const session = event.data.object;
+      const session = event.data.object as { metadata?: { productId?: string }; customer_email?: string };
       const productId = session.metadata?.productId;
       const email = session.customer_email;
 
@@ -50,7 +56,7 @@ export async function POST(req: Request) {
         .from('products')
         .select('*')
         .eq('id', productId)
-        .single();
+        .single<ProductRecord>();
 
       if (!product) {
         logger.error('Product not found:', productId);
@@ -105,14 +111,13 @@ export async function POST(req: Request) {
         logger.info('License email sent to:', email);
       } catch (emailError) {
         logger.error('Failed to send license email:', emailError);
-        // Still return success - license is stored in database
       }
 
       return Response.json({ received: true });
     }
 
     return Response.json({ received: true });
-  } catch { /* Error handled silently */ 
+  } catch (error) {
     logger.error(
       'Webhook error:',
       error instanceof Error ? error : new Error(String(error))

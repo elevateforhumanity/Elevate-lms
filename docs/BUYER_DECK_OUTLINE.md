@@ -1,186 +1,240 @@
-# Elevate Platform Licensing Deck - Slide Outline
+# Buyer Deck Outline
+
+**Purpose:** Slide-by-slide outline for platform licensing presentation  
+**Matches:** Live implementation at elevateforhumanity.org  
+**Pricing Source:** `lib/pricing.ts`
+
+---
 
 ## Slide 1: Title
-**Elevate for Humanity**
-Enterprise Workforce Automation Platform
 
-- System of record for workforce programs
-- Signature-driven activation
-- Automated task initialization
-- Audit-ready compliance reporting
+**Title:** License the Elevate LMS + Workforce Hub
+
+**Subtitle:** White-label workforce training platform for training providers, workforce boards, and employer partners
+
+**Visual:** Platform dashboard mockup
 
 ---
 
 ## Slide 2: The Problem
-**Manual Workflows Don't Scale**
 
-- Paper-based enrollment and signatures
-- No unified case record across parties
-- Manual task assignment and tracking
-- Audit trails scattered across systems
-- Compliance reporting requires manual compilation
+**Title:** Workforce Training Needs Modern Infrastructure
 
----
-
-## Slide 3: What the Platform Is
-**Automation-First Infrastructure**
-
-- The platform serves as the system of record for programs
-- Program activation is driven by required signatures
-- Tasks, milestones, and reporting initialize automatically
-- All actions logged for audit and reimbursement purposes
+**Bullets:**
+- Training providers struggle with disconnected systems
+- Compliance reporting is manual and error-prone
+- Employer partnerships lack structured pipelines
+- Reentry and underserved populations need integrated support
 
 ---
 
-## Slide 4: System Architecture
-**Case Spine + Event-Driven Automation**
+## Slide 3: The Solution
 
+**Title:** One Platform for the Entire Workforce Ecosystem
+
+**Bullets:**
+- LMS delivery with progress tracking and certificates
+- Intake and eligibility workflows for funded programs
+- Employer portal with candidate matching
+- Apprenticeship oversight and OJT tracking
+- Compliance-ready reporting
+
+**Live Page:** `/license`
+
+---
+
+## Slide 4: Built For
+
+**Title:** Who Uses Elevate
+
+**Three columns:**
+
+| Training Providers | Workforce Organizations | Employers |
+|-------------------|------------------------|-----------|
+| Community colleges | Reentry programs | Apprenticeship sponsors |
+| Trade schools | Workforce boards | Hiring partners |
+| Certification programs | WIOA providers | OJT employers |
+
+**Live Page:** `/license` (Built For section)
+
+---
+
+## Slide 5: Platform Modules
+
+**Title:** What's Included
+
+**Four module cards:**
+
+1. **LMS Delivery** — Course management, progress tracking, certificates
+2. **Programs & Pathways** — Career pathways, prerequisites, cohorts
+3. **Intake & Eligibility** — Screening, document collection, routing
+4. **Employer & Apprenticeship** — Partner portals, hiring pipelines, OJT
+
+**Live Page:** `/license/features`
+
+---
+
+## Slide 6: Learner Experience Demo
+
+**Title:** Learner Dashboard
+
+**What to show:**
+- Program enrollment and progress
+- Module completion tracking
+- Funding pathway information
+- Support resources
+
+**Live Page:** `/demo/learner`
+
+---
+
+## Slide 7: Admin Experience Demo
+
+**Title:** Program Manager Dashboard
+
+**What to show:**
+- Program management table
+- Enrollment pipeline (Intake → Eligible → Enrolled → Active → Completed)
+- Reporting and data exports
+- Compliance documentation
+
+**Live Page:** `/demo/admin`
+
+---
+
+## Slide 8: Employer Experience Demo
+
+**Title:** Employer Partner Portal
+
+**What to show:**
+- Candidate pipeline with match scores
+- Open roles management
+- Hiring incentive information
+- Apprenticeship tracking
+
+**Live Page:** `/demo/employer`
+
+---
+
+## Slide 9: Integrations
+
+**Title:** Connect With Your Systems
+
+**Integration list:**
+
+| Integration | Status | Description |
+|-------------|--------|-------------|
+| Salesforce | Integration-ready | CRM sync via API/webhooks |
+| Supabase | Included | Auth + database infrastructure |
+| Email Providers | Configurable | Resend, SendGrid, SMTP |
+| Credentialing | Configurable | Certificate verification |
+
+**Note:** "Salesforce integration is supported via API/workflow configuration; implementation depends on partner environment."
+
+**Live Page:** `/license/integrations`
+
+---
+
+## Slide 10: Pricing
+
+**Title:** Platform Licensing
+
+**Three tiers (from `lib/pricing.ts`):**
+
+| Core Platform | School License | Enterprise |
+|---------------|----------------|------------|
+| **$4,999** | **$15,000** | **$50,000** |
+| Single-site deployment | White-label + compliance | Full deployment + AI |
+| Unlimited students | Partner dashboard | Employer portal |
+| 1 year updates | WIOA reporting | Dedicated support |
+| | Lifetime updates | Custom integrations |
+
+**Monthly option:** $499/month for up to 100 students
+
+**Disclaimer:** Final pricing depends on scope, branding, modules, and implementation support.
+
+**Live Page:** `/license/pricing`
+
+---
+
+## Slide 11: What's Included vs Implementation
+
+**Title:** License Includes
+
+**Included:**
+- All platform modules
+- White-label branding (School+)
+- Standard integrations
+- Updates and support
+
+**Implementation-dependent:**
+- Custom integrations beyond standard
+- Data migration
+- Custom development
+- Ongoing managed services
+- Training (available separately)
+
+**Live Page:** `/license/pricing` (What's Included section)
+
+---
+
+## Slide 12: Live Demo Flow
+
+**Title:** See It In Action
+
+**Demo path:**
 ```
-enrollment_cases (canonical record)
-    ↓
-apprentice_agreements (multi-party signatures)
-    ↓
-[DB Trigger: on_signature_added]
-    ↓
-checkSignatureCompleteness()
-    ↓
-case_tasks (auto-initialized from templates)
-    ↓
-case_events (append-only audit log)
+/store → /license → /demo → /schedule
 ```
 
----
+**Three demo tracks:**
+1. Learner Experience → `/demo/learner`
+2. Admin Dashboard → `/demo/admin`
+3. Employer Portal → `/demo/employer`
 
-## Slide 5: Signature-Driven Activation
-**Three-Party Signature Model**
+**CTA:** Schedule a live walkthrough via Google Meet
 
-- Student signature (enrollment consent)
-- Employer signature (OJT commitment)
-- Program holder signature (sponsorship agreement)
-- System validates completeness automatically
-- Case activates only when all required signatures received
+**Live Page:** `/license/demo`
 
 ---
 
-## Slide 6: Automated Task Initialization
-**Role-Based Task Templates**
+## Slide 13: Next Steps
 
-When case activates, system auto-creates:
-- Document upload tasks (student)
-- Verification tasks (program holder)
-- RAPIDS registration (program holder)
-- Orientation completion (student)
-- Employer agreement (employer)
+**Title:** Ready to Get Started?
 
-10 tasks seeded for barber apprenticeship program.
+**Process:**
+1. **Discovery** — We learn about your organization
+2. **Platform Tour** — Walk through all three experiences
+3. **Scoping** — Discuss licensing tier and implementation
+4. **Proposal** — Receive formal quote and timeline
 
----
+**CTA:** Schedule a Demo
 
-## Slide 7: Audit & Compliance Ledger
-**Append-Only Event Logging**
-
-Every action creates an audit record:
-- `case_created`
-- `signature_added`
-- `status_changed`
-- `tasks_initialized`
-- `task_completed`
-- `document_uploaded`
-- `hours_verified`
-
-Exportable for WIOA, RAPIDS, and agency reporting.
+**Live Page:** `/schedule`
 
 ---
 
-## Slide 8: Demo - Admin View
-**[Screenshot: /demo/admin]**
+## Slide 14: Contact
 
-- Case management dashboard
-- Signature status tracking
-- Task completion monitoring
-- Audit event timeline
+**Title:** Let's Talk
 
----
+**Primary CTA:** Schedule a Demo → `/schedule`
 
-## Slide 9: Demo - Learner View
-**[Screenshot: /demo/learner]**
+**Alternative:** Contact us directly
 
-- Personal case status
-- Required tasks and due dates
-- Document upload interface
-- Progress tracking
+**Website:** elevateforhumanity.org/license
 
 ---
 
-## Slide 10: Demo - Employer/Partner View
-**[Screenshot: /demo/employer]**
+## Appendix: Pricing Evidence
 
-- Assigned cases
-- Signature requests
-- Verification tasks
-- Hours approval workflow
+All pricing derived from repository evidence:
 
----
+| Tier | Price | Source |
+|------|-------|--------|
+| Core Platform | $4,999 | `app/data/store-products.ts:117` |
+| School License | $15,000 | `app/data/store-products.ts:145` |
+| Enterprise | $50,000 | `app/data/store-products.ts:175` |
+| Monthly | $499/mo | `app/data/store-products.ts:205` |
 
-## Slide 11: Licensing Model
-**Scope-Based Platform Licensing**
-
-Licensing covers:
-- Platform access and automation infrastructure
-- Case spine and workflow engine
-- Audit logging and compliance reporting
-- API access for integrations
-
-Pricing varies by scope, region, and automation requirements.
-
-Credentials and instructional partners may be provided by licensee.
-
----
-
-## Slide 12: Implementation Overview
-**Deployment Timeline**
-
-- Week 1-2: Environment setup and configuration
-- Week 3-4: Data migration and integration
-- Week 5-6: User training and pilot
-- Week 7+: Production launch and support
-
-Typical implementation: 6-8 weeks.
-
----
-
-## Slide 13: Why License vs Build
-**Build vs Buy Analysis**
-
-| Build In-House | License Platform |
-|----------------|------------------|
-| 12-18 months | 6-8 weeks |
-| $500K-$1M+ dev cost | Scope-based licensing |
-| Ongoing maintenance | Managed updates |
-| Compliance risk | Audit-ready |
-| No proven track record | Production-tested |
-
----
-
-## Slide 14: Next Steps
-**Schedule a Demo**
-
-1. Live platform walkthrough (30 min)
-2. Scope discussion and requirements
-3. Licensing proposal
-4. Implementation planning
-
-Contact:
-- Phone: (317) 314-3757
-- Email: elevate4humanityedu@gmail.com
-- Schedule: /schedule
-
----
-
-## Data Sources (Repo-Derived)
-
-- Case spine: `supabase/migrations/20260114_case_spine_and_workflow.sql`
-- Signature validation: `lib/workflow/case-management.ts`
-- Task templates: `task_templates` table (10 barber tasks)
-- Audit logging: `lib/logging/auditLog.ts`, `case_events` table
-- Compliance score: 87/100 (docs/AUTOMATION_COMPLIANCE_CHECKLIST.md)
+Canonical source: `lib/pricing.ts`

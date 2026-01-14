@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Octokit } from '@octokit/rest';
 
 /**
@@ -14,7 +13,7 @@ export async function cloneRepoForCustomer({
   targetOwner: string;
   targetRepo: string;
   githubToken: string;
-}) {
+}): Promise<{ success: boolean; repoUrl?: string; cloneUrl?: string; error?: string }> {
   const octokit = new Octokit({ auth: githubToken });
 
   const [sourceOwner, sourceName] = sourceRepo.split('/');
@@ -35,7 +34,7 @@ export async function cloneRepoForCustomer({
       repoUrl: data.html_url,
       cloneUrl: data.clone_url,
     };
-  } catch { /* Error handled silently */ 
+  } catch (templateError) {
     // Fallback: create fork if template doesn't work
     try {
       const { data } = await octokit.repos.createFork({
@@ -55,10 +54,10 @@ export async function cloneRepoForCustomer({
         repoUrl: data.html_url,
         cloneUrl: data.clone_url,
       };
-    } catch (data: any) {
+    } catch (forkError) {
       return {
         success: false,
-        error: forkError.message,
+        error: forkError instanceof Error ? forkError.message : String(forkError),
       };
     }
   }
@@ -77,7 +76,7 @@ export async function grantRepoAccess({
   repo: string;
   username: string;
   githubToken: string;
-}) {
+}): Promise<{ success: boolean; error?: string }> {
   const octokit = new Octokit({ auth: githubToken });
 
   try {
@@ -89,7 +88,7 @@ export async function grantRepoAccess({
     });
 
     return { success: true };
-  } catch { /* Error handled silently */ 
+  } catch (error) {
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),
