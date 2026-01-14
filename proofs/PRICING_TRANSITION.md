@@ -1,70 +1,79 @@
-# Clean Transition Into Pricing
+# Demo → Pricing Handoff (Clean, Controlled)
+
+This is where most people lose leverage. You won't.
 
 ---
 
 ## When to Transition
 
 After:
-- Your 90-second script, AND
-- 1–2 follow-up answers
+- The exec demo, OR
+- The full 10-minute demo
 
-Not before. Not later.
+Once they nod, pause, or say "this makes sense."
 
 ---
 
-## Primary Transition Line (Use Most Often)
+## Primary Handoff Line (Use Most Often)
 
-"At this point, the only remaining question is scope and scale."
-If this governance model works for you, pricing is simply about how many programs, learners, and partners you want to run through it.
+> "At this point, the only remaining variable is scale."
 
 *Pause.*
 
-"Would it be helpful to walk through what that typically looks like?"
+> "Pricing is based on how much of the system you're running—programs, learners, credentials, and partners—not on feature checklists."
 
-**This frames pricing as configuration, not negotiation.**
+*Pause again.*
+
+> "Would it be helpful to walk through what that typically looks like?"
+
+**This reframes pricing as capacity, not negotiation.**
 
 ---
 
-## If They Ask "What Does It Cost?" Directly
+## If They Ask "What Does It Cost?" Bluntly
+
+**Your answer:**
+
+> "It depends on operational footprint, not features."
+> Institutions pay based on how many programs, learners, and credentials they're running—not on toggles.
+
+> "I can give you realistic ranges based on similar institutions."
+
+*Stop there.*
+
+---
+
+## If They Say "We Need to Take This Back Internally"
 
 **Your response:**
-"It depends on operational footprint, not features."
-Institutions pay based on how much of the system they're running—programs, learners, credentials, partners—not on checkboxes.
 
-"If you're open to it, I can outline the ranges based on similar institutions."
+> "That's normal."
+> What usually helps is framing this around avoided build time, avoided headcount, and avoided risk—not software cost.
 
-*Then stop.*
+> "I'll leave you something clean that helps with that conversation."
+
+*(That's where your written brief does the work for you.)*
 
 ---
 
 ## If They Hesitate or Go Quiet
 
-**Your response:**
-"Totally fine if today is just about fit."
-If this solves the right problem, pricing is straightforward. If it doesn't, there's no number that makes sense.
+**You say:**
 
-**That sentence filters without pressure.**
+> "If today is just about fit, that's fine."
+> If the governance model fits, pricing is straightforward. If it doesn't, there's no number that makes sense.
 
----
-
-## If They Say "We Need Budget Approval"
-
-**Your response:**
-"That's common."
-What usually helps is anchoring the decision on avoided build time, avoided headcount, and avoided risk—not line items.
-
-"I can give you something clean to take back internally."
-
-*This tees up the written brief.*
+*Silence after that is your friend.*
 
 ---
 
-## How This All Flows Together
+## How This All Fits Together (Mental Map)
 
-1. **90-second script** reframes the decision
-2. **Follow-up answers** narrow the aperture
-3. **Deflection lines** prevent derailment
-4. **Pricing transition** happens naturally because the value frame is already set
+1. **90-second script** kills the "we'll build it" objection
+2. **Follow-ups** narrow scope without tangents
+3. **5-minute exec demo** proves control
+4. **10-minute full demo** proves depth
+5. **Pricing handoff** happens naturally because value is already anchored
 
-You are never selling.
-You are letting them decide where they want to spend risk.
+You are not convincing.
+You are letting them self-select.
