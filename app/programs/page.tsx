@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import ModernFeatures from '@/components/landing/ModernFeatures';
+import { ProgramFitNavigator } from '@/components/chatbot/ProgramFitNavigator';
 
 import {
   ArrowRight,
@@ -92,6 +93,13 @@ export default function ProgramsBioSitePage() {
         ]}
         imageOnRight={true}
       />
+
+      {/* Program Fit Navigator for Institutions */}
+      <section className="py-8 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ProgramFitNavigator variant="inline" />
+        </div>
+      </section>
 
       {/* Features Section with Images */}
       <section className="py-16 bg-gray-50">

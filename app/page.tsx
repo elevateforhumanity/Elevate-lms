@@ -7,6 +7,7 @@ import Orientation from '@/components/home/Orientation';
 import Testimonials from '@/components/home/Testimonials';
 import Assurance from '@/components/home/Assurance';
 import Start from '@/components/home/Start';
+import { ProgramFitNavigator } from '@/components/chatbot/ProgramFitNavigator';
 
 export const metadata: Metadata = {
   title: 'Elevate for Humanity | Workforce and Education Hub',
@@ -48,26 +49,34 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-blue-900/70" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 w-full">
-          <div className="max-w-2xl">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight">
-              Free Career Training
-            </h1>
-            <p className="text-base md:text-lg text-white/90 mb-6 max-w-xl">
-              Healthcare • Skilled Trades • Technology • Business
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="/apply"
-                className="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-600 text-base font-bold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
-              >
-                Apply Now
-              </a>
-              <a
-                href="/pathways"
-                className="inline-flex items-center justify-center px-6 py-3 bg-transparent text-white text-base font-bold rounded-xl hover:bg-white/10 transition-colors border-2 border-white"
-              >
-                View Pathways
-              </a>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            {/* Left: Core mission */}
+            <div className="max-w-2xl">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight">
+                Free Career Training
+              </h1>
+              <p className="text-base md:text-lg text-white/90 mb-6 max-w-xl">
+                Healthcare • Skilled Trades • Technology • Business
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/apply"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-600 text-base font-bold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
+                >
+                  Apply Now
+                </a>
+                <a
+                  href="/pathways"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-transparent text-white text-base font-bold rounded-xl hover:bg-white/10 transition-colors border-2 border-white"
+                >
+                  View Pathways
+                </a>
+              </div>
+            </div>
+            
+            {/* Right: Program Fit Navigator for institutions */}
+            <div className="hidden lg:block w-80 flex-shrink-0">
+              <ProgramFitNavigator variant="card" />
             </div>
           </div>
         </div>

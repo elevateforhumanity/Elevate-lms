@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Minimize2, User, Bot } from 'lucide-react';
+import { MessageCircle, X, Send, Minimize2, Bot } from 'lucide-react';
+import { TidioChatWidget } from './TidioChatWidget';
 
 interface Message {
   id: string;
@@ -25,7 +26,7 @@ const botResponses: Record<string, string> = {
   'default': 'I\'m here to help! You can ask about our programs, enrollment, funding, or career services. For complex questions, our team is available at (317) 314-3757.',
 };
 
-export function LiveChatWidget() {
+function FallbackChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
@@ -201,4 +202,23 @@ export function LiveChatWidget() {
       )}
     </div>
   );
+}
+
+/**
+ * LiveChatWidget - Uses Tidio if configured, otherwise falls back to built-in widget
+ * 
+ * To enable Tidio:
+ * 1. Set NEXT_PUBLIC_TIDIO_KEY environment variable in Netlify
+ * 2. Configure the AI assistant in Tidio dashboard using lib/chatbot/config.ts
+ */
+export function LiveChatWidget() {
+  const tidioKey = process.env.NEXT_PUBLIC_TIDIO_KEY;
+
+  // Use Tidio if configured
+  if (tidioKey) {
+    return <TidioChatWidget publicKey={tidioKey} autoOpen={false} />;
+  }
+
+  // Fall back to built-in widget
+  return <FallbackChatWidget />;
 }
