@@ -288,10 +288,11 @@ export async function issueProgramCertificate(
   }
 
   // Update enrollment with certificate_issued_at timestamp
+  // Note: 'enrollments' may be a view, so we update student_enrollments directly
   await supabase
-    .from('enrollments')
+    .from('student_enrollments')
     .update({ certificate_issued_at: now })
-    .eq('user_id', studentId)
+    .eq('student_id', studentId)
     .eq('program_id', programId);
 
   return certificateNumber;
