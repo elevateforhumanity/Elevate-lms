@@ -68,7 +68,7 @@ export default function VideoHeroBanner({
 
   return (
     <section
-      className="relative w-full bg-gradient-to-br from-blue-900 to-purple-900 -mb-1"
+      className="relative w-full bg-gradient-to-br from-blue-900 to-purple-900"
       onClick={handleUserInteraction}
     >
       {/* Video Container - Full viewport height */}
@@ -84,15 +84,15 @@ export default function VideoHeroBanner({
           className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-900 to-purple-900 z-0"
         />
 
-        {/* Video Background - Lazy loaded after 500ms */}
+        {/* Video Background */}
         {!hasError && shouldLoadVideo && (
           <video
             ref={videoRef}
-            className="absolute inset-0 w-full h-full object-cover z-1"
+            className="absolute inset-0 w-full h-full object-cover z-[1]"
             loop
             muted={!withAudio}
             playsInline
-            preload="none"
+            preload="auto"
             autoPlay
           >
             <source src={videoSrc} type="video/mp4" />
