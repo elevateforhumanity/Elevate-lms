@@ -30,7 +30,7 @@ export default function SiteHeader() {
               className="w-9 h-9 md:w-10 md:h-10"
               priority
             />
-            <span className="hidden md:inline font-bold text-lg" style={{ color: '#000000' }}>
+            <span className="hidden md:inline font-bold text-lg" style={{ color: '#ff0000' }}>
               Elevate for Humanity
             </span>
           </Link>
@@ -53,7 +53,7 @@ export default function SiteHeader() {
               <Link
                 href="/lms/dashboard"
                 className="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg hover:bg-gray-50 transition"
-                style={{ color: '#000000' }}
+                style={{ color: '#ff0000' }}
               >
                 Dashboard
               </Link>
@@ -61,7 +61,7 @@ export default function SiteHeader() {
               <Link
                 href="/login"
                 className="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg hover:bg-gray-50 transition"
-                style={{ color: '#000000' }}
+                style={{ color: '#ff0000' }}
               >
                 Login
               </Link>
@@ -71,7 +71,7 @@ export default function SiteHeader() {
             <button
               onClick={() => setMobileMenuOpen(true)}
               className="md:hidden p-2 hover:text-blue-600 transition"
-              style={{ color: '#000000' }}
+              style={{ color: '#ff0000' }}
               aria-label="Open menu"
               aria-expanded={mobileMenuOpen}
             >
