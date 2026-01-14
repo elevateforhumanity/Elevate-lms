@@ -5,6 +5,24 @@
 @tailwind utilities;
 
 /* ============================================================================
+   HEADER TEXT VISIBILITY FIX
+   Force header text to be visible with high specificity
+   ============================================================================ */
+header[role="banner"] * {
+  color: inherit;
+}
+
+header[role="banner"] span,
+header[role="banner"] button,
+header[role="banner"] a {
+  color: #ff0000 !important;
+}
+
+header[role="banner"] .bg-blue-600 {
+  color: #ffffff !important;
+}
+
+/* ============================================================================
    PREVENT FLASH OF UNSTYLED CONTENT ON FIRST LOAD
    ============================================================================ */
 
