@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
-function ApplyForm() {
+function InquiryForm() {
   const searchParams = useSearchParams();
   const [selectedProgram, setSelectedProgram] = useState('');
   const [loading, setLoading] = useState(false);
@@ -32,7 +32,7 @@ function ApplyForm() {
     const data = Object.fromEntries(formData);
 
     try {
-      const response = await fetch('/api/apply', {
+      const response = await fetch('/api/inquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ function ApplyForm() {
       if (response.ok) {
         setSuccess(true);
         setTimeout(() => {
-          window.location.href = '/apply/success';
+          window.location.href = '/inquiry/success';
         }, 1000);
       } else {
         setError(result.error || 'Application failed. Please try again.');
@@ -239,10 +239,10 @@ function ApplyForm() {
   );
 }
 
-export default function Apply() {
+export default function Inquiry() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-      <ApplyForm />
+      <InquiryForm />
     </Suspense>
   );
 }

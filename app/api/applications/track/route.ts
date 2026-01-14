@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    return NextResponse.json(data, { status: 200 });
+    return NextResponse.json({ application: data }, { status: 200 });
   } catch (err: any) {
     return NextResponse.json(
       { error: 'Failed to retrieve application' },
