@@ -33,49 +33,49 @@ const Start = dynamic(() => import('@/components/home/Start'), {
   loading: () => <div className="h-96 bg-white" />
 });
 
-// Program cards data with images
+// Program cards data with descriptive images
 const HOMEPAGE_PROGRAMS = [
   {
     name: 'Barber Apprenticeship',
-    description: 'Earn while you learn through a registered apprenticeship with employer-based training and structured oversight.',
-    image: '/hero-images/barber-hero.jpg',
+    description: 'Master the art of barbering through hands-on training in a real shop. Learn fades, cuts, and client service while earning a paycheck.',
+    image: '/hero-images/barber-beauty-cat-new.jpg',
     href: '/programs/barber-apprenticeship',
     tags: ['Earn While You Learn', 'Hybrid', 'Second-Chance Friendly'],
   },
   {
-    name: 'Cosmetology Apprenticeship',
-    description: 'Complete your cosmetology training while working in a licensed salon with hands-on experience.',
-    image: '/hero-images/barber-beauty-category.jpg',
-    href: '/programs/cosmetology-apprenticeship',
-    tags: ['Earn While You Learn', 'Hands-On', 'Funding May Be Available'],
-  },
-  {
-    name: 'Healthcare Pathways',
-    description: 'Start your healthcare career with CNA, medical assistant, and patient care training programs.',
-    image: '/hero-images/healthcare-category.jpg',
+    name: 'Healthcare Careers',
+    description: 'Train as a CNA, phlebotomist, or medical assistant. High-demand careers with job placement support and certification prep.',
+    image: '/hero-images/healthcare-cat-new.jpg',
     href: '/programs/healthcare',
-    tags: ['Fast-Track', 'High Demand', 'Funding May Be Available'],
+    tags: ['Fast-Track', 'High Demand', 'Funding Available'],
   },
   {
     name: 'Skilled Trades',
-    description: 'HVAC, electrical, plumbing, and construction trades with industry certifications.',
-    image: '/hero-images/skilled-trades-category.jpg',
+    description: 'Build a career in HVAC, electrical, welding, or construction. Apprenticeships with union pathways and industry certifications.',
+    image: '/hero-images/skilled-trades-cat-new.jpg',
     href: '/programs/skilled-trades',
     tags: ['Earn While You Learn', 'Apprenticeships', 'Second-Chance Friendly'],
   },
   {
     name: 'Technology & IT',
-    description: 'CompTIA certifications, cybersecurity, and tech support training for in-demand careers.',
-    image: '/hero-images/technology-hero.jpg',
+    description: 'Get CompTIA A+, Network+, and Security+ certified. Launch a career in tech support, cybersecurity, or IT administration.',
+    image: '/hero-images/technology-cat-new.jpg',
     href: '/programs/technology',
-    tags: ['Online Options', 'Industry Certs', 'Funding May Be Available'],
+    tags: ['Online Options', 'Industry Certs', 'Funding Available'],
   },
   {
-    name: 'Workforce Certifications',
-    description: 'OSHA, forklift, CDL, and other certifications that employers need.',
-    image: '/hero-images/cdl-transportation-category.jpg',
-    href: '/programs/certifications',
-    tags: ['Fast-Track', 'Employer-Recognized', 'Second-Chance Friendly'],
+    name: 'CDL & Transportation',
+    description: 'Get your Commercial Driver License and start driving trucks. Class A and B training with job placement assistance.',
+    image: '/hero-images/cdl-cat-new.jpg',
+    href: '/programs/cdl-transportation',
+    tags: ['Fast-Track', 'High Pay', 'Funding Available'],
+  },
+  {
+    name: 'Business & Entrepreneurship',
+    description: 'Start your own business or advance your career. Learn marketing, finance, and operations with real-world projects.',
+    image: '/hero-images/business-hero.jpg',
+    href: '/programs/business',
+    tags: ['Flexible Schedule', 'Mentorship', 'Startup Support'],
   },
 ];
 
@@ -108,7 +108,14 @@ export const revalidate = 60;
 export default function HomePage() {
   return (
     <>
-      {/* Hero Banner removed for testing */}
+      {/* Video Hero Banner */}
+      <VideoHeroBanner
+        videoSrc="/videos/hero-home.mp4"
+        headline="Your Future Starts Here"
+        subheadline="Free career training, paid apprenticeships, and workforce certifications in Indianapolis"
+        primaryCTA={{ text: 'Start Your Journey', href: '/start' }}
+        secondaryCTA={{ text: 'View Programs', href: '/programs' }}
+      />
 
       {/* ═══════════════════════════════════════════════════════════════════
           BOX 1 — PRIMARY CTA STRIP (IMMEDIATELY AFTER HERO)
