@@ -242,7 +242,7 @@ export default function RootLayout({
     </html>
   );
 }
-// Cache bust: 2026-01-09T13:15:00Z
-// FORCE DEPLOYMENT: Trigger new build to replace stale production
+// Cache bust: 2026-01-14T03:50:00Z
+// FORCE DEPLOYMENT: Updated header logos
 // All fixes applied: no black text, proper headers, hashed CSS only
 // Build timestamp: 2026-01-09T13:15:00Z
