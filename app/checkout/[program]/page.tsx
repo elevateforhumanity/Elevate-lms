@@ -244,6 +244,12 @@ export default function CheckoutPage() {
             Complete Your Enrollment
           </h1>
           <p className="text-lg text-black">{programData.name}</p>
+          {program === 'barber-apprenticeship' && (
+            <p className="text-sm text-slate-600 mt-1">
+              Fee-based enrollment within a USDOL Registered Apprenticeship framework.<br />
+              Sponsor of Record: Elevate for Humanity.
+            </p>
+          )}
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -298,14 +304,25 @@ export default function CheckoutPage() {
                 </div>
               )}
               {program === 'barber-apprenticeship' && (
-                <div className="bg-purple-50 rounded-lg p-4 text-sm text-black">
-                  <p className="font-bold mb-2">
-                    <Lightbulb className="w-5 h-5 inline-block" /> Fee-Based Program
-                  </p>
-                  <p>
-                    This is a self-pay program. Payment plans and Affirm financing available.
-                  </p>
-                </div>
+                <>
+                  <div className="bg-purple-50 rounded-lg p-4 text-sm text-black mb-4">
+                    <p className="font-bold mb-2">
+                      <Lightbulb className="w-5 h-5 inline-block" /> Fee-Based Program
+                    </p>
+                    <p>
+                      This is a self-pay program. Payment plans and Affirm financing available.
+                    </p>
+                  </div>
+                  <details className="bg-slate-50 border border-slate-200 rounded-lg overflow-hidden text-sm">
+                    <summary className="px-4 py-3 cursor-pointer font-semibold text-black hover:bg-slate-100 transition-colors">
+                      Registration Details (USDOL)
+                    </summary>
+                    <div className="px-4 py-3 border-t border-slate-200 text-slate-600 space-y-2">
+                      <p>Elevate for Humanity is the USDOL Registered Apprenticeship Sponsor of Record.</p>
+                      <p>This program is fee-based and not funded by the State of Indiana.</p>
+                    </div>
+                  </details>
+                </>
               )}
             </div>
           </div>

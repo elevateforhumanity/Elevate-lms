@@ -11,11 +11,11 @@ import { HostShopRequirements } from '@/components/compliance/HostShopRequiremen
 
 export const metadata: Metadata = {
   title:
-    'Registered Barber Apprenticeship | DOL Sponsorship & Oversight | Indianapolis',
+    'USDOL Registered Barber Apprenticeship | Elevate for Humanity | Indiana',
   description:
-    'DOL Registered Barber Apprenticeship sponsorship, oversight, and related instruction (Milady Theory). Federal apprenticeship sponsorship, employer coordination, compliance reporting. This program does not grant barber licensure or clock hours toward state exams.',
+    'Fee-based barber training within a USDOL Registered Apprenticeship framework. Elevate for Humanity is the Sponsor of Record. Structured practical training with required related instruction.',
   keywords:
-    'barber apprenticeship Indiana, DOL registered apprenticeship, apprenticeship sponsorship, barber training Indianapolis, RAPIDS registered, apprenticeship oversight',
+    'barber apprenticeship Indiana, USDOL registered apprenticeship, barber training Indianapolis, RAPIDS registered, sponsor of record',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/programs/barber-apprenticeship',
   },
@@ -42,28 +42,28 @@ export default function BarberApprenticeshipPage() {
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-32 md:py-40">
           <div className="flex flex-wrap items-center gap-2 mb-4">
             <span className="px-3 py-1 bg-blue-600 text-white text-sm font-bold rounded-full shadow-lg">
-              DOL Registered
+              USDOL Registered
             </span>
             <span className="px-3 py-1 bg-purple-600 text-white text-sm font-bold rounded-full shadow-lg">
-              Apprenticeship Sponsorship
+              Sponsor of Record
             </span>
           </div>
 
           <h1 className="max-w-3xl text-4xl font-black leading-tight md:text-6xl text-white drop-shadow-2xl">
-            Registered Barber Apprenticeship
+            USDOL Registered Barber Apprenticeship
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg md:text-xl text-white leading-relaxed drop-shadow-lg">
-            Registered Barber Apprenticeship Sponsorship, Oversight & Related Instruction (Milady Theory). 
-            This program provides federal apprenticeship sponsorship, employer coordination, compliance reporting, and related instruction.
+            Fee-based barber training delivered within a USDOL Registered Apprenticeship framework.
+            Elevate for Humanity is the Sponsor of Record for this program, which combines structured practical training with required related instruction.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
-              href="/programs/barber-apprenticeship/apply"
+              href="/apply?program=barber-apprenticeship"
               className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white hover:bg-blue-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
-              Apply Now
+              Enroll in Barber Program
             </Link>
             <Link
               href="#pricing"
@@ -83,12 +83,11 @@ export default function BarberApprenticeshipPage() {
           <h2 className="text-3xl font-bold text-black mb-6">Program Description</h2>
           <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 mb-8">
             <p className="text-lg text-black leading-relaxed">
-              <strong>Registered Barber Apprenticeship Sponsorship, Oversight & Related Instruction (Milady Theory).</strong>
+              <strong>Fee-based barber training delivered within a USDOL Registered Apprenticeship framework.</strong>
             </p>
             <p className="text-black mt-4 leading-relaxed">
-              This program provides federal apprenticeship sponsorship, employer coordination, compliance reporting, and related instruction. 
-              Practical skills training and licensure-required instructional hours are provided by a licensed barber school. 
-              This program does not grant barber licensure or clock hours toward state exams.
+              Elevate for Humanity is the Sponsor of Record for this program, which combines structured practical training with required related instruction.
+              Practical skills training is provided at approved partner training sites. Related instruction includes Milady theory curriculum.
             </p>
           </div>
 
@@ -103,23 +102,23 @@ export default function BarberApprenticeshipPage() {
               <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-green-900">
                   <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>DOL Registered Apprenticeship sponsorship</span>
+                  <span>Structured training as USDOL Sponsor of Record</span>
                 </li>
                 <li className="flex items-start gap-3 text-green-900">
                   <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Compliance and RAPIDS reporting</span>
+                  <span>Related instruction (Milady theory curriculum)</span>
                 </li>
                 <li className="flex items-start gap-3 text-green-900">
                   <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Employer (barbershop) coordination and OJT verification</span>
+                  <span>Program administration and compliance tracking</span>
                 </li>
                 <li className="flex items-start gap-3 text-green-900">
                   <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Program monitoring and completion documentation</span>
+                  <span>Training site coordination and hour verification</span>
                 </li>
                 <li className="flex items-start gap-3 text-green-900">
                   <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Related Instruction: Milady theory curriculum</span>
+                  <span>Completion documentation</span>
                 </li>
               </ul>
             </div>
@@ -152,17 +151,23 @@ export default function BarberApprenticeshipPage() {
       {/* Pricing Section */}
       <section id="pricing" className="bg-gray-50 py-16">
         <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-6">Program Fee</h2>
+          <h2 className="text-3xl font-bold text-black mb-6">Program Cost & Payment</h2>
           
           <div className="bg-white border-2 border-slate-200 rounded-xl p-8 shadow-lg">
             <div className="text-center mb-6">
               <div className="text-5xl font-black text-purple-600">$4,980</div>
-              <div className="text-xl text-slate-600 mt-2">Flat Program Fee</div>
+              <div className="text-xl text-slate-600 mt-2">Program Tuition</div>
             </div>
 
             <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
-              <p className="text-purple-900 text-center">
-                <strong>The program fee applies regardless of transferred hours.</strong> Credit for prior learning may reduce the duration of participation but does not alter the program fee. The fee reflects apprenticeship sponsorship, compliance oversight, employer coordination, related instruction, and completion under the sponsor&apos;s registered apprenticeship program.
+              <p className="text-purple-900">
+                This Barber Program is a fee-based USDOL Registered Apprenticeship training pathway. Tuition is paid by the student and is not funded by the State of Indiana.
+              </p>
+              <p className="text-purple-900 mt-3">
+                Tuition covers structured training, related instruction, program administration, compliance tracking, and completion documentation delivered by Elevate for Humanity as the Sponsor of Record.
+              </p>
+              <p className="text-purple-800 mt-3 text-sm">
+                Tuition does not include personal tools, uniforms, or state licensing and examination fees.
               </p>
             </div>
 
@@ -215,6 +220,16 @@ export default function BarberApprenticeshipPage() {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Licensure & State Requirements */}
+      <section className="bg-amber-50 py-12">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-2xl font-bold text-amber-900 mb-4">Licensure & State Requirements</h2>
+          <p className="text-amber-900 leading-relaxed">
+            This program operates within a USDOL Registered Apprenticeship framework. Completion supports eligibility to apply for barber licensure; however, licensure approval, examination requirements, and fees are governed by the Indiana Professional Licensing Agency and applicable state law. Completion of this program does not guarantee licensure.
+          </p>
         </div>
       </section>
 
@@ -337,26 +352,48 @@ export default function BarberApprenticeshipPage() {
         showMultiRegion={true}
       />
 
+      {/* Registration Details Accordion */}
+      <section className="py-12 bg-slate-100">
+        <div className="mx-auto max-w-4xl px-6">
+          <details className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+            <summary className="px-6 py-4 cursor-pointer font-bold text-black hover:bg-slate-50 transition-colors">
+              Registration Details (USDOL)
+            </summary>
+            <div className="px-6 py-4 border-t border-slate-200 text-slate-700 space-y-3">
+              <p>
+                Elevate for Humanity is the USDOL Registered Apprenticeship Sponsor of Record for this program.
+              </p>
+              <p>
+                Registration documentation (including sponsor details and program registration information) is available upon request for procurement, compliance, or partner onboarding purposes.
+              </p>
+              <p>
+                This program is fee-based and not funded by the State of Indiana. Wages and employment terms, if applicable, are governed by host sites and applicable labor laws and are not administered through Elevate.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-purple-600">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
           <p className="text-purple-100 text-lg mb-8">
-            Apply now to begin your journey in the Registered Barber Apprenticeship program.
+            Enroll in the USDOL Registered Barber Apprenticeship program.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/programs/barber-apprenticeship/apply"
+              href="/apply?program=barber-apprenticeship"
               className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-lg font-bold text-purple-600 hover:bg-purple-50 transition-all shadow-xl"
             >
-              Apply Now
+              Enroll in Barber Program
             </Link>
-            <Link
-              href="/contact"
+            <a
+              href="#pricing"
               className="inline-flex items-center justify-center rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white hover:bg-white/10 transition-all"
             >
-              Contact Us
-            </Link>
+              View program fee
+            </a>
           </div>
         </div>
       </section>

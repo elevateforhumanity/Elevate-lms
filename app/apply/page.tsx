@@ -53,8 +53,13 @@ export default function Apply() {
     // Legacy: check for program param
     const programParam = searchParams.get('program');
     if (programParam) {
+      // Barber apprenticeship has its own dedicated apply page (fee-based, self-pay)
+      if (programParam === 'barber-apprenticeship') {
+        window.location.href = '/programs/barber-apprenticeship/apply';
+        return;
+      }
+      
       const programMap: Record<string, string> = {
-        'barber-apprenticeship': 'Barber Apprenticeship',
         'hvac-technician': 'HVAC Technician',
         'cna-certification': 'CNA (Certified Nursing Assistant)',
       };
