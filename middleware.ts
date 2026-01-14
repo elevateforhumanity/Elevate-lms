@@ -4,16 +4,6 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const host = request.headers.get('host') || '';
   
-  // Redirect .institute domain to .org (permanent 308)
-  if (host.includes('elevateforhumanity.institute')) {
-    const url = request.nextUrl.clone();
-    url.host = 'www.elevateforhumanity.org';
-    url.protocol = 'https';
-    url.port = '';
-    
-    return NextResponse.redirect(url, { status: 308 });
-  }
-
   // Redirect non-www .org to www .org
   if (host === 'elevateforhumanity.org') {
     const url = request.nextUrl.clone();

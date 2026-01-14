@@ -29,31 +29,6 @@
   to = "/:splat"
   status = 200
 
-# Redirect .institute domain to .org (canonical domain)
-[[redirects]]
-  from = "https://elevateforhumanity.institute/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 308
-  force = true
-
-[[redirects]]
-  from = "https://www.elevateforhumanity.institute/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 308
-  force = true
-
-[[redirects]]
-  from = "http://elevateforhumanity.institute/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 308
-  force = true
-
-[[redirects]]
-  from = "http://www.elevateforhumanity.institute/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 308
-  force = true
-
 # Redirect non-www .org to www .org
 [[redirects]]
   from = "https://elevateforhumanity.org/*"
