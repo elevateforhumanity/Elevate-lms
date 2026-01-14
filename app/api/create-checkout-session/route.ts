@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { parseBody, getErrorMessage } from '@/lib/api-helpers';
 import Stripe from 'stripe';
 import { logger } from '@/lib/logger';
+import { getRAPIDSMetadata, isRAPIDSProgram } from '@/lib/compliance/rapids-config';
 
 const stripeKey = process.env.STRIPE_SECRET_KEY || '';
 const stripe = stripeKey
@@ -52,6 +53,11 @@ export async function POST(request: NextRequest) {
       'venmo', // Venmo (up to $5,000)
     ];
 
+    // Get RAPIDS metadata for registered apprenticeship programs
+    const rapidsMetadata = isRAPIDSProgram(programSlug) 
+      ? getRAPIDSMetadata(programSlug) 
+      : null;
+
     let sessionConfig: any = {
       payment_method_types: paymentMethods,
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/enroll/success?session_id={CHECKOUT_SESSION_ID}&program=${programSlug}`,
@@ -61,6 +67,8 @@ export async function POST(request: NextRequest) {
         programSlug,
         paymentType,
         applicationId: applicationId || '',
+        // Include RAPIDS metadata for registered apprenticeships
+        ...(rapidsMetadata || {}),
       },
     };
 

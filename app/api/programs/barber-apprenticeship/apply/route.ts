@@ -5,6 +5,7 @@ import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/server';
 import { z } from 'zod';
 import { DOT_CODES } from '@/lib/compliance/rapids-integration';
+import { RAPIDS_CONFIG, getRAPIDSEnrollmentData } from '@/lib/compliance/rapids-config';
 import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
 
 const barberApplicationSchema = z.object({
@@ -75,14 +76,18 @@ export async function POST(req: Request) {
     }
 
     // Create RAPIDS pre-registration record (will be finalized after payment)
+    // Uses centralized RAPIDS config for consistency
+    const rapidsEnrollmentData = getRAPIDSEnrollmentData('barber-apprenticeship');
     const rapidsPreRegistration = {
       application_id: application.id,
-      program_number: process.env.NEXT_PUBLIC_RAPIDS_PROGRAM_NUMBER || '2025-IN-132301',
-      sponsor_name: process.env.NEXT_PUBLIC_RAPIDS_SPONSOR_NAME || '2Exclusive llc',
+      program_number: RAPIDS_CONFIG.programNumber,
+      sponsor_name: RAPIDS_CONFIG.sponsorOfRecord,
       occupation_code: DOT_CODES.BARBER,
       occupation_title: 'Barber',
       status: 'pending_payment',
       created_at: new Date().toISOString(),
+      // Additional RAPIDS enrollment data
+      ...(rapidsEnrollmentData || {}),
     };
 
     // Store RAPIDS pre-registration

@@ -46,6 +46,8 @@ export interface RAPIDSSubmission {
   errors?: string[];
 }
 
+import { RAPIDS_CONFIG } from './rapids-config';
+
 /**
  * Prepare apprentice data for RAPIDS submission
  */
@@ -58,10 +60,8 @@ export async function prepareRAPIDSData(
   // 3. Validate all required fields
   // 4. Encrypt sensitive data (SSN)
 
-  const programNumber =
-    process.env.NEXT_PUBLIC_RAPIDS_PROGRAM_NUMBER || '2025-IN-132301';
-  const sponsorName =
-    process.env.NEXT_PUBLIC_RAPIDS_SPONSOR_NAME || '2Exclusive llc';
+  const programNumber = RAPIDS_CONFIG.programNumber;
+  const sponsorName = RAPIDS_CONFIG.sponsorOfRecord;
 
   console.log('Fetching RAPIDS enrollments:', {
     program_number: programNumber,
