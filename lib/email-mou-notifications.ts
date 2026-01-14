@@ -84,7 +84,7 @@ export async function sendMOUSignedConfirmation(
     }
 
     return true;
-  } catch { /* Error handled silently */ 
+  } catch (error) {
     logger.error('Error sending MOU confirmation email', error as Error, {
       to: data.contactEmail
     });
@@ -148,7 +148,7 @@ export async function sendMOUSignedAdminNotification(
     }
 
     return true;
-  } catch { /* Error handled silently */ 
+  } catch (error) {
     logger.error('Error sending admin notification email', error as Error, {
       programHolder: data.programHolderName
     });

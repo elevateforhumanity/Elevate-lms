@@ -121,7 +121,7 @@ export class NotificationManager {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(subscription),
       });
-    } catch { /* Error handled silently */ 
+    } catch (error) {
       console.error(
         '[Notifications] Failed to send subscription to server:',
         error
@@ -137,7 +137,7 @@ export class NotificationManager {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(subscription),
       });
-    } catch { /* Error handled silently */ 
+    } catch (error) {
       console.error(
         '[Notifications] Failed to remove subscription from server:',
         error

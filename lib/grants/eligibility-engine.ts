@@ -189,8 +189,7 @@ export async function checkEntityEligibility(
       score: Math.round(score),
       checkedAt: new Date(),
     };
-  } catch { /* Error handled silently */ 
-    // Error: $1
+  } catch (error) {
     issues.push(`SAM.gov API error: ${(error as Error).message}`);
 
     return {

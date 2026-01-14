@@ -199,7 +199,7 @@ export async function bulkVerifyCredentials(
         verified: result.verified,
         error: result.error,
       });
-    } catch { /* Error handled silently */ 
+    } catch (error: any) {
       results.push({
         student_id: request.student_id,
         verified: false,

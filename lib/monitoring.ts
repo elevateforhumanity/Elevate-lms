@@ -270,7 +270,7 @@ export function withMonitoring(
       }
 
       return response;
-    } catch { /* Error handled silently */ 
+    } catch (error) {
       const duration = Date.now() - startTime;
       logError(endpoint, 500, error);
       throw error;
