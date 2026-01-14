@@ -428,11 +428,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  background: var(--brand-bg-soft);
-  color: var(--brand-text);
-  line-height: 1.6;
-}
+/* Body styles consolidated in @layer base above */
 
 /* ============================================
    LAYOUT COMPONENTS
@@ -1127,51 +1123,55 @@ body {
     padding-right: 1rem;
   }
 
-  h1 {
-    font-size: 2rem !important;
+  /* Heading sizes - scoped to main content */
+  main h1 {
+    font-size: 2rem;
     line-height: 1.2;
   }
 
-  h2 {
-    font-size: 1.75rem !important;
+  main h2 {
+    font-size: 1.75rem;
     line-height: 1.3;
   }
 
-  h3 {
-    font-size: 1.5rem !important;
+  main h3 {
+    font-size: 1.5rem;
   }
 
-  .grid {
-    grid-template-columns: 1fr !important;
+  /* Grid override - only for content grids, not nav */
+  main .grid,
+  section .grid,
+  article .grid {
+    grid-template-columns: 1fr;
   }
 
-  button,
-  .btn,
-  a.btn {
+  /* Touch targets - scoped to main content */
+  main button,
+  main .btn,
+  main a.btn {
     min-height: 44px;
     min-width: 44px;
     padding: 0.75rem 1rem;
     text-align: center;
   }
 
-  a {
+  /* Links in content areas only */
+  main a,
+  section a,
+  article a {
     min-height: 44px;
-    display: inline-flex;
-    align-items: center;
   }
 
-  nav {
-    padding: 0.5rem 1rem;
-  }
-
+  /* Hero sections */
   .hero,
   [class*='hero'] {
     padding: 2rem 1rem;
     min-height: auto;
   }
 
-  .card,
-  [class*='card'] {
+  /* Cards */
+  main .card,
+  main [class*='card'] {
     margin-bottom: 1rem;
   }
 
@@ -1219,7 +1219,10 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .grid {
+  /* Scoped to content areas - not header */
+  main .grid,
+  section .grid,
+  article .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1292,12 +1295,8 @@ body {
    Safe: no routing/nav changes
    ============================ */
 
-/* 1) Stop the "washed out / faded" look on mobile */
-html,
-body {
-  background: #ffffff;
-  color: #0f172a; /* slate-900 */
-}
+/* Body styles consolidated - single source of truth */
+/* background and color set in @layer base */
 
 /* Ensure main content is readable */
 main,
@@ -1335,17 +1334,23 @@ section {
   box-shadow: var(--efh-card-shadow) !important;
 }
 
-/* 4) Typography readability guardrails */
-h1,
-h2,
-h3,
-h4 {
+/* 4) Typography readability guardrails - scoped to content */
+main h1, main h2, main h3, main h4,
+section h1, section h2, section h3, section h4,
+article h1, article h2, article h3, article h4 {
   color: #0f172a; /* slate-900 */
 }
 
-p,
-li,
-span {
+/* Body text color - scoped to main content, not header/nav */
+main p,
+main li,
+main span,
+section p,
+section li,
+section span,
+article p,
+article li,
+article span {
   color: #334155; /* slate-700 */
 }
 
@@ -1372,21 +1377,20 @@ img {
    Elevate For Humanity: Large Screen Optimization
    ============================================================================ */
 
-/* 1️⃣ Expand layout width for larger screens */
-.container,
-.wrapper,
+/* 1️⃣ Expand layout width for larger screens - scoped to main content */
+main .container,
+main .wrapper,
 .main-content {
-  max-width: 90vw !important;   /* instead of fixed 1024px */
+  max-width: 90vw;
   width: 100%;
   margin: 0 auto;
   padding-inline: 3vw;
 }
 
-/* 2️⃣ Improve readability */
+/* 2️⃣ Improve readability - font size only, color in @layer base */
 body {
-  font-size: 16px !important;       /* Base font */
+  font-size: 16px;
   line-height: 1.6;
-  color: #222;
 }
 
 /* 3️⃣ Scale text dynamically on very large screens */
@@ -1428,44 +1432,47 @@ footer {
 
 /* 8️⃣ Ensure mobile remains clean */
 @media screen and (max-width: 768px) {
-  .container,
-  .wrapper,
+  /* Scoped to main content - not header */
+  main .container,
+  main .wrapper,
   .main-content {
     max-width: 100%;
     padding-inline: 5vw;
   }
   body { font-size: 15px; }
-  section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  main section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
 }
 
 /* ============================================================================
    COLOR & CONTRAST ENHANCEMENT (WCAG AA Compliant)
-   Improves text readability and accessibility
+   Scoped to content areas - header/nav use component styles
    ============================================================================ */
 
-/* Enhanced text contrast for better readability */
-body {
-  color: #1a1a1a;  /* Darker than #222 for better contrast */
-}
-
-/* Ensure headings have strong contrast */
-h1, h2, h3, h4, h5, h6 {
+/* Headings in content areas */
+main h1, main h2, main h3, main h4, main h5, main h6,
+section h1, section h2, section h3, section h4, section h5, section h6,
+article h1, article h2, article h3, article h4, article h5, article h6 {
   color: #0f172a;  /* Near-black for maximum readability */
-  font-weight: 700;
 }
 
-/* Improve paragraph text contrast */
-p {
+/* Paragraph text in content areas */
+main p,
+section p,
+article p {
   color: #334155;  /* Slate-700 equivalent, WCAG AA compliant */
 }
 
-/* Links with better contrast and hover states */
-a {
+/* Links with better contrast and hover states - scoped to content areas */
+main a,
+section a,
+article a {
   color: #0369a1;  /* Sky-700, accessible blue */
   text-decoration: none;
 }
 
-a:hover {
+main a:hover,
+section a:hover,
+article a:hover {
   color: #0c4a6e;  /* Sky-900, darker on hover */
   text-decoration: underline;
 }
