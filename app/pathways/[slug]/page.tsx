@@ -10,7 +10,7 @@ export default async function PathwayDetailPage({ params }: { params: Promise<{ 
 
   return (
     <main className="w-full">
-      <header className="bg-black text-white">
+      <header className="bg-gradient-to-r from-slate-900 to-slate-800 text-white">
         <div className="mx-auto max-w-6xl px-6 py-14">
           <p className="text-gray-300">
             <Link href="/pathways" className="underline">Workforce Pathways</Link> / {pathway.title}

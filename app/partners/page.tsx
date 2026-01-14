@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function PartnersPage() {
   return (
     <main className="w-full">
-      <header className="bg-black text-white">
+      <header className="bg-gradient-to-r from-slate-900 to-slate-800 text-white">
         <div className="mx-auto max-w-6xl px-6 py-16">
           <h1 className="text-4xl md:text-5xl font-bold">Partner With Elevate for Humanity</h1>
           <p className="mt-4 max-w-3xl text-lg text-gray-200">

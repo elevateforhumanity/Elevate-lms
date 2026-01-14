@@ -39,14 +39,16 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: 'Elevate for Humanity',
+    default: 'Elevate for Humanity | Workforce Infrastructure',
     template: '%s | Elevate for Humanity',
   },
 
-  // Resource hints removed for performance
-
   description:
-    'Workforce training, credentials, and community programs connecting learners to funded pathways and employer-aligned opportunities.',
+    'Workforce infrastructure that connects public funding, employer demand, and credential-backed training to drive measurable outcomes.',
+
+  alternates: {
+    canonical: SITE_URL,
+  },
 
   keywords: [
     'free career training Indianapolis',
