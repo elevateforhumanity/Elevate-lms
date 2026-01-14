@@ -7,13 +7,16 @@ export const maxDuration = 60;
  * PROGRAM COMPLETION ENDPOINT
  * 
  * Triggered when a student completes all requirements for a program.
- * Auto-issues certificate and sends delivery email.
- * Idempotent - will not create duplicate certificates.
+ * Delegates to the authoritative certificate issuance service.
+ * 
+ * This endpoint is for PROGRAM completion (finished training),
+ * NOT enrollment completion (finished payment).
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
+import { issueCertificate } from '@/lib/certificates/issue-certificate';
 
 interface CompleteProgramRequest {
   enrollment_id: string;
@@ -78,27 +81,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    // IDEMPOTENCY CHECK: If certificate already exists, return it
-    if (enrollment.certificate_id) {
-      const { data: existingCert } = await supabase
-        .from('certificates')
-        .select('*')
-        .eq('id', enrollment.certificate_id)
-        .single();
-
-      if (existingCert) {
-        logger.info('Certificate already exists, returning existing', {
-          enrollment_id,
-          certificate_id: existingCert.id,
-        });
-        return NextResponse.json({
-          success: true,
-          already_completed: true,
-          certificate: existingCert,
-        });
-      }
-    }
-
     // Get student profile
     const { data: studentProfile } = await supabase
       .from('profiles')
@@ -106,7 +88,7 @@ export async function POST(req: NextRequest) {
       .eq('id', enrollment.user_id)
       .single();
 
-    if (!studentProfile) {
+    if (!studentProfile || !studentProfile.email) {
       return NextResponse.json({ error: 'Student profile not found' }, { status: 404 });
     }
 
@@ -116,97 +98,30 @@ export async function POST(req: NextRequest) {
     const programName = enrollment.programs?.name || 'Program';
     const programHours = enrollment.programs?.duration_hours || null;
 
-    // Generate certificate number
-    const certificateNumber = `EFH-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
-    const completionDate = new Date().toISOString();
-
-    // Create certificate record
-    const { data: certificate, error: certError } = await supabase
-      .from('certificates')
-      .insert({
-        student_id: enrollment.user_id,
-        program_id: enrollment.program_id,
-        certificate_number: certificateNumber,
-        student_name: studentName,
-        program_name: programName,
-        completion_date: completionDate,
-        program_hours: programHours,
-        issued_at: completionDate,
-        status: 'active',
-      })
-      .select()
-      .single();
-
-    if (certError) {
-      logger.error('Failed to create certificate', { error: certError });
-      return NextResponse.json({ error: 'Failed to create certificate' }, { status: 500 });
-    }
-
-    logger.info('Certificate created', {
-      certificate_id: certificate.id,
-      certificate_number: certificateNumber,
+    // Use authoritative certificate issuance service
+    const result = await issueCertificate({
+      supabase,
+      enrollmentId: enrollment_id,
+      studentId: enrollment.user_id,
+      programId: enrollment.program_id,
+      studentName,
+      studentEmail: studentProfile.email,
+      programName,
+      programHours,
     });
 
-    // Update enrollment with completion and certificate reference
-    const { error: updateError } = await supabase
-      .from('enrollments')
-      .update({
-        status: 'completed',
-        completed_at: completionDate,
-        certificate_id: certificate.id,
-        certificate_issued_at: completionDate,
-        updated_at: completionDate,
-      })
-      .eq('id', enrollment_id);
-
-    if (updateError) {
-      logger.error('Failed to update enrollment', { error: updateError });
-      // Certificate was created, continue to email
+    if (!result.success) {
+      return NextResponse.json({ error: result.error }, { status: 500 });
     }
-
-    // PHASE 4: Send certificate delivery email in same transaction
-    const certificateUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/certificates/${certificate.id}`;
-    
-    try {
-      const { emailService } = await import('@/lib/notifications/email');
-      await emailService.sendCertificateNotification(
-        studentProfile.email,
-        studentName,
-        programName,
-        certificateUrl
-      );
-      logger.info('Certificate delivery email sent', {
-        email: studentProfile.email,
-        certificate_id: certificate.id,
-      });
-    } catch (emailError) {
-      logger.error('Certificate email failed', { error: emailError });
-      // Don't fail the completion - certificate is issued
-    }
-
-    // Create in-app notification
-    await supabase.from('notifications').insert({
-      user_id: enrollment.user_id,
-      type: 'achievement',
-      title: 'Certificate Issued!',
-      message: `Congratulations! Your certificate for ${programName} is ready.`,
-      action_url: certificateUrl,
-    }).catch(() => {});
 
     return NextResponse.json({
       success: true,
-      certificate: {
-        id: certificate.id,
-        certificate_number: certificateNumber,
-        student_name: studentName,
-        program_name: programName,
-        completion_date: completionDate,
-        url: certificateUrl,
-      },
+      already_completed: result.alreadyIssued,
+      certificate: result.certificate,
       enrollment: {
         id: enrollment_id,
         status: 'completed',
-        completed_at: completionDate,
+        completed_at: result.certificate?.completion_date,
       },
     });
   } catch (error) {
