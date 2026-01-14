@@ -128,7 +128,7 @@ export function DesktopNav({ items }: DesktopNavProps) {
   }, []);
 
   return (
-    <nav className="hidden lg:flex items-center gap-6" aria-label="Main navigation">
+    <nav className="hidden md:flex items-center gap-4 lg:gap-6" aria-label="Main navigation">
       {items.map((item) => {
         const isOpen = openDropdown === item.name;
         const isActive = pathname === item.href;

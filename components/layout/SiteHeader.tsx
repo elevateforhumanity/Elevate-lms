@@ -20,10 +20,10 @@ export default function SiteHeader() {
     <div className="w-full h-full bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex items-center justify-between h-full">
-          {/* Logo */}
+          {/* Logo - using optimized smaller version */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <Image
-              src="/images/logo.png"
+              src="/logo.png"
               alt="Elevate for Humanity"
               width={40}
               height={40}
@@ -65,10 +65,10 @@ export default function SiteHeader() {
               </Link>
             )}
 
-            {/* Mobile menu button - always visible on mobile */}
+            {/* Mobile menu button - visible on mobile/small tablets */}
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-black hover:text-blue-600 transition"
+              className="md:hidden p-2 text-black hover:text-blue-600 transition"
               aria-label="Open menu"
               aria-expanded={mobileMenuOpen}
             >

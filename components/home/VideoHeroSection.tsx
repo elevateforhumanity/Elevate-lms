@@ -54,7 +54,7 @@ export default function VideoHeroSection() {
         muted
         playsInline
         autoPlay
-        preload="auto"
+        preload="metadata"
         poster="/images/artlist/hero-training-1.jpg"
       >
         <source src="/videos/hero-home.mp4" type="video/mp4" />
