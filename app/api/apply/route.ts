@@ -33,7 +33,7 @@ export const POST = withRateLimit(
       
       const validatedData = applicationSchema.parse(data);
 
-      const { program, funding, name, email, phone } = validatedData;
+      const { program, funding, name, email, phone, pathway_slug, source } = validatedData;
       const eligible = funding !== 'Self Pay' && program !== 'Not Sure';
 
       // Split name into first and last
@@ -49,6 +49,8 @@ export const POST = withRateLimit(
         email,
         phone,
         program_id: program,
+        pathway_slug: pathway_slug || null,
+        source: source || 'direct',
         status: 'pending',
         notes: `Funding: ${funding}. ${eligible ? 'Prescreen pass' : 'Manual review'}`,
       }).select('id').single();

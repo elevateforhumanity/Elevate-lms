@@ -7,14 +7,50 @@ import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import { GraduationCap, Building2, Briefcase, Users } from 'lucide-react';
 
+// Pathway slug to program name mapping
+const PATHWAY_TO_PROGRAM: Record<string, string> = {
+  'cna-certification': 'CNA (Certified Nursing Assistant)',
+  'medical-assistant': 'Medical Assistant',
+  'phlebotomy': 'Phlebotomy',
+  'hvac-technician': 'HVAC Technician',
+  'electrical-apprenticeship': 'Electrical',
+  'plumbing-apprenticeship': 'Plumbing',
+  'barber-apprenticeship': 'Barber Apprenticeship',
+  'cosmetology': 'Cosmetology',
+  'cdl-training': 'CDL (Commercial Driver License)',
+  'it-support': 'IT Support',
+  'cybersecurity': 'Cybersecurity',
+  'web-development': 'Web Development',
+  'accounting': 'Accounting',
+  'business-management': 'Business Management',
+};
+
 export default function Apply() {
   const searchParams = useSearchParams();
   const [selectedProgram, setSelectedProgram] = useState('');
+  const [pathwaySlug, setPathwaySlug] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
+    // Check for pathway param first (from /pathways pages)
+    const pathway = searchParams.get('pathway');
+    if (pathway && PATHWAY_TO_PROGRAM[pathway]) {
+      setPathwaySlug(pathway);
+      setSelectedProgram(PATHWAY_TO_PROGRAM[pathway]);
+      // Persist to sessionStorage for multi-step flows
+      try {
+        sessionStorage.setItem('efh_apply_pathway', JSON.stringify({
+          slug: pathway,
+          program: PATHWAY_TO_PROGRAM[pathway],
+          source: 'pathway'
+        }));
+      } catch { /* ignore */ }
+      return;
+    }
+
+    // Legacy: check for program param
     const programParam = searchParams.get('program');
     if (programParam) {
       const programMap: Record<string, string> = {
@@ -22,8 +58,24 @@ export default function Apply() {
         'hvac-technician': 'HVAC Technician',
         'cna-certification': 'CNA (Certified Nursing Assistant)',
       };
-      setSelectedProgram(programMap[programParam] || '');
+      if (programMap[programParam]) {
+        setSelectedProgram(programMap[programParam]);
+        setPathwaySlug(programParam);
+      }
+      return;
     }
+
+    // Restore from sessionStorage if no URL params
+    try {
+      const stored = sessionStorage.getItem('efh_apply_pathway');
+      if (stored) {
+        const { slug, program } = JSON.parse(stored);
+        if (slug && program) {
+          setPathwaySlug(slug);
+          setSelectedProgram(program);
+        }
+      }
+    } catch { /* ignore */ }
   }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,13 +86,20 @@ export default function Apply() {
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData);
 
+    // Include pathway context if available
+    const submitData = {
+      ...data,
+      pathway_slug: pathwaySlug || undefined,
+      source: pathwaySlug ? 'pathway' : 'direct',
+    };
+
     try {
       const response = await fetch('/api/apply', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(submitData),
       });
 
       const result = await response.json();

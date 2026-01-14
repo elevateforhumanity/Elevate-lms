@@ -72,6 +72,8 @@ export const applicationSchema = z.object({
   program: z.string().min(1, 'Program is required'),
   funding: z.string().min(1, 'Funding selection is required'),
   message: z.string().max(1000, 'Message must be less than 1000 characters').optional(),
+  pathway_slug: z.string().max(100).optional(),
+  source: z.enum(['direct', 'pathway', 'partner', 'referral']).optional(),
 });
 
 export const contactSchema = z.object({
