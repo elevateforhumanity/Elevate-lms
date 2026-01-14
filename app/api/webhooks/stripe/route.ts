@@ -8,6 +8,8 @@ import type { NextRequest } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 import { logger } from '@/lib/logger';
+import { createEnrollmentCase, submitCaseForSignatures } from '@/lib/workflow/case-management';
+import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
 
 const stripeKey = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeKey
@@ -243,14 +245,50 @@ export async function POST(request: NextRequest) {
             }
 
             if (userId) {
-              // Create enrollment record
-              await supabase.from('enrollments').insert({
-                user_id: userId,
+              // Create student_enrollments record
+              const { data: enrollment } = await supabase.from('student_enrollments').insert({
+                student_id: userId,
                 program_slug: 'barber-apprenticeship',
                 status: 'active',
-                payment_status: 'paid',
-                payment_amount: (session.amount_total || 0) / 100,
-                enrolled_at: new Date().toISOString(),
+                region_id: 'IN',
+                funding_source: 'self-pay',
+              }).select('id').single();
+
+              // Create enrollment case (case spine) for workflow automation
+              const enrollmentCase = await createEnrollmentCase({
+                studentId: userId,
+                programSlug: 'barber-apprenticeship',
+                programType: 'apprenticeship',
+                regionId: 'IN',
+                fundingSource: 'self-pay',
+                signaturesRequired: ['student', 'employer', 'program_holder'],
+              });
+
+              if (enrollmentCase && enrollment) {
+                // Link enrollment to case
+                await supabase.from('student_enrollments')
+                  .update({ case_id: enrollmentCase.id })
+                  .eq('id', enrollment.id);
+
+                // Transition case to pending_signatures
+                await submitCaseForSignatures(enrollmentCase.id, userId);
+
+                logger.info('✅ Enrollment case created:', enrollmentCase.case_number);
+              }
+
+              // Audit log: enrollment created
+              await auditLog({
+                actorId: userId,
+                actorRole: 'student',
+                action: AuditAction.ENROLLMENT_CREATED,
+                entity: AuditEntity.ENROLLMENT,
+                entityId: enrollment?.id,
+                metadata: {
+                  program_slug: 'barber-apprenticeship',
+                  case_id: enrollmentCase?.id,
+                  case_number: enrollmentCase?.case_number,
+                  payment_amount: (session.amount_total || 0) / 100,
+                },
               });
             }
           }
@@ -266,6 +304,19 @@ export async function POST(request: NextRequest) {
               programSlug: 'barber-apprenticeship',
               applicationId,
               type: 'apprenticeship',
+            },
+          });
+
+          // Audit log: payment processed
+          await auditLog({
+            actorRole: 'system',
+            action: AuditAction.PAYMENT_PROCESSED,
+            entity: AuditEntity.PAYMENT,
+            entityId: session.id,
+            metadata: {
+              amount: (session.amount_total || 0) / 100,
+              program_slug: 'barber-apprenticeship',
+              application_id: applicationId,
             },
           });
 

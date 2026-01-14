@@ -4,7 +4,7 @@ import { Play, BookOpen, Users, BarChart, Settings, CheckCircle, ArrowRight } fr
 
 export const metadata: Metadata = {
   title: 'Platform Demo | Elevate for Humanity Store',
-  description: 'Experience the complete Elevate for Humanity workforce training platform. Interactive demo with full LMS, admin dashboard, and compliance tools.',
+  description: 'Experience automated case activation, task initialization, and audit logging. Demo shows signature-driven workflows and compliance reporting.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/store/demo',
   },
@@ -17,13 +17,16 @@ export default function DemoPage() {
         <div className="max-w-7xl mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm font-bold mb-6">
             <Play className="w-4 h-4" />
-            Live Platform Demo
+            Demo Mode: Automated Workflows
           </div>
           <h1 className="text-5xl font-black mb-6">
-            Experience the Platform Before You Buy
+            See Automation in Action
           </h1>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-            Full access to our workforce training platform. Test every feature, explore the admin dashboard, and see compliance reporting in action.
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-4">
+            Sample data showing automated case activation, task initialization, and audit logging.
+          </p>
+          <p className="text-sm text-blue-200 max-w-2xl mx-auto mb-8">
+            Cases activate after signatures • Tasks are created automatically • Events are logged for reporting
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -52,11 +55,11 @@ export default function DemoPage() {
               <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
                 <BookOpen className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Complete LMS</h3>
+              <h3 className="text-xl font-bold mb-3">Program Delivery</h3>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span>Course catalog and enrollment</span>
+                  <span>Automated case enrollment</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
@@ -64,11 +67,11 @@ export default function DemoPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span>Progress tracking and certificates</span>
+                  <span>Milestone tracking and credentials</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                  <span>Quizzes and assessments</span>
+                  <span>Assessments and verification</span>
                 </li>
               </ul>
             </div>

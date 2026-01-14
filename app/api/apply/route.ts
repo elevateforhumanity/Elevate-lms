@@ -8,6 +8,7 @@ import { withRateLimit } from '@/lib/api/with-rate-limit';
 import { contactRateLimit } from '@/lib/rate-limit';
 import { applicationSchema } from '@/lib/api/validation-schemas';
 import { sendEmail } from '@/lib/email/resend';
+import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
 
 const ADMIN_EMAIL = 'elevate4humanityedu@gmail.com';
 
@@ -42,7 +43,7 @@ export const POST = withRateLimit(
 
       const supabase = createAdminClient();
     
-      const { error } = await supabase.from('applications').insert({
+      const { data: application, error } = await supabase.from('applications').insert({
         first_name: firstName,
         last_name: lastName,
         email,
@@ -50,7 +51,7 @@ export const POST = withRateLimit(
         program_id: program,
         status: 'pending',
         notes: `Funding: ${funding}. ${eligible ? 'Prescreen pass' : 'Manual review'}`,
-      });
+      }).select('id').single();
 
       if (error) {
         console.error('Supabase insert error:', error);
@@ -59,6 +60,14 @@ export const POST = withRateLimit(
           { status: 500 }
         );
       }
+
+      await auditLog({
+        actorRole: 'student',
+        action: AuditAction.CASE_CREATED,
+        entity: AuditEntity.APPLICATION,
+        entityId: application?.id,
+        metadata: { program, funding, email, eligible },
+      });
 
       // Send confirmation email to applicant
       await sendEmail({

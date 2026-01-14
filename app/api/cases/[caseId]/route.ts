@@ -1,0 +1,95 @@
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+import { NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
+import { getCaseTimeline, getCaseTasks, transitionCaseStatus, checkSignatureCompleteness } from '@/lib/workflow/case-management';
+
+export async function GET(req: Request, { params }: { params: { caseId: string } }) {
+  try {
+    const supabase = await createClient();
+    const { data: { user }, error: authErr } = await supabase.auth.getUser();
+    
+    if (authErr || !user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { caseId } = params;
+
+    const { data: enrollmentCase, error } = await supabase
+      .from('enrollment_cases')
+      .select('*')
+      .eq('id', caseId)
+      .single();
+
+    if (error || !enrollmentCase) {
+      return NextResponse.json({ error: 'Case not found' }, { status: 404 });
+    }
+
+    if (enrollmentCase.student_id !== user.id && 
+        enrollmentCase.program_holder_id !== user.id && 
+        enrollmentCase.employer_id !== user.id) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', user.id)
+        .single();
+      
+      if (!profile || !['admin', 'staff'].includes(profile.role)) {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+      }
+    }
+
+    const [timeline, tasks, completeness] = await Promise.all([
+      getCaseTimeline(caseId),
+      getCaseTasks(caseId),
+      checkSignatureCompleteness(caseId),
+    ]);
+
+    return NextResponse.json({
+      case: enrollmentCase,
+      timeline,
+      tasks,
+      signatureCompleteness: completeness,
+    });
+  } catch (err: any) {
+    console.error('[GET /api/cases/[caseId]] Error:', err);
+    return NextResponse.json({ error: err.message || 'Internal error' }, { status: 500 });
+  }
+}
+
+export async function PATCH(req: Request, { params }: { params: { caseId: string } }) {
+  try {
+    const supabase = await createClient();
+    const { data: { user }, error: authErr } = await supabase.auth.getUser();
+    
+    if (authErr || !user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { caseId } = params;
+    const body = await req.json();
+    const { status } = body;
+
+    if (!status) {
+      return NextResponse.json({ error: 'status is required' }, { status: 400 });
+    }
+
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+
+    const success = await transitionCaseStatus(caseId, status, user.id, profile?.role || 'student');
+
+    if (!success) {
+      return NextResponse.json({ error: 'Failed to update status' }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (err: any) {
+    console.error('[PATCH /api/cases/[caseId]] Error:', err);
+    return NextResponse.json({ error: err.message || 'Internal error' }, { status: 500 });
+  }
+}

@@ -85,16 +85,22 @@ export default function StorePage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-black">
-                    Platform Licenses
+                    Platform Licensing
                   </h3>
-                  <p className="text-black">Clone our entire platform</p>
+                  <p className="text-black">Enterprise-grade workforce automation</p>
                 </div>
               </div>
               <p className="text-black mb-4">
-                License the complete Elevate for Humanity workforce training
-                platform. White-label solutions for schools, training providers,
-                and workforce agencies.
+                License the complete automation infrastructure: signature-driven 
+                activation, role-based task initialization, append-only audit 
+                logging, and exportable compliance reporting.
               </p>
+              <ul className="text-sm text-black mb-4 space-y-1">
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-brand-green-600" /> Automated case enrollment</li>
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-brand-green-600" /> Multi-party signature workflows</li>
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-brand-green-600" /> Event-based task automation</li>
+                <li className="flex items-center gap-2"><Check className="w-4 h-4 text-brand-green-600" /> Audit-ready reporting</li>
+              </ul>
               <div className="grid grid-cols-2 gap-3 mb-4">
                 <Link
                   href="/store/demo"
@@ -110,13 +116,12 @@ export default function StorePage() {
                 </Link>
               </div>
               <div className="flex items-center gap-2 text-brand-green-600 font-semibold group-hover:gap-4 transition-all">
-                <span>View All Licenses</span>
+                <span>View Licensing Options</span>
                 <TrendingUp className="w-5 h-5" />
               </div>
               <div className="mt-4 pt-4 border-t border-gray-200">
                 <p className="text-sm text-black">
-                  Starting at{' '}
-                  <span className="font-bold text-black">$4,999</span>
+                  Pricing varies by scope, region, and automation requirements
                 </p>
               </div>
             </Link>

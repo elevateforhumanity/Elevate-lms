@@ -5,6 +5,7 @@ import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/server';
 import { z } from 'zod';
 import { DOT_CODES } from '@/lib/compliance/rapids-integration';
+import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
 
 const barberApplicationSchema = z.object({
   firstName: z.string().min(1),
@@ -86,6 +87,21 @@ export async function POST(req: Request) {
 
     // Store RAPIDS pre-registration
     await supabase.from('rapids_registrations').insert(rapidsPreRegistration).single();
+
+    // Audit log: Application created
+    await auditLog({
+      actorId: application.id,
+      actorRole: 'student',
+      action: AuditAction.CASE_CREATED,
+      entity: AuditEntity.APPLICATION,
+      entityId: application.id,
+      metadata: {
+        program: 'barber-apprenticeship',
+        email: validated.email,
+        fundingSource: 'self-pay',
+        rapidsProgram: rapidsPreRegistration.program_number,
+      },
+    });
 
     return NextResponse.json({
       success: true,

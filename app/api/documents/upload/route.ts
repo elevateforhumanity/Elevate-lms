@@ -1,8 +1,9 @@
 import { createClient } from '@/lib/supabase/server';
 import { withErrorHandling, APIErrors, ErrorCode } from '@/lib/api';
 import { NextRequest, NextResponse } from 'next/server';
+import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
@@ -109,6 +110,21 @@ export const POST = withErrorHandling(async (request: NextRequest) => {
     await supabase.storage.from('documents').remove([fileName]);
     throw APIErrors.database('Failed to save document record');
   }
+
+  // Audit log: document uploaded
+  await auditLog({
+    actorId: user.id,
+    actorRole: 'student',
+    action: AuditAction.DOCUMENT_UPLOADED,
+    entity: AuditEntity.DOCUMENT,
+    entityId: document.id,
+    metadata: {
+      document_type: documentType,
+      file_name: file.name,
+      file_size: file.size,
+      mime_type: file.type,
+    },
+  });
 
   return NextResponse.json({
     success: true,

@@ -80,24 +80,24 @@ const HOMEPAGE_PROGRAMS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Elevate for Humanity | Workforce and Education Hub',
+  title: 'Elevate for Humanity | Automation-First Workforce Platform',
   description:
-    'A regulated workforce development and credentialing institute connecting students to approved training, recognized credentials, and real career pathways.',
+    'An automation-first workforce platform serving as the system of record for programs. Signature-driven workflows, compliance-ready reporting, and career pathways for students, employers, and sponsors.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org',
+    canonical: 'https://elevateforhumanity.institute',
   },
   openGraph: {
-    title: 'Elevate for Humanity - Free Career Training',
-    description: 'Workforce development connecting students to approved training, credentials, and career pathways.',
-    url: 'https://www.elevateforhumanity.org',
+    title: 'Elevate for Humanity - Workforce Automation Platform',
+    description: 'Automation-first platform connecting students, employers, and sponsors through signature-driven workflows and compliance-ready reporting.',
+    url: 'https://elevateforhumanity.institute',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Elevate for Humanity' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Elevate for Humanity - Free Career Training',
-    description: 'Workforce development connecting students to training and career pathways.',
+    title: 'Elevate for Humanity - Workforce Automation Platform',
+    description: 'Automation-first platform for workforce development with signature-driven workflows.',
     images: ['/og-default.jpg'],
   },
 };
@@ -126,7 +126,7 @@ export default function HomePage() {
             Earn While You Learn. Train for a Career. Get Paid.
           </h2>
           <p className="text-lg md:text-xl text-slate-700 max-w-3xl mx-auto mb-8">
-            Flexible, employer-connected programs designed for adults, career switchers, and second-chance participants.
+            Automation-first platform connecting students, employers, and sponsors through signature-driven workflows and compliance-ready reporting.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

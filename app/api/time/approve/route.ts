@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 import { createClient } from '@/lib/supabase/server';
 import { toError, toErrorMessage } from '@/lib/safe';
+import { auditLog, AuditAction, AuditEntity } from '@/lib/logging/auditLog';
 
 type Action = 'APPROVE' | 'REJECT' | 'LOCK';
 
@@ -152,5 +153,25 @@ export async function POST(req: Request) {
     .single();
 
   if (updErr) return jsonError(updErr.message, 500);
+
+  // Audit log: hours action
+  const auditAction = action === 'APPROVE' ? AuditAction.HOURS_APPROVED 
+    : action === 'REJECT' ? AuditAction.HOURS_REJECTED 
+    : AuditAction.HOURS_VERIFIED;
+  
+  await auditLog({
+    actorId: user.id,
+    actorRole: 'program_holder',
+    action: auditAction,
+    entity: AuditEntity.HOURS,
+    entityId: entry_id,
+    metadata: {
+      previous_status: entry.status,
+      new_status: nextStatus,
+      minutes: updated?.minutes,
+      enrollment_id: updated?.enrollment_id,
+    },
+  });
+
   return NextResponse.json({ ok: true, entry: updated });
 }

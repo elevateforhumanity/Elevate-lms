@@ -14,9 +14,9 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Sponsor-in-a-Box Licensing | Elevate for Humanity',
+  title: 'Platform Licensing | Elevate for Humanity',
   description:
-    'License our apprenticeship sponsorship infrastructure. WIOA/WRG-safe, audit-defensible, and ready to deploy.',
+    'License our workforce automation infrastructure. System of record for programs with signature-driven activation, automated task initialization, and audit-ready reporting.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/pricing/sponsor-licensing',
   },
@@ -31,7 +31,7 @@ export default function SponsorLicensingPage() {
         headline="License Our Apprenticeship"
         accentText="Infrastructure"
         subheadline="Operate Compliant, Funded Programs Without Building From Scratch"
-        description="We license the complete infrastructure that allows organizations to operate compliant, funded apprenticeship programs — without becoming a school or building systems from scratch. WIOA/WRG-safe, audit-defensible, and ready to deploy."
+        description="The platform serves as the system of record for programs. Program activation is driven by required signatures. Tasks, milestones, and reporting are initialized automatically. All actions are logged for audit and reimbursement purposes."
         imageSrc="/images/business/partnership-1.jpg"
         imageAlt="Apprenticeship Licensing Partnership"
         primaryCTA={{ text: "View Pricing Tiers", href: "#pricing" }}
@@ -484,6 +484,16 @@ export default function SponsorLicensingPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Disclaimer */}
+      <section className="py-8 bg-slate-100 border-t border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-sm text-slate-600">
+            Credentials and instructional partners may be provided by the licensee. 
+            Licensing covers platform access, automation infrastructure, and compliance reporting.
+          </p>
         </div>
       </section>
 
