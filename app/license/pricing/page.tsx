@@ -1,6 +1,15 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, Calendar, HelpCircle } from 'lucide-react';
 import { LICENSE_TIERS, DISCLAIMERS, ROUTES, PLATFORM_FEATURES } from '@/lib/pricing';
+
+export const metadata: Metadata = {
+  title: 'Platform Licensing Pricing | Elevate LMS',
+  description: 'Platform licensing pricing for the Elevate LMS. Core Platform $4,999, School License $15,000, Enterprise $50,000. Monthly option available.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/license/pricing',
+  },
+};
 
 export default function PricingPage() {
   return (

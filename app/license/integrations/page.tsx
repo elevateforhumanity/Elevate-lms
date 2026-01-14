@@ -1,6 +1,15 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { Zap, Database, Mail, Award, Calendar, ArrowRight, CheckCircle, AlertCircle, ArrowRightLeft } from 'lucide-react';
 import { INTEGRATIONS, DISCLAIMERS, ROUTES } from '@/lib/pricing';
+
+export const metadata: Metadata = {
+  title: 'Integrations | Elevate LMS Licensing',
+  description: 'Salesforce CRM integration, Supabase authentication, email providers, and credentialing partners. Connect the Elevate LMS with your systems.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/license/integrations',
+  },
+};
 
 const iconMap: Record<string, typeof Zap> = {
   salesforce: Zap,

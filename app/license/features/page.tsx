@@ -1,9 +1,18 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
   GraduationCap, Route, ClipboardCheck, Handshake, BarChart3,
   Calendar, ArrowRight, CheckCircle
 } from 'lucide-react';
 import { PLATFORM_FEATURES, ROUTES } from '@/lib/pricing';
+
+export const metadata: Metadata = {
+  title: 'Platform Features | Elevate LMS Licensing',
+  description: 'LMS delivery, program management, intake workflows, employer partnerships, and compliance reporting. Everything you need for workforce training.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/license/features',
+  },
+};
 
 const iconMap: Record<string, typeof GraduationCap> = {
   lms: GraduationCap,

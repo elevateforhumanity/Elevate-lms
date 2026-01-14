@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
   ArrowRight, 
@@ -19,6 +20,14 @@ import {
   DISCLAIMERS,
   getStartingPrice 
 } from '@/lib/pricing';
+
+export const metadata: Metadata = {
+  title: 'License the Elevate LMS + Workforce Hub | Elevate for Humanity',
+  description: 'White-label LMS + Workforce Platform Licensing. Built for training providers, workforce boards, and employer partners. Starting at $4,999.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/license',
+  },
+};
 
 export default function LicensePage() {
   const startingPrice = getStartingPrice();

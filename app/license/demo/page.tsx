@@ -1,6 +1,15 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { GraduationCap, Settings, Building2, Calendar, ArrowRight, Video, CheckCircle } from 'lucide-react';
 import { ROUTES } from '@/lib/pricing';
+
+export const metadata: Metadata = {
+  title: 'Platform Demo | Elevate LMS Licensing',
+  description: 'Explore the Elevate LMS through guided demos. Learner experience, admin dashboard, and employer portal views available.',
+  alternates: {
+    canonical: 'https://www.elevateforhumanity.org/license/demo',
+  },
+};
 
 const demoTracks = [
   {
