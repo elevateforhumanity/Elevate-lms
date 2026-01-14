@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Federal Compliance Policy | Elevate for Humanity',
   description: 'Compliance with federal education regulations including FERPA, Title IX, ADA, and WIOA.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/federal-compliance',
+    canonical: 'https://www.elevateforhumanity.org/policies/federal-compliance',
   },
 };
 

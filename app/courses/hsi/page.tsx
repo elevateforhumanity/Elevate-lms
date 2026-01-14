@@ -5,7 +5,7 @@ import { Settings } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/courses/hsi',
+    canonical: 'https://www.elevateforhumanity.org/courses/hsi',
   },
   title: 'HSI Safety Training Courses | Elevate For Humanity',
   description:

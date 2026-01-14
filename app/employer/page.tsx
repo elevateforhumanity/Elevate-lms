@@ -13,7 +13,7 @@ import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/employer',
+    canonical: 'https://www.elevateforhumanity.org/employer',
   },
   title: 'For Employers | Hire Trained Workers | No Fees',
   description:
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'For Employers - Hire Trained Workers',
     description: 'Access job-ready candidates with industry credentials. No recruiting fees.',
-    url: 'https://elevateforhumanity.institute/employer',
+    url: 'https://www.elevateforhumanity.org/employer',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Employer Services' }],
     type: 'website',

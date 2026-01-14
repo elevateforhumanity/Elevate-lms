@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Vita About | Elevate For Humanity',
   description: 'Elevate For Humanity - Vita About page',
-  alternates: { canonical: 'https://elevateforhumanity.institute/vita/about' },
+  alternates: { canonical: 'https://www.elevateforhumanity.org/vita/about' },
 };
 
 import { Heart, Users, Award, TrendingUp } from 'lucide-react';

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'VITA Locations',
   description: 'VITA free tax preparation - Locations information and resources.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/vita/locations',
+    canonical: 'https://www.elevateforhumanity.org/vita/locations',
   },
 };
 

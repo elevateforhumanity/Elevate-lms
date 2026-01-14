@@ -8,7 +8,7 @@ import { BarChart, Lock, Smartphone, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/tax-self-prep',
+    canonical: 'https://www.elevateforhumanity.org/tax-self-prep',
   },
   title: 'Tax Self-Prep | Do Your Own Taxes Online',
   description:

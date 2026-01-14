@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Build your workforce through DOL-registered apprenticeship programs.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/employers/apprenticeships',
+    canonical: 'https://www.elevateforhumanity.org/employers/apprenticeships',
   },
 };
 

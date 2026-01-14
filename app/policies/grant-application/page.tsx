@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Grant Application Policy | Elevate for Humanity',
   description: 'Process and requirements for applying for grants and external funding opportunities.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/grant-application',
+    canonical: 'https://www.elevateforhumanity.org/policies/grant-application',
   },
 };
 

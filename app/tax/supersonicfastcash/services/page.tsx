@@ -22,13 +22,13 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical:
-      'https://elevateforhumanity.institute/tax/supersonicfastcash/services',
+      'https://www.elevateforhumanity.org/tax/supersonicfastcash/services',
   },
   openGraph: {
     title: 'Tax Services & Pricing - SupersonicFastCash',
     description:
       'Professional tax preparation with refund advances up to $7,500. Same-day service available.',
-    url: 'https://elevateforhumanity.institute/tax/supersonicfastcash/services',
+    url: 'https://www.elevateforhumanity.org/tax/supersonicfastcash/services',
     type: 'website',
   },
 };

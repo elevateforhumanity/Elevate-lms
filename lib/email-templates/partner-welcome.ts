@@ -101,8 +101,8 @@ export function getPartnerWelcomeEmail(data: PartnerWelcomeData): { subject: str
       Empowering Communities Through Education
     </p>
     <p style="margin: 0;">
-      <a href="https://elevateforhumanity.institute" style="color: #667eea; text-decoration: none;">Visit Our Website</a> |
-      <a href="https://elevateforhumanity.institute/support" style="color: #667eea; text-decoration: none;">Get Support</a>
+      <a href="https://www.elevateforhumanity.org" style="color: #667eea; text-decoration: none;">Visit Our Website</a> |
+      <a href="https://www.elevateforhumanity.org/support" style="color: #667eea; text-decoration: none;">Get Support</a>
     </p>
   </div>
 
@@ -149,7 +149,7 @@ This enrollment was created through Elevate for Humanity.
 If you didn't request this enrollment, please contact us immediately.
 
 Elevate for Humanity
-https://elevateforhumanity.institute
+https://www.elevateforhumanity.org
   `;
 
   return { subject, html, text };
@@ -255,7 +255,7 @@ Keep up the great work! We're proud of your achievement.
 
 ---
 Elevate for Humanity
-https://elevateforhumanity.institute
+https://www.elevateforhumanity.org
   `;
 
   return { subject, html, text };
@@ -313,7 +313,7 @@ export function getPartnerMilestoneEmail(data: {
     </div>
 
     <div style="text-align: center; margin: 30px 0;">
-      <a href="https://elevateforhumanity.institute/student/courses" style="display: inline-block; background: #667eea; color: white; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px;">Continue Learning</a>
+      <a href="https://www.elevateforhumanity.org/student/courses" style="display: inline-block; background: #667eea; color: white; padding: 14px 28px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px;">Continue Learning</a>
     </div>
 
   </div>
@@ -342,11 +342,11 @@ You're ${data.progress}% complete!
 
 Keep going! You're doing great! Keep up the momentum and you'll reach your goal in no time.
 
-Continue Learning: https://elevateforhumanity.institute/student/courses
+Continue Learning: https://www.elevateforhumanity.org/student/courses
 
 ---
 Elevate for Humanity
-https://elevateforhumanity.institute
+https://www.elevateforhumanity.org
   `;
 
   return { subject, html, text };

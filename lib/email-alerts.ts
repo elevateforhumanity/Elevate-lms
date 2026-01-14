@@ -53,7 +53,7 @@ export const AlertTemplates = {
       <p><strong>Email:</strong> ${data.email}</p>
       <p><strong>Program:</strong> ${data.program}</p>
       <p><strong>Application ID:</strong> ${data.id}</p>
-      <p><a href="https://elevateforhumanity.institute/admin/applications/${data.id}">Review Application</a></p>
+      <p><a href="https://www.elevateforhumanity.org/admin/applications/${data.id}">Review Application</a></p>
       <hr>
       <p><small>SLA: Respond within 48 hours</small></p>
     `,
@@ -68,7 +68,7 @@ export const AlertTemplates = {
       <p><strong>Email:</strong> ${data.email}</p>
       <p><strong>Message:</strong></p>
       <p>${data.message}</p>
-      <p><a href="https://elevateforhumanity.institute/admin/contact/${data.id}">View Message</a></p>
+      <p><a href="https://www.elevateforhumanity.org/admin/contact/${data.id}">View Message</a></p>
       <hr>
       <p><small>SLA: Respond within 24 hours</small></p>
     `,
@@ -82,7 +82,7 @@ export const AlertTemplates = {
       <p><strong>Student:</strong> ${data.studentName}</p>
       <p><strong>Program:</strong> ${data.program}</p>
       <p><strong>Funding:</strong> ${data.fundingSource}</p>
-      <p><a href="https://elevateforhumanity.institute/admin/enrollments/${data.id}">View Enrollment</a></p>
+      <p><a href="https://www.elevateforhumanity.org/admin/enrollments/${data.id}">View Enrollment</a></p>
       <hr>
       <p><small>Action Required: Verify funding documentation</small></p>
     `,
@@ -96,7 +96,7 @@ export const AlertTemplates = {
       <p><strong>Student:</strong> ${data.studentName}</p>
       <p><strong>Program:</strong> ${data.program}</p>
       <p><strong>Certificate #:</strong> ${data.certificateNumber}</p>
-      <p><a href="https://elevateforhumanity.institute/admin/certificates/${data.id}">View Certificate</a></p>
+      <p><a href="https://www.elevateforhumanity.org/admin/certificates/${data.id}">View Certificate</a></p>
       <hr>
       <p><small>Certificate has been generated and is ready for distribution</small></p>
     `,
@@ -110,7 +110,7 @@ export const AlertTemplates = {
       <p><strong>Post ID:</strong> ${data.postId}</p>
       <p><strong>Reason:</strong> ${data.reason}</p>
       <p><strong>Flagged By:</strong> ${data.flaggedBy}</p>
-      <p><a href="https://elevateforhumanity.institute/admin/moderation">Review in Moderation Queue</a></p>
+      <p><a href="https://www.elevateforhumanity.org/admin/moderation">Review in Moderation Queue</a></p>
       <hr>
       <p><small>SLA: Review within 24 hours</small></p>
     `,

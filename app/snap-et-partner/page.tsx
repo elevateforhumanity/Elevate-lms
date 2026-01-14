@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     'WorkOne partner',
   ],
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/snap-et-partner',
+    canonical: 'https://www.elevateforhumanity.org/snap-et-partner',
   },
 };
 

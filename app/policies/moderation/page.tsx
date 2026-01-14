@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Content Moderation Policy | Elevate for Humanity',
   description: 'Content moderation standards, enforcement procedures, and appeal processes for platform content.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/moderation',
+    canonical: 'https://www.elevateforhumanity.org/policies/moderation',
   },
 };
 

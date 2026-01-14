@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'QuickBooks, Microsoft Office, Business Administration, and Entrepreneurship training programs. 100% funded through WIOA and state grants. Build your business career today.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/programs/business',
+    canonical: 'https://www.elevateforhumanity.org/programs/business',
   },
 };
 

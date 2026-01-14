@@ -14,13 +14,13 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical:
-      'https://elevateforhumanity.institute/tax/rise-up-foundation/volunteer',
+      'https://www.elevateforhumanity.org/tax/rise-up-foundation/volunteer',
   },
   openGraph: {
     title: 'Volunteer with VITA - Make a Difference',
     description:
       'Become an IRS-certified volunteer tax preparer and help your community.',
-    url: 'https://elevateforhumanity.institute/tax/rise-up-foundation/volunteer',
+    url: 'https://www.elevateforhumanity.org/tax/rise-up-foundation/volunteer',
     type: 'website',
   },
 };

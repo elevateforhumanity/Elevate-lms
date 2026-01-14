@@ -73,6 +73,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: 'https://elevateforhumanity.institute/sitemap.xml',
+    sitemap: 'https://www.elevateforhumanity.org/sitemap.xml',
   };
 }

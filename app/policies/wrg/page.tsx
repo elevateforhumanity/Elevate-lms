@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Workforce Ready Grant Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/wrg',
+    canonical: 'https://www.elevateforhumanity.org/policies/wrg',
   },
 };
 

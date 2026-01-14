@@ -6,7 +6,7 @@
 import { sendEmail } from '@/lib/email';
 
 const ADMIN_EMAIL = 'elevate4humanityedu@gmail.com';
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
 
 interface ApplicationData {
   id: string;

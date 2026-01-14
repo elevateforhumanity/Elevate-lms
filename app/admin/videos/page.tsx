@@ -9,7 +9,7 @@ import { Video, Upload, Play, Eye } from 'lucide-react';
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/admin/videos',
+    canonical: 'https://www.elevateforhumanity.org/admin/videos',
   },
   title: 'Videos Management | Elevate For Humanity',
   description:

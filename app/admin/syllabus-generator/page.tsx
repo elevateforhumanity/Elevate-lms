@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/admin/syllabus-generator',
+    canonical: 'https://www.elevateforhumanity.org/admin/syllabus-generator',
   },
   title: 'Syllabus Generator | Elevate For Humanity',
   description:

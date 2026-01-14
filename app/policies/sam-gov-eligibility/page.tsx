@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'SAM.gov registration and eligibility requirements for federal grant and contract opportunities at Elevate for Humanity.',
   keywords: ['SAM.gov', 'federal grants', 'government contracts', 'eligibility criteria', 'federal funding', 'grant opportunities', 'DUNS', 'UEI'],
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/sam-gov-eligibility',
+    canonical: 'https://www.elevateforhumanity.org/policies/sam-gov-eligibility',
   },
 };
 

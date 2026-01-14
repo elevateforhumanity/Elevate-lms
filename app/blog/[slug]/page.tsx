@@ -58,12 +58,12 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title: `${post.title} | Elevate For Humanity Blog`,
     description: post.excerpt,
     alternates: {
-      canonical: `https://elevateforhumanity.institute/blog/${slug}`,
+      canonical: `https://www.elevateforhumanity.org/blog/${slug}`,
     },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://elevateforhumanity.institute/blog/${slug}`,
+      url: `https://www.elevateforhumanity.org/blog/${slug}`,
       type: 'article',
       publishedTime: post.published_at,
       authors: [post.author_name],
@@ -94,7 +94,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
   }
   
   const relatedPosts = await getRelatedPosts(post.category, slug);
-  const postUrl = `https://elevateforhumanity.institute/blog/${slug}`;
+  const postUrl = `https://www.elevateforhumanity.org/blog/${slug}`;
   
   const publishedDate = post.published_at 
     ? new Date(post.published_at).toLocaleDateString('en-US', {

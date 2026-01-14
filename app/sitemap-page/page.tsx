@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Site Map | Elevate For Humanity',
   description: 'Complete site map of Elevate for Humanity - find all pages for career training, programs, services, and resources.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/sitemap-page',
+    canonical: 'https://www.elevateforhumanity.org/sitemap-page',
   },
 };
 

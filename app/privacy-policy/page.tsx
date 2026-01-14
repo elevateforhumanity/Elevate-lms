@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/privacy-policy',
+    canonical: 'https://www.elevateforhumanity.org/privacy-policy',
   },
   title: 'Privacy Policy | Elevate For Humanity',
   description:

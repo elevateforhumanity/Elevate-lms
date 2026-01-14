@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   description:
     'Find your path to a better career. 100% free training programs in healthcare, skilled trades, and business. Funded by Indiana Career Connect and WIOA. Start today.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/programs',
+    canonical: 'https://www.elevateforhumanity.org/programs',
   },
   openGraph: {
     title: 'Free Career Training Programs in Indiana',
     description: '100% free training programs in healthcare, skilled trades, and business. Funded by WIOA.',
-    url: 'https://elevateforhumanity.institute/programs',
+    url: 'https://www.elevateforhumanity.org/programs',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Career Training Programs' }],
     type: 'website',

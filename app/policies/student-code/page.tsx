@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Student Code of Conduct | Elevate for Humanity',
   description: 'Expected behaviors, prohibited conduct, and disciplinary procedures for students.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/student-code',
+    canonical: 'https://www.elevateforhumanity.org/policies/student-code',
   },
 };
 

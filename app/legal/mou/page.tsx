@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Memorandum of Understanding for Elevate for Humanity partnerships.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/legal/mou',
+    canonical: 'https://www.elevateforhumanity.org/legal/mou',
   },
 };
 

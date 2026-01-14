@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title: `${article.title} | Help Center | Elevate For Humanity`,
     description: article.excerpt,
     alternates: {
-      canonical: `https://elevateforhumanity.institute/support/help/${slug}`,
+      canonical: `https://www.elevateforhumanity.org/support/help/${slug}`,
     },
   };
 }

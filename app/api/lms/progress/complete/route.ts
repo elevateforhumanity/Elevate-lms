@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
       // Send completion email
       try {
         await fetch(
-          `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/api/email/send`,
+          `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/api/email/send`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -118,7 +118,7 @@ export async function POST(req: NextRequest) {
               <p>You have successfully completed <strong>${courseDetails?.title}</strong>!</p>
               <p><strong>Certificate Number:</strong> ${certificateNumber}</p>
               <p>Your certificate is now available in your LMS dashboard.</p>
-              <p><a href="https://elevateforhumanity.institute/lms/certificates">View Your Certificates</a></p>
+              <p><a href="https://www.elevateforhumanity.org/lms/certificates">View Your Certificates</a></p>
               <p>Best regards,<br>Elevate for Humanity Team</p>
             `,
             }),

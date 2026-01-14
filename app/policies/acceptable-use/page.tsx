@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Acceptable Use Policy | Elevate for Humanity',
   description: 'Guidelines for appropriate use of technology, learning resources, and platform services.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/acceptable-use',
+    canonical: 'https://www.elevateforhumanity.org/policies/acceptable-use',
   },
 };
 

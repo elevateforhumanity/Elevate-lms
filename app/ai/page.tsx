@@ -13,7 +13,7 @@ export const metadata = {
   description:
     'Get 24/7 help with AI tutoring, course building, job matching, and more. Powered by advanced AI to accelerate your learning.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/ai',
+    canonical: 'https://www.elevateforhumanity.org/ai',
   },
 };
 

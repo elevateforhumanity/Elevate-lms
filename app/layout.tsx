@@ -31,8 +31,8 @@ export const viewport: Viewport = {
   userScalable: true,
 };
 
-// Global SEO configuration - canonical domain is elevateforhumanity.institute
-const SITE_URL = 'https://elevateforhumanity.institute';
+// Global SEO configuration - canonical domain is www.elevateforhumanity.org
+const SITE_URL = 'https://www.elevateforhumanity.org';
 const isProduction = process.env.NODE_ENV === 'production';
 
 export const metadata: Metadata = {

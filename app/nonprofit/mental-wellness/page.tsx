@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Mental Wellness | Selfish Inc.',
   description: 'Mental wellness programs and support services',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/nonprofit/mental-wellness',
+    canonical: 'https://www.elevateforhumanity.org/nonprofit/mental-wellness',
   },
 };
 

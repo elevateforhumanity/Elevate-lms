@@ -7,7 +7,7 @@ import { Briefcase, FileText, Users, TrendingUp, Award, CheckCircle } from 'luci
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/career-services',
+    canonical: 'https://www.elevateforhumanity.org/career-services',
   },
   title: 'Career Services | Elevate For Humanity',
   description:

@@ -19,7 +19,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/workforce-board',
+    canonical: 'https://www.elevateforhumanity.org/workforce-board',
   },
   title:
     'Workforce Board Portal - Program Oversight & Performance Tracking | Elevate For Humanity',

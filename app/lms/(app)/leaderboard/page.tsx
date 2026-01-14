@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://elevateforhumanity.institute/lms/leaderboard' },
+  alternates: { canonical: 'https://www.elevateforhumanity.org/lms/leaderboard' },
   title: 'Leaderboard | LMS | Elevate For Humanity',
   description: 'See top learners and track your progress.',
 };

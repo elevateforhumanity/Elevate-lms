@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     'Complete guide to policies, procedures, and student rights at Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/student-handbook',
+    canonical: 'https://www.elevateforhumanity.org/student-handbook',
   },
 };
 

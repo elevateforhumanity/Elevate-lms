@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Direct connections to employers actively hiring our graduates. Job matching, employer partnerships, interview coordination, and ongoing career support.',
   keywords: ['job placement', 'career placement', 'employer connections', 'job matching', 'hiring partners', 'career services', 'job search assistance'],
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/career-services/job-placement',
+    canonical: 'https://www.elevateforhumanity.org/career-services/job-placement',
   },
 };
 

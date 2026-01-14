@@ -10,7 +10,7 @@ interface SchemaProps {
 }
 
 export default function ComprehensiveSchema({ type = 'organization', data }: SchemaProps) {
-  const baseUrl = 'https://elevateforhumanity.institute';
+  const baseUrl = 'https://www.elevateforhumanity.org';
 
   // Organization Schema (Always included)
   const organizationSchema = {

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Credential Revocation Policy | Elevate for Humanity',
   description: 'Conditions under which credentials may be revoked, revocation procedures, and appeal rights.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/revocation',
+    canonical: 'https://www.elevateforhumanity.org/policies/revocation',
   },
 };
 

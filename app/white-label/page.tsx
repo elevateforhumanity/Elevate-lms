@@ -6,7 +6,7 @@ export const metadata = {
   description:
     'License our complete workforce training platform. Multi-tenant SaaS with your branding, WIOA compliance, apprenticeship tracking, and mobile apps included.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/white-label',
+    canonical: 'https://www.elevateforhumanity.org/white-label',
   },
 };
 

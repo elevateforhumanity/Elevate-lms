@@ -8,7 +8,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/admin/license',
+    canonical: 'https://www.elevateforhumanity.org/admin/license',
   },
   title: 'License | Elevate For Humanity',
   description: 'Manage system data and configurations',

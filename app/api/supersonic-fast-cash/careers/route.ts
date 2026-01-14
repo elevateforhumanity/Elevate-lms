@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
           <p>${application.id}</p>
 
           <p>
-            <a href="https://elevateforhumanity.institute/admin/careers"
+            <a href="https://www.elevateforhumanity.org/admin/careers"
                style="display: inline-block; padding: 12px 24px; background: #16a34a; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
               Review Application
             </a>

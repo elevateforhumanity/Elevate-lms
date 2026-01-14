@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Watch short-form videos about career training and success stories',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/reels',
+    canonical: 'https://www.elevateforhumanity.org/reels',
   },
 };
 

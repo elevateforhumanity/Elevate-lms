@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Editorial Policy | Elevate for Humanity',
   description: 'Standards for published content, editorial review processes, and content quality guidelines.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/editorial',
+    canonical: 'https://www.elevateforhumanity.org/policies/editorial',
   },
 };
 

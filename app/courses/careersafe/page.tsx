@@ -5,7 +5,7 @@ import { ExternalLink, CheckCircle, Clock, Award } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/courses/careersafe',
+    canonical: 'https://www.elevateforhumanity.org/courses/careersafe',
   },
   title: 'CareerSafe OSHA Training Courses | Elevate For Humanity',
   description:

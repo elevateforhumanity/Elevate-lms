@@ -7,7 +7,7 @@ import { PlayCircle, CheckCircle, Clock, Award, BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/staff-portal/training',
+    canonical: 'https://www.elevateforhumanity.org/staff-portal/training',
   },
   title: 'Staff Training | Elevate For Humanity',
   description:

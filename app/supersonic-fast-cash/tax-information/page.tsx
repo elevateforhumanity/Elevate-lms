@@ -5,7 +5,7 @@ export const metadata = {
   title: 'Tax Information | Supersonic Fast Cash',
   description: 'Tax tips, rates, and document retention guide',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/supersonic-fast-cash/tax-information',
+    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/tax-information',
   },
 };
 

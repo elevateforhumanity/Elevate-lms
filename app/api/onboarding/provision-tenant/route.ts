@@ -300,7 +300,7 @@ function generateWelcomeEmail(data: any): string {
 
       <h3>📞 Need Help?</h3>
       <p>
-        • <strong>Documentation:</strong> <a href="https://elevateforhumanity.institute/docs">docs.www.elevateforhumanity.org</a><br>
+        • <strong>Documentation:</strong> <a href="https://www.elevateforhumanity.org/docs">docs.www.elevateforhumanity.org</a><br>
         • <strong>Support:</strong> support@www.elevateforhumanity.org<br>
         • <strong>Live Chat:</strong> Available in your admin dashboard
       </p>
@@ -315,7 +315,7 @@ function generateWelcomeEmail(data: any): string {
 
     <div class="footer">
       <p>Elevate for Humanity | Workforce Training Platform</p>
-      <p>Questions? Reply to this email or visit our <a href="https://elevateforhumanity.institute/support">support center</a></p>
+      <p>Questions? Reply to this email or visit our <a href="https://www.elevateforhumanity.org/support">support center</a></p>
     </div>
   </div>
 </body>
@@ -396,9 +396,9 @@ function generateSetupGuideEmail(data: any): string {
       <h3>🎥 Video Tutorials</h3>
       <p>Watch our quick video guides:</p>
       <ul>
-        <li><a href="https://elevateforhumanity.institute/tutorials/branding">Platform Setup (5 min)</a></li>
-        <li><a href="https://elevateforhumanity.institute/tutorials/programs">Creating Programs (8 min)</a></li>
-        <li><a href="https://elevateforhumanity.institute/tutorials/enrollment">Student Enrollment (6 min)</a></li>
+        <li><a href="https://www.elevateforhumanity.org/tutorials/branding">Platform Setup (5 min)</a></li>
+        <li><a href="https://www.elevateforhumanity.org/tutorials/programs">Creating Programs (8 min)</a></li>
+        <li><a href="https://www.elevateforhumanity.org/tutorials/enrollment">Student Enrollment (6 min)</a></li>
       </ul>
 
       <h3>📞 Need Help?</h3>
@@ -407,7 +407,7 @@ function generateSetupGuideEmail(data: any): string {
         <li><strong>Live Chat:</strong> Click the chat icon in your dashboard</li>
         <li><strong>Email:</strong> support@www.elevateforhumanity.org</li>
         <li><strong>Phone:</strong> (555) 123-4567</li>
-        <li><strong>Schedule Call:</strong> <a href="https://elevateforhumanity.institute/book">Book a setup call</a></li>
+        <li><strong>Schedule Call:</strong> <a href="https://www.elevateforhumanity.org/book">Book a setup call</a></li>
       </ul>
 
       <p>You've got this! 💪</p>

@@ -6,7 +6,7 @@ import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/training-providers',
+    canonical: 'https://www.elevateforhumanity.org/training-providers',
   },
   title: 'Training Providers | Elevate For Humanity',
   description:

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'FERPA Privacy Policy | Elevate for Humanity',
   description: 'Family Educational Rights and Privacy Act compliance policy',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/ferpa',
+    canonical: 'https://www.elevateforhumanity.org/policies/ferpa',
   },
 };
 

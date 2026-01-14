@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'What to Bring | VITA Free Tax Prep',
   description: 'Documents and information to bring to your free VITA tax appointment.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/vita/what-to-bring',
+    canonical: 'https://www.elevateforhumanity.org/vita/what-to-bring',
   },
 };
 

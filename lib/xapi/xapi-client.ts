@@ -131,7 +131,7 @@ export class XAPIClient {
       actor: this.createActor(userId, userName),
       verb: XAPIClient.VERBS.INITIALIZED,
       object: {
-        id: `https://elevateforhumanity.institute/courses/${courseId}`,
+        id: `https://www.elevateforhumanity.org/courses/${courseId}`,
         definition: {
           name: { 'en-US': courseName },
           type: 'http://adlnet.gov/expapi/activities/course',
@@ -168,7 +168,7 @@ export class XAPIClient {
       actor: this.createActor(userId, userName),
       verb: XAPIClient.VERBS.COMPLETED,
       object: {
-        id: `https://elevateforhumanity.institute/lessons/${lessonId}`,
+        id: `https://www.elevateforhumanity.org/lessons/${lessonId}`,
         definition: {
           name: { 'en-US': lessonName },
           type: 'http://adlnet.gov/expapi/activities/lesson',
@@ -192,7 +192,7 @@ export class XAPIClient {
       actor: this.createActor(userId, userName),
       verb: passed ? XAPIClient.VERBS.PASSED : XAPIClient.VERBS.FAILED,
       object: {
-        id: `https://elevateforhumanity.institute/quizzes/${quizId}`,
+        id: `https://www.elevateforhumanity.org/quizzes/${quizId}`,
         definition: {
           name: { 'en-US': quizName },
           type: 'http://adlnet.gov/expapi/activities/assessment',
@@ -225,7 +225,7 @@ export class XAPIClient {
       actor: this.createActor(userId, userName),
       verb: XAPIClient.VERBS.EXPERIENCED,
       object: {
-        id: `https://elevateforhumanity.institute/videos/${videoId}`,
+        id: `https://www.elevateforhumanity.org/videos/${videoId}`,
         definition: {
           name: { 'en-US': videoName },
           type: 'https://w3id.org/xapi/video/activity-type/video',

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     'Join us for information sessions, hiring events, workshops, and open houses. Free career training events in Indianapolis.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/events',
+    canonical: 'https://www.elevateforhumanity.org/events',
   },
 };
 

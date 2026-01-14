@@ -122,12 +122,12 @@ export function CertificatePreview({
   };
 
   const shareOnLinkedIn = () => {
-    const url = `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent(courseName)}&organizationId=elevate-for-humanity&issueYear=${new Date(completionDate).getFullYear()}&issueMonth=${new Date(completionDate).getMonth() + 1}&certUrl=${encodeURIComponent(`https://elevateforhumanity.institute/verify/${certificateNumber}`)}`;
+    const url = `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent(courseName)}&organizationId=elevate-for-humanity&issueYear=${new Date(completionDate).getFullYear()}&issueMonth=${new Date(completionDate).getMonth() + 1}&certUrl=${encodeURIComponent(`https://www.elevateforhumanity.org/verify/${certificateNumber}`)}`;
     window.open(url, '_blank');
   };
 
   const copyVerificationLink = () => {
-    const link = `https://elevateforhumanity.institute/verify/${certificateNumber}`;
+    const link = `https://www.elevateforhumanity.org/verify/${certificateNumber}`;
     navigator.clipboard.writeText(link);
     alert('Verification link copied to clipboard!');
   };

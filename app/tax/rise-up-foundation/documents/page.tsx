@@ -13,13 +13,13 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical:
-      'https://elevateforhumanity.institute/tax/rise-up-foundation/documents',
+      'https://www.elevateforhumanity.org/tax/rise-up-foundation/documents',
   },
   openGraph: {
     title: 'Documents to Bring - VITA Tax Help',
     description:
       'Complete checklist of documents needed for your free tax appointment.',
-    url: 'https://elevateforhumanity.institute/tax/rise-up-foundation/documents',
+    url: 'https://www.elevateforhumanity.org/tax/rise-up-foundation/documents',
     type: 'website',
   },
 };

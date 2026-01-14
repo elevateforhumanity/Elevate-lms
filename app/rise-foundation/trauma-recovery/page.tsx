@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Trauma Recovery | Rise Forward Foundation',
   description: 'Support and resources for trauma recovery and healing',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/rise-foundation/trauma-recovery',
+    canonical: 'https://www.elevateforhumanity.org/rise-foundation/trauma-recovery',
   },
 };
 

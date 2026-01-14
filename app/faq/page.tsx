@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   title: 'Frequently Asked Questions | Elevate for Humanity',
   description: 'Find answers to common questions about our free career training programs, WIOA funding, certifications, job placement, and student support services.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/faq',
+    canonical: 'https://www.elevateforhumanity.org/faq',
   },
   openGraph: {
     title: 'FAQ | Elevate for Humanity',
     description: 'Get answers to your questions about free career training',
-    url: 'https://elevateforhumanity.institute/faq',
+    url: 'https://www.elevateforhumanity.org/faq',
     type: 'website',
   },
 };

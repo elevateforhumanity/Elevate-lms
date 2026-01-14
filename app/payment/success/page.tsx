@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Payment Successful | Elevate for Humanity',
   description: 'Your payment was successful. Welcome to Elevate for Humanity!',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/payment/success',
+    canonical: 'https://www.elevateforhumanity.org/payment/success',
   },
 };
 

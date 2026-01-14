@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Federal Compliance | Elevate For Humanity',
   description: 'Our commitment to federal compliance including WIOA, FERPA, ADA, and equal opportunity standards.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/federal-compliance',
+    canonical: 'https://www.elevateforhumanity.org/federal-compliance',
   },
 };
 

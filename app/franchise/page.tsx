@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     'online franchise opportunity',
   ],
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/franchise',
+    canonical: 'https://www.elevateforhumanity.org/franchise',
   },
 };
 

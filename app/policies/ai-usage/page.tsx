@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'AI Usage Policy | Elevate for Humanity',
   description: 'Guidelines for appropriate use of AI tools and tutors in coursework and learning activities.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/ai-usage',
+    canonical: 'https://www.elevateforhumanity.org/policies/ai-usage',
   },
 };
 

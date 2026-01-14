@@ -19,7 +19,7 @@ export function SEO({
 }: SEOProps) {
   const siteName = 'Elevate for Humanity';
   const fullTitle = `${title} | ${siteName}`;
-  const siteUrl = 'https://elevateforhumanity.institute';
+  const siteUrl = 'https://www.elevateforhumanity.org';
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : siteUrl;
 
   return (

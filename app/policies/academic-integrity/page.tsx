@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Academic Integrity Policy | Elevate for Humanity',
   description: 'Standards for honest academic work, prohibited behaviors, and consequences for violations of academic integrity.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/academic-integrity',
+    canonical: 'https://www.elevateforhumanity.org/policies/academic-integrity',
   },
 };
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Academic Integrity Policy | Elevate for Humanity',
   description: 'Academic honesty, plagiarism policy, and code of conduct',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/academic-integrity',
+    canonical: 'https://www.elevateforhumanity.org/academic-integrity',
   },
 };
 

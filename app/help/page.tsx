@@ -23,7 +23,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/help',
+    canonical: 'https://www.elevateforhumanity.org/help',
   },
   title: 'Help Center | Get Support & Resources | Elevate For Humanity',
   description:

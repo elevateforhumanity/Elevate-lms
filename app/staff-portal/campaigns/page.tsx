@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Email Campaigns | Staff Portal',
   description: 'Send email campaigns to students',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/staff-portal/campaigns',
+    canonical: 'https://www.elevateforhumanity.org/staff-portal/campaigns',
   },
 };
 
