@@ -582,7 +582,7 @@ export const metadata: Metadata = {
   title: 'Category Programs | Elevate for Humanity',
   description: 'Program category description',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/programs/category',
+    canonical: 'https://www.elevateforhumanity.org/programs/category',
   },
 };
 

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Payment Cancelled | Elevate for Humanity',
   description: 'Your payment was cancelled. You can try again anytime.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/payment/cancel',
+    canonical: 'https://www.elevateforhumanity.org/payment/cancel',
   },
 };
 
@@ -72,10 +72,10 @@ export default function PaymentCancelPage() {
               </a>{' '}
               or{' '}
               <a
-                href="mailto:info@elevateforhumanity.institute"
+                href="mailto:info@www.elevateforhumanity.org"
                 className="text-brand-orange-600 hover:underline"
               >
-                info@elevateforhumanity.institute
+                info@www.elevateforhumanity.org
               </a>
             </p>
           </div>

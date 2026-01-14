@@ -120,7 +120,7 @@ LIMIT 20;
 ### Option 3: Test Student Enrollment (30 minutes)
 
 1. **Go to your site:**
-   https://elevateforhumanity.institute
+   https://www.elevateforhumanity.org
 
 2. **Browse programs:**
    - Should see 53 programs available
@@ -129,7 +129,7 @@ LIMIT 20;
 
 3. **Create test account:**
    - Go to /signup
-   - Create test@elevateforhumanity.institute
+   - Create test@www.elevateforhumanity.org
    - Verify email
 
 4. **Test enrollment:**
@@ -264,14 +264,14 @@ LIMIT 10;
 
 **Test enrollment right now:**
 
-1. Go to: https://elevateforhumanity.institute
+1. Go to: https://www.elevateforhumanity.org
 2. Click "Programs" or "Courses"
 3. Browse available options
 4. Create account and enroll
 
 **Or check admin dashboard:**
 
-1. Go to: https://elevateforhumanity.institute/admin
+1. Go to: https://www.elevateforhumanity.org/admin
 2. Login with admin account
 3. View programs, courses, enrollments
 

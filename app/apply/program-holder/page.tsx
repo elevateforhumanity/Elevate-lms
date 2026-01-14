@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Partner with us to offer training programs to your community or organization.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/apply/program-holder',
+    canonical: 'https://www.elevateforhumanity.org/apply/program-holder',
   },
 };
 

@@ -1,7 +1,7 @@
 # Complete Old Domain Cleanup Plan
 
 **Goal:** Remove ALL references to `elevateforhumanity.org` and `portal.elevateforhumanity.org`  
-**New Domain:** `elevateforhumanity.institute`  
+**New Domain:** `www.elevateforhumanity.org`  
 **Status:** 133 files found with old domain references
 
 ---

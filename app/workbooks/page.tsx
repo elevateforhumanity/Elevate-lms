@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Access workbooks, study guides, and course materials for all programs',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/workbooks',
+    canonical: 'https://www.elevateforhumanity.org/workbooks',
   },
 };
 
@@ -230,10 +230,10 @@ export default function WorkbooksPage() {
           </p>
           <div className="flex flex-wrap gap-4">
             <a
-              href="mailto:support@elevateforhumanity.institute"
+              href="mailto:support@www.elevateforhumanity.org"
               className="text-brand-blue-600 hover:text-brand-blue-700 font-medium"
             >
-              support@elevateforhumanity.institute
+              support@www.elevateforhumanity.org
             </a>
             <span className="text-slate-400">|</span>
             <a

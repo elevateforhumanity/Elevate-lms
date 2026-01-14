@@ -170,7 +170,7 @@ const faqCategories = [
       },
       {
         q: 'How do I access my student portal?',
-        a: "After enrollment, you'll receive login credentials for your student portal. You can access it at elevateforhumanity.institute/student/dashboard. Contact support if you have trouble logging in.",
+        a: "After enrollment, you'll receive login credentials for your student portal. You can access it at www.elevateforhumanity.org/student/dashboard. Contact support if you have trouble logging in.",
       },
       {
         q: 'Can I use my phone for online classes?',
@@ -178,7 +178,7 @@ const faqCategories = [
       },
       {
         q: 'What if I have technical problems during class?',
-        a: 'We have IT support available during class hours. You can also email support@elevateforhumanity.institute or call our main number for technical assistance.',
+        a: 'We have IT support available during class hours. You can also email support@www.elevateforhumanity.org or call our main number for technical assistance.',
       },
     ],
   },

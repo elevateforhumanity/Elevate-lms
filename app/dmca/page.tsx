@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/dmca',
+    canonical: 'https://www.elevateforhumanity.org/dmca',
   },
   title: 'DMCA Policy | Elevate For Humanity',
   description:
@@ -91,10 +91,10 @@ export default function DMCAPage() {
               <p className="text-black mb-2">
                 Email:{' '}
                 <a
-                  href="mailto:dmca@elevateforhumanity.institute"
+                  href="mailto:dmca@www.elevateforhumanity.org"
                   className="text-brand-blue-600 hover:underline"
                 >
-                  dmca@elevateforhumanity.institute
+                  dmca@www.elevateforhumanity.org
                 </a>
               </p>
               <p className="text-black">
@@ -181,10 +181,10 @@ export default function DMCAPage() {
               <p className="text-black mb-2">
                 Email:{' '}
                 <a
-                  href="mailto:legal@elevateforhumanity.institute"
+                  href="mailto:legal@www.elevateforhumanity.org"
                   className="text-brand-blue-600 hover:underline"
                 >
-                  legal@elevateforhumanity.institute
+                  legal@www.elevateforhumanity.org
                 </a>
               </p>
               <p className="text-black">

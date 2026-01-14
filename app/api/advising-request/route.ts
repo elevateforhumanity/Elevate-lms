@@ -50,7 +50,7 @@ export async function POST(request: Request) {
           'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
         },
         body: JSON.stringify({
-          from: 'Elevate For Humanity <noreply@elevateforhumanity.institute>',
+          from: 'Elevate For Humanity <noreply@www.elevateforhumanity.org>',
           to: 'elevate4humanityedu@gmail.com',
           subject: `New Advising Request from ${name}`,
           html: `

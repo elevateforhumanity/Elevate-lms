@@ -260,7 +260,7 @@ Investigate status of 5 programs listed in ETPL Master Submission but not in INT
 **Address:** Indianapolis, Indiana (Marion County)  
 **Email:** elevate4humanityedu@gmail.com  
 **Phone:** (317) 314-3757  
-**Website:** elevateforhumanity.institute
+**Website:** www.elevateforhumanity.org
 
 **INTraining Portal:** https://intraining.dwd.in.gov/
 

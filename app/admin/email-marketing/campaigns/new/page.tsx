@@ -46,7 +46,7 @@ export default function NewCampaignPage() {
     name: '',
     subject: '',
     fromName: 'Elevate for Humanity',
-    fromEmail: 'noreply@elevateforhumanity.institute',
+    fromEmail: 'noreply@www.elevateforhumanity.org',
     replyTo: 'elevateforhumanity.edu@gmail.com',
     template: '' as EmailTemplateKey | '',
     customHtml: '',

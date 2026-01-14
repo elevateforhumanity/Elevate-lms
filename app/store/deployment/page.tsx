@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Deployment & Setup | Elevate for Humanity Store',
   description: 'Complete deployment guide for the Elevate for Humanity platform. One-click deployment, white-label customization, and technical support.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/store/deployment',
+    canonical: 'https://www.elevateforhumanity.org/store/deployment',
   },
 };
 

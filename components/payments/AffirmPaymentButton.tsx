@@ -21,7 +21,7 @@ export function AffirmPaymentButton({
   amount,
   programName,
   programSlug,
-  userEmail = 'guest@elevateforhumanity.institute',
+  userEmail = 'guest@www.elevateforhumanity.org',
   userName = 'Guest User',
   onSuccess,
   onError,

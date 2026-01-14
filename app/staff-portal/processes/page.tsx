@@ -7,7 +7,7 @@ import { BookOpen, Search, FileText, Clock, TrendingUp } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/staff-portal/processes',
+    canonical: 'https://www.elevateforhumanity.org/staff-portal/processes',
   },
   title: 'Process Documentation | Elevate For Humanity',
   description: 'Access step-by-step guides for all internal processes.',

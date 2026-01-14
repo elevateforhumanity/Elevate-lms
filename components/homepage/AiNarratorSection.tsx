@@ -25,7 +25,7 @@ export function AiNarratorSection() {
           <ul className="mt-3 space-y-2 text-sm text-black list-disc pl-4">
             <li>What Elevate for Humanity is and who we serve</li>
             <li>How programs link to WIOA and state workforce grants</li>
-            <li>How to use elevateforhumanity.institute to explore and apply</li>
+            <li>How to use www.elevateforhumanity.org to explore and apply</li>
           </ul>
 
           <p className="mt-4 text-xs text-slate-500">

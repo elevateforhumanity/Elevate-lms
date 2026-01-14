@@ -520,7 +520,7 @@ https://www.irs.gov/forms-instructions
 ### Elevate for Humanity VITA Site
 
 **Site Coordinator:** [Name]
-**Email:** vita@elevateforhumanity.institute
+**Email:** vita@www.elevateforhumanity.org
 **Phone:** (317) 555-0100
 **EFIN:** 358459
 **SIDN:** [Pending Registration]

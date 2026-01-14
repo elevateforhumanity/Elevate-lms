@@ -6,7 +6,7 @@ import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/wioa-eligibility',
+    canonical: 'https://www.elevateforhumanity.org/wioa-eligibility',
   },
   title: 'WIOA Eligibility Requirements | Elevate For Humanity',
   description:
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'WIOA Eligibility - Free Career Training',
     description: 'Check if you qualify for 100% free career training through WIOA funding.',
-    url: 'https://elevateforhumanity.institute/wioa-eligibility',
+    url: 'https://www.elevateforhumanity.org/wioa-eligibility',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'WIOA Eligibility' }],
     type: 'website',

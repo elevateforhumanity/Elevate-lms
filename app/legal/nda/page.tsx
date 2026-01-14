@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Non-Disclosure Agreement for Elevate for Humanity partners and stakeholders.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/legal/nda',
+    canonical: 'https://www.elevateforhumanity.org/legal/nda',
   },
 };
 
@@ -154,7 +154,7 @@ export default function NDAPage() {
               <p className="text-black">
                 <strong>Elevate for Humanity</strong>
                 <br />
-                Email: legal@elevateforhumanity.institute
+                Email: legal@www.elevateforhumanity.org
                 <br />
                 Phone: (317) 314-3757
               </p>

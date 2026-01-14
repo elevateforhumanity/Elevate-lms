@@ -16,7 +16,7 @@ The `audit_logs` table already exists in your database. We just need to verify i
 
 Visit the setup page to check if your table is ready:
 
-**URL:** `https://elevateforhumanity.institute/admin/monitoring/setup`
+**URL:** `https://www.elevateforhumanity.org/admin/monitoring/setup`
 
 This will automatically check:
 - ✅ Table exists
@@ -37,7 +37,7 @@ If the setup page shows missing columns, it will provide SQL to run. Just:
 
 Once setup is complete:
 
-**URL:** `https://elevateforhumanity.institute/admin/monitoring`
+**URL:** `https://www.elevateforhumanity.org/admin/monitoring`
 
 ---
 

@@ -115,7 +115,7 @@ class HealthCheckService {
     const startTime = Date.now();
 
     try {
-      const response = await axios.get('https://elevateforhumanity.institute', {
+      const response = await axios.get('https://www.elevateforhumanity.org', {
         timeout: 10000,
       });
 
@@ -157,7 +157,7 @@ class HealthCheckService {
 
     try {
       const response = await axios.get(
-        'https://api.elevateforhumanity.institute/health',
+        'https://api.www.elevateforhumanity.org/health',
         {
           timeout: 5000,
         }

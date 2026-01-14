@@ -45,7 +45,7 @@ export async function POST(req: Request) {
     }
 
     const { data, error } = await resend!.emails.send({
-      from: 'Elevate for Humanity <noreply@elevateforhumanity.institute>',
+      from: 'Elevate for Humanity <noreply@www.elevateforhumanity.org>',
       to: Array.isArray(to) ? to : [to],
       subject,
       html: html || text,

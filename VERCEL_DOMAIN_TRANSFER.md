@@ -1,6 +1,6 @@
 # Transfer Domain from Vercel to Netlify
 
-**Domain:** elevateforhumanity.institute  
+**Domain:** www.elevateforhumanity.org  
 **Current:** Vercel (domain registrar)  
 **Target:** Netlify (hosting)  
 **Other Domain:** elevateforhumanity.org (stays on Durable - no changes)
@@ -16,7 +16,7 @@ Keep the domain registered with Vercel, but point it to Netlify for hosting.
 **Step 1: Access Vercel Domain Settings**
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Click on "Domains" in the sidebar
-3. Find `elevateforhumanity.institute`
+3. Find `www.elevateforhumanity.org`
 4. Click on the domain
 
 **Step 2: Update DNS Records**
@@ -67,13 +67,13 @@ After updating DNS in Vercel:
 
 ```bash
 # Check A record (should show 75.2.60.5)
-dig elevateforhumanity.institute A
+dig www.elevateforhumanity.org A
 
 # Check CNAME (should show Netlify)
-dig www.elevateforhumanity.institute CNAME
+dig www.www.elevateforhumanity.org CNAME
 
 # Test site (after DNS propagates)
-curl -I https://elevateforhumanity.institute
+curl -I https://www.elevateforhumanity.org
 ```
 
 ## ⏱️ Timeline
@@ -111,7 +111,7 @@ Use these tools to monitor DNS propagation:
 - [https://www.whatsmydns.net](https://www.whatsmydns.net)
 - [https://dnschecker.org](https://dnschecker.org)
 
-Enter: `elevateforhumanity.institute`
+Enter: `www.elevateforhumanity.org`
 
 Look for:
 - A record: 75.2.60.5

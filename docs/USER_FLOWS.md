@@ -681,7 +681,7 @@ Employers   Sign Up    Create Posting   View Profiles   Schedule   Onboard   Tra
 
 ### Student Support
 - **Live Chat:** Available during business hours
-- **Email:** support@elevateforhumanity.institute
+- **Email:** support@www.elevateforhumanity.org
 - **Phone:** 317-314-3757
 - **Help Center:** `/help`
 - **FAQ:** `/faq`
@@ -689,7 +689,7 @@ Employers   Sign Up    Create Posting   View Profiles   Schedule   Onboard   Tra
 ### Partner Support
 - **Dedicated Account Manager**
 - **Partner Portal Help:** `/partner/help`
-- **Technical Support:** partners@elevateforhumanity.institute
+- **Technical Support:** partners@www.elevateforhumanity.org
 - **Training Resources:** `/partner/resources`
 
 ---

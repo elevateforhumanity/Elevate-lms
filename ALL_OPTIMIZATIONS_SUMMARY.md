@@ -1,6 +1,6 @@
 # All Optimizations Summary
 **Date:** January 8, 2026  
-**Site:** https://elevateforhumanity.institute  
+**Site:** https://www.elevateforhumanity.org  
 **Session:** Complete Performance Audit & Fixes
 
 ---
@@ -160,11 +160,11 @@ matcher: [
 **Verification Commands:**
 ```bash
 # Check cache headers
-curl -I https://elevateforhumanity.institute/ | grep cdn-cache-control
+curl -I https://www.elevateforhumanity.org/ | grep cdn-cache-control
 # Should show: cdn-cache-control: public, s-maxage=60, stale-while-revalidate=3600
 
 # Check CDN hit rate
-curl -I https://elevateforhumanity.institute/ | grep x-vercel-cache
+curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
 # Should show: x-vercel-cache: HIT (after first request)
 ```
 
@@ -281,16 +281,16 @@ curl -I https://elevateforhumanity.institute/ | grep x-vercel-cache
 
 **To verify deployment:**
 ```bash
-curl -I https://elevateforhumanity.institute/ | grep cdn-cache-control
+curl -I https://www.elevateforhumanity.org/ | grep cdn-cache-control
 ```
 
 **To check CDN hit rate:**
 ```bash
 # First request (MISS)
-curl -I https://elevateforhumanity.institute/ | grep x-vercel-cache
+curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
 
 # Second request (HIT)
-curl -I https://elevateforhumanity.institute/ | grep x-vercel-cache
+curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
 ```
 
 **To monitor performance:**

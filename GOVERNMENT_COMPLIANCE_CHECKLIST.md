@@ -44,7 +44,7 @@
 ```bash
 # Install accessibility checker
 npm install -D @axe-core/cli
-npx axe https://elevateforhumanity.institute --save results.json
+npx axe https://www.elevateforhumanity.org --save results.json
 ```
 
 ### 2. **Section 508 Compliance - CRITICAL**
@@ -199,14 +199,14 @@ grep -r "FERPA" /workspaces/Elevate-lms/app/
 npm install -D @axe-core/cli lighthouse
 
 # Run accessibility audit
-npx axe https://elevateforhumanity.institute
+npx axe https://www.elevateforhumanity.org
 
 # Run Lighthouse
-npx lighthouse https://elevateforhumanity.institute --view
+npx lighthouse https://www.elevateforhumanity.org --view
 
 # Check for broken links
 npm install -g broken-link-checker
-blc https://elevateforhumanity.institute -ro
+blc https://www.elevateforhumanity.org -ro
 ```
 
 ## 🎯 PRIORITY ORDER

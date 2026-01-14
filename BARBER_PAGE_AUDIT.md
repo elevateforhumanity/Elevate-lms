@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   description: 'DOL-registered barber apprenticeship in Indianapolis...',
   keywords: 'barber apprenticeship Indiana, earn while you learn barber...',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/programs/barber-apprenticeship',
+    canonical: 'https://www.elevateforhumanity.org/programs/barber-apprenticeship',
   },
 };
 ```
@@ -885,7 +885,7 @@ AFFIRM_PUBLIC_KEY=...
 AFFIRM_PRIVATE_KEY=...
 
 # Base URL
-NEXT_PUBLIC_BASE_URL=https://elevateforhumanity.institute
+NEXT_PUBLIC_BASE_URL=https://www.elevateforhumanity.org
 ```
 
 ---

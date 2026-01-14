@@ -175,7 +175,7 @@ This means the program needs to track and report:
 **Provider:** Elevate for Humanity Training Center  
 **Contact:** elevate4humanityedu@gmail.com  
 **Phone:** (317) 314-3757  
-**Website:** elevateforhumanity.institute
+**Website:** www.elevateforhumanity.org
 
 ---
 

@@ -23,10 +23,10 @@ export default function PartnerSupportPage() {
           <div>
             Email:{' '}
             <a
-              href="mailto:support@elevateforhumanity.institute"
+              href="mailto:support@www.elevateforhumanity.org"
               className="text-blue-600"
             >
-              support@elevateforhumanity.institute
+              support@www.elevateforhumanity.org
             </a>
           </div>
           <div>

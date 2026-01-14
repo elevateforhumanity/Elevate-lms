@@ -457,7 +457,7 @@ While the platform is 100% complete, here are optional future enhancements:
 ### Support Channels
 - **Email**: elevate4humanityedu@gmail.com
 - **Phone**: (317) 314-3757
-- **Documentation**: https://elevateforhumanity.institute/docs
+- **Documentation**: https://www.elevateforhumanity.org/docs
 
 ### Maintenance Schedule
 - **Daily**: Automated backups
@@ -506,7 +506,7 @@ The Elevate for Humanity platform is now **100% complete** with **zero limitatio
 **Report Generated**: January 12, 2026  
 **Version**: 2.0.0  
 **Build**: a6cd0e79  
-**Deployment**: https://elevateforhumanity.institute
+**Deployment**: https://www.elevateforhumanity.org
 
 ---
 

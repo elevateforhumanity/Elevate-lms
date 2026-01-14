@@ -18,7 +18,7 @@ const quickReplies = [
 ];
 
 const botResponses: Record<string, string> = {
-  'how do i apply': 'You can apply online at elevateforhumanity.institute/apply. The application takes about 10-15 minutes. Would you like me to guide you through the process?',
+  'how do i apply': 'You can apply online at www.elevateforhumanity.org/apply. The application takes about 10-15 minutes. Would you like me to guide you through the process?',
   'what programs': 'We offer training in Healthcare (CNA, Phlebotomy), Skilled Trades (HVAC, Welding), Technology (IT Support, Web Dev), CDL Trucking, and more. Visit /programs to see all options.',
   'is training free': 'Yes! Through WIOA funding, eligible students pay $0 for tuition, books, and certification exams. Visit /wioa-eligibility to check if you qualify.',
   'talk to a person': 'I\'ll connect you with our support team. You can also call (317) 314-3757 or submit a ticket at /support/ticket for a response within 24 hours.',

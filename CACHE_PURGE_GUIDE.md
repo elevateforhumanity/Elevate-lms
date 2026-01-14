@@ -1,7 +1,7 @@
 # Complete Cache Purge Guide - Global Cache Clear
 
 **Goal:** Clear ALL caches globally for fresh start with new domain  
-**Domain:** elevateforhumanity.institute  
+**Domain:** www.elevateforhumanity.org  
 **Status:** Independent from old domain (handled separately)
 
 ---
@@ -67,7 +67,7 @@ curl -X DELETE \
 
 # Trigger revalidation
 curl -X POST \
-  "https://elevateforhumanity.institute/api/revalidate?secret=YOUR_SECRET"
+  "https://www.elevateforhumanity.org/api/revalidate?secret=YOUR_SECRET"
 ```
 
 ---
@@ -154,7 +154,7 @@ Hard Refresh:
 - https://www.whatsmydns.net
 - https://dnspropagation.net
 
-**Enter:** `elevateforhumanity.institute`
+**Enter:** `www.elevateforhumanity.org`
 
 **Should show:**
 - A record pointing to Vercel IP
@@ -219,9 +219,9 @@ sudo /etc/init.d/nscd restart
 **For new domain:**
 
 1. **Go to:** https://search.google.com/search-console
-2. **Select:** New property (elevateforhumanity.institute)
+2. **Select:** New property (www.elevateforhumanity.org)
 3. **Go to:** URL Inspection
-4. **Enter:** `https://elevateforhumanity.institute/`
+4. **Enter:** `https://www.elevateforhumanity.org/`
 5. **Click:** "Request Indexing"
 
 **Repeat for priority pages:**
@@ -234,7 +234,7 @@ sudo /etc/init.d/nscd restart
 
 **Submit fresh sitemap:**
 ```
-https://elevateforhumanity.institute/sitemap.xml
+https://www.elevateforhumanity.org/sitemap.xml
 ```
 
 **In Google Search Console:**
@@ -246,7 +246,7 @@ https://elevateforhumanity.institute/sitemap.xml
 
 **See what Google has cached:**
 ```
-cache:elevateforhumanity.institute
+cache:www.elevateforhumanity.org
 ```
 
 **If showing old content:**
@@ -286,9 +286,9 @@ curl -X POST "https://api.cloudflare.com/client/v4/zones/ZONE_ID/purge_cache" \
   -H "Content-Type: application/json" \
   --data '{
     "files": [
-      "https://elevateforhumanity.institute/",
-      "https://elevateforhumanity.institute/sitemap.xml",
-      "https://elevateforhumanity.institute/robots.txt"
+      "https://www.elevateforhumanity.org/",
+      "https://www.elevateforhumanity.org/sitemap.xml",
+      "https://www.elevateforhumanity.org/robots.txt"
     ]
   }'
 ```
@@ -370,7 +370,7 @@ vercel --prod --force --no-cache
 - [ ] Communicate to users about hard refresh
 
 ### Verification:
-- [ ] Check `curl -I https://elevateforhumanity.institute/`
+- [ ] Check `curl -I https://www.elevateforhumanity.org/`
 - [ ] Verify `X-Vercel-Cache` header
 - [ ] Check sitemap loads fresh
 - [ ] Verify robots.txt loads fresh
@@ -384,7 +384,7 @@ vercel --prod --force --no-cache
 
 ```bash
 # Check Vercel cache headers
-curl -I https://elevateforhumanity.institute/
+curl -I https://www.elevateforhumanity.org/
 
 # Look for:
 # X-Vercel-Cache: MISS (good - not cached)
@@ -392,23 +392,23 @@ curl -I https://elevateforhumanity.institute/
 # Cache-Control: public, s-maxage=0, must-revalidate
 
 # Check specific pages
-curl -I https://elevateforhumanity.institute/programs
-curl -I https://elevateforhumanity.institute/sitemap.xml
-curl -I https://elevateforhumanity.institute/robots.txt
+curl -I https://www.elevateforhumanity.org/programs
+curl -I https://www.elevateforhumanity.org/sitemap.xml
+curl -I https://www.elevateforhumanity.org/robots.txt
 ```
 
 ### Check DNS
 
 ```bash
 # Check A record
-dig elevateforhumanity.institute A
+dig www.elevateforhumanity.org A
 
 # Check CNAME
-dig elevateforhumanity.institute CNAME
+dig www.elevateforhumanity.org CNAME
 
 # Check from different DNS servers
-dig @8.8.8.8 elevateforhumanity.institute
-dig @1.1.1.1 elevateforhumanity.institute
+dig @8.8.8.8 www.elevateforhumanity.org
+dig @1.1.1.1 www.elevateforhumanity.org
 ```
 
 ### Check Google Cache
@@ -416,10 +416,10 @@ dig @1.1.1.1 elevateforhumanity.institute
 ```bash
 # See what Google has cached
 # In browser, search:
-cache:elevateforhumanity.institute
+cache:www.elevateforhumanity.org
 
 # Check indexing status
-site:elevateforhumanity.institute
+site:www.elevateforhumanity.org
 ```
 
 ---
@@ -451,7 +451,7 @@ curl -X DELETE \
 # 6. Wait 5 minutes
 
 # 7. Test
-curl -I https://elevateforhumanity.institute/
+curl -I https://www.elevateforhumanity.org/
 ```
 
 ---
@@ -523,7 +523,7 @@ if (typeof window !== 'undefined') {
 **If still cached:**
 ```bash
 # Check cache headers
-curl -I https://elevateforhumanity.institute/ | grep -i cache
+curl -I https://www.elevateforhumanity.org/ | grep -i cache
 
 # Should show:
 # Cache-Control: public, s-maxage=0, must-revalidate
@@ -564,4 +564,4 @@ curl -I https://elevateforhumanity.institute/ | grep -i cache
 
 **Last Updated:** January 6, 2026  
 **Status:** Ready for Global Cache Purge  
-**Domain:** elevateforhumanity.institute (independent)
+**Domain:** www.elevateforhumanity.org (independent)

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     'Connect with employers and industry professionals at our networking events. Monthly career fairs, industry mixers, alumni meetups, and virtual networking opportunities.',
   keywords: ['networking events', 'career fairs', 'job fairs', 'professional networking', 'employer events', 'alumni networking', 'industry meetups'],
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/career-services/networking-events',
+    canonical: 'https://www.elevateforhumanity.org/career-services/networking-events',
   },
 };
 

@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   title: 'Frequently Asked Questions | Elevate for Humanity',
   description: 'Find answers to common questions about our free career training programs, WIOA funding, certifications, job placement, and student support services.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/faq',
+    canonical: 'https://www.elevateforhumanity.org/faq',
   },
   openGraph: {
     title: 'FAQ | Elevate for Humanity',
     description: 'Get answers to your questions about free career training',
-    url: 'https://elevateforhumanity.institute/faq',
+    url: 'https://www.elevateforhumanity.org/faq',
     type: 'website',
   },
 };
@@ -147,7 +147,7 @@ const faqCategories = [
     questions: [
       {
         q: 'How do I access my online courses?',
-        a: 'Log in to your student portal at elevateforhumanity.institute/lms using your email and password. Your courses will be listed on your dashboard. If you have trouble logging in, contact support at elevate4humanityedu@gmail.com.',
+        a: 'Log in to your student portal at www.elevateforhumanity.org/lms using your email and password. Your courses will be listed on your dashboard. If you have trouble logging in, contact support at elevate4humanityedu@gmail.com.',
       },
       {
         q: 'What if I forget my password?',

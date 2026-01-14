@@ -1,7 +1,7 @@
 # Netlify Setup Complete ✅
 
 **Site:** thunderous-axolotl-89d28d.netlify.app  
-**Domain:** elevateforhumanity.institute  
+**Domain:** www.elevateforhumanity.org  
 **Setup Date:** January 11, 2026
 
 ## ✅ What's Been Configured
@@ -22,15 +22,15 @@
 - ✅ All critical services configured
 
 ### 3. Domain Configuration
-- ✅ Primary domain: elevateforhumanity.institute
+- ✅ Primary domain: www.elevateforhumanity.org
 - ✅ Default URL: thunderous-axolotl-89d28d.netlify.app
 - ✅ SSL: Will be auto-provisioned after DNS setup
 
 ### 4. Redirects (in netlify.toml)
-- ✅ elevateforhumanity.org → elevateforhumanity.institute
-- ✅ www.elevateforhumanity.org → elevateforhumanity.institute
-- ✅ www.elevateforhumanity.institute → elevateforhumanity.institute
-- ✅ All Vercel URLs → elevateforhumanity.institute
+- ✅ elevateforhumanity.org → www.elevateforhumanity.org
+- ✅ www.elevateforhumanity.org → www.elevateforhumanity.org
+- ✅ www.www.elevateforhumanity.org → www.elevateforhumanity.org
+- ✅ All Vercel URLs → www.elevateforhumanity.org
 
 ### 5. Security Headers
 - ✅ X-Frame-Options: DENY
@@ -57,7 +57,7 @@
 
 Go to your domain registrar and add these DNS records:
 
-**For elevateforhumanity.institute:**
+**For www.elevateforhumanity.org:**
 ```
 Type: A
 Name: @
@@ -85,14 +85,14 @@ See `DNS_SETUP.md` for detailed instructions.
 
 #### Stripe Webhook
 1. Go to [Stripe Dashboard > Webhooks](https://dashboard.stripe.com/webhooks)
-2. Update endpoint URL to: `https://elevateforhumanity.institute/api/webhooks/stripe`
+2. Update endpoint URL to: `https://www.elevateforhumanity.org/api/webhooks/stripe`
 3. If webhook secret changes, update `STRIPE_WEBHOOK_SECRET` in Netlify
 
 #### Supabase Auth URLs
 1. Go to [Supabase Dashboard > Authentication > URL Configuration](https://supabase.com/dashboard)
-2. Update Site URL: `https://elevateforhumanity.institute`
+2. Update Site URL: `https://www.elevateforhumanity.org`
 3. Add redirect URLs:
-   - `https://elevateforhumanity.institute/**`
+   - `https://www.elevateforhumanity.org/**`
    - `https://thunderous-axolotl-89d28d.netlify.app/**`
 
 #### Other Services (if applicable)

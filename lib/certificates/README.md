@@ -203,4 +203,4 @@ curl http://localhost:3000/api/certificates/verify?number=EFH-2024-TEST-12345
 
 ## Support
 
-For issues or questions, contact: info@elevateforhumanity.institute
+For issues or questions, contact: info@www.elevateforhumanity.org

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'FERPA Privacy Policy | Elevate for Humanity',
   description: 'Family Educational Rights and Privacy Act compliance policy',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/ferpa',
+    canonical: 'https://www.elevateforhumanity.org/policies/ferpa',
   },
 };
 
@@ -102,7 +102,7 @@ export default function FERPAPage() {
       </p>
       <p>
         <strong>Registrar's Office</strong><br />
-        Email: registrar@elevateforhumanity.institute<br />
+        Email: registrar@www.elevateforhumanity.org<br />
         Phone: (317) 314-3757
       </p>
 

@@ -28,7 +28,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/student-portal',
+    canonical: 'https://www.elevateforhumanity.org/student-portal',
   },
   title: 'Student Portal | Elevate For Humanity',
   description:
@@ -146,8 +146,8 @@ export default async function StudentPortalPage() {
     {
       icon: Mail,
       title: 'Email Support',
-      description: 'students@elevateforhumanity.institute',
-      href: 'mailto:students@elevateforhumanity.institute',
+      description: 'students@www.elevateforhumanity.org',
+      href: 'mailto:students@www.elevateforhumanity.org',
     },
     {
       icon: MessageSquare,

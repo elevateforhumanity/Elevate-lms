@@ -30,8 +30,8 @@ NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
 SUPABASE_SERVICE_ROLE_KEY
 NEXTAUTH_SECRET
-NEXTAUTH_URL=https://elevateforhumanity.institute
-NEXT_PUBLIC_SITE_URL=https://elevateforhumanity.institute
+NEXTAUTH_URL=https://www.elevateforhumanity.org
+NEXT_PUBLIC_SITE_URL=https://www.elevateforhumanity.org
 ```
 
 **Payments:**
@@ -58,8 +58,8 @@ SMTP_HOST
 SMTP_PORT
 SMTP_USER
 SMTP_PASSWORD
-SMTP_FROM=noreply@elevateforhumanity.institute
-EMAIL_FROM=noreply@elevateforhumanity.institute
+SMTP_FROM=noreply@www.elevateforhumanity.org
+EMAIL_FROM=noreply@www.elevateforhumanity.org
 ```
 
 **Config:**
@@ -77,7 +77,7 @@ Click **"Trigger deploy"** in Netlify Dashboard to rebuild with new environment 
 Go to: [https://app.netlify.com/sites/thunderous-axolotl-89d28d/settings/domain](https://app.netlify.com/sites/thunderous-axolotl-89d28d/settings/domain)
 
 1. Click "Add custom domain"
-2. Enter: `elevateforhumanity.institute`
+2. Enter: `www.elevateforhumanity.org`
 3. Follow DNS instructions provided by Netlify
 
 **Note:** DNS changes take 24-48 hours to propagate.
@@ -88,7 +88,7 @@ Go to: [https://app.netlify.com/sites/thunderous-axolotl-89d28d/settings/domain]
 
 1. Go to [Stripe Dashboard > Webhooks](https://dashboard.stripe.com/webhooks)
 2. Find your current webhook
-3. Update URL to: `https://elevateforhumanity.institute/api/webhooks/stripe`
+3. Update URL to: `https://www.elevateforhumanity.org/api/webhooks/stripe`
    - Or temporarily: `https://thunderous-axolotl-89d28d.netlify.app/api/webhooks/stripe`
 4. Copy the new webhook signing secret
 5. Update `STRIPE_WEBHOOK_SECRET` in Netlify environment variables
@@ -97,9 +97,9 @@ Go to: [https://app.netlify.com/sites/thunderous-axolotl-89d28d/settings/domain]
 ### Supabase Auth URLs
 
 1. Go to [Supabase Dashboard > Authentication > URL Configuration](https://supabase.com/dashboard/project/_/auth/url-configuration)
-2. Update Site URL: `https://elevateforhumanity.institute`
+2. Update Site URL: `https://www.elevateforhumanity.org`
 3. Add Redirect URLs:
-   - `https://elevateforhumanity.institute/**`
+   - `https://www.elevateforhumanity.org/**`
    - `https://thunderous-axolotl-89d28d.netlify.app/**`
 
 ## ✅ Step 5: Monitor Deployment
@@ -149,7 +149,7 @@ Visit: `https://thunderous-axolotl-89d28d.netlify.app`
 - Memory: 8GB
 
 ✅ **Redirects:**
-- elevateforhumanity.org → elevateforhumanity.institute
+- elevateforhumanity.org → www.elevateforhumanity.org
 - www redirects to non-www
 
 ✅ **Security Headers:**

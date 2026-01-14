@@ -52,15 +52,15 @@ npm run build      # ✅ Build successful
 - Removed first redirects() function (lines 16-44)
 - Merged redirects into single function
 - Added old domain redirects:
-  - `elevateforhumanity.org` → `elevateforhumanity.institute`
-  - `www.elevateforhumanity.org` → `elevateforhumanity.institute`
-  - `*.vercel.app` → `elevateforhumanity.institute`
+  - `elevateforhumanity.org` → `www.elevateforhumanity.org`
+  - `www.elevateforhumanity.org` → `www.elevateforhumanity.org`
+  - `*.vercel.app` → `www.elevateforhumanity.org`
 
 **Verification:**
 ```bash
 # All redirects now work correctly
-curl -I https://www.elevateforhumanity.org/  # → 308 to elevateforhumanity.institute
-curl -I https://elevateforhumanity.org/      # → 308 to elevateforhumanity.institute
+curl -I https://www.elevateforhumanity.org/  # → 308 to www.elevateforhumanity.org
+curl -I https://elevateforhumanity.org/      # → 308 to www.elevateforhumanity.org
 ```
 
 ---
@@ -142,8 +142,8 @@ export function sanitizeHtml(dirty: string): string {
 - `public/.well-known/security.txt` - Updated canonical URL and contact email
 
 **Changes:**
-- `https://www.elevateforhumanity.org` → `https://elevateforhumanity.institute`
-- `security@elevateforhumanity.org` → `security@elevateforhumanity.institute`
+- `https://www.elevateforhumanity.org` → `https://www.elevateforhumanity.org`
+- `security@elevateforhumanity.org` → `security@www.elevateforhumanity.org`
 
 ---
 

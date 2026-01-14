@@ -14,7 +14,7 @@ const budgets: Budgets = JSON.parse(
 );
 
 const BASE_URL =
-  process.env.PERF_BASE_URL || "https://elevateforhumanity.institute";
+  process.env.PERF_BASE_URL || "https://www.elevateforhumanity.org";
 
 function fetchMetrics(path: string): Promise<{ ttfb: number; bytes: number }> {
   return new Promise((resolve, reject) => {

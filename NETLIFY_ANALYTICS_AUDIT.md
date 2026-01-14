@@ -174,8 +174,8 @@ find app/api -name "*ai*" -o -name "*chat*" -o -name "*assistant*"
 **Verification**:
 ```bash
 # After next deploy
-curl -I https://elevateforhumanity.institute/app/globals-modern-design.css
-curl -I https://elevateforhumanity.institute/clear-pathways-hero.jpg
+curl -I https://www.elevateforhumanity.org/app/globals-modern-design.css
+curl -I https://www.elevateforhumanity.org/clear-pathways-hero.jpg
 ```
 
 ### Priority 3: Fix Crawler 5xx Errors (7 → 0)
@@ -364,7 +364,7 @@ find public/ -type f | sort
 
 2. **IMMEDIATE**: Check deployed CSS files
    ```bash
-   curl -I https://elevateforhumanity.institute/app/globals-modern-design.css
+   curl -I https://www.elevateforhumanity.org/app/globals-modern-design.css
    ```
 
 3. **URGENT**: Add error handling to all AI endpoints

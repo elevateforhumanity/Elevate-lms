@@ -24,7 +24,7 @@
 - [x] Vercel deployment configured
 
 ### Supabase Configuration
-- [x] Site URL updated to elevateforhumanity.institute
+- [x] Site URL updated to www.elevateforhumanity.org
 - [x] Redirect URLs configured (both domains)
 - [x] Old preview deployment URLs cleaned up
 - [x] Email templates using template variables
@@ -36,7 +36,7 @@
 - [x] All hero images optimized
 
 ### Production Deployment
-- [x] Site live at https://elevateforhumanity.institute
+- [x] Site live at https://www.elevateforhumanity.org
 - [x] Security headers configured
 - [x] CDN caching active
 - [x] All fixes verified in production
@@ -167,14 +167,14 @@
 ```bash
 # Test domain redirect
 curl -sI https://elevateforhumanity.org/ | grep -E "HTTP|location"
-# Should return: HTTP/2 308 + location: https://elevateforhumanity.institute/
+# Should return: HTTP/2 308 + location: https://www.elevateforhumanity.org/
 
 # Test production site
-curl -sI https://elevateforhumanity.institute/
+curl -sI https://www.elevateforhumanity.org/
 # Should return: HTTP/2 200
 
 # Test login page
-curl -sI https://elevateforhumanity.institute/login
+curl -sI https://www.elevateforhumanity.org/login
 # Should return: HTTP/2 200
 
 # Check for .org references in code
@@ -187,7 +187,7 @@ grep -r "elevateforhumanity.org" --exclude-dir={node_modules,.git,.next} . | gre
 ## 💡 Immediate Actions
 
 **If you want to test the student portal:**
-1. Access admin portal: https://elevateforhumanity.institute/admin
+1. Access admin portal: https://www.elevateforhumanity.org/admin
 2. Create a program
 3. Enroll your test user
 4. Return to student dashboard

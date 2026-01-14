@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   keywords:
     'transparency, accountability, financial reports, nonprofit, 501c3, impact metrics',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/transparency',
+    canonical: 'https://www.elevateforhumanity.org/transparency',
   },
 };
 

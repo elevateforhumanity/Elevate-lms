@@ -1,6 +1,6 @@
 # Domain & Indexing Audit Report
 **Date:** January 8, 2026  
-**Domains Audited:** elevateforhumanity.org, www.elevateforhumanity.org, elevateforhumanity.institute  
+**Domains Audited:** elevateforhumanity.org, www.elevateforhumanity.org, www.elevateforhumanity.org  
 **Auditor:** Ona AI Agent
 
 ---
@@ -31,7 +31,7 @@ http://elevateforhumanity.org
 ```
 https://elevateforhumanity.org
 → 308 Permanent Redirect
-→ https://elevateforhumanity.institute/
+→ https://www.elevateforhumanity.org/
 ```
 ✅ Working
 
@@ -53,7 +53,7 @@ http://www.elevateforhumanity.org
 ```
 https://www.elevateforhumanity.org
 → 308 Permanent Redirect
-→ https://elevateforhumanity.institute/
+→ https://www.elevateforhumanity.org/
 ```
 ✅ Working
 
@@ -61,13 +61,13 @@ https://www.elevateforhumanity.org
 
 ---
 
-### 3. elevateforhumanity.institute (Current Domain)
+### 3. www.elevateforhumanity.org (Current Domain)
 
 **Status:** ✅ **PRIMARY DOMAIN - ACTIVE**
 
 **HTTPS:** ✅ Working  
 **SSL:** ✅ Valid (HSTS enabled, max-age=63072000)  
-**Canonical URL:** ✅ Correct (`https://elevateforhumanity.institute`)
+**Canonical URL:** ✅ Correct (`https://www.elevateforhumanity.org`)
 
 ---
 
@@ -79,7 +79,7 @@ http://www.elevateforhumanity.org
   ↓ (308 - HTTP to HTTPS)
 https://www.elevateforhumanity.org
   ↓ (308 - Old domain to new)
-https://elevateforhumanity.institute/
+https://www.elevateforhumanity.org/
 ```
 
 **Redirect Count:** 2 (acceptable)  
@@ -90,7 +90,7 @@ https://elevateforhumanity.institute/
 
 ## Caching Configuration
 
-### Current Headers (elevateforhumanity.institute):
+### Current Headers (www.elevateforhumanity.org):
 ```
 age: 500
 cache-control: s-maxage=60, stale-while-revalidate=31535940
@@ -137,7 +137,7 @@ x-robots-tag: noai, noimageai
 ## Search Engine Indexing
 
 ### Google Indexing:
-**Domain:** elevateforhumanity.institute  
+**Domain:** www.elevateforhumanity.org  
 **Status:** ✅ Indexed (unable to get exact count via curl)  
 **Canonical:** ✅ Correct
 
@@ -162,7 +162,7 @@ x-robots-tag: noai, noimageai
 ### DNS Resolution:
 ```
 elevateforhumanity.org → Vercel
-elevateforhumanity.institute → Vercel
+www.elevateforhumanity.org → Vercel
 ```
 ✅ Both domains resolve correctly
 
@@ -239,25 +239,25 @@ curl -I http://www.elevateforhumanity.org
 curl -I https://www.elevateforhumanity.org
 
 # Test new domain
-curl -I https://elevateforhumanity.institute/
+curl -I https://www.elevateforhumanity.org/
 ```
 
 ### Test Caching:
 ```bash
 # Check cache headers
-curl -I https://elevateforhumanity.institute/ | grep cache
+curl -I https://www.elevateforhumanity.org/ | grep cache
 
 # Check cache status
-curl -I https://elevateforhumanity.institute/ | grep x-vercel-cache
+curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
 ```
 
 ### Test Indexing:
 ```bash
 # Google (manual check)
-site:elevateforhumanity.institute
+site:www.elevateforhumanity.org
 
 # Bing (manual check)
-site:elevateforhumanity.institute
+site:www.elevateforhumanity.org
 ```
 
 ---

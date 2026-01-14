@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Response Time SLA | Elevate for Humanity',
   description: 'Service level agreements for support and communication response times.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/response-sla',
+    canonical: 'https://www.elevateforhumanity.org/policies/response-sla',
   },
 };
 
@@ -197,10 +197,10 @@ export default function ResponseSLAPage() {
               For inquiries and support:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>General:</strong> info@elevateforhumanity.institute</li>
-              <li><strong>Admissions:</strong> admissions@elevateforhumanity.institute</li>
-              <li><strong>Student Services:</strong> support@elevateforhumanity.institute</li>
-              <li><strong>IT Support:</strong> helpdesk@elevateforhumanity.institute</li>
+              <li><strong>General:</strong> info@www.elevateforhumanity.org</li>
+              <li><strong>Admissions:</strong> admissions@www.elevateforhumanity.org</li>
+              <li><strong>Student Services:</strong> support@www.elevateforhumanity.org</li>
+              <li><strong>IT Support:</strong> helpdesk@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Emergency:</strong> (317) 314-3757 ext. 911</li>
             </ul>

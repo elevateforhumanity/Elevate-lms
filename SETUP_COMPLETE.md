@@ -2,7 +2,7 @@
 
 **Date:** January 11, 2026  
 **Site:** thunderous-axolotl-89d28d.netlify.app  
-**Domain:** elevateforhumanity.institute  
+**Domain:** www.elevateforhumanity.org  
 **Status:** DNS configured, deployment in progress
 
 ---
@@ -26,7 +26,7 @@
 - All critical services configured
 
 ### 3. ✅ Domain Setup
-- Primary domain: elevateforhumanity.institute
+- Primary domain: www.elevateforhumanity.org
 - DNS configured in Vercel:
   - A record: @ → 75.2.60.5
   - CNAME: www → thunderous-axolotl-89d28d.netlify.app
@@ -34,13 +34,13 @@
 - CAA record: Preserved for Let's Encrypt
 
 ### 4. ✅ Redirects
-- www.elevateforhumanity.institute → elevateforhumanity.institute
+- www.www.elevateforhumanity.org → www.elevateforhumanity.org
 - Security headers configured
 - Caching optimized
 
 ### 5. ✅ Separate Domains
 - elevateforhumanity.org: Stays on Durable (no changes)
-- elevateforhumanity.institute: Now on Netlify
+- www.elevateforhumanity.org: Now on Netlify
 
 ### 6. ✅ Current Deployment
 - Status: Building
@@ -81,7 +81,7 @@ Visit: [https://thunderous-axolotl-89d28d.netlify.app](https://thunderous-axolot
 - [ ] All features functional
 
 ### After DNS Propagates (Custom Domain)
-Visit: [https://elevateforhumanity.institute](https://elevateforhumanity.institute)
+Visit: [https://www.elevateforhumanity.org](https://www.elevateforhumanity.org)
 
 **Check:**
 - [ ] Domain resolves to Netlify
@@ -97,7 +97,7 @@ Check propagation at:
 - [https://www.whatsmydns.net](https://www.whatsmydns.net)
 - [https://dnschecker.org](https://dnschecker.org)
 
-Enter: `elevateforhumanity.institute`
+Enter: `www.elevateforhumanity.org`
 
 **Look for:**
 - A record: 75.2.60.5 ✅
@@ -110,14 +110,14 @@ Enter: `elevateforhumanity.institute`
 ### 1. Stripe Webhook
 **After DNS propagates:**
 1. Go to [Stripe Dashboard > Webhooks](https://dashboard.stripe.com/webhooks)
-2. Update endpoint URL to: `https://elevateforhumanity.institute/api/webhooks/stripe`
+2. Update endpoint URL to: `https://www.elevateforhumanity.org/api/webhooks/stripe`
 3. If webhook secret changes, update in Netlify environment variables
 
 ### 2. Supabase Auth URLs
 1. Go to [Supabase Dashboard > Authentication](https://supabase.com/dashboard)
-2. Update Site URL: `https://elevateforhumanity.institute`
+2. Update Site URL: `https://www.elevateforhumanity.org`
 3. Add redirect URLs:
-   - `https://elevateforhumanity.institute/**`
+   - `https://www.elevateforhumanity.org/**`
    - `https://thunderous-axolotl-89d28d.netlify.app/**`
 
 ### 3. OAuth Providers (if applicable)
@@ -169,7 +169,7 @@ Update callback URLs for:
 - Logs: [https://app.netlify.com/sites/thunderous-axolotl-89d28d/logs](https://app.netlify.com/sites/thunderous-axolotl-89d28d/logs)
 
 ### Vercel Domain
-- DNS Records: [https://vercel.com/elevate-institute/domains/elevateforhumanity.institute](https://vercel.com/elevate-institute/domains/elevateforhumanity.institute)
+- DNS Records: [https://vercel.com/elevate-institute/domains/www.elevateforhumanity.org](https://vercel.com/elevate-institute/domains/www.elevateforhumanity.org)
 
 ---
 
@@ -220,7 +220,7 @@ Update callback URLs for:
 - ⏳ SSL certificate (automatic)
 - ⏳ Webhook updates (manual)
 
-**Your site will be fully live at `https://elevateforhumanity.institute` within 24 hours!**
+**Your site will be fully live at `https://www.elevateforhumanity.org` within 24 hours!**
 
 ---
 

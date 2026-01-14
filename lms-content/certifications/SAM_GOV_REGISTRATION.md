@@ -23,7 +23,7 @@
 **Organization:** Elevate for Humanity Training Center
 **Address:** 8888 Keystone Crossing, Indianapolis, IN 46240
 **Phone:** (317) 314-3757
-**Website:** elevateforhumanity.institute
+**Website:** www.elevateforhumanity.org
 
 ---
 
@@ -417,7 +417,7 @@ Elizabeth Greene
 CEO, Elevate for Humanity Training Center
 8888 Keystone Crossing, Indianapolis, IN 46240
 (317) 314-3757
-elevateforhumanity.institute
+www.elevateforhumanity.org
 
 SAM.gov Registered Federal Contractor (3 Entities)
 2EXCLUSIVE LLC-S: UEI VX2GK5S8SZH8 | CAGE 0QH19

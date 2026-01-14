@@ -60,7 +60,7 @@ The codebase has **critical issues** that must be resolved before production dep
 - `public/pages/*.html` - Multiple old domain references (50+ files)
 - `public/durable-pages/*.html` - Old domain references
 
-**Current Domain:** elevateforhumanity.institute  
+**Current Domain:** www.elevateforhumanity.org  
 **Old Domain:** www.elevateforhumanity.org, portal.elevateforhumanity.org
 
 **Fix Required:** 
@@ -164,7 +164,7 @@ export function sanitizeHtml(dirty: string): string {
 
 **Issues:**
 - Line 3: Still references old domain `https://www.elevateforhumanity.org`
-- Should reference new domain `https://elevateforhumanity.institute`
+- Should reference new domain `https://www.elevateforhumanity.org`
 
 ---
 

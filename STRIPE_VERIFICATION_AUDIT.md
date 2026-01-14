@@ -114,7 +114,7 @@ STRIPE_SECRET_KEY=sk_live_...
 ## Testing Checklist
 
 ### ✅ Test Payment Flow:
-1. Go to: https://elevateforhumanity.institute/store
+1. Go to: https://www.elevateforhumanity.org/store
 2. Add item to cart
 3. Proceed to checkout
 4. Use test card: `4242 4242 4242 4242`
@@ -128,7 +128,7 @@ STRIPE_SECRET_KEY=sk_live_...
 
 ### ✅ Test API Health:
 ```bash
-curl https://elevateforhumanity.institute/api/health
+curl https://www.elevateforhumanity.org/api/health
 ```
 Should show: `"stripe": { "ok": true }`
 

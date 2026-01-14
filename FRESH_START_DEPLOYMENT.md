@@ -1,5 +1,5 @@
 # Fresh Start Deployment Guide
-**New Domain:** elevateforhumanity.institute  
+**New Domain:** www.elevateforhumanity.org  
 **Goal:** Clean slate - new sitemap, new crawl, new index
 
 ---
@@ -44,9 +44,9 @@ git push origin main
 ```
 
 **Verify deployment:**
-- https://elevateforhumanity.institute (should load)
-- https://elevateforhumanity.institute/sitemap.xml (should show new domain)
-- https://elevateforhumanity.institute/robots.txt (should show new domain)
+- https://www.elevateforhumanity.org (should load)
+- https://www.elevateforhumanity.org/sitemap.xml (should show new domain)
+- https://www.elevateforhumanity.org/robots.txt (should show new domain)
 
 ---
 
@@ -55,11 +55,11 @@ git push origin main
 ### Step 1: Verify Sitemap is Live
 
 ```bash
-curl https://elevateforhumanity.institute/sitemap.xml
+curl https://www.elevateforhumanity.org/sitemap.xml
 ```
 
 **Should show:**
-- All URLs with `https://elevateforhumanity.institute`
+- All URLs with `https://www.elevateforhumanity.org`
 - No old domain references
 - Current date in `lastModified`
 
@@ -70,7 +70,7 @@ curl https://elevateforhumanity.institute/sitemap.xml
 1. **Go to:** https://search.google.com/search-console
 2. **Click:** "Add Property"
 3. **Select:** "Domain" property type
-4. **Enter:** `elevateforhumanity.institute`
+4. **Enter:** `www.elevateforhumanity.org`
 5. **Verify:** Via DNS TXT record
 
 **DNS TXT Record:**
@@ -89,7 +89,7 @@ TTL: 3600
 1. **Go to:** https://search.google.com/search-console
 2. **Click:** "Add Property"
 3. **Select:** "URL prefix"
-4. **Enter:** `https://elevateforhumanity.institute`
+4. **Enter:** `https://www.elevateforhumanity.org`
 5. **Verify:** Via HTML file upload or meta tag
 
 **HTML File Method:**
@@ -101,7 +101,7 @@ TTL: 3600
 ### Step 3: Submit Sitemap
 
 1. **In Google Search Console:**
-   - Select your property: `elevateforhumanity.institute`
+   - Select your property: `www.elevateforhumanity.org`
    - Go to: **Sitemaps** (left sidebar)
    - Click: **Add a new sitemap**
    - Enter: `sitemap.xml`
@@ -122,7 +122,7 @@ TTL: 3600
 **How to request:**
 1. In Google Search Console
 2. Use **URL Inspection** tool
-3. Enter full URL: `https://elevateforhumanity.institute/`
+3. Enter full URL: `https://www.elevateforhumanity.org/`
 4. Click: **Request Indexing**
 5. Repeat for priority pages
 
@@ -134,13 +134,13 @@ TTL: 3600
 
 1. **Go to:** https://www.bing.com/webmasters
 2. **Click:** "Add a site"
-3. **Enter:** `https://elevateforhumanity.institute`
+3. **Enter:** `https://www.elevateforhumanity.org`
 4. **Verify:** Via XML file or meta tag
 
 ### Step 2: Submit Sitemap
 
 1. **Go to:** Sitemaps section
-2. **Enter:** `https://elevateforhumanity.institute/sitemap.xml`
+2. **Enter:** `https://www.elevateforhumanity.org/sitemap.xml`
 3. **Click:** Submit
 
 ---
@@ -154,7 +154,7 @@ TTL: 3600
 {
   source: '/:path*',
   has: [{ type: 'host', value: 'elevateforhumanity\\.org' }],
-  destination: 'https://elevateforhumanity.institute/:path*',
+  destination: 'https://www.elevateforhumanity.org/:path*',
   permanent: true, // 308 redirect
 }
 ```
@@ -186,7 +186,7 @@ TTL: 3600
 **Option 3: Set Up Change of Address**
 1. In old property (elevateforhumanity.org)
 2. Go to Settings → Change of address
-3. Select new property (elevateforhumanity.institute)
+3. Select new property (www.elevateforhumanity.org)
 4. Submit
 
 ---
@@ -204,17 +204,17 @@ TTL: 3600
 **Tools:**
 ```bash
 # Check sitemap
-curl -I https://elevateforhumanity.institute/sitemap.xml
+curl -I https://www.elevateforhumanity.org/sitemap.xml
 
 # Check robots.txt
-curl https://elevateforhumanity.institute/robots.txt
+curl https://www.elevateforhumanity.org/robots.txt
 
 # Check redirect
 curl -I https://elevateforhumanity.org/
-# Should show: HTTP/2 308, Location: https://elevateforhumanity.institute/
+# Should show: HTTP/2 308, Location: https://www.elevateforhumanity.org/
 
 # Check indexing
-site:elevateforhumanity.institute
+site:www.elevateforhumanity.org
 ```
 
 ### Week 2-4: Growth Tracking
@@ -307,7 +307,7 @@ site:elevateforhumanity.institute
 
 **Check:**
 ```bash
-curl https://elevateforhumanity.institute/sitemap.xml
+curl https://www.elevateforhumanity.org/sitemap.xml
 ```
 
 **If 404:**
@@ -326,7 +326,7 @@ curl -I https://elevateforhumanity.org/
 **Should show:**
 ```
 HTTP/2 308
-location: https://elevateforhumanity.institute/
+location: https://www.elevateforhumanity.org/
 ```
 
 **If not:**
@@ -346,13 +346,13 @@ location: https://elevateforhumanity.institute/
 **Check:**
 ```bash
 # Check robots.txt
-curl https://elevateforhumanity.institute/robots.txt
+curl https://www.elevateforhumanity.org/robots.txt
 
 # Check page headers
-curl -I https://elevateforhumanity.institute/programs
+curl -I https://www.elevateforhumanity.org/programs
 
 # Check for noindex
-curl -s https://elevateforhumanity.institute/programs | grep -i noindex
+curl -s https://www.elevateforhumanity.org/programs | grep -i noindex
 ```
 
 ---

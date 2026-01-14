@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: 'Help Center | Elevate For Humanity',
   description: 'Browse our knowledge base for answers to common questions about enrollment, programs, financial aid, and more.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/support/help',
+    canonical: 'https://www.elevateforhumanity.org/support/help',
   },
 };
 

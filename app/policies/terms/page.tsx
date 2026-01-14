@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Terms of Service | Elevate for Humanity',
   description: 'Legal terms for using our platform and services, user responsibilities, and limitations of liability.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/terms',
+    canonical: 'https://www.elevateforhumanity.org/policies/terms',
   },
 };
 
@@ -211,7 +211,7 @@ export default function TermsPage() {
             
             <h3 className="text-xl font-bold text-black mt-6 mb-3">Informal Resolution</h3>
             <p className="text-black mb-6">
-              Before filing a claim, contact us at legal@elevateforhumanity.institute to attempt informal resolution.
+              Before filing a claim, contact us at legal@www.elevateforhumanity.org to attempt informal resolution.
             </p>
 
             <h3 className="text-xl font-bold text-black mt-6 mb-3">Arbitration</h3>
@@ -255,7 +255,7 @@ export default function TermsPage() {
               For questions about these Terms:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> legal@elevateforhumanity.institute</li>
+              <li><strong>Email:</strong> legal@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Mail:</strong> Elevate for Humanity</li>
               <li className="ml-6">123 Main Street</li>

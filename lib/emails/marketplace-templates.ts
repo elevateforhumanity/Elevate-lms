@@ -75,7 +75,7 @@ export function generateBuyerDeliveryEmail(data: BuyerDeliveryEmailData): {
                 <li>For product support, contact the creator directly</li>
               </ul>
 
-              <p>If you have any issues accessing your purchase, please contact us at <a href="mailto:support@elevateforhumanity.institute">support@elevateforhumanity.institute</a></p>
+              <p>If you have any issues accessing your purchase, please contact us at <a href="mailto:support@www.elevateforhumanity.org">support@www.elevateforhumanity.org</a></p>
 
               <p>Thank you for supporting our creator community!</p>
               <p><strong>Elevate for Humanity Team</strong></p>
@@ -108,7 +108,7 @@ Important Information:
 - Save this email for future reference
 - For product support, contact the creator directly
 
-If you have any issues, contact: support@elevateforhumanity.institute
+If you have any issues, contact: support@www.elevateforhumanity.org
 
 Thank you for supporting our creator community!
 
@@ -267,7 +267,7 @@ export function generateCreatorApprovalEmail(data: CreatorApprovalEmailData): {
               <p><strong>Elevate for Humanity Team</strong></p>
             </div>
             <div class="footer">
-              <p>Questions? Email us at <a href="mailto:creators@elevateforhumanity.institute">creators@elevateforhumanity.institute</a></p>
+              <p>Questions? Email us at <a href="mailto:creators@www.elevateforhumanity.org">creators@www.elevateforhumanity.org</a></p>
             </div>
           </div>
         </body>
@@ -298,7 +298,7 @@ We're excited to have you in our creator community!
 
 Elevate for Humanity Team
 
-Questions? Email: creators@elevateforhumanity.institute
+Questions? Email: creators@www.elevateforhumanity.org
     `,
   };
 }

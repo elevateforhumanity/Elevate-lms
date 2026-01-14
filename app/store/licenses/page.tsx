@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'License the complete Elevate for Humanity workforce training platform. White-label solutions for schools, training providers, and workforce agencies.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/store/licenses',
+    canonical: 'https://www.elevateforhumanity.org/store/licenses',
   },
 };
 
@@ -235,10 +235,10 @@ export default function LicensesPage() {
           <p className="mt-8 text-sm opacity-75">
             Questions? Email{' '}
             <a
-              href="mailto:licensing@elevateforhumanity.institute"
+              href="mailto:licensing@www.elevateforhumanity.org"
               className="underline font-bold"
             >
-              licensing@elevateforhumanity.institute
+              licensing@www.elevateforhumanity.org
             </a>
           </p>
         </div>

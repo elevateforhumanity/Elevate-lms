@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
     canonical:
-      'https://elevateforhumanity.institute/admin/programs/[code]/dashboard',
+      'https://www.elevateforhumanity.org/admin/programs/[code]/dashboard',
   },
   title: 'Dashboard | Elevate For Humanity',
   description:

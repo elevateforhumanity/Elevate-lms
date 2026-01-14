@@ -241,7 +241,7 @@ Graduates are prepared for positions including:
 ## Contact Information
 
 **Elevate for Humanity**  
-Website: elevateforhumanity.institute  
+Website: www.elevateforhumanity.org  
 Email: elevate4humanityedu@gmail.com  
 Phone: (317) 314-3757
 

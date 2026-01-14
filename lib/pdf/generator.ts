@@ -90,7 +90,7 @@ export function generateCertificatePDF(data: {
   doc.setFontSize(8);
   doc.setTextColor(120, 120, 120);
   doc.text('Elevate for Humanity Institute', pageWidth / 2, pageHeight - 15, { align: 'center' });
-  doc.text('elevateforhumanity.institute', pageWidth / 2, pageHeight - 10, { align: 'center' });
+  doc.text('www.elevateforhumanity.org', pageWidth / 2, pageHeight - 10, { align: 'center' });
 
   return doc;
 }

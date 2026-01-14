@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'AI Usage Policy | Elevate for Humanity',
   description: 'Guidelines for appropriate use of AI tools and tutors in coursework and learning activities.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/ai-usage',
+    canonical: 'https://www.elevateforhumanity.org/policies/ai-usage',
   },
 };
 
@@ -207,7 +207,7 @@ export default function AIUsagePage() {
               For questions about AI usage:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> ai@elevateforhumanity.institute</li>
+              <li><strong>Email:</strong> ai@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>AI Tutor Help:</strong> Available 24/7 in student portal</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</li>

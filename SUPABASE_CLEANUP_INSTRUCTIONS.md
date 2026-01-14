@@ -7,7 +7,7 @@ You have 16 old Vercel preview deployment URLs that should be removed.
 
 ### ✅ KEEP (Add if not present)
 ```
-https://elevateforhumanity.institute/**
+https://www.elevateforhumanity.org/**
 https://elevateforhumanity.org/**
 ```
 
@@ -49,7 +49,7 @@ After deleting, add these two URLs:
 
 **Add:**
 ```
-https://elevateforhumanity.institute/**
+https://www.elevateforhumanity.org/**
 ```
 Click "Add URL"
 
@@ -66,12 +66,12 @@ Click "Save changes" button
 
 **Site URL:**
 ```
-https://elevateforhumanity.institute
+https://www.elevateforhumanity.org
 ```
 
 **Redirect URLs (Total: 2):**
 ```
-https://elevateforhumanity.institute/**
+https://www.elevateforhumanity.org/**
 https://elevateforhumanity.org/**
 ```
 
@@ -87,7 +87,7 @@ Keep `https://elevateforhumanity.org/**` temporarily (30-90 days) because:
 
 After 30-90 days:
 1. Remove `https://elevateforhumanity.org/**` from redirect URLs
-2. Keep only `https://elevateforhumanity.institute/**`
+2. Keep only `https://www.elevateforhumanity.org/**`
 3. Domain redirect will still work for regular page visits
 
 ## Optional: Development URLs

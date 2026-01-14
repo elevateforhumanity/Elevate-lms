@@ -268,7 +268,7 @@ DROP INDEX IF EXISTS idx_marketplace_creators_approved_by;
 
 ```bash
 # Test the API endpoint
-curl -X POST https://elevateforhumanity.institute/api/admin/creators/reject \
+curl -X POST https://www.elevateforhumanity.org/api/admin/creators/reject \
   -H "Content-Type: application/json" \
   -H "Cookie: your-auth-cookie" \
   -d '{

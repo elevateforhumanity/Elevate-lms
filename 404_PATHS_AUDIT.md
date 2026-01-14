@@ -50,7 +50,7 @@
 **Metadata:**
 ```typescript
 title: 'About Elevate for Humanity | Workforce Training School | Indianapolis'
-canonical: 'https://elevateforhumanity.institute/about'
+canonical: 'https://www.elevateforhumanity.org/about'
 ```
 
 **Why 404s might be reported:**
@@ -208,9 +208,9 @@ curl http://localhost:3000/home  # Should redirect to /
 ### Step 3: Test in Production
 ```bash
 # Test production routes
-curl -I https://elevateforhumanity.institute/contact
-curl -I https://elevateforhumanity.institute/about
-curl -I https://elevateforhumanity.institute/home  # Should return 301
+curl -I https://www.elevateforhumanity.org/contact
+curl -I https://www.elevateforhumanity.org/about
+curl -I https://www.elevateforhumanity.org/home  # Should return 301
 ```
 
 ### Step 4: Check Vercel Logs

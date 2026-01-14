@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     'Complete guide to policies, procedures, and student rights at Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/student-handbook',
+    canonical: 'https://www.elevateforhumanity.org/student-handbook',
   },
 };
 
@@ -474,10 +474,10 @@ export default function StudentHandbook() {
                   Submit a written request to the Registrar's Office. Records
                   will be available within 45 days. Contact:{' '}
                   <a
-                    href="mailto:registrar@elevateforhumanity.institute"
+                    href="mailto:registrar@www.elevateforhumanity.org"
                     className="text-brand-blue-600 hover:text-brand-blue-700"
                   >
-                    registrar@elevateforhumanity.institute
+                    registrar@www.elevateforhumanity.org
                   </a>
                 </p>
               </div>
@@ -953,7 +953,7 @@ export default function StudentHandbook() {
                 </h3>
                 <p className="text-black">Phone: 317-314-3757</p>
                 <p className="text-black">
-                  Email: info@elevateforhumanity.institute
+                  Email: info@www.elevateforhumanity.org
                 </p>
               </div>
               <div>
@@ -962,7 +962,7 @@ export default function StudentHandbook() {
                 </h3>
                 <p className="text-black">Phone: 317-314-3757</p>
                 <p className="text-black">
-                  Email: support@elevateforhumanity.institute
+                  Email: support@www.elevateforhumanity.org
                 </p>
               </div>
             </div>

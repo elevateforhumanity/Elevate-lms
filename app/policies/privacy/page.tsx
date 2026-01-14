@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy | Elevate for Humanity',
   description: 'How we collect, use, protect, and share your personal information and educational records.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/privacy',
+    canonical: 'https://www.elevateforhumanity.org/policies/privacy',
   },
 };
 
@@ -230,7 +230,7 @@ export default function PrivacyPage() {
               For privacy questions or to exercise your rights:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Privacy Officer:</strong> privacy@elevateforhumanity.institute</li>
+              <li><strong>Privacy Officer:</strong> privacy@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Mail:</strong> Privacy Officer, Elevate for Humanity</li>
               <li className="ml-6">123 Main Street</li>

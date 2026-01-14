@@ -8,7 +8,7 @@
 ## What's Complete ✅
 
 ### 1. Domain & Deployment
-- ✅ Domain migrated to elevateforhumanity.institute
+- ✅ Domain migrated to www.elevateforhumanity.org
 - ✅ HTTP 308 redirect from .org to .institute
 - ✅ Production site live and accessible
 - ✅ SSL certificate active
@@ -228,7 +228,7 @@ GROUP BY p.name;
    Port: 587
    User: resend
    Pass: [API key]
-   From: noreply@elevateforhumanity.institute
+   From: noreply@www.elevateforhumanity.org
    ```
 4. Test email delivery
 
@@ -300,14 +300,14 @@ GROUP BY p.name;
 ```bash
 # Test domain redirect
 curl -sI https://elevateforhumanity.org/ | grep -E "HTTP|location"
-# Should return: HTTP/2 308 + location: https://elevateforhumanity.institute/
+# Should return: HTTP/2 308 + location: https://www.elevateforhumanity.org/
 
 # Test production site
-curl -sI https://elevateforhumanity.institute/
+curl -sI https://www.elevateforhumanity.org/
 # Should return: HTTP/2 200
 
 # Test login page
-curl -sI https://elevateforhumanity.institute/login
+curl -sI https://www.elevateforhumanity.org/login
 # Should return: HTTP/2 200
 
 # Check partner courses loaded
@@ -315,7 +315,7 @@ psql $DATABASE_URL -c "SELECT COUNT(*) FROM partner_lms_courses;"
 # Should return: 1200+ (after running migration)
 
 # Check Stripe webhook
-curl https://elevateforhumanity.institute/api/webhooks/stripe
+curl https://www.elevateforhumanity.org/api/webhooks/stripe
 # Should return: 405 Method Not Allowed (webhook is POST only - this is correct)
 ```
 

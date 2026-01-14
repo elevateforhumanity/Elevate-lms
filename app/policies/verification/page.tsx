@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Verification Policy | Elevate for Humanity',
   description: 'Identity and eligibility verification procedures for students, credentials, and employment.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/verification',
+    canonical: 'https://www.elevateforhumanity.org/policies/verification',
   },
 };
 
@@ -130,7 +130,7 @@ export default function VerificationPage() {
             <div className="bg-blue-50 rounded-xl p-6 border-2 border-blue-200 mb-6">
               <h4 className="text-lg font-bold text-black mb-3">Online Verification Portal</h4>
               <ol className="list-decimal pl-6 text-black space-y-2">
-                <li>Visit: elevateforhumanity.institute/verify</li>
+                <li>Visit: www.elevateforhumanity.org/verify</li>
                 <li>Enter credential ID number from certificate</li>
                 <li>View verification results instantly</li>
                 <li>Download verification report if needed</li>
@@ -140,7 +140,7 @@ export default function VerificationPage() {
             <div className="bg-green-50 rounded-xl p-6 border-2 border-green-200 mb-6">
               <h4 className="text-lg font-bold text-black mb-3">Contact Registrar</h4>
               <ul className="list-disc pl-6 text-black space-y-2">
-                <li><strong>Email:</strong> registrar@elevateforhumanity.institute</li>
+                <li><strong>Email:</strong> registrar@www.elevateforhumanity.org</li>
                 <li><strong>Phone:</strong> (317) 314-3757</li>
                 <li><strong>Fax:</strong> (317) 314-3758</li>
                 <li><strong>Response Time:</strong> 1-2 business days</li>
@@ -277,8 +277,8 @@ export default function VerificationPage() {
               For verification services:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Online Portal:</strong> elevateforhumanity.institute/verify</li>
-              <li><strong>Email:</strong> registrar@elevateforhumanity.institute</li>
+              <li><strong>Online Portal:</strong> www.elevateforhumanity.org/verify</li>
+              <li><strong>Email:</strong> registrar@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Fax:</strong> (317) 314-3758</li>
               <li><strong>Mail:</strong> Registrar Office, Elevate for Humanity</li>

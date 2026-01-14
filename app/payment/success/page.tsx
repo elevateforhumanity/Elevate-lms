@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Payment Successful | Elevate for Humanity',
   description: 'Your payment was successful. Welcome to Elevate for Humanity!',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/payment/success',
+    canonical: 'https://www.elevateforhumanity.org/payment/success',
   },
 };
 
@@ -76,10 +76,10 @@ export default function PaymentSuccessPage() {
               </a>{' '}
               or{' '}
               <a
-                href="mailto:info@elevateforhumanity.institute"
+                href="mailto:info@www.elevateforhumanity.org"
                 className="text-brand-orange-600 hover:underline"
               >
-                info@elevateforhumanity.institute
+                info@www.elevateforhumanity.org
               </a>
             </p>
           </div>

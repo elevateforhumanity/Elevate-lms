@@ -91,16 +91,16 @@ async function logSecurityAlert(alert: SecurityAlert): Promise<void> {
  */
 function getAlertChannels(severity: AlertSeverity): AlertChannel {
   const baseChannels: AlertChannel = {
-    email: [process.env.SECURITY_EMAIL || 'security@elevateforhumanity.institute'],
+    email: [process.env.SECURITY_EMAIL || 'security@www.elevateforhumanity.org'],
   };
   switch (severity) {
     case AlertSeverity.CRITICAL:
       return {
         ...baseChannels,
         email: [
-          'security@elevateforhumanity.institute',
-          'admin@elevateforhumanity.institute',
-          'cto@elevateforhumanity.institute',
+          'security@www.elevateforhumanity.org',
+          'admin@www.elevateforhumanity.org',
+          'cto@www.elevateforhumanity.org',
         ],
         sms: [process.env.SECURITY_PHONE || '+13173143757'],
         slack: process.env.SLACK_SECURITY_WEBHOOK,
@@ -109,7 +109,7 @@ function getAlertChannels(severity: AlertSeverity): AlertChannel {
     case AlertSeverity.HIGH:
       return {
         ...baseChannels,
-        email: ['security@elevateforhumanity.institute', 'admin@elevateforhumanity.institute'],
+        email: ['security@www.elevateforhumanity.org', 'admin@www.elevateforhumanity.org'],
         slack: process.env.SLACK_SECURITY_WEBHOOK,
       };
     case AlertSeverity.MEDIUM:
@@ -138,7 +138,7 @@ async function sendEmailAlert(alert: SecurityAlert, emails?: string[]): Promise<
       },
       body: JSON.stringify({
         personalizations: emails.map((email) => ({ to: [{ email }] })),
-        from: { email: 'security@elevateforhumanity.institute', name: 'EFH Security' },
+        from: { email: 'security@www.elevateforhumanity.org', name: 'EFH Security' },
         subject,
         content: [
           {

@@ -283,14 +283,14 @@ Footer sections:
 ## Current URLs
 
 ### Supersonic Fast Cash
-**Base:** https://elevateforhumanity.institute/supersonic-fast-cash
+**Base:** https://www.elevateforhumanity.org/supersonic-fast-cash
 - ✅ Fully functional
 - ✅ Own navigation
 - ✅ 28 complete pages
 - ✅ All features working
 
 ### VITA
-**Base:** https://elevateforhumanity.institute/vita
+**Base:** https://www.elevateforhumanity.org/vita
 - ⚠️ Landing page only
 - ⚠️ Uses site navigation
 - ⚠️ No subpages

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Platform Demo | Elevate for Humanity Store',
   description: 'Experience the complete Elevate for Humanity workforce training platform. Interactive demo with full LMS, admin dashboard, and compliance tools.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/store/demo',
+    canonical: 'https://www.elevateforhumanity.org/store/demo',
   },
 };
 

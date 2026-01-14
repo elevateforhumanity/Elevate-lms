@@ -96,22 +96,22 @@
 ### Public Access
 1. **Main Training Overview:**
    ```
-   https://elevateforhumanity.institute/supersonic-fast-cash/training
+   https://www.elevateforhumanity.org/supersonic-fast-cash/training
    ```
 
 2. **Detailed Training Modules:**
    ```
-   https://elevateforhumanity.institute/supersonic-fast-cash/careers/training
+   https://www.elevateforhumanity.org/supersonic-fast-cash/careers/training
    ```
 
 3. **Career Application:**
    ```
-   https://elevateforhumanity.institute/supersonic-fast-cash/careers/apply
+   https://www.elevateforhumanity.org/supersonic-fast-cash/careers/apply
    ```
 
 4. **Competency Test:**
    ```
-   https://elevateforhumanity.institute/supersonic-fast-cash/careers/competency-test
+   https://www.elevateforhumanity.org/supersonic-fast-cash/careers/competency-test
    ```
 
 ---

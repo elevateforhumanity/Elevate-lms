@@ -651,7 +651,7 @@ if (!onboardingComplete) {
 ### 17.1 Production Environment
 
 **Platform**: Vercel  
-**Domain**: elevateforhumanity.institute  
+**Domain**: www.elevateforhumanity.org  
 **Status**: ✅ DEPLOYED
 
 **Environment Variables**:

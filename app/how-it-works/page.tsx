@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description:
     'Understand how Elevate for Humanity coordinates access to training, funding, and career opportunities without replacing local authority or ownership.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/how-it-works',
+    canonical: 'https://www.elevateforhumanity.org/how-it-works',
   },
 };
 

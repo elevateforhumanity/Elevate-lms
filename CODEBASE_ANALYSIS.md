@@ -656,7 +656,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 **Infrastructure:**
 - Vercel deployment configured
-- Domain active: elevateforhumanity.institute
+- Domain active: www.elevateforhumanity.org
 - SSL/HTTPS enabled
 - CDN caching optimized
 - Security headers configured
@@ -998,8 +998,8 @@ npx supabase gen types typescript --project-id YOUR_PROJECT_ID > types/database.
 
 ### Support
 - **Issues:** https://github.com/elevateforhumanity/Elevate-lms/issues
-- **Email:** support@elevateforhumanity.institute
-- **Website:** https://elevateforhumanity.institute/support
+- **Email:** support@www.elevateforhumanity.org
+- **Website:** https://www.elevateforhumanity.org/support
 
 ---
 

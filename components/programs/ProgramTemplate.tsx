@@ -306,7 +306,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
               (317) 314-3757
             </a>
             <a
-              href="mailto:info@elevateforhumanity.institute"
+              href="mailto:info@www.elevateforhumanity.org"
               className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md hover:bg-white/20 border-2 border-white text-white px-10 py-5 rounded-xl font-bold text-lg transition"
             >
               <Mail className="w-5 h-5" />
@@ -317,7 +317,7 @@ export function ProgramTemplate({ program }: { program: Program }) {
           <div className="pt-8 border-t border-white/20">
             <p className="text-sm text-white/70">
               Questions? Call us at (317) 314-3757 or email
-              info@elevateforhumanity.institute
+              info@www.elevateforhumanity.org
             </p>
           </div>
         </div>

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Order Confirmed | Drug Testing Services',
   description: 'Your drug testing order has been confirmed.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/drug-testing/success',
+    canonical: 'https://www.elevateforhumanity.org/drug-testing/success',
   },
 };
 

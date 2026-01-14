@@ -73,7 +73,7 @@ export async function POST(req: Request) {
       mode: 'payment',
       customer_email:
         process.env.SPONSOR_FINANCE_EMAIL ||
-        'accounting@elevateforhumanity.institute',
+        'accounting@www.elevateforhumanity.org',
       line_items: [
         {
           price_data: {

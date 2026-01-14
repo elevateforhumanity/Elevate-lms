@@ -318,7 +318,7 @@ ${data.recipientAddress ? `Address: ${data.recipientAddress}` : ''}
 ---
 
 This Agreement was generated on ${data.effectiveDate} via the Elevate for Humanity Onboarding System.
-For questions or concerns, contact: legal@elevateforhumanity.institute
+For questions or concerns, contact: legal@www.elevateforhumanity.org
 
 IMPORTANT NOTICE: This is a legally binding agreement. By signing, you agree to be bound by all terms and conditions. If you have questions or concerns, please seek legal counsel before signing.
 `;

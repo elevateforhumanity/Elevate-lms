@@ -12,17 +12,17 @@ The application is **correctly configured** and does NOT reference `.org`:
 
 **Environment Variables:**
 ```bash
-NEXT_PUBLIC_SITE_URL=https://elevateforhumanity.institute
+NEXT_PUBLIC_SITE_URL=https://www.elevateforhumanity.org
 ```
 
 **Canonical URLs (app/layout.tsx):**
 ```typescript
-const SITE_URL = 'https://elevateforhumanity.institute';
+const SITE_URL = 'https://www.elevateforhumanity.org';
 ```
 
 **Sitemap (app/robots.ts):**
 ```typescript
-sitemap: 'https://elevateforhumanity.institute/sitemap.xml'
+sitemap: 'https://www.elevateforhumanity.org/sitemap.xml'
 ```
 
 **Redirects (next.config.mjs):**
@@ -30,8 +30,8 @@ sitemap: 'https://elevateforhumanity.institute/sitemap.xml'
 // Only redirects for .institute domain
 {
   source: '/:path*',
-  has: [{ type: 'host', value: 'www.elevateforhumanity.institute' }],
-  destination: 'https://elevateforhumanity.institute/:path*',
+  has: [{ type: 'host', value: 'www.www.elevateforhumanity.org' }],
+  destination: 'https://www.elevateforhumanity.org/:path*',
   permanent: true,
 }
 ```
@@ -46,7 +46,7 @@ The redirect from `.org` to `.institute` must be configured at the **DNS/domain 
 ## Why .org Doesn't Redirect
 
 ### Problem
-`www.elevateforhumanity.org` is showing cached content instead of redirecting to `elevateforhumanity.institute`
+`www.elevateforhumanity.org` is showing cached content instead of redirecting to `www.elevateforhumanity.org`
 
 ### Root Cause
 The `.org` domain is not configured anywhere:
@@ -77,7 +77,7 @@ You need to configure the redirect at your **domain registrar** where `elevatefo
    URL: *elevateforhumanity.org/*
    Setting: Forwarding URL
    Status Code: 301 - Permanent Redirect
-   Destination: https://elevateforhumanity.institute/$1
+   Destination: https://www.elevateforhumanity.org/$1
    ```
 5. Save and deploy
 
@@ -89,14 +89,14 @@ You need to configure the redirect at your **domain registrar** where `elevatefo
    ```
    Type: URL Redirect
    Host: @
-   Value: https://elevateforhumanity.institute
+   Value: https://www.elevateforhumanity.org
    Redirect Type: Permanent (301)
    ```
 5. Add another for www:
    ```
    Type: URL Redirect
    Host: www
-   Value: https://elevateforhumanity.institute
+   Value: https://www.elevateforhumanity.org
    Redirect Type: Permanent (301)
    ```
 
@@ -107,7 +107,7 @@ You need to configure the redirect at your **domain registrar** where `elevatefo
 4. Go to **Settings** → **Forwarding**
 5. Set up forwarding:
    ```
-   Forward to: https://elevateforhumanity.institute
+   Forward to: https://www.elevateforhumanity.org
    Redirect type: Permanent (301)
    Forward settings: Forward only
    ```
@@ -152,7 +152,7 @@ TTL: 3600
       value: '(www\\.)?elevateforhumanity\\.org',
     },
   ],
-  destination: 'https://elevateforhumanity.institute/:path*',
+  destination: 'https://www.elevateforhumanity.org/:path*',
   permanent: true,
 },
 ```
@@ -208,13 +208,13 @@ curl -I https://www.elevateforhumanity.org/
 
 # Should return:
 HTTP/2 301
-Location: https://elevateforhumanity.institute/
+Location: https://www.elevateforhumanity.org/
 ```
 
 #### Using browser:
 1. Open incognito/private window
 2. Go to: https://www.elevateforhumanity.org/
-3. Should automatically redirect to: https://elevateforhumanity.institute/
+3. Should automatically redirect to: https://www.elevateforhumanity.org/
 4. Check URL bar - should show `.institute`
 
 #### Check DNS:
@@ -239,14 +239,14 @@ dig elevateforhumanity.org
 - ✅ www → non-www redirect for `.institute`
 
 **app/layout.tsx:**
-- ✅ SITE_URL = `https://elevateforhumanity.institute`
+- ✅ SITE_URL = `https://www.elevateforhumanity.org`
 - ✅ Canonical URLs use `.institute`
 
 **app/robots.ts:**
 - ✅ Sitemap URL uses `.institute`
 
 **.env.local:**
-- ✅ NEXT_PUBLIC_SITE_URL = `https://elevateforhumanity.institute`
+- ✅ NEXT_PUBLIC_SITE_URL = `https://www.elevateforhumanity.org`
 
 **vercel.json:**
 - ✅ No domain-specific configuration

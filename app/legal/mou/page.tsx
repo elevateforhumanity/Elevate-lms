@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Memorandum of Understanding for Elevate for Humanity partnerships.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/legal/mou',
+    canonical: 'https://www.elevateforhumanity.org/legal/mou',
   },
 };
 
@@ -175,7 +175,7 @@ export default function MOUPage() {
               <p className="text-black">
                 <strong>Elevate for Humanity</strong>
                 <br />
-                Email: partnerships@elevateforhumanity.institute
+                Email: partnerships@www.elevateforhumanity.org
                 <br />
                 Phone: (317) 314-3757
               </p>

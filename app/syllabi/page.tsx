@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     'View detailed course syllabi with learning outcomes, assessments, and requirements',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/syllabi',
+    canonical: 'https://www.elevateforhumanity.org/syllabi',
   },
 };
 
@@ -683,10 +683,10 @@ export default function SyllabiPage() {
           </p>
           <div className="flex flex-wrap gap-4">
             <a
-              href="mailto:advising@elevateforhumanity.institute"
+              href="mailto:advising@www.elevateforhumanity.org"
               className="text-brand-blue-600 hover:text-brand-blue-700 font-medium"
             >
-              advising@elevateforhumanity.institute
+              advising@www.elevateforhumanity.org
             </a>
             <span className="text-slate-400">|</span>
             <a

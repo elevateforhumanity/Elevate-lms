@@ -275,7 +275,7 @@ All changes have been:
 
 ## 📞 SUPPORT INFORMATION
 
-**Website:** https://elevateforhumanity.institute  
+**Website:** https://www.elevateforhumanity.org  
 **Phone:** 317-314-3757  
 **Email:** elevate4humanityedu@gmail.com
 

@@ -31,8 +31,8 @@ export const viewport: Viewport = {
   userScalable: true,
 };
 
-// Global SEO configuration - fixes canonical, OpenGraph, and meta descriptions
-const SITE_URL = 'https://elevateforhumanity.institute';
+// Global SEO configuration - canonical domain is elevateforhumanity.org
+const SITE_URL = 'https://www.elevateforhumanity.org';
 const isProduction = process.env.VERCEL_ENV === 'production';
 
 export const metadata: Metadata = {

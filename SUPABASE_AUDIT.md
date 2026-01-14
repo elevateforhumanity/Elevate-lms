@@ -364,11 +364,11 @@ SUPABASE_SERVICE_ROLE_KEY=[set]
 
 ### Supabase URL Configuration
 
-**Site URL:** `https://elevateforhumanity.institute`
+**Site URL:** `https://www.elevateforhumanity.org`
 
 **Redirect URLs:**
 ```
-https://elevateforhumanity.institute/**
+https://www.elevateforhumanity.org/**
 https://elevateforhumanity.org/** (legacy, for transition)
 ```
 

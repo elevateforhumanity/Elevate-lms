@@ -261,7 +261,7 @@ VALUES
 
 ```sql
 -- Check if test student exists
-SELECT id, email FROM profiles WHERE email = 'test@elevateforhumanity.institute';
+SELECT id, email FROM profiles WHERE email = 'test@www.elevateforhumanity.org';
 
 -- If not, you'll need to create via signup page or admin panel
 ```
@@ -287,7 +287,7 @@ LIMIT 10;
 ### Via Stripe Dashboard
 
 1. Go to: https://dashboard.stripe.com/webhooks
-2. Find webhook for: `https://elevateforhumanity.institute/api/webhooks/stripe`
+2. Find webhook for: `https://www.elevateforhumanity.org/api/webhooks/stripe`
 3. Check recent events
 4. Verify events are being received
 

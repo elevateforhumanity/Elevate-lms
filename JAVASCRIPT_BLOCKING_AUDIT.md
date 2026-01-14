@@ -1,6 +1,6 @@
 # JavaScript Blocking Audit Report
 **Date:** January 8, 2026  
-**Site:** https://elevateforhumanity.institute  
+**Site:** https://www.elevateforhumanity.org  
 **Auditor:** Ona AI Agent
 
 ---

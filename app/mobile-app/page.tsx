@@ -5,7 +5,7 @@ import { Smartphone, Zap, Download, Wifi, Bell, Lock } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/mobile-app',
+    canonical: 'https://www.elevateforhumanity.org/mobile-app',
   },
   title: 'Mobile App | Elevate For Humanity',
   description:
@@ -162,7 +162,7 @@ export default async function MobileAppPage() {
               <li className="flex">
                 <span className="font-bold text-brand-blue-600 mr-3">1.</span>
                 <span>
-                  Open <strong>elevateforhumanity.institute</strong> in Safari
+                  Open <strong>www.elevateforhumanity.org</strong> in Safari
                 </span>
               </li>
               <li className="flex">
@@ -203,7 +203,7 @@ export default async function MobileAppPage() {
               <li className="flex">
                 <span className="font-bold text-brand-green-600 mr-3">1.</span>
                 <span>
-                  Open <strong>elevateforhumanity.institute</strong> in Chrome
+                  Open <strong>www.elevateforhumanity.org</strong> in Chrome
                 </span>
               </li>
               <li className="flex">

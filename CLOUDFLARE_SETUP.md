@@ -88,7 +88,7 @@ Then:
 ## Step 6: VERIFY (Open in Incognito)
 
 1. Wait 3 minutes for deployment to complete
-2. Open: https://elevateforhumanity.institute/ in **Incognito/Private mode**
+2. Open: https://www.elevateforhumanity.org/ in **Incognito/Private mode**
 3. Open DevTools (F12) → Network tab
 4. Refresh the page
 5. Click on the HTML document (first request)

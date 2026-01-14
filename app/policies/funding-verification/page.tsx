@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Funding Verification Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/funding-verification',
+    canonical: 'https://www.elevateforhumanity.org/policies/funding-verification',
   },
 };
 
@@ -30,7 +30,7 @@ export default function FundingVerificationPage() {
         <li>Enrollment confirmation</li>
       </ol>
       <h2>Contact</h2>
-      <p>Email: financialaid@elevateforhumanity.institute | Phone: (317) 314-3757</p>
+      <p>Email: financialaid@www.elevateforhumanity.org | Phone: (317) 314-3757</p>
     </article>
   );
 }

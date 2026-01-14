@@ -5,11 +5,11 @@
 ## Correct Domain Setup
 
 ### ✅ Main Domain (Configure in Vercel)
-**Domain:** `elevateforhumanity.institute`
+**Domain:** `www.elevateforhumanity.org`
 
 **Where to configure:**
 1. Go to Vercel Dashboard → Your Project → Settings → Domains
-2. Add ONLY this domain: `elevateforhumanity.institute`
+2. Add ONLY this domain: `www.elevateforhumanity.org`
 3. Configure DNS as instructed by Vercel
 
 **This is your canonical/production domain.**
@@ -19,7 +19,7 @@
 ### ❌ Redirect Domains (DO NOT Configure in Vercel)
 **Domains:** 
 - `elevateforhumanity.org` (old domain)
-- `www.elevateforhumanity.institute` (www subdomain)
+- `www.www.elevateforhumanity.org` (www subdomain)
 - `*.vercel.app` (Vercel preview domains)
 
 **Why NOT to add these:**
@@ -52,14 +52,14 @@ async redirects() {
           value: '.*\\.vercel\\.app',
         },
       ],
-      destination: 'https://elevateforhumanity.institute/:path*',
+      destination: 'https://www.elevateforhumanity.org/:path*',
       permanent: true,
     },
     // WWW to non-WWW redirect (canonical domain)
     {
       source: '/:path*',
-      has: [{ type: 'host', value: 'www.elevateforhumanity.institute' }],
-      destination: 'https://elevateforhumanity.institute/:path*',
+      has: [{ type: 'host', value: 'www.www.elevateforhumanity.org' }],
+      destination: 'https://www.elevateforhumanity.org/:path*',
       permanent: true,
     },
     // ... other path-based redirects
@@ -68,8 +68,8 @@ async redirects() {
 ```
 
 **What this does:**
-- Any request to `*.vercel.app` → redirects to `elevateforhumanity.institute`
-- Any request to `www.elevateforhumanity.institute` → redirects to `elevateforhumanity.institute`
+- Any request to `*.vercel.app` → redirects to `www.elevateforhumanity.org`
+- Any request to `www.www.elevateforhumanity.org` → redirects to `www.elevateforhumanity.org`
 - Preserves the path (e.g., `/about` stays `/about`)
 - Uses HTTP 308 (permanent redirect with method preservation)
 
@@ -87,18 +87,18 @@ Vercel Dashboard → [Your Project] → Settings → Domains
 #### 2. Verify Main Domain
 **Should see:**
 ```
-✅ elevateforhumanity.institute (Production)
+✅ www.elevateforhumanity.org (Production)
 ```
 
 **Should NOT see:**
 ```
 ❌ elevateforhumanity.org
-❌ www.elevateforhumanity.institute
+❌ www.www.elevateforhumanity.org
 ❌ [project-name].vercel.app (this is automatic, ignore it)
 ```
 
 #### 3. Remove Incorrect Domains (If Present)
-If you see `elevateforhumanity.org` or `www.elevateforhumanity.institute`:
+If you see `elevateforhumanity.org` or `www.www.elevateforhumanity.org`:
 
 1. Click the domain
 2. Click "Remove" or "Delete"
@@ -111,7 +111,7 @@ If you see `elevateforhumanity.org` or `www.elevateforhumanity.institute`:
 
 #### 4. DNS Configuration (For Main Domain Only)
 
-**For elevateforhumanity.institute:**
+**For www.elevateforhumanity.org:**
 
 **Option A: Using Vercel Nameservers (Recommended)**
 ```
@@ -147,7 +147,7 @@ Many DNS providers offer redirect services:
 **Configuration:**
 ```
 Source: elevateforhumanity.org
-Destination: https://elevateforhumanity.institute
+Destination: https://www.elevateforhumanity.org
 Type: 301 Permanent Redirect
 Preserve Path: Yes
 ```
@@ -163,7 +163,7 @@ If your DNS provider doesn't support redirects:
 // pages/_middleware.js
 export function middleware(request) {
   const url = request.nextUrl.clone();
-  url.hostname = 'elevateforhumanity.institute';
+  url.hostname = 'www.elevateforhumanity.org';
   url.protocol = 'https';
   return Response.redirect(url, 308);
 }
@@ -177,29 +177,29 @@ export function middleware(request) {
 
 ### Test Main Domain
 ```bash
-curl -I https://elevateforhumanity.institute/
+curl -I https://www.elevateforhumanity.org/
 # Should return: HTTP/2 200
 ```
 
 ### Test WWW Redirect
 ```bash
-curl -I https://www.elevateforhumanity.institute/
+curl -I https://www.www.elevateforhumanity.org/
 # Should return: HTTP/2 308
-# Location: https://elevateforhumanity.institute/
+# Location: https://www.elevateforhumanity.org/
 ```
 
 ### Test Vercel App Redirect
 ```bash
 curl -I https://[your-project].vercel.app/
 # Should return: HTTP/2 308
-# Location: https://elevateforhumanity.institute/
+# Location: https://www.elevateforhumanity.org/
 ```
 
 ### Test Old Domain Redirect (.org)
 ```bash
 curl -I https://elevateforhumanity.org/
 # Should return: HTTP/2 301 or 308
-# Location: https://elevateforhumanity.institute/
+# Location: https://www.elevateforhumanity.org/
 ```
 
 ---
@@ -212,7 +212,7 @@ curl -I https://elevateforhumanity.org/
 **Solution:** Remove `.org` from Vercel, configure redirect at DNS level
 
 ### Issue 2: "WWW subdomain not redirecting"
-**Problem:** `www.elevateforhumanity.institute` doesn't redirect  
+**Problem:** `www.www.elevateforhumanity.org` doesn't redirect  
 **Cause:** WWW domain added to Vercel as separate domain  
 **Solution:** Remove WWW from Vercel domains, let next.config.mjs handle it
 
@@ -236,13 +236,13 @@ curl -I https://elevateforhumanity.org/
 All pages should specify the canonical domain:
 
 ```html
-<link rel="canonical" href="https://elevateforhumanity.institute/[path]" />
+<link rel="canonical" href="https://www.elevateforhumanity.org/[path]" />
 ```
 
 **Verification:**
 ```bash
-curl -s https://elevateforhumanity.institute/ | grep canonical
-# Should show: <link rel="canonical" href="https://elevateforhumanity.institute/" />
+curl -s https://www.elevateforhumanity.org/ | grep canonical
+# Should show: <link rel="canonical" href="https://www.elevateforhumanity.org/" />
 ```
 
 ### Sitemap
@@ -252,7 +252,7 @@ Sitemap should use canonical domain:
 <!-- public/sitemap.xml -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://elevateforhumanity.institute/</loc>
+    <loc>https://www.elevateforhumanity.org/</loc>
   </url>
   <!-- All URLs should use .institute domain -->
 </urlset>
@@ -264,7 +264,7 @@ Sitemap should use canonical domain:
 User-agent: *
 Allow: /
 
-Sitemap: https://elevateforhumanity.institute/sitemap.xml
+Sitemap: https://www.elevateforhumanity.org/sitemap.xml
 ```
 
 ---
@@ -272,11 +272,11 @@ Sitemap: https://elevateforhumanity.institute/sitemap.xml
 ## Summary
 
 ### ✅ DO Configure in Vercel
-- `elevateforhumanity.institute` (main production domain)
+- `www.elevateforhumanity.org` (main production domain)
 
 ### ❌ DON'T Configure in Vercel
 - `elevateforhumanity.org` (redirect at DNS level)
-- `www.elevateforhumanity.institute` (handled by next.config.mjs)
+- `www.www.elevateforhumanity.org` (handled by next.config.mjs)
 - Any other redirect domains
 
 ### ✅ Redirects Handled By
@@ -285,7 +285,7 @@ Sitemap: https://elevateforhumanity.institute/sitemap.xml
 - **Automatic:** Vercel preview domains
 
 ### ✅ Current Status
-- Main domain: `elevateforhumanity.institute` ✅
+- Main domain: `www.elevateforhumanity.org` ✅
 - Application redirects: Configured in next.config.mjs ✅
 - Old domain redirect: Requires DNS configuration ⚠️
 
@@ -294,7 +294,7 @@ Sitemap: https://elevateforhumanity.institute/sitemap.xml
 ## Action Items
 
 ### For Vercel Dashboard
-1. ✅ Verify only `elevateforhumanity.institute` is in Domains
+1. ✅ Verify only `www.elevateforhumanity.org` is in Domains
 2. ❌ Remove any other domains if present
 3. ✅ Confirm DNS is pointing to Vercel
 

@@ -46,7 +46,7 @@
 - **Payments:** Stripe active
 - **Authentication:** Supabase Auth working
 - **Deployment:** Live on Vercel
-- **Domain:** elevateforhumanity.institute
+- **Domain:** www.elevateforhumanity.org
 
 ---
 
@@ -62,9 +62,9 @@
 ### Test the Platform
 ```bash
 # Visit these URLs:
-https://elevateforhumanity.institute/programs  # 56 programs
-https://elevateforhumanity.institute/apply     # Application form
-https://elevateforhumanity.institute/admin     # Admin panel
+https://www.elevateforhumanity.org/programs  # 56 programs
+https://www.elevateforhumanity.org/apply     # Application form
+https://www.elevateforhumanity.org/admin     # Admin panel
 ```
 
 ### Verify Everything
@@ -132,7 +132,7 @@ pnpm build
 
 ---
 
-**Platform:** https://elevateforhumanity.institute  
+**Platform:** https://www.elevateforhumanity.org  
 **Status:** ✅ 100% COMPLETE  
 **Readiness:** READY FOR PRODUCTION  
 **Blockers:** NONE

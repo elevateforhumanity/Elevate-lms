@@ -97,7 +97,7 @@ The footer has been updated with a **visible, organized navigation structure** t
 
 ### Other Access Points
 1. **Header** (when logged in as admin)
-2. **Direct URL:** https://elevateforhumanity.institute/admin
+2. **Direct URL:** https://www.elevateforhumanity.org/admin
 3. **Footer** (new - always visible)
 
 ---
@@ -151,7 +151,7 @@ The footer has been updated with a **visible, organized navigation structure** t
 
 ### 1. Visit Homepage
 ```
-https://elevateforhumanity.institute
+https://www.elevateforhumanity.org
 ```
 
 ### 2. Scroll to Footer
@@ -230,7 +230,7 @@ git push origin main
 
 ### Verify on Live Site
 After deployment, check:
-1. https://elevateforhumanity.institute (scroll to footer)
+1. https://www.elevateforhumanity.org (scroll to footer)
 2. Look for "Portals" section
 3. Click "Admin Dashboard"
 4. Verify it goes to `/admin`

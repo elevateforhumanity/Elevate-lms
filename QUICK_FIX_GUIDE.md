@@ -10,7 +10,7 @@
 
 1. Go to: https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/auth/users
 2. Click "Add user" → "Create new user"
-3. Email: `admin@elevateforhumanity.institute`
+3. Email: `admin@www.elevateforhumanity.org`
 4. Password: (set a secure password)
 5. Click "Create user"
 
@@ -19,13 +19,13 @@
    - Run:
    ```sql
    -- Get the user ID
-   SELECT id, email FROM auth.users WHERE email = 'admin@elevateforhumanity.institute';
+   SELECT id, email FROM auth.users WHERE email = 'admin@www.elevateforhumanity.org';
    
    -- Create/update profile with admin role
    INSERT INTO profiles (id, email, role, full_name)
    VALUES (
      '[user_id_from_above]',
-     'admin@elevateforhumanity.institute',
+     'admin@www.elevateforhumanity.org',
      'super_admin',
      'Admin User'
    )
@@ -34,16 +34,16 @@
    ```
 
 7. **Test:**
-   - Go to: https://elevateforhumanity.institute/login
+   - Go to: https://www.elevateforhumanity.org/login
    - Login with admin credentials
-   - Go to: https://elevateforhumanity.institute/admin
+   - Go to: https://www.elevateforhumanity.org/admin
    - Should work now!
 
 ### Solution B: Use Regular Login
 
 The admin dashboard requires authentication. Use the regular login:
 
-1. Go to: https://elevateforhumanity.institute/login
+1. Go to: https://www.elevateforhumanity.org/login
 2. Login with your account
 3. If you have admin role, you'll see admin features
 4. If not, update your role in database (see Solution A step 6)
@@ -62,7 +62,7 @@ The admin dashboard requires authentication. Use the regular login:
 
 ```sql
 -- 1. Get student user ID
-SELECT id, email FROM auth.users WHERE email = 'test@elevateforhumanity.institute';
+SELECT id, email FROM auth.users WHERE email = 'test@www.elevateforhumanity.org';
 
 -- 2. Get a program ID
 SELECT id, name, cost FROM programs WHERE is_active = true LIMIT 5;
@@ -105,7 +105,7 @@ WHERE e.student_id = '[student_id]';
 
 **Option 3: Via Enrollment Page**
 
-1. Go to: https://elevateforhumanity.institute/programs
+1. Go to: https://www.elevateforhumanity.org/programs
 2. Browse programs
 3. Click "Enroll Now"
 4. Complete enrollment form
@@ -124,9 +124,9 @@ ls app/admin/login/
 ```
 
 **If missing, use regular login:**
-- Go to: https://elevateforhumanity.institute/login
+- Go to: https://www.elevateforhumanity.org/login
 - Login with admin credentials
-- Navigate to: https://elevateforhumanity.institute/admin
+- Navigate to: https://www.elevateforhumanity.org/admin
 
 ---
 
@@ -145,7 +145,7 @@ SELECT
   'super_admin',
   'Admin User'
 FROM auth.users 
-WHERE email = 'admin@elevateforhumanity.institute'
+WHERE email = 'admin@www.elevateforhumanity.org'
 ON CONFLICT (id) DO UPDATE SET role = 'super_admin';
 ```
 
@@ -160,7 +160,7 @@ SELECT
   'student',
   'Test Student'
 FROM auth.users 
-WHERE email = 'test@elevateforhumanity.institute'
+WHERE email = 'test@www.elevateforhumanity.org'
 ON CONFLICT (id) DO UPDATE SET role = 'student';
 ```
 
@@ -168,7 +168,7 @@ ON CONFLICT (id) DO UPDATE SET role = 'student';
 
 ```sql
 -- Get IDs
-SELECT id FROM auth.users WHERE email = 'test@elevateforhumanity.institute';
+SELECT id FROM auth.users WHERE email = 'test@www.elevateforhumanity.org';
 SELECT id, name FROM programs WHERE is_active = true LIMIT 1;
 
 -- Create enrollment
@@ -179,15 +179,15 @@ VALUES ('[student_id]', '[program_id]', 'active', 'workforce');
 ### 4. Test Access
 
 **Admin:**
-- Login: https://elevateforhumanity.institute/login
-- Email: admin@elevateforhumanity.institute
-- Go to: https://elevateforhumanity.institute/admin
+- Login: https://www.elevateforhumanity.org/login
+- Email: admin@www.elevateforhumanity.org
+- Go to: https://www.elevateforhumanity.org/admin
 - Should see admin dashboard
 
 **Student:**
-- Login: https://elevateforhumanity.institute/login
-- Email: test@elevateforhumanity.institute
-- Go to: https://elevateforhumanity.institute/lms/dashboard
+- Login: https://www.elevateforhumanity.org/login
+- Email: test@www.elevateforhumanity.org
+- Go to: https://www.elevateforhumanity.org/lms/dashboard
 - Should see enrolled program
 
 ---
@@ -239,7 +239,7 @@ SELECT 'Courses', COUNT(*) FROM partner_lms_courses WHERE active = true;
 
 Instead of admin dashboard, use the programs page:
 
-1. Go to: https://elevateforhumanity.institute/programs
+1. Go to: https://www.elevateforhumanity.org/programs
 2. Browse 53 available programs
 3. Click any program to view details
 4. Enroll students from there
@@ -252,7 +252,7 @@ Instead of admin dashboard, use the programs page:
 ```sql
 INSERT INTO profiles (id, email, role, full_name)
 SELECT id, email, 'super_admin', 'Admin'
-FROM auth.users WHERE email = 'admin@elevateforhumanity.institute'
+FROM auth.users WHERE email = 'admin@www.elevateforhumanity.org'
 ON CONFLICT (id) DO UPDATE SET role = 'super_admin';
 ```
 
@@ -260,7 +260,7 @@ ON CONFLICT (id) DO UPDATE SET role = 'super_admin';
 ```sql
 INSERT INTO profiles (id, email, role, full_name)
 SELECT id, email, 'student', 'Test Student'
-FROM auth.users WHERE email = 'test@elevateforhumanity.institute'
+FROM auth.users WHERE email = 'test@www.elevateforhumanity.org'
 ON CONFLICT (id) DO UPDATE SET role = 'student';
 ```
 
@@ -268,7 +268,7 @@ ON CONFLICT (id) DO UPDATE SET role = 'student';
 ```sql
 INSERT INTO enrollments (student_id, program_id, status, enrollment_method)
 VALUES (
-  (SELECT id FROM profiles WHERE email = 'test@elevateforhumanity.institute'),
+  (SELECT id FROM profiles WHERE email = 'test@www.elevateforhumanity.org'),
   (SELECT id FROM programs WHERE is_active = true LIMIT 1),
   'active',
   'workforce'
@@ -283,7 +283,7 @@ SELECT
   p.full_name
 FROM auth.users u
 LEFT JOIN profiles p ON p.id = u.id
-WHERE u.email IN ('admin@elevateforhumanity.institute', 'test@elevateforhumanity.institute');
+WHERE u.email IN ('admin@www.elevateforhumanity.org', 'test@www.elevateforhumanity.org');
 ```
 
 ---
@@ -302,9 +302,9 @@ WHERE u.email IN ('admin@elevateforhumanity.institute', 'test@elevateforhumanity
 
 - **Supabase Auth:** https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/auth/users
 - **Supabase SQL:** https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/sql/new
-- **Login:** https://elevateforhumanity.institute/login
-- **Admin:** https://elevateforhumanity.institute/admin
-- **Student:** https://elevateforhumanity.institute/lms/dashboard
+- **Login:** https://www.elevateforhumanity.org/login
+- **Admin:** https://www.elevateforhumanity.org/admin
+- **Student:** https://www.elevateforhumanity.org/lms/dashboard
 
 ---
 

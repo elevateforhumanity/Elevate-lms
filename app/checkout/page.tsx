@@ -71,7 +71,7 @@ export default async function CheckoutPage({
 
     // Get base URL
     const baseUrl =
-      process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute';
+      process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
 
     // Create Stripe Checkout Session
     const session = await stripe.checkout.sessions.create({

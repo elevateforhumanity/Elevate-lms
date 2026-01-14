@@ -1,6 +1,6 @@
 # Fix .org Domain in Vercel - Set to Redirect
 **Issue:** `elevateforhumanity.org` is set as Production domain in Vercel  
-**Should be:** Set to Redirect to `elevateforhumanity.institute`  
+**Should be:** Set to Redirect to `www.elevateforhumanity.org`  
 **Date:** January 10, 2026  
 **Priority:** 🔴 HIGH
 
@@ -11,7 +11,7 @@
 Currently in Vercel:
 - ❌ `elevateforhumanity.org` is set as **Production** domain
 - ❌ `www.elevateforhumanity.org` is set as **Production** domain (possibly)
-- ✅ `elevateforhumanity.institute` is set as **Production** domain
+- ✅ `www.elevateforhumanity.org` is set as **Production** domain
 
 **Result:** Both domains serve the same content, causing:
 - SEO duplicate content issues
@@ -36,7 +36,7 @@ Currently in Vercel:
 You should see something like:
 
 ```
-✅ elevateforhumanity.institute (Production)
+✅ www.elevateforhumanity.org (Production)
 ⚠️  elevateforhumanity.org (Production)  ← WRONG
 ⚠️  www.elevateforhumanity.org (Production)  ← WRONG
 ```
@@ -51,7 +51,7 @@ You should see something like:
 2. Click the **⋯** (three dots) menu next to it
 3. Click **Edit**
 4. Change from **Production** to **Redirect to:**
-5. Enter: `elevateforhumanity.institute`
+5. Enter: `www.elevateforhumanity.org`
 6. Check **Permanent (301)** redirect
 7. Click **Save**
 
@@ -61,7 +61,7 @@ You should see something like:
 2. Click the **⋯** (three dots) menu next to it
 3. Click **Edit**
 4. Change from **Production** to **Redirect to:**
-5. Enter: `elevateforhumanity.institute`
+5. Enter: `www.elevateforhumanity.org`
 6. Check **Permanent (301)** redirect
 7. Click **Save**
 
@@ -72,10 +72,10 @@ You should see something like:
 After changes, your domains should look like:
 
 ```
-✅ elevateforhumanity.institute (Production)
-✅ elevateforhumanity.org → elevateforhumanity.institute (Redirect)
-✅ www.elevateforhumanity.org → elevateforhumanity.institute (Redirect)
-✅ www.elevateforhumanity.institute → elevateforhumanity.institute (Redirect)
+✅ www.elevateforhumanity.org (Production)
+✅ elevateforhumanity.org → www.elevateforhumanity.org (Redirect)
+✅ www.elevateforhumanity.org → www.elevateforhumanity.org (Redirect)
+✅ www.www.elevateforhumanity.org → www.elevateforhumanity.org (Redirect)
 ```
 
 ---
@@ -117,20 +117,20 @@ curl -I https://elevateforhumanity.org/
 
 # Should return:
 HTTP/2 301
-Location: https://elevateforhumanity.institute/
+Location: https://www.elevateforhumanity.org/
 
 # Test www.elevateforhumanity.org
 curl -I https://www.elevateforhumanity.org/
 
 # Should return:
 HTTP/2 301
-Location: https://elevateforhumanity.institute/
+Location: https://www.elevateforhumanity.org/
 ```
 
 #### Using browser:
 1. Open **incognito/private window** (to avoid cache)
 2. Go to: `https://elevateforhumanity.org/`
-3. Should **automatically redirect** to: `https://elevateforhumanity.institute/`
+3. Should **automatically redirect** to: `https://www.elevateforhumanity.org/`
 4. Check URL bar - should show `.institute` not `.org`
 
 #### Check Vercel Deployment:
@@ -139,7 +139,7 @@ Location: https://elevateforhumanity.institute/
 3. Click on latest deployment
 4. Check **Domains** section
 5. Should show:
-   - `elevateforhumanity.institute` ✅
+   - `www.elevateforhumanity.org` ✅
    - `elevateforhumanity.org` → Redirect ✅
 
 ---
@@ -190,7 +190,7 @@ URL bar: elevateforhumanity.org
 ```
 User visits: elevateforhumanity.org
 Result: Automatically redirects (301)
-URL bar: elevateforhumanity.institute (CORRECT)
+URL bar: www.elevateforhumanity.org (CORRECT)
 ```
 
 ---
@@ -218,7 +218,7 @@ URL bar: elevateforhumanity.institute (CORRECT)
 ```
 Domains:
 ┌─────────────────────────────────────────────────────┐
-│ elevateforhumanity.institute        [Production]    │
+│ www.elevateforhumanity.org        [Production]    │
 │ elevateforhumanity.org              [Production] ❌ │
 │ www.elevateforhumanity.org          [Production] ❌ │
 └─────────────────────────────────────────────────────┘
@@ -228,10 +228,10 @@ Domains:
 ```
 Domains:
 ┌──────────────────────────────────────────────────────────────┐
-│ elevateforhumanity.institute        [Production] ✅          │
+│ www.elevateforhumanity.org        [Production] ✅          │
 │ elevateforhumanity.org              → .institute [Redirect] ✅│
 │ www.elevateforhumanity.org          → .institute [Redirect] ✅│
-│ www.elevateforhumanity.institute    → .institute [Redirect] ✅│
+│ www.www.elevateforhumanity.org    → .institute [Redirect] ✅│
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -291,7 +291,7 @@ Menu options:
 ```
 Domain Configuration:
 ○ Production
-● Redirect to: [elevateforhumanity.institute]
+● Redirect to: [www.elevateforhumanity.org]
 ☑ Permanent (301)
 ```
 
@@ -308,7 +308,7 @@ After making changes, verify:
 
 - [ ] `elevateforhumanity.org` shows "Redirect" in Vercel
 - [ ] `www.elevateforhumanity.org` shows "Redirect" in Vercel
-- [ ] `elevateforhumanity.institute` shows "Production" in Vercel
+- [ ] `www.elevateforhumanity.org` shows "Production" in Vercel
 - [ ] curl test returns 301 redirect
 - [ ] Browser test redirects to `.institute`
 - [ ] URL bar shows `.institute` after redirect
@@ -356,7 +356,7 @@ After making changes, verify:
 1. Go to Vercel → Settings → Domains
 2. Edit `elevateforhumanity.org`
 3. Change from Production to Redirect
-4. Enter `elevateforhumanity.institute`
+4. Enter `www.elevateforhumanity.org`
 5. Check Permanent (301)
 6. Save
 

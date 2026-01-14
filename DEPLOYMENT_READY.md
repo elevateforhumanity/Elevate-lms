@@ -1,7 +1,7 @@
 # 🚀 DEPLOYMENT READY - Complete Summary
 
 **Branch:** `fix/production-readiness-critical-issues`  
-**Domain:** elevateforhumanity.institute (independent)  
+**Domain:** www.elevateforhumanity.org (independent)  
 **Status:** ✅ READY FOR PRODUCTION
 
 ---
@@ -81,9 +81,9 @@ git push origin main
 Vercel will auto-deploy when you push to main.
 
 **Verify:**
-- https://elevateforhumanity.institute
-- https://elevateforhumanity.institute/sitemap.xml
-- https://elevateforhumanity.institute/robots.txt
+- https://www.elevateforhumanity.org
+- https://www.elevateforhumanity.org/sitemap.xml
+- https://www.elevateforhumanity.org/robots.txt
 
 ### 3. Clear All Caches
 
@@ -104,7 +104,7 @@ vercel --prod --force --no-cache
 
 **Quick steps:**
 1. Google Search Console → Add Property
-2. Enter: `elevateforhumanity.institute`
+2. Enter: `www.elevateforhumanity.org`
 3. Verify via DNS or HTML file
 4. Submit sitemap: `sitemap.xml`
 5. Request indexing for key pages
@@ -129,13 +129,13 @@ Create simple redirect page:
 <head>
   <meta charset="utf-8">
   <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="0;url=https://elevateforhumanity.institute">
-  <link rel="canonical" href="https://elevateforhumanity.institute">
+  <meta http-equiv="refresh" content="0;url=https://www.elevateforhumanity.org">
+  <link rel="canonical" href="https://www.elevateforhumanity.org">
 </head>
 <body>
-  <p>Redirecting to <a href="https://elevateforhumanity.institute">elevateforhumanity.institute</a>...</p>
+  <p>Redirecting to <a href="https://www.elevateforhumanity.org">www.elevateforhumanity.org</a>...</p>
   <script>
-    window.location.href = "https://elevateforhumanity.institute" + window.location.pathname;
+    window.location.href = "https://www.elevateforhumanity.org" + window.location.pathname;
   </script>
 </body>
 </html>
@@ -153,7 +153,7 @@ Create simple redirect page:
 - [x] Documentation complete
 
 ### Post-Deployment:
-- [ ] Site loads at elevateforhumanity.institute
+- [ ] Site loads at www.elevateforhumanity.org
 - [ ] Sitemap loads correctly
 - [ ] Robots.txt loads correctly
 - [ ] No 404 errors on key pages
@@ -199,19 +199,19 @@ Create simple redirect page:
 ## 🔧 Configuration Summary
 
 ### Domain Setup:
-- **Main Domain:** elevateforhumanity.institute (Vercel)
+- **Main Domain:** www.elevateforhumanity.org (Vercel)
 - **Old Domain:** www.elevateforhumanity.org (Separate hosting, redirects)
 - **Preview Domains:** *.vercel.app (Blocked from indexing)
 
 ### Redirects:
-- `www.elevateforhumanity.institute` → `elevateforhumanity.institute`
-- `*.vercel.app` → `elevateforhumanity.institute`
+- `www.www.elevateforhumanity.org` → `www.elevateforhumanity.org`
+- `*.vercel.app` → `www.elevateforhumanity.org`
 - Old domain handled separately (not in this codebase)
 
 ### SEO:
-- Sitemap: `https://elevateforhumanity.institute/sitemap.xml`
-- Robots: `https://elevateforhumanity.institute/robots.txt`
-- Canonical: All URLs use `elevateforhumanity.institute`
+- Sitemap: `https://www.elevateforhumanity.org/sitemap.xml`
+- Robots: `https://www.elevateforhumanity.org/robots.txt`
+- Canonical: All URLs use `www.elevateforhumanity.org`
 - Preview domains: Blocked via robots.txt
 
 ### Security:
@@ -334,7 +334,7 @@ vercel --prod --force --no-cache
 
 **Status:** ✅ READY TO DEPLOY  
 **Branch:** fix/production-readiness-critical-issues  
-**Domain:** elevateforhumanity.institute  
+**Domain:** www.elevateforhumanity.org  
 **Last Updated:** January 6, 2026
 
 ---

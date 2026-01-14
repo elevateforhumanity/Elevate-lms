@@ -156,7 +156,7 @@ Program partners with major carriers:
 ## Contact Information
 
 **Elevate for Humanity**  
-Website: elevateforhumanity.institute  
+Website: www.elevateforhumanity.org  
 Phone: (317) 314-3757
 
 ---

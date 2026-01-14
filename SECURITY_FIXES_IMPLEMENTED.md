@@ -160,7 +160,7 @@ DATABASE_URL=postgresql://postgres:***@db.cuxzzpsyufcewtmicszk.supabase.co:5432/
 **Authentication:**
 ```bash
 NEXTAUTH_SECRET=xSdfaXjJHYHN3LPqbKxxH9VAIh8Q8m63
-NEXTAUTH_URL=https://elevateforhumanity.institute
+NEXTAUTH_URL=https://www.elevateforhumanity.org
 SESSION_SECRET=Ssmfa7vyi2EBXXs0eaxA07jHnX9c0nPu
 ```
 
@@ -191,7 +191,7 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 **Site Configuration:**
 ```bash
-NEXT_PUBLIC_SITE_URL=https://elevateforhumanity.institute
+NEXT_PUBLIC_SITE_URL=https://www.elevateforhumanity.org
 NODE_ENV=production
 ```
 
@@ -522,7 +522,7 @@ export function sanitizeString(input: string): string {
 ```bash
 # Test auth rate limit (5 requests/minute)
 for i in {1..6}; do
-  curl -X POST https://elevateforhumanity.institute/api/auth/signin \
+  curl -X POST https://www.elevateforhumanity.org/api/auth/signin \
     -H "Content-Type: application/json" \
     -d '{"email":"test@test.com","password":"password"}'
 done
@@ -534,7 +534,7 @@ done
 
 ```bash
 # Test invalid email
-curl -X POST https://elevateforhumanity.institute/api/apply \
+curl -X POST https://www.elevateforhumanity.org/api/apply \
   -d "email=invalid&name=Test&phone=123&program=CNA&funding=WIOA"
 
 # Expected: 400 Bad Request with validation error
@@ -544,7 +544,7 @@ curl -X POST https://elevateforhumanity.institute/api/apply \
 
 ```bash
 # Test in production
-curl https://elevateforhumanity.institute/api/test-supabase
+curl https://www.elevateforhumanity.org/api/test-supabase
 
 # Expected: 404 Not Found
 ```

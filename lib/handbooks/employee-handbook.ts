@@ -425,7 +425,7 @@ This handbook is confidential and proprietary. Unauthorized reproduction or dist
 For questions or concerns, contact:
 Human Resources
 Elevate For Humanity Career & Technical Institute
-Email: hr@elevateforhumanity.institute
+Email: hr@www.elevateforhumanity.org
 Phone: [Company Phone]
 
 Last Updated: ${new Date().toLocaleDateString()}

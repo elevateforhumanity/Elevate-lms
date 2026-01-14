@@ -220,7 +220,7 @@ CREATE TABLE marketplace_creators (
 
 ```bash
 # Test creator rejection
-curl -X POST https://elevateforhumanity.institute/api/admin/creators/reject \
+curl -X POST https://www.elevateforhumanity.org/api/admin/creators/reject \
   -H "Content-Type: application/json" \
   -H "Cookie: your-session-cookie" \
   -d '{

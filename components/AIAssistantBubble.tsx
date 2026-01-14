@@ -48,7 +48,7 @@ export function AIAssistantBubble() {
       if (lowerInput.includes('guided') || lowerInput.includes('navigation') || lowerInput.includes('help')) {
         response = 'I can guide you through:\n\n• Applying for programs\n• Checking WIOA eligibility\n• Exploring training options\n• Finding funding sources\n\nWhat would you like to learn about?';
       } else if (lowerInput.includes('human') || lowerInput.includes('talk') || lowerInput.includes('person')) {
-        response = 'I\'d be happy to connect you with our team!\n\n📞 Call: 317-314-3757\n📧 Email: info@elevateforhumanity.institute\n\nOr click here to schedule a call: [Contact Us](/contact)';
+        response = 'I\'d be happy to connect you with our team!\n\n📞 Call: 317-314-3757\n📧 Email: info@www.elevateforhumanity.org\n\nOr click here to schedule a call: [Contact Us](/contact)';
       } else if (lowerInput.includes('explore') || lowerInput.includes('own')) {
         response = 'Great! Here are some quick links:\n\n• [View Programs](/programs)\n• [Check Eligibility](/wioa-eligibility)\n• [Apply Now](/apply)\n• [About Us](/about)\n\nFeel free to ask if you need anything!';
       } else if (lowerInput.includes('program') || lowerInput.includes('training')) {

@@ -216,21 +216,21 @@ INSERT INTO courses (
 ### 1. Create Test Student
 
 **Via signup page:**
-- Go to: https://elevateforhumanity.institute/signup
-- Create account: test@elevateforhumanity.institute
+- Go to: https://www.elevateforhumanity.org/signup
+- Create account: test@www.elevateforhumanity.org
 - Set password
 - Verify email (check inbox)
 
 **Or via SQL:**
 ```sql
 -- Check if test user exists
-SELECT id, email FROM auth.users WHERE email = 'test@elevateforhumanity.institute';
+SELECT id, email FROM auth.users WHERE email = 'test@www.elevateforhumanity.org';
 ```
 
 ### 2. Create Test Enrollment
 
 **Via admin dashboard:**
-- Go to: https://elevateforhumanity.institute/admin
+- Go to: https://www.elevateforhumanity.org/admin
 - Navigate to Enrollments
 - Click "Create Enrollment"
 - Select test student
@@ -240,7 +240,7 @@ SELECT id, email FROM auth.users WHERE email = 'test@elevateforhumanity.institut
 **Or via SQL:**
 ```sql
 -- Get student ID
-SELECT id FROM profiles WHERE email = 'test@elevateforhumanity.institute';
+SELECT id FROM profiles WHERE email = 'test@www.elevateforhumanity.org';
 
 -- Get program ID
 SELECT id FROM programs WHERE slug = 'microsoft-office-bundle';
@@ -263,8 +263,8 @@ INSERT INTO enrollments (
 
 ### 3. Test Student Login
 
-1. Go to: https://elevateforhumanity.institute/login
-2. Login as: test@elevateforhumanity.institute
+1. Go to: https://www.elevateforhumanity.org/login
+2. Login as: test@www.elevateforhumanity.org
 3. Should see dashboard with enrolled program
 4. Should see list of courses
 5. Click course → Should open partner link
@@ -287,7 +287,7 @@ SELECT
 FROM lms_progress lp
 JOIN profiles p ON p.id = lp.user_id
 JOIN courses c ON c.id = lp.course_id
-WHERE p.email = 'test@elevateforhumanity.institute';
+WHERE p.email = 'test@www.elevateforhumanity.org';
 ```
 
 ---
@@ -316,7 +316,7 @@ WHERE p.email = 'test@elevateforhumanity.institute';
 
 **Check Stripe dashboard:**
 - Go to: Developers → Webhooks
-- Find: `https://elevateforhumanity.institute/api/webhooks/stripe`
+- Find: `https://www.elevateforhumanity.org/api/webhooks/stripe`
 - Check recent events
 - Should see: `checkout.session.completed`
 
@@ -352,7 +352,7 @@ LIMIT 5;
    Port: 587
    Username: resend
    Password: [Your Resend API Key]
-   Sender email: noreply@elevateforhumanity.institute
+   Sender email: noreply@www.elevateforhumanity.org
    Sender name: Elevate for Humanity
    ```
 7. Save
@@ -427,9 +427,9 @@ LIMIT 5;
 ### Important URLs
 
 **Production Site:**
-- Homepage: https://elevateforhumanity.institute
-- Login: https://elevateforhumanity.institute/login
-- Admin: https://elevateforhumanity.institute/admin
+- Homepage: https://www.elevateforhumanity.org
+- Login: https://www.elevateforhumanity.org/login
+- Admin: https://www.elevateforhumanity.org/admin
 
 **Dashboards:**
 - Supabase: https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk

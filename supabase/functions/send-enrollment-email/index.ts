@@ -54,7 +54,7 @@ serve(async (req) => {
             <li>Complete the online training at your own pace</li>
             <li>Schedule your Remote Skills Verification session</li>
           </ul>
-          <p>If you have any questions, please contact us at support@elevateforhumanity.institute</p>
+          <p>If you have any questions, please contact us at support@www.elevateforhumanity.org</p>
           <p>Best regards,<br>Elevate for Humanity Career Training Institute</p>
         `;
         break;
@@ -75,7 +75,7 @@ serve(async (req) => {
             <li>Schedule your Remote Skills Verification (RSV) session</li>
             <li>Receive your certification upon completion</li>
           </ul>
-          <p>Need help? Contact us at support@elevateforhumanity.institute</p>
+          <p>Need help? Contact us at support@www.elevateforhumanity.org</p>
           <p>Best regards,<br>Elevate for Humanity Career Training Institute</p>
         `;
         break;
@@ -88,7 +88,7 @@ serve(async (req) => {
           <p>This is a friendly reminder to complete your <strong>${courseName}</strong> course.</p>
           <p><a href="${enrollment.hsi_enrollment_link}" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Continue Training</a></p>
           <p>Your certification is waiting! Complete the course to receive your official certificate.</p>
-          <p>Questions? We're here to help at support@elevateforhumanity.institute</p>
+          <p>Questions? We're here to help at support@www.elevateforhumanity.org</p>
           <p>Best regards,<br>Elevate for Humanity Career Training Institute</p>
         `;
         break;
@@ -102,7 +102,7 @@ serve(async (req) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Elevate for Humanity <noreply@elevateforhumanity.institute>',
+        from: 'Elevate for Humanity <noreply@www.elevateforhumanity.org>',
         to: [enrollment.student_email],
         subject,
         html: htmlContent,

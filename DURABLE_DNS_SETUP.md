@@ -1,12 +1,12 @@
 # Durable DNS Setup for Redirect
 
 **Domain:** elevateforhumanity.org  
-**Purpose:** Redirect to elevateforhumanity.institute  
+**Purpose:** Redirect to www.elevateforhumanity.org  
 **Method:** Point DNS to Netlify, let Netlify handle redirect
 
 ## 🎯 What This Does
 
-When someone visits elevateforhumanity.org, they'll be automatically redirected to elevateforhumanity.institute.
+When someone visits elevateforhumanity.org, they'll be automatically redirected to www.elevateforhumanity.org.
 
 ## 📋 DNS Records to Add in Durable
 
@@ -61,7 +61,7 @@ TTL: 3600 (or Auto)
 
 2. **Durable Site Will Stop Working**
    - Once you point DNS to Netlify, the Durable site won't be accessible
-   - All traffic will redirect to elevateforhumanity.institute
+   - All traffic will redirect to www.elevateforhumanity.org
    - This is intentional for the redirect
 
 3. **DNS Propagation**
@@ -81,10 +81,10 @@ After adding DNS records, verify with these tools:
 ```bash
 # After DNS propagates, this should redirect
 curl -I http://elevateforhumanity.org
-# Should show: Location: https://elevateforhumanity.institute
+# Should show: Location: https://www.elevateforhumanity.org
 
 curl -I http://www.elevateforhumanity.org
-# Should show: Location: https://elevateforhumanity.institute
+# Should show: Location: https://www.elevateforhumanity.org
 ```
 
 ## 🔄 What Happens After Setup
@@ -92,8 +92,8 @@ curl -I http://www.elevateforhumanity.org
 1. **User visits:** elevateforhumanity.org
 2. **DNS resolves to:** Netlify (75.2.60.5)
 3. **Netlify sees:** Request for .org domain
-4. **Netlify redirects to:** elevateforhumanity.institute
-5. **User sees:** elevateforhumanity.institute in browser
+4. **Netlify redirects to:** www.elevateforhumanity.org
+5. **User sees:** www.elevateforhumanity.org in browser
 
 ## 📊 Timeline
 

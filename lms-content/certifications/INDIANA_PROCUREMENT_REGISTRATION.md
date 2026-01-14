@@ -9,7 +9,7 @@
 **Organization:** Elevate for Humanity Training Center
 **Address:** 8888 Keystone Crossing, Indianapolis, IN 46240
 **Phone:** (317) 314-3757
-**Website:** elevateforhumanity.institute
+**Website:** www.elevateforhumanity.org
 
 **Registered With:** Indiana Department of Administration, Procurement Division
 
@@ -425,7 +425,7 @@ Elizabeth Greene
 CEO, Elevate for Humanity Training Center
 8888 Keystone Crossing, Indianapolis, IN 46240
 (317) 314-3757
-elevateforhumanity.institute
+www.elevateforhumanity.org
 
 Indiana State Contractor | Bidder ID: 0000067741
 SAM.gov Registered Federal Contractor (3 Entities)

@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/admin/certificates',
+    canonical: 'https://www.elevateforhumanity.org/admin/certificates',
   },
   title: 'Certificates | Elevate For Humanity',
   description: 'Manage certificates, credentials, and certifications',

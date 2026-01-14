@@ -1,6 +1,6 @@
 # Elevate AI Workers
 
-These scripts automate image and video-job generation for https://elevateforhumanity.institute.
+These scripts automate image and video-job generation for https://www.elevateforhumanity.org.
 
 ## 1. Environment
 

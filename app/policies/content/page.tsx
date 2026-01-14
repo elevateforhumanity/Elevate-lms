@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Content Policy | Elevate for Humanity',
   description: 'Guidelines for user-generated content, intellectual property rights, and content standards on our platforms.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/content',
+    canonical: 'https://www.elevateforhumanity.org/policies/content',
   },
 };
 
@@ -202,7 +202,7 @@ export default function ContentPage() {
             </p>
             <ul className="list-disc pl-6 mb-6 text-black space-y-2">
               <li>Use the "Report" button on the content (if available)</li>
-              <li>Email content@elevateforhumanity.institute with details</li>
+              <li>Email content@www.elevateforhumanity.org with details</li>
               <li>Call (317) 314-3757 for urgent concerns</li>
               <li>Include link to content and reason for report</li>
             </ul>
@@ -282,9 +282,9 @@ export default function ContentPage() {
               For questions about content policy or to report violations:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> content@elevateforhumanity.institute</li>
+              <li><strong>Email:</strong> content@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
-              <li><strong>DMCA Agent:</strong> dmca@elevateforhumanity.institute</li>
+              <li><strong>DMCA Agent:</strong> dmca@www.elevateforhumanity.org</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</li>
             </ul>
 

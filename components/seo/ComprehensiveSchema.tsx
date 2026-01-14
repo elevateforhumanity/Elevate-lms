@@ -10,7 +10,7 @@ interface SchemaProps {
 }
 
 export default function ComprehensiveSchema({ type = 'organization', data }: SchemaProps) {
-  const baseUrl = 'https://elevateforhumanity.institute';
+  const baseUrl = 'https://www.elevateforhumanity.org';
 
   // Organization Schema (Always included)
   const organizationSchema = {
@@ -37,7 +37,7 @@ export default function ComprehensiveSchema({ type = 'organization', data }: Sch
 
     // Contact Information
     telephone: '+1-317-314-3757',
-    email: 'info@elevateforhumanity.institute',
+    email: 'info@www.elevateforhumanity.org',
 
     // Address (LocalBusiness)
     address: {

@@ -19,7 +19,7 @@
 
 ### Sitemap:
 - ✅ URL: https://elevate-lms-selfish2.vercel.app/sitemap.xml
-- ✅ Uses correct domain: `elevateforhumanity.institute`
+- ✅ Uses correct domain: `www.elevateforhumanity.org`
 - ✅ No old domain references
 - ✅ All URLs properly formatted
 - ✅ Valid XML structure
@@ -41,7 +41,7 @@
 ## 🎯 What's Working
 
 ### Domain Configuration:
-- ✅ Sitemap uses `elevateforhumanity.institute`
+- ✅ Sitemap uses `www.elevateforhumanity.org`
 - ✅ No old domain references in content
 - ✅ Canonical URLs correct
 - ✅ Metadata uses new domain
@@ -98,7 +98,7 @@
 
 ### Sitemap Analysis:
 ```xml
-✅ All URLs use: https://elevateforhumanity.institute
+✅ All URLs use: https://www.elevateforhumanity.org
 ✅ No old domain references
 ✅ Proper date format
 ✅ Valid priority values
@@ -106,10 +106,10 @@
 ```
 
 **Sample URLs:**
-- https://elevateforhumanity.institute
-- https://elevateforhumanity.institute/programs
-- https://elevateforhumanity.institute/apply
-- https://elevateforhumanity.institute/about
+- https://www.elevateforhumanity.org
+- https://www.elevateforhumanity.org/programs
+- https://www.elevateforhumanity.org/apply
+- https://www.elevateforhumanity.org/about
 
 ### Robots.txt Analysis:
 ```
@@ -118,7 +118,7 @@ User-Agent: *
 Allow: /
 Disallow: /admin/
 ...
-Sitemap: https://elevateforhumanity.institute/sitemap.xml
+Sitemap: https://www.elevateforhumanity.org/sitemap.xml
 
 After Fix (Next Deploy):
 User-Agent: *
@@ -189,7 +189,7 @@ git push origin main
 
 ### 2. Production Deployment
 Vercel will auto-deploy to:
-- https://elevateforhumanity.institute
+- https://www.elevateforhumanity.org
 
 ### 3. Verify Production
 - [ ] Site loads

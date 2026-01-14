@@ -60,9 +60,9 @@ Create/update `public/_redirects`:
 
 After next deploy, test each URL:
 ```bash
-curl -I https://elevateforhumanity.institute/app/globals-modern-design.css
-curl -I https://elevateforhumanity.institute/styles/rich-design-system.css
-curl -I https://elevateforhumanity.institute/branding/brand.css
+curl -I https://www.elevateforhumanity.org/app/globals-modern-design.css
+curl -I https://www.elevateforhumanity.org/styles/rich-design-system.css
+curl -I https://www.elevateforhumanity.org/branding/brand.css
 ```
 
 Expected: `200 OK` with `Content-Type: text/css`
@@ -319,12 +319,12 @@ for file in \
   "/branding/brand.css"
 do
   echo "Testing: $file"
-  curl -I "https://elevateforhumanity.institute$file" | head -1
+  curl -I "https://www.elevateforhumanity.org$file" | head -1
 done
 
 echo ""
 echo "=== Verifying Hero Image ==="
-curl -I "https://elevateforhumanity.institute/clear-pathways-hero.jpg" | head -1
+curl -I "https://www.elevateforhumanity.org/clear-pathways-hero.jpg" | head -1
 
 echo ""
 echo "=== Check Netlify Logs ==="

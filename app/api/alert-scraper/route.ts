@@ -113,7 +113,7 @@ ACTIONS TO TAKE:
 4. Document for legal evidence if needed
 5. Send cease & desist if confirmed scraping
 
-View full details: ${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/admin/security/scraping-attempts
+View full details: ${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/admin/security/scraping-attempts
 
 ---
 This is an automated alert from Elevate for Humanity Security System.
@@ -130,8 +130,8 @@ This is an automated alert from Elevate for Humanity Security System.
 
     try {
       await sgMail.send({
-        to: process.env.ALERT_EMAIL || 'elizabeth@elevateforhumanity.institute',
-        from: 'security@elevateforhumanity.institute',
+        to: process.env.ALERT_EMAIL || 'elizabeth@www.elevateforhumanity.org',
+        from: 'security@www.elevateforhumanity.org',
         subject: `🚨 Scraping Attempt: ${data.type}`,
         text: emailContent,
         html: emailContent.replace(/\n/g, '<br>')
@@ -178,7 +178,7 @@ async function sendSlackAlert(data: Record<string, any>) {
                   type: 'plain_text',
                   text: 'View Details',
                 },
-                url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/admin/security`,
+                url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/admin/security`,
               },
             ],
           },

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Identity Verification | Program Holder',
   description: 'Complete identity verification to activate your account',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/program-holder/verify-identity',
+    canonical: 'https://www.elevateforhumanity.org/program-holder/verify-identity',
   },
 };
 

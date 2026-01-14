@@ -148,7 +148,7 @@ export async function POST(request: NextRequest) {
     // Step 8: Send confirmation email to client
     try {
       await resend.emails.send({
-        from: 'SupersonicFastCash <noreply@elevateforhumanity.institute>',
+        from: 'SupersonicFastCash <noreply@www.elevateforhumanity.org>',
         to: clientData.email,
         subject: 'Your Tax Return Information Received',
         html: `
@@ -167,7 +167,7 @@ export async function POST(request: NextRequest) {
           <p><strong>Drake Return ID:</strong> ${drakeReturn.returnId}</p>
 
           <p>
-            <a href="https://elevateforhumanity.institute/supersonic-fast-cash/portal"
+            <a href="https://www.elevateforhumanity.org/supersonic-fast-cash/portal"
                style="display: inline-block; padding: 12px 24px; background: #16a34a; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
               Access Your Portal
             </a>
@@ -195,7 +195,7 @@ export async function POST(request: NextRequest) {
     // Step 9: Send notification to tax pro
     try {
       await resend.emails.send({
-        from: 'SupersonicFastCash <noreply@elevateforhumanity.institute>',
+        from: 'SupersonicFastCash <noreply@www.elevateforhumanity.org>',
         to: 'Supersonicfadtcashllc@gmail.com',
         subject: `New Client: ${clientData.firstName} ${clientData.lastName}`,
         html: `
@@ -232,7 +232,7 @@ export async function POST(request: NextRequest) {
           ` : ''}
 
           <p>
-            <a href="https://elevateforhumanity.institute/admin/tax-filing"
+            <a href="https://www.elevateforhumanity.org/admin/tax-filing"
                style="display: inline-block; padding: 12px 24px; background: #16a34a; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
               View in Admin Dashboard
             </a>

@@ -14,7 +14,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/program-holder/onboarding',
+    canonical: 'https://www.elevateforhumanity.org/program-holder/onboarding',
   },
   title: 'Program Holder Onboarding | Elevate For Humanity',
   description:
@@ -445,10 +445,10 @@ export default function ProgramHolderOnboarding() {
               <p className="text-black">
                 Email{' '}
                 <a
-                  href="mailto:support@elevateforhumanity.institute"
+                  href="mailto:support@www.elevateforhumanity.org"
                   className="text-blue-700 font-semibold hover:underline"
                 >
-                  support@elevateforhumanity.institute
+                  support@www.elevateforhumanity.org
                 </a>{' '}
                 or call{' '}
                 <a

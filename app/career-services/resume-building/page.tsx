@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     'Professional resume writing and review services. Get expert help creating a resume that showcases your skills and gets you hired.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/career-services/resume-building',
+    canonical: 'https://www.elevateforhumanity.org/career-services/resume-building',
   },
 };
 

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: 'Support Center | Elevate For Humanity',
   description: 'Get help with enrollment, programs, technical issues, and more. Contact our support team or browse our knowledge base.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/support',
+    canonical: 'https://www.elevateforhumanity.org/support',
   },
 };
 
@@ -115,13 +115,13 @@ export default function SupportPage() {
                 <p className="text-sm text-gray-500">Mon-Fri 8am-6pm EST</p>
               </div>
             </a>
-            <a href="mailto:support@elevateforhumanity.institute" className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition group">
+            <a href="mailto:support@www.elevateforhumanity.org" className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition group">
               <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
                 <Mail className="w-7 h-7 text-blue-600" />
               </div>
               <div>
                 <h3 className="font-bold text-black">Email Us</h3>
-                <p className="text-gray-600">support@elevateforhumanity.institute</p>
+                <p className="text-gray-600">support@www.elevateforhumanity.org</p>
                 <p className="text-sm text-gray-500">Response within 24 hours</p>
               </div>
             </a>

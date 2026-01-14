@@ -205,7 +205,7 @@ export function IntelligentDataProcessor() {
       .toLowerCase()
       .replace(/[^a-z\s]/g, '')
       .split(' ');
-    return `${cleanName[0]}.${cleanName[1] || 'student'}@elevateforhumanity.institute`;
+    return `${cleanName[0]}.${cleanName[1] || 'student'}@www.elevateforhumanity.org`;
   };
 
   const calculateRiskLevel = (parts: string[]): 'low' | 'medium' | 'high' => {

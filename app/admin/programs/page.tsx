@@ -8,7 +8,7 @@ import { ProgramsTable } from './programs-table';
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/admin/programs',
+    canonical: 'https://www.elevateforhumanity.org/admin/programs',
   },
   title: 'Programs Management | Admin',
   description: 'Manage training programs, courses, and curriculum',

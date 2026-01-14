@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Copyright Policy | Elevate for Humanity',
   description: 'Protection of intellectual property, fair use guidelines, and DMCA compliance procedures.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/copyright',
+    canonical: 'https://www.elevateforhumanity.org/policies/copyright',
   },
 };
 
@@ -199,7 +199,7 @@ export default function CopyrightPage() {
             <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-200 mb-6">
               <h4 className="text-lg font-bold text-black mb-3">DMCA Agent Contact</h4>
               <ul className="list-none text-black space-y-2">
-                <li><strong>Email:</strong> dmca@elevateforhumanity.institute</li>
+                <li><strong>Email:</strong> dmca@www.elevateforhumanity.org</li>
                 <li><strong>Mail:</strong> DMCA Agent, Elevate for Humanity</li>
                 <li className="ml-6">123 Main Street</li>
                 <li className="ml-6">Indianapolis, IN 46204</li>
@@ -246,7 +246,7 @@ export default function CopyrightPage() {
               <li>Service marks</li>
             </ul>
             <p className="text-black mb-6">
-              Use of our trademarks requires written permission. Contact legal@elevateforhumanity.institute 
+              Use of our trademarks requires written permission. Contact legal@www.elevateforhumanity.org 
               for trademark licensing inquiries.
             </p>
 
@@ -259,7 +259,7 @@ export default function CopyrightPage() {
             <div className="bg-gray-50 rounded-lg p-4 border-2 border-gray-200 mb-6">
               <p className="text-black font-mono text-sm">
                 Elevate for Humanity. (2026). [Course/Material Title]. Retrieved from 
-                https://elevateforhumanity.institute/[url]
+                https://www.elevateforhumanity.org/[url]
               </p>
             </div>
 
@@ -279,10 +279,10 @@ export default function CopyrightPage() {
               For copyright questions or permission requests:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>General Questions:</strong> copyright@elevateforhumanity.institute</li>
-              <li><strong>DMCA Notices:</strong> dmca@elevateforhumanity.institute</li>
-              <li><strong>Permission Requests:</strong> permissions@elevateforhumanity.institute</li>
-              <li><strong>Trademark Licensing:</strong> legal@elevateforhumanity.institute</li>
+              <li><strong>General Questions:</strong> copyright@www.elevateforhumanity.org</li>
+              <li><strong>DMCA Notices:</strong> dmca@www.elevateforhumanity.org</li>
+              <li><strong>Permission Requests:</strong> permissions@www.elevateforhumanity.org</li>
+              <li><strong>Trademark Licensing:</strong> legal@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
             </ul>
 

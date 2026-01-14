@@ -384,7 +384,7 @@ export const metadata: Metadata = {
   title: 'FAQ | Elevate for Humanity',
   description: 'Find answers to common questions...',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/faq',
+    canonical: 'https://www.elevateforhumanity.org/faq',
   },
 };
 ```
@@ -522,7 +522,7 @@ Should include FAQPage schema:
      title: 'Frequently Asked Questions | Elevate for Humanity',
      description: 'Find answers to common questions about our free career training programs, funding options, and support services.',
      alternates: {
-       canonical: 'https://elevateforhumanity.institute/faq',
+       canonical: 'https://www.elevateforhumanity.org/faq',
      },
    };
    ```
@@ -591,7 +591,7 @@ export const metadata: Metadata = {
   title: 'Frequently Asked Questions | Elevate for Humanity',
   description: 'Find answers to common questions about our free career training programs, funding options, and support services.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/faq',
+    canonical: 'https://www.elevateforhumanity.org/faq',
   },
 };
 

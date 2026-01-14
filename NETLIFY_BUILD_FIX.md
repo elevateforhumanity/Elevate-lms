@@ -237,15 +237,15 @@ Build is successful when:
 After successful build:
 
 1. **Check Homepage**
-   - URL: https://elevateforhumanity.institute
+   - URL: https://www.elevateforhumanity.org
    - Should load without errors
 
 2. **Check Student Portal**
-   - URL: https://elevateforhumanity.institute/student-portal
+   - URL: https://www.elevateforhumanity.org/student-portal
    - Should display correctly
 
 3. **Check Program Holder**
-   - URL: https://elevateforhumanity.institute/program-holder
+   - URL: https://www.elevateforhumanity.org/program-holder
    - Should display correctly
 
 4. **Check Console**

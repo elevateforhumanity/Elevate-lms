@@ -12,7 +12,7 @@
 - ✅ Site name: thunderous-axolotl-89d28d
 - ✅ Build command: `pnpm build`
 - ✅ Publish directory: `.next`
-- ✅ Custom domain: elevateforhumanity.institute
+- ✅ Custom domain: www.elevateforhumanity.org
 - ✅ Domain aliases: elevateforhumanity.org, www.elevateforhumanity.org
 
 ### Environment Variables
@@ -23,7 +23,7 @@
 - ✅ All critical variables present
 
 ### DNS Configuration
-- ✅ elevateforhumanity.institute: Pointing to Netlify (Vercel DNS)
+- ✅ www.elevateforhumanity.org: Pointing to Netlify (Vercel DNS)
 - ✅ elevateforhumanity.org: Pointing to Netlify (Durable DNS)
 - ⏳ DNS propagation: In progress
 

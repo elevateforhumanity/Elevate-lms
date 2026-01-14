@@ -16,12 +16,12 @@ export const metadata: Metadata = {
   description:
     'Read inspiring success stories from graduates who transformed their lives through our workforce training programs. Real careers, real impact.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/success-stories',
+    canonical: 'https://www.elevateforhumanity.org/success-stories',
   },
   openGraph: {
     title: 'Success Stories - Real People, Real Results',
     description: 'Inspiring stories from graduates who transformed their lives through workforce training.',
-    url: 'https://elevateforhumanity.institute/success-stories',
+    url: 'https://www.elevateforhumanity.org/success-stories',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Success Stories' }],
     type: 'website',

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords:
     'CNA training Indiana, CNA classes Indianapolis, certified nursing assistant Indiana, CNA certification Indianapolis, CNA job placement, CNA training Indiana',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/programs/cna',
+    canonical: 'https://www.elevateforhumanity.org/programs/cna',
   },
 };
 

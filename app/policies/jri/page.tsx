@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Justice Reinvestment Initiative Policy | Elevate for Humanity',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/jri',
+    canonical: 'https://www.elevateforhumanity.org/policies/jri',
   },
 };
 
@@ -21,7 +21,7 @@ export default function JRIPage() {
         <li>Committed to program completion</li>
       </ul>
       <h2>Contact</h2>
-      <p>Email: jri@elevateforhumanity.institute | Phone: (317) 314-3757</p>
+      <p>Email: jri@www.elevateforhumanity.org | Phone: (317) 314-3757</p>
     </article>
   );
 }

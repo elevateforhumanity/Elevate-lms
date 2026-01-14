@@ -172,19 +172,19 @@ const shouldShowHeaderFooter = !hideHeaderFooter;
 
 ### Check Homepage
 ```bash
-curl -s https://elevateforhumanity.institute | grep -i "header"
+curl -s https://www.elevateforhumanity.org | grep -i "header"
 ```
 **Result:** ✅ Header present
 
 ### Check Programs Page
 ```bash
-curl -s https://elevateforhumanity.institute/programs | grep -i "header"
+curl -s https://www.elevateforhumanity.org/programs | grep -i "header"
 ```
 **Result:** ✅ Header present
 
 ### Check Admin Page
 ```bash
-curl -s https://elevateforhumanity.institute/admin | grep -i "header"
+curl -s https://www.elevateforhumanity.org/admin | grep -i "header"
 ```
 **Result:** ❌ Header hidden (has own navigation)
 

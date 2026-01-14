@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Employee Handbook | Elevate For Humanity',
   description: 'Program Holder Employee Handbook - Required Reading',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/program-holder/handbook',
+    canonical: 'https://www.elevateforhumanity.org/program-holder/handbook',
   },
 };
 

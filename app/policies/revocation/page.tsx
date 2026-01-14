@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Credential Revocation Policy | Elevate for Humanity',
   description: 'Conditions under which credentials may be revoked, revocation procedures, and appeal rights.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/revocation',
+    canonical: 'https://www.elevateforhumanity.org/policies/revocation',
   },
 };
 
@@ -293,9 +293,9 @@ export default function RevocationPage() {
               For questions about credential revocation:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> registrar@elevateforhumanity.institute</li>
+              <li><strong>Email:</strong> registrar@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
-              <li><strong>Appeals:</strong> appeals@elevateforhumanity.institute</li>
+              <li><strong>Appeals:</strong> appeals@www.elevateforhumanity.org</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</li>
             </ul>
 

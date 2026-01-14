@@ -92,16 +92,16 @@ export const dynamic = 'force-dynamic';
 
 ### Production Test (All Passing)
 ```
-https://elevateforhumanity.institute/: 200 ✅
-https://elevateforhumanity.institute/programs: 200 ✅
-https://elevateforhumanity.institute/instructor/courses: 200 ✅
-https://elevateforhumanity.institute/creator/analytics: 200 ✅
-https://elevateforhumanity.institute/creator/community: 200 ✅
-https://elevateforhumanity.institute/creator/courses/new: 200 ✅
-https://elevateforhumanity.institute/employer/postings: 200 ✅
-https://elevateforhumanity.institute/employer/compliance: 200 ✅
-https://elevateforhumanity.institute/employer/apprenticeship: 200 ✅
-https://elevateforhumanity.institute/instructor/students/new: 200 ✅
+https://www.elevateforhumanity.org/: 200 ✅
+https://www.elevateforhumanity.org/programs: 200 ✅
+https://www.elevateforhumanity.org/instructor/courses: 200 ✅
+https://www.elevateforhumanity.org/creator/analytics: 200 ✅
+https://www.elevateforhumanity.org/creator/community: 200 ✅
+https://www.elevateforhumanity.org/creator/courses/new: 200 ✅
+https://www.elevateforhumanity.org/employer/postings: 200 ✅
+https://www.elevateforhumanity.org/employer/compliance: 200 ✅
+https://www.elevateforhumanity.org/employer/apprenticeship: 200 ✅
+https://www.elevateforhumanity.org/instructor/students/new: 200 ✅
 ```
 
 ### Build Status

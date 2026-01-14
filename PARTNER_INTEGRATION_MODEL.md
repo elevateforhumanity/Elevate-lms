@@ -23,7 +23,7 @@ Student → Your Platform → Pays You (Stripe) → Enrolls → Partner Link →
 ```
 
 **Student Experience:**
-1. Browse courses on elevateforhumanity.institute
+1. Browse courses on www.elevateforhumanity.org
 2. Click "Enroll" on partner course
 3. Pay YOU via Stripe (with BNPL options: Afterpay, Klarna, ACH)
 4. Get access link to partner's platform

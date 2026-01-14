@@ -38,10 +38,10 @@ Please use "proxy" instead.
 export function middleware(req: NextRequest) {
   const host = req.headers.get("host");
   
-  if (host === "www.elevateforhumanity.institute" || 
+  if (host === "www.www.elevateforhumanity.org" || 
       host.endsWith(".vercel.app")) {
     return NextResponse.redirect(
-      "https://elevateforhumanity.institute" + req.nextUrl.pathname,
+      "https://www.elevateforhumanity.org" + req.nextUrl.pathname,
       308
     );
   }

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Credentials Policy | Elevate for Humanity',
   description: 'Standards for issuing, verifying, and maintaining certificates, credentials, and certifications.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/credentials',
+    canonical: 'https://www.elevateforhumanity.org/policies/credentials',
   },
 };
 
@@ -220,13 +220,13 @@ export default function CredentialsPage() {
               To verify a credential:
             </p>
             <ol className="list-decimal pl-6 mb-6 text-black space-y-2">
-              <li>Visit our verification portal: elevateforhumanity.institute/verify</li>
+              <li>Visit our verification portal: www.elevateforhumanity.org/verify</li>
               <li>Enter the credential ID number</li>
               <li>View credential details and confirmation</li>
               <li>Download verification report if needed</li>
             </ol>
             <p className="text-black mb-6">
-              Or contact our registrar office at registrar@elevateforhumanity.institute or (317) 314-3757.
+              Or contact our registrar office at registrar@www.elevateforhumanity.org or (317) 314-3757.
             </p>
 
             <h3 className="text-xl font-bold text-black mt-6 mb-3">Verification Information Provided</h3>
@@ -323,9 +323,9 @@ export default function CredentialsPage() {
               For credential questions or services:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> registrar@elevateforhumanity.institute</li>
+              <li><strong>Email:</strong> registrar@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
-              <li><strong>Verification Portal:</strong> elevateforhumanity.institute/verify</li>
+              <li><strong>Verification Portal:</strong> www.elevateforhumanity.org/verify</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</li>
             </ul>
 

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     'WorkOne partner',
   ],
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/snap-et-partner',
+    canonical: 'https://www.elevateforhumanity.org/snap-et-partner',
   },
 };
 
@@ -448,10 +448,10 @@ export default function SNAPETPartnerPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:partnerships@elevateforhumanity.institute"
+              href="mailto:partnerships@www.elevateforhumanity.org"
               className="inline-block px-10 py-5 bg-yellow-400 text-blue-900 font-bold rounded-lg hover:bg-yellow-300 transition text-lg"
             >
-              Email: partnerships@elevateforhumanity.institute
+              Email: partnerships@www.elevateforhumanity.org
             </a>
             <a
               href="tel:3173143757"

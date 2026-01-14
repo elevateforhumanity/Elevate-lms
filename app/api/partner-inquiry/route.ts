@@ -36,8 +36,8 @@ export async function POST(request: NextRequest) {
     // Send notification email
     try {
       await resend.emails.send({
-        from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.institute',
-        to: process.env.NOTIFY_EMAIL_TO || 'admin@elevateforhumanity.institute',
+        from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
+        to: process.env.NOTIFY_EMAIL_TO || 'admin@www.elevateforhumanity.org',
         subject: `New Partner Inquiry: ${data.fullName} (${data.relationshipType})`,
         text:
           `New Partner Inquiry\n\n` +
@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
 
       // Send auto-reply to submitter
       await resend.emails.send({
-        from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.institute',
+        from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
         to: data.email,
         subject: 'We received your partner inquiry | Elevate for Humanity',
         text:

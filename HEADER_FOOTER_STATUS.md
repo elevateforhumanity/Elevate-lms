@@ -93,7 +93,7 @@ The website **already has a header and footer** on all public pages. They are fu
 
 ### Live Site Check
 ```bash
-curl -s https://elevateforhumanity.institute | grep -i "header"
+curl -s https://www.elevateforhumanity.org | grep -i "header"
 ```
 
 **Result:** ✅ Header present in HTML
@@ -252,7 +252,7 @@ Edit: `components/layout/ConditionalLayout.tsx`
 ## Testing
 
 ### Manual Testing
-1. Visit https://elevateforhumanity.institute
+1. Visit https://www.elevateforhumanity.org
 2. Verify header appears at top
 3. Verify footer appears at bottom
 4. Test navigation links
@@ -262,13 +262,13 @@ Edit: `components/layout/ConditionalLayout.tsx`
 ### Automated Testing
 ```bash
 # Check header exists
-curl -s https://elevateforhumanity.institute | grep -q "header" && echo "✅ Header found"
+curl -s https://www.elevateforhumanity.org | grep -q "header" && echo "✅ Header found"
 
 # Check footer exists
-curl -s https://elevateforhumanity.institute | grep -q "footer" && echo "✅ Footer found"
+curl -s https://www.elevateforhumanity.org | grep -q "footer" && echo "✅ Footer found"
 
 # Check navigation
-curl -s https://elevateforhumanity.institute | grep -q "Programs" && echo "✅ Navigation found"
+curl -s https://www.elevateforhumanity.org | grep -q "Programs" && echo "✅ Navigation found"
 ```
 
 ---

@@ -1,6 +1,6 @@
 # Responsive Design Audit Report
 **Date:** January 8, 2026  
-**Site:** elevateforhumanity.institute  
+**Site:** www.elevateforhumanity.org  
 **Status:** ✅ RESPONSIVE ACROSS ALL DEVICES
 
 ---

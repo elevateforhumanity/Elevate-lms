@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Data Retention Policy | Elevate for Humanity',
   description: 'How long we keep student and institutional data, retention schedules, and secure deletion procedures.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/data-retention',
+    canonical: 'https://www.elevateforhumanity.org/policies/data-retention',
   },
 };
 
@@ -274,7 +274,7 @@ export default function DataRetentionPage() {
               For questions about data retention or to request data access/deletion:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> privacy@elevateforhumanity.institute</li>
+              <li><strong>Email:</strong> privacy@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Mail:</strong> Privacy Officer, Elevate for Humanity</li>
               <li className="ml-6">123 Main Street</li>

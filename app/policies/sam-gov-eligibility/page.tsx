@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'SAM.gov registration and eligibility requirements for federal grant and contract opportunities at Elevate for Humanity.',
   keywords: ['SAM.gov', 'federal grants', 'government contracts', 'eligibility criteria', 'federal funding', 'grant opportunities', 'DUNS', 'UEI'],
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/sam-gov-eligibility',
+    canonical: 'https://www.elevateforhumanity.org/policies/sam-gov-eligibility',
   },
 };
 
@@ -364,8 +364,8 @@ export default function SAMGovEligibilityPage() {
           <h3 className="mt-0">Grants Office</h3>
           <p className="mb-2">
             <strong>Email:</strong>{' '}
-            <a href="mailto:grants@elevateforhumanity.institute" className="text-blue-600 hover:text-blue-800">
-              grants@elevateforhumanity.institute
+            <a href="mailto:grants@www.elevateforhumanity.org" className="text-blue-600 hover:text-blue-800">
+              grants@www.elevateforhumanity.org
             </a>
           </p>
           <p className="mb-2">
@@ -425,8 +425,8 @@ export default function SAMGovEligibilityPage() {
         <p className="text-lg font-semibold text-green-900 mb-2">Questions About Federal Funding?</p>
         <p className="text-green-800 mb-0">
           Contact our Grants Office at{' '}
-          <a href="mailto:grants@elevateforhumanity.institute" className="text-green-900 font-semibold hover:underline">
-            grants@elevateforhumanity.institute
+          <a href="mailto:grants@www.elevateforhumanity.org" className="text-green-900 font-semibold hover:underline">
+            grants@www.elevateforhumanity.org
           </a>{' '}
           or call{' '}
           <a href="tel:+13173143757" className="text-green-900 font-semibold hover:underline">

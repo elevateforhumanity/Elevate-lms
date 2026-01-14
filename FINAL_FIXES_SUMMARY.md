@@ -161,7 +161,7 @@ function logSecurityEvent(eventType: string, data: unknown) {
 **Required Actions**:
 1. Verify files exist in deployed site:
    ```bash
-   curl -I https://elevateforhumanity.institute/app/globals-modern-design.css
+   curl -I https://www.elevateforhumanity.org/app/globals-modern-design.css
    ```
 2. Add cache-busting or wait for cache expiry
 3. Consider removing references entirely if not needed

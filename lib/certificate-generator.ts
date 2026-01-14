@@ -161,7 +161,7 @@ export class CertificateGenerator {
 
     // Verification URL
     this.doc.text(
-      'Verify at: elevateforhumanity.institute/verify',
+      'Verify at: www.elevateforhumanity.org/verify',
       15,
       pageHeight - 15
     );

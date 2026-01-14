@@ -1,8 +1,8 @@
 # Domain Redirect Setup Guide
-## elevateforhumanity.org → elevateforhumanity.institute
+## elevateforhumanity.org → www.elevateforhumanity.org
 
 **Date:** 2026-01-08  
-**Canonical Domain:** elevateforhumanity.institute  
+**Canonical Domain:** www.elevateforhumanity.org  
 **Redirect Domain:** elevateforhumanity.org
 
 ---
@@ -13,8 +13,8 @@
 
 **Vercel Project Domains:**
 ```
-1. elevateforhumanity.institute (verified)
-2. www.elevateforhumanity.institute (verified)
+1. www.elevateforhumanity.org (verified)
+2. www.www.elevateforhumanity.org (verified)
 ```
 
 **DNS Status:**
@@ -57,7 +57,7 @@ elevateforhumanity.org
 3. **Configure as Redirect:**
    - After adding, click on `elevateforhumanity.org`
    - Select "Redirect to another domain"
-   - Enter: `elevateforhumanity.institute`
+   - Enter: `www.elevateforhumanity.org`
    - Select: "Permanent (308)" or "Permanent (301)"
    - Check: "Redirect with path" ✅
    - Save
@@ -65,7 +65,7 @@ elevateforhumanity.org
 4. **Add www subdomain:**
    - Click "Add Domain"
    - Enter: `www.elevateforhumanity.org`
-   - Configure as redirect to: `elevateforhumanity.institute`
+   - Configure as redirect to: `www.elevateforhumanity.org`
    - Save
 
 #### Option B: Vercel CLI
@@ -80,7 +80,7 @@ curl -X PATCH \
   -H "Authorization: Bearer [TOKEN]" \
   -H "Content-Type: application/json" \
   -d '{
-    "redirect": "elevateforhumanity.institute",
+    "redirect": "www.elevateforhumanity.org",
     "redirectStatusCode": 308
   }'
 
@@ -93,7 +93,7 @@ curl -X PATCH \
   -H "Authorization: Bearer [TOKEN]" \
   -H "Content-Type: application/json" \
   -d '{
-    "redirect": "elevateforhumanity.institute",
+    "redirect": "www.elevateforhumanity.org",
     "redirectStatusCode": 308
   }'
 ```
@@ -134,28 +134,28 @@ curl -I https://elevateforhumanity.org/
 
 # Expected:
 # HTTP/2 308 Permanent Redirect
-# location: https://elevateforhumanity.institute/
+# location: https://www.elevateforhumanity.org/
 
 # Test 2: Deep link with path
 curl -I https://elevateforhumanity.org/programs/cna
 
 # Expected:
 # HTTP/2 308 Permanent Redirect
-# location: https://elevateforhumanity.institute/programs/cna
+# location: https://www.elevateforhumanity.org/programs/cna
 
 # Test 3: Path with query string
 curl -I https://elevateforhumanity.org/programs/cna?test=1&foo=bar
 
 # Expected:
 # HTTP/2 308 Permanent Redirect
-# location: https://elevateforhumanity.institute/programs/cna?test=1&foo=bar
+# location: https://www.elevateforhumanity.org/programs/cna?test=1&foo=bar
 
 # Test 4: WWW subdomain
 curl -I https://www.elevateforhumanity.org/
 
 # Expected:
 # HTTP/2 308 Permanent Redirect
-# location: https://elevateforhumanity.institute/
+# location: https://www.elevateforhumanity.org/
 ```
 
 ---
@@ -173,17 +173,17 @@ curl -I https://www.elevateforhumanity.org/
 2. **Update Site URL:**
    ```
    Old: https://elevateforhumanity.org
-   New: https://elevateforhumanity.institute
+   New: https://www.elevateforhumanity.org
    ```
 
 #### B. Update Redirect URLs
 
 **Add these to "Redirect URLs" (whitelist):**
 ```
-https://elevateforhumanity.institute/**
-https://elevateforhumanity.institute/auth/callback
-https://elevateforhumanity.institute/auth/confirm
-https://elevateforhumanity.institute/login
+https://www.elevateforhumanity.org/**
+https://www.elevateforhumanity.org/auth/callback
+https://www.elevateforhumanity.org/auth/confirm
+https://www.elevateforhumanity.org/login
 ```
 
 **Keep these temporarily (for transition):**
@@ -219,7 +219,7 @@ Common places:
 
 1. **Add new property:**
    - Go to: https://search.google.com/search-console
-   - Add property: `elevateforhumanity.institute`
+   - Add property: `www.elevateforhumanity.org`
    - Verify ownership
 
 2. **Change of Address:**
@@ -241,7 +241,7 @@ Verify all pages have correct canonical:
 // app/page.tsx and other pages
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute', // ✅ Correct
+    canonical: 'https://www.elevateforhumanity.org', // ✅ Correct
   },
 };
 ```
@@ -250,14 +250,14 @@ export const metadata: Metadata = {
 
 ```tsx
 // app/sitemap.ts
-const baseUrl = 'https://elevateforhumanity.institute'; // ✅ Correct
+const baseUrl = 'https://www.elevateforhumanity.org'; // ✅ Correct
 ```
 
 #### D. Update robots.txt
 
 ```tsx
 // app/robots.ts
-const baseUrl = 'https://elevateforhumanity.institute'; // ✅ Correct
+const baseUrl = 'https://www.elevateforhumanity.org'; // ✅ Correct
 ```
 
 ---
@@ -446,12 +446,12 @@ Step 6: Update external links          → 1-2 hours
 {
   "domains": [
     {
-      "name": "elevateforhumanity.institute",
+      "name": "www.elevateforhumanity.org",
       "verified": true,
       "redirect": null
     },
     {
-      "name": "www.elevateforhumanity.institute",
+      "name": "www.www.elevateforhumanity.org",
       "verified": true,
       "redirect": null
     }
@@ -465,25 +465,25 @@ Step 6: Update external links          → 1-2 hours
 {
   "domains": [
     {
-      "name": "elevateforhumanity.institute",
+      "name": "www.elevateforhumanity.org",
       "verified": true,
       "redirect": null
     },
     {
-      "name": "www.elevateforhumanity.institute",
+      "name": "www.www.elevateforhumanity.org",
       "verified": true,
       "redirect": null
     },
     {
       "name": "elevateforhumanity.org",
       "verified": true,
-      "redirect": "elevateforhumanity.institute",
+      "redirect": "www.elevateforhumanity.org",
       "redirectStatusCode": 308
     },
     {
       "name": "www.elevateforhumanity.org",
       "verified": true,
-      "redirect": "elevateforhumanity.institute",
+      "redirect": "www.elevateforhumanity.org",
       "redirectStatusCode": 308
     }
   ]

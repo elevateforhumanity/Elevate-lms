@@ -563,7 +563,7 @@ Elevate provides:
 ✓ CONTACTS
 • Case Manager: [Assigned contact]
 • Program Director: [Contact info]
-• Technical Support: support@elevateforhumanity.institute
+• Technical Support: support@www.elevateforhumanity.org
 • Emergency: [Emergency contact]
 
 ---
@@ -592,9 +592,9 @@ This document is confidential and proprietary. Unauthorized reproduction or dist
 
 For questions or support:
 Elevate For Humanity Career & Technical Institute
-Email: partners@elevateforhumanity.institute
+Email: partners@www.elevateforhumanity.org
 Phone: [Company Phone]
-Website: www.elevateforhumanity.institute
+Website: www.www.elevateforhumanity.org
 
 Last Updated: ${new Date().toLocaleDateString()}
 Version: 1.0
@@ -929,8 +929,8 @@ Date: _______________________________
 © ${new Date().getFullYear()} Elevate For Humanity Career & Technical Institute. All Rights Reserved.
 
 For questions or support:
-Email: support@elevateforhumanity.institute
+Email: support@www.elevateforhumanity.org
 Phone: [Company Phone]
-Website: www.elevateforhumanity.institute
+Website: www.www.elevateforhumanity.org
 `;
 }

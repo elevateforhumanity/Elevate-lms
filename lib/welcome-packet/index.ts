@@ -202,7 +202,7 @@ export async function sendWelcomePacketEmail(
     <p>Our student services team is here to support you:</p>
     <ul>
       <li>Phone: 317-314-3757</li>
-      <li>Email: support@elevateforhumanity.institute</li>
+      <li>Email: support@www.elevateforhumanity.org</li>
       <li>Hours: Monday-Friday, 8am-5pm EST</li>
     </ul>
 
@@ -431,7 +431,7 @@ export async function sendWelcomePacketReminder(
 
     <p><a href="${process.env.NEXT_PUBLIC_SITE_URL}/student/welcome-packet/${packetId}" style="display: inline-block; padding: 12px 24px; background-color: #2563eb; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">Complete Welcome Packet</a></p>
 
-    <p>Need help? Contact us at support@elevateforhumanity.institute or 317-314-3757.</p>
+    <p>Need help? Contact us at support@www.elevateforhumanity.org or 317-314-3757.</p>
 
     <p>Best regards,<br>
     The Elevate for Humanity Team</p>

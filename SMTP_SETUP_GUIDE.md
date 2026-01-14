@@ -79,7 +79,7 @@ Using Supabase built-in email service with rate limits.
 
 ### Step 2: Add Domain
 1. Go to Domains → Add Domain
-2. Enter: `elevateforhumanity.institute`
+2. Enter: `www.elevateforhumanity.org`
 3. Add DNS records to your domain provider:
    ```
    Type: TXT
@@ -107,7 +107,7 @@ Using Supabase built-in email service with rate limits.
    Port: 587
    Username: resend
    Password: [Your Resend API Key]
-   Sender email: noreply@elevateforhumanity.institute
+   Sender email: noreply@www.elevateforhumanity.org
    Sender name: Elevate for Humanity
    ```
 5. Click "Save"
@@ -117,7 +117,7 @@ Using Supabase built-in email service with rate limits.
 2. Click "Invite User"
 3. Enter a test email
 4. Check if email is received
-5. Verify sender shows as `noreply@elevateforhumanity.institute`
+5. Verify sender shows as `noreply@www.elevateforhumanity.org`
 
 ## Alternative: SendGrid Setup
 
@@ -129,7 +129,7 @@ Using Supabase built-in email service with rate limits.
 ### Step 2: Verify Domain
 1. Go to Settings → Sender Authentication
 2. Click "Authenticate Your Domain"
-3. Enter: `elevateforhumanity.institute`
+3. Enter: `www.elevateforhumanity.org`
 4. Add DNS records provided by SendGrid
 
 ### Step 3: Create API Key
@@ -143,13 +143,13 @@ Host: smtp.sendgrid.net
 Port: 587
 Username: apikey
 Password: [Your SendGrid API Key]
-Sender email: noreply@elevateforhumanity.institute
+Sender email: noreply@www.elevateforhumanity.org
 Sender name: Elevate for Humanity
 ```
 
 ## DNS Records Required
 
-For any SMTP provider, you'll need to add DNS records to `elevateforhumanity.institute`:
+For any SMTP provider, you'll need to add DNS records to `www.elevateforhumanity.org`:
 
 ### SPF Record
 ```
@@ -169,7 +169,7 @@ Value: [provided by SMTP provider]
 ```
 Type: TXT
 Name: _dmarc
-Value: v=DMARC1; p=none; rua=mailto:dmarc@elevateforhumanity.institute
+Value: v=DMARC1; p=none; rua=mailto:dmarc@www.elevateforhumanity.org
 ```
 
 ## Environment Variables (If Using Direct Integration)
@@ -179,7 +179,7 @@ If you want to send emails directly from your app (not through Supabase):
 ```bash
 # Add to .env.local and Vercel
 RESEND_API_KEY=re_xxxxxxxxxxxxx
-EMAIL_FROM=noreply@elevateforhumanity.institute
+EMAIL_FROM=noreply@www.elevateforhumanity.org
 ```
 
 ## Testing Checklist
@@ -254,7 +254,7 @@ After setup:
    - Port: `587`
    - User: `resend`
    - Pass: `[API key]`
-   - From: `noreply@elevateforhumanity.institute`
+   - From: `noreply@www.elevateforhumanity.org`
 4. Test with invite user
 
 **Note:** You can use Resend's shared domain initially, then add custom domain later for better branding.

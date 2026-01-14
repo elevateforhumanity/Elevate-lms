@@ -32,12 +32,12 @@ export async function generateMetadata({
     title: `${video.title} | Elevate for Humanity`,
     description: video.description,
     alternates: {
-      canonical: `https://elevateforhumanity.institute/videos/${video.id}`,
+      canonical: `https://www.elevateforhumanity.org/videos/${video.id}`,
     },
     openGraph: {
       title: video.title,
       description: video.description,
-      url: `https://elevateforhumanity.institute/videos/${video.id}`,
+      url: `https://www.elevateforhumanity.org/videos/${video.id}`,
       type: 'video.other',
       images: [
         {
@@ -49,7 +49,7 @@ export async function generateMetadata({
       ],
       videos: [
         {
-          url: `https://elevateforhumanity.institute${video.videoUrl}`,
+          url: `https://www.elevateforhumanity.org${video.videoUrl}`,
           width: 1280,
           height: 720,
           type: 'video/mp4',
@@ -75,17 +75,17 @@ export default function VideoWatchPage({
     '@type': 'VideoObject',
     name: video.title,
     description: video.description,
-    thumbnailUrl: `https://elevateforhumanity.institute${video.thumbnailUrl}`,
+    thumbnailUrl: `https://www.elevateforhumanity.org${video.thumbnailUrl}`,
     uploadDate: video.uploadDate,
     duration: video.duration,
-    contentUrl: `https://elevateforhumanity.institute${video.videoUrl}`,
-    embedUrl: `https://elevateforhumanity.institute${video.videoUrl}`,
+    contentUrl: `https://www.elevateforhumanity.org${video.videoUrl}`,
+    embedUrl: `https://www.elevateforhumanity.org${video.videoUrl}`,
     publisher: {
       '@type': 'Organization',
       name: 'Elevate for Humanity',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://elevateforhumanity.institute/logo.png',
+        url: 'https://www.elevateforhumanity.org/logo.png',
       },
     },
   };

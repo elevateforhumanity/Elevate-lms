@@ -155,7 +155,7 @@ export async function PATCH(request: Request) {
     // Send notification email
     await supabase.from('email_queue').insert({
       to_email: application.email,
-      from_email: 'noreply@elevateforhumanity.institute',
+      from_email: 'noreply@www.elevateforhumanity.org',
       subject: `VITA Volunteer Application ${approval_status === 'approved' ? 'Approved' : 'Update'}`,
       template_name: `volunteer_application_${approval_status}`,
       template_data: {

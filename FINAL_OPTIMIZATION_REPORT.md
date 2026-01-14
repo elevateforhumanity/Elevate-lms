@@ -1,6 +1,6 @@
 # Final Optimization Report
 **Date:** January 8, 2026  
-**Site:** https://elevateforhumanity.institute  
+**Site:** https://www.elevateforhumanity.org  
 **Total Time:** ~2 hours  
 **Status:** 90% Complete
 
@@ -14,7 +14,7 @@
 **Impact:** **10x faster page loads** (1000ms → 100ms)  
 **Verification:**
 ```bash
-curl -I https://elevateforhumanity.institute/ | grep cdn-cache-control
+curl -I https://www.elevateforhumanity.org/ | grep cdn-cache-control
 # Result: cdn-cache-control: public, s-maxage=60, stale-while-revalidate=3600 ✅
 ```
 
@@ -259,23 +259,23 @@ curl -I https://elevateforhumanity.institute/ | grep cdn-cache-control
 
 ### Check Cache Headers:
 ```bash
-curl -I https://elevateforhumanity.institute/ | grep cdn-cache-control
+curl -I https://www.elevateforhumanity.org/ | grep cdn-cache-control
 # Should show: s-maxage=60 ✅
 ```
 
 ### Check CDN Hit Rate:
 ```bash
 # First request (MISS)
-curl -I https://elevateforhumanity.institute/ | grep x-vercel-cache
+curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
 
 # Second request (HIT)
-curl -I https://elevateforhumanity.institute/ | grep x-vercel-cache
+curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
 ```
 
 ### Check Middleware:
 ```bash
 # Test www redirect
-curl -I https://www.elevateforhumanity.institute/
+curl -I https://www.www.elevateforhumanity.org/
 # Should: 308 redirect ✅
 
 # Test Vercel redirect

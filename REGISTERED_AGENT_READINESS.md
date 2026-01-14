@@ -23,7 +23,7 @@ A registered agent (also called a statutory agent) is a person or business entit
    - Operating during business hours
 
 3. **Professional Infrastructure**
-   - Website: elevateforhumanity.institute
+   - Website: www.elevateforhumanity.org
    - Email system in place
    - Document management capabilities
    - Secure communications

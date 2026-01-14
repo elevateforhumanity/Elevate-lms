@@ -6,7 +6,7 @@
 
 When Vercel builds the application, it was showing BOTH domains on the build screen:
 - ❌ `elevateforhumanity.org` (old redirect domain)
-- ✅ `elevateforhumanity.institute` (main production domain)
+- ✅ `www.elevateforhumanity.org` (main production domain)
 
 **Root Cause:** Hardcoded `.org` URLs in canonical tags and metadata throughout the codebase.
 
@@ -27,9 +27,9 @@ alternates: {
 }
 
 // AFTER
-const SITE_URL = 'https://elevateforhumanity.institute';
+const SITE_URL = 'https://www.elevateforhumanity.org';
 alternates: {
-  canonical: 'https://elevateforhumanity.institute',
+  canonical: 'https://www.elevateforhumanity.org',
 }
 ```
 
@@ -39,7 +39,7 @@ alternates: {
 sitemap: 'https://www.elevateforhumanity.org/sitemap.xml',
 
 // AFTER
-sitemap: 'https://elevateforhumanity.institute/sitemap.xml',
+sitemap: 'https://www.elevateforhumanity.org/sitemap.xml',
 ```
 
 #### 3. app/apply/quick/page.tsx
@@ -48,7 +48,7 @@ sitemap: 'https://elevateforhumanity.institute/sitemap.xml',
 canonical: 'https://elevateforhumanity.org/apply/quick',
 
 // AFTER
-canonical: 'https://elevateforhumanity.institute/apply/quick',
+canonical: 'https://www.elevateforhumanity.org/apply/quick',
 ```
 
 #### 4. app/programs/cna/page.tsx
@@ -57,7 +57,7 @@ canonical: 'https://elevateforhumanity.institute/apply/quick',
 canonical: 'https://www.elevateforhumanity.org/programs/cna',
 
 // AFTER
-canonical: 'https://elevateforhumanity.institute/programs/cna',
+canonical: 'https://www.elevateforhumanity.org/programs/cna',
 ```
 
 #### 5. app/updates/page.tsx
@@ -66,7 +66,7 @@ canonical: 'https://elevateforhumanity.institute/programs/cna',
 canonical: 'https://www.elevateforhumanity.org/updates',
 
 // AFTER
-canonical: 'https://elevateforhumanity.institute/updates',
+canonical: 'https://www.elevateforhumanity.org/updates',
 ```
 
 #### 6. app/updates/2026/01/program-calendar/page.tsx
@@ -75,7 +75,7 @@ canonical: 'https://elevateforhumanity.institute/updates',
 canonical: 'https://www.elevateforhumanity.org/updates/2026/01/program-calendar',
 
 // AFTER
-canonical: 'https://elevateforhumanity.institute/updates/2026/01/program-calendar',
+canonical: 'https://www.elevateforhumanity.org/updates/2026/01/program-calendar',
 ```
 
 ---
@@ -93,8 +93,8 @@ Email addresses correctly remain as `.org`:
 ### Environment Variables (Already Correct)
 `.env.local` already had the correct configuration:
 ```bash
-NEXTAUTH_URL=https://elevateforhumanity.institute
-NEXT_PUBLIC_SITE_URL=https://elevateforhumanity.institute
+NEXTAUTH_URL=https://www.elevateforhumanity.org
+NEXT_PUBLIC_SITE_URL=https://www.elevateforhumanity.org
 ```
 
 ### Redirects (Already Correct)
@@ -123,7 +123,7 @@ grep -r "elevateforhumanity.org" app/ | grep canonical
 # No results (except email addresses)
 
 # Verify .institute is used
-grep -r "elevateforhumanity.institute" app/ | grep canonical
+grep -r "www.elevateforhumanity.org" app/ | grep canonical
 # All canonical URLs now use .institute ✅
 ```
 
@@ -136,13 +136,13 @@ grep -r "elevateforhumanity.institute" app/ | grep canonical
 ```
 Domains:
 - elevateforhumanity.org
-- elevateforhumanity.institute
+- www.elevateforhumanity.org
 ```
 
 **After:**
 ```
 Domains:
-- elevateforhumanity.institute ✅
+- www.elevateforhumanity.org ✅
 ```
 
 ### SEO Impact
@@ -161,7 +161,7 @@ Domains:
 ## Domain Architecture
 
 ### Main Domain (Production)
-**Domain:** `elevateforhumanity.institute`
+**Domain:** `www.elevateforhumanity.org`
 - Configured in Vercel project settings
 - All canonical URLs point here
 - All metadata uses this domain
@@ -175,7 +175,7 @@ Domains:
 - Email addresses still use this domain
 
 ### Subdomain Redirects (Application Level)
-**Domain:** `www.elevateforhumanity.institute`
+**Domain:** `www.www.elevateforhumanity.org`
 - NOT configured in Vercel
 - Redirects handled by `next.config.mjs`
 - Automatically redirects to non-www
@@ -193,28 +193,28 @@ Domains:
 ### Test Canonical URLs
 ```bash
 # Homepage
-curl -s https://elevateforhumanity.institute/ | grep canonical
-# Should show: <link rel="canonical" href="https://elevateforhumanity.institute/" />
+curl -s https://www.elevateforhumanity.org/ | grep canonical
+# Should show: <link rel="canonical" href="https://www.elevateforhumanity.org/" />
 
 # Programs page
-curl -s https://elevateforhumanity.institute/programs/cna | grep canonical
-# Should show: <link rel="canonical" href="https://elevateforhumanity.institute/programs/cna" />
+curl -s https://www.elevateforhumanity.org/programs/cna | grep canonical
+# Should show: <link rel="canonical" href="https://www.elevateforhumanity.org/programs/cna" />
 
 # Updates page
-curl -s https://elevateforhumanity.institute/updates | grep canonical
-# Should show: <link rel="canonical" href="https://elevateforhumanity.institute/updates" />
+curl -s https://www.elevateforhumanity.org/updates | grep canonical
+# Should show: <link rel="canonical" href="https://www.elevateforhumanity.org/updates" />
 ```
 
 ### Test Sitemap
 ```bash
-curl -s https://elevateforhumanity.institute/robots.txt
-# Should show: Sitemap: https://elevateforhumanity.institute/sitemap.xml
+curl -s https://www.elevateforhumanity.org/robots.txt
+# Should show: Sitemap: https://www.elevateforhumanity.org/sitemap.xml
 ```
 
 ### Test Metadata
 ```bash
-curl -s https://elevateforhumanity.institute/ | grep -E "(og:url|twitter:url)"
-# Should show: https://elevateforhumanity.institute/
+curl -s https://www.elevateforhumanity.org/ | grep -E "(og:url|twitter:url)"
+# Should show: https://www.elevateforhumanity.org/
 ```
 
 ---
@@ -230,7 +230,7 @@ curl -s https://elevateforhumanity.institute/ | grep -E "(og:url|twitter:url)"
 
 ### Vercel Configuration
 **No changes needed** - Vercel project settings should already have:
-- ✅ `elevateforhumanity.institute` as production domain
+- ✅ `www.elevateforhumanity.org` as production domain
 - ❌ No other domains configured
 
 ### DNS Configuration
@@ -242,7 +242,7 @@ curl -s https://elevateforhumanity.institute/ | grep -E "(og:url|twitter:url)"
 
 | Item | Before | After | Status |
 |------|--------|-------|--------|
-| Main domain | elevateforhumanity.org | elevateforhumanity.institute | ✅ Fixed |
+| Main domain | elevateforhumanity.org | www.elevateforhumanity.org | ✅ Fixed |
 | Canonical URLs | Mixed (.org and .institute) | All .institute | ✅ Fixed |
 | Sitemap URL | .org | .institute | ✅ Fixed |
 | Robots.txt | .org | .institute | ✅ Fixed |
@@ -257,7 +257,7 @@ curl -s https://elevateforhumanity.institute/ | grep -E "(og:url|twitter:url)"
 
 **Vercel build screen will now show only:**
 ```
-✅ elevateforhumanity.institute
+✅ www.elevateforhumanity.org
 ```
 
 **No longer shows:**
@@ -265,4 +265,4 @@ curl -s https://elevateforhumanity.institute/ | grep -E "(og:url|twitter:url)"
 ❌ elevateforhumanity.org
 ```
 
-All canonical URLs, metadata, and site references now consistently use `elevateforhumanity.institute` as the main production domain.
+All canonical URLs, metadata, and site references now consistently use `www.elevateforhumanity.org` as the main production domain.

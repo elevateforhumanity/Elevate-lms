@@ -6,7 +6,7 @@ export const metadata = {
   description:
     'Visit our Indianapolis office or schedule a virtual appointment. Serving all 50 states.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/supersonic-fast-cash/locations',
+    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/locations',
   },
 };
 

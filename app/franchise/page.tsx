@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     'online franchise opportunity',
   ],
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/franchise',
+    canonical: 'https://www.elevateforhumanity.org/franchise',
   },
 };
 
@@ -480,10 +480,10 @@ export default function FranchisePage() {
           <p className="mt-6 text-black">
             Email:{' '}
             <a
-              href="mailto:franchise@elevateforhumanity.institute"
+              href="mailto:franchise@www.elevateforhumanity.org"
               className="text-orange-600 font-bold underline"
             >
-              franchise@elevateforhumanity.institute
+              franchise@www.elevateforhumanity.org
             </a>
           </p>
         </div>

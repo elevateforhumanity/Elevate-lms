@@ -7,7 +7,7 @@ export const metadata = {
   description:
     'Professional tax preparation, refund advances, business returns, and more. IRS-certified preparers serving Indianapolis and all 50 states.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/supersonic-fast-cash/services',
+    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/services',
   },
 };
 

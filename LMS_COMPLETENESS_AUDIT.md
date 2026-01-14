@@ -384,7 +384,7 @@
 ## 🔍 HOW TO TEST
 
 ### Test Enrollment Flow
-1. Visit https://elevateforhumanity.institute/lms
+1. Visit https://www.elevateforhumanity.org/lms
 2. Click "Get Started" or "Login"
 3. Create account or login
 4. Browse courses at /lms/(app)/courses

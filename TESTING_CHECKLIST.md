@@ -274,7 +274,7 @@ stripe trigger payment_intent.succeeded
 
 **Run Audit:**
 ```bash
-npx lighthouse https://elevateforhumanity.institute --view
+npx lighthouse https://www.elevateforhumanity.org --view
 ```
 
 **Target Scores:**
@@ -299,7 +299,7 @@ npx lighthouse https://elevateforhumanity.institute --view
 **Run Command:**
 ```bash
 npm install -D @axe-core/cli
-npx axe https://elevateforhumanity.institute --save results.json
+npx axe https://www.elevateforhumanity.org --save results.json
 ```
 
 ### WAVE Tool
@@ -481,4 +481,4 @@ Once all critical tests pass:
 
 ---
 
-**Contact:** qa@elevateforhumanity.institute
+**Contact:** qa@www.elevateforhumanity.org

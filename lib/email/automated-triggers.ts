@@ -117,7 +117,7 @@ Phone: (317) 314-3757
 
   const result = await sendEmail({
     to: studentEmail,
-    from: 'noreply@elevateforhumanity.institute',
+    from: 'noreply@www.elevateforhumanity.org',
     subject,
     html,
     text
@@ -194,7 +194,7 @@ Phone: (317) 314-3757
 
   const result = await sendEmail({
     to: studentEmail,
-    from: 'noreply@elevateforhumanity.institute',
+    from: 'noreply@www.elevateforhumanity.org',
     subject,
     html,
     text
@@ -346,7 +346,7 @@ Automated Alert System
 
   const result = await sendEmail({
     to: advisorEmail,
-    from: 'alerts@elevateforhumanity.institute',
+    from: 'alerts@www.elevateforhumanity.org',
     subject,
     html,
     text

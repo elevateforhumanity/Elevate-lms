@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/refund-policy',
+    canonical: 'https://www.elevateforhumanity.org/refund-policy',
   },
   title: 'Refund Policy | Elevate For Humanity',
   description:
@@ -180,10 +180,10 @@ export default function RefundPolicyPage() {
               <p className="text-black">
                 Email:{' '}
                 <a
-                  href="mailto:refunds@elevateforhumanity.institute"
+                  href="mailto:refunds@www.elevateforhumanity.org"
                   className="text-brand-blue-600 hover:underline"
                 >
-                  refunds@elevateforhumanity.institute
+                  refunds@www.elevateforhumanity.org
                 </a>
               </p>
             </div>

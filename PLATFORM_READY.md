@@ -222,8 +222,8 @@ cat readiness-report.md
 
 ### Getting Help
 - **Issues:** https://github.com/elevateforhumanity/Elevate-lms/issues
-- **Email:** support@elevateforhumanity.institute
-- **Website:** https://elevateforhumanity.institute/support
+- **Email:** support@www.elevateforhumanity.org
+- **Website:** https://www.elevateforhumanity.org/support
 
 ### Documentation
 - Setup Guide: `docs/SETUP.md`
@@ -252,4 +252,4 @@ cat readiness-report.md
 
 **Report Generated:** January 10, 2026  
 **Validation Command:** `pnpm readiness`  
-**Platform URL:** https://elevateforhumanity.institute
+**Platform URL:** https://www.elevateforhumanity.org

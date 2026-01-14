@@ -13,7 +13,7 @@ import {
   EducationalOrganization,
 } from 'schema-dts';
 
-const baseUrl = 'https://elevateforhumanity.institute';
+const baseUrl = 'https://www.elevateforhumanity.org';
 
 // Organization Schema (Global)
 export const organizationSchema: WithContext<Organization> = {
@@ -34,7 +34,7 @@ export const organizationSchema: WithContext<Organization> = {
     '@type': 'ContactPoint',
     telephone: '+1-317-314-3757',
     contactType: 'Admissions',
-    email: 'info@elevateforhumanity.institute',
+    email: 'info@www.elevateforhumanity.org',
   },
   sameAs: [
     'https://www.facebook.com/elevateforhumanity',

@@ -146,7 +146,7 @@ SELECT * FROM enrollments -- Logged in audit_logs table
    - Required: Explicit consent for each third party
    - Scope: Specific to partner (e.g., Certiport for testing)
    - Duration: Purpose-limited
-   - Withdrawal: Contact privacy@elevateforhumanity.institute
+   - Withdrawal: Contact privacy@www.elevateforhumanity.org
 
 5. **Cookies and Analytics Consent**
    - Required: Cookie consent banner on first visit
@@ -198,15 +198,15 @@ SELECT * FROM enrollments -- Logged in audit_logs table
 ### Compliance Contacts
 
 **FERPA Compliance Officer:**
-Email: ferpa@elevateforhumanity.institute
+Email: ferpa@www.elevateforhumanity.org
 Phone: (317) 314-3757
 
 **Data Protection Officer:**
-Email: privacy@elevateforhumanity.institute
+Email: privacy@www.elevateforhumanity.org
 Phone: (317) 314-3757
 
 **Security Incidents:**
-Email: security@elevateforhumanity.institute
+Email: security@www.elevateforhumanity.org
 Phone: (317) 314-3757 (24/7)
 
 ### Annual Review

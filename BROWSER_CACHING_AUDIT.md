@@ -178,7 +178,7 @@ User → CDN (expired) → Origin Server → Fresh HTML → CDN → User
 ### Verify Fix:
 ```bash
 # Check homepage cache headers
-curl -I https://elevateforhumanity.institute/ | grep cache-control
+curl -I https://www.elevateforhumanity.org/ | grep cache-control
 
 # Should show:
 # cache-control: public, max-age=0, must-revalidate, s-maxage=60

@@ -47,8 +47,8 @@ export async function POST(req: Request) {
   // Send notification email
   try {
     await resend.emails.send({
-      from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.institute',
-      to: process.env.NOTIFY_EMAIL_TO || 'admin@elevateforhumanity.institute',
+      from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
+      to: process.env.NOTIFY_EMAIL_TO || 'admin@www.elevateforhumanity.org',
       subject: `New License Request: ${payload.full_name} (${payload.desired_tier})`,
       text:
         `New License Request\n\n` +
@@ -63,7 +63,7 @@ export async function POST(req: Request) {
 
     // Send auto-reply to submitter
     await resend.emails.send({
-      from: process.env.EMAIL_FROM || 'noreply@elevateforhumanity.institute',
+      from: process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org',
       to: payload.email,
       subject: 'We received your licensing request | Elevate for Humanity',
       text:

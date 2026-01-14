@@ -7,7 +7,7 @@ async function run() {
   const page = await browser.newPage();
 
   const url =
-    process.env.A11Y_URL || "https://elevateforhumanity.institute";
+    process.env.A11Y_URL || "https://www.elevateforhumanity.org";
 
   await page.goto(url, { waitUntil: "networkidle" });
 

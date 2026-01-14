@@ -52,8 +52,8 @@ POSTGRES_PASSWORD=your_postgres_password
 
 # Authentication
 NEXTAUTH_SECRET=your_nextauth_secret
-NEXTAUTH_URL=https://elevateforhumanity.institute
-NEXT_PUBLIC_SITE_URL=https://elevateforhumanity.institute
+NEXTAUTH_URL=https://www.elevateforhumanity.org
+NEXT_PUBLIC_SITE_URL=https://www.elevateforhumanity.org
 
 # Payments
 STRIPE_SECRET_KEY=your_stripe_secret
@@ -72,8 +72,8 @@ SMTP_HOST=your_smtp_host
 SMTP_PORT=587
 SMTP_USER=your_smtp_user
 SMTP_PASSWORD=your_smtp_password
-SMTP_FROM=noreply@elevateforhumanity.institute
-EMAIL_FROM=noreply@elevateforhumanity.institute
+SMTP_FROM=noreply@www.elevateforhumanity.org
+EMAIL_FROM=noreply@www.elevateforhumanity.org
 
 # Redis
 UPSTASH_REDIS_REST_URL=your_redis_url
@@ -101,7 +101,7 @@ PIXABAY_API_KEY=your_pixabay_key
 CLOUDFLARE_ACCOUNT_ID=your_cf_account
 CLOUDFLARE_API_TOKEN=your_cf_token
 CLOUDFLARE_STREAM_API_TOKEN=your_cf_stream_token
-NEXT_PUBLIC_SCORM_CDN_URL=https://scorm.elevateforhumanity.institute
+NEXT_PUBLIC_SCORM_CDN_URL=https://scorm.www.elevateforhumanity.org
 
 # Other
 WORKOS_API_KEY=your_workos_key
@@ -112,7 +112,7 @@ WORKOS_API_KEY=your_workos_key
 ### Primary Domain Setup
 
 1. Go to Netlify Dashboard > Domain Settings
-2. Add custom domain: `elevateforhumanity.institute`
+2. Add custom domain: `www.elevateforhumanity.org`
 3. Configure DNS:
 
 ```
@@ -124,9 +124,9 @@ CNAME   www     your-site.netlify.app
 ### Old Domain Redirects
 
 The `netlify.toml` file already includes redirects from:
-- `elevateforhumanity.org` → `elevateforhumanity.institute`
-- `www.elevateforhumanity.org` → `elevateforhumanity.institute`
-- `www.elevateforhumanity.institute` → `elevateforhumanity.institute`
+- `elevateforhumanity.org` → `www.elevateforhumanity.org`
+- `www.elevateforhumanity.org` → `www.elevateforhumanity.org`
+- `www.www.elevateforhumanity.org` → `www.elevateforhumanity.org`
 
 ## Step 5: Configure Webhooks
 
@@ -134,7 +134,7 @@ The `netlify.toml` file already includes redirects from:
 
 Update Stripe webhook URL:
 - Old: `https://your-vercel-domain.vercel.app/api/webhooks/stripe`
-- New: `https://elevateforhumanity.institute/api/webhooks/stripe`
+- New: `https://www.elevateforhumanity.org/api/webhooks/stripe`
 
 1. Go to [Stripe Dashboard](https://dashboard.stripe.com/webhooks)
 2. Update webhook endpoint URL
@@ -170,7 +170,7 @@ git push origin main
 
 ### Smoke Tests
 
-1. Visit `https://elevateforhumanity.institute`
+1. Visit `https://www.elevateforhumanity.org`
 2. Test key functionality:
    - Homepage loads
    - User authentication

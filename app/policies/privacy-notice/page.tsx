@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Privacy notice for Elevate for Humanity learners, partners, and visitors. Learn how we collect, use, protect, and share your personal information.',
   keywords: ['privacy notice', 'data collection', 'personal information', 'data protection', 'privacy rights', 'FERPA', 'GDPR', 'CCPA'],
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/privacy-notice',
+    canonical: 'https://www.elevateforhumanity.org/policies/privacy-notice',
   },
 };
 
@@ -341,7 +341,7 @@ export default function PrivacyNoticePage() {
           To exercise your privacy rights:
         </p>
         <ol>
-          <li>Submit a request to privacy@elevateforhumanity.institute</li>
+          <li>Submit a request to privacy@www.elevateforhumanity.org</li>
           <li>Verify your identity (for security purposes)</li>
           <li>Specify the right you wish to exercise</li>
           <li>We will respond within 30 days (or as required by law)</li>
@@ -425,8 +425,8 @@ export default function PrivacyNoticePage() {
           <h3 className="mt-0">Privacy Office</h3>
           <p className="mb-2">
             <strong>Email:</strong>{' '}
-            <a href="mailto:privacy@elevateforhumanity.institute" className="text-blue-600 hover:text-blue-800">
-              privacy@elevateforhumanity.institute
+            <a href="mailto:privacy@www.elevateforhumanity.org" className="text-blue-600 hover:text-blue-800">
+              privacy@www.elevateforhumanity.org
             </a>
           </p>
           <p className="mb-2">
@@ -447,8 +447,8 @@ export default function PrivacyNoticePage() {
         <h3>Data Protection Officer</h3>
         <p>
           For questions about data protection and privacy compliance, contact our Data Protection Officer at{' '}
-          <a href="mailto:dpo@elevateforhumanity.institute" className="text-blue-600 hover:text-blue-800">
-            dpo@elevateforhumanity.institute
+          <a href="mailto:dpo@www.elevateforhumanity.org" className="text-blue-600 hover:text-blue-800">
+            dpo@www.elevateforhumanity.org
           </a>
         </p>
 
@@ -495,8 +495,8 @@ export default function PrivacyNoticePage() {
         <p className="text-lg font-semibold text-green-900 mb-2">Questions About Your Privacy?</p>
         <p className="text-green-800 mb-0">
           We're here to help. Contact our Privacy Office at{' '}
-          <a href="mailto:privacy@elevateforhumanity.institute" className="text-green-900 font-semibold hover:underline">
-            privacy@elevateforhumanity.institute
+          <a href="mailto:privacy@www.elevateforhumanity.org" className="text-green-900 font-semibold hover:underline">
+            privacy@www.elevateforhumanity.org
           </a>{' '}
           or call{' '}
           <a href="tel:+13173143757" className="text-green-900 font-semibold hover:underline">

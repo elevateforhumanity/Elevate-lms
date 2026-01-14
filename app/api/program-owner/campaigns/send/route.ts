@@ -89,14 +89,14 @@ export async function POST(request: NextRequest) {
         .replace(/\{\{organization_name\}\}/g, 'Elevate for Humanity')
         .replace(
           /\{\{dashboard_link\}\}/g,
-          'https://elevateforhumanity.institute/dashboard'
+          'https://www.elevateforhumanity.org/dashboard'
         )
-        .replace(/\{\{support_email\}\}/g, 'support@elevateforhumanity.institute')
+        .replace(/\{\{support_email\}\}/g, 'support@www.elevateforhumanity.org')
         .replace(/\{\{support_phone\}\}/g, '(555) 123-4567');
 
       try {
         await resend.emails.send({
-          from: `${profile.full_name} <noreply@elevateforhumanity.institute>`,
+          from: `${profile.full_name} <noreply@www.elevateforhumanity.org>`,
           to: student.email,
           subject,
           html: personalizedContent,

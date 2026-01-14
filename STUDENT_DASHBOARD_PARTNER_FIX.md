@@ -46,7 +46,7 @@ Then go to http://localhost:3000/lms/dashboard and test.
 
 For now, you can view partner enrollments directly:
 
-Go to: https://elevateforhumanity.institute/admin/partner-enrollments
+Go to: https://www.elevateforhumanity.org/admin/partner-enrollments
 
 (Once you're logged in as admin)
 

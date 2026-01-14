@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Academic Progress Policy | Elevate for Humanity',
   description: 'Standards for measuring and reporting student progress, satisfactory academic progress requirements, and probation procedures.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/progress',
+    canonical: 'https://www.elevateforhumanity.org/policies/progress',
   },
 };
 
@@ -288,9 +288,9 @@ export default function ProgressPage() {
               For questions about academic progress:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> registrar@elevateforhumanity.institute</li>
+              <li><strong>Email:</strong> registrar@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
-              <li><strong>SAP Appeals:</strong> appeals@elevateforhumanity.institute</li>
+              <li><strong>SAP Appeals:</strong> appeals@www.elevateforhumanity.org</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</li>
             </ul>
 

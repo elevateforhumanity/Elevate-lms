@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://elevateforhumanity.institute",
+  "baseUrl": "https://www.elevateforhumanity.org",
   "projectType": "vite-react",
   "roots": [
     "public",

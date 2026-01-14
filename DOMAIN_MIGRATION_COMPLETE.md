@@ -1,7 +1,7 @@
 # Domain Migration Complete
 
 ## Migration Summary
-Successfully migrated from `elevateforhumanity.org` to `elevateforhumanity.institute`
+Successfully migrated from `elevateforhumanity.org` to `www.elevateforhumanity.org`
 
 **Date Completed:** January 8, 2026  
 **Status:** ✅ Live in Production
@@ -18,7 +18,7 @@ Successfully migrated from `elevateforhumanity.org` to `elevateforhumanity.insti
 **Verification:**
 ```bash
 curl -sI https://elevateforhumanity.org/
-# Returns: HTTP/2 308 with location: https://elevateforhumanity.institute/
+# Returns: HTTP/2 308 with location: https://www.elevateforhumanity.org/
 ```
 
 ### 2. Codebase URL Updates ✅
@@ -33,7 +33,7 @@ curl -sI https://elevateforhumanity.org/
 
 ### 3. Environment Variables ✅
 - Updated `.env.example` with new SCORM CDN URL
-- Changed from `https://scorm.elevateforhumanity.org` to `https://scorm.elevateforhumanity.institute`
+- Changed from `https://scorm.elevateforhumanity.org` to `https://scorm.www.elevateforhumanity.org`
 - Verified no other environment variables need updates
 
 ### 4. Image Optimization Verification ✅
@@ -48,7 +48,7 @@ curl -sI https://elevateforhumanity.org/
 
 ### 5. Production Deployment ✅
 - Latest changes deployed to production
-- Site accessible at https://elevateforhumanity.institute/
+- Site accessible at https://www.elevateforhumanity.org/
 - All fixes verified live
 
 **Production Status:**
@@ -75,7 +75,7 @@ Checklist for updating Supabase configuration:
 
 ### Domain Redirect
 ```
-✅ https://elevateforhumanity.org → https://elevateforhumanity.institute
+✅ https://elevateforhumanity.org → https://www.elevateforhumanity.org
 ✅ HTTP 308 Permanent Redirect
 ✅ All paths preserved in redirect
 ```
@@ -105,10 +105,10 @@ Follow the checklist in `SUPABASE_DOMAIN_CHECKLIST.md`:
 
 1. **Update Site URL** in Supabase Dashboard
    - Navigate to: Authentication → URL Configuration
-   - Set to: `https://elevateforhumanity.institute`
+   - Set to: `https://www.elevateforhumanity.org`
 
 2. **Add Redirect URLs**
-   - Add: `https://elevateforhumanity.institute/**`
+   - Add: `https://www.elevateforhumanity.org/**`
    - Keep .org temporarily for transition
 
 3. **Update Email Templates**
@@ -160,7 +160,7 @@ Location: `vercel.json`
           "value": "elevateforhumanity.org"
         }
       ],
-      "destination": "https://elevateforhumanity.institute/:path*",
+      "destination": "https://www.elevateforhumanity.org/:path*",
       "permanent": true
     }
   ]
@@ -194,10 +194,10 @@ Location: `vercel.json`
 curl -sI https://elevateforhumanity.org/ | grep -E "HTTP|location"
 
 # Check production site
-curl -sI https://elevateforhumanity.institute/
+curl -sI https://www.elevateforhumanity.org/
 
 # Verify image optimization
-curl -s https://elevateforhumanity.institute/ | grep -o 'srcSet="[^"]*"' | head -3
+curl -s https://www.elevateforhumanity.org/ | grep -o 'srcSet="[^"]*"' | head -3
 
 # Check for any remaining .org references
 grep -r "elevateforhumanity.org" --exclude-dir={node_modules,.git,.next} .

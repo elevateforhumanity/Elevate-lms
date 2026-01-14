@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   keywords:
     'free tax preparation training, IRS certified tax preparer, VITA volunteer training, start tax business, tax preparer course Indianapolis, IRS Link and Learn, become tax preparer, tax business training, H&R Block alternative, TurboTax Pro alternative, tax franchise alternative, PTIN certification, tax season business',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/programs/tax-preparation',
+    canonical: 'https://www.elevateforhumanity.org/programs/tax-preparation',
   },
 };
 

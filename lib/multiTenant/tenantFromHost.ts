@@ -9,7 +9,7 @@ export async function getTenantFromHost(host?: string) {
 
   // Check for custom domain first
   if (
-    !normalized.includes("elevateforhumanity.institute") &&
+    !normalized.includes("www.elevateforhumanity.org") &&
     normalized !== "localhost"
   ) {
     const { data: tenantByDomain } = await supabase

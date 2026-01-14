@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     'Monitor your student progress, attendance, grades, and communicate with instructors.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/parent-portal',
+    canonical: 'https://www.elevateforhumanity.org/parent-portal',
   },
 };
 

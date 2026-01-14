@@ -1,19 +1,19 @@
 # Supabase Domain Migration Checklist
 
 ## Overview
-After migrating from elevateforhumanity.org to elevateforhumanity.institute, verify Supabase configuration.
+After migrating from elevateforhumanity.org to www.elevateforhumanity.org, verify Supabase configuration.
 
 ## Authentication Configuration
 
 ### 1. Site URL
 - [ ] Update Site URL in Supabase Dashboard
   - Navigate to: Authentication → URL Configuration
-  - Set Site URL to: `https://elevateforhumanity.institute`
+  - Set Site URL to: `https://www.elevateforhumanity.org`
 
 ### 2. Redirect URLs
 - [ ] Add new domain to allowed redirect URLs
   - Navigate to: Authentication → URL Configuration → Redirect URLs
-  - Add: `https://elevateforhumanity.institute/**`
+  - Add: `https://www.elevateforhumanity.org/**`
   - Keep old domain temporarily for transition: `https://elevateforhumanity.org/**`
 
 ### 3. Email Templates
@@ -27,7 +27,7 @@ After migrating from elevateforhumanity.org to elevateforhumanity.institute, ver
 ### 4. Allowed Origins
 - [ ] Update CORS settings
   - Navigate to: Settings → API
-  - Add to allowed origins: `https://elevateforhumanity.institute`
+  - Add to allowed origins: `https://www.elevateforhumanity.org`
   - Verify `https://elevateforhumanity.org` is present for transition period
 
 ## Environment Variables
@@ -69,7 +69,7 @@ grep -r "NEXT_PUBLIC_SUPABASE_URL" .env.local
 grep -r "NEXT_PUBLIC_SITE_URL" .env.local
 
 # Test authentication endpoint
-curl -I https://elevateforhumanity.institute/api/auth/signin
+curl -I https://www.elevateforhumanity.org/api/auth/signin
 ```
 
 ## Notes

@@ -46,7 +46,7 @@ This silences harmless bot noise.
 
 ## Verification (5 minutes after deploy)
 
-1. Open site in incognito: https://elevateforhumanity.institute
+1. Open site in incognito: https://www.elevateforhumanity.org
 2. Navigate: / → /programs → /apply
 3. Open DevTools → Network tab
 4. Should see:

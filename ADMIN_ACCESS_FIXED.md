@@ -7,7 +7,7 @@ The `/admin/login` page redirects to `/login` - this is **by design**, not a bug
 ## How To Access Admin Dashboard
 
 ### Step 1: Login via Regular Login Page
-Go to: **https://elevateforhumanity.institute/login**
+Go to: **https://www.elevateforhumanity.org/login**
 
 (NOT `/admin/login`)
 
@@ -40,7 +40,7 @@ WHERE email = 'YOUR_EMAIL_HERE';
 ### Step 3: Access Admin Dashboard
 
 After logging in with admin role:
-- Go to: **https://elevateforhumanity.institute/admin**
+- Go to: **https://www.elevateforhumanity.org/admin**
 - Should work now!
 
 ---
@@ -50,7 +50,7 @@ After logging in with admin role:
 ### 1. Create Your Admin Account
 
 **Option A: Via Signup Page**
-1. Go to: https://elevateforhumanity.institute/signup
+1. Go to: https://www.elevateforhumanity.org/signup
 2. Create account with your email
 3. Verify email
 4. Continue to step 2
@@ -80,9 +80,9 @@ WHERE email = 'your@email.com';
 
 ### 3. Login and Access
 
-1. Go to: https://elevateforhumanity.institute/login
+1. Go to: https://www.elevateforhumanity.org/login
 2. Login with your credentials
-3. Go to: https://elevateforhumanity.institute/admin
+3. Go to: https://www.elevateforhumanity.org/admin
 4. ✅ Admin dashboard should load!
 
 ---
@@ -199,14 +199,14 @@ WHERE email = 'your@email.com';
 -- Create via signup page OR set existing user:
 UPDATE profiles 
 SET role = 'student', full_name = 'Test Student'
-WHERE email = 'test@elevateforhumanity.institute';
+WHERE email = 'test@www.elevateforhumanity.org';
 ```
 
 ### 3. Create Test Enrollment
 ```sql
 INSERT INTO enrollments (student_id, program_id, status, enrollment_method)
 VALUES (
-  (SELECT id FROM profiles WHERE email = 'test@elevateforhumanity.institute'),
+  (SELECT id FROM profiles WHERE email = 'test@www.elevateforhumanity.org'),
   (SELECT id FROM programs WHERE is_active = true LIMIT 1),
   'active',
   'workforce'
@@ -216,25 +216,25 @@ VALUES (
 ### 4. Test Both Dashboards
 
 **Admin:**
-1. Login: https://elevateforhumanity.institute/login
+1. Login: https://www.elevateforhumanity.org/login
 2. Email: your@email.com
-3. Go to: https://elevateforhumanity.institute/admin
+3. Go to: https://www.elevateforhumanity.org/admin
 4. ✅ Should see admin dashboard with stats
 
 **Student:**
-1. Login: https://elevateforhumanity.institute/login
-2. Email: test@elevateforhumanity.institute
-3. Go to: https://elevateforhumanity.institute/lms/dashboard
+1. Login: https://www.elevateforhumanity.org/login
+2. Email: test@www.elevateforhumanity.org
+3. Go to: https://www.elevateforhumanity.org/lms/dashboard
 4. ✅ Should see enrolled program
 
 ---
 
 ## Key URLs
 
-- **Login (for everyone):** https://elevateforhumanity.institute/login
-- **Admin Dashboard:** https://elevateforhumanity.institute/admin
-- **Student Dashboard:** https://elevateforhumanity.institute/lms/dashboard
-- **Programs Page:** https://elevateforhumanity.institute/programs
+- **Login (for everyone):** https://www.elevateforhumanity.org/login
+- **Admin Dashboard:** https://www.elevateforhumanity.org/admin
+- **Student Dashboard:** https://www.elevateforhumanity.org/lms/dashboard
+- **Programs Page:** https://www.elevateforhumanity.org/programs
 - **Supabase Auth:** https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/auth/users
 - **Supabase SQL:** https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/sql/new
 

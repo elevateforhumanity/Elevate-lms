@@ -5,7 +5,7 @@
 **Provider:** Elevate for Humanity  
 **Contact:** elevate4humanityedu@gmail.com  
 **Phone:** (317) 314-3757  
-**Website:** elevateforhumanity.institute  
+**Website:** www.elevateforhumanity.org  
 
 ---
 
@@ -301,7 +301,7 @@ For questions about this submission or any programs:
 **Elevate for Humanity**  
 Email: elevate4humanityedu@gmail.com  
 Phone: (317) 314-3757  
-Website: elevateforhumanity.institute
+Website: www.elevateforhumanity.org
 
 **ETPL Coordinator:** [Name]  
 **Direct Line:** [Phone]  

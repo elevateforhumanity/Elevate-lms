@@ -12,12 +12,12 @@
 
 **Domains Added:**
 1. ✅ `elevateforhumanity.org`
-   - Redirect: `elevateforhumanity.institute`
+   - Redirect: `www.elevateforhumanity.org`
    - Status Code: 308 (Permanent)
    - Verified: Yes
 
 2. ✅ `www.elevateforhumanity.org`
-   - Redirect: `elevateforhumanity.institute`
+   - Redirect: `www.elevateforhumanity.org`
    - Status Code: 308 (Permanent)
    - Verified: Yes
 
@@ -25,7 +25,7 @@
 ```json
 {
   "name": "elevateforhumanity.org",
-  "redirect": "elevateforhumanity.institute",
+  "redirect": "www.elevateforhumanity.org",
   "redirectStatusCode": 308,
   "verified": true
 }
@@ -135,7 +135,7 @@ curl -I https://elevateforhumanity.org/
 **Expected:**
 ```
 HTTP/2 308 Permanent Redirect
-location: https://elevateforhumanity.institute/
+location: https://www.elevateforhumanity.org/
 ```
 
 **Test 2: WWW Subdomain**
@@ -145,7 +145,7 @@ curl -I https://www.elevateforhumanity.org/
 **Expected:**
 ```
 HTTP/2 308 Permanent Redirect
-location: https://elevateforhumanity.institute/
+location: https://www.elevateforhumanity.org/
 ```
 
 **Test 3: Deep Link with Path**
@@ -155,7 +155,7 @@ curl -I https://elevateforhumanity.org/programs/cna
 **Expected:**
 ```
 HTTP/2 308 Permanent Redirect
-location: https://elevateforhumanity.institute/programs/cna
+location: https://www.elevateforhumanity.org/programs/cna
 ```
 
 **Test 4: Path with Query String**
@@ -165,7 +165,7 @@ curl -I https://elevateforhumanity.org/apply?ref=google&utm_source=test
 **Expected:**
 ```
 HTTP/2 308 Permanent Redirect
-location: https://elevateforhumanity.institute/apply?ref=google&utm_source=test
+location: https://www.elevateforhumanity.org/apply?ref=google&utm_source=test
 ```
 
 ---
@@ -179,16 +179,16 @@ location: https://elevateforhumanity.institute/apply?ref=google&utm_source=test
 ### Step 1: Update Site URL
 
 **Current:** (check your Supabase settings)  
-**New:** `https://elevateforhumanity.institute`
+**New:** `https://www.elevateforhumanity.org`
 
 ### Step 2: Add Redirect URLs
 
 **Add these to the whitelist:**
 ```
-https://elevateforhumanity.institute/**
-https://elevateforhumanity.institute/auth/callback
-https://elevateforhumanity.institute/auth/confirm
-https://elevateforhumanity.institute/login
+https://www.elevateforhumanity.org/**
+https://www.elevateforhumanity.org/auth/callback
+https://www.elevateforhumanity.org/auth/confirm
+https://www.elevateforhumanity.org/login
 ```
 
 **Keep temporarily (for transition):**
@@ -222,7 +222,7 @@ grep -r "elevateforhumanity.org" .env* app/ components/ lib/
 **Step 1: Add New Property**
 1. Go to: https://search.google.com/search-console
 2. Click "Add Property"
-3. Enter: `https://elevateforhumanity.institute`
+3. Enter: `https://www.elevateforhumanity.org`
 4. Verify ownership (DNS TXT record or HTML file)
 
 **Step 2: Change of Address**

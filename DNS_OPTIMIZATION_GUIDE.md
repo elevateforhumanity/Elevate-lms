@@ -1,4 +1,4 @@
-# DNS Optimization Guide for elevateforhumanity.institute
+# DNS Optimization Guide for www.elevateforhumanity.org
 
 ## Current Status
 ✅ Domain is working correctly
@@ -12,14 +12,14 @@
 
 **Current Configuration:**
 ```
-elevateforhumanity.institute
+www.elevateforhumanity.org
   Type: A
   Values: 216.150.16.129, 216.150.1.65
 ```
 
 **Recommended Configuration:**
 ```
-elevateforhumanity.institute
+www.elevateforhumanity.org
   Type: A
   Value: 76.76.21.21
 ```
@@ -32,14 +32,14 @@ elevateforhumanity.institute
 
 **Current Configuration:**
 ```
-www.elevateforhumanity.institute
+www.www.elevateforhumanity.org
   Type: A
   Values: 216.150.16.193, 216.150.1.65
 ```
 
 **Recommended Configuration:**
 ```
-www.elevateforhumanity.institute
+www.www.elevateforhumanity.org
   Type: CNAME
   Value: cname.vercel-dns.com
 ```
@@ -55,7 +55,7 @@ www.elevateforhumanity.institute
 1. **Go to Vercel Dashboard**
    - Visit: https://vercel.com/selfish2/elevate-lms/settings/domains
 
-2. **Click on "elevateforhumanity.institute"**
+2. **Click on "www.elevateforhumanity.org"**
    - You'll see DNS configuration
 
 3. **Update A Record**
@@ -85,17 +85,17 @@ www.elevateforhumanity.institute
 vercel login
 
 # List current DNS records
-vercel dns ls elevateforhumanity.institute
+vercel dns ls www.elevateforhumanity.org
 
 # Remove old A records
-vercel dns rm elevateforhumanity.institute @ A
-vercel dns rm elevateforhumanity.institute www A
+vercel dns rm www.elevateforhumanity.org @ A
+vercel dns rm www.elevateforhumanity.org www A
 
 # Add new A record for root domain
-vercel dns add elevateforhumanity.institute @ A 76.76.21.21
+vercel dns add www.elevateforhumanity.org @ A 76.76.21.21
 
 # Add CNAME for www
-vercel dns add elevateforhumanity.institute www CNAME cname.vercel-dns.com
+vercel dns add www.elevateforhumanity.org www CNAME cname.vercel-dns.com
 ```
 
 ---
@@ -130,22 +130,22 @@ After making changes, verify with these commands:
 
 ```bash
 # Check root domain A record
-curl -s "https://dns.google/resolve?name=elevateforhumanity.institute&type=A" | python3 -m json.tool
+curl -s "https://dns.google/resolve?name=www.elevateforhumanity.org&type=A" | python3 -m json.tool
 
 # Expected output:
 # "data": "76.76.21.21"
 
 # Check www CNAME record
-curl -s "https://dns.google/resolve?name=www.elevateforhumanity.institute&type=CNAME" | python3 -m json.tool
+curl -s "https://dns.google/resolve?name=www.www.elevateforhumanity.org&type=CNAME" | python3 -m json.tool
 
 # Expected output:
 # "data": "cname.vercel-dns.com."
 
 # Test website still works
-curl -I https://elevateforhumanity.institute/
+curl -I https://www.elevateforhumanity.org/
 # Should return: HTTP/2 200
 
-curl -I https://www.elevateforhumanity.institute/
+curl -I https://www.www.elevateforhumanity.org/
 # Should return: HTTP/2 308 (redirect to non-www)
 ```
 
@@ -155,14 +155,14 @@ curl -I https://www.elevateforhumanity.institute/
 
 ### Before Changes:
 ```
-elevateforhumanity.institute → 216.150.16.129 (old IP)
-www.elevateforhumanity.institute → 216.150.16.193 (old IP)
+www.elevateforhumanity.org → 216.150.16.129 (old IP)
+www.www.elevateforhumanity.org → 216.150.16.193 (old IP)
 ```
 
 ### After Changes:
 ```
-elevateforhumanity.institute → 76.76.21.21 (new IP)
-www.elevateforhumanity.institute → cname.vercel-dns.com → 76.76.21.21
+www.elevateforhumanity.org → 76.76.21.21 (new IP)
+www.www.elevateforhumanity.org → cname.vercel-dns.com → 76.76.21.21
 ```
 
 ### Performance Impact:
@@ -179,13 +179,13 @@ www.elevateforhumanity.institute → cname.vercel-dns.com → 76.76.21.21
 
 1. **Check DNS propagation:**
    ```bash
-   curl -s "https://dns.google/resolve?name=elevateforhumanity.institute&type=A" | python3 -m json.tool
+   curl -s "https://dns.google/resolve?name=www.elevateforhumanity.org&type=A" | python3 -m json.tool
    ```
 
 2. **Revert to old IPs if needed:**
    ```bash
-   vercel dns add elevateforhumanity.institute @ A 216.150.16.129
-   vercel dns add elevateforhumanity.institute @ A 216.150.1.65
+   vercel dns add www.elevateforhumanity.org @ A 216.150.16.129
+   vercel dns add www.elevateforhumanity.org @ A 216.150.1.65
    ```
 
 3. **Wait 30 minutes for TTL to expire**
@@ -194,15 +194,15 @@ www.elevateforhumanity.institute → cname.vercel-dns.com → 76.76.21.21
 
 1. **Verify CNAME is correct:**
    ```bash
-   curl -s "https://dns.google/resolve?name=www.elevateforhumanity.institute&type=CNAME" | python3 -m json.tool
+   curl -s "https://dns.google/resolve?name=www.www.elevateforhumanity.org&type=CNAME" | python3 -m json.tool
    ```
 
 2. **Check next.config.mjs redirect is still active:**
    ```javascript
    {
      source: '/:path*',
-     has: [{ type: 'host', value: 'www.elevateforhumanity.institute' }],
-     destination: 'https://elevateforhumanity.institute/:path*',
+     has: [{ type: 'host', value: 'www.www.elevateforhumanity.org' }],
+     destination: 'https://www.elevateforhumanity.org/:path*',
      permanent: true,
    }
    ```
@@ -230,7 +230,7 @@ www.elevateforhumanity.institute → cname.vercel-dns.com → 76.76.21.21
 ## Current DNS Configuration (Before Changes)
 
 ```
-Domain: elevateforhumanity.institute
+Domain: www.elevateforhumanity.org
 Nameservers: ns1.vercel-dns.com, ns2.vercel-dns.com
 Managed By: Vercel
 
@@ -251,7 +251,7 @@ Records:
 ## Recommended DNS Configuration (After Changes)
 
 ```
-Domain: elevateforhumanity.institute
+Domain: www.elevateforhumanity.org
 Nameservers: ns1.vercel-dns.com, ns2.vercel-dns.com
 Managed By: Vercel
 

@@ -2,7 +2,7 @@
 
 **Date:** 2026-01-08 00:16 UTC  
 **Status:** ✅ FULLY OPERATIONAL  
-**Redirect:** elevateforhumanity.org → elevateforhumanity.institute
+**Redirect:** elevateforhumanity.org → www.elevateforhumanity.org
 
 ---
 
@@ -32,7 +32,7 @@ curl -I https://elevateforhumanity.org/
 ```
 ```
 HTTP/2 308 Permanent Redirect ✅
-location: https://elevateforhumanity.institute/ ✅
+location: https://www.elevateforhumanity.org/ ✅
 ```
 
 **Test 2: WWW Subdomain**
@@ -41,7 +41,7 @@ curl -I https://www.elevateforhumanity.org/
 ```
 ```
 HTTP/2 308 Permanent Redirect ✅
-location: https://elevateforhumanity.institute/ ✅
+location: https://www.elevateforhumanity.org/ ✅
 ```
 
 **Test 3: Path Preservation**
@@ -50,7 +50,7 @@ curl -I https://elevateforhumanity.org/programs/cna
 ```
 ```
 HTTP/2 308 Permanent Redirect ✅
-location: https://elevateforhumanity.institute/programs/cna ✅
+location: https://www.elevateforhumanity.org/programs/cna ✅
 ```
 
 **Test 4: Query String Preservation**
@@ -59,7 +59,7 @@ curl -I https://elevateforhumanity.org/apply?ref=google&utm_source=test
 ```
 ```
 HTTP/2 308 Permanent Redirect ✅
-location: https://elevateforhumanity.institute/apply?ref=google&utm_source=test ✅
+location: https://www.elevateforhumanity.org/apply?ref=google&utm_source=test ✅
 ```
 
 ---
@@ -69,7 +69,7 @@ location: https://elevateforhumanity.institute/apply?ref=google&utm_source=test 
 ```
 https://elevateforhumanity.org/ → SSL Valid ✅
 https://www.elevateforhumanity.org/ → SSL Valid ✅
-https://elevateforhumanity.institute/ → SSL Valid ✅
+https://www.elevateforhumanity.org/ → SSL Valid ✅
 ```
 
 **Vercel auto-provisioned SSL certificates for all domains.**
@@ -109,14 +109,14 @@ https://elevateforhumanity.institute/ → SSL Valid ✅
 
 **Site URL:**
 ```
-Change to: https://elevateforhumanity.institute
+Change to: https://www.elevateforhumanity.org
 ```
 
 **Redirect URLs (add these):**
 ```
-https://elevateforhumanity.institute/**
-https://elevateforhumanity.institute/auth/callback
-https://elevateforhumanity.institute/auth/confirm
+https://www.elevateforhumanity.org/**
+https://www.elevateforhumanity.org/auth/callback
+https://www.elevateforhumanity.org/auth/confirm
 ```
 
 **Keep temporarily:**
@@ -130,7 +130,7 @@ https://elevateforhumanity.org/** (for 30 days)
 
 **Step 1: Add New Property**
 1. Go to: https://search.google.com/search-console
-2. Add property: `https://elevateforhumanity.institute`
+2. Add property: `https://www.elevateforhumanity.org`
 3. Verify ownership
 
 **Step 2: Change of Address**

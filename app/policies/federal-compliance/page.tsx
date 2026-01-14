@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Federal Compliance Policy | Elevate for Humanity',
   description: 'Compliance with federal education regulations including FERPA, Title IX, ADA, and WIOA.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/federal-compliance',
+    canonical: 'https://www.elevateforhumanity.org/policies/federal-compliance',
   },
 };
 
@@ -155,8 +155,8 @@ export default function FederalCompliancePage() {
               Report compliance concerns through:
             </p>
             <ul className="list-disc pl-6 mb-6 text-black space-y-2">
-              <li><strong>Compliance Officer:</strong> compliance@elevateforhumanity.institute</li>
-              <li><strong>Title IX Coordinator:</strong> titleix@elevateforhumanity.institute</li>
+              <li><strong>Compliance Officer:</strong> compliance@www.elevateforhumanity.org</li>
+              <li><strong>Title IX Coordinator:</strong> titleix@www.elevateforhumanity.org</li>
               <li><strong>Anonymous Hotline:</strong> (317) 314-3757 ext. 999</li>
               <li><strong>Online Form:</strong> Available in student/employee portal</li>
             </ul>
@@ -199,9 +199,9 @@ export default function FederalCompliancePage() {
               For compliance questions or concerns:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Compliance Officer:</strong> compliance@elevateforhumanity.institute</li>
-              <li><strong>Title IX Coordinator:</strong> titleix@elevateforhumanity.institute</li>
-              <li><strong>ADA Coordinator:</strong> ada@elevateforhumanity.institute</li>
+              <li><strong>Compliance Officer:</strong> compliance@www.elevateforhumanity.org</li>
+              <li><strong>Title IX Coordinator:</strong> titleix@www.elevateforhumanity.org</li>
+              <li><strong>ADA Coordinator:</strong> ada@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</li>
             </ul>

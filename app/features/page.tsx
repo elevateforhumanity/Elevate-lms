@@ -14,7 +14,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/features',
+    canonical: 'https://www.elevateforhumanity.org/features',
   },
   title: 'Platform Features | Elevate For Humanity',
   description:

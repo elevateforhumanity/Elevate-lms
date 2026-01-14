@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   description:
     'Manage student education records, privacy compliance, and data protection under FERPA',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/ferpa',
+    canonical: 'https://www.elevateforhumanity.org/ferpa',
   },
 };
 

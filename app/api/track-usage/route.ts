@@ -22,15 +22,15 @@ import { logger } from '@/lib/logger';
 
 const getOfficialDomains = () => {
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute';
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
   const domain = siteUrl
     .replace('https://', '')
     .replace('http://', '')
     .split('/')[0];
   return [
     domain,
-    'elevateforhumanity.institute',
-    'www.elevateforhumanity.institute',
+    'www.elevateforhumanity.org',
+    'www.www.elevateforhumanity.org',
     'localhost',
     'vercel.app',
   ];
@@ -141,7 +141,7 @@ async function sendAlertEmail(data: {
 
     Legal contacts:
     - IP Attorney: [YOUR ATTORNEY]
-    - DMCA Agent: legal@elevateforhumanity.institute
+    - DMCA Agent: legal@www.elevateforhumanity.org
   `;
 
   logger.info('[ALERT EMAIL]', emailContent);
@@ -152,8 +152,8 @@ async function sendAlertEmail(data: {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   await sgMail.send({
-    to: 'elizabeth@elevateforhumanity.institute',
-    from: 'alerts@elevateforhumanity.institute',
+    to: 'elizabeth@www.elevateforhumanity.org',
+    from: 'alerts@www.elevateforhumanity.org',
     subject: '🚨 URGENT: Unauthorized Site Copy Detected',
     text: emailContent,
     html: emailContent.replace(/\n/g, '<br>')

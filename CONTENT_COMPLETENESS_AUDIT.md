@@ -208,11 +208,11 @@ The only incomplete pages are dashboard/portal features that are intentionally u
 Visit these pages to confirm completeness:
 
 **Main Pages:**
-- https://elevateforhumanity.institute/
-- https://elevateforhumanity.institute/about
-- https://elevateforhumanity.institute/programs
-- https://elevateforhumanity.institute/apply
-- https://elevateforhumanity.institute/employer
+- https://www.elevateforhumanity.org/
+- https://www.elevateforhumanity.org/about
+- https://www.elevateforhumanity.org/programs
+- https://www.elevateforhumanity.org/apply
+- https://www.elevateforhumanity.org/employer
 
 **Test Features:**
 - Submit application form at /apply

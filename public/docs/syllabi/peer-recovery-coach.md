@@ -187,7 +187,7 @@ To apply for state certification, candidates must:
 ## Contact Information
 
 **Elevate for Humanity**  
-Website: elevateforhumanity.institute  
+Website: www.elevateforhumanity.org  
 Email: elevate4humanityedu@gmail.com  
 Phone: (317) 314-3757
 

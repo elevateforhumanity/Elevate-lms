@@ -50,7 +50,7 @@
 ## ✅ Domain & Redirects
 
 ### Primary Domain
-- **Primary:** elevateforhumanity.institute
+- **Primary:** www.elevateforhumanity.org
 - **Netlify URL:** thunderous-axolotl-89d28d.netlify.app
 
 ### Redirect Rules (6 total)
@@ -58,7 +58,7 @@
 **1. .org → .institute (HTTPS)**
 ```toml
 from = "https://elevateforhumanity.org/*"
-to = "https://elevateforhumanity.institute/:splat"
+to = "https://www.elevateforhumanity.org/:splat"
 status = 301
 force = true
 ```
@@ -67,7 +67,7 @@ force = true
 **2. www.org → .institute (HTTPS)**
 ```toml
 from = "https://www.elevateforhumanity.org/*"
-to = "https://elevateforhumanity.institute/:splat"
+to = "https://www.elevateforhumanity.org/:splat"
 status = 301
 force = true
 ```
@@ -76,7 +76,7 @@ force = true
 **3. .org → .institute (HTTP)**
 ```toml
 from = "http://elevateforhumanity.org/*"
-to = "https://elevateforhumanity.institute/:splat"
+to = "https://www.elevateforhumanity.org/:splat"
 status = 301
 force = true
 ```
@@ -85,7 +85,7 @@ force = true
 **4. www.org → .institute (HTTP)**
 ```toml
 from = "http://www.elevateforhumanity.org/*"
-to = "https://elevateforhumanity.institute/:splat"
+to = "https://www.elevateforhumanity.org/:splat"
 status = 301
 force = true
 ```
@@ -93,8 +93,8 @@ force = true
 
 **5. www.institute → institute**
 ```toml
-from = "https://www.elevateforhumanity.institute/*"
-to = "https://elevateforhumanity.institute/:splat"
+from = "https://www.www.elevateforhumanity.org/*"
+to = "https://www.elevateforhumanity.org/:splat"
 status = 301
 force = true
 ```

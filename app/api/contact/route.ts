@@ -121,7 +121,7 @@ async function sendEmailNotification(data: z.infer<typeof ContactSchema>) {
     const resend = new Resend(resendApiKey);
 
     await resend.emails.send({
-      from: 'Elevate for Humanity <noreply@elevateforhumanity.institute>',
+      from: 'Elevate for Humanity <noreply@www.elevateforhumanity.org>',
       to: 'elevate4humanityedu@gmail.com',
       subject: `New Inquiry from ${data.name}`,
       html: `
@@ -133,7 +133,7 @@ async function sendEmailNotification(data: z.infer<typeof ContactSchema>) {
         ${data.role ? `<p><strong>Role:</strong> ${data.role}</p>` : ''}
         <p><strong>Message:</strong><br>${data.message}</p>
         <hr>
-        <p><em>Submitted from elevateforhumanity.institute</em></p>
+        <p><em>Submitted from www.elevateforhumanity.org</em></p>
       `,
     });
   } catch (error: unknown) {

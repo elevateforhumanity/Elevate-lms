@@ -1,7 +1,7 @@
 # Caching Diagnostic Report
 
 **Date:** 2026-01-08 00:00 UTC  
-**Domain:** elevateforhumanity.institute  
+**Domain:** www.elevateforhumanity.org  
 **Issue:** Seeing old version with CSS background-image
 
 ---
@@ -25,13 +25,13 @@ The "old version" you're seeing is because:
 ### Test 1: WWW Domain Redirect
 
 ```bash
-curl -I https://www.elevateforhumanity.institute/
+curl -I https://www.www.elevateforhumanity.org/
 ```
 
 **Result:**
 ```
 HTTP/2 308 Permanent Redirect
-location: https://elevateforhumanity.institute/
+location: https://www.elevateforhumanity.org/
 cache-control: public, s-maxage=0, must-revalidate
 x-vercel-id: iad1::kwsj5-1767830394515-04746f1b27da
 ```
@@ -47,7 +47,7 @@ x-vercel-id: iad1::kwsj5-1767830394515-04746f1b27da
 ### Test 2: Apex Domain (Production)
 
 ```bash
-curl -I https://elevateforhumanity.institute/
+curl -I https://www.elevateforhumanity.org/
 ```
 
 **Result:**
@@ -72,7 +72,7 @@ x-vercel-id: iad1::iad1::47hzs-1767830400047-904756f9a461
 
 ### Test 3: Current Production Deployment
 
-**Deployment serving elevateforhumanity.institute:**
+**Deployment serving www.elevateforhumanity.org:**
 ```
 ID: dpl_BfqaWNLs1qQyN2YaTyLZtR9Y6QJA
 URL: https://elevate-j2gk1jfvy-selfish2.vercel.app
@@ -81,8 +81,8 @@ Created: 23:51:52 UTC (9 minutes ago)
 Target: production
 
 Aliases:
-  ✅ https://elevateforhumanity.institute
-  ✅ https://www.elevateforhumanity.institute
+  ✅ https://www.elevateforhumanity.org
+  ✅ https://www.www.elevateforhumanity.org
   ✅ https://elevate-lms-selfish2.vercel.app
   ✅ https://elevate-lms-git-main-selfish2.vercel.app
 ```
@@ -118,7 +118,7 @@ Aliases: Not yet assigned (still building)
 ### Test 5: Service Worker Check
 
 ```bash
-curl -s https://elevateforhumanity.institute/ | grep -i "service.*worker"
+curl -s https://www.elevateforhumanity.org/ | grep -i "service.*worker"
 ```
 
 **Result:** No service worker found
@@ -196,8 +196,8 @@ SOON     - New deployment will auto-promote to production
    - Correct destination
 
 2. **Domain Assignment**
-   - elevateforhumanity.institute → correct deployment
-   - www.elevateforhumanity.institute → correct redirect
+   - www.elevateforhumanity.org → correct deployment
+   - www.www.elevateforhumanity.org → correct redirect
    - All aliases configured
 
 3. **Cache Headers**
@@ -263,7 +263,7 @@ vercel inspect elevate-mglbhtkbc-selfish2.vercel.app --token [TOKEN]
 
 # Look for:
 # Aliases:
-#   ╶ https://elevateforhumanity.institute
+#   ╶ https://www.elevateforhumanity.org
 ```
 
 ---
@@ -274,7 +274,7 @@ vercel inspect elevate-mglbhtkbc-selfish2.vercel.app --token [TOKEN]
 
 **1. Check HTML Source**
 ```bash
-curl -s https://elevateforhumanity.institute/ | grep -A 5 "Hero Background"
+curl -s https://www.elevateforhumanity.org/ | grep -A 5 "Hero Background"
 ```
 
 Should show:
@@ -292,7 +292,7 @@ Should show:
 
 **3. Check Cache Headers**
 ```bash
-curl -I https://elevateforhumanity.institute/ | grep "x-vercel-cache"
+curl -I https://www.elevateforhumanity.org/ | grep "x-vercel-cache"
 ```
 
 Should still show: `x-vercel-cache: MISS` (good)
@@ -308,7 +308,7 @@ cache-control: private, no-cache, no-store, max-age=0, must-revalidate
 age: 0
 x-vercel-cache: MISS
 cf-cache-status: [not present - not using Cloudflare]
-Request URL: https://elevateforhumanity.institute/
+Request URL: https://www.elevateforhumanity.org/
 ```
 
 **Interpretation:**
@@ -319,10 +319,10 @@ Request URL: https://elevateforhumanity.institute/
 ### B. URLs Tested
 
 **Manual typing:**
-- `https://elevateforhumanity.institute/` → Shows current production (old code)
+- `https://www.elevateforhumanity.org/` → Shows current production (old code)
 
 **WWW redirect:**
-- `https://www.elevateforhumanity.institute/` → 308 → `https://elevateforhumanity.institute/`
+- `https://www.www.elevateforhumanity.org/` → 308 → `https://www.elevateforhumanity.org/`
 
 **Both show the same deployment** (as expected)
 

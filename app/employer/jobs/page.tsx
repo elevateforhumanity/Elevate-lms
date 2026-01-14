@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Job Postings | Elevate for Humanity',
   description: 'Manage your job postings',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/employer/jobs',
+    canonical: 'https://www.elevateforhumanity.org/employer/jobs',
   },
 };
 

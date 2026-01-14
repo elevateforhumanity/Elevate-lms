@@ -216,13 +216,13 @@ This uses the existing `/api/health` endpoint and doesn't require the new monito
 ### Test Health Check
 
 ```bash
-curl https://elevateforhumanity.institute/api/health
+curl https://www.elevateforhumanity.org/api/health
 ```
 
 ### Test Monitoring Status (Requires Auth)
 
 ```bash
-curl https://elevateforhumanity.institute/api/admin/monitoring/status \
+curl https://www.elevateforhumanity.org/api/admin/monitoring/status \
   -H "Cookie: your-session-cookie"
 ```
 

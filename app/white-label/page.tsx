@@ -6,7 +6,7 @@ export const metadata = {
   description:
     'License our complete workforce training platform. Multi-tenant SaaS with your branding, WIOA compliance, apprenticeship tracking, and mobile apps included.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/white-label',
+    canonical: 'https://www.elevateforhumanity.org/white-label',
   },
 };
 
@@ -396,10 +396,10 @@ export default function WhiteLabelPage() {
             <p className="text-sm opacity-75">
               Questions? Email us at{' '}
               <a
-                href="mailto:licensing@elevateforhumanity.institute"
+                href="mailto:licensing@www.elevateforhumanity.org"
                 className="underline font-bold"
               >
-                licensing@elevateforhumanity.institute
+                licensing@www.elevateforhumanity.org
               </a>
             </p>
           </div>

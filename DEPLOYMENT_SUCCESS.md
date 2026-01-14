@@ -21,7 +21,7 @@
 - ✅ SSL certificate active
 
 ### Custom Domains (Pending DNS)
-- ⏳ **elevateforhumanity.institute** - DNS propagating
+- ⏳ **www.elevateforhumanity.org** - DNS propagating
 - ⏳ **elevateforhumanity.org** - DNS propagating
 
 **ETA:** 1-24 hours for DNS to fully propagate
@@ -35,7 +35,7 @@
 ✅ HTTP Status: 200 OK
 ✅ Content-Type: text/html; charset=utf-8
 ✅ Title: Elevate for Humanity | Workforce and Education Hub
-✅ Canonical URL: https://elevateforhumanity.institute
+✅ Canonical URL: https://www.elevateforhumanity.org
 ✅ Meta Description: Present
 ✅ Open Graph Tags: Present
 ✅ Twitter Cards: Present
@@ -82,7 +82,7 @@
 - ✅ SSL: Active
 
 ### Domains
-- ✅ Primary domain: elevateforhumanity.institute (configured)
+- ✅ Primary domain: www.elevateforhumanity.org (configured)
 - ✅ Redirect domain: elevateforhumanity.org (configured)
 - ✅ DNS: Configured in Vercel and Durable
 - ⏳ Propagation: In progress
@@ -102,7 +102,7 @@
 
 **Check status:**
 - [https://www.whatsmydns.net](https://www.whatsmydns.net)
-- Enter: elevateforhumanity.institute
+- Enter: www.elevateforhumanity.org
 - Look for: 75.2.60.5
 
 ### 2. SSL Certificates (Automatic)
@@ -138,7 +138,7 @@
 4. ⏳ Update webhooks (Stripe, Supabase)
 
 ### After DNS Propagates
-1. Update Stripe webhook: `https://elevateforhumanity.institute/api/webhooks/stripe`
+1. Update Stripe webhook: `https://www.elevateforhumanity.org/api/webhooks/stripe`
 2. Update Supabase auth URLs
 3. Test both domains thoroughly
 4. Monitor for any issues

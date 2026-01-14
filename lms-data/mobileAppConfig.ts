@@ -26,7 +26,7 @@ export const mobileAppConfig: MobileAppConfig = {
   bundleIdIos: "org.elevateforhumanity.app",
   minVersion: "1.0.0",
   recommendedVersion: "1.0.0",
-  supportEmail: "support@elevateforhumanity.institute",
+  supportEmail: "support@www.elevateforhumanity.org",
   programs: [
     {
       programId: "prog-cna",

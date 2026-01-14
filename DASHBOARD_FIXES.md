@@ -228,7 +228,7 @@ Run this to create test data:
 INSERT INTO profiles (id, email, role, full_name)
 SELECT id, email, 'student', 'Test Student'
 FROM auth.users 
-WHERE email = 'test@elevateforhumanity.institute'
+WHERE email = 'test@www.elevateforhumanity.org'
 ON CONFLICT (id) DO UPDATE SET role = 'student';
 
 -- Create test enrollment
@@ -243,7 +243,7 @@ INSERT INTO enrollments (
   progress_percentage
 )
 SELECT 
-  (SELECT id FROM profiles WHERE email = 'test@elevateforhumanity.institute'),
+  (SELECT id FROM profiles WHERE email = 'test@www.elevateforhumanity.org'),
   (SELECT id FROM programs WHERE is_active = true LIMIT 1),
   'active',
   'workforce',
@@ -253,7 +253,7 @@ SELECT
   25
 WHERE NOT EXISTS (
   SELECT 1 FROM enrollments 
-  WHERE student_id = (SELECT id FROM profiles WHERE email = 'test@elevateforhumanity.institute')
+  WHERE student_id = (SELECT id FROM profiles WHERE email = 'test@www.elevateforhumanity.org')
 );
 
 -- Verify
@@ -265,7 +265,7 @@ SELECT
 FROM enrollments e
 JOIN profiles p ON p.id = e.student_id
 JOIN programs pr ON pr.id = e.program_id
-WHERE p.email = 'test@elevateforhumanity.institute';
+WHERE p.email = 'test@www.elevateforhumanity.org';
 ```
 
 ## Summary

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
     canonical:
-      'https://elevateforhumanity.institute/admin/courses/[id]/quizzes/[quizId]/questions',
+      'https://www.elevateforhumanity.org/admin/courses/[id]/quizzes/[quizId]/questions',
   },
   title: 'Questions | Elevate For Humanity',
   description:

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'WIOA Eligibility Policy | Elevate for Humanity',
   description: 'Workforce Innovation and Opportunity Act eligibility requirements',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/wioa',
+    canonical: 'https://www.elevateforhumanity.org/policies/wioa',
   },
 };
 
@@ -104,7 +104,7 @@ export default function WIOAPage() {
       </p>
       <p>
         <strong>WorkOne Career Center</strong><br />
-        Email: wioa@elevateforhumanity.institute<br />
+        Email: wioa@www.elevateforhumanity.org<br />
         Phone: (317) 314-3757
       </p>
     </article>

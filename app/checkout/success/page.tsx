@@ -93,10 +93,10 @@ function SuccessContent({
             <p className="text-sm text-black">
               Questions? Contact us at{' '}
               <a
-                href="mailto:support@elevateforhumanity.institute"
+                href="mailto:support@www.elevateforhumanity.org"
                 className="text-blue-600 hover:underline"
               >
-                support@elevateforhumanity.institute
+                support@www.elevateforhumanity.org
               </a>{' '}
               or call{' '}
               <a

@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 type Params = Promise<{ slug: string }>;
 
-const SITE_URL = 'https://elevateforhumanity.institute';
+const SITE_URL = 'https://www.elevateforhumanity.org';
 
 
 // Load program from JSON file or TypeScript data
@@ -71,13 +71,13 @@ export async function generateMetadata({
     title: `${program.name} | Free Training | Elevate for Humanity`,
     description: program.shortDescription,
     alternates: {
-      canonical: `https://elevateforhumanity.institute/programs/${slug}`,
+      canonical: `https://www.elevateforhumanity.org/programs/${slug}`,
     },
     openGraph: {
       title: program.name,
       description: program.shortDescription,
       type: 'website',
-      url: `https://elevateforhumanity.institute/programs/${slug}`,
+      url: `https://www.elevateforhumanity.org/programs/${slug}`,
     },
   };
 }

@@ -16,7 +16,7 @@ https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/auth/url-configurati
 ```
 
 **Update:**
-- **Site URL:** Change to `https://elevateforhumanity.institute`
+- **Site URL:** Change to `https://www.elevateforhumanity.org`
 - Click **Save**
 
 ---
@@ -27,7 +27,7 @@ https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/auth/url-configurati
 
 **Add to Redirect URLs:**
 ```
-https://elevateforhumanity.institute/**
+https://www.elevateforhumanity.org/**
 ```
 
 **Keep temporarily (for transition period):**
@@ -50,23 +50,23 @@ https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/auth/templates
 
 #### Confirm Signup
 - Look for any `elevateforhumanity.org` URLs
-- Replace with `elevateforhumanity.institute`
+- Replace with `www.elevateforhumanity.org`
 
 #### Invite User
 - Look for any `elevateforhumanity.org` URLs
-- Replace with `elevateforhumanity.institute`
+- Replace with `www.elevateforhumanity.org`
 
 #### Magic Link
 - Look for any `elevateforhumanity.org` URLs
-- Replace with `elevateforhumanity.institute`
+- Replace with `www.elevateforhumanity.org`
 
 #### Reset Password
 - Look for any `elevateforhumanity.org` URLs
-- Replace with `elevateforhumanity.institute`
+- Replace with `www.elevateforhumanity.org`
 
 #### Change Email Address
 - Look for any `elevateforhumanity.org` URLs
-- Replace with `elevateforhumanity.institute`
+- Replace with `www.elevateforhumanity.org`
 
 **Save each template after updating**
 
@@ -83,7 +83,7 @@ https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/settings/api
 
 **Add:**
 ```
-https://elevateforhumanity.institute
+https://www.elevateforhumanity.org
 ```
 
 **Keep temporarily:**
@@ -115,7 +115,7 @@ https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/settings/api
 
 1. **Sign Up Test:**
    ```
-   Visit: https://elevateforhumanity.institute/signup
+   Visit: https://www.elevateforhumanity.org/signup
    Create test account
    Check email for confirmation link
    Verify link uses .institute domain
@@ -123,14 +123,14 @@ https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/settings/api
 
 2. **Sign In Test:**
    ```
-   Visit: https://elevateforhumanity.institute/signin
+   Visit: https://www.elevateforhumanity.org/signin
    Sign in with test account
    Verify successful authentication
    ```
 
 3. **Password Reset Test:**
    ```
-   Visit: https://elevateforhumanity.institute/forgot-password
+   Visit: https://www.elevateforhumanity.org/forgot-password
    Request password reset
    Check email for reset link
    Verify link uses .institute domain
@@ -140,7 +140,7 @@ https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/settings/api
 
 1. Open browser DevTools (F12)
 2. Go to Console tab
-3. Visit: https://elevateforhumanity.institute
+3. Visit: https://www.elevateforhumanity.org
 4. Look for any CORS errors or authentication errors
 5. Should see no errors related to Supabase
 
@@ -200,10 +200,10 @@ If you encounter problems after updating:
 ## Common Issues and Solutions
 
 ### Issue: "Invalid redirect URL" error
-**Solution:** Ensure `https://elevateforhumanity.institute/**` is in Redirect URLs with the `/**` wildcard
+**Solution:** Ensure `https://www.elevateforhumanity.org/**` is in Redirect URLs with the `/**` wildcard
 
 ### Issue: CORS errors in browser console
-**Solution:** Add `https://elevateforhumanity.institute` to allowed origins in API settings
+**Solution:** Add `https://www.elevateforhumanity.org` to allowed origins in API settings
 
 ### Issue: Email links still use .org domain
 **Solution:** Update email templates and save each one individually

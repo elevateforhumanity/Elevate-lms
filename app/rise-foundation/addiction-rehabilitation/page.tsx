@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Addiction Rehabilitation | Rise Forward Foundation',
   description: 'Support and resources for addiction recovery and rehabilitation',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/rise-foundation/addiction-rehabilitation',
+    canonical: 'https://www.elevateforhumanity.org/rise-foundation/addiction-rehabilitation',
   },
 };
 

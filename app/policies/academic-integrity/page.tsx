@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Academic Integrity Policy | Elevate for Humanity',
   description: 'Standards for honest academic work, prohibited behaviors, and consequences for violations of academic integrity.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/academic-integrity',
+    canonical: 'https://www.elevateforhumanity.org/policies/academic-integrity',
   },
 };
 
@@ -114,7 +114,7 @@ export default function AcademicIntegrityPage() {
               Students, instructors, and staff who suspect academic integrity violations should report them promptly:
             </p>
             <ul className="list-disc pl-6 mb-6 text-black space-y-2">
-              <li>Email: academicintegrity@elevateforhumanity.institute</li>
+              <li>Email: academicintegrity@www.elevateforhumanity.org</li>
               <li>Phone: (317) 314-3757</li>
               <li>In-person: Visit the Academic Affairs office</li>
               <li>Anonymous reporting available through student portal</li>
@@ -152,7 +152,7 @@ export default function AcademicIntegrityPage() {
               For questions about this policy or specific situations:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> academicintegrity@elevateforhumanity.institute</li>
+              <li><strong>Email:</strong> academicintegrity@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</li>
             </ul>

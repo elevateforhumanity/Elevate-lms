@@ -23,7 +23,7 @@ Vercel creates automatic preview URLs for:
 **In `app/robots.ts`:**
 ```typescript
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://elevateforhumanity.institute';
+  const baseUrl = 'https://www.elevateforhumanity.org';
   const isProduction = process.env.VERCEL_ENV === 'production';
 
   // Block all crawling on preview/development environments
@@ -60,7 +60,7 @@ Disallow: /
 
 **Check production:**
 ```bash
-curl https://elevateforhumanity.institute/robots.txt
+curl https://www.elevateforhumanity.org/robots.txt
 
 # Should show:
 User-agent: *
@@ -174,7 +174,7 @@ async redirects() {
           value: '.*\\.vercel\\.app',
         },
       ],
-      destination: 'https://elevateforhumanity.institute/:path*',
+      destination: 'https://www.elevateforhumanity.org/:path*',
       permanent: true,
     },
     // ...
@@ -336,7 +336,7 @@ After configuration:
 ```bash
 curl -I https://your-project.vercel.app/
 # Should show: HTTP/2 308
-# Location: https://elevateforhumanity.institute/
+# Location: https://www.elevateforhumanity.org/
 ```
 
 ### Still Indexed by Google?

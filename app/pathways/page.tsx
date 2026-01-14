@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'Explore career pathways in healthcare, skilled trades, business, and transportation. See course progressions, certifications, salaries, and career options. Free training with WIOA funding.',
   keywords: 'career pathways Indianapolis, job training programs, CNA training, HVAC training, CDL training, barber apprenticeship, tax preparation training, career progression, free job training',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/pathways',
+    canonical: 'https://www.elevateforhumanity.org/pathways',
   },
 };
 

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/cookies',
+    canonical: 'https://www.elevateforhumanity.org/cookies',
   },
   title: 'Cookie Policy | Elevate For Humanity',
   description:
@@ -171,10 +171,10 @@ export default function CookiesPage() {
               <p className="text-black">
                 Email:{' '}
                 <a
-                  href="mailto:info@elevateforhumanity.institute"
+                  href="mailto:info@www.elevateforhumanity.org"
                   className="text-brand-blue-600 hover:underline"
                 >
-                  info@elevateforhumanity.institute
+                  info@www.elevateforhumanity.org
                 </a>
               </p>
             </div>

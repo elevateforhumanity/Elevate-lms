@@ -1,6 +1,6 @@
 # Cache Headers Audit Report
 **Date:** January 8, 2026  
-**Site:** https://elevateforhumanity.institute  
+**Site:** https://www.elevateforhumanity.org  
 **Auditor:** Ona AI Agent
 
 ---
@@ -291,7 +291,7 @@ export const revalidate = 300; // 5 minutes
 1. Edit `next.config.mjs`
 2. Change homepage cache headers
 3. Deploy to Vercel
-4. Test with `curl -I https://elevateforhumanity.institute/`
+4. Test with `curl -I https://www.elevateforhumanity.org/`
 
 ### Phase 2: Add Dynamic Page Caching (10 minutes)
 1. Add cache headers for all pages
@@ -309,7 +309,7 @@ export const revalidate = 300; // 5 minutes
 
 ### Before Fix:
 ```bash
-curl -I https://elevateforhumanity.institute/
+curl -I https://www.elevateforhumanity.org/
 # Look for:
 # cdn-cache-control: public, s-maxage=0, must-revalidate  ❌
 # x-vercel-cache: MISS  ❌
@@ -317,7 +317,7 @@ curl -I https://elevateforhumanity.institute/
 
 ### After Fix:
 ```bash
-curl -I https://elevateforhumanity.institute/
+curl -I https://www.elevateforhumanity.org/
 # Look for:
 # cdn-cache-control: public, s-maxage=60, stale-while-revalidate=3600  ✅
 # x-vercel-cache: HIT  ✅

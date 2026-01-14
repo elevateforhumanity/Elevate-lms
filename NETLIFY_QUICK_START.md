@@ -27,8 +27,8 @@ NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
 NEXTAUTH_SECRET=
-NEXTAUTH_URL=https://elevateforhumanity.institute
-NEXT_PUBLIC_SITE_URL=https://elevateforhumanity.institute
+NEXTAUTH_URL=https://www.elevateforhumanity.org
+NEXT_PUBLIC_SITE_URL=https://www.elevateforhumanity.org
 STRIPE_SECRET_KEY=
 STRIPE_PUBLISHABLE_KEY=
 STRIPE_WEBHOOK_SECRET=
@@ -55,7 +55,7 @@ Netlify will automatically detect the push and start building.
 
 **Stripe Webhook:**
 1. Go to [Stripe Dashboard](https://dashboard.stripe.com/webhooks)
-2. Update endpoint URL to: `https://elevateforhumanity.institute/api/webhooks/stripe`
+2. Update endpoint URL to: `https://www.elevateforhumanity.org/api/webhooks/stripe`
 3. Copy new webhook secret
 4. Update `STRIPE_WEBHOOK_SECRET` in Netlify environment variables
 
@@ -68,7 +68,7 @@ Netlify will automatically detect the push and start building.
 **If using custom domain:**
 
 1. Netlify Dashboard > Domain Settings > Add custom domain
-2. Add: `elevateforhumanity.institute`
+2. Add: `www.elevateforhumanity.org`
 3. Configure DNS at your registrar:
 
 ```
@@ -103,7 +103,7 @@ Go to Supabase Dashboard > Authentication > URL Configuration
 
 Update redirect URLs:
 - Old: `https://your-vercel-domain.vercel.app/**`
-- New: `https://elevateforhumanity.institute/**`
+- New: `https://www.elevateforhumanity.org/**`
 
 ## 🚨 Common Issues
 

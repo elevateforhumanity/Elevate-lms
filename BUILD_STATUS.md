@@ -141,7 +141,7 @@ pnpm run build
 3. Status should be: ✅ Published
 
 ### Deploy URL
-- **Production**: https://elevateforhumanity.institute
+- **Production**: https://www.elevateforhumanity.org
 - **Preview**: https://deploy-preview-[PR#]--elevateforhumanity.netlify.app
 
 ---
@@ -244,15 +244,15 @@ pnpm run build
 ### Verification Steps:
 ```bash
 # 1. Check homepage
-curl -I https://elevateforhumanity.institute
+curl -I https://www.elevateforhumanity.org
 # Should return: HTTP/2 200
 
 # 2. Check student portal
-curl -I https://elevateforhumanity.institute/student-portal
+curl -I https://www.elevateforhumanity.org/student-portal
 # Should return: HTTP/2 200
 
 # 3. Check program holder
-curl -I https://elevateforhumanity.institute/program-holder
+curl -I https://www.elevateforhumanity.org/program-holder
 # Should return: HTTP/2 200
 ```
 
@@ -261,7 +261,7 @@ curl -I https://elevateforhumanity.institute/program-holder
 ## Next Steps After Successful Build
 
 ### 1. Verify Deployment
-- [ ] Visit https://elevateforhumanity.institute
+- [ ] Visit https://www.elevateforhumanity.org
 - [ ] Check all major pages load
 - [ ] Test user flows (login, enrollment, etc.)
 - [ ] Verify no console errors

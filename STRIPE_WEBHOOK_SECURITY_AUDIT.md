@@ -685,9 +685,9 @@ curl -X POST http://localhost:3000/api/webhooks/stripe \
 
 **Production:**
 ```
-https://elevateforhumanity.institute/api/webhooks/stripe
-https://elevateforhumanity.institute/api/donations/webhook
-https://elevateforhumanity.institute/api/store/webhook
+https://www.elevateforhumanity.org/api/webhooks/stripe
+https://www.elevateforhumanity.org/api/donations/webhook
+https://www.elevateforhumanity.org/api/store/webhook
 ```
 
 **Events to listen for:**

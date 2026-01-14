@@ -28,7 +28,7 @@
 - app/updates/2026/01/program-calendar/page.tsx
 
 **Result:**
-- Vercel now shows only `elevateforhumanity.institute`
+- Vercel now shows only `www.elevateforhumanity.org`
 - Single canonical domain for SEO
 - Consistent metadata across all pages
 
@@ -156,12 +156,12 @@ VERCEL_GIT_COMMIT=1c47e2b09746f3386ac2173245e2a79999a119f1
 #### 1. Domain Configuration
 ```bash
 # Test canonical URL
-curl -s https://elevateforhumanity.institute/ | grep canonical
-# Should show: <link rel="canonical" href="https://elevateforhumanity.institute/" />
+curl -s https://www.elevateforhumanity.org/ | grep canonical
+# Should show: <link rel="canonical" href="https://www.elevateforhumanity.org/" />
 
 # Test sitemap
-curl -s https://elevateforhumanity.institute/robots.txt
-# Should show: Sitemap: https://elevateforhumanity.institute/sitemap.xml
+curl -s https://www.elevateforhumanity.org/robots.txt
+# Should show: Sitemap: https://www.elevateforhumanity.org/sitemap.xml
 ```
 
 #### 2. Header Styling
@@ -249,7 +249,7 @@ curl -s https://elevateforhumanity.institute/robots.txt
 
 ### Immediate
 1. ✅ Monitor build completion
-2. ✅ Verify deployment at elevateforhumanity.institute
+2. ✅ Verify deployment at www.elevateforhumanity.org
 3. ✅ Test header styling
 4. ✅ Test mobile responsiveness
 

@@ -1,6 +1,6 @@
 # Middleware & Edge Runtime Audit Report
 **Date:** January 8, 2026  
-**Site:** https://elevateforhumanity.institute  
+**Site:** https://www.elevateforhumanity.org  
 **Auditor:** Ona AI Agent
 
 ---
@@ -65,9 +65,9 @@ export function middleware(req: NextRequest) {
   const host = req.headers.get("host") || "";
   const url = req.nextUrl;
 
-  const CANONICAL = "elevateforhumanity.institute";
+  const CANONICAL = "www.elevateforhumanity.org";
 
-  const isWww = host === "www.elevateforhumanity.institute";
+  const isWww = host === "www.www.elevateforhumanity.org";
   const isVercel = host.endsWith(".vercel.app");
 
   if ((isWww || isVercel) && host !== CANONICAL) {
@@ -428,15 +428,15 @@ export function middleware(req: NextRequest) {
 
 ```bash
 # Test www redirect
-curl -I https://www.elevateforhumanity.institute/
-# Should: 308 redirect to https://elevateforhumanity.institute/
+curl -I https://www.www.elevateforhumanity.org/
+# Should: 308 redirect to https://www.elevateforhumanity.org/
 
 # Test Vercel redirect
 curl -I https://elevate-xxx.vercel.app/
-# Should: 308 redirect to https://elevateforhumanity.institute/
+# Should: 308 redirect to https://www.elevateforhumanity.org/
 
 # Test static assets (should NOT run middleware)
-curl -I https://elevateforhumanity.institute/images/logo.png
+curl -I https://www.elevateforhumanity.org/images/logo.png
 # Should: 200 OK (no redirect)
 ```
 
@@ -444,11 +444,11 @@ curl -I https://elevateforhumanity.institute/images/logo.png
 
 ```bash
 # Test edge API route
-curl https://elevateforhumanity.institute/api/calendar
+curl https://www.elevateforhumanity.org/api/calendar
 # Should: Fast response (<100ms)
 
 # Check response headers
-curl -I https://elevateforhumanity.institute/api/calendar
+curl -I https://www.elevateforhumanity.org/api/calendar
 # Look for: x-vercel-cache, x-edge-runtime
 ```
 

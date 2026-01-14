@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     'Welcome to Selfish Inc. Your Partner in Mental Wellness and Holistic Healing',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/rise-foundation',
+    canonical: 'https://www.elevateforhumanity.org/rise-foundation',
   },
   openGraph: {
     title: 'Rise Forward Foundation - Mental Wellness',
     description: 'Your partner in mental wellness and holistic healing.',
-    url: 'https://elevateforhumanity.institute/rise-foundation',
+    url: 'https://www.elevateforhumanity.org/rise-foundation',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Rise Foundation' }],
     type: 'website',

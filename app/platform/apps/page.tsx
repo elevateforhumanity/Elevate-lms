@@ -6,7 +6,7 @@ import { ArrowLeft, Check, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/platform/apps',
+    canonical: 'https://www.elevateforhumanity.org/platform/apps',
   },
   title: 'Platform Apps & Modules | Elevate For Humanity',
   description:

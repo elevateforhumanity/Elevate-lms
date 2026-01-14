@@ -117,7 +117,7 @@ Hi [Student Name],
 
 Your enrollment is complete! Here's how to get started:
 
-1. Log in: https://elevateforhumanity.institute/login
+1. Log in: https://www.elevateforhumanity.org/login
 2. Access your courses
 3. Complete each course
 4. Upload your credentials

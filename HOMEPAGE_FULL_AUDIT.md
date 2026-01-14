@@ -75,12 +75,12 @@ export const revalidate = 3600; // Revalidate every hour
 14:   title: 'Elevate for Humanity | Workforce and Education Hub',
 15:   description: 'A workforce and education hub...',
 19:   alternates: {
-20:     canonical: 'https://elevateforhumanity.institute',
+20:     canonical: 'https://www.elevateforhumanity.org',
 21:   },
 22:   openGraph: {
 23:     title: 'Elevate for Humanity | Workforce and Education Hub',
 24:     description: '...',
-25:     url: 'https://elevateforhumanity.institute',
+25:     url: 'https://www.elevateforhumanity.org',
 26:     siteName: 'Elevate for Humanity',
 27:     images: [{
 28:       url: '/images/homepage/og-image.png',
@@ -122,7 +122,7 @@ twitter: {
 41:   '@context': 'https://schema.org',
 42:   '@type': 'EducationalOrganization',
 43:   name: 'Elevate for Humanity',
-44:   url: 'https://elevateforhumanity.institute',
+44:   url: 'https://www.elevateforhumanity.org',
 45:   description: 'Free, funded workforce training programs...',
 46:   address: {
 47:     '@type': 'PostalAddress',
@@ -142,8 +142,8 @@ twitter: {
 **Recommendation:**
 ```tsx
 telephone: '+1-XXX-XXX-XXXX',
-email: 'info@elevateforhumanity.institute',
-logo: 'https://elevateforhumanity.institute/logo.png',
+email: 'info@www.elevateforhumanity.org',
+logo: 'https://www.elevateforhumanity.org/logo.png',
 sameAs: [
   'https://facebook.com/...',
   'https://linkedin.com/...',

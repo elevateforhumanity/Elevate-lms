@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Compliance Documentation | Elevate for Humanity Store',
   description: 'Complete compliance documentation for WIOA, FERPA, WCAG, and grant reporting. Enterprise-grade workforce training platform.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/store/compliance',
+    canonical: 'https://www.elevateforhumanity.org/store/compliance',
   },
 };
 

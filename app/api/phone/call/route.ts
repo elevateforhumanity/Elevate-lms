@@ -119,7 +119,7 @@ async function handleVoicemail(phoneNumber: string, message: string) {
 async function notifyTeam(callbackData: Record<string, any>) {
   // Send email notification
   // await sendEmail({
-  //   to: "team@elevateforhumanity.institute",
+  //   to: "team@www.elevateforhumanity.org",
   //   subject: "New Callback Request",
   //   body: `Phone: ${callbackData.phone_number}\nMessage: ${callbackData.message}`
   // });

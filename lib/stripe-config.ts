@@ -25,7 +25,7 @@ export function getStripeServerConfig() {
     appInfo: {
       name: 'Elevate for Humanity',
       version: '2.0.0',
-      url: 'https://elevateforhumanity.institute',
+      url: 'https://www.elevateforhumanity.org',
     },
   });
 }

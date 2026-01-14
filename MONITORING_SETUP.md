@@ -34,7 +34,7 @@ Complete on-site monitoring system for real-time platform health, performance, a
 
 ### Access
 
-**URL:** `https://elevateforhumanity.institute/admin/monitoring`
+**URL:** `https://www.elevateforhumanity.org/admin/monitoring`
 
 **Requirements:**
 - Must be logged in
@@ -634,7 +634,7 @@ Run migration to create `audit_logs` table:
 - Auto-refresh capability
 - Mobile responsive
 
-**Access:** `https://elevateforhumanity.institute/admin/monitoring`
+**Access:** `https://www.elevateforhumanity.org/admin/monitoring`
 
 **Requirements:** Admin authentication
 

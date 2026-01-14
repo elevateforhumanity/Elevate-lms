@@ -8,7 +8,7 @@ export const revalidate = 86400; // 24 hours
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/partners',
+    canonical: 'https://www.elevateforhumanity.org/partners',
   },
   title: 'Our Partners | Elevate For Humanity',
   description:
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Our Partners - Elevate for Humanity',
     description: 'Explore our training and employer partners for career growth opportunities.',
-    url: 'https://elevateforhumanity.institute/partners',
+    url: 'https://www.elevateforhumanity.org/partners',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Our Partners' }],
     type: 'website',

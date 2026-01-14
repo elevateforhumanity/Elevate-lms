@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Student Code of Conduct | Elevate for Humanity',
   description: 'Expected behaviors, prohibited conduct, and disciplinary procedures for students.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/student-code',
+    canonical: 'https://www.elevateforhumanity.org/policies/student-code',
   },
 };
 
@@ -170,7 +170,7 @@ export default function StudentCodePage() {
             </p>
             <ul className="list-disc pl-6 mb-6 text-black space-y-2">
               <li>Students, staff, or instructors</li>
-              <li>Email: studentconduct@elevateforhumanity.institute</li>
+              <li>Email: studentconduct@www.elevateforhumanity.org</li>
               <li>Phone: (317) 314-3757</li>
               <li>In-person to any staff member</li>
               <li>Anonymous reporting through student portal</li>
@@ -316,7 +316,7 @@ export default function StudentCodePage() {
               For questions or to report conduct violations:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> studentconduct@elevateforhumanity.institute</li>
+              <li><strong>Email:</strong> studentconduct@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM EST</li>
               <li><strong>Emergency:</strong> Call 911, then (317) 314-3757 ext. 911</li>

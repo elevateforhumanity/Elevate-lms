@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Admissions Policy | Elevate for Humanity',
   description: 'Requirements, procedures, and guidelines for program enrollment and admission to Elevate for Humanity training programs.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/policies/admissions',
+    canonical: 'https://www.elevateforhumanity.org/policies/admissions',
   },
 };
 
@@ -287,11 +287,11 @@ export default function AdmissionsPage() {
               For questions about admissions or to start your application:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>Email:</strong> admissions@elevateforhumanity.institute</li>
+              <li><strong>Email:</strong> admissions@www.elevateforhumanity.org</li>
               <li><strong>Phone:</strong> (317) 314-3757</li>
               <li><strong>Office Hours:</strong> Monday-Friday, 8:00 AM - 6:00 PM EST</li>
               <li><strong>Location:</strong> 123 Main Street, Indianapolis, IN 46204</li>
-              <li><strong>Apply Online:</strong> <a href="/apply" className="text-blue-600 hover:underline">elevateforhumanity.institute/apply</a></li>
+              <li><strong>Apply Online:</strong> <a href="/apply" className="text-blue-600 hover:underline">www.elevateforhumanity.org/apply</a></li>
             </ul>
 
             <div className="bg-blue-50 border-l-4 border-blue-400 p-6 mt-8">

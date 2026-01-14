@@ -151,7 +151,7 @@ Become the go-to person who keeps buildings running! Learn plumbing basics, elec
 ## Contact Information
 
 **Elevate for Humanity**  
-Website: elevateforhumanity.institute  
+Website: www.elevateforhumanity.org  
 Phone: (317) 314-3757
 
 ---

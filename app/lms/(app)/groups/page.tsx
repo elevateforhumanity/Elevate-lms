@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
-  alternates: { canonical: 'https://elevateforhumanity.institute/lms/groups' },
+  alternates: { canonical: 'https://www.elevateforhumanity.org/lms/groups' },
   title: 'Study Groups | LMS | Elevate For Humanity',
   description: 'Join study groups and collaborate with fellow learners.',
 };

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'About VITA | Free Tax Prep',
   description: 'Learn about the Volunteer Income Tax Assistance program and how it helps families.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/vita/about',
+    canonical: 'https://www.elevateforhumanity.org/vita/about',
   },
 };
 

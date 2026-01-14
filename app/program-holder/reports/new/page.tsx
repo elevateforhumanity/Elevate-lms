@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: 'New Report | Program Holder Portal',
   description: 'Submit a new compliance report',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/program-holder/reports/new',
+    canonical: 'https://www.elevateforhumanity.org/program-holder/reports/new',
   },
 };
 
@@ -216,10 +216,10 @@ export default async function NewReportPage() {
                   <strong>Note:</strong> Report submission is currently handled
                   manually. Please contact support at{' '}
                   <a
-                    href="mailto:program-holders@elevateforhumanity.institute"
+                    href="mailto:program-holders@www.elevateforhumanity.org"
                     className="underline"
                   >
-                    program-holders@elevateforhumanity.institute
+                    program-holders@www.elevateforhumanity.org
                   </a>{' '}
                   to submit your report.
                 </p>

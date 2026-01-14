@@ -164,8 +164,8 @@ export default function StudentPrivacyPage() {
                 </p>
                 <p className="text-sm text-black">
                   To request access to your records or file a complaint, contact:{' '}
-                  <a href="mailto:ferpa@elevateforhumanity.institute" className="text-blue-600 hover:underline">
-                    ferpa@elevateforhumanity.institute
+                  <a href="mailto:ferpa@www.elevateforhumanity.org" className="text-blue-600 hover:underline">
+                    ferpa@www.elevateforhumanity.org
                   </a>
                 </p>
               </div>
@@ -178,7 +178,7 @@ export default function StudentPrivacyPage() {
               You have the right to request deletion of your personal data, subject to legal retention requirements.
             </p>
             <a
-              href="mailto:privacy@elevateforhumanity.institute?subject=Data%20Deletion%20Request"
+              href="mailto:privacy@www.elevateforhumanity.org?subject=Data%20Deletion%20Request"
               className="inline-block bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition"
             >
               Request Data Deletion

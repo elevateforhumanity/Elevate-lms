@@ -33,7 +33,7 @@ All portal pages now return 200 status with proper error handling:
 ## What's Working Right Now
 
 ### Infrastructure ✅
-- Production site live at https://elevateforhumanity.institute
+- Production site live at https://www.elevateforhumanity.org
 - 706 pages building successfully
 - All portal pages accessible
 - No 500 errors
@@ -77,7 +77,7 @@ All portal pages now return 200 status with proper error handling:
 
 **How:**
 1. Sign up for Resend (recommended) or SendGrid
-2. Verify domain: elevateforhumanity.institute
+2. Verify domain: www.elevateforhumanity.org
 3. Get API key
 4. Configure in Supabase dashboard
 5. Add DNS records (SPF, DKIM, DMARC)
@@ -108,7 +108,7 @@ All portal pages now return 200 status with proper error handling:
 ```bash
 # Test all portal pages
 for url in /instructor/courses /creator/analytics /employer/postings; do
-  curl -s -o /dev/null -w "$url: %{http_code}\n" https://elevateforhumanity.institute$url
+  curl -s -o /dev/null -w "$url: %{http_code}\n" https://www.elevateforhumanity.org$url
 done
 
 # Check build
@@ -225,7 +225,7 @@ vercel env add RESEND_API_KEY
 - **Latest Commit:** Check `git log --oneline -1`
 
 ### Production
-- **URL:** https://elevateforhumanity.institute
+- **URL:** https://www.elevateforhumanity.org
 - **Platform:** Vercel
 - **Database:** Supabase
 

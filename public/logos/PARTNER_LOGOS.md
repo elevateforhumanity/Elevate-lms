@@ -104,7 +104,7 @@ partnership. Could you please provide:
 2. Brand guidelines for logo usage
 3. Any specific requirements for display
 
-Our website: https://elevateforhumanity.institute
+Our website: https://www.elevateforhumanity.org
 
 Thank you for your partnership!
 

@@ -195,7 +195,7 @@ psql "postgresql://postgres:[password]@db.<project-ref>.supabase.co:5432/postgre
 - Docs: https://supabase.com/docs/guides/platform/security
 
 **Internal Security Officer:**
-- Email: security@elevateforhumanity.institute
+- Email: security@www.elevateforhumanity.org
 - Phone: (317) 314-3757
 
 ---

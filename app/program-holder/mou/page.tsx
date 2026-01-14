@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/program-holder/mou',
+    canonical: 'https://www.elevateforhumanity.org/program-holder/mou',
   },
   title: 'Program Holder MOU | Elevate For Humanity',
   description:

@@ -9,12 +9,12 @@ The `/admin/login` page **intentionally redirects** to `/login`. This is not a c
 ## Solution: Use the Correct URL
 
 ### ❌ DON'T USE:
-- `https://elevateforhumanity.institute/admin/login`
-- `https://elevateforhumanity.institute/admin` (when not logged in)
+- `https://www.elevateforhumanity.org/admin/login`
+- `https://www.elevateforhumanity.org/admin` (when not logged in)
 
 ### ✅ USE INSTEAD:
-1. **Login here:** `https://elevateforhumanity.institute/login`
-2. **Then go to:** `https://elevateforhumanity.institute/admin`
+1. **Login here:** `https://www.elevateforhumanity.org/login`
+2. **Then go to:** `https://www.elevateforhumanity.org/admin`
 
 ---
 
@@ -38,13 +38,13 @@ SELECT email, role FROM profiles WHERE email = 'YOUR_EMAIL@example.com';
 
 ### 2. Login
 
-Go to: **https://elevateforhumanity.institute/login**
+Go to: **https://www.elevateforhumanity.org/login**
 
 Enter your credentials and login.
 
 ### 3. Access Admin
 
-After logging in, go to: **https://elevateforhumanity.institute/admin**
+After logging in, go to: **https://www.elevateforhumanity.org/admin**
 
 Should work now!
 
@@ -130,7 +130,7 @@ User → /admin/login → /login → /admin/login → /login (loop) ❌
 
 ### Test 1: Check if you're logged in
 ```bash
-# Open browser console (F12) on elevateforhumanity.institute
+# Open browser console (F12) on www.elevateforhumanity.org
 # Run:
 document.cookie
 # Should see session cookies if logged in

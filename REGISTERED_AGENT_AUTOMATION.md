@@ -264,7 +264,7 @@ Mail arrives → Scan document → OCR text extraction → Classify document typ
      
      await sendEmail({
        to: client.forwarding_email,
-       from: 'documents@elevateforhumanity.institute',
+       from: 'documents@www.elevateforhumanity.org',
        subject: `Registered Agent Document: ${document.document_type}`,
        html: `
          <p>Document received on ${document.received_date}</p>

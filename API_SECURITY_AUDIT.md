@@ -102,7 +102,7 @@ async headers() {
     {
       source: '/api/:path*',
       headers: [
-        { key: 'Access-Control-Allow-Origin', value: 'https://elevateforhumanity.institute' },
+        { key: 'Access-Control-Allow-Origin', value: 'https://www.elevateforhumanity.org' },
         { key: 'Access-Control-Allow-Methods', value: 'GET,POST,PUT,DELETE,OPTIONS' },
         { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization' },
       ],
@@ -348,11 +348,11 @@ const event = stripe.webhooks.constructEvent(body, signature, secret);
 ### 📞 Contacts
 
 **Security Issues:**
-- Email: security@elevateforhumanity.institute
+- Email: security@www.elevateforhumanity.org
 - Phone: (317) 314-3757 (24/7)
 
 **API Questions:**
-- Email: dev@elevateforhumanity.institute
+- Email: dev@www.elevateforhumanity.org
 
 ---
 

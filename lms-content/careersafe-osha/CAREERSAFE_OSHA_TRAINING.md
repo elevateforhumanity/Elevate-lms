@@ -676,7 +676,7 @@ CEO, Elevate for Humanity
 - **Organization:** Elevate for Humanity Training Center
 - **Address:** 8888 Keystone Crossing, Indianapolis, IN 46240
 - **Phone:** (317) 314-3757
-- **Website:** elevateforhumanity.institute
+- **Website:** www.elevateforhumanity.org
 
 ---
 

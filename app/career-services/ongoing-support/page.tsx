@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     'Lifetime career support for all graduates. Career coaching, alumni networking, advancement opportunities, job search assistance, and professional development resources.',
   keywords: ['career support', 'alumni services', 'career coaching', 'professional development', 'career advancement', 'job search help', 'lifetime support'],
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/career-services/ongoing-support',
+    canonical: 'https://www.elevateforhumanity.org/career-services/ongoing-support',
   },
 };
 
@@ -271,7 +271,7 @@ export default function OngoingSupportPage() {
     {
       question: 'How do I access ongoing support?',
       answer:
-        'Contact us via email at careers@elevateforhumanity.institute, call our career services line, or log into the alumni portal to schedule an appointment. We respond within 24 hours.',
+        'Contact us via email at careers@www.elevateforhumanity.org, call our career services line, or log into the alumni portal to schedule an appointment. We respond within 24 hours.',
     },
     {
       question: 'What if I graduated years ago?',

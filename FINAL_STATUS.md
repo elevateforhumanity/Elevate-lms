@@ -19,7 +19,7 @@
 
 ### 2. Domain Configuration
 
-#### elevateforhumanity.institute
+#### www.elevateforhumanity.org
 - ✅ Registered with: Vercel
 - ✅ DNS configured in Vercel:
   - A record: @ → 75.2.60.5 (Netlify)
@@ -36,9 +36,9 @@
 - ✅ SSL: Auto-provisioning after DNS propagates
 
 ### 3. Redirects Configured
-- ✅ elevateforhumanity.org → elevateforhumanity.institute
-- ✅ www.elevateforhumanity.org → elevateforhumanity.institute
-- ✅ www.elevateforhumanity.institute → elevateforhumanity.institute
+- ✅ elevateforhumanity.org → www.elevateforhumanity.org
+- ✅ www.elevateforhumanity.org → www.elevateforhumanity.org
+- ✅ www.www.elevateforhumanity.org → www.elevateforhumanity.org
 - ✅ HTTP → HTTPS (automatic)
 
 ### 4. Code Changes
@@ -64,7 +64,7 @@
 
 ### DNS Propagation (1-24 hours)
 Both domains are propagating:
-- elevateforhumanity.institute
+- www.elevateforhumanity.org
 - elevateforhumanity.org
 
 **Check status:**
@@ -101,15 +101,15 @@ Current deployment building with latest changes.
 ### After DNS Propagates (Custom Domains)
 
 **Primary domain:**
-- [ ] Visit: [https://elevateforhumanity.institute](https://elevateforhumanity.institute)
+- [ ] Visit: [https://www.elevateforhumanity.org](https://www.elevateforhumanity.org)
 - [ ] SSL certificate active
 - [ ] All features work
 
 **Redirect domain:**
 - [ ] Visit: [http://elevateforhumanity.org](http://elevateforhumanity.org)
-- [ ] Redirects to: [https://elevateforhumanity.institute](https://elevateforhumanity.institute)
+- [ ] Redirects to: [https://www.elevateforhumanity.org](https://www.elevateforhumanity.org)
 - [ ] Visit: [http://www.elevateforhumanity.org](http://www.elevateforhumanity.org)
-- [ ] Redirects to: [https://elevateforhumanity.institute](https://elevateforhumanity.institute)
+- [ ] Redirects to: [https://www.elevateforhumanity.org](https://www.elevateforhumanity.org)
 
 ---
 
@@ -120,16 +120,16 @@ Current deployment building with latest changes.
 
 1. Go to [Stripe Dashboard > Webhooks](https://dashboard.stripe.com/webhooks)
 2. Find your webhook endpoint
-3. Update URL to: `https://elevateforhumanity.institute/api/webhooks/stripe`
+3. Update URL to: `https://www.elevateforhumanity.org/api/webhooks/stripe`
 4. If webhook secret changes, update `STRIPE_WEBHOOK_SECRET` in Netlify
 
 ### 2. Update Supabase Auth URLs
 **When:** After DNS propagates and SSL is active
 
 1. Go to [Supabase Dashboard > Authentication > URL Configuration](https://supabase.com/dashboard)
-2. Update Site URL: `https://elevateforhumanity.institute`
+2. Update Site URL: `https://www.elevateforhumanity.org`
 3. Add redirect URLs:
-   - `https://elevateforhumanity.institute/**`
+   - `https://www.elevateforhumanity.org/**`
    - `https://thunderous-axolotl-89d28d.netlify.app/**`
 
 ### 3. Update OAuth Providers (if applicable)
@@ -172,7 +172,7 @@ Your migration is complete when:
 - ✅ Site loads on thunderous-axolotl-89d28d.netlify.app
 - ✅ DNS propagates for both domains
 - ✅ SSL certificates issued for both domains
-- ✅ elevateforhumanity.institute loads correctly
+- ✅ www.elevateforhumanity.org loads correctly
 - ✅ elevateforhumanity.org redirects to .institute
 - ✅ All webhooks updated
 - ✅ All features tested and working

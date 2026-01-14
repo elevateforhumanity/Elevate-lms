@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Academic Integrity Policy | Elevate for Humanity',
   description: 'Academic honesty, plagiarism policy, and code of conduct',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/academic-integrity',
+    canonical: 'https://www.elevateforhumanity.org/academic-integrity',
   },
 };
 
@@ -384,7 +384,7 @@ export default function AcademicIntegrityPage() {
               <li>• Speak directly with the course instructor</li>
               <li>• Contact the Dean of Students</li>
               <li>• Submit an anonymous report through the student portal</li>
-              <li>• Email: academicintegrity@elevateforhumanity.institute</li>
+              <li>• Email: academicintegrity@www.elevateforhumanity.org</li>
               <li>• Phone: 317-314-3757</li>
             </ul>
             <p className="text-blue-900 text-sm mt-4">
@@ -455,7 +455,7 @@ export default function AcademicIntegrityPage() {
                 Contact Student Services
               </p>
               <a
-                href="mailto:support@elevateforhumanity.institute"
+                href="mailto:support@www.elevateforhumanity.org"
                 className="text-brand-blue-600 hover:text-brand-blue-700 text-sm font-semibold"
               >
                 Email Support →

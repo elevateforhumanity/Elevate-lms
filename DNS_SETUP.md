@@ -1,6 +1,6 @@
 # DNS Setup for Netlify
 
-**Domain:** elevateforhumanity.institute (bought on Vercel)  
+**Domain:** www.elevateforhumanity.org (bought on Vercel)  
 **Netlify Site:** thunderous-axolotl-89d28d.netlify.app  
 **Status:** ✅ Domain added to Netlify, DNS configuration needed
 
@@ -15,7 +15,7 @@ Since you bought the domain on Vercel, you need to update DNS in Vercel's domain
 **Step 1: Go to Vercel Domain Settings**
 1. Log in to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Go to Domains
-3. Find `elevateforhumanity.institute`
+3. Find `www.elevateforhumanity.org`
 4. Click on the domain to manage DNS
 
 **Step 2: Update DNS Records**
@@ -62,13 +62,13 @@ After adding DNS records, verify with:
 
 ```bash
 # Check A record
-dig elevateforhumanity.institute A
+dig www.elevateforhumanity.org A
 
 # Check CNAME record
-dig www.elevateforhumanity.institute CNAME
+dig www.www.elevateforhumanity.org CNAME
 
 # Check if pointing to Netlify
-curl -I https://elevateforhumanity.institute
+curl -I https://www.elevateforhumanity.org
 ```
 
 ## 📋 Domain Registrar Instructions
@@ -99,7 +99,7 @@ curl -I https://elevateforhumanity.institute
 
 These redirects are already set up in `netlify.toml`:
 
-1. ✅ www.elevateforhumanity.institute → elevateforhumanity.institute
+1. ✅ www.www.elevateforhumanity.org → www.elevateforhumanity.org
 
 **Note:** elevateforhumanity.org is separate and hosted on Durable - no redirects configured
 
@@ -108,13 +108,13 @@ These redirects are already set up in `netlify.toml`:
 Once DNS propagates (24-48 hours), test:
 
 ```bash
-# Should redirect to https://elevateforhumanity.institute
-curl -I http://www.elevateforhumanity.institute
+# Should redirect to https://www.elevateforhumanity.org
+curl -I http://www.www.elevateforhumanity.org
 curl -I http://elevateforhumanity.org
 curl -I http://www.elevateforhumanity.org
 
 # Should load site
-curl -I https://elevateforhumanity.institute
+curl -I https://www.elevateforhumanity.org
 ```
 
 ## 📊 Check DNS Propagation Status
@@ -123,7 +123,7 @@ Use these tools to check DNS propagation:
 - [https://www.whatsmydns.net](https://www.whatsmydns.net)
 - [https://dnschecker.org](https://dnschecker.org)
 
-Enter: `elevateforhumanity.institute`
+Enter: `www.elevateforhumanity.org`
 
 ## ⚠️ Important Notes
 
