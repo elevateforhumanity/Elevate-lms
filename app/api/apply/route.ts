@@ -93,7 +93,7 @@ export const POST = withRateLimit(
             <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Funding</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${funding}</td></tr>
             <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Pre-screen</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${eligible ? '✅ Pass' : '⚠️ Manual Review'}</td></tr>
           </table>
-          <p style="margin-top: 20px;"><a href="https://elevateforhumanity.institute/admin/applications" style="background: #10b981; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">View in Admin Dashboard</a></p>
+          <p style="margin-top: 20px;"><a href="https://www.elevateforhumanity.org/admin/applications" style="background: #10b981; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">View in Admin Dashboard</a></p>
         `,
       });
 

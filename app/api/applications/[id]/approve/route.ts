@@ -128,7 +128,7 @@ export async function POST(
           <li>Start your first course</li>
         </ol>
         <p style="margin-top: 20px;">
-          <a href="https://elevateforhumanity.institute/lms/dashboard" 
+          <a href="https://www.elevateforhumanity.org/lms/dashboard" 
              style="background: #10b981; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">
             Go to Student Dashboard
           </a>

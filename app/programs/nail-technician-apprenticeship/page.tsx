@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   keywords:
     'nail technician apprenticeship Indiana, DOL registered apprenticeship, apprenticeship sponsorship, nail tech training Indianapolis, RAPIDS registered, ETPL approved, manicurist apprenticeship',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/programs/nail-technician-apprenticeship',
+    canonical: 'https://www.elevateforhumanity.org/programs/nail-technician-apprenticeship',
   },
 };
 

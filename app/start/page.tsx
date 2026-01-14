@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: 'Find Your Pathway | Start Your Career Training Journey',
   description: 'Take the first step toward a new career. Explore training programs, check eligibility for funding, and connect with employers in Indiana.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/start',
+    canonical: 'https://www.elevateforhumanity.org/start',
   },
 };
 

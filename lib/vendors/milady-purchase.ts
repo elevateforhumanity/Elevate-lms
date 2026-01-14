@@ -371,7 +371,7 @@ async function sendMiladyCredentialsEmail(
   credentials: { username?: string; temporaryPassword?: string; licenseCode?: string },
   programSlug: string
 ) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
   
   const emailHtml = `
 <!DOCTYPE html>

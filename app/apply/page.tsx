@@ -357,7 +357,7 @@ function ApplyLandingPageOld() {
               Call Us: 317-314-3757
             </a>
             <a
-              href="mailto:info@elevateforhumanity.institute"
+              href="mailto:info@elevateforhumanity.org"
               className="inline-flex items-center justify-center px-6 py-3 bg-white border-2 border-slate-300 text-black font-semibold rounded-lg hover:border-slate-400 transition-colors"
             >
               Email Us

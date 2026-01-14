@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     'DOL-registered apprenticeship programs in barbering, cosmetology, esthetics, and nail technology. Earn while you learn with flat-fee pricing. ETPL approved.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/programs/beauty',
+    canonical: 'https://www.elevateforhumanity.org/programs/beauty',
   },
 };
 

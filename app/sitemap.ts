@@ -47,7 +47,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contact',
     '/careers',
     '/employer',
-    '/employers',
     '/employers/apprenticeships',
     '/employers/benefits',
     '/employers/post-job',

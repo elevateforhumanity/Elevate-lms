@@ -327,7 +327,7 @@ export async function POST(req: Request) {
             const barberEmail = getBarberWelcomePaidEmail({
               studentName: firstName || 'Student',
               studentEmail: email,
-              dashboardUrl: 'https://elevateforhumanity.institute/lms/dashboard',
+              dashboardUrl: 'https://www.elevateforhumanity.org/lms/dashboard',
               miladyEnrollmentUrl: 'https://www.miladytraining.com/bundles/barber-apprentice-program',
               requiredHours: enrollmentData?.required_hours || 1500,
               transferHours: enrollmentData?.transfer_hours || 0,
@@ -335,7 +335,7 @@ export async function POST(req: Request) {
             });
 
             await fetch(
-              `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/api/email/send`,
+              `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/api/email/send`,
               {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -350,7 +350,7 @@ export async function POST(req: Request) {
           } else {
             // Generic welcome email for other programs
             await fetch(
-              `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/api/email/send`,
+              `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/api/email/send`,
               {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -363,7 +363,7 @@ export async function POST(req: Request) {
                   <p>Congratulations! Your enrollment in <strong>${programDetails?.name || 'your program'}</strong> is now active.</p>
                   <h3>Next Steps:</h3>
                   <ol>
-                    <li>Log in to your student portal: <a href="https://elevateforhumanity.institute/login">Login Here</a></li>
+                    <li>Log in to your student portal: <a href="https://www.elevateforhumanity.org/login">Login Here</a></li>
                     <li>Complete your student profile</li>
                     <li>Access your course materials</li>
                     <li>Meet your instructor</li>

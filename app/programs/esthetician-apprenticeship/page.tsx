@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   keywords:
     'esthetician apprenticeship Indiana, DOL registered apprenticeship, apprenticeship sponsorship, esthetician training Indianapolis, RAPIDS registered, ETPL approved, skincare apprenticeship',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/programs/esthetician-apprenticeship',
+    canonical: 'https://www.elevateforhumanity.org/programs/esthetician-apprenticeship',
   },
 };
 

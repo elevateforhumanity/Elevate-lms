@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   keywords:
     'cosmetology apprenticeship Indiana, DOL registered apprenticeship, apprenticeship sponsorship, cosmetology training Indianapolis, RAPIDS registered, ETPL approved, beauty school apprenticeship',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute/programs/cosmetology-apprenticeship',
+    canonical: 'https://www.elevateforhumanity.org/programs/cosmetology-apprenticeship',
   },
 };
 
