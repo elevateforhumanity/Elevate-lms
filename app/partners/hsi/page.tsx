@@ -42,7 +42,7 @@ export default function HSIPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="https://hsi.com/solutions/cpr-aed-first-aid-training/elevate-for-humanity-career-training-institute-nts-class-sign-up"
+                  href="https://hsi.com/solutions/cpr-aed-first-aid-training/elevate-for-humanity-career-training-org-nts-class-sign-up"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-blue-600 font-bold rounded-full hover:bg-slate-100 transition-all hover:scale-105 shadow-2xl gap-2"
@@ -234,7 +234,7 @@ export default function HSIPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://hsi.com/solutions/cpr-aed-first-aid-training/elevate-for-humanity-career-training-institute-nts-class-sign-up"
+              href="https://hsi.com/solutions/cpr-aed-first-aid-training/elevate-for-humanity-career-training-org-nts-class-sign-up"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-10 py-5 bg-white text-brand-blue-600 text-xl font-bold rounded-full hover:bg-slate-100 transition-all hover:scale-105 shadow-2xl gap-2"

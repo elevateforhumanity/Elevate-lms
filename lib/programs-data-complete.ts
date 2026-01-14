@@ -509,7 +509,7 @@ export const COMPLETE_PROGRAMS: ProgramData[] = [
     etplApproved: true,
     partnerName: 'Health & Safety Institute (HSI)',
     partnerUrl: 'https://hsi.com',
-    partnerLoginUrl: 'https://hsi.com/solutions/cpr-aed-first-aid-training/elevate-for-humanity-career-training-institute-nts-class-sign-up',
+    partnerLoginUrl: 'https://hsi.com/solutions/cpr-aed-first-aid-training/elevate-for-humanity-career-training-org-nts-class-sign-up',
     certificateUploadEnabled: true,
     cipCode: '51.0904',
     socCode: '29-2099.00',
