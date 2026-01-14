@@ -7,7 +7,6 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 
 export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isHomePage = pathname === '/';
 
   return (
     <div className="min-h-screen flex flex-col [--header-h:72px]">
@@ -15,16 +14,18 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
         Skip to main content
       </a>
       
-      {/* Fixed header on all pages except homepage */}
-      {!isHomePage && (
-        <header className="fixed inset-x-0 top-0 z-[99999] h-[var(--header-h)] bg-white shadow-sm" role="banner">
-          <SiteHeader />
-        </header>
-      )}
+      {/* Fixed header on all pages */}
+      <header 
+        className="fixed inset-x-0 top-0 z-[99999] h-[var(--header-h)] bg-white shadow-sm" 
+        role="banner"
+        style={{ backgroundColor: '#ffffff' }}
+      >
+        <SiteHeader />
+      </header>
 
       <main
         id="main-content"
-        className={`flex-1 ${!isHomePage ? 'pt-[var(--header-h)]' : ''}`}
+        className="flex-1 pt-[var(--header-h)]"
         role="main"
         tabIndex={-1}
       >
