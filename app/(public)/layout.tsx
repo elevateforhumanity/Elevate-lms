@@ -1,19 +1,6 @@
-"use client";
+// Public layout - uses root layout's header/footer via ConditionalLayout
+// This layout is for route grouping only, no additional wrapper needed
 
-import React from 'react';
-import SiteHeader from '@/components/layout/SiteHeader';
-import SiteFooter from '@/components/layout/SiteFooter';
-
-export default function PublicLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <>
-      <SiteHeader />
-      <main id="main-content">{children}</main>
-      <SiteFooter />
-    </>
-  );
+export default function PublicLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }

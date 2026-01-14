@@ -1,6 +1,6 @@
 // config/navigation-clean.ts
-// Clean navigation following developer-ready spec
-// ≤ 6 top-level items, auth-gated dashboards
+// Clean navigation - enrollment focused, consistent across all pages
+// ≤ 6 top-level items for clarity
 
 export type NavItem = {
   label: string;
@@ -12,12 +12,12 @@ export type NavSection = {
   label: string;
   href?: string;
   items?: NavItem[];
-  requiresAuth?: boolean; // New: mark sections that need authentication
+  requiresAuth?: boolean;
 };
 
 /**
- * PUBLIC NAVIGATION - Visible to all users
- * Simple navigation - each item goes to its own landing page
+ * PUBLIC NAVIGATION - Enrollment focused
+ * Consistent across ALL public pages
  */
 export const publicNav: NavSection[] = [
   {
@@ -30,22 +30,11 @@ export const publicNav: NavSection[] = [
       { label: 'Business', href: '/programs/business' },
       { label: 'CDL & Transportation', href: '/programs/cdl-transportation' },
       { label: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
-      { label: 'Apprenticeships', href: '/apprenticeships' },
-      { label: 'Courses', href: '/courses' },
-      { label: 'Credentials', href: '/credentials' },
     ],
   },
   {
-    label: 'Get Started',
-    items: [
-      { label: 'Apply Now', href: '/apply' },
-      { label: 'Check WIOA Eligibility', href: '/wioa-eligibility' },
-      { label: 'How It Works', href: '/how-it-works' },
-      { label: 'Pathways', href: '/pathways' },
-      { label: 'Funding Options', href: '/funding' },
-      { label: 'Orientation', href: '/orientation' },
-      { label: 'Onboarding', href: '/onboarding' },
-    ],
+    label: 'Apprenticeships',
+    href: '/apprenticeships',
   },
   {
     label: 'Services',
@@ -54,70 +43,25 @@ export const publicNav: NavSection[] = [
       { label: 'Job Placement', href: '/career-services/job-placement' },
       { label: 'Resume Building', href: '/career-services/resume-building' },
       { label: 'Interview Prep', href: '/career-services/interview-prep' },
-      { label: 'Career Counseling', href: '/career-services/career-counseling' },
-      { label: 'Advising', href: '/advising' },
-      { label: 'Mentorship', href: '/mentorship' },
-      { label: 'AI Tutor', href: '/ai-tutor' },
-      { label: 'Supersonic Fast Cash', href: '/supersonic-fast-cash' },
       { label: 'Free VITA Tax Prep', href: '/vita' },
-      { label: 'Tax Self Prep', href: '/tax-self-prep' },
     ],
   },
   {
-    label: 'Partners',
+    label: 'Employers',
     items: [
+      { label: 'Hire Our Graduates', href: '/hire-graduates' },
+      { label: 'Employer Portal', href: '/employer' },
       { label: 'Partner With Us', href: '/partners' },
-      { label: 'Employers', href: '/employer' },
-      { label: 'Hire Graduates', href: '/hire-graduates' },
-      { label: 'Workforce Partners', href: '/workforce-partners' },
-      { label: 'Training Providers', href: '/training-providers' },
-      { label: 'Government Agencies', href: '/agencies' },
-      { label: 'Licensing Partnerships', href: '/licensing-partnerships' },
-      { label: 'White Label', href: '/white-label' },
     ],
   },
-  {
-    label: 'Resources',
-    items: [
-      { label: 'Blog', href: '/blog' },
-      { label: 'Success Stories', href: '/success-stories' },
-      { label: 'Webinars', href: '/webinars' },
-      { label: 'Events', href: '/events' },
-      { label: 'Help Center', href: '/help' },
-      { label: 'FAQ', href: '/faq' },
-      { label: 'Student Handbook', href: '/student-handbook' },
-    ],
-  },
-
   {
     label: 'About',
     items: [
       { label: 'About Us', href: '/about' },
-      { label: 'Founder', href: '/founder' },
-      { label: 'Impact', href: '/impact' },
-      { label: 'Team', href: '/team' },
-      { label: 'Careers', href: '/careers' },
+      { label: 'How It Works', href: '/how-it-works' },
+      { label: 'Success Stories', href: '/success-stories' },
       { label: 'Contact', href: '/contact' },
-      { label: 'Locations', href: '/locations' },
-    ],
-  },
-  {
-    label: 'Store',
-    href: '/store',
-  },
-  {
-    label: 'Portals',
-    items: [
-      { label: 'Student Portal', href: '/client-portal' },
-      { label: 'Admin Dashboard', href: '/admin' },
-      { label: 'Staff Portal', href: '/staff-portal' },
-      { label: 'Employer Portal', href: '/employer' },
-      { label: 'Program Holder', href: '/program-holder' },
-      { label: 'Partner Portal', href: '/partner' },
-      { label: 'Workforce Board', href: '/workforce-board' },
-      { label: 'LMS', href: '/lms' },
-      { label: 'Login', href: '/login' },
-      { label: 'Sign Up', href: '/signup' },
+      { label: 'FAQ', href: '/faq' },
     ],
   },
 ];

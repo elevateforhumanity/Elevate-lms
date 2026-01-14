@@ -1,15 +1,6 @@
-"use client";
+// Marketing layout - uses root layout's header/footer via ConditionalLayout
+// This layout is for route grouping only, no additional wrapper needed
 
-import type { ReactNode } from 'react';
-import SiteHeader from '@/components/layout/SiteHeader';
-import SiteFooter from '@/components/layout/SiteFooter';
-
-export default function MarketingLayout({ children }: { children: ReactNode }) {
-  return (
-    <div className="flex min-h-screen flex-col bg-white text-black">
-      <SiteHeader />
-      <main className="flex-1">{children}</main>
-      <SiteFooter />
-    </div>
-  );
+export default function MarketingLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }

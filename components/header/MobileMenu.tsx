@@ -17,9 +17,10 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   items: NavItem[];
+  user?: any;
 }
 
-export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, items, user }: MobileMenuProps) {
   const pathname = usePathname();
   const menuRef = useFocusTrap(isOpen);
 
@@ -54,7 +55,7 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="lg:hidden fixed inset-0 bg-black/50 z-40"
+            className="lg:hidden fixed inset-0 bg-black/50 z-[100000]"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -64,7 +65,7 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="lg:hidden fixed right-0 top-0 bottom-0 w-80 max-w-full bg-white z-50 overflow-y-auto shadow-2xl focus:outline-none"
+            className="lg:hidden fixed right-0 top-0 bottom-0 w-80 max-w-full bg-white z-[100001] overflow-y-auto shadow-2xl focus:outline-none"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation"
@@ -79,6 +80,34 @@ export function MobileMenu({ isOpen, onClose, items }: MobileMenuProps) {
               >
                 <X className="w-6 h-6" />
               </button>
+            </div>
+
+            {/* Primary CTAs at top */}
+            <div className="p-4 border-b border-gray-200 space-y-3">
+              <Link
+                href="/apply"
+                onClick={onClose}
+                className="block w-full text-center px-4 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+              >
+                Apply Now
+              </Link>
+              {user ? (
+                <Link
+                  href="/lms/dashboard"
+                  onClick={onClose}
+                  className="block w-full text-center px-4 py-3 border border-gray-300 text-black font-medium rounded-lg hover:bg-gray-50 transition"
+                >
+                  My Dashboard
+                </Link>
+              ) : (
+                <Link
+                  href="/login"
+                  onClick={onClose}
+                  className="block w-full text-center px-4 py-3 border border-gray-300 text-black font-medium rounded-lg hover:bg-gray-50 transition"
+                >
+                  Login
+                </Link>
+              )}
             </div>
 
             <nav className="px-4 py-6 space-y-4" aria-labelledby="mobile-menu-title">

@@ -4,7 +4,8 @@ import { Resend } from 'resend';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend only if API key is available (prevents build errors)
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 // Calendly webhook events
 interface CalendlyEvent {
@@ -127,12 +128,14 @@ Clarity on fit and a clear recommendation for what to do next.
 Talk soon,
 Ona`;
 
-  await resend.emails.send({
-    from: 'Ona <ona@elevateforhumanity.org>',
-    to: invitee.email,
-    subject: 'Scope confirmation call',
-    text: emailContent,
-  });
+  if (resend) {
+    await resend.emails.send({
+      from: 'Ona <ona@elevateforhumanity.org>',
+      to: invitee.email,
+      subject: 'Scope confirmation call',
+      text: emailContent,
+    });
+  }
 }
 
 // 24-hour reminder email
@@ -217,12 +220,14 @@ UTM Campaign: ${payload.tracking?.utm_campaign || 'N/A'}
 Timestamp: ${new Date().toISOString()}
 `.trim();
 
-  await resend.emails.send({
-    from: 'Elevate Calendly <noreply@elevateforhumanity.org>',
-    to: internalEmail,
-    subject: `Scope Call Booked — ${payload.invitee.name}`,
-    text: emailContent,
-  });
+  if (resend) {
+    await resend.emails.send({
+      from: 'Elevate Calendly <noreply@elevateforhumanity.org>',
+      to: internalEmail,
+      subject: `Scope Call Booked — ${payload.invitee.name}`,
+      text: emailContent,
+    });
+  }
 }
 
 export async function POST(request: NextRequest) {

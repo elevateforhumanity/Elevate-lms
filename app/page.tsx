@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import Image from 'next/image';
-import VideoHeroBanner from '@/components/home/VideoHeroBanner';
+import VideoHeroSection from '@/components/home/VideoHeroSection';
 import Intro from '@/components/home/Intro';
 import Orientation from '@/components/home/Orientation';
 import Testimonials from '@/components/home/Testimonials';
@@ -38,63 +38,8 @@ export const revalidate = 60;
 export default function HomePage() {
   return (
     <>
-      {/* Static Image Hero Banner - loads instantly */}
-      <section className="relative min-h-[500px] md:min-h-[600px] flex items-center">
-        <Image
-          src="/images/artlist/hero-training-1.jpg"
-          alt="Free career training"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-blue-900/70" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 w-full">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-            {/* Left: Core mission */}
-            <div className="max-w-2xl">
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight">
-                Free Career Training
-              </h1>
-              <p className="text-base md:text-lg text-white/90 mb-6 max-w-xl">
-                Healthcare • Skilled Trades • Technology • Business
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href="/apply"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-600 text-base font-bold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
-                >
-                  Apply Now
-                </a>
-                <a
-                  href="/pathways"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-transparent text-white text-base font-bold rounded-xl hover:bg-white/10 transition-colors border-2 border-white"
-                >
-                  View Pathways
-                </a>
-              </div>
-            </div>
-            
-            {/* Right: Program Fit Navigator for institutions */}
-            <div className="hidden lg:block w-80 flex-shrink-0">
-              <ProgramFitNavigator variant="card" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Video Section - loads after hero */}
-      <section className="bg-white py-12">
-        <div className="max-w-5xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">See What We Do</h2>
-          <VideoHeroBanner
-            videoSrc="/videos/hero-home.mp4"
-            headline=""
-            subheadline=""
-            primaryCTA={{ text: "", href: "" }}
-            secondaryCTA={{ text: "", href: "" }}
-          />
-        </div>
-      </section>
+      {/* Video Hero Banner - autoplays on all devices */}
+      <VideoHeroSection />
 
       {/* Features with Your Icon Images */}
       {/* Removed duplicate main tag - ConditionalLayout already provides main#main-content */}
@@ -165,7 +110,7 @@ export default function HomePage() {
       </section>
 
       {/* Geographic Coverage */}
-      <section className="py-12 bg-gradient-to-br from-blue-50 to-white">
+      <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
             Serving Indiana Residents Statewide
@@ -241,7 +186,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 text-center">
+          <div className="bg-gray-50 rounded-2xl p-8 text-center">
             <h3 className="text-2xl font-bold text-black mb-4">
               Industry-Recognized Certifications
             </h3>

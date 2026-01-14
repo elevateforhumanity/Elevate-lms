@@ -4,7 +4,8 @@ import { Resend } from 'resend';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend only if API key is available (prevents build errors)
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 // Internal notification email address
 const INTERNAL_EMAIL = process.env.LEAD_NOTIFICATION_EMAIL || 'ona@elevateforhumanity.org';
@@ -137,7 +138,7 @@ export async function POST(request: NextRequest) {
     const summary = generateBuyerSummary({ ...data, buyerScore });
     
     // Send internal notification email
-    if (process.env.RESEND_API_KEY) {
+    if (resend) {
       try {
         await resend.emails.send({
           from: 'Elevate AI Assistant <noreply@elevateforhumanity.org>',
