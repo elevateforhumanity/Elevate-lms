@@ -47,7 +47,7 @@ export default async function OnboardingPage() {
     <div className="min-h-screen bg-white">
       <section className="relative h-[400px] sm:h-[500px] w-full overflow-hidden bg-white">
         <Image
-          src="/images/efh/hero/hero-main-clean.jpg"
+          src="/images/og-default.jpg"
           alt="Welcome"
           fill
           className="object-cover"

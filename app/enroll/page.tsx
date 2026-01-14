@@ -21,7 +21,7 @@ export default function EnrollPage() {
         accentText="Free Career Training"
         subheadline="No Tuition. No Debt. Start Your New Career Today."
         description="Most students qualify for 100% free training through WIOA, WRG, or JRI funding. We handle all the paperwork and help you every step of the way."
-        imageSrc="/images/efh/hero/hero-main-clean.jpg"
+        imageSrc="/images/og-default.jpg"
         imageAlt="Enroll in Free Training"
         primaryCTA={{ text: "Apply for Free Training", href: "#enrollment" }}
         secondaryCTA={{ text: "Call 317-314-3757", href: "tel:317-314-3757" }}

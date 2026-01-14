@@ -12,7 +12,7 @@ export default function VolunteerPage() {
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
-        <Image src="/images/efh/hero/hero-main-clean.jpg" alt="Volunteer" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} loading="lazy" />
+        <Image src="/images/og-default.jpg" alt="Volunteer" width={800} height={600} className="absolute inset-0 w-full h-full object-cover" quality={85} loading="lazy" />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="max-w-4xl mx-auto px-6 text-center text-white">

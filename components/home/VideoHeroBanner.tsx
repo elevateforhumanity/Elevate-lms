@@ -68,7 +68,7 @@ export default function VideoHeroBanner({
 
   return (
     <section
-      className="relative w-full bg-gradient-to-br from-blue-900 to-purple-900"
+      className="relative w-full bg-black"
       onClick={handleUserInteraction}
     >
       {/* Video Container - Full viewport height */}
@@ -79,25 +79,18 @@ export default function VideoHeroBanner({
           maxHeight: '900px',
         }}
       >
-        {/* Fallback Background - Solid color instead of image */}
-        <div
-          className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-900 to-purple-900 z-0"
-        />
-
-        {/* Video Background */}
-        {!hasError && shouldLoadVideo && (
-          <video
-            ref={videoRef}
-            className="absolute inset-0 w-full h-full object-cover z-[1]"
-            loop
-            muted={!withAudio}
-            playsInline
-            preload="auto"
-            autoPlay
-          >
-            <source src={videoSrc} type="video/mp4" />
-          </video>
-        )}
+        {/* Video Background - loads immediately */}
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover"
+          loop
+          muted={!withAudio}
+          playsInline
+          preload="auto"
+          autoPlay
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
 
         {/* Gradient Overlay - Removed per user request */}
 
@@ -131,12 +124,7 @@ export default function VideoHeroBanner({
           </div>
         </div>
 
-        {/* Loading indicator */}
-        {!isLoaded && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
-            <div className="w-8 h-8 border-4 border-white/20 border-t-white rounded-full animate-spin" />
-          </div>
-        )}
+
 
         {/* Voiceover Audio (autoplays on page load, no loop) */}
         {voiceoverSrc && (
