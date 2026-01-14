@@ -1,219 +1,166 @@
-import { Metadata } from 'next';
-import { Suspense } from 'react';
-import Image from 'next/image';
-import VideoHeroBanner from '@/components/home/VideoHeroBanner';
-import Intro from '@/components/home/Intro';
-import Orientation from '@/components/home/Orientation';
-import Testimonials from '@/components/home/Testimonials';
-import Assurance from '@/components/home/Assurance';
-import Start from '@/components/home/Start';
-
-export const metadata: Metadata = {
-  title: 'Elevate for Humanity | Workforce and Education Hub',
-  description:
-    'A regulated workforce development and credentialing institute connecting students to approved training, recognized credentials, and real career pathways.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org',
-  },
-  openGraph: {
-    title: 'Elevate for Humanity - Free Career Training',
-    description: 'Workforce development connecting students to approved training, credentials, and career pathways.',
-    url: 'https://www.elevateforhumanity.org',
-    siteName: 'Elevate for Humanity',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Elevate for Humanity' }],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Elevate for Humanity - Free Career Training',
-    description: 'Workforce development connecting students to training and career pathways.',
-    images: ['/og-default.jpg'],
-  },
-};
-
-// Use ISR for optimal performance with fresh content
-export const revalidate = 60;
+import Image from "next/image";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <>
-      {/* Video Hero Banner */}
-      <VideoHeroBanner
-        videoSrc="/videos/hero-home.mp4"
-        headline="Free Career Training"
-        subheadline="Healthcare • Skilled Trades • Technology • Business"
-        primaryCTA={{ text: "Apply Now", href: "/apply" }}
-        secondaryCTA={{ text: "View Programs", href: "/programs" }}
-      />
+    <main className="w-full">
 
-      {/* Features with Your Icon Images */}
-      {/* Removed duplicate main tag - ConditionalLayout already provides main#main-content */}
-      <section className="py-8 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-black mb-2 md:mb-4">
-              Why Choose Our Programs
-            </h2>
-            <p className="text-base md:text-xl text-black max-w-3xl mx-auto">
-              Real training, real credentials, real careers
+      {/* HERO */}
+      <section className="relative h-[90vh] w-full overflow-hidden">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/media/hero-poster.jpg"
+        >
+          <source src="/media/hero.mp4" type="video/mp4" />
+        </video>
+
+        <div className="absolute inset-0 bg-black/55" />
+
+        <div className="relative z-10 flex h-full items-center">
+          <div className="mx-auto max-w-6xl px-6 text-white">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              Workforce Infrastructure That Turns Public Funding Into Jobs
+            </h1>
+
+            <p className="mt-6 max-w-3xl text-lg md:text-xl text-gray-200">
+              Elevate for Humanity connects government funding, employer demand,
+              and credential-backed training through a single workforce
+              infrastructure system.
             </p>
-          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-            {[
-              {
-                icon: "/images/icons/dollar.png",
-                title: "100% Free Training",
-                description: "No tuition costs with WIOA, WRG, or DOL funding. Training is completely free for eligible students."
-              },
-              {
-                icon: "/images/icons/users.png",
-                title: "Job Placement Support",
-                description: "Connect with employers hiring our graduates. Resume help, interview prep, and job search assistance included."
-              },
-              {
-                icon: "/images/icons/clock.png",
-                title: "Fast-Track Programs",
-                description: "Complete programs in weeks or months, not years. Get certified and start earning sooner."
-              },
-              {
-                icon: "/images/icons/award.png",
-                title: "Industry Credentials",
-                description: "State licenses, national certifications, DOL-registered apprenticeships. Credentials employers recognize."
-              },
-              {
-                icon: "/images/icons/shield.png",
-                title: "Career Support",
-                description: "Resume building, interview coaching, job matching, and ongoing career counseling throughout your journey."
-              },
-              {
-                icon: "/images/icons/trending-up.png",
-                title: "Multiple Start Dates",
-                description: "Rolling enrollment throughout the year. Apply now to secure your spot in the next available cohort."
-              }
-            ].map((feature, index) => (
-              <div key={index} className="text-center p-3 md:p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
-                <div className="relative w-12 h-12 md:w-20 md:h-20 mx-auto mb-2 md:mb-4">
-                  <Image
-                    src={feature.icon}
-                    alt={feature.title}
-                    fill
-                    priority
-                    className="object-contain"
-                  />
-                </div>
-                <h3 className="text-sm md:text-xl font-bold text-black mb-1 md:mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-xs md:text-base text-black leading-relaxed hidden md:block">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                href="/pathways"
+                className="rounded-md bg-white px-8 py-4 text-black font-semibold hover:bg-gray-200"
+              >
+                Explore Workforce Pathways
+              </Link>
+
+              <Link
+                href="/partners"
+                className="rounded-md border border-white px-8 py-4 font-semibold hover:bg-white hover:text-black"
+              >
+                Partner With Us
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Geographic Coverage */}
-      <section className="py-12 bg-gradient-to-br from-blue-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
-            Serving Indiana Residents Statewide
+      {/* WHAT THIS IS */}
+      <section className="py-20 bg-white">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold">
+            Not a School. Not Just an LMS. Workforce Infrastructure.
           </h2>
-          <p className="text-lg md:text-xl text-black max-w-3xl mx-auto mb-8">
-            With training locations across Indiana and online options, we make career training accessible to all Hoosiers
+
+          <p className="mt-6 text-lg text-gray-700">
+            Elevate for Humanity operates the infrastructure behind modern
+            workforce development—aligning funding, training delivery,
+            credential partners, and employer pipelines into one coordinated
+            system.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-3xl font-black text-blue-600 mb-2">Indianapolis</div>
-              <div className="text-sm text-black">Main Campus</div>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-3xl font-black text-blue-600 mb-2">Fort Wayne</div>
-              <div className="text-sm text-black">Training Center</div>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-3xl font-black text-blue-600 mb-2">Evansville</div>
-              <div className="text-sm text-black">Partner Site</div>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <div className="text-3xl font-black text-blue-600 mb-2">Online</div>
-              <div className="text-sm text-black">Statewide Access</div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Partners & Credentials */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
-              Trusted Partners & Recognized Credentials
-            </h2>
-            <p className="text-lg text-black max-w-3xl mx-auto">
-              We partner with leading organizations to provide industry-recognized training and certifications
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center mb-12">
-            <div className="flex flex-col items-center gap-2">
-              <div className="h-20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-black text-black">WorkOne</div>
-                  <div className="text-xs text-black">Indiana</div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <div className="h-20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-black text-black">Certiport</div>
-                  <div className="text-xs text-black">Testing Center</div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <div className="h-20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-black text-black">WIOA</div>
-                  <div className="text-xs text-black">Approved Provider</div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <div className="h-20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-2xl font-black text-black">ETPL</div>
-                  <div className="text-xs text-black">Listed Programs</div>
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* HOW IT WORKS */}
+      <section className="py-20 bg-gray-50">
+        <div className="mx-auto max-w-6xl px-6 grid gap-12 md:grid-cols-3">
+          <Feature
+            title="Funded Pathways"
+            text="We operationalize WIOA, state grants, justice-impacted funding,
+            and employer reimbursement programs into real, completable pathways."
+            img="/media/workforce-1.jpg"
+          />
 
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold text-black mb-4">
-              Industry-Recognized Certifications
-            </h3>
-            <div className="flex flex-wrap justify-center gap-4 text-sm font-semibold text-black">
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">CompTIA A+</span>
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">CNA Certification</span>
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">HVAC EPA 608</span>
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">CDL Class A</span>
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">QuickBooks Certified</span>
-              <span className="bg-white px-4 py-2 rounded-full shadow-sm">Microsoft Office Specialist</span>
-            </div>
-          </div>
+          <Feature
+            title="Credentialed Training"
+            text="Hybrid and in-person programs aligned with recognized
+            credential partners and industry standards."
+            img="/media/workforce-2.jpg"
+          />
+
+          <Feature
+            title="Employer Alignment"
+            text="Employers plug into ready-made pipelines with hiring incentives
+            and job-ready candidates."
+            img="/media/workforce-3.jpg"
+          />
         </div>
       </section>
 
-      {/* Keep existing sections */}
-      <Intro />
-      <Orientation />
-      <Testimonials />
-      <Assurance />
-      <Start />
-      {/* Removed closing main tag - ConditionalLayout handles it */}
-    </>
+      {/* WHO IT'S FOR */}
+      <section className="py-20 bg-white">
+        <div className="mx-auto max-w-6xl px-6 grid gap-10 md:grid-cols-3 text-center">
+          <Audience
+            title="Jobseekers"
+            text="Access funded, credential-backed training that leads to real jobs."
+          />
+          <Audience
+            title="Employers"
+            text="Build reliable talent pipelines and reduce hiring risk."
+          />
+          <Audience
+            title="Workforce & Government"
+            text="Deploy funding through a compliant, auditable, scalable system."
+          />
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="py-24 bg-black text-white text-center">
+        <h2 className="text-3xl md:text-4xl font-bold">
+          Enter the Workforce Infrastructure
+        </h2>
+
+        <div className="mt-10 flex justify-center gap-4 flex-wrap">
+          <Link
+            href="/apply"
+            className="rounded-md bg-white px-8 py-4 text-black font-semibold"
+          >
+            Start a Workforce Pathway
+          </Link>
+
+          <Link
+            href="/contact"
+            className="rounded-md border border-white px-8 py-4 font-semibold"
+          >
+            Connect as a Partner
+          </Link>
+        </div>
+      </section>
+
+    </main>
+  );
+}
+
+/* Components */
+
+function Feature({ title, text, img }: { title: string; text: string; img: string }) {
+  return (
+    <div className="text-center">
+      <Image
+        src={img}
+        alt={title}
+        width={400}
+        height={260}
+        className="mx-auto rounded-lg object-cover"
+      />
+      <h3 className="mt-6 text-xl font-semibold">{title}</h3>
+      <p className="mt-4 text-gray-700">{text}</p>
+    </div>
+  );
+}
+
+function Audience({ title, text }: { title: string; text: string }) {
+  return (
+    <div>
+      <h3 className="text-xl font-semibold">{title}</h3>
+      <p className="mt-4 text-gray-700">{text}</p>
+    </div>
   );
 }
