@@ -96,6 +96,26 @@ export default async function AdminDashboardOrchestrated() {
     .select('*', { count: 'exact', head: true })
     .eq('status', 'completed');
 
+  // Partner Enrollments
+  const { count: partnerEnrollmentsTotal } = await supabase
+    .from('partner_lms_enrollments')
+    .select('*', { count: 'exact', head: true });
+
+  const { count: partnerEnrollmentsActive } = await supabase
+    .from('partner_lms_enrollments')
+    .select('*', { count: 'exact', head: true })
+    .in('status', ['active', 'enrolled', 'in_progress']);
+
+  // Hybrid/Apprenticeship Enrollments
+  const { count: studentEnrollmentsTotal } = await supabase
+    .from('student_enrollments')
+    .select('*', { count: 'exact', head: true });
+
+  const { count: studentEnrollmentsActive } = await supabase
+    .from('student_enrollments')
+    .select('*', { count: 'exact', head: true })
+    .in('status', ['active', 'enrolled', 'in_progress']);
+
   // Program Holders
   const { count: totalProgramHolders } = await supabase
     .from('profiles')
@@ -282,6 +302,40 @@ export default async function AdminDashboardOrchestrated() {
                 {completedStudents || 0}
               </div>
               <div className="text-xs sm:text-sm text-blue-900">Completed</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Partner & Hybrid Enrollments */}
+        <div className="mb-6 sm:mb-8">
+          <h3 className="text-base sm:text-lg font-bold text-black mb-3 sm:mb-4 flex items-center gap-2">
+            <Building2 className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
+            Partner & Hybrid Enrollments
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="bg-purple-50 rounded-lg shadow-sm border border-purple-200 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-purple-900 mb-1 sm:mb-2">
+                {partnerEnrollmentsTotal || 0}
+              </div>
+              <div className="text-xs sm:text-sm text-purple-900">Partner Total</div>
+            </div>
+            <div className="bg-purple-50 rounded-lg shadow-sm border border-purple-600 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-purple-900 mb-1 sm:mb-2">
+                {partnerEnrollmentsActive || 0}
+              </div>
+              <div className="text-xs sm:text-sm text-purple-900">Partner Active</div>
+            </div>
+            <div className="bg-orange-50 rounded-lg shadow-sm border border-orange-200 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-orange-900 mb-1 sm:mb-2">
+                {studentEnrollmentsTotal || 0}
+              </div>
+              <div className="text-xs sm:text-sm text-orange-900">Apprenticeship Total</div>
+            </div>
+            <div className="bg-orange-50 rounded-lg shadow-sm border border-orange-600 p-4 sm:p-6">
+              <div className="text-2xl sm:text-3xl font-bold text-orange-900 mb-1 sm:mb-2">
+                {studentEnrollmentsActive || 0}
+              </div>
+              <div className="text-xs sm:text-sm text-orange-900">Apprenticeship Active</div>
             </div>
           </div>
         </div>

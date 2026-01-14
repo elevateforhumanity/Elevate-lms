@@ -25,6 +25,7 @@ import {
   Settings,
   HelpCircle,
 } from 'lucide-react';
+import EnrollmentDashboard from './EnrollmentDashboard';
 
 export const metadata: Metadata = {
   alternates: {
@@ -269,6 +270,13 @@ export default async function StudentPortalPage() {
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* My Enrollments - Shows for logged-in users */}
+      <section className="py-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <EnrollmentDashboard />
         </div>
       </section>
 
