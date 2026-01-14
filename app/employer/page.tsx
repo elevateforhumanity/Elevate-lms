@@ -116,48 +116,60 @@ export default function EmployerPage() {
             Three Problems We Solve
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-slate-50 rounded-xl p-8 text-center">
-              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-8 w-8 text-red-600" />
-              </div>
-              <h3 className="text-xl font-bold text-black mb-3">
-                Can't Find Qualified Workers
-              </h3>
-              <p className="text-black mb-4">
-                We train them for you in high-demand fields
-              </p>
-              <div className="text-green-600 font-semibold">
-                → Pre-screened candidates with credentials
-              </div>
-            </div>
-
-            <div className="bg-slate-50 rounded-xl p-8 text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="h-8 w-8 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-bold text-black mb-3">
-                Can't Afford Recruiting Fees
-              </h3>
-              <p className="text-black mb-4">
-                No placement fees, no contracts required
-              </p>
-              <div className="text-green-600 font-semibold">
-                → Direct hire, zero fees
+            <div className="bg-slate-50 rounded-xl overflow-hidden">
+              <img 
+                src="/images/business/team-1.jpg" 
+                alt="Qualified Workers" 
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-black mb-3">
+                  Can't Find Qualified Workers
+                </h3>
+                <p className="text-black mb-4">
+                  We train them for you in high-demand fields
+                </p>
+                <div className="text-green-600 font-semibold">
+                  → Pre-screened candidates with credentials
+                </div>
               </div>
             </div>
 
-            <div className="bg-slate-50 rounded-xl p-8 text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-8 w-8 text-blue-600" />
+            <div className="bg-slate-50 rounded-xl overflow-hidden">
+              <img 
+                src="/images/business/handshake-1.jpg" 
+                alt="No Recruiting Fees" 
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-black mb-3">
+                  Can't Afford Recruiting Fees
+                </h3>
+                <p className="text-black mb-4">
+                  No placement fees, no contracts required
+                </p>
+                <div className="text-green-600 font-semibold">
+                  → Direct hire, zero fees
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-black mb-3">
-                Can't Wait 6 Months
-              </h3>
-              <p className="text-black mb-4">
-                Candidates ready in 2-4 weeks after training
-              </p>
-              <div className="text-green-600 font-semibold">
-                → Average time-to-hire: 14 days
+            </div>
+
+            <div className="bg-slate-50 rounded-xl overflow-hidden">
+              <img 
+                src="/images/business/success-1.jpg" 
+                alt="Fast Hiring" 
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-black mb-3">
+                  Can't Wait 6 Months
+                </h3>
+                <p className="text-black mb-4">
+                  Candidates ready in 2-4 weeks after training
+                </p>
+                <div className="text-green-600 font-semibold">
+                  → Average time-to-hire: 14 days
+                </div>
               </div>
             </div>
           </div>
@@ -166,14 +178,18 @@ export default function EmployerPage() {
 
       {/* WHAT YOU GET (ROI) */}
       <section className="py-16 bg-slate-50">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-black mb-12">
             What You Get
           </h2>
-          <div className="space-y-4">
-            <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+              <img 
+                src="/images/business/professional-1.jpg" 
+                alt="Pre-Screened Candidates" 
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
                 <h3 className="text-xl font-bold text-black mb-2">
                   Pre-Screened Candidates with Industry Credentials
                 </h3>
@@ -184,9 +200,13 @@ export default function EmployerPage() {
               </div>
             </div>
 
-            <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+              <img 
+                src="/images/business/collaboration-1.jpg" 
+                alt="Fast Hiring" 
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
                 <h3 className="text-xl font-bold text-black mb-2">
                   Average Time-to-Hire: 14 Days
                 </h3>
@@ -197,9 +217,13 @@ export default function EmployerPage() {
               </div>
             </div>
 
-            <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg">
+              <img 
+                src="/images/business/partnership-1.jpg" 
+                alt="Apprenticeship Programs" 
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
                 <h3 className="text-xl font-bold text-black mb-2">
                   Optional Apprenticeship Programs with Wage Reimbursement
                 </h3>
@@ -215,16 +239,21 @@ export default function EmployerPage() {
 
       {/* HOW IT WORKS */}
       <section id="how-it-works" className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-black mb-12">
             How It Works
           </h2>
-          <div className="space-y-6">
-            <div className="flex gap-4 items-start">
-              <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-                1
-              </div>
-              <div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-slate-50 rounded-xl overflow-hidden">
+              <img 
+                src="/images/business/professional-2.jpg" 
+                alt="Call Us" 
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <div className="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-4">
+                  1
+                </div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Call Us
                 </h3>
@@ -235,11 +264,16 @@ export default function EmployerPage() {
               </div>
             </div>
 
-            <div className="flex gap-4 items-start">
-              <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-                2
-              </div>
-              <div>
+            <div className="bg-slate-50 rounded-xl overflow-hidden">
+              <img 
+                src="/images/business/team-2.jpg" 
+                alt="We Match Candidates" 
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <div className="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-4">
+                  2
+                </div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   We Match Candidates
                 </h3>
@@ -249,11 +283,16 @@ export default function EmployerPage() {
               </div>
             </div>
 
-            <div className="flex gap-4 items-start">
-              <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-                3
-              </div>
-              <div>
+            <div className="bg-slate-50 rounded-xl overflow-hidden">
+              <img 
+                src="/images/business/success-1.jpg" 
+                alt="You Hire" 
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <div className="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-4">
+                  3
+                </div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   You Interview
                 </h3>
