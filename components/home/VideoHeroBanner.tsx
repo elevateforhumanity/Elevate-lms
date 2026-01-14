@@ -94,7 +94,6 @@ export default function VideoHeroBanner({
             playsInline
             preload="auto"
             autoPlay
-            poster="/images/efh/hero/hero-main-clean.jpg"
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
