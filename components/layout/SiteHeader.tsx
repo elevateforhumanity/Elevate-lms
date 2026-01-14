@@ -30,7 +30,7 @@ export default function SiteHeader() {
               className="w-9 h-9 md:w-10 md:h-10"
               priority
             />
-            <span className="hidden md:inline font-bold text-lg" style={{ color: '#ff0000' }}>
+            <span className="font-bold text-sm md:text-lg" style={{ color: '#ff0000' }}>
               Elevate for Humanity
             </span>
           </Link>
