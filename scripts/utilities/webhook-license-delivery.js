@@ -274,7 +274,7 @@ async function sendLicenseEmail(email, name, licenses, session) {
   </div>
 
   <div class="footer">
-    <p>© 2024 Selfish Inc. DBA Rise Foundation | Licensed Use Only</p>
+    <p>© 2025 Selfish Inc. DBA Rise Foundation | Licensed Use Only</p>
     <p>Need help? Reply to this email or contact support@elevateforhumanity.com</p>
   </div>
 </body>

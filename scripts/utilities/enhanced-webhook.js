@@ -233,7 +233,7 @@ async function sendLicenseEmail(
   </div>
 
   <div class="footer">
-    <p>© 2024 Selfish Inc. DBA Rise Foundation | Licensed Use Only</p>
+    <p>© 2025 Selfish Inc. DBA Rise Foundation | Licensed Use Only</p>
     <p>Order ID: ${session.id} | Need help? support@elevateforhumanity.com</p>
   </div>
 </body>

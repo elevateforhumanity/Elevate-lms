@@ -64,7 +64,7 @@ Phone: [Contact Number]
 Website: https://elevateforhumanity.com
 
 ═══════════════════════════════════════════════════════════════════════════════
-© 2024 Selfish Inc. DBA Rise Foundation. All Rights Reserved.
+© 2025 Selfish Inc. DBA Rise Foundation. All Rights Reserved.
 Licensed Use Only - Unauthorized use prohibited
 ═══════════════════════════════════════════════════════════════════════════════
 `;

@@ -22,7 +22,7 @@ export function CopyrightProtection() {
       if (selection && selection.length > 100) {
         e.preventDefault();
         // Add copyright notice to clipboard
-        const copyrightNotice = `\n\n---\n© 2024 Elevate for Humanity. All Rights Reserved.\nSource: ${window.location.href}\nUnauthorized reproduction is prohibited.\n`;
+        const copyrightNotice = `\n\n---\n© 2025 Elevate for Humanity. All Rights Reserved.\nSource: ${window.location.href}\n`;
         e.clipboardData?.setData('text/plain', selection + copyrightNotice);
         showCopyrightNotice();
       }
@@ -59,7 +59,7 @@ export function CopyrightProtection() {
       const watermark = document.createElement('div');
       watermark.style.cssText =
         'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;';
-      watermark.setAttribute('data-copyright', 'Elevate-for-Humanity-2024');
+      watermark.setAttribute('data-copyright', 'Elevate-for-Humanity-2025');
       watermark.setAttribute('data-timestamp', Date.now().toString());
       watermark.setAttribute('data-page', window.location.pathname);
       document.body.appendChild(watermark);
@@ -188,7 +188,7 @@ export function ContentIdentifier({ pageId }: { pageId: string }) {
     <div
       style={{ display: 'none' }}
       data-content-id={`EFH-${pageId}-${Date.now().toString(36)}`}
-      data-copyright="Elevate-for-Humanity-2024"
+      data-copyright="Elevate-for-Humanity-2025"
       data-owner="Elizabeth-L-Greene"
       data-protection="DMCA-Protected"
     >

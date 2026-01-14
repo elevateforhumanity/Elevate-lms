@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  AlertTriangle,
   CheckCircle,
   XCircle,
 } from 'lucide-react';
@@ -76,21 +75,7 @@ export default function BarberApprenticeshipPage() {
         </div>
       </section>
 
-      {/* REQUIRED DISCLAIMER - PROMINENT */}
-      <section className="bg-amber-50 border-y-4 border-amber-400 py-6">
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="flex items-start gap-4">
-            <AlertTriangle className="w-8 h-8 text-amber-600 flex-shrink-0 mt-1" />
-            <div>
-              <h2 className="text-lg font-bold text-amber-900 mb-2">Important Notice</h2>
-              <p className="text-amber-900 font-medium">
-                This program is not a barber school and does not issue state licensure hours. 
-                Enrollment requires concurrent or subsequent participation in a licensed barber school for state licensure eligibility.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Program Description */}
       <section className="bg-white py-16">
@@ -376,16 +361,6 @@ export default function BarberApprenticeshipPage() {
         </div>
       </section>
 
-      {/* Final Disclaimer */}
-      <section className="bg-slate-100 py-8">
-        <div className="mx-auto max-w-4xl px-6">
-          <p className="text-sm text-slate-600 text-center">
-            <strong>Disclaimer:</strong> This program is not a barber school and does not issue state licensure hours. 
-            Enrollment requires concurrent or subsequent participation in a licensed barber school for state licensure eligibility. 
-            The program fee of $4,980 is a flat rate regardless of transferred hours.
-          </p>
-        </div>
-      </section>
     </div>
   );
 }

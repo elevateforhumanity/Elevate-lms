@@ -63,7 +63,7 @@ async function generateLicensePDF(email, productId, licenseKey, expiresAt) {
     70,
     615
   );
-  doc.text('© 2024 Elevate for Humanity - All Rights Reserved', 70, 630);
+  doc.text('© 2025 Elevate for Humanity - All Rights Reserved', 70, 630);
 
   doc.end();
   return filePath;

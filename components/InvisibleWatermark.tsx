@@ -118,7 +118,7 @@ export function InvisibleWatermark({
         )}
         <meta
           name="copyright"
-          content={`© 2024 ${owner}. All Rights Reserved.`}
+          content={`© 2025 ${owner}. All Rights Reserved.`}
         />
         {/* Method 9: Invisible watermark text - only render after mount */}
         {clientTimestamp && (
@@ -135,7 +135,7 @@ export function InvisibleWatermark({
             }}
             aria-hidden="true"
           >
-            COPYRIGHT © 2024 ELEVATE FOR HUMANITY - ELIZABETH L. GREENE - ORIGINAL
+            COPYRIGHT © 2025 ELEVATE FOR HUMANITY - ELIZABETH L. GREENE - ORIGINAL
             SITE ID: {siteId} - TIMESTAMP: {clientTimestamp} - UNAUTHORIZED
             COPYING PROHIBITED - LEGAL ACTION WILL BE TAKEN - CONTACT:
             legal@www.elevateforhumanity.org
@@ -214,7 +214,7 @@ export function VisibleWatermark({
         </div>
       )}
       <div style={{ fontSize: '9px', opacity: 0.6, marginTop: '4px' }}>
-        © 2024 Elevate for Humanity
+        © 2025 Elevate for Humanity
       </div>
     </div>
   );

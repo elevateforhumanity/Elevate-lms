@@ -110,7 +110,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'State licensure-required instructional hours',
       'Barber school enrollment',
     ],
-    disclaimer: 'This program is not a barber school and does not issue state licensure hours. Enrollment requires concurrent or subsequent participation in a licensed barber school for state licensure eligibility.',
+    disclaimer: '',
     paymentPlans: [
       { months: 1, monthlyAmount: 4980, totalAmount: 4980, label: 'Pay in Full' },
       { months: 4, monthlyAmount: 1245, totalAmount: 4980, label: '4-Month Plan' },
@@ -141,7 +141,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'State licensure-required instructional hours',
       'Nail technician school enrollment',
     ],
-    disclaimer: 'This program is not a nail technician school and does not issue state licensure hours. Enrollment requires concurrent or subsequent participation in a licensed nail technician school for state licensure eligibility.',
+    disclaimer: '',
     paymentPlans: [
       { months: 1, monthlyAmount: 2980, totalAmount: 2980, label: 'Pay in Full' },
       { months: 4, monthlyAmount: 745, totalAmount: 2980, label: '4-Month Plan' },
@@ -171,7 +171,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'State licensure-required instructional hours',
       'Esthetician school enrollment',
     ],
-    disclaimer: 'This program is not an esthetician school and does not issue state licensure hours. Enrollment requires concurrent or subsequent participation in a licensed esthetician school for state licensure eligibility.',
+    disclaimer: '',
     paymentPlans: [
       { months: 1, monthlyAmount: 3480, totalAmount: 3480, label: 'Pay in Full' },
       { months: 4, monthlyAmount: 870, totalAmount: 3480, label: '4-Month Plan' },
@@ -201,7 +201,7 @@ export const PROGRAM_PAYMENTS: ProgramPaymentConfig[] = [
       'State licensure-required instructional hours',
       'Cosmetology school enrollment',
     ],
-    disclaimer: 'This program is not a cosmetology school and does not issue state licensure hours. Enrollment requires concurrent or subsequent participation in a licensed cosmetology school for state licensure eligibility.',
+    disclaimer: '',
     paymentPlans: [
       { months: 1, monthlyAmount: 4980, totalAmount: 4980, label: 'Pay in Full' },
       { months: 4, monthlyAmount: 1245, totalAmount: 4980, label: '4-Month Plan' },
