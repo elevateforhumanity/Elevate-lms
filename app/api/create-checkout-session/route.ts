@@ -39,16 +39,15 @@ export async function POST(request: NextRequest) {
       applicationId,
     } = await request.json();
 
-    // Enable payment methods (Affirm removed per request)
-    // Students can combine methods or choose what they qualify for
+    // Enable payment methods including Affirm for larger purchases
     const paymentMethods = [
       'card', // Credit/debit cards
+      'affirm', // Affirm (monthly payments, $50-$30,000)
       'klarna', // Klarna (4 payments, up to $1,000)
       'afterpay_clearpay', // Afterpay (4 payments, up to $1,000)
       'us_bank_account', // ACH Direct Debit (lowest fees)
       'cashapp', // Cash App Pay (up to $7,500)
       'link', // Stripe Link (one-click)
-      'zip', // Zip (4 payments, up to $1,000)
       'paypal', // PayPal
       'venmo', // Venmo (up to $5,000)
     ];
@@ -100,6 +99,14 @@ export async function POST(request: NextRequest) {
       };
     } else {
       // One-time payment
+      // Use proper naming for barber program
+      const displayName = programSlug === 'barber-apprenticeship' 
+        ? 'Barber Training Program (Indiana)'
+        : programName;
+      const displayDescription = programSlug === 'barber-apprenticeship'
+        ? 'Fee-based apprenticeship-aligned training program'
+        : `Enrollment in ${programName} training program`;
+
       sessionConfig = {
         ...sessionConfig,
         mode: 'payment',
@@ -108,8 +115,8 @@ export async function POST(request: NextRequest) {
             price_data: {
               currency: 'usd',
               product_data: {
-                name: `${programName} - Micro Class`,
-                description: `Enrollment in ${programName} training program`,
+                name: displayName,
+                description: displayDescription,
               },
               unit_amount: price * 100,
             },

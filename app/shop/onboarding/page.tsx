@@ -257,41 +257,72 @@ export default async function ShopOnboardingPage() {
           </div>
         </div>
 
-        {/* Shop Partner Responsibilities */}
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+        {/* Partner Training Responsibilities */}
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
           <h3 className="text-lg font-bold text-black mb-3">
-            Shop Partner Responsibilities – Indiana
+            Partner Training Responsibilities
           </h3>
           <ul className="space-y-2 text-sm text-black">
             <li className="flex items-start gap-2">
               <span className="text-brand-blue-600 mt-0.5">•</span>
-              <span>Maintain active barber license(s)</span>
+              <span>Maintain active establishment license(s)</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand-blue-600 mt-0.5">•</span>
-              <span>Supervise apprentices at all times</span>
+              <span>Provide supervised practical training</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand-blue-600 mt-0.5">•</span>
-              <span>Pay apprentices according to agreement</span>
+              <span>Validate training hours and attendance</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand-blue-600 mt-0.5">•</span>
-              <span>Submit weekly hours & attendance</span>
+              <span>Sign off on skill progression milestones</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand-blue-600 mt-0.5">•</span>
-              <span>Report wage changes</span>
+              <span>Comply with program schedule and documentation</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand-blue-600 mt-0.5">•</span>
-              <span>Maintain workers comp & insurance</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-brand-blue-600 mt-0.5">•</span>
-              <span>Comply with RAPIDS reporting standards</span>
+              <span>Maintain appropriate business insurance</span>
             </li>
           </ul>
+        </div>
+
+        {/* What Partners Do NOT Provide */}
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-6">
+          <h3 className="text-lg font-bold text-amber-900 mb-3">
+            What Partners Do NOT Provide
+          </h3>
+          <ul className="space-y-2 text-sm text-amber-900">
+            <li className="flex items-start gap-2">
+              <span className="text-amber-600 mt-0.5">•</span>
+              <span>No wage guarantees or employment promises</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-amber-600 mt-0.5">•</span>
+              <span>No payroll administration through Elevate</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-amber-600 mt-0.5">•</span>
+              <span>No overtime calculation or pay advice</span>
+            </li>
+          </ul>
+          <p className="text-xs text-amber-700 mt-3">
+            Employment classification and compensation are external matters governed by employer policies and labor law, not Elevate.
+          </p>
+        </div>
+
+        {/* Hour Tracking Clarification */}
+        <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+          <h3 className="text-lg font-bold text-black mb-3">
+            Hour Tracking Clarification
+          </h3>
+          <p className="text-sm text-black">
+            Elevate tracks <strong>training hours only</strong> for program completion and compliance reporting. 
+            Any employment relationship, compensation, or overtime rules are governed by the employer and applicable labor law, not Elevate.
+          </p>
         </div>
 
         {/* Back to Dashboard */}

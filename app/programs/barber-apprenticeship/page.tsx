@@ -66,10 +66,10 @@ export default function BarberApprenticeshipPage() {
               Apply Now
             </Link>
             <Link
-              href="/contact"
+              href="#pricing"
               className="inline-flex items-center justify-center rounded-lg border-2 border-white bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-bold text-white hover:bg-white/20 transition-all shadow-xl"
             >
-              Talk to an Advisor
+              View Program Fee
             </Link>
           </div>
         </div>
@@ -150,7 +150,7 @@ export default function BarberApprenticeshipPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="bg-gray-50 py-16">
+      <section id="pricing" className="bg-gray-50 py-16">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-3xl font-bold text-black mb-6">Program Fee</h2>
           
@@ -294,7 +294,7 @@ export default function BarberApprenticeshipPage() {
                     On-the-Job Learning
                   </h3>
                   <p className="text-sm text-black">
-                    Paid work at a licensed barber shop
+                    Practical training at a licensed barber shop
                   </p>
                 </div>
               </div>

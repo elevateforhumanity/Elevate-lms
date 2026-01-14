@@ -21,11 +21,11 @@ interface ProgramPricing {
 
 const programPricing: Record<string, ProgramPricing> = {
   'barber-apprenticeship': {
-    name: 'Barber Apprenticeship',
+    name: 'Barber Training Program (Indiana)',
     price: 4980,
-    duration: '15-17 months',
+    duration: '15-18 months',
     description:
-      'DOL-registered apprenticeship with earn-while-you-learn model',
+      'Fee-based apprenticeship-aligned training with DOL sponsorship and Milady theory instruction',
   },
   'hvac-technician': {
     name: 'HVAC Technician',
@@ -281,21 +281,32 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="bg-blue-50 rounded-lg p-4 text-sm text-black">
-                <p className="font-bold mb-2">
-                  <Lightbulb className="w-5 h-5 inline-block" /> Did you know?
-                </p>
-                <p>
-                  Most students qualify for 100% FREE training through WIOA
-                  funding.
-                </p>
-                <Link
-                  href="/funding"
-                  className="text-blue-600 underline mt-2 inline-block"
-                >
-                  Check your eligibility →
-                </Link>
-              </div>
+              {program !== 'barber-apprenticeship' && (
+                <div className="bg-blue-50 rounded-lg p-4 text-sm text-black">
+                  <p className="font-bold mb-2">
+                    <Lightbulb className="w-5 h-5 inline-block" /> Did you know?
+                  </p>
+                  <p>
+                    Some programs qualify for funding assistance through WIOA.
+                  </p>
+                  <Link
+                    href="/funding"
+                    className="text-blue-600 underline mt-2 inline-block"
+                  >
+                    Check your eligibility →
+                  </Link>
+                </div>
+              )}
+              {program === 'barber-apprenticeship' && (
+                <div className="bg-purple-50 rounded-lg p-4 text-sm text-black">
+                  <p className="font-bold mb-2">
+                    <Lightbulb className="w-5 h-5 inline-block" /> Fee-Based Program
+                  </p>
+                  <p>
+                    This is a self-pay program. Payment plans and Affirm financing available.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
 
