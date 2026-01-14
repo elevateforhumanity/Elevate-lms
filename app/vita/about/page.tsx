@@ -11,10 +11,18 @@ import { Heart, Users, Award, TrendingUp } from 'lucide-react';
 export default function VITAAboutPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-green-600 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl font-bold mb-4">About VITA</h1>
-          <p className="text-xl">Volunteer Income Tax Assistance Program</p>
+      {/* Hero Section with Image */}
+      <div className="relative bg-green-600 text-white py-16 md:py-24">
+        <div className="absolute inset-0 overflow-hidden">
+          <img 
+            src="/images/vita/vita-hero.jpg" 
+            alt="VITA Tax Preparation" 
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">About VITA</h1>
+          <p className="text-xl md:text-2xl">Volunteer Income Tax Assistance Program</p>
         </div>
       </div>
 

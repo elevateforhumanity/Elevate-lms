@@ -44,57 +44,73 @@ export default function VITAVolunteerPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-green-600 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl font-bold mb-4">Become a VITA Volunteer</h1>
-          <p className="text-xl">Help your community with free tax preparation</p>
+      {/* Hero Section with Image */}
+      <div className="relative bg-green-600 text-white py-16 md:py-24">
+        <div className="absolute inset-0 overflow-hidden">
+          <img 
+            src="/images/business/handshake-1.jpg" 
+            alt="Volunteer with VITA" 
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Become a VITA Volunteer</h1>
+          <p className="text-xl md:text-2xl">Help your community with free tax preparation</p>
         </div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <Heart className="w-12 h-12 text-green-600 mb-4" />
-            <h2 className="text-2xl font-bold mb-4">Make a Difference</h2>
-            <p className="text-black mb-4">
-              Last year, VITA volunteers helped 2,045 families save over $408,000 in tax preparation fees and receive $5.8 million in refunds.
-            </p>
-            <p className="text-black">
-              Your time and skills can help families keep more of their hard-earned money.
-            </p>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="/images/business/team-1.jpg" alt="Make a Difference" className="w-full h-48 object-cover" />
+            <div className="p-8">
+              <h2 className="text-2xl font-bold mb-4">Make a Difference</h2>
+              <p className="text-black mb-4">
+                Last year, VITA volunteers helped 2,045 families save over $408,000 in tax preparation fees and receive $5.8 million in refunds.
+              </p>
+              <p className="text-black">
+                Your time and skills can help families keep more of their hard-earned money.
+              </p>
+            </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <BookOpen className="w-12 h-12 text-green-600 mb-4" />
-            <h2 className="text-2xl font-bold mb-4">Free Training Provided</h2>
-            <p className="text-black mb-4">
-              No tax experience required! We provide comprehensive IRS-certified training covering tax law, software, and ethics.
-            </p>
-            <p className="text-black">
-              Training is flexible and can be completed online or in-person.
-            </p>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="/images/business/professional-2.jpg" alt="Free Training" className="w-full h-48 object-cover" />
+            <div className="p-8">
+              <h2 className="text-2xl font-bold mb-4">Free Training Provided</h2>
+              <p className="text-black mb-4">
+                No tax experience required! We provide comprehensive IRS-certified training covering tax law, software, and ethics.
+              </p>
+              <p className="text-black">
+                Training is flexible and can be completed online or in-person.
+              </p>
+            </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <Users className="w-12 h-12 text-green-600 mb-4" />
-            <h2 className="text-2xl font-bold mb-4">Flexible Schedule</h2>
-            <p className="text-black mb-4">
-              Volunteer as little as 4 hours per week during tax season (January-April).
-            </p>
-            <p className="text-black">
-              Choose shifts that work with your schedule - weekdays, evenings, or weekends.
-            </p>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="/images/business/collaboration-1.jpg" alt="Flexible Schedule" className="w-full h-48 object-cover" />
+            <div className="p-8">
+              <h2 className="text-2xl font-bold mb-4">Flexible Schedule</h2>
+              <p className="text-black mb-4">
+                Volunteer as little as 4 hours per week during tax season (January-April).
+              </p>
+              <p className="text-black">
+                Choose shifts that work with your schedule - weekdays, evenings, or weekends.
+              </p>
+            </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <Award className="w-12 h-12 text-green-600 mb-4" />
-            <h2 className="text-2xl font-bold mb-4">Gain Valuable Skills</h2>
-            <p className="text-black mb-4">
-              Learn tax preparation, gain IRS certification, and develop professional skills.
-            </p>
-            <p className="text-black">
-              Great for students, retirees, and anyone interested in tax or accounting.
-            </p>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="/images/business/success-1.jpg" alt="Gain Skills" className="w-full h-48 object-cover" />
+            <div className="p-8">
+              <h2 className="text-2xl font-bold mb-4">Gain Valuable Skills</h2>
+              <p className="text-black mb-4">
+                Learn tax preparation, gain IRS certification, and develop professional skills.
+              </p>
+              <p className="text-black">
+                Great for students, retirees, and anyone interested in tax or accounting.
+              </p>
+            </div>
           </div>
         </div>
 
