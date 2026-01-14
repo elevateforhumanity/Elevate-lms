@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: 'Verification | Program Holder Portal',
   description: 'Complete your program holder verification',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/program-holder/verification',
+    canonical: 'https://elevateforhumanity.institute/program-holder/verification',
   },
 };
 

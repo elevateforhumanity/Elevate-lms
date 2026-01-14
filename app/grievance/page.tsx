@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/grievance',
+    canonical: 'https://elevateforhumanity.institute/grievance',
   },
   title: 'Grievance Procedure | Elevate For Humanity',
   description:

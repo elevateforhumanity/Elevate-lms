@@ -8,7 +8,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/admin/employers-playbook',
+    canonical: 'https://elevateforhumanity.institute/admin/employers-playbook',
   },
   title: 'Employers Playbook | Elevate For Humanity',
   description:

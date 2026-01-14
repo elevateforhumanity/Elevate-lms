@@ -8,7 +8,7 @@ import { Ticket, AlertCircle, CheckCircle, Clock } from 'lucide-react';
 export const metadata: Metadata = {
   alternates: {
     canonical:
-      'https://www.elevateforhumanity.org/staff-portal/customer-service',
+      'https://elevateforhumanity.institute/staff-portal/customer-service',
   },
   title: 'Customer Service | Elevate For Humanity',
   description: 'Manage customer service tickets and protocols.',

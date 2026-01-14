@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Privacy notice for Elevate for Humanity learners, partners, and visitors. Learn how we collect, use, protect, and share your personal information.',
   keywords: ['privacy notice', 'data collection', 'personal information', 'data protection', 'privacy rights', 'FERPA', 'GDPR', 'CCPA'],
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/privacy-notice',
+    canonical: 'https://elevateforhumanity.institute/policies/privacy-notice',
   },
 };
 

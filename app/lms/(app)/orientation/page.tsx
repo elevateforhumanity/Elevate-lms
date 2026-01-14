@@ -12,7 +12,7 @@ export const metadata = {
   description:
     'Complete your program orientation to get started with your training.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/(app)/orientation',
+    canonical: 'https://elevateforhumanity.institute/lms/(app)/orientation',
   },
 };
 

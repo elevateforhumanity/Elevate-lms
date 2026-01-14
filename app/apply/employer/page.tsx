@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Partner with us to find qualified candidates and build your workforce.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/apply/employer',
+    canonical: 'https://elevateforhumanity.institute/apply/employer',
   },
 };
 

@@ -6,7 +6,7 @@ import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/program-holder',
+    canonical: 'https://elevateforhumanity.institute/program-holder',
   },
   title: 'Program Holder Portal | Elevate For Humanity',
   description:

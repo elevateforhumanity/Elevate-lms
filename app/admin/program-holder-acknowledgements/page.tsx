@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
     canonical:
-      'https://www.elevateforhumanity.org/admin/program-holder-acknowledgements',
+      'https://elevateforhumanity.institute/admin/program-holder-acknowledgements',
   },
   title: 'Program Holder Acknowledgements | Elevate For Humanity',
   description:

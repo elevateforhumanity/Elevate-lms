@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: 'VITA Tax Prep - Free Tax Preparation | Elevate for Humanity',
   description: 'Free IRS-certified tax preparation for qualifying individuals through the Volunteer Income Tax Assistance program',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/vita',
+    canonical: 'https://elevateforhumanity.institute/vita',
   },
   openGraph: {
     title: 'VITA - Free Tax Preparation',
     description: 'Free IRS-certified tax preparation for income under $64K. Average refund: $2,847.',
-    url: 'https://www.elevateforhumanity.org/vita',
+    url: 'https://elevateforhumanity.institute/vita',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'VITA Free Tax Prep' }],
     type: 'website',

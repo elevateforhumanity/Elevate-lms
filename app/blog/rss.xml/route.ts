@@ -4,7 +4,7 @@ import { createAdminClient } from '@/lib/supabase/server';
 export const revalidate = 3600;
 
 export async function GET() {
-  const baseUrl = 'https://www.elevateforhumanity.org';
+  const baseUrl = 'https://elevateforhumanity.institute';
   
   try {
     const supabase = createAdminClient();

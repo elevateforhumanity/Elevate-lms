@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Candidates | Elevate for Humanity',
   description: 'View and manage candidates',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/employer/candidates',
+    canonical: 'https://elevateforhumanity.institute/employer/candidates',
   },
 };
 

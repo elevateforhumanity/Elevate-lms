@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: '2026 Program Calendar & Funding Pathways',
   description: 'Upcoming workforce training cohorts and funding options for 2026',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/updates/2026/01/program-calendar',
+    canonical: 'https://elevateforhumanity.institute/updates/2026/01/program-calendar',
   },
 };
 

@@ -9,9 +9,9 @@ interface OrganizationSchemaProps {
 
 export function OrganizationSchema({
   name = 'Elevate for Humanity',
-  url = 'https://www.elevateforhumanity.org',
-  logo = 'https://www.elevateforhumanity.org/images/logo.png',
-  description = 'A regulated workforce development and credentialing organization connecting students to approved training, recognized credentials, and real career pathways.',
+  url = 'https://elevateforhumanity.institute',
+  logo = 'https://elevateforhumanity.institute/images/logo.png',
+  description = 'A regulated workforce development and credentialing institute connecting students to approved training, recognized credentials, and real career pathways.',
 }: OrganizationSchemaProps) {
   const schema = {
     '@context': 'https://schema.org',
@@ -74,7 +74,7 @@ export function CourseSchema({
     provider: {
       '@type': 'Organization',
       name: provider,
-      sameAs: 'https://www.elevateforhumanity.org',
+      sameAs: 'https://elevateforhumanity.institute',
     },
     url,
     image,
@@ -138,7 +138,7 @@ export function BlogPostSchema({
       name: 'Elevate for Humanity',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.elevateforhumanity.org/images/logo.png',
+        url: 'https://elevateforhumanity.institute/images/logo.png',
       },
     },
   };

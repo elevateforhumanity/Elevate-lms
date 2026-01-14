@@ -16,7 +16,7 @@ export const revalidate = 86400; // 24 hours
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/accreditation',
+    canonical: 'https://elevateforhumanity.institute/accreditation',
   },
   title:
     'Accreditation & Approvals | DOL, DWD, DOE Approved Training Provider | Elevate For Humanity',

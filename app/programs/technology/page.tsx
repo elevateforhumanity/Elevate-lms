@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'CompTIA A+, Network+, Google IT Support, and Cybersecurity training programs. 100% funded through WIOA and state grants. Launch your tech career today.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/technology',
+    canonical: 'https://elevateforhumanity.institute/programs/technology',
   },
 };
 

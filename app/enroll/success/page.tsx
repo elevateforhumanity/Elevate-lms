@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Enrollment Successful | Elevate for Humanity',
   description: 'Your enrollment in the Barber Apprenticeship Program was successful',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/enroll/success',
+    canonical: 'https://elevateforhumanity.institute/enroll/success',
   },
 };
 

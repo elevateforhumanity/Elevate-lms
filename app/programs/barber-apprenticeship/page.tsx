@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   keywords:
     'barber apprenticeship Indiana, DOL registered apprenticeship, apprenticeship sponsorship, barber training Indianapolis, RAPIDS registered, apprenticeship oversight',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/barber-apprenticeship',
+    canonical: 'https://elevateforhumanity.institute/programs/barber-apprenticeship',
   },
 };
 

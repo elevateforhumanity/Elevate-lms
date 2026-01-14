@@ -14,7 +14,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/program-holder/onboarding',
+    canonical: 'https://elevateforhumanity.institute/program-holder/onboarding',
   },
   title: 'Program Holder Onboarding | Elevate For Humanity',
   description:

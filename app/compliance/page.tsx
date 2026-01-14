@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Compliance | Elevate for Humanity',
   description: 'Our commitment to WIOA, DOL, and workforce compliance standards.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/compliance',
+    canonical: 'https://elevateforhumanity.institute/compliance',
   },
 };
 

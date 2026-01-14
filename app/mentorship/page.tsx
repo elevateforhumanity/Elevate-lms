@@ -15,7 +15,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/mentorship',
+    canonical: 'https://elevateforhumanity.institute/mentorship',
   },
   title: 'Mentorship Program | Elevate For Humanity',
   description:

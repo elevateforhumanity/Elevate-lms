@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Credentials Policy | Elevate for Humanity',
   description: 'Standards for issuing, verifying, and maintaining certificates, credentials, and certifications.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/credentials',
+    canonical: 'https://elevateforhumanity.institute/policies/credentials',
   },
 };
 

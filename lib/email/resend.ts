@@ -83,7 +83,7 @@ export async function sendWelcomeEmail(params: {
           <div class="footer">
             <p>Elevate for Humanity Career & Technical Institute<br>
             8888 Keystone Crossing Suite 1300, Indianapolis, IN 46240</p>
-            <p><a href="https://www.elevateforhumanity.org">www.www.elevateforhumanity.org</a></p>
+            <p><a href="https://elevateforhumanity.institute">www.www.elevateforhumanity.org</a></p>
           </div>
         </div>
       </body>

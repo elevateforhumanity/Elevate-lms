@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'Watch free career training videos. Learn about our programs in healthcare, skilled trades, technology, and business.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/videos',
+    canonical: 'https://elevateforhumanity.institute/videos',
   },
 };
 

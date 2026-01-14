@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Verification Policy | Elevate for Humanity',
   description: 'Identity and eligibility verification procedures for students, credentials, and employment.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/verification',
+    canonical: 'https://elevateforhumanity.institute/policies/verification',
   },
 };
 

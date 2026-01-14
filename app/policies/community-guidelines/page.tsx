@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Community Guidelines | Elevate for Humanity',
   description: 'Standards for respectful interaction, behavior expectations, and community participation guidelines.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/community-guidelines',
+    canonical: 'https://elevateforhumanity.institute/policies/community-guidelines',
   },
 };
 

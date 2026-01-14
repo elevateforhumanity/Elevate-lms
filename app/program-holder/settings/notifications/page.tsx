@@ -7,7 +7,7 @@ export const metadata = {
   title: 'Notification Settings | Program Holder',
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/program-holder/settings/notifications',
+    canonical: 'https://elevateforhumanity.institute/program-holder/settings/notifications',
   },
 };
 

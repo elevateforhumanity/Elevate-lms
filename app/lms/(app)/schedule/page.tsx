@@ -7,7 +7,7 @@ import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/schedule',
+    canonical: 'https://elevateforhumanity.institute/lms/schedule',
   },
   title: 'Schedule | LMS | Elevate For Humanity',
   description: 'View your learning schedule and upcoming events.',

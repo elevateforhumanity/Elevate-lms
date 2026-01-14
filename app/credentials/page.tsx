@@ -5,7 +5,7 @@ import { ChevronRight, Award, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/credentials',
+    canonical: 'https://elevateforhumanity.institute/credentials',
   },
   title: 'Credentials | Elevate For Humanity',
   description:

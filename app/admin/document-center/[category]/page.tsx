@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
     canonical:
-      'https://www.elevateforhumanity.org/admin/document-center/[category]',
+      'https://elevateforhumanity.institute/admin/document-center/[category]',
   },
   title: '[category] | Elevate For Humanity',
   description:

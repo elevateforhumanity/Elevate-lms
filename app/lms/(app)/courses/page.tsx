@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Browse Courses | Student Portal',
   description: 'Browse and enroll in partner courses',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/courses',
+    canonical: 'https://elevateforhumanity.institute/lms/courses',
   },
 };
 

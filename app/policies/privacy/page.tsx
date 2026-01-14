@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy | Elevate for Humanity',
   description: 'How we collect, use, protect, and share your personal information and educational records.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/privacy',
+    canonical: 'https://elevateforhumanity.institute/policies/privacy',
   },
 };
 

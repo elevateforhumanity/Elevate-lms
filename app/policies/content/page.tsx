@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Content Policy | Elevate for Humanity',
   description: 'Guidelines for user-generated content, intellectual property rights, and content standards on our platforms.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/content',
+    canonical: 'https://elevateforhumanity.institute/policies/content',
   },
 };
 

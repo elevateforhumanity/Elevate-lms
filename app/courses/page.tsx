@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/courses',
+    canonical: 'https://elevateforhumanity.institute/courses',
   },
   title: 'LMS Courses | Elevate For Humanity',
   description:
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Career Training Courses',
     description: 'Industry certifications and job-ready training in healthcare, IT, business, and skilled trades.',
-    url: 'https://www.elevateforhumanity.org/courses',
+    url: 'https://elevateforhumanity.institute/courses',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Training Courses' }],
     type: 'website',

@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     'SupersonicFastCash',
   ],
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/tax/supersonicfastcash/faq',
+    canonical: 'https://elevateforhumanity.institute/tax/supersonicfastcash/faq',
   },
   openGraph: {
     title: 'FAQ - SupersonicFastCash',
     description:
       'Get answers to common questions about our tax services and refund advances.',
-    url: 'https://www.elevateforhumanity.org/tax/supersonicfastcash/faq',
+    url: 'https://elevateforhumanity.institute/tax/supersonicfastcash/faq',
     type: 'website',
   },
 };

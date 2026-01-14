@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Fast, professional tax preparation with refund advances up to $7,500. Same-day service available in Indianapolis.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/tax/supersonicfastcash',
+    canonical: 'https://elevateforhumanity.institute/tax/supersonicfastcash',
   },
 };
 

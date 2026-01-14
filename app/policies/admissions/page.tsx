@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Admissions Policy | Elevate for Humanity',
   description: 'Requirements, procedures, and guidelines for program enrollment and admission to Elevate for Humanity training programs.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/admissions',
+    canonical: 'https://elevateforhumanity.institute/policies/admissions',
   },
 };
 

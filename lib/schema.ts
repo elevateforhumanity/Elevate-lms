@@ -13,7 +13,7 @@ import {
   EducationalOrganization,
 } from 'schema-dts';
 
-const baseUrl = 'https://www.elevateforhumanity.org';
+const baseUrl = 'https://elevateforhumanity.institute';
 
 // Organization Schema (Global)
 export const organizationSchema: WithContext<Organization> = {

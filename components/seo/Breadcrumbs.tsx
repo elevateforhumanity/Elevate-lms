@@ -44,7 +44,7 @@ export function Breadcrumbs() {
       '@type': 'ListItem',
       'position': index + 1,
       'name': crumb.label,
-      'item': `https://www.elevateforhumanity.org${crumb.href}`,
+      'item': `https://elevateforhumanity.institute${crumb.href}`,
     })),
   };
 

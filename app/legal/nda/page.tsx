@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Non-Disclosure Agreement for Elevate for Humanity partners and stakeholders.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/legal/nda',
+    canonical: 'https://elevateforhumanity.institute/legal/nda',
   },
 };
 

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Copyright Policy | Elevate for Humanity',
   description: 'Protection of intellectual property, fair use guidelines, and DMCA compliance procedures.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/copyright',
+    canonical: 'https://elevateforhumanity.institute/policies/copyright',
   },
 };
 
@@ -259,7 +259,7 @@ export default function CopyrightPage() {
             <div className="bg-gray-50 rounded-lg p-4 border-2 border-gray-200 mb-6">
               <p className="text-black font-mono text-sm">
                 Elevate for Humanity. (2026). [Course/Material Title]. Retrieved from 
-                https://www.elevateforhumanity.org/[url]
+                https://elevateforhumanity.institute/[url]
               </p>
             </div>
 

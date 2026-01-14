@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
     canonical:
-      'https://www.elevateforhumanity.org/admin/courses/bulk-operations',
+      'https://elevateforhumanity.institute/admin/courses/bulk-operations',
   },
   title: 'Bulk Operations | Elevate For Humanity',
   description:

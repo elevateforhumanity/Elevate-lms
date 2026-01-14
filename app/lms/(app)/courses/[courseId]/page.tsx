@@ -25,7 +25,7 @@ export async function generateMetadata({
 
   return {
     alternates: {
-      canonical: `https://www.elevateforhumanity.org/lms/courses/${courseId}`,
+      canonical: `https://elevateforhumanity.institute/lms/courses/${courseId}`,
     },
     title: course
       ? `${course.title} | Elevate For Humanity`

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'Professional interview coaching and preparation services. Mock interviews, feedback, industry-specific strategies, and salary negotiation techniques to help you land your dream job.',
   keywords: ['interview preparation', 'interview coaching', 'mock interviews', 'job interview tips', 'salary negotiation', 'career coaching', 'interview skills'],
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/career-services/interview-prep',
+    canonical: 'https://elevateforhumanity.institute/career-services/interview-prep',
   },
 };
 

@@ -22,7 +22,7 @@ import { logger } from '@/lib/logger';
 
 const getOfficialDomains = () => {
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute';
   const domain = siteUrl
     .replace('https://', '')
     .replace('http://', '')

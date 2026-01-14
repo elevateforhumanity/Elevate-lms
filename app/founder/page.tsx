@@ -5,7 +5,7 @@ import { Target, Shield, Eye, Heart, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/founder',
+    canonical: 'https://elevateforhumanity.institute/founder',
   },
   title: 'Founder & Leadership | Elevate For Humanity',
   description:

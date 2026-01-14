@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'Professional career counseling for long-term success. Get personalized guidance, goal setting, career pathway planning, and ongoing support from experienced counselors.',
   keywords: 'career counseling, career guidance, career planning, professional development, career coach, job counseling',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/career-services/career-counseling',
+    canonical: 'https://elevateforhumanity.institute/career-services/career-counseling',
   },
 };
 

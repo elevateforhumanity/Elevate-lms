@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Transparent pricing for tax preparation services. No hidden fees. See all costs upfront.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/tax/supersonicfastcash/pricing',
+    canonical: 'https://elevateforhumanity.institute/tax/supersonicfastcash/pricing',
   },
 };
 

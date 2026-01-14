@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'Business administration, financial services, and professional skills training. 100% funded through WIOA and state grants. Launch your business career.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/business-financial',
+    canonical: 'https://elevateforhumanity.institute/programs/business-financial',
   },
 };
 

@@ -5,7 +5,7 @@ export const metadata = {
   title: 'Learning Hub - Resources & Tools | Elevate Hub',
   description: 'Access lessons, syllabi, workbooks, orientation, and student resources',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/learning',
+    canonical: 'https://elevateforhumanity.institute/learning',
   },
 };
 

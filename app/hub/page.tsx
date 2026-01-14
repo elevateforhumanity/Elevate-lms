@@ -23,7 +23,7 @@ export const metadata = {
   description:
     'Explore all businesses, training programs, and services in the Elevate Hub',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/hub',
+    canonical: 'https://elevateforhumanity.institute/hub',
   },
 };
 

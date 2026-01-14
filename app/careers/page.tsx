@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   description:
     'Join our mission to provide free career training and workforce development. Explore career opportunities at Elevate For Humanity.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/careers',
+    canonical: 'https://elevateforhumanity.institute/careers',
   },
   openGraph: {
     title: 'Careers at Elevate for Humanity',
     description: 'Join our mission to provide free career training and workforce development.',
-    url: 'https://www.elevateforhumanity.org/careers',
+    url: 'https://elevateforhumanity.institute/careers',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Careers at Elevate' }],
     type: 'website',

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     'Search our blog for workforce development insights, success stories, and career tips.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/blog/search',
+    canonical: 'https://elevateforhumanity.institute/blog/search',
   },
 };
 

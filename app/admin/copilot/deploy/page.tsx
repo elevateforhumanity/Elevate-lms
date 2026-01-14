@@ -8,7 +8,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/admin/copilot/deploy',
+    canonical: 'https://elevateforhumanity.institute/admin/copilot/deploy',
   },
   title: 'Deploy | Elevate For Humanity',
   description:

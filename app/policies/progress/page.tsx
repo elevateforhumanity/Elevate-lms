@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Academic Progress Policy | Elevate for Humanity',
   description: 'Standards for measuring and reporting student progress, satisfactory academic progress requirements, and probation procedures.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/progress',
+    canonical: 'https://elevateforhumanity.institute/policies/progress',
   },
 };
 

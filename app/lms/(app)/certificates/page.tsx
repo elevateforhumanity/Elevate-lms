@@ -7,7 +7,7 @@ import { CertificatePreview } from '@/components/lms/CertificateTemplate';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/certificates',
+    canonical: 'https://elevateforhumanity.institute/lms/certificates',
   },
   title: 'Certificates | Elevate For Humanity',
   description:

@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/peer-review',
+    canonical: 'https://elevateforhumanity.institute/lms/peer-review',
   },
   title: 'Peer Review | Elevate For Humanity',
   description:

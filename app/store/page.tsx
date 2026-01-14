@@ -15,7 +15,7 @@ import { DIGITAL_PRODUCTS } from '@/lib/store/digital-products';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/store',
+    canonical: 'https://elevateforhumanity.institute/store',
   },
   title: 'Mission-Supporting Commerce | Elevate for Humanity',
   description:

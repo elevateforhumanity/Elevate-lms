@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'See tuition payment options in one place: monthly payments with Affirm or pay-in-full with Stripe.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/pay',
+    canonical: 'https://elevateforhumanity.institute/pay',
   },
 };
 

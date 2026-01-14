@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Response Time SLA | Elevate for Humanity',
   description: 'Service level agreements for support and communication response times.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/response-sla',
+    canonical: 'https://elevateforhumanity.institute/policies/response-sla',
   },
 };
 

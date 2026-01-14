@@ -9,12 +9,12 @@ export const metadata: Metadata = {
     'Elevate for Humanity coordinates career training through credentialed partners. Founded by Elizabeth Greene in 2020. 85% job placement rate. 1,000+ students trained.',
   keywords: 'workforce training school Indianapolis, career training programs, WIOA training provider, job training Indianapolis, vocational school Indiana, Elizabeth Greene',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/about',
+    canonical: 'https://elevateforhumanity.institute/about',
   },
   openGraph: {
     title: 'About Elevate for Humanity',
     description: 'Workforce training school in Indianapolis. 85% job placement rate. 1,000+ students trained.',
-    url: 'https://www.elevateforhumanity.org/about',
+    url: 'https://elevateforhumanity.institute/about',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'About Elevate for Humanity' }],
     type: 'website',

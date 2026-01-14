@@ -18,7 +18,7 @@ export const metadata = {
   description:
     'License our workforce automation infrastructure. System of record for programs with signature-driven activation, automated task initialization, and audit-ready reporting.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/pricing/sponsor-licensing',
+    canonical: 'https://elevateforhumanity.institute/pricing/sponsor-licensing',
   },
 };
 

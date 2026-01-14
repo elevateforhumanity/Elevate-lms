@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Terms of Service | Elevate for Humanity',
   description: 'Legal terms for using our platform and services, user responsibilities, and limitations of liability.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/terms',
+    canonical: 'https://elevateforhumanity.institute/policies/terms',
   },
 };
 

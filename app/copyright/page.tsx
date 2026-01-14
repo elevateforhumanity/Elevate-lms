@@ -4,7 +4,7 @@ import { Copyright as CopyrightIcon, Shield, FileText } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/copyright',
+    canonical: 'https://elevateforhumanity.institute/copyright',
   },
   title: 'Copyright & Intellectual Property | Elevate For Humanity',
   description:

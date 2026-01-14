@@ -7,7 +7,7 @@ import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/community',
+    canonical: 'https://elevateforhumanity.institute/lms/community',
   },
   title: 'Community | LMS | Elevate For Humanity',
   description: 'Connect with fellow learners and join study groups.',

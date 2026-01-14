@@ -28,7 +28,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/student-portal',
+    canonical: 'https://elevateforhumanity.institute/student-portal',
   },
   title: 'Student Portal | Elevate For Humanity',
   description:

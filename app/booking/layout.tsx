@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Book Appointment | Elevate For Humanity',
   description: 'Schedule an appointment for career counseling, training enrollment, or support services.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/booking',
+    canonical: 'https://elevateforhumanity.institute/booking',
   },
 };
 

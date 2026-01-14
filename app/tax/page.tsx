@@ -19,7 +19,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/tax',
+    canonical: 'https://elevateforhumanity.institute/tax',
   },
   title: 'Tax Preparation Services | Elevate For Humanity',
   description:
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Tax Preparation Services',
     description: 'Free community-based tax preparation and professional paid tax services.',
-    url: 'https://www.elevateforhumanity.org/tax',
+    url: 'https://elevateforhumanity.institute/tax',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Tax Services' }],
     type: 'website',

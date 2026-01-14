@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     'Second chance career training for justice-involved individuals. Free programs in healthcare, trades, and workforce readiness. Fresh start, real career.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/jri',
+    canonical: 'https://elevateforhumanity.institute/programs/jri',
   },
 };
 

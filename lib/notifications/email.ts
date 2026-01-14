@@ -148,7 +148,7 @@ export class EmailService {
               <li>Industry-recognized certifications</li>
             </ul>
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://www.elevateforhumanity.org/dashboard" style="background: #dc2626; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
+              <a href="https://elevateforhumanity.institute/dashboard" style="background: #dc2626; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
                 Get Started
               </a>
             </div>
@@ -180,7 +180,7 @@ export class EmailService {
               <li>Start learning!</li>
             </ol>
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://www.elevateforhumanity.org/lms/courses" style="background: #dc2626; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
+              <a href="https://elevateforhumanity.institute/lms/courses" style="background: #dc2626; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
                 Start Learning
               </a>
             </div>
@@ -214,7 +214,7 @@ export class EmailService {
               <li>Submit before the deadline</li>
             </ul>
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://www.elevateforhumanity.org/lms/assignments" style="background: #f97316; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
+              <a href="https://elevateforhumanity.institute/lms/assignments" style="background: #f97316; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
                 View Assignment
               </a>
             </div>
@@ -270,7 +270,7 @@ export class EmailService {
             <p>You've unlocked the <strong>${achievementName}</strong> achievement!</p>
             <p>Keep up the great work and continue your learning journey!</p>
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://www.elevateforhumanity.org/achievements" style="background: #f97316; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
+              <a href="https://elevateforhumanity.institute/achievements" style="background: #f97316; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; display: inline-block;">
                 View All Achievements
               </a>
             </div>

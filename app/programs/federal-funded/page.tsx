@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     '100% free training programs funded by WIOA, WRG, and federal grants. CNA, CDL, Healthcare, and more. No cost to you.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/federal-funded',
+    canonical: 'https://elevateforhumanity.institute/programs/federal-funded',
   },
 };
 

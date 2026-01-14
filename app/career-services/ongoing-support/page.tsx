@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     'Lifetime career support for all graduates. Career coaching, alumni networking, advancement opportunities, job search assistance, and professional development resources.',
   keywords: ['career support', 'alumni services', 'career coaching', 'professional development', 'career advancement', 'job search help', 'lifetime support'],
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/career-services/ongoing-support',
+    canonical: 'https://elevateforhumanity.institute/career-services/ongoing-support',
   },
 };
 

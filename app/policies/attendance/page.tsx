@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Attendance Policy | Elevate for Humanity',
   description: 'Requirements for class attendance, participation, and procedures for absences and tardiness.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/attendance',
+    canonical: 'https://elevateforhumanity.institute/policies/attendance',
   },
 };
 

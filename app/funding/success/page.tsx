@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Funding Approved | Elevate for Humanity',
   description: 'Your funding has been approved and processed',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/funding/success',
+    canonical: 'https://elevateforhumanity.institute/funding/success',
   },
 };
 

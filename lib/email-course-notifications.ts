@@ -4,7 +4,7 @@
 import { sendEmail } from './email';
 
 const APP_URL =
-  process.env.NEXT_PUBLIC_APP_URL || 'https://www.elevateforhumanity.org';
+  process.env.NEXT_PUBLIC_APP_URL || 'https://elevateforhumanity.institute';
 const FROM_EMAIL = process.env.EMAIL_FROM || 'noreply@www.elevateforhumanity.org';
 
 interface CourseEnrollmentData {

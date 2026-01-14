@@ -9,7 +9,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   alternates: {
     canonical:
-      'https://www.elevateforhumanity.org/programs/admin/courses/create',
+      'https://elevateforhumanity.institute/programs/admin/courses/create',
   },
   title: 'Create Programs Admin Course | Elevate For Humanity',
   description:

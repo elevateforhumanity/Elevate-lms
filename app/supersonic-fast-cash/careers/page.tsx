@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     'hiring tax professionals Indiana',
   ],
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/supersonic-fast-cash/careers',
+    canonical: 'https://elevateforhumanity.institute/supersonic-fast-cash/careers',
   },
 };
 

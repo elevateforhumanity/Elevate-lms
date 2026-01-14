@@ -5,7 +5,7 @@ import { APP_STORE_PRODUCTS } from '@/lib/stripe/app-store-products';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/pricing',
+    canonical: 'https://elevateforhumanity.institute/pricing',
   },
   title: 'Pricing | Elevate for Humanity',
   description:

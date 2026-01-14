@@ -124,7 +124,7 @@ export class URLHealthMonitor {
     this.addEndpoint({
       id: 'elevate-connects',
       name: 'Elevate for Humanity',
-      url: 'https://www.elevateforhumanity.org',
+      url: 'https://elevateforhumanity.institute',
       type: 'external',
       critical: false,
       checkInterval: 3600000,

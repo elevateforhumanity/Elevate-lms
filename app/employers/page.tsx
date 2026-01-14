@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Connect with skilled, certified candidates ready to join your workforce. Post jobs, build apprenticeships, and grow your team.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/employers',
+    canonical: 'https://elevateforhumanity.institute/employers',
   },
 };
 

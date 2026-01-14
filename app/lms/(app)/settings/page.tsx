@@ -7,7 +7,7 @@ import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/settings',
+    canonical: 'https://elevateforhumanity.institute/lms/settings',
   },
   title: 'Settings | LMS | Elevate For Humanity',
   description: 'Manage your account settings and preferences.',

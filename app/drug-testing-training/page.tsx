@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'Professional drug testing training courses. DOT and non-DOT collector training, supervisor training, DER training, and more.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/drug-testing-training',
+    canonical: 'https://elevateforhumanity.institute/drug-testing-training',
   },
 };
 

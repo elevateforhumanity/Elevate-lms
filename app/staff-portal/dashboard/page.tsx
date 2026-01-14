@@ -9,7 +9,7 @@ import { safeFormatDate } from '@/lib/format-utils';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/staff-portal/dashboard',
+    canonical: 'https://elevateforhumanity.institute/staff-portal/dashboard',
   },
   title: 'Staff Dashboard | Elevate For Humanity',
   description:

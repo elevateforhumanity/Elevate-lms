@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Tax preparation certification and small business development training. Free with funding when eligible.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/programs/tax-entrepreneurship',
+    canonical: 'https://elevateforhumanity.institute/programs/tax-entrepreneurship',
   },
 };
 

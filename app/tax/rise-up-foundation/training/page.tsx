@@ -14,13 +14,13 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical:
-      'https://www.elevateforhumanity.org/tax/rise-up-foundation/training',
+      'https://elevateforhumanity.institute/tax/rise-up-foundation/training',
   },
   openGraph: {
     title: 'Volunteer Training - IRS Link & Learn',
     description:
       'Free IRS training to become a certified VITA volunteer tax preparer.',
-    url: 'https://www.elevateforhumanity.org/tax/rise-up-foundation/training',
+    url: 'https://elevateforhumanity.institute/tax/rise-up-foundation/training',
     type: 'website',
   },
 };

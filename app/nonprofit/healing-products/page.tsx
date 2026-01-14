@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Healing Products | Selfish Inc.',
   description: 'Products designed to support your healing journey',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/nonprofit/healing-products',
+    canonical: 'https://elevateforhumanity.institute/nonprofit/healing-products',
   },
 };
 

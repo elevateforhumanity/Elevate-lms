@@ -14,7 +14,7 @@ export const metadata = {
   description:
     'License our platform independently. Get your own credentials. Full white-label LMS, mobile app, student management. Starting at $2,000/mo. Instant access.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/pricing/independent',
+    canonical: 'https://elevateforhumanity.institute/pricing/independent',
   },
 };
 

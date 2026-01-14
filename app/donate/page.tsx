@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   keywords:
     'donate, give, support, charity, nonprofit, career training, job training, tax deductible, 501c3',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/donate',
+    canonical: 'https://elevateforhumanity.institute/donate',
   },
 };
 

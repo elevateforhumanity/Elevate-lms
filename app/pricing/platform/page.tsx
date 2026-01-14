@@ -29,7 +29,7 @@ export const metadata = {
     'ETPL approved platform',
   ],
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/pricing/platform',
+    canonical: 'https://elevateforhumanity.institute/pricing/platform',
   },
 };
 

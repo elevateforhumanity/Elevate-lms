@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Employer Settings | Elevate for Humanity',
   description: 'Manage your employer account',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/employer/settings',
+    canonical: 'https://elevateforhumanity.institute/employer/settings',
   },
 };
 

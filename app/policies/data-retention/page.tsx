@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Data Retention Policy | Elevate for Humanity',
   description: 'How long we keep student and institutional data, retention schedules, and secure deletion procedures.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/policies/data-retention',
+    canonical: 'https://elevateforhumanity.institute/policies/data-retention',
   },
 };
 

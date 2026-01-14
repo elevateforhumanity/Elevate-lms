@@ -4,7 +4,7 @@ import { Calendar as CalendarIcon, Video, Users, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/calendar',
+    canonical: 'https://elevateforhumanity.institute/calendar',
   },
   title: 'Calendar - Book Virtual Team Meeting | Elevate For Humanity',
   description:

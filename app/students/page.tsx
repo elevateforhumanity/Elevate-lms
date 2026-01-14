@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: 'For Students | Free Career Training | Elevate for Humanity',
   description: '100% free career training with job placement. No cost, no debt. Get certified and start earning in weeks.',
   alternates: {
-    canonical: 'https://www.elevateforhumanity.org/students',
+    canonical: 'https://elevateforhumanity.institute/students',
   },
 };
 

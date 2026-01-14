@@ -1,235 +1,288 @@
-'use client';
+export const dynamic = 'force-dynamic';
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { Metadata } from 'next';
+
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/client';
-import { CheckCircle, BookOpen, Clock, AlertCircle } from 'lucide-react';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Image from 'next/image';
 
-interface Application {
-  id: string;
-  status: string;
-  program_id: string;
-}
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://elevateforhumanity.institute/lms/enroll',
+  },
+  title: 'Enroll | Elevate For Humanity',
+  description:
+    'Explore Enroll and discover opportunities for career growth and development.',
+};
 
-interface Course {
-  id: string;
-  title: string;
-  description: string;
-  duration_hours: number;
-  thumbnail_url: string;
-}
+export default async function EnrollPage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-interface Enrollment {
-  id: string;
-  course_id: string;
-  status: string;
-  progress: number;
-  courses: Course;
-}
-
-export default function EnrollPage() {
-  const router = useRouter();
-  const [loading, setLoading] = useState(true);
-  const [application, setApplication] = useState<Application | null>(null);
-  const [availableCourses, setAvailableCourses] = useState<Course[]>([]);
-  const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
-  const [enrolling, setEnrolling] = useState<string | null>(null);
-
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  const loadData = async () => {
-    const supabase = createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-
-    if (!user) {
-      router.push('/login?redirect=/lms/enroll');
-      return;
-    }
-
-    // Check application status
-    const { data: app } = await supabase
-      .from('applications')
-      .select('*')
-      .eq('email', user.email)
-      .eq('status', 'approved')
-      .order('submitted_at', { ascending: false })
-      .limit(1)
-      .single();
-
-    setApplication(app);
-
-    // Get existing enrollments
-    const { data: existingEnrollments } = await supabase
-      .from('enrollments')
-      .select('*, courses(*)')
-      .eq('user_id', user.id);
-
-    setEnrollments(existingEnrollments || []);
-
-    // Get available courses
-    const { data: courses } = await supabase
-      .from('courses')
-      .select('*')
-      .eq('status', 'published')
-      .order('title');
-
-    // Filter out already enrolled courses
-    const enrolledCourseIds = new Set(existingEnrollments?.map(e => e.course_id) || []);
-    const available = courses?.filter(c => !enrolledCourseIds.has(c.id)) || [];
-    setAvailableCourses(available);
-
-    setLoading(false);
-  };
-
-  const handleEnroll = async (courseId: string) => {
-    setEnrolling(courseId);
-
-    try {
-      const response = await fetch('/api/enrollments', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ courseId }),
-      });
-
-      if (response.ok) {
-        // Refresh data
-        await loadData();
-      } else {
-        const data = await response.json();
-        alert(data.error || 'Failed to enroll');
-      }
-    } catch {
-      alert('Failed to enroll. Please try again.');
-    } finally {
-      setEnrolling(null);
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div>
-      </div>
-    );
+  if (!user) {
+    redirect('/login');
   }
 
-  // If no approved application, redirect to apply
-  if (!application) {
-    return (
-      <div className="max-w-2xl mx-auto py-12 px-4">
-        <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-8 text-center">
-          <AlertCircle className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold mb-2">Application Required</h1>
-          <p className="text-gray-600 mb-6">
-            You need an approved application before you can enroll in courses.
-          </p>
-          <Link
-            href="/lms/apply"
-            className="inline-block bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700"
-          >
-            Submit Application
-          </Link>
-          <p className="mt-4 text-sm text-gray-500">
-            Already applied?{' '}
-            <Link href="/lms/apply/status" className="text-emerald-600 hover:underline">
-              Check your status
-            </Link>
-          </p>
-        </div>
-      </div>
-    );
-  }
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single();
+
+  // Fetch student's courses
+  const { data: enrollments } = await supabase
+    .from('enrollments')
+    .select(
+      `
+      *,
+      courses (
+        id,
+        title,
+        description,
+        thumbnail_url
+      )
+    `
+    )
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false });
+
+  const { count: activeCourses } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq('user_id', user.id)
+    .eq('status', 'active');
+
+  const { count: completedCourses } = await supabase
+    .from('enrollments')
+    .select('*', { count: 'exact', head: true })
+    .eq('user_id', user.id)
+    .eq('status', 'completed');
+
+  const { data: recentProgress } = await supabase
+    .from('student_progress')
+    .select(
+      `
+      *,
+      courses (title)
+    `
+    )
+    .eq('student_id', user.id)
+    .order('updated_at', { ascending: false })
+    .limit(5);
 
   return (
-    <div className="max-w-6xl mx-auto py-8 px-4">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Course Enrollment</h1>
-        <p className="text-gray-600 mt-2">Select courses to begin your training</p>
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/artlist/hero-training-1.jpg"
+          alt="Enroll"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
 
-      {/* Current Enrollments */}
-      {enrollments.length > 0 && (
-        <div className="mb-12">
-          <h2 className="text-xl font-semibold mb-4">Your Enrollments</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {enrollments.map((enrollment) => (
-              <div key={enrollment.id} className="bg-white rounded-lg shadow-sm border overflow-hidden">
-                <div className="h-32 bg-gradient-to-r from-emerald-500 to-emerald-600 flex items-center justify-center">
-                  <BookOpen className="w-12 h-12 text-white" />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-2">{enrollment.courses?.title}</h3>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className={`text-sm px-2 py-1 rounded ${
-                      enrollment.status === 'completed' ? 'bg-green-100 text-green-800' :
-                      enrollment.status === 'active' ? 'bg-blue-100 text-blue-800' :
-                      'bg-gray-100 text-gray-800'
-                    }`}>
-                      {enrollment.status}
-                    </span>
-                    <span className="text-sm text-gray-500">{enrollment.progress}% complete</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
-                    <div
-                      className="bg-emerald-600 h-2 rounded-full"
-                      style={{ width: `${enrollment.progress}%` }}
-                    />
-                  </div>
-                  <Link
-                    href={`/lms/courses/${enrollment.course_id}`}
-                    className="block text-center bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700"
-                  >
-                    {enrollment.status === 'completed' ? 'Review Course' : 'Continue Learning'}
-                  </Link>
-                </div>
-              </div>
-            ))}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Enroll
+          </h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100">
+            Explore Enroll and discover opportunities for career growth and
+            development.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/programs"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              View Programs
+            </Link>
           </div>
         </div>
-      )}
+      </section>
 
-      {/* Available Courses */}
-      <div>
-        <h2 className="text-xl font-semibold mb-4">Available Courses</h2>
-        {availableCourses.length === 0 ? (
-          <div className="bg-gray-50 rounded-lg p-8 text-center">
-            <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-            <p className="text-gray-600">You're enrolled in all available courses!</p>
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {availableCourses.map((course) => (
-              <div key={course.id} className="bg-white rounded-lg shadow-sm border overflow-hidden">
-                <div className="h-32 bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
-                  <BookOpen className="w-12 h-12 text-white" />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-2">{course.title}</h3>
-                  <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                    {course.description || 'No description available'}
-                  </p>
-                  {course.duration_hours && (
-                    <div className="flex items-center text-sm text-gray-500 mb-4">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {course.duration_hours} hours
-                    </div>
-                  )}
-                  <button
-                    onClick={() => handleEnroll(course.id)}
-                    disabled={enrolling === course.id}
-                    className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 disabled:bg-gray-400"
-                  >
-                    {enrolling === course.id ? 'Enrolling...' : 'Enroll Now'}
-                  </button>
-                </div>
+      {/* Content Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Feature Grid */}
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Enroll</h2>
+                <p className="text-black mb-6">
+                  Explore Enroll and discover opportunities for career growth
+                  and development.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>100% free training programs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Industry-standard certifications</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Career support and job placement</span>
+                  </li>
+                </ul>
               </div>
-            ))}
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/artlist/hero-training-2.jpg"
+                  alt="Enroll"
+                  fill
+                  className="object-cover"
+                  quality={100}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+
+            {/* Feature Cards */}
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-brand-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Learn</h3>
+                <p className="text-black">
+                  Access quality training programs
+                </p>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-brand-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Certify</h3>
+                <p className="text-black">Earn industry certifications</p>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Work</h3>
+                <p className="text-black">Get hired in your field</p>
+              </div>
+            </div>
           </div>
-        )}
-      </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-brand-blue-700 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Ready to Get Started?
+            </h2>
+            <p className="text-base md:text-lg text-blue-100 mb-8">
+              Join thousands who have launched successful careers through our
+              programs.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
+              >
+                Apply Now
+              </Link>
+              <Link
+                href="/programs"
+                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
+              >
+                Browse Programs
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

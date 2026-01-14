@@ -97,7 +97,7 @@ export async function sendAdminApplicationNotification(
       <p><strong>Email:</strong> ${applicantEmail}</p>
       <p><strong>Program:</strong> ${programName}</p>
       <p><strong>Application ID:</strong> ${applicationId}</p>
-      <p><a href="https://www.elevateforhumanity.org/admin/applications/${applicationId}">View Application</a></p>
+      <p><a href="https://elevateforhumanity.institute/admin/applications/${applicationId}">View Application</a></p>
     `,
     text: `New application from ${applicantName} (${applicantEmail}) for ${programName}`,
   });
@@ -124,7 +124,7 @@ export async function sendEnrollmentApprovalNotification(
         <li>Complete your profile</li>
         <li>Start your first lesson</li>
       </ol>
-      <p><a href="https://www.elevateforhumanity.org/lms/dashboard">Go to Dashboard</a></p>
+      <p><a href="https://elevateforhumanity.institute/lms/dashboard">Go to Dashboard</a></p>
       <p>Welcome to Elevate for Humanity!</p>
     `,
     text: `Hi ${name}, Your enrollment in ${programName} has been approved! Log in to get started.`,
@@ -173,7 +173,7 @@ export async function sendAdminProgramHolderNotification(
       <p><strong>Organization:</strong> ${organizationName}</p>
       <p><strong>Contact Email:</strong> ${contactEmail}</p>
       <p><strong>Application ID:</strong> ${applicationId}</p>
-      <p><a href="https://www.elevateforhumanity.org/admin/program-holders/${applicationId}">Review Application</a></p>
+      <p><a href="https://elevateforhumanity.institute/admin/program-holders/${applicationId}">Review Application</a></p>
     `,
     text: `New program holder application from ${organizationName} (${contactEmail})`,
   });
@@ -194,7 +194,7 @@ export async function sendDocumentUploadNotification(
       <h1>New Document Uploaded</h1>
       <p><strong>Program Holder:</strong> ${programHolderName}</p>
       <p><strong>Document Type:</strong> ${documentType}</p>
-      <p><a href="https://www.elevateforhumanity.org/admin/program-holder-documents">Review Documents</a></p>
+      <p><a href="https://elevateforhumanity.institute/admin/program-holder-documents">Review Documents</a></p>
     `,
     text: `${programHolderName} uploaded a ${documentType} document`,
   });
@@ -240,7 +240,7 @@ export async function sendStudentAcceptanceNotification(
       <p>Hi ${studentName},</p>
       <p>${programHolderName} has accepted your application.</p>
       <p>You can now begin your training program.</p>
-      <p><a href="https://www.elevateforhumanity.org/lms/dashboard">Go to Dashboard</a></p>
+      <p><a href="https://elevateforhumanity.institute/lms/dashboard">Go to Dashboard</a></p>
     `,
     text: `Hi ${studentName}, ${programHolderName} has accepted your application.`,
   });
@@ -265,7 +265,7 @@ export async function sendStudentDeclineNotification(
       <p>Unfortunately, we're unable to accept your application at this time.</p>
       ${reason ? `<p><strong>Reason:</strong> ${reason}</p>` : ''}
       <p>You're welcome to apply to other programs on our platform.</p>
-      <p><a href="https://www.elevateforhumanity.org/programs">Browse Programs</a></p>
+      <p><a href="https://elevateforhumanity.institute/programs">Browse Programs</a></p>
     `,
     text: `Hi ${studentName}, Your application with ${programHolderName} was not accepted at this time.`,
   });

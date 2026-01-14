@@ -91,7 +91,7 @@ export async function sendWelcomeEmail(
           </div>
 
           <div style="text-align: center; margin: 30px 0;">
-            <a href="https://www.elevateforhumanity.org/dashboard"
+            <a href="https://elevateforhumanity.institute/dashboard"
                style="display: inline-block; background: #f97316; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
               Go to Dashboard
             </a>
@@ -163,7 +163,7 @@ export async function sendStatusUpdateEmail(
           </div>
 
           <div style="text-align: center; margin: 30px 0;">
-            <a href="https://www.elevateforhumanity.org/dashboard"
+            <a href="https://elevateforhumanity.institute/dashboard"
                style="display: inline-block; background: #f97316; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
               View Dashboard
             </a>

@@ -167,7 +167,7 @@ export async function POST(request: NextRequest) {
           .replace(/\{\{organization_name\}\}/g, 'Elevate for Humanity')
           .replace(
             /\{\{dashboard_link\}\}/g,
-            'https://www.elevateforhumanity.org/dashboard'
+            'https://elevateforhumanity.institute/dashboard'
           )
           .replace(/\{\{support_email\}\}/g, 'support@www.elevateforhumanity.org')
           .replace(/\{\{support_phone\}\}/g, '(555) 123-4567');

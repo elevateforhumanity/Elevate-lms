@@ -91,7 +91,7 @@ export async function createPartnerPaymentSession(
               name: `${provider.provider_name} Certification`,
               description: `Access to ${provider.provider_name} courses and certifications`,
               images: [
-                'https://www.elevateforhumanity.org/images/certification-badge.png',
+                'https://elevateforhumanity.institute/images/certification-badge.png',
               ],
             },
             unit_amount: Math.round(request.amount * 100), // Convert to cents

@@ -454,7 +454,7 @@ export const CREDENTIALS: Record<string, Credential> = {
     provider: 'Elevate for Humanity',
     description: 'Elevate for Humanity certificate of program completion.',
     externalId: 'EFH-CERT',
-    verificationUrl: 'https://www.elevateforhumanity.org/verify',
+    verificationUrl: 'https://elevateforhumanity.institute/verify',
     expirationMonths: null,
     requiresRenewal: false,
     stackable: true,
