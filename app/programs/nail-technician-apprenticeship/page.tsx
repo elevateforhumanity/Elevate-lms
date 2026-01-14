@@ -2,7 +2,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CheckCircle } from 'lucide-react';
+import {
+  CheckCircle,
+  XCircle,
+} from 'lucide-react';
 import { HostShopRequirements } from '@/components/compliance/HostShopRequirements';
 
 export const metadata: Metadata = {
@@ -129,7 +132,26 @@ export default function NailTechnicianApprenticeshipPage() {
               </ul>
             </div>
 
-
+            <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-red-900 mb-4 flex items-center gap-2">
+                <XCircle className="w-6 h-6" />
+                What the Program Fee Does NOT Cover
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3 text-red-900">
+                  <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <span>Practical hands-on nail technician training</span>
+                </li>
+                <li className="flex items-start gap-3 text-red-900">
+                  <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <span>State licensure-required instructional hours</span>
+                </li>
+                <li className="flex items-start gap-3 text-red-900">
+                  <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <span>Nail technician school enrollment</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
