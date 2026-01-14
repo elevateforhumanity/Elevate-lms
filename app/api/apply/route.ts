@@ -45,9 +45,9 @@ export const POST = withRateLimit(
         last_name: lastName,
         email,
         phone,
-        program_interest: program,
+        program_id: program,
         status: 'pending',
-        support_notes: `Funding: ${funding}. ${eligible ? 'Prescreen pass' : 'Manual review'}`,
+        notes: `Funding: ${funding}. ${eligible ? 'Prescreen pass' : 'Manual review'}`,
       });
 
       if (error) {
