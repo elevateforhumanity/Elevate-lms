@@ -25,7 +25,7 @@ export async function generateMetadata({
     title: `${course.title} | Elevate for Humanity`,
     description: course.description || `Learn ${course.title} with Elevate for Humanity workforce training programs.`,
     alternates: {
-      canonical: `https://elevateforhumanity.institute/courses/${params.courseId}`,
+      canonical: `https://www.elevateforhumanity.org/courses/${params.courseId}`,
     },
   };
 }

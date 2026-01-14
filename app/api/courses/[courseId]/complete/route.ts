@@ -115,7 +115,7 @@ export async function POST(
           enrollment_id: enrollment.id,
           certificate_number: certNumber,
           issued_at: new Date().toISOString(),
-          verification_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute'}/verify/${certNumber}`,
+          verification_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/verify/${certNumber}`,
         })
         .select()
         .single();

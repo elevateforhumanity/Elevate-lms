@@ -77,7 +77,7 @@ export default function SignUpForm() {
             last_name: formData.lastName,
             full_name: `${formData.firstName} ${formData.lastName}`,
           },
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
+          emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/auth/callback`,
         },
       });
 
@@ -113,7 +113,7 @@ export default function SignUpForm() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider,
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org'}/auth/callback`,
         },
       });
 
