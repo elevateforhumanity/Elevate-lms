@@ -46,11 +46,11 @@ export const publicNav: NavSection[] = [
   {
     label: 'Portals',
     items: [
-      { label: 'Student Dashboard', href: '/student/dashboard' },
-      { label: 'LMS', href: '/lms/dashboard' },
-      { label: 'Employer Portal', href: '/employer' },
-      { label: 'Partner Portal', href: '/partner' },
-      { label: 'Program Holder Portal', href: '/program-holder/dashboard' },
+      { label: 'Student Dashboard', href: '/login?next=/student/dashboard' },
+      { label: 'LMS', href: '/login?next=/lms/dashboard' },
+      { label: 'Employer Portal', href: '/login?next=/employer' },
+      { label: 'Partner Portal', href: '/login?next=/partner' },
+      { label: 'Program Holder Portal', href: '/login?next=/program-holder/dashboard' },
     ],
   },
   {
