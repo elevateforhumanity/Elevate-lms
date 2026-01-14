@@ -1,98 +1,111 @@
-# Licensing & Pricing Tiers
+# Pricing Framework (Ranges + Rationale)
+
+This is not a price list. This is how you anchor value and prevent feature-by-feature haggling.
 
 ---
 
-## Pricing Philosophy
+## How You Introduce Pricing (Verbatim)
 
-Price on **value delivered**, not features consumed.
+> "We don't price by features. We price by operational footprint."
+> That keeps pricing aligned to real usage and real risk—not checkboxes.
 
-Value = (students served) × (programs offered) × (risk transferred)
-
-Do not price per feature. Do not price per seat for staff.
-
----
-
-## Tier Structure
-
-### TIER 1: Pilot
-**For:** Single program validation, proof of concept
-
-| Element | Included |
-|---------|----------|
-| Programs | 1 |
-| Active Students | Up to 100 |
-| Credentials Issued | Unlimited |
-| Partner Integrations | 1 |
-| Support | Email, 48hr response |
-| Customization | Branding only |
-
-**Price:** $2,500/month or $25,000/year
-**Commitment:** 3-month minimum
-
-**Use case:** "We want to prove this works before scaling."
+Then show the framework.
 
 ---
 
-### TIER 2: Program License
-**For:** Multi-program institutions, workforce boards, training providers
+## The Three Pricing Dimensions (Non-Negotiable)
 
-| Element | Included |
-|---------|----------|
-| Programs | Up to 10 |
-| Active Students | Up to 1,000 |
-| Credentials Issued | Unlimited |
-| Partner Integrations | Up to 5 |
-| Support | Email + scheduled calls, 24hr response |
-| Customization | Branding + certificate templates + email templates |
+Pricing is driven by how much of the system you run:
 
-**Price:** $5,000/month or $50,000/year
-**Commitment:** Annual
+### 1. Programs
+- Number of active programs (by lifecycle, not just listings)
+- Different governance paths count as separate programs
 
-**Use case:** "We're running multiple funded programs and need governed operations."
+### 2. Learners
+- Annual active learners moving through the lifecycle
+- Not total users, not logins—active participants
 
----
+### 3. Credentials / Outcomes
+- Certificates or credentials issued annually
+- This matters because credentialing carries compliance and audit weight
 
-### TIER 3: Enterprise / White-Label
-**For:** State agencies, large workforce systems, franchise training networks
-
-| Element | Included |
-|---------|----------|
-| Programs | Unlimited |
-| Active Students | Unlimited |
-| Credentials Issued | Unlimited |
-| Partner Integrations | Unlimited |
-| Support | Dedicated success manager, SLA |
-| Customization | Full white-label, custom domain, SSO |
-
-**Price:** $10,000–$25,000/month (based on scope)
-**Commitment:** Annual + implementation fee
-
-**Use case:** "We need this across our entire system with our branding."
+**Partners are a modifier, not a base dimension.**
 
 ---
 
-## What's NOT Included (Upsells)
+## Pricing Bands (Typical Ranges)
 
-| Add-On | Price |
-|--------|-------|
-| Custom integration (LMS, SIS, funding system) | $5,000–$15,000 one-time |
-| Additional partner onboarding (beyond tier limit) | $500/partner |
-| Custom reporting / analytics dashboard | $2,500–$10,000 one-time |
-| Dedicated training for staff | $1,500/session |
-| Priority support (4hr response SLA) | +$1,000/month |
+Present these as typical ranges, not offers.
+
+### Tier 1 — Pilot / Single Program
+
+**Who it's for:** One or two programs, controlled rollout, internal proof.
+
+- 1–2 programs
+- Up to ~250 learners/year
+- Limited partner involvement
+
+**Typical annual range:** Low five figures ($15K–$30K)
+
+**Language you use:**
+> "This tier is about proving fit without overcommitting."
+
+---
+
+### Tier 2 — Multi-Program Institution
+
+**Who it's for:** Departments, workforce divisions, regional initiatives.
+
+- 3–10 programs
+- Hundreds to a few thousand learners/year
+- Multiple partners or funding paths
+
+**Typical annual range:** Mid five figures ($40K–$75K)
+
+**Language you use:**
+> "This is where institutions stop managing manually and start operating."
+
+---
+
+### Tier 3 — Enterprise / System-Wide
+
+**Who it's for:** Districts, systems, statewide initiatives, large nonprofits.
+
+- 10+ programs
+- Thousands of learners/year
+- Complex funding, partner networks
+
+**Typical annual range:** High five to low six figures ($80K–$150K+)
+
+**Language you use:**
+> "This replaces internal builds and permanent operational headcount."
+
+---
+
+## What You Never Say
+
+**Do NOT say:**
+- "It depends" without context
+- "We'll customize pricing later"
+- "We're flexible"
+
+**Instead say:**
+> "Once we know your footprint, pricing becomes mechanical."
+
+Then stop.
 
 ---
 
 ## Negotiation Anchors
 
 **If they push on price:**
-"The pilot tier exists to prove value before commitment. If it works, you scale. If it doesn't, you've spent less than one month of a junior developer's salary."
+> "The pilot tier exists to prove value before commitment. If it works, you scale. If it doesn't, you've spent less than one month of a junior developer's salary."
 
 **If they want features not in their tier:**
-"That's available in [next tier]. Or we can scope it as a one-time add-on if you want to stay at current tier."
+> "That's available in the next tier. Or we can scope it as a one-time add-on."
 
 **If they want to pay per student:**
-"We don't do per-seat because it penalizes growth. You should be able to scale enrollment without renegotiating price every quarter."
+> "We don't do per-seat because it penalizes growth. You should be able to scale enrollment without renegotiating price every quarter."
 
 ---
 
@@ -105,13 +118,7 @@ Do not price per feature. Do not price per seat for staff.
 | Nonprofit / community college | 25% off (requires verification) |
 | Case study / reference agreement | 10% off first year |
 
-Never discount more than 30% total. If they need more, they're not a buyer.
-
----
-
-## Closing Language
-
-"The pilot is designed to prove value in 90 days. If it works, we talk about scaling. If it doesn't, you've validated that quickly and cheaply. Either way, you have clarity."
+**Never discount more than 30% total.** If they need more, they're not a buyer.
 
 ---
 
@@ -119,7 +126,6 @@ Never discount more than 30% total. If they need more, they're not a buyer.
 
 Not features. Not seats. Not storage.
 
-You're selling:
 - **Speed:** Programs launch in days, not months
 - **Risk transfer:** You don't own the failure modes
 - **Operational clarity:** Staff work on exceptions, not workflows
