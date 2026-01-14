@@ -97,8 +97,10 @@ export async function POST(request: NextRequest) {
         },
       },
 
-      // Store all enrollment data in metadata
+      // Standardized metadata for grant/license compliance
       metadata: {
+        payment_type: 'partner_course',
+        funding_source: 'self_pay',
         course_id: courseId,
         course_code: course.course_code,
         student_id: studentId,

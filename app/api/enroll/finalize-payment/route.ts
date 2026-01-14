@@ -258,7 +258,9 @@ export async function POST(req: Request) {
       success_url: `${siteUrl}/enroll/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}/dashboard?enrollment_id=${enrollmentId}`,
       metadata: {
-        // Webhook expects these exact field names
+        // Standardized metadata for grant/license compliance
+        payment_type: 'enrollment_finalize',
+        funding_source: paymentMode === 'sponsored' ? 'sponsored' : 'self_pay',
         enrollment_id: enrollmentId,
         user_id: enrollment.user_id,
         course_id: enrollment.course.id,

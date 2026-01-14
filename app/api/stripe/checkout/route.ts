@@ -125,10 +125,12 @@ export async function POST(req: Request) {
       success_url: `${siteUrl}/dashboard/onboarding?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}/platform/${product.slug}`,
       metadata: {
+        // Standardized metadata for grant/license compliance
+        payment_type: 'license_purchase',
+        funding_source: 'self_pay',
         productId: product.id,
         licenseType: product.licenseType,
         appsIncluded: JSON.stringify(product.appsIncluded),
-        // Required for automatic license activation via webhook
         tenant_id: tenantId || '',
         plan_name: planName,
         stripe_price_id: priceId,

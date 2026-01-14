@@ -104,10 +104,12 @@ export async function POST(request: NextRequest) {
       success_url: `${baseUrl}/enroll/success?session_id={CHECKOUT_SESSION_ID}&program=${program.slug}`,
       cancel_url: `${baseUrl}/programs/${program.slug}`,
       metadata: {
+        // Standardized metadata for grant/license compliance
+        payment_type: paymentType === 'plan' ? 'program_subscription' : 'program_enrollment',
+        funding_source: 'self_pay',
         program_id: programId,
         program_name: program.name,
         program_slug: program.slug,
-        payment_type: paymentType,
         user_id: user?.id || 'guest',
       },
       allow_promotion_codes: true,

@@ -102,6 +102,9 @@ export async function POST(request: NextRequest) {
         },
       ],
       metadata: {
+        // Standardized metadata for grant/license compliance
+        payment_type: 'course_enrollment',
+        funding_source: 'self_pay',
         user_id: user.id,
         course_id: courseId,
         enrollment_id: existing?.id || '',

@@ -75,13 +75,16 @@ export async function POST(request: NextRequest) {
         },
       },
       metadata: {
+        // Standardized metadata for grant/license compliance
+        payment_type: 'hsi_enrollment',
+        funding_source: 'self_pay',
+        provider: 'hsi',
         course_type: courseType,
         student_id: studentId,
         student_name: studentName,
         student_email: studentEmail,
         student_phone: studentPhone || '',
         student_address: studentAddress || '',
-        provider: 'hsi',
       },
     });
 

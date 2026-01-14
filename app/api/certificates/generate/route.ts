@@ -180,12 +180,14 @@ export async function POST(request: Request) {
       );
     }
 
-    // 7) Update enrollment status to completed
+    // 7) Update enrollment status to completed and record certificate issuance timestamp
+    const now = new Date().toISOString();
     await supabase
       .from('enrollments')
       .update({
         status: 'completed',
-        completed_at: new Date().toISOString(),
+        completed_at: now,
+        certificate_issued_at: now,
       })
       .eq('id', enrollment.id);
 

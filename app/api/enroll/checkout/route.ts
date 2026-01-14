@@ -114,12 +114,12 @@ export async function POST(req: Request) {
       success_url: `${siteUrl}/enroll/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}/apply?program=${programSlug}`,
       metadata: {
-        // Webhook expects these exact field names for auto-enrollment
-        student_id: userId || application.id, // Use profile ID if exists, else application ID
+        // Standardized metadata for grant/license compliance
+        payment_type: 'enrollment',
+        funding_source: 'self_pay',
+        student_id: userId || application.id,
         program_id: program.id,
         program_slug: program.slug,
-        funding_source: 'self-pay',
-        // Additional fields for reference
         application_id: application.id,
         first_name: firstName,
         last_name: lastName,

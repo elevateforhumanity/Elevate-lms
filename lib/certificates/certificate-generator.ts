@@ -152,6 +152,7 @@ export async function issueModuleCertificate(
     .getPublicUrl(fileName);
 
   // Record certificate
+  const now = new Date().toISOString();
   const { error: recordError } = await supabase
     .from('student_certificates')
     .insert({
@@ -159,7 +160,7 @@ export async function issueModuleCertificate(
       certificate_type: 'module',
       certificate_number: certificateNumber,
       course_name: `${enrollment.course.name} - ${module.name}`,
-      issued_date: new Date().toISOString(),
+      issued_date: now,
       issuer: 'Partner Certification',
       pdf_url: urlData.publicUrl,
       metadata: {
@@ -172,6 +173,12 @@ export async function issueModuleCertificate(
   if (recordError) {
     throw new Error(`Failed to record certificate: ${recordError.message}`);
   }
+
+  // Update enrollment with certificate_issued_at timestamp (for module certs)
+  await supabase
+    .from('partner_course_enrollments')
+    .update({ certificate_issued_at: now })
+    .eq('id', enrollmentId);
 
   return certificateNumber;
 }
@@ -260,6 +267,7 @@ export async function issueProgramCertificate(
     .getPublicUrl(fileName);
 
   // Record certificate
+  const now = new Date().toISOString();
   const { error: recordError } = await supabase
     .from('student_certificates')
     .insert({
@@ -267,7 +275,7 @@ export async function issueProgramCertificate(
       certificate_type: 'program',
       certificate_number: certificateNumber,
       course_name: program.name,
-      issued_date: new Date().toISOString(),
+      issued_date: now,
       issuer: 'Elevate for Humanity',
       pdf_url: urlData.publicUrl,
       metadata: {
@@ -278,6 +286,13 @@ export async function issueProgramCertificate(
   if (recordError) {
     throw new Error(`Failed to record certificate: ${recordError.message}`);
   }
+
+  // Update enrollment with certificate_issued_at timestamp
+  await supabase
+    .from('enrollments')
+    .update({ certificate_issued_at: now })
+    .eq('user_id', studentId)
+    .eq('program_id', programId);
 
   return certificateNumber;
 }

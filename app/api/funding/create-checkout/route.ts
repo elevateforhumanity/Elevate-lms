@@ -90,10 +90,12 @@ export async function POST(req: Request) {
       success_url: `${siteUrl}/funding/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}/funding/canceled`,
       metadata: {
+        // Standardized metadata for grant/license compliance
+        payment_type: 'funded_enrollment',
+        funding_source: fundingSource,
         student_id: studentId,
         program_id: programId,
         program_slug: programSlug,
-        funding_source: fundingSource,
         sponsor: 'Elevate for Humanity',
         student_email: profile.email,
         student_name:

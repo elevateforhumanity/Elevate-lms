@@ -245,13 +245,17 @@ export async function POST(request: NextRequest) {
             }
 
             if (userId) {
+              // Determine funding_source from metadata, default to self_pay for paid transactions
+              const barberFundingSource = session.metadata?.funding_source || 
+                ((session.amount_total || 0) > 0 ? 'self_pay' : 'unknown');
+
               // Create student_enrollments record
               const { data: enrollment } = await supabase.from('student_enrollments').insert({
                 student_id: userId,
                 program_slug: 'barber-apprenticeship',
                 status: 'active',
                 region_id: 'IN',
-                funding_source: 'self-pay',
+                funding_source: barberFundingSource,
               }).select('id').single();
 
               // Create enrollment case (case spine) for workflow automation
@@ -260,7 +264,7 @@ export async function POST(request: NextRequest) {
                 programSlug: 'barber-apprenticeship',
                 programType: 'apprenticeship',
                 regionId: 'IN',
-                fundingSource: 'self-pay',
+                fundingSource: barberFundingSource,
                 signaturesRequired: ['student', 'employer', 'program_holder'],
               });
 
@@ -333,6 +337,10 @@ export async function POST(request: NextRequest) {
       // Check if this is a partner course enrollment (new system)
       if (session.metadata?.course_id && session.metadata?.provider_id) {
         try {
+          // Determine funding_source from metadata, default to self_pay for paid transactions
+          const fundingSource = session.metadata.funding_source || 
+            ((session.amount_total || 0) > 0 ? 'self_pay' : 'unknown');
+
           // Create partner enrollment record
           const { error: enrollmentError } = await supabase
             .from('partner_lms_enrollments')
@@ -346,6 +354,7 @@ export async function POST(request: NextRequest) {
               payment_session_id: session.id,
               payment_completed_at: new Date().toISOString(),
               course_name: session.metadata.course_code,
+              funding_source: fundingSource,
               metadata: {
                 wholesale_cost: session.metadata.wholesale_cost,
                 retail_price: session.metadata.retail_price,
@@ -398,6 +407,10 @@ export async function POST(request: NextRequest) {
             break;
           }
 
+          // Determine funding_source from metadata, default to self_pay for paid transactions
+          const hsiFundingSource = session.metadata.funding_source || 
+            ((session.amount_total || 0) > 0 ? 'self_pay' : 'unknown');
+
           // Create enrollment queue entry
           const { error: queueError } = await supabase
             .from('hsi_enrollment_queue')
@@ -413,6 +426,7 @@ export async function POST(request: NextRequest) {
               student_address: session.metadata.student_address || '',
               hsi_enrollment_link: course.hsi_enrollment_link,
               enrollment_status: 'pending',
+              funding_source: hsiFundingSource,
             });
 
           if (queueError) {
@@ -441,6 +455,7 @@ export async function POST(request: NextRequest) {
               payment_session_id: session.id,
               payment_completed_at: new Date().toISOString(),
               course_name: course.course_name,
+              funding_source: hsiFundingSource,
             });
           }
 
@@ -510,6 +525,10 @@ export async function POST(request: NextRequest) {
       );
 
       if (userId && courseId) {
+        // Determine funding_source from metadata, default to self_pay for paid transactions
+        const legacyFundingSource = session.metadata?.funding_source || 
+          ((session.amount_total || 0) > 0 ? 'self_pay' : 'unknown');
+
         // Create new enrollment (legacy path)
         await supabase.from('enrollments').insert({
           user_id: userId,
@@ -521,7 +540,7 @@ export async function POST(request: NextRequest) {
           paid_at: new Date().toISOString(),
           amount_paid_cents: session.amount_total || 0,
           enrollment_type: 'standalone',
-          funding_source: 'self_pay',
+          funding_source: legacyFundingSource,
           partner_owed_cents: partnerOwedCents,
           your_revenue_cents: yourRevenueCents,
         });
