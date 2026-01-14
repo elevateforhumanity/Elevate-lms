@@ -80,16 +80,16 @@ const HOMEPAGE_PROGRAMS = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Elevate for Humanity | Automation-First Workforce Platform',
+  title: 'Elevate for Humanity | Workforce and Education Hub',
   description:
-    'An automation-first workforce platform serving as the system of record for programs. Signature-driven workflows, compliance-ready reporting, and career pathways for students, employers, and sponsors.',
+    'Free career training in Indianapolis. WIOA-funded programs in healthcare, skilled trades, barbering, and technology. No tuition, no debt.',
   alternates: {
-    canonical: 'https://elevateforhumanity.institute',
+    canonical: 'https://www.elevateforhumanity.org',
   },
   openGraph: {
-    title: 'Elevate for Humanity - Workforce Automation Platform',
-    description: 'Automation-first platform connecting students, employers, and sponsors through signature-driven workflows and compliance-ready reporting.',
-    url: 'https://elevateforhumanity.institute',
+    title: 'Elevate for Humanity - Free Career Training',
+    description: 'Free career training in Indianapolis. WIOA-funded programs in healthcare, skilled trades, and technology.',
+    url: 'https://www.elevateforhumanity.org',
     siteName: 'Elevate for Humanity',
     images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Elevate for Humanity' }],
     type: 'website',
