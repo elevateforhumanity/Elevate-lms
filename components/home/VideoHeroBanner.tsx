@@ -66,9 +66,31 @@ export default function VideoHeroBanner({
     }
   };
 
+  // Check if this is being used as a standalone video (no headline)
+  const isStandaloneVideo = !headline;
+
+  if (isStandaloneVideo) {
+    return (
+      <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          loop
+          muted={!withAudio}
+          playsInline
+          preload="auto"
+          autoPlay
+          controls
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      </div>
+    );
+  }
+
   return (
     <section
-      className="relative w-full bg-gradient-to-r from-blue-900 to-blue-700"
+      className="relative w-full bg-blue-900"
       onClick={handleUserInteraction}
     >
       {/* Video Container - Full viewport height */}
@@ -91,8 +113,6 @@ export default function VideoHeroBanner({
         >
           <source src={videoSrc} type="video/mp4" />
         </video>
-
-        {/* Gradient Overlay - Removed per user request */}
 
         {/* Text Content - Centered vertically */}
         <div className="absolute inset-0 flex items-center z-10">
@@ -124,16 +144,12 @@ export default function VideoHeroBanner({
           </div>
         </div>
 
-
-
-        {/* Voiceover Audio (autoplays on page load, no loop) */}
+        {/* Voiceover Audio */}
         {voiceoverSrc && (
           <audio ref={audioRef} muted={false}>
             <source src={voiceoverSrc} type="audio/mpeg" />
           </audio>
         )}
-
-
       </div>
     </section>
   );
