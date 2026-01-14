@@ -1,6 +1,6 @@
 # Netlify Configuration for Next.js
 # Elevate for Humanity LMS Platform
-# Site: www.elevateforhumanity.org
+# Primary domain: elevateforhumanity.institute
 
 [build]
   command = "bash scripts/netlify-build.sh"
@@ -29,23 +29,29 @@
   to = "/:splat"
   status = 200
 
-# Redirect non-www .org to www .org
+# Redirect all .org domains to primary .institute domain
 [[redirects]]
   from = "https://elevateforhumanity.org/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 308
+  to = "https://elevateforhumanity.institute/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.elevateforhumanity.org/*"
+  to = "https://elevateforhumanity.institute/:splat"
+  status = 301
   force = true
 
 [[redirects]]
   from = "http://elevateforhumanity.org/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 308
+  to = "https://elevateforhumanity.institute/:splat"
+  status = 301
   force = true
 
 [[redirects]]
   from = "http://www.elevateforhumanity.org/*"
-  to = "https://www.elevateforhumanity.org/:splat"
-  status = 308
+  to = "https://elevateforhumanity.institute/:splat"
+  status = 301
   force = true
 
 [[redirects]]
