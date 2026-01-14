@@ -4,6 +4,7 @@
 import React from 'react';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { NotificationBell } from './NotificationBell';
 import {
@@ -42,9 +43,15 @@ export function LMSNavigation({ user, profile }: LMSNavigationProps) {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/lms/dashboard" aria-label="Link" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
-              <BookOpen className="w-6 h-6 text-green-600" />
+          <Link href="/lms/dashboard" aria-label="Elevate for Humanity Learning Portal" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg p-1">
+              <Image
+                src="/logo.png"
+                alt="Elevate for Humanity"
+                width={36}
+                height={36}
+                className="w-full h-full object-contain"
+              />
             </div>
             <span className="font-black text-xl text-white hidden md:block uppercase tracking-tight">
               Learning Portal

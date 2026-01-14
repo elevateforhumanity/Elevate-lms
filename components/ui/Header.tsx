@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Search, User, ChevronDown, ChevronRight } from 'lucide-react';
 
@@ -97,16 +98,21 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" aria-label="Link" className="flex items-center gap-3">
-              <div className="h-12 w-12 bg-white rounded-xl flex items-center justify-center shadow-md">
-                <span className="text-white font-bold text-2xl">E</span>
-              </div>
+            <Link href="/" aria-label="Elevate for Humanity Home" className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="Elevate for Humanity"
+                width={48}
+                height={48}
+                className="h-12 w-auto"
+                priority
+              />
               <div className="hidden sm:block">
                 <span className="text-xl font-bold text-black block leading-tight">
                   Elevate for Humanity
                 </span>
                 <span className="text-xs text-black font-medium">
-                  Indiana Career Connect Partner
+                  Technical Career Institute
                 </span>
               </div>
             </Link>
