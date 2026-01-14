@@ -9,7 +9,7 @@ export default function RapidsAdminPage() {
     ...program,
   }));
 
-  const procurementStatement = `Elevate for Humanity is the USDOL Registered Apprenticeship Sponsor of Record for the Barber program in Indiana. Registration documentation is available upon request for procurement, compliance, or partner onboarding purposes. This program is fee-based and not state-funded. Employment and wages, if applicable, are governed by host sites and applicable labor laws and are not administered through Elevate.`;
+  const procurementStatement = `Elevate for Humanity is the program brand operated by 2Exclusive LLC, the USDOL Registered Apprenticeship Sponsor of Record for the Barber program in Indiana. Registration documentation is available upon request for procurement, compliance, or partner onboarding purposes. This program is fee-based and not state-funded. Employment and wages, if applicable, are governed by host sites and applicable labor laws and are not administered through Elevate.`;
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -30,14 +30,23 @@ export default function RapidsAdminPage() {
         {/* Sponsor Information */}
         <div className="bg-white border border-gray-200 rounded-xl p-6 mb-6 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Sponsor Information</h2>
+          
+          {/* Important clarification banner */}
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-4">
+            <p className="text-sm text-amber-800">
+              <strong>Legal Entity vs Brand:</strong> The RAPIDS-registered Sponsor of Record is the legal entity. 
+              The program brand is used in marketing and student-facing materials.
+            </p>
+          </div>
+          
           <div className="grid md:grid-cols-2 gap-4">
             <div>
-              <p className="text-sm text-gray-500">Sponsor of Record</p>
+              <p className="text-sm text-gray-500">Sponsor of Record (Legal Entity)</p>
               <p className="font-semibold text-gray-900">{RAPIDS_CONFIG.sponsorOfRecord}</p>
             </div>
             <div>
-              <p className="text-sm text-gray-500">Legal Entity</p>
-              <p className="font-semibold text-gray-900">{RAPIDS_CONFIG.sponsorLegalEntity}</p>
+              <p className="text-sm text-gray-500">Program Brand</p>
+              <p className="font-semibold text-gray-900">{RAPIDS_CONFIG.programBrand}</p>
             </div>
             <div>
               <p className="text-sm text-gray-500">State</p>
@@ -47,8 +56,8 @@ export default function RapidsAdminPage() {
               <p className="text-sm text-gray-500">Licensing Agency</p>
               <p className="font-semibold text-gray-900">{RAPIDS_CONFIG.licensingAgency}</p>
             </div>
-            <div>
-              <p className="text-sm text-gray-500">Registration ID</p>
+            <div className="md:col-span-2 bg-slate-50 rounded-lg p-3">
+              <p className="text-sm text-gray-500">Registration ID (Internal Only - Do Not Share Publicly)</p>
               <p className="font-mono text-gray-900">{RAPIDS_CONFIG.registrationId}</p>
             </div>
             <div>

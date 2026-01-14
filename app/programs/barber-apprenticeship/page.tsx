@@ -361,7 +361,7 @@ export default function BarberApprenticeshipPage() {
             </summary>
             <div className="px-6 py-4 border-t border-slate-200 text-slate-700 space-y-3">
               <p>
-                Elevate for Humanity is the USDOL Registered Apprenticeship Sponsor of Record for this program.
+                Elevate for Humanity is the program brand operated by 2Exclusive LLC, the USDOL Registered Apprenticeship Sponsor of Record.
               </p>
               <p>
                 Registration documentation (including sponsor details and program registration information) is available upon request for procurement, compliance, or partner onboarding purposes.

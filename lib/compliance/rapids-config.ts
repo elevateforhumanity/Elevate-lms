@@ -7,8 +7,9 @@
 
 export const RAPIDS_CONFIG = {
   // Sponsor Information
-  sponsorOfRecord: 'Elevate for Humanity',
-  sponsorLegalEntity: '2Exclusive llc', // DBA Elevate for Humanity
+  // RAPIDS registered sponsor is the legal entity; brand is the program name
+  sponsorOfRecord: '2Exclusive LLC', // Legal entity on RAPIDS registration
+  programBrand: 'Elevate for Humanity', // Program/brand name (DBA)
   
   // Registration Details
   registrationId: process.env.RAPIDS_REGISTRATION_ID || '2025-IN-132301',
@@ -41,7 +42,7 @@ export const RAPIDS_CONFIG = {
 } as const;
 
 /**
- * Get RAPIDS metadata for Stripe checkout sessions
+ * Get RAPIDS metadata for Stripe checkout sessions (internal audit trail)
  */
 export function getRAPIDSMetadata(programSlug: string) {
   const program = Object.values(RAPIDS_CONFIG.programs).find(
@@ -51,10 +52,11 @@ export function getRAPIDSMetadata(programSlug: string) {
   if (!program) return null;
   
   return {
-    rapids_sponsor: RAPIDS_CONFIG.sponsorOfRecord,
+    rapids_sponsor_legal: RAPIDS_CONFIG.sponsorOfRecord, // Legal entity on RAPIDS
+    rapids_program_brand: RAPIDS_CONFIG.programBrand, // Program brand name
     rapids_program: program.name,
     rapids_state: RAPIDS_CONFIG.stateCode,
-    rapids_registration_id: RAPIDS_CONFIG.registrationId,
+    rapids_registration_id: RAPIDS_CONFIG.registrationId, // Internal only
     rapids_occupation_code: program.occupationCode,
     funding_type: program.fundingType,
   };
@@ -91,11 +93,13 @@ export function isRAPIDSProgram(programSlug: string): boolean {
 }
 
 /**
- * Get public-safe registration details (no sensitive IDs)
+ * Get public-safe registration details (no sensitive IDs or registration numbers)
  */
 export function getPublicRegistrationDetails() {
   return {
-    sponsorOfRecord: RAPIDS_CONFIG.sponsorOfRecord,
+    sponsorLegalEntity: RAPIDS_CONFIG.sponsorOfRecord,
+    programBrand: RAPIDS_CONFIG.programBrand,
+    publicStatement: `${RAPIDS_CONFIG.programBrand} is the program brand operated by ${RAPIDS_CONFIG.sponsorOfRecord}, the registered Sponsor of Record.`,
     state: RAPIDS_CONFIG.state,
     isStateFunded: RAPIDS_CONFIG.isStateFunded,
     licensingAgency: RAPIDS_CONFIG.licensingAgency,
