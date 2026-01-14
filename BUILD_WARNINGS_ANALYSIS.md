@@ -22,7 +22,7 @@ Please use "proxy" instead.
 
 ### Analysis
 - **File:** `middleware.ts`
-- **Purpose:** Redirects www and Vercel preview URLs to canonical domain
+- **Purpose:** Redirects www and Netlify preview URLs to canonical domain
 - **Status:** Still works perfectly in Next.js 16
 - **Impact:** None - functionality unchanged
 
@@ -39,7 +39,7 @@ export function middleware(req: NextRequest) {
   const host = req.headers.get("host");
   
   if (host === "www.www.elevateforhumanity.org" || 
-      host.endsWith(".vercel.app")) {
+      host.endsWith(".netlify.app")) {
     return NextResponse.redirect(
       "https://www.elevateforhumanity.org" + req.nextUrl.pathname,
       308

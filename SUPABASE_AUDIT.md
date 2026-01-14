@@ -74,11 +74,11 @@ https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/settings/api
 
 ---
 
-### 2. Vercel Environment Variables
+### 2. Netlify Environment Variables
 
 **Navigate to:**
 ```
-https://vercel.com/selfish2/elevate-lms/settings/environment-variables
+https://netlify.com/selfish2/elevate-lms/settings/environment-variables
 ```
 
 **These are already set in production:**
@@ -98,7 +98,7 @@ https://vercel.com/selfish2/elevate-lms/settings/environment-variables
 - Safe to commit (no secrets)
 
 **`.env.local.backup`** ✅
-- Contains Vercel OIDC token
+- Contains Netlify OIDC token
 - Does NOT contain Supabase credentials
 - Backup from previous setup
 
@@ -228,16 +228,16 @@ useEffect(() => {
 
 ### Option 1: Quick Setup (Recommended)
 
-**Step 1: Get credentials from Vercel**
+**Step 1: Get credentials from Netlify**
 ```bash
-# Install Vercel CLI if not installed
-npm i -g vercel
+# Install Netlify CLI if not installed
+npm i -g netlify
 
-# Login to Vercel
-vercel login
+# Login to Netlify
+netlify login
 
 # Pull environment variables
-vercel env pull .env.local
+netlify env pull .env.local
 ```
 
 **Step 2: Verify**
@@ -290,7 +290,7 @@ cp .env.local.backup .env.local
 nano .env.local
 ```
 
-**Note:** Current backup only has Vercel OIDC token, not Supabase credentials.
+**Note:** Current backup only has Netlify OIDC token, not Supabase credentials.
 
 ---
 
@@ -344,7 +344,7 @@ SUPABASE_URL: ✅ Set
 
 ## Production Configuration
 
-### Vercel Environment Variables
+### Netlify Environment Variables
 
 **Status:** ✅ All set correctly
 
@@ -423,7 +423,7 @@ https://elevateforhumanity.org/** (legacy, for transition)
 **Protection:**
 - ✅ `.env.local` in `.gitignore`
 - ✅ Never committed to git
-- ✅ Only in Vercel environment variables
+- ✅ Only in Netlify environment variables
 
 ---
 
@@ -448,8 +448,8 @@ https://elevateforhumanity.org/** (legacy, for transition)
 
 **Solution:**
 ```bash
-# Option 1: Pull from Vercel
-vercel env pull .env.local
+# Option 1: Pull from Netlify
+netlify env pull .env.local
 
 # Option 2: Create manually
 cp .env.example .env.local
@@ -496,7 +496,7 @@ cp .env.example .env.local
 ### For Local Development
 
 1. **Set up Supabase credentials**
-   - Pull from Vercel: `vercel env pull .env.local`
+   - Pull from Netlify: `netlify env pull .env.local`
    - Or get from Supabase dashboard
 
 2. **Test auth features locally**
@@ -536,7 +536,7 @@ cp .env.example .env.local
 
 1. **Create `.env.local`**
    ```bash
-   vercel env pull .env.local
+   netlify env pull .env.local
    ```
 
 2. **Verify Supabase connection**
@@ -594,7 +594,7 @@ cp .env.example .env.local
 **To Enable Full Local Development:**
 ```bash
 # Quick setup
-vercel env pull .env.local
+netlify env pull .env.local
 npm run dev
 ```
 
@@ -608,4 +608,4 @@ npm run dev
 
 **Supabase Project:** [https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk](https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk)
 
-**Need credentials?** Run `vercel env pull .env.local` or get from Supabase dashboard.
+**Need credentials?** Run `netlify env pull .env.local` or get from Supabase dashboard.

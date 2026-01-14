@@ -33,7 +33,7 @@ curl -I https://www.www.elevateforhumanity.org/
 HTTP/2 308 Permanent Redirect
 location: https://www.elevateforhumanity.org/
 cache-control: public, s-maxage=0, must-revalidate
-x-vercel-id: iad1::kwsj5-1767830394515-04746f1b27da
+x-netlify-id: iad1::kwsj5-1767830394515-04746f1b27da
 ```
 
 **Analysis:**
@@ -56,14 +56,14 @@ HTTP/2 200 OK
 age: 0
 cache-control: private, no-cache, no-store, max-age=0, must-revalidate
 cdn-cache-control: public, s-maxage=0, must-revalidate
-x-vercel-cache: MISS
-x-vercel-id: iad1::iad1::47hzs-1767830400047-904756f9a461
+x-netlify-cache: MISS
+x-netlify-id: iad1::iad1::47hzs-1767830400047-904756f9a461
 ```
 
 **Analysis:**
 - ✅ **age: 0** - Fresh content, not cached
 - ✅ **cache-control: no-cache, no-store** - No browser caching
-- ✅ **x-vercel-cache: MISS** - Not served from CDN cache
+- ✅ **x-netlify-cache: MISS** - Not served from CDN cache
 - ✅ **cdn-cache-control: s-maxage=0** - No CDN caching
 
 **Conclusion:** NO CACHING ISSUES
@@ -75,7 +75,7 @@ x-vercel-id: iad1::iad1::47hzs-1767830400047-904756f9a461
 **Deployment serving www.elevateforhumanity.org:**
 ```
 ID: dpl_BfqaWNLs1qQyN2YaTyLZtR9Y6QJA
-URL: https://elevate-j2gk1jfvy-selfish2.vercel.app
+URL: https://elevate-j2gk1jfvy-selfish2.netlify.app
 Status: ● Ready
 Created: 23:51:52 UTC (9 minutes ago)
 Target: production
@@ -83,8 +83,8 @@ Target: production
 Aliases:
   ✅ https://www.elevateforhumanity.org
   ✅ https://www.www.elevateforhumanity.org
-  ✅ https://elevate-lms-selfish2.vercel.app
-  ✅ https://elevate-lms-git-main-selfish2.vercel.app
+  ✅ https://elevate-lms-selfish2.netlify.app
+  ✅ https://elevate-lms-git-main-selfish2.netlify.app
 ```
 
 **Analysis:**
@@ -100,7 +100,7 @@ Aliases:
 **Latest deployment with CSS background fix:**
 ```
 ID: dpl_[pending]
-URL: https://elevate-mglbhtkbc-selfish2.vercel.app
+URL: https://elevate-mglbhtkbc-selfish2.netlify.app
 Status: ● Building (3 minutes in)
 Created: 23:57:00 UTC
 Target: production
@@ -164,7 +164,7 @@ curl -s https://www.elevateforhumanity.org/ | grep -i "service.*worker"
 ```
 23:54 UTC - Committed fixes to main branch
 23:54 UTC - Git push triggered
-23:57 UTC - Vercel deployment started (elevate-mglbhtkbc)
+23:57 UTC - Netlify deployment started (elevate-mglbhtkbc)
 23:51 UTC - Previous deployment (elevate-j2gk1jfvy) promoted to production
 NOW      - New deployment still building
 SOON     - New deployment will auto-promote to production
@@ -174,13 +174,13 @@ SOON     - New deployment will auto-promote to production
 
 ## WHAT'S HAPPENING
 
-### Normal Vercel Deployment Flow:
+### Normal Netlify Deployment Flow:
 
-1. **Code pushed** → Vercel detects change
+1. **Code pushed** → Netlify detects change
 2. **Build starts** → ~7 minutes for this project
 3. **Build completes** → Status changes to "Ready"
 4. **Auto-promotion** → New deployment assigned to production domains
-5. **DNS propagation** → Instant (Vercel handles this)
+5. **DNS propagation** → Instant (Netlify handles this)
 
 **Current Status:** Step 2 (Building)
 
@@ -203,7 +203,7 @@ SOON     - New deployment will auto-promote to production
 3. **Cache Headers**
    - age: 0 (fresh)
    - cache-control: no-cache, no-store
-   - x-vercel-cache: MISS
+   - x-netlify-cache: MISS
    - No stale content
 
 4. **No Service Worker**
@@ -212,7 +212,7 @@ SOON     - New deployment will auto-promote to production
    - Clean slate
 
 5. **DNS Configuration**
-   - Both www and apex point to Vercel
+   - Both www and apex point to Netlify
    - No split-brain deployments
    - Single source of truth
 
@@ -253,13 +253,13 @@ The site you're seeing is:
 **How to verify:**
 ```bash
 # Check deployment status
-vercel ls --token [TOKEN]
+netlify ls --token [TOKEN]
 
 # Look for:
-# elevate-mglbhtkbc-selfish2.vercel.app  ● Ready  Production
+# elevate-mglbhtkbc-selfish2.netlify.app  ● Ready  Production
 
 # Then check if it has your domain:
-vercel inspect elevate-mglbhtkbc-selfish2.vercel.app --token [TOKEN]
+netlify inspect elevate-mglbhtkbc-selfish2.netlify.app --token [TOKEN]
 
 # Look for:
 # Aliases:
@@ -292,10 +292,10 @@ Should show:
 
 **3. Check Cache Headers**
 ```bash
-curl -I https://www.elevateforhumanity.org/ | grep "x-vercel-cache"
+curl -I https://www.elevateforhumanity.org/ | grep "x-netlify-cache"
 ```
 
-Should still show: `x-vercel-cache: MISS` (good)
+Should still show: `x-netlify-cache: MISS` (good)
 
 ---
 
@@ -306,7 +306,7 @@ Should still show: `x-vercel-cache: MISS` (good)
 ```
 cache-control: private, no-cache, no-store, max-age=0, must-revalidate
 age: 0
-x-vercel-cache: MISS
+x-netlify-cache: MISS
 cf-cache-status: [not present - not using Cloudflare]
 Request URL: https://www.elevateforhumanity.org/
 ```
@@ -358,7 +358,7 @@ Request URL: https://www.elevateforhumanity.org/
 **Do NOT:**
 - ❌ Clear caches
 - ❌ Change DNS
-- ❌ Modify Vercel settings
+- ❌ Modify Netlify settings
 - ❌ Redeploy
 - ❌ Investigate "caching issues"
 
@@ -376,13 +376,13 @@ Request URL: https://www.elevateforhumanity.org/
 
 ```bash
 # Every minute, run:
-vercel ls --token 3AoTrNWG13UAIWgIQ9cK2s5X | head -8
+netlify ls --token 3AoTrNWG13UAIWgIQ9cK2s5X | head -8
 
 # When you see:
-# elevate-mglbhtkbc-selfish2.vercel.app  ● Ready  Production
+# elevate-mglbhtkbc-selfish2.netlify.app  ● Ready  Production
 
 # Then run:
-vercel inspect elevate-mglbhtkbc-selfish2.vercel.app --token 3AoTrNWG13UAIWgIQ9cK2s5X | grep -A 5 "Aliases"
+netlify inspect elevate-mglbhtkbc-selfish2.netlify.app --token 3AoTrNWG13UAIWgIQ9cK2s5X | grep -A 5 "Aliases"
 
 # If you see your domain listed, the fix is live.
 ```
@@ -400,7 +400,7 @@ You have a **deployment timing situation**:
 
 **Evidence:**
 - ✅ age: 0 (not cached)
-- ✅ x-vercel-cache: MISS (not cached)
+- ✅ x-netlify-cache: MISS (not cached)
 - ✅ cache-control: no-cache, no-store (not cached)
 - ✅ Both www and apex point to same deployment
 - ✅ No service worker

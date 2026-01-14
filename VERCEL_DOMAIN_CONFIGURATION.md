@@ -1,38 +1,38 @@
-# Vercel Domain Configuration Guide
+# Netlify Domain Configuration Guide
 **Date:** January 10, 2026  
 **Status:** Configuration Instructions
 
 ## Correct Domain Setup
 
-### ✅ Main Domain (Configure in Vercel)
+### ✅ Main Domain (Configure in Netlify)
 **Domain:** `www.elevateforhumanity.org`
 
 **Where to configure:**
-1. Go to Vercel Dashboard → Your Project → Settings → Domains
+1. Go to Netlify Dashboard → Your Project → Settings → Domains
 2. Add ONLY this domain: `www.elevateforhumanity.org`
-3. Configure DNS as instructed by Vercel
+3. Configure DNS as instructed by Netlify
 
 **This is your canonical/production domain.**
 
 ---
 
-### ❌ Redirect Domains (DO NOT Configure in Vercel)
+### ❌ Redirect Domains (DO NOT Configure in Netlify)
 **Domains:** 
 - `elevateforhumanity.org` (old domain)
 - `www.www.elevateforhumanity.org` (www subdomain)
-- `*.vercel.app` (Vercel preview domains)
+- `*.netlify.app` (Netlify preview domains)
 
 **Why NOT to add these:**
 - These domains should redirect to the main domain
 - Redirects are handled at the application level (next.config.mjs)
-- Adding them to Vercel creates duplicate deployments
+- Adding them to Netlify creates duplicate deployments
 - Can cause SEO issues and confusion
 
 **How redirects work:**
 - Configured in `next.config.mjs` (lines 131-151)
 - Handled by Next.js at runtime
 - Returns HTTP 308 permanent redirect
-- No Vercel domain configuration needed
+- No Netlify domain configuration needed
 
 ---
 
@@ -43,13 +43,13 @@
 ```javascript
 async redirects() {
   return [
-    // Redirect any vercel.app host to canonical domain
+    // Redirect any netlify.app host to canonical domain
     {
       source: '/:path*',
       has: [
         {
           type: 'host',
-          value: '.*\\.vercel\\.app',
+          value: '.*\\.netlify\\.app',
         },
       ],
       destination: 'https://www.elevateforhumanity.org/:path*',
@@ -68,20 +68,20 @@ async redirects() {
 ```
 
 **What this does:**
-- Any request to `*.vercel.app` → redirects to `www.elevateforhumanity.org`
+- Any request to `*.netlify.app` → redirects to `www.elevateforhumanity.org`
 - Any request to `www.www.elevateforhumanity.org` → redirects to `www.elevateforhumanity.org`
 - Preserves the path (e.g., `/about` stays `/about`)
 - Uses HTTP 308 (permanent redirect with method preservation)
 
 ---
 
-## Vercel Dashboard Configuration
+## Netlify Dashboard Configuration
 
 ### Step-by-Step Instructions
 
 #### 1. Access Domain Settings
 ```
-Vercel Dashboard → [Your Project] → Settings → Domains
+Netlify Dashboard → [Your Project] → Settings → Domains
 ```
 
 #### 2. Verify Main Domain
@@ -94,7 +94,7 @@ Vercel Dashboard → [Your Project] → Settings → Domains
 ```
 ❌ elevateforhumanity.org
 ❌ www.www.elevateforhumanity.org
-❌ [project-name].vercel.app (this is automatic, ignore it)
+❌ [project-name].netlify.app (this is automatic, ignore it)
 ```
 
 #### 3. Remove Incorrect Domains (If Present)
@@ -113,10 +113,10 @@ If you see `elevateforhumanity.org` or `www.www.elevateforhumanity.org`:
 
 **For www.elevateforhumanity.org:**
 
-**Option A: Using Vercel Nameservers (Recommended)**
+**Option A: Using Netlify Nameservers (Recommended)**
 ```
-ns1.vercel-dns.com
-ns2.vercel-dns.com
+ns1.netlify-dns.com
+ns2.netlify-dns.com
 ```
 
 **Option B: Using A/CNAME Records**
@@ -127,7 +127,7 @@ Value: 76.76.21.21
 
 Type: CNAME
 Name: www
-Value: cname.vercel-dns.com
+Value: cname.netlify-dns.com
 ```
 
 ---
@@ -136,7 +136,7 @@ Value: cname.vercel-dns.com
 
 ### External DNS Configuration Required
 
-The `.org` domain redirect must be configured at your DNS provider (not in Vercel):
+The `.org` domain redirect must be configured at your DNS provider (not in Netlify):
 
 **Option 1: DNS-Level Redirect (Recommended)**
 Many DNS providers offer redirect services:
@@ -152,10 +152,10 @@ Type: 301 Permanent Redirect
 Preserve Path: Yes
 ```
 
-**Option 2: Separate Vercel Project (Alternative)**
+**Option 2: Separate Netlify Project (Alternative)**
 If your DNS provider doesn't support redirects:
 
-1. Create a NEW Vercel project (separate from main project)
+1. Create a NEW Netlify project (separate from main project)
 2. Add `elevateforhumanity.org` domain to this project
 3. Deploy a simple redirect app:
 
@@ -188,9 +188,9 @@ curl -I https://www.www.elevateforhumanity.org/
 # Location: https://www.elevateforhumanity.org/
 ```
 
-### Test Vercel App Redirect
+### Test Netlify App Redirect
 ```bash
-curl -I https://[your-project].vercel.app/
+curl -I https://[your-project].netlify.app/
 # Should return: HTTP/2 308
 # Location: https://www.elevateforhumanity.org/
 ```
@@ -208,16 +208,16 @@ curl -I https://elevateforhumanity.org/
 
 ### Issue 1: "Both domains serve content"
 **Problem:** Both `.org` and `.institute` show the same site  
-**Cause:** Both domains configured in Vercel  
-**Solution:** Remove `.org` from Vercel, configure redirect at DNS level
+**Cause:** Both domains configured in Netlify  
+**Solution:** Remove `.org` from Netlify, configure redirect at DNS level
 
 ### Issue 2: "WWW subdomain not redirecting"
 **Problem:** `www.www.elevateforhumanity.org` doesn't redirect  
-**Cause:** WWW domain added to Vercel as separate domain  
-**Solution:** Remove WWW from Vercel domains, let next.config.mjs handle it
+**Cause:** WWW domain added to Netlify as separate domain  
+**Solution:** Remove WWW from Netlify domains, let next.config.mjs handle it
 
-### Issue 3: "Vercel.app domain shows site"
-**Problem:** `[project].vercel.app` serves content instead of redirecting  
+### Issue 3: "Netlify.app domain shows site"
+**Problem:** `[project].netlify.app` serves content instead of redirecting  
 **Cause:** This is expected behavior for preview deployments  
 **Solution:** 
 - Production deployments: Redirect works (configured in next.config.mjs)
@@ -271,18 +271,18 @@ Sitemap: https://www.elevateforhumanity.org/sitemap.xml
 
 ## Summary
 
-### ✅ DO Configure in Vercel
+### ✅ DO Configure in Netlify
 - `www.elevateforhumanity.org` (main production domain)
 
-### ❌ DON'T Configure in Vercel
+### ❌ DON'T Configure in Netlify
 - `elevateforhumanity.org` (redirect at DNS level)
 - `www.www.elevateforhumanity.org` (handled by next.config.mjs)
 - Any other redirect domains
 
 ### ✅ Redirects Handled By
-- **Application:** next.config.mjs (www, vercel.app)
+- **Application:** next.config.mjs (www, netlify.app)
 - **DNS Provider:** elevateforhumanity.org redirect
-- **Automatic:** Vercel preview domains
+- **Automatic:** Netlify preview domains
 
 ### ✅ Current Status
 - Main domain: `www.elevateforhumanity.org` ✅
@@ -293,10 +293,10 @@ Sitemap: https://www.elevateforhumanity.org/sitemap.xml
 
 ## Action Items
 
-### For Vercel Dashboard
+### For Netlify Dashboard
 1. ✅ Verify only `www.elevateforhumanity.org` is in Domains
 2. ❌ Remove any other domains if present
-3. ✅ Confirm DNS is pointing to Vercel
+3. ✅ Confirm DNS is pointing to Netlify
 
 ### For DNS Provider (elevateforhumanity.org)
 1. ⚠️ Configure redirect from `.org` to `.institute`

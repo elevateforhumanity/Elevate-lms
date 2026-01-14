@@ -43,7 +43,7 @@ export async function getStatus(req: Request, res: Response) {
       status: 'ok',
       running: worker.isRunning,
       config: {
-        hasVercelToken: !!worker.config.VERCEL_TOKEN,
+        hasNetlifyToken: !!worker.config.NETLIFY_AUTH_TOKEN,
         hasSupabaseUrl: !!worker.config.VITE_SUPABASE_URL,
         hasStripeKey: !!worker.config.VITE_STRIPE_PUBLISHABLE_KEY,
         siteUrl: worker.config.VITE_SITE_URL || 'not set',
@@ -130,7 +130,7 @@ export async function syncSecrets(req: Request, res: Response) {
 
     const results = {
       github: await worker.syncToGitHub(),
-      vercel: await worker.syncToVercel(),
+      netlify: await worker.syncToNetlify(),
     };
 
     res.json({

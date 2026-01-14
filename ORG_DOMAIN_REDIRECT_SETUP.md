@@ -50,10 +50,10 @@ The redirect from `.org` to `.institute` must be configured at the **DNS/domain 
 
 ### Root Cause
 The `.org` domain is not configured anywhere:
-- ❌ Not in Vercel project domains
+- ❌ Not in Netlify project domains
 - ❌ Not in next.config.mjs redirects
 - ❌ Not in application code
-- ❌ Not in DNS records pointing to Vercel
+- ❌ Not in DNS records pointing to Netlify
 
 **Result:** When users visit `.org`, they either see:
 1. Cached old content (if DNS still points to old server)
@@ -114,12 +114,12 @@ You need to configure the redirect at your **domain registrar** where `elevatefo
 
 ---
 
-### Option 2: Point to Vercel (Alternative)
+### Option 2: Point to Netlify (Alternative)
 
-If your DNS provider doesn't support redirects, you can point the `.org` domain to Vercel and let the application handle it.
+If your DNS provider doesn't support redirects, you can point the `.org` domain to Netlify and let the application handle it.
 
-#### Step 1: Add .org Domain to Vercel
-1. Go to Vercel Dashboard
+#### Step 1: Add .org Domain to Netlify
+1. Go to Netlify Dashboard
 2. Select your project
 3. Go to **Settings** → **Domains**
 4. Click **Add Domain**
@@ -157,7 +157,7 @@ TTL: 3600
 },
 ```
 
-**⚠️ Warning:** This approach adds the `.org` domain to your Vercel project, which may cause SEO issues. Option 1 is preferred.
+**⚠️ Warning:** This approach adds the `.org` domain to your Netlify project, which may cause SEO issues. Option 1 is preferred.
 
 ---
 
@@ -188,9 +188,9 @@ sudo systemd-resolve --flush-caches
 3. Go to **Caching** → **Configuration**
 4. Click **Purge Everything**
 
-### 4. Vercel Cache
-If you added the domain to Vercel:
-1. Go to Vercel Dashboard
+### 4. Netlify Cache
+If you added the domain to Netlify:
+1. Go to Netlify Dashboard
 2. Select project
 3. Go to **Deployments**
 4. Click **...** → **Redeploy**
@@ -219,7 +219,7 @@ Location: https://www.elevateforhumanity.org/
 
 #### Check DNS:
 ```bash
-# Check if DNS points to Vercel
+# Check if DNS points to Netlify
 dig elevateforhumanity.org
 
 # Should show:
@@ -248,7 +248,7 @@ dig elevateforhumanity.org
 **.env.local:**
 - ✅ NEXT_PUBLIC_SITE_URL = `https://www.elevateforhumanity.org`
 
-**vercel.json:**
+**netlify.json:**
 - ✅ No domain-specific configuration
 
 ### Email Addresses (Correct) ✅
@@ -289,7 +289,7 @@ Email addresses correctly use `.org`:
 
 ### Issue: "DNS error when visiting .org"
 **Cause:** DNS not configured  
-**Solution:** Configure DNS redirect (see Option 1) or point to Vercel (see Option 2)
+**Solution:** Configure DNS redirect (see Option 1) or point to Netlify (see Option 2)
 
 ### Issue: "Redirect works but shows .org in URL"
 **Cause:** Using 302 (temporary) instead of 301 (permanent)  
@@ -332,7 +332,7 @@ Email addresses correctly use `.org`:
 **Need Help?**
 - Check your domain registrar's documentation for "URL forwarding" or "domain redirect"
 - Contact your domain registrar's support
-- Or use Option 2 to point DNS to Vercel
+- Or use Option 2 to point DNS to Netlify
 
 ---
 

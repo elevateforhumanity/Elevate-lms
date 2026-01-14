@@ -64,7 +64,7 @@ Should work now!
 **Safari:**
 - Press `Cmd+Option+R`
 
-### Vercel Cache (Server Side)
+### Netlify Cache (Server Side)
 
 **Option 1: Redeploy**
 ```bash
@@ -73,8 +73,8 @@ git commit --allow-empty -m "Clear cache"
 git push origin main
 ```
 
-**Option 2: Vercel Dashboard**
-1. Go to: https://vercel.com/dashboard
+**Option 2: Netlify Dashboard**
+1. Go to: https://netlify.com/dashboard
 2. Find your project
 3. Go to Deployments
 4. Click "Redeploy" on latest deployment
@@ -82,7 +82,7 @@ git push origin main
 
 **Option 3: Purge Specific Path**
 
-Vercel doesn't have a direct cache purge, but you can:
+Netlify doesn't have a direct cache purge, but you can:
 1. Make a small change to the page
 2. Commit and push
 3. New deployment will have fresh cache

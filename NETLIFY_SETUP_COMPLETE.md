@@ -30,7 +30,7 @@
 - ✅ elevateforhumanity.org → www.elevateforhumanity.org
 - ✅ www.elevateforhumanity.org → www.elevateforhumanity.org
 - ✅ www.www.elevateforhumanity.org → www.elevateforhumanity.org
-- ✅ All Vercel URLs → www.elevateforhumanity.org
+- ✅ All Netlify URLs → www.elevateforhumanity.org
 
 ### 5. Security Headers
 - ✅ X-Frame-Options: DENY
@@ -154,7 +154,7 @@ Once build completes, test:
 3. **Configure DNS** at your domain registrar
 4. **Update webhooks** (Stripe, Supabase)
 5. **Monitor for 24 hours**
-6. **Clean up Vercel** (after 1 week of stable operation)
+6. **Clean up Netlify** (after 1 week of stable operation)
 
 ## 🆘 Support
 

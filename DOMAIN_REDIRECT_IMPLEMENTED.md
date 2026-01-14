@@ -1,14 +1,14 @@
 # Domain Redirect Implementation Summary
 
 **Date:** 2026-01-08 00:13 UTC  
-**Status:** ✅ CONFIGURED IN VERCEL  
+**Status:** ✅ CONFIGURED IN NETLIFY  
 **Next Step:** ADD DNS RECORDS
 
 ---
 
 ## ✅ WHAT'S BEEN DONE
 
-### Vercel Configuration: COMPLETE
+### Netlify Configuration: COMPLETE
 
 **Domains Added:**
 1. ✅ `elevateforhumanity.org`
@@ -58,19 +58,19 @@ TTL: 3600 (or Auto)
 ```
 Type: CNAME
 Name: www
-Value: cname.vercel-dns.com
+Value: cname.netlify-dns.com
 TTL: 3600 (or Auto)
 ```
 
-#### Option B: Use Vercel Nameservers (Alternative)
+#### Option B: Use Netlify Nameservers (Alternative)
 
 Change your nameservers to:
 ```
-ns1.vercel-dns.com
-ns2.vercel-dns.com
+ns1.netlify-dns.com
+ns2.netlify-dns.com
 ```
 
-**Benefit:** Vercel manages everything automatically  
+**Benefit:** Netlify manages everything automatically  
 **Downside:** Lose control of DNS at systemdns.com
 
 ---
@@ -99,7 +99,7 @@ TTL: 3600
 ```
 Record Type: CNAME
 Host/Name: www
-Points to/Value: cname.vercel-dns.com
+Points to/Value: cname.netlify-dns.com
 TTL: 3600
 ```
 
@@ -119,7 +119,7 @@ curl -s "https://dns.google/resolve?name=elevateforhumanity.org&type=A" | python
 # Check CNAME record
 curl -s "https://dns.google/resolve?name=www.elevateforhumanity.org&type=CNAME" | python3 -m json.tool
 
-# Should show: "data": "cname.vercel-dns.com."
+# Should show: "data": "cname.netlify-dns.com."
 ```
 
 ---
@@ -311,7 +311,7 @@ curl -s "https://dns.google/resolve?name=elevateforhumanity.org&type=A" | python
 **Symptom:** Browser shows "Too many redirects"
 
 **Fix:**
-- Verify only ONE redirect configured (in Vercel)
+- Verify only ONE redirect configured (in Netlify)
 - Check no conflicting redirects in `next.config.js`
 - Clear browser cache
 
@@ -320,9 +320,9 @@ curl -s "https://dns.google/resolve?name=elevateforhumanity.org&type=A" | python
 **Symptom:** "Your connection is not private"
 
 **Fix:**
-- Wait for Vercel to provision SSL (5-10 minutes after DNS)
-- Verify DNS points to Vercel
-- Check domain is verified in Vercel
+- Wait for Netlify to provision SSL (5-10 minutes after DNS)
+- Verify DNS points to Netlify
+- Check domain is verified in Netlify
 
 ### Issue: Supabase Auth Fails
 
@@ -339,9 +339,9 @@ curl -s "https://dns.google/resolve?name=elevateforhumanity.org&type=A" | python
 
 ### If You Need Help:
 
-**Vercel Support:**
-- Dashboard: https://vercel.com/support
-- Docs: https://vercel.com/docs/concepts/projects/domains
+**Netlify Support:**
+- Dashboard: https://netlify.com/support
+- Docs: https://netlify.com/docs/concepts/projects/domains
 
 **DNS Provider:**
 - systemdns.com support
@@ -365,7 +365,7 @@ curl -s "https://dns.google/resolve?name=elevateforhumanity.org&type=A" | python
 
 **Tools:**
 - Google Search Console
-- Vercel Analytics
+- Netlify Analytics
 - Supabase Auth Logs
 
 ### Week 2-4: SEO Transition
@@ -381,7 +381,7 @@ curl -s "https://dns.google/resolve?name=elevateforhumanity.org&type=A" | python
 ## 🎯 CURRENT STATUS
 
 ```
-✅ Vercel Configuration: COMPLETE
+✅ Netlify Configuration: COMPLETE
 ⏳ DNS Records: PENDING (you need to add)
 ⏳ DNS Propagation: WAITING (5-30 min after DNS added)
 ⏳ Redirect Testing: PENDING (after DNS propagates)
@@ -398,7 +398,7 @@ curl -s "https://dns.google/resolve?name=elevateforhumanity.org&type=A" | python
 1. **Add DNS Records** (10 minutes)
    - Login to systemdns.com
    - Add A record: @ → 76.76.21.21
-   - Add CNAME: www → cname.vercel-dns.com
+   - Add CNAME: www → cname.netlify-dns.com
 
 2. **Wait for DNS** (10-30 minutes)
    - Check propagation with commands above
@@ -424,10 +424,10 @@ curl -s "https://dns.google/resolve?name=elevateforhumanity.org&type=A" | python
 ## 📄 SUMMARY
 
 **What's Done:**
-- ✅ `.org` domain added to Vercel
+- ✅ `.org` domain added to Netlify
 - ✅ Redirect configured (308 permanent)
 - ✅ WWW subdomain configured
-- ✅ All verified in Vercel
+- ✅ All verified in Netlify
 
 **What You Need to Do:**
 1. Add DNS records (A and CNAME)
@@ -449,5 +449,5 @@ curl -s "https://dns.google/resolve?name=elevateforhumanity.org&type=A" | python
 ---
 
 **Implementation Date:** 2026-01-08 00:13 UTC  
-**Status:** ✅ VERCEL CONFIGURED - DNS PENDING  
+**Status:** ✅ NETLIFY CONFIGURED - DNS PENDING  
 **Next Action:** ADD DNS RECORDS

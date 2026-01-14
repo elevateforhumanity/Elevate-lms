@@ -20,7 +20,7 @@
 
 ## Environment Variables Check
 
-### ✅ Variables SET in Vercel:
+### ✅ Variables SET in Netlify:
 ```
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_***
 STRIPE_SECRET_KEY=sk_live_***
@@ -85,7 +85,7 @@ Go to: https://dashboard.stripe.com/settings/account
 1. Go to: https://dashboard.stripe.com/apikeys
 2. Click "Create secret key"
 3. Copy new key
-4. Update in Vercel:
+4. Update in Netlify:
    ```
    STRIPE_SECRET_KEY=<new-key>
    ```
@@ -105,7 +105,7 @@ Go to: https://dashboard.stripe.com/settings/account
 ### Fix 3: Remove Whitespace
 Sometimes env vars have hidden whitespace:
 ```bash
-# In Vercel, re-add the key ensuring no spaces/newlines
+# In Netlify, re-add the key ensuring no spaces/newlines
 STRIPE_SECRET_KEY=sk_live_...
 ```
 
@@ -143,7 +143,7 @@ Should show: `"stripe": { "ok": true }`
 
 ### If Key is Invalid:
 1. **Generate new keys** in Stripe dashboard
-2. **Update Vercel env vars**
+2. **Update Netlify env vars**
 3. **Redeploy** application
 4. **Test** payment flow
 
@@ -180,7 +180,7 @@ Should show: `"stripe": { "ok": true }`
 3. **Verify keys are active**
 4. **Test with curl command above**
 5. **If invalid, rotate keys**
-6. **Update Vercel**
+6. **Update Netlify**
 7. **Redeploy**
 8. **Test payment flow**
 

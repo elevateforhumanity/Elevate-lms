@@ -27,7 +27,7 @@
 
 ### 3. ✅ Domain Setup
 - Primary domain: www.elevateforhumanity.org
-- DNS configured in Vercel:
+- DNS configured in Netlify:
   - A record: @ → 75.2.60.5
   - CNAME: www → thunderous-axolotl-89d28d.netlify.app
 - Google verification: Preserved
@@ -54,7 +54,7 @@
 
 ### DNS Propagation (1-24 hours)
 The DNS changes are propagating globally. During this time:
-- Some users may see old site (Vercel)
+- Some users may see old site (Netlify)
 - Some users may see new site (Netlify)
 - This is normal during DNS propagation
 
@@ -155,7 +155,7 @@ Update callback URLs for:
 5. ⏳ Test production domain
 
 ### After 1 Week (Stable Operation)
-1. Archive Vercel project
+1. Archive Netlify project
 2. Update documentation
 3. Clean up old resources
 
@@ -168,8 +168,8 @@ Update callback URLs for:
 - Analytics: [https://app.netlify.com/sites/thunderous-axolotl-89d28d/analytics](https://app.netlify.com/sites/thunderous-axolotl-89d28d/analytics)
 - Logs: [https://app.netlify.com/sites/thunderous-axolotl-89d28d/logs](https://app.netlify.com/sites/thunderous-axolotl-89d28d/logs)
 
-### Vercel Domain
-- DNS Records: [https://vercel.com/elevate-institute/domains/www.elevateforhumanity.org](https://vercel.com/elevate-institute/domains/www.elevateforhumanity.org)
+### Netlify Domain
+- DNS Records: [https://netlify.com/elevate-institute/domains/www.elevateforhumanity.org](https://netlify.com/elevate-institute/domains/www.elevateforhumanity.org)
 
 ---
 
@@ -183,7 +183,7 @@ Update callback URLs for:
 ### DNS Not Resolving
 - Wait 24 hours for full propagation
 - Clear DNS cache: `ipconfig /flushdns` (Windows) or `sudo dscacheutil -flushcache` (Mac)
-- Check DNS records in Vercel
+- Check DNS records in Netlify
 
 ### SSL Certificate Not Issued
 - Wait for DNS to fully propagate
@@ -201,7 +201,7 @@ Update callback URLs for:
 ## 📞 Support
 
 - **Netlify Support:** [support.netlify.com](https://support.netlify.com)
-- **Vercel Domain Support:** [vercel.com/support](https://vercel.com/support)
+- **Netlify Domain Support:** [netlify.com/support](https://netlify.com/support)
 - **Documentation:** See all `NETLIFY_*.md` files in repo
 
 ---

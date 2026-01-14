@@ -1,5 +1,5 @@
-# Fix .org Domain in Vercel - Set to Redirect
-**Issue:** `elevateforhumanity.org` is set as Production domain in Vercel  
+# Fix .org Domain in Netlify - Set to Redirect
+**Issue:** `elevateforhumanity.org` is set as Production domain in Netlify  
 **Should be:** Set to Redirect to `www.elevateforhumanity.org`  
 **Date:** January 10, 2026  
 **Priority:** 🔴 HIGH
@@ -8,7 +8,7 @@
 
 ## Problem
 
-Currently in Vercel:
+Currently in Netlify:
 - ❌ `elevateforhumanity.org` is set as **Production** domain
 - ❌ `www.elevateforhumanity.org` is set as **Production** domain (possibly)
 - ✅ `www.elevateforhumanity.org` is set as **Production** domain
@@ -20,11 +20,11 @@ Currently in Vercel:
 
 ---
 
-## Solution: Configure Redirect in Vercel
+## Solution: Configure Redirect in Netlify
 
-### Step 1: Access Vercel Domain Settings
+### Step 1: Access Netlify Domain Settings
 
-1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
+1. Go to [Netlify Dashboard](https://netlify.com/dashboard)
 2. Select your project: **Elevate-lms** (or your project name)
 3. Click **Settings** in the top navigation
 4. Click **Domains** in the left sidebar
@@ -82,9 +82,9 @@ After changes, your domains should look like:
 
 ## Alternative: Remove .org Domain Entirely
 
-If you don't want to manage the redirect in Vercel:
+If you don't want to manage the redirect in Netlify:
 
-### Option A: Remove from Vercel
+### Option A: Remove from Netlify
 
 1. Go to **Settings** → **Domains**
 2. Find `elevateforhumanity.org`
@@ -94,12 +94,12 @@ If you don't want to manage the redirect in Vercel:
 
 Then configure redirect at DNS level (see `ORG_DOMAIN_REDIRECT_SETUP.md`)
 
-### Option B: Keep in Vercel as Redirect (Recommended)
+### Option B: Keep in Netlify as Redirect (Recommended)
 
-Keep the domain in Vercel but set to redirect (as described in Step 3 above).
+Keep the domain in Netlify but set to redirect (as described in Step 3 above).
 
 **Benefits:**
-- Vercel handles the redirect automatically
+- Netlify handles the redirect automatically
 - 301 permanent redirect (good for SEO)
 - No DNS configuration needed
 - Redirect works immediately
@@ -133,8 +133,8 @@ Location: https://www.elevateforhumanity.org/
 3. Should **automatically redirect** to: `https://www.elevateforhumanity.org/`
 4. Check URL bar - should show `.institute` not `.org`
 
-#### Check Vercel Deployment:
-1. Go to Vercel Dashboard → Your Project
+#### Check Netlify Deployment:
+1. Go to Netlify Dashboard → Your Project
 2. Click **Deployments**
 3. Click on latest deployment
 4. Check **Domains** section
@@ -146,8 +146,8 @@ Location: https://www.elevateforhumanity.org/
 
 ## Clear Cache After Changes
 
-### 1. Vercel Cache
-Vercel automatically updates when you change domain settings.
+### 1. Netlify Cache
+Netlify automatically updates when you change domain settings.
 
 ### 2. Browser Cache
 Users need to clear their browser cache:
@@ -212,7 +212,7 @@ URL bar: www.elevateforhumanity.org (CORRECT)
 
 ## Screenshots Guide
 
-### What You Should See in Vercel:
+### What You Should See in Netlify:
 
 #### Before Fix:
 ```
@@ -249,11 +249,11 @@ Domains:
 **Solution:** 
 1. Clear browser cache
 2. Use incognito mode
-3. Wait 5-10 minutes for Vercel to propagate changes
+3. Wait 5-10 minutes for Netlify to propagate changes
 
 ### Issue: "Getting SSL certificate error"
 **Solution:** 
-1. Vercel needs to provision SSL for redirect domains
+1. Netlify needs to provision SSL for redirect domains
 2. Wait 10-15 minutes
 3. If persists, remove and re-add domain
 
@@ -263,7 +263,7 @@ Domains:
 
 ### 1. Navigate to Domains
 ```
-Vercel Dashboard → [Your Project] → Settings → Domains
+Netlify Dashboard → [Your Project] → Settings → Domains
 ```
 
 ### 2. Find .org Domain
@@ -306,9 +306,9 @@ Domain Configuration:
 
 After making changes, verify:
 
-- [ ] `elevateforhumanity.org` shows "Redirect" in Vercel
-- [ ] `www.elevateforhumanity.org` shows "Redirect" in Vercel
-- [ ] `www.elevateforhumanity.org` shows "Production" in Vercel
+- [ ] `elevateforhumanity.org` shows "Redirect" in Netlify
+- [ ] `www.elevateforhumanity.org` shows "Redirect" in Netlify
+- [ ] `www.elevateforhumanity.org` shows "Production" in Netlify
 - [ ] curl test returns 301 redirect
 - [ ] Browser test redirects to `.institute`
 - [ ] URL bar shows `.institute` after redirect
@@ -320,7 +320,7 @@ After making changes, verify:
 ## Timeline
 
 ### Immediate (0-5 minutes):
-- Vercel processes domain configuration change
+- Netlify processes domain configuration change
 - Redirect becomes active
 
 ### Short-term (5-60 minutes):
@@ -343,17 +343,17 @@ After making changes, verify:
 ## Summary
 
 ### Current Problem:
-- `.org` domain set as **Production** in Vercel
+- `.org` domain set as **Production** in Netlify
 - Serves duplicate content
 - Causes SEO issues
 
 ### Solution:
-- Change `.org` to **Redirect** in Vercel
+- Change `.org` to **Redirect** in Netlify
 - Redirect to `.institute`
 - Use 301 permanent redirect
 
 ### Steps:
-1. Go to Vercel → Settings → Domains
+1. Go to Netlify → Settings → Domains
 2. Edit `elevateforhumanity.org`
 3. Change from Production to Redirect
 4. Enter `www.elevateforhumanity.org`
@@ -368,7 +368,7 @@ After making changes, verify:
 
 ---
 
-**Action Required:** Change domain configuration in Vercel Dashboard  
+**Action Required:** Change domain configuration in Netlify Dashboard  
 **Time Required:** 5 minutes  
 **Impact:** Immediate (redirect active within minutes)  
 **Priority:** 🔴 HIGH - Fix ASAP to resolve caching and SEO issues

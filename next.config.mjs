@@ -256,9 +256,9 @@ const nextConfig = {
     ];
   },
   async headers() {
-    const isProduction = process.env.VERCEL_ENV === 'production';
-    const isPreview = process.env.VERCEL_ENV === 'preview';
-    const host = process.env.VERCEL_URL || '';
+    const isProduction = process.env.NODE_ENV === 'production';
+    const isPreview = process.env.NODE_ENV === 'preview';
+    const host = process.env.URL || '';
     
     // Noindex for .institute domain
     const robotsHeaders = host.includes('elevateforhumanity.institute') ? [
@@ -337,7 +337,7 @@ const nextConfig = {
           { key: 'Pragma', value: 'no-cache' },
           { key: 'Expires', value: '0' },
           { key: 'Surrogate-Control', value: 'no-store' },
-          { key: 'X-Build-ID', value: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || 'dev' },
+          { key: 'X-Build-ID', value: process.env.COMMIT_REF?.slice(0, 7) || 'dev' },
           { key: 'X-Deployment-ID', value: process.env.VERCEL_DEPLOYMENT_ID || 'local' },
           ...securityHeaders,
         ],

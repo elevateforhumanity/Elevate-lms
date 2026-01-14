@@ -17,10 +17,10 @@ This will trigger an automatic deployment on Netlify.
 
 Go to: [https://app.netlify.com/sites/thunderous-axolotl-89d28d/settings/env](https://app.netlify.com/sites/thunderous-axolotl-89d28d/settings/env)
 
-### Copy from Vercel (Fastest Method)
+### Copy from Netlify (Fastest Method)
 
-1. Open Vercel Dashboard > Your Project > Settings > Environment Variables
-2. For each variable below, copy the value from Vercel to Netlify
+1. Open Netlify Dashboard > Your Project > Settings > Environment Variables
+2. For each variable below, copy the value from Netlify to Netlify
 
 ### Required Variables:
 
@@ -221,4 +221,4 @@ netlify deploy --prod
 **After successful deployment:**
 1. Monitor for 24 hours
 2. Update documentation
-3. Clean up Vercel resources (after 1 week of stable operation)
+3. Clean up Netlify resources (after 1 week of stable operation)

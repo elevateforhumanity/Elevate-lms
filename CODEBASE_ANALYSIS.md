@@ -40,9 +40,9 @@ Elevate for Humanity is a **production-ready workforce development marketplace**
 - **File Storage:** Supabase Storage
 
 ### Infrastructure
-- **Hosting:** Vercel (serverless, edge network)
+- **Hosting:** Netlify (serverless, edge network)
 - **Database:** Supabase Cloud (managed PostgreSQL)
-- **CDN:** Vercel Edge Network
+- **CDN:** Netlify Edge Network
 - **Monitoring:** Sentry 10.32.1
 - **Analytics:** Custom analytics system
 
@@ -655,7 +655,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 ### ✅ Production Ready
 
 **Infrastructure:**
-- Vercel deployment configured
+- Netlify deployment configured
 - Domain active: www.elevateforhumanity.org
 - SSL/HTTPS enabled
 - CDN caching optimized
@@ -728,7 +728,7 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 # Accounts needed
 - Supabase account (database)
 - Stripe account (payments)
-- Vercel account (deployment)
+- Netlify account (deployment)
 ```
 
 ### Quick Start

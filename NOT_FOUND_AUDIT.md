@@ -134,7 +134,7 @@ if (!course) {
 #### 1. Domain Redirects (4 rules)
 - ✅ `.org` → `.institute` (old domain)
 - ✅ `www.org` → `.institute`
-- ✅ `*.vercel.app` → `.institute`
+- ✅ `*.netlify.app` → `.institute`
 - ✅ `www.institute` → `.institute` (canonical)
 
 **Status:** ✅ Excellent - Prevents 404s from domain variations

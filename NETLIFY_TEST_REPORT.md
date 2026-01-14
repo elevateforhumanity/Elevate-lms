@@ -23,7 +23,7 @@
 - ✅ All critical variables present
 
 ### DNS Configuration
-- ✅ www.elevateforhumanity.org: Pointing to Netlify (Vercel DNS)
+- ✅ www.elevateforhumanity.org: Pointing to Netlify (Netlify DNS)
 - ✅ elevateforhumanity.org: Pointing to Netlify (Durable DNS)
 - ⏳ DNS propagation: In progress
 

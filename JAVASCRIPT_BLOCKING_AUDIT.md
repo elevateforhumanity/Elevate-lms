@@ -276,7 +276,7 @@ Move to Web Workers to avoid blocking main thread
 1. **Lighthouse** - Run monthly audits
 2. **WebPageTest** - Test from different locations
 3. **Chrome DevTools** - Coverage tab to find unused code
-4. **Vercel Analytics** - Real user monitoring
+4. **Netlify Analytics** - Real user monitoring
 
 ### Metrics to Track:
 - Core Web Vitals (LCP, FID, CLS)

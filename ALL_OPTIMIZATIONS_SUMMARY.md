@@ -164,8 +164,8 @@ curl -I https://www.elevateforhumanity.org/ | grep cdn-cache-control
 # Should show: cdn-cache-control: public, s-maxage=60, stale-while-revalidate=3600
 
 # Check CDN hit rate
-curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
-# Should show: x-vercel-cache: HIT (after first request)
+curl -I https://www.elevateforhumanity.org/ | grep x-netlify-cache
+# Should show: x-netlify-cache: HIT (after first request)
 ```
 
 ---
@@ -198,7 +198,7 @@ curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
 4. **Core Web Vitals** - LCP should improve
 
 ### Tools:
-- Vercel Analytics
+- Netlify Analytics
 - Google PageSpeed Insights
 - WebPageTest
 - Chrome DevTools
@@ -219,12 +219,12 @@ curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
 **Before:**
 - Origin requests: 300,000/day
 - Compute time: ~83 hours/day
-- Vercel cost: ~$XXX/month
+- Netlify cost: ~$XXX/month
 
 **After:**
 - Origin requests: 15,000/day (95% reduction)
 - Compute time: ~4 hours/day (95% reduction)
-- Vercel cost: ~$XX/month (90% reduction)
+- Netlify cost: ~$XX/month (90% reduction)
 
 **Savings:** ~$XXX/month in compute costs
 
@@ -287,14 +287,14 @@ curl -I https://www.elevateforhumanity.org/ | grep cdn-cache-control
 **To check CDN hit rate:**
 ```bash
 # First request (MISS)
-curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
+curl -I https://www.elevateforhumanity.org/ | grep x-netlify-cache
 
 # Second request (HIT)
-curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
+curl -I https://www.elevateforhumanity.org/ | grep x-netlify-cache
 ```
 
 **To monitor performance:**
-- Vercel Dashboard → Analytics → Edge Network
+- Netlify Dashboard → Analytics → Edge Network
 - Look for CDN hit rate >90%
 
 ---

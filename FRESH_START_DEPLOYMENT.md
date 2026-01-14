@@ -8,7 +8,7 @@
 
 ### Code & Configuration:
 - ✅ All TypeScript/React/Next.js files updated
-- ✅ All configuration files (next.config.mjs, middleware.ts, vercel.json)
+- ✅ All configuration files (next.config.mjs, middleware.ts, netlify.json)
 - ✅ All documentation updated
 - ✅ All email templates updated
 - ✅ Security vulnerability patched
@@ -40,7 +40,7 @@ git checkout main
 git merge fix/production-readiness-critical-issues
 git push origin main
 
-# Vercel will auto-deploy
+# Netlify will auto-deploy
 ```
 
 **Verify deployment:**
@@ -274,7 +274,7 @@ site:www.elevateforhumanity.org
 - [x] All tests pass
 
 ### Domain & DNS:
-- [ ] New domain points to Vercel
+- [ ] New domain points to Netlify
 - [ ] SSL certificate active
 - [ ] Old domain redirects configured
 - [ ] DNS propagated (check: https://dnschecker.org)
@@ -313,7 +313,7 @@ curl https://www.elevateforhumanity.org/sitemap.xml
 **If 404:**
 - Verify deployment completed
 - Check `app/sitemap.ts` exists
-- Clear Vercel cache
+- Clear Netlify cache
 - Redeploy
 
 ### Redirects Not Working
@@ -331,8 +331,8 @@ location: https://www.elevateforhumanity.org/
 
 **If not:**
 - Check `next.config.mjs` redirects
-- Verify DNS points to Vercel
-- Check Vercel domain settings
+- Verify DNS points to Netlify
+- Check Netlify domain settings
 
 ### Pages Not Indexing
 
@@ -360,14 +360,14 @@ curl -s https://www.elevateforhumanity.org/programs | grep -i noindex
 ## 📞 Support
 
 **If issues arise:**
-1. Check Vercel deployment logs
+1. Check Netlify deployment logs
 2. Check Google Search Console errors
 3. Check Sentry error logs
 4. Review this guide
 
 **Common issues:**
 - DNS propagation (wait 24-48 hours)
-- Cache (clear browser, CDN, Vercel)
+- Cache (clear browser, CDN, Netlify)
 - Redirects (check next.config.mjs)
 - Indexing (be patient, takes 1-4 weeks)
 

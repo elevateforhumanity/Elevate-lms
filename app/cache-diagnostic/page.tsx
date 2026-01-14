@@ -33,7 +33,7 @@ export default function CacheDiagnostic() {
             <div>
               <dt className="font-medium">Vercel Region:</dt>
               <dd className="font-mono text-sm">
-                {process.env.VERCEL_REGION || 'local'}
+                {'netlify'}
               </dd>
             </div>
           </dl>
@@ -46,16 +46,16 @@ export default function CacheDiagnostic() {
           </p>
           <p className="mb-2">Look for these headers:</p>
           <ul className="list-disc list-inside space-y-1 font-mono text-sm">
-            <li>x-vercel-cache (should be MISS or BYPASS)</li>
+            <li>x-nf-request-id (should be MISS or BYPASS)</li>
             <li>age (should be 0 or absent)</li>
             <li>cache-control</li>
-            <li>x-vercel-id</li>
+            <li>x-nf-request-id</li>
           </ul>
         </div>
 
         <div className="mt-6 p-4 bg-yellow-50 rounded-lg">
           <p className="text-sm">
-            <strong>If you see x-vercel-cache: HIT or STALE</strong> - the page
+            <strong>If you see x-nf-request-id: HIT or STALE</strong> - the page
             is being served from edge cache. This diagnostic page should always
             show MISS or BYPASS.
           </p>

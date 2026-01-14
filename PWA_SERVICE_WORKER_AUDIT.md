@@ -193,7 +193,7 @@ const CACHE_TTL = 5 * 60 * 1000;
 
 ### Current Optimizations (Better than PWA)
 
-1. **CDN Caching** (Vercel Edge)
+1. **CDN Caching** (Netlify Edge)
    - Static assets cached at edge
    - 95%+ hit rate
    - 10x faster than origin

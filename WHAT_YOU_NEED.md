@@ -68,7 +68,7 @@
 
 ### ❌ Cloudflare Workers
 **Why skip:**
-- Vercel serverless functions work
+- Netlify serverless functions work
 - No edge computing needs
 - Extra service to manage
 
@@ -152,7 +152,7 @@
 - Compliance reporting works
 
 ### ✅ Infrastructure
-- Vercel hosting solid
+- Netlify hosting solid
 - Supabase reliable
 - CI/CD functional
 - Security configured

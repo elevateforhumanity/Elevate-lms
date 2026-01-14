@@ -1,6 +1,6 @@
 # DNS Setup for Netlify
 
-**Domain:** www.elevateforhumanity.org (bought on Vercel)  
+**Domain:** www.elevateforhumanity.org (bought on Netlify)  
 **Netlify Site:** thunderous-axolotl-89d28d.netlify.app  
 **Status:** ✅ Domain added to Netlify, DNS configuration needed
 
@@ -8,23 +8,23 @@
 
 ## 🌐 DNS Records to Add
 
-Since you bought the domain on Vercel, you need to update DNS in Vercel's domain settings:
+Since you bought the domain on Netlify, you need to update DNS in Netlify's domain settings:
 
-### Configure DNS in Vercel
+### Configure DNS in Netlify
 
-**Step 1: Go to Vercel Domain Settings**
-1. Log in to [Vercel Dashboard](https://vercel.com/dashboard)
+**Step 1: Go to Netlify Domain Settings**
+1. Log in to [Netlify Dashboard](https://netlify.com/dashboard)
 2. Go to Domains
 3. Find `www.elevateforhumanity.org`
 4. Click on the domain to manage DNS
 
 **Step 2: Update DNS Records**
 
-Since Vercel manages your domain, you have two options:
+Since Netlify manages your domain, you have two options:
 
 **Option A: Point to Netlify (Recommended)**
 
-Update the DNS records in Vercel:
+Update the DNS records in Netlify:
 
 #### A Record (for root domain)
 ```

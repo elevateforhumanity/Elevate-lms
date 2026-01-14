@@ -52,8 +52,8 @@ The script will prompt you for:
    - anon/public key → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - service_role key → `SUPABASE_SERVICE_ROLE_KEY`
 
-### Vercel Dashboard (Alternative)
-1. **URL:** https://vercel.com/dashboard
+### Netlify Dashboard (Alternative)
+1. **URL:** https://netlify.com/dashboard
 2. **Navigate:** Your Project → Settings → Environment Variables
 3. **Copy:** All SUPABASE variables
 
@@ -142,10 +142,10 @@ RESEND_API_KEY=
 - Can use test/development Supabase project
 - Safe to experiment
 
-### Production (Vercel)
+### Production (Netlify)
 - Uses production URLs
 - Uses production Supabase project
-- Environment variables set in Vercel dashboard
+- Environment variables set in Netlify dashboard
 
 ---
 

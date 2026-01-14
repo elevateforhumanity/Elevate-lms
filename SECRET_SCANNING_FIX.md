@@ -169,7 +169,7 @@ git push origin deploy-branch
 ```
 
 ### Option C: Switch to Different Platform
-- Vercel (but you had issues)
+- Netlify (but you had issues)
 - Railway
 - Render
 - AWS Amplify

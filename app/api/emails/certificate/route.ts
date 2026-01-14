@@ -57,7 +57,7 @@ export async function POST(request: Request) {
       ? certificate.profiles[0]
       : certificate.profiles;
 
-    const verificationUrl = `${process.env.NEXT_PUBLIC_APP_URL || `https://${process.env.VERCEL_URL}` || 'http://localhost:3000'}/cert/verify/${certificate.verification_code}`;
+    const verificationUrl = `${process.env.NEXT_PUBLIC_APP_URL || `https://${process.env.URL}` || 'http://localhost:3000'}/cert/verify/${certificate.verification_code}`;
 
     const html = emailTemplates.certificateIssued(
       certificate.student_name,

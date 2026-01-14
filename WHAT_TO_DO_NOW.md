@@ -434,7 +434,7 @@ LIMIT 5;
 **Dashboards:**
 - Supabase: https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk
 - Stripe: https://dashboard.stripe.com
-- Vercel: https://vercel.com/dashboard
+- Netlify: https://netlify.com/dashboard
 
 **Documentation:**
 - READY_TO_LAUNCH.md - Complete launch guide
@@ -451,7 +451,7 @@ LIMIT 5;
 **Services:**
 - Stripe Support: https://support.stripe.com
 - Supabase Support: https://supabase.com/support
-- Vercel Support: https://vercel.com/support
+- Netlify Support: https://netlify.com/support
 
 ---
 

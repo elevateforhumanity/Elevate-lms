@@ -374,7 +374,7 @@ curl https://www.elevateforhumanity.org/api/webhooks/stripe
 ### Services
 - **Stripe:** https://dashboard.stripe.com
 - **Supabase:** https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk
-- **Vercel:** https://vercel.com/dashboard
+- **Netlify:** https://netlify.com/dashboard
 
 ---
 

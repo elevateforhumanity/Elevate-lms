@@ -37,8 +37,8 @@ RESEND_API_KEY=
 NODE_ENV=production
 ```
 
-**Copy from Vercel:**
-- Go to Vercel Dashboard > Project > Settings > Environment Variables
+**Copy from Netlify:**
+- Go to Netlify Dashboard > Project > Settings > Environment Variables
 - Copy each value to Netlify
 
 ### 3. Push Configuration Files (1 minute)
@@ -102,7 +102,7 @@ CNAME   www     your-site-name.netlify.app
 Go to Supabase Dashboard > Authentication > URL Configuration
 
 Update redirect URLs:
-- Old: `https://your-vercel-domain.vercel.app/**`
+- Old: `https://your-netlify-domain.netlify.app/**`
 - New: `https://www.elevateforhumanity.org/**`
 
 ## 🚨 Common Issues
@@ -140,7 +140,7 @@ Update redirect URLs:
 
 1. **Week 1:** Monitor closely, fix any issues
 2. **Week 2:** Optimize performance, review analytics
-3. **Week 3:** Clean up Vercel resources
+3. **Week 3:** Clean up Netlify resources
 4. **Week 4:** Update all documentation
 
 ## 🆘 Need Help?

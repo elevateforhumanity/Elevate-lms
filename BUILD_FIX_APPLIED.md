@@ -26,7 +26,7 @@ Created `.secretlintignore` file to exclude build artifacts:
 # Ignore build artifacts and generated files
 .netlify/**
 .next/**
-.vercel/**
+.netlify/**
 node_modules/**
 dist/**
 build/**

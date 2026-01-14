@@ -1,6 +1,6 @@
 # Netlify Migration Guide
 
-Migration from Vercel to Netlify for Elevate for Humanity LMS Platform.
+Migration from Netlify to Netlify for Elevate for Humanity LMS Platform.
 
 ## Why Netlify?
 
@@ -133,7 +133,7 @@ The `netlify.toml` file already includes redirects from:
 ### Stripe Webhooks
 
 Update Stripe webhook URL:
-- Old: `https://your-vercel-domain.vercel.app/api/webhooks/stripe`
+- Old: `https://your-netlify-domain.netlify.app/api/webhooks/stripe`
 - New: `https://www.elevateforhumanity.org/api/webhooks/stripe`
 
 1. Go to [Stripe Dashboard](https://dashboard.stripe.com/webhooks)
@@ -232,12 +232,12 @@ npm run test:e2e
 
 ### After 1 Week of Stable Operation:
 
-1. **Vercel**:
-   - Archive or delete Vercel project
-   - Cancel Vercel subscription if no longer needed
+1. **Netlify**:
+   - Archive or delete Netlify project
+   - Cancel Netlify subscription if no longer needed
 
 2. **Repository**:
-   - Remove `vercel.json` (optional)
+   - Remove `netlify.json` (optional)
    - Update README with Netlify badge
 
 3. **Documentation**:
@@ -286,7 +286,7 @@ npm run test:e2e
 
 If migration fails:
 
-1. **Immediate**: Point DNS back to Vercel
+1. **Immediate**: Point DNS back to Netlify
 2. **Update**: Revert webhook URLs
 3. **Notify**: Update status page
 4. **Debug**: Review Netlify build logs
@@ -298,9 +298,9 @@ If migration fails:
 - **Next.js on Netlify**: [docs.netlify.com/frameworks/next-js](https://docs.netlify.com/frameworks/next-js)
 - **Community**: [answers.netlify.com](https://answers.netlify.com)
 
-## Key Differences: Vercel vs Netlify
+## Key Differences: Netlify vs Netlify
 
-| Feature | Vercel | Netlify |
+| Feature | Netlify | Netlify |
 |---------|--------|---------|
 | Build Command | Automatic | Configure in `netlify.toml` |
 | Environment Variables | Dashboard | Dashboard |
@@ -314,7 +314,7 @@ If migration fails:
 
 1. Complete Steps 1-10 above
 2. Monitor for 1 week
-3. Cleanup old Vercel resources
+3. Cleanup old Netlify resources
 4. Update documentation
 5. Celebrate successful migration! 🎉
 

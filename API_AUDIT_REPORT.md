@@ -340,7 +340,7 @@ export const ErrorCode = {
 **Current Implementation:**
 - ❌ No explicit caching headers
 - ❌ No Redis caching layer
-- ⚠️ Relies on Vercel edge caching
+- ⚠️ Relies on Netlify edge caching
 
 **Recommendation:** Add cache headers for static data:
 
@@ -738,7 +738,7 @@ export async function GET(req: Request) {
 - [ ] **Secrets** not in code or logs
 - [ ] **Error messages** don't leak sensitive info
 - [ ] **Audit logging** enabled for sensitive operations
-- [ ] **HTTPS** enforced (Vercel handles this)
+- [ ] **HTTPS** enforced (Netlify handles this)
 - [ ] **Security headers** configured
 
 ---

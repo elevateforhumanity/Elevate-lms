@@ -87,7 +87,7 @@ All validation checks pass:
 - 716 pages building successfully
 - Next.js 16.1.1 with App Router
 - Supabase authentication & database
-- Vercel deployment configured
+- Netlify deployment configured
 - SSL/HTTPS active
 - CDN caching optimized
 
@@ -184,7 +184,7 @@ Upon completion, certificates are automatically generated with digital badges an
 ### Modern Tech Stack
 - **Frontend:** Next.js 16.1.1, React 19.2.1, TypeScript 5.9.3
 - **Backend:** Node.js 20+, Supabase (PostgreSQL)
-- **Infrastructure:** Vercel (serverless), Edge CDN
+- **Infrastructure:** Netlify (serverless), Edge CDN
 - **Payments:** Stripe 19.3.1
 - **Email:** Resend 6.4.2
 

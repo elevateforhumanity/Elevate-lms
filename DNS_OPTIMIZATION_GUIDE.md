@@ -2,7 +2,7 @@
 
 ## Current Status
 ✅ Domain is working correctly
-⚠️ Using older Vercel IPs (performance can be improved)
+⚠️ Using older Netlify IPs (performance can be improved)
 
 ---
 
@@ -24,7 +24,7 @@ www.elevateforhumanity.org
   Value: 76.76.21.21
 ```
 
-**Why:** Vercel's newer IP provides better routing and performance.
+**Why:** Netlify's newer IP provides better routing and performance.
 
 ---
 
@@ -41,19 +41,19 @@ www.www.elevateforhumanity.org
 ```
 www.www.elevateforhumanity.org
   Type: CNAME
-  Value: cname.vercel-dns.com
+  Value: cname.netlify-dns.com
 ```
 
-**Why:** CNAME automatically updates when Vercel changes infrastructure.
+**Why:** CNAME automatically updates when Netlify changes infrastructure.
 
 ---
 
 ## How to Fix (Step-by-Step)
 
-### Option 1: Via Vercel Dashboard (Easiest)
+### Option 1: Via Netlify Dashboard (Easiest)
 
-1. **Go to Vercel Dashboard**
-   - Visit: https://vercel.com/selfish2/elevate-lms/settings/domains
+1. **Go to Netlify Dashboard**
+   - Visit: https://netlify.com/selfish2/elevate-lms/settings/domains
 
 2. **Click on "www.elevateforhumanity.org"**
    - You'll see DNS configuration
@@ -69,7 +69,7 @@ www.www.elevateforhumanity.org
    - Delete both A records
    - Add new CNAME record:
      - Name: `www`
-     - Value: `cname.vercel-dns.com`
+     - Value: `cname.netlify-dns.com`
    - Save changes
 
 5. **Wait for Propagation**
@@ -78,29 +78,29 @@ www.www.elevateforhumanity.org
 
 ---
 
-### Option 2: Via Vercel CLI (Advanced)
+### Option 2: Via Netlify CLI (Advanced)
 
 ```bash
-# Login to Vercel
-vercel login
+# Login to Netlify
+netlify login
 
 # List current DNS records
-vercel dns ls www.elevateforhumanity.org
+netlify dns ls www.elevateforhumanity.org
 
 # Remove old A records
-vercel dns rm www.elevateforhumanity.org @ A
-vercel dns rm www.elevateforhumanity.org www A
+netlify dns rm www.elevateforhumanity.org @ A
+netlify dns rm www.elevateforhumanity.org www A
 
 # Add new A record for root domain
-vercel dns add www.elevateforhumanity.org @ A 76.76.21.21
+netlify dns add www.elevateforhumanity.org @ A 76.76.21.21
 
 # Add CNAME for www
-vercel dns add www.elevateforhumanity.org www CNAME cname.vercel-dns.com
+netlify dns add www.elevateforhumanity.org www CNAME cname.netlify-dns.com
 ```
 
 ---
 
-### Option 3: Via DNS Provider (If not using Vercel DNS)
+### Option 3: Via DNS Provider (If not using Netlify DNS)
 
 If you're using an external DNS provider (GoDaddy, Cloudflare, etc.):
 
@@ -117,7 +117,7 @@ If you're using an external DNS provider (GoDaddy, Cloudflare, etc.):
    - Add new record:
      - Type: CNAME
      - Name: www
-     - Value: cname.vercel-dns.com
+     - Value: cname.netlify-dns.com
      - TTL: 3600 (or Auto)
 
 4. **Save changes**
@@ -139,7 +139,7 @@ curl -s "https://dns.google/resolve?name=www.elevateforhumanity.org&type=A" | py
 curl -s "https://dns.google/resolve?name=www.www.elevateforhumanity.org&type=CNAME" | python3 -m json.tool
 
 # Expected output:
-# "data": "cname.vercel-dns.com."
+# "data": "cname.netlify-dns.com."
 
 # Test website still works
 curl -I https://www.elevateforhumanity.org/
@@ -162,7 +162,7 @@ www.www.elevateforhumanity.org → 216.150.16.193 (old IP)
 ### After Changes:
 ```
 www.elevateforhumanity.org → 76.76.21.21 (new IP)
-www.www.elevateforhumanity.org → cname.vercel-dns.com → 76.76.21.21
+www.www.elevateforhumanity.org → cname.netlify-dns.com → 76.76.21.21
 ```
 
 ### Performance Impact:
@@ -184,8 +184,8 @@ www.www.elevateforhumanity.org → cname.vercel-dns.com → 76.76.21.21
 
 2. **Revert to old IPs if needed:**
    ```bash
-   vercel dns add www.elevateforhumanity.org @ A 216.150.16.129
-   vercel dns add www.elevateforhumanity.org @ A 216.150.1.65
+   netlify dns add www.elevateforhumanity.org @ A 216.150.16.129
+   netlify dns add www.elevateforhumanity.org @ A 216.150.1.65
    ```
 
 3. **Wait 30 minutes for TTL to expire**
@@ -231,8 +231,8 @@ www.www.elevateforhumanity.org → cname.vercel-dns.com → 76.76.21.21
 
 ```
 Domain: www.elevateforhumanity.org
-Nameservers: ns1.vercel-dns.com, ns2.vercel-dns.com
-Managed By: Vercel
+Nameservers: ns1.netlify-dns.com, ns2.netlify-dns.com
+Managed By: Netlify
 
 Records:
   @ (root)
@@ -252,8 +252,8 @@ Records:
 
 ```
 Domain: www.elevateforhumanity.org
-Nameservers: ns1.vercel-dns.com, ns2.vercel-dns.com
-Managed By: Vercel
+Nameservers: ns1.netlify-dns.com, ns2.netlify-dns.com
+Managed By: Netlify
 
 Records:
   @ (root)
@@ -263,7 +263,7 @@ Records:
 
   www
     Type: CNAME
-    Value: cname.vercel-dns.com
+    Value: cname.netlify-dns.com
     TTL: 3600 seconds
 ```
 
@@ -272,9 +272,9 @@ Records:
 ## Support
 
 If you need help:
-1. Vercel Support: https://vercel.com/support
-2. Vercel DNS Docs: https://vercel.com/docs/concepts/projects/domains/dns
-3. Check deployment logs: https://vercel.com/selfish2/elevate-lms
+1. Netlify Support: https://netlify.com/support
+2. Netlify DNS Docs: https://netlify.com/docs/concepts/projects/domains/dns
+3. Check deployment logs: https://netlify.com/selfish2/elevate-lms
 
 ---
 

@@ -235,8 +235,8 @@ export async function GET(request: Request) {
 For frequently accessed, rarely changing data:
 
 ```typescript
-// Use Vercel Edge Config or Redis
-import { kv } from '@vercel/kv';
+// Use Netlify Edge Config or Redis
+import { kv } from '@netlify/kv';
 
 export async function GET() {
   // Try cache first

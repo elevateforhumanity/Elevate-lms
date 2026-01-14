@@ -91,7 +91,7 @@ All critical fixes completed and deployed. Platform is production-ready with:
 
 #### Infrastructure
 - [x] Next.js 16.1.1 with Turbopack
-- [x] Vercel deployment configured
+- [x] Netlify deployment configured
 - [x] Domain migration complete (.org → .institute)
 - [x] SSL/HTTPS active
 - [x] CDN caching configured
@@ -261,7 +261,7 @@ psql $DATABASE_URL -f supabase/seed/comprehensive_student_data.sql
 
 ### 4. Monitor Production (Ongoing)
 **Tools:**
-- Vercel Analytics
+- Netlify Analytics
 - Supabase Dashboard
 - Google Search Console
 - Error tracking (Sentry)
@@ -308,7 +308,7 @@ All critical issues resolved. Remaining items are:
 - [x] Security headers configured
 - [x] Row Level Security (RLS) policies
 - [x] Authentication required for sensitive routes
-- [x] API rate limiting (via Vercel)
+- [x] API rate limiting (via Netlify)
 - [x] Environment variables secured
 
 ### 🔒 Best Practices
@@ -347,7 +347,7 @@ All critical issues resolved. Remaining items are:
 ### External Resources
 - **Next.js:** https://nextjs.org/docs
 - **Supabase:** https://supabase.com/docs
-- **Vercel:** https://vercel.com/docs
+- **Netlify:** https://netlify.com/docs
 - **Resend:** https://resend.com/docs
 
 ### Repository
@@ -359,14 +359,14 @@ All critical issues resolved. Remaining items are:
 ## Deployment Information
 
 ### Current Deployment
-- **Platform:** Vercel
+- **Platform:** Netlify
 - **Region:** Global (Edge Network)
 - **Branch:** main
 - **Last Deploy:** January 8, 2026
 - **Status:** ✅ Live
 
 ### Environment Variables
-- **Configured:** Vercel dashboard
+- **Configured:** Netlify dashboard
 - **Required:** Supabase, Stripe, OpenAI, etc.
 - **Status:** ✅ All set in production
 
@@ -374,7 +374,7 @@ All critical issues resolved. Remaining items are:
 - **Trigger:** Push to main branch
 - **Build:** Automatic
 - **Deploy:** Automatic on success
-- **Rollback:** Available via Vercel dashboard
+- **Rollback:** Available via Netlify dashboard
 
 ---
 

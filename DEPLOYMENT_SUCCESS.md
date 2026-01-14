@@ -84,7 +84,7 @@
 ### Domains
 - ✅ Primary domain: www.elevateforhumanity.org (configured)
 - ✅ Redirect domain: elevateforhumanity.org (configured)
-- ✅ DNS: Configured in Vercel and Durable
+- ✅ DNS: Configured in Netlify and Durable
 - ⏳ Propagation: In progress
 
 ---
@@ -147,7 +147,7 @@
 1. Fix recent build failures
 2. Optimize performance
 3. Set up monitoring
-4. Archive Vercel project
+4. Archive Netlify project
 
 ---
 
@@ -247,7 +247,7 @@ Visit: [https://thunderous-axolotl-89d28d.netlify.app](https://thunderous-axolot
 
 3. **DNS not resolving:**
    - Wait 24 hours for propagation
-   - Verify DNS records in Vercel/Durable
+   - Verify DNS records in Netlify/Durable
    - Use DNS checker tools
 
 **Get help:**
@@ -258,7 +258,7 @@ Visit: [https://thunderous-axolotl-89d28d.netlify.app](https://thunderous-axolot
 
 ## 🏆 Migration Complete!
 
-**From:** Vercel (with issues)  
+**From:** Netlify (with issues)  
 **To:** Netlify (stable and working)
 
 **What changed:**

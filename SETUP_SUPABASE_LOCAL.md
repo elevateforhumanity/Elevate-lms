@@ -20,16 +20,16 @@
 
 ## Quick Setup (Recommended)
 
-### Step 1: Install Vercel CLI
+### Step 1: Install Netlify CLI
 
 ```bash
-npm i -g vercel
+npm i -g netlify
 ```
 
-### Step 2: Login to Vercel
+### Step 2: Login to Netlify
 
 ```bash
-vercel login
+netlify login
 ```
 
 Follow the prompts to authenticate.
@@ -37,10 +37,10 @@ Follow the prompts to authenticate.
 ### Step 3: Pull Environment Variables
 
 ```bash
-vercel env pull .env.local
+netlify env pull .env.local
 ```
 
-This downloads all environment variables from Vercel, including Supabase credentials.
+This downloads all environment variables from Netlify, including Supabase credentials.
 
 ### Step 4: Restart Dev Server
 
@@ -197,31 +197,31 @@ SUPABASE_SERVICE_ROLE_KEY=eyJhbGci...
 
 ## Troubleshooting
 
-### Issue: "vercel: command not found"
+### Issue: "netlify: command not found"
 
 **Solution:**
 ```bash
-npm i -g vercel
+npm i -g netlify
 ```
 
 ---
 
-### Issue: "vercel env pull" fails
+### Issue: "netlify env pull" fails
 
 **Possible causes:**
-1. Not logged in to Vercel
+1. Not logged in to Netlify
 2. No access to project
 
 **Solution:**
 ```bash
 # Login first
-vercel login
+netlify login
 
 # Link to project
-vercel link
+netlify link
 
 # Try again
-vercel env pull .env.local
+netlify env pull .env.local
 ```
 
 ---
@@ -294,9 +294,9 @@ node -e "require('dotenv').config({ path: '.env.local' }); console.log('URL:', p
 
 ## What's Already Configured
 
-### ✅ Production (Vercel)
+### ✅ Production (Netlify)
 
-All Supabase variables are set in Vercel:
+All Supabase variables are set in Netlify:
 - Production environment
 - Preview environment
 - Development environment
@@ -427,7 +427,7 @@ Database schema is already set up:
 
 **Deploy:**
 1. Push to GitHub
-2. Vercel auto-deploys
+2. Netlify auto-deploys
 3. Uses production Supabase
 4. Test on production
 
@@ -437,9 +437,9 @@ Database schema is already set up:
 
 ### Get Credentials
 
-**From Vercel:**
+**From Netlify:**
 ```bash
-vercel env pull .env.local
+netlify env pull .env.local
 ```
 
 **From Supabase:**
@@ -478,7 +478,7 @@ npm run dev
 
 ```bash
 # Quick method (recommended)
-vercel env pull .env.local
+netlify env pull .env.local
 npm run dev
 
 # Manual method

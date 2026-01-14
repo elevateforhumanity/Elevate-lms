@@ -20,16 +20,16 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 
 ### 2. Get Supabase Credentials
 
-**Option A: From Vercel (Recommended)**
+**Option A: From Netlify (Recommended)**
 ```bash
-# Login to Vercel
-vercel login
+# Login to Netlify
+netlify login
 
 # Link project
-vercel link
+netlify link
 
 # Pull environment variables
-vercel env pull .env.local
+netlify env pull .env.local
 ```
 
 **Option B: From Supabase Dashboard**

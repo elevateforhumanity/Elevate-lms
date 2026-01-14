@@ -463,7 +463,7 @@ typescript: {
 2. Enable strict type checking
 3. Monitor performance
 4. Optimize build times
-5. Clean up old Vercel deployment
+5. Clean up old Netlify deployment
 
 ---
 

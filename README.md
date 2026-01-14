@@ -55,12 +55,12 @@ Elevate for Humanity is a multi-sided workforce marketplace platform connecting 
 - **API:** Next.js API Routes (200+ endpoints)
 
 ### Infrastructure
-- **Hosting:** Vercel (Serverless)
+- **Hosting:** Netlify (Serverless)
 - **Database:** Supabase Cloud
 - **Payments:** Stripe 19.3.1 + Affirm
 - **Email:** Resend 6.4.2
 - **Monitoring:** Sentry 10.32.1
-- **CDN:** Vercel Edge Network
+- **CDN:** Netlify Edge Network
 
 ### Key Integrations
 - **Payments:** Stripe, Affirm
@@ -304,7 +304,7 @@ pnpm test:e2e               # End-to-end tests
 pnpm test:coverage          # Coverage report
 
 # Deployment
-pnpm deploy:vercel          # Deploy to Vercel
+pnpm deploy:netlify          # Deploy to Netlify
 pnpm verify                 # Pre-deployment checks
 ```
 
@@ -337,12 +337,12 @@ pnpm verify                 # Pre-deployment checks
 
 ## Deployment
 
-### Production Deployment (Vercel)
+### Production Deployment (Netlify)
 
-The platform is configured for automatic deployment via Vercel:
+The platform is configured for automatic deployment via Netlify:
 
 1. **Push to main branch** - Triggers automatic deployment
-2. **Environment variables** - Configured in Vercel dashboard
+2. **Environment variables** - Configured in Netlify dashboard
 3. **Database migrations** - Run automatically via Supabase
 4. **Build optimization** - 8GB memory allocation for builds
 
@@ -352,8 +352,8 @@ The platform is configured for automatic deployment via Vercel:
 # Build locally
 pnpm build
 
-# Deploy to Vercel
-pnpm deploy:vercel
+# Deploy to Netlify
+pnpm deploy:netlify
 ```
 
 ### Health Checks
@@ -480,7 +480,7 @@ pnpm test:coverage
 ### Production Monitoring
 
 - **Sentry:** Error tracking and performance monitoring
-- **Vercel Analytics:** Web vitals and performance
+- **Netlify Analytics:** Web vitals and performance
 - **Custom Health Checks:** `/api/health` endpoint
 - **Uptime Monitoring:** External service monitoring
 
@@ -507,7 +507,7 @@ curl https://www.elevateforhumanity.org/api/health
 
 - ✅ **Authentication:** Supabase Auth with JWT tokens
 - ✅ **Authorization:** Row Level Security (RLS) policies
-- ✅ **HTTPS:** Enforced via Vercel
+- ✅ **HTTPS:** Enforced via Netlify
 - ✅ **CSRF Protection:** Built into Next.js
 - ✅ **XSS Protection:** DOMPurify sanitization
 - ✅ **SQL Injection:** Parameterized queries
@@ -652,7 +652,7 @@ Upon course completion:
 - ✅ Next.js 16.1.1 with App Router
 - ✅ Supabase authentication & database
 - ✅ Stripe payment integration
-- ✅ Vercel deployment configured
+- ✅ Netlify deployment configured
 - ✅ SSL/HTTPS active
 - ✅ CDN caching optimized
 - ✅ Security headers configured

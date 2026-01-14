@@ -32,7 +32,7 @@ const getOfficialDomains = () => {
     'www.elevateforhumanity.org',
     'www.www.elevateforhumanity.org',
     'localhost',
-    'vercel.app',
+    
   ];
 };
 

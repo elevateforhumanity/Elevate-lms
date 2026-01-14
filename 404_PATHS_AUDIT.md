@@ -1,6 +1,6 @@
 # 404 Paths Audit Report
 **Date:** January 10, 2026  
-**Source:** Vercel Analytics - Last 12 hours  
+**Source:** Netlify Analytics - Last 12 hours  
 **Total 404s:** ~42K requests
 
 ---
@@ -143,7 +143,7 @@ Old 404 responses cached at edge:
 - All three paths have identical request counts
 
 **Solution:**
-- Purge edge cache in Vercel
+- Purge edge cache in Netlify
 - Wait for cache TTL to expire
 - Force cache invalidation on deployment
 
@@ -213,14 +213,14 @@ curl -I https://www.elevateforhumanity.org/about
 curl -I https://www.elevateforhumanity.org/home  # Should return 301
 ```
 
-### Step 4: Check Vercel Logs
-1. Go to Vercel Dashboard
+### Step 4: Check Netlify Logs
+1. Go to Netlify Dashboard
 2. Select deployment
 3. Check **Functions** tab
 4. Look for errors in page generation
 
 ### Step 5: Purge Cache
-1. Go to Vercel Dashboard
+1. Go to Netlify Dashboard
 2. Select deployment
 3. Click **...** menu
 4. Select **Purge Cache**

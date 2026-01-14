@@ -161,9 +161,9 @@ export default function SiteFooter() {
             </div>
             <p className="text-xs text-gray-400">
               © {new Date().getFullYear()} Elevate For Humanity. All Rights Reserved.
-              {process.env.VERCEL_GIT_COMMIT_SHA && (
+              {process.env.COMMIT_REF && (
                 <span className="ml-2 opacity-50">
-                  v{process.env.VERCEL_GIT_COMMIT_SHA.slice(0, 7)}
+                  v{process.env.COMMIT_REF.slice(0, 7)}
                 </span>
               )}
             </p>

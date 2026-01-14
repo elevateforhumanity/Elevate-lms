@@ -262,7 +262,7 @@ The entire Elevate for Humanity website, including public pages, dashboards, por
 All changes have been:
 - ✅ Committed to Git
 - ✅ Pushed to GitHub (origin/main)
-- ✅ Automatically deployed by Vercel
+- ✅ Automatically deployed by Netlify
 - ✅ Live on production URL
 
 **Latest Commits:**

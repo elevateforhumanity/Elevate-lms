@@ -4,7 +4,7 @@
 
 ## Problem
 
-When Vercel builds the application, it was showing BOTH domains on the build screen:
+When Netlify builds the application, it was showing BOTH domains on the build screen:
 - ❌ `elevateforhumanity.org` (old redirect domain)
 - ✅ `www.elevateforhumanity.org` (main production domain)
 
@@ -102,7 +102,7 @@ NEXT_PUBLIC_SITE_URL=https://www.elevateforhumanity.org
 ```javascript
 // Redirect .org to .institute (handled externally at DNS level)
 // Redirect www to non-www (handled by Next.js)
-// Redirect vercel.app to .institute (handled by Next.js)
+// Redirect netlify.app to .institute (handled by Next.js)
 ```
 
 ---
@@ -131,7 +131,7 @@ grep -r "www.elevateforhumanity.org" app/ | grep canonical
 
 ## Impact
 
-### Vercel Build Screen
+### Netlify Build Screen
 **Before:**
 ```
 Domains:
@@ -162,27 +162,27 @@ Domains:
 
 ### Main Domain (Production)
 **Domain:** `www.elevateforhumanity.org`
-- Configured in Vercel project settings
+- Configured in Netlify project settings
 - All canonical URLs point here
 - All metadata uses this domain
 - Sitemap uses this domain
 
 ### Redirect Domain (External)
 **Domain:** `elevateforhumanity.org`
-- NOT configured in Vercel
+- NOT configured in Netlify
 - Redirects handled at DNS level
 - Users automatically redirected to `.institute`
 - Email addresses still use this domain
 
 ### Subdomain Redirects (Application Level)
 **Domain:** `www.www.elevateforhumanity.org`
-- NOT configured in Vercel
+- NOT configured in Netlify
 - Redirects handled by `next.config.mjs`
 - Automatically redirects to non-www
 
 ### Preview Domains (Automatic)
-**Domain:** `*.vercel.app`
-- Automatically created by Vercel
+**Domain:** `*.netlify.app`
+- Automatically created by Netlify
 - Redirects handled by `next.config.mjs` in production
 - Shows content in preview deployments (expected)
 
@@ -228,8 +228,8 @@ curl -s https://www.elevateforhumanity.org/ | grep -E "(og:url|twitter:url)"
 4. ✅ Sitemap uses `.institute`
 5. ✅ Robots.txt uses `.institute`
 
-### Vercel Configuration
-**No changes needed** - Vercel project settings should already have:
+### Netlify Configuration
+**No changes needed** - Netlify project settings should already have:
 - ✅ `www.elevateforhumanity.org` as production domain
 - ❌ No other domains configured
 
@@ -255,7 +255,7 @@ curl -s https://www.elevateforhumanity.org/ | grep -E "(og:url|twitter:url)"
 
 ## Result
 
-**Vercel build screen will now show only:**
+**Netlify build screen will now show only:**
 ```
 ✅ www.elevateforhumanity.org
 ```

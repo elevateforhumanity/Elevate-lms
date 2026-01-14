@@ -1,5 +1,5 @@
-export const APP_VERSION = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) || 'dev';
-export const BUILD_ID = process.env.VERCEL_DEPLOYMENT_ID || 'local';
+export const APP_VERSION = process.env.COMMIT_REF?.slice(0, 7) || 'dev';
+export const BUILD_ID = process.env.BUILD_ID || process.env.COMMIT_REF || 'local';
 
 export function checkVersionMismatch(): boolean {
   if (typeof window === 'undefined') return false;

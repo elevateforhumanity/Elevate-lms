@@ -650,7 +650,7 @@ if (!onboardingComplete) {
 
 ### 17.1 Production Environment
 
-**Platform**: Vercel  
+**Platform**: Netlify  
 **Domain**: www.elevateforhumanity.org  
 **Status**: ✅ DEPLOYED
 

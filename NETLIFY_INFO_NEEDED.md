@@ -46,7 +46,7 @@ Please provide:
 ## 📋 Optional but Helpful
 
 ### 6. Current Issues
-- [ ] What specific issues are you experiencing with Vercel?
+- [ ] What specific issues are you experiencing with Netlify?
 - [ ] Are there any error messages you're seeing?
 - [ ] Which features are not working?
 

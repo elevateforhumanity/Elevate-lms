@@ -40,7 +40,7 @@ SALESFORCE_API_KEY=<your-salesforce-access-token>
 SALESFORCE_INSTANCE_URL=https://your-instance.salesforce.com
 ```
 
-**Status:** Not configured in Vercel
+**Status:** Not configured in Netlify
 
 ### 2. **OAuth Authentication** ❌ MISSING
 Current implementation uses API key (Bearer token).
@@ -151,7 +151,7 @@ Opportunity: name, closeDate, stageName, amount
 
 ### 1. **Add Missing Environment Variables** (5 minutes)
 ```bash
-# Add to Vercel
+# Add to Netlify
 SALESFORCE_API_KEY=<get-from-salesforce>
 SALESFORCE_INSTANCE_URL=https://your-instance.salesforce.com
 SALESFORCE_CLIENT_ID=<oauth-client-id>
@@ -254,7 +254,7 @@ export async function POST(request: Request) {
 
 ### **High Priority:**
 - [ ] Set up Salesforce sandbox account for demo
-- [ ] Add Salesforce env vars to Vercel
+- [ ] Add Salesforce env vars to Netlify
 - [ ] Test contact creation with their Salesforce
 - [ ] Prepare demo showing data flow
 

@@ -11,7 +11,7 @@
 
 ### ✅ What's Configured
 
-**Vercel Project Domains:**
+**Netlify Project Domains:**
 ```
 1. www.elevateforhumanity.org (verified)
 2. www.www.elevateforhumanity.org (verified)
@@ -39,15 +39,15 @@ elevateforhumanity.org
 
 ## STEP-BY-STEP IMPLEMENTATION
 
-### Step 1: Add .org Domain to Vercel
+### Step 1: Add .org Domain to Netlify
 
-**Platform:** Vercel  
-**Method:** Vercel Dashboard (recommended) or CLI
+**Platform:** Netlify  
+**Method:** Netlify Dashboard (recommended) or CLI
 
-#### Option A: Vercel Dashboard (Easiest)
+#### Option A: Netlify Dashboard (Easiest)
 
-1. **Go to Vercel Dashboard:**
-   - URL: https://vercel.com/selfish2/elevate-lms/settings/domains
+1. **Go to Netlify Dashboard:**
+   - URL: https://netlify.com/selfish2/elevate-lms/settings/domains
 
 2. **Add Domain:**
    - Click "Add Domain"
@@ -68,15 +68,15 @@ elevateforhumanity.org
    - Configure as redirect to: `www.elevateforhumanity.org`
    - Save
 
-#### Option B: Vercel CLI
+#### Option B: Netlify CLI
 
 ```bash
 # Add domain
-vercel domains add elevateforhumanity.org --token [TOKEN]
+netlify domains add elevateforhumanity.org --token [TOKEN]
 
 # Configure redirect (via API)
 curl -X PATCH \
-  "https://api.vercel.com/v9/projects/prj_DldrYpOpBvfo8w5XfCnchB7BSndk/domains/elevateforhumanity.org" \
+  "https://api.netlify.com/v9/projects/prj_DldrYpOpBvfo8w5XfCnchB7BSndk/domains/elevateforhumanity.org" \
   -H "Authorization: Bearer [TOKEN]" \
   -H "Content-Type: application/json" \
   -d '{
@@ -85,11 +85,11 @@ curl -X PATCH \
   }'
 
 # Add www subdomain
-vercel domains add www.elevateforhumanity.org --token [TOKEN]
+netlify domains add www.elevateforhumanity.org --token [TOKEN]
 
 # Configure www redirect
 curl -X PATCH \
-  "https://api.vercel.com/v9/projects/prj_DldrYpOpBvfo8w5XfCnchB7BSndk/domains/www.elevateforhumanity.org" \
+  "https://api.netlify.com/v9/projects/prj_DldrYpOpBvfo8w5XfCnchB7BSndk/domains/www.elevateforhumanity.org" \
   -H "Authorization: Bearer [TOKEN]" \
   -H "Content-Type: application/json" \
   -d '{
@@ -104,7 +104,7 @@ curl -X PATCH \
 
 **Where:** Your DNS provider (systemdns.com)
 
-Vercel will provide you with DNS records to add. Typically:
+Netlify will provide you with DNS records to add. Typically:
 
 ```
 Type: A
@@ -113,13 +113,13 @@ Value: 76.76.21.21
 
 Type: CNAME
 Name: www
-Value: cname.vercel-dns.com
+Value: cname.netlify-dns.com
 ```
 
-**Or use Vercel nameservers (recommended):**
+**Or use Netlify nameservers (recommended):**
 ```
-ns1.vercel-dns.com
-ns2.vercel-dns.com
+ns1.netlify-dns.com
+ns2.netlify-dns.com
 ```
 
 ---
@@ -306,7 +306,7 @@ const baseUrl = 'https://www.elevateforhumanity.org'; // ✅ Correct
 - App-level redirect conflicts with platform redirect
 
 **Solution:**
-- Use ONLY platform-level redirect (Vercel Domains)
+- Use ONLY platform-level redirect (Netlify Domains)
 - Remove any app-level redirects for domain changes
 - Ensure www → apex → canonical flow is clear
 
@@ -364,7 +364,7 @@ If something goes wrong:
 
 ### Quick Rollback (< 1 hour)
 
-1. **Remove redirect in Vercel:**
+1. **Remove redirect in Netlify:**
    - Go to Domains settings
    - Click on `elevateforhumanity.org`
    - Change from "Redirect" to "Production"
@@ -382,7 +382,7 @@ If something goes wrong:
 
 ### Full Rollback (if needed)
 
-1. Remove `.org` domain from Vercel
+1. Remove `.org` domain from Netlify
 2. Keep `.institute` as production
 3. Update DNS to point `.org` elsewhere
 4. Revert all code changes
@@ -394,7 +394,7 @@ If something goes wrong:
 **Estimated Total Time:** 2-4 hours + DNS propagation
 
 ```
-Step 1: Add domain to Vercel          → 5 minutes
+Step 1: Add domain to Netlify          → 5 minutes
 Step 2: Update DNS records             → 5 minutes
         DNS propagation                → 5-30 minutes
 Step 3: Verify redirects               → 10 minutes
@@ -440,7 +440,7 @@ Step 6: Update external links          → 1-2 hours
 
 ## CURRENT CONFIGURATION
 
-### Vercel Domains (Before Change)
+### Netlify Domains (Before Change)
 
 ```json
 {
@@ -500,7 +500,7 @@ Step 6: Update external links          → 1-2 hours
 4. **Timing:** When do you want to implement this?
 
 **If you're ready to proceed, I can:**
-- Generate the exact Vercel CLI commands
+- Generate the exact Netlify CLI commands
 - Provide the DNS records you need
 - Create a Supabase configuration checklist
 - Set up monitoring scripts

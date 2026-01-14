@@ -14,7 +14,7 @@
 2. Find key: `re_gBrK59nn_CAeQ8tyU7pihrvj6Y3Q3T8kJ`
 3. Click "Revoke" or "Delete"
 4. Generate new key
-5. Update in Vercel environment variables
+5. Update in Netlify environment variables
 6. Redeploy
 
 **Why:** The key is exposed on GitHub and anyone can use it to send emails from your domain.
@@ -204,7 +204,7 @@ Create test accounts for:
 **Right now:**
 1. ✅ Revoke exposed API key
 2. ✅ Generate new key
-3. ✅ Update Vercel env vars
+3. ✅ Update Netlify env vars
 4. ✅ Test email works
 
 **Today:**

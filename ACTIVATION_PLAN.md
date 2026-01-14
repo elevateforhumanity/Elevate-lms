@@ -160,20 +160,20 @@ SELECT * FROM v_active_partner_courses LIMIT 5;
 
 **Purpose:** Enable authentication for portal testing
 
-### Option A: Pull from Vercel (Easiest)
+### Option A: Pull from Netlify (Easiest)
 
 ```bash
-# Install Vercel CLI if needed
-npm install -g vercel
+# Install Netlify CLI if needed
+npm install -g netlify
 
 # Login
-vercel login
+netlify login
 
 # Link project
-vercel link
+netlify link
 
 # Pull environment variables
-vercel env pull .env.local
+netlify env pull .env.local
 ```
 
 ### Option B: Manual Configuration

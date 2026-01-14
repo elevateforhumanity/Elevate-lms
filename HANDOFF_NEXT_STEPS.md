@@ -56,7 +56,7 @@ All portal pages now return 200 status with proper error handling:
 **Why:** Portal pages are empty because there's no data
 
 **How:**
-1. Get database connection string from Vercel/Supabase
+1. Get database connection string from Netlify/Supabase
 2. Run seed files:
    ```bash
    psql $DATABASE_URL -f supabase/seed/complete_programs_catalog.sql
@@ -121,8 +121,8 @@ git log --oneline -5
 
 ### Populate Database
 ```bash
-# Get database URL from Vercel
-vercel env pull .env.local
+# Get database URL from Netlify
+netlify env pull .env.local
 
 # Or get from Supabase dashboard
 # Then run:
@@ -138,8 +138,8 @@ psql $DATABASE_URL -c "SELECT COUNT(*) FROM programs;"
 # 1. Sign up at https://resend.com
 # 2. Verify domain
 # 3. Get API key
-# 4. Add to Vercel:
-vercel env add RESEND_API_KEY
+# 4. Add to Netlify:
+netlify env add RESEND_API_KEY
 
 # 5. Configure in Supabase dashboard:
 # Authentication → Email Templates → SMTP Settings
@@ -184,7 +184,7 @@ vercel env add RESEND_API_KEY
 **Solution:** Run `npm install` and `npm run build` to verify
 
 ### Issue: Can't access Supabase
-**Solution:** Check environment variables in Vercel dashboard
+**Solution:** Check environment variables in Netlify dashboard
 
 ---
 
@@ -216,7 +216,7 @@ vercel env add RESEND_API_KEY
 ### External Documentation
 - **Next.js:** https://nextjs.org/docs
 - **Supabase:** https://supabase.com/docs
-- **Vercel:** https://vercel.com/docs
+- **Netlify:** https://netlify.com/docs
 - **Resend:** https://resend.com/docs
 
 ### Repository
@@ -226,7 +226,7 @@ vercel env add RESEND_API_KEY
 
 ### Production
 - **URL:** https://www.elevateforhumanity.org
-- **Platform:** Vercel
+- **Platform:** Netlify
 - **Database:** Supabase
 
 ---

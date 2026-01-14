@@ -1,24 +1,24 @@
-# Vercel Auto-Deploy Webhook Fix
+# Netlify Auto-Deploy Webhook Fix
 
 ## Problem
-Vercel stopped auto-deploying when code is pushed to GitHub.
+Netlify stopped auto-deploying when code is pushed to GitHub.
 
 ## Root Cause
-The GitHub webhook that notifies Vercel of new commits is either:
+The GitHub webhook that notifies Netlify of new commits is either:
 - Not configured
 - Disconnected
 - Failing to deliver
 
 ## Solution
 
-### Option 1: Reconnect via Vercel Dashboard (RECOMMENDED)
+### Option 1: Reconnect via Netlify Dashboard (RECOMMENDED)
 
-1. Go to **Vercel Dashboard** → Your Project
+1. Go to **Netlify Dashboard** → Your Project
 2. Click **Settings** → **Git**
 3. If you see "Disconnected" or no repository:
    - Click **Connect Git Repository**
    - Select **GitHub**
-   - Authorize Vercel
+   - Authorize Netlify
    - Select `elevateforhumanity/Elevate-lms`
 4. Ensure **Production Branch** is set to `main`
 5. Ensure **Auto-deploy** is enabled
@@ -26,14 +26,14 @@ The GitHub webhook that notifies Vercel of new commits is either:
 ### Option 2: Fix GitHub Webhook Manually
 
 1. Go to **GitHub**: https://github.com/elevateforhumanity/Elevate-lms/settings/hooks
-2. Look for a webhook with URL: `hooks.vercel.com`
+2. Look for a webhook with URL: `hooks.netlify.com`
 3. If it exists:
    - Click **Edit**
    - Scroll to **Recent Deliveries**
    - Check if deliveries are failing (red X)
    - If failing, click **Redeliver** to test
 4. If webhook doesn't exist:
-   - Go back to Vercel Dashboard
+   - Go back to Netlify Dashboard
    - Settings → Git → Disconnect and Reconnect
    - This will recreate the webhook
 
@@ -41,11 +41,11 @@ The GitHub webhook that notifies Vercel of new commits is either:
 
 If Options 1 & 2 don't work:
 
-1. Go to **Vercel Dashboard** → Your Project → **Settings** → **Git**
+1. Go to **Netlify Dashboard** → Your Project → **Settings** → **Git**
 2. Copy the **Deploy Hook URL** (create one if needed)
 3. Go to **GitHub** → Repository → **Settings** → **Webhooks** → **Add webhook**
 4. Configure:
-   - **Payload URL**: Your Vercel deploy hook URL
+   - **Payload URL**: Your Netlify deploy hook URL
    - **Content type**: `application/json`
    - **Events**: Select "Just the push event"
    - **Active**: Checked
@@ -61,25 +61,25 @@ git push origin main
 ```
 
 Then check:
-1. Vercel Dashboard → Deployments
+1. Netlify Dashboard → Deployments
 2. Should see new deployment within 30 seconds
 3. If not, webhook is still broken
 
 ## Current Configuration
 
-- ✅ `vercel.json` configured correctly
+- ✅ `netlify.json` configured correctly
 - ✅ `deploymentEnabled` set to `true` for `main` branch
 - ✅ `ignoreCommand` set to always deploy
 - ❌ GitHub webhook needs manual reconnection
 
 ## Files Modified
 
-- `vercel.json` - Changed `ignoreCommand` to `exit 0` to force all deployments
+- `netlify.json` - Changed `ignoreCommand` to `exit 0` to force all deployments
 - This ensures no commits are accidentally skipped
 
 ## Next Steps
 
-1. Follow Option 1 above (reconnect in Vercel)
+1. Follow Option 1 above (reconnect in Netlify)
 2. Test with the verification commit
 3. Once working, you can optionally restore the smart deploy filter:
    ```json
@@ -89,6 +89,6 @@ Then check:
 ## Support
 
 If still not working after all options:
-- Contact Vercel Support
-- Check Vercel status page: https://www.vercel-status.com/
-- Verify GitHub permissions for Vercel app
+- Contact Netlify Support
+- Check Netlify status page: https://www.netlify-status.com/
+- Verify GitHub permissions for Netlify app

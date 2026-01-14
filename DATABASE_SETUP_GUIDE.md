@@ -170,7 +170,7 @@ For production email functionality, see `SMTP_SETUP_GUIDE.md` (if exists) or con
 
 Get your database URL from:
 - Supabase Dashboard → Project Settings → Database
-- Or from `.env.local` / Vercel environment variables
+- Or from `.env.local` / Netlify environment variables
 
 Format:
 ```

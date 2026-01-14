@@ -65,12 +65,12 @@ git status .env.local
 - Test keys when possible
 - Never committed to git
 
-**Production (Vercel):**
-- Set in Vercel dashboard
+**Production (Netlify):**
+- Set in Netlify dashboard
 - Encrypted at rest
 - Separate from development
 
-**Preview (Vercel):**
+**Preview (Netlify):**
 - Same as production
 - Or separate preview keys
 - Automatically deployed
@@ -95,19 +95,19 @@ git status .env.local
 **OpenAI API Key:**
 1. Visit: https://platform.openai.com/api-keys
 2. Create new key
-3. Update `.env.local` and Vercel
+3. Update `.env.local` and Netlify
 4. Delete old key
 
 **Supabase Keys:**
 1. Visit: https://supabase.com/dashboard/project/cuxzzpsyufcewtmicszk/settings/api
 2. Click "Reset" on key
-3. Update `.env.local` and Vercel
+3. Update `.env.local` and Netlify
 4. Old key immediately invalid
 
 **Stripe Keys:**
 1. Visit: https://dashboard.stripe.com/apikeys
 2. Roll key
-3. Update `.env.local` and Vercel
+3. Update `.env.local` and Netlify
 4. Old key deprecated
 
 ## Git Hooks (Prevention)
@@ -184,7 +184,7 @@ npx husky add .husky/pre-commit "chmod +x .husky/pre-commit"
 - IRS EFIN
 - Social media settings
 
-**In Vercel (encrypted):**
+**In Netlify (encrypted):**
 - All production credentials
 - Environment-specific keys
 - Webhook secrets
@@ -205,10 +205,10 @@ npx husky add .husky/pre-commit "chmod +x .husky/pre-commit"
 
 ### Who Has Access
 
-**Vercel Dashboard:**
+**Netlify Dashboard:**
 - Team members with project access
 - Can view/edit environment variables
-- Audit: https://vercel.com/selfish2/elevate-lms/settings/members
+- Audit: https://netlify.com/selfish2/elevate-lms/settings/members
 
 **Supabase Dashboard:**
 - Database administrators
@@ -285,7 +285,7 @@ npx husky add .husky/pre-commit "chmod +x .husky/pre-commit"
 
 ### Secret Management
 
-**Vercel:**
+**Netlify:**
 - Environment variables
 - Encrypted at rest
 - Per-environment configuration
@@ -347,7 +347,7 @@ trufflehog --regex --entropy=False .
 **Current Status:**
 - ✅ `.env.local` created and protected
 - ✅ Credentials in `.gitignore`
-- ✅ Production keys in Vercel
+- ✅ Production keys in Netlify
 - ⚠️ Supabase keys need to be added locally
 
 **Security Measures:**

@@ -140,14 +140,14 @@ function logSecurityEvent(eventType: string, data: unknown) {
 ### HIGH: Next/Image with dpl= Parameter
 **Evidence**: Requests like `/_next/image?url=/media/programs/efh-cna-hero.jpg&w=3840&q=75&dpl=...`
 
-**Issue**: `dpl=` is a Vercel deployment parameter that shouldn't appear on Netlify.
+**Issue**: `dpl=` is a Netlify deployment parameter that shouldn't appear on Netlify.
 
 **Required Actions**:
 1. Search for hardcoded image URLs:
    ```bash
    grep -r "dpl=" --include="*.tsx" --include="*.ts" app/ components/
    ```
-2. Check for Vercel-specific image optimization configs
+2. Check for Netlify-specific image optimization configs
 3. Reduce excessive widths (w=3840 is too large)
 
 ### MEDIUM: CSS Files Still 404 in Logs

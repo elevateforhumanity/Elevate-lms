@@ -11,7 +11,7 @@
 ### 1. Domain Configuration Fix ✅
 **Commit:** 9f446d58
 
-**Problem:** Vercel build screen showed both domains (.org and .institute)
+**Problem:** Netlify build screen showed both domains (.org and .institute)
 
 **Solution:**
 - Changed all canonical URLs from `.org` to `.institute`
@@ -28,7 +28,7 @@
 - app/updates/2026/01/program-calendar/page.tsx
 
 **Result:**
-- Vercel now shows only `www.elevateforhumanity.org`
+- Netlify now shows only `www.elevateforhumanity.org`
 - Single canonical domain for SEO
 - Consistent metadata across all pages
 
@@ -101,8 +101,8 @@
 
 ### Environment Variables
 ```
-VERCEL_ENV=production
-VERCEL_GIT_COMMIT=1c47e2b09746f3386ac2173245e2a79999a119f1
+NETLIFY_ENV=production
+NETLIFY_GIT_COMMIT=1c47e2b09746f3386ac2173245e2a79999a119f1
 ```
 
 ### Build Steps
@@ -271,7 +271,7 @@ curl -s https://www.elevateforhumanity.org/robots.txt
 
 ### Created This Session
 1. DOMAIN_CANONICAL_FIX.md - Domain configuration guide
-2. VERCEL_DOMAIN_CONFIGURATION.md - Vercel setup instructions
+2. NETLIFY_DOMAIN_CONFIGURATION.md - Netlify setup instructions
 3. INFRASTRUCTURE_FIXES.md - Dev server optimization
 4. TEST_INFRASTRUCTURE_AUDIT.md - Test execution analysis
 5. FINAL_AUDIT_REPORT_JAN_2026.md - Complete audit report

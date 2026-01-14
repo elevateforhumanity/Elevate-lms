@@ -5,7 +5,7 @@
 
 export interface AutopilotInstruction {
   action: 'sync-env' | 'verify-env' | 'update-env';
-  target: 'vercel-worker';
+  target: 'netlify';
   priority: 'high' | 'medium' | 'low';
   params?: Record<string, any>;
 }
@@ -44,7 +44,7 @@ export async function instructEnvSync(): Promise<AutopilotResult> {
       },
       body: JSON.stringify({
         instruction: 'sync-all-env-vars',
-        source: 'vercel-api',
+        source: 'netlify-api',
         target: 'local-env',
       }),
     });

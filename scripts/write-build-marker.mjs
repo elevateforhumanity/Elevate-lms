@@ -5,8 +5,8 @@ const outPath = path.join(process.cwd(), "public", "build.json");
 
 const payload = {
   builtAt: new Date().toISOString(),
-  vercelEnv: process.env.VERCEL_ENV ?? null,
-  vercelGitCommit: process.env.VERCEL_GIT_COMMIT_SHA ?? null,
+  nodeEnv: process.env.NODE_ENV ?? null,
+  gitCommit: process.env.COMMIT_REF ?? null,
 };
 
 fs.mkdirSync(path.dirname(outPath), { recursive: true });

@@ -19,7 +19,7 @@ Homepage:
 **Conflict:** 
 - `cache-control` says cache for 1 hour
 - `cdn-cache-control` says DON'T cache (s-maxage=0)
-- Vercel CDN respects `cdn-cache-control` and bypasses cache
+- Netlify CDN respects `cdn-cache-control` and bypasses cache
 
 **Impact:** Homepage is regenerated on EVERY request, causing slow load times.
 
@@ -129,8 +129,8 @@ pragma: no-cache
 - This was likely added to force fresh content
 - But it defeats the purpose of having a CDN
 
-**Vercel's Behavior:**
-- Vercel adds its own `cache-control: s-maxage=3600, stale-while-revalidate=31532400`
+**Netlify's Behavior:**
+- Netlify adds its own `cache-control: s-maxage=3600, stale-while-revalidate=31532400`
 - But `cdn-cache-control` takes precedence
 - Result: CDN doesn't cache anything
 
@@ -243,7 +243,7 @@ export const revalidate = 60; // Revalidate every 60 seconds
 **Current:**
 ```javascript
 {
-  key: 'Vercel-CDN-Cache-Control',
+  key: 'Netlify-CDN-Cache-Control',
   value: 'public, s-maxage=0, must-revalidate',
 }
 ```
@@ -290,7 +290,7 @@ export const revalidate = 300; // 5 minutes
 ### Phase 1: Fix Homepage (5 minutes)
 1. Edit `next.config.mjs`
 2. Change homepage cache headers
-3. Deploy to Vercel
+3. Deploy to Netlify
 4. Test with `curl -I https://www.elevateforhumanity.org/`
 
 ### Phase 2: Add Dynamic Page Caching (10 minutes)
@@ -312,7 +312,7 @@ export const revalidate = 300; // 5 minutes
 curl -I https://www.elevateforhumanity.org/
 # Look for:
 # cdn-cache-control: public, s-maxage=0, must-revalidate  ❌
-# x-vercel-cache: MISS  ❌
+# x-netlify-cache: MISS  ❌
 ```
 
 ### After Fix:
@@ -320,11 +320,11 @@ curl -I https://www.elevateforhumanity.org/
 curl -I https://www.elevateforhumanity.org/
 # Look for:
 # cdn-cache-control: public, s-maxage=60, stale-while-revalidate=3600  ✅
-# x-vercel-cache: HIT  ✅
+# x-netlify-cache: HIT  ✅
 ```
 
 ### Monitor CDN Hit Rate:
-1. Go to Vercel Dashboard
+1. Go to Netlify Dashboard
 2. Analytics → Edge Network
 3. Check "Cache Hit Rate"
 4. Should be >90% after fix
@@ -359,7 +359,7 @@ curl -I https://www.elevateforhumanity.org/
 4. **Core Web Vitals** - LCP should improve
 
 ### Tools:
-- Vercel Analytics
+- Netlify Analytics
 - Google PageSpeed Insights
 - WebPageTest
 - Chrome DevTools Network tab

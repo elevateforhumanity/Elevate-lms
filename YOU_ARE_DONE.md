@@ -45,7 +45,7 @@
 - **Email:** Resend configured
 - **Payments:** Stripe active
 - **Authentication:** Supabase Auth working
-- **Deployment:** Live on Vercel
+- **Deployment:** Live on Netlify
 - **Domain:** www.elevateforhumanity.org
 
 ---

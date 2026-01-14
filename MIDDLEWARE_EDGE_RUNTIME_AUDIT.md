@@ -40,7 +40,7 @@
 // ✅ THIS ONE RUNS (Root)
 /middleware.ts
 - Redirects www → non-www
-- Redirects *.vercel.app → canonical domain
+- Redirects *.netlify.app → canonical domain
 
 // ❌ THIS ONE IS IGNORED (App directory)
 /app/middleware.ts
@@ -68,9 +68,9 @@ export function middleware(req: NextRequest) {
   const CANONICAL = "www.elevateforhumanity.org";
 
   const isWww = host === "www.www.elevateforhumanity.org";
-  const isVercel = host.endsWith(".vercel.app");
+  const isNetlify = host.endsWith(".netlify.app");
 
-  if ((isWww || isVercel) && host !== CANONICAL) {
+  if ((isWww || isNetlify) && host !== CANONICAL) {
     const redirectUrl = new URL(url.toString());
     redirectUrl.host = CANONICAL;
     redirectUrl.protocol = "https:";
@@ -91,7 +91,7 @@ export const config = {
 - Simple and fast logic
 - Runs on edge (low latency)
 - Uses 308 redirect (permanent, cacheable)
-- Handles www and Vercel preview URLs
+- Handles www and Netlify preview URLs
 
 ⚠️ **Issues:**
 1. **Matcher is too broad** - `/:path*` runs on EVERY request including:
@@ -188,13 +188,13 @@ Node.js runtime: 213 routes (36%)
 #### What is Edge Runtime?
 
 **Edge Runtime:**
-- Runs on Vercel's edge network (globally distributed)
+- Runs on Netlify's edge network (globally distributed)
 - Fast cold starts (~50ms)
 - Limited Node.js APIs (no fs, no native modules)
 - Best for: Simple API routes, redirects, auth checks
 
 **Node.js Runtime:**
-- Runs on Vercel's serverless functions (centralized)
+- Runs on Netlify's serverless functions (centralized)
 - Slower cold starts (~200-500ms)
 - Full Node.js APIs available
 - Best for: Database operations, file uploads, complex logic
@@ -329,7 +329,7 @@ export const config = {
 **Recommendation:** Keep current setup, but document it:
 
 ```typescript
-// middleware.ts - Domain-level redirects (www, vercel.app)
+// middleware.ts - Domain-level redirects (www, netlify.app)
 // next.config.mjs - Path-level redirects (/old-path → /new-path)
 ```
 
@@ -413,7 +413,7 @@ export function middleware(req: NextRequest) {
 ### Phase 3: Monitoring (Ongoing)
 
 1. **Track middleware performance:**
-   - Vercel Analytics → Edge Functions
+   - Netlify Analytics → Edge Functions
    - Look for slow executions (>10ms)
 
 2. **Monitor edge runtime errors:**
@@ -431,8 +431,8 @@ export function middleware(req: NextRequest) {
 curl -I https://www.www.elevateforhumanity.org/
 # Should: 308 redirect to https://www.elevateforhumanity.org/
 
-# Test Vercel redirect
-curl -I https://elevate-xxx.vercel.app/
+# Test Netlify redirect
+curl -I https://elevate-xxx.netlify.app/
 # Should: 308 redirect to https://www.elevateforhumanity.org/
 
 # Test static assets (should NOT run middleware)
@@ -449,7 +449,7 @@ curl https://www.elevateforhumanity.org/api/calendar
 
 # Check response headers
 curl -I https://www.elevateforhumanity.org/api/calendar
-# Look for: x-vercel-cache, x-edge-runtime
+# Look for: x-netlify-cache, x-edge-runtime
 ```
 
 ---
@@ -482,8 +482,8 @@ curl -I https://www.elevateforhumanity.org/api/calendar
 4. **Edge function cold starts** (should be <50ms)
 
 ### Tools:
-- Vercel Analytics → Edge Functions
-- Vercel Logs → Filter by "middleware"
+- Netlify Analytics → Edge Functions
+- Netlify Logs → Filter by "middleware"
 - Chrome DevTools → Network tab (check response headers)
 
 ---

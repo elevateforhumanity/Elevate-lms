@@ -358,7 +358,7 @@ STRIPE_WEBHOOK_SECRET=
 - ✅ Proper error handling prevents security issues
 
 **Production:**
-- ✅ STRIPE_WEBHOOK_SECRET configured in Vercel
+- ✅ STRIPE_WEBHOOK_SECRET configured in Netlify
 - ✅ All webhooks validate properly
 - ✅ Secure webhook processing
 
@@ -709,8 +709,8 @@ https://www.elevateforhumanity.org/api/store/webhook
 
 **Usage:**
 ```bash
-# Add to Vercel
-vercel env add STRIPE_WEBHOOK_SECRET
+# Add to Netlify
+netlify env add STRIPE_WEBHOOK_SECRET
 
 # Add to .env.local
 STRIPE_WEBHOOK_SECRET=whsec_...

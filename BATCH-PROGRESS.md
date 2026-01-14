@@ -166,6 +166,6 @@ Many pages don't have `export const metadata` blocks. They either:
 ✅ **Layout.tsx duplicate fixed**  
 ✅ **All builds passing**  
 ✅ **All deployed to production**  
-⏳ **Vercel deploying Batch 3 now**
+⏳ **Netlify deploying Batch 3 now**
 
 **Next:** Monitor GSC for improvements over next 2 weeks.

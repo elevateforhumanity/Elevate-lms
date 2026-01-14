@@ -181,7 +181,7 @@ curl -I https://www.elevateforhumanity.org/ | grep cdn-cache-control
 ### Configuration:
 - `next.config.mjs` - Cache headers, code splitting
 - `middleware.ts` - Optimized matcher and redirect logic
-- `vercel.json` - (no changes needed)
+- `netlify.json` - (no changes needed)
 
 ### Components:
 - `components/GoogleAnalytics.tsx` - lazyOnload strategy
@@ -266,10 +266,10 @@ curl -I https://www.elevateforhumanity.org/ | grep cdn-cache-control
 ### Check CDN Hit Rate:
 ```bash
 # First request (MISS)
-curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
+curl -I https://www.elevateforhumanity.org/ | grep x-netlify-cache
 
 # Second request (HIT)
-curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
+curl -I https://www.elevateforhumanity.org/ | grep x-netlify-cache
 ```
 
 ### Check Middleware:
@@ -278,8 +278,8 @@ curl -I https://www.elevateforhumanity.org/ | grep x-vercel-cache
 curl -I https://www.www.elevateforhumanity.org/
 # Should: 308 redirect ✅
 
-# Test Vercel redirect
-curl -I https://elevate-xxx.vercel.app/
+# Test Netlify redirect
+curl -I https://elevate-xxx.netlify.app/
 # Should: 308 redirect ✅
 ```
 
@@ -294,7 +294,7 @@ curl -I https://elevate-xxx.vercel.app/
 4. **Core Web Vitals** - Should improve over time
 
 ### Tools:
-- Vercel Analytics
+- Netlify Analytics
 - Google PageSpeed Insights
 - WebPageTest
 - Chrome DevTools

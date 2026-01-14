@@ -177,7 +177,7 @@ SELECT * FROM enrollments -- Logged in audit_logs table
 #### Network Security
 - **Firewall:** Cloud firewall rules restrict database access
 - **IP Whitelist:** Admin access restricted to approved IPs
-- **DDoS Protection:** Cloudflare/Vercel protection enabled
+- **DDoS Protection:** Cloudflare/Netlify protection enabled
 - **Rate Limiting:** API rate limits prevent abuse
 
 #### Application Security

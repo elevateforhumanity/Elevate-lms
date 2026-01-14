@@ -65,9 +65,9 @@ const validated = schema.parse(body);
 
 ### ✅ Rate Limiting
 
-**Vercel Edge Functions:**
+**Netlify Edge Functions:**
 - Automatic rate limiting by IP
-- DDoS protection via Vercel/Cloudflare
+- DDoS protection via Netlify/Cloudflare
 - Request throttling on expensive operations
 
 **Recommended Enhancement:**

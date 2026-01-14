@@ -45,7 +45,7 @@ npm run build      # ✅ Build successful
 ### 2. Duplicate Redirects Configuration ✅
 
 **Problem:** Two `async redirects()` functions in next.config.mjs  
-**Impact:** First redirect function was overwritten, Vercel.app and old domain redirects not working  
+**Impact:** First redirect function was overwritten, Netlify.app and old domain redirects not working  
 **Status:** FIXED
 
 **Changes:**
@@ -54,7 +54,7 @@ npm run build      # ✅ Build successful
 - Added old domain redirects:
   - `elevateforhumanity.org` → `www.elevateforhumanity.org`
   - `www.elevateforhumanity.org` → `www.elevateforhumanity.org`
-  - `*.vercel.app` → `www.elevateforhumanity.org`
+  - `*.netlify.app` → `www.elevateforhumanity.org`
 
 **Verification:**
 ```bash
@@ -100,14 +100,14 @@ export function sanitizeHtml(dirty: string): string {
 
 ### 4. Cache Configuration Conflicts ✅
 
-**Problem:** `vercel.json` cache headers conflicted with `next.config.mjs`  
+**Problem:** `netlify.json` cache headers conflicted with `next.config.mjs`  
 **Impact:** Unpredictable caching behavior  
 **Status:** FIXED
 
 **Changes:**
-- Removed all cache headers from `vercel.json`
+- Removed all cache headers from `netlify.json`
 - Let Next.js handle caching via `next.config.mjs`
-- Kept only essential redirects in `vercel.json`
+- Kept only essential redirects in `netlify.json`
 
 **Before:**
 ```json
@@ -170,7 +170,7 @@ export function sanitizeHtml(dirty: string): string {
 **Changes:**
 - Removed `isOldDomain` check from middleware
 - Old domain redirects now handled by `next.config.mjs` (more efficient)
-- Middleware now only handles www and Vercel.app redirects
+- Middleware now only handles www and Netlify.app redirects
 
 ---
 
@@ -312,7 +312,7 @@ npm run build      # ✅ PASS (successful build)
 - `package.json` - Added isomorphic-dompurify
 - `public/.well-known/security.txt` - Updated domain
 - `public/build.json` - Build metadata
-- `vercel.json` - Removed cache conflicts
+- `netlify.json` - Removed cache conflicts
 
 ---
 

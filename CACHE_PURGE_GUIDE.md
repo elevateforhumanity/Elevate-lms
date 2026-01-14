@@ -8,7 +8,7 @@
 
 ## 🗑️ Cache Layers to Clear
 
-### 1. Vercel Edge Cache (CDN)
+### 1. Netlify Edge Cache (CDN)
 ### 2. Browser Cache (Users)
 ### 3. DNS Cache (Global)
 ### 4. Google Cache (Search)
@@ -17,11 +17,11 @@
 
 ---
 
-## 1️⃣ Vercel Edge Cache - CRITICAL
+## 1️⃣ Netlify Edge Cache - CRITICAL
 
-### Method A: Vercel Dashboard (Recommended)
+### Method A: Netlify Dashboard (Recommended)
 
-1. **Go to:** https://vercel.com/dashboard
+1. **Go to:** https://netlify.com/dashboard
 2. **Select:** Your project (Elevate-lms)
 3. **Go to:** Settings → Data Cache
 4. **Click:** "Purge Everything"
@@ -35,35 +35,35 @@
 5. Check: "Use existing Build Cache" = OFF
 6. Click: "Redeploy"
 
-### Method B: Vercel CLI
+### Method B: Netlify CLI
 
 ```bash
-# Install Vercel CLI if not installed
-npm i -g vercel
+# Install Netlify CLI if not installed
+npm i -g netlify
 
 # Login
-vercel login
+netlify login
 
 # Link project
-vercel link
+netlify link
 
 # Purge cache
-vercel env pull
-vercel --prod --force
+netlify env pull
+netlify --prod --force
 
 # Or redeploy without cache
-vercel --prod --no-cache
+netlify --prod --no-cache
 ```
 
 ### Method C: API (Nuclear Option)
 
 ```bash
-# Get your Vercel token from: https://vercel.com/account/tokens
+# Get your Netlify token from: https://netlify.com/account/tokens
 
 # Purge all cache
 curl -X DELETE \
-  "https://api.vercel.com/v1/edge-config/YOUR_PROJECT_ID/cache" \
-  -H "Authorization: Bearer YOUR_VERCEL_TOKEN"
+  "https://api.netlify.com/v1/edge-config/YOUR_PROJECT_ID/cache" \
+  -H "Authorization: Bearer YOUR_NETLIFY_TOKEN"
 
 # Trigger revalidation
 curl -X POST \
@@ -157,7 +157,7 @@ Hard Refresh:
 **Enter:** `www.elevateforhumanity.org`
 
 **Should show:**
-- A record pointing to Vercel IP
+- A record pointing to Netlify IP
 - CNAME record (if using)
 - Propagated globally (green checkmarks)
 
@@ -314,7 +314,7 @@ cd /workspaces/Elevate-lms
 # Remove all cache directories
 rm -rf .next
 rm -rf node_modules/.cache
-rm -rf .vercel
+rm -rf .netlify
 rm -rf out
 rm -rf dist
 
@@ -326,17 +326,17 @@ pnpm install
 pnpm build
 ```
 
-### Clear Vercel Build Cache
+### Clear Netlify Build Cache
 
 **Method A: Redeploy without cache**
 
 ```bash
-vercel --prod --force --no-cache
+netlify --prod --force --no-cache
 ```
 
 **Method B: Dashboard**
 
-1. Vercel Dashboard → Project
+1. Netlify Dashboard → Project
 2. Settings → General
 3. Scroll to: Build & Development Settings
 4. Click: "Clear Build Cache"
@@ -357,7 +357,7 @@ vercel --prod --force --no-cache
 - [ ] Verify new build ID generated
 
 ### Post-Deployment:
-- [ ] Purge Vercel edge cache
+- [ ] Purge Netlify edge cache
 - [ ] Purge Cloudflare cache (if using)
 - [ ] Submit new sitemap to Google
 - [ ] Request indexing for key pages
@@ -371,7 +371,7 @@ vercel --prod --force --no-cache
 
 ### Verification:
 - [ ] Check `curl -I https://www.elevateforhumanity.org/`
-- [ ] Verify `X-Vercel-Cache` header
+- [ ] Verify `X-Netlify-Cache` header
 - [ ] Check sitemap loads fresh
 - [ ] Verify robots.txt loads fresh
 - [ ] Test in incognito/private mode
@@ -383,12 +383,12 @@ vercel --prod --force --no-cache
 ### Check Cache Status
 
 ```bash
-# Check Vercel cache headers
+# Check Netlify cache headers
 curl -I https://www.elevateforhumanity.org/
 
 # Look for:
-# X-Vercel-Cache: MISS (good - not cached)
-# X-Vercel-Cache: HIT (bad - still cached)
+# X-Netlify-Cache: MISS (good - not cached)
+# X-Netlify-Cache: HIT (bad - still cached)
 # Cache-Control: public, s-maxage=0, must-revalidate
 
 # Check specific pages
@@ -430,7 +430,7 @@ site:www.elevateforhumanity.org
 
 ```bash
 # 1. Delete everything locally
-rm -rf .next node_modules .vercel out dist
+rm -rf .next node_modules .netlify out dist
 rm -rf node_modules/.cache
 rm -rf .pnpm-store
 
@@ -441,11 +441,11 @@ pnpm install --force
 pnpm build
 
 # 4. Deploy fresh
-vercel --prod --force --no-cache
+netlify --prod --force --no-cache
 
-# 5. Purge Vercel cache via API
+# 5. Purge Netlify cache via API
 curl -X DELETE \
-  "https://api.vercel.com/v1/deployments/DEPLOYMENT_ID/cache" \
+  "https://api.netlify.com/v1/deployments/DEPLOYMENT_ID/cache" \
   -H "Authorization: Bearer YOUR_TOKEN"
 
 # 6. Wait 5 minutes
@@ -460,16 +460,16 @@ curl -I https://www.elevateforhumanity.org/
 
 ### Check Cache Hit Rate
 
-**Vercel Analytics:**
+**Netlify Analytics:**
 1. Dashboard → Analytics
 2. Check: Cache Hit Rate
 3. Goal: Low hit rate initially (means fresh content)
 
 **Headers to monitor:**
 ```
-X-Vercel-Cache: MISS  ← Good (fresh)
-X-Vercel-Cache: HIT   ← After cache warms up
-X-Vercel-Cache: STALE ← Needs revalidation
+X-Netlify-Cache: MISS  ← Good (fresh)
+X-Netlify-Cache: HIT   ← After cache warms up
+X-Netlify-Cache: STALE ← Needs revalidation
 ```
 
 ### Set Up Monitoring
@@ -488,7 +488,7 @@ if (typeof window !== 'undefined') {
 ## 🎯 Expected Timeline
 
 ### Immediate (0-5 minutes):
-- ✅ Vercel cache purged
+- ✅ Netlify cache purged
 - ✅ New build deployed
 - ✅ Fresh content served
 
@@ -527,13 +527,13 @@ curl -I https://www.elevateforhumanity.org/ | grep -i cache
 
 # Should show:
 # Cache-Control: public, s-maxage=0, must-revalidate
-# X-Vercel-Cache: MISS
+# X-Netlify-Cache: MISS
 ```
 
 ### DNS Not Propagating?
 
 **Check:**
-1. Verify DNS records in Vercel
+1. Verify DNS records in Netlify
 2. Check TTL (should be low, like 300)
 3. Wait 24-48 hours
 4. Use https://dnschecker.org
@@ -551,14 +551,14 @@ curl -I https://www.elevateforhumanity.org/ | grep -i cache
 ## 📞 Support
 
 **If caches won't clear:**
-1. Contact Vercel support
-2. Check Vercel status page
+1. Contact Netlify support
+2. Check Netlify status page
 3. Verify deployment succeeded
 4. Check error logs
 
-**Vercel Support:**
+**Netlify Support:**
 - Dashboard → Help
-- https://vercel.com/support
+- https://netlify.com/support
 
 ---
 

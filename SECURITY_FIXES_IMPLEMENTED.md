@@ -462,23 +462,23 @@ export function sanitizeString(input: string): string {
 
 ---
 
-## 5. Vercel References Removed ✅
+## 5. Netlify References Removed ✅
 
 ### Files Deleted
 
-- ✅ `vercel.json` - Removed
-- ✅ `.vercel-deployment-id` - Removed
-- ✅ `.vercel-trigger` - Removed
-- ✅ `/app/api/admin/vercel-hard-refresh/` - Removed
-- ✅ All Vercel-related scripts removed
+- ✅ `netlify.json` - Removed
+- ✅ `.netlify-deployment-id` - Removed
+- ✅ `.netlify-trigger` - Removed
+- ✅ `/app/api/admin/netlify-hard-refresh/` - Removed
+- ✅ All Netlify-related scripts removed
 
 ### Package.json Updated
 
 **Removed:**
 ```json
-"autopilot:vercel:hard-refresh": "node tools/autopilot-vercel-hard-refresh.mjs",
-"env:pull": "vercel env pull .env.local --yes",
-"deploy:vercel": "bash scripts/deploy-to-vercel.sh",
+"autopilot:netlify:hard-refresh": "node tools/autopilot-netlify-hard-refresh.mjs",
+"env:pull": "netlify env pull .env.local --yes",
+"deploy:netlify": "bash scripts/deploy-to-netlify.sh",
 ```
 
 **Added:**

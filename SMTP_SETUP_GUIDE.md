@@ -177,7 +177,7 @@ Value: v=DMARC1; p=none; rua=mailto:dmarc@www.elevateforhumanity.org
 If you want to send emails directly from your app (not through Supabase):
 
 ```bash
-# Add to .env.local and Vercel
+# Add to .env.local and Netlify
 RESEND_API_KEY=re_xxxxxxxxxxxxx
 EMAIL_FROM=noreply@www.elevateforhumanity.org
 ```

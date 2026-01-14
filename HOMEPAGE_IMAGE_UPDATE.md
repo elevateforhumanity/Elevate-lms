@@ -36,6 +36,6 @@ All "efh-" prefixed images are professional, branded photos from Elevate for Hum
 To deploy these changes:
 1. Commit the changes
 2. Push to GitHub
-3. Vercel will auto-deploy
+3. Netlify will auto-deploy
 
 Or test locally first by viewing the dev server.

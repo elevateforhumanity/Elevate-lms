@@ -21,7 +21,7 @@
 - [x] Domain redirect from .org to .institute (HTTP 308)
 - [x] All codebase URLs updated to .institute
 - [x] Environment variables updated
-- [x] Vercel deployment configured
+- [x] Netlify deployment configured
 
 ### Supabase Configuration
 - [x] Site URL updated to www.elevateforhumanity.org
@@ -157,7 +157,7 @@
 - `supabase/DATABASE_STATUS.md` - Database documentation
 
 ### Deployment
-- `vercel.json` - Vercel configuration
+- `netlify.json` - Netlify configuration
 - `.env.example` - Environment variables template
 
 ---

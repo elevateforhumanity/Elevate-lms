@@ -102,8 +102,8 @@ async function runAudit(options: AuditOptions) {
     environment: process.env.NODE_ENV || 'production',
     appVersion: process.env.npm_package_version || '2.0.0',
     build: {
-      commitSha: process.env.VERCEL_GIT_COMMIT_SHA || 'unknown',
-      buildId: process.env.VERCEL_DEPLOYMENT_ID || 'local',
+      commitSha: process.env.COMMIT_REF || 'unknown',
+      buildId: process.env.BUILD_ID || 'local',
       nodeVersion: process.version,
       nextVersion: 'unknown',
     },

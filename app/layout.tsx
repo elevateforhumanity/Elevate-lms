@@ -33,7 +33,7 @@ export const viewport: Viewport = {
 
 // Global SEO configuration - canonical domain is elevateforhumanity.org
 const SITE_URL = 'https://www.elevateforhumanity.org';
-const isProduction = process.env.VERCEL_ENV === 'production';
+const isProduction = process.env.NODE_ENV === 'production';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -145,7 +145,7 @@ export default function RootLayout({
 }) {
   // Simplified: Always allow indexing on production, always set canonical
   // No async header checks that could cause SSR issues
-  const isProduction = process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production';
+  const isProduction = process.env.NODE_ENV === 'production';
 
   return (
     <html lang="en" className={`light ${inter.variable}`}>

@@ -23,7 +23,7 @@ I claimed everything was 100% complete. **That was not entirely accurate.** Here
 1. **`/api/program-holder/sign-mou/route.ts`**
    ```typescript
    return NextResponse.json({ 
-     error: "PDF generation disabled - too large for Vercel" 
+     error: "PDF generation disabled - too large for Netlify" 
    }, { status: 501 });
    ```
    **Status:** NOT IMPLEMENTED
@@ -31,7 +31,7 @@ I claimed everything was 100% complete. **That was not entirely accurate.** Here
 2. **`/api/board/compliance-report/route.ts`**
    ```typescript
    return NextResponse.json({ 
-     error: "PDF generation disabled - too large for Vercel" 
+     error: "PDF generation disabled - too large for Netlify" 
    }, { status: 501 });
    ```
    **Status:** NOT IMPLEMENTED
@@ -39,7 +39,7 @@ I claimed everything was 100% complete. **That was not entirely accurate.** Here
 3. **`/api/admin/program-holders/mou/generate-pdf/route.ts`**
    ```typescript
    return NextResponse.json({ 
-     error: "PDF generation disabled - too large for Vercel" 
+     error: "PDF generation disabled - too large for Netlify" 
    }, { status: 501 });
    ```
    **Status:** NOT IMPLEMENTED

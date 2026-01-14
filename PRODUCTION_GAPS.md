@@ -315,7 +315,7 @@ Student pays → Enrollment created → Student launches to partner → Student 
 - Database tracking
 
 ✅ **Infrastructure**
-- Vercel deployment
+- Netlify deployment
 - Supabase database
 - 349 migrations applied
 - 1,094 routes compiled

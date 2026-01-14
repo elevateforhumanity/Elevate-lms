@@ -144,7 +144,7 @@ All changes committed and pushed to GitHub:
 - Commit: `21bfbb6` - ConditionalLayout update
 - Commit: `[pending]` - Program holder layout fix
 
-Vercel will automatically deploy changes.
+Netlify will automatically deploy changes.
 
 ---
 

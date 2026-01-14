@@ -12,7 +12,7 @@ Successfully migrated from `elevateforhumanity.org` to `www.elevateforhumanity.o
 
 ### 1. Domain Redirect Configuration ✅
 - Implemented HTTP 308 permanent redirect from .org to .institute
-- Configured in `vercel.json` with proper redirect rules
+- Configured in `netlify.json` with proper redirect rules
 - Verified redirect is live and working correctly
 
 **Verification:**
@@ -55,7 +55,7 @@ curl -sI https://elevateforhumanity.org/
 - HTTP/2 200 OK
 - Proper security headers (CSP, HSTS, X-Frame-Options)
 - Cache control configured
-- Vercel CDN active
+- Netlify CDN active
 
 ---
 
@@ -120,7 +120,7 @@ Follow the checklist in `SUPABASE_DOMAIN_CHECKLIST.md`:
    - Keep old domain during transition period
 
 ### DNS Configuration (If Not Already Done)
-- Verify A/AAAA records point to Vercel
+- Verify A/AAAA records point to Netlify
 - Confirm SSL certificate is active
 - Check DNS propagation globally
 
@@ -148,7 +148,7 @@ Follow the checklist in `SUPABASE_DOMAIN_CHECKLIST.md`:
 ## Technical Details
 
 ### Redirect Configuration
-Location: `vercel.json`
+Location: `netlify.json`
 ```json
 {
   "redirects": [

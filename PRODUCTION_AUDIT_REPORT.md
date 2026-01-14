@@ -117,16 +117,16 @@ The codebase has **critical issues** that must be resolved before production dep
 #### Duplicate Redirects:
 - `next.config.mjs` has TWO `async redirects()` functions (lines 16 and 133)
 - Second function overwrites the first
-- Vercel.app and www.elevateforhumanity.org redirects may not work
+- Netlify.app and www.elevateforhumanity.org redirects may not work
 
 **Fix Required:** Merge redirect functions into one
 
 #### Cache Configuration Conflicts:
-- `vercel.json` sets `Cache-Control: no-store` for all routes
+- `netlify.json` sets `Cache-Control: no-store` for all routes
 - `next.config.mjs` sets different cache headers
-- Vercel.json takes precedence, overriding Next.js config
+- Netlify.json takes precedence, overriding Next.js config
 
-**Fix Required:** Remove conflicting vercel.json cache headers
+**Fix Required:** Remove conflicting netlify.json cache headers
 
 ---
 
@@ -225,7 +225,7 @@ export function sanitizeHtml(dirty: string): string {
 - [ ] Remove old domain references from middleware.ts
 - [ ] Update public/.well-known/security.txt
 - [ ] Delete or update 102 legacy HTML files
-- [ ] Remove vercel.json cache conflicts
+- [ ] Remove netlify.json cache conflicts
 
 ### Nice to Have (Medium Priority):
 - [ ] Clean up console.log statements
@@ -245,7 +245,7 @@ export function sanitizeHtml(dirty: string): string {
 
 2. **Fix Configuration Conflicts**
    - Merge redirect functions in next.config.mjs
-   - Remove cache headers from vercel.json
+   - Remove cache headers from netlify.json
 
 3. **Fix Security Vulnerability**
    - Install isomorphic-dompurify

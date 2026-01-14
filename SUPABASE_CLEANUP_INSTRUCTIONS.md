@@ -1,7 +1,7 @@
 # Supabase Redirect URLs Cleanup
 
 ## Current Status
-You have 16 old Vercel preview deployment URLs that should be removed.
+You have 16 old Netlify preview deployment URLs that should be removed.
 
 ## What to Keep vs Delete
 
@@ -13,27 +13,27 @@ https://elevateforhumanity.org/**
 
 ### ❌ DELETE (All old preview URLs)
 ```
-https://fix2-gpql-elevate-48e460c9.vercel.app/
-https://fix2-gpql-elevate-48e460c9.vercel.app/**
-https://fix2-*-gpql-elevate-48e460c9.vercel.app
-https://fix2-*-gpql-elevate-48e460c9.vercel.app/**
-https://fix2-elevate-48e460c9.vercel.app/
-https://fix2-elevate-48e460c9.vercel.app/**
-https://fix2-*-elevate-48e460c9.vercel.app
-https://fix2-*-elevate-48e460c9.vercel.app/**
-https://fix2-elevateforhumanity-elevate-48e460c9.vercel.app/
-https://fix2-elevateforhumanity-elevate-48e460c9.vercel.app/**
-https://fix2-*-elevateforhumanity-elevate-48e460c9.vercel.app
-https://fix2-*-elevateforhumanity-elevate-48e460c9.vercel.app/**
-https://fix2-lizzy6262.vercel.app/
-https://fix2-lizzy6262.vercel.app/**
-https://fix2-*-lizzy6262.vercel.app
-https://fix2-*-lizzy6262.vercel.app/**
+https://fix2-gpql-elevate-48e460c9.netlify.app/
+https://fix2-gpql-elevate-48e460c9.netlify.app/**
+https://fix2-*-gpql-elevate-48e460c9.netlify.app
+https://fix2-*-gpql-elevate-48e460c9.netlify.app/**
+https://fix2-elevate-48e460c9.netlify.app/
+https://fix2-elevate-48e460c9.netlify.app/**
+https://fix2-*-elevate-48e460c9.netlify.app
+https://fix2-*-elevate-48e460c9.netlify.app/**
+https://fix2-elevateforhumanity-elevate-48e460c9.netlify.app/
+https://fix2-elevateforhumanity-elevate-48e460c9.netlify.app/**
+https://fix2-*-elevateforhumanity-elevate-48e460c9.netlify.app
+https://fix2-*-elevateforhumanity-elevate-48e460c9.netlify.app/**
+https://fix2-lizzy6262.netlify.app/
+https://fix2-lizzy6262.netlify.app/**
+https://fix2-*-lizzy6262.netlify.app
+https://fix2-*-lizzy6262.netlify.app/**
 ```
 
 ## Why Delete These?
 
-1. **Old Preview Deployments:** These are temporary Vercel preview URLs from old branches
+1. **Old Preview Deployments:** These are temporary Netlify preview URLs from old branches
 2. **Security Risk:** Leaving old URLs allows authentication from outdated deployments
 3. **Clutter:** Makes configuration harder to manage
 4. **Not Needed:** Your production site uses the .institute domain
@@ -41,7 +41,7 @@ https://fix2-*-lizzy6262.vercel.app/**
 ## Step-by-Step Cleanup
 
 ### 1. Delete All Old URLs
-- Click the trash icon next to each old Vercel URL
+- Click the trash icon next to each old Netlify URL
 - Delete all 16 URLs listed above
 
 ### 2. Add Production URLs
@@ -99,9 +99,9 @@ If you need to test authentication in local development or preview deployments, 
 http://localhost:3000/**
 ```
 
-**For Vercel previews (if needed):**
+**For Netlify previews (if needed):**
 ```
-https://*-elevate-lms.vercel.app/**
+https://*-elevate-lms.netlify.app/**
 ```
 
 But these are optional and only needed if you're actively testing authentication in those environments.

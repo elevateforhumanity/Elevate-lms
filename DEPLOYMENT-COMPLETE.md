@@ -24,7 +24,7 @@
 - 88 files modified
 - All optimizations live
 
-## Vercel Deployment
+## Netlify Deployment
 Changes will be live at elevateforhumanity.org within 2-3 minutes.
 
 ## What Was Done

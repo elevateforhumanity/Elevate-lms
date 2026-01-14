@@ -25,7 +25,7 @@ The user was RIGHT - there WERE issues:
 // app/api/program-holder/sign-mou/route.ts
 export async function GET() {
   return NextResponse.json({ 
-    error: "PDF generation disabled - too large for Vercel" 
+    error: "PDF generation disabled - too large for Netlify" 
   }, { status: 501 });
 }
 ```
@@ -171,7 +171,7 @@ Date:   Sat Jan 10 12:52:40 2026 +0000
     - Remove 'Placeholder' comment from nonprofit page video section
     
     All three endpoints were previously returning 501 errors with message
-    'PDF generation disabled - too large for Vercel'. Now fully functional
+    'PDF generation disabled - too large for Netlify'. Now fully functional
     with proper authentication, database queries, and PDF generation using
     jsPDF library.
     

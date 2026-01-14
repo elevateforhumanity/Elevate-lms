@@ -224,10 +224,10 @@ function checkServerSideOnly(feature) {
 }
 
 function checkCronJob(feature) {
-  const vercelJson = path.join(rootDir, 'vercel.json');
-  if (!fs.existsSync(vercelJson)) return false;
+  const netlifyToml = path.join(rootDir, 'netlify.toml');
+  if (!fs.existsSync(netlifyToml)) return false;
 
-  const content = fs.readFileSync(vercelJson, 'utf8');
+  const content = fs.readFileSync(netlifyToml, 'utf8');
   return content.includes(feature) && content.includes('cron');
 }
 

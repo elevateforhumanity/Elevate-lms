@@ -31,7 +31,7 @@ git commit -m "Fix student dashboard to use partner enrollments"
 git push origin main
 ```
 
-Vercel will auto-deploy. Wait 2-3 minutes, then refresh the student dashboard.
+Netlify will auto-deploy. Wait 2-3 minutes, then refresh the student dashboard.
 
 ### Option 2: Quick Test Locally
 

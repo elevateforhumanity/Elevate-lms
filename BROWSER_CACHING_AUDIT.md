@@ -24,13 +24,13 @@ cache-control: s-maxage=60, stale-while-revalidate=31535940
 
 ## Root Cause
 
-**Vercel's default behavior:**
+**Netlify's default behavior:**
 - Adds aggressive `stale-while-revalidate` to all pages
 - Optimizes for performance over freshness
 - Good for static sites, bad for frequently updated sites
 
 **Our config said:** 3600 seconds (1 hour)  
-**Vercel sent:** 31535940 seconds (1 year)
+**Netlify sent:** 31535940 seconds (1 year)
 
 ---
 
@@ -220,7 +220,7 @@ curl -I https://www.elevateforhumanity.org/ | grep cache-control
 4. **Page load time** (should stay <200ms for cached)
 
 ### Tools:
-- Vercel Analytics → Edge Network
+- Netlify Analytics → Edge Network
 - Chrome DevTools → Network tab
 - User feedback
 

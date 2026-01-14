@@ -12,7 +12,7 @@
 1. ✅ **TypeScript Compilation** - 40+ syntax errors fixed
 2. ✅ **Security Vulnerability** - Server-side XSS patched
 3. ✅ **Configuration Conflicts** - Duplicate redirects merged
-4. ✅ **Cache Conflicts** - vercel.json cleaned up
+4. ✅ **Cache Conflicts** - netlify.json cleaned up
 5. ✅ **Domain References** - All updated to new domain
 6. ✅ **Build** - Passes successfully
 7. ✅ **Old Domain Logic** - Completely removed (handled separately)
@@ -32,7 +32,7 @@
 - Fixed TypeScript compilation errors (7 files)
 - Fixed server-side XSS vulnerability
 - Merged duplicate redirects in next.config.mjs
-- Removed cache conflicts from vercel.json
+- Removed cache conflicts from netlify.json
 - Updated README.md and security.txt
 
 ### Commit 2: `c1a996f` - Documentation
@@ -48,7 +48,7 @@
 ### Commit 4: `d6ec5b9` - Independent Setup
 - Removed old domain redirects (handled separately)
 - Created CACHE_PURGE_GUIDE.md
-- Created VERCEL_PREVIEW_DISABLE.md
+- Created NETLIFY_PREVIEW_DISABLE.md
 - Updated FRESH_START_DEPLOYMENT.md
 
 ---
@@ -60,7 +60,7 @@
 2. **FIXES_APPLIED.md** - All fixes documented
 3. **FRESH_START_DEPLOYMENT.md** - Fresh sitemap submission guide
 4. **CACHE_PURGE_GUIDE.md** - Global cache clearing instructions
-5. **VERCEL_PREVIEW_DISABLE.md** - Block preview domains
+5. **NETLIFY_PREVIEW_DISABLE.md** - Block preview domains
 6. **OLD_DOMAIN_CLEANUP_PLAN.md** - Cleanup strategy
 7. **DEPLOYMENT_READY.md** - This file
 
@@ -78,7 +78,7 @@ git push origin main
 
 ### 2. Deploy to Production
 
-Vercel will auto-deploy when you push to main.
+Netlify will auto-deploy when you push to main.
 
 **Verify:**
 - https://www.elevateforhumanity.org
@@ -91,11 +91,11 @@ Vercel will auto-deploy when you push to main.
 
 **Quick steps:**
 ```bash
-# Vercel Dashboard
+# Netlify Dashboard
 Settings → Data Cache → Purge Everything
 
 # Or redeploy without cache
-vercel --prod --force --no-cache
+netlify --prod --force --no-cache
 ```
 
 ### 4. Submit Fresh Sitemap
@@ -111,10 +111,10 @@ vercel --prod --force --no-cache
 
 ### 5. Disable Preview Domains (Optional)
 
-**Follow:** `VERCEL_PREVIEW_DISABLE.md`
+**Follow:** `NETLIFY_PREVIEW_DISABLE.md`
 
 **Quick steps:**
-1. Vercel Dashboard → Settings
+1. Netlify Dashboard → Settings
 2. Deployment Protection → Enable Password
 3. Git → Disable preview branches (optional)
 
@@ -159,10 +159,10 @@ Create simple redirect page:
 - [ ] No 404 errors on key pages
 - [ ] SSL certificate active
 - [ ] Redirects working (www → non-www)
-- [ ] Redirects working (vercel.app → main domain)
+- [ ] Redirects working (netlify.app → main domain)
 
 ### Cache Verification:
-- [ ] Vercel cache purged
+- [ ] Netlify cache purged
 - [ ] DNS propagated (check dnschecker.org)
 - [ ] Fresh content served
 - [ ] No old domain references visible
@@ -199,13 +199,13 @@ Create simple redirect page:
 ## 🔧 Configuration Summary
 
 ### Domain Setup:
-- **Main Domain:** www.elevateforhumanity.org (Vercel)
+- **Main Domain:** www.elevateforhumanity.org (Netlify)
 - **Old Domain:** www.elevateforhumanity.org (Separate hosting, redirects)
-- **Preview Domains:** *.vercel.app (Blocked from indexing)
+- **Preview Domains:** *.netlify.app (Blocked from indexing)
 
 ### Redirects:
 - `www.www.elevateforhumanity.org` → `www.elevateforhumanity.org`
-- `*.vercel.app` → `www.elevateforhumanity.org`
+- `*.netlify.app` → `www.elevateforhumanity.org`
 - Old domain handled separately (not in this codebase)
 
 ### SEO:
@@ -290,7 +290,7 @@ git merge fix/production-readiness-critical-issues
 git push origin main
 
 # Or deploy directly
-vercel --prod --force --no-cache
+netlify --prod --force --no-cache
 ```
 
 ---
@@ -298,7 +298,7 @@ vercel --prod --force --no-cache
 ## 📞 Support
 
 **If issues arise:**
-1. Check deployment logs in Vercel
+1. Check deployment logs in Netlify
 2. Review error logs in Sentry
 3. Check documentation guides
 4. Verify DNS propagation
@@ -306,7 +306,7 @@ vercel --prod --force --no-cache
 **Documentation:**
 - FRESH_START_DEPLOYMENT.md
 - CACHE_PURGE_GUIDE.md
-- VERCEL_PREVIEW_DISABLE.md
+- NETLIFY_PREVIEW_DISABLE.md
 
 ---
 
