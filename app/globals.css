@@ -36,7 +36,7 @@ header[role="banner"] span,
 header[role="banner"] button,
 header[role="banner"] a,
 header[role="banner"] nav {
-  color: #ff0000 !important;
+  color: #000000 !important;
 }
 
 header[role="banner"] .bg-blue-600 {

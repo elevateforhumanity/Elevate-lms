@@ -155,7 +155,7 @@ export function DesktopNav({ items }: DesktopNavProps) {
                 }}
                 onKeyDown={(e) => handleKeyDown(e, item.name, true, item.children?.length || 0)}
                 className="flex items-center gap-1 hover:text-blue-600 font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1"
-                style={{ color: '#ff0000' }}
+                style={{ color: '#000000' }}
                 aria-haspopup="true"
                 aria-expanded={isOpen}
                 aria-controls={`dropdown-${item.name}`}
@@ -179,7 +179,7 @@ export function DesktopNav({ items }: DesktopNavProps) {
                       key={child.name}
                       href={child.href}
                       className="block px-4 py-2 text-sm hover:bg-gray-100 transition focus:outline-none focus:bg-blue-50 focus:text-blue-600"
-                      style={{ color: '#ff0000' }}
+                      style={{ color: '#000000' }}
                       role="menuitem"
                       onClick={() => {
                         setOpenDropdown(null);
@@ -203,7 +203,7 @@ export function DesktopNav({ items }: DesktopNavProps) {
             className={`hover:text-blue-600 font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded px-2 py-1 ${
               isActive ? 'text-blue-600' : ''
             }`}
-            style={{ color: isActive ? '#2563eb' : '#ff0000' }}
+            style={{ color: isActive ? '#2563eb' : '#000000' }}
             aria-current={isActive ? 'page' : undefined}
           >
             {item.name}
