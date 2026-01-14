@@ -24,15 +24,11 @@ export async function sendEmail({
   from = FROM_EMAIL,
   replyTo = REPLY_TO_EMAIL,
 }: EmailOptions) {
-  // If no API key, log (development mode)
+  // PRODUCTION ENFORCEMENT: Fail if no API key
   if (!RESEND_API_KEY) {
-    logger.info('Email (dev mode)', {
-      to,
-      subject,
-      from,
-      htmlPreview: html.substring(0, 200),
-    });
-    return { success: true, messageId: 'dev-mode' };
+    const error = new Error('RESEND_API_KEY is not configured. Email cannot be sent in production.');
+    logger.error('Email configuration error', error, { to, subject });
+    throw error;
   }
 
   try {
@@ -58,9 +54,9 @@ export async function sendEmail({
 
     const data = await response.json();
     return { success: true, messageId: data.id };
-  } catch { /* Error handled silently */ 
+  } catch (error) {
     logger.error('Failed to send email', error as Error, { to, subject });
-    return { success: false, error };
+    return { success: false, error: (error as Error).message };
   }
 }
 
