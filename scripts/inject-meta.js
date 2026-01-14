@@ -42,7 +42,7 @@ const routeConfig = {
     description:
       'Get in touch with Elevate for Humanity Career and Technical Institute. Located in Marion County, IN. Admissions, support, and partnership inquiries.',
     keywords:
-      'contact, Marion County IN, career institute contact, admissions office',
+      'contact, Marion County IN, career training contact, admissions office',
     robots: 'index, follow',
   },
   '/lms': {
