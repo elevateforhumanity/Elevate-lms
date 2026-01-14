@@ -239,7 +239,7 @@ export default async function StudentPortalPage() {
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
             Your complete dashboard for courses, grades, schedule, career services, and student resources
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-white/90">
+          <div className="flex flex-wrap justify-center gap-4 text-white/90 mb-8">
             <div className="flex items-center gap-2">
               <CheckCircle className="w-5 h-5" />
               <span>24/7 Course Access</span>
@@ -252,6 +252,22 @@ export default async function StudentPortalPage() {
               <CheckCircle className="w-5 h-5" />
               <span>Career Support</span>
             </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/lms/dashboard"
+              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition"
+            >
+              <GraduationCap className="w-5 h-5" />
+              Sign In to My Dashboard
+            </Link>
+            <Link
+              href="/apply"
+              className="inline-flex items-center justify-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition border-2 border-white"
+            >
+              Not Enrolled? Apply Now
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
@@ -457,10 +473,10 @@ export default async function StudentPortalPage() {
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/programs"
+              href="/pathways"
               className="inline-flex items-center justify-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition border-2 border-white"
             >
-              Browse Programs
+              Browse Pathways
               <BookOpen className="w-5 h-5" />
             </Link>
           </div>

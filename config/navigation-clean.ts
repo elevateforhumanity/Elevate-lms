@@ -66,6 +66,7 @@ export const publicNav: NavSection[] = [
   {
     label: 'Partners',
     items: [
+      { label: 'Partner With Us', href: '/partners' },
       { label: 'Employers', href: '/employer' },
       { label: 'Hire Graduates', href: '/hire-graduates' },
       { label: 'Workforce Partners', href: '/workforce-partners' },

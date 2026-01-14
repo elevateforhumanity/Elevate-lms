@@ -144,13 +144,16 @@ const nextConfig = {
   // Redirects for consolidated routes
   async redirects() {
     return [
-      // WWW to non-WWW redirect (canonical domain)
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.elevateforhumanity.institute' }],
-        destination: 'https://elevateforhumanity.institute/:path*',
-        permanent: true,
-      },
+      // Normalize "Institute" style routes into the infrastructure model
+      { source: '/institute', destination: '/', permanent: true },
+      { source: '/training-institute', destination: '/pathways', permanent: true },
+      { source: '/courses', destination: '/pathways', permanent: true },
+      { source: '/programs', destination: '/pathways', permanent: true },
+      { source: '/programs/cna', destination: '/pathways/cna-certification', permanent: true },
+      { source: '/programs/barber-apprenticeship', destination: '/pathways/barber-apprenticeship', permanent: true },
+      { source: '/programs/hvac', destination: '/pathways/hvac-technician', permanent: true },
+      { source: '/programs/it-support', destination: '/pathways/it-support', permanent: true },
+      { source: '/student/dashboard', destination: '/student-portal', permanent: true },
       
       // Fix old hero image paths
       {
@@ -176,7 +179,8 @@ const nextConfig = {
         permanent: true,
       },
       
-      // Dashboard consolidation
+      // Dashboard consolidation - canonical student entry is /student-portal
+      { source: '/student', destination: '/student-portal', permanent: true },
       { source: '/portal/:path*', destination: '/lms/:path*', permanent: true },
       { source: '/student/:path*', destination: '/lms/:path*', permanent: true },
       { source: '/students/:path*', destination: '/lms/:path*', permanent: true },

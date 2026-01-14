@@ -29,7 +29,7 @@ export function SearchBar() {
             Search results for "{query}"
           </div>
           <div className="border-t border-gray-100">
-            <a href="/programs/barber-apprenticeship" className="block px-4 py-2 hover:bg-gray-50 text-sm">
+            <a href="/pathways/barber-apprenticeship" className="block px-4 py-2 hover:bg-gray-50 text-sm">
               <div className="font-medium text-black">
                 Barber Apprenticeship
               </div>
@@ -37,7 +37,7 @@ export function SearchBar() {
                 Professional barbering training
               </div>
             </a>
-            <a href="/programs/cna" className="block px-4 py-2 hover:bg-gray-50 text-sm">
+            <a href="/pathways/cna-certification" className="block px-4 py-2 hover:bg-gray-50 text-sm">
               <div className="font-medium text-black">CNA Certification</div>
               <div className="text-gray-500">
                 Certified Nursing Assistant program
