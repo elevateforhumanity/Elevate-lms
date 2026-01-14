@@ -9,7 +9,6 @@ import {
   Phone,
   ArrowRight,
 } from 'lucide-react';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
 
 export const metadata: Metadata = {
   alternates: {
@@ -37,23 +36,78 @@ export const metadata: Metadata = {
 export default function EmployerPage() {
   return (
     <div className="bg-white">
-      <ModernLandingHero
-        badge="⚡ 200+ Employer Partners"
-        headline="Hire Trained Workers"
-        accentText="No Recruiting Fees"
-        subheadline="Access job-ready candidates with industry credentials"
-        description="Pre-screened workers trained in healthcare, skilled trades, and technology. Average time-to-hire: 14 days. Direct hire, zero fees, no contracts."
-        imageSrc="/hero-images/employer-new-hero.jpg"
-        imageAlt="Employer Partners"
-        primaryCTA={{ text: "Call (317) 314-3757", href: "tel:+13173143757" }}
-        secondaryCTA={{ text: "Learn More", href: "#how-it-works" }}
-        features={[
-          "Pre-screened candidates with industry credentials",
-          "Average time-to-hire: 14 days vs. 42 days industry average",
-          "Optional apprenticeship programs with wage reimbursement"
-        ]}
-        imageOnRight={false}
-      />
+      {/* Video Hero Section - No Gradient */}
+      <section className="relative bg-white py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Video */}
+            <div className="relative h-[300px] md:h-[350px] lg:h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                <source src="/videos/employer-hero.mp4" type="video/mp4" />
+              </video>
+            </div>
+            
+            {/* Content */}
+            <div className="flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6 w-fit">
+                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                ⚡ 200+ Employer Partners
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-black mb-4 leading-tight">
+                Hire Trained Workers
+                <span className="block text-blue-600">No Recruiting Fees</span>
+              </h1>
+              
+              <h2 className="text-xl md:text-2xl text-black font-semibold mb-6">
+                Access job-ready candidates with industry credentials
+              </h2>
+              
+              <p className="text-lg text-black mb-8 leading-relaxed">
+                Pre-screened workers trained in healthcare, skilled trades, and technology. Average time-to-hire: 14 days. Direct hire, zero fees, no contracts.
+              </p>
+
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                  <span className="text-black">Pre-screened candidates with industry credentials</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                  <span className="text-black">Average time-to-hire: 14 days vs. 42 days industry average</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                  <span className="text-black">Optional apprenticeship programs with wage reimbursement</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="tel:+13173143757"
+                  className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl"
+                >
+                  Call (317) 314-3757
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                
+                <Link
+                  href="#how-it-works"
+                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-black px-8 py-4 rounded-lg font-bold text-lg transition-colors border-2 border-gray-200"
+                >
+                  Learn More
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* THREE PROBLEMS WE SOLVE */}
       <section className="py-16 bg-white">
