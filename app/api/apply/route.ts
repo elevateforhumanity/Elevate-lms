@@ -43,17 +43,40 @@ export const POST = withRateLimit(
 
       const supabase = createAdminClient();
     
-      const { data: application, error } = await supabase.from('applications').insert({
+      // Build insert object - only include pathway_slug/source if migration has been run
+      const insertData: Record<string, any> = {
         first_name: firstName,
         last_name: lastName,
         email,
         phone,
         program_id: program,
-        pathway_slug: pathway_slug || null,
-        source: source || 'direct',
         status: 'pending',
-        notes: `Funding: ${funding}. ${eligible ? 'Prescreen pass' : 'Manual review'}`,
-      }).select('id').single();
+        notes: `Funding: ${funding}. ${eligible ? 'Prescreen pass' : 'Manual review'}${pathway_slug ? `. Pathway: ${pathway_slug}` : ''}`,
+      };
+
+      // Try with new columns first, fall back without them
+      let application, error;
+      if (pathway_slug || source) {
+        const result = await supabase.from('applications').insert({
+          ...insertData,
+          pathway_slug: pathway_slug || null,
+          source: source || 'direct',
+        }).select('id').single();
+        
+        if (result.error?.message?.includes('column') || result.error?.code === '42703') {
+          // Columns don't exist yet, insert without them
+          const fallback = await supabase.from('applications').insert(insertData).select('id').single();
+          application = fallback.data;
+          error = fallback.error;
+        } else {
+          application = result.data;
+          error = result.error;
+        }
+      } else {
+        const result = await supabase.from('applications').insert(insertData).select('id').single();
+        application = result.data;
+        error = result.error;
+      }
 
       if (error) {
         console.error('Supabase insert error:', error);
