@@ -751,7 +751,7 @@ export default async function MegaAdminDashboard({ searchParams }: { searchParam
             <div>
               <h1 className="text-2xl font-bold">Admin Mega Dashboard</h1>
               <p className="text-sm text-blue-100">
-                All 106 Features • {profile?.full_name || user.email}
+                All 106 Features • {profile?.full_name || 'Admin'}
               </p>
             </div>
             <div className="text-right">
@@ -770,37 +770,37 @@ export default async function MegaAdminDashboard({ searchParams }: { searchParam
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
             <div className="text-xs text-black">Students</div>
             <div className="text-base font-bold text-brand-blue-600">
-              {totalStudents || 0}
+              {safeStudents || 0}
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
             <div className="text-xs text-black">Enrollments</div>
             <div className="text-base font-bold text-brand-green-600">
-              {totalEnrollments || 0}
+              {safeEnrollments || 0}
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
             <div className="text-xs text-black">Active</div>
             <div className="text-base font-bold text-brand-orange-600">
-              {activeEnrollments || 0}
+              {safeActiveEnrollments || 0}
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
             <div className="text-xs text-black">Programs</div>
             <div className="text-base font-bold text-purple-600">
-              {totalPrograms || 0}
+              {safePrograms || 0}
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
             <div className="text-xs text-black">Courses</div>
             <div className="text-base font-bold text-indigo-600">
-              {totalCourses || 0}
+              {safeCourses || 0}
             </div>
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-3 text-center">
             <div className="text-xs text-black">Pending</div>
             <div className="text-base font-bold text-brand-orange-600">
-              {pendingApplications || 0}
+              {safePendingApps || 0}
             </div>
           </div>
         </div>

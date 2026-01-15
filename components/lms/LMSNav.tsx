@@ -108,7 +108,7 @@ export default function LMSNav() {
               <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuLabel>
                   <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium">{user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Student'}</p>
+                    <p className="text-sm font-medium">{(user as any)?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Student'}</p>
                     <p className="text-xs text-muted-foreground">
                       {user?.email || ''}
                     </p>
