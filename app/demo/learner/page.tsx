@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-
 import Image from 'next/image';
 import { 
   Clock, 
@@ -21,185 +20,67 @@ import {
   ClipboardCheck,
   BarChart3,
   HelpCircle,
+  Loader2,
+  RefreshCw,
 } from 'lucide-react';
-
-// Types for dashboard data
-interface DashboardData {
-  learner: {
-    id: string;
-    name: string;
-    email: string;
-    avatar: string | null;
-  };
-  program: {
-    id: string;
-    name: string;
-    slug: string;
-    enrollmentId: string;
-    rapidsStatus: string;
-    rapidsId: string | null;
-    miladyEnrolled: boolean;
-  } | null;
-  progress: {
-    theoryModules: number;
-    practicalHours: number;
-    rtiHours: number;
-    totalHours: number;
-    requiredHours: number;
-    transferHours: number;
-    approvedHours: number;
-    pendingHours: number;
-    progressPercentage: number;
-  };
-  currentModule: {
-    id: string;
-    title: string;
-    description: string;
-    lessons: Array<{
-      id: string;
-      title: string;
-      duration: number;
-      type: string;
-      completed: boolean;
-    }>;
-  } | null;
-  trainingLog: Array<{
-    id: string;
-    date: string;
-    hours: number;
-    type: string;
-    description: string;
-    status: string;
-    verified: boolean;
-  }>;
-  schedule: Array<{
-    id: string;
-    title: string;
-    date: string;
-    time: string;
-    duration: number;
-    type: string;
-    color: string;
-  }>;
-  achievements: Array<{
-    id: string;
-    code: string;
-    label: string;
-    description: string;
-    earnedAt: string;
-    icon: string;
-  }>;
-  gamification: {
-    points: number;
-    level: number;
-    levelName: string;
-    pointsToNextLevel: number;
-    currentStreak: number;
-    longestStreak: number;
-  };
-}
-
-// Default fallback data when not authenticated or no data
-const defaultData: DashboardData = {
-  learner: {
-    id: 'demo',
-    name: 'Darius Williams',
-    email: 'd.williams@email.com',
-    avatar: null,
-  },
-  program: {
-    id: 'barber-apprenticeship',
-    name: 'USDOL Registered Barber Apprenticeship',
-    slug: 'barber-apprenticeship',
-    enrollmentId: 'demo-enrollment',
-    rapidsStatus: 'active',
-    rapidsId: '2025-IN-132301',
-    miladyEnrolled: true,
-  },
-  progress: {
-    theoryModules: 58,
-    practicalHours: 847,
-    rtiHours: 58,
-    totalHours: 905,
-    requiredHours: 2000,
-    transferHours: 0,
-    approvedHours: 847,
-    pendingHours: 8,
-    progressPercentage: 45,
-  },
-  currentModule: {
-    id: 'module-8',
-    title: "Men's Haircutting Techniques",
-    description: 'Master classic and modern men\'s haircuts including fades, tapers, and textured styles.',
-    lessons: [
-      { id: '1', title: 'Introduction to Men\'s Cutting', duration: 15, type: 'video', completed: true },
-      { id: '2', title: 'Tools & Equipment Setup', duration: 12, type: 'video', completed: true },
-      { id: '3', title: 'Classic Taper Technique', duration: 25, type: 'video', completed: true },
-      { id: '4', title: 'Low Fade Fundamentals', duration: 30, type: 'video', completed: false },
-      { id: '5', title: 'Mid & High Fades', duration: 28, type: 'video', completed: false },
-      { id: '6', title: 'Skin Fade Mastery', duration: 35, type: 'video', completed: false },
-      { id: '7', title: 'Module Quiz', duration: 20, type: 'quiz', completed: false },
-    ],
-  },
-  trainingLog: [
-    { id: '1', date: '2025-01-14', hours: 8, type: 'OJT', description: 'Elite Cuts Barbershop', status: 'APPROVED', verified: true },
-    { id: '2', date: '2025-01-13', hours: 8, type: 'OJT', description: 'Elite Cuts Barbershop', status: 'APPROVED', verified: true },
-    { id: '3', date: '2025-01-12', hours: 6, type: 'OJT', description: 'Elite Cuts Barbershop', status: 'APPROVED', verified: true },
-    { id: '4', date: '2025-01-11', hours: 2, type: 'RTI', description: 'Online - Milady Theory', status: 'APPROVED', verified: true },
-    { id: '5', date: '2025-01-10', hours: 8, type: 'OJT', description: 'Elite Cuts Barbershop', status: 'SUBMITTED', verified: false },
-  ],
-  schedule: [
-    { id: '1', title: 'Practical Training', date: 'Today', time: '9:00 AM - 5:00 PM', duration: 480, type: 'training', color: '#22c55e' },
-    { id: '2', title: 'Theory Quiz: Module 8', date: 'Thu, Jan 16', time: '7:00 PM', duration: 60, type: 'quiz', color: '#3b82f6' },
-    { id: '3', title: 'Skills Assessment: Fades', date: 'Sat, Jan 18', time: '10:00 AM', duration: 120, type: 'assessment', color: '#f97316' },
-    { id: '4', title: 'Live Q&A with Mentor', date: 'Mon, Jan 20', time: '6:00 PM', duration: 60, type: 'live', color: '#8b5cf6' },
-  ],
-  achievements: [
-    { id: '1', code: 'first_500_hours', label: 'First 500 Hours', description: 'Completed 500 practical training hours', earnedAt: '2024-12-15', icon: '🎯' },
-    { id: '2', code: 'theory_master', label: 'Theory Master', description: 'Completed modules 1-6 with 90%+ scores', earnedAt: '2024-11-20', icon: '📚' },
-    { id: '3', code: 'safety_certified', label: 'Safety Certified', description: 'Passed sanitation & safety certification', earnedAt: '2024-10-10', icon: '✅' },
-    { id: '4', code: 'quick_learner', label: 'Quick Learner', description: 'Completed 5 lessons in one day', earnedAt: '2024-10-05', icon: '⚡' },
-  ],
-  gamification: {
-    points: 2450,
-    level: 3,
-    levelName: 'Apprentice II',
-    pointsToNextLevel: 550,
-    currentStreak: 12,
-    longestStreak: 28,
-  },
-};
+import type { LearnerDashboardData } from '@/lib/data/learner-data';
 
 export default function LearnerDashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [showNotifications, setShowNotifications] = useState(false);
-  const [data, setData] = useState<DashboardData>(defaultData);
+  const [data, setData] = useState<LearnerDashboardData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+
+  async function fetchDashboard() {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/learner/dashboard');
+      if (!res.ok) throw new Error('Failed to fetch');
+      const dashboardData = await res.json();
+      setData(dashboardData);
+      setLastUpdated(new Date());
+    } catch (err) {
+      setError('Failed to load dashboard data');
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
-    async function fetchDashboard() {
-      try {
-        const res = await fetch('/api/learner/dashboard');
-        if (res.ok) {
-          const dashboardData = await res.json();
-          if (dashboardData && !dashboardData.error) {
-            setData({
-              ...defaultData,
-              ...dashboardData,
-              learner: { ...defaultData.learner, ...dashboardData.learner },
-              program: dashboardData.program || defaultData.program,
-              progress: { ...defaultData.progress, ...dashboardData.progress },
-              gamification: { ...defaultData.gamification, ...dashboardData.gamification },
-            });
-          }
-        }
-      } catch (err) {
-        // Use default data on error - expected for unauthenticated users
-      }
-    }
     fetchDashboard();
   }, []);
 
-  const currentLessonIndex = data.currentModule?.lessons.findIndex(l => !l.completed) ?? 0;
+  const currentLessonIndex = data?.currentModule?.lessons.findIndex(l => !l.completed) ?? 0;
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+          <span className="text-slate-600 font-medium">Loading dashboard data...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-600 mb-4">{error || 'No data available'}</p>
+          <button 
+            onClick={fetchDashboard}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -253,6 +134,15 @@ export default function LearnerDashboard() {
                 <span className="text-sm font-semibold text-orange-700">{data.gamification.currentStreak} days</span>
               </div>
 
+              {/* Refresh */}
+              <button 
+                onClick={fetchDashboard}
+                className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg"
+                title="Refresh data"
+              >
+                <RefreshCw className="w-5 h-5" />
+              </button>
+
               {/* Notifications */}
               <button 
                 onClick={() => setShowNotifications(!showNotifications)}
@@ -275,12 +165,21 @@ export default function LearnerDashboard() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {/* Data Source Indicator */}
+        {lastUpdated && (
+          <div className="mb-4 flex items-center justify-between text-xs text-slate-500">
+            <span>Data loaded from database API</span>
+            <span>Last updated: {lastUpdated.toLocaleTimeString()}</span>
+          </div>
+        )}
+
         {/* Welcome Banner */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 mb-6 text-white">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold mb-1">Welcome back, {data.learner.name.split(' ')[0]}!</h1>
               <p className="text-blue-100">You&apos;re making great progress. Keep up the momentum!</p>
+              <p className="text-blue-200 text-sm mt-2">RAPIDS ID: {data.program.rapidsId}</p>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-center">
@@ -300,66 +199,62 @@ export default function LearnerDashboard() {
           {/* Main Column */}
           <div className="lg:col-span-2 space-y-6">
             {/* Continue Learning */}
-            {data.currentModule && (
-              <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-                <div className="p-5 border-b border-slate-100">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm text-slate-500 mb-1">Continue Learning</p>
-                      <h2 className="text-lg font-bold text-slate-900">{data.currentModule.title}</h2>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-2xl font-bold text-blue-600">
-                        {Math.round((data.currentModule.lessons.filter(l => l.completed).length / data.currentModule.lessons.length) * 100)}%
-                      </p>
-                      <p className="text-xs text-slate-500">Complete</p>
-                    </div>
+            <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+              <div className="p-5 border-b border-slate-100">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-slate-500 mb-1">Continue Learning</p>
+                    <h2 className="text-lg font-bold text-slate-900">Module {data.currentModule.number}: {data.currentModule.title}</h2>
                   </div>
-                  <div className="mt-3 h-2 bg-slate-100 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-blue-600 rounded-full" 
-                      style={{ width: `${(data.currentModule.lessons.filter(l => l.completed).length / data.currentModule.lessons.length) * 100}%` }} 
-                    />
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-blue-600">{data.currentModule.progress}%</p>
+                    <p className="text-xs text-slate-500">Complete</p>
                   </div>
                 </div>
-                
-                <div className="divide-y divide-slate-100">
-                  {data.currentModule.lessons.map((lesson, idx) => (
-                    <div 
-                      key={lesson.id}
-                      className={`flex items-center gap-4 p-4 ${idx === currentLessonIndex ? 'bg-blue-50' : ''} ${lesson.completed ? 'opacity-60' : ''}`}
-                    >
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                        lesson.completed ? 'bg-green-100 text-green-600' : 
-                        idx === currentLessonIndex ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'
-                      }`}>
-                        {lesson.completed ? (
-                          <CheckCircle className="w-5 h-5" />
-                        ) : lesson.type === 'video' ? (
-                          <Play className="w-5 h-5" />
-                        ) : (
-                          <ClipboardCheck className="w-5 h-5" />
-                        )}
-                      </div>
-                      <div className="flex-1">
-                        <p className={`font-medium ${idx === currentLessonIndex ? 'text-blue-900' : 'text-slate-900'}`}>
-                          {lesson.title}
-                        </p>
-                        <p className="text-sm text-slate-500">{lesson.duration} min &bull; {lesson.type === 'video' ? 'Video Lesson' : 'Quiz'}</p>
-                      </div>
-                      {idx === currentLessonIndex && (
-                        <button className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition">
-                          Resume
-                        </button>
-                      )}
-                      {!lesson.completed && idx !== currentLessonIndex && (
-                        <ChevronRight className="w-5 h-5 text-slate-300" />
-                      )}
-                    </div>
-                  ))}
+                <div className="mt-3 h-2 bg-slate-100 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-blue-600 rounded-full transition-all duration-500" 
+                    style={{ width: `${data.currentModule.progress}%` }} 
+                  />
                 </div>
               </div>
-            )}
+              
+              <div className="divide-y divide-slate-100">
+                {data.currentModule.lessons.map((lesson, idx) => (
+                  <div 
+                    key={lesson.id}
+                    className={`flex items-center gap-4 p-4 ${idx === currentLessonIndex ? 'bg-blue-50' : ''} ${lesson.completed ? 'opacity-60' : ''}`}
+                  >
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                      lesson.completed ? 'bg-green-100 text-green-600' : 
+                      idx === currentLessonIndex ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'
+                    }`}>
+                      {lesson.completed ? (
+                        <CheckCircle className="w-5 h-5" />
+                      ) : lesson.type === 'video' ? (
+                        <Play className="w-5 h-5" />
+                      ) : (
+                        <ClipboardCheck className="w-5 h-5" />
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <p className={`font-medium ${idx === currentLessonIndex ? 'text-blue-900' : 'text-slate-900'}`}>
+                        {lesson.title}
+                      </p>
+                      <p className="text-sm text-slate-500">{lesson.duration} min &bull; {lesson.type === 'video' ? 'Video Lesson' : lesson.type === 'quiz' ? 'Quiz' : 'Assignment'}</p>
+                    </div>
+                    {idx === currentLessonIndex && (
+                      <button className="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition">
+                        Resume
+                      </button>
+                    )}
+                    {!lesson.completed && idx !== currentLessonIndex && (
+                      <ChevronRight className="w-5 h-5 text-slate-300" />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
 
             {/* Progress Overview */}
             <div className="grid sm:grid-cols-3 gap-4">
@@ -374,7 +269,7 @@ export default function LearnerDashboard() {
                   </div>
                 </div>
                 <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-green-500 rounded-full" style={{ width: `${data.progress.theoryModules}%` }} />
+                  <div className="h-full bg-green-500 rounded-full transition-all duration-500" style={{ width: `${data.progress.theoryModules}%` }} />
                 </div>
               </div>
 
@@ -392,7 +287,7 @@ export default function LearnerDashboard() {
                 </div>
                 <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
                   <div 
-                    className="h-full bg-blue-500 rounded-full" 
+                    className="h-full bg-blue-500 rounded-full transition-all duration-500" 
                     style={{ width: `${(data.progress.practicalHours / data.progress.requiredHours) * 100}%` }} 
                   />
                 </div>
@@ -409,7 +304,7 @@ export default function LearnerDashboard() {
                   </div>
                 </div>
                 <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-purple-500 rounded-full" style={{ width: `${(data.progress.rtiHours / 144) * 100}%` }} />
+                  <div className="h-full bg-purple-500 rounded-full transition-all duration-500" style={{ width: `${(data.progress.rtiHours / 144) * 100}%` }} />
                 </div>
               </div>
             </div>
@@ -418,24 +313,32 @@ export default function LearnerDashboard() {
             <div className="bg-white rounded-xl border border-slate-200">
               <div className="p-5 border-b border-slate-100 flex items-center justify-between">
                 <h3 className="font-bold text-slate-900">Recent Training Hours</h3>
-                <button className="text-sm text-blue-600 font-medium hover:text-blue-700">View All</button>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-slate-500">{data.progress.approvedHours} approved, {data.progress.pendingHours} pending</span>
+                  <button className="text-sm text-blue-600 font-medium hover:text-blue-700">View All</button>
+                </div>
               </div>
               <div className="divide-y divide-slate-100">
-                {data.trainingLog.slice(0, 4).map((entry) => (
+                {data.trainingLog.map((entry) => (
                   <div key={entry.id} className="flex items-center justify-between p-4">
                     <div className="flex items-center gap-4">
                       <div className={`w-3 h-3 rounded-full ${entry.type === 'OJT' ? 'bg-green-500' : 'bg-purple-500'}`} />
                       <div>
-                        <p className="font-medium text-slate-900">{entry.description}</p>
-                        <p className="text-sm text-slate-500">{entry.date} &bull; {entry.type}</p>
+                        <p className="font-medium text-slate-900">{entry.location}</p>
+                        <p className="text-sm text-slate-500">{entry.date} &bull; {entry.type} &bull; {entry.supervisor}</p>
+                        <p className="text-xs text-slate-400 mt-1">{entry.description}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="font-semibold text-slate-900">{entry.hours} hrs</span>
-                      {entry.verified && (
+                      {entry.verified ? (
                         <span className="flex items-center gap-1 text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
                           <CheckCircle className="w-3 h-3" />
                           Verified
+                        </span>
+                      ) : (
+                        <span className="text-xs text-yellow-600 bg-yellow-50 px-2 py-1 rounded-full">
+                          Pending
                         </span>
                       )}
                     </div>
@@ -448,30 +351,42 @@ export default function LearnerDashboard() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Program Info */}
-            {data.program && (
-              <div className="bg-white rounded-xl border border-slate-200 p-5">
-                <h3 className="font-bold text-slate-900 mb-4">Your Program</h3>
-                <div className="space-y-3">
-                  <div>
-                    <p className="text-sm text-slate-500">Program</p>
-                    <p className="font-medium text-slate-900">{data.program.name}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-500">Status</p>
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-green-700 bg-green-50 px-2 py-1 rounded-full">
-                      <span className="w-2 h-2 bg-green-500 rounded-full" />
-                      Active
+            <div className="bg-white rounded-xl border border-slate-200 p-5">
+              <h3 className="font-bold text-slate-900 mb-4">Your Program</h3>
+              <div className="space-y-3">
+                <div>
+                  <p className="text-sm text-slate-500">Program</p>
+                  <p className="font-medium text-slate-900">{data.program.name}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-slate-500">Status</p>
+                  <span className="inline-flex items-center gap-1 text-sm font-medium text-green-700 bg-green-50 px-2 py-1 rounded-full">
+                    <span className="w-2 h-2 bg-green-500 rounded-full" />
+                    {data.program.status.charAt(0).toUpperCase() + data.program.status.slice(1)}
+                  </span>
+                </div>
+                <div>
+                  <p className="text-sm text-slate-500">RAPIDS ID</p>
+                  <p className="font-medium text-slate-900 font-mono text-sm">{data.program.rapidsId}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-slate-500">Started</p>
+                  <p className="font-medium text-slate-900">{data.program.startDate}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-slate-500">Expected Completion</p>
+                  <p className="font-medium text-slate-900">{data.program.expectedCompletion}</p>
+                </div>
+                {data.program.miladyEnrolled && (
+                  <div className="pt-2 border-t border-slate-100">
+                    <span className="inline-flex items-center gap-1 text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
+                      <CheckCircle className="w-3 h-3" />
+                      Milady Theory Enrolled
                     </span>
                   </div>
-                  {data.program.rapidsId && (
-                    <div>
-                      <p className="text-sm text-slate-500">RAPIDS ID</p>
-                      <p className="font-medium text-slate-900">{data.program.rapidsId}</p>
-                    </div>
-                  )}
-                </div>
+                )}
               </div>
-            )}
+            </div>
 
             {/* Upcoming Schedule */}
             <div className="bg-white rounded-xl border border-slate-200 p-5">
@@ -493,6 +408,7 @@ export default function LearnerDashboard() {
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-slate-900 truncate">{item.title}</p>
                       <p className="text-sm text-slate-500">{item.date} &bull; {item.time}</p>
+                      <p className="text-xs text-slate-400">{item.location}</p>
                     </div>
                   </div>
                 ))}
@@ -506,12 +422,12 @@ export default function LearnerDashboard() {
                 <span className="text-sm text-slate-500">{data.achievements.length} earned</span>
               </div>
               <div className="space-y-3">
-                {data.achievements.slice(0, 3).map((achievement) => (
+                {data.achievements.slice(0, 4).map((achievement) => (
                   <div key={achievement.id} className="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
                     <span className="text-2xl">{achievement.icon}</span>
                     <div>
                       <p className="font-medium text-slate-900">{achievement.label}</p>
-                      <p className="text-xs text-slate-500">{new Date(achievement.earnedAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</p>
+                      <p className="text-xs text-slate-500">{achievement.description}</p>
                     </div>
                   </div>
                 ))}
