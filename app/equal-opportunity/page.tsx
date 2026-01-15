@@ -1,227 +1,333 @@
 import { Metadata } from 'next';
-
 import Link from 'next/link';
-import Image from 'next/image';
+import { Scale, Users, Shield, Phone, Mail, CheckCircle, AlertCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/equal-opportunity',
   },
-  title: 'Equal Opportunity | Elevate For Humanity',
+  title: 'Equal Opportunity Employer & Provider | Elevate For Humanity',
   description:
-    'Explore Equal Opportunity and discover opportunities for career growth and development.',
+    'Elevate for Humanity is an equal opportunity employer and provider. We do not discriminate on the basis of race, color, religion, sex, national origin, age, disability, or veteran status.',
 };
 
-export default async function EqualOpportunityPage() {
+export default function EqualOpportunityPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-1.jpg"
-          alt="Equal Opportunity"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+      <section className="relative min-h-[500px] flex items-center bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900">
+        <div className="absolute inset-0 bg-[url('/images/pattern-grid.svg')] opacity-10" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-6">
+              <Scale className="w-10 h-10 text-white" />
+              <span className="text-white/80 text-lg font-medium">Federal Compliance</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Equal Opportunity Employer & Provider
+            </h1>
+            <p className="text-xl text-white/90 mb-8 leading-relaxed">
+              Elevate for Humanity is committed to providing equal opportunity in all programs, 
+              services, and employment. We believe that diversity strengthens our organization 
+              and the communities we serve.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/apply"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+              >
+                Apply for Training
+              </Link>
+              <Link
+                href="#file-complaint"
+                className="inline-flex items-center justify-center px-8 py-4 bg-blue-700 text-white rounded-lg font-bold hover:bg-blue-600 transition-colors border-2 border-white/30"
+              >
+                File a Complaint
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Equal Opportunity
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Equal Opportunity and discover opportunities for career
-            growth and development.
+      {/* EEO Statement */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border-l-4 border-blue-600">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">
+              Equal Employment Opportunity Statement
+            </h2>
+            <div className="prose prose-lg max-w-none text-gray-700">
+              <p className="text-lg leading-relaxed mb-6">
+                Elevate for Humanity is an equal opportunity employer and provider. It is our policy 
+                to provide equal employment and educational opportunities to all persons regardless of 
+                race, color, religion, sex (including pregnancy, sexual orientation, and gender identity), 
+                national origin, age, disability, genetic information, veteran status, or any other 
+                characteristic protected by federal, state, or local law.
+              </p>
+              <p className="text-lg leading-relaxed mb-6">
+                This policy applies to all terms and conditions of employment, including but not limited to: 
+                recruitment, hiring, placement, promotion, termination, layoff, recall, transfer, leaves of 
+                absence, compensation, and training. It also applies to all programs and services we provide 
+                to participants, students, and the public.
+              </p>
+              <p className="text-lg leading-relaxed">
+                We are committed to creating an inclusive environment where all individuals are treated with 
+                dignity and respect. Discrimination, harassment, and retaliation are strictly prohibited and 
+                will not be tolerated.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Protected Classes */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">Non-Discrimination Policy</h2>
+          <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            We do not discriminate against any individual on the basis of the following protected characteristics:
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: 'Race', description: 'Including ancestry and ethnic characteristics' },
+              { title: 'Color', description: 'Skin color or complexion' },
+              { title: 'Religion', description: 'Religious beliefs, practices, or observances' },
+              { title: 'Sex', description: 'Including pregnancy, childbirth, and related conditions' },
+              { title: 'Sexual Orientation', description: 'Heterosexual, homosexual, bisexual, or other' },
+              { title: 'Gender Identity', description: 'Gender expression and transgender status' },
+              { title: 'National Origin', description: 'Country of origin, ancestry, or ethnicity' },
+              { title: 'Age', description: 'Individuals 40 years of age or older' },
+              { title: 'Disability', description: 'Physical or mental impairment' },
+              { title: 'Genetic Information', description: 'Family medical history and genetic tests' },
+              { title: 'Veteran Status', description: 'Military service and veteran status' },
+              { title: 'Citizenship', description: 'Citizenship or immigration status' },
+            ].map((item, index) => (
+              <div key={index} className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-3 mb-3">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <h3 className="font-bold text-black">{item.title}</h3>
+                </div>
+                <p className="text-sm text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reasonable Accommodations */}
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <Users className="w-8 h-8 text-blue-600" />
+                <span className="text-blue-600 font-semibold">ADA Compliance</span>
+              </div>
+              <h2 className="text-3xl font-bold text-black mb-6">
+                Reasonable Accommodations
+              </h2>
+              <p className="text-lg text-gray-700 mb-6">
+                Elevate for Humanity is committed to providing reasonable accommodations to qualified 
+                individuals with disabilities. We will work with you to identify and implement 
+                appropriate accommodations that enable you to participate fully in our programs 
+                and services.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <span className="text-gray-700">Accessible facilities and equipment</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <span className="text-gray-700">Modified training materials and formats</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <span className="text-gray-700">Sign language interpreters upon request</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <span className="text-gray-700">Extended time for assessments when appropriate</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-1" />
+                  <span className="text-gray-700">Assistive technology support</span>
+                </li>
+              </ul>
+              <p className="text-gray-600 mt-6">
+                To request an accommodation, please contact us at least 5 business days before 
+                your scheduled program start date.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 className="text-xl font-bold text-black mb-4">Request an Accommodation</h3>
+              <p className="text-gray-600 mb-6">
+                Contact our Accessibility Coordinator to discuss your accommodation needs:
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-blue-600" />
+                  <a href="tel:+13173143757" className="text-blue-600 hover:underline">(317) 314-3757</a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-blue-600" />
+                  <a href="mailto:accessibility@elevateforhumanity.org" className="text-blue-600 hover:underline">
+                    accessibility@elevateforhumanity.org
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* File a Complaint */}
+      <section id="file-complaint" className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <AlertCircle className="w-8 h-8 text-orange-600" />
+            </div>
+            <h2 className="text-3xl font-bold text-black mb-4">
+              How to File a Discrimination Complaint
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              If you believe you have been discriminated against, you have the right to file a complaint.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Internal Complaint */}
+            <div className="bg-white border-2 border-gray-200 rounded-2xl p-8">
+              <h3 className="text-xl font-bold text-black mb-4">File with Elevate for Humanity</h3>
+              <p className="text-gray-600 mb-6">
+                You may file a complaint directly with our organization within 180 days of the alleged discrimination.
+              </p>
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-blue-600 font-bold">1</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-black">Submit in Writing</div>
+                    <div className="text-sm text-gray-600">Email or mail your complaint with details of the incident</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-blue-600 font-bold">2</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-black">Investigation</div>
+                    <div className="text-sm text-gray-600">We will investigate within 30 days</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-blue-600 font-bold">3</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-black">Resolution</div>
+                    <div className="text-sm text-gray-600">You will receive a written response with findings</div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-gray-50 rounded-lg p-4">
+                <p className="text-sm text-gray-700 mb-2"><strong>Contact:</strong></p>
+                <p className="text-sm text-gray-600">EEO Officer</p>
+                <p className="text-sm text-gray-600">Elevate for Humanity</p>
+                <p className="text-sm text-gray-600">Email: eeo@elevateforhumanity.org</p>
+                <p className="text-sm text-gray-600">Phone: (317) 314-3757</p>
+              </div>
+            </div>
+
+            {/* External Complaint */}
+            <div className="bg-white border-2 border-gray-200 rounded-2xl p-8">
+              <h3 className="text-xl font-bold text-black mb-4">File with Federal Agencies</h3>
+              <p className="text-gray-600 mb-6">
+                You may also file a complaint with the appropriate federal agency within 180 days.
+              </p>
+              
+              <div className="space-y-6">
+                <div className="border-b border-gray-200 pb-4">
+                  <h4 className="font-semibold text-black mb-2">U.S. Department of Labor</h4>
+                  <p className="text-sm text-gray-600 mb-2">Civil Rights Center (CRC)</p>
+                  <p className="text-sm text-gray-600">200 Constitution Avenue NW, Room N-4123</p>
+                  <p className="text-sm text-gray-600">Washington, DC 20210</p>
+                  <p className="text-sm text-gray-600">Phone: 1-866-487-2365</p>
+                </div>
+                
+                <div className="border-b border-gray-200 pb-4">
+                  <h4 className="font-semibold text-black mb-2">U.S. Equal Employment Opportunity Commission</h4>
+                  <p className="text-sm text-gray-600 mb-2">For employment-related complaints</p>
+                  <p className="text-sm text-gray-600">Phone: 1-800-669-4000</p>
+                  <p className="text-sm text-gray-600">Website: www.eeoc.gov</p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-black mb-2">Indiana Civil Rights Commission</h4>
+                  <p className="text-sm text-gray-600 mb-2">For state-level complaints</p>
+                  <p className="text-sm text-gray-600">Phone: (317) 232-2600</p>
+                  <p className="text-sm text-gray-600">Website: www.in.gov/icrc</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WIOA Notice */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+            <div className="flex items-start gap-4 mb-6">
+              <Shield className="w-12 h-12 text-blue-600 flex-shrink-0" />
+              <div>
+                <h2 className="text-2xl font-bold text-black mb-2">
+                  WIOA Section 188 Notice
+                </h2>
+                <p className="text-gray-600">Workforce Innovation and Opportunity Act</p>
+              </div>
+            </div>
+            <div className="prose prose-lg max-w-none text-gray-700">
+              <p>
+                As a recipient of federal financial assistance under the Workforce Innovation and 
+                Opportunity Act (WIOA), Elevate for Humanity is required to comply with Section 188 
+                of WIOA, which prohibits discrimination against all individuals in the United States 
+                on the basis of race, color, religion, sex (including pregnancy, childbirth, and 
+                related medical conditions, transgender status, and gender identity), national origin 
+                (including limited English proficiency), age, disability, or political affiliation or 
+                belief, or, against beneficiaries, applicants, and participants only, on the basis of 
+                citizenship status or participation in any WIOA Title I-financially assisted program or activity.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Questions About Equal Opportunity?</h2>
+          <p className="text-xl text-white/90 mb-8">
+            Our team is here to help answer any questions about our policies and your rights.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            <a
+              href="tel:+13173143757"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 rounded-lg font-bold hover:bg-gray-100 transition-colors"
             >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+              <Phone className="w-5 h-5 mr-2" />
+              Call (317) 314-3757
+            </a>
+            <a
+              href="mailto:eeo@elevateforhumanity.org"
+              className="inline-flex items-center justify-center px-8 py-4 bg-blue-700 text-white rounded-lg font-bold hover:bg-blue-800 transition-colors border-2 border-white/30"
             >
-              View Programs
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Equal Opportunity
-                </h2>
-                <p className="text-black mb-6">
-                  Explore Equal Opportunity and discover opportunities for
-                  career growth and development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-2.jpg"
-                  alt="Equal Opportunity"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
+              <Mail className="w-5 h-5 mr-2" />
+              Email EEO Officer
+            </a>
           </div>
         </div>
       </section>

@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, Shield, Scale, Users, FileText } from 'lucide-react';
+import { CheckCircle, Shield, Scale, Users, FileText, Download } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Federal Compliance | Elevate For Humanity',
-  description: 'Our commitment to federal compliance including WIOA, FERPA, ADA, and equal opportunity standards.',
+  description: 'Our commitment to federal compliance including WIOA, FERPA, ADA, and equal opportunity standards. View our policies and compliance documentation.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/federal-compliance',
   },
@@ -14,14 +14,20 @@ export default function FederalCompliancePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="bg-zinc-900   text-white py-20">
+      <section className="bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-6">
+              <Shield className="w-10 h-10 text-blue-400" />
+              <span className="text-blue-400 font-medium">Regulatory Compliance</span>
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Federal Compliance
             </h1>
-            <p className="text-xl text-blue-100">
-              Elevate for Humanity is committed to full compliance with all federal regulations governing workforce development, education, and equal opportunity.
+            <p className="text-xl text-gray-300 leading-relaxed">
+              Elevate for Humanity is committed to full compliance with all federal regulations 
+              governing workforce development, education, and equal opportunity. We maintain 
+              rigorous standards to protect participants and ensure program integrity.
             </p>
           </div>
         </div>
