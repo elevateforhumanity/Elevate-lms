@@ -3,311 +3,163 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  Info, Settings, Users, GraduationCap, BarChart3, Calendar, ArrowRight,
-  CheckCircle, AlertCircle, Download, Clock, Plus, Search, Filter,
-  ChevronRight, Building2, FileText, Bell
-} from 'lucide-react';
-import { adminStats, programs, pipeline, recentActivity, alerts, students, cohorts, reportTypes } from './data';
+import { Info, Menu, X, Users, GraduationCap, BarChart3, Building2, Settings, FileText, Bell, Search, ChevronRight, Clock, AlertCircle, CheckCircle, Download, Plus } from 'lucide-react';
 
-export default function AdminDemoPage() {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [searchQuery, setSearchQuery] = useState('');
+const stats = { students: 312, programs: 12, completion: 78, partners: 24 };
+const pipeline = [
+  { stage: 'Intake', count: 45, color: 'bg-slate-500' },
+  { stage: 'Review', count: 32, color: 'bg-yellow-500' },
+  { stage: 'Enrolled', count: 28, color: 'bg-blue-500' },
+  { stage: 'Active', count: 312, color: 'bg-green-500' },
+  { stage: 'Complete', count: 214, color: 'bg-purple-500' },
+];
+const programs = [
+  { name: 'Barber Apprenticeship', cat: 'Trades', enrolled: 48, done: 12 },
+  { name: 'CNA Training', cat: 'Healthcare', enrolled: 124, done: 89 },
+  { name: 'HVAC Technician', cat: 'Trades', enrolled: 36, done: 8 },
+  { name: 'Medical Assistant', cat: 'Healthcare', enrolled: 67, done: 45 },
+];
+const activity = [
+  { msg: 'Marcus J. enrolled in Barber Apprenticeship', time: '15 min ago' },
+  { msg: 'Sarah M. completed CNA Training', time: '1 hour ago' },
+  { msg: '24 OJT hours verified for HVAC cohort', time: '2 hours ago' },
+  { msg: 'Metro Healthcare Partners onboarded', time: '4 hours ago' },
+];
+const students = [
+  { name: 'Darius Williams', program: 'Barber', progress: 42, avatar: '/images/testimonials/student-marcus.jpg' },
+  { name: 'Sarah Mitchell', program: 'CNA', progress: 95, avatar: '/images/testimonials/student-sarah.jpg' },
+  { name: 'Marcus Johnson', program: 'HVAC', progress: 28, avatar: '/images/testimonials/student-david.jpg' },
+];
 
-  const filteredStudents = students.filter(s =>
-    s.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    s.program.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+export default function AdminDemo() {
+  const [tab, setTab] = useState('overview');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-100">
-      {/* Demo Banner */}
-      <div className="bg-blue-600 text-white py-2 px-4 text-center text-sm">
-        <Info className="w-4 h-4 inline mr-2" />
-        Demo Mode — This is a fully interactive admin dashboard demo
+      <div className="bg-blue-600 text-white py-2 px-4 text-center text-xs sm:text-sm">
+        <Info className="w-4 h-4 inline mr-2" />Demo Mode — Interactive admin dashboard
       </div>
 
-      {/* Header */}
-      <header className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+      <nav className="bg-white border-b sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between h-14 sm:h-16">
             <div className="flex items-center gap-4">
-              <Link href="/demo" className="text-slate-600 hover:text-orange-600 transition">
-                ← Back to Demo Hub
+              <Link href="/demo" className="flex items-center gap-2">
+                <Image src="/logo.png" alt="Elevate" width={32} height={32} />
+                <span className="font-bold text-slate-900 hidden sm:block">Admin Portal</span>
               </Link>
             </div>
-            <div className="flex items-center gap-4">
-              <button className="relative p-2 text-slate-600 hover:text-slate-900">
-                <Bell className="w-5 h-5" />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
-              </button>
-              <Link
-                href="/schedule"
-                className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-orange-700 transition"
-              >
-                <Calendar className="w-4 h-4" />
-                Schedule Demo
-              </Link>
+            <div className="hidden md:flex items-center gap-1">
+              {['overview', 'students', 'programs', 'reports'].map((t) => (
+                <button key={t} onClick={() => setTab(t)} className={`px-3 py-2 rounded-lg text-sm font-medium capitalize ${tab === t ? 'bg-orange-100 text-orange-700' : 'text-slate-600 hover:bg-slate-100'}`}>{t}</button>
+              ))}
+            </div>
+            <div className="flex items-center gap-2">
+              <button className="p-2 hover:bg-slate-100 rounded-lg relative"><Bell className="w-5 h-5 text-slate-600" /><span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" /></button>
+              <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2"><Menu className="w-6 h-6" /></button>
             </div>
           </div>
+          {menuOpen && (
+            <div className="md:hidden py-4 border-t">
+              {['overview', 'students', 'programs', 'reports'].map((t) => (
+                <button key={t} onClick={() => { setTab(t); setMenuOpen(false); }} className="block w-full text-left px-4 py-3 font-medium capitalize hover:bg-slate-50">{t}</button>
+              ))}
+            </div>
+          )}
         </div>
-      </header>
+      </nav>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Page Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-slate-900 flex items-center gap-3">
-              <Settings className="w-8 h-8 text-green-600" />
-              Program Manager Dashboard
-            </h1>
-            <p className="text-slate-600 mt-1">Manage programs, track enrollments, and generate reports</p>
-          </div>
-        </div>
-
-        {/* Tabs */}
-        <div className="flex gap-2 mb-6 border-b border-slate-200">
-          {['overview', 'students', 'programs', 'reports'].map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 font-medium capitalize transition border-b-2 -mb-px ${
-                activeTab === tab
-                  ? 'border-orange-600 text-orange-600'
-                  : 'border-transparent text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        {/* Overview Tab */}
-        {activeTab === 'overview' && (
-          <div className="space-y-6">
-            {/* Stats Cards */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-white rounded-xl border border-slate-200 p-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <GraduationCap className="w-6 h-6 text-blue-600" />
-                  <span className="text-sm text-slate-500">Active Programs</span>
+      <main className="max-w-7xl mx-auto px-4 py-4 sm:py-8">
+        {tab === 'overview' && (
+          <>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
+              {[
+                { icon: Users, label: 'Active Students', value: stats.students, color: 'text-blue-600' },
+                { icon: GraduationCap, label: 'Programs', value: stats.programs, color: 'text-green-600' },
+                { icon: BarChart3, label: 'Completion', value: `${stats.completion}%`, color: 'text-purple-600' },
+                { icon: Building2, label: 'Partners', value: stats.partners, color: 'text-orange-600' },
+              ].map((s, i) => (
+                <div key={i} className="bg-white rounded-xl border p-4">
+                  <div className="flex items-center gap-2 mb-2"><s.icon className={`w-5 h-5 ${s.color}`} /><span className="text-xs text-slate-500">{s.label}</span></div>
+                  <div className="text-2xl font-bold text-slate-900">{s.value}</div>
                 </div>
-                <p className="text-3xl font-bold text-slate-900">{adminStats.activePrograms}</p>
-              </div>
-              <div className="bg-white rounded-xl border border-slate-200 p-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <Users className="w-6 h-6 text-green-600" />
-                  <span className="text-sm text-slate-500">Active Students</span>
-                </div>
-                <p className="text-3xl font-bold text-slate-900">{adminStats.activeStudents}</p>
-              </div>
-              <div className="bg-white rounded-xl border border-slate-200 p-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <BarChart3 className="w-6 h-6 text-purple-600" />
-                  <span className="text-sm text-slate-500">Completion Rate</span>
-                </div>
-                <p className="text-3xl font-bold text-slate-900">{adminStats.completionRate}%</p>
-              </div>
-              <div className="bg-white rounded-xl border border-slate-200 p-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <Building2 className="w-6 h-6 text-orange-600" />
-                  <span className="text-sm text-slate-500">Active Partners</span>
-                </div>
-                <p className="text-3xl font-bold text-slate-900">{adminStats.activePartners}</p>
-              </div>
+              ))}
             </div>
 
-            {/* Pipeline */}
-            <div className="bg-white rounded-xl border border-slate-200 p-6">
-              <h2 className="text-lg font-bold text-slate-900 mb-6">Enrollment Pipeline</h2>
-              <div className="flex flex-wrap items-center gap-2">
-                {pipeline.map((stage, idx) => (
-                  <div key={stage.stage} className="flex items-center">
-                    <div className={`${stage.color} text-white px-4 py-3 rounded-lg text-center min-w-[100px]`}>
-                      <p className="font-bold text-lg">{stage.count}</p>
-                      <p className="text-xs opacity-90">{stage.stage}</p>
-                    </div>
-                    {idx < pipeline.length - 1 && (
-                      <ArrowRight className="w-5 h-5 text-slate-300 mx-2" />
-                    )}
+            <div className="bg-white rounded-xl border p-4 sm:p-6 mb-6">
+              <h2 className="font-bold text-slate-900 mb-4">Enrollment Pipeline</h2>
+              <div className="flex flex-wrap gap-2">
+                {pipeline.map((p, i) => (
+                  <div key={i} className={`${p.color} text-white px-3 sm:px-4 py-2 rounded-lg text-center min-w-[70px] sm:min-w-[90px]`}>
+                    <div className="font-bold text-lg">{p.count}</div>
+                    <div className="text-xs opacity-90">{p.stage}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-6">
-              {/* Recent Activity */}
-              <div className="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-6">
-                <h3 className="font-bold text-slate-900 mb-4">Recent Activity</h3>
-                <div className="space-y-4">
-                  {recentActivity.map((activity) => (
-                    <div key={activity.id} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2" />
-                      <div className="flex-1">
-                        <p className="font-medium text-slate-900">{activity.action}</p>
-                        <p className="text-sm text-slate-500">{activity.detail}</p>
-                        <p className="text-xs text-slate-400 flex items-center gap-1 mt-1">
-                          <Clock className="w-3 h-3" /> {activity.time}
-                        </p>
+            <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
+              <div className="lg:col-span-2 bg-white rounded-xl border p-4 sm:p-6">
+                <h3 className="font-bold text-slate-900 mb-4">Programs</h3>
+                <div className="space-y-3">
+                  {programs.map((p, i) => (
+                    <div key={i} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                      <div>
+                        <div className="font-medium text-sm text-slate-900">{p.name}</div>
+                        <div className="text-xs text-slate-500">{p.cat}</div>
+                      </div>
+                      <div className="flex items-center gap-4 text-sm">
+                        <div className="text-center"><div className="font-bold text-slate-900">{p.enrolled}</div><div className="text-xs text-slate-500">Enrolled</div></div>
+                        <div className="text-center"><div className="font-bold text-green-600">{p.done}</div><div className="text-xs text-slate-500">Done</div></div>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-
-              {/* Alerts */}
-              <div className="bg-white rounded-xl border border-slate-200 p-6">
-                <h3 className="font-bold text-slate-900 mb-4">Alerts</h3>
+              <div className="bg-white rounded-xl border p-4 sm:p-6">
+                <h3 className="font-bold text-slate-900 mb-4">Recent Activity</h3>
                 <div className="space-y-3">
-                  {alerts.map((alert) => (
-                    <div
-                      key={alert.id}
-                      className={`p-3 rounded-lg ${
-                        alert.type === 'warning' ? 'bg-amber-50 border border-amber-200' :
-                        alert.type === 'success' ? 'bg-green-50 border border-green-200' :
-                        'bg-blue-50 border border-blue-200'
-                      }`}
-                    >
-                      <p className={`text-sm ${
-                        alert.type === 'warning' ? 'text-amber-800' :
-                        alert.type === 'success' ? 'text-green-800' :
-                        'text-blue-800'
-                      }`}>
-                        {alert.type === 'warning' && <AlertCircle className="w-4 h-4 inline mr-2" />}
-                        {alert.type === 'success' && <CheckCircle className="w-4 h-4 inline mr-2" />}
-                        {alert.type === 'info' && <Info className="w-4 h-4 inline mr-2" />}
-                        {alert.message}
-                      </p>
+                  {activity.map((a, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full mt-1.5 flex-shrink-0" />
+                      <div>
+                        <div className="text-sm text-slate-900">{a.msg}</div>
+                        <div className="text-xs text-slate-400">{a.time}</div>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
-          </div>
+          </>
         )}
 
-        {/* Students Tab */}
-        {activeTab === 'students' && (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
+        {tab === 'students' && (
+          <div className="bg-white rounded-xl border overflow-hidden">
+            <div className="p-4 border-b flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
               <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Search students..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input type="text" placeholder="Search students..." className="w-full pl-9 pr-4 py-2 border rounded-lg text-sm" />
               </div>
-              <button className="flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-700 transition">
-                <Plus className="w-5 h-5" /> Add Student
-              </button>
+              <button className="flex items-center justify-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium"><Plus className="w-4 h-4" />Add Student</button>
             </div>
-
-            <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-              <table className="w-full">
-                <thead className="bg-slate-50">
-                  <tr>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-500 uppercase">Student</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-500 uppercase">Program</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-500 uppercase">Progress</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-500 uppercase">Status</th>
-                    <th className="text-left px-6 py-3 text-xs font-semibold text-slate-500 uppercase">Enrolled</th>
-                    <th className="px-6 py-3"></th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-200">
-                  {filteredStudents.map((student) => (
-                    <tr key={student.id} className="hover:bg-slate-50">
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-3">
-                          <Image
-                            src={student.avatar}
-                            alt={student.name}
-                            width={40}
-                            height={40}
-                            className="rounded-full object-cover"
-                          />
-                          <div>
-                            <p className="font-medium text-slate-900">{student.name}</p>
-                            <p className="text-sm text-slate-500">{student.email}</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 text-sm text-slate-600">{student.program}</td>
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-orange-500 rounded-full"
-                              style={{ width: `${student.progress}%` }}
-                            />
-                          </div>
-                          <span className="text-sm text-slate-600">{student.progress}%</span>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-700">
-                          {student.status}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 text-sm text-slate-600">{student.enrolled}</td>
-                      <td className="px-6 py-4">
-                        <button className="text-orange-600 hover:text-orange-700">
-                          <ChevronRight className="w-5 h-5" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
-        {/* Programs Tab */}
-        {activeTab === 'programs' && (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-slate-900">All Programs</h2>
-              <button className="flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-700 transition">
-                <Plus className="w-5 h-5" /> Add Program
-              </button>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {programs.map((program) => (
-                <div key={program.id} className="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-lg transition">
-                  <div className="flex items-start justify-between mb-4">
-                    <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                      program.category === 'Healthcare' ? 'bg-blue-100 text-blue-700' :
-                      program.category === 'Skilled Trades' ? 'bg-orange-100 text-orange-700' :
-                      'bg-purple-100 text-purple-700'
-                    }`}>
-                      {program.category}
-                    </span>
-                    <span className="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-700">
-                      {program.status}
-                    </span>
-                  </div>
-                  <h3 className="font-bold text-slate-900 mb-2">{program.name}</h3>
-                  <div className="space-y-2 text-sm text-slate-600 mb-4">
-                    <p>{program.format} • {program.duration}</p>
-                    <p>{program.modules} modules</p>
-                  </div>
-                  <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+            <div className="divide-y">
+              {students.map((s, i) => (
+                <div key={i} className="flex items-center justify-between p-4 hover:bg-slate-50">
+                  <div className="flex items-center gap-3">
+                    <Image src={s.avatar} alt={s.name} width={40} height={40} className="rounded-full" />
                     <div>
-                      <p className="text-2xl font-bold text-slate-900">{program.enrolled}</p>
-                      <p className="text-xs text-slate-500">Enrolled</p>
+                      <div className="font-medium text-slate-900">{s.name}</div>
+                      <div className="text-sm text-slate-500">{s.program}</div>
                     </div>
-                    <div>
-                      <p className="text-2xl font-bold text-green-600">{program.completed}</p>
-                      <p className="text-xs text-slate-500">Completed</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="hidden sm:flex items-center gap-2">
+                      <div className="w-20 h-2 bg-slate-100 rounded-full"><div className="h-full bg-orange-500 rounded-full" style={{width:`${s.progress}%`}} /></div>
+                      <span className="text-sm text-slate-600">{s.progress}%</span>
                     </div>
-                    <button className="text-orange-600 hover:text-orange-700">
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
+                    <ChevronRight className="w-5 h-5 text-slate-400" />
                   </div>
                 </div>
               ))}
@@ -315,69 +167,33 @@ export default function AdminDemoPage() {
           </div>
         )}
 
-        {/* Reports Tab */}
-        {activeTab === 'reports' && (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-slate-900">Reports & Exports</h2>
-              <button className="flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-orange-700 transition">
-                <Download className="w-5 h-5" /> Export All Data
-              </button>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {reportTypes.map((report) => (
-                <button
-                  key={report.id}
-                  onClick={() => alert(`Generating ${report.name}...`)}
-                  className="bg-white rounded-xl border border-slate-200 p-6 text-left hover:shadow-lg hover:border-orange-200 transition"
-                >
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                    <FileText className="w-6 h-6 text-orange-600" />
-                  </div>
-                  <h3 className="font-bold text-slate-900 mb-1">{report.name}</h3>
-                  <p className="text-sm text-slate-500">{report.description}</p>
-                </button>
-              ))}
-            </div>
-
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-              <p className="text-sm text-amber-800">
-                <AlertCircle className="w-4 h-4 inline mr-2" />
-                Reporting requirements vary by funding source and region. Contact your compliance officer for specific requirements.
-              </p>
-            </div>
+        {tab === 'programs' && (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {programs.map((p, i) => (
+              <div key={i} className="bg-white rounded-xl border p-4 sm:p-6 hover:shadow-lg transition">
+                <span className={`text-xs font-medium px-2 py-1 rounded-full ${p.cat === 'Healthcare' ? 'bg-blue-100 text-blue-700' : 'bg-orange-100 text-orange-700'}`}>{p.cat}</span>
+                <h3 className="font-bold text-slate-900 mt-3 mb-2">{p.name}</h3>
+                <div className="flex items-center justify-between pt-3 border-t">
+                  <div><div className="text-xl font-bold text-slate-900">{p.enrolled}</div><div className="text-xs text-slate-500">Enrolled</div></div>
+                  <div><div className="text-xl font-bold text-green-600">{p.done}</div><div className="text-xs text-slate-500">Completed</div></div>
+                </div>
+              </div>
+            ))}
           </div>
         )}
-      </div>
 
-      {/* CTA Footer */}
-      <section className="bg-slate-900 py-12 mt-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">
-            Want to see the full admin experience?
-          </h2>
-          <p className="text-slate-300 mb-6">
-            Schedule a live demo to explore program management, reporting, and compliance tools.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/schedule"
-              className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition"
-            >
-              <Calendar className="w-5 h-5" />
-              Schedule a Live Demo
-            </Link>
-            <Link
-              href="/demo/employer"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/20 transition"
-            >
-              View Employer Demo
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+        {tab === 'reports' && (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {['Enrollment Report', 'Completion Report', 'Attendance Records', 'WIOA Compliance', 'Partner Activity', 'Financial Summary'].map((r, i) => (
+              <button key={i} className="bg-white rounded-xl border p-4 sm:p-6 text-left hover:shadow-lg transition">
+                <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mb-3"><FileText className="w-5 h-5 text-orange-600" /></div>
+                <h3 className="font-bold text-slate-900">{r}</h3>
+                <p className="text-sm text-slate-500 mt-1">Generate and export</p>
+              </button>
+            ))}
           </div>
-        </div>
-      </section>
+        )}
+      </main>
     </div>
   );
 }
