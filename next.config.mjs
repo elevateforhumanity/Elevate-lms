@@ -146,13 +146,7 @@ const nextConfig = {
     return [
       // Normalize "Institute" style routes into the infrastructure model
       { source: '/institute', destination: '/', permanent: true },
-      { source: '/training-institute', destination: '/pathways', permanent: true },
-      { source: '/courses', destination: '/pathways', permanent: true },
-      { source: '/programs', destination: '/pathways', permanent: true },
-      { source: '/programs/cna', destination: '/pathways/cna-certification', permanent: true },
-      { source: '/programs/barber-apprenticeship', destination: '/pathways/barber-apprenticeship', permanent: true },
-      { source: '/programs/hvac', destination: '/pathways/hvac-technician', permanent: true },
-      { source: '/programs/it-support', destination: '/pathways/it-support', permanent: true },
+      { source: '/training-institute', destination: '/programs', permanent: true },
       { source: '/student/dashboard', destination: '/student-portal', permanent: true },
       
       // Fix old hero image paths
