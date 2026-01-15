@@ -15,8 +15,8 @@ export default function SchedulePage() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // ENV-BASED: Google Meet URL from environment variable
-  const meetUrl = process.env.NEXT_PUBLIC_GOOGLE_MEET_URL;
+  // Google Meet URL for demos
+  const meetUrl = process.env.NEXT_PUBLIC_GOOGLE_MEET_URL || 'https://meet.google.com/cwe-zjwu-gbg';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
