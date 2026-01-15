@@ -16,14 +16,19 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
       
       {/* Fixed header on all pages */}
       <header 
-        className="fixed inset-x-0 top-0 h-[var(--header-h)] shadow-sm" 
         role="banner"
         style={{ 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '72px',
           backgroundColor: '#ffffff',
           zIndex: 99999,
           opacity: 1,
           visibility: 'visible',
-          display: 'block'
+          display: 'block',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
         }}
       >
         <SiteHeader />
@@ -31,9 +36,9 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
 
       <main
         id="main-content"
-        className="flex-1 pt-[var(--header-h)]"
         role="main"
         tabIndex={-1}
+        style={{ flex: 1, paddingTop: '72px' }}
       >
         <Breadcrumbs />
         {children}
