@@ -1,26 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+
 import Image from 'next/image';
 import { 
-  Book, 
-  Award, 
   Clock, 
-  Calendar,
   CheckCircle,
   Play,
   FileText,
   MessageSquare,
   Bell,
-  Settings,
-  LogOut,
   ChevronRight,
-  TrendingUp,
   Target,
-  Users,
   Briefcase,
-  GraduationCap,
   Star,
   Flame,
   Trophy,
@@ -29,7 +21,6 @@ import {
   ClipboardCheck,
   BarChart3,
   HelpCircle,
-  Loader2,
 } from 'lucide-react';
 
 // Types for dashboard data
@@ -183,8 +174,6 @@ export default function LearnerDashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [showNotifications, setShowNotifications] = useState(false);
   const [data, setData] = useState<DashboardData>(defaultData);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchDashboard() {
@@ -192,39 +181,25 @@ export default function LearnerDashboard() {
         const res = await fetch('/api/learner/dashboard');
         if (res.ok) {
           const dashboardData = await res.json();
-          // Merge with defaults for any missing fields
-          setData({
-            ...defaultData,
-            ...dashboardData,
-            learner: { ...defaultData.learner, ...dashboardData.learner },
-            program: dashboardData.program || defaultData.program,
-            progress: { ...defaultData.progress, ...dashboardData.progress },
-            gamification: { ...defaultData.gamification, ...dashboardData.gamification },
-          });
+          if (dashboardData && !dashboardData.error) {
+            setData({
+              ...defaultData,
+              ...dashboardData,
+              learner: { ...defaultData.learner, ...dashboardData.learner },
+              program: dashboardData.program || defaultData.program,
+              progress: { ...defaultData.progress, ...dashboardData.progress },
+              gamification: { ...defaultData.gamification, ...dashboardData.gamification },
+            });
+          }
         }
-        // If unauthorized or error, use default data (demo mode)
       } catch (err) {
-        // Use default data on error
-        console.log('Using demo data');
-      } finally {
-        setLoading(false);
+        // Use default data on error - expected for unauthenticated users
       }
     }
     fetchDashboard();
   }, []);
 
   const currentLessonIndex = data.currentModule?.lessons.findIndex(l => !l.completed) ?? 0;
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="flex items-center gap-3">
-          <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
-          <span className="text-slate-600">Loading dashboard...</span>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-slate-50">
