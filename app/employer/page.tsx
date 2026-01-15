@@ -41,12 +41,13 @@ export default function EmployerPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Video */}
-            <div className="relative h-[300px] md:h-[350px] lg:h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-[300px] md:h-[350px] lg:h-[400px] rounded-2xl overflow-hidden shadow-2xl bg-gray-900">
               <video
                 autoPlay
                 muted
                 loop
                 playsInline
+                poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 className="w-full h-full object-cover"
               >
                 <source src="/videos/employer-hero.mp4" type="video/mp4" />
