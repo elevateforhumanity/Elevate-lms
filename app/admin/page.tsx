@@ -738,6 +738,12 @@ export default async function MegaAdminDashboard({ searchParams }: { searchParam
       href: '/admin/dev-studio',
       color: 'slate',
     },
+    {
+      category: 'Settings & Admin',
+      name: 'System Status',
+      href: '/admin/system-status',
+      color: 'slate',
+    },
   ];
 
   const categories = Array.from(new Set(allFeatures.map((f) => f.category)));
