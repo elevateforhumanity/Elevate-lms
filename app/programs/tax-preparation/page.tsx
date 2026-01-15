@@ -22,7 +22,7 @@ export default function Page() {
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[70vh] w-full overflow-hidden">
           <Image
-            src="/media/programs/efh-tax-office-startup-hero.jpg"
+            src="/images/programs/efh-tax-office-startup-hero.jpg"
             alt="VITA Tax Preparation Training"
             fill
             className="object-cover"

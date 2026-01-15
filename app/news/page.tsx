@@ -42,7 +42,7 @@ export default function NewsPage() {
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[70vh] w-full overflow-hidden">
           <Image
-            src="/media/programs/workforce-readiness-hero.jpg"
+            src="/images/programs/workforce-readiness-hero.jpg"
             alt="News and Updates"
             fill
             className="object-cover"
@@ -73,7 +73,7 @@ export default function NewsPage() {
               >
                 <div className="relative w-full h-48">
                   <Image
-                    src="/media/programs/cpr-certification-group-hd.jpg"
+                    src="/images/programs/cpr-certification-group-hd.jpg"
                     alt={item.title}
                     fill
                     className="object-cover"

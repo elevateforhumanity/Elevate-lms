@@ -148,7 +148,7 @@ export default function JRIPage() {
               </div>
               <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-2">
                 <Image
-                  src="/media/programs/workforce-readiness-hero.jpg"
+                  src="/images/programs/workforce-readiness-hero.jpg"
                   alt="Workforce development training"
                   fill
           sizes="100vw"
@@ -368,7 +368,7 @@ export default function JRIPage() {
               <Card className="hover:shadow-xl transition-shadow">
                 <div className="relative h-48">
                   <Image
-                    src="/media/programs/efh-public-safety-reentry-hero.jpg"
+                    src="/images/programs/efh-public-safety-reentry-hero.jpg"
                     alt="Public Safety & Reentry Specialist"
                     fill
           sizes="100vw"

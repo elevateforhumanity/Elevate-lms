@@ -84,7 +84,7 @@ export default function PathwaysPage() {
               <div key={p.slug} className="rounded-lg border border-gray-200 overflow-hidden">
                 <div className="relative h-48 w-full bg-gray-100">
                   <Image
-                    src={`/media/pathways/${p.slug}.jpg`}
+                    src={`/images/pathways/${p.slug}.jpg`}
                     alt={p.title}
                     fill
                     className="object-cover"

@@ -22,7 +22,7 @@ export default function ApprovalsPage() {
       {/* Hero Section with Background Image */}
       <section className="relative h-[500px] w-full overflow-hidden">
         <Image
-          src="/media/programs/cpr-group-training-hd.jpg"
+          src="/images/programs/cpr-group-training-hd.jpg"
           alt="Official documents and certifications"
           fill
           className="object-cover"

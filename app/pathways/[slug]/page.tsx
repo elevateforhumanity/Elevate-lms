@@ -12,7 +12,7 @@ export default async function PathwayDetailPage({ params }: { params: Promise<{ 
     <main className="w-full">
       <header className="relative min-h-[350px] flex items-center">
         <Image
-          src={`/media/pathways/${pathway.slug}.jpg`}
+          src={`/images/pathways/${pathway.slug}.jpg`}
           alt={pathway.title}
           fill
           className="object-cover"
@@ -43,7 +43,7 @@ export default async function PathwayDetailPage({ params }: { params: Promise<{ 
         <div className="mx-auto max-w-6xl px-6 py-12 grid gap-10 md:grid-cols-2">
           <div className="relative h-[320px] w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
             <Image
-              src={`/media/pathways/${pathway.slug}.jpg`}
+              src={`/images/pathways/${pathway.slug}.jpg`}
               alt={pathway.title}
               fill
               className="object-cover"

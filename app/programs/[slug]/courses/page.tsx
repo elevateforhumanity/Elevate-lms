@@ -125,13 +125,13 @@ export default function ProgramCoursesPage() {
               const categoryImages: Record<string, string[]> = {
                 'healthcare': [
                   '/hero-images/healthcare-category.jpg',
-                  '/images/efh/hero/hero-health.jpg',
-                  '/media/programs/efh-cna-hero.jpg'
+                  '/images/programs/cna-hero.jpg',
+                  '/images/programs/efh-cna-hero.jpg'
                 ],
                 'skilled-trades': [
                   '/hero-images/skilled-trades-category.jpg',
                   '/images/programs/hvac-hero.jpg',
-                  '/images/programs/building-maintenance-hero.jpg'
+                  '/images/programs/building-technician-hero.jpg'
                 ],
                 'technology': [
                   '/hero-images/technology-category.jpg',
@@ -140,18 +140,18 @@ export default function ProgramCoursesPage() {
                 ],
                 'business': [
                   '/hero-images/business-category.jpg',
-                  '/media/programs/efh-business-startup-marketing-hero.jpg',
-                  '/media/programs/efh-tax-office-startup-hero.jpg'
+                  '/images/programs/efh-business-startup-marketing-hero.jpg',
+                  '/images/programs/efh-tax-office-startup-hero.jpg'
                 ],
                 'transportation': [
                   '/hero-images/cdl-transportation-category.jpg',
-                  '/images/artlist/thumbnails/hero-training-2-thumb.jpg',
-                  '/media/programs/cdl-hero.jpg'
+                  '/images/programs/cdl-hero.jpg',
+                  '/images/programs/cdl-hero.jpg'
                 ],
                 'barber': [
                   '/hero-images/barber-beauty-category.jpg',
-                  '/images/programs/barber-apprenticeship.jpg',
-                  '/media/programs/efh-barber-hero.jpg'
+                  '/images/programs/barber-hero.jpg',
+                  '/images/programs/efh-barber-hero.jpg'
                 ]
               };
               
@@ -186,7 +186,7 @@ export default function ProgramCoursesPage() {
                     />
                     <div className="absolute top-4 right-4">
                       {course.price === 0 && (
-                        <span className="bg-green-600 text-white px-3 py-2 rounded-full text-xs font-bold shadow-lg">
+                        <span className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
                           FREE
                         </span>
                       )}
@@ -232,7 +232,7 @@ export default function ProgramCoursesPage() {
                         )}
                       </div>
                       {course.funding && (
-                        <div className="text-xs bg-green-100 text-green-800 px-2 py-2 rounded">
+                        <div className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
                           {course.funding}
                         </div>
                       )}

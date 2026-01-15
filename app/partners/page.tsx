@@ -6,7 +6,7 @@ export default function PartnersPage() {
     <main className="w-full">
       <header className="relative min-h-[400px] flex items-center">
         <Image
-          src="/media/partner-hero.jpg"
+          src="/images/heroes/partner-hero.jpg"
           alt="Partner with Elevate for Humanity"
           fill
           className="object-cover"
@@ -35,7 +35,7 @@ export default function PartnersPage() {
         <div className="mx-auto max-w-6xl px-6 py-14 grid gap-10 md:grid-cols-2">
           <div className="relative h-[340px] w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
             <Image
-              src="/media/partner-hero.jpg"
+              src="/images/heroes/partner-hero.jpg"
               alt="Employer and workforce partners"
               fill
               className="object-cover"

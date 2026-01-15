@@ -43,7 +43,7 @@ export default function SuccessStoriesPage() {
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               <div className="relative w-full h-64">
                 <Image
-                  src="/media/programs/cpr-group-training-hd.jpg"
+                  src="/images/programs/cpr-group-training-hd.jpg"
                   alt="Healthcare Training"
                   fill
                   className="object-cover"
@@ -64,7 +64,7 @@ export default function SuccessStoriesPage() {
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               <div className="relative w-full h-64">
                 <Image
-                  src="/media/programs/efh-barber-hero.jpg"
+                  src="/images/programs/efh-barber-hero.jpg"
                   alt="Barber Training"
                   fill
                   className="object-cover"
@@ -85,7 +85,7 @@ export default function SuccessStoriesPage() {
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               <div className="relative w-full h-64">
                 <Image
-                  src="/media/programs/efh-business-startup-marketing-hero.jpg"
+                  src="/images/programs/efh-business-startup-marketing-hero.jpg"
                   alt="Business Training"
                   fill
                   className="object-cover"

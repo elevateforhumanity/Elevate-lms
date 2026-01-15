@@ -22,7 +22,7 @@ export default function EmployersPage() {
       <section className="relative w-full -mt-[72px]">
         <div className="relative min-h-[70vh] w-full overflow-hidden">
           <Image
-            src="/media/programs/workforce-readiness-hero.jpg"
+            src="/images/programs/workforce-readiness-hero.jpg"
             alt="Workforce Training"
             fill
             className="object-cover"
@@ -116,7 +116,7 @@ export default function EmployersPage() {
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               <div className="relative w-full h-48">
                 <Image
-                  src="/media/programs/efh-business-startup-marketing-hero.jpg"
+                  src="/images/programs/efh-business-startup-marketing-hero.jpg"
                   alt="Job Postings"
                   fill
                   className="object-cover"
@@ -136,7 +136,7 @@ export default function EmployersPage() {
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               <div className="relative w-full h-48">
                 <Image
-                  src="/media/programs/efh-barber-hero.jpg"
+                  src="/images/programs/efh-barber-hero.jpg"
                   alt="Apprenticeships"
                   fill
                   className="object-cover"
@@ -161,7 +161,7 @@ export default function EmployersPage() {
       <section className="relative py-16 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/media/programs/cna-hd.jpg"
+            src="/images/programs/cna-hd.jpg"
             alt="Join Our Platform"
             fill
             className="object-cover"
