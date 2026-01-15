@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { Suspense } from 'react';
 import Image from 'next/image';
 import VideoHeroSection from '@/components/home/VideoHeroSection';
 import Intro from '@/components/home/Intro';
@@ -7,7 +6,6 @@ import Orientation from '@/components/home/Orientation';
 import Testimonials from '@/components/home/Testimonials';
 import Assurance from '@/components/home/Assurance';
 import Start from '@/components/home/Start';
-import { ProgramFitNavigator } from '@/components/chatbot/ProgramFitNavigator';
 
 export const metadata: Metadata = {
   title: 'Elevate for Humanity | Workforce and Education Hub',
@@ -42,7 +40,6 @@ export default function HomePage() {
       <VideoHeroSection />
 
       {/* Features with Your Icon Images */}
-      {/* Removed duplicate main tag - ConditionalLayout already provides main#main-content */}
       <section className="py-8 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="text-center mb-8 md:mb-16">

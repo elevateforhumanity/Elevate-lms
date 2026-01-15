@@ -8,24 +8,37 @@ import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 export function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  // Always show header/footer - all pages should be discoverable
-  const shouldShowHeaderFooter = true;
-
   return (
     <div className="min-h-screen flex flex-col [--header-h:72px]">
       <a href="#main-content" className="skip-to-main">
         Skip to main content
       </a>
       
-      <header className="fixed inset-x-0 top-0 z-[99999] h-[var(--header-h)] bg-white shadow-sm" role="banner">
+      {/* Fixed header on all pages */}
+      <header 
+        role="banner"
+        style={{ 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '72px',
+          backgroundColor: '#ffffff',
+          zIndex: 99999,
+          opacity: 1,
+          visibility: 'visible',
+          display: 'block',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+        }}
+      >
         <SiteHeader />
       </header>
 
       <main
         id="main-content"
-        className="pt-[var(--header-h)] flex-1"
         role="main"
         tabIndex={-1}
+        style={{ flex: 1, paddingTop: '72px' }}
       >
         <Breadcrumbs />
         {children}

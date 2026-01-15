@@ -15,7 +15,7 @@ export default function VITALocationsPage() {
       phone: '(317) 555-0201',
       hours: 'Mon-Fri: 9am-5pm, Sat: 10am-2pm',
       services: ['Individual Returns', 'EITC', 'Child Tax Credit'],
-      image: '/images/tax-office-2.jpg'
+      image: '/images/business/professional-1.jpg'
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ export default function VITALocationsPage() {
       phone: '(317) 555-0202',
       hours: 'Tue-Thu: 10am-6pm, Sat: 9am-1pm',
       services: ['Individual Returns', 'Senior Assistance', 'Spanish Speaking'],
-      image: '/images/business/team-1.jpg'
+      image: '/images/business/collaboration-1.jpg'
     },
     {
       id: 3,
@@ -33,16 +33,24 @@ export default function VITALocationsPage() {
       phone: '(317) 555-0203',
       hours: 'Mon, Wed, Fri: 12pm-7pm',
       services: ['Individual Returns', 'Disability Assistance'],
-      image: '/images/business/team-2.jpg'
+      image: '/images/business/success-1.jpg'
     }
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-green-600 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl font-bold mb-4">Find a VITA Location</h1>
-          <p className="text-xl">Free tax preparation sites near you</p>
+      {/* Hero Section with Image */}
+      <div className="relative bg-green-600 text-white py-16 md:py-24">
+        <div className="absolute inset-0 overflow-hidden">
+          <img 
+            src="/images/tax-office-2.jpg" 
+            alt="VITA Locations" 
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Find a VITA Location</h1>
+          <p className="text-xl md:text-2xl">Free tax preparation sites near you</p>
         </div>
       </div>
 

@@ -2,23 +2,14 @@
 
 import dynamic from 'next/dynamic';
 
-// Lazy load analytics and tracking (non-critical)
-const GoogleAnalytics = dynamic(() => import('@/components/GoogleAnalytics'), {
-  ssr: false,
-});
+// Lazy load non-critical components
+// NOTE: GoogleAnalytics is loaded in layout.tsx - don't duplicate here
+// NOTE: LiveChatWidget is loaded in layout.tsx - don't duplicate here
+// NOTE: CookieConsent is loaded in layout.tsx - don't duplicate here
 
 const FacebookPixel = dynamic(() => import('@/components/FacebookPixel'), {
   ssr: false,
 });
-
-const AILiveChat = dynamic(() => import('@/components/chat/AILiveChat'), {
-  ssr: false,
-});
-
-const CookieBanner = dynamic(
-  () => import('@/components/CookieBanner').then((mod) => ({ default: mod.CookieBanner })),
-  { ssr: false }
-);
 
 const PerformanceMonitor = dynamic(
   () => import('@/components/PerformanceMonitor').then((mod) => ({ default: mod.PerformanceMonitor })),
@@ -43,10 +34,7 @@ const SecurityMonitor = dynamic(
 export function ClientProviders() {
   return (
     <>
-      <GoogleAnalytics />
       <FacebookPixel />
-      <AILiveChat />
-      <CookieBanner />
       <PerformanceMonitor />
       <ScraperDetection />
       <CopyrightProtection />

@@ -122,7 +122,7 @@ export async function getAuthUser(): Promise<AuthUser | null> {
         ? `${profile.first_name} ${profile.last_name}`
         : undefined,
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) {
     logger.error('Error getting auth user', error as Error);
     return null;
   }

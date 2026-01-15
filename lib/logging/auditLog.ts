@@ -55,7 +55,7 @@ export async function auditLog(entry: AuditLogEntry): Promise<void> {
     if (error) {
       console.error('[auditLog] Failed to insert audit log:', error);
     }
-  } catch { /* Error handled silently */ 
+  } catch (error) {
     // Don't throw - audit logging should never break the app
     console.error('[auditLog] Exception:', error);
   }

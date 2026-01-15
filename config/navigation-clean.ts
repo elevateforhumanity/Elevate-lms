@@ -30,11 +30,8 @@ export const publicNav: NavSection[] = [
       { label: 'Business', href: '/programs/business' },
       { label: 'CDL & Transportation', href: '/programs/cdl-transportation' },
       { label: 'Barber Apprenticeship', href: '/programs/barber-apprenticeship' },
+      { label: 'Apprenticeships', href: '/apprenticeships' },
     ],
-  },
-  {
-    label: 'Apprenticeships',
-    href: '/apprenticeships',
   },
   {
     label: 'Services',
@@ -47,10 +44,23 @@ export const publicNav: NavSection[] = [
     ],
   },
   {
+    label: 'Portals',
+    items: [
+      { label: 'Student Dashboard', href: '/login?next=/student/dashboard' },
+      { label: 'LMS', href: '/login?next=/lms/dashboard' },
+      { label: 'Employer Portal', href: '/login?next=/employer' },
+      { label: 'Partner Portal', href: '/login?next=/partner' },
+      { label: 'Program Holder Portal', href: '/login?next=/program-holder/dashboard' },
+    ],
+  },
+  {
+    label: 'Store',
+    href: '/store',
+  },
+  {
     label: 'Employers',
     items: [
       { label: 'Hire Our Graduates', href: '/hire-graduates' },
-      { label: 'Employer Portal', href: '/employer' },
       { label: 'Partner With Us', href: '/partners' },
     ],
   },

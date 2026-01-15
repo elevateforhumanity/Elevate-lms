@@ -85,18 +85,18 @@ function FallbackChatWidget() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 w-16 h-16 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all hover:scale-110 flex items-center justify-center z-50"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all hover:scale-110 flex items-center justify-center z-50"
         aria-label="Open chat"
       >
-        <MessageCircle className="w-7 h-7" />
+        <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
       </button>
     );
   }
 
   return (
     <div
-      className={`fixed bottom-6 right-6 w-96 bg-white rounded-2xl shadow-2xl z-50 overflow-hidden transition-all ${
-        isMinimized ? 'h-16' : 'h-[500px]'
+      className={`fixed bottom-4 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-6 w-auto sm:w-80 md:w-96 bg-white rounded-2xl shadow-2xl z-50 overflow-hidden transition-all ${
+        isMinimized ? 'h-16' : 'h-[400px] sm:h-[450px] md:h-[500px]'
       }`}
     >
       {/* Header */}
@@ -131,7 +131,7 @@ function FallbackChatWidget() {
       {!isMinimized && (
         <>
           {/* Messages */}
-          <div className="h-[340px] overflow-y-auto p-4 space-y-4 bg-gray-50">
+          <div className="h-[240px] sm:h-[290px] md:h-[340px] overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gray-50">
             {messages.map((message) => (
               <div
                 key={message.id}
