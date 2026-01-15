@@ -1,7 +1,6 @@
 /**
  * Text-to-Speech Service
- * Uses espeak-ng (free, open-source TTS)
- * No API key required, completely free, runs locally
+ * Uses OpenAI TTS API for high-quality voice generation
  */
 
 import { exec } from 'child_process';
@@ -12,23 +11,16 @@ import path from 'path';
 const execAsync = promisify(exec);
 
 export interface TTSOptions {
-  voice?: string; // Edge TTS voice name
-  speed?: number; // 0.25 to 4.0 (converted to rate)
-  model?: string; // Not used for Edge TTS
+  voice?: string;
+  speed?: number;
+  model?: string;
 }
 
-// Map OpenAI-style voice names to espeak-ng voices
-const VOICE_MAP: Record<string, string> = {
-  alloy: 'en-us',
-  echo: 'en-us+m3',
-  fable: 'en-gb',
-  onyx: 'en-us+m7',
-  nova: 'en-us+f3',
-  shimmer: 'en-us+f4',
-};
+// OpenAI TTS voices
+const VALID_VOICES = ['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer'];
 
 /**
- * Generate speech from text using espeak-ng
+ * Generate speech from text using OpenAI TTS API
  */
 export async function generateTextToSpeech(
   text: string,
@@ -40,48 +32,41 @@ export async function generateTextToSpeech(
       throw new Error('Text is required for TTS generation');
     }
 
-    // Validate speed
-    if (speed < 0.25 || speed > 4.0) {
-      throw new Error('Speed must be between 0.25 and 4.0');
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      throw new Error('OPENAI_API_KEY not configured');
     }
 
-    // Map voice name to espeak-ng voice
-    const espeakVoice = VOICE_MAP[voice] || 'en-us';
+    // Validate voice
+    const selectedVoice = VALID_VOICES.includes(voice) ? voice : 'alloy';
 
-    // Convert speed to words per minute (espeak uses WPM)
-    // Normal speed is 175 WPM, adjust based on speed multiplier
-    const wpm = Math.round(175 * speed);
+    // Validate speed (0.25 to 4.0)
+    const selectedSpeed = Math.max(0.25, Math.min(4.0, speed));
 
-    // Create temp file for output
-    const tempWav = path.join('/tmp', `tts-${Date.now()}.wav`);
-    const tempMp3 = path.join('/tmp', `tts-${Date.now()}.mp3`);
+    // Call OpenAI TTS API
+    const response = await fetch('https://api.openai.com/v1/audio/speech', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'tts-1',
+        input: text.substring(0, 4096), // Max 4096 chars
+        voice: selectedVoice,
+        speed: selectedSpeed,
+        response_format: 'mp3',
+      }),
+    });
 
-    // Escape text for shell
-    const escapedText = text.replace(/'/g, "'\\''");
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(`OpenAI TTS API error: ${error}`);
+    }
 
-    // Generate WAV with espeak-ng
-    await execAsync(
-      `espeak-ng -v "${espeakVoice}" -s ${wpm} -w "${tempWav}" '${escapedText}'`,
-      {
-        maxBuffer: 10 * 1024 * 1024,
-      }
-    );
-
-    // Convert WAV to MP3 with FFmpeg
-    await execAsync(
-      `ffmpeg -i "${tempWav}" -ar 44100 -ac 2 -b:a 192k "${tempMp3}" -y 2>/dev/null`,
-      {
-        maxBuffer: 10 * 1024 * 1024,
-      }
-    );
-
-    // Read the generated MP3
-    const buffer = await fs.readFile(tempMp3);
-
-    // Clean up temp files
-    await fs.unlink(tempWav).catch(() => {});
-    await fs.unlink(tempMp3).catch(() => {});
-
+    // Get audio buffer
+    const arrayBuffer = await response.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
 
     return buffer;
   } catch (error) {
