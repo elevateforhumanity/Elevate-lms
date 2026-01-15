@@ -91,18 +91,18 @@ export default function EmployerPage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="tel:+13173143757"
+                  href="/employer/dashboard"
                   className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl"
                 >
-                  Call (317) 314-3757
+                  Go to Dashboard
                   <ArrowRight className="w-5 h-5" />
                 </Link>
                 
                 <Link
-                  href="#how-it-works"
+                  href="tel:+13173143757"
                   className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-black px-8 py-4 rounded-lg font-bold text-lg transition-colors border-2 border-gray-200"
                 >
-                  Learn More
+                  Call (317) 314-3757
                 </Link>
               </div>
             </div>

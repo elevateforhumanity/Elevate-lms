@@ -24,28 +24,28 @@ export default async function StudentPortalPage() {
       image: '/images/artlist/hero-training-1.jpg',
       title: 'My Courses',
       description: 'Access course materials, lectures, and assignments',
-      href: '/lms/dashboard',
+      href: '/lms/courses',
       color: 'blue',
     },
     {
       image: '/images/artlist/hero-training-2.jpg',
       title: 'Schedule',
       description: 'View class schedule, deadlines, and upcoming events',
-      href: '/lms/dashboard',
+      href: '/lms/calendar',
       color: 'green',
     },
     {
       image: '/images/artlist/hero-training-3.jpg',
       title: 'Grades & Progress',
       description: 'Track your academic performance and completion status',
-      href: '/lms/dashboard',
+      href: '/lms/progress',
       color: 'purple',
     },
     {
       image: '/images/artlist/hero-training-4.jpg',
       title: 'Instructors',
       description: 'Connect with instructors and get support',
-      href: '/lms/dashboard',
+      href: '/lms/messages',
       color: 'orange',
     },
     {
@@ -59,7 +59,7 @@ export default async function StudentPortalPage() {
       image: '/images/artlist/hero-training-6.jpg',
       title: 'Documents',
       description: 'Transcripts, certificates, and important forms',
-      href: '/lms/dashboard',
+      href: '/lms/certificates',
       color: 'indigo',
     },
   ];
@@ -205,17 +205,17 @@ export default async function StudentPortalPage() {
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/login"
+              href="/lms/dashboard"
               className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition shadow-lg"
             >
-              Sign In to Dashboard
+              Go to Dashboard
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/apply"
+              href="/lms/courses"
               className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur text-white px-8 py-4 rounded-lg font-semibold text-lg transition border border-white/30"
             >
-              New Student? Apply Now
+              Browse Courses
             </Link>
           </div>
         </div>

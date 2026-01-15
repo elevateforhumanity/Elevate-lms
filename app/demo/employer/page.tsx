@@ -44,11 +44,11 @@ export default function EmployerDemoPage() {
               </Link>
             </div>
             <Link
-              href={ROUTES.schedule}
+              href="/store"
               className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-orange-700 transition"
             >
               <Calendar className="w-4 h-4" />
-              Schedule Demo
+              View Store
             </Link>
           </div>
         </div>
@@ -279,11 +279,11 @@ export default function EmployerDemoPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href={ROUTES.schedule}
+              href="/store"
               className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition"
             >
               <Calendar className="w-5 h-5" />
-              Schedule a Live Demo
+              View Store & Licensing
             </Link>
             <Link
               href="/demo"

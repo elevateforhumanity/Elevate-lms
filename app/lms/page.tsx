@@ -18,37 +18,37 @@ export default function LMSLandingPage() {
       image: '/hero-images/healthcare-category.jpg',
       title: 'Video Lessons',
       description: 'High-quality video content with expert instructors',
-      href: '/programs',
+      href: '/lms/video',
     },
     {
       image: '/hero-images/skilled-trades-category.jpg',
       title: 'Interactive Courses',
       description: 'Engaging lessons with quizzes and hands-on activities',
-      href: '/programs',
+      href: '/lms/courses',
     },
     {
       image: '/hero-images/business-category.jpg',
       title: 'Discussion Forums',
       description: 'Connect with classmates and instructors',
-      href: '/programs',
+      href: '/lms/community',
     },
     {
       image: '/hero-images/technology-category.jpg',
       title: 'Earn Certificates',
       description: 'Get recognized for completing courses',
-      href: '/programs',
+      href: '/lms/certificates',
     },
     {
       image: '/hero-images/cdl-transportation-category.jpg',
       title: 'Live Chat Support',
       description: '24/7 help when you need it',
-      href: '/contact',
+      href: '/lms/support',
     },
     {
       image: '/hero-images/barber-beauty-category.jpg',
       title: 'Track Progress',
       description: 'Monitor your learning journey in real-time',
-      href: '/programs',
+      href: '/lms/progress',
     },
   ];
 
@@ -147,17 +147,17 @@ export default function LMSLandingPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/login"
+              href="/lms/dashboard"
               className="inline-flex items-center gap-2 bg-white text-teal-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-teal-50 transition shadow-lg"
             >
-              Sign In to LMS
+              Go to Dashboard
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/programs"
+              href="/lms/courses"
               className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur text-white px-8 py-4 rounded-lg font-semibold text-lg transition border border-white/30"
             >
-              Browse Programs
+              Browse Courses
             </Link>
           </div>
         </div>

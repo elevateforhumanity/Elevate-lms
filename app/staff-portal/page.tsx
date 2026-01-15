@@ -165,17 +165,17 @@ export default function StaffPortalPage() {
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/login"
+              href="/staff-portal/dashboard"
               className="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Sign In to Portal
+              Go to Dashboard
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/contact"
+              href="/staff-portal/students"
               className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur text-white px-8 py-4 rounded-lg font-semibold text-lg transition border border-white/30"
             >
-              Request Access
+              Manage Students
             </Link>
           </div>
         </div>

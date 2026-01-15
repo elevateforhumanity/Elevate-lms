@@ -32,11 +32,11 @@ export default function DemoHubPage() {
                 Licensing Info
               </Link>
               <Link
-                href={ROUTES.schedule}
+                href="/store"
                 className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-orange-700 transition"
               >
                 <Calendar className="w-4 h-4" />
-                Schedule Demo
+                View Store
               </Link>
             </div>
           </div>
@@ -137,11 +137,11 @@ export default function DemoHubPage() {
               We host live demos via Google Meet so we can tailor the walkthrough to your use case.
             </p>
             <Link
-              href={ROUTES.schedule}
+              href="/store"
               className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-700 transition text-lg"
             >
               <Calendar className="w-5 h-5" />
-              Schedule a Live Demo
+              View Store & Licensing
             </Link>
           </div>
         </div>
