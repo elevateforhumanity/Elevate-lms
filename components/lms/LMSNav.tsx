@@ -21,6 +21,7 @@ import {
   Menu,
   Bell,
 } from 'lucide-react';
+import { useUser } from '@/hooks/useUser';
 
 const navItems = [
   {
@@ -47,6 +48,7 @@ const navItems = [
 
 export default function LMSNav() {
   const pathname = usePathname();
+  const { user } = useUser();
 
   const isActive = (href: string) => {
     if (href === '/lms/dashboard') {
@@ -106,9 +108,9 @@ export default function LMSNav() {
               <DropdownMenuContent align="end" className="w-56">
                 <DropdownMenuLabel>
                   <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium">John Doe</p>
+                    <p className="text-sm font-medium">{user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Student'}</p>
                     <p className="text-xs text-muted-foreground">
-                      john.doe@gmail.com
+                      {user?.email || ''}
                     </p>
                   </div>
                 </DropdownMenuLabel>

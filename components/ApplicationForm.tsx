@@ -121,7 +121,7 @@ export function ApplicationForm() {
                   type="email"
                   value={formData.email}
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData({...formData, email: e.target.value})}
-                  Content="john.doe@gmail.com"
+                  placeholder="you@example.com"
                 />
               </div>
               <div>
@@ -132,7 +132,7 @@ export function ApplicationForm() {
                   type="tel"
                   value={formData.phone}
                   onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setFormData({...formData, phone: e.target.value})}
-                  Content="(317) 314-3757"
+                  placeholder="(555) 555-5555"
                 />
               </div>
               <div className="md:col-span-2">
