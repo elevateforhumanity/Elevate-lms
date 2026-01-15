@@ -61,7 +61,7 @@ export default function TrainingPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Video className="w-5 h-5 text-orange-600 mt-1 flex-shrink-0" />
-                  <span>Drake Tax Software training</span>
+                  <span>Professional tax software training</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <FileText className="w-5 h-5 text-orange-600 mt-1 flex-shrink-0" />
