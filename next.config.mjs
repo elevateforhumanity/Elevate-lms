@@ -248,7 +248,7 @@ const nextConfig = {
       
       // Old 404 URLs from Google - redirect to relevant pages
       { source: '/about/founder', destination: '/about/team', permanent: true },
-      { source: '/etpl-programs', destination: '/programs', permanent: true },
+      { source: '/etpl-programs', destination: '/pathways', permanent: true },
       { source: '/intake', destination: '/apply', permanent: true },
       { source: '/scholarships', destination: '/funding', permanent: true },
       { source: '/health-services', destination: '/programs/healthcare', permanent: true },
@@ -257,6 +257,29 @@ const nextConfig = {
       { source: '/career-uplift-services/:path*', destination: '/career-services', permanent: true },
       { source: '/community', destination: '/blog', permanent: true },
       { source: '/video', destination: '/videos', permanent: true },
+      
+      // LMS redirects
+      { source: '/lms/my-courses', destination: '/lms/courses', permanent: true },
+      
+      // Student portal redirects
+      { source: '/student-portal/dashboard', destination: '/student-portal', permanent: true },
+      { source: '/student-portal/courses', destination: '/student-portal', permanent: true },
+      { source: '/student-portal/certificates', destination: '/student-portal', permanent: true },
+      { source: '/student-portal/progress', destination: '/student-portal', permanent: true },
+      { source: '/student-portal/settings', destination: '/student-portal', permanent: true },
+      
+      // Partner portal redirects
+      { source: '/partner/dashboard', destination: '/partner', permanent: true },
+      { source: '/partner/courses', destination: '/partner', permanent: true },
+      { source: '/partner/students', destination: '/partner', permanent: true },
+      
+      // AI redirects
+      { source: '/ai-instructor', destination: '/ai-tutor', permanent: true },
+      
+      // Marketing redirects
+      { source: '/testimonials', destination: '/success-stories', permanent: true },
+      { source: '/for-workforce-boards', destination: '/workforce-board', permanent: true },
+      { source: '/get-started', destination: '/start', permanent: true },
     ];
   },
   async headers() {
