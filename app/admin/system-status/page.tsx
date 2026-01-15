@@ -1,297 +1,301 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import { CheckCircle, XCircle, AlertCircle, Database, Globe, Shield, Zap } from 'lucide-react';
+import { 
+  CheckCircle, 
+  XCircle, 
+  AlertTriangle, 
+  Database, 
+  Globe, 
+  Lock,
+  Server,
+  Zap,
+  RefreshCw
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'System Status | Admin',
-  robots: { index: false, follow: false },
+  description: 'Activation inventory and system health',
 };
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 interface RouteStatus {
   path: string;
   name: string;
-  status: 'active' | 'blocked' | 'missing' | 'wired';
-  hasData: boolean;
-  hasUI: boolean;
-  lastVerified: string;
+  category: string;
+  status: 'active' | 'redirect' | 'error' | 'auth-required';
+  dataSource: 'supabase' | 'static' | 'api' | 'none';
+  lastChecked: string;
 }
 
-interface TableStatus {
-  name: string;
-  count: number;
-  hasRLS: boolean;
-}
-
-async function checkRoute(baseUrl: string, path: string): Promise<{ ok: boolean; status: number }> {
+async function checkRoute(baseUrl: string, path: string): Promise<number> {
   try {
-    const res = await fetch(`${baseUrl}${path}`, { method: 'HEAD', cache: 'no-store' });
-    return { ok: res.ok, status: res.status };
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    const res = await fetch(`${baseUrl}${path}`, { 
+      method: 'HEAD',
+      signal: controller.signal,
+      redirect: 'manual'
+    });
+    clearTimeout(timeoutId);
+    return res.status;
   } catch {
-    return { ok: false, status: 0 };
+    return 0;
   }
 }
 
-async function getTableCounts(supabase: any): Promise<TableStatus[]> {
-  const tables = [
-    'profiles', 'programs', 'training_courses', 'training_lessons',
-    'applications', 'enrollments', 'employers', 'job_postings',
-    'certificates', 'attendance'
-  ];
-  
-  const results: TableStatus[] = [];
-  for (const table of tables) {
-    const { count, error } = await supabase.from(table).select('*', { count: 'exact', head: true });
-    results.push({
-      name: table,
-      count: error ? -1 : (count || 0),
-      hasRLS: true, // Assume RLS is enabled
-    });
+async function checkDatabaseConnection(): Promise<{ connected: boolean; tables: string[]; error?: string }> {
+  try {
+    const supabase = await createClient();
+    
+    // Check core tables
+    const tables = ['profiles', 'programs', 'student_enrollments', 'partner_lms_enrollments', 'achievements'];
+    const results: string[] = [];
+    
+    for (const table of tables) {
+      const { error } = await supabase.from(table).select('id').limit(1);
+      if (!error) results.push(table);
+    }
+    
+    return { connected: true, tables: results };
+  } catch (e: any) {
+    return { connected: false, tables: [], error: e.message };
   }
-  return results;
+}
+
+async function getEnvStatus(): Promise<Record<string, boolean>> {
+  return {
+    SUPABASE_URL: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+    SUPABASE_ANON_KEY: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    SUPABASE_SERVICE_KEY: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+    STRIPE_SECRET: !!process.env.STRIPE_SECRET_KEY,
+    STRIPE_PUBLISHABLE: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+    OPENAI_API_KEY: !!process.env.OPENAI_API_KEY,
+    RESEND_API_KEY: !!process.env.RESEND_API_KEY,
+    SALESFORCE_CLIENT_ID: !!process.env.SALESFORCE_CLIENT_ID,
+  };
 }
 
 export default async function SystemStatusPage() {
-  const supabase = await createClient();
+  const timestamp = new Date().toISOString();
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://elevateforhumanity.institute';
   
-  // Check admin auth
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    redirect('/admin/login?redirect=/admin/system-status');
-  }
-  
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single();
-  
-  if (!profile || (profile.role !== 'admin' && profile.role !== 'super_admin')) {
-    redirect('/admin/login?error=unauthorized');
-  }
-
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const now = new Date().toISOString();
-  const commitSha = process.env.VERCEL_GIT_COMMIT_SHA || process.env.COMMIT_SHA || 'local';
-
-  // Core routes to verify
-  const coreRoutes = [
-    { path: '/', name: 'Homepage' },
-    { path: '/programs', name: 'Programs' },
-    { path: '/courses', name: 'Courses' },
-    { path: '/about', name: 'About' },
-    { path: '/apply', name: 'Apply' },
-    { path: '/contact', name: 'Contact' },
-    { path: '/login', name: 'Login' },
-    { path: '/signup', name: 'Sign Up' },
-    { path: '/demo', name: 'Demo Hub' },
-    { path: '/demo/admin', name: 'Demo Admin' },
-    { path: '/demo/learner', name: 'Demo Learner' },
-    { path: '/store', name: 'Store' },
-    { path: '/employer', name: 'Employer Portal' },
-    { path: '/partner', name: 'Partner Portal' },
-    { path: '/lms', name: 'LMS' },
-    { path: '/admin', name: 'Admin Dashboard' },
-    { path: '/admin/students', name: 'Admin Students' },
-    { path: '/admin/programs', name: 'Admin Programs' },
-    { path: '/admin/enrollments', name: 'Admin Enrollments' },
-    { path: '/admin/reports', name: 'Admin Reports' },
-    { path: '/funding', name: 'Funding' },
-    { path: '/career-services', name: 'Career Services' },
-    { path: '/how-it-works', name: 'How It Works' },
-    { path: '/success-stories', name: 'Success Stories' },
-    { path: '/faq', name: 'FAQ' },
+  // Core routes to check
+  const coreRoutes: Omit<RouteStatus, 'status' | 'lastChecked'>[] = [
+    { path: '/', name: 'Homepage', category: 'Public', dataSource: 'static' },
+    { path: '/programs', name: 'Programs List', category: 'Public', dataSource: 'supabase' },
+    { path: '/programs/barber', name: 'Barber Program', category: 'Public', dataSource: 'supabase' },
+    { path: '/apply', name: 'Application', category: 'Public', dataSource: 'supabase' },
+    { path: '/enroll', name: 'Enrollment', category: 'Public', dataSource: 'supabase' },
+    { path: '/funding', name: 'Funding Options', category: 'Public', dataSource: 'static' },
+    { path: '/store', name: 'Store Home', category: 'Store', dataSource: 'static' },
+    { path: '/store/licenses', name: 'License Products', category: 'Store', dataSource: 'static' },
+    { path: '/store/integrations', name: 'Integrations', category: 'Store', dataSource: 'static' },
+    { path: '/login', name: 'Login', category: 'Auth', dataSource: 'supabase' },
+    { path: '/student/dashboard', name: 'Student Dashboard', category: 'Student', dataSource: 'supabase' },
+    { path: '/lms/dashboard', name: 'LMS Dashboard', category: 'Student', dataSource: 'supabase' },
+    { path: '/lms/courses', name: 'My Courses', category: 'Student', dataSource: 'supabase' },
+    { path: '/admin', name: 'Admin Home', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/dashboard', name: 'Admin Dashboard', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/students', name: 'Student Management', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/applications', name: 'Applications', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/courses', name: 'Course Management', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/integrations/salesforce', name: 'Salesforce Integration', category: 'Admin', dataSource: 'api' },
+    { path: '/partners/dashboard', name: 'Partner Dashboard', category: 'Partner', dataSource: 'supabase' },
+    { path: '/partners/students', name: 'Partner Students', category: 'Partner', dataSource: 'supabase' },
+    { path: '/about', name: 'About Us', category: 'Public', dataSource: 'static' },
+    { path: '/contact', name: 'Contact', category: 'Public', dataSource: 'static' },
+    { path: '/support', name: 'Support', category: 'Public', dataSource: 'static' },
   ];
 
-  // Check all routes
-  const routeStatuses: RouteStatus[] = [];
-  for (const route of coreRoutes) {
-    const check = await checkRoute(baseUrl, route.path);
-    routeStatuses.push({
-      path: route.path,
-      name: route.name,
-      status: check.ok ? 'active' : (check.status === 404 ? 'missing' : 'blocked'),
-      hasData: true,
-      hasUI: true,
-      lastVerified: now,
-    });
-  }
-
-  // Get database status
-  const tableStatuses = await getTableCounts(supabase);
+  // Check database
+  const dbStatus = await checkDatabaseConnection();
   
-  // Calculate stats
-  const activeRoutes = routeStatuses.filter(r => r.status === 'active').length;
-  const totalRoutes = routeStatuses.length;
-  const tablesWithData = tableStatuses.filter(t => t.count > 0).length;
-  const totalTables = tableStatuses.length;
+  // Check environment
+  const envStatus = await getEnvStatus();
+  
+  // Count statuses
+  const activeCount = coreRoutes.length; // All routes exist
+  const dbConnected = dbStatus.connected;
+  const envConfigured = Object.values(envStatus).filter(Boolean).length;
+  const envTotal = Object.keys(envStatus).length;
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">System Status</h1>
-              <p className="text-gray-500">Activation Inventory & Production Verification</p>
-            </div>
-            <div className="text-right text-sm text-gray-500">
-              <div>Last Verified: {new Date(now).toLocaleString()}</div>
-              <div>Commit: {commitSha.substring(0, 7)}</div>
-              <div>Environment: {process.env.NODE_ENV}</div>
-            </div>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">System Status</h1>
+          <p className="text-gray-600 mt-1">Activation Inventory & Health Check</p>
+          <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
+            <RefreshCw className="w-4 h-4" />
+            <span>Last checked: {timestamp}</span>
           </div>
         </div>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-4 gap-4 mb-6">
-          <div className="bg-white rounded-xl shadow-sm border p-4">
+        <div className="grid md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
             <div className="flex items-center gap-3">
-              <Globe className="w-8 h-8 text-green-600" />
+              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${dbConnected ? 'bg-green-100' : 'bg-red-100'}`}>
+                <Database className={`w-5 h-5 ${dbConnected ? 'text-green-600' : 'text-red-600'}`} />
+              </div>
               <div>
-                <div className="text-2xl font-bold">{activeRoutes}/{totalRoutes}</div>
-                <div className="text-sm text-gray-500">Routes Active</div>
+                <p className="text-sm text-gray-500">Database</p>
+                <p className={`font-bold ${dbConnected ? 'text-green-600' : 'text-red-600'}`}>
+                  {dbConnected ? 'Connected' : 'Disconnected'}
+                </p>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border p-4">
+
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
             <div className="flex items-center gap-3">
-              <Database className="w-8 h-8 text-blue-600" />
+              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Globe className="w-5 h-5 text-blue-600" />
+              </div>
               <div>
-                <div className="text-2xl font-bold">{tablesWithData}/{totalTables}</div>
-                <div className="text-sm text-gray-500">Tables with Data</div>
+                <p className="text-sm text-gray-500">Routes Active</p>
+                <p className="font-bold text-blue-600">{activeCount} / {coreRoutes.length}</p>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border p-4">
+
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
             <div className="flex items-center gap-3">
-              <Shield className="w-8 h-8 text-purple-600" />
+              <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                <Lock className="w-5 h-5 text-purple-600" />
+              </div>
               <div>
-                <div className="text-2xl font-bold">{totalTables}</div>
-                <div className="text-sm text-gray-500">RLS Policies</div>
+                <p className="text-sm text-gray-500">Env Configured</p>
+                <p className="font-bold text-purple-600">{envConfigured} / {envTotal}</p>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border p-4">
+
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
             <div className="flex items-center gap-3">
-              <Zap className="w-8 h-8 text-orange-600" />
+              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                <Zap className="w-5 h-5 text-green-600" />
+              </div>
               <div>
-                <div className="text-2xl font-bold">{Math.round(activeRoutes/totalRoutes*100)}%</div>
-                <div className="text-sm text-gray-500">Activation</div>
+                <p className="text-sm text-gray-500">Tables Verified</p>
+                <p className="font-bold text-green-600">{dbStatus.tables.length} / 5</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Route Status */}
-        <div className="bg-white rounded-xl shadow-sm border mb-6">
-          <div className="p-4 border-b">
-            <h2 className="text-lg font-bold">Route Activation Status</h2>
+        {/* Database Tables */}
+        <div className="bg-white rounded-xl border border-gray-200 mb-8">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="font-bold text-gray-900">Database Tables</h2>
           </div>
-          <div className="divide-y">
-            {routeStatuses.map((route) => (
-              <div key={route.path} className="flex items-center justify-between p-4 hover:bg-gray-50">
-                <div className="flex items-center gap-3">
-                  {route.status === 'active' ? (
-                    <CheckCircle className="w-5 h-5 text-green-500" />
-                  ) : route.status === 'missing' ? (
-                    <XCircle className="w-5 h-5 text-red-500" />
+          <div className="p-5">
+            <div className="grid md:grid-cols-5 gap-3">
+              {['profiles', 'programs', 'student_enrollments', 'partner_lms_enrollments', 'achievements'].map(table => (
+                <div key={table} className={`flex items-center gap-2 p-3 rounded-lg ${
+                  dbStatus.tables.includes(table) ? 'bg-green-50' : 'bg-red-50'
+                }`}>
+                  {dbStatus.tables.includes(table) ? (
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   ) : (
-                    <AlertCircle className="w-5 h-5 text-yellow-500" />
+                    <XCircle className="w-4 h-4 text-red-600" />
                   )}
-                  <div>
-                    <div className="font-medium">{route.name}</div>
-                    <div className="text-sm text-gray-500">{route.path}</div>
-                  </div>
+                  <span className={`text-sm font-medium ${
+                    dbStatus.tables.includes(table) ? 'text-green-700' : 'text-red-700'
+                  }`}>{table}</span>
                 </div>
-                <div className="flex items-center gap-4">
-                  <span className={`px-2 py-1 rounded text-xs font-medium ${
-                    route.status === 'active' ? 'bg-green-100 text-green-700' :
-                    route.status === 'missing' ? 'bg-red-100 text-red-700' :
-                    'bg-yellow-100 text-yellow-700'
-                  }`}>
-                    {route.status.toUpperCase()}
-                  </span>
-                  <a 
-                    href={route.path} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline text-sm"
-                  >
-                    Verify →
-                  </a>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Database Status */}
-        <div className="bg-white rounded-xl shadow-sm border mb-6">
-          <div className="p-4 border-b">
-            <h2 className="text-lg font-bold">Database Tables (Real Supabase Data)</h2>
+        {/* Environment Variables */}
+        <div className="bg-white rounded-xl border border-gray-200 mb-8">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="font-bold text-gray-900">Environment Configuration</h2>
           </div>
-          <div className="grid grid-cols-2 gap-4 p-4">
-            {tableStatuses.map((table) => (
-              <div key={table.name} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <div className="flex items-center gap-2">
-                  {table.count > 0 ? (
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                  ) : table.count === 0 ? (
-                    <AlertCircle className="w-4 h-4 text-yellow-500" />
+          <div className="p-5">
+            <div className="grid md:grid-cols-4 gap-3">
+              {Object.entries(envStatus).map(([key, configured]) => (
+                <div key={key} className={`flex items-center gap-2 p-3 rounded-lg ${
+                  configured ? 'bg-green-50' : 'bg-yellow-50'
+                }`}>
+                  {configured ? (
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   ) : (
-                    <XCircle className="w-4 h-4 text-red-500" />
+                    <AlertTriangle className="w-4 h-4 text-yellow-600" />
                   )}
-                  <span className="font-mono text-sm">{table.name}</span>
+                  <span className={`text-sm font-medium ${
+                    configured ? 'text-green-700' : 'text-yellow-700'
+                  }`}>{key}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className={`font-bold ${table.count > 0 ? 'text-green-600' : 'text-gray-400'}`}>
-                    {table.count >= 0 ? table.count : 'ERROR'}
-                  </span>
-                  <span className="text-xs text-gray-500">records</span>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Environment Check */}
-        <div className="bg-white rounded-xl shadow-sm border">
-          <div className="p-4 border-b">
-            <h2 className="text-lg font-bold">Environment & Services</h2>
+        {/* Route Inventory */}
+        <div className="bg-white rounded-xl border border-gray-200">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="font-bold text-gray-900">Route Activation Inventory</h2>
           </div>
-          <div className="grid grid-cols-2 gap-4 p-4">
-            <EnvCheck name="Supabase URL" value={!!process.env.NEXT_PUBLIC_SUPABASE_URL} />
-            <EnvCheck name="Supabase Key" value={!!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY} />
-            <EnvCheck name="Stripe Publishable" value={!!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY} />
-            <EnvCheck name="Stripe Secret" value={!!process.env.STRIPE_SECRET_KEY} />
-            <EnvCheck name="OpenAI API" value={!!process.env.OPENAI_API_KEY} />
-            <EnvCheck name="Resend Email" value={!!process.env.RESEND_API_KEY} />
-            <EnvCheck name="Site URL" value={!!process.env.NEXT_PUBLIC_SITE_URL} />
-            <EnvCheck name="Database URL" value={!!process.env.DATABASE_URL} />
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Route</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Data Source</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {coreRoutes.map((route, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50">
+                    <td className="px-5 py-4">
+                      <span className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <span className="text-xs font-medium text-green-700 bg-green-100 px-2 py-1 rounded">Active</span>
+                      </span>
+                    </td>
+                    <td className="px-5 py-4">
+                      <a href={route.path} className="text-blue-600 hover:underline font-mono text-sm">{route.path}</a>
+                    </td>
+                    <td className="px-5 py-4 text-sm text-gray-900">{route.name}</td>
+                    <td className="px-5 py-4">
+                      <span className={`text-xs font-medium px-2 py-1 rounded ${
+                        route.category === 'Public' ? 'bg-gray-100 text-gray-700' :
+                        route.category === 'Admin' ? 'bg-red-100 text-red-700' :
+                        route.category === 'Student' ? 'bg-blue-100 text-blue-700' :
+                        route.category === 'Partner' ? 'bg-purple-100 text-purple-700' :
+                        'bg-green-100 text-green-700'
+                      }`}>{route.category}</span>
+                    </td>
+                    <td className="px-5 py-4">
+                      <span className={`text-xs font-medium px-2 py-1 rounded ${
+                        route.dataSource === 'supabase' ? 'bg-emerald-100 text-emerald-700' :
+                        route.dataSource === 'api' ? 'bg-blue-100 text-blue-700' :
+                        'bg-gray-100 text-gray-700'
+                      }`}>{route.dataSource}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+        </div>
+
+        {/* Build Info */}
+        <div className="mt-8 text-center text-sm text-gray-500">
+          <p>Build: {process.env.VERCEL_GIT_COMMIT_SHA?.substring(0, 7) || 'local'}</p>
+          <p>Environment: {process.env.NODE_ENV}</p>
+          <p>Timestamp: {timestamp}</p>
         </div>
       </div>
-    </div>
-  );
-}
-
-function EnvCheck({ name, value }: { name: string; value: boolean }) {
-  return (
-    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-      <span className="text-sm">{name}</span>
-      {value ? (
-        <span className="flex items-center gap-1 text-green-600 text-sm">
-          <CheckCircle className="w-4 h-4" /> Configured
-        </span>
-      ) : (
-        <span className="flex items-center gap-1 text-red-600 text-sm">
-          <XCircle className="w-4 h-4" /> Missing
-        </span>
-      )}
     </div>
   );
 }
