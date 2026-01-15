@@ -1,227 +1,563 @@
 import { Metadata } from 'next';
-
 import Link from 'next/link';
 import Image from 'next/image';
+import { Building2, Users, FileText, Shield, CheckCircle, Award, Briefcase, Phone, Mail, TrendingUp, Target, Handshake, BarChart3 } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/government',
   },
-  title: 'Government | Elevate For Humanity',
+  title: 'Government & Agency Partners | Elevate For Humanity',
   description:
-    'Explore Government and discover opportunities for career growth and development.',
+    'Partner with Elevate for Humanity to deliver workforce development programs. WIOA-compliant, ETPL-approved training provider serving government agencies and workforce boards.',
 };
 
-export default async function GovernmentPage() {
+export default function GovernmentPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-1.jpg"
-          alt="Government"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Government
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Government and discover opportunities for career growth and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section with Video Background */}
+      <section className="relative min-h-[650px] flex items-center overflow-hidden">
+        {/* Video Background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        >
+          <source src="https://cms-artifacts.artlist.io/content/generated-video-v1/video__2/generated-video-acfed647-8bb1-44ed-8505-876b1d573896.mp4?Expires=2083808563&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=BO~IkvikD0UAyMYmWQoBNskXM7I8fMAXUJW3T-zgJh1jg78q3LhNDpFOLhVcCpTBW1Rscp0c0YXEi-CQ29NDjSUKoclWTKq4q-bPLNxXgOpKLYxr5B5X3LzzDQQYnq5ilkgAvEZ~VzT3P8HEixv9WPRLFnAd5V3f~829SadfMPddUPxQZDZc29hrBn-Kxv-EKfugudcZ3depV1X-T1F5UxzvRMqFCXxjfT658RlSt0IupI0LxtywFYkChqJQmH6A~2JBncMUPerBqqt0Gdyp4ettIltCFvBX70ai6784jneJJrWcBJ0l7GyJPx1WBPAqjAdnCeJwyPC2Spp3~u93pQ__" type="video/mp4" />
+        </video>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-indigo-900/85 to-blue-800/80" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <Building2 className="w-10 h-10 text-white" />
+                <span className="text-white/80 text-lg font-medium">Government Partners</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                Workforce Solutions for Government Agencies
+              </h1>
+              <p className="text-xl text-white/90 mb-4 leading-relaxed">
+                Partner with an ETPL-approved, WIOA-compliant training provider to deliver 
+                high-quality workforce development programs that meet federal requirements 
+                and produce measurable outcomes.
+              </p>
+              <p className="text-lg text-white/80 mb-8 leading-relaxed">
+                Elevate for Humanity has served over 2,500 participants through government-funded 
+                programs, achieving a 92% credential attainment rate and 78% employment rate. 
+                We specialize in serving priority populations including veterans, justice-involved 
+                individuals, and low-income adults seeking career advancement.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+                >
+                  Schedule a Meeting
+                </Link>
+                <Link
+                  href="/workone-partner-packet"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-blue-700 text-white rounded-lg font-bold hover:bg-blue-600 transition-colors border-2 border-white/30"
+                >
+                  View Partner Packet
+                </Link>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <h3 className="text-xl font-bold text-white mb-6">Our Credentials</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400" />
+                    <span className="text-white">ETPL Approved Provider</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400" />
+                    <span className="text-white">WIOA Title I Compliant</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400" />
+                    <span className="text-white">Registered Apprenticeship Sponsor</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400" />
+                    <span className="text-white">WRG Eligible Programs</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-6 h-6 text-green-400" />
+                    <span className="text-white">DOL Oversight Compliant</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Government
-                </h2>
-                <p className="text-black mb-6">
-                  Explore Government and discover opportunities for career
-                  growth and development.
+      {/* Who We Serve with Images */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Government Agencies We Serve
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We partner with federal, state, and local agencies to deliver workforce 
+              development programs that meet compliance requirements and achieve outcomes. 
+              Our team understands the unique needs of government partners and provides 
+              dedicated support for enrollment, reporting, and performance tracking.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
+              <div className="relative h-48">
+                <Image
+                  src="/images/heroes/workforce-partner-1.jpg"
+                  alt="Workforce Development Boards"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-8">
+                <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 -mt-14 relative z-10 border-4 border-white">
+                  <Building2 className="w-7 h-7 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Workforce Development Boards</h3>
+                <p className="text-gray-600 mb-4">
+                  Local and regional workforce boards seeking ETPL-approved training providers 
+                  for WIOA-funded participants. We handle enrollment, training delivery, and 
+                  outcome reporting with full transparency and compliance.
                 </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    WIOA Title I Adult & Dislocated Worker
                   </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    Youth Programs (OSY & ISY)
                   </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    Rapid Response Services
                   </li>
                 </ul>
               </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
+            </div>
+
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
+              <div className="relative h-48">
                 <Image
-                  src="/images/artlist/hero-training-2.jpg"
-                  alt="Government"
+                  src="/images/heroes/workforce-partner-2.jpg"
+                  alt="State Agencies"
                   fill
                   className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
+              </div>
+              <div className="p-8">
+                <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6 -mt-14 relative z-10 border-4 border-white">
+                  <Users className="w-7 h-7 text-green-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">State Agencies</h3>
+                <p className="text-gray-600 mb-4">
+                  State departments of labor, workforce development, and education seeking 
+                  scalable training solutions that meet state and federal compliance requirements 
+                  while delivering measurable employment outcomes.
+                </p>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    Department of Workforce Development
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    Department of Education
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    Vocational Rehabilitation
+                  </li>
+                </ul>
               </div>
             </div>
 
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
+              <div className="relative h-48">
+                <Image
+                  src="/images/heroes/workforce-partner-3.jpg"
+                  alt="Federal Programs"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-8">
+                <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6 -mt-14 relative z-10 border-4 border-white">
+                  <Shield className="w-7 h-7 text-purple-600" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Federal Programs</h3>
+                <p className="text-gray-600 mb-4">
+                  Federal agencies and grant recipients seeking compliant training providers 
+                  for workforce development initiatives and special population programs 
+                  including veterans, reentry, and underserved communities.
                 </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    DOL Apprenticeship Programs
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    Reentry Programs (JRI)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                    Veterans Programs (GI Bill, VR&E)
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
+      {/* What We Offer with Image */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Comprehensive Workforce Development Services
+              </h2>
+              <p className="text-lg text-gray-600 mb-4">
+                We provide end-to-end workforce development services that meet federal 
+                compliance requirements while delivering measurable outcomes for participants 
+                and funding agencies.
+              </p>
+              <p className="text-gray-600 mb-8">
+                Our approach combines industry-recognized training with wraparound support 
+                services to ensure participant success. We work closely with government 
+                partners to customize programs that address specific workforce needs and 
+                priority populations in your region.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                    <Image
+                      src="/images/heroes/training-provider-1.jpg"
+                      alt="ETPL Training"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-2">ETPL-Approved Training Programs</h3>
+                    <p className="text-gray-600">
+                      Industry-recognized certifications in healthcare, IT, skilled trades, 
+                      and business. All programs meet WIOA performance requirements and lead 
+                      to credentials valued by employers in high-demand occupations.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                    <Image
+                      src="/images/heroes/training-provider-2.jpg"
+                      alt="Apprenticeships"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-2">Registered Apprenticeships</h3>
+                    <p className="text-gray-600">
+                      DOL-registered apprenticeship programs with employer partners. 
+                      Earn-and-learn model with structured OJT and related instruction 
+                      that leads to journey-level credentials and sustainable careers.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                    <Image
+                      src="/images/heroes/career-services.jpg"
+                      alt="Career Services"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-2">Career Services & Job Placement</h3>
+                    <p className="text-gray-600">
+                      Comprehensive career services including resume building, interview prep, 
+                      and direct job placement with employer partners. We maintain relationships 
+                      with 100+ employers actively hiring our graduates.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                    <Image
+                      src="/images/heroes/training-provider-4.jpg"
+                      alt="Compliance"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-2">Compliance & Reporting</h3>
+                    <p className="text-gray-600">
+                      Full compliance with WIOA, FERPA, ADA, and EEO requirements. 
+                      Automated outcome tracking and reporting for funding agencies with 
+                      real-time dashboards and quarterly performance reviews.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <div className="space-y-6">
+              <div className="relative h-64 rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/funding/funding-dol-program.jpg"
+                  alt="DOL Program"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="bg-gray-50 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Program Outcomes</h3>
+                <div className="space-y-6">
+                  <div>
+                    <div className="flex justify-between mb-2">
+                      <span className="font-medium text-gray-700">Program Completion Rate</span>
+                      <span className="font-bold text-blue-600">87%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-3">
+                      <div className="bg-blue-600 h-3 rounded-full" style={{ width: '87%' }} />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-2">
+                      <span className="font-medium text-gray-700">Credential Attainment</span>
+                      <span className="font-bold text-green-600">92%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-3">
+                      <div className="bg-green-600 h-3 rounded-full" style={{ width: '92%' }} />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-2">
+                      <span className="font-medium text-gray-700">Employment Rate (Q2)</span>
+                      <span className="font-bold text-purple-600">78%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-3">
+                      <div className="bg-purple-600 h-3 rounded-full" style={{ width: '78%' }} />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-2">
+                      <span className="font-medium text-gray-700">Median Wage Increase</span>
+                      <span className="font-bold text-orange-600">34%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-3">
+                      <div className="bg-orange-600 h-3 rounded-full" style={{ width: '34%' }} />
+                    </div>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-500 mt-6">
+                  *Based on program year 2024 data for WIOA-funded participants
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Partner With Us */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Why Partner With Elevate for Humanity
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We understand the unique challenges government agencies face in workforce 
+              development. Our team brings deep expertise in federal compliance, outcome 
+              tracking, and serving priority populations.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
+              <div className="relative h-40">
+                <Image
+                  src="/images/success-new/success-2.jpg"
+                  alt="Proven Results"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto -mt-12 mb-3 border-4 border-white relative z-10">
+                  <TrendingUp className="w-7 h-7 text-blue-600" />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Proven Results</h3>
+                <p className="text-sm text-gray-600">
+                  Consistent track record of exceeding WIOA performance measures across 
+                  all primary indicators of performance.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
+              <div className="relative h-40">
+                <Image
+                  src="/images/success-new/success-4.jpg"
+                  alt="Priority Populations"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto -mt-12 mb-3 border-4 border-white relative z-10">
+                  <Target className="w-7 h-7 text-green-600" />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Priority Populations</h3>
+                <p className="text-sm text-gray-600">
+                  Specialized experience serving veterans, justice-involved individuals, 
+                  and other priority populations with wraparound support.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
+              <div className="relative h-40">
+                <Image
+                  src="/images/success-new/success-6.jpg"
+                  alt="Employer Partnerships"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mx-auto -mt-12 mb-3 border-4 border-white relative z-10">
+                  <Handshake className="w-7 h-7 text-purple-600" />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Employer Network</h3>
+                <p className="text-sm text-gray-600">
+                  Strong relationships with 100+ employers actively hiring our graduates 
+                  in healthcare, IT, and skilled trades.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
+              <div className="relative h-40">
+                <Image
+                  src="/images/success-new/success-8.jpg"
+                  alt="Transparent Reporting"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 text-center">
+                <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mx-auto -mt-12 mb-3 border-4 border-white relative z-10">
+                  <BarChart3 className="w-7 h-7 text-orange-600" />
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">Transparent Reporting</h3>
+                <p className="text-sm text-gray-600">
+                  Real-time dashboards and automated reporting that meets all federal 
+                  and state compliance requirements.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Funding Streams */}
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Eligible Funding Streams
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our programs are approved for multiple federal and state funding sources, 
+              giving your agency flexibility in how you fund participant training.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: 'WIOA Title I', desc: 'Adult, Dislocated Worker, Youth', icon: FileText },
+              { name: 'WRG', desc: 'Workforce Ready Grant (Indiana)', icon: Award },
+              { name: 'SNAP E&T', desc: 'Employment & Training', icon: Users },
+              { name: 'TANF', desc: 'Temporary Assistance', icon: Shield },
+              { name: 'TAA', desc: 'Trade Adjustment Assistance', icon: Briefcase },
+              { name: 'Veterans', desc: 'GI Bill & VR&E', icon: Award },
+              { name: 'Reentry', desc: 'Second Chance Programs', icon: Users },
+              { name: 'Apprenticeship', desc: 'DOL Registered Programs', icon: Building2 },
+            ].map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <IconComponent className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h3 className="font-bold text-gray-900 mb-2">{item.name}</h3>
+                  <p className="text-sm text-gray-600">{item.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA with Background Image */}
+      <section className="relative py-20">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/heroes/hero-employer-partnerships.jpg"
+            alt="Partnership"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-blue-600/90" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Ready to Partner?
+          </h2>
+          <p className="text-xl text-white/90 mb-8">
+            Contact us to discuss how we can support your workforce development goals. 
+            Our team is ready to customize solutions that meet your agency&apos;s specific 
+            needs and compliance requirements.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="tel:+13173143757"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              (317) 314-3757
+            </a>
+            <a
+              href="mailto:partners@elevateforhumanity.org"
+              className="inline-flex items-center justify-center px-8 py-4 bg-blue-700 text-white rounded-lg font-bold hover:bg-blue-800 transition-colors border-2 border-white/30"
+            >
+              <Mail className="w-5 h-5 mr-2" />
+              partners@elevateforhumanity.org
+            </a>
           </div>
         </div>
       </section>
