@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Heart } from 'lucide-react';
+import Image from 'next/image';
+import { Heart, CheckCircle, Users, Award, Clock, DollarSign } from 'lucide-react';
 import { CompactHero } from '@/components/heroes/CompactHero';
 
 export const metadata: Metadata = {
@@ -52,6 +53,14 @@ export default function Page() {
               Our free training program prepares you for immediate employment in
               residential facilities, day programs, and community settings.
             </p>
+            <div className="relative h-[300px] rounded-xl overflow-hidden mt-6">
+              <Image
+                src="/images/learners/coaching-session.jpg"
+                alt="DSP training session"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
           <div className="bg-blue-50 p-8 rounded-lg">
             <h3 className="text-2xl font-bold text-black mb-4">

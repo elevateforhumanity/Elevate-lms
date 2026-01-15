@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Stethoscope } from 'lucide-react';
+import Image from 'next/image';
+import { Stethoscope, CheckCircle, Clock, DollarSign, Award, Users, Building2 } from 'lucide-react';
 import { VideoHero } from '@/components/heroes/VideoHero';
 import { ProgramNav } from '@/components/programs/ProgramNav';
 
@@ -41,8 +42,42 @@ export default function Page() {
 
       <ProgramNav sections={navSections} />
 
-      {/* Program Details */}
+      {/* Program Overview with Image */}
       <section id="overview" className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          <div>
+            <h2 className="text-3xl font-bold text-black mb-6">Launch Your Healthcare Career</h2>
+            <p className="text-lg text-gray-700 mb-6">
+              Certified Nursing Assistants (CNAs) are essential healthcare professionals who provide direct patient care in hospitals, nursing homes, and home health settings. Our comprehensive training program prepares you for Indiana state certification and immediate employment.
+            </p>
+            <p className="text-gray-700 mb-6">
+              With a growing demand for healthcare workers, CNAs enjoy excellent job security, competitive wages, and opportunities for career advancement into nursing and other healthcare roles.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <div className="flex items-center gap-2 text-green-600">
+                <CheckCircle className="w-5 h-5" />
+                <span className="font-medium">State Certification Prep</span>
+              </div>
+              <div className="flex items-center gap-2 text-green-600">
+                <CheckCircle className="w-5 h-5" />
+                <span className="font-medium">Clinical Experience</span>
+              </div>
+              <div className="flex items-center gap-2 text-green-600">
+                <CheckCircle className="w-5 h-5" />
+                <span className="font-medium">Job Placement Support</span>
+              </div>
+            </div>
+          </div>
+          <div className="relative h-[400px] rounded-2xl overflow-hidden">
+            <Image
+              src="/images/healthcare/program-cna-training.jpg"
+              alt="CNA training in progress"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {/* Quick Facts */}
           <div className="bg-green-50 rounded-xl p-6 border-2 border-green-200">
