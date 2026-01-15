@@ -92,11 +92,19 @@ Files that use useState/useEffect and may cause hydration mismatches:
 
 ## Action Items
 
-- [ ] Add images to CNA page
-- [ ] Add images to DSP page
-- [ ] Add images to Drug Collector page
-- [ ] Add images to Cosmetology page
-- [ ] Add images to Esthetician page
-- [ ] Remove duplicate images from public/media/
-- [ ] Complete DSP program content
-- [ ] Complete Drug Collector program content
+- [x] Add images to CNA page ✅
+- [x] Add images to DSP page ✅
+- [x] Add images to Drug Collector page ✅
+- [x] Add images to Cosmetology page ✅
+- [x] Add images to Esthetician page ✅
+- [x] Fix broken image references (25+ files) ✅
+- [x] Fix skilled-trades hero image ✅
+- [x] Fix career-services hero image ✅
+- [x] Fix supersonic-fast-cash images ✅
+- [ ] Remove duplicate images from public/media/ (low priority)
+- [ ] Complete DSP program content (has basic content)
+- [ ] Complete Drug Collector program content (has basic content)
+
+## Completed: January 15, 2026
+
+All critical image issues have been resolved. Program pages now have proper images and content.
