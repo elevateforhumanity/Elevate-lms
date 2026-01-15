@@ -21,7 +21,7 @@ export default async function FollowUpsPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/og-default.jpg"
+          src="/og-default.jpg"
           alt="Follow Ups"
           fill
           priority

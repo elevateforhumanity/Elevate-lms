@@ -18,7 +18,7 @@ export default function SkilledTradesPage() {
       <section className="relative bg-gradient-to-br from-orange-600 to-orange-800 text-white overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/programs/skilled-trades-hero.jpg"
+            src="/images/trades/hero-program-hvac.jpg"
             alt="Skilled Trades Training"
             fill
             className="object-cover opacity-30"

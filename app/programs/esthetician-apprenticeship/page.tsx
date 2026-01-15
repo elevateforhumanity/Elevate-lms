@@ -1,6 +1,7 @@
 // @ts-nocheck
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   CheckCircle,
   XCircle,
@@ -68,8 +69,30 @@ export default function EstheticianApprenticeshipPage() {
 
       {/* Program Description */}
       <section className="bg-white py-16">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid lg:grid-cols-2 gap-12 mb-12">
+            <div>
+              <h2 className="text-3xl font-bold text-black mb-6">Program Description</h2>
+              <p className="text-lg text-gray-700 mb-4">
+                Start your career in skincare and beauty through our DOL-registered esthetician apprenticeship. 
+                Learn advanced skincare techniques while earning, with theory instruction through Milady.
+              </p>
+              <p className="text-gray-700">
+                Our program provides federal apprenticeship sponsorship, employer coordination, and compliance 
+                reporting to help you build a successful career in esthetics.
+              </p>
+            </div>
+            <div className="relative h-[350px] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/programs/efh-esthetician-client-services-card.jpg"
+                alt="Esthetician training"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
         <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-6">Program Description</h2>
           <div className="bg-teal-50 border-2 border-teal-200 rounded-xl p-6 mb-8">
             <p className="text-lg text-black leading-relaxed">
               <strong>Registered Esthetician Apprenticeship Sponsorship, Oversight & Related Instruction (Milady Theory).</strong>

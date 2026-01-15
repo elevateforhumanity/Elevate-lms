@@ -762,7 +762,7 @@ export default function SupersonicFastCashPage() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/supersonic-fast-cash/cta-instant-cash.jpg"
+            src="/images/tax-business-highlight.jpg"
             alt="Instant Cash Refund Advance"
             fill
             className="object-cover"

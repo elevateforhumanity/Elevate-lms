@@ -27,7 +27,7 @@ export default function ProgramHolderOnboarding() {
       {/* Hero Section */}
       <section className="relative h-[400px] sm:h-[500px] w-full overflow-hidden bg-white">
         <Image
-          src="/images/og-default.jpg"
+          src="/og-default.jpg"
           alt="Program holder training"
           fill
           className="object-cover"

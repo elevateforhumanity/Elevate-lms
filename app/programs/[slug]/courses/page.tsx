@@ -64,7 +64,7 @@ export default function ProgramCoursesPage() {
       {/* Hero Banner */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <img
-          src="/images/og-default.jpg"
+          src="/og-default.jpg"
           alt="Professional training courses and certification programs"
           className="absolute inset-0 w-full h-full object-cover"
         />

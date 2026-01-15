@@ -352,7 +352,7 @@ function ApplyLandingPageOld() {
       {/* Hero Banner */}
       <section className="relative h-[400px] md:h-[500px] w-full overflow-hidden">
         <Image
-          src="/images/og-default.jpg"
+          src="/og-default.jpg"
           alt="Apply to training programs"
           fill
           priority

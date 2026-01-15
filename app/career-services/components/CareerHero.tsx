@@ -11,7 +11,7 @@ export function CareerHero({ title, description, badge }: CareerHeroProps) {
     <section className="relative bg-gradient-to-br from-brand-blue-600 to-brand-purple-600 text-white overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/images/career-services/hero-banner.jpg"
+          src="/images/heroes/career-services.jpg"
           alt="Career Services"
           fill
           className="object-cover opacity-20"
