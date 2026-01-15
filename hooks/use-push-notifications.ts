@@ -40,7 +40,7 @@ export function usePushNotifications(): UsePushNotificationsReturn {
           const permissionState = await client.getPermissionState();
           setState(permissionState);
         }
-      } catch { /* Error handled silently */ } finally {
+      } catch (error) { /* Error handled silently */ } finally {
         setIsLoading(false);
       }
     };

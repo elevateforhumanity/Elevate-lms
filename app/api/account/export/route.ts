@@ -101,7 +101,7 @@ export async function GET() {
         'Content-Disposition': 'attachment; filename="efh-account-export.json"',
       },
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Unexpected error in account export', error as Error);
     return NextResponse.json(
       { error: 'Failed to export account data' },

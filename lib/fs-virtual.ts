@@ -61,7 +61,7 @@ export async function listFiles(repo: string, folder: string, ref = 'main') {
     if (!Array.isArray(res.data)) return [];
 
     return res.data.map((f) => f.path);
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return [];
   }
 }
@@ -74,7 +74,7 @@ export async function fileExists(
   try {
     await readFile(repo, path, ref);
     return true;
-  } catch {
+  } catch (error) {
     return false;
   }
 }

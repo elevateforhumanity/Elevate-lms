@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
       productId: data.id,
       stripeProductId: product.id,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Create product error:',
       error instanceof Error ? error : new Error(String(error))

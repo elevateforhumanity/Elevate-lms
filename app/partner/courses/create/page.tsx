@@ -42,7 +42,7 @@ export default function CreateCoursePage() {
 
       if (error) throw error;
       setLicenses(data || []);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       setMessage(`Error loading licenses: ${error.message}`);
     }
   };
@@ -102,7 +102,7 @@ export default function CreateCoursePage() {
       setDuration('');
       setScormFile(null);
       setSelectedLicense('');
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       setMessage(`Error: ${error.message}`);
     } finally {
       setLoading(false);

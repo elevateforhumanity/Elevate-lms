@@ -15,7 +15,7 @@ export function getAppVersion(): string {
     }).trim();
 
     cachedVersion = gitHash || process.env.APP_VERSION || 'unknown';
-  } catch {
+  } catch (error) {
     cachedVersion = process.env.APP_VERSION || 'unknown';
   }
 

@@ -43,7 +43,7 @@ export async function GET(
       quiz,
       questions: finalQuestions,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: toErrorMessage(error) || 'Failed to load quiz' },
       { status: 500 }
@@ -157,7 +157,7 @@ export async function POST(
       attemptNumber,
       maxAttempts: quiz.max_attempts,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: toErrorMessage(error) || 'Failed to submit quiz' },
       { status: 500 }

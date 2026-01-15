@@ -121,7 +121,7 @@ export async function POST(req: Request) {
       reason: "Basic checks passed (image + time window + location).",
       timestamp: now.toISOString(),
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error("Unexpected error in attendance verify", error as Error);
     return NextResponse.json(
       { error: "Internal server error" },

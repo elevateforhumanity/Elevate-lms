@@ -32,7 +32,7 @@ export default function SchedulePage() {
           timestamp: new Date().toISOString(),
         }),
       });
-    } catch {
+    } catch (error) {
       // Non-blocking - continue even if storage fails
     }
 

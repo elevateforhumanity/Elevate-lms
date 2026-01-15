@@ -46,7 +46,7 @@ export async function GET() {
       documents: documentsWithUrls,
       total: documents?.length || 0,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

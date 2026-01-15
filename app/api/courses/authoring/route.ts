@@ -51,7 +51,7 @@ export async function GET(req: NextRequest) {
     }
 
     return NextResponse.json({ courses: courses || [] });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error("[Course Authoring Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },
@@ -142,7 +142,7 @@ export async function POST(req: NextRequest) {
       course_id: course.id,
       course,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error("[Course Creation Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },

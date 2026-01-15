@@ -49,7 +49,7 @@ export default function ProgramHolderSetup() {
 
       // Redirect to identity verification page
       window.location.href = '/program-holder/verify-identity';
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       alert('Failed to submit. Please try again.');
     }
   };

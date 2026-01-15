@@ -284,7 +284,7 @@ export async function importUsers(
 
       createdUsers.push(user.email);
       successCount++;
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       errors.push({
         row,
         email: user.email,

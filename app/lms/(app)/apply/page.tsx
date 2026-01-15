@@ -113,7 +113,7 @@ export default function StudentApplicationPage() {
         const data = await response.json();
         setError(data.error || 'Failed to submit application');
       }
-    } catch {
+    } catch (error) {
       setError('Failed to submit application. Please try again.');
     } finally {
       setSubmitting(false);

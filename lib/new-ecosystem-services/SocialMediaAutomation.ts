@@ -184,7 +184,7 @@ export class SocialMediaAutomation {
       //
       // Trigger Zapier webhook
       await this.triggerZapier(post);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error logged
       post.status = 'failed';
     }
@@ -310,7 +310,7 @@ export class SocialMediaAutomation {
         }),
       });
       //
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   }

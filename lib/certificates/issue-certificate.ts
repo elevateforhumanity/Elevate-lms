@@ -109,7 +109,7 @@ export async function issueCertificate(
       .single();
 
     if (certError) {
-      logger.error('Failed to create certificate', { error: certError });
+      logger.error('Failed to create certificate', certError as Error);
       return {
         success: false,
         alreadyIssued: false,
@@ -136,7 +136,7 @@ export async function issueCertificate(
       .eq('id', enrollmentId);
 
     if (updateError) {
-      logger.error('Failed to update enrollment', { error: updateError });
+      logger.error('Failed to update enrollment', updateError as Error);
       // Certificate was created, continue to email
     }
 
@@ -156,7 +156,7 @@ export async function issueCertificate(
         certificateId: certificate.id,
       });
     } catch (emailError) {
-      logger.error('Certificate email failed', { error: emailError });
+      logger.error('Certificate email failed', emailError as Error);
       // Don't fail - certificate is issued
     }
 
@@ -169,8 +169,7 @@ export async function issueCertificate(
         title: 'Certificate Issued!',
         message: `Congratulations! Your certificate for ${programName} is ready.`,
         action_url: certificateUrl,
-      })
-      .catch(() => {});
+      });
 
     return {
       success: true,
@@ -185,7 +184,7 @@ export async function issueCertificate(
       },
     };
   } catch (error) {
-    logger.error('Certificate issuance error', { error, enrollmentId });
+    logger.error('Certificate issuance error', error as Error, { enrollmentId });
     return {
       success: false,
       alreadyIssued: false,

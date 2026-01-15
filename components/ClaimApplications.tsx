@@ -32,7 +32,7 @@ export function ClaimApplications() {
         } else if (data > 0) {
           /* Applications claimed successfully */
         }
-      } catch { /* Error handled silently */ }
+      } catch (error) { /* Error handled silently */ }
     };
 
     // Claim on mount

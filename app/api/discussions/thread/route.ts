@@ -58,7 +58,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ thread });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Discussion API error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

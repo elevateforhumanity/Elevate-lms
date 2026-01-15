@@ -21,10 +21,10 @@ export async function GET(req: Request) {
     // Require sponsor or admin role
     try {
       await requireRole(user.id, 'sponsor');
-    } catch {
+    } catch (error) {
       try {
         await requireRole(user.id, 'admin');
-      } catch {
+      } catch (error) {
         return NextResponse.json(
           { error: 'Insufficient permissions' },
           { status: 403 }

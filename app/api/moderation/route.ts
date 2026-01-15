@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Moderation GET error:', error);
     return NextResponse.json(
       { error: 'Failed to fetch moderation data' },
@@ -157,7 +157,7 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
     }
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Moderation POST error:', error);
     return NextResponse.json(
       { error: 'Failed to process moderation action' },

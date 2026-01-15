@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
           { status: 400 }
         );
     }
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Submission tracking error:', error);
     return NextResponse.json(
       { error: (error as Error).message },
@@ -121,7 +121,7 @@ export async function GET(req: NextRequest) {
     }
 
     return NextResponse.json({ submission });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Error fetching submission:', error);
     return NextResponse.json(
       { error: (error as Error).message },

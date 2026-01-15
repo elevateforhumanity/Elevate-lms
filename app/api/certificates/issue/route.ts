@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
         issuedAt: certRecord.issued_at,
       },
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

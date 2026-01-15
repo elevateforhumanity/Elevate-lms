@@ -94,7 +94,7 @@ export class HttpClient {
         status: response.status,
         headers: responseHeaders,
       };
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       clearTimeout(timeoutId);
 
       if (error.name === 'AbortError') {

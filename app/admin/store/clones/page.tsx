@@ -102,7 +102,7 @@ export default function StoreBuilderPage() {
         const data = await res.json();
         alert(`Product published! View at: ${data.url}`);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       alert('Failed to publish product');
     } finally {
       setPublishing(false);

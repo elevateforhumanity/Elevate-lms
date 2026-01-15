@@ -21,7 +21,7 @@ async function loadProgram(slug: string): Promise<Program | null> {
       const fileContent = fs.readFileSync(jsonPath, 'utf-8');
       const data = JSON.parse(fileContent);
       return data as Program;
-    } catch { /* Error handled silently */ }
+    } catch (error) { /* Error handled silently */ }
   }
 
   // Fallback to TypeScript data

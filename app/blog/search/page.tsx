@@ -30,7 +30,7 @@ async function searchBlogPosts(query: string) {
       .limit(20);
 
     return posts || [];
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return [];
   }
 }

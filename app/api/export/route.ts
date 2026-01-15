@@ -156,7 +156,7 @@ export async function GET(request: NextRequest) {
         { status: 400 }
       );
     }
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Export error:', error);
     return NextResponse.json(
       { error: 'Failed to export data' },
@@ -248,7 +248,7 @@ export async function POST(request: NextRequest) {
         {} as Record<string, number>
       ),
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Batch export error:', error);
     return NextResponse.json(
       { error: 'Failed to perform batch export' },

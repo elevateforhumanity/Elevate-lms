@@ -35,7 +35,7 @@ export async function sendAdminAlert(alert: EmailAlert) {
     }
 
     return { success: true, provider: 'resend' };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     console.error('Email alert error:', error);
     // Fallback to console logging
     return { success: false, error };

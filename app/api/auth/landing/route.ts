@@ -22,7 +22,7 @@ export async function GET() {
         set(name: string, value: string, options: CookieOptions) {
           try {
             cookieStore.set({ name, value, ...options });
-          } catch { /* Error handled silently */ 
+          } catch (error) { /* Error handled silently */ 
             // Handle cookie setting errors
             logger.error('Error setting cookie:', error);
           }
@@ -30,7 +30,7 @@ export async function GET() {
         remove(name: string, options: CookieOptions) {
           try {
             cookieStore.set({ name, value: '', ...options });
-          } catch { /* Error handled silently */ 
+          } catch (error) { /* Error handled silently */ 
             // Handle cookie removal errors
             logger.error('Error removing cookie:', error);
           }
@@ -89,7 +89,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ redirectTo });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Auth landing error:', error);
     return NextResponse.json(
       { error: 'Authentication error' },

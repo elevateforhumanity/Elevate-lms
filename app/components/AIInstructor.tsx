@@ -78,7 +78,7 @@ export default function AIInstructor({
 
         window.speechSynthesis.speak(utterance);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       setIsSpeaking(false);
     }
   };

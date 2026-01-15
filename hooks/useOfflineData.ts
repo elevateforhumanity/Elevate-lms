@@ -45,7 +45,7 @@ export function useOfflineData<T>(
                 return;
               }
             }
-          } catch { /* Error handled silently */ }
+          } catch (error) { /* Error handled silently */ }
         }
 
         // Fetch fresh data
@@ -79,7 +79,7 @@ export function useOfflineData<T>(
             cachedAt: Date.now(),
             ...(freshData as any),
           });
-        } catch { /* Error handled silently */ }
+        } catch (error) { /* Error handled silently */ }
       } catch (err) {
         if (mounted) {
           setError(err as Error);
@@ -93,6 +93,7 @@ export function useOfflineData<T>(
     return () => {
       mounted = false;
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cacheKey, options.cacheFirst, options.maxAge]);
 
   const refresh = async () => {
@@ -124,11 +125,12 @@ export function useOfflineData<T>(
 }
 
 export function useOnlineStatus() {
-  const [isOnline, setIsOnline] = useState(true);
+  const [isOnline, setIsOnline] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return navigator.onLine;
+  });
 
   useEffect(() => {
-    setIsOnline(navigator.onLine);
-
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
 

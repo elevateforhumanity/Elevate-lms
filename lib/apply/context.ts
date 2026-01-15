@@ -18,7 +18,7 @@ export function getApplyPathwayContext(): ApplyPathwayContext | null {
     const raw = sessionStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     return JSON.parse(raw) as ApplyPathwayContext;
-  } catch {
+  } catch (error) {
     return null;
   }
 }
@@ -28,7 +28,7 @@ export function setApplyPathwayContext(ctx: ApplyPathwayContext): void {
   
   try {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(ctx));
-  } catch {
+  } catch (error) {
     // ignore storage errors
   }
 }
@@ -38,7 +38,7 @@ export function clearApplyPathwayContext(): void {
   
   try {
     sessionStorage.removeItem(STORAGE_KEY);
-  } catch {
+  } catch (error) {
     // ignore
   }
 }

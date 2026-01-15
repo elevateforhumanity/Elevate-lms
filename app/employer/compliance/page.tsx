@@ -15,7 +15,7 @@ export default async function EmployerCompliancePage() {
     const supabase = await createClient();
     const { data: authData } = await supabase.auth.getUser();
     user = authData.user;
-  } catch { /* Error handled silently */ }
+  } catch (error) { /* Error handled silently */ }
 
   return (
     <div className="container mx-auto px-4 py-8">

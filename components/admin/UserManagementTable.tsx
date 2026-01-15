@@ -54,7 +54,7 @@ export default function UserManagementTable({ users }: Props) {
       if (response.ok) {
         window.location.reload();
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   };
@@ -72,7 +72,7 @@ export default function UserManagementTable({ users }: Props) {
       if (response.ok) {
         window.location.reload();
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   };

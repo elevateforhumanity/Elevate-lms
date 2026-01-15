@@ -101,7 +101,7 @@ export default function SignUpForm() {
           }, 2000);
         }
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       setError('An unexpected error occurred. Please start again.');
       setLoading(false);
     }
@@ -120,7 +120,7 @@ export default function SignUpForm() {
       if (error) {
         setError(error instanceof Error ? error.message : String(error));
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       setError('OAuth sign-up failed. Please start again.');
     }
   };

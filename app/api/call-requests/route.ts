@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true, id: data.id });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error("API error:", error);
     return NextResponse.json(
       { error: "Server error" },
@@ -65,7 +65,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ requests: data || [] });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error("API error:", error);
     return NextResponse.json(
       { error: "Server error" },

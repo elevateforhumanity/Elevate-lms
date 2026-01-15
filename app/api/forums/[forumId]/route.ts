@@ -78,7 +78,7 @@ export async function GET(_req: NextRequest, { params }: Params) {
     });
 
     return NextResponse.json(result);
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error("[threads list] error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
@@ -148,7 +148,7 @@ export async function POST(req: NextRequest, { params }: Params) {
     }
 
     return NextResponse.json({ success: true, threadId: thread.id });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error("[threads create] error:", error);
     return NextResponse.json(
       { error: "Internal server error" },

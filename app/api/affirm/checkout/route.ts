@@ -120,7 +120,7 @@ export async function POST(request: NextRequest) {
       checkout_token: data.checkout_token,
       redirect_url: data.redirect_url,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Affirm checkout error:', error);
     return NextResponse.json(
       {

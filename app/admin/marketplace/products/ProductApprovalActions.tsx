@@ -27,7 +27,7 @@ export default function ProductApprovalActions({
       if (!res.ok) throw new Error('Failed to approve');
 
       router.refresh();
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       alert('Failed to approve product');
     } finally {
       setLoading(false);
@@ -49,7 +49,7 @@ export default function ProductApprovalActions({
       if (!res.ok) throw new Error('Failed to reject');
 
       router.refresh();
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       alert('Failed to reject product');
     } finally {
       setLoading(false);

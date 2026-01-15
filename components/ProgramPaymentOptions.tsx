@@ -52,7 +52,7 @@ export default function ProgramPaymentOptions({
           await stripeInstance.redirectToCheckout({ sessionId });
         }
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       alert('Payment failed. Please call 317-314-3757 for assistance.');
     }
   };

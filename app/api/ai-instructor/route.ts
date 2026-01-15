@@ -184,7 +184,7 @@ export async function POST(request: NextRequest) {
       response,
       conversationId: completion.id,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return NextResponse.json(
       { error: 'Failed to process request' },
@@ -221,7 +221,7 @@ export async function GET(request: NextRequest) {
       .limit(20);
 
     return NextResponse.json({ conversations });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return NextResponse.json(
       { error: 'Failed to fetch conversations' },

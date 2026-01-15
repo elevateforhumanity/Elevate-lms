@@ -65,7 +65,7 @@ export async function isAdmin(): Promise<boolean> {
       .single();
 
     return profile?.role === 'admin' || profile?.role === 'super_admin';
-  } catch {
+  } catch (error) {
     return false;
   }
 }

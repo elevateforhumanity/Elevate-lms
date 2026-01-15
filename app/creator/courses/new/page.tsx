@@ -33,7 +33,7 @@ export default function CreatorNewCoursePage() {
         setSuccess(true);
         setTimeout(() => router.push(`/creator/courses/${courseId}`), 2000);
       }
-    } catch { /* Error handled silently */ } finally {
+    } catch (error) { /* Error handled silently */ } finally {
       setSubmitting(false);
     }
   };

@@ -110,7 +110,7 @@ ${JSON.stringify(features, null, 2)}
 
     try {
       parsed = JSON.parse(text);
-    } catch {
+    } catch (error) {
       // Try to extract JSON from markdown code blocks
       const match = text.match(/```json\n([\s\S]*?)\n```/);
       if (match) {
@@ -121,7 +121,7 @@ ${JSON.stringify(features, null, 2)}
     }
 
     return NextResponse.json({ scores: parsed });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Dropout risk prediction error:',
       error instanceof Error ? error : new Error(String(error))

@@ -35,7 +35,7 @@ export default function ApplicationStatusPage() {
       } else {
         setError(data.error || 'No application found with this email address.');
       }
-    } catch {
+    } catch (error) {
       setError('Failed to check status. Please try again or call 317-314-3757.');
     } finally {
       setLoading(false);

@@ -70,7 +70,7 @@ export default function HeroBanner({
         a.currentTime = v.currentTime || 0;
         await a.play();
         setAudioBlocked(false);
-      } catch {
+      } catch (error) {
         setAudioBlocked(true);
       }
     };
@@ -91,7 +91,7 @@ export default function HeroBanner({
       try {
         a.currentTime = v.currentTime || 0;
         await a.play();
-      } catch {
+      } catch (error) {
         setAudioBlocked(true);
       }
     };
@@ -147,7 +147,7 @@ export default function HeroBanner({
       a.currentTime = v.currentTime || 0;
       await a.play();
       setAudioBlocked(false);
-    } catch {
+    } catch (error) {
       setAudioBlocked(true);
     }
   };

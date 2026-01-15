@@ -76,7 +76,7 @@ export class XAPIClient {
         );
       }
       //
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
       // Don't throw - we don't want tracking failures to break the app
     }

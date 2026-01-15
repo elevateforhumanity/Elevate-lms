@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Tutorials GET error:', error);
     return NextResponse.json(
       { error: 'Failed to fetch tutorial data' },
@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Tutorials POST error:', error);
     return NextResponse.json(
       { error: 'Failed to process tutorial action' },

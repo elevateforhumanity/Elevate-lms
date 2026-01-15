@@ -46,7 +46,7 @@ export default function LessonContent({
         // Refresh the page to update completion status
         window.location.reload();
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
     // Error handled
   } finally {
       setIsCompleting(false);

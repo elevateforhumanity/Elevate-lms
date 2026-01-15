@@ -67,7 +67,7 @@ export default function ReportContentButton({
       } else {
         alert('Failed to submit report. Please try again.');
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
       alert('Failed to submit report. Please try again.');
     } finally {

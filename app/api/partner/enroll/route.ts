@@ -164,7 +164,7 @@ export async function POST(request: Request) {
       hasScorm: !!mapping?.scorm_package,
       scormPackage: mapping?.scorm_package,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Partner enrollment error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
@@ -200,7 +200,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({ enrollments });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Partner enrollment GET error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

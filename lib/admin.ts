@@ -39,7 +39,7 @@ export async function isAdmin(): Promise<boolean> {
       user.email?.endsWith('@www.elevateforhumanity.org') ||
       false
     );
-  } catch {
+  } catch (error) {
     return false;
   }
 }

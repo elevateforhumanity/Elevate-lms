@@ -59,7 +59,7 @@ export async function POST(req: Request) {
         .single<ProductRecord>();
 
       if (!product) {
-        logger.error('Product not found:', productId);
+        logger.error('Product not found:', new Error(`Product ${productId} not found`));
         return Response.json({ error: 'Product not found' }, { status: 404 });
       }
 
@@ -108,9 +108,9 @@ export async function POST(req: Request) {
             },
           }),
         });
-        logger.info('License email sent to:', email);
+        logger.info('License email sent', { email });
       } catch (emailError) {
-        logger.error('Failed to send license email:', emailError);
+        logger.error('Failed to send license email:', emailError as Error);
       }
 
       return Response.json({ received: true });

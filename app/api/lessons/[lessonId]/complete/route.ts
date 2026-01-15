@@ -96,18 +96,20 @@ export async function POST(
       : 0;
 
     // Update enrollment progress (enrollments is a view, update underlying table)
-    await supabase.rpc('update_enrollment_progress_manual', {
+    const { error: rpcError } = await supabase.rpc('update_enrollment_progress_manual', {
       p_user_id: user.id,
       p_course_id: lesson.course_id,
       p_progress: progressPercent
-    }).catch(() => {
+    });
+    
+    if (rpcError) {
       // Fallback: try direct update if RPC doesn't exist
-      return supabase
+      await supabase
         .from('enrollments')
         .update({ progress: progressPercent, updated_at: new Date().toISOString() })
         .eq('user_id', user.id)
         .eq('course_id', lesson.course_id);
-    });
+    }
 
     // Check if course is now complete
     const courseCompleted = progressPercent === 100;

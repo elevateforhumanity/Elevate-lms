@@ -79,7 +79,7 @@ export default function AdminProgramHolderDocuments() {
       if (error) { /* Condition handled */ } else if (data) {
         setDocuments(data);
       }
-    } catch { /* Error handled silently */ } finally {
+    } catch (error) { /* Error handled silently */ } finally {
       setLoading(false);
     }
   };

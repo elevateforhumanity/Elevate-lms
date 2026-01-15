@@ -42,7 +42,7 @@ export function extractWatermark(content: string): {
       contentId: data.c,
       timestamp: new Date(data.t),
     };
-  } catch {
+  } catch (error) {
     return null;
   }
 }
@@ -66,7 +66,7 @@ This is an automated notification from your Elevate for Humanity LMS platform.
   `.trim();
   try {
     await notifySendgrid(subject, message);
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
   }
 }
@@ -109,7 +109,7 @@ Value: $2.5M - $8M
   try {
     await notifySendgrid('Build Deployment Alert', message);
     //
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
   }
 }

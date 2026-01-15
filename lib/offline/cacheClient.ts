@@ -19,7 +19,7 @@ export function getCoursesFromLocal(): CachedCourse[] | null {
   if (!raw) return null;
   try {
     return JSON.parse(raw);
-  } catch {
+  } catch (error) {
     return null;
   }
 }

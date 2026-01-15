@@ -73,7 +73,7 @@ export default function FeedbackWidget({ userId }: FeedbackWidgetProps) {
           setCategory('');
         }, 2000);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
       alert('Failed to submit feedback');
     } finally {

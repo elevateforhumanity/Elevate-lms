@@ -160,7 +160,7 @@ export default function ChatAssistant({
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',

@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
       count: uniqueCourses.length,
       files: metadataFiles.map((f) => f.path),
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Scan courses error:',
       error instanceof Error ? error : new Error(String(error))

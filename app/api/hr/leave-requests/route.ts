@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ leaveRequests: data });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error fetching leave requests:',
       error instanceof Error ? error : new Error(String(error))
@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ leaveRequest: data }, { status: 201 });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error creating leave request:',
       error instanceof Error ? error : new Error(String(error))

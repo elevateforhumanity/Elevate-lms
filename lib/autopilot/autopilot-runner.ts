@@ -47,7 +47,7 @@ export async function runAutopilot(
           error: `Unknown autopilot mode: ${type}. Valid modes: course, scan, media, sitemap, deploy`
         };
     }
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Autopilot task failed'

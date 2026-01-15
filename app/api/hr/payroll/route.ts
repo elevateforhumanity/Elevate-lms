@@ -66,7 +66,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ payrollRuns });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error fetching payroll runs:',
       error instanceof Error ? error : new Error(String(error))
@@ -293,7 +293,7 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error creating payroll run:',
       error instanceof Error ? error : new Error(String(error))

@@ -19,7 +19,7 @@ export async function GET(req: Request) {
     if (error) throw error;
 
     return NextResponse.json({ success: true, workflows });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error fetching workflows:',
       error instanceof Error ? error : new Error(String(error))
@@ -51,7 +51,7 @@ export async function POST(req: Request) {
     if (error) throw error;
 
     return NextResponse.json({ success: true, workflow });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error creating workflow:',
       error instanceof Error ? error : new Error(String(error))

@@ -32,7 +32,7 @@ async function getRedis() {
       });
 
       await redisClient.connect();
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
       redisClient = null;
       redisAvailable = false;
@@ -112,7 +112,7 @@ export async function rateLimit(
       }
 
       return null;
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
       // Fall through to memory-based rate limiting
     }
@@ -167,7 +167,7 @@ export async function cacheGet<T>(key: string): Promise<T | null> {
   try {
     const value = await client.get(key);
     return value ? JSON.parse(value as string) : null;
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return null;
   }
@@ -183,7 +183,7 @@ export async function cacheSet(
 
   try {
     await client.set(key, JSON.stringify(value), { EX: ttlSeconds });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
   }
 }
@@ -194,7 +194,7 @@ export async function cacheDel(key: string): Promise<void> {
 
   try {
     await client.del(key);
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
   }
 }

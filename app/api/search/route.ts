@@ -84,7 +84,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({ results, query });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { results: [], query, error: 'Search failed' },
       { status: 500 }

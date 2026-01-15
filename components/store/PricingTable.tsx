@@ -33,7 +33,7 @@ type AppPricing = {
 function format(currency: string, amount: number) {
   try {
     return new Intl.NumberFormat("en-US", { style: "currency", currency }).format(amount);
-  } catch {
+  } catch (error) {
     return `$${amount.toLocaleString()}`;
   }
 }

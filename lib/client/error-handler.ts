@@ -21,7 +21,7 @@ export async function parseErrorResponse(response: Response): Promise<ErrorRespo
       code: data.code,
       details: data.details,
     };
-  } catch {
+  } catch (error) {
     return {
       error: `Request failed with status ${response.status}`,
       code: 'PARSE_ERROR',

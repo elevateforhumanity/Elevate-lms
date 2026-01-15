@@ -265,7 +265,7 @@ async function healthCheck(supabase: any) {
       check: 'database_connection',
       status: !error ? 'healthy' : 'unhealthy',
     });
-  } catch {
+  } catch (error) {
     checks.push({ check: 'database_connection', status: 'unhealthy' });
   }
 
@@ -281,7 +281,7 @@ async function healthCheck(supabase: any) {
   try {
     const { data } = await supabase.rpc('check_rls_enabled');
     checks.push({ check: 'rls_policies', status: 'healthy' });
-  } catch {
+  } catch (error) {
     checks.push({ check: 'rls_policies', status: 'unknown' });
   }
 

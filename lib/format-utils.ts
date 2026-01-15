@@ -18,7 +18,7 @@ export function safeFormatDate(
     const dateObj = typeof date === 'string' ? new Date(date) : date;
     if (isNaN(dateObj.getTime())) return fallback;
     return dateObj.toLocaleDateString();
-  } catch {
+  } catch (error) {
     return fallback;
   }
 }
@@ -39,7 +39,7 @@ export function safeFormatDateTime(
     const dateObj = typeof date === 'string' ? new Date(date) : date;
     if (isNaN(dateObj.getTime())) return fallback;
     return dateObj.toLocaleString();
-  } catch {
+  } catch (error) {
     return fallback;
   }
 }
@@ -77,7 +77,7 @@ export function safeFormatCurrency(
       style: 'currency',
       currency,
     }).format(value);
-  } catch {
+  } catch (error) {
     return `$${safeFormatNumber(value, '0')}`;
   }
 }

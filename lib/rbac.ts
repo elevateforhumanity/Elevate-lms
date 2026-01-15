@@ -128,7 +128,7 @@ export async function hasRole(roles: string[]): Promise<boolean> {
   try {
     await requireRole(roles);
     return true;
-  } catch {
+  } catch (error) {
     return false;
   }
 }
@@ -152,7 +152,7 @@ export async function getCurrentRole(): Promise<string | null> {
       .single();
 
     return profile?.role || null;
-  } catch {
+  } catch (error) {
     return null;
   }
 }

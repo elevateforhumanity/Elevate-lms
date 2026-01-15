@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
         totalPages: Math.ceil((count || 0) / limit),
       },
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error fetching employees:',
       error instanceof Error ? error : new Error(String(error))
@@ -176,7 +176,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ employee }, { status: 201 });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error creating employee:',
       error instanceof Error ? error : new Error(String(error))

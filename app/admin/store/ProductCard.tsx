@@ -27,7 +27,7 @@ export default function ProductCard() {
       const res = await fetch('/api/store/products');
       const data = await res.json();
       setProducts(data || []);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
     // Error handled
   } finally {
       setLoading(false);
@@ -50,7 +50,7 @@ export default function ProductCard() {
       } else {
         alert('Error: ' + (data.error || 'Failed to clone repository'));
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       alert('Failed to clone repository');
     } finally {
       setCloning(null);

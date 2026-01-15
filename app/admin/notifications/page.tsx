@@ -53,7 +53,7 @@ export default function NotificationsPage() {
 
       const data = await response.json();
       setResult(data);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       setResult({ success: false, error: 'Failed to send notification' });
     } finally {
       setSending(false);

@@ -40,7 +40,7 @@ export function MiladyAccessCard({
         } else {
           setAccessInfo({ status: 'not_provisioned' });
         }
-      } catch {
+      } catch (error) {
         setAccessInfo({ status: 'not_provisioned' });
       } finally {
         setIsLoading(false);

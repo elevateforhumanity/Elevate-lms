@@ -4,7 +4,7 @@
  * Used by student-portal and other dashboards to render "Continue Learning" links
  */
 
-import { createServerClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 
 export type NormalizedEnrollment = {
   source: 'enrollments' | 'student_enrollments' | 'partner_enrollments' | 'partner_lms_enrollments';
@@ -32,7 +32,7 @@ export type EnrollmentQueryResult = {
  * Returns normalized array sorted by most recent first
  */
 export async function getUserEnrollments(userId: string): Promise<EnrollmentQueryResult> {
-  const supabase = await createServerClient();
+  const supabase = await createClient();
   
   if (!supabase) {
     return { enrollments: [], error: 'Database not configured' };

@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
     });
 
     return responsePromise;
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Error processing scraper alert:', error);
     return NextResponse.json(
       { error: 'Failed to process alert' },
@@ -185,7 +185,7 @@ async function sendSlackAlert(data: Record<string, any>) {
         ],
       }),
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Failed to send Slack alert:', error);
   }
 }

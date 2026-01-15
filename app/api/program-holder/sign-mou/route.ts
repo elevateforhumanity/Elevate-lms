@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
         'Content-Disposition': `attachment; filename="mou-${Date.now()}.pdf"`,
       },
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

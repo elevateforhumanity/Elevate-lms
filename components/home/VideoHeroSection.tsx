@@ -9,7 +9,7 @@ export default function VideoHeroSection() {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video) return undefined;
 
     // Force autoplay on mount for all devices including mobile
     const playVideo = async () => {

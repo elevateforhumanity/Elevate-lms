@@ -214,7 +214,7 @@ export async function checkPartnerHealth(
       lastChecked: new Date().toISOString(),
       responseTime,
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       partner,
       healthy: false,

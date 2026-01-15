@@ -16,7 +16,7 @@ export function measurePageLoad() {
     }
     // Log to console in development
     if (process.env.NODE_ENV === 'development') {
-      console.debug('Performance metric:', metric);
+      console.debug('Performance metric:', { pageLoadTime, connectTime, renderTime });
     }
   });
 }

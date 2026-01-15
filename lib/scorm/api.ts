@@ -99,7 +99,7 @@ export class ScormAPI {
         const json = await response.json();
         this.data = new Map(Object.entries(json.data || {}));
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   }
@@ -112,7 +112,7 @@ export class ScormAPI {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ data: dataObj }),
       });
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   }

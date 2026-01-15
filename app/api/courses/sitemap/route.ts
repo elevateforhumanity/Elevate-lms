@@ -78,7 +78,7 @@ export async function GET(req: NextRequest) {
       courses: Object.keys(sitemap),
       totalFiles: courseFiles.length,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Generate sitemap error:',
       error instanceof Error ? error : new Error(String(error))

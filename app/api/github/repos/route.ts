@@ -44,7 +44,7 @@ export async function GET(req: NextRequest) {
     }));
 
     return NextResponse.json(repos);
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'GitHub repos error:',
       error instanceof Error ? error : new Error(String(error))

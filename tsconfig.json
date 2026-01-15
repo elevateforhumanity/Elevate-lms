@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
@@ -15,7 +19,6 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -25,7 +28,9 @@
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     },
     "plugins": [
       {
@@ -37,6 +42,8 @@
   },
   "include": [
     "next-env.d.ts",
+    "types/**/*.ts",
+    "types/**/*.d.ts",
     "app/**/*.ts",
     "app/**/*.tsx",
     "components/ui/**/*.ts",
@@ -50,6 +57,8 @@
     "components/MOUStatusBadge.tsx",
     "components/SignaturePad.tsx",
     "components/StructuredData.tsx",
+    "components/support/**/*.ts",
+    "components/support/**/*.tsx",
     "lib/**/*.ts",
     "lib/**/*.tsx",
     ".next/types/**/*.ts",

@@ -52,7 +52,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({ processes });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

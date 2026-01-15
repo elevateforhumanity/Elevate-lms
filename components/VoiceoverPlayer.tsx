@@ -63,7 +63,7 @@ export default function VoiceoverPlayer({
         audioRef.current.loop = false; // NO LOOP - plays once
         await audioRef.current.play().catch(() => {});
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // NO robotic fallback - only professional voiceovers
       handleVoiceoverError();
     }

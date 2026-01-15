@@ -31,7 +31,7 @@ export async function DELETE(
     }
 
     return NextResponse.json({ success: true });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Error deleting note:', error);
     return NextResponse.json(
       { error: 'Failed to delete note' },

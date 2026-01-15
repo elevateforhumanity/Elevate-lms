@@ -20,13 +20,13 @@ export default function InstallPrompt() {
       const dismissedTime = parseInt(dismissed, 10);
       // Show again after 7 days
       if (Date.now() - dismissedTime < 7 * 24 * 60 * 60 * 1000) {
-        return;
+        return undefined;
       }
     }
 
     // Check if already installed
     if (window.matchMedia('(display-mode: standalone)').matches) {
-      return;
+      return undefined;
     }
 
     // Detect iOS
@@ -36,7 +36,7 @@ export default function InstallPrompt() {
     if (isIOSDevice) {
       // Show iOS-specific prompt after delay
       setTimeout(() => setShowPrompt(true), 3000);
-      return;
+      return undefined;
     }
 
     // Listen for beforeinstallprompt event (Chrome, Edge, etc.)

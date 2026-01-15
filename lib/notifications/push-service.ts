@@ -52,7 +52,7 @@ export class PushNotificationService {
       const payload = JSON.stringify(notification);
       await webpush.sendNotification(subscription, payload);
       return true;
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Handle expired subscriptions
       if (error.statusCode === 410 || error.statusCode === 404) {
         await this.removeSubscription(subscription.endpoint);

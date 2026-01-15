@@ -38,13 +38,13 @@ export default function HeroVideo({
         await v.play();
         setStarted(true);
         setUserInteracted(true);
-      } catch {
+      } catch (error) {
         // If blocked, try muted autoplay
         try {
           v.muted = true;
           await v.play();
           setStarted(true);
-        } catch {
+        } catch (error) {
           // Autoplay blocked completely, show play button
         }
       }
@@ -70,7 +70,7 @@ export default function HeroVideo({
       }
       setStarted(true);
       setUserInteracted(true);
-    } catch {
+    } catch (error) {
       setStarted(true);
       setUserInteracted(true);
     }

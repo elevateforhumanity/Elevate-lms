@@ -107,7 +107,7 @@ export default function AdvancedVideoPlayer({
           currentTime: videoRef.current?.currentTime,
         }),
       });
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   };
@@ -122,7 +122,7 @@ export default function AdvancedVideoPlayer({
       if (data.currentTime && data.currentTime > 0) {
         videoRef.current.currentTime = data.currentTime;
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   };

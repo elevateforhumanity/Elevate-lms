@@ -27,7 +27,7 @@ export function initWebVitalsDebug() {
         }
       }, 3000);
     }
-  } catch {
+  } catch (error) {
     /* no-op for unsupported browsers */
   }
 }

@@ -206,7 +206,7 @@ export async function GET(request: NextRequest) {
     };
 
     return NextResponse.json(response);
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error("[Admin Analytics API Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },

@@ -37,7 +37,7 @@ export function CalendarWidget({ userId }: CalendarWidgetProps) {
         const data = await res.json();
         setEvents(data.events || []);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     } finally {
       setLoading(false);

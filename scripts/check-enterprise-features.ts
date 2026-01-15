@@ -145,7 +145,7 @@ function main() {
   let envFile = "";
   try {
     envFile = fs.readFileSync(path.join(process.cwd(), ".env.local"), "utf8");
-  } catch {
+  } catch (error) {
     // .env.local missing is not fatal, just note it
   }
 

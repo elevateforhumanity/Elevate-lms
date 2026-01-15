@@ -132,7 +132,7 @@ export default function DevStudioPage() {
           '<XCircle className="w-5 h-5 inline-block" /> Failed to load repositories'
         );
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       addTerminalOutput(
         '<XCircle className="w-5 h-5 inline-block" /> Error loading repositories'
       );
@@ -166,7 +166,7 @@ export default function DevStudioPage() {
           '<XCircle className="w-5 h-5 inline-block" /> Failed to load file tree'
         );
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       addTerminalOutput(
         '<XCircle className="w-5 h-5 inline-block" /> Error loading file tree'
       );
@@ -203,7 +203,7 @@ export default function DevStudioPage() {
           `<XCircle className="w-5 h-5 inline-block" /> Failed to open ${path}`
         );
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       addTerminalOutput(
         `<XCircle className="w-5 h-5 inline-block" /> Error opening ${path}`
       );
@@ -246,7 +246,7 @@ export default function DevStudioPage() {
           `<XCircle className="w-5 h-5 inline-block" /> Failed to save: ${error instanceof Error ? error.message : String(error)}`
         );
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       addTerminalOutput(
         '<XCircle className="w-5 h-5 inline-block" /> Error saving file'
       );

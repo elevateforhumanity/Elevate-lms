@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
       quizId: quizData.id,
       message: 'Quiz saved successfully',
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error saving quiz:',
       error instanceof Error ? error : new Error(String(error))

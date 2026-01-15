@@ -19,7 +19,7 @@ export function OfflineIndicator() {
     setSyncing(true);
     try {
       await syncOfflineActions();
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     } finally {
       setSyncing(false);

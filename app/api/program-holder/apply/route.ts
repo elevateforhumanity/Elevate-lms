@@ -125,7 +125,7 @@ export async function POST(req: NextRequest) {
       success: true,
       applicationId: application.id,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'An unexpected error occurred. Please try again.' },
       { status: 500 }

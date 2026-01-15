@@ -46,7 +46,7 @@ export async function fetchDurableBlogPosts(): Promise<DurableBlogPost[]> {
     }
 
     return [];
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return [];
   }
@@ -86,7 +86,7 @@ function parseRSSFeed(rssText: string): DurableBlogPost[] {
     });
 
     return posts;
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return [];
   }

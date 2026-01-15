@@ -126,7 +126,7 @@ Return ONLY a JSON array of ${count} posts, no other text.`;
     let posts: string[];
     try {
       posts = JSON.parse(content);
-    } catch {
+    } catch (error) {
       // Fallback if not valid JSON
       posts = content.split('\n').filter((line) => line.trim().length > 0);
     }
@@ -141,7 +141,7 @@ Return ONLY a JSON array of ${count} posts, no other text.`;
     posts = posts.slice(0, count);
 
     return NextResponse.json({ success: true, posts });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Social media generation error:',
       error instanceof Error ? error : new Error(String(error))

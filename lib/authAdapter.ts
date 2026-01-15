@@ -95,7 +95,7 @@ const oidcAuthAdapter: AuthAdapter = {
         roles: sessionData.roles || ['user'],
         raw: sessionData,
       };
-    } catch {
+    } catch (error) {
       return null;
     }
   },
@@ -140,7 +140,7 @@ const azureAdAuthAdapter: AuthAdapter = {
         roles: sessionData.roles || sessionData.groups || ['user'],
         raw: sessionData,
       };
-    } catch {
+    } catch (error) {
       return null;
     }
   },
@@ -198,7 +198,7 @@ const customJwtAuthAdapter: AuthAdapter = {
         roles: payload.roles || payload.permissions || ['user'],
         raw: payload,
       };
-    } catch {
+    } catch (error) {
       return null;
     }
   },

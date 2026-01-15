@@ -78,7 +78,7 @@ export default function PayPageClient() {
             window.affirm.ui.refresh();
           }
           setAffirmLoaded(true);
-        } catch { /* Error handled silently */ 
+        } catch (error) { /* Error handled silently */ 
           // Error handled
         }
       };

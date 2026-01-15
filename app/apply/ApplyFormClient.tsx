@@ -181,7 +181,7 @@ export default function ApplyFormClient() {
           setStatus('idle');
         }, 5000);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
     }

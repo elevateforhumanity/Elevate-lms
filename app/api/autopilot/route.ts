@@ -49,7 +49,7 @@ function loadState(): AutopilotState {
       createdAt: parsed.createdAt || Date.now(),
       updatedAt: parsed.updatedAt || Date.now(),
     };
-  } catch {
+  } catch (error) {
     return {
       tasks: [],
       counters: {},
@@ -96,7 +96,7 @@ export async function GET(request: NextRequest) {
   try {
     const state = loadState();
     return NextResponse.json(state);
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Failed to load autopilot state' },
       { status: 500 }
@@ -146,7 +146,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Failed to process request' },
       { status: 500 }
@@ -169,7 +169,7 @@ export async function DELETE(request: NextRequest) {
     saveState(state);
 
     return NextResponse.json({ success: true });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Failed to delete task' },
       { status: 500 }

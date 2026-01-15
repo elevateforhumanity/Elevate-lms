@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('[Slow Resources] Error:', error);
     return NextResponse.json({ error: 'Failed to log resources' }, { status: 500 });
   }

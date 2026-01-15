@@ -20,7 +20,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ templates: templates || [] });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       {
         error:

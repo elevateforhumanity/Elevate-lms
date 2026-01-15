@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'Module completed and certificate issued'
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Error completing module:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Failed to complete module' },

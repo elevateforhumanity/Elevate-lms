@@ -137,7 +137,7 @@ async function sendEmailNotification(data: z.infer<typeof ContactSchema>) {
       `,
     });
   } catch (error: unknown) {
-    logger.error('Failed to send email notification:', error);
+    logger.error('Failed to send email notification:', error as Error);
     throw error;
   }
 }

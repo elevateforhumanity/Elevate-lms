@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
       limit,
       offset,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: toErrorMessage(error) },
       { status: 500 }
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(data, { status: 201 });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: toErrorMessage(error) },
       { status: 500 }

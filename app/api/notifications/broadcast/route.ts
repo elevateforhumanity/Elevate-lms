@@ -80,7 +80,7 @@ export async function POST(req: Request) {
               status: 'sent',
               sent_at: new Date().toISOString(),
             });
-          } catch { /* Error handled silently */ 
+          } catch (error) { /* Error handled silently */ 
             logger.error(
               `Error sending to subscription ${subscription.id}:`,
               error
@@ -106,7 +106,7 @@ export async function POST(req: Request) {
             });
           }
         }
-      } catch { /* Error handled silently */ 
+      } catch (error) { /* Error handled silently */ 
         logger.error(
           `Error processing user ${user.id}:`,
           error instanceof Error ? error : new Error(String(error))
@@ -123,7 +123,7 @@ export async function POST(req: Request) {
         failed,
       },
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Broadcast notification error:',
       error instanceof Error ? error : new Error(String(error))

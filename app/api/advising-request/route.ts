@@ -71,7 +71,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Error processing advising request:', error);
     return NextResponse.json(
       { error: 'Failed to process request' },

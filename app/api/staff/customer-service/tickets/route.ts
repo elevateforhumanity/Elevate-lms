@@ -75,7 +75,7 @@ export async function POST(request: Request) {
       success: true,
       ticket,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: getErrorMessage(error) },
       { status: 500 }

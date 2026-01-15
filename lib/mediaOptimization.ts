@@ -252,7 +252,7 @@ export async function batchOptimizeImages(
           });
 
         return { path, success: true };
-      } catch { /* Error handled silently */ 
+      } catch (error) { /* Error handled silently */ 
         return {
           path,
           success: false,

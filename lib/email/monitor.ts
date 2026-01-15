@@ -32,7 +32,7 @@ export async function logEmailDelivery(log: EmailLog): Promise<void> {
       sent_at: log.sent_at || new Date().toISOString(),
       created_at: new Date().toISOString(),
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Don't fail the email send if logging fails
     console.error('[Email Monitor] Failed to log email:', error);
   }

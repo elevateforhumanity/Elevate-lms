@@ -51,7 +51,7 @@ export const GET = protectTestEndpoint(async () => {
             : null,
         },
       });
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       clientError = error instanceof Error ? error.message : String(error);
       return NextResponse.json({
         status: 'error',
@@ -67,7 +67,7 @@ export const GET = protectTestEndpoint(async () => {
         },
       });
     }
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json({
       status: 'error',
       message: error instanceof Error ? error.message : String(error),

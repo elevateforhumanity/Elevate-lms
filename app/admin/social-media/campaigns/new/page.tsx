@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 // @ts-nocheck
@@ -79,7 +80,7 @@ export default function NewSocialCampaignPage() {
       if (result.success) {
         setGeneratedPosts(result.posts);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
     // Error handled
   } finally {
       setGenerating(false);

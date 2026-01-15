@@ -72,7 +72,7 @@ export async function cloneRepository(sourceRepo: string, newRepoName: string) {
       name: newRepoName,
       include_all_branches: true,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // If template method fails, the empty repo is still created
   }
 

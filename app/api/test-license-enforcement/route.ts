@@ -125,7 +125,7 @@ export async function GET() {
     results.enforcement_working = failedTests === 0;
 
     return NextResponse.json(results);
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: error.message, stack: error.stack },
       { status: 500 }

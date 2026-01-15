@@ -14,7 +14,7 @@ export function parseHTML(html: string): string {
 export function parseJSON<T = any>(json: string): T | null {
   try {
     return JSON.parse(json);
-  } catch {
+  } catch (error) {
     return null;
   }
 }

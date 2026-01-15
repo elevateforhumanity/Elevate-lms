@@ -59,7 +59,7 @@ export async function GET(
     }
 
     return NextResponse.json({ employee });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error fetching employee:',
       error instanceof Error ? error : new Error(String(error))
@@ -107,7 +107,7 @@ export async function PATCH(
     if (error) throw error;
 
     return NextResponse.json({ employee });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error updating employee:',
       error instanceof Error ? error : new Error(String(error))
@@ -159,7 +159,7 @@ export async function DELETE(
       message: 'Employee terminated successfully',
       employee,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error terminating employee:',
       error instanceof Error ? error : new Error(String(error))

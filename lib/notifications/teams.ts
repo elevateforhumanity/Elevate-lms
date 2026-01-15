@@ -36,7 +36,7 @@ export async function sendTeamsMessage(
       }),
     });
     //
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
   }
 }

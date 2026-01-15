@@ -54,7 +54,7 @@ export async function GET(
     }
 
     return NextResponse.json(enrollment);
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('SCORM enrollment GET error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },

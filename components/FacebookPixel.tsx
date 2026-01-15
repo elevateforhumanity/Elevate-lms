@@ -30,7 +30,7 @@ export default function FacebookPixel() {
     if (mounted && typeof window !== 'undefined') {
       try {
         setPathname(window.location.pathname);
-      } catch { /* Error handled silently */ 
+      } catch (error) { /* Error handled silently */ 
       }
     }
   }, [mounted]);
@@ -44,7 +44,7 @@ export default function FacebookPixel() {
       if (window.fbq) {
         window.fbq('track', 'PageView');
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Silently fail - don't break the app
     }
   }, [mounted, pathname]);
@@ -68,7 +68,7 @@ export default function FacebookPixel() {
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '${FB_PIXEL_ID}');
               fbq('track', 'PageView');
-            } catch { /* Error handled silently */ }
+            } catch (error) { /* Error handled silently */ }
           `}
         </Script>
 
@@ -83,7 +83,7 @@ export default function FacebookPixel() {
         </noscript>
       </>
     );
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return null;
   }
 }

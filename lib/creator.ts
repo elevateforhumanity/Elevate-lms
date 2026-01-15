@@ -44,7 +44,7 @@ export async function getCreatorProfile() {
       .maybeSingle();
 
     return creator;
-  } catch {
+  } catch (error) {
     return null;
   }
 }

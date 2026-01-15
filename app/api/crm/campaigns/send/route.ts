@@ -219,7 +219,7 @@ export async function POST(request: NextRequest) {
       sent_count: sentCount,
       total_recipients: recipients.length,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       {
         error:

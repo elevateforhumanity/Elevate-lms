@@ -83,7 +83,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ invoice: data, stripeInvoice: invoice });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
@@ -107,7 +107,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ invoices: data });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }

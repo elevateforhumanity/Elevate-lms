@@ -112,7 +112,7 @@ export async function POST(req: Request) {
     });
 
     if (!result.success) {
-      logger.error('Clone failed', { licenseId: license.id, error: result.error });
+      logger.error('Clone failed', new Error(result.error || 'Unknown error'), { licenseId: license.id });
       return Response.json({ error: result.error }, { status: 500 });
     }
 
@@ -128,7 +128,7 @@ export async function POST(req: Request) {
       repoUrl: result.repoUrl,
       cloneUrl: result.cloneUrl,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Clone error:',
       error instanceof Error ? error : new Error(String(error))

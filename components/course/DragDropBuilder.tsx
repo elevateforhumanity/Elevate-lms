@@ -207,7 +207,7 @@ export default function DragDropBuilder({ courseId, initialModules = [], onSave 
         body: JSON.stringify({ modules }),
       });
       alert('Course structure saved successfully!');
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
       alert('Failed to save course structure');
     }

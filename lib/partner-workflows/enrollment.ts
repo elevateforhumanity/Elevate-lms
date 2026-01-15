@@ -91,7 +91,7 @@ export async function enrollCertiport(
       message:
         'Certiport enrollment created. Student should register at certiport.com using provided credentials.',
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),
@@ -154,7 +154,7 @@ export async function enrollHSI(
       message:
         'HSI enrollment created. Student will receive access instructions via email.',
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),
@@ -217,7 +217,7 @@ export async function enrollJRI(
       message:
         'JRI enrollment created. Student will receive course access details.',
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),
@@ -281,7 +281,7 @@ export async function enrollNRFRiseUp(
       message:
         'NRF RISE Up enrollment created. Student will receive platform access.',
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),
@@ -345,7 +345,7 @@ export async function enrollCareerSafe(
       message:
         'CareerSafe enrollment created. Student will receive OSHA training access.',
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),
@@ -419,7 +419,7 @@ export async function enrollMiladyRISE(
       enrollmentId: enrollment.id,
       message: `Milady RISE enrollment created. Use promo code: ${provider.promo_code}`,
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),
@@ -464,7 +464,7 @@ export async function enrollStudent(
       default:
         throw new Error(`Unsupported provider type: ${provider.provider_type}`);
     }
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),

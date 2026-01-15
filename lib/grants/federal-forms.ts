@@ -272,7 +272,7 @@ export async function generateSF424(
   if (entity.uei) {
     try {
       samData = await getEntityByUEI(entity.uei);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   }

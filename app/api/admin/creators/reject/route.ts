@@ -50,7 +50,7 @@ export async function POST(req: Request) {
         { 
           error: 'Invalid input', 
           code: 'VALIDATION_ERROR',
-          details: validation.error.errors 
+          details: validation.error.issues 
         },
         { status: 400 }
       );

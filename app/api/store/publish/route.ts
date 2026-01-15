@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
       url: `/store/codebase-clone`,
       productId: data.id,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Failed to publish product:',
       error instanceof Error ? error : new Error(String(error))

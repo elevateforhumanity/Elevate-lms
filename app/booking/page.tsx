@@ -60,7 +60,7 @@ export default function BookingPage() {
         const data = await response.json();
         setInstructors(data.instructors || []);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       setInstructors([]);
     }
   };
@@ -120,7 +120,7 @@ export default function BookingPage() {
         setTopic('');
         setNotes('');
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       alert('Failed to create booking. Please try again.');
     } finally {
       setLoading(false);

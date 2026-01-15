@@ -173,7 +173,7 @@ export default function AffirmCheckout({
         setIsLoading(false);
       });
 
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
       const errorMessage = error instanceof Error ? error.message : 'Failed to start checkout';
       toast.error(errorMessage);

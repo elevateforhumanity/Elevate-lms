@@ -69,7 +69,7 @@ export async function getTenantLicense(tenantId: string): Promise<License | null
     }
     return data as License;
   } catch (error) {
-    logger.error('Failed to fetch tenant license', { tenantId, error });
+    logger.error('Failed to fetch tenant license', error as Error, { tenantId });
     return null;
   }
 }

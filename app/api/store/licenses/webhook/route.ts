@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     let event: Stripe.Event;
     try {
       event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
-    } catch { /* Error handled silently */ }
+    } catch (error) { /* Error handled silently */ }
 
     const supabase = await createClient();
 

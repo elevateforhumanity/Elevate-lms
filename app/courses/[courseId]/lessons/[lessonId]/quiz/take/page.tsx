@@ -39,7 +39,7 @@ export default function TakeQuizPage({
   }, [params.lessonId]);
 
   useEffect(() => {
-    if (timeRemaining === null || timeRemaining <= 0) return;
+    if (timeRemaining === null || timeRemaining <= 0) return undefined;
 
     const timer = setInterval(() => {
       setTimeRemaining((prev) => {
@@ -94,7 +94,7 @@ export default function TakeQuizPage({
         alert('Failed to submit quiz. Please start again.');
         setSubmitting(false);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       alert('Failed to submit quiz. Please start again.');
       setSubmitting(false);
     }

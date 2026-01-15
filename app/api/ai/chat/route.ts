@@ -141,7 +141,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ reply });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return NextResponse.json(
       { error: toErrorMessage(error) || 'Failed to process chat' },
@@ -181,7 +181,7 @@ export async function GET(req: Request) {
       .order('created_at', { ascending: true });
 
     return NextResponse.json({ messages: messages || [] });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return NextResponse.json(
       { error: 'Failed to load chat history' },

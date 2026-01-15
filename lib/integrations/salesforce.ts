@@ -142,7 +142,7 @@ export async function createOrUpdateContact(
       const createData = await createResponse.json();
       return createData.id;
     }
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     console.error('Error with Salesforce contact:', error);
     return null;
   }
@@ -186,7 +186,7 @@ export async function createOpportunity(
 
     const responseData = await response.json();
     return responseData.id;
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     console.error('Error creating Salesforce opportunity:', error);
     return null;
   }

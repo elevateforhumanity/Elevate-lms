@@ -30,7 +30,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
       await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   }
@@ -43,7 +43,7 @@ export function SocialShare({ url, title, description }: SocialShareProps) {
           text: description,
           url: shareUrl,
         });
-      } catch { /* Error handled silently */ 
+      } catch (error) { /* Error handled silently */ 
         // Error: $1
       }
     } else {

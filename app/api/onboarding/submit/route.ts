@@ -224,7 +224,7 @@ export async function POST(request: NextRequest) {
         ? 'Onboarding completed successfully!'
         : 'Onboarding saved. Please complete remaining items.',
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Onboarding submission error:',
       error instanceof Error ? error : new Error(String(error))
@@ -270,7 +270,7 @@ export async function GET(request: NextRequest) {
       onboarding: onboarding || null,
       hasOnboarding: !!onboarding,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Onboarding fetch error:',
       error instanceof Error ? error : new Error(String(error))

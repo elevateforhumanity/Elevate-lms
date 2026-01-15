@@ -141,7 +141,7 @@ export async function POST(req: Request) {
       if (!orchestrationResult.success) {
         logger.error(
           '[Enroll Apply] Orchestration failed:',
-          orchestrationResult.error
+          new Error(orchestrationResult.error || 'Unknown error')
         );
         return NextResponse.json(
           {

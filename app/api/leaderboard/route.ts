@@ -87,7 +87,7 @@ export async function GET(request: Request) {
       leaderboard: rankedLeaderboard,
       timeframe,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

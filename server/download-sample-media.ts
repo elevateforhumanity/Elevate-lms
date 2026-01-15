@@ -53,7 +53,7 @@ async function downloadImages() {
       await fs.access(outputPath);
       downloaded++;
       continue;
-    } catch {
+    } catch (error) {
       // File doesn't exist, download it
     }
 
@@ -91,7 +91,7 @@ async function downloadVideos() {
       await fs.access(outputPath);
       downloaded++;
       continue;
-    } catch {
+    } catch (error) {
       // File doesn't exist, download it
     }
 

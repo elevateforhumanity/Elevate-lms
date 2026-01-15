@@ -74,7 +74,7 @@ export function useOffline(): UseOfflineReturn {
       try {
         const actions = await db.getAllOfflineActions();
         setPendingActionsCount(actions.length);
-      } catch { /* Error handled silently */ }
+      } catch (error) { /* Error handled silently */ }
     };
 
     updateCount();
@@ -157,7 +157,7 @@ export function useOfflineCache<T>(key: string, expiresIn?: number) {
       try {
         const cachedData = await db.getCachedData(key);
         setData(cachedData);
-      } catch { /* Error handled silently */ } finally {
+      } catch (error) { /* Error handled silently */ } finally {
         setLoading(false);
       }
     };

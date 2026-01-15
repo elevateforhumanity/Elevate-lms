@@ -119,7 +119,7 @@ export class VideoGenerator {
       try {
         const img = await loadImage(scene.image);
         ctx.drawImage(img, 0, 0, dimensions.width, dimensions.height);
-      } catch {
+      } catch (error) {
         // Image load failed, continue without background
       }
     }

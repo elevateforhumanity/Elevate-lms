@@ -15,44 +15,44 @@ export function FeatureGate({ feature, fallback, children }: FeatureGateProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    async function checkFeature() {
+      const supabase = createClient();
+
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        setLoading(false);
+        return;
+      }
+
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('tenant_id')
+        .eq('id', user.id)
+        .single();
+
+      if (!profile?.tenant_id) {
+        setLoading(false);
+        return;
+      }
+
+      const { data: license } = await supabase
+        .from('licenses')
+        .select('features')
+        .eq('tenant_id', profile.tenant_id)
+        .eq('status', 'active')
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .single();
+
+      if (license?.features?.[feature]) {
+        setEnabled(true);
+      }
+
+      setLoading(false);
+    }
+
     checkFeature();
   }, [feature]);
-
-  async function checkFeature() {
-    const supabase = createClient();
-
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-      setLoading(false);
-      return;
-    }
-
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('tenant_id')
-      .eq('id', user.id)
-      .single();
-
-    if (!profile?.tenant_id) {
-      setLoading(false);
-      return;
-    }
-
-    const { data: license } = await supabase
-      .from('licenses')
-      .select('features')
-      .eq('tenant_id', profile.tenant_id)
-      .eq('status', 'active')
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .single();
-
-    if (license?.features?.[feature]) {
-      setEnabled(true);
-    }
-
-    setLoading(false);
-  }
 
   if (loading) {
     return <div className="animate-pulse bg-gray-200 h-8 rounded"></div>;

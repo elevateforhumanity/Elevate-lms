@@ -41,7 +41,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ employee });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Error fetching employee:',
       error instanceof Error ? error : new Error(String(error))

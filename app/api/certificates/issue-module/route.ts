@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
       success: true,
       certificateNumber
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Error issuing module certificate:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Failed to issue certificate' },

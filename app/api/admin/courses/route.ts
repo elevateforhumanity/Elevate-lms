@@ -73,7 +73,7 @@ export const POST = withAuth(
       success: true,
       course: courseData,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Error in course creation:', toError(error));
     return NextResponse.json(
       { error: toErrorMessage(error) || 'Failed to create course' },
@@ -107,7 +107,7 @@ export const GET = withAuth(
     }
 
     return NextResponse.json({ courses });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: toErrorMessage(error) || 'Failed to fetch courses' },
       { status: 500 }

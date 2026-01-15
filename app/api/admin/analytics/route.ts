@@ -164,7 +164,7 @@ export async function GET(request: Request) {
       },
       topReferrers,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

@@ -95,7 +95,7 @@ class Logger {
           body: JSON.stringify(entry),
         });
       }
-    } catch {
+    } catch (error) {
       /* Fail silently to avoid infinite loops */
     }
   }

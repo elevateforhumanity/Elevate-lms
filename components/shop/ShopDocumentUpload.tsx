@@ -67,7 +67,7 @@ export function ShopDocumentUpload({
           text: error.error || 'Upload failed',
         });
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       setMessage({
         type: 'error',
         text: 'Network error. Please try again.',

@@ -51,7 +51,7 @@ export class JriAPI extends BasePartnerAPI {
         username: response.data.username,
         loginUrl: response.data.portalUrl,
       };
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       this.log('error', 'Failed to create JRI account', {
         error: error instanceof Error ? error.message : String(error),
       });
@@ -88,7 +88,7 @@ export class JriAPI extends BasePartnerAPI {
         courseName: response.data.courseName,
         accessUrl: response.data.accessUrl,
       };
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       this.log('error', 'Failed to enroll in JRI course', {
         error: error instanceof Error ? error.message : String(error),
       });
@@ -125,7 +125,7 @@ export class JriAPI extends BasePartnerAPI {
         lessonsCompleted: response.data.modulesCompleted,
         totalLessons: response.data.totalModules,
       };
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       if (error instanceof PartnerAPIError && error.statusCode === 404) {
         return null;
       }
@@ -157,7 +157,7 @@ export class JriAPI extends BasePartnerAPI {
         downloadUrl: response.data.downloadUrl,
         verificationUrl: response.data.verificationUrl,
       };
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       if (error instanceof PartnerAPIError && error.statusCode === 404) {
         return null;
       }
@@ -186,7 +186,7 @@ export class JriAPI extends BasePartnerAPI {
       });
 
       return response.data.launchUrl;
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       this.log('error', 'Failed to generate JRI SSO URL', {
         error: error instanceof Error ? error.message : String(error),
       });

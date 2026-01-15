@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
   let body: EnrollRequestBody;
   try {
     body = (await req.json()) as EnrollRequestBody;
-  } catch {
+  } catch (error) {
     return NextResponse.json(
       { ok: false, error: 'Invalid JSON payload.' },
       { status: 400 }

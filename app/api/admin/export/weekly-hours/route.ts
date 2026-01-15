@@ -196,7 +196,7 @@ function formatDate(date: any): string {
   if (!date) return '';
   try {
     return new Date(date).toISOString().split('T')[0];
-  } catch {
+  } catch (error) {
     return '';
   }
 }

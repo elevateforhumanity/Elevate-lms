@@ -3,19 +3,6 @@
 import { useEffect } from 'react';
 import Script from 'next/script';
 
-declare global {
-  interface Window {
-    tidioChatApi?: {
-      open: () => void;
-      close: () => void;
-      show: () => void;
-      hide: () => void;
-      setVisitorData: (data: Record<string, unknown>) => void;
-      on: (event: string, callback: () => void) => void;
-    };
-  }
-}
-
 interface TidioChatWidgetProps {
   publicKey?: string;
   autoOpen?: boolean;
@@ -50,6 +37,7 @@ export function TidioChatWidget({
       }, autoOpenDelay);
       return () => clearTimeout(timer);
     }
+    return undefined;
   }, [autoOpen, autoOpenDelay]);
 
   useEffect(() => {
@@ -72,6 +60,7 @@ export function TidioChatWidget({
     // Check if Tidio is already loaded
     if (window.tidioChatApi) {
       setupTidio();
+      return undefined;
     } else {
       // Wait for Tidio to load
       document.addEventListener('tidioChat-ready', setupTidio);

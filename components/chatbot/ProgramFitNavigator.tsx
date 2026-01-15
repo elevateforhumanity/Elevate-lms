@@ -140,12 +140,4 @@ export function ProgramFitNavigator({
   );
 }
 
-// Declare Tidio API type
-declare global {
-  interface Window {
-    tidioChatApi?: {
-      open: () => void;
-      close: () => void;
-    };
-  }
-}
+// Tidio API type is declared in types/gtag.d.ts

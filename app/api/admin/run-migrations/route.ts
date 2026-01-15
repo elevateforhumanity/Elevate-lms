@@ -61,7 +61,7 @@ export const POST = withAuth(
       }
 
       return NextResponse.json({ results });
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       return NextResponse.json(
         { error: toErrorMessage(error) },
         { status: 500 }

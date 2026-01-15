@@ -18,7 +18,7 @@ export function getUserIdFromRequest(req: NextRequest): string | null {
       Buffer.from(parts[1], "base64").toString("utf8")
     ) as { sub?: string };
     return payload.sub ?? null;
-  } catch {
+  } catch (error) {
     return null;
   }
 }

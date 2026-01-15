@@ -83,7 +83,7 @@ export async function GET(request: Request) {
       total: applications?.length || 0,
       statusCounts,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -170,7 +170,7 @@ export async function PATCH(request: Request) {
       success: true,
       application,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

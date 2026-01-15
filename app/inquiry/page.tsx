@@ -51,7 +51,7 @@ function InquiryForm() {
         setError(result.error || 'Application failed. Please try again.');
         setLoading(false);
       }
-    } catch {
+    } catch (error) {
       setError('An error occurred. Please try again or call 317-314-3757.');
       setLoading(false);
     }

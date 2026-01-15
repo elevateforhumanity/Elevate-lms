@@ -195,7 +195,7 @@ Deno.serve(async (req) => {
   let payload: any;
   try {
     payload = await req.json();
-  } catch {
+  } catch (error) {
     return new Response("Invalid JSON", { status: 400 });
   }
 

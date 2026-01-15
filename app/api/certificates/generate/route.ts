@@ -196,7 +196,7 @@ export async function POST(request: Request) {
       certificate: cert,
       message: 'Certificate generated successfully',
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Error in /api/certificates/generate:', error);
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }

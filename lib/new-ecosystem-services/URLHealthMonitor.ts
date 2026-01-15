@@ -190,7 +190,7 @@ export class URLHealthMonitor {
 
       this.healthStatus.set(url, check);
       return check;
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       const check: URLCheck = {
         url,
         status: 'down',
@@ -244,7 +244,7 @@ export class URLHealthMonitor {
 
       this.healthStatus.set(endpointId, check);
       return check;
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       const check: URLCheck = {
         url: endpoint.url,
         status: 'down',
@@ -274,7 +274,7 @@ export class URLHealthMonitor {
       try {
         const check = await this.checkEndpoint(id);
         checks.set(id, check);
-      } catch { /* Error handled silently */ 
+      } catch (error) { /* Error handled silently */ 
         logger.error(`Error checking endpoint ${id}`, error as Error, { endpointId: id });
       }
     }

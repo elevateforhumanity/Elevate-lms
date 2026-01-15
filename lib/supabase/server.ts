@@ -29,7 +29,7 @@ export async function createClient(): Promise<SupabaseClient<any>> {
             cookiesToSet.forEach(({ name, value, options }) =>
               cookieStore.set(name, value, options)
             );
-          } catch {
+          } catch (error) {
             // Server Component
           }
         },

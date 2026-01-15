@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
       enrollment,
     });
 
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Enrollment API error:', error);
     return NextResponse.json(
       { error: 'Internal server error' },

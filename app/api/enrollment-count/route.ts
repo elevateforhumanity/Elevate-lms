@@ -22,7 +22,7 @@ export async function GET() {
       success: true,
       data: enrollmentData,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { success: false, error: 'Failed to fetch enrollment data' },
       { status: 500 }
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
       success: true,
       data: enrollmentData,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { success: false, error: 'Failed to update enrollment data' },
       { status: 500 }

@@ -160,7 +160,7 @@ export async function orchestrateEnrollment(params: {
       enrollmentId: enrollment.id,
       stepsCreated: stepsResult || 0,
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('[Enrollment Orchestration] Unexpected error', error);
     return {
       success: false,

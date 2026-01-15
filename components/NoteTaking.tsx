@@ -40,7 +40,7 @@ export function NoteTaking({ courseId, lessonId, videoTimestamp }: NoteTakingPro
         const data = await res.json();
         setNotes(data.notes || []);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   }
@@ -66,7 +66,7 @@ export function NoteTaking({ courseId, lessonId, videoTimestamp }: NoteTakingPro
         setNotes([data.note, ...notes]);
         setCurrentNote('');
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     } finally {
       setSaving(false);
@@ -77,7 +77,7 @@ export function NoteTaking({ courseId, lessonId, videoTimestamp }: NoteTakingPro
     try {
       await fetch(`/api/notes/${noteId}`, { method: 'DELETE' });
       setNotes(notes.filter(n => n.id !== noteId));
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   }

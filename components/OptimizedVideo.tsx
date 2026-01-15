@@ -32,7 +32,7 @@ export function OptimizedVideo({ src, className = '', audioTrack }: OptimizedVid
           await video.play();
         }
         setIsPlaying(true);
-      } catch { /* Error handled silently */ 
+      } catch (error) { /* Error handled silently */ 
         // Autoplay blocked by browser, that's fine
         // Silently handle - this is expected behavior
       }

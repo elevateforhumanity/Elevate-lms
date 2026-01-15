@@ -23,7 +23,7 @@ export async function hasRole(userId: string, role: UserRole): Promise<boolean> 
   try {
     await requireRole(userId, role);
     return true;
-  } catch {
+  } catch (error) {
     return false;
   }
 }

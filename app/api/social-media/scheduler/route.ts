@@ -100,7 +100,7 @@ export async function GET(req: Request) {
               postIndex,
               success: true,
             });
-          } catch { /* Error handled silently */ 
+          } catch (error) { /* Error handled silently */ 
             logger.error(
               `Error posting to ${platform}:`,
               error instanceof Error ? error : new Error(String(error))
@@ -132,7 +132,7 @@ export async function GET(req: Request) {
           .from('social_media_campaigns')
           .update({ last_post_at: now.toISOString() })
           .eq('id', campaign.id);
-      } catch { /* Error handled silently */ 
+      } catch (error) { /* Error handled silently */ 
         logger.error(
           `Error processing campaign ${campaign.id}:`,
           error instanceof Error ? error : new Error(String(error))
@@ -152,7 +152,7 @@ export async function GET(req: Request) {
       slot: ['morning', 'afternoon', 'evening'][slot],
       results,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Scheduler error:',
       error instanceof Error ? error : new Error(String(error))
@@ -225,7 +225,7 @@ async function postToFacebook(
     }
 
     return { success: true, platform: 'facebook', postId: data.id };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Facebook posting error:',
       error instanceof Error ? error : new Error(String(error))
@@ -278,7 +278,7 @@ async function postToLinkedIn(
     }
 
     return { success: true, platform: 'linkedin', postId: data.id };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'LinkedIn posting error:',
       error instanceof Error ? error : new Error(String(error))

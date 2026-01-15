@@ -40,7 +40,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ students: students || [] });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       {
         error:

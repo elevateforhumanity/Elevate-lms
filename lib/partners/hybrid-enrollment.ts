@@ -75,7 +75,7 @@ export async function enrollInExternalModule(
 
     // Use link mode
     return await enrollViaLink(module, request);
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,

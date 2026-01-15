@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
       signature,
       process.env.STRIPE_IDENTITY_WEBHOOK_SECRET!
     );
-  } catch { /* Error handled silently */ }
+  } catch (error) { /* Error handled silently */ }
 
   // Handle verification session events
   if (event.type === 'identity.verification_session.verified') {
@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
 
       // Email notification handled by trigger to user
 
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       return NextResponse.json(
         { error: 'Database update failed' },
         { status: 500 }
@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
 
       // Email notification handled by trigger to user
 
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       return NextResponse.json(
         { error: 'Database update failed' },
         { status: 500 }

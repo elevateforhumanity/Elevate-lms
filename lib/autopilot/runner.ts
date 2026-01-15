@@ -32,7 +32,7 @@ export async function runAutopilots(
       structure,
       errors: validation.errors,
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       ok: false,
       error: error instanceof Error ? error.message : String(error),
@@ -52,7 +52,7 @@ export async function runFullAnalysis(repo = 'elevateforhumanity/fix2') {
         codeFiles: analysis.components + analysis.pages + analysis.api,
       },
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       ok: false,
       error: error instanceof Error ? error.message : String(error),

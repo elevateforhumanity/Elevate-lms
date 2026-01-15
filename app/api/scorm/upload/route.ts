@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
       },
       { status: 201 }
     );
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Error uploading SCORM package:', error);
     return NextResponse.json(
       { error: 'Failed to upload SCORM package' },

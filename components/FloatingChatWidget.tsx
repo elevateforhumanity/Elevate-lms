@@ -62,7 +62,7 @@ export default function FloatingChatWidget() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
       const errorMessage: Message = {
         role: "assistant",

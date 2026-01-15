@@ -118,7 +118,7 @@ export async function GET(request: NextRequest) {
     const validCourses = coursesWithProgress.filter((c) => c !== null);
 
     return NextResponse.json(validCourses);
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error("[Mobile Courses Error]:", error);
     return NextResponse.json(
       { error: "Internal server error" },

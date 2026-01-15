@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
         'Content-Disposition': `attachment; filename="${'filename' in result ? result.filename : 'export.json'}"`,
       },
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Error exporting user data:', error);
     return NextResponse.json(
       { error: 'Failed to export data' },

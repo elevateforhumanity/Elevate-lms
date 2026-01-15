@@ -79,7 +79,7 @@ export function RightSidebar() {
 
       // Load notifications count
       await loadNotifications(user.id);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     } finally {
       setLoading(false);

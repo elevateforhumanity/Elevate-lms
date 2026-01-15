@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
           </p>
         `,
       });
-    } catch { /* Error handled silently */ }
+    } catch (error) { /* Error handled silently */ }
 
     // Send notification to admin
     try {
@@ -140,7 +140,7 @@ export async function POST(request: NextRequest) {
           </p>
         `,
       });
-    } catch { /* Error handled silently */ }
+    } catch (error) { /* Error handled silently */ }
 
     return NextResponse.json({
       success: true,

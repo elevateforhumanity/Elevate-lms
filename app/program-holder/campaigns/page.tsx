@@ -86,7 +86,7 @@ export default function ProgramOwnerCampaignsPage() {
       } else {
         alert(`Error: ${data.error}`);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       alert('Failed to send emails');
     } finally {
       setLoading(false);

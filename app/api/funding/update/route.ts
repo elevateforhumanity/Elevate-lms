@@ -65,7 +65,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true, funding: data });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }
@@ -87,7 +87,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ funding_cases: data });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }

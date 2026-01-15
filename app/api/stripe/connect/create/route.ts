@@ -51,7 +51,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ accountId: account.id });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: error instanceof Error ? error.message : String(error) },
       { status: 500 }

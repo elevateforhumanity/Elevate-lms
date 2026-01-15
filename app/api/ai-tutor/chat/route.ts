@@ -125,7 +125,7 @@ export async function POST(request: NextRequest) {
       message: aiMessage.content,
       conversationId: newConversationId,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'AI Tutor error:',
       error instanceof Error ? error : new Error(String(error))

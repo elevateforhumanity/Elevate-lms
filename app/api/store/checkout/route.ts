@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     });
 
     return Response.json({ sessionId: session.id, url: session.url });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error(
       'Checkout error:',
       error instanceof Error ? error : new Error(String(error))

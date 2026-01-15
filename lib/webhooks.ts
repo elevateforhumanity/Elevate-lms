@@ -298,7 +298,7 @@ async function deliverWebhook(
     if (!response.ok) {
       throw new Error(`Webhook delivery failed with status ${response.status}`);
     }
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
 
     // Update delivery record with error
@@ -569,7 +569,7 @@ export async function testWebhook(webhookId: string): Promise<{
       success: response.ok,
       status: response.status,
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',

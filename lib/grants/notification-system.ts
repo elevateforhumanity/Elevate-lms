@@ -234,7 +234,7 @@ export async function sendGrantNotification(
           grantTitle,
           entityName
         );
-      } catch { /* Error handled silently */ 
+      } catch (error) { /* Error handled silently */ 
         // Error: $1
       }
     }
@@ -242,7 +242,7 @@ export async function sendGrantNotification(
     if (smsEnabled && notification.priority === 'urgent') {
       try {
         await sendSMSNotification(recipient, createdNotification, grantTitle);
-      } catch { /* Error handled silently */ 
+      } catch (error) { /* Error handled silently */ 
         // Error: $1
       }
     }

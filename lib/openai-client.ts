@@ -27,7 +27,7 @@ export function isOpenAIConfigured(): boolean {
 export function getSafeOpenAIClient(): OpenAI | null {
   try {
     return isOpenAIConfigured() ? getOpenAIClient() : null;
-  } catch {
+  } catch (error) {
     return null;
   }
 }

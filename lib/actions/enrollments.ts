@@ -195,7 +195,7 @@ export async function createEnrollment(input: CreateEnrollmentInput) {
       enrollment_id: enrollment.id,
       message: `Enrollment created successfully for ${student.first_name} ${student.last_name} in ${program.name}`,
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -253,7 +253,7 @@ export async function addTransferHours(input: AddTransferHoursInput) {
       transfer_hours_id: transferHours.id,
       message: `Transfer hours from ${input.source_school_name} (${input.source_state}) added successfully. Status: Pending Review`,
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -364,7 +364,7 @@ export async function approveTransferHours(input: ApproveTransferHoursInput) {
       success: true,
       message: `Transfer hours approved: ${input.hours_theory_accepted} theory + ${input.hours_practical_accepted} practical hours`,
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -399,7 +399,7 @@ export async function rejectTransferHours(
       success: true,
       message: 'Transfer hours rejected',
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -447,7 +447,7 @@ export async function updateFundingAmounts(input: UpdateFundingAmountsInput) {
       success: true,
       message: 'Funding amounts updated successfully',
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,
@@ -525,7 +525,7 @@ export async function getEnrollmentDetails(enrollment_id: string) {
         },
       },
     };
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Error: $1
     return {
       success: false,

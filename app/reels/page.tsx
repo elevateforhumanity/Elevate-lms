@@ -25,7 +25,7 @@ async function getReels() {
       .order('created_at', { ascending: false })
       .limit(20);
     return data || [];
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return [];
   }
 }

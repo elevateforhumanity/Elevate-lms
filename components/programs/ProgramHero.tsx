@@ -23,14 +23,14 @@ export function ProgramHero({ program }: { program: Program }) {
         if (audioRef.current) {
           await audioRef.current.play().catch(() => {});
         }
-      } catch { /* Error handled silently */ 
+      } catch (error) { /* Error handled silently */ 
         // If blocked, try muted
         try {
           if (videoRef.current) {
             videoRef.current.muted = true;
             await videoRef.current.play().catch(() => {});
           }
-        } catch { /* Error handled silently */ 
+        } catch (error) { /* Error handled silently */ 
     // Error handled
   }
       }

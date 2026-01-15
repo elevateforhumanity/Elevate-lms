@@ -71,7 +71,7 @@ export default function MediaStudioPage() {
           setSelectedBucket(data.buckets[0]);
         }
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
     // Error handled
   }
   };
@@ -84,7 +84,7 @@ export default function MediaStudioPage() {
       if (res.ok) {
         setFiles(data.files);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
     // Error handled
   } finally {
       setLoading(false);
@@ -104,7 +104,7 @@ export default function MediaStudioPage() {
       if (res.ok) {
         loadFiles(selectedBucket);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
     // Error handled
   }
   };
@@ -122,7 +122,7 @@ export default function MediaStudioPage() {
       if (res.ok) {
         loadFiles(selectedBucket);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
     // Error handled
   }
   };
@@ -136,7 +136,7 @@ export default function MediaStudioPage() {
         alert('Images optimized successfully!');
         loadFiles(selectedBucket);
       }
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
     // Error handled
   }
   };

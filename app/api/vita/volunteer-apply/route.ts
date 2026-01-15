@@ -102,7 +102,7 @@ export async function POST(request: Request) {
         'We will contact you about local volunteer opportunities',
       ],
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

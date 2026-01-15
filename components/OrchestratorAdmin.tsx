@@ -45,7 +45,7 @@ export default function OrchestratorAdmin() {
       const response = await fetch(`${ORCHESTRATOR_URL}/autopilot/list`);
       const data = await response.json();
       setAutopilots(data.autopilots || []);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     }
   }
@@ -56,7 +56,7 @@ export default function OrchestratorAdmin() {
       const response = await fetch(`${ORCHESTRATOR_URL}/autopilot/diagnose`);
       const data = await response.json();
       setDiagnose(data);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
     } finally {
       setLoading(false);
@@ -87,7 +87,7 @@ export default function OrchestratorAdmin() {
       const data = await response.json();
       alert(JSON.stringify(data, null, 2));
       runDiagnose();
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
       alert('Failed to ensure infrastructure');
     } finally {
@@ -109,7 +109,7 @@ export default function OrchestratorAdmin() {
       });
       const data = await response.json();
       setTaskResult(data);
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       // Error: $1
       setTaskResult({ error: error instanceof Error ? error.message : String(error) });
     } finally {

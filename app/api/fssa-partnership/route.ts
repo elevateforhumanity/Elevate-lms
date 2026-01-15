@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'Partnership request received. We will contact you within 1-2 business days.'
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       { error: 'Failed to process partnership request' },
       { status: 500 }

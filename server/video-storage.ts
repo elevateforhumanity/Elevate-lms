@@ -84,7 +84,7 @@ export class LocalStorage {
     try {
       await fs.access(videoPath);
       return videoPath;
-    } catch {
+    } catch (error) {
       return null;
     }
   }
@@ -95,7 +95,7 @@ export class LocalStorage {
     try {
       const data = await fs.readFile(metadataPath, 'utf-8');
       return JSON.parse(data);
-    } catch {
+    } catch (error) {
       return null;
     }
   }

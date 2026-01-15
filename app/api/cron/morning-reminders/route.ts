@@ -95,7 +95,7 @@ export async function GET(request: NextRequest) {
       sent: results.length,
       results,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     logger.error('Morning reminders cron error:', error);
     return NextResponse.json(
       { error: 'Failed to send morning reminders' },

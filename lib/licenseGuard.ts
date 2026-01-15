@@ -35,7 +35,7 @@ export async function getTenantLicense(
     .single();
 
   if (error) {
-    logger.error('Failed to fetch tenant license', { tenantId, error: error.message });
+    logger.error('Failed to fetch tenant license', error as Error, { tenantId });
     return null;
   }
 
@@ -90,7 +90,7 @@ export async function canAddEmployer(tenantId: string): Promise<boolean> {
   try {
     await enforceLimits(tenantId, 'employers', count || 0);
     return true;
-  } catch {
+  } catch (error) {
     return false;
   }
 }
@@ -109,7 +109,7 @@ export async function canAddApprentice(tenantId: string): Promise<boolean> {
   try {
     await enforceLimits(tenantId, 'apprentices', count || 0);
     return true;
-  } catch {
+  } catch (error) {
     return false;
   }
 }
@@ -204,7 +204,7 @@ export async function updateTenantLicense(
     .single();
 
   if (error) {
-    logger.error('Failed to update tenant license', { tenantId, plan, error: error.message });
+    logger.error('Failed to update tenant license', error as Error, { tenantId, plan });
     return null;
   }
 

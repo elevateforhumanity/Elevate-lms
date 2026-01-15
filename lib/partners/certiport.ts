@@ -51,7 +51,7 @@ export class CertiportAPI extends BasePartnerAPI {
         username: response.data.username,
         loginUrl: response.data.portalUrl,
       };
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       this.log('error', 'Failed to create Certiport account', {
         error: error instanceof Error ? error.message : String(error),
       });
@@ -102,7 +102,7 @@ export class CertiportAPI extends BasePartnerAPI {
         courseName: voucherResponse.data.examName,
         accessUrl: enrollmentResponse.data.accessUrl,
       };
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       this.log('error', 'Failed to enroll in Certiport exam', {
         error: error instanceof Error ? error.message : String(error),
       });
@@ -144,7 +144,7 @@ export class CertiportAPI extends BasePartnerAPI {
         lessonsCompleted: response.data.practiceTestsCompleted,
         totalLessons: response.data.totalPracticeTests,
       };
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       if (error instanceof PartnerAPIError && error.statusCode === 404) {
         return null;
       }
@@ -182,7 +182,7 @@ export class CertiportAPI extends BasePartnerAPI {
         downloadUrl: response.data.downloadUrl,
         verificationUrl: response.data.verifyUrl,
       };
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       if (error instanceof PartnerAPIError && error.statusCode === 404) {
         return null;
       }
@@ -211,7 +211,7 @@ export class CertiportAPI extends BasePartnerAPI {
       });
 
       return response.data.ssoUrl;
-    } catch { /* Error handled silently */ 
+    } catch (error) { /* Error handled silently */ 
       this.log('error', 'Failed to generate Certiport SSO URL', {
         error: error instanceof Error ? error.message : String(error),
       });

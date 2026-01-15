@@ -66,7 +66,7 @@ export async function POST(
       application: data,
       message: 'Application approved successfully',
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json({ error: toErrorMessage(error) }, { status: 500 });
   }
 }

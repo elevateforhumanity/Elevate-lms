@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
         });
 
         sentCount++;
-      } catch { /* Error handled silently */ 
+      } catch (error) { /* Error handled silently */ 
   }
     }
 
@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
       sent_count: sentCount,
       total_selected: students.length,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       {
         error:

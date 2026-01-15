@@ -27,7 +27,7 @@ export async function captureSystemError(
       user_id: userId,
       request_id: requestId,
     });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     // Don't throw - error capture should never break the app
     console.error('[captureSystemError] Failed to capture error:', error);
   }

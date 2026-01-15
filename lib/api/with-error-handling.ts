@@ -17,9 +17,9 @@ async function logErrorToSentry(error: Error, context: Record<string, any>) {
         },
         extra: context,
       });
-    } catch {
+    } catch (error) {
       // Sentry not available, log to console
-      console.error('[Sentry Error]', e);
+      console.error('[Sentry Error]', error);
     }
   }
 }

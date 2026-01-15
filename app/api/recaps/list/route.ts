@@ -41,7 +41,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ recaps: data || [] }, { status: 200 });
-  } catch { /* Error handled silently */ 
+  } catch (error) { /* Error handled silently */ 
     return NextResponse.json(
       {
         error:

@@ -239,7 +239,7 @@ export async function POST(request: NextRequest) {
           </p>
         `,
       });
-    } catch { /* Error handled silently */ }
+    } catch (error) { /* Error handled silently */ }
 
     // Return success
     return NextResponse.json({
