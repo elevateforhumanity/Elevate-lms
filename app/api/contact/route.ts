@@ -19,6 +19,16 @@ const ContactSchema = z.object({
   interest: z.string().max(120).optional().or(z.literal('')),
 });
 
+// Validation schema for demo schedule form (optional fields)
+const DemoScheduleSchema = z.object({
+  name: z.string().max(120).optional().or(z.literal('')),
+  organization: z.string().max(200).optional().or(z.literal('')),
+  email: z.string().email('Invalid email address').max(200).optional().or(z.literal('')),
+  role: z.string().max(120).optional().or(z.literal('')),
+  source: z.literal('demo-schedule'),
+  timestamp: z.string().optional(),
+});
+
 export async function POST(req: Request) {
   try {
     // Rate limiting: 5 requests per minute per IP
@@ -49,6 +59,38 @@ export async function POST(req: Request) {
         { ok: false, error: 'Invalid request body' },
         { status: 400 }
       );
+    }
+
+    // Check if this is a demo schedule submission
+    const demoScheduleParsed = DemoScheduleSchema.safeParse(body);
+    
+    if (demoScheduleParsed.success) {
+      // Handle demo schedule form (all fields optional)
+      const demoData = demoScheduleParsed.data;
+      
+      // Only save if email provided
+      if (demoData.email) {
+        const supabase = createAdminClient();
+        const nameParts = (demoData.name || '').trim().split(/\s+/);
+        const firstName = nameParts[0] || '';
+        const lastName = nameParts.slice(1).join(' ') || '';
+        
+        const { error: dbError } = await supabase
+          .from('marketing_contacts')
+          .insert({
+            first_name: firstName,
+            last_name: lastName,
+            email: demoData.email,
+            tags: ['demo_request', demoData.role || 'prospect', demoData.organization || ''].filter(Boolean),
+          });
+        
+        if (dbError) {
+          logger.error('Error inserting demo request:', dbError);
+          // Non-blocking for demo form
+        }
+      }
+      
+      return NextResponse.json({ ok: true });
     }
 
     const parsed = ContactSchema.safeParse(body);
