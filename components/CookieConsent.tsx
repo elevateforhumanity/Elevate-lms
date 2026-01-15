@@ -98,7 +98,7 @@ export default function CookieConsent() {
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 mt-1">
                   <svg
-                    className="w-6 h-6 text-brand-orange-600"
+                    className="w-6 h-6 text-blue-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -112,16 +112,16 @@ export default function CookieConsent() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-black mb-1">
+                  <h3 className="font-semibold text-gray-900 mb-1">
                     We Value Your Privacy
                   </h3>
-                  <p className="text-sm text-black leading-relaxed">
+                  <p className="text-sm text-gray-700 leading-relaxed">
                     We use cookies to enhance your experience, analyze site
                     traffic, and provide personalized content. By clicking
                     "Accept All", you consent to our use of cookies.{' '}
                     <a
                       href="/privacy-policy"
-                      className="text-brand-orange-600 hover:text-blue-700 underline"
+                      className="text-blue-600 hover:text-blue-700 underline"
                     >
                       Learn more
                     </a>
