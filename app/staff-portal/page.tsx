@@ -59,26 +59,32 @@ export default function StaffPortalPage() {
 
   const capabilities = [
     {
+      image: '/images/artlist/hero-training-1.jpg',
       title: 'Enroll & Track Students',
       description: 'Process applications, enroll students, track progress, and monitor completion rates in real-time',
     },
     {
+      image: '/images/artlist/hero-training-2.jpg',
       title: 'Manage Courses & Schedules',
       description: 'Create courses, set schedules, assign instructors, and manage capacity with ease',
     },
     {
+      image: '/images/artlist/hero-training-3.jpg',
       title: 'Generate Reports Instantly',
       description: 'Create WIOA reports, outcome reports, and custom analytics with one click',
     },
     {
+      image: '/images/artlist/hero-training-4.jpg',
       title: 'Communicate Effectively',
       description: 'Send targeted messages, announcements, and reminders to students and partners',
     },
     {
+      image: '/images/artlist/hero-training-5.jpg',
       title: 'Stay Compliant',
       description: 'Automated compliance tracking for WIOA, DOL, and state requirements',
     },
     {
+      image: '/images/artlist/hero-training-6.jpg',
       title: 'Identify At-Risk Students',
       description: 'Early warning system alerts you to attendance issues and students who need support',
     },
@@ -217,25 +223,33 @@ export default function StaffPortalPage() {
 
       {/* Capabilities */}
       <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
             What You Can Do
           </h2>
           <p className="text-slate-600 text-center mb-12">
             Powerful features to streamline your workflow
           </p>
-          <div className="space-y-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {capabilities.map((item, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 bg-white border border-gray-200 rounded-xl p-6"
+                className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100"
               >
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-1">
+                <div className="relative h-32 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-slate-600">{item.description}</p>
+                  <p className="text-slate-600 text-sm">{item.description}</p>
                 </div>
               </div>
             ))}

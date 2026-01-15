@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AlertCircle, Lock, CheckCircle, ArrowRight } from 'lucide-react';
 
 /**
@@ -189,6 +190,7 @@ interface SectionCardProps {
   href: string;
   icon?: React.ReactNode;
   badge?: string;
+  image?: string;
 }
 
 export function SectionCard({
@@ -197,29 +199,54 @@ export function SectionCard({
   href,
   icon,
   badge,
+  image,
 }: SectionCardProps) {
   return (
     <Link
       href={href}
-      className="group bg-white border-2 border-slate-200 rounded-lg p-6 hover:border-blue-600 hover:shadow-lg transition"
+      className="group bg-white border-2 border-slate-200 rounded-xl overflow-hidden hover:border-blue-600 hover:shadow-lg transition"
     >
-      <div className="flex items-start justify-between mb-3">
-        <div className="flex items-center gap-3">
-          {icon && <div className="text-blue-600">{icon}</div>}
-          <h4 className="font-bold text-black group-hover:text-blue-600 transition">
+      {image ? (
+        <div className="relative h-32 overflow-hidden">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover group-hover:scale-105 transition duration-300"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          {badge && (
+            <span className="absolute top-2 right-2 px-2 py-1 bg-blue-600 text-white text-xs font-bold rounded-full">
+              {badge}
+            </span>
+          )}
+          <h4 className="absolute bottom-3 left-3 font-bold text-white text-lg">
             {title}
           </h4>
         </div>
-        {badge && (
-          <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">
-            {badge}
-          </span>
-        )}
-      </div>
-      <p className="text-black text-sm mb-4">{description}</p>
-      <div className="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
-        <span>View</span>
-        <ArrowRight className="h-4 w-4" />
+      ) : (
+        <div className="p-4 border-b border-slate-100">
+          <div className="flex items-start justify-between">
+            <div className="flex items-center gap-3">
+              {icon && <div className="text-blue-600">{icon}</div>}
+              <h4 className="font-bold text-black group-hover:text-blue-600 transition">
+                {title}
+              </h4>
+            </div>
+            {badge && (
+              <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">
+                {badge}
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+      <div className="p-4">
+        <p className="text-slate-600 text-sm mb-3">{description}</p>
+        <div className="flex items-center gap-2 text-blue-600 font-semibold text-sm group-hover:gap-3 transition-all">
+          <span>View</span>
+          <ArrowRight className="h-4 w-4" />
+        </div>
       </div>
     </Link>
   );

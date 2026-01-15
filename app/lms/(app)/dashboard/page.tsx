@@ -277,7 +277,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="Orientation"
                     description="Get started with your training journey"
                     href="/lms/orientation"
-                    icon={<Book className="h-6 w-6" />}
+                    image="/hero-images/how-it-works-hero.jpg"
                     badge={
                       !profile.orientation_completed ? 'Required' : undefined
                     }
@@ -289,7 +289,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="Eligibility Check"
                     description="Verify you qualify for free training"
                     href="/apply"
-                    icon={<FileText className="h-6 w-6" />}
+                    image="/hero-images/apply-hero.jpg"
                     badge={
                       !profile.eligibility_verified ? 'Required' : undefined
                     }
@@ -301,7 +301,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="Browse Programs"
                     description="Explore 20+ training programs"
                     href="/programs"
-                    icon={<Book className="h-6 w-6" />}
+                    image="/hero-images/programs-hero.jpg"
                   />
                 )}
 
@@ -310,7 +310,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="View Programs"
                     description="See what's available (enroll after eligibility)"
                     href="/programs"
-                    icon={<Book className="h-6 w-6" />}
+                    image="/hero-images/programs-hero.jpg"
                   />
                 )}
 
@@ -319,7 +319,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="Funding Options"
                     description="Learn about WIOA, WRG, and other funding"
                     href="/how-it-works#funding"
-                    icon={<FileText className="h-6 w-6" />}
+                    image="/hero-images/wioa-hero.jpg"
                   />
                 )}
 
@@ -328,7 +328,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="My Courses"
                     description={`Continue learning (${courseProgress}% complete)`}
                     href="/lms/courses"
-                    icon={<Book className="h-6 w-6" />}
+                    image="/hero-images/healthcare-category.jpg"
                     badge={courseProgress < 100 ? 'In Progress' : 'Complete'}
                   />
                 )}
@@ -338,7 +338,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="Track Progress"
                     description="View your learning analytics"
                     href="/lms/progress"
-                    icon={<Award className="h-6 w-6" />}
+                    image="/hero-images/skilled-trades-category.jpg"
                   />
                 )}
 
@@ -347,7 +347,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="My Certificates"
                     description="View and download your credentials"
                     href="/lms/certificates"
-                    icon={<Award className="h-6 w-6" />}
+                    image="/hero-images/technology-category.jpg"
                   />
                 )}
 
@@ -356,7 +356,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="Certification Exam"
                     description="Schedule your final exam"
                     href="/lms/certification"
-                    icon={<Award className="h-6 w-6" />}
+                    image="/hero-images/business-category.jpg"
                     badge="Ready"
                   />
                 )}
@@ -366,7 +366,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="Job Placement"
                     description="Connect with employers"
                     href="/lms/placement"
-                    icon={<Briefcase className="h-6 w-6" />}
+                    image="/hero-images/cdl-transportation-category.jpg"
                   />
                 )}
 
@@ -375,7 +375,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="Get Support"
                     description="Contact your advisor"
                     href="/lms/support"
-                    icon={<HelpCircle className="h-6 w-6" />}
+                    image="/hero-images/barber-beauty-category.jpg"
                   />
                 )}
 
@@ -384,7 +384,7 @@ export default async function StudentDashboardOrchestrated() {
                     title="Alumni Network"
                     description="Connect with graduates"
                     href="/lms/alumni"
-                    icon={<Users className="h-6 w-6" />}
+                    image="/hero-images/about-hero.jpg"
                   />
                 )}
               </div>
