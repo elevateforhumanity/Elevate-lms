@@ -2,28 +2,10 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  BookOpen,
-  Calendar,
-  FileText,
-  Users,
-  Award,
-  TrendingUp,
-  Clock,
-  CheckCircle,
-  Video,
-  MessageSquare,
-  Briefcase,
-  GraduationCap,
-  Target,
-  BarChart3,
-  Mail,
-  Phone,
-  Download,
-  ExternalLink,
   ArrowRight,
-  Bell,
-  Settings,
-  HelpCircle,
+  CheckCircle,
+  Phone,
+  Mail,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -39,100 +21,100 @@ export const metadata: Metadata = {
 export default async function StudentPortalPage() {
   const quickLinks = [
     {
-      icon: BookOpen,
+      image: '/images/artlist/hero-training-1.jpg',
       title: 'My Courses',
       description: 'Access course materials, lectures, and assignments',
-      href: '/student-portal/courses',
+      href: '/lms/dashboard',
       color: 'blue',
     },
     {
-      icon: Calendar,
+      image: '/images/artlist/hero-training-2.jpg',
       title: 'Schedule',
       description: 'View class schedule, deadlines, and upcoming events',
-      href: '/student-portal/schedule',
+      href: '/lms/dashboard',
       color: 'green',
     },
     {
-      icon: BarChart3,
+      image: '/images/artlist/hero-training-3.jpg',
       title: 'Grades & Progress',
       description: 'Track your academic performance and completion status',
-      href: '/student-portal/grades',
+      href: '/lms/dashboard',
       color: 'purple',
     },
     {
-      icon: Users,
+      image: '/images/artlist/hero-training-4.jpg',
       title: 'Instructors',
       description: 'Connect with instructors and get support',
-      href: '/student-portal/instructors',
+      href: '/lms/dashboard',
       color: 'orange',
     },
     {
-      icon: Briefcase,
+      image: '/images/artlist/hero-training-5.jpg',
       title: 'Career Services',
       description: 'Resume help, job placement, and interview prep',
       href: '/career-services',
       color: 'teal',
     },
     {
-      icon: FileText,
+      image: '/images/artlist/hero-training-6.jpg',
       title: 'Documents',
       description: 'Transcripts, certificates, and important forms',
-      href: '/student-portal/documents',
+      href: '/lms/dashboard',
       color: 'indigo',
     },
   ];
 
   const resources = [
     {
-      icon: Video,
+      image: '/images/artlist/hero-training-7.jpg',
       title: 'Video Tutorials',
       description: 'Step-by-step guides for using the portal and course tools',
-      href: '/student-portal/tutorials',
+      href: '/resources',
     },
     {
-      icon: HelpCircle,
+      image: '/images/artlist/hero-training-8.jpg',
       title: 'Student Handbook',
       description: 'Policies, procedures, and important information',
       href: '/student-portal/handbook',
     },
     {
-      icon: MessageSquare,
+      image: '/images/artlist/hero-training-1.jpg',
       title: 'Discussion Forums',
       description: 'Connect with classmates and study groups',
-      href: '/student-portal/forums',
+      href: '/community',
     },
     {
-      icon: Award,
+      image: '/images/artlist/hero-training-2.jpg',
       title: 'Certifications',
       description: 'View earned credentials and download certificates',
-      href: '/student-portal/certifications',
+      href: '/lms/dashboard',
     },
   ];
 
   const careerServices = [
     {
-      icon: FileText,
+      image: '/images/artlist/hero-training-3.jpg',
       title: 'Resume Building',
       description: 'Professional resume writing and review services',
       href: '/career-services/resume-building',
     },
     {
-      icon: Users,
+      image: '/images/artlist/hero-training-4.jpg',
       title: 'Interview Prep',
       description: 'Mock interviews and expert feedback',
       href: '/career-services/interview-prep',
     },
     {
-      icon: Briefcase,
+      image: '/images/artlist/hero-training-5.jpg',
       title: 'Job Placement',
       description: 'Direct connections to hiring employers',
       href: '/career-services/job-placement',
     },
     {
-      icon: Calendar,
+      image: '/images/artlist/hero-training-6.jpg',
       title: 'Networking Events',
       description: 'Career fairs and industry meetups',
-      href: '/career-services/networking-events',
+      href: '/career-fair',
     },
   ];
 
@@ -146,41 +128,8 @@ export default async function StudentPortalPage() {
     {
       icon: Mail,
       title: 'Email Support',
-      description: 'students@www.elevateforhumanity.org',
-      href: 'mailto:students@www.elevateforhumanity.org',
-    },
-    {
-      icon: MessageSquare,
-      title: 'Live Chat',
-      description: 'Available Mon-Fri 9AM-6PM EST',
-      href: '/contact',
-    },
-    {
-      icon: HelpCircle,
-      title: 'Help Center',
-      description: 'FAQs and troubleshooting guides',
-      href: '/student-portal/help',
-    },
-  ];
-
-  const announcements = [
-    {
-      title: 'Spring 2026 Registration Open',
-      date: 'January 15, 2026',
-      description: 'Register for spring courses now. Priority deadline is February 1st.',
-      type: 'info',
-    },
-    {
-      title: 'Career Fair - February 8th',
-      date: 'January 12, 2026',
-      description: '50+ employers hiring. Register to attend in-person or virtually.',
-      type: 'event',
-    },
-    {
-      title: 'Financial Aid Reminder',
-      date: 'January 10, 2026',
-      description: 'Complete your FAFSA renewal by March 1st to maintain eligibility.',
-      type: 'important',
+      description: 'students@elevateforhumanity.org',
+      href: 'mailto:students@elevateforhumanity.org',
     },
   ];
 
@@ -188,49 +137,50 @@ export default async function StudentPortalPage() {
     {
       question: 'How do I access my courses?',
       answer:
-        'Click "My Courses" from the dashboard. All enrolled courses will appear with direct links to course materials, lectures, and assignments.',
+        'Log in to your dashboard to see all enrolled courses with direct links to course materials, lectures, and assignments.',
     },
     {
       question: 'Where can I view my grades?',
       answer:
-        'Navigate to "Grades & Progress" to see current grades, assignment scores, and overall completion percentage for each course.',
+        'Your dashboard shows current grades, assignment scores, and overall completion percentage for each course.',
     },
     {
       question: 'How do I contact my instructor?',
       answer:
-        'Go to "Instructors" to see contact information, office hours, and messaging options for all your instructors.',
+        'Use the messaging feature in your dashboard or check instructor office hours listed in your course.',
     },
     {
       question: 'Can I download my transcripts?',
       answer:
-        'Yes! Visit "Documents" to request official transcripts, download unofficial transcripts, and access certificates.',
+        'Yes! Visit your dashboard to request official transcripts, download unofficial transcripts, and access certificates.',
     },
     {
       question: 'What career services are available?',
       answer:
-        'All students have free access to resume building, interview prep, job placement assistance, and networking events. Click "Career Services" to learn more.',
+        'All students have free access to resume building, interview prep, job placement assistance, and networking events.',
     },
     {
       question: 'How do I get technical support?',
       answer:
-        'Contact student services via phone, email, or live chat. Technical support is available Monday-Friday 9AM-6PM EST.',
+        'Contact student services via phone or email. Support is available Monday-Friday 9AM-6PM EST.',
     },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-1.jpg"
-          alt="Student Portal"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/80" />
+      {/* Video Hero Section */}
+      <section className="relative h-[500px] md:h-[600px] flex items-center justify-center text-white overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="/images/artlist/hero-training-1.jpg"
+        >
+          <source src="/videos/student-portal-hero.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-700/70" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -239,245 +189,239 @@ export default async function StudentPortalPage() {
           <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
             Your complete dashboard for courses, grades, schedule, career services, and student resources
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-white/90 mb-8">
+          <div className="flex flex-wrap justify-center gap-6 text-white/90 mb-8">
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
               <span>24/7 Course Access</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
               <span>Real-Time Grades</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5" />
+              <CheckCircle className="w-5 h-5 text-green-400" />
               <span>Career Support</span>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/lms/dashboard"
-              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition"
+              href="/login"
+              className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition shadow-lg"
             >
-              <GraduationCap className="w-5 h-5" />
-              Sign In to My Dashboard
+              Sign In to Dashboard
+              <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
               href="/apply"
-              className="inline-flex items-center justify-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition border-2 border-white"
+              className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur text-white px-8 py-4 rounded-lg font-semibold text-lg transition border border-white/30"
             >
-              Not Enrolled? Apply Now
-              <ArrowRight className="w-5 h-5" />
+              New Student? Apply Now
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Quick Links Dashboard */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-black mb-4">Quick Access</h2>
-          <p className="text-xl text-gray-600 mb-12">
-            Everything you need in one place
+      {/* Quick Links Grid */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
+            Quick Access
+          </h2>
+          <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">
+            Everything you need in one place. Sign in to access your personalized dashboard.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {quickLinks.map((link, index) => (
+            {quickLinks.map((link) => (
               <Link
-                key={index}
+                key={link.title}
                 href={link.href}
-                className="bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-blue-600 hover:shadow-lg transition group"
+                className="group bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100"
               >
-                <link.icon className={`w-12 h-12 text-${link.color}-600 mb-4`} />
-                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-blue-600 transition">
-                  {link.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{link.description}</p>
-                <span className="text-blue-600 font-semibold text-sm flex items-center gap-1">
-                  Access Now <ArrowRight className="w-4 h-4" />
-                </span>
+                <div className="relative h-40 overflow-hidden">
+                  <Image
+                    src={link.image}
+                    alt={link.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white">
+                    {link.title}
+                  </h3>
+                </div>
+                <div className="p-4">
+                  <p className="text-slate-600 text-sm">{link.description}</p>
+                  <span className="inline-flex items-center gap-1 text-blue-600 font-medium text-sm mt-2 group-hover:gap-2 transition-all">
+                    Access Now <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Announcements */}
-      <section className="bg-gray-100 py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center gap-3 mb-8">
-            <Bell className="w-8 h-8 text-orange-600" />
-            <h2 className="text-3xl font-black text-black">Announcements</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {announcements.map((announcement, index) => (
-              <div
-                key={index}
-                className={`bg-white rounded-xl p-6 border-l-4 ${
-                  announcement.type === 'important'
-                    ? 'border-red-600'
-                    : announcement.type === 'event'
-                    ? 'border-green-600'
-                    : 'border-blue-600'
-                }`}
+      {/* Student Resources */}
+      <section className="py-16 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
+            Student Resources
+          </h2>
+          <p className="text-slate-600 text-center mb-12 max-w-2xl mx-auto">
+            Tools and guides to help you succeed in your program
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {resources.map((resource) => (
+              <Link
+                key={resource.title}
+                href={resource.href}
+                className="group bg-white rounded-xl shadow-md hover:shadow-lg transition overflow-hidden"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-lg font-bold text-black">
-                    {announcement.title}
-                  </h3>
-                  <span
-                    className={`text-xs px-2 py-1 rounded-full ${
-                      announcement.type === 'important'
-                        ? 'bg-red-100 text-red-700'
-                        : announcement.type === 'event'
-                        ? 'bg-green-100 text-green-700'
-                        : 'bg-blue-100 text-blue-700'
-                    }`}
-                  >
-                    {announcement.type}
-                  </span>
+                <div className="relative h-32 overflow-hidden">
+                  <Image
+                    src={resource.image}
+                    alt={resource.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition duration-300"
+                  />
                 </div>
-                <p className="text-sm text-gray-500 mb-3">{announcement.date}</p>
-                <p className="text-gray-600">{announcement.description}</p>
-              </div>
+                <div className="p-4">
+                  <h3 className="font-bold text-slate-900 mb-1">{resource.title}</h3>
+                  <p className="text-slate-600 text-sm">{resource.description}</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* Career Services */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-black mb-4">
+      <section className="py-16 px-6 bg-blue-900 text-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 text-center">
             Career Services
           </h2>
-          <p className="text-xl text-gray-600 mb-12">
-            Free support to help you land your dream job
+          <p className="text-blue-100 text-center mb-12 max-w-2xl mx-auto">
+            Free career support for all students - from resume building to job placement
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {careerServices.map((service, index) => (
+            {careerServices.map((service) => (
               <Link
-                key={index}
+                key={service.title}
                 href={service.href}
-                className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-green-600 transition text-center group"
+                className="group bg-white/10 backdrop-blur rounded-xl hover:bg-white/20 transition overflow-hidden"
               >
-                <service.icon className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-black mb-2 group-hover:text-green-600 transition">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{service.description}</p>
+                <div className="relative h-32 overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition duration-300"
+                  />
+                  <div className="absolute inset-0 bg-blue-900/40" />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-bold text-white mb-1">{service.title}</h3>
+                  <p className="text-blue-100 text-sm">{service.description}</p>
+                </div>
               </Link>
             ))}
           </div>
-          <div className="text-center mt-8">
+          <div className="text-center mt-10">
             <Link
               href="/career-services"
-              className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-700 transition"
+              className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold transition"
             >
-              View All Career Services
-              <ExternalLink className="w-5 h-5" />
+              Explore All Career Services
+              <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Student Resources */}
-      <section className="bg-gray-100 py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-black mb-4">
-            Student Resources
-          </h2>
-          <p className="text-xl text-gray-600 mb-12">
-            Tools and information to support your success
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {resources.map((resource, index) => (
-              <Link
-                key={index}
-                href={resource.href}
-                className="bg-white rounded-xl p-6 hover:shadow-lg transition"
-              >
-                <resource.icon className="w-10 h-10 text-blue-600 mb-4" />
-                <h3 className="text-lg font-bold text-black mb-2">
-                  {resource.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{resource.description}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Support Options */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-black mb-4 text-center">
+      {/* Support Section */}
+      <section className="py-16 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
             Need Help?
           </h2>
-          <p className="text-xl text-gray-600 mb-12 text-center">
-            Student services is here to support you
+          <p className="text-slate-600 text-center mb-12">
+            Our student services team is here to support you
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {supportOptions.map((option, index) => (
-              <Link
-                key={index}
+          <div className="grid md:grid-cols-2 gap-6">
+            {supportOptions.map((option) => (
+              <a
+                key={option.title}
                 href={option.href}
-                className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-blue-600 transition text-center"
+                className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition"
               >
-                <option.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-black mb-2">
-                  {option.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{option.description}</p>
-              </Link>
+                <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <option.icon className="w-7 h-7 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-900">{option.title}</h3>
+                  <p className="text-blue-600">{option.description}</p>
+                </div>
+              </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="bg-gray-100 py-16">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl font-black text-black mb-12 text-center">
+      {/* FAQ Section */}
+      <section className="py-16 px-6 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4 text-center">
             Frequently Asked Questions
           </h2>
-          <div className="space-y-6">
+          <p className="text-slate-600 text-center mb-12">
+            Quick answers to common questions
+          </p>
+          <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div
+              <details
                 key={index}
-                className="bg-white border-2 border-gray-200 rounded-xl p-6"
+                className="group bg-white rounded-xl shadow-sm border border-gray-100"
               >
-                <h3 className="text-xl font-bold text-black mb-3">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600">{faq.answer}</p>
-              </div>
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                  <h3 className="font-semibold text-slate-900 pr-4">{faq.question}</h3>
+                  <span className="text-blue-600 group-open:rotate-180 transition">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-slate-600">
+                  {faq.answer}
+                </div>
+              </details>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-black mb-6">
+      <section className="py-16 px-6 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Start Your Journey?
           </h2>
-          <p className="text-xl text-white/90 mb-8">
-            Join thousands of students building successful careers through our programs
+          <p className="text-xl text-blue-100 mb-8">
+            Join thousands of students building their careers with Elevate for Humanity
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/apply"
-              className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition"
+              href="/login"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition"
             >
-              Apply Now
+              Sign In
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/pathways"
-              className="inline-flex items-center justify-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition border-2 border-white"
+              href="/apply"
+              className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition"
             >
-              Browse Pathways
-              <BookOpen className="w-5 h-5" />
+              Apply Now - It&apos;s Free
             </Link>
           </div>
         </div>
