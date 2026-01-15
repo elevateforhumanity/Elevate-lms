@@ -1,480 +1,98 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
-import { CheckCircle, ArrowRight, Play, Star, BookOpen } from 'lucide-react';
+import { CheckCircle, ArrowRight, Play, Star, BookOpen, Clock, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Learning Management System | Elevate for Humanity',
-  description:
-    'Access interactive courses, video lessons, quizzes, and collaboration tools. Learn at your own pace with our modern LMS platform.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms',
-  },
+  description: 'Access interactive courses, video lessons, quizzes, and collaboration tools.',
 };
 
 export default function LMSLandingPage() {
-  const features = [
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Video Lessons',
-      description: 'High-quality video content with expert instructors',
-      href: '/programs',
-    },
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Interactive Courses',
-      description: 'Engaging lessons with quizzes and hands-on activities',
-      href: '/programs',
-    },
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Discussion Forums',
-      description: 'Connect with classmates and instructors',
-      href: '/programs',
-    },
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Earn Certificates',
-      description: 'Get recognized for completing courses',
-      href: '/programs',
-    },
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Live Chat Support',
-      description: '24/7 help when you need it',
-      href: '/contact',
-    },
-    {
-      image: '/images/lms-hero-banner.png',
-      title: 'Track Progress',
-      description: 'Monitor your learning journey in real-time',
-      href: '/programs',
-    },
-  ];
-
   const courses = [
-    {
-      title: 'Healthcare Fundamentals',
-      instructor: 'Dr. Sarah Johnson',
-      students: 'Multiple cohorts',
-      rating: 4.9,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/healthcare',
-      duration: '4-6 weeks',
-      level: 'Beginner',
-    },
-    {
-      title: 'HVAC Technician Training',
-      instructor: 'Mike Rodriguez',
-      students: 'Multiple cohorts',
-      rating: 4.8,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/hvac-technician',
-      duration: '6-12 months',
-      level: 'Beginner to Advanced',
-    },
-    {
-      title: 'Business Management',
-      instructor: 'Jennifer Lee',
-      students: 'Multiple cohorts',
-      rating: 4.9,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/business',
-      duration: '8-10 weeks',
-      level: 'Intermediate',
-    },
-    {
-      title: 'CDL Training',
-      instructor: 'James Wilson',
-      students: 'Multiple cohorts',
-      rating: 4.9,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/cdl-transportation',
-      duration: '3-4 weeks',
-      level: 'Beginner',
-    },
-    {
-      title: 'Barber Apprenticeship',
-      instructor: 'Licensed Barber Mentors',
-      students: 'Multiple cohorts',
-      rating: 4.8,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/barber-apprenticeship',
-      duration: '15-18 months',
-      level: 'Beginner to Advanced',
-    },
-    {
-      title: 'Medical Assistant',
-      instructor: 'Dr. Emily Chen',
-      students: 'Multiple cohorts',
-      rating: 4.9,
-      image: '/images/lms-hero-banner.png',
-      href: '/programs/healthcare',
-      duration: '8-12 weeks',
-      level: 'Beginner',
-    },
+    { title: 'Healthcare Fundamentals', duration: '4-6 weeks', students: '500+', rating: 4.9, href: '/programs/healthcare', color: 'from-blue-500 to-blue-700' },
+    { title: 'HVAC Technician Training', duration: '6-12 months', students: '300+', rating: 4.8, href: '/programs/hvac', color: 'from-orange-500 to-red-600' },
+    { title: 'CDL Training', duration: '3-4 weeks', students: '400+', rating: 4.9, href: '/programs/cdl', color: 'from-green-500 to-green-700' },
+    { title: 'Barber Apprenticeship', duration: '15-18 months', students: '200+', rating: 4.8, href: '/programs/barber', color: 'from-purple-500 to-purple-700' },
+    { title: 'Business Management', duration: '8-10 weeks', students: '350+', rating: 4.9, href: '/programs/business', color: 'from-indigo-500 to-indigo-700' },
+    { title: 'Medical Assistant', duration: '8-12 weeks', students: '450+', rating: 4.9, href: '/programs/healthcare', color: 'from-teal-500 to-teal-700' },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Course Teaser Style */}
-      <section className="relative py-20 px-4 bg-gradient-to-br from-teal-600 to-teal-800 text-white overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-              backgroundSize: '40px 40px',
-            }}
-          ></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Content */}
-            <div>
-              {/* Logo */}
-              <div className="mb-6">
-                <Image
-                  src="/logo.png"
-                  alt="Elevate for Humanity"
-                  width={150}
-                  height={60}
-                  className="brightness-0 invert"
-                />
-              </div>
-
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
-                <BookOpen className="w-5 h-5" />
-                <span className="text-sm font-semibold">
-                  Learning Management System
-                </span>
-              </div>
-
-              <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight uppercase">
-                Learn Anywhere, Anytime
-              </h1>
-
-              <p className="text-xl text-teal-100 mb-8 leading-relaxed">
-                Access interactive courses, video lessons, quizzes, and
-                collaboration tools. Learn at your own pace with our modern LMS
-                platform.
-              </p>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div className="text-3xl font-black mb-1">50+</div>
-                  <div className="text-xs text-teal-100">Courses</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div className="text-3xl font-black mb-1">5,000+</div>
-                  <div className="text-xs text-teal-100">Students</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div className="text-3xl font-black mb-1">24/7</div>
-                  <div className="text-xs text-teal-100">Access</div>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/dashboards"
-                  className="inline-flex items-center justify-center gap-3 bg-orange-500 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-xl hover:bg-orange-600 hover:scale-105 transition-all"
-                >
-                  <span>Access LMS</span>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-                <Link
-                  href="#courses"
-                  className="inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white hover:text-teal-600 transition-all"
-                >
-                  <Play className="w-5 h-5" />
-                  <span>Browse Courses</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Column - Hero Image */}
-            <div className="relative">
-              <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
-                <Image
-                  src="/images/lms-hero-banner.png"
-                  alt="LMS Platform - Interactive Learning"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
+      <section className="py-20 px-4 bg-gradient-to-br from-teal-600 to-teal-800 text-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Learn Skills That Matter</h1>
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">Access industry-leading training programs, earn certifications, and launch your career.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/programs" className="bg-white text-teal-700 px-8 py-4 rounded-lg font-bold hover:bg-teal-50 transition">Browse Programs</Link>
+            <Link href="/apply" className="bg-teal-700 text-white px-8 py-4 rounded-lg font-bold hover:bg-teal-800 transition border border-white/30">Apply Now</Link>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-6">
-              Everything You Need to Succeed
-            </h2>
-            <p className="text-xl text-black max-w-3xl mx-auto">
-              Our LMS platform provides all the tools and resources for
-              effective online learning
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, idx) => {
-              return (
-                <Link
-                  key={idx}
-                  href={feature.href}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-gray-100 hover:border-teal-500 hover:shadow-xl transition-all group"
-                >
-                  <div className="relative h-48 w-full overflow-hidden">
-                    <Image
-                      src={feature.image}
-                      alt={feature.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-8">
-                    <h3 className="text-xl font-bold text-black mb-3 group-hover:text-teal-600 transition-colors">
-                      {feature.title} →
-                    </h3>
-                    <p className="text-black leading-relaxed mb-4">
-                      {feature.description}
-                    </p>
-                    <span className="text-teal-600 font-semibold text-sm">
-                      Learn More →
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Our LMS */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-6">
-              Why Choose Our LMS?
-            </h2>
-            <p className="text-xl text-black max-w-3xl mx-auto">
-              Modern learning platform designed for workforce development
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Learn at Your Own Pace
-                </h3>
-                <p className="text-black">
-                  Access courses anytime, anywhere. Study when it fits your
-                  schedule.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Expert Instructors
-                </h3>
-                <p className="text-black">
-                  Learn from industry professionals with real-world experience.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Interactive Learning
-                </h3>
-                <p className="text-black">
-                  Engage with videos, quizzes, discussions, and hands-on
-                  projects.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Mobile Friendly
-                </h3>
-                <p className="text-black">
-                  Learn on any device - desktop, tablet, or smartphone.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Track Your Progress
-                </h3>
-                <p className="text-black">
-                  Monitor completion, grades, and achievements in real-time.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-xl font-bold text-black mb-2">
-                  Earn Certificates
-                </h3>
-                <p className="text-black">
-                  Receive industry-recognized certificates upon completion.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Available Courses Section */}
-      <section id="courses" className="py-20 px-4 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-black mb-6">
-              Available Courses
-            </h2>
-            <p className="text-xl text-black max-w-3xl mx-auto">
-              Explore our training programs - each course has its own dedicated
-              page with full details
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {courses.map((course, idx) => (
-              <Link
-                key={idx}
-                href={course.href}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-gray-100 hover:border-teal-500 hover:shadow-2xl transition-all hover:-translate-y-2 transform group"
-              >
-                <div className="relative h-48 bg-gradient-to-br from-teal-500 to-teal-600">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <BookOpen className="w-16 h-16 text-white opacity-50" />
-                  </div>
-                  <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-bold text-teal-600">
-                    {course.level}
-                  </div>
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">Popular Programs</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {courses.map((course) => (
+              <Link key={course.title} href={course.href} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition group">
+                <div className={`h-32 bg-gradient-to-br ${course.color} flex items-center justify-center`}>
+                  <Play className="w-12 h-12 text-white opacity-80 group-hover:scale-110 transition" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-black mb-2 group-hover:text-teal-600 transition-colors">
-                    {course.title} →
-                  </h3>
-                  <p className="text-black mb-3 text-sm">
-                    Instructor: {course.instructor}
-                  </p>
-                  <div className="flex items-center justify-between mb-4 text-sm">
-                    <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="font-bold text-black">
-                        {course.rating}
-                      </span>
-                    </div>
-                    <div className="text-black">{course.duration}</div>
+                  <h3 className="text-xl font-bold mb-3">{course.title}</h3>
+                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                    <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{course.duration}</span>
+                    <span className="flex items-center gap-1"><Users className="w-4 h-4" />{course.students}</span>
                   </div>
-                  <div className="text-teal-600 font-semibold text-sm">
-                    View Course Details →
+                  <div className="flex items-center gap-1">
+                    <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                    <span className="font-bold">{course.rating}</span>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="text-center mt-12">
-            <Link
-              href="/programs"
-              className="inline-flex items-center gap-2 bg-teal-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-teal-700 transition-colors"
-            >
-              View All Programs
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Our LMS?</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="w-8 h-8 text-teal-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Expert-Led Courses</h3>
+              <p className="text-gray-600">Learn from industry professionals with real-world experience.</p>
+            </div>
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle className="w-8 h-8 text-teal-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Industry Certifications</h3>
+              <p className="text-gray-600">Earn recognized credentials that employers value.</p>
+            </div>
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-teal-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Career Support</h3>
+              <p className="text-gray-600">Get job placement assistance and career coaching.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonial Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-16 px-4 bg-teal-700 text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="flex justify-center gap-1 mb-6">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className="w-8 h-8 fill-yellow-400 text-yellow-400"
-              />
-            ))}
-          </div>
-          <blockquote className="text-2xl md:text-3xl font-bold text-black mb-6 leading-relaxed">
-            "The LMS platform made learning so easy. I could study at my own
-            pace and the instructors were always available to help."
-          </blockquote>
-          <p className="text-xl text-black">
-            — Marcus Thompson, CNA Graduate
-          </p>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-20 px-4 bg-gradient-to-br from-orange-500 to-orange-600 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Logo */}
-          <div className="mb-6">
-            <Image
-              src="/logo.png"
-              alt="Elevate for Humanity"
-              width={150}
-              height={60}
-              className="mx-auto brightness-0 invert"
-            />
-          </div>
-
-          <h2 className="text-4xl md:text-5xl font-black mb-6">
-            Ready to Start Learning?
-          </h2>
-          <p className="text-xl text-orange-100 mb-10">
-            Join 5,000+ students already learning on our platform
-          </p>
+          <h2 className="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
+          <p className="text-xl mb-8 opacity-90">Join thousands of students building their careers with us.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply"
-              className="inline-flex items-center gap-3 bg-white text-orange-600 px-10 py-5 rounded-xl text-lg font-black shadow-2xl hover:scale-105 transition-all"
-            >
-              <span>Apply Now - 100% Free</span>
-              <ArrowRight className="w-6 h-6" />
-            </Link>
-            <Link
-              href="/lms/dashboard"
-              className="inline-flex items-center gap-3 bg-orange-700 border-2 border-white text-white px-10 py-5 rounded-xl text-lg font-black hover:bg-orange-800 transition-all"
-            >
-              <span>Access LMS</span>
-              <ArrowRight className="w-6 h-6" />
-            </Link>
+            <Link href="/programs" className="bg-white text-teal-700 px-8 py-4 rounded-lg font-bold hover:bg-teal-50 transition">View All Programs</Link>
+            <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition">Contact Us</Link>
           </div>
-          <p className="text-orange-100 mt-6">
-            Already enrolled? Log in to access your courses
-          </p>
         </div>
       </section>
     </div>

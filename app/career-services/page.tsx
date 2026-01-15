@@ -1,386 +1,363 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
-import ModernLandingHero from '@/components/landing/ModernLandingHero';
-import ModernFeatures from '@/components/landing/ModernFeatures';
-import { Briefcase, FileText, Users, TrendingUp, Award, CheckCircle } from 'lucide-react';
+import {
+  FileText,
+  Users,
+  Briefcase,
+  Target,
+  Calendar,
+  Phone,
+  CheckCircle,
+  ArrowRight,
+  GraduationCap,
+  Building2,
+  Handshake,
+  Search,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
+  title: 'Career Services | Free Job Placement Support | Elevate For Humanity',
+  description:
+    'Free career services in Indianapolis including resume building, interview prep, job placement assistance, and career counseling. We help you land your next job.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/career-services',
   },
-  title: 'Career Services | Elevate For Humanity',
-  description:
-    'Resume building, interview preparation, job placement assistance, and ongoing career support. We help you succeed from training through employment.',
 };
 
-export default async function CareerServicesPage() {
+const services = [
+  {
+    title: 'Resume Building',
+    description: 'Professional resume writing and optimization to help you stand out to employers and pass ATS systems.',
+    icon: FileText,
+    href: '/career-services/resume-building',
+    color: 'orange',
+  },
+  {
+    title: 'Interview Preparation',
+    description: 'Mock interviews, coaching, and feedback to help you confidently answer questions and make a great impression.',
+    icon: Users,
+    href: '/career-services/interview-prep',
+    color: 'blue',
+  },
+  {
+    title: 'Job Search Assistance',
+    description: 'Access to job boards, employer connections, and personalized job matching based on your skills and goals.',
+    icon: Search,
+    href: '/career-services/job-search',
+    color: 'green',
+  },
+  {
+    title: 'Career Counseling',
+    description: 'One-on-one guidance to help you identify career paths, set goals, and create an action plan for success.',
+    icon: Target,
+    href: '/career-services/counseling',
+    color: 'purple',
+  },
+  {
+    title: 'Employer Connections',
+    description: 'Direct introductions to hiring managers at companies actively seeking candidates with your qualifications.',
+    icon: Building2,
+    href: '/employers',
+    color: 'slate',
+  },
+  {
+    title: 'Ongoing Support',
+    description: 'Career support doesn\'t end at placement. We provide follow-up assistance to help you succeed in your new role.',
+    icon: Handshake,
+    href: '/contact',
+    color: 'orange',
+  },
+];
+
+const process = [
+  {
+    step: 1,
+    title: 'Schedule a Consultation',
+    description: 'Book a free meeting with our career specialists to discuss your background, skills, and career goals.',
+  },
+  {
+    step: 2,
+    title: 'Assess Your Needs',
+    description: 'We evaluate your current situation and create a personalized plan to help you reach your employment goals.',
+  },
+  {
+    step: 3,
+    title: 'Build Your Tools',
+    description: 'Work with us to create a professional resume, practice interviewing, and develop your job search strategy.',
+  },
+  {
+    step: 4,
+    title: 'Connect with Employers',
+    description: 'We introduce you to employers hiring in your field and support you through the application process.',
+  },
+  {
+    step: 5,
+    title: 'Land Your Job',
+    description: 'Accept an offer and start your new career. We continue to support you during your transition.',
+  },
+];
+
+export default function CareerServicesPage() {
   return (
     <div className="min-h-screen bg-white">
-      <ModernLandingHero
-        badge="💼 753 Students Placed in Jobs Last Year"
-        headline="Get Hired in"
-        accentText="47 Days"
-        subheadline="Resume → Interview → Job Offer → Career"
-        description="Average time from graduation to first job: 47 days. We placed 753 graduates in 2025. Average starting wage: $18.50/hr. Resume writing, interview prep, job matching, and ongoing support included FREE with your training."
-        imageSrc="/images/business/professional-2.jpg"
-        imageAlt="Career Services"
-        primaryCTA={{ text: "Get Career Help Now", href: "/apply" }}
-        secondaryCTA={{ text: "See Success Stories", href: "/success" }}
-        features={[
-          "753 job placements in 2025 • 47 days average time to hire",
-          "127 employer partners actively hiring our graduates",
-          "Resume, interview prep, job matching - all FREE"
-        ]}
-        imageOnRight={false}
-      />
+      {/* Video Hero */}
+      <section className="relative h-[600px] md:h-[700px] overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/career-services-hero.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="bg-orange-600 p-3 rounded-xl">
+                <Briefcase className="h-8 w-8 text-white" />
+              </div>
+              <span className="text-orange-400 font-semibold text-lg">100% Free Services</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Career Services That Get You Hired
+            </h1>
+            <p className="text-xl text-gray-200 mb-8">
+              From resume building to job placement, our career specialists provide 
+              personalized support to help you land your next opportunity. All services 
+              are completely free.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/schedule"
+                className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-orange-700 transition-colors"
+              >
+                <Calendar className="h-5 w-5" />
+                Schedule Free Consultation
+              </Link>
+              <a
+                href="tel:317-314-3757"
+                className="inline-flex items-center justify-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-100 transition-colors"
+              >
+                <Phone className="h-5 w-5" />
+                Call 317-314-3757
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <ModernFeatures
-        title="From Resume to Paycheck"
-        subtitle="What we do to get you hired"
-        features={[
-          {
-            icon: FileText,
-            title: "Professional Resume",
-            description: "We write your resume. ATS-optimized format. Highlights your new credentials. Employers actually read it. Done in 1 session.",
-            color: "blue"
-          },
-          {
-            icon: Users,
-            title: "Interview Coaching",
-            description: "Mock interviews. Common questions. What to wear. How to answer. Practice until you're confident. Most students do 2-3 sessions.",
-            color: "green"
-          },
-          {
-            icon: Briefcase,
-            title: "Job Matching",
-            description: "127 employers hiring our grads. We connect you directly. No Indeed. No LinkedIn. Direct introductions to hiring managers.",
-            color: "orange"
-          },
-          {
-            icon: TrendingUp,
-            title: "Salary Negotiation",
-            description: "Don't leave money on the table. We coach you on negotiating offers. Average increase: $1.50/hr. That's $3,120/year.",
-            color: "purple"
-          },
-          {
-            icon: Award,
-            title: "90-Day Follow-Up",
-            description: "We check in after you start. Problems? We help. Want to advance? We coach. You're not alone after graduation.",
-            color: "teal"
-          },
-          {
-            icon: CheckCircle,
-            title: "Lifetime Access",
-            description: "Need help 2 years later? Call us. Changing careers? We're here. Once a student, always supported. No expiration.",
-            color: "red"
-          }
-        ]}
-        columns={3}
-      />
+      {/* Who We Help */}
+      <section className="py-16 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Who We Help</h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Our career services are available to anyone in the Indianapolis area looking for employment support
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="bg-slate-800 rounded-xl p-6">
+              <GraduationCap className="h-8 w-8 text-orange-500 mx-auto mb-3" />
+              <div className="font-semibold">Recent Graduates</div>
+            </div>
+            <div className="bg-slate-800 rounded-xl p-6">
+              <Users className="h-8 w-8 text-orange-500 mx-auto mb-3" />
+              <div className="font-semibold">Career Changers</div>
+            </div>
+            <div className="bg-slate-800 rounded-xl p-6">
+              <Briefcase className="h-8 w-8 text-orange-500 mx-auto mb-3" />
+              <div className="font-semibold">Job Seekers</div>
+            </div>
+            <div className="bg-slate-800 rounded-xl p-6">
+              <Target className="h-8 w-8 text-orange-500 mx-auto mb-3" />
+              <div className="font-semibold">Re-entry Individuals</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* Services Section */}
-      <section className="py-16 bg-white">
+      {/* Services Grid */}
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 uppercase">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Our Career Services
             </h2>
-            <p className="text-lg text-black max-w-3xl mx-auto">
-              From training to employment, we support you every step of the way
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive support at every stage of your job search journey
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Resume Building */}
-            <Link
-              href="/career-services/resume-building"
-              className="bg-white border-2 border-gray-200 rounded-lg p-8 hover:shadow-xl hover:border-blue-600 transition-all group"
-            >
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-blue-600 transition-colors">
-                <svg
-                  className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-black mb-3 text-center group-hover:text-blue-600 transition-colors">
-                Resume Building →
-              </h3>
-              <p className="text-black text-center">
-                Professional resume writing and review services to showcase your
-                skills
-              </p>
-            </Link>
-
-            {/* Interview Prep */}
-            <Link
-              href="/career-services/interview-prep"
-              className="bg-white border-2 border-gray-200 rounded-lg p-8 hover:shadow-xl hover:border-green-600 transition-all group"
-            >
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-green-600 transition-colors">
-                <svg
-                  className="w-8 h-8 text-green-600 group-hover:text-white transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-black mb-3 text-center group-hover:text-green-600 transition-colors">
-                Interview Preparation →
-              </h3>
-              <p className="text-black text-center">
-                Mock interviews and coaching to help you ace your job interviews
-              </p>
-            </Link>
-
-            {/* Job Placement */}
-            <Link
-              href="/career-services/job-placement"
-              className="bg-white border-2 border-gray-200 rounded-lg p-8 hover:shadow-xl hover:border-orange-600 transition-all group"
-            >
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-orange-600 transition-colors">
-                <svg
-                  className="w-8 h-8 text-orange-600 group-hover:text-white transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-black mb-3 text-center group-hover:text-orange-600 transition-colors">
-                Job Placement →
-              </h3>
-              <p className="text-black text-center">
-                Direct connections to employers actively hiring our graduates
-              </p>
-            </Link>
-
-            {/* Career Counseling */}
-            <Link
-              href="/career-services/career-counseling"
-              className="bg-white border-2 border-gray-200 rounded-lg p-8 hover:shadow-xl hover:border-purple-600 transition-all group"
-            >
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-purple-600 transition-colors">
-                <svg
-                  className="w-8 h-8 text-purple-600 group-hover:text-white transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-black mb-3 text-center group-hover:text-purple-600 transition-colors">
-                Career Counseling →
-              </h3>
-              <p className="text-black text-center">
-                One-on-one guidance to plan your career path and set goals
-              </p>
-            </Link>
-
-            {/* Networking Events */}
-            <Link
-              href="/career-services/networking-events"
-              className="bg-white border-2 border-gray-200 rounded-lg p-8 hover:shadow-xl hover:border-indigo-600 transition-all group"
-            >
-              <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-indigo-600 transition-colors">
-                <svg
-                  className="w-8 h-8 text-indigo-600 group-hover:text-white transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-black mb-3 text-center group-hover:text-indigo-600 transition-colors">
-                Networking Events →
-              </h3>
-              <p className="text-black text-center">
-                Connect with employers, alumni, and industry professionals
-              </p>
-            </Link>
-
-            {/* Ongoing Support */}
-            <Link
-              href="/career-services/ongoing-support"
-              className="bg-white border-2 border-gray-200 rounded-lg p-8 hover:shadow-xl hover:border-pink-600 transition-all group"
-            >
-              <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-pink-600 transition-colors">
-                <svg
-                  className="w-8 h-8 text-pink-600 group-hover:text-white transition-colors"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-black mb-3 text-center group-hover:text-pink-600 transition-colors">
-                Ongoing Support →
-              </h3>
-              <p className="text-black text-center">
-                Continued career support even after you're employed
-              </p>
-            </Link>
+            {services.map((service) => (
+              <Link
+                key={service.title}
+                href={service.href}
+                className="group bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-xl hover:border-orange-200 transition-all"
+              >
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${
+                  service.color === 'orange' ? 'bg-orange-100' :
+                  service.color === 'blue' ? 'bg-blue-100' :
+                  service.color === 'green' ? 'bg-green-100' :
+                  service.color === 'purple' ? 'bg-purple-100' :
+                  'bg-slate-100'
+                }`}>
+                  <service.icon className={`h-7 w-7 ${
+                    service.color === 'orange' ? 'text-orange-600' :
+                    service.color === 'blue' ? 'text-blue-600' :
+                    service.color === 'green' ? 'text-green-600' :
+                    service.color === 'purple' ? 'text-purple-600' :
+                    'text-slate-600'
+                  }`} />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  {service.description}
+                </p>
+                <span className="inline-flex items-center gap-2 text-orange-600 font-semibold">
+                  Learn More <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
-                95%
-              </div>
-              <div className="text-black font-semibold">
-                Job Placement Rate
-              </div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">
-                $45K+
-              </div>
-              <div className="text-black font-semibold">
-                Average Starting Salary
-              </div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-orange-600 mb-2">
-                500+
-              </div>
-              <div className="text-black font-semibold">
-                Employer Partners
-              </div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">
-                100%
-              </div>
-              <div className="text-black font-semibold">Free Services</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Resources */}
-      <section className="py-16 bg-white">
+      {/* How It Works */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 uppercase">
-              Explore More Resources
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              How It Works
             </h2>
-            <p className="text-lg text-black max-w-3xl mx-auto">
-              Discover all the features and services available to support your
-              career journey
+            <p className="text-xl text-gray-600">
+              Your path from job seeker to employed in five steps
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <Link
-              href="/features"
-              className="bg-white border-2 border-blue-600 rounded-xl p-6 hover:bg-gray-50 transition-all group"
-            >
-              <h3 className="text-xl font-bold text-black mb-3 group-hover:text-blue-600">
-                Platform Features →
-              </h3>
-              <p className="text-black">
-                Explore all the tools and resources available on our platform
-              </p>
-            </Link>
-
-            <Link
-              href="/programs"
-              className="bg-white border-2 border-purple-600 rounded-xl p-6 hover:bg-purple-50 transition-all group"
-            >
-              <h3 className="text-xl font-bold text-black mb-3 group-hover:text-purple-600">
-                Training Programs →
-              </h3>
-              <p className="text-black">
-                Browse 50+ free training programs in healthcare, trades, and
-                more
-              </p>
-            </Link>
-
-            <Link
-              href="/schedule"
-              className="bg-white border-2 border-orange-600 rounded-xl p-6 hover:bg-orange-50 transition-all group"
-            >
-              <h3 className="text-xl font-bold text-black mb-3 group-hover:text-orange-600">
-                Schedule Meeting →
-              </h3>
-              <p className="text-black">
-                Book a consultation with our career services team
-              </p>
-            </Link>
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-6">
+              {process.map((item, index) => (
+                <div key={item.step} className="flex gap-6">
+                  <div className="flex flex-col items-center">
+                    <div className="bg-orange-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">
+                      {item.step}
+                    </div>
+                    {index < process.length - 1 && (
+                      <div className="w-0.5 h-full bg-orange-200 mt-2" />
+                    )}
+                  </div>
+                  <div className="bg-white rounded-xl p-6 shadow-sm flex-1 mb-2">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                    <p className="text-gray-600">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-white mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/apply"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now - It's Free
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 text-lg"
-              >
-                Browse Programs
-              </Link>
+      {/* What to Expect */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                What to Expect
+              </h2>
+              <p className="text-lg text-gray-600 mb-8">
+                When you work with our career services team, you get personalized 
+                attention and support tailored to your unique situation and goals.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <CheckCircle className="h-6 w-6 text-green-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-bold text-gray-900">One-on-One Support</h4>
+                    <p className="text-gray-600">Work directly with a dedicated career specialist who understands your goals.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <CheckCircle className="h-6 w-6 text-green-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-bold text-gray-900">No Cost to You</h4>
+                    <p className="text-gray-600">All services are funded through workforce development grants—completely free.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <CheckCircle className="h-6 w-6 text-green-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-bold text-gray-900">Flexible Scheduling</h4>
+                    <p className="text-gray-600">In-person, phone, or video appointments available to fit your schedule.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <CheckCircle className="h-6 w-6 text-green-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-bold text-gray-900">Employer Network</h4>
+                    <p className="text-gray-600">Access to our network of employers actively hiring in Indianapolis.</p>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div className="bg-orange-50 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Ready to Get Started?</h3>
+              <p className="text-gray-600 mb-6">
+                Schedule a free consultation with our career services team. We&apos;ll 
+                discuss your background, goals, and create a plan to help you succeed.
+              </p>
+              <div className="space-y-4">
+                <Link
+                  href="/schedule"
+                  className="flex items-center justify-center gap-2 bg-orange-600 text-white px-6 py-4 rounded-full font-bold hover:bg-orange-700 transition-colors w-full"
+                >
+                  <Calendar className="h-5 w-5" />
+                  Schedule Free Consultation
+                </Link>
+                <a
+                  href="tel:317-314-3757"
+                  className="flex items-center justify-center gap-2 bg-white text-gray-900 px-6 py-4 rounded-full font-bold hover:bg-gray-100 transition-colors w-full border border-gray-200"
+                >
+                  <Phone className="h-5 w-5" />
+                  Call 317-314-3757
+                </a>
+              </div>
+              <p className="text-sm text-gray-500 mt-4 text-center">
+                Available Monday–Friday, 9am–5pm EST
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-slate-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Your Next Career Starts Here
+          </h2>
+          <p className="text-xl text-gray-300 mb-8">
+            Don&apos;t navigate your job search alone. Our career specialists are ready 
+            to help you build the skills and connections you need to succeed.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/apply"
+              className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-orange-700 transition-colors"
+            >
+              Apply for Free Training
+            </Link>
+            <Link
+              href="/pathways"
+              className="inline-flex items-center justify-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-100 transition-colors"
+            >
+              Explore Career Pathways
+            </Link>
           </div>
         </div>
       </section>
