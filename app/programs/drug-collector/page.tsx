@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Stethoscope } from 'lucide-react';
+import Image from 'next/image';
+import { Stethoscope, CheckCircle } from 'lucide-react';
 import { CompactHero } from '@/components/heroes/CompactHero';
 
 export const metadata: Metadata = {
@@ -52,6 +53,25 @@ export default function Page() {
               Our DOT-approved training meets all federal requirements for urine
               and breath alcohol specimen collection.
             </p>
+            <div className="flex flex-wrap gap-3 mt-4">
+              <span className="flex items-center gap-2 text-green-600 text-sm font-medium">
+                <CheckCircle className="w-4 h-4" /> DOT Certified
+              </span>
+              <span className="flex items-center gap-2 text-green-600 text-sm font-medium">
+                <CheckCircle className="w-4 h-4" /> Job Placement
+              </span>
+              <span className="flex items-center gap-2 text-green-600 text-sm font-medium">
+                <CheckCircle className="w-4 h-4" /> Free Training
+              </span>
+            </div>
+            <div className="relative h-[250px] rounded-xl overflow-hidden mt-6">
+              <Image
+                src="/images/healthcare/healthcare-professional-portrait-1.jpg"
+                alt="Healthcare professional"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
           <div className="bg-blue-50 p-8 rounded-lg">
             <h3 className="text-2xl font-bold text-black mb-4">

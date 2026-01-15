@@ -1,6 +1,7 @@
 // @ts-nocheck
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   CheckCircle,
   XCircle,
@@ -68,8 +69,30 @@ export default function CosmetologyApprenticeshipPage() {
 
       {/* Program Description */}
       <section className="bg-white py-16">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid lg:grid-cols-2 gap-12 mb-12">
+            <div>
+              <h2 className="text-3xl font-bold text-black mb-6">Program Description</h2>
+              <p className="text-lg text-gray-700 mb-4">
+                Launch your career in the beauty industry through our DOL-registered apprenticeship program. 
+                Gain hands-on experience while earning, with comprehensive theory instruction through Milady.
+              </p>
+              <p className="text-gray-700">
+                Our program combines federal apprenticeship sponsorship with employer coordination and compliance 
+                reporting to ensure you meet all requirements for a successful career in cosmetology.
+              </p>
+            </div>
+            <div className="relative h-[350px] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/pathways/beauty-hero.jpg"
+                alt="Cosmetology training"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
         <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-bold text-black mb-6">Program Description</h2>
           <div className="bg-fuchsia-50 border-2 border-fuchsia-200 rounded-xl p-6 mb-8">
             <p className="text-lg text-black leading-relaxed">
               <strong>Registered Cosmetology Apprenticeship Sponsorship, Oversight & Related Instruction (Milady Theory).</strong>
