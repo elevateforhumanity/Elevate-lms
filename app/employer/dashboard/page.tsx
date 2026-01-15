@@ -186,7 +186,7 @@ export default async function EmployerDashboardOrchestrated() {
                   title="Complete Verification"
                   description="Required before posting jobs"
                   href="/employer/verification"
-                  icon={<Shield className="h-6 w-6" />}
+                  image="/hero-images/business-category.jpg"
                   badge="Required"
                 />
               )}
@@ -196,7 +196,7 @@ export default async function EmployerDashboardOrchestrated() {
                   title="Manage Job Postings"
                   description={`${postings?.length || 0} active posting${(postings?.length || 0) !== 1 ? 's' : ''}`}
                   href="/employer/postings"
-                  icon={<Briefcase className="h-6 w-6" />}
+                  image="/hero-images/skilled-trades-category.jpg"
                 />
               )}
 
@@ -205,7 +205,7 @@ export default async function EmployerDashboardOrchestrated() {
                   title="View Candidates"
                   description="Browse trained workers"
                   href="/employer/candidates"
-                  icon={<Users className="h-6 w-6" />}
+                  image="/hero-images/healthcare-category.jpg"
                   badge={
                     (applications?.length || 0) > 0
                       ? `${applications?.length} New`
@@ -227,7 +227,7 @@ export default async function EmployerDashboardOrchestrated() {
                       : 'Build your talent pipeline'
                   }
                   href="/employer/apprenticeship"
-                  icon={<TrendingUp className="h-6 w-6" />}
+                  image="/hero-images/technology-category.jpg"
                   badge={apprenticeshipProgram ? 'Active' : undefined}
                 />
               )}
@@ -237,7 +237,7 @@ export default async function EmployerDashboardOrchestrated() {
                   title="Compliance Dashboard"
                   description="Track apprenticeship requirements"
                   href="/employer/compliance"
-                  icon={<Shield className="h-6 w-6" />}
+                  image="/hero-images/cdl-transportation-category.jpg"
                 />
               )}
 
@@ -246,7 +246,7 @@ export default async function EmployerDashboardOrchestrated() {
                   title="Reports & Analytics"
                   description="View hiring metrics"
                   href="/employer/reports"
-                  icon={<FileText className="h-6 w-6" />}
+                  image="/hero-images/barber-beauty-category.jpg"
                 />
               )}
             </div>

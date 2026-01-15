@@ -249,7 +249,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Complete Verification"
                   description="Required before accepting students"
                   href="/program-holder/verification"
-                  icon={<Shield className="h-6 w-6" />}
+                  image="/hero-images/business-category.jpg"
                   badge="Required"
                 />
               )}
@@ -259,7 +259,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Manage Students"
                   description={`${stateData.metrics.activeStudents} active student${stateData.metrics.activeStudents !== 1 ? 's' : ''}`}
                   href="/program-holder/students"
-                  icon={<Users className="h-6 w-6" />}
+                  image="/hero-images/healthcare-category.jpg"
                   badge={
                     stateData.metrics.atRiskStudents > 0
                       ? `${stateData.metrics.atRiskStudents} At Risk`
@@ -273,7 +273,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Submit Reports"
                   description="Compliance reporting and documentation"
                   href="/program-holder/reports"
-                  icon={<FileText className="h-6 w-6" />}
+                  image="/hero-images/skilled-trades-category.jpg"
                   badge={
                     stateData.metrics.overdueReports > 0
                       ? `${stateData.metrics.overdueReports} Overdue`
@@ -287,7 +287,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Compliance Dashboard"
                   description={`Score: ${complianceScore}%`}
                   href="/program-holder/compliance"
-                  icon={<Shield className="h-6 w-6" />}
+                  image="/hero-images/technology-category.jpg"
                   badge={
                     complianceScore < 70
                       ? 'Action Required'
@@ -303,7 +303,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Documentation"
                   description="Forms, templates, and resources"
                   href="/program-holder/documentation"
-                  icon={<Book className="h-6 w-6" />}
+                  image="/hero-images/cdl-transportation-category.jpg"
                 />
               )}
 
@@ -312,7 +312,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Training Resources"
                   description="Learn how to use the platform"
                   href="/program-holder/training"
-                  icon={<Book className="h-6 w-6" />}
+                  image="/hero-images/barber-beauty-category.jpg"
                 />
               )}
 
@@ -321,7 +321,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Get Support"
                   description="Contact your compliance advisor"
                   href="/program-holder/support"
-                  icon={<Users className="h-6 w-6" />}
+                  image="/hero-images/about-hero.jpg"
                 />
               )}
             </div>
