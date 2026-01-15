@@ -82,7 +82,7 @@ export default function SiteFooter() {
               <li><Link href="/how-it-works" className="hover:text-white transition">How It Works</Link></li>
               <li><Link href="/pathways" className="hover:text-white transition">Pathways</Link></li>
               <li><Link href="/funding" className="hover:text-white transition">Funding</Link></li>
-              <li><Link href="/orientation" className="hover:text-white transition">Orientation</Link></li>
+              <li><Link href="/store" className="hover:text-white transition font-semibold">Store</Link></li>
             </ul>
           </div>
 
