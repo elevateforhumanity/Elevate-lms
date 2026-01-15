@@ -16,9 +16,15 @@ export function ConditionalLayout({ children }: { children: React.ReactNode }) {
       
       {/* Fixed header on all pages */}
       <header 
-        className="fixed inset-x-0 top-0 z-[99999] h-[var(--header-h)] bg-white shadow-sm" 
+        className="fixed inset-x-0 top-0 h-[var(--header-h)] shadow-sm" 
         role="banner"
-        style={{ backgroundColor: '#ffffff' }}
+        style={{ 
+          backgroundColor: '#ffffff',
+          zIndex: 99999,
+          opacity: 1,
+          visibility: 'visible',
+          display: 'block'
+        }}
       >
         <SiteHeader />
       </header>

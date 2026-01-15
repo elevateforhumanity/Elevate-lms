@@ -17,8 +17,17 @@ export default function SiteHeader() {
   const navItems = useMemo(() => navigation.main, [navigation]);
 
   return (
-    <div className="w-full h-full bg-white border-b border-gray-200" style={{ backgroundColor: '#ffffff' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+    <div 
+      className="w-full h-full border-b border-gray-200" 
+      style={{ 
+        backgroundColor: '#ffffff',
+        opacity: 1,
+        visibility: 'visible',
+        display: 'flex',
+        alignItems: 'center'
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full w-full">
         <div className="flex items-center justify-between h-full">
           {/* Logo - using optimized smaller version */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
@@ -30,7 +39,7 @@ export default function SiteHeader() {
               className="w-9 h-9 md:w-10 md:h-10"
               priority
             />
-            <span className="font-bold text-sm md:text-lg">
+            <span style={{ color: '#000000', fontWeight: 'bold', fontSize: '1.125rem' }}>
               Elevate for Humanity
             </span>
           </Link>
