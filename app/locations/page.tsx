@@ -43,7 +43,7 @@ export default function LocationsPage() {
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <MapPin className="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" />
+                    <MapPin className="h-10 w-10 text-blue-600 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-bold text-black mb-1">Address</h3>
                       <p className="text-black">
@@ -57,7 +57,7 @@ export default function LocationsPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <Phone className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+                    <Phone className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-bold text-black mb-1">Phone</h3>
                       <a
@@ -70,7 +70,7 @@ export default function LocationsPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <Mail className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
+                    <Mail className="h-10 w-10 text-purple-600 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-bold text-black mb-1">Email</h3>
                       <a
@@ -83,7 +83,7 @@ export default function LocationsPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <Clock className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
+                    <Clock className="h-10 w-10 text-orange-600 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-bold text-black mb-1">Hours</h3>
                       <div className="text-black space-y-1">

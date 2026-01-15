@@ -47,7 +47,7 @@ export default function ServicesPage() {
       </div>
 
       <section className="rounded-2xl border bg-white p-8 shadow-sm">
-        <div className="inline-block px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold mb-4">
+        <div className="inline-block px-3 py-2 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold mb-4">
           PAID SERVICES
         </div>
         <h1 className="text-4xl font-bold tracking-tight">

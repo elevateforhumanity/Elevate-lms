@@ -198,7 +198,7 @@ export default function AssetGenerator() {
                           {type.description}
                         </p>
                       </div>
-                      <span className="text-xs text-brand-text-light bg-brand-surface-dark px-2 py-1 rounded">
+                      <span className="text-xs text-brand-text-light bg-brand-surface-dark px-2 py-2 rounded">
                         {type.dimensions}
                       </span>
                     </div>
@@ -308,7 +308,7 @@ export default function AssetGenerator() {
               </div>
               <div className="p-6">
                 <div className="mb-4">
-                  <span className="px-3 py-1 bg-brand-surface text-brand-info rounded-full text-sm">
+                  <span className="px-3 py-2 bg-brand-surface text-brand-info rounded-full text-sm">
                     {generatedAsset.dimensions}
                   </span>
                 </div>

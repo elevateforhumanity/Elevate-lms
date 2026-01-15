@@ -118,7 +118,7 @@ export function AIInstructorClient({
             <Button
               variant="ghost"
               size="sm"
-              className="h-8 w-8 p-0"
+              className="h-11 w-11 p-0"
               onClick={() => setIsMuted(!isMuted)}
             >
               {isMuted ? (
@@ -130,7 +130,7 @@ export function AIInstructorClient({
             <Button
               variant="ghost"
               size="sm"
-              className="h-8 w-8 p-0"
+              className="h-11 w-11 p-0"
               onClick={() => {
                 stopSpeaking();
                 setIsVisible(false);

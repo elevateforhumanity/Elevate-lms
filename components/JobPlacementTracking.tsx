@@ -174,7 +174,7 @@ export function JobPlacementTracking() {
                         <div className="text-2xl">{partner.logo}</div>
                         <span className="font-medium">{partner.name}</span>
                       </div>
-                      <span className="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded">
+                      <span className="px-3 py-2 bg-orange-100 text-orange-700 text-sm rounded">
                         {partner.hires} hires
                       </span>
                     </div>
@@ -235,7 +235,7 @@ export function JobPlacementTracking() {
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="text-xl font-bold">{placement.studentName}</h3>
-                        <span className={`px-3 py-1 rounded text-xs font-medium ${
+                        <span className={`px-3 py-2 rounded text-xs font-medium ${
                           placement.status === 'placed' ? 'bg-green-100 text-green-700' :
                           placement.status === 'offer-pending' ? 'bg-yellow-100 text-yellow-700' :
                           'bg-blue-100 text-blue-700'

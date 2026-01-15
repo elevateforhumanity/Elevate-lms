@@ -243,7 +243,7 @@ export default function ProgramsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute top-4 right-4">
-                    <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+                    <span className="bg-green-500 text-white text-xs font-bold px-2 py-2 rounded">
                       Free with Funding
                     </span>
                   </div>
@@ -256,11 +256,11 @@ export default function ProgramsPage() {
                     {program.shortDescription}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="inline-flex items-center gap-1 text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                    <span className="inline-flex items-center gap-1 text-xs bg-gray-100 text-gray-700 px-2 py-2 rounded">
                       <Clock className="w-3 h-3" />
                       {program.duration}
                     </span>
-                    <span className="inline-flex items-center gap-1 text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                    <span className="inline-flex items-center gap-1 text-xs bg-gray-100 text-gray-700 px-2 py-2 rounded">
                       <Award className="w-3 h-3" />
                       {program.credential.split(';')[0]}
                     </span>

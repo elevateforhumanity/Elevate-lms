@@ -244,7 +244,7 @@ export function RightSidebar() {
               <Link
                 key={deadline.id}
                 href={`/lms/courses/${deadline.courseId}`}
-                className="block border-l-2 border-orange-400 pl-3 hover:bg-slate-50 -ml-4 pl-4 py-1 transition"
+                className="block border-l-2 border-orange-400 pl-3 hover:bg-slate-50 -ml-4 pl-4 py-2 transition"
               >
                 <p className="text-sm font-medium text-black">
                   {deadline.title}

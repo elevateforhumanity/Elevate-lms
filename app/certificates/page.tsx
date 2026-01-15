@@ -198,7 +198,7 @@ export default function CertificatesPage() {
                 <ul className="space-y-3">
                   {category.items.map((item: any) => (
                     <li key={item} className="flex items-start gap-3">
-                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-0.5" />
                       <span className="text-black">{item}</span>
                     </li>
                   ))}
@@ -368,7 +368,7 @@ export default function CertificatesPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-8 w-8 text-blue-600" />
+                <Shield className="h-11 w-11 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-3">
                 Industry Recognized
@@ -380,7 +380,7 @@ export default function CertificatesPage() {
 
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="h-8 w-8 text-green-600" />
+                <CheckCircle className="h-11 w-11 text-green-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-3">
                 Verified & Secure
@@ -393,7 +393,7 @@ export default function CertificatesPage() {
 
             <div className="text-center">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-8 w-8 text-purple-600" />
+                <Award className="h-11 w-11 text-purple-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-3">
                 Career Advancement

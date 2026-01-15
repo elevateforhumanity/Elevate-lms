@@ -160,7 +160,7 @@ export default function RapidsAdminPage() {
             <h2 className="text-lg font-semibold text-blue-900">Procurement Statement</h2>
             <button
               onClick={() => navigator.clipboard?.writeText(procurementStatement)}
-              className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-blue-700 bg-blue-100 rounded-lg hover:bg-blue-200 transition-colors"
+              className="inline-flex items-center gap-2 px-3 py-2.5 text-sm font-medium text-blue-700 bg-blue-100 rounded-lg hover:bg-blue-200 transition-colors"
             >
               <Copy className="w-4 h-4" />
               Copy

@@ -115,7 +115,7 @@ export function CalendarIntegration() {
                         <h4 className="font-bold">{event.title}</h4>
                         <p className="text-sm text-black">{event.description}</p>
                       </div>
-                      <span className={`px-2 py-1 rounded text-xs font-medium ${getTypeColor(event.type)}`}>
+                      <span className={`px-2 py-2 rounded text-xs font-medium ${getTypeColor(event.type)}`}>
                         {event.type}
                       </span>
                     </div>

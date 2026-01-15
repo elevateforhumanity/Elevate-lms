@@ -106,7 +106,7 @@ export function EmployerTalentPipeline() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className="text-xl font-bold">{candidate.name}</h3>
-                    <span className={`px-3 py-1 rounded text-xs font-medium ${stageColors[candidate.stage]}`}>
+                    <span className={`px-3 py-2 rounded text-xs font-medium ${stageColors[candidate.stage]}`}>
                       {candidate.stage}
                     </span>
                   </div>
@@ -123,7 +123,7 @@ export function EmployerTalentPipeline() {
                 <p className="text-sm font-semibold text-black mb-2">Skills:</p>
                 <div className="flex flex-wrap gap-2">
                   {candidate.skills.map((skill) => (
-                    <span key={skill} className="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded">
+                    <span key={skill} className="px-3 py-2 bg-orange-100 text-orange-700 text-sm rounded">
                       {skill}
                     </span>
                   ))}

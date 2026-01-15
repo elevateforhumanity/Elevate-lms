@@ -71,7 +71,7 @@ export default function CourseEnrollPage({
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <CheckCircle className="h-6 w-6 text-green-600" />
+                  <CheckCircle className="h-10 w-10 text-green-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-black mb-1">
@@ -85,7 +85,7 @@ export default function CourseEnrollPage({
 
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Clock className="h-6 w-6 text-blue-600" />
+                  <Clock className="h-10 w-10 text-blue-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-black mb-1">
@@ -99,7 +99,7 @@ export default function CourseEnrollPage({
 
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                  <Award className="h-6 w-6 text-purple-600" />
+                  <Award className="h-10 w-10 text-purple-600" />
                 </div>
                 <div>
                   <h3 className="font-bold text-black mb-1">

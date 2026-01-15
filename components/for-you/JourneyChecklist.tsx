@@ -21,7 +21,7 @@ const STEPS: Step[] = [
     title: 'Apply',
     duration: '2 minutes',
     description: 'Fill out simple form with your name, email, and phone number',
-    icon: <FileCheck className="h-6 w-6" />,
+    icon: <FileCheck className="h-10 w-10" />,
   },
   {
     number: 2,
@@ -29,21 +29,21 @@ const STEPS: Step[] = [
     duration: '24 hours',
     description:
       'An advisor reviews your application and calls to explain next steps',
-    icon: <Phone className="h-6 w-6" />,
+    icon: <Phone className="h-10 w-10" />,
   },
   {
     number: 3,
     title: 'Check Eligibility',
     duration: '1 week',
     description: 'We handle all funding paperwork and eligibility verification',
-    icon: <CheckCircle className="h-6 w-6" />,
+    icon: <CheckCircle className="h-10 w-10" />,
   },
   {
     number: 4,
     title: 'Start Training',
     duration: '1-2 weeks',
     description: 'Enroll with accredited provider and begin your program',
-    icon: <GraduationCap className="h-6 w-6" />,
+    icon: <GraduationCap className="h-10 w-10" />,
   },
   {
     number: 5,
@@ -51,7 +51,7 @@ const STEPS: Step[] = [
     duration: 'Varies by program',
     description:
       'Complete training, pass certification exam, launch your new career',
-    icon: <GraduationCap className="h-6 w-6" />,
+    icon: <GraduationCap className="h-10 w-10" />,
   },
 ];
 

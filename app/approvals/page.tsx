@@ -271,7 +271,7 @@ export default function ApprovalsPage() {
                   </p>
                   <p className="text-black">
                     <strong>School promo code:</strong>{' '}
-                    <code className="bg-slate-200 px-2 py-1 rounded">
+                    <code className="bg-slate-200 px-2 py-2 rounded">
                       efhcti-rise295
                     </code>{' '}
                     (for enrolled students and staff)

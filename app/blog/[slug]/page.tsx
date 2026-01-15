@@ -126,7 +126,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             <ArrowLeft className="w-4 h-4" />
             Back to Blog
           </Link>
-          <span className="inline-block px-3 py-1 bg-orange-500 text-white text-sm font-bold rounded-full mb-4">
+          <span className="inline-block px-3 py-2 bg-orange-500 text-white text-sm font-bold rounded-full mb-4">
             {post.category}
           </span>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
@@ -167,7 +167,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
               {post.tags.map((tag: string) => (
                 <span 
                   key={tag}
-                  className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
+                  className="px-3 py-2 bg-gray-100 text-gray-700 text-sm rounded-full"
                 >
                   {tag}
                 </span>

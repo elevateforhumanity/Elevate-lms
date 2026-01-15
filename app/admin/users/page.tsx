@@ -233,7 +233,7 @@ export default async function Page() {
                         </td>
                         <td className="px-6 py-4 text-sm">
                           <span
-                            className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            className={`px-2 py-2 rounded-full text-xs font-medium ${
                               user.role === 'admin' ||
                               user.role === 'super_admin'
                                 ? 'bg-blue-100 text-blue-700'
@@ -294,12 +294,12 @@ export default async function Page() {
                 </p>
                 <div className="flex gap-2">
                   <button
-                    className="px-3 py-1 border rounded text-sm hover:bg-white"
+                    className="px-3 py-2 border rounded text-sm hover:bg-white"
                     disabled
                   >
                     Previous
                   </button>
-                  <button className="px-3 py-1 border rounded text-sm hover:bg-white" aria-label="Action button">
+                  <button className="px-3 py-2 border rounded text-sm hover:bg-white" aria-label="Action button">
                     Next
                   </button>
                 </div>

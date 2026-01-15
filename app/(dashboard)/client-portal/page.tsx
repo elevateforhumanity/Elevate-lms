@@ -228,7 +228,7 @@ export default function ClientPortalPage() {
 
             {/* Monthly */}
             <div className="border-2 border-blue-600 rounded-lg p-8 relative">
-              <div className="absolute top-0 right-0 bg-blue-600 text-white px-4 py-1 rounded-bl-lg rounded-tr-lg text-sm font-semibold">
+              <div className="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-bl-lg rounded-tr-lg text-sm font-semibold">
                 Most Popular
               </div>
               <h3 className="text-2xl font-bold mb-2">Monthly</h3>

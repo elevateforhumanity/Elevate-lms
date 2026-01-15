@@ -108,9 +108,9 @@ export function RealOutcomes() {
                 className="bg-slate-50 border border-slate-200 rounded-lg p-6"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <Icon className="h-6 w-6 text-blue-600" />
+                  <Icon className="h-10 w-10 text-blue-600" />
                   {outcome.verified && (
-                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-semibold">
+                    <span className="text-xs bg-green-100 text-green-800 px-2 py-2 rounded-full font-semibold">
                       Verified
                     </span>
                   )}

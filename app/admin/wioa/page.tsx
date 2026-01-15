@@ -62,13 +62,13 @@ export default async function WIOAPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'verified':
-        return <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">Verified</span>;
+        return <span className="px-2 py-2 bg-green-100 text-green-800 rounded-full text-xs font-medium">Verified</span>;
       case 'pending':
-        return <span className="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">Pending</span>;
+        return <span className="px-2 py-2 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">Pending</span>;
       case 'needs_docs':
-        return <span className="px-2 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium">Needs Docs</span>;
+        return <span className="px-2 py-2 bg-red-100 text-red-800 rounded-full text-xs font-medium">Needs Docs</span>;
       default:
-        return <span className="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">{status}</span>;
+        return <span className="px-2 py-2 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">{status}</span>;
     }
   };
 

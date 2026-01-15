@@ -321,7 +321,7 @@ export default function ContentLibrary() {
                       {item.tags.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="text-xs px-2 py-1 bg-gray-100 rounded"
+                          className="text-xs px-2 py-2 bg-gray-100 rounded"
                         >
                           {tag}
                         </span>
@@ -344,7 +344,7 @@ export default function ContentLibrary() {
                           e.stopPropagation();
                           window.open(item.file_url, '_blank');
                         }}
-                        className="flex-1 flex items-center justify-center gap-1 px-2 py-1 text-sm border rounded hover:bg-gray-50"
+                        className="flex-1 flex items-center justify-center gap-1 px-2 py-2 text-sm border rounded hover:bg-gray-50"
                       >
                         <Download className="w-3 h-3" />
                         Download
@@ -354,7 +354,7 @@ export default function ContentLibrary() {
                           e.stopPropagation();
                           // Copy to clipboard
                         }}
-                        className="flex items-center justify-center px-2 py-1 text-sm border rounded hover:bg-gray-50"
+                        className="flex items-center justify-center px-2 py-2 text-sm border rounded hover:bg-gray-50"
                       >
                         <Copy className="w-3 h-3" />
                       </button>
@@ -363,7 +363,7 @@ export default function ContentLibrary() {
                           e.stopPropagation();
                           handleDelete(item.id);
                         }}
-                        className="flex items-center justify-center px-2 py-1 text-sm border rounded hover:bg-red-50 text-brand-orange-600"
+                        className="flex items-center justify-center px-2 py-2 text-sm border rounded hover:bg-red-50 text-brand-orange-600"
                       >
                         <Trash2 className="w-3 h-3" />
                       </button>
@@ -415,7 +415,7 @@ export default function ContentLibrary() {
                         </div>
                       </td>
                       <td className="p-4">
-                        <span className="px-2 py-1 text-xs bg-gray-100 rounded capitalize">
+                        <span className="px-2 py-2 text-xs bg-gray-100 rounded capitalize">
                           {item.content_type}
                         </span>
                       </td>

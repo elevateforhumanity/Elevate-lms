@@ -134,11 +134,11 @@ export default async function StateBoardExamPage() {
                 </div>
               </div>
               {hoursComplete ? (
-                <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
+                <span className="px-3 py-2 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
                   Complete
                 </span>
               ) : (
-                <span className="px-3 py-1 bg-amber-100 text-amber-700 text-sm font-semibold rounded-full">
+                <span className="px-3 py-2 bg-amber-100 text-amber-700 text-sm font-semibold rounded-full">
                   {(requiredHours - totalHours).toFixed(1)} hrs remaining
                 </span>
               )}
@@ -160,13 +160,13 @@ export default async function StateBoardExamPage() {
                 </div>
               </div>
               {miladyComplete ? (
-                <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
+                <span className="px-3 py-2 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
                   Complete
                 </span>
               ) : (
                 <Link
                   href="/lms/progress"
-                  className="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full hover:bg-blue-200"
+                  className="px-3 py-2 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full hover:bg-blue-200"
                 >
                   Access Milady →
                 </Link>
@@ -190,7 +190,7 @@ export default async function StateBoardExamPage() {
               </div>
               <Link
                 href="/apprentice/skills"
-                className="px-3 py-1 bg-slate-100 text-slate-700 text-sm font-semibold rounded-full hover:bg-slate-200"
+                className="px-3 py-2 bg-slate-100 text-slate-700 text-sm font-semibold rounded-full hover:bg-slate-200"
               >
                 View Skills →
               </Link>
@@ -207,7 +207,7 @@ export default async function StateBoardExamPage() {
                   </div>
                 </div>
               </div>
-              <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
+              <span className="px-3 py-2 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
                 Paid
               </span>
             </div>

@@ -97,7 +97,7 @@ export default async function StaffDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
-              <Users className="h-8 w-8 text-blue-600" />
+              <Users className="h-11 w-11 text-blue-600" />
               <span className="text-3xl font-bold text-black">
                 {totalStudents || 0}
               </span>
@@ -107,7 +107,7 @@ export default async function StaffDashboard() {
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
-              <BookOpen className="h-8 w-8 text-green-600" />
+              <BookOpen className="h-11 w-11 text-green-600" />
               <span className="text-3xl font-bold text-black">
                 {activeEnrollments || 0}
               </span>
@@ -124,7 +124,7 @@ export default async function StaffDashboard() {
           >
             <div className="flex items-center justify-between mb-2">
               <AlertCircle
-                className={`h-8 w-8 ${
+                className={`h-11 w-11 ${
                   (atRiskCount || 0) > 0 ? 'text-yellow-600' : 'text-slate-400'
                 }`}
               />
@@ -147,7 +147,7 @@ export default async function StaffDashboard() {
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
-              <Clock className="h-8 w-8 text-purple-600" />
+              <Clock className="h-11 w-11 text-purple-600" />
               <span className="text-3xl font-bold text-black">
                 {pendingEnrollments || 0}
               </span>
@@ -268,7 +268,7 @@ export default async function StaffDashboard() {
                       </td>
                       <td className="px-6 py-4 text-sm">
                         <span
-                          className={`px-2 py-1 rounded-full text-xs ${
+                          className={`px-2 py-2 rounded-full text-xs ${
                             enrollment.status === 'completed'
                               ? 'bg-green-100 text-green-800'
                               : enrollment.status === 'active'

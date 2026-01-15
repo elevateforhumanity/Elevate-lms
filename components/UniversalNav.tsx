@@ -69,9 +69,9 @@ export default function UniversalNav({
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-10 w-10" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-10 w-10" />
             )}
           </button>
         </div>

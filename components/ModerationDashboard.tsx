@@ -104,7 +104,7 @@ export default function ModerationDashboard() {
     };
 
     return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${colors[reason] || colors.other}`}>
+      <span className={`px-2 py-2 rounded-full text-xs font-medium ${colors[reason] || colors.other}`}>
         {reason.replace('_', ' ')}
       </span>
     );

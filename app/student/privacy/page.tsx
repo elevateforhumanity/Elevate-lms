@@ -112,7 +112,7 @@ export default function StudentPrivacyPage() {
                       <div className="flex items-center gap-2 mb-2">
                         <h3 className="text-lg font-semibold text-black">{item.title}</h3>
                         {item.required && (
-                          <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Required</span>
+                          <span className="text-xs bg-red-100 text-red-800 px-2 py-2 rounded">Required</span>
                         )}
                       </div>
                       <p className="text-black mb-4">{item.description}</p>

@@ -162,5 +162,5 @@ function Filter({
 }
 
 function Tag({ children }: { children: React.ReactNode }) {
-  return <span className="rounded-full bg-gray-100 px-3 py-1 text-gray-700">{children}</span>;
+  return <span className="rounded-full bg-gray-100 px-3 py-2 text-gray-700">{children}</span>;
 }

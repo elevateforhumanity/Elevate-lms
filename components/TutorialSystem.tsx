@@ -158,7 +158,7 @@ export function TutorialSystem({
             </h3>
 
             {/* Step type indicator */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-2 bg-blue-100 text-blue-700 rounded-full text-sm mb-4">
               {currentStep.type === 'video' && <Play className="w-4 h-4" />}
               {currentStep.type === 'interactive' && '🎯'}
               {currentStep.type === 'quiz' && '❓'}

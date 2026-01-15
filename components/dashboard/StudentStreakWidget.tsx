@@ -107,7 +107,7 @@ export function StudentStreakWidget() {
           <button
             type="button"
             onClick={() => setEditingGoal(true)}
-            className="rounded-full border px-3 py-1 text-[11px] font-semibold hover:bg-slate-50"
+            className="rounded-full border px-3 py-2 text-[11px] font-semibold hover:bg-slate-50"
           >
             Edit goal
           </button>
@@ -116,13 +116,13 @@ export function StudentStreakWidget() {
             <input
               value={goalInput}
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setGoalInput(e.target.value)}
-              className="w-14 rounded border px-2 py-1 text-[11px]"
+              className="w-14 rounded border px-2 py-2 text-[11px]"
             />
             <span className="text-[11px] text-slate-500">min/day</span>
             <button
               type="button"
               onClick={saveGoal}
-              className="rounded-full bg-blue-600 px-3 py-1 text-[11px] font-semibold text-white hover:bg-blue-700"
+              className="rounded-full bg-blue-600 px-3 py-2 text-[11px] font-semibold text-white hover:bg-blue-700"
             >
               Save
             </button>

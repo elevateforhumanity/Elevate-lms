@@ -272,7 +272,7 @@ export default function StoreBuilderPage() {
                           },
                         })
                       }
-                      className="font-semibold mb-2 w-full px-2 py-1 border rounded"
+                      className="font-semibold mb-2 w-full px-2 py-2 border rounded"
                     />
 
                     <div className="flex items-center gap-2 mb-3">
@@ -298,7 +298,7 @@ export default function StoreBuilderPage() {
                             },
                           })
                         }
-                        className="flex-1 px-2 py-1 border rounded"
+                        className="flex-1 px-2 py-2 border rounded"
                       />
                     </div>
 

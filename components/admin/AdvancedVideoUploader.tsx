@@ -97,7 +97,7 @@ Apply today and start your journey.`;
           {/* Video Upload */}
           <div className="border-2 border-slate-200 rounded-lg p-6">
             <div className="flex items-center gap-3 mb-4">
-              <FileVideo className="h-6 w-6 text-blue-600" />
+              <FileVideo className="h-10 w-10 text-blue-600" />
               <h3 className="text-lg font-bold text-black">1. Upload Video</h3>
             </div>
             <input
@@ -116,7 +116,7 @@ Apply today and start your journey.`;
           {/* Voiceover Options */}
           <div className="border-2 border-slate-200 rounded-lg p-6">
             <div className="flex items-center gap-3 mb-4">
-              <Mic className="h-6 w-6 text-purple-600" />
+              <Mic className="h-10 w-10 text-purple-600" />
               <h3 className="text-lg font-bold text-black">2. Add Voiceover</h3>
             </div>
 
@@ -202,7 +202,7 @@ Apply today and start your journey.`;
           {/* Background Music */}
           <div className="border-2 border-slate-200 rounded-lg p-6">
             <div className="flex items-center gap-3 mb-4">
-              <Music className="h-6 w-6 text-green-600" />
+              <Music className="h-10 w-10 text-green-600" />
               <h3 className="text-lg font-bold text-black">3. Add Background Music (Optional)</h3>
             </div>
             <input
@@ -248,7 +248,7 @@ Apply today and start your journey.`;
           >
             {processing ? (
               <span className="flex items-center justify-center gap-3">
-                <Loader2 className="h-6 w-6 animate-spin" />
+                <Loader2 className="h-10 w-10 animate-spin" />
                 Processing... {progress}%
               </span>
             ) : (
@@ -275,7 +275,7 @@ Apply today and start your journey.`;
           {result && !error && (
             <div className="   border-2 border-green-200 rounded-lg p-6">
               <div className="flex items-start gap-4">
-                <CheckCircle className="h-8 w-8 text-green-600 flex-shrink-0 mt-1" />
+                <CheckCircle className="h-11 w-11 text-green-600 flex-shrink-0 mt-1" />
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-green-900 mb-2">
                     🎉 Video Enhanced Successfully!
@@ -345,7 +345,7 @@ Apply today and start your journey.`;
           {error && (
             <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
               <div className="flex items-start gap-4">
-                <AlertCircle className="h-6 w-6 text-brand-orange-600 flex-shrink-0 mt-0.5" />
+                <AlertCircle className="h-10 w-10 text-brand-orange-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-bold text-red-900 mb-1">Processing Failed</h4>
                   <p className="text-sm text-red-700">{error}</p>

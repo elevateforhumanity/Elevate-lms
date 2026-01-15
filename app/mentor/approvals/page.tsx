@@ -343,7 +343,7 @@ export default async function MentorApprovalsPage({
                       }}
                     >
                       <button
-                        className="px-3 py-1 border border-brand-green-600 text-brand-green-600 rounded text-xs font-semibold hover:bg-green-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-3 py-2 border border-brand-green-600 text-brand-green-600 rounded text-xs font-semibold hover:bg-green-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={e.status !== 'SUBMITTED'}
                       >
                         Approve
@@ -357,7 +357,7 @@ export default async function MentorApprovalsPage({
                       }}
                     >
                       <button
-                        className="px-3 py-1 border border-red-600 text-brand-orange-600 rounded text-xs font-semibold hover:bg-red-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-3 py-2 border border-red-600 text-brand-orange-600 rounded text-xs font-semibold hover:bg-red-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={e.status !== 'SUBMITTED'}
                       >
                         Reject
@@ -371,7 +371,7 @@ export default async function MentorApprovalsPage({
                       }}
                     >
                       <button
-                        className="px-3 py-1 border border-slate-600 text-black rounded text-xs font-semibold hover:bg-slate-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-3 py-2 border border-slate-600 text-black rounded text-xs font-semibold hover:bg-slate-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={e.status !== 'APPROVED'}
                         title="Lock after approval so it can't be changed"
                       >

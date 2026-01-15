@@ -224,7 +224,7 @@ export default function CourseSearch({ courses }: CourseSearchProps) {
               className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md hover:border-blue-500 transition-all"
             >
               <div className="mb-3">
-                <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">
+                <span className="inline-block px-3 py-2 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">
                   {course.category}
                 </span>
               </div>

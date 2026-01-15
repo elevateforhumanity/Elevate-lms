@@ -121,13 +121,13 @@ export default async function DocumentationPage() {
               >
                 <div className="flex items-center gap-3 mb-6">
                   {category.category === 'Forms' && (
-                    <FileText className="h-8 w-8 text-brand-blue-600" />
+                    <FileText className="h-11 w-11 text-brand-blue-600" />
                   )}
                   {category.category === 'Guides' && (
-                    <BookOpen className="h-8 w-8 text-brand-green-600" />
+                    <BookOpen className="h-11 w-11 text-brand-green-600" />
                   )}
                   {category.category === 'Policies' && (
-                    <FileCheck className="h-8 w-8 text-purple-600" />
+                    <FileCheck className="h-11 w-11 text-purple-600" />
                   )}
                   <h2 className="text-2xl font-bold text-black">
                     {category.category}

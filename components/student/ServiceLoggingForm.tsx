@@ -218,7 +218,7 @@ export default function ServiceLoggingForm({
                         e.target.value
                       )
                     }
-                    className="flex-1 text-center px-2 py-1 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold text-lg"
+                    className="flex-1 text-center px-2 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold text-lg"
                   />
                   <button
                     type="button"

@@ -274,7 +274,7 @@ export default function AuditLogsPage() {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-2 py-1 text-xs rounded bg-blue-100 text-blue-800">
+                        <span className="px-2 py-2 text-xs rounded bg-blue-100 text-blue-800">
                           {log.action}
                         </span>
                       </td>

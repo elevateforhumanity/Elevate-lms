@@ -476,7 +476,7 @@ export default function TransparencyPage() {
                     </h3>
                     <p className="text-sm text-black mb-2">{doc.desc}</p>
                     <div className="flex items-center gap-2 text-xs text-slate-500">
-                      <span className="px-2 py-1 bg-slate-100 rounded">
+                      <span className="px-2 py-2 bg-slate-100 rounded">
                         PDF
                       </span>
                       <span>{doc.size}</span>

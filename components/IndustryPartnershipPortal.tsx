@@ -133,7 +133,7 @@ export default function IndustryPartnershipPortal() {
                     <p className="text-black">{partner.industry}</p>
                     <p className="text-sm text-gray-500 mt-2">{partner.contactPerson} • {partner.email}</p>
                   </div>
-                  <span className={`px-3 py-1 rounded text-sm ${
+                  <span className={`px-3 py-2 rounded text-sm ${
                     partner.status === 'active' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-black'
                   }`}>
                     {partner.status}

@@ -290,7 +290,7 @@ className="text-white hover:text-red-100 transition-colors">
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-3">
                       <h3 className="text-xl font-bold text-black">{project.title}</h3>
-                      <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs font-medium rounded">
+                      <span className="px-2 py-2 bg-orange-100 text-orange-700 text-xs font-medium rounded">
                         {project.category}
                       </span>
                     </div>
@@ -300,7 +300,7 @@ className="text-white hover:text-red-100 transition-colors">
                       <p className="text-xs font-semibold text-black mb-2">Technologies:</p>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
-                          <span key={tech} className="px-2 py-1 bg-gray-100 text-black text-xs rounded">
+                          <span key={tech} className="px-2 py-2 bg-gray-100 text-black text-xs rounded">
                             {tech}
                           </span>
                         ))}
@@ -505,7 +505,7 @@ className="text-white hover:text-red-100 transition-colors">
                   <h3 className="text-xl font-bold text-black mb-4">Interests</h3>
                   <div className="flex flex-wrap gap-2">
                     {['Web Development', 'Mobile Apps', 'Cloud Computing', 'AI/ML', 'Open Source', 'UI/UX Design', 'DevOps', 'Mentoring'].map((interest) => (
-                      <span key={interest} className="px-3 py-1    text-red-700 text-sm rounded-full">
+                      <span key={interest} className="px-3 py-2    text-red-700 text-sm rounded-full">
                         {interest}
                       </span>
                     ))}

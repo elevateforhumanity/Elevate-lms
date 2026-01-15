@@ -159,10 +159,10 @@ export default function CompetencyTracking() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className="text-xl font-bold">{competency.name}</h3>
-                    <span className={`px-3 py-1 rounded text-xs font-medium ${levelColors[competency.level]}`}>
+                    <span className={`px-3 py-2 rounded text-xs font-medium ${levelColors[competency.level]}`}>
                       {competency.level}
                     </span>
-                    <span className={`px-3 py-1 rounded text-xs font-medium ${statusColors[competency.status]}`}>
+                    <span className={`px-3 py-2 rounded text-xs font-medium ${statusColors[competency.status]}`}>
                       {competency.status.replace('-', ' ')}
                     </span>
                   </div>

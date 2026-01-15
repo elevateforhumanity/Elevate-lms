@@ -234,7 +234,7 @@ export default function UploadDocumentsPage() {
                   </div>
                   <div className="flex items-center gap-3">
                     {file.status === 'uploading' && (
-                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
+                      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600" />
                     )}
                     {file.status === 'success' && (
                       <CheckCircle className="w-6 h-6 text-green-600" />

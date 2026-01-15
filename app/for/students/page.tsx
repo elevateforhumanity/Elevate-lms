@@ -110,7 +110,7 @@ export default function StudentsPage() {
                 key={benefit}
                 className="flex items-center gap-3 bg-white p-6 rounded-lg border border-slate-200"
               >
-                <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
+                <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0" />
                 <span className="font-semibold text-black">{benefit}</span>
               </div>
             ))}

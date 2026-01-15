@@ -63,7 +63,7 @@ export default function TestPaymentsPage() {
 
           {loading ? (
             <div className="text-center py-4">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-brand-blue-600 mx-auto" />
+              <div className="animate-spin rounded-full h-11 w-11 border-b-2 border-brand-blue-600 mx-auto" />
             </div>
           ) : (
             <div className="space-y-3">

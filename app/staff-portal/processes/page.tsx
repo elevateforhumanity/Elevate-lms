@@ -81,7 +81,7 @@ export default async function ProcessesPage() {
                     {process.name}
                   </h3>
                   {process.category && (
-                    <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded">
+                    <span className="px-2 py-2 bg-blue-100 text-blue-700 text-xs font-medium rounded">
                       {process.category}
                     </span>
                   )}

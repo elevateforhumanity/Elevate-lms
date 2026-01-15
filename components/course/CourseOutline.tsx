@@ -37,7 +37,7 @@ export function CourseOutline({ course, activeLessonId, onSelectLesson }: Props)
                     type="button"
                     onClick={() => onSelectLesson?.(lesson)}
                     className={clsx(
-                      "flex w-full items-center justify-between rounded-md px-2 py-1 text-left text-[11px]",
+                      "flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-[11px]",
                       isActive
                         ? "bg-red-700/70 text-white"
                         : "bg-slate-900/80 text-slate-100 hover:bg-slate-900"

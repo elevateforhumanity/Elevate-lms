@@ -37,7 +37,7 @@ export function OfflineBanner() {
       </span>
       <button
         onClick={handleSync}
-        className="rounded-xl bg-white/10 px-3 py-1 text-[11px] font-semibold"
+        className="rounded-xl bg-white/10 px-3 py-2 text-[11px] font-semibold"
         disabled={syncing}
       >
         {syncing ? "Syncing…" : "Sync now"}

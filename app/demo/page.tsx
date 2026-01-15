@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 export default function DemoHubPage() {
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Demo Mode Banner */}
-      <div className="bg-blue-600 text-white py-2 px-4 text-center text-sm">
+      {/* Live Platform Banner */}
+      <div className="bg-green-600 text-white py-2 px-4 text-center text-sm">
         <Info className="w-4 h-4 inline mr-2" />
-        Demo Mode (Sample Data) — This environment shows example workflows and data
+        Live Platform Preview — Explore the actual LMS, admin dashboards, and marketing pages
       </div>
 
       {/* Header */}
@@ -32,11 +32,11 @@ export default function DemoHubPage() {
                 Licensing Info
               </Link>
               <Link
-                href={ROUTES.schedule}
+                href="/demo/admin"
                 className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-orange-700 transition"
               >
-                <Calendar className="w-4 h-4" />
-                Schedule Demo
+                <ArrowRight className="w-4 h-4" />
+                Preview Demo
               </Link>
             </div>
           </div>
@@ -49,10 +49,10 @@ export default function DemoHubPage() {
           {/* Title */}
           <div className="text-center mb-16">
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
-              Choose Your Demo Track
+              Explore the Platform
             </h1>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Explore the platform from different perspectives. Each demo shows realistic workflows with sample data.
+              Browse live pages across the LMS, admin dashboards, and marketing site.
             </p>
           </div>
 
@@ -60,70 +60,70 @@ export default function DemoHubPage() {
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {/* Learner Experience */}
             <Link
-              href={ROUTES.demoLearner}
+              href="/demo/learner"
               className="group bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-blue-500 hover:shadow-lg transition-all"
             >
               <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500 transition">
                 <GraduationCap className="w-8 h-8 text-blue-600 group-hover:text-white transition" />
               </div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-3">Learner Experience</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-3">Student LMS</h2>
               <p className="text-slate-600 mb-6">
-                See how participants navigate programs, track progress, and access support resources.
+                Full student portal with courses, progress tracking, OJT hours logging, and certificates.
               </p>
               <ul className="text-sm text-slate-500 space-y-2 mb-6">
-                <li>• Program dashboard</li>
-                <li>• Progress tracking</li>
-                <li>• Funding pathway info</li>
-                <li>• Support resources</li>
+                <li>• Course player & lessons</li>
+                <li>• OJT hours tracking</li>
+                <li>• Progress dashboard</li>
+                <li>• Certificate management</li>
               </ul>
               <span className="inline-flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all">
-                Explore Learner View <ArrowRight className="w-4 h-4" />
+                Open Student Portal <ArrowRight className="w-4 h-4" />
               </span>
             </Link>
 
             {/* Admin Dashboard */}
             <Link
-              href={ROUTES.demoAdmin}
+              href="/demo/admin"
               className="group bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-green-500 hover:shadow-lg transition-all"
             >
               <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-500 transition">
                 <Settings className="w-8 h-8 text-green-600 group-hover:text-white transition" />
               </div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-3">Admin / Program Manager</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-3">Admin Dashboard</h2>
               <p className="text-slate-600 mb-6">
-                Manage programs, track enrollments, and generate compliance reports.
+                Complete admin control center with student management, enrollments, and reporting.
               </p>
               <ul className="text-sm text-slate-500 space-y-2 mb-6">
-                <li>• Program management</li>
+                <li>• Student management</li>
                 <li>• Enrollment pipeline</li>
-                <li>• Reporting tools</li>
-                <li>• Compliance tracking</li>
+                <li>• Program analytics</li>
+                <li>• WIOA compliance reports</li>
               </ul>
               <span className="inline-flex items-center gap-2 text-green-600 font-semibold group-hover:gap-3 transition-all">
-                Explore Admin View <ArrowRight className="w-4 h-4" />
+                Open Admin Dashboard <ArrowRight className="w-4 h-4" />
               </span>
             </Link>
 
             {/* Employer Portal */}
             <Link
-              href={ROUTES.demoEmployer}
+              href="/demo/employer"
               className="group bg-white rounded-2xl border-2 border-slate-200 p-8 hover:border-purple-500 hover:shadow-lg transition-all"
             >
               <div className="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-500 transition">
                 <Building2 className="w-8 h-8 text-purple-600 group-hover:text-white transition" />
               </div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-3">Employer / Partner</h2>
+              <h2 className="text-2xl font-bold text-slate-900 mb-3">Employer Portal</h2>
               <p className="text-slate-600 mb-6">
-                Connect with candidates, manage hiring pipelines, and access apprenticeship tools.
+                Hiring pipeline, candidate matching, apprenticeship management, and incentive tracking.
               </p>
               <ul className="text-sm text-slate-500 space-y-2 mb-6">
                 <li>• Candidate pipeline</li>
                 <li>• Hiring incentives</li>
-                <li>• Apprenticeship tools</li>
-                <li>• Partner dashboard</li>
+                <li>• Apprenticeship tracking</li>
+                <li>• Wage progression</li>
               </ul>
               <span className="inline-flex items-center gap-2 text-purple-600 font-semibold group-hover:gap-3 transition-all">
-                Explore Employer View <ArrowRight className="w-4 h-4" />
+                Open Employer Portal <ArrowRight className="w-4 h-4" />
               </span>
             </Link>
           </div>
@@ -131,17 +131,17 @@ export default function DemoHubPage() {
           {/* CTA Section */}
           <div className="bg-slate-900 rounded-2xl p-8 sm:p-12 text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-              Want a guided walkthrough?
+              Interested in licensing?
             </h2>
             <p className="text-slate-300 mb-8 max-w-xl mx-auto">
-              We host live demos via Google Meet so we can tailor the walkthrough to your use case.
+              Schedule a call to discuss how the platform can work for your organization.
             </p>
             <Link
-              href={ROUTES.schedule}
+              href="/schedule"
               className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-700 transition text-lg"
             >
               <Calendar className="w-5 h-5" />
-              Schedule a Live Demo
+              Schedule a Call
             </Link>
           </div>
         </div>

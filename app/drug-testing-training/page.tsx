@@ -231,12 +231,12 @@ export default async function DrugTestingTrainingPage() {
               >
                 <div className="flex gap-2 mb-3">
                   {course.popular && (
-                    <div className="bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    <div className="bg-purple-500 text-white text-xs font-bold px-3 py-2 rounded-full">
                       MOST POPULAR
                     </div>
                   )}
                   {course.new && (
-                    <div className="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    <div className="bg-blue-500 text-white text-xs font-bold px-3 py-2 rounded-full">
                       NEW
                     </div>
                   )}
@@ -279,7 +279,7 @@ export default async function DrugTestingTrainingPage() {
                 className={`bg-white border-2 rounded-lg p-6 ${course.popular ? 'border-purple-500' : 'border-gray-200'}`}
               >
                 {course.popular && (
-                  <div className="bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">
+                  <div className="bg-purple-500 text-white text-xs font-bold px-3 py-2 rounded-full inline-block mb-3">
                     MOST POPULAR
                   </div>
                 )}

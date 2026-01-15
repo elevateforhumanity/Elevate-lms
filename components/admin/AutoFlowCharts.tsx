@@ -241,7 +241,7 @@ export function AutoFlowCharts() {
       </div>
       {isGenerating ? (
         <div className="text-center py-12">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+          <div className="inline-block animate-spin rounded-full h-11 w-11 border-b-2 border-blue-600" />
           <p className="mt-4 text-brand-text-muted">
             🤖 Copilot is generating your flow charts...
           </p>
@@ -270,10 +270,10 @@ export function AutoFlowCharts() {
                   Last updated: {new Date().toLocaleString()}
                 </span>
                 <div className="flex space-x-2">
-                  <button className="text-xs bg-brand-surface-dark text-brand-text-muted px-3 py-1 rounded hover:bg-brand-border">
+                  <button className="text-xs bg-brand-surface-dark text-brand-text-muted px-3 py-2 rounded hover:bg-brand-border">
                     📊 Export
                   </button>
-                  <button className="text-xs bg-brand-surface-dark text-brand-text-muted px-3 py-1 rounded hover:bg-brand-border">
+                  <button className="text-xs bg-brand-surface-dark text-brand-text-muted px-3 py-2 rounded hover:bg-brand-border">
                     📧 Email
                   </button>
                 </div>

@@ -39,7 +39,7 @@ export default function RiseUpFoundationPage() {
       </div>
 
       <section className="rounded-2xl border bg-white p-8 shadow-sm">
-        <div className="inline-block px-3 py-1 rounded-full bg-brand-green-100 text-green-800 text-xs font-semibold mb-4">
+        <div className="inline-block px-3 py-2 rounded-full bg-brand-green-100 text-green-800 text-xs font-semibold mb-4">
           FREE TAX HELP
         </div>
         <h1 className="text-4xl font-bold tracking-tight">

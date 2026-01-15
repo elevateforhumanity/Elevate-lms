@@ -57,7 +57,7 @@ export function FileUpload({ label, accept = '*', maxSize = 10, onUpload }: File
       {!file ? (
         <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-slate-300 rounded-lg cursor-pointer hover:border-orange-500 hover:bg-gray-50 transition-colors">
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
-            <Upload className="h-8 w-8 text-slate-400 mb-2" />
+            <Upload className="h-11 w-11 text-slate-400 mb-2" />
             <p className="text-sm text-black">
               <span className="font-semibold">Click to upload</span> or drag and drop
             </p>
@@ -75,7 +75,7 @@ export function FileUpload({ label, accept = '*', maxSize = 10, onUpload }: File
       ) : (
         <div className="flex items-center justify-between p-4 bg-slate-50 border border-slate-200 rounded-lg">
           <div className="flex items-center gap-3">
-            <FileText className="h-8 w-8 text-brand-orange-600" />
+            <FileText className="h-11 w-11 text-brand-orange-600" />
             <div>
               <div className="font-medium text-black">{file.name}</div>
               <div className="text-sm text-black">

@@ -46,9 +46,9 @@ export function VoiceAssistant() {
         title="Voice Assistant"
       >
         {isOpen ? (
-          <X className="h-6 w-6" />
+          <X className="h-10 w-10" />
         ) : (
-          <Mic className="h-6 w-6 group-hover:scale-110 transition-transform" />
+          <Mic className="h-10 w-10 group-hover:scale-110 transition-transform" />
         )}
       </button>
       {/* Assistant Panel */}

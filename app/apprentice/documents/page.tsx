@@ -145,13 +145,13 @@ export default function ApprenticeDocumentsPage() {
   function getStatusBadge(status: string) {
     switch (status) {
       case 'approved':
-        return <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Approved</span>;
+        return <span className="px-2 py-2 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Approved</span>;
       case 'rejected':
-        return <span className="px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">Rejected</span>;
+        return <span className="px-2 py-2 bg-red-100 text-red-700 text-xs font-semibold rounded-full">Rejected</span>;
       case 'expired':
-        return <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">Expired</span>;
+        return <span className="px-2 py-2 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">Expired</span>;
       default:
-        return <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Under Review</span>;
+        return <span className="px-2 py-2 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">Under Review</span>;
     }
   }
 

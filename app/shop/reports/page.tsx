@@ -224,7 +224,7 @@ export default function ShopReportsPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 py-1 text-xs rounded bg-blue-100 text-blue-800">
+                      <span className="px-2 py-2 text-xs rounded bg-blue-100 text-blue-800">
                         {report.report_type}
                       </span>
                     </td>
@@ -236,7 +236,7 @@ export default function ShopReportsPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span
-                        className={`px-2 py-1 text-xs rounded ${
+                        className={`px-2 py-2 text-xs rounded ${
                           report.status === 'approved'
                             ? 'bg-brand-green-100 text-green-800'
                             : report.status === 'pending'

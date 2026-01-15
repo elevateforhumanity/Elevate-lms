@@ -55,10 +55,10 @@ export function LearningPathCard({
       </div>
 
       <div className="flex flex-wrap gap-2 mb-4">
-        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getDifficultyColor()}`}>
+        <span className={`px-3 py-2 rounded-full text-xs font-semibold ${getDifficultyColor()}`}>
           {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
         </span>
-        <span className="px-3 py-1 rounded-full text-xs font-semibold text-blue-400 bg-blue-500/20">
+        <span className="px-3 py-2 rounded-full text-xs font-semibold text-blue-400 bg-blue-500/20">
           {pathType.replace("_", " ")}
         </span>
       </div>

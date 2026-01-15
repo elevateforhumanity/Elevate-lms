@@ -22,9 +22,9 @@ export default function ProgramCard({ program }: { program: Program }) {
       <div className="mt-2 text-sm text-zinc-700">{program.tagline}</div>
 
       <div className="mt-3 text-xs text-zinc-600 flex flex-wrap gap-2">
-        {program.duration ? <span className="rounded-full border px-2 py-1">{program.duration}</span> : null}
-        {program.format ? <span className="rounded-full border px-2 py-1">{program.format}</span> : null}
-        {program.level ? <span className="rounded-full border px-2 py-1">{program.level}</span> : null}
+        {program.duration ? <span className="rounded-full border px-3 py-2">{program.duration}</span> : null}
+        {program.format ? <span className="rounded-full border px-3 py-2">{program.format}</span> : null}
+        {program.level ? <span className="rounded-full border px-3 py-2">{program.level}</span> : null}
       </div>
 
       <div className="mt-4 font-extrabold text-zinc-900">View program →</div>

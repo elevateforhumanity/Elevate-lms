@@ -248,7 +248,7 @@ export default function AIPageBuilder() {
                 {currentTemplate?.defaultSections.map((section) => (
                   <span
                     key={section}
-                    className="px-3 py-1 bg-brand-surface text-brand-warning rounded-full text-sm"
+                    className="px-3 py-2 bg-brand-surface text-brand-warning rounded-full text-sm"
                   >
                     {section}
                   </span>
@@ -358,7 +358,7 @@ export default function AIPageBuilder() {
                   {generatedPage.sections.map((section) => (
                     <span
                       key={section}
-                      className="px-2 py-1 bg-brand-surface text-brand-info rounded text-xs"
+                      className="px-2 py-2 bg-brand-surface text-brand-info rounded text-xs"
                     >
                       {section}
                     </span>

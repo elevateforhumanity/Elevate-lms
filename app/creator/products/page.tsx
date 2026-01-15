@@ -130,7 +130,7 @@ export default async function CreatorProductsPage() {
                         {product.title}
                       </h3>
                       <span
-                        className={`text-xs px-2 py-1 rounded ${
+                        className={`text-xs px-2 py-2 rounded ${
                           statusColors[
                             product.status as keyof typeof statusColors
                           ] || statusColors.draft

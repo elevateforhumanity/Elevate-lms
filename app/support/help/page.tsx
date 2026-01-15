@@ -145,7 +145,7 @@ export default async function HelpCenterPage({
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className={`px-2 py-1 text-xs font-medium rounded ${
+                        <span className={`px-2 py-2 text-xs font-medium rounded ${
                           categories.find(c => c.slug === article.category)?.color || 'bg-gray-100 text-gray-600'
                         }`}>
                           {article.category}

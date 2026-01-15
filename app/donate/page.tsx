@@ -146,7 +146,7 @@ export default function DonatePage() {
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition border-2 border-teal-500">
-              <div className="inline-flex items-center gap-2 bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-bold mb-4">
+              <div className="inline-flex items-center gap-2 bg-teal-100 text-teal-700 px-3 py-2 rounded-full text-xs font-bold mb-4">
                 MOST POPULAR
               </div>
               <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg mb-4">

@@ -113,7 +113,7 @@ export default function JRIPage() {
                 <h3 className="text-lg font-bold text-black">
                   Introduction to Job Ready Indy
                 </h3>
-                <div className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-sm font-semibold">
                   Badge 1
                 </div>
               </div>
@@ -124,7 +124,7 @@ export default function JRIPage() {
                 <h3 className="text-lg font-bold text-black">
                   Professional Communication
                 </h3>
-                <div className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-sm font-semibold">
                   Badge 2
                 </div>
               </div>
@@ -135,7 +135,7 @@ export default function JRIPage() {
                 <h3 className="text-lg font-bold text-black">
                   Workplace Professionalism
                 </h3>
-                <div className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-sm font-semibold">
                   Badge 3
                 </div>
               </div>
@@ -146,7 +146,7 @@ export default function JRIPage() {
                 <h3 className="text-lg font-bold text-black">
                   Problem Solving & Critical Thinking
                 </h3>
-                <div className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-sm font-semibold">
                   Badge 4
                 </div>
               </div>
@@ -157,7 +157,7 @@ export default function JRIPage() {
                 <h3 className="text-lg font-bold text-black">
                   Teamwork & Collaboration
                 </h3>
-                <div className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-sm font-semibold">
                   Badge 5
                 </div>
               </div>
@@ -168,7 +168,7 @@ export default function JRIPage() {
                 <h3 className="text-lg font-bold text-black">
                   Career Planning
                 </h3>
-                <div className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="bg-blue-100 text-blue-700 px-3 py-2 rounded-full text-sm font-semibold">
                   Badge 6
                 </div>
               </div>
@@ -180,7 +180,7 @@ export default function JRIPage() {
                   Financial Literacy
                 </h3>
 
-                <div className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="bg-purple-100 text-purple-700 px-3 py-2 rounded-full text-sm font-semibold">
                   Bonus
                 </div>
               </div>
@@ -192,7 +192,7 @@ export default function JRIPage() {
                   Digital Literacy
                 </h3>
 
-                <div className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="bg-purple-100 text-purple-700 px-3 py-2 rounded-full text-sm font-semibold">
                   Bonus
                 </div>
               </div>

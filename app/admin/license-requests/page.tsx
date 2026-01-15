@@ -96,7 +96,7 @@ export default async function LicenseRequestsAdminPage() {
                   Submitted: {new Date(r.created_at).toLocaleString()}
                 </div>
 
-                <div className="mt-1 inline-block px-2 py-1 text-xs font-semibold rounded bg-zinc-100 text-zinc-700">
+                <div className="mt-1 inline-block px-2 py-2 text-xs font-semibold rounded bg-zinc-100 text-zinc-700">
                   Status: {r.status}
                 </div>
               </div>

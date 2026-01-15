@@ -46,7 +46,7 @@ export default function VideoManagerPage() {
           {uploadedVideos.length > 0 && (
             <div className="bg-white rounded-lg shadow-lg p-6">
               <h2 className="text-2xl font-bold text-black mb-4 flex items-center gap-2">
-                <Video className="h-6 w-6" />
+                <Video className="h-10 w-10" />
                 Uploaded Videos
               </h2>
               <div className="space-y-4">

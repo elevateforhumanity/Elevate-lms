@@ -60,7 +60,7 @@ export function VerifiedCredentials() {
               className="bg-white border-2 border-slate-200 rounded-lg p-6"
             >
               <div className="flex items-start justify-between mb-4">
-                <Shield className="h-6 w-6 text-green-600 flex-shrink-0" />
+                <Shield className="h-10 w-10 text-green-600 flex-shrink-0" />
                 <CheckCircle className="h-5 w-5 text-green-600" />
               </div>
 

@@ -175,7 +175,7 @@ export default function EmployerPartners() {
                   <div className="w-12 h-12    rounded-lg flex items-center justify-center">
                     <Building2 className="w-6 h-6 text-white" />
                   </div>
-                  <span className={`text-xs px-2 py-1 rounded-full ${industryColors[partner.industry] || 'bg-gray-100 text-black'}`}>
+                  <span className={`text-xs px-2 py-2 rounded-full ${industryColors[partner.industry] || 'bg-gray-100 text-black'}`}>
                     {partner.industry}
                   </span>
                 </div>
@@ -219,7 +219,7 @@ export default function EmployerPartners() {
                   <div className="w-12 h-12    rounded-lg flex items-center justify-center">
                     <Briefcase className="w-6 h-6 text-white" />
                   </div>
-                  <span className={`text-xs px-2 py-1 rounded-full ${industryColors[partner.industry] || 'bg-gray-100 text-black'}`}>
+                  <span className={`text-xs px-2 py-2 rounded-full ${industryColors[partner.industry] || 'bg-gray-100 text-black'}`}>
                     {partner.industry}
                   </span>
                 </div>

@@ -262,7 +262,7 @@ export default function VideoPlayer({
             <select
               value={playbackRate}
               onChange={(e) => handlePlaybackRateChange(parseFloat(e.target.value))}
-              className="bg-gray-700 text-white text-sm rounded px-2 py-1 cursor-pointer hover:bg-gray-600"
+              className="bg-gray-700 text-white text-sm rounded px-2 py-2 cursor-pointer hover:bg-gray-600"
             >
               <option value="0.5">0.5x</option>
               <option value="0.75">0.75x</option>

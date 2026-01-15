@@ -255,7 +255,7 @@ export default function BlogPage() {
                   />
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-black text-xs font-bold uppercase rounded-full">
+                    <span className="px-3 py-2 bg-white/90 backdrop-blur-sm text-black text-xs font-bold uppercase rounded-full">
                       {post.category}
                     </span>
                   </div>

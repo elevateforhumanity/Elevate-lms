@@ -309,7 +309,7 @@ export default function ApprenticeshipsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <DollarSign className="h-6 w-6 text-green-600" />
+                <DollarSign className="h-10 w-10 text-green-600" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Get Paid
@@ -320,7 +320,7 @@ export default function ApprenticeshipsPage() {
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <Award className="h-6 w-6 text-blue-600" />
+                <Award className="h-10 w-10 text-blue-600" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Earn Credentials
@@ -331,7 +331,7 @@ export default function ApprenticeshipsPage() {
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <Users className="h-6 w-6 text-purple-600" />
+                <Users className="h-10 w-10 text-purple-600" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Expert Mentors
@@ -342,7 +342,7 @@ export default function ApprenticeshipsPage() {
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="h-6 w-6 text-orange-600" />
+                <TrendingUp className="h-10 w-10 text-orange-600" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Career Growth
@@ -391,7 +391,7 @@ export default function ApprenticeshipsPage() {
                     </div>
                   </div>
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-4">
-                    <Briefcase className="h-6 w-6 text-blue-600" />
+                    <Briefcase className="h-10 w-10 text-blue-600" />
                   </div>
                 </div>
 
@@ -517,7 +517,7 @@ export default function ApprenticeshipsPage() {
                     {item.step}
                   </div>
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <item.icon className="h-6 w-6 text-blue-600" />
+                    <item.icon className="h-10 w-10 text-blue-600" />
                   </div>
                   <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                     {item.title}
@@ -528,7 +528,7 @@ export default function ApprenticeshipsPage() {
                 </div>
                 {index < 3 && (
                   <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <ArrowRight className="h-6 w-6 text-black" />
+                    <ArrowRight className="h-10 w-10 text-black" />
                   </div>
                 )}
               </div>
@@ -570,7 +570,7 @@ export default function ApprenticeshipsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="h-8 w-8 text-blue-600" />
+                <Phone className="h-11 w-11 text-blue-600" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Call Us
@@ -584,7 +584,7 @@ export default function ApprenticeshipsPage() {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Mail className="h-8 w-8 text-green-600" />
+                <Mail className="h-11 w-11 text-green-600" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Email Us
@@ -598,7 +598,7 @@ export default function ApprenticeshipsPage() {
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="h-8 w-8 text-purple-600" />
+                <MapPin className="h-11 w-11 text-purple-600" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-black mb-2">
                 Visit Us

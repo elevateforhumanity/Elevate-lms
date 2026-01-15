@@ -205,7 +205,7 @@ export function AdminReportingDashboard() {
                     <td className="py-3 px-4 font-medium">{program.name}</td>
                     <td className="py-3 px-4 text-right">{program.students}</td>
                     <td className="py-3 px-4 text-right">
-                      <span className="px-2 py-1 bg-green-100 text-green-800 rounded text-sm font-semibold">
+                      <span className="px-2 py-2 bg-green-100 text-green-800 rounded text-sm font-semibold">
                         {program.completion}%
                       </span>
                     </td>
@@ -213,7 +213,7 @@ export function AdminReportingDashboard() {
                       ${program.revenue.toLocaleString()}
                     </td>
                     <td className="py-3 px-4 text-right">
-                      <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm font-semibold">
+                      <span className="px-2 py-2 bg-blue-100 text-blue-800 rounded text-sm font-semibold">
                         {program.placement}%
                       </span>
                     </td>

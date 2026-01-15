@@ -29,7 +29,7 @@ export default function SystemMonitorPage() {
   if (loading) {
     return (
       <div className="p-8">
-        <Activity className="h-8 w-8 animate-spin text-blue-600" />
+        <Activity className="h-11 w-11 animate-spin text-blue-600" />
         <p>Loading...</p>
       </div>
     );
@@ -39,7 +39,7 @@ export default function SystemMonitorPage() {
     <div className="p-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold mb-8 flex items-center gap-3">
-          <Activity className="h-8 w-8 text-blue-600" />
+          <Activity className="h-11 w-11 text-blue-600" />
           System Monitor
         </h1>
 
@@ -61,7 +61,7 @@ export default function SystemMonitorPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {/* Database */}
           <div className="bg-white rounded-xl border p-6">
-            <Database className="h-8 w-8 text-blue-600 mb-4" />
+            <Database className="h-11 w-11 text-blue-600 mb-4" />
             <h3 className="font-bold mb-2">Database</h3>
             <div className="text-sm">
               <div>Status: {status?.checks?.database?.status || 'unknown'}</div>
@@ -71,7 +71,7 @@ export default function SystemMonitorPage() {
 
           {/* System */}
           <div className="bg-white rounded-xl border p-6">
-            <Server className="h-8 w-8 text-purple-600 mb-4" />
+            <Server className="h-11 w-11 text-purple-600 mb-4" />
             <h3 className="font-bold mb-2">System</h3>
             <div className="text-sm">
               <div>Status: {status?.checks?.system?.status || 'unknown'}</div>
@@ -81,7 +81,7 @@ export default function SystemMonitorPage() {
 
           {/* Memory */}
           <div className="bg-white rounded-xl border p-6">
-            <Zap className="h-8 w-8 text-orange-600 mb-4" />
+            <Zap className="h-11 w-11 text-orange-600 mb-4" />
             <h3 className="font-bold mb-2">Memory</h3>
             <div className="text-sm">
               <div>Used: {status?.checks?.system?.memory?.used || 0} MB</div>
@@ -91,7 +91,7 @@ export default function SystemMonitorPage() {
 
           {/* Environment */}
           <div className="bg-white rounded-xl border p-6">
-            <Users className="h-8 w-8 text-green-600 mb-4" />
+            <Users className="h-11 w-11 text-green-600 mb-4" />
             <h3 className="font-bold mb-2">Environment</h3>
             <div className="text-sm">
               <div>Status: {status?.checks?.environment?.status || 'unknown'}</div>

@@ -165,7 +165,7 @@ export default async function AdminDashboardOrchestrated() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="bg-red-50 border-2 border-red-600 rounded-lg p-4 sm:p-6">
             <div className="flex items-start gap-3 sm:gap-4">
-              <AlertTriangle className="h-6 w-6 sm:h-8 sm:w-8 text-red-600 flex-shrink-0" />
+              <AlertTriangle className="h-10 w-10 sm:h-8 sm:w-8 text-red-600 flex-shrink-0" />
               <div className="flex-1">
                 <h2 className="text-lg sm:text-xl font-bold text-red-900 mb-2 sm:mb-3">
                   Critical Issues Requiring Attention
@@ -180,7 +180,7 @@ export default async function AdminDashboardOrchestrated() {
                       </span>
                       <Link
                         href="/admin/students?filter=at-risk"
-                        className="px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition text-center"
+                        className="px-3 sm:px-4 py-2.5 sm:py-2 text-sm sm:text-base bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition text-center"
                       >
                         Review
                       </Link>
@@ -194,7 +194,7 @@ export default async function AdminDashboardOrchestrated() {
                       </span>
                       <Link
                         href="/admin/compliance?filter=overdue"
-                        className="px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition text-center"
+                        className="px-3 sm:px-4 py-2.5 sm:py-2 text-sm sm:text-base bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition text-center"
                       >
                         Review
                       </Link>
@@ -211,7 +211,7 @@ export default async function AdminDashboardOrchestrated() {
                       </span>
                       <Link
                         href="/admin/program-holders?filter=low-compliance"
-                        className="px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition text-center"
+                        className="px-3 sm:px-4 py-2.5 sm:py-2 text-sm sm:text-base bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition text-center"
                       >
                         Review
                       </Link>
@@ -429,7 +429,7 @@ export default async function AdminDashboardOrchestrated() {
             href="/admin/students"
             className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-blue-600 hover:shadow-lg transition"
           >
-            <Users className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 mb-2 sm:mb-3" />
+            <Users className="h-10 w-10 sm:h-8 sm:w-8 text-blue-600 mb-2 sm:mb-3" />
             <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
               Manage Students
             </h3>
@@ -442,7 +442,7 @@ export default async function AdminDashboardOrchestrated() {
             href="/admin/program-holders"
             className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-purple-600 hover:shadow-lg transition"
           >
-            <Building2 className="h-6 w-6 sm:h-8 sm:w-8 text-purple-600 mb-2 sm:mb-3" />
+            <Building2 className="h-10 w-10 sm:h-8 sm:w-8 text-purple-600 mb-2 sm:mb-3" />
             <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
               Program Holders
             </h3>
@@ -455,7 +455,7 @@ export default async function AdminDashboardOrchestrated() {
             href="/admin/employers"
             className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-green-600 hover:shadow-lg transition"
           >
-            <Briefcase className="h-6 w-6 sm:h-8 sm:w-8 text-green-600 mb-2 sm:mb-3" />
+            <Briefcase className="h-10 w-10 sm:h-8 sm:w-8 text-green-600 mb-2 sm:mb-3" />
             <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
               Employers
             </h3>
@@ -468,7 +468,7 @@ export default async function AdminDashboardOrchestrated() {
             href="/admin/reports"
             className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 sm:p-6 hover:border-orange-600 hover:shadow-lg transition"
           >
-            <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600 mb-2 sm:mb-3" />
+            <FileText className="h-10 w-10 sm:h-8 sm:w-8 text-orange-600 mb-2 sm:mb-3" />
             <h3 className="font-bold text-black mb-1 sm:mb-2 text-sm sm:text-base">
               Generate Reports
             </h3>

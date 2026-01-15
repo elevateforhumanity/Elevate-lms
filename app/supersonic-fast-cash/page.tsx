@@ -335,7 +335,7 @@ export default function SupersonicFastCashPage() {
             </div>
 
             <div className="bg-orange-600 text-white rounded-2xl p-8 shadow-xl border-4 border-orange-400 relative">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black px-4 py-1 rounded-full text-sm font-bold">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-black px-4 py-2 rounded-full text-sm font-bold">
                 MOST POPULAR
               </div>
               <h3 className="text-2xl font-bold mb-2">Standard Return</h3>

@@ -221,7 +221,7 @@ export default async function AtRiskStudentsPage() {
                           <h3 className="font-bold text-black text-lg">
                             {student?.first_name} {student?.last_name}
                           </h3>
-                          <span className="px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded">
+                          <span className="px-2 py-2 bg-red-100 text-red-700 text-xs font-semibold rounded">
                             {risk.overdue_count} OVERDUE
                           </span>
                         </div>

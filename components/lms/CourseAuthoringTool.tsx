@@ -418,7 +418,7 @@ export default function CourseAuthoringTool() {
 
                         <button
                           onClick={() => addLesson(module.id)}
-                          className="ml-8 mt-2 flex items-center gap-2 px-3 py-1 text-sm text-blue-600 hover:bg-gray-50 rounded"
+                          className="ml-8 mt-2 flex items-center gap-2 px-3 py-2 text-sm text-blue-600 hover:bg-gray-50 rounded"
                         >
                           <Plus className="w-3 h-3" />
                           Add Lesson

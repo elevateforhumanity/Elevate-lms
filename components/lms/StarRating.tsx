@@ -4,7 +4,7 @@ type Props = { rating: number; count?: number; size?: "sm" | "md" | "lg" };
 
 export function StarRating({ rating, count, size = "md" }: Props) {
   const clamped = Math.max(0, Math.min(5, rating || 0));
-  const sizeClass = size === "sm" ? "h-3 w-3" : size === "lg" ? "h-6 w-6" : "h-4 w-4";
+  const sizeClass = size === "sm" ? "h-3 w-3" : size === "lg" ? "h-10 w-10" : "h-4 w-4";
 
   return (
     <div className="flex items-center gap-2">

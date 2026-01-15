@@ -278,7 +278,7 @@ export function LearningBarrierAnalyzer() {
       </div>
       {isAnalyzing && (
         <div className="text-center py-8 bg-blue-50 rounded-lg mb-6">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-4" />
+          <div className="inline-block animate-spin rounded-full h-11 w-11 border-b-2 border-blue-600 mb-4" />
           <p className="text-brand-info font-medium">
             🤖 AI is analyzing learning patterns and identifying barriers...
           </p>
@@ -308,7 +308,7 @@ export function LearningBarrierAnalyzer() {
                   </p>
                 </div>
                 <span
-                  className={`px-2 py-1 text-xs font-medium rounded-full border ${getSeverityColor(barrier.severity)}`}
+                  className={`px-2 py-2 text-xs font-medium rounded-full border ${getSeverityColor(barrier.severity)}`}
                 >
                   {barrier.severity.toUpperCase()}
                 </span>
@@ -334,7 +334,7 @@ export function LearningBarrierAnalyzer() {
                   <h5 className="font-medium text-green-900">
                     Au Solution
                   </h5>
-                  <span className="ml-auto text-xs bg-green-200 text-brand-success px-2 py-1 rounded">
+                  <span className="ml-auto text-xs bg-green-200 text-brand-success px-2 py-2 rounded">
                     {barrier.autoRemediation.effectiveness}% effective
                   </span>
                 </div>
@@ -356,7 +356,7 @@ export function LearningBarrierAnalyzer() {
                       (resource, index) => (
                         <span
                           key={index}
-                          className="text-xs bg-brand-surface text-green-700 px-2 py-1 rounded"
+                          className="text-xs bg-brand-surface text-green-700 px-2 py-2 rounded"
                         >
                           {resource}
                         </span>
@@ -365,10 +365,10 @@ export function LearningBarrierAnalyzer() {
                   </div>
                 </div>
                 <div className="flex space-x-2">
-                  <button className="text-xs bg-brand-success text-white px-3 py-1 rounded hover:bg-brand-success-hover">
+                  <button className="text-xs bg-brand-success text-white px-3 py-2 rounded hover:bg-brand-success-hover">
                     🚀 Deploy Now
                   </button>
-                  <button className="text-xs bg-brand-surface text-green-700 px-3 py-1 rounded hover:bg-green-200">
+                  <button className="text-xs bg-brand-surface text-green-700 px-3 py-2 rounded hover:bg-green-200">
                     📝 Customize
                   </button>
                 </div>
@@ -422,7 +422,7 @@ export function LearningBarrierAnalyzer() {
                       {student.strugglingAreas.map((area, index) => (
                         <span
                           key={index}
-                          className="text-xs bg-brand-surface text-red-700 px-2 py-1 rounded"
+                          className="text-xs bg-brand-surface text-red-700 px-2 py-2 rounded"
                         >
                           {area}
                         </span>
@@ -455,7 +455,7 @@ export function LearningBarrierAnalyzer() {
                         .map((action, index) => (
                           <div
                             key={index}
-                            className="text-xs bg-brand-surface text-brand-info px-2 py-1 rounded"
+                            className="text-xs bg-brand-surface text-brand-info px-2 py-2 rounded"
                           >
                             🤖 {action}
                           </div>

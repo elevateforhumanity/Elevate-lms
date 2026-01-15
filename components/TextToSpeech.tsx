@@ -164,7 +164,7 @@ export default function TextToSpeech({ text, autoPlay = false, className = '' }:
         <select
           value={rate}
           onChange={(e) => setRate(parseFloat(e.target.value))}
-          className="text-xs px-2 py-1 border border-slate-300 rounded bg-white"
+          className="text-xs px-2 py-2 border border-slate-300 rounded bg-white"
           disabled={isPlaying}
         >
           <option value="0.5">0.5x</option>
@@ -186,7 +186,7 @@ export default function TextToSpeech({ text, autoPlay = false, className = '' }:
               const voice = voices.find(v => v.name === e.target.value);
               setSelectedVoice(voice || null);
             }}
-            className="text-xs px-2 py-1 border border-slate-300 rounded bg-white max-w-[150px]"
+            className="text-xs px-2 py-2 border border-slate-300 rounded bg-white max-w-[150px]"
             disabled={isPlaying}
           >
             {voices.filter(v => v.lang.startsWith('en')).map((voice) => (

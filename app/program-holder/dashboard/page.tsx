@@ -121,7 +121,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
           <div className="grid md:grid-cols-4 gap-4">
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
               <div className="flex items-center justify-between mb-2">
-                <Users className="h-8 w-8 text-blue-600" />
+                <Users className="h-11 w-11 text-blue-600" />
                 <span className="text-3xl font-bold text-black">
                   {stateData.metrics.activeStudents}
                 </span>
@@ -138,7 +138,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
             >
               <div className="flex items-center justify-between mb-2">
                 <AlertTriangle
-                  className={`h-8 w-8 ${
+                  className={`h-11 w-11 ${
                     stateData.metrics.atRiskStudents > 0
                       ? 'text-yellow-600'
                       : 'text-slate-400'
@@ -174,7 +174,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
             >
               <div className="flex items-center justify-between mb-2">
                 <FileText
-                  className={`h-8 w-8 ${
+                  className={`h-11 w-11 ${
                     stateData.metrics.pendingVerifications > 5
                       ? 'text-orange-600'
                       : 'text-slate-400'
@@ -210,7 +210,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
             >
               <div className="flex items-center justify-between mb-2">
                 <AlertTriangle
-                  className={`h-8 w-8 ${
+                  className={`h-11 w-11 ${
                     stateData.metrics.overdueReports > 0
                       ? 'text-red-600'
                       : 'text-green-600'
@@ -249,7 +249,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Complete Verification"
                   description="Required before accepting students"
                   href="/program-holder/verification"
-                  icon={<Shield className="h-6 w-6" />}
+                  icon={<Shield className="h-10 w-10" />}
                   badge="Required"
                 />
               )}
@@ -259,7 +259,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Manage Students"
                   description={`${stateData.metrics.activeStudents} active student${stateData.metrics.activeStudents !== 1 ? 's' : ''}`}
                   href="/program-holder/students"
-                  icon={<Users className="h-6 w-6" />}
+                  icon={<Users className="h-10 w-10" />}
                   badge={
                     stateData.metrics.atRiskStudents > 0
                       ? `${stateData.metrics.atRiskStudents} At Risk`
@@ -273,7 +273,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Submit Reports"
                   description="Compliance reporting and documentation"
                   href="/program-holder/reports"
-                  icon={<FileText className="h-6 w-6" />}
+                  icon={<FileText className="h-10 w-10" />}
                   badge={
                     stateData.metrics.overdueReports > 0
                       ? `${stateData.metrics.overdueReports} Overdue`
@@ -287,7 +287,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Compliance Dashboard"
                   description={`Score: ${complianceScore}%`}
                   href="/program-holder/compliance"
-                  icon={<Shield className="h-6 w-6" />}
+                  icon={<Shield className="h-10 w-10" />}
                   badge={
                     complianceScore < 70
                       ? 'Action Required'
@@ -303,7 +303,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Documentation"
                   description="Forms, templates, and resources"
                   href="/program-holder/documentation"
-                  icon={<Book className="h-6 w-6" />}
+                  icon={<Book className="h-10 w-10" />}
                 />
               )}
 
@@ -312,7 +312,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Training Resources"
                   description="Learn how to use the platform"
                   href="/program-holder/training"
-                  icon={<Book className="h-6 w-6" />}
+                  icon={<Book className="h-10 w-10" />}
                 />
               )}
 
@@ -321,7 +321,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                   title="Get Support"
                   description="Contact your compliance advisor"
                   href="/program-holder/support"
-                  icon={<Users className="h-6 w-6" />}
+                  icon={<Users className="h-10 w-10" />}
                 />
               )}
             </div>
@@ -349,7 +349,7 @@ export default async function ProgramHolderDashboardOrchestrated() {
                       </div>
                     </div>
                     {student.at_risk && (
-                      <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full">
+                      <span className="px-3 py-2 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full">
                         At Risk
                       </span>
                     )}

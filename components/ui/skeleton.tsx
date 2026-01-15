@@ -20,7 +20,7 @@ export function Skeleton({ className }: SkeletonProps) {
 export function CardSkeleton() {
   return (
     <div className="bg-white rounded-xl shadow-sm border p-6">
-      <Skeleton className="h-8 w-8 rounded-lg mb-4" />
+      <Skeleton className="h-11 w-11 rounded-lg mb-4" />
       <Skeleton className="h-8 w-24 mb-2" />
       <Skeleton className="h-4 w-32" />
     </div>
@@ -43,7 +43,7 @@ export function TableRowSkeleton() {
         <Skeleton className="h-6 w-16 rounded-full" />
       </td>
       <td className="px-6 py-4">
-        <Skeleton className="h-8 w-8 rounded" />
+        <Skeleton className="h-11 w-11 rounded" />
       </td>
     </tr>
   );
@@ -111,7 +111,7 @@ export function BlogCardSkeleton() {
         <Skeleton className="h-4 w-full mb-1" />
         <Skeleton className="h-4 w-3/4 mb-4" />
         <div className="flex items-center gap-4">
-          <Skeleton className="h-8 w-8 rounded-full" />
+          <Skeleton className="h-11 w-11 rounded-full" />
           <Skeleton className="h-4 w-32" />
         </div>
       </div>

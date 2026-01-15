@@ -55,7 +55,7 @@ function getStatusBadge(status: string) {
   const badge = badges[status] || badges.submitted;
   return (
     <span
-      className={`px-3 py-1 rounded-full text-xs font-semibold ${badge.color}`}
+      className={`px-3 py-2 rounded-full text-xs font-semibold ${badge.color}`}
     >
       {badge.text}
     </span>

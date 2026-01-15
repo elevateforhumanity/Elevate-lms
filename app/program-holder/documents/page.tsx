@@ -135,7 +135,7 @@ export default async function ProgramHolderDocumentsPage() {
                     </div>
                     {uploaded && (
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusBadge(uploaded.status)}`}
+                        className={`px-3 py-2 rounded-full text-xs font-semibold border ${getStatusBadge(uploaded.status)}`}
                       >
                         {uploaded.status.charAt(0).toUpperCase() +
                           uploaded.status.slice(1)}
@@ -181,7 +181,7 @@ export default async function ProgramHolderDocumentsPage() {
                   </div>
                   <div className="flex items-center gap-3">
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusBadge(doc.status)}`}
+                      className={`px-3 py-2 rounded-full text-xs font-semibold border ${getStatusBadge(doc.status)}`}
                     >
                       {doc.status.charAt(0).toUpperCase() + doc.status.slice(1)}
                     </span>

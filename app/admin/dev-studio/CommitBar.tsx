@@ -15,7 +15,7 @@ export default function CommitBar({ repo, branch, path, content, sha }) {
 
       <button
         onClick={save}
-        className="px-3 py-1 bg-brand-blue-600 rounded hover:bg-brand-blue-700"
+        className="px-3 py-2 bg-brand-blue-600 rounded hover:bg-brand-blue-700"
       >
         Save
       </button>

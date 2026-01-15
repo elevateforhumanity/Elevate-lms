@@ -91,13 +91,13 @@ export default function FloatingChatWidget() {
           className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 text-white shadow-2xl hover:bg-blue-700 transition-all hover:scale-110"
           aria-label="Open chat"
         >
-          <svg className="h-8 w-8" fill="none" stroke="currentColor"
+          <svg className="h-11 w-11" fill="none" stroke="currentColor"
 viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
 d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
           </svg>
           {/* Notification badge */}
-          <span className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-brand-orange-500 text-xs font-bold">
+          <span className="absolute -top-1 -right-1 flex h-10 w-10 items-center justify-center rounded-full bg-brand-orange-500 text-xs font-bold">
             AI
           </span>
         </button>
@@ -174,7 +174,7 @@ d="M6 18L18 6M6 6l12 12" />
                   <button
                     key={index}
                     onClick={() => setInput(action)}
-                    className="text-xs px-3 py-1.5 bg-white border border-slate-200 rounded-full hover:bg-slate-100 transition"
+                    className="text-xs px-3 py-2.5 bg-white border border-slate-200 rounded-full hover:bg-slate-100 transition"
                   >
                     {action}
                   </button>

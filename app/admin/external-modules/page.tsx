@@ -204,7 +204,7 @@ export default function ExternalModulesPage() {
         {pendingApprovals.length > 0 && (
           <div className="bg-white rounded-lg shadow-sm border p-6 mb-8">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-              <AlertCircle className="h-6 w-6 text-brand-orange-600" />
+              <AlertCircle className="h-10 w-10 text-brand-orange-600" />
               Pending Approvals
             </h2>
             <div className="space-y-4">

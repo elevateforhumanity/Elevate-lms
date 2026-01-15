@@ -306,7 +306,7 @@ export default function RevenueShareCalculator() {
             </div>
 
             <div className="border-2 border-blue-500 rounded-lg p-6 bg-blue-50">
-              <div className="inline-block bg-blue-600 text-white text-xs px-2 py-1 rounded mb-2">
+              <div className="inline-block bg-blue-600 text-white text-xs px-2 py-2 rounded mb-2">
                 POPULAR
               </div>
               <h3 className="font-bold text-lg mb-4">Full-Time Office</h3>

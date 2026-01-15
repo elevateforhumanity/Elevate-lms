@@ -153,7 +153,7 @@ export default function DiscussionsClient({
           <div className="flex gap-2">
             <button
               onClick={() => setSortBy('recent')}
-              className={`px-3 py-1 text-sm rounded-lg ${
+              className={`px-3 py-2 text-sm rounded-lg ${
                 sortBy === 'recent'
                   ? 'bg-brand-orange-500 text-white'
                   : 'bg-white text-black border border-slate-200'
@@ -163,7 +163,7 @@ export default function DiscussionsClient({
             </button>
             <button
               onClick={() => setSortBy('popular')}
-              className={`px-3 py-1 text-sm rounded-lg ${
+              className={`px-3 py-2 text-sm rounded-lg ${
                 sortBy === 'popular'
                   ? 'bg-brand-orange-500 text-white'
                   : 'bg-white text-black border border-slate-200'

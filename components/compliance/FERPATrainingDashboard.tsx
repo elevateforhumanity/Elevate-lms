@@ -280,7 +280,7 @@ export default function FERPATrainingDashboard({
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
+                          <span className="px-2 py-2 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
                             {record.profiles.role}
                           </span>
                         </td>
@@ -301,11 +301,11 @@ export default function FERPATrainingDashboard({
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           {isExpired ? (
-                            <span className="px-2 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800">
+                            <span className="px-2 py-2 text-xs font-medium rounded-full bg-red-100 text-red-800">
                               Expired
                             </span>
                           ) : (
-                            <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                            <span className="px-2 py-2 text-xs font-medium rounded-full bg-green-100 text-green-800">
                               Current
                             </span>
                           )}
@@ -385,7 +385,7 @@ export default function FERPATrainingDashboard({
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className="px-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
+                          <span className="px-2 py-2 text-xs font-medium rounded-full bg-blue-100 text-blue-800">
                             {user.role}
                           </span>
                         </td>

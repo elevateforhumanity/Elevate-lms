@@ -201,21 +201,21 @@ export function ProfessionalVideoPlayer({
           <button
             type="button"
             onClick={() => skip(-10)}
-            className="rounded-full border px-3 py-1 hover:bg-slate-100 transition"
+            className="rounded-full border px-3 py-2 hover:bg-slate-100 transition"
           >
             -10s
           </button>
           <button
             type="button"
             onClick={togglePlay}
-            className="rounded-full border px-4 py-1 font-semibold hover:bg-slate-100 transition"
+            className="rounded-full border px-4 py-2 font-semibold hover:bg-slate-100 transition"
           >
             Play / Pause
           </button>
           <button
             type="button"
             onClick={() => skip(10)}
-            className="rounded-full border px-3 py-1 hover:bg-slate-100 transition"
+            className="rounded-full border px-3 py-2 hover:bg-slate-100 transition"
           >
             +10s
           </button>
@@ -227,7 +227,7 @@ export function ProfessionalVideoPlayer({
             <select
               value={speed}
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => changeSpeed(Number(e.target.value))}
-              className="rounded border px-2 py-1 text-sm"
+              className="rounded border px-2 py-2 text-sm"
             >
               <option value={0.5}>0.5x</option>
               <option value={0.75}>0.75x</option>
@@ -241,7 +241,7 @@ export function ProfessionalVideoPlayer({
           <button
             type="button"
             onClick={enterPiP}
-            className="rounded-full border px-3 py-1 hover:bg-slate-100 transition"
+            className="rounded-full border px-3 py-2 hover:bg-slate-100 transition"
           >
             PiP
           </button>
@@ -250,7 +250,7 @@ export function ProfessionalVideoPlayer({
             <button
               type="button"
               onClick={toggleCaptions}
-              className="rounded-full border px-3 py-1 hover:bg-slate-100 transition"
+              className="rounded-full border px-3 py-2 hover:bg-slate-100 transition"
             >
               CC
             </button>

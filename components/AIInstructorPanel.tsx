@@ -96,7 +96,7 @@ export function AIInstructorPanel({ instructor, programTitle }: AIInstructorPane
   return (
     <div className="flex h-[480px] flex-col rounded-xl border border-slate-800 bg-slate-950/80 text-xs">
       <div className="flex items-center gap-2 border-b border-slate-800 bg-slate-950 px-3 py-2">
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-base">
+        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-slate-800 text-base">
           {instructor.avatarEmoji || "🎓"}
         </div>
         <div>

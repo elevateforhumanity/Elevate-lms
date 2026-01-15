@@ -121,9 +121,9 @@ export function AdaptiveLearningPath() {
                 Based on your current skills, learning patterns, and career goals, we've curated these learning paths for you.
               </p>
               <div className="flex gap-4 text-sm">
-                <span className="px-3 py-1 bg-white rounded">JavaScript: Advanced</span>
-                <span className="px-3 py-1 bg-white rounded">Goal: Full-Stack Developer</span>
-                <span className="px-3 py-1 bg-white rounded">Learning Style: Visual</span>
+                <span className="px-3 py-2 bg-white rounded">JavaScript: Advanced</span>
+                <span className="px-3 py-2 bg-white rounded">Goal: Full-Stack Developer</span>
+                <span className="px-3 py-2 bg-white rounded">Learning Style: Visual</span>
               </div>
             </div>
           </div>

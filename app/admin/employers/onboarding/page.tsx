@@ -87,7 +87,7 @@ export default async function EmployerOnboardingReview() {
                       </td>
                       <td className="px-6 py-4">
                         <span
-                          className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold ${
+                          className={`inline-flex items-center gap-1 px-3 py-2 rounded-full text-xs font-bold ${
                             statusColors[onboarding.status] ||
                             'bg-slate-100 text-black'
                           }`}

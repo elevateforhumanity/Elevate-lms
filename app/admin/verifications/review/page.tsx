@@ -230,7 +230,7 @@ export default async function AdminVerificationReviewPage() {
                   </div>
                   <div className="flex items-center gap-3">
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusBadge(verification.status)}`}
+                      className={`px-3 py-2 rounded-full text-xs font-semibold border ${getStatusBadge(verification.status)}`}
                     >
                       {verification.status.charAt(0).toUpperCase() +
                         verification.status.slice(1)}

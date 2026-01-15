@@ -324,7 +324,7 @@ export default async function StudentPortalPage() {
                     {announcement.title}
                   </h3>
                   <span
-                    className={`text-xs px-2 py-1 rounded-full ${
+                    className={`text-xs px-2 py-2 rounded-full ${
                       announcement.type === 'important'
                         ? 'bg-red-100 text-red-700'
                         : announcement.type === 'event'

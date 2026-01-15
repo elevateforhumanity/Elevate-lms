@@ -239,7 +239,7 @@ export default function DrugTestingPage() {
                 className={`bg-white border-2 rounded-lg p-6 ${test.popular ? 'border-blue-500' : 'border-gray-200'}`}
               >
                 {test.popular && (
-                  <div className="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">
+                  <div className="bg-blue-500 text-white text-xs font-bold px-3 py-2 rounded-full inline-block mb-3">
                     MOST POPULAR
                   </div>
                 )}

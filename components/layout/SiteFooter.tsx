@@ -120,6 +120,7 @@ export default function SiteFooter() {
               <li><Link href="/admin" className="hover:text-white transition">Admin</Link></li>
               <li><Link href="/staff-portal" className="hover:text-white transition">Staff</Link></li>
               <li><Link href="/lms" className="hover:text-white transition">LMS</Link></li>
+              <li><Link href="/store" className="hover:text-white transition">Store</Link></li>
               <li><Link href="/login" className="hover:text-white transition">Login</Link></li>
               <li><Link href="/signup" className="hover:text-white transition">Sign Up</Link></li>
             </ul>

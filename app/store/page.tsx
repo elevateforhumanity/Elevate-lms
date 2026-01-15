@@ -50,11 +50,11 @@ export default function StorePage() {
                 Platform Licensing
               </Link>
               <Link
-                href={ROUTES.schedule}
+                href="/demo"
                 className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-orange-700 transition"
               >
-                <Calendar className="w-4 h-4" />
-                Schedule Demo
+                <ArrowRight className="w-4 h-4" />
+                Preview Demo
               </Link>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function StorePage() {
               <div className="grid lg:grid-cols-5">
                 {/* Left - Info (3 cols) */}
                 <div className="lg:col-span-3 p-8 lg:p-10">
-                  <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                  <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-3 py-2 rounded-full text-sm font-semibold mb-4">
                     <Building2 className="w-4 h-4" />
                     Platform Licensing
                   </div>

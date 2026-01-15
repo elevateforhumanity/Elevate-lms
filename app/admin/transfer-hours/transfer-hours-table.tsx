@@ -214,7 +214,7 @@ export function TransferHoursTable({
                     </td>
                     <td className="px-6 py-4">
                       <span
-                        className={`px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(request.status)}`}
+                        className={`px-2 py-2 text-xs font-semibold rounded-full ${getStatusColor(request.status)}`}
                       >
                         {request.status}
                       </span>
@@ -383,7 +383,7 @@ export function TransferHoursTable({
                   <p className="text-black">
                     <span className="font-medium">Status:</span>{' '}
                     <span
-                      className={`px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(selectedRequest.status)}`}
+                      className={`px-2 py-2 text-xs font-semibold rounded-full ${getStatusColor(selectedRequest.status)}`}
                     >
                       {selectedRequest.status}
                     </span>

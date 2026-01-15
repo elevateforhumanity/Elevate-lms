@@ -78,7 +78,7 @@ export function ModuleListForProgram({ programId, modules }: Props) {
                     <button
                       type="button"
                       onClick={() => togglePublish(m.id)}
-                      className={`rounded-md px-3 py-1.5 font-semibold ${
+                      className={`rounded-md px-3 py-2.5 font-semibold ${
                         published[m.id]
                           ? "bg-green-600 text-white hover:bg-green-700"
                           : "bg-slate-800 text-slate-100 hover:bg-slate-700"

@@ -227,9 +227,9 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-10 w-10" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-10 w-10" />
               )}
             </button>
           </div>
@@ -255,7 +255,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearchClick }) => {
                   className="p-2 text-black hover:text-black hover:bg-slate-100 rounded-lg transition-all"
                   aria-label="Close menu"
                 >
-                  <X className="h-6 w-6" />
+                  <X className="h-10 w-10" />
                 </button>
               </div>
 

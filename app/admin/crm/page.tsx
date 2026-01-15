@@ -289,7 +289,7 @@ export default async function CRMHubPage() {
                         <span className="text-lg font-bold text-black">
                           ${Number(deal.amount).toLocaleString()}
                         </span>
-                        <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded capitalize">
+                        <span className="px-2 py-2 bg-blue-100 text-blue-700 text-xs font-semibold rounded capitalize">
                           {deal.stage}
                         </span>
                       </div>

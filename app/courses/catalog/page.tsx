@@ -552,7 +552,7 @@ export default function CoursesCatalogPage() {
             >
               {/* Provider Badge */}
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-semibold text-brand-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                <span className="text-xs font-semibold text-brand-blue-600 bg-blue-50 px-3 py-2 rounded-full">
                   {course.providerName}
                 </span>
                 <span className="text-xs text-slate-500">

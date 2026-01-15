@@ -44,7 +44,7 @@ function OnboardingItem({
       {!done && action && href && (
         <Link
           href={href}
-          className="px-3 py-1 text-sm font-semibold text-orange-600 hover:text-orange-700 hover:bg-orange-50 rounded-lg transition"
+          className="px-3 py-2 text-sm font-semibold text-orange-600 hover:text-orange-700 hover:bg-orange-50 rounded-lg transition"
         >
           {action}
         </Link>

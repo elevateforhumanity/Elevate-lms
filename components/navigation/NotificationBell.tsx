@@ -78,7 +78,7 @@ export function NotificationBell() {
         onClick={() => setIsOpen(!isOpen)}
         className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
       >
-        <Bell className="h-6 w-6 text-black" />
+        <Bell className="h-10 w-10 text-black" />
         {unreadCount > 0 && (
           <span className="absolute top-0 right-0 w-5 h-5 bg-brand-orange-600 text-white text-xs rounded-full flex items-center justify-center font-bold">
             {unreadCount}

@@ -40,7 +40,7 @@ export default function PricingPage() {
                 }`}
               >
                 {tier.featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-bold">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-4 py-2 rounded-full text-xs font-bold">
                     MOST POPULAR
                   </div>
                 )}

@@ -230,7 +230,7 @@ export default function PageManager() {
                         {page.name}
                       </h3>
                       <span
-                        className={`px-2 py-1 rounded text-xs ${getStatusColor(page.status)}`}
+                        className={`px-2 py-2 rounded text-xs ${getStatusColor(page.status)}`}
                       >
                         {page.status}
                       </span>
@@ -266,7 +266,7 @@ export default function PageManager() {
                     </p>
                   </div>
                   <span
-                    className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(selectedPage.status)}`}
+                    className={`px-3 py-2 rounded-full text-sm font-medium ${getStatusColor(selectedPage.status)}`}
                   >
                     {selectedPage.status}
                   </span>

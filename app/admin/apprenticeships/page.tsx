@@ -295,7 +295,7 @@ export default function AdminApprenticeships() {
                       </td>
                       <td className="px-6 py-4">
                         <span
-                          className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                          className={`px-3 py-2 rounded-full text-xs font-semibold ${
                             apprenticeship.status === 'active'
                               ? 'bg-brand-green-100 text-green-800'
                               : apprenticeship.status === 'completed'

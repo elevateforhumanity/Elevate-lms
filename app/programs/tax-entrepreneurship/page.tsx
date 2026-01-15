@@ -18,10 +18,10 @@ export default function TaxEntrepreneurshipPage() {
       <section className="bg-white text-white py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex items-center gap-3 mb-4">
-            <span className="px-4 py-1 bg-green-500 text-white text-sm font-bold rounded-full">
+            <span className="px-4 py-2 bg-green-500 text-white text-sm font-bold rounded-full">
               Free with funding
             </span>
-            <span className="px-4 py-1 bg-blue-500 text-white text-sm font-bold rounded-full">
+            <span className="px-4 py-2 bg-blue-500 text-white text-sm font-bold rounded-full">
               Online / Hybrid
             </span>
           </div>

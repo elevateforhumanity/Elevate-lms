@@ -44,7 +44,7 @@ export function ProgramPageLayout(props: ProgramPageLayoutProps) {
         <div className="mx-auto max-w-7xl px-4">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <span className="inline-flex items-center rounded-full bg-white/20 px-3 py-1 text-xs font-bold text-white animate-pulse">
+              <span className="inline-flex items-center rounded-full bg-white/20 px-3 py-2 text-xs font-bold text-white animate-pulse">
                 🔥 NOW ENROLLING
               </span>
               <p className="text-white font-semibold text-sm sm:text-base">
@@ -137,7 +137,7 @@ export function ProgramPageLayout(props: ProgramPageLayoutProps) {
           <section className="grid gap-6 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)] items-start mb-10">
         <div className="space-y-4">
           {badge && (
-            <div className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-[11px] font-semibold text-orange-700 border border-orange-100 uppercase tracking-wide">
+            <div className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-2 text-[11px] font-semibold text-orange-700 border border-orange-100 uppercase tracking-wide">
               {badge}
             </div>
           )}
@@ -188,7 +188,7 @@ export function ProgramPageLayout(props: ProgramPageLayoutProps) {
             {fundingTags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-[11px] font-semibold text-blue-700 border border-blue-100"
+                className="inline-flex items-center rounded-full bg-blue-50 px-3 py-2 text-[11px] font-semibold text-blue-700 border border-blue-100"
               >
                 {tag}
               </span>

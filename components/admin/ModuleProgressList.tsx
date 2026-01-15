@@ -114,7 +114,7 @@ export default function ModuleProgressList({
                     {progress.module.title}
                   </h4>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-xs px-2 py-1 bg-slate-700 rounded text-slate-300">
+                    <span className="text-xs px-2 py-2 bg-slate-700 rounded text-slate-300">
                       {getContentTypeLabel(progress.module.content_type)}
                     </span>
                     {progress.module.partner_name && (

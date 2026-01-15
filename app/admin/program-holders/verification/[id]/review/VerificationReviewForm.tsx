@@ -195,7 +195,7 @@ export default function VerificationReviewForm({
                 </div>
                 <div>
                   <p className="text-sm text-black">Status</p>
-                  <span className="px-3 py-1 bg-orange-100 text-orange-800 text-sm font-medium rounded-full">
+                  <span className="px-3 py-2 bg-orange-100 text-orange-800 text-sm font-medium rounded-full">
                     {holder.verification_status}
                   </span>
                 </div>
@@ -309,7 +309,7 @@ export default function VerificationReviewForm({
                     <div key={record.id} className="p-4 bg-gray-50 rounded-lg">
                       <div className="flex items-center justify-between mb-2">
                         <span
-                          className={`px-3 py-1 text-sm font-medium rounded-full ${
+                          className={`px-3 py-2 text-sm font-medium rounded-full ${
                             record.status === 'verified'
                               ? 'bg-green-100 text-green-800'
                               : 'bg-red-100 text-red-800'

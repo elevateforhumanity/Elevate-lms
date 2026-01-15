@@ -95,7 +95,7 @@ export function HeroCarousel() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="space-y-6"
             >
-              <p className="inline-flex items-center rounded-full bg-orange-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-orange-300 ring-1 ring-orange-500/40">
+              <p className="inline-flex items-center rounded-full bg-orange-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-orange-300 ring-1 ring-orange-500/40">
                 {activeSlide.label}
               </p>
               <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
@@ -124,7 +124,7 @@ export function HeroCarousel() {
                     {activeSlide.secondaryCtaLabel}
                   </Link>
                 </div>
-                <div className="inline-flex items-center gap-2 rounded-full bg-zinc-900/80 px-3 py-1 text-xs text-zinc-200 ring-1 ring-zinc-700">
+                <div className="inline-flex items-center gap-2 rounded-full bg-zinc-900/80 px-3 py-2 text-xs text-zinc-200 ring-1 ring-zinc-700">
                   <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-400 text-[10px] font-bold text-zinc-950">
                     ★
                   </span>
@@ -142,7 +142,7 @@ export function HeroCarousel() {
             <button
               type="button"
               onClick={prev}
-              className="rounded-full border border-zinc-700 px-2 py-1 hover:border-orange-300 hover:text-orange-200"
+              className="rounded-full border border-zinc-700 px-2 py-2 hover:border-orange-300 hover:text-orange-200"
             >
               ⟵
             </button>
@@ -164,7 +164,7 @@ export function HeroCarousel() {
             <button
               type="button"
               onClick={next}
-              className="rounded-full border border-zinc-700 px-2 py-1 hover:border-orange-300 hover:text-orange-200"
+              className="rounded-full border border-zinc-700 px-2 py-2 hover:border-orange-300 hover:text-orange-200"
             >
               ⟶
             </button>

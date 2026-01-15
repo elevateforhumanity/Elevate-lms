@@ -88,16 +88,16 @@ export function MiladyAccessCard({
           </div>
         </div>
         {miladyCompleted ? (
-          <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+          <span className="bg-green-500 text-white text-xs font-bold px-3 py-2 rounded-full flex items-center gap-1">
             <CheckCircle className="w-3 h-3" />
             Complete
           </span>
         ) : isActive ? (
-          <span className="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+          <span className="bg-blue-500 text-white text-xs font-bold px-3 py-2 rounded-full">
             Active
           </span>
         ) : isPending ? (
-          <span className="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+          <span className="bg-amber-500 text-white text-xs font-bold px-3 py-2 rounded-full flex items-center gap-1">
             <AlertCircle className="w-3 h-3" />
             Setting Up
           </span>

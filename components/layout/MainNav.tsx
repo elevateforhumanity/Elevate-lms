@@ -668,7 +668,7 @@ export function MainNav() {
               <input
                 type="search"
                 Content="Search programs..."
-                className="w-48 pl-9 pr-3 py-1.5 text-xs border border-slate-300 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                className="w-48 pl-9 pr-3 py-2.5 text-xs border border-slate-300 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     const query = (e.target as HTMLInputElement).value;
@@ -693,7 +693,7 @@ export function MainNav() {
           <div className="flex items-center gap-2 md:hidden">
             <Link
               href="/apply"
-              className="rounded-full bg-brand-orange-500 px-3 py-1.5 text-[11px] font-semibold hover:bg-brand-orange-600 transition-colors"
+              className="rounded-full bg-brand-orange-500 px-3 py-2.5 text-[11px] font-semibold hover:bg-brand-orange-600 transition-colors"
               style={{ color: '#FFFFFF' }}
             >
               Apply
@@ -724,7 +724,7 @@ export function MainNav() {
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-slate-200">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-orange-500 text-white text-xs font-black uppercase">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-orange-500 text-white text-xs font-black uppercase">
                     EFH
                   </div>
                   <span className="text-sm font-semibold text-black">

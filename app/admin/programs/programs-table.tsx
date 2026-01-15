@@ -119,16 +119,16 @@ export function ProgramsTable({ programs }: { programs: Program[] }) {
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
                       {program.is_active ? (
-                        <span className="px-2 py-1 text-xs font-semibold rounded-full bg-brand-green-100 text-green-800">
+                        <span className="px-2 py-2 text-xs font-semibold rounded-full bg-brand-green-100 text-green-800">
                           Active
                         </span>
                       ) : (
-                        <span className="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-black">
+                        <span className="px-2 py-2 text-xs font-semibold rounded-full bg-gray-100 text-black">
                           Inactive
                         </span>
                       )}
                       {program.featured && (
-                        <span className="px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
+                        <span className="px-2 py-2 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
                           Featured
                         </span>
                       )}

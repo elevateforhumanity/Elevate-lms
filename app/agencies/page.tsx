@@ -58,7 +58,7 @@ export default function AgenciesPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-slate-50 rounded-xl p-8 text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-8 w-8 text-blue-600" />
+                <Shield className="h-11 w-11 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-3">
                 DOL Registered Apprenticeship Sponsor
@@ -73,7 +73,7 @@ export default function AgenciesPage() {
 
             <div className="bg-slate-50 rounded-xl p-8 text-center">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FileCheck className="h-8 w-8 text-green-600" />
+                <FileCheck className="h-11 w-11 text-green-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-3">
                 ETPL Approved Provider
@@ -88,7 +88,7 @@ export default function AgenciesPage() {
 
             <div className="bg-slate-50 rounded-xl p-8 text-center">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="h-8 w-8 text-purple-600" />
+                <TrendingUp className="h-11 w-11 text-purple-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-3">
                 WIOA Compliant Programs
@@ -112,7 +112,7 @@ export default function AgenciesPage() {
           </h2>
           <div className="space-y-4">
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+              <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Real-Time Compliance Dashboards
@@ -125,7 +125,7 @@ export default function AgenciesPage() {
             </div>
 
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+              <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Automated Reporting
@@ -138,7 +138,7 @@ export default function AgenciesPage() {
             </div>
 
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+              <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Multi-Tenant Architecture
@@ -336,7 +336,7 @@ export default function AgenciesPage() {
               href="tel:+13173143757"
               className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-green-600 rounded-lg font-bold text-xl hover:bg-green-50 transition shadow-2xl"
             >
-              <Phone className="h-6 w-6" />
+              <Phone className="h-10 w-10" />
               Call (317) 314-3757
             </a>
             <Link

@@ -257,7 +257,7 @@ export default async function AdminCoursesPage() {
                         </td>
                         <td className="px-6 py-4 text-sm">
                           <span
-                            className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            className={`px-2 py-2 rounded-full text-xs font-medium ${
                               course.is_published
                                 ? 'bg-blue-100 text-green-700'
                                 : 'bg-gray-100 text-black'
@@ -277,7 +277,7 @@ export default async function AdminCoursesPage() {
                         <td className="px-6 py-4 text-sm">
                           {course.difficulty_level && (
                             <span
-                              className={`px-2 py-1 rounded-full text-xs ${
+                              className={`px-2 py-2 rounded-full text-xs ${
                                 course.difficulty_level === 'beginner'
                                   ? 'bg-blue-100 text-green-700'
                                   : course.difficulty_level === 'intermediate'
@@ -347,12 +347,12 @@ export default async function AdminCoursesPage() {
                 </p>
                 <div className="flex gap-2">
                   <button
-                    className="px-3 py-1 border rounded text-sm hover:bg-white"
+                    className="px-3 py-2 border rounded text-sm hover:bg-white"
                     disabled
                   >
                     Previous
                   </button>
-                  <button className="px-3 py-1 border rounded text-sm hover:bg-white" aria-label="Action button">
+                  <button className="px-3 py-2 border rounded text-sm hover:bg-white" aria-label="Action button">
                     Next
                   </button>
                 </div>

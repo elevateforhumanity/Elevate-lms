@@ -105,7 +105,7 @@ export default async function SignaturesPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <FileSignature className="h-8 w-8 text-brand-blue-600" />
+                  <FileSignature className="h-11 w-11 text-brand-blue-600" />
                   <h3 className="text-sm font-medium text-black">
                     Total Signatures
                   </h3>
@@ -116,7 +116,7 @@ export default async function SignaturesPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Clock className="h-8 w-8 text-brand-orange-600" />
+                  <Clock className="h-11 w-11 text-brand-orange-600" />
                   <h3 className="text-sm font-medium text-black">Pending</h3>
                 </div>
                 <p className="text-3xl font-bold text-brand-orange-600">
@@ -125,7 +125,7 @@ export default async function SignaturesPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <CheckCircle className="h-8 w-8 text-brand-green-600" />
+                  <CheckCircle className="h-11 w-11 text-brand-green-600" />
                   <h3 className="text-sm font-medium text-black">
                     Completed
                   </h3>
@@ -166,19 +166,19 @@ export default async function SignaturesPage() {
                         </div>
                         <div className="flex items-center gap-2">
                           {signature.status === 'completed' && (
-                            <span className="flex items-center gap-1 text-brand-green-600 text-sm font-medium bg-brand-green-100 px-3 py-1 rounded-full">
+                            <span className="flex items-center gap-1 text-brand-green-600 text-sm font-medium bg-brand-green-100 px-3 py-2 rounded-full">
                               <CheckCircle className="h-4 w-4" />
                               Completed
                             </span>
                           )}
                           {signature.status === 'pending' && (
-                            <span className="flex items-center gap-1 text-brand-orange-600 text-sm font-medium bg-orange-100 px-3 py-1 rounded-full">
+                            <span className="flex items-center gap-1 text-brand-orange-600 text-sm font-medium bg-orange-100 px-3 py-2 rounded-full">
                               <Clock className="h-4 w-4" />
                               Pending
                             </span>
                           )}
                           {signature.status === 'declined' && (
-                            <span className="flex items-center gap-1 text-brand-orange-600 text-sm font-medium bg-red-100 px-3 py-1 rounded-full">
+                            <span className="flex items-center gap-1 text-brand-orange-600 text-sm font-medium bg-red-100 px-3 py-2 rounded-full">
                               <XCircle className="h-4 w-4" />
                               Declined
                             </span>

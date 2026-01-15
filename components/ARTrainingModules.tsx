@@ -168,7 +168,7 @@ export function ARTrainingModules() {
                   <div className="text-center mb-4">
                     <div className="text-6xl mb-3 text-4xl md:text-5xl lg:text-6xl">{module.thumbnail}</div>
                     <h3 className="text-xl font-bold mb-2">{module.title}</h3>
-                    <span className="px-3 py-1 bg-orange-100 text-orange-700 text-xs rounded">
+                    <span className="px-3 py-2 bg-orange-100 text-orange-700 text-xs rounded">
                       {module.category}
                     </span>
                   </div>

@@ -68,7 +68,7 @@ export function CourseRecommendations({ recommendations }: CourseRecommendations
                   {getRecommendationLabel(rec.recommendation_type)}
                 </span>
               </div>
-              <div className="px-2 py-1 bg-orange-500/20 rounded text-xs font-bold text-orange-400">
+              <div className="px-2 py-2 bg-orange-500/20 rounded text-xs font-bold text-orange-400">
                 {Math.round(rec.score * 100)}% match
               </div>
             </div>

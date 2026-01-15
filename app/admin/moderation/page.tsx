@@ -24,10 +24,10 @@ export default function ModerationPage() {
                 <p className="mt-2">Post content preview...</p>
               </div>
               <div className="flex gap-2">
-                <button className="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700" aria-label="Action button">
+                <button className="bg-green-600 text-white px-3 py-2 rounded text-sm hover:bg-green-700" aria-label="Action button">
                   Approve
                 </button>
-                <button className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700" aria-label="Action button">
+                <button className="bg-red-600 text-white px-3 py-2 rounded text-sm hover:bg-red-700" aria-label="Action button">
                   Remove
                 </button>
               </div>

@@ -251,12 +251,12 @@ export default function AdminSupportPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`px-2 py-1 text-xs font-medium rounded-full capitalize ${statusColors[ticket.status]}`}>
+                      <span className={`px-2 py-2 text-xs font-medium rounded-full capitalize ${statusColors[ticket.status]}`}>
                         {ticket.status.replace('_', ' ')}
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`px-2 py-1 text-xs font-medium rounded-full capitalize ${priorityColors[ticket.priority]}`}>
+                      <span className={`px-2 py-2 text-xs font-medium rounded-full capitalize ${priorityColors[ticket.priority]}`}>
                         {ticket.priority}
                       </span>
                     </td>

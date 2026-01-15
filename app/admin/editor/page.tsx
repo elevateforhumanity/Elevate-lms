@@ -187,7 +187,7 @@ export default function EditorPage() {
           <h1 className="font-semibold">EFH Code Editor</h1>
           <span className="text-sm text-black">{selectedFile}</span>
           {unsavedChanges && (
-            <span className="text-xs bg-yellow-600 px-2 py-1 rounded">
+            <span className="text-xs bg-yellow-600 px-2 py-2 rounded">
               Unsaved
             </span>
           )}
@@ -196,11 +196,11 @@ export default function EditorPage() {
           <button
             onClick={handleSave}
             disabled={!unsavedChanges}
-            className="bg-brand-blue-600 hover:bg-brand-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed px-4 py-1 rounded text-sm"
+            className="bg-brand-blue-600 hover:bg-brand-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed px-4 py-2 rounded text-sm"
           >
             Save
           </button>
-          <button className="bg-gray-700 hover:bg-gray-600 px-4 py-1 rounded text-sm" aria-label="Action button">
+          <button className="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded text-sm" aria-label="Action button">
             Run
           </button>
         </div>

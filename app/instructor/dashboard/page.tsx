@@ -175,7 +175,7 @@ export default async function ProgramHolderDashboard() {
                         </div>
                         <div className="text-right">
                           <span
-                            className={`px-3 py-1 rounded-full text-xs font-medium ${
+                            className={`px-3 py-2 rounded-full text-xs font-medium ${
                               student.status === 'active'
                                 ? 'bg-brand-green-100 text-green-700'
                                 : student.status === 'completed'

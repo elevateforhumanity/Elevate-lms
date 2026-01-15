@@ -102,7 +102,7 @@ export default function EnrollSuccessPage() {
                 <div className="mt-3 p-3 bg-orange-50 border border-orange-200 rounded-lg">
                   <p className="text-sm text-orange-900 font-semibold">
                     Use promo code:{' '}
-                    <code className="bg-orange-100 px-2 py-1 rounded">
+                    <code className="bg-orange-100 px-2 py-2 rounded">
                       efhcti-rise295
                     </code>
                   </p>

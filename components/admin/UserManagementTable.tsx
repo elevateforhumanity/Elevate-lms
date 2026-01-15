@@ -173,7 +173,7 @@ export default function UserManagementTable({ users }: Props) {
                     <select
                       value={user.role}
                       onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => handleRoleChange(user.id, e.target.value)}
-                      className="text-sm border border-gray-300 rounded px-2 py-1"
+                      className="text-sm border border-gray-300 rounded px-3 py-2"
                     >
                       <option value="student">Student</option>
                       <option value="admin">Admin</option>
@@ -186,7 +186,7 @@ export default function UserManagementTable({ users }: Props) {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <button
                       onClick={() => handleStatusToggle(user.id, user.status)}
-                      className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                      className={`px-3 py-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                         user.status === 'active'
                           ? 'bg-green-100 text-green-800'
                           : 'bg-red-100 text-red-800'

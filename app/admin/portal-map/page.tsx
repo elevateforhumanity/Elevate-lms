@@ -684,26 +684,26 @@ export default function AdminPortalMapPage() {
     switch (status) {
       case 'active':
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-green-700 bg-brand-green-100 rounded-full">
+          <span className="inline-flex items-center gap-1 px-2 py-2 text-xs font-medium text-green-700 bg-brand-green-100 rounded-full">
             <CheckCircle2 className="w-3 h-3" />
             Active
           </span>
         );
       case 'partial':
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-yellow-700 bg-yellow-100 rounded-full">
+          <span className="inline-flex items-center gap-1 px-2 py-2 text-xs font-medium text-yellow-700 bg-yellow-100 rounded-full">
             Partial
           </span>
         );
       case 'planned':
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-black bg-gray-100 rounded-full">
+          <span className="inline-flex items-center gap-1 px-2 py-2 text-xs font-medium text-black bg-gray-100 rounded-full">
             Planned
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-black bg-gray-100 rounded-full">
+          <span className="inline-flex items-center gap-1 px-2 py-2 text-xs font-medium text-black bg-gray-100 rounded-full">
             Unknown
           </span>
         );

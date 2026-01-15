@@ -128,7 +128,7 @@ export default function VideoWatchPage({
           {/* Video Info */}
           <div className="mt-8 bg-white rounded-lg p-8 shadow-sm">
             <div className="mb-4">
-              <span className="inline-block px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold">
+              <span className="inline-block px-3 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold">
                 {video.category}
               </span>
             </div>

@@ -165,7 +165,7 @@ export default async function CampaignsPage() {
                     </div>
                     <div className="text-right">
                       <span
-                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                        className={`inline-block px-3 py-2 rounded-full text-xs font-semibold ${
                           campaign.status === 'sent'
                             ? 'bg-green-100 text-green-700'
                             : campaign.status === 'draft'

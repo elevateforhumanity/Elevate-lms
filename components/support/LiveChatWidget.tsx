@@ -165,7 +165,7 @@ function FallbackChatWidget() {
                 <button
                   key={reply}
                   onClick={() => handleSend(reply)}
-                  className="px-3 py-1 text-xs bg-gray-100 text-gray-700 rounded-full hover:bg-blue-100 hover:text-blue-700 transition"
+                  className="px-3 py-2 text-xs bg-gray-100 text-gray-700 rounded-full hover:bg-blue-100 hover:text-blue-700 transition"
                 >
                   {reply}
                 </button>

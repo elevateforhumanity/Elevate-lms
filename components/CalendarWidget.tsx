@@ -200,7 +200,7 @@ export function CalendarWidget({ userId }: CalendarWidgetProps) {
                       </div>
                     )}
                   </div>
-                  <span className="text-xs px-2 py-1 bg-white rounded text-black capitalize">
+                  <span className="text-xs px-2 py-2 bg-white rounded text-black capitalize">
                     {event.type}
                   </span>
                 </div>

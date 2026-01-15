@@ -38,7 +38,7 @@ export function AppPricingScreen() {
               }`}
             >
               {product.recommended && (
-                <div className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold inline-block mb-3">
+                <div className="bg-orange-500 text-white px-3 py-2 rounded-full text-xs font-bold inline-block mb-3">
                   Recommended
                 </div>
               )}

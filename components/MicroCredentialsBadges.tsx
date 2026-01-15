@@ -174,7 +174,7 @@ export default function MicroCredentialsBadges() {
                   {badge.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{badge.name}</h3>
-                <span className="px-3 py-1 bg-orange-100 text-orange-700 text-xs rounded">
+                <span className="px-3 py-2 bg-orange-100 text-orange-700 text-xs rounded">
                   {badge.category}
                 </span>
               </div>

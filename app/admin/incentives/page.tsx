@@ -248,7 +248,7 @@ export default function IncentivesPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span
-                        className={`px-2 py-1 text-xs rounded ${
+                        className={`px-2 py-2 text-xs rounded ${
                           incentive.program_type === 'WEX'
                             ? 'bg-blue-100 text-blue-800'
                             : 'bg-purple-100 text-purple-800'
@@ -278,7 +278,7 @@ export default function IncentivesPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span
-                        className={`px-2 py-1 text-xs rounded ${
+                        className={`px-2 py-2 text-xs rounded ${
                           incentive.status === 'paid'
                             ? 'bg-brand-green-100 text-green-800'
                             : incentive.status === 'approved'

@@ -222,7 +222,7 @@ export const Footer: React.FC = () => {
                       className="text-slate-400 hover:text-white transition-colors"
                       aria-label={social.name}
                     >
-                      <Icon className="h-6 w-6" />
+                      <Icon className="h-10 w-10" />
                     </a>
                   );
                 })}

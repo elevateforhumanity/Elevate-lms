@@ -127,7 +127,7 @@ export function CoursePlayer({ courseTitle, lessons }: CoursePlayerProps) {
                 <button
                   type="button"
                   onClick={() => setActiveLessonId(lesson.id)}
-                  className={`flex w-full items-center justify-between rounded-lg px-2 py-1 text-left ${
+                  className={`flex w-full items-center justify-between rounded-lg px-2 py-2 text-left ${
                     isActive
                       ? "bg-slate-800 text-slate-50"
                       : "bg-slate-900 text-slate-200 hover:bg-slate-850"

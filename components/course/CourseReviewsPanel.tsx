@@ -100,7 +100,7 @@ export function CourseReviewsPanel({
             <select
               value={rating}
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setRating(Number(e.target.value))}
-              className="rounded border px-2 py-1 text-xs"
+              className="rounded border px-2 py-2 text-xs"
             >
               {[5, 4, 3, 2, 1].map((r) => (
                 <option key={r} value={r}>
@@ -113,13 +113,13 @@ export function CourseReviewsPanel({
             value={title}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setTitle(e.target.value)}
             Content="Short headline (optional)"
-            className="w-full rounded border px-2 py-1 text-xs"
+            className="w-full rounded border px-2 py-2 text-xs"
           />
           <textarea
             value={body}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setBody(e.target.value)}
             Content="Share what you liked about this course…"
-            className="h-20 w-full resize-none rounded border px-2 py-1 text-xs"
+            className="h-20 w-full resize-none rounded border px-2 py-2 text-xs"
           />
           {error && (
             <p className="text-[11px] text-brand-orange-600">{error}</p>
@@ -127,7 +127,7 @@ export function CourseReviewsPanel({
           <button
             type="submit"
             disabled={submitting}
-            className="rounded-full bg-blue-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-blue-700 disabled:opacity-60"
+            className="rounded-full bg-blue-600 px-4 py-2.5 text-xs font-semibold text-white hover:bg-blue-700 disabled:opacity-60"
           >
             {submitting ? "Submitting…" : "Submit review"}
           </button>

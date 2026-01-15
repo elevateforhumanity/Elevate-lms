@@ -32,6 +32,32 @@ body {
     box-sizing: border-box;
   }
 
+  /* BUTTON FIX: Ensure all buttons are easy to tap/click */
+  button,
+  [role="button"],
+  a.btn,
+  .btn,
+  input[type="submit"],
+  input[type="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  /* Links that look like buttons */
+  a[class*="bg-"],
+  a[class*="rounded"] {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
   /* Accessibility: Enhanced Focus visible styles for WCAG AA compliance */
   *:focus-visible {
     outline: 3px solid #2563eb;

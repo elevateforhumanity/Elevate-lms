@@ -460,7 +460,7 @@ d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.3
                     <button
                       key={rate}
                       onClick={() => changePlaybackRate(rate)}
-                      className={`w-full text-left px-2 py-1 rounded hover:bg-white/20 text-sm ${
+                      className={`w-full text-left px-2 py-2 rounded hover:bg-white/20 text-sm ${
                         playbackRate === rate ? 'bg-white/20' : ''
                       }`}
                     >

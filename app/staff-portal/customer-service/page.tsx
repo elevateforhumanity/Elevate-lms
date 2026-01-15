@@ -66,19 +66,19 @@ export default async function CustomerServicePage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            <Ticket className="h-8 w-8 text-blue-600 mb-2" />
+            <Ticket className="h-11 w-11 text-blue-600 mb-2" />
             <p className="text-3xl font-bold text-black">
               {tickets?.length || 0}
             </p>
             <p className="text-black text-sm">Total Active Tickets</p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            <AlertCircle className="h-8 w-8 text-red-600 mb-2" />
+            <AlertCircle className="h-11 w-11 text-red-600 mb-2" />
             <p className="text-3xl font-bold text-black">{openCount}</p>
             <p className="text-black text-sm">Open Tickets</p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            <Clock className="h-8 w-8 text-yellow-600 mb-2" />
+            <Clock className="h-11 w-11 text-yellow-600 mb-2" />
             <p className="text-3xl font-bold text-black">
               {inProgressCount}
             </p>
@@ -114,7 +114,7 @@ export default async function CustomerServicePage() {
                         </p>
                       </div>
                       <span
-                        className={`px-2 py-1 text-xs font-medium rounded ${
+                        className={`px-2 py-2 text-xs font-medium rounded ${
                           ticket.priority === 'urgent'
                             ? 'bg-red-100 text-red-700'
                             : ticket.priority === 'high'

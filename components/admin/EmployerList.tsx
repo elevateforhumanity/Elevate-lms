@@ -92,13 +92,13 @@ export function EmployerList() {
               <div className="flex flex-col gap-2 text-[11px] md:items-end">
                 <Link
                   href={`/admin/employers/${emp.id}/proposal`}
-                  className="rounded-md bg-orange-400 text-white px-3 py-1 font-semibold text-white hover:bg-orange-500"
+                  className="rounded-md bg-orange-400 text-white px-3 py-2 font-semibold text-white hover:bg-orange-500"
                 >
                   View Proposal Preview
                 </Link>
                 <Link
                   href="/admin/funding-playbook"
-                  className="rounded-md border border-slate-700 px-3 py-1 font-semibold text-slate-100 hover:bg-slate-800"
+                  className="rounded-md border border-slate-700 px-3 py-2 font-semibold text-slate-100 hover:bg-slate-800"
                 >
                   Open Funding Playbook
                 </Link>

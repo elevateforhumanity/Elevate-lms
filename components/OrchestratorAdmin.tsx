@@ -325,7 +325,7 @@ export default function OrchestratorAdmin() {
                     {ap.capabilities.map((cap) => (
                       <span
                         key={cap}
-                        className="px-2 py-1 bg-brand-surface text-brand-info rounded text-xs"
+                        className="px-2 py-2 bg-brand-surface text-brand-info rounded text-xs"
                       >
                         {cap}
                       </span>

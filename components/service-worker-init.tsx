@@ -35,7 +35,7 @@ export function ServiceWorkerInit() {
                 window.location.reload();
                 toast.dismiss(t.id);
               }}
-              className="px-3 py-1 bg-blue-600 text-white rounded text-sm font-medium hover:bg-blue-700"
+              className="px-3 py-2 bg-blue-600 text-white rounded text-sm font-medium hover:bg-blue-700"
             >
               Reload Now
             </button>

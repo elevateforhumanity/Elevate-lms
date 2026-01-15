@@ -130,7 +130,7 @@ export default function MonitoringDashboard() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-black flex items-center gap-3">
-                <Activity className="h-8 w-8 text-blue-600" />
+                <Activity className="h-11 w-11 text-blue-600" />
                 System Monitoring
               </h1>
               <p className="text-black mt-2">Real-time platform health and performance metrics</p>
@@ -193,8 +193,8 @@ export default function MonitoringDashboard() {
             {/* Database */}
             <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
-                <Database className="h-8 w-8 text-blue-600" />
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(status.checks.database.status)}`}>
+                <Database className="h-11 w-11 text-blue-600" />
+                <span className={`px-3 py-2 rounded-full text-sm font-medium ${getStatusColor(status.checks.database.status)}`}>
                   {status.checks.database.status}
                 </span>
               </div>
@@ -210,8 +210,8 @@ export default function MonitoringDashboard() {
             {/* Redis */}
             <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
-                <Zap className="h-8 w-8 text-orange-600" />
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(status.checks.redis.status)}`}>
+                <Zap className="h-11 w-11 text-orange-600" />
+                <span className={`px-3 py-2 rounded-full text-sm font-medium ${getStatusColor(status.checks.redis.status)}`}>
                   {status.checks.redis.status}
                 </span>
               </div>
@@ -227,8 +227,8 @@ export default function MonitoringDashboard() {
             {/* Stripe */}
             <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
-                <Server className="h-8 w-8 text-purple-600" />
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(status.checks.stripe.status)}`}>
+                <Server className="h-11 w-11 text-purple-600" />
+                <span className={`px-3 py-2 rounded-full text-sm font-medium ${getStatusColor(status.checks.stripe.status)}`}>
                   {status.checks.stripe.status}
                 </span>
               </div>
@@ -241,8 +241,8 @@ export default function MonitoringDashboard() {
             {/* Email */}
             <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
-                <Users className="h-8 w-8 text-green-600" />
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(status.checks.email.status)}`}>
+                <Users className="h-11 w-11 text-green-600" />
+                <span className={`px-3 py-2 rounded-full text-sm font-medium ${getStatusColor(status.checks.email.status)}`}>
                   {status.checks.email.status}
                 </span>
               </div>
@@ -260,7 +260,7 @@ export default function MonitoringDashboard() {
             {/* Request Metrics */}
             <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center gap-3 mb-4">
-                <TrendingUp className="h-6 w-6 text-blue-600" />
+                <TrendingUp className="h-10 w-10 text-blue-600" />
                 <h3 className="text-lg font-bold text-black">Requests</h3>
               </div>
               <div className="space-y-3">
@@ -284,7 +284,7 @@ export default function MonitoringDashboard() {
             {/* Rate Limiting */}
             <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center gap-3 mb-4">
-                <AlertCircle className="h-6 w-6 text-orange-600" />
+                <AlertCircle className="h-10 w-10 text-orange-600" />
                 <h3 className="text-lg font-bold text-black">Rate Limits</h3>
               </div>
               <div className="space-y-3">
@@ -308,7 +308,7 @@ export default function MonitoringDashboard() {
             {/* Memory Usage */}
             <div className="bg-white rounded-xl border border-gray-200 p-6">
               <div className="flex items-center gap-3 mb-4">
-                <Server className="h-6 w-6 text-purple-600" />
+                <Server className="h-10 w-10 text-purple-600" />
                 <h3 className="text-lg font-bold text-black">Memory</h3>
               </div>
               <div className="space-y-3">
@@ -334,7 +334,7 @@ export default function MonitoringDashboard() {
         {/* Recent Errors */}
         <div className="bg-white rounded-xl border border-gray-200 p-6">
           <div className="flex items-center gap-3 mb-6">
-            <AlertCircle className="h-6 w-6 text-red-600" />
+            <AlertCircle className="h-10 w-10 text-red-600" />
             <h3 className="text-lg font-bold text-black">Recent Errors</h3>
             <span className="ml-auto text-sm text-black">Last 10 errors</span>
           </div>
@@ -365,7 +365,7 @@ export default function MonitoringDashboard() {
                       <td className="py-3 px-4 text-sm font-mono text-black">{error.endpoint}</td>
                       <td className="py-3 px-4 text-sm text-black max-w-md truncate">{error.error}</td>
                       <td className="py-3 px-4">
-                        <span className={`px-2 py-1 rounded text-xs font-medium ${
+                        <span className={`px-2 py-2 rounded text-xs font-medium ${
                           error.statusCode >= 500 ? 'bg-red-100 text-red-700' :
                           error.statusCode >= 400 ? 'bg-yellow-100 text-yellow-700' :
                           'bg-gray-100 text-black'

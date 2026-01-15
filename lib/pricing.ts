@@ -291,7 +291,7 @@ export const ROUTES = {
   demoLearner: '/demo/learner',
   demoAdmin: '/demo/admin',
   demoEmployer: '/demo/employer',
-  schedule: '/schedule',
+  schedule: '/demo',
   contact: '/contact',
 } as const;
 

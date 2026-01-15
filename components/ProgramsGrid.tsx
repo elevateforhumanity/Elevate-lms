@@ -105,7 +105,7 @@ export default function ProgramsGrid() {
               </div>
               <div className="p-4 md:p-5">
                 <div className="flex items-center gap-2">
-                  <span className="rounded-full bg-brand-50 text-brand-700 px-2.5 py-1 text-xs font-semibold">
+                  <span className="rounded-full bg-brand-50 text-brand-700 px-2.5 py-2 text-xs font-semibold">
                     {p.track}
                   </span>
                   <span className="text-xs text-slate-500">{p.hours}</span>
@@ -117,7 +117,7 @@ export default function ProgramsGrid() {
                     {p.certs.map((c) => (
                       <span
                         key={c}
-                        className="text-xs text-black bg-slate-100 px-2 py-1 rounded-full"
+                        className="text-xs text-black bg-slate-100 px-2 py-2 rounded-full"
                       >
                         {c}
                       </span>

@@ -448,7 +448,7 @@ export default async function SAPMonitoringPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-center">
                       <span
-                        className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(student.status)}`}
+                        className={`inline-flex items-center gap-1 px-3 py-2 rounded-full text-xs font-semibold border ${getStatusColor(student.status)}`}
                       >
                         {getStatusIcon(student.status)}
                         {student.status.charAt(0).toUpperCase() +

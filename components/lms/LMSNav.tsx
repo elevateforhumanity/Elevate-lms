@@ -63,7 +63,7 @@ export default function LMSNav() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/lms/dashboard" aria-label="Link" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+            <div className="h-11 w-11 rounded-lg bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-lg">
                 E
               </span>

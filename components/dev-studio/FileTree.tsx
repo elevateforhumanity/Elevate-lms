@@ -108,7 +108,7 @@ export default function FileTree({ files, onFileSelect, selectedFile, filterCour
     return (
       <div key={node.path}>
         <div
-          className={`flex items-center gap-1 px-2 py-1 cursor-pointer hover:bg-slate-700 ${
+          className={`flex items-center gap-1 px-2 py-2 cursor-pointer hover:bg-slate-700 ${
             isSelected ? 'bg-blue-600' : ''
           }`}
           style={{ paddingLeft: `${depth * 12 + 8}px` }}

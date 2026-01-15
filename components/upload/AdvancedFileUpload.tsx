@@ -299,7 +299,7 @@ export function AdvancedFileUpload({
                     />
                   ) : (
                     <div className="w-12 h-12 flex items-center justify-center bg-slate-100 rounded">
-                      <FileIcon className="h-6 w-6 text-slate-400" />
+                      <FileIcon className="h-10 w-10 text-slate-400" />
                     </div>
                   )}
                 </div>

@@ -131,7 +131,7 @@ export default async function StudentsPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Users className="h-8 w-8 text-brand-blue-600" />
+                  <Users className="h-11 w-11 text-brand-blue-600" />
                   <h3 className="text-sm font-medium text-black">
                     Total Students
                   </h3>
@@ -142,7 +142,7 @@ export default async function StudentsPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <GraduationCap className="h-8 w-8 text-brand-green-600" />
+                  <GraduationCap className="h-11 w-11 text-brand-green-600" />
                   <h3 className="text-sm font-medium text-black">
                     Active Students
                   </h3>
@@ -153,7 +153,7 @@ export default async function StudentsPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <TrendingUp className="h-8 w-8 text-purple-600" />
+                  <TrendingUp className="h-11 w-11 text-purple-600" />
                   <h3 className="text-sm font-medium text-black">
                     Completed
                   </h3>
@@ -164,7 +164,7 @@ export default async function StudentsPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Clock className="h-8 w-8 text-brand-orange-600" />
+                  <Clock className="h-11 w-11 text-brand-orange-600" />
                   <h3 className="text-sm font-medium text-black">
                     Recent (7 days)
                   </h3>
@@ -228,7 +228,7 @@ export default async function StudentsPage() {
                           </td>
                           <td className="py-3 px-4">
                             <span
-                              className={`px-2 py-1 text-xs rounded ${
+                              className={`px-2 py-2 text-xs rounded ${
                                 enrollment.status === 'active'
                                   ? 'bg-brand-green-100 text-green-800'
                                   : enrollment.status === 'completed'

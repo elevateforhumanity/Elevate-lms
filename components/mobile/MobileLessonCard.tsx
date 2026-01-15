@@ -77,12 +77,12 @@ export default function MobileLessonCard({
       </div>
       {/* Status Badge */}
       {completed && (
-        <div className="flex-shrink-0 px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
+        <div className="flex-shrink-0 px-2 py-2 bg-green-100 text-green-700 text-xs font-medium rounded-full">
           Completed
         </div>
       )}
       {locked && (
-        <div className="flex-shrink-0 px-2 py-1 bg-gray-100 text-gray-500 text-xs font-medium rounded-full">
+        <div className="flex-shrink-0 px-2 py-2 bg-gray-100 text-gray-500 text-xs font-medium rounded-full">
           Locked
         </div>
       )}

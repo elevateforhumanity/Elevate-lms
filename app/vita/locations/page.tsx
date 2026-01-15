@@ -89,7 +89,7 @@ export default function VITALocationsPage() {
                   <p className="text-sm font-semibold text-black mb-2">Services:</p>
                   <div className="flex flex-wrap gap-2">
                     {location.services.map((service, idx) => (
-                      <span key={idx} className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
+                      <span key={idx} className="text-xs bg-green-100 text-green-800 px-2 py-2 rounded">
                         {service}
                       </span>
                     ))}

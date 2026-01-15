@@ -112,7 +112,7 @@ export function EnhancedVideoPlayer(props: EnhancedVideoPlayerProps) {
           <button
             type="button"
             onClick={handleCompleted}
-            className="rounded-full border border-green-300 px-3 py-1 text-[11px] font-medium text-green-700 hover:bg-green-50 transition"
+            className="rounded-full border border-green-300 px-3 py-2 text-[11px] font-medium text-green-700 hover:bg-green-50 transition"
           >
             Mark complete
           </button>

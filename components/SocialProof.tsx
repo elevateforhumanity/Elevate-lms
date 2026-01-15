@@ -184,7 +184,7 @@ export default function SocialProof() {
             {/* Content Side */}
             <div className="p-8 lg:p-12">
               <div className="mb-6">
-                <div className="inline-flex items-center gap-2 bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                <div className="inline-flex items-center gap-2 bg-teal-100 text-teal-700 px-3 py-2 rounded-full text-sm font-semibold mb-4">
                   {currentTestimonial.program}
                 </div>
                 <Quote className="w-12 h-12 text-teal-600 mb-4" />

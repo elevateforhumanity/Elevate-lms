@@ -79,7 +79,7 @@ export default async function HelpArticlePage({ params }: { params: Params }) {
             Back to Help Center
           </Link>
           <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 bg-blue-100 text-blue-600 text-sm font-medium rounded-full">
+            <span className="px-3 py-2 bg-blue-100 text-blue-600 text-sm font-medium rounded-full">
               {article.category}
             </span>
             <span className="flex items-center gap-1 text-sm text-gray-500">
@@ -108,7 +108,7 @@ export default async function HelpArticlePage({ params }: { params: Params }) {
                   {article.tags.map((tag: string) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
+                      className="px-3 py-2 bg-gray-100 text-gray-700 text-sm rounded-full"
                     >
                       {tag}
                     </span>

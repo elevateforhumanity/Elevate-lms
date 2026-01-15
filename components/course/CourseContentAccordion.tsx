@@ -70,7 +70,7 @@ export function CourseContentAccordion({
                   .map((lesson) => (
                     <li
                       key={lesson.id}
-                      className="flex items-center justify-between gap-2 rounded-md px-2 py-1 hover:bg-slate-50"
+                      className="flex items-center justify-between gap-2 rounded-md px-2 py-2 hover:bg-slate-50"
                     >
                       <div className="flex items-center gap-2">
                         <span className="h-2 w-2 rounded-full bg-slate-300" />

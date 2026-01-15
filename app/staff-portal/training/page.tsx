@@ -94,7 +94,7 @@ export default async function StaffTrainingPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
-              <BookOpen className="h-8 w-8 text-blue-600" />
+              <BookOpen className="h-11 w-11 text-blue-600" />
               <span className="text-3xl font-bold text-black">
                 {totalModules}
               </span>
@@ -104,7 +104,7 @@ export default async function StaffTrainingPage() {
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
-              <CheckCircle className="h-8 w-8 text-green-600" />
+              <CheckCircle className="h-11 w-11 text-green-600" />
               <span className="text-3xl font-bold text-black">
                 {completedModules}
               </span>
@@ -114,7 +114,7 @@ export default async function StaffTrainingPage() {
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
-              <Award className="h-8 w-8 text-yellow-600" />
+              <Award className="h-11 w-11 text-yellow-600" />
               <span className="text-3xl font-bold text-black">
                 {certifiedModules}
               </span>
@@ -124,7 +124,7 @@ export default async function StaffTrainingPage() {
 
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-2">
-              <Clock className="h-8 w-8 text-purple-600" />
+              <Clock className="h-11 w-11 text-purple-600" />
               <span className="text-3xl font-bold text-black">
                 {completionPercentage}%
               </span>
@@ -190,7 +190,7 @@ export default async function StaffTrainingPage() {
                           {module.title}
                         </h3>
                         {module.required && (
-                          <span className="px-2 py-1 bg-red-100 text-red-700 text-xs font-medium rounded">
+                          <span className="px-2 py-2 bg-red-100 text-red-700 text-xs font-medium rounded">
                             Required
                           </span>
                         )}
@@ -206,7 +206,7 @@ export default async function StaffTrainingPage() {
                       )}
                     </div>
                     {module.isCompleted && (
-                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
+                      <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0" />
                     )}
                   </div>
 

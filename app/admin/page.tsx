@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import { headers } from 'next/headers';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
@@ -10,58 +11,82 @@ export const metadata: Metadata = {
   description: 'Complete admin control center with all 106 features',
 };
 
-export default async function MegaAdminDashboard() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+export default async function MegaAdminDashboard({ searchParams }: { searchParams: Promise<{ demo?: string }> }) {
+  const params = await searchParams;
+  const isDemoMode = params.demo === 'true';
+  
+  let profile: { role: string; full_name: string } | null = null;
+  let safeStudents = 0;
+  let safeEnrollments = 0;
+  let safeActiveEnrollments = 0;
+  let safePrograms = 0;
+  let safeCourses = 0;
+  let safePendingApps = 0;
 
-  if (!user) {
-    redirect('/admin/login?redirect=/admin');
+  if (isDemoMode) {
+    // Demo mode - show sample data without auth
+    profile = { role: 'admin', full_name: 'Demo Admin' };
+    safeStudents = 312;
+    safeEnrollments = 487;
+    safeActiveEnrollments = 312;
+    safePrograms = 12;
+    safeCourses = 48;
+    safePendingApps = 24;
+  } else {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      redirect('/admin/login?redirect=/admin');
+    }
+
+    const { data: profileData } = await supabase
+      .from('profiles')
+      .select('role, full_name')
+      .eq('id', user.id)
+      .single();
+
+    if (!profileData || (profileData.role !== 'admin' && profileData.role !== 'super_admin')) {
+      redirect('/admin/login?redirect=/admin&error=unauthorized');
+    }
+    
+    profile = profileData;
+
+    // Fetch key metrics (with null safety)
+    const { count: totalStudents } = await supabase
+      .from('profiles')
+      .select('*', { count: 'exact', head: true })
+      .eq('role', 'student');
+    const { count: totalEnrollments } = await supabase
+      .from('enrollments')
+      .select('*', { count: 'exact', head: true });
+    const { count: activeEnrollments } = await supabase
+      .from('enrollments')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'active');
+    const { count: totalPrograms } = await supabase
+      .from('programs')
+      .select('*', { count: 'exact', head: true })
+      .eq('is_active', true);
+    const { count: totalCourses } = await supabase
+      .from('courses')
+      .select('*', { count: 'exact', head: true })
+      .eq('is_published', true);
+    const { count: pendingApplications } = await supabase
+      .from('applications')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'pending');
+
+    // Ensure counts are numbers (not null/undefined)
+    safeStudents = totalStudents ?? 0;
+    safeEnrollments = totalEnrollments ?? 0;
+    safeActiveEnrollments = activeEnrollments ?? 0;
+    safePrograms = totalPrograms ?? 0;
+    safeCourses = totalCourses ?? 0;
+    safePendingApps = pendingApplications ?? 0;
   }
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role, full_name')
-    .eq('id', user.id)
-    .single();
-
-  if (!profile || (profile.role !== 'admin' && profile.role !== 'super_admin')) {
-    redirect('/admin/login?redirect=/admin&error=unauthorized');
-  }
-
-  // Fetch key metrics (with null safety)
-  const { count: totalStudents } = await supabase
-    .from('profiles')
-    .select('*', { count: 'exact', head: true })
-    .eq('role', 'student');
-  const { count: totalEnrollments } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true });
-  const { count: activeEnrollments } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'active');
-  const { count: totalPrograms } = await supabase
-    .from('programs')
-    .select('*', { count: 'exact', head: true })
-    .eq('is_active', true);
-  const { count: totalCourses } = await supabase
-    .from('courses')
-    .select('*', { count: 'exact', head: true })
-    .eq('is_published', true);
-  const { count: pendingApplications } = await supabase
-    .from('applications')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'pending');
-
-  // Ensure counts are numbers (not null/undefined)
-  const safeStudents = totalStudents ?? 0;
-  const safeEnrollments = totalEnrollments ?? 0;
-  const safeActiveEnrollments = activeEnrollments ?? 0;
-  const safePrograms = totalPrograms ?? 0;
-  const safeCourses = totalCourses ?? 0;
-  const safePendingApps = pendingApplications ?? 0;
 
   const allFeatures = [
     // STUDENT MANAGEMENT (15 features)

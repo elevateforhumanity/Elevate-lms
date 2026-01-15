@@ -91,7 +91,7 @@ export default function CoursesPage() {
                       <div className="text-lg font-bold">{course.category}</div>
                     </div>
                   </div>
-                  <div className="absolute top-3 right-3 bg-white text-blue-600 px-3 py-1 rounded-full text-sm font-bold">
+                  <div className="absolute top-3 right-3 bg-white text-blue-600 px-3 py-2 rounded-full text-sm font-bold">
                     ${course.price}
                   </div>
                 </div>

@@ -140,23 +140,23 @@ export default function SalesforceIntegrationPage() {
                 <h3 className="font-bold text-gray-900 mb-4">Required Environment Variables</h3>
                 <div className="space-y-3 font-mono text-sm">
                   <div className="flex items-center gap-2">
-                    <code className="bg-gray-200 px-2 py-1 rounded">SALESFORCE_CLIENT_ID</code>
+                    <code className="bg-gray-200 px-2 py-2 rounded">SALESFORCE_CLIENT_ID</code>
                     <span className="text-gray-500">= your Consumer Key</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <code className="bg-gray-200 px-2 py-1 rounded">SALESFORCE_CLIENT_SECRET</code>
+                    <code className="bg-gray-200 px-2 py-2 rounded">SALESFORCE_CLIENT_SECRET</code>
                     <span className="text-gray-500">= your Consumer Secret</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <code className="bg-gray-200 px-2 py-1 rounded">SALESFORCE_USERNAME</code>
+                    <code className="bg-gray-200 px-2 py-2 rounded">SALESFORCE_USERNAME</code>
                     <span className="text-gray-500">= your Salesforce email</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <code className="bg-gray-200 px-2 py-1 rounded">SALESFORCE_PASSWORD</code>
+                    <code className="bg-gray-200 px-2 py-2 rounded">SALESFORCE_PASSWORD</code>
                     <span className="text-gray-500">= your Salesforce password</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <code className="bg-gray-200 px-2 py-1 rounded">SALESFORCE_SECURITY_TOKEN</code>
+                    <code className="bg-gray-200 px-2 py-2 rounded">SALESFORCE_SECURITY_TOKEN</code>
                     <span className="text-gray-500">= from Salesforce settings</span>
                   </div>
                 </div>
@@ -165,11 +165,11 @@ export default function SalesforceIntegrationPage() {
                 </p>
                 <div className="space-y-3 font-mono text-sm mt-3">
                   <div className="flex items-center gap-2">
-                    <code className="bg-gray-200 px-2 py-1 rounded">SALESFORCE_API_KEY</code>
+                    <code className="bg-gray-200 px-2 py-2 rounded">SALESFORCE_API_KEY</code>
                     <span className="text-gray-500">= your access token</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <code className="bg-gray-200 px-2 py-1 rounded">SALESFORCE_INSTANCE_URL</code>
+                    <code className="bg-gray-200 px-2 py-2 rounded">SALESFORCE_INSTANCE_URL</code>
                     <span className="text-gray-500">= https://yourorg.salesforce.com</span>
                   </div>
                 </div>

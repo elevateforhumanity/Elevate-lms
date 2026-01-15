@@ -116,7 +116,7 @@ export function CourseReviewsSection({ courseId }: { courseId: string }) {
           <select
             value={rating}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setRating(Number(e.target.value))}
-            className="rounded border px-2 py-1 text-xs"
+            className="rounded border px-2 py-2 text-xs"
           >
             {[5, 4, 3, 2, 1].map((r) => (
               <option key={r} value={r}>
@@ -131,20 +131,20 @@ export function CourseReviewsSection({ courseId }: { courseId: string }) {
           Content="Short title (optional)"
           value={title}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setTitle(e.target.value)}
-          className="w-full rounded border px-2 py-1 text-xs"
+          className="w-full rounded border px-2 py-2 text-xs"
         />
 
         <textarea
           Content="Share details that will help other learners…"
           value={text}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setText(e.target.value)}
-          className="h-20 w-full rounded border px-2 py-1 text-xs"
+          className="h-20 w-full rounded border px-2 py-2 text-xs"
         />
 
         <button
           type="submit"
           disabled={submitting}
-          className="rounded-full bg-blue-600 px-4 py-1 text-xs font-semibold text-white disabled:opacity-60 hover:bg-blue-700 transition"
+          className="rounded-full bg-blue-600 px-4 py-2 text-xs font-semibold text-white disabled:opacity-60 hover:bg-blue-700 transition"
         >
           {submitting ? "Submitting…" : "Submit review"}
         </button>

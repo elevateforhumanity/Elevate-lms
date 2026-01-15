@@ -179,7 +179,7 @@ export default function EnrollPage({
           <div className="bg-brand-blue-600 text-white p-8">
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <span className="inline-block px-3 py-1 bg-white/20 text-white text-xs font-semibold rounded-full mb-3">
+                <span className="inline-block px-3 py-2 bg-white/20 text-white text-xs font-semibold rounded-full mb-3">
                   {course.category}
                 </span>
                 <h2 className="text-2xl font-bold mb-2">{course.title}</h2>

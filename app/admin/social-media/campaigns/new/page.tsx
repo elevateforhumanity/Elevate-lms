@@ -484,7 +484,7 @@ export default function NewSocialCampaignPage() {
                       campaign.platforms.map((platform) => (
                         <span
                           key={platform}
-                          className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800"
+                          className="inline-flex items-center px-2 py-2 rounded-md text-xs font-medium bg-blue-100 text-blue-800"
                         >
                           {platform.charAt(0).toUpperCase() + platform.slice(1)}
                         </span>

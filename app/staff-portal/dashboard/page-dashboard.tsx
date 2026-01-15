@@ -280,7 +280,7 @@ export default async function StaffPortalPage() {
                   </div>
                   <div className="text-right">
                     <span
-                      className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                      className={`inline-block px-3 py-2 rounded-full text-xs font-semibold ${
                         item.status === 'active'
                           ? 'bg-brand-green-100 text-green-800'
                           : item.status === 'completed'

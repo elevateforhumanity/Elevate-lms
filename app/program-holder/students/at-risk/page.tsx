@@ -109,7 +109,7 @@ export default async function AtRiskStudentsPage() {
             {studentsNeedingAttention.length > 0 && (
               <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-8">
                 <div className="flex items-start">
-                  <AlertTriangle className="h-6 w-6 text-yellow-600 mr-3 flex-shrink-0 mt-0.5" />
+                  <AlertTriangle className="h-10 w-10 text-yellow-600 mr-3 flex-shrink-0 mt-0.5" />
                   <div>
                     <h3 className="text-lg font-semibold text-yellow-900 mb-1">
                       {studentsNeedingAttention.length} Student(s) Need
@@ -129,7 +129,7 @@ export default async function AtRiskStudentsPage() {
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <AlertTriangle className="h-8 w-8 text-yellow-600" />
+                  <AlertTriangle className="h-11 w-11 text-yellow-600" />
                   <h3 className="text-sm font-medium text-black">
                     At-Risk Students
                   </h3>
@@ -140,7 +140,7 @@ export default async function AtRiskStudentsPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <TrendingDown className="h-8 w-8 text-red-600" />
+                  <TrendingDown className="h-11 w-11 text-red-600" />
                   <h3 className="text-sm font-medium text-black">
                     Requires Intervention
                   </h3>
@@ -151,7 +151,7 @@ export default async function AtRiskStudentsPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Clock className="h-8 w-8 text-brand-blue-600" />
+                  <Clock className="h-11 w-11 text-brand-blue-600" />
                   <h3 className="text-sm font-medium text-black">
                     Avg. Days Enrolled
                   </h3>
@@ -234,7 +234,7 @@ export default async function AtRiskStudentsPage() {
                               {daysEnrolled} days ago
                             </td>
                             <td className="py-3 px-4">
-                              <span className="px-2 py-1 text-xs rounded bg-yellow-100 text-yellow-800">
+                              <span className="px-2 py-2 text-xs rounded bg-yellow-100 text-yellow-800">
                                 Long enrollment
                               </span>
                             </td>

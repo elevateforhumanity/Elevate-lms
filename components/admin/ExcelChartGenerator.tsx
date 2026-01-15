@@ -568,7 +568,7 @@ fill="white" />
       {isGenerating && (
         <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
           <div className="flex items-center">
-            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-green-600 mr-4" />
+            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-green-600 mr-4" />
             <div>
               <h3 className="font-semibold text-green-900">
                 🤖 Generating Excel File with Charts...
@@ -594,13 +594,13 @@ fill="white" />
               onClick={() =>
                 setSelectedCharts(availableCharts.map((c) => c.title))
               }
-              className="text-sm bg-brand-surface text-brand-info px-3 py-1 rounded hover:bg-blue-200"
+              className="text-sm bg-brand-surface text-brand-info px-3 py-2 rounded hover:bg-blue-200"
             >
               Select All
             </button>
             <button
               onClick={() => setSelectedCharts([])}
-              className="text-sm bg-brand-surface-dark text-brand-text px-3 py-1 rounded hover:bg-brand-border"
+              className="text-sm bg-brand-surface-dark text-brand-text px-3 py-2 rounded hover:bg-brand-border"
             >
               Clear All
             </button>
@@ -617,7 +617,7 @@ fill="white" />
                     onChange={() => toggleChartSelection(chart.title)}
                     className="mr-2"
                   />
-                  <span className="text-sm bg-white px-2 py-1 rounded shadow">
+                  <span className="text-sm bg-white px-2 py-2 rounded shadow">
                     Include
                   </span>
                 </label>

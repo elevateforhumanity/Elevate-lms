@@ -57,7 +57,7 @@ export default function IntegrationsPage() {
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-3">
                         <h2 className="text-2xl font-bold text-slate-900">{integration.name}</h2>
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${colors.bg} ${colors.text}`}>
+                        <span className={`px-3 py-2 rounded-full text-sm font-medium ${colors.bg} ${colors.text}`}>
                           {integration.status}
                         </span>
                       </div>

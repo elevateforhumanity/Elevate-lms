@@ -243,14 +243,14 @@ export default function AdminNextStepsPage() {
                     <td className="px-4 py-3">
                       <div className="flex flex-wrap gap-2">
                         <button
-                          className="rounded-lg border px-2 py-1 text-xs font-semibold hover:bg-gray-50"
+                          className="rounded-lg border px-2 py-2 text-xs font-semibold hover:bg-gray-50"
                           onClick={() => setSelected(r)}
                         >
                           Quick Edit
                         </button>
 
                         <button
-                          className="rounded-lg border px-2 py-1 text-xs font-semibold hover:bg-gray-50"
+                          className="rounded-lg border px-2 py-2 text-xs font-semibold hover:bg-gray-50"
                           disabled={saving}
                           onClick={() =>
                             savePatch(r.id, {
@@ -264,7 +264,7 @@ export default function AdminNextStepsPage() {
                         </button>
 
                         <button
-                          className="rounded-lg border px-2 py-1 text-xs font-semibold hover:bg-gray-50"
+                          className="rounded-lg border px-2 py-2 text-xs font-semibold hover:bg-gray-50"
                           disabled={saving}
                           onClick={() =>
                             savePatch(r.id, {
@@ -278,7 +278,7 @@ export default function AdminNextStepsPage() {
                         </button>
 
                         <button
-                          className="rounded-lg border px-2 py-1 text-xs font-semibold hover:bg-gray-50"
+                          className="rounded-lg border px-2 py-2 text-xs font-semibold hover:bg-gray-50"
                           disabled={saving}
                           onClick={() =>
                             savePatch(r.id, {
@@ -290,7 +290,7 @@ export default function AdminNextStepsPage() {
                         </button>
 
                         <button
-                          className="rounded-lg border px-2 py-1 text-xs font-semibold hover:bg-gray-50"
+                          className="rounded-lg border px-2 py-2 text-xs font-semibold hover:bg-gray-50"
                           disabled={saving}
                           onClick={() =>
                             savePatch(r.id, {
@@ -368,7 +368,7 @@ function QuickEdit({
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg border px-3 py-1 text-sm font-semibold"
+            className="rounded-lg border px-3 py-2 text-sm font-semibold"
           >
             Close
           </button>

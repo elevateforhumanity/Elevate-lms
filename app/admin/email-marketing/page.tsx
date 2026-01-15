@@ -90,7 +90,7 @@ export default function EmailMarketingPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-8">
           <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
             <div className="flex items-center justify-between mb-2">
-              <Mail className="h-8 w-8 text-brand-blue-600" />
+              <Mail className="h-11 w-11 text-brand-blue-600" />
               <span className="text-xs font-semibold text-slate-500">
                 THIS MONTH
               </span>
@@ -101,7 +101,7 @@ export default function EmailMarketingPage() {
 
           <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
             <div className="flex items-center justify-between mb-2">
-              <Eye className="h-8 w-8 text-brand-green-600" />
+              <Eye className="h-11 w-11 text-brand-green-600" />
               <span className="text-xs font-semibold text-slate-500">
                 OPEN RATE
               </span>
@@ -112,7 +112,7 @@ export default function EmailMarketingPage() {
 
           <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
             <div className="flex items-center justify-between mb-2">
-              <Users className="h-8 w-8 text-purple-600" />
+              <Users className="h-11 w-11 text-purple-600" />
               <span className="text-xs font-semibold text-slate-500">
                 CONTACTS
               </span>
@@ -123,7 +123,7 @@ export default function EmailMarketingPage() {
 
           <div className="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
             <div className="flex items-center justify-between mb-2">
-              <BarChart3 className="h-8 w-8 text-brand-orange-600" />
+              <BarChart3 className="h-11 w-11 text-brand-orange-600" />
               <span className="text-xs font-semibold text-slate-500">
                 CLICK RATE
               </span>

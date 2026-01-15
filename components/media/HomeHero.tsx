@@ -47,7 +47,7 @@ export function HomeHero({ images }: HomeHeroProps) {
           {/* TEXT SIDE */}
           <div className="space-y-3 text-white">
             {current.badge && (
-              <span className="inline-flex items-center rounded-full bg-orange-500/15 px-3 py-1 text-[11px] font-semibold text-orange-300">
+              <span className="inline-flex items-center rounded-full bg-orange-500/15 px-3 py-2 text-[11px] font-semibold text-orange-300">
                 {current.badge}
               </span>
             )}

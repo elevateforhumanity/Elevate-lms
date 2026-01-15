@@ -74,7 +74,7 @@ d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.
               <div className="mt-4">
                 <Link
                   href={`/programs/${program.slug}`}
-                  className="inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-slate-800"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-3 py-2.5 text-xs font-semibold text-white hover:bg-slate-800"
                 >
                   View Program Details
                 </Link>

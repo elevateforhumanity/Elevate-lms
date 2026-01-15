@@ -41,7 +41,7 @@ export function HeroSection({
             {badges.map((badge, index) => (
               <span
                 key={index}
-                className={`px-4 py-1 ${badgeColors[badge.color as keyof typeof badgeColors] || 'bg-blue-500'} text-white text-sm font-bold rounded-full`}
+                className={`px-4 py-2 ${badgeColors[badge.color as keyof typeof badgeColors] || 'bg-blue-500'} text-white text-sm font-bold rounded-full`}
               >
                 {badge.text}
               </span>

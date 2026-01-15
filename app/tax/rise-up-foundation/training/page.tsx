@@ -119,7 +119,7 @@ export default function TrainingPage() {
           <div className="rounded-lg border-2 border-green-200 p-6">
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-semibold text-lg">Basic Certification</h3>
-              <span className="px-3 py-1 rounded-full bg-brand-green-100 text-green-800 text-xs font-semibold">
+              <span className="px-3 py-2 rounded-full bg-brand-green-100 text-green-800 text-xs font-semibold">
                 RECOMMENDED FOR NEW VOLUNTEERS
               </span>
             </div>
@@ -139,7 +139,7 @@ export default function TrainingPage() {
               <h3 className="font-semibold text-lg">
                 Intermediate Certification
               </h3>
-              <span className="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold">
+              <span className="px-3 py-2 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold">
                 MOST COMMON
               </span>
             </div>
@@ -158,7 +158,7 @@ export default function TrainingPage() {
           <div className="rounded-lg border-2 border-purple-200 p-6">
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-semibold text-lg">Advanced Certification</h3>
-              <span className="px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold">
+              <span className="px-3 py-2 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold">
                 FOR EXPERIENCED VOLUNTEERS
               </span>
             </div>

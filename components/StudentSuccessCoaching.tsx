@@ -137,7 +137,7 @@ export function StudentSuccessCoaching() {
                       <p className="mt-2 text-sm text-black">{session.notes}</p>
                     )}
                   </div>
-                  <span className={`px-3 py-1 rounded text-sm ${
+                  <span className={`px-3 py-2 rounded text-sm ${
                     session.status === 'scheduled' ? 'bg-blue-100 text-blue-700' :
                     session.status === 'completed' ? 'bg-green-100 text-green-700' :
                     'bg-gray-100 text-black'
@@ -164,7 +164,7 @@ export function StudentSuccessCoaching() {
                     <p className="text-sm text-black">{goal.category}</p>
                     <p className="text-sm text-gray-500">Due: {goal.dueDate}</p>
                   </div>
-                  <span className={`px-3 py-1 rounded text-sm ${
+                  <span className={`px-3 py-2 rounded text-sm ${
                     goal.status === 'on-track' ? 'bg-green-100 text-green-700' :
                     goal.status === 'at-risk' ? 'bg-yellow-100 text-yellow-700' :
                     'bg-blue-100 text-blue-700'

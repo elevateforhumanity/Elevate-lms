@@ -158,10 +158,10 @@ export default function MicroProgramsPage() {
                     {program.name}
                   </h3>
                   <div className="flex flex-wrap gap-2 mb-3">
-                    <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
+                    <span className="px-3 py-2 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
                       {program.duration}
                     </span>
-                    <span className="px-3 py-1 bg-brand-green-100 text-green-700 text-xs font-semibold rounded-full">
+                    <span className="px-3 py-2 bg-brand-green-100 text-green-700 text-xs font-semibold rounded-full">
                       Quick Start
                     </span>
                   </div>

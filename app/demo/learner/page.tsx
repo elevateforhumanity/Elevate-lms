@@ -52,7 +52,7 @@ export default function LearnerDemo() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-blue-600 text-white text-center py-1.5 px-2 text-xs"><Info className="w-3 h-3 inline mr-1" />Live Demo - Student Portal</div>
+      <div className="bg-blue-600 text-white text-center py-3 px-2 text-xs"><Info className="w-3 h-3 inline mr-1" />Live Demo - Student Portal</div>
       
       {/* Top Nav */}
       <header className="bg-white border-b sticky top-0 z-40">
@@ -77,7 +77,7 @@ export default function LearnerDemo() {
             { id: 'hours', icon: Clock, label: 'Hours' },
             { id: 'certs', icon: Award, label: 'Certs' },
           ].map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)} className={`flex flex-col items-center px-3 py-1 ${tab === t.id ? 'text-orange-600' : 'text-gray-500'}`}>
+            <button key={t.id} onClick={() => setTab(t.id)} className={`flex flex-col items-center px-4 py-3 ${tab === t.id ? 'text-orange-600' : 'text-gray-500'}`}>
               <t.icon className="w-5 h-5" />
               <span className="text-[10px] mt-0.5">{t.label}</span>
             </button>
@@ -126,7 +126,7 @@ export default function LearnerDemo() {
                 <div key={l.id} className={`flex items-center gap-2 p-2 rounded-lg mb-1 ${l.current ? 'bg-orange-50 border border-orange-200' : ''}`}>
                   {l.done ? <CheckCircle className="w-4 h-4 text-green-500" /> : <div className="w-4 h-4 rounded-full border-2 border-gray-300" />}
                   <span className={`flex-1 text-sm ${l.done ? 'text-gray-400' : 'text-gray-900'}`}>{l.title}</span>
-                  {l.current && <button className="bg-orange-600 text-white text-xs px-2 py-1 rounded flex items-center gap-1"><Play className="w-3 h-3"/>Play</button>}
+                  {l.current && <button className="bg-orange-600 text-white text-xs px-2 py-2 rounded flex items-center gap-1"><Play className="w-3 h-3"/>Play</button>}
                 </div>
               ))}
               <button className="w-full text-center text-sm text-orange-600 font-medium mt-2">View All Lessons</button>
@@ -205,7 +205,7 @@ export default function LearnerDemo() {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <h1 className="text-lg font-bold text-gray-900">Hours Log</h1>
-              <button onClick={() => setLogModal(true)} className="flex items-center gap-1 bg-orange-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium"><Plus className="w-4 h-4"/>Log</button>
+              <button onClick={() => setLogModal(true)} className="flex items-center gap-1 bg-orange-600 text-white px-3 py-3 rounded-lg text-sm font-medium"><Plus className="w-4 h-4"/>Log</button>
             </div>
 
             <div className="grid grid-cols-2 gap-3">

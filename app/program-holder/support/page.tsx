@@ -115,7 +115,7 @@ export default async function SupportPage() {
                   <div className="flex items-start gap-4">
                     <div className={`p-3 bg-${channel.color}-100 rounded-lg`}>
                       <channel.icon
-                        className={`h-8 w-8 text-${channel.color}-600`}
+                        className={`h-11 w-11 text-${channel.color}-600`}
                       />
                     </div>
                     <div className="flex-1">
@@ -140,7 +140,7 @@ export default async function SupportPage() {
             {/* FAQs */}
             <div className="bg-white rounded-lg shadow-sm border p-8 mb-8">
               <div className="flex items-center gap-3 mb-6">
-                <HelpCircle className="h-8 w-8 text-brand-blue-600" />
+                <HelpCircle className="h-11 w-11 text-brand-blue-600" />
                 <h2 className="text-2xl font-bold text-black">
                   Frequently Asked Questions
                 </h2>

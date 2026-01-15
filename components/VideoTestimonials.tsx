@@ -192,7 +192,7 @@ export default function VideoTestimonials() {
                       </div>
 
                       {/* Duration Badge */}
-                      <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/80 text-white text-xs rounded">
+                      <div className="absolute bottom-3 right-3 px-2 py-2 bg-black/80 text-white text-xs rounded">
                         {testimonial.duration}
                       </div>
 

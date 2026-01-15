@@ -40,7 +40,7 @@ export default function PricingPage() {
               }`}
             >
               {product.recommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-orange-600 text-white px-4 py-1 rounded-full text-sm font-bold">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-orange-600 text-white px-4 py-2 rounded-full text-sm font-bold">
                   Recommended
                 </div>
               )}

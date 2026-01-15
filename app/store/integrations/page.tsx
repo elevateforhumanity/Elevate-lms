@@ -36,7 +36,7 @@ export default function IntegrationsPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">Salesforce</h3>
-                  <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-bold">
+                  <span className="px-3 py-2 bg-green-100 text-green-800 rounded-full text-sm font-bold">
                     Native Integration
                   </span>
                 </div>
@@ -79,7 +79,7 @@ export default function IntegrationsPage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">Zapier</h3>
-                  <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-bold">
+                  <span className="px-3 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-bold">
                     1000+ Apps
                   </span>
                 </div>
@@ -156,23 +156,23 @@ export default function IntegrationsPage() {
                   <ul className="space-y-2 text-sm text-gray-700">
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-600" />
-                      <code className="bg-gray-100 px-2 py-1 rounded">POST /api/students</code>
+                      <code className="bg-gray-100 px-2 py-2 rounded">POST /api/students</code>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-600" />
-                      <code className="bg-gray-100 px-2 py-1 rounded">GET /api/courses</code>
+                      <code className="bg-gray-100 px-2 py-2 rounded">GET /api/courses</code>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-600" />
-                      <code className="bg-gray-100 px-2 py-1 rounded">POST /api/enrollments</code>
+                      <code className="bg-gray-100 px-2 py-2 rounded">POST /api/enrollments</code>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-600" />
-                      <code className="bg-gray-100 px-2 py-1 rounded">GET /api/progress</code>
+                      <code className="bg-gray-100 px-2 py-2 rounded">GET /api/progress</code>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-600" />
-                      <code className="bg-gray-100 px-2 py-1 rounded">POST /api/certificates</code>
+                      <code className="bg-gray-100 px-2 py-2 rounded">POST /api/certificates</code>
                     </li>
                   </ul>
                 </div>
@@ -207,7 +207,7 @@ export default function IntegrationsPage() {
             <div className="bg-gray-900 text-white rounded-xl p-8">
               <div className="flex items-center justify-between mb-4">
                 <h4 className="font-bold">Example API Call</h4>
-                <span className="text-xs bg-green-600 px-2 py-1 rounded">POST</span>
+                <span className="text-xs bg-green-600 px-2 py-2 rounded">POST</span>
               </div>
               <pre className="bg-black rounded-lg p-4 overflow-x-auto text-sm">
                 <code>{`curl -X POST https://your-platform.com/api/students \\

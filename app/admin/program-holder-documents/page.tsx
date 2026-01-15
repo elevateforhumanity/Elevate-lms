@@ -125,21 +125,21 @@ export default function AdminProgramHolderDocuments() {
   const getStatusBadge = (doc: Document) => {
     if (doc.approved) {
       return (
-        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+        <span className="inline-flex items-center gap-1 px-3 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800">
           <CheckCircle size={16} />
           Approved
         </span>
       );
     } else if (doc.approved_by) {
       return (
-        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+        <span className="inline-flex items-center gap-1 px-3 py-2 rounded-full text-sm font-medium bg-red-100 text-red-800">
           <XCircle size={16} />
           Rejected
         </span>
       );
     } else {
       return (
-        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+        <span className="inline-flex items-center gap-1 px-3 py-2 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
           <Clock size={16} />
           Pending
         </span>
@@ -204,7 +204,7 @@ export default function AdminProgramHolderDocuments() {
                 }`}
               >
                 {tab.label}
-                <span className="ml-2 px-2 py-1 text-xs rounded-full bg-gray-100">
+                <span className="ml-2 px-2 py-2 text-xs rounded-full bg-gray-100">
                   {tab.count}
                 </span>
               </button>

@@ -148,7 +148,7 @@ export default function BeautyProgramsPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-2 rounded-full">
                     <span className="text-sm font-bold text-gray-900">
                       ${program.price.toLocaleString()}
                     </span>
@@ -171,7 +171,7 @@ export default function BeautyProgramsPage() {
                     {program.highlights.map((highlight) => (
                       <span
                         key={highlight}
-                        className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs"
+                        className="bg-gray-100 text-gray-700 px-3 py-2 rounded-full text-xs"
                       >
                         {highlight}
                       </span>

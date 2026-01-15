@@ -105,7 +105,7 @@ export default async function EventsPage() {
                           {event.title}
                         </h3>
                         <span
-                          className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                          className={`px-3 py-2 rounded-full text-sm font-semibold ${
                             eventTypeColors[
                               event.type as keyof typeof eventTypeColors
                             ]

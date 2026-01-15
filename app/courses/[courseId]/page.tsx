@@ -185,7 +185,7 @@ export default async function CourseDetailPage({
                         )}
                       </div>
                       {enrollment && (
-                        <CheckCircle className="h-6 w-6 text-green-600" />
+                        <CheckCircle className="h-10 w-10 text-green-600" />
                       )}
                     </div>
                   </div>
@@ -207,7 +207,7 @@ export default async function CourseDetailPage({
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3">
-                  <Award className="h-6 w-6 text-blue-600" />
+                  <Award className="h-10 w-10 text-blue-600" />
                   <div>
                     <div className="font-bold text-black">Certificate</div>
                     <div className="text-sm text-black">Upon completion</div>
@@ -215,7 +215,7 @@ export default async function CourseDetailPage({
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Clock className="h-6 w-6 text-blue-600" />
+                  <Clock className="h-10 w-10 text-blue-600" />
                   <div>
                     <div className="font-bold text-black">Duration</div>
                     <div className="text-sm text-black">
@@ -225,7 +225,7 @@ export default async function CourseDetailPage({
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <BookOpen className="h-6 w-6 text-blue-600" />
+                  <BookOpen className="h-10 w-10 text-blue-600" />
                   <div>
                     <div className="font-bold text-black">Lessons</div>
                     <div className="text-sm text-black">
@@ -235,7 +235,7 @@ export default async function CourseDetailPage({
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Users className="h-6 w-6 text-blue-600" />
+                  <Users className="h-10 w-10 text-blue-600" />
                   <div>
                     <div className="font-bold text-black">Access</div>
                     <div className="text-sm text-black">Lifetime access</div>

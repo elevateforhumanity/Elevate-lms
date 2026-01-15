@@ -202,7 +202,7 @@ export default async function AdminEnrollmentsPage() {
                       </td>
                       <td className="px-6 py-4">
                         <span
-                          className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                          className={`inline-flex px-2 py-2 text-xs font-semibold rounded-full ${
                             enrollment.status === 'active'
                               ? 'bg-brand-green-100 text-green-800'
                               : enrollment.status === 'completed'

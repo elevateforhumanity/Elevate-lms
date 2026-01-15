@@ -220,12 +220,12 @@ export function LessonSidebar({
             value={bookmarkLabel}
             onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setBookmarkLabel(e.target.value)}
             Content="Label (optional)"
-            className="flex-1 rounded border px-2 py-1 text-[11px]"
+            className="flex-1 rounded border px-2 py-2 text-[11px]"
           />
           <button
             type="button"
             onClick={handleAddBookmark}
-            className="rounded-full bg-brand-orange-600 px-3 py-1 text-[11px] font-semibold text-white hover:bg-brand-orange-700"
+            className="rounded-full bg-brand-orange-600 px-3 py-2 text-[11px] font-semibold text-white hover:bg-brand-orange-700"
           >
             + Add
           </button>
@@ -235,7 +235,7 @@ export function LessonSidebar({
             {bookmarks.map((b) => (
               <li
                 key={b.id}
-                className="flex items-center justify-between rounded bg-slate-50 px-2 py-1"
+                className="flex items-center justify-between rounded bg-slate-50 px-3 py-2"
               >
                 <button
                   type="button"
@@ -264,7 +264,7 @@ export function LessonSidebar({
           value={noteBody}
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setNoteBody(e.target.value)}
           Content="Write a note about this lesson…"
-          className="h-16 w-full resize-none rounded border px-2 py-1 text-[11px]"
+          className="h-16 w-full resize-none rounded border px-2 py-2 text-[11px]"
         />
         <div className="flex items-center justify-between">
           <label className="flex items-center gap-1 text-[11px] text-black">
@@ -278,7 +278,7 @@ export function LessonSidebar({
           <button
             type="button"
             onClick={handleAddNote}
-            className="rounded-full bg-blue-600 px-3 py-1 text-[11px] font-semibold text-white hover:bg-blue-700"
+            className="rounded-full bg-blue-600 px-3 py-2 text-[11px] font-semibold text-white hover:bg-blue-700"
           >
             Save note
           </button>
@@ -289,7 +289,7 @@ export function LessonSidebar({
             {notes.map((n) => (
               <li
                 key={n.id}
-                className="rounded bg-slate-50 px-2 py-1 text-[11px]"
+                className="rounded bg-slate-50 px-2 py-2 text-[11px]"
               >
                 <div className="flex items-center justify-between">
                   {typeof n.position_seconds === "number" ? (
@@ -356,18 +356,18 @@ export function LessonSidebar({
               value={questionTitle}
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setQuestionTitle(e.target.value)}
               Content="Short question title"
-              className="w-full rounded border px-2 py-1 text-[11px]"
+              className="w-full rounded border px-2 py-2 text-[11px]"
             />
             <textarea
               value={questionBody}
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setQuestionBody(e.target.value)}
               Content="Describe your question…"
-              className="h-16 w-full resize-none rounded border px-2 py-1 text-[11px]"
+              className="h-16 w-full resize-none rounded border px-2 py-2 text-[11px]"
             />
             <button
               type="button"
               onClick={handleAskQuestion}
-              className="w-full rounded-full bg-brand-orange-600 px-3 py-1 text-[11px] font-semibold text-white hover:bg-brand-orange-700"
+              className="w-full rounded-full bg-brand-orange-600 px-3 py-2 text-[11px] font-semibold text-white hover:bg-brand-orange-700"
             >
               Post question
             </button>
@@ -423,12 +423,12 @@ export function LessonSidebar({
                         value={answerBody}
                         onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setAnswerBody(e.target.value)}
                         Content="Type your answer…"
-                        className="h-12 w-full resize-none rounded border px-2 py-1 text-[11px]"
+                        className="h-12 w-full resize-none rounded border px-2 py-2 text-[11px]"
                       />
                       <button
                         type="button"
                         onClick={() => handleAnswerQuestion(q.id)}
-                        className="rounded-full bg-blue-600 px-3 py-1 text-[11px] font-semibold text-white hover:bg-blue-700"
+                        className="rounded-full bg-blue-600 px-3 py-2 text-[11px] font-semibold text-white hover:bg-blue-700"
                       >
                         Post answer
                       </button>

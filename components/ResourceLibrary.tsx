@@ -127,7 +127,7 @@ export function ResourceLibrary() {
                 <div className="text-4xl text-2xl md:text-3xl lg:text-4xl">{getTypeIcon(resource.type)}</div>
                 <div className="flex-1">
                   <h3 className="text-lg font-bold mb-1">{resource.title}</h3>
-                  <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded capitalize">
+                  <span className="px-2 py-2 bg-orange-100 text-orange-700 text-xs rounded capitalize">
                     {resource.type}
                   </span>
                 </div>

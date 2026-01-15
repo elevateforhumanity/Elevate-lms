@@ -1,18 +1,36 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { LMSNavigation } from '@/components/lms/LMSNavigation';
 
 export default function LmsAppLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const isDemoMode = searchParams.get('demo') === 'true';
+  
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Demo mode - skip auth and use sample data
+    if (isDemoMode) {
+      setUser({ id: 'demo-user', email: 'demo@elevateforhumanity.org' });
+      setProfile({
+        id: 'demo-user',
+        full_name: 'Demo Student',
+        role: 'student',
+        avatar_url: '/images/testimonials/student-marcus.jpg',
+        program: 'Healthcare Training',
+        progress: 67,
+      });
+      setLoading(false);
+      return;
+    }
+
     const supabase = createClient();
 
     supabase.auth.getUser().then(({ data, error }) => {
@@ -33,14 +51,26 @@ export default function LmsAppLayout({ children }: { children: ReactNode }) {
           setLoading(false);
         });
     });
-  }, [router]);
+  }, [router, isDemoMode]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-slate-600">Loading...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className="min-h-screen bg-slate-50">
+      {isDemoMode && (
+        <div className="bg-green-600 text-white text-center py-2 px-4 text-sm">
+          Demo Mode — Exploring LMS features with sample data
+        </div>
+      )}
       <LMSNavigation user={user} profile={profile} />
       <main>{children}</main>
     </div>

@@ -126,7 +126,7 @@ export function EligibilityChecker() {
             {fullyEligible ? (
               <>
                 <div className="flex items-center gap-3 mb-4">
-                  <CheckCircle className="h-8 w-8 text-green-600" />
+                  <CheckCircle className="h-11 w-11 text-green-600" />
                   <h4 className="text-2xl font-bold text-green-900">
                     You Qualify!
                   </h4>
@@ -162,7 +162,7 @@ export function EligibilityChecker() {
             ) : (
               <>
                 <div className="flex items-center gap-3 mb-4">
-                  <XCircle className="h-8 w-8 text-yellow-600" />
+                  <XCircle className="h-11 w-11 text-yellow-600" />
                   <h4 className="text-2xl font-bold text-yellow-900">
                     Let's Talk About Your Options
                   </h4>

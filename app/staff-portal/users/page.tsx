@@ -94,7 +94,7 @@ export default async function StaffPortalUsersPage() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span
-                            className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                            className={`px-2 py-2 text-xs font-semibold rounded-full ${
                               user.role === 'admin'
                                 ? 'bg-purple-100 text-purple-800'
                                 : user.role === 'staff'

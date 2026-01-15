@@ -64,7 +64,7 @@ export default function MonitoringSetupPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-black flex items-center gap-3">
-            <Database className="h-8 w-8 text-blue-600" />
+            <Database className="h-11 w-11 text-blue-600" />
             Monitoring Setup
           </h1>
           <p className="text-black mt-2">Verify and configure monitoring system</p>
@@ -79,9 +79,9 @@ export default function MonitoringSetupPage() {
           }`}>
             <div className="flex items-center gap-4 mb-4">
               {result.status === 'ready' ? (
-                <CheckCircle className="h-8 w-8 text-green-600" />
+                <CheckCircle className="h-11 w-11 text-green-600" />
               ) : (
-                <AlertCircle className="h-8 w-8 text-yellow-600" />
+                <AlertCircle className="h-11 w-11 text-yellow-600" />
               )}
               <div>
                 <h2 className="text-2xl font-bold text-black">

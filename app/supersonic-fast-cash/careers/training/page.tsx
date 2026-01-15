@@ -552,7 +552,7 @@ export default function TrainingPage() {
               >
                 <div className="bg-gradient-to-r from-green-600 to-blue-600 p-6 text-white relative">
                   {module.price === 0 && (
-                    <div className="absolute top-2 right-2 bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold">
+                    <div className="absolute top-2 right-2 bg-yellow-400 text-black px-3 py-2 rounded-full text-xs font-bold">
                       FREE!
                     </div>
                   )}

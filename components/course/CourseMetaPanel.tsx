@@ -34,25 +34,25 @@ export function CourseMetaPanel({
       {/* Top badges / rating */}
       <div className="flex flex-wrap items-center gap-3 text-xs">
         {course.difficulty && (
-          <span className="rounded-full bg-red-50 px-3 py-1 font-semibold text-red-700">
+          <span className="rounded-full bg-red-50 px-3 py-2 font-semibold text-red-700">
             {course.difficulty}
           </span>
         )}
         {course.category && (
-          <span className="rounded-full bg-blue-50 px-3 py-1 font-semibold text-blue-700">
+          <span className="rounded-full bg-blue-50 px-3 py-2 font-semibold text-blue-700">
             {course.category}
           </span>
         )}
         {averageRating > 0 && (
-          <span className="rounded-full bg-yellow-50 px-3 py-1 font-semibold text-yellow-700">
+          <span className="rounded-full bg-yellow-50 px-3 py-2 font-semibold text-yellow-700">
             ⭐ {averageRating.toFixed(1)} ({ratingCount} reviews)
           </span>
         )}
-        <span className="rounded-full bg-slate-100 px-3 py-1 font-semibold text-black">
+        <span className="rounded-full bg-slate-100 px-3 py-2 font-semibold text-black">
           {enrollmentCount} learners
         </span>
         {course.duration_hours && course.duration_hours > 0 && (
-          <span className="rounded-full bg-slate-100 px-3 py-1 font-semibold text-black">
+          <span className="rounded-full bg-slate-100 px-3 py-2 font-semibold text-black">
             ~{course.duration_hours} hours
           </span>
         )}
@@ -81,7 +81,7 @@ export function CourseMetaPanel({
             {course.skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-black"
+                className="rounded-full bg-slate-100 px-3 py-2 text-xs font-medium text-black"
               >
                 {skill}
               </span>

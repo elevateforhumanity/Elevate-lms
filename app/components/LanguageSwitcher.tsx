@@ -22,7 +22,7 @@ export default function LanguageSwitcher() {
     <div className="flex items-center gap-2">
       <button
         onClick={() => switchLanguage('en')}
-        className={`px-3 py-1 rounded text-sm font-medium transition ${
+        className={`px-3 py-2 rounded text-sm font-medium transition ${
           locale === 'en'
             ? 'bg-blue-600 text-white'
             : 'bg-gray-200 text-black hover:bg-gray-300'
@@ -33,7 +33,7 @@ export default function LanguageSwitcher() {
       </button>
       <button
         onClick={() => switchLanguage('es')}
-        className={`px-3 py-1 rounded text-sm font-medium transition ${
+        className={`px-3 py-2 rounded text-sm font-medium transition ${
           locale === 'es'
             ? 'bg-blue-600 text-white'
             : 'bg-gray-200 text-black hover:bg-gray-300'

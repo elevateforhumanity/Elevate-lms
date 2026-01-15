@@ -96,7 +96,7 @@ export function EmailCampaignManager() {
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className="text-xl font-bold">{campaign.name}</h3>
-                    <span className={`px-3 py-1 rounded text-xs font-medium ${
+                    <span className={`px-3 py-2 rounded text-xs font-medium ${
                       campaign.status === 'sent' ? 'bg-green-100 text-green-700' :
                       campaign.status === 'scheduled' ? 'bg-blue-100 text-blue-700' :
                       'bg-gray-100 text-black'

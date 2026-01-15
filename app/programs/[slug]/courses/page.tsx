@@ -186,7 +186,7 @@ export default function ProgramCoursesPage() {
                     />
                     <div className="absolute top-4 right-4">
                       {course.price === 0 && (
-                        <span className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                        <span className="bg-green-600 text-white px-3 py-2 rounded-full text-xs font-bold shadow-lg">
                           FREE
                         </span>
                       )}
@@ -232,7 +232,7 @@ export default function ProgramCoursesPage() {
                         )}
                       </div>
                       {course.funding && (
-                        <div className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
+                        <div className="text-xs bg-green-100 text-green-800 px-2 py-2 rounded">
                           {course.funding}
                         </div>
                       )}

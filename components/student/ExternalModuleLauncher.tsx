@@ -162,7 +162,7 @@ export default function ExternalModuleLauncher({
                   />
                   {uploading ? (
                     <div>
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-2" />
+                      <div className="animate-spin rounded-full h-11 w-11 border-b-2 border-blue-500 mx-auto mb-2" />
                       <p className="text-slate-400 text-sm">Uploading...</p>
                     </div>
                   ) : (

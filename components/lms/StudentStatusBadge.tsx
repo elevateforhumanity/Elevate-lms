@@ -54,7 +54,7 @@ export function StudentStatusBadge({
 
   const badge = getBadgeConfig();
   const textSize = size === 'sm' ? 'text-xs' : size === 'lg' ? 'text-base' : 'text-sm';
-  const padding = size === 'sm' ? 'px-2 py-1' : size === 'lg' ? 'px-4 py-2' : 'px-3 py-1.5';
+  const padding = size === 'sm' ? 'px-3 py-2' : size === 'lg' ? 'px-4 py-2' : 'px-3 py-2.5';
 
   return (
     <div className="flex items-center gap-4">

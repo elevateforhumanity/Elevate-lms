@@ -187,7 +187,7 @@ export default function CompliancePage() {
               <div key={idx} className="bg-gray-50 rounded-lg p-6">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="font-bold">{item.title}</h3>
-                  <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                  <span className={`px-3 py-2 rounded-full text-xs font-bold ${
                     item.status === 'Compliant' ? 'bg-green-100 text-green-800' :
                     item.status === 'In Progress' ? 'bg-yellow-100 text-yellow-800' :
                     'bg-blue-100 text-blue-800'

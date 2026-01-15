@@ -57,16 +57,16 @@ export default function AccreditationPage() {
             by state and federal agencies.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm">
-            <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">
+            <span className="px-3 py-2 bg-white/20 backdrop-blur-sm rounded-full">
               WIOA Eligible
             </span>
-            <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">
+            <span className="px-3 py-2 bg-white/20 backdrop-blur-sm rounded-full">
               WRG Approved
             </span>
-            <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">
+            <span className="px-3 py-2 bg-white/20 backdrop-blur-sm rounded-full">
               JRI Partner
             </span>
-            <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">
+            <span className="px-3 py-2 bg-white/20 backdrop-blur-sm rounded-full">
               Registered Apprenticeship Sponsor
             </span>
           </div>

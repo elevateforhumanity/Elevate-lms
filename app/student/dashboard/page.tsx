@@ -140,13 +140,13 @@ export default async function StudentDashboardPage() {
 
             <div className="flex items-center gap-3">
               {points && (
-                <div className="hidden sm:flex items-center gap-1 bg-yellow-50 px-3 py-1.5 rounded-full">
+                <div className="hidden sm:flex items-center gap-1 bg-yellow-50 px-3 py-2.5 rounded-full">
                   <Star className="w-4 h-4 text-yellow-500" />
                   <span className="text-sm font-semibold text-yellow-700">{points.total_points?.toLocaleString() || 0}</span>
                 </div>
               )}
               {streak && (
-                <div className="hidden sm:flex items-center gap-1 bg-orange-50 px-3 py-1.5 rounded-full">
+                <div className="hidden sm:flex items-center gap-1 bg-orange-50 px-3 py-2.5 rounded-full">
                   <Flame className="w-4 h-4 text-orange-500" />
                   <span className="text-sm font-semibold text-orange-700">{streak.current_streak || 0} days</span>
                 </div>
@@ -215,7 +215,7 @@ export default async function StudentDashboardPage() {
                             {enrollment.partner_lms_providers?.provider_name || 'Provider'}
                           </p>
                           <div className="flex items-center gap-4 mt-2">
-                            <span className={`inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full ${
+                            <span className={`inline-flex items-center gap-1 text-xs px-2 py-2 rounded-full ${
                               enrollment.status === 'active' ? 'bg-green-50 text-green-700' :
                               enrollment.status === 'completed' ? 'bg-blue-50 text-blue-700' :
                               'bg-slate-100 text-slate-600'
@@ -310,7 +310,7 @@ export default async function StudentDashboardPage() {
                       <div className="flex items-center gap-3">
                         <span className="font-semibold text-slate-900">{Math.round((entry.minutes || 0) / 60)} hrs</span>
                         {entry.status === 'APPROVED' && (
-                          <span className="flex items-center gap-1 text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                          <span className="flex items-center gap-1 text-xs text-green-600 bg-green-50 px-2 py-2 rounded-full">
                             <CheckCircle className="w-3 h-3" />
                             Verified
                           </span>
@@ -339,7 +339,7 @@ export default async function StudentDashboardPage() {
                 </div>
                 <div>
                   <p className="text-sm text-slate-500">Role</p>
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-blue-700 bg-blue-50 px-2 py-1 rounded-full">
+                  <span className="inline-flex items-center gap-1 text-sm font-medium text-blue-700 bg-blue-50 px-2 py-2 rounded-full">
                     {profile?.role?.charAt(0).toUpperCase() + profile?.role?.slice(1) || 'Student'}
                   </span>
                 </div>

@@ -68,6 +68,10 @@ export const publicNav: NavSection[] = [
       { label: 'FAQ', href: '/faq' },
     ],
   },
+  {
+    label: 'Store',
+    href: '/store',
+  },
 ];
 
 /**

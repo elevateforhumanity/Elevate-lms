@@ -133,7 +133,7 @@ export const SearchAutocomplete: React.FC<SearchAutocompleteProps> = ({
         >
           {isLoading ? (
             <div className="px-4 py-8 text-center text-slate-500">
-              <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-slate-300 border-t-blue-600" />
+              <div className="inline-block h-10 w-10 animate-spin rounded-full border-2 border-slate-300 border-t-blue-600" />
               <p className="mt-2">Searching...</p>
             </div>
           ) : displayResults.length > 0 ? (
@@ -162,7 +162,7 @@ export const SearchAutocomplete: React.FC<SearchAutocompleteProps> = ({
                         )}
                       </div>
                       {result.category && (
-                        <span className="flex-shrink-0 text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded-full">
+                        <span className="flex-shrink-0 text-xs px-2 py-2 bg-blue-100 text-blue-700 rounded-full">
                           {result.category}
                         </span>
                       )}

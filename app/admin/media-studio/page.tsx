@@ -322,13 +322,13 @@ export default function MediaStudioPage() {
                   <div className="flex gap-2 mt-3">
                     <button
                       onClick={() => window.open(file.url, '_blank')}
-                      className="flex-1 text-xs py-1 px-2 bg-blue-50 text-brand-blue-600 rounded hover:bg-gray-100"
+                      className="flex-1 text-xs py-2 px-2 bg-blue-50 text-brand-blue-600 rounded hover:bg-gray-100"
                     >
                       View
                     </button>
                     <button
                       onClick={() => deleteFile(file.name)}
-                      className="text-xs py-1 px-2 bg-red-50 text-brand-orange-600 rounded hover:bg-red-100"
+                      className="text-xs py-2 px-2 bg-red-50 text-brand-orange-600 rounded hover:bg-red-100"
                     >
                       <Trash2 className="w-3 h-3" />
                     </button>

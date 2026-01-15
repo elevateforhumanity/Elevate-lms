@@ -418,7 +418,7 @@ export default function PayrollPage() {
                 }`}
               >
                 {plan.popular && (
-                  <div className="bg-orange-600 text-white text-sm font-bold px-4 py-1 rounded-full inline-block mb-4">
+                  <div className="bg-orange-600 text-white text-sm font-bold px-4 py-2 rounded-full inline-block mb-4">
                     MOST POPULAR
                   </div>
                 )}

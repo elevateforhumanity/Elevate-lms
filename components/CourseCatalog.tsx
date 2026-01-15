@@ -208,10 +208,10 @@ export function CourseCatalog() {
               </div>
               <div className="p-6">
                 <div className="flex items-start justify-between mb-2">
-                  <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded">
+                  <span className="px-2 py-2 bg-orange-100 text-orange-700 text-xs rounded">
                     {course.category}
                   </span>
-                  <span className={`px-2 py-1 text-xs rounded ${
+                  <span className={`px-2 py-2 text-xs rounded ${
                     course.level === 'beginner' ? 'bg-blue-100 text-blue-700' :
                     course.level === 'intermediate' ? 'bg-purple-100 text-purple-700' :
                     'bg-red-100 text-red-700'

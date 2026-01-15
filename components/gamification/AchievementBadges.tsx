@@ -93,7 +93,7 @@ export function AchievementBadges() {
                   }`}
                 >
                   <Icon
-                    className={`h-6 w-6 ${badge.earned ? 'text-white' : 'text-gray-400'}`}
+                    className={`h-10 w-10 ${badge.earned ? 'text-white' : 'text-gray-400'}`}
                   />
                 </div>
               </div>

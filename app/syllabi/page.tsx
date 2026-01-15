@@ -519,7 +519,7 @@ export default function SyllabiPage() {
                     <div className="flex items-start justify-between gap-4 mb-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-bold">
+                          <span className="px-3 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-bold">
                             {course.code}
                           </span>
                           <h3 className="text-lg md:text-lg font-bold text-black">

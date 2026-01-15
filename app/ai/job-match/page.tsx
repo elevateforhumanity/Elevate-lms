@@ -83,7 +83,7 @@ export default function AIJobMatchPage() {
                 </h3>
                 <p className="text-black mb-4">{match.description}</p>
                 <div className="flex items-center gap-4">
-                  <span className="px-3 py-1 bg-orange-100 text-orange-700 text-sm font-semibold rounded">
+                  <span className="px-3 py-2 bg-orange-100 text-orange-700 text-sm font-semibold rounded">
                     {match.matchScore}% Match
                   </span>
                   <span className="text-sm text-black">

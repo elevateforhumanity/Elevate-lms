@@ -198,7 +198,7 @@ export default async function CompliancePage() {
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <FileText className="h-8 w-8 text-brand-blue-600" />
+                  <FileText className="h-11 w-11 text-brand-blue-600" />
                   <h3 className="font-semibold text-black">
                     Documentation
                   </h3>
@@ -214,7 +214,7 @@ export default async function CompliancePage() {
 
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <TrendingUp className="h-8 w-8 text-brand-green-600" />
+                  <TrendingUp className="h-11 w-11 text-brand-green-600" />
                   <h3 className="font-semibold text-black">Reporting</h3>
                 </div>
                 <div className="text-3xl font-bold text-brand-green-600 mb-2">
@@ -227,7 +227,7 @@ export default async function CompliancePage() {
 
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Shield className="h-8 w-8 text-purple-600" />
+                  <Shield className="h-11 w-11 text-purple-600" />
                   <h3 className="font-semibold text-black">
                     Student Management
                   </h3>
@@ -258,7 +258,7 @@ export default async function CompliancePage() {
                       }`}
                     >
                       <AlertTriangle
-                        className={`h-6 w-6 mr-3 flex-shrink-0 mt-0.5 ${
+                        className={`h-10 w-10 mr-3 flex-shrink-0 mt-0.5 ${
                           issue.severity === 'high'
                             ? 'text-red-600'
                             : 'text-yellow-600'

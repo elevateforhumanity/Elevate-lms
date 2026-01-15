@@ -36,7 +36,7 @@ export default function EmployerDemo() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-blue-600 text-white text-center py-1.5 px-2 text-xs"><Info className="w-3 h-3 inline mr-1" />Live Demo - Employer Portal</div>
+      <div className="bg-blue-600 text-white text-center py-3 px-2 text-xs"><Info className="w-3 h-3 inline mr-1" />Live Demo - Employer Portal</div>
       
       <header className="bg-white border-b sticky top-0 z-40">
         <div className="flex items-center justify-between px-3 py-2">
@@ -59,7 +59,7 @@ export default function EmployerDemo() {
             { id: 'apprentice', icon: Award, label: 'Apprentice' },
             { id: 'incentives', icon: DollarSign, label: 'Incentives' },
           ].map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)} className={`flex flex-col items-center px-3 py-1 ${tab === t.id ? 'text-purple-600' : 'text-gray-500'}`}>
+            <button key={t.id} onClick={() => setTab(t.id)} className={`flex flex-col items-center px-4 py-3 ${tab === t.id ? 'text-purple-600' : 'text-gray-500'}`}>
               <t.icon className="w-5 h-5" />
               <span className="text-[10px] mt-0.5">{t.label}</span>
             </button>
@@ -116,7 +116,7 @@ export default function EmployerDemo() {
         {tab === 'roles' && (
           <div className="space-y-3">
             <div className="flex justify-end">
-              <button className="bg-purple-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1"><Plus className="w-4 h-4" />Post Role</button>
+              <button className="bg-purple-600 text-white px-3 py-3 rounded-lg text-sm font-medium flex items-center gap-1"><Plus className="w-4 h-4" />Post Role</button>
             </div>
             {roles.map(r => (
               <div key={r.id} className="bg-white rounded-xl p-4 border">

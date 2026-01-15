@@ -100,7 +100,7 @@ export default async function EmployerDashboardOrchestrated() {
           <div className="grid md:grid-cols-3 gap-4">
             <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
               <div className="flex items-center justify-between mb-2">
-                <Briefcase className="h-8 w-8 text-blue-600" />
+                <Briefcase className="h-11 w-11 text-blue-600" />
                 <span className="text-3xl font-bold text-black">
                   {postings?.length || 0}
                 </span>
@@ -117,7 +117,7 @@ export default async function EmployerDashboardOrchestrated() {
             >
               <div className="flex items-center justify-between mb-2">
                 <Users
-                  className={`h-8 w-8 ${
+                  className={`h-11 w-11 ${
                     (applications?.length || 0) > 0
                       ? 'text-green-600'
                       : 'text-slate-400'
@@ -153,7 +153,7 @@ export default async function EmployerDashboardOrchestrated() {
             >
               <div className="flex items-center justify-between mb-2">
                 <TrendingUp
-                  className={`h-8 w-8 ${
+                  className={`h-11 w-11 ${
                     apprenticeshipProgram ? 'text-purple-600' : 'text-slate-400'
                   }`}
                 />
@@ -186,7 +186,7 @@ export default async function EmployerDashboardOrchestrated() {
                   title="Complete Verification"
                   description="Required before posting jobs"
                   href="/employer/verification"
-                  icon={<Shield className="h-6 w-6" />}
+                  icon={<Shield className="h-10 w-10" />}
                   badge="Required"
                 />
               )}
@@ -196,7 +196,7 @@ export default async function EmployerDashboardOrchestrated() {
                   title="Manage Job Postings"
                   description={`${postings?.length || 0} active posting${(postings?.length || 0) !== 1 ? 's' : ''}`}
                   href="/employer/postings"
-                  icon={<Briefcase className="h-6 w-6" />}
+                  icon={<Briefcase className="h-10 w-10" />}
                 />
               )}
 
@@ -205,7 +205,7 @@ export default async function EmployerDashboardOrchestrated() {
                   title="View Candidates"
                   description="Browse trained workers"
                   href="/employer/candidates"
-                  icon={<Users className="h-6 w-6" />}
+                  icon={<Users className="h-10 w-10" />}
                   badge={
                     (applications?.length || 0) > 0
                       ? `${applications?.length} New`
@@ -227,7 +227,7 @@ export default async function EmployerDashboardOrchestrated() {
                       : 'Build your talent pipeline'
                   }
                   href="/employer/apprenticeship"
-                  icon={<TrendingUp className="h-6 w-6" />}
+                  icon={<TrendingUp className="h-10 w-10" />}
                   badge={apprenticeshipProgram ? 'Active' : undefined}
                 />
               )}
@@ -237,7 +237,7 @@ export default async function EmployerDashboardOrchestrated() {
                   title="Compliance Dashboard"
                   description="Track apprenticeship requirements"
                   href="/employer/compliance"
-                  icon={<Shield className="h-6 w-6" />}
+                  icon={<Shield className="h-10 w-10" />}
                 />
               )}
 
@@ -246,7 +246,7 @@ export default async function EmployerDashboardOrchestrated() {
                   title="Reports & Analytics"
                   description="View hiring metrics"
                   href="/employer/reports"
-                  icon={<FileText className="h-6 w-6" />}
+                  icon={<FileText className="h-10 w-10" />}
                 />
               )}
             </div>
@@ -291,7 +291,7 @@ export default async function EmployerDashboardOrchestrated() {
           {/* Company Info */}
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
             <div className="flex items-center gap-3 mb-4">
-              <Building2 className="h-8 w-8 text-blue-600" />
+              <Building2 className="h-11 w-11 text-blue-600" />
               <div>
                 <h3 className="font-bold text-black">
                   {profile.company_name || 'Your Company'}

@@ -28,13 +28,13 @@ export default function NailTechnicianApprenticeshipPage() {
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-32 md:py-40">
           <div className="flex flex-wrap items-center gap-2 mb-4">
-            <span className="px-3 py-1 bg-blue-600 text-white text-sm font-bold rounded-full shadow-lg">
+            <span className="px-3 py-2 bg-blue-600 text-white text-sm font-bold rounded-full shadow-lg">
               DOL Registered
             </span>
-            <span className="px-3 py-1 bg-purple-600 text-white text-sm font-bold rounded-full shadow-lg">
+            <span className="px-3 py-2 bg-purple-600 text-white text-sm font-bold rounded-full shadow-lg">
               Apprenticeship Sponsorship
             </span>
-            <span className="px-3 py-1 bg-green-600 text-white text-sm font-bold rounded-full shadow-lg">
+            <span className="px-3 py-2 bg-green-600 text-white text-sm font-bold rounded-full shadow-lg">
               ETPL Approved
             </span>
           </div>

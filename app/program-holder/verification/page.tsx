@@ -133,7 +133,7 @@ export default async function VerificationPage() {
             {isVerified ? (
               <div className="bg-green-50 border-l-4 border-green-500 p-6 mb-8">
                 <div className="flex items-start">
-                  <CheckCircle className="h-6 w-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="h-10 w-10 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
                   <div>
                     <h3 className="text-lg font-semibold text-green-900 mb-1">
                       Verification Complete
@@ -148,7 +148,7 @@ export default async function VerificationPage() {
             ) : (
               <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
                 <div className="flex items-start">
-                  <AlertCircle className="h-6 w-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="h-10 w-10 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
                   <div>
                     <h3 className="text-lg font-semibold text-blue-900 mb-1">
                       Verification In Progress
@@ -188,9 +188,9 @@ export default async function VerificationPage() {
                     }`}
                   >
                     {req.completed ? (
-                      <CheckCircle className="h-6 w-6 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="h-10 w-10 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
                     ) : (
-                      <FileText className="h-6 w-6 text-slate-400 mr-3 flex-shrink-0 mt-0.5" />
+                      <FileText className="h-10 w-10 text-slate-400 mr-3 flex-shrink-0 mt-0.5" />
                     )}
                     <div className="flex-1">
                       <div className="flex items-center gap-2">

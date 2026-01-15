@@ -214,7 +214,7 @@ export function KeyboardShortcuts({
         className="text-sm text-black hover:text-black flex items-center gap-1"
         type="button"
       >
-        <span className="font-mono text-xs bg-gray-100 px-2 py-1 rounded">?</span>
+        <span className="font-mono text-xs bg-gray-100 px-2 py-2 rounded">?</span>
         Keyboard Shortcuts
       </button>
 
@@ -245,7 +245,7 @@ export function KeyboardShortcuts({
                     <div className="flex items-center gap-1">
                       {shortcut.keys.map((key, keyIndex) => (
                         <span key={keyIndex}>
-                          <kbd className="px-3 py-1 bg-gray-100 border border-gray-300 rounded text-sm font-mono">
+                          <kbd className="px-3 py-2 bg-gray-100 border border-gray-300 rounded text-sm font-mono">
                             {key}
                           </kbd>
                           {keyIndex < shortcut.keys.length - 1 && (

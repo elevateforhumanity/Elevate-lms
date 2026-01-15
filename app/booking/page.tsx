@@ -241,7 +241,7 @@ export default function BookingPage() {
                   {instructor.specialties.map((specialty) => (
                     <span
                       key={specialty}
-                      className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full"
+                      className="px-3 py-2 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full"
                     >
                       {specialty}
                     </span>

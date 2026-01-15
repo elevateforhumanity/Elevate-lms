@@ -379,7 +379,7 @@ export function CopilotDeployment() {
       {deploymentStatus === 'deploying' && (
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
           <div className="flex items-center">
-            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 mr-4" />
+            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600 mr-4" />
             <div>
               <h3 className="font-semibold text-blue-900">
                 🤖 Deploying Copilot Features...
@@ -404,7 +404,7 @@ export function CopilotDeployment() {
                   {feature.name}
                 </h4>
                 <span
-                  className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(feature.status)}`}
+                  className={`px-2 py-2 text-xs font-medium rounded-full ${getStatusColor(feature.status)}`}
                 >
                   {feature.status.toUpperCase()}
                 </span>
@@ -451,7 +451,7 @@ export function CopilotDeployment() {
               <div className="flex items-start justify-between mb-4">
                 <h4 className="font-semibold text-brand-text">{guide.title}</h4>
                 <span
-                  className={`px-2 py-1 text-xs font-medium rounded-full ${getDifficultyColor(guide.difficulty)}`}
+                  className={`px-2 py-2 text-xs font-medium rounded-full ${getDifficultyColor(guide.difficulty)}`}
                 >
                   {guide.difficulty.toUpperCase()}
                 </span>

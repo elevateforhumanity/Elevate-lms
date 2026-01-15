@@ -63,7 +63,7 @@ function SuccessContent({
             <div className="bg-gray-50 rounded-lg p-4 mb-8">
               <p className="text-sm text-black">
                 <span className="font-semibold">Session ID:</span>{' '}
-                <code className="bg-gray-200 px-2 py-1 rounded text-xs">
+                <code className="bg-gray-200 px-2 py-2 rounded text-xs">
                   {sessionId}
                 </code>
               </p>

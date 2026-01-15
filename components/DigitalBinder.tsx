@@ -204,7 +204,7 @@ export default function DigitalBinder({
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <h4 className="font-semibold text-black">{doc.title}</h4>
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(doc.status)}`}>
+                      <span className={`px-2 py-2 rounded-full text-xs font-medium ${getStatusColor(doc.status)}`}>
                         {doc.status}
                       </span>
                     </div>
@@ -216,11 +216,11 @@ export default function DigitalBinder({
                   </div>
                   <div className="flex gap-2">
                     {doc.status === 'complete' && (
-                      <button className="px-3 py-1 text-sm text-blue-600 hover:bg-gray-50 rounded">
+                      <button className="px-3 py-2 text-sm text-blue-600 hover:bg-gray-50 rounded">
                         View
                       </button>
                     )}
-                    <button className="px-3 py-1 text-sm text-black hover:bg-gray-50 rounded">
+                    <button className="px-3 py-2 text-sm text-black hover:bg-gray-50 rounded">
                       Download
                     </button>
                   </div>
@@ -266,7 +266,7 @@ export default function DigitalBinder({
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <span className="font-semibold text-black">{note.author}</span>
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${getCategoryColor(note.category)}`}>
+                      <span className={`px-2 py-2 rounded-full text-xs font-medium ${getCategoryColor(note.category)}`}>
                         {note.category}
                       </span>
                     </div>

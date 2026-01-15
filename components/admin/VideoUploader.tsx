@@ -138,7 +138,7 @@ export default function VideoUploader({
           {result && !error && (
             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
               <div className="flex items-start gap-3">
-                <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-0.5" />
                 <div className="flex-1">
                   <h4 className="font-semibold text-green-900 mb-1">
                     Video Enhanced Successfully!
@@ -186,7 +186,7 @@ export default function VideoUploader({
           {error && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
               <div className="flex items-start gap-3">
-                <AlertCircle className="h-6 w-6 text-brand-orange-600 flex-shrink-0 mt-0.5" />
+                <AlertCircle className="h-10 w-10 text-brand-orange-600 flex-shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-semibold text-red-900 mb-1">
                     Upload Failed

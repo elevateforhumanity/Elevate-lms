@@ -53,7 +53,7 @@ export function VideoStrip() {
               <div className="relative mb-4 overflow-hidden rounded-2xl bg-slate-900">
                 <div className="aspect-video" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-950">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-semibold text-slate-950">
                     <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-slate-900 text-[9px] text-white">
                       ▶
                     </span>

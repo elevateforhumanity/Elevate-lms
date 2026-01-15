@@ -306,13 +306,13 @@ export default function AdminDashboard() {
                   {activity.priority && (
                     <div>
                       {activity.priority === 'high' && (
-                        <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">High</span>
+                        <span className="text-xs bg-red-100 text-red-800 px-2 py-2 rounded">High</span>
                       )}
                       {activity.priority === 'medium' && (
-                        <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Medium</span>
+                        <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-2 rounded">Medium</span>
                       )}
                       {activity.priority === 'low' && (
-                        <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Low</span>
+                        <span className="text-xs bg-green-100 text-green-800 px-2 py-2 rounded">Low</span>
                       )}
                     </div>
                   )}

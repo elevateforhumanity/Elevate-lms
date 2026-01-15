@@ -178,7 +178,7 @@ function CalendlyEmbed() {
         </p>
         <p className="text-sm text-black">
           Add{' '}
-          <span className="font-mono bg-gray-100 px-2 py-1 rounded">
+          <span className="font-mono bg-gray-100 px-2 py-2 rounded">
             NEXT_PUBLIC_CALENDLY_URL
           </span>{' '}
           in Vercel → Environment Variables.

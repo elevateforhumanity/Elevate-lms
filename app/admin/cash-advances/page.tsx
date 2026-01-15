@@ -208,7 +208,7 @@ export default async function CashAdvancesAdminPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span
-                        className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                        className={`px-2 py-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                           app.status === 'approved'
                             ? 'bg-brand-green-100 text-green-800'
                             : app.status === 'pending'

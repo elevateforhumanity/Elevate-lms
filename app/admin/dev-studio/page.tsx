@@ -298,7 +298,7 @@ export default function DevStudioPage() {
                     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
                   >
                 ) => setSelectedRepo(e.target.value)}
-                className="bg-slate-700 text-white px-3 py-1 rounded text-sm"
+                className="bg-slate-700 text-white px-3 py-2 rounded text-sm"
               >
                 <option value="elevateforhumanity/fix2">
                   elevateforhumanity/fix2
@@ -318,7 +318,7 @@ export default function DevStudioPage() {
           ) : (
             <button
               onClick={connectGitHub}
-              className="px-4 py-1 bg-brand-blue-600 hover:bg-brand-blue-700 rounded text-sm"
+              className="px-4 py-2 bg-brand-blue-600 hover:bg-brand-blue-700 rounded text-sm"
             >
               Connect GitHub
             </button>

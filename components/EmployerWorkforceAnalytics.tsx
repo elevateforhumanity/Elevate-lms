@@ -185,7 +185,7 @@ export default function EmployerWorkforceAnalytics() {
                     <td className="py-3 px-4 font-medium">{dept.name}</td>
                     <td className="py-3 px-4">{dept.headcount}</td>
                     <td className="py-3 px-4">
-                      <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded">
+                      <span className="px-2 py-2 bg-orange-100 text-orange-700 text-xs rounded">
                         {dept.openings} open
                       </span>
                     </td>

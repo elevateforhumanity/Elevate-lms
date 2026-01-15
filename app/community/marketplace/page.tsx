@@ -107,7 +107,7 @@ export default async function CommunityMarketplacePage() {
                   )}
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded">
+                      <span className="px-2 py-2 bg-blue-100 text-blue-700 text-xs font-semibold rounded">
                         {course.category || 'Course'}
                       </span>
                       {course.creator_profiles.verified && (

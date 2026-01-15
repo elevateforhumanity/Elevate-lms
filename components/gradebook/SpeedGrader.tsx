@@ -264,7 +264,7 @@ export default function SpeedGrader({ submissions, assignment, onGrade }: SpeedG
                   <button
                     key={comment}
                     onClick={() => setFeedback(prev => prev + (prev ? '\n' : '') + comment)}
-                    className="px-3 py-1 text-xs bg-slate-100 text-black rounded hover:bg-slate-200"
+                    className="px-3 py-2 text-xs bg-slate-100 text-black rounded hover:bg-slate-200"
                   >
                     {comment}
                   </button>

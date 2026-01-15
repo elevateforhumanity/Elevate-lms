@@ -124,7 +124,7 @@ export function LiveStreamingClassroom() {
               </div>
 
               {/* Screen Share Indicator */}
-              <div className="absolute top-4 left-4 bg-brand-orange-600 text-white px-3 py-1 rounded text-sm">
+              <div className="absolute top-4 left-4 bg-brand-orange-600 text-white px-3 py-2 rounded text-sm">
                 🖥️ Screen Sharing
               </div>
 

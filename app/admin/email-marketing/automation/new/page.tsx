@@ -348,7 +348,7 @@ export default function NewWorkflowPage() {
                             })
                           }
                           min="1"
-                          className="w-20 px-3 py-1 border border-gray-300 rounded-lg"
+                          className="w-20 px-3 py-2 border border-gray-300 rounded-lg"
                         />
                         <select
                           value={step.delayUnit}
@@ -366,7 +366,7 @@ export default function NewWorkflowPage() {
                                 | 'days',
                             })
                           }
-                          className="px-3 py-1 border border-gray-300 rounded-lg"
+                          className="px-3 py-2 border border-gray-300 rounded-lg"
                         >
                           <option value="minutes">Minutes</option>
                           <option value="hours">Hours</option>

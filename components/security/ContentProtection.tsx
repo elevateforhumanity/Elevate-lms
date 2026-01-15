@@ -77,7 +77,7 @@ export function ContentProtection({
           <div className="rounded-lg bg-brand-orange-600 px-6 py-4 text-white shadow-xl">
             <div className="flex items-center gap-3">
               <svg
-                className="h-6 w-6"
+                className="h-10 w-10"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

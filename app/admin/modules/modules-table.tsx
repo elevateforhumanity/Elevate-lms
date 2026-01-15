@@ -184,7 +184,7 @@ export function ModulesTable({
                   </td>
                   <td className="px-6 py-4">
                     <span
-                      className={`px-2 py-1 text-xs font-semibold rounded-full ${getTypeColor(module.module_type)}`}
+                      className={`px-2 py-2 text-xs font-semibold rounded-full ${getTypeColor(module.module_type)}`}
                     >
                       {module.module_type}
                     </span>

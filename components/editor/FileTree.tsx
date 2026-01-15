@@ -38,7 +38,7 @@ export default function FileTree({ files, onFileSelect, selectedFile }: FileTree
     return (
       <div key={node.path}>
         <div
-          className={`flex items-center gap-2 px-2 py-1 cursor-pointer hover:bg-gray-100 ${
+          className={`flex items-center gap-2 px-2 py-2 cursor-pointer hover:bg-gray-100 ${
             isSelected ? 'bg-blue-50 text-blue-700' : ''
           }`}
           style={{ paddingLeft: `${level * 16 + 8}px` }}

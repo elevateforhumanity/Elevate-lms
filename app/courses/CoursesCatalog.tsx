@@ -266,7 +266,7 @@ export default function CoursesCatalog({
 
                     <div className="p-6">
                       {course.category && (
-                        <span className="inline-block px-3 py-1 bg-blue-100 text-brand-blue-600 text-xs font-semibold rounded-full mb-3">
+                        <span className="inline-block px-3 py-2 bg-blue-100 text-brand-blue-600 text-xs font-semibold rounded-full mb-3">
                           {course.category}
                         </span>
                       )}

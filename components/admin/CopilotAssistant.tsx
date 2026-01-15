@@ -233,7 +233,7 @@ Sarah Johnson, IT Support, 2025-01-22, sarah@email.com"
                       {record.startDate}
                     </td>
                     <td className="px-4 py-2">
-                      <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-brand-surface text-brand-success">
+                      <span className="inline-flex px-2 py-2 text-xs font-semibold rounded-full bg-brand-surface text-brand-success">
                         {record.status}
                       </span>
                     </td>

@@ -103,7 +103,7 @@ export default function InstructorsPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Users className="h-8 w-8 text-brand-blue-600" />
+              <Users className="h-11 w-11 text-brand-blue-600" />
               <p className="text-sm text-black">Total Instructors</p>
             </div>
             <p className="text-3xl font-bold text-brand-blue-600">
@@ -112,7 +112,7 @@ export default function InstructorsPage() {
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Award className="h-8 w-8 text-brand-green-600" />
+              <Award className="h-11 w-11 text-brand-green-600" />
               <p className="text-sm text-black">Active</p>
             </div>
             <p className="text-3xl font-bold text-brand-green-600">
@@ -121,7 +121,7 @@ export default function InstructorsPage() {
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
-              <BookOpen className="h-8 w-8 text-purple-600" />
+              <BookOpen className="h-11 w-11 text-purple-600" />
               <p className="text-sm text-black">Total Courses</p>
             </div>
             <p className="text-3xl font-bold text-purple-600">
@@ -133,7 +133,7 @@ export default function InstructorsPage() {
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Star className="h-8 w-8 text-yellow-600" />
+              <Star className="h-11 w-11 text-yellow-600" />
               <p className="text-sm text-black">Avg Rating</p>
             </div>
             <p className="text-3xl font-bold text-yellow-600">
@@ -234,7 +234,7 @@ export default function InstructorsPage() {
                                 (ic: Record<string, any>, idx: number) => (
                                   <span
                                     key={idx}
-                                    className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded"
+                                    className="text-xs bg-blue-100 text-blue-700 px-2 py-2 rounded"
                                   >
                                     {ic.course?.name}
                                   </span>
@@ -246,11 +246,11 @@ export default function InstructorsPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       {instructor.is_active ? (
-                        <span className="text-brand-green-600 text-sm font-medium bg-brand-green-100 px-3 py-1 rounded-full">
+                        <span className="text-brand-green-600 text-sm font-medium bg-brand-green-100 px-3 py-2 rounded-full">
                           Active
                         </span>
                       ) : (
-                        <span className="text-black text-sm font-medium bg-gray-100 px-3 py-1 rounded-full">
+                        <span className="text-black text-sm font-medium bg-gray-100 px-3 py-2 rounded-full">
                           Inactive
                         </span>
                       )}

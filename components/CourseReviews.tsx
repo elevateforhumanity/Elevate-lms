@@ -195,7 +195,7 @@ export function CourseReviews({ courseId }: CourseReviewsProps) {
       <div className="flex items-center gap-2 mb-4">
         <button
           onClick={() => setFilter('all')}
-          className={`px-3 py-1 text-sm rounded-lg ${
+          className={`px-3 py-2 text-sm rounded-lg ${
             filter === 'all'
               ? 'bg-brand-orange-600 text-white'
               : 'bg-slate-100 text-black'

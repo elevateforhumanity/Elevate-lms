@@ -139,7 +139,7 @@ export function PushNotificationSender() {
             <button
               key={template.name}
               onClick={() => applyTemplate(template)}
-              className="px-3 py-1 bg-gray-100 text-black rounded text-sm hover:bg-gray-200"
+              className="px-3 py-2 bg-gray-100 text-black rounded text-sm hover:bg-gray-200"
             >
               {template.name}
             </button>

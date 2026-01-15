@@ -102,7 +102,7 @@ export default async function VideosPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Video className="h-8 w-8 text-brand-blue-600" />
+                  <Video className="h-11 w-11 text-brand-blue-600" />
                   <h3 className="text-sm font-medium text-black">
                     Total Videos
                   </h3>
@@ -113,7 +113,7 @@ export default async function VideosPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Play className="h-8 w-8 text-brand-green-600" />
+                  <Play className="h-11 w-11 text-brand-green-600" />
                   <h3 className="text-sm font-medium text-black">
                     Published
                   </h3>
@@ -124,7 +124,7 @@ export default async function VideosPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Eye className="h-8 w-8 text-purple-600" />
+                  <Eye className="h-11 w-11 text-purple-600" />
                   <h3 className="text-sm font-medium text-black">
                     Total Views
                   </h3>

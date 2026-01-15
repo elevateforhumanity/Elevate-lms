@@ -92,7 +92,7 @@ export function AIChatPanel(props: {
           </div>
           <button
             onClick={() => setVoiceEnabled(!voiceEnabled)}
-            className="text-xs px-3 py-1.5 rounded-lg border border-zinc-200 hover:bg-zinc-50 transition"
+            className="text-xs px-3 py-2.5 rounded-lg border border-zinc-200 hover:bg-zinc-50 transition"
             title={voiceEnabled ? "Voice enabled" : "Voice disabled"}
           >
             {voiceEnabled ? "🔊 Voice On" : "🔇 Voice Off"}

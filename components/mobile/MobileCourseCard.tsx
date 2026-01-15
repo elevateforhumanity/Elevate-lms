@@ -39,7 +39,7 @@ export default function MobileCourseCard({
             sizes="(max-width: 768px) 100vw, 50vw"
           />
           {progress > 0 && (
-            <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-semibold text-brand-orange-600">
+            <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-2 rounded-full text-xs font-semibold text-brand-orange-600">
               {progress}%
             </div>
           )}

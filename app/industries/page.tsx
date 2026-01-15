@@ -141,7 +141,7 @@ export default function IndustriesPage() {
                 >
                   <div className="flex items-start gap-4 mb-4">
                     <div className="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors">
-                      <Icon className="h-8 w-8 text-blue-600 group-hover:text-white transition-colors" />
+                      <Icon className="h-11 w-11 text-blue-600 group-hover:text-white transition-colors" />
                     </div>
                     <div className="flex-1">
                       <h2 className="text-2xl font-black text-black mb-2 group-hover:text-blue-600 transition-colors">

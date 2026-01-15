@@ -93,7 +93,7 @@ export function AIAssistantBubble() {
             </p>
             <button
               onClick={handleOpen}
-              className="text-xs bg-brand-orange-600 text-white px-3 py-1.5 rounded-md hover:bg-brand-orange-700 transition-colors font-medium"
+              className="text-xs bg-brand-orange-600 text-white px-3 py-2.5 rounded-md hover:bg-brand-orange-700 transition-colors font-medium"
             >
               Chat with me
             </button>
@@ -108,7 +108,7 @@ export function AIAssistantBubble() {
           className="fixed bottom-6 right-6 z-50 bg-brand-orange-600 text-white rounded-full p-4 shadow-2xl hover:bg-brand-orange-700 transition-all hover:scale-110 focus:outline-none focus:ring-4 focus:ring-brand-orange-300"
           aria-label="Open AI assistant"
         >
-          <MessageCircle className="h-6 w-6" />
+          <MessageCircle className="h-10 w-10" />
         </button>
       )}
 

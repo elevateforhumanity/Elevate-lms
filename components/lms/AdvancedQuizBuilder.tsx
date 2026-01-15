@@ -207,7 +207,7 @@ export default function AdvancedQuizBuilder() {
                   timeLimit: parseInt(e.target.value) || undefined,
                 })
               }
-              className="w-20 px-2 py-1 border rounded"
+              className="w-20 px-2 py-2 border rounded"
               Content="None"
             />
             <span className="text-black">minutes</span>
@@ -220,7 +220,7 @@ export default function AdvancedQuizBuilder() {
               onChange={(e) =>
                 setQuiz({ ...quiz, passingScore: parseInt(e.target.value) })
               }
-              className="w-20 px-2 py-1 border rounded"
+              className="w-20 px-2 py-2 border rounded"
               min="0"
               max="100"
             />

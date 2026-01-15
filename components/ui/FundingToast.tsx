@@ -48,14 +48,14 @@ export default function FundingToast() {
           <div className="mt-2 flex flex-wrap gap-2">
             <Link
               href="/contact?topic=funding"
-              className="inline-flex items-center justify-center rounded-full bg-orange-500 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-orange-400"
+              className="inline-flex items-center justify-center rounded-full bg-orange-500 px-3 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-orange-400"
             >
               Check funding options
             </Link>
             <button
               type="button"
               onClick={handleDismiss}
-              className="inline-flex items-center justify-center rounded-full border border-slate-600 px-3 py-1.5 text-xs font-semibold text-slate-100 hover:bg-slate-800"
+              className="inline-flex items-center justify-center rounded-full border border-slate-600 px-3 py-2.5 text-xs font-semibold text-slate-100 hover:bg-slate-800"
             >
               Not now
             </button>
@@ -64,7 +64,7 @@ export default function FundingToast() {
         <button
           type="button"
           onClick={handleDismiss}
-          className="-mt-1 ml-1 inline-flex h-6 w-6 items-center justify-center rounded-full text-slate-400 hover:bg-slate-800 hover:text-slate-100"
+          className="-mt-1 ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full text-slate-400 hover:bg-slate-800 hover:text-slate-100"
           aria-label="Dismiss funding notice"
         >
           ×

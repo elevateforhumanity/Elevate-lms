@@ -71,7 +71,7 @@ export function LiveMetrics() {
     return (
       <div className="bg-white rounded-lg border border-slate-200 p-8">
         <div className="flex items-center justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+          <div className="animate-spin rounded-full h-11 w-11 border-b-2 border-blue-600" />
           <span className="ml-3 text-black">Loading live metrics...</span>
         </div>
       </div>
@@ -168,7 +168,7 @@ export function LiveMetrics() {
     <div className="space-y-8">
       {/* Verification Badge */}
       <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">
-        <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0" />
+        <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0" />
         <div>
           <p className="text-sm font-semibold text-green-900">
             ✓ Live Data Verified
@@ -191,7 +191,7 @@ export function LiveMetrics() {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-lg ${colorClasses[stat.color]}`}>
-                  <Icon className="h-6 w-6" />
+                  <Icon className="h-10 w-10" />
                 </div>
                 <Activity className="h-4 w-4 text-green-500 animate-pulse" />
               </div>

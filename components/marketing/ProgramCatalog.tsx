@@ -58,7 +58,7 @@ export function ProgramCatalog() {
           {paths.map((path) => (
             <span
               key={path}
-              className="rounded-full bg-slate-900 px-3 py-1 text-slate-200 ring-1 ring-slate-700"
+              className="rounded-full bg-slate-900 px-3 py-2 text-slate-200 ring-1 ring-slate-700"
             >
               {path}
             </span>

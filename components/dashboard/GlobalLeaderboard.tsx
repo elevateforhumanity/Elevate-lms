@@ -64,7 +64,7 @@ export function GlobalLeaderboard() {
         {rows.map((row) => (
           <div
             key={row.userId}
-            className={`flex items-center justify-between rounded-lg px-3 py-1.5 ${
+            className={`flex items-center justify-between rounded-lg px-3 py-2.5 ${
               row.isYou ? "bg-orange-50" : "bg-slate-50"
             }`}
           >

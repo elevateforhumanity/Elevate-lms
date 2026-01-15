@@ -110,7 +110,7 @@ export function StateAwareDashboard({
                 }`}
               >
                 <AlertCircle
-                  className={`h-6 w-6 flex-shrink-0 mt-0.5 ${
+                  className={`h-10 w-10 flex-shrink-0 mt-0.5 ${
                     alert.type === 'error'
                       ? 'text-red-600'
                       : alert.type === 'warning'
@@ -211,7 +211,7 @@ export function SectionCard({
           </h4>
         </div>
         {badge && (
-          <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">
+          <span className="px-3 py-2 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">
             {badge}
           </span>
         )}
@@ -252,7 +252,7 @@ export function ProgressIndicator({ steps }: ProgressIndicatorProps) {
               }`}
             >
               {step.status === 'completed' ? (
-                <CheckCircle className="h-6 w-6" />
+                <CheckCircle className="h-10 w-10" />
               ) : step.status === 'locked' ? (
                 <Lock className="h-5 w-5" />
               ) : (

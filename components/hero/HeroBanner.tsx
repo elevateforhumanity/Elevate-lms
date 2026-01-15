@@ -232,7 +232,7 @@ export default function HeroBanner({
                   {trustIndicators.map((indicator, index) => (
                     <span
                       key={index}
-                      className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur"
+                      className="rounded-full bg-white/10 px-3 py-2 text-xs font-medium text-white backdrop-blur"
                     >
                       {indicator}
                     </span>

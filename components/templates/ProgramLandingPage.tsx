@@ -57,18 +57,18 @@ export default function ProgramLandingPage({
             <h1 className="text-2xl font-bold md:text-3xl">{title}</h1>
             <p className="text-sm text-black">{description}</p>
             <div className="flex flex-wrap gap-2 text-xs">
-              <span className="rounded-full bg-orange-100 px-3 py-1 font-medium text-orange-800">
+              <span className="rounded-full bg-orange-100 px-3 py-2 font-medium text-orange-800">
                 {duration}
               </span>
               {fundingTags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="rounded-full bg-blue-100 px-3 py-1 font-medium text-blue-800"
+                  className="rounded-full bg-blue-100 px-3 py-2 font-medium text-blue-800"
                 >
                   {tag}
                 </span>
               ))}
-              <span className="rounded-full bg-green-100 px-3 py-1 font-medium text-green-800">
+              <span className="rounded-full bg-green-100 px-3 py-2 font-medium text-green-800">
                 {format}
               </span>
             </div>

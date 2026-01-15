@@ -333,7 +333,7 @@ export function AutoAttritionTracker() {
   if (!metrics) {
     return (
       <div className="text-center py-8">
-        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+        <div className="inline-block animate-spin rounded-full h-11 w-11 border-b-2 border-blue-600" />
         <p className="mt-4 text-brand-text-muted">
           Loading attrition tracking data...
         </p>
@@ -399,7 +399,7 @@ export function AutoAttritionTracker() {
           </div>
           <div className="mt-2">
             <span
-              className={`text-xs px-2 py-1 rounded-full ${
+              className={`text-xs px-2 py-2 rounded-full ${
                 metrics.overall.trend === 'improving'
                   ? 'bg-brand-surface text-brand-success'
                   : metrics.overall.trend === 'declining'
@@ -502,13 +502,13 @@ export function AutoAttritionTracker() {
                   </td>
                   <td className="px-6 py-4">
                     <span
-                      className={`px-2 py-1 text-xs font-medium rounded-full ${getRiskColor(program.riskLevel)}`}
+                      className={`px-2 py-2 text-xs font-medium rounded-full ${getRiskColor(program.riskLevel)}`}
                     >
                       {program.riskLevel.toUpperCase()}
                     </span>
                   </td>
                   <td className="px-6 py-4">
-                    <button className="text-xs bg-brand-surface text-brand-info px-2 py-1 rounded hover:bg-blue-200">
+                    <button className="text-xs bg-brand-surface text-brand-info px-2 py-2 rounded hover:bg-blue-200">
                       📊 View Details
                     </button>
                   </td>
@@ -555,7 +555,7 @@ export function AutoAttritionTracker() {
                   {student.riskFactors.map((factor, index) => (
                     <span
                       key={index}
-                      className="text-xs bg-brand-surface text-red-700 px-2 py-1 rounded"
+                      className="text-xs bg-brand-surface text-red-700 px-2 py-2 rounded"
                     >
                       {factor}
                     </span>
@@ -568,7 +568,7 @@ export function AutoAttritionTracker() {
                     Intervention Status:
                   </span>
                   <span
-                    className={`text-xs px-2 py-1 rounded-full ${getInterventionStatusColor(student.interventionStatus)}`}
+                    className={`text-xs px-2 py-2 rounded-full ${getInterventionStatusColor(student.interventionStatus)}`}
                   >
                     {student.interventionStatus.replace('_', ' ').toUpperCase()}
                   </span>
@@ -582,7 +582,7 @@ export function AutoAttritionTracker() {
                   {student.autoActions.map((action, index) => (
                     <div
                       key={index}
-                      className="text-xs bg-blue-50 text-brand-info px-2 py-1 rounded"
+                      className="text-xs bg-blue-50 text-brand-info px-2 py-2 rounded"
                     >
                       ✅ {action}
                     </div>
@@ -590,10 +590,10 @@ export function AutoAttritionTracker() {
                 </div>
               </div>
               <div className="flex space-x-2">
-                <button className="text-xs bg-brand-success text-white px-3 py-1 rounded hover:bg-brand-success-hover">
+                <button className="text-xs bg-brand-success text-white px-3 py-2 rounded hover:bg-brand-success-hover">
                   📞 Contact Student
                 </button>
-                <button className="text-xs bg-brand-surface text-brand-info px-3 py-1 rounded hover:bg-blue-200">
+                <button className="text-xs bg-brand-surface text-brand-info px-3 py-2 rounded hover:bg-blue-200">
                   📝 Add Note
                 </button>
               </div>

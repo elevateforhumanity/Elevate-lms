@@ -95,7 +95,7 @@ export function ProgramPageLocked({
                 key={index}
                 className="flex items-start gap-4 bg-slate-50 p-6 rounded-lg"
               >
-                <Users className="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" />
+                <Users className="h-10 w-10 text-blue-600 flex-shrink-0 mt-1" />
                 <p className="text-lg text-black">{item}</p>
               </div>
             ))}
@@ -116,7 +116,7 @@ export function ProgramPageLocked({
                 key={index}
                 className="flex items-start gap-4 bg-white p-6 rounded-lg border border-slate-200"
               >
-                <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+                <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
                 <p className="text-lg text-black font-semibold">
                   {outcome}
                 </p>
@@ -178,7 +178,7 @@ export function ProgramPageLocked({
             <div className="grid md:grid-cols-2 gap-6">
               {rapidsId && (
                 <div className="bg-slate-50 p-6 rounded-lg text-center">
-                  <Shield className="h-8 w-8 text-blue-600 mx-auto mb-4" />
+                  <Shield className="h-11 w-11 text-blue-600 mx-auto mb-4" />
                   <div className="text-sm text-black mb-2">
                     DOL Registered
                   </div>
@@ -190,7 +190,7 @@ export function ProgramPageLocked({
 
               {avgSalary && (
                 <div className="bg-slate-50 p-6 rounded-lg text-center">
-                  <DollarSign className="h-8 w-8 text-green-600 mx-auto mb-4" />
+                  <DollarSign className="h-11 w-11 text-green-600 mx-auto mb-4" />
                   <div className="text-sm text-black mb-2">
                     Average Salary
                   </div>

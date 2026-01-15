@@ -49,13 +49,13 @@ export default function AboutPage() {
       <section className="bg-gray-50">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="px-3 py-1 bg-green-500 text-white text-sm font-medium rounded-full">
+            <span className="px-3 py-2 bg-green-500 text-white text-sm font-medium rounded-full">
               Founded 2020
             </span>
-            <span className="px-3 py-1 bg-brand-blue-600 text-white text-sm font-medium rounded-full">
+            <span className="px-3 py-2 bg-brand-blue-600 text-white text-sm font-medium rounded-full">
               1,000+ Students Trained
             </span>
-            <span className="px-3 py-1 bg-brand-orange-600 text-white text-sm font-medium rounded-full">
+            <span className="px-3 py-2 bg-brand-orange-600 text-white text-sm font-medium rounded-full">
               85% Job Placement
             </span>
           </div>

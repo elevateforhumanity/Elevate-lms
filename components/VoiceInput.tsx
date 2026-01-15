@@ -247,11 +247,11 @@ export function VoiceInput({ onCommand, className = '' }: VoiceInputProps) {
         title={isListening ? 'Stop listening' : 'Start voice command'}
       >
         {isSpeaking ? (
-          <Volume2 className="h-6 w-6 text-white" />
+          <Volume2 className="h-10 w-10 text-white" />
         ) : isListening ? (
-          <Mic className="h-6 w-6 text-white" />
+          <Mic className="h-10 w-10 text-white" />
         ) : (
-          <MicOff className="h-6 w-6 text-white" />
+          <MicOff className="h-10 w-10 text-white" />
         )}
         {isListening && (
           <span className="absolute inset-0 rounded-full bg-brand-orange-500 animate-ping opacity-75" />

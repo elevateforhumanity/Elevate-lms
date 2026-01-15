@@ -48,13 +48,13 @@ export default function ContactPage() {
       <section className="bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
           <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="px-3 py-1 bg-green-500 text-white text-sm font-medium rounded-full">
+            <span className="px-3 py-2 bg-green-500 text-white text-sm font-medium rounded-full">
               24-Hour Response
             </span>
-            <span className="px-3 py-1 bg-brand-blue-600 text-white text-sm font-medium rounded-full">
+            <span className="px-3 py-2 bg-brand-blue-600 text-white text-sm font-medium rounded-full">
               Free Consultation
             </span>
-            <span className="px-3 py-1 bg-brand-orange-600 text-white text-sm font-medium rounded-full">
+            <span className="px-3 py-2 bg-brand-orange-600 text-white text-sm font-medium rounded-full">
               Real Advisors
             </span>
           </div>

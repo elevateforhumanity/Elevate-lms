@@ -68,21 +68,21 @@ export default async function QAChecklistPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            <Calendar className="h-8 w-8 text-blue-600 mb-2" />
+            <Calendar className="h-11 w-11 text-blue-600 mb-2" />
             <p className="text-3xl font-bold text-black">
               {checklistsWithStatus?.length || 0}
             </p>
             <p className="text-black text-sm">Total Checklists</p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            <CheckSquare className="h-8 w-8 text-green-600 mb-2" />
+            <CheckSquare className="h-11 w-11 text-green-600 mb-2" />
             <p className="text-3xl font-bold text-black">
               {completions?.length || 0}
             </p>
             <p className="text-black text-sm">Completed Today</p>
           </div>
           <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-6">
-            <User className="h-8 w-8 text-purple-600 mb-2" />
+            <User className="h-11 w-11 text-purple-600 mb-2" />
             <p className="text-3xl font-bold text-black">{profile.role}</p>
             <p className="text-black text-sm">Your Role</p>
           </div>
@@ -124,12 +124,12 @@ export default async function QAChecklistPage() {
                           )}
                         </div>
                         {checklist.completed ? (
-                          <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-full flex items-center gap-1">
+                          <span className="px-3 py-2 bg-green-100 text-green-700 text-sm font-medium rounded-full flex items-center gap-1">
                             <CheckSquare className="h-4 w-4" />
                             Completed
                           </span>
                         ) : (
-                          <span className="px-3 py-1 bg-slate-100 text-black text-sm font-medium rounded-full flex items-center gap-1">
+                          <span className="px-3 py-2 bg-slate-100 text-black text-sm font-medium rounded-full flex items-center gap-1">
                             <Square className="h-4 w-4" />
                             Pending
                           </span>

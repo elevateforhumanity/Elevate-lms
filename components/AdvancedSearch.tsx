@@ -241,7 +241,7 @@ export function AdvancedSearch({ onSearch }: AdvancedSearchProps) {
             return filterValues.map((value) => (
               <div
                 key={`${key}-${value}`}
-                className="flex items-center gap-2 px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm"
+                className="flex items-center gap-2 px-3 py-2 bg-red-100 text-red-800 rounded-full text-sm"
               >
                 <span>{value}</span>
                 <button
@@ -281,7 +281,7 @@ export function AdvancedSearch({ onSearch }: AdvancedSearchProps) {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-brand-orange-600 text-white text-xs font-semibold rounded-full">
+                    <span className="px-3 py-2 bg-brand-orange-600 text-white text-xs font-semibold rounded-full">
                       {result.category}
                     </span>
                   </div>

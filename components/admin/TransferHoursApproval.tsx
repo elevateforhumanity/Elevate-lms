@@ -132,7 +132,7 @@ export default function TransferHoursApproval({
                     {th.source_state}
                   </span>
                   {th.license_type && (
-                    <span className="text-xs px-2 py-1 bg-slate-700 rounded text-slate-300">
+                    <span className="text-xs px-2 py-2 bg-slate-700 rounded text-slate-300">
                       {th.license_type}
                     </span>
                   )}

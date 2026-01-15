@@ -110,7 +110,7 @@ function CourseCard({ course }: { course: Course }) {
         <div className="mt-3 flex justify-end">
           <Link
             href={`/student/courses/${course.id}`}
-            className="rounded-full bg-blue-600 px-3 py-1 text-xs font-medium text-white hover:bg-blue-700"
+            className="rounded-full bg-blue-600 px-3 py-2 text-xs font-medium text-white hover:bg-blue-700"
           >
             {isComplete ? "View certificate" : "Resume course"}
           </Link>

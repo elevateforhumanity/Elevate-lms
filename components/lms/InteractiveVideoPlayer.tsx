@@ -398,7 +398,7 @@ export default function InteractiveVideoPlayer({
               <select
                 value={playbackRate}
                 onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => changePlaybackRate(parseFloat(e.target.value))}
-                className="bg-transparent border border-gray-600 rounded px-2 py-1 text-sm"
+                className="bg-transparent border border-gray-600 rounded px-2 py-2 text-sm"
               >
                 <option value="0.5">0.5x</option>
                 <option value="0.75">0.75x</option>

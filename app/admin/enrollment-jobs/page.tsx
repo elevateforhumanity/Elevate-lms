@@ -131,7 +131,7 @@ export default async function EnrollmentJobsPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <span
-                          className={`px-3 py-1 rounded-full text-sm font-medium ${
+                          className={`px-3 py-2 rounded-full text-sm font-medium ${
                             job.status === 'failed'
                               ? 'bg-red-100 text-red-800'
                               : 'bg-yellow-100 text-yellow-800'

@@ -64,7 +64,7 @@ export default function EmployerPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-slate-50 rounded-xl p-8 text-center">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-8 w-8 text-red-600" />
+                <Users className="h-11 w-11 text-red-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-3">
                 Can't Find Qualified Workers
@@ -79,7 +79,7 @@ export default function EmployerPage() {
 
             <div className="bg-slate-50 rounded-xl p-8 text-center">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="h-8 w-8 text-orange-600" />
+                <DollarSign className="h-11 w-11 text-orange-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-3">
                 Can't Afford Recruiting Fees
@@ -94,7 +94,7 @@ export default function EmployerPage() {
 
             <div className="bg-slate-50 rounded-xl p-8 text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-8 w-8 text-blue-600" />
+                <Clock className="h-11 w-11 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold text-black mb-3">
                 Can't Wait 6 Months
@@ -118,7 +118,7 @@ export default function EmployerPage() {
           </h2>
           <div className="space-y-4">
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+              <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Pre-Screened Candidates with Industry Credentials
@@ -131,7 +131,7 @@ export default function EmployerPage() {
             </div>
 
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+              <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Average Time-to-Hire: 14 Days
@@ -144,7 +144,7 @@ export default function EmployerPage() {
             </div>
 
             <div className="bg-white border-2 border-slate-200 rounded-lg p-6 flex items-start gap-4">
-              <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
+              <CheckCircle className="h-10 w-10 text-green-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-black mb-2">
                   Optional Apprenticeship Programs with Wage Reimbursement
@@ -352,7 +352,7 @@ export default function EmployerPage() {
             href="tel:+13173143757"
             className="inline-flex items-center gap-3 px-10 py-5 bg-white text-purple-600 rounded-lg font-bold text-xl hover:bg-purple-50 transition shadow-2xl"
           >
-            <Phone className="h-6 w-6" />
+            <Phone className="h-10 w-10" />
             Call (317) 314-3757
           </a>
           <p className="mt-6 text-purple-100">

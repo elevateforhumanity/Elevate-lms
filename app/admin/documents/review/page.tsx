@@ -242,7 +242,7 @@ export default async function AdminDocumentReviewPage() {
                   </div>
                   <div className="flex items-center gap-3">
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusBadge(doc.status)}`}
+                      className={`px-3 py-2 rounded-full text-xs font-semibold border ${getStatusBadge(doc.status)}`}
                     >
                       {doc.status.charAt(0).toUpperCase() + doc.status.slice(1)}
                     </span>

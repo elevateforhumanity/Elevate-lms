@@ -105,7 +105,7 @@ export default async function ReportsPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <FileText className="h-8 w-8 text-brand-blue-600" />
+                  <FileText className="h-11 w-11 text-brand-blue-600" />
                   <h3 className="text-sm font-medium text-black">
                     Total Reports
                   </h3>
@@ -116,7 +116,7 @@ export default async function ReportsPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Calendar className="h-8 w-8 text-brand-green-600" />
+                  <Calendar className="h-11 w-11 text-brand-green-600" />
                   <h3 className="text-sm font-medium text-black">
                     This Month
                   </h3>
@@ -127,7 +127,7 @@ export default async function ReportsPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <AlertCircle className="h-8 w-8 text-yellow-600" />
+                  <AlertCircle className="h-11 w-11 text-yellow-600" />
                   <h3 className="text-sm font-medium text-black">Pending</h3>
                 </div>
                 <p className="text-3xl font-bold text-yellow-600">
@@ -136,7 +136,7 @@ export default async function ReportsPage() {
               </div>
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <div className="flex items-center gap-3 mb-2">
-                  <Download className="h-8 w-8 text-purple-600" />
+                  <Download className="h-11 w-11 text-purple-600" />
                   <h3 className="text-sm font-medium text-black">
                     Approved
                   </h3>
@@ -198,7 +198,7 @@ export default async function ReportsPage() {
                           </td>
                           <td className="py-3 px-4">
                             <span
-                              className={`px-2 py-1 text-xs rounded ${
+                              className={`px-2 py-2 text-xs rounded ${
                                 report.status === 'approved'
                                   ? 'bg-brand-green-100 text-green-800'
                                   : report.status === 'pending'

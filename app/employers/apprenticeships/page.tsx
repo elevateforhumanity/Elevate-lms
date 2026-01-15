@@ -38,7 +38,7 @@ export default function ApprenticeshipPage() {
             <h2 className="text-2xl font-bold mb-6">Why Apprenticeships?</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex gap-3">
-                <CheckCircle className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
+                <CheckCircle className="h-10 w-10 text-orange-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold mb-1">Earn While You Learn</h3>
                   <p className="text-black">
@@ -48,7 +48,7 @@ export default function ApprenticeshipPage() {
                 </div>
               </div>
               <div className="flex gap-3">
-                <CheckCircle className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
+                <CheckCircle className="h-10 w-10 text-orange-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold mb-1">Industry Credentials</h3>
                   <p className="text-black">
@@ -57,7 +57,7 @@ export default function ApprenticeshipPage() {
                 </div>
               </div>
               <div className="flex gap-3">
-                <CheckCircle className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
+                <CheckCircle className="h-10 w-10 text-orange-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold mb-1">Reduced Turnover</h3>
                   <p className="text-black">
@@ -67,7 +67,7 @@ export default function ApprenticeshipPage() {
                 </div>
               </div>
               <div className="flex gap-3">
-                <CheckCircle className="h-6 w-6 text-orange-600 flex-shrink-0 mt-1" />
+                <CheckCircle className="h-10 w-10 text-orange-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold mb-1">Tax Benefits</h3>
                   <p className="text-black">

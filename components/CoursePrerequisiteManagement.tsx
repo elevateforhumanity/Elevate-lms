@@ -90,7 +90,7 @@ export function CoursePrerequisiteManagement() {
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className="text-xl font-bold">{course.title}</h3>
-                    <span className={`px-3 py-1 rounded text-xs font-medium ${
+                    <span className={`px-3 py-2 rounded text-xs font-medium ${
                       course.status === 'completed' ? 'bg-green-100 text-green-700' :
                       course.status === 'available' ? 'bg-blue-100 text-blue-700' :
                       'bg-gray-100 text-black'
@@ -104,7 +104,7 @@ export function CoursePrerequisiteManagement() {
                       <p className="text-sm font-semibold text-black mb-1">Prerequisites:</p>
                       <div className="flex flex-wrap gap-2">
                         {getPrerequisiteTitles(course.prerequisites).map((title) => (
-                          <span key={title} className="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded">
+                          <span key={title} className="px-2 py-2 bg-orange-100 text-orange-700 text-xs rounded">
                             {title}
                           </span>
                         ))}
@@ -117,7 +117,7 @@ export function CoursePrerequisiteManagement() {
                       <p className="text-sm font-semibold text-black mb-1">Unlocks:</p>
                       <div className="flex flex-wrap gap-2">
                         {getPrerequisiteTitles(course.unlocks).map((title) => (
-                          <span key={title} className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">
+                          <span key={title} className="px-2 py-2 bg-purple-100 text-purple-700 text-xs rounded">
                             {title}
                           </span>
                         ))}

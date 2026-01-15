@@ -218,7 +218,7 @@ export default function AcademicIntegrityPage() {
           <div className="space-y-4">
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 sm:p-6">
               <h3 className="font-bold text-yellow-900 mb-2 flex items-center gap-2">
-                <span className="bg-yellow-200 text-yellow-900 px-3 py-1 rounded-full text-sm">
+                <span className="bg-yellow-200 text-yellow-900 px-3 py-2 rounded-full text-sm">
                   1st Offense
                 </span>
                 First Violation
@@ -234,7 +234,7 @@ export default function AcademicIntegrityPage() {
 
             <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 sm:p-6">
               <h3 className="font-bold text-orange-900 mb-2 flex items-center gap-2">
-                <span className="bg-orange-200 text-orange-900 px-3 py-1 rounded-full text-sm">
+                <span className="bg-orange-200 text-orange-900 px-3 py-2 rounded-full text-sm">
                   2nd Offense
                 </span>
                 Second Violation
@@ -253,7 +253,7 @@ export default function AcademicIntegrityPage() {
 
             <div className="bg-red-50 border border-red-200 rounded-lg p-4 sm:p-6">
               <h3 className="font-bold text-red-900 mb-2 flex items-center gap-2">
-                <span className="bg-red-200 text-red-900 px-3 py-1 rounded-full text-sm">
+                <span className="bg-red-200 text-red-900 px-3 py-2 rounded-full text-sm">
                   3rd Offense
                 </span>
                 Third Violation or Severe Cases

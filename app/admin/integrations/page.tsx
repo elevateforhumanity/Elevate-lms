@@ -87,7 +87,7 @@ export default function IntegrationsPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
-              <Plug className="h-8 w-8 text-brand-blue-600" />
+              <Plug className="h-11 w-11 text-brand-blue-600" />
               <p className="text-sm text-black">Total Integrations</p>
             </div>
             <p className="text-3xl font-bold text-brand-blue-600">
@@ -96,7 +96,7 @@ export default function IntegrationsPage() {
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
-              <CheckCircle className="h-8 w-8 text-brand-green-600" />
+              <CheckCircle className="h-11 w-11 text-brand-green-600" />
               <p className="text-sm text-black">Active</p>
             </div>
             <p className="text-3xl font-bold text-brand-green-600">
@@ -105,7 +105,7 @@ export default function IntegrationsPage() {
           </div>
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center gap-3 mb-2">
-              <XCircle className="h-8 w-8 text-black" />
+              <XCircle className="h-11 w-11 text-black" />
               <p className="text-sm text-black">Inactive</p>
             </div>
             <p className="text-3xl font-bold text-black">
@@ -133,9 +133,9 @@ export default function IntegrationsPage() {
                     </p>
                   </div>
                   {integration.is_active ? (
-                    <CheckCircle className="h-6 w-6 text-brand-green-600" />
+                    <CheckCircle className="h-10 w-10 text-brand-green-600" />
                   ) : (
-                    <XCircle className="h-6 w-6 text-black" />
+                    <XCircle className="h-10 w-10 text-black" />
                   )}
                 </div>
                 <div className="flex gap-2">

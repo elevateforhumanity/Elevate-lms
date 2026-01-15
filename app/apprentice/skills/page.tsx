@@ -102,13 +102,13 @@ export default function PracticalSkillsPage() {
   function getStatusBadge(status: string) {
     switch (status) {
       case 'verified':
-        return <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Verified</span>;
+        return <span className="px-2 py-2 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Verified</span>;
       case 'demonstrated':
-        return <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">Awaiting Verification</span>;
+        return <span className="px-2 py-2 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">Awaiting Verification</span>;
       case 'in_progress':
-        return <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">In Progress</span>;
+        return <span className="px-2 py-2 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">In Progress</span>;
       default:
-        return <span className="px-2 py-1 bg-slate-100 text-slate-500 text-xs font-semibold rounded-full">Not Started</span>;
+        return <span className="px-2 py-2 bg-slate-100 text-slate-500 text-xs font-semibold rounded-full">Not Started</span>;
     }
   }
 
