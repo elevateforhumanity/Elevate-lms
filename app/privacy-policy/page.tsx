@@ -411,7 +411,7 @@ export default async function PrivacyPolicyPage() {
               </p>
               <Link
                 href="/contact"
-                className="inline-block bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-4 sm:px-6 md:px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+                className="inline-block bg-orange-600 hover:bg-orange-700 text-white px-4 sm:px-6 md:px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
               >
                 Contact Us
               </Link>
