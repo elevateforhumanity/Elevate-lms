@@ -1,0 +1,270 @@
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { 
+  Trophy, 
+  Star, 
+  Award, 
+  Target, 
+  Flame, 
+  Zap,
+  BookOpen,
+  Clock,
+  Users,
+  CheckCircle,
+  Lock
+} from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Achievements | Elevate for Humanity',
+  description: 'View your earned achievements and badges from your learning journey.',
+};
+
+export const dynamic = 'force-dynamic';
+
+// Achievement categories with their icons
+const achievementIcons: Record<string, any> = {
+  'first-login': Star,
+  'first-course': BookOpen,
+  'course-complete': CheckCircle,
+  'perfect-score': Trophy,
+  'streak-7': Flame,
+  'streak-30': Zap,
+  'hours-10': Clock,
+  'hours-50': Clock,
+  'hours-100': Award,
+  'helper': Users,
+  'goal-setter': Target,
+  default: Trophy,
+};
+
+export default async function AchievementsPage() {
+  const supabase = await createClient();
+  
+  // Get current user
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  
+  if (authError || !user) {
+    redirect('/login?redirect=/achievements');
+  }
+
+  // Fetch user's earned achievements
+  const { data: earnedAchievements } = await supabase
+    .from('user_achievements')
+    .select(`
+      id,
+      earned_at,
+      achievements (
+        id,
+        name,
+        description,
+        icon,
+        category,
+        points
+      )
+    `)
+    .eq('user_id', user.id)
+    .order('earned_at', { ascending: false });
+
+  // Fetch all available achievements
+  const { data: allAchievements } = await supabase
+    .from('achievements')
+    .select('*')
+    .eq('active', true)
+    .order('points', { ascending: true });
+
+  // Get user profile for stats
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('full_name')
+    .eq('id', user.id)
+    .single();
+
+  // Calculate stats
+  const earnedIds = new Set(earnedAchievements?.map((ea: any) => ea.achievements?.id) || []);
+  const totalPoints = earnedAchievements?.reduce((sum: number, ea: any) => sum + (ea.achievements?.points || 0), 0) || 0;
+  const earnedCount = earnedAchievements?.length || 0;
+  const totalCount = allAchievements?.length || 0;
+
+  const userName = profile?.full_name || user.email?.split('@')[0] || 'Learner';
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <Link href="/" className="text-xl font-bold text-gray-900">
+              Elevate for Humanity
+            </Link>
+            <Link href="/learner/dashboard" className="text-sm text-orange-600 hover:text-orange-700">
+              Back to Dashboard
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Header Section */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Achievements</h1>
+          <p className="text-gray-600">
+            Track your progress and earn badges as you complete your learning journey.
+          </p>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <Trophy className="w-6 h-6 text-yellow-600" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Achievements Earned</p>
+                <p className="text-2xl font-bold text-gray-900">{earnedCount} / {totalCount}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <Star className="w-6 h-6 text-purple-600" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Total Points</p>
+                <p className="text-2xl font-bold text-gray-900">{totalPoints}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <Target className="w-6 h-6 text-green-600" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Completion</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {totalCount > 0 ? Math.round((earnedCount / totalCount) * 100) : 0}%
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Earned Achievements */}
+        {earnedAchievements && earnedAchievements.length > 0 && (
+          <div className="mb-8">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Your Achievements</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {earnedAchievements.map((item: any) => {
+                const achievement = item.achievements;
+                if (!achievement) return null;
+                
+                const IconComponent = achievementIcons[achievement.icon] || achievementIcons.default;
+                
+                return (
+                  <div
+                    key={item.id}
+                    className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <IconComponent className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-gray-900 mb-1">{achievement.name}</h3>
+                        <p className="text-sm text-gray-500 mb-2 line-clamp-2">
+                          {achievement.description}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-gray-400">
+                            Earned {new Date(item.earned_at).toLocaleDateString()}
+                          </span>
+                          <span className="text-xs font-medium text-orange-600">
+                            +{achievement.points} pts
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* All Achievements */}
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">All Achievements</h2>
+          {allAchievements && allAchievements.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {allAchievements.map((achievement: any) => {
+                const isEarned = earnedIds.has(achievement.id);
+                const IconComponent = achievementIcons[achievement.icon] || achievementIcons.default;
+                
+                return (
+                  <div
+                    key={achievement.id}
+                    className={`rounded-xl p-6 shadow-sm border transition ${
+                      isEarned 
+                        ? 'bg-white border-gray-200' 
+                        : 'bg-gray-100 border-gray-200 opacity-60'
+                    }`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className={`w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                        isEarned 
+                          ? 'bg-gradient-to-br from-yellow-400 to-orange-500' 
+                          : 'bg-gray-300'
+                      }`}>
+                        {isEarned ? (
+                          <IconComponent className="w-7 h-7 text-white" />
+                        ) : (
+                          <Lock className="w-7 h-7 text-gray-500" />
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className={`font-semibold mb-1 ${isEarned ? 'text-gray-900' : 'text-gray-500'}`}>
+                          {achievement.name}
+                        </h3>
+                        <p className={`text-sm mb-2 line-clamp-2 ${isEarned ? 'text-gray-500' : 'text-gray-400'}`}>
+                          {achievement.description}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <span className={`text-xs ${isEarned ? 'text-green-600 font-medium' : 'text-gray-400'}`}>
+                            {isEarned ? '✓ Earned' : 'Locked'}
+                          </span>
+                          <span className={`text-xs font-medium ${isEarned ? 'text-orange-600' : 'text-gray-400'}`}>
+                            {achievement.points} pts
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="bg-white rounded-xl p-12 text-center border border-gray-200">
+              <Trophy className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No Achievements Available</h3>
+              <p className="text-gray-500 mb-4">
+                Achievements will appear here as they become available.
+              </p>
+              <Link
+                href="/programs"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-orange-600 text-white font-medium rounded-lg hover:bg-orange-700 transition"
+              >
+                Start Learning
+              </Link>
+            </div>
+          )}
+        </div>
+      </main>
+    </div>
+  );
+}
