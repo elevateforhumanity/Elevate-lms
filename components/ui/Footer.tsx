@@ -32,6 +32,7 @@ export const Footer: React.FC = () => {
       { name: 'Contact Support', href: '/contact' },
       { name: 'Platform Demo', href: '/demo' },
       { name: 'Admin Dashboard', href: '/admin/dashboard' },
+      { name: 'System Status', href: '/admin/system-status' },
     ],
     employers: [
       { name: 'Hire Our Graduates', href: '/employers' },
