@@ -1,30 +1,40 @@
-// @ts-nocheck
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 import { NextRequest, NextResponse } from 'next/server';
+import Stripe from 'stripe';
 import { stripe } from '@/lib/stripe/client';
 import { createClient } from '@/lib/supabase/server';
 import { headers } from 'next/headers';
 import { sendWelcomeEmail } from '@/lib/email';
-
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.text();
-    const headersList = headers();
+    const headersList = await headers();
     const signature = headersList.get('stripe-signature');
 
-    if (!signature) { /* Condition handled */ }
+    if (!signature) {
+      return NextResponse.json({ error: 'No signature' }, { status: 400 });
+    }
+
+    if (!stripe) {
+      return NextResponse.json({ error: 'Stripe not configured' }, { status: 500 });
+    }
 
     // Verify webhook signature
     let event: Stripe.Event;
     try {
       event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
-    } catch (error) { /* Error handled silently */ }
+    } catch (error) {
+      return NextResponse.json(
+        { error: error instanceof Error ? error.message : 'Webhook signature verification failed' },
+        { status: 400 }
+      );
+    }
 
     const supabase = await createClient();
 
@@ -105,12 +115,15 @@ export async function POST(request: NextRequest) {
       }
 
       default:
+        // Unhandled event type
+        break;
     }
 
-  } catch (err: any) {
+    return NextResponse.json({ received: true });
+  } catch (err: unknown) {
     return NextResponse.json(
       {
-        err:
+        error:
           (err instanceof Error ? err.message : String(err)) ||
           'Webhook handler failed',
       },
@@ -166,7 +179,7 @@ function getMaxPrograms(licenseType: string): number {
   }
 }
 
-function getFeatures(licenseType: string): any {
+function getFeatures(licenseType: string): string[] {
   const baseFeatures = ['lms', 'enrollment', 'admin', 'payments', 'mobile-app'];
 
   switch (licenseType) {

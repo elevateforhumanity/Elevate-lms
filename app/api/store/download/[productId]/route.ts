@@ -37,7 +37,8 @@ async function verifyDownloadToken(
     }
 
     return true;
-  } catch (error) { /* Error handled silently */ 
+  } catch (error) {
+    // Token verification failed
     return false;
   }
 }
@@ -58,7 +59,8 @@ async function logDownload(
         request.headers.get('x-real-ip'),
       user_agent: request.headers.get('user-agent'),
     });
-  } catch (error) { /* Error handled silently */ 
+  } catch (error) {
+    // Download logging is non-critical
   }
 }
 
@@ -124,7 +126,7 @@ export async function GET(
         name: product.name,
       },
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json(
       { error: 'Failed to process download' },
       { status: 500 }

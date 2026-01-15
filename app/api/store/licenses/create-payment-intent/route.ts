@@ -9,9 +9,21 @@ import { createClient } from '@/lib/supabase/server';
 import { getProductBySlug } from '@/app/data/store-products';
 
 
+interface CustomerInfo {
+  email: string;
+  contactName: string;
+  organizationName: string;
+  phone?: string;
+}
+
+interface RequestBody {
+  productId: string;
+  customerInfo: CustomerInfo;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const body = await parseBody<Record<string, any>>(request);
+    const body = await parseBody<RequestBody>(request);
     const { productId, customerInfo } = body;
 
     if (!productId || !customerInfo) {
@@ -89,7 +101,7 @@ export async function POST(request: NextRequest) {
       clientSecret: paymentIntent.client_secret,
       paymentIntentId: paymentIntent.id,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json(
       {
         error:

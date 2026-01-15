@@ -1,14 +1,20 @@
-// @ts-nocheck
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
-import { stripe } from '@/lib/stripe/client';
 import Stripe from 'stripe';
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { logger } from '@/lib/logger';
-import { toError, toErrorMessage } from '@/lib/safe';
+import { toErrorMessage } from '@/lib/safe';
+
+interface ProductInput {
+  title: string;
+  description: string;
+  features: string[];
+  pricing: Record<string, { price: number; name: string }>;
+  demo: { enabled: boolean; url: string };
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -25,13 +31,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const product = await req.json();
+    const product: ProductInput = await req.json();
 
     // Create product in Stripe
     const stripeProduct = await createStripeProduct(product);
 
     // Save to database
-    const { data, error }: any = await supabase
+    const { data, error } = await supabase
       .from('store_products')
       .upsert({
         title: product.title,
@@ -52,9 +58,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       success: true,
       url: `/store/codebase-clone`,
-      productId: data.id,
+      productId: data?.id,
     });
-  } catch (error) { /* Error handled silently */ 
+  } catch (error) {
     logger.error(
       'Failed to publish product:',
       error instanceof Error ? error : new Error(String(error))
@@ -66,23 +72,22 @@ export async function POST(req: NextRequest) {
   }
 }
 
-async function createStripeProduct(product: Record<string, any>) {
+async function createStripeProduct(product: ProductInput) {
   // Create Stripe product with pricing tiers
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-    apiVersion: '2024-12-18.acacia',
+    apiVersion: '2024-12-18.acacia' as Stripe.LatestApiVersion,
   });
 
   const stripeProduct = await stripe.products.create({
-    name: product.title as string,
-    description: product.description as string,
+    name: product.title,
+    description: product.description,
     metadata: {
       type: 'codebase_clone',
     },
   });
 
   // Create prices for each tier
-  const pricing = product.pricing as Record<string, { price: number; name: string }>;
-  for (const [key, tier] of Object.entries(pricing)) {
+  for (const [key, tier] of Object.entries(product.pricing)) {
     await stripe.prices.create({
       product: stripeProduct.id,
       unit_amount: tier.price * 100, // Convert to cents
