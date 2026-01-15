@@ -198,20 +198,16 @@ export default function LMSLandingPage() {
               </div>
             </div>
 
-            {/* Right Column - Video/Image Preview */}
+            {/* Right Column - Hero Image */}
             <div className="relative">
               <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
                 <Image
-                  src="/images/og-default.jpg"
-                  alt="LMS Platform"
+                  src="/images/lms-hero-banner.png"
+                  alt="LMS Platform - Interactive Learning"
                   fill
                   className="object-cover"
+                  priority
                 />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-                    <Play className="w-10 h-10 text-teal-600 ml-1" />
-                  </div>
-                </div>
               </div>
             </div>
           </div>
