@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 /**
- * Generate full lesson content for Drake Training courses
+ * Generate full lesson content for Tax Preparer Training courses
  * Uses OpenAI to generate comprehensive lesson content for all 103 lessons
  */
 
@@ -116,29 +116,29 @@ const COURSE_TOPICS = {
     'Practice: Schedule C return',
     'Practice: Partnership return',
   ],
-  'drake-mastery': [
-    'Drake Tax Software overview and navigation',
-    'Setting up your Drake Tax account',
-    'Client management in Drake',
+  'software-mastery': [
+    'Professional tax software overview and navigation',
+    'Setting up your tax software account',
+    'Client management in tax software',
     'Creating a new tax return',
     'Data entry best practices',
-    'Form 1040 in Drake',
-    'Schedules and forms in Drake',
-    'Drake interview mode vs forms mode',
+    'Form 1040 in tax software',
+    'Schedules and forms in tax software',
+    'Interview mode vs forms mode',
     'Error checking and diagnostics',
-    'E-filing from Drake',
-    'Drake bank products and refund advances',
-    'Drake document management',
-    'Drake reports and analytics',
-    'Drake multi-user setup',
-    'Drake backup and security',
-    'Drake updates and tax law changes',
-    'Drake troubleshooting common issues',
-    'Drake keyboard shortcuts and efficiency tips',
-    'Drake state returns',
-    'Drake prior year returns',
-    'Drake amendments and superseding returns',
-    'Drake practice lab exercises',
+    'E-filing from tax software',
+    'Bank products and refund advances',
+    'Document management',
+    'Reports and analytics',
+    'Multi-user setup',
+    'Backup and security',
+    'Software updates and tax law changes',
+    'Troubleshooting common issues',
+    'Keyboard shortcuts and efficiency tips',
+    'State returns',
+    'Prior year returns',
+    'Amendments and superseding returns',
+    'Practice lab exercises',
   ],
 };
 

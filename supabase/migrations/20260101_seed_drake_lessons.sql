@@ -1,4 +1,4 @@
--- Seed Drake Training Lessons with initial content
+-- Seed Tax Preparer Training Lessons with initial content
 -- Full AI-generated content can be added later via API
 
 -- Tax Preparation Fundamentals (tax-basics) - 24 lessons

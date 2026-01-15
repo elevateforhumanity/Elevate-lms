@@ -1,4 +1,4 @@
--- Drake Training System for Supersonic Fast Cash
+-- Tax Preparer Training System for Supersonic Fast Cash
 -- Complete course management, enrollment, and progress tracking
 
 CREATE TABLE IF NOT EXISTS training_courses (
