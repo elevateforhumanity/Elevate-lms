@@ -27,30 +27,45 @@ export const metadata: Metadata = {
 export default function HowItWorksPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-white text-white py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            How Elevate Works
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 mb-8">
-            We coordinate access to training, funding, and career opportunities.
-            <br />
-            We don't replace schools, certify credentials, or control outcomes.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/apply"
-              className="inline-block px-8 py-4 bg-white text-brand-blue-600 rounded-lg font-bold hover:bg-gray-50 transition-colors"
-            >
-              Apply Now
-            </Link>
-            <a
-              href="tel:+13173143757"
-              className="inline-block px-8 py-4 bg-brand-blue-700 text-white rounded-lg font-bold hover:bg-brand-blue-600 transition-colors"
-            >
-              Call (317) 314-3757
-            </a>
+      {/* Video Hero Section */}
+      <section className="relative min-h-[500px] md:min-h-[600px] flex items-center bg-black">
+        {/* Video Background */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/artlist/hero-training-1.jpg"
+        >
+          <source src="https://cms-artifacts.artlist.io/content/generated-video-v1/video__3/generated-video-0ce1b0b1-bda4-4d15-9273-07ecb6c6db95.mp4?Expires=2083815719&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=IMGjXRJiwqTkyQS3i4UNDu0UAOjebfNis2X16LclsmXfwscpriVKt~zchpsBDR~fJrsn4FagVcLksow2iEi4DJ7y9CpM~S12SrapFt7GibaN33FKfbFqz7DdZNlJo-6wc2kuF4jx5xPuqVFR4Njvt1qKjHnWR6w08W4yKGGIvwrWmDEy6K~tOaMVh95owTYZVxtvUIQKda5afYZK9J0pjlBNUqVQnQaz3HyDONNn9Vx9D6EdSHStO-jL1l5r6u4VZ1sr5fhrr5Rqd7I9u3hXMGMrUgukmYvcRJeLjgzeXK0QvfBsFvFZ~qLEMDxdOFudRXqWKpjmwtTOJ57UHzNXTQ__" type="video/mp4" />
+        </video>
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
+          <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-8 md:p-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              How Elevate Works
+            </h1>
+            <p className="text-xl md:text-2xl text-white mb-8">
+              We coordinate access to training, funding, and career opportunities.
+              <br />
+              We don't replace schools, certify credentials, or control outcomes.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/apply"
+                className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+              >
+                Apply Now
+              </Link>
+              <a
+                href="tel:+13173143757"
+                className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors"
+              >
+                Call (317) 314-3757
+              </a>
+            </div>
           </div>
         </div>
       </section>

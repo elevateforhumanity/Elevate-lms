@@ -33,6 +33,10 @@ export const publicNav: NavSection[] = [
     ],
   },
   {
+    label: 'Courses',
+    href: '/courses',
+  },
+  {
     label: 'Apprenticeships',
     href: '/apprenticeships',
   },

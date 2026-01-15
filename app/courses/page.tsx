@@ -1,243 +1,199 @@
 import { Metadata } from 'next';
-
 import Link from 'next/link';
 import Image from 'next/image';
+import { COURSES, COURSE_CATEGORIES } from '@/app/data/courses';
+import { Clock, Award, DollarSign } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/courses',
   },
-  title: 'LMS Courses | Elevate For Humanity',
+  title: 'Course Catalog | Professional Certifications | Elevate For Humanity',
   description:
-    'Browse our catalog of career training courses. Industry certifications, hands-on skills, and job-ready training in healthcare, IT, business, and skilled trades.',
+    'Browse our catalog of professional certification courses. Microsoft Office, Adobe Creative, IT & Cybersecurity, Healthcare Safety, and more. Pay online and start learning today.',
   openGraph: {
-    title: 'Career Training Courses',
-    description: 'Industry certifications and job-ready training in healthcare, IT, business, and skilled trades.',
+    title: 'Course Catalog - Professional Certifications',
+    description: 'Industry certifications in Microsoft Office, Adobe, IT, Healthcare, and more.',
     url: 'https://www.elevateforhumanity.org/courses',
     siteName: 'Elevate for Humanity',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Training Courses' }],
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Course Catalog' }],
     type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Career Training Courses',
-    description: 'Industry certifications and job-ready training.',
-    images: ['/og-default.jpg'],
   },
 };
 
-export default async function CoursesPage() {
+export default function CoursesPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-1.jpg"
-          alt="Courses"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
+    <div className="min-h-screen bg-white">
+      {/* Video Hero Section */}
+      <section className="relative min-h-[500px] md:min-h-[600px] flex items-center bg-black">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/artlist/hero-training-1.jpg"
+        >
+          <source src="https://cms-artifacts.artlist.io/content/generated-video-v1/video__5/generated-video-c913a513-dde0-4ac7-ae3c-53a453b8b83d.mp4?Expires=2083815719&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=OXubeStSFGiDeF3SU9CQ6JrV2wpxCGlBIwtaznCzrLxiU40aP3onFcEjjtoXpgeUpDrcYE8pktArkwkDCKhrMOTl47Xn9Em3wjkxKxKNkYBcMV4Yw8l1TmvJkIrrhjThOLNLTnlXULArDYVRaIz8YtyycHzUhSELydq8S0xs7SNurTMpEP1PqnrDEp2QmEK2bYPTJQGu90Lftpb3GA4dV2BOby0yCfW-opetSwQcDxfUIn~UgKzBgCyEWW2YdwVbicUPFl895Q01iJQMh1p0Ba7ordWrKjcdQSXfu2uzYzfifCaYLhQNo-23MmMRcPw28rfaea5A-r6K34pQZzRZtg__" type="video/mp4" />
+        </video>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Career Training Courses
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Industry certifications, hands-on skills, and job-ready training.
-            Start your career journey with courses designed for real-world
-            success.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/courses/catalog"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Browse Course Catalog
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
+          <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-8 md:p-12">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
+              Course Catalog
+            </h1>
+            <p className="text-xl md:text-2xl text-white mb-4">
+              Professional Certifications That Get You Hired
+            </p>
+            <p className="text-lg text-white/90 mb-8">
+              Microsoft Office • Adobe Creative • IT & Cybersecurity • Healthcare Safety • Business
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="#courses"
+                className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+              >
+                Browse Courses
+              </a>
+              <Link
+                href="/apply"
+                className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition-colors"
+              >
+                Apply for Free Training
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Professional Training Courses
-                </h2>
-                <p className="text-black mb-6">
-                  Access industry-recognized certifications and hands-on
-                  training in high-demand fields. Our courses are designed with
-                  employer input to ensure you learn the skills that matter.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+      {/* Course Grid */}
+      <section id="courses" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+              {COURSES.length} Professional Certification Courses
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Industry-recognized certifications from Microsoft, Adobe, OSHA, and more. 
+              Pay online and start learning immediately.
+            </p>
+          </div>
+
+          {/* Course Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {COURSES.map((course) => (
+              <div key={course.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+                {/* Course Image */}
+                <div className="relative h-48 bg-gradient-to-br from-blue-600 to-blue-800">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center text-white p-4">
+                      <div className="text-sm font-medium opacity-90 mb-1">{course.provider}</div>
+                      <div className="text-lg font-bold">{course.category}</div>
+                    </div>
+                  </div>
+                  <div className="absolute top-3 right-3 bg-white text-blue-600 px-3 py-1 rounded-full text-sm font-bold">
+                    ${course.price}
+                  </div>
+                </div>
+
+                {/* Course Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-black mb-2">{course.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{course.shortDescription}</p>
+
+                  {/* Course Meta */}
+                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      <span>{course.hours} hours</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Award className="w-4 h-4" />
+                      <span>Certificate</span>
+                    </div>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-3">
+                    <Link
+                      href={`/courses/${course.slug}`}
+                      className="flex-1 text-center px-4 py-2 border border-gray-300 text-black rounded-lg font-medium hover:bg-gray-50 transition-colors"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      View Details
+                    </Link>
+                    <Link
+                      href={`/courses/${course.slug}#checkout`}
+                      className="flex-1 text-center px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
+                      Buy Now
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-2.jpg"
-                  alt="Courses"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Our Courses</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="w-8 h-8 text-blue-600" />
               </div>
+              <h3 className="font-bold text-lg mb-2">Official Certifications</h3>
+              <p className="text-gray-600">Industry-recognized credentials from Microsoft, Adobe, OSHA, and more</p>
             </div>
-
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 text-green-600" />
               </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
+              <h3 className="font-bold text-lg mb-2">Self-Paced Learning</h3>
+              <p className="text-gray-600">Learn on your schedule with 24/7 access to course materials</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <DollarSign className="w-8 h-8 text-purple-600" />
               </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
+              <h3 className="font-bold text-lg mb-2">Exam Included</h3>
+              <p className="text-gray-600">Certification exam voucher included with every course</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
               </div>
+              <h3 className="font-bold text-lg mb-2">Career Support</h3>
+              <p className="text-gray-600">Resume help and job placement assistance included</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-white mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/courses/catalog"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Browse 130+ Courses
-              </Link>
-              <Link
-                href="/apply"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-brand-blue-600 border-2 border-white text-lg"
-              >
-                Apply Now
-              </Link>
-            </div>
+      <section className="py-16 bg-blue-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">Need Help Choosing?</h2>
+          <p className="text-xl text-white/90 mb-8">
+            Not sure which certification is right for you? Talk to an advisor about your career goals.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="tel:+13173143757"
+              className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+            >
+              Call (317) 314-3757
+            </a>
+            <Link
+              href="/apply"
+              className="inline-block px-8 py-4 bg-blue-700 text-white rounded-lg font-bold hover:bg-blue-800 transition-colors border-2 border-white"
+            >
+              Apply for Free Training
+            </Link>
           </div>
         </div>
       </section>
