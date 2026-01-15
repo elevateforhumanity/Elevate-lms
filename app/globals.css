@@ -4,44 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ============================================================================
-   HEADER TEXT VISIBILITY FIX
-   Force header text to be visible - no filters, overlays, or restrictions
-   ============================================================================ */
-header[role="banner"] {
-  opacity: 1 !important;
-  visibility: visible !important;
-  filter: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  clip-path: none !important;
-  overflow: visible !important;
-  pointer-events: auto !important;
-  isolation: auto !important;
-  mix-blend-mode: normal !important;
-  background-color: #ffffff !important;
-}
 
-header[role="banner"] * {
-  opacity: 1 !important;
-  visibility: visible !important;
-  filter: none !important;
-  clip-path: none !important;
-  -webkit-text-fill-color: unset !important;
-  background-clip: unset !important;
-  -webkit-background-clip: unset !important;
-}
-
-header[role="banner"] span,
-header[role="banner"] button,
-header[role="banner"] a,
-header[role="banner"] nav {
-  color: #000000 !important;
-}
-
-header[role="banner"] .bg-blue-600 {
-  color: #ffffff !important;
-}
 
 /* ============================================================================
    PREVENT FLASH OF UNSTYLED CONTENT ON FIRST LOAD
@@ -1567,4 +1530,30 @@ footer a:hover {
   to { transform: translateX(0); opacity: 1; }
 }
 .animate-slide-in { animation: slide-in 0.3s ease-out; }
+
+/* ============================================================================
+   HEADER TEXT VISIBILITY FIX - MUST BE LAST
+   Prevents global color/filter rules from hiding header text
+   ============================================================================ */
+header[role="banner"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  background-color: #ffffff !important;
+}
+
+header[role="banner"] * {
+  opacity: 1 !important;
+  visibility: visible !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+}
+
+header[role="banner"] span,
+header[role="banner"] button,
+header[role="banner"] a,
+header[role="banner"] nav {
+  color: #000000 !important;
+}
 

@@ -144,9 +144,7 @@ const nextConfig = {
   // Redirects for consolidated routes
   async redirects() {
     return [
-      // Normalize "Institute" style routes into the infrastructure model
-      { source: '/institute', destination: '/', permanent: true },
-      { source: '/training-institute', destination: '/pathways', permanent: true },
+      // Legacy route redirects
       { source: '/courses', destination: '/pathways', permanent: true },
       { source: '/programs', destination: '/pathways', permanent: true },
       { source: '/programs/cna', destination: '/pathways/cna-certification', permanent: true },

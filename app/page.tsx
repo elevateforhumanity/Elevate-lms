@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import VideoHeroSection from '@/components/home/VideoHeroSection';
+import { StickyHomeHeader } from '@/components/home/StickyHomeHeader';
 import Intro from '@/components/home/Intro';
 import Orientation from '@/components/home/Orientation';
 import Testimonials from '@/components/home/Testimonials';
@@ -10,7 +11,7 @@ import Start from '@/components/home/Start';
 export const metadata: Metadata = {
   title: 'Elevate for Humanity | Workforce and Education Hub',
   description:
-    'A regulated workforce development and credentialing institute connecting students to approved training, recognized credentials, and real career pathways.',
+    'Workforce development connecting students to approved training, recognized credentials, and real career pathways.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org',
   },
@@ -38,6 +39,9 @@ export default function HomePage() {
     <>
       {/* Video Hero Banner - autoplays on all devices */}
       <VideoHeroSection />
+
+      {/* Sticky header - appears after hero, sticks on scroll */}
+      <StickyHomeHeader />
 
       {/* Features with Your Icon Images */}
       <section className="py-8 md:py-24 bg-white">
