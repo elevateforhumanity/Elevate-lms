@@ -21,7 +21,7 @@ export default function GrantProgramsPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] overflow-hidden">
         <Image
-          src="/images/heroes/student-progress.jpg"
+          src="/images/heroes/lms-analytics.jpg"
           alt="100% Free Training Programs"
           fill
           className="object-cover"

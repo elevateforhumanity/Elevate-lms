@@ -9,7 +9,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    image: "/images/students-new/student-11.jpg",
+    image: "/images/hero/admin-hero.jpg",
     title: "From Unemployed to Employed in 4-12 Weeks",
     subtitle: "100% FREE Career Training Through Government Funding",
     description: "CNA • HVAC • Barber • CDL • Medical Assistant • Building Tech",

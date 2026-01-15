@@ -67,7 +67,7 @@ export default function TeamPage() {
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="relative h-96 md:h-auto">
                   <Image
-                    src="/images/team/founder/elizabeth-greene-founder-hero-01.jpg"
+                    src="/images/team/elizabeth-greene.jpg"
                     alt="Elizabeth Greene - Founder & CEO"
                     fill
                     className="object-cover"

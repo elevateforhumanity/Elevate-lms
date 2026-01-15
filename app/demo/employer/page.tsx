@@ -8,7 +8,7 @@ export default function EmployerDemo() {
   const [tab, setTab] = useState('pipeline');
   const [modal, setModal] = useState<number | null>(null);
   const [candidates, setCandidates] = useState([
-    { id: 1, name: 'Sarah Mitchell', program: 'CNA', progress: 95, status: 'Interview', match: 95, avatar: '/images/testimonials/student-sarah.jpg' },
+    { id: 1, name: 'Sarah Mitchell', program: 'CNA', progress: 95, status: 'Interview', match: 95, avatar: '/images/gallery/image9.jpg' },
     { id: 2, name: 'James Thompson', program: 'CNA', progress: 88, status: 'Review', match: 88, avatar: '/images/testimonials/student-david.jpg' },
     { id: 3, name: 'Lisa Rodriguez', program: 'MA', progress: 67, status: 'Screen', match: 82, avatar: '/images/testimonials/testimonial-medical-assistant.png' },
     { id: 4, name: 'Michael Chen', program: 'Phlebotomy', progress: 100, status: 'Offer', match: 91, avatar: '/images/testimonials/student-marcus.jpg' },
@@ -23,7 +23,7 @@ export default function EmployerDemo() {
 
   const apprentices = [
     { id: 1, name: 'David Park', role: 'CNA', hours: 847, level: 'Intermediate', wage: '$16.50', avatar: '/images/testimonials/student-david.jpg' },
-    { id: 2, name: 'Jennifer Lee', role: 'MA', hours: 456, level: 'Entry', wage: '$15.00', avatar: '/images/testimonials/student-sarah.jpg' },
+    { id: 2, name: 'Jennifer Lee', role: 'MA', hours: 456, level: 'Entry', wage: '$15.00', avatar: '/images/gallery/image9.jpg' },
     { id: 3, name: 'Robert Wilson', role: 'CNA', hours: 1203, level: 'Advanced', wage: '$18.00', avatar: '/images/testimonials/student-marcus.jpg' },
   ];
 

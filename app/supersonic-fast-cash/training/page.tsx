@@ -13,7 +13,7 @@ export default function TrainingPage() {
       {/* Hero */}
       <section className="relative h-[400px] w-full overflow-hidden">
         <Image 
-          src="/images/business/tax-prep-certification.jpg" 
+          src="/images/business/tax-prep-certification-optimized.jpg" 
           alt="Tax Preparer Training" 
           fill
           className="object-cover" 

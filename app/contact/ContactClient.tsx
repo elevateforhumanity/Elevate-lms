@@ -10,7 +10,7 @@ export default function ContactClient() {
       title: 'Students & Applicants',
       description:
         'Ready to start your career journey? Learn about programs, funding, and enrollment.',
-      image: '/images/heroes/student-career.jpg',
+      image: '/images/efh/sections/staffing.jpg',
       href: '/apply',
       icon: '<GraduationCap className="w-5 h-5 inline-block" />',
       color: ' ',

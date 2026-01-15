@@ -438,7 +438,7 @@ export function AutoPolishedPage({ route, label, section }: AutoPolishedPageProp
     switch (cat) {
       case "programs": return "/images/artlist/hero-training-4.jpg";
       case "funding": return "/images/artlist/hero-training-2.jpg";
-      case "students": return "/images/gallery/image4.jpg";
+      case "students": return "/images/facilities-new/facility-2.jpg";
       case "lms": return "/images/gallery/image5.jpg";
       case "employers": return "/images/artlist/hero-training-5.jpg";
       case "community": return "/images/gallery/image7.jpg";

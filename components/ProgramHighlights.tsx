@@ -98,7 +98,7 @@ export default function ProgramHighlights({ highlights = defaultHighlights }: Pr
             <div>
               <div className="relative w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden">
                 <Image
-                  src="/images/elizabeth-greene-founder.jpg"
+                  src="/images/team/elizabeth-greene.jpg"
                   alt="Expert instructors"
                   fill
                   className="object-cover"

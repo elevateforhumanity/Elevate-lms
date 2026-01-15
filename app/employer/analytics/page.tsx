@@ -43,7 +43,7 @@ export default async function AnalyticsPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/hero/portal-hero.jpg"
+          src="/images/hero/admin-hero.jpg"
           alt="Analytics"
           fill
           className="object-cover"

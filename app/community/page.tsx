@@ -36,7 +36,7 @@ export default async function CommunityPage() {
       {/* Hero Section */}
       <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/learners/coaching-session.jpg"
+          src="/images/gallery/image2.jpg"
           alt="Community"
           fill
           className="object-cover"

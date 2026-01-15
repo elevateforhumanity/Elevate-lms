@@ -287,7 +287,7 @@ export default function GovernmentPage() {
                 <div className="flex items-start gap-4">
                   <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                     <Image
-                      src="/images/heroes/career-services.jpg"
+                      src="/images/efh/sections/staffing.jpg"
                       alt="Career Services"
                       fill
                       className="object-cover"
@@ -400,7 +400,7 @@ export default function GovernmentPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-40">
                 <Image
-                  src="/images/success-new/success-2.jpg"
+                  src="/images/programs-new/program-6.jpg"
                   alt="Proven Results"
                   fill
                   className="object-cover"
@@ -421,7 +421,7 @@ export default function GovernmentPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-40">
                 <Image
-                  src="/images/success-new/success-4.jpg"
+                  src="/images/programs-new/program-8.jpg"
                   alt="Priority Populations"
                   fill
                   className="object-cover"
@@ -442,7 +442,7 @@ export default function GovernmentPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-40">
                 <Image
-                  src="/images/success-new/success-6.jpg"
+                  src="/images/programs-new/program-10.jpg"
                   alt="Employer Partnerships"
                   fill
                   className="object-cover"
@@ -463,7 +463,7 @@ export default function GovernmentPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-40">
                 <Image
-                  src="/images/success-new/success-8.jpg"
+                  src="/images/programs-new/program-12.jpg"
                   alt="Transparent Reporting"
                   fill
                   className="object-cover"
@@ -527,7 +527,7 @@ export default function GovernmentPage() {
       <section className="relative py-20">
         <div className="absolute inset-0">
           <Image
-            src="/images/heroes/hero-employer-partnerships.jpg"
+            src="/images/employers/partnership-office-meeting.jpg"
             alt="Partnership"
             fill
             className="object-cover"

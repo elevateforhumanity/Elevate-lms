@@ -23,7 +23,7 @@ export default function ComprehensiveSchema({ type = 'organization', data }: Sch
     url: baseUrl,
     logo: {
       '@type': 'ImageObject',
-      url: `${baseUrl}/images/logo.png`,
+      url: `${baseUrl}/images/hero-banner.png`,
       width: 600,
       height: 60,
     },

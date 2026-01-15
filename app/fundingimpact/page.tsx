@@ -110,7 +110,7 @@ export default function FundingImpactPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-40">
                 <Image
-                  src="/images/success-new/success-3.jpg"
+                  src="/images/programs-new/program-7.jpg"
                   alt="Credential attainment"
                   fill
                   className="object-cover"
@@ -129,7 +129,7 @@ export default function FundingImpactPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-40">
                 <Image
-                  src="/images/success-new/success-5.jpg"
+                  src="/images/programs-new/program-9.jpg"
                   alt="Employment success"
                   fill
                   className="object-cover"
@@ -289,7 +289,7 @@ export default function FundingImpactPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-48">
                 <Image
-                  src="/images/success-new/success-7.jpg"
+                  src="/images/programs-new/program-11.jpg"
                   alt="Marcus J. success story"
                   fill
                   className="object-cover"
@@ -320,7 +320,7 @@ export default function FundingImpactPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-48">
                 <Image
-                  src="/images/success-new/success-9.jpg"
+                  src="/images/programs-new/program-13.jpg"
                   alt="Sarah T. success story"
                   fill
                   className="object-cover"
@@ -350,7 +350,7 @@ export default function FundingImpactPage() {
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-48">
                 <Image
-                  src="/images/success-new/success-11.jpg"
+                  src="/images/students-new/student-5.jpg"
                   alt="David W. success story"
                   fill
                   className="object-cover"
@@ -442,7 +442,7 @@ export default function FundingImpactPage() {
             <div className="bg-purple-50 rounded-xl overflow-hidden border border-purple-200">
               <div className="relative h-48">
                 <Image
-                  src="/images/heroes/hero-employer-partnerships.jpg"
+                  src="/images/employers/partnership-office-meeting.jpg"
                   alt="Employer benefits"
                   fill
                   className="object-cover"

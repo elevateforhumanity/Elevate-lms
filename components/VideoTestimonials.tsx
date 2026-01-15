@@ -29,7 +29,7 @@ const testimonials: Testimonial[] = [
     afterJob: 'Certified Healthcare Assistant at IU Health',
     salary: '$42,000/year',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    thumbnail: '/images/testimonials/student-sarah.jpg',
+    thumbnail: '/images/gallery/image9.jpg',
     quote: 'Elevate changed my life. I went from struggling to make ends meet to having a stable career in healthcare.',
     duration: '2:34',
     graduationYear: '2023'
@@ -81,7 +81,7 @@ const testimonials: Testimonial[] = [
     afterJob: 'Licensed Cosmetologist, Own Salon',
     salary: '$60,000/year',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    thumbnail: '/images/testimonials/student-sarah.jpg',
+    thumbnail: '/images/gallery/image9.jpg',
     quote: 'I turned my passion into a career. Now I own my own salon and employ 3 other stylists!',
     duration: '3:45',
     graduationYear: '2023'

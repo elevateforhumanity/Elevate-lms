@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-// Image asset: /images/success-new/success-16.jpg
+// Image asset: /images/programs-new/program-16.jpg
 
 export const metadata: Metadata = {
   title: "Government & Workforce Boards - Partner Portal",

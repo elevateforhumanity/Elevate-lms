@@ -10,7 +10,7 @@ interface LazyImageProps extends Omit<ImageProps, 'onLoad'> {
 export function LazyImage({ 
   src, 
   alt, 
-  fallback = '/images/placeholder.jpg',
+  fallback = '/images/hero-training.jpg',
   className = '',
   ...props 
 }: LazyImageProps) {

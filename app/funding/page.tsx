@@ -38,7 +38,7 @@ export default function FundingPage() {
       icon: DollarSign,
       color: 'emerald',
       category: 'Funding',
-      image: '/images/heroes/hero-federal-funding.jpg',
+      image: '/images/funding/funding-dol-program-v2.jpg',
     },
     {
       title: 'JRI Funding',
@@ -93,7 +93,7 @@ export default function FundingPage() {
       icon: TrendingUp,
       color: 'cyan',
       category: 'Impact',
-      image: '/images/heroes/hero-federal-funding.jpg',
+      image: '/images/funding/funding-dol-program-v2.jpg',
     },
     {
       title: 'Workforce Partners',
@@ -137,7 +137,7 @@ export default function FundingPage() {
       icon: Shield,
       color: 'lime',
       category: 'Programs',
-      image: '/images/heroes/hero-federal-funding.jpg',
+      image: '/images/funding/funding-dol-program-v2.jpg',
     },
     {
       title: 'Federal Compliance',

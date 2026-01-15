@@ -11,7 +11,7 @@ export function PhotoCTA() {
           <div className="grid grid-cols-2 gap-3">
             <div className="relative h-40 overflow-hidden rounded-2xl sm:h-48">
               <Image
-                src="/images/programs/barber-hero.jpg"
+                src="/images/programs/barber-apprenticeship.jpg"
                 alt="Barber apprenticeship in action"
                 fill
                 className="object-cover"

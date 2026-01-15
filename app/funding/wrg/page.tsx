@@ -17,7 +17,7 @@ export default function WrgPage() {
       {/* Hero Section - Image Only */}
       <section className="relative h-[400px] overflow-hidden">
         <Image
-          src="/images/heroes/student-progress.jpg"
+          src="/images/heroes/lms-analytics.jpg"
           alt="WRG Success Story"
           fill
           className="object-cover"

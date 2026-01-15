@@ -65,7 +65,7 @@ export default function ResetPasswordPage() {
         <div className="text-center mb-8">
           <Link href="/">
             <Image
-              src="/images/logo.png"
+              src="/images/hero-banner.png"
               alt="Elevate for Humanity"
               width={180}
               height={60}

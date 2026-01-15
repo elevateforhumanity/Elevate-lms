@@ -70,7 +70,7 @@ export default function Page() {
           </div>
           <div className="relative h-[400px] rounded-2xl overflow-hidden">
             <Image
-              src="/images/healthcare/program-cna-training.jpg"
+              src="/images/efh/programs/cna.jpg"
               alt="CNA training in progress"
               fill
               className="object-cover"

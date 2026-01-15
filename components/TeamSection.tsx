@@ -5,7 +5,7 @@ const teamMembers = [
   {
     name: "Elizabeth Greene",
     title: "Founder & Executive Director",
-    image: "/images/elizabeth-greene-founder.jpg",
+    image: "/images/team/elizabeth-greene.jpg",
     bio: "Elizabeth founded Elevate for Humanity with a mission to connect everyday people to free workforce training that leads to real careers.",
   },
   {

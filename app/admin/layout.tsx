@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-// Image asset: /images/success-new/success-8.jpg
+// Image asset: /images/programs-new/program-12.jpg
 import { redirect } from 'next/navigation';
 import { requireAdmin } from '@/lib/auth';
 import AdminNav from '@/components/AdminNav';

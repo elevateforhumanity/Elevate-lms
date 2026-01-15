@@ -155,7 +155,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative h-[500px] rounded-lg overflow-hidden border-4 border-gray-200">
               <Image
-                src="/images/team/founder/elizabeth-greene-founder-hero-01.jpg"
+                src="/images/team/elizabeth-greene.jpg"
                 alt="Elizabeth Greene - Founder & CEO"
                 fill
                 className="object-cover"
@@ -313,7 +313,7 @@ export default function AboutPage() {
             <Link href="/founder" className="group bg-white rounded-lg overflow-hidden border-2 border-gray-200 hover:border-blue-500 hover:shadow-xl transition-all">
               <div className="relative h-64 overflow-hidden">
                 <Image
-                  src="/images/team/founder/elizabeth-greene-founder-hero-01.jpg"
+                  src="/images/team/elizabeth-greene.jpg"
                   alt="Our Founder"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-300"

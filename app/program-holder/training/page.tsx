@@ -67,7 +67,7 @@ export default async function TrainingPage() {
                 <video
                   controls
                   className="w-full h-full"
-                  poster="/images/hero/portal-hero.jpg"
+                  poster="/images/hero/admin-hero.jpg"
                 >
                   <source
                     src="/videos/training-providers-video-with-narration.mp4"

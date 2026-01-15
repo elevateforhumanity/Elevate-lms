@@ -15,7 +15,7 @@ export default function AlumniPage() {
       currentRole: 'Certified Nursing Assistant',
       company: 'Community Hospital',
       location: 'Indianapolis, IN',
-      image: '/images/team-new/team-1.jpg',
+      image: '/images/programs-new/program-21.jpg',
       available: true
     },
     {
@@ -37,7 +37,7 @@ export default function AlumniPage() {
       currentRole: 'HVAC Technician',
       company: 'Climate Control Services',
       location: 'Carmel, IN',
-      image: '/images/team-new/team-3.jpg',
+      image: '/images/programs-new/program-27.jpg',
       available: false
     }
   ];

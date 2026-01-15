@@ -10,7 +10,7 @@ interface OrganizationSchemaProps {
 export function OrganizationSchema({
   name = 'Elevate for Humanity',
   url = 'https://www.elevateforhumanity.org',
-  logo = 'https://www.elevateforhumanity.org/images/logo.png',
+  logo = 'https://www.elevateforhumanity.org/images/hero-banner.png',
   description = 'A regulated workforce development and credentialing institute connecting students to approved training, recognized credentials, and real career pathways.',
 }: OrganizationSchemaProps) {
   const schema = {
@@ -138,7 +138,7 @@ export function BlogPostSchema({
       name: 'Elevate for Humanity',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.elevateforhumanity.org/images/logo.png',
+        url: 'https://www.elevateforhumanity.org/images/hero-banner.png',
       },
     },
   };

@@ -40,7 +40,7 @@ export default function FounderPage() {
             {/* Founder Photo */}
             <div className="relative h-[500px] rounded-lg overflow-hidden border-4 border-gray-200">
               <Image
-                src="/images/team/founder/elizabeth-greene-founder-hero-01.jpg"
+                src="/images/team/elizabeth-greene.jpg"
                 alt="Elizabeth Greene - Founder & CEO"
                 fill
                 className="object-cover"

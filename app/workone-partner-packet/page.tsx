@@ -226,7 +226,7 @@ export default function WorkOnePartnerPacketPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-32">
-                <Image src="/images/success-new/success-10.jpg" alt="Referral" fill className="object-cover" />
+                <Image src="/images/students-new/student-4.jpg" alt="Referral" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <div className="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-4 -mt-10 relative z-10 border-4 border-white">1</div>
@@ -239,7 +239,7 @@ export default function WorkOnePartnerPacketPage() {
 
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-32">
-                <Image src="/images/success-new/success-12.jpg" alt="Enrollment" fill className="object-cover" />
+                <Image src="/images/students-new/student-6.jpg" alt="Enrollment" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <div className="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-4 -mt-10 relative z-10 border-4 border-white">2</div>
@@ -252,7 +252,7 @@ export default function WorkOnePartnerPacketPage() {
 
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-32">
-                <Image src="/images/success-new/success-14.jpg" alt="Training" fill className="object-cover" />
+                <Image src="/images/programs-new/program-14.jpg" alt="Training" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <div className="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-4 -mt-10 relative z-10 border-4 border-white">3</div>
@@ -265,7 +265,7 @@ export default function WorkOnePartnerPacketPage() {
 
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200">
               <div className="relative h-32">
-                <Image src="/images/success-new/success-16.jpg" alt="Placement" fill className="object-cover" />
+                <Image src="/images/programs-new/program-16.jpg" alt="Placement" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <div className="w-12 h-12 bg-teal-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-4 -mt-10 relative z-10 border-4 border-white">4</div>
@@ -301,8 +301,8 @@ export default function WorkOnePartnerPacketPage() {
             {[
               { title: 'Barber Apprenticeship', duration: '18 months', credential: 'Indiana Barber License', funding: 'WIOA, WRG, Apprenticeship', image: '/images/barber-hero.jpg' },
               { title: 'Healthcare Certifications', duration: '4-12 weeks', credential: 'CNA, Phlebotomy, Medical Assistant', funding: 'WIOA, WRG', image: '/images/healthcare-highlight.jpg' },
-              { title: 'IT & Cybersecurity', duration: '8-16 weeks', credential: 'CompTIA, Microsoft, Cisco', funding: 'WIOA, WRG', image: '/images/heroes/lms-courses.jpg' },
-              { title: 'CDL Training', duration: '4-6 weeks', credential: 'Class A CDL', funding: 'WIOA, WRG', image: '/images/heroes/programs-trades.jpg' },
+              { title: 'IT & Cybersecurity', duration: '8-16 weeks', credential: 'CompTIA, Microsoft, Cisco', funding: 'WIOA, WRG', image: '/images/heroes/lms-analytics.jpg' },
+              { title: 'CDL Training', duration: '4-6 weeks', credential: 'Class A CDL', funding: 'WIOA, WRG', image: '/images/healthcare/hero-programs-healthcare.jpg' },
               { title: 'Skilled Trades', duration: '8-24 weeks', credential: 'OSHA, NCCER, Industry Certs', funding: 'WIOA, WRG, Apprenticeship', image: '/images/hvac-technician-success.jpg' },
               { title: 'Business & Office', duration: '4-8 weeks', credential: 'Microsoft Office, QuickBooks', funding: 'WIOA, WRG', image: '/images/business-highlight.jpg' },
             ].map((program, index) => (
@@ -397,7 +397,7 @@ export default function WorkOnePartnerPacketPage() {
       {/* CTA with Background Image */}
       <section className="relative py-20">
         <div className="absolute inset-0">
-          <Image src="/images/heroes/hero-employer-partnerships.jpg" alt="Partnership" fill className="object-cover" />
+          <Image src="/images/employers/partnership-office-meeting.jpg" alt="Partnership" fill className="object-cover" />
           <div className="absolute inset-0 bg-teal-600/90" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">

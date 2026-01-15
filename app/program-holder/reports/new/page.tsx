@@ -53,7 +53,7 @@ export default async function NewReportPage() {
       {/* Hero Section */}
       <section className="relative h-[300px] flex items-center justify-center text-white overflow-hidden">
         <Image
-          src="/images/hero/portal-hero.jpg"
+          src="/images/hero/admin-hero.jpg"
           alt="New Report"
           fill
           className="object-cover"

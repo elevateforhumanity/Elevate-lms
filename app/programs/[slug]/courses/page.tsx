@@ -125,13 +125,13 @@ export default function ProgramCoursesPage() {
               const categoryImages: Record<string, string[]> = {
                 'healthcare': [
                   '/hero-images/healthcare-category.jpg',
-                  '/images/programs/cna-hero.jpg',
+                  '/images/efh/hero/hero-health.jpg',
                   '/media/programs/efh-cna-hero.jpg'
                 ],
                 'skilled-trades': [
                   '/hero-images/skilled-trades-category.jpg',
                   '/images/programs/hvac-hero.jpg',
-                  '/images/programs/building-technician-hero.jpg'
+                  '/images/programs/building-maintenance-hero.jpg'
                 ],
                 'technology': [
                   '/hero-images/technology-category.jpg',
@@ -145,12 +145,12 @@ export default function ProgramCoursesPage() {
                 ],
                 'transportation': [
                   '/hero-images/cdl-transportation-category.jpg',
-                  '/images/programs/cdl-hero.jpg',
+                  '/images/artlist/thumbnails/hero-training-2-thumb.jpg',
                   '/media/programs/cdl-hero.jpg'
                 ],
                 'barber': [
                   '/hero-images/barber-beauty-category.jpg',
-                  '/images/programs/barber-hero.jpg',
+                  '/images/programs/barber-apprenticeship.jpg',
                   '/media/programs/efh-barber-hero.jpg'
                 ]
               };
