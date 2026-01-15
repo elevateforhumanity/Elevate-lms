@@ -157,22 +157,35 @@ export const TIER2_EMPLOYER_SPONSORSHIP = {
 };
 
 /**
- * TIER 3: INTERNAL PAYMENT PLAN
- * School-managed plan. Use ONLY when Tier 1 and Tier 2 are not viable.
- * STRICT TERMS - NO EXCEPTIONS.
+ * TIER 3A: INTERNAL BRIDGE PLAN
+ * Short-term bridge to get student started while transitioning to permanent payor.
+ * 90 DAYS MAXIMUM - NO EXCEPTIONS.
  */
-export const TIER3_INTERNAL_PLAN = {
-  name: 'School Payment Plan',
+export const TIER3A_BRIDGE_PLAN = {
+  name: 'Bridge Payment Plan',
   enabled: true,
   
   // HARD LIMITS - DO NOT CHANGE WITHOUT EXECUTIVE APPROVAL
   rules: {
-    minDownPaymentPercent: 20,
-    minDownPaymentAmount: 500,
-    maxTermMonths: 6, // HARD LIMIT
-    paymentMethod: 'autopay_only' as const, // No manual payments
+    downPayment: 500, // Fixed $500
+    monthlyPayment: 200, // Fixed $200/month minimum
+    maxTermMonths: 3, // 90 DAYS HARD STOP
+    totalCollectedInternally: 1100, // $500 + ($200 × 3) = $1,100 max
+    paymentMethod: 'autopay_only' as const,
     lateFee: 50,
     gracePeriodDays: 7,
+  },
+  
+  // TRANSITION REQUIREMENT AT DAY 90
+  transitionRequirement: {
+    deadline: 90, // days
+    options: [
+      'employer_reimbursement',
+      'third_party_financing',
+      'pay_remaining_balance_in_full',
+    ],
+    noExtensions: true,
+    noRenegotiation: true,
   },
   
   // ENFORCEMENT - AUTOMATIC, NO EXCEPTIONS
@@ -181,17 +194,59 @@ export const TIER3_INTERNAL_PLAN = {
     missedPaymentsBeforeTermination: 2,
     credentialHoldUntilPaid: true,
     noManualPaymentOption: true,
+    day90Action: 'transition_or_pause' as const,
   },
   
   // What we tell students
-  studentMessage: 'Pay a deposit now, then fixed monthly payments via autopay. No credit check.',
+  studentMessage: 'Start with $500 down and $200/month for 3 months while we help you secure long-term funding.',
   
   // Required documents
   requiredDocuments: [
     'enrollment_agreement',
-    'payment_plan_agreement',
+    'bridge_payment_agreement',
     'autopay_authorization',
+    'transition_acknowledgment',
     'refund_policy_acknowledgment',
+  ],
+};
+
+/**
+ * TIER 3B: LONG-TERM PAYMENTS (EXTERNALIZED)
+ * For any payment need below $200/month or beyond 90 days.
+ * Elevate for Humanity does NOT carry these balances.
+ */
+export const TIER3B_EXTERNAL_FINANCING = {
+  name: 'External Financing Required',
+  enabled: true,
+  
+  // When this applies
+  triggers: [
+    'monthly_payment_below_200',
+    'term_beyond_90_days',
+    'bridge_plan_transition',
+  ],
+  
+  // External options
+  options: [
+    {
+      name: 'Third-Party Financing',
+      providers: ['affirm', 'klarna'],
+      description: 'Apply at checkout. If approved, pay over 6-24 months.',
+    },
+    {
+      name: 'Employer Reimbursement',
+      description: 'Employer pays remaining balance directly or via payroll deduction.',
+    },
+  ],
+  
+  // What we tell students
+  studentMessage: 'For payments below $200/month or terms longer than 3 months, you\'ll need to use Affirm/Klarna or employer sponsorship.',
+  
+  // What we do NOT do
+  prohibited: [
+    'Internal plans longer than 90 days',
+    'Internal payments below $200/month',
+    'Carrying student balances beyond bridge period',
   ],
 };
 

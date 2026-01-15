@@ -1,302 +1,232 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { 
-  CreditCard, Building2, Calendar, CheckCircle, 
-  AlertCircle, ArrowRight, Shield, Clock, DollarSign,
-  FileText, Phone
+  Building2, Calendar, CheckCircle, 
+  ArrowRight, Users, Briefcase, CreditCard, Phone
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'How to Pay for Tuition | Elevate for Humanity',
-  description: 'Clear, simple tuition payment options. Third-party financing, employer sponsorship, or school payment plans. No hidden fees.',
+  title: 'How to Pay for Training | Elevate for Humanity',
+  description: 'Elevate for Humanity places students into one of three funding pathways—workforce-funded, employer-sponsored, or structured tuition.',
 };
 
 export default function TuitionPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="bg-slate-900 text-white py-16">
+      <section className="bg-slate-900 text-white py-12 sm:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4">
-            How to Pay for Tuition
+          <h1 className="text-2xl sm:text-4xl font-bold mb-4">
+            How to Pay for Training
           </h1>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            We offer clear, straightforward payment options. No hidden fees. No surprises.
-            Choose the option that works best for your situation.
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
+            Elevate for Humanity is a workforce training institute. Most of our students do not pay tuition on their own. Instead, students are placed into one of three structured funding pathways based on eligibility and career goals.
           </p>
         </div>
       </section>
 
-      {/* Important Notice */}
-      <section className="bg-blue-50 border-b border-blue-100 py-6">
+      {/* Intro */}
+      <section className="py-8 sm:py-12 border-b border-slate-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-slate-600">
+            Our admissions team works with every applicant to determine the best pathway before enrollment.
+          </p>
+        </div>
+      </section>
+
+      {/* Funding Pathways */}
+      <section className="py-12 sm:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-3">
-            <AlertCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold text-blue-900">Already eligible for funding?</p>
-              <p className="text-blue-800 text-sm">
-                If you qualify for WIOA, Workforce Ready Grant, or other workforce funding, 
-                your tuition may be fully covered. <Link href="/funding" className="underline font-medium">Check your eligibility first →</Link>
+          <div className="space-y-8 sm:space-y-12">
+            
+            {/* Pathway 1: Workforce-Funded */}
+            <div className="bg-green-50 border border-green-200 rounded-xl p-6 sm:p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                  <Users className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
+                </div>
+                <div>
+                  <p className="text-xs sm:text-sm font-medium text-green-600">Funding Pathway 1</p>
+                  <h2 className="text-lg sm:text-xl font-bold text-slate-900">Workforce-Funded Training</h2>
+                </div>
+              </div>
+              
+              <p className="text-slate-700 mb-4">
+                Many students qualify for public workforce funding that covers all or most program costs.
+              </p>
+              
+              <div className="bg-white rounded-lg p-4 mb-4">
+                <p className="font-medium text-slate-900 mb-2">This may include:</p>
+                <ul className="space-y-1 text-sm text-slate-600">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    Workforce Innovation and Opportunity Act (WIOA) funding
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    State and local workforce grants
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    Vocational Rehabilitation (VR)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    Justice-involved and re-entry programs
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    Other approved workforce agencies
+                  </li>
+                </ul>
+              </div>
+              
+              <p className="text-sm text-green-800 font-medium">
+                If you qualify, tuition, books, and required materials may be fully covered.
               </p>
             </div>
+
+            {/* Pathway 2: Employer-Sponsored */}
+            <div className="bg-purple-50 border border-purple-200 rounded-xl p-6 sm:p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
+                </div>
+                <div>
+                  <p className="text-xs sm:text-sm font-medium text-purple-600">Funding Pathway 2</p>
+                  <h2 className="text-lg sm:text-xl font-bold text-slate-900">Employer-Sponsored Training</h2>
+                </div>
+              </div>
+              
+              <p className="text-slate-700 mb-4">
+                Some students enroll through employer partnerships.
+              </p>
+              
+              <div className="bg-white rounded-lg p-4 mb-4">
+                <p className="font-medium text-slate-900 mb-2">This may include:</p>
+                <ul className="space-y-1 text-sm text-slate-600">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                    Employer-paid cohort training
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                    Tuition reimbursement after hire
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0" />
+                    Payroll-based reimbursement agreements
+                  </li>
+                </ul>
+              </div>
+              
+              <p className="text-sm text-purple-800 font-medium">
+                Employer sponsorship is coordinated directly with admissions and hiring partners.
+              </p>
+            </div>
+
+            {/* Pathway 3: Structured Student Tuition */}
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 sm:p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-200 rounded-lg flex items-center justify-center">
+                  <CreditCard className="w-5 h-5 sm:w-6 sm:h-6 text-slate-600" />
+                </div>
+                <div>
+                  <p className="text-xs sm:text-sm font-medium text-slate-500">Funding Pathway 3</p>
+                  <h2 className="text-lg sm:text-xl font-bold text-slate-900">Structured Student Tuition</h2>
+                </div>
+              </div>
+              
+              <p className="text-slate-700 mb-4">
+                For students who do not qualify for workforce funding or employer sponsorship, Elevate for Humanity offers a limited, structured tuition option designed to keep training accessible while maintaining program quality.
+              </p>
+              
+              <div className="bg-white rounded-lg p-4 mb-4">
+                <p className="font-semibold text-slate-900 mb-3">Internal Bridge Plan</p>
+                <div className="grid grid-cols-3 gap-4 text-center mb-4">
+                  <div>
+                    <p className="text-xl sm:text-2xl font-bold text-slate-900">$500</p>
+                    <p className="text-xs text-slate-500">Initial payment</p>
+                  </div>
+                  <div>
+                    <p className="text-xl sm:text-2xl font-bold text-slate-900">$200</p>
+                    <p className="text-xs text-slate-500">Per month</p>
+                  </div>
+                  <div>
+                    <p className="text-xl sm:text-2xl font-bold text-slate-900">3 mo</p>
+                    <p className="text-xs text-slate-500">Maximum term</p>
+                  </div>
+                </div>
+                <p className="text-sm text-slate-600">
+                  This short-term plan allows students to begin training while transitioning into employment, employer reimbursement, or an external tuition solution.
+                </p>
+              </div>
+              
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                <p className="text-sm text-amber-800">
+                  <strong>After the bridge period,</strong> remaining tuition must be resolved through employer reimbursement, approved external tuition financing, or full balance payment.
+                </p>
+                <p className="text-sm text-amber-800 mt-2 font-medium">
+                  Elevate for Humanity does not offer long-term internal payment plans and does not extend credit.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Payment Options */}
-      <section className="py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900 text-center mb-12">
-            Payment Options
-          </h2>
-
-          <div className="space-y-8">
-            {/* Option 1: Third-Party Financing */}
-            <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-8">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">RECOMMENDED</span>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <CreditCard className="w-7 h-7 text-green-600" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    Pay Over Time with Affirm or Klarna
-                  </h3>
-                  <p className="text-slate-600 mb-4">
-                    Get approved in minutes. Pay in fixed monthly installments over 6-24 months. 
-                    Subject to approval by the financing provider.
-                  </p>
-                  
-                  <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                    <div className="bg-white rounded-lg p-4">
-                      <p className="text-sm text-slate-500 mb-1">Example: $5,000 tuition</p>
-                      <p className="text-2xl font-bold text-slate-900">~$278/month</p>
-                      <p className="text-sm text-slate-500">for 18 months</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4">
-                      <ul className="space-y-2 text-sm">
-                        <li className="flex items-center gap-2 text-green-700">
-                          <CheckCircle className="w-4 h-4" /> Quick approval decision
-                        </li>
-                        <li className="flex items-center gap-2 text-green-700">
-                          <CheckCircle className="w-4 h-4" /> No large upfront payment
-                        </li>
-                        <li className="flex items-center gap-2 text-green-700">
-                          <CheckCircle className="w-4 h-4" /> Build credit history
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-slate-500 mb-4">
-                    <strong>How it works:</strong> At checkout, select "Pay over time" and complete a quick application. 
-                    If approved, you'll see your monthly payment amount before confirming. The financing provider 
-                    pays us directly, and you make payments to them.
-                  </p>
-
-                  <Link 
-                    href="/programs"
-                    className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
-                  >
-                    Browse Programs <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Option 2: Employer Sponsored */}
-            <div className="bg-white border-2 border-slate-200 rounded-2xl p-8">
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Building2 className="w-7 h-7 text-purple-600" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    Employer-Sponsored Tuition
-                  </h3>
-                  <p className="text-slate-600 mb-4">
-                    If you have an employer willing to invest in your training, they can pay your tuition 
-                    directly or through payroll deduction after you're hired.
-                  </p>
-                  
-                  <div className="bg-purple-50 rounded-lg p-4 mb-6">
-                    <p className="font-semibold text-purple-900 mb-2">This option requires:</p>
-                    <ul className="space-y-1 text-sm text-purple-800">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4" /> Employer must be an approved partner
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4" /> Signed employer agreement before enrollment
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4" /> Commitment to hire upon completion
-                      </li>
-                    </ul>
-                  </div>
-
-                  <Link 
-                    href="/contact"
-                    className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition"
-                  >
-                    Ask About Employer Sponsorship <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Option 3: School Payment Plan */}
-            <div className="bg-white border-2 border-slate-200 rounded-2xl p-8">
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-7 h-7 text-orange-600" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    School Payment Plan
-                  </h3>
-                  <p className="text-slate-600 mb-4">
-                    If third-party financing isn't available to you, we offer a structured payment plan 
-                    with a deposit and monthly autopay. No credit check required.
-                  </p>
-                  
-                  <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                    <div className="bg-orange-50 rounded-lg p-4">
-                      <p className="text-sm text-slate-500 mb-1">Example: $5,000 tuition</p>
-                      <p className="text-lg font-bold text-slate-900">$1,000 deposit</p>
-                      <p className="text-slate-600">+ $667/month for 6 months</p>
-                    </div>
-                    <div className="bg-slate-50 rounded-lg p-4">
-                      <p className="font-semibold text-slate-900 mb-2">Requirements:</p>
-                      <ul className="space-y-1 text-sm text-slate-600">
-                        <li>• Minimum 20% down payment</li>
-                        <li>• Maximum 6 months</li>
-                        <li>• Autopay required</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
-                    <div className="flex items-start gap-2">
-                      <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                      <div className="text-sm text-amber-800">
-                        <p className="font-semibold">Important:</p>
-                        <p>Missed payments result in immediate academic pause. No certificates or credentials 
-                        are released until your balance is paid in full.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Link 
-                    href="/schedule"
-                    className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition"
-                  >
-                    Discuss Payment Plan <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Option 4: Pay in Full */}
-            <div className="bg-white border-2 border-slate-200 rounded-2xl p-8">
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <DollarSign className="w-7 h-7 text-slate-600" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
-                    Pay in Full
-                  </h3>
-                  <p className="text-slate-600 mb-4">
-                    Pay your full tuition at enrollment and start immediately. 
-                    Accept credit card, debit card, or bank transfer.
-                  </p>
-                  
-                  <ul className="space-y-2 text-sm text-slate-600 mb-6">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600" /> No ongoing payments
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600" /> Immediate full access
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600" /> Simplest option
-                    </li>
-                  </ul>
-
-                  <Link 
-                    href="/programs"
-                    className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 transition"
-                  >
-                    Enroll Now <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Refund Policy Summary */}
-      <section className="py-16 bg-slate-50">
+      {/* Important Notes */}
+      <section className="py-12 sm:py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900 text-center mb-8">
-            Refund Policy
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 text-center mb-8">
+            Important Notes
           </h2>
           
-          <div className="bg-white rounded-xl border border-slate-200 p-8">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="font-semibold text-slate-900 mb-3">Before Program Starts</h3>
-                <p className="text-slate-600 text-sm">
-                  Full refund minus $150 registration fee. Processed within 7-10 business days.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-slate-900 mb-3">After Program Starts</h3>
-                <p className="text-slate-600 text-sm">
-                  Prorated refund based on completion percentage. No refunds after 50% completion.
-                </p>
-              </div>
-            </div>
-            
-            <div className="mt-6 pt-6 border-t border-slate-200">
-              <p className="text-sm text-slate-500">
-                <strong>Non-refundable:</strong> Registration fee ($150), materials already issued, 
-                certification exam fees already paid.
-              </p>
-            </div>
-
-            <div className="mt-4">
-              <Link href="/policies/refund" className="text-orange-600 text-sm font-medium hover:text-orange-700">
-                Read full refund policy →
-              </Link>
-            </div>
+          <div className="bg-white rounded-xl border border-slate-200 p-6 sm:p-8">
+            <ul className="space-y-3 text-slate-700">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5" />
+                <span>Funding pathways are determined prior to enrollment</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5" />
+                <span>Payment terms are standardized and non-negotiable</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5" />
+                <span>Enrollment and completion credentials require active good-standing status</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-400 flex-shrink-0 mt-0.5" />
+                <span>Our team will guide you through eligibility screening and documentation</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* Questions */}
-      <section className="py-16">
+      {/* Our Commitment */}
+      <section className="py-12 sm:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
-            Questions About Payment?
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
+            Our Commitment
           </h2>
-          <p className="text-slate-600 mb-8">
-            Our enrollment team can help you understand your options and find the best path forward.
+          <p className="text-slate-600 max-w-2xl mx-auto mb-8">
+            Our mission is access with structure. We are committed to helping students enter high-demand careers without confusion, false promises, or financial instability. Every funding pathway is designed to support completion, employment, and long-term success.
           </p>
+          
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/schedule"
-              className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-700 transition"
+              className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-orange-700 transition"
             >
               <Calendar className="w-5 h-5" />
               Schedule a Call
             </Link>
             <Link 
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-white text-slate-900 px-8 py-4 rounded-lg font-semibold border-2 border-slate-200 hover:border-slate-300 transition"
+              className="inline-flex items-center justify-center gap-2 bg-white text-slate-900 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold border-2 border-slate-200 hover:border-slate-300 transition"
             >
               <Phone className="w-5 h-5" />
               Contact Us

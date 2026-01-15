@@ -51,16 +51,40 @@ All marketing, enrollment conversations, and documentation must reflect this dis
 
 ## Internal Payment Plan Terms
 
-These terms are FIXED. Staff may not negotiate, modify, or make exceptions without written Executive Director approval.
+### Lane 3A: Bridge Plan (Internal — 90 Days Maximum)
+
+This is a **bridge**, not a long-term solution. It gets the student started while transitioning to a permanent payor.
 
 | Term | Requirement |
 |------|-------------|
-| **Minimum Down Payment** | 20% of tuition OR $500, whichever is greater |
-| **Maximum Term** | 6 months — NO LONGER |
-| **Payment Method** | Autopay ONLY — no manual payments accepted |
-| **Payment Frequency** | Monthly |
+| **Down Payment** | $500 (fixed) |
+| **Monthly Payment** | $200 minimum |
+| **Maximum Term** | 3 months (90 days) — **HARD STOP** |
+| **Total Collected Internally** | $1,100 maximum ($500 + $200×3) |
+| **Payment Method** | Autopay ONLY |
 | **Late Fee** | $50 per missed payment |
 | **Grace Period** | 7 days from due date |
+
+### Day 90 Transition Requirement
+
+At Day 90, the student MUST transition to one of:
+1. Employer reimbursement
+2. Third-party financing (Affirm/Klarna)
+3. Pay remaining balance in full
+
+**No extensions. No renegotiation. No exceptions.**
+
+### Lane 3B: Long-Term Payments (External Only)
+
+For any payment need that requires:
+- Monthly payments below $200, OR
+- Terms beyond 90 days
+
+**Elevate for Humanity does NOT carry these balances.**
+
+Student must use:
+- Third-party financing (Affirm/Klarna)
+- Employer sponsorship
 
 ### Enforcement (Automatic — No Exceptions)
 
@@ -69,6 +93,7 @@ These terms are FIXED. Staff may not negotiate, modify, or make exceptions witho
 | Payment fails | Student notified, 7-day grace period begins |
 | Grace period expires | **Academic pause** — no course access, no lab access |
 | 2nd missed payment | Enrollment termination review |
+| Day 90 without transition | **Academic pause** until transition secured |
 | Balance > $0 at completion | **Credential hold** — no certificates, transcripts, or letters released |
 
 ---
@@ -116,20 +141,29 @@ END
 
 ---
 
-## Prohibited Actions
+## Non-Negotiable Rules
 
-Staff may NOT do any of the following without written Executive Director approval:
+These rules are protective, not punitive.
 
-1. ❌ Negotiate custom payment terms
-2. ❌ Waive or reduce down payment
-3. ❌ Extend payment term beyond 6 months
-4. ❌ Accept manual payments instead of autopay
-5. ❌ Promise verbal payment flexibility
-6. ❌ Enroll without secured funding or signed payment agreement
-7. ❌ Release credentials before balance = $0
-8. ❌ Make "hardship" exceptions without documentation
+1. ❌ **No internal plans longer than 90 days**
+2. ❌ **No internal payments below $200/month**
+3. ❌ **No verbal exceptions**
+4. ❌ **No credential release with outstanding balance**
+5. ❌ Waive or reduce $500 down payment
+6. ❌ Accept manual payments instead of autopay
+7. ❌ Extend bridge plan beyond Day 90
+8. ❌ Enroll without secured funding or signed payment agreement
+9. ❌ Make "hardship" exceptions without documentation
 
 **Violation of this policy is grounds for disciplinary action.**
+
+## Reality Check for Staff
+
+Students who truly can only afford $100/month are not ready for a $5,000 program unless another payor exists.
+
+That is not judgment—it is financial alignment.
+
+Your job is **access with structure**, not access at any cost.
 
 ---
 
