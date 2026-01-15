@@ -35,11 +35,10 @@ export default async function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Require admin authentication
+  // Auth check - bypassed in demo/development mode via lib/auth.ts
   try {
     await requireAdmin();
-  } catch (error) { /* Error handled silently */ 
-    // Redirect to admin login with return URL
+  } catch (error) {
     redirect('/admin/login?redirect=/admin');
   }
 

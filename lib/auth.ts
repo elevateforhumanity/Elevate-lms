@@ -129,10 +129,35 @@ export async function getAuthUser(): Promise<AuthUser | null> {
 }
 
 // =====================================================
+// DEMO MODE CHECK
+// =====================================================
+
+function isDemoMode(): boolean {
+  return process.env.DEMO_MODE === 'true' || process.env.NODE_ENV === 'development';
+}
+
+// Mock session for demo mode
+const DEMO_SESSION = {
+  user: {
+    id: 'demo-admin-user',
+    email: 'demo@elevateforhumanity.org',
+    role: 'admin' as UserRole,
+  },
+  access_token: 'demo-token',
+  refresh_token: 'demo-refresh',
+  expires_at: Date.now() + 86400000,
+};
+
+// =====================================================
 // ROLE CHECKING
 // =====================================================
 
 export async function requireAuth() {
+  // DEMO MODE: Return mock session
+  if (isDemoMode()) {
+    return DEMO_SESSION;
+  }
+  
   const session = await getSession();
   if (!session) {
     redirect('/login');
@@ -141,6 +166,11 @@ export async function requireAuth() {
 }
 
 export async function requireRole(allowedRoles: UserRole | UserRole[]) {
+  // DEMO MODE: Return admin role
+  if (isDemoMode()) {
+    return { session: DEMO_SESSION, role: 'admin' as UserRole };
+  }
+  
   const session = await requireAuth();
   const role = await getUserRole();
 
@@ -154,22 +184,37 @@ export async function requireRole(allowedRoles: UserRole | UserRole[]) {
 }
 
 export async function requireStudent() {
+  if (isDemoMode()) {
+    return { session: DEMO_SESSION, role: 'student' as UserRole };
+  }
   return requireRole('student');
 }
 
 export async function requireAdmin() {
+  if (isDemoMode()) {
+    return { session: DEMO_SESSION, role: 'admin' as UserRole };
+  }
   return requireRole('admin');
 }
 
 export async function requireProgramHolder() {
+  if (isDemoMode()) {
+    return { session: DEMO_SESSION, role: 'program_holder' as UserRole };
+  }
   return requireRole('program_holder');
 }
 
 export async function requireDelegate() {
+  if (isDemoMode()) {
+    return { session: DEMO_SESSION, role: 'delegate' as UserRole };
+  }
   return requireRole('delegate');
 }
 
 export async function requireAdminOrDelegate() {
+  if (isDemoMode()) {
+    return { session: DEMO_SESSION, role: 'admin' as UserRole };
+  }
   return requireRole(['admin', 'delegate']);
 }
 
