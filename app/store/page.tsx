@@ -50,11 +50,11 @@ export default function StorePage() {
                 Platform Licensing
               </Link>
               <Link
-                href={ROUTES.schedule}
+                href="/demo"
                 className="inline-flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-orange-700 transition"
               >
                 <Calendar className="w-4 h-4" />
-                Schedule Demo
+                Live Demos
               </Link>
             </div>
           </div>
@@ -73,11 +73,11 @@ export default function StorePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href={ROUTES.schedule}
+                href="/demo"
                 className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition"
               >
                 <Calendar className="w-5 h-5" />
-                Schedule a Demo
+                View Live Demos
               </Link>
               <Link
                 href={ROUTES.license}
@@ -130,11 +130,11 @@ export default function StorePage() {
 
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Link
-                      href={ROUTES.schedule}
+                      href="/demo"
                       className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition"
                     >
                       <Calendar className="w-5 h-5" />
-                      Schedule a Demo
+                      View Live Demos
                     </Link>
                     <Link
                       href={ROUTES.licenseFeatures}
@@ -195,7 +195,7 @@ export default function StorePage() {
                       </Link>
                     ) : (
                       <Link
-                        href={ROUTES.schedule}
+                        href="/demo"
                         className="block w-full text-center bg-slate-100 text-slate-700 py-3 rounded-lg font-semibold hover:bg-slate-200 transition"
                       >
                         Request Access
@@ -207,7 +207,7 @@ export default function StorePage() {
             </div>
             
             <p className="text-center text-slate-500 text-sm mt-6">
-              Purchase available during onboarding. Schedule a demo to learn more.
+              Purchase available during onboarding. View our live demos to learn more.
             </p>
           </div>
         </section>
@@ -228,14 +228,14 @@ export default function StorePage() {
               Ready to license the platform?
             </h2>
             <p className="text-slate-600 mb-8">
-              Schedule a demo to see the platform and discuss licensing options for your organization.
+              View our live demos to see the platform and discuss licensing options for your organization.
             </p>
             <Link
-              href={ROUTES.schedule}
+              href="/demo"
               className="inline-flex items-center justify-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-700 transition text-lg"
             >
               <Calendar className="w-5 h-5" />
-              Schedule a Demo
+              View Live Demos
             </Link>
           </div>
         </section>
