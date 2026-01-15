@@ -524,7 +524,7 @@ export default async function MegaAdminDashboard() {
     {
       category: 'AI & Automation',
       name: 'AI Course Builder',
-      href: '/admin/ai-course-builder',
+      href: '/admin/course-studio-ai',
       color: 'violet',
     },
     {
@@ -568,25 +568,25 @@ export default async function MegaAdminDashboard() {
     {
       category: 'Operations',
       name: 'Console',
-      href: '/admin/console',
+      href: '/admin/ai-console',
       color: 'amber',
     },
     {
       category: 'Operations',
       name: 'Admin Console',
-      href: '/admin/adminconsole',
+      href: '/admin/ai-console',
       color: 'amber',
     },
     {
       category: 'Operations',
       name: 'Control Center',
-      href: '/admin/control-center',
+      href: '/admin/master-dashboard',
       color: 'amber',
     },
     {
       category: 'Operations',
       name: 'Master Control',
-      href: '/admin/master-control',
+      href: '/admin/master-dashboard',
       color: 'amber',
     },
     {

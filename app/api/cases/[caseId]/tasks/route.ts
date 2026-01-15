@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { getCaseTasks, completeTask, initializeCaseTasks } from '@/lib/workflow/case-management';
 
-export async function GET(req: Request, { params }: { params: { caseId: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ caseId: string }> }) {
   try {
     const supabase = await createClient();
     const { data: { user }, error: authErr } = await supabase.auth.getUser();
@@ -14,7 +14,7 @@ export async function GET(req: Request, { params }: { params: { caseId: string }
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { caseId } = params;
+    const { caseId } = await params;
     const tasks = await getCaseTasks(caseId);
 
     return NextResponse.json({ tasks });
@@ -24,7 +24,7 @@ export async function GET(req: Request, { params }: { params: { caseId: string }
   }
 }
 
-export async function POST(req: Request, { params }: { params: { caseId: string } }) {
+export async function POST(req: Request, { params }: { params: Promise<{ caseId: string }> }) {
   try {
     const supabase = await createClient();
     const { data: { user }, error: authErr } = await supabase.auth.getUser();
@@ -33,7 +33,7 @@ export async function POST(req: Request, { params }: { params: { caseId: string 
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { caseId } = params;
+    const { caseId } = await params;
     const body = await req.json();
     const { action } = body;
 
@@ -49,7 +49,7 @@ export async function POST(req: Request, { params }: { params: { caseId: string 
   }
 }
 
-export async function PATCH(req: Request, { params }: { params: { caseId: string } }) {
+export async function PATCH(req: Request, { params }: { params: Promise<{ caseId: string }> }) {
   try {
     const supabase = await createClient();
     const { data: { user }, error: authErr } = await supabase.auth.getUser();
