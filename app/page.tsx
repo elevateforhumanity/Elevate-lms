@@ -96,14 +96,18 @@ export default async function HomePage() {
                   <div className="text-6xl mb-4">💈</div>
                   <h3 className="text-2xl font-bold text-white mb-2">Become a Licensed Barber</h3>
                   <p className="text-white/80 mb-6">Join Indiana's premier barber apprenticeship program</p>
-                  <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="grid grid-cols-3 gap-3 text-center">
                     <div className="bg-white/10 rounded-lg p-4">
-                      <div className="text-3xl font-black text-white">2,000</div>
-                      <div className="text-sm text-white/70">Training Hours</div>
+                      <div className="text-2xl font-black text-white">2,000</div>
+                      <div className="text-xs text-white/70">Hours</div>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4">
-                      <div className="text-3xl font-black text-white">$45K+</div>
-                      <div className="text-sm text-white/70">Avg. Salary</div>
+                      <div className="text-2xl font-black text-white">$4,980</div>
+                      <div className="text-xs text-white/70">Tuition</div>
+                    </div>
+                    <div className="bg-white/10 rounded-lg p-4">
+                      <div className="text-2xl font-black text-white">$45K+</div>
+                      <div className="text-xs text-white/70">Avg. Salary</div>
                     </div>
                   </div>
                 </div>
