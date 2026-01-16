@@ -59,7 +59,7 @@ export default function HomePage() {
             {/* Image */}
             <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/images/why-choose-hero.jpg"
+                src="/images/artlist/hero-training-1.png"
                 alt="Students in training program"
                 fill
                 priority
