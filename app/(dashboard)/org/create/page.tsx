@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
-import { useState } from 'react';
+export const dynamic = 'force-dynamic';
+
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function CreateOrgPage() {

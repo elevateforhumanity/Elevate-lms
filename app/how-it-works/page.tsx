@@ -254,7 +254,6 @@ export default async function HowItWorksPage() {
               </div>
             </div>
           </div>
-          </div>
         </div>
       </section>
 
