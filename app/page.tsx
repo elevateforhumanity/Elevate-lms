@@ -38,7 +38,7 @@ export default function HomePage() {
       <VideoHeroSection />
 
       {/* Flagship Program: Barber Apprenticeship */}
-      <section className="py-12 md:py-16 bg-gradient-to-r from-purple-700 via-purple-600 to-indigo-700">
+      <section className="py-12 md:py-16 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
@@ -69,13 +69,13 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="/programs/barber-apprenticeship"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-purple-700 font-bold rounded-xl hover:bg-gray-100 transition-colors shadow-lg text-lg"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-bold rounded-xl hover:bg-gray-100 transition-colors shadow-lg text-lg"
                 >
                   Learn More
                 </a>
                 <a
                   href="/apply?program=barber-apprenticeship"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-purple-500 text-white font-bold rounded-xl hover:bg-purple-400 transition-colors border-2 border-white text-lg"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-blue-500 text-white font-bold rounded-xl hover:bg-blue-400 transition-colors border-2 border-white text-lg"
                 >
                   Apply Now
                 </a>
