@@ -1,19 +1,29 @@
 export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
-
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import Image from 'next/image';
+import {
+  Users,
+  Plus,
+  Search,
+  Calendar,
+  Clock,
+  MapPin,
+  Video,
+  BookOpen,
+  MessageSquare,
+  UserPlus,
+  ChevronRight,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/lms/study-groups',
   },
-  title: 'Study Groups | Elevate For Humanity',
-  description:
-    'Manage study-groups settings and development.',
+  title: 'Study Groups | Student Portal',
+  description: 'Join or create study groups to learn together with fellow students.',
 };
 
 export default async function StudyGroupsPage() {
@@ -26,265 +36,304 @@ export default async function StudyGroupsPage() {
     redirect('/login');
   }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
+  // Fetch user's study groups
+  const { data: myGroupMemberships } = await supabase
+    .from('study_group_members')
+    .select(`
+      *,
+      study_groups (
+        id,
+        name,
+        description,
+        course_id,
+        max_members,
+        meeting_schedule,
+        is_virtual,
+        meeting_link,
+        created_at,
+        courses (title)
+      )
+    `)
+    .eq('user_id', user.id);
 
-  // Fetch student's courses
+  // Fetch available study groups (not joined)
+  const joinedGroupIds = myGroupMemberships?.map(m => m.study_group_id) || [];
+  
+  const { data: availableGroups } = await supabase
+    .from('study_groups')
+    .select(`
+      *,
+      courses (title),
+      study_group_members (user_id)
+    `)
+    .eq('is_active', true)
+    .not('id', 'in', `(${joinedGroupIds.length > 0 ? joinedGroupIds.join(',') : '00000000-0000-0000-0000-000000000000'})`)
+    .order('created_at', { ascending: false })
+    .limit(20);
+
+  // Fetch user's enrolled courses for creating groups
   const { data: enrollments } = await supabase
     .from('enrollments')
-    .select(
-      `
-      *,
-      courses (
-        id,
-        title,
-        description,
-        thumbnail_url
-      )
-    `
-    )
-    .eq('user_id', user.id)
-    .order('created_at', { ascending: false });
-
-  const { count: activeCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
+    .select('courses (id, title)')
     .eq('user_id', user.id)
     .eq('status', 'active');
 
-  const { count: completedCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'completed');
+  const myGroups = myGroupMemberships?.map(m => ({
+    ...m.study_groups,
+    role: m.role,
+    memberCount: 0, // Will be calculated
+  })) || [];
 
-  const { data: recentProgress } = await supabase
-    .from('student_progress')
-    .select(
-      `
-      *,
-      courses (title)
-    `
-    )
-    .eq('student_id', user.id)
-    .order('updated_at', { ascending: false })
-    .limit(5);
+  // Calculate member counts
+  for (const group of myGroups) {
+    const { count } = await supabase
+      .from('study_group_members')
+      .select('*', { count: 'exact', head: true })
+      .eq('study_group_id', group.id);
+    group.memberCount = count || 0;
+  }
+
+  const formatSchedule = (schedule: string | null) => {
+    if (!schedule) return 'Flexible schedule';
+    return schedule;
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-5.jpg"
-          alt="Study Groups"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Study Groups
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage study-groups for career growth
-            and development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Study Groups
-                </h2>
-                <p className="text-black mb-6">
-                  Manage study-groups for career
-                  growth and development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-3.jpg"
-                  alt="Study Groups"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
+    <div className="min-h-screen bg-slate-50 py-8">
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900">Study Groups</h1>
+            <p className="text-slate-600 mt-1">
+              Learn together with fellow students
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
+          </div>
+          <div className="mt-4 md:mt-0">
+            <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+              <Plus className="w-4 h-4" />
+              Create Group
+            </button>
+          </div>
+        </div>
+
+        {/* Search */}
+        <div className="bg-white rounded-xl border border-slate-200 p-4 mb-8">
+          <div className="flex gap-4">
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search study groups..."
+                className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <select className="px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="">All Courses</option>
+              {enrollments?.map(e => (
+                <option key={e.courses?.id} value={e.courses?.id}>
+                  {e.courses?.title}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* My Groups */}
+        {myGroups.length > 0 && (
+          <div className="mb-8">
+            <h2 className="text-xl font-bold text-slate-900 mb-4">My Study Groups</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {myGroups.map((group) => (
+                <Link
+                  key={group.id}
+                  href={`/lms/study-groups/${group.id}`}
+                  className="bg-white rounded-xl border border-slate-200 p-6 hover:border-blue-300 hover:shadow-md transition"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                        <Users className="w-6 h-6 text-blue-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-slate-900">{group.name}</h3>
+                        <p className="text-sm text-slate-600">{group.courses?.title}</p>
+                      </div>
+                    </div>
+                    {group.role === 'admin' && (
+                      <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-medium rounded-full">
+                        Admin
+                      </span>
+                    )}
+                  </div>
+                  
+                  {group.description && (
+                    <p className="text-sm text-slate-600 mb-4 line-clamp-2">
+                      {group.description}
+                    </p>
+                  )}
+
+                  <div className="flex flex-wrap gap-4 text-sm text-slate-500">
+                    <span className="flex items-center gap-1">
+                      <Users className="w-4 h-4" />
+                      {group.memberCount}/{group.max_members || '∞'} members
+                    </span>
+                    <span className="flex items-center gap-1">
+                      {group.is_virtual ? (
+                        <>
+                          <Video className="w-4 h-4" />
+                          Virtual
+                        </>
+                      ) : (
+                        <>
+                          <MapPin className="w-4 h-4" />
+                          In-person
+                        </>
+                      )}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {formatSchedule(group.meeting_schedule)}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Available Groups */}
+        <div>
+          <h2 className="text-xl font-bold text-slate-900 mb-4">
+            {myGroups.length > 0 ? 'Discover More Groups' : 'Available Study Groups'}
+          </h2>
+          
+          {availableGroups && availableGroups.length > 0 ? (
+            <div className="grid md:grid-cols-2 gap-4">
+              {availableGroups.map((group) => {
+                const memberCount = group.study_group_members?.length || 0;
+                const isFull = group.max_members && memberCount >= group.max_members;
+
+                return (
+                  <div
+                    key={group.id}
+                    className="bg-white rounded-xl border border-slate-200 p-6"
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center">
+                          <Users className="w-6 h-6 text-slate-600" />
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-slate-900">{group.name}</h3>
+                          <p className="text-sm text-slate-600">{group.courses?.title}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {group.description && (
+                      <p className="text-sm text-slate-600 mb-4 line-clamp-2">
+                        {group.description}
+                      </p>
+                    )}
+
+                    <div className="flex flex-wrap gap-4 text-sm text-slate-500 mb-4">
+                      <span className="flex items-center gap-1">
+                        <Users className="w-4 h-4" />
+                        {memberCount}/{group.max_members || '∞'} members
+                      </span>
+                      <span className="flex items-center gap-1">
+                        {group.is_virtual ? (
+                          <>
+                            <Video className="w-4 h-4" />
+                            Virtual
+                          </>
+                        ) : (
+                          <>
+                            <MapPin className="w-4 h-4" />
+                            In-person
+                          </>
+                        )}
+                      </span>
+                    </div>
+
+                    <button
+                      disabled={isFull}
+                      className={`w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
+                        isFull
+                          ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                          : 'bg-blue-600 text-white hover:bg-blue-700'
+                      }`}
+                    >
+                      {isFull ? (
+                        'Group Full'
+                      ) : (
+                        <>
+                          <UserPlus className="w-4 h-4" />
+                          Join Group
+                        </>
+                      )}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="bg-white rounded-2xl border border-slate-200 p-16 text-center">
+              <Users className="w-16 h-16 text-slate-300 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-slate-900 mb-2">No Study Groups Yet</h3>
+              <p className="text-slate-600 mb-6 max-w-md mx-auto">
+                Be the first to create a study group for your course! Collaborate with classmates to learn together.
+              </p>
+              <button className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition">
+                <Plus className="w-5 h-5" />
+                Create Study Group
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Benefits Section */}
+        <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+          <h2 className="text-2xl font-bold mb-6 text-center">Why Join a Study Group?</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <h3 className="font-semibold mb-2">Learn Together</h3>
+              <p className="text-sm text-blue-100">
+                Discuss concepts and help each other understand difficult topics
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <MessageSquare className="w-6 h-6" />
+              </div>
+              <h3 className="font-semibold mb-2">Stay Motivated</h3>
+              <p className="text-sm text-blue-100">
+                Regular meetings keep you accountable and on track
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <Users className="w-6 h-6" />
+              </div>
+              <h3 className="font-semibold mb-2">Build Connections</h3>
+              <p className="text-sm text-blue-100">
+                Network with peers who share your learning goals
+              </p>
             </div>
           </div>
         </div>
-      </section>
+
+        {/* Back Link */}
+        <div className="mt-8 text-center">
+          <Link href="/lms/community" className="text-blue-600 hover:text-blue-700 font-medium">
+            ← Back to Community
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
