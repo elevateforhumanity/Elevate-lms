@@ -368,8 +368,14 @@ export default function SignupForm() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-          Loading...
+        <div className="bg-white rounded-lg shadow-sm border p-8">
+          <div className="animate-pulse space-y-4">
+            <div className="h-8 bg-gray-200 rounded w-1/2 mx-auto"></div>
+            <div className="h-10 bg-gray-200 rounded"></div>
+            <div className="h-10 bg-gray-200 rounded"></div>
+            <div className="h-10 bg-gray-200 rounded"></div>
+            <div className="h-12 bg-blue-200 rounded"></div>
+          </div>
         </div>
       }
     >

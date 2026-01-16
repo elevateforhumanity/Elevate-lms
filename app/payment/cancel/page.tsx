@@ -79,10 +79,10 @@ export default async function PaymentCancelPage() {
               </a>{' '}
               or{' '}
               <a
-                href="mailto:info@www.elevateforhumanity.org"
+                href="mailto:info@elevateforhumanity.org"
                 className="text-brand-orange-600 hover:underline"
               >
-                info@www.elevateforhumanity.org
+                info@elevateforhumanity.org
               </a>
             </p>
           </div>

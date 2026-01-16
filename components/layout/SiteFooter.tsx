@@ -166,12 +166,12 @@ export default function SiteFooter() {
               >
                 Accessibility
               </Link>
-              <Link
-                href="/sitemap-page"
+              <a
+                href="/sitemap.xml"
                 className="hover:text-white transition"
               >
                 Sitemap
-              </Link>
+              </a>
             </div>
             <p className="text-xs text-gray-400">
               © {new Date().getFullYear()} Elevate For Humanity. All Rights Reserved.

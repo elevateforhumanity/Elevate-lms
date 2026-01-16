@@ -197,7 +197,7 @@ export default function ResponseSLAPage() {
               For inquiries and support:
             </p>
             <ul className="list-none mb-6 text-black space-y-2">
-              <li><strong>General:</strong> info@www.elevateforhumanity.org</li>
+              <li><strong>General:</strong> info@elevateforhumanity.org</li>
               <li><strong>Admissions:</strong> admissions@www.elevateforhumanity.org</li>
               <li><strong>Student Services:</strong> support@www.elevateforhumanity.org</li>
               <li><strong>IT Support:</strong> helpdesk@www.elevateforhumanity.org</li>

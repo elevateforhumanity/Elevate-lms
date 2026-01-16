@@ -30,7 +30,7 @@ export default async function TermsOfServicePage() {
             Terms of Service
           </h1>
           <p className="text-base md:text-lg text-slate-300">
-            Last Updated: December 8, 2024
+            Last Updated: January 1, 2026
           </p>
         </div>
       </section>
