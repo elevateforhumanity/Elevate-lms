@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { CheckCircle, ArrowRight, Mail, Phone } from 'lucide-react';
+import { CheckCircle, ArrowRight, Mail, Phone, Calendar } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Application Submitted | Elevate for Humanity',
@@ -10,19 +11,37 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ApplicationSuccessPage({
+export const dynamic = 'force-dynamic';
+
+export default async function ApplicationSuccessPage({
   searchParams,
 }: {
   searchParams: { role?: string };
 }) {
+  const supabase = await createClient();
   const role = searchParams.role || 'student';
 
-  const roleMessages = {
+  // Get next steps content from database
+  const { data: nextStepsContent } = await supabase
+    .from('content_blocks')
+    .select('*')
+    .eq('page', 'apply-success')
+    .eq('section', role)
+    .order('order', { ascending: true });
+
+  // Get contact info
+  const { data: contactInfo } = await supabase
+    .from('settings')
+    .select('value')
+    .eq('key', 'enrollment_contact')
+    .single();
+
+  const roleMessages: Record<string, any> = {
     student: {
       title: 'Student Application Submitted!',
       message:
         "We've received your application and will review it within 1-2 business days.",
-      nextSteps: [
+      nextSteps: nextStepsContent?.map((c: any) => c.content) || [
         'Check your email for a confirmation message',
         'A team member will contact you to discuss program options',
         "We'll help you explore funding options like WIOA, WRG, and apprenticeships",
@@ -38,114 +57,120 @@ export default function ApplicationSuccessPage({
       nextSteps: [
         'Our team will review your organization details',
         "We'll schedule a call to discuss partnership opportunities",
-        "You'll receive a partnership agreement for review",
-        "Once verified, you'll get access to your program holder dashboard",
+        'You will receive information about licensing options',
+        'Access to partner portal upon approval',
       ],
-      dashboardLink: '/program-holder/dashboard',
-      dashboardText: 'Program Holder Dashboard',
+      dashboardLink: '/partner/dashboard',
+      dashboardText: 'Partner Dashboard',
     },
     employer: {
       title: 'Employer Application Submitted!',
       message:
-        "We're excited to partner with you! Our team will verify your company information and contact you shortly.",
+        "Thank you for your interest in hiring our graduates. We'll be in touch soon.",
       nextSteps: [
-        "We'll verify your company information",
-        'A team member will contact you within 1-2 business days',
-        "We'll discuss your hiring needs and available candidates",
-        "Once verified, you'll receive access to your employer dashboard",
+        'Our employer relations team will review your submission',
+        "We'll contact you to discuss your hiring needs",
+        'You will receive access to candidate profiles',
+        'Schedule interviews with qualified graduates',
       ],
       dashboardLink: '/employer/dashboard',
       dashboardText: 'Employer Dashboard',
     },
     staff: {
-      title: 'Application Submitted!',
+      title: 'Staff Application Submitted!',
       message:
-        "Thank you for your interest in joining our team. We'll review your application and contact you if there's a match.",
+        "Thank you for your interest in joining our team. We'll review your application.",
       nextSteps: [
-        'Our HR team will review your application',
-        "If your qualifications match our needs, we'll contact you for an interview",
-        'The hiring process typically takes 1-2 weeks',
-        "Once approved, you'll receive access to your staff portal",
+        'HR will review your application',
+        'Qualified candidates will be contacted for interviews',
+        'Background check will be conducted for selected candidates',
+        'Onboarding begins upon offer acceptance',
       ],
-      dashboardLink: '/staff-portal/dashboard',
-      dashboardText: 'Staff Portal',
+      dashboardLink: '/careers',
+      dashboardText: 'View Open Positions',
     },
   };
 
-  const content =
-    roleMessages[role as keyof typeof roleMessages] || roleMessages.student;
+  const currentRole = roleMessages[role] || roleMessages.student;
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <section className="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <div className="bg-white border border-slate-200 rounded-lg p-8 sm:p-12 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 rounded-full mb-6">
-            <CheckCircle className="w-10 h-10 text-emerald-600" />
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12">
+      <div className="max-w-2xl w-full">
+        {/* Success Icon */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
+            <CheckCircle className="w-12 h-12 text-green-600" />
           </div>
-
-          <h1 className="text-3xl sm:text-4xl font-bold text-black mb-4">
-            {content.title}
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            {currentRole.title}
           </h1>
+          <p className="text-lg text-gray-600">{currentRole.message}</p>
+        </div>
 
-          <p className="text-lg text-black mb-8">{content.message}</p>
-
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 mb-8 text-left">
-            <h2 className="text-lg font-bold text-black mb-4">
-              What Happens Next?
-            </h2>
-            <ol className="space-y-3">
-              {content.nextSteps.map((step, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full text-sm font-bold mr-3 flex-shrink-0">
-                    {index + 1}
-                  </span>
-                  <span className="text-black">{step}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-700 transition-colors"
-            >
-              Return Home
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-            <Link
-              href={content.dashboardLink}
-              className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 bg-white border-2 border-slate-300 text-black font-semibold rounded-lg hover:border-slate-400 transition-colors"
-            >
-              {content.dashboardText}
-            </Link>
-          </div>
-
-          <div className="border-t border-slate-200 pt-8">
-            <h3 className="text-lg font-bold text-black mb-4">
-              Need Help?
-            </h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:3173143757"
-                className="inline-flex items-center justify-center text-black hover:text-emerald-600 transition-colors"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                <span className="font-semibold">317-314-3757</span>
-              </a>
-              <a
-                href="mailto:info@www.elevateforhumanity.org"
-                className="inline-flex items-center justify-center text-black hover:text-emerald-600 transition-colors"
-              >
-                <Mail className="w-5 h-5 mr-2" />
-                <span className="font-semibold">
-                  info@www.elevateforhumanity.org
+        {/* Next Steps */}
+        <div className="bg-white rounded-xl shadow-sm border p-8 mb-6">
+          <h2 className="text-xl font-bold mb-6">What Happens Next</h2>
+          <ol className="space-y-4">
+            {currentRole.nextSteps.map((step: string, index: number) => (
+              <li key={index} className="flex items-start gap-4">
+                <span className="flex-shrink-0 w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">
+                  {index + 1}
                 </span>
-              </a>
-            </div>
+                <span className="text-gray-700 pt-1">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        {/* Contact Info */}
+        <div className="bg-blue-50 rounded-xl p-6 mb-6">
+          <h3 className="font-semibold mb-4">Questions? Contact Us</h3>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a
+              href="tel:3173143757"
+              className="flex items-center gap-2 text-blue-600 hover:underline"
+            >
+              <Phone className="w-5 h-5" />
+              (317) 314-3757
+            </a>
+            <a
+              href="mailto:info@elevateforhumanity.org"
+              className="flex items-center gap-2 text-blue-600 hover:underline"
+            >
+              <Mail className="w-5 h-5" />
+              info@elevateforhumanity.org
+            </a>
           </div>
         </div>
-      </section>
+
+        {/* Actions */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link
+            href={currentRole.dashboardLink}
+            className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-center hover:bg-blue-700 transition inline-flex items-center justify-center gap-2"
+          >
+            {currentRole.dashboardText}
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+          <Link
+            href="/"
+            className="flex-1 border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold text-center hover:bg-gray-50 transition"
+          >
+            Return Home
+          </Link>
+        </div>
+
+        {/* Schedule Call */}
+        <div className="mt-8 text-center">
+          <Link
+            href="/booking"
+            className="inline-flex items-center gap-2 text-blue-600 font-medium hover:underline"
+          >
+            <Calendar className="w-5 h-5" />
+            Schedule a call with our team
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
