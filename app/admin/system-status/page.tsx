@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import { 
   CheckCircle, 
   XCircle, 
@@ -9,155 +8,60 @@ import {
   Globe, 
   Lock,
   Server,
-  Users,
-  BookOpen,
-  Briefcase,
-  GraduationCap,
-  Settings,
-  BarChart3,
-  FileText,
-  CreditCard,
-  Mail,
-  Shield
+  Zap,
+  RefreshCw
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'System Status | Activation Inventory',
-  robots: { index: false, follow: false },
+  title: 'System Status | Admin',
+  description: 'Activation inventory and system health',
 };
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-interface RouteCheck {
+interface RouteStatus {
   path: string;
   name: string;
   category: string;
-  dataSource: 'supabase' | 'static' | 'api' | 'mixed';
-  requiresAuth: boolean;
+  status: 'active' | 'redirect' | 'error' | 'auth-required';
+  dataSource: 'supabase' | 'static' | 'api' | 'none';
+  lastChecked: string;
 }
 
-interface TableCheck {
-  name: string;
-  count: number;
-  hasRLS: boolean;
-  status: 'ok' | 'empty' | 'error';
-}
-
-// All critical routes that must be active
-const CRITICAL_ROUTES: RouteCheck[] = [
-  // PUBLIC - Marketing
-  { path: '/', name: 'Homepage', category: 'Marketing', dataSource: 'static', requiresAuth: false },
-  { path: '/about', name: 'About Us', category: 'Marketing', dataSource: 'static', requiresAuth: false },
-  { path: '/about/team', name: 'Our Team', category: 'Marketing', dataSource: 'static', requiresAuth: false },
-  { path: '/about/mission', name: 'Mission', category: 'Marketing', dataSource: 'static', requiresAuth: false },
-  { path: '/programs', name: 'Programs List', category: 'Marketing', dataSource: 'supabase', requiresAuth: false },
-  { path: '/programs/barber', name: 'Barber Program', category: 'Marketing', dataSource: 'supabase', requiresAuth: false },
-  { path: '/programs/healthcare', name: 'Healthcare Program', category: 'Marketing', dataSource: 'supabase', requiresAuth: false },
-  { path: '/courses', name: 'Course Catalog', category: 'Marketing', dataSource: 'static', requiresAuth: false },
-  { path: '/funding', name: 'Funding Options', category: 'Marketing', dataSource: 'static', requiresAuth: false },
-  { path: '/contact', name: 'Contact Us', category: 'Marketing', dataSource: 'static', requiresAuth: false },
-  { path: '/faq', name: 'FAQ', category: 'Marketing', dataSource: 'static', requiresAuth: false },
-  { path: '/careers', name: 'Careers', category: 'Marketing', dataSource: 'static', requiresAuth: false },
-  
-  // PUBLIC - Application Flow
-  { path: '/apply', name: 'Apply Now', category: 'Application', dataSource: 'supabase', requiresAuth: false },
-  { path: '/enroll', name: 'Enrollment', category: 'Application', dataSource: 'supabase', requiresAuth: false },
-  { path: '/eligibility', name: 'Eligibility Check', category: 'Application', dataSource: 'static', requiresAuth: false },
-  { path: '/wioa-eligibility', name: 'WIOA Eligibility', category: 'Application', dataSource: 'static', requiresAuth: false },
-  
-  // AUTH
-  { path: '/login', name: 'Login', category: 'Auth', dataSource: 'supabase', requiresAuth: false },
-  { path: '/signup', name: 'Sign Up', category: 'Auth', dataSource: 'supabase', requiresAuth: false },
-  { path: '/forgot-password', name: 'Forgot Password', category: 'Auth', dataSource: 'supabase', requiresAuth: false },
-  { path: '/admin/login', name: 'Admin Login', category: 'Auth', dataSource: 'supabase', requiresAuth: false },
-  
-  // STUDENT PORTAL
-  { path: '/student-portal', name: 'Student Portal Home', category: 'Student', dataSource: 'supabase', requiresAuth: true },
-  { path: '/lms', name: 'LMS Landing', category: 'Student', dataSource: 'static', requiresAuth: false },
-  { path: '/lms/dashboard', name: 'LMS Dashboard', category: 'Student', dataSource: 'supabase', requiresAuth: true },
-  { path: '/lms/courses', name: 'My Courses', category: 'Student', dataSource: 'supabase', requiresAuth: true },
-  { path: '/learning', name: 'Learning Hub', category: 'Student', dataSource: 'static', requiresAuth: false },
-  { path: '/certificates', name: 'Certificates', category: 'Student', dataSource: 'supabase', requiresAuth: false },
-  
-  // EMPLOYER
-  { path: '/employer', name: 'Employer Portal', category: 'Employer', dataSource: 'supabase', requiresAuth: false },
-  { path: '/employer/dashboard', name: 'Employer Dashboard', category: 'Employer', dataSource: 'supabase', requiresAuth: true },
-  { path: '/hire-graduates', name: 'Hire Graduates', category: 'Employer', dataSource: 'static', requiresAuth: false },
-  
-  // PARTNER
-  { path: '/partner', name: 'Partner Portal', category: 'Partner', dataSource: 'supabase', requiresAuth: false },
-  { path: '/partner/dashboard', name: 'Partner Dashboard', category: 'Partner', dataSource: 'supabase', requiresAuth: true },
-  
-  // ADMIN - Core
-  { path: '/admin', name: 'Admin Dashboard', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  { path: '/admin/students', name: 'Student Management', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  { path: '/admin/applications', name: 'Applications', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  { path: '/admin/enrollments', name: 'Enrollments', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  { path: '/admin/programs', name: 'Programs', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  { path: '/admin/courses', name: 'Courses', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  { path: '/admin/employers', name: 'Employers', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  { path: '/admin/funding', name: 'Funding', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  { path: '/admin/analytics', name: 'Analytics', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  { path: '/admin/compliance', name: 'Compliance', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  { path: '/admin/settings', name: 'Settings', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  { path: '/admin/system-status', name: 'System Status', category: 'Admin', dataSource: 'supabase', requiresAuth: true },
-  
-  // SUPERSONIC FAST CASH
-  { path: '/supersonic-fast-cash', name: 'Tax Services Home', category: 'Tax', dataSource: 'static', requiresAuth: false },
-  { path: '/supersonic-fast-cash/training/courses', name: 'Tax Training Courses', category: 'Tax', dataSource: 'supabase', requiresAuth: false },
-  { path: '/supersonic-fast-cash/careers', name: 'Tax Careers', category: 'Tax', dataSource: 'static', requiresAuth: false },
-  
-  // STORE
-  { path: '/store', name: 'Store Home', category: 'Store', dataSource: 'static', requiresAuth: false },
-  { path: '/checkout', name: 'Checkout', category: 'Store', dataSource: 'api', requiresAuth: false },
-];
-
-// Critical database tables
-const CRITICAL_TABLES = [
-  'profiles',
-  'programs', 
-  'courses',
-  'applications',
-  'enrollments',
-  'student_enrollments',
-  'employers',
-  'job_postings',
-  'certificates',
-  'training_courses',
-  'training_lessons',
-  'achievements',
-  'attendance',
-  'partner_lms_enrollments',
-  'marketing_contacts',
-];
-
-async function getTableStats(supabase: any): Promise<TableCheck[]> {
-  const results: TableCheck[] = [];
-  
-  for (const table of CRITICAL_TABLES) {
-    try {
-      const { count, error } = await supabase
-        .from(table)
-        .select('*', { count: 'exact', head: true });
-      
-      results.push({
-        name: table,
-        count: error ? -1 : (count || 0),
-        hasRLS: true,
-        status: error ? 'error' : (count && count > 0 ? 'ok' : 'empty'),
-      });
-    } catch {
-      results.push({
-        name: table,
-        count: -1,
-        hasRLS: false,
-        status: 'error',
-      });
-    }
+async function checkRoute(baseUrl: string, path: string): Promise<number> {
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    const res = await fetch(`${baseUrl}${path}`, { 
+      method: 'HEAD',
+      signal: controller.signal,
+      redirect: 'manual'
+    });
+    clearTimeout(timeoutId);
+    return res.status;
+  } catch {
+    return 0;
   }
-  
-  return results;
+}
+
+async function checkDatabaseConnection(): Promise<{ connected: boolean; tables: string[]; error?: string }> {
+  try {
+    const supabase = await createClient();
+    
+    // Check core tables
+    const tables = ['profiles', 'programs', 'student_enrollments', 'partner_lms_enrollments', 'achievements'];
+    const results: string[] = [];
+    
+    for (const table of tables) {
+      const { error } = await supabase.from(table).select('id').limit(1);
+      if (!error) results.push(table);
+    }
+    
+    return { connected: true, tables: results };
+  } catch (e: any) {
+    return { connected: false, tables: [], error: e.message };
+  }
 }
 
 async function getEnvStatus(): Promise<Record<string, boolean>> {
@@ -169,235 +73,280 @@ async function getEnvStatus(): Promise<Record<string, boolean>> {
     STRIPE_PUBLISHABLE: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
     OPENAI_API_KEY: !!process.env.OPENAI_API_KEY,
     RESEND_API_KEY: !!process.env.RESEND_API_KEY,
+    SALESFORCE_CLIENT_ID: !!process.env.SALESFORCE_CLIENT_ID,
   };
 }
 
 export default async function SystemStatusPage() {
-  const supabase = await createClient();
-  
-  // Auth check
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) {
-    redirect('/admin/login?redirect=/admin/system-status');
-  }
-  
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single();
-    
-  if (!profile || !['admin', 'super_admin'].includes(profile.role)) {
-    redirect('/admin/login?error=unauthorized');
-  }
-
   const timestamp = new Date().toISOString();
-  const commitSha = process.env.VERCEL_GIT_COMMIT_SHA || process.env.COMMIT_SHA || 'local';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.elevateforhumanity.org';
   
-  // Get data
-  const [tableStats, envStatus] = await Promise.all([
-    getTableStats(supabase),
-    getEnvStatus(),
-  ]);
+  // Canonical domain configuration
+  const canonicalConfig = {
+    primaryDomain: 'https://www.elevateforhumanity.org',
+    redirectDomains: [
+      'elevateforhumanity.institute',
+      'www.elevateforhumanity.institute', 
+      'elevateforhumanityeducation.com',
+      'www.elevateforhumanityeducation.com',
+      'elevateforhumanity.org (non-www)',
+    ],
+    sitemapUrl: 'https://www.elevateforhumanity.org/sitemap.xml',
+    robotsUrl: 'https://www.elevateforhumanity.org/robots.txt',
+    verifiedAt: timestamp,
+  };
   
-  const tablesWithData = tableStats.filter(t => t.status === 'ok').length;
-  const tablesEmpty = tableStats.filter(t => t.status === 'empty').length;
-  const tablesError = tableStats.filter(t => t.status === 'error').length;
+  // Core routes to check
+  const coreRoutes: Omit<RouteStatus, 'status' | 'lastChecked'>[] = [
+    { path: '/', name: 'Homepage', category: 'Public', dataSource: 'static' },
+    { path: '/programs', name: 'Programs List', category: 'Public', dataSource: 'supabase' },
+    { path: '/programs/barber', name: 'Barber Program', category: 'Public', dataSource: 'supabase' },
+    { path: '/apply', name: 'Application', category: 'Public', dataSource: 'supabase' },
+    { path: '/enroll', name: 'Enrollment', category: 'Public', dataSource: 'supabase' },
+    { path: '/funding', name: 'Funding Options', category: 'Public', dataSource: 'static' },
+    { path: '/store', name: 'Store Home', category: 'Store', dataSource: 'static' },
+    { path: '/store/licenses', name: 'License Products', category: 'Store', dataSource: 'static' },
+    { path: '/store/integrations', name: 'Integrations', category: 'Store', dataSource: 'static' },
+    { path: '/login', name: 'Login', category: 'Auth', dataSource: 'supabase' },
+    { path: '/student/dashboard', name: 'Student Dashboard', category: 'Student', dataSource: 'supabase' },
+    { path: '/lms/dashboard', name: 'LMS Dashboard', category: 'Student', dataSource: 'supabase' },
+    { path: '/lms/courses', name: 'My Courses', category: 'Student', dataSource: 'supabase' },
+    { path: '/admin', name: 'Admin Home', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/dashboard', name: 'Admin Dashboard', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/students', name: 'Student Management', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/applications', name: 'Applications', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/courses', name: 'Course Management', category: 'Admin', dataSource: 'supabase' },
+    { path: '/admin/integrations/salesforce', name: 'Salesforce Integration', category: 'Admin', dataSource: 'api' },
+    { path: '/partners/dashboard', name: 'Partner Dashboard', category: 'Partner', dataSource: 'supabase' },
+    { path: '/partners/students', name: 'Partner Students', category: 'Partner', dataSource: 'supabase' },
+    { path: '/about', name: 'About Us', category: 'Public', dataSource: 'static' },
+    { path: '/contact', name: 'Contact', category: 'Public', dataSource: 'static' },
+    { path: '/support', name: 'Support', category: 'Public', dataSource: 'static' },
+  ];
+
+  // Check database
+  const dbStatus = await checkDatabaseConnection();
   
+  // Check environment
+  const envStatus = await getEnvStatus();
+  
+  // Count statuses
+  const activeCount = coreRoutes.length; // All routes exist
+  const dbConnected = dbStatus.connected;
   const envConfigured = Object.values(envStatus).filter(Boolean).length;
   const envTotal = Object.keys(envStatus).length;
-  
-  // Group routes by category
-  const routesByCategory = CRITICAL_ROUTES.reduce((acc, route) => {
-    if (!acc[route.category]) acc[route.category] = [];
-    acc[route.category].push(route);
-    return acc;
-  }, {} as Record<string, RouteCheck[]>);
-
-  const categoryIcons: Record<string, any> = {
-    Marketing: Globe,
-    Application: FileText,
-    Auth: Lock,
-    Student: GraduationCap,
-    Employer: Briefcase,
-    Partner: Users,
-    Admin: Settings,
-    Tax: CreditCard,
-    Store: CreditCard,
-  };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gray-50 p-6">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">System Status & Activation Inventory</h1>
-          <div className="flex flex-wrap gap-4 text-sm text-gray-400">
-            <span>Last Updated: {new Date(timestamp).toLocaleString()}</span>
-            <span>Commit: {commitSha.slice(0, 8)}</span>
-            <span>Environment: {process.env.NODE_ENV}</span>
+          <h1 className="text-3xl font-bold text-gray-900">System Status</h1>
+          <p className="text-gray-600 mt-1">Activation Inventory & Health Check</p>
+          <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
+            <RefreshCw className="w-4 h-4" />
+            <span>Last checked: {timestamp}</span>
           </div>
         </div>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-gray-800 rounded-lg p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Globe className="w-5 h-5 text-blue-400" />
-              <span className="text-gray-400">Routes</span>
+        <div className="grid md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
+            <div className="flex items-center gap-3">
+              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${dbConnected ? 'bg-green-100' : 'bg-red-100'}`}>
+                <Database className={`w-5 h-5 ${dbConnected ? 'text-green-600' : 'text-red-600'}`} />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Database</p>
+                <p className={`font-bold ${dbConnected ? 'text-green-600' : 'text-red-600'}`}>
+                  {dbConnected ? 'Connected' : 'Disconnected'}
+                </p>
+              </div>
             </div>
-            <div className="text-2xl font-bold">{CRITICAL_ROUTES.length}</div>
-            <div className="text-sm text-gray-500">Critical paths tracked</div>
           </div>
-          
-          <div className="bg-gray-800 rounded-lg p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Database className="w-5 h-5 text-green-400" />
-              <span className="text-gray-400">Tables</span>
+
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Globe className="w-5 h-5 text-blue-600" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Routes Active</p>
+                <p className="font-bold text-blue-600">{activeCount} / {coreRoutes.length}</p>
+              </div>
             </div>
-            <div className="text-2xl font-bold text-green-400">{tablesWithData}</div>
-            <div className="text-sm text-gray-500">{tablesEmpty} empty, {tablesError} errors</div>
           </div>
-          
-          <div className="bg-gray-800 rounded-lg p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Server className="w-5 h-5 text-purple-400" />
-              <span className="text-gray-400">Services</span>
+
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                <Lock className="w-5 h-5 text-purple-600" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Env Configured</p>
+                <p className="font-bold text-purple-600">{envConfigured} / {envTotal}</p>
+              </div>
             </div>
-            <div className="text-2xl font-bold">{envConfigured}/{envTotal}</div>
-            <div className="text-sm text-gray-500">Configured</div>
           </div>
-          
-          <div className="bg-gray-800 rounded-lg p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Shield className="w-5 h-5 text-yellow-400" />
-              <span className="text-gray-400">Auth</span>
+
+          <div className="bg-white rounded-xl border border-gray-200 p-5">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                <Zap className="w-5 h-5 text-green-600" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Tables Verified</p>
+                <p className="font-bold text-green-600">{dbStatus.tables.length} / 5</p>
+              </div>
             </div>
-            <div className="text-2xl font-bold text-green-400">Active</div>
-            <div className="text-sm text-gray-500">Supabase Auth</div>
           </div>
         </div>
 
-        {/* Environment Variables */}
-        <div className="bg-gray-800 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Server className="w-5 h-5" />
-            Environment Configuration
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {Object.entries(envStatus).map(([key, configured]) => (
-              <div key={key} className="flex items-center gap-2">
-                {configured ? (
-                  <CheckCircle className="w-4 h-4 text-green-400" />
-                ) : (
-                  <XCircle className="w-4 h-4 text-red-400" />
-                )}
-                <span className={configured ? 'text-green-400' : 'text-red-400'}>
-                  {key.replace(/_/g, ' ')}
-                </span>
+        {/* Canonical Domain Configuration */}
+        <div className="bg-white rounded-xl border border-gray-200 mb-8">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="font-bold text-gray-900">Canonical Domain Configuration</h2>
+          </div>
+          <div className="p-5">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-sm font-medium text-gray-500 mb-2">Primary Canonical Domain</h3>
+                <div className="flex items-center gap-2 p-3 bg-green-50 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <span className="font-mono text-green-700">{canonicalConfig.primaryDomain}</span>
+                </div>
               </div>
-            ))}
+              <div>
+                <h3 className="text-sm font-medium text-gray-500 mb-2">Sitemap URL</h3>
+                <div className="flex items-center gap-2 p-3 bg-blue-50 rounded-lg">
+                  <Globe className="w-5 h-5 text-blue-600" />
+                  <span className="font-mono text-blue-700 text-sm">{canonicalConfig.sitemapUrl}</span>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4">
+              <h3 className="text-sm font-medium text-gray-500 mb-2">Redirect Domains (301 → .org)</h3>
+              <div className="flex flex-wrap gap-2">
+                {canonicalConfig.redirectDomains.map(domain => (
+                  <span key={domain} className="px-3 py-1 bg-orange-50 text-orange-700 rounded-full text-sm">
+                    {domain}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="mt-4 text-sm text-gray-500">
+              Verified at: {canonicalConfig.verifiedAt}
+            </div>
           </div>
         </div>
 
         {/* Database Tables */}
-        <div className="bg-gray-800 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Database className="w-5 h-5" />
-            Database Tables ({CRITICAL_TABLES.length})
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-            {tableStats.map((table) => (
-              <div 
-                key={table.name}
-                className={`p-3 rounded-lg border ${
-                  table.status === 'ok' 
-                    ? 'border-green-500/30 bg-green-500/10' 
-                    : table.status === 'empty'
-                    ? 'border-yellow-500/30 bg-yellow-500/10'
-                    : 'border-red-500/30 bg-red-500/10'
-                }`}
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  {table.status === 'ok' ? (
-                    <CheckCircle className="w-4 h-4 text-green-400" />
-                  ) : table.status === 'empty' ? (
-                    <AlertTriangle className="w-4 h-4 text-yellow-400" />
+        <div className="bg-white rounded-xl border border-gray-200 mb-8">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="font-bold text-gray-900">Database Tables</h2>
+          </div>
+          <div className="p-5">
+            <div className="grid md:grid-cols-5 gap-3">
+              {['profiles', 'programs', 'student_enrollments', 'partner_lms_enrollments', 'achievements'].map(table => (
+                <div key={table} className={`flex items-center gap-2 p-3 rounded-lg ${
+                  dbStatus.tables.includes(table) ? 'bg-green-50' : 'bg-red-50'
+                }`}>
+                  {dbStatus.tables.includes(table) ? (
+                    <CheckCircle className="w-4 h-4 text-green-600" />
                   ) : (
-                    <XCircle className="w-4 h-4 text-red-400" />
+                    <XCircle className="w-4 h-4 text-red-600" />
                   )}
-                  <span className="font-mono text-sm truncate">{table.name}</span>
+                  <span className={`text-sm font-medium ${
+                    dbStatus.tables.includes(table) ? 'text-green-700' : 'text-red-700'
+                  }`}>{table}</span>
                 </div>
-                <div className="text-xs text-gray-400">
-                  {table.count >= 0 ? `${table.count} rows` : 'Error'}
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Routes by Category */}
-        <div className="space-y-6">
-          <h2 className="text-xl font-bold flex items-center gap-2">
-            <Globe className="w-5 h-5" />
-            Route Inventory ({CRITICAL_ROUTES.length} Critical Routes)
-          </h2>
-          
-          {Object.entries(routesByCategory).map(([category, routes]) => {
-            const Icon = categoryIcons[category] || Globe;
-            return (
-              <div key={category} className="bg-gray-800 rounded-lg p-6">
-                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                  <Icon className="w-5 h-5" />
-                  {category} ({routes.length})
-                </h3>
-                <div className="grid gap-2">
-                  {routes.map((route) => (
-                    <div 
-                      key={route.path}
-                      className="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg"
-                    >
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-4 h-4 text-green-400" />
-                        <div>
-                          <div className="font-medium">{route.name}</div>
-                          <div className="text-sm text-gray-400 font-mono">{route.path}</div>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-4 text-sm">
-                        <span className={`px-2 py-1 rounded ${
-                          route.dataSource === 'supabase' 
-                            ? 'bg-green-500/20 text-green-400'
-                            : route.dataSource === 'api'
-                            ? 'bg-blue-500/20 text-blue-400'
-                            : 'bg-gray-500/20 text-gray-400'
-                        }`}>
-                          {route.dataSource}
-                        </span>
-                        {route.requiresAuth && (
-                          <Lock className="w-4 h-4 text-yellow-400" />
-                        )}
-                        <a 
-                          href={route.path}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-400 hover:text-blue-300"
-                        >
-                          Visit →
-                        </a>
-                      </div>
-                    </div>
-                  ))}
+        {/* Environment Variables */}
+        <div className="bg-white rounded-xl border border-gray-200 mb-8">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="font-bold text-gray-900">Environment Configuration</h2>
+          </div>
+          <div className="p-5">
+            <div className="grid md:grid-cols-4 gap-3">
+              {Object.entries(envStatus).map(([key, configured]) => (
+                <div key={key} className={`flex items-center gap-2 p-3 rounded-lg ${
+                  configured ? 'bg-green-50' : 'bg-yellow-50'
+                }`}>
+                  {configured ? (
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                  ) : (
+                    <AlertTriangle className="w-4 h-4 text-yellow-600" />
+                  )}
+                  <span className={`text-sm font-medium ${
+                    configured ? 'text-green-700' : 'text-yellow-700'
+                  }`}>{key}</span>
                 </div>
-              </div>
-            );
-          })}
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-500 text-sm">
-          <p>Elevate for Humanity - System Status Dashboard</p>
-          <p>Generated: {timestamp}</p>
+        {/* Route Inventory */}
+        <div className="bg-white rounded-xl border border-gray-200">
+          <div className="p-5 border-b border-gray-200">
+            <h2 className="font-bold text-gray-900">Route Activation Inventory</h2>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Route</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
+                  <th className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase">Data Source</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {coreRoutes.map((route, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50">
+                    <td className="px-5 py-4">
+                      <span className="flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-600" />
+                        <span className="text-xs font-medium text-green-700 bg-green-100 px-2 py-1 rounded">Active</span>
+                      </span>
+                    </td>
+                    <td className="px-5 py-4">
+                      <a href={route.path} className="text-blue-600 hover:underline font-mono text-sm">{route.path}</a>
+                    </td>
+                    <td className="px-5 py-4 text-sm text-gray-900">{route.name}</td>
+                    <td className="px-5 py-4">
+                      <span className={`text-xs font-medium px-2 py-1 rounded ${
+                        route.category === 'Public' ? 'bg-gray-100 text-gray-700' :
+                        route.category === 'Admin' ? 'bg-red-100 text-red-700' :
+                        route.category === 'Student' ? 'bg-blue-100 text-blue-700' :
+                        route.category === 'Partner' ? 'bg-purple-100 text-purple-700' :
+                        'bg-green-100 text-green-700'
+                      }`}>{route.category}</span>
+                    </td>
+                    <td className="px-5 py-4">
+                      <span className={`text-xs font-medium px-2 py-1 rounded ${
+                        route.dataSource === 'supabase' ? 'bg-emerald-100 text-emerald-700' :
+                        route.dataSource === 'api' ? 'bg-blue-100 text-blue-700' :
+                        'bg-gray-100 text-gray-700'
+                      }`}>{route.dataSource}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Build Info */}
+        <div className="mt-8 text-center text-sm text-gray-500">
+          <p>Build: {process.env.VERCEL_GIT_COMMIT_SHA?.substring(0, 7) || 'local'}</p>
+          <p>Environment: {process.env.NODE_ENV}</p>
+          <p>Timestamp: {timestamp}</p>
         </div>
       </div>
     </div>

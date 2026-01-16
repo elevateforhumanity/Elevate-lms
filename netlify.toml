@@ -29,7 +29,12 @@
   to = "/:splat"
   status = 200
 
-# Redirect .institute to primary .org domain
+# ===========================================
+# CANONICAL DOMAIN: www.elevateforhumanity.org
+# All other domains 301 redirect here
+# ===========================================
+
+# Redirect .institute domains to .org
 [[redirects]]
   from = "https://elevateforhumanity.institute/*"
   to = "https://www.elevateforhumanity.org/:splat"
@@ -42,9 +47,42 @@
   status = 301
   force = true
 
-# Redirect non-www to www
+# Redirect .education domains to .org
+[[redirects]]
+  from = "https://elevateforhumanityeducation.com/*"
+  to = "https://www.elevateforhumanity.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.elevateforhumanityeducation.com/*"
+  to = "https://www.elevateforhumanity.org/:splat"
+  status = 301
+  force = true
+
+# Redirect Netlify preview/deploy domains to .org
+[[redirects]]
+  from = "https://*.netlify.app/*"
+  to = "https://www.elevateforhumanity.org/:splat"
+  status = 301
+  force = true
+
+# Redirect non-www to www (canonical)
 [[redirects]]
   from = "https://elevateforhumanity.org/*"
+  to = "https://www.elevateforhumanity.org/:splat"
+  status = 301
+  force = true
+
+# Force HTTPS
+[[redirects]]
+  from = "http://elevateforhumanity.org/*"
+  to = "https://www.elevateforhumanity.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.elevateforhumanity.org/*"
   to = "https://www.elevateforhumanity.org/:splat"
   status = 301
   force = true
