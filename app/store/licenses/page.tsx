@@ -7,9 +7,6 @@ export const metadata: Metadata = {
   title: 'Platform Licenses | Elevate for Humanity Store',
   description:
     'License the complete Elevate for Humanity workforce training platform. White-label solutions for schools, training providers, and workforce agencies.',
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/store/licenses',
-  },
 };
 
 export default function LicensesPage() {
@@ -35,32 +32,6 @@ export default function LicensesPage() {
             Get the complete Elevate for Humanity platform with your branding.
             Everything you need to launch and scale workforce training programs.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center mt-8">
-            <Link
-              href="/store/demo"
-              className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition border-2 border-blue-600"
-            >
-              Try Live Demo
-            </Link>
-            <Link
-              href="/store/compliance"
-              className="inline-flex items-center gap-2 bg-white text-green-600 px-6 py-3 rounded-lg font-bold hover:bg-green-50 transition border-2 border-green-600"
-            >
-              View Compliance
-            </Link>
-            <Link
-              href="/store/deployment"
-              className="inline-flex items-center gap-2 bg-white text-purple-600 px-6 py-3 rounded-lg font-bold hover:bg-purple-50 transition border-2 border-purple-600"
-            >
-              Deployment Guide
-            </Link>
-            <Link
-              href="/store/integrations"
-              className="inline-flex items-center gap-2 bg-white text-indigo-600 px-6 py-3 rounded-lg font-bold hover:bg-indigo-50 transition border-2 border-indigo-600"
-            >
-              Integrations & API
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -78,28 +49,28 @@ export default function LicensesPage() {
                 } transition-all`}
               >
                 {product.licenseType === 'school' && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-brand-green-600 text-white text-sm font-bold rounded-full">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand-green-600 text-white text-sm font-bold rounded-full">
                     Most Popular
                   </div>
                 )}
 
                 <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-black mb-2">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     {product.name}
                   </h3>
-                  <p className="text-black text-sm">{product.description}</p>
+                  <p className="text-gray-600 text-sm">{product.description}</p>
                 </div>
 
                 <div className="mb-6">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-black text-black">
+                    <span className="text-4xl font-black text-gray-900">
                       ${(product.price / 100).toLocaleString()}
                     </span>
                     {product.billingType === 'subscription' && (
-                      <span className="text-black">/month</span>
+                      <span className="text-gray-600">/month</span>
                     )}
                   </div>
-                  <p className="text-sm text-black mt-1">
+                  <p className="text-sm text-gray-600 mt-1">
                     {product.billingType === 'one_time'
                       ? 'One-time payment'
                       : 'Monthly billing'}
@@ -120,29 +91,29 @@ export default function LicensesPage() {
                 </Link>
 
                 <div className="space-y-3">
-                  <p className="text-sm font-semibold text-black mb-3">
+                  <p className="text-sm font-semibold text-gray-900 mb-3">
                     What's included:
                   </p>
                   {product.features.slice(0, 6).map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-black">{feature}</span>
+                      <span className="text-sm text-gray-700">{feature}</span>
                     </div>
                   ))}
                   {product.features.length > 6 && (
-                    <p className="text-sm text-black italic">
+                    <p className="text-sm text-gray-600 italic">
                       + {product.features.length - 6} more features
                     </p>
                   )}
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <p className="text-xs font-semibold text-black mb-2">
+                  <p className="text-xs font-semibold text-gray-900 mb-2">
                     Ideal for:
                   </p>
                   <ul className="space-y-1">
                     {product.idealFor.map((use, idx) => (
-                      <li key={idx} className="text-xs text-black">
+                      <li key={idx} className="text-xs text-gray-600">
                         • {use}
                       </li>
                     ))}
@@ -166,10 +137,10 @@ export default function LicensesPage() {
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-bold text-black mb-3">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
                 Complete Platform
               </h3>
-              <p className="text-black">
+              <p className="text-gray-600">
                 Full LMS, enrollment system, admin dashboard, payment
                 processing, and mobile app. Everything you need to run training
                 programs.
@@ -180,10 +151,10 @@ export default function LicensesPage() {
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-black mb-3">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
                 Compliance Built-In
               </h3>
-              <p className="text-black">
+              <p className="text-gray-600">
                 WIOA reporting, FERPA compliance, ETPL tracking, and automated
                 data collection for grant reporting.
               </p>
@@ -193,10 +164,10 @@ export default function LicensesPage() {
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                 <Users className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-black mb-3">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
                 Support & Updates
               </h3>
-              <p className="text-black">
+              <p className="text-gray-600">
                 Ongoing platform updates, technical support, and access to our
                 community of training providers.
               </p>
@@ -235,10 +206,10 @@ export default function LicensesPage() {
           <p className="mt-8 text-sm opacity-75">
             Questions? Email{' '}
             <a
-              href="mailto:licensing@www.elevateforhumanity.org"
+              href="mailto:licensing@elevateforhumanity.org"
               className="underline font-bold"
             >
-              licensing@www.elevateforhumanity.org
+              licensing@elevateforhumanity.org
             </a>
           </p>
         </div>

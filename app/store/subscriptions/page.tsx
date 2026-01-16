@@ -1,5 +1,6 @@
 'use client';
 
+import { logger } from '@/lib/logger';
 import React from 'react';
 
 import { useEffect, useState, Suspense } from 'react';
@@ -91,6 +92,7 @@ function SubscriptionsContent() {
       .order('amount_cents', { ascending: true });
 
     if (error) {
+      logger.error('Error loading plans:', error);
       toast.error('Failed to load subscription plans');
     } else {
       setPlans(data || []);
@@ -144,7 +146,8 @@ function SubscriptionsContent() {
       if (data.url) {
         window.location.href = data.url;
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
+      logger.error('Subscription err:', err);
       toast.error(
         (err instanceof Error ? err.message : String(err)) ||
           'Failed to start subscription'
@@ -173,7 +176,8 @@ function SubscriptionsContent() {
       if (data.url) {
         window.location.href = data.url;
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
+      logger.error('Portal err:', err);
       toast.error(
         (err instanceof Error ? err.message : String(err)) ||
           'Failed to open billing portal'
@@ -184,7 +188,7 @@ function SubscriptionsContent() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-11 w-11 animate-spin text-brand-blue-600" />
+        <Loader2 className="h-8 w-8 animate-spin text-brand-blue-600" />
       </div>
     );
   }
@@ -194,10 +198,10 @@ function SubscriptionsContent() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-black mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Store Subscriptions
           </h1>
-          <p className="text-xl text-black">
+          <p className="text-xl text-gray-600">
             Choose the plan that fits your needs
           </p>
         </div>
@@ -303,7 +307,7 @@ function SubscriptionsContent() {
                     {plan.features.map((feature: string, idx: number) => (
                       <li key={idx} className="flex items-start">
                         <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                        <span className="text-black">{feature}</span>
+                        <span className="text-gray-700">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -312,7 +316,7 @@ function SubscriptionsContent() {
                   {isCurrentPlan ? (
                     <button
                       disabled
-                      className="w-full py-3 px-4 bg-gray-100 text-black rounded-lg font-semibold cursor-not-allowed"
+                      className="w-full py-3 px-4 bg-gray-100 text-gray-500 rounded-lg font-semibold cursor-not-allowed"
                     >
                       Current Plan
                     </button>
@@ -347,33 +351,33 @@ function SubscriptionsContent() {
 
         {/* FAQ Section */}
         <div className="mt-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-black mb-6 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
             Frequently Asked Questions
           </h2>
           <div className="space-y-4">
             <div className="bg-white rounded-lg p-6 shadow">
-              <h3 className="font-semibold text-black mb-2">
+              <h3 className="font-semibold text-gray-900 mb-2">
                 Can I cancel anytime?
               </h3>
-              <p className="text-black">
+              <p className="text-gray-600">
                 Yes, you can cancel your subscription at any time. You'll
                 continue to have access until the end of your billing period.
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 shadow">
-              <h3 className="font-semibold text-black mb-2">
+              <h3 className="font-semibold text-gray-900 mb-2">
                 Can I switch plans?
               </h3>
-              <p className="text-black">
+              <p className="text-gray-600">
                 Yes, you can upgrade or downgrade your plan at any time through
                 the customer portal.
               </p>
             </div>
             <div className="bg-white rounded-lg p-6 shadow">
-              <h3 className="font-semibold text-black mb-2">
+              <h3 className="font-semibold text-gray-900 mb-2">
                 What payment methods do you accept?
               </h3>
-              <p className="text-black">
+              <p className="text-gray-600">
                 We accept all major credit cards through Stripe's secure payment
                 processing.
               </p>
@@ -390,7 +394,7 @@ export default function SubscriptionsPage() {
     <Suspense
       fallback={
         <div className="min-h-screen flex items-center justify-center">
-          <Loader2 className="h-11 w-11 animate-spin text-brand-blue-600" />
+          <Loader2 className="h-8 w-8 animate-spin text-brand-blue-600" />
         </div>
       }
     >
