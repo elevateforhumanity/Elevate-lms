@@ -1,9 +1,16 @@
-import { runAutopilot } from "@/lib/autopilot/runner";
+import { NextResponse } from 'next/server';
+import { prepareDeploy } from '@/lib/autopilot/deploy-prep';
 
-export const runtime = 'edge';
-export const maxDuration = 60;
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
+// Alias for /api/autopilot/deploy
 export async function POST() {
-  await runAutopilot("deploy-netlify");
-  return Response.json({ ok: true });
+  const result = await prepareDeploy();
+  return NextResponse.json(result);
+}
+
+export async function GET() {
+  const result = await prepareDeploy();
+  return NextResponse.json(result);
 }
