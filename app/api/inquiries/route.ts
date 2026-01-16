@@ -48,9 +48,9 @@ export async function POST(req: Request) {
     // Check for existing application (prevent duplicates)
     const { data: existing } = await supabase
       .from('applications')
-      .select('id, status, submitted_at')
+      .select('id, status, created_at')
       .eq('email', body.email.toLowerCase())
-      .eq('program_id', programId)
+      .eq('program_interest', programId)
       .not('status', 'in', '("rejected","withdrawn")')
       .single();
 
@@ -61,37 +61,41 @@ export async function POST(req: Request) {
           message: `Your application (ID: ${existing.id.slice(0, 8)}) is currently ${existing.status}. An advisor will contact you soon.`,
           existingId: existing.id,
           status: existing.status,
-          submittedAt: existing.submitted_at,
+          submittedAt: existing.created_at,
         },
         { status: 409 } // Conflict
       );
     }
 
-    // Store as a simple application
-    const { data, error }: any = await supabase
+    // Store as a simple application using actual table columns
+    const insertData = {
+      first_name: firstName,
+      last_name: lastName,
+      email: body.email.toLowerCase(),
+      phone: body.phone || null,
+      city: body.city || 'Not provided',
+      zip: body.zip || '00000',
+      program_interest: programId, // Store program name/slug here
+      status: 'pending',
+      source: 'inquiry_form',
+      contact_preference: body.contactPreference || 'email',
+    };
+
+    const { data, error } = await supabase
       .from('applications')
-      .insert({
-        first_name: firstName,
-        last_name: lastName,
-        email: body.email.toLowerCase(),
-        phone: body.phone || null,
-        program_id: programId,
-        notes: body.message || 'Quick inquiry form submission',
-        status: 'pending',
-        application_type: 'inquiry',
-        eligibility_status: 'pending',
-      })
+      .insert(insertData)
       .select()
       .single();
 
     if (error) {
-      const errorCode = (error as any)?.code || "UNKNOWN";
-      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error('Supabase insert error:', JSON.stringify(error, null, 2));
       return NextResponse.json(
         {
           error: 'Failed to save inquiry',
-          debug:
-            process.env.NODE_ENV === 'development' ? error instanceof Error ? error.message : String(error) : undefined,
+          debug: error.message || error.code || JSON.stringify(error),
+          code: error.code,
+          details: error.details,
+          hint: error.hint,
         },
         { status: 500 }
       );
