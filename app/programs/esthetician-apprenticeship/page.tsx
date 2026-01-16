@@ -130,7 +130,7 @@ export default async function EstheticianApprenticeshipPage() {
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <span>Licensed by <strong>Indiana Professional Licensing Agency (IPLA)</strong></span>
+                <span>Prepares learners for licensure through <strong>Indiana Professional Licensing Agency (IPLA)</strong></span>
               </li>
             </ul>
           </div>

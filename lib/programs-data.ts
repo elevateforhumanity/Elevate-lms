@@ -19,7 +19,7 @@ export const PROGRAMS: ProgramData[] = [
   {
     slug: 'tax-prep-financial-services',
     name: 'Tax Preparation & Financial Services',
-    blurb: 'State Certified Earn and Learn program! Earn IRS VITA/TCE, QuickBooks Pro Advisor, and Microsoft 365 certifications in just 10 weeks. Learn federal and state tax law, bookkeeping, and financial literacy with supervised practicum at IRS-approved VITA site. Graduate ready for Tax Preparer, Bookkeeping Assistant, and Financial Service Specialist roles.',
+    blurb: 'State-Approved Earn and Learn Program! Earn IRS VITA/TCE, QuickBooks Pro Advisor, and Microsoft 365 certifications in just 10 weeks. Learn federal and state tax law, bookkeeping, and financial literacy with supervised practicum at IRS-approved VITA site. Graduate ready for Tax Preparer, Bookkeeping Assistant, and Financial Service Specialist roles.',
     funding: 'WIOA • WRG • Earn and Learn',
     duration: '10 Weeks • 150 Hours',
     image: '/media/programs/tax-prep-hd.jpg',

@@ -274,7 +274,7 @@ export default function ProgramPage() {
                     <Award className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <div className="font-bold text-lg">State Certified</div>
+                    <div className="font-bold text-lg">State Approved</div>
                     <div className="text-slate-300 text-sm">
                       Nationally Recognized
                     </div>

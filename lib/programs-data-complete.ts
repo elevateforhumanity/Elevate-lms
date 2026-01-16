@@ -138,11 +138,11 @@ export const COMPLETE_PROGRAMS: ProgramData[] = [
   {
     slug: 'tax-prep-financial-services',
     name: 'Tax Preparation & Financial Services Certificate',
-    tagline: 'State Certified Earn and Learn program with IRS VITA/TCE certification',
-    description: 'The Tax Preparation & Financial Services Certificate is a State Certified Earn and Learn program (certified 2025-10-01) that prepares individuals to understand federal and state taxation concepts and apply them in real-world settings. Students earn QuickBooks Pro Advisor and Microsoft 365 Fundamentals certifications, plus the Rise Up Credential. Graduates gain the skills required for employment as Tax Preparers, Bookkeeping Assistants, and Financial Service Specialists.',
-    summary: 'Earn IRS VITA/TCE, QuickBooks, Microsoft 365, and Rise Up certifications in State Certified Earn and Learn program.',
+    tagline: 'State-Approved Earn and Learn Program with IRS VITA/TCE certification',
+    description: 'The Tax Preparation & Financial Services Certificate is a State-Approved Earn and Learn Program (approved 2025-10-01) that prepares individuals to understand federal and state taxation concepts and apply them in real-world settings. Students earn QuickBooks Pro Advisor and Microsoft 365 Fundamentals certifications, plus the Rise Up Credential. Graduates gain the skills required for employment as Tax Preparers, Bookkeeping Assistants, and Financial Service Specialists.',
+    summary: 'Earn IRS VITA/TCE, QuickBooks, Microsoft 365, and Rise Up certifications in State-Approved Earn and Learn Program.',
     bullets: [
-      'State Certified Earn and Learn (certified 2025-10-01)',
+      'State-Approved Earn and Learn Program (approved 2025-10-01)',
       '10-week comprehensive program',
       '150 instructional hours (15 hours/week)',
       'Earn QuickBooks Pro Advisor certification',
