@@ -1,289 +1,313 @@
 import { Metadata } from 'next';
-export const dynamic = 'force-dynamic';
-
-import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import Image from 'next/image';
+import Link from 'next/link';
+import { 
+  Calendar as CalendarIcon, 
+  Clock, 
+  MapPin, 
+  Video, 
+  BookOpen,
+  Users,
+  Bell,
+  ChevronLeft,
+  ChevronRight,
+  Plus
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  alternates: {
-    canonical: 'https://www.elevateforhumanity.org/lms/calendar',
-  },
-  title: 'Calendar | Elevate For Humanity',
-  description:
-    'Manage calendar settings and development.',
+  title: 'My Calendar | Student Portal',
+  description: 'View your class schedule, assignments, exams, and important dates.',
 };
+
+export const dynamic = 'force-dynamic';
+
+function getDaysInMonth(year: number, month: number) {
+  return new Date(year, month + 1, 0).getDate();
+}
+
+function getFirstDayOfMonth(year: number, month: number) {
+  return new Date(year, month, 1).getDay();
+}
 
 export default async function CalendarPage() {
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
     redirect('/login');
   }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth();
+  const currentDay = now.getDate();
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 
+                      'July', 'August', 'September', 'October', 'November', 'December'];
+  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-  // Fetch student's courses
-  const { data: enrollments } = await supabase
-    .from('enrollments')
-    .select(
-      `
-      *,
-      courses (
-        id,
-        title,
-        description,
-        thumbnail_url
-      )
-    `
-    )
-    .eq('user_id', user.id)
-    .order('created_at', { ascending: false });
+  let events: any[] = [];
+  let upcomingAssignments: any[] = [];
+  let enrolledCourses: any[] = [];
 
-  const { count: activeCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'active');
+  try {
+    const { data: enrollments } = await supabase
+      .from('enrollments')
+      .select('*, courses (id, title, description, start_date, end_date)')
+      .eq('user_id', user.id)
+      .eq('status', 'active');
 
-  const { count: completedCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'completed');
+    if (enrollments) {
+      enrolledCourses = enrollments.map(e => e.courses).filter(Boolean);
+    }
 
-  const { data: recentProgress } = await supabase
-    .from('student_progress')
-    .select(
-      `
-      *,
-      courses (title)
-    `
-    )
-    .eq('student_id', user.id)
-    .order('updated_at', { ascending: false })
-    .limit(5);
+    const { data: calendarEvents } = await supabase
+      .from('calendar_events')
+      .select('*')
+      .or(`user_id.eq.${user.id},is_public.eq.true`)
+      .gte('start_time', new Date(currentYear, currentMonth, 1).toISOString())
+      .lte('start_time', new Date(currentYear, currentMonth + 1, 0).toISOString())
+      .order('start_time');
+
+    if (calendarEvents) {
+      events = calendarEvents;
+    }
+
+    const { data: assignments } = await supabase
+      .from('assignments')
+      .select('*, courses (title)')
+      .in('course_id', enrolledCourses.map(c => c.id))
+      .gte('due_date', now.toISOString())
+      .order('due_date')
+      .limit(5);
+
+    if (assignments) {
+      upcomingAssignments = assignments;
+    }
+  } catch (error) {
+    // Tables may not exist
+  }
+
+  const daysInMonth = getDaysInMonth(currentYear, currentMonth);
+  const firstDay = getFirstDayOfMonth(currentYear, currentMonth);
+  const calendarDays: (number | null)[] = [];
+  
+  for (let i = 0; i < firstDay; i++) {
+    calendarDays.push(null);
+  }
+  
+  for (let day = 1; day <= daysInMonth; day++) {
+    calendarDays.push(day);
+  }
+
+  const getEventsForDay = (day: number) => {
+    return events.filter(event => {
+      const eventDate = new Date(event.start_time);
+      return eventDate.getDate() === day && 
+             eventDate.getMonth() === currentMonth && 
+             eventDate.getFullYear() === currentYear;
+    });
+  };
+
+  const formatTime = (dateString: string) => {
+    return new Date(dateString).toLocaleTimeString('en-US', { 
+      hour: 'numeric', 
+      minute: '2-digit',
+      hour12: true 
+    });
+  };
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', { 
+      weekday: 'short',
+      month: 'short', 
+      day: 'numeric' 
+    });
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-8.jpg"
-          alt="Calendar"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Calendar
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage calendar settings and
-            development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
+    <div className="min-h-screen bg-slate-50 py-8">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900">My Calendar</h1>
+            <p className="text-slate-600 mt-1">Track your classes, assignments, and important dates</p>
+          </div>
+          <div className="mt-4 md:mt-0 flex gap-3">
+            <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition">
+              <Bell className="w-4 h-4" />
+              Reminders
+            </button>
+            <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+              <Plus className="w-4 h-4" />
+              Add Event
+            </button>
           </div>
         </div>
-      </section>
 
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Calendar
+        <div className="grid lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+              <div className="flex items-center justify-between p-6 border-b border-slate-200">
+                <button className="p-2 hover:bg-slate-100 rounded-lg transition">
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <h2 className="text-xl font-bold text-slate-900">
+                  {monthNames[currentMonth]} {currentYear}
                 </h2>
-                <p className="text-black mb-6">
-                  Manage calendar for career growth
-                  and development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
+                <button className="p-2 hover:bg-slate-100 rounded-lg transition">
+                  <ChevronRight className="w-5 h-5" />
+                </button>
               </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-6.jpg"
-                  alt="Calendar"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+
+              <div className="grid grid-cols-7 border-b border-slate-200">
+                {dayNames.map(day => (
+                  <div key={day} className="p-3 text-center text-sm font-semibold text-slate-600 bg-slate-50">
+                    {day}
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid grid-cols-7">
+                {calendarDays.map((day, index) => {
+                  const dayEvents = day ? getEventsForDay(day) : [];
+                  const isToday = day === currentDay;
+                  
+                  return (
+                    <div 
+                      key={index} 
+                      className={`min-h-[100px] p-2 border-b border-r border-slate-100 ${
+                        day ? 'hover:bg-slate-50 cursor-pointer' : 'bg-slate-50'
+                      }`}
+                    >
+                      {day && (
+                        <>
+                          <div className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium ${
+                            isToday ? 'bg-blue-600 text-white' : 'text-slate-700'
+                          }`}>
+                            {day}
+                          </div>
+                          <div className="mt-1 space-y-1">
+                            {dayEvents.slice(0, 2).map((event, i) => (
+                              <div 
+                                key={i}
+                                className={`text-xs px-2 py-1 rounded truncate ${
+                                  event.event_type === 'class' ? 'bg-blue-100 text-blue-700' :
+                                  event.event_type === 'assignment' ? 'bg-orange-100 text-orange-700' :
+                                  event.event_type === 'exam' ? 'bg-red-100 text-red-700' :
+                                  'bg-green-100 text-green-700'
+                                }`}
+                              >
+                                {event.title}
+                              </div>
+                            ))}
+                            {dayEvents.length > 2 && (
+                              <div className="text-xs text-slate-500 px-2">+{dayEvents.length - 2} more</div>
+                            )}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
+            <div className="mt-4 flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded bg-blue-500"></div>
+                <span className="text-slate-600">Classes</span>
               </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded bg-orange-500"></div>
+                <span className="text-slate-600">Assignments</span>
               </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded bg-red-500"></div>
+                <span className="text-slate-600">Exams</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded bg-green-500"></div>
+                <span className="text-slate-600">Events</span>
+              </div>
+            </div>
+          </div>
 
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
+          <div className="space-y-6">
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <CalendarIcon className="w-5 h-5 text-blue-600" />
+                Today&apos;s Schedule
+              </h3>
+              
+              {events.filter(e => new Date(e.start_time).toDateString() === now.toDateString()).length > 0 ? (
+                <div className="space-y-3">
+                  {events.filter(e => new Date(e.start_time).toDateString() === now.toDateString()).map((event, i) => (
+                    <div key={i} className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg">
+                      <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        {event.event_type === 'class' ? <BookOpen className="w-5 h-5 text-blue-600" /> :
+                         event.is_virtual ? <Video className="w-5 h-5 text-blue-600" /> :
+                         <MapPin className="w-5 h-5 text-blue-600" />}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-medium text-slate-900 truncate">{event.title}</div>
+                        <div className="text-sm text-slate-600 flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          {formatTime(event.start_time)}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
+              ) : (
+                <div className="text-center py-6">
+                  <CalendarIcon className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+                  <p className="text-slate-600">No events scheduled for today</p>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <BookOpen className="w-5 h-5 text-orange-600" />
+                Upcoming Assignments
+              </h3>
+              
+              {upcomingAssignments.length > 0 ? (
+                <div className="space-y-3">
+                  {upcomingAssignments.map((assignment, i) => (
+                    <Link key={i} href={`/lms/assignments/${assignment.id}`} className="block p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition">
+                      <div className="font-medium text-slate-900 truncate">{assignment.title}</div>
+                      <div className="text-sm text-slate-600">{assignment.courses?.title}</div>
+                      <div className="text-sm text-orange-600 font-medium mt-1">Due: {formatDate(assignment.due_date)}</div>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-6">
+                  <BookOpen className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+                  <p className="text-slate-600">No upcoming assignments</p>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-6 text-white">
+              <h3 className="font-bold mb-4">Quick Actions</h3>
+              <div className="space-y-2">
+                <Link href="/lms/assignments" className="block w-full text-center bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition">
+                  View All Assignments
+                </Link>
+                <Link href="/lms/grades" className="block w-full text-center bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition">
+                  Check Grades
+                </Link>
+                <Link href="/lms/support" className="block w-full text-center bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition">
+                  Get Help
+                </Link>
               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }
