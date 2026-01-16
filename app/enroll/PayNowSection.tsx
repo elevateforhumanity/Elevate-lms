@@ -158,7 +158,7 @@ export function PayNowSection() {
           {formattedPrice}
         </div>
         <p className="text-sm text-black">
-          Includes all materials, certifications, and support
+          Includes all materials, completion certificates, and support
         </p>
       </div>
 

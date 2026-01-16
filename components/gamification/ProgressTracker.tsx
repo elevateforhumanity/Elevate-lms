@@ -99,7 +99,7 @@ export function ProgressTracker({
       <div className="pt-4 border-t">
         <div className="flex items-center gap-2 text-sm text-black">
           <TrendingUp className="w-4 h-4 text-green-600" />
-          <span>Keep going! Complete all milestones to earn your certification.</span>
+          <span>Keep going! Complete all milestones to complete your training.</span>
         </div>
       </div>
 

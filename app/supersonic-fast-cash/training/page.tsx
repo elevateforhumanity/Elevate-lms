@@ -4,7 +4,7 @@ import { BookOpen, Video, FileText, Award } from 'lucide-react';
 
 export const metadata = {
   title: 'Tax Preparer Training | Supersonic Fast Cash',
-  description: 'IRS-certified tax preparer training program. Learn tax preparation and earn your certification.',
+  description: 'IRS-certified tax preparer training program. Learn tax preparation and complete your training.',
 };
 
 export default function TrainingPage() {

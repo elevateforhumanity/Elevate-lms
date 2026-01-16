@@ -46,6 +46,18 @@ interface TableAudit {
 
 // Core routes to audit
 const ROUTES_TO_AUDIT: Omit<RouteAudit, 'status' | 'verifiedAt' | 'commitSha'>[] = [
+  // Indiana Compliance (P0)
+  { path: '/disclosures', name: 'Student Consumer Information', category: 'Compliance', uiEntryPoint: 'Footer', dataWiring: {} },
+  { path: '/tuition-fees', name: 'Tuition & Fees', category: 'Compliance', uiEntryPoint: 'Disclosures page', dataWiring: {} },
+  { path: '/enrollment-agreement', name: 'Enrollment Agreement', category: 'Compliance', uiEntryPoint: 'Disclosures page', dataWiring: {} },
+  { path: '/attendance-policy', name: 'Attendance Policy', category: 'Compliance', uiEntryPoint: 'Disclosures page', dataWiring: {} },
+  { path: '/satisfactory-academic-progress', name: 'SAP Policy', category: 'Compliance', uiEntryPoint: 'Disclosures page', dataWiring: {} },
+  { path: '/refund-policy', name: 'Refund Policy', category: 'Compliance', uiEntryPoint: 'Footer, Disclosures', dataWiring: {} },
+  { path: '/grievance', name: 'Grievance Policy', category: 'Compliance', uiEntryPoint: 'Footer, Disclosures', dataWiring: {} },
+  { path: '/privacy-policy', name: 'Privacy Policy', category: 'Compliance', uiEntryPoint: 'Footer', dataWiring: {} },
+  { path: '/terms-of-service', name: 'Terms of Service', category: 'Compliance', uiEntryPoint: 'Footer', dataWiring: {} },
+  { path: '/accessibility', name: 'Accessibility', category: 'Compliance', uiEntryPoint: 'Footer', dataWiring: {} },
+  
   // Auth
   { path: '/login', name: 'Login', category: 'Auth', uiEntryPoint: 'Header > Login button', dataWiring: { tables: ['profiles'], apiEndpoints: ['/api/auth'] } },
   { path: '/signup', name: 'Sign Up', category: 'Auth', uiEntryPoint: 'Header > Apply button', dataWiring: { tables: ['profiles'] } },

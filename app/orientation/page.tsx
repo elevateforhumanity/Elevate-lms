@@ -233,7 +233,7 @@ export default async function OrientationPage() {
                   Graduation & Beyond
                 </h3>
                 <p className="text-black">
-                  You'll earn your certification, update your resume, and we'll
+                  You'll complete your training, update your resume, and we'll
                   help you find work. Most graduates are hired within 30 days.
                   You're not alone in this.
                 </p>

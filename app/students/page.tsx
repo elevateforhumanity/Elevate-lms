@@ -175,7 +175,7 @@ export default function StudentsPage() {
               </div>
               <h3 className="text-xl font-bold mb-2">Train</h3>
               <p className="text-black">
-                Complete your program and earn your certification.
+                Complete your program and complete your training.
               </p>
             </div>
 

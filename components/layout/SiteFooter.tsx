@@ -143,6 +143,12 @@ export default function SiteFooter() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-400">
               <Link
+                href="/disclosures"
+                className="hover:text-white transition"
+              >
+                Student Disclosures
+              </Link>
+              <Link
                 href="/privacy-policy"
                 className="hover:text-white transition"
               >

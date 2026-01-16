@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   title: 'Staff Training | Elevate For Humanity',
   description:
-    'Complete training modules, track your progress, and earn certifications.',
+    'Complete training modules, track your progress, and earn completion certificates.',
 };
 
 /**
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
  * Features:
  * - View all training modules
  * - Track completion progress
- * - Take quizzes and earn certifications
+ * - Take quizzes and earn completion certificates
  * - Video player integration
  */
 export default async function StaffTrainingPage() {
@@ -75,7 +75,7 @@ export default async function StaffTrainingPage() {
                 Staff Training
               </h1>
               <p className="text-black mt-2">
-                Complete training modules and earn certifications
+                Complete training modules and earn completion certificates
               </p>
             </div>
             <Link

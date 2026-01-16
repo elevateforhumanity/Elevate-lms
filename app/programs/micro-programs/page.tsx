@@ -233,7 +233,7 @@ export default function MicroProgramsPage() {
             Get Certified This Month
           </h2>
           <p className="text-xl text-black mb-8">
-            Start a micro program and earn your certification in weeks.
+            Start a micro program and complete your training in weeks.
           </p>
           <Link
             href="/apply"

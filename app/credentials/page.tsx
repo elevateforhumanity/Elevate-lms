@@ -87,7 +87,7 @@ export default async function CredentialsPage() {
                   Industry-Recognized Credentials
                 </h2>
                 <p className="text-xl text-black mb-8">
-                  Our programs prepare you to earn certifications and licenses that employers actively seek. Graduate with credentials that open doors.
+                  Our programs prepare you to earn completion certificates and licenses that employers actively seek. Graduate with credentials that open doors.
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-start">
