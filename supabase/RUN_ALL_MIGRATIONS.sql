@@ -193,6 +193,13 @@ CREATE POLICY "Admin can manage campaigns"
     )
   );
 
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Users can view own donations" ON donations;
+DROP POLICY IF EXISTS "Anyone can create donations" ON donations;
+DROP POLICY IF EXISTS "System can update donations" ON donations;
+DROP POLICY IF EXISTS "Admin can view all donations" ON donations;
+DROP POLICY IF EXISTS "Admins can view all donations" ON donations;
+
 -- Users can view their own donations
 CREATE POLICY "Users can view own donations"
   ON donations FOR SELECT
