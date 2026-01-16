@@ -43,8 +43,9 @@ export default function ApprenticeshipsPage() {
       slug: 'barber-apprenticeship',
       duration: '2,000 hours (1-2 years)',
       wage: 'Earn while you learn',
+      image: '/hero-images/barber-hero.jpg',
       description:
-        'Learn professional barbering skills in a licensed shop environment with experienced mentors.',
+        'Learn professional barbering skills in a licensed shop environment with experienced mentors. Master cutting, styling, shaving, and client relations while earning income.',
       requirements: [
         '18+ years old',
         'High school diploma or GED',
@@ -52,10 +53,10 @@ export default function ApprenticeshipsPage() {
         'Professional attitude',
       ],
       benefits: [
-        'Paid training',
+        'Paid training from day one',
         'State licensure pathway',
-        'Mentorship',
-        'Client portfolio building',
+        'One-on-one mentorship',
+        'Build your client portfolio',
       ],
       locations: ['Indianapolis, IN'],
     },
@@ -64,8 +65,9 @@ export default function ApprenticeshipsPage() {
       slug: 'hvac-apprenticeship',
       duration: '3-4 years',
       wage: '$15-$25/hour',
+      image: '/hero-images/skilled-trades-category.jpg',
       description:
-        'Hands-on training in heating, ventilation, air conditioning, and refrigeration systems.',
+        'Hands-on training in heating, ventilation, air conditioning, and refrigeration systems. Work alongside certified technicians on real installations and repairs.',
       requirements: [
         '18+ years old',
         'High school diploma or GED',
@@ -73,10 +75,10 @@ export default function ApprenticeshipsPage() {
         'Physical fitness',
       ],
       benefits: [
-        'EPA certification',
+        'EPA certification included',
         'Industry credentials',
-        'Tool allowance',
-        'Health benefits',
+        'Tool allowance provided',
+        'Health benefits available',
       ],
       locations: ['Indianapolis, IN', 'Surrounding counties'],
     },
@@ -85,8 +87,9 @@ export default function ApprenticeshipsPage() {
       slug: 'building-maintenance-apprenticeship',
       duration: '2-3 years',
       wage: '$14-$22/hour',
+      image: '/hero-images/skilled-trades-cat-new.jpg',
       description:
-        'Learn facility maintenance, basic electrical, plumbing, and building systems.',
+        'Learn facility maintenance including basic electrical, plumbing, HVAC, and building systems. Become a versatile technician in high demand.',
       requirements: [
         '18+ years old',
         'High school diploma or GED',
@@ -94,10 +97,10 @@ export default function ApprenticeshipsPage() {
         'Reliable transportation',
       ],
       benefits: [
-        'Multi-trade skills',
+        'Multi-trade skills training',
         'Safety certifications',
-        'Career advancement',
-        'Stable employment',
+        'Clear career advancement',
+        'Stable year-round employment',
       ],
       locations: ['Indianapolis, IN'],
     },
@@ -106,21 +109,66 @@ export default function ApprenticeshipsPage() {
       slug: 'healthcare-apprenticeship',
       duration: '1-2 years',
       wage: '$13-$18/hour',
+      image: '/hero-images/healthcare-category.jpg',
       description:
-        'Entry into healthcare through CNA, medical assistant, or patient care roles.',
+        'Entry into healthcare through CNA, medical assistant, or patient care roles. Gain clinical experience while earning certifications.',
       requirements: [
         '18+ years old',
         'High school diploma or GED',
-        'Background check',
-        'Immunizations',
+        'Background check clearance',
+        'Current immunizations',
       ],
       benefits: [
-        'CNA certification',
-        'Clinical experience',
+        'CNA certification included',
+        'Real clinical experience',
         'Healthcare career pathway',
         'Job placement support',
       ],
       locations: ['Indianapolis, IN', 'Partner facilities'],
+    },
+    {
+      title: 'Culinary Arts Apprenticeship',
+      slug: 'culinary-apprenticeship',
+      duration: '1-2 years',
+      wage: '$12-$18/hour',
+      image: '/hero-images/culinary-hero.jpg',
+      description:
+        'Train in professional kitchens learning culinary techniques, food safety, and kitchen management. Work with experienced chefs in real restaurant environments.',
+      requirements: [
+        '18+ years old',
+        'High school diploma or GED',
+        'Food handler certification',
+        'Ability to stand for long periods',
+      ],
+      benefits: [
+        'ServSafe certification',
+        'Professional kitchen experience',
+        'Culinary credentials',
+        'Restaurant industry connections',
+      ],
+      locations: ['Indianapolis, IN'],
+    },
+    {
+      title: 'CDL Truck Driver Training',
+      slug: 'cdl-transportation',
+      duration: '3-6 weeks',
+      wage: '$50,000-$80,000/year after completion',
+      image: '/hero-images/cdl-transportation-category.jpg',
+      description:
+        'Earn your Commercial Driver\'s License with classroom and behind-the-wheel training. High-demand career with immediate job opportunities.',
+      requirements: [
+        '21+ years old',
+        'Valid driver\'s license',
+        'Clean driving record',
+        'DOT physical clearance',
+      ],
+      benefits: [
+        'CDL-A license',
+        'Job placement assistance',
+        'Sign-on bonuses available',
+        'Flexible schedules',
+      ],
+      locations: ['Indianapolis, IN'],
     },
   ];
 
@@ -372,29 +420,35 @@ export default function ApprenticeshipsPage() {
             {apprenticeships.map((program, index) => (
               <div
                 key={index}
-                className="bg-white border-2 border-gray-200 rounded-xl p-6 md:p-8 hover:border-blue-500 hover:shadow-lg transition-all"
+                className="bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-blue-500 hover:shadow-lg transition-all"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-bold text-black mb-2">
+                {/* Program Image */}
+                <div className="relative h-48 w-full">
+                  <Image
+                    src={program.image}
+                    alt={program.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
                       {program.title}
                     </h3>
                     <div className="flex flex-wrap gap-3 text-sm">
-                      <span className="flex items-center gap-1 text-black">
+                      <span className="flex items-center gap-1 text-white/90">
                         <Clock className="h-4 w-4" />
                         {program.duration}
                       </span>
-                      <span className="flex items-center gap-1 text-green-600 font-semibold">
+                      <span className="flex items-center gap-1 text-green-400 font-semibold">
                         <DollarSign className="h-4 w-4" />
                         {program.wage}
                       </span>
                     </div>
                   </div>
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 ml-4">
-                    <Briefcase className="h-10 w-10 text-blue-600" />
-                  </div>
                 </div>
 
+                <div className="p-6 md:p-8">
                 <p className="text-sm md:text-base text-black mb-6 leading-relaxed">
                   {program.description}
                 </p>
@@ -450,17 +504,18 @@ export default function ApprenticeshipsPage() {
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
                     href={`/apply?program=${program.slug}`}
-                    className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-blue-900 text-white font-bold rounded-lg hover:bg-blue-800 transition-colors text-sm md:text-base"
+                    className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-brand-red-600 text-white font-bold rounded-lg hover:bg-brand-red-700 transition-colors text-sm md:text-base"
                   >
                     Apply Now
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                   <Link
                     href={`/programs/${program.slug}`}
-                    className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-gray-100 text-black font-bold rounded-lg hover:bg-gray-200 transition-colors text-sm md:text-base"
+                    className="flex-1 inline-flex items-center justify-center px-6 py-3 bg-brand-blue-600 text-white font-bold rounded-lg hover:bg-brand-blue-700 transition-colors text-sm md:text-base"
                   >
                     Learn More
                   </Link>
+                </div>
                 </div>
               </div>
             ))}
