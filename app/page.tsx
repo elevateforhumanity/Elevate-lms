@@ -46,6 +46,21 @@ export default async function HomePage() {
       {/* Video Hero Banner - autoplays on all devices */}
       <VideoHeroSection />
 
+      {/* Free Career Training Banner */}
+      <section className="py-8 md:py-12 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
+          <span className="inline-block px-4 py-1 bg-white/20 text-white text-sm font-semibold rounded-full mb-4">
+            100% Government Funded
+          </span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">
+            Free Career Training
+          </h2>
+          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
+            Healthcare • Skilled Trades • Technology • Business
+          </p>
+        </div>
+      </section>
+
       {/* Features with Your Icon Images */}
       {/* Removed duplicate main tag - ConditionalLayout already provides main#main-content */}
       <section className="py-8 md:py-24 bg-white">
