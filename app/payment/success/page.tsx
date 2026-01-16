@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { CheckCircle } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Payment Successful | Elevate for Humanity',
@@ -10,7 +13,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PaymentSuccessPage() {
+export default async function PaymentSuccessPage() {
+  const supabase = await createClient();
+  
+  // Log payment success
+  await supabase.from('page_views').insert({ page: 'payment_success' }).select();
   return (
     <div className="min-h-screen bg-zinc-900  to-white py-20">
       <div className="container mx-auto px-4 max-w-2xl text-center">

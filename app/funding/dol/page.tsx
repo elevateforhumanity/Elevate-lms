@@ -1,264 +1,239 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header } from '@/components/ui/Header';
-import { Footer } from '@/components/ui/Footer';
-import { 
-  Building2, 
-  CheckCircle, 
-  Users, 
-  BookOpen,
-  Briefcase,
-  Award,
-  DollarSign,
-  Globe,
-  ChevronRight,
-  ArrowRight
-} from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/funding/dol',
   },
-  title: 'DOL Grants & Programs | Department of Labor Funding | Elevate For Humanity',
-  description: 'Learn about Department of Labor grants and workforce development programs. Access federal funding for career training and employment services.',
+  title: 'Dol | Elevate For Humanity',
+  description:
+    'Manage dol settings and development.',
 };
 
-const DOL_PROGRAMS = [
-  {
-    name: 'Registered Apprenticeship',
-    description: 'Earn while you learn through employer-sponsored apprenticeship programs with DOL certification.',
-    funding: 'Employer-funded with tax credits',
-    icon: Briefcase,
-  },
-  {
-    name: 'H-1B Skills Training Grants',
-    description: 'Training for in-demand occupations in IT, healthcare, and advanced manufacturing.',
-    funding: 'Up to $5M per grant',
-    icon: BookOpen,
-  },
-  {
-    name: 'YouthBuild',
-    description: 'Education and job training for at-risk youth ages 16-24, focusing on construction.',
-    funding: 'Full program coverage',
-    icon: Users,
-  },
-  {
-    name: 'Reentry Employment Opportunities',
-    description: 'Training and employment services for adults and youth with criminal records.',
-    funding: 'Full program coverage',
-    icon: Award,
-  },
-  {
-    name: 'National Dislocated Worker Grants',
-    description: 'Emergency funding for workers affected by mass layoffs or natural disasters.',
-    funding: 'Varies by situation',
-    icon: DollarSign,
-  },
-  {
-    name: 'Trade Adjustment Assistance',
-    description: 'Support for workers who lost jobs due to foreign trade impacts.',
-    funding: 'Training + income support',
-    icon: Globe,
-  },
-];
-
-const GRANT_BENEFITS = [
-  'Tuition and training costs covered',
-  'Supportive services (transportation, childcare)',
-  'Career counseling and job placement',
-  'Credential and certification fees',
-  'On-the-job training wage subsidies',
-  'Work-based learning opportunities',
-];
-
-export default function DOLFundingPage() {
+export default async function DolPage() {
+  const supabase = await createClient();
+  
+  // Fetch DOL funding info
+  const { data: dolInfo } = await supabase
+    .from('funding_options')
+    .select('*')
+    .eq('type', 'dol')
+    .single();
   return (
-    <>
-      <Header />
-      <main className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-blue-700 via-blue-800 to-indigo-900 text-white overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
-          <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/artlist/hero-training-3.jpg"
+          alt="Dol"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Dol
+          </h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100">
+            Manage dol settings and
+            development.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/programs"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              View Programs
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Feature Grid */}
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-medium mb-6">
-                  <Building2 className="w-4 h-4" />
-                  <span>Federal Workforce Programs</span>
-                </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-                  DOL Grants & Programs
-                </h1>
-                <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-                  The U.S. Department of Labor funds numerous workforce development programs 
-                  that provide free training, apprenticeships, and employment services.
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Dol</h2>
+                <p className="text-black mb-6">
+                  Manage dol settings and
+                  development.
                 </p>
-                <div className="flex flex-wrap gap-4">
-                  <Link
-                    href="/apply"
-                    className="inline-flex items-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition shadow-lg"
-                  >
-                    Find Programs
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 bg-blue-600/30 backdrop-blur text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-600/40 transition border border-white/30"
-                  >
-                    Get Help
-                  </Link>
-                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>100% free training programs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Industry-standard certifications</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Career support and job placement</span>
+                  </li>
+                </ul>
               </div>
-              <div className="relative hidden lg:block">
-                <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/heroes/dol-programs.jpg"
-                    alt="DOL Programs"
-                    fill
-                    className="object-cover"
-                    sizes="50vw"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Programs Grid */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
-                DOL-Funded Programs
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Explore the various Department of Labor programs that may fund your training.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {DOL_PROGRAMS.map((program) => {
-                const IconComponent = program.icon;
-                return (
-                  <div
-                    key={program.name}
-                    className="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition"
-                  >
-                    <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                      <IconComponent className="w-7 h-7 text-blue-600" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">
-                      {program.name}
-                    </h3>
-                    <p className="text-slate-600 mb-4">
-                      {program.description}
-                    </p>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                      <DollarSign className="w-4 h-4" />
-                      {program.funding}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/business/training-workshop.jpg"
-                  alt="Training Workshop"
+                  src="/images/artlist/hero-training-4.jpg"
+                  alt="Dol"
                   fill
                   className="object-cover"
-                  sizes="50vw"
+                  quality={100}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
-                  What DOL Grants Cover
-                </h2>
-                <p className="text-lg text-slate-600 mb-8">
-                  DOL-funded programs provide comprehensive support to help you succeed in your 
-                  training and find employment.
-                </p>
-                
-                <div className="space-y-4">
-                  {GRANT_BENEFITS.map((benefit, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-700">{benefit}</span>
-                    </div>
-                  ))}
+            </div>
+
+            {/* Feature Cards */}
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-brand-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    />
+                  </svg>
                 </div>
+                <h3 className="text-lg font-semibold mb-3">Learn</h3>
+                <p className="text-black">
+                  Access quality training programs
+                </p>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-brand-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Certify</h3>
+                <p className="text-black">Earn industry certifications</p>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Work</h3>
+                <p className="text-black">Get hired in your field</p>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* How to Access */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
-                How to Access DOL Programs
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Most DOL programs are accessed through your local American Job Center.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                { step: '1', title: 'Visit Job Center', description: 'Find your local American Job Center' },
-                { step: '2', title: 'Assessment', description: 'Complete skills and eligibility assessment' },
-                { step: '3', title: 'Program Match', description: 'Get matched with appropriate programs' },
-                { step: '4', title: 'Enrollment', description: 'Enroll and begin your training' },
-              ].map((item) => (
-                <div key={item.step} className="text-center">
-                  <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-4">
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
-                  <p className="text-slate-600">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-black mb-6">
-              Ready to Explore Your Options?
+      {/* CTA Section */}
+      <section className="py-16 bg-brand-blue-700 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Ready to Get Started?
             </h2>
-            <p className="text-xl text-blue-100 mb-8">
-              Let us help you find the right DOL program for your career goals.
+            <p className="text-base md:text-lg text-blue-100 mb-8">
+              Join thousands who have launched successful careers through our
+              programs.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap gap-4 justify-center">
               <Link
-                href="/apply"
-                className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition"
+                href="/contact"
+                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
               >
-                Get Started
-                <ArrowRight className="w-5 h-5" />
+                Apply Now
               </Link>
               <Link
                 href="/programs"
-                className="inline-flex items-center gap-2 bg-blue-500/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-500/40 transition border border-white/30"
+                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
               >
                 Browse Programs
               </Link>
             </div>
           </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+        </div>
+      </section>
+    </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = {
   title: 'Metrics | Elevate For Humanity',
@@ -7,9 +8,16 @@ export const metadata: Metadata = {
 
 import { ComplianceBar } from '@/components/ComplianceBar';
 
-export const revalidate = 3600; // 1 hour ISR cache
+export const dynamic = 'force-dynamic';
 
-export default function MetricsPage() {
+export default async function MetricsPage() {
+  const supabase = await createClient();
+  
+  // Fetch metrics
+  const { data: metrics } = await supabase
+    .from('metrics')
+    .select('*')
+    .order('category');
   return (
     <div className="bg-white">
       <ComplianceBar />

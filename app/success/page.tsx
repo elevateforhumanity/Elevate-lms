@@ -1,8 +1,11 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { ArrowRight } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Success Stories | Elevate for Humanity',
@@ -13,7 +16,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function SuccessStoriesPage() {
+export default async function SuccessStoriesPage() {
+  const supabase = await createClient();
+  
+  // Fetch success stories
+  const { data: stories } = await supabase
+    .from('success_stories')
+    .select('*')
+    .eq('published', true)
+    .order('created_at', { ascending: false });
   return (
     <div className="min-h-screen">
       {/* Hero */}

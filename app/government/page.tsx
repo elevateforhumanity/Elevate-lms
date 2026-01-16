@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Building2, Users, FileText, Shield, CheckCircle, Award, Briefcase, Phone, Mail, TrendingUp, Target, Handshake, BarChart3 } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -12,7 +15,14 @@ export const metadata: Metadata = {
     'Partner with Elevate for Humanity to deliver workforce development programs. WIOA-compliant, ETPL-approved training provider serving government agencies and workforce boards.',
 };
 
-export default function GovernmentPage() {
+export default async function GovernmentPage() {
+  const supabase = await createClient();
+  
+  // Fetch government partners
+  const { data: partners } = await supabase
+    .from('partners')
+    .select('*')
+    .eq('type', 'government');
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Video Background */}

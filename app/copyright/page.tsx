@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Copyright as CopyrightIcon, Shield, FileText } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -11,7 +14,15 @@ export const metadata: Metadata = {
     'Copyright and intellectual property information for Elevate for Humanity platform and content.',
 };
 
-export default function CopyrightPage() {
+export default async function CopyrightPage() {
+  const supabase = await createClient();
+  
+  // Fetch copyright policy
+  const { data: policy } = await supabase
+    .from('legal_documents')
+    .select('*')
+    .eq('type', 'copyright')
+    .single();
   return (
     <div className="min-h-screen bg-gray-50 py-16">
       <div className="max-w-4xl mx-auto px-4">

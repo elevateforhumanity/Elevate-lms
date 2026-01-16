@@ -1,3 +1,4 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import {
   Building2,
@@ -7,6 +8,8 @@ import {
   Shield,
   Zap,
 } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title:
@@ -18,7 +21,15 @@ export const metadata = {
   },
 };
 
-export default function IndependentLicensePage() {
+export default async function IndependentLicensePage() {
+  const supabase = await createClient();
+  
+  // Fetch independent licensing info
+  const { data: licensing } = await supabase
+    .from('pricing_plans')
+    .select('*')
+    .eq('type', 'independent');
+
   return (
     <div className="bg-white">
       {/* Hero */}

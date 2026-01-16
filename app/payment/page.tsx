@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -11,6 +14,13 @@ export const metadata: Metadata = {
 };
 
 export default async function PaymentPage() {
+  const supabase = await createClient();
+  
+  // Fetch payment options
+  const { data: options } = await supabase
+    .from('payment_options')
+    .select('*')
+    .order('order_index');
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

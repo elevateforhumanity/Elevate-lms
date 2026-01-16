@@ -1,297 +1,239 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header } from '@/components/ui/Header';
-import { Footer } from '@/components/ui/Footer';
-import { 
-  DollarSign, 
-  CheckCircle, 
-  Users, 
-  BookOpen,
-  Briefcase,
-  Award,
-  Shield,
-  Heart,
-  ChevronRight,
-  ArrowRight
-} from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/funding/jri',
   },
-  title: 'JRI Funding | Justice Reinvestment Initiative | Elevate For Humanity',
-  description: 'Learn about Justice Reinvestment Initiative (JRI) funding for reentry training programs. Free career training for justice-involved individuals.',
+  title: 'Jri | Elevate For Humanity',
+  description:
+    'Manage jri settings and development.',
 };
 
-const ELIGIBILITY_CRITERIA = [
-  'Currently on probation or parole',
-  'Recently released from incarceration (within 5 years)',
-  'Participating in a diversion program',
-  'Court-ordered to complete job training',
-  'Referred by a reentry organization',
-  'Enrolled in a reentry support program',
-];
-
-const COVERED_PROGRAMS = [
-  { name: 'Healthcare Training', examples: 'CNA, Medical Assistant, Phlebotomy' },
-  { name: 'Skilled Trades', examples: 'HVAC, Electrical, Welding, Construction' },
-  { name: 'Transportation', examples: 'CDL, Forklift, Heavy Equipment' },
-  { name: 'Business Skills', examples: 'Tax Preparation, Bookkeeping, Customer Service' },
-  { name: 'Technology', examples: 'IT Support, Data Entry, Computer Skills' },
-  { name: 'Food Service', examples: 'ServSafe, Culinary Arts, Food Handler' },
-];
-
-const SUPPORT_SERVICES = [
-  { service: 'Career Counseling', description: 'One-on-one guidance for career planning' },
-  { service: 'Job Placement', description: 'Connections with reentry-friendly employers' },
-  { service: 'Transportation', description: 'Bus passes, gas cards, or ride assistance' },
-  { service: 'Work Clothing', description: 'Professional attire and uniforms' },
-  { service: 'Tool Assistance', description: 'Required tools and equipment for work' },
-  { service: 'Housing Referrals', description: 'Connections to transitional housing' },
-];
-
-export default function JRIFundingPage() {
+export default async function JriPage() {
+  const supabase = await createClient();
+  
+  // Fetch JRI funding info
+  const { data: jriInfo } = await supabase
+    .from('funding_options')
+    .select('*')
+    .eq('type', 'jri')
+    .single();
   return (
-    <>
-      <Header />
-      <main className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800 text-white overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
-          <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-medium mb-6">
-                  <Shield className="w-4 h-4" />
-                  <span>Reentry Support</span>
-                </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-                  JRI Funding
-                </h1>
-                <p className="text-xl text-indigo-100 mb-4 leading-relaxed">
-                  The Justice Reinvestment Initiative (JRI) provides funding for career training 
-                  and support services for justice-involved individuals seeking a fresh start.
-                </p>
-                <p className="text-lg text-indigo-200 mb-8">
-                  Free training programs designed to reduce recidivism and create pathways to 
-                  sustainable employment.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Link
-                    href="/apply"
-                    className="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold hover:bg-indigo-50 transition shadow-lg"
-                  >
-                    Apply Now
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 bg-indigo-500/30 backdrop-blur text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-500/40 transition border border-white/30"
-                  >
-                    Talk to a Counselor
-                  </Link>
-                </div>
-              </div>
-              <div className="relative hidden lg:block">
-                <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/heroes/reentry-support.jpg"
-                    alt="JRI Reentry Support"
-                    fill
-                    className="object-cover"
-                    sizes="50vw"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
+        <Image
+          src="/images/heroes/success-story-3.jpg"
+          alt="Jri"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
 
-        {/* What is JRI */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Jri
+          </h1>
+          <p className="text-base md:text-lg mb-8 text-gray-100">
+            Manage jri settings and
+            development.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/programs"
+              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
+            >
+              View Programs
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            {/* Feature Grid */}
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div>
-                <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
-                  What is JRI?
-                </h2>
-                <p className="text-lg text-slate-600 mb-6">
-                  The Justice Reinvestment Initiative is a data-driven approach to reduce corrections 
-                  spending and reinvest savings in strategies that can decrease crime and strengthen 
-                  communities.
+                <h2 className="text-2xl md:text-3xl font-bold mb-6">Jri</h2>
+                <p className="text-black mb-6">
+                  Manage jri settings and
+                  development.
                 </p>
-                <p className="text-lg text-slate-600 mb-6">
-                  JRI funding supports workforce development programs specifically designed for 
-                  individuals with criminal backgrounds, helping them gain skills and find employment.
-                </p>
-                <div className="bg-indigo-50 rounded-xl p-6 border border-indigo-200">
-                  <h3 className="font-bold text-indigo-900 mb-2">Program Goals:</h3>
-                  <ul className="space-y-2 text-indigo-800">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
-                      <span>Reduce recidivism through employment</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
-                      <span>Provide marketable job skills</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
-                      <span>Connect with reentry-friendly employers</span>
-                    </li>
-                  </ul>
-                </div>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>100% free training programs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Industry-standard certifications</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg
+                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span>Career support and job placement</span>
+                  </li>
+                </ul>
               </div>
-              <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/business/job-training.jpg"
-                  alt="Job Training"
+                  src="/images/artlist/hero-training-2.jpg"
+                  alt="Jri"
                   fill
                   className="object-cover"
-                  sizes="50vw"
+                  quality={100}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Eligibility */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
-                Who Qualifies?
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                JRI funding is available for individuals who meet one or more of these criteria.
-              </p>
-            </div>
-
-            <div className="max-w-3xl mx-auto">
-              <div className="bg-white rounded-2xl p-8 border border-slate-200">
-                <div className="grid md:grid-cols-2 gap-4">
-                  {ELIGIBILITY_CRITERIA.map((criteria, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-6 h-6 text-indigo-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-700">{criteria}</span>
-                    </div>
-                  ))}
+            {/* Feature Cards */}
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-brand-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    />
+                  </svg>
                 </div>
+                <h3 className="text-lg font-semibold mb-3">Learn</h3>
+                <p className="text-black">
+                  Access quality training programs
+                </p>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-brand-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Certify</h3>
+                <p className="text-black">Earn industry certifications</p>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-3">Work</h3>
+                <p className="text-black">Get hired in your field</p>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Covered Programs */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
-                Training Programs Available
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                JRI funding covers a variety of in-demand career training programs.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {COVERED_PROGRAMS.map((program) => (
-                <div
-                  key={program.name}
-                  className="bg-slate-50 rounded-xl p-6 hover:shadow-md transition"
-                >
-                  <h3 className="font-bold text-slate-900 mb-2">{program.name}</h3>
-                  <p className="text-slate-600 text-sm">{program.examples}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Support Services */}
-        <section className="py-20 bg-indigo-900 text-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black mb-4">
-                Additional Support Services
-              </h2>
-              <p className="text-xl text-indigo-200 max-w-3xl mx-auto">
-                Beyond training, JRI programs provide wraparound support to help you succeed.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {SUPPORT_SERVICES.map((item) => (
-                <div
-                  key={item.service}
-                  className="bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20"
-                >
-                  <h3 className="font-bold text-white mb-2">{item.service}</h3>
-                  <p className="text-indigo-200 text-sm">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Success Stories */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
-                Second Chance Success
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Our JRI participants are building new careers and new lives.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { stat: '85%', label: 'Employment Rate', description: 'Of graduates find employment within 90 days' },
-                { stat: '12%', label: 'Recidivism Rate', description: 'Compared to 44% state average' },
-                { stat: '$18/hr', label: 'Average Starting Wage', description: 'For program graduates' },
-              ].map((item) => (
-                <div key={item.label} className="text-center">
-                  <div className="text-5xl font-black text-indigo-600 mb-2">{item.stat}</div>
-                  <div className="text-xl font-bold text-slate-900 mb-1">{item.label}</div>
-                  <p className="text-slate-600">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-indigo-600 to-purple-700 text-white">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <Heart className="w-16 h-16 mx-auto mb-6 opacity-80" />
-            <h2 className="text-3xl md:text-4xl font-black mb-6">
-              Everyone Deserves a Second Chance
+      {/* CTA Section */}
+      <section className="py-16 bg-brand-blue-700 text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Ready to Get Started?
             </h2>
-            <p className="text-xl text-indigo-100 mb-8">
-              Your past doesn&apos;t define your future. Let us help you build the career you deserve.
+            <p className="text-base md:text-lg text-blue-100 mb-8">
+              Join thousands who have launched successful careers through our
+              programs.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/apply"
-                className="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold hover:bg-indigo-50 transition"
-              >
-                Start Your Application
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+            <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-indigo-500/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-500/40 transition border border-white/30"
+                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
               >
-                Talk to Someone
+                Apply Now
+              </Link>
+              <Link
+                href="/programs"
+                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
+              >
+                Browse Programs
               </Link>
             </div>
           </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+        </div>
+      </section>
+    </div>
   );
 }

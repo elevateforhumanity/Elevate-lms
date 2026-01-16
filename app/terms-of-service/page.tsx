@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -9,7 +12,15 @@ export const metadata: Metadata = {
   description: 'Terms of Service and user agreement for Elevate For Humanity.',
 };
 
-export default function TermsOfServicePage() {
+export default async function TermsOfServicePage() {
+  const supabase = await createClient();
+  
+  // Fetch terms of service
+  const { data: terms } = await supabase
+    .from('legal_documents')
+    .select('*')
+    .eq('type', 'terms_of_service')
+    .single();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Clean, No Gradient, No Image, No CTAs */}

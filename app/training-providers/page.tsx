@@ -1,8 +1,11 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -14,6 +17,13 @@ export const metadata: Metadata = {
 };
 
 export default async function TrainingProvidersPage() {
+  const supabase = await createClient();
+  
+  // Fetch training providers
+  const { data: providers } = await supabase
+    .from('training_providers')
+    .select('*')
+    .eq('status', 'active');
   return (
     <div className="min-h-screen bg-white">
       <ModernLandingHero

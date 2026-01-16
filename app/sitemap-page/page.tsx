@@ -1,6 +1,9 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Header } from '@/components/ui/Header';
 import { Footer } from '@/components/ui/Footer';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Sitemap | Elevate for Humanity',
@@ -202,7 +205,15 @@ const sitemapSections = [
   },
 ];
 
-export default function SitemapPage() {
+export default async function SitemapPage() {
+  const supabase = await createClient();
+  
+  // Fetch dynamic sitemap data
+  const { data: programs } = await supabase
+    .from('programs')
+    .select('name, slug')
+    .eq('status', 'active');
+
   return (
     <>
       <Header />

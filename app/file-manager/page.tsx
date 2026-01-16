@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -13,6 +16,13 @@ export const metadata: Metadata = {
 };
 
 export default async function FileManagerPage() {
+  const supabase = await createClient();
+  
+  // Fetch files
+  const { data: files } = await supabase
+    .from('files')
+    .select('*')
+    .order('created_at', { ascending: false });
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

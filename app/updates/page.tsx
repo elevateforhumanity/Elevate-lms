@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Calendar, ArrowRight, Bell, Megaphone, GraduationCap, Building2, Users } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Updates & Announcements | Elevate For Humanity',
@@ -61,7 +64,15 @@ const updates = [
   },
 ];
 
-export default function UpdatesPage() {
+export default async function UpdatesPage() {
+  const supabase = await createClient();
+  
+  // Fetch updates
+  const { data: dbUpdates } = await supabase
+    .from('updates')
+    .select('*')
+    .order('date', { ascending: false });
+
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Header */}

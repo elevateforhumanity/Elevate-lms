@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -12,6 +13,8 @@ import {
   BarChart,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/features',
@@ -22,6 +25,14 @@ export const metadata: Metadata = {
 };
 
 export default async function FeaturesPage() {
+  const supabase = await createClient();
+  
+  // Fetch platform features
+  const { data: features } = await supabase
+    .from('platform_features')
+    .select('*')
+    .order('order_index');
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

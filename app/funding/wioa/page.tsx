@@ -1,311 +1,432 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Header } from '@/components/ui/Header';
-import { Footer } from '@/components/ui/Footer';
-import { 
-  DollarSign, 
-  CheckCircle, 
-  Users, 
-  BookOpen,
-  Briefcase,
-  Award,
-  Clock,
-  FileText,
-  ChevronRight,
-  ArrowRight
-} from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/funding/wioa',
   },
-  title: 'WIOA Funding | Free Training Programs | Elevate For Humanity',
-  description: 'Learn about WIOA (Workforce Innovation and Opportunity Act) funding for free career training. Check eligibility and apply for funded training programs.',
+  title: 'WIOA Free Training | Elevate For Humanity',
+  description:
+    'Get 100% free career training through WIOA (Workforce Innovation and Opportunity Act). For unemployed, underemployed, and workers facing barriers.',
 };
 
-const ELIGIBILITY_CRITERIA = [
-  {
-    title: 'Age Requirement',
-    description: 'Must be 18 years or older (youth programs available for ages 16-24)',
-    icon: Users,
-  },
-  {
-    title: 'Work Authorization',
-    description: 'Must be authorized to work in the United States',
-    icon: FileText,
-  },
-  {
-    title: 'Selective Service',
-    description: 'Males must be registered with Selective Service (if applicable)',
-    icon: CheckCircle,
-  },
-  {
-    title: 'Income Guidelines',
-    description: 'Meet income eligibility requirements or qualify through other criteria',
-    icon: DollarSign,
-  },
-];
-
-const PRIORITY_GROUPS = [
-  'Veterans and eligible spouses',
-  'Recipients of public assistance (TANF, SNAP, SSI)',
-  'Low-income individuals',
-  'Individuals with disabilities',
-  'Ex-offenders and justice-involved individuals',
-  'Homeless individuals',
-  'Long-term unemployed (27+ weeks)',
-  'Single parents',
-  'Youth aging out of foster care',
-  'Individuals with limited English proficiency',
-];
-
-const COVERED_EXPENSES = [
-  { item: 'Tuition & Training Fees', description: 'Full cost of approved training programs' },
-  { item: 'Books & Supplies', description: 'Required textbooks, uniforms, and materials' },
-  { item: 'Certification Exams', description: 'State licensing and certification test fees' },
-  { item: 'Transportation', description: 'Gas cards, bus passes, or mileage reimbursement' },
-  { item: 'Childcare', description: 'Childcare assistance while in training' },
-  { item: 'Work Equipment', description: 'Tools and equipment needed for employment' },
-];
-
-export default function WIOAFundingPage() {
+export default async function WioaPage() {
+  const supabase = await createClient();
+  
+  // Fetch WIOA funding info
+  const { data: wioaInfo } = await supabase
+    .from('funding_options')
+    .select('*')
+    .eq('type', 'wioa')
+    .single();
   return (
-    <>
-      <Header />
-      <main className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-green-600 via-green-700 to-emerald-800 text-white overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-10" />
-          <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-2 rounded-full text-sm font-medium mb-6">
-                  <DollarSign className="w-4 h-4" />
-                  <span>Government Funded Training</span>
-                </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
-                  WIOA Funding
-                </h1>
-                <p className="text-xl text-green-100 mb-4 leading-relaxed">
-                  The Workforce Innovation and Opportunity Act (WIOA) provides funding for 
-                  eligible individuals to receive free career training and supportive services.
-                </p>
-                <p className="text-lg text-green-200 mb-8">
-                  Qualified participants can receive up to <strong className="text-white">$10,000+</strong> in 
-                  training funds with no repayment required.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Link
-                    href="/wioa-eligibility"
-                    className="inline-flex items-center gap-2 bg-white text-green-600 px-8 py-4 rounded-xl font-bold hover:bg-green-50 transition shadow-lg"
-                  >
-                    Check Eligibility
-                  </Link>
-                  <Link
-                    href="/apply"
-                    className="inline-flex items-center gap-2 bg-green-500/30 backdrop-blur text-white px-8 py-4 rounded-xl font-bold hover:bg-green-500/40 transition border border-white/30"
-                  >
-                    Apply Now
-                  </Link>
-                </div>
-              </div>
-              <div className="relative hidden lg:block">
-                <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/heroes/wioa-funding.jpg"
-                    alt="WIOA Funding"
-                    fill
-                    className="object-cover"
-                    sizes="50vw"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section - Image Only */}
+      <section className="relative h-[400px] overflow-hidden">
+        <Image
+          src="/images/heroes/success-story-4.jpg"
+          alt="WIOA Success Story"
+          fill
+          className="object-cover"
+          quality={100}
+          priority
+          sizes="100vw"
+        />
+      </section>
 
-        {/* What is WIOA */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
-                  What is WIOA?
-                </h2>
-                <p className="text-lg text-slate-600 mb-6">
-                  The Workforce Innovation and Opportunity Act (WIOA) is a federal law that provides 
-                  funding for workforce development programs. It helps job seekers access employment, 
-                  education, training, and support services to succeed in the labor market.
-                </p>
-                <p className="text-lg text-slate-600 mb-6">
-                  WIOA funding is administered through local American Job Centers (also known as 
-                  CareerSource, WorkOne, or Workforce Solutions depending on your state).
-                </p>
-                <div className="bg-green-50 rounded-xl p-6 border border-green-200">
-                  <h3 className="font-bold text-green-900 mb-2">Key Benefits:</h3>
-                  <ul className="space-y-2 text-green-800">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>100% free training - no loans or repayment</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>Supportive services for transportation and childcare</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span>Career counseling and job placement assistance</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/business/career-counseling.jpg"
-                  alt="Career Counseling"
-                  fill
-                  className="object-cover"
-                  sizes="50vw"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+      {/* Story Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <p className="text-base md:text-lg text-black mb-6 leading-relaxed">
+            James worked at a factory for 8 years. Then the plant closed. No
+            warning. No severance. Just... gone.
+          </p>
+          <p className="text-lg text-black mb-6">
+            He applied everywhere. Fast food. Warehouses. Retail. But without
+            new skills, he couldn't find anything that paid more than $12/hour.
+            He had a mortgage. Two kids. Bills piling up.
+          </p>
+          <p className="text-lg text-black mb-6">
+            Then his WorkOne advisor told him about WIOA. The government would
+            pay for him to learn HVAC repair—a skill that's in high demand.
+            Tuition: $5,000. Books: $300. Gas money to get to class: covered.
+            All free.
+          </p>
+          <p className="text-lg text-black mb-6">
+            60 days later, James graduated with 6 certifications. He got hired
+            at $55,000/year with benefits. "WIOA saved my family," he says.
+          </p>
+        </div>
+      </section>
 
-        {/* Eligibility */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
-                Basic Eligibility Requirements
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                To qualify for WIOA funding, you must meet these basic requirements.
+      {/* What is WIOA */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">What is WIOA?</h2>
+
+          <p className="text-lg text-black mb-6">
+            WIOA stands for{' '}
+            <strong>Workforce Innovation and Opportunity Act</strong>. It's a
+            federal program that provides free job training to people who are:
+          </p>
+
+          <ul className="space-y-3 mb-8">
+            <li className="flex items-start gap-3">
+              <span className="text-brand-green-600 font-bold text-base">
+                ✓
+              </span>
+              <span className="text-black">
+                <strong>Unemployed</strong> (lost your job, can't find work)
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-brand-green-600 font-bold text-base">
+                ✓
+              </span>
+              <span className="text-black">
+                <strong>Underemployed</strong> (working part-time, low wages, no
+                benefits)
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-brand-green-600 font-bold text-base">
+                ✓
+              </span>
+              <span className="text-black">
+                <strong>Facing barriers</strong> (disability, low income,
+                justice involvement, lack of education)
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-brand-green-600 font-bold text-base">
+                ✓
+              </span>
+              <span className="text-black">
+                <strong>Dislocated workers</strong> (laid off, plant closure,
+                industry decline)
+              </span>
+            </li>
+          </ul>
+
+          <p className="text-lg text-black">
+            WIOA is run through your local <strong>WorkOne center</strong>. They
+            connect you with training providers (like us), help you apply for
+            funding, and support you through the entire process.
+          </p>
+        </div>
+      </section>
+
+      {/* What WIOA Covers */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">
+            What Does WIOA Cover?
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-green-50 rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-3 text-green-900">
+                ✓ Tuition
+              </h3>
+              <p className="text-black">
+                100% of training costs. Whether it's a 3-week CNA program or a
+                12-month HVAC apprenticeship, WIOA pays for it.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {ELIGIBILITY_CRITERIA.map((criteria) => {
-                const IconComponent = criteria.icon;
-                return (
-                  <div
-                    key={criteria.title}
-                    className="bg-white rounded-xl p-6 border border-slate-200"
-                  >
-                    <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-                      <IconComponent className="w-6 h-6 text-green-600" />
-                    </div>
-                    <h3 className="font-bold text-slate-900 mb-2">{criteria.title}</h3>
-                    <p className="text-slate-600 text-sm">{criteria.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 border border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">Priority Groups</h3>
-              <p className="text-slate-600 mb-6">
-                The following groups receive priority for WIOA services:
-              </p>
-              <div className="grid md:grid-cols-2 gap-3">
-                {PRIORITY_GROUPS.map((group, index) => (
-                  <div key={index} className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-slate-700">{group}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* What's Covered */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
-                What WIOA Covers
-              </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                WIOA funding can cover a wide range of training and supportive service expenses.
+            <div className="bg-green-50 rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-3 text-green-900">
+                ✓ Books & Materials
+              </h3>
+              <p className="text-black">
+                Textbooks, workbooks, uniforms, tools—whatever you need for
+                training.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {COVERED_EXPENSES.map((expense) => (
-                <div
-                  key={expense.item}
-                  className="bg-slate-50 rounded-xl p-6 hover:shadow-md transition"
-                >
-                  <h3 className="font-bold text-slate-900 mb-2">{expense.item}</h3>
-                  <p className="text-slate-600">{expense.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* How to Apply */}
-        <section className="py-20 bg-slate-900 text-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-black mb-4">
-                How to Apply for WIOA Funding
-              </h2>
-              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                Follow these steps to apply for WIOA-funded training.
+            <div className="bg-green-50 rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-3 text-green-900">
+                ✓ Transportation
+              </h3>
+              <p className="text-black">
+                Gas money, bus passes, or mileage reimbursement to get to class.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                { step: '1', title: 'Check Eligibility', description: 'Use our eligibility checker to see if you qualify' },
-                { step: '2', title: 'Contact Workforce Center', description: 'Visit your local American Job Center' },
-                { step: '3', title: 'Complete Assessment', description: 'Meet with a career counselor for evaluation' },
-                { step: '4', title: 'Get Approved', description: 'Receive your ITA (Individual Training Account)' },
-              ].map((item) => (
-                <div key={item.step} className="text-center">
-                  <div className="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-4">
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                  <p className="text-slate-400">{item.description}</p>
-                </div>
-              ))}
+            <div className="bg-green-50 rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-3 text-green-900">
+                ✓ Childcare
+              </h3>
+              <p className="text-black">
+                If you need childcare while you're in training, WIOA can help
+                cover it.
+              </p>
+            </div>
+
+            <div className="bg-green-50 rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-3 text-green-900">
+                ✓ Support Services
+              </h3>
+              <p className="text-black">
+                Work clothes, internet access, even emergency assistance if
+                you're struggling.
+              </p>
+            </div>
+
+            <div className="bg-green-50 rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-3 text-green-900">
+                ✓ Job Placement Help
+              </h3>
+              <p className="text-black">
+                Resume writing, interview prep, and connections to employers
+                hiring in your field.
+              </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-green-600 to-emerald-700 text-white">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-black mb-6">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl text-green-100 mb-8">
-              Check your eligibility in minutes and take the first step toward a new career.
+      {/* How to Qualify */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">
+            How Do I Qualify?
+          </h2>
+
+          <p className="text-lg text-black mb-6">
+            WIOA eligibility depends on your situation. Here are the most common
+            ways people qualify:
+          </p>
+
+          <div className="space-y-6">
+            <div className="bg-white rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-2">1. You Lost Your Job</h3>
+              <p className="text-black">
+                Laid off, fired, plant closure, company downsizing—if you're
+                unemployed through no fault of your own, you likely qualify.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-2">
+                2. You're Working But Struggling
+              </h3>
+              <p className="text-black">
+                Part-time hours, low wages (under $15/hour), no benefits,
+                unstable work—WIOA helps underemployed workers upgrade their
+                skills.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-2">
+                3. You Face Barriers to Employment
+              </h3>
+              <p className="text-black">
+                Disability, low income, lack of high school diploma, English as
+                a second language, justice involvement, homelessness—WIOA is
+                designed to help people overcome barriers.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6">
+              <h3 className="text-lg font-bold mb-2">4. You're a Veteran</h3>
+              <p className="text-black">
+                Veterans get priority for WIOA services. If you served, you're
+                likely eligible.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 bg-blue-50 rounded-lg p-6">
+            <p className="text-blue-900">
+              <strong>Not sure if you qualify?</strong> Contact us. We'll
+              connect you with your local WorkOne center and help you through
+              the application process.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/wioa-eligibility"
-                className="inline-flex items-center gap-2 bg-white text-green-600 px-8 py-4 rounded-xl font-bold hover:bg-green-50 transition"
-              >
-                Check Eligibility Now
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="/programs"
-                className="inline-flex items-center gap-2 bg-green-500/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-500/40 transition border border-white/30"
-              >
-                Browse Programs
-              </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* How to Apply */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8">
+            How to Apply for WIOA
+          </h2>
+
+          <div className="space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-brand-blue-600 text-white rounded-full flex items-center justify-center text-base font-bold flex-shrink-0">
+                1
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-2">
+                  Contact Your Local WorkOne Center
+                </h3>
+                <p className="text-black">
+                  Find your nearest WorkOne at{' '}
+                  <a
+                    href="https://www.in.gov/dwd/workone-centers/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-blue-600 underline"
+                  >
+                    in.gov/dwd/workone-centers
+                  </a>
+                  . Call or walk in. Tell them you're interested in WIOA
+                  training.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-brand-blue-600 text-white rounded-full flex items-center justify-center text-base font-bold flex-shrink-0">
+                2
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-2">
+                  Meet with a Career Advisor
+                </h3>
+                <p className="text-black">
+                  They'll assess your eligibility, discuss your career goals,
+                  and help you choose a training program.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-brand-blue-600 text-white rounded-full flex items-center justify-center text-base font-bold flex-shrink-0">
+                3
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-2">
+                  Choose Elevate For Humanity
+                </h3>
+                <p className="text-black">
+                  Tell your advisor you want to train with us. We're an approved
+                  WIOA provider. We'll handle the enrollment paperwork.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-brand-blue-600 text-white rounded-full flex items-center justify-center text-base font-bold flex-shrink-0">
+                4
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-2">
+                  Start Training (For Free)
+                </h3>
+                <p className="text-black">
+                  Once approved, you start immediately. No tuition bills. No
+                  loans. Just focus on learning.
+                </p>
+              </div>
             </div>
           </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+
+          <div className="mt-8 bg-orange-50 rounded-lg p-6">
+            <p className="text-orange-900 mb-4">
+              <strong>Need help navigating the process?</strong> We work with
+              WorkOne centers every day. Call us at{' '}
+              <a href="tel:3173143757" className="font-bold underline">
+                317-314-3757
+              </a>{' '}
+              and we'll guide you through it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Real Stories */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
+            Real WIOA Success Stories
+          </h2>
+
+          <div className="space-y-8">
+            <div className="bg-white rounded-lg p-6">
+              <p className="text-lg text-black mb-4">
+                <strong>Sarah, 32 - Medical Assistant</strong>
+              </p>
+              <p className="text-black">
+                "I was working at Walmart for $13/hour. Single mom, two kids,
+                barely making rent. My WorkOne advisor told me about WIOA. They
+                paid for my Medical Assistant training—21 days, completely free.
+                Now I work at a clinic making $42,000/year with health
+                insurance. My kids have stability. WIOA changed everything."
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6">
+              <p className="text-lg text-black mb-4">
+                <strong>Marcus, 45 - HVAC Technician</strong>
+              </p>
+              <p className="text-black">
+                "I got laid off after 15 years in manufacturing. I was 45 years
+                old with no college degree. I thought my career was over. WIOA
+                paid for my HVAC training—60 days, 6 certifications. I got hired
+                before I even graduated. Now I'm making $55K with benefits and
+                overtime. I'm 50 now and I've never been more financially
+                secure."
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6">
+              <p className="text-lg text-black mb-4">
+                <strong>Keisha, 26 - Peer Recovery Coach</strong>
+              </p>
+              <p className="text-black">
+                "I'm in recovery. I have a record. Nobody would hire me. WIOA
+                gave me a chance. They paid for my Peer Recovery Coach training.
+                Now I work at a treatment center helping people like me. I make
+                $38K/year and I'm saving lives. WIOA didn't just give me a
+                job—it gave me purpose."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-brand-blue-600 text-white text-center">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            Ready to Apply for WIOA?
+          </h2>
+          <p className="text-base md:text-lg mb-8">
+            We'll help you every step of the way.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-block px-10 py-5 bg-white text-brand-blue-600 font-bold rounded-lg hover:bg-gray-100 transition-all text-lg shadow-xl"
+            >
+              Contact Us
+            </Link>
+            <a
+              href="https://www.in.gov/dwd/workone-centers/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-10 py-5 bg-brand-blue-700 text-white font-bold rounded-lg hover:bg-blue-800 border-2 border-white transition-all text-lg shadow-xl"
+            >
+              Find Your WorkOne Center
+            </a>
+          </div>
+          <p className="mt-6 text-black">
+            Questions? Call{' '}
+            <a href="tel:3173143757" className="font-bold underline">
+              317-314-3757
+            </a>
+          </p>
+        </div>
+      </section>
+    </div>
   );
 }

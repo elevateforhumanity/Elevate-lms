@@ -1,3 +1,4 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import {
   Check,
@@ -11,6 +12,8 @@ import {
   AlertCircle,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title:
     'Program Holder Network | Join Our MOU-Based Licensing | Elevate for Humanity',
@@ -21,7 +24,15 @@ export const metadata = {
   },
 };
 
-export default function ProgramHolderLicensePage() {
+export default async function ProgramHolderLicensePage() {
+  const supabase = await createClient();
+  
+  // Fetch program holder pricing
+  const { data: pricing } = await supabase
+    .from('pricing_plans')
+    .select('*')
+    .eq('type', 'program_holder');
+
   return (
     <div className="bg-white">
       {/* Hero */}

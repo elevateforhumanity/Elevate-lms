@@ -1,5 +1,8 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Check, Code, Users, Shield, Zap, Globe } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'White-Label Platform | Clone & License Our Workforce Training System',
@@ -10,7 +13,14 @@ export const metadata = {
   },
 };
 
-export default function WhiteLabelPage() {
+export default async function WhiteLabelPage() {
+  const supabase = await createClient();
+  
+  // Fetch white label info
+  const { data: whiteLabel } = await supabase
+    .from('pricing_plans')
+    .select('*')
+    .eq('type', 'white_label');
   return (
     <div className="bg-white">
       {/* Hero Section */}

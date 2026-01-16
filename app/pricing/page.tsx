@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Check } from 'lucide-react';
 import { APP_STORE_PRODUCTS } from '@/lib/stripe/app-store-products';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -12,7 +15,14 @@ export const metadata: Metadata = {
     'Choose your access level. Free to download. Platform access starts at $39/month for enrolled learners.',
 };
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const supabase = await createClient();
+  
+  // Fetch pricing plans
+  const { data: plans } = await supabase
+    .from('pricing_plans')
+    .select('*')
+    .order('price');
   return (
     <div className="min-h-screen bg-slate-50 py-16 px-4">
       <div className="max-w-7xl mx-auto">

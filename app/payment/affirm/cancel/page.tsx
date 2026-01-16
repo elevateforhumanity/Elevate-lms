@@ -1,5 +1,9 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import { XCircle } from 'lucide-react';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Payment Cancelled | Elevate for Humanity',
@@ -9,10 +13,11 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = 'force-dynamic';
-import { XCircle } from 'lucide-react';
-
-export default function AffirmCancelPage() {
+export default async function AffirmCancelPage() {
+  const supabase = await createClient();
+  
+  // Log affirm cancellation
+  await supabase.from('page_views').insert({ page: 'affirm_cancel' }).select();
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">

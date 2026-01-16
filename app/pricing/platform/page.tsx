@@ -1,3 +1,4 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import {
   AlertTriangle,
@@ -16,6 +17,8 @@ import {
   Zap,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Platform Licensing | Choose Your License Type | Elevate for Humanity',
   description:
@@ -33,7 +36,15 @@ export const metadata = {
   },
 };
 
-export default function PlatformLicensingPage() {
+export default async function PlatformLicensingPage() {
+  const supabase = await createClient();
+  
+  // Fetch platform licensing info
+  const { data: licensing } = await supabase
+    .from('pricing_plans')
+    .select('*')
+    .eq('type', 'platform');
+
   return (
     <div className="bg-white">
       {/* Hero */}

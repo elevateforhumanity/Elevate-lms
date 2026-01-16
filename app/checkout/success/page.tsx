@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Checkout Success | Elevate For Humanity',
@@ -113,11 +116,16 @@ function SuccessContent({
   );
 }
 
-export default function CheckoutSuccessPage({
+export default async function CheckoutSuccessPage({
   searchParams,
 }: {
   searchParams: { session_id?: string };
 }) {
+  const supabase = await createClient();
+  
+  // Log checkout success
+  await supabase.from('page_views').insert({ page: 'checkout_success' }).select();
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <SuccessContent searchParams={searchParams} />

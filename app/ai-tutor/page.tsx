@@ -1,9 +1,12 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import { PolicyReference } from '@/components/compliance/PolicyReference';
 import { POLICIES } from '@/lib/policies';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -15,6 +18,14 @@ export const metadata: Metadata = {
 };
 
 export default async function AiTutorPage() {
+  const supabase = await createClient();
+  
+  // Fetch AI tutor settings
+  const { data: settings } = await supabase
+    .from('site_settings')
+    .select('*')
+    .eq('key', 'ai_tutor')
+    .single();
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Banner */}

@@ -1,3 +1,4 @@
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
@@ -13,6 +14,8 @@ import {
   Building2,
 } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Platform Licensing | Elevate for Humanity',
   description:
@@ -22,7 +25,15 @@ export const metadata = {
   },
 };
 
-export default function SponsorLicensingPage() {
+export default async function SponsorLicensingPage() {
+  const supabase = await createClient();
+  
+  // Fetch sponsor licensing info
+  const { data: licensing } = await supabase
+    .from('pricing_plans')
+    .select('*')
+    .eq('type', 'sponsor');
+
   return (
     <div className="bg-white">
       {/* Hero Banner */}
