@@ -1,83 +1,113 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { 
-  GraduationCap, Route, ClipboardCheck, Handshake, BarChart3,
-  Calendar, ArrowRight, CheckCircle
-} from 'lucide-react';
+import { CheckCircle, Calendar, Users, BookOpen, BarChart, Settings, Shield, Zap } from 'lucide-react';
 import { PLATFORM_FEATURES, ROUTES } from '@/lib/pricing';
 
 export const metadata: Metadata = {
-  title: 'Platform Features | Elevate LMS Licensing',
-  description: 'LMS delivery, program management, intake workflows, employer partnerships, and compliance reporting. Everything you need for workforce training.',
+  title: 'Platform Features | Elevate LMS',
+  description: 'Explore the features of the Elevate LMS platform. Learning management, student tracking, employer portal, and more.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/license/features',
   },
 };
 
-const iconMap: Record<string, typeof GraduationCap> = {
-  lms: GraduationCap,
-  programs: Route,
-  intake: ClipboardCheck,
-  employer: Handshake,
-  reporting: BarChart3,
-};
+export const dynamic = 'force-dynamic';
 
-const colorMap: Record<string, { bg: string; light: string; text: string }> = {
-  lms: { bg: 'bg-orange-600', light: 'bg-orange-100', text: 'text-orange-600' },
-  programs: { bg: 'bg-blue-600', light: 'bg-blue-100', text: 'text-blue-600' },
-  intake: { bg: 'bg-green-600', light: 'bg-green-100', text: 'text-green-600' },
-  employer: { bg: 'bg-purple-600', light: 'bg-purple-100', text: 'text-purple-600' },
-  reporting: { bg: 'bg-slate-600', light: 'bg-slate-100', text: 'text-slate-600' },
-};
+export default async function FeaturesPage() {
+  const supabase = await createClient();
 
-export default function FeaturesPage() {
+  // Get features from database
+  const { data: dbFeatures } = await supabase
+    .from('platform_features')
+    .select('*')
+    .eq('is_active', true)
+    .order('category', { ascending: true })
+    .order('order', { ascending: true });
+
+  const featureCategories = [
+    {
+      name: 'Learning Management',
+      icon: BookOpen,
+      features: [
+        'Course creation and management',
+        'Video hosting and streaming',
+        'Quizzes and assessments',
+        'Progress tracking',
+        'Certificates and badges',
+        'SCORM/xAPI support',
+      ],
+    },
+    {
+      name: 'Student Management',
+      icon: Users,
+      features: [
+        'Enrollment management',
+        'Attendance tracking',
+        'Document management',
+        'Communication tools',
+        'Student portal',
+        'Mobile access',
+      ],
+    },
+    {
+      name: 'Reporting & Analytics',
+      icon: BarChart,
+      features: [
+        'Real-time dashboards',
+        'WIOA compliance reports',
+        'Outcome tracking',
+        'Custom report builder',
+        'Data export',
+        'API access',
+      ],
+    },
+    {
+      name: 'Administration',
+      icon: Settings,
+      features: [
+        'Multi-tenant architecture',
+        'Role-based access control',
+        'White-label branding',
+        'Custom workflows',
+        'Integration options',
+        'Audit logging',
+      ],
+    },
+  ];
+
   return (
     <div>
       {/* Header */}
-      <section className="bg-slate-50 py-10 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h1 className="text-2xl sm:text-4xl font-bold text-slate-900 mb-3 sm:mb-4">Platform Features</h1>
-            <p className="text-base sm:text-xl text-slate-600">
-              Everything you need to run workforce training programs.
-            </p>
-          </div>
+      <section className="bg-slate-900 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Platform Features</h1>
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            Everything you need to run a modern workforce training program
+          </p>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-10 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-10 sm:space-y-16">
-            {PLATFORM_FEATURES.map((feature, index) => {
-              const Icon = iconMap[feature.id] || GraduationCap;
-              const colors = colorMap[feature.id] || colorMap.lms;
-              const isEven = index % 2 === 0;
-              
+      {/* Feature Categories */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12">
+            {featureCategories.map((category, index) => {
+              const Icon = category.icon;
               return (
-                <div 
-                  key={feature.id} 
-                  className={`grid lg:grid-cols-2 gap-6 sm:gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}
-                >
-                  <div className={!isEven ? 'lg:order-2' : ''}>
-                    <div className={`w-10 h-10 sm:w-14 sm:h-14 ${colors.light} rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-6`}>
-                      <Icon className={`w-5 h-5 sm:w-7 sm:h-7 ${colors.text}`} />
-                    </div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2 sm:mb-4">{feature.name}</h2>
-                    <p className="text-sm sm:text-lg text-slate-600 mb-4 sm:mb-6">{feature.description}</p>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                      {feature.capabilities.map((cap, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-slate-700 text-sm sm:text-base">
-                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0" />
-                          {cap}
-                        </li>
-                      ))}
-                    </ul>
+                <div key={index} className="bg-white rounded-xl shadow-sm border p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <Icon className="w-8 h-8 text-orange-600" />
+                    <h2 className="text-2xl font-bold">{category.name}</h2>
                   </div>
-                  
-                  <div className={`${colors.light} rounded-xl sm:rounded-2xl p-6 sm:p-8 flex items-center justify-center min-h-[150px] sm:min-h-[300px] ${!isEven ? 'lg:order-1' : ''}`}>
-                    <Icon className={`w-16 h-16 sm:w-32 sm:h-32 ${colors.text} opacity-30`} />
-                  </div>
+                  <ul className="space-y-3">
+                    {category.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               );
             })}
@@ -85,26 +115,69 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-10 sm:py-16 bg-orange-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">See these features in action</h2>
-          <p className="text-sm sm:text-base text-orange-100 mb-6 sm:mb-8">
-            Schedule a live demo to explore how these features work.
+      {/* Highlights */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Elevate?</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl p-6 shadow-sm text-center">
+              <Zap className="w-12 h-12 text-orange-600 mx-auto mb-4" />
+              <h3 className="font-bold text-lg mb-2">Fast Implementation</h3>
+              <p className="text-gray-600">Get up and running in weeks, not months</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm text-center">
+              <Shield className="w-12 h-12 text-orange-600 mx-auto mb-4" />
+              <h3 className="font-bold text-lg mb-2">Compliance Ready</h3>
+              <p className="text-gray-600">Built-in WIOA, FERPA, and DOL compliance</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm text-center">
+              <Users className="w-12 h-12 text-orange-600 mx-auto mb-4" />
+              <h3 className="font-bold text-lg mb-2">Dedicated Support</h3>
+              <p className="text-gray-600">Training and support included with every license</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Integration */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">Integrations</h2>
+          <p className="text-gray-600 mb-8">
+            Connect with the tools you already use
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+          <div className="flex flex-wrap justify-center gap-4">
+            {['Salesforce', 'Workday', 'ADP', 'Zoom', 'Google Workspace', 'Microsoft 365'].map((integration) => (
+              <span key={integration} className="bg-gray-100 px-4 py-2 rounded-lg text-gray-700">
+                {integration}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-orange-600">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            See It In Action
+          </h2>
+          <p className="text-orange-100 mb-8">
+            Schedule a personalized demo to explore all features.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href={ROUTES.schedule}
-              className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-orange-50 transition text-sm sm:text-base"
+              className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-orange-50 transition"
             >
-              <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
-              Schedule a Demo
+              <Calendar className="w-5 h-5" />
+              Schedule Demo
             </Link>
             <Link
-              href={ROUTES.licenseIntegrations}
-              className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold border-2 border-white hover:bg-white/10 transition text-sm sm:text-base"
+              href="/license/pricing"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-orange-700 transition"
             >
-              Integrations <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              View Pricing
             </Link>
           </div>
         </div>

@@ -1,186 +1,189 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import { GraduationCap, Settings, Building2, Calendar, ArrowRight, Video, CheckCircle } from 'lucide-react';
-import { ROUTES } from '@/lib/pricing';
+import { Calendar, Clock, Video, CheckCircle, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Platform Demo | Elevate LMS Licensing',
-  description: 'Explore the Elevate LMS through guided demos. Learner experience, admin dashboard, and employer portal views available.',
+  title: 'Schedule a Demo | Elevate LMS',
+  description: 'Schedule a personalized demo of the Elevate LMS platform. See how our workforce training platform can work for your organization.',
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/license/demo',
   },
 };
 
-const demoTracks = [
-  {
-    id: 'learner',
-    title: 'Learner Experience',
-    icon: GraduationCap,
-    color: 'blue',
-    href: ROUTES.demoLearner,
-    description: 'See how participants navigate programs, track progress, and access support.',
-    agenda: [
-      'Program dashboard and course navigation',
-      'Progress tracking and completion',
-      'Funding pathway information',
-      'Support resources and mentorship',
-    ],
-  },
-  {
-    id: 'admin',
-    title: 'Admin / Program Manager',
-    icon: Settings,
-    color: 'green',
-    href: ROUTES.demoAdmin,
-    description: 'Manage programs, track enrollments, and generate compliance reports.',
-    agenda: [
-      'Program management dashboard',
-      'Enrollment pipeline tracking',
-      'Reporting and data exports',
-      'Compliance documentation',
-    ],
-  },
-  {
-    id: 'employer',
-    title: 'Employer / Partner',
-    icon: Building2,
-    color: 'purple',
-    href: ROUTES.demoEmployer,
-    description: 'Connect with candidates, manage hiring pipelines, and access apprenticeship tools.',
-    agenda: [
-      'Candidate pipeline view',
-      'Hiring incentive information',
-      'Apprenticeship management',
-      'Partner dashboard features',
-    ],
-  },
-];
+export const dynamic = 'force-dynamic';
 
-const colorClasses: Record<string, { bg: string; text: string; light: string }> = {
-  blue: { bg: 'bg-blue-600', text: 'text-blue-600', light: 'bg-blue-100' },
-  green: { bg: 'bg-green-600', text: 'text-green-600', light: 'bg-green-100' },
-  purple: { bg: 'bg-purple-600', text: 'text-purple-600', light: 'bg-purple-100' },
-};
+export default async function DemoPage() {
+  const supabase = await createClient();
 
-export default function LicenseDemoPage() {
+  // Get available demo slots
+  const { data: demoSlots } = await supabase
+    .from('demo_availability')
+    .select('*')
+    .gte('date', new Date().toISOString())
+    .eq('is_available', true)
+    .order('date', { ascending: true })
+    .limit(10);
+
+  // Get testimonials from demo attendees
+  const { data: testimonials } = await supabase
+    .from('testimonials')
+    .select('*')
+    .eq('category', 'demo')
+    .eq('is_featured', true)
+    .limit(2);
+
+  const demoIncludes = [
+    'Full platform walkthrough',
+    'Q&A with product specialist',
+    'Custom use case discussion',
+    'Pricing and implementation overview',
+    'No obligation',
+  ];
+
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <section className="bg-slate-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">Explore the Platform</h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Browse demo pages on your own or schedule a live walkthrough with our team.
+      <section className="bg-slate-900 text-white py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Video className="w-16 h-16 mx-auto mb-6 text-orange-500" />
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Schedule a Demo</h1>
+          <p className="text-xl text-slate-300">
+            See how Elevate can transform your workforce training programs
           </p>
         </div>
       </section>
 
-      {/* Live Demo CTA */}
-      <section className="py-12 bg-slate-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center">
-                <Video className="w-6 h-6 text-white" />
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Demo Info */}
+          <div>
+            <h2 className="text-2xl font-bold mb-6">What to Expect</h2>
+            <div className="bg-white rounded-xl shadow-sm border p-6 mb-8">
+              <div className="flex items-center gap-3 mb-4">
+                <Clock className="w-6 h-6 text-orange-600" />
+                <span className="font-medium">30-45 minute session</span>
+              </div>
+              <ul className="space-y-3">
+                {demoIncludes.map((item, index) => (
+                  <li key={index} className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Testimonials */}
+            {testimonials && testimonials.length > 0 && (
+              <div className="space-y-4">
+                <h3 className="font-semibold text-lg">What Others Say</h3>
+                {testimonials.map((testimonial: any) => (
+                  <div key={testimonial.id} className="bg-white rounded-lg p-4 border">
+                    <p className="text-gray-600 italic mb-2">"{testimonial.content}"</p>
+                    <div className="font-medium">{testimonial.name}</div>
+                    {testimonial.organization && (
+                      <div className="text-sm text-gray-500">{testimonial.organization}</div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Contact Alternative */}
+            <div className="mt-8 bg-orange-50 rounded-xl p-6">
+              <h3 className="font-semibold mb-2">Prefer to Talk?</h3>
+              <p className="text-gray-600 mb-4">
+                Call us directly to discuss your needs.
+              </p>
+              <a
+                href="tel:3173143757"
+                className="inline-flex items-center gap-2 text-orange-600 font-medium hover:underline"
+              >
+                <Phone className="w-5 h-5" />
+                (317) 314-3757
+              </a>
+            </div>
+          </div>
+
+          {/* Demo Form */}
+          <div className="bg-white rounded-xl shadow-sm border p-8">
+            <h2 className="text-2xl font-bold mb-6">Request Your Demo</h2>
+            <form className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">First Name *</label>
+                  <input type="text" className="w-full px-4 py-2 border rounded-lg" required />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Last Name *</label>
+                  <input type="text" className="w-full px-4 py-2 border rounded-lg" required />
+                </div>
               </div>
               <div>
-                <h2 className="text-xl font-bold text-white">Prefer a guided walkthrough?</h2>
-                <p className="text-slate-300">We host live demos via Google Meet tailored to your use case.</p>
+                <label className="block text-sm font-medium mb-1">Work Email *</label>
+                <input type="email" className="w-full px-4 py-2 border rounded-lg" required />
               </div>
-            </div>
-            <Link
-              href={ROUTES.schedule}
-              className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition whitespace-nowrap"
-            >
-              <Calendar className="w-5 h-5" />
-              Schedule Live Demo
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Demo Tracks */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center">Self-Guided Demo Tracks</h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {demoTracks.map((track) => {
-              const colors = colorClasses[track.color];
-              
-              return (
-                <div key={track.id} className="bg-white rounded-xl border-2 border-slate-200 hover:border-slate-300 transition-all overflow-hidden">
-                  <div className={`${colors.light} p-6`}>
-                    <div className={`w-14 h-14 ${colors.bg} rounded-xl flex items-center justify-center mb-4`}>
-                      <track.icon className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-900">{track.title}</h3>
-                  </div>
-                  
-                  <div className="p-6">
-                    <p className="text-slate-600 mb-6">{track.description}</p>
-                    
-                    <h4 className="text-sm font-semibold text-slate-900 mb-3">What you'll see:</h4>
-                    <ul className="space-y-2 mb-6">
-                      {track.agenda.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-slate-600">
-                          <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    <Link
-                      href={track.href}
-                      className={`inline-flex items-center gap-2 ${colors.text} font-semibold hover:gap-3 transition-all`}
-                    >
-                      Explore Demo <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* What to Expect */}
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center">What to Expect in a Live Demo</h2>
-          
-          <div className="grid sm:grid-cols-3 gap-8">
-            {[
-              { num: '1', title: 'Discovery', desc: "We'll learn about your organization and training programs" },
-              { num: '2', title: 'Platform Tour', desc: 'Walk through learner, admin, and employer experiences' },
-              { num: '3', title: 'Next Steps', desc: 'Discuss licensing options and implementation timeline' },
-            ].map((step) => (
-              <div key={step.num} className="text-center">
-                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-orange-600 font-bold text-lg">{step.num}</span>
-                </div>
-                <h3 className="font-semibold text-slate-900 mb-2">{step.title}</h3>
-                <p className="text-sm text-slate-600">{step.desc}</p>
+              <div>
+                <label className="block text-sm font-medium mb-1">Phone</label>
+                <input type="tel" className="w-full px-4 py-2 border rounded-lg" />
               </div>
-            ))}
+              <div>
+                <label className="block text-sm font-medium mb-1">Organization *</label>
+                <input type="text" className="w-full px-4 py-2 border rounded-lg" required />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">Organization Type *</label>
+                <select className="w-full px-4 py-2 border rounded-lg" required>
+                  <option value="">Select...</option>
+                  <option value="training-provider">Training Provider</option>
+                  <option value="workforce-board">Workforce Board</option>
+                  <option value="employer">Employer</option>
+                  <option value="government">Government Agency</option>
+                  <option value="nonprofit">Nonprofit</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">Preferred Date/Time</label>
+                {demoSlots && demoSlots.length > 0 ? (
+                  <select className="w-full px-4 py-2 border rounded-lg">
+                    <option value="">Select a time...</option>
+                    {demoSlots.map((slot: any) => (
+                      <option key={slot.id} value={slot.id}>
+                        {new Date(slot.date).toLocaleDateString()} at {slot.time}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <input 
+                    type="text" 
+                    placeholder="e.g., Tuesday afternoon" 
+                    className="w-full px-4 py-2 border rounded-lg" 
+                  />
+                )}
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">What are you looking to accomplish?</label>
+                <textarea 
+                  rows={3} 
+                  className="w-full px-4 py-2 border rounded-lg"
+                  placeholder="Tell us about your goals..."
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-orange-600 text-white py-3 rounded-lg font-semibold hover:bg-orange-700 transition"
+              >
+                Request Demo
+              </button>
+              <p className="text-xs text-gray-500 text-center">
+                By submitting, you agree to our privacy policy. We'll never share your information.
+              </p>
+            </form>
           </div>
         </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-16 bg-orange-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to see it live?</h2>
-          <p className="text-orange-100 mb-8">Schedule a demo and we'll walk you through the platform together.</p>
-          <Link
-            href={ROUTES.schedule}
-            className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-lg font-semibold hover:bg-orange-50 transition"
-          >
-            <Calendar className="w-5 h-5" />
-            Schedule a Demo
-          </Link>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

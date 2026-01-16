@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { CheckCircle, Calendar, HelpCircle } from 'lucide-react';
 import { LICENSE_TIERS, DISCLAIMERS, ROUTES, PLATFORM_FEATURES } from '@/lib/pricing';
@@ -11,7 +12,36 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PricingPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function PricingPage() {
+  const supabase = await createClient();
+
+  // Get license tiers from database
+  const { data: dbTiers } = await supabase
+    .from('license_tiers')
+    .select('*')
+    .eq('is_active', true)
+    .order('price', { ascending: true });
+
+  // Get FAQs
+  const { data: faqs } = await supabase
+    .from('faqs')
+    .select('*')
+    .eq('category', 'licensing')
+    .eq('is_active', true)
+    .order('order', { ascending: true });
+
+  const displayTiers = dbTiers && dbTiers.length > 0 ? dbTiers : LICENSE_TIERS.slice(0, 3);
+
+  const defaultFaqs = [
+    { question: 'What\'s included in the license?', answer: 'All licenses include the core platform, training, and support. Higher tiers include additional features and customization.' },
+    { question: 'Can I upgrade later?', answer: 'Yes, you can upgrade your license at any time. We\'ll prorate the difference.' },
+    { question: 'Is there a monthly option?', answer: 'Yes, we offer monthly billing at a slightly higher rate. Contact us for details.' },
+  ];
+
+  const displayFaqs = faqs && faqs.length > 0 ? faqs : defaultFaqs;
+
   return (
     <div>
       {/* Header */}
@@ -28,9 +58,9 @@ export default function PricingPage() {
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
-            {LICENSE_TIERS.slice(0, 3).map((tier) => (
+            {displayTiers.map((tier: any, index: number) => (
               <div 
-                key={tier.id}
+                key={tier.id || index}
                 className={`rounded-2xl p-8 ${
                   tier.featured 
                     ? 'bg-orange-600 text-white relative' 
@@ -48,37 +78,34 @@ export default function PricingPage() {
                 <h2 className={`text-xl font-bold mb-2 ${tier.featured ? 'mt-2' : ''}`}>
                   {tier.name}
                 </h2>
-                <p className={`text-sm mb-6 ${
-                  tier.featured ? 'text-orange-100' : tier.id === 'enterprise' ? 'text-slate-300' : 'text-slate-600'
-                }`}>
+                
+                <div className="mb-4">
+                  <span className="text-4xl font-bold">
+                    ${tier.price?.toLocaleString()}
+                  </span>
+                  <span className={tier.featured ? 'text-orange-100' : 'text-slate-500'}>
+                    /year
+                  </span>
+                </div>
+                
+                <p className={`mb-6 ${tier.featured ? 'text-orange-100' : 'text-slate-600'}`}>
                   {tier.description}
                 </p>
                 
-                <div className="mb-8">
-                  <p className={`text-sm mb-1 ${
-                    tier.featured ? 'text-orange-200' : tier.id === 'enterprise' ? 'text-slate-400' : 'text-slate-500'
-                  }`}>
-                    {tier.billingType === 'one-time' ? 'One-time license' : 'Per month'}
-                  </p>
-                  <p className="text-4xl font-bold">{tier.price}</p>
-                </div>
-
                 <ul className="space-y-3 mb-8">
-                  {tier.includes.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm">
+                  {tier.features?.map((feature: string, i: number) => (
+                    <li key={i} className="flex items-start gap-2">
                       <CheckCircle className={`w-5 h-5 flex-shrink-0 ${
-                        tier.featured ? 'text-white' : tier.id === 'enterprise' ? 'text-orange-400' : 'text-green-600'
+                        tier.featured ? 'text-orange-200' : 'text-green-500'
                       }`} />
-                      <span className={tier.featured ? 'text-orange-50' : tier.id === 'enterprise' ? 'text-slate-200' : 'text-slate-700'}>
-                        {item}
-                      </span>
+                      <span className={tier.featured ? 'text-white' : ''}>{feature}</span>
                     </li>
                   ))}
                 </ul>
-
+                
                 <Link
                   href={ROUTES.schedule}
-                  className={`block w-full text-center py-3 rounded-lg font-semibold transition ${
+                  className={`block text-center py-3 rounded-lg font-semibold transition ${
                     tier.featured 
                       ? 'bg-white text-orange-600 hover:bg-orange-50' 
                       : tier.id === 'enterprise'
@@ -86,101 +113,81 @@ export default function PricingPage() {
                         : 'bg-slate-900 text-white hover:bg-slate-800'
                   }`}
                 >
-                  {tier.id === 'enterprise' ? 'Request Quote' : 'Schedule Demo'}
+                  Get Started
                 </Link>
-
-                {tier.idealFor && (
-                  <div className={`mt-6 pt-6 border-t ${
-                    tier.featured ? 'border-orange-500' : tier.id === 'enterprise' ? 'border-slate-700' : 'border-slate-200'
-                  }`}>
-                    <p className={`text-xs font-semibold mb-2 ${
-                      tier.featured ? 'text-orange-200' : tier.id === 'enterprise' ? 'text-slate-400' : 'text-slate-500'
-                    }`}>
-                      IDEAL FOR
-                    </p>
-                    <ul className="space-y-1">
-                      {tier.idealFor.map((item, idx) => (
-                        <li key={idx} className={`text-xs ${
-                          tier.featured ? 'text-orange-100' : tier.id === 'enterprise' ? 'text-slate-300' : 'text-slate-600'
-                        }`}>
-                          • {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
               </div>
             ))}
           </div>
-
-          {/* Monthly Option */}
-          <div className="mt-8 bg-slate-100 rounded-xl p-6 text-center">
-            <p className="text-slate-600 mb-2">
-              Need flexibility? We also offer a <strong>monthly subscription at {LICENSE_TIERS[3].price}</strong> for up to 100 students.
-            </p>
-            <Link href={ROUTES.schedule} className="text-orange-600 font-semibold hover:text-orange-700">
-              Ask about monthly options →
-            </Link>
-          </div>
-
-          <p className="text-center text-slate-500 text-sm mt-8">{DISCLAIMERS.pricing}</p>
         </div>
       </section>
 
-      {/* What's Included vs Implementation */}
+      {/* Features Comparison */}
       <section className="py-16 bg-slate-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-8 text-center">What's Included</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-green-50 rounded-xl p-8">
-              <h3 className="text-lg font-bold text-green-900 mb-4">Included with License</h3>
-              <ul className="space-y-3">
-                {PLATFORM_FEATURES.map((feature) => (
-                  <li key={feature.id} className="flex items-start gap-2 text-green-800">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">{feature.name}: {feature.description}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">All Plans Include</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {PLATFORM_FEATURES.slice(0, 6).map((feature: any, index: number) => (
+              <div key={index} className="bg-white rounded-lg p-6 shadow-sm">
+                <CheckCircle className="w-8 h-8 text-green-500 mb-3" />
+                <h3 className="font-semibold mb-2">{feature.name}</h3>
+                <p className="text-gray-600 text-sm">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div className="bg-slate-100 rounded-xl p-8">
-              <h3 className="text-lg font-bold text-slate-900 mb-4">Implementation-Dependent</h3>
-              <ul className="space-y-3">
-                {[
-                  'Custom integrations beyond standard connectors',
-                  'Data migration from existing systems',
-                  'Custom development or feature requests',
-                  'Ongoing managed services',
-                  'Training and onboarding (available separately)',
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-slate-700">
-                    <HelpCircle className="w-5 h-5 text-slate-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-xs text-slate-500 mt-4">{DISCLAIMERS.implementation}</p>
-            </div>
+      {/* FAQs */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {displayFaqs.map((faq: any, index: number) => (
+              <details key={index} className="bg-white rounded-lg shadow-sm border group">
+                <summary className="p-6 cursor-pointer flex items-center justify-between font-semibold list-none">
+                  {faq.question}
+                  <HelpCircle className="w-5 h-5 text-gray-400" />
+                </summary>
+                <div className="px-6 pb-6 text-gray-600">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-16 bg-orange-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to discuss licensing?</h2>
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Ready to Get Started?
+          </h2>
           <p className="text-orange-100 mb-8">
-            Schedule a demo to see the platform and discuss pricing for your organization.
+            Schedule a demo to see the platform in action.
           </p>
-          <Link
-            href={ROUTES.schedule}
-            className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-lg font-semibold hover:bg-orange-50 transition"
-          >
-            <Calendar className="w-5 h-5" />
-            Schedule a Demo
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href={ROUTES.schedule}
+              className="inline-flex items-center justify-center gap-2 bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-orange-50 transition"
+            >
+              <Calendar className="w-5 h-5" />
+              Schedule Demo
+            </Link>
+            <Link
+              href="/contact"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-orange-700 transition"
+            >
+              Contact Sales
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Disclaimer */}
+      <section className="py-8 bg-gray-100">
+        <div className="max-w-4xl mx-auto px-4 text-center text-sm text-gray-500">
+          <p>{DISCLAIMERS.pricing}</p>
         </div>
       </section>
     </div>
