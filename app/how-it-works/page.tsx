@@ -230,6 +230,31 @@ export default async function HowItWorksPage() {
               </div>
             </div>
           </div>
+
+          {/* Enrollment Process Clarification */}
+          <div className="mt-12 bg-blue-50 p-6 rounded-lg border border-blue-200">
+            <h3 className="text-lg font-bold mb-3 text-blue-900">How Enrollment Works</h3>
+            <div className="grid md:grid-cols-2 gap-6 text-sm">
+              <div>
+                <h4 className="font-semibold text-blue-800 mb-2">Funded Programs (WIOA, WRG, JRI)</h4>
+                <p className="text-blue-700">
+                  All funded program enrollments require an application and advisor review. 
+                  We verify eligibility, match you with the right program, and coordinate 
+                  with funding sources. There is no instant checkout—this ensures you're 
+                  set up for success.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-blue-800 mb-2">Fee-Based Programs & Courses</h4>
+                <p className="text-blue-700">
+                  Some programs (like Barber Apprenticeship) and individual courses have 
+                  tuition fees. These still require an application and enrollment agreement. 
+                  Payment is collected after approval, not before.
+                </p>
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
       </section>
 

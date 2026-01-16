@@ -148,7 +148,7 @@ export default function ApplyPage() {
         headline="Start Your Career"
         accentText="In 10 Minutes"
         subheadline="Quick application. Fast response. Real results."
-        description="Last year, 753 students were accepted and 89% got jobs after graduation. Average time from application to first paycheck: 67 days."
+        description="Our programs connect you with real career opportunities. See our outcomes data and methodology at elevateforhumanity.org/outcomes."
         imageSrc="/hero-images/apply-hero.jpg"
         imageAlt="Apply Now"
         primaryCTA={{ text: "Start Application", href: "#application" }}

@@ -97,7 +97,7 @@ export default async function CareersPage() {
         headline="Transform Lives Through"
         accentText="Workforce Development"
         subheadline="Help Us Provide Free Career Training to Thousands"
-        description="At Elevate For Humanity, we believe everyone deserves access to quality career training and the opportunity to build a better future. Join our mission-driven team and make a real impact on people's lives through workforce development. We've trained 10,000+ students, partnered with 500+ employers, and achieved an 85% job placement rate."
+        description="At Elevate For Humanity, we believe everyone deserves access to quality career training and the opportunity to build a better future. Join our mission-driven team and make a real impact on people's lives through workforce development."
         imageSrc="/images/business/team-1.jpg"
         imageAlt="Join Our Team"
         primaryCTA={{ text: "View Open Positions", href: "#positions" }}

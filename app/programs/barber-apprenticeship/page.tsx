@@ -76,13 +76,13 @@ export default async function BarberApprenticeshipPage() {
               href="/apply?program=barber-apprenticeship"
               className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-8 py-4 text-lg font-bold text-white hover:bg-blue-700 transition-all shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
-              Enroll in Barber Program
+              Apply for Barber Program
             </Link>
             <Link
               href="#pricing"
               className="inline-flex items-center justify-center rounded-lg border-2 border-white bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-bold text-white hover:bg-white/20 transition-all shadow-xl"
             >
-              View Program Fee
+              View Tuition & Fees
             </Link>
           </div>
         </div>
@@ -186,50 +186,52 @@ export default async function BarberApprenticeshipPage() {
 
             {/* Payment Options */}
             <div className="space-y-4">
-              <h3 className="text-lg font-bold text-black">Payment Options</h3>
+              <h3 className="text-lg font-bold text-black">Payment Options (after enrollment approval)</h3>
               
-              <Link
-                href="/checkout/barber-apprenticeship?method=full"
-                className="w-full flex items-center justify-between px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-all"
-              >
+              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
                 <div>
                   <div className="font-bold text-lg">Pay in Full</div>
-                  <div className="text-sm text-purple-200">One-time payment of $4,980</div>
+                  <div className="text-sm text-gray-500">One-time payment</div>
                 </div>
                 <span className="text-2xl font-bold">$4,980</span>
-              </Link>
+              </div>
 
-              <Link
-                href="/checkout/barber-apprenticeship?method=plan&months=4"
-                className="w-full flex items-center justify-between px-6 py-4 bg-white border-2 border-purple-300 hover:border-purple-500 text-black font-bold rounded-lg transition-all"
-              >
+              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
                 <div>
                   <div className="font-bold text-lg">4-Month Plan</div>
-                  <div className="text-sm text-slate-600">4 payments of $1,245</div>
+                  <div className="text-sm text-gray-500">4 payments of $1,245</div>
                 </div>
-                <span className="text-xl font-bold text-purple-600">$1,245/mo</span>
-              </Link>
+                <span className="text-xl font-bold">$1,245/mo</span>
+              </div>
 
-              <Link
-                href="/checkout/barber-apprenticeship?method=plan&months=6"
-                className="w-full flex items-center justify-between px-6 py-4 bg-white border-2 border-purple-300 hover:border-purple-500 text-black font-bold rounded-lg transition-all"
-              >
+              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
                 <div>
                   <div className="font-bold text-lg">6-Month Plan</div>
-                  <div className="text-sm text-slate-600">6 payments of $830</div>
+                  <div className="text-sm text-gray-500">6 payments of $830</div>
                 </div>
-                <span className="text-xl font-bold text-purple-600">$830/mo</span>
-              </Link>
+                <span className="text-xl font-bold">$830/mo</span>
+              </div>
 
-              <Link
-                href="/checkout/barber-apprenticeship?method=plan&months=12"
-                className="w-full flex items-center justify-between px-6 py-4 bg-white border-2 border-purple-300 hover:border-purple-500 text-black font-bold rounded-lg transition-all"
-              >
+              <div className="w-full flex items-center justify-between px-6 py-4 bg-gray-100 text-gray-700 rounded-lg">
                 <div>
                   <div className="font-bold text-lg">12-Month Plan</div>
-                  <div className="text-sm text-slate-600">12 payments of $415</div>
+                  <div className="text-sm text-gray-500">12 payments of $415</div>
                 </div>
-                <span className="text-xl font-bold text-purple-600">$415/mo</span>
+                <span className="text-xl font-bold">$415/mo</span>
+              </div>
+
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                <p className="text-blue-800 text-sm">
+                  <strong>How to Enroll:</strong> Submit an application and speak with an enrollment advisor. 
+                  Payment is collected after your enrollment is approved and you've signed your enrollment agreement.
+                </p>
+              </div>
+
+              <Link
+                href="/apply?program=barber-apprenticeship"
+                className="w-full flex items-center justify-center px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg transition-all text-lg"
+              >
+                Apply Now
               </Link>
             </div>
           </div>

@@ -18,7 +18,7 @@ import {
 
 export const metadata: Metadata = {
   title: 'Career Services | Elevate for Humanity',
-  description: 'Resume building, interview prep, job placement. 85% job placement rate.',
+  description: 'Resume building, interview prep, and job placement assistance for program graduates.',
 };
 
 const SERVICES = [
@@ -101,7 +101,7 @@ export default function CareerServicesPage() {
               <div className="max-w-2xl">
                 <div className="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
                   <TrendingUp className="w-4 h-4" />
-                  85% Job Placement Rate
+                  Career Services Included
                 </div>
                 <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
                   Your Career<br />Starts Here
@@ -135,21 +135,26 @@ export default function CareerServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-3xl sm:text-4xl font-bold">85%</div>
-              <div className="text-green-100">Job Placement</div>
-            </div>
-            <div>
               <div className="text-3xl sm:text-4xl font-bold">50+</div>
               <div className="text-green-100">Employer Partners</div>
             </div>
             <div>
-              <div className="text-3xl sm:text-4xl font-bold">500+</div>
-              <div className="text-green-100">Graduates Placed</div>
+              <div className="text-3xl sm:text-4xl font-bold">15+</div>
+              <div className="text-green-100">Training Programs</div>
             </div>
             <div>
-              <div className="text-3xl sm:text-4xl font-bold">2 Weeks</div>
-              <div className="text-green-100">Avg. Time to Hire</div>
+              <div className="text-3xl sm:text-4xl font-bold">Free</div>
+              <div className="text-green-100">Career Services</div>
             </div>
+            <div>
+              <div className="text-3xl sm:text-4xl font-bold">1:1</div>
+              <div className="text-green-100">Advisor Support</div>
+            </div>
+          </div>
+          <div className="text-center mt-4">
+            <Link href="/outcomes" className="text-green-200 text-sm hover:text-white underline">
+              View outcomes methodology →
+            </Link>
           </div>
         </div>
       </section>
