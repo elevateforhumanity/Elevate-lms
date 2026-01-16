@@ -107,7 +107,7 @@ export default async function PathwaysPage() {
     },
   ];
 
-  const displayPathways = pathways && pathways.length > 0 ? pathways : defaultPathways;
+  const displayPathways = defaultPathways;
 
   const stats = [
     { icon: Briefcase, value: pathwayCount || 15, label: 'Career Pathways' },
@@ -180,23 +180,9 @@ export default async function PathwaysPage() {
               />
             </div>
             <div className="flex gap-2">
-              {industries && industries.length > 0 ? (
-                industries.slice(0, 4).map((ind: any) => (
-                  <Link
-                    key={ind.id}
-                    href={`/pathways?industry=${ind.slug}`}
-                    className="px-4 py-3 bg-gray-100 rounded-lg text-sm font-medium hover:bg-gray-200"
-                  >
-                    {ind.name}
-                  </Link>
-                ))
-              ) : (
-                <>
-                  <Link href="/pathways?industry=healthcare" className="px-4 py-3 bg-gray-100 rounded-lg text-sm font-medium hover:bg-gray-200">Healthcare</Link>
-                  <Link href="/pathways?industry=trades" className="px-4 py-3 bg-gray-100 rounded-lg text-sm font-medium hover:bg-gray-200">Trades</Link>
-                  <Link href="/pathways?industry=technology" className="px-4 py-3 bg-gray-100 rounded-lg text-sm font-medium hover:bg-gray-200">Technology</Link>
-                </>
-              )}
+              <Link href="/pathways?industry=healthcare" className="px-4 py-3 bg-gray-100 rounded-lg text-sm font-medium hover:bg-gray-200">Healthcare</Link>
+              <Link href="/pathways?industry=trades" className="px-4 py-3 bg-gray-100 rounded-lg text-sm font-medium hover:bg-gray-200">Trades</Link>
+              <Link href="/pathways?industry=technology" className="px-4 py-3 bg-gray-100 rounded-lg text-sm font-medium hover:bg-gray-200">Technology</Link>
             </div>
           </div>
         </div>
