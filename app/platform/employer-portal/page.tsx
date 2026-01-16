@@ -1,230 +1,289 @@
 import { Metadata } from 'next';
-
 import Link from 'next/link';
 import Image from 'next/image';
+import { Header } from '@/components/ui/Header';
+import { Footer } from '@/components/ui/Footer';
+import { 
+  Users, 
+  Briefcase, 
+  Search, 
+  FileText, 
+  TrendingUp,
+  CheckCircle,
+  Calendar,
+  MessageSquare,
+  Award,
+  Building,
+  DollarSign,
+  ChevronRight
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/platform/employer-portal',
   },
   title: 'Employer Portal | Elevate For Humanity',
-  description:
-    'Manage employer-portal settings and development.',
+  description: 'Access qualified candidates, post jobs, manage apprenticeships, and connect with workforce-ready graduates through our employer portal.',
 };
 
-export default async function EmployerPortalPage() {
+const PORTAL_FEATURES = [
+  {
+    icon: Search,
+    title: 'Candidate Search',
+    description: 'Search our database of qualified, trained candidates filtered by skills, certifications, location, and availability.',
+  },
+  {
+    icon: Briefcase,
+    title: 'Job Posting',
+    description: 'Post job openings directly to our platform and reach thousands of job-ready graduates actively seeking employment.',
+  },
+  {
+    icon: Users,
+    title: 'Apprenticeship Management',
+    description: 'Host apprentices, track their progress, provide feedback, and convert top performers to full-time employees.',
+  },
+  {
+    icon: FileText,
+    title: 'Application Tracking',
+    description: 'Review applications, schedule interviews, and manage your hiring pipeline all in one centralized dashboard.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Analytics & Reports',
+    description: 'Track hiring metrics, time-to-fill, candidate quality scores, and ROI on your workforce development investment.',
+  },
+  {
+    icon: DollarSign,
+    title: 'Funding Programs',
+    description: 'Access OJT reimbursements, tax credits, and workforce development grants to offset training and hiring costs.',
+  },
+];
+
+const BENEFITS = [
+  'Pre-screened, trained candidates ready to work',
+  'Reduced time-to-hire with qualified talent pool',
+  'OJT wage reimbursements up to 75%',
+  'Tax credits for hiring eligible workers',
+  'Ongoing support and retention assistance',
+  'Custom training programs for your needs',
+];
+
+export default function EmployerPortalPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-4.jpg"
-          alt="Employer Portal"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Employer Portal
-          </h1>
-          <p className="text-base md:text-lg md:text-xl mb-8 text-gray-100">
-            Manage employer-portal for career growth
-            and development.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+    <>
+      <Header />
+      <main className="min-h-screen bg-white">
+        {/* Hero Section */}
+        <section className="relative bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 text-white overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/images/patterns/grid.svg')] opacity-5" />
+          <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                <div className="inline-flex items-center gap-2 bg-blue-500/20 backdrop-blur px-4 py-2 rounded-full text-sm font-medium text-blue-300 mb-6">
+                  <Building className="w-4 h-4" />
+                  <span>For Employers</span>
+                </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
                   Employer Portal
-                </h2>
-                <p className="text-black mb-6">
-                  Manage employer-portal for career
-                  growth and development.
+                </h1>
+                <p className="text-xl text-slate-300 mb-8 leading-relaxed">
+                  Connect with workforce-ready graduates, post jobs, manage apprenticeships, 
+                  and access funding programs—all from one powerful employer dashboard.
                 </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
+                <div className="flex flex-wrap gap-4">
+                  <Link
+                    href="/employer/dashboard"
+                    className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg"
+                  >
+                    Access Portal
+                  </Link>
+                  <Link
+                    href="/employers/post-job"
+                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-white px-8 py-4 rounded-xl font-bold hover:bg-white/20 transition border border-white/20"
+                  >
+                    Post a Job
+                  </Link>
+                </div>
               </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
+              <div className="relative hidden lg:block">
+                <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/images/heroes/employer-dashboard.jpg"
+                    alt="Employer Portal Dashboard"
+                    fill
+                    className="object-cover"
+                    sizes="50vw"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats Bar */}
+        <section className="bg-blue-600 text-white py-8">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div>
+                <div className="text-4xl font-black">500+</div>
+                <div className="text-blue-100">Employer Partners</div>
+              </div>
+              <div>
+                <div className="text-4xl font-black">85%</div>
+                <div className="text-blue-100">Placement Rate</div>
+              </div>
+              <div>
+                <div className="text-4xl font-black">75%</div>
+                <div className="text-blue-100">OJT Reimbursement</div>
+              </div>
+              <div>
+                <div className="text-4xl font-black">90%</div>
+                <div className="text-blue-100">Retention Rate</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Features Grid */}
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+                Powerful Hiring Tools
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                Everything you need to find, hire, and retain qualified talent for your organization.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {PORTAL_FEATURES.map((feature) => {
+                const IconComponent = feature.icon;
+                return (
+                  <div
+                    key={feature.title}
+                    className="bg-slate-50 rounded-2xl p-8 hover:shadow-lg transition"
+                  >
+                    <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                      <IconComponent className="w-7 h-7 text-blue-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">
+                      {feature.title}
+                    </h3>
+                    <p className="text-slate-600">
+                      {feature.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Benefits Section */}
+        <section className="py-20 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/artlist/hero-training-5.jpg"
-                  alt="Employer Portal"
+                  src="/images/business/team-meeting.jpg"
+                  alt="Employer Benefits"
                   fill
                   className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="50vw"
                 />
               </div>
-            </div>
-
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
+              <div>
+                <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6">
+                  Why Partner With Us?
+                </h2>
+                <p className="text-lg text-slate-600 mb-8">
+                  We provide more than just candidates. Our comprehensive workforce solutions 
+                  help you build a skilled, reliable team while reducing hiring costs.
                 </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
+                
+                <div className="space-y-4">
+                  {BENEFITS.map((benefit, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-700">{benefit}</span>
+                    </div>
+                  ))}
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
 
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                <div className="mt-8">
+                  <Link
+                    href="/employers"
+                    className="inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
+                    Learn More About Employer Benefits
+                    <ChevronRight className="w-5 h-5" />
+                  </Link>
                 </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
+        {/* How It Works */}
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+                How It Works
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                Get started in minutes and begin connecting with qualified candidates today.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-8">
+              {[
+                { step: '1', title: 'Create Account', description: 'Sign up for free and complete your company profile' },
+                { step: '2', title: 'Post Jobs', description: 'Create job listings with your requirements and preferences' },
+                { step: '3', title: 'Review Candidates', description: 'Browse applications and schedule interviews' },
+                { step: '4', title: 'Hire & Train', description: 'Make offers and access OJT funding programs' },
+              ].map((item) => (
+                <div key={item.step} className="text-center">
+                  <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-black mx-auto mb-4">
+                    {item.step}
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-slate-600">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-black mb-6">
+              Ready to Find Your Next Great Hire?
             </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
+            <p className="text-xl text-blue-100 mb-8">
+              Join hundreds of employers who trust us to connect them with qualified, trained candidates.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/employer/register"
+                className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition"
+              >
+                Create Employer Account
+              </Link>
               <Link
                 href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
+                className="inline-flex items-center gap-2 bg-blue-500/30 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-500/40 transition border border-white/30"
               >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
+                Contact Sales
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }

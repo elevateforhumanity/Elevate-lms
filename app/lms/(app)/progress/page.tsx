@@ -1,290 +1,398 @@
-export const dynamic = 'force-dynamic';
-
 import { Metadata } from 'next';
-
-import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import Image from 'next/image';
+import Link from 'next/link';
+import { 
+  TrendingUp, 
+  Clock, 
+  CheckCircle, 
+  BookOpen,
+  Award,
+  Target,
+  Calendar,
+  ChevronRight,
+  Play
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/lms/progress',
   },
-  title: 'Progress | Elevate For Humanity',
-  description:
-    'Manage progress settings and development.',
+  title: 'My Progress | Student Portal',
+  description: 'Track your learning progress, completed lessons, and achievements.',
 };
+
+export const dynamic = 'force-dynamic';
 
 export default async function ProgressPage() {
   const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
     redirect('/login');
   }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
+  let enrollments: any[] = [];
+  let recentActivity: any[] = [];
+  let stats = {
+    totalCourses: 0,
+    completedCourses: 0,
+    totalLessons: 0,
+    completedLessons: 0,
+    totalHours: 0,
+    streak: 0
+  };
 
-  // Fetch student's courses
-  const { data: enrollments } = await supabase
-    .from('enrollments')
-    .select(
-      `
-      *,
-      courses (
-        id,
-        title,
-        description,
-        thumbnail_url
-      )
-    `
-    )
-    .eq('user_id', user.id)
-    .order('created_at', { ascending: false });
+  try {
+    // Get enrollments with course details
+    const { data: enrollmentData } = await supabase
+      .from('enrollments')
+      .select(`
+        *,
+        courses (
+          id,
+          title,
+          description,
+          thumbnail_url,
+          total_lessons,
+          duration_hours
+        )
+      `)
+      .eq('user_id', user.id)
+      .order('updated_at', { ascending: false });
 
-  const { count: activeCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'active');
+    if (enrollmentData) {
+      enrollments = enrollmentData;
+      stats.totalCourses = enrollments.length;
+      stats.completedCourses = enrollments.filter(e => e.status === 'completed').length;
+      
+      enrollments.forEach(e => {
+        stats.totalLessons += e.courses?.total_lessons || 0;
+        stats.completedLessons += e.completed_lessons || 0;
+        stats.totalHours += e.courses?.duration_hours || 0;
+      });
+    }
 
-  const { count: completedCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'completed');
+    // Get recent progress activity
+    const { data: progressData } = await supabase
+      .from('student_progress')
+      .select(`
+        *,
+        courses (title),
+        lessons (title)
+      `)
+      .eq('student_id', user.id)
+      .order('updated_at', { ascending: false })
+      .limit(10);
 
-  const { data: recentProgress } = await supabase
-    .from('student_progress')
-    .select(
-      `
-      *,
-      courses (title)
-    `
-    )
-    .eq('student_id', user.id)
-    .order('updated_at', { ascending: false })
-    .limit(5);
+    if (progressData) {
+      recentActivity = progressData;
+    }
+
+    // Calculate streak (days of consecutive activity)
+    const { data: activityDates } = await supabase
+      .from('student_progress')
+      .select('updated_at')
+      .eq('student_id', user.id)
+      .order('updated_at', { ascending: false })
+      .limit(30);
+
+    if (activityDates && activityDates.length > 0) {
+      let streak = 1;
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      const lastActivity = new Date(activityDates[0].updated_at);
+      lastActivity.setHours(0, 0, 0, 0);
+      
+      // Check if last activity was today or yesterday
+      const diffDays = Math.floor((today.getTime() - lastActivity.getTime()) / (1000 * 60 * 60 * 24));
+      if (diffDays <= 1) {
+        for (let i = 1; i < activityDates.length; i++) {
+          const current = new Date(activityDates[i].updated_at);
+          const prev = new Date(activityDates[i - 1].updated_at);
+          current.setHours(0, 0, 0, 0);
+          prev.setHours(0, 0, 0, 0);
+          
+          const dayDiff = Math.floor((prev.getTime() - current.getTime()) / (1000 * 60 * 60 * 24));
+          if (dayDiff === 1) {
+            streak++;
+          } else if (dayDiff > 1) {
+            break;
+          }
+        }
+        stats.streak = streak;
+      }
+    }
+  } catch (error) {
+    console.log('Error fetching progress data');
+  }
+
+  // Calculate overall progress percentage
+  const overallProgress = stats.totalLessons > 0 
+    ? Math.round((stats.completedLessons / stats.totalLessons) * 100) 
+    : 0;
+
+  // Format relative time
+  const formatTimeAgo = (dateString: string) => {
+    const now = new Date();
+    const date = new Date(dateString);
+    const diffMs = now.getTime() - date.getTime();
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMs / 3600000);
+    const diffDays = Math.floor(diffMs / 86400000);
+    
+    if (diffMins < 60) return `${diffMins}m ago`;
+    if (diffHours < 24) return `${diffHours}h ago`;
+    if (diffDays < 7) return `${diffDays}d ago`;
+    return date.toLocaleDateString();
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-7.jpg"
-          alt="Progress"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Progress
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Manage progress settings and
-            development.
+    <div className="min-h-screen bg-slate-50 py-8">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-slate-900">My Progress</h1>
+          <p className="text-slate-600 mt-1">
+            Track your learning journey and achievements
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
         </div>
-      </section>
 
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+        {/* Stats Overview */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
+          <div className="bg-white rounded-xl border border-slate-200 p-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-blue-600" />
+              </div>
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Progress
-                </h2>
-                <p className="text-black mb-6">
-                  Manage progress for career growth
-                  and development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-5.jpg"
-                  alt="Progress"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                <div className="text-2xl font-bold text-slate-900">{stats.totalCourses}</div>
+                <div className="text-xs text-slate-600">Courses</div>
               </div>
             </div>
-
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
+          </div>
+          
+          <div className="bg-white rounded-xl border border-slate-200 p-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                <CheckCircle className="w-5 h-5 text-green-600" />
               </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
+              <div>
+                <div className="text-2xl font-bold text-slate-900">{stats.completedCourses}</div>
+                <div className="text-xs text-slate-600">Completed</div>
               </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl border border-slate-200 p-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                <Target className="w-5 h-5 text-purple-600" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-slate-900">{stats.completedLessons}</div>
+                <div className="text-xs text-slate-600">Lessons Done</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl border border-slate-200 p-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                <Clock className="w-5 h-5 text-orange-600" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-slate-900">{stats.totalHours}</div>
+                <div className="text-xs text-slate-600">Hours</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl border border-slate-200 p-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                <TrendingUp className="w-5 h-5 text-red-600" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-slate-900">{overallProgress}%</div>
+                <div className="text-xs text-slate-600">Overall</div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl border border-slate-200 p-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <Award className="w-5 h-5 text-yellow-600" />
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-slate-900">{stats.streak}</div>
+                <div className="text-xs text-slate-600">Day Streak</div>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
-              >
-                Apply Now
-              </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
-              >
-                Browse Programs
-              </Link>
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Course Progress */}
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+              <div className="p-6 border-b border-slate-200">
+                <h2 className="text-xl font-bold text-slate-900">Course Progress</h2>
+              </div>
+
+              {enrollments.length > 0 ? (
+                <div className="divide-y divide-slate-200">
+                  {enrollments.map((enrollment) => {
+                    const progress = enrollment.courses?.total_lessons > 0
+                      ? Math.round((enrollment.completed_lessons || 0) / enrollment.courses.total_lessons * 100)
+                      : 0;
+                    
+                    return (
+                      <Link
+                        key={enrollment.id}
+                        href={`/lms/courses/${enrollment.course_id}`}
+                        className="block p-6 hover:bg-slate-50 transition"
+                      >
+                        <div className="flex items-start gap-4">
+                          <div className="w-16 h-16 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            {enrollment.courses?.thumbnail_url ? (
+                              <img 
+                                src={enrollment.courses.thumbnail_url} 
+                                alt="" 
+                                className="w-full h-full object-cover rounded-xl"
+                              />
+                            ) : (
+                              <BookOpen className="w-8 h-8 text-slate-400" />
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between mb-1">
+                              <h3 className="font-bold text-slate-900 truncate">
+                                {enrollment.courses?.title || 'Course'}
+                              </h3>
+                              <span className={`px-2 py-1 rounded text-xs font-medium ${
+                                enrollment.status === 'completed'
+                                  ? 'bg-green-100 text-green-700'
+                                  : 'bg-blue-100 text-blue-700'
+                              }`}>
+                                {enrollment.status === 'completed' ? 'Completed' : 'In Progress'}
+                              </span>
+                            </div>
+                            <p className="text-sm text-slate-600 mb-3">
+                              {enrollment.completed_lessons || 0} of {enrollment.courses?.total_lessons || 0} lessons completed
+                            </p>
+                            <div className="flex items-center gap-4">
+                              <div className="flex-1">
+                                <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                  <div 
+                                    className={`h-full rounded-full ${
+                                      progress === 100 ? 'bg-green-500' : 'bg-blue-500'
+                                    }`}
+                                    style={{ width: `${progress}%` }}
+                                  />
+                                </div>
+                              </div>
+                              <span className="text-sm font-medium text-slate-700 w-12 text-right">
+                                {progress}%
+                              </span>
+                            </div>
+                          </div>
+                          <ChevronRight className="w-5 h-5 text-slate-400 flex-shrink-0" />
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="p-16 text-center">
+                  <BookOpen className="w-16 h-16 text-slate-300 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">No Courses Yet</h3>
+                  <p className="text-slate-600 mb-6">
+                    Enroll in courses to start tracking your progress.
+                  </p>
+                  <Link
+                    href="/lms/courses"
+                    className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition"
+                  >
+                    Browse Courses
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Recent Activity */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <h3 className="font-bold text-slate-900 mb-4">Recent Activity</h3>
+              
+              {recentActivity.length > 0 ? (
+                <div className="space-y-4">
+                  {recentActivity.slice(0, 5).map((activity, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Play className="w-4 h-4 text-green-600" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm text-slate-900 truncate">
+                          {activity.lessons?.title || 'Lesson'}
+                        </p>
+                        <p className="text-xs text-slate-500">
+                          {activity.courses?.title} • {formatTimeAgo(activity.updated_at)}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-slate-600 text-center py-4">
+                  No recent activity
+                </p>
+              )}
+            </div>
+
+            {/* Learning Streak */}
+            <div className="bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl p-6 text-white">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
+                  <Award className="w-8 h-8" />
+                </div>
+                <div>
+                  <div className="text-4xl font-black">{stats.streak}</div>
+                  <div className="text-orange-100">Day Streak</div>
+                </div>
+              </div>
+              <p className="text-sm text-orange-100">
+                {stats.streak > 0 
+                  ? "Keep it up! You're on a roll!" 
+                  : "Start learning today to build your streak!"}
+              </p>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+              <h3 className="font-bold text-slate-900 mb-4">Quick Actions</h3>
+              <div className="space-y-2">
+                <Link 
+                  href="/lms/courses"
+                  className="block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition"
+                >
+                  Continue Learning
+                </Link>
+                <Link 
+                  href="/lms/certificates"
+                  className="block w-full text-center border border-slate-200 text-slate-700 px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition"
+                >
+                  View Certificates
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
