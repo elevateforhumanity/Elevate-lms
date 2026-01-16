@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -208,6 +209,26 @@ export default async function Page() {
               <li>• Room for advancement</li>
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Drug & Alcohol Specimen Collector"
+            partnerCertifications={[
+              'DOT Urine Specimen Collector Certification',
+              'DOT Breath Alcohol Technician (BAT) Certification',
+              'Non-DOT Collection Certification',
+            ]}
+            employmentOutcomes={[
+              'Drug & Alcohol Specimen Collector',
+              'Mobile Collection Technician',
+              'Occupational Health Technician',
+              'Laboratory Collection Specialist',
+            ]}
+          />
         </div>
       </section>
 

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Thermometer, Clock, DollarSign, Award, MapPin, Calendar, ArrowRight, CheckCircle, Users, Briefcase } from 'lucide-react';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 
 export const metadata: Metadata = {
   title: 'HVAC Technician Training | Free Program | Elevate For Humanity',
@@ -304,6 +305,26 @@ export default async function HVACProgramPage() {
           </div>
         </div>
       </div>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4">
+          <CredentialsOutcomes
+            programName="HVAC Technician"
+            partnerCertifications={[
+              'EPA 608 Certification (issued by EPA-approved testing organization)',
+              'OSHA 10-Hour Safety Certification',
+              'R-410A Refrigerant Certification',
+            ]}
+            employmentOutcomes={[
+              'HVAC Technician',
+              'HVAC Installer',
+              'Refrigeration Technician',
+              'Building Maintenance Technician',
+            ]}
+          />
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-16 bg-blue-700 text-white">

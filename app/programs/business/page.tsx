@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -319,6 +320,27 @@ export default async function BusinessPage() {
           >
             Apply Now
           </Link>
+        </div>
+      </section>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Business & Management"
+            partnerCertifications={[
+              'Microsoft Office Specialist (issued by Certiport/Microsoft)',
+              'QuickBooks Certified User (issued by Intuit)',
+              'Entrepreneurship & Small Business Certification (issued by Certiport)',
+            ]}
+            employmentOutcomes={[
+              'Administrative Assistant',
+              'Office Manager',
+              'Bookkeeper',
+              'Customer Service Representative',
+              'Small Business Owner',
+            ]}
+          />
         </div>
       </section>
     </div>

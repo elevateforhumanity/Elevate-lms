@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 
 export const dynamic = 'force-dynamic';
 
@@ -370,6 +371,28 @@ export default async function Page() {
               317-314-3757
             </a>
           </p>
+        </div>
+      </section>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Tax Preparation"
+            partnerCertifications={[
+              'IRS VITA/TCE Certification (issued by IRS)',
+              'IRS PTIN (Preparer Tax Identification Number)',
+              'QuickBooks Certified User (issued by Intuit)',
+              'Microsoft Office Specialist (issued by Certiport/Microsoft)',
+            ]}
+            employmentOutcomes={[
+              'Tax Preparer',
+              'VITA Volunteer',
+              'Tax Business Owner',
+              'Bookkeeper',
+              'Financial Services Representative',
+            ]}
+          />
         </div>
       </section>
     </div>

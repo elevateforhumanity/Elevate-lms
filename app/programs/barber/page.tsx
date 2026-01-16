@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Scissors, Clock, DollarSign, Award, MapPin, Calendar, ArrowRight, CheckCircle, Users } from 'lucide-react';
@@ -285,6 +286,25 @@ export default async function BarberProgramPage() {
           </div>
         </div>
       </div>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Barber"
+            partnerCertifications={[
+              'Indiana Barber License (issued by Indiana Professional Licensing Agency)',
+              'USDOL Registered Apprenticeship Certificate of Completion',
+            ]}
+            employmentOutcomes={[
+              'Licensed Barber',
+              'Barbershop Owner/Operator',
+              'Master Barber',
+              'Barber Instructor',
+            ]}
+          />
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-16 bg-gray-900 text-white">

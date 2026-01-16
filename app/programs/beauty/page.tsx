@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -218,6 +219,28 @@ export default async function BeautyProgramsPage() {
               before beginning your apprenticeship hours.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Beauty & Cosmetology"
+            partnerCertifications={[
+              'Indiana Cosmetology License (issued by Indiana Professional Licensing Agency)',
+              'Indiana Barber License (issued by Indiana Professional Licensing Agency)',
+              'Indiana Esthetician License (issued by Indiana Professional Licensing Agency)',
+              'Indiana Manicurist License (issued by Indiana Professional Licensing Agency)',
+            ]}
+            employmentOutcomes={[
+              'Licensed Cosmetologist',
+              'Licensed Barber',
+              'Licensed Esthetician',
+              'Licensed Nail Technician',
+              'Salon/Barbershop Owner',
+            ]}
+          />
         </div>
       </section>
 

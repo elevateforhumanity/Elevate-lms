@@ -6,10 +6,15 @@ import Link from 'next/link';
 export default function VideoHeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return undefined;
+
+    // Mark video as loaded when it can play
+    const handleCanPlay = () => setVideoLoaded(true);
+    video.addEventListener('canplay', handleCanPlay);
 
     // Force autoplay on mount for all devices including mobile
     const playVideo = async () => {
@@ -38,6 +43,7 @@ export default function VideoHeroSection() {
     document.addEventListener('scroll', handleInteraction, { once: true });
 
     return () => {
+      video.removeEventListener('canplay', handleCanPlay);
       document.removeEventListener('touchstart', handleInteraction);
       document.removeEventListener('click', handleInteraction);
       document.removeEventListener('scroll', handleInteraction);
@@ -45,17 +51,16 @@ export default function VideoHeroSection() {
   }, [isPlaying]);
 
   return (
-    <section className="relative w-full min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center bg-black">
-      {/* Video Background - no gradient overlay */}
+    <section className="relative w-full min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center bg-slate-900">
+      {/* Video Background */}
       <video
         ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
         loop
         muted
         playsInline
         autoPlay
-        preload="metadata"
-        poster="/images/artlist/hero-training-1.jpg"
+        preload="auto"
       >
         <source src="/videos/hero-home.mp4" type="video/mp4" />
       </video>

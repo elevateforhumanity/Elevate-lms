@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -207,6 +208,26 @@ export default async function ApprenticeshipProgramsPage() {
         showApprovalProcess={true}
         showMultiRegion={true}
       />
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Apprenticeship"
+            partnerCertifications={[
+              'USDOL Registered Apprenticeship Certificate of Completion',
+              'State Professional License (issued by Indiana Professional Licensing Agency)',
+              'Industry-specific certifications as required by trade',
+            ]}
+            employmentOutcomes={[
+              'Licensed Professional in your trade',
+              'Journeyman status',
+              'Business Owner/Operator',
+              'Trade Instructor',
+            ]}
+          />
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20">

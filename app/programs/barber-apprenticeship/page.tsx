@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { OptimizedVideo } from '@/components/OptimizedVideo';
 import type { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -383,6 +384,25 @@ export default async function BarberApprenticeshipPage() {
               </p>
             </div>
           </details>
+        </div>
+      </section>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Barber Apprenticeship"
+            partnerCertifications={[
+              'Indiana Barber License (issued by Indiana Professional Licensing Agency)',
+              'USDOL Registered Apprenticeship Certificate of Completion',
+            ]}
+            employmentOutcomes={[
+              'Licensed Barber',
+              'Barbershop Owner/Operator',
+              'Master Barber',
+              'Barber Instructor',
+            ]}
+          />
         </div>
       </section>
 

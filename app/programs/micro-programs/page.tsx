@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -237,11 +238,32 @@ export default async function MicroProgramsPage() {
         </div>
       </section>
 
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Micro Programs"
+            partnerCertifications={[
+              'CPR/AED/First Aid Certification (issued by American Heart Association or HSI)',
+              'OSHA 10/30-Hour Safety Certification',
+              'Forklift Operator Certification',
+              'Food Handler Certification',
+            ]}
+            employmentOutcomes={[
+              'Enhanced employability with stackable credentials',
+              'Workplace safety compliance',
+              'Career advancement opportunities',
+              'Foundation for longer-term programs',
+            ]}
+          />
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="px-6 sm:px-10 lg:px-12 py-16 lg:py-20 bg-gray-50">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-black mb-6">
-            Get Certified This Month
+            Get Credentialed This Month
           </h2>
           <p className="text-xl text-black mb-8">
             Start a micro program and complete your training in weeks.

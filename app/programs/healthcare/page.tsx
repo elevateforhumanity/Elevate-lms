@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -358,6 +359,28 @@ export default async function HealthcarePage() {
               Need Help? Contact Us
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Healthcare"
+            partnerCertifications={[
+              'State CNA Certification (issued by Indiana State Department of Health)',
+              'Phlebotomy Certification (issued by NHA, ASCP, or equivalent)',
+              'Medical Assistant Certification (issued by AAMA, AMT, or equivalent)',
+              'CPR/BLS Certification (issued by American Heart Association)',
+            ]}
+            employmentOutcomes={[
+              'Certified Nursing Assistant',
+              'Phlebotomy Technician',
+              'Medical Assistant',
+              'Patient Care Technician',
+              'Home Health Aide',
+            ]}
+          />
         </div>
       </section>
     </div>

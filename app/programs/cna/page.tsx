@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Stethoscope, CheckCircle, Clock, DollarSign, Award, Users, Building2 } from 'lucide-react';
 import { VideoHero } from '@/components/heroes/VideoHero';
 import { ProgramNav } from '@/components/programs/ProgramNav';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 
 export const dynamic = 'force-dynamic';
 
@@ -227,6 +228,23 @@ export default async function Page() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Credentials & Outcomes */}
+        <div id="credentials" className="mb-16">
+          <CredentialsOutcomes
+            programName="CNA"
+            partnerCertifications={[
+              'Indiana State CNA Certification (issued by Indiana State Department of Health)',
+              'CPR/BLS Certification (issued by American Heart Association or equivalent)',
+            ]}
+            employmentOutcomes={[
+              'Certified Nursing Assistant in hospitals, nursing homes, and home health',
+              'Patient Care Technician',
+              'Home Health Aide',
+              'Pathway to LPN or RN programs',
+            ]}
+          />
         </div>
 
         {/* Career Opportunities */}

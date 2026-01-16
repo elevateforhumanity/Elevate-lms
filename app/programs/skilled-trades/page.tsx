@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import { Wrench, Clock, DollarSign, Award, ArrowRight, CheckCircle, Zap, Thermometer, HardHat } from 'lucide-react';
@@ -239,6 +240,28 @@ export default async function SkilledTradesPage() {
           </div>
         </section>
       </div>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Skilled Trades"
+            partnerCertifications={[
+              'EPA 608 Certification (issued by EPA-approved testing organization)',
+              'OSHA 10/30-Hour Safety Certification',
+              'NCCER Certifications (issued by NCCER)',
+              'State Journeyman/Master Licenses (issued by state licensing boards)',
+            ]}
+            employmentOutcomes={[
+              'HVAC Technician',
+              'Electrician',
+              'Plumber',
+              'Welder',
+              'Construction Technician',
+            ]}
+          />
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-16 bg-orange-600 text-white">

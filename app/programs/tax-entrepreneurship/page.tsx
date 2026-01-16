@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 
 export const dynamic = 'force-dynamic';
 
@@ -289,6 +290,27 @@ export default async function TaxEntrepreneurshipPage() {
           >
             Apply Now
           </Link>
+        </div>
+      </section>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Tax Entrepreneurship"
+            partnerCertifications={[
+              'IRS PTIN (Preparer Tax Identification Number)',
+              'IRS Annual Filing Season Program (AFSP)',
+              'QuickBooks Certified User (issued by Intuit)',
+              'Enrolled Agent (EA) exam preparation',
+            ]}
+            employmentOutcomes={[
+              'Tax Business Owner',
+              'Independent Tax Preparer',
+              'Tax Franchise Operator',
+              'Bookkeeping Service Provider',
+            ]}
+          />
         </div>
       </section>
     </div>

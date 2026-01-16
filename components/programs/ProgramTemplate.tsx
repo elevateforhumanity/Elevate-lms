@@ -3,6 +3,7 @@ import { Phone, Mail } from 'lucide-react';
 import type { Program } from '@/app/data/programs';
 import { ProgramPaymentButton } from './ProgramPaymentButton';
 import VideoHeroBanner from '@/components/home/VideoHeroBanner';
+import { CredentialsOutcomes } from './CredentialsOutcomes';
 
 export function ProgramTemplate({ program }: { program: Program }) {
   return (
@@ -282,8 +283,17 @@ export function ProgramTemplate({ program }: { program: Program }) {
         </section>
       )}
 
+      {/* CREDENTIALS & OUTCOMES */}
+      <section className="max-w-6xl mx-auto px-4 py-12">
+        <CredentialsOutcomes
+          programName={program.name}
+          partnerCertifications={program.certifications || []}
+          employmentOutcomes={program.outcomes || []}
+        />
+      </section>
+
       {/* FINAL CTA */}
-      <section className="bg-zinc-900   text-white py-16">
+      <section className="bg-zinc-900 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-xl text-white/90 mb-8">

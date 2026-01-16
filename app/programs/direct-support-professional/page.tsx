@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -203,6 +204,26 @@ export default async function Page() {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Direct Support Professional"
+            partnerCertifications={[
+              'NADSP Credential (issued by National Alliance for Direct Support Professionals)',
+              'CPR/First Aid Certification',
+              'Medication Administration Certification',
+            ]}
+            employmentOutcomes={[
+              'Direct Support Professional',
+              'Residential Support Staff',
+              'Community Integration Specialist',
+              'Behavioral Health Technician',
+            ]}
+          />
         </div>
       </section>
 

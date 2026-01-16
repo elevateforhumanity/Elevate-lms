@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -314,6 +315,29 @@ export default async function TechnologyPage() {
           >
             Apply Now
           </Link>
+        </div>
+      </section>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Technology & IT"
+            partnerCertifications={[
+              'CompTIA A+ Certification (issued by CompTIA)',
+              'CompTIA Network+ Certification (issued by CompTIA)',
+              'CompTIA Security+ Certification (issued by CompTIA)',
+              'Microsoft Office Specialist (issued by Certiport/Microsoft)',
+              'IC3 Digital Literacy Certification (issued by Certiport)',
+            ]}
+            employmentOutcomes={[
+              'IT Support Specialist',
+              'Help Desk Technician',
+              'Network Administrator',
+              'Cybersecurity Analyst',
+              'Desktop Support Technician',
+            ]}
+          />
         </div>
       </section>
     </div>

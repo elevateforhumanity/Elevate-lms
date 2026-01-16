@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import type { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
@@ -298,6 +299,25 @@ export default async function EstheticianApprenticeshipPage() {
         showApprovalProcess={true}
         showMultiRegion={true}
       />
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Esthetician Apprenticeship"
+            partnerCertifications={[
+              'Indiana Esthetician License (issued by Indiana Professional Licensing Agency)',
+              'USDOL Registered Apprenticeship Certificate of Completion',
+            ]}
+            employmentOutcomes={[
+              'Licensed Esthetician',
+              'Skincare Specialist',
+              'Spa Technician',
+              'Medical Esthetician',
+            ]}
+          />
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-16 bg-teal-600">

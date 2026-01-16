@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -821,6 +822,26 @@ export default async function JRIProgramsPage() {
               </div>
             </details>
           </div>
+        </div>
+      </section>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Justice-Involved Reentry"
+            partnerCertifications={[
+              'Industry certifications based on chosen career pathway',
+              'OSHA Safety Certifications',
+              'Workforce Readiness Credentials',
+            ]}
+            employmentOutcomes={[
+              'Stable employment in high-demand industries',
+              'Career pathway to self-sufficiency',
+              'Reduced recidivism through meaningful work',
+              'Foundation for career advancement',
+            ]}
+          />
         </div>
       </section>
 

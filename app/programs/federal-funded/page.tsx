@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CredentialsOutcomes } from '@/components/programs/CredentialsOutcomes';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
@@ -245,6 +246,26 @@ export default async function FederalFundedProgramsPage() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Credentials & Outcomes */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-6">
+          <CredentialsOutcomes
+            programName="Federal-Funded Programs"
+            partnerCertifications={[
+              'Industry certifications based on chosen career pathway',
+              'State licenses where applicable',
+              'Nationally recognized credentials',
+            ]}
+            employmentOutcomes={[
+              'Employment in high-demand industries',
+              'Career pathway to family-sustaining wages',
+              'Foundation for career advancement',
+              'Access to employer partnerships',
+            ]}
+          />
         </div>
       </section>
 
