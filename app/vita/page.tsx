@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import ModernLandingHero from '@/components/landing/ModernLandingHero';
-import ModernFeatures from '@/components/landing/ModernFeatures';
-import { Heart, DollarSign, FileText, CheckCircle, Users, Clock, Shield } from 'lucide-react';
+import { Heart, DollarSign, FileText, CheckCircle, Users, Clock, MapPin, Calendar } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'VITA Tax Prep - Free Tax Preparation | Elevate for Humanity',
@@ -10,23 +10,51 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/vita',
   },
-  openGraph: {
-    title: 'VITA - Free Tax Preparation',
-    description: 'Free IRS-certified tax preparation for income under $64K. Average refund: $2,847.',
-    url: 'https://www.elevateforhumanity.org/vita',
-    siteName: 'Elevate for Humanity',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'VITA Free Tax Prep' }],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'VITA - Free Tax Preparation',
-    description: 'Free IRS-certified tax preparation. Average refund: $2,847.',
-    images: ['/og-default.jpg'],
-  },
 };
 
-export default function VITAPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function VITAPage() {
+  const supabase = await createClient();
+
+  // Get VITA statistics
+  const { data: stats } = await supabase
+    .from('vita_statistics')
+    .select('*')
+    .eq('year', new Date().getFullYear())
+    .single();
+
+  // Get VITA locations
+  const { data: locations } = await supabase
+    .from('vita_locations')
+    .select('*')
+    .eq('is_active', true)
+    .limit(4);
+
+  // Get upcoming availability
+  const { data: availability } = await supabase
+    .from('vita_availability')
+    .select('*')
+    .gte('date', new Date().toISOString())
+    .order('date', { ascending: true })
+    .limit(5);
+
+  const defaultStats = {
+    returns_filed: 2045,
+    average_refund: 2847,
+    total_saved: 408000,
+    income_limit: 64000,
+  };
+
+  const displayStats = stats || defaultStats;
+
+  const features = [
+    { icon: DollarSign, title: '100% Free', description: 'No hidden fees. Save $200+ in tax prep costs.' },
+    { icon: CheckCircle, title: 'IRS Certified', description: 'All volunteers are IRS-certified tax preparers.' },
+    { icon: FileText, title: 'E-File Included', description: 'Electronic filing and direct deposit setup.' },
+    { icon: Users, title: 'Expert Help', description: 'Get help with credits like EITC and Child Tax Credit.' },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       <ModernLandingHero
@@ -34,123 +62,151 @@ export default function VITAPage() {
         headline="File Your Taxes"
         accentText="For $0"
         subheadline="Free VITA Tax Preparation - Income Under $64K"
-        description="We filed 2,045 FREE returns last year. Average refund: $2,847. Total saved in tax prep fees: $408,000. If you earn under $64K, you qualify. IRS-certified volunteers. E-file included. Direct deposit setup. Zero cost to you."
+        description={`We filed ${displayStats.returns_filed.toLocaleString()} FREE returns last year. Average refund: $${displayStats.average_refund.toLocaleString()}. Total saved in tax prep fees: $${displayStats.total_saved.toLocaleString()}. If you earn under $${displayStats.income_limit.toLocaleString()}, you qualify.`}
         imageSrc="/images/business/tax-prep-certification-optimized.jpg"
         imageAlt="Free VITA Tax Preparation"
-        primaryCTA={{ text: "Book Free Appointment", href: "/tax/rise-up-foundation/site-locator" }}
-        secondaryCTA={{ text: "Check If You Qualify", href: "/tax/free" }}
+        primaryCTA={{ text: "Book Free Appointment", href: "/vita/schedule" }}
+        secondaryCTA={{ text: "Check If You Qualify", href: "/vita/eligibility" }}
         features={[
-          "2,045 free returns in 2025 • $408K saved in tax prep fees",
-          "Average refund: $2,847 • Qualify if income under $64K",
+          `${displayStats.returns_filed.toLocaleString()} free returns • $${displayStats.total_saved.toLocaleString()} saved`,
+          `Average refund: $${displayStats.average_refund.toLocaleString()} • Income under $${displayStats.income_limit.toLocaleString()}`,
           "IRS-certified volunteers • E-file • Direct deposit - all FREE"
         ]}
         imageOnRight={true}
       />
 
-      <ModernFeatures
-        title="Why 2,045 People Chose Free VITA"
-        subtitle="What you get at zero cost"
-        features={[
-          {
-            icon: DollarSign,
-            title: "Save $200+ in Fees",
-            description: "H&R Block charges $200+. TurboTax charges $120+. VITA is $0. Same quality. IRS-certified preparers. Zero cost.",
-            color: "green"
-          },
-          {
-            icon: Users,
-            title: "IRS-Certified Volunteers",
-            description: "All volunteers pass IRS competency exam. Average 8 years experience. They know the tax code. They find every deduction.",
-            color: "blue"
-          },
-          {
-            icon: FileText,
-            title: "E-File Included",
-            description: "Electronic filing included. Refund in 7-14 days. Direct deposit setup. Track your refund online. No paper, no waiting.",
-            color: "orange"
-          },
-          {
-            icon: CheckCircle,
-            title: "Maximum Refund",
-            description: "EITC specialists. Child Tax Credit experts. Education credits. We find every dollar you deserve. Average refund: $2,847.",
-            color: "purple"
-          },
-          {
-            icon: Clock,
-            title: "Same-Day Service",
-            description: "Most returns done same day. Bring documents, leave with confirmation. No appointments needed at most sites. Walk-ins welcome.",
-            color: "teal"
-          },
-          {
-            icon: Shield,
-            title: "Audit Support",
-            description: "If IRS audits you, we help. Free assistance. We stand behind our work. Zero additional cost. You're protected.",
-            color: "red"
-          }
-        ]}
-        columns={3}
-      />
-
+      {/* Features */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">What is VITA?</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <Heart className="w-12 h-12 text-blue-600 mb-4" />
-              <h3 className="text-2xl font-bold mb-4">Free Tax Help</h3>
-              <p className="text-black">
-                The Volunteer Income Tax Assistance (VITA) program offers free tax help to people who generally make $64,000 or less, persons with disabilities, and limited English-speaking taxpayers.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <CheckCircle className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-2xl font-bold mb-4">IRS Certified</h3>
-              <p className="text-black">
-                All VITA volunteers are IRS-certified and trained to help you prepare your taxes accurately and get the maximum refund you deserve.
-              </p>
-            </div>
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose VITA?</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div key={index} className="text-center">
+                  <Icon className="w-12 h-12 text-green-600 mx-auto mb-4" />
+                  <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">Who Qualifies?</h2>
-          <div className="bg-blue-50 p-8 rounded-lg">
-            <ul className="space-y-4 text-lg">
-              <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-                <span>Individuals and families earning $64,000 or less per year</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-                <span>Persons with disabilities</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-                <span>Limited English-speaking taxpayers</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-                <span>Seniors needing assistance with tax preparation</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-8">Ready to Get Started?</h2>
-          <p className="text-xl text-black mb-8 max-w-3xl mx-auto">
-            Schedule your free tax preparation appointment today
+      {/* Locations */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">Find a Location</h2>
+          <p className="text-gray-600 text-center mb-12">
+            Visit one of our VITA sites for free tax preparation
           </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
-          >
-            Schedule Appointment
-          </Link>
+          <div className="grid md:grid-cols-2 gap-6">
+            {locations && locations.length > 0 ? (
+              locations.map((location: any) => (
+                <div key={location.id} className="bg-gray-50 rounded-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <MapPin className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-bold text-lg">{location.name}</h3>
+                      <p className="text-gray-600">{location.address}</p>
+                      <p className="text-gray-600">{location.city}, {location.state} {location.zip}</p>
+                      {location.hours && (
+                        <p className="text-sm text-green-600 mt-2">{location.hours}</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <>
+                <div className="bg-gray-50 rounded-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <MapPin className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-bold text-lg">Main Office</h3>
+                      <p className="text-gray-600">123 Education Way</p>
+                      <p className="text-gray-600">Indianapolis, IN 46204</p>
+                      <p className="text-sm text-green-600 mt-2">Mon-Sat: 9am-5pm</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-gray-50 rounded-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <MapPin className="w-6 h-6 text-green-600 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-bold text-lg">Community Center</h3>
+                      <p className="text-gray-600">456 Community Blvd</p>
+                      <p className="text-gray-600">Indianapolis, IN 46205</p>
+                      <p className="text-sm text-green-600 mt-2">Tue-Thu: 10am-6pm</p>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              href="/vita/locations"
+              className="text-green-600 font-medium hover:underline"
+            >
+              View all locations →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Links */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-6">
+            <Link href="/vita/eligibility" className="bg-white rounded-xl p-6 hover:shadow-md transition">
+              <CheckCircle className="w-8 h-8 text-green-600 mb-3" />
+              <h3 className="font-bold mb-2">Check Eligibility</h3>
+              <p className="text-gray-600 text-sm">See if you qualify for free tax prep</p>
+            </Link>
+            <Link href="/vita/what-to-bring" className="bg-white rounded-xl p-6 hover:shadow-md transition">
+              <FileText className="w-8 h-8 text-green-600 mb-3" />
+              <h3 className="font-bold mb-2">What to Bring</h3>
+              <p className="text-gray-600 text-sm">Documents needed for your appointment</p>
+            </Link>
+            <Link href="/vita/schedule" className="bg-white rounded-xl p-6 hover:shadow-md transition">
+              <Calendar className="w-8 h-8 text-green-600 mb-3" />
+              <h3 className="font-bold mb-2">Schedule</h3>
+              <p className="text-gray-600 text-sm">Book your free appointment</p>
+            </Link>
+            <Link href="/vita/volunteer" className="bg-white rounded-xl p-6 hover:shadow-md transition">
+              <Heart className="w-8 h-8 text-green-600 mb-3" />
+              <h3 className="font-bold mb-2">Volunteer</h3>
+              <p className="text-gray-600 text-sm">Help your community as a tax preparer</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-green-600">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Ready to File for Free?
+          </h2>
+          <p className="text-green-100 mb-8">
+            Schedule your free appointment today and keep more of your refund.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/vita/schedule"
+              className="bg-white text-green-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
+            >
+              Book Free Appointment
+            </Link>
+            <Link
+              href="/vita/faq"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-green-700 transition"
+            >
+              Learn More
+            </Link>
+          </div>
         </div>
       </section>
     </div>

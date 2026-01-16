@@ -1,198 +1,146 @@
-'use client';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import Link from 'next/link';
+import { Calendar, Clock, MapPin, CheckCircle } from 'lucide-react';
 
-import { useState } from 'react';
-import { Calendar, Clock, MapPin, User, Mail, Phone, CheckCircle } from 'lucide-react';
+export const metadata: Metadata = {
+  title: 'Schedule Appointment | VITA Free Tax Prep',
+  description: 'Book your free tax preparation appointment with VITA.',
+};
 
-export default function VITASchedulePage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    location: '',
-    date: '',
-    time: '',
-    income: '',
-    dependents: ''
-  });
-  const [submitted, setSubmitted] = useState(false);
+export const dynamic = 'force-dynamic';
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Save to database
-    const response = await fetch('/api/vita/appointments', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
+export default async function VITASchedulePage() {
+  const supabase = await createClient();
 
-    if (response.ok) {
-      setSubmitted(true);
-    }
-  };
+  // Get available locations
+  const { data: locations } = await supabase
+    .from('vita_locations')
+    .select('*')
+    .eq('is_active', true)
+    .order('name', { ascending: true });
 
-  if (submitted) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-lg p-8 max-w-md text-center">
-          <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-4">Appointment Confirmed!</h2>
-          <p className="text-black mb-6">
-            We've sent a confirmation email to {formData.email}. You'll receive a reminder 24 hours before your appointment.
-          </p>
-          <button
-            onClick={() => setSubmitted(false)}
-            className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-semibold transition"
-          >
-            Book Another Appointment
-          </button>
-        </div>
-      </div>
-    );
-  }
+  // Get available time slots
+  const { data: timeSlots } = await supabase
+    .from('vita_availability')
+    .select('*')
+    .gte('date', new Date().toISOString())
+    .eq('is_available', true)
+    .order('date', { ascending: true })
+    .limit(20);
+
+  const defaultLocations = [
+    { id: 1, name: 'Main Office', address: '123 Education Way, Indianapolis, IN 46204' },
+    { id: 2, name: 'Community Center', address: '456 Community Blvd, Indianapolis, IN 46205' },
+  ];
+
+  const displayLocations = locations && locations.length > 0 ? locations : defaultLocations;
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-green-600 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
-          <h1 className="text-4xl font-bold mb-4">Schedule Free Appointment</h1>
-          <p className="text-xl">Book your free tax preparation appointment</p>
+      <section className="bg-green-600 text-white py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Calendar className="w-16 h-16 mx-auto mb-6" />
+          <h1 className="text-4xl font-bold mb-4">Schedule Your Free Appointment</h1>
+          <p className="text-xl text-green-100">
+            Book a time for your free tax preparation
+          </p>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-3xl mx-auto px-6 py-12">
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  <User className="w-4 h-4 inline mr-2" />
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                />
-              </div>
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <Link href="/vita" className="text-green-600 hover:underline mb-8 inline-block">
+          ← Back to VITA
+        </Link>
 
-              <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  <Mail className="w-4 h-4 inline mr-2" />
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                />
-              </div>
+        {/* Before You Book */}
+        <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-8">
+          <h2 className="font-bold text-lg mb-4">Before You Book</h2>
+          <ul className="space-y-2">
+            <li className="flex items-start gap-2">
+              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+              <span>Check that you <Link href="/vita/eligibility" className="text-green-600 underline">qualify</Link> for free VITA services</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+              <span>Review <Link href="/vita/what-to-bring" className="text-green-600 underline">what to bring</Link> to your appointment</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+              <span>Plan for approximately 1-2 hours for your appointment</span>
+            </li>
+          </ul>
+        </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  <Phone className="w-4 h-4 inline mr-2" />
-                  Phone *
-                </label>
-                <input
-                  type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                />
-              </div>
+        {/* Location Selection */}
+        <div className="bg-white rounded-xl shadow-sm border p-6 mb-8">
+          <h2 className="text-xl font-bold mb-6">Select a Location</h2>
+          <div className="space-y-4">
+            {displayLocations.map((location: any) => (
+              <label key={location.id} className="flex items-start gap-4 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                <input type="radio" name="location" value={location.id} className="mt-1" />
+                <div>
+                  <div className="font-medium">{location.name}</div>
+                  <div className="text-sm text-gray-600">{location.address}</div>
+                </div>
+              </label>
+            ))}
+          </div>
+        </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  <MapPin className="w-4 h-4 inline mr-2" />
-                  Location *
-                </label>
-                <select
-                  required
-                  value={formData.location}
-                  onChange={(e) => setFormData({...formData, location: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
+        {/* Time Slots */}
+        <div className="bg-white rounded-xl shadow-sm border p-6 mb-8">
+          <h2 className="text-xl font-bold mb-6">Select a Time</h2>
+          {timeSlots && timeSlots.length > 0 ? (
+            <div className="grid md:grid-cols-3 gap-4">
+              {timeSlots.map((slot: any) => (
+                <button
+                  key={slot.id}
+                  className="p-4 border rounded-lg hover:border-green-500 hover:bg-green-50 transition text-left"
                 >
-                  <option value="">Select location</option>
-                  <option value="downtown">Downtown Indianapolis</option>
-                  <option value="eastside">Eastside Community Center</option>
-                  <option value="westside">Westside Library</option>
-                </select>
-              </div>
+                  <div className="font-medium">{new Date(slot.date).toLocaleDateString()}</div>
+                  <div className="text-sm text-gray-600">{slot.time}</div>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <Clock className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+              <p className="text-gray-500 mb-4">No available time slots online</p>
+              <p className="text-gray-600">
+                Please call <a href="tel:3173143757" className="text-green-600 font-medium">(317) 314-3757</a> to schedule
+              </p>
+            </div>
+          )}
+        </div>
 
+        {/* Contact Info Form */}
+        <div className="bg-white rounded-xl shadow-sm border p-6">
+          <h2 className="text-xl font-bold mb-6">Your Information</h2>
+          <form className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  <Calendar className="w-4 h-4 inline mr-2" />
-                  Preferred Date *
-                </label>
-                <input
-                  type="date"
-                  required
-                  value={formData.date}
-                  onChange={(e) => setFormData({...formData, date: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                />
+                <label className="block text-sm font-medium mb-1">First Name</label>
+                <input type="text" className="w-full px-4 py-2 border rounded-lg" required />
               </div>
-
               <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  <Clock className="w-4 h-4 inline mr-2" />
-                  Preferred Time *
-                </label>
-                <select
-                  required
-                  value={formData.time}
-                  onChange={(e) => setFormData({...formData, time: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                >
-                  <option value="">Select time</option>
-                  <option value="9am">9:00 AM</option>
-                  <option value="10am">10:00 AM</option>
-                  <option value="11am">11:00 AM</option>
-                  <option value="12pm">12:00 PM</option>
-                  <option value="1pm">1:00 PM</option>
-                  <option value="2pm">2:00 PM</option>
-                  <option value="3pm">3:00 PM</option>
-                  <option value="4pm">4:00 PM</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  Annual Income
-                </label>
-                <input
-                  type="text"
-                  value={formData.income}
-                  onChange={(e) => setFormData({...formData, income: e.target.value})}
-                  placeholder="e.g., $45,000"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  Number of Dependents
-                </label>
-                <input
-                  type="number"
-                  value={formData.dependents}
-                  onChange={(e) => setFormData({...formData, dependents: e.target.value})}
-                  placeholder="0"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                />
+                <label className="block text-sm font-medium mb-1">Last Name</label>
+                <input type="text" className="w-full px-4 py-2 border rounded-lg" required />
               </div>
             </div>
-
+            <div>
+              <label className="block text-sm font-medium mb-1">Email</label>
+              <input type="email" className="w-full px-4 py-2 border rounded-lg" required />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">Phone</label>
+              <input type="tel" className="w-full px-4 py-2 border rounded-lg" required />
+            </div>
             <button
               type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition"
+              className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition"
             >
-              Book Free Appointment
+              Book Appointment
             </button>
           </form>
         </div>

@@ -1,184 +1,165 @@
-'use client';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import Link from 'next/link';
+import { Heart, Award, Clock, Users, CheckCircle, ArrowRight } from 'lucide-react';
 
-import { useState } from 'react';
-import { Heart, BookOpen, Users, Award, CheckCircle } from 'lucide-react';
+export const metadata: Metadata = {
+  title: 'Volunteer | VITA Free Tax Prep',
+  description: 'Become a VITA volunteer and help your community with free tax preparation.',
+};
 
-export default function VITAVolunteerPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    experience: '',
-    availability: '',
-    interests: []
-  });
-  const [submitted, setSubmitted] = useState(false);
+export const dynamic = 'force-dynamic';
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    const response = await fetch('/api/vita/volunteers', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
+export default async function VITAVolunteerPage() {
+  const supabase = await createClient();
 
-    if (response.ok) {
-      setSubmitted(true);
-    }
+  // Get volunteer stats
+  const { data: stats } = await supabase
+    .from('vita_volunteer_stats')
+    .select('*')
+    .single();
+
+  // Get upcoming training sessions
+  const { data: trainingSessions } = await supabase
+    .from('vita_training')
+    .select('*')
+    .gte('date', new Date().toISOString())
+    .order('date', { ascending: true })
+    .limit(3);
+
+  const defaultStats = {
+    volunteers: 45,
+    hours_donated: 2500,
+    returns_filed: 2045,
   };
 
-  if (submitted) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-lg p-8 max-w-md text-center">
-          <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-4">Thank You for Volunteering!</h2>
-          <p className="text-black mb-6">
-            We'll contact you within 2 business days to discuss next steps and training opportunities.
-          </p>
-        </div>
-      </div>
-    );
-  }
+  const displayStats = stats || defaultStats;
+
+  const benefits = [
+    'Free IRS certification training',
+    'Flexible scheduling',
+    'Make a real difference in your community',
+    'Gain valuable tax preparation experience',
+    'Network with other professionals',
+    'Continuing education credits available',
+  ];
+
+  const requirements = [
+    'Must be 18 years or older',
+    'Pass IRS certification exam (training provided)',
+    'Commit to at least 4 hours per week during tax season',
+    'Background check required',
+    'Reliable transportation',
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-green-600 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-green-600 text-white py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Heart className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl font-bold mb-4">Become a VITA Volunteer</h1>
-          <p className="text-xl">Help your community with free tax preparation</p>
+          <p className="text-xl text-green-100">
+            Help your community by providing free tax preparation
+          </p>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <Link href="/vita" className="text-green-600 hover:underline mb-8 inline-block">
+          ← Back to VITA
+        </Link>
+
+        {/* Impact Stats */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-white rounded-xl shadow-sm border p-6 text-center">
+            <Users className="w-10 h-10 text-green-600 mx-auto mb-3" />
+            <div className="text-3xl font-bold">{displayStats.volunteers}</div>
+            <div className="text-gray-600">Active Volunteers</div>
+          </div>
+          <div className="bg-white rounded-xl shadow-sm border p-6 text-center">
+            <Clock className="w-10 h-10 text-green-600 mx-auto mb-3" />
+            <div className="text-3xl font-bold">{displayStats.hours_donated.toLocaleString()}</div>
+            <div className="text-gray-600">Hours Donated</div>
+          </div>
+          <div className="bg-white rounded-xl shadow-sm border p-6 text-center">
+            <Award className="w-10 h-10 text-green-600 mx-auto mb-3" />
+            <div className="text-3xl font-bold">{displayStats.returns_filed.toLocaleString()}</div>
+            <div className="text-gray-600">Returns Filed</div>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <Heart className="w-12 h-12 text-green-600 mb-4" />
-            <h2 className="text-2xl font-bold mb-4">Make a Difference</h2>
-            <p className="text-black mb-4">
-              Last year, VITA volunteers helped 2,045 families save over $408,000 in tax preparation fees and receive $5.8 million in refunds.
-            </p>
-            <p className="text-black">
-              Your time and skills can help families keep more of their hard-earned money.
-            </p>
+          {/* Benefits */}
+          <div className="bg-white rounded-xl shadow-sm border p-6">
+            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <Heart className="w-6 h-6 text-green-600" />
+              Volunteer Benefits
+            </h2>
+            <ul className="space-y-3">
+              {benefits.map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <BookOpen className="w-12 h-12 text-green-600 mb-4" />
-            <h2 className="text-2xl font-bold mb-4">Free Training Provided</h2>
-            <p className="text-black mb-4">
-              No tax experience required! We provide comprehensive IRS-certified training covering tax law, software, and ethics.
-            </p>
-            <p className="text-black">
-              Training is flexible and can be completed online or in-person.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <Users className="w-12 h-12 text-green-600 mb-4" />
-            <h2 className="text-2xl font-bold mb-4">Flexible Schedule</h2>
-            <p className="text-black mb-4">
-              Volunteer as little as 4 hours per week during tax season (January-April).
-            </p>
-            <p className="text-black">
-              Choose shifts that work with your schedule - weekdays, evenings, or weekends.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <Award className="w-12 h-12 text-green-600 mb-4" />
-            <h2 className="text-2xl font-bold mb-4">Gain Valuable Skills</h2>
-            <p className="text-black mb-4">
-              Learn tax preparation, gain IRS certification, and develop professional skills.
-            </p>
-            <p className="text-black">
-              Great for students, retirees, and anyone interested in tax or accounting.
-            </p>
+          {/* Requirements */}
+          <div className="bg-white rounded-xl shadow-sm border p-6">
+            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+              <Award className="w-6 h-6 text-green-600" />
+              Requirements
+            </h2>
+            <ul className="space-y-3">
+              {requirements.map((item, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-2xl font-bold mb-6">Volunteer Application</h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  Phone *
-                </label>
-                <input
-                  type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-black mb-2">
-                  Tax Experience
-                </label>
-                <select
-                  value={formData.experience}
-                  onChange={(e) => setFormData({...formData, experience: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-                >
-                  <option value="">Select experience level</option>
-                  <option value="none">No experience</option>
-                  <option value="personal">Personal tax filing only</option>
-                  <option value="professional">Professional experience</option>
-                  <option value="certified">CPA or EA</option>
-                </select>
-              </div>
+        {/* Training Sessions */}
+        {trainingSessions && trainingSessions.length > 0 && (
+          <div className="bg-white rounded-xl shadow-sm border p-6 mb-12">
+            <h2 className="text-xl font-bold mb-6">Upcoming Training Sessions</h2>
+            <div className="space-y-4">
+              {trainingSessions.map((session: any) => (
+                <div key={session.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                  <div>
+                    <div className="font-medium">{session.title}</div>
+                    <div className="text-sm text-gray-600">
+                      {new Date(session.date).toLocaleDateString()} • {session.location}
+                    </div>
+                  </div>
+                  <Link
+                    href={`/vita/volunteer/register?session=${session.id}`}
+                    className="text-green-600 font-medium hover:underline"
+                  >
+                    Register
+                  </Link>
+                </div>
+              ))}
             </div>
+          </div>
+        )}
 
-            <div>
-              <label className="block text-sm font-semibold text-black mb-2">
-                Availability
-              </label>
-              <textarea
-                value={formData.availability}
-                onChange={(e) => setFormData({...formData, availability: e.target.value})}
-                placeholder="Tell us about your availability (days, times, hours per week)"
-                rows={4}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition"
-            >
-              Submit Volunteer Application
-            </button>
-          </form>
+        {/* Apply CTA */}
+        <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
+          <h3 className="text-2xl font-bold mb-4">Ready to Make a Difference?</h3>
+          <p className="text-gray-600 mb-6">
+            Join our team of volunteers and help families in your community keep more of their hard-earned money.
+          </p>
+          <Link
+            href="/apply?type=vita-volunteer"
+            className="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition"
+          >
+            Apply to Volunteer
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </div>
     </div>

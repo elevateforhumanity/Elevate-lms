@@ -1,126 +1,168 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import Link from 'next/link';
+import { Heart, Award, Users, DollarSign, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Vita About | Elevate For Humanity',
-  description: 'Elevate For Humanity - Vita About page',
-  alternates: { canonical: 'https://www.elevateforhumanity.org/vita/about' },
+  title: 'About VITA | Free Tax Prep',
+  description: 'Learn about the VITA program and how we help families with free tax preparation.',
 };
 
-import { Heart, Users, Award, TrendingUp } from 'lucide-react';
+export const dynamic = 'force-dynamic';
 
-export default function VITAAboutPage() {
+export default async function VITAAboutPage() {
+  const supabase = await createClient();
+
+  // Get VITA statistics
+  const { data: stats } = await supabase
+    .from('vita_statistics')
+    .select('*')
+    .order('year', { ascending: false })
+    .limit(1)
+    .single();
+
+  // Get team members
+  const { data: team } = await supabase
+    .from('vita_team')
+    .select('*')
+    .eq('is_active', true)
+    .order('order', { ascending: true });
+
+  const defaultStats = {
+    years_serving: 10,
+    total_returns: 15000,
+    total_saved: 3000000,
+    volunteers: 200,
+  };
+
+  const displayStats = stats || defaultStats;
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-green-600 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-green-600 text-white py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <Heart className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl font-bold mb-4">About VITA</h1>
-          <p className="text-xl">Volunteer Income Tax Assistance Program</p>
-        </div>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-6 py-12 space-y-12">
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-3xl font-bold mb-6">What is VITA?</h2>
-          <p className="text-black text-lg mb-4">
-            The Volunteer Income Tax Assistance (VITA) program offers free tax help to people who generally make $64,000 or less, persons with disabilities, the elderly, and limited English-speaking taxpayers who need assistance in preparing their own tax returns.
-          </p>
-          <p className="text-black text-lg">
-            IRS-certified volunteers provide free basic income tax return preparation with electronic filing to qualified individuals. VITA has been helping taxpayers since 1971.
+          <p className="text-xl text-green-100">
+            Helping families keep more of their hard-earned money
           </p>
         </div>
+      </section>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-lg shadow-md p-6 text-center">
-            <Users className="w-12 h-12 text-green-600 mx-auto mb-4" />
-            <div className="text-3xl font-bold text-black mb-2">2,045</div>
-            <div className="text-black">Returns Filed (2025)</div>
-          </div>
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <Link href="/vita" className="text-green-600 hover:underline mb-8 inline-block">
+          ← Back to VITA
+        </Link>
 
-          <div className="bg-white rounded-lg shadow-md p-6 text-center">
-            <TrendingUp className="w-12 h-12 text-green-600 mx-auto mb-4" />
-            <div className="text-3xl font-bold text-black mb-2">$5.8M</div>
-            <div className="text-black">Refunds Processed</div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6 text-center">
-            <Award className="w-12 h-12 text-green-600 mx-auto mb-4" />
-            <div className="text-3xl font-bold text-black mb-2">$408K</div>
-            <div className="text-black">Saved in Fees</div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6 text-center">
-            <Heart className="w-12 h-12 text-green-600 mx-auto mb-4" />
-            <div className="text-3xl font-bold text-black mb-2">100%</div>
-            <div className="text-black">Free Service</div>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-          <p className="text-black text-lg mb-4">
-            To provide free, high-quality tax preparation services to low-income individuals and families, ensuring they receive every credit and deduction they deserve.
-          </p>
-          <p className="text-black text-lg">
-            We believe everyone deserves access to professional tax assistance, regardless of their ability to pay. Through VITA, we help families keep more of their hard-earned money and build financial stability.
+        {/* Mission */}
+        <div className="bg-white rounded-xl shadow-sm border p-8 mb-8">
+          <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
+          <p className="text-gray-600 text-lg leading-relaxed">
+            The Volunteer Income Tax Assistance (VITA) program is an IRS initiative that provides 
+            free tax preparation services to qualifying individuals. Our mission is to help 
+            working families, seniors, and individuals with disabilities file their taxes 
+            accurately and claim all the credits they deserve—at no cost.
           </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-3xl font-bold mb-6">How VITA Works</h2>
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                1
+        {/* Impact Stats */}
+        <div className="grid md:grid-cols-4 gap-6 mb-12">
+          <div className="bg-white rounded-xl shadow-sm border p-6 text-center">
+            <Award className="w-10 h-10 text-green-600 mx-auto mb-3" />
+            <div className="text-3xl font-bold">{displayStats.years_serving}+</div>
+            <div className="text-gray-600">Years Serving</div>
+          </div>
+          <div className="bg-white rounded-xl shadow-sm border p-6 text-center">
+            <CheckCircle className="w-10 h-10 text-green-600 mx-auto mb-3" />
+            <div className="text-3xl font-bold">{displayStats.total_returns?.toLocaleString()}+</div>
+            <div className="text-gray-600">Returns Filed</div>
+          </div>
+          <div className="bg-white rounded-xl shadow-sm border p-6 text-center">
+            <DollarSign className="w-10 h-10 text-green-600 mx-auto mb-3" />
+            <div className="text-3xl font-bold">${(displayStats.total_saved / 1000000).toFixed(1)}M+</div>
+            <div className="text-gray-600">Saved in Fees</div>
+          </div>
+          <div className="bg-white rounded-xl shadow-sm border p-6 text-center">
+            <Users className="w-10 h-10 text-green-600 mx-auto mb-3" />
+            <div className="text-3xl font-bold">{displayStats.volunteers}+</div>
+            <div className="text-gray-600">Volunteers</div>
+          </div>
+        </div>
+
+        {/* How It Works */}
+        <div className="bg-white rounded-xl shadow-sm border p-8 mb-8">
+          <h2 className="text-2xl font-bold mb-6">How VITA Works</h2>
+          <div className="space-y-4">
+            <div className="flex items-start gap-4">
+              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-green-600 font-bold">1</span>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Schedule Appointment</h3>
-                <p className="text-black">Book a free appointment at a VITA site near you</p>
+                <h3 className="font-semibold">IRS-Certified Volunteers</h3>
+                <p className="text-gray-600">All our volunteers complete IRS training and certification to ensure accurate tax preparation.</p>
               </div>
             </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                2
+            <div className="flex items-start gap-4">
+              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-green-600 font-bold">2</span>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Bring Documents</h3>
-                <p className="text-black">Bring your ID, Social Security cards, and income documents</p>
+                <h3 className="font-semibold">Quality Review</h3>
+                <p className="text-gray-600">Every return is reviewed by a second certified volunteer before filing.</p>
               </div>
             </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                3
+            <div className="flex items-start gap-4">
+              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-green-600 font-bold">3</span>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Meet with Volunteer</h3>
-                <p className="text-black">IRS-certified volunteer prepares your return</p>
-              </div>
-            </div>
-
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                4
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">E-File & Get Refund</h3>
-                <p className="text-black">We e-file your return and you get your refund in 7-14 days</p>
+                <h3 className="font-semibold">E-File & Direct Deposit</h3>
+                <p className="text-gray-600">We electronically file your return and set up direct deposit for faster refunds.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-green-50 border-2 border-green-600 rounded-lg p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-black mb-6">
-            Schedule your free tax preparation appointment today
+        {/* Team */}
+        {team && team.length > 0 && (
+          <div className="bg-white rounded-xl shadow-sm border p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-6">Our Team</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              {team.map((member: any) => (
+                <div key={member.id} className="text-center">
+                  <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-3 overflow-hidden">
+                    {member.photo_url && (
+                      <img src={member.photo_url} alt={member.name} className="w-full h-full object-cover" />
+                    )}
+                  </div>
+                  <h3 className="font-semibold">{member.name}</h3>
+                  <p className="text-sm text-gray-600">{member.title}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* CTA */}
+        <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
+          <h3 className="text-xl font-bold mb-4">Ready to File for Free?</h3>
+          <p className="text-gray-600 mb-6">
+            Schedule your appointment today and keep more of your refund.
           </p>
-          <a
-            href="/vita/schedule"
-            className="inline-block bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition"
-          >
-            Book Free Appointment
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/vita/schedule"
+              className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+            >
+              Schedule Appointment
+            </Link>
+            <Link
+              href="/vita/volunteer"
+              className="border border-green-600 text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition"
+            >
+              Become a Volunteer
+            </Link>
+          </div>
         </div>
       </div>
     </div>

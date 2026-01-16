@@ -1,104 +1,121 @@
-'use client';
+import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
+import Link from 'next/link';
+import { HelpCircle, ChevronDown } from 'lucide-react';
 
-import { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+export const metadata: Metadata = {
+  title: 'FAQ | VITA Free Tax Prep',
+  description: 'Frequently asked questions about VITA free tax preparation services.',
+};
 
-export default function VITAFAQPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+export const dynamic = 'force-dynamic';
 
-  const faqs = [
+export default async function VITAFAQPage() {
+  const supabase = await createClient();
+
+  // Get FAQs
+  const { data: faqs } = await supabase
+    .from('faqs')
+    .select('*')
+    .eq('category', 'vita')
+    .eq('is_active', true)
+    .order('order', { ascending: true });
+
+  const defaultFaqs = [
     {
       question: 'What is VITA?',
-      answer: 'VITA (Volunteer Income Tax Assistance) is an IRS program that offers free tax help to people who generally make $64,000 or less, persons with disabilities, and limited English-speaking taxpayers.'
+      answer: 'VITA (Volunteer Income Tax Assistance) is an IRS program that offers free tax preparation to qualifying individuals. All volunteers are IRS-certified and trained to help you file your taxes accurately.',
     },
     {
-      question: 'How much does it cost?',
-      answer: 'VITA services are 100% FREE. There are no fees, no hidden costs, and no obligations. We are funded by the IRS and community partners to provide free tax preparation.'
+      question: 'Who qualifies for free VITA services?',
+      answer: 'Generally, individuals and families with income under $64,000 qualify. This also includes persons with disabilities, elderly taxpayers, and limited English speakers.',
     },
     {
-      question: 'Who can use VITA services?',
-      answer: 'You can use VITA if you earn $64,000 or less per year, have a disability, need language assistance, or are a senior needing help with taxes.'
+      question: 'Is VITA really free?',
+      answer: 'Yes! VITA is 100% free. There are no hidden fees. You save the $200+ you would typically pay for tax preparation services.',
+    },
+    {
+      question: 'How long does an appointment take?',
+      answer: 'Most appointments take 1-2 hours depending on the complexity of your return. Simple returns may be completed faster.',
     },
     {
       question: 'Do I need an appointment?',
-      answer: 'While walk-ins are welcome at most sites, we recommend scheduling an appointment to minimize wait times. You can book online or call us.'
+      answer: 'Yes, appointments are required. This ensures we have enough time to complete your return accurately. Walk-ins may be accommodated if time permits.',
     },
     {
-      question: 'What documents do I need to bring?',
-      answer: 'Bring photo ID, Social Security cards for everyone on your return, all income documents (W-2s, 1099s), and bank account information for direct deposit.'
+      question: 'Can I file jointly with my spouse?',
+      answer: 'Yes, but both spouses must be present at the appointment with valid photo IDs and Social Security cards.',
     },
     {
-      question: 'How long does it take?',
-      answer: 'Most returns are completed the same day. Simple returns take 30-60 minutes, while more complex returns may take 1-2 hours.'
+      question: 'What if I\'m missing documents?',
+      answer: 'We cannot complete your return without all required documents. You may need to reschedule or return with the missing items.',
     },
     {
-      question: 'Are VITA volunteers qualified?',
-      answer: 'Yes! All VITA volunteers are IRS-certified and pass annual competency exams. They receive ongoing training and quality review.'
+      question: 'Will I get my refund faster?',
+      answer: 'We e-file all returns and can set up direct deposit, which is the fastest way to receive your refund (typically 21 days or less).',
     },
     {
       question: 'Can you help with state taxes?',
-      answer: 'Yes, we prepare both federal and state tax returns at no cost.'
+      answer: 'Yes, we prepare both federal and Indiana state returns at no charge.',
     },
     {
-      question: 'What if I get audited?',
-      answer: 'VITA provides free audit support. If the IRS audits your return, we will help you respond at no charge.'
+      question: 'What if I have self-employment income?',
+      answer: 'We can help with simple self-employment situations. If your self-employment income exceeds $10,000 or involves complex business expenses, we may refer you to a paid preparer.',
     },
-    {
-      question: 'Can I e-file through VITA?',
-      answer: 'Yes, all VITA sites offer free e-filing. Your refund will be deposited directly into your bank account in 7-14 days.'
-    }
   ];
+
+  const displayFaqs = faqs && faqs.length > 0 ? faqs : defaultFaqs;
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="bg-green-600 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-green-600 text-white py-16">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <HelpCircle className="w-16 h-16 mx-auto mb-6" />
           <h1 className="text-4xl font-bold mb-4">Frequently Asked Questions</h1>
-          <p className="text-xl">Common questions about VITA tax services</p>
+          <p className="text-xl text-green-100">
+            Common questions about VITA free tax preparation
+          </p>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <Link href="/vita" className="text-green-600 hover:underline mb-8 inline-block">
+          ← Back to VITA
+        </Link>
+
+        {/* FAQs */}
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition"
-              >
-                <span className="font-semibold text-lg">{faq.question}</span>
-                {openIndex === index ? (
-                  <ChevronUp className="w-5 h-5 text-green-600 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-black flex-shrink-0" />
-                )}
-              </button>
-              {openIndex === index && (
-                <div className="px-6 pb-4 text-black">
-                  {faq.answer}
-                </div>
-              )}
-            </div>
+          {displayFaqs.map((faq: any, index: number) => (
+            <details key={index} className="bg-white rounded-xl shadow-sm border group">
+              <summary className="p-6 cursor-pointer flex items-center justify-between font-semibold list-none">
+                {faq.question}
+                <ChevronDown className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" />
+              </summary>
+              <div className="px-6 pb-6 text-gray-600">
+                {faq.answer}
+              </div>
+            </details>
           ))}
         </div>
 
-        <div className="mt-12 bg-green-50 border-2 border-green-600 rounded-lg p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4">Still Have Questions?</h2>
-          <p className="text-black mb-6">
-            Contact us or schedule a free appointment to speak with a VITA volunteer
+        {/* Still Have Questions */}
+        <div className="mt-12 bg-green-50 rounded-xl p-8 text-center">
+          <h3 className="text-xl font-bold mb-4">Still Have Questions?</h3>
+          <p className="text-gray-600 mb-6">
+            Contact us and we'll be happy to help
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/vita/schedule"
-              className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition"
-            >
-              Schedule Appointment
-            </a>
-            <a
-              href="/contact"
-              className="bg-white hover:bg-gray-50 text-green-600 border-2 border-green-600 px-6 py-3 rounded-lg font-semibold transition"
+            <Link
+              href="/vita/contact"
+              className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
             >
               Contact Us
+            </Link>
+            <a
+              href="tel:3173143757"
+              className="border border-green-600 text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-50 transition"
+            >
+              Call (317) 314-3757
             </a>
           </div>
         </div>
