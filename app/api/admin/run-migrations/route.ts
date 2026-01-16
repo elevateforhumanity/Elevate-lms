@@ -1,72 +1,91 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
 
 export const runtime = 'nodejs';
-export const maxDuration = 60;
-import { createServerSupabaseClient } from '@/lib/auth';
-import fs from 'fs';
-import path from 'path';
-import { withAuth } from '@/lib/with-auth';
-import { toError, toErrorMessage } from '@/lib/safe';
-
 export const dynamic = 'force-dynamic';
 
-
-export const POST = withAuth(
-  async (request: Request, user) => {
-    try {
-      const supabase = await createServerSupabaseClient();
-
-      // Read all migration files
-      const migrationsDir = path.join(process.cwd(), 'supabase', 'migrations');
-      const migrationFiles = [
-        '20240116_add_cip_soc_codes.sql',
-        '20240116_seed_cip_soc_codes.sql',
-        '20241115_add_all_etpl_programs.sql',
-        '20241116_add_jri_courses.sql',
-        '20241116_add_nrf_rise_up_courses.sql',
-        '20241116_create_lms_courses_part1.sql',
-        '20241116_create_lms_courses_part2.sql',
-        '20241116_create_lms_courses_part3.sql',
-        '20241116_create_lms_courses_part4.sql',
-        '20241116_create_medical_assistant_course.sql',
-      ];
-
-      const results = [];
-
-      for (const file of migrationFiles) {
-        const filePath = path.join(migrationsDir, file);
-        if (fs.existsSync(filePath)) {
-          const sql = fs.readFileSync(filePath, 'utf8');
-
-          try {
-            const { error } = await supabase.rpc('exec_sql', {
-              sql_query: sql,
-            });
-
-            if (error) {
-              results.push({
-                file,
-                status: 'error',
-                error: toErrorMessage(error),
-              });
-            } else {
-              results.push({ file, status: 'success' });
-            }
-          } catch (err: any) {
-            results.push({ file, status: 'error', error: (err as Error).message });
-          }
-        } else {
-          results.push({ file, status: 'not_found' });
-        }
-      }
-
-      return NextResponse.json({ results });
-    } catch (error) { /* Error handled silently */ 
-      return NextResponse.json(
-        { error: toErrorMessage(error) },
-        { status: 500 }
-      );
+// This endpoint checks migration status
+// Only accessible with service role key
+export async function POST(request: NextRequest) {
+  try {
+    const authHeader = request.headers.get('authorization');
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    
+    if (!authHeader || !authHeader.includes(serviceKey || '')) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-  },
-  { roles: ['admin', 'super_admin'] }
-);
+
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    if (!supabaseUrl || !serviceKey) {
+      return NextResponse.json({ error: 'Missing configuration' }, { status: 500 });
+    }
+
+    // Create admin client
+    const supabase = createClient(supabaseUrl, serviceKey, {
+      auth: { persistSession: false }
+    });
+
+    const results: { migration: string; status: string; error?: string }[] = [];
+
+    // Check tables
+    const tables = ['program_announcements', 'program_discussions', 'program_discussion_replies'];
+    
+    for (const table of tables) {
+      try {
+        const { error: checkError } = await supabase
+          .from(table)
+          .select('id')
+          .limit(1);
+
+        if (checkError?.code === 'PGRST205') {
+          results.push({
+            migration: table,
+            status: 'REQUIRES_MANUAL',
+            error: 'Table must be created via Supabase SQL Editor'
+          });
+        } else if (checkError?.code === '42501') {
+          results.push({
+            migration: table,
+            status: 'EXISTS',
+            error: 'Table exists (RLS blocking)'
+          });
+        } else {
+          results.push({
+            migration: table,
+            status: 'EXISTS'
+          });
+        }
+      } catch (e: any) {
+        results.push({
+          migration: table,
+          status: 'ERROR',
+          error: e.message
+        });
+      }
+    }
+
+    const allExist = results.every(r => r.status === 'EXISTS');
+    const requiresManual = results.some(r => r.status === 'REQUIRES_MANUAL');
+
+    return NextResponse.json({
+      success: allExist,
+      requiresManual,
+      message: requiresManual 
+        ? 'Some tables need to be created manually in Supabase SQL Editor'
+        : allExist 
+          ? 'All migrations applied'
+          : 'Migration check complete',
+      results,
+      sqlFiles: [
+        '/supabase/migrations/20260116_program_announcements.sql',
+        '/supabase/migrations/20260116_program_discussions.sql'
+      ]
+    });
+
+  } catch (error: any) {
+    return NextResponse.json({ 
+      error: 'Migration failed', 
+      details: error.message 
+    }, { status: 500 });
+  }
+}
