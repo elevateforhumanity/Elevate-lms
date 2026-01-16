@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+import { createClient } from '@/lib/supabase/server';
+
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { FileText, Users, CheckCircle, Clock, AlertTriangle, Download, Filter, Search } from 'lucide-react';

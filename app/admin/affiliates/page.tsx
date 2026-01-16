@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+import { createClient } from '@/lib/supabase/server';
+
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Users, DollarSign, TrendingUp, UserPlus, Search, Filter, MoreVertical } from 'lucide-react';

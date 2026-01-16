@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Calendar, Download, Clock } from 'lucide-react';
 export const dynamic = 'force-dynamic';
+import { createClient } from '@/lib/supabase/server';
 
 export default function HoursExportPage() {
   const [loading, setLoading] = useState(false);

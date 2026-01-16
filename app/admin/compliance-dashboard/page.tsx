@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic';
+import { createClient } from '@/lib/supabase/server';
+
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

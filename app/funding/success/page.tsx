@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 import { CheckCircle } from 'lucide-react';
 
-export default function FundingSuccessPage() {
+export default async function FundingSuccessPage() {
+  const supabase = await createClient();
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4 py-12">
       <div className="max-w-2xl w-full text-center">

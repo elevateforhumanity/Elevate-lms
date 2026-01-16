@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,6 +16,13 @@ export const metadata: Metadata = {
 };
 
 export default async function FederalProgramsPage() {
+  const supabase = await createClient();
+  
+  // Fetch federal programs
+  const { data: programs } = await supabase
+    .from('funding_options')
+    .select('*')
+    .eq('level', 'federal');
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}

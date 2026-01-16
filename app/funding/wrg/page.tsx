@@ -1,4 +1,7 @@
+export const dynamic = 'force-dynamic';
+
 import { Metadata } from 'next';
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -11,7 +14,15 @@ export const metadata: Metadata = {
     'Get 100% free career training through WRG (Workforce Ready Grant). Indiana residents qualify. No income limits. No age limits.',
 };
 
-export default function WrgPage() {
+export default async function WrgPage() {
+  const supabase = await createClient();
+  
+  // Fetch WRG funding info
+  const { data: wrgInfo } = await supabase
+    .from('funding_options')
+    .select('*')
+    .eq('type', 'wrg')
+    .single();
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Image Only */}
