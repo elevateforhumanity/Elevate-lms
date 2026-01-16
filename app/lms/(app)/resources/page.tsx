@@ -1,20 +1,192 @@
 export const dynamic = 'force-dynamic';
 
 import { Metadata } from 'next';
-
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import Image from 'next/image';
+import {
+  BookOpen,
+  FileText,
+  Download,
+  ExternalLink,
+  Briefcase,
+  GraduationCap,
+  Heart,
+  DollarSign,
+  Phone,
+  Clock,
+  CheckCircle,
+  Video,
+  Users,
+  HelpCircle,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.elevateforhumanity.org/lms/resources',
   },
-  title: 'Resources | Elevate For Humanity',
+  title: 'Student Resources | Elevate For Humanity',
   description:
-    'Explore Resources and discover opportunities for career growth and development.',
+    'Access career resources, study materials, job search tools, and support services.',
 };
+
+const resourceCategories = [
+  {
+    id: 'career',
+    title: 'Career Services',
+    icon: Briefcase,
+    color: 'blue',
+    resources: [
+      {
+        title: 'Resume Builder',
+        description: 'Create a professional resume with our guided template',
+        href: '/career-services',
+        type: 'tool',
+      },
+      {
+        title: 'Interview Preparation',
+        description: 'Common questions and how to answer them',
+        href: '/career-services',
+        type: 'guide',
+      },
+      {
+        title: 'Job Search Strategies',
+        description: 'Tips for finding jobs in your field',
+        href: '/career-services',
+        type: 'guide',
+      },
+      {
+        title: 'Employer Partners',
+        description: 'Companies hiring our graduates',
+        href: '/employers',
+        type: 'directory',
+      },
+    ],
+  },
+  {
+    id: 'academic',
+    title: 'Academic Support',
+    icon: GraduationCap,
+    color: 'purple',
+    resources: [
+      {
+        title: 'Study Skills Guide',
+        description: 'Effective techniques for learning',
+        href: '/lms/help',
+        type: 'guide',
+      },
+      {
+        title: 'Test Preparation',
+        description: 'Prepare for certification exams',
+        href: '/lms/help',
+        type: 'guide',
+      },
+      {
+        title: 'Request Tutoring',
+        description: 'Schedule help with instructors',
+        href: '/lms/support',
+        type: 'form',
+      },
+      {
+        title: 'Academic Calendar',
+        description: 'Important dates and deadlines',
+        href: '/lms/calendar',
+        type: 'calendar',
+      },
+    ],
+  },
+  {
+    id: 'financial',
+    title: 'Financial Resources',
+    icon: DollarSign,
+    color: 'green',
+    resources: [
+      {
+        title: 'Funding Options',
+        description: 'WIOA, employer sponsorship, and more',
+        href: '/tuition',
+        type: 'guide',
+      },
+      {
+        title: 'Financial Aid FAQ',
+        description: 'Common funding questions',
+        href: '/faq',
+        type: 'faq',
+      },
+      {
+        title: 'Emergency Assistance',
+        description: 'Support for transportation and supplies',
+        href: '/lms/support',
+        type: 'form',
+      },
+      {
+        title: 'Tax Preparation',
+        description: 'Free tax filing for students',
+        href: '/vita',
+        type: 'service',
+      },
+    ],
+  },
+  {
+    id: 'support',
+    title: 'Student Support',
+    icon: Heart,
+    color: 'red',
+    resources: [
+      {
+        title: 'Student Handbook',
+        description: 'Policies and procedures',
+        href: '/student-handbook',
+        type: 'document',
+      },
+      {
+        title: 'Accessibility Services',
+        description: 'Accommodations for all learners',
+        href: '/accessibility',
+        type: 'info',
+      },
+      {
+        title: 'Community Resources',
+        description: 'Local support services',
+        href: '/contact',
+        type: 'directory',
+      },
+      {
+        title: 'Contact Support',
+        description: 'Reach our student success team',
+        href: '/lms/support',
+        type: 'contact',
+      },
+    ],
+  },
+];
+
+const quickLinks = [
+  { title: 'My Courses', href: '/lms/courses', icon: BookOpen },
+  { title: 'My Progress', href: '/lms/progress', icon: CheckCircle },
+  { title: 'Certificates', href: '/lms/certificates', icon: GraduationCap },
+  { title: 'Messages', href: '/lms/messages', icon: Users },
+  { title: 'Schedule', href: '/lms/schedule', icon: Clock },
+  { title: 'Help Center', href: '/lms/help', icon: HelpCircle },
+];
+
+const downloadableResources = [
+  {
+    title: 'Student Success Guide',
+    description: 'Tips for completing your program',
+    fileType: 'PDF',
+  },
+  {
+    title: 'Career Planning Workbook',
+    description: 'Identify your career goals',
+    fileType: 'PDF',
+  },
+  {
+    title: 'Professional Communication Guide',
+    description: 'Workplace communication tips',
+    fileType: 'PDF',
+  },
+];
 
 export default async function ResourcesPage() {
   const supabase = await createClient();
@@ -26,265 +198,158 @@ export default async function ResourcesPage() {
     redirect('/login');
   }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single();
-
-  // Fetch student's courses
-  const { data: enrollments } = await supabase
-    .from('enrollments')
-    .select(
-      `
-      *,
-      courses (
-        id,
-        title,
-        description,
-        thumbnail_url
-      )
-    `
-    )
-    .eq('user_id', user.id)
-    .order('created_at', { ascending: false });
-
-  const { count: activeCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'active');
-
-  const { count: completedCourses } = await supabase
-    .from('enrollments')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', user.id)
-    .eq('status', 'completed');
-
-  const { data: recentProgress } = await supabase
-    .from('student_progress')
-    .select(
-      `
-      *,
-      courses (title)
-    `
-    )
-    .eq('student_id', user.id)
-    .order('updated_at', { ascending: false })
-    .limit(5);
-
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-white overflow-hidden">
-        <Image
-          src="/images/artlist/hero-training-1.jpg"
-          alt="Resources"
-          fill
-          className="object-cover"
-          quality={100}
-          priority
-          sizes="100vw"
-        />
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Resources
-          </h1>
-          <p className="text-base md:text-lg mb-8 text-gray-100">
-            Explore Resources and discover opportunities for career growth and
-            development.
+      {/* Header */}
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <h1 className="text-3xl font-bold text-gray-900">Student Resources</h1>
+          <p className="text-gray-600 mt-2">
+            Everything you need to succeed in your program and career
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-brand-orange-600 hover:bg-brand-orange-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/programs"
-              className="bg-white hover:bg-gray-100 text-brand-blue-600 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
-            >
-              View Programs
-            </Link>
-          </div>
         </div>
-      </section>
+      </div>
 
-      {/* Content Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            {/* Feature Grid */}
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">
-                  Resources
-                </h2>
-                <p className="text-black mb-6">
-                  Explore Resources and discover opportunities for career growth
-                  and development.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>100% free training programs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Industry-standard certifications</span>
-                  </li>
-                  <li className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-brand-green-600 mr-2 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span>Career support and job placement</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/images/artlist/hero-training-2.jpg"
-                  alt="Resources"
-                  fill
-                  className="object-cover"
-                  quality={100}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-
-            {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Learn</h3>
-                <p className="text-black">
-                  Access quality training programs
-                </p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-brand-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-brand-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Certify</h3>
-                <p className="text-black">Earn industry certifications</p>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-purple-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold mb-3">Work</h3>
-                <p className="text-black">Get hired in your field</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-blue-700 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-base md:text-lg text-blue-100 mb-8">
-              Join thousands who have launched successful careers through our
-              programs.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Quick Links */}
+        <section className="mb-12">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Links</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {quickLinks.map((link) => (
               <Link
-                href="/contact"
-                className="bg-white text-blue-700 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 text-lg"
+                key={link.href}
+                href={link.href}
+                className="flex flex-col items-center p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-md transition-all"
               >
-                Apply Now
+                <link.icon className="w-6 h-6 text-blue-600 mb-2" />
+                <span className="text-sm font-medium text-gray-900 text-center">
+                  {link.title}
+                </span>
               </Link>
-              <Link
-                href="/programs"
-                className="bg-blue-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 border-2 border-white text-lg"
+            ))}
+          </div>
+        </section>
+
+        {/* Resource Categories */}
+        <section className="mb-12">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+            Resource Categories
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {resourceCategories.map((category) => {
+              const colorClasses: Record<string, string> = {
+                blue: 'bg-blue-50 border-blue-200',
+                purple: 'bg-purple-50 border-purple-200',
+                green: 'bg-green-50 border-green-200',
+                red: 'bg-red-50 border-red-200',
+              };
+              const iconColors: Record<string, string> = {
+                blue: 'text-blue-600',
+                purple: 'text-purple-600',
+                green: 'text-green-600',
+                red: 'text-red-600',
+              };
+
+              return (
+                <div
+                  key={category.id}
+                  className={`rounded-xl border-2 ${colorClasses[category.color]} p-6`}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <category.icon
+                      className={`w-6 h-6 ${iconColors[category.color]}`}
+                    />
+                    <h3 className="text-xl font-bold text-gray-900">
+                      {category.title}
+                    </h3>
+                  </div>
+                  <ul className="space-y-3">
+                    {category.resources.map((resource) => (
+                      <li key={resource.title}>
+                        <Link
+                          href={resource.href}
+                          className="flex items-start gap-3 p-3 bg-white rounded-lg hover:shadow-md transition-shadow"
+                        >
+                          <div className="flex-1">
+                            <p className="font-medium text-gray-900">
+                              {resource.title}
+                            </p>
+                            <p className="text-sm text-gray-600">
+                              {resource.description}
+                            </p>
+                          </div>
+                          <ExternalLink className="w-4 h-4 text-gray-400 flex-shrink-0 mt-1" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Downloadable Resources */}
+        <section className="mb-12">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">
+            Downloadable Guides
+          </h2>
+          <div className="bg-white rounded-xl border border-gray-200 divide-y">
+            {downloadableResources.map((resource) => (
+              <div
+                key={resource.title}
+                className="flex items-center justify-between p-4 hover:bg-gray-50"
               >
-                Browse Programs
-              </Link>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                    <FileText className="w-5 h-5 text-red-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">{resource.title}</p>
+                    <p className="text-sm text-gray-600">{resource.description}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <span className="text-xs text-gray-500">{resource.fileType}</span>
+                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+                    <Download className="w-4 h-4" />
+                    <span className="text-sm font-medium">Download</span>
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Contact Support */}
+        <section>
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-white">
+            <div className="max-w-2xl">
+              <h2 className="text-2xl font-bold mb-2">Need Help?</h2>
+              <p className="text-blue-100 mb-6">
+                Our student success team is here to support you with any questions
+                about your program, career goals, or support services.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/lms/support"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                >
+                  <Phone className="w-5 h-5" />
+                  Contact Support
+                </Link>
+                <Link
+                  href="/lms/help"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-400 transition-colors"
+                >
+                  <BookOpen className="w-5 h-5" />
+                  Help Center
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
